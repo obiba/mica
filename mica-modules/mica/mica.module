@@ -11,67 +11,17 @@ function mica_help($path, $arg) {
 	}
 }
 
-/**
- * Implements hook_entity_info().
- */
-function mica_entity_info() {
-	return array(
-    'mica-relation' => array(
-      'label' => t('Mica relationship'),
-      'base table' => 'mica_relation',
-      'entity keys' => array(
-        'id' => 'id',
-			),
-      'fieldable' => TRUE,
-		),
-	);
-}
-
-/**
- * Implements hook_field_info().
- */
-function mica_field_info() {
-	return array(
-		'parent_type' => array(
-			'label' => t('Parent content type'),
-			'description' => t('Parent content type machine name'),
-			'settings' => array('max_length' => 255),
-      'property_type' => 'text',	
-			'default_widget' => 'text_textfield',
-			'default_formatter' => 'text_default',
-			'no_ui' => TRUE,
-		),
-    'child_type' => array(
-		  'label' => t('Child content type'),
-		  'description' => t('Child content type machine name'),		
-			'settings' => array('max_length' => 255),
-      'property_type' => 'text',		
-		  'default_widget' => 'text_textfield',
-		  'default_formatter' => 'text_default',
-			'no_ui' => TRUE,
-		),
-    'node_reference_name' => array(
-		  'label' => t('Node reference name'),
-		  'description' => t('Name of the node reference added to parent content type that refers to its child'),
-			'settings' => array('max_length' => 255), 
-      'property_type' => 'text',		
-		  'default_widget' => 'text_textfield',
-		  'default_formatter' => 'text_default',
-			'no_ui' => TRUE,
-		),
-	);
-}
 
 /**
  * Implements hook_entity_insert()
  */
 function mica_entity_insert($entity, $type) {
 
-	// look for relation_test with parent type equals saved entity type
+	// look for mica_relation with parent type equals saved entity type
 	$query = new EntityFieldQuery();
 	$result = $query->entityCondition('entity_type', 'node')
-	->entityCondition('bundle', 'relation_test')
-	->fieldCondition('field_parent', 'value', $entity->type, '=')
+	->entityCondition('bundle', 'mica_relation')
+	->fieldCondition('parent_type', 'value', $entity->type, '=')
 	->execute();
 
 	if (!empty($result['node'])) {
@@ -79,9 +29,9 @@ function mica_entity_insert($entity, $type) {
 		$relationId = $keys[0];
 		$relation = entity_load('node', $keys);
 		$relation = $relation[$relationId];
-		$parent = $relation->field_parent[key($relation->field_parent)][0]['value'];
+		$parent = $relation->parent_type[key($relation->parent_type)][0]['value'];
 		if($parent == $entity->type) {
-			foreach ($relation->field_children[key($relation->field_children)] as $child) {
+			foreach ($relation->child_type[key($relation->child_type)] as $child) {
 				// create new child
 				$node = new stdClass();
 				$node->type = $child['value'];
@@ -99,5 +49,5 @@ function mica_entity_insert($entity, $type) {
 			}
 		}
 	}
-
 }
+	

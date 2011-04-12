@@ -1,7 +1,8 @@
-name = mica 
+name = Mica 
 description = Mica module
 core = 7.x
 
+files[] = mica.install
 files[] = mica.module
 
 dependencies[] = entity
