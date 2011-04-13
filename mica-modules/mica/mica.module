@@ -18,6 +18,7 @@ function mica_form_node_type_form_alter(&$form, $form_state) {
   if (isset($form['type'])) {
   	
   	$current_type = $form['#node_type']->type;
+		$relation = _find_relation_by_child($current_type);
   	  	
 		$existing_types = array();
 		foreach (node_type_get_types() as $type) {
@@ -42,16 +43,30 @@ function mica_form_node_type_form_alter(&$form, $form_state) {
       '#type' => 'select',
       '#title' => t('Parent'),
     	'#description' => t('Select parent content type'),
-      '#default_value' => variable_get('mica_parent_type_' . $current_type, ''),
+      '#default_value' => isset($relation) ? $relation->parent_type['und'][0]['value'] : '',
       '#options' => array_merge(array('' => t('Select...')), $existing_types),    
     );  
     $form['mica_relation']['node_reference_name'] = array(
       '#type' => 'textfield',
       '#title' => t('Node reference'),
     	'#description' => t('Node reference name added to parent content type'),
-    	'#default_value' => variable_get('mica_node_reference_name_' . $current_type, $current_type . '_ref'),
+    	'#default_value' => isset($relation) ? $relation->node_reference_name['und'][0]['value'] : '',
     );  
   }
+}
+
+function _find_relation_by_child($child_type) {
+	$query = new EntityFieldQuery();
+	$result = $query->entityCondition('entity_type', 'node')
+	->entityCondition('bundle', 'mica_relation')
+	->fieldCondition('child_type', 'value', $child_type, '=')
+	->execute();		
+	if (!empty($result['node'])) {
+		$keys = array_keys($result['node']);
+		$relation = entity_load('node', $keys);
+		return $relation[$keys[0]];						
+	}
+	return NULL;
 }
 
 /**
@@ -93,17 +108,19 @@ function mica_block_configure($delta) {
 /**
  * Implements hook_block_save()
  */
+/*
 function mica_block_save($delta = '', $edit = array()) {
 	switch ($delta) {
 		case 'mica_relation':
 			break;
 	}	
 }
-
+*/
 
 /**
  * Implements hook_entity_insert()
  */
+/*
 function mica_entity_insert($entity, $type) {
 
 	// look for mica_relation with parent type equals saved entity type
@@ -139,4 +156,4 @@ function mica_entity_insert($entity, $type) {
 		}
 	}
 }
-	
+	*/
