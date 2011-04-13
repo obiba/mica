@@ -44,7 +44,7 @@ function mica_form_node_type_form_alter(&$form, $form_state) {
       '#title' => t('Parent'),
     	'#description' => t('Select parent content type'),
       '#default_value' => isset($relation) ? $relation->parent_type[$relation->language][0]['value'] : '',
-      '#options' => array_merge(array('' => t('Select...')), $existing_types),    
+      '#options' => array_merge(array('' => t('None')), $existing_types),    
     );  
     $form['mica_relation']['node_reference_name'] = array(
       '#type' => 'textfield',
@@ -66,17 +66,8 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 
 	$relation = _mica_find_relation_by_child($previous_type);
 	
-	debug($previous_type, 'previous_type');
-	debug($new_type, 'new_type');
-	debug($parent_type, 'parent_type');
-	debug($node_reference_name, 'node_reference_name');	
-	debug($relation, 'relation');	
-	
 	if(empty($parent_type)) {
-		if(isset($relation)) {
-			debug('delete realtion '. $relation->nid);
-			node_delete($relation->nid);
-		}
+		if(isset($relation)) node_delete($relation->nid);
 	} else {
 		// set default reference node name if empty
 		if(empty($node_reference_name)) $node_reference_name = $new_type . '_ref';
@@ -84,7 +75,7 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 		if(!isset($relation)) {
   		$relation = new stdClass();
   		$relation->type = 'mica_relation';
-  		$node->language = LANGUAGE_NONE;
+  		$relation->language = LANGUAGE_NONE;
   		node_object_prepare($relation);			
 		}
   	$relation->title = $parent_type . '-' . $new_type . ' relation';
@@ -92,7 +83,6 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 		$relation->child_type[$relation->language][0]['value'] = $new_type;
 		$relation->node_reference_name[$relation->language][0]['value'] = $node_reference_name;
 		node_save($relation);
-		debug($relation, 'saved relation');
 	}
 	
 }
