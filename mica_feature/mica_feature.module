@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the mica_feature feature.
+ */
+
+include_once('mica_feature.features.inc');
