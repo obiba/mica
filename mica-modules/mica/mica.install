@@ -78,24 +78,24 @@ function _mica_installed_fields() {
     'parent_type' => array(
       'field_name' => 'parent_type',
       'cardinality' => 1,
-      'type'        => 'text',
-      'settings'    => array(
+      'type' => 'text',
+      'settings' => array(
         'max_length' => 255,
 			),
 		),
     'child_type' => array(
-      'field_name'  => 'child_type',
+      'field_name' => 'child_type',
       'cardinality' => 1,
-      'type'        => 'text',
-      'settings'    => array(
+      'type' => 'text',
+      'settings' => array(
         'max_length' => 255,
 			),	
 		),
     'node_reference_name' => array(
       'field_name' => 'node_reference_name',
       'cardinality' => 1,
-      'type'        => 'text',
-      'settings'    => array(
+      'type' => 'text',
+      'settings' => array(
         'max_length' => 255,
 			),	
 		),
