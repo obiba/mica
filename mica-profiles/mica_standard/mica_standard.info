@@ -1,8 +1,5 @@
 name = Mica Standard
 description = Mica install with commonly used features pre-configured.
-version = "7.0"
-project = "mica"
-datestamp = "1294208756"
 core = 7.x
 dependencies[] = block
 dependencies[] = color
@@ -50,5 +47,10 @@ dependencies[] = search_api_facets
 dependencies[] = search_api_page
 dependencies[] = search_api_views
 dependencies[] = search_api_solr
+dependencies[] = mica
+;dependencies[] = mica_feature
 files[] = mica_standard.profile
 
+version = "7.0"
+project = "mica"
+datestamp = "1294208756"
