@@ -65,17 +65,13 @@ function mica_form_node_type_form_alter(&$form, $form_state) {
  * Implements hook_node_type_delete()
  */
 function mica_node_type_delete($info) {
-	debug($info, 'node_type_delete');	
-
 	// delete relation where this type is child
 	$relation = _mica_find_relation_by_child($info->type);
-	debug($relation, 'relation for child ' . $info->type);
 	if(isset($relation)) {
 		_mica_delete_relation($relation);
 	}
 	
 	$relations = _mica_find_relations_by_parent($info->type);
-	debug($relations, 'relations for parent ' . $info->type);
 	if(!empty($relations)) {
 		foreach ($relations as $relation) {
 			_mica_delete_relation($relation);
@@ -84,9 +80,6 @@ function mica_node_type_delete($info) {
 }
 
 function _mica_delete_relation($relation) {
-	
-	debug($relation, 'Delete relation');
-	
 	// delete node reference field from parent
 	$field_name = $relation->node_reference_name[$relation->language][0]['value'];
 	field_delete_field($field_name);
@@ -185,7 +178,6 @@ function _mica_find_relations_by_parent($parent_type) {
 	->entityCondition('bundle', 'mica_relation')
 	->fieldCondition('parent_type', 'value', $parent_type, '=')
 	->execute();		
-	debug($result);
 	if (!empty($result['node'])) {
 		$keys = array_keys($result['node']);
 		$relation = entity_load('node', $keys);
