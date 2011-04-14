@@ -2,6 +2,7 @@ name = Mica
 description = Mica module
 core = 7.x
 
+files[] = includes/processor_study_fields.inc
 files[] = mica.install
 files[] = mica.module
 

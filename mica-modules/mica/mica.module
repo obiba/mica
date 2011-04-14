@@ -238,3 +238,15 @@ function mica_node_insert($node) {
 		node_save($node);
 	}
 }
+
+/**
+ * Implements hook_search_api_processor_info().
+ */
+function mica_search_api_processor_info() {
+	$processors['search_api_processor_study_fields'] = array(
+    'name' => t('Mica'),
+    'description' => t('Adds the study referred fields to the indexed data.'),
+    'class' => 'SearchApiProcessorStudyFields',
+  );
+  return $processors;
+}
