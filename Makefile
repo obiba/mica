@@ -80,3 +80,17 @@ site:
 clean:
 	rm -rf target
 
+help:
+	@echo "Mica version $(version)"
+	@echo
+	@echo "Available make targets:"
+	@echo "  all          : Download Drupal, required modules, install Mica modules/profiles and make a package of it."
+	@echo "  package      : Package Drupal for Mica ($(micadir).tar.gz)."
+	@echo "  default-site : Install default site with Mica profile."
+	@echo "  site         : Install configured site with Mica profile."
+	@echo "  mica         : Install Mica modules/profiles in Drupal."
+	@echo "  clean        : Remove target directory."
+	@echo
+	@echo "Requires drush 4+ to be installed [http://drush.ws]"
+	@echo "  " `drush version`
+	@echo
