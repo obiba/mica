@@ -149,7 +149,7 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 
 function _mica_reference_node_field($field_name, $referenceable_type) {
 	return array(
-		'field_name' => $name,
+		'field_name' => $field_name,
     'type' => 'node_reference',
     'cardinality' => 1,
     'settings' => array(
@@ -164,13 +164,12 @@ function _mica_reference_node_field_instance($field_name, $referenced_type_name,
 	  'label' => $referenced_type_name . ' ' . t('reference'),
     'entity_type' => 'node',
     'bundle' => $bundle,
-  	'required' => TRUE,
     'widget' => array('type' => 'options_select'),
 	);
 }
 
 /**
- * Returns a list of relations for this parent type 
+ * Returns an array of relations (with relation ID as key) for this parent type 
  */
 function _mica_find_relations_by_parent($parent_type) {
 	$query = new EntityFieldQuery();
@@ -180,10 +179,9 @@ function _mica_find_relations_by_parent($parent_type) {
 	->execute();		
 	if (!empty($result['node'])) {
 		$keys = array_keys($result['node']);
-		$relation = entity_load('node', $keys);
-		return $relation[$keys[0]];						
+		return entity_load('node', $keys);
 	}
-	return NULL;
+	return array();
 }
 
 /**
@@ -204,29 +202,39 @@ function _mica_find_relation_by_child($child_type) {
 }
 
 /**
- * Implements hook_entity_insert()
+ * Implements hook_node_insert()
  */
-/*
-function mica_entity_insert($entity, $type) {
-	$relations = _mica_find_relations_by_parent($entity->type);
-	if (isset($relations)) {
-		foreach ($relations as $relation) {
+function mica_node_insert($node) {
+	
+	$relations = _mica_find_relations_by_parent($node->type);
+	if (!empty($relations)) {
 
+		$node = node_load($node->nid); 		// reload node so it's not in 'new' state
+		
+		foreach ($relations as $relation) {
+			
+			$child_type = $relation->child_type[$relation->language][0]['value'];
+			$field_ref = $relation->node_reference_name[$relation->language][0]['value'];
+			
 			// create new child
 			$node_child = new stdClass();
-			$node_child->type = $relation->child_type[$relation->language][0]['value'];
+			$node_child->type = $child_type;
 			node_object_prepare($node_child);
-			$node_child->title = $entity->title;
-			$node_child->language = $entity->language;
-			$node_child->uid = $entity->uid; // same author
+			$node_child->title = $node->title;
+			$node_child->language = $node->language;
+			$node_child->uid = $node->uid; // same author
 			node_save($node_child);
 	
 			// link this new child node to the parent node
-			$field_ref = $relation->node_reference_name[$relation->language][0]['value'];
-			$loaded_parent = node_load($entity->nid);
-			$loaded_parent->$field_ref[$loaded_parent->language][0]['nid'] = $node_child->nid;			
-			node_save($loaded_parent);
+			$node->$field_ref = array(
+				$node->language => array(
+					0 => array(
+						'nid' => $node_child->nid,
+					),
+				),
+			);
+			
 		}
+		node_save($node);
 	}
 }
-*/
