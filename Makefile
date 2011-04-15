@@ -20,6 +20,7 @@ views_version=7.x-3.x-dev
 search_api_version=7.x-1.0-beta8
 search_api_solr_version=7.x-1.x-dev
 features_version=7.x-1.0-beta2
+strongarm_version=7.x-2.0-beta2
 references_version=7.x-2.x-dev
 
 #
@@ -54,7 +55,7 @@ drupal: target
 	drush dl entity-$(entity_version) views-$(views_version) && \
 	drush dl search_api-$(search_api_version) search_api_solr-$(search_api_solr_version) && \
 	svn checkout -r22 http://solr-php-client.googlecode.com/svn/trunk/ sites/all/modules/search_api_solr/SolrPhpClient && \
-	drush dl features-$(features_version) && \
+	drush dl features-$(features_version) strongarm-$(strongarm_version) && \
 	drush dl references-$(references_version)
 
 mica:
