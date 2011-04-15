@@ -47,6 +47,7 @@ dependencies[] = search_api_facets
 dependencies[] = search_api_page
 dependencies[] = search_api_views
 dependencies[] = search_api_solr
+dependencies[] = features
 dependencies[] = mica
 ;dependencies[] = mica_feature
 files[] = mica_standard.profile
