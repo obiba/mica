@@ -10,12 +10,6 @@
 function mica_feature_user_default_roles() {
   $roles = array();
 
-  // Exported role: administrator
-  $roles['administrator'] = array(
-    'name' => 'administrator',
-    'weight' => '2',
-  );
-
   // Exported role: studies administrator
   $roles['studies administrator'] = array(
     'name' => 'studies administrator',
