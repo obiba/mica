@@ -3,36 +3,48 @@
 class SearchApiProcessorStudyFields extends SearchApiAbstractProcessor {
 
 	public function preprocessIndexItems(array &$items) {
-		debug("pouet");
-	}
-	
-    private function alterItems(array &$items) {
-		$relations_inversed = array();
+		//debug($items);
+		$relations_map = array();
 
-		foreach ($items as $id => &$item) {
-			$relations = _mica_find_relations_by_parent($item->type);
-			if (!empty($relations)) {
-				foreach ($relations as $relation) {
-					$child_type = $relation->child_type[$relation->language][0]['value'];
-					$field_ref = "field_" . $relation->node_reference_name[$relation->language][0]['value'];
-					 
-					$field_value = $item->$field_ref;
-					$relations_inversed[$field_value[$relation->language][0]['nid']] = $item;
+		foreach ($items as $nid => &$item) {
+			$type = $item['type']['value'];
+			if (!array_key_exists($type, $relations_map)) {
+				$relations = _mica_find_relations_by_parent($type);
+				if (!empty($relations)) {
+					foreach ($relations as $relation) {
+						$child_type = $relation->child_type[$relation->language][0]['value'];
+						$node_reference_name = "field_" . $relation->node_reference_name[$relation->language][0]['value'];
+						if (array_key_exists($node_reference_name, $item)) {
+							$child_nid = $item[$node_reference_name]['value'];
+							$relations_map[$child_nid] = $nid;
+						}
+						else {
+							// error message about node_reference_name not indexed
+						}
+					}
 				}
 			}
 		}
-		//debug($relations_inversed);
-		foreach($relations_inversed as $child_nid => $parent_item) {
+
+		//debug($relations_map);
+		
+		foreach($relations_map as $child_nid => &$parent_id) {
 			$child_item = $this->getItem($items, $child_nid);
+			$parent_item = $this->getItem($items, $parent_id);
 			foreach($child_item as $field => $value) {
 				if ($this->isVariable($field)) {
-					//debug($field);
-					//debug($value);
-					$parent_item->$field = $value;
+//					debug($field);
+//					debug($value);
+					
+					$parent_item[$field]['value'] = $value['value'];
+					//debug($parent_item);				
 				}
 			}
+			$items[$parent_id] = $parent_item;
 		}
+		
 		//debug($items);
+
 	}
 
 	private function isVariable($field) {
@@ -42,7 +54,7 @@ class SearchApiProcessorStudyFields extends SearchApiAbstractProcessor {
 
 	private function getItem(array &$items, $nid) {
 		foreach ($items as $id => &$item) {
-			if ($item->nid == $nid) {
+			if ($id == $nid) {
 				return $item;
 			}
 		}
