@@ -79,7 +79,7 @@ site:
 	cd target/$(micadir) && \
 	drush site-install mica_standard --db-url=mysql://$(db_user):$(db_pass)@localhost/$(site_db_name) --site-name=$(site_name) --sites-subdir=$(site_dir_name) --clean-url=$(clean_url)
 
-demo: node_export demo-import
+demo: default-site node_export demo-import
 
 node_export:
 	cd target/$(micadir) && \
