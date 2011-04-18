@@ -4,10 +4,9 @@ package = "OBiBa"
 core = 7.x
 version = "7.x-1.0-dev"
 
-dependencies[] = "search_api"
+dependencies[] = entity
+dependencies[] = search_api
 
 files[] = includes/processor_study_fields.inc
 files[] = mica.install
 files[] = mica.module
-
-dependencies[] = entity

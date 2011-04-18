@@ -1,143 +1,46 @@
 <?php
 
 /**
- * Implements hook_install().
+ * Implements hook_schema()
  */
-function mica_install() {
-
-	// use get_t() to get the name of our localization function for translation during install, when t() is not available.
-	$t = get_t();
-
-	// create node type
-	$relation_node = array(
-    'type' => 'mica_relation',
-    'name' => $t('Mica relationship'),
-    'base' => 'node_content',
-    'description' => $t('Relation between content types that cascade events form parent to children'),
-	);
-
-	// Complete and save the node type definition by setting any defaults not explicitly declared above.
-	$content_type = node_type_set_defaults($relation_node);
-	node_add_body_field($content_type);
-	node_type_save($content_type);
-	
-	// Create all the fields we are adding to our content type.  
-  foreach (_mica_installed_fields() as $field) {
-    field_create_field($field);
-  }
- 
-  // Create all the instances for our fields.
-  foreach (_mica_installed_instances() as $instance) {
-    $instance['entity_type'] = 'node';
-    $instance['bundle'] = $relation_node['type'];
-    field_create_instance($instance);
-  }
-}
-
-/**
- * Implements hook_uninstall().
- */
-function mica_uninstall() {
-	
-  // Gather all the mica_relation content that might have been created while this module was enabled.  
-  $result = db_query('SELECT nid FROM {node} n WHERE n.type = :type', array(':type' => 'mica_relation'));
-  $nids = array();
-  foreach ($result as $row) {
-    $nids[] = $row->nid;
-  }
- 
-  // Delete all the nodes at once
-  node_delete_multiple($nids);
- 
-  // Loop over each of the fields defined by this module and delete
-  // all instances of the field, their data, and the field itself.
-  foreach (array_keys(_mica_installed_instances()) as $field) {
-    field_delete_field($field);
-  }
- 
-  // Loop over any remaining field instances attached to the mica_relation
-  // content type (such as the body field) and delete them individually.
-  $instances = field_info_instances('node', 'mica_relation');
-  foreach ($instances as $instance_name => $instance) {
-    field_delete_instance($instance);
-  }
- 
-  // Delete our content type
-  node_type_delete('mica_relation');
- 
-  // Purge all field infromation
-  field_purge_batch(1000);
-}
-
-/**
- * Return a structured array defining the fields created by this content type.
- */
-function _mica_installed_fields() {
-	$t = get_t();
-	return array(
-    'parent_type' => array(
-      'field_name' => 'parent_type',
-      'cardinality' => 1,
-      'type' => 'text',
-      'settings' => array(
-        'max_length' => 255,
-			),
-		),
-    'child_type' => array(
-      'field_name' => 'child_type',
-      'cardinality' => 1,
-      'type' => 'text',
-      'settings' => array(
-        'max_length' => 255,
-			),	
-		),
-    'node_reference_name' => array(
-      'field_name' => 'node_reference_name',
-      'cardinality' => 1,
-      'type' => 'text',
-      'settings' => array(
-        'max_length' => 255,
-			),	
-		),
-	);
-}
-
- 
-/**
- * Return a structured array defining the instances for this content type.
- */
-function _mica_installed_instances() {
-  $t = get_t();
-  return array(
-    'parent_type' => array(
-      'field_name' => 'parent_type',
-      'label'       => $t('Parent content type machine name'),
-  		'required'    => TRUE,
-      'widget'      => array(
-        'type'    => 'text_textfield',
+function mica_schema() {
+  $schema['mica_relation'] = array(
+    'description' => 'Stores relations between content types',
+    'fields' => array(
+      'id' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique relation ID',
       ),
-      //'no_ui' => TRUE,      
-    ),
-    'child_type' => array(
-      'field_name'  => 'child_type',
-      'label' => $t('Child content type machine name'),
-    	'required'    => TRUE,
-      'type'        => 'text',
-      'widget'      => array(
-        'type'    => 'text_textfield',
+      'parent' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The parent content type machine name',
       ),
-      //'no_ui' => TRUE,      
-    ),
-    'node_reference_name' => array(
-      'field_name'  => 'node_reference_name',
-      'label'       => $t('Node reference name'),
-      'required'    => TRUE, //TODO generate default value using child_type.'_ref'
-      'widget'      => array(
-        'type'    => 'text_textfield',
+      'child' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The child content type machine name',
       ),
-      //'no_ui' => TRUE,
+      'node_reference' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The node reference field name',
+      ),
     ),
+    'indexes' => array(
+      'parent_index' => array('parent'),
+    ),
+   	'unique keys' => array(
+      'unique_child' => array('child'),
+    ),    
+    'primary key' => array('id'),
   );
+	return $schema;
 }
-
-
