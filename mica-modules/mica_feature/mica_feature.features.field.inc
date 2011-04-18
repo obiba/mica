@@ -568,11 +568,11 @@ function mica_feature_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'link',
+          'label' => 'inline',
+          'module' => 'email',
           'settings' => array(),
-          'type' => 'default',
-          'weight' => 3,
+          'type' => 'email_default',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -716,11 +716,11 @@ Prof.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => NULL,
+          'label' => 'inline',
+          'module' => 'name',
           'settings' => array(),
-          'type' => 'name_default_default',
-          'weight' => 2,
+          'type' => 'name_default',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -815,11 +815,11 @@ Prof.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 4,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -880,11 +880,11 @@ Prof.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 1,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
