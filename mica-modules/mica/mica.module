@@ -84,7 +84,7 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 		
 		$relation['parent'] = $parent_type;
 		$relation['child'] = $new_type;
-		$relation['node_reference'] = 'mica_' . $new_type . '_ref';
+		$relation['node_reference'] = 'mica_' . $new_type;
 		_mica_save_relation($relation);
 		
 		if(isset($relation['id'])) {
