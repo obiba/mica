@@ -72,11 +72,16 @@ package:
 
 default-site:
 	cd target/$(micadir) && \
-	drush site-install mica_standard --db-url=mysql://$(db_user):$(db_pass)@localhost/mica --site-name=Mica --clean-url=$(clean_url)
+	drush site-install mica_standard --db-url=mysql://$(db_user):$(db_pass)@localhost/mica --site-name=Mica --clean-url=$(clean_url) --yes
 
 site:
 	cd target/$(micadir) && \
 	drush site-install mica_standard --db-url=mysql://$(db_user):$(db_pass)@localhost/$(site_db_name) --site-name=$(site_name) --sites-subdir=$(site_dir_name) --clean-url=$(clean_url)
+
+demo:
+	cd target/$(micadir) && \
+	drush dl node_export-7.x-3.x-dev && drush en --yes node_export && \
+	drush ne-import --file=sites/all/modules/mica/data/mica-demo.txt
 
 clean:
 	rm -rf target
