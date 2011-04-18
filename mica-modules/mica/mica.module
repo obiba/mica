@@ -217,25 +217,29 @@ function mica_node_insert($node) {
 		
 		foreach ($relations as $relation) {
 			
-			// create new child
-			$node_child = new stdClass();
-			$node_child->type = $relation['child'];
-			node_object_prepare($node_child);
-			$node_child->title = $node->title;
-			$node_child->language = $node->language;
-			$node_child->uid = $node->uid; // same author
-			node_save($node_child);
-	
-			// link this new child node to the parent node
 			$field_ref = $relation['node_reference'];
-			$node->$field_ref = array(
+				
+			// do not create child if child id is already provided (case of data import)
+			if (!isset($node->$field_ref) || count($node->$field_ref) == 0) {
+					
+				// create new child
+				$node_child = new stdClass();
+				$node_child->type = $relation['child'];
+				node_object_prepare($node_child);
+				$node_child->title = $node->title;
+				$node_child->language = $node->language;
+				$node_child->uid = $node->uid; // same author
+				node_save($node_child);
+
+				// link this new child node to the parent node
+				$node->$field_ref = array(
 				$node->language => array(
-					0 => array(
+				0 => array(
 						'nid' => $node_child->nid,
-					),
 				),
-			);
-			
+				),
+				);
+			}
 		}
 		node_save($node);
 	}

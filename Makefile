@@ -22,6 +22,7 @@ search_api_solr_version=7.x-1.x-dev
 features_version=7.x-1.0-beta2
 strongarm_version=7.x-2.0-beta2
 references_version=7.x-2.x-dev
+node_export_version=7.x-3.x-dev
 
 #
 # Mysql db access
@@ -78,10 +79,19 @@ site:
 	cd target/$(micadir) && \
 	drush site-install mica_standard --db-url=mysql://$(db_user):$(db_pass)@localhost/$(site_db_name) --site-name=$(site_name) --sites-subdir=$(site_dir_name) --clean-url=$(clean_url)
 
-demo:
+demo: node_export demo-import
+
+node_export:
 	cd target/$(micadir) && \
-	drush dl node_export-7.x-3.x-dev && drush en --yes node_export && \
+	drush dl node_export-$(node_export_version) && drush en --yes node_export
+
+demo-import:
+	cd target/$(micadir) && \
 	drush ne-import --file=sites/all/modules/mica/data/mica-demo.txt
+	
+demo-export:
+	cd target/$(micadir) && \
+	drush ne-export 1 2 3 4 -u 1 --file=../mica-demo.txt
 
 clean:
 	rm -rf target
