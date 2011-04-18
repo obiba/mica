@@ -12,8 +12,8 @@ class SearchApiProcessorStudyFields extends SearchApiAbstractProcessor {
 				$relations = _mica_find_relations_by_parent($type);
 				if (!empty($relations)) {
 					foreach ($relations as $relation) {
-						$child_type = $relation->child_type[$relation->language][0]['value'];
-						$node_reference_name = "field_" . $relation->node_reference_name[$relation->language][0]['value'];
+						$child_type = $relation['child'];
+						$node_reference_name = $relation['node_reference'];
 						if (array_key_exists($node_reference_name, $item)) {
 							$child_nid = $item[$node_reference_name]['value'];
 							$relations_map[$child_nid] = $nid;
