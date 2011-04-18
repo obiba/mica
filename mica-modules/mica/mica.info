@@ -1,6 +1,8 @@
-name = Mica 
-description = Mica module
+name = "Mica" 
+description = "Mica module"
+package = "OBiBa"
 core = 7.x
+version = "7.x-1.0-dev"
 
 files[] = includes/processor_study_fields.inc
 files[] = mica.install

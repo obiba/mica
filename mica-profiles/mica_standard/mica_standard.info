@@ -50,9 +50,8 @@ dependencies[] = search_api_solr
 dependencies[] = features
 dependencies[] = strongarm
 dependencies[] = mica
-;dependencies[] = mica_feature
+dependencies[] = mica_feature
 files[] = mica_standard.profile
 
 version = "7.0"
 project = "mica"
-datestamp = "1294208756"

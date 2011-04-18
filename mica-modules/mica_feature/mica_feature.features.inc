@@ -82,15 +82,8 @@ function mica_feature_default_search_api_facet() {
       "show_active" : true,
       "default_true" : true,
       "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Country",
-      "options" : {
-        "CAN" : "Canada",
-        "DNK" : "Danemark",
-        "FRA" : "France",
-        "GBR" : "United Kingdom",
-        "USA" : "United States"
-      }
+      "type" : "string",
+      "field_name" : "Country"
     },
     "rdf_mapping" : []
   }');

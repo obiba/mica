@@ -36,7 +36,7 @@ function mica_feature_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-49',
+    'weight' => '0',
   );
   // Exported menu link: main-menu:studies-search
   $menu_links['main-menu:studies-search'] = array(
@@ -50,7 +50,7 @@ function mica_feature_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-48',
+    'weight' => '0',
   );
   // Exported menu link: management:admin/config/search/path
   $menu_links['management:admin/config/search/path'] = array(
