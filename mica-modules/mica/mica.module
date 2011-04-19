@@ -57,11 +57,12 @@ function mica_form_node_type_form_alter(&$form, $form_state) {
 function mica_node_type_delete($info) {
 	
 	$relations = _mica_find_relation_by_parent_or_child($info->type);
-	foreach ($relations as $relation) {
-		field_delete_field($relation['node_reference']);		
+	if(!empty($relations)) {
+		foreach ($relations as $relation) {
+			field_delete_field($relation['node_reference']);		
+		}
+		db_delete('mica_relation')->condition('id', array_keys($relations), 'IN')->execute();
 	}
-	
-	db_delete('mica_relation')->condition('id', array_keys($relations), 'IN')->execute();
 }
 
 /**
@@ -148,10 +149,10 @@ function _mica_save_relation(array $relation) {
 		// update
 		db_update('mica_relation')
 		  ->fields(array(
-		    'parent' => $relation['parent'],
-		    'child' => $relation['child'],
-		    'node_reference' => $relation['node_reference'],
-		  ))
+			    'parent' => $relation['parent'],
+			    'child' => $relation['child'],
+			    'node_reference' => $relation['node_reference'],
+		 	 	))
 		  ->condition('id', $relation['id'])
 		  ->execute();
 	} else {
@@ -257,11 +258,11 @@ function mica_node_insert($node) {
 
 				// link this new child node to the parent node
 				$node->$field_ref = array(
-				$node->language => array(
-				0 => array(
-						'nid' => $node_child->nid,
-				),
-				),
+					$node->language => array(
+						0 => array(
+							'nid' => $node_child->nid,
+						),
+					),
 				);
 			}
 		}
