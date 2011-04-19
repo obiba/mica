@@ -5,6 +5,9 @@
 
 version=1.0-SNAPSHOT
 micadir=mica-$(version)
+mica_version=7.x-1.x-dev
+mica_feature_version=7.x-1.x-dev
+mica_standard_version=7.x-1.x-dev
 
 #
 # Modules dependencies
@@ -42,7 +45,7 @@ site_dir_name=site.mica-obiba.org
 #
 clean_url=0
 
-all: drupal mica package
+all: drupal mica
 
 target:
 	mkdir -p target
@@ -66,10 +69,27 @@ mica:
 	cp -r ../../mica-modules/mica_feature sites/all/modules && \
 	rm -rf `find . -type d -name .svn`
 
-package:
+package: package-modules package-profiles
 	cd target && \
-	rm -f $(micadir).tar.gz && \
-	tar czf $(micadir).tar.gz $(micadir)
+	rm -f $(micadir).* && \
+	tar czf $(micadir).tar.gz $(micadir) && \
+	zip -r $(micadir).zip $(micadir)
+
+package-modules:
+	cd target && \
+	rm -f mica-$(mica_version).* mica_feature-$(mica_feature_version).* && \
+	cd $(micadir)/sites/all/modules/ && \
+	tar czvf ../../../../mica-$(mica_version).tar.gz mica && \
+	zip -r ../../../../mica-$(mica_version).zip mica && \
+	tar czvf ../../../../mica_feature-$(mica_feature_version).tar.gz mica_feature && \
+	zip -r ../../../../mica_feature-$(mica_feature_version).zip mica_feature
+	
+package-profiles:
+	cd target && \
+	rm -f mica_standard-$(mica_standard_version).* && \
+	cd $(micadir)/profiles && \
+	tar czvf ../../mica_standard-$(mica_version).tar.gz mica_standard && \
+	zip -r ../../mica_standard-$(mica_version).zip mica_standard
 
 default-site:
 	cd target/$(micadir) && \
@@ -100,12 +120,12 @@ help:
 	@echo "Mica version $(version)"
 	@echo
 	@echo "Available make targets:"
-	@echo "  all          : Download Drupal, required modules, install Mica modules/profiles and make a package of it."
+	@echo "  all          : Download Drupal, required modules and install Mica modules/profiles in it. Result is available in 'target' directory."
 	@echo "  package      : Package Drupal for Mica ($(micadir).tar.gz)."
 	@echo "  default-site : Install default site with Mica profile."
 	@echo "  site         : Install configured site with Mica profile."
 	@echo "  mica         : Install Mica modules/profiles in Drupal."
-	@echo "  clean        : Remove target directory."
+	@echo "  clean        : Remove 'target' directory."
 	@echo
 	@echo "Requires drush 4+ to be installed [http://drush.ws]"
 	@echo "  " `drush version`
