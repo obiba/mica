@@ -137,7 +137,7 @@ function _mica_add_node_reference_to_parent(array $relation, $child_name) {
 
 	field_create_instance(array(
 		'field_name' => $relation['node_reference'],
-	  'label' => $child_name . ' ' . t('reference'),
+	  'label' => $child_name,
     'entity_type' => 'node',
     'bundle' => $relation['parent'],
     'widget' => array('type' => 'options_select'),
@@ -234,10 +234,11 @@ function _mica_delete_relation_by_id($id) {
  * Implements hook_node_insert()
  */
 function mica_node_insert($node) {
-	
+
 	$relations = _mica_find_relations_by_parent($node->type);
 	if (!empty($relations)) {
-
+		
+		$parent_menu = $node->menu;
 		$node = node_load($node->nid); 		// reload node so it's not in 'new' state
 		
 		foreach ($relations as $relation) {
@@ -254,6 +255,16 @@ function mica_node_insert($node) {
 				$node_child->title = $node->title;
 				$node_child->language = $node->language;
 				$node_child->uid = $node->uid; // same author
+				
+				// create menu if parent has menu
+				if(!empty($parent_menu)) {
+					$node_child->menu['enabled'] = 1;
+					$node_child->menu['menu_name'] = 'main-menu';
+					$node_child->menu['link_title'] = $node_child->title;
+					$node_child->menu['description'] = '';
+					$node_child->menu['plid'] = $parent_menu['mlid'];
+				}						
+				
 				node_save($node_child);
 
 				// link this new child node to the parent node
@@ -270,6 +281,10 @@ function mica_node_insert($node) {
 	}
 }
 
+function mica_node_update($node) {
+	//debug($node, '$node');
+}
+
 /**
  * Implements hook_search_api_processor_info().
  */
@@ -281,3 +296,4 @@ function mica_search_api_processor_info() {
   );
   return $processors;
 }
+
