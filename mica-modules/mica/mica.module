@@ -86,9 +86,6 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 		$relation['child'] = $new_type;		
 		
 		$previous_relation = _mica_find_relation_by_child($previous_type);
-		debug($previous_relation, 'previous_relation');
-		
-		
 		if(empty($previous_relation)) {
 
 			// set reference node name only on creation
