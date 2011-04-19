@@ -20,6 +20,7 @@ class SearchApiProcessorStudyFields extends SearchApiAbstractProcessor {
 						}
 						else {
 							// error message about node_reference_name not indexed
+							throw new MicaException(t("Mica: Couldn't index values for '!name' index: '!field' is not selected for indexing.", array('!name' => $this->index->name, '!field' => $node_reference_name)));
 						}
 					}
 				}
@@ -27,22 +28,18 @@ class SearchApiProcessorStudyFields extends SearchApiAbstractProcessor {
 		}
 
 		//debug($relations_map);
-		
+
 		foreach($relations_map as $child_nid => &$parent_id) {
 			$child_item = $this->getItem($items, $child_nid);
 			$parent_item = $this->getItem($items, $parent_id);
 			foreach($child_item as $field => $value) {
 				if ($this->isVariable($field)) {
-//					debug($field);
-//					debug($value);
-					
 					$parent_item[$field]['value'] = $value['value'];
-					//debug($parent_item);				
 				}
 			}
 			$items[$parent_id] = $parent_item;
 		}
-		
+
 		//debug($items);
 
 	}
