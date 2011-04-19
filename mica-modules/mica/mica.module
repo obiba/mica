@@ -83,21 +83,44 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 	} else {
 		
 		$relation['parent'] = $parent_type;
-		$relation['child'] = $new_type;
-		$relation['node_reference'] = 'mica_' . $new_type;
-		_mica_save_relation($relation);
+		$relation['child'] = $new_type;		
 		
-		if(isset($relation['id'])) {
-			// update
-			$field_instance = field_info_instance('node', $relation['node_reference'], $relation['parent']);
-			if(empty($field_instance)) {
-				_mica_add_node_reference_to_parent($relation, $name);
-			}
-			//TODO delete previous reference if there is no data for this content type
-		} else {
+		$previous_relation = _mica_find_relation_by_child($previous_type);
+		debug($previous_relation, 'previous_relation');
+		
+		
+		if(empty($previous_relation)) {
+
+			// set reference node name only on creation
+			$relation['node_reference'] = 'mica_' . $new_type;	
+			
+			// create node reference field
 			_mica_add_node_reference_to_parent($relation, $name);
+			
+		} else {
+			
+			// check if parent type has content
+			$query = new EntityFieldQuery;
+			$result = $query->entityCondition('entity_type', 'node')
+											->entityCondition('bundle', $previous_relation['parent'])
+											->propertyCondition('status', 1)
+											->execute();			
+			if(empty($result)) {
+				// no content for parent type, we can replace node reference field
+				field_delete_field($previous_relation['node_reference']);
+				$relation['node_reference'] = 'mica_' . $new_type;					
+				_mica_add_node_reference_to_parent($relation, $name);				 
+			} else {
+				// update node reference field label
+				$field_instance = field_info_instance('node', $previous_relation['node_reference'], $previous_relation['parent']);
+				$field_instance['label'] = $name . ' ' . t('reference');
+				field_update_instance($field_instance);
+			}
+									
 		}
+		_mica_save_relation($relation);
 	}
+	
 }
 
 /**
