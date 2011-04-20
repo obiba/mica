@@ -281,8 +281,38 @@ function mica_node_insert($node) {
 	}
 }
 
+/**
+ * Implements hook_node_update().
+ */
 function mica_node_update($node) {
-	//debug($node, '$node');
+	$relations = _mica_find_relations_by_parent($node->type);
+	if (!empty($relations)) {
+		$parent_menu = $node->menu;
+		$language = $node->language;
+		foreach ($relations as $relation) {
+			$field_ref = $relation['node_reference'];
+			$field = $node->$field_ref;
+			$child_nid = $field[$language][0]['nid'];
+			$node_child = node_load($child_nid);
+			if(empty($parent_menu)) {
+				menu_delete(array(
+					'title' => $node_child->title,
+					'menu_name' => 'main-menu',
+					'description' => '',
+				));				
+			} else {
+				$node_child->menu['enabled'] = 1;
+				$node_child->menu['menu_name'] = 'main-menu';
+				$node_child->menu['link_title'] = $node->title;
+				$node_child->menu['description'] = '';
+				$node_child->menu['plid'] = $parent_menu['mlid'];
+			}
+			$node_child->uid = $node->uid;	// same author
+			$node_child->title = $node->title;
+			$node_child->language = $node->language;						
+			node_save($node_child);
+		}
+	}
 }
 
 /**
