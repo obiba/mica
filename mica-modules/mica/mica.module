@@ -95,6 +95,19 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 			// create node reference field
 			_mica_add_node_reference_to_parent($relation, $name);
 			
+			// check if parent type already has content
+			$query = new EntityFieldQuery;
+			$result = $query->entityCondition('entity_type', 'node')
+											->entityCondition('bundle', $relation['parent'])
+											->propertyCondition('status', 1)
+											->execute();			
+			if (!empty($result['node'])) {
+	 			$entities = entity_load('node', array_keys($result['node']));
+	 			foreach ($entities as $entity) {
+	 				mica_node_insert($entity);	// create missing child content
+	 			}
+			}												
+			
 		} else {
 			
 			// check if parent type has content
@@ -111,7 +124,7 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 			} else {
 				// update node reference field label
 				$field_instance = field_info_instance('node', $previous_relation['node_reference'], $previous_relation['parent']);
-				$field_instance['label'] = $name . ' ' . t('reference');
+				$field_instance['label'] = $name;
 				field_update_instance($field_instance);
 			}
 									
@@ -238,15 +251,16 @@ function mica_node_insert($node) {
 	$relations = _mica_find_relations_by_parent($node->type);
 	if (!empty($relations)) {
 		
-		$parent_menu = $node->menu;
+		$parent_menu = isset($node->menu) ? $node->menu : array();
 		$node = node_load($node->nid); 		// reload node so it's not in 'new' state
+		$language = $node->language;
 		
 		foreach ($relations as $relation) {
 			
 			$field_ref = $relation['node_reference'];
-				
+			
 			// do not create child if child id is already provided (case of data import)
-			if (!isset($node->$field_ref) || count($node->$field_ref) == 0) {
+			if (!isset($node->$field_ref) || count($node->$field_ref) == 0 || empty($node->$field_ref[$language])) {
 					
 				// create new child
 				$node_child = new stdClass();
@@ -281,13 +295,14 @@ function mica_node_insert($node) {
 	}
 }
 
+
 /**
  * Implements hook_node_update().
  */
 function mica_node_update($node) {
 	$relations = _mica_find_relations_by_parent($node->type);
 	if (!empty($relations)) {
-		$parent_menu = $node->menu;
+		$parent_menu = isset($node->menu) ? $node->menu : array();
 		$language = $node->language;
 		foreach ($relations as $relation) {
 			$field_ref = $relation['node_reference'];
