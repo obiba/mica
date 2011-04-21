@@ -8,6 +8,7 @@ micadir=mica-$(version)
 mica_version=7.x-1.x-dev
 mica_feature_version=7.x-1.x-dev
 mica_standard_version=7.x-1.x-dev
+mica_theme_version=7.x-1.x-dev
 
 #
 # Modules dependencies
@@ -45,6 +46,10 @@ site_dir_name=site.mica-obiba.org
 #
 clean_url=0
 
+#
+# Build
+#
+
 all: drupal mica
 
 target:
@@ -67,9 +72,14 @@ mica:
 	cp -r ../../mica-profiles/mica_standard profiles && \
 	cp -r ../../mica-modules/mica sites/all/modules && \
 	cp -r ../../mica-modules/mica_feature sites/all/modules && \
+	cp -r ../../mica-themes/samara sites/all/themes && \
 	rm -rf `find . -type d -name .svn`
 
-package: package-modules package-profiles
+#
+# Package
+#
+
+package: package-modules package-profiles package-themes
 	cd target && \
 	rm -f $(micadir).* && \
 	tar czf $(micadir).tar.gz $(micadir) && \
@@ -88,8 +98,19 @@ package-profiles:
 	cd target && \
 	rm -f mica_standard-$(mica_standard_version).* && \
 	cd $(micadir)/profiles && \
-	tar czvf ../../mica_standard-$(mica_version).tar.gz mica_standard && \
-	zip -r ../../mica_standard-$(mica_version).zip mica_standard
+	tar czvf ../../mica_standard-$(mica_standard_version).tar.gz mica_standard && \
+	zip -r ../../mica_standard-$(mica_standard_version).zip mica_standard
+
+package-themes:
+	cd target && \
+	rm -f samara-$(mica_theme_version).* && \
+	cd $(micadir)/sites/all/themes && \
+	tar czvf ../../../../samara-$(mica_theme_version).tar.gz samara && \
+	zip -r ../../../../samara-$(mica_theme_version).zip samara
+
+#
+# Site
+#
 
 default-site:
 	cd target/$(micadir) && \
@@ -99,7 +120,7 @@ site:
 	cd target/$(micadir) && \
 	drush site-install mica_standard --db-url=mysql://$(db_user):$(db_pass)@localhost/$(site_db_name) --site-name=$(site_name) --sites-subdir=$(site_dir_name) --clean-url=$(clean_url)
 
-demo: default-site node_export demo-import
+demo: node_export demo-import
 
 node_export:
 	cd target/$(micadir) && \
@@ -112,6 +133,10 @@ demo-import:
 demo-export:
 	cd target/$(micadir) && \
 	drush ne-export 1 2 3 4 -u 1 --file=../mica-demo.txt
+
+#
+# Misc
+#
 
 clean:
 	rm -rf target
