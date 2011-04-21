@@ -32,6 +32,36 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create article content
+  $permissions['create article content'] = array(
+    'name' => 'create article content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create blog content
+  $permissions['create blog content'] = array(
+    'name' => 'create blog content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create page content
+  $permissions['create page content'] = array(
+    'name' => 'create page content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: create study content
   $permissions['create study content'] = array(
     'name' => 'create study content',
@@ -50,6 +80,36 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete any article content
+  $permissions['delete any article content'] = array(
+    'name' => 'delete any article content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any blog content
+  $permissions['delete any blog content'] = array(
+    'name' => 'delete any blog content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any page content
+  $permissions['delete any page content'] = array(
+    'name' => 'delete any page content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: delete any study content
   $permissions['delete any study content'] = array(
     'name' => 'delete any study content',
@@ -64,6 +124,37 @@ function mica_feature_user_default_permissions() {
     'name' => 'delete any study_information content',
     'roles' => array(
       0 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own article content
+  $permissions['delete own article content'] = array(
+    'name' => 'delete own article content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own blog content
+  $permissions['delete own blog content'] = array(
+    'name' => 'delete own blog content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own page content
+  $permissions['delete own page content'] = array(
+    'name' => 'delete own page content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
     ),
     'module' => 'node',
   );
@@ -92,6 +183,37 @@ function mica_feature_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'studies administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any article content
+  $permissions['edit any article content'] = array(
+    'name' => 'edit any article content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any blog content
+  $permissions['edit any blog content'] = array(
+    'name' => 'edit any blog content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any page content
+  $permissions['edit any page content'] = array(
+    'name' => 'edit any page content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
     ),
     'module' => 'node',
   );
@@ -110,6 +232,37 @@ function mica_feature_user_default_permissions() {
     'name' => 'edit any study_information content',
     'roles' => array(
       0 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own article content
+  $permissions['edit own article content'] = array(
+    'name' => 'edit own article content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own blog content
+  $permissions['edit own blog content'] = array(
+    'name' => 'edit own blog content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own page content
+  $permissions['edit own page content'] = array(
+    'name' => 'edit own page content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
     ),
     'module' => 'node',
   );
@@ -162,6 +315,17 @@ function mica_feature_user_default_permissions() {
       1 => 'authenticated user',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: use search_api_facets
+  $permissions['use search_api_facets'] = array(
+    'name' => 'use search_api_facets',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'search_api_facets',
   );
 
   // Exported permission: view own unpublished content

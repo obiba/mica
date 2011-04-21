@@ -33,14 +33,6 @@ function mica_feature_views_api() {
  */
 function mica_feature_node_info() {
   $items = array(
-    'mica_relation' => array(
-      'name' => t('Mica relationship'),
-      'base' => 'node_content',
-      'description' => t('Relation between content types that cascade events form parent to children'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
     'study' => array(
       'name' => t('Study'),
       'base' => 'node_content',
