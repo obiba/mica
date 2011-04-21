@@ -172,7 +172,7 @@ fieldset {
 #login-status {
   position: absolute;
   right: 20px;
-  top:10px;
+  top:7px;
   color: #bbb;
 }
 #login-status a, #login-status a.active {
