@@ -5,3 +5,17 @@
  */
 
 include_once('mica_feature.features.inc');
+
+/**
+ * Implements hook_install().
+ */
+function mica_feature_install() {
+	$table = 'mica_relation';
+  
+	$record = new StdClass();
+	$record->parent = 'study';
+	$record->child = 'study_information';
+	$record->node_reference = 'mica_study_information';
+  
+	drupal_write_record($table, $record);
+}
