@@ -258,9 +258,13 @@ function mica_node_insert($node) {
 		foreach ($relations as $relation) {
 			
 			$field_ref = $relation['node_reference'];
+			$field = $node->$field_ref;
+			debug($field, 'field '. $field_ref . ' / language: ' . $language);
+			debug(empty($field), 'empty($field)');
+			debug(empty($field[$language]), 'empty($field[$language])');
 			
 			// do not create child if child id is already provided (case of data import)
-			if (!isset($node->$field_ref) || count($node->$field_ref) == 0 || empty($node->$field_ref[$language])) {
+			if (empty($field) || empty($field[$language])) {
 					
 				// create new child
 				$node_child = new stdClass();
