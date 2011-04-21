@@ -3,7 +3,7 @@
 # Requires drush 4+ to be installed: http://drush.ws/
 #
 
-version=1.0-M1
+version=1.0-SNAPSHOT
 micadir=mica-$(version)
 mica_version=7.x-1.x-dev
 mica_feature_version=7.x-1.x-dev
