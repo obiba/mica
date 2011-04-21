@@ -255,6 +255,8 @@ function mica_node_insert($node) {
 		$node = node_load($node->nid); 		// reload node so it's not in 'new' state
 		$language = $node->language;
 		
+		$to_save = FALSE;
+		
 		foreach ($relations as $relation) {
 			
 			$field_ref = $relation['node_reference'];
@@ -265,7 +267,8 @@ function mica_node_insert($node) {
 			
 			// do not create child if child id is already provided (case of data import)
 			if (empty($field) || empty($field[$language])) {
-					
+				$to_save = TRUE;
+				
 				// create new child
 				$node_child = new stdClass();
 				$node_child->type = $relation['child'];
@@ -295,7 +298,9 @@ function mica_node_insert($node) {
 				);
 			}
 		}
-		node_save($node);
+		if ($to_save) {
+			node_save($node);
+		}
 	}
 }
 
