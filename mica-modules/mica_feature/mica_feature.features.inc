@@ -228,7 +228,7 @@ function mica_feature_default_search_api_index() {
           "boost" : "1.0"
         },
         "mica_study_information" : {
-          "name" : "Study Information reference",
+          "name" : "Study Information",
           "indexed" : 1,
           "type" : "integer",
           "entity_type" : "node",

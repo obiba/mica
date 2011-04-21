@@ -532,7 +532,7 @@ function mica_feature_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'mica_study_information',
-      'label' => 'Study Information reference',
+      'label' => 'Study Information',
       'required' => FALSE,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -924,7 +924,7 @@ Prof.',
   t('Full Name');
   t('Node reference name');
   t('Parent content type machine name');
-  t('Study Information reference');
+  t('Study Information');
 
   return $fields;
 }
