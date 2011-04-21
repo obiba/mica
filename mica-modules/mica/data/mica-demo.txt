@@ -1,7 +1,7 @@
 array(
 
     array(
-    'vid' => '1',
+    'vid' => '2',
     'uid' => '1',
     'title' => 'CaMos',
     'log' => '',
@@ -53,7 +53,7 @@ The economic impact in Canada is thought to be similar, and researchers believe 
     'mica_study_information' => array(
       'und' => array(
         '0' => array(
-          'nid' => '2',
+          'nid' => '3',
         ),
       ),
     ),
@@ -137,7 +137,7 @@ The economic impact in Canada is thought to be similar, and researchers believe 
     '#_export_node_encode_object' => '1',
   ),
     array(
-    'vid' => '2',
+    'vid' => '3',
     'uid' => '1',
     'title' => 'CaMos',
     'log' => '',
@@ -271,7 +271,7 @@ The economic impact in Canada is thought to be similar, and researchers believe 
     '#_export_node_encode_object' => '1',
   ),
     array(
-    'vid' => '3',
+    'vid' => '4',
     'uid' => '1',
     'title' => 'DOPS',
     'log' => '',
@@ -316,7 +316,7 @@ The study was initiated in 1990, and inclusion ended in 1993.
     'mica_study_information' => array(
       'und' => array(
         '0' => array(
-          'nid' => '4',
+          'nid' => '5',
         ),
       ),
     ),
@@ -400,7 +400,7 @@ The study was initiated in 1990, and inclusion ended in 1993.
     '#_export_node_encode_object' => '1',
   ),
   array(
-    'vid' => '4',
+    'vid' => '5',
     'uid' => '1',
     'title' => 'DOPS',
     'log' => '',
