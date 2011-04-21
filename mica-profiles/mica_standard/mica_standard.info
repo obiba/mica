@@ -2,6 +2,7 @@ name = Mica Standard
 description = Mica install with commonly used features pre-configured.
 core = 7.x
 dependencies[] = block
+dependencies[] = blog
 dependencies[] = color
 dependencies[] = comment
 dependencies[] = contextual

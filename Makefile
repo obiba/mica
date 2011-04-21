@@ -132,7 +132,7 @@ demo-import:
 	
 demo-export:
 	cd target/$(micadir) && \
-	drush ne-export 1 2 3 4 -u 1 --file=../mica-demo.txt
+	drush ne-export 2 3 4 5 -u 1 --file=../mica-demo.txt
 
 #
 # Misc

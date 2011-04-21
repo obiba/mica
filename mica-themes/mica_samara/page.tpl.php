@@ -16,11 +16,11 @@
 
 <div id="login-status">
 <?php global $user;
-if ($user->uid){
-print t("<a id='user-name' href='?q=user'>@name</a> | <a href='?q=user/logout'>Quit</a>", array('@name' => $user->name));
-} else {
-print t("<a href='?q=user/login'>Sign In</a>");
-}
+  if ($user->uid){
+    print t("<a id='user-name' href='?q=user'>@name</a> | <a href='?q=user/logout'>Quit</a>", array('@name' => $user->name));
+  } else {
+    print t("<a href='?q=user/login'>Sign In</a>");
+  }
 ?>
 </div>
 
@@ -105,6 +105,12 @@ print t("<a href='?q=user/login'>Sign In</a>");
           <?php endif; ?>
 
           <?php if (!empty($help)): print $help; endif; ?>
+          
+          <?php if ($action_links): ?>
+            <ul class="action-links">
+              <?php print render($action_links); ?>
+            </ul>
+          <?php endif; ?>
 
           <?php if ($page['content']): ?>
             <div class="region region-content">
