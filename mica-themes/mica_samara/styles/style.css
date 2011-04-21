@@ -70,7 +70,7 @@ body.page-admin #closure {
 }
 
 .container-inline div, 
-.container-inline label {display: inline;}
+.container-inline labelï¿½{display:ï¿½inline;}
 
 /**
  * Wrappers
@@ -1697,5 +1697,24 @@ img.right, img[align="right"] {
 }
 #forum .icon .topic-status-closed {
   background-image: url(../images/forum-closed.png);
+}
+
+/** Login/Out ***/
+#login-status {
+  position: absolute;
+  right: 20px;
+  top:7px;
+  color: #bbb;
+}
+#login-status a, #login-status a.active {
+  color: #bbb;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#login-status a:hover, #login-status a.active:hover {
+  color: #E25401;
+}
+#login-status #user-name {
+  font-weight: bold;
 }
 

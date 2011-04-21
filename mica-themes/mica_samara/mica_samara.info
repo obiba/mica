@@ -1,5 +1,5 @@
-; $Id:
-name = Samara
+project = "mica_samara"
+name = Mica Samara
 description = Extensive stylings for all core modules: blocks, nodes, forums, books, profiles, etc. Drop-down menu with unlimited number of submenus. 2 predefined color schemes. 1-, 2- or 3-column layout with flexible width. Configurable layout width. Configurable position of each sidebar. Configurable base font size.
 version = VERSION
 core = 7.x
@@ -37,9 +37,6 @@ settings[layout_3_min_width]    = 800px
 settings[layout_3_max_width]    = 1000px
 settings[copyright_information] = "2011 © Copyright information"
 
-; Information added by drupal.org packaging script on 2011-02-25
-version = "7.x-1.x-dev"
-core = "7.x"
-project = "samara"
-datestamp = "1298620115"
+
+;datestamp = "1298620115"
 

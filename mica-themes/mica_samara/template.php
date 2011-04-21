@@ -4,7 +4,7 @@
 /**
  * Override or insert variables into the html template.
  */
-function samara_preprocess_html(&$vars) {
+function mica_samara_preprocess_html(&$vars) {
 
   // Add font and layout styles
   $css['font'] = 'html {font-size: ' . theme_get_setting('base_font_size') . ';}';
@@ -41,7 +41,7 @@ function samara_preprocess_html(&$vars) {
 /**
  * Override or insert variables into the page template.
  */
-function samara_preprocess_page(&$vars) {
+function mica_samara_preprocess_page(&$vars) {
 
   $sidebar_first_weight  = theme_get_setting('sidebar_first_weight');
   $sidebar_second_weight = theme_get_setting('sidebar_second_weight');
@@ -87,7 +87,7 @@ function samara_preprocess_page(&$vars) {
 /**
  * Override or insert variables into the region template.
  */
-function samara_preprocess_region(&$vars) {
+function mica_samara_preprocess_region(&$vars) {
 
   // Remove default classes from sidebars regions
   if($vars['region'] == 'sidebar_first') {
@@ -102,7 +102,7 @@ function samara_preprocess_region(&$vars) {
 /**
  * Override or insert variables into the block template.
  */
-function samara_preprocess_block(&$vars) {
+function mica_samara_preprocess_block(&$vars) {
 
   // Remove default classes from some regions
   if(in_array($vars['block']->region, array('content', 'content_top', 'content_bottom', 'highlight'))) {
@@ -115,7 +115,7 @@ function samara_preprocess_block(&$vars) {
 /**
  * Overrides theme_tablesort_indicator().
  */
-function samara_tablesort_indicator($vars) {
+function mica_samara_tablesort_indicator($vars) {
   $attributes = array(
     'alt' => t('sort icon'),
   );

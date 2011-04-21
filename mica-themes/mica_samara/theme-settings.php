@@ -14,7 +14,7 @@
  * @param $form_state
  *   The form state.
  */
-function samara_form_system_theme_settings_alter(&$form, &$form_state) {
+function mica_samara_form_system_theme_settings_alter(&$form, &$form_state) {
 
   $form['common'] = array(
     '#title' => t('Samara common settings'), 
@@ -77,19 +77,19 @@ function samara_form_system_theme_settings_alter(&$form, &$form_state) {
     '#title' => t('Width'), 
     '#type' => 'select',
     '#default_value' => theme_get_setting('layout_1_width'),
-    '#options' => samara_generate_array(30, 100, 5, '%'),
+    '#options' => mica_samara_generate_array(30, 100, 5, '%'),
   );
   $form['layout_1']['layout_1_min_width'] = array(
     '#title' => t('Min width'), 
     '#type' => 'select',
     '#default_value' => theme_get_setting('layout_1_min_width'),
-    '#options' => samara_generate_array(200, 1200, 10, 'px'),
+    '#options' => mica_samara_generate_array(200, 1200, 10, 'px'),
   );
   $form['layout_1']['layout_1_max_width'] = array(
     '#title' => t('Max width'), 
     '#type' => 'select',
     '#default_value' => theme_get_setting('layout_1_max_width'),
-    '#options' => samara_generate_array(200, 1200, 10, 'px'),
+    '#options' => mica_samara_generate_array(200, 1200, 10, 'px'),
   );
   $form['layout_2'] = array(
     '#title' => t('2-column layout'),
@@ -100,19 +100,19 @@ function samara_form_system_theme_settings_alter(&$form, &$form_state) {
     '#title' => t('Width'),
     '#type' => 'select',
     '#default_value' => theme_get_setting('layout_2_width'),
-    '#options' => samara_generate_array(30, 100, 5, '%'),
+    '#options' => mica_samara_generate_array(30, 100, 5, '%'),
   );
   $form['layout_2']['layout_2_min_width'] = array(
     '#title' => t('Min width'), 
     '#type' => 'select',
     '#default_value' => theme_get_setting('layout_2_min_width'),
-    '#options' => samara_generate_array(200, 1200, 10, 'px'),
+    '#options' => mica_samara_generate_array(200, 1200, 10, 'px'),
   );
   $form['layout_2']['layout_2_max_width'] = array(
     '#title' => t('Max width'), 
     '#type' => 'select',
     '#default_value' => theme_get_setting('layout_2_max_width'),
-    '#options' => samara_generate_array(200, 1200, 10, 'px'),
+    '#options' => mica_samara_generate_array(200, 1200, 10, 'px'),
   );
   $form['layout_3'] = array(
     '#title' => t('3-column layout'), 
@@ -123,19 +123,19 @@ function samara_form_system_theme_settings_alter(&$form, &$form_state) {
     '#title' => t('Width'), 
     '#type' => 'select',
     '#default_value' => theme_get_setting('layout_3_width'),
-    '#options' => samara_generate_array(30, 100, 5, '%'),
+    '#options' => mica_samara_generate_array(30, 100, 5, '%'),
   );
   $form['layout_3']['layout_3_min_width'] = array(
     '#title' => t('Min width'), 
     '#type' => 'select',
     '#default_value' => theme_get_setting('layout_3_min_width'),
-    '#options' => samara_generate_array(200, 1200, 10, 'px'),
+    '#options' => mica_samara_generate_array(200, 1200, 10, 'px'),
   );
   $form['layout_3']['layout_3_max_width'] = array(
     '#title' => t('Max width'), 
     '#type' => 'select',
     '#default_value' => theme_get_setting('layout_3_max_width'),
-    '#options' => samara_generate_array(200, 1200, 10, 'px'),
+    '#options' => mica_samara_generate_array(200, 1200, 10, 'px'),
   );
   $form['copyright_information'] = array(
     '#title' => t('Copyright information'),
@@ -154,7 +154,7 @@ function samara_form_system_theme_settings_alter(&$form, &$form_state) {
 /**
  * Generate options array
  */
-function samara_generate_array($min, $max, $increment, $postfix, $unlimited = NULL) {
+function mica_samara_generate_array($min, $max, $increment, $postfix, $unlimited = NULL) {
   $array = array();
   if ($unlimited == 'first') {
     $array['none'] = t('Unlimited');

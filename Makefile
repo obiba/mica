@@ -8,7 +8,7 @@ micadir=mica-$(version)
 mica_version=7.x-1.x-dev
 mica_feature_version=7.x-1.x-dev
 mica_standard_version=7.x-1.x-dev
-mica_theme_version=7.x-1.x-dev
+mica_samara_version=7.x-1.x-dev
 
 #
 # Modules dependencies
@@ -72,7 +72,7 @@ mica:
 	cp -r ../../mica-profiles/mica_standard profiles && \
 	cp -r ../../mica-modules/mica sites/all/modules && \
 	cp -r ../../mica-modules/mica_feature sites/all/modules && \
-	cp -r ../../mica-themes/samara sites/all/themes && \
+	cp -r ../../mica-themes/mica_samara sites/all/themes && \
 	rm -rf `find . -type d -name .svn`
 
 #
@@ -103,10 +103,10 @@ package-profiles:
 
 package-themes:
 	cd target && \
-	rm -f samara-$(mica_theme_version).* && \
+	rm -f mica_samara-$(mica_samara_version).* && \
 	cd $(micadir)/sites/all/themes && \
-	tar czvf ../../../../samara-$(mica_theme_version).tar.gz samara && \
-	zip -r ../../../../samara-$(mica_theme_version).zip samara
+	tar czvf ../../../../mica_samara-$(mica_samara_version).tar.gz mica_samara && \
+	zip -r ../../../../mica_samara-$(mica_samara_version).zip mica_samara
 
 #
 # Site

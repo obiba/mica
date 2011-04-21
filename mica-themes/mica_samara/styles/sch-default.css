@@ -170,15 +170,10 @@ fieldset {
 
 /** Login/Out ***/
 #login-status {
-  position: absolute;
-  right: 20px;
-  top:7px;
   color: #bbb;
 }
 #login-status a, #login-status a.active {
   color: #bbb;
-  margin-left: 5px;
-  margin-right: 5px;
 }
 #login-status a:hover, #login-status a.active:hover {
   color: #E25401;
@@ -186,5 +181,3 @@ fieldset {
 #login-status #user-name {
   font-weight: bold;
 }
-
-
