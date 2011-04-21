@@ -8,7 +8,6 @@
 function mica_standard_install() {
 	theme_enable(array('mica_samara', 'bartik', 'seven'));
 	variable_set('theme_default', 'mica_samara');
-	variable_set('admin_theme', 'seven');
 
 	// Add text formats.
 	$filtered_html_format = array(
@@ -80,16 +79,6 @@ function mica_standard_install() {
       'pages' => '',
       'cache' => -1,
 	),
-	//    array(
-	//      'module' => 'search',
-	//      'delta' => 'form',
-	//      'theme' => $default_theme,
-	//      'status' => 1,
-	//      'weight' => -1,
-	//      'region' => 'sidebar_first',
-	//      'pages' => '',
-	//      'cache' => -1,
-	//    ),
 	array(
       'module' => 'node',
       'delta' => 'recent',
@@ -97,46 +86,6 @@ function mica_standard_install() {
       'status' => 1,
       'weight' => 10,
       'region' => 'dashboard_main',
-      'pages' => '',
-      'cache' => -1,
-	),
-	//    array(
-	//      'module' => 'user',
-	//      'delta' => 'login',
-	//      'theme' => $default_theme,
-	//      'status' => 1,
-	//      'weight' => 0,
-	//      'region' => 'header',
-	//      'pages' => '',
-	//      'cache' => -1,
-	//    ),
-	//    array(
-	//      'module' => 'system',
-	//      'delta' => 'navigation',
-	//      'theme' => $default_theme,
-	//      'status' => 1,
-	//      'weight' => 0,
-	//      'region' => 'sidebar_first',
-	//      'pages' => '',
-	//      'cache' => -1,
-	//    ),
-	//    array(
-	//      'module' => 'system',
-	//      'delta' => 'powered-by',
-	//      'theme' => $default_theme,
-	//      'status' => 1,
-	//      'weight' => 10,
-	//      'region' => 'footer',
-	//      'pages' => '',
-	//      'cache' => -1,
-	//    ),
-	array(
-      'module' => 'system',
-      'delta' => 'help',
-      'theme' => $default_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'help',
       'pages' => '',
       'cache' => -1,
 	),
@@ -180,16 +129,6 @@ function mica_standard_install() {
       'pages' => '',
       'cache' => -1,
 	),
-	//    array(
-	//      'module' => 'search',
-	//      'delta' => 'form',
-	//      'theme' => $admin_theme,
-	//      'status' => 1,
-	//      'weight' => -10,
-	//      'region' => 'dashboard_sidebar',
-	//      'pages' => '',
-	//      'cache' => -1,
-	//    ),
 	);
 	$query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
 	foreach ($values as $record) {
@@ -430,4 +369,23 @@ function mica_standard_install() {
 	->execute();
 	variable_set('admin_theme', 'seven');
 	variable_set('node_admin_theme', '1');
+
+	// About page
+	$about = new stdClass();
+	$about->type = 'page';
+	node_object_prepare($about);
+	$about->title = 'Mica';
+	//$about->language = 'und';
+	$about->body = array('und' => array('0' => array(
+          'value' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+          'format' => 'full_html'
+	)));
+	$about->menu['enabled'] = 1;
+	$about->menu['menu_name'] = 'main-menu';
+		$about->menu['weight'] = 50;
+	$about->menu['link_title'] = 'About';
+	$about->menu['description'] = '';
+	$about->promote = 1;
+    $about->sticky = 1;    
+	node_save($about);
 }
