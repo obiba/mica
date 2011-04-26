@@ -144,7 +144,13 @@ function _mica_add_node_reference_to_parent(array $relation, $child_name) {
     'type' => 'node_reference',
     'cardinality' => 1,
     'settings' => array(
-    	'referenceable_types' => array($relation['child'] => $relation['child']),
+    	'referenceable_types' => array(
+				$relation['child'] => $relation['child']
+			),
+    	'field_permissions' => array(
+    		'create' => 'create',
+    		'view' => 'view',
+			),
 		),			
 	));
 
@@ -155,6 +161,16 @@ function _mica_add_node_reference_to_parent(array $relation, $child_name) {
     'bundle' => $relation['parent'],
     'widget' => array('type' => 'options_select'),
 	));
+	
+	// give 'view' field permission to everyone
+	user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('view ' . $relation['node_reference']));
+	user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('view ' . $relation['node_reference']));	
+
+	// give 'create' field permission to studies administrator and study administrator
+	$studies_admin_role = user_role_load_by_name('studies administrator');
+	$study_admin_role = user_role_load_by_name('study administrator');
+	user_role_grant_permissions($studies_admin_role->rid, array('create ' . $relation['node_reference']));
+	user_role_grant_permissions($study_admin_role->rid, array('create ' . $relation['node_reference']));
 }
 
 function _mica_save_relation(array $relation) {
@@ -261,9 +277,6 @@ function mica_node_insert($node) {
 			
 			$field_ref = $relation['node_reference'];
 			$field = $node->$field_ref;
-			//debug($field, 'field '. $field_ref . ' / language: ' . $language);
-			//debug(empty($field), 'empty($field)');
-			//debug(empty($field[$language]), 'empty($field[$language])');
 			
 			// do not create child if child id is already provided (case of data import)
 			if (empty($field) || empty($field[$language])) {
