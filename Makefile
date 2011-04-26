@@ -7,6 +7,7 @@ version=1.0-SNAPSHOT
 micadir=mica-$(version)
 mica_version=7.x-1.x-dev
 mica_feature_version=7.x-1.x-dev
+mica_addons_version=7.x-1.x-dev
 mica_standard_version=7.x-1.x-dev
 mica_samara_version=7.x-1.x-dev
 
@@ -27,6 +28,8 @@ features_version=7.x-1.0-beta2
 strongarm_version=7.x-2.0-beta2
 references_version=7.x-2.x-dev
 node_export_version=7.x-3.x-dev
+date_version=7.x-2.0-alpha3
+calendar_version=7.x-2.0-alpha1
 
 #
 # Mysql db access
@@ -65,14 +68,14 @@ drupal: target
 	drush dl search_api-$(search_api_version) search_api_solr-$(search_api_solr_version) && \
 	svn checkout -r22 http://solr-php-client.googlecode.com/svn/trunk/ sites/all/modules/search_api_solr/SolrPhpClient && \
 	drush dl features-$(features_version) strongarm-$(strongarm_version) && \
-	drush dl references-$(references_version)
+	drush dl references-$(references_version) && \
+	drush dl date-$(date_version) calendar-$(calendar_version)
 
 mica:
 	cd target/$(micadir) && \
-	cp -r ../../mica-profiles/mica_standard profiles && \
-	cp -r ../../mica-modules/mica sites/all/modules && \
-	cp -r ../../mica-modules/mica_feature sites/all/modules && \
-	cp -r ../../mica-themes/mica_samara sites/all/themes && \
+	cp -r ../../mica-profiles/* profiles && \
+	cp -r ../../mica-modules/* sites/all/modules && \
+	cp -r ../../mica-themes/* sites/all/themes && \
 	rm -rf `find . -type d -name .svn`
 
 #
@@ -92,7 +95,9 @@ package-modules:
 	tar czvf ../../../../mica-$(mica_version).tar.gz mica && \
 	zip -r ../../../../mica-$(mica_version).zip mica && \
 	tar czvf ../../../../mica_feature-$(mica_feature_version).tar.gz mica_feature && \
-	zip -r ../../../../mica_feature-$(mica_feature_version).zip mica_feature
+	zip -r ../../../../mica_feature-$(mica_feature_version).zip mica_feature && \
+	tar czvf ../../../../mica_addons-$(mica_addons_version).tar.gz mica_addons && \
+	zip -r ../../../../mica_addons-$(mica_addons_version).zip mica_addons
 	
 package-profiles:
 	cd target && \

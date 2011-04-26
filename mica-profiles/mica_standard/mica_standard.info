@@ -52,6 +52,7 @@ dependencies[] = features
 dependencies[] = strongarm
 dependencies[] = mica
 dependencies[] = mica_feature
+dependencies[] = mica_addons
 files[] = mica_standard.profile
 
 version = "7.0"
