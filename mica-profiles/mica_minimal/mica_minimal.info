@@ -1,5 +1,5 @@
 ; $Id$
-name = Mica Standard
+name = Mica Minimal
 description = Mica install with minimal features pre-configured.
 core = 7.x
 dependencies[] = block
@@ -55,7 +55,7 @@ dependencies[] = features
 dependencies[] = strongarm
 dependencies[] = mica
 dependencies[] = mica_feature
-files[] = mica_standard.profile
+files[] = mica_minimal.profile
 
 version = "7.0"
 project = "mica"
