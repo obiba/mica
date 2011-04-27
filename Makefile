@@ -72,7 +72,8 @@ drupal: target
 	drush dl features-$(features_version) strongarm-$(strongarm_version) && \
 	drush dl references-$(references_version) field_permissions-${field_permissions_version} && \
 	drush dl date-$(date_version) calendar-$(calendar_version) && \
-	drush dl login_destination-$(login_destination_version)
+	drush dl login_destination-$(login_destination_version) && \
+	drush dl node_export-$(node_export_version)
 
 mica:
 	cd target/$(micadir) && \
@@ -128,16 +129,11 @@ site:
 	cd target/$(micadir) && \
 	drush site-install mica_standard --db-url=mysql://$(db_user):$(db_pass)@localhost/$(site_db_name) --site-name=$(site_name) --sites-subdir=$(site_dir_name) --clean-url=$(clean_url)
 
-demo: node_export demo-import
-
-node_export:
+demo:
 	cd target/$(micadir) && \
-	drush dl node_export-$(node_export_version) && drush en --yes node_export
-
-demo-import:
-	cd target/$(micadir) && \
+	drush site-install mica_demo --db-url=mysql://$(db_user):$(db_pass)@localhost/mica --site-name=Mica --clean-url=$(clean_url) --yes && \
 	drush ne-import --file=sites/all/modules/mica/data/mica-demo.txt
-	
+
 demo-export:
 	cd target/$(micadir) && \
 	drush ne-export 2 3 4 5 -u 1 --file=../mica-demo.txt

@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ */
+function mica_demo_install() {
+	include_once DRUPAL_ROOT . '/profiles/mica_standard/mica_standard.install';
+    mica_standard_install();
+
+    // Add some demo users
+    
+	// Add some demo content
+}
