@@ -167,8 +167,10 @@ function _mica_add_node_reference_to_parent(array $relation, $child_name) {
 	user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('view ' . $relation['node_reference']));	
 
 	// give 'create' field permission to studies administrator and study administrator
+	$admin_role = user_role_load_by_name('administrator');
 	$studies_admin_role = user_role_load_by_name('studies administrator');
 	$study_admin_role = user_role_load_by_name('study administrator');
+	user_role_grant_permissions($admin_role->rid, array('create ' . $relation['node_reference']));
 	user_role_grant_permissions($studies_admin_role->rid, array('create ' . $relation['node_reference']));
 	user_role_grant_permissions($study_admin_role->rid, array('create ' . $relation['node_reference']));
 }
