@@ -52,6 +52,20 @@ function mica_feature_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '0',
   );
+  // Exported menu link: main-menu:variables
+  $menu_links['main-menu:variables'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'variables',
+    'router_path' => 'variables',
+    'link_title' => 'Variables',
+    'options' => array(),
+    'module' => 'system',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '0',
+  );
   // Exported menu link: management:admin/config/search/path
   $menu_links['management:admin/config/search/path'] = array(
     'menu_name' => 'management',
@@ -77,6 +91,7 @@ function mica_feature_menu_default_menu_links() {
   t('Studies');
   t('Studies Search');
   t('URL aliases');
+  t('Variables');
 
 
   return $menu_links;
