@@ -49,6 +49,14 @@ function mica_feature_node_info() {
       'title_label' => t('Name'),
       'help' => '',
     ),
+    'variable' => array(
+      'name' => t('Variable'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
   );
   return $items;
 }
