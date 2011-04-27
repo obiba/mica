@@ -34,6 +34,7 @@ dependencies[] = ctools_access_ruleset
 dependencies[] = date
 dependencies[] = date_popup
 dependencies[] = email
+dependencies[] = login_destination
 dependencies[] = name 
 dependencies[] = namedb
 dependencies[] = field_group 

@@ -74,4 +74,18 @@ function mica_minimal_install() {
     $about->sticky = 1;
     $about->language = 'und';     
 	node_save($about);
+	
+	// Login destination setup
+	$rule = array(
+    'triggers' => serialize(array('login'=>'login','logout'=>'logout')),
+    'roles' => serialize(array()),
+    'pages_type' => LOGIN_DESTINATION_REDIRECT_LISTED,
+    'pages' => 'user/*',
+    'destination_type' => LOGIN_DESTINATION_STATIC,
+    'destination' => '<front>',
+    'id' => NULL,
+    'weight' => 0,
+    );
+  	drupal_write_record('login_destination', $rule);
+	
 }
