@@ -26,7 +26,7 @@ function mica_addons_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-48',
+    'weight' => '48',
   );
   // Exported menu link: main-menu:events
   $menu_links['main-menu:events'] = array(
@@ -40,7 +40,7 @@ function mica_addons_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '1',
     'expanded' => '0',
-    'weight' => '0',
+    'weight' => '49',
   );
   // Exported menu link: main-menu:events_calendar
   $menu_links['main-menu:events_calendar'] = array(

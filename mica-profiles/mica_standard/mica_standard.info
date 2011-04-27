@@ -1,3 +1,4 @@
+; $Id$
 name = Mica Standard
 description = Mica install with commonly used features pre-configured.
 core = 7.x
