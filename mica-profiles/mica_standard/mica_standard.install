@@ -66,7 +66,7 @@ function mica_standard_install() {
 	filter_format_save($full_html_format);
 
 	// Enable some standard blocks.
-	$default_theme = variable_get('theme_default', 'mica_samara');
+	$default_theme = variable_get('theme_default');
 	$admin_theme = 'seven';
 	$values = array(
 	array(
@@ -76,6 +76,7 @@ function mica_standard_install() {
       'status' => 1,
       'weight' => 0,
       'region' => 'content',
+      'visibility' => 0,
       'pages' => '',
       'cache' => -1,
 	),
@@ -86,9 +87,43 @@ function mica_standard_install() {
       'status' => 1,
       'weight' => 10,
       'region' => 'dashboard_main',
+      'visibility' => 0,
       'pages' => '',
       'cache' => -1,
 	),
+	array(
+      'module' => 'views',
+      'delta' => 'events_calendar-block_1',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 10,
+      'region' => 'sidebar_first',
+      'visibility' => 1,
+      'pages' => '<front>',
+      'cache' => -1,
+	),
+	array(
+      'module' => 'node',
+      'delta' => 'recent',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 20,
+      'region' => 'sidebar_first',
+      'visibility' => 1,
+      'pages' => '<front>',
+      'cache' => -1,
+	),
+    array(
+      'module' => 'system',
+      'delta' => 'navigation',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 30,
+      'region' => 'sidebar_first',
+      'visibility' => 1,
+      'pages' => '<front>',
+      'cache' => -1,
+    ),
 	array(
       'module' => 'system',
       'delta' => 'main',
@@ -96,6 +131,7 @@ function mica_standard_install() {
       'status' => 1,
       'weight' => 0,
       'region' => 'content',
+      'visibility' => 0,
       'pages' => '',
       'cache' => -1,
 	),
@@ -106,6 +142,7 @@ function mica_standard_install() {
       'status' => 1,
       'weight' => 0,
       'region' => 'help',
+      'visibility' => 0,
       'pages' => '',
       'cache' => -1,
 	),
@@ -116,6 +153,7 @@ function mica_standard_install() {
       'status' => 1,
       'weight' => 10,
       'region' => 'content',
+      'visibility' => 0,
       'pages' => '',
       'cache' => -1,
 	),
@@ -126,11 +164,12 @@ function mica_standard_install() {
       'status' => 1,
       'weight' => 0,
       'region' => 'dashboard_sidebar',
+      'visibility' => 0,
       'pages' => '',
       'cache' => -1,
 	),
 	);
-	$query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+	$query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'visibility', 'pages', 'cache'));
 	foreach ($values as $record) {
 		$query->values($record);
 	}
@@ -386,6 +425,7 @@ function mica_standard_install() {
 	$about->menu['link_title'] = 'About';
 	$about->menu['description'] = '';
 	$about->promote = 1;
-    $about->sticky = 1;    
+    $about->sticky = 1;
+    $about->language = 'und';     
 	node_save($about);
 }
