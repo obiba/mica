@@ -42,16 +42,6 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: create blog content
-  $permissions['create blog content'] = array(
-    'name' => 'create blog content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'studies administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: create page content
   $permissions['create page content'] = array(
     'name' => 'create page content',
@@ -83,16 +73,6 @@ function mica_feature_user_default_permissions() {
   // Exported permission: delete any article content
   $permissions['delete any article content'] = array(
     'name' => 'delete any article content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'studies administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete any blog content
-  $permissions['delete any blog content'] = array(
-    'name' => 'delete any blog content',
     'roles' => array(
       0 => 'administrator',
       1 => 'studies administrator',
@@ -134,17 +114,6 @@ function mica_feature_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'studies administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete own blog content
-  $permissions['delete own blog content'] = array(
-    'name' => 'delete own blog content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'studies administrator',
-      2 => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -198,16 +167,6 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any blog content
-  $permissions['edit any blog content'] = array(
-    'name' => 'edit any blog content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'studies administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: edit any page content
   $permissions['edit any page content'] = array(
     'name' => 'edit any page content',
@@ -242,17 +201,6 @@ function mica_feature_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'studies administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit own blog content
-  $permissions['edit own blog content'] = array(
-    'name' => 'edit own blog content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'studies administrator',
-      2 => 'study administrator',
     ),
     'module' => 'node',
   );
