@@ -32,6 +32,15 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: administer field permissions
+  $permissions['administer field permissions'] = array(
+    'name' => 'administer field permissions',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: create article content
   $permissions['create article content'] = array(
     'name' => 'create article content',
@@ -40,6 +49,17 @@ function mica_feature_user_default_permissions() {
       1 => 'studies administrator',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: create mica_study_information
+  $permissions['create mica_study_information'] = array(
+    'name' => 'create mica_study_information',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: create page content
@@ -274,6 +294,16 @@ function mica_feature_user_default_permissions() {
       2 => 'study administrator',
     ),
     'module' => 'search_api_facets',
+  );
+
+  // Exported permission: view mica_study_information
+  $permissions['view mica_study_information'] = array(
+    'name' => 'view mica_study_information',
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: view own unpublished content

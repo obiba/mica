@@ -228,6 +228,13 @@ function mica_feature_field_default_fields() {
       ),
       'module' => 'node_reference',
       'settings' => array(
+        'field_permissions' => array(
+          'create' => 'create',
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 'view',
+          'view own' => 0,
+        ),
         'referenceable_types' => array(
           'study_information' => 'study_information',
         ),
@@ -263,6 +270,7 @@ function mica_feature_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => TRUE,
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
