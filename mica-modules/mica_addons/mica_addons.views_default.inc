@@ -227,6 +227,7 @@ function mica_addons_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['calendar_type'] = 'year';
   $handler->display->display_options['displays'] = array(
     'calendar_1' => 'calendar_1',
     'default' => 0,
@@ -251,6 +252,7 @@ function mica_addons_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['calendar_type'] = 'month';
   $handler->display->display_options['displays'] = array(
     'calendar_1' => 'calendar_1',
     'default' => 0,
@@ -275,6 +277,7 @@ function mica_addons_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['calendar_type'] = 'day';
   $handler->display->display_options['displays'] = array(
     'calendar_1' => 'calendar_1',
     'default' => 0,
@@ -299,6 +302,7 @@ function mica_addons_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['calendar_type'] = 'week';
   $handler->display->display_options['displays'] = array(
     'calendar_1' => 'calendar_1',
     'default' => 0,
@@ -323,6 +327,7 @@ function mica_addons_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['calendar_type'] = 'month';
   $handler->display->display_options['displays'] = array(
     'calendar_1' => 0,
     'default' => 0,
