@@ -117,7 +117,7 @@ The economic impact in Canada is thought to be similar, and researchers believe 
     'last_comment_name' => NULL,
     'last_comment_uid' => '1',
     'comment_count' => '0',
-    'name' => 'admin',
+    'name' => 'camos',
     'picture' => '0',
     'data' => NULL,
     'menu' => array(
@@ -251,7 +251,7 @@ The economic impact in Canada is thought to be similar, and researchers believe 
     'last_comment_name' => NULL,
     'last_comment_uid' => '1',
     'comment_count' => '0',
-    'name' => 'admin',
+    'name' => 'camos',
     'picture' => '0',
     'data' => NULL,
     'menu' => array(
@@ -380,7 +380,7 @@ The study was initiated in 1990, and inclusion ended in 1993.
     'last_comment_name' => NULL,
     'last_comment_uid' => '1',
     'comment_count' => '0',
-    'name' => 'admin',
+    'name' => 'dops',
     'picture' => '0',
     'data' => NULL,
     'menu' => array(
@@ -514,7 +514,7 @@ The study was initiated in 1990, and inclusion ended in 1993.
     'last_comment_name' => NULL,
     'last_comment_uid' => '1',
     'comment_count' => '0',
-    'name' => 'admin',
+    'name' => 'dops',
     'picture' => '0',
     'data' => NULL,
     'menu' => array(

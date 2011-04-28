@@ -7,9 +7,38 @@
  */
 function mica_demo_install() {
 	include_once DRUPAL_ROOT . '/profiles/mica_standard/mica_standard.install';
-    mica_standard_install();
+	mica_standard_install();
 
-    // Add some demo users
-    
+	// Add some demo users
+	$user = array(
+      'name' => 'gefos',
+      'mail' => 'admin@gefos.org',
+      'is_new' => TRUE,
+      'pass' => 'password',
+      'status' => 1,
+	  'roles' => array('studies administrator'),
+	);
+	user_save(null, $user);
+	
+	$user = array(
+      'name' => 'camos',
+      'mail' => 'admin@camos.org',
+      'is_new' => TRUE,
+      'pass' => 'password',
+      'status' => 1,
+	  'roles' => array('study administrator'),
+	);
+	user_save(null, $user);
+	
+	$user = array(
+      'name' => 'dops',
+      'mail' => 'admin@dops.org',
+      'is_new' => TRUE,
+      'pass' => 'password',
+      'status' => 1,
+	  'roles' => array('study administrator'),
+	);
+	user_save(null, $user);
+
 	// Add some demo content
 }
