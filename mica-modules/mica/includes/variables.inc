@@ -71,7 +71,6 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
  * Additional submit handler for the 'Edit field instance' form.
  */
 function _mica_edit_field_variable($form, &$form_state) {
-	
 	$is_variable = $form_state['values']['field']['settings']['variable_infos']['variable'];
 	$field_name = $form_state['values']['instance']['field_name'];
 	$bundle = $form_state['values']['instance']['bundle'];
@@ -157,7 +156,6 @@ function _mica_create_variable(array $variable_infos) {
 }
 
 function _mica_update_variable($variable, array $variable_infos) {
-	$variable->title = $variable_infos['title'];
 	$variable->field_value_type = array(
 		LANGUAGE_NONE => array(
 			0 => array(
