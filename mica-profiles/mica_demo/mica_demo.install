@@ -16,7 +16,7 @@ function mica_demo_install() {
       'is_new' => TRUE,
       'pass' => 'password',
       'status' => 1,
-	  'roles' => array('studies administrator'),
+	  'roles' => array('4' => 'studies administrator'),
 	);
 	user_save(null, $user);
 	
@@ -26,7 +26,7 @@ function mica_demo_install() {
       'is_new' => TRUE,
       'pass' => 'password',
       'status' => 1,
-	  'roles' => array('study administrator'),
+	  'roles' => array('5' => 'study administrator'),
 	);
 	user_save(null, $user);
 	
@@ -36,7 +36,7 @@ function mica_demo_install() {
       'is_new' => TRUE,
       'pass' => 'password',
       'status' => 1,
-	  'roles' => array('study administrator'),
+	  'roles' => array('5' => 'study administrator'),
 	);
 	user_save(null, $user);
 
