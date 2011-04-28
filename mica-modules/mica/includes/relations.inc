@@ -25,7 +25,7 @@ function _mica_node_type_form_alter(&$form, $form_state) {
         'class' => array('relation-node-type-settings-form'),
       ),
       '#attached' => array(
-        'js' => array(drupal_get_path('module', 'mica') . '/mica-node-form.js'),
+        'js' => array(drupal_get_path('module', 'mica') . '/includes/relations-node-form.js'),
       ),    
     );
     $form['mica_relation']['parent_type'] = array(

@@ -15,6 +15,9 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
 	  '#title' => t('Variable settings'), 
 		'#collapsible' => FALSE, 
   	'#collapsed' => FALSE,  
+    '#attached' => array(
+    	'js' => array(drupal_get_path('module', 'mica') . '/includes/variables-field-form.js'),
+		),
 	);
 	
   $form['field']['settings']['variable_infos']['variable'] = array(
@@ -43,7 +46,7 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
     // Enabled only when the 'variable' checkbox is checked
     '#states' => array(
     	'enabled' => array('input[name="field[settings][variable_infos][variable]"]' => array('checked' => TRUE)),
-    ),  
+    ),      
   );
   
   if(empty($variable)) {
