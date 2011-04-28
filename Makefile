@@ -129,10 +129,10 @@ site:
 	cd target/$(micadir) && \
 	drush site-install mica_standard --db-url=mysql://$(db_user):$(db_pass)@localhost/$(site_db_name) --site-name=$(site_name) --sites-subdir=$(site_dir_name) --clean-url=$(clean_url)
 
-demo:
+demo-site:
 	cd target/$(micadir) && \
 	drush site-install mica_demo --db-url=mysql://$(db_user):$(db_pass)@localhost/mica --site-name=Mica --clean-url=$(clean_url) --yes && \
-	drush ne-import --file=sites/all/modules/mica/data/mica-demo.txt
+	drush ne-import --file=profiles/mica_demo/data/mica-demo.txt
 
 demo-export:
 	cd target/$(micadir) && \
