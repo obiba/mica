@@ -1007,12 +1007,12 @@ Prof.',
   t('Comment');
   t('Contact Email');
   t('Contact Name');
-  t('Content type');
+  t('Content Type');
   t('Country');
-  t('Field name');
+  t('Field Name');
   t('Full Name');
   t('Study Information');
-  t('Value type');
+  t('Value Type');
 
   return $fields;
 }
