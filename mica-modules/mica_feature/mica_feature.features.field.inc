@@ -780,14 +780,14 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-variable-field_content_type'
-  $fields['node-variable-field_content_type'] = array(
+  // Exported field: 'node-variable-field_bundle'
+  $fields['node-variable-field_bundle'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_content_type',
+      'field_name' => 'field_bundle',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -836,8 +836,8 @@ Prof.',
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_content_type',
-      'label' => 'Content type',
+      'field_name' => 'field_bundle',
+      'label' => 'Content Type',
       'required' => 1,
       'settings' => array(
         'text_processing' => '0',
@@ -911,7 +911,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_original_field_name',
-      'label' => 'Field name',
+      'label' => 'Field Name',
       'required' => 1,
       'settings' => array(
         'text_processing' => '0',
@@ -986,7 +986,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_value_type',
-      'label' => 'Value type',
+      'label' => 'Value Type',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
