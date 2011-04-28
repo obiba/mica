@@ -54,6 +54,11 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 		
 		if(!empty($relation)) {
 			_mica_delete_relation_by_id($relation['id']);
+			watchdog('mica', 'Delete relation between parent %parent and child %child', 
+				array(
+					'%parent' => $relation['parent'],
+					'%child' => $relation['child'], 
+				), WATCHDOG_INFO);					
 		}
 					
 	} else {
@@ -63,6 +68,12 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 		
 		$previous_relation = _mica_find_relation_by_child($previous_type);
 		if(empty($previous_relation)) {
+			
+			watchdog('mica', 'Create relation between parent %parent and child %child', 
+				array(
+					'%parent' => $relation['parent'],
+					'%child' => $relation['child'], 
+				), WATCHDOG_INFO);						
 
 			// set reference node name only on creation
 			$relation['node_reference'] = 'mica_' . $new_type;	
@@ -74,7 +85,6 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 			$query = new EntityFieldQuery;
 			$result = $query->entityCondition('entity_type', 'node')
 											->entityCondition('bundle', $relation['parent'])
-											->propertyCondition('status', 1)
 											->execute();			
 			if (!empty($result['node'])) {
 	 			$entities = entity_load('node', array_keys($result['node']));
@@ -89,7 +99,6 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 			$query = new EntityFieldQuery;
 			$result = $query->entityCondition('entity_type', 'node')
 											->entityCondition('bundle', $previous_relation['parent'])
-											->propertyCondition('status', 1)
 											->execute();			
 			if(empty($result)) {
 				// no content for parent type, we can replace node reference field
@@ -217,14 +226,6 @@ function _mica_find_relation_by_child($child_type) {
 		);
 	}
 	return NULL;
-}
-
-/**
- * Delete relations where this type is parent or child
- */
-function _mica_delete_relation_by_parent_or_child($parent_or_child_type) {
-	$or = db_or()->condition('parent', $parent_or_child_type)->condition('child', $parent_or_child_type);
-	db_delete('mica_relation')->condition($or)->execute();
 }
 
 /**

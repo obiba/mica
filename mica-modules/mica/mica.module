@@ -28,6 +28,11 @@ function mica_node_type_delete($info) {
 	if(!empty($relations)) {
 		foreach ($relations as $relation) {
 			field_delete_field($relation['node_reference']);		
+			watchdog('mica', 'Delete relation between parent %parent and child %child', 
+				array(
+					'%parent' => $relation['parent'],
+					'%child' => $relation['child'], 
+				), WATCHDOG_INFO);			
 		}
 		db_delete('mica_relation')->condition('id', array_keys($relations), 'IN')->execute();
 	}
@@ -64,6 +69,7 @@ function mica_node_insert($node) {
 				$node_child->title = $node->title;
 				$node_child->language = $node->language;
 				$node_child->uid = $node->uid; // same author
+				$node_child->status = $node->status; // same publication status
 				
 				// create menu if parent has menu
 				if(!empty($parent_menu)) {
@@ -72,7 +78,13 @@ function mica_node_insert($node) {
 					$node_child->menu['link_title'] = $node_child->title;
 					$node_child->menu['description'] = '';
 					$node_child->menu['plid'] = $parent_menu['mlid'];
-				}						
+				}					
+
+				watchdog('mica', 'Create child %child for parent %parent', 
+					array(
+						'%child' => $relation['child'], 
+						'%parent' => $node->type,
+					), WATCHDOG_INFO);					
 				
 				node_save($node_child);
 
@@ -120,9 +132,32 @@ function mica_node_update($node) {
 				$node_child->menu['plid'] = $parent_menu['mlid'];
 			}
 			$node_child->uid = $node->uid;	// same author
+			$node_child->status = $node->status;	// same publication status
 			$node_child->title = $node->title;
 			$node_child->language = $node->language;						
 			node_save($node_child);
+		}
+	}
+}
+
+/**
+ * Implements hook_node_delete()
+ */
+function mica_node_delete($node) {
+	module_load_include('inc', 'mica', 'includes/relations');
+	$relations = _mica_find_relations_by_parent($node->type);
+	if (!empty($relations)) {
+		$language = $node->language;
+		foreach ($relations as $relation) {
+			$field_ref = $relation['node_reference'];
+			$field = $node->$field_ref;
+			$child_nid = $field[$language][0]['nid'];
+			node_delete($child_nid);
+			watchdog('mica', 'Delete child %child for deleted parent %parent', 
+				array(
+					'%child' => $relation['child'], 
+					'%parent' => $node->type,
+				), WATCHDOG_INFO);				
 		}
 	}
 }
@@ -155,3 +190,4 @@ function mica_field_delete_instance($instance) {
 	module_load_include('inc', 'mica', 'includes/variables');
 	_mica_delete_variable_for_field_instance($instance);
 }
+

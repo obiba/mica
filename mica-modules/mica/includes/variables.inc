@@ -95,7 +95,7 @@ function _mica_edit_field_variable($form, &$form_state) {
 		if($is_variable) {
 			_mica_update_variable($variable, $variable_infos);
 		} else {
-			node_delete($variable->nid);
+			_mica_delete_variable($variable);
 		}		
 	}
 }
@@ -107,7 +107,6 @@ function _mica_find_variable($bundle, $field_name) {
 	$query = new EntityFieldQuery;
 	$result = $query->entityCondition('entity_type', 'node')
 									->entityCondition('bundle', 'variable')
-									->propertyCondition('status', 1)
 									->fieldCondition('field_bundle', 'value', $bundle, '=')
 									->fieldCondition('field_original_field_name', 'value', $field_name, '=')
 									->execute();			
@@ -156,6 +155,14 @@ function _mica_create_variable(array $variable_infos) {
 		),
 	);
 	node_save($variable);		
+	
+	watchdog('mica', 'Create Variable for %field of %bundle', 
+		array(
+			'%field' => $variable_infos['original_field_name'], 
+			'%bundle' => $variable_infos['bundle'],
+		), WATCHDOG_INFO);
+	
+	//TODO add this field to Studies Index
 }
 
 function _mica_update_variable($variable, array $variable_infos) {
@@ -177,11 +184,28 @@ function _mica_update_variable($variable, array $variable_infos) {
 }
 
 /**
+ * Delete variable
+ */
+function _mica_delete_variable($variable) {
+	node_delete($variable->nid);
+	//TODO delete this field from Studies Index
+	
+	$field_bundle = $variable->field_bundle;
+	$field_original_field_name = $variable->field_original_field_name;
+	
+	watchdog('mica', 'Delete Variable for %field of %bundle', 
+		array(
+			'%field' => $field_original_field_name[LANGUAGE_NONE][0]['value'], 
+			'%bundle' => $field_bundle[LANGUAGE_NONE][0]['value'],
+		), WATCHDOG_INFO);	
+}
+
+/**
  * On field instance deletion, delete variable if it extists for this field.
  */
 function _mica_delete_variable_for_field_instance($instance) {
 	$variable = _mica_find_variable($instance['bundle'], $instance['field_name']);
 	if(!empty($variable)) {
-		node_delete($variable->nid);
+		_mica_delete_variable($variable);
 	}
 }
