@@ -12,5 +12,7 @@ dependencies[] = menu
 
 files[] = includes/exception.inc
 files[] = includes/processor_study_fields.inc
+files[] = includes/relations.inc
+files[] = includes/variables.inc
 files[] = mica.install
 files[] = mica.module
