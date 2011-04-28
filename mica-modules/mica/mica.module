@@ -366,3 +366,20 @@ function mica_search_api_processor_info() {
   return $processors;
 }
 
+
+/**
+ * Implements of hook_form_FORM_ID_alter()
+ */
+function mica_form_field_ui_field_edit_form_alter(&$form, $form_state, $form_id) {
+  // Injects the Variable settings on the Edit field tab.
+  module_load_include('inc', 'mica', 'includes/variables');
+  return _mica_field_settings_form_alter($form, $form_state, $form_id);
+}
+
+/**
+ * Implements hook_field_delete_instance()
+ */
+function mica_field_delete_instance($instance) {
+	module_load_include('inc', 'mica', 'includes/variables');
+	_mica_delete_variable_for_field_instance($instance);
+}
