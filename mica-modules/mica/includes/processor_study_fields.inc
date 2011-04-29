@@ -3,6 +3,7 @@
 class SearchApiProcessorStudyFields extends SearchApiAbstractProcessor {
 
 	public function preprocessIndexItems(array &$items) {
+		
 		module_load_include('inc', 'mica', 'includes/relations');
 		
 		//debug($items);

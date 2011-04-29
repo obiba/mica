@@ -163,6 +163,8 @@ function _mica_create_variable(array $variable_infos) {
 		), WATCHDOG_INFO);
 	
 	//TODO add this field to Studies Index
+	//$studies_index = search_api_index_load('studies_index');
+	//debug($search_server, '$search_server');
 }
 
 function _mica_update_variable($variable, array $variable_infos) {
