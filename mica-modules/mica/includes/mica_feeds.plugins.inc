@@ -9,7 +9,7 @@ include_once(drupal_get_path('module', 'mica') . '/mappers/references.inc');
  * hook_feeds_plugins
  */
 function mica_feeds_plugins() {
-  $path = drupal_get_path('module', 'mica') .'/plugins';
+  $path = drupal_get_path('module', 'mica') . '/plugins';
   $info = array();
   $info['FeedsStudyInfoProcessor'] = array(
     'name' => 'Study Information Node processor',

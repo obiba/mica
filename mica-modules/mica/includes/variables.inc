@@ -29,9 +29,10 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
 
   // retrieve available select options from variable field 'field_value_type'
   $field_value_type = field_info_field('field_value_type');
-  if(empty($variable)) {
+  if (empty($variable)) {
     $default_value_type = NULL;
-  } else {
+  }
+  else {
     $variable_field_value_type = $variable->field_value_type;
     $default_value_type = $variable_field_value_type[LANGUAGE_NONE][0]['value'];
   }
@@ -49,9 +50,10 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
   ),
   );
 
-  if(empty($variable)) {
+  if (empty($variable)) {
     $default_body = NULL;
-  } else {
+  }
+  else {
     $variable_body = $variable->body;
     $default_body = $variable_body[LANGUAGE_NONE][0]['value'];
   }
@@ -87,14 +89,16 @@ function _mica_edit_field_variable($form, &$form_state) {
   );
 
   $variable = _mica_find_variable($bundle, $field_name);
-  if(empty($variable)) {
-    if($is_variable) {
+  if (empty($variable)) {
+    if ($is_variable) {
       _mica_create_variable($variable_infos);
     }
-  } else {
-    if($is_variable) {
+  }
+  else {
+    if ($is_variable) {
       _mica_update_variable($variable, $variable_infos);
-    } else {
+    }
+    else {
       _mica_delete_variable($variable);
     }
   }
@@ -207,7 +211,7 @@ function _mica_delete_variable($variable) {
  */
 function _mica_delete_variable_for_field_instance($instance) {
   $variable = _mica_find_variable($instance['bundle'], $instance['field_name']);
-  if(!empty($variable)) {
+  if (!empty($variable)) {
     _mica_delete_variable($variable);
   }
 }

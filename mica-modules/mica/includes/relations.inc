@@ -11,7 +11,7 @@ function _mica_node_type_form_alter(&$form, $form_state) {
 
     $existing_types = array();
     foreach (node_type_get_types() as $type) {
-      if($type->type != 'mica_relation' && $type->type != $current_type)
+      if ($type->type != 'mica_relation' && $type->type != $current_type)
       $existing_types[$type->type] = $type->name;
     }
      
@@ -50,9 +50,9 @@ function _mica_edit_node_type_relation($form, &$form_state) {
   $parent_type = trim($form_state['values']['parent_type']);
   $relation = _mica_find_relation_by_child($previous_type);
 
-  if(empty($parent_type)) {
+  if (empty($parent_type)) {
 
-    if(!empty($relation)) {
+    if (!empty($relation)) {
       _mica_delete_relation_by_id($relation['id']);
       watchdog('mica', 'Delete relation between parent %parent and child %child',
       array(
@@ -60,15 +60,16 @@ function _mica_edit_node_type_relation($form, &$form_state) {
           '%child' => $relation['child'], 
       ), WATCHDOG_INFO);
     }
-      
-  } else {
+
+  }
+  else {
 
     $relation['parent'] = $parent_type;
     $relation['child'] = $new_type;
 
     $previous_relation = _mica_find_relation_by_child($previous_type);
-    if(empty($previous_relation)) {
-        
+    if (empty($previous_relation)) {
+
       watchdog('mica', 'Create relation between parent %parent and child %child',
       array(
           '%parent' => $relation['parent'],
@@ -77,10 +78,10 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 
       // set reference node name only on creation
       $relation['node_reference'] = 'mica_' . $new_type;
-        
+
       // create node reference field
       _mica_add_node_reference_to_parent($relation, $name);
-        
+
       // check if parent type already has content
       $query = new EntityFieldQuery;
       $result = $query->entityCondition('entity_type', 'node')
@@ -92,26 +93,28 @@ function _mica_edit_node_type_relation($form, &$form_state) {
           mica_node_insert($entity);  // create missing child content
         }
       }
-        
-    } else {
-        
+
+    }
+    else {
+
       // check if parent type has content
       $query = new EntityFieldQuery;
       $result = $query->entityCondition('entity_type', 'node')
       ->entityCondition('bundle', $previous_relation['parent'])
       ->execute();
-      if(empty($result)) {
+      if (empty($result)) {
         // no content for parent type, we can replace node reference field
         field_delete_field($previous_relation['node_reference']);
         $relation['node_reference'] = 'mica_' . $new_type;
         _mica_add_node_reference_to_parent($relation, $name);
-      } else {
+      }
+      else {
         // update node reference field label
         $field_instance = field_info_instance('node', $previous_relation['node_reference'], $previous_relation['parent']);
         $field_instance['label'] = $name;
         field_update_instance($field_instance);
       }
-        
+
     }
     _mica_save_relation($relation);
   }
@@ -178,7 +181,7 @@ function _mica_find_relation_by_parent_or_child($parent_or_child_type) {
 }
 
 function _mica_save_relation(array $relation) {
-  if(isset($relation['id'])) {
+  if (isset($relation['id'])) {
     // update
     db_update('mica_relation')
     ->fields(array(
@@ -188,7 +191,8 @@ function _mica_save_relation(array $relation) {
     ))
     ->condition('id', $relation['id'])
     ->execute();
-  } else {
+  }
+  else {
     // insert
     $relation['id'] = db_insert('mica_relation')->fields($relation)->execute();
   }

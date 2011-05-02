@@ -33,10 +33,10 @@ class SearchApiProcessorStudyFields extends SearchApiAbstractProcessor {
 
     //debug($relations_map);
 
-    foreach($relations_map as $child_nid => &$parent_id) {
+    foreach ($relations_map as $child_nid => &$parent_id) {
       $child_item = $this->getItem($items, $child_nid);
       $parent_item = $this->getItem($items, $parent_id);
-      foreach($child_item as $field => $value) {
+      foreach ($child_item as $field => $value) {
         if ($this->isVariable($field)) {
           $parent_item[$field]['value'] = $value['value'];
         }
