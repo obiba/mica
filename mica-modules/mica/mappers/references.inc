@@ -152,13 +152,13 @@ function references_feeds_set_target($source, $entity, $target, $value) {
         // Alert if no match is found.
         if (empty($id)) {
           drupal_set_message(t('%title does not match an existing '.$typename, array('%title' => $v)));        }
-        break;
+          break;
 
       case 'nid':
       case 'uid':
         // Make sure it is a positive integer.
         if ((is_int($v) || ctype_digit($v)) && $v > 0 && $v !== '') {
-	  	  // Make sure it is a valid node id or user id for this field.
+          // Make sure it is a valid node id or user id for this field.
           $matches = $validate_function($info, '', NULL, array($v));
           $id = key($matches);
         }
@@ -180,7 +180,7 @@ function references_feeds_set_target($source, $entity, $target, $value) {
         // Add the reference only if it doesn't already exist.
         $field['und'][] = $reference;
       }
-     
+       
       if ($info['cardinality'] == 1) {
         break;
       }

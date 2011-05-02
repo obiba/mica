@@ -12,7 +12,7 @@
  * @see FeedsNodeProcessor::getMappingTargets()
  */
 function nodereference_feeds_node_processor_targets_alter(&$targets, $content_type) {
-	debug('NODE REFERENCE');
+  debug('NODE REFERENCE');
   $info = content_types($content_type);
   if (isset($info['fields']) && is_array($info['fields'])) {
     foreach ($info['fields'] as $field_name => $field) {

@@ -4,20 +4,20 @@
  * Implementation of hook_feeds_node_processor_targets_alter().
  */
 function email_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name) {
-	foreach (field_info_instances($entity_type, $bundle_name) as $name => $instance) {
-		$info = field_info_field($name);
-		if ($info['type'] == 'email') {
-	    	$targets[$name] = array(
-	      		'name' => $instance['label'],
-	      		'callback' => 'email_feeds_set_target_email',
-	      		'description' => t('The @name field of the node.', array('@name' => $instance['label'])),
-	    	);
-		}
-  	}
+  foreach (field_info_instances($entity_type, $bundle_name) as $name => $instance) {
+    $info = field_info_field($name);
+    if ($info['type'] == 'email') {
+      $targets[$name] = array(
+            'name' => $instance['label'],
+            'callback' => 'email_feeds_set_target_email',
+            'description' => t('The @name field of the node.', array('@name' => $instance['label'])),
+      );
+    }
+  }
 }
 
 function email_feeds_set_target_email($source, $entity, $target, $value){
-	_email_set_target($source, $entity, $target, $value);
+  _email_set_target($source, $entity, $target, $value);
 }
 
 /**
@@ -42,29 +42,29 @@ function _email_set_target($source, $entity, $target, $value, $value_field = 'va
   $info = field_info_field($target);
   list($field_name, $sub_field) = explode(':', $target);
   foreach ($value as $v) {
-  	$new_value = clean($v);
-  	//$v = htmlentities($v);
+    $new_value = clean($v);
+    //$v = htmlentities($v);
     if (!is_array($new_value) && !is_object($new_value)) {
-    	if (isset($sub_field)){
-    		$field['und'][$i][$sub_field] = $new_value;
-    	}
-    	else{
-      		$field['und'][$i][$value_field] = $new_value;
-    	}
+      if (isset($sub_field)){
+        $field['und'][$i][$sub_field] = $new_value;
+      }
+      else{
+          $field['und'][$i][$value_field] = $new_value;
+      }
     }
     if ($info['cardinality'] == 1) {
       break;
     }
     $i++;
   }
- 
+
   if (isset($sub_field)){
-  	foreach ($field['und'] as $i => $sub){
- 		$entity->{$field_name}['und'][$i][$sub_field] = $field['und'][$i][$sub_field]; 
-  	}
+    foreach ($field['und'] as $i => $sub){
+      $entity->{$field_name}['und'][$i][$sub_field] = $field['und'][$i][$sub_field];
+    }
   }
   else{
-  	$entity->{$field_name} = $field;
+    $entity->{$field_name} = $field;
   }
 }
 
