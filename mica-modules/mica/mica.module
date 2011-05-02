@@ -1,5 +1,7 @@
 <?php
 
+include_once('includes/mica_feeds.plugins.inc');
+
 /**
  * Implements hook_help()
  */
