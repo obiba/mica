@@ -9,6 +9,10 @@
  */
 function mica_feature_ctools_plugin_api() {
   list($module, $api) = func_get_args();
+  if ($module == "feeds" && $api == "feeds_importer_default") {
+    return array("version" => 1);
+  }
+  list($module, $api) = func_get_args();
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => 1);
   }
@@ -33,6 +37,22 @@ function mica_feature_views_api() {
  */
 function mica_feature_node_info() {
   $items = array(
+    'address' => array(
+      'name' => t('Address'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Institution Name'),
+      'help' => '',
+    ),
+    'contact' => array(
+      'name' => t('Contact'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Contact Name and email'),
+      'help' => '',
+    ),
     'study' => array(
       'name' => t('Study'),
       'base' => 'node_content',
@@ -46,7 +66,7 @@ function mica_feature_node_info() {
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Name'),
+      'title_label' => t('Full Name'),
       'help' => '',
     ),
     'variable' => array(
