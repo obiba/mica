@@ -11,36 +11,36 @@ function mica_schema() {
         'type' => 'serial',
         'not null' => TRUE,
         'description' => 'Primary Key: Unique relation ID',
-      ),
+  ),
       'parent' => array(
         'type' => 'varchar',
         'length' => 128,
         'not null' => TRUE,
         'default' => '',
         'description' => 'The parent content type machine name',
-      ),
+  ),
       'child' => array(
         'type' => 'varchar',
         'length' => 128,
         'not null' => TRUE,
         'default' => '',
         'description' => 'The child content type machine name',
-      ),
+  ),
       'node_reference' => array(
         'type' => 'varchar',
         'length' => 128,
         'not null' => TRUE,
         'default' => '',
         'description' => 'The node reference field name',
-      ),
-    ),
+  ),
+  ),
     'indexes' => array(
       'parent_index' => array('parent'),
-    ),
-   	'unique keys' => array(
+  ),
+     'unique keys' => array(
       'unique_child' => array('child'),
-    ),    
+  ),
     'primary key' => array('id'),
   );
-	return $schema;
+  return $schema;
 }

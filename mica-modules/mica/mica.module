@@ -6,169 +6,169 @@ include_once('includes/mica_feeds.plugins.inc');
  * Implements hook_help()
  */
 function mica_help($path, $arg) {
-	switch ($path) {
-		case "admin/help#mica":
-			return '<p>'.  t("TODO") .'</p>';
-			break;
-	}
+  switch ($path) {
+    case "admin/help#mica":
+      return '<p>'.  t("TODO") .'</p>';
+      break;
+  }
 }
 
 /**
  * Implements hook_form_FORM_ID_alter()
  */
 function mica_form_node_type_form_alter(&$form, $form_state) {
-	module_load_include('inc', 'mica', 'includes/relations');
-	return _mica_node_type_form_alter($form, $form_state);
+  module_load_include('inc', 'mica', 'includes/relations');
+  return _mica_node_type_form_alter($form, $form_state);
 }
 
 /**
  * Implements hook_node_type_delete()
  */
 function mica_node_type_delete($info) {
-	module_load_include('inc', 'mica', 'includes/relations');
-	$relations = _mica_find_relation_by_parent_or_child($info->type);
-	if(!empty($relations)) {
-		foreach ($relations as $relation) {
-			field_delete_field($relation['node_reference']);		
-			watchdog('mica', 'Delete relation between parent %parent and child %child', 
-				array(
-					'%parent' => $relation['parent'],
-					'%child' => $relation['child'], 
-				), WATCHDOG_INFO);			
-		}
-		db_delete('mica_relation')->condition('id', array_keys($relations), 'IN')->execute();
-	}
+  module_load_include('inc', 'mica', 'includes/relations');
+  $relations = _mica_find_relation_by_parent_or_child($info->type);
+  if(!empty($relations)) {
+    foreach ($relations as $relation) {
+      field_delete_field($relation['node_reference']);
+      watchdog('mica', 'Delete relation between parent %parent and child %child',
+      array(
+          '%parent' => $relation['parent'],
+          '%child' => $relation['child'], 
+      ), WATCHDOG_INFO);
+    }
+    db_delete('mica_relation')->condition('id', array_keys($relations), 'IN')->execute();
+  }
 }
 
 /**
  * Implements hook_node_insert()
  */
 function mica_node_insert($node) {
-	module_load_include('inc', 'mica', 'includes/relations');
+  module_load_include('inc', 'mica', 'includes/relations');
 
-	$relations = _mica_find_relations_by_parent($node->type);
-	if (!empty($relations)) {
-		
-		$parent_menu = isset($node->menu) ? $node->menu : array();
-		$node = node_load($node->nid); 		// reload node so it's not in 'new' state
-		$language = $node->language;
-		
-		$to_save = FALSE;
-		
-		foreach ($relations as $relation) {
-			
-			$field_ref = $relation['node_reference'];
-			$field = $node->$field_ref;
-			
-			// do not create child if child id is already provided (case of data import)
-			if (empty($field) || empty($field[$language])) {
-				$to_save = TRUE;
-				
-				// create new child
-				$node_child = new stdClass();
-				$node_child->type = $relation['child'];
-				node_object_prepare($node_child);
-				$node_child->title = $node->title;
-				$node_child->language = $node->language;
-				$node_child->uid = $node->uid; // same author
-				$node_child->status = $node->status; // same publication status
-				
-				// create menu if parent has menu
-				if(!empty($parent_menu)) {
-					$node_child->menu['enabled'] = 1;
-					$node_child->menu['menu_name'] = 'main-menu';
-					$node_child->menu['link_title'] = $node_child->title;
-					$node_child->menu['description'] = '';
-					$node_child->menu['plid'] = $parent_menu['mlid'];
-				}					
+  $relations = _mica_find_relations_by_parent($node->type);
+  if (!empty($relations)) {
 
-				watchdog('mica', 'Create child %child for parent %parent', 
-					array(
-						'%child' => $relation['child'], 
-						'%parent' => $node->type,
-					), WATCHDOG_INFO);					
-				
-				node_save($node_child);
+    $parent_menu = isset($node->menu) ? $node->menu : array();
+    $node = node_load($node->nid);     // reload node so it's not in 'new' state
+    $language = $node->language;
 
-				// link this new child node to the parent node
-				$node->$field_ref = array(
-					$node->language => array(
-						0 => array(
-							'nid' => $node_child->nid,
-						),
-					),
-				);
-			}
-		}
-		if ($to_save) {
-			node_save($node);
-		}
-	}
+    $to_save = FALSE;
+
+    foreach ($relations as $relation) {
+        
+      $field_ref = $relation['node_reference'];
+      $field = $node->$field_ref;
+        
+      // do not create child if child id is already provided (case of data import)
+      if (empty($field) || empty($field[$language])) {
+        $to_save = TRUE;
+
+        // create new child
+        $node_child = new stdClass();
+        $node_child->type = $relation['child'];
+        node_object_prepare($node_child);
+        $node_child->title = $node->title;
+        $node_child->language = $node->language;
+        $node_child->uid = $node->uid; // same author
+        $node_child->status = $node->status; // same publication status
+
+        // create menu if parent has menu
+        if(!empty($parent_menu)) {
+          $node_child->menu['enabled'] = 1;
+          $node_child->menu['menu_name'] = 'main-menu';
+          $node_child->menu['link_title'] = $node_child->title;
+          $node_child->menu['description'] = '';
+          $node_child->menu['plid'] = $parent_menu['mlid'];
+        }
+
+        watchdog('mica', 'Create child %child for parent %parent',
+        array(
+            '%child' => $relation['child'], 
+            '%parent' => $node->type,
+        ), WATCHDOG_INFO);
+
+        node_save($node_child);
+
+        // link this new child node to the parent node
+        $node->$field_ref = array(
+        $node->language => array(
+        0 => array(
+              'nid' => $node_child->nid,
+        ),
+        ),
+        );
+      }
+    }
+    if ($to_save) {
+      node_save($node);
+    }
+  }
 }
 
 /**
  * Implements hook_node_update().
  */
 function mica_node_update($node) {
-	module_load_include('inc', 'mica', 'includes/relations');
-	$relations = _mica_find_relations_by_parent($node->type);
-	if (!empty($relations)) {
-		$parent_menu = isset($node->menu) ? $node->menu : array();
-		$language = $node->language;
-		foreach ($relations as $relation) {
-			$field_ref = $relation['node_reference'];
-			$field = $node->$field_ref;
-			$child_nid = $field[$language][0]['nid'];
-			$node_child = node_load($child_nid);
-			if(empty($parent_menu)) {
-				menu_delete(array(
-					'title' => $node_child->title,
-					'menu_name' => 'main-menu',
-					'description' => '',
-				));				
-			} else {
-				$node_child->menu['enabled'] = 1;
-				$node_child->menu['menu_name'] = 'main-menu';
-				$node_child->menu['link_title'] = $node->title;
-				$node_child->menu['description'] = '';
-				$node_child->menu['plid'] = $parent_menu['mlid'];
-			}
-			$node_child->uid = $node->uid;	// same author
-			$node_child->status = $node->status;	// same publication status
-			$node_child->title = $node->title;
-			$node_child->language = $node->language;						
-			node_save($node_child);
-		}
-	}
+  module_load_include('inc', 'mica', 'includes/relations');
+  $relations = _mica_find_relations_by_parent($node->type);
+  if (!empty($relations)) {
+    $parent_menu = isset($node->menu) ? $node->menu : array();
+    $language = $node->language;
+    foreach ($relations as $relation) {
+      $field_ref = $relation['node_reference'];
+      $field = $node->$field_ref;
+      $child_nid = $field[$language][0]['nid'];
+      $node_child = node_load($child_nid);
+      if(empty($parent_menu)) {
+        menu_delete(array(
+          'title' => $node_child->title,
+          'menu_name' => 'main-menu',
+          'description' => '',
+        ));
+      } else {
+        $node_child->menu['enabled'] = 1;
+        $node_child->menu['menu_name'] = 'main-menu';
+        $node_child->menu['link_title'] = $node->title;
+        $node_child->menu['description'] = '';
+        $node_child->menu['plid'] = $parent_menu['mlid'];
+      }
+      $node_child->uid = $node->uid;  // same author
+      $node_child->status = $node->status;  // same publication status
+      $node_child->title = $node->title;
+      $node_child->language = $node->language;
+      node_save($node_child);
+    }
+  }
 }
 
 /**
  * Implements hook_node_delete()
  */
 function mica_node_delete($node) {
-	module_load_include('inc', 'mica', 'includes/relations');
-	$relations = _mica_find_relations_by_parent($node->type);
-	if (!empty($relations)) {
-		$language = $node->language;
-		foreach ($relations as $relation) {
-			$field_ref = $relation['node_reference'];
-			$field = $node->$field_ref;
-			$child_nid = $field[$language][0]['nid'];
-			node_delete($child_nid);
-			watchdog('mica', 'Delete child %child for deleted parent %parent', 
-				array(
-					'%child' => $relation['child'], 
-					'%parent' => $node->type,
-				), WATCHDOG_INFO);				
-		}
-	}
+  module_load_include('inc', 'mica', 'includes/relations');
+  $relations = _mica_find_relations_by_parent($node->type);
+  if (!empty($relations)) {
+    $language = $node->language;
+    foreach ($relations as $relation) {
+      $field_ref = $relation['node_reference'];
+      $field = $node->$field_ref;
+      $child_nid = $field[$language][0]['nid'];
+      node_delete($child_nid);
+      watchdog('mica', 'Delete child %child for deleted parent %parent',
+      array(
+          '%child' => $relation['child'], 
+          '%parent' => $node->type,
+      ), WATCHDOG_INFO);
+    }
+  }
 }
 
 /**
  * Implements hook_search_api_processor_info().
  */
 function mica_search_api_processor_info() {
-	$processors['search_api_processor_study_fields'] = array(
+  $processors['search_api_processor_study_fields'] = array(
     'name' => t('Mica'),
     'description' => t('Adds the study referred fields to the indexed data.'),
     'class' => 'SearchApiProcessorStudyFields',
@@ -189,7 +189,7 @@ function mica_form_field_ui_field_edit_form_alter(&$form, $form_state, $form_id)
  * Implements hook_field_delete_instance()
  */
 function mica_field_delete_instance($instance) {
-	module_load_include('inc', 'mica', 'includes/variables');
-	_mica_delete_variable_for_field_instance($instance);
+  module_load_include('inc', 'mica', 'includes/variables');
+  _mica_delete_variable_for_field_instance($instance);
 }
 
