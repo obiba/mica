@@ -80,6 +80,7 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
  * Additional submit handler for the 'Edit field instance' form.
  */
 function _mica_edit_field_variable($form, &$form_state) {
+  
 	$is_variable = $form_state['values']['field']['settings']['variable_infos']['variable'];
 	$field_name = $form_state['values']['instance']['field_name'];
 	$bundle = $form_state['values']['instance']['bundle'];
@@ -89,6 +90,7 @@ function _mica_edit_field_variable($form, &$form_state) {
 		'body' => $is_variable ? $form_state['values']['field']['settings']['variable_infos']['variable_body'] : NULL,
 		'bundle' => $bundle,
 		'original_field_name' => $field_name,
+		'field_title' => $form_state['values']['instance']['label'],
 		'value_type' => $is_variable ? $form_state['values']['field']['settings']['variable_infos']['variable_value_type'] : NULL,
 	);
 	
@@ -127,6 +129,7 @@ function _mica_find_variable($bundle, $field_name) {
 }
 
 function _mica_create_variable(array $variable_infos) {
+  
 	$variable = new stdClass();
 	$variable->type = 'variable';
 	node_object_prepare($variable);
@@ -170,7 +173,10 @@ function _mica_create_variable(array $variable_infos) {
 			'%bundle' => $variable_infos['bundle'],
 		), WATCHDOG_INFO);
 	
+		
 	//TODO add this field to Studies Index
+	_mica_update_index_for_variable($variable_infos);
+	
 }
 
 function _mica_update_variable($variable, array $variable_infos) {
@@ -189,23 +195,41 @@ function _mica_update_variable($variable, array $variable_infos) {
 		),
 	);	
 	node_save($variable);
+	
+		//TODO add this field to Studies Index
+	_mica_update_index_for_variable($variable_infos);
 }
 
 /**
  * Delete variable
  */
 function _mica_delete_variable($variable) {
-	node_delete($variable->nid);
-	//TODO delete this field from Studies Index
-	
+  module_load_include('inc', 'mica', 'includes/search');
+  
 	$field_bundle = $variable->field_bundle;
+  $bundle = $field_bundle[LANGUAGE_NONE][0]['value'];
+	
 	$field_original_field_name = $variable->field_original_field_name;
+	$original_field_name = $field_original_field_name[LANGUAGE_NONE][0]['value'];  
+  
+	// remove index field
+	$indexes = _mica_find_indexes_by_bundle();
+	$bundles_indexes = $indexes[$bundle];
+	if(!empty($bundles_indexes)) {
+	  foreach ($bundles_indexes as $index_machine_name => $index_name) {
+	    _mica_remove_field_index($index_machine_name, $original_field_name);
+	  }
+	}	  
+  
+	// delete variable
+	node_delete($variable->nid);
 	
 	watchdog('mica', 'Delete Variable for %field of %bundle', 
 		array(
-			'%field' => $field_original_field_name[LANGUAGE_NONE][0]['value'], 
-			'%bundle' => $field_bundle[LANGUAGE_NONE][0]['value'],
+			'%field' => $original_field_name, 
+			'%bundle' => $bundle,
 		), WATCHDOG_INFO);	
+		
 }
 
 /**
@@ -216,4 +240,15 @@ function _mica_delete_variable_for_field_instance($instance) {
 	if(!empty($variable)) {
 		_mica_delete_variable($variable);
 	}
+}
+
+function _mica_update_index_for_variable($variable_infos) {
+  module_load_include('inc', 'mica', 'includes/search');
+	$indexes = _mica_find_indexes_by_bundle();
+	$bundles_indexes = $indexes[$variable_infos['bundle']];
+	if(!empty($bundles_indexes)) {
+	  foreach ($bundles_indexes as $index_machine_name => $index_name) {
+	    _mica_add_field_index($index_machine_name, $variable_infos['bundle'], $variable_infos['original_field_name'], $variable_infos['value_type']);
+	  }
+	}  
 }

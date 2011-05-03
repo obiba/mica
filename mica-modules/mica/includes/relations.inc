@@ -306,14 +306,14 @@ function _mica_save_relation(array $relation) {
 		// insert
 		$relation['id'] = db_insert('mica_relation')
 											  ->fields(array(
-											    'parent_bundle' => $relation['parent_bundle'],
-											    'child_bundle' => $relation['child_bundle'],
-											    'node_reference' => $relation['node_reference'],
-											    'indexed' => $relation['indexed'],
-											    'cascaded' => $relation['cascaded'],
-											    'relation' => $relation['relation'],
-											    'relation_parent_field' => $relation['relation_parent_field'],
-											    'relation_child_field' => $relation['relation_child_field'],
+  											    'parent_bundle' => $relation['parent_bundle'],
+  											    'child_bundle' => $relation['child_bundle'],
+  											    'node_reference' => $relation['node_reference'],
+  											    'indexed' => $relation['indexed'],
+  											    'cascaded' => $relation['cascaded'],
+  											    'relation' => $relation['relation'],
+  											    'relation_parent_field' => $relation['relation_parent_field'],
+  											    'relation_child_field' => $relation['relation_child_field'],
 									 	 		))
 									 	 		->execute();		
 	}
@@ -321,8 +321,7 @@ function _mica_save_relation(array $relation) {
 	// add child to search index
 	$indexes = entity_load('search_api_index', array_keys($relation['child_indexes']));
 	foreach($indexes as $index) {
-		$options = $index->options;
-		$options['data_alter_callbacks']['search_api_alter_bundle_filter']['settings']['bundles'][$relation['child_bundle']] = $relation['child_bundle'];
+		$index->options['data_alter_callbacks']['search_api_alter_bundle_filter']['settings']['bundles'][$relation['child_bundle']] = $relation['child_bundle'];
 		entity_save('search_api_index', $index);
 	}		
 	return $relation;	
