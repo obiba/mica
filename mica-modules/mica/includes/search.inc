@@ -50,6 +50,7 @@ function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
     'boost' => '1.0',
   );
   search_api_index_edit_fields($index->id, $fields);
+  $index->reindex();
   
   $facets_conditions = array(
     'index_id' => $index->machine_name,
@@ -85,8 +86,9 @@ function _mica_remove_field_index($index_name, $field_name) {
   $fields = $options['fields'];
   if (!empty($fields[$field_name])) {
     $fields[$field_name]['indexed'] = FALSE;
+    search_api_index_edit_fields($index->id, $fields);
+    $index->reindex();      
   }
-  search_api_index_edit_fields($index->id, $fields);  
   
   $facets_conditions = array(
     'index_id' => $index_name,
