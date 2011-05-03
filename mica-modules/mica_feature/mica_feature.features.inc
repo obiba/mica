@@ -107,6 +107,69 @@ function mica_feature_default_search_api_facet() {
     },
     "rdf_mapping" : []
   }');
+  $items['variables_index_field_bundle'] = entity_import('search_api_facet', '{
+    "delta" : "variables_index_field_bundle",
+    "index_id" : "variables_index",
+    "field" : "field_bundle",
+    "name" : "Variables Index: Content Type",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "",
+      "field_name" : "Content Type"
+    },
+    "rdf_mapping" : []
+  }');
+  $items['variables_index_field_value_type'] = entity_import('search_api_facet', '{
+    "delta" : "variables_index_field_value_type",
+    "index_id" : "variables_index",
+    "field" : "field_value_type",
+    "name" : "Variables Index: Value Type",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "",
+      "field_name" : "Value Type"
+    },
+    "rdf_mapping" : []
+  }');
+  $items['variables_index_title'] = entity_import('search_api_facet', '{
+    "delta" : "variables_index_title",
+    "index_id" : "variables_index",
+    "field" : "title",
+    "name" : "Variables Index: Title",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "",
+      "field_name" : "Title"
+    },
+    "rdf_mapping" : []
+  }');
   return $items;
 }
 
@@ -250,7 +313,7 @@ function mica_feature_default_search_api_index() {
           "type" : "string",
           "boost" : "1.0"
         },
-        "field_study_contact_email" : {
+ "field_study_contact_email" : {
           "name" : "Contact Email",
           "indexed" : 1,
           "type" : "text",
