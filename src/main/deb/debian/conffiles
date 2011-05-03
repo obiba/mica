@@ -1,0 +1,4 @@
+/etc/mica/htaccess
+/etc/mica/sites/default/settings.php
+/etc/mica/sites/default/default.settings.php
+/etc/mica/apache.conf

@@ -70,7 +70,9 @@ all: drupal mica
 target:
 	mkdir -p target
 
-drupal: target
+drupal: target drupal-download drupal-default 
+
+drupal-download:
 	cd target && \
 	drush dl drupal-$(drupal_version) --drupal-project-rename=$(micadir) && \
 	cd $(micadir) && \
@@ -85,6 +87,14 @@ drupal: target
 	drush dl login_destination-$(login_destination_version) && \
 	drush dl views_data_export-$(views_data_export_version) noderefcreate-$(noderefcreate_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version) feeds-$(feeds_version) && \
 	drush dl node_export-$(node_export_version)
+
+drupal-default:
+	cd target/$(micadir) && \
+	chmod a+w sites/default && \
+	mkdir sites/default/files && \
+	chmod a+w sites/default/files && \
+	cp sites/default/default.settings.php sites/default/settings.php && \
+	chmod a+w sites/default/settings.php
 
 mica: mica-install mica-versions
 
@@ -111,6 +121,12 @@ mica-versions-modules:
 	$(call make-version,sites/all/modules,mica_addons)
 
 #
+# Deploy
+#
+
+deploy: debian package
+
+#
 # Package
 #
 
@@ -132,6 +148,37 @@ package-profiles:
 
 package-themes:
 	$(call make-package,sites/all/themes,mica_samara)
+
+#
+# Debian
+#
+
+build_number=$(shell svnversion -n | cut -d : -f 1)
+deb_version=$(version)-b$(build_number)
+deb_date=$(shell date -R)
+
+debian: deb
+	echo "mica ($(deb_version)) unstable; urgency=low" > target/deb/debian/changelog
+	echo "" >> target/deb/debian/changelog
+	echo "  * See http://wiki.obiba.org/ for more details." >> target/deb/debian/changelog
+	echo "" >> target/deb/debian/changelog
+	echo " -- OBiBa <info@obiba.org>  $(deb_date)" >> target/deb/debian/changelog
+	cd target/deb && debuild -us -uc -b
+	
+deb:
+	rm -rf target/deb
+	mkdir -p target/deb/debian && \
+	mkdir -p target/deb/var/lib/mica/backups && \
+	mkdir -p target/deb/var/lib/mica/files && \
+	mkdir -p target/deb/usr/share/doc/mica && \
+	mkdir -p target/deb/usr/share && \
+	mkdir -p target/deb/etc/mica/sites && \
+	cp -r target/$(micadir) target/deb/usr/share/mica && \
+	cp src/main/deb/debian/* target/deb/debian && \
+	cp src/main/deb/etc/mica/* target/deb/etc/mica && \
+	cp -r target/deb/usr/share/mica/sites/default target/deb/etc/mica/sites && \
+	mv target/deb/usr/share/mica/*.txt target/deb/usr/share/doc/mica && \
+	mv target/deb/usr/share/doc/mica/robots.txt target/deb/usr/share/mica
 
 #
 # Site
