@@ -1,8 +1,8 @@
+project = "mica"
 name = "Mica" 
 description = "Mica module"
 package = "OBiBa"
 core = 7.x
-version = "7.x-1.0-dev"
 
 dependencies[] = entity
 dependencies[] = search_api
@@ -16,3 +16,4 @@ files[] = includes/relations.inc
 files[] = includes/variables.inc
 files[] = mica.install
 files[] = mica.module
+

@@ -5,11 +5,13 @@
 
 version=1.0-SNAPSHOT
 micadir=mica-$(version)
-mica_version=7.x-1.x-dev
-mica_feature_version=7.x-1.x-dev
-mica_addons_version=7.x-1.x-dev
-mica_standard_version=7.x-1.x-dev
-mica_samara_version=7.x-1.x-dev
+mica_version=7.x-1.0-dev
+mica_feature_version=7.x-1.0-dev
+mica_addons_version=7.x-1.0-dev
+mica_minimal_version=7.x-1.0-dev
+mica_standard_version=7.x-1.0-dev
+mica_demo_version=7.x-1.0-dev
+mica_samara_version=7.x-1.0-dev
 
 #
 # Modules dependencies
@@ -75,12 +77,32 @@ drupal: target
 	drush dl login_destination-$(login_destination_version) && \
 	drush dl node_export-$(node_export_version)
 
-mica:
+mica: mica-install mica-versions
+
+mica-install:
 	cd target/$(micadir) && \
 	cp -r ../../mica-profiles/* profiles && \
 	cp -r ../../mica-modules/* sites/all/modules && \
 	cp -r ../../mica-themes/* sites/all/themes && \
 	rm -rf `find . -type d -name .svn`
+
+mica-versions: mica-versions-profiles mica-versions-themes mica-versions-modules
+
+mica-versions-profiles:
+	cd target/$(micadir)/profiles && \
+	echo "version = \"$(mica_minimal_version)\"" >> mica_minimal/mica_minimal.info && \
+	echo "version = \"$(mica_standard_version)\"" >> mica_standard/mica_standard.info && \
+	echo "version = \"$(mica_demo_version)\"" >> mica_demo/mica_demo.info
+	
+mica-versions-themes:
+	cd target/$(micadir)/sites/all/themes && \
+	echo "version = \"$(mica_samara_version)\"" >> mica_samara/mica_samara.info 
+
+mica-versions-modules:
+	cd target/$(micadir)/sites/all/modules && \
+	echo "version = \"$(mica_version)\"" >> mica/mica.info && \
+	echo "version = \"$(mica_feature_version)\"" >> mica_feature/mica_feature.info && \
+	echo "version = \"$(mica_addons_version)\"" >> mica_addons/mica_addons.info
 
 #
 # Package
@@ -137,6 +159,15 @@ demo-site:
 demo-export:
 	cd target/$(micadir) && \
 	drush ne-export 2 3 4 5 -u 1 --file=../mica-demo.txt
+	
+#
+# Devel
+#
+
+coder:
+	cd target/$(micadir) && \
+	drush dl coder && \
+ 	drush en coder* --yes
 
 #
 # Misc

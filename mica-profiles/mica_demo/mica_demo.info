@@ -1,4 +1,5 @@
 ; $Id$
+project = "mica_demo"
 name = Mica Demo
 description = Mica standard install with some demo content.
 core = 7.x
@@ -59,5 +60,3 @@ dependencies[] = mica_addons
 dependencies[] = node_export
 files[] = mica_demo.profile
 
-version = "7.0"
-project = "mica"

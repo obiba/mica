@@ -1,4 +1,5 @@
 ; $Id$
+project = "mica_minimal"
 name = Mica Minimal
 description = Mica install with minimal features pre-configured.
 core = 7.x
@@ -57,5 +58,3 @@ dependencies[] = mica
 dependencies[] = mica_feature
 files[] = mica_minimal.profile
 
-version = "7.0"
-project = "mica"
