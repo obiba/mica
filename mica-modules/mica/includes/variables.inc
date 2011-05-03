@@ -174,9 +174,7 @@ function _mica_create_variable(array $variable_infos) {
 		), WATCHDOG_INFO);
 	
 		
-	//TODO add this field to Studies Index
 	_mica_update_index_for_variable($variable_infos);
-	
 }
 
 function _mica_update_variable($variable, array $variable_infos) {
@@ -196,12 +194,11 @@ function _mica_update_variable($variable, array $variable_infos) {
 	);	
 	node_save($variable);
 	
-		//TODO add this field to Studies Index
 	_mica_update_index_for_variable($variable_infos);
 }
 
 /**
- * Delete variable
+ * Delete variable and remove serach index field
  */
 function _mica_delete_variable($variable) {
   module_load_include('inc', 'mica', 'includes/search');
@@ -242,6 +239,9 @@ function _mica_delete_variable_for_field_instance($instance) {
 	}
 }
 
+/**
+ * Updates search index field
+ */
 function _mica_update_index_for_variable($variable_infos) {
   module_load_include('inc', 'mica', 'includes/search');
 	$indexes = _mica_find_indexes_by_bundle();
