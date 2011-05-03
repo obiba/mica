@@ -7,6 +7,7 @@ core = 7.x
 dependencies[] = entity
 dependencies[] = search_api
 dependencies[] = references
+dependencies[] = relation
 dependencies[] = field_permissions
 dependencies[] = menu
 
@@ -14,6 +15,7 @@ files[] = includes/exception.inc
 files[] = includes/processor_study_fields.inc
 files[] = includes/relations.inc
 files[] = includes/variables.inc
+files[] = includes/search.inc
 files[] = mica.install
 files[] = mica.module
 

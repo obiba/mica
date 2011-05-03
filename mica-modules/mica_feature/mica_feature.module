@@ -10,12 +10,16 @@ include_once('mica_feature.features.inc');
  * Implements hook_install().
  */
 function mica_feature_install() {
-	$table = 'mica_relation';
-  
+ 
 	$record = new StdClass();
-	$record->parent = 'study';
-	$record->child = 'study_information';
+	$record->parent_bundle = 'study';
+	$record->child_bundle = 'study_information';
 	$record->node_reference = 'mica_study_information';
+	$record->indexed = 1;
+	$record->cascaded = 1;
+	$record->relation = 'study_study_information';
+	$record->relation_parent_field = 'study_information_relation';
+	$record->relation_child_field = 'study_relation';
   
-	drupal_write_record($table, $record);
+	drupal_write_record('mica_relation', $record);
 }

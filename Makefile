@@ -34,6 +34,7 @@ field_permissions_version=7.x-1.0-alpha1
 date_version=7.x-2.0-alpha3
 calendar_version=7.x-2.0-alpha1
 login_destination_version=7.x-1.0-beta1
+relation_version=7.x-1.0-alpha2
 views_data_export_version=7.x-3.0-beta4
 noderefcreate_version=7.x-1.0-beta2
 multiselect_version=7.x-1.8
@@ -79,7 +80,7 @@ drupal: target
 	drush dl search_api-$(search_api_version) search_api_solr-$(search_api_solr_version) && \
 	svn checkout -r22 http://solr-php-client.googlecode.com/svn/trunk/ sites/all/modules/search_api_solr/SolrPhpClient && \
 	drush dl features-$(features_version) strongarm-$(strongarm_version) && \
-	drush dl references-$(references_version) field_permissions-${field_permissions_version} && \
+	drush dl references-$(references_version) field_permissions-${field_permissions_version} relation-${relation_version} && \
 	drush dl date-$(date_version) calendar-$(calendar_version) && \
 	drush dl login_destination-$(login_destination_version) && \
 	drush dl views_data_export-$(views_data_export_version) noderefcreate-$(noderefcreate_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version) feeds-$(feeds_version) && \
