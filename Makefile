@@ -47,6 +47,8 @@ db_pass=rootadmin
 site_db_name=mica_site
 site_name=MicaSite
 site_dir_name=site.mica-obiba.org
+site_account_name=admin         
+site_account_pass=admin
 
 #
 # Clean urls: 0/1
@@ -149,7 +151,7 @@ default-site:
 
 site:
 	cd target/$(micadir) && \
-	drush site-install mica_standard --db-url=mysql://$(db_user):$(db_pass)@localhost/$(site_db_name) --site-name=$(site_name) --sites-subdir=$(site_dir_name) --clean-url=$(clean_url)
+	drush site-install mica_standard --db-url=mysql://$(db_user):$(db_pass)@localhost/$(site_db_name) --site-name=$(site_name) --sites-subdir=$(site_dir_name) --clean-url=$(clean_url) --account-name=$(site_account_name) --account-pass=$(site_account_pass)
 
 demo-site:
 	cd target/$(micadir) && \
