@@ -91,20 +91,17 @@ mica-install:
 mica-versions: mica-versions-profiles mica-versions-themes mica-versions-modules
 
 mica-versions-profiles:
-	cd target/$(micadir)/profiles && \
-	echo "version = \"$(mica_minimal_version)\"" >> mica_minimal/mica_minimal.info && \
-	echo "version = \"$(mica_standard_version)\"" >> mica_standard/mica_standard.info && \
-	echo "version = \"$(mica_demo_version)\"" >> mica_demo/mica_demo.info
+	$(call make-version,profiles,mica_minimal)
+	$(call make-version,profiles,mica_standard)
+	$(call make-version,profiles,mica_demo)
 	
 mica-versions-themes:
-	cd target/$(micadir)/sites/all/themes && \
-	echo "version = \"$(mica_samara_version)\"" >> mica_samara/mica_samara.info 
+	$(call make-version,sites/all/themes,mica_samara) 
 
 mica-versions-modules:
-	cd target/$(micadir)/sites/all/modules && \
-	echo "version = \"$(mica_version)\"" >> mica/mica.info && \
-	echo "version = \"$(mica_feature_version)\"" >> mica_feature/mica_feature.info && \
-	echo "version = \"$(mica_addons_version)\"" >> mica_addons/mica_addons.info
+	$(call make-version,sites/all/modules,mica)
+	$(call make-version,sites/all/modules,mica_feature)
+	$(call make-version,sites/all/modules,mica_addons)
 
 #
 # Package
@@ -117,29 +114,17 @@ package: package-modules package-profiles package-themes
 	zip -r $(micadir).zip $(micadir)
 
 package-modules:
-	cd target && \
-	rm -f mica-$(mica_version).* mica_feature-$(mica_feature_version).* && \
-	cd $(micadir)/sites/all/modules/ && \
-	tar czvf ../../../../mica-$(mica_version).tar.gz mica && \
-	zip -r ../../../../mica-$(mica_version).zip mica && \
-	tar czvf ../../../../mica_feature-$(mica_feature_version).tar.gz mica_feature && \
-	zip -r ../../../../mica_feature-$(mica_feature_version).zip mica_feature && \
-	tar czvf ../../../../mica_addons-$(mica_addons_version).tar.gz mica_addons && \
-	zip -r ../../../../mica_addons-$(mica_addons_version).zip mica_addons
+	$(call make-package,sites/all/modules,mica)
+	$(call make-package,sites/all/modules,mica_feature)
+	$(call make-package,sites/all/modules,mica_addons)
 	
 package-profiles:
-	cd target && \
-	rm -f mica_standard-$(mica_standard_version).* && \
-	cd $(micadir)/profiles && \
-	tar czvf ../../mica_standard-$(mica_standard_version).tar.gz mica_standard && \
-	zip -r ../../mica_standard-$(mica_standard_version).zip mica_standard
+	$(call make-package,profiles,mica_minimal)
+	$(call make-package,profiles,mica_standard)
+	$(call make-package,profiles,mica_demo)
 
 package-themes:
-	cd target && \
-	rm -f mica_samara-$(mica_samara_version).* && \
-	cd $(micadir)/sites/all/themes && \
-	tar czvf ../../../../mica_samara-$(mica_samara_version).tar.gz mica_samara && \
-	zip -r ../../../../mica_samara-$(mica_samara_version).zip mica_samara
+	$(call make-package,sites/all/themes,mica_samara)
 
 #
 # Site
@@ -171,6 +156,24 @@ coder:
 	drush dl coder && \
  	drush en coder* --yes
 
+git: git-prepare git-modules git-themes git-modules
+
+git-prepare:
+	rm -rf target/git && mkdir -p target/git
+
+git-modules: 
+	$(call make-git,mica-modules,mica,sandbox/emorency/1128690)
+	$(call make-git,mica-modules,mica_feature,sandbox/emorency/1128676)
+	$(call make-git,mica-modules,mica_addons,sandbox/yop/1144682)
+
+git-themes: 
+	$(call make-git,mica-themes,mica_samara,sandbox/yop/1144820)
+	
+git-profiles:
+	$(call make-git,mica-profiles,mica_minimal,sandbox/yop/1144812)
+	$(call make-git,mica-profiles,mica_standard,sandbox/yop/1144814)
+	$(call make-git,mica-profiles,mica_demo,sandbox/yop/1144816)
+
 #
 # Misc
 #
@@ -192,3 +195,29 @@ help:
 	@echo "Requires drush 4+ to be installed [http://drush.ws]"
 	@echo "  " `drush version`
 	@echo
+
+	
+#
+# Functions
+#
+
+# make-version function: add version number to project info file
+make-version = cd target/$(micadir)/$(1) && \
+	echo "version = \"$($(2)_version)\"" >> $2/$2.info 
+
+# make-package function: build tar.gz and zip files of a project
+make-package = cd target/$(micadir)/$(1) && \
+	tar czvf $(2)-$($(2)_version).tar.gz $(2) && \
+	zip -r $(2)-$($(2)_version).zip $(2) && \
+	cd - && \
+	mv target/$(micadir)/$(1)/*.tar.gz target && \
+	mv target/$(micadir)/$(1)/*.zip target 
+
+# make-git function: propagate svn changes to git
+make-git = cd target/git && \
+	git svn clone http://svn.obiba.org/mica/trunk/$(1)/$(2) $(2) && \
+	cd $(2) && \
+	git remote add origin $(git_user)@git.drupal.org:$(3) && \
+	git pull --rebase origin master && \
+	git push origin master
+	
