@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Mica Exception definition. 
+ */
 
 /**
  * Represents an exception or error that occurred in some part of the Mica

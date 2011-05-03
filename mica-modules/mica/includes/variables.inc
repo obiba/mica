@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Variable content relation with fields. 
+ */
 
 /**
  * Enhance the field settings form with variable extensions.

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Install Mica module.
+ */
 
 /**
  * Implements hook_schema()

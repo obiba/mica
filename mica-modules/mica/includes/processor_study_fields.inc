@@ -1,5 +1,12 @@
 <?php
+/**
+ * @file
+ * Mica search API processor.
+ */
 
+/**
+ * Index the child values into parent node.
+ */
 class SearchApiProcessorStudyFields extends SearchApiAbstractProcessor {
 
   public function preprocessIndexItems(array &$items) {
@@ -23,8 +30,8 @@ class SearchApiProcessorStudyFields extends SearchApiAbstractProcessor {
             }
             else {
               // error message about node_reference_name not indexed
-              drupal_set_message(t("Mica: Couldn't index values for '!name' index: '!field' is not selected for indexing.",
-              array('!name' => $this->index->name, '!field' => $node_reference_name)), 'error');
+              drupal_set_message(t("Mica: Couldn't index values for '!name' index: '!field' is not selected for indexing."),
+              array('!name' => $this->index->name, '!field' => $node_reference_name), 'error');
             }
           }
         }

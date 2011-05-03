@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Mica relations.
+ */
 
 /**
  * Enhance the content type form with mica_relation extensions.
