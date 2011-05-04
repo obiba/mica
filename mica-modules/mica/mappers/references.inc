@@ -106,7 +106,7 @@ function references_feeds_set_target($source, $entity, $target, $value) {
 
   // Handle non-multiple values.
   if (!is_array($value)) {
-    $value = array($value);
+    $value = explode('|', $value);
   }
 
   // Determine whether we are matching against the title/user or nid/uid, and whether duplicates are allowed.
@@ -151,8 +151,38 @@ function references_feeds_set_target($source, $entity, $target, $value) {
 
         // Alert if no match is found.
         if (empty($id)) {
-          drupal_set_message(t('%title does not match an existing '.$typename, array('%title' => $v)));        }
-          break;
+          $f = field_info_field_by_id($info['id']);
+          $reference_type_nb = 0;
+  
+          // Create a new node only if there is only one content type that can be referenced
+          foreach ($f['settings']['referenceable_types'] as $type){
+            if ($f['settings']['referenceable_types'][$type]) {
+              $reference_type = $type;
+              $reference_type_nb++;
+            }
+          }
+          
+          if ($reference_type_nb === 1 && isset($reference_type)) {
+            // create the node empty
+            $node = new StdClass();
+            $node->type = $reference_type;
+            $node->title = $v;
+            $node->changed = REQUEST_TIME;
+            $node->language = LANGUAGE_NONE;
+            node_object_prepare($node);
+            // Populate properties that are set by node_object_prepare().
+            $node->log = 'Created by References';
+            $node->uid = $entity->uid;
+            $node->status = $entity->status;
+            node_save($node);
+            
+            drupal_set_message(t('Node %title has been automatically created !', array('%title' => $v)));
+          }
+          else{
+            drupal_set_message(t('%title does not match an existing '.$typename, array('%title' => $v)));        
+          }
+        }
+        break;
 
       case 'nid':
       case 'uid':
@@ -180,7 +210,7 @@ function references_feeds_set_target($source, $entity, $target, $value) {
         // Add the reference only if it doesn't already exist.
         $field['und'][] = $reference;
       }
-       
+     
       if ($info['cardinality'] == 1) {
         break;
       }

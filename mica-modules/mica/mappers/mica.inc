@@ -5,25 +5,26 @@
  */
 function mica_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name) {
   foreach (field_info_instances($entity_type, $bundle_name) as $name => $instance) {
+    debug($name);
     if ($name == 'body') {
       $targets[$name] = array(
-            'name' => $name,
-            'callback' => 'mica_feeds_set_target_body',
-            'description' => t('The @label field of the node.', array('@label' => $instance['label'])),
+        'name' => $name,
+        'callback' => 'mica_feeds_set_target_body',
+        'description' => t('The @label field of the node.', array('@label' => $instance['label'])),
       );
     }
     elseif ($name == 'title') {
       $targets[$name] = array(
-            'name' => $name,
-            'callback' => 'mica_feeds_set_target_title',
-            'description' => t('The @label field of the node.', array('@label' => $instance['label'])),
+        'name' => $name,
+        'callback' => 'mica_feeds_set_target_title',
+        'description' => t('The @label field of the node.', array('@label' => $instance['label'])),
       );
     }
     elseif ($name == 'field_study_legacy_id'){
       $targets['field_study_legacy_id'] = array(
-            'name' => $instance['label'],
-            'callback' => 'mica_feeds_set_target_legacy_id',
-            'description' => t('The Legacy Id of the parent Study of the node.', array('@label' => $instance['label'])),
+        'name' => $instance['label'],
+        'callback' => 'mica_feeds_set_target_legacy_id',
+        'description' => t('The Legacy Id of the parent Study of the node.', array('@label' => $instance['label'])),
       );
     }
   }
@@ -64,14 +65,13 @@ function _mica_set_target($source, $entity, $target, $value, $value_field = 'val
   $info = field_info_field($target);
   list($field_name, $sub_field) = explode(':', $target);
   foreach ($value as $v) {
-    $new_value = clean($v);
-    //$v = htmlentities($v);
+    $new_value = $v;
     if (!is_array($new_value) && !is_object($new_value)) {
       if (isset($sub_field)){
         $field['und'][$i][$sub_field] = $new_value;
       }
       else{
-          $field['und'][$i][$value_field] = $new_value;
+        $field['und'][$i][$value_field] = $new_value;
       }
     }
     if ($info['cardinality'] == 1) {
@@ -79,14 +79,13 @@ function _mica_set_target($source, $entity, $target, $value, $value_field = 'val
     }
     $i++;
   }
-
-  if (isset($sub_field)){
-    foreach ($field['und'] as $i => $sub){
-      $entity->{$field_name}['und'][$i][$sub_field] = $field['und'][$i][$sub_field];
+ 
+  if (isset($sub_field)) {
+    foreach ($field['und'] as $i => $sub) {
+      $entity->{$field_name}['und'][$i][$sub_field] = $field['und'][$i][$sub_field]; 
     }
   }
-  else{
+  else {
     $entity->{$field_name} = $field;
   }
 }
-
