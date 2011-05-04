@@ -1,4 +1,6 @@
 <?php
+// $Id$
+
 /**
  * @file
  * Mica search API utilities
@@ -77,7 +79,7 @@ function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
       entity_delete_multiple('search_api_facet', array($facet->id));
     }
   }
-  else if (empty($facet)) {       
+  elseif (empty($facet)) {
     $facet = new SearchApiFacet(array(
       'index_id' => $index->machine_name,
       'field' => $field_name,

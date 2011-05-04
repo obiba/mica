@@ -1,8 +1,9 @@
 <?php
+// $Id$ 
 
 /**
  * @file
- * Class definition of FeedsStudyInfoProcessor.
+ * Class definition of FeedsStudyChildProcessor.
  */
 
 /**
@@ -23,7 +24,7 @@ class FeedsStudyChildProcessor extends FeedsNodeProcessor {
     // Exception when the parent does not exist return null
     // Get the mica relation based on the type...
     module_load_include('inc', 'mica', 'includes/relations');
-    foreach($result as $row){
+    foreach ($result as $row) {
       $parent = entity_load('node', array($row->entity_id));
       $relations = _mica_find_relations_by_parent('study');
       if (!empty($relations)) {
@@ -72,7 +73,7 @@ class FeedsStudyChildProcessor extends FeedsNodeProcessor {
             $entity = $this->loadParentEntity($source, $parent_id);
             // check if node is empty
             if (empty($entity)) {
-              throw new FeedsValidationException(t('There is no Study with specified Legacy Id:').$parent_id);
+              throw new FeedsValidationException(t('There is no Study with specified Legacy Id:') . $parent_id);
             }
             $this->newItemInfo($entity, $source->feed_nid, $hash);
           }
@@ -101,9 +102,9 @@ class FeedsStudyChildProcessor extends FeedsNodeProcessor {
           drupal_set_message($e->getMessage(), 'warning');
           $message = $e->getMessage();
           $message .= '<h3>Original item</h3>';
-          $message .= '<pre>' . var_export($item, true) . '</pre>';
+          $message .= '<pre>' . var_export($item, TRUE) . '</pre>';
           $message .= '<h3>Entity</h3>';
-          $message .= '<pre>' . var_export($entity, true) . '</pre>';
+          $message .= '<pre>' . var_export($entity, TRUE) . '</pre>';
           $source->log('import', $message, array(), WATCHDOG_ERROR);
         }
       }

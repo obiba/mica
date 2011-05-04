@@ -1,4 +1,10 @@
 <?php
+// $Id$
+
+/**
+ * @file
+ * Email mapper.
+ */
 
 /**
  * Implementation of hook_feeds_node_processor_targets_alter().
@@ -16,7 +22,7 @@ function email_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_na
   }
 }
 
-function email_feeds_set_target_email($source, $entity, $target, $value){
+function email_feeds_set_target_email($source, $entity, $target, $value) {
   _email_set_target($source, $entity, $target, $value);
 }
 
@@ -45,7 +51,7 @@ function _email_set_target($source, $entity, $target, $value, $value_field = 'va
     $new_value = clean($v);
     //$v = htmlentities($v);
     if (!is_array($new_value) && !is_object($new_value)) {
-      if (isset($sub_field)){
+      if (isset($sub_field)) {
         $field['und'][$i][$sub_field] = $new_value;
       }
       else{
@@ -58,8 +64,8 @@ function _email_set_target($source, $entity, $target, $value, $value_field = 'va
     $i++;
   }
 
-  if (isset($sub_field)){
-    foreach ($field['und'] as $i => $sub){
+  if (isset($sub_field)) {
+    foreach ($field['und'] as $i => $sub) {
       $entity->{$field_name}['und'][$i][$sub_field] = $field['und'][$i][$sub_field];
     }
   }

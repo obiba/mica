@@ -1,8 +1,9 @@
 <?php
+// $Id$
 
 /**
  * @file
- * Class definition of FeedsStudyInfoProcessor.
+ * Class definition of FeedsUniqueNodeProcessor.
  */
 
 /**
@@ -80,7 +81,7 @@ class FeedsUniqueNodeProcessor extends FeedsNodeProcessor {
       ->fields('n', array('nid'));
       $result = $query->execute();
 
-    foreach($result as $row){
+    foreach ($result as $row) {
       return node_load($row->nid);
     }
 
@@ -133,9 +134,9 @@ class FeedsUniqueNodeProcessor extends FeedsNodeProcessor {
           drupal_set_message($e->getMessage(), 'warning');
           $message = $e->getMessage();
           $message .= '<h3>Original item</h3>';
-          $message .= '<pre>' . var_export($item, true) . '</pre>';
+          $message .= '<pre>' . var_export($item, TRUE) . '</pre>';
           $message .= '<h3>Entity</h3>';
-          $message .= '<pre>' . var_export($entity, true) . '</pre>';
+          $message .= '<pre>' . var_export($entity, TRUE) . '</pre>';
           $source->log('import', $message, array(), WATCHDOG_ERROR);
         }
       }

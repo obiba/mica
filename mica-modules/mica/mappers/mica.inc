@@ -1,4 +1,10 @@
 <?php
+// $Id$
+
+/**
+ * @file
+ * Mica mapper for mica fields.
+ */
 
 /**
  * Implementation of hook_feeds_node_processor_targets_alter().
@@ -20,7 +26,7 @@ function mica_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_nam
         'description' => t('The @label field of the node.', array('@label' => $instance['label'])),
       );
     }
-    elseif ($name == 'field_study_legacy_id'){
+    elseif ($name == 'field_study_legacy_id') {
       $targets['field_study_legacy_id'] = array(
         'name' => $instance['label'],
         'callback' => 'mica_feeds_set_target_legacy_id',
@@ -30,15 +36,15 @@ function mica_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_nam
   }
 }
 
-function mica_feeds_set_target_title($source, $entity, $target, $value){
+function mica_feeds_set_target_title($source, $entity, $target, $value ) {
   _mica_set_target($source, $entity, $target, $value);
 }
 
-function mica_feeds_set_target_body($source, $entity, $target, $value){
+function mica_feeds_set_target_body($source, $entity, $target, $value) {
   _mica_set_target($source, $entity, $target, $value);
 }
 
-function mica_feeds_set_target_legacy_id($source, $entity, $target, $value){
+function mica_feeds_set_target_legacy_id($source, $entity, $target, $value) {
   // Get the study parent of this node...
   _mica_set_target($source, $entity, $target, $value);
 }
@@ -67,7 +73,7 @@ function _mica_set_target($source, $entity, $target, $value, $value_field = 'val
   foreach ($value as $v) {
     $new_value = $v;
     if (!is_array($new_value) && !is_object($new_value)) {
-      if (isset($sub_field)){
+      if (isset($sub_field)) {
         $field['und'][$i][$sub_field] = $new_value;
       }
       else{

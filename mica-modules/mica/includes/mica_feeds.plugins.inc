@@ -1,4 +1,10 @@
 <?php
+// $Id$
+
+/**
+ * @file
+ * Mica Feeds plugin definition file.
+ */
 
 include_once(drupal_get_path('module', 'mica') . '/mappers/mica.inc');
 include_once(drupal_get_path('module', 'mica') . '/mappers/email.inc');
@@ -9,7 +15,7 @@ include_once(drupal_get_path('module', 'mica') . '/mappers/references.inc');
  * hook_feeds_plugins
  */
 function mica_feeds_plugins() {
-  $path = drupal_get_path('module', 'mica') .'/plugins';
+  $path = drupal_get_path('module', 'mica') . '/plugins';
   $info = array();
   $info['FeedsStudyChildProcessor'] = array(
     'name' => 'Study Child Node processor',

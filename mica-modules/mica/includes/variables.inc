@@ -1,4 +1,6 @@
 <?php
+// $Id$
+
 /**
  * @file
  * Variable content relation with fields. 

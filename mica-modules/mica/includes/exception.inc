@@ -1,4 +1,6 @@
 <?php
+// $Id$
+
 /**
  * @file
  * Mica Exception definition. 

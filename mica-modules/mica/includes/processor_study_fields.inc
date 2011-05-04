@@ -1,4 +1,6 @@
 <?php
+// $Id$
+
 /**
  * @file
  * Mica search API processor.

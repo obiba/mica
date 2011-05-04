@@ -22,7 +22,7 @@ function node_reference_feeds_processor_targets_alter(&$targets, $entity_type, $
     if ($info['type'] == 'node_reference') {
 
       $targets[$name . ':title'] = array(
-        'name' => $instance['label'] . t(' (Node reference by node title)'),
+        'name' => $instance['label'] .  t(' (Node reference by node title)'),
         'callback' => 'references_feeds_set_target',
         'description' => t('The @label field of the node matched by node title.', array('@label' => $instance['label'])),
         'real_target' => $name);
@@ -155,7 +155,7 @@ function references_feeds_set_target($source, $entity, $target, $value) {
           $reference_type_nb = 0;
   
           // Create a new node only if there is only one content type that can be referenced
-          foreach ($f['settings']['referenceable_types'] as $type){
+          foreach ($f['settings']['referenceable_types'] as $type) {
             if ($f['settings']['referenceable_types'][$type]) {
               $reference_type = $type;
               $reference_type_nb++;
@@ -164,7 +164,7 @@ function references_feeds_set_target($source, $entity, $target, $value) {
           
           if ($reference_type_nb === 1 && isset($reference_type)) {
             // create the node empty
-            $node = new StdClass();
+            $node = new stdClass();
             $node->type = $reference_type;
             $node->title = $v;
             $node->changed = REQUEST_TIME;
@@ -179,7 +179,7 @@ function references_feeds_set_target($source, $entity, $target, $value) {
             drupal_set_message(t('Node %title has been automatically created !', array('%title' => $v)));
           }
           else{
-            drupal_set_message(t('%title does not match an existing '.$typename, array('%title' => $v)));        
+            drupal_set_message(t('%title does not match an existing ' . $typename, array('%title' => $v)));        
           }
         }
         break;
@@ -195,7 +195,7 @@ function references_feeds_set_target($source, $entity, $target, $value) {
 
         // Alert if no match is found.
         if (empty($id)) {
-          drupal_set_message(t('%id is not a valid '.$typename.' id for this field.', array('%id' => $v)));
+          drupal_set_message(t('%id is not a valid ' . $typename . ' id for this field.', array('%id' => $v)));
         }
         break;
     }
@@ -206,7 +206,7 @@ function references_feeds_set_target($source, $entity, $target, $value) {
         // Add the reference, ignoring duplicates.
         $field['und'][] = $reference;
       }
-      else if (!in_array($reference, $field['und'])) {
+      elseif (!in_array($reference, $field['und'])) {
         // Add the reference only if it doesn't already exist.
         $field['und'][] = $reference;
       }
