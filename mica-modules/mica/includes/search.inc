@@ -43,6 +43,17 @@ function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
   $index = search_api_index_load($index_name, TRUE);
   $options = $index->options;
   $fields = $options['fields'];
+  
+  // check if we need to reindex content
+  if (empty($fields[$field_name])) {
+    $reindex = TRUE;
+  } 
+  else {
+    $reindex = $fields[$field_name]['name'] != $field_label
+      || !$fields[$field_name]['indexed']
+      || $fields[$field_name]['type'] != $index_type;
+  }
+  
   $fields[$field_name] = array(
     'name' => $field_label,
     'indexed' => TRUE,
@@ -50,7 +61,10 @@ function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
     'boost' => '1.0',
   );
   search_api_index_edit_fields($index->id, $fields);
-  $index->reindex();
+  
+  if ($reindex) {
+    $index->reindex();
+  }
   
   $facets_conditions = array(
     'index_id' => $index->machine_name,
