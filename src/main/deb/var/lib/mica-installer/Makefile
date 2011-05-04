@@ -63,11 +63,13 @@ clean:
 
 make-sites-install = cd $(installdir)/var/cache/mica-installer && \
 	wget -q http://ci.obiba.org/job/Mica/ws/target/$(2)-$($(2)_version).tar.gz && \
-	tar xzf $(2)-$($(2)_version).tar.gz $(installdir)/usr/share/mica/sites/all/$(1)
+	tar xzf $(2)-$($(2)_version).tar.gz && \
+	mv $(2) $(installdir)/usr/share/mica/sites/all/$(1)
 	
 make-profiles-install = cd $(installdir)/var/cache/mica-installer && \
 	wget -q http://ci.obiba.org/job/Mica/ws/target/$(1)-$($(1)_version).tar.gz && \
-	tar xzf $(1)-$($(1)_version).tar.gz $(installdir)/etc/mica/profiles
+	tar xzf $(1)-$($(1)_version).tar.gz && \
+	mv $(1) $(installdir)/etc/mica/profiles
 
 #
 # Modules versions
