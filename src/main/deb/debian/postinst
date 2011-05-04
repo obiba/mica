@@ -33,6 +33,7 @@ OLDVERSION="$2"
 case "$1" in
     configure)
 
+		#cd /var/lib/mica-installer && make all install
 
 		webserver=`echo $webserver|sed -e 's/,  */ /g'`
 

@@ -3,6 +3,8 @@
 # Requires drush 4+ to be installed: http://drush.ws/
 #
 
+include drupal.mk
+
 version=1.0-SNAPSHOT
 mica_version=7.x-1.0-dev
 mica_feature_version=7.x-1.0-dev
@@ -11,35 +13,6 @@ mica_minimal_version=7.x-1.0-dev
 mica_standard_version=7.x-1.0-dev
 mica_demo_version=7.x-1.0-dev
 mica_samara_version=7.x-1.0-dev
-
-#
-# Modules dependencies
-#
-calendar_version=7.x-2.0-alpha1
-ctools_version=7.x-1.0-alpha4
-date_version=7.x-2.0-alpha3
-drupal_version=7.0
-email_version=7.x-1.0-beta1
-entity_version=7.x-1.0-beta8
-features_version=7.x-1.0-beta2
-feeds_version=7.x-2.0-alpha3
-field_group_version=7.x-1.0-rc2
-field_permissions_version=7.x-1.0-alpha1
-job_scheduler_version=7.x-2.0-alpha2
-link_version=7.x-1.0-alpha3
-login_destination_version=7.x-1.0-beta1
-multiselect_version=7.x-1.8
-name_version=7.x-1.0-beta1
-node_export_version=7.x-3.x-dev
-noderefcreate_version=7.x-1.0-beta2
-references_version=7.x-2.x-dev
-relation_version=7.x-1.0-alpha2
-search_api_ranges_version=7.x-1.x-dev
-search_api_solr_version=7.x-1.x-dev
-search_api_version=7.x-1.0-beta8
-strongarm_version=7.x-2.0-beta2
-views_data_export_version=7.x-3.0-beta4
-views_version=7.x-3.x-dev
 
 #
 # Mysql db access
@@ -65,47 +38,7 @@ clean_url=0
 # Build
 #
 
-all: target drupal mica
-
-target:
-	mkdir -p target
-
-#
-# Drupal Build
-#
-
-drupal: drupal-download solr-php-client drupal-default 
-
-drupal-download:
-	cd target && \
-	drush dl drupal-$(drupal_version) --drupal-project-rename=$(micadir) && \
-	cd $(micadir) && \
-	drush dl advanced_help panels ctools-$(ctools_version) && \
-	drush dl email-$(email_version) name-$(name_version) field_group-$(field_group_version) link-$(link_version) && \
-	drush dl entity-$(entity_version) views-$(views_version) && \
-	drush dl search_api-$(search_api_version) search_api_solr-$(search_api_solr_version) search_api_ranges-${search_api_ranges_version} && \
-	drush dl features-$(features_version) strongarm-$(strongarm_version) && \
-	drush dl references-$(references_version) field_permissions-${field_permissions_version} relation-${relation_version} && \
-	drush dl date-$(date_version) calendar-$(calendar_version) && \
-	drush dl login_destination-$(login_destination_version) && \
-	drush dl views_data_export-$(views_data_export_version) noderefcreate-$(noderefcreate_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version) feeds-$(feeds_version) && \
-	drush dl node_export-$(node_export_version)
-
-solr-php-client:
-	cd target/$(micadir) && \
-	rm -rf sites/all/modules/search_api_solr/SolrPhpClient && \
-	wget -q -r -R index.html,wiki -P tmp http://solr-php-client.googlecode.com/svn/\!svn/bc/22/trunk/ && \
-	mv tmp/solr-php-client.googlecode.com/svn/\!svn/bc/22/trunk/ sites/all/modules/search_api_solr/SolrPhpClient
-	rm -rf tmp
-
-drupal-default:
-	cd target/$(micadir) && \
-	chmod a+w sites/default && \
-	mkdir sites/default/files && \
-	chmod a+w sites/default/files && \
-	cp sites/default/default.settings.php sites/default/settings.php && \
-	chmod a+w sites/default/settings.php && \
-	chmod +x scripts/*.sh
+all: drupal mica
 
 #
 # Mica Build
@@ -139,17 +72,17 @@ mica-versions-modules:
 # Deploy
 #
 
-deploy: debian package
+deploy: package
 
 #
 # Package
 #
 
-package: package-modules package-profiles package-themes
+package: package-modules package-profiles package-themes debian
 	cd target && \
 	rm -f $(micadir).* && \
 	tar czf $(micadir).tar.gz $(micadir) && \
-	zip -r $(micadir).zip $(micadir)
+	zip -qr $(micadir).zip $(micadir)
 
 package-modules:
 	$(call make-package,sites/all/modules,mica)
@@ -174,32 +107,26 @@ debian: deb-prepare deb
 deb-prepare:
 	rm -rf target/deb
 	mkdir -p target/deb/debian
-	mkdir -p target/deb/var/lib/mica/backups
-	mkdir -p target/deb/var/lib/mica/files
 	mkdir -p target/deb/usr/share/doc/mica
 	mkdir -p target/deb/usr/share
 	mkdir -p target/deb/etc/mica/sites
+	mkdir -p target/deb/var/lib/mica-installer
 	
-deb: deb-install deb-profiles deb-sites deb-doc deb-changelog
+deb: deb-install deb-changelog
 	
 deb-install:
-	cp -r target/$(micadir) target/deb/usr/share/mica
 	cp src/main/deb/debian/* target/deb/debian
 	cp src/main/deb/etc/mica/* target/deb/etc/mica
-	
-deb-profiles:
-	mv target/deb/usr/share/mica/profiles target/deb/etc/mica/
-	rm -rf target/deb/etc/mica/profiles/minimal target/deb/etc/mica/profiles/testing
-	ln -s /etc/mica/profiles target/deb/usr/share/mica/profiles
-
-deb-sites:
-	mv target/deb/usr/share/mica/sites/default target/deb/etc/mica/sites
-	ln -s /etc/mica/sites/default target/deb/usr/share/mica/sites/default
-	mv target/deb/usr/share/mica/sites/*.php target/deb/etc/mica/sites
-	
-deb-doc:
-	mv target/deb/usr/share/mica/*.txt target/deb/usr/share/doc/mica
-	mv target/deb/usr/share/doc/mica/robots.txt target/deb/usr/share/mica
+	cp src/main/deb/var/lib/mica-installer/* target/deb/var/lib/mica-installer
+	cp drupal.mk target/deb/var/lib/mica-installer
+	mkdir -p target/deb/var/cache/mica-installer
+	$(call deb-package,mica)
+	$(call deb-package,mica_feature)
+	$(call deb-package,mica_addons)
+	$(call deb-package,mica_minimal)
+	$(call deb-package,mica_standard)
+	$(call deb-package,mica_demo)
+	$(call deb-package,mica_samara)
 
 deb-changelog:
 	echo "mica ($(deb_version)) unstable; urgency=low" > target/deb/debian/changelog
@@ -289,11 +216,14 @@ make-version = cd target/$(micadir)/$(1) && \
 
 # make-package function: build tar.gz and zip files of a project
 make-package = cd target/$(micadir)/$(1) && \
-	tar czvf $(2)-$($(2)_version).tar.gz $(2) && \
-	zip -r $(2)-$($(2)_version).zip $(2) && \
+	tar czf $(2)-$($(2)_version).tar.gz $(2) && \
+	zip -qr $(2)-$($(2)_version).zip $(2) && \
 	cd - && \
 	mv target/$(micadir)/$(1)/*.tar.gz target && \
 	mv target/$(micadir)/$(1)/*.zip target 
+
+# deb-package: echo the modules versions in debian Makefile
+deb-package = echo "$(1)_version=$($(1)_version)" >> target/deb/var/lib/mica-installer/Makefile
 
 # make-git function: propagate svn changes to git
 make-git = cd target/git && \
@@ -311,3 +241,4 @@ micadir=mica-$(version)
 build_number=$(shell svnversion -n | cut -d : -f 1)
 deb_version=$(version)-b$(build_number)
 deb_date=$(shell date -R)
+drushexec=drush
