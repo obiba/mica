@@ -8,7 +8,7 @@ include drupal.mk
 version=1.0-dev
 
 micadir=mica
-installdir=/tmp/mica-install
+installdir=/
 
 drushexec=$(installdir)/var/cache/mica-installer/drush/drush
 
