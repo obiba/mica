@@ -57,7 +57,7 @@ function mica_node_insert($node) {
     
     foreach ($relations as $relation) {
       
-      if(!$relation['cascaded']) continue;
+      if (!$relation['cascaded']) continue;
       
       $field_ref = $relation['node_reference'];
       $field = $node->$field_ref;
@@ -123,7 +123,7 @@ function mica_node_update($node) {
     
     foreach ($relations as $relation) {
       
-      if(!$relation['cascaded']) continue;
+      if (!$relation['cascaded']) continue;
       
       $field_ref = $relation['node_reference'];
       $field = $node->$field_ref;
@@ -165,7 +165,7 @@ function mica_node_delete($node) {
   if (!empty($relations)) {
     $language = $node->language;
     foreach ($relations as $relation) {
-      if(!$relation['cascaded']) continue;
+      if (!$relation['cascaded']) continue;
       $field_ref = $relation['node_reference'];
       $field = $node->$field_ref;
       $child_nid = $field[$language][0]['nid'];
