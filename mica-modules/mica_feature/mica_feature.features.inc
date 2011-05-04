@@ -37,20 +37,20 @@ function mica_feature_views_api() {
  */
 function mica_feature_node_info() {
   $items = array(
-    'address' => array(
-      'name' => t('Address'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Institution Name'),
-      'help' => '',
-    ),
     'contact' => array(
       'name' => t('Contact'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Contact Name and email'),
+      'title_label' => t('Contact Name and Institution'),
+      'help' => '',
+    ),
+    'institution' => array(
+      'name' => t('Institution'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Institution Name'),
       'help' => '',
     ),
     'study' => array(
@@ -313,7 +313,7 @@ function mica_feature_default_search_api_index() {
           "type" : "string",
           "boost" : "1.0"
         },
- "field_study_contact_email" : {
+        "field_study_contact_email" : {
           "name" : "Contact Email",
           "indexed" : 1,
           "type" : "text",

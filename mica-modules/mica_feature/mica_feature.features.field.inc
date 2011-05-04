@@ -10,67 +10,6 @@
 function mica_feature_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'comment-comment_node_address-comment_body'
-  $fields['comment-comment_node_address-comment_body'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(
-        0 => 'comment',
-      ),
-      'field_name' => 'comment_body',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'comment_node_address',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'comment',
-      'field_name' => 'comment_body',
-      'label' => 'Comment',
-      'required' => TRUE,
-      'settings' => array(
-        'text_processing' => 1,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'text',
-        'settings' => array(
-          'rows' => 5,
-        ),
-        'type' => 'text_textarea',
-        'weight' => 0,
-      ),
-    ),
-  );
-
   // Exported field: 'comment-comment_node_contact-comment_body'
   $fields['comment-comment_node_contact-comment_body'] = array(
     'field_config' => array(
@@ -315,291 +254,6 @@ function mica_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-address-field_city'
-  $fields['node-address-field_city'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_city',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '1',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'address',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '1',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_city',
-      'label' => 'City',
-      'required' => FALSE,
-      'settings' => array(
-        'text_processing' => 0,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'text',
-        'settings' => array(
-          'size' => 60,
-        ),
-        'type' => 'text_textfield',
-        'weight' => '-3',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-address-field_country'
-  $fields['node-address-field_country'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_country',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(),
-        'allowed_values_function' => '',
-      ),
-      'translatable' => '1',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'address',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '2',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_country',
-      'label' => 'Country',
-      'required' => FALSE,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '-2',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-address-field_postal_code'
-  $fields['node-address-field_postal_code'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_postal_code',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'max_length' => '255',
-        'variable_infos' => array(
-          'variable' => 0,
-          'variable_body' => '',
-          'variable_value_type' => '',
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'address',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '3',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_postal_code',
-      'label' => 'Postal Code',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '-1',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-address-field_street'
-  $fields['node-address-field_street'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_street',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'max_length' => '255',
-        'variable_infos' => array(
-          'variable' => 0,
-          'variable_body' => '',
-          'variable_value_type' => '',
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'address',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '0',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_street',
-      'label' => 'Street',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '-4',
-      ),
-    ),
-  );
-
   // Exported field: 'node-contact-field_contact_email'
   $fields['node-contact-field_contact_email'] = array(
     'field_config' => array(
@@ -639,7 +293,7 @@ function mica_feature_field_default_fields() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'default',
-          'weight' => 1,
+          'weight' => 6,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -650,7 +304,7 @@ function mica_feature_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_contact_email',
-      'label' => 'Contact Email',
+      'label' => 'Email',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -662,7 +316,7 @@ function mica_feature_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'email_textfield',
-        'weight' => '-3',
+        'weight' => '2',
       ),
     ),
   );
@@ -783,11 +437,11 @@ Prof.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => NULL,
+          'label' => 'inline',
+          'module' => 'name',
           'settings' => array(),
-          'type' => 'name_default_default',
-          'weight' => 0,
+          'type' => 'name_default',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -811,12 +465,12 @@ Prof.',
           'title' => '',
         ),
         'size' => array(
-          'credentials' => '35',
-          'family' => '20',
-          'generational' => '5',
-          'given' => '20',
-          'middle' => '20',
-          'title' => '6',
+          'credentials' => 35,
+          'family' => 20,
+          'generational' => 5,
+          'given' => 20,
+          'middle' => 20,
+          'title' => 6,
         ),
         'title_display' => array(
           'credentials' => 'description',
@@ -833,7 +487,7 @@ Prof.',
         'module' => 'name',
         'settings' => array(),
         'type' => 'name_widget',
-        'weight' => '-4',
+        'weight' => '1',
       ),
     ),
   );
@@ -869,11 +523,11 @@ Prof.',
           'view own' => 0,
         ),
         'referenceable_types' => array(
-          'address' => 'address',
           'article' => 0,
           'blog' => 0,
           'contact' => 0,
           'event' => 0,
+          'institution' => 'institution',
           'page' => 0,
           'panel' => 0,
           'study' => 0,
@@ -896,11 +550,13 @@ Prof.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => 5,
+          'settings' => array(
+            'node_reference_view_mode' => 'full',
+          ),
+          'type' => 'node_reference_node',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -925,7 +581,7 @@ Prof.',
           'size' => '60',
         ),
         'type' => 'noderefcreate_autocomplete',
-        'weight' => '1',
+        'weight' => '5',
       ),
     ),
   );
@@ -965,11 +621,11 @@ Prof.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 2,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -992,7 +648,7 @@ Prof.',
           'size' => 60,
         ),
         'type' => 'text_textfield',
-        'weight' => '-2',
+        'weight' => '3',
       ),
     ),
   );
@@ -1044,11 +700,11 @@ Prof.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 4,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1072,7 +728,292 @@ Prof.',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '0',
+        'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-institution-field_city'
+  $fields['node-institution-field_city'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_city',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'institution',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_city',
+      'label' => 'City',
+      'required' => FALSE,
+      'settings' => array(
+        'text_processing' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'size' => 60,
+        ),
+        'type' => 'text_textfield',
+        'weight' => '-3',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-institution-field_country'
+  $fields['node-institution-field_country'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_country',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '1',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'institution',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => '2',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_country',
+      'label' => 'Country',
+      'required' => FALSE,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '-2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-institution-field_postal_code'
+  $fields['node-institution-field_postal_code'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_postal_code',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'max_length' => '255',
+        'variable_infos' => array(
+          'variable' => 0,
+          'variable_body' => '',
+          'variable_value_type' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'institution',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '3',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_postal_code',
+      'label' => 'Postal Code',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '-1',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-institution-field_street'
+  $fields['node-institution-field_street'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_street',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'max_length' => '255',
+        'variable_infos' => array(
+          'variable' => 0,
+          'variable_body' => '',
+          'variable_value_type' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'institution',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_street',
+      'label' => 'Street',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '-4',
       ),
     ),
   );
@@ -2574,11 +2515,11 @@ Prof.',
           'view own' => 0,
         ),
         'referenceable_types' => array(
-          'address' => 0,
           'article' => 0,
           'blog' => 0,
           'contact' => 'contact',
           'event' => 0,
+          'institution' => 0,
           'page' => 0,
           'panel' => 0,
           'study' => 0,
@@ -3519,10 +3460,10 @@ Prof.',
   t('City');
   t('Comment');
   t('Contact');
-  t('Contact Email');
   t('Contact Name');
   t('Content Type');
   t('Country');
+  t('Email');
   t('End year');
   t('Field Name');
   t('Institution');
