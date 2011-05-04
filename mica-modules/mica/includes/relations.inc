@@ -190,7 +190,7 @@ function _mica_edit_node_type_relation($form, &$form_state) {
       $result = $query->entityCondition('entity_type', 'node')
                       ->entityCondition('bundle', $relation['parent_bundle'])
                       ->execute();      
-      if (!empty($result['node'])) {
+      if (!empty($result['node']) && $relation['cascaded']) {
         $entities = entity_load('node', array_keys($result['node']));
         foreach ($entities as $entity) {
           mica_node_insert($entity);  // create missing child content
