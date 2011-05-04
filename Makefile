@@ -16,30 +16,31 @@ mica_samara_version=7.x-1.0-dev
 #
 # Modules dependencies
 #
-drupal_version=7.0
-ctools_version=7.x-1.0-alpha4
-email_version=7.x-1.0-beta1
-name_version=7.x-1.0-beta1
-field_group_version=7.x-1.0-rc2
-link_version=7.x-1.0-alpha3
-entity_version=7.x-1.0-beta8
-views_version=7.x-3.x-dev
-search_api_version=7.x-1.0-beta8
-search_api_solr_version=7.x-1.x-dev
-features_version=7.x-1.0-beta2
-strongarm_version=7.x-2.0-beta2
-references_version=7.x-2.x-dev
-node_export_version=7.x-3.x-dev
-field_permissions_version=7.x-1.0-alpha1
-date_version=7.x-2.0-alpha3
 calendar_version=7.x-2.0-alpha1
-login_destination_version=7.x-1.0-beta1
-relation_version=7.x-1.0-alpha2
-views_data_export_version=7.x-3.0-beta4
-noderefcreate_version=7.x-1.0-beta2
-multiselect_version=7.x-1.8
-job_scheduler_version=7.x-2.0-alpha2
+ctools_version=7.x-1.0-alpha4
+date_version=7.x-2.0-alpha3
+drupal_version=7.0
+email_version=7.x-1.0-beta1
+entity_version=7.x-1.0-beta8
+features_version=7.x-1.0-beta2
 feeds_version=7.x-2.0-alpha3
+field_group_version=7.x-1.0-rc2
+field_permissions_version=7.x-1.0-alpha1
+job_scheduler_version=7.x-2.0-alpha2
+link_version=7.x-1.0-alpha3
+login_destination_version=7.x-1.0-beta1
+multiselect_version=7.x-1.8
+name_version=7.x-1.0-beta1
+node_export_version=7.x-3.x-dev
+noderefcreate_version=7.x-1.0-beta2
+references_version=7.x-2.x-dev
+relation_version=7.x-1.0-alpha2
+search_api_ranges_version=7.x-1.x-dev
+search_api_solr_version=7.x-1.x-dev
+search_api_version=7.x-1.0-beta8
+strongarm_version=7.x-2.0-beta2
+views_data_export_version=7.x-3.0-beta4
+views_version=7.x-3.x-dev
 
 #
 # Mysql db access
@@ -79,7 +80,7 @@ drupal-download:
 	drush dl advanced_help panels ctools-$(ctools_version) && \
 	drush dl email-$(email_version) name-$(name_version) field_group-$(field_group_version) link-$(link_version) && \
 	drush dl entity-$(entity_version) views-$(views_version) && \
-	drush dl search_api-$(search_api_version) search_api_solr-$(search_api_solr_version) && \
+	drush dl search_api-$(search_api_version) search_api_solr-$(search_api_solr_version) search_api_ranges-${search_api_ranges_version} && \
 	svn checkout -r22 http://solr-php-client.googlecode.com/svn/trunk/ sites/all/modules/search_api_solr/SolrPhpClient && \
 	drush dl features-$(features_version) strongarm-$(strongarm_version) && \
 	drush dl references-$(references_version) field_permissions-${field_permissions_version} relation-${relation_version} && \
