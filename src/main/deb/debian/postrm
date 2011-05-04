@@ -37,11 +37,10 @@ nukedir="/usr/share/${package_name}/"
 docdir="/usr/share/doc/${package_name}/"
 sqlfile="${docdir}database/database.mysql"
 upgradesdir="${docdir}upgrades/"
-configdir="/etc/mica"
+configdir="/etc/mica/"
 configfile="${configdir}conf.php"
 includefile="${configdir}apache.conf"
 dbconfigfile="${configdir}/sites/default/dbconfig.php"
-cronfile="/etc/cron.d/${package_name}"
 
 webserver="apache2"
 
@@ -59,7 +58,7 @@ case "$1" in
 
 
 	# Remove configuration files (conf.php, $SITE.php)
-    rm -f /etc/drupal/sites/default/settings.php
+    rm -f /etc/mica/sites/default/settings.php
 
 	if [ "$1" = "purge" ]; then
 		rm -f ${dbconfigfile}

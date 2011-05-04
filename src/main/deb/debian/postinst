@@ -25,9 +25,8 @@ pkgdir="/usr/share/${package_name}"
 docdir="/usr/share/doc/${package_name}"
 upgradesdir="${docdir}/upgrades"
 configdir="/etc/mica"
-default_configfile="${configdir}/sites/default/settings.php"
+default_configfile="${configdir}/sites/default"
 includefile="${configdir}/apache.conf"
-cronfile="/etc/cron.d/${package_name}"
 
 OLDVERSION="$2"
 

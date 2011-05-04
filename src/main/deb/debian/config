@@ -10,7 +10,7 @@ set -e
 
 if [ -f /usr/share/dbconfig-common/dpkg/config ]; then
 	# we support mysql and pgsql
-	dbc_dbtypes="mysql, pgsql"
+	dbc_dbtypes="pgsql, mysql"
 	dbc_dbname=mica
 	dbc_dbuser=mica
 

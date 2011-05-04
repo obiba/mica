@@ -4,7 +4,6 @@
 #
 
 version=1.0-SNAPSHOT
-micadir=mica-$(version)
 mica_version=7.x-1.0-dev
 mica_feature_version=7.x-1.0-dev
 mica_addons_version=7.x-1.0-dev
@@ -66,12 +65,16 @@ clean_url=0
 # Build
 #
 
-all: drupal mica
+all: target drupal mica
 
 target:
 	mkdir -p target
 
-drupal: target drupal-download drupal-default 
+#
+# Drupal Build
+#
+
+drupal: drupal-download solr-php-client drupal-default 
 
 drupal-download:
 	cd target && \
@@ -81,7 +84,6 @@ drupal-download:
 	drush dl email-$(email_version) name-$(name_version) field_group-$(field_group_version) link-$(link_version) && \
 	drush dl entity-$(entity_version) views-$(views_version) && \
 	drush dl search_api-$(search_api_version) search_api_solr-$(search_api_solr_version) search_api_ranges-${search_api_ranges_version} && \
-	svn checkout -r22 http://solr-php-client.googlecode.com/svn/trunk/ sites/all/modules/search_api_solr/SolrPhpClient && \
 	drush dl features-$(features_version) strongarm-$(strongarm_version) && \
 	drush dl references-$(references_version) field_permissions-${field_permissions_version} relation-${relation_version} && \
 	drush dl date-$(date_version) calendar-$(calendar_version) && \
@@ -89,13 +91,25 @@ drupal-download:
 	drush dl views_data_export-$(views_data_export_version) noderefcreate-$(noderefcreate_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version) feeds-$(feeds_version) && \
 	drush dl node_export-$(node_export_version)
 
+solr-php-client:
+	cd target/$(micadir) && \
+	rm -rf sites/all/modules/search_api_solr/SolrPhpClient && \
+	wget -q -r -R index.html,wiki -P tmp http://solr-php-client.googlecode.com/svn/\!svn/bc/22/trunk/ && \
+	mv tmp/solr-php-client.googlecode.com/svn/\!svn/bc/22/trunk/ sites/all/modules/search_api_solr/SolrPhpClient
+	rm -rf tmp
+
 drupal-default:
 	cd target/$(micadir) && \
 	chmod a+w sites/default && \
 	mkdir sites/default/files && \
 	chmod a+w sites/default/files && \
 	cp sites/default/default.settings.php sites/default/settings.php && \
-	chmod a+w sites/default/settings.php
+	chmod a+w sites/default/settings.php && \
+	chmod +x scripts/*.sh
+
+#
+# Mica Build
+#
 
 mica: mica-install mica-versions
 
@@ -151,35 +165,48 @@ package-themes:
 	$(call make-package,sites/all/themes,mica_samara)
 
 #
-# Debian
+# Debian Package
 #
 
-build_number=$(shell svnversion -n | cut -d : -f 1)
-deb_version=$(version)-b$(build_number)
-deb_date=$(shell date -R)
+debian: deb-prepare deb	
+	cd target/deb && debuild -us -uc -b
+	
+deb-prepare:
+	rm -rf target/deb
+	mkdir -p target/deb/debian
+	mkdir -p target/deb/var/lib/mica/backups
+	mkdir -p target/deb/var/lib/mica/files
+	mkdir -p target/deb/usr/share/doc/mica
+	mkdir -p target/deb/usr/share
+	mkdir -p target/deb/etc/mica/sites
+	
+deb: deb-install deb-profiles deb-sites deb-doc deb-changelog
+	
+deb-install:
+	cp -r target/$(micadir) target/deb/usr/share/mica
+	cp src/main/deb/debian/* target/deb/debian
+	cp src/main/deb/etc/mica/* target/deb/etc/mica
+	
+deb-profiles:
+	mv target/deb/usr/share/mica/profiles target/deb/etc/mica/
+	rm -rf target/deb/etc/mica/profiles/minimal target/deb/etc/mica/profiles/testing
+	ln -s /etc/mica/profiles target/deb/usr/share/mica/profiles
 
-debian: deb
+deb-sites:
+	mv target/deb/usr/share/mica/sites/default target/deb/etc/mica/sites
+	ln -s /etc/mica/sites/default target/deb/usr/share/mica/sites/default
+	mv target/deb/usr/share/mica/sites/*.php target/deb/etc/mica/sites
+	
+deb-doc:
+	mv target/deb/usr/share/mica/*.txt target/deb/usr/share/doc/mica
+	mv target/deb/usr/share/doc/mica/robots.txt target/deb/usr/share/mica
+
+deb-changelog:
 	echo "mica ($(deb_version)) unstable; urgency=low" > target/deb/debian/changelog
 	echo "" >> target/deb/debian/changelog
 	echo "  * See http://wiki.obiba.org/ for more details." >> target/deb/debian/changelog
 	echo "" >> target/deb/debian/changelog
 	echo " -- OBiBa <info@obiba.org>  $(deb_date)" >> target/deb/debian/changelog
-	cd target/deb && debuild -us -uc -b
-	
-deb:
-	rm -rf target/deb
-	mkdir -p target/deb/debian && \
-	mkdir -p target/deb/var/lib/mica/backups && \
-	mkdir -p target/deb/var/lib/mica/files && \
-	mkdir -p target/deb/usr/share/doc/mica && \
-	mkdir -p target/deb/usr/share && \
-	mkdir -p target/deb/etc/mica/sites && \
-	cp -r target/$(micadir) target/deb/usr/share/mica && \
-	cp src/main/deb/debian/* target/deb/debian && \
-	cp src/main/deb/etc/mica/* target/deb/etc/mica && \
-	cp -r target/deb/usr/share/mica/sites/default target/deb/etc/mica/sites && \
-	mv target/deb/usr/share/mica/*.txt target/deb/usr/share/doc/mica && \
-	mv target/deb/usr/share/doc/mica/robots.txt target/deb/usr/share/mica
 
 #
 # Site
@@ -275,4 +302,12 @@ make-git = cd target/git && \
 	git remote add origin $(git_user)@git.drupal.org:$(3) && \
 	git pull --rebase origin master && \
 	git push origin master
-	
+
+#
+# Variables (not to be overridden)
+#
+
+micadir=mica-$(version)
+build_number=$(shell svnversion -n | cut -d : -f 1)
+deb_version=$(version)-b$(build_number)
+deb_date=$(shell date -R)

@@ -2,16 +2,16 @@ Source: mica
 Section: web
 Priority: extra
 Maintainer: OBiBa <info@obiba.org>
-Build-Depends: debhelper (>= 7.0.15)
+Build-Depends: debhelper (>= 8)
 Standards-Version: 3.8.4
 Homepage: http://www.obiba.org
 
 Package: mica
 Architecture: all
 Pre-Depends: debconf
-Depends: apache2 | httpd, php5, php5-mysql | php5-pgsql, php5-gd, exim4 | mail-transport-agent, wwwconfig-common (>= 0.0.37), mysql-client | virtual-mysql-client | postgresql-client, dbconfig-common, curl, libjs-jquery
+Depends: apache2 | httpd, php5, php5-cli, php5-mysql | php5-pgsql, php5-gd, exim4 | mail-transport-agent, wwwconfig-common (>= 0.0.37), mysql-client | virtual-mysql-client | postgresql-client, dbconfig-common, curl, libjs-jquery
 Recommends: mysql-server | postgresql
-Description: a fully-featured content management framework
+Description: OBiBa study management framework
  Mica is a dynamic web site platform which allows an individual or
  community of users to publish, manage and organize a study
  content, Mica integrates many popular features of content
