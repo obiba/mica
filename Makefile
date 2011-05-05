@@ -73,6 +73,10 @@ mica-versions-modules:
 #
 
 deploy: package
+	cp target/*.deb /var/www/deb/stable
+
+deploy-unstable: package
+	cp target/*.deb /var/www/deb/unstable
 
 #
 # Package
@@ -196,7 +200,7 @@ help:
 	@echo
 	@echo "Available make targets:"
 	@echo "  all          : Download Drupal, required modules and install Mica modules/profiles in it. Result is available in 'target' directory."
-	@echo "  package      : Package Drupal for Mica ($(micadir).tar.gz)."
+	@echo "  package      : Package Drupal for Mica ($(micadir).tar.gz), Mica modules and make a Mica installer Debian package."
 	@echo "  default-site : Install default site with Mica profile."
 	@echo "  site         : Install configured site with Mica profile."
 	@echo "  mica         : Install Mica modules/profiles in Drupal."
