@@ -73,10 +73,10 @@ mica-versions-modules:
 #
 
 deploy: package
-	cp target/*.deb /var/www/deb/stable
+	cp target/*.deb /var/www/pkg/stable
 
 deploy-unstable: package
-	cp target/*.deb /var/www/deb/unstable
+	cp target/*.deb /var/www/pkg/unstable
 
 #
 # Package
@@ -105,8 +105,12 @@ package-themes:
 # Debian Package
 #
 
+# for testing (deb is not signed)
+#debuild_opts=-us -uc
+debuild_opts=
+
 debian: deb-prepare deb	
-	cd target/deb && debuild -us -uc -b
+	cd target/deb && debuild $(debuild_opts) -b
 	
 deb-prepare:
 	rm -rf target/deb
