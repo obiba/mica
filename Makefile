@@ -118,6 +118,7 @@ deb-install:
 	cp src/main/deb/debian/* target/deb/debian
 	cp src/main/deb/etc/mica/* target/deb/etc/mica
 	cp src/main/deb/var/lib/mica-installer/* target/deb/var/lib/mica-installer
+	echo "version=$(deb_version)" >> target/deb/var/lib/mica-installer/Makefile
 	cp drupal.mk target/deb/var/lib/mica-installer
 	mkdir -p target/deb/var/cache/mica-installer
 	$(call deb-package,mica)

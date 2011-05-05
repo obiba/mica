@@ -5,47 +5,60 @@
 
 include drupal.mk
 
-version=1.0-dev
-
+oldversion=
 micadir=mica
-installdir=/
 
-drushexec=$(installdir)/var/cache/mica-installer/drush/drush
+drushexec=/var/cache/mica-installer/drush/drush
 
-all: drush drupal
+all: drush
 
 drush:
-	mkdir -p $(installdir)/var/cache/mica-installer
-	cd $(installdir)/var/cache/mica-installer && \
-	wget -q http://ftp.drupal.org/files/projects/drush-7.x-4.4.tar.gz && \
-	tar xzf drush-7.x-4.4.tar.gz
+	@echo "**** Drush install"
+	if [ ! -e $(drushexec) ]; then \
+	  cd /var/cache/mica-installer && \
+	  wget -q http://ftp.drupal.org/files/projects/drush-7.x-4.4.tar.gz && \
+	  tar xzf drush-7.x-4.4.tar.gz ; \
+	fi
 	$(drushexec) version
 
-install: install-prepare drupal-install drupal-profiles drupal-sites drupal-doc mica-install
+install: drupal-install mica-install
 
-install-prepare: 
-	mkdir -p $(installdir)/usr/share/mica
-	mkdir -p $(installdir)/usr/share/doc/mica
-	mkdir -p $(installdir)/etc/mica/sites
+#
+# Drupal install
+#
 
-drupal-install:
+drupal-install: 
+ifndef oldversion
+	@echo "**** Drupal install" 
+	make do-drupal-install
+endif
+
+do-drupal-install: drupal drupal-install-prepare drupal-profiles drupal-sites drupal-doc
+
+drupal-install-prepare:
 	rm -rf target/$(micadir)/profiles/minimal target/$(micadir)/profiles/testing
-	cp -r target/$(micadir)/* $(installdir)/usr/share/mica
+	mv -f target/$(micadir) /usr/share
 
 drupal-profiles:
-	mv $(installdir)/usr/share/mica/profiles $(installdir)/etc/mica/
-	ln -s $(installdir)/etc/mica/profiles $(installdir)/usr/share/mica/profiles
+	mv /usr/share/mica/profiles/* /etc/mica/profiles
+	rmdir /usr/share/mica/profiles && \
+	ln -s /etc/mica/profiles /usr/share/mica/profiles
 
 drupal-sites:
-	mv $(installdir)/usr/share/mica/sites/default $(installdir)/etc/mica/sites
-	ln -s $(installdir)/etc/mica/sites/default $(installdir)/usr/share/mica/sites/default
-	mv $(installdir)/usr/share/mica/sites/*.php $(installdir)/etc/mica/sites
+	mv /usr/share/mica/sites/default/* /etc/mica/sites/default
+	rmdir /usr/share/mica/sites/default && \
+	ln -s /etc/mica/sites/default /usr/share/mica/sites/default
+	mv /usr/share/mica/sites/*.php /etc/mica/sites
 	
 drupal-doc:
-	mv $(installdir)/usr/share/mica/*.txt $(installdir)/usr/share/doc/mica
-	mv $(installdir)/usr/share/doc/mica/robots.txt $(installdir)/usr/share/mica
+	mv /usr/share/mica/*.txt /usr/share/doc/mica
+	mv /usr/share/doc/mica/robots.txt /usr/share/mica
+
+#
+# Mica install
+#
 	
-mica-install:
+mica-install: mica-install-prepare
 	$(call make-sites-install,themes,mica_samara)
 	$(call make-sites-install,modules,mica)
 	$(call make-sites-install,modules,mica_feature)
@@ -54,24 +67,40 @@ mica-install:
 	$(call make-profiles-install,mica_standard)
 	$(call make-profiles-install,mica_demo)
 	
+mica-install-prepare:
+	@echo "**** Mica install"
+	mkdir -p target	
+	if [ ! -e /etc/mica/sites/default/settings.php ]; then \
+		cd /etc/mica/sites/default && \
+		cp default.settings.php settings.php && \
+		chmod a+w settings.php ; \
+	fi
+
+#
+# Clean
+#
+
 clean:
 	rm -rf target
-	
+	rm -rf /var/cache/mica-installer/*.gz
+
 #
 # Functions
 #
 
-make-sites-install = cd $(installdir)/var/cache/mica-installer && \
+make-sites-install = cd target && \
 	wget -q http://ci.obiba.org/job/Mica/ws/target/$(2)-$($(2)_version).tar.gz && \
 	tar xzf $(2)-$($(2)_version).tar.gz && \
-	mv $(2) $(installdir)/usr/share/mica/sites/all/$(1)
+	rm -rf /usr/share/mica/sites/all/$(1)/$(2) && \
+	mv $(2) /usr/share/mica/sites/all/$(1)
 	
-make-profiles-install = cd $(installdir)/var/cache/mica-installer && \
+make-profiles-install = cd target && \
 	wget -q http://ci.obiba.org/job/Mica/ws/target/$(1)-$($(1)_version).tar.gz && \
 	tar xzf $(1)-$($(1)_version).tar.gz && \
-	mv $(1) $(installdir)/etc/mica/profiles
+	rm -rf /usr/share/mica/profiles/$(1) && \
+	mv $(1) /usr/share/mica/profiles
 
 #
-# Modules versions
+# Versions
 #
 

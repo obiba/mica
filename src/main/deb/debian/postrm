@@ -31,7 +31,7 @@ if [ "$DPKG_DEBUG" = "developer" ]; then
 fi
 
 package_name="mica"
-datadir="/var/lib/${package_name}/"
+datadir="/var/lib/${package_name}-installer/"
 backupdir="${datadir}backups/"
 nukedir="/usr/share/${package_name}/"
 docdir="/usr/share/doc/${package_name}/"
@@ -41,6 +41,7 @@ configdir="/etc/mica/"
 configfile="${configdir}conf.php"
 includefile="${configdir}apache.conf"
 dbconfigfile="${configdir}/sites/default/dbconfig.php"
+cachedir="/var/cache/${package_name}-installer/"
 
 webserver="apache2"
 
@@ -58,7 +59,7 @@ case "$1" in
 
 
 	# Remove configuration files (conf.php, $SITE.php)
-    rm -f /etc/mica/sites/default/settings.php
+    rm -f ${configdir}/sites/default/settings.php
 
 	if [ "$1" = "purge" ]; then
 		rm -f ${dbconfigfile}
@@ -67,6 +68,8 @@ case "$1" in
 		fi
         
 		db_purge || true
+
+		rm -rf ${configdir} ${datadir} ${cachedir} ${docdir} ${nukedir}
 
 	fi
 
