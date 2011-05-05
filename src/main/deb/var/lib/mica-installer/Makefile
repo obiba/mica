@@ -4,11 +4,22 @@
 #
 
 include drupal.mk
+include sites.mk
 
 oldversion=
 micadir=mica
-
+installdir=/usr/share
 drushexec=/var/cache/mica-installer/drush/drush
+
+#
+# Mysql db access
+#
+db_user=mica
+db_pass=
+
+#
+# Drush install
+#
 
 all: drush
 
@@ -20,6 +31,10 @@ drush:
 	  tar xzf drush-7.x-4.4.tar.gz ; \
 	fi
 	$(drushexec) version
+
+#
+# Install
+#
 
 install: drupal-install mica-install
 

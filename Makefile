@@ -4,6 +4,7 @@
 #
 
 include drupal.mk
+include sites.mk
 
 version=1.0-SNAPSHOT
 mica_version=7.x-1.0-dev
@@ -19,20 +20,6 @@ mica_samara_version=7.x-1.0-dev
 #
 db_user=root
 db_pass=rootadmin
-
-#
-# Your site
-#
-site_db_name=mica_site
-site_name=MicaSite
-site_dir_name=site.mica-obiba.org
-site_account_name=admin         
-site_account_pass=admin
-
-#
-# Clean urls: 0/1
-#
-clean_url=0
 
 #
 # Build
@@ -128,6 +115,7 @@ deb-install:
 	cp src/main/deb/var/lib/mica-installer/* target/deb/var/lib/mica-installer
 	echo "version=$(deb_version)" >> target/deb/var/lib/mica-installer/Makefile
 	cp drupal.mk target/deb/var/lib/mica-installer
+	cp sites.mk target/deb/var/lib/mica-installer
 	mkdir -p target/deb/var/cache/mica-installer
 	$(call deb-package,mica)
 	$(call deb-package,mica_feature)
@@ -148,22 +136,16 @@ deb-changelog:
 # Site
 #
 
-default-site:
-	cd target/$(micadir) && \
-	drush site-install mica_standard --db-url=mysql://$(db_user):$(db_pass)@localhost/mica --site-name=Mica --clean-url=$(clean_url) --yes
-
-site:
-	cd target/$(micadir) && \
-	drush site-install mica_standard --db-url=mysql://$(db_user):$(db_pass)@localhost/$(site_db_name) --site-name=$(site_name) --sites-subdir=$(site_dir_name) --clean-url=$(clean_url) --account-name=$(site_account_name) --account-pass=$(site_account_pass)
+installdir=target
 
 demo-site:
 	cd target/$(micadir) && \
-	drush site-install mica_demo --db-url=mysql://$(db_user):$(db_pass)@localhost/mica --site-name=Mica --clean-url=$(clean_url) --yes && \
-	drush ne-import --file=profiles/mica_demo/data/mica-demo.txt
+	$(drushexec) site-install mica_demo --db-url=mysql://$(db_user):$(db_pass)@localhost/mica --site-name=Mica --clean-url=$(clean_url) --yes && \
+	$(drushexec) ne-import --file=profiles/mica_demo/data/mica-demo.txt
 
 demo-export:
 	cd target/$(micadir) && \
-	drush ne-export 2 3 4 5 -u 1 --file=../mica-demo.txt
+	$(drushexec) ne-export 2 3 4 5 -u 1 --file=../mica-demo.txt
 	
 #
 # Devel
