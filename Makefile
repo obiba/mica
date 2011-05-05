@@ -3,8 +3,8 @@
 # Requires drush 4+ to be installed: http://drush.ws/
 #
 
-include drupal.mk
-include sites.mk
+include includes/drupal.mk
+include includes/sites.mk
 
 version=1.0-SNAPSHOT
 mica_version=7.x-1.0-dev
@@ -114,8 +114,8 @@ deb-install:
 	cp src/main/deb/etc/mica/* target/deb/etc/mica
 	cp src/main/deb/var/lib/mica-installer/* target/deb/var/lib/mica-installer
 	echo "version=$(deb_version)" >> target/deb/var/lib/mica-installer/Makefile
-	cp drupal.mk target/deb/var/lib/mica-installer
-	cp sites.mk target/deb/var/lib/mica-installer
+	mkdir -p target/deb/var/lib/mica-installer/includes
+	cp includes/*.mk target/deb/var/lib/mica-installer/includes
 	mkdir -p target/deb/var/cache/mica-installer
 	$(call deb-package,mica)
 	$(call deb-package,mica_feature)

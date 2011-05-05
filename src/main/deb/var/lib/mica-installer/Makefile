@@ -3,8 +3,8 @@
 # Requires drush 4+ to be installed: http://drush.ws/
 #
 
-include drupal.mk
-include sites.mk
+include includes/drupal.mk
+include includes/sites.mk
 
 oldversion=
 micadir=mica
