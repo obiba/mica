@@ -37,6 +37,14 @@ function mica_addons_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
+    'publication' => array(
+      'name' => t('Publication'),
+      'base' => 'node_content',
+      'description' => t('Scientific publications references and announcement.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
   );
   return $items;
 }

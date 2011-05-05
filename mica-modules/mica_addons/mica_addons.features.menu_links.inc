@@ -34,17 +34,13 @@ function mica_addons_menu_default_menu_links() {
     'link_path' => 'events',
     'router_path' => 'events',
     'link_title' => 'Events',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
+    'options' => array(),
     'module' => 'system',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '1',
     'expanded' => '1',
-    'weight' => '1',
+    'weight' => '0',
     'parent_path' => 'community',
   );
   // Exported menu link: main-menu:events_calendar
@@ -66,7 +62,26 @@ function mica_addons_menu_default_menu_links() {
     'weight' => '0',
     'parent_path' => 'events',
   );
-  // Exported menu link: main-menu:blog
+    // Exported menu link: main-menu:publications
+  $menu_links['main-menu:publications'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'publications',
+    'router_path' => 'publications',
+    'link_title' => 'Publications',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '1',
+    'parent_path' => 'community',
+  );
+    // Exported menu link: main-menu:blog
   $menu_links['main-menu:blog'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'blog',
@@ -141,6 +156,7 @@ function mica_addons_menu_default_menu_links() {
   t('Events Calendar');
   t('Forums');
   t('My blog');
+  t('Publications');
 
 
   return $menu_links;

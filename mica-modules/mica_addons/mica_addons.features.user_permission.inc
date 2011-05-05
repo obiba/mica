@@ -43,6 +43,17 @@ function mica_addons_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create publication content
+  $permissions['create publication content'] = array(
+    'name' => 'create publication content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: delete any blog content
   $permissions['delete any blog content'] = array(
     'name' => 'delete any blog content',
@@ -66,6 +77,16 @@ function mica_addons_user_default_permissions() {
   // Exported permission: delete any forum content
   $permissions['delete any forum content'] = array(
     'name' => 'delete any forum content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any publication content
+  $permissions['delete any publication content'] = array(
+    'name' => 'delete any publication content',
     'roles' => array(
       0 => 'administrator',
       1 => 'studies administrator',
@@ -106,6 +127,17 @@ function mica_addons_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete own publication content
+  $permissions['delete own publication content'] = array(
+    'name' => 'delete own publication content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: edit any blog content
   $permissions['edit any blog content'] = array(
     'name' => 'edit any blog content',
@@ -129,6 +161,16 @@ function mica_addons_user_default_permissions() {
   // Exported permission: edit any forum content
   $permissions['edit any forum content'] = array(
     'name' => 'edit any forum content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any publication content
+  $permissions['edit any publication content'] = array(
+    'name' => 'edit any publication content',
     'roles' => array(
       0 => 'administrator',
       1 => 'studies administrator',
@@ -161,6 +203,17 @@ function mica_addons_user_default_permissions() {
   // Exported permission: edit own forum content
   $permissions['edit own forum content'] = array(
     'name' => 'edit own forum content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own publication content
+  $permissions['edit own publication content'] = array(
+    'name' => 'edit own publication content',
     'roles' => array(
       0 => 'administrator',
       1 => 'studies administrator',
