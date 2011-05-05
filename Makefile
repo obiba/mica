@@ -156,7 +156,7 @@ coder:
 	drush dl coder && \
  	drush en coder* --yes
 
-git: git-prepare git-modules git-themes git-modules
+git: git-prepare git-modules git-themes git-profiles
 
 git-prepare:
 	rm -rf target/git && mkdir -p target/git
