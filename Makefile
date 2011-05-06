@@ -61,6 +61,8 @@ mica-versions-modules:
 
 deploy: package
 	cp target/*.deb /var/www/pkg/stable
+	cp target/*.zip /var/www/mica
+	cp target/*.tar.gz /var/www/mica
 
 deploy-unstable: package
 	cp target/*.deb /var/www/pkg/unstable
