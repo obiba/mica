@@ -36,7 +36,7 @@ views_version=7.x-3.x-dev
 # Drupal Build
 #
 
-drupal: drupal-prepare drupal-download solr-php-client drupal-default 
+drupal: drupal-prepare drupal-download drupal-forks solr-php-client drupal-default 
 
 drupal-prepare:
 	mkdir -p target
@@ -50,11 +50,16 @@ drupal-download:
 	$(drushexec) dl entity-$(entity_version) views-$(views_version) && \
 	$(drushexec) dl search_api-$(search_api_version) search_api_solr-$(search_api_solr_version) search_api_ranges-${search_api_ranges_version} && \
 	$(drushexec) dl features-$(features_version) strongarm-$(strongarm_version) && \
-	$(drushexec) dl references-$(references_version) field_permissions-${field_permissions_version} relation-${relation_version} && \
+  $(drushexec) dl references-$(references_version) field_permissions-${field_permissions_version} relation-${relation_version} && \
 	$(drushexec) dl date-$(date_version) calendar-$(calendar_version) && \
 	$(drushexec) dl login_destination-$(login_destination_version) && \
 	$(drushexec) dl views_data_export-$(views_data_export_version) noderefcreate-$(noderefcreate_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version) feeds-$(feeds_version) && \
 	$(drushexec) dl node_export-$(node_export_version)
+	
+drupal-forks:
+	cd target/$(micadir) && \
+	rm -rf sites/all/modules/references && \
+	cp -r ../../forks sites/all/modules
 
 solr-php-client:
 	cd target/$(micadir) && \

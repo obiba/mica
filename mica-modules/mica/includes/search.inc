@@ -29,6 +29,8 @@ function _mica_find_indexes_by_bundle() {
  * Add facet for non Full Text field
  */
 function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
+	
+  module_load_include('inc', 'mica', 'includes/relations');	
  
   if ($type === 'TEXT') {
     $field = field_info_field($field_name);
@@ -45,6 +47,14 @@ function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
   $index = search_api_index_load($index_name, TRUE);
   $options = $index->options;
   $fields = $options['fields'];
+  
+  // check if this bundle is a child of a relation
+  $relation = _mica_find_relation_by_child($bundle);
+  if (!empty($relation)) {
+  	$field_name = $relation['node_reference'] . ':' . $field_name;
+  	$bundle_info = node_type_load($bundle);
+  	$field_label = $bundle_info->name . ' » ' . $field_label;
+  }  
   
   // check if we need to reindex content
   if (empty($fields[$field_name])) {
@@ -67,30 +77,72 @@ function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
   if ($reindex) {
     $index->reindex();
   }
-  
-  $facets_conditions = array(
+    
+  // facet
+ $facets_conditions = array(
     'index_id' => $index->machine_name,
     'field' => $field_name,
   );
   $facet = search_api_facet_load_multiple(FALSE, $facets_conditions, TRUE);
-  if ($index_type === 'text') {
-    if (!empty($facet)) {
-      // delete facet for full text field
-      entity_delete_multiple('search_api_facet', array($facet->id));
-    }
-  }
-  elseif (empty($facet)) {
-    $facet = new SearchApiFacet(array(
-      'index_id' => $index->machine_name,
-      'field' => $field_name,
-      'name' => $field_label,
-      'enabled' => 1,
-      'options' => array(),
-      'status' => 0,
-    ));   
-    $facet->save(); 
+  if (_mica_is_type_supports_facet($index_type)) {
+  	if (empty($facet)) {
+			$facet = new SearchApiFacet(array(
+	      'index_id' => $index->machine_name,
+	      'field' => $field_name,
+	      'name' => $field_label,
+	      'enabled' => 1,
+	      'options' => array(),
+	      'status' => 0,
+	    ));     		
+  		$facet->save(); 
+  	} 
+  	elseif ($reindex) { 
+  		// field was changed, update facet
+  		$facet->field = $field_name;
+  		$facet->name = $field_label;
+  		$facet->enabled = 1;
+  		$facet->save(); 
+  	}
   } 
+  elseif (!empty($facet)) {
+		// delete facet for unsupported field type
+    entity_delete_multiple('search_api_facet', array($facet->id));  	
+  }
   
+  // ranges
+  $range = search_api_range_load_multiple(FALSE, $facets_conditions, TRUE);
+  if (_mica_is_type_supports_ranges($index_type)) {
+  	if (empty($range)) {
+			$range = new SearchApiRange(array(
+	      'index_id' => $index->machine_name,
+	      'field' => $field_name,
+	      'name' => $field_label,
+	      'enabled' => 1,
+	      'options' => array(),
+	      'status' => 0,
+	    ));     		
+  		$range->save(); 
+  	} 
+  	elseif ($reindex) { 
+  		// field was changed, update facet
+  		$range->field = $field_name;
+  		$range->name = $field_label;
+  		$range->enabled = 1;
+  		$range->save(); 
+  	}
+  } 
+  elseif (!empty($range)) {
+		// delete range for unsupported field type
+    entity_delete_multiple('search_api_range', array($range->id));  	
+  }
+}
+
+function _mica_is_type_supports_facet($index_type) {
+	return $index_type === 'string' || $index_type === 'boolean'; 
+}
+
+function _mica_is_type_supports_ranges($index_type) {
+	return $index_type === 'integer' || $index_type === 'decimal' || $index_type === 'date'; 
 }
 
 /**
@@ -111,6 +163,7 @@ function _mica_remove_field_index($index_name, $field_name) {
     'field' => $field_name,
   );  
   search_api_facet_delete_multiple($facets_conditions);
+	search_api_range_delete_multiple($facets_conditions);  	  
 }
 
 /**
