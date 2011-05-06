@@ -106,7 +106,7 @@ function references_feeds_set_target($source, $entity, $target, $value) {
 
   // Handle non-multiple values.
   if (!is_array($value)) {
-    $value = explode('|', $value);
+    $value = explode(',', $value);
   }
 
   // Determine whether we are matching against the title/user or nid/uid, and whether duplicates are allowed.
@@ -163,20 +163,39 @@ function references_feeds_set_target($source, $entity, $target, $value) {
           }
           
           if ($reference_type_nb === 1 && isset($reference_type)) {
-            // create the node empty
-            $node = new stdClass();
-            $node->type = $reference_type;
-            $node->title = $v;
-            $node->changed = REQUEST_TIME;
-            $node->language = LANGUAGE_NONE;
-            node_object_prepare($node);
-            // Populate properties that are set by node_object_prepare().
-            $node->log = 'Created by References';
-            $node->uid = $entity->uid;
-            $node->status = $entity->status;
-            node_save($node);
-            
-            drupal_set_message(t('Node %title has been automatically created !', array('%title' => $v)));
+            // Check if the node exists
+            $query = new EntityFieldQuery();
+            $result = $query->entityCondition('entity_type', 'node')
+                  ->entityCondition('bundle', $reference_type)
+                  ->propertyCondition('title', $v)
+                  ->execute();
+                  
+            if (!empty($result['node'])) {
+              $entities = entity_load('node', array_keys($result['node']));
+              $entity_id = array_keys($entities);
+              
+              $node = $entities[$entity_id[0]];
+              
+              $id = $node->nid;
+            }
+            else {
+              // create the node empty
+              $node = new stdClass();
+              $node->type = $reference_type;
+              $node->title = $v;
+              $node->changed = REQUEST_TIME;
+              $node->language = LANGUAGE_NONE;
+              node_object_prepare($node);
+              // Populate properties that are set by node_object_prepare().
+              $node->log = 'Created by References';
+              $node->uid = $entity->uid;
+              $node->status = $entity->status;
+              node_save($node);
+              
+              $id = $node->nid;
+              
+              drupal_set_message(t('Node %title has been automatically created !', array('%title' => $v)));
+            }
           }
           else{
             drupal_set_message(t('%title does not match an existing ' . $typename, array('%title' => $v)));        

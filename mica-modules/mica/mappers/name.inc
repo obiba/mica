@@ -62,13 +62,12 @@ function _name_set_target($source, $entity, $target, $value, $value_field = 'val
   $info = field_info_field($target);
   list($field_name, $sub_field) = explode(':', $target);
   foreach ($value as $v) {
-    $new_value = clean($v);
-    if (!is_array($new_value) && !is_object($new_value)) {
+    if (!is_array($v) && !is_object($v)) {
       if (isset($sub_field)) {
-        $field['und'][$i][$sub_field] = $new_value;
+        $field['und'][$i][$sub_field] = $v;
       }
       else{
-          $field['und'][$i][$value_field] = $new_value;
+          $field['und'][$i][$value_field] = $v;
       }
     }
     if ($info['cardinality'] == 1) {

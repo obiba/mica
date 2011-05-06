@@ -13,7 +13,7 @@ function email_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_na
   foreach (field_info_instances($entity_type, $bundle_name) as $name => $instance) {
     $info = field_info_field($name);
     if ($info['type'] == 'email') {
-      $targets[$name] = array(
+      $targets[$name . ':email'] = array(
             'name' => $instance['label'],
             'callback' => 'email_feeds_set_target_email',
             'description' => t('The @name field of the node.', array('@name' => $instance['label'])),
@@ -48,14 +48,12 @@ function _email_set_target($source, $entity, $target, $value, $value_field = 'va
   $info = field_info_field($target);
   list($field_name, $sub_field) = explode(':', $target);
   foreach ($value as $v) {
-    $new_value = clean($v);
-    //$v = htmlentities($v);
-    if (!is_array($new_value) && !is_object($new_value)) {
+    if (!is_array($v) && !is_object($v)) {
       if (isset($sub_field)) {
-        $field['und'][$i][$sub_field] = $new_value;
+        $field['und'][$i][$sub_field] = $v;
       }
       else{
-          $field['und'][$i][$value_field] = $new_value;
+          $field['und'][$i][$value_field] = $v;
       }
     }
     if ($info['cardinality'] == 1) {

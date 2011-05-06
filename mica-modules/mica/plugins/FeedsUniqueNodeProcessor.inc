@@ -75,16 +75,29 @@ class FeedsUniqueNodeProcessor extends FeedsNodeProcessor {
    * Try to load an existing node
    */
   protected function loadOrCreateNewEntity(FeedsSource $source, $item) {
-    $query = db_select('node', 'n')
-      ->condition('type', $this->config['content_type'])
-      ->condition($this->config['key_field'], $item[$this->config['key_field']])
-      ->fields('n', array('nid'));
-      $result = $query->execute();
-
-    foreach ($result as $row) {
-      return node_load($row->nid);
+    $query = new EntityFieldQuery();
+    if ($this->config['key_field'] == 'title') {
+      $result = $query->entityCondition('entity_type', 'node')
+                  ->entityCondition('bundle', $this->config['content_type'])
+                  ->propertyCondition($this->config['key_field'], $item[$this->config['key_field']])
+                  ->execute();
     }
-
+    else{
+      $result = $query->entityCondition('entity_type', 'node')
+                  ->entityCondition('bundle', $this->config['content_type'])
+                  ->fieldCondition($this->config['key_field'], 'value', $item[$this->config['key_field']], '=')
+                  ->execute();
+    }
+                   
+    if (!empty($result['node'])) {
+      $entities = entity_load('node', array_keys($result['node']));
+      $entity_id = array_keys($entities);
+      
+      // register it to Feeds
+      
+      return $entities[$entity_id[0]];
+    }
+    
     return parent::newEntity($source);
   }
   
