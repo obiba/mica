@@ -59,6 +59,7 @@ drupal-download:
 drupal-forks:
 	cd target/$(micadir) && \
 	rm -rf sites/all/modules/references && \
+	rm -rf sites/all/modules/search_api_ranges && \
 	cp -r ../../forks sites/all/modules
 
 solr-php-client:
