@@ -15,9 +15,13 @@
 		<td class="range-box range-box-left"><?php print drupal_render($form['range-from']); ?></td>
 		<td class="range-box range-box-right"><?php print drupal_render($form['range-to']); ?></td>
 	</tr>
-	<tr>
-		<td colspan="2" class="range-slider-box"><?php print drupal_render($form['range-slider']); ?></td>
-	</tr>
+	
+	<?php if (!$form['range-is-date']) { ?>
+		<tr>
+			<td colspan="2" class="range-slider-box"><?php print drupal_render($form['range-slider']); ?></td>
+		</tr>
+	<?php } ?>
+	
 	<tr>
 		<td colspan="2"><?php print drupal_render($form['submit']); ?></td>
 	</tr>
