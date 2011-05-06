@@ -554,8 +554,19 @@ function search_api_ranges_block_view_form_submit($form, &$form_state) {
   $values = $form_state['values'];
   $params = drupal_get_query_parameters($_GET, array('q', 'page'));
   
+  $from = $values['range-from'];
+  if (is_array($from)) {
+  	$date = DateTime::createFromFormat(DATE_FORMAT_DATE, $from['date']);
+  	$from = $date->format(DATE_FORMAT_ISO);
+  }
+  $to = $values['range-to'];
+  if (is_array($to)) {
+  	$date = DateTime::createFromFormat(DATE_FORMAT_DATE, $to['date']);
+  	$to = $date->format(DATE_FORMAT_ISO);
+  }
+  
   // @todo: allow for cloned blocks and multiple ranges for same filter
-  $params['filter'][$form_state['input']['range-field']][0] = '[' . $values['range-from'] . ' ' . $values['range-to'] . ']';
+  $params['filter'][$form_state['input']['range-field']][0] = '[' . $from . ' ' . $to . ']';
   
   drupal_goto($_GET['q'], array('query' => array($params)));
 }

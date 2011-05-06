@@ -17,9 +17,11 @@
 	</tr>
 	
 	<?php if (!$form['range-is-date']) { ?>
+		
 		<tr>
 			<td colspan="2" class="range-slider-box"><?php print drupal_render($form['range-slider']); ?></td>
 		</tr>
+	
 	<?php } ?>
 	
 	<tr>
