@@ -71,6 +71,67 @@ function mica_feature_field_default_fields() {
     ),
   );
 
+  // Exported field: 'comment-comment_node_institution-comment_body'
+  $fields['comment-comment_node_institution-comment_body'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(
+        0 => 'comment',
+      ),
+      'field_name' => 'comment_body',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'comment_node_institution',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'comment',
+      'field_name' => 'comment_body',
+      'label' => 'Comment',
+      'required' => TRUE,
+      'settings' => array(
+        'text_processing' => 1,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'rows' => 5,
+        ),
+        'type' => 'text_textarea',
+        'weight' => 0,
+      ),
+    ),
+  );
+
   // Exported field: 'comment-comment_node_study-comment_body'
   $fields['comment-comment_node_study-comment_body'] = array(
     'field_config' => array(
@@ -274,9 +335,9 @@ function mica_feature_field_default_fields() {
           'view own' => 0,
         ),
         'variable_infos' => array(
-          'variable' => 0,
+          'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => '',
+          'variable_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -586,73 +647,6 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-contact-field_role_title'
-  $fields['node-contact-field_role_title'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_role_title',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '1',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'contact',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '2',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_role_title',
-      'label' => 'Role/Title',
-      'required' => FALSE,
-      'settings' => array(
-        'text_processing' => 0,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'text',
-        'settings' => array(
-          'size' => 60,
-        ),
-        'type' => 'text_textfield',
-        'weight' => '3',
-      ),
-    ),
-  );
-
   // Exported field: 'node-contact-field_telephone'
   $fields['node-contact-field_telephone'] = array(
     'field_config' => array(
@@ -800,27 +794,45 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-institution-field_country'
-  $fields['node-institution-field_country'] = array(
+  // Exported field: 'node-institution-field_country_text'
+  $fields['node-institution-field_country_text'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_country',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
+      'field_name' => 'field_country_text',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
         ),
       ),
-      'module' => 'list',
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
       'settings' => array(
-        'allowed_values' => array(),
-        'allowed_values_function' => '',
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'max_length' => '255',
+        'variable_infos' => array(
+          'variable' => 0,
+          'variable_body' => '',
+          'variable_value_type' => '',
+        ),
       ),
       'translatable' => '1',
-      'type' => 'list_text',
+      'type' => 'text',
     ),
     'field_instance' => array(
       'bundle' => 'institution',
@@ -829,11 +841,11 @@ Prof.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
-          'module' => 'list',
+          'label' => 'above',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '2',
+          'type' => 'text_default',
+          'weight' => 4,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -843,17 +855,21 @@ Prof.',
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_country',
+      'field_name' => 'field_country_text',
       'label' => 'Country',
-      'required' => FALSE,
+      'required' => 0,
       'settings' => array(
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '-2',
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => 0,
       ),
     ),
   );
@@ -1102,7 +1118,20 @@ Prof.',
       'foreign keys' => array(),
       'indexes' => array(),
       'module' => 'number',
-      'settings' => array(),
+      'settings' => array(
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'variable_infos' => array(
+          'variable' => 0,
+          'variable_body' => '',
+          'variable_value_type' => '',
+        ),
+      ),
       'translatable' => '1',
       'type' => 'number_integer',
     ),
@@ -1327,9 +1356,9 @@ Prof.',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'Biological samples' => 'Biological samples',
-          'Data (questionnaire-derived, measured…)' => 'Data (questionnaire-derived, measured…)',
-          'Other' => 'Other',
+          'biological_samples' => 'Biological samples',
+          'data' => 'Data (questionnaire-derived, measured…)',
+          'other' => 'Other',
         ),
         'allowed_values_function' => '',
         'field_permissions' => array(
@@ -1352,7 +1381,7 @@ Prof.',
       'bundle' => 'study_information',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Access to the following study features to external researchers or third parties provided or foreseen',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1376,7 +1405,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_access',
-      'label' => 'Access to the following study features to external researchers or third parties provided or foreseen',
+      'label' => 'Access to the following features is provided or foreseen',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1386,7 +1415,7 @@ Prof.',
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '5',
+        'weight' => '20',
       ),
     ),
   );
@@ -1459,7 +1488,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_access_other',
-      'label' => 'Please Specify',
+      'label' => 'Specify type of access',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -1472,7 +1501,87 @@ Prof.',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '21',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-study_information-field_acroym'
+  $fields['node-study_information-field_acroym'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_acroym',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'max_length' => '255',
+        'variable_infos' => array(
+          'variable' => 0,
+          'variable_body' => '',
+          'variable_value_type' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study_information',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 20,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_acroym',
+      'label' => 'Acronym',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
       ),
     ),
   );
@@ -1538,7 +1647,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_age_max',
-      'label' => 'Max',
+      'label' => 'Max age',
       'required' => 0,
       'settings' => array(
         'max' => '',
@@ -1552,7 +1661,7 @@ Prof.',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '15',
+        'weight' => '13',
       ),
     ),
   );
@@ -1618,7 +1727,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_age_min',
-      'label' => 'Min',
+      'label' => 'Min age',
       'required' => 0,
       'settings' => array(
         'max' => '',
@@ -1632,7 +1741,7 @@ Prof.',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '14',
+        'weight' => '12',
       ),
     ),
   );
@@ -1654,11 +1763,11 @@ Prof.',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'Blood' => 'Blood',
-          'Others' => 'Others',
-          'Saliva' => 'Saliva',
-          'Tissues' => 'Tissues',
-          'Urine' => 'Urine',
+          'blood' => 'Blood',
+          'others' => 'Others',
+          'saliva' => 'Saliva',
+          'tissues' => 'Tissues',
+          'urine' => 'Urine',
         ),
         'allowed_values_function' => '',
         'field_permissions' => array(
@@ -1669,9 +1778,9 @@ Prof.',
           'view own' => 0,
         ),
         'variable_infos' => array(
-          'variable' => 0,
+          'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => '',
+          'variable_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -1788,7 +1897,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_biosamples_collected_other',
-      'label' => 'Please Specify',
+      'label' => 'Specify type of samples collected',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -1874,7 +1983,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_biosamples_tissues',
-      'label' => 'Please Specify',
+      'label' => 'Specify type of tissues collected',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -1986,7 +2095,7 @@ Prof.',
           'size' => '60',
         ),
         'type' => 'noderefcreate_autocomplete',
-        'weight' => '6',
+        'weight' => '3',
       ),
     ),
   );
@@ -2008,13 +2117,13 @@ Prof.',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'Case only study' => 'Case only study',
-          'Case-control study' => 'Case-control study',
-          'Clinical trial / intervention trial' => 'Clinical trial / intervention trial',
-          'Cohort study' => 'Cohort study',
-          'Cross-sectional prevalence study' => 'Cross-sectional prevalence study',
-          'Other' => 'Other',
-          'Registry' => 'Registry',
+          'case_control' => 'Case-control study',
+          'case_only' => 'Case only study',
+          'clinical_trial' => 'Clinical trial / intervention trial',
+          'cohort_study' => 'Cohort study',
+          'cross_sectional' => 'Cross-sectional prevalence study',
+          'other' => 'Other',
+          'registry' => 'Registry',
         ),
         'allowed_values_function' => '',
         'field_permissions' => array(
@@ -2025,9 +2134,9 @@ Prof.',
           'view own' => 0,
         ),
         'variable_infos' => array(
-          'variable' => 0,
+          'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => '',
+          'variable_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -2144,7 +2253,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_design_other',
-      'label' => 'Please Specify',
+      'label' => 'Specify type of design',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -2179,9 +2288,9 @@ Prof.',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'Families (including twin studies, sibships and family based birth cohorts)' => 'Families (including twin studies, sibships and family based birth cohorts)',
-          'Individuals' => 'Individuals',
-          'Other' => 'Other',
+          'families' => 'Families (including twin studies, sibships and family based birth cohorts)',
+          'individuals' => 'Individuals',
+          'other' => 'Other',
         ),
         'allowed_values_function' => '',
         'field_permissions' => array(
@@ -2192,9 +2301,9 @@ Prof.',
           'view own' => 0,
         ),
         'variable_infos' => array(
-          'variable' => 0,
+          'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => '',
+          'variable_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -2260,8 +2369,8 @@ Prof.',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'Men' => 'Men',
-          'Women' => 'Women',
+          'men' => 'Men',
+          'women' => 'Women',
         ),
         'allowed_values_function' => '',
         'field_permissions' => array(
@@ -2318,7 +2427,7 @@ Prof.',
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '12',
+        'weight' => '11',
       ),
     ),
   );
@@ -2340,9 +2449,9 @@ Prof.',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'No' => 'No',
-          'Yes, we already have, or are currently in the process of generating, GWA data' => 'Yes, we already have, or are currently in the process of generating, GWA data',
-          'Yes, we plan to proceed to GWA analysis later' => 'Yes, we plan to proceed to GWA analysis later',
+          'no' => 'No',
+          'yes_currently' => 'Yes, we already have, or are currently in the process of generating, GWA data',
+          'yes_later' => 'Yes, we plan to proceed to GWA analysis later',
         ),
         'allowed_values_function' => '',
         'field_permissions' => array(
@@ -2353,9 +2462,9 @@ Prof.',
           'view own' => 0,
         ),
         'variable_infos' => array(
-          'variable' => 0,
+          'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => '',
+          'variable_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -2424,9 +2533,9 @@ Prof.',
           'view own' => 0,
         ),
         'variable_infos' => array(
-          'variable' => 0,
+          'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => '',
+          'variable_value_type' => 'INTEGER',
         ),
       ),
       'translatable' => '1',
@@ -2579,7 +2688,7 @@ Prof.',
           'size' => '60',
         ),
         'type' => 'noderefcreate_autocomplete',
-        'weight' => '3',
+        'weight' => '2',
       ),
     ),
   );
@@ -2601,10 +2710,10 @@ Prof.',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'Age' => 'Age',
-          'Country(ies) of residence' => 'Country(ies) of residence',
-          'Gender' => 'Gender',
-          'Other' => 'Other',
+          'age' => 'Age',
+          'country' => 'Country(ies) of residence',
+          'gender' => 'Gender',
+          'other' => 'Other',
         ),
         'allowed_values_function' => '',
         'field_permissions' => array(
@@ -2615,9 +2724,9 @@ Prof.',
           'view own' => 0,
         ),
         'variable_infos' => array(
-          'variable' => 0,
+          'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => '',
+          'variable_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -2661,7 +2770,7 @@ Prof.',
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '11',
+        'weight' => '9',
       ),
     ),
   );
@@ -2686,9 +2795,9 @@ Prof.',
           'view own' => 0,
         ),
         'variable_infos' => array(
-          'variable' => 0,
+          'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => '',
+          'variable_value_type' => 'INTEGER',
         ),
       ),
       'translatable' => '1',
@@ -2741,7 +2850,7 @@ Prof.',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '20',
+        'weight' => '23',
       ),
     ),
   );
@@ -2766,9 +2875,9 @@ Prof.',
           'view own' => 0,
         ),
         'variable_infos' => array(
-          'variable' => 0,
+          'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => '',
+          'variable_value_type' => 'INTEGER',
         ),
       ),
       'translatable' => '1',
@@ -2821,7 +2930,7 @@ Prof.',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '19',
+        'weight' => '22',
       ),
     ),
   );
@@ -2844,6 +2953,7 @@ Prof.',
       'settings' => array(
         'allowed_values' => array(
           'CAN' => 'Canada',
+          'CRI' => 'Costa Rica',
           'DNK' => 'Danemark',
           'FRA' => 'France',
           'GBR' => 'United Kingdom',
@@ -2858,9 +2968,9 @@ Prof.',
           'view own' => 0,
         ),
         'variable_infos' => array(
-          'variable' => 0,
+          'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => '',
+          'variable_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -2906,7 +3016,81 @@ Prof.',
         'module' => 'multiselect',
         'settings' => array(),
         'type' => 'multiselect',
-        'weight' => '13',
+        'weight' => '10',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-study_information-field_study_legacy_id'
+  $fields['node-study_information-field_study_legacy_id'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_study_legacy_id',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'number',
+      'settings' => array(
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'variable_infos' => array(
+          'variable' => 0,
+          'variable_body' => '',
+          'variable_value_type' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study_information',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 19,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_study_legacy_id',
+      'label' => 'Study Legacy Id',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '24',
       ),
     ),
   );
@@ -2931,9 +3115,9 @@ Prof.',
           'view own' => 0,
         ),
         'variable_infos' => array(
-          'variable' => 0,
+          'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => '',
+          'variable_value_type' => 'INTEGER',
         ),
       ),
       'translatable' => '1',
@@ -2986,7 +3170,7 @@ Prof.',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '10',
+        'weight' => '14',
       ),
     ),
   );
@@ -3011,9 +3195,9 @@ Prof.',
           'view own' => 0,
         ),
         'variable_infos' => array(
-          'variable' => 0,
+          'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => '',
+          'variable_value_type' => 'INTEGER',
         ),
       ),
       'translatable' => '1',
@@ -3066,7 +3250,7 @@ Prof.',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '9',
+        'weight' => '4',
       ),
     ),
   );
@@ -3139,7 +3323,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_target_other',
-      'label' => 'Please Specify',
+      'label' => 'Specify type of target',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -3453,7 +3637,9 @@ Prof.',
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Access to the following features is provided or foreseen');
   t('Access to the following study features to external researchers or third parties provided or foreseen');
+  t('Acronym');
   t('Baseline Design of the Study');
   t('Biological Samples Collected');
   t('Body');
@@ -3469,18 +3655,22 @@ Prof.',
   t('Institution');
   t('Investigator');
   t('Legacy Id');
-  t('Max');
-  t('Min');
-  t('Please Specify');
+  t('Max age');
+  t('Min age');
   t('Please specify the approximate number of participants');
   t('Postal Code');
   t('Proceeding or Plan to Proceed to Genome-Wide Association (GWA) Analysis');
-  t('Role/Title');
   t('Selection Criteria / Charactecteristic of the Population');
   t('Specify Gender');
+  t('Specify type of access');
+  t('Specify type of design');
+  t('Specify type of samples collected');
+  t('Specify type of target');
+  t('Specify type of tissues collected');
   t('Start year');
   t('Street');
   t('Study Information');
+  t('Study Legacy Id');
   t('Target Number of Biological Samples');
   t('Target Number of Participants');
   t('Targets Recruitment of');

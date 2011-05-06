@@ -123,7 +123,7 @@ function mica_feature_default_search_api_facet() {
       "show_active" : true,
       "default_true" : true,
       "ids_list" : [],
-      "type" : "",
+      "type" : "string",
       "field_name" : "Content Type"
     },
     "rdf_mapping" : []
@@ -144,7 +144,7 @@ function mica_feature_default_search_api_facet() {
       "show_active" : true,
       "default_true" : true,
       "ids_list" : [],
-      "type" : "",
+      "type" : "string",
       "field_name" : "Value Type"
     },
     "rdf_mapping" : []
@@ -165,7 +165,7 @@ function mica_feature_default_search_api_facet() {
       "show_active" : true,
       "default_true" : true,
       "ids_list" : [],
-      "type" : "",
+      "type" : "text",
       "field_name" : "Title"
     },
     "rdf_mapping" : []
@@ -319,7 +319,12 @@ function mica_feature_default_search_api_index() {
           "type" : "text",
           "boost" : "1.0"
         },
-        "field_study_country" : { "name" : "Country", "indexed" : 1, "type" : "string", "boost" : "1.0" },
+        "field_study_country" : {
+          "name" : "Country",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
         "field_study_full_name" : { "name" : "Full Name", "indexed" : 1, "type" : "text", "boost" : "1.0" },
         "body:value" : {
           "name" : "The main body text \\u00bb Text",
@@ -337,6 +342,104 @@ function mica_feature_default_search_api_index() {
           "name" : "The main body text \\u00bb Text format",
           "indexed" : 0,
           "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_access" : {
+          "name" : "Access to the following features is provided or foreseen",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_design" : {
+          "name" : "Baseline Design of the Study",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_design_target" : {
+          "name" : "Targets Recruitment of",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_target_number_participants" : {
+          "name" : "Target Number of Participants",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_gender" : {
+          "name" : "Specify Gender",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_target_other" : {
+          "name" : "Please Specify",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_selection_criteria" : {
+          "name" : "Selection Criteria \\/ Charactecteristic of the Population",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_age_min" : { "name" : "Min", "indexed" : true, "type" : "integer", "boost" : "1.0" },
+        "field_age_max" : { "name" : "Max", "indexed" : true, "type" : "integer", "boost" : "1.0" },
+        "field_target_number_biosamples" : {
+          "name" : "Target Number of Biological Samples",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_biosamples_collected" : {
+          "name" : "Biological Samples Collected",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_biosamples_collected_other" : {
+          "name" : "Please Specify",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_biosamples_tissues" : {
+          "name" : "Please Specify",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_gwas_analysis" : {
+          "name" : "Proceeding or Plan to Proceed to Genome-Wide Association (GWA) Analysis",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_access_other" : {
+          "name" : "Please Specify",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_gwas_number" : {
+          "name" : "Please specify the approximate number of participants",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_status_start" : {
+          "name" : "Start year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_status_end" : {
+          "name" : "End year",
+          "indexed" : true,
+          "type" : "integer",
           "boost" : "1.0"
         }
       },

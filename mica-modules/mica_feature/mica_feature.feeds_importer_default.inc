@@ -60,33 +60,23 @@ function mica_feature_feeds_importer_default() {
             'unique' => FALSE,
           ),
           4 => array(
-            'source' => 'field_role_title',
-            'target' => 'field_role_title',
-            'unique' => FALSE,
-          ),
-          5 => array(
             'source' => 'field_telephone',
             'target' => 'field_telephone',
             'unique' => FALSE,
           ),
-          6 => array(
+          5 => array(
             'source' => 'field_institution',
             'target' => 'field_institution:title',
             'unique' => FALSE,
           ),
-          7 => array(
-            'source' => 'field_contact_email',
-            'target' => 'field_contact_email',
-            'unique' => FALSE,
-          ),
-          8 => array(
+          6 => array(
             'source' => 'title',
             'target' => 'guid',
             'unique' => 1,
           ),
-          9 => array(
-            'source' => 'status',
-            'target' => 'status',
+          7 => array(
+            'source' => 'field_contact_email:email',
+            'target' => 'field_contact_email:email',
             'unique' => FALSE,
           ),
         ),
@@ -148,23 +138,18 @@ function mica_feature_feeds_importer_default() {
             'unique' => FALSE,
           ),
           3 => array(
-            'source' => 'field_country',
-            'target' => 'field_country',
-            'unique' => FALSE,
-          ),
-          4 => array(
             'source' => 'field_postal_code',
             'target' => 'field_postal_code',
             'unique' => FALSE,
           ),
-          5 => array(
+          4 => array(
             'source' => 'title',
             'target' => 'title',
             'unique' => FALSE,
           ),
-          6 => array(
-            'source' => 'status',
-            'target' => 'status',
+          5 => array(
+            'source' => 'field_country_text',
+            'target' => 'field_country_text',
             'unique' => FALSE,
           ),
         ),
@@ -231,11 +216,6 @@ function mica_feature_feeds_importer_default() {
             'unique' => FALSE,
           ),
           4 => array(
-            'source' => 'status',
-            'target' => 'status',
-            'unique' => FALSE,
-          ),
-          5 => array(
             'source' => 'field_study_legacy_id',
             'target' => 'guid',
             'unique' => 1,
@@ -398,8 +378,13 @@ function mica_feature_feeds_importer_default() {
             'unique' => FALSE,
           ),
           23 => array(
-            'source' => 'status',
-            'target' => 'status',
+            'source' => 'field_study_legacy_id',
+            'target' => 'field_study_legacy_id',
+            'unique' => FALSE,
+          ),
+          24 => array(
+            'source' => 'field_acronym',
+            'target' => 'field_acroym',
             'unique' => FALSE,
           ),
         ),
