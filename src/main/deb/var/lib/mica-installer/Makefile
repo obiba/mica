@@ -64,7 +64,7 @@ drupal-profiles:
 	ln -s /etc/mica/profiles /usr/share/mica/profiles
 
 drupal-sites:
-        mv /usr/share/mica/sites/default/* /etc/mica/sites/default && \
+	mv /usr/share/mica/sites/default/* /etc/mica/sites/default && \
 	rmdir /usr/share/mica/sites/default && \
 	mv /usr/share/mica/sites/* /etc/mica/sites/ && \
 	rmdir /usr/share/mica/sites && \
