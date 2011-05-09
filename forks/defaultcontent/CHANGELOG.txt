@@ -1,0 +1,2 @@
+Issue #1087244 by bfroehle: DrupalDefaultEntityController warning 
+Issue #1091300 by jamsilver: Small bug prevented Features UI working on export
