@@ -53,18 +53,18 @@ mica-dist-install: mica-dist-install-prepare drupal-profiles drupal-sites drupal
 mica-dist-install-prepare:
 	mkdir -p target	
 	cd target && \
-	wget -q http://download.obiba.org/mica/$(stability)/mica-dist-$(deb_version).tar.gz &&
+	wget -q http://download.obiba.org/mica/$(stability)/mica-dist-$(deb_version).tar.gz && \
 	tar xzf mica-dist-$(version).tar.gz && \
 	mv $(micadir)-$(version) mica && \
 	mv mica /usr/share
 
 drupal-profiles:
-	mv /usr/share/mica/profiles/* /etc/mica/profiles
+	mv /usr/share/mica/profiles/* /etc/mica/profiles && \
 	rmdir /usr/share/mica/profiles && \
 	ln -s /etc/mica/profiles /usr/share/mica/profiles
 
 drupal-sites:
-	mv /usr/share/mica/sites/* /etc/mica/sites/
+	mv /usr/share/mica/sites/* /etc/mica/sites/ && \
 	rmdir /usr/share/mica/sites && \
 	ln -s /etc/mica/sites /usr/share/mica/sites
 	if [ ! -e /etc/mica/sites/default/settings.php ]; then \
