@@ -54,7 +54,7 @@ mica-dist-install-prepare:
 	mkdir -p target	
 	cd target && \
 	wget -q http://download.obiba.org/mica/$(stability)/mica-dist-$(deb_version).tar.gz && \
-	tar xzf mica-dist-$(version).tar.gz && \
+	tar xzf mica-dist-$(deb_version).tar.gz && \
 	mv $(micadir)-$(version) mica && \
 	mv mica /usr/share
 

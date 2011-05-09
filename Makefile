@@ -43,17 +43,17 @@ mica-install:
 mica-versions: mica-versions-profiles mica-versions-themes mica-versions-modules
 
 mica-versions-profiles:
-	$(call make-version,profiles,mica_minimal)
-	$(call make-version,profiles,mica_standard)
-	$(call make-version,profiles,mica_demo)
+	$(call make-info,profiles,mica_minimal)
+	$(call make-info,profiles,mica_standard)
+	$(call make-info,profiles,mica_demo)
 	
 mica-versions-themes:
-	$(call make-version,sites/all/themes,mica_samara) 
+	$(call make-info,sites/all/themes,mica_samara) 
 
 mica-versions-modules:
-	$(call make-version,sites/all/modules,mica)
-	$(call make-version,sites/all/modules,mica_feature)
-	$(call make-version,sites/all/modules,mica_addons)
+	$(call make-info,sites/all/modules,mica)
+	$(call make-info,sites/all/modules,mica_feature)
+	$(call make-info,sites/all/modules,mica_addons)
 
 #
 # Deploy
@@ -212,9 +212,11 @@ help:
 # Functions
 #
 
-# make-version function: add version number to project info file
-make-version = cd target/$(micadir)/$(1) && \
-	echo "version = \"$($(2)_version)\"" >> $2/$2.info 
+# make-info function: add version number to project info file
+make-info = cd target/$(micadir)/$(1) && \
+	echo "\n\n; Information added by obiba.org packaging script on $(deb_date)" >> $2/$2.info && \
+	echo "version = \"$($(2)_version)\"" >> $2/$2.info && \
+	echo "datestamp = \"$(datestamp)\"" >> $2/$2.info
 
 # make-package function: build tar.gz and zip files of a project
 make-package = cd target/$(micadir)/$(1) && \
@@ -243,4 +245,5 @@ micadir=mica-$(version)
 build_number=$(shell svnversion -n | cut -d : -f 1)
 deb_version=$(version)-b$(build_number)
 deb_date=$(shell date -R)
+datestamp=$(shell date +%s)
 drushexec=drush
