@@ -36,7 +36,9 @@ mica: mica-install mica-versions
 mica-install:
 	cd target/$(micadir) && \
 	cp -r ../../mica-profiles/* profiles && \
-	cp -r ../../mica-modules/* sites/all/modules && \
+	cp -r ../../mica-modules/mica sites/all/modules && \
+	cp -r ../../mica-modules/mica_feature sites/all/modules/mica/extensions && \
+	cp -r ../../mica-modules/mica_addons sites/all/modules/mica/extensions && \
 	cp -r ../../mica-themes/* sites/all/themes && \
 	rm -rf `find . -type d -name .svn`
 
@@ -52,8 +54,8 @@ mica-versions-themes:
 
 mica-versions-modules:
 	$(call make-info,sites/all/modules,mica)
-	$(call make-info,sites/all/modules,mica_feature)
-	$(call make-info,sites/all/modules,mica_addons)
+	$(call make-info,sites/all/modules/mica/extensions,mica_feature)
+	$(call make-info,sites/all/modules/mica/extensions,mica_addons)
 
 #
 # Deploy
@@ -82,8 +84,6 @@ package: package-modules package-profiles package-themes debian
 
 package-modules:
 	$(call make-package,sites/all/modules,mica)
-	$(call make-package,sites/all/modules,mica_feature)
-	$(call make-package,sites/all/modules,mica_addons)
 	
 package-profiles:
 	$(call make-package,profiles,mica_minimal)
@@ -129,8 +129,6 @@ endif
 	cp includes/sites.mk target/deb/var/lib/mica-installer/includes
 	mkdir -p target/deb/var/cache/mica-installer
 	$(call deb-package,mica)
-	$(call deb-package,mica_feature)
-	$(call deb-package,mica_addons)
 	$(call deb-package,mica_minimal)
 	$(call deb-package,mica_standard)
 	$(call deb-package,mica_demo)

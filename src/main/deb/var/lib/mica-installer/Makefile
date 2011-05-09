@@ -87,8 +87,6 @@ mica-install:
 	mkdir -p target	
 	$(call make-sites-install,themes,mica_samara)
 	$(call make-sites-install,modules,mica)
-	$(call make-sites-install,modules,mica_feature)
-	$(call make-sites-install,modules,mica_addons)
 	$(call make-profiles-install,mica_minimal)
 	$(call make-profiles-install,mica_standard)
 	$(call make-profiles-install,mica_demo)
