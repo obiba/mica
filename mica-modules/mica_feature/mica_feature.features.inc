@@ -441,6 +441,133 @@ function mica_feature_default_search_api_index() {
           "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
+        },
+        "body" : { "name" : "Body", "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "mica_study_information:field_acroym" : {
+          "name" : "Study Information \\u00bb Acronym",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_target_number_participants" : {
+          "name" : "Study Information \\u00bb Target Number of Participants",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_design" : {
+          "name" : "Study Information \\u00bb Baseline Design of the Study",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_design_other" : {
+          "name" : "Study Information \\u00bb Specify type of design",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_design_target" : {
+          "name" : "Study Information \\u00bb Targets Recruitment of",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_target_other" : {
+          "name" : "Study Information \\u00bb Specify type of target",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_selection_criteria" : {
+          "name" : "Study Information \\u00bb Selection Criteria \\/ Charactecteristic of the Population",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_study_country" : {
+          "name" : "Study Information \\u00bb Country",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_gender" : {
+          "name" : "Study Information \\u00bb Specify Gender",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_age_min" : {
+          "name" : "Study Information \\u00bb Min age",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_age_max" : {
+          "name" : "Study Information \\u00bb Max age",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_target_number_biosamples" : {
+          "name" : "Study Information \\u00bb Target Number of Biological Samples",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_biosamples_collected" : {
+          "name" : "Study Information \\u00bb Biological Samples Collected",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_biosamples_collected_other" : {
+          "name" : "Study Information \\u00bb Specify type of samples collected",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_biosamples_tissues" : {
+          "name" : "Study Information \\u00bb Specify type of tissues collected",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_gwas_analysis" : {
+          "name" : "Study Information \\u00bb Proceeding to Genome-Wide Association (GWA) Analysis",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_gwas_number" : {
+          "name" : "Study Information \\u00bb Please specify the approximate number of participants",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_access" : {
+          "name" : "Study Information \\u00bb Access to the following features is provided or foreseen",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_access_other" : {
+          "name" : "Study Information \\u00bb Specify type of access",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_status_start" : {
+          "name" : "Study Information \\u00bb Start year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_status_end" : {
+          "name" : "Study Information \\u00bb End year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
         }
       },
       "data_alter_callbacks" : {

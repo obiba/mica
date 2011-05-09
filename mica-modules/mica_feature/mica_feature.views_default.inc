@@ -905,7 +905,7 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['field_gender']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_gender']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_gender']['field_api_classes'] = 0;
-  /* Field: Content: Proceeding or Plan to Proceed to Genome-Wide Association (GWA) Analysis */
+  /* Field: Content: Proceeding to Genome-Wide Association (GWA) Analysis */
   $handler->display->display_options['fields']['field_gwas_analysis']['id'] = 'field_gwas_analysis';
   $handler->display->display_options['fields']['field_gwas_analysis']['table'] = 'field_data_field_gwas_analysis';
   $handler->display->display_options['fields']['field_gwas_analysis']['field'] = 'field_gwas_analysis';
