@@ -60,22 +60,25 @@ mica-versions-modules:
 #
 
 deploy: package
-	cp target/*.deb /var/www/pkg/stable
-	cp target/*.zip /var/www/mica
-	cp target/*.tar.gz /var/www/mica
-
-deploy-unstable: package
+ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
 	cp target/*.deb /var/www/pkg/unstable
+	cp target/*.zip /var/www/mica/unstable
+	cp target/*.tar.gz /var/www/mica/unstable
+else
+	cp target/*.deb /var/www/pkg/stable
+	cp target/*.zip /var/www/mica/stable
+	cp target/*.tar.gz /var/www/mica/stable
+endif
 
 #
 # Package
 #
 
 package: package-modules package-profiles package-themes debian
+	rm -f target/mica-dist*
 	cd target && \
-	rm -f $(micadir).* && \
-	tar czf $(micadir).tar.gz $(micadir) && \
-	zip -qr $(micadir).zip $(micadir)
+	tar czf mica-dist-$(deb_version).tar.gz $(micadir) && \
+	zip -qr mica-dist-$(deb_version).zip $(micadir)
 
 package-modules:
 	$(call make-package,sites/all/modules,mica)
@@ -115,9 +118,15 @@ deb-install:
 	cp src/main/deb/debian/* target/deb/debian
 	cp src/main/deb/etc/mica/* target/deb/etc/mica
 	cp src/main/deb/var/lib/mica-installer/* target/deb/var/lib/mica-installer
-	echo "version=$(deb_version)" >> target/deb/var/lib/mica-installer/Makefile
+	echo "version=$(version)" >> target/deb/var/lib/mica-installer/Makefile
+	echo "deb_version=$(deb_version)" >> target/deb/var/lib/mica-installer/Makefile
+ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
+	echo "stability=unstable" >> target/deb/var/lib/mica-installer/Makefile
+else
+	echo "stability=stable" >> target/deb/var/lib/mica-installer/Makefile
+endif
 	mkdir -p target/deb/var/lib/mica-installer/includes
-	cp includes/*.mk target/deb/var/lib/mica-installer/includes
+	cp includes/sites.mk target/deb/var/lib/mica-installer/includes
 	mkdir -p target/deb/var/cache/mica-installer
 	$(call deb-package,mica)
 	$(call deb-package,mica_feature)

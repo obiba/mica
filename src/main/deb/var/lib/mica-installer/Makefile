@@ -3,7 +3,6 @@
 # Requires drush 4+ to be installed: http://drush.ws/
 #
 
-include includes/drupal.mk
 include includes/sites.mk
 
 oldversion=
@@ -36,23 +35,28 @@ drush:
 # Install
 #
 
-install: drupal-install mica-install
-
-#
-# Drupal install
-#
-
-drupal-install: 
+install: 
 ifndef oldversion
-	@echo "**** Drupal install" 
-	make do-drupal-install
+	@echo "**** Mica distribution install" 
+	make mica-dist-install
+else
+	@echo "**** Mica modules/themes/profiles upgrade" 
+	make mica-install
 endif
 
-do-drupal-install: drupal drupal-install-prepare drupal-profiles drupal-sites drupal-doc
+#
+# Mica dist install
+#
 
-drupal-install-prepare:
-	rm -rf target/$(micadir)/profiles/minimal target/$(micadir)/profiles/testing
-	mv -f target/$(micadir) /usr/share
+mica-dist-install: mica-dist-install-prepare drupal-profiles drupal-sites drupal-doc
+
+mica-dist-install-prepare:
+	mkdir -p target	
+	cd target && \
+	wget -q http://download.obiba.org/mica/$(stability)/mica-dist-$(deb_version).tar.gz &&
+	tar xzf mica-dist-$(version).tar.gz && \
+	mv $(micadir)-$(version) mica && \
+	mv mica /usr/share
 
 drupal-profiles:
 	mv /usr/share/mica/profiles/* /etc/mica/profiles
@@ -60,20 +64,25 @@ drupal-profiles:
 	ln -s /etc/mica/profiles /usr/share/mica/profiles
 
 drupal-sites:
-	mv /usr/share/mica/sites/default/* /etc/mica/sites/default
-	rmdir /usr/share/mica/sites/default && \
-	ln -s /etc/mica/sites/default /usr/share/mica/sites/default
-	mv /usr/share/mica/sites/*.php /etc/mica/sites
+	mv /usr/share/mica/sites/* /etc/mica/sites/
+	rmdir /usr/share/mica/sites && \
+	ln -s /etc/mica/sites /usr/share/mica/sites
+	if [ ! -e /etc/mica/sites/default/settings.php ]; then \
+		cd /etc/mica/sites/default && \
+		cp default.settings.php settings.php && \
+		chmod a+w settings.php ; \
+	fi
 	
 drupal-doc:
 	mv /usr/share/mica/*.txt /usr/share/doc/mica
-	mv /usr/share/doc/mica/robots.txt /usr/share/mica
+	mv /usr/share/doc/mica/robots.txt /usr/share/mica	
 
 #
 # Mica install
 #
 	
-mica-install: mica-install-prepare
+mica-install:
+	mkdir -p target	
 	$(call make-sites-install,themes,mica_samara)
 	$(call make-sites-install,modules,mica)
 	$(call make-sites-install,modules,mica_feature)
@@ -81,15 +90,6 @@ mica-install: mica-install-prepare
 	$(call make-profiles-install,mica_minimal)
 	$(call make-profiles-install,mica_standard)
 	$(call make-profiles-install,mica_demo)
-	
-mica-install-prepare:
-	@echo "**** Mica install"
-	mkdir -p target	
-	if [ ! -e /etc/mica/sites/default/settings.php ]; then \
-		cd /etc/mica/sites/default && \
-		cp default.settings.php settings.php && \
-		chmod a+w settings.php ; \
-	fi
 
 #
 # Clean
@@ -104,13 +104,13 @@ clean:
 #
 
 make-sites-install = cd target && \
-	wget -q http://ci.obiba.org/job/Mica/ws/target/$(2)-$($(2)_version).tar.gz && \
+	wget -q http://download.obiba.org/mica/$(stability)/$(2)-$($(2)_version).tar.gz && \
 	tar xzf $(2)-$($(2)_version).tar.gz && \
 	rm -rf /usr/share/mica/sites/all/$(1)/$(2) && \
 	mv $(2) /usr/share/mica/sites/all/$(1)
 	
 make-profiles-install = cd target && \
-	wget -q http://ci.obiba.org/job/Mica/ws/target/$(1)-$($(1)_version).tar.gz && \
+	wget -q http://download.obiba.org/mica/$(stability)/$(1)-$($(1)_version).tar.gz && \
 	tar xzf $(1)-$($(1)_version).tar.gz && \
 	rm -rf /usr/share/mica/profiles/$(1) && \
 	mv $(1) /usr/share/mica/profiles
