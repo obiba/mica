@@ -61,6 +61,14 @@ function mica_feature_node_info() {
       'title_label' => t('Name'),
       'help' => '',
     ),
+    'study_files' => array(
+      'name' => t('Study Files'),
+      'base' => 'node_content',
+      'description' => t('Files attached to a Study.'),
+      'has_title' => '1',
+      'title_label' => t('Name'),
+      'help' => '',
+    ),
     'study_information' => array(
       'name' => t('Study Information'),
       'base' => 'node_content',

@@ -81,6 +81,16 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create study_files content
+  $permissions['create study_files content'] = array(
+    'name' => 'create study_files content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: create study_information content
   $permissions['create study_information content'] = array(
     'name' => 'create study_information content',
@@ -119,6 +129,16 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete any study_files content
+  $permissions['delete any study_files content'] = array(
+    'name' => 'delete any study_files content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: delete any study_information content
   $permissions['delete any study_information content'] = array(
     'name' => 'delete any study_information content',
@@ -153,6 +173,16 @@ function mica_feature_user_default_permissions() {
     'name' => 'delete own study content',
     'roles' => array(
       0 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own study_files content
+  $permissions['delete own study_files content'] = array(
+    'name' => 'delete own study_files content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
     ),
     'module' => 'node',
   );
@@ -206,6 +236,16 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit any study_files content
+  $permissions['edit any study_files content'] = array(
+    'name' => 'edit any study_files content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: edit any study_information content
   $permissions['edit any study_information content'] = array(
     'name' => 'edit any study_information content',
@@ -241,6 +281,17 @@ function mica_feature_user_default_permissions() {
     'roles' => array(
       0 => 'studies administrator',
       1 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own study_files content
+  $permissions['edit own study_files content'] = array(
+    'name' => 'edit own study_files content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+      2 => 'study administrator',
     ),
     'module' => 'node',
   );
