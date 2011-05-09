@@ -56,11 +56,10 @@ drupal-download:
 	$(drushexec) dl views_data_export-$(views_data_export_version) noderefcreate-$(noderefcreate_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version) feeds-$(feeds_version) && \
 	$(drushexec) dl node_export-$(node_export_version)
 	
-drupal-forks:
-	cd target/$(micadir) && \
-	rm -rf sites/all/modules/references && \
-	rm -rf sites/all/modules/search_api_ranges && \
-	cp -r ../../forks sites/all/modules
+drupal-forks:	
+	rm -rf target/$(micadir)/sites/all/modules/references && \
+	rm -rf target/$(micadir)/sites/all/modules/search_api_ranges && \
+	cp -r forks/* target/$(micadir)/sites/all/modules
 
 solr-php-client:
 	cd target/$(micadir) && \
