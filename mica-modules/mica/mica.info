@@ -13,6 +13,7 @@ dependencies[] = relation
 dependencies[] = field_permissions
 dependencies[] = menu
 
+files[] = includes/mica_relation.entity.inc
 files[] = includes/exception.inc
 files[] = includes/processor_study_fields.inc
 files[] = includes/relations.inc

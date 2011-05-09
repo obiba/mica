@@ -29,9 +29,9 @@ class FeedsStudyChildProcessor extends FeedsNodeProcessor {
       $relations = _mica_find_relations_by_parent('study');
       if (!empty($relations)) {
         foreach ($relations as $relation) {
-          $child_relation_type = $relation['child_bundle'];
+          $child_relation_type = $relation->child_bundle;
           if ($child_relation_type == $this->config['content_type']) {
-            $child_id = $parent[$row->entity_id]->{$relation['node_reference']}['und'][0]['nid'];
+            $child_id = $parent[$row->entity_id]->{$relation->options['node_reference']}['und'][0]['nid'];
             $nodes = entity_load('node', array($child_id));
             
             $node = $nodes[$child_id];

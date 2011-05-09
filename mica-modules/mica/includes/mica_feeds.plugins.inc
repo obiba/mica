@@ -28,5 +28,17 @@ function mica_feeds_plugins() {
       'path' => $path,
     ),
   );
+  $info['FeedsUniqueNodeProcessor'] = array(
+    'name' => 'Unique Node processor',
+    'description' => 'Update nodes if it already exists or creates a new one.',
+    'help' => 'Update nodes from parsed content.',
+    'handler' => array(
+      'parent' => 'FeedsNodeProcessor',
+      'class' => 'FeedsUniqueNodeProcessor',
+      'file' => 'FeedsUniqueNodeProcessor.inc',
+      'path' => $path,
+    ),
+  );
+
   return $info;
 }

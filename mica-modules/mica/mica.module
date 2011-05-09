@@ -14,6 +14,49 @@ function mica_help($path, $arg) {
 }
 
 /**
+ * Implements hook_entity_info().
+ */
+function mica_entity_info() {
+  $info['mica_relation'] = array(
+    'label' => t('Mica Relation'),
+    'controller class' => 'EntityAPIController',
+    'entity class' => 'MicaRelation',
+    'base table' => 'mica_relation',
+    'uri callback' => 'mica_relation_url',
+    'module' => 'mica',
+    'exportable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+      'label' => 'label',
+    ),
+  );
+  return $info;
+}
+
+/**
+ * Implements of hook_TYPE_load().
+ *
+ * Load search index infos from Search API
+ */
+function mica_mica_relation_load($entities) {
+	if (empty($entities)) return;
+	module_load_include('inc', 'mica', 'includes/search');
+	$indexes = _mica_find_indexes_by_bundle();
+	if (!empty($indexes)) {
+		foreach ($entities as $entity) {
+		  if (!empty($indexes[$entity->parent_bundle])) {
+		  	$entity->options['parent_indexes'] = array_keys($indexes[$entity->parent_bundle]);
+		  }
+		  if (!empty($indexes[$entity->child_bundle])) {
+		    $entity->options['child_indexes'] = array_keys($indexes[$entity->child_bundle]);
+		  }	
+		}
+	}		
+}
+
+
+
+/**
  * Implements hook_form_FORM_ID_alter()
  */
 function mica_form_node_type_form_alter(&$form, $form_state) {
@@ -29,11 +72,11 @@ function mica_node_type_delete($info) {
   $relations = _mica_find_relation_by_parent_or_child($info->type);
   if (!empty($relations)) {
     foreach ($relations as $relation) {
-      field_delete_field($relation['node_reference']);    
+      field_delete_field($relation->options['node_reference']);    
       watchdog('mica', 'Delete relation between parent %parent and child %child', 
         array(
-          '%parent' => $relation['parent_bundle'],
-          '%child' => $relation['child_bundle'], 
+          '%parent' => $relation->parent_bundle,
+          '%child' => $relation->child_bundle, 
         ), WATCHDOG_INFO);      
     }
     db_delete('mica_relation')->condition('id', array_keys($relations), 'IN')->execute();
@@ -57,18 +100,17 @@ function mica_node_insert($node) {
     
     foreach ($relations as $relation) {
       
-      if (!$relation['cascaded']) continue;
+      if (!$relation->options['cascaded']) continue;
       
-      $field_ref = $relation['node_reference'];
+      $field_ref = $relation->options['node_reference'];
       $field = $node->$field_ref;
       
       // do not create child if child id is already provided (case of data import)
       if (empty($field) || empty($field[$language])) {
-        $to_save = TRUE;
-        
+      	
         // create new child
         $node_child = new stdClass();
-        $node_child->type = $relation['child_bundle'];
+        $node_child->type = $relation->child_bundle;
         node_object_prepare($node_child);
         $node_child->title = $node->title;
         $node_child->language = $node->language;
@@ -86,11 +128,11 @@ function mica_node_insert($node) {
 
         watchdog('mica', 'Create child %child for parent %parent', 
           array(
-            '%child' => $relation['child_bundle'], 
+            '%child' => $relation->child_bundle, 
             '%parent' => $node->type,
           ), WATCHDOG_INFO);          
         
-        node_save($node_child);
+       	node_save($node_child);
 
         // link this new child node to the parent node
         $node->$field_ref = array(
@@ -100,6 +142,7 @@ function mica_node_insert($node) {
             ),
           ),
         );
+        $to_save = TRUE;
       }
     }
     if ($to_save) {
@@ -122,10 +165,10 @@ function mica_node_update($node) {
     $language = $node->language;
     
     foreach ($relations as $relation) {
+    	
+      if (!$relation->options['cascaded']) continue;
       
-      if (!$relation['cascaded']) continue;
-      
-      $field_ref = $relation['node_reference'];
+      $field_ref = $relation->options['node_reference'];
       $field = $node->$field_ref;
       $child_nid = $field[$language][0]['nid'];
       $node_child = node_load($child_nid);
@@ -165,14 +208,14 @@ function mica_node_delete($node) {
   if (!empty($relations)) {
     $language = $node->language;
     foreach ($relations as $relation) {
-      if (!$relation['cascaded']) continue;
-      $field_ref = $relation['node_reference'];
+      if (!$relation->options['cascaded']) continue;
+      $field_ref = $relation->options['node_reference'];
       $field = $node->$field_ref;
       $child_nid = $field[$language][0]['nid'];
       node_delete($child_nid);
       watchdog('mica', 'Delete child %child for deleted parent %parent', 
         array(
-          '%child' => $relation['child_bundle'], 
+          '%child' => $relation->child_bundle, 
           '%parent' => $node->type,
         ), WATCHDOG_INFO);        
     }

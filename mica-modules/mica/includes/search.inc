@@ -51,7 +51,7 @@ function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
   // check if this bundle is a child of a relation
   $relation = _mica_find_relation_by_child($bundle);
   if (!empty($relation)) {
-  	$field_name = $relation['node_reference'] . ':' . $field_name;
+  	$field_name = $relation->options['node_reference'] . ':' . $field_name;
   	$bundle_info = node_type_load($bundle);
   	$field_label = $bundle_info->name . ' » ' . $field_label;
   }  
