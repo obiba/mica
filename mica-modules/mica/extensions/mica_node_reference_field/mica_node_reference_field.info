@@ -1,0 +1,6 @@
+name = Mica Node Reference Field
+description = Adaptation of Node Reference Field to display relations for Mica
+core = 7.x
+package = "OBiBa"
+
+dependencies[] = node_reference

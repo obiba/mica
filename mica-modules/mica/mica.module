@@ -94,56 +94,10 @@ function mica_node_insert($node) {
     
     $parent_menu = isset($node->menu) ? $node->menu : array();
     $node = node_load($node->nid);    // reload node so it's not in 'new' state
-    $language = $node->language;
     
     $to_save = FALSE;
-    
     foreach ($relations as $relation) {
-      
-      if (!$relation->options['cascaded']) continue;
-      
-      $field_ref = $relation->options['node_reference'];
-      $field = $node->$field_ref;
-      
-      // do not create child if child id is already provided (case of data import)
-      if (empty($field) || empty($field[$language])) {
-      	
-        // create new child
-        $node_child = new stdClass();
-        $node_child->type = $relation->child_bundle;
-        node_object_prepare($node_child);
-        $node_child->title = $node->title;
-        $node_child->language = $node->language;
-        $node_child->uid = $node->uid; // same author
-        $node_child->status = $node->status; // same publication status
-        
-        // create menu if parent has menu
-        if (!empty($parent_menu)) {
-          $node_child->menu['enabled'] = 1;
-          $node_child->menu['menu_name'] = 'main-menu';
-          $node_child->menu['link_title'] = $node_child->title;
-          $node_child->menu['description'] = '';
-          $node_child->menu['plid'] = $parent_menu['mlid'];
-        }         
-
-        watchdog('mica', 'Create child %child for parent %parent', 
-          array(
-            '%child' => $relation->child_bundle, 
-            '%parent' => $node->type,
-          ), WATCHDOG_INFO);          
-        
-       	node_save($node_child);
-
-        // link this new child node to the parent node
-        $node->$field_ref = array(
-          $node->language => array(
-            0 => array(
-              'nid' => $node_child->nid,
-            ),
-          ),
-        );
-        $to_save = TRUE;
-      }
+    	$to_save = $relation->create_child_node($node, $parent_menu);
     }
     if ($to_save) {
       node_save($node);
@@ -157,46 +111,13 @@ function mica_node_insert($node) {
 function mica_node_update($node) {
   
   module_load_include('inc', 'mica', 'includes/relations');
-  $relations = _mica_find_relations_by_parent($node->type);
-  
+  $relations = _mica_find_relations_by_parent($node->type);  
   if (!empty($relations)) {
-    
     $parent_menu = isset($node->menu) ? $node->menu : array();
-    $language = $node->language;
-    
     foreach ($relations as $relation) {
-    	
-      if (!$relation->options['cascaded']) continue;
-      
-      $field_ref = $relation->options['node_reference'];
-      $field = $node->$field_ref;
-      $child_nid = $field[$language][0]['nid'];
-      $node_child = node_load($child_nid);
-      
-      if (empty($parent_menu)) {
-        menu_delete(array(
-          'title' => $node_child->title,
-          'menu_name' => 'main-menu',
-          'description' => '',
-        ));       
-      } 
-      else {
-        $node_child->menu['enabled'] = 1;
-        $node_child->menu['menu_name'] = 'main-menu';
-        $node_child->menu['link_title'] = $node->title;
-        $node_child->menu['description'] = '';
-        $node_child->menu['plid'] = $parent_menu['mlid'];
-      }
-
-      $node_child->uid = $node->uid;  // same author
-      $node_child->status = $node->status;  // same publication status
-      $node_child->title = $node->title;
-      $node_child->language = $node->language;            
-      node_save($node_child);
+    	$relation->update_child_node($node, $parent_menu);
     }
-    
   }
-  
 }
 
 /**
@@ -206,18 +127,8 @@ function mica_node_delete($node) {
   module_load_include('inc', 'mica', 'includes/relations');
   $relations = _mica_find_relations_by_parent($node->type);
   if (!empty($relations)) {
-    $language = $node->language;
     foreach ($relations as $relation) {
-      if (!$relation->options['cascaded']) continue;
-      $field_ref = $relation->options['node_reference'];
-      $field = $node->$field_ref;
-      $child_nid = $field[$language][0]['nid'];
-      node_delete($child_nid);
-      watchdog('mica', 'Delete child %child for deleted parent %parent', 
-        array(
-          '%child' => $relation->child_bundle, 
-          '%parent' => $node->type,
-        ), WATCHDOG_INFO);        
+    	$relation->delete_child_node($node);
     }
   }
 }
@@ -225,6 +136,7 @@ function mica_node_delete($node) {
 /**
  * Implements hook_search_api_processor_info().
  */
+//TODO remove this
 function mica_search_api_processor_info() {
   $processors['search_api_processor_study_fields'] = array(
     'name' => t('Mica'),

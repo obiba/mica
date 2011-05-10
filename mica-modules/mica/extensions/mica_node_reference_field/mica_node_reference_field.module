@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Defines a field type for referencing one node from another that 
+ * displays refered node type instead of node title in the link.
+ */
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function mica_node_reference_field_field_formatter_info() {
+  return array(
+    'node_reference_type_link' => array(
+      'label'       => t('Referenced node type (link)'),
+      'description' => t('Display the type of the referenced node as a link to the node page.'),
+      'field types' => array('node_reference'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function mica_node_reference_field_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $result = array();
+  if ($display['type'] === 'node_reference_type_link') {
+		foreach ($items as $delta => $item) {
+			if ($item['access']) {
+				$node = $item['node'];
+				if ($display['type'] == 'node_reference_type_link') {
+					$uri = entity_uri('node', $node);
+					$node_type_info = node_type_load($node->type);
+					$result[$delta] = array(
+						'#type' => 'link',
+						'#title' => $node_type_info->name,
+						'#href' => $uri['path'],
+						'#options' => $uri['options'],
+					);
+				}
+				else {
+					$result[$delta] = array(
+						'#markup' => check_plain($node->title),
+					);
+				}
+				if (!$node->status) {
+					$result[$delta]['#prefix'] = '<span class="node-unpublished">';
+					$result[$delta]['#suffix'] = '</span>';
+				}
+			}
+		}  	
+  }
+  return $result;
+}

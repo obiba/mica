@@ -182,7 +182,6 @@ function _mica_edit_node_type_relation($form, &$form_state) {
           '%child' => $relation->child_bundle, 
         ), WATCHDOG_INFO);            
         
-        
       $indexes = _mica_find_indexes_by_bundle();
       $relation->options['parent_indexes'] = empty($indexes[$relation->parent_bundle]) 
       	? array() 
@@ -193,11 +192,10 @@ function _mica_edit_node_type_relation($form, &$form_state) {
       $relation->options['relation'] = $relation->parent_bundle . '_' . $relation->child_bundle; 
       $relation->options['relation_parent_field'] = $relation->child_bundle . '_relation'; 
       $relation->options['relation_child_field'] = $relation->parent_bundle . '_relation';
-      
-      //TODO create relation  
-      
+            
       // create node reference field
-      _mica_add_node_reference_to_parent($relation, $name);
+      $relation->add_node_reference_to_parent($name);
+      //$relation->add_relation_fields();
       
       // check if parent type already has content
       $query = new EntityFieldQuery;
@@ -224,9 +222,13 @@ function _mica_edit_node_type_relation($form, &$form_state) {
         // no content for parent type, we can replace node reference field and relation
         field_delete_field($previous_relation->options['node_reference']);
         $relation->options['node_reference'] = 'mica_' . $new_type;          
-        _mica_add_node_reference_to_parent($relation, $name);
-
-        //TODO recreate relation  
+        $relation->add_node_reference_to_parent($name);
+        
+        /*
+        field_delete_field($previous_relation->options['relation_parent_field']);
+        field_delete_field($previous_relation->options['relation_child_field']);
+        $relation->add_relation_fields();
+        */
         
       } 
       else {
@@ -241,46 +243,6 @@ function _mica_edit_node_type_relation($form, &$form_state) {
     $relation->save();
   }
   
-}
-
-/**
- * create and add node reference field for parent type
- */
-function _mica_add_node_reference_to_parent(MicaRelation $relation, $child_name) {
-  field_create_field(array(
-    'field_name' => $relation->options['node_reference'],
-    'type' => 'node_reference',
-    'cardinality' => 1,
-    'settings' => array(
-      'referenceable_types' => array(
-        $relation->child_bundle => $relation->child_bundle,
-      ),
-      'field_permissions' => array(
-        'create' => 'create',
-        'view' => 'view',
-      ),
-    ),      
-  ));
-
-  field_create_instance(array(
-    'field_name' => $relation->options['node_reference'],
-    'label' => $child_name,
-    'entity_type' => 'node',
-    'bundle' => $relation->parent_bundle,
-    'widget' => array('type' => 'options_select'),
-  ));
-  
-  // give 'view' field permission to everyone
-  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('view ' . $relation->options['node_reference']));
-  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('view ' . $relation->options['node_reference']));  
-
-  // give 'create' field permission to studies administrator and study administrator
-  $admin_role = user_role_load_by_name('administrator');
-  $studies_admin_role = user_role_load_by_name('studies administrator');
-  $study_admin_role = user_role_load_by_name('study administrator');
-  user_role_grant_permissions($admin_role->rid, array('create ' . $relation->options['node_reference']));
-  user_role_grant_permissions($studies_admin_role->rid, array('create ' . $relation->options['node_reference']));
-  user_role_grant_permissions($study_admin_role->rid, array('create ' . $relation->options['node_reference']));
 }
 
 /**
