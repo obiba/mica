@@ -40,15 +40,15 @@ function mica_feature_node_info() {
     'contact' => array(
       'name' => t('Contact'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Description of a Contact, consisting of a person and an Institution.'),
       'has_title' => '1',
-      'title_label' => t('Contact Name and Institution'),
+      'title_label' => t('Person and Institution Names'),
       'help' => '',
     ),
     'institution' => array(
       'name' => t('Institution'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Description of an Institution.'),
       'has_title' => '1',
       'title_label' => t('Institution Name'),
       'help' => '',
@@ -56,7 +56,7 @@ function mica_feature_node_info() {
     'study' => array(
       'name' => t('Study'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Study portal. Create a content of this type when registering a new study.'),
       'has_title' => '1',
       'title_label' => t('Name'),
       'help' => '',
@@ -64,7 +64,7 @@ function mica_feature_node_info() {
     'study_files' => array(
       'name' => t('Study Files'),
       'base' => 'node_content',
-      'description' => t('Files attached to a Study.'),
+      'description' => t('Files attached to a Study. Child of Study.'),
       'has_title' => '1',
       'title_label' => t('Name'),
       'help' => '',
@@ -72,7 +72,7 @@ function mica_feature_node_info() {
     'study_information' => array(
       'name' => t('Study Information'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('General Information about a Study. Child of Study.'),
       'has_title' => '1',
       'title_label' => t('Full Name'),
       'help' => '',
@@ -80,7 +80,7 @@ function mica_feature_node_info() {
     'variable' => array(
       'name' => t('Variable'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Description of information collected about the studies.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
