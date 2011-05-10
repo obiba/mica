@@ -205,7 +205,10 @@ function _mica_edit_node_type_relation($form, &$form_state) {
       if (!empty($result['node']) && $relation->options['cascaded']) {
         $entities = entity_load('node', array_keys($result['node']));
         foreach ($entities as $entity) {
-          mica_node_insert($entity);  // create missing child content
+        	// create missing child nodes
+        	if ($relation->create_child_node($entity, isset($entity->menu) ? $entity->menu : array())) {
+        		node_save($node);
+        	}
         }
       }                       
       

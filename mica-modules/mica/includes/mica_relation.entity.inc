@@ -77,7 +77,8 @@ class MicaRelation extends Entity {
 	    $index->options['data_alter_callbacks']['search_api_alter_bundle_filter']['settings']['bundles'][$this->child_bundle] = $this->child_bundle;
 	    entity_save('search_api_index', $index);
 	  }
-	  // we don't want to keep index info in MicaRelation   
+	  
+	  // we don't want to keep index info in mica_relation table  
 	  unset($this->options['parent_indexes']);
 	  unset($this->options['child_indexes']);
 	  
@@ -122,8 +123,11 @@ class MicaRelation extends Entity {
 	 * create and add node reference field for parent type
 	 */
 	public function add_node_reference_to_parent($child_name) {
-	  field_create_field(array(
-	    'field_name' => $this->options['node_reference'],
+		
+		$node_ref_field_name = $this->options['node_reference'];
+	  
+		field_create_field(array(
+	    'field_name' => $node_ref_field_name,
 	    'type' => 'node_reference',
 	    'cardinality' => 1,
 	    'settings' => array(
@@ -134,28 +138,36 @@ class MicaRelation extends Entity {
 	        'create' => 'create',
 	        'view' => 'view',
 	      ),
-	    ),      
+	    ), 
 	  ));
 	  
 	  field_create_instance(array(
-	    'field_name' => $this->options['node_reference'],
+	    'field_name' => $node_ref_field_name,
 	    'label' => $child_name,
 	    'entity_type' => 'node',
 	    'bundle' => $this->parent_bundle,
-	    'widget' => array('type' => 'options_select'),
+	    'widget' => array(
+	    	'type' => 'options_select',
+	 		),
+ 			'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'type' => 'node_reference_type_link',      
+        ),
+      ),	 		
 	  ));
 	  
 	  // give 'view' field permission to everyone
-	  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('view ' . $this->options['node_reference']));
-	  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('view ' . $this->options['node_reference']));  
+	  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('view ' . $node_ref_field_name));
+	  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('view ' . $node_ref_field_name));  
 	
 	  // give 'create' field permission to studies administrator and study administrator
 	  $admin_role = user_role_load_by_name('administrator');
 	  $studies_admin_role = user_role_load_by_name('studies administrator');
 	  $study_admin_role = user_role_load_by_name('study administrator');
-	  user_role_grant_permissions($admin_role->rid, array('create ' . $this->options['node_reference']));
-	  user_role_grant_permissions($studies_admin_role->rid, array('create ' . $this->options['node_reference']));
-	  user_role_grant_permissions($study_admin_role->rid, array('create ' . $this->options['node_reference']));
+	  user_role_grant_permissions($admin_role->rid, array('create ' . $node_ref_field_name));
+	  user_role_grant_permissions($studies_admin_role->rid, array('create ' . $node_ref_field_name));
+	  user_role_grant_permissions($study_admin_role->rid, array('create ' . $node_ref_field_name));
 	}  
 	
  
@@ -203,8 +215,7 @@ class MicaRelation extends Entity {
 	}
 	
 	/**
-	 * Create a node child.
-	 * Returns true if the node was created and linked to its parent
+	 * Create a node child. Returns true if the node was created and linked to its parent
 	 */
 	public function create_child_node($parent_node, array $parent_menu) {
 		
@@ -228,11 +239,14 @@ class MicaRelation extends Entity {
         
       // create menu if parent has menu
       if (!empty($parent_menu)) {
+      	debug($parent_menu, '$parent_menu');
+      	/*
 				$node_child->menu['enabled'] = 1;
         $node_child->menu['menu_name'] = 'main-menu';
         $node_child->menu['link_title'] = $node_child->title;
         $node_child->menu['description'] = '';
         $node_child->menu['plid'] = $parent_menu['mlid'];
+        */
       }         
 
       watchdog('mica', 'Create child %child for parent %parent', 
@@ -288,6 +302,7 @@ class MicaRelation extends Entity {
     $child_nid = $field[$language][0]['nid'];
     $node_child = node_load($child_nid);
       
+    /*
     if (empty($parent_menu)) {
       menu_delete(array(
         'title' => $node_child->title,
@@ -302,6 +317,7 @@ class MicaRelation extends Entity {
       $node_child->menu['description'] = '';
       $node_child->menu['plid'] = $parent_menu['mlid'];
     }
+    */
 
     $node_child->uid = $parent_node->uid;  // same author
     $node_child->status = $parent_node->status;  // same publication status
