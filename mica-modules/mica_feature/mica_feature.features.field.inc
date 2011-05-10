@@ -1329,9 +1329,9 @@ Prof.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'node_reference',
+          'module' => 'mica_node_reference_field',
           'settings' => array(),
-          'type' => 'node_reference_default',
+          'type' => 'node_reference_type_link',
           'weight' => '4',
         ),
         'teaser' => array(
@@ -1407,11 +1407,9 @@ Prof.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'node_reference',
-          'settings' => array(
-            'node_reference_view_mode' => 'teaser',
-          ),
-          'type' => 'node_reference_node',
+          'module' => 'mica_node_reference_field',
+          'settings' => array(),
+          'type' => 'node_reference_type_link',
           'weight' => '2',
         ),
         'teaser' => array(
@@ -1462,7 +1460,20 @@ Prof.',
         ),
       ),
       'module' => 'text',
-      'settings' => array(),
+      'settings' => array(
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'variable_infos' => array(
+          'variable' => 1,
+          'variable_body' => '',
+          'variable_value_type' => 'TEXT',
+        ),
+      ),
       'translatable' => '1',
       'type' => 'text_with_summary',
     ),
