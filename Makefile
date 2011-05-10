@@ -38,7 +38,6 @@ mica-install:
 	cp -r ../../mica-profiles/* profiles && \
 	cp -r ../../mica-modules/mica sites/all/modules && \
 	cp -r ../../mica-modules/mica_feature sites/all/modules/mica/extensions && \
-	cp -r ../../mica-modules/mica_addons sites/all/modules/mica/extensions && \
 	cp -r ../../mica-themes/* sites/all/themes && \
 	rm -rf `find . -type d -name .svn`
 
