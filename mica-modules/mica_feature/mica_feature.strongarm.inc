@@ -42,7 +42,7 @@ function mica_feature_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_study_files';
-  $strongarm->value = 'edit-mica-relation';
+  $strongarm->value = 'edit-menu';
   $export['additional_settings__active_tab_study_files'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -55,16 +55,9 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'cascaded_study_files';
-  $strongarm->value = 1;
-  $export['cascaded_study_files'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'child_indexes_study_files';
-  $strongarm->value = array();
-  $export['child_indexes_study_files'] = $strongarm;
+  $strongarm->name = 'additional_settings__active_tab_variable';
+  $strongarm->value = 'edit-menu';
+  $export['additional_settings__active_tab_variable'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -622,7 +615,9 @@ function mica_feature_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_study_files';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
   $export['menu_options_study_files'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -666,7 +661,7 @@ function mica_feature_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_study_files';
-  $strongarm->value = 'management:0';
+  $strongarm->value = 'main-menu:0';
   $export['menu_parent_study_files'] = $strongarm;
 
   $strongarm = new stdClass;
