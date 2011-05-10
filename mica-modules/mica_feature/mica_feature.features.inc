@@ -592,7 +592,6 @@ function mica_feature_default_search_api_index() {
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
       },
       "processors" : {
-        "search_api_processor_study_fields" : { "status" : 1, "weight" : "0", "settings" : [] },
         "search_api_case_ignore" : { "status" : 0, "weight" : "0", "settings" : { "strings" : 0 } },
         "search_api_html_filter" : {
           "status" : 0,

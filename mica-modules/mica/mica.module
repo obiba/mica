@@ -134,19 +134,6 @@ function mica_node_delete($node) {
 }
 
 /**
- * Implements hook_search_api_processor_info().
- */
-//TODO remove this
-function mica_search_api_processor_info() {
-  $processors['search_api_processor_study_fields'] = array(
-    'name' => t('Mica'),
-    'description' => t('Adds the study referred fields to the indexed data.'),
-    'class' => 'SearchApiProcessorStudyFields',
-  );
-  return $processors;
-}
-
-/**
  * Implements of hook_form_FORM_ID_alter()
  */
 function mica_form_field_ui_field_edit_form_alter(&$form, $form_state, $form_id) {
