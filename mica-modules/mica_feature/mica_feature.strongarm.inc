@@ -35,7 +35,7 @@ function mica_feature_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_study';
-  $strongarm->value = 'edit-workflow';
+  $strongarm->value = 'edit-menu';
   $export['additional_settings__active_tab_study'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -659,7 +659,7 @@ function mica_feature_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_study';
-  $strongarm->value = 'main-menu:355';
+  $strongarm->value = 'main-menu:254';
   $export['menu_parent_study'] = $strongarm;
 
   $strongarm = new stdClass;
