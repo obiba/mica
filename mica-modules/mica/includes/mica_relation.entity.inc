@@ -237,15 +237,6 @@ class MicaRelation extends Entity {
       $node_child->uid = $parent_node->uid; // same author
       $node_child->status = $parent_node->status; // same publication status
         
-      // create menu if parent has menu
-      if (!empty($parent_menu)) {
-      	$node_child->menu['enabled'] = 1;
-        $node_child->menu['menu_name'] = 'main-menu';
-        $node_child->menu['link_title'] = $parent_node->title;
-        $node_child->menu['description'] = '';
-        $node_child->menu['plid'] = $parent_menu['mlid'];
-      }         
-
       watchdog('mica', 'Create child %child for parent %parent', 
       	array(
         	'%child' => $this->child_bundle, 
@@ -253,6 +244,19 @@ class MicaRelation extends Entity {
         ), WATCHDOG_INFO);          
         
       node_save($node_child);
+      
+      // create menu if parent has menu
+      if (!empty($parent_menu) || $parent_menu['enabled']) {
+      	$child_bundle_info = node_type_load($this->child_bundle);
+        $child_menu_item = array(
+				  'menu_name' => 'main-menu',
+				  'link_title' => $child_bundle_info->name,
+				  'link_path' => 'node/' . $node_child->nid,
+				  'plid' => $parent_menu['mlid'],
+				);
+        menu_link_save($child_menu_item);
+        menu_cache_clear('main-menu');
+      }        
 
       // link this new child node to the parent node
       $parent_node->$field_ref = array(
@@ -299,23 +303,38 @@ class MicaRelation extends Entity {
     $field = $parent_node->$field_ref;
     $child_nid = $field[$language][0]['nid'];
     $node_child = node_load($child_nid);
-      
-    if (empty($parent_menu)) {
-    	$node_child->menu['enabled'] = FALSE;
-    } 
-    else {
-      $node_child->menu['enabled'] = TRUE;
-      $node_child->menu['menu_name'] = 'main-menu';
-      $node_child->menu['link_title'] = $parent_node->title;
-      $node_child->menu['description'] = '';
-      $node_child->menu['plid'] = $parent_menu['mlid'];
+    
+	  // drop previous child menu in main-menu if exists
+	  $clear_menu_cache = FALSE;
+	  $child_menu = menu_link_get_preferred('node/' . $child_nid);
+  	if (!empty($child_menu) && $child_menu['menu_name'] === 'main-menu') {
+  		menu_link_delete($child_menu['mlid']);
+  		$clear_menu_cache = TRUE;
+  	}    
+    
+    // create child menu if needed
+    if (!empty($parent_menu) && $parent_menu['enabled']) {
+      $child_bundle_info = node_type_load($this->child_bundle);
+      $child_menu_item = array(
+				'menu_name' => 'main-menu',
+				'link_title' => $child_bundle_info->name,
+				'link_path' => 'node/' . $child_nid,
+				'plid' => $parent_menu['mlid'],
+			);
+      menu_link_save($child_menu_item);
+      $clear_menu_cache = TRUE;
+ 	  }
+ 	  
+ 	  if ($clear_menu_cache) {
+      menu_cache_clear('main-menu');  	  
     }
 
     $node_child->uid = $parent_node->uid;  // same author
     $node_child->status = $parent_node->status;  // same publication status
     $node_child->title = $parent_node->title;
     $node_child->language = $parent_node->language;            
-    node_save($node_child);		
+    node_save($node_child);
+    
 	}
 	
 	public function delete_child_node($parent_node) {
