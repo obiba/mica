@@ -1615,7 +1615,7 @@ function mica_feature_views_default_views() {
   $view->name = 'variables_search';
   $view->description = '';
   $view->tag = 'default';
-  $view->base_table = 'search_api_index_studies_index';
+  $view->base_table = 'search_api_index_variables_index';
   $view->human_name = 'Variables Search';
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
@@ -1633,7 +1633,7 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   /* Field: Node: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_studies_index';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_variables_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Name';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
@@ -1654,7 +1654,7 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
   /* Field: Node: Content type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'search_api_index_studies_index';
+  $handler->display->display_options['fields']['type']['table'] = 'search_api_index_variables_index';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['type']['alter']['make_link'] = 0;
@@ -1675,7 +1675,7 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['type']['format_name'] = 1;
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_studies_index';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_variables_index';
   $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
@@ -1685,7 +1685,7 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
   /* Filter criterion: Node: Content type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_studies_index';
+  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_variables_index';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'variable' => 'variable',
