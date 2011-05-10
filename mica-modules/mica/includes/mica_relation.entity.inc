@@ -239,14 +239,11 @@ class MicaRelation extends Entity {
         
       // create menu if parent has menu
       if (!empty($parent_menu)) {
-      	debug($parent_menu, '$parent_menu');
-      	/*
-				$node_child->menu['enabled'] = 1;
+      	$node_child->menu['enabled'] = 1;
         $node_child->menu['menu_name'] = 'main-menu';
-        $node_child->menu['link_title'] = $node_child->title;
+        $node_child->menu['link_title'] = $parent_node->title;
         $node_child->menu['description'] = '';
         $node_child->menu['plid'] = $parent_menu['mlid'];
-        */
       }         
 
       watchdog('mica', 'Create child %child for parent %parent', 
@@ -283,6 +280,7 @@ class MicaRelation extends Entity {
       // create drupal relation
 			relation_create($this->options['relation'], $endpoints);        
       */  
+      
       return TRUE;
     }
   	return FALSE;  		
@@ -302,22 +300,16 @@ class MicaRelation extends Entity {
     $child_nid = $field[$language][0]['nid'];
     $node_child = node_load($child_nid);
       
-    /*
     if (empty($parent_menu)) {
-      menu_delete(array(
-        'title' => $node_child->title,
-        'menu_name' => 'main-menu',
-        'description' => '',
-      ));       
+    	$node_child->menu['enabled'] = FALSE;
     } 
     else {
-      $node_child->menu['enabled'] = 1;
+      $node_child->menu['enabled'] = TRUE;
       $node_child->menu['menu_name'] = 'main-menu';
       $node_child->menu['link_title'] = $parent_node->title;
       $node_child->menu['description'] = '';
       $node_child->menu['plid'] = $parent_menu['mlid'];
     }
-    */
 
     $node_child->uid = $parent_node->uid;  // same author
     $node_child->status = $parent_node->status;  // same publication status
