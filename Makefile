@@ -171,8 +171,6 @@ git-prepare:
 
 git-modules: 
 	$(call make-git,mica-modules,mica,sandbox/emorency/1128690)
-	$(call make-git,mica-modules,mica_feature,sandbox/emorency/1128676)
-	$(call make-git,mica-modules,mica_addons,sandbox/yop/1144682)
 
 git-themes: 
 	$(call make-git,mica-themes,mica_samara,sandbox/yop/1144820)
