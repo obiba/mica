@@ -16,12 +16,10 @@
 		<td class="range-box range-box-right"><?php print drupal_render($form['range-to']); ?></td>
 	</tr>
 	
-	<?php if (!$form['range-is-date']) { ?>
-		
+	<?php if (!$form['range-is-date']['#value']) { ?>
 		<tr>
 			<td colspan="2" class="range-slider-box"><?php print drupal_render($form['range-slider']); ?></td>
 		</tr>
-	
 	<?php } ?>
 	
 	<tr>
