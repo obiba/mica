@@ -49,7 +49,7 @@ function mica_feature_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_study_information';
-  $strongarm->value = 'edit-comment';
+  $strongarm->value = 'edit-submission';
   $export['additional_settings__active_tab_study_information'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -436,7 +436,7 @@ function mica_feature_strongarm() {
         'extra_fields' => array(
           'form' => array(
             'title' => array(
-              'weight' => '0',
+              'weight' => '1',
             ),
           ),
           'display' => array(),

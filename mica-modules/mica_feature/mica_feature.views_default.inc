@@ -1239,6 +1239,28 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['title_1']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title_1']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title_1']['link_to_node'] = 1;
+  /* Field: Content: Full Name */
+  $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
+  $handler->display->display_options['fields']['field_full_name']['table'] = 'field_data_field_full_name';
+  $handler->display->display_options['fields']['field_full_name']['field'] = 'field_full_name';
+  $handler->display->display_options['fields']['field_full_name']['label'] = 'field_full_name';
+  $handler->display->display_options['fields']['field_full_name']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_full_name']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_full_name']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_full_name']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_full_name']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['field_api_classes'] = 0;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -1309,6 +1331,7 @@ function mica_feature_views_default_views() {
     t('field_biosamples_tissues'),
     t('status'),
     t('title'),
+    t('field_full_name'),
     t('Data export'),
   );
   $export['csv_study_information_export'] = $view;

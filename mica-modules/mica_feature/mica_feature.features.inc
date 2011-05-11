@@ -117,7 +117,7 @@ function mica_feature_node_info() {
       'base' => 'node_content',
       'description' => t('General Information about a Study. Child of Study.'),
       'has_title' => '1',
-      'title_label' => t('Full Name'),
+      'title_label' => t('Name'),
       'help' => '',
     ),
     'variable' => array(
