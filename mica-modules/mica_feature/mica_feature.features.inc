@@ -576,6 +576,12 @@ function mica_feature_default_search_api_index() {
           "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
+        },
+        "mica_study_information:field_full_name" : {
+          "name" : "Study Information \\u00bb Full Name",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
         }
       },
       "data_alter_callbacks" : {
@@ -592,6 +598,7 @@ function mica_feature_default_search_api_index() {
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
       },
       "processors" : {
+        "search_api_processor_study_fields" : { "status" : 1, "weight" : "0", "settings" : [] },
         "search_api_case_ignore" : { "status" : 0, "weight" : "0", "settings" : { "strings" : 0 } },
         "search_api_html_filter" : {
           "status" : 0,
