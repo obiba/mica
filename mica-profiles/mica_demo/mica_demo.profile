@@ -29,7 +29,7 @@ function mica_demo_install_tasks($install_state){
 }
 
 function mica_import_demo_feeds($install_state){
-  $root = drupal_get_path('profile', 'mica_demo') . '/data';
+  $root = 'profiles/mica_demo/data';
   $feed_configs = array();
   $feed_configs['csv_study_import'] = array(
     'file' => $root . '/study_import.csv',
