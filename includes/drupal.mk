@@ -48,8 +48,8 @@ drupal-download:
 	$(drushexec) dl advanced_help panels ctools-$(ctools_version) && \
 	$(drushexec) dl email-$(email_version) name-$(name_version) field_group-$(field_group_version) link-$(link_version) && \
 	$(drushexec) dl entity-$(entity_version) views-$(views_version) && \
-	$(drushexec) dl search_api-$(search_api_version) search_api_ranges-${search_api_ranges_version} && \ 
-#	$(drushexec) dl search_api_solr-$(search_api_solr_version) && \
+	$(drushexec) dl search_api_solr-$(search_api_solr_version) search_api-$(search_api_version) && \ 
+#	$(drushexec) dl search_api_ranges-${search_api_ranges_version} && \
 	$(drushexec) dl features-$(features_version) strongarm-$(strongarm_version) && \
 #	$(drushexec) dl references-$(references_version) && \
   $(drushexec) dl field_permissions-${field_permissions_version} relation-${relation_version} && \
