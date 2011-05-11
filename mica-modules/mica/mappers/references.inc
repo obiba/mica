@@ -144,7 +144,14 @@ function references_feeds_set_target($source, $entity, $target, $value) {
         // Validate node title or user name.
         if ((is_string($v) && $v != '') || is_numeric($v)) {
           // Lookup potential exact matches for the value (limit to one result).
-          $matches = $validate_function($info, $v, 'equals', array(), 1);
+          // signature of _node_reference_potential_references has changed
+          $options = array(
+            'string' => $v,
+            'match' => 'equals',
+            'ids' => array(),
+            'limit' => 1,
+          );
+          $matches = $validate_function($info, $options);
           // Use the first element of the potential matches.
           $id = key($matches);
         }
@@ -194,7 +201,7 @@ function references_feeds_set_target($source, $entity, $target, $value) {
               
               $id = $node->nid;
               
-              drupal_set_message(t('Node %title has been automatically created !', array('%title' => $v)));
+              //drupal_set_message(t('Node %title has been automatically created !', array('%title' => $v)));
             }
           }
           else{
