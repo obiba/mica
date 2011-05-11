@@ -11,9 +11,9 @@
  */
 function mica_node_reference_field_field_formatter_info() {
   return array(
-    'node_reference_type_link' => array(
-      'label'       => t('Referenced node type (link)'),
-      'description' => t('Display the type of the referenced node as a link to the node page.'),
+    'node_reference_field_name_link' => array(
+      'label'       => t('Node reference field name (link)'),
+      'description' => t('Displays the name of the node reference field as a link to the node page.'),
       'field types' => array('node_reference'),
     ),
   );
@@ -24,16 +24,15 @@ function mica_node_reference_field_field_formatter_info() {
  */
 function mica_node_reference_field_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $result = array();
-  if ($display['type'] === 'node_reference_type_link') {
+  if ($display['type'] === 'node_reference_field_name_link') {
 		foreach ($items as $delta => $item) {
 			if ($item['access']) {
 				$node = $item['node'];
-				if ($display['type'] == 'node_reference_type_link') {
+				if ($display['type'] == 'node_reference_field_name_link') {
 					$uri = entity_uri('node', $node);
-					$node_type_info = node_type_load($node->type);
 					$result[$delta] = array(
 						'#type' => 'link',
-						'#title' => $node_type_info->name,
+						'#title' => t($instance['label']),
 						'#href' => $uri['path'],
 						'#options' => $uri['options'],
 					);
