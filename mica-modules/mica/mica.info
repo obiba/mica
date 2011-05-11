@@ -14,12 +14,23 @@ dependencies[] = mica_node_reference_field
 dependencies[] = field_permissions
 dependencies[] = menu
 
-files[] = includes/mica_relation.entity.inc
+
 files[] = includes/blocks.inc
 files[] = includes/exception.inc
+files[] = includes/mica_relation.entity.inc
+files[] = includes/mica_feeds.plugins.inc
 files[] = includes/processor_study_fields.inc
 files[] = includes/relations.inc
-files[] = includes/variables.inc
 files[] = includes/search.inc
+files[] = includes/variables.inc
+
+files[] = mappers/email.inc
+files[] = mappers/mica.inc
+files[] = mappers/name.inc
+files[] = mappers/references.inc
+
+files[] = plugins/FeedsStudyChildProcessor.inc
+files[] = plugins/FeedsUniqueNodeProcessor.inc
+
 files[] = mica.install
 files[] = mica.module
