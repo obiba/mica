@@ -152,7 +152,7 @@ class MicaRelation extends Entity {
  			'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'type' => 'node_reference_type_link',      
+          'type' => 'node_reference_field_name_link',      
         ),
       ),	 		
 	  ));
@@ -247,10 +247,10 @@ class MicaRelation extends Entity {
       
       // create menu if parent has menu
       if (!empty($parent_menu) || $parent_menu['enabled']) {
-      	$child_bundle_info = node_type_load($this->child_bundle);
+      	$field_ref_info = field_info_instance('node', $field_ref, $this->parent_bundle);
         $child_menu_item = array(
 				  'menu_name' => 'main-menu',
-				  'link_title' => $child_bundle_info->name,
+				  'link_title' => t($field_ref_info['label']),
 				  'link_path' => 'node/' . $node_child->nid,
 				  'plid' => $parent_menu['mlid'],
 				);
@@ -314,10 +314,10 @@ class MicaRelation extends Entity {
     
     // create child menu if needed
     if (!empty($parent_menu) && $parent_menu['enabled']) {
-      $child_bundle_info = node_type_load($this->child_bundle);
+      $field_ref_info = field_info_instance('node', $field_ref, $this->parent_bundle);
       $child_menu_item = array(
 				'menu_name' => 'main-menu',
-				'link_title' => $child_bundle_info->name,
+				'link_title' => t($field_ref_info['label']),
 				'link_path' => 'node/' . $child_nid,
 				'plid' => $parent_menu['mlid'],
 			);
