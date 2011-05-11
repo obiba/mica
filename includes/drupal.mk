@@ -61,9 +61,6 @@ drupal-download:
 	$(drushexec) dl node_export-$(node_export_version)
 	
 drupal-forks:	
-	rm -rf target/$(micadir)/sites/all/modules/references && \
-	rm -rf target/$(micadir)/sites/all/modules/search_api_ranges && \
-	rm -rf target/$(micadir)/sites/all/modules/feeds && \
 	cp -r forks/* target/$(micadir)/sites/all/modules
 
 solr-php-client:
