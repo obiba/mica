@@ -1,0 +1,6 @@
+@CHARSET "UTF-8";
+
+#mica-facet-visibility-form {
+	max-height: 250px;
+    overflow-y: auto;
+}

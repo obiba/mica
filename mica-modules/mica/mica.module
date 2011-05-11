@@ -1,6 +1,7 @@
 <?php
 
 include_once('includes/mica_feeds.plugins.inc');
+include_once('includes/blocks.inc');
 
 /**
  * Implements hook_help()
@@ -28,7 +29,7 @@ function mica_entity_info() {
     'entity keys' => array(
       'id' => 'id',
       'label' => 'label',
-    ),
+  ),
   );
   return $info;
 }
@@ -39,19 +40,19 @@ function mica_entity_info() {
  * Load search index infos from Search API
  */
 function mica_mica_relation_load($entities) {
-	if (empty($entities)) return;
-	module_load_include('inc', 'mica', 'includes/search');
-	$indexes = _mica_find_indexes_by_bundle();
-	if (!empty($indexes)) {
-		foreach ($entities as $entity) {
-		  if (!empty($indexes[$entity->parent_bundle])) {
-		  	$entity->options['parent_indexes'] = array_keys($indexes[$entity->parent_bundle]);
-		  }
-		  if (!empty($indexes[$entity->child_bundle])) {
-		    $entity->options['child_indexes'] = array_keys($indexes[$entity->child_bundle]);
-		  }	
-		}
-	}		
+  if (empty($entities)) return;
+  module_load_include('inc', 'mica', 'includes/search');
+  $indexes = _mica_find_indexes_by_bundle();
+  if (!empty($indexes)) {
+    foreach ($entities as $entity) {
+      if (!empty($indexes[$entity->parent_bundle])) {
+        $entity->options['parent_indexes'] = array_keys($indexes[$entity->parent_bundle]);
+      }
+      if (!empty($indexes[$entity->child_bundle])) {
+        $entity->options['child_indexes'] = array_keys($indexes[$entity->child_bundle]);
+      }
+    }
+  }
 }
 
 
@@ -72,12 +73,12 @@ function mica_node_type_delete($info) {
   $relations = _mica_find_relation_by_parent_or_child($info->type);
   if (!empty($relations)) {
     foreach ($relations as $relation) {
-      field_delete_field($relation->options['node_reference']);    
-      watchdog('mica', 'Delete relation between parent %parent and child %child', 
-        array(
+      field_delete_field($relation->options['node_reference']);
+      watchdog('mica', 'Delete relation between parent %parent and child %child',
+      array(
           '%parent' => $relation->parent_bundle,
           '%child' => $relation->child_bundle, 
-        ), WATCHDOG_INFO);      
+      ), WATCHDOG_INFO);
     }
     db_delete('mica_relation')->condition('id', array_keys($relations), 'IN')->execute();
   }
@@ -91,13 +92,13 @@ function mica_node_insert($node) {
 
   $relations = _mica_find_relations_by_parent($node->type);
   if (!empty($relations)) {
-    
+
     $parent_menu = isset($node->menu) ? $node->menu : array();
     $node = node_load($node->nid);    // reload node so it's not in 'new' state
-    
+
     $to_save = FALSE;
     foreach ($relations as $relation) {
-    	$to_save = $relation->create_child_node($node, $parent_menu);
+      $to_save = $relation->create_child_node($node, $parent_menu);
     }
     if ($to_save) {
       node_save($node);
@@ -109,13 +110,13 @@ function mica_node_insert($node) {
  * Implements hook_node_update().
  */
 function mica_node_update($node) {
-  
+
   module_load_include('inc', 'mica', 'includes/relations');
-  $relations = _mica_find_relations_by_parent($node->type);  
+  $relations = _mica_find_relations_by_parent($node->type);
   if (!empty($relations)) {
     $parent_menu = isset($node->menu) ? $node->menu : array();
     foreach ($relations as $relation) {
-    	$relation->update_child_node($node, $parent_menu);
+      $relation->update_child_node($node, $parent_menu);
     }
   }
 }
@@ -128,7 +129,7 @@ function mica_node_delete($node) {
   $relations = _mica_find_relations_by_parent($node->type);
   if (!empty($relations)) {
     foreach ($relations as $relation) {
-    	$relation->delete_child_node($node);
+      $relation->delete_child_node($node);
     }
   }
 }
@@ -158,3 +159,56 @@ function mica_edit_node_type_relation($form, &$form_state) {
   module_load_include('inc', 'mica', 'includes/relations');
   _mica_edit_node_type_relation($form, $form_state);
 }
+
+
+/**
+ * Implements hook_block_info().
+ *
+ * This hook declares what blocks are provided by the module.
+ */
+function mica_block_info() {
+  $blocks['mica_facet_visibility'] = array(
+    'info' => t('Facet Visibility'),
+    'status' => TRUE,
+    'region' => 'sidebar_first',
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'studies-search',
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ *
+ * This hook generates the contents of the blocks themselves.
+ */
+function mica_block_view($delta = '') {
+  global $user;
+  if ($user->uid == 0) {
+    // not available for anonymous user
+    return;
+  }
+
+  //The $delta parameter tells us which block is being requested.
+  $content;
+  switch ($delta) {
+    case 'mica_facet_visibility':
+      $block['subject'] = t('Facet Visibility');
+      $content = mica_facet_visibility_block_content();
+      break;
+  }
+  
+  if ($content) {
+    $block['content'] = $content;
+    return $block;
+  }
+  else {
+    // no content, then no block
+    return;
+  }
+}
+
+
+
+
