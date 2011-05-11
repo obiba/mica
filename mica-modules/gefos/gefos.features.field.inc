@@ -824,14 +824,14 @@ function gefos_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-fractures-field_f107'
-  $fields['node-fractures-field_f107'] = array(
+  // Exported field: 'node-fractures-field_f107ae'
+  $fields['node-fractures-field_f107ae'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_f107',
+      'field_name' => 'field_f107ae',
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -875,7 +875,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '4',
+          'weight' => 15,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -885,7 +885,7 @@ function gefos_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_f107',
+      'field_name' => 'field_f107ae',
       'label' => 'PREVALENT fractures (already occurred at time of study enrollment)',
       'required' => 0,
       'settings' => array(
@@ -896,7 +896,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -970,7 +970,7 @@ function gefos_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '14',
+        'weight' => '15',
       ),
     ),
   );
@@ -1121,7 +1121,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '14',
+        'weight' => '15',
       ),
     ),
   );
@@ -1195,7 +1195,7 @@ function gefos_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '15',
+        'weight' => '16',
       ),
     ),
   );
