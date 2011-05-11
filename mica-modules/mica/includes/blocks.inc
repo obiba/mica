@@ -72,8 +72,11 @@ function mica_facet_visibility_form_submit($form, &$form_state) {
     }
   }
 
-  debug($user->data['block']);
-
+  //debug($user->data);
+  db_update('users')
+    ->fields(array('data' => serialize($user->data)))
+    ->condition('uid', $user->uid)
+    ->execute();
 }
 
 
