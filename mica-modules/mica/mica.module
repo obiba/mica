@@ -110,13 +110,11 @@ function mica_node_insert($node) {
  * Implements hook_node_update().
  */
 function mica_node_update($node) {
-
   module_load_include('inc', 'mica', 'includes/relations');
   $relations = _mica_find_relations_by_parent($node->type);
   if (!empty($relations)) {
-    $parent_menu = isset($node->menu) ? $node->menu : array();
     foreach ($relations as $relation) {
-      $relation->update_child_node($node, $parent_menu);
+      $relation->update_child_node($node);
     }
   }
 }

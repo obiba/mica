@@ -293,9 +293,14 @@ class MicaRelation extends Entity {
 	/**
 	 * Update child node on parent update 
 	 */
-	public function update_child_node($parent_node, array $parent_menu) {
+	public function update_child_node($parent_node) {
   
 		if (!$this->options['cascaded']) return;
+		
+		$parent_menu = menu_link_get_preferred('node/' . $parent_node->nid);
+		if (!empty($parent_menu) && $parent_menu['menu_name'] != 'main-menu') {
+			unset($parent_menu);
+		}
 		
 		$language = $parent_node->language;
       
@@ -311,9 +316,9 @@ class MicaRelation extends Entity {
   		menu_link_delete($child_menu['mlid']);
   		$clear_menu_cache = TRUE;
   	}    
-    
+  	
     // create child menu if needed
-    if (!empty($parent_menu) && $parent_menu['enabled']) {
+    if (!empty($parent_menu) && (empty($parent_menu['enabled']) || $parent_menu['enabled'])) {
       $field_ref_info = field_info_instance('node', $field_ref, $this->parent_bundle);
       $child_menu_item = array(
 				'menu_name' => 'main-menu',
