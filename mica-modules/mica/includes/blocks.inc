@@ -7,12 +7,10 @@
  */
 
 /**
- * A facet visibility block content function.
+ * Facet visibility block content function.
  */
 function mica_facet_visibility_block_content() {
   global $user;
-  //debug($user);
-  
   $rids = array_keys($user->roles);
   $result = db_query("SELECT DISTINCT b.* FROM {block} b LEFT JOIN {block_role} r ON b.module = r.module AND b.delta = r.delta WHERE b.status = 1 AND b.custom <> 0 AND (r.rid IN (:rids) OR r.rid IS NULL) ORDER BY b.weight, b.module", array(':rids' => $rids));
 
@@ -30,8 +28,7 @@ function mica_facet_visibility_block_content() {
       }
     }
   }
-  //debug($blocks);
-
+  
   if ($blocks) {
     return drupal_get_form('mica_facet_visibility_form',$blocks);
   }
@@ -56,23 +53,23 @@ function mica_facet_visibility_form($form, &$form_state, $blocks) {
     '#type' => 'submit',
     '#value' => t('Save preferences'),
   );
-  //debug($form);
   return $form;
 }
 
+/**
+ * Persist the user preferences about facet visibility.
+ */
 function mica_facet_visibility_form_submit($form, &$form_state) {
   global $user;
-  //debug($user);
-  //debug($form_state['values']);
 
   foreach ($form_state['values'] as $key => $value) {
     $pos = strpos($key,':');
     if ($pos !== FALSE) {
+      // split key as module:delta
       $user->data['block'][substr($key,0,$pos)][substr($key,$pos+1)] = $value;
     }
   }
-
-  //debug($user->data);
+  
   db_update('users')
     ->fields(array('data' => serialize($user->data)))
     ->condition('uid', $user->uid)
