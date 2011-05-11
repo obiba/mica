@@ -26,7 +26,7 @@ function gefos_node_info() {
     'fractures' => array(
       'name' => t('Fractures'),
       'base' => 'node_content',
-      'description' => t('Fractures related study questionnaire.'),
+      'description' => t('Genomos Survey - Fracture data information'),
       'has_title' => '1',
       'title_label' => t('Name'),
       'help' => '',
