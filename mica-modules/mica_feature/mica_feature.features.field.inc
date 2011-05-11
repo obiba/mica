@@ -2624,6 +2624,86 @@ Prof.',
     ),
   );
 
+  // Exported field: 'node-study_information-field_full_name'
+  $fields['node-study_information-field_full_name'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_full_name',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'max_length' => '255',
+        'variable_infos' => array(
+          'variable' => 1,
+          'variable_body' => '',
+          'variable_value_type' => 'TEXT',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study_information',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_full_name',
+      'label' => 'Full Name',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
+      ),
+    ),
+  );
+
   // Exported field: 'node-study_information-field_gender'
   $fields['node-study_information-field_gender'] = array(
     'field_config' => array(
@@ -3929,7 +4009,6 @@ Prof.',
   // Included for use with string extractors like potx.
   t('Access to the following features is provided or foreseen');
   t('Access to the following study features to external researchers or third parties provided or foreseen');
-  t('Acronym');
   t('Baseline Design of the Study');
   t('Biological Samples Collected');
   t('Body');
@@ -3942,6 +4021,7 @@ Prof.',
   t('Email');
   t('End year');
   t('Field Name');
+  t('Full Name');
   t('Files');
   t('Institution');
   t('Investigator');
