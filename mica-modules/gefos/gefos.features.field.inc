@@ -58,7 +58,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 1,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -79,7 +79,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '-3',
+        'weight' => '1',
       ),
     ),
   );
@@ -128,7 +128,7 @@ function gefos_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 2,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -153,7 +153,7 @@ function gefos_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '-2',
+        'weight' => '3',
       ),
     ),
   );
@@ -202,7 +202,7 @@ function gefos_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 3,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -227,7 +227,7 @@ function gefos_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '-1',
+        'weight' => '4',
       ),
     ),
   );
@@ -276,7 +276,7 @@ function gefos_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 4,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -301,7 +301,7 @@ function gefos_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '0',
+        'weight' => '5',
       ),
     ),
   );
@@ -350,7 +350,7 @@ function gefos_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 5,
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -375,7 +375,7 @@ function gefos_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '1',
+        'weight' => '6',
       ),
     ),
   );
@@ -424,7 +424,7 @@ function gefos_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 6,
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -449,7 +449,7 @@ function gefos_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '2',
+        'weight' => '7',
       ),
     ),
   );
@@ -498,7 +498,7 @@ function gefos_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 7,
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -523,7 +523,7 @@ function gefos_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '3',
+        'weight' => '8',
       ),
     ),
   );
@@ -572,7 +572,7 @@ function gefos_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 8,
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -597,7 +597,7 @@ function gefos_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '4',
+        'weight' => '9',
       ),
     ),
   );
@@ -646,7 +646,7 @@ function gefos_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 9,
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -671,7 +671,7 @@ function gefos_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '5',
+        'weight' => '10',
       ),
     ),
   );
@@ -720,7 +720,7 @@ function gefos_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 10,
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -745,7 +745,7 @@ function gefos_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '6',
+        'weight' => '11',
       ),
     ),
   );
@@ -798,7 +798,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 11,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -819,7 +819,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '7',
+        'weight' => '12',
       ),
     ),
   );
@@ -875,7 +875,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 12,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -896,7 +896,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '8',
+        'weight' => '13',
       ),
     ),
   );
@@ -945,7 +945,7 @@ function gefos_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 13,
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -970,7 +970,7 @@ function gefos_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '9',
+        'weight' => '14',
       ),
     ),
   );
@@ -1023,7 +1023,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 14,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1044,7 +1044,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '10',
+        'weight' => '13',
       ),
     ),
   );
@@ -1100,7 +1100,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 15,
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1121,7 +1121,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '11',
+        'weight' => '14',
       ),
     ),
   );
@@ -1170,7 +1170,7 @@ function gefos_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 16,
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1195,7 +1195,7 @@ function gefos_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '12',
+        'weight' => '15',
       ),
     ),
   );
@@ -1248,7 +1248,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 17,
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1269,7 +1269,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -1322,7 +1322,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 18,
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1343,7 +1343,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '14',
+        'weight' => '15',
       ),
     ),
   );
@@ -1396,7 +1396,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 19,
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1417,7 +1417,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '15',
+        'weight' => '16',
       ),
     ),
   );
@@ -1470,7 +1470,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 20,
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1491,7 +1491,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '16',
+        'weight' => '17',
       ),
     ),
   );
@@ -1544,7 +1544,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 21,
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1565,7 +1565,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '17',
+        'weight' => '19',
       ),
     ),
   );
@@ -1618,7 +1618,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 22,
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1639,7 +1639,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '18',
+        'weight' => '20',
       ),
     ),
   );
@@ -1692,7 +1692,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 23,
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1713,7 +1713,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '19',
+        'weight' => '21',
       ),
     ),
   );
@@ -1769,7 +1769,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 24,
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1790,7 +1790,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '20',
+        'weight' => '22',
       ),
     ),
   );
@@ -1846,7 +1846,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 25,
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1867,7 +1867,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '21',
+        'weight' => '23',
       ),
     ),
   );
@@ -1923,7 +1923,7 @@ function gefos_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 26,
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1944,7 +1944,7 @@ function gefos_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '22',
+        'weight' => '24',
       ),
     ),
   );
