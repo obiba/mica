@@ -51,6 +51,30 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create contact content
+  $permissions['create contact content'] = array(
+    'name' => 'create contact content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create institution content
+  $permissions['create institution content'] = array(
+    'name' => 'create institution content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create mica_study_files
+  $permissions['create mica_study_files'] = array(
+    'name' => 'create mica_study_files',
+    'roles' => array(),
+  );
+
   // Exported permission: create mica_study_information
   $permissions['create mica_study_information'] = array(
     'name' => 'create mica_study_information',
@@ -100,12 +124,39 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create variable content
+  $permissions['create variable content'] = array(
+    'name' => 'create variable content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: delete any article content
   $permissions['delete any article content'] = array(
     'name' => 'delete any article content',
     'roles' => array(
       0 => 'administrator',
       1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any contact content
+  $permissions['delete any contact content'] = array(
+    'name' => 'delete any contact content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any institution content
+  $permissions['delete any institution content'] = array(
+    'name' => 'delete any institution content',
+    'roles' => array(
+      0 => 'administrator',
     ),
     'module' => 'node',
   );
@@ -148,12 +199,39 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete any variable content
+  $permissions['delete any variable content'] = array(
+    'name' => 'delete any variable content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: delete own article content
   $permissions['delete own article content'] = array(
     'name' => 'delete own article content',
     'roles' => array(
       0 => 'administrator',
       1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own contact content
+  $permissions['delete own contact content'] = array(
+    'name' => 'delete own contact content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own institution content
+  $permissions['delete own institution content'] = array(
+    'name' => 'delete own institution content',
+    'roles' => array(
+      0 => 'administrator',
     ),
     'module' => 'node',
   );
@@ -196,6 +274,15 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete own variable content
+  $permissions['delete own variable content'] = array(
+    'name' => 'delete own variable content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: delete revisions
   $permissions['delete revisions'] = array(
     'name' => 'delete revisions',
@@ -213,6 +300,24 @@ function mica_feature_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any contact content
+  $permissions['edit any contact content'] = array(
+    'name' => 'edit any contact content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any institution content
+  $permissions['edit any institution content'] = array(
+    'name' => 'edit any institution content',
+    'roles' => array(
+      0 => 'administrator',
     ),
     'module' => 'node',
   );
@@ -255,12 +360,39 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit any variable content
+  $permissions['edit any variable content'] = array(
+    'name' => 'edit any variable content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: edit own article content
   $permissions['edit own article content'] = array(
     'name' => 'edit own article content',
     'roles' => array(
       0 => 'administrator',
       1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own contact content
+  $permissions['edit own contact content'] = array(
+    'name' => 'edit own contact content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own institution content
+  $permissions['edit own institution content'] = array(
+    'name' => 'edit own institution content',
+    'roles' => array(
+      0 => 'administrator',
     ),
     'module' => 'node',
   );
@@ -306,6 +438,15 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit own variable content
+  $permissions['edit own variable content'] = array(
+    'name' => 'edit own variable content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: post comments
   $permissions['post comments'] = array(
     'name' => 'post comments',
@@ -345,6 +486,21 @@ function mica_feature_user_default_permissions() {
       2 => 'study administrator',
     ),
     'module' => 'search_api_facets',
+  );
+
+  // Exported permission: use search_api_ranges
+  $permissions['use search_api_ranges'] = array(
+    'name' => 'use search_api_ranges',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'search_api_ranges',
+  );
+
+  // Exported permission: view mica_study_files
+  $permissions['view mica_study_files'] = array(
+    'name' => 'view mica_study_files',
+    'roles' => array(),
   );
 
   // Exported permission: view mica_study_information

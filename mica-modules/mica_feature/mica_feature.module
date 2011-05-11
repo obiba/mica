@@ -11,31 +11,4 @@ include_once('mica_feature.features.inc');
  */
 function mica_feature_install() {
 
-  //TODO replace this with kind of node import
-  
-	$relation = new MicaRelation();
-	$relation->parent_bundle = 'study';
-	$relation->child_bundle = 'study_information';
-	$relation->label = 'Study » Study Information';
-	$relation->options['node_reference'] = 'mica_study_information';
-	$relation->options['indexed'] = 1;
-	$relation->options['child_indexes'] = array('studies_index');
-	$relation->options['cascaded'] = 1;
-	$relation->options['relation'] = 'study_study_information';
-	$relation->options['relation_parent_field'] = 'study_information_relation';
-	$relation->options['relation_child_field'] = 'study_relation';
-	$relation->save();
-	
-	$relation = new MicaRelation();
-	$relation->parent_bundle = 'study';
-	$relation->child_bundle = 'study_files';
-	$relation->label = 'Study » Study Files';
-	$relation->options['node_reference'] = 'mica_study_files';
-	$relation->options['indexed'] = 0;
-	$relation->options['child_indexes'] = array();
-	$relation->options['cascaded'] = 1;
-	$relation->options['relation'] = 'study_study_files';
-	$relation->options['relation_parent_field'] = 'study_files_relation';
-	$relation->options['relation_child_field'] = 'study_files';
-	$relation->save();
 }

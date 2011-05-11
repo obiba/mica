@@ -1309,7 +1309,6 @@ function mica_feature_views_default_views() {
     t('field_biosamples_tissues'),
     t('status'),
     t('title'),
-    t('field_acronym'),
     t('Data export'),
   );
   $export['csv_study_information_export'] = $view;
@@ -1820,7 +1819,7 @@ function mica_feature_views_default_views() {
   );
   $export['variables'] = $view;
 
- $view = new view;
+  $view = new view;
   $view->name = 'variables_search';
   $view->description = '';
   $view->tag = 'default';
@@ -1892,7 +1891,7 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['use_operator'] = FALSE;
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
-  /* Filter criterion: Node: Content type */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'search_api_index_variables_index';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -1925,7 +1924,7 @@ function mica_feature_views_default_views() {
     t('Fulltext search'),
     t('Page'),
   );
-  $export['variables_search'] = $view;  
-  
+  $export['variables_search'] = $view;
+
   return $export;
 }
