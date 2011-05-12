@@ -32,6 +32,15 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: administer feeds
+  $permissions['administer feeds'] = array(
+    'name' => 'administer feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
   // Exported permission: administer field permissions
   $permissions['administer field permissions'] = array(
     'name' => 'administer field permissions',
@@ -39,6 +48,51 @@ function mica_feature_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'field_permissions',
+  );
+
+  // Exported permission: clear csv_contact_import feeds
+  $permissions['clear csv_contact_import feeds'] = array(
+    'name' => 'clear csv_contact_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: clear csv_institution_import feeds
+  $permissions['clear csv_institution_import feeds'] = array(
+    'name' => 'clear csv_institution_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: clear csv_study_import feeds
+  $permissions['clear csv_study_import feeds'] = array(
+    'name' => 'clear csv_study_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: clear csv_study_information_import feeds
+  $permissions['clear csv_study_information_import feeds'] = array(
+    'name' => 'clear csv_study_information_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: clear csv_variable_import feeds
+  $permissions['clear csv_variable_import feeds'] = array(
+    'name' => 'clear csv_variable_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
   );
 
   // Exported permission: create article content
@@ -445,6 +499,51 @@ function mica_feature_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: import csv_contact_import feeds
+  $permissions['import csv_contact_import feeds'] = array(
+    'name' => 'import csv_contact_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: import csv_institution_import feeds
+  $permissions['import csv_institution_import feeds'] = array(
+    'name' => 'import csv_institution_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: import csv_study_import feeds
+  $permissions['import csv_study_import feeds'] = array(
+    'name' => 'import csv_study_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: import csv_study_information_import feeds
+  $permissions['import csv_study_information_import feeds'] = array(
+    'name' => 'import csv_study_information_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: import csv_variable_import feeds
+  $permissions['import csv_variable_import feeds'] = array(
+    'name' => 'import csv_variable_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
   );
 
   // Exported permission: post comments
