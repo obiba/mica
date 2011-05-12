@@ -215,7 +215,7 @@ function search_api_ranges_block_view($delta = '') {
   $min_value = search_api_ranges_minmax($field, 'ASC', $params, $index_id, $query->getKeys());
   $max_value = search_api_ranges_minmax($field, 'DESC', $params, $index_id, $query->getKeys());
 
-  if (empty($min_value) && empty($max_value)) {
+  if ((empty($min_value) && empty($max_value)) || $min_value === $max_value) {
     return;
   }
   
