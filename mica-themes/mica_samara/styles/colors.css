@@ -43,6 +43,11 @@ a.active,
 li a.active {
   color: #086782;
 }
+.collapsiblock a,
+.collapsiblock a.active,
+.collapsiblock li a.active {
+  color: #ffffff;
+}
 legend {
   background-color: #086782;
 }
@@ -55,6 +60,15 @@ li a.active:hover,
 li a.active:focus {
   color: #e25401;
   border-bottom-color: #e25401;
+}
+.collapsiblock a:hover,
+.collapsiblock a:focus,
+.collapsiblock a.active:hover,
+.collapsiblock a.active:focus,
+.collapsiblock li a.active:hover,
+.collapsiblock li a.active:focus {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
 }
 .node h1.node-title a:hover,
 .node h2.node-title a:hover {
