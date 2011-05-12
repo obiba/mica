@@ -1,8 +1,5 @@
 <?php
 
-include_once('includes/mica_feeds.plugins.inc');
-include_once('includes/blocks.inc');
-
 /**
  * Implements hook_help()
  */
@@ -29,7 +26,7 @@ function mica_entity_info() {
     'entity keys' => array(
       'id' => 'id',
       'label' => 'label',
-  ),
+  	),
   );
   return $info;
 }
@@ -75,10 +72,10 @@ function mica_node_type_delete($info) {
     foreach ($relations as $relation) {
       field_delete_field($relation->options['node_reference']);
       watchdog('mica', 'Delete relation between parent %parent and child %child',
-      array(
+      	array(
           '%parent' => $relation->parent_bundle,
           '%child' => $relation->child_bundle, 
-      ), WATCHDOG_INFO);
+      	), WATCHDOG_INFO);
     }
     db_delete('mica_relation')->condition('id', array_keys($relations), 'IN')->execute();
   }
@@ -92,13 +89,40 @@ function mica_node_insert($node) {
 
   $relations = _mica_find_relations_by_parent($node->type);
   if (!empty($relations)) {
-
-    $parent_menu = isset($node->menu) ? $node->menu : array();
-    $node = node_load($node->nid);    // reload node so it's not in 'new' state
-
+  	
+  	// create menu based on content type menu config
+  	$menu = $node->menu;
+ 		if (empty($menu)) {
+ 			$menu = array();
+ 		}
+  	if (empty($menu['enabled']) || !$menu['enabled']) {
+  		
+  		/*
+ 			$menu_options = variable_get('menu_options_' . $node->type);  		
+  		if (!empty($menu_options)) {
+  			$menu['enabled'] = TRUE;
+  			$menu['menu_name'] = $menu_options[0];
+  			$menu['link_title'] = $node->title;
+  			$menu['link_path'] = 'node/' . $node->nid;
+  			
+  			$menu_parent = variable_get('menu_parent_' . $node->type);
+  			if (!empty($menu_parent)) {
+  				$split = explode(":", $menu_parent);
+  				if (!empty($split[1])) {
+  					$menu['plid'] = $split[1];  					
+  				}
+  			}
+  			
+				menu_link_save($menu);
+  	    menu_cache_clear($menu['menu_name']);  		
+  		}
+  		*/
+  	}
+  	
     $to_save = FALSE;
+    $node = node_load($node->nid);    // reload node so it's not in 'new' state
     foreach ($relations as $relation) {
-      $to_save = $relation->create_child_node($node, $parent_menu);
+      $to_save = $relation->create_child_node($node, $menu);
     }
     if ($to_save) {
       node_save($node);
@@ -192,6 +216,7 @@ function mica_block_view($delta = '') {
   $content;
   switch ($delta) {
     case 'mica_facet_visibility':
+      module_load_include('inc', 'mica', 'includes/blocks');
       $block['subject'] = t('Facet Visibility');
       $content = mica_facet_visibility_block_content();
       break;
@@ -207,6 +232,44 @@ function mica_block_view($delta = '') {
   }
 }
 
+/**
+ * Implements hook_feeds_plugins().
+ */
+function mica_feeds_plugins() {
 
+  module_load_include('inc', 'mica', 'includes/feeds/mappers/mica');
+  module_load_include('inc', 'mica', 'includes/feeds/mappers/email');
+  module_load_include('inc', 'mica', 'includes/feeds/mappers/name');
+  module_load_include('inc', 'mica', 'includes/feeds/mappers/references');
+  
+  $path = drupal_get_path('module', 'mica') . '/includes/feeds/processors';
+  
+  $info = array();
+  $info['FeedsStudyChildProcessor'] = array(
+    'name' => 'Study Child Node processor',
+    'description' => 'Update nodes that are linked to a Study through a field_study_legacy_id.',
+    'help' => 'Update nodes from parsed content.',
+    'handler' => array(
+      'parent' => 'FeedsNodeProcessor',
+      'class' => 'FeedsStudyChildProcessor',
+      'file' => 'FeedsStudyChildProcessor.inc',
+      'path' => $path,
+    ),
+  );
+  $info['FeedsUniqueNodeProcessor'] = array(
+    'name' => 'Unique Node processor',
+    'description' => 'Update nodes if it already exists or creates a new one.',
+    'help' => 'Update nodes from parsed content.',
+    'handler' => array(
+      'parent' => 'FeedsNodeProcessor',
+      'class' => 'FeedsUniqueNodeProcessor',
+      'file' => 'FeedsUniqueNodeProcessor.inc',
+      'path' => $path,
+    ),
+  );
+
+  return $info;  
+  
+}
 
 

@@ -3,7 +3,7 @@
 
 /**
  * @file
- * Mica relations.
+ * Mica relations utilities.
  */
 
 /**
