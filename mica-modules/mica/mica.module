@@ -29,7 +29,7 @@ function mica_entity_info() {
     'entity keys' => array(
       'id' => 'id',
       'label' => 'label',
-  ),
+  	),
   );
   return $info;
 }
@@ -75,10 +75,10 @@ function mica_node_type_delete($info) {
     foreach ($relations as $relation) {
       field_delete_field($relation->options['node_reference']);
       watchdog('mica', 'Delete relation between parent %parent and child %child',
-      array(
+      	array(
           '%parent' => $relation->parent_bundle,
           '%child' => $relation->child_bundle, 
-      ), WATCHDOG_INFO);
+      	), WATCHDOG_INFO);
     }
     db_delete('mica_relation')->condition('id', array_keys($relations), 'IN')->execute();
   }
@@ -92,13 +92,39 @@ function mica_node_insert($node) {
 
   $relations = _mica_find_relations_by_parent($node->type);
   if (!empty($relations)) {
-
-    $parent_menu = isset($node->menu) ? $node->menu : array();
-    $node = node_load($node->nid);    // reload node so it's not in 'new' state
-
+  	
+  	// create menu based on content type menu config
+  	$menu = $node->menu;
+  	if (empty($menu) || empty($menu['enabled']) || !$menu['enabled']) {
+  		
+  		if (empty($menu)) {
+  			$menu = array();
+  		}
+  		
+ 			$menu_options = variable_get('menu_options_' . $node->type);  		
+  		if (!empty($menu_options)) {
+  			$menu['enabled'] = TRUE;
+  			$menu['menu_name'] = $menu_options[0];
+  			$menu['link_title'] = $node->title;
+  			$menu['link_path'] = 'node/' . $node->nid;
+  			
+  			$menu_parent = variable_get('menu_parent_' . $node->type);
+  			if (!empty($menu_parent)) {
+  				$split = explode(":", $menu_parent);
+  				if (!empty($split[1])) {
+  					$menu['plid'] = $split[1];  					
+  				}
+  			}
+  			
+				menu_link_save($menu);
+  	    menu_cache_clear($menu['menu_name']);  		
+  		}
+  	}
+  	
     $to_save = FALSE;
+    $node = node_load($node->nid);    // reload node so it's not in 'new' state
     foreach ($relations as $relation) {
-      $to_save = $relation->create_child_node($node, $parent_menu);
+      $to_save = $relation->create_child_node($node, $menu);
     }
     if ($to_save) {
       node_save($node);
