@@ -89,6 +89,7 @@ function mica_addons_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'event' => 'event',
     'forum' => 'forum',
+    'publication' => 'publication',
   );
   $handler->display->display_options['filters']['type']['exposed'] = TRUE;
   $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
