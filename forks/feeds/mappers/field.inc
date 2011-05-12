@@ -71,7 +71,13 @@ function field_feeds_set_target_numeric($source, $entity, $target, $value) {
  */
 function field_feeds_set_target_text($source, $entity, $target, $value) {
   if (!is_array($value)) {
-    $value = array($value);
+  $info = field_info_field($target);
+    if ($info['type'] == 'list_text'){
+      $value = explode(',', $value);
+    }
+    else {
+      $value = array($value);
+    }
   }
   _field_feeds_set_target($source, $entity, $target, $value, TRUE);
 }
