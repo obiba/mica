@@ -21,9 +21,9 @@ function mica_facet_visibility_block_content() {
       $data = module_invoke($block->module, 'block_info');
       if ($data[$block->delta]['info']) {
         $blocks[$block->module][$block->module . ':' . $block->delta] = array(
-        '#type' => 'checkbox',
-        '#title' => check_plain($data[$block->delta]['info']),
-        '#default_value' => isset($user->data['block'][$block->module][$block->delta]) ? $user->data['block'][$block->module][$block->delta] : ($block->custom == 1),
+       	 	'#type' => 'checkbox',
+        	'#title' => check_plain($data[$block->delta]['info']),
+        	'#default_value' => isset($user->data['block'][$block->module][$block->delta]) ? $user->data['block'][$block->module][$block->delta] : ($block->custom == 1),
         );
       }
     }
@@ -43,9 +43,9 @@ function mica_facet_visibility_block_content() {
  */
 function mica_facet_visibility_form($form, &$form_state, $blocks) {
   $form = array(
-  		'#attached' => array(
-        'css' => array(drupal_get_path('module', 'mica') . '/includes/facet-visibility.css'),
-  ),
+  	'#attached' => array(
+    	'css' => array(drupal_get_path('module', 'mica') . '/includes/facet-visibility.css'),
+  	),
   );
   $form += $blocks;
 

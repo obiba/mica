@@ -85,16 +85,21 @@ function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
   );
   $facet = search_api_facet_load_multiple(FALSE, $facets_conditions, TRUE);
   if (_mica_is_type_supports_facet($index_type)) {
+  	
   	if (empty($facet)) {
+  		
 			$facet = new SearchApiFacet(array(
 	      'index_id' => $index->machine_name,
 	      'field' => $field_name,
 	      'name' => $field_label,
-	      'enabled' => 1,
+	      'enabled' => TRUE,
 	      'options' => array(),
 	      'status' => 0,
 	    ));     		
-  		$facet->save(); 
+  		$facet->save();
+  		
+  		_mica_configure_search_block($facet, 'search_api_facets', 'facet');
+
   	} 
   	elseif ($reindex) { 
   		// field was changed, update facet
@@ -112,16 +117,21 @@ function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
   // ranges
   $range = search_api_range_load_multiple(FALSE, $facets_conditions, TRUE);
   if (_mica_is_type_supports_ranges($index_type)) {
+  	
   	if (empty($range)) {
+  		
 			$range = new SearchApiRange(array(
 	      'index_id' => $index->machine_name,
 	      'field' => $field_name,
 	      'name' => $field_label,
-	      'enabled' => 1,
+	      'enabled' => TRUE,
 	      'options' => array(),
 	      'status' => 0,
 	    ));     		
   		$range->save(); 
+  		
+  		_mica_configure_search_block($range, 'search_api_ranges', 'range');
+  		
   	} 
   	elseif ($reindex) { 
   		// field was changed, update facet
@@ -178,4 +188,57 @@ function _mica_magma_search_index_type_mapping() {
     'BOOLEAN' => 'boolean', 
   );
 }
+
+/**
+ * Add Facet/Range block to sidebar_first in mica_samara theme as last facet/range item. 
+ * Hide this block by default but let individual users show it.
+ *
+ * @param SearchApiFacet or SearchApiRange $facet Facet or Range item
+ * @param string $module 'search_api_ranges' or 'search_api_facets'
+ * @param string $module_item 'range' or 'facet'
+ */
+function _mica_configure_search_block($facet, $module, $module_item) {
+	
+	db_update('block')
+  	->fields(array(
+				'custom' => BLOCK_CUSTOM_DISABLED, // Hide this block by default but let individual users show it.
+	    ))
+		->condition('module', $module)
+	  ->condition('delta', $facet->delta)
+	  ->execute();	   		
+  		
+	$theme_default = variable_get('theme_default', 'mica_samara');
+  		
+	$max_weight = db_query("SELECT MAX(weight) as max_weight FROM {block} WHERE module = :module AND theme = :theme and region = :region", 
+  								array(
+  									':module' => $module, 
+  									':theme' => $theme_default, 
+  									':region' => 'sidebar_first',
+  								))->fetchField();
+	  								  	
+	db_update('block')
+  	->fields(array(
+				'status' => TRUE,
+		    'region' => 'sidebar_first',
+		    'weight' => empty($max_weight) ? 0 : ($max_weight + 1),
+			))
+		->condition('module', $module)
+	  ->condition('delta', $facet->delta)
+	  ->condition('theme', $theme_default)
+	  ->execute();
+
+	$block = db_query('SELECT * FROM {block} WHERE module = :module AND delta = :delta AND theme = :theme',
+							array(
+								':module' => $module, 
+								':delta' => $facet->delta, 
+								':theme' => $theme_default)
+							)->fetchObject();
+	
+	$block = get_object_vars($block);							 
+	$block[$module_item] = $facet;
+	module_invoke($module, 'block_save', $facet->delta, $block);
+
+	cache_clear_all();  			  
+}
+
 
