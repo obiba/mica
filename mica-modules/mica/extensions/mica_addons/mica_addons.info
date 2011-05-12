@@ -76,4 +76,4 @@ name = "Mica Add-ons"
 package = "OBiBa"
 php = "5.2.4"
 project = "mica_addons"
-version = "7.x-1.0-dev"
+

@@ -322,4 +322,4 @@ name = "Mica Feature"
 package = "OBiBa"
 php = "5.2.4"
 project = "mica_feature"
-version = "7.x-1.0-dev"
+
