@@ -6,14 +6,14 @@
 include includes/drupal.mk
 include includes/sites.mk
 
-version=1.0-SNAPSHOT
-mica_version=7.x-1.0-dev
-mica_feature_version=7.x-1.0-dev
-mica_addons_version=7.x-1.0-dev
-mica_minimal_version=7.x-1.0-dev
-mica_standard_version=7.x-1.0-dev
-mica_demo_version=7.x-1.0-dev
-mica_samara_version=7.x-1.0-dev
+version=1.0-M2
+mica_version=7.x-1.0-M2
+mica_feature_version=7.x-1.0-M2
+mica_addons_version=7.x-1.0-M2
+mica_minimal_version=7.x-1.0-M2
+mica_standard_version=7.x-1.0-M2
+mica_demo_version=7.x-1.0-M2
+mica_samara_version=7.x-1.0-M2
 
 #
 # Mysql db access
