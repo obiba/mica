@@ -1249,7 +1249,6 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['field_full_name']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['word_boundary'] = 1;
@@ -1391,7 +1390,6 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['field_bundle']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_bundle']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_bundle']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_bundle']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_bundle']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_bundle']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_bundle']['alter']['word_boundary'] = 1;
@@ -1413,7 +1411,6 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['field_original_field_name']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_original_field_name']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_original_field_name']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_original_field_name']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_original_field_name']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_original_field_name']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_original_field_name']['alter']['word_boundary'] = 1;
@@ -1435,7 +1432,6 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['field_value_type']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_value_type']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_value_type']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_value_type']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_value_type']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_value_type']['alter']['word_boundary'] = 1;
@@ -1458,7 +1454,6 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['body']['alter']['external'] = 0;
   $handler->display->display_options['fields']['body']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['body']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['body']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['body']['alter']['word_boundary'] = 1;
@@ -1842,113 +1837,6 @@ function mica_feature_views_default_views() {
     t('Block'),
   );
   $export['variables'] = $view;
-
-  $view = new view;
-  $view->name = 'variables_search';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'search_api_index_variables_index';
-  $view->human_name = 'Variables Search';
-  $view->core = 7;
-  $view->api_version = '3.0-alpha1';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Variables Search';
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['style_plugin'] = 'table';
-  /* Field: Node: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_variables_index';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Name';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Field: Node: Content type */
-  $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'search_api_index_variables_index';
-  $handler->display->display_options['fields']['type']['field'] = 'type';
-  $handler->display->display_options['fields']['type']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['type']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['type']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['type']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['type']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['type']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['type']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['type']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['type']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['type']['format_name'] = 1;
-  /* Filter criterion: Search: Fulltext search */
-  $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_variables_index';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Fulltext search';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['use_operator'] = FALSE;
-  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_variables_index';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'variable' => 'variable',
-  );
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'variables-search';
-  $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Variables Search';
-  $handler->display->display_options['menu']['weight'] = '0';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
-  $handler->display->display_options['tab_options']['weight'] = '0';
-  $translatables['variables_search'] = array(
-    t('Master'),
-    t('Variables Search'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('Name'),
-    t('Content type'),
-    t('Fulltext search'),
-    t('Page'),
-  );
-  $export['variables_search'] = $view;
 
   return $export;
 }

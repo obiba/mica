@@ -29,6 +29,7 @@ dependencies[] = panels
 dependencies[] = panels_mini
 dependencies[] = panels_node
 dependencies[] = panels_ipe
+dependencies[] = collapsiblock
 dependencies[] = ctools
 dependencies[] = ctools_custom_content
 dependencies[] = ctools_access_ruleset

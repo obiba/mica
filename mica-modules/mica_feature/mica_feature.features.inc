@@ -68,7 +68,8 @@ function mica_feature_default_mica_relation() {
       "relation" : "study_study_files",
       "relation_parent_field" : "study_files_relation",
       "relation_child_field" : "study_files",
-      "parent_indexes" : [ "studies_index" ]
+      "parent_indexes" : [ "studies_index" ],
+      "child_indexes" : [ "variables_index" ]
     },
     "rdf_mapping" : []
   }');
@@ -153,13 +154,8 @@ function mica_feature_default_search_api_facet() {
       "show_active" : true,
       "default_true" : true,
       "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Targets Recruitment of",
-      "options" : {
-        "families" : "Families (including twin studies, sibships and family based birth cohorts)",
-        "individuals" : "Individuals",
-        "other" : "Other"
-      }
+      "type" : "string",
+      "field_name" : "Study Information \\u00bb Targets Recruitment of"
     },
     "rdf_mapping" : []
   }');
@@ -179,14 +175,8 @@ function mica_feature_default_search_api_facet() {
       "show_active" : true,
       "default_true" : true,
       "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Selection Criteria \\/ Charactecteristic of the Population",
-      "options" : {
-        "age" : "Age",
-        "country" : "Country(ies) of residence",
-        "gender" : "Gender",
-        "other" : "Other"
-      }
+      "type" : "string",
+      "field_name" : "Study Information \\u00bb Selection Criteria \\/ Charactecteristic of the Population"
     },
     "rdf_mapping" : []
   }');
@@ -206,16 +196,8 @@ function mica_feature_default_search_api_facet() {
       "show_active" : true,
       "default_true" : true,
       "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Country",
-      "options" : {
-        "CAN" : "Canada",
-        "CRI" : "Costa Rica",
-        "DNK" : "Danemark",
-        "FRA" : "France",
-        "GBR" : "United Kingdom",
-        "USA" : "United States"
-      }
+      "type" : "string",
+      "field_name" : "Study Information \\u00bb Country"
     },
     "rdf_mapping" : []
   }');
@@ -235,9 +217,8 @@ function mica_feature_default_search_api_facet() {
       "show_active" : true,
       "default_true" : true,
       "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Specify Gender",
-      "options" : { "men" : "Men", "women" : "Women" }
+      "type" : "string",
+      "field_name" : "Study Information \\u00bb Specify Gender"
     },
     "rdf_mapping" : []
   }');
@@ -257,15 +238,8 @@ function mica_feature_default_search_api_facet() {
       "show_active" : true,
       "default_true" : true,
       "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Biological Samples Collected",
-      "options" : {
-        "blood" : "Blood",
-        "others" : "Others",
-        "saliva" : "Saliva",
-        "tissues" : "Tissues",
-        "urine" : "Urine"
-      }
+      "type" : "string",
+      "field_name" : "Study Information \\u00bb Biological Samples Collected"
     },
     "rdf_mapping" : []
   }');
@@ -285,13 +259,8 @@ function mica_feature_default_search_api_facet() {
       "show_active" : true,
       "default_true" : true,
       "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Proceeding to Genome-Wide Association (GWA) Analysis",
-      "options" : {
-        "no" : "No",
-        "yes_currently" : "Yes, we already have, or are currently in the process of generating, GWA data",
-        "yes_later" : "Yes, we plan to proceed to GWA analysis later"
-      }
+      "type" : "string",
+      "field_name" : "Study Information \\u00bb Proceeding to Genome-Wide Association (GWA) Analysis"
     },
     "rdf_mapping" : []
   }');
@@ -311,13 +280,8 @@ function mica_feature_default_search_api_facet() {
       "show_active" : true,
       "default_true" : true,
       "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Access to the following features is provided or foreseen",
-      "options" : {
-        "biological_samples" : "Biological samples",
-        "data" : "Data (questionnaire-derived, measured\\u2026)",
-        "other" : "Other"
-      }
+      "type" : "string",
+      "field_name" : "Study Information \\u00bb Access to the following features is provided or foreseen"
     },
     "rdf_mapping" : []
   }');
@@ -337,17 +301,8 @@ function mica_feature_default_search_api_facet() {
       "show_active" : true,
       "default_true" : true,
       "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Baseline Design of the Study",
-      "options" : {
-        "case_control" : "Case-control study",
-        "case_only" : "Case only study",
-        "clinical_trial" : "Clinical trial \\/ intervention trial",
-        "cohort_study" : "Cohort study",
-        "cross_sectional" : "Cross-sectional prevalence study",
-        "other" : "Other",
-        "registry" : "Registry"
-      }
+      "type" : "string",
+      "field_name" : "Study Information \\u00bb Baseline Design of the Study"
     },
     "rdf_mapping" : []
   }');
@@ -1000,7 +955,11 @@ function mica_feature_default_search_api_index() {
           "weight" : "0",
           "settings" : {
             "default" : "0",
-            "bundles" : { "study" : "study", "study_information" : "study_information" }
+            "bundles" : {
+              "study" : "study",
+              "study_information" : "study_information",
+              "study_files" : "study_files"
+            }
           }
         },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
@@ -1041,7 +1000,10 @@ function mica_feature_default_search_api_index() {
         "search_api_alter_bundle_filter" : {
           "status" : 1,
           "weight" : "0",
-          "settings" : { "default" : "0", "bundles" : { "variable" : "variable" } }
+          "settings" : {
+            "default" : "0",
+            "bundles" : { "variable" : "variable", "study_files" : "study_files" }
+          }
         },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_fulltext" : { "status" : 0, "weight" : "0", "settings" : null },
