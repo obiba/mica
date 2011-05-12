@@ -632,6 +632,15 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_variable';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_variable'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_address';
   $strongarm->value = 'management:0';
   $export['menu_parent_address'] = $strongarm;
@@ -654,7 +663,7 @@ function mica_feature_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_study';
-  $strongarm->value = 'main-menu:254';
+  $strongarm->value = 'main-menu:272';
   $export['menu_parent_study'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -670,6 +679,13 @@ function mica_feature_strongarm() {
   $strongarm->name = 'menu_parent_study_information';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_study_information'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_variable';
+  $strongarm->value = 'main-menu:274';
+  $export['menu_parent_variable'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -779,6 +795,13 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_variable';
+  $strongarm->value = '1';
+  $export['node_preview_variable'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_reference_name_study';
   $strongarm->value = '';
   $export['node_reference_name_study'] = $strongarm;
@@ -842,6 +865,13 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_variable';
+  $strongarm->value = 1;
+  $export['node_submitted_variable'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'parent_bundle_contact';
   $strongarm->value = '';
   $export['parent_bundle_contact'] = $strongarm;
@@ -873,6 +903,13 @@ function mica_feature_strongarm() {
   $strongarm->name = 'parent_bundle_study_information';
   $strongarm->value = 'study';
   $export['parent_bundle_study_information'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'parent_bundle_variable';
+  $strongarm->value = '';
+  $export['parent_bundle_variable'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
