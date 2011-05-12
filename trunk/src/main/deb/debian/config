@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Debconf config script for Mica
+
+set -e
+
+
+# Source debconf library
+. /usr/share/debconf/confmodule
+
+if [ -f /usr/share/dbconfig-common/dpkg/config ]; then
+	# we support mysql and pgsql
+	dbc_dbtypes="pgsql, mysql"
+	dbc_dbname=mica
+	dbc_dbuser=mica
+
+	# source dbconfig-common stuff
+	. /usr/share/dbconfig-common/dpkg/config
+	dbc_go mica $@
+fi
+
+if [ "$DPKG_DEBUG" = "developer" ]; then
+    set -x
+fi
+ 
+##################################################
+# Begin installation directories definition block#
+##################################################
+package_name="mica"
+datadir="/var/lib/${package_name}"
+backupdir="${datadir}/backups/"
+docdir="/usr/share/doc/${package_name}"
+upgradesdir="${docdir}/upgrades"
+configdir="/etc/mica"
+configfile="${configdir}/conf.php"
+includefile="${configdir}/apache.conf"
+################################################
+# End installation directories definition block #
+################################################
+
+########################################################################
+# The actual configuration
+
+OLDVERSION="$2"
+
+db_stop
+
+exit 0

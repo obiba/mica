@@ -1,0 +1,636 @@
+<?php
+/**
+ * @file
+ * mica_feature.features.user_permission.inc
+ */
+
+/**
+ * Implementation of hook_user_default_permissions().
+ */
+function mica_feature_user_default_permissions() {
+  $permissions = array();
+
+  // Exported permission: access comments
+  $permissions['access comments'] = array(
+    'name' => 'access comments',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+    ),
+    'module' => 'comment',
+  );
+
+  // Exported permission: access content
+  $permissions['access content'] = array(
+    'name' => 'access content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: administer feeds
+  $permissions['administer feeds'] = array(
+    'name' => 'administer feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: administer field permissions
+  $permissions['administer field permissions'] = array(
+    'name' => 'administer field permissions',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: clear csv_contact_import feeds
+  $permissions['clear csv_contact_import feeds'] = array(
+    'name' => 'clear csv_contact_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: clear csv_institution_import feeds
+  $permissions['clear csv_institution_import feeds'] = array(
+    'name' => 'clear csv_institution_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: clear csv_study_import feeds
+  $permissions['clear csv_study_import feeds'] = array(
+    'name' => 'clear csv_study_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: clear csv_study_information_import feeds
+  $permissions['clear csv_study_information_import feeds'] = array(
+    'name' => 'clear csv_study_information_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: clear csv_variable_import feeds
+  $permissions['clear csv_variable_import feeds'] = array(
+    'name' => 'clear csv_variable_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: create article content
+  $permissions['create article content'] = array(
+    'name' => 'create article content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create contact content
+  $permissions['create contact content'] = array(
+    'name' => 'create contact content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create institution content
+  $permissions['create institution content'] = array(
+    'name' => 'create institution content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create mica_study_files
+  $permissions['create mica_study_files'] = array(
+    'name' => 'create mica_study_files',
+    'roles' => array(),
+  );
+
+  // Exported permission: create mica_study_information
+  $permissions['create mica_study_information'] = array(
+    'name' => 'create mica_study_information',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create page content
+  $permissions['create page content'] = array(
+    'name' => 'create page content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create study content
+  $permissions['create study content'] = array(
+    'name' => 'create study content',
+    'roles' => array(
+      0 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create study_files content
+  $permissions['create study_files content'] = array(
+    'name' => 'create study_files content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create study_information content
+  $permissions['create study_information content'] = array(
+    'name' => 'create study_information content',
+    'roles' => array(
+      0 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create variable content
+  $permissions['create variable content'] = array(
+    'name' => 'create variable content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any article content
+  $permissions['delete any article content'] = array(
+    'name' => 'delete any article content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any contact content
+  $permissions['delete any contact content'] = array(
+    'name' => 'delete any contact content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any institution content
+  $permissions['delete any institution content'] = array(
+    'name' => 'delete any institution content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any page content
+  $permissions['delete any page content'] = array(
+    'name' => 'delete any page content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any study content
+  $permissions['delete any study content'] = array(
+    'name' => 'delete any study content',
+    'roles' => array(
+      0 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any study_files content
+  $permissions['delete any study_files content'] = array(
+    'name' => 'delete any study_files content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any study_information content
+  $permissions['delete any study_information content'] = array(
+    'name' => 'delete any study_information content',
+    'roles' => array(
+      0 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any variable content
+  $permissions['delete any variable content'] = array(
+    'name' => 'delete any variable content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own article content
+  $permissions['delete own article content'] = array(
+    'name' => 'delete own article content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own contact content
+  $permissions['delete own contact content'] = array(
+    'name' => 'delete own contact content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own institution content
+  $permissions['delete own institution content'] = array(
+    'name' => 'delete own institution content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own page content
+  $permissions['delete own page content'] = array(
+    'name' => 'delete own page content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own study content
+  $permissions['delete own study content'] = array(
+    'name' => 'delete own study content',
+    'roles' => array(
+      0 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own study_files content
+  $permissions['delete own study_files content'] = array(
+    'name' => 'delete own study_files content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own study_information content
+  $permissions['delete own study_information content'] = array(
+    'name' => 'delete own study_information content',
+    'roles' => array(
+      0 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own variable content
+  $permissions['delete own variable content'] = array(
+    'name' => 'delete own variable content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete revisions
+  $permissions['delete revisions'] = array(
+    'name' => 'delete revisions',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any article content
+  $permissions['edit any article content'] = array(
+    'name' => 'edit any article content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any contact content
+  $permissions['edit any contact content'] = array(
+    'name' => 'edit any contact content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any institution content
+  $permissions['edit any institution content'] = array(
+    'name' => 'edit any institution content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any page content
+  $permissions['edit any page content'] = array(
+    'name' => 'edit any page content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any study content
+  $permissions['edit any study content'] = array(
+    'name' => 'edit any study content',
+    'roles' => array(
+      0 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any study_files content
+  $permissions['edit any study_files content'] = array(
+    'name' => 'edit any study_files content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any study_information content
+  $permissions['edit any study_information content'] = array(
+    'name' => 'edit any study_information content',
+    'roles' => array(
+      0 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any variable content
+  $permissions['edit any variable content'] = array(
+    'name' => 'edit any variable content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own article content
+  $permissions['edit own article content'] = array(
+    'name' => 'edit own article content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own contact content
+  $permissions['edit own contact content'] = array(
+    'name' => 'edit own contact content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own institution content
+  $permissions['edit own institution content'] = array(
+    'name' => 'edit own institution content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own page content
+  $permissions['edit own page content'] = array(
+    'name' => 'edit own page content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own study content
+  $permissions['edit own study content'] = array(
+    'name' => 'edit own study content',
+    'roles' => array(
+      0 => 'studies administrator',
+      1 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own study_files content
+  $permissions['edit own study_files content'] = array(
+    'name' => 'edit own study_files content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own study_information content
+  $permissions['edit own study_information content'] = array(
+    'name' => 'edit own study_information content',
+    'roles' => array(
+      0 => 'studies administrator',
+      1 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own variable content
+  $permissions['edit own variable content'] = array(
+    'name' => 'edit own variable content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: import csv_contact_import feeds
+  $permissions['import csv_contact_import feeds'] = array(
+    'name' => 'import csv_contact_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: import csv_institution_import feeds
+  $permissions['import csv_institution_import feeds'] = array(
+    'name' => 'import csv_institution_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: import csv_study_import feeds
+  $permissions['import csv_study_import feeds'] = array(
+    'name' => 'import csv_study_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: import csv_study_information_import feeds
+  $permissions['import csv_study_information_import feeds'] = array(
+    'name' => 'import csv_study_information_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: import csv_variable_import feeds
+  $permissions['import csv_variable_import feeds'] = array(
+    'name' => 'import csv_variable_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: post comments
+  $permissions['post comments'] = array(
+    'name' => 'post comments',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'authenticated user',
+    ),
+    'module' => 'comment',
+  );
+
+  // Exported permission: revert revisions
+  $permissions['revert revisions'] = array(
+    'name' => 'revert revisions',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: skip comment approval
+  $permissions['skip comment approval'] = array(
+    'name' => 'skip comment approval',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'authenticated user',
+    ),
+    'module' => 'comment',
+  );
+
+  // Exported permission: use search_api_facets
+  $permissions['use search_api_facets'] = array(
+    'name' => 'use search_api_facets',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'search_api_facets',
+  );
+
+  // Exported permission: use search_api_ranges
+  $permissions['use search_api_ranges'] = array(
+    'name' => 'use search_api_ranges',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'search_api_ranges',
+  );
+
+  // Exported permission: view mica_study_files
+  $permissions['view mica_study_files'] = array(
+    'name' => 'view mica_study_files',
+    'roles' => array(),
+  );
+
+  // Exported permission: view mica_study_information
+  $permissions['view mica_study_information'] = array(
+    'name' => 'view mica_study_information',
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own unpublished content
+  $permissions['view own unpublished content'] = array(
+    'name' => 'view own unpublished content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: view revisions
+  $permissions['view revisions'] = array(
+    'name' => 'view revisions',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'studies administrator',
+    ),
+    'module' => 'node',
+  );
+
+  return $permissions;
+}

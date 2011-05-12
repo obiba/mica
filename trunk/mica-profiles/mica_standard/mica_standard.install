@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ */
+function mica_standard_install() {
+  include_once DRUPAL_ROOT . '/profiles/mica_minimal/mica_minimal.install';
+  mica_minimal_install();
+
+  // Enable some standard blocks.
+  $mica_theme = 'mica_samara';
+  $values = array(
+  array(
+      'module' => 'views',
+      'delta' => 'events_calendar-block_1',
+      'theme' => $mica_theme,
+      'status' => 1,
+      'weight' => 10,
+      'region' => 'sidebar_first',
+      'visibility' => 1,
+      'pages' => '<front>',
+      'cache' => -1,
+  ),
+  );
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'visibility', 'pages', 'cache'));
+  foreach ($values as $record) {
+    $query->values($record);
+  }
+  $query->execute();
+}

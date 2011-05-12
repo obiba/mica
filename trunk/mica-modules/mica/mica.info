@@ -1,0 +1,33 @@
+project = "mica"
+name = "Mica" 
+description = "Mica module"
+package = "OBiBa"
+core = 7.x
+
+dependencies[] = entity
+dependencies[] = search_api
+dependencies[] = search_api_facets
+dependencies[] = search_api_ranges
+dependencies[] = references
+dependencies[] = mica_node_reference_field
+;dependencies[] = relation
+dependencies[] = field_permissions
+dependencies[] = menu
+
+
+files[] = includes/blocks.inc
+files[] = includes/exception.inc
+files[] = includes/mica_relation.entity.inc
+files[] = includes/relations.inc
+files[] = includes/search.inc
+files[] = includes/variables.inc
+
+files[] = includes/feeds/mappers/email.inc
+files[] = includes/feeds/mappers/mica.inc
+files[] = includes/feeds/mappers/name.inc
+files[] = includes/feeds/mappers/references.inc
+files[] = includes/feeds/processors/FeedsStudyChildProcessor.inc
+files[] = includes/feeds/processors/FeedsUniqueNodeProcessor.inc
+
+files[] = mica.install
+files[] = mica.module

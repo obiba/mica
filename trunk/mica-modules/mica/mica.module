@@ -1,0 +1,275 @@
+<?php
+
+/**
+ * Implements hook_help()
+ */
+function mica_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#mica":
+      return '<p>' . t("TODO") . '</p>';
+      break;
+  }
+}
+
+/**
+ * Implements hook_entity_info().
+ */
+function mica_entity_info() {
+  $info['mica_relation'] = array(
+    'label' => t('Mica Relation'),
+    'controller class' => 'EntityAPIController',
+    'entity class' => 'MicaRelation',
+    'base table' => 'mica_relation',
+    'uri callback' => 'mica_relation_url',
+    'module' => 'mica',
+    'exportable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+      'label' => 'label',
+  	),
+  );
+  return $info;
+}
+
+/**
+ * Implements of hook_TYPE_load().
+ *
+ * Load search index infos from Search API
+ */
+function mica_mica_relation_load($entities) {
+  if (empty($entities)) return;
+  module_load_include('inc', 'mica', 'includes/search');
+  $indexes = _mica_find_indexes_by_bundle();
+  if (!empty($indexes)) {
+    foreach ($entities as $entity) {
+      if (!empty($indexes[$entity->parent_bundle])) {
+        $entity->options['parent_indexes'] = array_keys($indexes[$entity->parent_bundle]);
+      }
+      if (!empty($indexes[$entity->child_bundle])) {
+        $entity->options['child_indexes'] = array_keys($indexes[$entity->child_bundle]);
+      }
+    }
+  }
+}
+
+
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function mica_form_node_type_form_alter(&$form, $form_state) {
+  module_load_include('inc', 'mica', 'includes/relations');
+  return _mica_node_type_form_alter($form, $form_state);
+}
+
+/**
+ * Implements hook_node_type_delete()
+ */
+function mica_node_type_delete($info) {
+  module_load_include('inc', 'mica', 'includes/relations');
+  $relations = _mica_find_relation_by_parent_or_child($info->type);
+  if (!empty($relations)) {
+    foreach ($relations as $relation) {
+      field_delete_field($relation->options['node_reference']);
+      watchdog('mica', 'Delete relation between parent %parent and child %child',
+      	array(
+          '%parent' => $relation->parent_bundle,
+          '%child' => $relation->child_bundle, 
+      	), WATCHDOG_INFO);
+    }
+    db_delete('mica_relation')->condition('id', array_keys($relations), 'IN')->execute();
+  }
+}
+
+/**
+ * Implements hook_node_insert()
+ */
+function mica_node_insert($node) {
+  module_load_include('inc', 'mica', 'includes/relations');
+
+  $relations = _mica_find_relations_by_parent($node->type);
+  if (!empty($relations)) {
+  	
+  	// create menu based on content type menu config
+  	$menu = $node->menu;
+ 		if (empty($menu)) {
+ 			$menu = array();
+ 		}
+  	if (empty($menu['enabled']) || !$menu['enabled']) {
+  		
+  		/*
+ 			$menu_options = variable_get('menu_options_' . $node->type);  		
+  		if (!empty($menu_options)) {
+  			$menu['enabled'] = TRUE;
+  			$menu['menu_name'] = $menu_options[0];
+  			$menu['link_title'] = $node->title;
+  			$menu['link_path'] = 'node/' . $node->nid;
+  			
+  			$menu_parent = variable_get('menu_parent_' . $node->type);
+  			if (!empty($menu_parent)) {
+  				$split = explode(":", $menu_parent);
+  				if (!empty($split[1])) {
+  					$menu['plid'] = $split[1];  					
+  				}
+  			}
+  			
+				menu_link_save($menu);
+  	    menu_cache_clear($menu['menu_name']);  		
+  		}
+  		*/
+  	}
+  	
+    $to_save = FALSE;
+    $node = node_load($node->nid);    // reload node so it's not in 'new' state
+    foreach ($relations as $relation) {
+      $to_save = $relation->create_child_node($node, $menu);
+    }
+    if ($to_save) {
+      node_save($node);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function mica_node_update($node) {
+  module_load_include('inc', 'mica', 'includes/relations');
+  $relations = _mica_find_relations_by_parent($node->type);
+  if (!empty($relations)) {
+    foreach ($relations as $relation) {
+      $relation->update_child_node($node);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_delete()
+ */
+function mica_node_delete($node) {
+  module_load_include('inc', 'mica', 'includes/relations');
+  $relations = _mica_find_relations_by_parent($node->type);
+  if (!empty($relations)) {
+    foreach ($relations as $relation) {
+      $relation->delete_child_node($node);
+    }
+  }
+}
+
+/**
+ * Implements of hook_form_FORM_ID_alter()
+ */
+function mica_form_field_ui_field_edit_form_alter(&$form, $form_state, $form_id) {
+  module_load_include('inc', 'mica', 'includes/variables');
+  return _mica_field_settings_form_alter($form, $form_state, $form_id);
+}
+
+/**
+ * Implements hook_field_delete_instance()
+ */
+function mica_field_delete_instance($instance) {
+  module_load_include('inc', 'mica', 'includes/variables');
+  _mica_delete_variable_for_field_instance($instance);
+}
+
+function mica_validate_node_type_relation($form, &$form_state) {
+  module_load_include('inc', 'mica', 'includes/relations');
+  _mica_validate_node_type_relation($form, $form_state);
+}
+
+function mica_edit_node_type_relation($form, &$form_state) {
+  module_load_include('inc', 'mica', 'includes/relations');
+  _mica_edit_node_type_relation($form, $form_state);
+}
+
+
+/**
+ * Implements hook_block_info().
+ *
+ * This hook declares what blocks are provided by the module.
+ */
+function mica_block_info() {
+  $blocks['mica_facet_visibility'] = array(
+    'info' => t('Facet Visibility'),
+    'status' => TRUE,
+    'region' => 'sidebar_first',
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'studies-search',
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ *
+ * This hook generates the contents of the blocks themselves.
+ */
+function mica_block_view($delta = '') {
+  global $user;
+  if ($user->uid == 0) {
+    // not available for anonymous user
+    return;
+  }
+
+  //The $delta parameter tells us which block is being requested.
+  $content;
+  switch ($delta) {
+    case 'mica_facet_visibility':
+      module_load_include('inc', 'mica', 'includes/blocks');
+      $block['subject'] = t('Facet Visibility');
+      $content = mica_facet_visibility_block_content();
+      break;
+  }
+  
+  if ($content) {
+    $block['content'] = $content;
+    return $block;
+  }
+  else {
+    // no content, then no block
+    return;
+  }
+}
+
+/**
+ * Implements hook_feeds_plugins().
+ */
+function mica_feeds_plugins() {
+
+  module_load_include('inc', 'mica', 'includes/feeds/mappers/mica');
+  module_load_include('inc', 'mica', 'includes/feeds/mappers/email');
+  module_load_include('inc', 'mica', 'includes/feeds/mappers/name');
+  module_load_include('inc', 'mica', 'includes/feeds/mappers/references');
+  
+  $path = drupal_get_path('module', 'mica') . '/includes/feeds/processors';
+  
+  $info = array();
+  $info['FeedsStudyChildProcessor'] = array(
+    'name' => 'Study Child Node processor',
+    'description' => 'Update nodes that are linked to a Study through a field_study_legacy_id.',
+    'help' => 'Update nodes from parsed content.',
+    'handler' => array(
+      'parent' => 'FeedsNodeProcessor',
+      'class' => 'FeedsStudyChildProcessor',
+      'file' => 'FeedsStudyChildProcessor.inc',
+      'path' => $path,
+    ),
+  );
+  $info['FeedsUniqueNodeProcessor'] = array(
+    'name' => 'Unique Node processor',
+    'description' => 'Update nodes if it already exists or creates a new one.',
+    'help' => 'Update nodes from parsed content.',
+    'handler' => array(
+      'parent' => 'FeedsNodeProcessor',
+      'class' => 'FeedsUniqueNodeProcessor',
+      'file' => 'FeedsUniqueNodeProcessor.inc',
+      'path' => $path,
+    ),
+  );
+
+  return $info;  
+  
+}
+
+

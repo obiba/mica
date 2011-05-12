@@ -1,0 +1,1296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<questionnaire>
+	<id>genomos_novel</id>
+	<type>normal</type>
+	<name>Genomos Survey - Additional/novel phenotypes (N)</name>
+	<dbtable>genomos_novel</dbtable>
+	<question>
+		<reference>N200</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>*******************DXA MEASUREMENTS AVAILABLE?*******************</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N212</skip>
+		</answer>
+		<variablename>N200</variablename>
+	</question>
+	<question>
+		<reference>N201A</reference>
+		<type>multiple-choice</type>
+		<text>TYPE OF SCANNER (answer options below)?</text>
+		<answer>
+			<text>Hologic</text>
+			<value type="defined">1</value>
+		</answer>	
+		<answer>
+			<text>Lunar</text>
+			<value type="defined">2</value>
+		</answer>
+		<answer>
+			<text>Norland</text>
+			<value type="defined">3</value>
+		</answer>
+      	<answer>
+			<text>other</text>
+			<value type="defined">4</value>
+		</answer>	
+		<variablename>N201A</variablename>	
+	</question>
+	<question>
+		<reference>N201B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>MODEL</text>
+		<label>Fill text (max25):</label>
+		<variablename type="text">N201B</variablename>
+	</question>
+	<question>
+		<reference>N202A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of TOTAL BODY (BMD, LEAN, FAT) scans in MEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N202A</variablename>
+	</question>	
+<question>
+		<reference>N202B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of TOTAL BODY (BMD, LEAN, FAT) scans in WOMEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N202B</variablename>
+	</question>	
+	<question>
+		<reference>N202C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of individuals with TOTAL BODY BMD follow-up measurements (at least two and two years apart)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N202C</variablename>
+	</question>	
+	<question>
+		<reference>N203A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of LUMBAR SPINE scans in MEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N203A</variablename>
+	</question>	
+	<question>
+		<reference>N203B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of LUMBAR SPINE scans in WOMEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N203B</variablename>
+	</question>	
+	<question>
+		<reference>N203C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of individuals with LUMBAR SPINE BMD follow-up measurements (at least two and two years apart)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N203C</variablename>
+	</question>	
+	<question>
+		<reference>N204A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of TOTAL HIP scans in MEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N204A</variablename>
+	</question>	
+		<question>
+		<reference>N204B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of TOTAL HIP scans in WOMEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N204B</variablename>
+	</question>	
+	<question>
+		<reference>N204C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of individuals with TOTAL HIP BMD follow-up measurements (at least two and two years apart)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N204C</variablename>
+	</question>
+	<question>
+		<reference>N205A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of FEMORAL NECK scans in MEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N205A</variablename>
+	</question>	
+	<question>
+		<reference>N205B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of FEMORAL NECK scans in WOMEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N205B</variablename>
+	</question>	
+	<question>
+		<reference>N205C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of individuals with FEMORAL NECK BMD follow-up measurements (at least two and two years apart)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N205C</variablename>
+	</question>		
+	
+	<question>
+		<reference>N206</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>*************HIP GEOMETRY BY DXA ANALYSIS AVAILABLE?*************</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N210</skip>
+		</answer>
+		<variablename>N206</variablename>
+	</question>
+	<question>
+		<reference>N207A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Hip structure analysis (Beck's Hologic method) in MEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N207A</variablename>
+	</question>	
+	<question>
+		<reference>N207B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Hip structure analysis (Beck's Hologic method) in WOMEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N207B</variablename>
+	</question>	
+	<question>
+		<reference>N207C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of individuals with Hologic (Beck's) HSA follow-up measurements (at least two and two years apart)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N207C</variablename>
+	</question>	
+	<question>
+		<reference>N208A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Hip strength analysis (GE-Lunar method) in MEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N208A</variablename>
+	</question>	
+	<question>
+		<reference>N208B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Hip strength analysis (GE-Lunar method) in WOMEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N208B</variablename>
+	</question>	
+	<question>
+		<reference>N208C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of individuals with Lunar HSA follow-up measurements (at least two and two years apart)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N208C</variablename>
+	</question>	
+	<question>
+		<reference>N209A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Hip structure analysis (Other method) in MEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N209A</variablename>
+	</question>	
+	<question>
+		<reference>N209B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Hip structure analysis (Other method) in WOMEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N209B</variablename>
+	</question>	
+	<question>
+		<reference>N209C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of individuals with Other HSA follow-up measurements (at least two and two years apart)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N209C</variablename>
+	</question>	
+	<question>
+		<reference>N210</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>************HIP GEOMETRY BY X-RAY ANALYSIS AVAILABLE?************</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N212</skip>
+		</answer>
+		<variablename>N210</variablename>
+	</question>
+	<question>
+		<reference>N211A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Bone geometry/shape analysis (X-rays) in MEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N211A</variablename>
+	</question>	
+	<question>
+		<reference>N211B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Bone geometry/shape analysis (X-rays) in WOMEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N211B</variablename>
+	</question>	
+	<question>
+		<reference>N211C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of individuals with X-ray follow-up measurements (at least two and two years apart)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N211C</variablename>
+	</question>	
+	<question>
+		<reference>N212</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>******QUANTITATIVE ULTRASOUND (QUS) MEASUREMENTS AVAILABLE?******</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N215</skip>
+		</answer>
+		<variablename>N212</variablename>
+	</question>
+	<question>
+		<reference>N213</reference>
+		<type>multiple-choice</type>
+		<text>Type of QUS (answer options below)?</text>
+		<answer>
+			<text>Hologic Sahara</text>
+			<value type="defined">1</value>
+		</answer>	
+		<answer>
+			<text>Lunar Achilles</text>
+			<value type="defined">2</value>
+		</answer>
+		<answer>
+			<text>McCube CUBA</text>
+			<value type="defined">3</value>
+		</answer>
+		<answer>
+			<text>Osteometer DTU-one</text>
+			<value type="defined">4</value>
+		</answer>
+      	<answer>
+			<text>Other</text>
+			<value type="defined">5</value>
+		</answer>	
+		<variablename>N213</variablename>	
+	</question>
+	<question>
+		<reference>N214A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of QUS scans in MEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N214A</variablename>
+	</question>	
+	<question>
+		<reference>N214B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of QUS scans in WOMEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N214B</variablename>
+	</question>	
+	<question>
+		<reference>N214C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of individuals with QUS follow-up measurements (at least two and two years apart)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N214C</variablename>
+	</question>	
+	<question>
+		<reference>N215</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>***QUANTITATIVE COMPUTED TOMOGRAPHY (QCT) MEASUREMENTS AVAILABLE?***</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N221</skip>
+		</answer>
+		<variablename>N215</variablename>
+	</question>
+	<question>
+		<reference>N216</reference>
+		<type>multiple-choice</type>
+		<text>Type of QCT (answer options below)?</text>
+		<answer>
+			<text>Total Body QCT</text>
+			<value type="defined">1</value>
+		</answer>	
+		<answer>
+			<text>Peripheral QCT</text>
+			<value type="defined">2</value>
+		</answer>
+		<answer>
+			<text>Extreme CT (Scanco)</text>
+			<value type="defined">3</value>
+		</answer>
+      	<answer>
+			<text>Other</text>
+			<value type="defined">4</value>
+		</answer>	
+		<variablename>N216</variablename>	
+	</question>
+	<question>
+		<reference>N217A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of DISTAL TIBIA scans in MEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N217A</variablename>
+	</question>	
+	<question>
+		<reference>N217B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of DISTAL TIBIA scans in WOMEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N217B</variablename>
+	</question>	
+	<question>
+		<reference>N217C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of individuals with DISTAL TIBIA BMD follow-up measurements (at least two and two years apart)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N217C</variablename>
+	</question>	
+	<question>
+		<reference>N218A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of DISTAL RADIUS scans in MEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N218A</variablename>
+	</question>	
+	<question>
+		<reference>N218B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of DISTAL RADIUS scans in WOMEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N218B</variablename>
+	</question>	
+	<question>
+		<reference>N218C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of individuals with DISTAL RADIUS BMD follow-up measurements (at least two and two years apart)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N218C</variablename>
+	</question>	
+	<question>
+		<reference>N219A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of FEMORAL NECK scans in MEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N219A</variablename>
+	</question>	
+	<question>
+		<reference>N219B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of FEMORAL NECK scans in WOMEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N219B</variablename>
+	</question>	
+	<question>
+		<reference>N219C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of individuals with FEMORAL NECK BMD follow-up measurements (at least two and two years apart)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N219C</variablename>
+	</question>	
+	<question>
+		<reference>N220A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of LUMBAR SPINE scans in MEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N220A</variablename>
+	</question>	
+	<question>
+		<reference>N220B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of LUMBAR SPINE scans in WOMEN</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N220B</variablename>
+	</question>	
+	<question>
+		<reference>N220C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of individuals with LUMBAR SPINE BMD follow-up measurements (at least two and two years apart)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N220C</variablename>
+	</question>	
+	<question>
+		<reference>N221</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>****BIOCHEMICAL BONE MARKERS IN SERUM AND/OR URINE AVAILABLE?****</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N241</skip>
+		</answer>
+		<variablename>N221</variablename>
+	</question>
+	<question>
+		<reference>N222A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>OSTEOCALCIN (OC) in SERUM</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N223A</skip>
+		</answer>
+		<variablename>N222A</variablename>
+	</question>
+	<question>
+		<reference>N222B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N222B</variablename>
+	</question>
+	<question>
+		<reference>N222C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of OC measurements in SERUM available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N222C</variablename>
+	</question>	
+	<question>
+		<reference>N223A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>BONE-SPECIFIC ALKALINE PHOSPHATASE (BSALP) in SERUM</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N224A</skip>
+		</answer>
+		<variablename>N223A</variablename>
+	</question>
+	<question>
+		<reference>N223B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N223B</variablename>
+	</question>
+	<question>
+		<reference>N223C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of BSALP measurements in SERUM available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N223C</variablename>
+	</question>	
+	<question>
+		<reference>N224A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>CARBOXYTERMINAL PROPEPTIDE OF TYPE I COLLAGEN (PICP) in SERUM</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N225A</skip>
+		</answer>
+		<variablename>N224A</variablename>
+	</question>
+	<question>
+		<reference>N224B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N224B</variablename>
+	</question>
+	<question>
+		<reference>N224C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of PICP measurements in SERUM available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N224C</variablename>
+	</question>	
+	<question>
+		<reference>N225A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>AMINOTERMINAL PROPEPTIDE OF TYPE I COLLAGEN (PINP) in SERUM</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N226A</skip>
+		</answer>
+		<variablename>N225A</variablename>
+	</question>
+	<question>
+		<reference>N225B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N225B</variablename>
+	</question>
+	<question>
+		<reference>N225C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of PINP measurements in SERUM available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N225C</variablename>
+	</question>	
+	<question>
+		<reference>N226A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>CARBOXY-TELOPEPTIDE OF COLLAGEN CROSS-LINKS (CTX) in SERUM</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N227A</skip>
+		</answer>
+		<variablename>N226A</variablename>
+	</question>
+	<question>
+		<reference>N226B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N226B</variablename>
+	</question>
+	<question>
+		<reference>N226C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of CTX measurements in SERUM available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N226C</variablename>
+	</question>	
+	<question>
+		<reference>N227A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>AMINO-TELOPEPTIDE OF COLLAGEN CROSS-LINKS (NTX) in SERUM</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N228A</skip>
+		</answer>
+		<variablename>N227A</variablename>
+	</question>
+	<question>
+		<reference>N227B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N227B</variablename>
+	</question>
+	<question>
+		<reference>N227C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of NTX measurements in SERUM available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N227C</variablename>
+	</question>	
+	<question>
+		<reference>N228A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>CROSS-LINKED CARBOXY-TELOPEPTIDE OF TYPE I COLLAGEN (ICTP) in SERUM</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N229A</skip>
+		</answer>
+		<variablename>N228A</variablename>
+	</question>
+	<question>
+		<reference>N228B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N228B</variablename>
+	</question>
+	<question>
+		<reference>N228C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of ICTP measurements in SERUM available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N228C</variablename>
+	</question>	
+	<question>
+		<reference>N229A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>OSTEOPROTEGERIN (OPG) in SERUM</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N230A</skip>
+		</answer>
+		<variablename>N229A</variablename>
+	</question>
+	<question>
+		<reference>N229B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N229B</variablename>
+	</question>
+	<question>
+		<reference>N229C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of OPG measurements in SERUM available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N229C</variablename>
+	</question>	
+	<question>
+		<reference>N230A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>PYRIDINOLINE (PYD) in URINE</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N231A</skip>
+		</answer>
+		<variablename>N230A</variablename>
+	</question>
+	<question>
+		<reference>N230B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N230B</variablename>
+	</question>
+	<question>
+		<reference>N230C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of PYD measurements in URINE available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N230C</variablename>
+	</question>	
+	<question>
+		<reference>N231A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>DEOXYPYRIDINOLINE (DPD) in URINE</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N232A</skip>
+		</answer>
+		<variablename>N231A</variablename>
+	</question>
+	<question>
+		<reference>N231B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N231B</variablename>
+	</question>
+	<question>
+		<reference>N231C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of DPD measurements in URINE available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N231C</variablename>
+	</question>	
+	<question>
+		<reference>N232A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>CARBOXY-TELOPEPTIDE OF COLLAGEN CROSS-LINKS (CTX) in URINE</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N233A</skip>
+		</answer>
+		<variablename>N232A</variablename>
+	</question>
+	<question>
+		<reference>N232B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N232B</variablename>
+	</question>
+	<question>
+		<reference>N232C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of CTX measurements in URINE available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N232C</variablename>
+	</question>	
+	<question>
+		<reference>N233A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>AMINO-TELOPEPTIDE OF COLLAGEN CROSS-LINKS (NTX) in URINE</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N234</skip>
+		</answer>
+		<variablename>N233A</variablename>
+	</question>
+	<question>
+		<reference>N233B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N233B</variablename>
+	</question>
+	<question>
+		<reference>N233C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of NTX measurements in URINE available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N233C</variablename>
+	</question>
+		<question>
+		<reference>N234</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>***OTHER SERUM MARKERS (Hormones and Growth factors) AVAILABLE?***</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N241</skip>
+		</answer>
+		<variablename>N234</variablename>
+	</question>
+	<question>
+		<reference>N235A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>TESTOSTERONE (T) in SERUM</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N236A</skip>
+		</answer>
+		<variablename>N235A</variablename>
+	</question>
+	<question>
+		<reference>N235B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N235B</variablename>
+	</question>
+	<question>
+		<reference>N235C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of T measurements in SERUM available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N235C</variablename>
+	</question>	
+	<question>
+		<reference>N236A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>ESTRADIOL (E2) in SERUM</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N237A</skip>
+		</answer>
+		<variablename>N236A</variablename>
+	</question>
+	<question>
+		<reference>N236B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N236B</variablename>
+	</question>
+	<question>
+		<reference>N236C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of E2 measurements in SERUM available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N236C</variablename>
+	</question>	
+	<question>
+		<reference>N237A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>SEX HORMONE-BINDING GLOBULIN (SHBG) in SERUM</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N238A</skip>
+		</answer>
+		<variablename>N237A</variablename>
+	</question>
+	<question>
+		<reference>N237B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N237B</variablename>
+	</question>
+	<question>
+		<reference>N237C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of SHBG measurements in SERUM available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N237C</variablename>
+	</question>	
+	<question>
+		<reference>N238A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>PARATHYROID HORMONE (PTH) in SERUM</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N239A</skip>
+		</answer>
+		<variablename>N238A</variablename>
+	</question>
+	<question>
+		<reference>N238B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N238B</variablename>
+	</question>
+	<question>
+		<reference>N238C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of PTH measurements in SERUM available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N238C</variablename>
+	</question>	
+	<question>
+		<reference>N239A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>VITAMIN D (CALCIDIOL, 25(OH)D) in SERUM</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N240A</skip>
+		</answer>
+		<variablename>N239A</variablename>
+	</question>
+	<question>
+		<reference>N239B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N239B</variablename>
+	</question>
+	<question>
+		<reference>N239C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of VITAMIN D (CALCIDIOL) measurements in SERUM available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N239C</variablename>
+	</question>	
+	<question>
+		<reference>N240A</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>INSULIN-LIKE GROWTH FACTOR I (IGF-I) in SERUM</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N241</skip>
+		</answer>
+		<variablename>N240A</variablename>
+	</question>
+	<question>
+		<reference>N240B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>If yes, specify technique (optional)</text>
+		<label>Fill text (max40)):</label>
+		<variablename type="text">N240B</variablename>
+	</question>
+	<question>
+		<reference>N240C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of IGF-I measurements in SERUM available in individuals with DNA</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N240C</variablename>
+	</question>	
+	<question>
+		<reference>N241</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>*************MUSCLE FUNCTION MEASUREMENTS AVAILABLE?*************</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N243</skip>
+		</answer>
+		<variablename>N241</variablename>
+	</question>
+	<question>
+		<reference>N242A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of HAND GRIP STRENGTH measurements</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N242A</variablename>
+	</question>	
+	<question>
+		<reference>N242B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of LEG MUSCLE STRENGTH measurements</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N242B</variablename>
+	</question>	
+	<question>
+		<reference>N242C</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of TIME TO RAISE FROM CHAIR measurements</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N242C</variablename>
+	</question>	
+	<question>
+		<reference>N242D</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of WALKING SPEED measurements</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N242D</variablename>
+	</question>
+	<question>
+		<reference>N243</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>**********************FALL DATA AVAILABLE?**********************</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N247</skip>
+		</answer>
+		<variablename>N243</variablename>
+	</question>
+	<question>
+		<reference>N244</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of SUBJECTS with FALL DATA and DNA available</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N244</variablename>
+	</question>	
+	<question>
+		<reference>N245A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of MEN with INCIDENT FALLS (occurring during follow-up of longitudinal studies)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N245A</variablename>
+	</question>	
+	<question>
+		<reference>N245B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of WOMEN with INCIDENT FALLS (occurring during follow-up of longitudinal studies)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N245B</variablename>
+	</question>	
+	<question>
+		<reference>N246A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of MEN with FALLS LAST YEAR (the year before study enrollment)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N246A</variablename>
+	</question>	
+	<question>
+		<reference>N246B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of WOMEN with FALLS LAST YEAR (the year before study enrollment)</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N246B</variablename>
+	</question>
+	<question>
+		<reference>N247</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>**************HEREDITY OF FRACTURES DATA AVAILABLE?**************</text>
+		<label>OUTBRED:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>END</skip>
+		</answer>
+		<variablename>N247</variablename>
+	</question>
+	<question>
+		<reference>N248</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of SUBJECTS with heredity of fractures data and DNA available</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N248</variablename>
+	</question>	
+	<question>
+		<reference>N249A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of MEN with PARENTAL HIP FRACTURES</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N249A</variablename>
+	</question>	
+	<question>
+		<reference>N249B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of WOMEN with PARENTAL HIP FRACTURES</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N249B</variablename>
+	</question>	
+	<question>
+		<reference>N250A</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of MEN with SIBLING HIP FRACTURES</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N250A</variablename>
+	</question>	
+	<question>
+		<reference>N250B</reference>
+		<type>open</type>
+		<parameter name="rows">1</parameter>
+		<text>Number of WOMEN with SIBLING HIP FRACTURES</text>
+		<label>Fill Sample Number:</label>
+		<variablename type="numeric">N250B</variablename>
+	</question>
+	<question>
+		<reference>N251</reference>
+		<type>multiple-choice</type>
+		<parameter name="rows">1</parameter>
+		<text>***History of Fracture data available?***</text>
+		<label>Fracture history available:</label>
+		<answer>
+			<text>Yes</text>
+			<value type="defined">1</value>
+		</answer>
+		<answer>
+			<text>No</text>
+			<value type="defined">2</value>
+			<skip>N251</skip>
+		</answer>
+		<variablename>N251</variablename>
+	</question>
+	<question>
+		<reference>END</reference>
+		<type>comment</type>
+		<text>********************END OF SURVEY********************</text>
+	</question>	
+</questionnaire>

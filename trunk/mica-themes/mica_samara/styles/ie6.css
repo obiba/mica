@@ -1,0 +1,40 @@
+/* Set fix values for layout width */
+#navigation ul,
+#header,
+#main-columns {
+  width: 960px!important;
+}
+/* Bug: double margin on floated elements with margins */
+.node .user-picture,
+.node .field-name-field-image,
+.comment .user-picture,
+.admin .left,
+.admin .right,
+body.page-profile .profile,
+body.page-profile .user-picture,
+body.page-profile .name,
+body.page-profile .field,
+.region-header,
+.region-footer,
+#footer ul.links,
+#branding {
+  display: inline;
+}
+/* Bug: toolbar causes horizontal scrollbar to show up */
+#toolbar {
+  padding: 0;
+}
+/* Bug: vertical tabs are breaking the layout */
+div.vertical-tabs {
+  width: auto;
+}
+/* Bug: form legends are cut off */
+legend {
+  margin: 0 0 10px 0;
+  line-height: 1.6em!important;
+  padding-top: 1px!important;
+  padding-bottom: 1px!important;
+}
+html.js fieldset.collapsed  {
+  padding: 15px 20px;
+}
