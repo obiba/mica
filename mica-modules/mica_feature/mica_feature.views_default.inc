@@ -1446,6 +1446,7 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['field_value_type']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_value_type']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_value_type']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_value_type']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_value_type']['field_api_classes'] = 0;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
