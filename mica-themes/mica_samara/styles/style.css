@@ -666,6 +666,11 @@ form#comment-form #edit-actions {
   display: inline-block;
   float: none;
 }
+.field-type-list-text.field-label-inline .field-label,
+.field-type-list-text.field-label-inline .field-item,
+.field-type-list-text.field-label-inline .field-items {
+  padding-right:5px;
+}
 .field-type-taxonomy-term-reference .field-label {
   color: #808080;
   font-weight: 700;
