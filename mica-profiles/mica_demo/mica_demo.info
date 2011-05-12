@@ -57,6 +57,5 @@ dependencies[] = strongarm
 dependencies[] = mica
 dependencies[] = mica_feature
 dependencies[] = mica_addons
-dependencies[] = node_export
 files[] = mica_demo.profile
 
