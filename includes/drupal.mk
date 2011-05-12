@@ -7,6 +7,7 @@
 # Modules dependencies
 #
 calendar_version=7.x-2.0-alpha1
+collapsiblock_version=7.x-1.0
 ctools_version=7.x-1.0-alpha4
 date_version=7.x-2.0-alpha3
 drupal_version=7.0
@@ -20,14 +21,13 @@ link_version=7.x-1.0-alpha3
 login_destination_version=7.x-1.0-beta1
 multiselect_version=7.x-1.8
 name_version=7.x-1.0-beta1
-node_export_version=7.x-3.x-dev
 noderefcreate_version=7.x-1.0-beta2
 relation_version=7.x-1.0-alpha2
-search_api_solr_version=7.x-1.x-dev
+search_api_solr_version=7.x-1.0-beta2
 search_api_version=7.x-1.0-beta8
 strongarm_version=7.x-2.0-beta2
 views_data_export_version=7.x-3.0-beta4
-views_version=7.x-3.x-dev
+views_version=7.x-3.0-beta3
 
 #
 # Forks Modules
@@ -54,11 +54,11 @@ drupal-download:
 	$(drushexec) dl entity-$(entity_version) views-$(views_version) && \
 	$(drushexec) dl search_api-$(search_api_version) search_api_solr-$(search_api_solr_version) && \
 	$(drushexec) dl features-$(features_version) strongarm-$(strongarm_version) && \
-  $(drushexec) dl field_permissions-${field_permissions_version} relation-${relation_version} && \
+	$(drushexec) dl field_permissions-$(field_permissions_version) relation-$(relation_version) && \
+	$(drushexec) dl collapsiblock-$(collapsiblock_version) && \
 	$(drushexec) dl date-$(date_version) calendar-$(calendar_version) && \
 	$(drushexec) dl login_destination-$(login_destination_version) && \
-	$(drushexec) dl views_data_export-$(views_data_export_version) noderefcreate-$(noderefcreate_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version) && \
-	$(drushexec) dl node_export-$(node_export_version)
+	$(drushexec) dl views_data_export-$(views_data_export_version) noderefcreate-$(noderefcreate_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version)
 	
 drupal-forks:	
 	cp -r forks/* target/$(micadir)/sites/all/modules
