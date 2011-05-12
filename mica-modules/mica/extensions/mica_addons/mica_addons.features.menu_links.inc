@@ -10,6 +10,25 @@
 function mica_addons_menu_default_menu_links() {
   $menu_links = array();
 
+  // Exported menu link: main-menu:blog
+  $menu_links['main-menu:blog'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'blog',
+    'router_path' => 'blog',
+    'link_title' => 'Blogs',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '2',
+    'parent_path' => 'community',
+  );
   // Exported menu link: main-menu:community
   $menu_links['main-menu:community'] = array(
     'menu_name' => 'main-menu',
@@ -39,7 +58,7 @@ function mica_addons_menu_default_menu_links() {
     'hidden' => '0',
     'external' => '0',
     'has_children' => '1',
-    'expanded' => '1',
+    'expanded' => '0',
     'weight' => '0',
     'parent_path' => 'community',
   );
@@ -62,44 +81,6 @@ function mica_addons_menu_default_menu_links() {
     'weight' => '0',
     'parent_path' => 'events',
   );
-    // Exported menu link: main-menu:publications
-  $menu_links['main-menu:publications'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'publications',
-    'router_path' => 'publications',
-    'link_title' => 'Publications',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '1',
-    'parent_path' => 'community',
-  );
-    // Exported menu link: main-menu:blog
-  $menu_links['main-menu:blog'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'blog',
-    'router_path' => 'blog',
-    'link_title' => 'Blogs',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '2',
-    'parent_path' => 'community',
-  );
   // Exported menu link: main-menu:forum
   $menu_links['main-menu:forum'] = array(
     'menu_name' => 'main-menu',
@@ -119,34 +100,24 @@ function mica_addons_menu_default_menu_links() {
     'weight' => '3',
     'parent_path' => 'community',
   );
-  // Exported menu link: navigation:blog
-  $menu_links['navigation:blog'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'blog',
-    'router_path' => 'blog',
-    'link_title' => 'Blogs',
-    'options' => array(),
-    'module' => 'system',
-    'hidden' => '1',
-    'external' => '0',
-    'has_children' => '1',
-    'expanded' => '0',
-    'weight' => '0',
-  );
-  // Exported menu link: navigation:blog/%
-  $menu_links['navigation:blog/%'] = array(
-    'menu_name' => 'navigation',
-    'link_path' => 'blog/%',
-    'router_path' => 'blog/%',
-    'link_title' => 'My blog',
-    'options' => array(),
-    'module' => 'system',
+  // Exported menu link: main-menu:publications
+  $menu_links['main-menu:publications'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'publications',
+    'router_path' => 'publications',
+    'link_title' => 'Publications',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '0',
-    'parent_path' => 'blog',
+    'weight' => '1',
+    'parent_path' => 'community',
   );
   // Translatables
   // Included for use with string extractors like potx.
@@ -155,7 +126,6 @@ function mica_addons_menu_default_menu_links() {
   t('Events');
   t('Events Calendar');
   t('Forums');
-  t('My blog');
   t('Publications');
 
 

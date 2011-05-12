@@ -252,7 +252,6 @@ function mica_addons_views_default_views() {
   $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
   $handler->display->display_options['fields']['field_event_date']['table'] = 'field_data_field_event_date';
   $handler->display->display_options['fields']['field_event_date']['field'] = 'field_event_date';
-  $handler->display->display_options['fields']['field_event_date']['label'] = '';
   $handler->display->display_options['fields']['field_event_date']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_event_date']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_event_date']['alter']['absolute'] = 0;
@@ -264,7 +263,7 @@ function mica_addons_views_default_views() {
   $handler->display->display_options['fields']['field_event_date']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_event_date']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_event_date']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_event_date']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_event_date']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_event_date']['empty_zero'] = 0;
@@ -484,7 +483,6 @@ function mica_addons_views_default_views() {
   $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
   $handler->display->display_options['fields']['field_event_date']['table'] = 'field_data_field_event_date';
   $handler->display->display_options['fields']['field_event_date']['field'] = 'field_event_date';
-  $handler->display->display_options['fields']['field_event_date']['label'] = '';
   $handler->display->display_options['fields']['field_event_date']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_event_date']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_event_date']['alter']['absolute'] = 0;
@@ -496,7 +494,7 @@ function mica_addons_views_default_views() {
   $handler->display->display_options['fields']['field_event_date']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_event_date']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_event_date']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_event_date']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_event_date']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_event_date']['empty_zero'] = 0;
@@ -517,22 +515,16 @@ function mica_addons_views_default_views() {
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Date: Date (node) */
-  $handler->display->display_options['filters']['date_filter']['id'] = 'date_filter';
-  $handler->display->display_options['filters']['date_filter']['table'] = 'node';
-  $handler->display->display_options['filters']['date_filter']['field'] = 'date_filter';
-  $handler->display->display_options['filters']['date_filter']['operator'] = '>=';
-  $handler->display->display_options['filters']['date_filter']['expose']['operator'] = FALSE;
-  $handler->display->display_options['filters']['date_filter']['granularity'] = 'day';
-  $handler->display->display_options['filters']['date_filter']['form_type'] = 'date_select';
-  $handler->display->display_options['filters']['date_filter']['default_date'] = 'now';
-  $handler->display->display_options['filters']['date_filter']['default_to_date'] = '';
-  $handler->display->display_options['filters']['date_filter']['year_range'] = '-3:+3';
-  $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
-    'field_data_field_event_date.field_event_date_value' => 'field_data_field_event_date.field_event_date_value',
-  );
-  $handler->display->display_options['filters']['date_filter']['date_method'] = 'OR';
-  $handler->display->display_options['filters']['date_filter']['date_group'] = 'date';
+  /* Filter criterion: Fields: Event Date (field_event_date) */
+  $handler->display->display_options['filters']['field_event_date_value']['id'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['filters']['field_event_date_value']['field'] = 'field_event_date_value';
+  $handler->display->display_options['filters']['field_event_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_event_date_value']['granularity'] = 'day';
+  $handler->display->display_options['filters']['field_event_date_value']['form_type'] = 'date_select';
+  $handler->display->display_options['filters']['field_event_date_value']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_event_date_value']['default_to_date'] = '';
+  $handler->display->display_options['filters']['field_event_date_value']['year_range'] = '-3:+3';
   $handler->display->display_options['block_description'] = 'Upcoming Events';
   $translatables['events_calendar'] = array(
     t('Defaults'),
@@ -543,6 +535,7 @@ function mica_addons_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('Event Date'),
     t('All'),
     t('Events Calendar page'),
     t('Calendar block'),
