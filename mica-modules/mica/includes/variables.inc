@@ -11,13 +11,12 @@
  */
 function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
   
-  $field_name = $form_state['build_info']['args'][0]['field_name'];
   $bundle = $form_state['build_info']['args'][0]['bundle'];
-  
   if ($bundle === 'variable') {
     return; // cannot create variable form variable content type field
   }
   
+  $field_name = $form_state['build_info']['args'][0]['field_name'];
   $variable = _mica_find_variable($bundle, $field_name);
 
   $form['field']['settings']['variable_infos'] = array(
@@ -37,22 +36,62 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
     '#default_value' => !empty($variable), 
   );
   
-  // retrieve available select options from variable field 'field_value_type'
-  $field_value_type = field_info_field('field_value_type');
   if (empty($variable)) {
-    $default_value_type = NULL;
+  	
+  	// auto-detect value type based on field value type
+  	$field_value_type = $form_state['build_info']['args'][0]['display']['default']['type'];
+  	switch ($field_value_type) {
+  		
+  		case 'list_boolean':
+  			$default_value_type = 'BOOLEAN';
+  			break;
+  			
+  		case 'date':
+  		case 'datestamp':
+  		case 'datetime':
+  			$default_value_type = 'DATE';
+  			break;
+  			
+  		case 'number_float':
+  		case 'list_float':
+  		case 'number_decimal':
+  			$default_value_type = 'DECIMAL';
+  			break;
+  			
+  		case 'email':
+  		case 'link_field':
+  		case 'list_text':
+  		case 'text_long':
+  		case 'text_with_summary':
+  		case 'text':
+  			$default_value_type = 'TEXT';
+  			break;
+  			
+  		case 'number_integer':
+  		case 'list_integer':
+  			$default_value_type = 'INTEGER';
+  			break;
+  			
+  		default:
+  			$default_value_type = NULL;
+  			break;
+  	}
+
   } 
   else {
     $variable_field_value_type = $variable->field_value_type;
     $default_value_type = $variable_field_value_type[LANGUAGE_NONE][0]['value'];
   }
   
+  // retrieve available select options from variable field 'field_value_type'
+  $field_value_type_options = field_info_field('field_value_type');
+  
   $form['field']['settings']['variable_infos']['variable_value_type'] = array(
     '#type' => 'select',
     '#title' => t('Variable value type'),
     // TODO variable_value_type should be required if 'variable' checkbox is checked
     '#required' => FALSE, 
-    '#options' => $field_value_type['settings']['allowed_values'],  
+    '#options' => $field_value_type_options['settings']['allowed_values'],  
     '#default_value' => $default_value_type,
     // Enabled only when the 'variable' checkbox is checked
     '#states' => array(
