@@ -77,10 +77,16 @@ function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
   if ($reindex) {
     $index->reindex();
   }
+  
+  // trim facet name to 80
+  $facet_name = $field_label;
+  if (drupal_strlen($facet_name) > 80) {
+    $facet_name = drupal_substr($facet_name, 0 , 77) . '...';
+  }
     
   // facet
- $facets_conditions = array(
-    'index_id' => $index->machine_name,
+  $facets_conditions = array(
+  	'index_id' => $index->machine_name,
     'field' => $field_name,
   );
   $facet = search_api_facet_load_multiple(FALSE, $facets_conditions, TRUE);
@@ -91,7 +97,7 @@ function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
 			$facet = new SearchApiFacet(array(
 	      'index_id' => $index->machine_name,
 	      'field' => $field_name,
-	      'name' => $field_label,
+	      'name' => $facet_name,
 	      'enabled' => TRUE,
 	      'options' => array(),
 	      'status' => 0,
@@ -123,7 +129,7 @@ function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
 			$range = new SearchApiRange(array(
 	      'index_id' => $index->machine_name,
 	      'field' => $field_name,
-	      'name' => $field_label,
+	      'name' => $facet_name,
 	      'enabled' => TRUE,
 	      'options' => array(),
 	      'status' => 0,

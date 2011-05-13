@@ -50,8 +50,6 @@ function mica_feature_default_mica_relation() {
       "relation" : "study_study_information",
       "relation_parent_field" : "study_information_relation",
       "relation_child_field" : "study_relation",
-      "parent_indexes" : [ "studies_index" ],
-      "child_indexes" : [ "studies_index" ]
     },
     "rdf_mapping" : []
   }');
@@ -68,8 +66,6 @@ function mica_feature_default_mica_relation() {
       "relation" : "study_study_files",
       "relation_parent_field" : "study_files_relation",
       "relation_child_field" : "study_files",
-      "parent_indexes" : [ "studies_index" ],
-      "child_indexes" : [ "studies_index" ]
     },
     "rdf_mapping" : []
   }');

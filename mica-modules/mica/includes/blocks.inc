@@ -66,7 +66,7 @@ function mica_facet_visibility_form_submit($form, &$form_state) {
     $pos = strpos($key,':');
     if ($pos !== FALSE) {
       // split key as module:delta
-      $user->data['block'][substr($key,0,$pos)][substr($key,$pos+1)] = $value;
+      $user->data['block'][drupal_substr($key,0,$pos)][drupal_substr($key,$pos+1)] = $value;
     }
   }
   

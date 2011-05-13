@@ -97,8 +97,8 @@ function mica_node_insert($node) {
  		}
   	if (empty($menu['enabled']) || !$menu['enabled']) {
   		
-  		/*
- 			$menu_options = variable_get('menu_options_' . $node->type);  		
+ 			$menu_options = variable_get('menu_options_' . $node->type);
+
   		if (!empty($menu_options)) {
   			$menu['enabled'] = TRUE;
   			$menu['menu_name'] = $menu_options[0];
@@ -109,14 +109,18 @@ function mica_node_insert($node) {
   			if (!empty($menu_parent)) {
   				$split = explode(":", $menu_parent);
   				if (!empty($split[1])) {
-  					$menu['plid'] = $split[1];  					
+  				  $mlid = $split[1];
+  				  // check that this parent menu exists
+            $existing_menu = db_query("SELECT * FROM {menu_links} WHERE mlid = :mlid", array(':mlid' => $mlid))
+                                ->fetchObject();    			
+  				  if (!empty($existing_menu) && $existing_menu->mlid === $mlid) {
+    					$menu['plid'] = $mlid;
+  				    menu_link_save($menu);
+    	        menu_cache_clear($menu['menu_name']);
+  				  }  		
   				}
   			}
-  			
-				menu_link_save($menu);
-  	    menu_cache_clear($menu['menu_name']);  		
   		}
-  		*/
   	}
   	
     $to_save = FALSE;
