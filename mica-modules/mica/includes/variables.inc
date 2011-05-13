@@ -14,6 +14,10 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
   $field_name = $form_state['build_info']['args'][0]['field_name'];
   $bundle = $form_state['build_info']['args'][0]['bundle'];
   
+  if ($bundle === 'variable') {
+    return; // cannot create variable form variable content type field
+  }
+  
   $variable = _mica_find_variable($bundle, $field_name);
 
   $form['field']['settings']['variable_infos'] = array(
