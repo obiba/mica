@@ -29,15 +29,15 @@ function _mica_find_indexes_by_bundle() {
  * Add facet for non Full Text field
  * 
  * @param string $index_name
- * @param array $variable with 'title', 'body', 'bundle', 'original_field_name', 'value_type', 'repeatable', 'categories' 
+ * @param array $field_description with 'title', 'body', 'bundle', 'original_field_name', 'value_type', 'repeatable', 'categories' 
  */
-function _mica_add_field_index($index_name, array $variable) {
+function _mica_add_field_index($index_name, array $field_description) {
 	
   module_load_include('inc', 'mica', 'includes/relations');	
 
-  $bundle = $variable['bundle'];
-	$field_name = $variable['original_field_name'];
-	$type = $variable['value_type'];
+  $bundle = $field_description['bundle'];
+	$field_name = $field_description['original_field_name'];
+	$type = $field_description['value_type'];
  
   if ($type === 'TEXT') {
     $field = field_info_field($field_name);
@@ -48,7 +48,7 @@ function _mica_add_field_index($index_name, array $variable) {
     $index_type = $mapping[$type];
   }
   
-  if ($variable['repeatable']) {
+  if ($field_description['repeatable']) {
   	$index_type = 'list<' . $index_type . '>';
   }
   
@@ -100,7 +100,10 @@ function _mica_add_field_index($index_name, array $variable) {
   	'index_id' => $index->machine_name,
     'field' => $field_name,
   );
-  $facet = search_api_facet_load_multiple(FALSE, $facets_conditions, TRUE);
+  
+  $facet_array = search_api_facet_load_multiple(FALSE, $facets_conditions, TRUE);
+  $facet_key = array_keys($facet_array);
+  $facet = empty($facet_key) ? NULL : $facet_array[$facet_key[0]];
   if (_mica_is_type_supports_facet($index_type)) {
   	
   	if (empty($facet)) {
@@ -120,13 +123,12 @@ function _mica_add_field_index($index_name, array $variable) {
   	} 
   	elseif ($reindex) { 
   		
-  		//debug($facet, '$facet');
-  		
   		// field was changed, update facet
   		$facet->field = $field_name;
   		$facet->name = $field_label;
   		$facet->enabled = 1;
-  		$facet->save(); 
+  		$facet->save();
+
   	}
   } 
   elseif (!empty($facet)) {
@@ -135,7 +137,9 @@ function _mica_add_field_index($index_name, array $variable) {
   }
   
   // ranges
-  $range = search_api_range_load_multiple(FALSE, $facets_conditions, TRUE);
+  $range_array = search_api_range_load_multiple(FALSE, $facets_conditions, TRUE);
+  $range_key = array_keys($range_array);
+  $range = empty($range_key) ? NULL : $range_array[$range_key[0]];
   if (_mica_is_type_supports_ranges($index_type)) {
   	
   	if (empty($range)) {
@@ -154,11 +158,13 @@ function _mica_add_field_index($index_name, array $variable) {
   		
   	} 
   	elseif ($reindex) { 
+  		
   		// field was changed, update facet
   		$range->field = $field_name;
   		$range->name = $field_label;
   		$range->enabled = 1;
   		$range->save(); 
+  		
   	}
   } 
   elseif (!empty($range)) {

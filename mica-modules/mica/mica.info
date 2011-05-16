@@ -20,7 +20,7 @@ files[] = includes/exception.inc
 files[] = includes/mica_relation.entity.inc
 files[] = includes/relations.inc
 files[] = includes/search.inc
-files[] = includes/variables.inc
+files[] = includes/field_description.inc
 
 files[] = includes/feeds/mappers/email.inc
 files[] = includes/feeds/mappers/mica.inc

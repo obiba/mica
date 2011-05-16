@@ -169,7 +169,7 @@ function mica_node_delete($node) {
  * Implements of hook_form_FORM_ID_alter()
  */
 function mica_form_field_ui_field_edit_form_alter(&$form, $form_state, $form_id) {
-  module_load_include('inc', 'mica', 'includes/variables');
+  module_load_include('inc', 'mica', 'includes/field_description');
   return _mica_field_settings_form_alter($form, $form_state, $form_id);
 }
 
@@ -177,8 +177,8 @@ function mica_form_field_ui_field_edit_form_alter(&$form, $form_state, $form_id)
  * Implements hook_field_delete_instance()
  */
 function mica_field_delete_instance($instance) {
-  module_load_include('inc', 'mica', 'includes/variables');
-  _mica_delete_variable_for_field_instance($instance);
+  module_load_include('inc', 'mica', 'includes/field_description');
+  _mica_delete_field_description_for_field_instance($instance);
 }
 
 function mica_validate_node_type_relation($form, &$form_state) {
