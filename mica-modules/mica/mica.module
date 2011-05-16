@@ -1,5 +1,10 @@
 <?php
 
+require_once(drupal_get_path('module', 'mica') . '/includes/feeds/mappers/mica.inc');
+require_once(drupal_get_path('module', 'mica') . '/includes/feeds/mappers/email.inc');
+require_once(drupal_get_path('module', 'mica') . '/includes/feeds/mappers/name.inc');
+require_once(drupal_get_path('module', 'mica') . '/includes/feeds/mappers/references.inc');
+
 /**
  * Implements hook_help()
  */
@@ -240,11 +245,6 @@ function mica_block_view($delta = '') {
  * Implements hook_feeds_plugins().
  */
 function mica_feeds_plugins() {
-
-  module_load_include('inc', 'mica', 'includes/feeds/mappers/mica');
-  module_load_include('inc', 'mica', 'includes/feeds/mappers/email');
-  module_load_include('inc', 'mica', 'includes/feeds/mappers/name');
-  module_load_include('inc', 'mica', 'includes/feeds/mappers/references');
   
   $path = drupal_get_path('module', 'mica') . '/includes/feeds/processors';
   
