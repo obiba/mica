@@ -85,6 +85,16 @@ function _feeds_feeds_plugins() {
       'path' => $path,
     ),
   );
+   $info['FeedsMultiValueCSVParser'] = array(
+    'name' => 'Multivalue CSV parser',
+    'description' => 'Parse data in Comma Separated Value format, with the option for multiple values per cell.',
+    'handler' => array(
+      'parent' => 'FeedsCSVParser',
+      'class' => 'FeedsMultiValueCSVParser',
+      'file' => 'FeedsMultiValueCSVParser.inc',
+      'path' => $path,
+    ),
+  );
   $info['FeedsSyndicationParser'] = array(
     'name' => 'Common syndication parser',
     'description' => 'Parse RSS and Atom feeds.',

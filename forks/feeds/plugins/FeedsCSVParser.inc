@@ -195,7 +195,10 @@ class FeedsCSVParser extends FeedsParser {
         $sources[] = check_plain($mapping['source']);
       }
     }
-    $sep = ',';
+    //$sep = ',';
+    // should this instead use source->config['delimiter']?
+    $sep = $this->config['delimiter'];
+    $sep = ($sep == 'TAB') ? "\t" : $sep;
     $columns = array();
     foreach (array_merge($uniques, $sources) as $col) {
       if (strpos($col, $sep) !== FALSE) {

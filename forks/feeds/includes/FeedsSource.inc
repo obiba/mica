@@ -511,7 +511,10 @@ class FeedsSource extends FeedsConfigurable {
       ctools_include('export');
       $this->export_type = EXPORT_IN_DATABASE;
       $this->imported = $record->imported;
-      $this->config = unserialize($record->config);
+      //$this->config = unserialize($record->config);
+      // merge arrays instead of overwriting config in case fetcher/parser has changed
+      // since last import
+      $this->config = array_merge($this->config, unserialize($record->config));
       if (!empty($record->state)) {
         $this->state = unserialize($record->state);
       }
