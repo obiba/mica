@@ -1,0 +1,16 @@
+name = noderefcreate
+description = create a node when the reference doesnt exist
+package = Fields
+core = 7.x
+dependencies[] = field
+dependencies[] = references
+dependencies[] = node_reference
+
+files[] = noderefcreate.module
+
+; Information added by drupal.org packaging script on 2011-04-11
+version = "7.x-1.0-beta2"
+core = "7.x"
+project = "noderefcreate"
+datestamp = "1302535628"
+
