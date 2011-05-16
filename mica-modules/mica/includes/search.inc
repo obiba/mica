@@ -27,10 +27,17 @@ function _mica_find_indexes_by_bundle() {
 /**
  * Add or update field in search index 
  * Add facet for non Full Text field
+ * 
+ * @param string $index_name
+ * @param array $variable with 'title', 'body', 'bundle', 'original_field_name', 'value_type', 'repeatable', 'categories' 
  */
-function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
+function _mica_add_field_index($index_name, array $variable) {
 	
   module_load_include('inc', 'mica', 'includes/relations');	
+
+  $bundle = $variable['bundle'];
+	$field_name = $variable['original_field_name'];
+	$type = $variable['value_type'];
  
   if ($type === 'TEXT') {
     $field = field_info_field($field_name);
@@ -39,6 +46,10 @@ function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
   else {
     $mapping = _mica_magma_search_index_type_mapping();
     $index_type = $mapping[$type];
+  }
+  
+  if ($variable['repeatable']) {
+  	$index_type = 'list<' . $index_type . '>';
   }
   
   $field_instance = field_info_instance('node', $field_name, $bundle);
@@ -108,6 +119,9 @@ function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
 
   	} 
   	elseif ($reindex) { 
+  		
+  		//debug($facet, '$facet');
+  		
   		// field was changed, update facet
   		$facet->field = $field_name;
   		$facet->name = $field_label;
@@ -154,7 +168,9 @@ function _mica_add_field_index($index_name, $bundle, $field_name, $type) {
 }
 
 function _mica_is_type_supports_facet($index_type) {
-	return $index_type === 'string' || $index_type === 'boolean'; 
+	return $index_type === 'string' || $index_type === 'boolean' 
+		|| $index_type === 'list<string>' || $index_type === 'list<boolean>' || $index_type === 'list<integer>' 
+		|| $index_type === 'list<decimal>' || $index_type === 'list<date>'; 
 }
 
 function _mica_is_type_supports_ranges($index_type) {

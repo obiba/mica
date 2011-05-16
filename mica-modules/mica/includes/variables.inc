@@ -64,6 +64,7 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
   		case 'text_long':
   		case 'text_with_summary':
   		case 'text':
+  		case 'text_default':
   			$default_value_type = 'TEXT';
   			break;
   			
@@ -87,9 +88,9 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
   $field_value_type_options = field_info_field('field_value_type');
   
   $form['field']['settings']['variable_infos']['variable_value_type'] = array(
-    '#type' => 'select',
+	  // show value type input only if we were not able to detect it
+    '#type' => empty($default_value_type) ? 'select' : 'hidden',
     '#title' => t('Variable value type'),
-    // TODO variable_value_type should be required if 'variable' checkbox is checked
     '#required' => FALSE, 
     '#options' => $field_value_type_options['settings']['allowed_values'],  
     '#default_value' => $default_value_type,
@@ -129,15 +130,23 @@ function _mica_edit_field_variable($form, &$form_state) {
   $is_variable = $form_state['values']['field']['settings']['variable_infos']['variable'];
   $field_name = $form_state['values']['instance']['field_name'];
   $bundle = $form_state['values']['instance']['bundle'];
+  $field_info = field_info_field($field_name);
+
+  $node_type = node_type_load($bundle);
   
   $variable_infos = array(
-    'title' => preg_replace('/^field_/', '', $field_name),
+    'title' => $node_type->name . ' » ' . $form_state['values']['instance']['label'],
     'body' => $is_variable ? $form_state['values']['field']['settings']['variable_infos']['variable_body'] : NULL,
     'bundle' => $bundle,
     'original_field_name' => $field_name,
-    'field_title' => $form_state['values']['instance']['label'],
     'value_type' => $is_variable ? $form_state['values']['field']['settings']['variable_infos']['variable_value_type'] : NULL,
+  	'repeatable' => $form_state['values']['field']['cardinality'] != 1,
+  	'categories' => empty($field_info['settings']) || empty($field_info['settings']['allowed_values']) 
+  										? array() 
+  										: array_keys($field_info['settings']['allowed_values']),
   );
+  
+  //debug($variable_infos);
   
   $variable = _mica_find_variable($bundle, $field_name);
   if (empty($variable)) {  
@@ -173,16 +182,36 @@ function _mica_find_variable($bundle, $field_name) {
   return array();             
 }
 
+/**
+ * Create Variable and corresponding search index
+ * 
+ * @param array $variable_infos with 'title', 'body', 'bundle', 'original_field_name', 'value_type', 'repeatable', 'categories' 
+ */
 function _mica_create_variable(array $variable_infos) {
   
   $variable = new stdClass();
   $variable->type = 'variable';
   node_object_prepare($variable);
   $variable->language = LANGUAGE_NONE;
-  $variable->title = $variable_infos['title'];
-  //TODO set variable author 
   
-  $variable->body = array(
+  _mica_update_variable($variable, $variable_infos);
+
+  watchdog('mica', 'Create Variable for %field of %bundle', 
+    array(
+      '%field' => $variable_infos['original_field_name'], 
+      '%bundle' => $variable_infos['bundle'],
+    ), WATCHDOG_INFO);
+}
+
+/**
+ * Update Variable and corresponding search index
+ * 
+ * @param stdClass $variable 
+ * @param array $variable_infos with 'title', 'body', 'bundle', 'original_field_name', 'value_type', 'repeatable', 'categories' 
+ */
+function _mica_update_variable(stdClass $variable, array $variable_infos) {
+	$variable->title = $variable_infos['title'];
+	$variable->body = array(
     LANGUAGE_NONE => array(
       0 => array(
         'value' => $variable_infos['body'],
@@ -210,33 +239,21 @@ function _mica_create_variable(array $variable_infos) {
       ),
     ),
   );
-  node_save($variable);   
-  
-  watchdog('mica', 'Create Variable for %field of %bundle', 
-    array(
-      '%field' => $variable_infos['original_field_name'], 
-      '%bundle' => $variable_infos['bundle'],
-    ), WATCHDOG_INFO);
-  
-    
-  _mica_update_index_for_variable($variable_infos);
-}
-
-function _mica_update_variable($variable, array $variable_infos) {
-  $variable->field_value_type = array(
+  $variable->field_repeatable = array(
     LANGUAGE_NONE => array(
       0 => array(
-        'value' => $variable_infos['value_type'],
+        'value' => $variable_infos['repeatable'] ? 1 : 0,
       ),
     ),
-  );    
-  $variable->body = array(
-    LANGUAGE_NONE => array(
-      0 => array(
-        'value' => $variable_infos['body'],
-      ),
-    ),
-  );  
+  );
+  
+  $variable->field_categories = array();
+  $variable->field_categories[LANGUAGE_NONE] = array();
+  foreach ($variable_infos['categories'] as $delta => $category) {
+		$variable->field_categories[LANGUAGE_NONE][$delta] = array(
+    	'value' => $category,
+	  );
+  }
   node_save($variable);
   
   _mica_update_index_for_variable($variable_infos);
@@ -245,7 +262,7 @@ function _mica_update_variable($variable, array $variable_infos) {
 /**
  * Delete variable and remove serach index field
  */
-function _mica_delete_variable($variable) {
+function _mica_delete_variable(stdClass $variable) {
   module_load_include('inc', 'mica', 'includes/search');
   
   $field_bundle = $variable->field_bundle;
@@ -287,13 +304,13 @@ function _mica_delete_variable_for_field_instance($instance) {
 /**
  * Updates search index field
  */
-function _mica_update_index_for_variable($variable_infos) {
+function _mica_update_index_for_variable(array $variable_infos) {
   module_load_include('inc', 'mica', 'includes/search');
   $indexes = _mica_find_indexes_by_bundle();
   $bundles_indexes = $indexes[$variable_infos['bundle']];
   if (!empty($bundles_indexes)) {
     foreach ($bundles_indexes as $index_machine_name => $index_name) {
-      _mica_add_field_index($index_machine_name, $variable_infos['bundle'], $variable_infos['original_field_name'], $variable_infos['value_type']);
+      _mica_add_field_index($index_machine_name, $variable_infos);
     }
   }  
 }
