@@ -21,7 +21,6 @@ link_version=7.x-1.0-alpha3
 login_destination_version=7.x-1.0-beta1
 multiselect_version=7.x-1.8
 name_version=7.x-1.0-beta1
-noderefcreate_version=7.x-1.0-beta2
 relation_version=7.x-1.0-alpha2
 search_api_solr_version=7.x-1.0-beta2
 search_api_version=7.x-1.0-beta8
