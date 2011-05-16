@@ -117,8 +117,8 @@ function mica_feature_node_info() {
       'title_label' => t('Name'),
       'help' => '',
     ),
-    'variable' => array(
-      'name' => t('Variable'),
+    'field_description' => array(
+      'name' => t('Field Description'),
       'base' => 'node_content',
       'description' => t('Description of information collected about the studies.'),
       'has_title' => '1',
@@ -348,11 +348,11 @@ function mica_feature_default_search_api_facet() {
     },
     "rdf_mapping" : []
   }');
-  $items['variables_index_field_bundle'] = entity_import('search_api_facet', '{
-    "delta" : "variables_index_field_bundle",
-    "index_id" : "variables_index",
+  $items['fields_desc_index_bundle'] = entity_import('search_api_facet', '{
+    "delta" : "fields_desc_index_bundle",
+    "index_id" : "fields_description_index",
     "field" : "field_bundle",
-    "name" : "Variables Index: Content Type",
+    "name" : "Fields Description Index: Content Type",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -369,11 +369,11 @@ function mica_feature_default_search_api_facet() {
     },
     "rdf_mapping" : []
   }');
-  $items['variables_index_field_value_type'] = entity_import('search_api_facet', '{
-    "delta" : "variables_index_field_value_type",
-    "index_id" : "variables_index",
+  $items['fields_desc_index_value_type'] = entity_import('search_api_facet', '{
+    "delta" : "fields_desc_index_value_type",
+    "index_id" : "fields_description_index",
     "field" : "field_value_type",
-    "name" : "Variables Index: Value Type",
+    "name" : "Fields Description Index: Value Type",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -390,11 +390,11 @@ function mica_feature_default_search_api_facet() {
     },
     "rdf_mapping" : []
   }');
-  $items['variables_index_title'] = entity_import('search_api_facet', '{
-    "delta" : "variables_index_title",
-    "index_id" : "variables_index",
+  $items['fields_description_index_title'] = entity_import('search_api_facet', '{
+    "delta" : "fields_description_index_title",
+    "index_id" : "fields_description_index",
     "field" : "title",
-    "name" : "Variables Index: Title",
+    "name" : "Fields Description Index: Title",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -1030,9 +1030,9 @@ function mica_feature_default_search_api_index() {
     "enabled" : "1",
     "rdf_mapping" : []
   }');
-  $items['variables_index'] = entity_import('search_api_index', '{
-    "name" : "Variables Index",
-    "machine_name" : "variables_index",
+  $items['fields_description_index'] = entity_import('search_api_index', '{
+    "name" : "Fields Description Index",
+    "machine_name" : "fields_description_index",
     "description" : null,
     "server" : "solr",
     "entity_type" : "node",
@@ -1042,7 +1042,7 @@ function mica_feature_default_search_api_index() {
         "search_api_alter_bundle_filter" : {
           "status" : 1,
           "weight" : "0",
-          "settings" : { "default" : "0", "bundles" : { "variable" : "variable" } }
+          "settings" : { "default" : "0", "bundles" : { "field_description" : "field_description" } }
         },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_fulltext" : { "status" : 0, "weight" : "0", "settings" : null },

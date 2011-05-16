@@ -1441,11 +1441,11 @@ function mica_feature_views_default_views() {
   $export['csv_study_information_export'] = $view;
 
   $view = new view;
-  $view->name = 'csv_variable_export';
+  $view->name = 'csv_field_description_export';
   $view->description = 'Export of all studies in CSV';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'CSV Variable Export';
+  $view->human_name = 'CSV Field Description Export';
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -1587,7 +1587,7 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'variable' => 'variable',
+    'field_description' => 'field_description',
   );
 
   /* Display: Data export */
@@ -1601,10 +1601,10 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['style_options']['quote'] = 1;
   $handler->display->display_options['style_options']['separator'] = ';';
   $handler->display->display_options['style_options']['header'] = 1;
-  $handler->display->display_options['path'] = 'csv-variable';
+  $handler->display->display_options['path'] = 'csv-field_description';
   $handler->display->display_options['sitename_title'] = 0;
   $handler->display->display_options['use_batch'] = '0';
-  $translatables['csv_variable_export'] = array(
+  $translatables['csv_field_description_export'] = array(
     t('Master'),
     t('CSV Contact Export'),
     t('more'),
@@ -1623,7 +1623,7 @@ function mica_feature_views_default_views() {
     t('body'),
     t('Data export'),
   );
-  $export['csv_variable_export'] = $view;
+  $export['csv_field_description_export'] = $view;
 
   $view = new view;
   $view->name = 'studies';
@@ -1811,18 +1811,18 @@ function mica_feature_views_default_views() {
   $export['studies_search'] = $view;
 
   $view = new view;
-  $view->name = 'variables';
+  $view->name = 'fields_description';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Variables';
+  $view->human_name = 'Fields Description';
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Variables';
+  $handler->display->display_options['title'] = 'Fields Description';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -1904,14 +1904,14 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'variable' => 'variable',
+    'field_description' => 'field_description',
   );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'variables';
+  $handler->display->display_options['path'] = 'fields_description';
   $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Variables';
+  $handler->display->display_options['menu']['title'] = 'Fields Description';
   $handler->display->display_options['menu']['name'] = 'main-menu';
 
   /* Display: Block */
@@ -1924,9 +1924,9 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $translatables['variables'] = array(
+  $translatables['fields_description'] = array(
     t('Master'),
-    t('Variables'),
+    t('Fields Description'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -1941,21 +1941,21 @@ function mica_feature_views_default_views() {
     t('Page'),
     t('Block'),
   );
-  $export['variables'] = $view;
+  $export['fields_description'] = $view;
 
   $view = new view;
-  $view->name = 'variables_search';
+  $view->name = 'fields_description_search';
   $view->description = '';
   $view->tag = 'default';
-  $view->base_table = 'search_api_index_variables_index';
-  $view->human_name = 'Variables Search';
+  $view->base_table = 'search_api_index_fields_description_index';
+  $view->human_name = 'Fields Description Search';
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Variables Search';
+  $handler->display->display_options['title'] = 'Fields Description Search';
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -1965,7 +1965,7 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   /* Field: Node: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_variables_index';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_fields_description_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Name';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
@@ -1986,7 +1986,7 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
   /* Field: Node: Content type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'search_api_index_variables_index';
+  $handler->display->display_options['fields']['type']['table'] = 'search_api_index_fields_description_index';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['type']['alter']['make_link'] = 0;
@@ -2007,7 +2007,7 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['type']['format_name'] = 1;
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_variables_index';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_fields_description_index';
   $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
@@ -2017,23 +2017,23 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
   /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_variables_index';
+  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_fields_description_index';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'variable' => 'variable',
+    'field_description' => 'field_description',
   );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'variables-search';
+  $handler->display->display_options['path'] = 'fields_description-search';
   $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Variables Search';
+  $handler->display->display_options['menu']['title'] = 'Fields Description Search';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['tab_options']['weight'] = '0';
-  $translatables['variables_search'] = array(
+  $translatables['fields_description_search'] = array(
     t('Master'),
-    t('Variables Search'),
+    t('Fields Description Search'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -2048,7 +2048,7 @@ function mica_feature_views_default_views() {
     t('Fulltext search'),
     t('Page'),
   );
-  $export['variables_search'] = $view;
+  $export['fields_description_search'] = $view;
 
   return $export;
 }

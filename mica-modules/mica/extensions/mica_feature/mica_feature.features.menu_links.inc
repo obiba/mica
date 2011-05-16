@@ -52,26 +52,12 @@ function mica_feature_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '0',
   );
-  // Exported menu link: main-menu:variables
-  $menu_links['main-menu:variables'] = array(
+  // Exported menu link: main-menu:fields_description-search
+  $menu_links['main-menu:fields_description-search'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'variables',
-    'router_path' => 'variables',
-    'link_title' => 'Variables',
-    'options' => array(),
-    'module' => 'system',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '0',
-  );
-  // Exported menu link: main-menu:variables-search
-  $menu_links['main-menu:variables-search'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'variables-search',
-    'router_path' => 'variables-search',
-    'link_title' => 'Variables Search',
+    'link_path' => 'fields_description-search',
+    'router_path' => 'fields_description-search',
+    'link_title' => 'Fields Description Search',
     'options' => array(),
     'module' => 'system',
     'hidden' => '0',
@@ -105,8 +91,8 @@ function mica_feature_menu_default_menu_links() {
   t('Studies');
   t('Studies Search');
   t('URL aliases');
-  t('Variables');
-  t('Variables Search');
+  t('Fields Description');
+  t('Fields Description Search');
 
 
   return $menu_links;

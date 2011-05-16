@@ -29,8 +29,8 @@ function mica_minimal_install_tasks($install_state){
 function mica_import_default_feeds($install_state){
   $root = 'profiles/mica_minimal/data'; // for some reason drupal_get_path('profile', 'mica_minimal') is empty, maybe a cache related issue...
   $feed_configs = array();
-  $feed_configs['csv_variable_import'] = array(
-    'file' => $root . '/variable_import.csv',
+  $feed_configs['csv_field_description_import'] = array(
+    'file' => $root . '/field_description_import.csv',
   );
     
   $operations = array();

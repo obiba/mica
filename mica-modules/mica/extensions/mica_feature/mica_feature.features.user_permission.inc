@@ -86,9 +86,9 @@ function mica_feature_user_default_permissions() {
     'module' => 'feeds',
   );
 
-  // Exported permission: clear csv_variable_import feeds
-  $permissions['clear csv_variable_import feeds'] = array(
-    'name' => 'clear csv_variable_import feeds',
+  // Exported permission: clear csv_field_description_import feeds
+  $permissions['clear csv_field_description_import feeds'] = array(
+    'name' => 'clear csv_field_description_import feeds',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -178,9 +178,9 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: create variable content
-  $permissions['create variable content'] = array(
-    'name' => 'create variable content',
+  // Exported permission: create field_description content
+  $permissions['create field_description content'] = array(
+    'name' => 'create field_description content',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -253,9 +253,9 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any variable content
-  $permissions['delete any variable content'] = array(
-    'name' => 'delete any variable content',
+  // Exported permission: delete any field_description content
+  $permissions['delete any field_description content'] = array(
+    'name' => 'delete any field_description content',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -328,9 +328,9 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete own variable content
-  $permissions['delete own variable content'] = array(
-    'name' => 'delete own variable content',
+  // Exported permission: delete own field_description content
+  $permissions['delete own field_description content'] = array(
+    'name' => 'delete own field_description content',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -414,9 +414,9 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any variable content
-  $permissions['edit any variable content'] = array(
-    'name' => 'edit any variable content',
+  // Exported permission: edit any field_description content
+  $permissions['edit any field_description content'] = array(
+    'name' => 'edit any field_description content',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -492,9 +492,9 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit own variable content
-  $permissions['edit own variable content'] = array(
-    'name' => 'edit own variable content',
+  // Exported permission: edit own field_description content
+  $permissions['edit own field_description content'] = array(
+    'name' => 'edit own field_description content',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -537,9 +537,9 @@ function mica_feature_user_default_permissions() {
     'module' => 'feeds',
   );
 
-  // Exported permission: import csv_variable_import feeds
-  $permissions['import csv_variable_import feeds'] = array(
-    'name' => 'import csv_variable_import feeds',
+  // Exported permission: import csv_field_description_import feeds
+  $permissions['import csv_field_description_import feeds'] = array(
+    'name' => 'import csv_field_description_import feeds',
     'roles' => array(
       0 => 'administrator',
     ),
