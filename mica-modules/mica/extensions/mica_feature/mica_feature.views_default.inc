@@ -60,7 +60,7 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['field_contact_name_2']['table'] = 'field_data_field_contact_name';
   $handler->display->display_options['fields']['field_contact_name_2']['field'] = 'field_contact_name';
   $handler->display->display_options['fields']['field_contact_name_2']['label'] = 'field_contact_name:title';
-  $handler->display->display_options['fields']['field_contact_name_2']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_contact_name_2']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_contact_name_2']['alter']['text'] = '[field_contact_name_2-title]';
   $handler->display->display_options['fields']['field_contact_name_2']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_contact_name_2']['alter']['absolute'] = 0;
@@ -77,7 +77,7 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['field_contact_name_2']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_contact_name_2']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_contact_name_2']['click_sort_column'] = 'title';
-  $handler->display->display_options['fields']['field_contact_name_2']['type'] = 'name_plain_formal';
+  $handler->display->display_options['fields']['field_contact_name_2']['type'] = 'name_raw_title';
   $handler->display->display_options['fields']['field_contact_name_2']['field_api_classes'] = 0;
   /* Field: Content: Contact Name */
   $handler->display->display_options['fields']['field_contact_name']['id'] = 'field_contact_name';

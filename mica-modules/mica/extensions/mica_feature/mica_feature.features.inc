@@ -997,7 +997,11 @@ function mica_feature_default_search_api_index() {
           "weight" : "0",
           "settings" : {
             "default" : "0",
-            "bundles" : { "study" : "study", "study_information" : "study_information" }
+            "bundles" : {
+              "study" : "study",
+              "study_information" : "study_information",
+              "study_files" : "study_files"
+            }
           }
         },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },

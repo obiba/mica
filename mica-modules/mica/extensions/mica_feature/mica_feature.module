@@ -13,7 +13,9 @@ function mica_feature_install() {
   
   _mica_import_relations();
   
-  _mica_import_field_groups();  
+  _mica_import_field_groups();
+  
+  _mica_import_custom_name_format();
 
 }
 
@@ -275,3 +277,12 @@ function _mica_import_field_groups() {
   field_group_save($field_group);
 }
 
+function _mica_import_custom_name_format(){
+  // add custom field format for name until next release of views
+  $custom_format = array(
+    'name' => 'Title',
+  	'machine_name' => 'title',
+  	'format' => 't',
+  );
+  drupal_write_record('name_custom_format', $custom_format);
+} 
