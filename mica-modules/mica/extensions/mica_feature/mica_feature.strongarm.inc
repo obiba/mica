@@ -845,28 +845,28 @@ function mica_feature_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_study';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_study'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_study_files';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_study_files'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_study_information';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_study_information'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_variable';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_variable'] = $strongarm;
 
   $strongarm = new stdClass;
