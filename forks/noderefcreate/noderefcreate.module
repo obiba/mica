@@ -64,7 +64,7 @@ function noderefcreate_field_widget_form(&$form, &$form_state, $field, $instance
       $element += array(
         '#type' => 'textfield',
         '#default_value' => isset($items[$delta]['nid']) ? $items[$delta]['nid'] : NULL,
-        '#autocomplete_path' => $instance['widget']['settings']['autocomplete_path'] . '/' . $instance['entity_type'] . '/' . $instance['bundle'] . '/' . 
+        '#autocomplete_path' => $instance['widget']['settings']['autocomplete_path'] . '/' . $instance['entity_type'] . '/' . $instance['bundle'] . '/' . $field['field_name'], 
         '#size' => $instance['widget']['settings']['size'],
         '#element_validate' => array('noderefcreate_autocomplete_validate'),
         '#value_callback' => 'node_reference_autocomplete_value',
