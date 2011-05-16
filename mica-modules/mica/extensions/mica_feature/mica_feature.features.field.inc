@@ -1651,7 +1651,7 @@ Prof.',
       'settings' => array(
         'description_field' => 1,
         'file_directory' => '',
-        'file_extensions' => 'txt',
+        'file_extensions' => 'txt pdf',
         'max_filesize' => '',
         'user_register_form' => FALSE,
       ),
