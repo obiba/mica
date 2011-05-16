@@ -25,10 +25,12 @@ function mica_feature_feeds_importer_default() {
       ),
     ),
     'parser' => array(
-      'plugin_key' => 'FeedsCSVParser',
+      'plugin_key' => 'FeedsMultiValueCSVParser',
       'config' => array(
         'delimiter' => ';',
         'no_headers' => 0,
+        'multivalue_separator' => '||',
+        'multivalue_trim_spaces' => 1,
       ),
     ),
     'processor' => array(
@@ -108,10 +110,12 @@ function mica_feature_feeds_importer_default() {
       ),
     ),
     'parser' => array(
-      'plugin_key' => 'FeedsCSVParser',
+      'plugin_key' => 'FeedsMultiValueCSVParser',
       'config' => array(
         'delimiter' => ';',
         'no_headers' => 0,
+        'multivalue_separator' => '||',
+        'multivalue_trim_spaces' => 1,
       ),
     ),
     'processor' => array(
@@ -181,10 +185,12 @@ function mica_feature_feeds_importer_default() {
       ),
     ),
     'parser' => array(
-      'plugin_key' => 'FeedsCSVParser',
+      'plugin_key' => 'FeedsMultiValueCSVParser',
       'config' => array(
         'delimiter' => ';',
         'no_headers' => 0,
+        'multivalue_separator' => '||',
+        'multivalue_trim_spaces' => 1,
       ),
     ),
     'processor' => array(
@@ -249,10 +255,12 @@ function mica_feature_feeds_importer_default() {
       ),
     ),
     'parser' => array(
-      'plugin_key' => 'FeedsCSVParser',
+      'plugin_key' => 'FeedsMultiValueCSVParser',
       'config' => array(
         'delimiter' => ';',
         'no_headers' => 0,
+        'multivalue_separator' => '||',
+        'multivalue_trim_spaces' => 1,
       ),
     ),
     'processor' => array(
@@ -416,10 +424,12 @@ function mica_feature_feeds_importer_default() {
       ),
     ),
     'parser' => array(
-      'plugin_key' => 'FeedsCSVParser',
+      'plugin_key' => 'FeedsMultiValueCSVParser',
       'config' => array(
         'delimiter' => ';',
         'no_headers' => 0,
+        'multivalue_separator' => '||',
+        'multivalue_trim_spaces' => 1,
       ),
     ),
     'processor' => array(
