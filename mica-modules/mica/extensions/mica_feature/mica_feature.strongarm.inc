@@ -989,6 +989,9 @@ function mica_feature_strongarm() {
     'studies_index' => array(
       'search_api_views:studies_search' => 'search_api_views:studies_search',
     ),
+    'fields_description_index' => array(
+      'search_api_views:fields_description_search' => 'search_api_views:fields_description_search',
+    ),
   );
   $export['search_api_facets_search_ids'] = $strongarm;
 

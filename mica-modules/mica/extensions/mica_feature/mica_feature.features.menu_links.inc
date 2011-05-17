@@ -24,20 +24,6 @@ function mica_feature_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-50',
   );
-  // Exported menu link: main-menu:fields_description-search
-  $menu_links['main-menu:fields_description-search'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'fields_description-search',
-    'router_path' => 'fields_description-search',
-    'link_title' => 'Fields Description Search',
-    'options' => array(),
-    'module' => 'system',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '0',
-  );
   // Exported menu link: main-menu:studies
   $menu_links['main-menu:studies'] = array(
     'menu_name' => 'main-menu',
@@ -87,7 +73,6 @@ function mica_feature_menu_default_menu_links() {
   );
   // Translatables
   // Included for use with string extractors like potx.
-  t('Fields Description Search');
   t('Home');
   t('Studies');
   t('Studies Search');
