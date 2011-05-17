@@ -156,6 +156,26 @@ function mica_feature_feeds_importer_default() {
             'target' => 'body',
             'unique' => FALSE,
           ),
+          6 => array(
+            'source' => 'field_original_field_label',
+            'target' => 'field_original_field_label',
+            'unique' => FALSE,
+          ),
+          7 => array(
+            'source' => 'field_bundle_label',
+            'target' => 'field_bundle_label',
+            'unique' => FALSE,
+          ),
+          8 => array(
+            'source' => 'field_categories',
+            'target' => 'field_categories',
+            'unique' => FALSE,
+          ),
+          9 => array(
+            'source' => 'field_repeatable',
+            'target' => 'field_repeatable',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',
