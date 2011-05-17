@@ -59,9 +59,27 @@ function mica_feature_user_default_permissions() {
     'module' => 'feeds',
   );
 
+  // Exported permission: clear csv_field_description_import feeds
+  $permissions['clear csv_field_description_import feeds'] = array(
+    'name' => 'clear csv_field_description_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
   // Exported permission: clear csv_institution_import feeds
   $permissions['clear csv_institution_import feeds'] = array(
     'name' => 'clear csv_institution_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: clear csv_study_files_importer feeds
+  $permissions['clear csv_study_files_importer feeds'] = array(
+    'name' => 'clear csv_study_files_importer feeds',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -86,15 +104,6 @@ function mica_feature_user_default_permissions() {
     'module' => 'feeds',
   );
 
-  // Exported permission: clear csv_field_description_import feeds
-  $permissions['clear csv_field_description_import feeds'] = array(
-    'name' => 'clear csv_field_description_import feeds',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
   // Exported permission: create article content
   $permissions['create article content'] = array(
     'name' => 'create article content',
@@ -108,6 +117,15 @@ function mica_feature_user_default_permissions() {
   // Exported permission: create contact content
   $permissions['create contact content'] = array(
     'name' => 'create contact content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create field_description content
+  $permissions['create field_description content'] = array(
+    'name' => 'create field_description content',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -178,15 +196,6 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: create field_description content
-  $permissions['create field_description content'] = array(
-    'name' => 'create field_description content',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete any article content
   $permissions['delete any article content'] = array(
     'name' => 'delete any article content',
@@ -200,6 +209,15 @@ function mica_feature_user_default_permissions() {
   // Exported permission: delete any contact content
   $permissions['delete any contact content'] = array(
     'name' => 'delete any contact content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any field_description content
+  $permissions['delete any field_description content'] = array(
+    'name' => 'delete any field_description content',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -253,15 +271,6 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any field_description content
-  $permissions['delete any field_description content'] = array(
-    'name' => 'delete any field_description content',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete own article content
   $permissions['delete own article content'] = array(
     'name' => 'delete own article content',
@@ -275,6 +284,15 @@ function mica_feature_user_default_permissions() {
   // Exported permission: delete own contact content
   $permissions['delete own contact content'] = array(
     'name' => 'delete own contact content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own field_description content
+  $permissions['delete own field_description content'] = array(
+    'name' => 'delete own field_description content',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -328,15 +346,6 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete own field_description content
-  $permissions['delete own field_description content'] = array(
-    'name' => 'delete own field_description content',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete revisions
   $permissions['delete revisions'] = array(
     'name' => 'delete revisions',
@@ -361,6 +370,15 @@ function mica_feature_user_default_permissions() {
   // Exported permission: edit any contact content
   $permissions['edit any contact content'] = array(
     'name' => 'edit any contact content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any field_description content
+  $permissions['edit any field_description content'] = array(
+    'name' => 'edit any field_description content',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -414,15 +432,6 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any field_description content
-  $permissions['edit any field_description content'] = array(
-    'name' => 'edit any field_description content',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: edit own article content
   $permissions['edit own article content'] = array(
     'name' => 'edit own article content',
@@ -436,6 +445,15 @@ function mica_feature_user_default_permissions() {
   // Exported permission: edit own contact content
   $permissions['edit own contact content'] = array(
     'name' => 'edit own contact content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own field_description content
+  $permissions['edit own field_description content'] = array(
+    'name' => 'edit own field_description content',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -492,15 +510,6 @@ function mica_feature_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit own field_description content
-  $permissions['edit own field_description content'] = array(
-    'name' => 'edit own field_description content',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: import csv_contact_import feeds
   $permissions['import csv_contact_import feeds'] = array(
     'name' => 'import csv_contact_import feeds',
@@ -510,9 +519,27 @@ function mica_feature_user_default_permissions() {
     'module' => 'feeds',
   );
 
+  // Exported permission: import csv_field_description_import feeds
+  $permissions['import csv_field_description_import feeds'] = array(
+    'name' => 'import csv_field_description_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
   // Exported permission: import csv_institution_import feeds
   $permissions['import csv_institution_import feeds'] = array(
     'name' => 'import csv_institution_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
+  // Exported permission: import csv_study_files_importer feeds
+  $permissions['import csv_study_files_importer feeds'] = array(
+    'name' => 'import csv_study_files_importer feeds',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -531,15 +558,6 @@ function mica_feature_user_default_permissions() {
   // Exported permission: import csv_study_information_import feeds
   $permissions['import csv_study_information_import feeds'] = array(
     'name' => 'import csv_study_information_import feeds',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: import csv_field_description_import feeds
-  $permissions['import csv_field_description_import feeds'] = array(
-    'name' => 'import csv_field_description_import feeds',
     'roles' => array(
       0 => 'administrator',
     ),

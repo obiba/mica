@@ -98,6 +98,81 @@ function mica_feature_feeds_importer_default() {
   $feeds_importer = new stdClass;
   $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
   $feeds_importer->api_version = 1;
+  $feeds_importer->id = 'csv_field_description_import';
+  $feeds_importer->config = array(
+    'name' => 'Field Description',
+    'description' => 'Import Field Description from a CSV file',
+    'fetcher' => array(
+      'plugin_key' => 'FeedsFileFetcher',
+      'config' => array(
+        'allowed_extensions' => 'txt csv',
+        'direct' => 0,
+      ),
+    ),
+    'parser' => array(
+      'plugin_key' => 'FeedsMultiValueCSVParser',
+      'config' => array(
+        'delimiter' => ';',
+        'no_headers' => 0,
+        'multivalue_separator' => '|',
+        'multivalue_trim_spaces' => 1,
+      ),
+    ),
+    'processor' => array(
+      'plugin_key' => 'FeedsUniqueNodeProcessor',
+      'config' => array(
+        'content_type' => 'field_description',
+        'expire' => '-1',
+        'author' => 0,
+        'key_field' => 'title',
+        'mappings' => array(
+          0 => array(
+            'source' => 'title',
+            'target' => 'title',
+            'unique' => FALSE,
+          ),
+          1 => array(
+            'source' => 'title',
+            'target' => 'guid',
+            'unique' => 1,
+          ),
+          2 => array(
+            'source' => 'field_bundle',
+            'target' => 'field_bundle',
+            'unique' => FALSE,
+          ),
+          3 => array(
+            'source' => 'field_value_type',
+            'target' => 'field_value_type',
+            'unique' => FALSE,
+          ),
+          4 => array(
+            'source' => 'field_original_field_name',
+            'target' => 'field_original_field_name',
+            'unique' => FALSE,
+          ),
+          5 => array(
+            'source' => 'body',
+            'target' => 'body',
+            'unique' => FALSE,
+          ),
+        ),
+        'update_existing' => '2',
+        'input_format' => 'plain_text',
+      ),
+    ),
+    'content_type' => '',
+    'update' => 0,
+    'import_period' => '-1',
+    'expire_period' => 3600,
+    'import_on_create' => 1,
+    'process_in_background' => 0,
+  );
+  $export['csv_field_description_import'] = $feeds_importer;
+
+  $feeds_importer = new stdClass;
+  $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
+  $feeds_importer->api_version = 1;
   $feeds_importer->id = 'csv_institution_import';
   $feeds_importer->config = array(
     'name' => 'Institution',
@@ -477,81 +552,6 @@ function mica_feature_feeds_importer_default() {
     'process_in_background' => 0,
   );
   $export['csv_study_information_import'] = $feeds_importer;
-
-  $feeds_importer = new stdClass;
-  $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
-  $feeds_importer->api_version = 1;
-  $feeds_importer->id = 'csv_field_description_import';
-  $feeds_importer->config = array(
-    'name' => 'Field Description',
-    'description' => 'Import Field Description from a CSV file',
-    'fetcher' => array(
-      'plugin_key' => 'FeedsFileFetcher',
-      'config' => array(
-        'allowed_extensions' => 'txt csv',
-        'direct' => 0,
-      ),
-    ),
-    'parser' => array(
-      'plugin_key' => 'FeedsMultiValueCSVParser',
-      'config' => array(
-        'delimiter' => ';',
-        'no_headers' => 0,
-        'multivalue_separator' => '|',
-        'multivalue_trim_spaces' => 1,
-      ),
-    ),
-    'processor' => array(
-      'plugin_key' => 'FeedsUniqueNodeProcessor',
-      'config' => array(
-        'content_type' => 'field_description',
-        'expire' => '-1',
-        'author' => 0,
-        'key_field' => 'title',
-        'mappings' => array(
-          0 => array(
-            'source' => 'title',
-            'target' => 'title',
-            'unique' => FALSE,
-          ),
-          1 => array(
-            'source' => 'title',
-            'target' => 'guid',
-            'unique' => 1,
-          ),
-          2 => array(
-            'source' => 'field_bundle',
-            'target' => 'field_bundle',
-            'unique' => FALSE,
-          ),
-          3 => array(
-            'source' => 'field_value_type',
-            'target' => 'field_value_type',
-            'unique' => FALSE,
-          ),
-          4 => array(
-            'source' => 'field_original_field_name',
-            'target' => 'field_original_field_name',
-            'unique' => FALSE,
-          ),
-          5 => array(
-            'source' => 'body',
-            'target' => 'body',
-            'unique' => FALSE,
-          ),
-        ),
-        'update_existing' => '2',
-        'input_format' => 'plain_text',
-      ),
-    ),
-    'content_type' => '',
-    'update' => 0,
-    'import_period' => '-1',
-    'expire_period' => 3600,
-    'import_on_create' => 1,
-    'process_in_background' => 0,
-  );
-  $export['csv_field_description_import'] = $feeds_importer;
 
   return $export;
 }

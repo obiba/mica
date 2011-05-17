@@ -71,6 +71,67 @@ function mica_feature_field_default_fields() {
     ),
   );
 
+  // Exported field: 'comment-comment_node_field_description-comment_body'
+  $fields['comment-comment_node_field_description-comment_body'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(
+        0 => 'comment',
+      ),
+      'field_name' => 'comment_body',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'comment_node_field_description',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'comment',
+      'field_name' => 'comment_body',
+      'label' => 'Comment',
+      'required' => TRUE,
+      'settings' => array(
+        'text_processing' => 1,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'rows' => 5,
+        ),
+        'type' => 'text_textarea',
+        'weight' => 0,
+      ),
+    ),
+  );
+
   // Exported field: 'comment-comment_node_institution-comment_body'
   $fields['comment-comment_node_institution-comment_body'] = array(
     'field_config' => array(
@@ -315,67 +376,6 @@ function mica_feature_field_default_fields() {
     ),
   );
 
-  // Exported field: 'comment-comment_node_field_description-comment_body'
-  $fields['comment-comment_node_field_description-comment_body'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(
-        0 => 'comment',
-      ),
-      'field_name' => 'comment_body',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'comment_node_field_description',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'comment',
-      'field_name' => 'comment_body',
-      'label' => 'Comment',
-      'required' => TRUE,
-      'settings' => array(
-        'text_processing' => 1,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'text',
-        'settings' => array(
-          'rows' => 5,
-        ),
-        'type' => 'text_textarea',
-        'weight' => 0,
-      ),
-    ),
-  );
-
   // Exported field: 'node-contact-field_contact_email'
   $fields['node-contact-field_contact_email'] = array(
     'field_config' => array(
@@ -388,17 +388,17 @@ function mica_feature_field_default_fields() {
       'indexes' => array(),
       'module' => 'email',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -637,6 +637,11 @@ Prof.',
       ),
       'module' => 'node_reference',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -649,17 +654,12 @@ Prof.',
           'blog' => 0,
           'contact' => 0,
           'event' => 0,
+          'field_description' => 0,
           'institution' => 'institution',
           'page' => 0,
           'panel' => 0,
           'study' => 0,
           'study_information' => 0,
-          'field_description' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
         ),
         'view' => array(
           'args' => array(),
@@ -736,6 +736,11 @@ Prof.',
       ),
       'module' => 'text',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -744,11 +749,6 @@ Prof.',
           'view own' => 0,
         ),
         'max_length' => '255',
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
       ),
       'translatable' => '1',
       'type' => 'text',
@@ -789,6 +789,618 @@ Prof.',
         ),
         'type' => 'text_textfield',
         'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-field_description-body'
+  $fields['node-field_description-body'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(
+        0 => 'node',
+      ),
+      'field_name' => 'body',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'variable_infos' => array(
+          'variable' => 1,
+          'variable_body' => '',
+          'variable_value_type' => 'TEXT',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'text_with_summary',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_description',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(
+            'trim_length' => 600,
+          ),
+          'type' => 'text_summary_or_trimmed',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'body',
+      'label' => 'Body',
+      'required' => FALSE,
+      'settings' => array(
+        'display_summary' => TRUE,
+        'text_processing' => 1,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'rows' => 20,
+          'summary_rows' => 5,
+        ),
+        'type' => 'text_textarea_with_summary',
+        'weight' => '1',
+      ),
+      'widget_type' => 'text_textarea_with_summary',
+    ),
+  );
+
+  // Exported field: 'node-field_description-field_bundle'
+  $fields['node-field_description-field_bundle'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_bundle',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_description',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Machine name of the content type that declares this field',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_bundle',
+      'label' => 'Content Type',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '5',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-field_description-field_bundle_label'
+  $fields['node-field_description-field_bundle_label'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_bundle_label',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_description',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Name of the content type that declares this field',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 6,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_bundle_label',
+      'label' => 'Content Type Label',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-field_description-field_categories'
+  $fields['node-field_description-field_categories'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_categories',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_description',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '5',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_categories',
+      'label' => 'Categories',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '8',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-field_description-field_original_field_label'
+  $fields['node-field_description-field_original_field_label'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_original_field_label',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_description',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 7,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_original_field_label',
+      'label' => 'Label',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-field_description-field_original_field_name'
+  $fields['node-field_description-field_original_field_name'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_original_field_name',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_description',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Field machine name',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_original_field_name',
+      'label' => 'Field Name',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-field_description-field_repeatable'
+  $fields['node-field_description-field_repeatable'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_repeatable',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => 'False',
+          1 => 'True',
+        ),
+        'allowed_values_function' => '',
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_description',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'Can this field have multiple values?',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => '4',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_repeatable',
+      'label' => 'Repeatable',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-field_description-field_value_type'
+  $fields['node-field_description-field_value_type'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_value_type',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'BOOLEAN' => 'Boolean',
+          'DATE' => 'Date',
+          'DECIMAL' => 'Decimal',
+          'INTEGER' => 'Integer',
+          'TEXT' => 'Text',
+        ),
+        'allowed_values_function' => '',
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_description',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => '2',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_value_type',
+      'label' => 'Value Type',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '6',
       ),
     ),
   );
@@ -883,6 +1495,11 @@ Prof.',
       ),
       'module' => 'text',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -891,11 +1508,6 @@ Prof.',
           'view own' => 0,
         ),
         'max_length' => '255',
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
       ),
       'translatable' => '1',
       'type' => 'text',
@@ -963,6 +1575,11 @@ Prof.',
       ),
       'module' => 'text',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -971,11 +1588,6 @@ Prof.',
           'view own' => 0,
         ),
         'max_length' => '255',
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
       ),
       'translatable' => '1',
       'type' => 'text',
@@ -1043,6 +1655,11 @@ Prof.',
       ),
       'module' => 'text',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -1051,11 +1668,6 @@ Prof.',
           'view own' => 0,
         ),
         'max_length' => '255',
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
       ),
       'translatable' => '1',
       'type' => 'text',
@@ -1125,6 +1737,11 @@ Prof.',
       ),
       'module' => 'text',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -1132,10 +1749,10 @@ Prof.',
           'view' => 0,
           'view own' => 0,
         ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
+        'variable_infos' => array(
+          'variable' => 1,
+          'variable_body' => '',
+          'variable_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -1199,17 +1816,17 @@ Prof.',
       'indexes' => array(),
       'module' => 'number',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
         ),
       ),
       'translatable' => '1',
@@ -1275,6 +1892,11 @@ Prof.',
           'url_cutoff' => 80,
         ),
         'enable_tokens' => 1,
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -1285,11 +1907,6 @@ Prof.',
         'title' => 'optional',
         'title_value' => '',
         'url' => 0,
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
       ),
       'translatable' => '1',
       'type' => 'link_field',
@@ -1522,6 +2139,11 @@ Prof.',
       ),
       'module' => 'text',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -1529,10 +2151,10 @@ Prof.',
           'view' => 0,
           'view own' => 0,
         ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
+        'variable_infos' => array(
+          'variable' => 1,
+          'variable_body' => '',
+          'variable_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -1608,6 +2230,11 @@ Prof.',
       'settings' => array(
         'display_default' => 1,
         'display_field' => 1,
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -1616,11 +2243,6 @@ Prof.',
           'view own' => 0,
         ),
         'uri_scheme' => 'public',
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
       ),
       'translatable' => '1',
       'type' => 'file',
@@ -1679,17 +2301,17 @@ Prof.',
       'indexes' => array(),
       'module' => 'number',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
         ),
       ),
       'translatable' => '1',
@@ -1757,17 +2379,17 @@ Prof.',
           'other' => 'Other',
         ),
         'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Study features for which access to external researchers or third parties is provided or foreseen',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -1839,6 +2461,11 @@ Prof.',
       ),
       'module' => 'text',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Type of access to external researchers or third parties',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -1847,11 +2474,6 @@ Prof.',
           'view own' => 0,
         ),
         'max_length' => '255',
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
       ),
       'translatable' => '1',
       'type' => 'text',
@@ -1914,17 +2536,17 @@ Prof.',
       'indexes' => array(),
       'module' => 'number',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Maximum age of participants',
+          'field_description_value_type' => 'INTEGER',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'INTEGER',
         ),
       ),
       'translatable' => '1',
@@ -1994,17 +2616,17 @@ Prof.',
       'indexes' => array(),
       'module' => 'number',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Minimum age of participants',
+          'field_description_value_type' => 'INTEGER',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'INTEGER',
         ),
       ),
       'translatable' => '1',
@@ -2086,17 +2708,17 @@ Prof.',
           'urine' => 'Urine',
         ),
         'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Biological samples collected',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -2168,6 +2790,11 @@ Prof.',
       ),
       'module' => 'text',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Other type of samples collected',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -2176,11 +2803,6 @@ Prof.',
           'view own' => 0,
         ),
         'max_length' => '255',
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
       ),
       'translatable' => '1',
       'type' => 'text',
@@ -2254,6 +2876,11 @@ Prof.',
       ),
       'module' => 'text',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Type of tissues collected',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -2262,11 +2889,6 @@ Prof.',
           'view own' => 0,
         ),
         'max_length' => '255',
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
       ),
       'translatable' => '1',
       'type' => 'text',
@@ -2340,6 +2962,11 @@ Prof.',
       ),
       'module' => 'node_reference',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -2352,16 +2979,11 @@ Prof.',
           'blog' => 0,
           'contact' => 'contact',
           'event' => 0,
+          'field_description' => 0,
           'page' => 0,
           'panel' => 0,
           'study' => 0,
           'study_information' => 0,
-          'field_description' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
         ),
         'view' => array(
           'args' => array(),
@@ -2447,17 +3069,17 @@ Prof.',
           'registry' => 'Registry',
         ),
         'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Baseline design of the study',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -2529,6 +3151,11 @@ Prof.',
       ),
       'module' => 'text',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Open type of design',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -2537,11 +3164,6 @@ Prof.',
           'view own' => 0,
         ),
         'max_length' => '255',
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
       ),
       'translatable' => '1',
       'type' => 'text',
@@ -2614,17 +3236,17 @@ Prof.',
           'other' => 'Other',
         ),
         'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Recruitment targets ',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -2696,6 +3318,11 @@ Prof.',
       ),
       'module' => 'text',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Full name of the study',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -2704,11 +3331,6 @@ Prof.',
           'view own' => 0,
         ),
         'max_length' => '255',
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
       ),
       'translatable' => '1',
       'type' => 'text',
@@ -2774,17 +3396,17 @@ Prof.',
           'women' => 'Women',
         ),
         'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Genders of the participants',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -2855,17 +3477,17 @@ Prof.',
           'yes_later' => 'Yes, we plan to proceed to GWA analysis later',
         ),
         'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Proceeding to Genome-Wide Association (GWA) analysis',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -2926,17 +3548,17 @@ Prof.',
       'indexes' => array(),
       'module' => 'number',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Approximate number of participants for GWA',
+          'field_description_value_type' => 'INTEGER',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'INTEGER',
         ),
       ),
       'translatable' => '1',
@@ -3017,6 +3639,11 @@ Prof.',
       ),
       'module' => 'node_reference',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -3029,17 +3656,12 @@ Prof.',
           'blog' => 0,
           'contact' => 'contact',
           'event' => 0,
+          'field_description' => 0,
           'institution' => 0,
           'page' => 0,
           'panel' => 0,
           'study' => 0,
           'study_information' => 0,
-          'field_description' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
         ),
         'view' => array(
           'args' => array(),
@@ -3122,17 +3744,17 @@ Prof.',
           'other' => 'Other',
         ),
         'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Selection criteria / Charactecteristic of the population',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -3193,17 +3815,17 @@ Prof.',
       'indexes' => array(),
       'module' => 'number',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'End year',
+          'field_description_value_type' => 'INTEGER',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'INTEGER',
         ),
       ),
       'translatable' => '1',
@@ -3273,17 +3895,17 @@ Prof.',
       'indexes' => array(),
       'module' => 'number',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Start year',
+          'field_description_value_type' => 'INTEGER',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'INTEGER',
         ),
       ),
       'translatable' => '1',
@@ -3366,17 +3988,17 @@ Prof.',
           'USA' => 'United States',
         ),
         'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Countries where the study is conducted',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -3439,17 +4061,17 @@ Prof.',
       'indexes' => array(),
       'module' => 'number',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
         ),
       ),
       'translatable' => '1',
@@ -3507,17 +4129,17 @@ Prof.',
       'indexes' => array(),
       'module' => 'number',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Target number of biological samples',
+          'field_description_value_type' => 'INTEGER',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'INTEGER',
         ),
       ),
       'translatable' => '1',
@@ -3587,17 +4209,17 @@ Prof.',
       'indexes' => array(),
       'module' => 'number',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Target number of participants',
+          'field_description_value_type' => 'INTEGER',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'INTEGER',
         ),
       ),
       'translatable' => '1',
@@ -3678,6 +4300,11 @@ Prof.',
       ),
       'module' => 'text',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Open type of target',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -3686,11 +4313,6 @@ Prof.',
           'view own' => 0,
         ),
         'max_length' => '255',
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
       ),
       'translatable' => '1',
       'type' => 'text',
@@ -3741,463 +4363,6 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-field_description-body'
-  $fields['node-field_description-body'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(
-        0 => 'node',
-      ),
-      'field_name' => 'body',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'text_with_summary',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_description',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '0',
-        ),
-        'teaser' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(
-            'trim_length' => 600,
-          ),
-          'type' => 'text_summary_or_trimmed',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'body',
-      'label' => 'Body',
-      'required' => FALSE,
-      'settings' => array(
-        'display_summary' => TRUE,
-        'text_processing' => 1,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'text',
-        'settings' => array(
-          'rows' => 20,
-          'summary_rows' => 5,
-        ),
-        'type' => 'text_textarea_with_summary',
-        'weight' => '-4',
-      ),
-      'widget_type' => 'text_textarea_with_summary',
-    ),
-  );
-
-  // Exported field: 'node-field_description-field_bundle'
-  $fields['node-field_description-field_bundle'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_bundle',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'max_length' => '255',
-      ),
-      'translatable' => '1',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_description',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '1',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_bundle',
-      'label' => 'Content Type',
-      'required' => 1,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '-3',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-field_description-field_original_field_name'
-  $fields['node-field_description-field_original_field_name'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_original_field_name',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'max_length' => '255',
-      ),
-      'translatable' => '1',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_description',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '3',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_original_field_name',
-      'label' => 'Field Name',
-      'required' => 1,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '-1',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-field_description-field_value_type'
-  $fields['node-field_description-field_value_type'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_value_type',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          'BOOLEAN' => 'Boolean',
-          'DATE' => 'Date',
-          'DECIMAL' => 'Decimal',
-          'INTEGER' => 'Integer',
-          'TEXT' => 'Text',
-        ),
-        'allowed_values_function' => '',
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_description',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '2',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_value_type',
-      'label' => 'Value Type',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '-2',
-      ),
-    ),
-  );
-  
-  // Exported field: 'node-field_description-field_repeatable'
-  $fields['node-field_description-field_repeatable'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_repeatable',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => 'False',
-          1 => 'True',
-        ),
-        'allowed_values_function' => '',
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'list_boolean',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_description',
-      'default_value' => array(
-        0 => array(
-          'value' => 0,
-        ),
-      ),
-      'deleted' => '0',
-      'description' => 'Can this field have multiple values?',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '4',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_repeatable',
-      'label' => 'Repeatable',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(
-          'display_label' => 1,
-        ),
-        'type' => 'options_onoff',
-        'weight' => '0',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-field_description-field_categories'
-  $fields['node-field_description-field_categories'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_categories',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'max_length' => '255',
-      ),
-      'translatable' => '1',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_description',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '5',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_categories',
-      'label' => 'Categories',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '1',
-      ),
-    ),
-  );  
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Access to the following features is provided or foreseen');
@@ -4205,25 +4370,33 @@ Prof.',
   t('Baseline Design of the Study');
   t('Biological Samples Collected');
   t('Body');
+  t('Can this field have multiple values?');
+  t('Categories');
   t('City');
   t('Comment');
   t('Contact');
   t('Contact Name');
   t('Content Type');
+  t('Content Type Label');
   t('Country');
   t('Email');
   t('End year');
   t('Field Name');
+  t('Field machine name');
   t('Files');
   t('Full Name');
   t('Institution');
   t('Investigator');
+  t('Label');
   t('Legacy Id');
+  t('Machine name of the content type that declares this field');
   t('Max age');
   t('Min age');
+  t('Name of the content type that declares this field');
   t('Please specify the approximate number of participants');
   t('Postal Code');
   t('Proceeding to Genome-Wide Association (GWA) Analysis');
+  t('Repeatable');
   t('Selection Criteria / Charactecteristic of the Population');
   t('Specify Gender');
   t('Specify type of access');
@@ -4243,9 +4416,5 @@ Prof.',
   t('Value Type');
   t('Website');
 
-  t('Repeatable');
-  t('Can this field have multiple values?');
-  t('Categories');
-  
   return $fields;
 }

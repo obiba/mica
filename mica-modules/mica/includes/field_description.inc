@@ -89,14 +89,16 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
   $form['field']['settings']['field_description_infos']['field_description_value_type'] = array(
     '#type' => 'select',
 	  // enables value type input only if we were not able to detect it
-  	'#disabled' => !empty($default_value_type),
+  	// '#disabled' => !empty($default_value_type),
     '#title' => t('Field value type'),
     '#required' => FALSE, 
     '#options' => $field_value_type_options['settings']['allowed_values'],  
     '#default_value' => $default_value_type,
     // Enabled only when the 'field_description' checkbox is checked
     '#states' => array(
-      'enabled' => array('input[name="field[settings][field_description_infos][field_description]"]' => array('checked' => TRUE)),
+    	'enabled' => array(
+      	'input[name="field[settings][field_description_infos][field_description]"]' => array('checked' => TRUE)
+      ),
     ),      
   );
   
@@ -115,7 +117,9 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
     '#required' => FALSE,  
     // Enabled only when the 'field_description' checkbox is checked
     '#states' => array(
-      'enabled' => array('input[name="field[settings][field_description_infos][field_description]"]' => array('checked' => TRUE)),
+      'enabled' => array(
+      	'input[name="field[settings][field_description_infos][field_description]"]' => array('checked' => TRUE)
+      ),
     ),    
   );  
   
@@ -136,17 +140,17 @@ function _mica_edit_field_field_description($form, &$form_state) {
   
   $field_description_infos = array(
     'title' => $node_type->name . ' » ' . $form_state['values']['instance']['label'],
-    'body' => $is_field_description ? $form_state['values']['field']['settings']['field_description_infos']['field_description_body'] : NULL,
+    'desc' => $is_field_description ? $form_state['values']['field']['settings']['field_description_infos']['field_description_body'] : NULL,
     'bundle' => $bundle,
+    'bundle_label' => $node_type->name,
     'original_field_name' => $field_name,
+    'original_field_label' => $form_state['values']['instance']['label'],
     'value_type' => $is_field_description ? $form_state['values']['field']['settings']['field_description_infos']['field_description_value_type'] : NULL,
   	'repeatable' => $form_state['values']['field']['cardinality'] != 1,
   	'categories' => empty($field_info['settings']) || empty($field_info['settings']['allowed_values']) 
   										? array() 
   										: array_keys($field_info['settings']['allowed_values']),
   );
-  
-  //debug($field_description_infos);
   
   $field_description = _mica_find_field_description($bundle, $field_name);
   if (empty($field_description)) {  
@@ -185,7 +189,7 @@ function _mica_find_field_description($bundle, $field_name) {
 /**
  * Create Field Description and corresponding search index
  * 
- * @param array $field_description_infos with 'title', 'body', 'bundle', 'original_field_name', 'value_type', 'repeatable', 'categories' 
+ * @param array $field_description_infos with 'title', 'desc', 'bundle', 'original_field_name', 'value_type', 'repeatable', 'categories' 
  */
 function _mica_create_field_description(array $field_description_infos) {
   
@@ -198,8 +202,8 @@ function _mica_create_field_description(array $field_description_infos) {
 
   watchdog('mica', 'Create Field Description for %field of %bundle', 
     array(
-      '%field' => $field_description_infos['original_field_name'], 
-      '%bundle' => $field_description_infos['bundle'],
+      '%field' => $field_description_infos['original_field_label'], 
+      '%bundle' => $field_description_infos['bundle_label'],
     ), WATCHDOG_INFO);
 }
 
@@ -207,14 +211,15 @@ function _mica_create_field_description(array $field_description_infos) {
  * Update Field Description and corresponding search index
  * 
  * @param stdClass $field_description 
- * @param array $field_description_infos with 'title', 'body', 'bundle', 'original_field_name', 'value_type', 'repeatable', 'categories' 
+ * @param array $field_description_infos with 'title', 'desc', 'bundle', 'bundle_label', 'original_field_name', 
+ * 'original_field_label', 'value_type', 'repeatable', 'categories' 
  */
 function _mica_update_field_description(stdClass $field_description, array $field_description_infos) {
 	$field_description->title = $field_description_infos['title'];
 	$field_description->body = array(
     LANGUAGE_NONE => array(
       0 => array(
-        'value' => $field_description_infos['body'],
+        'value' => $field_description_infos['desc'],
       ),
     ),
   );
@@ -225,13 +230,13 @@ function _mica_update_field_description(stdClass $field_description, array $fiel
       ),
     ),
   );
-  $field_description->field_value_type = array(
+  $field_description->field_bundle_label = array(
     LANGUAGE_NONE => array(
       0 => array(
-        'value' => $field_description_infos['value_type'],
+        'value' => $field_description_infos['bundle_label'],
       ),
     ),
-  );  
+  );
   $field_description->field_original_field_name = array(
     LANGUAGE_NONE => array(
       0 => array(
@@ -239,6 +244,20 @@ function _mica_update_field_description(stdClass $field_description, array $fiel
       ),
     ),
   );
+  $field_description->field_original_field_label = array(
+    LANGUAGE_NONE => array(
+      0 => array(
+        'value' => $field_description_infos['original_field_label'],
+      ),
+    ),
+  );
+  $field_description->field_value_type = array(
+    LANGUAGE_NONE => array(
+      0 => array(
+        'value' => $field_description_infos['value_type'],
+      ),
+    ),
+  );  
   $field_description->field_repeatable = array(
     LANGUAGE_NONE => array(
       0 => array(

@@ -29,7 +29,8 @@ function _mica_find_indexes_by_bundle() {
  * Add facet for non Full Text field
  * 
  * @param string $index_name
- * @param array $field_description with 'title', 'body', 'bundle', 'original_field_name', 'value_type', 'repeatable', 'categories' 
+ * @param array $field_description with 'title', 'desc', 'bundle', 'bundle_label', 'original_field_name', 'original_field_label', 
+ * 'value_type', 'repeatable', 'categories' 
  */
 function _mica_add_field_index($index_name, array $field_description) {
 	

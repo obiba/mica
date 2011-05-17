@@ -85,6 +85,14 @@ function mica_feature_node_info() {
       'title_label' => t('Person and Institution Names'),
       'help' => '',
     ),
+    'field_description' => array(
+      'name' => t('Field Description'),
+      'base' => 'node_content',
+      'description' => t('Description of information collected about the studies.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'institution' => array(
       'name' => t('Institution'),
       'base' => 'node_content',
@@ -117,14 +125,6 @@ function mica_feature_node_info() {
       'title_label' => t('Name'),
       'help' => '',
     ),
-    'field_description' => array(
-      'name' => t('Field Description'),
-      'base' => 'node_content',
-      'description' => t('Description of information collected about the studies.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
   );
   return $items;
 }
@@ -134,6 +134,69 @@ function mica_feature_node_info() {
  */
 function mica_feature_default_search_api_facet() {
   $items = array();
+  $items['fields_desc_index_bundle'] = entity_import('search_api_facet', '{
+    "delta" : "fields_desc_index_bundle",
+    "index_id" : "fields_description_index",
+    "field" : "field_bundle",
+    "name" : "Fields Description Index: Content Type",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "string",
+      "field_name" : "Content Type"
+    },
+    "rdf_mapping" : []
+  }');
+  $items['fields_desc_index_value_type'] = entity_import('search_api_facet', '{
+    "delta" : "fields_desc_index_value_type",
+    "index_id" : "fields_description_index",
+    "field" : "field_value_type",
+    "name" : "Fields Description Index: Value Type",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "string",
+      "field_name" : "Value Type"
+    },
+    "rdf_mapping" : []
+  }');
+  $items['fields_description_index_title'] = entity_import('search_api_facet', '{
+    "delta" : "fields_description_index_title",
+    "index_id" : "fields_description_index",
+    "field" : "title",
+    "name" : "Fields Description Index: Title",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "text",
+      "field_name" : "Title"
+    },
+    "rdf_mapping" : []
+  }');
   $items['studies_index_mica_study_infor_1'] = entity_import('search_api_facet', '{
     "delta" : "studies_index_mica_study_infor_1",
     "index_id" : "studies_index",
@@ -348,69 +411,6 @@ function mica_feature_default_search_api_facet() {
     },
     "rdf_mapping" : []
   }');
-  $items['fields_desc_index_bundle'] = entity_import('search_api_facet', '{
-    "delta" : "fields_desc_index_bundle",
-    "index_id" : "fields_description_index",
-    "field" : "field_bundle",
-    "name" : "Fields Description Index: Content Type",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "string",
-      "field_name" : "Content Type"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['fields_desc_index_value_type'] = entity_import('search_api_facet', '{
-    "delta" : "fields_desc_index_value_type",
-    "index_id" : "fields_description_index",
-    "field" : "field_value_type",
-    "name" : "Fields Description Index: Value Type",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "string",
-      "field_name" : "Value Type"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['fields_description_index_title'] = entity_import('search_api_facet', '{
-    "delta" : "fields_description_index_title",
-    "index_id" : "fields_description_index",
-    "field" : "title",
-    "name" : "Fields Description Index: Title",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "text",
-      "field_name" : "Title"
-    },
-    "rdf_mapping" : []
-  }');
   return $items;
 }
 
@@ -419,6 +419,208 @@ function mica_feature_default_search_api_facet() {
  */
 function mica_feature_default_search_api_index() {
   $items = array();
+  $items['fields_description_index'] = entity_import('search_api_index', '{
+    "name" : "Fields Description Index",
+    "machine_name" : "fields_description_index",
+    "description" : null,
+    "server" : "solr",
+    "entity_type" : "node",
+    "options" : {
+      "cron_limit" : "50",
+      "data_alter_callbacks" : {
+        "search_api_alter_bundle_filter" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : {
+            "default" : "0",
+            "bundles" : { "field_description" : "field_description" }
+          }
+        },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
+        "search_api_alter_add_fulltext" : { "status" : 0, "weight" : "0", "settings" : null },
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
+      },
+      "processors" : {
+        "search_api_processor_study_fields" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_case_ignore" : { "status" : 0, "weight" : "0", "settings" : { "strings" : 0 } },
+        "search_api_html_filter" : {
+          "status" : 0,
+          "weight" : "10",
+          "settings" : {
+            "title" : 0,
+            "alt" : 1,
+            "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
+          }
+        },
+        "search_api_tokenizer" : {
+          "status" : 0,
+          "weight" : "20",
+          "settings" : { "spaces" : "[^\\\\p{L}\\\\p{N}]", "ignorable" : "[-]" }
+        }
+      },
+      "fields" : {
+        "search_api_language" : {
+          "name" : "Item language",
+          "indexed" : 1,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "nid" : { "name" : "Node ID", "indexed" : 0, "type" : "integer", "boost" : "1.0" },
+        "vid" : {
+          "name" : "Revision ID",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "is_new" : { "name" : "Is new", "indexed" : 0, "type" : "boolean", "boost" : "1.0" },
+        "type" : {
+          "name" : "Content type",
+          "indexed" : 0,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "title" : { "name" : "Title", "indexed" : 1, "type" : "text", "boost" : "1.0" },
+        "language" : { "name" : "Language", "indexed" : 0, "type" : "string", "boost" : "1.0" },
+        "url" : { "name" : "URL", "indexed" : 0, "type" : "uri", "boost" : "1.0" },
+        "edit_url" : { "name" : "Edit URL", "indexed" : 0, "type" : "uri", "boost" : "1.0" },
+        "status" : {
+          "name" : "Published",
+          "indexed" : 0,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "promote" : {
+          "name" : "Promoted to frontpage",
+          "indexed" : 0,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "sticky" : {
+          "name" : "Sticky in lists",
+          "indexed" : 0,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "created" : {
+          "name" : "Date created",
+          "indexed" : 0,
+          "type" : "date",
+          "boost" : "1.0"
+        },
+        "changed" : {
+          "name" : "Date changed",
+          "indexed" : 0,
+          "type" : "date",
+          "boost" : "1.0"
+        },
+        "author" : {
+          "name" : "Author",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "user",
+          "boost" : "1.0"
+        },
+        "source" : {
+          "name" : "Translation source node",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "log" : {
+          "name" : "Revision log message",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "revision" : {
+          "name" : "Creates revision",
+          "indexed" : 0,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "comment" : {
+          "name" : "Comments allowed",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "comment_count" : {
+          "name" : "Comment count",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "comment_count_new" : {
+          "name" : "New comment count",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_tags" : {
+          "name" : "Tags",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_event_date" : { "name" : "Event Date", "indexed" : 0, "type" : "date", "boost" : "1.0" },
+        "mica_study_information" : {
+          "name" : "Study Information",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_bundle" : {
+          "name" : "Content Type",
+          "indexed" : 1,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_original_field_name" : {
+          "name" : "Field Name",
+          "indexed" : 1,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_value_type" : {
+          "name" : "Value Type",
+          "indexed" : 1,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_study_contact_email" : {
+          "name" : "Contact Email",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_study_country" : { "name" : "Country", "indexed" : 0, "type" : "string", "boost" : "1.0" },
+        "field_study_full_name" : { "name" : "Full Name", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "body:value" : {
+          "name" : "The main body text \\u00bb Text",
+          "indexed" : 1,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "body:summary" : {
+          "name" : "The main body text \\u00bb Summary",
+          "indexed" : 1,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "body:format" : {
+          "name" : "The main body text \\u00bb Text format",
+          "indexed" : 0,
+          "type" : "string",
+          "boost" : "1.0"
+        }
+      }
+    },
+    "enabled" : "1",
+    "rdf_mapping" : []
+  }');
   $items['studies_index'] = entity_import('search_api_index', '{
     "name" : "Studies Index",
     "machine_name" : "studies_index",
@@ -852,43 +1054,43 @@ function mica_feature_default_search_api_index() {
         },
         "mica_study_information:field_access" : {
           "name" : "Study Information \\u00bb Access to the following features is provided or foreseen",
-          "indexed" : 1,
-          "type" : "string",
+          "indexed" : true,
+          "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_access_other" : {
           "name" : "Study Information \\u00bb Specify type of access",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_age_max" : {
           "name" : "Study Information \\u00bb Max age",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_age_min" : {
           "name" : "Study Information \\u00bb Min age",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_collected" : {
           "name" : "Study Information \\u00bb Biological Samples Collected",
-          "indexed" : 1,
-          "type" : "string",
+          "indexed" : true,
+          "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_collected_other" : {
           "name" : "Study Information \\u00bb Specify type of samples collected",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_tissues" : {
           "name" : "Study Information \\u00bb Specify type of tissues collected",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
@@ -901,43 +1103,43 @@ function mica_feature_default_search_api_index() {
         },
         "mica_study_information:field_design" : {
           "name" : "Study Information \\u00bb Baseline Design of the Study",
-          "indexed" : 1,
-          "type" : "string",
+          "indexed" : true,
+          "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_design_other" : {
           "name" : "Study Information \\u00bb Specify type of design",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_design_target" : {
           "name" : "Study Information \\u00bb Targets Recruitment of",
-          "indexed" : 1,
-          "type" : "string",
+          "indexed" : true,
+          "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_full_name" : {
           "name" : "Study Information \\u00bb Full Name",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_gender" : {
           "name" : "Study Information \\u00bb Specify Gender",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "string",
           "boost" : "1.0"
         },
         "mica_study_information:field_gwas_analysis" : {
           "name" : "Study Information \\u00bb Proceeding to Genome-Wide Association (GWA) Analysis",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "string",
           "boost" : "1.0"
         },
         "mica_study_information:field_gwas_number" : {
           "name" : "Study Information \\u00bb Please specify the approximate number of participants",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
@@ -950,43 +1152,43 @@ function mica_feature_default_search_api_index() {
         },
         "mica_study_information:field_selection_criteria" : {
           "name" : "Study Information \\u00bb Selection Criteria \\/ Charactecteristic of the Population",
-          "indexed" : 1,
-          "type" : "string",
+          "indexed" : true,
+          "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_status_end" : {
           "name" : "Study Information \\u00bb End year",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_status_start" : {
           "name" : "Study Information \\u00bb Start year",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_study_country" : {
           "name" : "Study Information \\u00bb Country",
-          "indexed" : 1,
-          "type" : "string",
+          "indexed" : true,
+          "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_target_number_biosamples" : {
           "name" : "Study Information \\u00bb Target Number of Biological Samples",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_target_number_participants" : {
           "name" : "Study Information \\u00bb Target Number of Participants",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_target_other" : {
           "name" : "Study Information \\u00bb Specify type of target",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         }
@@ -1024,205 +1226,6 @@ function mica_feature_default_search_api_index() {
           "status" : 0,
           "weight" : "20",
           "settings" : { "spaces" : "[^\\\\p{L}\\\\p{N}]", "ignorable" : "[-]" }
-        }
-      }
-    },
-    "enabled" : "1",
-    "rdf_mapping" : []
-  }');
-  $items['fields_description_index'] = entity_import('search_api_index', '{
-    "name" : "Fields Description Index",
-    "machine_name" : "fields_description_index",
-    "description" : null,
-    "server" : "solr",
-    "entity_type" : "node",
-    "options" : {
-      "cron_limit" : "50",
-      "data_alter_callbacks" : {
-        "search_api_alter_bundle_filter" : {
-          "status" : 1,
-          "weight" : "0",
-          "settings" : { "default" : "0", "bundles" : { "field_description" : "field_description" } }
-        },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
-        "search_api_alter_add_fulltext" : { "status" : 0, "weight" : "0", "settings" : null },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
-      },
-      "processors" : {
-        "search_api_processor_study_fields" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_case_ignore" : { "status" : 0, "weight" : "0", "settings" : { "strings" : 0 } },
-        "search_api_html_filter" : {
-          "status" : 0,
-          "weight" : "10",
-          "settings" : {
-            "title" : 0,
-            "alt" : 1,
-            "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
-          }
-        },
-        "search_api_tokenizer" : {
-          "status" : 0,
-          "weight" : "20",
-          "settings" : { "spaces" : "[^\\\\p{L}\\\\p{N}]", "ignorable" : "[-]" }
-        }
-      },
-      "fields" : {
-        "search_api_language" : {
-          "name" : "Item language",
-          "indexed" : 1,
-          "type" : "string",
-          "boost" : "1.0"
-        },
-        "nid" : { "name" : "Node ID", "indexed" : 0, "type" : "integer", "boost" : "1.0" },
-        "vid" : {
-          "name" : "Revision ID",
-          "indexed" : 0,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "is_new" : { "name" : "Is new", "indexed" : 0, "type" : "boolean", "boost" : "1.0" },
-        "type" : {
-          "name" : "Content type",
-          "indexed" : 0,
-          "type" : "string",
-          "boost" : "1.0"
-        },
-        "title" : { "name" : "Title", "indexed" : 1, "type" : "text", "boost" : "1.0" },
-        "language" : { "name" : "Language", "indexed" : 0, "type" : "string", "boost" : "1.0" },
-        "url" : { "name" : "URL", "indexed" : 0, "type" : "uri", "boost" : "1.0" },
-        "edit_url" : { "name" : "Edit URL", "indexed" : 0, "type" : "uri", "boost" : "1.0" },
-        "status" : {
-          "name" : "Published",
-          "indexed" : 0,
-          "type" : "boolean",
-          "boost" : "1.0"
-        },
-        "promote" : {
-          "name" : "Promoted to frontpage",
-          "indexed" : 0,
-          "type" : "boolean",
-          "boost" : "1.0"
-        },
-        "sticky" : {
-          "name" : "Sticky in lists",
-          "indexed" : 0,
-          "type" : "boolean",
-          "boost" : "1.0"
-        },
-        "created" : {
-          "name" : "Date created",
-          "indexed" : 0,
-          "type" : "date",
-          "boost" : "1.0"
-        },
-        "changed" : {
-          "name" : "Date changed",
-          "indexed" : 0,
-          "type" : "date",
-          "boost" : "1.0"
-        },
-        "author" : {
-          "name" : "Author",
-          "indexed" : 0,
-          "type" : "integer",
-          "entity_type" : "user",
-          "boost" : "1.0"
-        },
-        "source" : {
-          "name" : "Translation source node",
-          "indexed" : 0,
-          "type" : "integer",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "log" : {
-          "name" : "Revision log message",
-          "indexed" : 0,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "revision" : {
-          "name" : "Creates revision",
-          "indexed" : 0,
-          "type" : "boolean",
-          "boost" : "1.0"
-        },
-        "comment" : {
-          "name" : "Comments allowed",
-          "indexed" : 0,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "comment_count" : {
-          "name" : "Comment count",
-          "indexed" : 0,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "comment_count_new" : {
-          "name" : "New comment count",
-          "indexed" : 0,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_tags" : {
-          "name" : "Tags",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "taxonomy_term",
-          "boost" : "1.0"
-        },
-        "field_event_date" : { "name" : "Event Date", "indexed" : 0, "type" : "date", "boost" : "1.0" },
-        "mica_study_information" : {
-          "name" : "Study Information",
-          "indexed" : 0,
-          "type" : "integer",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_bundle" : {
-          "name" : "Content Type",
-          "indexed" : 1,
-          "type" : "string",
-          "boost" : "1.0"
-        },
-        "field_original_field_name" : {
-          "name" : "Field Name",
-          "indexed" : 1,
-          "type" : "string",
-          "boost" : "1.0"
-        },
-        "field_value_type" : {
-          "name" : "Value Type",
-          "indexed" : 1,
-          "type" : "string",
-          "boost" : "1.0"
-        },
-        "field_study_contact_email" : {
-          "name" : "Contact Email",
-          "indexed" : 0,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_study_country" : { "name" : "Country", "indexed" : 0, "type" : "string", "boost" : "1.0" },
-        "field_study_full_name" : { "name" : "Full Name", "indexed" : 0, "type" : "text", "boost" : "1.0" },
-        "body:value" : {
-          "name" : "The main body text \\u00bb Text",
-          "indexed" : 1,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "body:summary" : {
-          "name" : "The main body text \\u00bb Summary",
-          "indexed" : 1,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "body:format" : {
-          "name" : "The main body text \\u00bb Text format",
-          "indexed" : 0,
-          "type" : "string",
-          "boost" : "1.0"
         }
       }
     },

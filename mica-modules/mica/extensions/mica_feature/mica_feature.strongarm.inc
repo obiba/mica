@@ -27,6 +27,13 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'additional_settings__active_tab_field_description';
+  $strongarm->value = 'edit-menu';
+  $export['additional_settings__active_tab_field_description'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_institution';
   $strongarm->value = 'edit-display';
   $export['additional_settings__active_tab_institution'] = $strongarm;
@@ -55,13 +62,6 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'additional_settings__active_tab_field_description';
-  $strongarm->value = 'edit-menu';
-  $export['additional_settings__active_tab_field_description'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_address';
   $strongarm->value = '0';
   $export['comment_address'] = $strongarm;
@@ -79,6 +79,13 @@ function mica_feature_strongarm() {
   $strongarm->name = 'comment_anonymous_contact';
   $strongarm->value = 0;
   $export['comment_anonymous_contact'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_anonymous_field_description';
+  $strongarm->value = 0;
+  $export['comment_anonymous_field_description'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -111,13 +118,6 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_field_description';
-  $strongarm->value = 0;
-  $export['comment_anonymous_field_description'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_contact';
   $strongarm->value = '1';
   $export['comment_contact'] = $strongarm;
@@ -135,6 +135,13 @@ function mica_feature_strongarm() {
   $strongarm->name = 'comment_default_mode_contact';
   $strongarm->value = 1;
   $export['comment_default_mode_contact'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_field_description';
+  $strongarm->value = 1;
+  $export['comment_default_mode_field_description'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -167,13 +174,6 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_mode_field_description';
-  $strongarm->value = 1;
-  $export['comment_default_mode_field_description'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_address';
   $strongarm->value = '50';
   $export['comment_default_per_page_address'] = $strongarm;
@@ -184,6 +184,13 @@ function mica_feature_strongarm() {
   $strongarm->name = 'comment_default_per_page_contact';
   $strongarm->value = '50';
   $export['comment_default_per_page_contact'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_per_page_field_description';
+  $strongarm->value = '50';
+  $export['comment_default_per_page_field_description'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -216,9 +223,9 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_per_page_field_description';
-  $strongarm->value = '50';
-  $export['comment_default_per_page_field_description'] = $strongarm;
+  $strongarm->name = 'comment_field_description';
+  $strongarm->value = '1';
+  $export['comment_field_description'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -233,6 +240,13 @@ function mica_feature_strongarm() {
   $strongarm->name = 'comment_form_location_contact';
   $strongarm->value = 1;
   $export['comment_form_location_contact'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_field_description';
+  $strongarm->value = 1;
+  $export['comment_form_location_field_description'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -265,13 +279,6 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_form_location_field_description';
-  $strongarm->value = 1;
-  $export['comment_form_location_field_description'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_institution';
   $strongarm->value = '1';
   $export['comment_institution'] = $strongarm;
@@ -300,6 +307,13 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_preview_field_description';
+  $strongarm->value = '1';
+  $export['comment_preview_field_description'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_institution';
   $strongarm->value = '1';
   $export['comment_preview_institution'] = $strongarm;
@@ -324,13 +338,6 @@ function mica_feature_strongarm() {
   $strongarm->name = 'comment_preview_study_information';
   $strongarm->value = '1';
   $export['comment_preview_study_information'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_preview_field_description';
-  $strongarm->value = '1';
-  $export['comment_preview_field_description'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -370,6 +377,13 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_subject_field_field_description';
+  $strongarm->value = 1;
+  $export['comment_subject_field_field_description'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_subject_field_institution';
   $strongarm->value = 1;
   $export['comment_subject_field_institution'] = $strongarm;
@@ -394,20 +408,6 @@ function mica_feature_strongarm() {
   $strongarm->name = 'comment_subject_field_study_information';
   $strongarm->value = 1;
   $export['comment_subject_field_study_information'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_subject_field_field_description';
-  $strongarm->value = 1;
-  $export['comment_subject_field_field_description'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_field_description';
-  $strongarm->value = '1';
-  $export['comment_field_description'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -463,7 +463,7 @@ function mica_feature_strongarm() {
         'extra_fields' => array(
           'form' => array(
             'title' => array(
-              'weight' => '-5',
+              'weight' => '0',
             ),
           ),
           'display' => array(),
@@ -598,6 +598,15 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_field_description';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_field_description'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_institution';
   $strongarm->value = array();
   $export['menu_options_institution'] = $strongarm;
@@ -632,15 +641,6 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_field_description';
-  $strongarm->value = array(
-    0 => 'main-menu',
-  );
-  $export['menu_options_field_description'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_address';
   $strongarm->value = 'management:0';
   $export['menu_parent_address'] = $strongarm;
@@ -651,6 +651,13 @@ function mica_feature_strongarm() {
   $strongarm->name = 'menu_parent_contact';
   $strongarm->value = 'management:0';
   $export['menu_parent_contact'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_field_description';
+  $strongarm->value = 'main-menu:274';
+  $export['menu_parent_field_description'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -683,13 +690,6 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_field_description';
-  $strongarm->value = 'main-menu:274';
-  $export['menu_parent_field_description'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'node_options_address';
   $strongarm->value = array(
     0 => 'status',
@@ -704,6 +704,15 @@ function mica_feature_strongarm() {
     0 => 'status',
   );
   $export['node_options_contact'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_field_description';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_options_field_description'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -744,15 +753,6 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_field_description';
-  $strongarm->value = array(
-    0 => 'status',
-  );
-  $export['node_options_field_description'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_address';
   $strongarm->value = '1';
   $export['node_preview_address'] = $strongarm;
@@ -763,6 +763,13 @@ function mica_feature_strongarm() {
   $strongarm->name = 'node_preview_contact';
   $strongarm->value = '1';
   $export['node_preview_contact'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_field_description';
+  $strongarm->value = '1';
+  $export['node_preview_field_description'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -795,13 +802,6 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_preview_field_description';
-  $strongarm->value = '1';
-  $export['node_preview_field_description'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'node_reference_name_study';
   $strongarm->value = '';
   $export['node_reference_name_study'] = $strongarm;
@@ -826,6 +826,13 @@ function mica_feature_strongarm() {
   $strongarm->name = 'node_submitted_contact';
   $strongarm->value = 0;
   $export['node_submitted_contact'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_field_description';
+  $strongarm->value = 0;
+  $export['node_submitted_field_description'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -865,16 +872,16 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_field_description';
-  $strongarm->value = 0;
-  $export['node_submitted_field_description'] = $strongarm;
+  $strongarm->name = 'parent_bundle_contact';
+  $strongarm->value = '';
+  $export['parent_bundle_contact'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'parent_bundle_contact';
+  $strongarm->name = 'parent_bundle_field_description';
   $strongarm->value = '';
-  $export['parent_bundle_contact'] = $strongarm;
+  $export['parent_bundle_field_description'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -903,13 +910,6 @@ function mica_feature_strongarm() {
   $strongarm->name = 'parent_bundle_study_information';
   $strongarm->value = 'study';
   $export['parent_bundle_study_information'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'parent_bundle_field_description';
-  $strongarm->value = '';
-  $export['parent_bundle_field_description'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
