@@ -1799,6 +1799,10 @@ function mica_feature_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'fields-description-search';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Fields Description Search';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['tab_options']['weight'] = '0';
   $translatables['fields_description_search'] = array(
     t('Master'),
@@ -1917,6 +1921,12 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'table';
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = FALSE;
+  $handler->display->display_options['header']['area']['content'] = '<a href="?q=fields-description-search">Fields Description Search</a>';
   /* Field: Node: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_studies_index';
@@ -1997,6 +2007,7 @@ function mica_feature_views_default_views() {
     t('Items per page'),
     t('- All -'),
     t('Offset'),
+    t('<a href="?q=fields-description-search">Fields Description Search</a>'),
     t('Name'),
     t('Content type'),
     t('Fulltext search'),
