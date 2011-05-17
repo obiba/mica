@@ -136,11 +136,11 @@ function mica_feature_default_search_api_facet() {
     },
     "rdf_mapping" : []
   }');
-  $items['fields_description_index_title'] = entity_import('search_api_facet', '{
-    "delta" : "fields_description_index_title",
+  $items['fields_description_i_field_categ'] = entity_import('search_api_facet', '{
+    "delta" : "fields_description_i_field_categ",
     "index_id" : "fields_description_index",
-    "field" : "title",
-    "name" : "Fields Description Index: Title",
+    "field" : "field_categories",
+    "name" : "Fields Description Index: Categories",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -152,8 +152,29 @@ function mica_feature_default_search_api_facet() {
       "show_active" : true,
       "default_true" : true,
       "ids_list" : [],
-      "type" : "text",
-      "field_name" : "Title"
+      "type" : "",
+      "field_name" : "Categories"
+    },
+    "rdf_mapping" : []
+  }');
+  $items['fields_description_i_field_repea'] = entity_import('search_api_facet', '{
+    "delta" : "fields_description_i_field_repea",
+    "index_id" : "fields_description_index",
+    "field" : "field_repeatable",
+    "name" : "Fields Description Index: Repeatable",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "",
+      "field_name" : "Repeatable"
     },
     "rdf_mapping" : []
   }');
@@ -524,23 +545,36 @@ function mica_feature_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_event_date" : { "name" : "Event Date", "indexed" : 0, "type" : "date", "boost" : "1.0" },
-        "mica_study_information" : {
-          "name" : "Study Information",
-          "indexed" : 0,
-          "type" : "integer",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
+        "field_publication_doi" : { "name" : "DOI", "indexed" : 0, "type" : "text", "boost" : "1.0" },
         "field_bundle" : {
           "name" : "Content Type",
           "indexed" : 1,
           "type" : "string",
           "boost" : "1.0"
         },
+        "field_bundle_label" : {
+          "name" : "Content Type Label",
+          "indexed" : 1,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_categories" : {
+          "name" : "Categories",
+          "indexed" : 1,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_original_field_label" : { "name" : "Label", "indexed" : 1, "type" : "text", "boost" : "1.0" },
         "field_original_field_name" : {
           "name" : "Field Name",
           "indexed" : 1,
           "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_repeatable" : {
+          "name" : "Repeatable",
+          "indexed" : 1,
+          "type" : "boolean",
           "boost" : "1.0"
         },
         "field_value_type" : {
@@ -549,14 +583,164 @@ function mica_feature_default_search_api_index() {
           "type" : "string",
           "boost" : "1.0"
         },
-        "field_study_contact_email" : {
-          "name" : "Contact Email",
+        "field_study_legacy_id" : {
+          "name" : "Legacy Id",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "mica_study_files" : {
+          "name" : "Study Files",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "mica_study_information" : {
+          "name" : "Study Information",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_contact_email" : { "name" : "Email", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_institution" : {
+          "name" : "Institution",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_telephone" : { "name" : "Telephone", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_city" : { "name" : "City", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_country_text" : { "name" : "Country", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_postal_code" : {
+          "name" : "Postal Code",
           "indexed" : 0,
           "type" : "text",
           "boost" : "1.0"
         },
+        "field_street" : { "name" : "Street", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_access" : {
+          "name" : "Access to the following features is provided or foreseen",
+          "indexed" : 0,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_access_other" : {
+          "name" : "Specify type of access",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_age_max" : { "name" : "Max age", "indexed" : 0, "type" : "integer", "boost" : "1.0" },
+        "field_age_min" : { "name" : "Min age", "indexed" : 0, "type" : "integer", "boost" : "1.0" },
+        "field_biosamples_collected" : {
+          "name" : "Biological Samples Collected",
+          "indexed" : 0,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_biosamples_collected_other" : {
+          "name" : "Specify type of samples collected",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_biosamples_tissues" : {
+          "name" : "Specify type of tissues collected",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_contact" : {
+          "name" : "Contact",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_design" : {
+          "name" : "Baseline Design of the Study",
+          "indexed" : 0,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_design_other" : {
+          "name" : "Specify type of design",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_design_target" : {
+          "name" : "Targets Recruitment of",
+          "indexed" : 0,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_full_name" : { "name" : "Full Name", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_gender" : {
+          "name" : "Specify Gender",
+          "indexed" : 0,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_gwas_analysis" : {
+          "name" : "Proceeding to Genome-Wide Association (GWA) Analysis",
+          "indexed" : 0,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_gwas_number" : {
+          "name" : "Please specify the approximate number of participants",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_investigator" : {
+          "name" : "Investigator",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_selection_criteria" : {
+          "name" : "Selection Criteria \\/ Charactecteristic of the Population",
+          "indexed" : 0,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_status_end" : {
+          "name" : "End year",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_status_start" : {
+          "name" : "Start year",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
         "field_study_country" : { "name" : "Country", "indexed" : 0, "type" : "string", "boost" : "1.0" },
-        "field_study_full_name" : { "name" : "Full Name", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_target_number_biosamples" : {
+          "name" : "Target Number of Biological Samples",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_target_number_participants" : {
+          "name" : "Target Number of Participants",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_target_other" : {
+          "name" : "Specify type of target",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
         "body:value" : {
           "name" : "The main body text \\u00bb Text",
           "indexed" : 1,
@@ -687,11 +871,52 @@ function mica_feature_default_search_api_index() {
           "type" : "integer",
           "boost" : "1.0"
         },
+        "taxonomy_forums" : {
+          "name" : "Forums",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
         "field_tags" : {
           "name" : "Tags",
           "indexed" : 0,
           "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_event_date" : { "name" : "Event Date", "indexed" : 0, "type" : "date", "boost" : "1.0" },
+        "field_publication_doi" : { "name" : "DOI", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_bundle" : {
+          "name" : "Content Type",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_bundle_label" : {
+          "name" : "Content Type Label",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_categories" : {
+          "name" : "Categories",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_original_field_label" : { "name" : "Label", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_original_field_name" : { "name" : "Field Name", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_repeatable" : {
+          "name" : "Repeatable",
+          "indexed" : 0,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "field_value_type" : {
+          "name" : "Value Type",
+          "indexed" : 0,
+          "type" : "string",
           "boost" : "1.0"
         },
         "field_study_legacy_id" : {
@@ -714,19 +939,6 @@ function mica_feature_default_search_api_index() {
           "entity_type" : "node",
           "boost" : "1.0"
         },
-        "field_bundle" : {
-          "name" : "Content Type",
-          "indexed" : 0,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_original_field_name" : { "name" : "Field Name", "indexed" : 0, "type" : "text", "boost" : "1.0" },
-        "field_value_type" : {
-          "name" : "Value Type",
-          "indexed" : 0,
-          "type" : "string",
-          "boost" : "1.0"
-        },
         "field_contact_email" : { "name" : "Email", "indexed" : 0, "type" : "text", "boost" : "1.0" },
         "field_institution" : {
           "name" : "Institution",
@@ -747,33 +959,33 @@ function mica_feature_default_search_api_index() {
         "field_street" : { "name" : "Street", "indexed" : 0, "type" : "text", "boost" : "1.0" },
         "field_access" : {
           "name" : "Access to the following features is provided or foreseen",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "string",
           "boost" : "1.0"
         },
         "field_access_other" : {
           "name" : "Specify type of access",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "text",
           "boost" : "1.0"
         },
-        "field_age_max" : { "name" : "Max age", "indexed" : 1, "type" : "integer", "boost" : "1.0" },
-        "field_age_min" : { "name" : "Min age", "indexed" : 1, "type" : "integer", "boost" : "1.0" },
+        "field_age_max" : { "name" : "Max age", "indexed" : 0, "type" : "integer", "boost" : "1.0" },
+        "field_age_min" : { "name" : "Min age", "indexed" : 0, "type" : "integer", "boost" : "1.0" },
         "field_biosamples_collected" : {
           "name" : "Biological Samples Collected",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "string",
           "boost" : "1.0"
         },
         "field_biosamples_collected_other" : {
           "name" : "Specify type of samples collected",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "text",
           "boost" : "1.0"
         },
         "field_biosamples_tissues" : {
           "name" : "Specify type of tissues collected",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "text",
           "boost" : "1.0"
         },
@@ -786,7 +998,7 @@ function mica_feature_default_search_api_index() {
         },
         "field_design" : {
           "name" : "Baseline Design of the Study",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "string",
           "boost" : "1.0"
         },
@@ -798,26 +1010,26 @@ function mica_feature_default_search_api_index() {
         },
         "field_design_target" : {
           "name" : "Targets Recruitment of",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "string",
           "boost" : "1.0"
         },
         "field_full_name" : { "name" : "Full Name", "indexed" : 0, "type" : "text", "boost" : "1.0" },
         "field_gender" : {
           "name" : "Specify Gender",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "string",
           "boost" : "1.0"
         },
         "field_gwas_analysis" : {
           "name" : "Proceeding to Genome-Wide Association (GWA) Analysis",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "string",
           "boost" : "1.0"
         },
         "field_gwas_number" : {
           "name" : "Please specify the approximate number of participants",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "integer",
           "boost" : "1.0"
         },
@@ -830,38 +1042,38 @@ function mica_feature_default_search_api_index() {
         },
         "field_selection_criteria" : {
           "name" : "Selection Criteria \\/ Charactecteristic of the Population",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "string",
           "boost" : "1.0"
         },
         "field_status_end" : {
           "name" : "End year",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "integer",
           "boost" : "1.0"
         },
         "field_status_start" : {
           "name" : "Start year",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "integer",
           "boost" : "1.0"
         },
-        "field_study_country" : { "name" : "Country", "indexed" : 1, "type" : "string", "boost" : "1.0" },
+        "field_study_country" : { "name" : "Country", "indexed" : 0, "type" : "string", "boost" : "1.0" },
         "field_target_number_biosamples" : {
           "name" : "Target Number of Biological Samples",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "integer",
           "boost" : "1.0"
         },
         "field_target_number_participants" : {
           "name" : "Target Number of Participants",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "integer",
           "boost" : "1.0"
         },
         "field_target_other" : {
           "name" : "Specify type of target",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "text",
           "boost" : "1.0"
         },
@@ -1013,43 +1225,43 @@ function mica_feature_default_search_api_index() {
         },
         "mica_study_information:field_access" : {
           "name" : "Study Information \\u00bb Access to the following features is provided or foreseen",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_access_other" : {
           "name" : "Study Information \\u00bb Specify type of access",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_age_max" : {
           "name" : "Study Information \\u00bb Max age",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_age_min" : {
           "name" : "Study Information \\u00bb Min age",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_collected" : {
           "name" : "Study Information \\u00bb Biological Samples Collected",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_collected_other" : {
           "name" : "Study Information \\u00bb Specify type of samples collected",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_tissues" : {
           "name" : "Study Information \\u00bb Specify type of tissues collected",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
         },
@@ -1062,43 +1274,43 @@ function mica_feature_default_search_api_index() {
         },
         "mica_study_information:field_design" : {
           "name" : "Study Information \\u00bb Baseline Design of the Study",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_design_other" : {
           "name" : "Study Information \\u00bb Specify type of design",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_design_target" : {
           "name" : "Study Information \\u00bb Targets Recruitment of",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_full_name" : {
           "name" : "Study Information \\u00bb Full Name",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_gender" : {
           "name" : "Study Information \\u00bb Specify Gender",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "string",
           "boost" : "1.0"
         },
         "mica_study_information:field_gwas_analysis" : {
           "name" : "Study Information \\u00bb Proceeding to Genome-Wide Association (GWA) Analysis",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "string",
           "boost" : "1.0"
         },
         "mica_study_information:field_gwas_number" : {
           "name" : "Study Information \\u00bb Please specify the approximate number of participants",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
@@ -1111,13 +1323,13 @@ function mica_feature_default_search_api_index() {
         },
         "mica_study_information:field_selection_criteria" : {
           "name" : "Study Information \\u00bb Selection Criteria \\/ Charactecteristic of the Population",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_status_end" : {
           "name" : "Study Information \\u00bb End year",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
@@ -1129,25 +1341,25 @@ function mica_feature_default_search_api_index() {
         },
         "mica_study_information:field_study_country" : {
           "name" : "Study Information \\u00bb Country",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_target_number_biosamples" : {
           "name" : "Study Information \\u00bb Target Number of Biological Samples",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_target_number_participants" : {
           "name" : "Study Information \\u00bb Target Number of Participants",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_target_other" : {
           "name" : "Study Information \\u00bb Specify type of target",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
         }
