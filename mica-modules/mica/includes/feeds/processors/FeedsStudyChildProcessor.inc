@@ -69,7 +69,14 @@ class FeedsStudyChildProcessor extends FeedsNodeProcessor {
           // Assemble node, map item to it, save.
           if (empty($entity_id)) {
             // Get the node from the parent study...
-            $parent_id = $parser_result->current_item['field_study_legacy_id'];
+            $study_id_field = 'field_study_legacy_id'; // default study id field name
+            foreach ($this->config['mappings'] as $mapping){
+              if ($mapping['target'] === 'field_study_legacy_id'){
+                $study_id_field = $mapping['source'];
+                break;
+              }
+            }
+            $parent_id = $parser_result->current_item[$study_id_field];
             $entity = $this->loadParentEntity($source, $parent_id);
             // check if node is empty
             if (empty($entity)) {
