@@ -33,46 +33,6 @@ function mica_feature_views_api() {
 }
 
 /**
- * Implementation of hook_default_mica_relation().
- */
-function mica_feature_default_mica_relation() {
-  $items = array();
-  $items['1'] = entity_import('mica_relation', '{
-    "id" : "1",
-    "parent_bundle" : "study",
-    "child_bundle" : "study_information",
-    "label" : "Study \\u00bb Study Information",
-    "enabled" : "1",
-    "options" : {
-      "indexed" : 1,
-      "cascaded" : 1,
-      "node_reference" : "mica_study_information",
-      "relation" : "study_study_information",
-      "relation_parent_field" : "study_information_relation",
-      "relation_child_field" : "study_relation",
-    },
-    "rdf_mapping" : []
-  }');
-  $items['2'] = entity_import('mica_relation', '{
-    "id" : "2",
-    "parent_bundle" : "study",
-    "child_bundle" : "study_files",
-    "label" : "Study \\u00bb Study Files",
-    "enabled" : "1",
-    "options" : {
-      "indexed" : 0,
-      "cascaded" : 1,
-      "node_reference" : "mica_study_files",
-      "relation" : "study_study_files",
-      "relation_parent_field" : "study_files_relation",
-      "relation_child_field" : "study_files",
-    },
-    "rdf_mapping" : []
-  }');
-  return $items;
-}
-
-/**
  * Implementation of hook_node_info().
  */
 function mica_feature_node_info() {
