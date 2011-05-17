@@ -666,6 +666,19 @@ form#comment-form #edit-actions {
   display: inline-block;
   float: none;
 }
+.field-label-inline .field-items .field-item {
+  display: block;
+}
+.field-label-inline .field-label,
+.field-label-inline .field-items {
+  padding: 5px;
+}
+.field-label-inline .field-label {
+  background-color: #CCCCCC;
+  text-align: right;
+  vertical-align: top;
+  width: 200px;
+}
 .field-type-list-text.field-label-inline .field-label,
 .field-type-list-text.field-label-inline .field-item,
 .field-type-list-text.field-label-inline .field-items {
