@@ -19,7 +19,7 @@ function mica_facet_visibility_block_content() {
     // only configure blocks from search_api related modules
     if (strpos($block->module,'search_api_') !== FALSE) {
       $data = module_invoke($block->module, 'block_info');
-      if ($data[$block->delta]['info']) {
+      if (array_key_exists($block->delta, $data) && $data[$block->delta]['info']) {
         $blocks[$block->module][$block->module . ':' . $block->delta] = array(
        	 	'#type' => 'checkbox',
         	'#title' => check_plain($data[$block->delta]['info']),
