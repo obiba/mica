@@ -9,6 +9,25 @@
  */
 function mica_addons_menu_default_menu_links() {
   $menu_links = array();
+  
+  // Exported menu link: main-menu:community
+  $menu_links['main-menu:community'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'community',
+    'router_path' => 'community',
+    'link_title' => 'Community',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '1',
+    'expanded' => '1',
+    'weight' => '10',
+  );  
 
   // Exported menu link: main-menu:blog
   $menu_links['main-menu:blog'] = array(
@@ -29,24 +48,7 @@ function mica_addons_menu_default_menu_links() {
     'weight' => '2',
     'parent_path' => 'community',
   );
-  // Exported menu link: main-menu:community
-  $menu_links['main-menu:community'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'community',
-    'router_path' => 'community',
-    'link_title' => 'Community',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '1',
-    'expanded' => '1',
-    'weight' => '48',
-  );
+
   // Exported menu link: main-menu:events
   $menu_links['main-menu:events'] = array(
     'menu_name' => 'main-menu',
