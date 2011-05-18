@@ -27,6 +27,7 @@ function mica_samara_form_system_theme_settings_alter(&$form, &$form_state) {
     '#default_value' => theme_get_setting('color_scheme'),
     '#options' => array(
       'default' => t('default'),
+      'green' => t('green'),
       'dark'   => t('dark'),
     ),
   );

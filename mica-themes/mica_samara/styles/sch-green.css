@@ -4,7 +4,7 @@
 
 /* Background */
 body {
-  background: #F3F4EB url(../images/index.png) repeat scroll top left;
+  background: #b8e3ed url(../images/index.png) repeat scroll top left;
 }
 
 #site-name a {
@@ -16,7 +16,7 @@ body {
 }
 
 #navigation > ul > li.active-trail {
-  background-color: #888;
+  background-color: #B0D74A;
   color: #ffffff;
 }
 /* Text (black) */
@@ -102,46 +102,47 @@ a {
 
 /* Navigation (black) */
 #navigation-wrapper {
-  background-color: #402817;
-  border-bottom: 2px solid #888;
-  text-shadow:0 1px 1px black;
+  background-color: #D2FE5F;
+  border-top: 4px solid #B5D268;
+  border-bottom: 4px solid #B5D268;
+  text-shadow:0 1px 1px white;
 }
 /* Navigation hovered (orange) */
 #navigation li a:hover,
 #navigation li a:active,
 #navigation li a:focus {
-  color: #eee;
-  background-color: #888;
-  text-shadow:0 1px 1px black;
+  color: #5A6F2A;
+  background-color: #B0D74A;
+  text-shadow:0 1px 1px white;
 }
 
 /* Navigation active (orange) */
 #navigation > ul > li.active-trail > a {
-  color: #eee;
-  background-color: #888;
+  color: #5A6F2A;
+  background-color: #B0D74A;
 }
 #navigation > ul > li.active-trail > a:hover,
 #navigation > ul > li:hover > a,
 #navigation > ul > li > li.active:hover > span > a,
 #navigation li.expanded li a {
-  color: #eee;
+  color: #5A6F2A;
 }
 #navigation > ul > li > a {
-  color: #eee;
-  font-size: 1.1em;
+  color: #5A6F2A;
+  font-size: 1.2em;
   font-weight: bold;
-  line-height: 1.3;
-  text-shadow: 0 1px 1px black;
+  line-height: 1.5;
+  text-shadow: 0 1px 1px white;
 }
 #navigation li.expanded ul {
-  background-color: #888;
-  top: 35px;
+  background-color: #B0D74A;
+  top: 40px;
 }
 #navigation li.expanded li a {
   font-weight: bold;
 }
 #navigation li.expanded li a:hover {
-  background-color: #402817;
+  background-color: #D2FE5F;
 }
 
 /* Slogan (orange) */
@@ -160,7 +161,7 @@ a {
 }
 /* Border (gray) */
 #page {
-  border: 1px solid #dddddd;
+  border: 1px solid #ffffff;
   -moz-border-radius: 10px 10px 10px 10px;
   -webkit-border-radius: 10px 10px 10px 10px;
   -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.12) inset;
@@ -209,17 +210,16 @@ fieldset {
 /** Login/Out ***/
 #login-status {
   -moz-border-radius: 20px 20px 20px 20px;
-  background-color: #663F12;
+  background-color: #83A03C;
   color: #BBBBBB;
-  padding: 3px;
-  font-size: 0.9em;
-  margin-top: 1px;
+  margin-top: 5px;
+  padding: 5px;
 }
 #login-status a, 
 #login-status a.active,
 #login-status a:hover, 
 #login-status a.active:hover {
-  color: #ddd;
+  color: #eee;
   text-decoration: none;
   border-bottom: none;
 }
