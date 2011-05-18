@@ -65,8 +65,8 @@ function _mica_add_field_index($index_name, stdClass $field_description) {
   $field_repeatable = $field_description->field_repeatable;
   $repeatable = $field_repeatable[LANGUAGE_NONE][0]['value'];  
 
-  $field_discrete = $field_description->field_discrete;
-  $discrete = $field_discrete[LANGUAGE_NONE][0]['value'];  
+  $field_categories = $field_description->field_categories;
+  $discrete = count($field_categories[LANGUAGE_NONE]) > 1;  
   
   if ($type === 'TEXT') {
     $field = field_info_field($field_name);

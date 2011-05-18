@@ -1108,75 +1108,6 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-field_description-field_discrete'
-  $fields['node-field_description-field_discrete'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_discrete',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => 'Continuous value',
-          1 => 'Discrete value',
-        ),
-        'allowed_values_function' => '',
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'list_boolean',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_description',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'A type of data is discrete if there are only a finite number of values possible.',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '8',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_discrete',
-      'label' => 'Discrete/Continuous value',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '9',
-      ),
-    ),
-  );
-
   // Exported field: 'node-field_description-field_original_field_label'
   $fields['node-field_description-field_original_field_label'] = array(
     'field_config' => array(
@@ -4585,7 +4516,6 @@ Prof.',
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('A type of data is discrete if there are only a finite number of values possible.');
   t('Access to the following features is provided or foreseen');
   t('Access to the following study features to external researchers or third parties provided or foreseen');
   t('Baseline Design of the Study');
@@ -4600,7 +4530,6 @@ Prof.',
   t('Content Type');
   t('Content Type Label');
   t('Country');
-  t('Discrete/Continuous value');
   t('Email');
   t('End year');
   t('Field Name');

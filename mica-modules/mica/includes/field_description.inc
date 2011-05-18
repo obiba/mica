@@ -146,7 +146,6 @@ function _mica_edit_field_field_description($form, &$form_state) {
     'original_field_label' => $form_state['values']['instance']['label'],
     'value_type' => $is_field_description ? $form_state['values']['field']['settings']['field_description_infos']['field_description_value_type'] : NULL,
   	'repeatable' => $form_state['values']['field']['cardinality'] != 1,
-		'discrete' => !empty($form_state['values']['field']['settings']['allowed_values']),  										
   	'categories' => empty($field_info['settings']) || empty($field_info['settings']['allowed_values']) 
   										? array() 
   										: array_keys($field_info['settings']['allowed_values']),
@@ -262,13 +261,6 @@ function _mica_update_field_description(stdClass $field_description, array $fiel
     LANGUAGE_NONE => array(
       0 => array(
         'value' => $field_description_infos['repeatable'] ? 1 : 0,
-      ),
-    ),
-  );
-  $field_description->field_discrete = array(
-    LANGUAGE_NONE => array(
-      0 => array(
-        'value' => $field_description_infos['discrete'] ? 1 : 0,
       ),
     ),
   );
