@@ -47,7 +47,10 @@ function mica_facet_visibility_form($form, &$form_state, $blocks) {
     	'css' => array(drupal_get_path('module', 'mica') . '/includes/facet-visibility.css'),
   	),
   );
-  $form += $blocks;
+  $form['block'] = array(
+        '#type' => 'fieldset',
+);
+  $form['block'] += $blocks;
 
   $form['submit'] = array(
     '#type' => 'submit',
