@@ -90,312 +90,6 @@ function mica_feature_node_info() {
 }
 
 /**
- * Implementation of hook_default_search_api_facet().
- */
-function mica_feature_default_search_api_facet() {
-  $items = array();
-  $items['fields_desc_index_bundle'] = entity_import('search_api_facet', '{
-    "delta" : "fields_desc_index_bundle",
-    "index_id" : "fields_description_index",
-    "field" : "field_bundle",
-    "name" : "Fields Description Index: Content Type",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "string",
-      "field_name" : "Content Type"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['fields_desc_index_value_type'] = entity_import('search_api_facet', '{
-    "delta" : "fields_desc_index_value_type",
-    "index_id" : "fields_description_index",
-    "field" : "field_value_type",
-    "name" : "Fields Description Index: Value Type",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "string",
-      "field_name" : "Value Type"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['fields_description_i_field_categ'] = entity_import('search_api_facet', '{
-    "delta" : "fields_description_i_field_categ",
-    "index_id" : "fields_description_index",
-    "field" : "field_categories",
-    "name" : "Fields Description Index: Categories",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "",
-      "field_name" : "Categories"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['fields_description_i_field_repea'] = entity_import('search_api_facet', '{
-    "delta" : "fields_description_i_field_repea",
-    "index_id" : "fields_description_index",
-    "field" : "field_repeatable",
-    "name" : "Fields Description Index: Repeatable",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "",
-      "field_name" : "Repeatable"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['studies_index_mica_study_infor_1'] = entity_import('search_api_facet', '{
-    "delta" : "studies_index_mica_study_infor_1",
-    "index_id" : "studies_index",
-    "field" : "mica_study_information:field_design_target",
-    "name" : "Study Information \\u00bb Targets Recruitment of",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Targets Recruitment of",
-      "options" : {
-        "families" : "Families (including twin studies, sibships and family based birth cohorts)",
-        "individuals" : "Individuals",
-        "other" : "Other"
-      }
-    },
-    "rdf_mapping" : []
-  }');
-  $items['studies_index_mica_study_infor_2'] = entity_import('search_api_facet', '{
-    "delta" : "studies_index_mica_study_infor_2",
-    "index_id" : "studies_index",
-    "field" : "mica_study_information:field_selection_criteria",
-    "name" : "Study Information \\u00bb Selection Criteria \\/ Charactecteristic of the Population",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Selection Criteria \\/ Charactecteristic of the Population",
-      "options" : {
-        "age" : "Age",
-        "country" : "Country(ies) of residence",
-        "gender" : "Gender",
-        "other" : "Other"
-      }
-    },
-    "rdf_mapping" : []
-  }');
-  $items['studies_index_mica_study_infor_3'] = entity_import('search_api_facet', '{
-    "delta" : "studies_index_mica_study_infor_3",
-    "index_id" : "studies_index",
-    "field" : "mica_study_information:field_study_country",
-    "name" : "Study Information \\u00bb Country",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Country",
-      "options" : {
-        "CAN" : "Canada",
-        "CRI" : "Costa Rica",
-        "DNK" : "Danemark",
-        "FRA" : "France",
-        "GBR" : "United Kingdom",
-        "USA" : "United States"
-      }
-    },
-    "rdf_mapping" : []
-  }');
-  $items['studies_index_mica_study_infor_4'] = entity_import('search_api_facet', '{
-    "delta" : "studies_index_mica_study_infor_4",
-    "index_id" : "studies_index",
-    "field" : "mica_study_information:field_gender",
-    "name" : "Study Information \\u00bb Specify Gender",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Specify Gender",
-      "options" : { "men" : "Men", "women" : "Women" }
-    },
-    "rdf_mapping" : []
-  }');
-  $items['studies_index_mica_study_infor_5'] = entity_import('search_api_facet', '{
-    "delta" : "studies_index_mica_study_infor_5",
-    "index_id" : "studies_index",
-    "field" : "mica_study_information:field_biosamples_collected",
-    "name" : "Study Information \\u00bb Biological Samples Collected",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Biological Samples Collected",
-      "options" : {
-        "blood" : "Blood",
-        "others" : "Others",
-        "saliva" : "Saliva",
-        "tissues" : "Tissues",
-        "urine" : "Urine"
-      }
-    },
-    "rdf_mapping" : []
-  }');
-  $items['studies_index_mica_study_infor_6'] = entity_import('search_api_facet', '{
-    "delta" : "studies_index_mica_study_infor_6",
-    "index_id" : "studies_index",
-    "field" : "mica_study_information:field_gwas_analysis",
-    "name" : "Study Information \\u00bb Proceeding to Genome-Wide Association (GWA) Analysis",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Proceeding to Genome-Wide Association (GWA) Analysis",
-      "options" : {
-        "no" : "No",
-        "yes_currently" : "Yes, we already have, or are currently in the process of generating, GWA data",
-        "yes_later" : "Yes, we plan to proceed to GWA analysis later"
-      }
-    },
-    "rdf_mapping" : []
-  }');
-  $items['studies_index_mica_study_infor_7'] = entity_import('search_api_facet', '{
-    "delta" : "studies_index_mica_study_infor_7",
-    "index_id" : "studies_index",
-    "field" : "mica_study_information:field_access",
-    "name" : "Study Information \\u00bb Access to the following features is provided or foreseen",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Access to the following features is provided or foreseen",
-      "options" : {
-        "biological_samples" : "Biological samples",
-        "data" : "Data (questionnaire-derived, measured\\u2026)",
-        "other" : "Other"
-      }
-    },
-    "rdf_mapping" : []
-  }');
-  $items['studies_index_mica_study_informa'] = entity_import('search_api_facet', '{
-    "delta" : "studies_index_mica_study_informa",
-    "index_id" : "studies_index",
-    "field" : "mica_study_information:field_design",
-    "name" : "Study Information \\u00bb Baseline Design of the Study",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "options",
-      "field_name" : "Study Information \\u00bb Baseline Design of the Study",
-      "options" : {
-        "case_control" : "Case-control study",
-        "case_only" : "Case only study",
-        "clinical_trial" : "Clinical trial \\/ intervention trial",
-        "cohort_study" : "Cohort study",
-        "cross_sectional" : "Cross-sectional prevalence study",
-        "other" : "Other",
-        "registry" : "Registry"
-      }
-    },
-    "rdf_mapping" : []
-  }');
-  return $items;
-}
-
-/**
  * Implementation of hook_default_search_api_index().
  */
 function mica_feature_default_search_api_index() {
@@ -1225,43 +919,43 @@ function mica_feature_default_search_api_index() {
         },
         "mica_study_information:field_access" : {
           "name" : "Study Information \\u00bb Access to the following features is provided or foreseen",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_access_other" : {
           "name" : "Study Information \\u00bb Specify type of access",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_age_max" : {
           "name" : "Study Information \\u00bb Max age",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_age_min" : {
           "name" : "Study Information \\u00bb Min age",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_collected" : {
           "name" : "Study Information \\u00bb Biological Samples Collected",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_collected_other" : {
           "name" : "Study Information \\u00bb Specify type of samples collected",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_tissues" : {
           "name" : "Study Information \\u00bb Specify type of tissues collected",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
@@ -1274,43 +968,43 @@ function mica_feature_default_search_api_index() {
         },
         "mica_study_information:field_design" : {
           "name" : "Study Information \\u00bb Baseline Design of the Study",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_design_other" : {
           "name" : "Study Information \\u00bb Specify type of design",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_design_target" : {
           "name" : "Study Information \\u00bb Targets Recruitment of",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_full_name" : {
           "name" : "Study Information \\u00bb Full Name",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_gender" : {
           "name" : "Study Information \\u00bb Specify Gender",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "string",
           "boost" : "1.0"
         },
         "mica_study_information:field_gwas_analysis" : {
           "name" : "Study Information \\u00bb Proceeding to Genome-Wide Association (GWA) Analysis",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "string",
           "boost" : "1.0"
         },
         "mica_study_information:field_gwas_number" : {
           "name" : "Study Information \\u00bb Please specify the approximate number of participants",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
@@ -1323,13 +1017,13 @@ function mica_feature_default_search_api_index() {
         },
         "mica_study_information:field_selection_criteria" : {
           "name" : "Study Information \\u00bb Selection Criteria \\/ Charactecteristic of the Population",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_status_end" : {
           "name" : "Study Information \\u00bb End year",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
@@ -1341,26 +1035,38 @@ function mica_feature_default_search_api_index() {
         },
         "mica_study_information:field_study_country" : {
           "name" : "Study Information \\u00bb Country",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_target_number_biosamples" : {
           "name" : "Study Information \\u00bb Target Number of Biological Samples",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_target_number_participants" : {
           "name" : "Study Information \\u00bb Target Number of Participants",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_target_other" : {
           "name" : "Study Information \\u00bb Specify type of target",
-          "indexed" : 1,
+          "indexed" : true,
           "type" : "text",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_list_int" : {
+          "name" : "Study Information \\u00bb List Int",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_list_int2" : {
+          "name" : "Study Information \\u00bb List int2",
+          "indexed" : true,
+          "type" : "list\\u003cinteger\\u003e",
           "boost" : "1.0"
         }
       },
@@ -1400,126 +1106,6 @@ function mica_feature_default_search_api_index() {
       }
     },
     "enabled" : "1",
-    "rdf_mapping" : []
-  }');
-  return $items;
-}
-
-/**
- * Implementation of hook_default_search_api_range().
- */
-function mica_feature_default_search_api_range() {
-  $items = array();
-  $items['studies_index_mica_study_infor_1'] = entity_import('search_api_range', '{
-    "delta" : "studies_index_mica_study_infor_1",
-    "index_id" : "studies_index",
-    "field" : "mica_study_information:field_age_min",
-    "name" : "Study Information \\u00bb Min age",
-    "enabled" : "1",
-    "options" : {
-      "field_prefix" : "",
-      "field_suffix" : "",
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "integer",
-      "field_name" : "Study Information \\u00bb Min age"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['studies_index_mica_study_infor_2'] = entity_import('search_api_range', '{
-    "delta" : "studies_index_mica_study_infor_2",
-    "index_id" : "studies_index",
-    "field" : "mica_study_information:field_age_max",
-    "name" : "Study Information \\u00bb Max age",
-    "enabled" : "1",
-    "options" : {
-      "field_prefix" : "",
-      "field_suffix" : "",
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "integer",
-      "field_name" : "Study Information \\u00bb Max age"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['studies_index_mica_study_infor_3'] = entity_import('search_api_range', '{
-    "delta" : "studies_index_mica_study_infor_3",
-    "index_id" : "studies_index",
-    "field" : "mica_study_information:field_target_number_biosamples",
-    "name" : "Study Information \\u00bb Target Number of Biological Samples",
-    "enabled" : "1",
-    "options" : {
-      "field_prefix" : "",
-      "field_suffix" : "",
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "integer",
-      "field_name" : "Study Information \\u00bb Target Number of Biological Samples"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['studies_index_mica_study_infor_4'] = entity_import('search_api_range', '{
-    "delta" : "studies_index_mica_study_infor_4",
-    "index_id" : "studies_index",
-    "field" : "mica_study_information:field_gwas_number",
-    "name" : "Study Information \\u00bb Please specify the approximate number of participants",
-    "enabled" : "1",
-    "options" : {
-      "field_prefix" : "",
-      "field_suffix" : "",
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "integer",
-      "field_name" : "Study Information \\u00bb Please specify the approximate number of participants"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['studies_index_mica_study_infor_5'] = entity_import('search_api_range', '{
-    "delta" : "studies_index_mica_study_infor_5",
-    "index_id" : "studies_index",
-    "field" : "mica_study_information:field_status_start",
-    "name" : "Study Information \\u00bb Start year",
-    "enabled" : "1",
-    "options" : {
-      "field_prefix" : "",
-      "field_suffix" : "",
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "integer",
-      "field_name" : "Study Information \\u00bb Start year"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['studies_index_mica_study_infor_6'] = entity_import('search_api_range', '{
-    "delta" : "studies_index_mica_study_infor_6",
-    "index_id" : "studies_index",
-    "field" : "mica_study_information:field_status_end",
-    "name" : "Study Information \\u00bb End year",
-    "enabled" : "1",
-    "options" : {
-      "field_prefix" : "",
-      "field_suffix" : "",
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "integer",
-      "field_name" : "Study Information \\u00bb End year"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['studies_index_mica_study_informa'] = entity_import('search_api_range', '{
-    "delta" : "studies_index_mica_study_informa",
-    "index_id" : "studies_index",
-    "field" : "mica_study_information:field_target_number_participants",
-    "name" : "Study Information \\u00bb Target Number of Participants",
-    "enabled" : "1",
-    "options" : {
-      "field_prefix" : "",
-      "field_suffix" : "",
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "integer",
-      "field_name" : "Study Information \\u00bb Target Number of Participants"
-    },
     "rdf_mapping" : []
   }');
   return $items;

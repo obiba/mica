@@ -130,12 +130,11 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
  * Additional submit handler for the 'Edit field instance' form.
  */
 function _mica_edit_field_field_description($form, &$form_state) {
-  
+	
   $is_field_description = $form_state['values']['field']['settings']['field_description_infos']['field_description'];
   $field_name = $form_state['values']['instance']['field_name'];
   $bundle = $form_state['values']['instance']['bundle'];
   $field_info = field_info_field($field_name);
-
   $node_type = node_type_load($bundle);
   
   $field_description_infos = array(
@@ -147,6 +146,7 @@ function _mica_edit_field_field_description($form, &$form_state) {
     'original_field_label' => $form_state['values']['instance']['label'],
     'value_type' => $is_field_description ? $form_state['values']['field']['settings']['field_description_infos']['field_description_value_type'] : NULL,
   	'repeatable' => $form_state['values']['field']['cardinality'] != 1,
+		'discrete' => !empty($form_state['values']['field']['settings']['allowed_values']),  										
   	'categories' => empty($field_info['settings']) || empty($field_info['settings']['allowed_values']) 
   										? array() 
   										: array_keys($field_info['settings']['allowed_values']),
@@ -163,7 +163,7 @@ function _mica_edit_field_field_description($form, &$form_state) {
       _mica_update_field_description($field_description, $field_description_infos);
     } 
     else {
-      _mica_delete_field_description($field_description);
+      node_delete($field_description);
     }   
   }
 }
@@ -265,6 +265,13 @@ function _mica_update_field_description(stdClass $field_description, array $fiel
       ),
     ),
   );
+  $field_description->field_discrete = array(
+    LANGUAGE_NONE => array(
+      0 => array(
+        'value' => $field_description_infos['discrete'] ? 1 : 0,
+      ),
+    ),
+  );
   
   $field_description->field_categories = array();
   $field_description->field_categories[LANGUAGE_NONE] = array();
@@ -273,63 +280,17 @@ function _mica_update_field_description(stdClass $field_description, array $fiel
     	'value' => $category,
 	  );
   }
+  
   node_save($field_description);
-  
-  _mica_update_index_for_field_description($field_description_infos);
 }
 
 /**
- * Delete field_description and remove serach index field
- */
-function _mica_delete_field_description(stdClass $field_description) {
-  module_load_include('inc', 'mica', 'includes/search');
-  
-  $field_bundle = $field_description->field_bundle;
-  $bundle = $field_bundle[LANGUAGE_NONE][0]['value'];
-  
-  $field_original_field_name = $field_description->field_original_field_name;
-  $original_field_name = $field_original_field_name[LANGUAGE_NONE][0]['value'];  
-  
-  // remove index field
-  $indexes = _mica_find_indexes_by_bundle();
-  $bundles_indexes = $indexes[$bundle];
-  if (!empty($bundles_indexes)) {
-    foreach ($bundles_indexes as $index_machine_name => $index_name) {
-      _mica_remove_field_index($index_machine_name, $original_field_name);
-    }
-  }   
-  
-  // delete field_description
-  node_delete($field_description->nid);
-  
-  watchdog('mica', 'Delete Field Description for %field of %bundle', 
-    array(
-      '%field' => $original_field_name, 
-      '%bundle' => $bundle,
-    ), WATCHDOG_INFO);  
-    
-}
-
-/**
- * On field instance deletion, delete field_description if it extists for this field.
+ * On field instance deletion, delete field_description if it exists for this field.
  */
 function _mica_delete_field_description_for_field_instance($instance) {
   $field_description = _mica_find_field_description($instance['bundle'], $instance['field_name']);
   if (!empty($field_description)) {
-    _mica_delete_field_description($field_description);
+    node_delete($field_description);
   }
 }
 
-/**
- * Updates search index field
- */
-function _mica_update_index_for_field_description(array $field_description_infos) {
-  module_load_include('inc', 'mica', 'includes/search');
-  $indexes = _mica_find_indexes_by_bundle();
-  $bundles_indexes = $indexes[$field_description_infos['bundle']];
-  if (!empty($bundles_indexes)) {
-    foreach ($bundles_indexes as $index_machine_name => $index_name) {
-      _mica_add_field_index($index_machine_name, $field_description_infos);
-    }
-  }  
-}

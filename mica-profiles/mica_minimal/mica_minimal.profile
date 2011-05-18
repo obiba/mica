@@ -40,9 +40,8 @@ function mica_import_default_feeds($install_state){
     foreach ($source->importer->plugin_types as $type) {
       if ($source->importer->$type->hasSourceConfig()) {
         $class = get_class($source->importer->$type);
-        if ($class == 'FeedsFileFetcher'){
+        if ($class == 'FeedsFileFetcher') {
           $config = isset($source->config[$class]) ? $source->config[$class] : array();
-        
           $config['source'] = $file['file'];
           $source->setConfigFor($source->importer->$type, $config);
         }  
@@ -53,10 +52,10 @@ function mica_import_default_feeds($install_state){
   }
   
   $batch = array(
-      'title' => st('Importing'),
-      'operations' => $operations,
-      'progress_message' => 'Creating default Mica content',
-    );
+    'title' => st('Importing'),
+    'operations' => $operations,
+    'progress_message' => 'Creating default Mica content',
+  );
 
   return $batch;
 }

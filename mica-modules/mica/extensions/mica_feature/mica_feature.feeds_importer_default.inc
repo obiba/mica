@@ -176,6 +176,11 @@ function mica_feature_feeds_importer_default() {
             'target' => 'field_repeatable',
             'unique' => FALSE,
           ),
+          10 => array(
+            'source' => 'field_discrete',
+            'target' => 'field_discrete',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',

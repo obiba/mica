@@ -90,8 +90,14 @@ function mica_node_type_delete($info) {
  * Implements hook_node_insert()
  */
 function mica_node_insert($node) {
-  module_load_include('inc', 'mica', 'includes/relations');
+  
+  if ($node->type === 'field_description') {
+    module_load_include('inc', 'mica', 'includes/search');
+    _mica_update_index_for_field_description($node);
+    return;
+  }
 
+  module_load_include('inc', 'mica', 'includes/relations');
   $relations = _mica_find_relations_by_parent($node->type);
   if (!empty($relations)) {
   	
@@ -143,6 +149,13 @@ function mica_node_insert($node) {
  * Implements hook_node_update().
  */
 function mica_node_update($node) {
+  
+  if ($node->type === 'field_description') {
+    module_load_include('inc', 'mica', 'includes/search');
+    _mica_update_index_for_field_description($node);
+    return;
+  }  
+  
   module_load_include('inc', 'mica', 'includes/relations');
   $relations = _mica_find_relations_by_parent($node->type);
   if (!empty($relations)) {
@@ -156,6 +169,19 @@ function mica_node_update($node) {
  * Implements hook_node_delete()
  */
 function mica_node_delete($node) {
+  
+  if ($node->type === 'field_description') {
+    $field_bundle = $field_description->field_bundle;
+    $bundle = $field_bundle[LANGUAGE_NONE][0]['value'];
+  
+    $field_original_field_name = $field_description->field_original_field_name;
+    $original_field_name = $field_original_field_name[LANGUAGE_NONE][0]['value'];      
+    
+    module_load_include('inc', 'mica', 'includes/search');
+    _mica_drop_search_index_field($bundle, $original_field_name);
+    return;
+  }  
+  
   module_load_include('inc', 'mica', 'includes/relations');
   $relations = _mica_find_relations_by_parent($node->type);
   if (!empty($relations)) {

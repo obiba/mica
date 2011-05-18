@@ -465,6 +465,27 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['field_repeatable']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_repeatable']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_repeatable']['field_api_classes'] = 0;
+  /* Field: Content: Discrete/Continuous value */
+  $handler->display->display_options['fields']['field_discrete']['id'] = 'field_discrete';
+  $handler->display->display_options['fields']['field_discrete']['table'] = 'field_data_field_discrete';
+  $handler->display->display_options['fields']['field_discrete']['field'] = 'field_discrete';
+  $handler->display->display_options['fields']['field_discrete']['label'] = 'field_discrete';
+  $handler->display->display_options['fields']['field_discrete']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_discrete']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_discrete']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_discrete']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_discrete']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_discrete']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_discrete']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_discrete']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_discrete']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_discrete']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_discrete']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_discrete']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_discrete']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_discrete']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_discrete']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_discrete']['field_api_classes'] = 0;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -520,6 +541,7 @@ function mica_feature_views_default_views() {
     t('field_value_type'),
     t('field_categories'),
     t('field_repeatable'),
+    t('field_discrete'),
     t('Data export'),
   );
   $export['csv_field_description_export'] = $view;

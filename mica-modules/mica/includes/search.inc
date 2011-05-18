@@ -7,6 +7,24 @@
  */
 
 /**
+ * Create or update search index for this field description
+ * @param stdClass $field_description
+ */
+function _mica_update_index_for_field_description(stdClass $field_description) {
+  
+  $field_bundle = $field_description->field_bundle;
+  $bundle = $field_bundle[LANGUAGE_NONE][0]['value'];  
+
+  $indexes = _mica_find_indexes_by_bundle();
+  $bundles_indexes = $indexes[$bundle];
+  if (!empty($bundles_indexes)) {
+    foreach ($bundles_indexes as $index_machine_name => $index_name) {
+      _mica_add_field_index($index_machine_name, $field_description);
+    }
+  }  
+}
+
+/**
  * Returns an array of search index with bundle name as keys.
  */
 function _mica_find_indexes_by_bundle() {
@@ -29,17 +47,27 @@ function _mica_find_indexes_by_bundle() {
  * Add facet for non Full Text field
  * 
  * @param string $index_name
- * @param array $field_description with 'title', 'desc', 'bundle', 'bundle_label', 'original_field_name', 'original_field_label', 
- * 'value_type', 'repeatable', 'categories' 
+ * @param stdClass $field_description  
  */
-function _mica_add_field_index($index_name, array $field_description) {
+function _mica_add_field_index($index_name, stdClass $field_description) {
 	
   module_load_include('inc', 'mica', 'includes/relations');	
 
-  $bundle = $field_description['bundle'];
-	$field_name = $field_description['original_field_name'];
-	$type = $field_description['value_type'];
- 
+  $field_bundle = $field_description->field_bundle;
+  $bundle = $field_bundle[LANGUAGE_NONE][0]['value'];  
+  
+  $field_original_field_name = $field_description->field_original_field_name;
+  $field_name = $field_original_field_name[LANGUAGE_NONE][0]['value'];  
+  
+  $field_value_type = $field_description->field_value_type;
+  $type = $field_value_type[LANGUAGE_NONE][0]['value'];  
+
+  $field_repeatable = $field_description->field_repeatable;
+  $repeatable = $field_repeatable[LANGUAGE_NONE][0]['value'];  
+
+  $field_discrete = $field_description->field_discrete;
+  $discrete = $field_discrete[LANGUAGE_NONE][0]['value'];  
+  
   if ($type === 'TEXT') {
     $field = field_info_field($field_name);
     $index_type = empty($field['settings']['allowed_values']) ? 'text' : 'string';
@@ -49,7 +77,7 @@ function _mica_add_field_index($index_name, array $field_description) {
     $index_type = $mapping[$type];
   }
   
-  if ($field_description['repeatable']) {
+  if ($repeatable) {
   	$index_type = 'list<' . $index_type . '>';
   }
   
@@ -84,6 +112,7 @@ function _mica_add_field_index($index_name, array $field_description) {
     'type' => $index_type,
     'boost' => '1.0',
   );
+  
   search_api_index_edit_fields($index->id, $fields);
   
   if ($reindex) {
@@ -105,7 +134,7 @@ function _mica_add_field_index($index_name, array $field_description) {
   $facet_array = search_api_facet_load_multiple(FALSE, $facets_conditions, TRUE);
   $facet_key = array_keys($facet_array);
   $facet = empty($facet_key) ? NULL : $facet_array[$facet_key[0]];
-  if (_mica_is_type_supports_facet($index_type)) {
+  if ($discrete && _mica_is_type_supports_facet($index_type)) {
   	
   	if (empty($facet)) {
   		
@@ -141,7 +170,7 @@ function _mica_add_field_index($index_name, array $field_description) {
   $range_array = search_api_range_load_multiple(FALSE, $facets_conditions, TRUE);
   $range_key = array_keys($range_array);
   $range = empty($range_key) ? NULL : $range_array[$range_key[0]];
-  if (_mica_is_type_supports_ranges($index_type)) {
+  if (!$discrete && _mica_is_type_supports_ranges($index_type)) {
   	
   	if (empty($range)) {
   		
@@ -270,4 +299,18 @@ function _mica_configure_search_block($facet, $module, $module_item) {
 	cache_clear_all();  			  
 }
 
-
+/**
+ * 
+ * Remove index field if exists for this bundle and field name
+ * @param string $bundle
+ * @param string $field_name
+ */
+function _mica_drop_search_index_field($bundle, $field_name) {
+  $indexes = _mica_find_indexes_by_bundle();
+  $bundles_indexes = $indexes[$bundle];
+  if (!empty($bundles_indexes)) {
+    foreach ($bundles_indexes as $index_machine_name => $index_name) {
+      _mica_remove_field_index($index_machine_name, $original_field_name);
+    }
+  }     
+}

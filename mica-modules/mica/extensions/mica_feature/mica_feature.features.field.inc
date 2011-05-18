@@ -1108,6 +1108,75 @@ Prof.',
     ),
   );
 
+  // Exported field: 'node-field_description-field_discrete'
+  $fields['node-field_description-field_discrete'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_discrete',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => 'Continuous value',
+          1 => 'Discrete value',
+        ),
+        'allowed_values_function' => '',
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_description',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'A type of data is discrete if there are only a finite number of values possible.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => '8',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_discrete',
+      'label' => 'Discrete/Continuous value',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '9',
+      ),
+    ),
+  );
+
   // Exported field: 'node-field_description-field_original_field_label'
   $fields['node-field_description-field_original_field_label'] = array(
     'field_config' => array(
@@ -3720,6 +3789,158 @@ Prof.',
     ),
   );
 
+  // Exported field: 'node-study_information-field_list_int'
+  $fields['node-study_information-field_list_int'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_list_int',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          1 => '1',
+          2 => '2',
+          3 => '3',
+          4 => '4',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_value_type' => 'INTEGER',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'list_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study_information',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 17,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_list_int',
+      'label' => 'List Int',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '25',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-study_information-field_list_int2'
+  $fields['node-study_information-field_list_int2'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_list_int2',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          1 => '1',
+          2 => '2',
+          3 => '3',
+          4 => '4',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_value_type' => 'INTEGER',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'list_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study_information',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 18,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_list_int2',
+      'label' => 'List int2',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '26',
+      ),
+    ),
+  );
+
   // Exported field: 'node-study_information-field_selection_criteria'
   $fields['node-study_information-field_selection_criteria'] = array(
     'field_config' => array(
@@ -4364,6 +4585,7 @@ Prof.',
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('A type of data is discrete if there are only a finite number of values possible.');
   t('Access to the following features is provided or foreseen');
   t('Access to the following study features to external researchers or third parties provided or foreseen');
   t('Baseline Design of the Study');
@@ -4378,6 +4600,7 @@ Prof.',
   t('Content Type');
   t('Content Type Label');
   t('Country');
+  t('Discrete/Continuous value');
   t('Email');
   t('End year');
   t('Field Name');
@@ -4388,6 +4611,8 @@ Prof.',
   t('Investigator');
   t('Label');
   t('Legacy Id');
+  t('List Int');
+  t('List int2');
   t('Machine name of the content type that declares this field');
   t('Max age');
   t('Min age');
