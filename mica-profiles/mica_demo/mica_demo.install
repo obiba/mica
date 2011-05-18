@@ -9,9 +9,6 @@ function mica_demo_install() {
   include_once DRUPAL_ROOT . '/profiles/mica_standard/mica_standard.install';
   mica_standard_install();
 
-
-
-
   // Add some demo users
   $user = array(
       'name' => 'gefos',
@@ -43,24 +40,4 @@ function mica_demo_install() {
   );
   user_save(null, $user);
 
-  // Add some demo content
-
-
-  //  global $user;
-  //    $user = user_load(1);
-  //
-  //  watchdog('mica_demo', DRUPAL_ROOT . '/profiles/mica_demo/data/mica-demo.txt', NULL, WATCHDOG_INFO);
-  //  $node_code = file_get_contents(DRUPAL_ROOT . '/profiles/mica_demo/data/mica-demo.txt', "r");
-  //  watchdog('mica_demo', $node_code, NULL, WATCHDOG_INFO);
-  //  if (!empty($node_code)) {
-  //    $result = node_export_import($node_code, 'dt');
-  //    if (!$result['success']) {
-  //    watchdog('mica_demo', $result['output'], NULL, WATCHDOG_ERROR);
-  //    }
-  //  }
-
-
-  //  $node = node_load(2);
-  //  $node->uid = 3;
-  //  node_save($node);
 }
