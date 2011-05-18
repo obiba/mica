@@ -13,18 +13,13 @@
   </div>
 <?php endif; ?>
 
-
-<div id="login-status">
 <?php global $user;
   if ($user->uid){
+    print "<div id=\"login-status\">";
     print t("<a id='user-name' href='?q=user'>@name</a> | <a href='?q=user/logout'>Quit</a>", array('@name' => $user->name));
-  } else {
-    print t("<a href='?q=user/login'>Sign In</a>");
+    print "</div>";
   }
 ?>
-</div>
-
-
 
 <div id="header-wrapper">
   <div id="header" class="clearfix<?php if ($page['header']): ?> with-blocks<?php endif; ?>">

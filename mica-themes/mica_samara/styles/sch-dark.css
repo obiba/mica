@@ -168,3 +168,16 @@ fieldset {
   border: 1px solid #cccccc;
 }
 
+/** Login/Out ***/
+#login-status {
+  color: #bbb;
+}
+#login-status a, #login-status a.active {
+  color: #bbb;
+}
+#login-status a:hover, #login-status a.active:hover {
+  color: #E25401;
+}
+#login-status #user-name {
+  font-weight: bold;
+}

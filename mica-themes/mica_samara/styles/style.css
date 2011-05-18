@@ -1760,3 +1760,85 @@ img.right, img[align="right"] {
   font-weight: bold;
 }
 
+/** Header **/
+.region-header {
+  float: right;
+  margin: 0 5px 10px;
+}
+.region-header .block {
+  font-size: 0.857em;
+  float: left;
+  margin: 0 10px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+.region-header .block ul li {
+  background: none;
+}
+.region-header .block .content {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.region-header .form-text {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.3);
+  margin-right: 2px;
+  width: 120px;
+}
+.region-header .block ul {
+  margin: 0;
+  padding: 0;
+}
+.region-header .block li {
+  list-style: none;
+  list-style-image: none;
+  padding: 0;
+}
+
+
+/** Header user login **/
+.region-header #block-user-login {
+  width: auto;
+}
+.region-header #block-user-login .content {
+  margin-top: 2px;
+}
+.region-header #block-user-login .form-item {
+  float: left;
+  margin: 0 5px 0 0;
+  padding: 0;
+}
+.region-header #block-user-login div.item-list {
+  clear: both;
+}
+.region-header #block-user-login div.item-list, 
+.region-header #block-user-login div.description {
+  font-size: 0.916em;
+  margin: 0;
+}
+.region-header #block-user-login .item-list ul {
+  padding: 0;
+  line-height: 1;
+}
+.region-header #block-user-login .item-list li {
+  list-style: none;
+  float: left;
+  padding: 3px 0 1px;
+}
+.region-header #block-user-login .item-list li.last {
+  padding-left: 0.8em;
+}
+.region-header #block-user-login .form-actions {
+  margin: 4px 0 0;
+  padding: 0;
+  clear: both;
+}
+.region-header #block-user-login input.form-submit {
+  border: 1px solid #CCC;
+  background: rgba(255, 255, 255, 0.7);
+  margin: 4px 0;
+  padding: 3px 8px;
+}
+
