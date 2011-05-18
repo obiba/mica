@@ -112,6 +112,7 @@ function mica_node_insert($node) {
 
   		if (!empty($menu_options)) {
   			$menu['enabled'] = TRUE;
+  			$menu['expanded'] = TRUE;
   			$menu['menu_name'] = $menu_options[0];
   			$menu['link_title'] = $node->title;
   			$menu['link_path'] = 'node/' . $node->nid;
