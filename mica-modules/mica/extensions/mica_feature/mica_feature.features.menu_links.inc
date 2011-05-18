@@ -10,6 +10,26 @@
 function mica_feature_menu_default_menu_links() {
   $menu_links = array();
 
+  // Exported menu link: main-menu:<firstchild>
+  $menu_links['main-menu:<firstchild>'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => '<firstchild>',
+    'router_path' => '<firstchild>',
+    'link_title' => 'Search',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'alter' => TRUE,
+      'unaltered_hidden' => 0,
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '1',
+    'expanded' => '1',
+    'weight' => '-46',
+  );
   // Exported menu link: main-menu:<front>
   $menu_links['main-menu:<front>'] = array(
     'menu_name' => 'main-menu',
@@ -37,7 +57,7 @@ function mica_feature_menu_default_menu_links() {
     'has_children' => '1',
     'expanded' => '0',
     'weight' => '0',
-    'parent_path' => 'studies-search',
+    'parent_path' => '<firstchild>',
   );
   // Exported menu link: main-menu:studies
   $menu_links['main-menu:studies'] = array(
@@ -63,9 +83,10 @@ function mica_feature_menu_default_menu_links() {
     'module' => 'system',
     'hidden' => '0',
     'external' => '0',
-    'has_children' => '1',
+    'has_children' => '0',
     'expanded' => '0',
     'weight' => '0',
+    'parent_path' => '<firstchild>',
   );
   // Exported menu link: management:admin/config/search/path
   $menu_links['management:admin/config/search/path'] = array(
@@ -90,6 +111,7 @@ function mica_feature_menu_default_menu_links() {
   // Included for use with string extractors like potx.
   t('Fields Description Search');
   t('Home');
+  t('Search');
   t('Studies');
   t('Studies Search');
   t('URL aliases');

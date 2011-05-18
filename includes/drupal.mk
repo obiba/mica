@@ -19,6 +19,7 @@ field_permissions_version=7.x-1.0-alpha1
 job_scheduler_version=7.x-2.0-alpha2
 link_version=7.x-1.0-alpha3
 login_destination_version=7.x-1.0-beta1
+menu_firstchild_version=7.x-1.0
 multiselect_version=7.x-1.8
 name_version=7.x-1.0-beta1
 relation_version=7.x-1.0-alpha2
@@ -57,6 +58,7 @@ drupal-download:
 	$(drushexec) dl collapsiblock-$(collapsiblock_version) && \
 	$(drushexec) dl date-$(date_version) calendar-$(calendar_version) && \
 	$(drushexec) dl login_destination-$(login_destination_version) && \
+	$(drushexec) dl menu_firstchild-$(menu_firstchild_version) && \
 	$(drushexec) dl views_data_export-$(views_data_export_version) noderefcreate-$(noderefcreate_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version)
 	
 drupal-forks:	

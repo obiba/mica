@@ -13,6 +13,7 @@ dependencies[] = mica_node_reference_field
 ;dependencies[] = relation
 dependencies[] = field_permissions
 dependencies[] = menu
+dependencies[] = menu_firstchild
 
 
 files[] = includes/blocks.inc
