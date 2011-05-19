@@ -1783,7 +1783,6 @@ img.right, img[align="right"] {
 }
 .region-header .form-text {
   background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(255, 255, 255, 0.3);
   margin-right: 2px;
   width: 120px;
 }
