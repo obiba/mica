@@ -19,6 +19,7 @@ function mica_standard_install() {
       'status' => 1,
       'weight' => 0,
       'region' => 'header',
+      'visibility' => 1,
       'pages' => '',
       'cache' => -1,
     ),
