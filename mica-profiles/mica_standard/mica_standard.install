@@ -12,7 +12,17 @@ function mica_standard_install() {
   // Enable some standard blocks.
   $mica_theme = 'mica_samara';
   $values = array(
-  array(
+    array(
+      'module' => 'user',
+      'delta' => 'login',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'header',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
       'module' => 'views',
       'delta' => 'events_calendar-block_1',
       'theme' => $mica_theme,
@@ -22,7 +32,7 @@ function mica_standard_install() {
       'visibility' => 1,
       'pages' => '<front>',
       'cache' => -1,
-  ),
+    ),
   );
   $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'visibility', 'pages', 'cache'));
   foreach ($values as $record) {
