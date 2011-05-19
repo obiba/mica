@@ -123,8 +123,8 @@ function mica_addons_feeds_importer_default() {
             'unique' => FALSE,
           ),
           4 => array(
-            'source' => 'field_publication_url',
-            'target' => 'url',
+            'source' => 'field_publication_url:url',
+            'target' => 'field_publication_url:url',
             'unique' => 0,
           ),
         ),
