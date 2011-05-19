@@ -549,6 +549,21 @@ h1.page-title,
   margin-top: 7px;
   margin-bottom: 7px;
 }
+.node fieldset .field {
+  border-bottom: 1px solid #eee;
+}
+.node .field.field-label-inline {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+.node fieldset .field.field-label-above,
+.node fieldset .field.field-label-hidden {
+  padding-bottom: 5px;
+}
+.node .field.field-name-body.field-label-hidden {
+  padding-bottom: 0;
+  border-bottom: none;
+}
 .node .field-label-above .field-items {
   margin-left: 20px;
 }
@@ -671,13 +686,12 @@ form#comment-form #edit-actions {
 }
 .field-label-inline .field-label,
 .field-label-inline .field-items {
-  padding: 5px;
+  padding: 5px 5px 5px 0;
 }
 .field-label-inline .field-label {
-  background-color: #CCCCCC;
-  text-align: right;
+  text-align: left;
   vertical-align: top;
-  width: 200px;
+  width: 25%;
 }
 .field-type-list-text.field-label-inline .field-label,
 .field-type-list-text.field-label-inline .field-item,
