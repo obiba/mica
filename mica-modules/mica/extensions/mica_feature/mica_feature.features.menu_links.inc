@@ -73,7 +73,7 @@ function mica_feature_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '0',
+    'weight' => '3',
     'parent_path' => '<firstchild>',
   );  
 
@@ -89,7 +89,7 @@ function mica_feature_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '1',
     'expanded' => '0',
-    'weight' => '1',
+    'weight' => '4',
     'parent_path' => '<firstchild>',
   );
 

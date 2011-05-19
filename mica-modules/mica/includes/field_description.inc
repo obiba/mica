@@ -137,6 +137,13 @@ function _mica_edit_field_field_description($form, &$form_state) {
   $field_info = field_info_field($field_name);
   $node_type = node_type_load($bundle);
   
+  $categories = array();  
+  if (!empty($field_info['settings']) && !empty($field_info['settings']['allowed_values'])) {
+    foreach ($field_info['settings']['allowed_values'] as $key => $value) {
+      $categories[] = $key . '=' . $value;
+    }
+  }
+  
   $field_description_infos = array(
     'title' => $node_type->name . ' » ' . $form_state['values']['instance']['label'],
     'desc' => $is_field_description ? $form_state['values']['field']['settings']['field_description_infos']['field_description_body'] : NULL,
@@ -146,9 +153,7 @@ function _mica_edit_field_field_description($form, &$form_state) {
     'original_field_label' => $form_state['values']['instance']['label'],
     'value_type' => $is_field_description ? $form_state['values']['field']['settings']['field_description_infos']['field_description_value_type'] : NULL,
   	'repeatable' => $form_state['values']['field']['cardinality'] != 1,
-  	'categories' => empty($field_info['settings']) || empty($field_info['settings']['allowed_values']) 
-  										? array() 
-  										: array_keys($field_info['settings']['allowed_values']),
+  	'categories' => $categories,
   );
   
   $field_description = _mica_find_field_description($bundle, $field_name);
