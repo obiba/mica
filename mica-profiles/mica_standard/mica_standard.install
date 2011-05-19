@@ -15,7 +15,7 @@ function mica_standard_install() {
     array(
       'module' => 'user',
       'delta' => 'login',
-      'theme' => $default_theme,
+      'theme' => $mica_theme,
       'status' => 1,
       'weight' => 0,
       'region' => 'header',
