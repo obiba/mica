@@ -288,7 +288,6 @@ html {
   display: none;
   position: absolute;
   width: 190px;
-  top: 30px;
   left: 0px; /* LTR */
   background-color: #4b4b4b;
   z-index: 100;

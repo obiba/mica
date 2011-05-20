@@ -136,7 +136,6 @@ a {
 }
 #navigation li.expanded ul {
   background-color: #888;
-  top: 35px;
 }
 #navigation li.expanded li a {
   font-weight: bold;
