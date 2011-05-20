@@ -69,9 +69,6 @@ body.page-admin #closure {
   }
 }
 
-.container-inline div, 
-.container-inline label�{display:�inline;}
-
 /**
  * Wrappers
  */
@@ -163,9 +160,9 @@ html {
 #branding {
   display: table;
 }
-.with-blocks #branding-wrapper {
+/*.with-blocks #branding-wrapper {
   width: 58%;
-}
+}*/
 #logo {
   display: table-cell;
   vertical-align: middle;
@@ -1434,6 +1431,10 @@ body.maintenance-page #content {
   padding: 0!important;
   border: none!important;
 }
+.container-inline div, 
+.container-inline label {
+    display: inline;
+}
 
 /**
  * Admin pages
@@ -1788,15 +1789,22 @@ img.right, img[align="right"] {
 /** Header **/
 .region-header {
   float: right;
-  margin: 0 5px 10px;
+  margin: 0 10px 10px;
 }
 .region-header .block {
   font-size: 0.857em;
-  float: left;
   margin: 0 10px;
   padding: 0;
   background-color: transparent;
   border: none;
+  float: left;
+  clear: none;
+  margin: 10px 0 0 20px;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.region-header .block h2 {
+  display: none;
 }
 .region-header .block ul li {
   background: none;
@@ -1806,7 +1814,7 @@ img.right, img[align="right"] {
   padding: 0;
   border: none;
 }
-.region-header .form-text {
+.region-header input.form-text {
   background: rgba(255, 255, 255, 0.7);
   margin-right: 2px;
   width: 120px;
@@ -1865,4 +1873,23 @@ img.right, img[align="right"] {
   margin: 4px 0;
   padding: 3px 8px;
 }
+
+/* Search Form block */
+.region-header #block-search-form {
+  margin-top: 25px;
+}
+#search-block-form input.form-submit {
+  margin-left: 0;
+  margin-right: 0;
+  height: 25px;
+  width: 34px;
+  padding: 0;
+  cursor: pointer;
+  text-indent: -9999px;
+  border-color: #e4e4e4 #d2d2d2 #b4b4b4;
+  background: url(../images/search-button.png) no-repeat center top;
+  overflow: hidden;
+}
+
+
 
