@@ -16,7 +16,7 @@ body {
 }
 
 #navigation > ul > li.active-trail {
-  background-color: #B0D74A;
+  background-color: #B5D268;
   color: #ffffff;
 }
 /* Text (black) */
@@ -112,14 +112,14 @@ a {
 #navigation li a:active,
 #navigation li a:focus {
   color: #5A6F2A;
-  background-color: #B0D74A;
+  background-color: #B5D268;
   text-shadow:0 1px 1px white;
 }
 
 /* Navigation active (orange) */
 #navigation > ul > li.active-trail > a {
   color: #5A6F2A;
-  background-color: #B0D74A;
+  background-color: #B5D268;
 }
 #navigation > ul > li.active-trail > a:hover,
 #navigation > ul > li:hover > a,
@@ -135,7 +135,7 @@ a {
   text-shadow: 0 1px 1px white;
 }
 #navigation li.expanded ul {
-  background-color: #B0D74A;
+  background-color: #B5D268;
 }
 #navigation li.expanded li a {
   font-weight: bold;
