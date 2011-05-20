@@ -253,7 +253,7 @@ function mica_block_view($delta = '') {
   switch ($delta) {
     case 'mica_facet_visibility':
       module_load_include('inc', 'mica', 'includes/blocks');
-      $block['subject'] = t('Facet Visibility');
+      $block['subject'] = t('Search Filters');
       $content = mica_facet_visibility_block_content();
       break;
   }
