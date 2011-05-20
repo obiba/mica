@@ -290,6 +290,61 @@ class MicaRelation extends Entity {
   	return FALSE;  		
 	}
 	
+	public function fix_child_node_menu() {
+		
+		$studies_menu = db_query("SELECT * FROM {menu_links} WHERE link_title = :title", array(':title' => 'Studies'))
+											->fetchObject();
+		if (empty($studies_menu)) return;		
+		
+    $query = new EntityFieldQuery;
+    $result = $query->entityCondition('entity_type', 'node')
+                    ->entityCondition('bundle', $this->parent_bundle)
+                    ->execute();      
+    if (!empty($result['node'])) {
+      $nodes = entity_load('node', array_keys($result['node']), TRUE);
+      foreach ($nodes as $node) {
+				
+				$parent_menu = db_query("SELECT * FROM {menu_links} WHERE link_title = :title and link_path = :path and menu_name = :menu", 
+												array(':title' => $node->title, ':path' => 'node/' . $node->nid, ':menu' => 'main-menu'))
+												->fetchObject();    	
+				if (empty($parent_menu)) {
+	  			$parent_menu['enabled'] = TRUE;
+	  			$parent_menu['expanded'] = TRUE;
+	  			$parent_menu['menu_name'] = 'main-menu';
+	  			$parent_menu['link_title'] = $node->title;
+	  			$parent_menu['link_path'] = 'node/' . $node->nid;        
+	    		$parent_menu['plid'] = $studies_menu->mlid;
+  				menu_link_save($parent_menu);
+				} else {
+					$parent_menu = get_object_vars($parent_menu);
+				}
+  			
+        // create menu if parent has menu
+  		  $field_ref = $this->options['node_reference'];
+        $field = $node->$field_ref;
+        $language = $node->language;
+        $node_child_nid = $field[$language][0]['nid'];          
+        
+        $field_ref_info = field_info_instance('node', $field_ref, $this->parent_bundle);
+        
+        db_delete('menu_links')
+        		->condition('plid', $parent_menu['mlid'])
+        		->condition('link_title', t($field_ref_info['label']))
+        		->execute();
+        
+        $child_menu_item = array(
+  				  'menu_name' => 'main-menu',
+  				  'link_title' => t($field_ref_info['label']),
+  				  'link_path' => 'node/' . $node_child_nid,
+  				  'plid' => $parent_menu['mlid'],
+				);
+				
+      	menu_link_save($child_menu_item);
+      }	  
+	  }
+    menu_cache_clear('main-menu');
+	}
+	
 	/**
 	 * Update child node on parent update 
 	 */

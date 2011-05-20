@@ -1,5 +1,6 @@
 <?php
 include_once('profiles/mica_minimal/mica_minimal.profile');
+
 /**
  * Implements hook_form_FORM_ID_alter().
  *
@@ -14,7 +15,7 @@ function mica_demo_form_install_configure_form_alter(&$form, $form_state) {
  * Implements hook_install_tasks()
  *
  */
-function mica_demo_install_tasks($install_state){
+function mica_demo_install_tasks($install_state) {
   $tasks = mica_minimal_install_tasks($install_state);
   
   $tasks['mica_demo_content'] = array(
@@ -25,10 +26,18 @@ function mica_demo_install_tasks($install_state){
     'function' => 'mica_import_demo_feeds',
   ); 
   
+  $tasks['mica_demo_content_menu'] = array(
+    'display_name' => st('Set demo content menus'),
+    'display' => TRUE,
+    'type' => 'batch',
+    'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED, // default to insert content
+    'function' => 'mica_fix_menu_for_imported_data',
+  ); 
+  
   return $tasks;
 }
 
-function mica_import_demo_feeds($install_state){
+function mica_import_demo_feeds($install_state) {
   $root = 'profiles/mica_demo/data';
   $feed_configs = array();
   $feed_configs['csv_study_import'] = array(
@@ -54,7 +63,7 @@ function mica_import_demo_feeds($install_state){
   );
   
   $operations = array();
-  foreach($feed_configs as $importer => $file){
+  foreach ($feed_configs as $importer => $file){
     $source = feeds_source($importer);
 
     foreach ($source->importer->plugin_types as $type) {
@@ -62,7 +71,6 @@ function mica_import_demo_feeds($install_state){
         $class = get_class($source->importer->$type);
         if ($class == 'FeedsFileFetcher'){
           $config = isset($source->config[$class]) ? $source->config[$class] : array();
-        
           $config['source'] = $file['file'];
           $source->setConfigFor($source->importer->$type, $config);
         }  
@@ -73,10 +81,21 @@ function mica_import_demo_feeds($install_state){
   }
   
   $batch = array(
-      'title' => st('Importing'),
-      'operations' => $operations,
-      'progress_message' => 'Creating demo content',
-    );
+    'title' => st('Importing'),
+    'operations' => $operations,
+    'progress_message' => 'Creating demo content',
+  );
 
   return $batch;
+}
+
+function mica_fix_menu_for_imported_data($install_state) {
+	$query = new EntityFieldQuery;
+  $result = $query->entityCondition('entity_type', 'mica_relation')->execute();      
+	if (!empty($result['mica_relation'])) {
+	  $relations = entity_load('mica_relation', array_keys($result['mica_relation']));
+	  foreach ($relations as $relation) {
+	    $relation->fix_child_node_menu();
+	  }
+	}       
 }
