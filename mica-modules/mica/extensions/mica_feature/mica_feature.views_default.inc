@@ -462,8 +462,10 @@ function mica_feature_views_default_views() {
   $handler->display->display_options['fields']['field_repeatable']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_repeatable']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_repeatable']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_repeatable']['empty'] = '0';
   $handler->display->display_options['fields']['field_repeatable']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_repeatable']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_repeatable']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_repeatable']['field_api_classes'] = 0;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
