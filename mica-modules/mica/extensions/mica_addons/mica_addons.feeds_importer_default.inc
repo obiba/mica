@@ -59,6 +59,11 @@ function mica_addons_feeds_importer_default() {
             'target' => 'field_event_date:start',
             'unique' => FALSE,
           ),
+          4 => array(
+            'source' => 'field_event_date:end',
+            'target' => 'field_event_date:end',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',
