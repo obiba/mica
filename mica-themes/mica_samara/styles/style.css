@@ -698,6 +698,18 @@ form#comment-form #edit-actions {
 .field-type-list-text.field-label-inline .field-items {
   padding-right:5px;
 }
+.field-item .node {
+  border: 1px dashed #ddd;
+  padding-left: 10px;
+  padding-right:10px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  background-color: #f4f4f4;
+}
+.field-item .node > h2 {
+  font-size: 1.2em;
+}
 .field-type-taxonomy-term-reference .field-label {
   color: #808080;
   font-weight: 700;
