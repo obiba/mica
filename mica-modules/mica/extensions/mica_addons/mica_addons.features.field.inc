@@ -117,7 +117,7 @@ function mica_addons_field_default_fields() {
         ),
         'repeat' => 0,
         'timezone_db' => '',
-        'todate' => '',
+        'todate' => 'optional',
         'tz_handling' => 'none',
       ),
       'translatable' => '1',
