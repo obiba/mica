@@ -123,6 +123,7 @@ a {
 #navigation > ul > li.active-trail > a:hover,
 #navigation > ul > li:hover > a,
 #navigation > ul > li > li.active:hover > span > a,
+#navigation .expanded:hover,
 #navigation li.expanded li a {
   color: #eee;
 }
@@ -141,7 +142,7 @@ a {
   font-weight: bold;
 }
 #navigation li.expanded li a:hover {
-  background-color: #402817;
+  background-color: #4B4B4B;
 }
 
 /* Slogan (orange) */
