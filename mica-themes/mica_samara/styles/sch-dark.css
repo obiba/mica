@@ -181,3 +181,13 @@ fieldset {
 #login-status #user-name {
   font-weight: bold;
 }
+
+/** Header **/
+.region-header .block {
+  margin: 10px 10px;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.region-header .block h2 {
+  display: none;
+}
