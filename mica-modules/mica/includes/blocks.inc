@@ -54,7 +54,7 @@ function mica_facet_visibility_form($form, &$form_state, $blocks) {
 
   $form['submit'] = array(
     '#type' => 'submit',
-    '#value' => t('Save preferences'),
+    '#value' => t('Apply'),
   );
   return $form;
 }
