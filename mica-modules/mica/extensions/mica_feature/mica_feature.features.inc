@@ -13,10 +13,6 @@ function mica_feature_ctools_plugin_api() {
     return array("version" => 1);
   }
   list($module, $api) = func_get_args();
-  if ($module == "field_group" && $api == "field_group") {
-    return array("version" => 1);
-  }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => 1);
   }
@@ -1057,6 +1053,18 @@ function mica_feature_default_search_api_index() {
           "type" : "text",
           "boost" : "1.0"
         },
+        "mica_study_information:field_list_int" : {
+          "name" : "Study Information \\u00bb List Int",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "mica_study_information:field_list_int2" : {
+          "name" : "Study Information \\u00bb List int2",
+          "indexed" : true,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
