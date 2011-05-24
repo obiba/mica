@@ -40,18 +40,17 @@ function mica_feature_menu_default_menu_links() {
     'weight' => '1',
   );  
 
-  // Exported menu link: main-menu:<firstchild>
-  $menu_links['main-menu:<firstchild>'] = array(
+  // Exported menu link: main-menu:search/node
+  $menu_links['main-menu:search/node'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => '<firstchild>',
-    'router_path' => '<firstchild>',
+    'link_path' => 'search/node',
+    'router_path' => 'search/node',
     'link_title' => 'Search',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
       'alter' => TRUE,
-      'unaltered_hidden' => 0,
     ),
     'module' => 'menu',
     'hidden' => '0',
@@ -110,7 +109,7 @@ function mica_feature_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '1',
     'expanded' => '1',
-    'weight' => '40',
+    'weight' => '5',
   );
   // Exported menu link: navigation:csv-contact
   $menu_links['navigation:csv-contact'] = array(
@@ -128,7 +127,7 @@ function mica_feature_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-46',
+    'weight' => '6',
     'parent_path' => '<firstchild>',
   );
   // Exported menu link: navigation:csv-field-description
@@ -147,7 +146,7 @@ function mica_feature_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-49',
+    'weight' => '7',
     'parent_path' => '<firstchild>',
   );
   // Exported menu link: navigation:csv-institution
@@ -166,7 +165,7 @@ function mica_feature_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '0',
+    'weight' => '8',
     'parent_path' => '<firstchild>',
   );
   // Exported menu link: navigation:csv-study
@@ -185,7 +184,7 @@ function mica_feature_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-50',
+    'weight' => '9',
     'parent_path' => '<firstchild>',
   );
   // Exported menu link: navigation:csv-study-files
@@ -204,7 +203,7 @@ function mica_feature_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-47',
+    'weight' => '10',
     'parent_path' => '<firstchild>',
   );
   // Exported menu link: navigation:csv-study-information
@@ -223,7 +222,7 @@ function mica_feature_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-48',
+    'weight' => '11',
     'parent_path' => '<firstchild>',
   );
   // Translatables
@@ -240,8 +239,6 @@ function mica_feature_menu_default_menu_links() {
   t('Search');
   t('Studies');
   t('Studies Search');
-  t('URL aliases');
-
 
   return $menu_links;
 }
