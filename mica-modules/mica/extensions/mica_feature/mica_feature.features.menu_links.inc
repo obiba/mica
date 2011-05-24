@@ -92,14 +92,156 @@ function mica_feature_menu_default_menu_links() {
     'weight' => '4',
     'parent_path' => '<firstchild>',
   );
-
+// Exported menu link: navigation:<firstchild>
+  $menu_links['navigation:<firstchild>'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => '<firstchild>',
+    'router_path' => '<firstchild>',
+    'link_title' => 'Export',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Export content in CSV file',
+      ),
+      'alter' => TRUE,
+      'unaltered_hidden' => '0',
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '1',
+    'expanded' => '1',
+    'weight' => '-45',
+  );
+  // Exported menu link: navigation:csv-contact
+  $menu_links['navigation:csv-contact'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'csv-contact',
+    'router_path' => 'csv-contact',
+    'link_title' => 'Export Contacts',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Export of all studies in CSV',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-46',
+    'parent_path' => '<firstchild>',
+  );
+  // Exported menu link: navigation:csv-field-description
+  $menu_links['navigation:csv-field-description'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'csv-field-description',
+    'router_path' => 'csv-field-description',
+    'link_title' => 'Export Fields Description',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Export of all studies in CSV',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-49',
+    'parent_path' => '<firstchild>',
+  );
+  // Exported menu link: navigation:csv-institution
+  $menu_links['navigation:csv-institution'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'csv-institution',
+    'router_path' => 'csv-institution',
+    'link_title' => 'Export Institutions',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Export of all studies in CSV',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '0',
+    'parent_path' => '<firstchild>',
+  );
+  // Exported menu link: navigation:csv-study
+  $menu_links['navigation:csv-study'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'csv-study',
+    'router_path' => 'csv-study',
+    'link_title' => 'Export Studies',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Export of all studies in CSV',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-50',
+    'parent_path' => '<firstchild>',
+  );
+  // Exported menu link: navigation:csv-study-files
+  $menu_links['navigation:csv-study-files'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'csv-study-files',
+    'router_path' => 'csv-study-files',
+    'link_title' => 'Export Study Files',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Export of all studies in CSV',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-47',
+    'parent_path' => '<firstchild>',
+  );
+  // Exported menu link: navigation:csv-study-information
+  $menu_links['navigation:csv-study-information'] = array(
+    'menu_name' => 'navigation',
+    'link_path' => 'csv-study-information',
+    'router_path' => 'csv-study-information',
+    'link_title' => 'Export Studies Information',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'Export of all studies in CSV',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-48',
+    'parent_path' => '<firstchild>',
+  );
   // Translatables
   // Included for use with string extractors like potx.
+  t('Export');
+  t('Export Contacts');
+  t('Export Fields Description');
+  t('Export Institutions');
+  t('Export Studies');
+  t('Export Studies Information');
+  t('Export Study Files');
   t('Fields Description Search');
   t('Home');
   t('Search');
   t('Studies');
   t('Studies Search');
+  t('URL aliases');
+
 
   return $menu_links;
 }
