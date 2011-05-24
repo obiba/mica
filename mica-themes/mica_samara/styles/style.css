@@ -1892,4 +1892,12 @@ img.right, img[align="right"] {
 }
 
 
+/* Views */
+.views-row {
+  border-bottom: 2px dotted #ccc;
+  padding-bottom: 10px;
+}
 
+.views-row.views-row-last {
+  border-bottom: 0px;
+}
