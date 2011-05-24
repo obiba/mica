@@ -110,7 +110,7 @@ function mica_feature_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '1',
     'expanded' => '1',
-    'weight' => '-45',
+    'weight' => '40',
   );
   // Exported menu link: navigation:csv-contact
   $menu_links['navigation:csv-contact'] = array(
