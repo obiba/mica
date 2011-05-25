@@ -13,7 +13,6 @@ function mica_demo_form_install_configure_form_alter(&$form, $form_state) {
 
 /**
  * Implements hook_install_tasks()
- *
  */
 function mica_demo_install_tasks($install_state) {
   $tasks = mica_minimal_install_tasks($install_state);
@@ -24,14 +23,6 @@ function mica_demo_install_tasks($install_state) {
     'type' => 'batch',
     'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED, // default to insert content
     'function' => 'mica_import_demo_feeds',
-  ); 
-  
-  $tasks['mica_demo_content_menu'] = array(
-    'display_name' => st('Set demo content menus'),
-    'display' => TRUE,
-    'type' => 'batch',
-    'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED, // default to insert content
-    'function' => 'mica_fix_menu_for_imported_data',
   ); 
   
   return $tasks;
@@ -89,68 +80,3 @@ function mica_import_demo_feeds($install_state) {
   return $batch;
 }
 
-function mica_fix_menu_for_imported_data($install_state) {
-  
-  $studies_menu = db_query("SELECT * FROM {menu_links} WHERE link_title = :title", array(':title' => t('Studies')))
-  											->fetchObject();
-  if (empty($studies_menu)) return;		  
-  
-	$query = new EntityFieldQuery;
-  $result = $query->entityCondition('entity_type', 'mica_relation')->execute();      
-	if (!empty($result['mica_relation'])) {
-	  $relations = entity_load('mica_relation', array_keys($result['mica_relation']));
-	  foreach ($relations as $relation) {
-  		
-      $query = new EntityFieldQuery;
-      $result = $query->entityCondition('entity_type', 'node')
-                      ->entityCondition('bundle', $relation->parent_bundle)
-                      ->execute();      
-      if (!empty($result['node'])) {
-        $nodes = entity_load('node', array_keys($result['node']), TRUE);
-        foreach ($nodes as $node) {
-  				
-  				$parent_menu = db_query("SELECT * FROM {menu_links} WHERE link_title = :title and link_path = :path and menu_name = :menu", 
-  												array(':title' => $node->title, ':path' => 'node/' . $node->nid, ':menu' => 'main-menu'))
-  												->fetchObject();    	
-  				if (empty($parent_menu)) {
-  	  			$parent_menu['module'] = 'menu';
-  	  			$parent_menu['enabled'] = TRUE;
-  	  			$parent_menu['expanded'] = TRUE;
-  	  			$parent_menu['menu_name'] = 'main-menu';
-  	  			$parent_menu['link_title'] = $node->title;
-  	  			$parent_menu['link_path'] = 'node/' . $node->nid;        
-  	    		$parent_menu['plid'] = $studies_menu->mlid;
-    				menu_link_save($parent_menu);
-  				} else {
-  					$parent_menu = get_object_vars($parent_menu);
-  				}
-    			
-          // create menu if parent has menu
-    		  $field_ref = $relation->options['node_reference'];
-          $field = $node->$field_ref;
-          $language = $node->language;
-          $node_child_nid = $field[$language][0]['nid'];          
-          
-          $field_ref_info = field_info_instance('node', $field_ref, $relation->parent_bundle);
-          
-          db_delete('menu_links')
-          		->condition('plid', $parent_menu['mlid'])
-          		->condition('link_title', t($field_ref_info['label']))
-          		->execute();
-          
-          $child_menu_item = array(
-    				  'menu_name' => 'main-menu',
-    				  'link_title' => t($field_ref_info['label']),
-    				  'link_path' => 'node/' . $node_child_nid,
-    				  'plid' => $parent_menu['mlid'],
-  				);
-  				
-        	menu_link_save($child_menu_item);
-        }	  
-  	  }
-      menu_cache_clear('main-menu');	    
-	    
-	    
-	  }
-	}       
-}

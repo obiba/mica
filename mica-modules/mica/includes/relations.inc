@@ -281,6 +281,23 @@ function _mica_find_relations_by_parent($parent_bundle) {
 }
 
 /**
+ * Returns a unique MicaRelation for this parent and child type with relation ID as key
+ */
+function _mica_find_relations_by_parent_and_child($parent_bundle, $child_bundle) {
+	$query = new EntityFieldQuery;
+  $result = $query->entityCondition('entity_type', 'mica_relation')
+                  ->propertyCondition('parent_bundle', $parent_bundle)
+                  ->propertyCondition('child_bundle', $child_bundle)
+                  ->execute();      
+	if (!empty($result['mica_relation'])) {
+		$keys = array_keys($result['mica_relation']);
+		$relations = entity_load('mica_relation', $keys);
+  	return $relations[$keys[0]];
+	}                       
+  return NULL;	
+}
+
+/**
  * Returns a unique MicaRelation for this child type 
  */
 function _mica_find_relation_by_child($child_bundle) {

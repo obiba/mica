@@ -15,37 +15,24 @@ class FeedsStudyChildProcessor extends FeedsNodeProcessor {
    * Loads the existing Study Child from its existing parent
    */
   protected function loadParentEntity(FeedsSource $source, $parent_id, $child_type) {
+    module_load_include('inc', 'mica', 'includes/relations');
+
     $query = db_select('field_data_field_study_legacy_id', 'f')
       ->condition('bundle', 'study')
       ->condition('field_study_legacy_id_value', $parent_id)
       ->fields('f', array('entity_id'));
     $result = $query->execute();
-
     // Exception when the parent does not exist return null
-    // Get the mica relation based on the type...
-    module_load_include('inc', 'mica', 'includes/relations');
     foreach ($result as $row) {
-      $parent = entity_load('node', array($row->entity_id));
-      $relations = _mica_find_relations_by_parent('study');
-      if (!empty($relations)) {
-        foreach ($relations as $relation) {
-          $child_relation_type = $relation->child_bundle;
-          if ($child_relation_type == $this->config['content_type']) {
-            $child_id = $parent[$row->entity_id]->{$relation->options['node_reference']}['und'][0]['nid'];
-            $nodes = entity_load('node', array($child_id));
-            
-            $node = $nodes[$child_id];
-            $node->type = $this->config['content_type'];
-            $node->changed = REQUEST_TIME;
-            $node->language = LANGUAGE_NONE;
-            node_object_prepare($node);
-            // Populate properties that are set by node_object_prepare().
-            $node->log = 'Updated by FeedsStudyInfoProcessor';
-            //$node->uid = $this->config['author'];
-               
-            break;
-          }
-        }
+	    // Get the mica relation based on the type...
+      $relation = _mica_find_relations_by_parent_and_child('study', $this->config['content_type']);
+      if (!empty($relation)) {
+      	$parent = entity_load('node', array($row->entity_id));
+				$child_id = $parent[$row->entity_id]->{$relation->options['node_reference']}[LANGUAGE_NONE][0]['nid'];
+        $nodes = entity_load('node', array($child_id));
+        $node = $nodes[$child_id];
+        $node->changed = REQUEST_TIME;
+        $node->log = 'Updated by FeedsStudyChildProcessor';
       }
     }
     return $node;
