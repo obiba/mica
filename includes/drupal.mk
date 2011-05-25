@@ -29,14 +29,6 @@ views_data_export_version=7.x-3.0-beta4
 views_version=7.x-3.0-beta3
 
 #
-# Forks Modules
-#
-#feeds_version=7.x-2.0-alpha3
-#references_version=7.x-2.x-dev
-#search_api_ranges_version=7.x-1.x-dev
-#menu_firstchild_version=7.x-1.0
-
-#
 # Drupal Build
 #
 
@@ -58,7 +50,7 @@ drupal-download:
 	$(drushexec) dl collapsiblock-$(collapsiblock_version) && \
 	$(drushexec) dl date-$(date_version) calendar-$(calendar_version) && \
 	$(drushexec) dl login_destination-$(login_destination_version) && \
-		$(drushexec) dl views_data_export-$(views_data_export_version) noderefcreate-$(noderefcreate_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version)
+	$(drushexec) dl views_data_export-$(views_data_export_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version)
 	
 drupal-forks:	
 	cp -r forks/* target/$(micadir)/sites/all/modules

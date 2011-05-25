@@ -6,6 +6,10 @@
 include includes/drupal.mk
 
 version=1.0-SNAPSHOT
+
+#
+# Mica Modules
+#
 mica_version=7.x-1.0-dev
 mica_feature_version=7.x-1.0-dev
 mica_addons_version=7.x-1.0-dev
@@ -13,6 +17,17 @@ mica_minimal_version=7.x-1.0-dev
 mica_standard_version=7.x-1.0-dev
 mica_demo_version=7.x-1.0-dev
 mica_samara_version=7.x-1.0-dev
+
+
+#
+# Forked Modules
+#
+feeds_version=7.x-2.0-alpha3-mica
+references_version=7.x-2.x-dev-mica
+search_api_ranges_version=7.x-1.x-dev-mica
+noderefcreate_version=7.x-1.0-beta2-mica
+menu_firstchild_version=7.x-1.0-mica
+
 
 #
 # Mysql db access
@@ -73,7 +88,7 @@ endif
 # Package
 #
 
-package: package-modules package-profiles package-themes debian
+package: package-modules package-profiles package-themes package-forks debian
 	rm -f target/mica-dist*
 	cd target && \
 	tar czf mica-dist-$(deb_version).tar.gz $(micadir) && \
@@ -89,6 +104,13 @@ package-profiles:
 
 package-themes:
 	$(call make-package,sites/all/themes,mica_samara)
+
+package-forks:
+	$(call make-package,sites/all/modules,feeds)
+	$(call make-package,sites/all/modules,references)
+	$(call make-package,sites/all/modules,search_api_ranges)
+	$(call make-package,sites/all/modules,noderefcreate)
+	$(call make-package,sites/all/modules,menu_firstchild)
 
 #
 # Debian Package

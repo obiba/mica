@@ -33,7 +33,7 @@ core = 7.x
 php = 5.2
 
 ; Information added by drupal.org packaging script on 2011-01-14
-version = "7.x-2.0-alpha3"
+version = "7.x-2.0-alpha3-mica"
 core = "7.x"
 project = "feeds"
 datestamp = "1295037190"

@@ -9,7 +9,7 @@ dependencies[] = node_reference
 files[] = noderefcreate.module
 
 ; Information added by drupal.org packaging script on 2011-04-11
-version = "7.x-1.0-beta2"
+version = "7.x-1.0-beta2-mica"
 core = "7.x"
 project = "noderefcreate"
 datestamp = "1302535628"
