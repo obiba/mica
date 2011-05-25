@@ -3,8 +3,6 @@
 # Requires drush 4+ to be installed: http://drush.ws/
 #
 
-include includes/sites.mk
-
 oldversion=
 micadir=mica
 installdir=/usr/share

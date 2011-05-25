@@ -4,7 +4,6 @@
 #
 
 include includes/drupal.mk
-include includes/sites.mk
 
 version=1.0-SNAPSHOT
 mica_version=7.x-1.0-dev
@@ -123,8 +122,6 @@ ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
 else
 	echo "stability=stable" >> target/deb/var/lib/mica-installer/Makefile
 endif
-	mkdir -p target/deb/var/lib/mica-installer/includes
-	cp includes/sites.mk target/deb/var/lib/mica-installer/includes
 	mkdir -p target/deb/var/cache/mica-installer
 	$(call deb-package,mica)
 	$(call deb-package,mica_minimal)
@@ -192,8 +189,6 @@ help:
 	@echo "Available make targets:"
 	@echo "  all          : Download Drupal, required modules and install Mica modules/profiles in it. Result is available in 'target' directory."
 	@echo "  package      : Package Drupal for Mica ($(micadir).tar.gz), Mica modules and make a Mica installer Debian package."
-	@echo "  default-site : Install default site with Mica profile."
-	@echo "  site         : Install configured site with Mica profile."
 	@echo "  mica         : Install Mica modules/profiles in Drupal."
 	@echo "  clean        : Remove 'target' directory."
 	@echo
