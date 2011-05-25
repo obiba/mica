@@ -40,17 +40,18 @@ function mica_feature_menu_default_menu_links() {
     'weight' => '1',
   );  
 
-  // Exported menu link: main-menu:search/node
-  $menu_links['main-menu:search/node'] = array(
+  // Exported menu link: main-menu:<firstchild>
+  $menu_links['main-menu:<firstchild>'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'search/node',
-    'router_path' => 'search/node',
+    'link_path' => '<firstchild>',
+    'router_path' => '<firstchild>',
     'link_title' => 'Search',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
       'alter' => TRUE,
+      'unaltered_hidden' => 0,
     ),
     'module' => 'menu',
     'hidden' => '0',

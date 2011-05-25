@@ -1,0 +1,2 @@
+Waiting for bug fix "Undefined index notice when adding a shortcut" to be released.
+http://drupal.org/node/1030216
