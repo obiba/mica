@@ -289,11 +289,13 @@ function mica_feature_feeds_importer_default() {
       ),
     ),
     'processor' => array(
-      'plugin_key' => 'FeedsStudyChildProcessor',
+      'plugin_key' => 'FeedsMicaProcessor',
       'config' => array(
         'content_type' => 'study_files',
         'expire' => '-1',
         'author' => 0,
+	'parent_bundle' => 'study',
+        'parent_unique_id_field' => 'field_study_legacy_id',
         'mappings' => array(
           0 => array(
             'source' => 'field_study_legacy_id',
@@ -428,11 +430,13 @@ function mica_feature_feeds_importer_default() {
       ),
     ),
     'processor' => array(
-      'plugin_key' => 'FeedsStudyChildProcessor',
+      'plugin_key' => 'FeedsMicaProcessor',
       'config' => array(
         'content_type' => 'study_information',
         'expire' => '-1',
         'author' => 0,
+        'parent_bundle' => 'study',
+        'parent_unique_id_field' => 'field_study_legacy_id',
         'mappings' => array(
           0 => array(
             'source' => 'field_study_legacy_id',
