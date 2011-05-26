@@ -276,14 +276,14 @@ function mica_feeds_plugins() {
   $path = drupal_get_path('module', 'mica') . '/includes/feeds/processors';
   
   $info = array();
-  $info['FeedsStudyChildProcessor'] = array(
-    'name' => 'Study Child Node processor',
-    'description' => 'Update nodes that are linked to a Study through a field_study_legacy_id.',
+  $info['FeedsMicaProcessor'] = array(
+    'name' => 'Mica Node processor',
+    'description' => 'Update nodes that are linked to a Parent through a mica_relation.',
     'help' => 'Update nodes from parsed content.',
     'handler' => array(
       'parent' => 'FeedsNodeProcessor',
-      'class' => 'FeedsStudyChildProcessor',
-      'file' => 'FeedsStudyChildProcessor.inc',
+      'class' => 'FeedsMicaProcessor',
+      'file' => 'FeedsMicaProcessor.inc',
       'path' => $path,
     ),
   );
