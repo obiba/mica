@@ -461,3 +461,17 @@ a.contextual-links-trigger,
 .book-navigation .page-links a {
   border-bottom: none;
 }
+
+#sidebar-first li a.active,
+#sidebar-second li a.active {
+  border-bottom: 1px solid #bbb;
+  color: #086782;
+  font-weight: normal;
+}
+
+#sidebar-first li a.active:hover,
+#sidebar-second li a.active:hover {
+  border-bottom: 1px dashed #E25401;
+  color: #E25401;
+  text-decoration: none;
+}
