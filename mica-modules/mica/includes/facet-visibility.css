@@ -1,8 +1,12 @@
 @CHARSET "UTF-8";
 
+#block-mica-mica-facet-visibility table {
+	border-width: 0px;
+}
+
 #mica-facet-visibility-form {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 #mica-facet-visibility-form #edit-block .fieldset-wrapper {
@@ -14,6 +18,13 @@
   padding: 0;
   margin-bottom: 5px;
   margin-top: 0;
+  position:absolute;
+  z-index:1000;
+  width:350px;
+  border-width:2px;
+  border-color:black;
+  background-color:#f2f2f2;
+  opacity:0.95;
 }
 
 #mica-facet-visibility-form #edit-block .form-item {
@@ -24,5 +35,6 @@
 }
 
 #mica-facet-visibility-form #edit-submit {
-  margin-bottom: 5px;
+  margin-left:5px;
+  margin-top: 5px;
 }

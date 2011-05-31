@@ -294,7 +294,7 @@ function mica_feature_feeds_importer_default() {
         'content_type' => 'study_files',
         'expire' => '-1',
         'author' => 0,
-	'parent_bundle' => 'study',
+		'parent_bundle' => 'study',
         'parent_unique_id_field' => 'field_study_legacy_id',
         'mappings' => array(
           0 => array(
