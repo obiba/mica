@@ -21,8 +21,8 @@ class FeedsMicaProcessor extends FeedsNodeProcessor {
       'content_type' => $type,
       'expire' => FEEDS_EXPIRE_NEVER,
       'author' => 0,
-      'parent_content_type' => '',
-      'key_field' => '',
+      'parent_bundle' => '',
+      'parent_unique_id_field' => '',
     )+ parent::configDefaults();
   }
   
@@ -32,18 +32,18 @@ class FeedsMicaProcessor extends FeedsNodeProcessor {
     // filter entity types that have mica_relation
     array_walk($types, 'check_plain');
     
-    $form['parent_content_type'] = array(
+    $form['parent_bundle'] = array(
       '#type' => 'select',
       '#title' => t('Parent content type'),
       '#description' => t('Select the content type for the parent node.'),
       '#options' => $types,
-      '#default_value' => $this->config['parent_content_type'],
+      '#default_value' => $this->config['parent_bundle'],
     );
-    $form['key_field'] = array(
+    $form['parent_unique_id_field'] = array(
       '#type' => 'textfield',
-      '#title' => t('Parent unique field'),
-      '#description' => t('Select the field that will be used to find the parent node e.g. when importing nodes related to a Study, the value should be \'field_study_legacy_id\''),
-      '#default_value' => $this->config['key_field'],
+      '#title' => t('Parent unique id field'),
+      '#description' => t('Select the field that will be used to find the parent node e.g. when importing nodes related to a Study, the value should be \'field_study_legacy_id\'.<br/><b>This field cannot be \'title\' or \'body\'</b>.'),
+      '#default_value' => $this->config['parent_unique_id_field'],
       '#required' => TRUE,
     );
     return $form;
@@ -55,22 +55,22 @@ class FeedsMicaProcessor extends FeedsNodeProcessor {
   protected function loadParentEntity(FeedsSource $source, $parent_id, $child_type) {
     module_load_include('inc', 'mica', 'includes/relations');
 
-    $query = db_select('field_data_field_study_legacy_id', 'f')
-      ->condition('bundle', $this->config['parent_content_type'])
-      ->condition($this->config['key_field'], $parent_id)
+    $query = db_select('field_data_' . $this->config['parent_unique_id_field'], 'f')
+      ->condition('bundle', $this->config['parent_bundle'])
+      ->condition($this->config['parent_unique_id_field'] . '_value', $parent_id)
       ->fields('f', array('entity_id'));
     $result = $query->execute();
     // Exception when the parent does not exist return null
     foreach ($result as $row) {
 	    // Get the mica relation based on the type...
-      $relation = _mica_find_relations_by_parent_and_child($this->config['parent_content_type'], $this->config['content_type']);
+      $relation = _mica_find_relations_by_parent_and_child($this->config['parent_bundle'], $this->config['content_type']);
       if (!empty($relation)) {
       	$parent = entity_load('node', array($row->entity_id));
 				$child_id = $parent[$row->entity_id]->{$relation->options['node_reference']}[LANGUAGE_NONE][0]['nid'];
         $nodes = entity_load('node', array($child_id));
         $node = $nodes[$child_id];
         $node->changed = REQUEST_TIME;
-        $node->log = 'Updated by FeedsStudyChildProcessor';
+        $node->log = 'Updated by FeedsMicaProcessor';
       }
     }
     return $node;
