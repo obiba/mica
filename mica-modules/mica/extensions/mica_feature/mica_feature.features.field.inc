@@ -3720,8 +3720,6 @@ Prof.',
     ),
   );
 
-
-
   // Exported field: 'node-study_information-field_selection_criteria'
   $fields['node-study_information-field_selection_criteria'] = array(
     'field_config' => array(
@@ -4390,8 +4388,6 @@ Prof.',
   t('Investigator');
   t('Label');
   t('Legacy Id');
-  t('List Int');
-  t('List int2');
   t('Machine name of the content type that declares this field');
   t('Max age');
   t('Min age');
