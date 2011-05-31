@@ -10,14 +10,18 @@
  * Facet visibility block content function.
  */
 function mica_facet_visibility_block_content() {
+  
+  //drupal_add_js('jQuery(document).load(function { this.display = "none" });', 'inline');
+  
   global $user;
   $rids = array_keys($user->roles);
   $result = db_query("SELECT DISTINCT b.* FROM {block} b LEFT JOIN {block_role} r ON b.module = r.module AND b.delta = r.delta WHERE b.status = 1 AND b.custom <> 0 AND (r.rid IN (:rids) OR r.rid IS NULL) ORDER BY b.weight, b.module", array(':rids' => $rids));
-
+        
   $blocks = array();
-  foreach ($result as $block) {
+  foreach ($result as $block)  {   
     // only configure blocks from search_api related modules
     if (strpos($block->module,'search_api_') !== FALSE) {
+      
       $data = module_invoke($block->module, 'block_info');
       if (array_key_exists($block->delta, $data) && $data[$block->delta]['info']) {
         $blocks[$block->module][$block->module . ':' . $block->delta] = array(
@@ -42,20 +46,34 @@ function mica_facet_visibility_block_content() {
  * Returns a form for toggling facet visibility.
  */
 function mica_facet_visibility_form($form, &$form_state, $blocks) {
+  drupal_add_js(drupal_get_path('module', 'mica') . '/includes/filter_facet.js');
+  
   $form = array(
   	'#attached' => array(
     	'css' => array(drupal_get_path('module', 'mica') . '/includes/facet-visibility.css'),
   	),
   );
-  $form['block'] = array(
-        '#type' => 'fieldset',
-);
-  $form['block'] += $blocks;
+
+  $form['search_filter']  = array(
+    '#type' => 'textfield',
+   	'#attributes' => array ('placeholder' => t('Click here to select filters')),
+   	'#prefix' => '<table><tr><td>',
+    '#suffix' => '</td>',
+  );
 
   $form['submit'] = array(
-    '#type' => 'submit',
+  	'#type' => 'submit',
     '#value' => t('Apply'),
+  	'#prefix' => '<td>',
+    '#suffix' => '</td></tr></table>',
   );
+  
+  $form['block'] = array(
+    '#type' => 'fieldset',
+  );
+  
+  $form['block'] += $blocks;
+
   return $form;
 }
 
