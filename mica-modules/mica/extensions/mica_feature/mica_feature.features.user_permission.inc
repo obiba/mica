@@ -109,7 +109,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'create article content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -152,7 +152,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'create mica_study_information',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
       2 => 'study administrator',
     ),
     'module' => 'field_permissions',
@@ -163,7 +163,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'create page content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -172,7 +172,7 @@ function mica_feature_user_default_permissions() {
   $permissions['create study content'] = array(
     'name' => 'create study content',
     'roles' => array(
-      0 => 'studies administrator',
+      0 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -182,7 +182,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'create study_files content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -191,7 +191,7 @@ function mica_feature_user_default_permissions() {
   $permissions['create study_information content'] = array(
     'name' => 'create study_information content',
     'roles' => array(
-      0 => 'studies administrator',
+      0 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -201,7 +201,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'delete any article content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -238,7 +238,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'delete any page content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -247,7 +247,7 @@ function mica_feature_user_default_permissions() {
   $permissions['delete any study content'] = array(
     'name' => 'delete any study content',
     'roles' => array(
-      0 => 'studies administrator',
+      0 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -257,7 +257,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'delete any study_files content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -266,7 +266,7 @@ function mica_feature_user_default_permissions() {
   $permissions['delete any study_information content'] = array(
     'name' => 'delete any study_information content',
     'roles' => array(
-      0 => 'studies administrator',
+      0 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -276,7 +276,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'delete own article content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -313,7 +313,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'delete own page content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -322,7 +322,7 @@ function mica_feature_user_default_permissions() {
   $permissions['delete own study content'] = array(
     'name' => 'delete own study content',
     'roles' => array(
-      0 => 'studies administrator',
+      0 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -332,7 +332,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'delete own study_files content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -341,7 +341,7 @@ function mica_feature_user_default_permissions() {
   $permissions['delete own study_information content'] = array(
     'name' => 'delete own study_information content',
     'roles' => array(
-      0 => 'studies administrator',
+      0 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -351,7 +351,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'delete revisions',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
       2 => 'study administrator',
     ),
     'module' => 'node',
@@ -362,7 +362,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'edit any article content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -399,7 +399,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'edit any page content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -408,7 +408,7 @@ function mica_feature_user_default_permissions() {
   $permissions['edit any study content'] = array(
     'name' => 'edit any study content',
     'roles' => array(
-      0 => 'studies administrator',
+      0 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -418,7 +418,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'edit any study_files content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -427,7 +427,7 @@ function mica_feature_user_default_permissions() {
   $permissions['edit any study_information content'] = array(
     'name' => 'edit any study_information content',
     'roles' => array(
-      0 => 'studies administrator',
+      0 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -437,7 +437,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'edit own article content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -474,7 +474,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'edit own page content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -483,7 +483,7 @@ function mica_feature_user_default_permissions() {
   $permissions['edit own study content'] = array(
     'name' => 'edit own study content',
     'roles' => array(
-      0 => 'studies administrator',
+      0 => 'mica administrator',
       1 => 'study administrator',
     ),
     'module' => 'node',
@@ -494,7 +494,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'edit own study_files content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
       2 => 'study administrator',
     ),
     'module' => 'node',
@@ -504,7 +504,7 @@ function mica_feature_user_default_permissions() {
   $permissions['edit own study_information content'] = array(
     'name' => 'edit own study_information content',
     'roles' => array(
-      0 => 'studies administrator',
+      0 => 'mica administrator',
       1 => 'study administrator',
     ),
     'module' => 'node',
@@ -579,7 +579,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'revert revisions',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -599,7 +599,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'use search_api_facets',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
       2 => 'study administrator',
     ),
     'module' => 'search_api_facets',
@@ -635,7 +635,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'view own unpublished content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );
@@ -645,7 +645,7 @@ function mica_feature_user_default_permissions() {
     'name' => 'view revisions',
     'roles' => array(
       0 => 'administrator',
-      1 => 'studies administrator',
+      1 => 'mica administrator',
     ),
     'module' => 'node',
   );

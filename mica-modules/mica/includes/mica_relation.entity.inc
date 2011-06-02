@@ -161,12 +161,12 @@ class MicaRelation extends Entity {
 	  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('view ' . $node_ref_field_name));
 	  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('view ' . $node_ref_field_name));  
 	
-	  // give 'create' field permission to studies administrator and study administrator
+	  // give 'create' field permission to mica administrator and study administrator
 	  $admin_role = user_role_load_by_name('administrator');
-	  $studies_admin_role = user_role_load_by_name('studies administrator');
+	  $mica_admin_role = user_role_load_by_name('mica administrator');
 	  $study_admin_role = user_role_load_by_name('study administrator');
 	  user_role_grant_permissions($admin_role->rid, array('create ' . $node_ref_field_name));
-	  user_role_grant_permissions($studies_admin_role->rid, array('create ' . $node_ref_field_name));
+	  user_role_grant_permissions($mica_admin_role->rid, array('create ' . $node_ref_field_name));
 	  user_role_grant_permissions($study_admin_role->rid, array('create ' . $node_ref_field_name));
 	}  
 	
@@ -205,12 +205,12 @@ class MicaRelation extends Entity {
 	  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('view ' . $source));
 	  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('view ' . $source));  
 	
-	  // give 'create' field permission to studies administrator and study administrator
+	  // give 'create' field permission to mica administrator and study administrator
 	  $admin_role = user_role_load_by_name('administrator');
-	  $studies_admin_role = user_role_load_by_name('studies administrator');
+	  $mica_admin_role = user_role_load_by_name('mica administrator');
 	  $study_admin_role = user_role_load_by_name('study administrator');
 	  user_role_grant_permissions($admin_role->rid, array('create ' . $source));
-	  user_role_grant_permissions($studies_admin_role->rid, array('create ' . $source));
+	  user_role_grant_permissions($mica_admin_role->rid, array('create ' . $source));
 	  user_role_grant_permissions($study_admin_role->rid, array('create ' . $source));		
 	}
 	
