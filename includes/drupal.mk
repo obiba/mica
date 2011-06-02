@@ -6,8 +6,11 @@
 #
 # Modules dependencies
 #
+acl_version=7.x-1.0-beta3
 calendar_version=7.x-2.0-alpha1
+chain_menu_access_version=7.x-1.0-beta2
 collapsiblock_version=7.x-1.0
+content_access_version=7.x-1.x-dev
 ctools_version=7.x-1.0-alpha4
 date_version=7.x-2.0-alpha3
 drupal_version=7.0
@@ -16,6 +19,7 @@ entity_version=7.x-1.0-beta8
 features_version=7.x-1.0-beta2
 field_group_version=7.x-1.0-rc2
 field_permissions_version=7.x-1.0-alpha1
+forum_access_version=7.x-1.0-alpha4
 job_scheduler_version=7.x-2.0-alpha2
 link_version=7.x-1.0-alpha3
 login_destination_version=7.x-1.0-beta1
@@ -52,7 +56,8 @@ drupal-download:
 	$(drushexec) dl date-$(date_version) calendar-$(calendar_version) && \
 	$(drushexec) dl login_destination-$(login_destination_version) && \
 	$(drushexec) dl viewreference-$(viewreference_version) && \
-	$(drushexec) dl views_data_export-$(views_data_export_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version)
+	$(drushexec) dl views_data_export-$(views_data_export_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version) && \
+	$(drushexec) dl acl-$(acl_version) chain_menu_access-$(chain_menu_access_version) content_access-$(content_access_version) forum_access-$(forum_access_version)
 	
 drupal-forks:	
 	cp -r forks/* target/$(micadir)/sites/all/modules
