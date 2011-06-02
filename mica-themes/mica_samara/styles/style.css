@@ -1390,11 +1390,11 @@ span.tabledrag-changed {
 }
 th a,
 thead a {
-  color: #fff!important;
+  color: #000!important;
 }
 th a:hover,
 thead a:hover {
-  color: #fff;
+  color: #000;
 }
 table img {
   margin: 0 0 0 7px; /* LTR */
