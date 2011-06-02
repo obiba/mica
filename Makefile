@@ -3,7 +3,6 @@
 # Requires drush 4+ to be installed: http://drush.ws/
 #
 
-include includes/drupal.mk
 
 version=1.0-SNAPSHOT
 
@@ -40,6 +39,11 @@ db_pass=rootadmin
 #
 
 all: drupal mica
+
+#
+# Include drupal targets
+#
+include includes/drupal.mk
 
 #
 # Mica Build
