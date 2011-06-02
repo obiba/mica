@@ -18,6 +18,7 @@ dependencies[] = menu_firstchild
 
 files[] = includes/blocks.inc
 files[] = includes/exception.inc
+files[] = includes/fieldgroups.inc
 files[] = includes/mica_relation.entity.inc
 files[] = includes/relations.inc
 files[] = includes/search.inc

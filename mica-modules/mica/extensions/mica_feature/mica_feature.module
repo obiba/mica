@@ -46,258 +46,52 @@ function _mica_import_relations() {
 }
 
 function _mica_import_field_groups() {
+  module_load_include('inc', 'mica', 'includes/fieldgroups');
+  
   // STUDY
-  $field_group = new stdClass;
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_details|node|study|form';
-  $field_group->group_name = 'group_details';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->label = 'Details';
-  $field_group->weight = '0';
-  $field_group->children = array(
-    0 => 'mica_study_information',
-    1 => 'mica_study_files',
-  );
-  $field_group->format_type = 'fieldset';
-  $field_group->format_settings = array(
-  	'formatter' => 'collapsible',
-    'instance_settings' => array(
-      'classes' => '',
-      'required_fields' => 1,
-    ),
-  );
-  field_group_save($field_group);
+  _mica_add_fieldset_group('study','group_details', 'Details', '3', '', array(
+    'mica_study_information',
+    'mica_study_files',
+  ));
   
+  // STUDY INFORMATION : GENERAL INFO
+  _mica_add_fieldset_group('study_information','group_general_info', 'General Information', '0', '', array(
+    'field_full_name',
+    'field_investigator',
+    'field_contact',
+    'field_target_number_participants',
+  ));
   
-  // GENERAL INFO
-  $field_group = new stdClass;
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_general_info|node|study_information|form';
-  $field_group->group_name = 'group_general_info';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study_information';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->label = 'General Information';
-  $field_group->weight = '0';
-  $field_group->children = array(
-    0 => 'title',
-    1 => 'field_full_name',
-    2 => 'field_investigator',
-    3 => 'field_contact',
-    4 => 'field_target_number_participants',
-  );
-  $field_group->format_type = 'fieldset';
-  $field_group->format_settings = array(
-  	'formatter' => 'collapsible',
-    'instance_settings' => array(
-      'classes' => '',
-      'required_fields' => 1,
-    ),
-  );
-  field_group_save($field_group);
+  // STUDY INFORMATION : METHOD
+  _mica_add_fieldset_group('study_information','group_method', 'Method', '1', '', array(
+    'field_design',
+    'field_design_other',
+    'field_design_target',
+    'field_target_other',
+    'field_selection_criteria',
+    'field_study_country',
+    'field_gender',
+    'field_age_min',
+    'field_age_max',
+    'field_target_number_biosamples',
+    'field_biosamples_collected',
+    'field_biosamples_collected_other',
+    'field_biosamples_tissues',
+    'field_gwas_analysis',
+    'field_gwas_number',
+  ));
 
-  $field_group = new stdClass;
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_general_info|node|study_information|default';
-  $field_group->group_name = 'group_general_info';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study_information';
-  $field_group->mode = 'default';
-  $field_group->parent_name = '';
-  $field_group->label = 'General Information';
-  $field_group->weight = '0';
-  $field_group->children = array(
-    0 => 'field_full_name',
-    1 => 'field_investigator',
-    2 => 'field_contact',
-    3 => 'field_target_number_participants',
-  );
-  $field_group->format_type = 'fieldset';
-  $field_group->format_settings = array(
-    'formatter' => 'collapsible',
-    'instance_settings' => array(
-      'classes' => '',
-      'required_fields' => 1,
-    ),
-  );
-  field_group_save($field_group);
+  // STUDY INFORMATION : GOVERNANCE
+  _mica_add_fieldset_group('study_information','group_governance', 'Governance', '2', '', array(
+    'field_access',
+    'field_access_other',
+  ));
 
-  // METHOD
-  $field_group = new stdClass;
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_method|node|study_information|form';
-  $field_group->group_name = 'group_method';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study_information';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->label = 'Method';
-  $field_group->weight = '1';
-  $field_group->children = array(
-    0 => 'field_design',
-    1 => 'field_design_other',
-    2 => 'field_design_target',
-    3 => 'field_target_other',
-    4 => 'field_selection_criteria',
-    5 => 'field_study_country',
-    6 => 'field_gender',
-    7 => 'field_age_min',
-    8 => 'field_age_max',
-    9 => 'field_target_number_biosamples',
-    10=> 'field_biosamples_collected',
-    11=> 'field_biosamples_collected_other',
-    12=> 'field_biosamples_tissues',
-    13=> 'field_gwas_analysis',
-    14=> 'field_gwas_number',
-  );
-  $field_group->format_type = 'fieldset';
-  $field_group->format_settings = array(
-    'formatter' => 'collapsible',
-    'instance_settings' => array(
-      'classes' => '',
-      'required_fields' => 1,
-    ),
-  );
-  field_group_save($field_group);
-
-  $field_group = new stdClass;
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_method|node|study_information|default';
-  $field_group->group_name = 'group_method';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study_information';
-  $field_group->mode = 'default';
-  $field_group->parent_name = '';
-  $field_group->label = 'Method';
-  $field_group->weight = '1';
-  $field_group->children = array(
-    0 => 'field_design',
-    1 => 'field_design_other',
-    2 => 'field_design_target',
-    3 => 'field_target_other',
-    4 => 'field_selection_criteria',
-    5 => 'field_study_country',
-    6 => 'field_gender',
-    7 => 'field_age_min',
-    8 => 'field_age_max',
-    9 => 'field_target_number_biosamples',
-    10=> 'field_biosamples_collected',
-    11=> 'field_biosamples_collected_other',
-    12=> 'field_biosamples_tissues',
-    13=> 'field_gwas_analysis',
-    14=> 'field_gwas_number',
-  );
-  $field_group->format_type = 'fieldset';
-  $field_group->format_settings = array(
-    'formatter' => 'collapsible',
-    'instance_settings' => array(
-      'classes' => '',
-      'required_fields' => 1,
-  ),
-  );
-  field_group_save($field_group);
-
-  // GOVERNANCE
-  $field_group = new stdClass;
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_governance|node|study_information|form';
-  $field_group->group_name = 'group_governance';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study_information';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->label = 'Governance';
-  $field_group->weight = '2';
-  $field_group->children = array(
-    0 => 'field_access',
-    1 => 'field_access_other',
-  );
-  $field_group->format_type = 'fieldset';
-  $field_group->format_settings = array(
-    'formatter' => 'collapsible',
-    'instance_settings' => array(
-      'classes' => '',
-      'required_fields' => 1,
-  ),
-  );
-  field_group_save($field_group);
-
-  $field_group = new stdClass;
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_governance|node|study_information|default';
-  $field_group->group_name = 'group_governance';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study_information';
-  $field_group->mode = 'default';
-  $field_group->parent_name = '';
-  $field_group->label = 'Governance';
-  $field_group->weight = '2';
-  $field_group->children = array(
-    0 => 'field_access',
-    1 => 'field_access_other',
-  );
-  $field_group->format_type = 'fieldset';
-  $field_group->format_settings = array(
-    'formatter' => 'collapsible',
-    'instance_settings' => array(
-      'classes' => '',
-      'required_fields' => 1,
-    ),
-  );
-  field_group_save($field_group);
-
-  // STATUS
-  $field_group = new stdClass;
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_status|node|study_information|form';
-  $field_group->group_name = 'group_status';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study_information';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->label = 'Status';
-  $field_group->weight = '3';
-  $field_group->children = array(
-    0 => 'field_status_start',
-    1 => 'field_status_end',
-  );
-  $field_group->format_type = 'fieldset';
-  $field_group->format_settings = array(
-    'formatter' => 'collapsible',
-    'instance_settings' => array(
-      'classes' => '',
-      'required_fields' => 1,
-    ),
-  );
-  field_group_save($field_group);
-
-  $field_group = new stdClass;
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_status|node|study_information|default';
-  $field_group->group_name = 'group_status';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study_information';
-  $field_group->mode = 'default';
-  $field_group->parent_name = '';
-  $field_group->label = 'Status';
-  $field_group->weight = '3';
-  $field_group->children = array(
-    0 => 'field_status_start',
-    1 => 'field_status_end',
-  );
-  $field_group->format_type = 'fieldset';
-  $field_group->format_settings = array(
-    'formatter' => 'collapsible',
-    'instance_settings' => array(
-      'classes' => '',
-      'required_fields' => 1,
-    ),
-  );
-  field_group_save($field_group);
+  // STUDY INFORMATION : STATUS
+  _mica_add_fieldset_group('study_information','group_status', 'Status', '3', '', array(
+    'field_status_start',
+    'field_status_end',
+  ));
 }
 
 function _mica_import_custom_name_format(){
