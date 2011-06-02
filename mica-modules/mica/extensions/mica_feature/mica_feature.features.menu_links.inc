@@ -41,10 +41,10 @@ function mica_feature_menu_default_menu_links() {
   );  
 
   // Exported menu link: main-menu:<firstchild>
-  $menu_links['main-menu:<firstchild>'] = array(
+  $menu_links['main-menu:search'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => '<firstchild>',
-    'router_path' => '<firstchild>',
+    'link_path' => 'search',
+    'router_path' => 'search',
     'link_title' => 'Search',
     'options' => array(
       'attributes' => array(
@@ -74,25 +74,10 @@ function mica_feature_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '3',
-    'parent_path' => '<firstchild>',
+    'parent_path' => 'search',
   );  
 
-  // Exported menu link: main-menu:fields-description-search
-  $menu_links['main-menu:fields-description-search'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'fields-description-search',
-    'router_path' => 'fields-description-search',
-    'link_title' => 'Fields Description Search',
-    'options' => array(),
-    'module' => 'system',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '1',
-    'expanded' => '0',
-    'weight' => '4',
-    'parent_path' => '<firstchild>',
-  );
-// Exported menu link: navigation:<firstchild>
+  // Exported menu link: navigation:<firstchild>
   $menu_links['navigation:<firstchild>'] = array(
     'menu_name' => 'navigation',
     'link_path' => '<firstchild>',
@@ -235,7 +220,6 @@ function mica_feature_menu_default_menu_links() {
   t('Export Studies');
   t('Export Studies Information');
   t('Export Study Files');
-  t('Fields Description Search');
   t('Home');
   t('Search');
   t('Studies');

@@ -46,6 +46,32 @@ function _mica_import_relations() {
 }
 
 function _mica_import_field_groups() {
+  // STUDY
+  $field_group = new stdClass;
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_details|node|study|form';
+  $field_group->group_name = 'group_details';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->label = 'Details';
+  $field_group->weight = '0';
+  $field_group->children = array(
+    0 => 'mica_study_information',
+    1 => 'mica_study_files',
+  );
+  $field_group->format_type = 'fieldset';
+  $field_group->format_settings = array(
+  	'formatter' => 'collapsible',
+    'instance_settings' => array(
+      'classes' => '',
+      'required_fields' => 1,
+    ),
+  );
+  field_group_save($field_group);
+  
+  
   // GENERAL INFO
   $field_group = new stdClass;
   $field_group->api_version = 1;
