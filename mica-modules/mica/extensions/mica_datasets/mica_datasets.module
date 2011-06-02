@@ -1,0 +1,24 @@
+<?php
+/**
+ * @file
+ * Code for the Mica Datasets feature.
+ */
+
+include_once('mica_datasets.features.inc');
+
+/**
+ * Implements hook_install().
+ */
+function mica_datasets_install() {
+  _mica_datasets_import_field_groups();
+}
+
+function _mica_datasets_import_field_groups() {
+  module_load_include('inc', 'mica', 'includes/fieldgroups');
+  
+  // STUDY
+  _mica_add_fieldset_group('study','group_datasets', 'Datasets', '4', '', array(
+    'mica_dataset',
+    'mica_opal',
+  ));
+}
