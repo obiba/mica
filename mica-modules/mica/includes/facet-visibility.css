@@ -9,6 +9,11 @@
   padding-bottom: 0px;
 }
 
+#mica-facet-visibility-form input.form-submit {
+  margin-left: 5px;
+  margin-top: 4px;
+}
+
 #mica-facet-visibility-form #edit-block .fieldset-wrapper {
   max-height: 250px;
   overflow-y: auto;
@@ -17,12 +22,10 @@
 #mica-facet-visibility-form #edit-block {
   padding: 0;
   margin-bottom: 5px;
-  margin-top: 0;
+  margin-top: -9px;
   position:absolute;
   z-index:1000;
   width:350px;
-  border-width:2px;
-  border-color:black;
   background-color:#f2f2f2;
   opacity:0.95;
 }
