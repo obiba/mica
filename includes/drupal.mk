@@ -27,6 +27,7 @@ search_api_version=7.x-1.0-beta8
 strongarm_version=7.x-2.0-beta2
 views_data_export_version=7.x-3.0-beta4
 views_version=7.x-3.0-beta3
+viewreference_version=7.x-3.0
 
 #
 # Drupal Build
@@ -50,6 +51,7 @@ drupal-download:
 	$(drushexec) dl collapsiblock-$(collapsiblock_version) && \
 	$(drushexec) dl date-$(date_version) calendar-$(calendar_version) && \
 	$(drushexec) dl login_destination-$(login_destination_version) && \
+	$(drushexec) dl viewreference-$(viewreference_version) && \
 	$(drushexec) dl views_data_export-$(views_data_export_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version)
 	
 drupal-forks:	
