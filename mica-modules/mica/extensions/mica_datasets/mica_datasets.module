@@ -33,7 +33,7 @@ function mica_datasets_entity_info() {
 /**
  * Implements hook_entity_property_info().
  */
-/*function mica_datasets_entity_property_info() {
+function mica_datasets_entity_property_info() {
   $info['mica_dataset_connector']['properties'] = array(
     'id' => array(
       'label' => t('ID'),
@@ -58,15 +58,15 @@ function mica_datasets_entity_info() {
       'description' => t('The displayed description for a connector.'),
       'sanitize' => 'filter_xss',
   ),
-    'study_id' => array(
-      'label' => t('Study ID'),
-      'type' => 'integer',
-      'description' => t('The primary identifier for the Study node.'),
-  ),
     'dataset_id' => array(
       'label' => t('Dataset ID'),
       'type' => 'integer',
       'description' => t('The primary identifier for the Dataset node.'),
+  ),
+    'study_id' => array(
+      'label' => t('Study ID'),
+      'type' => 'integer',
+      'description' => t('The primary identifier for the Study node.'),
   ),
     'class' => array(
       'label' => t('Connection class'),
@@ -81,7 +81,7 @@ function mica_datasets_entity_info() {
   ),
   );
   return $info;
-}*/
+}
 
 /**
  * Load the dataset connector with the specified id.
