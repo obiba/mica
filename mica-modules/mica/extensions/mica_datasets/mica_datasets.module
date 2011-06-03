@@ -11,6 +11,147 @@ include_once('mica_datasets.features.inc');
  */
 function mica_datasets_install() {
   _mica_datasets_import_field_groups();
+  _mica_datasets_lock_fields();
+}
+
+/**
+ * Implements hook_entity_info().
+ */
+function mica_datasets_entity_info() {
+  $info['mica_dataset_connector'] = array(
+    'label' => t('Dataset connector'),
+    'controller class' => 'EntityAPIController',
+    'metadata controller class' => FALSE,
+    'entity class' => 'MicaDatasetConnector',
+    'base table' => 'mica_dataset_connector',
+    'uri callback' => 'mica_dataset_connector_url',
+    'module' => 'mica_dataset',
+    'exportable' => TRUE,
+    'entity keys' => array(
+      'id' => 'id',
+      'label' => 'name',
+      'name' => 'machine_name',
+  ),
+  );
+
+  return $info;
+}
+
+
+/**
+ * Implements hook_entity_property_info().
+ */
+function mica_datasets_entity_property_info() {
+  $info['mica_dataset_connector']['properties'] = array(
+    'id' => array(
+      'label' => t('ID'),
+      'type' => 'integer',
+      'description' => t('The primary identifier for a connector.'),
+  ),
+    'name' => array(
+      'label' => t('Name'),
+      'type' => 'text',
+      'description' => t('The displayed name for a connector.'),
+      'required' => TRUE,
+  ),
+    'machine_name' => array(
+      'label' => t('Machine name'),
+      'type' => 'token',
+      'description' => t('The internally used machine name for a connector.'),
+      'required' => TRUE,
+  ),
+    'description' => array(
+      'label' => t('Description'),
+      'type' => 'text',
+      'description' => t('The displayed description for a connector.'),
+      'sanitize' => 'filter_xss',
+  ),
+    'study_id' => array(
+      'label' => t('Study ID'),
+      'type' => 'integer',
+      'description' => t('The primary identifier for the Study node.'),
+  ),
+    'dataset_id' => array(
+      'label' => t('Dataset ID'),
+      'type' => 'integer',
+      'description' => t('The primary identifier for the Dataset node.'),
+  ),
+    'class' => array(
+      'label' => t('Connection class'),
+      'type' => 'text',
+      'description' => t('The ID of the connection class to use for this server.'),
+      'required' => TRUE,
+  ),
+    'enabled' => array(
+      'label' => t('Enabled'),
+      'type' => 'boolean',
+      'description' => t('A flag indicating whether the connector is enabled.'),
+  ),
+  );
+  return $info;
+}
+
+/**
+ * Load the dataset connector with the specified id.
+ *
+ * @param $id
+ *   The dataset connector's id.
+ * @param $reset
+ *   Whether to reset the internal cache.
+ *
+ * @return MicaDatasetConnector
+ *   An object representing the connector with the specified id.
+ */
+function mica_dataset_connector_load($id, $reset = FALSE) {
+  $ret = mica_dataset_connector_load_multiple(array($id), array(), $reset);
+  return $ret ? reset($ret) : FALSE;
+}
+
+/**
+ * Load multiple connectors at once, determined by IDs or machine names, or by
+ * other conditions.
+ *
+ * @see entity_load()
+ *
+ * @param $ids
+ *   An array of connector IDs or machine names.
+ * @param $conditions
+ *   An array of conditions on the {mica_dataset_connector} table in the form
+ *   'field' => $value.
+ * @param $reset
+ *   Whether to reset the internal entity_load cache.
+ *
+ * @return array
+ *   An array of connector objects keyed by machine name.
+ */
+function mica_dataset_connector_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
+  return entity_load('mica_dataset_connector', $ids, $conditions, $reset);
+}
+
+/**
+ * Entity uri callback.
+ */
+function mica_dataset_connector_url(MicaDatasetConnector $connector) {
+  return array(
+    'path' => 'admin/config/system/mica/connector/' . $connector->machine_name,
+    'options' => array(),
+  );
+}
+
+/**
+ * Inserts a new dataset connector into the database.
+ *
+ * @param array $values
+ *   An array containing the values to be inserted.
+ *
+ * @return
+ *   The newly inserted server's id, or FALSE on error.
+ */
+function mica_dataset_connector_insert(array $values) {
+  $connector = new MicaDatasetConnector($values);
+  $connector->is_new = TRUE;
+  $connector->save();
+  return $connector->id;
 }
 
 /**
@@ -18,12 +159,37 @@ function mica_datasets_install() {
  */
 function _mica_datasets_import_field_groups() {
   module_load_include('inc', 'mica', 'includes/fieldgroups');
-  
+
   // STUDY
   _mica_add_fieldset_group('study','group_datasets', 'Datasets', '4', '', array(
     'mica_dataset',
     'mica_opal',
   ));
+}
+
+/**
+ * Make the fields of this feature neither editable nor deletable.
+ */
+function _mica_datasets_lock_fields() {
+  $names = array(
+    'field_dataschema', 
+    'field_dataset_studies', 
+    'field_dataset_variables', 
+    'field_categories', 
+    'field_dataset', 
+    'field_label', 
+    'field_repeatable', 
+    'field_value_type', 
+    'mica_dataset', 
+    'mica_opal');
+  
+  foreach ($names as $f) {
+    $field = field_read_field($f);
+    debug($field);
+    $field['field_name'] = $f;
+    $field['locked'] = 1;
+    field_update_field($field);
+  }
 }
 
 /**
