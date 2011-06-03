@@ -7,13 +7,6 @@
 include_once('mica_datasets.features.inc');
 
 /**
- * Implements hook_install().
- */
-function mica_datasets_install() {
-  _mica_datasets_import_field_groups();
-}
-
-/**
  * Implements hook_entity_info().
  */
 function mica_datasets_entity_info() {
@@ -151,19 +144,6 @@ function mica_dataset_connector_insert(array $values) {
   $connector->is_new = TRUE;
   $connector->save();
   return $connector->id;
-}
-
-/**
- * Register some field groups at module install.
- */
-function _mica_datasets_import_field_groups() {
-  module_load_include('inc', 'mica', 'includes/fieldgroups');
-
-  // STUDY
-  _mica_add_fieldset_group('study','group_datasets', 'Datasets', '4', '', array(
-    'mica_dataset',
-    'mica_opal',
-  ));
 }
 
 /**
