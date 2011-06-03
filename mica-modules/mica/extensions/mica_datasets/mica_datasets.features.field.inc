@@ -14,6 +14,7 @@ function mica_datasets_field_default_fields() {
   $fields['node-dataset-body'] = array(
     'field_config' => array(
       'active' => '1',
+      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(
@@ -105,6 +106,7 @@ function mica_datasets_field_default_fields() {
   $fields['node-dataset-field_dataschema'] = array(
     'field_config' => array(
       'active' => '1',
+      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -187,6 +189,7 @@ function mica_datasets_field_default_fields() {
   $fields['node-dataset-field_dataset_studies'] = array(
     'field_config' => array(
       'active' => '1',
+      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -323,6 +326,7 @@ function mica_datasets_field_default_fields() {
   $fields['node-dataset-field_dataset_variables'] = array(
     'field_config' => array(
       'active' => '1',
+      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -459,6 +463,7 @@ function mica_datasets_field_default_fields() {
   $fields['node-participant_variable-body'] = array(
     'field_config' => array(
       'active' => '1',
+      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(
@@ -551,6 +556,7 @@ function mica_datasets_field_default_fields() {
   $fields['node-participant_variable-field_categories'] = array(
     'field_config' => array(
       'active' => '1',
+      'locked' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -631,6 +637,7 @@ function mica_datasets_field_default_fields() {
   $fields['node-participant_variable-field_dataset'] = array(
     'field_config' => array(
       'active' => '1',
+      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -735,6 +742,7 @@ function mica_datasets_field_default_fields() {
   $fields['node-participant_variable-field_label'] = array(
     'field_config' => array(
       'active' => '1',
+      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -815,6 +823,7 @@ function mica_datasets_field_default_fields() {
   $fields['node-participant_variable-field_repeatable'] = array(
     'field_config' => array(
       'active' => '1',
+      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -893,6 +902,7 @@ function mica_datasets_field_default_fields() {
   $fields['node-participant_variable-field_value_type'] = array(
     'field_config' => array(
       'active' => '1',
+      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -970,6 +980,7 @@ function mica_datasets_field_default_fields() {
   $fields['node-study-mica_dataset'] = array(
     'field_config' => array(
       'active' => '1',
+      'locked' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -1060,6 +1071,7 @@ function mica_datasets_field_default_fields() {
   $fields['node-study-mica_opal'] = array(
     'field_config' => array(
       'active' => '1',
+      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),

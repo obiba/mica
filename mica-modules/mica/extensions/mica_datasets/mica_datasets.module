@@ -11,7 +11,6 @@ include_once('mica_datasets.features.inc');
  */
 function mica_datasets_install() {
   _mica_datasets_import_field_groups();
-  _mica_datasets_lock_fields();
 }
 
 /**
@@ -165,31 +164,6 @@ function _mica_datasets_import_field_groups() {
     'mica_dataset',
     'mica_opal',
   ));
-}
-
-/**
- * Make the fields of this feature neither editable nor deletable.
- */
-function _mica_datasets_lock_fields() {
-  $names = array(
-    'field_dataschema', 
-    'field_dataset_studies', 
-    'field_dataset_variables', 
-    'field_categories', 
-    'field_dataset', 
-    'field_label', 
-    'field_repeatable', 
-    'field_value_type', 
-    'mica_dataset', 
-    'mica_opal');
-  
-  foreach ($names as $f) {
-    $field = field_read_field($f);
-    debug($field);
-    $field['field_name'] = $f;
-    $field['locked'] = 1;
-    field_update_field($field);
-  }
 }
 
 /**
