@@ -17,6 +17,12 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
   }
   
   $field_name = $form_state['build_info']['args'][0]['field_name'];
+  
+  $field = field_read_field($field_name);
+  if (!$field || $field['locked']) {
+    return; // field is locked, cannot edit it
+  }
+  
   $field_description = _mica_find_field_description($bundle, $field_name);
 
   $form['field']['settings']['field_description_infos'] = array(
