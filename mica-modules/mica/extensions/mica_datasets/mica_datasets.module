@@ -7,6 +7,33 @@
 include_once('mica_datasets.features.inc');
 
 /**
+ * Implements hook_node_insert()
+ */
+function mica_datasets_node_insert($node) {
+  _mica_datasets_ensure_viewreference_arguments($node);
+}
+
+function _mica_datasets_ensure_viewreference_arguments($node) {
+  if ($node->type === 'dataset') {
+    $node = node_load($node->nid);    // reload node so it's not in 'new' state
+    $to_save = FALSE;
+    
+    foreach (array('field_dataset_studies', 'field_dataset_variables') as $field_name) {
+      $field = $node->$field_name;
+      if ($field[$node->language][0]['arguments'] != $node->nid) {
+        $field[$node->language][0]['arguments'] = $node->nid;
+        $node->$field_name = $field;
+        $to_save = TRUE;
+      }
+    }
+
+    if ($to_save) {
+      node_save($node);
+    }
+  }
+}
+
+/**
  * Implements hook_entity_info().
  */
 function mica_datasets_entity_info() {
@@ -28,7 +55,6 @@ function mica_datasets_entity_info() {
 
   return $info;
 }
-
 
 /**
  * Implements hook_entity_property_info().
