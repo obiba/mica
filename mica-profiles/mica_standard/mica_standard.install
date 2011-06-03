@@ -13,17 +13,6 @@ function mica_standard_install() {
   $mica_theme = 'mica_samara';
   $values = array(
     array(
-      'module' => 'user',
-      'delta' => 'login',
-      'theme' => $mica_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => 'header',
-      'visibility' => 1,
-      'pages' => '',
-      'cache' => -1,
-    ),
-    array(
       'module' => 'views',
       'delta' => 'events_calendar-block_1',
       'theme' => $mica_theme,
