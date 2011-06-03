@@ -25,7 +25,7 @@ function mica_datasets_entity_info() {
     'base table' => 'mica_dataset_connector',
     'uri callback' => 'mica_dataset_connector_url',
     'module' => 'mica_dataset',
-    'exportable' => TRUE,
+    'exportable' => FALSE,
     'entity keys' => array(
       'id' => 'id',
       'label' => 'name',
@@ -40,7 +40,7 @@ function mica_datasets_entity_info() {
 /**
  * Implements hook_entity_property_info().
  */
-function mica_datasets_entity_property_info() {
+/*function mica_datasets_entity_property_info() {
   $info['mica_dataset_connector']['properties'] = array(
     'id' => array(
       'label' => t('ID'),
@@ -88,7 +88,7 @@ function mica_datasets_entity_property_info() {
   ),
   );
   return $info;
-}
+}*/
 
 /**
  * Load the dataset connector with the specified id.

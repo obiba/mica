@@ -975,12 +975,11 @@ function mica_datasets_field_default_fields() {
       ),
     ),
   );
-  
-    // Exported field: 'node-study-mica_dataset'
+
+  // Exported field: 'node-study-mica_dataset'
   $fields['node-study-mica_dataset'] = array(
     'field_config' => array(
       'active' => '1',
-      'locked' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -1066,7 +1065,7 @@ function mica_datasets_field_default_fields() {
       ),
     ),
   );
-  
+
   // Exported field: 'node-study-mica_opal'
   $fields['node-study-mica_opal'] = array(
     'field_config' => array(
@@ -1118,7 +1117,7 @@ function mica_datasets_field_default_fields() {
           'label' => 'inline',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'link_field',
+          'type' => 'default',
           'weight' => '7',
         ),
         'teaser' => array(
@@ -1156,7 +1155,6 @@ function mica_datasets_field_default_fields() {
       ),
     ),
   );
-  
 
   // Translatables
   // Included for use with string extractors like potx.
@@ -1168,6 +1166,7 @@ function mica_datasets_field_default_fields() {
   t('Datasets');
   t('Description');
   t('Label');
+  t('Opal');
   t('Participant Variables');
   t('Repeatable');
   t('Studies');
