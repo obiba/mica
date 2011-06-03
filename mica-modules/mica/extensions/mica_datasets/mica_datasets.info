@@ -42,6 +42,10 @@ features[variable][] = "node_options_participant_variable"
 features[views_view][] = "dataset_participant_variables"
 features[views_view][] = "dataset_studies"
 features[views_view][] = "datasets"
+
+files[] = includes/connector_entity.inc
+files[] = includes/connection.inc
+
 name = "Mica Datasets"
 package = "OBiBa"
 project = "mica_datasets"

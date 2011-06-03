@@ -13,6 +13,9 @@ function mica_datasets_install() {
   _mica_datasets_import_field_groups();
 }
 
+/**
+ * Register some field groups at module install.
+ */
 function _mica_datasets_import_field_groups() {
   module_load_include('inc', 'mica', 'includes/fieldgroups');
   
@@ -21,4 +24,33 @@ function _mica_datasets_import_field_groups() {
     'mica_dataset',
     'mica_opal',
   ));
+}
+
+/**
+ * Returns either a list of all available connection infos, or a specific one.
+ *
+ * @see hook_mica_datasets_connection_info()
+ *
+ * @param $id
+ *   The ID of the connection info to retrieve.
+ *
+ * @return array
+ *   If $id was not specified, an array of all available service classes.
+ *   Otherwise, either the service info with the specified id (if it exists),
+ *   or NULL.
+ */
+function mica_datasets_get_connection_info($id = NULL) {
+  $connections = &drupal_static(__FUNCTION__);
+
+  if (!isset($connections)) {
+    $connections = module_invoke_all('mica_datasets_connection_info');
+
+    // Allow other modules to alter definitions
+    drupal_alter('mica_datasets_connection_info', $connections);
+  }
+
+  if (isset($id)) {
+    return isset($connections[$id]) ? $connections[$id] : NULL;
+  }
+  return $connections;
 }
