@@ -7,6 +7,34 @@
 include_once('mica_datasets.features.inc');
 
 /**
+ * Implements hook_menu().
+ */
+function mica_datasets_menu() {
+  $items['node/%node/datasets'] = array(
+      'access callback' => '_study_datasets_access',
+      'access arguments' => array(1),
+      'page callback' => '_study_datasets_page',
+      'page arguments' => array(1),
+      'title' => 'Edit Datasets',
+      'weight' => 5,
+      'type' => MENU_LOCAL_TASK,
+      'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+      'file' => 'mica_datasets.pages.inc',
+    );
+  return $items;
+}
+
+function _study_datasets_access($node) {
+  global $user;
+  if (is_int($node)) {
+    $node = node_load($node);
+  }
+  // Make sure the user can view the original node content.
+  $access = $node->type == 'study' && node_access('update', $node);
+  return $access;
+}
+
+/**
  * Implements hook_node_insert()
  */
 function mica_datasets_node_insert($node) {
