@@ -451,7 +451,7 @@ function mica_feature_default_search_api_index() {
         }
       }
     },
-    "enabled" : "1",
+    "enabled" : "0",
     "rdf_mapping" : []
   }');
   $items['studies_index'] = entity_import('search_api_index', '{
@@ -1101,7 +1101,7 @@ function mica_feature_default_search_api_index() {
         }
       }
     },
-    "enabled" : "1",
+    "enabled" : "0",
     "rdf_mapping" : []
   }');
   return $items;
@@ -1124,7 +1124,7 @@ function mica_feature_default_search_api_server() {
       "http_user" : "",
       "http_pass" : ""
     },
-    "enabled" : "1",
+    "enabled" : "0",
     "rdf_mapping" : []
   }');
   return $items;
