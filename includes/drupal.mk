@@ -59,6 +59,10 @@ drupal-download:
 	$(drushexec) dl views_data_export-$(views_data_export_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version) && \
 	$(drushexec) dl acl-$(acl_version) chain_menu_access-$(chain_menu_access_version) content_access-$(content_access_version) forum_access-$(forum_access_version)
 	
+drupal-examples:
+	cd target/$(micadir) && \
+	$(drushexec) dl examples
+
 drupal-forks:	
 	cp -r forks/* target/$(micadir)/sites/all/modules
 
