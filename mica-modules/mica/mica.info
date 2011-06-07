@@ -14,6 +14,7 @@ dependencies[] = mica_node_reference_field
 dependencies[] = field_permissions
 dependencies[] = menu
 dependencies[] = menu_firstchild
+dependencies[] = http_client
 
 
 files[] = includes/blocks.inc
@@ -30,6 +31,8 @@ files[] = includes/feeds/mappers/name.inc
 files[] = includes/feeds/mappers/references.inc
 files[] = includes/feeds/processors/FeedsStudyChildProcessor.inc
 files[] = includes/feeds/processors/FeedsUniqueNodeProcessor.inc
+files[] = includes/feeds/parsers/FeedsMultiValueCSVParser.inc
+files[] = includes/feeds/fetchers/FeedsHTTPSFetcher.inc
 
 files[] = mica.install
 files[] = mica.module
