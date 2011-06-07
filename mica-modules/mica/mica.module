@@ -298,9 +298,26 @@ function mica_feeds_plugins() {
       'path' => $path,
   ),
   );
+  
+  $path = drupal_get_path('module', 'mica') . '/includes/feeds/parsers';
 
+<<<<<<< .mine
+  $info['FeedsMultiValueCSVParser'] = array(
+    'name' => 'Multivalue CSV parser',
+    'description' => 'Parse data in Comma Separated Value format, with the option for multiple values per cell.',
+    'handler' => array(
+      'parent' => 'FeedsCSVParser',
+      'class' => 'FeedsMultiValueCSVParser',
+      'file' => 'FeedsMultiValueCSVParser.inc',
+      'path' => $path,
+    ),
+  );
+  return $info;
+  
+=======
   return $info;
 
+>>>>>>> .r12821
 }
 
 

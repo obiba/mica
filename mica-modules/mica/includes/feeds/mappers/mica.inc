@@ -32,6 +32,30 @@ function mica_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_nam
         'description' => t('The Legacy Id of the parent Study of the node.', array('@label' => $instance['label'])),
       );
     }
+
+    // Add "list_integer" and "list_text" to mappable fields
+    // Copied from original feeds/include/mappers/field.inc file
+    $numeric_types = array(
+      'list_integer',
+    );
+    $string_types = array(
+      'list_text',
+    );
+    $info = field_info_field($name);
+    if (in_array($info['type'], $numeric_types)) {
+      $callback = 'field_feeds_set_target_numeric';
+    }
+    if (in_array($info['type'], $string_types)) {
+      $callback = 'field_feeds_set_target_text';
+    }
+    if (isset($callback)) {
+      $targets[$name] = array(
+        'name' => $instance['label'],
+        'callback' => $callback,
+        'description' => t('The @label field of the node.', array('@label' => $instance['label'])),
+      );
+    }
+    // End copied code
   }
 }
 

@@ -21,7 +21,7 @@ mica_samara_version=7.x-1.0-dev
 #
 # Forked Modules
 #
-feeds_version=7.x-2.0-alpha3-mica
+feeds_version=7.x-2.0-alpha3
 references_version=7.x-2.x-dev-mica
 search_api_ranges_version=7.x-1.x-dev-mica
 noderefcreate_version=7.x-1.0-beta2-mica
