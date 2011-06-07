@@ -21,12 +21,11 @@ mica_samara_version=7.x-1.0-dev
 #
 # Forked Modules
 #
-feeds_version=7.x-2.0-alpha3
+http_client_version=7.x-2.x-dev-mica
 references_version=7.x-2.x-dev-mica
 search_api_ranges_version=7.x-1.x-dev-mica
 noderefcreate_version=7.x-1.0-beta2-mica
 menu_firstchild_version=7.x-1.0-mica
-
 
 #
 # Mysql db access
@@ -110,7 +109,7 @@ package-themes:
 	$(call make-package,sites/all/themes,mica_samara)
 
 package-forks:
-	$(call make-package,sites/all/modules,feeds)
+	$(call make-package,sites/all/modules,http_client)
 	$(call make-package,sites/all/modules,references)
 	$(call make-package,sites/all/modules,search_api_ranges)
 	$(call make-package,sites/all/modules,noderefcreate)
@@ -235,7 +234,7 @@ make-info = cd target/$(micadir)/$(1) && \
 
 # make-package function: build tar.gz and zip files of a project
 make-package = cd target/$(micadir)/$(1) && \
-	tar czf $(2)-$($(2)_version).tar.gz $(2) && \
+	tar --exclude-vcs -czf $(2)-$($(2)_version).tar.gz $(2) && \
 	zip -qr $(2)-$($(2)_version).zip $(2) && \
 	cd - && \
 	mv target/$(micadir)/$(1)/*.tar.gz target && \

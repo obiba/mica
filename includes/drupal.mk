@@ -17,6 +17,7 @@ drupal_version=7.0
 email_version=7.x-1.0-beta1
 entity_version=7.x-1.0-beta8
 features_version=7.x-1.0-beta2
+feeds_version=7.x-2.0-alpha3
 field_group_version=7.x-1.0-rc2
 field_permissions_version=7.x-1.0-alpha1
 forum_access_version=7.x-1.0-alpha4
@@ -34,10 +35,16 @@ views_version=7.x-3.0-beta3
 viewreference_version=7.x-3.0
 
 #
+# Modules to get stable dev revisions
+#
+http_client_branch=7.x-2.x
+http_client_revision=6e65667997ffe79172249b42a897cd81dd4ab510
+
+#
 # Drupal Build
 #
 
-drupal: drupal-prepare drupal-download drupal-forks solr-php-client drupal-default 
+drupal: drupal-prepare drupal-download drupal-forks drupal-stable-dev solr-php-client drupal-default 
 
 drupal-prepare:
 	mkdir -p target
@@ -51,6 +58,7 @@ drupal-download:
 	$(drushexec) dl entity-$(entity_version) views-$(views_version) && \
 	$(drushexec) dl search_api-$(search_api_version) search_api_solr-$(search_api_solr_version) && \
 	$(drushexec) dl features-$(features_version) strongarm-$(strongarm_version) && \
+	$(drushexec) dl feeds-$(feeds_version) && \
 	$(drushexec) dl field_permissions-$(field_permissions_version) relation-$(relation_version) && \
 	$(drushexec) dl collapsiblock-$(collapsiblock_version) && \
 	$(drushexec) dl date-$(date_version) calendar-$(calendar_version) && \
@@ -65,6 +73,9 @@ drupal-examples:
 
 drupal-forks:	
 	cp -r forks/* target/$(micadir)/sites/all/modules
+
+drupal-stable-dev:
+	$(call drupal-checkout-module,http_client)
 
 solr-php-client:
 	cd target/$(micadir) && \
@@ -82,3 +93,11 @@ drupal-default:
 	chmod a+w sites/default/settings.php && \
 	chmod +x scripts/*.sh
 	
+# drupal-checkout-module function: checkout a specific module version using git
+drupal-checkout-module = cd target/$(micadir)/sites/all/modules && \
+	rm -rf $(1) && \
+	git clone -b $($(1)_branch) http://git.drupal.org/project/$(1).git && \
+	cd $(1) && \
+	git checkout $($(1)_revision) && \
+	git status
+
