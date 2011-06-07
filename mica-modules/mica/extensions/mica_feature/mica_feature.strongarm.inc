@@ -412,6 +412,52 @@ function mica_feature_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'content_access_settings';
+  $strongarm->value = array(
+    'view' => array(
+      'study_files' => array(
+        0 => 2,
+        1 => 3,
+      ),
+      'study_information' => array(
+        0 => 2,
+        1 => 3,
+      ),
+      'contact' => array(
+        0 => 2,
+        1 => 3,
+      ),
+    ),
+    'view_own' => array(
+      'study_files' => array(
+        0 => 2,
+        1 => 3,
+      ),
+      'study_information' => array(
+        0 => 2,
+        1 => 3,
+      ),
+      'contact' => array(
+        0 => 2,
+        1 => 3,
+      ),
+    ),
+    'per_node' => array(
+      'study_files' => 0,
+      'study_information' => 0,
+      'contact' => 0,
+    ),
+    'priority' => array(
+      'study_files' => '0',
+      'study_information' => '0',
+      'contact' => '0',
+    ),
+  );
+  $export['content_access_settings'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings';
   $strongarm->value = array(
     'node' => array(
@@ -580,13 +626,6 @@ function mica_feature_strongarm() {
     ),
   );
   $export['field_bundle_settings'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'file_private_path';
-  $strongarm->value = 'sites/default/privatefiles';
-  $export['file_private_path'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
