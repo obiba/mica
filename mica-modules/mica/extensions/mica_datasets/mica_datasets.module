@@ -6,6 +6,30 @@
 
 include_once('mica_datasets.features.inc');
 
+function mica_datasets_form($node, &$form_state) {
+  $type = node_type_get_type($node);
+
+  $form['field1'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Custom field'),
+    '#default_value' => $node->field1,
+    '#maxlength' => 127,
+  );
+  $form['selectbox'] = array(
+    '#type' => 'select',
+    '#title' => t('Select box'),
+    '#default_value' => $node->selectbox,
+    '#options' => array(
+      1 => 'Option A',
+      2 => 'Option B',
+      3 => 'Option C',
+    ),
+    '#description' => t('Choose an option.'),
+  );
+
+  return $form;
+}
+
 /**
  * Implements hook_menu().
  */
@@ -21,13 +45,14 @@ function mica_datasets_menu() {
       'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
       'file' => 'mica_datasets.pages.inc',
   );
-  $items['dataset/%node/%dataset_node'] = array(
+  $items['mica/ajax/dataset/%node/%node'] = array(
       'title' => 'Dataset Connection Form',
       'delivery callback' => 'ajax_deliver',
       'theme callback' => 'ajax_base_page_theme',
-      'access callback' => 'TRUE',
+      'access callback' => 'mica_datasets_edit_access',
+      'access arguments' => array(3),
       'page callback' => 'mica_dataset_edit_ajax_form_callback',
-      'page arguments' => array(1,2),
+      'page arguments' => array(3,4),
       'type' => MENU_CALLBACK,
       'file' => 'mica_datasets.pages.inc',
   );

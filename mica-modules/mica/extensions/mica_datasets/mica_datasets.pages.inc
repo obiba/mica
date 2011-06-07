@@ -41,11 +41,7 @@ function mica_datasets_edit_form($form, &$form_state, $node, $dataset_nodes) {
   );
 
   foreach ($dataset_nodes as $dataset_node) {
-    //debug($dataset_node);
-
-    $selected = isset($form_state['values']['dataset-' . $dataset_node->nid]['connection-type']) ? $form_state['values']['dataset-' . $dataset_node->nid]['connection-type'] : key($connection_types);
-
-    //debug($selected);
+    $selected_type = isset($form_state['values']['dataset-' . $dataset_node->nid]['connection-type']) ? $form_state['values']['dataset-' . $dataset_node->nid]['connection-type'] : key($connection_types);
 
     $form['dataset-' . $dataset_node->nid] = array(
       '#type' => 'fieldset',
@@ -60,47 +56,39 @@ function mica_datasets_edit_form($form, &$form_state, $node, $dataset_nodes) {
       '#options' => $connection_types,
       '#description' => t('Select which type of connection is to be used to retrieve variables and data from the study to contribute to the dataset.'),
       '#ajax' => array(
-        'callback' => 'mica_dataset_edit_callback',
-        //'path' => 'dataset/' . $node->nid . '/' . $dataset_node->nid,
+        'path' => 'mica/ajax/dataset/' . $node->nid . '/' . $dataset_node->nid,
         'wrapper' => 'connection-config-' . $dataset_node->nid . '-replace',
     ),
     );
     $form['dataset-' . $dataset_node->nid]['connection-config']= array(
       '#title' => 'Table reference',
       '#type' => 'textfield',
-      '#default_value' => $selected,
+      '#default_value' => '',
       '#prefix' => '<div id="connection-config-' . $dataset_node->nid . '-replace">',
       '#suffix' => '</div>',
     );
-    watchdog('mica_datasets', 'connection-type-' . $dataset_node->nid . '=' . $selected);
+    watchdog('mica_datasets', 'connection-type-' . $dataset_node->nid . '=' . $selected_type);
   }
 
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Save'),
   );
-  
-  //debug($form);
-  return $form;
-}
 
-function mica_dataset_edit_callback($form, $form_state) {
-  watchdog('mica_datasets', 'mica_dataset_edit_callback');
-  debug($form_state);
-  debug($form['dataset-' . 38]['connection-config']);
-  return $form['dataset-' . 38]['connection-config'];
+  return $form;
 }
 
 /**
 * Replacement of the default ajax_form_callback
 */
 function mica_dataset_edit_ajax_form_callback($node, $dataset_node) {
-  watchdog('mica_datasets', 'mica_dataset_edit_ajax_form_callback');
+  //watchdog('mica_datasets', 'mica_dataset_edit_ajax_form_callback');
   list($form, $form_state) = ajax_get_form();
   drupal_process_form($form['#form_id'], $form, $form_state);
 
-  debug($form);
-  return $form['dataset-' . $dataset_node]['connection-config'];
+  //debug($form_state['values']['dataset-' . $dataset_node->nid]['connection-config']);
+  //debug($form['dataset-' . $dataset_node->nid]['connection-config']);
+  return $form['dataset-' . $dataset_node->nid]['connection-config'];
 }
 
 function mica_datasets_edit_form_submit($form, &$form_state) {
