@@ -52,6 +52,8 @@ class FeedsHTTPSFetcherResult extends FeedsHTTPFetcherResult {
       } else if (!in_array($e->getCode(), array(200, 201, 202, 203, 204, 205, 206))) {
         throw new Exception(t('Download of @url failed with code !code.', array('@url' => $this->url, '!code' => $e->getCode())));
       }
+      // http_client throws an exception on all codes that are not 200 (even 201)
+      // http://drupal.org/node/722886
       $result = $e->getResponse()->body;
     }
     return $this->sanitizeRaw($result);
