@@ -19,13 +19,11 @@ function _unit_form($form, &$form_state) {
   $form[$unit_form]['description'] = array(
     '#type' => 'item',
     '#title' => t('Mica server can communicate with third-party using a key pair (private key/certificate)'),
-    '#required' => TRUE,
   );
 
   $form[$unit_form][$unit_configure] = array(
     '#type' => 'fieldset',
     '#title' => t('Configure key pair'),
-    '#required' => TRUE,
   );
 
   //CONFIGURE KEY/PAIR
