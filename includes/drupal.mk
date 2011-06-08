@@ -71,6 +71,10 @@ drupal-examples:
 	cd target/$(micadir) && \
 	$(drushexec) dl examples
 
+drupal-dl:
+	cd target/$(micadir) && \
+	$(drushexec) dl $(module)
+
 drupal-en:
 	cd target/$(micadir) && \
 	$(drushexec) en --yes $(module)
