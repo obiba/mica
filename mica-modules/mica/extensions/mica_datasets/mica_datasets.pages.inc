@@ -25,8 +25,13 @@ define('MICA_CONNECTION_CONFIG', 'connection-config');
  * Display form for creating dataset connection entities for a given study.
  */
 function mica_datasets_study_datasets_edit_page($node) {
-  drupal_set_title(t('!title Dataset Connections', array('!title' => $node->title)));
-  return drupal_get_form('mica_datasets_edit_form', $node);
+  drupal_set_title(t('!title Datasets', array('!title' => $node->title)));
+  if (!property_exists($node, 'mica_dataset'))  {
+    return '';
+  }
+  else {
+  return drupal_get_form('mica_datasets_study_datasets_form', $node);  
+  }
   
   // todo report error if !property_exists($node, 'mica_dataset')
 }
@@ -35,22 +40,72 @@ function mica_datasets_study_datasets_edit_page($node) {
  * Display form for creating dataset connection entities for a given dataset.
  */
 function mica_datasets_dataset_studies_edit_page($node) {
-  drupal_set_title(t('!title Study Connections', array('!title' => $node->title)));
+  drupal_set_title(t('!title Studies', array('!title' => $node->title)));
   return 'TODO';
-  //return drupal_get_form('mica_datasets_edit_form', $node);
-  
-  // todo report error if !property_exists($node, 'mica_dataset')
 }
 
-function _mica_datasets_node_field_values($node, $field_name) {
-  $field = $node->$field_name;
-  if ($field) {
-    return $field[$node->language];
+/**
+ * Display form for fetching variables for a given dataset.
+ */
+function mica_datasets_dataset_variables_edit_page($node) {
+  drupal_set_title(t('!title Participant Variables', array('!title' => $node->title)));
+  return 'TODO';
+}
+
+
+/**
+ * Display form for submitting queries.
+ */
+function mica_datasets_dataset_query_page($node) {
+  drupal_set_title(t('!title Query', array('!title' => $node->title)));
+  return 'TODO';
+}
+
+/**
+ * Replacement of the default ajax_form_callback: has study and dataset node as argument for editing connection form.
+ */
+function mica_dataset_edit_ajax_form_callback($dataset_node, $node) {
+  list($form, $form_state) = ajax_get_form();
+  drupal_process_form($form['#form_id'], $form, $form_state);
+  return $form[MICA_DATASET_PREFIX . $dataset_node->nid][MICA_CONNECTION_CONFIG];
+}
+
+/**
+ * Replacement of the default ajax_form_callback: has study and dataset node as argument for deleting a dataset.
+ */
+function mica_dataset_delete_ajax_form_callback($dataset_node, $node) {
+  list($form, $form_state) = ajax_get_form();
+
+  // update node referenced by the form_state
+  $node = $form_state['build_info']['args'][0];
+  foreach ($node->mica_dataset[$node->language] as $key => $value) {
+    if ($value['nid'] == $dataset_node->nid) {
+      unset($node->mica_dataset[$node->language][$key]);
+      break;
+    }
   }
-  return array();
+  node_save($node);
+  
+  // remove the input values so that the part of the form which is removed is not validated.
+  unset($form_state['input'][MICA_DATASET_PREFIX . $dataset_node->nid]);
+  
+  // todo remove the corresponding connector entity
+  
+  drupal_process_form($form['#form_id'], $form, $form_state);
+  
+  return $form;
 }
 
-function mica_datasets_edit_form($form, &$form_state) {
+//
+// mica_datasets_study_datasets_form
+//
+
+/**
+ * Build the study datasets form.
+ * @param $form
+ * @param $form_state
+ */
+function mica_datasets_study_datasets_form($form, &$form_state) {
   $node = $form_state['build_info']['args'][0];
   $dataset_node_ids = _mica_datasets_node_field_values($node, 'mica_dataset');
 
@@ -179,6 +234,60 @@ function mica_datasets_edit_form($form, &$form_state) {
   return $form;
 }
 
+/**
+ * Validate the study datasets form.
+ * @param $form
+ * @param $form_state
+ */
+function mica_datasets_study_datasets_form_validate($form, &$form_state) {
+  foreach (array_keys($form_state['values']) as $key) {
+    if (strpos($key,MICA_DATASET_PREFIX) !== FALSE) {
+      $connection_type = $form_state['values'][$key][MICA_CONNECTION_TYPE];
+
+      // todo make it validate by MicaDatasetConnectionInterface
+      if (array_key_exists(MICA_CONNECTION_CONFIG, $form_state['values'][$key]) && $connection_type == 'opal') {
+        //debug($form_state['values'][$key][MICA_CONNECTION_CONFIG]);
+        $form_state['values'][$key][MICA_CONNECTION_CONFIG][MICA_STUDY_ID] = $form_state['values'][MICA_STUDY_ID];
+        $form_state['values'][$key][MICA_CONNECTION_CONFIG][MICA_DATASET_ID] = $form_state['values'][$key][MICA_DATASET_ID];
+
+        _mica_datasets_edit_opal_form_validate($form, $form_state['values'][$key][MICA_CONNECTION_CONFIG], $form_state);
+      }
+    }
+  }
+}
+
+/**
+ * Submit the study datasets form.
+ * @param $form
+ * @param $form_state
+ */
+function mica_datasets_study_datasets_form_submit($form, &$form_state) {
+
+  // only submit will result in actual submission, all others rebuild.
+  switch ($form_state['triggering_element']['#value']) {
+    case t('Save'): // Submit: We're done.
+      drupal_set_message(t('Your values have been submitted.'));
+      return;
+    case t('Add Dataset'):
+      // update node referenced by the form_state
+      $node = $form_state['build_info']['args'][0];
+      $node->mica_dataset[$node->language][] = array('nid' => $form_state['values']['datasets']);
+      node_save($node);
+      break;
+  }
+
+  // anything else will cause rebuild of the form and present it again.
+  $form_state['rebuild'] = TRUE;
+}
+
+//
+// utilities
+//
+
+/**
+ * Get the list of dataset nodes that can be added to the given study node.
+ * @param study node $node
+ */
 function _mica_datasets_datasets_options($node)  {
   $rval = array();
   $dataset_node_ids = array();
@@ -209,56 +318,22 @@ function _mica_datasets_datasets_options($node)  {
 }
 
 /**
- * Replacement of the default ajax_form_callback: has study and dataset node as argument for editing connection form.
+ * Get the values for a node field.
+ * @param node $node
+ * @param string $field_name
  */
-function mica_dataset_edit_ajax_form_callback($dataset_node, $node) {
-  list($form, $form_state) = ajax_get_form();
-  drupal_process_form($form['#form_id'], $form, $form_state);
-  return $form[MICA_DATASET_PREFIX . $dataset_node->nid][MICA_CONNECTION_CONFIG];
-}
-
-/**
- * Replacement of the default ajax_form_callback: has study and dataset node as argument for deleting a dataset.
- */
-function mica_dataset_delete_ajax_form_callback($dataset_node, $node) {
-  list($form, $form_state) = ajax_get_form();
-
-  // update node referenced by the form_state
-  $node = $form_state['build_info']['args'][0];
-  foreach ($node->mica_dataset[$node->language] as $key => $value) {
-    if ($value['nid'] == $dataset_node->nid) {
-      unset($node->mica_dataset[$node->language][$key]);
-      break;
-    }
+function _mica_datasets_node_field_values($node, $field_name) {
+  $field = $node->$field_name;
+  if ($field) {
+    return $field[$node->language];
   }
-  node_save($node);
-  
-  // remove the input values so that the part of the form which is removed is not validated.
-  unset($form_state['input'][MICA_DATASET_PREFIX . $dataset_node->nid]);
-  
-  // todo remove the corresponding connector entity
-  
-  drupal_process_form($form['#form_id'], $form, $form_state);
-  
-  return $form;
+  return array();
 }
 
-function mica_datasets_edit_form_validate($form, &$form_state) {
-  foreach (array_keys($form_state['values']) as $key) {
-    if (strpos($key,MICA_DATASET_PREFIX) !== FALSE) {
-      $connection_type = $form_state['values'][$key][MICA_CONNECTION_TYPE];
 
-      // todo make it validate by MicaDatasetConnectionInterface
-      if (array_key_exists(MICA_CONNECTION_CONFIG, $form_state['values'][$key]) && $connection_type == 'opal') {
-        //debug($form_state['values'][$key][MICA_CONNECTION_CONFIG]);
-        $form_state['values'][$key][MICA_CONNECTION_CONFIG][MICA_STUDY_ID] = $form_state['values'][MICA_STUDY_ID];
-        $form_state['values'][$key][MICA_CONNECTION_CONFIG][MICA_DATASET_ID] = $form_state['values'][$key][MICA_DATASET_ID];
-
-        _mica_datasets_edit_opal_form_validate($form, $form_state['values'][$key][MICA_CONNECTION_CONFIG], $form_state);
-      }
-    }
-  }
-}
+//
+// connection implementations, to be moved
+//
 
 function _mica_datasets_edit_opal_form_validate($form, &$values, &$form_state) {
   //debug($values);
@@ -279,25 +354,4 @@ function _mica_datasets_edit_opal_form_validate($form, &$values, &$form_state) {
     form_set_error($dataset_form_path . '[table', t('You must provide a valid Opal table name.'));
   }
 }
-
-function mica_datasets_edit_form_submit($form, &$form_state) {
-
-  // only submit will result in actual submission, all others rebuild.
-  switch ($form_state['triggering_element']['#value']) {
-    case t('Save'): // Submit: We're done.
-      drupal_set_message(t('Your values have been submitted.'));
-      return;
-    case t('Add Dataset'):
-      // update node referenced by the form_state
-      $node = $form_state['build_info']['args'][0];
-      $node->mica_dataset[$node->language][] = array('nid' => $form_state['values']['datasets']);
-      node_save($node);
-      break;
-  }
-
-  // anything else will cause rebuild of the form and present it again.
-  $form_state['rebuild'] = TRUE;
-}
-
-
 

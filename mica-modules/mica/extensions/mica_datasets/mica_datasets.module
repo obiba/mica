@@ -20,10 +20,10 @@ function mica_datasets_form($node, &$form_state) {
     '#title' => t('Select box'),
     '#default_value' => $node->selectbox,
     '#options' => array(
-      1 => 'Option A',
-      2 => 'Option B',
-      3 => 'Option C',
-    ),
+  1 => 'Option A',
+  2 => 'Option B',
+  3 => 'Option C',
+  ),
     '#description' => t('Choose an option.'),
   );
 
@@ -36,8 +36,8 @@ function mica_datasets_form($node, &$form_state) {
 function mica_datasets_menu() {
   $items['node/%node/edit-datasets'] = array(
       'title' => 'Edit Datasets',
-      'access callback' => 'mica_datasets_edit_access',
-      'access arguments' => array(1,'study'),
+      'access callback' => 'mica_datasets_node_access',
+      'access arguments' => array(1,'study','update'),
       'page callback' => 'mica_datasets_study_datasets_edit_page',
       'page arguments' => array(1),
       'weight' => 5,
@@ -46,10 +46,32 @@ function mica_datasets_menu() {
       'file' => 'mica_datasets.pages.inc',
   );
   $items['node/%node/edit-studies'] = array(
-      'title' => 'Edit Datasets',
-      'access callback' => 'mica_datasets_edit_access',
-      'access arguments' => array(1,'dataset'),
+      'title' => 'Edit Studies',
+      'access callback' => 'mica_datasets_node_access',
+      'access arguments' => array(1,'dataset','update'),
       'page callback' => 'mica_datasets_dataset_studies_edit_page',
+      'page arguments' => array(1),
+      'weight' => 5,
+      'type' => MENU_LOCAL_TASK,
+      'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+      'file' => 'mica_datasets.pages.inc',
+  );
+  $items['node/%node/edit-variables'] = array(
+      'title' => 'Edit Variables',
+      'access callback' => 'mica_datasets_node_access',
+      'access arguments' => array(1,'dataset','update'),
+      'page callback' => 'mica_datasets_dataset_variables_edit_page',
+      'page arguments' => array(1),
+      'weight' => 5,
+      'type' => MENU_LOCAL_TASK,
+      'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+      'file' => 'mica_datasets.pages.inc',
+  );
+  $items['node/%node/query'] = array(
+      'title' => 'Query',
+      'access callback' => 'mica_datasets_node_access',
+      'access arguments' => array(1,'dataset','view'),
+      'page callback' => 'mica_datasets_dataset_query_page',
       'page arguments' => array(1),
       'weight' => 5,
       'type' => MENU_LOCAL_TASK,
@@ -60,8 +82,8 @@ function mica_datasets_menu() {
       'title' => 'Dataset Connection Edit',
       'delivery callback' => 'ajax_deliver',
       'theme callback' => 'ajax_base_page_theme',
-      'access callback' => 'mica_datasets_edit_access',
-      'access arguments' => array(4,'study'),
+      'access callback' => 'mica_datasets_node_access',
+      'access arguments' => array(4,'study','update'),
       'page callback' => 'mica_dataset_edit_ajax_form_callback',
       'page arguments' => array(3,4),
       'type' => MENU_CALLBACK,
@@ -78,7 +100,7 @@ function mica_datasets_menu() {
       'type' => MENU_CALLBACK,
       'file' => 'mica_datasets.pages.inc',
   );
-   $items['admin/config/system/mica'] = array(
+  $items['admin/config/system/mica'] = array(
       'title' => 'Mica', 
       'description' => 'Manage Mica Unit.',  
       'access callback' => 'user_access',
@@ -100,14 +122,18 @@ function mica_datasets_menu() {
   return $items;
 }
 
-function mica_datasets_edit_access($node, $bundle) {
+function mica_datasets_node_access($node, $bundle = NULL, $op = 'update') {
   global $user;
   if (is_int($node)) {
     $node = node_load($node);
   }
   // Make sure the user can view the original node content.
-  $access = $node->type == $bundle && node_access('update', $node);
-  return $access;
+  if ($bundle != NULL) {
+    return $node->type == $bundle && node_access($op, $node);
+  }
+  else {
+    return node_access($op, $node);
+  }
 }
 
 /**
@@ -121,7 +147,7 @@ function _mica_datasets_ensure_viewreference_arguments($node) {
   if ($node->type === 'dataset') {
     $node = node_load($node->nid);    // reload node so it's not in 'new' state
     $to_save = FALSE;
-    
+
     foreach (array('field_dataset_studies', 'field_dataset_variables') as $field_name) {
       $field = $node->$field_name;
       if ($field[$node->language][0]['arguments'] != $node->nid) {
