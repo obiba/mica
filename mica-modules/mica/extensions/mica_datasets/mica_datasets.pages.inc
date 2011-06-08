@@ -22,11 +22,24 @@ define('MICA_CONNECTION_CONFIG', 'connection-config');
  */
 
 /**
- * Display form for creating dataset entities for a given study.
+ * Display form for creating dataset connection entities for a given study.
  */
-function mica_datasets_edit_page($node) {
+function mica_datasets_study_datasets_edit_page($node) {
   drupal_set_title(t('!title Dataset Connections', array('!title' => $node->title)));
   return drupal_get_form('mica_datasets_edit_form', $node);
+  
+  // todo report error if !property_exists($node, 'mica_dataset')
+}
+
+/**
+ * Display form for creating dataset connection entities for a given dataset.
+ */
+function mica_datasets_dataset_studies_edit_page($node) {
+  drupal_set_title(t('!title Study Connections', array('!title' => $node->title)));
+  return 'TODO';
+  //return drupal_get_form('mica_datasets_edit_form', $node);
+  
+  // todo report error if !property_exists($node, 'mica_dataset')
 }
 
 function _mica_datasets_node_field_values($node, $field_name) {
@@ -47,6 +60,20 @@ function mica_datasets_edit_form($form, &$form_state) {
     '#attributes' => array('id' => 'dataset-connectors'),
   );
 
+  // dataset list
+  $datasets_options = _mica_datasets_datasets_options($node);
+  if (!empty($datasets_options)) {
+    $form['datasets']= array(
+      '#type' => 'select', 
+      '#title' => t('Datasets'), 
+      '#options' => $datasets_options,
+    );
+    $form['add-dataset'] = array(
+      '#type' => 'submit',
+      '#value' => t('Add Dataset'),
+    );
+  }
+  
   // todo get list of MicaDatasetConnectionInterface implementations
   //debug(mica_datasets_get_connection_info());
   $connection_types = array(
@@ -136,20 +163,6 @@ function mica_datasets_edit_form($form, &$form_state) {
     );
   }
 
-  // dataset list
-  $datasets_options = _mica_datasets_datasets_options($node);
-  if (!empty($datasets_options)) {
-    $form['datasets']= array(
-      '#type' => 'select', 
-      '#title' => t('Datasets'), 
-      '#options' => $datasets_options,
-    );
-    $form['add-dataset'] = array(
-      '#type' => 'submit',
-      '#value' => t('Add Dataset'),
-    );
-  }
-
   $form[MICA_STUDY_ID] = array(
     '#type' => 'hidden', 
     '#value' => $node->nid,
@@ -219,9 +232,13 @@ function mica_dataset_delete_ajax_form_callback($dataset_node, $node) {
     }
   }
   node_save($node);
-
+  
+  // remove the input values so that the part of the form which is removed is not validated.
+  unset($form_state['input'][MICA_DATASET_PREFIX . $dataset_node->nid]);
+  
+  // todo remove the corresponding connector entity
+  
   drupal_process_form($form['#form_id'], $form, $form_state);
-  debug($form);
   
   return $form;
 }

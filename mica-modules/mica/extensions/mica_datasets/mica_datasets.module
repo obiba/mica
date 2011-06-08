@@ -34,11 +34,22 @@ function mica_datasets_form($node, &$form_state) {
  * Implements hook_menu().
  */
 function mica_datasets_menu() {
-  $items['node/%node/datasets'] = array(
+  $items['node/%node/edit-datasets'] = array(
       'title' => 'Edit Datasets',
       'access callback' => 'mica_datasets_edit_access',
-      'access arguments' => array(1),
-      'page callback' => 'mica_datasets_edit_page',
+      'access arguments' => array(1,'study'),
+      'page callback' => 'mica_datasets_study_datasets_edit_page',
+      'page arguments' => array(1),
+      'weight' => 5,
+      'type' => MENU_LOCAL_TASK,
+      'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+      'file' => 'mica_datasets.pages.inc',
+  );
+  $items['node/%node/edit-studies'] = array(
+      'title' => 'Edit Datasets',
+      'access callback' => 'mica_datasets_edit_access',
+      'access arguments' => array(1,'dataset'),
+      'page callback' => 'mica_datasets_dataset_studies_edit_page',
       'page arguments' => array(1),
       'weight' => 5,
       'type' => MENU_LOCAL_TASK,
@@ -50,7 +61,7 @@ function mica_datasets_menu() {
       'delivery callback' => 'ajax_deliver',
       'theme callback' => 'ajax_base_page_theme',
       'access callback' => 'mica_datasets_edit_access',
-      'access arguments' => array(4),
+      'access arguments' => array(4,'study'),
       'page callback' => 'mica_dataset_edit_ajax_form_callback',
       'page arguments' => array(3,4),
       'type' => MENU_CALLBACK,
@@ -61,7 +72,7 @@ function mica_datasets_menu() {
       'delivery callback' => 'ajax_deliver',
       'theme callback' => 'ajax_base_page_theme',
       'access callback' => 'mica_datasets_edit_access',
-      'access arguments' => array(4),
+      'access arguments' => array(4,'study'),
       'page callback' => 'mica_dataset_delete_ajax_form_callback',
       'page arguments' => array(3,4),
       'type' => MENU_CALLBACK,
@@ -89,13 +100,13 @@ function mica_datasets_menu() {
   return $items;
 }
 
-function mica_datasets_edit_access($node) {
+function mica_datasets_edit_access($node, $bundle) {
   global $user;
   if (is_int($node)) {
     $node = node_load($node);
   }
   // Make sure the user can view the original node content.
-  $access = $node->type == 'study' && property_exists($node, 'mica_dataset') && node_access('update', $node);
+  $access = $node->type == $bundle && node_access('update', $node);
   return $access;
 }
 
