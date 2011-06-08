@@ -6,30 +6,6 @@
 
 include_once('mica_datasets.features.inc');
 
-function mica_datasets_form($node, &$form_state) {
-  $type = node_type_get_type($node);
-
-  $form['field1'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Custom field'),
-    '#default_value' => $node->field1,
-    '#maxlength' => 127,
-  );
-  $form['selectbox'] = array(
-    '#type' => 'select',
-    '#title' => t('Select box'),
-    '#default_value' => $node->selectbox,
-    '#options' => array(
-  1 => 'Option A',
-  2 => 'Option B',
-  3 => 'Option C',
-  ),
-    '#description' => t('Choose an option.'),
-  );
-
-  return $form;
-}
-
 /**
  * Implements hook_menu().
  */
@@ -137,28 +113,27 @@ function mica_datasets_node_access($node, $bundle = NULL, $op = 'update') {
 }
 
 /**
- * Implements hook_node_insert()
+ * Implements hook_form().
  */
-function mica_datasets_node_insert($node) {
+function mica_datasets_form($node, &$form_state) {
+  return node_content_form($node, $form_state);
+}
+
+/**
+ * Implements hook_insert()
+ */
+function mica_datasets_insert($node) {
   _mica_datasets_ensure_viewreference_arguments($node);
 }
 
-function _mica_datasets_ensure_viewreference_arguments($node) {
+function _mica_datasets_ensure_viewreference_arguments(&$node) {
   if ($node->type === 'dataset') {
-    $node = node_load($node->nid);    // reload node so it's not in 'new' state
-    $to_save = FALSE;
-
     foreach (array('field_dataset_studies', 'field_dataset_variables') as $field_name) {
       $field = $node->$field_name;
       if ($field[$node->language][0]['arguments'] != $node->nid) {
         $field[$node->language][0]['arguments'] = $node->nid;
         $node->$field_name = $field;
-        $to_save = TRUE;
       }
-    }
-
-    if ($to_save) {
-      node_save($node);
     }
   }
 }
