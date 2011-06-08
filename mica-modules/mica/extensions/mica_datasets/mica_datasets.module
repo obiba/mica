@@ -45,13 +45,24 @@ function mica_datasets_menu() {
       'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
       'file' => 'mica_datasets.pages.inc',
   );
-  $items['mica/ajax/dataset/%node/%node'] = array(
-      'title' => 'Dataset Connection Form',
+  $items['mica/ajax/dataset/%node/%node/edit'] = array(
+      'title' => 'Dataset Connection Edit',
       'delivery callback' => 'ajax_deliver',
       'theme callback' => 'ajax_base_page_theme',
       'access callback' => 'mica_datasets_edit_access',
-      'access arguments' => array(3),
+      'access arguments' => array(4),
       'page callback' => 'mica_dataset_edit_ajax_form_callback',
+      'page arguments' => array(3,4),
+      'type' => MENU_CALLBACK,
+      'file' => 'mica_datasets.pages.inc',
+  );
+  $items['mica/ajax/dataset/%node/%node/delete'] = array(
+      'title' => 'Dataset Connector Delete',
+      'delivery callback' => 'ajax_deliver',
+      'theme callback' => 'ajax_base_page_theme',
+      'access callback' => 'mica_datasets_edit_access',
+      'access arguments' => array(4),
+      'page callback' => 'mica_dataset_delete_ajax_form_callback',
       'page arguments' => array(3,4),
       'type' => MENU_CALLBACK,
       'file' => 'mica_datasets.pages.inc',

@@ -25,7 +25,7 @@ define('MICA_CONNECTION_CONFIG', 'connection-config');
  * Display form for creating dataset entities for a given study.
  */
 function mica_datasets_edit_page($node) {
-  drupal_set_title(t('Connections to Datasets of !title', array('!title' => $node->title)));
+  drupal_set_title(t('!title Dataset Connections', array('!title' => $node->title)));
   return drupal_get_form('mica_datasets_edit_form', $node);
 }
 
@@ -43,9 +43,8 @@ function mica_datasets_edit_form($form, &$form_state) {
 
   $form = array();
   $form = array(
-  	'#attached' => array(
-    	'css' => array(drupal_get_path('module', 'mica_datasets') . '/includes/dataset_connection.css'),
-  ),
+  	'#attached' => array('css' => array(drupal_get_path('module', 'mica_datasets') . '/includes/dataset_connection.css'),),
+    '#attributes' => array('id' => 'dataset-connectors'),
   );
 
   // todo get list of MicaDatasetConnectionInterface implementations
@@ -69,6 +68,8 @@ function mica_datasets_edit_form($form, &$form_state) {
       '#collapsible' => TRUE, 
       '#collapsed' => FALSE,
       '#tree' => TRUE,
+      '#prefix' => '<div id="connector-' . $dataset_node_id . '-replace">',
+      '#suffix' => '</div>',
     );
 
     $form[$dataset_form_id][MICA_DATASET_ID] = array(
@@ -83,7 +84,7 @@ function mica_datasets_edit_form($form, &$form_state) {
       '#options' => $connection_types,
       '#description' => t('Select which type of connection is to be used to retrieve variables and data from the study to contribute to the dataset.'),
       '#ajax' => array(
-        'path' => 'mica/ajax/dataset/' . $node->nid . '/' . $dataset_node_id,
+        'path' => 'mica/ajax/dataset/' . $dataset_node_id . '/' . $node->nid . '/edit',
         'wrapper' => 'connection-config-' . $dataset_node_id . '-replace',
     ),
     );
@@ -124,7 +125,15 @@ function mica_datasets_edit_form($form, &$form_state) {
         '#type' => 'textfield',
       );
     }
-    watchdog('mica_datasets', 'connection-type-' . $dataset_node_id . '=' . $selected_type);
+
+    $form[$dataset_form_id]['remove-' . $dataset_form_id] = array(
+      '#type' => 'submit',
+      '#value' => t('Remove Dataset'),
+      '#ajax' => array(
+        'path' => 'mica/ajax/dataset/' . $dataset_node_id . '/' . $node->nid . '/delete',
+        'wrapper' => 'dataset-connectors',
+    ),
+    );
   }
 
   // dataset list
@@ -146,39 +155,75 @@ function mica_datasets_edit_form($form, &$form_state) {
     '#value' => $node->nid,
   );
 
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Save'),
-    '#attributes' => array('style' => array('display:block;')),
-  );
+  if (!empty($dataset_node_ids)) {
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => t('Save'),
+      '#attributes' => array('style' => array('display:block;')),
+    );
+  }
 
   return $form;
 }
 
 function _mica_datasets_datasets_options($node)  {
-  $dataset_node_ids = _mica_datasets_node_field_values($node, 'mica_dataset');
-  foreach ($dataset_node_ids as $dataset_node_id_value) {
-    $dataset_node_id = $dataset_node_id_value['nid'];
+  $rval = array();
+  $dataset_node_ids = array();
+  foreach (_mica_datasets_node_field_values($node, 'mica_dataset') as $dataset_node_id_value) {
+    $dataset_node_ids[] = $dataset_node_id_value['nid'];
   }
-  // get all nodes of dataset type
+
+  // get all nodes of dataset type that are published, accessible
+  // and not already datasets of current study
   $q = db_select('node', 'n');
   $q->addField('n', 'nid');
+  $q->addField('n', 'title');
   $q->condition('n.type', 'dataset','=');
+  $q->condition('n.status', 1);
+  if (!empty($dataset_node_ids)) {
+    $q->condition('n.nid', $dataset_node_ids, 'NOT IN');
+  }
+  $q->addTag('node_access');
+  $q->orderBy('n.title');
+
   $result = $q->execute();
-  debug($result);
-  
-  $value = $result->fetchField();
-  debug($value);
-  return array('55' => 'Pouet');
+
+  while($record = $result->fetchAssoc()) {
+    $rval[$record['nid']] = $record['title'];
+  }
+
+  return $rval;
 }
 
 /**
- * Replacement of the default ajax_form_callback: has study and dataset node as argument.
+ * Replacement of the default ajax_form_callback: has study and dataset node as argument for editing connection form.
  */
-function mica_dataset_edit_ajax_form_callback($node, $dataset_node) {
+function mica_dataset_edit_ajax_form_callback($dataset_node, $node) {
   list($form, $form_state) = ajax_get_form();
   drupal_process_form($form['#form_id'], $form, $form_state);
   return $form[MICA_DATASET_PREFIX . $dataset_node->nid][MICA_CONNECTION_CONFIG];
+}
+
+/**
+ * Replacement of the default ajax_form_callback: has study and dataset node as argument for deleting a dataset.
+ */
+function mica_dataset_delete_ajax_form_callback($dataset_node, $node) {
+  list($form, $form_state) = ajax_get_form();
+
+  // update node referenced by the form_state
+  $node = $form_state['build_info']['args'][0];
+  foreach ($node->mica_dataset[$node->language] as $key => $value) {
+    if ($value['nid'] == $dataset_node->nid) {
+      unset($node->mica_dataset[$node->language][$key]);
+      break;
+    }
+  }
+  node_save($node);
+
+  drupal_process_form($form['#form_id'], $form, $form_state);
+  debug($form);
+  
+  return $form;
 }
 
 function mica_datasets_edit_form_validate($form, &$form_state) {
@@ -226,10 +271,9 @@ function mica_datasets_edit_form_submit($form, &$form_state) {
       drupal_set_message(t('Your values have been submitted.'));
       return;
     case t('Add Dataset'):
-      debug($form_state['values']['datasets']);
+      // update node referenced by the form_state
       $node = $form_state['build_info']['args'][0];
       $node->mica_dataset[$node->language][] = array('nid' => $form_state['values']['datasets']);
-      //debug($node);
       node_save($node);
       break;
   }
