@@ -118,7 +118,7 @@ function mica_datasets_dataset_studies_form($form, &$form_state) {
   $study_node_ids = _mica_datasets_get_study_ids($dataset_node->nid);
 
   $form = _mica_datasets_create_connectors_form();
-  
+
   // study list
   $studies_options = _mica_datasets_studies_options($study_node_ids);
   if (!empty($studies_options)) {
@@ -430,7 +430,7 @@ function _mica_datasets_add_connection_config_form(&$form, &$form_state, $datase
     '#prefix' => $prefix,
     '#suffix' => '</div>',
   );
-  
+
   // connection-config implementation
   if ($selected_type != 'none') {
     $study_node = node_load($study_node_id);
@@ -439,38 +439,17 @@ function _mica_datasets_add_connection_config_form(&$form, &$form_state, $datase
       $form[$connection_form_id][MICA_CONNECTION_CONFIG][$key] = $form_item;
     }
   }
-  
+
 }
 
-function _mica_datasets_add_connection_config_implementation_form($study_node, $selected_type) {
+function _mica_datasets_add_connection_config_implementation_form(&$study_node, $selected_type) {
   $form_items = array();
-  
-  // todo load the right MicaDatasetConnectionInterface implementation  
+
+  // todo load the right MicaDatasetConnectionInterface implementation
   if ($selected_type == 'opal') {
-    $opal_url = _mica_datasets_node_field_values($study_node, 'mica_opal');
-    if (!empty($opal_url)) {
-      $form_items['opal-url'] = array (
-        '#type' => 'item',
-        '#title' => t('Opal server'),
-        '#markup' => !empty($opal_url) ? '<a href="' . $opal_url[0]['url'] . '">' . $opal_url[0]['url'] . '</a></div>' : '',
-      );
-    }
-    else {
-      $form_items['opal-url'] = array (
-        '#title' => t('Opal server'),
-        '#type' => 'textfield',
-      );
-    }
-    $form_items['datasource'] = array (
-      '#title' => t('Datasource'),
-      '#type' => 'textfield',
-    );
-    $form_items['table'] = array (
-      '#title' => t('Table'),
-      '#type' => 'textfield',
-    );
+    $form_items = _mica_datasets_opal_connector_form($study_node);
   }
-  
+
   return $form_items;
 }
 
@@ -492,13 +471,25 @@ function _mica_datasets_connectors_form_validate($form, &$form_state) {
     if (strpos($key,MICA_CONNECTION_PREFIX) !== FALSE) {
       $connection_type = $form_state['values'][$key][MICA_CONNECTION_TYPE];
 
-      // todo make it validate by MicaDatasetConnectionInterface
-      if (array_key_exists(MICA_CONNECTION_CONFIG, $form_state['values'][$key]) && $connection_type == 'opal') {
+      if (array_key_exists(MICA_CONNECTION_CONFIG, $form_state['values'][$key]) && $connection_type != 'none') {
         //debug($form_state['values'][$key][MICA_CONNECTION_CONFIG]);
-        $form_state['values'][$key][MICA_CONNECTION_CONFIG][MICA_STUDY_ID] = $form_state['values'][MICA_STUDY_ID];
+        $form_state['values'][$key][MICA_CONNECTION_CONFIG][MICA_STUDY_ID] = $form_state['values'][$key][MICA_STUDY_ID];
         $form_state['values'][$key][MICA_CONNECTION_CONFIG][MICA_DATASET_ID] = $form_state['values'][$key][MICA_DATASET_ID];
 
-        _mica_datasets_edit_opal_form_validate($form, $form_state['values'][$key][MICA_CONNECTION_CONFIG], $form_state);
+        // todo make it validate by MicaDatasetConnectionInterface implementation
+        $form_errors = array();
+        if ($connection_type == 'opal') {
+          $form_errors = _mica_datasets_opal_connector_form_validate($form, $form_state['values'][$key][MICA_CONNECTION_CONFIG], $form_state);
+          
+        }
+        
+        // display errors
+        if (!empty($form_errors)) {
+          $dataset_form_path = $key . '][' . MICA_CONNECTION_CONFIG . '][';
+          foreach ($form_errors as $key => $msg) {
+            form_set_error($dataset_form_path . $key, $msg);
+          }
+        }
       }
     }
   }
@@ -533,23 +524,54 @@ function _mica_datasets_connectors_form_submit($form, &$form_state) {
 // connection implementations, to be moved
 //
 
-function _mica_datasets_edit_opal_form_validate($form, &$values, &$form_state) {
-  //debug($values);
-  $dataset_form_path = MICA_DATASET_PREFIX . $values[MICA_DATASET_ID] . '][' . MICA_CONNECTION_CONFIG . ']';
+function _mica_datasets_opal_connector_form($study_node) {
+  $form_items = array();
+  $opal_url = _mica_datasets_node_field_values($study_node, 'mica_opal');
+  
+  if (!empty($opal_url)) {
+    $form_items['opal-url'] = array (
+        '#type' => 'item',
+        '#title' => t('Opal server'),
+        '#markup' => !empty($opal_url) ? '<a href="' . $opal_url[0]['url'] . '">' . $opal_url[0]['url'] . '</a></div>' : '',
+    );
+  }
+  else {
+    $form_items['opal-url'] = array (
+        '#title' => t('Opal server'),
+        '#type' => 'textfield',
+    );
+  }
+  $form_items['datasource'] = array (
+      '#title' => t('Datasource'),
+      '#type' => 'textfield',
+  );
+  $form_items['table'] = array (
+      '#title' => t('Table'),
+      '#type' => 'textfield',
+  );
+  
+  return $form_items; 
+}
 
+function _mica_datasets_opal_connector_form_validate($form, &$values, &$form_state) {
+  //debug($values);
+  $form_errors = array();
+  
   if (array_key_exists('opal-url', $values)) {
     $value = trim($values['opal-url']);
     if ($value == '' || strpos($value,'https://') === FALSE) {
-      form_set_error($dataset_form_path . '[opal-url', t('You must provide a valid Opal server url: https://...'));
+      $form_errors['opal-url'] = t('You must provide a valid Opal server url: https://...');
     }
   }
   $value = trim($values['datasource']);
   if ($value == '') {
-    form_set_error($dataset_form_path . '[datasource', t('You must provide a valid Opal datasource name.'));
+    $form_errors['datasource'] = t('You must provide a valid Opal datasource name.');
   }
   $value = trim($values['table']);
   if ($value == '') {
-    form_set_error($dataset_form_path . '[table', t('You must provide a valid Opal table name.'));
+    $form_errors['table'] = t('You must provide a valid Opal table name.');
   }
+  
+  return $form_errors;
 }
 
