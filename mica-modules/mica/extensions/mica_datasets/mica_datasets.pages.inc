@@ -56,7 +56,7 @@ function mica_datasets_dataset_variables_edit_page($node) {
  * Display form for submitting queries.
  */
 function mica_datasets_dataset_query_page($node) {
-  drupal_set_title(t('!title Query', array('!title' => $node->title)));
+  drupal_set_title(t('!title -- Query', array('!title' => $node->title)));
   return 'TODO';
 }
 
