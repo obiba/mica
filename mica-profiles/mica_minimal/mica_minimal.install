@@ -117,4 +117,6 @@ function mica_minimal_install() {
   );
   drupal_write_record('login_destination', $rule);
 
+  // rebuild permissions
+  node_access_rebuild();
 }
