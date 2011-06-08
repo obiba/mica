@@ -6,6 +6,39 @@
  * Field Description content relation with fields. 
  */
 
+function _mica_field_value_type($field_value_type){
+  switch ($field_value_type) {
+  		case 'list_boolean':
+  			return 'BOOLEAN';
+  			
+  		case 'date':
+  		case 'datestamp':
+  		case 'datetime':
+  			return 'DATE';
+  			
+  		case 'number_float':
+  		case 'list_float':
+  		case 'number_decimal':
+  			return 'DECIMAL';
+  			
+  		case 'email':
+  		case 'link_field':
+  		case 'list_text':
+  		case 'text_long':
+  		case 'text_with_summary':
+  		case 'text':
+  		case 'text_default':
+  			return 'TEXT';
+  			
+  		case 'number_integer':
+  		case 'list_integer':
+  			return 'INTEGER';
+  			
+  		default:
+  			return NULL;
+  	}
+}
+
 /**
  * Enhance the field settings form with field_description extensions.
  */
@@ -45,43 +78,7 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
   	
   	// auto-detect value type based on field value type
   	$field_value_type = $form_state['build_info']['args'][0]['display']['default']['type'];
-  	switch ($field_value_type) {
-  		
-  		case 'list_boolean':
-  			$default_value_type = 'BOOLEAN';
-  			break;
-  			
-  		case 'date':
-  		case 'datestamp':
-  		case 'datetime':
-  			$default_value_type = 'DATE';
-  			break;
-  			
-  		case 'number_float':
-  		case 'list_float':
-  		case 'number_decimal':
-  			$default_value_type = 'DECIMAL';
-  			break;
-  			
-  		case 'email':
-  		case 'link_field':
-  		case 'list_text':
-  		case 'text_long':
-  		case 'text_with_summary':
-  		case 'text':
-  		case 'text_default':
-  			$default_value_type = 'TEXT';
-  			break;
-  			
-  		case 'number_integer':
-  		case 'list_integer':
-  			$default_value_type = 'INTEGER';
-  			break;
-  			
-  		default:
-  			$default_value_type = NULL;
-  			break;
-  	}
+  	$default_value_type = _mica_field_value_type($field_value_type);
 
   } 
   else {
