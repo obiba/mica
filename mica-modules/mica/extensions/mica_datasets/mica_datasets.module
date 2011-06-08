@@ -69,8 +69,8 @@ function mica_datasets_menu() {
       'title' => 'Dataset Connector Delete',
       'delivery callback' => 'ajax_deliver',
       'theme callback' => 'ajax_base_page_theme',
-      'access callback' => 'mica_datasets_edit_access',
-      'access arguments' => array(4,'study'),
+      'access callback' => 'mica_datasets_node_access',
+      'access arguments' => array(4,'study','update'),
       'page callback' => 'mica_dataset_delete_ajax_form_callback',
       'page arguments' => array(3,4),
       'type' => MENU_CALLBACK,
@@ -136,6 +136,29 @@ function _mica_datasets_ensure_viewreference_arguments(&$node) {
       }
     }
   }
+  
+}
+
+/**
+ * Implements hook_node_validate()
+ */
+function mica_datasets_node_validate($node, $form, &$form_state) {
+  // todo check dataset node title is unique
+  
+}
+
+/**
+ * Implements hook_field_attach_form()
+ */
+function mica_datasets_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+  // todo does not work, don't know why
+  $form['field_dataset_studies']['#states']['invisible'] = array(
+    ':input[name="title"]' => array('visible' => TRUE),
+  );
+  $form['field_dataset_variables']['#states']['invisible'] = array(
+    ':input[name="title"]' => array('visible' => TRUE),
+  );
+  //debug($form['field_dataset_studies']);
 }
 
 /**
