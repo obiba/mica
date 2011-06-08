@@ -71,6 +71,14 @@ drupal-examples:
 	cd target/$(micadir) && \
 	$(drushexec) dl examples
 
+drupal-en:
+	cd target/$(micadir) && \
+	$(drushexec) en --yes $(module)
+
+drupal-dis:
+	cd target/$(micadir) && \
+	$(drushexec) pm-disable --yes $(module)	
+
 drupal-forks:	
 	cp -r forks/* target/$(micadir)/sites/all/modules
 
