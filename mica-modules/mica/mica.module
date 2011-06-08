@@ -87,9 +87,16 @@ function mica_node_type_delete($info) {
 }
 
 /**
- * Implements hook_node_insert()
+ * Implements hook_form().
  */
-function mica_node_insert($node) {
+function mica_form($node, &$form_state) {
+  return node_content_form($node, $form_state);
+}
+
+/**
+ * Implements hook_insert()
+ */
+function mica_insert(&$node) {
 
   if ($node->type === 'field_description') {
     module_load_include('inc', 'mica', 'includes/search');
@@ -136,12 +143,8 @@ function mica_node_insert($node) {
     }
      
     $to_save = FALSE;
-    $node = node_load($node->nid);    // reload node so it's not in 'new' state
     foreach ($relations as $relation) {
       $to_save = $relation->create_child_node($node, $menu);
-    }
-    if ($to_save) {
-      node_save($node);
     }
   }
 }
