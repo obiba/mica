@@ -1032,14 +1032,14 @@ function mica_datasets_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
           'weight' => 6,
         ),
         'teaser' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => 0,
@@ -1114,7 +1114,7 @@ function mica_datasets_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'link',
           'settings' => array(),
           'type' => 'default',
