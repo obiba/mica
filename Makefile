@@ -109,7 +109,10 @@ package-themes:
 	$(call make-package,sites/all/themes,mica_samara)
 
 package-forks:
+	$(call make-info,sites/all/modules,http_client)
 	$(call make-package,sites/all/modules,http_client)
+	$(call make-info,sites/all/modules,feeds)
+	$(call make-package,sites/all/modules,feeds)
 	$(call make-package,sites/all/modules,references)
 	$(call make-package,sites/all/modules,search_api_ranges)
 	$(call make-package,sites/all/modules,noderefcreate)
