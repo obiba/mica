@@ -1,0 +1,85 @@
+<?php
+/**
+ * @file
+ * Code for the Mica Projects feature.
+ */
+
+include_once('mica_projects.features.inc');
+
+/**
+ * Implements hook_node_insert()
+ */
+function mica_projects_insert(&$node) {
+  
+  if ($node->type === 'project'){
+    $node = node_load($node->nid);
+    $node->field_teleconferences['und'] = array(
+      0 => array(
+      	'view_id' => 'teleconferences:page',
+      	'arguments' => $node->nid,
+      )
+    );
+   
+    node_save($node);
+    
+    // create the associated forum
+    module_load_include('inc', 'forum', 'forum.admin');
+
+    $forum_topic_fields = array();
+    $forum_topic_fields['values']['name'] = $node->title;
+    $forum_topic_fields['values']['description'] = 'Discussion about this project';
+    $forum_topic_fields['values']['vid'] = 1;
+    
+    $form_state = array();
+    $forum = forum_form_forum($forum_topic_fields, $form_state);
+    $forum['form_id']['#value'] = 'forum';
+    forum_form_submit($forum, $forum_topic_fields);
+    
+    // create menu based on content type menu config
+  	$menu = isset($node->menu)?$node->menu:array();
+ 	if (empty($menu)) {
+ 		$menu = array();
+ 	}
+  	if (empty($menu['enabled']) || !$menu['enabled']) {
+  	  $menu_options = variable_get('menu_options_' . $node->type);
+
+  	  if (!empty($menu_options)) {
+  	    $menu['enabled'] = TRUE;
+  		$menu['expanded'] = TRUE;
+  		$menu['menu_name'] = $menu_options[0];
+  		$menu['link_title'] = $node->title;
+  		$menu['link_path'] = 'node/' . $node->nid;
+  			
+  		$menu_parent = variable_get('menu_parent_' . $node->type);
+  		if (!empty($menu_parent)) {
+  			$split = explode(":", $menu_parent);
+  			if (!empty($split[1])) {
+  			  $mlid = $split[1];
+  			  // check that this parent menu exists
+              $existing_menu = db_query("SELECT * FROM {menu_links} WHERE mlid = :mlid", array(':mlid' => $mlid))
+                                ->fetchObject();    			
+  		  	  if (!empty($existing_menu) && $existing_menu->mlid === $mlid) {
+    		    $menu['plid'] = $mlid;
+  			    menu_link_save($menu);
+    	        menu_cache_clear($menu['menu_name']);
+  			  }  		
+  		    }
+  		  }
+  		}
+  	}
+    // create sub-menu for forum 
+    if (!empty($menu) || $menu['enabled']) {
+    	//$field_ref_info = field_info_instance('node', $field_ref, $this->parent_bundle);
+      $child_menu_item = array(
+			  'menu_name' => 'main-menu',
+			  'link_title' => t('Forum'),
+			  'link_path' => 'forum/' . $forum_topic_fields['values']['tid'],
+			  'plid' => $menu['mlid'],
+			);
+      menu_link_save($child_menu_item);
+      menu_cache_clear('main-menu');
+    } 
+    
+    return;
+  }
+}
