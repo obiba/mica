@@ -47,14 +47,17 @@ function _mica_datasets_connection_data(&$dataset_node, &$study_node, $parent_no
   // todo fetch the connector entity
   $child_node = $parent_node->nid == $dataset_node->nid ? $study_node : $dataset_node;
 
+  $connector = mica_dataset_connector_query($dataset_node->nid, $study_node->nid);
+  
   $row = array(
     'parent' => _mica_datasets_connection_data_node($parent_node),
     'child' => _mica_datasets_connection_data_node($child_node),
     'connector' => array(
-      'id' => 0,
+      'id' => $connector ? $connector->id : 0,
       MICA_DATASET_ID => $dataset_node->nid,
       MICA_STUDY_ID => $study_node->nid,
-      'type' => 'none',  
+      'type' => $connector ? $connector->class : 'none',
+      'description' => $connector ? $connector->description : '',
   ),
   );
 
@@ -92,6 +95,7 @@ function _mica_datasets_add_connection_option(&$options, &$dataset_node, &$study
           '#href' => $data['child']['path'],
   )),
       'connection-type' => $data['connector']['type'],
+      'description' => $data['connector']['description'],
       'actions' => array(
         'data' => array(
           '#type' => 'link',
@@ -113,6 +117,7 @@ function _mica_datasets_add_table_form(&$form, $header, $empty, &$options) {
   $header = array (
     'child' => t($header),
     'connection-type' => t('Connection Type'),
+    'description' => t('Description'),
     'actions' => '',
   );
 
@@ -221,7 +226,6 @@ function _mica_datasets_datasets_options($study_node)  {
     $dataset_node_ids[] = $dataset_node_id_value['nid'];
   }
 
-  //
   $q = db_select('node', 'n');
   $q->addField('n', 'nid');
   $q->addField('n', 'title');

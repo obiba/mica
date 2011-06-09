@@ -235,16 +235,27 @@ function mica_datasets_study_datasets_form_submit($form, &$form_state) {
 //
 
 function mica_datasets_dataset_connection_form($form, &$form_state, $connection_id, $dataset_node, $study_node) {
+  $connector = $connection_id != 0 ? mica_dataset_connector_load($connection_id) : FALSE;
+  
   $form = _mica_datasets_connectors_form();
-
+  
   $connection_types = _mica_datasets_connection_types();
   $selected_type = isset($form_state['values'][MICA_CONNECTION_TYPE]) ? $form_state['values'][MICA_CONNECTION_TYPE] : key($connection_types);
+  
+  // description
+  $form['description'] = array(
+      '#type' => 'textarea', 
+      '#title' => t('Description'), 
+      '#default_value' => $connector ? $connector->description : '',
+      '#rows' => 3,
+  );
 
   // connection-type
   $form[MICA_CONNECTION_TYPE]= array(
     '#type' => 'select', 
     '#title' => t('Connection Type'), 
     '#options' => $connection_types,
+    '#default_value' => $connector ? $connector->class : 'none',
     '#description' => t('Select which type of connection is to be used to retrieve variables and data from the study to contribute to the dataset.'),
     '#ajax' => array(
       'path' => 'mica/ajax/dataset/' . $dataset_node->nid . '/' . $study_node->nid . '/edit',
@@ -330,8 +341,24 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
       _mica_datasets_dataset_connection_delete($study_node, $dataset_node->nid);
       break;
     case t('Save'):
-      if ($connection_type != 'none') {
-        drupal_set_message('Pouet');
+      $values = array();
+      if ($connector_id == 0) {
+        $values['name'] = $dataset_node->title . ' -- ' . $study_node->title;
+        $values['machine_name'] = strtolower(str_replace(array(' ','-',',','.',':',';','/'),'_', $values['name']));
+        $values['description'] = $form_state['values']['description'];
+        $values['dataset_id'] = $dataset_node->nid;
+        $values['study_id'] = $study_node->nid;
+        $values['class'] = $connection_type;
+        $values['options'] = serialize(array());
+        $values['enabled'] = TRUE;
+
+        $rval = mica_dataset_connector_insert($values);
+      }
+      else {
+        $connector = mica_dataset_connector_load($connector_id);
+        $connector->description = $form_state['values']['description'];
+        $connector->class = $connection_type;
+        debug($connector->save());
       }
       break;
   }

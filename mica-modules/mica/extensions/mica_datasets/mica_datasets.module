@@ -251,6 +251,19 @@ function mica_datasets_entity_property_info() {
   return $info;
 }
 
+function mica_dataset_connector_query($dataset_id, $study_id) {
+  $q = db_select('mica_dataset_connector', 'c');
+  $q->addField('c', 'id');
+  $q->condition('c.dataset_id', $dataset_id, '=');
+  $q->condition('c.study_id', $study_id, '=');
+  $q->range(0,1);
+  $result = $q->execute();
+  
+  $rval = $result->fetchField();
+  
+  return $rval ? mica_dataset_connector_load($rval) : FALSE;
+}
+
 /**
  * Load the dataset connector with the specified id.
  *
