@@ -1,0 +1,11 @@
+name = Mica Module for Opal
+description = Allows using Mica and Mica Datasets with an Opal instance
+core = 7.x
+package = "OBiBa"
+
+dependencies[] = mica
+dependencies[] = mica_datasets
+dependencies[] = feeds
+dependencies[] = feeds_jsonpath_parser
+
+;files[] = includes/opal_connection.inc

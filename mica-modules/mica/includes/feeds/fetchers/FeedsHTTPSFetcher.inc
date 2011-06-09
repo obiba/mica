@@ -39,12 +39,19 @@ class FeedsHTTPSFetcherResult extends FeedsHTTPFetcherResult {
     $client->options['curlopts'] += array(
       CURLOPT_SSL_VERIFYHOST => ($this->no_verify_host == FALSE),
       CURLOPT_SSL_VERIFYPEER => ($this->no_verify_peer == FALSE),
-      CURLOPT_SSLCERT => $this->client_cert,
-      CURLOPT_SSLKEY => $this->client_pk,
+      CURLOPT_SSLCERT => $this->realpath($this->client_cert),
+      CURLOPT_SSLKEY => $this->realpath($this->client_pk),
     );
 
     try {
-      $result = $client->get($this->url);
+      $get = new HttpClientRequest($this->url, array(
+        'method' => 'GET',
+        'parameters' => array(),
+      ));
+
+      $get->addHeader('Accept', 'application/json');
+      $result = $client->execute($get);
+      debug($result);
     } catch(HttpClientException $e) {
       if($e->getCode() == 0) {
         // curl error
@@ -57,6 +64,19 @@ class FeedsHTTPSFetcherResult extends FeedsHTTPFetcherResult {
       $result = $e->getResponse()->body;
     }
     return $this->sanitizeRaw($result);
+  }
+  
+  /**
+   * Extract the underlying file-system path from a file reference (private://someFile.pem)
+   */
+  private function realpath($reference) {
+    if(file_valid_uri($reference)) {
+      $wrapper = file_stream_wrapper_get_instance_by_uri($reference);
+      if($wrapper) {
+        return $wrapper->realpath();
+      }
+    }
+    return $reference;
   }
 }
 
