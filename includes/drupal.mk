@@ -18,6 +18,7 @@ email_version=7.x-1.0-beta1
 entity_version=7.x-1.0-beta8
 features_version=7.x-1.0-beta2
 #feeds_version=7.x-2.x-dev
+feeds_jsonpath_parser_version=7.x-1.0-beta2
 field_group_version=7.x-1.0-rc2
 field_permissions_version=7.x-1.0-alpha1
 forum_access_version=7.x-1.0-alpha4
@@ -35,6 +36,7 @@ views_data_export_version=7.x-3.0-beta4
 views_version=7.x-3.0-beta3
 viewreference_version=7.x-3.0
 
+
 #
 # Modules to get stable dev revisions
 #
@@ -51,7 +53,7 @@ references_patch=http://drupal.org/files/issues/references.node_type_property.pa
 # Drupal Build
 #
 
-drupal: drupal-prepare drupal-download drupal-forks drupal-stable-dev solr-php-client drupal-default 
+drupal: drupal-prepare drupal-download drupal-forks drupal-stable-dev drupal-install-clients drupal-default 
 
 drupal-prepare:
 	mkdir -p target
@@ -65,6 +67,7 @@ drupal-download:
 	$(drushexec) dl entity-$(entity_version) views-$(views_version) && \
 	$(drushexec) dl search_api-$(search_api_version) search_api_solr-$(search_api_solr_version) && \
 	$(drushexec) dl features-$(features_version) strongarm-$(strongarm_version) && \
+	$(drushexec) dl feeds_jsonpath_parser-$(feeds_jsonpath_parser_version) && \
 	$(drushexec) dl field_permissions-$(field_permissions_version) relation-$(relation_version) && \
 	$(drushexec) dl collapsiblock-$(collapsiblock_version) && \
 	$(drushexec) dl date-$(date_version) calendar-$(calendar_version) && \
@@ -96,6 +99,12 @@ drupal-stable-dev:
 	$(call drupal-checkout-module,http_client)
 	$(call drupal-checkout-module,feeds)
 	$(call drupal-patch-module,references)
+	
+drupal-install-clients: jsonpath-php-client solr-php-client
+
+jsonpath-php-client:
+	cd target/$(micadir)/sites/all/modules/feeds_jsonpath_parser && \
+	wget http://jsonpath.googlecode.com/files/jsonpath-0.8.1.php
 	
 solr-php-client:
 	cd target/$(micadir) && \
