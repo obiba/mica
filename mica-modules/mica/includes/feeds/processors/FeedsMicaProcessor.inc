@@ -52,7 +52,7 @@ class FeedsMicaProcessor extends FeedsNodeProcessor {
   /**
    * Loads the existing Study Child from its existing parent
    */
-  protected function loadParentEntity(FeedsSource $source, $parent_id, $child_type) {
+  protected function loadParentEntity(FeedsSource $source, $parent_id) {
     module_load_include('inc', 'mica', 'includes/relations');
 
     $query = db_select('field_data_' . $this->config['parent_unique_id_field'], 'f')
@@ -66,7 +66,7 @@ class FeedsMicaProcessor extends FeedsNodeProcessor {
       $relation = _mica_find_relations_by_parent_and_child($this->config['parent_bundle'], $this->config['content_type']);
       if (!empty($relation)) {
       	$parent = entity_load('node', array($row->entity_id));
-				$child_id = $parent[$row->entity_id]->{$relation->options['node_reference']}[LANGUAGE_NONE][0]['nid'];
+	$child_id = $parent[$row->entity_id]->{$relation->options['node_reference']}[LANGUAGE_NONE][0]['nid'];
         $nodes = entity_load('node', array($child_id));
         $node = $nodes[$child_id];
         $node->changed = REQUEST_TIME;

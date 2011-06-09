@@ -19,9 +19,7 @@ function mica_projects_insert(&$node) {
       	'arguments' => $node->nid,
       )
     );
-   
-    node_save($node);
-    
+       
     // create the associated forum
     module_load_include('inc', 'forum', 'forum.admin');
 
