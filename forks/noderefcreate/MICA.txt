@@ -1,1 +1,0 @@
-Waiting for patch http://drupal.org/node/1154660 to be applied.

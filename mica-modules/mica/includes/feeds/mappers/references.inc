@@ -121,12 +121,12 @@ function references_feeds_set_target($source, $entity, $target, $value) {
   if ($info['type'] == 'user_reference') {
     $idname = 'uid';
     $typename = 'user';
-    $validate_function = '_user_reference_potential_references';
+    $validate_function = 'user_reference_potential_references';
   }
   else {
     $idname = 'nid';
     $typename = 'node';
-    $validate_function = '_node_reference_potential_references';
+    $validate_function = 'node_reference_potential_references';
   }
 
   $field = isset($entity->$target) ? $entity->$target : array();

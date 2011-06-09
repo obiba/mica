@@ -11,7 +11,7 @@ calendar_version=7.x-2.0-alpha1
 chain_menu_access_version=7.x-1.0-beta2
 collapsiblock_version=7.x-1.0
 content_access_version=7.x-1.x-dev
-ctools_version=7.x-1.0-alpha4
+ctools_version=7.x-1.0-beta1
 date_version=7.x-2.0-alpha3
 drupal_version=7.2
 email_version=7.x-1.0-beta1
@@ -26,6 +26,7 @@ link_version=7.x-1.0-alpha3
 login_destination_version=7.x-1.0-beta1
 multiselect_version=7.x-1.8
 name_version=7.x-1.0-beta1
+noderefcreate_version=7.x-1.0
 relation_version=7.x-1.0-alpha2
 search_api_solr_version=7.x-1.0-beta2
 search_api_version=7.x-1.0-beta8
@@ -42,6 +43,9 @@ http_client_revision=6e65667997ffe79172249b42a897cd81dd4ab510
 
 feeds_branch=7.x-2.x
 feeds_revision=5f9ebacf6972bc5fe05f967cb33af0ddecc39ea5
+
+references_revision=7.x-2.0-beta3
+references_patch=http://drupal.org/files/issues/references.node_type_property.patch
 
 #
 # Drupal Build
@@ -64,7 +68,7 @@ drupal-download:
 	$(drushexec) dl field_permissions-$(field_permissions_version) relation-$(relation_version) && \
 	$(drushexec) dl collapsiblock-$(collapsiblock_version) && \
 	$(drushexec) dl date-$(date_version) calendar-$(calendar_version) && \
-	$(drushexec) dl login_destination-$(login_destination_version) && \
+	$(drushexec) dl login_destination-$(login_destination_version) noderefcreate-$(noderefcreate_version) && \
 	$(drushexec) dl viewreference-$(viewreference_version) && \
 	$(drushexec) dl views_data_export-$(views_data_export_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version) && \
 	$(drushexec) dl acl-$(acl_version) chain_menu_access-$(chain_menu_access_version) forum_access-$(forum_access_version)
@@ -91,7 +95,8 @@ drupal-forks:
 drupal-stable-dev:
 	$(call drupal-checkout-module,http_client)
 	$(call drupal-checkout-module,feeds)
-
+	$(call drupal-patch-module,references)
+	
 solr-php-client:
 	cd target/$(micadir) && \
 	rm -rf sites/all/modules/search_api_solr/SolrPhpClient && \
@@ -107,12 +112,13 @@ drupal-default:
 	cp sites/default/default.settings.php sites/default/settings.php && \
 	chmod a+w sites/default/settings.php && \
 	chmod +x scripts/*.sh
-	
+
+drupal-patch-module = $(call drupal-checkout-module,$(1)) && \
+	wget -O - $($(1)_patch) | git apply -p0	
+
 # drupal-checkout-module function: checkout a specific module version using git
 drupal-checkout-module = cd target/$(micadir)/sites/all/modules && \
 	rm -rf $(1) && \
-	git clone -b $($(1)_branch) http://git.drupal.org/project/$(1).git && \
+	git clone http://git.drupal.org/project/$(1).git && \
 	cd $(1) && \
-	git checkout $($(1)_revision) && \
-	git status
-
+	git checkout $($(1)_revision)

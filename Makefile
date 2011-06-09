@@ -22,7 +22,7 @@ mica_samara_version=7.x-1.0-dev
 # Forked Modules
 #
 http_client_version=7.x-2.x-dev-mica
-references_version=7.x-2.x-dev-mica
+references_version=7.x-2.0-beta3-mica
 search_api_ranges_version=7.x-1.x-dev-mica
 noderefcreate_version=7.x-1.0-beta2-mica
 menu_firstchild_version=7.x-1.0-mica
@@ -113,6 +113,7 @@ package-forks:
 	$(call make-package,sites/all/modules,http_client)
 	$(call make-info,sites/all/modules,feeds)
 	$(call make-package,sites/all/modules,feeds)
+	$(call make-info,sites/all/modules,references)
 	$(call make-package,sites/all/modules,references)
 	$(call make-package,sites/all/modules,search_api_ranges)
 	$(call make-package,sites/all/modules,noderefcreate)
