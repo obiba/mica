@@ -7,10 +7,17 @@
 include_once('mica_projects.features.inc');
 
 /**
+ * Implements hook_form().
+ */
+function mica_projects_form($node, &$form_state) {
+  return node_content_form($node, $form_state);
+}
+
+/**
  * Implements hook_node_insert()
  */
 function mica_projects_insert(&$node) {
-  
+  debug($node->type);
   if ($node->type === 'project'){
     $node = node_load($node->nid);
     $node->field_teleconferences['und'] = array(
