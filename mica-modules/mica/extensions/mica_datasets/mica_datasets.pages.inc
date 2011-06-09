@@ -43,27 +43,39 @@ function mica_datasets_dataset_connection_page($connection_id, $dataset_node, $s
  */
 function mica_datasets_dataset_variables_edit_page($node) {
   drupal_set_title(t('!title -- Participant Variables', array('!title' => $node->title)));
-  return drupal_get_form('mica_datasets_dataset_variables_form');
+  return drupal_get_form('mica_datasets_dataset_variables_form', $node);
 }
 
 function mica_datasets_dataset_variables_form_submit($form, &$form_state) {
   debug('submit');
 }
 
-function mica_datasets_dataset_variables_form($form, &$form_state) {
-  /* $_importer_id="OPAL_IMPORTER_ID_TEMPORARY";
+/**
+ * ADJUST FROM feeds.pages.inc
+ * @param unknown_type $form
+ * @param unknown_type $form_state
+ * @param unknown_type $node
+ */
+function mica_datasets_dataset_variables_form($form, &$form_state, $node) {
+  $_importer_id='opal_participant_variables';
 
   $source = feeds_source($_importer_id, empty($form['nid']['#value']) ? 0 : $form['nid']['#value']);
+
+  // nothing for the moment
+  $mica_dataset_connector = mica_dataset_connector_load($node->nid);
+
+  // mandatory to have FeedsHTTPSFetcher ?
+  $source->setConfig(array('FeedsHTTPSFetcher' => array('source'=>$mica_dataset_connector->id)));
 
   $form = array();
   $form['#importer_id'] = $_importer_id;
   // @todo Move this into fetcher?
   $form['#attributes']['enctype'] = 'multipart/form-data';
   $form['source_status'] = array(
-  '#type' => 'fieldset',
-  '#title' => t('Status'),
-  '#tree' => TRUE,
-  '#value' => feeds_source_status($source),
+    '#type' => 'fieldset',
+    '#title' => t('Status'),
+    '#tree' => TRUE,
+    '#value' => _feeds_source_status($source),
   );
   $form['feeds'] = array(
   '#type' => 'fieldset',
@@ -77,11 +89,32 @@ function mica_datasets_dataset_variables_form($form, &$form_state) {
   );
   $progress = $source->progressImporting();
   if ($progress !== FEEDS_BATCH_COMPLETE) {
-  $form['submit']['#disabled'] = TRUE;
-  $form['submit']['#value'] =
-  t('Importing (@progress %)', array('@progress' => number_format(100 * $progress, 0)));
+    $form['submit']['#disabled'] = TRUE;
+    $form['submit']['#value'] =
+    t('Importing (@progress %)', array('@progress' => number_format(100 * $progress, 0)));
   }
-  return $form;*/
+  return $form;
+}
+
+/**
+ * TODO COPY FROM feeds.page.inc, call of feeds_source_status($source) failed...
+ * Renders a status display for a source.
+ */
+function _feeds_source_status($source) {
+  $progress_importing = $source->progressImporting();
+  $v = array();
+  if ($progress_importing != FEEDS_BATCH_COMPLETE) {
+    $v['progress_importing'] = $progress_importing;
+  }
+  $progress_clearing = $source->progressClearing();
+  if ($progress_clearing != FEEDS_BATCH_COMPLETE) {
+    $v['progress_clearing'] = $progress_clearing;
+  }
+  $v['imported'] = $source->imported;
+  $v['count'] = $source->itemCount();
+  if (!empty($v)) {
+    return theme('feeds_source_status', $v);
+  }
 }
 
 
