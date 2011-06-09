@@ -229,24 +229,16 @@ function mica_datasets_dataset_studies_form($form, &$form_state) {
     );
   }
 
+  // build the table options
+  $options = array();
   foreach ($study_node_ids as $study_node_id => $study_node) {
-    _mica_datasets_add_connection_form($form, $form_state, $dataset_node_id, $study_node_id, $study_node->title);
+    _mica_datasets_add_connection_option($options, $dataset_node, $study_node, $dataset_node);
   }
-
-  if (!empty($study_node_ids)) {
-    _mica_datasets_add_submit_button($form);
-  }
+  
+  _mica_datasets_add_table_form($form, 'Study', 'No studies found', $options);
+  
 
   return $form;
-}
-
-/**
- * Validate the dataset studies form.
- * @param $form
- * @param $form_state
- */
-function mica_datasets_dataset_studies_form_validate($form, &$form_state) {
-  _mica_datasets_connectors_form_validate($form, $form_state);
 }
 
 /**
@@ -272,7 +264,7 @@ function mica_datasets_study_datasets_form($form, &$form_state) {
   $study_node = _mica_datasets_get_node_form_arg($form_state);
   $study_node_id = $study_node->nid;
 
-  $dataset_node_ids = _mica_datasets_node_field_values($study_node, 'mica_dataset');
+  $dataset_node_ids = _mica_datasets_get_dataset_ids($study_node->nid);
 
   $form = _mica_datasets_create_connectors_form();
 
@@ -289,28 +281,16 @@ function mica_datasets_study_datasets_form($form, &$form_state) {
       '#value' => t('Add Dataset'),
     );
   }
-
-  foreach ($dataset_node_ids as $dataset_node_id_value) {
-    $dataset_node_id = $dataset_node_id_value['nid'];
-    $dataset_node = node_load($dataset_node_id);
-
-    _mica_datasets_add_connection_form($form, $form_state, $dataset_node_id, $study_node_id, $dataset_node->title);
+  
+  // build the table options
+  $options = array();
+  foreach ($dataset_node_ids as $dataset_node_id => $dataset_node) {
+    _mica_datasets_add_connection_option($options, $dataset_node, $study_node, $study_node);
   }
-
-  if (!empty($dataset_node_ids)) {
-    _mica_datasets_add_submit_button($form);
-  }
+  
+  _mica_datasets_add_table_form($form, 'Dataset', 'No datasets found', $options);
 
   return $form;
-}
-
-/**
- * Validate the study datasets form.
- * @param $form
- * @param $form_state
- */
-function mica_datasets_study_datasets_form_validate($form, &$form_state) {
-  _mica_datasets_connectors_form_validate($form, $form_state);
 }
 
 /**

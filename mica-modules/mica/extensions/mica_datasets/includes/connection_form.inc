@@ -25,6 +25,9 @@ define('MICA_CONNECTION_CONFIG', 'connection-config');
 // connection form functions
 //
 
+/**
+ * Base form for connectors.
+ */
 function _mica_datasets_create_connectors_form() {
   $form = array();
   $form = array(
@@ -34,67 +37,161 @@ function _mica_datasets_create_connectors_form() {
   return $form;
 }
 
-function _mica_datasets_connection_form_id($dataset_node_id, $study_node_id) {
+/**
+ * Build a connection data structure.
+ * @param $dataset_node
+ * @param $study_node
+ * @param $parent_node
+ */
+function _mica_datasets_connection_data(&$dataset_node, &$study_node, $parent_node) {
+  // todo fetch the connector entity
+  $child_node = $parent_node->nid == $dataset_node->nid ? $study_node : $dataset_node;
+
+  $row = array(
+    'parent' => _mica_datasets_connection_data_node($parent_node),
+    'child' => _mica_datasets_connection_data_node($child_node),
+    'connector' => array(
+      'id' => 0,
+  MICA_DATASET_ID => $dataset_node->nid,
+  MICA_STUDY_ID => $study_node->nid,
+      'type' => 'none',  
+  ),
+  );
+
+  return $row;
+}
+
+/**
+ * Extract usefull information from a node.
+ * @param $node
+ */
+function _mica_datasets_connection_data_node(&$node) {
+  $uri = entity_uri('node', $node);
+  return array(
+      'title' => $node->title,
+      'id' => $node->nid, 
+      'type' => $node->type,
+      'path' => $uri['path'],
+  );
+}
+
+/**
+ * Add a tableselect option.
+ * @param $options
+ * @param $dataset_node
+ * @param $study_node
+ * @param $parent_node
+ */
+function _mica_datasets_add_connection_option(&$options, &$dataset_node, &$study_node, &$parent_node) {
+  $data = _mica_datasets_connection_data($dataset_node, $study_node, $parent_node);
+  $options[$data['child']['id']] = array(
+      'child' => array(
+        'data' => array(
+          '#type' => 'link',
+          '#title' => $data['child']['title'],
+          '#href' => $data['child']['path'],
+  )),
+      'connection-type' => $data['connector']['type'],
+      'actions' => array(
+        'data' => array(
+          '#type' => 'link',
+          '#title' => 'Edit',
+          '#href' => 'mica/dataset/connector/' . $data['connector']['id'] . '/' . $data['connector'][MICA_DATASET_ID] . '/' . $data['connector'][MICA_STUDY_ID] . '/edit',
+  )),
+      'row' => $data,
+  );
+}
+
+/**
+ * Add tableselect form with delete selected items button.
+ * @param $form
+ * @param $header first column header
+ * @param $empty text when list is empty
+ * @param $options list of rows
+ */
+function _mica_datasets_add_table_form(&$form, $header, $empty, &$options) {
+  $header = array (
+    'child' => t($header),
+    'connection-type' => t('Connection Type'),
+    'actions' => '',
+  );
+
+  $form['table'] = array (
+    '#type' => 'tableselect',
+    '#header' => $header,
+    '#options' => $options,
+    '#empty' => t($empty),
+  );
+
+  if (!empty($options)) {
+    $form['delete'] = array(
+      '#type' => 'submit',
+      '#value' => t('Delete selected items'),
+    );
+  }
+}
+
+function _mica_datasets_connectors_form_submit($form, &$form_state) {
+
+  switch ($form_state['triggering_element']['#value']) {
+    case t('Delete selected items'):
+      foreach ($form_state['values']['table'] as $selection) {
+        if ($selection != 0) {
+          $row = $form['table']['#options'][$selection]['row'];
+          // update node referenced by the form_state
+          $node = _mica_datasets_get_node_form_arg($form_state);
+          if ($node->type != 'study') {
+            $node = node_load($row['connector'][MICA_STUDY_ID]);
+          }
+          foreach ($node->mica_dataset[$node->language] as $key => $value) {
+            if ($value['nid'] == $row['connector'][MICA_DATASET_ID]) {
+              unset($node->mica_dataset[$node->language][$key]);
+              // todo delete connector entity too
+              break;
+            }
+          }
+          node_save($node);
+        }
+      }
+      break;
+    case t('Add Dataset'):
+      // update node referenced by the form_state
+      $study_node = $form_state['build_info']['args'][0];
+      $study_node->mica_dataset[$study_node->language][] = array('nid' => $form_state['values']['datasets']);
+      node_save($study_node);
+      break;
+    case t('Add Study'):
+      // update selected node referenced with the one from the form_state
+      $dataset_node = $form_state['build_info']['args'][0];
+      $study_node = node_load($form_state['values']['studies']);
+      $study_node->mica_dataset[$study_node->language][] = array('nid' => $dataset_node->nid);
+      node_save($study_node);
+      break;
+  }
+
+  // anything else will cause rebuild of the form and present it again.
+  $form_state['rebuild'] = TRUE;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*function _mica_datasets_connection_form_id($dataset_node_id, $study_node_id) {
   return MICA_CONNECTION_PREFIX . $dataset_node_id . '-' . $study_node_id;
 }
 
-function _mica_datasets_add_connection_form(&$form, &$form_state, $dataset_node_id, $study_node_id, $title) {
-  _mica_datasets_add_connection_container_form($form, $form_state, $dataset_node_id, $study_node_id, $title);
-  _mica_datasets_add_connection_type_form($form, $dataset_node_id, $study_node_id);
-  _mica_datasets_add_connection_config_form($form, $form_state, $dataset_node_id, $study_node_id);
-  _mica_datasets_add_connection_remove_button($form, $dataset_node_id, $study_node_id);
-}
-
-function _mica_datasets_add_submit_button(&$form) {
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Save'),
-    '#attributes' => array('style' => array('display:block;')),
-  );
-}
-
-function _mica_datasets_add_connection_container_form(&$form, &$form_state, $dataset_node_id, $study_node_id, $title) {
-  $connection_form_id = _mica_datasets_connection_form_id($dataset_node_id,$study_node_id);
-
-    
-  $form[$connection_form_id] = array(
-    '#type' => 'fieldset',
-    '#title' => $title,
-    '#collapsible' => TRUE, 
-    '#collapsed' => FALSE,
-    '#tree' => TRUE,
-    '#prefix' => '<div id="' . $connection_form_id . '-replace">',
-    '#suffix' => '</div>',
-  );
-
-  $form[$connection_form_id][MICA_DATASET_ID] = array(
-    '#type' => 'hidden', 
-    '#value' => $dataset_node_id,
-  );
-
-  $form[$connection_form_id][MICA_STUDY_ID] = array(
-    '#type' => 'hidden', 
-    '#value' => $study_node_id,
-  );
-
-  /*$node_arg = _mica_datasets_get_node_form_arg($form_state);
-  $node = NULL;
-  if ($node_arg->type == 'dataset') {
-    $node = node_load($study_node_id);
-  }
-  else {
-    $node = node_load($dataset_node_id);
-  }
-  $uri = entity_uri('node', $node);
-  $form[$connection_form_id]['link'] = array(
-    '#type' => 'link',
-    '#title' => $node->title,
-    '#href' => $uri['path'],
-    '#options' => $uri['options'],
-  );*/
-}
-
-function _mica_datasets_add_connection_type_form(&$form, $dataset_node_id, $study_node_id) {
+function _mica_datasets_add_connection_type_form(&$form, &$dataset_node, &$study_node) {
+  $dataset_node_id = $dataset_node->nid;
+  $study_node_id = $study_node->nid;
   $connection_form_id = _mica_datasets_connection_form_id($dataset_node_id,$study_node_id);
 
   // connection-type
@@ -110,7 +207,9 @@ function _mica_datasets_add_connection_type_form(&$form, $dataset_node_id, $stud
   );
 }
 
-function _mica_datasets_add_connection_config_form(&$form, &$form_state, $dataset_node_id, $study_node_id) {
+function _mica_datasets_add_connection_config_form(&$form, &$form_state, &$dataset_node, &$study_node) {
+  $dataset_node_id = $dataset_node->nid;
+  $study_node_id = $study_node->nid;
   $connection_form_id = _mica_datasets_connection_form_id($dataset_node_id,$study_node_id);
   $connection_types = _mica_datasets_connection_types();
 
@@ -150,19 +249,6 @@ function _mica_datasets_add_connection_config_implementation_form(&$study_node, 
   return $form_items;
 }
 
-function _mica_datasets_add_connection_remove_button(&$form, $dataset_node_id, $study_node_id) {
-  $connection_form_id = _mica_datasets_connection_form_id($dataset_node_id,$study_node_id);
-
-  $form[$connection_form_id]['remove'] = array(
-      '#type' => 'submit',
-      '#value' => t('Remove'),
-      '#ajax' => array(
-        'path' => 'mica/ajax/dataset/' . $dataset_node_id . '/' . $study_node_id . '/delete',
-        'wrapper' => 'dataset-connectors',
-  ),
-  );
-}
-
 function _mica_datasets_connectors_form_validate($form, &$form_state) {
   foreach (array_keys($form_state['values']) as $key) {
     if (strpos($key,MICA_CONNECTION_PREFIX) !== FALSE) {
@@ -190,32 +276,7 @@ function _mica_datasets_connectors_form_validate($form, &$form_state) {
       }
     }
   }
-}
-
-function _mica_datasets_connectors_form_submit($form, &$form_state) {
-  // only submit will result in actual submission, all others rebuild.
-  switch ($form_state['triggering_element']['#value']) {
-    case t('Save'): // Submit: We're done.
-      drupal_set_message(t('Your values have been submitted.'));
-      return;
-    case t('Add Dataset'):
-      // update node referenced by the form_state
-      $study_node = $form_state['build_info']['args'][0];
-      $study_node->mica_dataset[$study_node->language][] = array('nid' => $form_state['values']['datasets']);
-      node_save($study_node);
-      break;
-    case t('Add Study'):
-      // update selected node referenced with the one from the form_state
-      $dataset_node = $form_state['build_info']['args'][0];
-      $study_node = node_load($form_state['values']['studies']);
-      $study_node->mica_dataset[$study_node->language][] = array('nid' => $dataset_node->nid);
-      node_save($study_node);
-      break;
-  }
-
-  // anything else will cause rebuild of the form and present it again.
-  $form_state['rebuild'] = TRUE;
-}
+}*/
 
 //
 // utilities
@@ -250,7 +311,7 @@ function _mica_datasets_datasets_options($study_node)  {
     $dataset_node_ids[] = $dataset_node_id_value['nid'];
   }
 
-  // 
+  //
   $q = db_select('node', 'n');
   $q->addField('n', 'nid');
   $q->addField('n', 'title');
@@ -258,6 +319,34 @@ function _mica_datasets_datasets_options($study_node)  {
   $q->condition('n.status', 1);
   if (!empty($dataset_node_ids)) {
     $q->condition('n.nid', $dataset_node_ids, 'NOT IN');
+  }
+  $q->addTag('node_access');
+  $q->orderBy('n.title');
+
+  $result = $q->execute();
+
+  while($record = $result->fetchAssoc()) {
+    $rval[$record['nid']] = $record['title'];
+  }
+
+  return $rval;
+}
+
+/**
+ * Get all nodes of study type that are published, accessible
+ * and are not already related to current dataset.
+ * @param $study_node_ids
+ */
+function _mica_datasets_studies_options(&$study_node_ids) {
+  $rval = array();
+
+  $q = db_select('node', 'n');
+  $q->addField('n', 'nid');
+  $q->addField('n', 'title');
+  $q->condition('n.type', 'study','=');
+  $q->condition('n.status', 1);
+  if (!empty($study_node_ids)) {
+    $q->condition('n.nid', array_keys($study_node_ids), 'NOT IN');
   }
   $q->addTag('node_access');
   $q->orderBy('n.title');
@@ -290,10 +379,10 @@ function _mica_datasets_get_study_ids($dataset_node_id) {
   $result = $q->execute();
 
   while($record = $result->fetchAssoc()) {
-    $study_node = node_load($record['entity_id']);
+    $node = node_load($record['entity_id']);
     // study is published and is updatable
-    if ($study_node->status == 1 && node_access('update', $study_node)) {
-      $rval[$record['entity_id']] = $study_node;
+    if ($node->status == 1 && node_access('update', $node)) {
+      $rval[$record['entity_id']] = $node;
     }
   }
 
@@ -301,28 +390,29 @@ function _mica_datasets_get_study_ids($dataset_node_id) {
 }
 
 /**
- * Get all nodes of study type that are published, accessible 
- * and are not already related to current dataset.
- * @param $study_node_ids
+ * Get all nodes of dataset type that are published, accessible
+ * and are related to current study.
+ * @param $study_node_id
  */
-function _mica_datasets_studies_options(&$study_node_ids) {
+function _mica_datasets_get_dataset_ids($study_node_id) {
   $rval = array();
 
-  $q = db_select('node', 'n');
-  $q->addField('n', 'nid');
-  $q->addField('n', 'title');
-  $q->condition('n.type', 'study','=');
-  $q->condition('n.status', 1);
-  if (!empty($study_node_ids)) {
-    $q->condition('n.nid', array_keys($study_node_ids), 'NOT IN');
-  }
+  $q = db_select('field_data_mica_dataset', 'f');
+  $q->addField('f', 'mica_dataset_nid');
+  $q->condition('f.entity_id', $study_node_id,'=');
+  $q->condition('f.entity_type', 'node');
+  $q->condition('f.bundle', 'study');
+  $q->condition('f.deleted', 0);
   $q->addTag('node_access');
-  $q->orderBy('n.title');
 
   $result = $q->execute();
 
   while($record = $result->fetchAssoc()) {
-    $rval[$record['nid']] = $record['title'];
+    $node = node_load($record['mica_dataset_nid']);
+    // dataset is published and is updatable
+    if ($node->status == 1 && node_access('view', $node)) {
+      $rval[$record['mica_dataset_nid']] = $node;
+    }
   }
 
   return $rval;
