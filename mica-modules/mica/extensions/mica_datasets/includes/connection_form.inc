@@ -28,7 +28,7 @@ define('MICA_CONNECTION_CONFIG', 'connection-config');
 /**
  * Base form for connectors.
  */
-function _mica_datasets_create_connectors_form() {
+function _mica_datasets_connectors_form() {
   $form = array();
   $form = array(
   	'#attached' => array('css' => array(drupal_get_path('module', 'mica_datasets') . '/includes/connection.css'),),
@@ -52,8 +52,8 @@ function _mica_datasets_connection_data(&$dataset_node, &$study_node, $parent_no
     'child' => _mica_datasets_connection_data_node($child_node),
     'connector' => array(
       'id' => 0,
-  MICA_DATASET_ID => $dataset_node->nid,
-  MICA_STUDY_ID => $study_node->nid,
+      MICA_DATASET_ID => $dataset_node->nid,
+      MICA_STUDY_ID => $study_node->nid,
       'type' => 'none',  
   ),
   );
@@ -143,14 +143,7 @@ function _mica_datasets_connectors_form_submit($form, &$form_state) {
           if ($node->type != 'study') {
             $node = node_load($row['connector'][MICA_STUDY_ID]);
           }
-          foreach ($node->mica_dataset[$node->language] as $key => $value) {
-            if ($value['nid'] == $row['connector'][MICA_DATASET_ID]) {
-              unset($node->mica_dataset[$node->language][$key]);
-              // todo delete connector entity too
-              break;
-            }
-          }
-          node_save($node);
+          _mica_datasets_dataset_connection_delete($node, $row['connector'][MICA_DATASET_ID]);
         }
       }
       break;
@@ -173,69 +166,15 @@ function _mica_datasets_connectors_form_submit($form, &$form_state) {
   $form_state['rebuild'] = TRUE;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*function _mica_datasets_connection_form_id($dataset_node_id, $study_node_id) {
-  return MICA_CONNECTION_PREFIX . $dataset_node_id . '-' . $study_node_id;
-}
-
-function _mica_datasets_add_connection_type_form(&$form, &$dataset_node, &$study_node) {
-  $dataset_node_id = $dataset_node->nid;
-  $study_node_id = $study_node->nid;
-  $connection_form_id = _mica_datasets_connection_form_id($dataset_node_id,$study_node_id);
-
-  // connection-type
-  $form[$connection_form_id][MICA_CONNECTION_TYPE]= array(
-    '#type' => 'select', 
-    '#title' => t('Connection'), 
-    '#options' => _mica_datasets_connection_types(),
-  //'#description' => t('Select which type of connection is to be used to retrieve variables and data from the study to contribute to the dataset.'),
-    '#ajax' => array(
-      'path' => 'mica/ajax/dataset/' . $dataset_node_id . '/' . $study_node_id . '/edit',
-      'wrapper' => $connection_form_id .'-' . MICA_CONNECTION_CONFIG . '-replace',
-  ),
-  );
-}
-
-function _mica_datasets_add_connection_config_form(&$form, &$form_state, &$dataset_node, &$study_node) {
-  $dataset_node_id = $dataset_node->nid;
-  $study_node_id = $study_node->nid;
-  $connection_form_id = _mica_datasets_connection_form_id($dataset_node_id,$study_node_id);
-  $connection_types = _mica_datasets_connection_types();
-
-  $selected_type = isset($form_state['values'][$connection_form_id][MICA_CONNECTION_TYPE]) ? $form_state['values'][$connection_form_id][MICA_CONNECTION_TYPE] : key($connection_types);
-
-  // connection-config
-  $prefix = '<div id="' . $connection_form_id .'-' . MICA_CONNECTION_CONFIG . '-replace">';
-  if ($selected_type == 'none') {
-    $prefix = '<div id="' . $connection_form_id .'-' . MICA_CONNECTION_CONFIG . '-replace" style="display:none;">';
-  }
-  $form[$connection_form_id][MICA_CONNECTION_CONFIG]= array(
-    '#title' => t('Configuration'),
-    '#type' => 'fieldset',
-    '#prefix' => $prefix,
-    '#suffix' => '</div>',
-  );
-
-  // connection-config implementation
-  if ($selected_type != 'none') {
-    $study_node = node_load($study_node_id);
-    $form_items = _mica_datasets_add_connection_config_implementation_form($study_node, $selected_type);
-    foreach ($form_items as $key => &$form_item) {
-      $form[$connection_form_id][MICA_CONNECTION_CONFIG][$key] = $form_item;
+function _mica_datasets_dataset_connection_delete(&$study_node, $dataset_node_id) {
+  foreach ($study_node->mica_dataset[$study_node->language] as $key => $value) {
+    if ($value['nid'] == $dataset_node_id) {
+      unset($study_node->mica_dataset[$study_node->language][$key]);
+      // todo delete connector entity too
+      break;
     }
   }
-
+  node_save($study_node);
 }
 
 function _mica_datasets_add_connection_config_implementation_form(&$study_node, $selected_type) {
@@ -248,35 +187,6 @@ function _mica_datasets_add_connection_config_implementation_form(&$study_node, 
 
   return $form_items;
 }
-
-function _mica_datasets_connectors_form_validate($form, &$form_state) {
-  foreach (array_keys($form_state['values']) as $key) {
-    if (strpos($key,MICA_CONNECTION_PREFIX) !== FALSE) {
-      $connection_type = $form_state['values'][$key][MICA_CONNECTION_TYPE];
-
-      if (array_key_exists(MICA_CONNECTION_CONFIG, $form_state['values'][$key]) && $connection_type != 'none') {
-        //debug($form_state['values'][$key][MICA_CONNECTION_CONFIG]);
-        $form_state['values'][$key][MICA_CONNECTION_CONFIG][MICA_STUDY_ID] = $form_state['values'][$key][MICA_STUDY_ID];
-        $form_state['values'][$key][MICA_CONNECTION_CONFIG][MICA_DATASET_ID] = $form_state['values'][$key][MICA_DATASET_ID];
-
-        // todo make it validate by MicaDatasetConnectionInterface implementation
-        $form_errors = array();
-        if ($connection_type == 'opal') {
-          $form_errors = _mica_datasets_opal_connector_form_validate($form, $form_state['values'][$key][MICA_CONNECTION_CONFIG], $form_state);
-
-        }
-
-        // display errors
-        if (!empty($form_errors)) {
-          $dataset_form_path = $key . '][' . MICA_CONNECTION_CONFIG . '][';
-          foreach ($form_errors as $key => $msg) {
-            form_set_error($dataset_form_path . $key, $msg);
-          }
-        }
-      }
-    }
-  }
-}*/
 
 //
 // utilities

@@ -1,4 +1,5 @@
 core = "7.x"
+dependencies[] = "ctools"
 dependencies[] = "features"
 dependencies[] = "list"
 dependencies[] = "mica"
