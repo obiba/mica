@@ -1,23 +1,27 @@
 <?php
 
-function _unit_certificate_page() {
+define('PRIVATE_KEY_FILE','private://mica-privatekey.pem');
+
+define('PUBLIC_KEY_FILE','private://mica-publickey.pem');
+
+function unit_certificate_page() {
   $unit_certificate_form="unit_certificate_form";
-  $certificate_exists=is_file('private://csrStr.csrStr');
-  if ($certificate_exists) {
-    $content=file_get_contents('private://csrStr.csrStr');
+  $public_key_file_exists=is_file(PUBLIC_KEY_FILE);
+  if ($public_key_file_exists) {
+    $content=file_get_contents(PUBLIC_KEY_FILE);
   }
- 
+
   $form[$unit_certificate_form]['certificate'] = array(
     '#type' => 'textarea',
     '#title' => t('Certificate'),
-    '#value' =>  $certificate_exists ? $content : '',
+    '#value' =>  $public_key_file_exists ? $content : '',
     '#rows' => 20,
     '#attributes' => array('readonly' => 'readonly'),
   );
   return $form;
 }
 
-function _unit_form($form, &$form_state) {
+function unit_form($form, &$form_state) {
   $unit_form="unit_form";
   $unit_configure="configure";
    
@@ -71,43 +75,42 @@ function _unit_form($form, &$form_state) {
   return $form;
 }
 
-function _unit_form_submit($form, &$form_state) {
+function unit_form_submit($form, &$form_state) {
 
   $dn=array('countryName' => $form_state['values']['two_letter_country_code'],
    'stateOrProvinceName' => $form_state['values']['state_or_province_name'],
    'localityName' => $form_state['values']['city_name'],
    'organizationName' => $form_state['values']['city_or_organization_name'],
    'organizationalUnitName' => $form_state['values']['organizational_unit'],
-   'commonName' => $form_state['values']['first_and_last_name'],
-   'emailAddress' => 'user@domain.com');
+   'commonName' => $form_state['values']['first_and_last_name']);
 
-  $privkeypass = '1234';
-  $numberofdays = 365;
+  $configargs=array('private_key_bits' => 2048,
+                    'private_key_type' => OPENSSL_KEYTYPE_RSA);
 
-  $privkey = openssl_pkey_new(); //TODO $privkey is NULL why ?
+  // get existing key if exists
+  if (is_file(PRIVATE_KEY_FILE)) {
+    openssl_pkey_get_private(PRIVATE_KEY_FILE);
+  } else {
+    $privkey = openssl_pkey_new($configargs);
+  }
 
   $csr = openssl_csr_new($dn, $privkey);
 
-  $sscert = openssl_csr_sign($csr, null, $privkey, $numberofdays);
+  $sscert = openssl_csr_sign($csr, null, $privkey, 9999);
   openssl_x509_export($sscert, $publickey);
-  openssl_pkey_export($privkey, $privatekey, $privkeypass);
-  openssl_csr_export($csr, $csrStr);
+  openssl_pkey_export($privkey, $privatekey);
 
+  file_unmanaged_save_data($privatekey, PRIVATE_KEY_FILE, FILE_EXISTS_REPLACE);
+  file_unmanaged_save_data($publickey, PUBLIC_KEY_FILE, FILE_EXISTS_REPLACE);
 
-  //debug($privatekey); // Will hold the exported PriKey
-  //debug($publickey);  // Will hold the exported PubKey
-  //debug($csrStr);     // Will hold the exported Certificate
-  
-  file_unmanaged_save_data($privatekey, 'private://privatekey.privatekey', FILE_EXISTS_REPLACE);
-  file_unmanaged_save_data($publickey, 'private://publickey.publickey', FILE_EXISTS_REPLACE);
-  file_unmanaged_save_data($csrStr, 'private://csrStr.csrStr', FILE_EXISTS_REPLACE);
-  
+  openssl_pkey_free($privkey);
+
   //TODO maybe drupal can do different (maybe directly call a method like _unit_certificate_page())
   return drupal_goto('admin/config/system/mica');
 }
 
 
-function _unit_form_validate($form, &$form_state) {
+function unit_form_validate($form, &$form_state) {
   $tlcc = $form_state['values']['two_letter_country_code'];
   if (strlen($tlcc)!=2 || !ctype_alpha($tlcc)) {
     form_set_error('two_letter_country_code',t('Bad syntax of two letter Country code'));

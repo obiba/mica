@@ -80,19 +80,19 @@ function mica_datasets_menu() {
       'title' => 'Mica', 
       'description' => 'Manage Mica Unit.',  
       'access callback' => 'user_access',
-      'access arguments' => array(0), //TODO why 0
-      'page callback' => '_unit_certificate_page',
-      'page arguments' => array(0), //TODO why 0
-      'file' => 'mica_datasets.unit.inc', 
+      'access arguments' => array(0),
+      'page callback' => 'unit_certificate_page',
+      'page arguments' => array(0),
+      'file' => 'mica_datasets.pages.unit.inc', 
       'type' => MENU_NORMAL_ITEM,  
   );
   $items['admin/config/system/mica/configure'] = array(
       'title' => 'Configure key pair',
       'access callback' => 'user_access', 
-      'access arguments' => array(0), //TODO why 0
+      'access arguments' => array(0),
       'page callback' => 'drupal_get_form',
-      'page arguments' => array('_unit_form'),
-      'file' => 'mica_datasets.unit.inc',   
+      'page arguments' => array('unit_form'),
+      'file' => 'mica_datasets.pages.unit.inc',   
       'type' => MENU_LOCAL_ACTION,
   );
   return $items;
@@ -136,7 +136,7 @@ function _mica_datasets_ensure_viewreference_arguments(&$node) {
       }
     }
   }
-  
+
 }
 
 /**
@@ -144,7 +144,7 @@ function _mica_datasets_ensure_viewreference_arguments(&$node) {
  */
 function mica_datasets_node_validate($node, $form, &$form_state) {
   // todo check dataset node title is unique
-  
+
 }
 
 /**
