@@ -61,18 +61,22 @@ function mica_datasets_dataset_variables_form_submit($form, &$form_state) {
  * @param unknown_type $form_state
  * @param unknown_type $node
  */
+//TODO maybe I can call directly form feeds in feeds.pages.inc but failed...
 function mica_datasets_dataset_variables_form($form, &$form_state, $node) {
 
-  // nothing for the moment
-  //$mica_dataset_connector = mica_dataset_connector_load($node->nid);
-  
-  // TODO get from connector impl
-  $importer_id='opal_participant_variables';
-  
-  $source = feeds_source($importer_id, empty($form['nid']['#value']) ? 0 : $form['nid']['#value']);  
-  
-  $source->setConfig(array('mica_dataset_connector_id' => $mica_dataset_connector->id));
+  $mica_dataset_connectors = mica_dataset_connector_query_multiple($node->nid);
 
+  $connector_id=NULL;
+  $importer_id='opal_participant_variables'; // TODO remove when impl available
+  if (!empty($mica_dataset_connectors)) {
+    $connector_id=$mica_dataset_connectors[0]->id;
+    $importer_id=$mica_dataset_connectors[0]->getImporterId();
+  }
+
+  $source = feeds_source($importer_id, empty($form['nid']['#value']) ? 0 : $form['nid']['#value']);
+  $source->setConfig(array('mica_dataset_connector_id' => $connector_id));
+
+  //following code is from feeds.pages.inc
   $form = array();
   $form['#importer_id'] = $importer_id;
   // @todo Move this into fetcher?
@@ -371,7 +375,7 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
       break;
     case t('Save'):
       $options = _mica_datasets_connection_options_submit($form, $form_state, $connection_type);
-      
+
       $values = array();
 
       if ($connector_id == 0) {

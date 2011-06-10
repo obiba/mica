@@ -171,9 +171,9 @@ class MicaDatasetConnector extends Entity {
     return $this->proxy->viewSettings();
   }
 
-  public function updateVariables($options = array()) {
+  public function getImporterId() {
     $this->ensureProxy();
-    return $this->proxy->updateVariables($options);
+    return $this->proxy->getImporterId();
   }
 
 }
