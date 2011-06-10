@@ -145,7 +145,7 @@ function _mica_datasets_ensure_viewreference_arguments(&$node) {
  */
 function mica_datasets_node_validate($node, $form, &$form_state) {
   // check dataset node title is unique
-  if ($node->type === 'dataset') {
+  if (!isset($node->nid) && $node->type === 'dataset') {
     module_load_include('inc', 'mica', 'includes/relations');
     if (mica_node_title_exists($node->type, $node->title)) {
       form_set_error('title',t('Dataset name \'!title\' is already given.', array('!title' => $node->title)));
