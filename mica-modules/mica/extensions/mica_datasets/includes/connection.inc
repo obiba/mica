@@ -75,12 +75,13 @@ interface MicaDatasetConnectionInterface {
    * listing all relevant settings is preferred.
    */
   public function viewSettings();
-  
+
   /**
-   * Update the list of participant_variables for the connector dataset.
-   * @param $options
+   * Get importer Id
    */
-  public function updateVariables($options = array());
+  public function getImporterId();
+
+
 }
 
 /**

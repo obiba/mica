@@ -62,25 +62,26 @@ function mica_datasets_dataset_variables_form_submit($form, &$form_state) {
  * @param unknown_type $node
  */
 function mica_datasets_dataset_variables_form($form, &$form_state, $node) {
-  $_importer_id='opal_participant_variables';
-
-  $source = feeds_source($_importer_id, empty($form['nid']['#value']) ? 0 : $form['nid']['#value']);
 
   // nothing for the moment
-  $mica_dataset_connector = mica_dataset_connector_load($node->nid);
-
-  // mandatory to have FeedsHTTPSFetcher ?
-  $source->setConfig(array('FeedsHTTPSFetcher' => array('source'=>$mica_dataset_connector->id)));
+  //$mica_dataset_connector = mica_dataset_connector_load($node->nid);
+  
+  // TODO get from connector impl
+  $importer_id='opal_participant_variables';
+  
+  $source = feeds_source($importer_id, empty($form['nid']['#value']) ? 0 : $form['nid']['#value']);  
+  
+  $source->setConfig(array('mica_dataset_connector_id' => $mica_dataset_connector->id));
 
   $form = array();
-  $form['#importer_id'] = $_importer_id;
+  $form['#importer_id'] = $importer_id;
   // @todo Move this into fetcher?
   $form['#attributes']['enctype'] = 'multipart/form-data';
   $form['source_status'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Status'),
-    '#tree' => TRUE,
-    '#value' => _feeds_source_status($source),
+  '#type' => 'fieldset',
+  '#title' => t('Status'),
+  '#tree' => TRUE,
+  '#value' => _feeds_source_status($source),
   );
   $form['feeds'] = array(
   '#type' => 'fieldset',
