@@ -51,10 +51,6 @@ function mica_datasets_dataset_variables_edit_page($node) {
   return drupal_get_form('mica_datasets_dataset_variables_form', $node);
 }
 
-function mica_datasets_dataset_variables_form_submit($form, &$form_state) {
-  debug('submit');
-}
-
 /**
  * ADJUST FROM feeds.pages.inc
  * @param unknown_type $form
@@ -72,7 +68,6 @@ function mica_datasets_dataset_variables_form($form, &$form_state, $node) {
     $connector_id=$mica_dataset_connectors[0]->id;
     $importer_id=$mica_dataset_connectors[0]->getImporterId();
   }
-
   $source = feeds_source($importer_id, empty($form['nid']['#value']) ? 0 : $form['nid']['#value']);
   $source->setConfig(array('mica_dataset_connector_id' => $connector_id));
 
