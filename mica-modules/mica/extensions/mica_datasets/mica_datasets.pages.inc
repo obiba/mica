@@ -8,7 +8,7 @@
 include_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'mica_datasets') .  '/includes/connection_form.inc');
 
 /**
- * Display form for creating dataset connection entities for a given study.
+ * Display form for linking datsets to a given study.
  */
 function mica_datasets_study_datasets_edit_page($node) {
   drupal_set_title(t('!title -- Datasets', array('!title' => $node->title)));
@@ -22,16 +22,21 @@ function mica_datasets_study_datasets_edit_page($node) {
 }
 
 /**
- * Display form for creating dataset connection entities for a given dataset.
+ * Display form for linking studies to a given dataset.
  */
 function mica_datasets_dataset_studies_edit_page($node) {
   drupal_set_title(t('!title -- Studies', array('!title' => $node->title)));
   return drupal_get_form('mica_datasets_dataset_studies_form', $node);
 }
 
+/**
+ * Display form from CRUD a dataset connection entity.
+ * @param $connection_id
+ * @param $dataset_node
+ * @param $study_node
+ */
 function mica_datasets_dataset_connection_page($connection_id, $dataset_node, $study_node) {
-  drupal_set_title(t('!conn : !dataset -- !study', array(
-      '!conn' => $connection_id, 
+  drupal_set_title(t('!dataset -- !study', array(
       '!dataset' => $dataset_node->title, 
       '!study' => $study_node->title)));
 
@@ -236,18 +241,28 @@ function mica_datasets_study_datasets_form_submit($form, &$form_state) {
 
 function mica_datasets_dataset_connection_form($form, &$form_state, $connection_id, $dataset_node, $study_node) {
   $connector = $connection_id != 0 ? mica_dataset_connector_load($connection_id) : FALSE;
-  
+
   $form = _mica_datasets_connectors_form();
-  
+
   $connection_types = _mica_datasets_connection_types();
-  $selected_type = isset($form_state['values'][MICA_CONNECTION_TYPE]) ? $form_state['values'][MICA_CONNECTION_TYPE] : key($connection_types);
-  
+  $selected_type = NULL;
+  if (isset($form_state['values'][MICA_CONNECTION_TYPE])) {
+    $selected_type = $form_state['values'][MICA_CONNECTION_TYPE];
+  }
+  elseif ($connector) {
+    $selected_type = $connector->class;
+  }
+  else {
+    $selected_type = key($connection_types);
+  }
+
   // description
   $form['description'] = array(
       '#type' => 'textarea', 
       '#title' => t('Description'), 
       '#default_value' => $connector ? $connector->description : '',
       '#rows' => 3,
+      '#description' => t('A description of the study\'s data contributing to the dataset.'),
   );
 
   // connection-type
@@ -280,6 +295,12 @@ function mica_datasets_dataset_connection_form($form, &$form_state, $connection_
     $form_items = _mica_datasets_add_connection_config_implementation_form($study_node, $selected_type);
     foreach ($form_items as $key => &$form_item) {
       $form[MICA_CONNECTION_CONFIG][$key] = $form_item;
+      if ($connector) {
+        $options = $connector->options;
+        if (array_key_exists($key, $options)) {
+          $form[MICA_CONNECTION_CONFIG][$key]['#default_value'] = $options[$key];
+        }
+      }
     }
   }
 
@@ -307,18 +328,29 @@ function mica_datasets_dataset_connection_form($form, &$form_state, $connection_
     '#attributes' => array('style' => 'margin:0 5px 0 5px;'),
   );
 
+  $form[MICA_DATASET_ID] = array(
+    '#type' => 'hidden',
+    '#value' => $dataset_node->nid,
+  );
+
+  $form[MICA_STUDY_ID] = array(
+    '#type' => 'hidden',
+    '#value' => $study_node->nid,
+  );
+
   return $form;
 }
 
 function mica_datasets_dataset_connection_form_validate($form, &$form_state) {
-  //debug($form_state['values']);
   $connection_type = $form_state['values'][MICA_CONNECTION_TYPE];
 
   if ($connection_type != 'none') {
+    $values = _mica_datasets_connection_config_values($form, $form_state);
+
     // todo make it validate by MicaDatasetConnectionInterface implementation
     $form_errors = array();
     if ($connection_type == 'opal') {
-      $form_errors = _mica_datasets_opal_connector_form_validate($form, $form_state['values'], $form_state);
+      $form_errors = _mica_datasets_opal_connector_form_validate($form, $values, $form_state);
     }
 
     // display errors
@@ -341,7 +373,14 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
       _mica_datasets_dataset_connection_delete($study_node, $dataset_node->nid);
       break;
     case t('Save'):
+      $options = _mica_datasets_connection_config_values($form, $form_state);
+      // todo make it submit by MicaDatasetConnectionInterface implementation
+      if ($connection_type == 'opal') {
+        $options = _mica_datasets_opal_connector_form_submit($form, $options, $form_state);
+      }
+
       $values = array();
+
       if ($connector_id == 0) {
         $values['name'] = $dataset_node->title . ' -- ' . $study_node->title;
         $values['machine_name'] = strtolower(str_replace(array(' ','-',',','.',':',';','/'),'_', $values['name']));
@@ -349,16 +388,24 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
         $values['dataset_id'] = $dataset_node->nid;
         $values['study_id'] = $study_node->nid;
         $values['class'] = $connection_type;
-        $values['options'] = serialize(array());
-        $values['enabled'] = TRUE;
+        $values['options'] = $options;
+        $values['enabled'] = $connection_type == 'none' ? FALSE : TRUE;
+        $values['module'] = 'mica_datasets';
 
-        $rval = mica_dataset_connector_insert($values);
+        if (mica_dataset_connector_insert($values) === FALSE) {
+          drupal_set_message(t('Unable to save connection: !name', array('!name' => $values['name'])), 'error');
+        }
       }
       else {
         $connector = mica_dataset_connector_load($connector_id);
         $connector->description = $form_state['values']['description'];
         $connector->class = $connection_type;
-        debug($connector->save());
+        $connector->options = $options;
+        $connector->enabled = $connection_type == 'none' ? FALSE : TRUE;
+
+        if ($connector->save() === FALSE) {
+          drupal_set_message(t('Unable to save connection: !name', array('!name' => $connector->name)), 'error');
+        }
       }
       break;
   }

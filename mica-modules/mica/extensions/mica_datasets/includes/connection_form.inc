@@ -48,14 +48,14 @@ function _mica_datasets_connection_data(&$dataset_node, &$study_node, $parent_no
   $child_node = $parent_node->nid == $dataset_node->nid ? $study_node : $dataset_node;
 
   $connector = mica_dataset_connector_query($dataset_node->nid, $study_node->nid);
-  
+
   $row = array(
     'parent' => _mica_datasets_connection_data_node($parent_node),
     'child' => _mica_datasets_connection_data_node($child_node),
     'connector' => array(
       'id' => $connector ? $connector->id : 0,
-      MICA_DATASET_ID => $dataset_node->nid,
-      MICA_STUDY_ID => $study_node->nid,
+  MICA_DATASET_ID => $dataset_node->nid,
+  MICA_STUDY_ID => $study_node->nid,
       'type' => $connector ? $connector->class : 'none',
       'description' => $connector ? $connector->description : '',
   ),
@@ -176,6 +176,10 @@ function _mica_datasets_dataset_connection_delete(&$study_node, $dataset_node_id
     if ($value['nid'] == $dataset_node_id) {
       unset($study_node->mica_dataset[$study_node->language][$key]);
       // todo delete connector entity too
+      $connector = mica_dataset_connector_query($dataset_node_id, $study_node->nid);
+      if ($connector) {
+        $connector->delete();
+      }
       break;
     }
   }
@@ -345,6 +349,21 @@ function _mica_datasets_node_field_values($node, $field_name) {
   return array();
 }
 
+/**
+ * Extract connection config specific values from form_state.
+ * @param $form
+ * @param $form_state
+ */
+function _mica_datasets_connection_config_values(&$form, &$form_state) {
+  $values = array();
+  foreach ($form_state['values'] as $key => $value) {
+    if (array_key_exists($key, $form[MICA_CONNECTION_CONFIG])) {
+      $values[$key] = $value;
+    }
+  }
+  return $values;
+}
+
 //
 // connection implementations, to be moved
 //
@@ -362,17 +381,20 @@ function _mica_datasets_opal_connector_form($study_node) {
   }
   else {
     $form_items['opal-url'] = array (
-        '#title' => t('Opal server'),
-        '#type' => 'textfield',
+      '#title' => t('Opal server'),
+      '#type' => 'textfield',
+      '#description' => t('The Opal server secured url (https is required).'),
     );
   }
   $form_items['datasource'] = array (
-      '#title' => t('Datasource'),
-      '#type' => 'textfield',
+    '#title' => t('Datasource'),
+    '#type' => 'textfield',
+    '#description' => t('The Opal datasource name.'),
   );
   $form_items['table'] = array (
-      '#title' => t('Table'),
-      '#type' => 'textfield',
+    '#title' => t('Table'),
+    '#type' => 'textfield',
+    '#description' => t('The Opal table name from which variables and data can be fetched.'),
   );
 
   return $form_items;
@@ -398,5 +420,18 @@ function _mica_datasets_opal_connector_form_validate($form, &$values, &$form_sta
   }
 
   return $form_errors;
+}
+
+function _mica_datasets_opal_connector_form_submit($form, &$values, &$form_state) {
+  $options = array();
+  if (array_key_exists('opal-url', $values)) {
+    $study_node = node_load($form_state['values'][MICA_STUDY_ID]);
+    $study_node->mica_opal[$study_node->language][] = array('url' => $values['opal-url']);
+    node_save($study_node);
+  }
+  $options['datasource'] = trim($values['datasource']);
+  $options['table'] = trim($values['table']);
+  
+  return $options;
 }
 
