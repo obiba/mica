@@ -6,7 +6,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
     parent::__construct($connector);
   }
 
-  public function configurationForm(array $form, array &$form_state) {
+  public function configurationForm($study_node) {
     $form_items = array();
     $opal_url = _mica_datasets_node_field_values($study_node, 'mica_opal');
 
@@ -84,5 +84,8 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
   }
 
 
+  public function updateVariables($options = array()) {
+    // todo
+  }
 
 }

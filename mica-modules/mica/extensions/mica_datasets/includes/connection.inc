@@ -24,7 +24,7 @@ interface MicaDatasetConnectionInterface {
    * @return array
    *   A form array for setting connection-specific options.
    */
-  public function configurationForm(array $form, array &$form_state);
+  public function configurationForm($study_node);
 
   /**
    * Validation callback for the form returned by configurationForm().
@@ -124,7 +124,7 @@ abstract class MicaDatasetAbstractConnection implements MicaDatasetConnectionInt
    * @return array
    *   A form array for setting connection-specific options.
    */
-  public function configurationForm(array $form, array &$form_state) {
+  public function configurationForm($study_node) {
     return array();
   }
 

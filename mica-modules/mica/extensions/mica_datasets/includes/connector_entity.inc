@@ -146,9 +146,9 @@ class MicaDatasetConnector extends Entity {
   // For increased clarity, and since some parameters are passed by reference,
   // we don't use the __call() magic method for those.
 
-  public function configurationForm(array $form, array &$form_state) {
+  public function configurationForm($study_node) {
     $this->ensureProxy();
-    return $this->proxy->configurationForm($form, $form_state);
+    return $this->proxy->configurationForm($study_node);
   }
 
   public function configurationFormValidate(array $form, array &$values, array &$form_state) {

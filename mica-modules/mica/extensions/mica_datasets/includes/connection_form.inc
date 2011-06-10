@@ -186,16 +186,7 @@ function _mica_datasets_dataset_connection_delete(&$study_node, $dataset_node_id
   node_save($study_node);
 }
 
-function _mica_datasets_add_connection_config_implementation_form(&$study_node, $selected_type) {
-  $form_items = array();
 
-  // todo load the right MicaDatasetConnectionInterface implementation
-  if ($selected_type == 'mica_dataset_opal_connection') {
-    $form_items = _mica_datasets_opal_connector_form($study_node);
-  }
-
-  return $form_items;
-}
 
 //
 // utilities
@@ -217,43 +208,40 @@ function _mica_datasets_connection_types() {
   $types = array(
     'none' => t('-none-'),
   );
-  
+
   //debug(mica_datasets_get_connection_info());
   $connections = mica_datasets_get_connection_info();
-  
+
   if (isset($connections)) {
     foreach ($connections as $key => $connection) {
       $types[$key] = $connection['name'];
     }
   }
-  
+
   return $types;
 }
 
+function _mica_datasets_add_connection_config_implementation_form(&$study_node, $connection_type) {
+  return _mica_datasets_new_connector($connection_type)->configurationForm($study_node);
+}
+
 function _mica_datasets_connection_options_validate(&$form, &$values, &$form_state, $connection_type) {
-  $form_errors = array();
-    
-  // todo make it validate by MicaDatasetConnectionInterface implementation
-  if ($connection_type == 'mica_dataset_opal_connection') {
-    $form_errors = _mica_datasets_opal_connector_form_validate($form, $values, $form_state);
-  }
+  return _mica_datasets_new_connector($connection_type)->configurationFormValidate($form, $values, $form_state);
+}
+
+function _mica_datasets_new_connector($connection_type) {
+  return new MicaDatasetConnector(array('class' => $connection_type));
 }
 
 /**
- * Submit the options 
+ * Submit the options
  * @param $form
  * @param $form_state
  * @param $connection_type
  */
 function _mica_datasets_connection_options_submit(&$form, &$form_state, $connection_type) {
   $options = _mica_datasets_connection_config_values($form, $form_state);
-  
-  // todo make it submit by MicaDatasetConnectionInterface implementation
-  if ($connection_type == 'mica_dataset_opal_connection') {
-    $options = _mica_datasets_opal_connector_form_submit($form, $options, $form_state);
-  }
-  
-  return $options;
+  return _mica_datasets_new_connector($connection_type)->configurationFormSubmit($form, $options, $form_state);
 }
 
 /**
@@ -409,78 +397,3 @@ function _mica_datasets_connection_config_values(&$form, &$form_state) {
   }
   return $values;
 }
-
-//
-// connection implementations, to be moved
-//
-
-function _mica_datasets_opal_connector_form($study_node) {
-  $form_items = array();
-  $opal_url = _mica_datasets_node_field_values($study_node, 'mica_opal');
-
-  if (!empty($opal_url)) {
-    $form_items['opal-url'] = array (
-        '#type' => 'item',
-        '#title' => t('Opal server'),
-        '#markup' => !empty($opal_url) ? '<a href="' . $opal_url[0]['url'] . '">' . $opal_url[0]['url'] . '</a></div>' : '',
-    );
-  }
-  else {
-    $form_items['opal-url'] = array (
-      '#title' => t('Opal server'),
-      '#type' => 'textfield',
-      '#description' => t('The Opal server secured url (https is required).'),
-      '#required' => TRUE,
-    );
-  }
-  $form_items['datasource'] = array (
-    '#title' => t('Datasource'),
-    '#type' => 'textfield',
-    '#description' => t('The Opal datasource name.'),
-    '#required' => TRUE,
-  );
-  $form_items['table'] = array (
-    '#title' => t('Table'),
-    '#type' => 'textfield',
-    '#description' => t('The Opal table name from which variables and data can be fetched.'),
-    '#required' => TRUE,
-  );
-
-  return $form_items;
-}
-
-function _mica_datasets_opal_connector_form_validate($form, &$values, &$form_state) {
-  $form_errors = array();
-
-  if (array_key_exists('opal-url', $values)) {
-    $value = trim($values['opal-url']);
-    if ($value == '' || strpos($value,'https://') === FALSE) {
-      $form_errors['opal-url'] = t('You must provide a valid Opal server url: https://...');
-    }
-  }
-  // todo check for valid chars in names
-  $value = trim($values['datasource']);
-  if ($value == '') {
-    $form_errors['datasource'] = t('You must provide a valid Opal datasource name.');
-  }
-  $value = trim($values['table']);
-  if ($value == '') {
-    $form_errors['table'] = t('You must provide a valid Opal table name.');
-  }
-
-  return $form_errors;
-}
-
-function _mica_datasets_opal_connector_form_submit($form, &$values, &$form_state) {
-  $options = array();
-  if (array_key_exists('opal-url', $values)) {
-    $study_node = node_load($form_state['values'][MICA_STUDY_ID]);
-    $study_node->mica_opal[$study_node->language][] = array('url' => $values['opal-url']);
-    node_save($study_node);
-  }
-  $options['datasource'] = trim($values['datasource']);
-  $options['table'] = trim($values['table']);
-  
-  return $options;
-}
-
