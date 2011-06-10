@@ -8,9 +8,14 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
 
   public function configurationForm($study_node) {
     $form_items = array();
-    $opal_url = _mica_datasets_node_field_values($study_node, 'mica_opal');
+    
+    $opal_url = array();
+    $field = $study_node->mica_opal;
+    if ($field) {
+      $opal_url = $field[$study_node->language];
+    }
 
-    if (!empty($opal_url)) {
+    if (isset($opal_url) && !empty($opal_url)) {
       $form_items['opal-url'] = array (
         '#type' => 'item',
         '#title' => t('Opal server'),
@@ -26,16 +31,16 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
       );
     }
     $form_items['datasource'] = array (
-    '#title' => t('Datasource'),
-    '#type' => 'textfield',
-    '#description' => t('The Opal datasource name.'),
-    '#required' => TRUE,
+      '#title' => t('Datasource'),
+      '#type' => 'textfield',
+      '#description' => t('The Opal datasource name.'),
+      '#required' => TRUE,
     );
     $form_items['table'] = array (
-    '#title' => t('Table'),
-    '#type' => 'textfield',
-    '#description' => t('The Opal table name from which variables and data can be fetched.'),
-    '#required' => TRUE,
+      '#title' => t('Table'),
+      '#type' => 'textfield',
+      '#description' => t('The Opal table name from which variables and data can be fetched.'),
+      '#required' => TRUE,
     );
 
     return $form_items;
