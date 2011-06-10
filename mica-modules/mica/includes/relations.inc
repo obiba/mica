@@ -312,3 +312,14 @@ function _mica_find_relation_by_child($child_bundle) {
   }
   return NULL;
 }
+
+function mica_node_title_exists($node_type, $title)  {
+  $q = db_select('node', 'n');
+  $q->addField('n', 'nid');
+  $q->condition('n.type', $node_type,'=');
+  $q->condition('n.title', $title,'=');
+  $q->range(0,1);
+  $result = $q->execute();
+
+  return $result->fetchField() ? TRUE : FALSE;
+}
