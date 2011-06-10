@@ -154,13 +154,14 @@ function mica_datasets_node_validate($node, $form, &$form_state) {
 }
 
 /**
- * Implementation of hook_field_access().
+ * Implements hook_field_attach_form()
  */
-//function mica_datasets_field_access($op, $field, $obj_type, $object, $account) {
-//  if ($op == 'edit' && $object->type == 'dataset') {
-//    return $field['field_name'] != 'field_dataset_studies' && $field['field_name'] != 'field_dataset_variables';
-//  }
-//}
+function mica_datasets_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+  if ($entity->type == 'dataset') {
+    $form['field_dataset_studies']['#attributes']['style'] = array('display:none;');
+    $form['field_dataset_variables']['#attributes']['style'] = array('display:none;');
+  }
+}
 
 /**
  * Implements hook_entity_info().
