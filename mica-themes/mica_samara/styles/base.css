@@ -273,6 +273,12 @@ caption {
 /**
  * Forms
  */
+form .field-multiple-table {
+    margin: 0 0 10px 0;
+}
+form .field-multiple-table th.field-label {
+    padding-left: 10px;
+}
 fieldset {
   margin: 15px 0;
   padding: 13px 20px;
@@ -281,6 +287,10 @@ fieldset {
   -khtml-border-radius: 3px;
   border-radius: 3px;
 }
+fieldset .form-wrapper {
+  margin-bottom: 14px;
+}
+
 legend {
   margin-left: -8px;
   padding: 1px 8px 1px 9px;
