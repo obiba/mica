@@ -21,6 +21,9 @@ interface MicaDatasetConnectionInterface {
    * Form callback. Might be called on an uninitialized object - in this case,
    * the form is for configuring a newly created connector.
    *
+   * @param node $study_node
+   *   The study that is to be connected.
+   *
    * @return array
    *   A form array for setting connection-specific options.
    */
@@ -29,15 +32,15 @@ interface MicaDatasetConnectionInterface {
   /**
    * Validation callback for the form returned by configurationForm().
    *
-   * $form_state['connector'] will contain the connector that is created or edited.
-   * Use form_error() to flag errors on form elements.
-   *
    * @param array $form
    *   The form returned by configurationForm().
    * @param array $values
    *   The part of the $form_state['values'] array corresponding to this form.
    * @param array $form_state
    *   The complete form state.
+   *   
+   * @return array
+   *   A form array with error messages keyed by connection-specific options.
    */
   public function configurationFormValidate(array $form, array &$values, array &$form_state);
 
