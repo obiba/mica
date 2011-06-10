@@ -1,9 +1,5 @@
 <?php
 
-define('PRIVATE_KEY_FILE','private://mica-privatekey.pem');
-
-define('PUBLIC_KEY_FILE','private://mica-publickey.pem');
-
 function unit_certificate_page() {
   $unit_certificate_form="unit_certificate_form";
   $public_key_file_exists=is_file(PUBLIC_KEY_FILE);
@@ -76,7 +72,7 @@ function unit_form($form, &$form_state) {
 }
 
 function unit_form_submit($form, &$form_state) {
-
+  
   $dn=array('countryName' => $form_state['values']['two_letter_country_code'],
    'stateOrProvinceName' => $form_state['values']['state_or_province_name'],
    'localityName' => $form_state['values']['city_name'],
