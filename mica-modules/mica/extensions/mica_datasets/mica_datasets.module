@@ -256,21 +256,53 @@ function mica_datasets_entity_property_info() {
  * 
  * @param $dataset_id
  * @param $study_id
+ * @param $enabled
  * 
  * @return MicaDatasetConnector
- *   An object representing the connector with the specified id.
+ *   A connector or FALSE if not found.
  */
-function mica_dataset_connector_query($dataset_id, $study_id) {
+function mica_dataset_connector_query($dataset_id, $study_id, $enabled = NULL) {
   $q = db_select('mica_dataset_connector', 'c');
   $q->addField('c', 'id');
   $q->condition('c.dataset_id', $dataset_id, '=');
   $q->condition('c.study_id', $study_id, '=');
+  if (isset($enabled)) {
+    $q->condition('c.enabled', $enabled, '=');
+  }
   $q->range(0,1);
   $result = $q->execute();
   
   $rval = $result->fetchField();
   
   return $rval ? mica_dataset_connector_load($rval) : FALSE;
+}
+
+/**
+ * Load the dataset connectors corresponding to the specified dataset id.
+ * 
+ * @param $dataset_id
+ * @param $enabled
+ * 
+ * @return MicaDatasetConnector
+ *   An array of connectors (may be empty).
+ */
+function mica_dataset_connector_query_multiple($dataset_id, $enabled = NULL) {
+  $q = db_select('mica_dataset_connector', 'c');
+  $q->addField('c', 'id');
+  $q->condition('c.dataset_id', $dataset_id, '=');
+  if (isset($enabled)) {
+    $q->condition('c.enabled', $enabled, '=');
+  }
+  $q->range(0,1);
+  $result = $q->execute();
+  
+  $connectors = array();
+  
+  while($record = $result->fetchAssoc()) {
+    $connectors[] = mica_dataset_connector_load($record['id']);
+  }
+  
+  return $connectors;
 }
 
 /**
