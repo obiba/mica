@@ -8,17 +8,18 @@
 /**
  * Result of FeedsHTTPFetcher::fetch().
  */
-class FeedsHTTPSFetcherResult extends FeedsHTTPFetcherResult {
+class FeedsRestFetcherResult extends FeedsFetcherResult {
   
-  protected $no_verify_peer;
-  protected $no_verify_host;
-  protected $client_cert;
-  protected $client_pk;
+  protected $url;
+  protected $config;
 
   /**
    * Constructor.
    */
   public function __construct($url = NULL, $fetcher_config = NULL) {
+    $this->url = $url;
+    $this->config = $fetcher_config;
+    
     $this->no_verify_peer = $fetcher_config['no_verify_peer'];
     $this->no_verify_host = $fetcher_config['no_verify_host'];
     $this->client_cert = $fetcher_config['client_cert_file'];
@@ -37,19 +38,24 @@ class FeedsHTTPSFetcherResult extends FeedsHTTPFetcherResult {
     }
 
     $client->options['curlopts'] += array(
-      CURLOPT_SSL_VERIFYHOST => ($this->no_verify_host == FALSE),
-      CURLOPT_SSL_VERIFYPEER => ($this->no_verify_peer == FALSE),
-      CURLOPT_SSLCERT => $this->realpath($this->client_cert),
-      CURLOPT_SSLKEY => $this->realpath($this->client_pk),
+      CURLOPT_SSL_VERIFYHOST => ($this->config['no_verify_host'] == FALSE),
+      CURLOPT_SSL_VERIFYPEER => ($this->config['no_verify_peer'] == FALSE),
     );
+
+    if($this->config['use_client_cert']) {
+      $client->options['curlopts'] += array(    
+        CURLOPT_SSLCERT => $this->realpath($this->config['client_cert_file']),
+        CURLOPT_SSLKEY => $this->realpath($this->config['private_key_file']),
+      );
+    }
 
     try {
       $get = new HttpClientRequest($this->url, array(
-        'method' => 'GET',
+        'method' => $this->config['method'],
         'parameters' => array(),
       ));
 
-      $get->addHeader('Accept', 'application/json');
+      $get->addHeader('Accept', $this->config['content_type']);
       $result = $client->execute($get);
       debug($result);
     } catch(HttpClientException $e) {
@@ -81,24 +87,25 @@ class FeedsHTTPSFetcherResult extends FeedsHTTPFetcherResult {
 }
 
 /**
- * Fetches data via HTTPs.
+ * A RESTful fetcher. Allows overriding many parts of the underlying http request.
  */
-class FeedsHTTPSFetcher extends FeedsHTTPFetcher {
+class FeedsRestFetcher extends FeedsFetcher {
 
   /**
    * Implements FeedsFetcher::fetch().
    */
   public function fetch(FeedsSource $source) {
     $source_config = $source->getConfigFor($this);
-    return new FeedsHTTPSFetcherResult($source_config['source'], $this->config);
+    return new FeedsRestFetcherResult($source_config['source'], $this->config);
   }
 
   /**
    * Override parent::configDefaults().
    */
   public function configDefaults() {
-    $config = parent::configDefaults();
-    $config += array(
+    $config = array(
+      'method' => 'GET', 
+      'content_type' => '*', 
       'no_verify_peer' => FALSE, 
       'no_verify_host' => FALSE, 
       'use_client_cert' => FALSE,
@@ -112,30 +119,47 @@ class FeedsHTTPSFetcher extends FeedsHTTPFetcher {
    * Override parent::configForm().
    */
   public function configForm(&$form_state) {
-    
-    $form = parent::configForm($form_state);
-    
-    $form['no_verify_peer'] = array(
+    $form = array();
+
+    $form['method'] = array (
+      '#type' => 'select',
+      '#title' => t('HTTP Method'),
+      '#description' => t('The HTTP verb to use'),
+      '#options' => array('GET', 'POST'),
+      '#default_value' => $this->config['method'],
+    );
+    $form['content_type'] = array (
+      '#type' => 'textfield',
+      '#title' => t('Accept Header'),
+      '#description' => t('The value for the Accept HTTP header. Used for content-type negotiation (e.g.: application/json).'),
+      '#default_value' => $this->config['content_type'],
+    );
+    $form['https'] = array (
+      '#type' => 'fieldset',
+      '#title' => t('HTTPs Options'),
+      '#description' => t('Change the behaviour for https connections'),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
+    $form['https']['no_verify_peer'] = array(
       '#type' => 'checkbox',
       '#title' => t('Accept self-signed certificates'),
       '#description' => t('Enable this if you wish to accept self-signed certificates when connecting to the HTTPs server'),
       '#default_value' => $this->config['no_verify_peer'],
     );
-
-    $form['no_verify_host'] = array(
+    $form['https']['no_verify_host'] = array(
       '#type' => 'checkbox',
       '#title' => t('Accept any hostname'),
       '#description' => t('Enable this to accept a certificate for a different hostname.'),
       '#default_value' => $this->config['no_verify_host'],
     );
-
-    $form['use_client_cert'] = array(
+    $form['https']['use_client_cert'] = array(
       '#type' => 'checkbox',
       '#title' => t('Use Client-side Certificate (https)'),
       '#description' => t('Provide a client certificate when connecting to a feed through HTTPs.'),
       '#default_value' => $this->config['use_client_cert'],
     );
-    $form['private_key_file'] = array(
+    $form['https']['private_key_file'] = array(
       '#type' => 'textfield',
       '#title' => t('Private Key File'),
       '#description' => t('Enter the filename of the private key (PEM format)'),
@@ -144,7 +168,7 @@ class FeedsHTTPSFetcher extends FeedsHTTPFetcher {
         'edit-use-client-cert' => array(1),
       ),
     );
-    $form['client_cert_file'] = array(
+    $form['https']['client_cert_file'] = array(
       '#type' => 'textfield',
       '#title' => t('Certificate File'),
       '#description' => t('Enter the filename of the certificate file (PEM format)'),
@@ -156,4 +180,20 @@ class FeedsHTTPSFetcher extends FeedsHTTPFetcher {
     return $form;
   }
 
+  /**
+   * Expose source form.
+   */
+  public function sourceForm($source_config) {
+    $form = array();
+    $form['source'] = array(
+      '#type' => 'textfield',
+      '#title' => t('URL'),
+      '#description' => t('Enter a feed URL.'),
+      '#default_value' => isset($source_config['source']) ? $source_config['source'] : '',
+      '#maxlength' => NULL,
+      '#required' => TRUE,
+    );
+    return $form;
+  }
+  
 }

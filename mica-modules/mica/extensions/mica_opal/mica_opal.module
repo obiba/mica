@@ -10,6 +10,22 @@ function mica_opal_ctools_plugin_api($module = '', $api = '') {
   }
 }
 
+function mica_opal_feeds_plugins() {
+  $path = drupal_get_path('module', 'mica_opal') . '/includes/feeds/fetchers';
+  $info = array();
+  $info['FeedsOpalFetcher'] = array(
+    'name' => 'Opal Fetcher',
+    'description' => 'Download content from an Opal instance.',
+    'handler' => array(
+      'parent' => 'FeedsRestFetcher',
+      'class' => 'FeedsOpalFetcher',
+      'file' => 'FeedsOpalFetcher.inc',
+      'path' => $path,
+    ),
+  );
+  return $info;
+}
+
 /**
  * Implements hook_feeds_importer_default().
  */
@@ -21,15 +37,14 @@ function mica_opal_feeds_importer_default() {
   $feeds_importer->api_version = 1;
   $feeds_importer->id = 'opal_participant_variables';
   $feeds_importer->config = array(
-    'name' => 'Participant Variables',
-    'description' => '',
+    'name' => 'Participant Variables from Opal',
+    'description' => 'Download Participant Variable Description from an Opal instance.',
     'fetcher' => array(
-      'plugin_key' => 'FeedsHTTPSFetcher',
+      'plugin_key' => 'FeedsOpalFetcher',
       'config' => array(
-        'auto_detect_feeds' => 0,
-        'use_pubsubhubbub' => 0,
-        'designated_hub' => '',
-        'no_verify_peer' => 1,
+        'method' => 'GET',
+        'content_type' => 'application/json',
+  		'no_verify_peer' => 1,
         'no_verify_host' => 1,
         'use_client_cert' => 1,
         'private_key_file' => 'private://priv.key',
@@ -83,7 +98,7 @@ function mica_opal_feeds_importer_default() {
             'unique' => FALSE,
           ),
         ),
-        'update_existing' => '0',
+        'update_existing' => '1',
         'input_format' => 'plain_text',
       ),
     ),
@@ -95,5 +110,6 @@ function mica_opal_feeds_importer_default() {
     'process_in_background' => 0,
   );
   $export['opal_participant_variables'] = $feeds_importer;
+
   return $export;
 }

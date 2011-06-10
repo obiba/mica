@@ -9,3 +9,4 @@ dependencies[] = feeds
 dependencies[] = feeds_jsonpath_parser
 
 ;files[] = includes/opal_connection.inc
+files[] = includes/feeds/fetchers/FeedsOpalFetcher

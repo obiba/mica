@@ -314,21 +314,20 @@ function mica_feeds_plugins() {
       'path' => $path,
     ),
   );
-  
+
   $path = drupal_get_path('module', 'mica') . '/includes/feeds/fetchers';
 
-  $info['FeedsHTTPSFetcher'] = array(
-    'name' => 'HTTPs Fetcher',
-    'description' => 'Download content from a URL using HTTPs features.',
+  $info['FeedsRestFetcher'] = array(
+    'name' => 'RESTful HTTP Fetcher',
+    'description' => 'Download content from a RESTful web service.',
     'handler' => array(
-      'parent' => 'FeedsHTTPFetcher', // This is the key name, not the class name.
-      'class' => 'FeedsHTTPSFetcher',
-      'file' => 'FeedsHTTPSFetcher.inc',
+      'parent' => 'FeedsFetcher',
+      'class' => 'FeedsRestFetcher',
+      'file' => 'FeedsRestFetcher.inc',
       'path' => $path,
     ),
   );
-  
+
   return $info;
 }
-
 

@@ -32,7 +32,7 @@ files[] = includes/feeds/mappers/references.inc
 files[] = includes/feeds/processors/FeedsStudyChildProcessor.inc
 files[] = includes/feeds/processors/FeedsUniqueNodeProcessor.inc
 files[] = includes/feeds/parsers/FeedsMultiValueCSVParser.inc
-files[] = includes/feeds/fetchers/FeedsHTTPSFetcher.inc
+files[] = includes/feeds/fetchers/FeedsRestFetcher.inc
 
 files[] = mica.install
 files[] = mica.module

@@ -355,3 +355,37 @@ function mica_datasets_get_connection_info($id = NULL) {
   }
   return $connections;
 }
+
+/**
+ * implements hook_feeds_after_parse
+ */
+function mica_datasets_feeds_after_parse(FeedsSource $source, FeedsParserResult $result) {
+  if(get_class($source->importer->processor) == 'FeedsNodeProcessor') {
+    $config = $source->importer->processor->getConfig();
+    if($config['content_type'] == 'participant_variable') {
+      // TODO extract dataset_id and add to FeedsParserResult
+    }
+  }
+  
+}
+
+/**
+ * Implements hook_feeds_processor_targets_alter
+ */
+/*
+function mica_datasets_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name) {
+  debug($targets);
+  debug($entity_type);
+  debug($bundle_name);
+  if($bundle_name == 'participant_variable') {
+    $targets['field_dataset:nid'] = array(
+      'name' => t('Dataset Node ID'),
+      'description' => t('The Node ID of the associated Dataset'),
+      'callback' => 'mica_datasets_set_dataset_id',
+    );
+  }
+}
+*/
+function mica_datasets_set_dataset_id($source, $entity, $target, $value) {
+  
+}
