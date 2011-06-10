@@ -297,7 +297,7 @@ function mica_datasets_dataset_connection_form($form, &$form_state, $connection_
       $form[MICA_CONNECTION_CONFIG][$key] = $form_item;
       if ($connector) {
         $options = $connector->options;
-        if (array_key_exists($key, $options)) {
+        if ($options != NULL && array_key_exists($key, $options)) {
           $form[MICA_CONNECTION_CONFIG][$key]['#default_value'] = $options[$key];
         }
       }
@@ -347,11 +347,7 @@ function mica_datasets_dataset_connection_form_validate($form, &$form_state) {
   if ($connection_type != 'none') {
     $values = _mica_datasets_connection_config_values($form, $form_state);
 
-    // todo make it validate by MicaDatasetConnectionInterface implementation
-    $form_errors = array();
-    if ($connection_type == 'MicaDatasetOpalConnection') {
-      $form_errors = _mica_datasets_opal_connector_form_validate($form, $values, $form_state);
-    }
+    $form_errors = _mica_datasets_connection_options_validate($form, $values, $form_state, $connection_type);
 
     // display errors
     if (!empty($form_errors)) {
@@ -373,12 +369,8 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
       _mica_datasets_dataset_connection_delete($study_node, $dataset_node->nid);
       break;
     case t('Save'):
-      $options = _mica_datasets_connection_config_values($form, $form_state);
-      // todo make it submit by MicaDatasetConnectionInterface implementation
-      if ($connection_type == 'MicaDatasetOpalConnection') {
-        $options = _mica_datasets_opal_connector_form_submit($form, $options, $form_state);
-      }
-
+      $options = _mica_datasets_connection_options_submit($form, $form_state, $connection_type);
+      
       $values = array();
 
       if ($connector_id == 0) {

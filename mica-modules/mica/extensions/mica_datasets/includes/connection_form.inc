@@ -210,6 +210,32 @@ function _mica_datasets_connection_types() {
   );
 }
 
+function _mica_datasets_connection_options_validate(&$form, &$values, &$form_state, $connection_type) {
+  $form_errors = array();
+    
+  // todo make it validate by MicaDatasetConnectionInterface implementation
+  if ($connection_type == 'MicaDatasetOpalConnection') {
+    $form_errors = _mica_datasets_opal_connector_form_validate($form, $values, $form_state);
+  }
+}
+
+/**
+ * Submit the options 
+ * @param $form
+ * @param $form_state
+ * @param $connection_type
+ */
+function _mica_datasets_connection_options_submit(&$form, &$form_state, $connection_type) {
+  $options = _mica_datasets_connection_config_values($form, $form_state);
+  
+  // todo make it submit by MicaDatasetConnectionInterface implementation
+  if ($connection_type == 'MicaDatasetOpalConnection') {
+    $options = _mica_datasets_opal_connector_form_submit($form, $options, $form_state);
+  }
+  
+  return $options;
+}
+
 /**
  * Get the node provided provided as an argument to the form.
  * @param  $form_state
@@ -384,24 +410,26 @@ function _mica_datasets_opal_connector_form($study_node) {
       '#title' => t('Opal server'),
       '#type' => 'textfield',
       '#description' => t('The Opal server secured url (https is required).'),
+      '#required' => TRUE,
     );
   }
   $form_items['datasource'] = array (
     '#title' => t('Datasource'),
     '#type' => 'textfield',
     '#description' => t('The Opal datasource name.'),
+    '#required' => TRUE,
   );
   $form_items['table'] = array (
     '#title' => t('Table'),
     '#type' => 'textfield',
     '#description' => t('The Opal table name from which variables and data can be fetched.'),
+    '#required' => TRUE,
   );
 
   return $form_items;
 }
 
 function _mica_datasets_opal_connector_form_validate($form, &$values, &$form_state) {
-  //debug($values);
   $form_errors = array();
 
   if (array_key_exists('opal-url', $values)) {
@@ -410,6 +438,7 @@ function _mica_datasets_opal_connector_form_validate($form, &$values, &$form_sta
       $form_errors['opal-url'] = t('You must provide a valid Opal server url: https://...');
     }
   }
+  // todo check for valid chars in names
   $value = trim($values['datasource']);
   if ($value == '') {
     $form_errors['datasource'] = t('You must provide a valid Opal datasource name.');
