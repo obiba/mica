@@ -56,7 +56,7 @@ function _mica_datasets_connection_data(&$dataset_node, &$study_node, $parent_no
       'id' => $connector ? $connector->id : 0,
   MICA_DATASET_ID => $dataset_node->nid,
   MICA_STUDY_ID => $study_node->nid,
-      'type' => $connector ? $connector->class : 'none',
+      'type' => $connector ? _mica_datasets_connection_type_name($connector->class) : t('-none-'),
       'description' => $connector ? $connector->description : '',
   ),
   );
@@ -190,7 +190,7 @@ function _mica_datasets_add_connection_config_implementation_form(&$study_node, 
   $form_items = array();
 
   // todo load the right MicaDatasetConnectionInterface implementation
-  if ($selected_type == 'MicaDatasetOpalConnection') {
+  if ($selected_type == 'mica_dataset_opal_connection') {
     $form_items = _mica_datasets_opal_connector_form($study_node);
   }
 
@@ -201,20 +201,40 @@ function _mica_datasets_add_connection_config_implementation_form(&$study_node, 
 // utilities
 //
 
+function _mica_datasets_connection_type_name($type) {
+  if ($type == 'none')  {
+    return t('-none-');
+  }
+  $connection = mica_datasets_get_connection_info($type);
+  if (isset($connection) && array_key_exists('name', $connection)) {
+    return $connection['name'];
+  }
+  return $type;
+}
+
 function _mica_datasets_connection_types() {
   // todo get list of MicaDatasetConnectionInterface implementations
-  //debug(mica_datasets_get_connection_info());
-  return array(
-    'none' => t('-none-'), 
-    'MicaDatasetOpalConnection' => t('Opal'),
+  $types = array(
+    'none' => t('-none-'),
   );
+  
+  //debug(mica_datasets_get_connection_info());
+  $connections = mica_datasets_get_connection_info();
+  
+  if (isset($connections)) {
+    foreach ($connections as $key => $connection) {
+      $types[$key] = $connection['name'];
+    }
+  }
+  
+  return $types;
 }
 
 function _mica_datasets_connection_options_validate(&$form, &$values, &$form_state, $connection_type) {
   $form_errors = array();
     
   // todo make it validate by MicaDatasetConnectionInterface implementation
-  if ($connection_type == 'MicaDatasetOpalConnection') {
+  if ($connection_type == 'mica_dataset_opal_connection') {
     $form_errors = _mica_datasets_opal_connector_form_validate($form, $values, $form_state);
   }
 }
@@ -229,7 +249,7 @@ function _mica_datasets_connection_options_submit(&$form, &$form_state, $connect
   $options = _mica_datasets_connection_config_values($form, $form_state);
   
   // todo make it submit by MicaDatasetConnectionInterface implementation
-  if ($connection_type == 'MicaDatasetOpalConnection') {
+  if ($connection_type == 'mica_dataset_opal_connection') {
     $options = _mica_datasets_opal_connector_form_submit($form, $options, $form_state);
   }
   

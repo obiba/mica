@@ -251,6 +251,15 @@ function mica_datasets_entity_property_info() {
   return $info;
 }
 
+/**
+ * Load the dataset connector corresponding to the specified dataset and study ids.
+ * 
+ * @param $dataset_id
+ * @param $study_id
+ * 
+ * @return MicaDatasetConnector
+ *   An object representing the connector with the specified id.
+ */
 function mica_dataset_connector_query($dataset_id, $study_id) {
   $q = db_select('mica_dataset_connector', 'c');
   $q->addField('c', 'id');
@@ -345,9 +354,6 @@ function mica_datasets_get_connection_info($id = NULL) {
 
   if (!isset($connections)) {
     $connections = module_invoke_all('mica_datasets_connection_info');
-
-    // Allow other modules to alter definitions
-    drupal_alter('mica_datasets_connection_info', $connections);
   }
 
   if (isset($id)) {

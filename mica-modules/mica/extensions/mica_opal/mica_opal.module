@@ -1,5 +1,18 @@
 <?php
 
+
+/**
+ * Implements hook_mica_datasets_connection_info().
+ */
+function mica_opal_mica_datasets_connection_info() {
+  $connections['mica_dataset_opal_connection'] = array(
+    'name' => t('Opal'),
+    'description' => t('Connection for Opal data repository.'),
+    'class' => 'MicaDatasetOpalConnectionClass',
+  );
+  return $connections;
+}
+
 /**
  * Declare Feeds hook
  */
