@@ -190,7 +190,7 @@ function _mica_datasets_add_connection_config_implementation_form(&$study_node, 
   $form_items = array();
 
   // todo load the right MicaDatasetConnectionInterface implementation
-  if ($selected_type == 'opal') {
+  if ($selected_type == 'MicaDatasetOpalConnection') {
     $form_items = _mica_datasets_opal_connector_form($study_node);
   }
 
@@ -206,7 +206,7 @@ function _mica_datasets_connection_types() {
   //debug(mica_datasets_get_connection_info());
   return array(
     'none' => t('-none-'), 
-    'opal' => t('Opal'),
+    'MicaDatasetOpalConnection' => t('Opal'),
   );
 }
 

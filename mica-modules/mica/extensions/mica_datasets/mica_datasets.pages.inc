@@ -349,7 +349,7 @@ function mica_datasets_dataset_connection_form_validate($form, &$form_state) {
 
     // todo make it validate by MicaDatasetConnectionInterface implementation
     $form_errors = array();
-    if ($connection_type == 'opal') {
+    if ($connection_type == 'MicaDatasetOpalConnection') {
       $form_errors = _mica_datasets_opal_connector_form_validate($form, $values, $form_state);
     }
 
@@ -375,7 +375,7 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
     case t('Save'):
       $options = _mica_datasets_connection_config_values($form, $form_state);
       // todo make it submit by MicaDatasetConnectionInterface implementation
-      if ($connection_type == 'opal') {
+      if ($connection_type == 'MicaDatasetOpalConnection') {
         $options = _mica_datasets_opal_connector_form_submit($form, $options, $form_state);
       }
 
