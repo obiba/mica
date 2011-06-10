@@ -63,11 +63,12 @@ function mica_datasets_dataset_variables_form($form, &$form_state, $node) {
   $mica_dataset_connectors = mica_dataset_connector_query_multiple($node->nid);
 
   $connector_id=NULL;
-  $importer_id='opal_participant_variables'; // TODO remove when impl available
+  $importer_id=NULL;
   if (!empty($mica_dataset_connectors)) {
     $connector_id=$mica_dataset_connectors[0]->id;
     $importer_id=$mica_dataset_connectors[0]->getImporterId();
   }
+
   $source = feeds_source($importer_id, empty($form['nid']['#value']) ? 0 : $form['nid']['#value']);
   $source->setConfig(array('mica_dataset_connector_id' => $connector_id));
 
