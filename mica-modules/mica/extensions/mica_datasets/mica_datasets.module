@@ -78,18 +78,6 @@ function mica_datasets_menu() {
       'file' => 'mica_datasets.pages.inc',
   );
   
-  $items['mica/ajax/dataset/%node/%node/delete'] = array(
-      'title' => 'Dataset Connector Delete',
-      'delivery callback' => 'ajax_deliver',
-      'theme callback' => 'ajax_base_page_theme',
-      'access callback' => '_mica_datasets_node_access',
-      'access arguments' => array(4,'study','update'),
-      'page callback' => 'mica_dataset_delete_ajax_form_callback',
-      'page arguments' => array(3,4),
-      'type' => MENU_CALLBACK,
-      'file' => 'mica_datasets.pages.inc',
-  );
-  
   $items['admin/config/system/mica'] = array(
       'title' => 'Mica', 
       'description' => 'Manage Mica Unit.',  
