@@ -215,7 +215,7 @@ function references_feeds_set_target($source, $entity, $target, $value) {
         // Make sure it is a positive integer.
         if ((is_int($v) || ctype_digit($v)) && $v > 0 && $v !== '') {
           // Make sure it is a valid node id or user id for this field.
-          $matches = $validate_function($info, '', NULL, array($v));
+          $matches = $validate_function($info, array('ids' => array($v)));
           $id = key($matches);
         }
 

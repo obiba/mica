@@ -110,6 +110,16 @@ function mica_opal_feeds_importer_default() {
             'target' => 'field_repeatable',
             'unique' => FALSE,
           ),
+          5 => array(
+            'source' => 'dataset_id',
+            'target' => 'field_dataset:nid',
+            'unique' => FALSE,
+          ),
+          6 => array(
+            'source' => 'uid',
+            'target' => 'guid',
+            'unique' => TRUE,
+          ),
         ),
         'update_existing' => '1',
         'input_format' => 'plain_text',

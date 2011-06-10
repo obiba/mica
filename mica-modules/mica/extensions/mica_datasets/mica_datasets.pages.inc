@@ -51,6 +51,27 @@ function mica_datasets_dataset_variables_edit_page($node) {
   return drupal_get_form('mica_datasets_dataset_variables_form', $node);
 }
 
+function mica_datasets_dataset_variables_form_submit($form, &$form_state) {
+
+  // Save source and import.
+  $source = feeds_source($form['#importer_id']);
+  $source->addConfig($form_state['values']['feeds']);
+
+  $fetcher_config = $source->getConfigFor($source->importer->fetcher);
+  $fetcher_config['mica_dataset_connector'] = $form['#mica_dataset_connector_id'];
+  $source->setConfigFor($source->importer->fetcher, $fetcher_config);
+  $source->save();
+
+  // Refresh feed if import on create is selected.
+  if ($source->importer->config['import_on_create']) {
+    $source->startImport();
+  }
+
+  // Add to schedule, make sure importer is scheduled, too.
+  $source->schedule();
+  $source->importer->schedule();
+}
+
 /**
  * ADJUST FROM feeds.pages.inc
  * @param unknown_type $form
@@ -59,7 +80,6 @@ function mica_datasets_dataset_variables_edit_page($node) {
  */
 //TODO maybe I can call directly form feeds in feeds.pages.inc but failed...
 function mica_datasets_dataset_variables_form($form, &$form_state, $node) {
-
   $mica_dataset_connectors = mica_dataset_connector_query_multiple($node->nid);
 
   $connector_id=NULL;
@@ -69,19 +89,23 @@ function mica_datasets_dataset_variables_form($form, &$form_state, $node) {
     $importer_id=$mica_dataset_connectors[0]->getImporterId();
   }
 
-  $source = feeds_source($importer_id, empty($form['nid']['#value']) ? 0 : $form['nid']['#value']);
-  $source->setConfig(array('mica_dataset_connector_id' => $connector_id));
+  $source = feeds_source($importer_id);
+  $fetcher_config = $source->getConfigFor($source->importer->fetcher);
+  $fetcher_config['mica_dataset_connector'] = $connector_id;
+  $source->setConfigFor($source->importer->fetcher, $fetcher_config);
 
   //following code is from feeds.pages.inc
   $form = array();
   $form['#importer_id'] = $importer_id;
+  $form['#mica_dataset_connector_id'] = $connector_id;
+
   // @todo Move this into fetcher?
   $form['#attributes']['enctype'] = 'multipart/form-data';
   $form['source_status'] = array(
-  '#type' => 'fieldset',
-  '#title' => t('Status'),
-  '#tree' => TRUE,
-  '#value' => _feeds_source_status($source),
+    '#type' => 'fieldset',
+    '#title' => t('Status'),
+    '#tree' => TRUE,
+    '#value' => _feeds_source_status($source),
   );
   $form['feeds'] = array(
   '#type' => 'fieldset',
@@ -100,6 +124,14 @@ function mica_datasets_dataset_variables_form($form, &$form_state, $node) {
     t('Importing (@progress %)', array('@progress' => number_format(100 * $progress, 0)));
   }
   return $form;
+}
+
+/**
+ * Validation handler for node forms and feeds_import_form().
+ */
+function mica_datasets_dataset_variables_form_validate($form, &$form_state) {
+  // @todo This may be a problem here, as we don't have a feed_nid at this point.
+  feeds_source($form['#importer_id'])->configFormValidate($form_state['values']['feeds']);
 }
 
 /**
