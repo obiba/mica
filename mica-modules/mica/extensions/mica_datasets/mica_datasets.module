@@ -138,25 +138,39 @@ function _mica_datasets_ensure_viewreference_arguments(&$node) {
       }
     }
   }
-
 }
 
 /**
  * Implements hook_node_validate()
  */
 function mica_datasets_node_validate($node, $form, &$form_state) {
-  // todo check dataset node title is unique
+  // check dataset node title is unique
+  if ($node->type === 'dataset') {
+    if (_mica_datasets_node_title_exists($node->type, $node->title)) {
+      form_set_error('title',t('Dataset name \'!title\' is already given.', array('!title' => $node->title)));
+    }
+  }
+}
 
+function _mica_datasets_node_title_exists($node_type, $title)  {
+  $q = db_select('node', 'n');
+  $q->addField('n', 'nid');
+  $q->condition('n.type', $node_type,'=');
+  $q->condition('n.title', $title,'=');
+  $q->range(0,1);
+  $result = $q->execute();
+
+  return $result->fetchField() ? TRUE : FALSE;
 }
 
 /**
  * Implementation of hook_field_access().
  */
-function mica_datasets_field_access($op, $field, $obj_type, $object, $account) {
-  if ($op == 'edit' && $object->type == 'dataset') {
-    return $field['field_name'] != 'field_dataset_studies' && $field['field_name'] != 'field_dataset_variables';
-  }
-}
+//function mica_datasets_field_access($op, $field, $obj_type, $object, $account) {
+//  if ($op == 'edit' && $object->type == 'dataset') {
+//    return $field['field_name'] != 'field_dataset_studies' && $field['field_name'] != 'field_dataset_variables';
+//  }
+//}
 
 /**
  * Implements hook_entity_info().
