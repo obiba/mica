@@ -12,7 +12,7 @@ function mica_feature_views_default_views() {
 
   $view = new view;
   $view->name = 'csv_contact_export';
-  $view->description = 'Export of all studies in CSV';
+  $view->description = 'Export of all contacts in CSV';
   $view->tag = 'default';
   $view->base_table = 'node';
   $view->human_name = 'CSV Contact Export';
@@ -252,7 +252,7 @@ function mica_feature_views_default_views() {
 
   $view = new view;
   $view->name = 'csv_field_description_export';
-  $view->description = 'Export of all studies in CSV';
+  $view->description = 'Export of all field descriptions in CSV';
   $view->tag = 'default';
   $view->base_table = 'node';
   $view->human_name = 'CSV Field Description Export';
@@ -534,7 +534,7 @@ function mica_feature_views_default_views() {
 
   $view = new view;
   $view->name = 'csv_institution_export';
-  $view->description = 'Export of all studies in CSV';
+  $view->description = 'Export of all institutions in CSV';
   $view->tag = 'default';
   $view->base_table = 'node';
   $view->human_name = 'CSV Institution Export';
@@ -893,157 +893,8 @@ function mica_feature_views_default_views() {
   $export['csv_study_export'] = $view;
 
   $view = new view;
-  $view->name = 'csv_study_files_export';
-  $view->description = 'Export of all studies in CSV';
-  $view->tag = 'default';
-  $view->base_table = 'node';
-  $view->human_name = 'CSV Study Files Export';
-  $view->core = 7;
-  $view->api_version = '3.0-alpha1';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'CSV Study Files Export';
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    3 => '3',
-  );
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'node';
-  $handler->display->display_options['row_options']['view_mode'] = 'full';
-  $handler->display->display_options['row_options']['links'] = 1;
-  $handler->display->display_options['row_options']['comments'] = 0;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'title';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = 0;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-  /* Field: Content: Body */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = 'body';
-  $handler->display->display_options['fields']['body']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['body']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['body']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['body']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['body']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['body']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['body']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['body']['field_api_classes'] = 0;
-  /* Field: Content: Files */
-  $handler->display->display_options['fields']['field_study_files']['id'] = 'field_study_files';
-  $handler->display->display_options['fields']['field_study_files']['table'] = 'field_data_field_study_files';
-  $handler->display->display_options['fields']['field_study_files']['field'] = 'field_study_files';
-  $handler->display->display_options['fields']['field_study_files']['label'] = 'field_study_files';
-  $handler->display->display_options['fields']['field_study_files']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_study_files']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_study_files']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_study_files']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_study_files']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_study_files']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_study_files']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_study_files']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_study_files']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_study_files']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_study_files']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_study_files']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_study_files']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_study_files']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_study_files']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_study_files']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_study_files']['type'] = 'file_url_plain';
-  $handler->display->display_options['fields']['field_study_files']['group_rows'] = 1;
-  $handler->display->display_options['fields']['field_study_files']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_study_files']['delta_reversed'] = 0;
-  $handler->display->display_options['fields']['field_study_files']['separator'] = '|';
-  $handler->display->display_options['fields']['field_study_files']['field_api_classes'] = 0;
-  /* Sort criterion: Content: Title */
-  $handler->display->display_options['sorts']['title']['id'] = 'title';
-  $handler->display->display_options['sorts']['title']['table'] = 'node';
-  $handler->display->display_options['sorts']['title']['field'] = 'title';
-  $handler->display->display_options['sorts']['title']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'study_files' => 'study_files',
-  );
-
-  /* Display: Data export */
-  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
-  $handler->display->display_options['style_options']['provide_file'] = 1;
-  $handler->display->display_options['style_options']['filename'] = '%view_%timestamp-yyyy-%timestamp-mm-%timestamp-dd.csv';
-  $handler->display->display_options['style_options']['parent_sort'] = 0;
-  $handler->display->display_options['style_options']['quote'] = 1;
-  $handler->display->display_options['style_options']['separator'] = ';';
-  $handler->display->display_options['style_options']['header'] = 1;
-  $handler->display->display_options['path'] = 'csv-study-files';
-  $handler->display->display_options['sitename_title'] = 0;
-  $handler->display->display_options['use_batch'] = '0';
-  $translatables['csv_study_files_export'] = array(
-    t('Master'),
-    t('CSV Study Files Export'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('title'),
-    t('body'),
-    t('field_study_files'),
-    t('Data export'),
-  );
-  $export['csv_study_files_export'] = $view;
-
-  $view = new view;
   $view->name = 'csv_study_information_export';
-  $view->description = 'Export of all studies in CSV';
+  $view->description = 'Export of all study informations in CSV';
   $view->tag = 'default';
   $view->base_table = 'node';
   $view->human_name = 'CSV Study Information Export';

@@ -610,6 +610,8 @@ function mica_feature_user_default_permissions() {
     'name' => 'use search_api_ranges',
     'roles' => array(
       0 => 'administrator',
+      1 => 'mica administrator',
+      2 => 'study administrator',
     ),
     'module' => 'search_api_ranges',
   );

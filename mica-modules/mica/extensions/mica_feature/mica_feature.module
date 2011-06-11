@@ -16,6 +16,40 @@ function mica_feature_install() {
   _mica_fix_menus();
 }
 
+/**
+ * Implements hook_menu().
+ */
+function mica_feature_menu() {
+  $items = array();
+  $items['export'] = array(
+    'title' => 'Export',
+    'page callback' => 'mica_feature_export_page',
+    'access callback' => 'mica_feature_export_page_access',
+    'file' => 'mica_feature.pages.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements feeds_permission().
+ */
+function mica_feature_permission() {
+  $perms = array(
+    'export data' => array(
+      'title' => t('Export Data'),
+      'description' => t('Allow exportation of data.')
+    ),
+  );
+  return $perms;
+}
+
+/**
+ * Menu access callback.
+ */
+function mica_feature_export_page_access() {
+  return user_access('export data');
+}
+
 function _mica_import_relations() {
 
   $relation = new MicaRelation();
