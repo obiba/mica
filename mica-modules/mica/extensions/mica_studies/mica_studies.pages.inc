@@ -3,7 +3,7 @@
 /**
  * Render a page of available exporters.
  */
-function mica_feature_export_page() {
+function mica_studies_export_page() {
   $rows = array();
 
   // data exporters are views with a display of type 'views_data_export'

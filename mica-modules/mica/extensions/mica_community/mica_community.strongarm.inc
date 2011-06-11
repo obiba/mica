@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_addons.strongarm.inc
+ * mica_community.strongarm.inc
  */
 
 /**
  * Implementation of hook_strongarm().
  */
-function mica_addons_strongarm() {
+function mica_community_strongarm() {
   $export = array();
 
   $strongarm = new stdClass;

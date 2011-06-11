@@ -1,15 +1,15 @@
 <?php
 /**
  * @file
- * Code for the mica_feature feature.
+ * Code for the mica_studies feature.
  */
 
-require_once('mica_feature.features.inc');
+require_once('mica_studies.features.inc');
 
 /**
  * Implements hook_install().
  */
-function mica_feature_install() {
+function mica_studies_install() {
   _mica_import_relations();
   _mica_import_field_groups();
   _mica_import_custom_name_format();
@@ -19,13 +19,13 @@ function mica_feature_install() {
 /**
  * Implements hook_menu().
  */
-function mica_feature_menu() {
+function mica_studies_menu() {
   $items = array();
   $items['export'] = array(
     'title' => 'Export',
-    'page callback' => 'mica_feature_export_page',
-    'access callback' => 'mica_feature_export_page_access',
-    'file' => 'mica_feature.pages.inc',
+    'page callback' => 'mica_studies_export_page',
+    'access callback' => 'mica_studies_export_page_access',
+    'file' => 'mica_studies.pages.inc',
   );
   return $items;
 }
@@ -33,7 +33,7 @@ function mica_feature_menu() {
 /**
  * Implements feeds_permission().
  */
-function mica_feature_permission() {
+function mica_studies_permission() {
   $perms = array(
     'export data' => array(
       'title' => t('Export Data'),
@@ -46,7 +46,7 @@ function mica_feature_permission() {
 /**
  * Menu access callback.
  */
-function mica_feature_export_page_access() {
+function mica_studies_export_page_access() {
   return user_access('export data');
 }
 

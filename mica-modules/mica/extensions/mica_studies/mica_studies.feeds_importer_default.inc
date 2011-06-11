@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_feature.feeds_importer_default.inc
+ * mica_studies.feeds_importer_default.inc
  */
 
 /**
  * Implementation of hook_feeds_importer_default().
  */
-function mica_feature_feeds_importer_default() {
+function mica_studies_feeds_importer_default() {
   $export = array();
 
   $feeds_importer = new stdClass;

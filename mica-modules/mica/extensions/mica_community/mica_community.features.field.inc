@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_addons.features.field.inc
+ * mica_community.features.field.inc
  */
 
 /**
  * Implementation of hook_field_default_fields().
  */
-function mica_addons_field_default_fields() {
+function mica_community_field_default_fields() {
   $fields = array();
 
   // Exported field: 'node-event-body'

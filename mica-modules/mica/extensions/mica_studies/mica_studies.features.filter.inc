@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_feature.features.filter.inc
+ * mica_studies.features.filter.inc
  */
 
 /**
  * Implementation of hook_filter_default_formats().
  */
-function mica_feature_filter_default_formats() {
+function mica_studies_filter_default_formats() {
   $formats = array();
 
   // Exported format: Filtered HTML

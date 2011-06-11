@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_feature.features.field.inc
+ * mica_studies.features.field.inc
  */
 
 /**
  * Implementation of hook_field_default_fields().
  */
-function mica_feature_field_default_fields() {
+function mica_studies_field_default_fields() {
   $fields = array();
 
   // Exported field: 'comment-comment_node_contact-comment_body'

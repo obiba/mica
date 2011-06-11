@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_addons.views_default.inc
+ * mica_community.views_default.inc
  */
 
 /**
  * Implementation of hook_views_default_views().
  */
-function mica_addons_views_default_views() {
+function mica_community_views_default_views() {
   $export = array();
 
   $view = new view;

@@ -56,6 +56,6 @@ dependencies[] = search_api_solr
 dependencies[] = features
 dependencies[] = strongarm
 dependencies[] = mica
-dependencies[] = mica_feature
+dependencies[] = mica_studies
 files[] = mica_minimal.profile
 

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Mica Community feature.
+ */
+
+include_once('mica_community.features.inc');

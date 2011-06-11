@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_feature.features.user_permission.inc
+ * mica_studies.features.user_permission.inc
  */
 
 /**
  * Implementation of hook_user_default_permissions().
  */
-function mica_feature_user_default_permissions() {
+function mica_studies_user_default_permissions() {
   $permissions = array();
 
   // Exported permission: access comments

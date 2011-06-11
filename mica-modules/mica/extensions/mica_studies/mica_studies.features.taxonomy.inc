@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_feature.features.taxonomy.inc
+ * mica_studies.features.taxonomy.inc
  */
 
 /**
  * Implementation of hook_taxonomy_default_vocabularies().
  */
-function mica_feature_taxonomy_default_vocabularies() {
+function mica_studies_taxonomy_default_vocabularies() {
   return array(
     'tags' => array(
       'name' => 'Tags',

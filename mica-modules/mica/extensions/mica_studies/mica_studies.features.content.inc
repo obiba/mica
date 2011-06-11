@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_feature.features.content.inc
+ * mica_studies.features.content.inc
  */
 
 /**
  * Implementation of hook_content_defaults().
  */
-function mica_feature_content_defaults() {
+function mica_studies_content_defaults() {
 $content = array();
 $content['access'] = (object)array(
   'title' => 'access',

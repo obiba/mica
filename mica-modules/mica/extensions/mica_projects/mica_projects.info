@@ -1,7 +1,7 @@
 core = "7.x"
 dependencies[] = "date"
 dependencies[] = "mica"
-dependencies[] = "mica_addons"
+dependencies[] = "mica_community"
 dependencies[] = "viewreference"
 description = "Adds Projects and Teleconferences content types to Mica"
 features[ctools][] = "strongarm:strongarm:1"

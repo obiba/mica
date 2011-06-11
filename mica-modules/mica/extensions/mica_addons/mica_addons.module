@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Mica Addons feature.
- */
-
-include_once('mica_addons.features.inc');

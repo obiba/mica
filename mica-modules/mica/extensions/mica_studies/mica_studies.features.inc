@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_feature.features.inc
+ * mica_studies.features.inc
  */
 
 /**
  * Implementation of hook_ctools_plugin_api().
  */
-function mica_feature_ctools_plugin_api() {
+function mica_studies_ctools_plugin_api() {
   list($module, $api) = func_get_args();
   if ($module == "feeds" && $api == "feeds_importer_default") {
     return array("version" => 1);
@@ -21,7 +21,7 @@ function mica_feature_ctools_plugin_api() {
 /**
  * Implementation of hook_views_api().
  */
-function mica_feature_views_api() {
+function mica_studies_views_api() {
   list($module, $api) = func_get_args();
   if ($module == "views" && $api == "views_default") {
     return array("version" => 3.0);
@@ -31,7 +31,7 @@ function mica_feature_views_api() {
 /**
  * Implementation of hook_node_info().
  */
-function mica_feature_node_info() {
+function mica_studies_node_info() {
   $items = array(
     'contact' => array(
       'name' => t('Contact'),
@@ -88,7 +88,7 @@ function mica_feature_node_info() {
 /**
  * Implementation of hook_default_search_api_index().
  */
-function mica_feature_default_search_api_index() {
+function mica_studies_default_search_api_index() {
   $items = array();
   $items['fields_description_index'] = entity_import('search_api_index', '{
     "name" : "Fields Description Index",
@@ -1110,7 +1110,7 @@ function mica_feature_default_search_api_index() {
 /**
  * Implementation of hook_default_search_api_server().
  */
-function mica_feature_default_search_api_server() {
+function mica_studies_default_search_api_server() {
   $items = array();
   $items['solr'] = entity_import('search_api_server', '{
     "name" : "Solr",

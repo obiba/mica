@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_feature.features.menu_links.inc
+ * mica_studies.features.menu_links.inc
  */
 
 /**
  * Implementation of hook_menu_default_menu_links().
  */
-function mica_feature_menu_default_menu_links() {
+function mica_studies_menu_default_menu_links() {
   $menu_links = array();
   
   // Exported menu link: main-menu:<front>
@@ -40,7 +40,7 @@ function mica_feature_menu_default_menu_links() {
     'weight' => '1',
   );  
 
-  // Exported menu link: main-menu:<firstchild>
+  // Exported menu link: main-menu:search
   $menu_links['main-menu:search'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'search',

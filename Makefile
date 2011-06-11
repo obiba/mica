@@ -10,8 +10,8 @@ version=1.0-SNAPSHOT
 # Mica Modules
 #
 mica_version=7.x-1.0-dev
-mica_feature_version=7.x-1.0-dev
-mica_addons_version=7.x-1.0-dev
+mica_studies_version=7.x-1.0-dev
+mica_community_version=7.x-1.0-dev
 mica_minimal_version=7.x-1.0-dev
 mica_standard_version=7.x-1.0-dev
 mica_demo_version=7.x-1.0-dev
@@ -22,10 +22,12 @@ mica_samara_version=7.x-1.0-dev
 # Forked Modules
 #
 http_client_version=7.x-2.x-dev-mica
+feeds_version=7.x-2.x-dev-mica
 references_version=7.x-2.0-beta3-mica
 search_api_ranges_version=7.x-1.x-dev-mica
 noderefcreate_version=7.x-1.0-beta2-mica
 menu_firstchild_version=7.x-1.0-mica
+content_access_version=7.x-1.x-dev-mica
 
 #
 # Mysql db access
@@ -48,7 +50,7 @@ include includes/drupal.mk
 # Mica Build
 #
 
-mica: mica-install mica-versions
+mica: mica-install
 
 mica-install:
 	cd target/$(micadir) && \
@@ -56,21 +58,6 @@ mica-install:
 	cp -r ../../mica-modules/mica sites/all/modules && \
 	cp -r ../../mica-themes/* sites/all/themes && \
 	rm -rf `find . -type d -name .svn`
-
-mica-versions: mica-versions-profiles mica-versions-themes mica-versions-modules
-
-mica-versions-profiles:
-	$(call make-info,profiles,mica_minimal)
-	$(call make-info,profiles,mica_standard)
-	$(call make-info,profiles,mica_demo)
-	
-mica-versions-themes:
-	$(call make-info,sites/all/themes,mica_samara) 
-
-mica-versions-modules:
-	$(call make-info,sites/all/modules,mica)
-	$(call make-info,sites/all/modules/mica/extensions,mica_feature)
-	$(call make-info,sites/all/modules/mica/extensions,mica_addons)
 
 #
 # Deploy
@@ -97,35 +84,37 @@ package: package-modules package-profiles package-themes package-forks debian
 	tar czf mica-dist-$(deb_version).tar.gz $(micadir) && \
 	zip -qr mica-dist-$(deb_version).zip $(micadir)
 
-package-modules:
+package-modules: package-module-mica
 	$(call make-package,sites/all/modules,mica)
 	
-package-profiles:
-	$(call make-package,profiles,mica_minimal)
-	$(call make-package,profiles,mica_standard)
-	$(call make-package,profiles,mica_demo)
+package-profiles: package-profile-mica_minimal package-profile-mica_standard package-profile-mica_demo
 
-package-themes:
-	$(call make-package,sites/all/themes,mica_samara)
+package-themes: package-theme-mica_samara
 
-package-forks:
-	$(call make-info,sites/all/modules,http_client)
-	$(call make-package,sites/all/modules,http_client)
-	$(call make-info,sites/all/modules,feeds)
-	$(call make-package,sites/all/modules,feeds)
-	$(call make-info,sites/all/modules,references)
-	$(call make-package,sites/all/modules,references)
-	$(call make-package,sites/all/modules,search_api_ranges)
-	$(call make-package,sites/all/modules,noderefcreate)
-	$(call make-package,sites/all/modules,menu_firstchild)
+package-forks: package-module-content_access package-module-feeds package-module-http_client package-module-menu_firstchild package-module-noderefcreate package-module-references package-module-search_api_ranges
+
+package-module-%: 
+	$(call make-info,sites/all/modules,$*)
+	$(call make-package,sites/all/modules,$*)
+
+package-profile-%: 
+	$(call make-info,profiles,$*)
+	$(call make-package,profiles,$*)
+
+package-theme-%: 
+	$(call make-info,sites/all/themes,$*)
+	$(call make-package,sites/all/themes,$*)
+
+package-clean:
+	rm -f target/*.zip && rm -f target/*.gz && rm -f target/*.deb
 
 #
 # Debian Package
 #
 
 # for testing (deb is not signed)
-#debuild_opts=-us -uc
-debuild_opts=
+debuild_opts=-us -uc
+#debuild_opts=
 
 debian: deb-prepare deb	
 	cd target/deb && debuild $(debuild_opts) -b

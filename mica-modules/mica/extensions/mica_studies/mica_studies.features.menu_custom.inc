@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_feature.features.menu_custom.inc
+ * mica_studies.features.menu_custom.inc
  */
 
 /**
  * Implementation of hook_menu_default_menu_custom().
  */
-function mica_feature_menu_default_menu_custom() {
+function mica_studies_menu_default_menu_custom() {
   $menus = array();
 
   // Exported menu: main-menu

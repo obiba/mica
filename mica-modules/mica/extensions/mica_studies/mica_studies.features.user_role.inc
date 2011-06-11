@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_feature.features.user_role.inc
+ * mica_studies.features.user_role.inc
  */
 
 /**
  * Implementation of hook_user_default_roles().
  */
-function mica_feature_user_default_roles() {
+function mica_studies_user_default_roles() {
   $roles = array();
 
   // Exported role: mica administrator

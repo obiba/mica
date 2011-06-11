@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_addons.features.menu_links.inc
+ * mica_community.features.menu_links.inc
  */
 
 /**
  * Implementation of hook_menu_default_menu_links().
  */
-function mica_addons_menu_default_menu_links() {
+function mica_community_menu_default_menu_links() {
   $menu_links = array();
   
   // Exported menu link: main-menu:community

@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_addons.features.menu_custom.inc
+ * mica_community.features.menu_custom.inc
  */
 
 /**
  * Implementation of hook_menu_default_menu_custom().
  */
-function mica_addons_menu_default_menu_custom() {
+function mica_community_menu_default_menu_custom() {
   $menus = array();
 
   // Exported menu: navigation

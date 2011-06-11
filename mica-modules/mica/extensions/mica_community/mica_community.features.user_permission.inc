@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * mica_addons.features.user_permission.inc
+ * mica_community.features.user_permission.inc
  */
 
 /**
  * Implementation of hook_user_default_permissions().
  */
-function mica_addons_user_default_permissions() {
+function mica_community_user_default_permissions() {
   $permissions = array();
 
   // Exported permission: create blog content
