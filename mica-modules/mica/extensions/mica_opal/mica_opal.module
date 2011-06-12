@@ -60,8 +60,8 @@ function mica_opal_feeds_importer_default() {
   		'no_verify_peer' => 1,
         'no_verify_host' => 1,
         'use_client_cert' => 1,
-        'private_key_file' => 'private://priv.key',
-        'client_cert_file' => 'private://client.crt',
+        'private_key_file' => PRIVATE_KEY_FILE,
+        'client_cert_file' => PUBLIC_KEY_FILE,
       ),
     ),
     'parser' => array(

@@ -388,27 +388,44 @@ function mica_datasets_get_connection_info($id = NULL) {
 
 /**
  * implements hook_feeds_after_parse
+ * used to extract the dataset_id from the importer and set it on the mapper
+ * so that nodes created have a link to their dataset. This method also creates
+ * a guid for each participant_variable (dataset_id:title
  */
 function mica_datasets_feeds_after_parse(FeedsSource $source, FeedsParserResult $result) {
   if(get_class($source->importer->processor) == 'FeedsNodeProcessor') {
     $config = $source->importer->processor->getConfig();
     if($config['content_type'] == 'participant_variable') {
+      debug($config);
       $src_config = $source->getConfigFor($source->importer->fetcher);
-      debug($src_config);
       $dataset_id = NULL;
       if(isset($src_config['mica_dataset_connector'])) {
         $nid = $src_config['mica_dataset_connector'];
         $connector_node = mica_dataset_connector_load($nid);
         $dataset_id = $connector_node->dataset_id;
+        $titleSource = _find_source_for_target($source->importer->processor, 'title');
         foreach ($result->items as &$item) {
           $item['dataset_id'] = $dataset_id;
-          // TODO: make sure $item[0] is mapped to 'title'
-          $item['uid'] = $dataset_id . $item[0];
+          $item['uid'] = $dataset_id . ":" . $item[$titleSource];
         }
         unset($item);
-        debug($result);
       }
     }
   }
+}
 
+/**
+ * Returns the name of the source for a specified target.
+ * @param FeedsProcessor $processor
+ * @param String $target the nane of the target field (e.g.: 'title')
+ * @return the name of source item mapped to the target (e.g.: 'jsonpath:0')
+ */
+function _find_source_for_target(FeedsProcessor $processor, $target) {
+  $config = $processor->getConfig();
+  foreach($config['mappings'] as $map) {
+    if($map['target'] == $target) {
+      return $map['source'];
+    }
+  }
+  throw new Exception("could not find source for $target", 500);
 }
