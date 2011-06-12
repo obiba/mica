@@ -82,13 +82,14 @@ function mica_datasets_dataset_variables_form_submit($form, &$form_state) {
 function mica_datasets_dataset_variables_form($form, &$form_state, $node) {
   $mica_dataset_connectors = mica_dataset_connector_query_multiple($node->nid);
 
-  $connector_id=NULL;
-  $importer_id=NULL;
   if (!empty($mica_dataset_connectors)) {
     $connector_id=$mica_dataset_connectors[0]->id;
     $importer_id=$mica_dataset_connectors[0]->getImporterId();
+  } else {
+    form_set_error('',t('This dataset is not linked to a study or no opal connection has been set TODO'));
+    return;
   }
-
+   
   $source = feeds_source($importer_id);
   $fetcher_config = $source->getConfigFor($source->importer->fetcher);
   $fetcher_config['mica_dataset_connector'] = $connector_id;
