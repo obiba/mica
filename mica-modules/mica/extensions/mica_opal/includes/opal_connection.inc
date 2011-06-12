@@ -88,9 +88,81 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
     return 'opal_participant_variables';
   }
 
+  public function query($variables) {
+    
+    $facets = array();
+    foreach($variables as $var) {
+      array_push($facets, '"' . $var . '":{ "terms":{"field":"' . $var . '"}}');
+    }
+    
+    $q = '{"query": {"match_all":{}},"size":0,"facets":{';
+    $q .= implode(',', $facets);
+    $q.='}}';
+    
+    $client = $this->client();
+    
+    $study_node = node_load($this->connector->study_id);
+    $url = $study_node->mica_opal[$study_node->language][0]['url'];
+    
+    $post = new HttpClientRequest("$url/ws/es/opal/bioshare.healthy-obese/_search", array(
+        'method' => 'POST',
+        'headers' => array('Accept'=> array('application/json'), 'Authorization' => array('X-Opal-Auth YWRtaW5pc3RyYXRvcjpwYXNzd29yZA==')),
+        'data' => $q,
+        'parameters' => array(),
+      ));
+      
+    try {
+      $body = $client->execute($post);
+    }  catch(HttpClientException $e) {
+      if($e->getCode() == 0) {
+        // curl error
+        throw new Exception(t('Download of @url failed: @msg', array('@url' => '', '@msg' => $e->getMessage())));
+      } else if (!in_array($e->getCode(), array(200, 201, 202, 203, 204, 205, 206))) {
+        throw new Exception(t('Download of @url failed with code !code.', array('@url' => '', '!code' => $e->getCode())));
+      }
+      // http_client throws an exception on all codes that are not 200 (even 201)
+      // http://drupal.org/node/722886
+      $body = $e->getResponse()->body;
+    }
 
-  public function updateVariables($options = array()) {
-    // todo
+    $data = json_decode($body, TRUE);
+    $total = $data['hits']['total'];
+
+    $result = array('total'=>$total);
+    foreach($variables as $var) {
+      $result[$var] = $total - $data['facets'][$var]['missing'];
+    }
+    
+    return $result;
   }
 
+  /**
+   * Extract the underlying file-system path from a file reference (private://someFile.pem)
+   */
+  private function realpath($reference) {
+    if(file_valid_uri($reference)) {
+      $wrapper = file_stream_wrapper_get_instance_by_uri($reference);
+      if($wrapper) {
+        return $wrapper->realpath();
+      }
+    }
+    return $reference;
+  }
+  
+  public function client() {
+    $client = new HttpClient($formatter = FALSE);
+
+    if(!isset($client->options['curlopts'])) {
+      $client->options['curlopts'] = array();
+    }
+
+    $client->options['curlopts'] += array(
+      CURLOPT_SSL_VERIFYHOST => FALSE,
+      CURLOPT_SSL_VERIFYPEER => FALSE,
+//        CURLOPT_SSLCERT => $this->realpath(PUBLIC_KEY_FILE),
+//        CURLOPT_SSLKEY => $this->realpath(PRIVATE_KEY_FILE),
+      );
+
+    return $client;
+  }
 }

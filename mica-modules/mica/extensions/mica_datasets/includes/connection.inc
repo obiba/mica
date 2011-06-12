@@ -84,6 +84,7 @@ interface MicaDatasetConnectionInterface {
    */
   public function getImporterId();
 
+  public function query($variables);
 
 }
 

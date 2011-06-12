@@ -296,7 +296,6 @@ function mica_dataset_connector_query_multiple($dataset_id, $enabled = NULL) {
   if (isset($enabled)) {
     $q->condition('c.enabled', $enabled, '=');
   }
-  $q->range(0,1);
   $result = $q->execute();
 
   $connectors = array();
@@ -369,6 +368,24 @@ function mica_dataset_connector_insert(array $values) {
   $connector->is_new = TRUE;
   $connector->save();
   return $connector->id;
+}
+
+/**
+ * Load all node of type 'participant_variable' associated with a dataset
+ * @param $dataset nid
+ */
+function mica_dataset_dataset_participant_variables($dataset) {
+  // Get field information
+  $field = field_info_field('field_dataset');
+  $query = new EntityFieldQuery;
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'participant_variable')
+    ->fieldCondition($field, 'nid', $dataset);
+
+  $entities = $query->execute();
+  
+  $nodes = node_load_multiple(array_keys($entities['node']));
+  return $nodes;
 }
 
 /**

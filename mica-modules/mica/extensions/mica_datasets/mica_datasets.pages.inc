@@ -156,6 +156,32 @@ function _feeds_source_status($source) {
   }
 }
 
+function _doQuery($dataset_node) {
+  $mica_dataset_connectors = mica_dataset_connector_query_multiple($dataset_node->nid);
+  $variables = array();
+  foreach(mica_dataset_dataset_participant_variables($dataset_node->nid) as $variable) {
+    array_push($variables, $variable->title);
+  }
+
+  $columns = array_merge(array('Study', 'Total') , $variables);
+  $h = "<table><thead><tr>";
+  foreach($columns as $var) {
+    $h .=  "<th>" . $var . "</th>"; 
+  }
+  $h .= "</tr></thread><tbody>";
+  foreach($mica_dataset_connectors as $connector) {
+    $result = $connector->query($variables);
+    $study = node_load($connector->study_id);
+    $h .= "<tr><td>" . $study->title . "</td><td>".$result['total']."</td>";
+    foreach($variables as $var) {
+      $h.="<td>" . $result[$var] . "</td>";
+    }
+    $h .=  "</tr>"; 
+  }
+  $h .= "</tbody></table>";
+
+    return $h;
+}
 
 /**
  * Display form for submitting queries.
