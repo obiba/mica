@@ -11,6 +11,17 @@ define('PRIVATE_KEY_FILE','private://mica-privatekey.pem');
 define('PUBLIC_KEY_FILE','private://mica-publickey.pem');
 
 /**
+ * Implements hook_theme().
+ */
+function mica_datasets_theme() {
+  return array (
+    'mica_datasets_dataset_query_form' => array (
+      'render element' => 'form'
+    ),
+    );
+}
+
+/**
  * Implements hook_menu().
  */
 function mica_datasets_menu() {
