@@ -206,6 +206,22 @@ function mica_datasets_entity_info() {
   ),
   );
 
+  $info['mica_dataset_query'] = array(
+    'label' => t('Dataset query'),
+    'controller class' => 'EntityAPIController',
+    'metadata controller class' => FALSE,
+    'entity class' => 'MicaDatasetQuery',
+    'base table' => 'mica_dataset_query',
+    'uri callback' => 'mica_dataset_query_url',
+    'module' => 'mica_dataset',
+    'exportable' => FALSE,
+    'entity keys' => array(
+      'id' => 'id',
+      'label' => 'name',
+      'name' => 'machine_name',
+  ),
+  );
+  
   return $info;
 }
 
@@ -259,8 +275,54 @@ function mica_datasets_entity_property_info() {
       'description' => t('A flag indicating whether the connector is enabled.'),
   ),
   );
+  
+  $info['mica_dataset_query']['properties'] = array(
+    'id' => array(
+      'label' => t('ID'),
+      'type' => 'integer',
+      'description' => t('The primary identifier for a query.'),
+  ),
+    'name' => array(
+      'label' => t('Name'),
+      'type' => 'text',
+      'description' => t('The displayed name for a query.'),
+      'required' => TRUE,
+  ),
+    'machine_name' => array(
+      'label' => t('Machine name'),
+      'type' => 'token',
+      'description' => t('The internally used machine name for a query.'),
+      'required' => TRUE,
+  ),
+    'description' => array(
+      'label' => t('Description'),
+      'type' => 'text',
+      'description' => t('The displayed description for a query.'),
+      'sanitize' => 'filter_xss',
+  ),
+    'dataset_id' => array(
+      'label' => t('Dataset ID'),
+      'type' => 'integer',
+      'description' => t('The primary identifier for the Dataset node.'),
+  ),
+    'user_id' => array(
+      'label' => t('User ID'),
+      'type' => 'integer',
+      'description' => t('The primary identifier for the user.'),
+  ),
+    'published' => array(
+      'label' => t('Published'),
+      'type' => 'boolean',
+      'description' => t('A flag indicating whether the query is published.'),
+  ),
+  );
+  
   return $info;
 }
+
+//
+// Mica Dataset Connector 
+// 
 
 /**
  * Load the dataset connector corresponding to the specified dataset and study ids.
@@ -421,6 +483,107 @@ function mica_datasets_get_connection_info($id = NULL) {
   }
   return $connections;
 }
+
+//
+// Mica Dataset Query
+//
+
+/**
+ * Load the dataset queries corresponding to the specified dataset and user id.
+ *
+ * @param $dataset_id
+ * @param $user_id
+ * @param $published
+ *
+ * @return MicaDatasetQuery
+ *   An array of query objects or FALSE if not found.
+ */
+function mica_dataset_query_query($dataset_id, $user_id, $published = NULL) {
+  $q = db_select('mica_dataset_query', 'c');
+  $q->addField('c', 'id');
+  $q->condition('c.dataset_id', $dataset_id, '=');
+  $q->condition('c.user_id', $study_id, '=');
+  if (isset($enabled)) {
+    $q->condition('c.published', $enabled, '=');
+  }
+  $result = $q->execute();
+
+  $rval = array();
+  while($record = $result->fetchAssoc()) {
+    $rval[] = $record['id'];
+  }
+
+  return !empty($rval) ? mica_dataset_connector_load_multiple($rval) : FALSE;
+}
+
+
+/**
+ * Load the dataset query with the specified id.
+ *
+ * @param $id
+ *   The dataset query's id.
+ * @param $reset
+ *   Whether to reset the internal cache.
+ *
+ * @return MicaDatasetQuery
+ *   An object representing the query with the specified id.
+ */
+function mica_dataset_query_load($id, $reset = FALSE) {
+  $ret = mica_dataset_query_load_multiple(array($id), array(), $reset);
+  return $ret ? reset($ret) : FALSE;
+}
+
+/**
+ * Load multiple queries at once, determined by IDs or machine names, or by
+ * other conditions.
+ *
+ * @see entity_load()
+ *
+ * @param $ids
+ *   An array of query IDs or machine names.
+ * @param $conditions
+ *   An array of conditions on the {mica_dataset_query} table in the form
+ *   'field' => $value.
+ * @param $reset
+ *   Whether to reset the internal entity_load cache.
+ *
+ * @return array
+ *   An array of query objects keyed by machine name.
+ */
+function mica_dataset_query_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
+  return entity_load('mica_dataset_query', $ids, $conditions, $reset);
+}
+
+/**
+ * Entity uri callback.
+ */
+function mica_dataset_query_url(MicaDatasetQuery $query) {
+  return array(
+    'path' => 'admin/config/system/mica/query/' . $query->machine_name,
+    'options' => array(),
+  );
+}
+
+/**
+ * Inserts a new dataset query into the database.
+ *
+ * @param array $values
+ *   An array containing the values to be inserted.
+ *
+ * @return
+ *   The newly inserted server's id, or FALSE on error.
+ */
+function mica_dataset_query_insert(array $values) {
+  $query = new MicaDatasetQuery($values);
+  $query->is_new = TRUE;
+  $query->save();
+  return $query->id;
+}
+
+
+//
+// Feeds
+//
 
 /**
  * implements hook_feeds_after_parse

@@ -83,6 +83,67 @@ function mica_datasets_schema() {
     'primary key' => array('id'),
   );
   
+    $schema['mica_dataset_query'] = array(
+    'description' => 'Stores all the queries that are to be applied to their associated Mica Datasets.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'The primary identifier for a query.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'name' => array(
+        'description' => 'The displayed name for a query.',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+      ),
+      'machine_name' => array(
+        'description' => 'The machine name for a query.',
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+      ),
+      'description' => array(
+        'description' => 'The displayed description for a query.',
+        'type' => 'text',
+        'not null' => FALSE,
+      ),
+      'dataset_id' => array(
+        'description' => 'The dataset identifier for a query.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'user_id' => array(
+        'description' => 'The query author identifier.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'options' => array(
+        'description' => 'The options used to configure the query.',
+        'type' => 'text',
+        'serialize' => TRUE,
+        'not null' => TRUE,
+      ),
+      'published' => array(
+        'description' => 'A flag indicating whether the query is available to users that are not the author.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+    ) + entity_exportable_schema_fields(),
+    'indexes' => array(
+      'indexing' => array('published','user_id','dataset_id'),
+    ),
+    'unique keys' => array(
+      'machine_name' => array('machine_name'),
+    ),
+    'primary key' => array('id'),
+  );
+  
   return $schema;
 }
 
