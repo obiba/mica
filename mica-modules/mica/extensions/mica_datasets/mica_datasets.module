@@ -156,6 +156,14 @@ function _mica_datasets_ensure_viewreference_arguments(&$node) {
 }
 
 /**
+ * Implements hook_node_delete()
+ */
+function mica_datasets_node_delete($node) {
+  if ($node->type === 'dataset') {
+    // todo MICA-129
+  }
+}
+/**
  * Implements hook_node_validate()
  */
 function mica_datasets_node_validate($node, $form, &$form_state) {
