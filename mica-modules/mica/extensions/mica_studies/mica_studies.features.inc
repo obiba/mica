@@ -13,6 +13,10 @@ function mica_studies_ctools_plugin_api() {
     return array("version" => 1);
   }
   list($module, $api) = func_get_args();
+  if ($module == "page_manager" && $api == "pages_default") {
+    return array("version" => 1);
+  }
+  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => 1);
   }
@@ -81,6 +85,14 @@ function mica_studies_node_info() {
       'title_label' => t('Name'),
       'help' => '',
     ),
+    'documents' => array(
+      'name' => t('Documents'),
+      'base' => 'node_content',
+      'description' => t('Content type to present one or more documents'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),    
   );
   return $items;
 }
