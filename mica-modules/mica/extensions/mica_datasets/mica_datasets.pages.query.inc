@@ -260,6 +260,13 @@ function mica_datasets_dataset_query_form($form, &$form_state) {
     '#value' => t('Save'),
   );
 
+  if ($query) {
+    $form['actions']['delete'] = array(
+      '#type' => 'submit',
+      '#value' => t('Delete'),
+    );
+  }
+
   $form['actions']['dataset-link'] = array(
     '#type' => 'link',
     '#title' => t('Cancel'),
@@ -313,6 +320,8 @@ function theme_mica_datasets_dataset_query_form($variables) {
 }
 
 function mica_datasets_dataset_query_form_submit($form, &$form_state) {
+  $dataset_node = $form_state['build_info']['args'][0];
+  $query_id = $form_state['build_info']['args'][1];
 
   switch ($form_state['triggering_element']['#parents'][0]) {
     case 'add-variable':
@@ -324,10 +333,10 @@ function mica_datasets_dataset_query_form_submit($form, &$form_state) {
       drupal_set_message(t('Query term temporarily added. Changes made will not be saved until the form is submitted.'), 'warning');
       $form_state['rebuild'] = TRUE;
       break;
+    case 'delete':
+      $form_state['redirect'] = 'mica/dataset/' . $dataset_node->nid . '/query/' . $query_id . '/delete';
+      break;
     case 'submit':
-      $dataset_node = $form_state['build_info']['args'][0];
-      $query_id = $form_state['build_info']['args'][1];
-
       if ($query_id == 0) {
         global $user;
         $values = array();
