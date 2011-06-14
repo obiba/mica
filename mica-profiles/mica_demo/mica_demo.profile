@@ -29,29 +29,30 @@ function mica_demo_install_tasks($install_state) {
 }
 
 function mica_import_demo_feeds($install_state) {
-  $root = 'profiles/mica_demo/data';
+  $root = 'profiles/mica_demo/demo_consortium_data';
   $feed_configs = array();
   $feed_configs['csv_study_import'] = array(
-    'file' => $root . '/study_import.csv',
+    'file' => $root . '/csv_study_export.csv',
   );
   $feed_configs['csv_study_information_import'] = array(
-    'file' => $root . '/study_information_import.csv',
+    'file' => $root . '/csv_study_information_export.csv',
   );
   $feed_configs['csv_contact_import'] = array(
-    'file' => $root . '/contact_import.csv',
+    'file' => $root . '/csv_contact_export.csv',
   );
   $feed_configs['csv_institution_import'] = array(
-    'file' => $root . '/institution_import.csv',
+    'file' => $root . '/csv_institution_export.csv',
   );
-  $feed_configs['csv_event_import'] = array(
+  $feed_configs['csv_study_files_importer'] = array(
+    'file' => $root . '/csv_study_files_export.csv',
+  );
+  /*$feed_configs['csv_event_import'] = array(
     'file' => $root . '/event_import.csv',
   );
   $feed_configs['csv_publication_import'] = array(
     'file' => $root . '/publication_import.csv',
   );
-  $feed_configs['csv_study_files_importer'] = array(
-    'file' => $root . '/study_files_import.csv',
-  );
+  */
   
   $operations = array();
   foreach ($feed_configs as $importer => $file){
