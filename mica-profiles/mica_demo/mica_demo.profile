@@ -47,7 +47,7 @@ function mica_import_demo_feeds($install_state) {
     'file' => $root . '/csv_study_files_export.csv',
   );
   $feed_configs['csv_event_import'] = array(
-    'file' => $root . '/event_import.csv',
+    'file' => $root . '/csv_event_export.csv',
   );
   /*
   $feed_configs['csv_publication_import'] = array(
