@@ -372,10 +372,11 @@ function mica_datasets_dataset_query_run_page($node, $query_id) {
   return _doQuery($node, $query);
 }
 
-function _doQuery($dataset_node, $query) {
+function _doQuery($dataset_node, $query_node) {
   $mica_dataset_connectors = mica_dataset_connector_query_multiple($dataset_node->nid);
   $variables = array();
-  foreach(mica_dataset_dataset_participant_variables($dataset_node->nid) as $variable) {
+  foreach(mica_dataset_query_term_query($query_node->id) as $term) {
+    $variable = node_load($term->variable_id);
     array_push($variables, $variable->title);
   }
 
