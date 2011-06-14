@@ -53,7 +53,7 @@ function mica_minimal_install() {
       'delta' => 'recent',
       'theme' => $mica_theme,
       'status' => 1,
-      'weight' => 20,
+      'weight' => 30,
       'region' => 'sidebar_first',
       'visibility' => 1,
       'pages' => '<front>',
@@ -64,7 +64,7 @@ function mica_minimal_install() {
       'delta' => 'navigation',
       'theme' => $mica_theme,
       'status' => 1,
-      'weight' => 30,
+      'weight' => 10,
       'region' => 'sidebar_first',
       'visibility' => 1,
       'pages' => '<front>',
@@ -99,7 +99,7 @@ function mica_minimal_install() {
   $about->menu['weight'] = 50;
   $about->menu['link_title'] = 'About';
   $about->menu['description'] = '';
-  $about->promote = 1;
+  $about->promote = 0;
   $about->sticky = 1;
   $about->language = 'und';
   node_save($about);
