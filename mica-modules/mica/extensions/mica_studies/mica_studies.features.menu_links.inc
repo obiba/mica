@@ -28,7 +28,7 @@ function mica_studies_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '1',
     'expanded' => '1',
-    'weight' => '-48',
+    'weight' => '-30',
   );
   // Exported menu link: main-menu:<front>
   $menu_links['main-menu:<front>'] = array(
@@ -71,7 +71,7 @@ function mica_studies_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '5',
+    'weight' => '35',
   );
   // Exported menu link: main-menu:studies
   $menu_links['main-menu:studies'] = array(
@@ -85,7 +85,7 @@ function mica_studies_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '1',
     'expanded' => '0',
-    'weight' => '0',
+    'weight' => '-34',
   );
   // Exported menu link: main-menu:studies-search
   $menu_links['main-menu:studies-search'] = array(

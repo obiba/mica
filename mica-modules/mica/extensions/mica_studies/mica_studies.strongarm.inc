@@ -792,7 +792,7 @@ function mica_studies_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_study';
-  $strongarm->value = 'main-menu:291';
+  $strongarm->value = 'main-menu:295';
   $export['menu_parent_study'] = $strongarm;
 
   $strongarm = new stdClass;

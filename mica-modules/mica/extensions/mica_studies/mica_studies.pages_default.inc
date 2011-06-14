@@ -285,7 +285,7 @@ function mica_studies_default_page_manager_handlers() {
     $pane->panel = 'top_right';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'admin_title' => 'node_title',

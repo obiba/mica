@@ -30,6 +30,24 @@ function mica_community_menu_default_menu_links() {
     'parent_path' => 'community',
   );
   // Exported menu link: main-menu:community
+  $menu_links['main-menu:research'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'research',
+    'router_path' => 'research',
+    'link_title' => 'Research',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '1',
+    'expanded' => '1',
+    'weight' => '8',
+  );
+  // Exported menu link: main-menu:community
   $menu_links['main-menu:community'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'community',
@@ -116,7 +134,7 @@ function mica_community_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-10',
+    'weight' => '0',
     'parent_path' => 'community',
   );
   // Exported menu link: main-menu:publications
@@ -136,7 +154,7 @@ function mica_community_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '1',
-    'parent_path' => 'community',
+    'parent_path' => 'research',
   );
   // Translatables
   // Included for use with string extractors like potx.
