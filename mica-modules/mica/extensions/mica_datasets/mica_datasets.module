@@ -722,6 +722,7 @@ function mica_dataset_query_term_query($query_id) {
   $q = db_select('mica_dataset_query_term', 'c');
   $q->addField('c', 'id');
   $q->condition('c.query_id', $query_id, '=');
+  $q->orderBy('c.weight', 'ASC');
   $result = $q->execute();
 
   $rval = array();

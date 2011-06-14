@@ -342,14 +342,14 @@ function mica_datasets_dataset_connection_form($form, &$form_state, $connection_
   $form['dataset-link'] = array(
     '#type' => 'link',
     '#title' => $dataset_node->title,
-    '#href' => 'node/' . $dataset_node->nid . '/edit-studies',
+    '#href' => 'node/' . $dataset_node->nid . '/studies',
     '#attributes' => array('style' => 'margin:0 5px 0 5px;'),
   );
 
   $form['study-link'] = array(
     '#type' => 'link',
     '#title' => $study_node->title,
-    '#href' => 'node/' . $study_node->nid . '/edit-datasets',
+    '#href' => 'node/' . $study_node->nid . '/datasets',
     '#attributes' => array('style' => 'margin:0 5px 0 5px;'),
   );
 
@@ -427,7 +427,7 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
       break;
   }
 
-  $form_state['redirect'] = 'node/' . $dataset_node->nid . '/edit-studies';
+  $form_state['redirect'] = 'node/' . $dataset_node->nid . '/studies';
 }
 
 /**
