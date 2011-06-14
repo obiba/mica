@@ -149,6 +149,19 @@ function mica_datasets_menu() {
       'file' => 'mica_datasets.pages.unit.inc',   
       'type' => MENU_LOCAL_ACTION,
   );
+  
+  // TODO: remove after integration
+  $items['node/%node/query-test'] = array(
+      'title' => 'Test Query',
+      'access callback' => '_mica_datasets_node_access',
+      'access arguments' => array(1,'dataset','view'),
+      'page callback' => 'mica_datasets_dataset_query_test_page',
+      'page arguments' => array(1),
+      'weight' => 7,
+      'type' => MENU_LOCAL_TASK,
+      'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+      'file' => 'mica_datasets.pages.query.inc',
+  );
   return $items;
 }
 

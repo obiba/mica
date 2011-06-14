@@ -113,8 +113,18 @@ function theme_mica_datasets_dataset_query_form($variables) {
   return $output;
 }
 
+function mica_datasets_dataset_query_execute_page($query) {
+  drupal_set_title(t('!title -- Test Query', array('!title' => $node->title)));
+  $dataset = node_load($query->dataset_id);
+  return _doQuery($dataset, $query);
+}
 
-function _doQuery($dataset_node) {
+function mica_datasets_dataset_query_test_page($node) {
+  drupal_set_title(t('!title -- Test Query', array('!title' => $node->title)));
+  return _doQuery($node, NULL);
+}
+
+function _doQuery($dataset_node, $query) {
   $mica_dataset_connectors = mica_dataset_connector_query_multiple($dataset_node->nid);
   $variables = array();
   foreach(mica_dataset_dataset_participant_variables($dataset_node->nid) as $variable) {
@@ -128,13 +138,25 @@ function _doQuery($dataset_node) {
   }
   $h .= "</tr></thread><tbody>";
   foreach($mica_dataset_connectors as $connector) {
-    $result = $connector->query($variables);
     $study = node_load($connector->study_id);
-    $h .= "<tr><td>" . $study->title . "</td><td>".$result['total']."</td>";
-    foreach($variables as $var) {
-      $h.="<td>" . $result[$var] . "</td>";
+    try {
+      $result = $connector->query($variables);
+      $h .= "<tr><td>" . $study->title . "</td><td>".$result['total']."</td>";
+      foreach($variables as $var) {
+        $h.="<td>" . $result[$var] . "</td>";
+      }
+      $h .=  "</tr>";
+    } catch(Exception $e) {
+      if($e->getCode() == 401) {
+        drupal_set_message(t("Study %study: Authentication failed (401).", array("%study" => $study->title)), 'error');
+      } else if($e->getCode() == 403) {
+        drupal_set_message(t("Study %study: Not authorized to search dataset (403).", array("%study" => $study->title)), 'error');
+      } else if($e->getCode() == 404) {
+        drupal_set_message(t("Study %study: Cannot find dataset (404). Make sure the study's configuration is valid.", array("%study" => $study->title)), 'error');
+      } else {
+        drupal_set_message(t("Study %study: Failed executing search. Message was: %msg", array("%study" => $study->title, "%msg" => $e->getMessage())), 'error');
+      }
     }
-    $h .=  "</tr>"; 
   }
   $h .= "</tbody></table>";
 

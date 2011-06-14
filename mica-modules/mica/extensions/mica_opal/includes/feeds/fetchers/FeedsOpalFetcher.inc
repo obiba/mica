@@ -34,9 +34,6 @@ class FeedsOpalFetcher extends FeedsRestFetcher {
 
   private function makeUri($connectorId) {
     $connector = mica_dataset_connector_load($connectorId);
-    $study_node = node_load($connector->study_id);
-    $url = $study_node->mica_opal[$study_node->language][0]['url'];
-    $url .= "/ws/datasource/" . $connector->options['datasource'] . '/table/' . $connector->options['table'] . '/variables';
-    return $url;
+    return $connector->__call("getTableResourceURI", array("index/_search"));
   }
 }

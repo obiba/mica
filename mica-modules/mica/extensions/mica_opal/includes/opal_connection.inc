@@ -88,37 +88,43 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
     return 'opal_participant_variables';
   }
 
+  public function getTableResourceURI($resource) {
+    $connector = $this->connector;
+    $study_node = node_load($connector->study_id);
+    $url = $study_node->mica_opal[$study_node->language][0]['url'];
+    $url .= "/ws/datasource/" . $connector->options['datasource'] . '/table/' . $connector->options['table'] . "/" . $resource;
+    return $url;
+  }
+
   public function query($variables) {
     
     $facets = array();
     foreach($variables as $var) {
       array_push($facets, '"' . $var . '":{ "terms":{"field":"' . $var . '"}}');
     }
-    
+
     $q = '{"query": {"match_all":{}},"size":0,"facets":{';
     $q .= implode(',', $facets);
     $q.='}}';
     
-    $client = $this->client();
-    
-    $study_node = node_load($this->connector->study_id);
-    $url = $study_node->mica_opal[$study_node->language][0]['url'];
-    
-    $post = new HttpClientRequest("$url/ws/es/opal/bioshare.healthy-obese/_search", array(
-        'method' => 'POST',
-        'headers' => array('Accept'=> array('application/json'), 'Authorization' => array('X-Opal-Auth YWRtaW5pc3RyYXRvcjpwYXNzd29yZA==')),
+    $url = $this->getTableResourceURI("index/_search");
+
+    $post = new HttpClientRequest($url, array(
+        'method' => 'GET',
+        'headers' => array('Accept' => array('application/json')),
         'data' => $q,
         'parameters' => array(),
       ));
-      
+
     try {
+      $client = $this->client();
       $body = $client->execute($post);
     }  catch(HttpClientException $e) {
       if($e->getCode() == 0) {
         // curl error
-        throw new Exception(t('Download of @url failed: @msg', array('@url' => '', '@msg' => $e->getMessage())));
+        throw new Exception($e->getMessage());
       } else if (!in_array($e->getCode(), array(200, 201, 202, 203, 204, 205, 206))) {
-        throw new Exception(t('Download of @url failed with code !code.', array('@url' => '', '!code' => $e->getCode())));
+        throw $e;
       }
       // http_client throws an exception on all codes that are not 200 (even 201)
       // http://drupal.org/node/722886
@@ -132,7 +138,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
     foreach($variables as $var) {
       $result[$var] = $total - $data['facets'][$var]['missing'];
     }
-    
+
     return $result;
   }
 
@@ -159,9 +165,9 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
     $client->options['curlopts'] += array(
       CURLOPT_SSL_VERIFYHOST => FALSE,
       CURLOPT_SSL_VERIFYPEER => FALSE,
-//        CURLOPT_SSLCERT => $this->realpath(PUBLIC_KEY_FILE),
-//        CURLOPT_SSLKEY => $this->realpath(PRIVATE_KEY_FILE),
-      );
+      CURLOPT_SSLCERT => $this->realpath(PUBLIC_KEY_FILE),
+      CURLOPT_SSLKEY => $this->realpath(PRIVATE_KEY_FILE),
+    );
 
     return $client;
   }
