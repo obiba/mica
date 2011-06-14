@@ -72,7 +72,7 @@ function mica_opal_feeds_importer_default() {
           'jsonpath_parser:0' => 'name',
           'jsonpath_parser:1' => 'attributes[?(@[\'name\']==\'label\')].value',
           'jsonpath_parser:2' => 'valueType',
-          'jsonpath_parser:3' => 'categories.*.name   categories.*.[name,attributes[?(@[\'name\']==\'label\')].value,name]',
+          'jsonpath_parser:3' => 'categories.*.name',
           'jsonpath_parser:4' => 'repeatable',
         ),
         'debug' => array(),

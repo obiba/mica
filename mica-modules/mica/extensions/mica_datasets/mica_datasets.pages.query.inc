@@ -199,7 +199,7 @@ function mica_datasets_dataset_query_form($form, &$form_state) {
       $form['list'][$key]['actions']['edit'] = array(
         '#type' => 'link', 
         '#title' => t('Edit'), 
-        '#href' => 'mica/query-term/' . $datum['id'] . '/edit',
+        '#href' => 'mica/dataset/'.$dataset_node->nid.'/query/'.$query->id.'/term/' . $datum['id'] . '/edit',
         '#attributes' => array(
           'style' => array('margin-right:10px;'),
       ),
@@ -484,3 +484,63 @@ function _doQuery($dataset_node, $query_node) {
 
   return $h;
 }
+
+//
+// Query Term Form
+//
+
+function mica_datasets_dataset_query_term_page($node, $query_id, $term_id) {
+  $query = mica_dataset_query_load($query_id);
+  $term = mica_dataset_query_term_load($term_id);
+  drupal_set_title(t('!title -- Edit !term in !query', array('!title' => $node->title, '!query' => $query->name, '!term' => $term->id)));
+  return  drupal_get_form('mica_datasets_dataset_query_term_form', $node, $query, $term);
+}
+
+function mica_datasets_dataset_query_term_form($form, &$form_state) {
+  $form = array();
+  
+  $dataset_node = $form_state['build_info']['args'][0];
+  $query_node = $form_state['build_info']['args'][1];
+  $term_entity = $form_state['build_info']['args'][2];
+  $variable = node_load($term_entity->variable_id);
+
+  // TODO: why is the first category '' when the variable doesn't have any categories?
+  if($variable->field_categories['und'][0]['value'] != '') {
+    $options = array();
+    foreach($variable->field_categories['und'] as $category) {
+      // TODO: wtf! if the category's label is 0, it does not appear. So we add a &nbsp; so that it is no longer 0.
+      $options['c_'.$category["value"]] = $category["value"] . "&nbsp;";
+    }
+    $form['categories'] = array(
+      '#type' => 'checkboxes',
+      '#title' => 'Categories',
+      '#options' => $options,
+      '#default_value' => isset($term_entity->options['state']['categories']) ? $term_entity->options['state']['categories'] : array(),
+    );
+  }
+  $form['actions']['save'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save'),
+  );
+  return $form;  
+}
+
+function mica_datasets_dataset_query_term_form_validate($form, &$form_state) {
+}
+
+function mica_datasets_dataset_query_term_form_submit($form, &$form_state) {
+  drupal_set_message(t('Term configuration saved.'));
+
+  $dataset_node = $form_state['build_info']['args'][0];
+  $query_entity = $form_state['build_info']['args'][1];
+  $term_entity = $form_state['build_info']['args'][2];
+  $variable = node_load($term_entity->variable_id);
+
+  $term_entity->options['value'] = $variable->title;
+  $term_entity->options['state'] = $form_state['values'];
+
+  $term_entity->save();
+  
+  $form_state['redirect'] = 'mica/dataset/' . $dataset_node->nid . '/query/' . $query_entity->id . '/edit';
+}
+
