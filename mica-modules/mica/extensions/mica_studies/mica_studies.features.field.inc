@@ -534,10 +534,10 @@ function mica_studies_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'link',
+          'module' => 'email',
           'settings' => array(),
-          'type' => 'default',
-          'weight' => 6,
+          'type' => 'email_default',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -805,7 +805,7 @@ Prof.',
             'node_reference_view_mode' => 'full',
           ),
           'type' => 'node_reference_node',
-          'weight' => '5',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -886,7 +886,7 @@ Prof.',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '4',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1829,11 +1829,11 @@ Prof.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 4,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
