@@ -92,7 +92,7 @@ function mica_studies_node_info() {
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
-    ),    
+    ),
   );
   return $items;
 }
