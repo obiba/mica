@@ -98,10 +98,13 @@ function _mica_datasets_add_connection_option(&$options, &$dataset_node, &$study
       'description' => $data['connector']['description'],
       'actions' => array(
         'data' => array(
+          array(
           '#type' => 'link',
           '#title' => 'Edit',
           '#href' => 'mica/dataset/connector/' . $data['connector']['id'] . '/' . $data['connector'][MICA_DATASET_ID] . '/' . $data['connector'][MICA_STUDY_ID] . '/edit',
-  )),
+          ),
+       ),
+  ),
       'row' => $data,
   );
 }
@@ -118,7 +121,7 @@ function _mica_datasets_add_table_form(&$form, $header, $empty, &$options) {
     'child' => t($header),
     'connection-type' => t('Connection Type'),
     'description' => t('Description'),
-    'actions' => '',
+    'actions' => t('Operations'),
   );
 
   $form['table'] = array (

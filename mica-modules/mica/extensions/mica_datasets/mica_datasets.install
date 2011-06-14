@@ -98,12 +98,6 @@ function mica_datasets_schema() {
         'length' => 50,
         'not null' => TRUE,
       ),
-      'machine_name' => array(
-        'description' => 'The machine name for a query.',
-        'type' => 'varchar',
-        'length' => 50,
-        'not null' => TRUE,
-      ),
       'description' => array(
         'description' => 'The displayed description for a query.',
         'type' => 'text',
@@ -131,9 +125,6 @@ function mica_datasets_schema() {
     ) + entity_exportable_schema_fields(),
     'indexes' => array(
       'indexing' => array('published','user_id','dataset_id'),
-    ),
-    'unique keys' => array(
-      'machine_name' => array('machine_name'),
     ),
     'primary key' => array('id'),
   );

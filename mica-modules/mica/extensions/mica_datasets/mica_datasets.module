@@ -92,6 +92,29 @@ function mica_datasets_menu() {
       'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
       'file' => 'mica_datasets.pages.query.inc',
   );
+  $items['mica/dataset/%node/query/%/run'] = array(
+      'title' => 'Edit Query',
+      'access callback' => '_mica_datasets_query_access',
+      'access arguments' => array(2,4,'view'),
+      'page callback' => 'mica_datasets_dataset_query_run_page',
+      'page arguments' => array(2,4),
+      'weight' => 8,
+      'type' => MENU_LOCAL_TASK,
+      'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+      'file' => 'mica_datasets.pages.query.inc',
+  );
+  $items['mica/dataset/%node/query/%/delete'] = array(
+      'title' => 'Edit Query',
+      'access callback' => '_mica_datasets_query_access',
+      'access arguments' => array(2,4,'update'),
+      'page callback' => 'mica_datasets_dataset_query_delete_page',
+      'page arguments' => array(2,4),
+      'weight' => 8,
+      'type' => MENU_LOCAL_TASK,
+      'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+      'file' => 'mica_datasets.pages.query.inc',
+  );
+  
   $items['mica/dataset/%node/query/%/term/%/edit'] = array(
       'title' => 'Edit Query Term',
       'access callback' => '_mica_datasets_query_term_access',
@@ -184,7 +207,7 @@ function _mica_datasets_query_access($node, $query_id, $op) {
     // todo check query author and user permissions
     return TRUE;
   }
-  return FALSE;
+  return TRUE;
 }
 
 function _mica_datasets_query_term_access($node, $query_id, $query_term_id, $op  = 'update') {
@@ -192,7 +215,7 @@ function _mica_datasets_query_term_access($node, $query_id, $query_term_id, $op 
     // todo check query author and user permissions
     return TRUE;
   }
-  return FALSE;
+  return TRUE;
 }
 
 /**
@@ -284,7 +307,21 @@ function mica_datasets_entity_info() {
     'entity keys' => array(
       'id' => 'id',
       'label' => 'name',
-      'name' => 'machine_name',
+  ),
+  );
+  
+  $info['mica_dataset_query_term'] = array(
+    'label' => t('Dataset query term'),
+    'controller class' => 'EntityAPIController',
+    'metadata controller class' => FALSE,
+    'entity class' => 'MicaDatasetQueryTerm',
+    'base table' => 'mica_dataset_query_term',
+    'uri callback' => 'mica_dataset_query_term_url',
+    'module' => 'mica_dataset',
+    'exportable' => FALSE,
+    'entity keys' => array(
+      'id' => 'id',
+      'label' => 'name',
   ),
   );
   
@@ -593,13 +630,15 @@ function mica_datasets_get_connection_info($id = NULL) {
  * @return MicaDatasetQuery
  *   An array of query objects or FALSE if not found.
  */
-function mica_dataset_query_query($dataset_id, $user_id, $published = NULL) {
+function mica_dataset_query_query($dataset_id, $user_id = NULL, $published = NULL) {
   $q = db_select('mica_dataset_query', 'c');
   $q->addField('c', 'id');
   $q->condition('c.dataset_id', $dataset_id, '=');
-  $q->condition('c.user_id', $study_id, '=');
-  if (isset($enabled)) {
-    $q->condition('c.published', $enabled, '=');
+  if (isset($user_id)) {
+    $q->condition('c.user_id', $user_id, '=');
+  }
+  if (isset($published)) {
+    $q->condition('c.published', $published, '=');
   }
   $result = $q->execute();
 
@@ -608,7 +647,7 @@ function mica_dataset_query_query($dataset_id, $user_id, $published = NULL) {
     $rval[] = $record['id'];
   }
 
-  return !empty($rval) ? mica_dataset_connector_load_multiple($rval) : FALSE;
+  return !empty($rval) ? mica_dataset_query_load_multiple($rval) : FALSE;
 }
 
 
@@ -678,6 +717,20 @@ function mica_dataset_query_insert(array $values) {
 //
 // Mica Dataset Query Term
 //
+
+function mica_dataset_query_term_query($query_id) {
+  $q = db_select('mica_dataset_query_term', 'c');
+  $q->addField('c', 'id');
+  $q->condition('c.query_id', $query_id, '=');
+  $result = $q->execute();
+
+  $rval = array();
+  while($record = $result->fetchAssoc()) {
+    $rval[] = $record['id'];
+  }
+
+  return !empty($rval) ? mica_dataset_query_term_load_multiple($rval) : FALSE;
+}
 
 /**
  * Load the dataset query term with the specified id.
