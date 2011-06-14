@@ -35,6 +35,11 @@ function mica_community_field_default_fields() {
       ),
       'module' => 'text',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -204,6 +209,11 @@ function mica_community_field_default_fields() {
       ),
       'module' => 'text',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
