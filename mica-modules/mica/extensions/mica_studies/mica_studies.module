@@ -94,6 +94,7 @@ function _mica_import_field_groups() {
     'field_investigator',
     'field_contact',
     'field_target_number_participants',
+    'field_p3g_observatory_link',
   ));
   
   // STUDY INFORMATION : METHOD

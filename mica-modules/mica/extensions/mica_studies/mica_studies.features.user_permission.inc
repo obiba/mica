@@ -50,6 +50,15 @@ function mica_studies_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: administer page manager
+  $permissions['administer page manager'] = array(
+    'name' => 'administer page manager',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'page_manager',
+  );
+
   // Exported permission: clear csv_contact_import feeds
   $permissions['clear csv_contact_import feeds'] = array(
     'name' => 'clear csv_contact_import feeds',
@@ -123,6 +132,15 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create documents content
+  $permissions['create documents content'] = array(
+    'name' => 'create documents content',
+    'roles' => array(
+      0 => 'mica administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: create field_description content
   $permissions['create field_description content'] = array(
     'name' => 'create field_description content',
@@ -164,6 +182,15 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'mica administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create panel content
+  $permissions['create panel content'] = array(
+    'name' => 'create panel content',
+    'roles' => array(
+      0 => 'administrator',
     ),
     'module' => 'node',
   );
@@ -215,6 +242,15 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete any documents content
+  $permissions['delete any documents content'] = array(
+    'name' => 'delete any documents content',
+    'roles' => array(
+      0 => 'mica administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: delete any field_description content
   $permissions['delete any field_description content'] = array(
     'name' => 'delete any field_description content',
@@ -239,6 +275,15 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'mica administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any panel content
+  $permissions['delete any panel content'] = array(
+    'name' => 'delete any panel content',
+    'roles' => array(
+      0 => 'administrator',
     ),
     'module' => 'node',
   );
@@ -290,6 +335,15 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete own documents content
+  $permissions['delete own documents content'] = array(
+    'name' => 'delete own documents content',
+    'roles' => array(
+      0 => 'mica administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: delete own field_description content
   $permissions['delete own field_description content'] = array(
     'name' => 'delete own field_description content',
@@ -314,6 +368,15 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'mica administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own panel content
+  $permissions['delete own panel content'] = array(
+    'name' => 'delete own panel content',
+    'roles' => array(
+      0 => 'administrator',
     ),
     'module' => 'node',
   );
@@ -376,6 +439,15 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit any documents content
+  $permissions['edit any documents content'] = array(
+    'name' => 'edit any documents content',
+    'roles' => array(
+      0 => 'mica administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: edit any field_description content
   $permissions['edit any field_description content'] = array(
     'name' => 'edit any field_description content',
@@ -400,6 +472,15 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'mica administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any panel content
+  $permissions['edit any panel content'] = array(
+    'name' => 'edit any panel content',
+    'roles' => array(
+      0 => 'administrator',
     ),
     'module' => 'node',
   );
@@ -451,6 +532,16 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit own documents content
+  $permissions['edit own documents content'] = array(
+    'name' => 'edit own documents content',
+    'roles' => array(
+      0 => 'mica administrator',
+      1 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: edit own field_description content
   $permissions['edit own field_description content'] = array(
     'name' => 'edit own field_description content',
@@ -475,6 +566,15 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'mica administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own panel content
+  $permissions['edit own panel content'] = array(
+    'name' => 'edit own panel content',
+    'roles' => array(
+      0 => 'administrator',
     ),
     'module' => 'node',
   );
@@ -592,6 +692,15 @@ function mica_studies_user_default_permissions() {
       1 => 'authenticated user',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: use page manager
+  $permissions['use page manager'] = array(
+    'name' => 'use page manager',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'page_manager',
   );
 
   // Exported permission: use search_api_facets

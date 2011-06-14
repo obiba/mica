@@ -492,7 +492,7 @@ function mica_studies_strongarm() {
         'extra_fields' => array(
           'form' => array(
             'title' => array(
-              'weight' => '1',
+              'weight' => '0',
             ),
           ),
           'display' => array(),
@@ -663,14 +663,14 @@ function mica_studies_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'file_default_scheme';
-  $strongarm->value = 'private';
+  $strongarm->value = 'public';
   $export['file_default_scheme'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'file_private_path';
-  $strongarm->value = 'sites/default/private';
+  $strongarm->value = '';
   $export['file_private_path'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -679,6 +679,13 @@ function mica_studies_strongarm() {
   $strongarm->name = 'file_public_path';
   $strongarm->value = 'sites/default/files';
   $export['file_public_path'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'image_toolkit';
+  $strongarm->value = 'gd';
+  $export['image_toolkit'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -785,7 +792,7 @@ function mica_studies_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_study';
-  $strongarm->value = 'main-menu:273';
+  $strongarm->value = 'main-menu:291';
   $export['menu_parent_study'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -1015,6 +1022,13 @@ function mica_studies_strongarm() {
   $strongarm->name = 'node_submitted_study_information';
   $strongarm->value = 0;
   $export['node_submitted_study_information'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'page_manager_node_view_disabled';
+  $strongarm->value = FALSE;
+  $export['page_manager_node_view_disabled'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

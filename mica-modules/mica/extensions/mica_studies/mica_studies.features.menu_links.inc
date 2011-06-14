@@ -21,14 +21,14 @@ function mica_studies_menu_default_menu_links() {
         'title' => '',
       ),
       'alter' => TRUE,
-      'unaltered_hidden' => 0,
+      'unaltered_hidden' => '0',
     ),
     'module' => 'menu',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '1',
     'expanded' => '1',
-    'weight' => '-48',
+    'weight' => '-49',
   );
   // Exported menu link: main-menu:<front>
   $menu_links['main-menu:<front>'] = array(
@@ -59,24 +59,6 @@ function mica_studies_menu_default_menu_links() {
     'weight' => '-50',
     'parent_path' => '<firstchild>',
   );
-  // Exported menu link: main-menu:news
-  $menu_links['main-menu:news'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'news',
-    'router_path' => 'news',
-    'link_title' => 'News',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-49',
-  );
   // Exported menu link: main-menu:node/1
   $menu_links['main-menu:node/1'] = array(
     'menu_name' => 'main-menu',
@@ -89,7 +71,7 @@ function mica_studies_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-42',
+    'weight' => '-46',
   );
   // Exported menu link: main-menu:studies
   $menu_links['main-menu:studies'] = array(
@@ -97,16 +79,12 @@ function mica_studies_menu_default_menu_links() {
     'link_path' => 'studies',
     'router_path' => 'studies',
     'link_title' => 'Studies',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
+    'options' => array(),
     'module' => 'system',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '1',
-    'expanded' => '1',
+    'expanded' => '0',
     'weight' => '0',
   );
   // Exported menu link: main-menu:studies-search
@@ -121,7 +99,7 @@ function mica_studies_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '0',
+    'weight' => '50',
     'parent_path' => 'studies',
   );
   // Exported menu link: management:admin/config/search/path
@@ -148,7 +126,6 @@ function mica_studies_menu_default_menu_links() {
   t('About');
   t('Documents');
   t('Home');
-  t('News');
   t('Resources');
   t('Studies');
   t('Studies Search');

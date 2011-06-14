@@ -392,6 +392,11 @@ function mica_studies_feeds_importer_default() {
             'target' => 'guid',
             'unique' => 1,
           ),
+          5 => array(
+            'source' => 'field_logo',
+            'target' => 'field_logo',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',
@@ -561,6 +566,11 @@ function mica_studies_feeds_importer_default() {
           24 => array(
             'source' => 'field_full_name',
             'target' => 'field_full_name',
+            'unique' => FALSE,
+          ),
+          25 => array(
+            'source' => 'field_p3g_observatory_link',
+            'target' => 'field_p3g_observatory_link:url',
             'unique' => FALSE,
           ),
         ),
