@@ -445,13 +445,16 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query) {
 
 function _doQuery($dataset_node, $query_node) {
   $mica_dataset_connectors = mica_dataset_connector_query_multiple($dataset_node->nid);
-  $variables = array();
-  foreach(mica_dataset_query_term_query($query_node->id) as $term) {
-    $variable = node_load($term->variable_id);
-    array_push($variables, $variable->title);
-  }
+  $terms = mica_dataset_query_term_query($query_node->id);
 
-  $columns = array_merge(array('Study', 'Total') , $variables);
+  $map = function($term) {
+    $impl = $term->termImpl();
+    return $impl->toString();
+  };
+
+  $names = array_map($map, $terms);
+
+  $columns = array_merge(array('Study', 'Total') , $names);
   $h = "<table><thead><tr>";
   foreach($columns as $var) {
     $h .=  "<th>" . $var . "</th>";
@@ -460,10 +463,11 @@ function _doQuery($dataset_node, $query_node) {
   foreach($mica_dataset_connectors as $connector) {
     $study = node_load($connector->study_id);
     try {
-      $result = $connector->query($variables);
+      $result = $connector->query($terms);
       $h .= "<tr><td>" . $study->title . "</td><td>".$result['total']."</td>";
-      foreach($variables as $var) {
-        $h.="<td>" . $result[$var] . "</td>";
+      foreach($terms as $t) {
+        $impl = $t->termImpl();
+        $h.="<td>" . $result[$impl->getName()] . "</td>";
       }
       $h .=  "</tr>";
     } catch(Exception $e) {

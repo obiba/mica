@@ -96,17 +96,20 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
     return $url;
   }
 
-  public function query($variables) {
-    
+  public function query($terms) {
+
     $facets = array();
-    foreach($variables as $var) {
-      array_push($facets, '"' . $var . '":{ "terms":{"field":"' . $var . '"}}');
+    foreach($terms as $term) {
+      $impl = $term->termImpl();
+      $facet = $this->asFacet($impl);
+      array_push($facets, $facet);
     }
 
     $q = '{"query": {"match_all":{}},"size":0,"facets":{';
     $q .= implode(',', $facets);
     $q.='}}';
     
+    debug($q);
     $url = $this->getTableResourceURI("index/_search");
 
     $post = new HttpClientRequest($url, array(
@@ -119,6 +122,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
     try {
       $client = $this->client();
       $body = $client->execute($post);
+      debug($body);
     }  catch(HttpClientException $e) {
       if($e->getCode() == 0) {
         // curl error
@@ -135,11 +139,38 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
     $total = $data['hits']['total'];
 
     $result = array('total'=>$total);
-    foreach($variables as $var) {
-      $result[$var] = $total - $data['facets'][$var]['missing'];
+    foreach($terms as $term) {
+      $impl = $term->termImpl();
+      $result[$impl->getName()] = $this->count($data['facets'][$impl->getName()]);
     }
 
     return $result;
+  }
+  
+  private function count($facet) {
+    if(isset($facet['terms'])) {
+      $sum =0;
+      foreach($facet['terms'] as $term) {
+        $sum += $term['count'];
+      }
+      return $sum;
+    }
+  }
+  
+  private function asFacet(QueryTermInterface $term) {
+    
+    switch ($term->getType()) {
+      case 'CategoryTerm':
+        $facet = '"' . $term->getName() . '":{ "terms": { "field":"' . $term->getName() . '"}';
+        if(count($term->categories()) > 0) {
+          $facet .= ', "facet_filter": { "terms": { "'.$term->getName().'":["'. implode('","', $term->categories()) .'"]}}';
+        }
+        $facet .= '}';
+        return $facet;
+        break;
+      default: 
+        return '"' . $term->getName() . '":{ "terms":{"field":"' . $term->getName() . '"}}';
+    }
   }
 
   /**

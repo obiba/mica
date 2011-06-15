@@ -78,19 +78,20 @@ abstract class AbstractTerm implements QueryTermInterface {
   }
 
   function getType() {
-    return $type;
+    return $this->type;
   }
 
   function getName() {
-    return $name;
+    $variable = $this->getVariable();
+    return $variable->title;
   }
 
   function isInverted() {
-    return $not;
+    return $this->not;
   }
 
   function getOptions() {
-    return $options;
+    return $this->options;
   }
 
   function toString() {
