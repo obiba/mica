@@ -7,6 +7,10 @@
 
 include_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'mica_datasets') .  '/includes/connection_form.inc');
 
+function mica_datasets_dataset_page($dataset_node) {
+  drupal_goto('node/' . $dataset_node->nid . '/queries');
+}
+
 /**
  * Display form for linking datsets to a given study.
  */

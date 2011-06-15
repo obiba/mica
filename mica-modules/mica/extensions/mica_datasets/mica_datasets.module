@@ -15,7 +15,7 @@ define('PUBLIC_KEY_FILE','private://mica-publickey.pem');
  */
 function mica_datasets_theme() {
   return array (
-    'mica_datasets_dataset_query_form' => array (
+    'mica_datasets_dataset_query_edit_form' => array (
       'render element' => 'form'
     ),
     );
@@ -60,6 +60,7 @@ function mica_datasets_menu() {
       'file' => 'mica_datasets.pages.inc',
   );
   
+  // queries
   $items['node/%node/queries'] = array(
       'title' => 'Queries',
       'access callback' => '_mica_datasets_node_access',
@@ -71,6 +72,7 @@ function mica_datasets_menu() {
       'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
       'file' => 'mica_datasets.pages.query.inc',
   );
+  
   $items['node/%node/queries/add'] = array(
       'title' => 'Add Query',
       'access callback' => '_mica_datasets_node_access',
@@ -81,11 +83,35 @@ function mica_datasets_menu() {
       'type' => MENU_LOCAL_ACTION,
       'file' => 'mica_datasets.pages.query.inc',
   );
+  
+  $items['mica/dataset/%node'] = array(
+    'title callback' => 'node_page_title',
+    'title arguments' => array(2),
+    'page callback' => 'mica_datasets_dataset_page',
+    'page arguments' => array(2),
+    'access callback' => 'node_access',
+    'access arguments' => array('view', 2),
+    'type' => MENU_LOCAL_TASK,
+    'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+    'file' => 'mica_datasets.pages.inc',
+  );
+  $items['mica/dataset/%node/query/%'] = array(
+      'title callback' => '_mica_datasets_query_title',
+      'title arguments' => array(2,4),
+      'access callback' => '_mica_datasets_query_access',
+      'access arguments' => array(2,4,'update'),
+      'page callback' => 'mica_datasets_dataset_query_page',
+      'page arguments' => array(2,4),
+      'weight' => 8,
+      'type' => MENU_LOCAL_TASK,
+      'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+      'file' => 'mica_datasets.pages.query.inc',
+  );
   $items['mica/dataset/%node/query/%/edit'] = array(
       'title' => 'Edit Query',
       'access callback' => '_mica_datasets_query_access',
       'access arguments' => array(2,4,'update'),
-      'page callback' => 'mica_datasets_dataset_query_page',
+      'page callback' => 'mica_datasets_dataset_query_edit_page',
       'page arguments' => array(2,4),
       'weight' => 8,
       'type' => MENU_LOCAL_TASK,
@@ -120,6 +146,17 @@ function mica_datasets_menu() {
       'access callback' => '_mica_datasets_query_term_access',
       'access arguments' => array(2,4,6,'update'),
       'page callback' => 'mica_datasets_dataset_query_term_page',
+      'page arguments' => array(2,4,6),
+      'weight' => 9,
+      'type' => MENU_LOCAL_TASK,
+      'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+      'file' => 'mica_datasets.pages.query.inc',
+  );
+  $items['mica/dataset/%node/query/%/term/%/delete'] = array(
+      'title' => 'Edit Query Term',
+      'access callback' => '_mica_datasets_query_term_access',
+      'access arguments' => array(2,4,6,'update'),
+      'page callback' => 'mica_datasets_dataset_query_term_delete_page',
       'page arguments' => array(2,4,6),
       'weight' => 9,
       'type' => MENU_LOCAL_TASK,
@@ -194,6 +231,11 @@ function mica_datasets_menu() {
       'file' => 'mica_datasets.pages.query.inc',
   );
   return $items;
+}
+
+function _mica_datasets_query_title($dataset_node, $query_id) {
+  $query = mica_dataset_query_load($query_id);
+  return $query->name;
 }
 
 function _mica_datasets_node_access($node, $bundle = NULL, $op = 'update') {
