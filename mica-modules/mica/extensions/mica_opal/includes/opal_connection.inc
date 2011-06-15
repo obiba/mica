@@ -148,13 +148,21 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
   }
   
   private function count($facet) {
-    if(isset($facet['terms'])) {
+    switch($facet['_type']) {
+      case 'terms':
       $sum =0;
       foreach($facet['terms'] as $term) {
         $sum += $term['count'];
       }
       return $sum;
+      case 'histogram':
+      $sum =0;
+      foreach($facet['entries'] as $term) {
+        $sum += $term['count'];
+      }
+      return $sum;
     }
+    return -1; 
   }
   
   private function asFacet(QueryTermInterface $term) {
@@ -169,7 +177,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
         return $facet;
         break;
       default: 
-        return '"' . $term->getName() . '":{ "terms":{"field":"' . $term->getName() . '"}}';
+        return '"' . $term->getName() . '":{ "histogram":{"field":"' . $term->getName() . '", "interval":100}}';
     }
   }
 
