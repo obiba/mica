@@ -180,10 +180,9 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
     if (array_key_exists('list', $form_state['values'])) {
       foreach($form_state['values']['list'] as $datum) {
         $qt = mica_dataset_query_term_load($datum['id']);
-        $qti = $qt->termImpl();
         $data[] = array(
           'id' => $datum['id'],
-          'title' => $qti->toString(), //$datum['id'] == 0 ? $datum['expression'] : $qt->options['value'],
+          'title' => $qt ? $qt->toString() : node_load($datum['vid'])->title,
           'vid' => $datum['vid'],
           'weight' => $datum['weight'],
           'depth' => 0,
@@ -204,10 +203,9 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
   elseif ($query) {
     // add saved query terms ordered by weight
     foreach (mica_dataset_query_term_query($query->id) as $query_term) {
-      $impl = $query_term->termImpl();
       $data[] = array(
         'id' => $query_term->id,
-        'title' => $impl->toString(),
+        'title' => $query_term->toString(),
         'vid' => $query_term->variable_id,
         'weight' => $query_term->weight,
         'depth' => $query_term->depth,

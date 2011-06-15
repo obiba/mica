@@ -42,9 +42,7 @@ function mica_datasets_menu() {
       'access arguments' => array(1,'dataset','update'),
       'page callback' => 'mica_datasets_dataset_studies_edit_page',
       'page arguments' => array(1),
-      'weight' => 5,
-      'type' => MENU_LOCAL_TASK,
-      'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+      'type' => MENU_LOCAL_ACTION,
       'file' => 'mica_datasets.pages.inc',
   );
 
@@ -54,9 +52,7 @@ function mica_datasets_menu() {
       'access arguments' => array(1,'dataset','update'),
       'page callback' => 'mica_datasets_dataset_variables_edit_page',
       'page arguments' => array(1),
-      'weight' => 6,
-      'type' => MENU_LOCAL_TASK,
-      'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+      'type' => MENU_LOCAL_ACTION,
       'file' => 'mica_datasets.pages.inc',
   );
 
