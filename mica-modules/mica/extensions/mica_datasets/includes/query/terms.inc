@@ -71,8 +71,12 @@ abstract class AbstractTerm implements QueryTermInterface {
 
   static function typeFor($variable) {
     debug($variable->field_categories);
-    if($variable->field_categories['und'][0]['value'] != '') {
+    $is_categorical=$variable->field_categories['und'][0]['value'];
+    $type=$variable->field_value_type['und'][0]['value'];
+    if($is_categorical) {
       return 'CategoryTerm';
+    } else if ($type!= 'date') {
+      return 'RangeTerm';
     }
     return 'TodoTerm';
   }
@@ -124,7 +128,7 @@ class CategoryTerm extends AbstractTerm {
   function categories() {
     return isset($this->options['categories']) ? $this->options['categories'] : array();
   }
-  
+
   function setCategories($categories = array()) {
     $this->options['categories'] = $categories;
   }
@@ -134,6 +138,14 @@ class CategoryTerm extends AbstractTerm {
   }
 
   function form($form, &$form_state) {
+
+    $form['inverted']=array(
+      '#title' => t('Operator'), 
+      '#type' => 'select',
+      '#options' => array('in' => 'in', 'notin' => 'not in'),
+      '#default_value' => $this->isInverted() ? 'notin' : 'in',
+    );
+
     $options = array();
     $variable = $this->getVariable();
     foreach($variable->field_categories['und'] as $category) {
@@ -152,6 +164,9 @@ class CategoryTerm extends AbstractTerm {
 
   function submit($form, &$form_state) {
     $selection = $form_state['values']['categories'];
+    $inverted = $form_state['values']['inverted'];
+
+    //$this->not=$inverted;
     $this->setCategories($this->formToCategories($selection));
   }
 
@@ -199,20 +214,73 @@ class CategoryTerm extends AbstractTerm {
 
 }
 
+class RangeTerm extends AbstractTerm {
+
+  function __construct(MicaDatasetQueryTerm $qt) {
+    parent::__construct('RangeTerm', $qt);
+  }
+
+  function form($form, &$form_state) {
+    $variable=$this->getVariable();
+    
+    $is_categorical=$variable->field_categories['und'][0]['value'] !== '';
+    $is_repeatable=$variable->field_repeatable['und'][0]['value'] === '1';
+    $type=$variable->field_value_type['und'][0]['value'];
+
+    $form['operator']=array(
+    '#title' => t('Operator'), 
+    '#type' => 'select',
+    '#required' => TRUE,
+    '#options' => array('inf' => '<', 'sup' => '>', 'eq' => '=', 'dif' => '!=', 'range' => 'Range'),
+    '#ajax' => array(
+      		'callback' => 'replace_value_container',
+            'wrapper' => 'valuecontainer',
+            'method' => 'replace')
+    );
+
+    //append_range($form, NULL);
+
+    $form['valuecontainer'] = array(
+     '#type' => 'item',
+     '#prefix' => '<div id="'."valuecontainer".'">',
+     '#suffix' => '</div>',
+    );
+
+    $form['add_range'] = array(
+      '#type' => 'button',
+      '#value' => 'add range',
+      '#ajax' => array(
+      		'callback' => 'append_range',
+            'wrapper' => 'valuecontainer',
+            'method' => 'append')
+    );
+    return $form;
+  }
+
+  function submit($form, &$form_state) {
+
+  }
+
+  function toString() {
+    $str = parent::toString();
+    return $str . ' ToDo';
+  }
+}
+
 class TodoTerm extends AbstractTerm {
 
   function __construct(MicaDatasetQueryTerm $qt) {
     parent::__construct('TodoTerm', $qt);
   }
-  
+
   function form($form, &$form_state) {
     return $form;
   }
-  
+
   function submit($form, &$form_state) {
-    
+
   }
-  
+
   function toString() {
     $str = parent::toString();
     return $str . ' ToDo';

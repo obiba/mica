@@ -524,20 +524,6 @@ function mica_datasets_dataset_query_term_edit_form($form, &$form_state) {
   return $form;
 }
 
-/**
- * Form for "continue" value of variable
- */
-function append_open_form(&$form) {
-  $form['min'] = array(
-      '#type' => 'textfield',
-      '#title' => 'Min',
-  );
-  $form['max'] = array(
-      '#type' => 'textfield',
-      '#title' => 'Max',
-  );
-}
-
 function mica_datasets_dataset_query_term_edit_form_validate($form, &$form_state) {
 }
 
@@ -554,14 +540,6 @@ function mica_datasets_dataset_query_term_edit_form_submit($form, &$form_state) 
   $term_entity->save();
 
   $form_state['redirect'] = 'mica/dataset/' . $dataset_node->nid . '/query/' . $query_entity->id . '/edit';
-}
-
-function get_operators($type,  $is_categorical) {
-  if($is_categorical) {
-    return array('is' => 'in', 'dif' => 'not in');
-  } else {
-    return array('inf' => '<', 'sup' => '>', 'eq' => '=', 'dif' => '!=');
-  }
 }
 
 function variables_autocomplete($dataset_nid, $string) {
@@ -625,4 +603,54 @@ function mica_datasets_dataset_query_term_delete_form_submit($form, &$form_state
   $term->delete();
 
   $form_state['redirect'] = 'mica/dataset/' . $dataset_node->nid . '/query/' . $query->id;
+}
+
+/**
+ * Function callback ajax of RangeTerm
+ *
+ * @param $form
+ * @param $form_state
+ */
+function replace_value_container(&$form, $form_state) {
+  if ($form_state['values']['operator'] !== 'range') {
+    $form['valuecontainer']=array(
+     '#type' => 'item',
+     '#prefix' => '<div id="'."valuecontainer".'">',
+     '#suffix' => '</div>',
+    );
+    $form['valuecontainer']['value'] = array(
+      '#type' => 'textfield',
+      '#title' => 'Value',
+    );
+    return $form['valuecontainer'];
+  } else {
+    return append_range($form, $form_state);
+  }
+}
+
+/**
+ * Function callback ajax of RangeTerm
+ *
+ * @param $form
+ * @param $form_state
+ */
+function append_range(&$form, $form_state) {
+  $form['valuecontainer']=array(
+     '#type' => 'item',
+     '#prefix' => '<div id="'."valuecontainer".'">',
+     '#suffix' => '</div>',
+  );
+  $form['valuecontainer']['fieldset'] = array(
+      '#type' => 'fieldset',
+      '#title' => 'Range',
+  );
+  $form['valuecontainer']['fieldset']['min'] = array(
+      '#type' => 'textfield',
+      '#title' => 'Min',
+  );
+  $form['valuecontainer']['fieldset']['max'] = array(
+      '#type' => 'textfield',
+      '#title' => 'Max',
+  );
+  return $form['valuecontainer'];
 }
