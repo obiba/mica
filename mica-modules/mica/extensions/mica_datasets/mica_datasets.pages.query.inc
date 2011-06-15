@@ -505,26 +505,68 @@ function mica_datasets_dataset_query_term_form($form, &$form_state) {
   $term_entity = $form_state['build_info']['args'][2];
   $variable = node_load($term_entity->variable_id);
 
-  // TODO: why is the first category '' when the variable doesn't have any categories?
-  if($variable->field_categories['und'][0]['value'] != '') {
-    $options = array();
-    foreach($variable->field_categories['und'] as $category) {
-      // TODO: wtf! if the category's label is 0, it does not appear. So we add a &nbsp; so that it is no longer 0.
-      $options['c_'.$category["value"]] = $category["value"] . "&nbsp;";
-    }
-    $form['categories'] = array(
-      '#type' => 'checkboxes',
-      '#title' => 'Categories',
-      '#options' => $options,
-      '#default_value' => isset($term_entity->options['state']['categories']) ? $term_entity->options['state']['categories'] : array(),
-    );
+  $form=array();
+
+  $is_categorical=$variable->field_categories['und'][0]['value'] !== '';
+  if($is_categorical) {
+    append_categorical_form($form,$variable);
+  } else {
+    append_open_form($form);
   }
+
+
   $form['actions']['save'] = array(
     '#type' => 'submit',
     '#value' => t('Save'),
   );
   return $form;
 }
+
+/**
+ * Form for categorical variable
+ */
+function append_categorical_form(&$form, &$variable) {
+
+  // TODO: why is the first category '' when the variable doesn't have any categories?
+  $is_categorical=$variable->field_categories['und'][0]['value'] !== '';
+  $is_repeatable=$variable->field_repeatable['und'][0]['value'] === '1';
+  $type=$variable->field_value_type['und'][0]['value'];
+
+  $form['operator']=array(
+    '#title' => t('Operator'), 
+    '#type' => 'select',
+    '#required' => TRUE,
+    '#options' => get_operators($type, $is_categorical),    
+  );
+
+  $options = array();
+  foreach($variable->field_categories['und'] as $category) {
+    // TODO: wtf! if the category's label is 0, it does not appear. So we add a &nbsp; so that it is no longer 0.
+    $options['c_'.$category["value"]] = $category["value"] . "&nbsp;";
+  }
+
+  $form['categories'] = array(
+      '#type' => 'checkboxes',
+      '#title' => 'Categories',
+      '#options' => $options,
+      '#default_value' => isset($term_entity->options['state']['categories']) ? $term_entity->options['state']['categories'] : array(),
+  );
+}
+/**
+ * Form for "continue" value of variable
+ */
+function append_open_form(&$form) {
+  $form['min'] = array(
+      '#type' => 'textfield',
+      '#title' => 'Min',
+  );
+   $form['max'] = array(
+      '#type' => 'textfield',
+      '#title' => 'Max',
+  );
+}
+
+
 
 function mica_datasets_dataset_query_term_form_validate($form, &$form_state) {
 }
@@ -545,3 +587,21 @@ function mica_datasets_dataset_query_term_form_submit($form, &$form_state) {
   $form_state['redirect'] = 'mica/dataset/' . $dataset_node->nid . '/query/' . $query_entity->id . '/edit';
 }
 
+function get_operators($type,  $is_categorical) {
+  if($is_categorical) {
+    return array('is' => 'in', 'dif' => 'not in');
+  } else {
+    return array('inf' => '<', 'sup' => '>', 'eq' => '=', 'dif' => '!=');
+  }
+}
+
+function variables_autocomplete($dataset_nid, $string) {
+  $variables = array();
+  foreach(mica_dataset_dataset_participant_variables($dataset_id) as $variable) {
+    if (strpos(strtolower($variable->title), $string) === 0 || $string === "*") {
+      $variables[$variable->title]=$variable->title;
+    }
+  }
+  print drupal_json_encode($variables);
+  exit;
+}

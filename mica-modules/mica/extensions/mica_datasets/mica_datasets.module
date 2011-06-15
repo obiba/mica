@@ -127,6 +127,14 @@ function mica_datasets_menu() {
       'file' => 'mica_datasets.pages.query.inc',
   );
   
+  $items['variables/autocomplete/%'] = array(
+      'access callback' => '_mica_datasets_query_term_access',
+      'access arguments' => array(0),
+      'page callback' => 'variables_autocomplete',
+      'page arguments' => array(2),
+      'type' => MENU_CALLBACK,
+      'file' => 'mica_datasets.pages.query.inc',
+  );
   
   // dataset connector entity edit
   $items['mica/dataset/connector/%/%node/%node/edit'] = array(
