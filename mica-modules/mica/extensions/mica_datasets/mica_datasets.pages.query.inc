@@ -151,7 +151,7 @@ function mica_datasets_dataset_query_form($form, &$form_state) {
         $qt = mica_dataset_query_term_load($datum['id']);
         $data[] = array(
           'id' => $datum['id'],
-          'title' => $datum['id'] == 0 ? $datum['expression'] : $qt->options['value'],
+          'title' => $qt->toExpString(), //$datum['id'] == 0 ? $datum['expression'] : $qt->options['value'],
           'vid' => $datum['vid'],
           'weight' => $datum['weight'],
           'depth' => 0,
@@ -174,7 +174,7 @@ function mica_datasets_dataset_query_form($form, &$form_state) {
     foreach (mica_dataset_query_term_query($query_id) as $query_term) {
       $data[] = array(
         'id' => $query_term->id,
-        'title' => $query_term->options['value'],
+        'title' => $query_term->toExpString(),
         'vid' => $query_term->variable_id,
         'weight' => $query_term->weight,
         'depth' => $query_term->depth,
