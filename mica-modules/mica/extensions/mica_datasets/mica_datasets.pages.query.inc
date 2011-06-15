@@ -82,8 +82,9 @@ function mica_datasets_dataset_query_page($dataset_node, $query_id) {
   // add saved query terms ordered by weight
   $rows = array();
   foreach (mica_dataset_query_term_query($query_id) as $query_term) {
+    $termImpl = $query_term->termImpl();
     $rows[] = array(
-      'title' => $query_term->toExpString(),
+      'title' => $termImpl->toString(),
       'operations' => array(
         'data' => array(
             'data' => array(
@@ -185,9 +186,10 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
     if (array_key_exists('list', $form_state['values'])) {
       foreach($form_state['values']['list'] as $datum) {
         $qt = mica_dataset_query_term_load($datum['id']);
+        $qti = $qt->termImpl();
         $data[] = array(
           'id' => $datum['id'],
-          'title' => $qt->toExpString(), //$datum['id'] == 0 ? $datum['expression'] : $qt->options['value'],
+          'title' => $qti->toString(), //$datum['id'] == 0 ? $datum['expression'] : $qt->options['value'],
           'vid' => $datum['vid'],
           'weight' => $datum['weight'],
           'depth' => 0,
@@ -208,9 +210,10 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
   elseif ($query) {
     // add saved query terms ordered by weight
     foreach (mica_dataset_query_term_query($query_id) as $query_term) {
+      $impl = $query_term->termImpl();
       $data[] = array(
         'id' => $query_term->id,
-        'title' => $query_term->toExpString(),
+        'title' => $impl->toString(),
         'vid' => $query_term->variable_id,
         'weight' => $query_term->weight,
         'depth' => $query_term->depth,
@@ -387,8 +390,7 @@ function _mica_datasets_query_terms_save($query_id, $data) {
       $values['weight'] = $datum['weight'];
       $values['module'] = 'mica_datasets';
       $values['options'] = array(
-        'type' => 'expression',
-        'value' => $datum['expression'],
+        'type' => AbstractTerm::typeFor(node_load($values['variable_id']))
       );
 
       mica_dataset_query_term_insert($values);
@@ -532,13 +534,9 @@ function mica_datasets_dataset_query_term_form($form, &$form_state) {
 
   $form=array();
 
-  $is_categorical=$variable->field_categories['und'][0]['value'] !== '';
-  if($is_categorical) {
-    append_categorical_form($form,$variable);
-  } else {
-    append_open_form($form);
-  }
-
+  $impl = $term_entity->termImpl();
+  $termForm = $impl->form($form, $form_state);
+  $form[] = $termForm;
 
   $form['actions']['save'] = array(
     '#type' => 'submit',
@@ -547,36 +545,6 @@ function mica_datasets_dataset_query_term_form($form, &$form_state) {
   return $form;
 }
 
-/**
- * Form for categorical variable
- */
-function append_categorical_form(&$form, &$variable) {
-
-  // TODO: why is the first category '' when the variable doesn't have any categories?
-  $is_categorical=$variable->field_categories['und'][0]['value'] !== '';
-  $is_repeatable=$variable->field_repeatable['und'][0]['value'] === '1';
-  $type=$variable->field_value_type['und'][0]['value'];
-
-  $form['operator']=array(
-    '#title' => t('Operator'), 
-    '#type' => 'select',
-    '#required' => TRUE,
-    '#options' => get_operators($type, $is_categorical),    
-  );
-
-  $options = array();
-  foreach($variable->field_categories['und'] as $category) {
-    // TODO: wtf! if the category's label is 0, it does not appear. So we add a &nbsp; so that it is no longer 0.
-    $options['c_'.$category["value"]] = $category["value"] . "&nbsp;";
-  }
-
-  $form['categories'] = array(
-      '#type' => 'checkboxes',
-      '#title' => 'Categories',
-      '#options' => $options,
-      '#default_value' => isset($term_entity->options['state']['categories']) ? $term_entity->options['state']['categories'] : array(),
-  );
-}
 /**
  * Form for "continue" value of variable
  */
@@ -604,9 +572,8 @@ function mica_datasets_dataset_query_term_form_submit($form, &$form_state) {
   $term_entity = $form_state['build_info']['args'][2];
   $variable = node_load($term_entity->variable_id);
 
-  $term_entity->options['value'] = $variable->title;
-  $term_entity->options['state'] = $form_state['values'];
-
+  $impl = $term_entity->termImpl();
+  $impl->submit($form, $form_state);
   $term_entity->save();
 
   $form_state['redirect'] = 'mica/dataset/' . $dataset_node->nid . '/query/' . $query_entity->id . '/edit';
@@ -619,7 +586,8 @@ function mica_datasets_dataset_query_term_form_submit($form, &$form_state) {
 function mica_datasets_dataset_query_term_delete_page($dataset_node, $query_id, $term_id) {
   $query = mica_dataset_query_load($query_id);
   $term = mica_dataset_query_term_load($term_id);
-  drupal_set_title(t('Are you sure you want to delete query term <em>!term</em>?', array('!term' => $term->toExpString())), PASS_THROUGH);
+  $impl = $term->termImpl();
+  drupal_set_title(t('Are you sure you want to delete query term <em>!term</em>?', array('!term' => $impl->toString())), PASS_THROUGH);
 
   return drupal_get_form('mica_datasets_dataset_query_term_delete_form', $dataset_node, $query, $term);
 }

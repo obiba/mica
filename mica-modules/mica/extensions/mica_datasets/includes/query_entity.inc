@@ -196,23 +196,13 @@ class MicaDatasetQueryTerm extends Entity {
     return NULL;
   }
 
-  /**
-   * Generate a human-readable string to represent this term.
-   */
-  public function toExpString() {
-    $variable = node_load($this->variable_id);
-    $str = $variable->title;
-    if (isset($this->options['state']['categories'])) {
-      
-      $func = function($value) {
-        return substr($value,2);
-      };
-      $in = implode(', ', array_map($func, array_filter($this->options['state']['categories'])));
-      if(strlen($in) > 0) {
-        $str .= " in ( $in )";
-      }
+  public function termImpl() {
+    $type = $this->options['type'];
+    if(isset($type) == false) {
+      $variable = node_load($this->variable_id);
+      $type = AbstractTerm::typeFor($variable);
     }
-    return $str;
+    return new $type($this);
   }
-  
+
 }

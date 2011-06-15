@@ -46,6 +46,7 @@ features[views_view][] = "datasets"
 files[] = includes/connector_entity.inc
 files[] = includes/connection.inc
 files[] = includes/query_entity.inc
+files[] = includes/query/terms.inc
 
 name = "Mica Datasets"
 package = "OBiBa"
