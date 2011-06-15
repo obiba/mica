@@ -16,7 +16,7 @@ class MicaDatasetQuery extends Entity {
    * @var string
    */
   public $name = '';
-  
+
   /**
    * @var string
    */
@@ -31,18 +31,18 @@ class MicaDatasetQuery extends Entity {
    * @var integer
    */
   public $user_id = 0;
-  
+
   /**
    * @var integer
    */
   public $dataset_id = 0;
-  
+
   /**
    * @var integer
    */
   public $published = 0;
-  
-  
+
+
   /**
    * Constructor as a helper to the parent constructor.
    */
@@ -92,7 +92,7 @@ class MicaDatasetQuery extends Entity {
     unset($ret['status'], $ret['module'], $ret['is_new']);
     return array_keys($ret);
   }
-  
+
 }
 
 
@@ -112,27 +112,27 @@ class MicaDatasetQueryTerm extends Entity {
    * @var integer
    */
   public $query_id = 0;
-  
+
   /**
    * @var integer
    */
   public $variable_id = 0;
-  
+
   /**
    * @var array
    */
   public $options = array();
-  
+
   /**
    * @var integer
    */
   public $weight = 0;
-  
+
   /**
    * @var integer
    */
   public $depth = 0;
-  
+
   /**
    * Constructor as a helper to the parent constructor.
    */
@@ -182,10 +182,10 @@ class MicaDatasetQueryTerm extends Entity {
     unset($ret['status'], $ret['module'], $ret['is_new']);
     return array_keys($ret);
   }
-  
+
   /**
    * Get the type of the term, extracted from the options.
-   * 
+   *
    * @return string
    *   The type name or NULL if not defined.
    */
@@ -205,4 +205,7 @@ class MicaDatasetQueryTerm extends Entity {
     return new $type($this);
   }
 
+  public function toString() {
+    return $this->termImpl()->toString();
+  }
 }

@@ -573,7 +573,7 @@ function variables_autocomplete($dataset_nid, $string) {
 //
 
 function mica_datasets_dataset_query_term_page($dataset_node, $query, $term) {
-  return $term->termImpl()->toString();
+  return $term->toString();
 }
 
 //
@@ -581,8 +581,7 @@ function mica_datasets_dataset_query_term_page($dataset_node, $query, $term) {
 //
 
 function mica_datasets_dataset_query_term_delete_page($dataset_node, $query, $term) {
-  $impl = $term->termImpl();
-  drupal_set_title(t('Are you sure you want to delete query term <em>!term</em>?', array('!term' => $impl->toString())), PASS_THROUGH);
+  drupal_set_title(t('Are you sure you want to delete query term <em>!term</em>?', array('!term' => $term->toString())), PASS_THROUGH);
 
   return drupal_get_form('mica_datasets_dataset_query_term_delete_form', $dataset_node, $query, $term);
 }
