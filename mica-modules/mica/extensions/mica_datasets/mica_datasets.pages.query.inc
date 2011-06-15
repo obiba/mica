@@ -74,6 +74,8 @@ function mica_datasets_dataset_queries_page($dataset_node) {
 function mica_datasets_dataset_query_page($dataset_node, $query) {
   drupal_set_title(t('!title -- !query', array('!title' => $dataset_node->title, '!query' => $query->name)));
 
+  $update_access = _mica_datasets_query_access($dataset_node, $query, 'update');
+
   $items = array();
 
   $items[] = $query->description;
@@ -81,28 +83,34 @@ function mica_datasets_dataset_query_page($dataset_node, $query) {
   // add saved query terms ordered by weight
   $rows = array();
   foreach (mica_dataset_query_term_query($query->id) as $query_term) {
-    $termImpl = $query_term->termImpl();
-    $rows[] = array(
-      'title' => $termImpl->toString(),
-      'operations' => array(
+    $row = array('title' => $query_term->toString());
+
+    if ($update_access) {
+      $row['operations'] = array(
         'data' => array(
             'data' => array(
-    array(
+      array(
               '#type' => 'link',
               '#title' => t('Edit'),
               '#href' => 'mica/dataset/' . $dataset_node->nid . '/query/' . $query->id . '/term/' . $query_term->id . '/edit',
-    ),
-    array(
+      ),
+      array(
               '#type' => 'link',
               '#title' => t('Delete'),
               '#href' => 'mica/dataset/' . $dataset_node->nid . '/query/' . $query->id . '/term/' . $query_term->id . '/delete',
               '#attributes' => array('style' => array('margin-left: 10px;')),
-    ),
-    ))),
-    );
+      ),
+      )));
+    }
+     
+    $rows[] = $row;
   }
 
-  $header = array(t('Query Term'), t('Operations'));
+  $header = array(t('Query Term'));
+  
+  if ($update_access) {
+    $header[] = t('Operations');; 
+  }
 
   $items[] = theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No query term found')));
 

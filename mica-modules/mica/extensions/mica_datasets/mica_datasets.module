@@ -95,7 +95,7 @@ function mica_datasets_menu() {
       'title callback' => '_mica_datasets_query_title',
       'title arguments' => array(2,4),
       'access callback' => '_mica_datasets_query_access',
-      'access arguments' => array(2,4,'update'),
+      'access arguments' => array(2,4,'view'),
       'page callback' => 'mica_datasets_dataset_query_page',
       'page arguments' => array(2,4),
       'file' => 'mica_datasets.pages.query.inc',
@@ -142,8 +142,8 @@ function mica_datasets_menu() {
       'title callback' => '_mica_datasets_query_term_title',
       'title arguments' => array(2,4,6),
       'access callback' => TRUE,
-  //      'access callback' => '_mica_datasets_query_access',
-  //      'access arguments' => array(2,4,'update'),
+      'access callback' => '_mica_datasets_query_access',
+      'access arguments' => array(2,4,'update'),
       'page callback' => 'mica_datasets_dataset_query_term_page',
       'page arguments' => array(2,4,6),
       'file' => 'mica_datasets.pages.query.inc',
@@ -251,21 +251,33 @@ function _mica_datasets_node_access($node, $bundle = NULL, $op = 'update') {
   }
 }
 
-function _mica_datasets_node_queries_access($node, $op = 'update') {
-  if (_mica_datasets_node_access($node, 'dataset', $op)) {
-    if (mica_dataset_dataset_participant_variables($node->nid) !== FALSE) {
+function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
+  if (_mica_datasets_node_access($dataset_node, 'dataset', $op)) {
+    if (mica_dataset_dataset_participant_variables($dataset_node->nid) !== FALSE) {
       return TRUE;
     }
   }
   return FALSE;
 }
 
-function _mica_datasets_query_access($node, $query_id, $op) {
-  if (isset($query_id) && is_int($query_id)) {
-    // todo check query author and user permissions
-    return TRUE;
+function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
+  global $user;
+  if (!is_object($query)) {
+    $query = mica_dataset_query_load($query);
   }
-  return TRUE;
+  
+  if (_mica_datasets_node_access($dataset_node, 'dataset', $op)) {
+    
+    if ($query->user_id == $user->uid) {
+      return TRUE;
+    }
+    
+    // todo check query author and user permissions
+    if ($op == 'view') {
+      return $query->published;
+    }
+  }
+  return FALSE;
 }
 
 function _mica_datasets_query_term_access($node, $query, $query_term, $op  = 'update') {
