@@ -15,13 +15,7 @@
 function mica_datasets_dataset_queries_page($dataset_node) {
   drupal_set_title(t('!title -- Queries', array('!title' => $dataset_node->title)));
 
-  return  drupal_get_form('mica_datasets_dataset_queries_form', $dataset_node);
-
-}
-
-function mica_datasets_dataset_queries_form($form, &$form_state) {
   global $user;
-  $dataset_node = $form_state['build_info']['args'][0];
 
   $header = array (
     'name' => t('Name'),
@@ -76,28 +70,7 @@ function mica_datasets_dataset_queries_form($form, &$form_state) {
     }
   }
 
-  $form['table'] = array (
-    '#type' => 'tableselect',
-    '#header' => $header,
-    '#options' => $options,
-    '#empty' => t('No query found'),
-  );
-
-  // batch delete only available to to users with update permission on the dataset
-  if (node_access('update', $dataset_node)) {
-    $form['actions']= array(
-      '#type' => 'container',
-      '#attributes' => array('class' => array('form-actions')),
-    );
-    if (!empty($options)) {
-      $form['actions']['delete'] = array(
-        '#type' => 'submit',
-        '#value' => t('Delete selected items'),
-      );
-    }
-  }
-
-  return $form;
+  return theme('table', array('header' => $header, 'rows' => $options, 'empty' => t('No query found')));
 }
 
 //
