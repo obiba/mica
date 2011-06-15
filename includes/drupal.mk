@@ -92,6 +92,11 @@ drupal-dis:
 	cd target/$(micadir) && \
 	$(drushexec) pm-disable --yes $(module)	
 
+drupal-cache-clear:
+	cd target/$(micadir) && \
+	$(drushexec) cache-clear	
+
+
 drupal-forks:	
 	cp -r forks/* target/$(micadir)/sites/all/modules
 
