@@ -6,11 +6,11 @@
  */
 
 //
-// Queries form
+// Queries
 //
 
 /**
- * Display form for submitting queries.
+ * Display queries.
  */
 function mica_datasets_dataset_queries_page($dataset_node) {
   drupal_set_title(t('!title -- Queries', array('!title' => $dataset_node->title)));
@@ -43,7 +43,8 @@ function mica_datasets_dataset_queries_page($dataset_node) {
         );
 
         // author of the query or user with update dataset permission can edit/delete a query
-        if ($user->uid == $query->user_id || node_access('update', $dataset_node)) {
+        $update_access = _mica_datasets_query_access($dataset_node, $query, 'update');
+        if ($update_access) {
           $option['actions']['data'][] = array(
               '#type' => 'link',
               '#title' => t('Edit'),
@@ -107,9 +108,9 @@ function mica_datasets_dataset_query_page($dataset_node, $query) {
   }
 
   $header = array(t('Query Term'));
-  
+
   if ($update_access) {
-    $header[] = t('Operations');; 
+    $header[] = t('Operations');;
   }
 
   $items[] = theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No query term found')));

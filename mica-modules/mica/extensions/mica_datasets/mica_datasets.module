@@ -272,7 +272,6 @@ function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
       return TRUE;
     }
     
-    // todo check query author and user permissions
     if ($op == 'view') {
       return $query->published;
     }
