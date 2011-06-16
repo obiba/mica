@@ -369,12 +369,6 @@ class RangeTerm extends AbstractTerm {
                        'value' => $value ));
   }
 
-  private function rangesToForm() {
-    return array(array('from' => $min,
-                       'to' => $max,
-                       'value' => $value ));
-  }
-
   function setRange($ranges = array()) {
     $this->options['ranges'] = $ranges;
   }
@@ -386,7 +380,7 @@ class RangeTerm extends AbstractTerm {
     if (isset($ranges['0'])) {
       $first_range=$ranges['0'];
       if ($first_range['value'] === '') {
-        $str_range.='with range: ['.$first_range['from'].', '.$first_range['to'] .'[';
+        $str_range.='in range: ['.$first_range['from'].', '.$first_range['to'] .'[';
       } else {
         $str_range.='= '.$first_range['value'];
       }
