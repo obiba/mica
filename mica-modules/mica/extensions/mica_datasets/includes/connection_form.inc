@@ -244,6 +244,9 @@ function _mica_datasets_new_connector($connection_type) {
  */
 function _mica_datasets_connection_options_submit(&$form, &$form_state, $connection_type) {
   $options = _mica_datasets_connection_config_values($form, $form_state);
+  if ($connection_type == 'none') {
+    return $options;
+  }
   return _mica_datasets_new_connector($connection_type)->configurationFormSubmit($form, $options, $form_state);
 }
 
