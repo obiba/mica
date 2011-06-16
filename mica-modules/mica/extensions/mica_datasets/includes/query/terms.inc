@@ -281,36 +281,39 @@ class RangeTerm extends AbstractTerm {
     );
 
     //TODO incomplete
-    $default_exact=0;
+    $default_exact='exact';
     $default_value=NULL;
     $default_range_min=NULL;
     $default_range_max=NULL;
     $ranges=$this->ranges();
+    
     if (isset($ranges) && isset($ranges[0])) {
       $value=$ranges[0]['value'];
       if ($value!=='') {
-        $default_exact = 1;
+        $default_exact = 'exact';
         $default_value=$value;
       } else {
-        $default_exact = 0;
+        $default_exact = 'range';
         $default_range_min=$ranges[0]['from'];
         $default_range_max=$ranges[0]['to'];
       }
     }
 
-    $form['valuecontainer']['fieldset']['exact'] = array(
-      '#type' => 'checkbox',
+    $form['valuecontainer']['fieldset']['exact-radio'] = array(
+      '#type' => 'radios',
       '#title' => 'Exact Value',
       '#default_value' => $default_exact,
+      '#options' => array(
+        'exact' => t('Exact Value'),
+        'range' => t('Range')),
     );
 
     $form['valuecontainer']['fieldset']['value'] = array(
       '#type' => 'textfield',
       '#title' => 'Value',
       '#default_value' => $default_value,
-      '#required' => $default_exact===1,
       '#dependency' => array(
-        'edit-exact' => array(1),
+        'radio:exact-radio' => array('exact'),
     ),
     );
      
@@ -318,18 +321,16 @@ class RangeTerm extends AbstractTerm {
       '#type' => 'textfield',
       '#title' => 'Min',
       '#default_value' => $default_range_min,
-      '#required' => $default_exact===0,
       '#dependency' => array(
-        'edit-exact' => array(0),
+         'radio:exact-radio' => array('range'),
     ),
     );
     $form['valuecontainer']['fieldset']['max'] = array(
       '#type' => 'textfield',
       '#title' => 'Max',
       '#default_value' => $default_range_max,
-      '#required' => $default_exact===0,
       '#dependency' => array(
-        'edit-exact' => array(0),
+         'radio:exact-radio' => array('range'),
     ),
     );
 
@@ -351,7 +352,7 @@ class RangeTerm extends AbstractTerm {
   function submit($form, &$form_state) {
     $inverted=$form_state['values']['inverted'];
     $selection=NULL;
-    if($form_state['values']['exact'] === 0) {
+    if($form_state['values']['exact-radio'] === 'range') {
       $min=$form_state['values']['min'];
       $max=$form_state['values']['max'];
       $selection=$this->formToRanges('', $min, $max);
