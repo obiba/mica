@@ -11,8 +11,9 @@ function mica_standard_install() {
 
   // Enable some standard blocks.
   $mica_theme = 'mica_samara';
+  $admin_theme = 'seven';
   $values = array(
-    array(
+  array(
       'module' => 'search',
       'delta' => 'form',
       'theme' => $mica_theme,
@@ -22,8 +23,8 @@ function mica_standard_install() {
       'visibility' => 0,
       'pages' => '',
       'cache' => -1,
-    ),
-    array(
+  ),
+  array(
       'module' => 'user',
       'delta' => 'login',
       'theme' => $mica_theme,
@@ -33,8 +34,8 @@ function mica_standard_install() {
       'visibility' => 0,
       'pages' => '',
       'cache' => -1,
-    ),
-    array(
+  ),
+  array(
       'module' => 'system',
       'delta' => 'main',
       'theme' => $mica_theme,
@@ -44,8 +45,8 @@ function mica_standard_install() {
       'visibility' => 0,
       'pages' => '',
       'cache' => -1,
-    ),
-    array(
+  ),
+  array(
       'module' => 'node',
       'delta' => 'recent',
       'theme' => $mica_theme,
@@ -55,8 +56,8 @@ function mica_standard_install() {
       'visibility' => 1,
       'pages' => '<front>',
       'cache' => -1,
-    ),
-    array(
+  ),
+  array(
       'module' => 'system',
       'delta' => 'navigation',
       'theme' => $mica_theme,
@@ -66,8 +67,8 @@ function mica_standard_install() {
       'visibility' => 1,
       'pages' => '<front>',
       'cache' => -1,
-    ),
-    array(
+  ),
+  array(
       'module' => 'views',
       'delta' => 'events_calendar-block_1',
       'theme' => $mica_theme,
@@ -77,13 +78,72 @@ function mica_standard_install() {
       'visibility' => 1,
       'pages' => '<front>',
       'cache' => -1,
-    ),
+  ),
+  array(
+      'module' => 'blog',
+      'delta' => 'recent',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => BLOCK_REGION_NONE,
+      'visibility' => 0,
+      'pages' => '',
+      'cache' => -1,
+  ),
+  array(
+      'module' => 'comment',
+      'delta' => 'recent',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => BLOCK_REGION_NONE,
+      'visibility' => 0,
+      'pages' => '',
+      'cache' => -1,
+  ),
+  array(
+      'module' => 'user',
+      'delta' => 'online',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => BLOCK_REGION_NONE,
+      'visibility' => 0,
+      'pages' => '',
+      'cache' => -1,
+  ),
+  array(
+      'module' => 'forum',
+      'delta' => 'active',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => BLOCK_REGION_NONE,
+      'visibility' => 0,
+      'pages' => '',
+      'cache' => -1,
+  ),
+  array(
+      'module' => 'forum',
+      'delta' => 'new',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => BLOCK_REGION_NONE,
+      'visibility' => 0,
+      'pages' => '',
+      'cache' => -1,
+  ),
   );
   $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'visibility', 'pages', 'cache'));
   foreach ($values as $record) {
     $query->values($record);
   }
   $query->execute();
+
+  _mica_standard_admin_theme_no_region('user', 'new');
+  _mica_standard_admin_theme_no_region('search', 'form');
+  _mica_standard_admin_theme_no_region('node', 'recent');
   
   // Set mica theme as default
   theme_enable(array($mica_theme, 'bartik', 'seven'));
@@ -99,21 +159,21 @@ function mica_standard_install() {
   		'0' => array(
       	'value' => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>In sit quod duis, novum doming ut his. Nominavi noluisse sit in, dolor scribentur ex vis, ut per diam gloriatur. Nam et nobis scriptorem suscipiantur. Et ius partem legere vivendum, ad facilis copiosae lucilius duo. Elitr scribentur interpretaris cu eos, fugit graece ius in. Justo definiebas ius cu, cibo cetero recusabo ex vix. Vel an putant complectitur, te vim debet voluptatibus.</p>',
         'format' => 'full_html'
-    	)
-    )
-  );
-  $about->menu['enabled'] = 1;
-  $about->menu['menu_name'] = 'main-menu';
-  $about->menu['weight'] = 50;
-  $about->menu['link_title'] = 'About';
-  $about->menu['description'] = '';
-  $about->promote = 0;
-  $about->sticky = 1;
-  $about->language = 'und';
-  node_save($about);
+        )
+        )
+        );
+        $about->menu['enabled'] = 1;
+        $about->menu['menu_name'] = 'main-menu';
+        $about->menu['weight'] = 50;
+        $about->menu['link_title'] = 'About';
+        $about->menu['description'] = '';
+        $about->promote = 0;
+        $about->sticky = 1;
+        $about->language = 'und';
+        node_save($about);
 
-  // Login destination setup
-  $rule = array(
+        // Login destination setup
+        $rule = array(
     'triggers' => serialize(array('login'=>'login','logout'=>'logout')),
     'roles' => serialize(array()),
     'pages_type' => LOGIN_DESTINATION_REDIRECT_LISTED,
@@ -122,9 +182,22 @@ function mica_standard_install() {
     'destination' => '<front>',
     'id' => NULL,
     'weight' => 0,
-  );
-  drupal_write_record('login_destination', $rule);
+        );
+        drupal_write_record('login_destination', $rule);
 
-  // rebuild permissions
-  node_access_rebuild();
+        // rebuild permissions
+        node_access_rebuild();
+}
+
+
+function _mica_standard_admin_theme_no_region($module, $delta) {
+  db_update('block')
+  ->fields(array(
+    'region' => BLOCK_REGION_NONE,
+    'visibility' => 0,
+  ))
+  ->condition('module', $module, '=')
+  ->condition('delta', $delta, '=')
+  ->condition('theme', 'seven', '=')
+  ->execute();
 }
