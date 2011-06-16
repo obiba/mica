@@ -95,7 +95,7 @@ function mica_datasets_menu() {
       'title callback' => '_mica_datasets_query_title',
       'title arguments' => array(2,4),
       'access callback' => '_mica_datasets_query_access',
-      'access arguments' => array(2,4,'view'),
+      'access arguments' => array(4,'view'),
       'page callback' => 'mica_datasets_dataset_query_page',
       'page arguments' => array(2,4),
       'file' => 'mica_datasets.pages.query.inc',
@@ -232,16 +232,39 @@ function mica_datasets_menu() {
   return $items;
 }
 
+/**
+ * Get the title for the query.
+ * 
+ * @param node $dataset_node
+ * @param mica_dataset_query $query
+ */
 function _mica_datasets_query_title($dataset_node, $query) {
   return $query->name;
 }
 
+/**
+ * Get the title for the query term.
+ * 
+ * @param node $dataset_node
+ * @param mica_dataset_query $query
+ * @param mica_dataset_query_term $term
+ */
 function _mica_datasets_query_term_title($dataset_node, $query, $term) {
   $variable_node = node_load($term->variable_id);
   return $variable_node->title;
 }
 
+/**
+ * Check node type (if provided) and node access.
+ *
+ * @param node $node
+ * @param string $bundle
+ * @param string $op
+ */
 function _mica_datasets_node_access($node, $bundle = NULL, $op = 'update') {
+  if (!is_object($node)) {
+    $node = node_load($node);
+  }
   // Make sure the user can view the original node content.
   if ($bundle != NULL) {
     return $node->type == $bundle && node_access($op, $node);
@@ -251,6 +274,13 @@ function _mica_datasets_node_access($node, $bundle = NULL, $op = 'update') {
   }
 }
 
+/**
+ * Check whether queries tab is accessible: requires to have access to dataset node and having participant variables
+ * defined for this dataset.
+ *
+ * @param node $dataset_node
+ * @param string $op
+ */
 function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
   if (_mica_datasets_node_access($dataset_node, 'dataset', $op)) {
     if (mica_dataset_dataset_participant_variables($dataset_node->nid) !== FALSE) {
@@ -260,31 +290,62 @@ function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
   return FALSE;
 }
 
+/**
+ * Check for query accessibility: associated dataset is accessible and user is the query author,
+ * or query is published for viewing.
+ *
+ * @param node $dataset_node
+ * @param mica_dataset_query $query
+ * @param string $op
+ */
 function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
   global $user;
   if (!is_object($query)) {
     $query = mica_dataset_query_load($query);
   }
-  
-  if (_mica_datasets_node_access($dataset_node, 'dataset', $op)) {
-    
-    if ($query->user_id == $user->uid) {
-      return TRUE;
-    }
-    
-    if ($op == 'view') {
-      return $query->published;
-    }
+
+  // consistency check
+  if ($dataset_node->nid != $query->dataset_id) {
+    return FALSE;
   }
+
+  if (!_mica_datasets_node_access($dataset_node, 'dataset', $op)) {
+    return FALSE;
+  }
+
+  if ($query->user_id == $user->uid) {
+    return TRUE;
+  }
+
+  if ($op == 'view') {
+    return $query->published;
+  }
+
   return FALSE;
 }
 
-function _mica_datasets_query_term_access($node, $query, $query_term, $op  = 'update') {
-  if (isset($query) && isset($query_term)) {
-    // todo check query author and user permissions
-    return TRUE;
+/**
+ * Check for query term access: associated query must be accessible.
+ *
+ * @param node $dataset_node
+ * @param mica_dataset_query $query
+ * @param mica_dataset_query_term $query_term
+ * @param string $op
+ */
+function _mica_datasets_query_term_access($dataset_node, $query, $query_term, $op  = 'update') {
+  if (!is_object($query_term)) {
+    $query_term = mica_dataset_query_term_load($query_term);
   }
-  return TRUE;
+  if (!is_object($query)) {
+    $query = mica_dataset_query_load($query);
+  }
+
+  // consistency check
+  if ($query->id != $query_term->query_id) {
+    return FALSE;
+  }
+
+  return _mica_datasets_query_access($dataset_node, $query, $op);
 }
 
 /**
@@ -790,6 +851,11 @@ function mica_dataset_query_insert(array $values) {
 // Mica Dataset Query Term
 //
 
+/**
+ * Load the dataset query terms corresponding to the specified query id, ordered by weight.
+ * 
+ * @param $query_id
+ */
 function mica_dataset_query_term_query($query_id) {
   $q = db_select('mica_dataset_query_term', 'c');
   $q->addField('c', 'id');
