@@ -61,8 +61,7 @@ mica-install:
 		cp profiles/standard/standard.install profiles/mica_standard/standard.install && \
 		rm -rf profiles/standard && \
 		rm -rf profiles/minimal ; \
-	fi && \
-	rm -rf profiles/mica_minimal
+	fi
 
 #
 # Deploy
