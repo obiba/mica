@@ -128,7 +128,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
         $facets = <<< END
       "{$term->getName()}" : {
         "terms" : {
-          "field" : "{$term->getName()}",
+          "field" : "{$term->getFieldName()}",
           "size": 1000,
           "all_fields" : true
         }
@@ -139,7 +139,7 @@ END;
         $facets = <<< END
       "{$term->getName()}" : {
         "statistical" : {
-          "field" : "{$term->getName()}"
+          "field" : "{$term->getFieldName()}"
         }
       }
 END;
@@ -233,7 +233,7 @@ END;
     // The default filter
     $filter = <<< END
   "exists" : {
-    "field" : "{$term->getName()}"
+    "field" : "{$term->getFieldName()}"
   }
 END;
     switch ($term->getType()) {
@@ -242,7 +242,7 @@ END;
           $terms = '"'. implode('","', $term->categories()) . '"';
           $filter = <<< END
   "terms" : {
-    "{$term->getName()}":[$terms]
+    "{$term->getFieldName()}":[$terms]
   }
 END;
         }
@@ -253,7 +253,7 @@ END;
           $range = $ranges[0];
           $filter = <<< END
   "numeric_range" : {
-    "{$term->getName()}": {
+    "{$term->getFieldName()}": {
       "from" : {$range['from']},
       "to" : {$range['to']},
       "include_lower" : true, 

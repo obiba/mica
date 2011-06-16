@@ -444,24 +444,20 @@ function mica_datasets_dataset_query_delete_form_submit($form, &$form_state) {
 // Run query
 //
 
-function mica_datasets_dataset_query_run_page($dataset_node, $query) {
-  drupal_set_title(t('!title -- Run !query', array('!title' => $dataset_node->title, '!query' => $query->name)));
+function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
+  drupal_set_title(t('!title -- Run !query', array('!title' => $dataset_node->title, '!query' => $query_node->name)));
 
-  return _doQuery($dataset_node, $query);
-}
-
-function _doQuery($dataset_node, $query_node) {
   $mica_dataset_connectors = mica_dataset_connector_query_multiple($dataset_node->nid);
   $terms = mica_dataset_query_term_query($query_node->id);
 
-  $map = function($term) {
+  $labels = array();
+  foreach($terms as $term) {
     $impl = $term->termImpl();
-    return $impl->toString();
-  };
+    $destination = 'mica/dataset/' . $dataset_node->nid . '/query/' . $query_node->id . '/run';
+    $labels[] = l($impl->toString(), 'mica/dataset/' . $dataset_node->nid . '/query/' . $query_node->id . '/term/' . $term->id . '/edit', array("query" => array("destination"=>$destination)));
+  }
+  $columns = array_merge(array('Study', 'Total') , $labels);
 
-  $names = array_map($map, $terms);
-
-  $columns = array_merge(array('Study', 'Total') , $names);
   $h = "<table><thead><tr>";
   foreach($columns as $var) {
     $h .=  "<th>" . $var . "</th>";
@@ -539,7 +535,7 @@ function mica_datasets_dataset_query_term_edit_form_submit($form, &$form_state) 
   $impl->submit($form, $form_state);
   $term_entity->save();
 
-  $form_state['redirect'] = 'mica/dataset/' . $dataset_node->nid . '/query/' . $query_entity->id . '/edit';
+  $form_state['redirect'] = 'mica/dataset/' . $dataset_node->nid . '/query/' . $query_entity->id;
 }
 
 function variables_autocomplete($dataset_nid, $string) {

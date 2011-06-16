@@ -18,6 +18,11 @@ interface QueryTermInterface {
   function getName();
 
   /**
+   * The name of the field this term works on (i.e.: the variable name)
+   */
+  function getFieldName();
+  
+  /**
    * Returns true when this term's condition should be inverted (not operator)
    */
   function isInverted();
@@ -85,8 +90,11 @@ abstract class AbstractTerm implements QueryTermInterface {
   }
 
   function getName() {
-    $variable = $this->getVariable();
-    return $variable->title;
+    return $this->qt->id;
+  }
+
+  function getFieldName() {
+    return $this->getVariable()->title;
   }
 
   function isInverted() {
@@ -103,8 +111,7 @@ abstract class AbstractTerm implements QueryTermInterface {
   }
 
   function toString() {
-    $variable = $this->getVariable();
-    return $variable->title;
+    return $this->getFieldName();
   }
 
   protected function getVariable() {
@@ -147,7 +154,6 @@ class CategoryTerm extends AbstractTerm {
   }
 
   function form($form, &$form_state) {
-
     $form['inverted']=array(
       '#title' => t('Operator'), 
       '#type' => 'select',
@@ -155,6 +161,7 @@ class CategoryTerm extends AbstractTerm {
       '#default_value' => $this->isInverted() ? 'notin' : 'in',
     );
 
+    // One column for the category name and one per study
     $headers = array('Name');
     $facets = array();
     $connectors = $this->getConnectors();
