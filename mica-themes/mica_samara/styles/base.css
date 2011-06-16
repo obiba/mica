@@ -376,7 +376,6 @@ input.form-file {
 }
 textarea {
   resize: none;
-  height: 200px;
 }
 select {
   padding: 3px;
