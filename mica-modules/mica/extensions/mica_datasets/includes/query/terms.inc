@@ -392,7 +392,7 @@ class RangeTerm extends AbstractTerm {
     $ranges=$this->ranges();
     $first_range=$ranges['0'];
     if ($first_range['value'] === '') {
-      $str_range.='min: '.$first_range['from'] .' max: '.$first_range['to'];
+      $str_range.='with range: ['.$first_range['from'].', '.$first_range['to'] .'[';
     } else {
       $str_range.='= '.$first_range['value'];
     }
