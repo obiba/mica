@@ -99,11 +99,14 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
   public function query($terms) {
 
     $facets = array();
+    $filters = array();
     foreach($terms as $term) {
       $impl = $term->termImpl();
-      $facet = $this->asFacet($impl);
-      array_push($facets, $facet);
+      $facets[] = $this->asFacet($impl);
+      $filters[] = $this->asFilter($impl);
     }
+
+    $facets[] = '"_matched" :{ "filter":{ "and":[ {'. implode('},{', $filters) . '}]}}';
 
     $q = '{"query": {"match_all":{}},"size":0,"facets":{';
     $q .= implode(',', $facets);
@@ -114,14 +117,16 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
     $total = $data['hits']['total'];
 
     $result = array('total'=>$total);
+    $result["_matched"] = $this->count($data['facets']['_matched']);
     foreach($terms as $term) {
       $impl = $term->termImpl();
       $result[$impl->getName()] = $this->count($data['facets'][$impl->getName()]);
     }
+    
 
     return $result;
   }
-  
+
   public function facetTerm(QueryTermInterface $term) {
     switch($term->getType()) {
       case 'CategoryTerm' :
@@ -167,7 +172,7 @@ END;
   }
   
   private function sendQuery($query) {
-//    debug($query);
+    debug($query);
     
     $url = $this->getTableResourceURI("index/_search");
 
@@ -222,7 +227,7 @@ END;
 "{$term->getName()}" : {
   "filter" : {
     {$this->asFilter($term)}
-  }
+  }, "golbal":true
 }
 END;
     return $facet;

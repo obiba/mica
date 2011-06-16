@@ -457,6 +457,7 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
     $labels[] = l($impl->toString(), 'mica/dataset/' . $dataset_node->nid . '/query/' . $query_node->id . '/term/' . $term->id . '/edit', array("query" => array("destination"=>$destination)));
   }
   $columns = array_merge(array('Study', 'Total') , $labels);
+  $columns[] = 'Matched';
 
   $h = "<table><thead><tr>";
   foreach($columns as $var) {
@@ -472,6 +473,7 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
         $impl = $t->termImpl();
         $h.="<td>" . $result[$impl->getName()] . "</td>";
       }
+      $h.="<td>".$result['_matched'] . "</td>";
       $h .=  "</tr>";
     } catch(Exception $e) {
       if($e->getCode() == 401) {
