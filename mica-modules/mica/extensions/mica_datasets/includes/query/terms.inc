@@ -21,7 +21,7 @@ interface QueryTermInterface {
    * The name of the field this term works on (i.e.: the variable name)
    */
   function getFieldName();
-  
+
   /**
    * Returns true when this term's condition should be inverted (not operator)
    */
@@ -100,7 +100,7 @@ abstract class AbstractTerm implements QueryTermInterface {
   function isInverted() {
     return $this->not;
   }
-  
+
   function setInverted($inverted) {
     $this->not = $inverted;
     return $this->options['not'] = $inverted;
@@ -280,42 +280,52 @@ class RangeTerm extends AbstractTerm {
       '#title' => 'Value',
     );
 
-    $value=isset($form_state['values']['value']) ?
-    $form_state['values']['value'] : '';
-    //$this->getRanges()[0]['value']!=='';
-
-    $default_value_exact=isset($form_state['values']['exact']) ?
-    $form_state['values']['exact'] :
-    NULL;
+    $default_exact=NULL;
+    $default_value=NULL;
+    $default_range_min=NULL;
+    $default_range_max=NULL;
+    $ranges=$this->ranges();
+    if (isset($ranges)) {
+      $value=$ranges[0]['value'];
+      if ($value!=='') {
+        $default_exact = 1;
+        $default_value=$value;
+      } else {
+        $default_range_min=$ranges[0]['from'];
+        $default_range_max=$ranges[0]['to'];
+      }
+    }
 
     $form['valuecontainer']['fieldset']['exact'] = array(
       '#type' => 'checkbox',
       '#title' => 'Exact Value',
-      '#default_value' => $default_value_exact,
+      '#default_value' => $default_exact,
     );
 
     $form['valuecontainer']['fieldset']['value'] = array(
       '#type' => 'textfield',
       '#title' => 'Value',
-      '#default_value' => $value,
+      '#default_value' => $default_value,
+      '#required' => $default_exact===1,
       '#dependency' => array(
         'edit-exact' => array(1),
     ),
     );
 
 
-    $range_min=isset($form_state['values']['min']) ?
+   /* $range_min=isset($form_state['values']['min']) ?
     $form_state['values']['min'] :
     NULL;
 
     $range_max=isset($form_state['values']['max']) ?
     $form_state['values']['max'] :
-    NULL;
+    NULL;*/
      
     $form['valuecontainer']['fieldset']['min'] = array(
       '#type' => 'textfield',
       '#title' => 'Min',
-      '#default_value' => $range_min,
+      '#default_value' => $default_range_min,
+      '#required' => $default_exact!==1,
       '#dependency' => array(
         'edit-exact' => array(0),
     ),
@@ -323,7 +333,8 @@ class RangeTerm extends AbstractTerm {
     $form['valuecontainer']['fieldset']['max'] = array(
       '#type' => 'textfield',
       '#title' => 'Max',
-      '#default_value' => $range_max,
+      '#default_value' => $default_range_max,
+      '#required' => $default_exact!==1,
       '#dependency' => array(
         'edit-exact' => array(0),
     ),
@@ -375,13 +386,17 @@ class RangeTerm extends AbstractTerm {
     $this->options['ranges'] = $ranges;
   }
 
-  function getRanges() {
-    return $this->options;
-  }
-
   function toString() {
     $str = parent::toString();
-    return $str . ' ToDo';
+    $str_range=' ';
+    $ranges=$this->ranges();
+    $first_range=$ranges['0'];
+    if ($first_range['value'] === '') {
+      $str_range.='min: '.$first_range['from'] .' max: '.$first_range['to'];
+    } else {
+      $str_range.='= '.$first_range['value'];
+    }
+    return $str . $str_range;
   }
 }
 
