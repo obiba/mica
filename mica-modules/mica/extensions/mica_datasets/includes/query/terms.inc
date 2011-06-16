@@ -280,17 +280,19 @@ class RangeTerm extends AbstractTerm {
       '#title' => 'Value',
     );
 
-    $default_exact=NULL;
+    //TODO incomplete
+    $default_exact=0;
     $default_value=NULL;
     $default_range_min=NULL;
     $default_range_max=NULL;
     $ranges=$this->ranges();
-    if (isset($ranges)) {
+    if (isset($ranges) && isset($ranges[0])) {
       $value=$ranges[0]['value'];
       if ($value!=='') {
         $default_exact = 1;
         $default_value=$value;
       } else {
+        $default_exact = 0;
         $default_range_min=$ranges[0]['from'];
         $default_range_max=$ranges[0]['to'];
       }
@@ -311,21 +313,12 @@ class RangeTerm extends AbstractTerm {
         'edit-exact' => array(1),
     ),
     );
-
-
-   /* $range_min=isset($form_state['values']['min']) ?
-    $form_state['values']['min'] :
-    NULL;
-
-    $range_max=isset($form_state['values']['max']) ?
-    $form_state['values']['max'] :
-    NULL;*/
      
     $form['valuecontainer']['fieldset']['min'] = array(
       '#type' => 'textfield',
       '#title' => 'Min',
       '#default_value' => $default_range_min,
-      '#required' => $default_exact!==1,
+      '#required' => $default_exact===0,
       '#dependency' => array(
         'edit-exact' => array(0),
     ),
@@ -334,7 +327,7 @@ class RangeTerm extends AbstractTerm {
       '#type' => 'textfield',
       '#title' => 'Max',
       '#default_value' => $default_range_max,
-      '#required' => $default_exact!==1,
+      '#required' => $default_exact===0,
       '#dependency' => array(
         'edit-exact' => array(0),
     ),
@@ -390,13 +383,15 @@ class RangeTerm extends AbstractTerm {
     $str = parent::toString();
     $str_range=' ';
     $ranges=$this->ranges();
-    $first_range=$ranges['0'];
-    if ($first_range['value'] === '') {
-      $str_range.='with range: ['.$first_range['from'].', '.$first_range['to'] .'[';
-    } else {
-      $str_range.='= '.$first_range['value'];
+    if (isset($ranges['0'])) {
+      $first_range=$ranges['0'];
+      if ($first_range['value'] === '') {
+        $str_range.='with range: ['.$first_range['from'].', '.$first_range['to'] .'[';
+      } else {
+        $str_range.='= '.$first_range['value'];
+      }
     }
-    return $str . $str_range;
+    return $str . ($this->isInverted() ? ' not' :'') . $str_range;
   }
 }
 
