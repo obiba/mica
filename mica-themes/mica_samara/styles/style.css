@@ -744,7 +744,15 @@ form#comment-form #edit-actions {
   border: none;
   background-color: transparent;
 }
- 
+
+.panel-pane .node.node-sticky {
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+}
 
 /**
  * Filter module
