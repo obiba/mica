@@ -456,25 +456,23 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
     $destination = 'mica/dataset/' . $dataset_node->nid . '/query/' . $query_node->id . '/run';
     $labels[] = l($impl->toString(), 'mica/dataset/' . $dataset_node->nid . '/query/' . $query_node->id . '/term/' . $term->id . '/edit', array("query" => array("destination"=>$destination)));
   }
-  $columns = array_merge(array('Study', 'Total') , $labels);
-  $columns[] = 'Matched';
 
-  $h = "<table><thead><tr>";
-  foreach($columns as $var) {
-    $h .=  "<th>" . $var . "</th>";
-  }
-  $h .= "</tr></thread><tbody>";
+  $columns = array_merge(array(t('Study'), t('Total')) , $labels);
+  $columns[] = t('Matched');
+
+  $rows = array();
   foreach($mica_dataset_connectors as $connector) {
     $study = node_load($connector->study_id);
+    $row = array($study->title);
     try {
       $result = $connector->query($terms);
-      $h .= "<tr><td>" . $study->title . "</td><td>".$result['total']."</td>";
+      $row[] = $result['total'];
       foreach($terms as $t) {
         $impl = $t->termImpl();
-        $h.="<td>" . $result[$impl->getName()] . "</td>";
+        $row[] = $result[$impl->getName()];
       }
-      $h.="<td>".$result['_matched'] . "</td>";
-      $h .=  "</tr>";
+      $row[] = $result['_matched'];
+      $rows[] = $row;
     } catch(Exception $e) {
       if($e->getCode() == 401) {
         drupal_set_message(t("Study %study: Authentication failed (401).", array("%study" => $study->title)), 'error');
@@ -487,9 +485,8 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
       }
     }
   }
-  $h .= "</tbody></table>";
 
-  return $h;
+  return theme('table', array("header"=>$columns, "rows"=>$rows, 'empty' => t('No connectors available')));
 }
 
 //
