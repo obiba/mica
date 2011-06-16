@@ -84,13 +84,13 @@ function mica_datasets_dataset_variables_form_submit($form, &$form_state) {
  */
 //TODO maybe I can call directly form feeds in feeds.pages.inc but failed...
 function mica_datasets_dataset_variables_form($form, &$form_state, $node) {
-  $mica_dataset_connectors = mica_dataset_connector_query_multiple($node->nid);
+  $mica_dataset_connectors = mica_dataset_connector_query_multiple($node->nid, TRUE);
 
   if (!empty($mica_dataset_connectors)) {
     $connector_id=$mica_dataset_connectors[0]->id;
     $importer_id=$mica_dataset_connectors[0]->getImporterId();
   } else {
-    form_set_error('',t('This dataset is not linked to a study or no opal connection has been set TODO'));
+    form_set_error('',t('This dataset is not linked to a study or no external connection has been set.'));
     return;
   }
    
