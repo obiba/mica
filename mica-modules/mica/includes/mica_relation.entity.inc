@@ -246,7 +246,7 @@ class MicaRelation extends Entity {
       node_save($node_child);
 
       // create menu if parent has menu
-      if (!empty($parent_menu) || $parent_menu['enabled']) {
+      if (!empty($parent_menu) && $parent_menu['mlid'] != 0 && array_key_exists('enabled', $parent_menu) && $parent_menu['enabled']) {
         $field_ref_info = field_info_instance('node', $field_ref, $this->parent_bundle);
         $child_menu_item = array(
 				  'menu_name' => 'main-menu',
@@ -318,7 +318,7 @@ class MicaRelation extends Entity {
     }
      
     // create child menu if needed
-    if (!empty($parent_menu) && (empty($parent_menu['enabled']) || $parent_menu['enabled'])) {
+    if (!empty($parent_menu) && $parent_menu['mlid'] != 0 && array_key_exists('enabled', $parent_menu) && $parent_menu['enabled']) {
       $field_ref_info = field_info_instance('node', $field_ref, $this->parent_bundle);
       $child_menu_item = array(
 				'menu_name' => 'main-menu',
