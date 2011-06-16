@@ -1,5 +1,5 @@
 <?php
-include_once('profiles/mica_minimal/mica_minimal.profile');
+include_once('profiles/mica_standard/mica_standard.profile');
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -15,7 +15,7 @@ function mica_demo_form_install_configure_form_alter(&$form, $form_state) {
  * Implements hook_install_tasks()
  */
 function mica_demo_install_tasks($install_state) {
-  $tasks = mica_minimal_install_tasks($install_state);
+  $tasks = mica_standard_install_tasks($install_state);
   
   $tasks['mica_demo_content'] = array(
     'display_name' => st('Add demo content'),

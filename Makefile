@@ -12,7 +12,6 @@ version=1.0-SNAPSHOT
 mica_version=7.x-1.0-dev
 mica_studies_version=7.x-1.0-dev
 mica_community_version=7.x-1.0-dev
-mica_minimal_version=7.x-1.0-dev
 mica_standard_version=7.x-1.0-dev
 mica_demo_version=7.x-1.0-dev
 mica_samara_version=7.x-1.0-dev
@@ -57,7 +56,13 @@ mica-install:
 	cp -r ../../mica-profiles/* profiles && \
 	cp -r ../../mica-modules/mica sites/all/modules && \
 	cp -r ../../mica-themes/* sites/all/themes && \
-	rm -rf `find . -type d -name .svn`
+	rm -rf `find . -type d -name .svn` && \
+	if [ -e profiles/standard/standard.install ]; then \
+		cp profiles/standard/standard.install profiles/mica_standard/standard.install && \
+		rm -rf profiles/standard && \
+		rm -rf profiles/minimal ; \
+	fi && \
+	rm -rf profiles/mica_minimal
 
 #
 # Deploy
@@ -87,7 +92,7 @@ package: package-modules package-profiles package-themes package-forks debian
 package-modules: package-module-mica
 	$(call make-package,sites/all/modules,mica)
 	
-package-profiles: package-profile-mica_minimal package-profile-mica_standard package-profile-mica_demo
+package-profiles: package-profile-mica_standard package-profile-mica_demo
 
 package-themes: package-theme-mica_samara
 
@@ -142,7 +147,6 @@ else
 endif
 	mkdir -p target/deb/var/cache/mica-installer
 	$(call deb-package,mica)
-	$(call deb-package,mica_minimal)
 	$(call deb-package,mica_standard)
 	$(call deb-package,mica_demo)
 	$(call deb-package,mica_samara)
@@ -190,7 +194,6 @@ git-themes:
 	$(call make-git,mica-themes,mica_samara,sandbox/yop/1144820)
 	
 git-profiles:
-	$(call make-git,mica-profiles,mica_minimal,sandbox/yop/1144812)
 	$(call make-git,mica-profiles,mica_standard,sandbox/yop/1144814)
 	$(call make-git,mica-profiles,mica_demo,sandbox/yop/1144816)
 
