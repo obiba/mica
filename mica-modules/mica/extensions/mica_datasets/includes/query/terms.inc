@@ -70,7 +70,6 @@ abstract class AbstractTerm implements QueryTermInterface {
   }
 
   static function typeFor($variable) {
-    debug($variable->field_categories);
     $is_categorical=$variable->field_categories['und'][0]['value'];
     $type=$variable->field_value_type['und'][0]['value'];
     if($is_categorical) {
@@ -112,6 +111,11 @@ abstract class AbstractTerm implements QueryTermInterface {
     return node_load($this->qt->variable_id);
   }
 
+  protected function getConnectors() {
+    $query = mica_dataset_query_load($this->qt->query_id);
+    return mica_dataset_connector_query_multiple($query->dataset_id, TRUE);
+  }
+
 }
 
 /**
@@ -151,18 +155,36 @@ class CategoryTerm extends AbstractTerm {
       '#default_value' => $this->isInverted() ? 'notin' : 'in',
     );
 
+    $headers = array('Name');
+    $facets = array();
+    $connectors = $this->getConnectors();
+    foreach($connectors as $connector) {
+      $study = node_load($connector->study_id);
+      $headers[] = $study->title;
+      $facets[$connector->id] = $connector->facetTerm($this);
+    }
+
+    $defaultValues = array();
     $options = array();
     $variable = $this->getVariable();
     foreach($variable->field_categories['und'] as $category) {
-      // TODO: wtf! if the category's label is 0, it does not appear. So we add a &nbsp; so that it is no longer 0.
-      $options['c_'.$category["value"]] = $category["value"] . "&nbsp;";
+      $defaultValues[$category["value"]] = 0;
+      $row = array($category["value"]);
+      foreach($connectors as $connector) {
+        if(isset($facets[$connector->id][$category["value"]])) {
+          $row[] = $facets[$connector->id][$category["value"]];
+        } else {
+          $row[] = 0;
+        }
+      }
+      $options[$category["value"]] = $row;
     }
 
     $form['categories'] = array(
-      '#type' => 'checkboxes',
-      '#title' => t('Categories'),
+      '#type' => 'tableselect',
+      '#header' => $headers, 
       '#options' => $options,
-      '#default_value' => $this->categoriesToForm(),
+      '#default_value' => $this->categoriesToForm($defaultValues),
     );
     return $form;
   }
@@ -192,13 +214,13 @@ class CategoryTerm extends AbstractTerm {
   }
 
   /**
-   * Prefixes all selected categories with 'c_' so that we don't have 0 as an array key
+   * Returns an array category => 0/1
    */
-  private function categoriesToForm() {
-    $map = function($category) {
-      return 'c_' . $category;
-    };
-    return array_map($map, $this->categories());
+  private function categoriesToForm($rows) {
+    foreach($this->categories() as $c) {
+      $rows[$c] = 1;
+    }
+    return $rows;
   }
 
   /**
@@ -206,13 +228,9 @@ class CategoryTerm extends AbstractTerm {
    * @param unknown_type $formCategories
    */
   private function formToCategories($formCategories) {
-    $map = function ($form) {
-      return substr($form, 2);
-    };
     // array_filter will remove all non-selected categories
     // array_keys will return only the array keys
-    // the map will remove any 'c_' prefix
-    return array_map($map, array_keys(array_filter($formCategories)));
+    return array_keys(array_filter($formCategories));
   }
 
 }

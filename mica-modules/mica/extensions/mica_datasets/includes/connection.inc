@@ -85,6 +85,13 @@ interface MicaDatasetConnectionInterface {
   public function getImporterId();
 
   public function query($variables);
+  
+  /**
+   * Returns a facet for a specific term.
+   * For example, a categorical term would return an associative array:
+   * array('YES' => 3000, 'NO' => 50000)
+   */
+  public function facetTerm(QueryTermInterface $term);
 
 }
 

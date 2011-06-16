@@ -109,20 +109,79 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
     $q .= implode(',', $facets);
     $q.='}}';
 
-    debug($q);
+    $data = $this->sendQuery($q);
+    
+    $total = $data['hits']['total'];
+
+    $result = array('total'=>$total);
+    foreach($terms as $term) {
+      $impl = $term->termImpl();
+      $result[$impl->getName()] = $this->count($data['facets'][$impl->getName()]);
+    }
+
+    return $result;
+  }
+  
+  public function facetTerm(QueryTermInterface $term) {
+    switch($term->getType()) {
+      case 'CategoryTerm' :
+        $facets = <<< END
+      "{$term->getName()}" : {
+        "terms" : {
+          "field" : "{$term->getName()}",
+          "size": 1000,
+          "all_fields" : true
+        }
+      }
+END;
+        break;
+      case 'RangeTerm' :
+        $facets = <<< END
+      "{$term->getName()}" : {
+        "statistical" : {
+          "field" : "{$term->getName()}"
+        }
+      }
+END;
+        break;
+    }
+
+    $q = '{"query": {"match_all":{}},"size":0,"facets":{';
+    $q .= $facets;
+    $q.='}}';
+    
+    $data = $this->sendQuery($q);
+    
+    $facetResult = $data['facets'][$term->getName()];
+
+    // TODO: handle statistical result
+    $result = array();
+    foreach($facetResult['terms'] as $termCount) {
+      $result[$termCount['term']] = $termCount['count'];
+    }
+    
+    $result['missing'] = $facetResult['missing'];
+    
+//    debug($result);
+    return $result;
+  }
+  
+  private function sendQuery($query) {
+//    debug($query);
+    
     $url = $this->getTableResourceURI("index/_search");
 
     $post = new HttpClientRequest($url, array(
         'method' => 'GET',
         'headers' => array('Accept' => array('application/json')),
-        'data' => $q,
+        'data' => $query,
         'parameters' => array(),
       ));
 
     try {
       $client = $this->client();
       $body = $client->execute($post);
-      debug($body);
+//      debug($body);
     }  catch(HttpClientException $e) {
       if($e->getCode() == 0) {
         // curl error
@@ -135,16 +194,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
       $body = $e->getResponse()->body;
     }
 
-    $data = json_decode($body, TRUE);
-    $total = $data['hits']['total'];
-
-    $result = array('total'=>$total);
-    foreach($terms as $term) {
-      $impl = $term->termImpl();
-      $result[$impl->getName()] = $this->count($data['facets'][$impl->getName()]);
-    }
-
-    return $result;
+    return json_decode($body, TRUE);
   }
   
   private function count($facet) {
@@ -166,7 +216,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
     }
     return -1; 
   }
-  
+
   private function asFacet(QueryTermInterface $term) {
         $facet = <<< END
 "{$term->getName()}" : {
