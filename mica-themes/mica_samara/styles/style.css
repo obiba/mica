@@ -737,6 +737,14 @@ form#comment-form #edit-actions {
   border-top: 1px solid #CCCCCC;
 }
 
+/**
+ * Panels
+ */
+.panel-pane .field-item .node {
+  border: none;
+  background-color: transparent;
+}
+ 
 
 /**
  * Filter module
