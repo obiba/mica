@@ -254,43 +254,129 @@ class RangeTerm extends AbstractTerm {
 
   function form($form, &$form_state) {
     $variable=$this->getVariable();
-    
+
     $is_categorical=$variable->field_categories['und'][0]['value'] !== '';
     $is_repeatable=$variable->field_repeatable['und'][0]['value'] === '1';
     $type=$variable->field_value_type['und'][0]['value'];
 
-    $form['operator']=array(
-    '#title' => t('Operator'), 
-    '#type' => 'select',
-    '#required' => TRUE,
-    '#options' => array('inf' => '<', 'sup' => '>', 'eq' => '=', 'dif' => '!=', 'range' => 'Range'),
-    '#ajax' => array(
-      		'callback' => 'replace_value_container',
-            'wrapper' => 'valuecontainer',
-            'method' => 'replace')
-    );
+    $operator=isset($form_state['values']['operator']) ?
+    $form_state['values']['operator'] :
+    NULL;
 
-    //append_range($form, NULL);
+    $form['inverted']=array(
+      '#title' => t('Operator'), 
+      '#type' => 'select',
+      '#options' => array('in' => 'in', 'notin' => 'not in'),
+      '#default_value' => $this->isInverted() ? 'notin' : 'in',
+    );
 
     $form['valuecontainer'] = array(
      '#type' => 'item',
      '#prefix' => '<div id="'."valuecontainer".'">',
      '#suffix' => '</div>',
     );
-
-    $form['add_range'] = array(
-      '#type' => 'button',
-      '#value' => 'add range',
-      '#ajax' => array(
-      		'callback' => 'append_range',
-            'wrapper' => 'valuecontainer',
-            'method' => 'append')
+    $form['valuecontainer']['fieldset'] = array(
+      '#type' => 'fieldset',
+      '#title' => 'Value',
     );
+
+    $value=isset($form_state['values']['value']) ?
+    $form_state['values']['value'] : '';
+    //$this->getRanges()[0]['value']!=='';
+
+    $default_value_exact=isset($form_state['values']['exact']) ?
+    $form_state['values']['exact'] :
+    NULL;
+
+    $form['valuecontainer']['fieldset']['exact'] = array(
+      '#type' => 'checkbox',
+      '#title' => 'Exact Value',
+      '#default_value' => $default_value_exact,
+    );
+
+    $form['valuecontainer']['fieldset']['value'] = array(
+      '#type' => 'textfield',
+      '#title' => 'Value',
+      '#default_value' => $value,
+      '#dependency' => array(
+        'edit-exact' => array(1),
+    ),
+    );
+
+
+    $range_min=isset($form_state['values']['min']) ?
+    $form_state['values']['min'] :
+    NULL;
+
+    $range_max=isset($form_state['values']['max']) ?
+    $form_state['values']['max'] :
+    NULL;
+     
+    $form['valuecontainer']['fieldset']['min'] = array(
+      '#type' => 'textfield',
+      '#title' => 'Min',
+      '#default_value' => $range_min,
+      '#dependency' => array(
+        'edit-exact' => array(0),
+    ),
+    );
+    $form['valuecontainer']['fieldset']['max'] = array(
+      '#type' => 'textfield',
+      '#title' => 'Max',
+      '#default_value' => $range_max,
+      '#dependency' => array(
+        'edit-exact' => array(0),
+    ),
+    );
+
+    //Code for add range.
+    /*$form['add_range'] = array(
+    '#type' => 'button',
+    '#value' => 'add range',
+    '#ajax' => array(
+    'callback' => 'append_range',
+    'wrapper' => 'valuecontainer',
+    'method' => 'append'),
+    '#prefix' => '<span id="add_range">',
+    '#suffix' => '</span>',
+    );*/
+
     return $form;
   }
 
   function submit($form, &$form_state) {
+    $inverted=$form_state['values']['inverted'];
+    $selection=NULL;
+    if($form_state['values']['exact'] === 0) {
+      $min=$form_state['values']['min'];
+      $max=$form_state['values']['max'];
+      $selection=$this->formToRanges('', $min, $max);
+    } else {
+      $value=$form_state['values']['value'];
+      $selection=$this->formToRanges($value, '', '');
+    }
+    $this->setInverted($inverted === 'notin');
+    $this->setRange($selection);
+  }
 
+  private function formToRanges($value, $min, $max) {
+    return array(array('from' => $min,
+                       'to' => $max,
+                       'value' => $value ));
+  }
+
+  private function rangesToForm() {
+    return array(array('from' => $min,
+                       'to' => $max,
+                       'value' => $value ));
+  }
+
+  function setRange($ranges = array()) {
+    $this->options['ranges'] = $ranges;
+  }
+
+  function getRanges() {
+    return $this->options;
   }
 
   function toString() {
