@@ -108,7 +108,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
     $q = '{"query": {"match_all":{}},"size":0,"facets":{';
     $q .= implode(',', $facets);
     $q.='}}';
-    
+
     debug($q);
     $url = $this->getTableResourceURI("index/_search");
 
@@ -149,6 +149,8 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
   
   private function count($facet) {
     switch($facet['_type']) {
+      case 'filter':
+      return $facet['count'];
       case 'terms':
       $sum =0;
       foreach($facet['terms'] as $term) {
@@ -166,19 +168,66 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
   }
   
   private function asFacet(QueryTermInterface $term) {
-    
+        $facet = <<< END
+"{$term->getName()}" : {
+  "filter" : {
+    {$this->asFilter($term)}
+  }
+}
+END;
+    return $facet;
+  }
+
+  private function asFilter(QueryTermInterface $term) {
+
+    // The default filter
+    $filter = <<< END
+  "exists" : {
+    "field" : "{$term->getName()}"
+  }
+END;
     switch ($term->getType()) {
       case 'CategoryTerm':
-        $facet = '"' . $term->getName() . '":{ "terms": { "field":"' . $term->getName() . '"}';
         if(count($term->categories()) > 0) {
-          $facet .= ', "facet_filter": { "terms": { "'.$term->getName().'":["'. implode('","', $term->categories()) .'"]}}';
+          $terms = '"'. implode('","', $term->categories()) . '"';
+          $filter = <<< END
+  "terms" : {
+    "{$term->getName()}":[$terms]
+  }
+END;
         }
-        $facet .= '}';
-        return $facet;
         break;
-      default: 
-        return '"' . $term->getName() . '":{ "histogram":{"field":"' . $term->getName() . '", "interval":100}}';
+      case 'RangeTerm':
+        if(count($term->ranges()) > 0) {
+          $ranges = $term->ranges();
+          $range = $ranges[0];
+          $filter = <<< END
+  "numeric_range" : {
+    "{$term->getName()}": {
+      "from" : {$range['from']},
+      "to" : {$range['to']},
+      "include_lower" : true, 
+      "include_upper" : false
     }
+  }
+END;
+        }
+        break;
+      default:
+      break;
+    }
+
+    if($term->isInverted()) {
+      $invert = $filter;
+      $filter = <<< END
+  "not" : {
+    "filter" : {
+      $invert
+    }
+  }
+END;
+    }
+    return $filter;
   }
 
   /**

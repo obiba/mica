@@ -93,6 +93,11 @@ abstract class AbstractTerm implements QueryTermInterface {
   function isInverted() {
     return $this->not;
   }
+  
+  function setInverted($inverted) {
+    $this->not = $inverted;
+    return $this->options['not'] = $inverted;
+  }
 
   function getOptions() {
     return $this->options;
@@ -166,7 +171,7 @@ class CategoryTerm extends AbstractTerm {
     $selection = $form_state['values']['categories'];
     $inverted = $form_state['values']['inverted'];
 
-    //$this->not=$inverted;
+    $this->setInverted($inverted == 'notin');
     $this->setCategories($this->formToCategories($selection));
   }
 
@@ -175,12 +180,10 @@ class CategoryTerm extends AbstractTerm {
     if(count($this->categories()) > 0) {
       switch ($this->operator()) {
         case 'AND':
-          $str.= ' is ';
-          ;
+          $str.= $this->isInverted() ? ' is not ' : ' is ';
           break;
         default:
-          $str.= ' in ';
-          ;
+          $str.= $this->isInverted() ? ' not in ' : ' in ';
           break;
       }
       $str .= '(' . implode(', ', $this->categories()) . ')';
@@ -203,7 +206,7 @@ class CategoryTerm extends AbstractTerm {
    * @param unknown_type $formCategories
    */
   private function formToCategories($formCategories) {
-    $map = function($form) {
+    $map = function ($form) {
       return substr($form, 2);
     };
     // array_filter will remove all non-selected categories
@@ -218,6 +221,10 @@ class RangeTerm extends AbstractTerm {
 
   function __construct(MicaDatasetQueryTerm $qt) {
     parent::__construct('RangeTerm', $qt);
+  }
+
+  public function ranges() {
+    return isset($this->options['ranges']) ? $this->options['ranges'] : array();
   }
 
   function form($form, &$form_state) {
