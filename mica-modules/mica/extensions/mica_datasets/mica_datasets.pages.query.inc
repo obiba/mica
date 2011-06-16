@@ -160,7 +160,7 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
 
   $form['general']['publish'] = array(
     '#type' => 'checkbox', 
-    '#title' => t('Publish'),
+    '#title' => t('Published'),
     '#default_value' => $query ? $query->published : 0,
   );
 
