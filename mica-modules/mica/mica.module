@@ -136,7 +136,7 @@ function mica_insert(&$node) {
         $menu['menu_name'] = $menu_options[0];
         $menu['link_title'] = $node->title;
         $menu['link_path'] = 'node/' . $node->nid;
-        	
+         
         $menu_parent = variable_get('menu_parent_' . $node->type);
         if (!empty($menu_parent)) {
           $split = explode(":", $menu_parent);
@@ -249,6 +249,12 @@ function mica_block_info() {
     'pages' => 'studies-search',
   );
 
+  $blocks['powered-by-mica'] = array(
+    'info' => t('Powered by Mica'),
+    'region' => 'footer',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
   return $blocks;
 }
 
@@ -259,29 +265,36 @@ function mica_block_info() {
  */
 function mica_block_view($delta = '') {
   global $user;
-  if ($user->uid == 0) {
-    // not available for anonymous user
-    return;
-  }
+  $block = array();
 
   //The $delta parameter tells us which block is being requested.
-  $content;
   switch ($delta) {
+    case 'powered-by-mica':
+      $block['subject'] = NULL;
+      $block['content'] = '<span>' . t('Powered by <a href="@poweredby">Mica</a>', array('@poweredby' => 'http://obiba.org')) . '</span>';
+      return $block;
     case 'mica_facet_visibility':
+      if ($user->uid == 0) {
+        // not available for anonymous user
+        return;
+      }
+
       module_load_include('inc', 'mica', 'includes/blocks');
       $block['subject'] = t('Search Filters');
       $content = mica_facet_visibility_block_content();
-      break;
+
+      if ($content) {
+        $block['content'] = $content;
+        return $block;
+      }
+      else {
+        // no content, then no block
+        return;
+      }
+    default:
+      return;
   }
 
-  if ($content) {
-    $block['content'] = $content;
-    return $block;
-  }
-  else {
-    // no content, then no block
-    return;
-  }
 }
 
 /**
@@ -314,7 +327,7 @@ function mica_feeds_plugins() {
       'path' => $path,
   ),
   );
-  
+
   $path = drupal_get_path('module', 'mica') . '/includes/feeds/parsers';
 
   $info['FeedsMultiValueCSVParser'] = array(
@@ -325,7 +338,7 @@ function mica_feeds_plugins() {
       'class' => 'FeedsMultiValueCSVParser',
       'file' => 'FeedsMultiValueCSVParser.inc',
       'path' => $path,
-    ),
+  ),
   );
 
   $path = drupal_get_path('module', 'mica') . '/includes/feeds/fetchers';
@@ -338,7 +351,7 @@ function mica_feeds_plugins() {
       'class' => 'FeedsRestFetcher',
       'file' => 'FeedsRestFetcher.inc',
       'path' => $path,
-    ),
+  ),
   );
 
   return $info;

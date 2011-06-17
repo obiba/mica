@@ -79,7 +79,6 @@ function mica_samara_preprocess_page(&$vars) {
 
   // Add $copyright_information variable
   $vars['copyright_information'] = theme_get_setting('copyright_information');
-  $vars['copyright_information'] .= ' <a href="http://obiba.org">OBiBa</a>';
 
 }
 

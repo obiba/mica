@@ -1915,6 +1915,43 @@ img.right, img[align="right"] {
   overflow: hidden;
 }
 
+/* Region Footer */
+.region-footer {
+  float: right;
+  margin: 0 10px 10px;
+}
+.region-footer .block a {
+  border: none;
+}
+.region-footer .block {
+  font-size: 1em;
+  margin: 0 10px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  float: left;
+  clear: none;
+  margin: 10px 0 0 20px;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.region-footer .block h2 {
+  display: none;
+}
+.region-footer .block .content {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Powered By Mica block */
+#block-mica-powered-by-mica .content a {
+  background: url("../mica-small.png") no-repeat scroll 0 0 transparent;
+  padding-left: 25px;
+  margin-left: 5px;
+  height: 25px;
+  display: inline-block;
+}
 
 /* Views */
 .views-row {

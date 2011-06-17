@@ -135,7 +135,9 @@
 
     <?php print $right_sidebars ?> 
     
-    <?php print render($page['footer']); ?>
+    <div class="region region-footer">
+      <?php print render($page['footer']); ?>
+    </div>
 
   </div> <!-- /#main-columns -->
 </div> <!-- /#main-columns-wrapper -->

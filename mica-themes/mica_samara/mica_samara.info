@@ -34,5 +34,5 @@ settings[layout_2_max_width]    = 1000px
 settings[layout_3_width]        = 85%
 settings[layout_3_min_width]    = 800px
 settings[layout_3_max_width]    = 1000px
-settings[copyright_information] = "2011 © Copyright information"
+settings[copyright_information] = "2011 © Copyright information <a href='http://obiba.org'>OBiBa</a>"
 
