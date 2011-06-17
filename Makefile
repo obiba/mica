@@ -57,6 +57,7 @@ mica-install:
 	cp -r ../../mica-modules/mica sites/all/modules && \
 	cp -r ../../mica-themes/* sites/all/themes && \
 	rm -rf `find . -type d -name .svn` && \
+	rm -rf `find . -type d -name .git` && \
 	if [ -e profiles/standard/standard.install ]; then \
 		cp profiles/standard/standard.install profiles/mica_standard/standard.install && \
 		rm -rf profiles/standard && \
