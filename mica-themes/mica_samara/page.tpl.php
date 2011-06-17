@@ -134,10 +134,15 @@
     </div> <!-- /#main-wrapper -->
 
     <?php print $right_sidebars ?> 
-    
-    <div class="region region-footer">
-      <?php print render($page['footer']); ?>
-    </div>
+
 
   </div> <!-- /#main-columns -->
 </div> <!-- /#main-columns-wrapper -->
+
+<div id="footer-wrapper">
+  <div id="footer" class="clearfix<?php if ($page['footer']): ?> with-blocks<?php endif; ?>">
+    <div class="region region-footer">
+      <?php print render($page['footer']); ?>
+    </div>
+  </div>
+</div>

@@ -9,19 +9,19 @@ function mica_samara_preprocess_html(&$vars) {
   // Add font and layout styles
   $css['font'] = 'html {font-size: ' . theme_get_setting('base_font_size') . ';}';
   $css['no-sidebars'] = '
-  body.no-sidebars #navigation, body.no-sidebars #header, body.no-sidebars #main-columns {
+  body.no-sidebars #navigation, body.no-sidebars #header, body.no-sidebars #main-columns, body.no-sidebars #footer {
     width: '     . theme_get_setting('layout_3_width')     . ';
     min-width: ' . theme_get_setting('layout_3_min_width') . ';
     max-width: ' . theme_get_setting('layout_3_max_width') . ';
   }';
   $css['one-sidebar'] = '
-  body.one-sidebar #navigation, body.one-sidebar #header, body.one-sidebar #main-columns {
+  body.one-sidebar #navigation, body.one-sidebar #header, body.one-sidebar #main-columns, body.one-sidebar #footer {
     width: '     . theme_get_setting('layout_3_width')     . ';
     min-width: ' . theme_get_setting('layout_3_min_width') . ';
     max-width: ' . theme_get_setting('layout_3_max_width') . ';
   }';
   $css['two-sidebars'] = '
-  body.two-sidebars #navigation, body.two-sidebars #header, body.two-sidebars #main-columns {
+  body.two-sidebars #navigation, body.two-sidebars #header, body.two-sidebars #main-columns, body.two-sidebars #footer {
     width: '     . theme_get_setting('layout_3_width')     . ';
     min-width: ' . theme_get_setting('layout_3_min_width') . ';
     max-width: ' . theme_get_setting('layout_3_max_width') . ';

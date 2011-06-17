@@ -8,7 +8,8 @@
 }
 #navigation,
 #header,
-#main-columns {
+#main-columns,
+#footer {
   margin: 0 auto;
 }
 /* Column width */
@@ -49,7 +50,8 @@ body.page-admin #main-wrapper {
 /* Prevent collision with browser chrome */
 #navigation-wrapper,
 #header,
-#main-columns {
+#main-columns,
+#footer {
   padding: 0 15px;
 }
 /* Hide content on admin pages */
@@ -148,6 +150,12 @@ html {
 #header {
   clear: both;
   min-height: 20px;
+}
+
+/* Footer */
+#footer {
+  display: block;
+  clear: both;
 }
 
 /**
