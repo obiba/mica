@@ -68,11 +68,11 @@ function mica_datasets_menu() {
       'type' => MENU_LOCAL_ACTION,
       'file' => 'mica_datasets.pages.query.inc',
   );
-  
+
   $items['node/%node/queries/add'] = array(
       'title' => 'Add Query',
       'access callback' => '_mica_datasets_node_access',
-      'access arguments' => array(1,'dataset','view'),
+      'access arguments' => array(1,'dataset','update'),
       'page callback' => 'mica_datasets_dataset_query_edit_page',
       'page arguments' => array(1,NULL),
       'weight' => 7,
