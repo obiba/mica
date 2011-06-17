@@ -101,7 +101,7 @@ function _mica_datasets_add_connection_option(&$options, &$dataset_node, &$study
           array(
           '#type' => 'link',
           '#title' => 'Edit',
-          '#href' => 'mica/dataset/connector/' . $data['connector']['id'] . '/' . $data['connector'][MICA_DATASET_ID] . '/' . $data['connector'][MICA_STUDY_ID] . '/edit',
+          '#href' => 'node/'.$data['connector'][MICA_DATASET_ID].'/connector/' . $data['connector'][MICA_STUDY_ID] . '/' . $data['connector']['id'] . '/edit',
           ),
        ),
   ),
