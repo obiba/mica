@@ -384,7 +384,7 @@ function mica_datasets_dataset_query_edit_form_submit($form, &$form_state) {
       }
 
       drupal_set_message(t('Your configuration has been saved.'));
-      $form_state['redirect'] = 'node/' . $dataset_node->nid . '/queries';
+      $form_state['redirect'] = _mica_datasets_dataset_query_url($dataset_node, $query);
       break;
   }
 }
@@ -477,7 +477,7 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
   foreach($terms as $term) {
     $impl = $term->termImpl();
     $destination = _mica_datasets_dataset_query_url($dataset_node,  $query_node, 'run');
-    $labels[] = l($impl->toString(), _mica_datasets_dataset_query_term_url($dataset_node, $query_node, $term, '/edit'), array("query" => array("destination"=>$destination)));
+    $labels[] = l($impl->toString(), _mica_datasets_dataset_query_term_url($dataset_node, $query_node, $term, 'edit'), array("query" => array("destination"=>$destination)));
   }
 
   $columns = array_merge(array(t('Study'), t('Total')) , $labels);

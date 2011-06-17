@@ -39,12 +39,12 @@ function mica_datasets_dataset_studies_edit_page($node) {
  * @param $dataset_node
  * @param $study_node
  */
-function mica_datasets_dataset_connection_page($connection_id, $dataset_node, $study_node) {
+function mica_datasets_dataset_connection_page($connection_entity, $dataset_node, $study_node) {
   drupal_set_title(t('!dataset -- !study', array(
       '!dataset' => $dataset_node->title, 
       '!study' => $study_node->title)));
 
-  return drupal_get_form('mica_datasets_dataset_connection_form', $connection_id, $dataset_node, $study_node);
+  return drupal_get_form('mica_datasets_dataset_connection_form', $connection_entity, $dataset_node, $study_node);
 }
 
 /**
@@ -268,8 +268,8 @@ function mica_datasets_study_datasets_form_submit($form, &$form_state) {
 // mica_datasets_dataset_connection_form
 //
 
-function mica_datasets_dataset_connection_form($form, &$form_state, $connection_id, $dataset_node, $study_node) {
-  $connector = $connection_id != 0 ? mica_dataset_connector_load($connection_id) : FALSE;
+function mica_datasets_dataset_connection_form($form, &$form_state, $connection_entity, $dataset_node, $study_node) {
+  $connector = $connection_entity ? $connection_entity : FALSE;
 
   $form = _mica_datasets_connectors_form();
 
