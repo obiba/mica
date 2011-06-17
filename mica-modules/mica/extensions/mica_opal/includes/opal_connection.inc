@@ -172,7 +172,7 @@ END;
   }
   
   private function sendQuery($query) {
-    debug($query);
+//    debug($query);
     
     $url = $this->getTableResourceURI("index/_search");
 

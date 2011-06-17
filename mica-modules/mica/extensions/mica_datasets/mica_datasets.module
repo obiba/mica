@@ -64,7 +64,7 @@ function mica_datasets_menu() {
       'page callback' => 'mica_datasets_dataset_queries_page',
       'page arguments' => array(1),
       'weight' => 7,
-      'type' => MENU_LOCAL_TASK,
+      'type' => MENU_LOCAL_ACTION,
       'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
       'file' => 'mica_datasets.pages.query.inc',
   );
