@@ -75,7 +75,8 @@ abstract class AbstractTerm implements QueryTermInterface {
   }
 
   static function typeFor($variable) {
-    $is_categorical=$variable->field_categories['und'][0]['value'];
+    $is_categorical=$variable->field_categories['und'][0]['value'] != '';
+    debug($is_categorical);
     $type=$variable->field_value_type['und'][0]['value'];
     if($is_categorical) {
       return 'CategoryTerm';
@@ -104,6 +105,11 @@ abstract class AbstractTerm implements QueryTermInterface {
   function setInverted($inverted) {
     $this->not = $inverted;
     return $this->options['not'] = $inverted;
+  }
+
+  function isRepeatable() {
+    $variable = $this->getVariable();
+    return isset($variable->field_repeatable['und'][0]['value']) && $variable->field_repeatable['und'][0]['value'] === '1';
   }
 
   function getOptions() {
@@ -184,7 +190,7 @@ class CategoryTerm extends AbstractTerm {
           $row[] = 0;
         }
       }
-      $options[$category["value"]] = $row;
+      $options['c_' . $category["value"]] = $row;
     }
 
     $form['categories'] = array(
@@ -225,7 +231,7 @@ class CategoryTerm extends AbstractTerm {
    */
   private function categoriesToForm($rows) {
     foreach($this->categories() as $c) {
-      $rows[$c] = 1;
+      $rows['c_'.$c] = 1;
     }
     return $rows;
   }
@@ -237,11 +243,21 @@ class CategoryTerm extends AbstractTerm {
   private function formToCategories($formCategories) {
     // array_filter will remove all non-selected categories
     // array_keys will return only the array keys
-    return array_keys(array_filter($formCategories));
+    $selected = array_keys(array_filter($formCategories));
+    $categories = array();
+    foreach($selected as $c) {
+      $categories[] = substr($c, 2);
+    }
+    return $categories;
   }
 
 }
 
+/**
+ * {
+ *   ranges : [ {from:10, to: 40}, {value:42} ]
+ * }
+ */
 class RangeTerm extends AbstractTerm {
 
   function __construct(MicaDatasetQueryTerm $qt) {
@@ -255,8 +271,6 @@ class RangeTerm extends AbstractTerm {
   function form($form, &$form_state) {
     $variable=$this->getVariable();
 
-    $is_categorical=$variable->field_categories['und'][0]['value'] !== '';
-    $is_repeatable=$variable->field_repeatable['und'][0]['value'] === '1';
     $type=$variable->field_value_type['und'][0]['value'];
 
     $operator=isset($form_state['values']['operator']) ?
@@ -275,6 +289,7 @@ class RangeTerm extends AbstractTerm {
      '#prefix' => '<div id="'."valuecontainer".'">',
      '#suffix' => '</div>',
     );
+
     $form['valuecontainer']['fieldset'] = array(
       '#type' => 'fieldset',
       '#title' => 'Value',
@@ -286,24 +301,24 @@ class RangeTerm extends AbstractTerm {
     $default_range_min=NULL;
     $default_range_max=NULL;
     $ranges=$this->ranges();
-    
-    if (isset($ranges) && isset($ranges[0])) {
-      $value=$ranges[0]['value'];
-      if ($value!=='') {
-        $default_exact = 'exact';
-        $default_value=$value;
-      } else {
-        $default_exact = 'range';
-        $default_range_min=$ranges[0]['from'];
-        $default_range_max=$ranges[0]['to'];
-      }
+
+    if (isset($ranges[0]['value'])) {
+      $default_exact = 'exact';
+      $default_value=$ranges[0]['value'];
+    } else if(isset($ranges[0]['from']) || isset($ranges[0]['to'])) {
+      $default_exact = 'range';
+      $default_range_min=isset($ranges[0]['from']) ? $ranges[0]['from'] : NULL;
+      $default_range_max=isset($ranges[0]['to']) ? $ranges[0]['to'] : NULL;
+    } else {
+      $default_exact = 'exists';
     }
 
     $form['valuecontainer']['fieldset']['exact-radio'] = array(
       '#type' => 'radios',
-      '#title' => 'Exact Value',
+      '#title' => 'Matches',
       '#default_value' => $default_exact,
       '#options' => array(
+        'exists' => t('Any value'),
         'exact' => t('Exact Value'),
         'range' => t('Range')),
     );
@@ -312,26 +327,34 @@ class RangeTerm extends AbstractTerm {
       '#type' => 'textfield',
       '#title' => 'Value',
       '#default_value' => $default_value,
-      '#dependency' => array(
-        'radio:exact-radio' => array('exact'),
-    ),
+      '#states' => array(
+        'visible' => array(
+          ':input[name="exact-radio"]' => array('value' => 'exact'),
+        ),
+        'required' => array(
+          ':input[name="exact-radio"]' => array('value' => 'exact'),
+        ),
+      ),
     );
-     
+
+    $sharedStates = array(
+        'visible' => array(
+          ':input[name="exact-radio"]' => array('value' => 'range'),
+        ),
+    );
+
     $form['valuecontainer']['fieldset']['min'] = array(
       '#type' => 'textfield',
       '#title' => 'Min',
       '#default_value' => $default_range_min,
-      '#dependency' => array(
-         'radio:exact-radio' => array('range'),
-    ),
+      '#states' => $sharedStates,
     );
+
     $form['valuecontainer']['fieldset']['max'] = array(
       '#type' => 'textfield',
       '#title' => 'Max',
       '#default_value' => $default_range_max,
-      '#dependency' => array(
-         'radio:exact-radio' => array('range'),
-    ),
+      '#states' => $sharedStates,
     );
 
     //Code for add range.
@@ -355,19 +378,35 @@ class RangeTerm extends AbstractTerm {
     if($form_state['values']['exact-radio'] === 'range') {
       $min=$form_state['values']['min'];
       $max=$form_state['values']['max'];
-      $selection=$this->formToRanges('', $min, $max);
-    } else {
+      if(empty($min) && empty($max)) {
+        form_set_error('exact-radio', t('At least one value (min or max) must be specified'));
+      } else if($min >= $max) {
+        form_set_error('exact-radio', t('Min must be lower than max'));
+      } else if(empty($min) == FALSE && is_numeric($min) == FALSE ) {
+        form_set_error('min', t('Value for min must be numeric'));
+      } else if(empty($max) == FALSE && is_numeric($max) == FALSE ) {
+        form_set_error('max', t('Value for max must be numeric'));
+      } else {
+        $selection=$this->formToRanges(NULL, $min, $max);
+      }
+    } else if($form_state['values']['exact-radio'] === 'exact'){
       $value=$form_state['values']['value'];
-      $selection=$this->formToRanges($value, '', '');
+      if(empty($value) || is_numeric($value) == FALSE) {
+        form_set_error('value', t('Exact value must be specified as a number'));
+      } else {
+        $selection=$this->formToRanges($value, NULL, NULL);
+      }
     }
     $this->setInverted($inverted === 'notin');
     $this->setRange($selection);
   }
 
   private function formToRanges($value, $min, $max) {
-    return array(array('from' => $min,
-                       'to' => $max,
-                       'value' => $value ));
+    $range = array();
+    if(isset($value)) $range['value'] = $value;
+    if(isset($min)) $range['from'] = $min;
+    if(isset($max)) $range['to'] = $max;
+    return array($range);
   }
 
   function setRange($ranges = array()) {
@@ -380,10 +419,14 @@ class RangeTerm extends AbstractTerm {
     $ranges=$this->ranges();
     if (isset($ranges['0'])) {
       $first_range=$ranges['0'];
-      if ($first_range['value'] === '') {
-        $str_range.='in range: ['.$first_range['from'].', '.$first_range['to'] .'[';
+      if (isset($first_range['from']) || isset($first_range['to'])) {
+        $from = isset($first_range['from']) ? '['. $first_range['from'] : '-*' ; // can't print infinity symbol: &#8734;
+        $to = isset($first_range['to']) ? $first_range['to'] . '[' : '*' ;
+        $str_range.=": $from, $to";
+      } else if(isset($first_range['value'])) {
+        $str_range .= '= '.$first_range['value'];
       } else {
-        $str_range.='= '.$first_range['value'];
+        return $str;
       }
     }
     return $str . ($this->isInverted() ? ' not' :'') . $str_range;

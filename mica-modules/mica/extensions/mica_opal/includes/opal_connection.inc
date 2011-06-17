@@ -256,16 +256,31 @@ END;
         if(count($term->ranges()) > 0) {
           $ranges = $term->ranges();
           $range = $ranges[0];
+          if(isset($range['value'])) {
+          $filter = <<< END
+  "term" : {
+    "{$term->getFieldName()}": {$range['value']}
+  }
+END;
+          } else {
+            $bounds = array();
+          if(isset($range['from'])) {
+            $bounds[] = '"from" : ' . $range['from'];
+            $bounds[] = '"include_lower" : true';
+          }
+          if(isset($range['to'])) {
+            $bounds[] = '"to" : ' . $range['to'];
+            $bounds[] = '"include_upper" : false';
+          }
+          $boundStr =implode(',', $bounds);    
           $filter = <<< END
   "numeric_range" : {
     "{$term->getFieldName()}": {
-      "from" : {$range['from']},
-      "to" : {$range['to']},
-      "include_lower" : true, 
-      "include_upper" : false
+      {$boundStr}
     }
   }
 END;
+          }
         }
         break;
       default:

@@ -517,7 +517,8 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
 //
 
 function mica_datasets_dataset_query_term_edit_page($node, $query, $term) {
-  drupal_set_title(t('!title -- Edit !term in !query', array('!title' => $node->title, '!query' => $query->name, '!term' => $term->id)));
+  $impl = $term->termImpl();
+  drupal_set_title(t('!title -- Edit !term in !query', array('!title' => $node->title, '!query' => $query->name, '!term' => $impl->getFieldName())));
   return  drupal_get_form('mica_datasets_dataset_query_term_edit_form', $node, $query, $term);
 }
 
@@ -543,21 +544,23 @@ function mica_datasets_dataset_query_term_edit_form($form, &$form_state) {
 }
 
 function mica_datasets_dataset_query_term_edit_form_validate($form, &$form_state) {
+  
 }
 
 function mica_datasets_dataset_query_term_edit_form_submit($form, &$form_state) {
-  drupal_set_message(t('Term configuration saved.'));
-
   $dataset_node = $form_state['build_info']['args'][0];
   $query_entity = $form_state['build_info']['args'][1];
   $term_entity = $form_state['build_info']['args'][2];
-  $variable = node_load($term_entity->variable_id);
 
   $impl = $term_entity->termImpl();
   $impl->submit($form, $form_state);
-  $term_entity->save();
 
-  $form_state['redirect'] = _mica_datasets_dataset_query_url($dataset_node, $query_entity);
+  $errors = form_get_errors();
+  if(empty($errors)) {
+    drupal_set_message(t('Term configuration saved.'));
+    $term_entity->save();
+    $form_state['redirect'] = _mica_datasets_dataset_query_url($dataset_node, $query_entity);
+  } 
 }
 
 function variables_autocomplete($dataset_nid, $string) {
