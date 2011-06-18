@@ -255,14 +255,6 @@ function mica_block_info() {
     'cache' => DRUPAL_NO_CACHE,
   );
 
-  $blocks['study-related-content'] = array(
-    'info' => t('Study related content'),
-    'status' => TRUE,
-    'region' => 'sidebar_first',
-    'visibility' => BLOCK_VISIBILITY_LISTED,
-    'pages' => 'node/*',
-  );
-
   return $blocks;
 }
 
@@ -277,18 +269,6 @@ function mica_block_view($delta = '') {
 
   //The $delta parameter tells us which block is being requested.
   switch ($delta) {
-    case 'study-related-content':
-//      if (strpos($_GET['q'],'node/') === 0) {
-//        $node_path = explode('/',$_GET['q']);
-//        if (array_key_exists(1, $node_path)) {
-//          $node = node_load($node_path[1]);
-//          $block['subject'] = t('!title related content', array('!title' => $node->title));
-//          $block['content'] = $node->title;
-//          
-//          return $block;
-//        }
-//      }
-      return;
     case 'powered-by-mica':
       $block['subject'] = NULL;
       $block['content'] = '<span>' . t('Powered by <a href="@poweredby">Mica</a>', array('@poweredby' => 'http://obiba.org')) . '</span>';
