@@ -47,14 +47,14 @@ function mica_standard_install() {
       'cache' => -1,
   ),
   array(
-      'module' => 'node',
-      'delta' => 'recent',
+      'module' => 'mica',
+      'delta' => 'powered-by-mica',
       'theme' => $mica_theme,
       'status' => 1,
       'weight' => 30,
-      'region' => 'sidebar_first',
+      'region' => 'footer',
       'visibility' => 1,
-      'pages' => '<front>',
+      'pages' => '',
       'cache' => -1,
   ),
   array(
