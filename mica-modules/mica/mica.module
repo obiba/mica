@@ -241,20 +241,12 @@ function mica_edit_node_type_relation($form, &$form_state) {
  * This hook declares what blocks are provided by the module.
  */
 function mica_block_info() {
-  $blocks['mica_facet_visibility'] = array(
-    'info' => t('Facet Visibility'),
-    'status' => TRUE,
-    'region' => 'sidebar_first',
-    'visibility' => BLOCK_VISIBILITY_LISTED,
-    'pages' => 'studies-search',
-  );
-
   $blocks['powered-by-mica'] = array(
     'info' => t('Powered by Mica'),
-    'region' => 'footer',
+    'weight' => '10',
     'cache' => DRUPAL_NO_CACHE,
   );
-
+  
   return $blocks;
 }
 
@@ -264,33 +256,13 @@ function mica_block_info() {
  * This hook generates the contents of the blocks themselves.
  */
 function mica_block_view($delta = '') {
-  global $user;
   $block = array();
 
-  //The $delta parameter tells us which block is being requested.
   switch ($delta) {
     case 'powered-by-mica':
       $block['subject'] = NULL;
       $block['content'] = '<span>' . t('Powered by <a href="@poweredby">Mica</a>', array('@poweredby' => 'http://obiba.org')) . '</span>';
       return $block;
-    case 'mica_facet_visibility':
-      if ($user->uid == 0) {
-        // not available for anonymous user
-        return;
-      }
-
-      module_load_include('inc', 'mica', 'includes/blocks');
-      $block['subject'] = t('Search Filters');
-      $content = mica_facet_visibility_block_content();
-
-      if ($content) {
-        $block['content'] = $content;
-        return $block;
-      }
-      else {
-        // no content, then no block
-        return;
-      }
     default:
       return;
   }

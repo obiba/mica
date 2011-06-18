@@ -87,40 +87,6 @@ function mica_studies_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '-34',
   );
-  // Exported menu link: main-menu:studies-search
-  $menu_links['main-menu:studies-search'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'studies-search',
-    'router_path' => 'studies-search',
-    'link_title' => 'Studies Search',
-    'options' => array(),
-    'module' => 'system',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '0',
-    'parent_path' => 'studies',
-  );
-  // Exported menu link: management:admin/config/search/path
-  $menu_links['management:admin/config/search/path'] = array(
-    'menu_name' => 'management',
-    'link_path' => 'admin/config/search/path',
-    'router_path' => 'admin/config/search/path',
-    'link_title' => 'URL aliases',
-    'options' => array(
-      'attributes' => array(
-        'title' => 'Change your site\'s URL paths by aliasing them.',
-      ),
-    ),
-    'module' => 'system',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '1',
-    'expanded' => '0',
-    'weight' => '-5',
-    'parent_path' => 'admin/config/search',
-  );
   // Translatables
   // Included for use with string extractors like potx.
   t('About');
@@ -128,9 +94,6 @@ function mica_studies_menu_default_menu_links() {
   t('Home');
   t('Resources');
   t('Studies');
-  t('Studies Search');
-  t('URL aliases');
-
 
   return $menu_links;
 }

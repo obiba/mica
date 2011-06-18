@@ -50,6 +50,8 @@ include includes/drupal.mk
 #
 
 mica: mica-install
+	cp mica-themes/mica_samara/mica.png target/$(micadir)/themes/seven/logo.png
+	cp mica-themes/mica_samara/favicon.ico target/$(micadir)/misc/favicon.ico
 
 mica-install:
 	cd target/$(micadir) && \

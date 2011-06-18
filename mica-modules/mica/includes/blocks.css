@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+
+#mica-search-api-form table {
+  border-width: 0px;
+}
+
+#mica-search-api-form {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+#mica-search-api-form input.form-submit {
+  margin-left: 5px;
+  margin-top: 4px;
+}
+
+
+#block-mica-studies-mica-search-filters table {
+  border-width: 0px;
+}
+
+#mica-search-filters-form {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+#mica-search-filters-form input.form-submit {
+  margin-left: 5px;
+  margin-top: 4px;
+}
+
+#mica-search-filters-form #edit-block .fieldset-wrapper {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+#mica-search-filters-form #edit-block {
+  padding: 0;
+  margin-bottom: 5px;
+  margin-top: -9px;
+  position:absolute;
+  z-index:1000;
+  width:350px;
+  background-color:#f2f2f2;
+}
+
+#mica-search-filters-form #edit-block .form-item {
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+#mica-search-filters-form #edit-submit {
+  margin-left:5px;
+  margin-top: 5px;
+}

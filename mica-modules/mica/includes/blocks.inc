@@ -7,11 +7,50 @@
  */
 
 /**
- * Facet visibility block content function.
+ * Studies search block content function.
  */
-function mica_facet_visibility_block_content() {
-  
-  //drupal_add_js('jQuery(document).load(function { this.display = "none" });', 'inline');
+function mica_search_api_block_content($search_api_view, $help = '') {
+  // todo check studies index is enabled
+  return drupal_get_form('mica_search_api_form', $search_api_view, $help);
+}
+
+/**
+ * Returns a form for studies full text search.
+ */
+function mica_search_api_form($form, &$form_state) {
+  $form = array(
+    '#attached' => array(
+      'css' => array(drupal_get_path('module', 'mica') . '/includes/blocks.css'),
+    ),
+  );  
+
+  $form['search']  = array(
+    '#type' => 'textfield',
+    '#attributes' => array(
+      'title' => $form_state['build_info']['args'][1],
+    ),
+    '#prefix' => '<table><tr><td>',
+    '#suffix' => '</td>',
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Go'),
+    '#prefix' => '<td>',
+    '#suffix' => '</td></tr></table>',
+  );
+
+  return $form;
+}
+
+function mica_search_api_form_submit($form, &$form_state) {
+  drupal_goto($form_state['build_info']['args'][0] , array('query' => array('search_api_views_fulltext' => $form_state['values']['search'])));
+}
+
+/**
+ * Search filters block content function.
+ */
+function mica_search_filters_block_content() {
   
   global $user;
   $rids = array_keys($user->roles);
@@ -25,16 +64,16 @@ function mica_facet_visibility_block_content() {
       $data = module_invoke($block->module, 'block_info');
       if (array_key_exists($block->delta, $data) && $data[$block->delta]['info']) {
         $blocks[$block->module][$block->module . ':' . $block->delta] = array(
-       	 	'#type' => 'checkbox',
-        	'#title' => check_plain($data[$block->delta]['info']),
-        	'#default_value' => isset($user->data['block'][$block->module][$block->delta]) ? $user->data['block'][$block->module][$block->delta] : ($block->custom == 1),
+          '#type' => 'checkbox',
+          '#title' => check_plain($data[$block->delta]['info']),
+          '#default_value' => isset($user->data['block'][$block->module][$block->delta]) ? $user->data['block'][$block->module][$block->delta] : ($block->custom == 1),
         );
       }
     }
   }
   
   if ($blocks) {
-    return drupal_get_form('mica_facet_visibility_form',$blocks);
+    return drupal_get_form('mica_search_filters_form',$blocks);
   }
   else {
     // nothing to be shown
@@ -45,26 +84,26 @@ function mica_facet_visibility_block_content() {
 /**
  * Returns a form for toggling facet visibility.
  */
-function mica_facet_visibility_form($form, &$form_state, $blocks) {
-  drupal_add_js(drupal_get_path('module', 'mica') . '/includes/filter_facet.js');
+function mica_search_filters_form($form, &$form_state, $blocks) {
   
   $form = array(
-  	'#attached' => array(
-    	'css' => array(drupal_get_path('module', 'mica') . '/includes/facet-visibility.css'),
-  	),
+    '#attached' => array(
+      'css' => array(drupal_get_path('module', 'mica') . '/includes/blocks.css'),
+      'js' => array(drupal_get_path('module', 'mica') . '/includes/search-filters.js'),
+    ),
   );
 
   $form['search_filter']  = array(
     '#type' => 'textfield',
-   	'#attributes' => array ('placeholder' => t('Click here to select filters')),
-   	'#prefix' => '<table><tr><td>',
+     '#attributes' => array ('placeholder' => t('Click here to select filters')),
+     '#prefix' => '<table><tr><td>',
     '#suffix' => '</td>',
   );
 
   $form['submit'] = array(
-  	'#type' => 'submit',
+    '#type' => 'submit',
     '#value' => t('Apply'),
-  	'#prefix' => '<td>',
+    '#prefix' => '<td>',
     '#suffix' => '</td></tr></table>',
   );
   
@@ -80,7 +119,7 @@ function mica_facet_visibility_form($form, &$form_state, $blocks) {
 /**
  * Persist the user preferences about facet visibility.
  */
-function mica_facet_visibility_form_submit($form, &$form_state) {
+function mica_search_filters_form_submit($form, &$form_state) {
   global $user;
 
   foreach ($form_state['values'] as $key => $value) {

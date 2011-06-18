@@ -1673,10 +1673,6 @@ function mica_studies_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'documents';
-  $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Documents';
-  $handler->display->display_options['menu']['weight'] = '0';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
   $translatables['documents'] = array(
     t('Master'),
     t('Documents'),
@@ -1853,10 +1849,6 @@ function mica_studies_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'news';
-  $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'News';
-  $handler->display->display_options['menu']['weight'] = '0';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
   $translatables['news'] = array(
     t('Master'),
     t('Recent News'),
@@ -2052,9 +2044,6 @@ function mica_studies_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'studies';
-  $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Studies';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
   $translatables['studies'] = array(
     t('Master'),
     t('Studies'),
@@ -2166,11 +2155,6 @@ function mica_studies_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'studies-search';
-  $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Studies Search';
-  $handler->display->display_options['menu']['weight'] = '0';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
-  $handler->display->display_options['tab_options']['weight'] = '0';
   $translatables['studies_search'] = array(
     t('Master'),
     t('Studies Search'),
