@@ -40,7 +40,7 @@ function node_reference_block_block_view($delta = '') {
 function _node_reference_block_related_content_block_content() {
   if (strpos($_GET['q'],'node/') === 0) {
     $node_path = explode('/',$_GET['q']);
-    if (array_key_exists(1, $node_path)) {
+    if (array_key_exists(1, $node_path) && is_numeric($node_path[1])) {
       $node = node_load($node_path[1]);
       $related_content = array();
 
