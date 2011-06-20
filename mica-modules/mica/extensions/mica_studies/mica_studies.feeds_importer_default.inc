@@ -397,6 +397,31 @@ function mica_studies_feeds_importer_default() {
             'target' => 'field_logo',
             'unique' => FALSE,
           ),
+          6 => array(
+            'source' => 'field_full_name',
+            'target' => 'field_full_name',
+            'unique' => FALSE,
+          ),
+          7 => array(
+            'source' => 'field_investigator',
+            'target' => 'field_investigator:title',
+            'unique' => FALSE,
+          ),
+          8 => array(
+            'source' => 'field_contact',
+            'target' => 'field_contact:title',
+            'unique' => FALSE,
+          ),
+          9 => array(
+            'source' => 'field_target_number_participants',
+            'target' => 'field_target_number_participants',
+            'unique' => FALSE,
+          ),
+          10 => array(
+            'source' => 'field_p3g_observatory_link',
+            'target' => 'field_p3g_observatory_link:url',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',
@@ -454,123 +479,98 @@ function mica_studies_feeds_importer_default() {
             'unique' => FALSE,
           ),
           2 => array(
-            'source' => 'field_investigator',
-            'target' => 'field_investigator:title',
-            'unique' => FALSE,
-          ),
-          3 => array(
-            'source' => 'field_contact',
-            'target' => 'field_contact:title',
-            'unique' => FALSE,
-          ),
-          4 => array(
             'source' => 'field_design',
             'target' => 'field_design',
             'unique' => FALSE,
           ),
-          5 => array(
+          3 => array(
             'source' => 'field_design_other',
             'target' => 'field_design_other',
             'unique' => FALSE,
           ),
-          6 => array(
+          4 => array(
             'source' => 'field_design_target',
             'target' => 'field_design_target',
             'unique' => FALSE,
           ),
-          7 => array(
+          5 => array(
             'source' => 'field_target_other',
             'target' => 'field_target_other',
             'unique' => FALSE,
           ),
-          8 => array(
-            'source' => 'field_target_number_participants',
-            'target' => 'field_target_number_participants',
-            'unique' => FALSE,
-          ),
-          9 => array(
+          6 => array(
             'source' => 'field_selection_criteria',
             'target' => 'field_selection_criteria',
             'unique' => FALSE,
           ),
-          10 => array(
+          7 => array(
             'source' => 'field_gender',
             'target' => 'field_gender',
             'unique' => FALSE,
           ),
-          11 => array(
+          8 => array(
             'source' => 'field_study_country',
             'target' => 'field_study_country',
             'unique' => FALSE,
           ),
-          12 => array(
+          9 => array(
             'source' => 'field_age_min',
             'target' => 'field_age_min',
             'unique' => FALSE,
           ),
-          13 => array(
+          10 => array(
             'source' => 'field_age_max',
             'target' => 'field_age_max',
             'unique' => FALSE,
           ),
-          14 => array(
+          11 => array(
             'source' => 'field_biosamples_collected',
             'target' => 'field_biosamples_collected',
             'unique' => FALSE,
           ),
-          15 => array(
+          12 => array(
             'source' => 'field_biosamples_collected_other',
             'target' => 'field_biosamples_collected_other',
             'unique' => FALSE,
           ),
-          16 => array(
+          13 => array(
             'source' => 'field_biosamples_tissues',
             'target' => 'field_biosamples_tissues',
             'unique' => FALSE,
           ),
-          17 => array(
+          14 => array(
             'source' => 'field_gwas_analysis',
             'target' => 'field_gwas_analysis',
             'unique' => FALSE,
           ),
-          18 => array(
+          15 => array(
             'source' => 'field_gwas_number',
             'target' => 'field_gwas_number',
             'unique' => FALSE,
           ),
-          19 => array(
+          16 => array(
             'source' => 'field_access',
             'target' => 'field_access',
             'unique' => FALSE,
           ),
-          20 => array(
+          17 => array(
             'source' => 'field_access_other',
             'target' => 'field_access_other',
             'unique' => FALSE,
           ),
-          21 => array(
+          18 => array(
             'source' => 'field_status_start',
             'target' => 'field_status_start',
             'unique' => FALSE,
           ),
-          22 => array(
+          19 => array(
             'source' => 'field_status_end',
             'target' => 'field_status_end',
             'unique' => FALSE,
           ),
-          23 => array(
+          20 => array(
             'source' => 'field_study_legacy_id',
             'target' => 'field_study_legacy_id',
-            'unique' => FALSE,
-          ),
-          24 => array(
-            'source' => 'field_full_name',
-            'target' => 'field_full_name',
-            'unique' => FALSE,
-          ),
-          25 => array(
-            'source' => 'field_p3g_observatory_link',
-            'target' => 'field_p3g_observatory_link:url',
             'unique' => FALSE,
           ),
         ),

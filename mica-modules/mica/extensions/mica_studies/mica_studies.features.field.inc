@@ -3335,8 +3335,8 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-study_information-field_contact'
-  $fields['node-study_information-field_contact'] = array(
+  // Exported field: 'node-study-field_contact'
+  $fields['node-study-field_contact'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -3391,7 +3391,7 @@ Prof.',
       'type' => 'node_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'study_information',
+      'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -3420,7 +3420,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_contact',
-      'label' => 'Contact',
+      'label' => 'Contacts',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -3691,8 +3691,8 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-study_information-field_full_name'
-  $fields['node-study_information-field_full_name'] = array(
+  // Exported field: 'node-study-field_full_name'
+  $fields['node-study-field_full_name'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -3732,7 +3732,7 @@ Prof.',
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'study_information',
+      'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -4012,8 +4012,8 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-study_information-field_investigator'
-  $fields['node-study_information-field_investigator'] = array(
+  // Exported field: 'node-study-field_investigator'
+  $fields['node-study-field_investigator'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -4069,7 +4069,7 @@ Prof.',
       'type' => 'node_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'study_information',
+      'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -4098,7 +4098,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_investigator',
-      'label' => 'Investigator',
+      'label' => 'Investigators',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -4117,8 +4117,8 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-study_information-field_p3g_observatory_link'
-  $fields['node-study_information-field_p3g_observatory_link'] = array(
+  // Exported field: 'node-study-field_p3g_observatory_link'
+  $fields['node-study-field_p3g_observatory_link'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -4158,7 +4158,7 @@ Prof.',
       'type' => 'link_field',
     ),
     'field_instance' => array(
-      'bundle' => 'study_information',
+      'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -4924,8 +4924,8 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-study_information-field_target_number_participants'
-  $fields['node-study_information-field_target_number_participants'] = array(
+  // Exported field: 'node-study-field_target_number_participants'
+  $fields['node-study-field_target_number_participants'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -4953,7 +4953,7 @@ Prof.',
       'type' => 'number_integer',
     ),
     'field_instance' => array(
-      'bundle' => 'study_information',
+      'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -5101,7 +5101,7 @@ Prof.',
   t('Categories');
   t('City');
   t('Comment');
-  t('Contact');
+  t('Contacts');
   t('Contact Name');
   t('Content Type');
   t('Content Type Label');
@@ -5113,7 +5113,7 @@ Prof.',
   t('Files');
   t('Full Name');
   t('Institution');
-  t('Investigator');
+  t('Investigators');
   t('Label');
   t('Legacy Id');
   t('Logo');

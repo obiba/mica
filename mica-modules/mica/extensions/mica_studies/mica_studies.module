@@ -157,19 +157,20 @@ function _mica_import_relations() {
 function _mica_import_field_groups() {
   module_load_include('inc', 'mica', 'includes/fieldgroups');
   
-  // STUDY
-  _mica_add_fieldset_group('study','group_details', 'Details', '3', '', array(
-    'mica_study_information',
-    'mica_study_documents',
-  ));
-  
-  // STUDY INFORMATION : GENERAL INFO
-  _mica_add_fieldset_group('study_information','group_general_info', 'General Information', '0', '', array(
+  // STUDY: GENERAL INFO
+  _mica_add_fieldset_group('study','group_general_info', 'General Information', '2', '', array(
     'field_full_name',
+    'field_website',
     'field_investigator',
     'field_contact',
     'field_target_number_participants',
     'field_p3g_observatory_link',
+  ));
+  
+  // STUDY
+  _mica_add_fieldset_group('study','group_details', 'Details', '3', '', array(
+    'mica_study_information',
+    'mica_study_documents',
   ));
   
   // STUDY INFORMATION : METHOD
@@ -233,7 +234,7 @@ function _mica_node_reference_block() {
     ->condition('type', 'study%','LIKE')
     ->execute();
   $query = db_insert('block_node_type')->fields(array('type', 'module', 'delta'));
-  foreach (array('study', 'study_information','study_documents') as $type) {
+  foreach (array('study', 'study_information','study_documents','contact','institution') as $type) {
     $query->values(array(
       'type' => $type,
       'module' => 'node_reference_block',
