@@ -8,7 +8,7 @@
 function node_reference_block_block_info() {
 
   $blocks['related-content'] = array(
-    'info' => t('Related content'),
+    'info' => t('Related information'),
     'status' => TRUE,
     'region' => 'sidebar_first',
     'visibility' => BLOCK_VISIBILITY_LISTED,
@@ -119,7 +119,7 @@ function _node_reference_block_related_content_block_content() {
       }
       $content .= '</ul>';
 
-      $block['subject'] = t('Related content');
+      $block['subject'] = t('Related information');
       $block['content'] = $content;
 
       return $block;
