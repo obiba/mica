@@ -939,6 +939,31 @@ function mica_studies_views_default_views() {
     'prefix_suffix' => 1,
   );
   $handler->display->display_options['fields']['field_target_number_participants']['field_api_classes'] = 0;
+  /* Field: Content: Target Number of Biological Samples */
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['id'] = 'field_target_number_biosamples_1';
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['table'] = 'field_data_field_target_number_biosamples';
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['field'] = 'field_target_number_biosamples';
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['label'] = 'field_target_number_biosamples';
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['field_api_classes'] = 0;
   /* Field: Content: P3G Observatory Link */
   $handler->display->display_options['fields']['field_p3g_observatory_link']['id'] = 'field_p3g_observatory_link';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['table'] = 'field_data_field_p3g_observatory_link';
@@ -1305,31 +1330,6 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_study_country']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_study_country']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_study_country']['field_api_classes'] = 0;
-  /* Field: Content: Target Number of Biological Samples */
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['id'] = 'field_target_number_biosamples_1';
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['table'] = 'field_data_field_target_number_biosamples';
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['field'] = 'field_target_number_biosamples';
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['label'] = 'field_target_number_biosamples';
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['field_api_classes'] = 0;
   /* Field: Content: Biological Samples Collected */
   $handler->display->display_options['fields']['field_biosamples_collected']['id'] = 'field_biosamples_collected';
   $handler->display->display_options['fields']['field_biosamples_collected']['table'] = 'field_data_field_biosamples_collected';

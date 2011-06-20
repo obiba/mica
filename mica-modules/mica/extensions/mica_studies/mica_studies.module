@@ -13,7 +13,6 @@ function mica_studies_install() {
   _mica_import_relations();
   _mica_import_field_groups();
   _mica_import_custom_name_format();
-  //_mica_fix_menus();
   _mica_node_reference_block();
 }
 
@@ -164,6 +163,7 @@ function _mica_import_field_groups() {
     'field_investigator',
     'field_contact',
     'field_target_number_participants',
+    'field_target_number_biosamples',
     'field_p3g_observatory_link',
   ));
   
@@ -184,7 +184,6 @@ function _mica_import_field_groups() {
     'field_gender',
     'field_age_min',
     'field_age_max',
-    'field_target_number_biosamples',
     'field_biosamples_collected',
     'field_biosamples_collected_other',
     'field_biosamples_tissues',
@@ -214,18 +213,6 @@ function _mica_import_custom_name_format(){
   );
   drupal_write_record('name_custom_format', $custom_format);
 } 
-
-function _mica_fix_menus() {
-  // fix community path as feature does not support severals menus with same path
-  $num_updated = db_update('menu_links')
-    ->fields(array(
-      'link_path' => '<firstchild>',
-      'router_path' => '<firstchild>',
-      ))  
-    ->condition('menu_name', 'main-menu')
-  	->condition('link_title', t('Community'))
-  	->execute();
-}
 
 function _mica_node_reference_block() {
   db_delete('block_node_type')

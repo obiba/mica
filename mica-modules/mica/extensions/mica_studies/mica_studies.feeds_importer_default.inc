@@ -418,6 +418,11 @@ function mica_studies_feeds_importer_default() {
             'unique' => FALSE,
           ),
           10 => array(
+            'source' => 'field_target_number_biosamples',
+            'target' => 'field_target_number_biosamples',
+            'unique' => FALSE,
+          ),
+          11 => array(
             'source' => 'field_p3g_observatory_link',
             'target' => 'field_p3g_observatory_link:url',
             'unique' => FALSE,

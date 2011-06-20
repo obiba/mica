@@ -636,7 +636,7 @@ function mica_studies_default_search_api_index() {
         },
         "mica_study_information" : {
           "name" : "Study Information",
-          "indexed" : 1,
+          "indexed" : 0,
           "type" : "integer",
           "entity_type" : "node",
           "boost" : "1.0"
@@ -768,7 +768,7 @@ function mica_studies_default_search_api_index() {
         "field_study_country" : { "name" : "Country", "indexed" : 0, "type" : "string", "boost" : "1.0" },
         "field_target_number_biosamples" : {
           "name" : "Target Number of Biological Samples",
-          "indexed" : 0,
+          "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
@@ -1032,30 +1032,12 @@ function mica_studies_default_search_api_index() {
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
-        "mica_study_information:field_target_number_biosamples" : {
-          "name" : "Study Information \\u00bb Target Number of Biological Samples",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
         "mica_study_information:field_target_other" : {
           "name" : "Study Information \\u00bb Specify type of target",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
-        "mica_study_information:field_list_int" : {
-          "name" : "Study Information \\u00bb List Int",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "mica_study_information:field_list_int2" : {
-          "name" : "Study Information \\u00bb List int2",
-          "indexed" : true,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {

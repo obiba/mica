@@ -4844,8 +4844,8 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-study_information-field_target_number_biosamples'
-  $fields['node-study_information-field_target_number_biosamples'] = array(
+  // Exported field: 'node-study-field_target_number_biosamples'
+  $fields['node-study-field_target_number_biosamples'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -4873,7 +4873,7 @@ Prof.',
       'type' => 'number_integer',
     ),
     'field_instance' => array(
-      'bundle' => 'study_information',
+      'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
