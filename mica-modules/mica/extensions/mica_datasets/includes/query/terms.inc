@@ -26,6 +26,11 @@ interface QueryTermInterface {
    * Returns true when this term's condition should be inverted (not operator)
    */
   function isInverted();
+  
+  /**
+   * Returns an HTML block to display a query term
+   */
+  function view();
 
   /**
    * Returns a form for editing this term
