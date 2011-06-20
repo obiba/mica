@@ -4,11 +4,11 @@
 
 /* Background */
 body {
-  background: #F3F4EB url(../images/index.png) repeat scroll top left;
+  background: #FBFBFB url(../images/index.png) repeat scroll top left;
 }
 
 #site-name a {
-  color: #393939;
+  color: #5D87A1;
 }
 
 #site-name a:hover {
@@ -16,7 +16,7 @@ body {
 }
 
 #navigation > ul > li.active-trail {
-  background-color: #888;
+  background-color: #4A6C81;
   color: #ffffff;
 }
 /* Text (black) */
@@ -29,7 +29,7 @@ samp,
 var,
 table.update tr,
 table.system-status-report tr {
-  color: #393939;
+  color: ##2E2E2E;
 }
 
 h1.page-title,
@@ -37,7 +37,7 @@ h1.page-title,
 .node h1.node-title a,
 .node h2.node-title a,
 .comment h3.title a {
-  color: #393939;
+  color: #2E2E2E;
   text-shadow:0 1px 1px white;
   padding-bottom: 5px;
 }
@@ -61,7 +61,7 @@ li a.active {
   color: #035c94;
 }
 legend {
-  background-color: #086782;
+  background-color: #4A6C81;
 }
 /* Link hovered (orange) */
 a:hover,
@@ -70,7 +70,7 @@ a.active:hover,
 a.active:focus,
 li a.active:hover,
 li a.active:focus {
-  border-bottom-style: dashed;
+  border-bottom-style: solid;
 }
 .node h1.node-title a:hover,
 .node h2.node-title a:hover {
@@ -87,23 +87,23 @@ a {
   -webkit-border-radius: 10px 10px 10px 10px;
   -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.12) inset;
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.12) inset;
-  background-color: #eeeeee;
+  background-color: #ffffff;
 }
 
 .block .content {
-  color: #393939;
+  color: #2E2E2E;
 }
 
 .block .content a {
-  color: #393939;
+  color: #5D87A1;
   font-weight: bold;
 }
 
 
 /* Navigation (black) */
 #navigation-wrapper {
-  background-color: #402817;
-  border-bottom: 2px solid #888;
+  background-color: #5D87A1;
+  border-bottom: 2px solid #4A6C81;
   text-shadow:0 1px 1px black;
 }
 /* Navigation hovered (orange) */
@@ -111,37 +111,43 @@ a {
 #navigation li a:active,
 #navigation li a:focus {
   color: #eee;
-  background-color: #888;
+  background-color: #4A6C81;
   text-shadow:0 1px 1px black;
 }
 
 /* Navigation active (orange) */
 #navigation > ul > li.active-trail > a {
   color: #eee;
-  background-color: #888;
+  background-color: #4A6C81;
 }
+
+
 #navigation > ul > li.active-trail > a:hover,
 #navigation > ul > li:hover > a,
 #navigation > ul > li > li.active:hover > span > a,
 #navigation .expanded:hover,
 #navigation li.expanded li a {
-  color: #eee;
+  color: #ffffff;
+  background-color: #4A6C81;
 }
 #navigation > ul > li > a {
-  color: #eee;
-  font-size: 1.1em;
+  color: #ffffff;
+  font-size: 1.2em;
   font-weight: bold;
   line-height: 1.3;
   text-shadow: 0 1px 1px black;
+  font-family: "Hanuman", arial, sans-serif;
 }
 #navigation li.expanded ul {
-  background-color: #888;
+  background-color: #4A6C81;
 }
 #navigation li.expanded li a {
+  font-family: "Hanuman", arial, sans-serif;*/
+  font-size: 1em;
   font-weight: bold;
 }
 #navigation li.expanded li a:hover {
-  background-color: #4B4B4B;
+  background-color: #5D87A1;
 }
 
 /* Slogan (orange) */
@@ -185,21 +191,25 @@ ul.vertical-tabs-list li a {
 /* Block title (green) */
 .block h2 {
   color: #ffffff;
-  background-color: #4b4b4b;
+  background-color: #4A6C81;
   border-bottom: none;
   margin: 0;
+  text-shadow:none;
+  /*font-weight:bold;*/
+  font-family: "Hanuman", arial, sans-serif;
+  font-size: 1em;
 }
 .block h2::selection {
-  color: #fff;
+  color: #ffffff;
   background-color: #ffffff;
 }
 .block h2::-moz-selection {
   background-color: #ffffff;
-  color: #fff;
+  color: #ffffff;
 }
 /* Fieldset (gray) */
 fieldset {
-  background-color: #e3e3e3;
+  background-color: #f9f9f9;
 }
 /* Fieldset border (dark gray) */
 fieldset {
@@ -228,6 +238,12 @@ fieldset {
 }
 #login-status #user-name {
   font-weight: bold;
+}
+
+th, thead, thead th {
+  background-color: #4A6C81;
+  color: #FFFFFF;
+  font-weight:bold;
 }
 
 

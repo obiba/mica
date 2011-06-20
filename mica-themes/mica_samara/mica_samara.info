@@ -25,14 +25,14 @@ settings[color_scheme]          = default
 settings[base_font_size]        = 12px
 settings[sidebar_first_weight]  = 1
 settings[sidebar_second_weight] = 2
-settings[layout_1_width]        = 60%
-settings[layout_1_min_width]    = 550px
-settings[layout_1_max_width]    = 800px
-settings[layout_2_width]        = 85%
+settings[layout_1_width]        = 95%
+settings[layout_1_min_width]    = 800px
+settings[layout_1_max_width]    = 2000px
+settings[layout_2_width]        = 95%
 settings[layout_2_min_width]    = 800px
-settings[layout_2_max_width]    = 1000px
-settings[layout_3_width]        = 85%
+settings[layout_2_max_width]    = 2000px
+settings[layout_3_width]        = 95%
 settings[layout_3_min_width]    = 800px
-settings[layout_3_max_width]    = 1000px
+settings[layout_3_max_width]    = 2000px
 settings[copyright_information] = "2011 © Copyright information <a href='http://obiba.org'>OBiBa</a>"
 
