@@ -1,12 +1,12 @@
 @CHARSET "UTF-8";
 
-#mica-search-api-form table {
-  border-width: 0px;
-}
-
 #mica-search-api-form {
   padding-top: 0px;
   padding-bottom: 0px;
+}
+
+#mica-search-api-form table, #mica-search-api-form tr {
+  border-width: 0px;
 }
 
 #mica-search-api-form input.form-submit {
@@ -14,6 +14,10 @@
   margin-top: 4px;
 }
 
+#mica-search-api-form div.advanced {
+  font-size: smaller;
+  margin-bottom: 5px;
+}
 
 #block-mica-studies-mica-search-filters table {
   border-width: 0px;

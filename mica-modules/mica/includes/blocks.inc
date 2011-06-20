@@ -32,7 +32,7 @@ function mica_search_api_form($form, &$form_state) {
     '#prefix' => '<table><tr><td>',
     '#suffix' => '</td>',
   );
-
+  
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Go'),
@@ -40,6 +40,14 @@ function mica_search_api_form($form, &$form_state) {
     '#suffix' => '</td></tr></table>',
   );
 
+  $form['link']  = array(
+    '#type' => 'link',
+    '#title' => t('Advanced search'),
+    '#href' => $form_state['build_info']['args'][0],
+    '#prefix' => '<div class="advanced">',
+    '#suffix' => '</div>',
+  );
+  
   return $form;
 }
 
