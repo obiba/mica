@@ -268,10 +268,10 @@ function mica_studies_feeds_importer_default() {
   $feeds_importer = new stdClass;
   $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
   $feeds_importer->api_version = 1;
-  $feeds_importer->id = 'csv_study_files_importer';
+  $feeds_importer->id = 'csv_study_documents_importer';
   $feeds_importer->config = array(
-    'name' => 'Study Files',
-    'description' => 'Import Study Files from a CSV file',
+    'name' => 'Study Documents',
+    'description' => 'Import Study Documents from a CSV file',
     'fetcher' => array(
       'plugin_key' => 'FeedsFileFetcher',
       'config' => array(
@@ -291,7 +291,7 @@ function mica_studies_feeds_importer_default() {
     'processor' => array(
       'plugin_key' => 'FeedsMicaProcessor',
       'config' => array(
-        'content_type' => 'study_files',
+        'content_type' => 'study_documents',
         'expire' => '-1',
         'author' => 0,
         'parent_bundle' => 'study',
@@ -318,8 +318,8 @@ function mica_studies_feeds_importer_default() {
             'unique' => FALSE,
           ),
           4 => array(
-            'source' => 'field_study_files',
-            'target' => 'field_study_files',
+            'source' => 'field_study_documents',
+            'target' => 'field_study_documents',
             'unique' => FALSE,
           ),
         ),
@@ -334,7 +334,7 @@ function mica_studies_feeds_importer_default() {
     'import_on_create' => 1,
     'process_in_background' => 0,
   );
-  $export['csv_study_files_importer'] = $feeds_importer;
+  $export['csv_study_documents_importer'] = $feeds_importer;
 
   $feeds_importer = new stdClass;
   $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */

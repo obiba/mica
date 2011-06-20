@@ -231,7 +231,7 @@ function mica_studies_default_page_manager_handlers() {
     $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:mica_study_files';
+    $pane->subtype = 'node:mica_study_documents';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(

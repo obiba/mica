@@ -13,7 +13,8 @@ function mica_studies_install() {
   _mica_import_relations();
   _mica_import_field_groups();
   _mica_import_custom_name_format();
-  _mica_fix_menus();
+  //_mica_fix_menus();
+  _mica_node_reference_block();
 }
 
 /**
@@ -141,15 +142,15 @@ function _mica_import_relations() {
 
   $relation = new MicaRelation();
   $relation->parent_bundle = 'study';
-  $relation->child_bundle = 'study_files';
-  $relation->label = 'Study » Study Files';
-  $relation->options['node_reference'] = 'mica_study_files';
+  $relation->child_bundle = 'study_documents';
+  $relation->label = 'Study » Study Documents';
+  $relation->options['node_reference'] = 'mica_study_documents';
   $relation->options['indexed'] = FALSE;
   $relation->options['child_indexes'] = array();
   $relation->options['cascaded'] = TRUE;
-  $relation->options['relation'] = 'study_study_files';
-  $relation->options['relation_parent_field'] = 'study_files_relation';
-  $relation->options['relation_child_field'] = 'study_files';
+  $relation->options['relation'] = 'study_study_documents';
+  $relation->options['relation_parent_field'] = 'study_documents_relation';
+  $relation->options['relation_child_field'] = 'study_documents';
   $relation->save();
 }
 
@@ -159,7 +160,7 @@ function _mica_import_field_groups() {
   // STUDY
   _mica_add_fieldset_group('study','group_details', 'Details', '3', '', array(
     'mica_study_information',
-    'mica_study_files',
+    'mica_study_documents',
   ));
   
   // STUDY INFORMATION : GENERAL INFO
@@ -225,3 +226,19 @@ function _mica_fix_menus() {
   	->execute();
 }
 
+function _mica_node_reference_block() {
+  db_delete('block_node_type')
+    ->condition('module', 'node_reference_block')
+    ->condition('delta', 'related-content')
+    ->condition('type', 'study%','LIKE')
+    ->execute();
+  $query = db_insert('block_node_type')->fields(array('type', 'module', 'delta'));
+  foreach (array('study', 'study_information','study_documents') as $type) {
+    $query->values(array(
+      'type' => $type,
+      'module' => 'node_reference_block',
+      'delta' => 'related-content',
+    ));
+  }
+  $query->execute();
+}

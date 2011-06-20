@@ -69,8 +69,8 @@ function mica_studies_node_info() {
       'title_label' => t('Name'),
       'help' => '',
     ),
-    'study_files' => array(
-      'name' => t('Study Files'),
+    'study_documents' => array(
+      'name' => t('Study Documents'),
       'base' => 'mica',
       'description' => t('Files attached to a Study. Child of Study.'),
       'has_title' => '1',
@@ -291,8 +291,8 @@ function mica_studies_default_search_api_index() {
           "type" : "integer",
           "boost" : "1.0"
         },
-        "mica_study_files" : {
-          "name" : "Study Files",
+        "mica_study_documents" : {
+          "name" : "Study Documents",
           "indexed" : 0,
           "type" : "integer",
           "entity_type" : "node",
@@ -627,8 +627,8 @@ function mica_studies_default_search_api_index() {
           "type" : "integer",
           "boost" : "1.0"
         },
-        "mica_study_files" : {
-          "name" : "Study Files",
+        "mica_study_documents" : {
+          "name" : "Study Documents",
           "indexed" : 0,
           "type" : "integer",
           "entity_type" : "node",
@@ -1087,7 +1087,7 @@ function mica_studies_default_search_api_index() {
             "bundles" : {
               "study" : "study",
               "study_information" : "study_information",
-              "study_files" : "study_files"
+              "study_documents" : "study_documents"
             }
           }
         },

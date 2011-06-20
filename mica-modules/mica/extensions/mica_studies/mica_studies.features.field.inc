@@ -376,8 +376,8 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'comment-comment_node_study_files-comment_body'
-  $fields['comment-comment_node_study_files-comment_body'] = array(
+  // Exported field: 'comment-comment_node_study_documents-comment_body'
+  $fields['comment-comment_node_study_documents-comment_body'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -405,7 +405,7 @@ function mica_studies_field_default_fields() {
       'type' => 'text_long',
     ),
     'field_instance' => array(
-      'bundle' => 'comment_node_study_files',
+      'bundle' => 'comment_node_study_documents',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -2356,14 +2356,14 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-study-mica_study_files'
-  $fields['node-study-mica_study_files'] = array(
+  // Exported field: 'node-study-mica_study_documents'
+  $fields['node-study-mica_study_documents'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'mica_study_files',
+      'field_name' => 'mica_study_documents',
       'foreign keys' => array(
         'nid' => array(
           'columns' => array(
@@ -2384,7 +2384,7 @@ Prof.',
           'view' => 'view',
         ),
         'referenceable_types' => array(
-          'study_files' => 'study_files',
+          'study_documents' => 'study_documents',
         ),
         'view' => array(
           'args' => array(),
@@ -2416,8 +2416,8 @@ Prof.',
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'mica_study_files',
-      'label' => 'Study Files',
+      'field_name' => 'mica_study_documents',
+      'label' => 'Study Documents',
       'required' => FALSE,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -2510,8 +2510,8 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-study_files-body'
-  $fields['node-study_files-body'] = array(
+  // Exported field: 'node-study_documents-body'
+  $fields['node-study_documents-body'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -2557,7 +2557,7 @@ Prof.',
       'type' => 'text_with_summary',
     ),
     'field_instance' => array(
-      'bundle' => 'study_files',
+      'bundle' => 'study_documents',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -2601,14 +2601,14 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-study_files-field_study_files'
-  $fields['node-study_files-field_study_files'] = array(
+  // Exported field: 'node-study_documents-field_study_documents'
+  $fields['node-study_documents-field_study_documents'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_study_files',
+      'field_name' => 'field_study_documents',
       'foreign keys' => array(
         'fid' => array(
           'columns' => array(
@@ -2644,7 +2644,7 @@ Prof.',
       'type' => 'file',
     ),
     'field_instance' => array(
-      'bundle' => 'study_files',
+      'bundle' => 'study_documents',
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -2663,7 +2663,7 @@ Prof.',
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_study_files',
+      'field_name' => 'field_study_documents',
       'label' => 'Files',
       'required' => 0,
       'settings' => array(
@@ -2685,8 +2685,8 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-study_files-field_study_legacy_id'
-  $fields['node-study_files-field_study_legacy_id'] = array(
+  // Exported field: 'node-study_documents-field_study_legacy_id'
+  $fields['node-study_documents-field_study_legacy_id'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -2714,7 +2714,7 @@ Prof.',
       'type' => 'number_integer',
     ),
     'field_instance' => array(
-      'bundle' => 'study_files',
+      'bundle' => 'study_documents',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -5135,7 +5135,7 @@ Prof.',
   t('Specify type of tissues collected');
   t('Start year');
   t('Street');
-  t('Study Files');
+  t('Study Documents');
   t('Study Information');
   t('Study Legacy Id');
   t('Target Number of Biological Samples');

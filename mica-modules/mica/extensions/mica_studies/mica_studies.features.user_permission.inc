@@ -86,9 +86,9 @@ function mica_studies_user_default_permissions() {
     'module' => 'feeds',
   );
 
-  // Exported permission: clear csv_study_files_importer feeds
-  $permissions['clear csv_study_files_importer feeds'] = array(
-    'name' => 'clear csv_study_files_importer feeds',
+  // Exported permission: clear csv_study_documents_importer feeds
+  $permissions['clear csv_study_documents_importer feeds'] = array(
+    'name' => 'clear csv_study_documents_importer feeds',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -159,9 +159,9 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: create mica_study_files
-  $permissions['create mica_study_files'] = array(
-    'name' => 'create mica_study_files',
+  // Exported permission: create mica_study_documents
+  $permissions['create mica_study_documents'] = array(
+    'name' => 'create mica_study_documents',
     'roles' => array(),
   );
 
@@ -204,9 +204,9 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: create study_files content
-  $permissions['create study_files content'] = array(
-    'name' => 'create study_files content',
+  // Exported permission: create study_documents content
+  $permissions['create study_documents content'] = array(
+    'name' => 'create study_documents content',
     'roles' => array(
       0 => 'administrator',
       1 => 'mica administrator',
@@ -297,9 +297,9 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any study_files content
-  $permissions['delete any study_files content'] = array(
-    'name' => 'delete any study_files content',
+  // Exported permission: delete any study_documents content
+  $permissions['delete any study_documents content'] = array(
+    'name' => 'delete any study_documents content',
     'roles' => array(
       0 => 'administrator',
       1 => 'mica administrator',
@@ -390,9 +390,9 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete own study_files content
-  $permissions['delete own study_files content'] = array(
-    'name' => 'delete own study_files content',
+  // Exported permission: delete own study_documents content
+  $permissions['delete own study_documents content'] = array(
+    'name' => 'delete own study_documents content',
     'roles' => array(
       0 => 'administrator',
       1 => 'mica administrator',
@@ -494,9 +494,9 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any study_files content
-  $permissions['edit any study_files content'] = array(
-    'name' => 'edit any study_files content',
+  // Exported permission: edit any study_documents content
+  $permissions['edit any study_documents content'] = array(
+    'name' => 'edit any study_documents content',
     'roles' => array(
       0 => 'administrator',
       1 => 'mica administrator',
@@ -589,9 +589,9 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit own study_files content
-  $permissions['edit own study_files content'] = array(
-    'name' => 'edit own study_files content',
+  // Exported permission: edit own study_documents content
+  $permissions['edit own study_documents content'] = array(
+    'name' => 'edit own study_documents content',
     'roles' => array(
       0 => 'administrator',
       1 => 'mica administrator',
@@ -637,9 +637,9 @@ function mica_studies_user_default_permissions() {
     'module' => 'feeds',
   );
 
-  // Exported permission: import csv_study_files_importer feeds
-  $permissions['import csv_study_files_importer feeds'] = array(
-    'name' => 'import csv_study_files_importer feeds',
+  // Exported permission: import csv_study_documents_importer feeds
+  $permissions['import csv_study_documents_importer feeds'] = array(
+    'name' => 'import csv_study_documents_importer feeds',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -725,9 +725,9 @@ function mica_studies_user_default_permissions() {
     'module' => 'search_api_ranges',
   );
 
-  // Exported permission: view mica_study_files
-  $permissions['view mica_study_files'] = array(
-    'name' => 'view mica_study_files',
+  // Exported permission: view mica_study_documents
+  $permissions['view mica_study_documents'] = array(
+    'name' => 'view mica_study_documents',
     'roles' => array(),
   );
 
