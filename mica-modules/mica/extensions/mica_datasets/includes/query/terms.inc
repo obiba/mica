@@ -76,7 +76,6 @@ abstract class AbstractTerm implements QueryTermInterface {
 
   static function typeFor($variable) {
     $is_categorical=$variable->field_categories['und'][0]['value'] != '';
-    debug($is_categorical);
     $type=$variable->field_value_type['und'][0]['value'];
     if($is_categorical) {
       return 'CategoryTerm';
