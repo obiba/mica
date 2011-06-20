@@ -16,7 +16,7 @@ function mica_demo_install() {
       'is_new' => TRUE,
       'pass' => 'password',
       'status' => 1,
-    'roles' => array('4' => 'mica administrator'),
+    'roles' => array('4' => 'consortium administrator'),
   );
   user_save(null, $user);
 
