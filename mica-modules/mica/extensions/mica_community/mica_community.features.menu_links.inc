@@ -76,7 +76,7 @@ function mica_community_menu_default_menu_links() {
     'hidden' => '0',
     'external' => '0',
     'has_children' => '1',
-    'expanded' => '0',
+    'expanded' => '1',
     'weight' => '0',
     'parent_path' => 'community',
   );
