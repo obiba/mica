@@ -587,7 +587,6 @@ function mica_studies_default_search_api_index() {
           "entity_type" : "taxonomy_term",
           "boost" : "1.0"
         },
-        "field_event_date" : { "name" : "Event Date", "indexed" : 0, "type" : "date", "boost" : "1.0" },
         "field_publication_doi" : { "name" : "DOI", "indexed" : 0, "type" : "text", "boost" : "1.0" },
         "field_bundle" : {
           "name" : "Content Type",
@@ -641,6 +640,33 @@ function mica_studies_default_search_api_index() {
           "entity_type" : "node",
           "boost" : "1.0"
         },
+        "field_contact" : {
+          "name" : "Contacts",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_full_name" : { "name" : "Full Name", "indexed" : 1, "type" : "text", "boost" : "1.0" },
+        "field_investigator" : {
+          "name" : "Investigators",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_target_number_biosamples" : {
+          "name" : "Target Number of Biological Samples",
+          "indexed" : 1,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_target_number_participants" : {
+          "name" : "Target Number of Participants",
+          "indexed" : 1,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
         "field_contact_email" : { "name" : "Email", "indexed" : 0, "type" : "text", "boost" : "1.0" },
         "field_institution" : {
           "name" : "Institution",
@@ -691,13 +717,6 @@ function mica_studies_default_search_api_index() {
           "type" : "text",
           "boost" : "1.0"
         },
-        "field_contact" : {
-          "name" : "Contact",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
         "field_design" : {
           "name" : "Baseline Design of the Study",
           "indexed" : 0,
@@ -716,12 +735,6 @@ function mica_studies_default_search_api_index() {
           "type" : "string",
           "boost" : "1.0"
         },
-        "field_full_name" : {
-          "name" : "Full Name",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
         "field_gender" : {
           "name" : "Specify Gender",
           "indexed" : 0,
@@ -738,13 +751,6 @@ function mica_studies_default_search_api_index() {
           "name" : "Please specify the approximate number of participants",
           "indexed" : 0,
           "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_investigator" : {
-          "name" : "Investigator",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
           "boost" : "1.0"
         },
         "field_selection_criteria" : {
@@ -766,18 +772,6 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_study_country" : { "name" : "Country", "indexed" : 0, "type" : "string", "boost" : "1.0" },
-        "field_target_number_biosamples" : {
-          "name" : "Target Number of Biological Samples",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_target_number_participants" : {
-          "name" : "Target Number of Participants",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
         "field_target_other" : {
           "name" : "Specify type of target",
           "indexed" : 0,
@@ -932,112 +926,112 @@ function mica_studies_default_search_api_index() {
         },
         "mica_study_information:field_access" : {
           "name" : "Study Information \\u00bb Access to the following features is provided or foreseen",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_access_other" : {
           "name" : "Study Information \\u00bb Specify type of access",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_age_max" : {
           "name" : "Study Information \\u00bb Max age",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_age_min" : {
           "name" : "Study Information \\u00bb Min age",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_collected" : {
           "name" : "Study Information \\u00bb Biological Samples Collected",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_collected_other" : {
           "name" : "Study Information \\u00bb Specify type of samples collected",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_tissues" : {
           "name" : "Study Information \\u00bb Specify type of tissues collected",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_design" : {
           "name" : "Study Information \\u00bb Baseline Design of the Study",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_design_other" : {
           "name" : "Study Information \\u00bb Specify type of design",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_design_target" : {
           "name" : "Study Information \\u00bb Targets Recruitment of",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_gender" : {
           "name" : "Study Information \\u00bb Specify Gender",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "string",
           "boost" : "1.0"
         },
         "mica_study_information:field_gwas_analysis" : {
           "name" : "Study Information \\u00bb Proceeding to Genome-Wide Association (GWA) Analysis",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "string",
           "boost" : "1.0"
         },
         "mica_study_information:field_gwas_number" : {
           "name" : "Study Information \\u00bb Please specify the approximate number of participants",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_selection_criteria" : {
           "name" : "Study Information \\u00bb Selection Criteria \\/ Charactecteristic of the Population",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_status_end" : {
           "name" : "Study Information \\u00bb End year",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_status_start" : {
           "name" : "Study Information \\u00bb Start year",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_study_country" : {
           "name" : "Study Information \\u00bb Country",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_target_other" : {
           "name" : "Study Information \\u00bb Specify type of target",
-          "indexed" : true,
+          "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
-        },
+        }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
