@@ -1951,7 +1951,6 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'field_data_field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['field'] = 'field_target_number_participants';
-  $handler->display->display_options['fields']['field_target_number_participants']['relationship'] = 'mica_study_information_nid';
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['absolute'] = 0;
@@ -2001,7 +2000,6 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_p3g_observatory_link']['id'] = 'field_p3g_observatory_link';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['table'] = 'field_data_field_p3g_observatory_link';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['field'] = 'field_p3g_observatory_link';
-  $handler->display->display_options['fields']['field_p3g_observatory_link']['relationship'] = 'mica_study_information_nid';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['label'] = 'P3G Observatory';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['make_link'] = 0;
