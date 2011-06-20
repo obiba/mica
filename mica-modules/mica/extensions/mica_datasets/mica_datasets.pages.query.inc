@@ -107,7 +107,11 @@ function mica_datasets_dataset_query_page($dataset_node, $query) {
   // add saved query terms ordered by weight
   $rows = array();
   foreach (mica_dataset_query_term_query($query->id) as $query_term) {
-    $row = array('title' => $query_term->toString());
+    $row = array('title' => array('data'=>array(
+      '#type' => 'link',
+      '#title' => $query_term->toString(),
+      '#href' => _mica_datasets_dataset_query_term_url($dataset_node, $query, $query_term),
+    )));
 
     if ($update_access) {
       $row['operations'] = array(
@@ -579,7 +583,9 @@ function variables_autocomplete($dataset_nid, $string) {
 //
 
 function mica_datasets_dataset_query_term_page($dataset_node, $query, $term) {
-  return $term->toString();
+  $impl = $term->termImpl();
+  drupal_set_title(t('!title -- !term', array('!title' => $dataset_node->title, '!term' => $impl->toString())));
+  return $impl->view();
 }
 
 //

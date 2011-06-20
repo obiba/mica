@@ -161,12 +161,14 @@ END;
 
     // TODO: handle statistical result
     $result = array();
-    foreach($facetResult['terms'] as $termCount) {
-      $result[$termCount['term']] = $termCount['count'];
+    if($term->getType() == 'CategoryTerm') {
+      foreach($facetResult['terms'] as $termCount) {
+        $result[$termCount['term']] = $termCount['count'];
+      }
+      $result['missing'] = $facetResult['missing'];
+    } else {
+      $result = $facetResult;
     }
-    
-    $result['missing'] = $facetResult['missing'];
-    
 //    debug($result);
     return $result;
   }

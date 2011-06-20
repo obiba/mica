@@ -119,6 +119,23 @@ abstract class AbstractTerm implements QueryTermInterface {
     return $this->getFieldName();
   }
 
+  /**
+   * array(
+   *   study_id => connector->facetTerm(),
+   *   study_id => connector->facetTerm(),
+   *   ...
+   * )
+   */
+  function stats() {
+    // One column for the category name and one per study
+    $facets = array();
+    $connectors = $this->getConnectors();
+    foreach($connectors as $connector) {
+      $facets[$connector->study_id] = $connector->facetTerm($this);
+    }
+    return $facets;
+  }
+  
   protected function getVariable() {
     return node_load($this->qt->variable_id);
   }
@@ -127,6 +144,7 @@ abstract class AbstractTerm implements QueryTermInterface {
     $query = mica_dataset_query_load($this->qt->query_id);
     return mica_dataset_connector_query_multiple($query->dataset_id, TRUE);
   }
+  
 
 }
 
@@ -158,6 +176,28 @@ class CategoryTerm extends AbstractTerm {
     return isset($this->options['operator']) ? $this->options['operator'] : 'OR';
   }
 
+  function view() {
+    $variable = $this->getVariable();
+
+    $headers = array('Name');
+    $stats = $this->stats();
+    foreach($stats as $study_id => $stat) {
+      $study = node_load($study_id);
+      $headers[] = $study->title;
+    }
+
+    $rows = array();
+    foreach($variable->field_categories['und'] as $category) {
+      $c = $category["value"];
+      $row = array($c);
+      foreach($stats as $study_id => $stat) {
+        $row[] = isset($stat[$c]) ? $stat[$c] : 0;
+      }
+      $rows[] = $row;
+    }
+    return theme('table', array('header' => $headers, 'rows' => $rows, 'empty' => t('No studies available')));
+  }
+  
   function form($form, &$form_state) {
     $form['inverted']=array(
       '#title' => t('Operator'), 
@@ -168,23 +208,23 @@ class CategoryTerm extends AbstractTerm {
 
     // One column for the category name and one per study
     $headers = array('Name');
-    $facets = array();
     $connectors = $this->getConnectors();
     foreach($connectors as $connector) {
       $study = node_load($connector->study_id);
       $headers[] = $study->title;
-      $facets[$connector->id] = $connector->facetTerm($this);
     }
 
     $defaultValues = array();
     $options = array();
     $variable = $this->getVariable();
+
+    $facets = $this->stats();
     foreach($variable->field_categories['und'] as $category) {
       $defaultValues[$category["value"]] = 0;
       $row = array($category["value"]);
       foreach($connectors as $connector) {
-        if(isset($facets[$connector->id][$category["value"]])) {
-          $row[] = $facets[$connector->id][$category["value"]];
+        if(isset($facets[$connector->study_id][$category["value"]])) {
+          $row[] = $facets[$connector->study_id][$category["value"]];
         } else {
           $row[] = 0;
         }
@@ -267,14 +307,33 @@ class RangeTerm extends AbstractTerm {
     return isset($this->options['ranges']) ? $this->options['ranges'] : array();
   }
 
+  function view() {
+    $headers = array('Study', 'Min', 'Max', 'Mean', 'Std. Dev', 'Count');
+    $rows = array();
+    $stats = $this->stats();   
+    foreach($stats as $study_id => $stat) {
+      $study = node_load($study_id);
+      $rows[] = array($study->title, $this->f($stat['min']), $this->f($stat['max']), $this->f($stat['mean']), $this->f($stat['std_deviation']), $stat['count']);
+    }
+    return theme('table', array('header' => $headers, 'rows' => $rows, 'empty' => t('No studies available')));
+  }
+  
+  function f($number) {
+    // TODO: figure out how to specify significant digits instead of # of decimals
+    return number_format($number, 3);
+  }
+
   function form($form, &$form_state) {
     $variable=$this->getVariable();
 
     $type=$variable->field_value_type['und'][0]['value'];
+    
+    $form['view'] = array(
+      '#markup' => $this->view()
+    );
 
     $operator=isset($form_state['values']['operator']) ?
-    $form_state['values']['operator'] :
-    NULL;
+    $form_state['values']['operator'] : NULL;
 
     $form['inverted']=array(
       '#title' => t('Operator'), 

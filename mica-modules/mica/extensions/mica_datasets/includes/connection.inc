@@ -88,8 +88,16 @@ interface MicaDatasetConnectionInterface {
   
   /**
    * Returns a facet for a specific term.
-   * For example, a categorical term would return an associative array:
+   * 
+   * Categorical variables will return an associative array:
    * array('YES' => 3000, 'NO' => 50000)
+   * 
+   * Continuous variables will return statistics (min, max, mean, variance,std_deviation,count,total,sum_of_squares)
+   * array(
+   *   'min' => 10.45,
+   *   'max' => 23.78,
+   *   ...
+   * )
    */
   public function facetTerm(QueryTermInterface $term);
 
