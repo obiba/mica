@@ -354,6 +354,7 @@ function mica_community_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['calendar_type'] = 'year';
   $handler->display->display_options['displays'] = array(
     'calendar_1' => 'calendar_1',
     'default' => 0,
@@ -378,6 +379,7 @@ function mica_community_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['calendar_type'] = 'month';
   $handler->display->display_options['displays'] = array(
     'calendar_1' => 'calendar_1',
     'default' => 0,
@@ -402,6 +404,7 @@ function mica_community_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['calendar_type'] = 'day';
   $handler->display->display_options['displays'] = array(
     'calendar_1' => 'calendar_1',
     'default' => 0,
@@ -426,6 +429,7 @@ function mica_community_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['calendar_type'] = 'week';
   $handler->display->display_options['displays'] = array(
     'calendar_1' => 'calendar_1',
     'default' => 0,
@@ -450,6 +454,7 @@ function mica_community_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['calendar_type'] = 'month';
   $handler->display->display_options['displays'] = array(
     'calendar_1' => 0,
     'default' => 0,
@@ -526,7 +531,7 @@ function mica_community_views_default_views() {
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Fields: Event Date (field_event_date) - value */
+  /* Filter criterion: Fields: Event Date (field_event_date) */
   $handler->display->display_options['filters']['field_event_date_value']['id'] = 'field_event_date_value';
   $handler->display->display_options['filters']['field_event_date_value']['table'] = 'field_data_field_event_date';
   $handler->display->display_options['filters']['field_event_date_value']['field'] = 'field_event_date_value';
