@@ -840,13 +840,13 @@ function mica_dataset_query_url(MicaDatasetQuery $query) {
  *   An array containing the values to be inserted.
  *
  * @return
- *   The newly inserted server's id, or FALSE on error.
+ *   The newly inserted server's entity, or FALSE on error.
  */
 function mica_dataset_query_insert(array $values) {
   $query = new MicaDatasetQuery($values);
   $query->is_new = TRUE;
   $query->save();
-  return $query->id;
+  return $query;
 }
 
 //

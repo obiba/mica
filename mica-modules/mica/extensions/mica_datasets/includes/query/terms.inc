@@ -513,6 +513,10 @@ class TodoTerm extends AbstractTerm {
     return $form;
   }
 
+  function view() {
+     
+  }
+
   function submit($form, &$form_state) {
 
   }
