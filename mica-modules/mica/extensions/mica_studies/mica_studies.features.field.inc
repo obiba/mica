@@ -3074,7 +3074,7 @@ Prof.',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
           'field_description_value_type' => 'TEXT',
         ),
@@ -3315,7 +3315,7 @@ Prof.',
         'allowed_values_function' => '',
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => 'Study features for which access to external researchers or third parties is provided or foreseen',
+          'field_description_body' => 'Access to the following features is provided or foreseen',
           'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
@@ -3397,7 +3397,7 @@ Prof.',
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => 'Type of access to external researchers or third parties',
+          'field_description_body' => 'Other type of access',
           'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
@@ -3440,7 +3440,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_access_other',
-      'label' => 'Specify type of access',
+      'label' => 'Oher type of access',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -3519,7 +3519,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_age_max',
-      'label' => 'Max age',
+      'label' => 'Maximum age selection criteria',
       'required' => 0,
       'settings' => array(
         'max' => '',
@@ -3599,7 +3599,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_age_min',
-      'label' => 'Min age',
+      'label' => 'Minimum age selection criteria',
       'required' => 0,
       'settings' => array(
         'max' => '',
@@ -3686,7 +3686,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_biosamples_collected',
-      'label' => 'Biological Samples Collected',
+      'label' => 'Biological samples collected',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -3769,7 +3769,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_biosamples_collected_other',
-      'label' => 'Specify type of samples collected',
+      'label' => 'Other type of samples collected',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -3855,7 +3855,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_biosamples_tissues',
-      'label' => 'Specify type of tissues collected',
+      'label' => 'Type of tissues collected',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -3943,7 +3943,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_design',
-      'label' => 'Baseline Design of the Study',
+      'label' => 'Baseline design of the study',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -4026,7 +4026,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_design_other',
-      'label' => 'Specify type of design',
+      'label' => 'Other type of design',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -4068,7 +4068,7 @@ Prof.',
         'allowed_values_function' => '',
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => 'Recruitment targets ',
+          'field_description_body' => 'Recruitment targets',
           'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
@@ -4110,7 +4110,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_design_target',
-      'label' => 'Targets Recruitment of',
+      'label' => 'Recruitment targets',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -4190,7 +4190,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_gender',
-      'label' => 'Specify Gender',
+      'label' => 'Gender selection criteria',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -4271,7 +4271,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_gwas_analysis',
-      'label' => 'Proceeding to Genome-Wide Association (GWA) Analysis',
+      'label' => 'Proceeding to genome-wide association (GWA) analysis',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -4300,7 +4300,7 @@ Prof.',
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => 'Approximate number of participants for GWA',
+          'field_description_body' => 'GWA approximate number of participants',
           'field_description_value_type' => 'INTEGER',
         ),
         'field_permissions' => array(
@@ -4347,7 +4347,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_gwas_number',
-      'label' => 'Please specify the approximate number of participants',
+      'label' => 'GWA approximate number of participants',
       'required' => 0,
       'settings' => array(
         'max' => '',
@@ -4433,7 +4433,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_selection_criteria',
-      'label' => 'Selection Criteria / Charactecteristic of the Population',
+      'label' => 'Selection criteria / Charactecteristic of the population',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -4462,7 +4462,7 @@ Prof.',
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => 'End year',
+          'field_description_body' => 'Study end year',
           'field_description_value_type' => 'INTEGER',
         ),
         'field_permissions' => array(
@@ -4509,7 +4509,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_status_end',
-      'label' => 'End year',
+      'label' => 'Study end year',
       'required' => 0,
       'settings' => array(
         'max' => '',
@@ -4542,7 +4542,7 @@ Prof.',
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => 'Start year',
+          'field_description_body' => 'Study start year',
           'field_description_value_type' => 'INTEGER',
         ),
         'field_permissions' => array(
@@ -4589,7 +4589,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_status_start',
-      'label' => 'Start year',
+      'label' => 'Study start year',
       'required' => 0,
       'settings' => array(
         'max' => '',
@@ -4921,7 +4921,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_study_country',
-      'label' => 'Country',
+      'label' => 'Country selection criteria',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -4985,7 +4985,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_study_legacy_id',
-      'label' => 'Study Legacy Id',
+      'label' => 'Study legacy id',
       'required' => 0,
       'settings' => array(
         'max' => '',
@@ -5072,7 +5072,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_target_other',
-      'label' => 'Specify type of target',
+      'label' => 'Other type of target',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -5094,8 +5094,8 @@ Prof.',
   // Included for use with string extractors like potx.
   t('Access to the following features is provided or foreseen');
   t('Access to the following study features to external researchers or third parties provided or foreseen');
-  t('Baseline Design of the Study');
-  t('Biological Samples Collected');
+  t('Baseline design of the study');
+  t('Biological samples collected');
   t('Body');
   t('Can this field have multiple values?');
   t('Categories');
@@ -5106,42 +5106,44 @@ Prof.',
   t('Content Type');
   t('Content Type Label');
   t('Country');
+  t('Country selection criteria');
   t('Email');
-  t('End year');
   t('Field Name');
   t('Field machine name');
   t('Files');
   t('Full Name');
+  t('GWA approximate number of participants');
+  t('Gender selection criteria');
   t('Institution');
   t('Investigators');
   t('Label');
   t('Legacy Id');
   t('Logo');
   t('Machine name of the content type that declares this field');
-  t('Max age');
-  t('Min age');
+  t('Maximum age selection criteria');
+  t('Minimum age selection criteria');
   t('Name of the content type that declares this field');
+  t('Oher type of access');
+  t('Other type of design');
+  t('Other type of samples collected');
+  t('Other type of target');
   t('P3G Catalogue Link');
-  t('Please specify the approximate number of participants');
   t('Postal Code');
-  t('Proceeding to Genome-Wide Association (GWA) Analysis');
+  t('Proceeding to genome-wide association (GWA) analysis');
+  t('Recruitment targets');
   t('Repeatable');
-  t('Selection Criteria / Charactecteristic of the Population');
-  t('Specify Gender');
-  t('Specify type of access');
-  t('Specify type of design');
-  t('Specify type of samples collected');
-  t('Specify type of target');
-  t('Specify type of tissues collected');
-  t('Start year');
+  t('Selection criteria / Charactecteristic of the population');
   t('Street');
   t('Study Documents');
   t('Study Information');
   t('Study Legacy Id');
+  t('Study end year');
+  t('Study legacy id');
+  t('Study start year');
   t('Target Number of Biological Samples');
   t('Target Number of Participants');
-  t('Targets Recruitment of');
   t('Telephone');
+  t('Type of tissues collected');
   t('Value Type');
   t('Website');
 
