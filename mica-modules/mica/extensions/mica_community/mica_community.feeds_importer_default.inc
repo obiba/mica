@@ -123,8 +123,8 @@ function mica_community_feeds_importer_default() {
             'unique' => FALSE,
           ),
           3 => array(
-            'source' => 'field_publication_doi',
-            'target' => 'field_publication_doi',
+            'source' => 'field_publication_pmid',
+            'target' => 'field_publication_pmid',
             'unique' => FALSE,
           ),
           4 => array(

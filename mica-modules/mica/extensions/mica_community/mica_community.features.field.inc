@@ -275,14 +275,14 @@ function mica_community_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-publication-field_publication_doi'
-  $fields['node-publication-field_publication_doi'] = array(
+  // Exported field: 'node-publication-field_publication_pmid'
+  $fields['node-publication-field_publication_pmid'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_publication_doi',
+      'field_name' => 'field_publication_pmid',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -336,8 +336,8 @@ function mica_community_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_publication_doi',
-      'label' => 'DOI',
+      'field_name' => 'field_publication_pmid',
+      'label' => 'PMID',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -447,7 +447,7 @@ function mica_community_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
-  t('DOI');
+  t('PMID');
   t('Event Date');
   t('URL');
 
