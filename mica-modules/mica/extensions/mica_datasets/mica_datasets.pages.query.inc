@@ -484,10 +484,12 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
   $terms = mica_dataset_query_term_query($query_node->id);
 
   $labels = array();
-  foreach($terms as $term) {
-    $impl = $term->termImpl();
-    $destination = _mica_datasets_dataset_query_url($dataset_node,  $query_node, 'run');
-    $labels[] = l($impl->toString(), _mica_datasets_dataset_query_term_url($dataset_node, $query_node, $term, 'edit'), array("query" => array("destination"=>$destination)));
+  if ($terms!==FALSE) {
+    foreach($terms as $term) {
+      $impl = $term->termImpl();
+      $destination = _mica_datasets_dataset_query_url($dataset_node,  $query_node, 'run');
+      $labels[] = l($impl->toString(), _mica_datasets_dataset_query_term_url($dataset_node, $query_node, $term, 'edit'), array("query" => array("destination"=>$destination)));
+    }
   }
 
   $columns = array_merge(array(t('Study'), t('Total')) , $labels);

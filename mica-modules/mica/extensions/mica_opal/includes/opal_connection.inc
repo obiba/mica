@@ -8,7 +8,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
 
   public function configurationForm($study_node) {
     $form_items = array();
-    
+
     $opal_url = array();
     $field = $study_node->mica_opal;
     if ($field) {
@@ -100,10 +100,12 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
 
     $facets = array();
     $filters = array();
-    foreach($terms as $term) {
-      $impl = $term->termImpl();
-      $facets[] = $this->asFacet($impl);
-      $filters[] = $this->asFilter($impl);
+    if ($terms!==FALSE) {
+      foreach($terms as $term) {
+        $impl = $term->termImpl();
+        $facets[] = $this->asFacet($impl);
+        $filters[] = $this->asFilter($impl);
+      }
     }
 
     $facets[] = '"_matched" :{ "filter":{ "and":[ {'. implode('},{', $filters) . '}]}}';
@@ -113,7 +115,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
     $q.='}}';
 
     $data = $this->sendQuery($q);
-    
+
     $total = $data['hits']['total'];
 
     $result = array('total'=>$total);
@@ -122,7 +124,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection {
       $impl = $term->termImpl();
       $result[$impl->getName()] = $this->count($data['facets'][$impl->getName()]);
     }
-    
+
 
     return $result;
   }
@@ -154,9 +156,9 @@ END;
     $q = '{"query": {"match_all":{}},"size":0,"facets":{';
     $q .= $facets;
     $q.='}}';
-    
+
     $data = $this->sendQuery($q);
-    
+
     $facetResult = $data['facets'][$term->getName()];
 
     // TODO: handle statistical result
@@ -169,13 +171,13 @@ END;
     } else {
       $result = $facetResult;
     }
-//    debug($result);
+    //    debug($result);
     return $result;
   }
-  
+
   private function sendQuery($query) {
-//    debug($query);
-    
+    //    debug($query);
+
     $url = $this->getTableResourceURI("index/_search");
 
     $post = new HttpClientRequest($url, array(
@@ -183,12 +185,12 @@ END;
         'headers' => array('Accept' => array('application/json')),
         'data' => $query,
         'parameters' => array(),
-      ));
+    ));
 
     try {
       $client = $this->client();
       $body = $client->execute($post);
-//      debug($body);
+      //      debug($body);
     }  catch(HttpClientException $e) {
       if($e->getCode() == 0) {
         // curl error
@@ -203,36 +205,36 @@ END;
 
     return json_decode($body, TRUE);
   }
-  
+
   private function count($facet) {
     switch($facet['_type']) {
       case 'filter':
-      return $facet['count'];
+        return $facet['count'];
       case 'terms':
-      $sum =0;
-      foreach($facet['terms'] as $term) {
-        $sum += $term['count'];
-      }
-      return $sum;
+        $sum =0;
+        foreach($facet['terms'] as $term) {
+          $sum += $term['count'];
+        }
+        return $sum;
       case 'histogram':
-      $sum =0;
-      foreach($facet['entries'] as $term) {
-        $sum += $term['count'];
-      }
-      return $sum;
+        $sum =0;
+        foreach($facet['entries'] as $term) {
+          $sum += $term['count'];
+        }
+        return $sum;
     }
-    return -1; 
+    return -1;
   }
 
   private function asFacet(QueryTermInterface $term) {
-        $facet = <<< END
+    $facet = <<< END
 "{$term->getName()}" : {
   "filter" : {
-    {$this->asFilter($term)}
+  {$this->asFilter($term)}
   }, "golbal":true
 }
 END;
-    return $facet;
+  return $facet;
   }
 
   private function asFilter(QueryTermInterface $term) {
@@ -259,26 +261,26 @@ END;
           $ranges = $term->ranges();
           $range = $ranges[0];
           if(isset($range['value'])) {
-          $filter = <<< END
+            $filter = <<< END
   "term" : {
     "{$term->getFieldName()}": {$range['value']}
   }
 END;
           } else {
             $bounds = array();
-          if(isset($range['from'])) {
-            $bounds[] = '"from" : ' . $range['from'];
-            $bounds[] = '"include_lower" : true';
-          }
-          if(isset($range['to'])) {
-            $bounds[] = '"to" : ' . $range['to'];
-            $bounds[] = '"include_upper" : false';
-          }
-          $boundStr =implode(',', $bounds);    
-          $filter = <<< END
+            if(isset($range['from'])) {
+              $bounds[] = '"from" : ' . $range['from'];
+              $bounds[] = '"include_lower" : true';
+            }
+            if(isset($range['to'])) {
+              $bounds[] = '"to" : ' . $range['to'];
+              $bounds[] = '"include_upper" : false';
+            }
+            $boundStr =implode(',', $bounds);
+            $filter = <<< END
   "numeric_range" : {
     "{$term->getFieldName()}": {
-      {$boundStr}
+    {$boundStr}
     }
   }
 END;
@@ -286,7 +288,7 @@ END;
         }
         break;
       default:
-      break;
+        break;
     }
 
     if($term->isInverted()) {
@@ -294,7 +296,7 @@ END;
       $filter = <<< END
   "not" : {
     "filter" : {
-      $invert
+    $invert
     }
   }
 END;
@@ -314,7 +316,7 @@ END;
     }
     return $reference;
   }
-  
+
   public function client() {
     $client = new HttpClient($formatter = FALSE);
 
@@ -323,10 +325,10 @@ END;
     }
 
     $client->options['curlopts'] += array(
-      CURLOPT_SSL_VERIFYHOST => FALSE,
-      CURLOPT_SSL_VERIFYPEER => FALSE,
-      CURLOPT_SSLCERT => $this->realpath(PUBLIC_KEY_FILE),
-      CURLOPT_SSLKEY => $this->realpath(PRIVATE_KEY_FILE),
+    CURLOPT_SSL_VERIFYHOST => FALSE,
+    CURLOPT_SSL_VERIFYPEER => FALSE,
+    CURLOPT_SSLCERT => $this->realpath(PUBLIC_KEY_FILE),
+    CURLOPT_SSLKEY => $this->realpath(PRIVATE_KEY_FILE),
     );
 
     return $client;
