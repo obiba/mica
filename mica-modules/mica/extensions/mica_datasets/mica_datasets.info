@@ -45,12 +45,10 @@ features[variable][] = "node_submitted_participant_variable"
 features[views_view][] = "dataset_participant_variables"
 features[views_view][] = "dataset_studies"
 features[views_view][] = "datasets"
-
-files[] = includes/connector_entity.inc
-files[] = includes/connection.inc
-files[] = includes/query_entity.inc
-files[] = includes/query/terms.inc
-
+files[] = "includes/connector_entity.inc"
+files[] = "includes/connection.inc"
+files[] = "includes/query_entity.inc"
+files[] = "includes/query/terms.inc"
 name = "Mica Datasets"
 package = "OBiBa"
 project = "mica_datasets"
