@@ -950,7 +950,7 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "mica_study_information:field_study_legacy_id" : {
-          "name" : "Study Information \\u00bb Study Legacy Id",
+          "name" : "Study Information \\u00bb Study legacy id",
           "indexed" : 0,
           "type" : "integer",
           "boost" : "1.0"
