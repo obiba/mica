@@ -962,79 +962,79 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "mica_study_information:field_access_other" : {
-          "name" : "Study Information \\u00bb Specify type of access",
+          "name" : "Study Information \\u00bb Oher type of access",
           "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_age_max" : {
-          "name" : "Study Information \\u00bb Max age",
+          "name" : "Study Information \\u00bb Maximum age selection criteria",
           "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_age_min" : {
-          "name" : "Study Information \\u00bb Min age",
+          "name" : "Study Information \\u00bb Minimum age selection criteria",
           "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_collected" : {
-          "name" : "Study Information \\u00bb Biological Samples Collected",
+          "name" : "Study Information \\u00bb Biological samples collected",
           "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_collected_other" : {
-          "name" : "Study Information \\u00bb Specify type of samples collected",
+          "name" : "Study Information \\u00bb Other type of samples collected",
           "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_tissues" : {
-          "name" : "Study Information \\u00bb Specify type of tissues collected",
+          "name" : "Study Information \\u00bb Type of tissues collected",
           "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_design" : {
-          "name" : "Study Information \\u00bb Baseline Design of the Study",
+          "name" : "Study Information \\u00bb Baseline design of the study",
           "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_design_other" : {
-          "name" : "Study Information \\u00bb Specify type of design",
+          "name" : "Study Information \\u00bb Other type of design",
           "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_design_target" : {
-          "name" : "Study Information \\u00bb Targets Recruitment of",
+          "name" : "Study Information \\u00bb Recruitment targets",
           "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_gender" : {
-          "name" : "Study Information \\u00bb Specify Gender",
+          "name" : "Study Information \\u00bb Gender selection criteria",
           "indexed" : 1,
           "type" : "string",
           "boost" : "1.0"
         },
         "mica_study_information:field_gwas_analysis" : {
-          "name" : "Study Information \\u00bb Proceeding to Genome-Wide Association (GWA) Analysis",
+          "name" : "Study Information \\u00bb Proceeding to genome-wide association (GWA) analysis",
           "indexed" : 1,
           "type" : "string",
           "boost" : "1.0"
         },
         "mica_study_information:field_gwas_number" : {
-          "name" : "Study Information \\u00bb Please specify the approximate number of participants",
+          "name" : "Study Information \\u00bb GWA approximate number of participants",
           "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_selection_criteria" : {
-          "name" : "Study Information \\u00bb Selection Criteria \\/ Charactecteristic of the Population",
+          "name" : "Study Information \\u00bb Selection criteria \\/ Charactecteristic of the population",
           "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
@@ -1052,13 +1052,13 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "mica_study_information:field_study_country" : {
-          "name" : "Study Information \\u00bb Country",
+          "name" : "Study Information \\u00bb Country selection criteria",
           "indexed" : 1,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_target_other" : {
-          "name" : "Study Information \\u00bb Specify type of target",
+          "name" : "Study Information \\u00bb Other type of target",
           "indexed" : 1,
           "type" : "text",
           "boost" : "1.0"
