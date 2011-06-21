@@ -496,7 +496,7 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
   $rows = array();
   foreach($mica_dataset_connectors as $connector) {
     $study = node_load($connector->study_id);
-    $row = array($study->title);
+    $row = array(array('data'=>$study->title, 'class'=>array('first')));
     try {
       $result = $connector->query($terms);
       $row[] = $result['total'];
@@ -504,8 +504,8 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
         $impl = $t->termImpl();
         $row[] = $result[$impl->getName()];
       }
-      $row[] = $result['_matched'];
-      $rows[] = $row;
+      $row[] = array('data'=>$result['_matched'], 'class'=>array('last', 'totals'));
+      $rows[] = array('data'=> $row);
     } catch(Exception $e) {
       if($e->getCode() == 401) {
         drupal_set_message(t("Study %study: Authentication failed (401).", array("%study" => $study->title)), 'error');
@@ -519,7 +519,21 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
     }
   }
 
-  return theme('table', array("header"=>$columns, "rows"=>$rows, 'empty' => t('No connectors available')));
+  $totals = array(array('data'=>'Totals', 'class'=>array('first')));
+  foreach($rows as $row) {
+    foreach($row['data'] as $key => $value) {
+      if($key == 0) continue;
+      if(isset($totals[$key]) == FALSE) {
+        $totals[$key] = 0;
+      }
+      $totals[$key] += isset($value['data']) ? $value['data'] : $value;
+    }
+  }
+  $last = $totals[count($totals)-1];
+  $totals[count($totals)-1] = array('data'=>$last, 'class' => array('last', 'totals'));
+  $rows[] = array('data' => $totals, 'class' => array('last', 'totals'));
+
+  return theme('table', array("header"=>$columns, "rows"=>$rows, 'attributes'=>array('class'=>array('query-table')), 'empty' => t('No connectors available')));
 }
 
 //
