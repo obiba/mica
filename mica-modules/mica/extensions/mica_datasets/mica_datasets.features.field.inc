@@ -111,27 +111,19 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dataschema',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'module' => 'taxonomy',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
       'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'parent' => '0',
-            'vocabulary' => 'dataschemas',
-          ),
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
         ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
@@ -144,9 +136,12 @@ function mica_datasets_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
       ),
       'translatable' => '1',
-      'type' => 'taxonomy_term_reference',
+      'type' => 'link_field',
     ),
     'field_instance' => array(
       'bundle' => 'dataset',
@@ -156,10 +151,10 @@ function mica_datasets_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 3,
+          'type' => 'default',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -173,14 +168,26 @@ function mica_datasets_field_default_fields() {
       'label' => 'Dataschema',
       'required' => 0,
       'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => 'nofollow',
+          'target' => '_blank',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'title' => 'none',
+        'title_value' => '',
+        'url' => 0,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'options',
+        'active' => 0,
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '4',
+        'type' => 'link_field',
+        'weight' => '6',
       ),
     ),
   );
