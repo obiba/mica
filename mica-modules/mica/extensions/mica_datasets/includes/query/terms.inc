@@ -443,20 +443,23 @@ class RangeTerm extends AbstractTerm {
       $max=$form_state['values']['max'];
       if(empty($min) && empty($max)) {
         form_set_error('exact-radio', t('At least one value (min or max) must be specified'));
-      } else if($min >= $max) {
+      } else if(empty($min) == FALSE&& empty($max) == FALSE && $min >= $max) {
         form_set_error('exact-radio', t('Min must be lower than max'));
-      } else if(empty($min) == FALSE && is_numeric($min) == FALSE ) {
+      } else if(empty($min) == FALSE && is_numeric($min) == FALSE) {
         form_set_error('min', t('Value for min must be numeric'));
       } else if(empty($max) == FALSE && is_numeric($max) == FALSE ) {
         form_set_error('max', t('Value for max must be numeric'));
       } else {
+        $min = empty($min) ? NULL :$min;
+        $max = empty($max) ? NULL :$max;
         $selection=$this->formToRanges(NULL, $min, $max);
       }
     } else if($form_state['values']['exact-radio'] === 'exact'){
       $value=$form_state['values']['value'];
       if(empty($value) || is_numeric($value) == FALSE) {
-        form_set_error('value', t('Exact value must be specified as a number'));
+        form_set_error('value', t('Exact value is required and must be specified as a number'));
       } else {
+        $value = empty($value) ? NULL :$value;
         $selection=$this->formToRanges($value, NULL, NULL);
       }
     }
@@ -483,7 +486,7 @@ class RangeTerm extends AbstractTerm {
     if (isset($ranges['0'])) {
       $first_range=$ranges['0'];
       if (isset($first_range['from']) || isset($first_range['to'])) {
-        $from = isset($first_range['from']) ? '['. $first_range['from'] : '-*' ; // can't print infinity symbol: &#8734;
+        $from = isset($first_range['from']) ? '['. $first_range['from'] : '*' ; // can't print infinity symbol: &#8734;
         $to = isset($first_range['to']) ? $first_range['to'] . '[' : '*' ;
         $str_range.=": $from, $to";
       } else if(isset($first_range['value'])) {
@@ -501,7 +504,11 @@ class TodoTerm extends AbstractTerm {
   function __construct(MicaDatasetQueryTerm $qt) {
     parent::__construct('TodoTerm', $qt);
   }
+  
+  function view() {
 
+  }
+  
   function form($form, &$form_state) {
     return $form;
   }
