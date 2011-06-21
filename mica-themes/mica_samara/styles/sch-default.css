@@ -9,6 +9,7 @@ body {
 
 #site-name a {
   color: #5D87A1;
+  font-family: "Nunito", arial, sans-serif;
 }
 
 #site-name a:hover {
@@ -136,13 +137,13 @@ a {
   font-weight: bold;
   line-height: 1.3;
   text-shadow: 0 1px 1px black;
-  font-family: "Hanuman", arial, sans-serif;
+  font-family: "Nunito", arial, sans-serif;
 }
 #navigation li.expanded ul {
   background-color: #4A6C81;
 }
 #navigation li.expanded li a {
-  font-family: "Hanuman", arial, sans-serif;*/
+  font-family: "Nunito", arial, sans-serif;*/
   font-size: 1em;
   font-weight: bold;
 }
@@ -196,7 +197,7 @@ ul.vertical-tabs-list li a {
   margin: 0;
   text-shadow:none;
   /*font-weight:bold;*/
-  font-family: "Hanuman", arial, sans-serif;
+  font-family: "Nunito", arial, sans-serif;
   font-size: 1em;
 }
 .block h2::selection {

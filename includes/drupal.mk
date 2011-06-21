@@ -22,6 +22,7 @@ feeds_jsonpath_parser_version=7.x-1.0-beta2
 field_group_version=7.x-1.0-rc2
 field_permissions_version=7.x-1.0-alpha1
 forum_access_version=7.x-1.0-alpha4
+google_fonts_version=7.x-2.1
 job_scheduler_version=7.x-2.0-alpha2
 link_version=7.x-1.0-alpha3
 login_destination_version=7.x-1.0-beta1
@@ -74,8 +75,9 @@ drupal-download:
 	$(drushexec) dl login_destination-$(login_destination_version) noderefcreate-$(noderefcreate_version) && \
 	$(drushexec) dl viewreference-$(viewreference_version) && \
 	$(drushexec) dl views_data_export-$(views_data_export_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version) && \
-	$(drushexec) dl acl-$(acl_version) chain_menu_access-$(chain_menu_access_version) forum_access-$(forum_access_version)
-	
+	$(drushexec) dl acl-$(acl_version) chain_menu_access-$(chain_menu_access_version) forum_access-$(forum_access_version) && \
+	$(drushexec) dl google_fonts-$(google_fonts_version)
+
 drupal-examples:
 	cd target/$(micadir) && \
 	$(drushexec) dl examples
