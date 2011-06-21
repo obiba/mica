@@ -25,6 +25,7 @@ function mica_projects_insert(&$node) {
     )
   );
          
+  /*  
   // create the associated forum
   module_load_include('inc', 'forum', 'forum.admin');
 
@@ -82,6 +83,7 @@ function mica_projects_insert(&$node) {
     menu_link_save($child_menu_item);
     menu_cache_clear('main-menu');
   } 
+  */
   
   return;
 }
