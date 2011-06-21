@@ -530,17 +530,20 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
     }
   }
 
-  $totals = array(array('data'=>'Totals', 'class'=>array('active')));
-  foreach($rows as $row) {
-    foreach($row['data'] as $key => $value) {
-      if($key == 0) continue;
-      if(isset($totals[$key]) == FALSE) {
-        $totals[$key] = array('data'=> 0, 'class'=>'active');
+  // Add a summary row if there's more than one connector
+  if(count($mica_dataset_connectors) > 1) {
+    $totals = array(array('data'=>'Totals', 'class'=>array('active')));
+    foreach($rows as $row) {
+      foreach($row['data'] as $key => $value) {
+        if($key == 0) continue;
+        if(isset($totals[$key]) == FALSE) {
+          $totals[$key] = array('data'=> 0, 'class'=>'active');
+        }
+        $totals[$key]['data'] += isset($value['data']) ? $value['data'] : $value;
       }
-      $totals[$key]['data'] += isset($value['data']) ? $value['data'] : $value;
     }
+    $rows[] = array('data' => $totals, 'class' => array('active'));
   }
-  $rows[] = array('data' => $totals, 'class' => array('active'));
 
   return theme('table', array("header"=>$columns, "rows"=>$rows, 'attributes'=>array('class'=>array('query-table')), 'empty' => t('No connectors available')));
 }
