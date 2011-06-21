@@ -34,7 +34,7 @@ search_api_solr_version=7.x-1.0-beta2
 search_api_version=7.x-1.0-beta8
 strongarm_version=7.x-2.0-beta2
 views_data_export_version=7.x-3.0-beta4
-views_version=7.x-3.0-rc1
+views_version=7.x-3.0-beta3
 viewreference_version=7.x-3.0
 
 
@@ -47,6 +47,7 @@ http_client_revision=6e65667997ffe79172249b42a897cd81dd4ab510
 feeds_branch=7.x-2.x
 feeds_revision=5f9ebacf6972bc5fe05f967cb33af0ddecc39ea5
 
+# Patch for issue http://drupal.org/node/1138196
 references_revision=7.x-2.0-beta3
 references_patch=http://drupal.org/files/issues/references.node_type_property.patch
 
