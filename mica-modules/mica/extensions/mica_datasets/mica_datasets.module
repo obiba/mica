@@ -71,8 +71,8 @@ function mica_datasets_menu() {
 
   $items['node/%node/queries/add'] = array(
       'title' => 'Add Query',
-      'access callback' => '_mica_datasets_node_access',
-      'access arguments' => array(1,'dataset','update'),
+      'access callback' => '_mica_datasets_node_queries_access',
+      'access arguments' => array(1,'update'),
       'page callback' => 'mica_datasets_dataset_query_edit_page',
       'page arguments' => array(1,NULL),
       'weight' => 7,
@@ -284,8 +284,12 @@ function _mica_datasets_node_access($node, $bundle = NULL, $op = 'update') {
  * @param string $op
  */
 function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
-  if (_mica_datasets_node_access($dataset_node, 'dataset', $op)) {
+  global $user;
+  if (_mica_datasets_node_access($dataset_node, 'dataset', 'view')) {
     if (mica_dataset_dataset_participant_variables($dataset_node->nid) !== FALSE) {
+      if($op == 'update') {
+        return $user->uid != 0;
+      }
       return TRUE;
     }
   }
@@ -311,7 +315,7 @@ function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
     return FALSE;
   }
 
-  if (!_mica_datasets_node_access($dataset_node, 'dataset', $op)) {
+  if (!_mica_datasets_node_access($dataset_node, 'dataset', 'view')) {
     return FALSE;
   }
 
@@ -950,7 +954,6 @@ function mica_datasets_feeds_after_parse(FeedsSource $source, FeedsParserResult 
   if(get_class($source->importer->processor) == 'FeedsNodeProcessor') {
     $config = $source->importer->processor->getConfig();
     if($config['content_type'] == 'participant_variable') {
-      debug($config);
       $src_config = $source->getConfigFor($source->importer->fetcher);
       $dataset_id = NULL;
       if(isset($src_config['mica_dataset_connector'])) {
