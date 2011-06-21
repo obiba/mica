@@ -78,14 +78,14 @@ function mica_studies_default_page_manager_handlers() {
       'center' => array(
         'type' => 'region',
         'title' => 'Center',
-        'width' => '80.0071848189003',
+        'width' => '75',
         'width_type' => '%',
         'parent' => 'main-row',
       ),
       'right' => array(
         'type' => 'region',
         'title' => 'Right',
-        'width' => '19.992815181099704',
+        'width' => '25',
         'width_type' => '%',
         'parent' => 'main-row',
         'class' => '',
@@ -147,7 +147,7 @@ function mica_studies_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '%node:title';
+  $display->title = '%node:field-full-name';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -205,57 +205,7 @@ function mica_studies_default_page_manager_handlers() {
     $display->panels['center'][0] = 'new-2';
     $pane = new stdClass;
     $pane->pid = 'new-3';
-    $pane->panel = 'center';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_website';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => 'title',
-      'formatter' => 'default',
-      'formatter_settings' => array(),
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-3'] = $pane;
-    $display->panels['center'][1] = 'new-3';
-    $pane = new stdClass;
-    $pane->pid = 'new-4';
     $pane->panel = 'right';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:mica_study_documents';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => 'hidden',
-      'formatter' => 'node_reference_field_name_link',
-      'formatter_settings' => array(
-        'node_reference_view_mode' => 'full',
-      ),
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '%node:title Files',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][0] = 'new-4';
-    $pane = new stdClass;
-    $pane->pid = 'new-5';
-    $pane->panel = 'top';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_logo';
     $pane->shown = TRUE;
@@ -278,21 +228,25 @@ function mica_studies_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-5'] = $pane;
-    $display->panels['top'][0] = 'new-5';
+    $display->content['new-3'] = $pane;
+    $display->panels['right'][0] = 'new-3';
     $pane = new stdClass;
-    $pane->pid = 'new-6';
-    $pane->panel = 'top_right';
-    $pane->type = 'custom';
-    $pane->subtype = 'custom';
-    $pane->shown = FALSE;
+    $pane->pid = 'new-4';
+    $pane->panel = 'right';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_target_number_participants';
+    $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'admin_title' => 'node_title',
-      'title' => '',
-      'body' => '<h1>%node:title</h1>',
-      'format' => 'full_html',
-      'substitute' => 1,
+      'label' => 'above',
+      'formatter' => 'number_integer',
+      'formatter_settings' => array(
+        'thousand_separator' => ' ',
+        'prefix_suffix' => 0,
+      ),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => 'Target Number of Participants',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -300,10 +254,86 @@ function mica_studies_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
+    $display->content['new-4'] = $pane;
+    $display->panels['right'][1] = 'new-4';
+    $pane = new stdClass;
+    $pane->pid = 'new-5';
+    $pane->panel = 'right';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_target_number_biosamples';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'above',
+      'formatter' => 'number_integer',
+      'formatter_settings' => array(
+        'thousand_separator' => ' ',
+        'prefix_suffix' => 0,
+      ),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '%title',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $display->content['new-5'] = $pane;
+    $display->panels['right'][2] = 'new-5';
+    $pane = new stdClass;
+    $pane->pid = 'new-6';
+    $pane->panel = 'right';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_website';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'above',
+      'formatter' => 'url',
+      'formatter_settings' => array(),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => 'Study Website',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
     $display->content['new-6'] = $pane;
-    $display->panels['top_right'][0] = 'new-6';
-  $display->hide_title = PANELS_TITLE_NONE;
+    $display->panels['right'][3] = 'new-6';
+    $pane = new stdClass;
+    $pane->pid = 'new-7';
+    $pane->panel = 'right';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_p3g_observatory_link';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'above',
+      'formatter' => 'default',
+      'formatter_settings' => array(),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '%node:title on P3G Observatory',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+      'style' => 'default',
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 4;
+    $display->content['new-7'] = $pane;
+    $display->panels['right'][4] = 'new-7';
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $export['node_view_panel_context'] = $handler;

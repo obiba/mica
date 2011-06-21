@@ -1042,7 +1042,7 @@ Prof.',
           'view' => 0,
           'view own' => 0,
         ),
-        'uri_scheme' => 'private',
+        'uri_scheme' => 'public',
       ),
       'translatable' => '1',
       'type' => 'file',
@@ -2114,6 +2114,295 @@ Prof.',
     ),
   );
 
+  // Exported field: 'node-study-field_contact'
+  $fields['node-study-field_contact'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_contact',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'referenceable_types' => array(
+          'article' => 0,
+          'blog' => 0,
+          'contact' => 'contact',
+          'event' => 0,
+          'field_description' => 0,
+          'page' => 0,
+          'panel' => 0,
+          'study' => 0,
+          'study_information' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => '2',
+        ),
+        'search_result' => array(
+          'label' => 'hidden',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => '2',
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => '1',
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_contact',
+      'label' => 'Contacts',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'noderefcreate',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'noderefcreate_autocomplete',
+        'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-study-field_full_name'
+  $fields['node-study-field_full_name'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_full_name',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Full name of the study',
+          'field_description_value_type' => 'TEXT',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_full_name',
+      'label' => 'Full Name',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-study-field_investigator'
+  $fields['node-study-field_investigator'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_investigator',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'referenceable_types' => array(
+          'article' => 0,
+          'blog' => 0,
+          'contact' => 'contact',
+          'event' => 0,
+          'field_description' => 0,
+          'institution' => 0,
+          'page' => 0,
+          'panel' => 0,
+          'study' => 0,
+          'study_information' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => '3',
+        ),
+        'search_result' => array(
+          'label' => 'hidden',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => '3',
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => '0',
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_investigator',
+      'label' => 'Investigators',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'noderefcreate',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'noderefcreate_autocomplete',
+        'weight' => '3',
+      ),
+    ),
+  );
+
   // Exported field: 'node-study-field_logo'
   $fields['node-study-field_logo'] = array(
     'field_config' => array(
@@ -2191,11 +2480,100 @@ Prof.',
         'active' => 1,
         'module' => 'image',
         'settings' => array(
-          'preview_image_style' => 'thumbnail',
+          'preview_image_style' => 'study_logo',
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
         'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-study-field_p3g_observatory_link'
+  $fields['node-study-field_p3g_observatory_link'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_p3g_observatory_link',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'title' => 'optional',
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '1',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'default',
+          'weight' => '5',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_p3g_observatory_link',
+      'label' => 'P3G Catalogue Link',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => 'nofollow',
+          'target' => '_blank',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'title' => 'none',
+        'title_value' => '',
+        'url' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
+        'weight' => '6',
       ),
     ),
   );
@@ -2259,6 +2637,166 @@ Prof.',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '5',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-study-field_target_number_biosamples'
+  $fields['node-study-field_target_number_biosamples'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_target_number_biosamples',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'number',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Target number of biological samples',
+          'field_description_value_type' => 'INTEGER',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => '15',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_target_number_biosamples',
+      'label' => 'Target Number of Biological Samples',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '0',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-study-field_target_number_participants'
+  $fields['node-study-field_target_number_participants'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_target_number_participants',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'number',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'Target number of participants',
+          'field_description_value_type' => 'INTEGER',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => '4',
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_target_number_participants',
+      'label' => 'Target Number of Participants',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '0',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
@@ -2334,8 +2872,8 @@ Prof.',
       'settings' => array(
         'attributes' => array(
           'class' => '',
-          'rel' => '',
-          'target' => 'default',
+          'rel' => 'nofollow',
+          'target' => '_blank',
         ),
         'display' => array(
           'url_cutoff' => '80',
@@ -3335,110 +3873,6 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-study-field_contact'
-  $fields['node-study-field_contact'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_contact',
-      'foreign keys' => array(
-        'nid' => array(
-          'columns' => array(
-            'nid' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'nid' => array(
-          0 => 'nid',
-        ),
-      ),
-      'module' => 'node_reference',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'referenceable_types' => array(
-          'article' => 0,
-          'blog' => 0,
-          'contact' => 'contact',
-          'event' => 0,
-          'field_description' => 0,
-          'page' => 0,
-          'panel' => 0,
-          'study' => 0,
-          'study_information' => 0,
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'node_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'study',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '2',
-        ),
-        'search_result' => array(
-          'label' => 'hidden',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '2',
-        ),
-        'teaser' => array(
-          'label' => 'hidden',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '1',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_contact',
-      'label' => 'Contacts',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'noderefcreate',
-        'settings' => array(
-          'autocomplete_match' => 'contains',
-          'autocomplete_path' => 'node_reference/autocomplete',
-          'size' => '60',
-        ),
-        'type' => 'noderefcreate_autocomplete',
-        'weight' => '4',
-      ),
-    ),
-  );
-
   // Exported field: 'node-study_information-field_design'
   $fields['node-study_information-field_design'] = array(
     'field_config' => array(
@@ -3691,86 +4125,6 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-study-field_full_name'
-  $fields['node-study-field_full_name'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_full_name',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => 'Full name of the study',
-          'field_description_value_type' => 'TEXT',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'max_length' => '255',
-      ),
-      'translatable' => '1',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'study',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '1',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_full_name',
-      'label' => 'Full Name',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '2',
-      ),
-    ),
-  );
-
   // Exported field: 'node-study_information-field_gender'
   $fields['node-study_information-field_gender'] = array(
     'field_config' => array(
@@ -4008,200 +4362,6 @@ Prof.',
         'settings' => array(),
         'type' => 'number',
         'weight' => '16',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-study-field_investigator'
-  $fields['node-study-field_investigator'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_investigator',
-      'foreign keys' => array(
-        'nid' => array(
-          'columns' => array(
-            'nid' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'nid' => array(
-          0 => 'nid',
-        ),
-      ),
-      'module' => 'node_reference',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'referenceable_types' => array(
-          'article' => 0,
-          'blog' => 0,
-          'contact' => 'contact',
-          'event' => 0,
-          'field_description' => 0,
-          'institution' => 0,
-          'page' => 0,
-          'panel' => 0,
-          'study' => 0,
-          'study_information' => 0,
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'node_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'study',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '3',
-        ),
-        'search_result' => array(
-          'label' => 'hidden',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '3',
-        ),
-        'teaser' => array(
-          'label' => 'hidden',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '0',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_investigator',
-      'label' => 'Investigators',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'noderefcreate',
-        'settings' => array(
-          'autocomplete_match' => 'contains',
-          'autocomplete_path' => 'node_reference/autocomplete',
-          'size' => '60',
-        ),
-        'type' => 'noderefcreate_autocomplete',
-        'weight' => '3',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-study-field_p3g_observatory_link'
-  $fields['node-study-field_p3g_observatory_link'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_p3g_observatory_link',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'module' => 'link',
-      'settings' => array(
-        'attributes' => array(
-          'class' => '',
-          'rel' => '',
-          'target' => 'default',
-        ),
-        'display' => array(
-          'url_cutoff' => 80,
-        ),
-        'enable_tokens' => 1,
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'title' => 'optional',
-        'title_value' => '',
-        'url' => 0,
-      ),
-      'translatable' => '1',
-      'type' => 'link_field',
-    ),
-    'field_instance' => array(
-      'bundle' => 'study',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'link',
-          'settings' => array(),
-          'type' => 'default',
-          'weight' => '5',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_p3g_observatory_link',
-      'label' => 'P3G Observatory Link',
-      'required' => 0,
-      'settings' => array(
-        'attributes' => array(
-          'class' => '',
-          'rel' => 'nofollow',
-          'target' => '_blank',
-        ),
-        'display' => array(
-          'url_cutoff' => '80',
-        ),
-        'enable_tokens' => 1,
-        'title' => 'none',
-        'title_value' => '',
-        'url' => 0,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_field',
-        'weight' => '6',
       ),
     ),
   );
@@ -4844,166 +5004,6 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-study-field_target_number_biosamples'
-  $fields['node-study-field_target_number_biosamples'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_target_number_biosamples',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'module' => 'number',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => 'Target number of biological samples',
-          'field_description_value_type' => 'INTEGER',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'number_integer',
-    ),
-    'field_instance' => array(
-      'bundle' => 'study',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'module' => 'number',
-          'settings' => array(
-            'decimal_separator' => '.',
-            'prefix_suffix' => TRUE,
-            'scale' => 0,
-            'thousand_separator' => ' ',
-          ),
-          'type' => 'number_integer',
-          'weight' => '15',
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_target_number_biosamples',
-      'label' => 'Target Number of Biological Samples',
-      'required' => 0,
-      'settings' => array(
-        'max' => '',
-        'min' => '0',
-        'prefix' => '',
-        'suffix' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'number',
-        'settings' => array(),
-        'type' => 'number',
-        'weight' => '11',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-study-field_target_number_participants'
-  $fields['node-study-field_target_number_participants'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_target_number_participants',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'module' => 'number',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => 'Target number of participants',
-          'field_description_value_type' => 'INTEGER',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'number_integer',
-    ),
-    'field_instance' => array(
-      'bundle' => 'study',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'module' => 'number',
-          'settings' => array(
-            'decimal_separator' => '.',
-            'prefix_suffix' => TRUE,
-            'scale' => 0,
-            'thousand_separator' => ' ',
-          ),
-          'type' => 'number_integer',
-          'weight' => '4',
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_target_number_participants',
-      'label' => 'Target Number of Participants',
-      'required' => 0,
-      'settings' => array(
-        'max' => '',
-        'min' => '0',
-        'prefix' => '',
-        'suffix' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'number',
-        'settings' => array(),
-        'type' => 'number',
-        'weight' => '5',
-      ),
-    ),
-  );
-
   // Exported field: 'node-study_information-field_target_other'
   $fields['node-study_information-field_target_other'] = array(
     'field_config' => array(
@@ -5101,8 +5101,8 @@ Prof.',
   t('Categories');
   t('City');
   t('Comment');
-  t('Contacts');
   t('Contact Name');
+  t('Contacts');
   t('Content Type');
   t('Content Type Label');
   t('Country');
@@ -5121,7 +5121,7 @@ Prof.',
   t('Max age');
   t('Min age');
   t('Name of the content type that declares this field');
-  t('P3G Observatory Link');
+  t('P3G Catalogue Link');
   t('Please specify the approximate number of participants');
   t('Postal Code');
   t('Proceeding to Genome-Wide Association (GWA) Analysis');
