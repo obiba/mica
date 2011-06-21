@@ -48,11 +48,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
@@ -70,11 +70,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contact_name_2']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_contact_name_2']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_contact_name_2']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_contact_name_2']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_contact_name_2']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_contact_name_2']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_contact_name_2']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_contact_name_2']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_contact_name_2']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_contact_name_2']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_contact_name_2']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_contact_name_2']['element_default_classes'] = 0;
@@ -93,11 +93,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contact_name']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_contact_name']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_contact_name']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_contact_name']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_contact_name']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_contact_name']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_contact_name']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_contact_name']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_contact_name']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_contact_name']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_contact_name']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_contact_name']['element_default_classes'] = 0;
@@ -116,11 +116,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contact_name_1']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_contact_name_1']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_contact_name_1']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_contact_name_1']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_contact_name_1']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_contact_name_1']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_contact_name_1']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_contact_name_1']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_contact_name_1']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_contact_name_1']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_contact_name_1']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_contact_name_1']['element_default_classes'] = 1;
@@ -139,11 +139,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contact_email']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_contact_email']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_contact_email']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_contact_email']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_contact_email']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_contact_email']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_contact_email']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_contact_email']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_contact_email']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_contact_email']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_contact_email']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_contact_email']['element_default_classes'] = 1;
@@ -161,11 +161,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_telephone']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_telephone']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_telephone']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_telephone']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_telephone']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_telephone']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_telephone']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_telephone']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_telephone']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_telephone']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_telephone']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_telephone']['element_default_classes'] = 1;
@@ -182,11 +182,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_institution']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_institution']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_institution']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_institution']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_institution']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_institution']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_institution']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_institution']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_institution']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_institution']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_institution']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_institution']['element_default_classes'] = 1;
@@ -227,6 +227,28 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['path'] = 'csv-contact';
   $handler->display->display_options['sitename_title'] = 0;
   $handler->display->display_options['use_batch'] = '0';
+  $translatables['csv_contact_export'] = array(
+    t('Master'),
+    t('CSV Contact Export'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('title'),
+    t('field_contact_name:title'),
+    t('[field_contact_name_2-title]'),
+    t('field_contact_name:given'),
+    t('field_contact_name:family'),
+    t('field_contact_email:email'),
+    t('field_telephone'),
+    t('field_institution'),
+    t('Data export'),
+  );
   $export['csv_contact_export'] = $view;
 
   $view = new view;
@@ -248,7 +270,6 @@ function mica_studies_views_default_views() {
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -267,11 +288,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
@@ -288,11 +309,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['body']['alter']['external'] = 0;
   $handler->display->display_options['fields']['body']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['body']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['body']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['body']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['body']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['body']['alter']['html'] = 0;
   $handler->display->display_options['fields']['body']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['body']['element_default_classes'] = 1;
@@ -309,11 +330,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_original_field_label']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_original_field_label']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_original_field_label']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_original_field_label']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_original_field_label']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_original_field_label']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_original_field_label']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_original_field_label']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_original_field_label']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_original_field_label']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_original_field_label']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_original_field_label']['element_default_classes'] = 1;
@@ -330,11 +351,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_original_field_name']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_original_field_name']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_original_field_name']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_original_field_name']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_original_field_name']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_original_field_name']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_original_field_name']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_original_field_name']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_original_field_name']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_original_field_name']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_original_field_name']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_original_field_name']['element_default_classes'] = 1;
@@ -351,11 +372,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_bundle_label']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_bundle_label']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_bundle_label']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_bundle_label']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_bundle_label']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_bundle_label']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_bundle_label']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_bundle_label']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_bundle_label']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_bundle_label']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_bundle_label']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_bundle_label']['element_default_classes'] = 1;
@@ -372,11 +393,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_bundle']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_bundle']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_bundle']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_bundle']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_bundle']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_bundle']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_bundle']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_bundle']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_bundle']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_bundle']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_bundle']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_bundle']['element_default_classes'] = 1;
@@ -393,11 +414,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_value_type']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_value_type']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_value_type']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_value_type']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_value_type']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_value_type']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_value_type']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_value_type']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_value_type']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_value_type']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_value_type']['element_default_classes'] = 1;
@@ -415,11 +436,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_categories']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_categories']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_categories']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_categories']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_categories']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_categories']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_categories']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_categories']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_categories']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_categories']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_categories']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_categories']['element_default_classes'] = 1;
@@ -440,11 +461,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_repeatable']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_repeatable']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_repeatable']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_repeatable']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_repeatable']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_repeatable']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_repeatable']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_repeatable']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_repeatable']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_repeatable']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_repeatable']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_repeatable']['element_default_classes'] = 1;
@@ -487,6 +508,29 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['path'] = 'csv-field-description';
   $handler->display->display_options['sitename_title'] = 0;
   $handler->display->display_options['use_batch'] = '0';
+  $translatables['csv_field_description_export'] = array(
+    t('Master'),
+    t('CSV Contact Export'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('title'),
+    t('body'),
+    t('field_original_field_label'),
+    t('field_original_field_name'),
+    t('field_bundle_label'),
+    t('field_bundle'),
+    t('field_value_type'),
+    t('field_categories'),
+    t('field_repeatable'),
+    t('Data export'),
+  );
   $export['csv_field_description_export'] = $view;
 
   $view = new view;
@@ -508,7 +552,6 @@ function mica_studies_views_default_views() {
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -527,11 +570,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
@@ -548,11 +591,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_street']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_street']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_street']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_street']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_street']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_street']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_street']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_street']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_street']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_street']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_street']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_street']['element_default_classes'] = 1;
@@ -569,11 +612,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_city']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_city']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_city']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_city']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_city']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_city']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_city']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_city']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_city']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_city']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_city']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_city']['element_default_classes'] = 1;
@@ -590,11 +633,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_postal_code']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_postal_code']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_postal_code']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_postal_code']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_postal_code']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_postal_code']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_postal_code']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_postal_code']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_postal_code']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_postal_code']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_postal_code']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_postal_code']['element_default_classes'] = 1;
@@ -611,11 +654,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_country']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_country']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_country']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_country']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_country']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_country']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_country']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_country']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_country']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_country']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_country']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_country']['element_default_classes'] = 1;
@@ -655,6 +698,25 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['path'] = 'csv-institution';
   $handler->display->display_options['sitename_title'] = 0;
   $handler->display->display_options['use_batch'] = '0';
+  $translatables['csv_institution_export'] = array(
+    t('Master'),
+    t('CSV Institution Export'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('title'),
+    t('field_street'),
+    t('field_city'),
+    t('field_postal_code'),
+    t('field_country'),
+    t('Data export'),
+  );
   $export['csv_institution_export'] = $view;
 
   $view = new view;
@@ -676,7 +738,6 @@ function mica_studies_views_default_views() {
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -695,11 +756,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_study_legacy_id']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_study_legacy_id']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_study_legacy_id']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_study_legacy_id']['element_default_classes'] = 1;
@@ -721,11 +782,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 0;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
@@ -742,18 +803,16 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['body']['alter']['external'] = 0;
   $handler->display->display_options['fields']['body']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['body']['alter']['nl2br'] = 1;
   $handler->display->display_options['fields']['body']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['body']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['body']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['body']['alter']['html'] = 0;
   $handler->display->display_options['fields']['body']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['body']['element_default_classes'] = 0;
   $handler->display->display_options['fields']['body']['hide_empty'] = 0;
   $handler->display->display_options['fields']['body']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['body']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['body']['field_api_classes'] = 0;
   /* Field: Content: Full Name */
   $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
@@ -765,11 +824,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_full_name']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_full_name']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_full_name']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_full_name']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_full_name']['element_default_classes'] = 1;
@@ -786,11 +845,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_website']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_website']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_website']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_website']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_website']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_website']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_website']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_website']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_website']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_website']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_website']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_website']['element_default_classes'] = 1;
@@ -812,11 +871,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contact']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_contact']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_contact']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_contact']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_contact']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_contact']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_contact']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_contact']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_contact']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_contact']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_contact']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_contact']['element_default_classes'] = 1;
@@ -838,11 +897,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_investigator']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_investigator']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_investigator']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_investigator']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_investigator']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_investigator']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_investigator']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_investigator']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_investigator']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_investigator']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_investigator']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_investigator']['element_default_classes'] = 1;
@@ -864,11 +923,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_target_number_participants']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_target_number_participants']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_target_number_participants']['element_default_classes'] = 1;
@@ -889,11 +948,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['element_default_classes'] = 1;
@@ -915,11 +974,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['element_default_classes'] = 1;
@@ -961,6 +1020,31 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['path'] = 'csv-study';
   $handler->display->display_options['use_batch'] = '0';
+  $translatables['csv_study_export'] = array(
+    t('Master'),
+    t('CSV Study Export'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('field_study_legacy_id'),
+    t('title'),
+    t('body'),
+    t('field_full_name'),
+    t('field_website'),
+    t('field_contact'),
+    t('field_investigator'),
+    t('field_target_number_participants'),
+    t('field_target_number_biosamples'),
+    t('field_p3g_observatory_link'),
+    t('[field_p3g_observatory_link-url]'),
+    t('Data export'),
+  );
   $export['csv_study_export'] = $view;
 
   $view = new view;
@@ -982,7 +1066,6 @@ function mica_studies_views_default_views() {
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -998,11 +1081,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_study_legacy_id']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_study_legacy_id']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_study_legacy_id']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_study_legacy_id']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_study_legacy_id']['element_default_classes'] = 1;
@@ -1023,11 +1106,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title_1']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title_1']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title_1']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title_1']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title_1']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title_1']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['title_1']['element_default_classes'] = 1;
@@ -1044,18 +1127,16 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_design']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_design']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_design']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_design']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_design']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_design']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_design']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_design']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_design']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_design']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_design']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_design']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_design']['delta_offset'] = '0';
@@ -1072,18 +1153,16 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_biosamples_collected_other']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected_other']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected_other']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collected_other']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_biosamples_collected_other']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected_other']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected_other']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_biosamples_collected_other']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_biosamples_collected_other']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collected_other']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected_other']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected_other']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_biosamples_collected_other']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_biosamples_collected_other']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected_other']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collected_other']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected_other']['field_api_classes'] = 0;
   /* Field: Content: Recruitment targets */
   $handler->display->display_options['fields']['field_design_target']['id'] = 'field_design_target';
@@ -1095,18 +1174,16 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_design_target']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_design_target']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_design_target']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_design_target']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_design_target']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_design_target']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_design_target']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_design_target']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_design_target']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_design_target']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_design_target']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_design_target']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_design_target']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_design_target']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_design_target']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_design_target']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_design_target']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_design_target']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_design_target']['delta_offset'] = '0';
@@ -1123,11 +1200,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_biosamples_tissues']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_biosamples_tissues']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_biosamples_tissues']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_biosamples_tissues']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_biosamples_tissues']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_biosamples_tissues']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_biosamples_tissues']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_biosamples_tissues']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_tissues']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_biosamples_tissues']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_biosamples_tissues']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_biosamples_tissues']['element_default_classes'] = 1;
@@ -1144,18 +1221,16 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_selection_criteria']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_selection_criteria']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_selection_criteria']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_selection_criteria']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_selection_criteria']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_selection_criteria']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_selection_criteria']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_selection_criteria']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_selection_criteria']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_selection_criteria']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_selection_criteria']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_selection_criteria']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_selection_criteria']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_selection_criteria']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_selection_criteria']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_selection_criteria']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_selection_criteria']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_selection_criteria']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_selection_criteria']['delta_offset'] = '0';
@@ -1172,11 +1247,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_age_max']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_age_max']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_age_max']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_age_max']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_age_max']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_age_max']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_age_max']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_age_max']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_age_max']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_age_max']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_age_max']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_age_max']['element_default_classes'] = 1;
@@ -1197,11 +1272,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_age_min']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_age_min']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_age_min']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_age_min']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_age_min']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_age_min']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_age_min']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_age_min']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_age_min']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_age_min']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_age_min']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_age_min']['element_default_classes'] = 1;
@@ -1222,18 +1297,17 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_gender']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_gender']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_gender']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_gender']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_gender']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_gender']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_gender']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_gender']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_gender']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_gender']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_gender']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_gender']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_gender']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_gender']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_gender']['type'] = 'list_key';
-  
   $handler->display->display_options['fields']['field_gender']['field_api_classes'] = 0;
   /* Field: Content: Country selection criteria */
   $handler->display->display_options['fields']['field_study_country']['id'] = 'field_study_country';
@@ -1245,18 +1319,16 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_study_country']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_study_country']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_study_country']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_study_country']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_study_country']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_study_country']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_study_country']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_study_country']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_study_country']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_study_country']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_study_country']['delta_offset'] = '0';
@@ -1273,18 +1345,16 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_biosamples_collected']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collected']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_biosamples_collected']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_biosamples_collected']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_biosamples_collected']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collected']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_biosamples_collected']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_biosamples_collected']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collected']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_biosamples_collected']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_biosamples_collected']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_biosamples_collected']['delta_offset'] = '0';
@@ -1301,11 +1371,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_target_other']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_target_other']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_target_other']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_target_other']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_target_other']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_target_other']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_target_other']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_target_other']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_target_other']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_target_other']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_target_other']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_target_other']['element_default_classes'] = 1;
@@ -1322,11 +1392,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_design_other']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_design_other']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_design_other']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_design_other']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_design_other']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_design_other']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_design_other']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_design_other']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_design_other']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_design_other']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_design_other']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_design_other']['element_default_classes'] = 1;
@@ -1343,18 +1413,16 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_gwas_analysis']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_gwas_analysis']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_gwas_analysis']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_gwas_analysis']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_gwas_analysis']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_gwas_analysis']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_gwas_analysis']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_gwas_analysis']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_gwas_analysis']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_gwas_analysis']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_gwas_analysis']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_gwas_analysis']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_gwas_analysis']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_gwas_analysis']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_gwas_analysis']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_gwas_analysis']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_gwas_analysis']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_gwas_analysis']['field_api_classes'] = 0;
   /* Field: Content: Target Number of Biological Samples */
@@ -1367,18 +1435,16 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_target_number_biosamples']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_target_number_biosamples']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_target_number_biosamples']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_target_number_biosamples']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_target_number_biosamples']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_target_number_biosamples']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_target_number_biosamples']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_target_number_biosamples']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_target_number_biosamples']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_target_number_biosamples']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_target_number_biosamples']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_target_number_biosamples']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_target_number_biosamples']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_target_number_biosamples']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_target_number_biosamples']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_target_number_biosamples']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_target_number_biosamples']['settings'] = array(
     'thousand_separator' => '',
     'prefix_suffix' => 1,
@@ -1394,18 +1460,16 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_access']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_access']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_access']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_access']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_access']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_access']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_access']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_access']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_access']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_access']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_access']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_access']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_access']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_access']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_access']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_access']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_access']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_access']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_access']['delta_offset'] = '0';
@@ -1422,11 +1486,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_access_other']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_access_other']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_access_other']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_access_other']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_access_other']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_access_other']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_access_other']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_access_other']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_access_other']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_access_other']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_access_other']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_access_other']['element_default_classes'] = 1;
@@ -1443,11 +1507,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_status_start']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_status_start']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_status_start']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_status_start']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_status_start']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_status_start']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_status_start']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_status_start']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_status_start']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_status_start']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_status_start']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_status_start']['element_default_classes'] = 1;
@@ -1468,11 +1532,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_status_end']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_status_end']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_status_end']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_status_end']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_status_end']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_status_end']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_status_end']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_status_end']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_status_end']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_status_end']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_status_end']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_status_end']['element_default_classes'] = 1;
@@ -1516,6 +1580,39 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['path'] = 'csv-study-information';
   $handler->display->display_options['use_batch'] = '0';
+  $translatables['csv_study_information_export'] = array(
+    t('Master'),
+    t('CSV Study Information Export'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('field_study_legacy_id'),
+    t('title'),
+    t('field_design'),
+    t('field_biosamples_collected_other'),
+    t('field_design_target'),
+    t('field_target_other'),
+    t('field_selection_criteria'),
+    t('field_age_max'),
+    t('field_age_min'),
+    t('field_gender'),
+    t('field_study_country'),
+    t('field_biosamples_collected'),
+    t('field_biosamples_tissues'),
+    t('field_gwas_analysis'),
+    t('field_gwas_number'),
+    t('field_access'),
+    t('field_access_other'),
+    t('field_status_start'),
+    t('field_status_end'),
+    t('Data export'),
+  );
   $export['csv_study_information_export'] = $view;
 
   $view = new view;
@@ -1534,7 +1631,6 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -1573,8 +1669,6 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['empty']['area']['label'] = 'empty_documents';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
   $handler->display->display_options['empty']['area']['content'] = 'The list of documents is empty';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  $handler->display->display_options['empty']['area']['tokenize'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1585,18 +1679,16 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
@@ -1608,19 +1700,17 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['body']['alter']['external'] = 0;
   $handler->display->display_options['fields']['body']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['trim'] = 1;
   $handler->display->display_options['fields']['body']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['body']['alter']['max_length'] = '100';
   $handler->display->display_options['fields']['body']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['body']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['body']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['trim'] = 1;
   $handler->display->display_options['fields']['body']['alter']['html'] = 1;
   $handler->display->display_options['fields']['body']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['body']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['body']['hide_empty'] = 0;
   $handler->display->display_options['fields']['body']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['body']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '300',
   );
@@ -1635,18 +1725,16 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_files']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_files']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_files']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_files']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_files']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_files']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_files']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_files']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_files']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_files']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_files']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_files']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_files']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_files']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_files']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_files']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_files']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_files']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_files']['delta_offset'] = '0';
@@ -1675,6 +1763,25 @@ function mica_studies_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'documents';
+  $translatables['documents'] = array(
+    t('Master'),
+    t('Documents'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_documents'),
+    t('The list of documents is empty'),
+    t('Name'),
+    t('Description'),
+    t('Download'),
+    t('Page'),
+  );
   $export['documents'] = $view;
 
   $view = new view;
@@ -1707,11 +1814,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
@@ -1727,11 +1834,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['body_value']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['body_value']['alter']['external'] = 0;
   $handler->display->display_options['fields']['body_value']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['body_value']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['body_value']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['body_value']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['body_value']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['body_value']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['body_value']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['body_value']['alter']['html'] = 0;
   $handler->display->display_options['fields']['body_value']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['body_value']['element_default_classes'] = 1;
@@ -1760,6 +1867,23 @@ function mica_studies_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'fields-description-search';
   $handler->display->display_options['tab_options']['weight'] = '0';
+  $translatables['fields_description_search'] = array(
+    t('Master'),
+    t('Fields Description Search'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('Name'),
+    t('Text'),
+    t('Fulltext search'),
+    t('Page'),
+  );
   $export['fields_description_search'] = $view;
 
   $view = new view;
@@ -1778,12 +1902,18 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'empty_news';
+  $handler->display->display_options['empty']['area']['empty'] = FALSE;
+  $handler->display->display_options['empty']['area']['content'] = 'The list of news is empty';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1792,10 +1922,10 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
@@ -1805,6 +1935,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Promoted to front page */
+  $handler->display->display_options['filters']['promote']['id'] = 'promote';
+  $handler->display->display_options['filters']['promote']['table'] = 'node';
+  $handler->display->display_options['filters']['promote']['field'] = 'promote';
+  $handler->display->display_options['filters']['promote']['value'] = '1';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -1812,15 +1947,26 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Promoted to front page */
-  $handler->display->display_options['filters']['promote']['id'] = 'promote';
-  $handler->display->display_options['filters']['promote']['table'] = 'node';
-  $handler->display->display_options['filters']['promote']['field'] = 'promote';
-  $handler->display->display_options['filters']['promote']['value'] = '1';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'news';
+  $translatables['news'] = array(
+    t('Master'),
+    t('Recent News'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_news'),
+    t('The list of news is empty'),
+    t('Page'),
+  );
   $export['news'] = $view;
 
   $view = new view;
@@ -1839,7 +1985,6 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -1892,9 +2037,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['empty']['area']['label'] = 'empty_studies';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
   $handler->display->display_options['empty']['area']['content'] = 'The list of studies is empty';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  $handler->display->display_options['empty']['area']['tokenize'] = 0;
-  /* Relationship: Content: Study Information (mica_study_information) */
+  /* Relationship: Fields: Study Information (mica_study_information) - nid */
   $handler->display->display_options['relationships']['mica_study_information_nid']['id'] = 'mica_study_information_nid';
   $handler->display->display_options['relationships']['mica_study_information_nid']['table'] = 'field_data_mica_study_information';
   $handler->display->display_options['relationships']['mica_study_information_nid']['field'] = 'mica_study_information_nid';
@@ -1910,11 +2053,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
@@ -1930,11 +2073,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_full_name']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_full_name']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_full_name']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_full_name']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_full_name']['element_default_classes'] = 1;
@@ -1950,11 +2093,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_target_number_participants']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_target_number_participants']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_target_number_participants']['element_default_classes'] = 1;
@@ -1976,11 +2119,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_study_country']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_study_country']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_study_country']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_study_country']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_study_country']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_study_country']['element_default_classes'] = 1;
@@ -2000,18 +2143,16 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_p3g_observatory_link']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['type'] = 'short';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['field_api_classes'] = 0;
@@ -2037,6 +2178,28 @@ function mica_studies_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'studies';
+  $translatables['studies'] = array(
+    t('Master'),
+    t('Studies'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_studies'),
+    t('The list of studies is empty'),
+    t('mica_study_information'),
+    t('Name'),
+    t('Full Name'),
+    t('Target Number of Participants'),
+    t('Country(ies)'),
+    t('P3G Catalogue'),
+    t('Page'),
+  );
   $export['studies'] = $view;
 
   $view = new view;
@@ -2069,11 +2232,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
@@ -2101,6 +2264,22 @@ function mica_studies_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'studies-search';
+  $translatables['studies_search'] = array(
+    t('Master'),
+    t('Studies Search'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('Name'),
+    t('Fulltext search'),
+    t('Page'),
+  );
   $export['studies_search'] = $view;
 
   return $export;

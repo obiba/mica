@@ -51,6 +51,10 @@ feeds_revision=5f9ebacf6972bc5fe05f967cb33af0ddecc39ea5
 references_revision=7.x-2.0-beta3
 references_patch=http://drupal.org/files/issues/references.node_type_property.patch
 
+# Patch for issue http://drupal.org/node/1119466
+views_revision=7.x-3.0-beta3
+views_patch=http://drupal.org/files/issues/1119466-empty-table-class.patch
+
 #
 # Drupal Build
 #
@@ -104,9 +108,10 @@ drupal-forks:
 	cp -r forks/* target/$(micadir)/sites/all/modules
 
 drupal-stable-dev:
-	$(call drupal-checkout-module,http_client)
-	$(call drupal-checkout-module,feeds)
-	$(call drupal-patch-module,references)
+	$(call drupal-checkout-module,http_client, 0)
+	$(call drupal-checkout-module,feeds, 0)
+	$(call drupal-patch-module,references, 0)
+	$(call drupal-patch-module,views, 1)
 	
 drupal-install-clients: jsonpath-php-client solr-php-client
 
@@ -131,7 +136,7 @@ drupal-default:
 	chmod +x scripts/*.sh
 
 drupal-patch-module = $(call drupal-checkout-module,$(1)) && \
-	wget -O - $($(1)_patch) | git apply -p0	
+	wget -O - $($(1)_patch) | git apply -p$(2)	
 
 # drupal-checkout-module function: checkout a specific module version using git
 drupal-checkout-module = cd target/$(micadir)/sites/all/modules && \
