@@ -64,6 +64,25 @@ function mica_data_access_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
+    'weight' => '-48',
+    'parent_path' => 'node/71',
+  );
+  // Exported menu link: main-menu:data-access-requests/add
+  $menu_links['main-menu:data-access-requests/add'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'data-access-requests/add',
+    'router_path' => 'data-access-requests/add',
+    'link_title' => 'Data Access Request',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
     'weight' => '-49',
     'parent_path' => 'node/71',
   );
@@ -109,6 +128,7 @@ function mica_data_access_menu_default_menu_links() {
   t('Data Access');
   t('Data Access Administration');
   t('Data Access Committee');
+  t('Data Access Request');
   t('Research');
 
 
