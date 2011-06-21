@@ -238,7 +238,9 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
   }
   elseif ($query) {
     // add saved query terms ordered by weight
-    foreach (mica_dataset_query_term_query($query->id) as $query_term) {
+    $terms = mica_dataset_query_term_query($query->id);
+    $terms = $terms ? $terms : array();
+    foreach ($terms as $query_term) {
       $data[] = array(
         'id' => $query_term->id,
         'title' => $query_term->toString(),
