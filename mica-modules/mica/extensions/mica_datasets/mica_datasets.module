@@ -135,7 +135,7 @@ function mica_datasets_menu() {
       'title arguments' => array(1,3,5),
       'access callback' => TRUE,
       'access callback' => '_mica_datasets_query_access',
-      'access arguments' => array(1,3,'update'),
+      'access arguments' => array(1,3,'view'),
       'page callback' => 'mica_datasets_dataset_query_term_page',
       'page arguments' => array(1,3,5),
       'file' => 'mica_datasets.pages.query.inc',
