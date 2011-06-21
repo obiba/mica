@@ -11,7 +11,7 @@ include_once('mica_data_access.features.inc');
  */
 function mica_data_access_menu() {
   $items = array();
-  
+
   $items['data-access-requests/add'] = array(
     'title' => 'Submit a Data Access Request',
     'page callback' => 'node_add',
@@ -22,7 +22,7 @@ function mica_data_access_menu() {
     'file path' => drupal_get_path('module', 'node'),
     'file' => 'node.pages.inc',
   );
-  
+
   $items['node/%node/review'] = array(
     'title' => 'Review Data Access Request',
     'page callback' => 'mica_data_access_request_review',
@@ -31,7 +31,7 @@ function mica_data_access_menu() {
     'access arguments' => array(1),
     'type' => MENU_LOCAL_ACTION,
   );
-  
+
   return $items;
 }
 
@@ -43,10 +43,18 @@ function mica_data_access_field_attach_form($entity_type, $entity, &$form, &$for
     // remove the data access review field
     unset($form['field_data_access_review']);
   }
+  elseif ($entity_type == 'node' && $entity->type == 'data_access_review') {
+    unset($form['field_data_access']);
+    unset($form['title']);
+  }
 }
 
-function mica_data_access_request_review_access($node) {
+function mica_data_access_request_review_access($node,$op = NULL) {
   if ($node->type != 'data_access_request') {
+    return FALSE;
+  }
+  
+  if (!empty($node->field_data_access_review)) {
     return FALSE;
   }
   
@@ -54,7 +62,63 @@ function mica_data_access_request_review_access($node) {
 }
 
 
-function mica_data_access_request_review($data_access_request_node) {
-  drupal_goto('node/add/data-access-review');
+function mica_data_access_request_review($node) {
+  global $user;
+
+  if (empty($node->field_data_access_review)) {
+    // create a data access review associated to this request
+    $review_node = new stdClass();
+    $review_node->type = 'data_access_review';
+    node_object_prepare($review_node);
+    $review_node->title = $node->title;
+    $review_node->language = $node->language;
+    $review_node->uid = $user->uid; // current user is the author
+    $review_node->status = $node->status; // same publication status
+    $review_node->field_data_access[$node->language] = array(array('nid' => $node->nid));
+    $review_node->field_review_status[$node->language] = array(array('value' => 'reviewed'));
+    
+    $reviewer = mica_data_access_reviewer_contact($user);
+    if ($reviewer !== FALSE) {
+      debug($reviewer);
+      $review_node->field_daco_reviewer[$node->language] = array(array('nid' => $reviewer->nid));
+    }
+
+    node_save($review_node);
+
+    watchdog('mica', 'Created data access review %review for request %request by user %user',
+    array(
+        '%review' => $review_node->nid, 
+        '%request' => $node->nid,
+        '%user' => $user->uid,
+    ), WATCHDOG_INFO);
+
+    $node->field_data_access_review[$node->language] = array(array('nid' => $review_node->nid));
+    node_save($node);
+  }
+
+  // go to the associated review
+  drupal_goto('node/' . $node->field_data_access_review[$node->language][0]['nid']);
+}
+
+/**
+ * Get the first contact associated with the provided user.
+ * @param user $user
+ * @return FALSE or the result of contact node entity query
+ */
+function mica_data_access_reviewer_contact($user) {
+  $field = field_info_field('field_daco');
+  $query = new EntityFieldQuery;
+  $query->entityCondition('entity_type', 'node')
+  ->entityCondition('bundle', 'contact')
+  ->fieldCondition($field, 'uid', $user->uid);
+
+  $entities = $query->execute();
+  
+  if (!empty($entities)) {
+     return array_shift($entities['node']);
+  }
+  else {
+    return FALSE;
+  }
 }
 
