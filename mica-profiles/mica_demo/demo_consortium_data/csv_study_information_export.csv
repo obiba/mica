@@ -1,6 +1,6 @@
-"field_study_legacy_id";"title";"field_design";"field_design_other";"field_design_target";"field_target_other";"field_selection_criteria";"field_age_max";"field_age_min";"field_gender";"field_study_country";"field_biosamples_collected";"field_biosamples_tissues";"field_biosamples_collected_other";"field_gwas_analysis";"field_gwas_number";"field_access";"field_access_other";"field_status_start";"field_status_end"
-1;"UKB";"cohort_study";;"individuals";;"age";"69";"40";;"GBR";"blood, urine";;;;"500000";"biological_samples, data";;"2003";"2040"
-4;"LifeLines";"cohort_study";"Cell lines";"families|individuals";;"age|country|other";"50";"25";;"NLD";"blood";;;"yes_later";"165000";"biological_samples, data";;"2004";"2036"
-"3";"LifeGene";"cohort_study";"Buccal cells";"families";;"age|country";"55";;;"SWE";"blood, others";;;;;;;"2009";
-2;"KORA-gen";"cohort_study";"Cell lines";"individuals";;"age|country|other";"74";"25";;"DEU";"blood, others";;;"yes_currently";;"biological_samples, data";;"1983";"2008"
-"5";"HUNT-2";"cohort_study";"For urine, Micro-aluminuria was measured in 10 000";"individuals";;"age|country";;"13";;"NOR";"blood, others, urine";;;;"65000";"biological_samples, data";;"1995";"1997"
+"field_study_legacy_id";"title";"field_design";"field_biosamples_collected_other";"field_design_target";"field_target_other";"field_selection_criteria";"field_age_max";"field_age_min";"field_gender";"field_study_country";"field_biosamples_collected";"field_biosamples_tissues";"field_gwas_analysis";"field_gwas_number";"field_access";"field_access_other";"field_status_start";"field_status_end"
+1;"UKB";"cohort_study";;"individuals";;"age";"69";"40";;"GBR";"blood|urine";;;"500000";"biological_samples|data";;"2003";"2040"
+4;"LifeLines";"cohort_study";"Cell lines";"families|individuals";;"age|country|other";"50";"25";;"NLD";"blood|others";;"yes_later";"165000";"biological_samples|data";;"2004";"2036"
+"3";"LifeGene";"cohort_study";"Buccal cells";"families";;"age|country";"55";;;"SWE";"blood|others";;;;;;"2009";
+2;"KORA-gen";"cohort_study";"Cell lines";"individuals";;"age|country|other";"74";"25";;"DEU";"blood|others";;"yes_currently";;"biological_samples|data";;"1983";"2008"
+"5";"HUNT-2";"cohort_study";"For urine, Micro-aluminuria was measured in 10 000";"individuals";;"age|country";;"13";;"NOR";"blood|others|urine";;;"65000";"biological_samples|data";;"1995";"1997"
