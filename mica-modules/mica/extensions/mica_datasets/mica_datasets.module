@@ -110,7 +110,7 @@ function mica_datasets_menu() {
   $items['node/%node/queries/%mica_dataset_query/run'] = array(
       'title' => 'Run',
       'access callback' => '_mica_datasets_query_access',
-      'access arguments' => array(1,3,'view'),
+      'access arguments' => array(1,3,'run'),
       'page callback' => 'mica_datasets_dataset_query_run_page',
       'page arguments' => array(1,3),
       'type' => MENU_LOCAL_ACTION,
@@ -316,6 +316,11 @@ function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
   }
 
   if (!_mica_datasets_node_access($dataset_node, 'dataset', 'view')) {
+    return FALSE;
+  }
+  
+  // Test whether query is runnable.
+  if($op == 'run' && mica_dataset_query_term_query($query->id) == FALSE) {
     return FALSE;
   }
 

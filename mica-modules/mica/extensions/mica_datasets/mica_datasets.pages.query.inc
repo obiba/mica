@@ -55,15 +55,18 @@ function mica_datasets_dataset_queries_page($dataset_node) {
         $option = array(
           'name' => _mica_datasets_dataset_query_link($dataset_node, $query),
           'description' => $query->description,
-          'actions' => array(
-            'data' => array(
-        array(
-              '#type' => 'link',
-              '#title' => t('Run'),
-              '#href' => _mica_datasets_dataset_query_url($dataset_node, $query, 'run'),
-        ),
-        )),
+          'actions' => array('data' => array())
         );
+
+        $run_access = _mica_datasets_query_access($dataset_node, $query, 'run');
+        if($run_access) {
+          $option['actions']['data'][] = array(
+				'#type' => 'link',
+  				'#title' => t('Run'),
+  				'#href' => _mica_datasets_dataset_query_url($dataset_node, $query, 'run'),
+  				'#attributes' => array('style' => array('margin-right: 10px;')),
+          );
+        }
 
         // author of the query or user with update dataset permission can edit/delete a query
         $update_access = _mica_datasets_query_access($dataset_node, $query, 'update');
@@ -72,14 +75,13 @@ function mica_datasets_dataset_queries_page($dataset_node) {
               '#type' => 'link',
               '#title' => t('Edit'),
               '#href' => _mica_datasets_dataset_query_url($dataset_node, $query, 'edit'),
-              '#attributes' => array('style' => array('margin-left: 10px;')),
+              '#attributes' => array('style' => array('margin-right: 10px;')),
           );
            
           $option['actions']['data'][] =  array(
               '#type' => 'link',
               '#title' => t('Delete'),
               '#href' => _mica_datasets_dataset_query_url($dataset_node, $query, 'delete'),
-              '#attributes' => array('style' => array('margin-left: 10px;')),
           );
         }
 
