@@ -1519,19 +1519,40 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
+    'body' => 'body',
+    'field_files' => 'field_files',
   );
-  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['default'] = 'title';
   $handler->display->display_options['style_options']['info'] = array(
     'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
+    'body' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
+    'field_files' => array(
       'align' => '',
       'separator' => '',
     ),
   );
   $handler->display->display_options['style_options']['override'] = 1;
   $handler->display->display_options['style_options']['sticky'] = 0;
-  $handler->display->display_options['style_options']['empty_table'] = 0;
+  $handler->display->display_options['style_options']['empty_table'] = 1;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'empty_documents';
+  $handler->display->display_options['empty']['area']['empty'] = FALSE;
+  $handler->display->display_options['empty']['area']['content'] = 'The list of documents is empty';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['empty']['area']['tokenize'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1803,10 +1824,36 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
+    'field_full_name' => 'field_full_name',
+    'field_target_number_participants' => 'field_target_number_participants',
+    'field_study_country' => 'field_study_country',
+    'field_p3g_observatory_link' => 'field_p3g_observatory_link',
   );
-  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['default'] = 'title';
   $handler->display->display_options['style_options']['info'] = array(
     'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
+    'field_full_name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
+    'field_target_number_participants' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
+    'field_study_country' => array(
+      'align' => '',
+      'separator' => '',
+    ),
+    'field_p3g_observatory_link' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -1815,7 +1862,16 @@ function mica_studies_views_default_views() {
   );
   $handler->display->display_options['style_options']['override'] = 1;
   $handler->display->display_options['style_options']['sticky'] = 0;
-  $handler->display->display_options['style_options']['empty_table'] = 0;
+  $handler->display->display_options['style_options']['empty_table'] = 1;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'empty_studies';
+  $handler->display->display_options['empty']['area']['empty'] = FALSE;
+  $handler->display->display_options['empty']['area']['content'] = 'The list of studies is empty';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['empty']['area']['tokenize'] = 0;
   /* Relationship: Content: Study Information (mica_study_information) */
   $handler->display->display_options['relationships']['mica_study_information_nid']['id'] = 'mica_study_information_nid';
   $handler->display->display_options['relationships']['mica_study_information_nid']['table'] = 'field_data_mica_study_information';
@@ -1916,12 +1972,13 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_p3g_observatory_link']['id'] = 'field_p3g_observatory_link';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['table'] = 'field_data_field_p3g_observatory_link';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['field'] = 'field_p3g_observatory_link';
-  $handler->display->display_options['fields']['field_p3g_observatory_link']['label'] = 'P3G Observatory';
+  $handler->display->display_options['fields']['field_p3g_observatory_link']['label'] = 'P3G Catalogue';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['ellipsis'] = 1;
@@ -1932,6 +1989,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_p3g_observatory_link']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_p3g_observatory_link']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['type'] = 'short';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['field_api_classes'] = 0;
