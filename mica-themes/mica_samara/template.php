@@ -119,11 +119,11 @@ function mica_samara_tablesort_indicator($vars) {
     'alt' => t('sort icon'),
   );
   if ($vars['style'] == 'asc') {
-    $attributes['path']  = path_to_theme() . '/images/tablesort-ascending.png';
+    $attributes['path']  = path_to_theme() . '/images/tablesort-ascending-white.png';
     $attributes['title'] = t('sort ascending');
   }
   else {
-    $attributes['path']  = path_to_theme() . '/images/tablesort-descending.png';
+    $attributes['path']  = path_to_theme() . '/images/tablesort-descending-white.png';
     $attributes['title'] = t('sort descending');
   }
   return theme('image', $attributes);
