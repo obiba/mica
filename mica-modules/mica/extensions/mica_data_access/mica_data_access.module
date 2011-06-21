@@ -5,3 +5,56 @@
  */
 
 include_once('mica_data_access.features.inc');
+
+/**
+ * Implements hook_menu().
+ */
+function mica_data_access_menu() {
+  $items = array();
+  
+  $items['data-access-requests/add'] = array(
+    'title' => 'Submit a Data Access Request',
+    'page callback' => 'node_add',
+    'page arguments' => array('data_access_request'),
+    'access callback' => 'node_access',
+    'access arguments' => array('create', 'data_access_request'),
+    'type' => MENU_LOCAL_ACTION,
+    'file path' => drupal_get_path('module', 'node'),
+    'file' => 'node.pages.inc',
+  );
+  
+  $items['node/%node/review'] = array(
+    'title' => 'Review Data Access Request',
+    'page callback' => 'mica_data_access_request_review',
+    'page arguments' => array(1),
+    'access callback' => 'mica_data_access_request_review_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_ACTION,
+  );
+  
+  return $items;
+}
+
+/**
+ * Implements hook_field_attach_form()
+ */
+function mica_data_access_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+  if ($entity_type == 'node' && $entity->type == 'data_access_request') {
+    // remove the data access review field
+    unset($form['field_data_access_review']);
+  }
+}
+
+function mica_data_access_request_review_access($node) {
+  if ($node->type != 'data_access_request') {
+    return FALSE;
+  }
+  
+  return node_access('create', 'data_access_review');
+}
+
+
+function mica_data_access_request_review($data_access_request_node) {
+  drupal_goto('node/add/data-access-review');
+}
+

@@ -10,6 +10,101 @@
 function mica_data_access_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'node-contact-field_daco'
+  $fields['node-contact-field_daco'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_daco',
+      'foreign keys' => array(
+        'uid' => array(
+          'columns' => array(
+            'uid' => 'uid',
+          ),
+          'table' => 'users',
+        ),
+      ),
+      'indexes' => array(
+        'uid' => array(
+          0 => 'uid',
+        ),
+      ),
+      'module' => 'user_reference',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'referenceable_roles' => array(
+          2 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => '6',
+        ),
+        'referenceable_status' => array(
+          0 => 0,
+          1 => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'user_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'contact',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_daco',
+      'label' => 'Data Access Committee member',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'user_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'user_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'user_reference_autocomplete',
+        'weight' => '6',
+      ),
+    ),
+  );
+
   // Exported field: 'node-data_access_request-field_city'
   $fields['node-data_access_request-field_city'] = array(
     'field_config' => array(
@@ -1407,6 +1502,7 @@ Prof.',
   t('City');
   t('Collaborators');
   t('Country');
+  t('Data Access Committee member');
   t('Data Access Request');
   t('Data Access Review');
   t('Institution Name');
