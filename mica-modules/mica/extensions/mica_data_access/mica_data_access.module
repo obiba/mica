@@ -79,7 +79,6 @@ function mica_data_access_request_review($node) {
     
     $reviewer = mica_data_access_reviewer_contact($user);
     if ($reviewer !== FALSE) {
-      debug($reviewer);
       $review_node->field_daco_reviewer[$node->language] = array(array('nid' => $reviewer->nid));
     }
 
