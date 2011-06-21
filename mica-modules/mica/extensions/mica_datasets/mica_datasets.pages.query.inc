@@ -498,7 +498,7 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
   $rows = array();
   foreach($mica_dataset_connectors as $connector) {
     $study = node_load($connector->study_id);
-    $row = array(array('data'=>$study->title, 'class'=>array('first')));
+    $row = array(array('data'=>$study->title));
     try {
       $result = $connector->query($terms);
       $row[] = $result['total'];
@@ -506,7 +506,7 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
         $impl = $t->termImpl();
         $row[] = $result[$impl->getName()];
       }
-      $row[] = array('data'=>$result['_matched'], 'class'=>array('last', 'totals'));
+      $row[] = array('data'=>$result['_matched'], 'class'=>array('active'));
       $rows[] = array('data'=> $row);
     } catch(Exception $e) {
       if($e->getCode() == 401) {
@@ -521,19 +521,17 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
     }
   }
 
-  $totals = array(array('data'=>'Totals', 'class'=>array('first')));
+  $totals = array(array('data'=>'Totals', 'class'=>array('active')));
   foreach($rows as $row) {
     foreach($row['data'] as $key => $value) {
       if($key == 0) continue;
       if(isset($totals[$key]) == FALSE) {
-        $totals[$key] = 0;
+        $totals[$key] = array('data'=> 0, 'class'=>'active');
       }
-      $totals[$key] += isset($value['data']) ? $value['data'] : $value;
+      $totals[$key]['data'] += isset($value['data']) ? $value['data'] : $value;
     }
   }
-  $last = $totals[count($totals)-1];
-  $totals[count($totals)-1] = array('data'=>$last, 'class' => array('last', 'totals'));
-  $rows[] = array('data' => $totals, 'class' => array('last', 'totals'));
+  $rows[] = array('data' => $totals, 'class' => array('active'));
 
   return theme('table', array("header"=>$columns, "rows"=>$rows, 'attributes'=>array('class'=>array('query-table')), 'empty' => t('No connectors available')));
 }
