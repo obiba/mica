@@ -451,6 +451,12 @@ function mica_datasets_dataset_query_delete_form($form, &$form_state) {
     '#type' => 'submit',
     '#value' => t('Delete'),
   );
+  
+  $form['actions']['cancel'] = array(
+    '#type' => 'link',
+    '#title' => t('Cancel'),
+    '#href' => 'node/'.$dataset_node->nid.'/queries',
+  );
 
   return $form;
 }
@@ -636,6 +642,12 @@ function mica_datasets_dataset_query_term_delete_form($form, &$form_state) {
   $form['actions']['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Delete'),
+  );
+
+  $form['actions']['cancel'] = array(
+    '#type' => 'link',
+    '#title' => t('Cancel'),
+    '#href' => 'node/'.$dataset_node->nid.'/queries/'.$query->id.'/view',
   );
 
   return $form;
