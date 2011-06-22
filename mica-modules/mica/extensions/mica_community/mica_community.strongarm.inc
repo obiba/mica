@@ -136,14 +136,14 @@ function mica_community_strongarm() {
     1 => 'promote',
   );
   $export['node_options_publication'] = $strongarm;
-  
+
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_event';
   $strongarm->value = 0;
   $export['node_submitted_event'] = $strongarm;
-  
+
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;

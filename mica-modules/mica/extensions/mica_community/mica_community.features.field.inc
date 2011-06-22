@@ -241,7 +241,7 @@ function mica_community_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -250,7 +250,7 @@ function mica_community_field_default_fields() {
             'trim_length' => 600,
           ),
           'type' => 'text_summary_or_trimmed',
-          'weight' => 0,
+          'weight' => '1',
         ),
       ),
       'entity_type' => 'node',
@@ -269,9 +269,202 @@ function mica_community_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '3',
+        'weight' => '4',
       ),
       'widget_type' => 'text_textarea_with_summary',
+    ),
+  );
+
+  // Exported field: 'node-publication-field_authors'
+  $fields['node-publication-field_authors'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_authors',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'family' => array(
+          0 => 'family',
+        ),
+        'given' => array(
+          0 => 'given',
+        ),
+      ),
+      'module' => 'name',
+      'settings' => array(
+        'autocomplete_separator' => array(
+          'credentials' => ', ',
+          'family' => ' -',
+          'generational' => ' ',
+          'given' => ' -',
+          'middle' => ' -',
+          'title' => ' ',
+        ),
+        'autocomplete_source' => array(
+          'credentials' => array(
+            'namedb' => 0,
+          ),
+          'family' => array(
+            'namedb' => 0,
+          ),
+          'generational' => array(
+            'generational' => 0,
+            'namedb' => 0,
+          ),
+          'given' => array(
+            'namedb' => 0,
+          ),
+          'middle' => array(
+            'namedb' => 0,
+          ),
+          'title' => array(
+            'namedb' => 0,
+            'title' => 'title',
+          ),
+        ),
+        'components' => array(
+          'credentials' => 0,
+          'family' => 'family',
+          'generational' => 0,
+          'given' => 'given',
+          'middle' => 0,
+          'title' => 0,
+        ),
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'generational_options' => '-- --
+Jr.
+Sr.
+I
+II
+III
+IV
+V
+VI
+VII
+VIII
+IX
+X',
+        'labels' => array(
+          'credentials' => 'Credentials',
+          'family' => 'Family',
+          'generational' => 'Generational',
+          'given' => 'Given',
+          'middle' => 'Middle name(s)',
+          'title' => 'Title',
+        ),
+        'max_length' => array(
+          'credentials' => '255',
+          'family' => '63',
+          'generational' => '15',
+          'given' => '63',
+          'middle' => '127',
+          'title' => '31',
+        ),
+        'minimum_components' => array(
+          'credentials' => 0,
+          'family' => 'family',
+          'generational' => 0,
+          'given' => 'given',
+          'middle' => 0,
+          'title' => 0,
+        ),
+        'sort_options' => array(
+          'generational' => 0,
+          'title' => 'title',
+        ),
+        'title_options' => '-- --
+Mr.
+Mrs.
+Miss
+Ms.
+Dr.
+Prof.',
+      ),
+      'translatable' => '1',
+      'type' => 'name',
+    ),
+    'field_instance' => array(
+      'bundle' => 'publication',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'name',
+          'settings' => array(),
+          'type' => 'name_default',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'module' => 'name',
+          'settings' => array(),
+          'type' => 'name_default',
+          'weight' => '0',
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_authors',
+      'label' => 'Authors',
+      'required' => 0,
+      'settings' => array(
+        'field_type' => array(
+          'credentials' => 'text',
+          'family' => 'text',
+          'generational' => 'select',
+          'given' => 'text',
+          'middle' => 'text',
+          'title' => 'select',
+        ),
+        'generational_field' => 'select',
+        'inline_css' => array(
+          'credentials' => '',
+          'family' => '',
+          'generational' => '',
+          'given' => '',
+          'middle' => '',
+          'title' => '',
+        ),
+        'size' => array(
+          'credentials' => '35',
+          'family' => '20',
+          'generational' => '5',
+          'given' => '20',
+          'middle' => '20',
+          'title' => '6',
+        ),
+        'title_display' => array(
+          'credentials' => 'description',
+          'family' => 'description',
+          'generational' => 'description',
+          'given' => 'description',
+          'middle' => 'description',
+          'title' => 'description',
+        ),
+        'title_field' => 'select',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'name',
+        'settings' => array(),
+        'type' => 'name_widget',
+        'weight' => '1',
+      ),
     ),
   );
 
@@ -283,21 +476,15 @@ function mica_community_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_publication_pmid',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'number',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => 'INTEGER',
+        ),
         'field_permissions' => array(
           'create' => 0,
           'edit' => 0,
@@ -305,15 +492,9 @@ function mica_community_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
-        'max_length' => '255',
-        'variable_infos' => array(
-          'variable' => 0,
-          'variable_body' => '',
-          'variable_value_type' => '',
-        ),
       ),
       'translatable' => '1',
-      'type' => 'text',
+      'type' => 'number_integer',
     ),
     'field_instance' => array(
       'bundle' => 'publication',
@@ -322,17 +503,22 @@ function mica_community_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '0',
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => 1,
+            'scale' => 0,
+            'thousand_separator' => '',
+          ),
+          'type' => 'number_integer',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'node',
@@ -340,17 +526,18 @@ function mica_community_field_default_fields() {
       'label' => 'PMID',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '1',
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '5',
       ),
     ),
   );
@@ -406,13 +593,13 @@ function mica_community_field_default_fields() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'default',
-          'weight' => '1',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '3',
         ),
       ),
       'entity_type' => 'node',
@@ -439,16 +626,17 @@ function mica_community_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Authors');
   t('Body');
-  t('PMID');
   t('Event Date');
+  t('PMID');
   t('URL');
 
   return $fields;
