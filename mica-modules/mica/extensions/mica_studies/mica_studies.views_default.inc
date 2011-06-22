@@ -29,7 +29,6 @@ function mica_studies_views_default_views() {
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -2222,6 +2221,43 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'field_full_name' => 'field_full_name',
+    'field_target_number_participants' => 'field_target_number_participants',
+    'mica_study_information_field_study_country' => 'mica_study_information_field_study_country',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'align' => '',
+      'separator' => '',
+    ),
+    'field_full_name' => array(
+      'align' => '',
+      'separator' => '',
+    ),
+    'field_target_number_participants' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
+    'mica_study_information_field_study_country' => array(
+      'align' => '',
+      'separator' => '',
+    ),
+  );
+  $handler->display->display_options['style_options']['override'] = 1;
+  $handler->display->display_options['style_options']['sticky'] = 0;
+  $handler->display->display_options['style_options']['empty_table'] = 1;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'empty_studies';
+  $handler->display->display_options['empty']['area']['empty'] = FALSE;
+  $handler->display->display_options['empty']['area']['content'] = 'No study found.';
   /* Field: Node: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_studies_index';
@@ -2243,6 +2279,68 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
+  /* Field: Node: Full Name */
+  $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
+  $handler->display->display_options['fields']['field_full_name']['table'] = 'search_api_index_studies_index';
+  $handler->display->display_options['fields']['field_full_name']['field'] = 'field_full_name';
+  $handler->display->display_options['fields']['field_full_name']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_full_name']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_full_name']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_full_name']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_full_name']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['link_to_entity'] = 0;
+  /* Field: Node: Target number of participants */
+  $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
+  $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'search_api_index_studies_index';
+  $handler->display->display_options['fields']['field_target_number_participants']['field'] = 'field_target_number_participants';
+  $handler->display->display_options['fields']['field_target_number_participants']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_target_number_participants']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_target_number_participants']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_target_number_participants']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_target_number_participants']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_target_number_participants']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_target_number_participants']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_target_number_participants']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_target_number_participants']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_target_number_participants']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_target_number_participants']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_target_number_participants']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_target_number_participants']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_target_number_participants']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_target_number_participants']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_target_number_participants']['link_to_entity'] = 0;
+  /* Field: Study Information: Country selection criteria */
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['id'] = 'mica_study_information_field_study_country';
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['table'] = 'search_api_index_studies_index';
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['field'] = 'mica_study_information_field_study_country';
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['label'] = 'Country(ies)';
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['format_name'] = 1;
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_studies_index';
@@ -2276,7 +2374,12 @@ function mica_studies_views_default_views() {
     t('Items per page'),
     t('- All -'),
     t('Offset'),
+    t('empty_studies'),
+    t('No study found.'),
     t('Name'),
+    t('Full Name'),
+    t('Target number of participants'),
+    t('Country(ies)'),
     t('Fulltext search'),
     t('Page'),
   );
