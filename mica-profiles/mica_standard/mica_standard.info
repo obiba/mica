@@ -45,6 +45,7 @@ dependencies[] = entity_token
 dependencies[] = references
 dependencies[] = user_reference
 dependencies[] = node_reference
+dependencies[] = viewreference
 dependencies[] = views
 dependencies[] = views_ui
 dependencies[] = search_api
@@ -57,5 +58,9 @@ dependencies[] = strongarm
 dependencies[] = mica
 dependencies[] = mica_studies
 dependencies[] = mica_community
+dependencies[] = mica_datasets
+dependencies[] = mica_opal
+dependencies[] = mica_data_access
+dependencies[] = mica_projects
 files[] = mica_standard.profile
 

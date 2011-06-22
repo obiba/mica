@@ -7,13 +7,20 @@
 include_once('mica_data_access.features.inc');
 
 /**
+ * Implements hook_form().
+ */
+function mica_data_access_form($node, &$form_state) {
+  return node_content_form($node, $form_state);
+}
+
+/**
  * Implements hook_menu().
  */
 function mica_data_access_menu() {
   $items = array();
 
-  $items['data-access-requests/add'] = array(
-    'title' => 'Submit a Data Access Request',
+  $items['data-access/request'] = array(
+    'title' => 'Request for Data Access',
     'page callback' => 'node_add',
     'page arguments' => array('data_access_request'),
     'access callback' => 'node_access',

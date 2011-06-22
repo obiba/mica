@@ -144,7 +144,7 @@ function mica_data_access_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'data-access-committee';
+  $handler->display->display_options['path'] = 'data-access/committee';
   $translatables['data_access_committee'] = array(
     t('Master'),
     t('Data Access Committee'),
@@ -167,18 +167,18 @@ function mica_data_access_views_default_views() {
   $export['data_access_committee'] = $view;
 
   $view = new view;
-  $view->name = 'data_access_requests';
+  $view->name = 'data_access';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Data Access Requests';
+  $view->human_name = 'Data Access';
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Approved Data Access Requests';
+  $handler->display->display_options['title'] = 'DACO Approved Projects';
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -298,10 +298,10 @@ function mica_data_access_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'data-access-requests';
-  $translatables['data_access_requests'] = array(
+  $handler->display->display_options['path'] = 'data-access';
+  $translatables['data_access'] = array(
     t('Master'),
-    t('Approved Data Access Requests'),
+    t('DACO Approved Projects'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -318,21 +318,21 @@ function mica_data_access_views_default_views() {
     t('All'),
     t('Page'),
   );
-  $export['data_access_requests'] = $view;
+  $export['data_access'] = $view;
 
   $view = new view;
-  $view->name = 'data_access_requests_admin';
+  $view->name = 'data_access_admin';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Data Access Requests Administration';
+  $view->human_name = 'Data Access Administration';
   $view->core = 7;
   $view->api_version = '3.0-alpha1';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Data Access Requests';
+  $handler->display->display_options['title'] = 'Data Access Administration';
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     6 => '6',
@@ -511,10 +511,10 @@ function mica_data_access_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'data-access-requests-admin';
-  $translatables['data_access_requests_admin'] = array(
+  $handler->display->display_options['path'] = 'data-access/admin';
+  $translatables['data_access_admin'] = array(
     t('Master'),
-    t('Data Access Requests'),
+    t('Data Access Administration'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -536,7 +536,7 @@ function mica_data_access_views_default_views() {
     t('All'),
     t('Page'),
   );
-  $export['data_access_requests_admin'] = $view;
+  $export['data_access_admin'] = $view;
 
   return $export;
 }
