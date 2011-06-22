@@ -130,6 +130,12 @@ a {
 #navigation li.expanded li a {
   color: #ffffff;
   background-color: #4A6C81;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 #navigation > ul > li > a {
   color: #ffffff;
@@ -143,7 +149,7 @@ a {
   background-color: #4A6C81;
 }
 #navigation li.expanded li a {
-  font-family: "Nunito", arial, sans-serif;*/
+  font-family: "Nunito", arial, sans-serif;
   font-size: 1em;
   font-weight: bold;
 }
