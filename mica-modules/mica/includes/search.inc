@@ -249,7 +249,8 @@ function _mica_magma_search_index_type_mapping() {
 
 /**
  * Add Facet/Range block to sidebar_first in mica_samara theme as last facet/range item. 
- * Hide this block by default but let individual users show it.
+ * Show this block by default but let individual users hide it. 
+ * In this case, block will be visible for anonymous users.
  *
  * @param SearchApiFacet or SearchApiRange $facet Facet or Range item
  * @param string $module 'search_api_ranges' or 'search_api_facets'
@@ -259,7 +260,7 @@ function _mica_configure_search_block($facet, $module, $module_item) {
 	
 	db_update('block')
   	->fields(array(
-				'custom' => BLOCK_CUSTOM_DISABLED, // Hide this block by default but let individual users show it.
+				'custom' => BLOCK_CUSTOM_ENABLED, // Show this block by default but let individual users hide it.
 	    ))
 		->condition('module', $module)
 	  ->condition('delta', $facet->delta)
