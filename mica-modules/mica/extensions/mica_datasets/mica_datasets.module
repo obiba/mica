@@ -991,3 +991,14 @@ function _find_source_for_target(FeedsProcessor $processor, $target) {
   }
   throw new Exception("could not find source for $target", 500);
 }
+
+
+function mica_dataset_private_file_absolute_path($reference) {
+  if(file_valid_uri($reference)) {
+    $wrapper = file_stream_wrapper_get_instance_by_uri($reference);
+    if($wrapper) {
+      return $wrapper->realpath();
+    }
+  }
+  return $reference;
+}
