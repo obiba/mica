@@ -48,9 +48,9 @@ function mica_data_access_field_default_fields() {
         'referenceable_roles' => array(
           2 => 0,
           3 => 0,
-          4 => 0,
+          4 => '4',
           5 => 0,
-          6 => '6',
+          6 => 0,
         ),
         'referenceable_status' => array(
           0 => 0,
