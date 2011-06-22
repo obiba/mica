@@ -2,8 +2,6 @@
 "Study » Target number of participants";"Target number of participants";"Target number of participants";"field_target_number_participants";"Study";"study";"INTEGER";;"0"
 "Study » Target number of biological samples";"Target number of biological samples";"Target number of biological samples";"field_target_number_biosamples";"Study";"study";"INTEGER";;"0"
 "Study Information » Targets Recruitment of";"Recruitment targets";"Recruitment targets";"field_design_target";"Study Information";"study_information";"TEXT";"families=Families (including twin studies, sibships and family based birth cohorts)|individuals=Individuals|other=Other";"1"
-"Study Information » Target Number of Participants";"Target number of participants";"Target number of participants";"field_target_number_participants";"Study Information";"study_information";"INTEGER";;"0"
-"Study Information » Target Number of Biological Samples";"Target number of biological samples";"Target number of biological samples";"field_target_number_biosamples";"Study Information";"study_information";"INTEGER";;"0"
 "Study Information » Start year";"Start year";"Start year";"field_status_start";"Study Information";"study_information";"INTEGER";;"0"
 "Study Information » Specify type of tissues collected";"Type of tissues collected";"Type of tissues collected";"field_biosamples_tissues";"Study Information";"study_information";"TEXT";;"0"
 "Study Information » Specify type of target";"Other type of target";"Other type of target";"field_target_other";"Study Information";"study_information";"TEXT";;"0"
