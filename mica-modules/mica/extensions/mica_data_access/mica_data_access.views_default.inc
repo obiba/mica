@@ -30,6 +30,13 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'table';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'empty_data_access_committee';
+  $handler->display->display_options['empty']['area']['empty'] = FALSE;
+  $handler->display->display_options['empty']['area']['content'] = 'No data access committee member found.';
   /* Field: Content: Contact Name */
   $handler->display->display_options['fields']['field_contact_name']['id'] = 'field_contact_name';
   $handler->display->display_options['fields']['field_contact_name']['table'] = 'field_data_field_contact_name';
@@ -186,6 +193,13 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'table';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'empty_data_access_committee';
+  $handler->display->display_options['empty']['area']['empty'] = FALSE;
+  $handler->display->display_options['empty']['area']['content'] = 'No approved data access found.';
   /* Relationship: Fields: Data Access Review (field_data_access_review) - nid */
   $handler->display->display_options['relationships']['field_data_access_review_nid']['id'] = 'field_data_access_review_nid';
   $handler->display->display_options['relationships']['field_data_access_review_nid']['table'] = 'field_data_field_data_access_review';
@@ -233,27 +247,6 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['fields']['field_project_summary']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_project_summary']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_project_summary']['field_api_classes'] = 0;
-  /* Field: Content: Data Access Review */
-  $handler->display->display_options['fields']['field_data_access_review']['id'] = 'field_data_access_review';
-  $handler->display->display_options['fields']['field_data_access_review']['table'] = 'field_data_field_data_access_review';
-  $handler->display->display_options['fields']['field_data_access_review']['field'] = 'field_data_access_review';
-  $handler->display->display_options['fields']['field_data_access_review']['label'] = 'Review';
-  $handler->display->display_options['fields']['field_data_access_review']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_data_access_review']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_data_access_review']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_data_access_review']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_data_access_review']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_data_access_review']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_data_access_review']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_data_access_review']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_data_access_review']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_data_access_review']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_data_access_review']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_data_access_review']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_data_access_review']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_data_access_review']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_data_access_review']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_data_access_review']['field_api_classes'] = 0;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -343,6 +336,13 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'table';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'empty_data_access';
+  $handler->display->display_options['empty']['area']['empty'] = FALSE;
+  $handler->display->display_options['empty']['area']['content'] = 'No data access request found.';
   /* Relationship: Fields: Data Access Review (field_data_access_review) - nid */
   $handler->display->display_options['relationships']['field_data_access_review_nid']['id'] = 'field_data_access_review_nid';
   $handler->display->display_options['relationships']['field_data_access_review_nid']['table'] = 'field_data_field_data_access_review';
@@ -471,7 +471,7 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['fields']['field_data_access_review']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_data_access_review']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_data_access_review']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_data_access_review']['empty'] = '<a href="?q=node/[nid]/review">Start Reviewing</a>';
+  $handler->display->display_options['fields']['field_data_access_review']['empty'] = '<a href="?q=node/[nid]/review">Start Review</a>';
   $handler->display->display_options['fields']['field_data_access_review']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_data_access_review']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_data_access_review']['field_api_classes'] = 0;

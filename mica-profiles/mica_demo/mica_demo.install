@@ -11,62 +11,50 @@ function mica_demo_install() {
 
   // Add some demo users
   $user = array(
-      'name' => 'mica',
-      'mail' => 'admin@mica.org',
-      'is_new' => TRUE,
-      'pass' => 'password',
-      'status' => 1,
-    'roles' => array('4' => 'consortium administrator'),
+    'name' => 'mica',
+    'mail' => 'admin@consortium.org',
+    'is_new' => TRUE,
+    'pass' => 'password',
+    'status' => 1,
+    'roles' => array(
+      '5' => 'consortium administrator'
+    ),
   );
   user_save(null, $user);
 
   $user = array(
-      'name' => 'basalt',
-      'mail' => 'admin@basalt.org',
-      'is_new' => TRUE,
-      'pass' => 'password',
-      'status' => 1,
-    'roles' => array('5' => 'study administrator'),
+    'name' => 'pburton',
+    'mail' => 'pb51@leicester.ac.uk',
+    'is_new' => TRUE,
+    'pass' => 'password',
+    'status' => 1,
+    'roles' => array(
+      '6' => 'study administrator',
+      '4' => 'data access committee member'
+    ),
+  );
+  user_save(null, $user);
+  
+  $user = array(
+    'name' => 'user1',
+    'mail' => 'user1@study.org',
+    'is_new' => TRUE,
+    'pass' => 'password',
+    'status' => 1,
+    'roles' => array(),
+  );
+  user_save(null, $user);
+  
+  $user = array(
+    'name' => 'ukb',
+    'mail' => 'admin@ukb.org',
+    'is_new' => TRUE,
+    'pass' => 'password',
+    'status' => 1,
+    'roles' => array(
+      '6' => 'study administrator',
+    ),
   );
   user_save(null, $user);
 
-  $user = array(
-      'name' => 'dacite',
-      'mail' => 'admin@dacite.org',
-      'is_new' => TRUE,
-      'pass' => 'password',
-      'status' => 1,
-    'roles' => array('5' => 'study administrator'),
-  );
-  user_save(null, $user);
-
-  $user = array(
-      'name' => 'marl',
-      'mail' => 'admin@marl.org',
-      'is_new' => TRUE,
-      'pass' => 'password',
-      'status' => 1,
-    'roles' => array('5' => 'study administrator'),
-  );
-  user_save(null, $user);
-
-  $user = array(
-      'name' => 'scoria',
-      'mail' => 'admin@scoria.org',
-      'is_new' => TRUE,
-      'pass' => 'password',
-      'status' => 1,
-    'roles' => array('5' => 'study administrator'),
-  );
-  user_save(null, $user);
-
-  $user = array(
-      'name' => 'skarn',
-      'mail' => 'admin@skarn.org',
-      'is_new' => TRUE,
-      'pass' => 'password',
-      'status' => 1,
-    'roles' => array('5' => 'study administrator'),
-  );
-  user_save(null, $user);
 }

@@ -6,13 +6,12 @@
  * Allows the profile to alter the site configuration form.
  */
 function mica_standard_form_install_configure_form_alter(&$form, $form_state) {
-  // Pre-populate the site name with the server name.
-  $form['site_information']['site_name']['#default_value'] = $_SERVER['SERVER_NAME'];
+  $form['site_information']['site_name']['#default_value'] = 'Mica';
 }
 
 function mica_standard_install_tasks($install_state){
   $task['mica_standard_content'] = array(
-    'display_name' => st('Add default Mica content'),
+    'display_name' => st('Add Mica default content'),
     'display' => TRUE,
     'type' => 'batch',
     'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED, // default to insert content

@@ -7,8 +7,7 @@ include_once('profiles/mica_standard/mica_standard.profile');
  * Allows the profile to alter the site configuration form.
  */
 function mica_demo_form_install_configure_form_alter(&$form, $form_state) {
-  // Pre-populate the site name with the server name.
-  $form['site_information']['site_name']['#default_value'] = $_SERVER['SERVER_NAME'];
+  $form['site_information']['site_name']['#default_value'] = 'Mica';
 }
 
 /**
@@ -18,7 +17,7 @@ function mica_demo_install_tasks($install_state) {
   $tasks = mica_standard_install_tasks($install_state);
   
   $tasks['mica_demo_content'] = array(
-    'display_name' => st('Add demo content'),
+    'display_name' => st('Add Mica demo content'),
     'display' => TRUE,
     'type' => 'batch',
     'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED, // default to insert content
