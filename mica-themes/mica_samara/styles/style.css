@@ -1971,3 +1971,9 @@ img.right, img[align="right"] {
 .views-row.views-row-last {
   border-bottom: 0px;
 }
+
+/* the slider image is too large */
+.ui-slider {
+  margin-left:6px;
+  margin-right:8px;
+}
