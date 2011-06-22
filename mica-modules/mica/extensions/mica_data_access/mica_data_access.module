@@ -21,8 +21,7 @@ function mica_data_access_menu() {
 
   $items['data-access/request'] = array(
     'title' => 'Request for Data Access',
-    'page callback' => 'node_add',
-    'page arguments' => array('data_access_request'),
+    'page callback' => 'mica_data_access_request_add',
     'access callback' => 'node_access',
     'access arguments' => array('create', 'data_access_request'),
     'type' => MENU_LOCAL_ACTION,
@@ -54,6 +53,12 @@ function mica_data_access_field_attach_form($entity_type, $entity, &$form, &$for
     unset($form['field_data_access']);
     unset($form['title']);
   }
+}
+
+function mica_data_access_request_add() {
+  $content = node_add('data_access_request');
+  drupal_set_title(t('Request for Data Access'));
+  return $content;
 }
 
 function mica_data_access_request_review_access($node,$op = NULL) {
