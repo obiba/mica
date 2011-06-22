@@ -141,6 +141,15 @@ function mica_standard_install() {
   }
   $query->execute();
 
+  // only authenticated user can see navigation block
+  $query = db_insert('block_role')->fields(array('module', 'delta', 'rid'));
+  $query->values(array(
+    'module' => 'system',
+    'delta' => 'navigation',
+    'rid' => 2, 
+  ));
+  $query->execute();
+  
   _mica_standard_admin_theme_no_region('user', 'new');
   _mica_standard_admin_theme_no_region('search', 'form');
   _mica_standard_admin_theme_no_region('node', 'recent');
