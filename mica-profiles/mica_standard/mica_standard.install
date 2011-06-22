@@ -150,7 +150,13 @@ function mica_standard_install() {
   variable_set('theme_default', $mica_theme);
 
   // Default pages
-  mica_standard_add_page('Mica', 'Mica is a web application for Consortium of Studies.', 'About', 'about', 50, 1);
+  mica_standard_add_page('Mica', 'Welcome to Mica, a powerful software application used to create web portals for epidemiological study consortia.
+
+Using Mica, consortia can build personalized web sites for publishing their research activities and their membership. Mica includes many domain-specific features such as study catalogues, data dictionary browsers, on-line data access request forms, community tools (forums, events, news) and others. Moreover, Mica includes a powerful data search engine that allows authenticated researchers to perform distributed queries on the content of each individual study data collection hosted by the OBiBa Opal database software (www.obiba.org).
+
+Mica is based on the content management software Drupal (www.drupal.org) used by millions of websites worldwide. As such, a webmaster benefits from all the power and flexibility of Drupal, as well as the support of an extended developer community.
+
+Installing a site with Mica demo profile will help to illustrate its functionalities. This may serve as a good starting point for customizing your web portal.', 'About', 'about', 50, 1);
 
 
   // Login destination setup
