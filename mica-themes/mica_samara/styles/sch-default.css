@@ -226,9 +226,9 @@ fieldset {
   -webkit-border-radius: 20px 20px 20px 20px;
   -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.3) inset;
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.3) inset;
-  background-color: #663F12;
+  background-color: #4A6C81;
   color: #BBBBBB;
-  padding: 3px;
+  padding: 5px;
   font-size: 0.9em;
   margin-top: 1px;
 }
