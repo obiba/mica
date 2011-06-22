@@ -15,6 +15,7 @@ function mica_community_user_default_permissions() {
     'name' => 'create blog content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -24,6 +25,8 @@ function mica_community_user_default_permissions() {
     'name' => 'create event content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -33,6 +36,7 @@ function mica_community_user_default_permissions() {
     'name' => 'create forum content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -42,6 +46,8 @@ function mica_community_user_default_permissions() {
     'name' => 'create publication content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -51,6 +57,7 @@ function mica_community_user_default_permissions() {
     'name' => 'delete any blog content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -60,6 +67,7 @@ function mica_community_user_default_permissions() {
     'name' => 'delete any event content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -69,6 +77,7 @@ function mica_community_user_default_permissions() {
     'name' => 'delete any forum content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -78,6 +87,7 @@ function mica_community_user_default_permissions() {
     'name' => 'delete any publication content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -87,6 +97,7 @@ function mica_community_user_default_permissions() {
     'name' => 'delete own blog content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -96,6 +107,7 @@ function mica_community_user_default_permissions() {
     'name' => 'delete own event content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -105,6 +117,7 @@ function mica_community_user_default_permissions() {
     'name' => 'delete own forum content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -114,6 +127,7 @@ function mica_community_user_default_permissions() {
     'name' => 'delete own publication content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -123,6 +137,7 @@ function mica_community_user_default_permissions() {
     'name' => 'edit any blog content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -132,6 +147,7 @@ function mica_community_user_default_permissions() {
     'name' => 'edit any event content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -141,6 +157,7 @@ function mica_community_user_default_permissions() {
     'name' => 'edit any forum content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -150,6 +167,7 @@ function mica_community_user_default_permissions() {
     'name' => 'edit any publication content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -159,6 +177,7 @@ function mica_community_user_default_permissions() {
     'name' => 'edit own blog content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -168,6 +187,7 @@ function mica_community_user_default_permissions() {
     'name' => 'edit own event content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -177,6 +197,7 @@ function mica_community_user_default_permissions() {
     'name' => 'edit own forum content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -186,6 +207,7 @@ function mica_community_user_default_permissions() {
     'name' => 'edit own publication content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'authenticated user',
     ),
     'module' => 'node',
   );

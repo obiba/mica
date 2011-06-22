@@ -128,6 +128,7 @@ function mica_studies_user_default_permissions() {
     'name' => 'create contact content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -155,6 +156,7 @@ function mica_studies_user_default_permissions() {
     'name' => 'create institution content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -162,7 +164,12 @@ function mica_studies_user_default_permissions() {
   // Exported permission: create mica_study_documents
   $permissions['create mica_study_documents'] = array(
     'name' => 'create mica_study_documents',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: create mica_study_information
@@ -199,7 +206,8 @@ function mica_studies_user_default_permissions() {
   $permissions['create study content'] = array(
     'name' => 'create study content',
     'roles' => array(
-      0 => 'consortium administrator',
+      0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -218,7 +226,8 @@ function mica_studies_user_default_permissions() {
   $permissions['create study_information content'] = array(
     'name' => 'create study_information content',
     'roles' => array(
-      0 => 'consortium administrator',
+      0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -238,6 +247,7 @@ function mica_studies_user_default_permissions() {
     'name' => 'delete any contact content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -247,6 +257,7 @@ function mica_studies_user_default_permissions() {
     'name' => 'delete any documents content',
     'roles' => array(
       0 => 'consortium administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -265,6 +276,7 @@ function mica_studies_user_default_permissions() {
     'name' => 'delete any institution content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -292,7 +304,8 @@ function mica_studies_user_default_permissions() {
   $permissions['delete any study content'] = array(
     'name' => 'delete any study content',
     'roles' => array(
-      0 => 'consortium administrator',
+      0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -311,7 +324,8 @@ function mica_studies_user_default_permissions() {
   $permissions['delete any study_information content'] = array(
     'name' => 'delete any study_information content',
     'roles' => array(
-      0 => 'consortium administrator',
+      0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -331,6 +345,7 @@ function mica_studies_user_default_permissions() {
     'name' => 'delete own contact content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -339,7 +354,8 @@ function mica_studies_user_default_permissions() {
   $permissions['delete own documents content'] = array(
     'name' => 'delete own documents content',
     'roles' => array(
-      0 => 'consortium administrator',
+      0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -358,6 +374,7 @@ function mica_studies_user_default_permissions() {
     'name' => 'delete own institution content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -385,7 +402,8 @@ function mica_studies_user_default_permissions() {
   $permissions['delete own study content'] = array(
     'name' => 'delete own study content',
     'roles' => array(
-      0 => 'consortium administrator',
+      0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -404,7 +422,8 @@ function mica_studies_user_default_permissions() {
   $permissions['delete own study_information content'] = array(
     'name' => 'delete own study_information content',
     'roles' => array(
-      0 => 'consortium administrator',
+      0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -415,7 +434,6 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -435,6 +453,7 @@ function mica_studies_user_default_permissions() {
     'name' => 'edit any contact content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -443,7 +462,8 @@ function mica_studies_user_default_permissions() {
   $permissions['edit any documents content'] = array(
     'name' => 'edit any documents content',
     'roles' => array(
-      0 => 'consortium administrator',
+      0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -462,6 +482,7 @@ function mica_studies_user_default_permissions() {
     'name' => 'edit any institution content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -489,7 +510,8 @@ function mica_studies_user_default_permissions() {
   $permissions['edit any study content'] = array(
     'name' => 'edit any study content',
     'roles' => array(
-      0 => 'consortium administrator',
+      0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -508,7 +530,8 @@ function mica_studies_user_default_permissions() {
   $permissions['edit any study_information content'] = array(
     'name' => 'edit any study_information content',
     'roles' => array(
-      0 => 'consortium administrator',
+      0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -528,6 +551,7 @@ function mica_studies_user_default_permissions() {
     'name' => 'edit own contact content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -536,8 +560,8 @@ function mica_studies_user_default_permissions() {
   $permissions['edit own documents content'] = array(
     'name' => 'edit own documents content',
     'roles' => array(
-      0 => 'consortium administrator',
-      1 => 'study administrator',
+      0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -556,6 +580,7 @@ function mica_studies_user_default_permissions() {
     'name' => 'edit own institution content',
     'roles' => array(
       0 => 'administrator',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -604,8 +629,9 @@ function mica_studies_user_default_permissions() {
   $permissions['edit own study_information content'] = array(
     'name' => 'edit own study_information content',
     'roles' => array(
-      0 => 'consortium administrator',
-      1 => 'study administrator',
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -708,8 +734,8 @@ function mica_studies_user_default_permissions() {
     'name' => 'use search_api_facets',
     'roles' => array(
       0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
+      1 => 'authenticated user',
+      2 => 'anonymous user',
     ),
     'module' => 'search_api_facets',
   );
@@ -719,8 +745,8 @@ function mica_studies_user_default_permissions() {
     'name' => 'use search_api_ranges',
     'roles' => array(
       0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
+      1 => 'authenticated user',
+      2 => 'anonymous user',
     ),
     'module' => 'search_api_ranges',
   );
@@ -728,7 +754,11 @@ function mica_studies_user_default_permissions() {
   // Exported permission: view mica_study_documents
   $permissions['view mica_study_documents'] = array(
     'name' => 'view mica_study_documents',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: view mica_study_information
