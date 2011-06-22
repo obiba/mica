@@ -32,6 +32,17 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: access search_api_page
+  $permissions['access search_api_page'] = array(
+    'name' => 'access search_api_page',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+    ),
+    'module' => 'search_api_page',
+  );
+
   // Exported permission: administer feeds
   $permissions['administer feeds'] = array(
     'name' => 'administer feeds',
@@ -57,6 +68,24 @@ function mica_studies_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'page_manager',
+  );
+
+  // Exported permission: administer search
+  $permissions['administer search'] = array(
+    'name' => 'administer search',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'search',
+  );
+
+  // Exported permission: administer search_api
+  $permissions['administer search_api'] = array(
+    'name' => 'administer search_api',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'search_api',
   );
 
   // Exported permission: clear csv_contact_import feeds
@@ -257,7 +286,6 @@ function mica_studies_user_default_permissions() {
     'name' => 'delete any documents content',
     'roles' => array(
       0 => 'consortium administrator',
-      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -710,6 +738,17 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: search content
+  $permissions['search content'] = array(
+    'name' => 'search content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+    ),
+    'module' => 'search',
+  );
+
   // Exported permission: skip comment approval
   $permissions['skip comment approval'] = array(
     'name' => 'skip comment approval',
@@ -718,6 +757,17 @@ function mica_studies_user_default_permissions() {
       1 => 'authenticated user',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: use advanced search
+  $permissions['use advanced search'] = array(
+    'name' => 'use advanced search',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+    ),
+    'module' => 'search',
   );
 
   // Exported permission: use page manager
@@ -734,8 +784,8 @@ function mica_studies_user_default_permissions() {
     'name' => 'use search_api_facets',
     'roles' => array(
       0 => 'administrator',
-      1 => 'authenticated user',
-      2 => 'anonymous user',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
     ),
     'module' => 'search_api_facets',
   );
@@ -745,8 +795,8 @@ function mica_studies_user_default_permissions() {
     'name' => 'use search_api_ranges',
     'roles' => array(
       0 => 'administrator',
-      1 => 'authenticated user',
-      2 => 'anonymous user',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
     ),
     'module' => 'search_api_ranges',
   );
