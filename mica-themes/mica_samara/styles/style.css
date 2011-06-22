@@ -1977,3 +1977,7 @@ img.right, img[align="right"] {
   margin-left:6px;
   margin-right:8px;
 }
+
+.hidden_title h2[property="dc:title"]{
+  display:none;
+}

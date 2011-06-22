@@ -174,7 +174,10 @@ function mica_studies_default_page_manager_handlers() {
       'settings' => NULL,
       'style' => 'default',
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'hidden_title',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-1'] = $pane;
