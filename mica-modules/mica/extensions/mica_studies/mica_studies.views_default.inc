@@ -913,7 +913,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_investigator']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_investigator']['separator'] = '|';
   $handler->display->display_options['fields']['field_investigator']['field_api_classes'] = 0;
-  /* Field: Content: Target Number of Participants */
+  /* Field: Content: Target number of participants */
   $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'field_data_field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['field'] = 'field_target_number_participants';
@@ -938,7 +938,7 @@ function mica_studies_views_default_views() {
     'prefix_suffix' => 1,
   );
   $handler->display->display_options['fields']['field_target_number_participants']['field_api_classes'] = 0;
-  /* Field: Content: Target Number of Biological Samples */
+  /* Field: Content: Target number of biological samples */
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['id'] = 'field_target_number_biosamples_1';
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['table'] = 'field_data_field_target_number_biosamples';
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['field'] = 'field_target_number_biosamples';
@@ -1425,7 +1425,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_gwas_analysis']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_gwas_analysis']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_gwas_analysis']['field_api_classes'] = 0;
-  /* Field: Content: Target Number of Biological Samples */
+  /* Field: Content: Target number of biological samples */
   $handler->display->display_options['fields']['field_target_number_biosamples']['id'] = 'field_target_number_biosamples';
   $handler->display->display_options['fields']['field_target_number_biosamples']['table'] = 'field_data_field_target_number_biosamples';
   $handler->display->display_options['fields']['field_target_number_biosamples']['field'] = 'field_target_number_biosamples';
@@ -2084,7 +2084,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_full_name']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_full_name']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_full_name']['field_api_classes'] = 0;
-  /* Field: Content: Target Number of Participants */
+  /* Field: Content: Target number of participants */
   $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'field_data_field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['field'] = 'field_target_number_participants';
@@ -2195,7 +2195,7 @@ function mica_studies_views_default_views() {
     t('mica_study_information'),
     t('Name'),
     t('Full Name'),
-    t('Target Number of Participants'),
+    t('Target number of participants'),
     t('Country(ies)'),
     t('P3G Catalogue'),
     t('Page'),

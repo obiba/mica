@@ -411,7 +411,7 @@ function mica_studies_default_search_api_index() {
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
-        "field_full_name" : { "name" : "Full Name", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_full_name" : { "name" : "Full name", "indexed" : 1, "type" : "text", "boost" : "1.0" },
         "field_gender" : {
           "name" : "Specify Gender",
           "indexed" : 0,
@@ -457,14 +457,14 @@ function mica_studies_default_search_api_index() {
         },
         "field_study_country" : { "name" : "Country", "indexed" : 0, "type" : "string", "boost" : "1.0" },
         "field_target_number_biosamples" : {
-          "name" : "Target Number of Biological Samples",
-          "indexed" : 0,
+          "name" : "Target number of biological samples",
+          "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
         "field_target_number_participants" : {
-          "name" : "Target Number of Participants",
-          "indexed" : 0,
+          "name" : "Target number of participants",
+          "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
@@ -687,13 +687,13 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_target_number_biosamples" : {
-          "name" : "Target Number of Biological Samples",
+          "name" : "Target number of biological samples",
           "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
         "field_target_number_participants" : {
-          "name" : "Target Number of Participants",
+          "name" : "Target number of participants",
           "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
@@ -1040,13 +1040,13 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "mica_study_information:field_status_end" : {
-          "name" : "Study Information \\u00bb End year",
+          "name" : "Study Information \\u00bb Study end year",
           "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_status_start" : {
-          "name" : "Study Information \\u00bb Start year",
+          "name" : "Study Information \\u00bb Study start year",
           "indexed" : 1,
           "type" : "integer",
           "boost" : "1.0"

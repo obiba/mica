@@ -2706,7 +2706,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_target_number_biosamples',
-      'label' => 'Target Number of Biological Samples',
+      'label' => 'Target number of biological samples',
       'required' => 0,
       'settings' => array(
         'max' => '',
@@ -2786,7 +2786,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_target_number_participants',
-      'label' => 'Target Number of Participants',
+      'label' => 'Target number of participants',
       'required' => 0,
       'settings' => array(
         'max' => '',
@@ -5140,8 +5140,8 @@ Prof.',
   t('Study end year');
   t('Study legacy id');
   t('Study start year');
-  t('Target Number of Biological Samples');
-  t('Target Number of Participants');
+  t('Target number of biological samples');
+  t('Target number of participants');
   t('Telephone');
   t('Type of tissues collected');
   t('Value Type');
