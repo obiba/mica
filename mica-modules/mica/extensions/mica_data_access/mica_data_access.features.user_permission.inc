@@ -54,8 +54,7 @@ function mica_data_access_user_default_permissions() {
   $permissions['delete own data_access_request content'] = array(
     'name' => 'delete own data_access_request content',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      0 => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -65,7 +64,6 @@ function mica_data_access_user_default_permissions() {
     'name' => 'delete own data_access_review content',
     'roles' => array(
       0 => 'consortium administrator',
-      1 => 'data access committee member',
     ),
     'module' => 'node',
   );
@@ -75,6 +73,7 @@ function mica_data_access_user_default_permissions() {
     'name' => 'edit any data_access_request content',
     'roles' => array(
       0 => 'consortium administrator',
+      1 => 'data access committee member',
     ),
     'module' => 'node',
   );
@@ -93,9 +92,7 @@ function mica_data_access_user_default_permissions() {
   $permissions['edit own data_access_request content'] = array(
     'name' => 'edit own data_access_request content',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
-      2 => 'consortium administrator',
+      0 => 'authenticated user',
     ),
     'module' => 'node',
   );
