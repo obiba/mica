@@ -37,7 +37,7 @@ function mica_projects_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'empty_projects';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
-  $handler->display->display_options['empty']['area']['content'] = 'The list of projects is empty';
+  $handler->display->display_options['empty']['area']['content'] = 'No project found.';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -93,7 +93,7 @@ function mica_projects_views_default_views() {
     t('- All -'),
     t('Offset'),
     t('empty_projects'),
-    t('The list of projects is empty'),
+    t('No project found.'),
     t('Page'),
   );
   $export['projects'] = $view;
@@ -160,7 +160,7 @@ function mica_projects_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'empty_teleconferences';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
-  $handler->display->display_options['empty']['area']['content'] = 'The list of teleconferences is empty';
+  $handler->display->display_options['empty']['area']['content'] = 'No teleconference found.';
   /* Field: Content: Date */
   $handler->display->display_options['fields']['field_teleconference_date']['id'] = 'field_teleconference_date';
   $handler->display->display_options['fields']['field_teleconference_date']['table'] = 'field_data_field_teleconference_date';
@@ -298,7 +298,7 @@ function mica_projects_views_default_views() {
     t('- All -'),
     t('Offset'),
     t('empty_teleconferences'),
-    t('The list of teleconferences is empty'),
+    t('No teleconference found.'),
     t('Date'),
     t('Title'),
     t('Description'),

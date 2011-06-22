@@ -165,7 +165,7 @@ function mica_community_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'empty_events';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
-  $handler->display->display_options['empty']['area']['content'] = 'The list of events is empty';
+  $handler->display->display_options['empty']['area']['content'] = 'No event found.';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -232,7 +232,7 @@ function mica_community_views_default_views() {
     t('- All -'),
     t('Offset'),
     t('empty_events'),
-    t('The list of events is empty'),
+    t('No event found.'),
     t('Page'),
     t('Feed'),
   );
@@ -600,7 +600,7 @@ function mica_community_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'empty_publications';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
-  $handler->display->display_options['empty']['area']['content'] = 'The list of publications is empty';
+  $handler->display->display_options['empty']['area']['content'] = 'No publication found.';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -653,7 +653,7 @@ function mica_community_views_default_views() {
     t('- All -'),
     t('Offset'),
     t('empty_publications'),
-    t('The list of publications is empty'),
+    t('No publication found.'),
     t('Page'),
   );
   $export['publications'] = $view;

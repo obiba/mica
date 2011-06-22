@@ -1668,7 +1668,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'empty_documents';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
-  $handler->display->display_options['empty']['area']['content'] = 'The list of documents is empty';
+  $handler->display->display_options['empty']['area']['content'] = 'No document found.';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1776,7 +1776,7 @@ function mica_studies_views_default_views() {
     t('- All -'),
     t('Offset'),
     t('empty_documents'),
-    t('The list of documents is empty'),
+    t('No document found.'),
     t('Name'),
     t('Description'),
     t('Download'),
@@ -1913,7 +1913,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'empty_news';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
-  $handler->display->display_options['empty']['area']['content'] = 'The list of news is empty';
+  $handler->display->display_options['empty']['area']['content'] = 'No news found.';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1964,7 +1964,7 @@ function mica_studies_views_default_views() {
     t('- All -'),
     t('Offset'),
     t('empty_news'),
-    t('The list of news is empty'),
+    t('No news found.'),
     t('Page'),
   );
   $export['news'] = $view;
@@ -2036,7 +2036,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'empty_studies';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
-  $handler->display->display_options['empty']['area']['content'] = 'The list of studies is empty';
+  $handler->display->display_options['empty']['area']['content'] = 'No study found.';
   /* Relationship: Fields: Study Information (mica_study_information) - nid */
   $handler->display->display_options['relationships']['mica_study_information_nid']['id'] = 'mica_study_information_nid';
   $handler->display->display_options['relationships']['mica_study_information_nid']['table'] = 'field_data_mica_study_information';
@@ -2191,7 +2191,7 @@ function mica_studies_views_default_views() {
     t('- All -'),
     t('Offset'),
     t('empty_studies'),
-    t('The list of studies is empty'),
+    t('No study found.'),
     t('mica_study_information'),
     t('Name'),
     t('Full Name'),
