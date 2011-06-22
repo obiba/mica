@@ -1928,9 +1928,6 @@ img.right, img[align="right"] {
   float: right;
   margin: 0 10px 10px;
 }
-.region-footer .block a {
-  border: none;
-}
 .region-footer .block {
   font-size: 1em;
   margin: 0 10px;
@@ -1950,6 +1947,10 @@ img.right, img[align="right"] {
   margin: 0;
   padding: 0;
   border: none;
+}
+.region-footer .block .content a {
+  border: none;
+  color: #2E2E2E;
 }
 
 /* Powered By Mica block */
