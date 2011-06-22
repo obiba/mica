@@ -166,7 +166,7 @@ function mica_insert(&$node) {
  * Implements hook_node_update().
  */
 function mica_node_update($node) {
-
+  
   if ($node->type === 'field_description') {
     module_load_include('inc', 'mica', 'includes/search');
     _mica_update_index_for_field_description($node);

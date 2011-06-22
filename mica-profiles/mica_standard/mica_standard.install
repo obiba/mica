@@ -149,31 +149,12 @@ function mica_standard_install() {
   theme_enable(array($mica_theme, 'bartik', 'seven'));
   variable_set('theme_default', $mica_theme);
 
-  // About page
-  $about = new stdClass();
-  $about->type = 'page';
-  node_object_prepare($about);
-  $about->title = 'Mica';
-  $about->body = array(
-  	'und' => array(
-  		'0' => array(
-      	'value' => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>In sit quod duis, novum doming ut his. Nominavi noluisse sit in, dolor scribentur ex vis, ut per diam gloriatur. Nam et nobis scriptorem suscipiantur. Et ius partem legere vivendum, ad facilis copiosae lucilius duo. Elitr scribentur interpretaris cu eos, fugit graece ius in. Justo definiebas ius cu, cibo cetero recusabo ex vix. Vel an putant complectitur, te vim debet voluptatibus.</p>',
-        'format' => 'full_html'
-        )
-        )
-        );
-        $about->menu['enabled'] = 1;
-        $about->menu['menu_name'] = 'main-menu';
-        $about->menu['weight'] = 50;
-        $about->menu['link_title'] = 'About';
-        $about->menu['description'] = '';
-        $about->promote = 0;
-        $about->sticky = 1;
-        $about->language = 'und';
-        node_save($about);
+  // Default pages
+  mica_standard_add_page('Mica', 'Mica is a web application for Consortium of Studies.', 'About', 'about', 50, 1);
 
-        // Login destination setup
-        $rule = array(
+
+  // Login destination setup
+  $rule = array(
     'triggers' => serialize(array('login'=>'login','logout'=>'logout')),
     'roles' => serialize(array()),
     'pages_type' => LOGIN_DESTINATION_REDIRECT_LISTED,
@@ -183,12 +164,39 @@ function mica_standard_install() {
     'id' => NULL,
     'weight' => 0,
         );
-        drupal_write_record('login_destination', $rule);
+  drupal_write_record('login_destination', $rule);
 
-        // rebuild permissions
-        node_access_rebuild();
+  // rebuild permissions
+  node_access_rebuild();
 }
 
+function mica_standard_add_page($title, $body, $link_title, $alias, $weight) {
+  $node = new stdClass();
+  $node->type = 'page';
+  node_object_prepare($node);
+  $node->title = $title;
+  $node->body = array(LANGUAGE_NONE => array(array(
+    'value' => $body,
+    'format' => 'full_html'
+  )));
+  $node->menu['enabled'] = 1;
+  $node->menu['expanded'] = 1;
+  $node->menu['menu_name'] = 'main-menu';
+  $node->menu['weight'] = $weight;
+  $node->menu['link_title'] = $link_title;
+  $node->menu['description'] = '';
+  $node->promote = 0;
+  $node->sticky = 1;
+  $node->language = LANGUAGE_NONE;
+  node_save($node);
+
+  $path = array('alias' => $alias);
+  $path['source'] = 'node/' . $node->nid;
+  $path['language'] = LANGUAGE_NONE;
+  path_save($path);
+  
+  return $node;
+}
 
 function _mica_standard_admin_theme_no_region($module, $delta) {
   db_update('block')

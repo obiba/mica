@@ -7,6 +7,38 @@
  */
 
 /**
+ * Implements hook_install().
+ */
+function mica_install() {
+  mica_add_page('Data Access Policy', 'TODO', 'data-access');
+  mica_add_page('Research', 'TODO', 'research');
+}
+
+function mica_add_page($title, $body, $alias) {
+  $node = new stdClass();
+  $node->type = 'page';
+  node_object_prepare($node);
+  $node->title = $title;
+  $node->body = array(LANGUAGE_NONE => array(array(
+    'value' => $body,
+  )));
+  $node->promote = 0;
+  $node->comment = COMMENT_NODE_CLOSED;
+  $node->sticky = 0;
+  $node->language = LANGUAGE_NONE;
+  node_save($node);
+
+  if (isset($alias)) {
+    $path = array('alias' => $alias);
+    $path['source'] = 'node/' . $node->nid;
+    $path['language'] = LANGUAGE_NONE;
+    path_save($path);
+  }
+  
+  return $node;
+}
+
+/**
  * Implements hook_schema()
  */
 function mica_schema() {

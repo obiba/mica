@@ -63,7 +63,7 @@ function mica_community_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '1',
     'expanded' => '1',
-    'weight' => '10',
+    'weight' => '45',
   );
   // Exported menu link: main-menu:events
   $menu_links['main-menu:events'] = array(
@@ -154,7 +154,7 @@ function mica_community_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '1',
-    'parent_path' => 'research',
+    'parent_path' => 'node/2',
   );
   // Translatables
   // Included for use with string extractors like potx.

@@ -10,12 +10,12 @@
 function mica_data_access_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu:data-access/committee
-  $menu_links['main-menu:data-access/committee'] = array(
+  // Exported menu link: main-menu:node/1
+  $menu_links['main-menu:node/1'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'data-access/committee',
-    'router_path' => 'data-access/committee',
-    'link_title' => 'Data Access Committee',
+    'link_path' => 'node/1',
+    'router_path' => 'node/%',
+    'link_title' => 'Data Access',
     'options' => array(
       'attributes' => array(
         'title' => '',
@@ -24,17 +24,16 @@ function mica_data_access_menu_default_menu_links() {
     'module' => 'menu',
     'hidden' => '0',
     'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-50',
-    'parent_path' => 'node/71',
+    'has_children' => '1',
+    'expanded' => '1',
+    'weight' => '35',
   );
-  // Exported menu link: main-menu:data-access
-  $menu_links['main-menu:data-access'] = array(
+  // Exported menu link: main-menu:node/2
+  $menu_links['main-menu:node/2'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'data-access',
-    'router_path' => 'data-access',
-    'link_title' => 'DACO Approved Projects',
+    'link_path' => 'node/2',
+    'router_path' => 'node/%',
+    'link_title' => 'Research',
     'options' => array(
       'attributes' => array(
         'title' => '',
@@ -43,10 +42,9 @@ function mica_data_access_menu_default_menu_links() {
     'module' => 'menu',
     'hidden' => '0',
     'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-50',
-    'parent_path' => 'node/72',
+    'has_children' => '1',
+    'expanded' => '1',
+    'weight' => '40',
   );
   // Exported menu link: main-menu:data-access/admin
   $menu_links['main-menu:data-access/admin'] = array(
@@ -65,7 +63,45 @@ function mica_data_access_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-48',
-    'parent_path' => 'node/71',
+    'parent_path' => 'node/1',
+  );
+  // Exported menu link: main-menu:data-access/approved
+  $menu_links['main-menu:data-access/approved'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'data-access/approved',
+    'router_path' => 'data-access/approved',
+    'link_title' => 'DACO Approved Projects',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-50',
+    'parent_path' => 'node/2',
+  );
+  // Exported menu link: main-menu:data-access/committee
+  $menu_links['main-menu:data-access/committee'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'data-access/committee',
+    'router_path' => 'data-access/committee',
+    'link_title' => 'Data Access Committee',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-49',
+    'parent_path' => 'node/1',
   );
   // Exported menu link: main-menu:data-access/request
   $menu_links['main-menu:data-access/request'] = array(
@@ -83,53 +119,15 @@ function mica_data_access_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-49',
-    'parent_path' => 'node/71',
-  );
-  // Exported menu link: main-menu:node/71
-  $menu_links['main-menu:node/71'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/71',
-    'router_path' => 'node/%',
-    'link_title' => 'Data Access',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '1',
-    'expanded' => '1',
-    'weight' => '0',
-  );
-  // Exported menu link: main-menu:node/72
-  $menu_links['main-menu:node/72'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'node/72',
-    'router_path' => 'node/%',
-    'link_title' => 'Research',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '1',
-    'expanded' => '1',
-    'weight' => '0',
+    'weight' => '-50',
+    'parent_path' => 'node/1',
   );
   // Translatables
   // Included for use with string extractors like potx.
   t('DACO Approved Projects');
-  t('Data Access');
   t('Data Access Administration');
   t('Data Access Committee');
   t('Data Access Request');
-  t('Research');
 
 
   return $menu_links;

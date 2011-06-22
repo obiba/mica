@@ -298,7 +298,7 @@ function mica_data_access_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'data-access';
+  $handler->display->display_options['path'] = 'data-access/approved';
   $translatables['data_access'] = array(
     t('Master'),
     t('DACO Approved Projects'),
