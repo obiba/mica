@@ -51,6 +51,12 @@ function mica_import_demo_feeds($install_state) {
   $feed_configs['csv_publication_import'] = array(
     'file' => $root . '/csv_publication.csv',
   );
+  $feed_configs['csv_project_import'] = array(
+    'file' => $root . '/csv_project.csv',
+  );
+  $feed_configs['csv_teleconference_import'] = array(
+    'file' => $root . '/csv_teleconference.csv',
+  );
   
   $operations = array();
   foreach ($feed_configs as $importer => $file){
