@@ -481,7 +481,7 @@ margin-bottom: 0px;
  */
 .node {
   border-bottom: #ccc 2px dotted;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   padding-bottom: 15px;
 }
 .node:last-child {
@@ -1966,7 +1966,7 @@ img.right, img[align="right"] {
 .views-row {
   border-bottom: 2px dotted #ccc;
   padding-bottom: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .views-row.views-row-last {
