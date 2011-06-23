@@ -1,2 +1,6 @@
-"title";"body";"field_event_date:start";"field_event_date:end"
-"BioSHaRE IT";"Meeting for BioSHaRE IT Members.";2011-06-30 09:00;2011-07-01 12:00
+"title";"body";"field_event_date:start";"field_event_date:end";"field_event_link:title";"field_event_link:url"
+"BioSHaRE IT";"Meeting for BioSHaRE IT Members.";"2011-06-30 09:00";"2011-07-01 12:00";"BioSHaRE website";"http://www.bioshare.eu"
+"P3G Workshop";"Montreal will be the host of the International Congress of Human Genetics (October
+11-15, 2011). Join us for the P3G workshop on ELSI issues related to biobanks and
+large scale cohorts.";"2011-10-11 08:00";"2011-10-11 15:30";"Agenda";"http://www.p3g.org/secretariat/events/2011Montreal/p3g_workshop10112011_agenda.pdf"
+"BioSHaRE Workshop";"Workshop for BioSHaRE members.";2011-11-10 09:00;"2011-14-10 15:00:00";;
