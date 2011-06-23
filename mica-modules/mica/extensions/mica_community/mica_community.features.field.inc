@@ -239,12 +239,9 @@ function mica_community_field_default_fields() {
         ),
         'teaser' => array(
           'label' => 'above',
-          'module' => 'text',
-          'settings' => array(
-            'trim_length' => 600,
-          ),
-          'type' => 'text_trimmed',
-          'weight' => '2',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
         ),
       ),
       'entity_type' => 'node',
@@ -277,59 +274,25 @@ function mica_community_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_authors',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'family' => array(
-          0 => 'family',
-        ),
-        'given' => array(
-          0 => 'given',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
         ),
       ),
-      'module' => 'name',
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
       'settings' => array(
-        'autocomplete_separator' => array(
-          'credentials' => ', ',
-          'family' => ' -',
-          'generational' => ' ',
-          'given' => ' -',
-          'middle' => ' -',
-          'title' => ' ',
-        ),
-        'autocomplete_source' => array(
-          'credentials' => array(
-            'namedb' => 0,
-          ),
-          'family' => array(
-            'namedb' => 0,
-          ),
-          'generational' => array(
-            'generational' => 0,
-            'namedb' => 0,
-          ),
-          'given' => array(
-            'namedb' => 0,
-          ),
-          'middle' => array(
-            'namedb' => 0,
-          ),
-          'title' => array(
-            'namedb' => 0,
-            'title' => 'title',
-          ),
-        ),
-        'components' => array(
-          'credentials' => 0,
-          'family' => 'family',
-          'generational' => 0,
-          'given' => 'given',
-          'middle' => 0,
-          'title' => 0,
-        ),
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
           'create' => 0,
@@ -338,57 +301,10 @@ function mica_community_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
-        'generational_options' => '-- --
-Jr.
-Sr.
-I
-II
-III
-IV
-V
-VI
-VII
-VIII
-IX
-X',
-        'labels' => array(
-          'credentials' => 'Credentials',
-          'family' => 'Family',
-          'generational' => 'Generational',
-          'given' => 'Given',
-          'middle' => 'Middle name(s)',
-          'title' => 'Title',
-        ),
-        'max_length' => array(
-          'credentials' => '255',
-          'family' => '63',
-          'generational' => '15',
-          'given' => '63',
-          'middle' => '127',
-          'title' => '31',
-        ),
-        'minimum_components' => array(
-          'credentials' => 0,
-          'family' => 'family',
-          'generational' => 0,
-          'given' => 'given',
-          'middle' => 0,
-          'title' => 0,
-        ),
-        'sort_options' => array(
-          'generational' => 0,
-          'title' => 'title',
-        ),
-        'title_options' => '-- --
-Mr.
-Mrs.
-Miss
-Ms.
-Dr.
-Prof.',
+        'max_length' => '255',
       ),
       'translatable' => '1',
-      'type' => 'name',
+      'type' => 'text',
     ),
     'field_instance' => array(
       'bundle' => 'publication',
@@ -398,16 +314,16 @@ Prof.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'name',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'name_default',
-          'weight' => '1',
+          'type' => 'text_default',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'inline',
-          'module' => 'name',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'name_default',
+          'type' => 'text_default',
           'weight' => '0',
         ),
       ),
@@ -416,48 +332,17 @@ Prof.',
       'label' => 'Authors',
       'required' => 0,
       'settings' => array(
-        'field_type' => array(
-          'credentials' => 'text',
-          'family' => 'text',
-          'generational' => 'select',
-          'given' => 'text',
-          'middle' => 'text',
-          'title' => 'select',
-        ),
-        'generational_field' => 'select',
-        'inline_css' => array(
-          'credentials' => '',
-          'family' => '',
-          'generational' => '',
-          'given' => '',
-          'middle' => '',
-          'title' => '',
-        ),
-        'size' => array(
-          'credentials' => '35',
-          'family' => '20',
-          'generational' => '5',
-          'given' => '20',
-          'middle' => '20',
-          'title' => '6',
-        ),
-        'title_display' => array(
-          'credentials' => 'description',
-          'family' => 'description',
-          'generational' => 'description',
-          'given' => 'description',
-          'middle' => 'description',
-          'title' => 'description',
-        ),
-        'title_field' => 'select',
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
-        'module' => 'name',
-        'settings' => array(),
-        'type' => 'name_widget',
-        'weight' => '2',
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
       ),
     ),
   );
@@ -506,7 +391,7 @@ Prof.',
             'thousand_separator' => '',
           ),
           'type' => 'number_integer',
-          'weight' => '4',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'inline',
@@ -518,7 +403,7 @@ Prof.',
             'thousand_separator' => '',
           ),
           'type' => 'number_integer',
-          'weight' => '3',
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'node',
@@ -593,7 +478,7 @@ Prof.',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'inline',
@@ -618,7 +503,7 @@ Prof.',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -674,7 +559,7 @@ Prof.',
           'module' => 'link',
           'settings' => array(),
           'type' => 'default',
-          'weight' => '5',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
