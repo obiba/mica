@@ -110,11 +110,6 @@ function mica_data_access_request_review($node) {
     $review_node->field_data_access[$node->language] = array(array('nid' => $node->nid));
     $review_node->field_review_status[$node->language] = array(array('value' => 'reviewed'));
     
-    $reviewer = mica_data_access_reviewer_contact($user);
-    if ($reviewer !== FALSE) {
-      $review_node->field_daco_reviewer[$node->language] = array(array('nid' => $reviewer->nid));
-    }
-
     node_save($review_node);
 
     watchdog('mica', 'Created data access review %review for request %request by user %user',
