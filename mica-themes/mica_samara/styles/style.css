@@ -745,6 +745,13 @@ form#comment-form #edit-actions {
   border-top: 1px solid #CCCCCC;
 }
 
+th.views-field{
+  color:#333333;
+}
+
+a.active{
+	color:#222222;
+}
 /**
  * Panels
  */

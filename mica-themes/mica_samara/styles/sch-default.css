@@ -160,6 +160,12 @@ a {
 }
 #navigation li.expanded li a:hover {
   background-color: #5D87A1;
+  -webkit-border-top-left-radius: 0px;
+  -webkit-border-top-right-radius: 0px;
+  -moz-border-radius-topleft: 0px;
+  -moz-border-radius-topright: 0px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 #navigation > ul > li.expanded.active-trail > a {
@@ -256,16 +262,14 @@ fieldset {
 }
 
 th, thead, thead th {
-  /*background-color: #4A6C81;*/
-  color: #FFFFFF;
-  font-weight:bold;
+  background-color: #EEEEEE;
+  color: #222222;
+  border-top: 1px solid #CCCCCC;
 }
 
-th a, thead a {
-  color: white!important;
-  font-weight:bold;
+th.views-field {
+	color:#222222;
 }
-
 .field-label-inline .field-items .field-item {
   display: inline;
 }
