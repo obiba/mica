@@ -4,12 +4,18 @@ library('opal');
 
 params=fromJSON(json);
 
-opals <- opal.login(url=params$studies, opts=params$curlopts);
+opals <- opal.login(url=params$urls, opts=params$curlopts);
 
 table = paste(params$datasource, params$table, sep=".");
 for(var in params$variables) {
-  datashield.assign(opals, var, paste(table, var, sep=":"));
-#  datashield.assign(opals, var, quote(c(1:3)));
+  #timestamp();
+  for(study  in names(params$tables)) {
+    table = params$tables[[study]];
+    path = paste(table, var, sep=":");
+    cat(paste('Preparing variable ', var, 'for study', study, '\n'));
+    timestamp();
+    datashield.assign(opals[[study]], var, path);
+  }
 }
-
+timestamp();
 print(datashield.glm(opals, params$model, glmparams=params$glm));

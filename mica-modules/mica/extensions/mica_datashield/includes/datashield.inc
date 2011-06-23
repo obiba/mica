@@ -5,10 +5,17 @@ class DataShieldModel {
   private $process;
 
   private $pipes;
+  
+  private $dataset;
 
   private $variables = array();
+  
+  public function __construct($dataset_node) {
+    $this->dataset = $dataset_node;
+  }
 
   public function launch($model, $glm) {
+    $connectors = mica_dataset_connector_query_multiple($this->dataset->nid, TRUE);
 
       $params = array();
       $params['curlopts'] = array(
@@ -20,9 +27,13 @@ class DataShieldModel {
       );
       $params['datasource'] = 'bioshare';
       $params['table'] = 'healthy-obese';
-      $params['studies'] = array();
-      $params['studies']['UKB'] = 'https://ukb.obiba.org:8443/';
-      $params['studies']['Lifegene'] = 'https://lifegene.obiba.org:8443/';
+      $params['urls'] = array();
+      $params['tables'] = array();
+      foreach($connectors as $connector) {
+        $study = node_load($connector->study_id);
+        $params['urls'][$study->title] = $study->mica_opal['und'][0]['url'];
+        $params['tables'][$study->title] = $connector->options['datasource'] . '.' . $connector->options['table'];
+      }
       $params['variables'] = $this->names();
       $params['model'] = $model;
       $params['glm'] = $glm;

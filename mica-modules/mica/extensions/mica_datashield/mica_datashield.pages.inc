@@ -50,13 +50,14 @@ function mica_datashield_form($form, &$form_state) {
     '#title' => t('Model'),
     '#collapsible' => FALSE
   );
-  
+
   $form['model']['model-to-fit'] = array(
     '#type' => 'textfield',
+    '#disabled' => (count($model->variables()) < 1),
     '#title' => t('Model'),
-    '#description' => t('The R formula to fit. Should reference the selected variables above: BMI ~ HEIGHT + WEIGHT'),
+    '#description' => t('The R formula to fit. Should reference the selected variables above (e.g.: ') . (count($model->variables()) > 1 ? $model->model() : 'BMI ~ HEIGHT + WEIGHT') .')',
     '#default_value' => !empty($form_state['values']['model-to-fit']) ? $form_state['values']['model-to-fit'] : '',
-    '#size' => 120,
+    '#size' => 70,
   );
 
   $form['model']['model-family'] = array(
@@ -73,8 +74,8 @@ function mica_datashield_form($form, &$form_state) {
 
   if(!empty($form_state['values']['output'])) {
     $form['result'] = array(
-    	'#type' =>'fieldset',
-    	'#title' => t('DataSHIELD Result'),
+      '#type' =>'fieldset',
+      '#title' => t('DataSHIELD Result'),
       '#collapsible' => TRUE
     );
     $form['result']['output'] = array(
@@ -95,20 +96,19 @@ function mica_datashield_form_submit($form, &$form_state) {
       $model = _mica_datashield_model_load($dataset_node);
 
       $model->addVariable(node_load($vid));
-      $form_state['values']['model-to-fit'] = $model->model();
 
       _mica_datashield_model_store($dataset_node, $model);
-  $form_state['rebuild'] = TRUE;
+      $form_state['rebuild'] = TRUE;
       break;
 
     case 'remove-variable':
       $vids = $form_state['values']['variables'];
       $model = _mica_datashield_model_load($dataset_node);
       $model->removeVariables($vids);
-      $form_state['values']['model-to-fit'] = $model->model();
+
       _mica_datashield_model_store($dataset_node, $model);
       
-  $form_state['rebuild'] = TRUE;
+      $form_state['rebuild'] = TRUE;
       break;
     case 'fit':
       $model = _mica_datashield_model_load($dataset_node);
@@ -125,7 +125,7 @@ function mica_datashield_form_submit($form, &$form_state) {
 
 function _mica_datashield_model_load($dataset_node) {
   if(isset($_SESSION['datashield'][$dataset_node->nid]) == false) {
-    return new DataShieldModel();
+    return new DataShieldModel($dataset_node);
   }
   return unserialize($_SESSION['datashield'][$dataset_node->nid]);
 }
