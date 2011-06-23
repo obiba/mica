@@ -17,8 +17,30 @@ function mica_standard_install_tasks($install_state){
     'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED, // default to insert content
     'function' => 'mica_import_default_feeds',
   ); 
+
+  $task['mica_standard_permissions'] = array(
+    'display_name' => st('Apply Mica default permissions'),
+    'display' => TRUE,
+    'type' => 'batch',
+    'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+    'function' => 'mica_user_permission_rebuild',
+  ); 
   
   return $task;
+}
+
+/**
+ * Application of user permissions by features fails at modules installation. 
+ * So rebuild them in a post-install task.
+ */
+function mica_user_permission_rebuild() {
+  module_load_include('inc', 'features', 'includes/features.user');
+  module_load_include('inc', 'features', 'features.export');
+  user_permission_features_rebuild('mica_community');
+  user_permission_features_rebuild('mica_data_access');
+  user_permission_features_rebuild('mica_datasets');
+  user_permission_features_rebuild('mica_projects');
+  user_permission_features_rebuild('mica_studies');
 }
 
 function mica_import_default_feeds($install_state){

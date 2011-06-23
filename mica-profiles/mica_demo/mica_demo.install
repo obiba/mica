@@ -9,7 +9,7 @@ function mica_demo_install() {
   include_once DRUPAL_ROOT . '/profiles/mica_standard/mica_standard.install';
   mica_standard_install();
 
-  // Add some demo users
+  // consortium users
   $user = array(
     'name' => 'mica',
     'mail' => 'admin@consortium.org',
@@ -22,6 +22,7 @@ function mica_demo_install() {
   );
   user_save(null, $user);
 
+  // daco members
   $user = array(
     'name' => 'pburton',
     'mail' => 'pb51@leicester.ac.uk',
@@ -36,15 +37,32 @@ function mica_demo_install() {
   user_save(null, $user);
   
   $user = array(
-    'name' => 'user1',
-    'mail' => 'user1@study.org',
+    'name' => 'jholmen',
+    'mail' => 'jostein.holmen@ntnu.no',
     'is_new' => TRUE,
     'pass' => 'password',
     'status' => 1,
-    'roles' => array(),
+    'roles' => array(
+      '6' => 'study administrator',
+      '4' => 'data access committee member'
+    ),
   );
   user_save(null, $user);
   
+  $user = array(
+    'name' => 'cgieger',
+    'mail' => 'christian.gieger@helmholtz-muenchen.de',
+    'is_new' => TRUE,
+    'pass' => 'password',
+    'status' => 1,
+    'roles' => array(
+      '6' => 'study administrator',
+      '4' => 'data access committee member'
+    ),
+  );
+  user_save(null, $user);
+  
+  // study administrators
   $user = array(
     'name' => 'ukb',
     'mail' => 'admin@ukb.org',
@@ -56,5 +74,50 @@ function mica_demo_install() {
     ),
   );
   user_save(null, $user);
+  
+  $user = array(
+    'name' => 'hunt',
+    'mail' => 'admin@hunt.org',
+    'is_new' => TRUE,
+    'pass' => 'password',
+    'status' => 1,
+    'roles' => array(
+      '6' => 'study administrator',
+    ),
+  );
+  user_save(null, $user);
+  
+  $user = array(
+    'name' => 'kora',
+    'mail' => 'admin@kora.org',
+    'is_new' => TRUE,
+    'pass' => 'password',
+    'status' => 1,
+    'roles' => array(
+      '6' => 'study administrator',
+    ),
+  );
+  user_save(null, $user);
 
+  // ordinary users
+  $user = array(
+    'name' => 'jsmith',
+    'mail' => 'jsmith@study.org',
+    'is_new' => TRUE,
+    'pass' => 'password',
+    'status' => 1,
+    'roles' => array(),
+  );
+  user_save(null, $user);
+
+  $user = array(
+    'name' => 'mtremblay',
+    'mail' => 'mtremblay@study.org',
+    'is_new' => TRUE,
+    'pass' => 'password',
+    'status' => 1,
+    'roles' => array(),
+  );
+  user_save(null, $user);
+  
 }
