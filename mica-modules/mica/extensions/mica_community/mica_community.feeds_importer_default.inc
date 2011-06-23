@@ -64,6 +64,16 @@ function mica_community_feeds_importer_default() {
             'target' => 'field_event_date:end',
             'unique' => FALSE,
           ),
+          5 => array(
+            'source' => 'field_event_link:title',
+            'target' => 'field_event_link:title',
+            'unique' => FALSE,
+          ),
+          6 => array(
+            'source' => 'field_event_link:url',
+            'target' => 'field_event_link:url',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',
