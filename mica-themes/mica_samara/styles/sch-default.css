@@ -76,7 +76,9 @@ a.active:hover,
 a.active:focus,
 li a.active:hover,
 li a.active:focus {
+  color: #035c94;
   border-bottom-style: solid;
+  border-bottom-color:#4A6C81;
 }
 .node h1.node-title a:hover,
 .node h2.node-title a:hover {
@@ -84,7 +86,7 @@ li a.active:focus {
 }
 /* Link underline (light blue) */
 a {
-  border-bottom: 1px solid #bbbbbb;
+  /*border-bottom: 1px solid #bbbbbb;*/
 }
 
 /* Link (block) */
@@ -279,4 +281,20 @@ th.views-field {
 }
 .field-label-inline .field-items div.field-item:last-child::after{
   content: "";
+}
+
+h1.page-title {
+  line-height: 1.3;
+}
+
+h2 a {
+ border-bottom:none;
+}
+h2 a:hover{
+  border-bottom-width:1px;
+}
+
+.node .field.field-label-inline {
+  margin-top: -3px;
+  margin-bottom: -3px;
 }
