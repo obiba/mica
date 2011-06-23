@@ -62,8 +62,13 @@ li a.active {
   color: #035c94;
 }
 legend {
-  background-color: #4A6C81;
+  background-color: #CCCCCC;
 }
+html.js fieldset.collapsible legend a {
+  color: #2e2e2e;
+  font-weight: bold;
+}
+
 /* Link hovered (orange) */
 a:hover,
 a:focus,
@@ -251,7 +256,7 @@ fieldset {
 }
 
 th, thead, thead th {
-  background-color: #4A6C81;
+  /*background-color: #4A6C81;*/
   color: #FFFFFF;
   font-weight:bold;
 }
@@ -261,3 +266,13 @@ th a, thead a {
   font-weight:bold;
 }
 
+.field-label-inline .field-items .field-item {
+  display: inline;
+}
+
+.field-label-inline .field-items div.field-item::after{
+  content: ",  ";
+}
+.field-label-inline .field-items div.field-item:last-child::after{
+  content: "";
+}
