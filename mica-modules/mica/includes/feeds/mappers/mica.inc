@@ -68,7 +68,11 @@ function _mica_set_target($source, $entity, $target, $value, $value_field = 'val
   // Iterate over all values.
   $i = 0;
   $info = field_info_field($target);
-  list($field_name, $sub_field) = explode(':', $target);
+  $field_name = $target;
+  $sub_field;
+  if (strpos($target, ':') !== FALSE) {
+    list($field_name, $sub_field) = explode(':', $target);
+  }
   foreach ($value as $v) {
     $new_value = $v;
     if (!is_array($new_value) && !is_object($new_value)) {

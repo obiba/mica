@@ -110,7 +110,16 @@ function references_feeds_set_target($source, $entity, $target, $value) {
   }
 
   // Determine whether we are matching against the title/user or nid/uid, and whether duplicates are allowed.
-  list($target, $match_key, $duplicates) = explode(':', $target, 3);
+  $match_key;
+  $duplicates;
+  if (strpos($target, ':') !== FALSE) {
+    $exploded = explode(':', $target, 3);
+    $target = $exploded[0];
+    $match_key = $exploded[1];
+    if (array_key_exists(2, $exploded)) {
+      $duplicates = $exploded[2];
+    }
+  }
   if (empty($duplicates)) {
     $value = array_unique($value);
   }
@@ -162,8 +171,8 @@ function references_feeds_set_target($source, $entity, $target, $value) {
           $reference_type_nb = 0;
   
           // Create a new node only if there is only one content type that can be referenced
-          foreach ($f['settings']['referenceable_types'] as $type) {
-            if ($f['settings']['referenceable_types'][$type]) {
+          foreach ($f['settings']['referenceable_types'] as $key => $type) {
+            if ($f['settings']['referenceable_types'][$key]) {
               $reference_type = $type;
               $reference_type_nb++;
             }
