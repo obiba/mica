@@ -149,24 +149,28 @@ function mica_standard_install() {
     'rid' => 2, 
   ));
   $query->execute();
-  
+
   _mica_standard_admin_theme_no_region('user', 'new');
   _mica_standard_admin_theme_no_region('search', 'form');
   _mica_standard_admin_theme_no_region('node', 'recent');
-  
+
   // Set mica theme as default
   theme_enable(array($mica_theme, 'bartik', 'seven'));
   variable_set('theme_default', $mica_theme);
 
   // Default pages
-  mica_standard_add_page('Mica', 'Welcome to Mica, a powerful software application used to create web portals for epidemiological study consortia.
+  
+  $ABOUT_AND_HOME_TEXT = 'Welcome to Mica, a powerful software application used to create web portals for epidemiological study consortia.
 
 Using Mica, consortia can build personalized web sites for publishing their research activities and their membership. Mica includes many domain-specific features such as study catalogues, data dictionary browsers, on-line data access request forms, community tools (forums, events, news) and others. Moreover, Mica includes a powerful data search engine that allows authenticated researchers to perform distributed queries on the content of each individual study data collection hosted by the OBiBa Opal database software (www.obiba.org).
 
 Mica is based on the content management software Drupal (www.drupal.org) used by millions of websites worldwide. As such, a webmaster benefits from all the power and flexibility of Drupal, as well as the support of an extended developer community.
 
-Installing a site with Mica demo profile will help to illustrate its functionalities. This may serve as a good starting point for customizing your web portal.', 'About', 'about', 50, 1);
+Installing a site with Mica demo profile will help to illustrate its functionalities. This may serve as a good starting point for customizing your web portal.';
+  
+  mica_standard_add_page('Mica', $ABOUT_AND_HOME_TEXT, 'About', 'about', 50, 0, 1);
 
+  mica_standard_add_page('Mica', $ABOUT_AND_HOME_TEXT, 'Home', 'home', 50, 1, 0);
 
   // Login destination setup
   $rule = array(
@@ -178,14 +182,14 @@ Installing a site with Mica demo profile will help to illustrate its functionali
     'destination' => '<front>',
     'id' => NULL,
     'weight' => 0,
-        );
+  );
   drupal_write_record('login_destination', $rule);
 
   // rebuild permissions
   node_access_rebuild();
 }
 
-function mica_standard_add_page($title, $body, $link_title, $alias, $weight) {
+function mica_standard_add_page($title, $body, $link_title, $alias, $weight, $sticky, $add_to_menu) {
   $node = new stdClass();
   $node->type = 'page';
   node_object_prepare($node);
@@ -194,14 +198,16 @@ function mica_standard_add_page($title, $body, $link_title, $alias, $weight) {
     'value' => $body,
     'format' => 'full_html'
   )));
-  $node->menu['enabled'] = 1;
-  $node->menu['expanded'] = 1;
-  $node->menu['menu_name'] = 'main-menu';
-  $node->menu['weight'] = $weight;
-  $node->menu['link_title'] = $link_title;
-  $node->menu['description'] = '';
+  if ($add_to_menu) {
+    $node->menu['enabled'] = 1;
+    $node->menu['expanded'] = 1;
+    $node->menu['menu_name'] = 'main-menu';
+    $node->menu['weight'] = $weight;
+    $node->menu['link_title'] = $link_title;
+    $node->menu['description'] = '';
+  }
   $node->promote = 0;
-  $node->sticky = 1;
+  $node->sticky = $sticky;
   $node->language = LANGUAGE_NONE;
   node_save($node);
 
@@ -209,7 +215,7 @@ function mica_standard_add_page($title, $body, $link_title, $alias, $weight) {
   $path['source'] = 'node/' . $node->nid;
   $path['language'] = LANGUAGE_NONE;
   path_save($path);
-  
+
   return $node;
 }
 
