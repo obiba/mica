@@ -27,7 +27,7 @@ function mica_datasets_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '0',
-    'parent_path' => '<firstchild>',
+    'parent_path' => 'node/3',
   );
   // Translatables
   // Included for use with string extractors like potx.

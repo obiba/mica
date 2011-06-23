@@ -10,8 +10,10 @@
  * Implements hook_install().
  */
 function mica_install() {
-  mica_add_page('Data Access Policy', 'TODO', 'data-access');
-  mica_add_page('Research', 'TODO', 'research');
+  mica_add_page('Data Access', '', 'data-access');
+  mica_add_page('Research', '', 'research');
+  mica_add_page('Resources', '', 'resources');
+  mica_add_page('Consortium Policies and Guidelines', '', 'data-access/policy');
 }
 
 function mica_add_page($title, $body, $alias) {

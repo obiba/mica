@@ -62,7 +62,7 @@ function mica_data_access_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-48',
+    'weight' => '-20',
     'parent_path' => 'node/1',
   );
   // Exported menu link: main-menu:data-access/approved
@@ -100,7 +100,7 @@ function mica_data_access_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-49',
+    'weight' => '-40',
     'parent_path' => 'node/1',
   );
   // Exported menu link: main-menu:data-access/request
@@ -109,6 +109,25 @@ function mica_data_access_menu_default_menu_links() {
     'link_path' => 'data-access/request',
     'router_path' => 'data-access/request',
     'link_title' => 'Data Access Request',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-30',
+    'parent_path' => 'node/1',
+  );
+  // Exported menu link: main-menu:node/4
+  $menu_links['main-menu:node/4'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'node/4',
+    'router_path' => 'node/%',
+    'link_title' => 'Data Access Policy',
     'options' => array(
       'attributes' => array(
         'title' => '',
@@ -128,6 +147,8 @@ function mica_data_access_menu_default_menu_links() {
   t('Data Access Administration');
   t('Data Access Committee');
   t('Data Access Request');
+  t('Data Access Policy');
+  t('Data Access');
 
 
   return $menu_links;
