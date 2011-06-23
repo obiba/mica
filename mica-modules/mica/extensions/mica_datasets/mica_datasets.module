@@ -238,19 +238,21 @@ function mica_datasets_menu() {
  * Implements hook_menu_local_tasks_alter().
  */
 function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  $links = array();
+      
   if ($root_path == 'datasets') {
-    $links = array();
     if (node_access('create', 'dataset')) {
-      $links['disallowed'] = array(
+      $links['add-dataset'] = array(
         '#theme' => 'menu_local_action',
         '#link' => array(
           'title' => t('Add a Dataset'),
           'href' => 'node/add/dataset',
         ),
       );  
-    } 
-    $data['actions']['output'] = array_merge($data['actions']['output'], $links);
-  }
+    }
+  } 
+  
+  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
 
 /**

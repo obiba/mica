@@ -42,6 +42,27 @@ function mica_data_access_menu() {
 }
 
 /**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function mica_data_access_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  $links = array();
+  
+  if ($root_path == 'data-access/approved' || $root_path == 'data-access/committee') {  
+    if (node_access('create', 'data_access_request')) {
+      $links['add-data-access-request'] = array(
+        '#theme' => 'menu_local_action',
+        '#link' => array(
+          'title' => t('Request for Data Access'),
+          'href' => 'data-access/request',
+        ),
+      );
+    } 
+  }
+  
+  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
+}
+
+/**
  * Implements hook_field_attach_form()
  */
 function mica_data_access_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {

@@ -34,32 +34,33 @@ function mica_studies_menu() {
  * Implements hook_menu_local_tasks_alter().
  */
 function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  $links = array();
+    
   if ($root_path == 'studies') {
-    $links = array();
     if (node_access('create', 'study')) {
-      $links['disallowed'] = array(
+      $links['add-study'] = array(
         '#theme' => 'menu_local_action',
         '#link' => array(
           'title' => t('Add a Study'),
           'href' => 'node/add/study',
         ),
       );  
-    } 
-    $data['actions']['output'] = array_merge($data['actions']['output'], $links);
+    }
   }
   elseif ($root_path == 'documents') {
     $links = array();
     if (node_access('create', 'documents')) {
-      $links['disallowed'] = array(
+      $links['add-documents'] = array(
         '#theme' => 'menu_local_action',
         '#link' => array(
-          'title' => t('Add Documents'),
+          'title' => t('Add some Documents'),
           'href' => 'node/add/documents',
         ),
       );  
-    } 
-    $data['actions']['output'] = array_merge($data['actions']['output'], $links);
+    }
   }
+  
+  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
 
 /**
