@@ -184,16 +184,15 @@ function mica_community_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-publication-body'
-  $fields['node-publication-body'] = array(
+
+  // Exported field: 'node-publication-field_abstract'
+  $fields['node-publication-field_abstract'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
-      'entity_types' => array(
-        0 => 'node',
-      ),
-      'field_name' => 'body',
+      'entity_types' => array(),
+      'field_name' => 'field_abstract',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -210,7 +209,7 @@ function mica_community_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
           'field_description_value_type' => 'TEXT',
         ),
@@ -220,11 +219,6 @@ function mica_community_field_default_fields() {
           'edit own' => 0,
           'view' => 0,
           'view own' => 0,
-        ),
-        'variable_infos' => array(
-          'variable' => 1,
-          'variable_body' => '',
-          'variable_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -237,41 +231,41 @@ function mica_community_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '3',
+          'weight' => '2',
         ),
         'teaser' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(
             'trim_length' => 600,
           ),
-          'type' => 'text_summary_or_trimmed',
-          'weight' => '1',
+          'type' => 'text_trimmed',
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'body',
-      'label' => 'Body',
-      'required' => FALSE,
+      'field_name' => 'field_abstract',
+      'label' => 'Abstract',
+      'required' => 0,
       'settings' => array(
-        'display_summary' => TRUE,
-        'text_processing' => 1,
+        'display_summary' => 0,
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => 20,
+          'rows' => '10',
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '4',
+        'weight' => '3',
       ),
-      'widget_type' => 'text_textarea_with_summary',
     ),
   );
 
@@ -403,14 +397,14 @@ Prof.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'name',
           'settings' => array(),
           'type' => 'name_default',
-          'weight' => '0',
+          'weight' => '1',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'name',
           'settings' => array(),
           'type' => 'name_default',
@@ -463,7 +457,7 @@ Prof.',
         'module' => 'name',
         'settings' => array(),
         'type' => 'name_widget',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -503,7 +497,7 @@ Prof.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'number',
           'settings' => array(
             'decimal_separator' => '.',
@@ -515,10 +509,16 @@ Prof.',
           'weight' => '4',
         ),
         'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '2',
+          'label' => 'inline',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => 1,
+            'scale' => 0,
+            'thousand_separator' => '',
+          ),
+          'type' => 'number_integer',
+          'weight' => '3',
         ),
       ),
       'entity_type' => 'node',
@@ -538,6 +538,87 @@ Prof.',
         'settings' => array(),
         'type' => 'number',
         'weight' => '5',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-publication-field_publication_reference'
+  $fields['node-publication-field_publication_reference'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_publication_reference',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'publication',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'inline',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_publication_reference',
+      'label' => 'Reference',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
       ),
     ),
   );
@@ -593,13 +674,13 @@ Prof.',
           'module' => 'link',
           'settings' => array(),
           'type' => 'default',
-          'weight' => '2',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '5',
         ),
       ),
       'entity_type' => 'node',
@@ -626,17 +707,19 @@ Prof.',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '3',
+        'weight' => '6',
       ),
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Abstract');
   t('Authors');
   t('Body');
   t('Event Date');
   t('PMID');
+  t('Reference');
   t('URL');
 
   return $fields;
