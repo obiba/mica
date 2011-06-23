@@ -156,7 +156,7 @@ function mica_data_access_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '5',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -180,7 +180,7 @@ function mica_data_access_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '8',
       ),
     ),
   );
@@ -317,7 +317,7 @@ Prof.',
           'module' => 'name',
           'settings' => array(),
           'type' => 'name_default',
-          'weight' => '8',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -372,7 +372,7 @@ Prof.',
         'module' => 'name',
         'settings' => array(),
         'type' => 'name_widget',
-        'weight' => '9',
+        'weight' => '5',
       ),
     ),
   );
@@ -428,7 +428,7 @@ Prof.',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '7',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -452,7 +452,7 @@ Prof.',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '10',
       ),
     ),
   );
@@ -528,11 +528,10 @@ Prof.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => 9,
+          'type' => 'hidden',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -557,7 +556,110 @@ Prof.',
           'size' => 60,
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '10',
+        'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-data_access_request-field_dataset_access'
+  $fields['node-data_access_request-field_dataset_access'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dataset_access',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'referenceable_types' => array(
+          'article' => 0,
+          'blog' => 0,
+          'contact' => 0,
+          'data_access_request' => 0,
+          'data_access_review' => 0,
+          'dataset' => 'dataset',
+          'documents' => 0,
+          'event' => 0,
+          'field_description' => 0,
+          'forum' => 0,
+          'institution' => 0,
+          'page' => 0,
+          'panel' => 0,
+          'participant_variable' => 0,
+          'project' => 0,
+          'publication' => 0,
+          'study' => 0,
+          'study_documents' => 0,
+          'study_information' => 0,
+          'teleconference' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'data_access_request',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Choose which dataset is needed for your project.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => '1',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_dataset_access',
+      'label' => 'Dataset',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '2',
       ),
     ),
   );
@@ -613,7 +715,7 @@ Prof.',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '3',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -637,7 +739,7 @@ Prof.',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '6',
       ),
     ),
   );
@@ -693,7 +795,7 @@ Prof.',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '6',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -717,7 +819,7 @@ Prof.',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '7',
+        'weight' => '9',
       ),
     ),
   );
@@ -842,7 +944,7 @@ Prof.',
           'module' => 'email',
           'settings' => array(),
           'type' => 'email_default',
-          'weight' => '2',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -853,7 +955,7 @@ Prof.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_rep_email',
-      'label' => 'Institutional Email',
+      'label' => 'Representative Email',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -865,7 +967,7 @@ Prof.',
           'size' => '60',
         ),
         'type' => 'email_textfield',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -1002,7 +1104,7 @@ Prof.',
           'module' => 'name',
           'settings' => array(),
           'type' => 'name_default',
-          'weight' => '1',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1057,7 +1159,7 @@ Prof.',
         'module' => 'name',
         'settings' => array(),
         'type' => 'name_widget',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -1113,7 +1215,7 @@ Prof.',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '4',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1137,7 +1239,7 @@ Prof.',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '5',
+        'weight' => '7',
       ),
     ),
   );
@@ -1407,17 +1509,19 @@ Prof.',
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Choose which dataset is needed for your project.');
   t('City');
   t('Collaborators');
   t('Country');
   t('Data Access Committee member');
   t('Data Access Request');
   t('Data Access Review');
+  t('Dataset');
   t('Institution Name');
-  t('Institutional Email');
   t('Notes');
   t('Postal Code');
   t('Provide a clear description of the project and its specific aims.');
+  t('Representative Email');
   t('Representative Name');
   t('Reviewer');
   t('Status');
