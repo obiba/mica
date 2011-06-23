@@ -2036,9 +2036,9 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = 'This page displays the list of the consortium\'s studies. Each study is described in the same standard way, and can easily be customized to reflect a consortium\'s requirements. However, Mica recommends a standard list of important study characteristics that should be considered if the consortium aims to participate in data harmonization projects with other consortia or studies. 
+  $handler->display->display_options['header']['area']['content'] = 'This page displays the list of the consortium\'s studies. Each study is described in a same standard way that can be easily customized to reflect consortium specificities. However, Mica suggests by default a list of important study characteristics that should be considered if there is an aim for the consortium to participate in data harmonization projects with other consortia or studies. 
 
-This Mica study catalogue comes with an advanced query tool, offering using user-friendly search criteria <br/><br/>';
+This Mica study catalogue comes with an advanced query tool using user-friendly facets <br/><br/>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -2200,9 +2200,9 @@ This Mica study catalogue comes with an advanced query tool, offering using user
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('This page displays the list of the consortium\'s studies. Each study is described in the same standard way, and can easily be customized to reflect a consortium\'s requirements. However, Mica recommends a standard list of important study characteristics that should be considered if the consortium aims to participate in data harmonization projects with other consortia or studies. 
+    t('This page displays the list of the consortium\'s studies. Each study is described in a same standard way that can be easily customized to reflect consortium specificities. However, Mica suggests by default a list of important study characteristics that should be considered if there is an aim for the consortium to participate in data harmonization projects with other consortia or studies. 
 
-This Mica study catalogue comes with an advanced query tool, offering using user-friendly search criteria <br/><br/>'),
+This Mica study catalogue comes with an advanced query tool using user-friendly facets <br/><br/>'),
     t('empty_studies'),
     t('No study found.'),
     t('mica_study_information'),

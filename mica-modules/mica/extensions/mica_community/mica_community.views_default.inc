@@ -35,7 +35,7 @@ function mica_community_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = 'Communication with researchers is crucial and stimulating. Mica offers different communication structures such as discussion groups (forums), news and events announcement, and blogs, all out of the box.';
+  $handler->display->display_options['header']['area']['content'] = 'Communication with researchers is crucial and stimulating. Mica offers out of the box different communication means such as discussion groups (forums), news and events announcement, and blogs.';
   $handler->display->display_options['header']['area']['format'] = 'plain_text';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -138,7 +138,7 @@ function mica_community_views_default_views() {
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('Communication with researchers is crucial and stimulating. Mica offers different communication structures such as discussion groups (forums), news and events announcement, and blogs, all out of the box.'),
+    t('Communication with researchers is crucial and stimulating. Mica offers out of the box different communication means such as discussion groups (forums), news and events announcement, and blogs.'),
     t('Title'),
     t('Updated date'),
     t('Type'),
