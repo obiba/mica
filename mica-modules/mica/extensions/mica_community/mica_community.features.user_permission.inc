@@ -15,7 +15,7 @@ function mica_community_user_default_permissions() {
     'name' => 'create blog content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'authenticated user',
+      1 => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -97,7 +97,6 @@ function mica_community_user_default_permissions() {
     'name' => 'delete own blog content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -177,7 +176,6 @@ function mica_community_user_default_permissions() {
     'name' => 'edit own blog content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'authenticated user',
     ),
     'module' => 'node',
   );
