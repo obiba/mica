@@ -247,6 +247,50 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['fields']['field_project_summary']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_project_summary']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_project_summary']['field_api_classes'] = 0;
+  /* Field: Content: Representative Name */
+  $handler->display->display_options['fields']['field_representative']['id'] = 'field_representative';
+  $handler->display->display_options['fields']['field_representative']['table'] = 'field_data_field_representative';
+  $handler->display->display_options['fields']['field_representative']['field'] = 'field_representative';
+  $handler->display->display_options['fields']['field_representative']['label'] = 'Representative';
+  $handler->display->display_options['fields']['field_representative']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_representative']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_representative']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_representative']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_representative']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_representative']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_representative']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_representative']['click_sort_column'] = 'title';
+  $handler->display->display_options['fields']['field_representative']['type'] = 'name_default';
+  $handler->display->display_options['fields']['field_representative']['field_api_classes'] = 0;
+  /* Field: Content: Institution Name */
+  $handler->display->display_options['fields']['field_institution_name']['id'] = 'field_institution_name';
+  $handler->display->display_options['fields']['field_institution_name']['table'] = 'field_data_field_institution_name';
+  $handler->display->display_options['fields']['field_institution_name']['field'] = 'field_institution_name';
+  $handler->display->display_options['fields']['field_institution_name']['label'] = 'Institution';
+  $handler->display->display_options['fields']['field_institution_name']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_institution_name']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_institution_name']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['field_api_classes'] = 0;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -411,6 +455,50 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['fields']['field_project_summary']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_project_summary']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_project_summary']['field_api_classes'] = 0;
+  /* Field: Content: Representative Name */
+  $handler->display->display_options['fields']['field_representative']['id'] = 'field_representative';
+  $handler->display->display_options['fields']['field_representative']['table'] = 'field_data_field_representative';
+  $handler->display->display_options['fields']['field_representative']['field'] = 'field_representative';
+  $handler->display->display_options['fields']['field_representative']['label'] = 'Representative';
+  $handler->display->display_options['fields']['field_representative']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_representative']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_representative']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_representative']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_representative']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_representative']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_representative']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_representative']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_representative']['click_sort_column'] = 'title';
+  $handler->display->display_options['fields']['field_representative']['type'] = 'name_default';
+  $handler->display->display_options['fields']['field_representative']['field_api_classes'] = 0;
+  /* Field: Content: Institution Name */
+  $handler->display->display_options['fields']['field_institution_name']['id'] = 'field_institution_name';
+  $handler->display->display_options['fields']['field_institution_name']['table'] = 'field_data_field_institution_name';
+  $handler->display->display_options['fields']['field_institution_name']['field'] = 'field_institution_name';
+  $handler->display->display_options['fields']['field_institution_name']['label'] = 'Institution';
+  $handler->display->display_options['fields']['field_institution_name']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_institution_name']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_institution_name']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['field_api_classes'] = 0;
   /* Field: Content revision: Created date */
   $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
   $handler->display->display_options['fields']['timestamp']['table'] = 'node_revision';
@@ -529,6 +617,8 @@ function mica_data_access_views_default_views() {
     t('Project'),
     t('Summary'),
     t('Created date'),
+    t('Representative'),
+    t('Institution'),
     t('Status'),
     t('Submitted'),
     t('Review'),
