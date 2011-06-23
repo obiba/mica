@@ -279,6 +279,13 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['style_options']['override'] = 1;
   $handler->display->display_options['style_options']['sticky'] = 0;
   $handler->display->display_options['style_options']['empty_table'] = 1;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = 'The consortium makes different datasets available to the research community. Each dataset is described by a comprehensive data dictionary which gives details on each available variable. Moreover, Mica includes (for studies using the OBiBa Opal software as main database solution) a distributed query engine that enables researchers to obtain real-time aggregated reports on the exact number of participants with specific characteristics or phenotypes. Mica even makes it possible to run some regression analyses remotely on the real study data, using the DataSHIELD method (Wolfson M et al. <i>Int J Epidemiol</i>. 2010) which is implemented both in Mica and Opal. <br/><br/>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -389,6 +396,27 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['displays'] = array(
     'default' => 'default',
     'page' => 'page',
+  );
+  $translatables['datasets'] = array(
+    t('Master'),
+    t('Datasets'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('The consortium makes different datasets available to the research community. Each dataset is described by a comprehensive data dictionary which gives details on each available variable. Moreover, Mica includes (for studies using the OBiBa Opal software as main database solution) a distributed query engine that enables researchers to obtain real-time aggregated reports on the exact number of participants with specific characteristics or phenotypes. Mica even makes it possible to run some regression analyses remotely on the real study data, using the DataSHIELD method (Wolfson M et al. <i>Int J Epidemiol</i>. 2010) which is implemented both in Mica and Opal. <br/><br/>'),
+    t('empty_datasets'),
+    t('No dataset found.'),
+    t('Name'),
+    t('Description'),
+    t('Dataschema'),
+    t('Page'),
+    t('Feed'),
   );
   $export['datasets'] = $view;
 
