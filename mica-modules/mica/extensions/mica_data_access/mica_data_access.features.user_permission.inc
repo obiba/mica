@@ -64,6 +64,7 @@ function mica_data_access_user_default_permissions() {
     'name' => 'delete own data_access_review content',
     'roles' => array(
       0 => 'consortium administrator',
+      1 => 'data access committee member',
     ),
     'module' => 'node',
   );
