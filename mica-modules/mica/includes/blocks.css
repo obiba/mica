@@ -1,17 +1,38 @@
 @CHARSET "UTF-8";
 
-#mica-search-api-form {
+#mica-search-form,
+#mica-search-api-form,
+#mica-search-filters-form {
   padding-top: 0px;
   padding-bottom: 0px;
 }
 
-#mica-search-api-form table, #mica-search-api-form tr {
-  border-width: 0px;
-}
-
-#mica-search-api-form input.form-submit {
+#mica-search-api-form input.form-submit,
+#mica-search-filters-form input.form-submit {
   margin-left: 5px;
   margin-top: 4px;
+}
+
+#mica-search-form input.form-submit {
+  margin-left: 5px;
+}
+
+.region-header #block-mica-studies-mica-search {
+  margin-top: 25px;
+}
+
+#mica-search-form .form-type-radio {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#mica-search-form .form-radio {
+  margin-right: 0px;
+}
+
+#mica-search-api-form table, 
+#mica-search-api-form tr {
+  border-width: 0px;
 }
 
 #mica-search-api-form div.advanced {
@@ -21,16 +42,6 @@
 
 #block-mica-studies-mica-search-filters table {
   border-width: 0px;
-}
-
-#mica-search-filters-form {
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
-#mica-search-filters-form input.form-submit {
-  margin-left: 5px;
-  margin-top: 4px;
 }
 
 #mica-search-filters-form #edit-block .fieldset-wrapper {

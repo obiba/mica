@@ -6,8 +6,75 @@
  * Mica blocks. 
  */
 
+//
+// Site vs. Studies search block
+//
+
 /**
- * Studies search block content function.
+ * Site or Studies search block content function.
+ */
+function mica_search_block_content() {
+
+  return drupal_get_form('mica_search_form');
+}
+
+/**
+ * Returns a form for site or studies full text search.
+ */
+function mica_search_form($form, &$form_state) {
+  $form = array(
+    '#attached' => array(
+      'css' => array(drupal_get_path('module', 'mica') . '/includes/blocks.css'),
+    ),
+  );  
+
+  $form['search']  = array(
+    '#type' => 'textfield',
+    '#attributes' => array(
+      'title' => t('Enter the terms you wish to search for in site or studies.'),
+    ),
+    '#prefix' => '<div class="container-inline">',
+  );
+  
+  
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Go'),
+    '#suffix' => '</div>',
+  );
+  
+  $form['target'] = array(
+    '#type' => 'radios', 
+    '#default_value' => 'site', 
+    '#options' => array('site' => t('Site'), 'studies' => t('Studies')),
+  );
+  
+  $form['link']  = array(
+    '#type' => 'link',
+    '#title' => t('Advanced studies search'),
+    '#href' => 'studies-search',
+    '#prefix' => '<div class="advanced">',
+    '#suffix' => '</div>',
+  );
+  
+  return $form;
+}
+
+function mica_search_form_submit($form, &$form_state) {
+  if ($form_state['values']['target'] == 'studies') {
+    drupal_goto('studies-search' , array('query' => array('search_api_views_fulltext' => $form_state['values']['search'])));
+  }
+  else {
+    drupal_goto('search/node/' . $form_state['values']['search']);
+  }
+}
+
+//
+// Search API search block
+//
+
+/**
+ * Search API block content function.
  */
 function mica_search_api_block_content($search_api_view, $help = '') {
   // todo check studies index is enabled
@@ -15,7 +82,7 @@ function mica_search_api_block_content($search_api_view, $help = '') {
 }
 
 /**
- * Returns a form for studies full text search.
+ * Returns a form for search api full text search.
  */
 function mica_search_api_form($form, &$form_state) {
   $form = array(
@@ -54,6 +121,10 @@ function mica_search_api_form($form, &$form_state) {
 function mica_search_api_form_submit($form, &$form_state) {
   drupal_goto($form_state['build_info']['args'][0] , array('query' => array('search_api_views_fulltext' => $form_state['values']['search'])));
 }
+
+//
+// Search filters block
+//
 
 /**
  * Search filters block content function.

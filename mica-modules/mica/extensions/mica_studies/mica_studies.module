@@ -35,7 +35,7 @@ function mica_studies_menu() {
  */
 function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   $links = array();
-    
+
   if ($root_path == 'studies') {
     if (node_access('create', 'study')) {
       $links['add-study'] = array(
@@ -43,8 +43,8 @@ function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
         '#link' => array(
           'title' => t('Add a Study'),
           'href' => 'node/add/study',
-        ),
-      );  
+      ),
+      );
     }
   }
   elseif ($root_path == 'documents') {
@@ -55,11 +55,11 @@ function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
         '#link' => array(
           'title' => t('Add some Documents'),
           'href' => 'node/add/documents',
-        ),
-      );  
+      ),
+      );
     }
   }
-  
+
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
 
@@ -71,7 +71,7 @@ function mica_studies_permission() {
     'export data' => array(
       'title' => t('Export Data'),
       'description' => t('Allow exportation of data.')
-    ),
+  ),
   );
   return $perms;
 }
@@ -93,12 +93,20 @@ function mica_studies_block_info() {
   $blocks['mica-studies-search'] = array(
     'info' => t('Studies search'),
     'status' => TRUE,
-    'region' => 'sidebar_first',
+    'region' => BLOCK_REGION_NONE,
     'visibility' => BLOCK_VISIBILITY_LISTED,
     'pages' => 'node/*
 studies', // line separated paths
   );
-    
+
+  $blocks['mica-search'] = array(
+    'info' => t('Search'),
+    'status' => TRUE,
+    'region' => 'header',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'pages' => '',
+  );
+
   return $blocks;
 }
 
@@ -113,6 +121,11 @@ function mica_studies_block_view($delta = '') {
 
   //The $delta parameter tells us which block is being requested.
   switch ($delta) {
+    case 'mica-search':
+      module_load_include('inc', 'mica', 'includes/blocks');
+      $block['subject'] = t('Search');
+      $block['content'] = mica_search_block_content();
+      return $block;
     case 'mica-studies-search':
       module_load_include('inc', 'mica', 'includes/blocks');
       $block['subject'] = t('Studies search');
@@ -188,7 +201,7 @@ function _mica_import_relations() {
 
 function _mica_import_field_groups() {
   module_load_include('inc', 'mica', 'includes/fieldgroups');
-  
+
   // STUDY: GENERAL INFO
   _mica_add_fieldset_group('study','group_general_info', 'General Information', '2', '', array(
     'field_full_name',
@@ -199,13 +212,13 @@ function _mica_import_field_groups() {
     'field_target_number_biosamples',
     'field_p3g_observatory_link',
   ));
-  
+
   // STUDY
   _mica_add_fieldset_group('study','group_details', 'Details', '3', '', array(
     'mica_study_information',
     'mica_study_documents',
   ));
-  
+
   // STUDY INFORMATION : METHOD
   _mica_add_fieldset_group('study_information','group_method', 'Method', '1', '', array(
     'field_design',
@@ -245,14 +258,14 @@ function _mica_import_custom_name_format(){
   	'format' => 't',
   );
   drupal_write_record('name_custom_format', $custom_format);
-} 
+}
 
 function _mica_node_reference_block() {
   db_delete('block_node_type')
-    ->condition('module', 'node_reference_block')
-    ->condition('delta', 'related-content')
-    ->condition('type', 'study%','LIKE')
-    ->execute();
+  ->condition('module', 'node_reference_block')
+  ->condition('delta', 'related-content')
+  ->condition('type', 'study%','LIKE')
+  ->execute();
   $query = db_insert('block_node_type')->fields(array('type', 'module', 'delta'));
   foreach (array('study', 'study_information','study_documents','contact','institution') as $type) {
     $query->values(array(

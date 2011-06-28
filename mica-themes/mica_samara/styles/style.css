@@ -564,6 +564,9 @@ h1.page-title,
 .node fieldset .field.field-label-hidden {
   padding-bottom: 5px;
 }
+.node .field.field-name-body {
+  font-size: 115%;
+}
 .node .field.field-name-body.field-label-hidden {
   padding-bottom: 0;
   border-bottom: none;
@@ -1856,7 +1859,7 @@ img.right, img[align="right"] {
 .region-header input.form-text {
   background: rgba(255, 255, 255, 0.7);
   margin-right: 2px;
-  width: 120px;
+  width: 200px;
 }
 .region-header .block ul {
   margin: 0;
@@ -1876,6 +1879,10 @@ img.right, img[align="right"] {
 .region-header #block-user-login .content {
   margin-top: 2px;
 }
+.region-header #block-user-login input.form-text {
+  width: 120px;
+}
+
 .region-header #block-user-login .form-item {
   float: left;
   margin: 0 5px 0 0;
@@ -1885,7 +1892,8 @@ img.right, img[align="right"] {
   clear: both;
 }
 .region-header #block-user-login div.item-list, 
-.region-header #block-user-login div.description {
+.region-header #block-user-login div.description,
+.region-header a {
   font-size: 0.916em;
   margin: 0;
 }
@@ -1917,6 +1925,7 @@ img.right, img[align="right"] {
 .region-header #block-search-form {
   margin-top: 25px;
 }
+#mica-search-form input.form-submit,
 #search-block-form input.form-submit {
   margin-left: 0;
   margin-right: 0;
@@ -1970,6 +1979,9 @@ img.right, img[align="right"] {
 }
 
 /* Views */
+.view-header {
+  font-size: 115%;
+}
 .views-row {
   border-bottom: 2px dotted #ccc;
   padding-bottom: 10px;

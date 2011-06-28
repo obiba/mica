@@ -14,17 +14,6 @@ function mica_standard_install() {
   $admin_theme = 'seven';
   $values = array(
   array(
-      'module' => 'search',
-      'delta' => 'form',
-      'theme' => $mica_theme,
-      'status' => 1,
-      'weight' => 1,
-      'region' => 'header',
-      'visibility' => 0,
-      'pages' => '',
-      'cache' => -1,
-  ),
-  array(
       'module' => 'user',
       'delta' => 'login',
       'theme' => $mica_theme,
@@ -150,9 +139,10 @@ function mica_standard_install() {
   ));
   $query->execute();
 
-  _mica_standard_admin_theme_no_region('user', 'new');
-  _mica_standard_admin_theme_no_region('search', 'form');
-  _mica_standard_admin_theme_no_region('node', 'recent');
+  _mica_standard_no_region('user', 'new');
+  _mica_standard_no_region('search', 'form');
+  _mica_standard_no_region('search', 'form', $mica_theme);
+  _mica_standard_no_region('node', 'recent');
 
   // Set mica theme as default
   theme_enable(array($mica_theme, 'bartik', 'seven'));
@@ -250,7 +240,7 @@ function mica_standard_update_node_body($nid, $body) {
   }
 }
 
-function _mica_standard_admin_theme_no_region($module, $delta) {
+function _mica_standard_no_region($module, $delta, $theme = 'seven') {
   db_update('block')
   ->fields(array(
     'region' => BLOCK_REGION_NONE,
@@ -258,6 +248,6 @@ function _mica_standard_admin_theme_no_region($module, $delta) {
   ))
   ->condition('module', $module, '=')
   ->condition('delta', $delta, '=')
-  ->condition('theme', 'seven', '=')
+  ->condition('theme', $theme, '=')
   ->execute();
 }
