@@ -35,12 +35,14 @@
   border-width: 0px;
 }
 
-#mica-search-api-form div.advanced {
+#mica-search-api-form div.advanced,
+#mica-search-filters-form div.advanced {
   font-size: smaller;
   margin-bottom: 5px;
 }
 
-#block-mica-studies-mica-search-filters table {
+#block-mica-studies-mica-search-filters table,
+#block-mica-studies-mica-search-filters tr {
   border-width: 0px;
 }
 

@@ -196,6 +196,16 @@ function mica_search_filters_form($form, &$form_state, $blocks) {
   );
   
   $form['block'] += $blocks;
+  
+  $title = views_get_view('fields_description_search')->display['default']->display_options['title'];
+  
+  $form['link']  = array(
+    '#type' => 'link',
+    '#title' => t('More about !title', array('!title' => t($title))),
+    '#href' => 'fields-description-search',
+    '#prefix' => '<div class="advanced">',
+    '#suffix' => '</div>',
+  );
 
   return $form;
 }
