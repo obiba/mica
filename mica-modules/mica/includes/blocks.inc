@@ -28,14 +28,16 @@ function mica_search_form($form, &$form_state) {
     ),
   );  
 
+  // get studies view default display title
+  $title = views_get_view('studies')->display['default']->display_options['title'];
+  
   $form['search']  = array(
     '#type' => 'textfield',
     '#attributes' => array(
-      'title' => t('Enter the terms you wish to search for in site or studies.'),
+      'title' => t('Enter the terms you wish to search for in Site or !title.', array('!title' => t($title))),
     ),
     '#prefix' => '<div class="container-inline">',
   );
-  
   
   $form['submit'] = array(
     '#type' => 'submit',
@@ -46,13 +48,15 @@ function mica_search_form($form, &$form_state) {
   $form['target'] = array(
     '#type' => 'radios', 
     '#default_value' => 'site', 
-    '#options' => array('site' => t('Site'), 'studies' => t('Studies')),
+    '#options' => array('site' => t('Site'), 'studies' => t($title)),
   );
-  
+
+  // get studies_search view default display title
   $title = views_get_view('studies_search')->display['default']->display_options['title'];
+  
   $form['link']  = array(
     '#type' => 'link',
-    '#title' => t('Advanced !title', array('!title' => $title)),
+    '#title' => t('Advanced !title', array('!title' => t($title))),
     '#href' => 'studies-search',
     '#prefix' => '<div class="advanced">',
     '#suffix' => '</div>',
