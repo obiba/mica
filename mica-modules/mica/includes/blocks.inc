@@ -49,9 +49,10 @@ function mica_search_form($form, &$form_state) {
     '#options' => array('site' => t('Site'), 'studies' => t('Studies')),
   );
   
+  $title = views_get_view('studies_search')->display['default']->display_options['title'];
   $form['link']  = array(
     '#type' => 'link',
-    '#title' => t('Advanced studies search'),
+    '#title' => t('Advanced !title', array('!title' => $title)),
     '#href' => 'studies-search',
     '#prefix' => '<div class="advanced">',
     '#suffix' => '</div>',
