@@ -102,7 +102,7 @@ studies', // line separated paths
   $blocks['mica-search'] = array(
     'info' => t('Search'),
     'status' => TRUE,
-    'region' => 'header',
+    'region' => BLOCK_REGION_NONE,
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     'pages' => '',
   );
