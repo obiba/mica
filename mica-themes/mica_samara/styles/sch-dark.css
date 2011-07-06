@@ -82,6 +82,15 @@ a {
 }
 
 /* Link (block) */
+.block {
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.12) inset;
+  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.12) inset;
+  background-color: #e3e3e3;
+}
+
+
 .block .content {
   color: #393939;
 }
@@ -181,4 +190,10 @@ fieldset {
 #login-status #user-name {
   font-weight: bold;
 }
+
+/** Tables **/
+th a, thead a, th.views-field {
+  color: #EEEEEE !important;
+}
+
 
