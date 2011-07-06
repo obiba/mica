@@ -9,11 +9,10 @@
 acl_version=7.x-1.0-beta3
 calendar_version=7.x-2.0-alpha1
 chain_menu_access_version=7.x-1.0-beta2
-collapsiblock_version=7.x-1.0
 #content_access_version=7.x-1.x-dev
 ctools_version=7.x-1.0-beta1
 date_version=7.x-2.0-alpha3
-drupal_version=7.2
+drupal_version=7.4
 email_version=7.x-1.0-beta1
 entity_version=7.x-1.0-beta8
 features_version=7.x-1.0-beta3
@@ -29,13 +28,14 @@ login_destination_version=7.x-1.0-beta1
 multiselect_version=7.x-1.8
 name_version=7.x-1.0-beta1
 noderefcreate_version=7.x-1.0
+panels_version=7.x-3.0-alpha3
 relation_version=7.x-1.0-alpha2
 search_api_solr_version=7.x-1.0-beta2
 search_api_version=7.x-1.0-beta8
 strongarm_version=7.x-2.0-beta2
 views_data_export_version=7.x-3.0-beta4
-views_version=7.x-3.0-beta3
-viewreference_version=7.x-3.0
+views_version=7.x-3.0-rc1
+viewreference_version=7.x-3.1
 
 
 #
@@ -68,20 +68,34 @@ drupal-download:
 	cd target && \
 	$(drushexec) dl drupal-$(drupal_version) --drupal-project-rename=$(micadir) && \
 	cd $(micadir) && \
-	$(drushexec) dl advanced_help panels ctools-$(ctools_version) && \
-	$(drushexec) dl email-$(email_version) name-$(name_version) field_group-$(field_group_version) link-$(link_version) && \
-	$(drushexec) dl entity-$(entity_version) views-$(views_version) && \
-	$(drushexec) dl search_api-$(search_api_version) search_api_solr-$(search_api_solr_version) && \
-	$(drushexec) dl features-$(features_version) strongarm-$(strongarm_version) && \
-	$(drushexec) dl feeds_jsonpath_parser-$(feeds_jsonpath_parser_version) && \
-	$(drushexec) dl field_permissions-$(field_permissions_version) relation-$(relation_version) && \
-	$(drushexec) dl collapsiblock-$(collapsiblock_version) && \
-	$(drushexec) dl date-$(date_version) calendar-$(calendar_version) && \
-	$(drushexec) dl login_destination-$(login_destination_version) noderefcreate-$(noderefcreate_version) && \
-	$(drushexec) dl viewreference-$(viewreference_version) && \
-	$(drushexec) dl views_data_export-$(views_data_export_version) multiselect-$(multiselect_version) job_scheduler-$(job_scheduler_version) && \
-	$(drushexec) dl acl-$(acl_version) chain_menu_access-$(chain_menu_access_version) forum_access-$(forum_access_version) && \
-	$(drushexec) dl google_fonts-$(google_fonts_version)
+	$(drushexec) dl \
+		advanced_help \
+		panels-$(panels_version) \
+		ctools-$(ctools_version) \
+		email-$(email_version) \
+		name-$(name_version) \
+		field_group-$(field_group_version) \
+		link-$(link_version) \
+		entity-$(entity_version) \
+		views-$(views_version) \
+		search_api-$(search_api_version) \
+		search_api_solr-$(search_api_solr_version) \
+		features-$(features_version) \
+		strongarm-$(strongarm_version) \
+		feeds_jsonpath_parser-$(feeds_jsonpath_parser_version) \
+		field_permissions-$(field_permissions_version) \
+		relation-$(relation_version) \
+		date-$(date_version) calendar-$(calendar_version) \
+		login_destination-$(login_destination_version) \
+		noderefcreate-$(noderefcreate_version) \
+		viewreference-$(viewreference_version) \
+		views_data_export-$(views_data_export_version) \
+		multiselect-$(multiselect_version) \
+		job_scheduler-$(job_scheduler_version) \
+		acl-$(acl_version) \
+		chain_menu_access-$(chain_menu_access_version) \
+		forum_access-$(forum_access_version) \
+		google_fonts-$(google_fonts_version)
 
 drupal-examples:
 	cd target/$(micadir) && \
