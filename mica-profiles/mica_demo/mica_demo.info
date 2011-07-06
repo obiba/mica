@@ -1,6 +1,7 @@
 ; $Id$
 project = "mica_demo"
 name = Mica Demo
+distribution_name = Mica
 description = Mica standard install with some demo content.
 core = 7.x
 dependencies[] = block
@@ -28,7 +29,6 @@ dependencies[] = panels
 dependencies[] = panels_mini
 dependencies[] = panels_node
 dependencies[] = panels_ipe
-dependencies[] = collapsiblock
 dependencies[] = ctools
 dependencies[] = ctools_custom_content
 dependencies[] = ctools_access_ruleset

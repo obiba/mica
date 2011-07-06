@@ -1,6 +1,7 @@
 ; $Id$
 project = "mica_standard"
 name = Mica
+distribution_name = Mica
 description = Mica installation of tools for making a Study Consortium site: studies, search indexes, community tools and more.
 core = 7.x
 dependencies[] = block
@@ -28,7 +29,6 @@ dependencies[] = panels
 dependencies[] = panels_mini
 dependencies[] = panels_node
 dependencies[] = panels_ipe
-dependencies[] = collapsiblock
 dependencies[] = ctools
 dependencies[] = ctools_custom_content
 dependencies[] = ctools_access_ruleset
