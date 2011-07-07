@@ -38,10 +38,11 @@ function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
 
   if ($root_path == 'studies') {
     if (node_access('create', 'study')) {
+      $node_type = node_type_load('study');
       $links['add-study'] = array(
         '#theme' => 'menu_local_action',
         '#link' => array(
-          'title' => t('Add a Study'),
+          'title' => t('Add a !name', array('!name' => $node_type->name)),
           'href' => 'node/add/study',
       ),
       );
