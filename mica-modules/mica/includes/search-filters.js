@@ -20,7 +20,7 @@ jQuery(document).ready(function(){
     var items = jQuery('#edit-block').find('label');
 
     for (var i = 0; i < items.length; i++){
-      var text = items[i].innerText.toLowerCase().replace(/[^a-zA-Z 0-9]+/g,'').replace(/\s\s/g, ' ');
+      var text = items[i].innerHTML.toLowerCase().replace(/[^a-zA-Z 0-9]+/g,'').replace(/\s\s/g, ' ');
       
         if (text.indexOf(criteria) < 0) {
             items[i].parentNode.style.display = 'none';
