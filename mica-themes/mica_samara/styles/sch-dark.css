@@ -196,4 +196,14 @@ th a, thead a, th.views-field {
   color: #EEEEEE !important;
 }
 
+.field-label-inline .field-items .field-item {
+  display: inline;
+}
+
+.field-label-inline .field-items div.field-item::after{
+  content: ",  ";
+}
+.field-label-inline .field-items div.field-item:last-child::after{
+  content: "";
+}
 
