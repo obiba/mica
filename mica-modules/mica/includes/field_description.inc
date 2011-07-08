@@ -23,6 +23,7 @@ function _mica_field_value_type($field_value_type){
   			
   		case 'email':
   		case 'link_field':
+  		case 'list_integer':
   		case 'list_text':
   		case 'text_long':
   		case 'text_with_summary':
@@ -31,7 +32,6 @@ function _mica_field_value_type($field_value_type){
   			return 'TEXT';
   			
   		case 'number_integer':
-  		case 'list_integer':
   			return 'INTEGER';
   			
   		default:

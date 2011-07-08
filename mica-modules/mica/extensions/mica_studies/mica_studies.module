@@ -91,19 +91,9 @@ function mica_studies_block_info() {
     'pages' => 'studies-search',
   );
 
-  $blocks['mica-studies-search'] = array(
-    'info' => t('Studies search'),
-    'status' => TRUE,
-    'region' => BLOCK_REGION_NONE,
-    'visibility' => BLOCK_VISIBILITY_LISTED,
-    'pages' => 'node/*
-studies', // line separated paths
-  );
-
   $blocks['mica-search'] = array(
     'info' => t('Search'),
     'status' => TRUE,
-    'region' => BLOCK_REGION_NONE,
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     'pages' => '',
   );
@@ -127,19 +117,6 @@ function mica_studies_block_view($delta = '') {
       $block['subject'] = t('Search');
       $block['content'] = mica_search_block_content();
       return $block;
-    case 'mica-studies-search':
-      module_load_include('inc', 'mica', 'includes/blocks');
-      $block['subject'] = t('Studies search');
-      $content = mica_search_api_block_content('studies-search', t('Enter the terms you wish to search for in studies.'));
-
-      if ($content) {
-        $block['content'] = $content;
-        return $block;
-      }
-      else {
-        // no content, then no block
-        return;
-      }
     case 'mica-search-filters':
       if ($user->uid == 0) {
         // not available for anonymous user

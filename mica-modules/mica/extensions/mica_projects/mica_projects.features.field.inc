@@ -189,7 +189,7 @@ function mica_projects_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -291,7 +291,7 @@ function mica_projects_field_default_fields() {
       'settings' => array(
         'description_field' => 0,
         'file_directory' => '',
-        'file_extensions' => 'txt',
+        'file_extensions' => 'doc pdf txt xls xlsx',
         'max_filesize' => '',
         'user_register_form' => FALSE,
       ),
@@ -360,9 +360,7 @@ function mica_projects_field_default_fields() {
           'teleconference' => 0,
         ),
         'view' => array(
-          'args' => array(
-            0 => '',
-          ),
+          'args' => array(),
           'display_name' => '',
           'view_name' => '',
         ),
@@ -377,7 +375,7 @@ function mica_projects_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
@@ -600,7 +598,7 @@ function mica_projects_field_default_fields() {
       'label' => 'Instructions',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -611,6 +609,90 @@ function mica_projects_field_default_fields() {
         ),
         'type' => 'text_textarea',
         'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-teleconference-field_minutes'
+  $fields['node-teleconference-field_minutes'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_minutes',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'file',
+      'settings' => array(
+        'display_default' => 0,
+        'display_field' => 0,
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '1',
+      'type' => 'file',
+    ),
+    'field_instance' => array(
+      'bundle' => 'teleconference',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'file',
+          'settings' => array(),
+          'type' => 'file_default',
+          'weight' => 5,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_minutes',
+      'label' => 'Minutes',
+      'required' => 0,
+      'settings' => array(
+        'description_field' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'doc pdf txt',
+        'max_filesize' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'file',
+        'settings' => array(
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'file_generic',
+        'weight' => '5',
       ),
     ),
   );
@@ -897,6 +979,7 @@ function mica_projects_field_default_fields() {
   t('Description');
   t('Files');
   t('Instructions');
+  t('Minutes');
   t('Project');
   t('Studies');
   t('Teleconferences');

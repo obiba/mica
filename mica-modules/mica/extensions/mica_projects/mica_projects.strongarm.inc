@@ -172,6 +172,13 @@ function mica_projects_strongarm() {
   $strongarm->name = 'node_submitted_project';
   $strongarm->value = 0;
   $export['node_submitted_project'] = $strongarm;
+  
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_teleconference';
+  $strongarm->value = 0;
+  $export['node_submitted_teleconference'] = $strongarm;
 
   return $export;
 }

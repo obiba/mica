@@ -47,7 +47,7 @@ function mica_standard_install() {
       'cache' => -1,
   ),
   array(
-      'module' => 'mica-studies',
+      'module' => 'mica_studies',
       'delta' => 'mica-search',
       'theme' => $mica_theme,
       'status' => 1,
