@@ -33,9 +33,9 @@ relation_version=7.x-1.0-alpha2
 search_api_solr_version=7.x-1.0-beta2
 search_api_version=7.x-1.0-beta8
 strongarm_version=7.x-2.0-beta2
-views_data_export_version=7.x-3.0-beta5
-views_version=7.x-3.0-rc1
-viewreference_version=7.x-3.1
+views_data_export_version=7.x-3.0-beta4
+views_version=7.x-3.0-beta3
+viewreference_version=7.x-3.0
 
 
 #
