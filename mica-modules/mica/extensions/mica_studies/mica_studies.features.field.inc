@@ -665,11 +665,10 @@ X',
         ),
         'title_options' => '-- --
 Mr.
-Mrs.
 Miss
-Ms.
 Dr.
-Prof.',
+Prof.
+MD.',
       ),
       'translatable' => '1',
       'type' => 'name',
