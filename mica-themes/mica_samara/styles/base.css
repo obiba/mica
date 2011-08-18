@@ -485,3 +485,31 @@ a.contextual-links-trigger,
   color: #E25401;
   text-decoration: none;
 }
+
+/**
+ * Search API Ranges style
+ */
+.search-api-ranges-widget p.text-range {
+  display: none;
+}
+
+.search-api-ranges-widget div.range-box {
+  display: inline-block;
+  width: 25%;
+}
+
+.search-api-ranges-widget div.range-slider-box {
+  display: inline-block;
+  width: 47%;
+}
+
+.search-api-ranges-widget div.yui3-g {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.search-api-ranges-widget input.form-submit {
+  display: none;
+  margin-bottom: 10px;
+}

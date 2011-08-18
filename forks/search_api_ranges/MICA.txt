@@ -1,2 +1,0 @@
-- Slider and input text do not submit on change.
-- Display input on the same line and hide intro text 

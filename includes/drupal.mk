@@ -10,28 +10,29 @@ acl_version=7.x-1.0-beta3
 calendar_version=7.x-2.0-alpha1
 chain_menu_access_version=7.x-1.0-beta2
 #content_access_version=7.x-1.x-dev
-ctools_version=7.x-1.0-beta1
+ctools_version=7.x-1.0-rc1
 date_version=7.x-2.0-alpha3
-drupal_version=7.4
-email_version=7.x-1.0-beta1
-entity_version=7.x-1.0-beta8
+drupal_version=7.7
+email_version=7.x-1.0
+entity_version=7.x-1.0-beta10
 features_version=7.x-1.0-beta3
 #feeds_version=7.x-2.x-dev
 feeds_jsonpath_parser_version=7.x-1.0-beta2
-field_group_version=7.x-1.0-rc2
+field_group_version=7.x-1.0
 field_permissions_version=7.x-1.0-alpha1
 forum_access_version=7.x-1.0-alpha4
-google_fonts_version=7.x-2.1
+google_fonts_version=7.x-2.3
 job_scheduler_version=7.x-2.0-alpha2
 link_version=7.x-1.0-alpha3
-login_destination_version=7.x-1.0-beta1
+login_destination_version=7.x-1.0
 multiselect_version=7.x-1.8
 name_version=7.x-1.0-beta1
 noderefcreate_version=7.x-1.0
 panels_version=7.x-3.0-alpha3
 relation_version=7.x-1.0-alpha2
-search_api_solr_version=7.x-1.0-beta2
-search_api_version=7.x-1.0-beta8
+search_api_version=7.x-1.0-beta10
+search_api_ranges_version=7.x-1.2
+search_api_solr_version=7.x-1.0-beta3
 strongarm_version=7.x-2.0-beta2
 views_data_export_version=7.x-3.0-beta4
 views_version=7.x-3.0-beta3
@@ -54,6 +55,10 @@ references_patch=http://drupal.org/files/issues/references.node_type_property.pa
 # Patch for issue http://drupal.org/node/1119466
 views_revision=7.x-3.0-beta3
 views_patch=http://drupal.org/files/issues/1119466-empty-table-class.patch
+
+# Patch for issue http://drupal.org/node/1231540
+search_api_ranges_revision=7.x-1.2
+search_api_ranges_patch=http://drupal.org/files/issues/1231540-item-to-entity.patch
 
 #
 # Drupal Build
@@ -79,6 +84,7 @@ drupal-download:
 		entity-$(entity_version) \
 		views-$(views_version) \
 		search_api-$(search_api_version) \
+		search_api_ranges-$(search_api_ranges_version) \
 		search_api_solr-$(search_api_solr_version) \
 		features-$(features_version) \
 		strongarm-$(strongarm_version) \
@@ -119,13 +125,15 @@ drupal-cache-clear:
 
 
 drupal-forks:	
-	cp -r forks/* target/$(micadir)/sites/all/modules
+	cp -r forks/menu_firstchild target/$(micadir)/sites/all/modules
+	cp -r forks/content_access target/$(micadir)/sites/all/modules
 
 drupal-stable-dev:
 	$(call drupal-checkout-module,http_client, 0)
 	$(call drupal-checkout-module,feeds, 0)
 	$(call drupal-patch-module,references, 0)
 	$(call drupal-patch-module,views, 1)
+	$(call drupal-patch-module,search_api_ranges, 1)
 	
 drupal-install-clients: jsonpath-php-client solr-php-client
 
@@ -151,7 +159,7 @@ drupal-default:
 
 drupal-patch-module = $(call drupal-checkout-module,$(1)) && \
 	wget -O - $($(1)_patch) | git apply -p$(2)	
-
+	
 # drupal-checkout-module function: checkout a specific module version using git
 drupal-checkout-module = cd target/$(micadir)/sites/all/modules && \
 	rm -rf $(1) && \

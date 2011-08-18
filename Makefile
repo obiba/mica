@@ -23,7 +23,6 @@ mica_samara_version=7.x-1.0-dev
 http_client_version=7.x-2.x-dev-mica
 feeds_version=7.x-2.x-dev-mica
 references_version=7.x-2.0-beta3-mica
-search_api_ranges_version=7.x-1.x-dev-mica
 noderefcreate_version=7.x-1.0-beta2-mica
 menu_firstchild_version=7.x-1.0-mica
 content_access_version=7.x-1.x-dev-mica
@@ -39,6 +38,8 @@ db_pass=rootadmin
 #
 
 all: drupal mica
+#	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/default.settings.php
+#	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/settings.php
 
 #
 # Include drupal targets
@@ -98,7 +99,7 @@ package-profiles: package-profile-mica_standard package-profile-mica_demo
 
 package-themes: package-theme-mica_samara
 
-package-forks: package-module-content_access package-module-feeds package-module-http_client package-module-menu_firstchild package-module-noderefcreate package-module-references package-module-search_api_ranges
+package-forks: package-module-content_access package-module-feeds package-module-http_client package-module-menu_firstchild package-module-noderefcreate package-module-references
 
 package-module-%: 
 	$(call make-info,sites/all/modules,$*)
