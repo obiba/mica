@@ -14,6 +14,15 @@ function mica_install() {
   mica_add_page('Research', '', 'research');
   mica_add_page('Resources', '', 'resources');
   mica_add_page('Consortium Policies and Guidelines', '', 'data-access/policy');
+  
+  $spec = array(
+    'description' => 'An array of additional arguments configuring this index.',
+    'type' => 'text',
+    'size' => 'big',
+    'serialize' => TRUE,
+    'not null' => TRUE,
+  );
+  db_change_field('search_api_index', 'options', 'options', $spec);
 }
 
 function mica_add_page($title, $body, $alias) {
