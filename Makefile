@@ -51,14 +51,14 @@ include includes/drupal.mk
 #
 
 mica: mica-install
-	cp mica-themes/mica_samara/mica.png target/$(micadir)/themes/seven/logo.png
-	cp mica-themes/mica_samara/favicon.ico target/$(micadir)/misc/favicon.ico
+	cp src/main/drupal/themes/mica_samara/mica.png target/$(micadir)/themes/seven/logo.png
+	cp src/main/drupal/themes/mica_samara/favicon.ico target/$(micadir)/misc/favicon.ico
 
 mica-install:
 	cd target/$(micadir) && \
-	cp -r ../../mica-profiles/* profiles && \
-	cp -r ../../mica-modules/mica sites/all/modules && \
-	cp -r ../../mica-themes/* sites/all/themes && \
+	cp -r ../../src/main/drupal/profiles/* profiles && \
+	cp -r ../../src/main/drupal/modules/mica sites/all/modules && \
+	cp -r ../../src/main/drupal/themes/* sites/all/themes && \
 	rm -rf `find . -type d -name .svn` && \
 	rm -rf `find . -type d -name .git` && \
 	if [ -e profiles/standard/standard.install ]; then \
@@ -191,14 +191,14 @@ git-prepare:
 	rm -rf target/git && mkdir -p target/git
 
 git-modules: 
-	$(call make-git,mica-modules,mica,sandbox/emorency/1128690)
+	$(call make-git,src/main/drupal/modules,mica,sandbox/emorency/1128690)
 
 git-themes: 
-	$(call make-git,mica-themes,mica_samara,sandbox/yop/1144820)
+	$(call make-git,src/main/drupal/themes,mica_samara,sandbox/yop/1144820)
 	
 git-profiles:
-	$(call make-git,mica-profiles,mica_standard,sandbox/yop/1144814)
-	$(call make-git,mica-profiles,mica_demo,sandbox/yop/1144816)
+	$(call make-git,src/main/drupal/profiles,mica_standard,sandbox/yop/1144814)
+	$(call make-git,src/main/drupal/profiles,mica_demo,sandbox/yop/1144816)
 
 #
 # Misc
