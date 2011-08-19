@@ -126,7 +126,7 @@ drupal-cache-clear:
 
 
 drupal-forks:	
-	cp -r forks/menu_firstchild target/$(micadir)/sites/all/modules
+	cp -r src/main/drupal/forks/* target/$(micadir)/sites/all/modules
 
 drupal-stable-dev:
 	$(call drupal-checkout-module,http_client, 0)
