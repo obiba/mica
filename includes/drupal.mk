@@ -9,7 +9,7 @@
 acl_version=7.x-1.0-beta3
 calendar_version=7.x-2.0-alpha1
 chain_menu_access_version=7.x-1.0-beta2
-#content_access_version=7.x-1.x-dev
+content_access_version=7.x-1.2-beta1
 ctools_version=7.x-1.0-rc1
 date_version=7.x-2.0-alpha3
 drupal_version=7.7
@@ -101,7 +101,8 @@ drupal-download:
 		acl-$(acl_version) \
 		chain_menu_access-$(chain_menu_access_version) \
 		forum_access-$(forum_access_version) \
-		google_fonts-$(google_fonts_version)
+		google_fonts-$(google_fonts_version) \
+		content_access-$(content_access_version)
 
 drupal-examples:
 	cd target/$(micadir) && \
@@ -126,7 +127,6 @@ drupal-cache-clear:
 
 drupal-forks:	
 	cp -r forks/menu_firstchild target/$(micadir)/sites/all/modules
-	cp -r forks/content_access target/$(micadir)/sites/all/modules
 
 drupal-stable-dev:
 	$(call drupal-checkout-module,http_client, 0)
