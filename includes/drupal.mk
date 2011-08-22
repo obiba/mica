@@ -63,7 +63,7 @@ search_api_ranges_patch=http://drupal.org/files/issues/1231540-item-to-entity.pa
 
 # Patch for issue http://drupal.org/node/1030216
 menu_firstchild_revision=7.x-1.0
-menu_firstchild_patch=src/main/drupal/patches/1030216-undefined-index-add-shortcut.patch
+menu_firstchild_patch=1030216-undefined-index-add-shortcut.patch
 
 
 #
@@ -166,7 +166,7 @@ drupal-patch-module = $(call drupal-checkout-module,$(1)) && \
 	wget -O - $($(1)_patch) | git apply -p$(2)	
 
 drupal-patch-module-file = $(call drupal-checkout-module,$(1)) && \
-	git apply -p$(2) ../../../../../../$($(1)_patch)
+	git apply -p$(2) ../../../../../../src/main/drupal/patches/$($(1)_patch)
 	
 # drupal-checkout-module function: checkout a specific module version using git
 drupal-checkout-module = cd target/$(micadir)/sites/all/modules && \
