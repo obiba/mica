@@ -1,14 +1,5 @@
 <?php
 
-/**
- * Implements hook_form_FORM_ID_alter().
- *
- * Allows the profile to alter the site configuration form.
- */
-function mica_standard_form_install_configure_form_alter(&$form, $form_state) {
-  $form['site_information']['site_name']['#default_value'] = 'Mica';
-}
-
 function mica_standard_install_tasks($install_state){
   $task['mica_standard_content'] = array(
     'display_name' => st('Add Mica default content'),
