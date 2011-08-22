@@ -25,6 +25,7 @@ google_fonts_version=7.x-2.3
 job_scheduler_version=7.x-2.0-alpha2
 link_version=7.x-1.0-alpha3
 login_destination_version=7.x-1.0
+menu_firstchild_version=7.x-1.0
 multiselect_version=7.x-1.8
 name_version=7.x-1.0-beta1
 noderefcreate_version=7.x-1.0
@@ -60,11 +61,16 @@ views_patch=http://drupal.org/files/issues/1119466-empty-table-class.patch
 search_api_ranges_revision=7.x-1.2
 search_api_ranges_patch=http://drupal.org/files/issues/1231540-item-to-entity.patch
 
+# Patch for issue http://drupal.org/node/1030216
+menu_firstchild_revision=7.x-1.0
+menu_firstchild_patch=src/main/drupal/patches/1030216-undefined-index-add-shortcut.patch
+
+
 #
 # Drupal Build
 #
 
-drupal: drupal-prepare drupal-download drupal-forks drupal-stable-dev drupal-install-clients drupal-default 
+drupal: drupal-prepare drupal-download drupal-stable-dev drupal-install-clients drupal-default 
 
 drupal-prepare:
 	mkdir -p target
@@ -75,34 +81,36 @@ drupal-download:
 	cd $(micadir) && \
 	$(drushexec) dl \
 		advanced_help \
-		panels-$(panels_version) \
+		acl-$(acl_version) \
+		chain_menu_access-$(chain_menu_access_version) \
+		calendar-$(calendar_version) \
+		content_access-$(content_access_version) \
 		ctools-$(ctools_version) \
+		date-$(date_version) \
 		email-$(email_version) \
-		name-$(name_version) \
-		field_group-$(field_group_version) \
-		link-$(link_version) \
 		entity-$(entity_version) \
-		views-$(views_version) \
+		features-$(features_version) \
+		feeds_jsonpath_parser-$(feeds_jsonpath_parser_version) \
+		field_group-$(field_group_version) \
+		field_permissions-$(field_permissions_version) \
+		forum_access-$(forum_access_version) \
+		google_fonts-$(google_fonts_version) \
+		job_scheduler-$(job_scheduler_version) \
+		link-$(link_version) \
+		login_destination-$(login_destination_version) \
+		menu_firstchild-$(menu_firstchild_version) \
+		multiselect-$(multiselect_version) \
+		name-$(name_version) \
+		noderefcreate-$(noderefcreate_version) \
+		panels-$(panels_version) \
+		relation-$(relation_version) \
 		search_api-$(search_api_version) \
 		search_api_ranges-$(search_api_ranges_version) \
 		search_api_solr-$(search_api_solr_version) \
-		features-$(features_version) \
 		strongarm-$(strongarm_version) \
-		feeds_jsonpath_parser-$(feeds_jsonpath_parser_version) \
-		field_permissions-$(field_permissions_version) \
-		relation-$(relation_version) \
-		date-$(date_version) calendar-$(calendar_version) \
-		login_destination-$(login_destination_version) \
-		noderefcreate-$(noderefcreate_version) \
 		viewreference-$(viewreference_version) \
-		views_data_export-$(views_data_export_version) \
-		multiselect-$(multiselect_version) \
-		job_scheduler-$(job_scheduler_version) \
-		acl-$(acl_version) \
-		chain_menu_access-$(chain_menu_access_version) \
-		forum_access-$(forum_access_version) \
-		google_fonts-$(google_fonts_version) \
-		content_access-$(content_access_version)
+		views-$(views_version) \
+		views_data_export-$(views_data_export_version)
 
 drupal-examples:
 	cd target/$(micadir) && \
@@ -124,16 +132,13 @@ drupal-cache-clear:
 	cd target/$(micadir) && \
 	$(drushexec) cache-clear	
 
-
-drupal-forks:	
-	cp -r src/main/drupal/forks/* target/$(micadir)/sites/all/modules
-
 drupal-stable-dev:
 	$(call drupal-checkout-module,http_client, 0)
 	$(call drupal-checkout-module,feeds, 0)
 	$(call drupal-patch-module,references, 0)
 	$(call drupal-patch-module,views, 1)
 	$(call drupal-patch-module,search_api_ranges, 1)
+	$(call drupal-patch-module-file,menu_firstchild, 1)
 	
 drupal-install-clients: jsonpath-php-client solr-php-client
 
@@ -159,6 +164,9 @@ drupal-default:
 
 drupal-patch-module = $(call drupal-checkout-module,$(1)) && \
 	wget -O - $($(1)_patch) | git apply -p$(2)	
+
+drupal-patch-module-file = $(call drupal-checkout-module,$(1)) && \
+	git apply -p$(2) ../../../../../../$($(1)_patch)
 	
 # drupal-checkout-module function: checkout a specific module version using git
 drupal-checkout-module = cd target/$(micadir)/sites/all/modules && \

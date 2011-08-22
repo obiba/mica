@@ -1,0 +1,19 @@
+diff --git a/menu_firstchild.module b/menu_firstchild.module
+index 9823797..eb654c9 100644
+--- a/menu_firstchild.module
++++ b/menu_firstchild.module
+@@ -1,5 +1,4 @@
+ <?php
+-// $Id$
+ 
+ /**
+  * @file menu_firstchild.module
+@@ -32,7 +31,7 @@ function _menu_firstchild_menu() {
+  * Implementation of hook_menu_link_alter().
+  */
+ function menu_firstchild_menu_link_alter(&$item, $menu) {
+-  if ($item['module'] == 'menu') {
++  if (@$item['module'] == 'menu') {
+     if ($item['link_path'] == '<firstchild>') {
+       $item['options']['alter'] = TRUE;
+       $item['options']['unaltered_hidden'] = $item['hidden'];
