@@ -375,14 +375,14 @@ function mica_projects_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
           'weight' => '1',
         ),
         'teaser' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
