@@ -36,11 +36,12 @@ function mica_projects_menu_local_tasks_alter(&$data, $router_item, $root_path) 
       $node = node_load($router_item['page_arguments'][0]->nid);
       if ($node != NULL && $node->type == 'project') {
         $node_type = node_type_load('teleconference');
+        $href = url('node/add/teleconference', array('query' => array('field_project' => $node->nid)));
         $links['add-teleconference'] = array(
           '#theme' => 'menu_local_action',
           '#link' => array(
-            'title' => t('Add a !name', array('!name' => $node_type->name)),
-            'href' => 'node/add/teleconference',
+            'title' => t('<a href="@url">Add a !name</a>', array('!name' => $node_type->name, '@url' => $href)),
+            'localized_options' => array('html' => TRUE),
           ),
         );
       }
@@ -55,74 +56,14 @@ function mica_projects_menu_local_tasks_alter(&$data, $router_item, $root_path) 
  * Implements hook_node_insert()
  */
 function mica_projects_insert(&$node) {
-
-  $node->field_teleconferences['und'] = array(
-    0 => array(
-    	'view_id' => 'teleconferences:page',
-    	'arguments' => $node->nid,
-    )
-  );
-         
-  /*  
-  // create the associated forum
-  module_load_include('inc', 'forum', 'forum.admin');
-
-  $forum_topic_fields = array();
-  $forum_topic_fields['values']['name'] = $node->title;
-  $forum_topic_fields['values']['description'] = 'Discussion about this project';
-  $forum_topic_fields['values']['vid'] = 1;
-  
-  $form_state = array('values'=>'project forum');
-  $forum = forum_form_forum($forum_topic_fields, $form_state);
-  $forum['form_id']['#value'] = 'forum';
-  forum_form_submit($forum, $forum_topic_fields);
-
-  // create menu based on content type menu config
-  $menu = isset($node->menu)?$node->menu:array();
-  if (empty($menu)) {
-	  $menu = array();
-  }
-  if (empty($menu['enabled']) || !$menu['enabled']) {
-    $menu_options = variable_get('menu_options_' . $node->type);
-
-    if (!empty($menu_options)) {
-      $menu['enabled'] = TRUE;
-	    $menu['expanded'] = TRUE;
-	    $menu['menu_name'] = $menu_options[0];
-	    $menu['link_title'] = $node->title;
-	    $menu['link_path'] = 'node/' . $node->nid;
-	
-	    $menu_parent = variable_get('menu_parent_' . $node->type);
-	    if (!empty($menu_parent)) {
-		    $split = explode(":", $menu_parent);
-		    if (!empty($split[1])) {
-		      $mlid = $split[1];
-		      // check that this parent menu exists
-          $existing_menu = db_query("SELECT * FROM {menu_links} WHERE mlid = :mlid", array(':mlid' => $mlid))
-	                    ->fetchObject();    			
-	      	if (!empty($existing_menu) && $existing_menu->mlid === $mlid) {
-	          $menu['plid'] = $mlid;
-		        menu_link_save($menu);
-	          menu_cache_clear($menu['menu_name']);
-		      }  		
-	      }
-	    }
-	  }
-  }
-  // create sub-menu for forum 
-  if (!empty($menu) || $menu['enabled']) {
-  	//$field_ref_info = field_info_instance('node', $field_ref, $this->parent_bundle);
-    $child_menu_item = array(
-		  'menu_name' => 'main-menu',
-		  'link_title' => t('Forum'),
-		  'link_path' => 'forum/' . $forum_topic_fields['values']['tid'],
-		  'plid' => $menu['mlid'],
-		);
-    menu_link_save($child_menu_item);
-    menu_cache_clear('main-menu');
-  } 
-  */
-  
+  if ($node->type === 'project') {
+    $node->field_teleconferences['und'] = array(
+      0 => array(
+        'view_id' => 'teleconferences:page',
+        'arguments' => $node->nid,
+      )
+    );
+  }  
   return;
 }
 
@@ -133,5 +74,14 @@ function mica_projects_field_attach_form($entity_type, $entity, &$form, &$form_s
   if ($entity_type == 'node' && $entity->type == 'project') {
     $form['field_teleconferences']['#attributes']['style'] = array('display:none;');
     $form['field_teleconferences']['#attributes']['style'] = array('display:none;');
+  }
+  elseif ($entity_type == 'node' && $entity->type == 'teleconference') {
+    // preselect project when specified in the url
+    if (isset($_GET['field_project'])) {
+      $project_id = $_GET['field_project'];
+      if (isset($form['field_project'][LANGUAGE_NONE]['#options'][$project_id])) {
+        $form['field_project'][LANGUAGE_NONE]['#value'] = $project_id;
+      }
+    }
   }
 }
