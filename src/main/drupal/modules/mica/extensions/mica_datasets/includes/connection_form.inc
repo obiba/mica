@@ -326,24 +326,25 @@ function _mica_datasets_studies_options(&$study_node_ids) {
 function _mica_datasets_get_study_ids($dataset_node_id) {
   $rval = array();
 
-  $q = db_select('field_data_mica_dataset', 'f');
-  $q->addField('f', 'entity_id');
-  $q->condition('f.mica_dataset_nid', $dataset_node_id,'=');
-  $q->condition('f.entity_type', 'node');
-  $q->condition('f.bundle', 'study');
-  $q->condition('f.deleted', 0);
-  $q->addTag('node_access');
+  // Get field information
+  $field = field_info_field('mica_dataset');
+  $query = new EntityFieldQuery;
+  $query->entityCondition('entity_type', 'node')
+  ->entityCondition('bundle', 'study')
+  ->fieldCondition($field, 'nid', $dataset_node_id);
+  
+  $entities = $query->execute();
 
-  $result = $q->execute();
-
-  while($record = $result->fetchAssoc()) {
-    $node = node_load($record['entity_id']);
-    // study is published and is updatable
-    if ($node->status == 1 && node_access('update', $node)) {
-      $rval[$record['entity_id']] = $node;
+  if (!empty($entities)) {
+    $nodes = node_load_multiple(array_keys($entities['node']));
+    foreach ($nodes as $node) {
+      // study is published and is updatable
+      if ($node->status == 1 && node_access('update', $node)) {
+        $rval[$node->nid] = $node;
+      }
     }
   }
-
+ 
   return $rval;
 }
 
@@ -361,7 +362,6 @@ function _mica_datasets_get_dataset_ids($study_node_id) {
   $q->condition('f.entity_type', 'node');
   $q->condition('f.bundle', 'study');
   $q->condition('f.deleted', 0);
-  $q->addTag('node_access');
 
   $result = $q->execute();
 
