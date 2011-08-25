@@ -173,3 +173,29 @@ function mica_data_access_reviewer_contact($user) {
   }
 }
 
+function mica_data_access_delete($node) {
+//TODO MICA-168
+//   if ($node->type === 'data_access_request') {
+//     if (isset($node->field_data_access_review['und'][0]['nid'])) {
+//       $nid_review_to_delete = $node->field_data_access_review['und'][0]['nid'];
+//       node_delete($nid_review_to_delete);
+//       drupal_set_message('Data Access Review ' . $nid_review_to_delete . ' has been deleted.');
+//     }
+//   }
+  
+//   if ($node->type === 'data_access_review') {
+//     $field = field_info_field('field_data_access_review');
+//     $query = new EntityFieldQuery;
+//     $query->entityCondition('entity_type', 'node')
+//           ->entityCondition('bundle', 'data_access_request')
+//           ->fieldCondition($field, 'nid', $node->nid);
+    
+//     $entity = $query->execute();
+//     $keys = array_keys($entity['node']);
+//     $nid_request_to_delete = $keys[0];
+//     node_delete($nid_request_to_delete);
+//     drupal_set_message('Data Access Request ' . $nid_request_to_delete . ' has been deleted.');
+//   }
+  
+}
+
