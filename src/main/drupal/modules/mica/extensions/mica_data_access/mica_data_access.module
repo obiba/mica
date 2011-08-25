@@ -174,28 +174,78 @@ function mica_data_access_reviewer_contact($user) {
 }
 
 function mica_data_access_delete($node) {
-//TODO MICA-168
-//   if ($node->type === 'data_access_request') {
-//     if (isset($node->field_data_access_review['und'][0]['nid'])) {
-//       $nid_review_to_delete = $node->field_data_access_review['und'][0]['nid'];
-//       node_delete($nid_review_to_delete);
-//       drupal_set_message('Data Access Review ' . $nid_review_to_delete . ' has been deleted.');
-//     }
-//   }
+  if ($node->type === 'data_access_request') {
+    if (isset($node->field_data_access_review['und'][0]['nid'])) {
+      $nid_review_to_delete = $node->field_data_access_review['und'][0]['nid'];
+      del(array($nid_review_to_delete));
+    }
+  } 
   
-//   if ($node->type === 'data_access_review') {
-//     $field = field_info_field('field_data_access_review');
-//     $query = new EntityFieldQuery;
-//     $query->entityCondition('entity_type', 'node')
-//           ->entityCondition('bundle', 'data_access_request')
-//           ->fieldCondition($field, 'nid', $node->nid);
+  if ($node->type === 'data_access_review') {
+    $field = field_info_field('field_data_access_review');
+    $query = new EntityFieldQuery;
+    $query->entityCondition('entity_type', 'node')
+          ->entityCondition('bundle', 'data_access_request')
+          ->fieldCondition($field, 'nid', $node->nid);
     
-//     $entity = $query->execute();
-//     $keys = array_keys($entity['node']);
-//     $nid_request_to_delete = $keys[0];
-//     node_delete($nid_request_to_delete);
-//     drupal_set_message('Data Access Request ' . $nid_request_to_delete . ' has been deleted.');
-//   }
+    $entity = $query->execute();
+    $keys = array_keys($entity['node']);
+    $nid_request_to_delete = $keys[0];
+    del(array($nid_request_to_delete));
+  }
   
+}
+/**
+ * Copy of node_delete_multiple from node.module
+ * BUT don't call node_invoke($node, 'delete') to avoid hook loop
+ *
+ * @param $nids
+ *   An array of node IDs.
+ */
+function del($nids) {
+	$transaction = db_transaction();
+	if (!empty($nids)) {
+		$nodes = node_load_multiple($nids, array());
+
+		try {
+			foreach ($nodes as $nid => $node) {
+				// Call the node-specific callback (if any):
+				//node_invoke($node, 'delete');
+				module_invoke_all('node_delete', $node);
+				module_invoke_all('entity_delete', $node, 'node');
+				field_attach_delete('node', $node);
+
+				// Remove this node from the search index if needed.
+				// This code is implemented in node module rather than in search module,
+				// because node module is implementing search module's API, not the other
+				// way around.
+				if (module_exists('search')) {
+					search_reindex($nid, 'node');
+				}
+			}
+
+			// Delete after calling hooks so that they can query node tables as needed.
+			db_delete('node')
+			->condition('nid', $nids, 'IN')
+			->execute();
+			db_delete('node_revision')
+			->condition('nid', $nids, 'IN')
+			->execute();
+			db_delete('history')
+			->condition('nid', $nids, 'IN')
+			->execute();
+			db_delete('node_access')
+			->condition('nid', $nids, 'IN')
+			->execute();
+		}
+		catch (Exception $e) {
+			$transaction->rollback();
+			watchdog_exception('node', $e);
+			throw $e;
+		}
+
+		// Clear the page and block and node_load_multiple caches.
+		entity_get_controller('node')->resetCache();
+	}
 }
 
