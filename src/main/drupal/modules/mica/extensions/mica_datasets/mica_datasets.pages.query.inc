@@ -98,6 +98,13 @@ function mica_datasets_dataset_queries_page($dataset_node) {
 //
 
 function mica_datasets_dataset_query_page($dataset_node, $query) {
+  // Include the CTools tools that we need.
+  ctools_include('ajax');
+  ctools_include('modal');
+  
+  // Add CTools' javascript to the page.
+  ctools_modal_add_js();
+  
   drupal_set_title(t('!title -- !query', array('!title' => $dataset_node->title, '!query' => $query->name)));
 
   $update_access = _mica_datasets_query_access($dataset_node, $query, 'update');
@@ -122,17 +129,15 @@ function mica_datasets_dataset_query_page($dataset_node, $query) {
         $row['operations'] = array(
         'data' => array(
             'data' => array(
-        array(
-              '#type' => 'link',
-              '#title' => t('Edit'),
-              '#href' => _mica_datasets_dataset_query_term_url($dataset_node, $query, $query_term, 'edit'),
-        ),
-        array(
-              '#type' => 'link',
-              '#title' => t('Delete'),
-              '#href' => _mica_datasets_dataset_query_term_url($dataset_node, $query, $query_term, 'delete'),
-              '#attributes' => array('style' => array('margin-left: 10px;')),
-        ),
+               array(
+                 '#markup' => ctools_modal_text_button(t('Edit'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query, $query_term, 'edit'), t('Edit !title', array('!title' => $query_term->toString()))),
+               ),
+               array(
+                 '#type' => 'link',
+                 '#title' => t('Delete'),
+                 '#href' => _mica_datasets_dataset_query_term_url($dataset_node, $query, $query_term, 'delete'),
+                 '#attributes' => array('style' => array('margin-left: 10px;')),
+               ),
         )));
       }
        
@@ -551,6 +556,44 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
 //
 // Query Term Form
 //
+
+function mica_datasets_dataset_query_term_edit_modal_page($js = NULL, $node, $query, $term) {
+  if ($js) {
+    ctools_include('ajax');
+    ctools_include('modal');
+    ctools_add_js('ajax-responder');
+    
+    $impl = $term->termImpl();
+    $form_state = array(
+      'ajax' => TRUE,
+      'title' => t('!title -- Edit !term in !query', array('!title' => $node->title, '!query' => $query->name, '!term' => $impl->getFieldName())),
+    );
+    $args = func_get_args();
+    // Remove $js from the arguments.
+    array_shift($args);
+    $form_state['build_info']['args'] = $args;
+    
+    $commands = ctools_modal_form_wrapper('mica_datasets_dataset_query_term_edit_form', $form_state);
+
+    // If cancelling or completed, return to the activity.
+    if (!empty($form_state['redirect'])) {
+      $commands = array();
+      $commands[] = ctools_modal_command_dismiss();
+      $commands[] = ctools_ajax_command_redirect($form_state['redirect']);
+    } 
+    elseif (!empty($form_state['cancel'])) {
+      $commands = array();
+      $commands[] = ctools_modal_command_dismiss();
+    }
+    
+    print ajax_render($commands);
+    exit;
+    
+  }
+  else {
+    return mica_datasets_dataset_query_term_edit_page($node, $query, $term);
+  }
+}
 
 function mica_datasets_dataset_query_term_edit_page($node, $query, $term) {
   $impl = $term->termImpl();
