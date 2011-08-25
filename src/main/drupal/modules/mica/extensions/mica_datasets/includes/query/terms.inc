@@ -146,8 +146,22 @@ abstract class AbstractTerm implements QueryTermInterface {
   }
 
   protected function getConnectors() {
-    $query = mica_dataset_query_load($this->qt->query_id);
-    return mica_dataset_connector_query_multiple($query->dataset_id, TRUE);
+    $connectors = array();
+    
+    $dataset_id = NULL;
+    if (!empty($this->qt->query_id)) {
+      $query = mica_dataset_query_load($this->qt->query_id);
+      $dataset_id = $query->dataset_id;
+    }
+    else if (!empty($this->qt->dataset_id)) {
+      $dataset_id = $this->qt->dataset_id;
+    }
+    
+    if (isset($dataset_id)) {
+      $connectors = mica_dataset_connector_query_multiple($dataset_id, TRUE);
+    }
+    
+    return $connectors;
   }
   
 
@@ -184,7 +198,7 @@ class CategoryTerm extends AbstractTerm {
   function view() {
     $variable = $this->getVariable();
 
-    $headers = array('Name');
+    $headers = array('Value');
     $stats = $this->stats();
     foreach($stats as $study_id => $stat) {
       $study = node_load($study_id);
@@ -210,9 +224,9 @@ class CategoryTerm extends AbstractTerm {
       '#options' => array('in' => 'in', 'notin' => 'not in'),
       '#default_value' => $this->isInverted() ? 'notin' : 'in',
     );
-
+    
     // One column for the category name and one per study
-    $headers = array('Name');
+    $headers = array('Value');
     $connectors = $this->getConnectors();
     foreach($connectors as $connector) {
       $study = node_load($connector->study_id);
@@ -237,7 +251,12 @@ class CategoryTerm extends AbstractTerm {
       $options['c_' . $category["value"]] = $row;
     }
 
-    $form['categories'] = array(
+    $form['valuecontainer']['fieldset'] = array(
+      '#type' => 'fieldset',
+      '#title' => !empty($connectors) ? 'Values and Statistics' : 'Values',
+    );
+    
+    $form['valuecontainer']['fieldset']['categories'] = array(
       '#type' => 'tableselect',
       '#header' => $headers, 
       '#options' => $options,
@@ -332,10 +351,6 @@ class RangeTerm extends AbstractTerm {
     $variable=$this->getVariable();
 
     $type=$variable->field_value_type['und'][0]['value'];
-    
-    $form['view'] = array(
-      '#markup' => $this->view()
-    );
 
     $operator=isset($form_state['values']['operator']) ?
     $form_state['values']['operator'] : NULL;
@@ -355,7 +370,7 @@ class RangeTerm extends AbstractTerm {
 
     $form['valuecontainer']['fieldset'] = array(
       '#type' => 'fieldset',
-      '#title' => 'Value',
+      '#title' => 'Values',
     );
 
     //TODO incomplete
@@ -431,6 +446,15 @@ class RangeTerm extends AbstractTerm {
     '#prefix' => '<span id="add_range">',
     '#suffix' => '</span>',
     );*/
+    
+    $form['view']['fieldset'] = array(
+      '#type' => 'fieldset',
+      '#title' => 'Statistics',
+    );
+    
+    $form['view']['fieldset']['stats'] = array(
+      '#markup' => $this->view()
+    );
 
     return $form;
   }

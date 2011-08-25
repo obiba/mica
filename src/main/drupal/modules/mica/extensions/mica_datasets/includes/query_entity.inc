@@ -132,6 +132,12 @@ class MicaDatasetQueryTerm extends Entity {
    * @var integer
    */
   public $depth = 0;
+  
+  /**
+   * A transient identifier for building in-memory query terms without having a query defined.
+   * @var integer
+   */
+  public $dataset_id = 0;
 
   /**
    * Constructor as a helper to the parent constructor.
