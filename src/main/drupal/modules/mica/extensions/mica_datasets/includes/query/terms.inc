@@ -26,7 +26,7 @@ interface QueryTermInterface {
    * Returns true when this term's condition should be inverted (not operator)
    */
   function isInverted();
-  
+
   /**
    * Returns an HTML block to display a query term
    */
@@ -36,6 +36,11 @@ interface QueryTermInterface {
    * Returns a form for editing this term
    */
   function form($form, &$form_state);
+
+  /**
+   * Handles form validation
+   */
+  function validate($form, &$form_state);
 
   /**
    * Handles form submit
@@ -140,14 +145,14 @@ abstract class AbstractTerm implements QueryTermInterface {
     }
     return $facets;
   }
-  
+
   protected function getVariable() {
     return node_load($this->qt->variable_id);
   }
 
   protected function getConnectors() {
     $connectors = array();
-    
+
     $dataset_id = NULL;
     if (!empty($this->qt->query_id)) {
       $query = mica_dataset_query_load($this->qt->query_id);
@@ -156,14 +161,14 @@ abstract class AbstractTerm implements QueryTermInterface {
     else if (!empty($this->qt->dataset_id)) {
       $dataset_id = $this->qt->dataset_id;
     }
-    
+
     if (isset($dataset_id)) {
       $connectors = mica_dataset_connector_query_multiple($dataset_id, TRUE);
     }
-    
+
     return $connectors;
   }
-  
+
 
 }
 
@@ -216,7 +221,7 @@ class CategoryTerm extends AbstractTerm {
     }
     return theme('table', array('header' => $headers, 'rows' => $rows, 'empty' => t('No studies available')));
   }
-  
+
   function form($form, &$form_state) {
     $form['inverted']=array(
       '#title' => t('Operator'), 
@@ -224,7 +229,7 @@ class CategoryTerm extends AbstractTerm {
       '#options' => array('in' => 'in', 'notin' => 'not in'),
       '#default_value' => $this->isInverted() ? 'notin' : 'in',
     );
-    
+
     // One column for the category name and one per study
     $headers = array('Value');
     $connectors = $this->getConnectors();
@@ -255,7 +260,7 @@ class CategoryTerm extends AbstractTerm {
       '#type' => 'fieldset',
       '#title' => !empty($connectors) ? 'Values and Statistics' : 'Values',
     );
-    
+
     $form['valuecontainer']['fieldset']['categories'] = array(
       '#type' => 'tableselect',
       '#header' => $headers, 
@@ -263,6 +268,10 @@ class CategoryTerm extends AbstractTerm {
       '#default_value' => $this->categoriesToForm($defaultValues),
     );
     return $form;
+  }
+
+  function validate($form, &$form_state) {
+
   }
 
   function submit($form, &$form_state) {
@@ -334,14 +343,14 @@ class RangeTerm extends AbstractTerm {
   function view() {
     $headers = array('Study', 'Min', 'Max', 'Mean', 'Std. Dev', 'Count');
     $rows = array();
-    $stats = $this->stats();   
+    $stats = $this->stats();
     foreach($stats as $study_id => $stat) {
       $study = node_load($study_id);
       $rows[] = array($study->title, $this->f($stat['min']), $this->f($stat['max']), $this->f($stat['mean']), $this->f($stat['std_deviation']), $stat['count']);
     }
     return theme('table', array('header' => $headers, 'rows' => $rows, 'empty' => t('No studies available')));
   }
-  
+
   function f($number) {
     // TODO: figure out how to specify significant digits instead of # of decimals
     return number_format($number, 3);
@@ -408,17 +417,17 @@ class RangeTerm extends AbstractTerm {
       '#states' => array(
         'visible' => array(
           ':input[name="exact-radio"]' => array('value' => 'exact'),
-        ),
+    ),
         'required' => array(
           ':input[name="exact-radio"]' => array('value' => 'exact'),
-        ),
-      ),
+    ),
+    ),
     );
 
     $sharedStates = array(
         'visible' => array(
           ':input[name="exact-radio"]' => array('value' => 'range'),
-        ),
+    ),
     );
 
     $form['valuecontainer']['fieldset']['min'] = array(
@@ -446,12 +455,12 @@ class RangeTerm extends AbstractTerm {
     '#prefix' => '<span id="add_range">',
     '#suffix' => '</span>',
     );*/
-    
+
     $form['view']['fieldset'] = array(
       '#type' => 'fieldset',
       '#title' => 'Statistics',
     );
-    
+
     $form['view']['fieldset']['stats'] = array(
       '#markup' => $this->view()
     );
@@ -459,9 +468,7 @@ class RangeTerm extends AbstractTerm {
     return $form;
   }
 
-  function submit($form, &$form_state) {
-    $inverted=$form_state['values']['inverted'];
-    $selection=NULL;
+  function validate($form, &$form_state) {
     if($form_state['values']['exact-radio'] === 'range') {
       $min=$form_state['values']['min'];
       $max=$form_state['values']['max'];
@@ -473,19 +480,29 @@ class RangeTerm extends AbstractTerm {
         form_set_error('min', t('Value for min must be numeric'));
       } else if(empty($max) == FALSE && is_numeric($max) == FALSE ) {
         form_set_error('max', t('Value for max must be numeric'));
-      } else {
-        $min = empty($min) ? NULL :$min;
-        $max = empty($max) ? NULL :$max;
-        $selection=$this->formToRanges(NULL, $min, $max);
       }
-    } else if($form_state['values']['exact-radio'] === 'exact'){
+    }
+    else if($form_state['values']['exact-radio'] === 'exact'){
       $value=$form_state['values']['value'];
       if(empty($value) || is_numeric($value) == FALSE) {
         form_set_error('value', t('Exact value is required and must be specified as a number'));
-      } else {
-        $value = empty($value) ? NULL :$value;
-        $selection=$this->formToRanges($value, NULL, NULL);
       }
+    }
+  }
+
+  function submit($form, &$form_state) {
+    $inverted=$form_state['values']['inverted'];
+    $selection=NULL;
+    if($form_state['values']['exact-radio'] === 'range') {
+      $min=$form_state['values']['min'];
+      $max=$form_state['values']['max'];
+      $min = empty($min) ? NULL :$min;
+      $max = empty($max) ? NULL :$max;
+      $selection=$this->formToRanges(NULL, $min, $max);
+    } else if($form_state['values']['exact-radio'] === 'exact'){
+      $value=$form_state['values']['value'];
+      $value = empty($value) ? NULL :$value;
+      $selection=$this->formToRanges($value, NULL, NULL);
     }
     $this->setInverted($inverted === 'notin');
     $this->setRange($selection);
@@ -528,13 +545,17 @@ class TodoTerm extends AbstractTerm {
   function __construct(MicaDatasetQueryTerm $qt) {
     parent::__construct('TodoTerm', $qt);
   }
-  
+
   function view() {
 
   }
-  
+
   function form($form, &$form_state) {
     return $form;
+  }
+
+  function validate($form, &$form_state) {
+
   }
 
   function submit($form, &$form_state) {
