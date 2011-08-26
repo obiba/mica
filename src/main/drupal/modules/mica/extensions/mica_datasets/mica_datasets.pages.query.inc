@@ -431,6 +431,34 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
 
   // Add CTools' javascript to the page.
   ctools_modal_add_js();
+  
+  // Create our own javascript that will be used to theme a modal.
+  $sample_style = array(
+    'ctools-sample-style' => array(
+      'modalSize' => array(
+        'type' => 'fixed',
+        'width' => 600,
+        'height' => 500,
+        'addWidth' => 20,
+        'addHeight' => 15,
+      ),
+      'modalOptions' => array(
+        'opacity' => .5,
+        'background-color' => '#000',
+      ),
+      'animation' => 'fadeIn',
+      'modalTheme' => 'CToolsSampleModal',
+      'throbber' => theme('image', array('path' => ctools_image_path('ajax-loader.gif', 'ctools_ajax_sample'), 'alt' => t('Loading...'), 'title' => t('Loading'))),
+    ),
+  );
+
+  drupal_add_js($sample_style, 'setting');
+
+  // Since we have our js, css and images in well-known named directories,
+  // CTools makes it easy for us to just use them without worrying about
+  // using drupal_get_path() and all that ugliness.
+  ctools_add_js('mica-modal', 'mica');
+  ctools_add_css('mica-modal', 'mica');
 
   drupal_set_title(t('!title -- !query', array('!title' => $dataset_node->title, '!query' => $query_node->name)));
 
@@ -447,7 +475,7 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
       if (_mica_datasets_query_term_access($dataset_node, $query_node, $term)) {
         $labels[] = $variable_link //
         . '<div>' //
-        . ctools_modal_text_button(t('Edit'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query_node, $term, 'edit'), t('Edit !title', array('!title' => $title))) //
+        . ctools_modal_text_button(t('Edit'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query_node, $term, 'edit'), t('Edit !title', array('!title' => $title)), 'ctools-modal-ctools-sample-style') //
         . '<span style="margin-left: 10px;">' //
         . ctools_modal_text_button(t('Delete'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query_node, $term, 'delete'), t('Delete !title', array('!title' => $title))) //
         . '</span></div>' ;

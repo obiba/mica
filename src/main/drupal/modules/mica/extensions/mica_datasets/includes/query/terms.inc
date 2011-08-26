@@ -459,6 +459,8 @@ class RangeTerm extends AbstractTerm {
     $form['view']['fieldset'] = array(
       '#type' => 'fieldset',
       '#title' => 'Statistics',
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
     );
 
     $form['view']['fieldset']['stats'] = array(

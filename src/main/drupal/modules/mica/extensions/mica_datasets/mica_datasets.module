@@ -148,17 +148,6 @@ function mica_datasets_menu() {
     'weight' => -10,
   );
   
-//  $items['node/%node/queries/%mica_dataset_query/term/%mica_dataset_query_term/edit'] = array(
-//      'title' => 'Edit',
-//      'access callback' => '_mica_datasets_query_term_access',
-//      'access arguments' => array(1,3,5,'update'),
-//      'page callback' => 'mica_datasets_dataset_query_term_edit_page',
-//      'page arguments' => array(1,3,5),
-//      'weight' => 1,
-//      'type' => MENU_LOCAL_TASK,
-//      'file' => 'mica_datasets.pages.query.inc',
-//  );
-  
   $items['mica/%ctools_js/node/%node/queries/%mica_dataset_query/term/%mica_dataset_query_term/edit'] = array(
       'title' => 'Edit',
       'access callback' => '_mica_datasets_query_term_access',
@@ -179,18 +168,6 @@ function mica_datasets_menu() {
       'file' => 'mica_datasets.pages.query.inc',
   );
   
-//  $items['node/%node/queries/%mica_dataset_query/term/%mica_dataset_query_term/delete'] = array(
-//      'title' => 'Delete',
-//      'access callback' => '_mica_datasets_query_term_access',
-//      'access arguments' => array(1,3,5,'update'),
-//      'page callback' => 'mica_datasets_dataset_query_term_delete_page',
-//      'page arguments' => array(1,3,5),
-//      'weight' => 2,
-//      'type' => MENU_LOCAL_TASK,
-//      'context' => MENU_CONTEXT_INLINE, // Removes it from the node's page
-//      'file' => 'mica_datasets.pages.query.inc',
-//  );
-
   $items['variables/autocomplete/%'] = array(
       'access callback' => TRUE,
       'page callback' => 'variables_autocomplete',
