@@ -457,7 +457,7 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
     foreach($terms as $term) {
       $impl = $term->termImpl();
       $title = $impl->toString();
-      $variable_link = l($title, 'node/' . $term->variable_id);
+      $variable_link = l($title, 'node/' . $term->variable_id, array('attributes' => array('class' => array('emphasis'))));
 
       if (_mica_datasets_query_term_access($dataset_node, $query_node, $term)) {
         $labels[] = $variable_link //

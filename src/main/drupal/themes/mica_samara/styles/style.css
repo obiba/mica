@@ -1782,6 +1782,8 @@ img.right, img[align="right"] {
   padding: 1px 3px;
   font-size: 0.8em;
   color: #fff;
+  text-decoration: none;
+  border: none;
 }
 
 
@@ -1999,4 +2001,8 @@ img.right, img[align="right"] {
 
 .hidden_title h2[property="dc:title"]{
   display:none;
+}
+
+.emphasis {
+  font-weight: bold;
 }
