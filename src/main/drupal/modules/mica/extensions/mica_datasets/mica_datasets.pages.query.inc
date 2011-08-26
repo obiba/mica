@@ -60,7 +60,7 @@ function mica_datasets_dataset_queries_page($dataset_node) {
 
         $option['actions']['data'][] = array(
           '#type' => 'link',
-          '#title' => t('Run'),
+          '#title' => t('View'),
           '#href' => _mica_datasets_dataset_query_url($dataset_node, $query, 'view'),
           '#attributes' => array('style' => array('margin-right: 10px;')),
         );
