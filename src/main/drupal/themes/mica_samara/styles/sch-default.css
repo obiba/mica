@@ -64,18 +64,15 @@ li a.active {
 legend {
   background-color: #CCCCCC;
 }
-html.js fieldset.collapsible legend a {
+html.js fieldset.collapsible legend a,
+.fieldset-legend {
   color: #2e2e2e;
   font-weight: bold;
 }
-
 /* Link hovered (orange) */
 a:hover,
-a:focus,
 a.active:hover,
-a.active:focus,
-li a.active:hover,
-li a.active:focus {
+li a.active:hover {
   color: #035c94;
   border-bottom-style: solid;
   border-bottom-color:#4A6C81;
@@ -297,4 +294,12 @@ h2 a:hover{
 .node .field.field-label-inline {
   margin-top: -3px;
   margin-bottom: -3px;
+}
+
+/* 
+ * Modals
+ */
+.modal-header {
+   font-family: "Nunito", arial, sans-serif;
+   text-shadow: 0 1px 1px black;
 }
