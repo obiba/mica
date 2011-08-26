@@ -64,7 +64,7 @@ function mica_datasets_dataset_queries_page($dataset_node) {
           '#href' => _mica_datasets_dataset_query_url($dataset_node, $query, 'view'),
           '#attributes' => array('style' => array('margin-right: 10px;')),
         );
-        
+
         // author of the query or user with update dataset permission can edit/delete a query
         $update_access = _mica_datasets_query_access($dataset_node, $query, 'update');
         if ($update_access) {
@@ -392,7 +392,7 @@ function mica_datasets_dataset_query_delete_form($form, &$form_state) {
     '#type' => 'submit',
     '#value' => t('Delete'),
   );
-  
+
   $form['actions']['cancel'] = array(
     '#type' => 'link',
     '#title' => t('Cancel'),
@@ -428,10 +428,10 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
   // Include the CTools tools that we need.
   ctools_include('ajax');
   ctools_include('modal');
-  
+
   // Add CTools' javascript to the page.
   ctools_modal_add_js();
-  
+
   drupal_set_title(t('!title -- !query', array('!title' => $dataset_node->title, '!query' => $query_node->name)));
 
   $mica_dataset_connectors = mica_dataset_connector_query_multiple($dataset_node->nid);
@@ -443,7 +443,7 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
       $impl = $term->termImpl();
       $title = $impl->toString();
       $variable_link = l($title, 'node/' . $term->variable_id);
-      
+
       if (_mica_datasets_query_term_access($dataset_node, $query_node, $term)) {
         $labels[] = $variable_link //
         . '<div>' //
@@ -509,20 +509,23 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
 // Query Term Form
 //
 
+function _mica_datasets_modal_prepare() {
+  ctools_include('ajax');
+  ctools_include('modal');
+  ctools_add_js('ajax-responder');
+}
+
 /**
- * Page to display the query term form in a modal dialog.
+ * Page to display the edit query term form in a modal dialog.
  * @param $js
  * @param $node
  * @param $query
  * @param $term
- * @param $destination
  */
 function mica_datasets_dataset_query_term_edit_modal_page($js = NULL, $node, $query, $term) {
   if ($js) {
-    ctools_include('ajax');
-    ctools_include('modal');
-    ctools_add_js('ajax-responder');
-    
+    _mica_datasets_modal_prepare();
+
     $impl = $term->termImpl();
     $form_state = array(
       'ajax' => TRUE,
@@ -532,20 +535,22 @@ function mica_datasets_dataset_query_term_edit_modal_page($js = NULL, $node, $qu
     // Remove $js from the arguments.
     array_shift($args);
     $form_state['build_info']['args'] = $args;
-    
+
     $commands = ctools_modal_form_wrapper('mica_datasets_dataset_query_term_edit_form', $form_state);
 
-    // If cancelling or completed, return to the activity.
-    if (!empty($form_state['redirect'])) {
+    // If cancelling or saved, return to the activity.
+    if (!empty($form_state['save'])) {
       $commands = array();
       $commands[] = ctools_modal_command_dismiss();
-      $commands[] = ctools_ajax_command_redirect($form_state['redirect']);
-    } 
+      if (!empty($form_state['redirect'])) {
+        $commands[] = ctools_ajax_command_redirect($form_state['redirect']);
+      }
+    }
     elseif (!empty($form_state['cancel'])) {
       $commands = array();
       $commands[] = ctools_modal_command_dismiss();
     }
-    
+
     print ajax_render($commands);
     exit;
   }
@@ -556,7 +561,7 @@ function mica_datasets_dataset_query_term_edit_modal_page($js = NULL, $node, $qu
 }
 
 /**
- * Page to display the quey term form.
+ * Page to display the edit query term form.
  * @param $node
  * @param $query
  * @param $term
@@ -571,13 +576,13 @@ function mica_datasets_dataset_query_term_edit_form($form, &$form_state) {
   $form = array();
 
   $dataset_node = $form_state['build_info']['args'][0];
-  $query_node = $form_state['build_info']['args'][1];
-  $term_entity = $form_state['build_info']['args'][2];
-  $variable = node_load($term_entity->variable_id);
+  $query = $form_state['build_info']['args'][1];
+  $term = $form_state['build_info']['args'][2];
+  $variable = node_load($term->variable_id);
 
   $form=array();
 
-  $impl = $term_entity->termImpl();
+  $impl = $term->termImpl();
   $termForm = $impl->form($form, $form_state);
   $form[] = $termForm;
 
@@ -587,10 +592,11 @@ function mica_datasets_dataset_query_term_edit_form($form, &$form_state) {
   );
 
   $form['actions']['cancel'] = array(
-    '#type' => 'submit',
-    '#value' => t('Cancel'),
+    '#type' => 'link',
+    '#title' => t('Cancel'),
+    '#href' => 'node/'.$dataset_node->nid.'/queries/'.$query->id.'/view',
   );
-  
+
   return $form;
 }
 
@@ -614,6 +620,10 @@ function mica_datasets_dataset_query_term_edit_form_submit($form, &$form_state) 
       case 'save':
         $term_entity->save();
         drupal_set_message(t('Query term options saved.'));
+        $form_state['save'] = TRUE;
+        break;
+      case 'cancel':
+        $form_state['cancel'] = TRUE;
         break;
     }
     $form_state['redirect'] = _mica_datasets_dataset_query_url($dataset_node, $query_entity);
@@ -645,6 +655,57 @@ function mica_datasets_dataset_query_term_page($dataset_node, $query, $term) {
 // Delete Query Term
 //
 
+/**
+ * Page to display the delete query term form in a modal dialog.
+ * @param $js
+ * @param $node
+ * @param $query
+ * @param $term
+ */
+function mica_datasets_dataset_query_term_delete_modal_page($js = NULL, $node, $query, $term) {
+  if ($js) {
+    _mica_datasets_modal_prepare();
+
+    $impl = $term->termImpl();
+    $form_state = array(
+      'ajax' => TRUE,
+      'title' => t('!title -- Delete !term from !query', array('!title' => $node->title, '!query' => $query->name, '!term' => $impl->getFieldName())),
+    );
+    $args = func_get_args();
+    // Remove $js from the arguments.
+    array_shift($args);
+    $form_state['build_info']['args'] = $args;
+
+    $commands = ctools_modal_form_wrapper('mica_datasets_dataset_query_term_delete_form', $form_state);
+
+    // If cancelling or saved, return to the activity.
+    if (!empty($form_state['delete'])) {
+      $commands = array();
+      $commands[] = ctools_modal_command_dismiss();
+      if (!empty($form_state['redirect'])) {
+        $commands[] = ctools_ajax_command_redirect($form_state['redirect']);
+      }
+    }
+    elseif (!empty($form_state['cancel'])) {
+      $commands = array();
+      $commands[] = ctools_modal_command_dismiss();
+    }
+
+    print ajax_render($commands);
+    exit;
+  }
+  else {
+    // fallback to plain page
+    return mica_datasets_dataset_query_term_delete_page($node, $query, $term);
+  }
+}
+
+/**
+ * Page to display the delete query term form.
+ * @param $dataset_node
+ * @param $query
+ * @param $term
+ */
 function mica_datasets_dataset_query_term_delete_page($dataset_node, $query, $term) {
   drupal_set_title(t('Are you sure you want to delete query term <em>!term</em>?', array('!term' => $term->toString())), PASS_THROUGH);
 
@@ -666,7 +727,7 @@ function mica_datasets_dataset_query_term_delete_form($form, &$form_state) {
     '#attributes' => array('class' => array('form-actions')),
   );
 
-  $form['actions']['submit'] = array(
+  $form['actions']['delete'] = array(
     '#type' => 'submit',
     '#value' => t('Delete'),
   );
@@ -687,7 +748,8 @@ function mica_datasets_dataset_query_term_delete_form_submit($form, &$form_state
 
   // delete term
   $term->delete();
-
+  
+  $form_state['delete'] = TRUE;
   $form_state['redirect'] = _mica_datasets_dataset_query_url($dataset_node, $query);
 }
 
