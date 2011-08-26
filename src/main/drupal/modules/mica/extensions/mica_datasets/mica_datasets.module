@@ -249,6 +249,23 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
       );  
     }
   } 
+  elseif ($root_path == 'node/%') {
+  	if (node_access('view', 'dataset')) {
+  		$node = node_load($router_item['page_arguments'][0]->nid);
+  		if ($node != NULL && $node->type == 'dataset') {
+  			$name = t('Participant Variables');//node_type_load('participant_variable');
+  			$href = url('participant-variable-search/' . $router_item['page_arguments'][0]->nid);
+  			$links['view-participant-variable'] = array(
+  			'#weight' => -10,
+            '#theme' => 'menu_local_action',
+            '#link' => array(
+              'title' => t('<a href="@url">View !name</a>', array('!name' => $name, '@url' => $href)),
+              'localized_options' => array('html' => TRUE),
+  			),
+  			);
+  		}
+  	}
+  }
   
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
@@ -1020,4 +1037,33 @@ function mica_dataset_private_file_absolute_path($reference) {
     }
   }
   return $reference;
+}
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function mica_datasets_node_view_alter(&$build) {
+  
+  if ($build['#view_mode'] == 'full' && $build['#bundle'] == 'participant_variable') {
+    $values = array();
+    $values['variable_id'] = $build['#node']->nid;
+    $values['dataset_id'] = $build['#node']->field_dataset['und']['0']['nid'];
+    $values['options'] = array(
+          'type' => AbstractTerm::typeFor(node_load($build['#node']->nid))
+    );
+    $term = new MicaDatasetQueryTerm($values);
+
+ 
+    $build['statistics'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Statistics'),
+      '#weight' => 10,
+      '#collapsible' => TRUE,
+      '#collapsed' => FALSE,
+    );
+    
+    $build['statistics']['table'] = array(
+      '#markup' => $term->termImpl()->view(),
+    );
+  }
 }
