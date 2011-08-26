@@ -425,34 +425,21 @@ function mica_datasets_dataset_query_delete_form_submit($form, &$form_state) {
 //
 
 function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
-  // Include the CTools tools that we need.
-  ctools_include('ajax');
-  ctools_include('modal');
 
-  // Add CTools' javascript to the page.
-  ctools_modal_add_js();
-  
-  // Create our own javascript that will be used to theme a modal.
-  $sample_style = array(
-    'ctools-sample-style' => array(
-      'modalSize' => array(
-        'type' => 'fixed',
+
+  mica_modal_prepare(array(
+    array(
+      'name' => 'edit-style',
         'width' => 600,
         'height' => 500,
-        'addWidth' => 20,
-        'addHeight' => 15,
-      ),
-      'modalOptions' => array(
-        'opacity' => .5,
-        'background-color' => '#000',
-      ),
-      'animation' => 'fadeIn',
-      'modalTheme' => 'CToolsSampleModal',
-      'throbber' => theme('image', array('path' => ctools_image_path('ajax-loader.gif', 'ctools_ajax_sample'), 'alt' => t('Loading...'), 'title' => t('Loading'))),
     ),
-  );
-
-  drupal_add_js($sample_style, 'setting');
+    array(
+      'name' => 'delete-style',
+        'width' => 400,
+        'height' => 150,
+    ),
+   
+  ));
 
   // Since we have our js, css and images in well-known named directories,
   // CTools makes it easy for us to just use them without worrying about
@@ -475,9 +462,9 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
       if (_mica_datasets_query_term_access($dataset_node, $query_node, $term)) {
         $labels[] = $variable_link //
         . '<div>' //
-        . ctools_modal_text_button(t('Edit'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query_node, $term, 'edit'), t('Edit !title', array('!title' => $title)), 'ctools-modal-ctools-sample-style') //
+        . ctools_modal_text_button(t('Edit'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query_node, $term, 'edit'), t('Edit !title', array('!title' => $title)), 'ctools-modal-edit-style') //
         . '<span style="margin-left: 10px;">' //
-        . ctools_modal_text_button(t('Delete'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query_node, $term, 'delete'), t('Delete !title', array('!title' => $title))) //
+        . ctools_modal_text_button(t('Delete'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query_node, $term, 'delete'), t('Delete !title', array('!title' => $title)), 'ctools-modal-delete-style') //
         . '</span></div>' ;
       }
       else {
@@ -537,12 +524,6 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
 // Query Term Form
 //
 
-function _mica_datasets_modal_prepare() {
-  ctools_include('ajax');
-  ctools_include('modal');
-  ctools_add_js('ajax-responder');
-}
-
 /**
  * Page to display the edit query term form in a modal dialog.
  * @param $js
@@ -552,12 +533,12 @@ function _mica_datasets_modal_prepare() {
  */
 function mica_datasets_dataset_query_term_edit_modal_page($js = NULL, $node, $query, $term) {
   if ($js) {
-    _mica_datasets_modal_prepare();
+    mica_modal_form_prepare();
 
     $impl = $term->termImpl();
     $form_state = array(
       'ajax' => TRUE,
-      'title' => t('!title -- Edit !term in !query', array('!title' => $node->title, '!query' => $query->name, '!term' => $impl->getFieldName())),
+      'title' => t('Edit !term', array('!term' => $impl->getFieldName())),
     );
     $args = func_get_args();
     // Remove $js from the arguments.
@@ -692,12 +673,12 @@ function mica_datasets_dataset_query_term_page($dataset_node, $query, $term) {
  */
 function mica_datasets_dataset_query_term_delete_modal_page($js = NULL, $node, $query, $term) {
   if ($js) {
-    _mica_datasets_modal_prepare();
+    mica_modal_form_prepare();
 
     $impl = $term->termImpl();
     $form_state = array(
       'ajax' => TRUE,
-      'title' => t('!title -- Delete !term from !query', array('!title' => $node->title, '!query' => $query->name, '!term' => $impl->getFieldName())),
+      'title' => t('Delete !term', array('!term' => $impl->getFieldName())),
     );
     $args = func_get_args();
     // Remove $js from the arguments.
@@ -776,7 +757,7 @@ function mica_datasets_dataset_query_term_delete_form_submit($form, &$form_state
 
   // delete term
   $term->delete();
-  
+
   $form_state['delete'] = TRUE;
   $form_state['redirect'] = _mica_datasets_dataset_query_url($dataset_node, $query);
 }

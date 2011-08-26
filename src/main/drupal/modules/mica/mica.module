@@ -166,7 +166,7 @@ function mica_insert(&$node) {
  * Implements hook_node_update().
  */
 function mica_node_update($node) {
-  
+
   if ($node->type === 'field_description') {
     module_load_include('inc', 'mica', 'includes/search');
     _mica_update_index_for_field_description($node);
@@ -246,7 +246,7 @@ function mica_block_info() {
     'weight' => '10',
     'cache' => DRUPAL_NO_CACHE,
   );
-  
+
   return $blocks;
 }
 
@@ -327,5 +327,51 @@ function mica_feeds_plugins() {
   );
 
   return $info;
+}
+
+//
+// Modal helper functions
+//
+
+/**
+ * Declare styles for modal windows.
+ * @param $styles array of styles: name, width, height
+ */
+function mica_modal_prepare($styles) {
+  // Include the CTools tools that we need.
+  ctools_include('ajax');
+  ctools_include('modal');
+
+  // Add CTools' javascript to the page.
+  ctools_modal_add_js();
+  
+  $style_settings = array();
+  
+  // Create our own javascript that will be used to theme a modal.
+  foreach ($styles as $style) {
+    $settings = array(
+      'modalSize' => array(
+        'type' => 'fixed',
+        'width' => $style['width'],
+        'height' => $style['height'],
+        'addWidth' => 20,
+        'addHeight' => 15,
+    ),
+      'modalOptions' => array(
+        'opacity' => .5,
+        'background-color' => '#000',
+    ),
+      'animation' => 'fadeIn',
+      'modalTheme' => 'MicaModal',
+    );
+    $style_settings[$style['name']] = $settings;
+  }
+  drupal_add_js($style_settings, 'setting');
+}
+
+function mica_modal_form_prepare() {
+  ctools_include('ajax');
+  ctools_include('modal');
+  ctools_add_js('ajax-responder');
 }
 
