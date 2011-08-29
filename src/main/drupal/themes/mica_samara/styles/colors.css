@@ -115,6 +115,13 @@ a {
 /* Tab */
 .tabs ul.tabs li a {
   background-color: #f5f4f3;
+  color: #BBBBBB;
+}
+.tabs ul.tabs li a:hover {
+  color: #666666;
+}
+.tabs ul.tabs li.active a {
+  color: #2E2E2E;
 }
 ul.vertical-tabs-list li a {
   background-color: #f5f4f3;

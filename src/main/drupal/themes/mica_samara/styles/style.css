@@ -1180,23 +1180,28 @@ body.overlay-open div.add-or-remove-shortcuts {
 }
 .tabs ul.tabs {
   margin: 5px 0 8px 0;
-  padding: 0;
-  border: none;
+  /*padding: 0;
+  border: none;*/
   white-space: normal;
+  border-bottom: 1px solid #C4C4C4;
 }
 .tabs ul.tabs li {
   display: inline-block;
   padding: 0;
 }
 .tabs ul.tabs li a {
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -khtml-border-radius: 3px;
-  border-radius: 3px;
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  -khtml-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
   display: block;
 }
 .tabs ul.tabs li.active a {
   background-color: #fff;
+}
+.tabs ul.tabs.primary li.active a {
+  border-bottom: 1px solid #FFFFFF;
+  margin-bottom: -1px;
 }
 .tabs ul.tabs li a:hover,
 .tabs ul.tabs li a:active,
@@ -1206,11 +1211,12 @@ body.overlay-open div.add-or-remove-shortcuts {
   border-color: #666;
 }
 .tabs ul.primary li {
-  margin: 3px 3px 3px 0;
+  margin: 3px 3px 0 0;
 }
-.tabs ul.primary li a {
+.tabs ul.tabs.primary li a {
   padding: 7px 15px;
   margin: 0;
+  border-bottom: none;
 }
 .tabs ul.secondary {
   margin: 2px 0 6px;
