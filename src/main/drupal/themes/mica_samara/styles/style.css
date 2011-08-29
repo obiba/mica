@@ -2004,6 +2004,10 @@ img.right, img[align="right"] {
 .views-exposed-widgets {
   margin-bottom: 1em;
 }
+.view-content caption {
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
 
 /* the slider image is too large */
 .ui-slider {
