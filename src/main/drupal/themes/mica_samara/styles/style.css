@@ -2003,6 +2003,6 @@ img.right, img[align="right"] {
   display:none;
 }
 
-.emphasis {
+th .highlight {
   font-weight: bold;
 }

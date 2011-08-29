@@ -456,7 +456,7 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
       $impl = $term->termImpl();
       $title = $impl->toString();
       $variable = node_load($term->variable_id);
-      $variable_link = ctools_modal_text_button($title, 'mica/nojs/node/' . $variable->nid, t('View !title', array('!title' => $variable->title)), 'ctools-modal-node-style');
+      $variable_link = ctools_modal_text_button($title, 'mica/nojs/node/' . $variable->nid, t('View !title', array('!title' => $variable->title)), 'ctools-modal-node-style highlight');
 
       if (_mica_datasets_query_term_access($dataset_node, $query_node, $term)) {
         $labels[] = $variable_link //
