@@ -1998,6 +1998,12 @@ img.right, img[align="right"] {
 .views-row.views-row-last {
   border-bottom: 0px;
 }
+.views-exposed-widget div {
+  display: inline-block;
+}
+.views-exposed-widgets {
+  margin-bottom: 1em;
+}
 
 /* the slider image is too large */
 .ui-slider {
