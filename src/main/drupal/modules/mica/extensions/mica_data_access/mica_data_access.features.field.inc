@@ -18,21 +18,19 @@ function mica_data_access_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_daco',
-      'foreign keys' => array(
-        'uid' => array(
-          'columns' => array(
-            'uid' => 'uid',
-          ),
-          'table' => 'users',
-        ),
-      ),
+      'foreign keys' => array(),
       'indexes' => array(
-        'uid' => array(
-          0 => 'uid',
+        'value' => array(
+          0 => 'value',
         ),
       ),
-      'module' => 'user_reference',
+      'module' => 'list',
       'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+        'allowed_values_function' => '',
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
@@ -45,37 +43,26 @@ function mica_data_access_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
-        'referenceable_roles' => array(
-          2 => 0,
-          3 => 0,
-          4 => '4',
-          5 => 0,
-          6 => 0,
-        ),
-        'referenceable_status' => array(
-          0 => 0,
-          1 => 0,
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
       ),
-      'translatable' => '1',
-      'type' => 'user_reference',
+      'translatable' => '0',
+      'type' => 'list_boolean',
     ),
     'field_instance' => array(
       'bundle' => 'contact',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
+          'module' => 'list',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '4',
+          'type' => 'list_default',
+          'weight' => 4,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -93,13 +80,11 @@ function mica_data_access_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'user_reference',
+        'module' => 'options',
         'settings' => array(
-          'autocomplete_match' => 'contains',
-          'autocomplete_path' => 'user_reference/autocomplete',
-          'size' => '60',
+          'display_label' => 1,
         ),
-        'type' => 'user_reference_autocomplete',
+        'type' => 'options_onoff',
         'weight' => '6',
       ),
     ),

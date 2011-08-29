@@ -143,11 +143,13 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'contact' => 'contact',
   );
-  /* Filter criterion: Fields: Data Access Committee member (field_daco) - uid */
-  $handler->display->display_options['filters']['field_daco_uid']['id'] = 'field_daco_uid';
-  $handler->display->display_options['filters']['field_daco_uid']['table'] = 'field_data_field_daco';
-  $handler->display->display_options['filters']['field_daco_uid']['field'] = 'field_daco_uid';
-  $handler->display->display_options['filters']['field_daco_uid']['operator'] = 'not empty';
+  /* Filter criterion: Fields: Data Access Committee member (field_daco) */
+  $handler->display->display_options['filters']['field_daco_value']['id'] = 'field_daco_value';
+  $handler->display->display_options['filters']['field_daco_value']['table'] = 'field_data_field_daco';
+  $handler->display->display_options['filters']['field_daco_value']['field'] = 'field_daco_value';
+  $handler->display->display_options['filters']['field_daco_value']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

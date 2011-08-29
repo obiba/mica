@@ -31,10 +31,9 @@ function mica_demo_install() {
     'status' => 1,
     'roles' => array(
       '6' => 'study administrator',
-      '4' => 'data access committee member'
     ),
   );
-  user_save(null, $user);
+  user_save(null, $user);  
   
   $user = array(
     'name' => 'jholmen',
@@ -44,7 +43,6 @@ function mica_demo_install() {
     'status' => 1,
     'roles' => array(
       '6' => 'study administrator',
-      '4' => 'data access committee member'
     ),
   );
   user_save(null, $user);
@@ -57,7 +55,6 @@ function mica_demo_install() {
     'status' => 1,
     'roles' => array(
       '6' => 'study administrator',
-      '4' => 'data access committee member'
     ),
   );
   user_save(null, $user);

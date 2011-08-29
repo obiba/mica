@@ -10,9 +10,9 @@
 function mica_data_access_user_default_roles() {
   $roles = array();
 
-  // Exported role: data access committee member
-  $roles['data access committee member'] = array(
-    'name' => 'data access committee member',
+  // Exported role: data access committee officer
+  $roles['data access committee officer'] = array(
+    'name' => 'data access committee officer',
     'weight' => '5',
   );
 
