@@ -1,14 +1,14 @@
 div.mica-modal-content {
-	background:none;
-	border:0;
-	color:#000000;
-	margin:0;
-	padding:0;
-	text-align:left;
+  background:none;
+  border:0;
+  color:#000000;
+  margin:0;
+  padding:0;
+  text-align:left;
 }
 div.mica-modal-content .modal-scroll {
-	overflow:hidden;
-	overflow-y:auto;
+  overflow:hidden;
+  overflow-y:auto;
   border-left: solid 1px #bbb;
   border-right: solid 1px #bbb;
   border-bottom: solid 1px #bbb;
@@ -82,15 +82,15 @@ div.mica-modal-content .popups-title a.close {
   border-bottom: none;
 }
 div.mica-modal-content .popups-close {
-	font-size:120%;
-	float:right;
-	text-align:right;
+  font-size:120%;
+  float:right;
+  text-align:right;
 }
 div.mica-modal-content .modal-loading-wrapper {
-	width:220px;
-	height:19px;
-	margin:0 auto;
-	margin-top:2%;
+  width:220px;
+  height:19px;
+  margin:0 auto;
+  margin-top:2%;
 }
 
 div.mica-modal-content .modal-content .modal-throbber-wrapper img {
@@ -98,6 +98,10 @@ div.mica-modal-content .modal-content .modal-throbber-wrapper img {
 }
 
 div.ctools-modal-content.mica-modal-content .form-item label {
-	float: none;
-	width: 100%;
+  float: none;
+  width: 100%;
+}
+div.ctools-modal-content.mica-modal-content .resizable-textarea {
+  margin-left: 0;
+  margin-right: 0;
 }

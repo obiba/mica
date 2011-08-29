@@ -33,6 +33,20 @@ function mica_datasets_dataset_studies_edit_page($node) {
   return drupal_get_form('mica_datasets_dataset_studies_form', $node);
 }
 
+function mica_datasets_dataset_connection_modal_page($js = NULL, $connection_entity, $dataset_node, $study_node) {
+  if ($js) {
+    $title = t('!dataset -- !study', array(
+      '!dataset' => $dataset_node->title, 
+      '!study' => $study_node->title));
+    
+    mica_modal_form_render($title, 'mica_datasets_dataset_connection_form', $connection_entity, $dataset_node, $study_node);
+  }
+  else {
+    // fallback to plain page
+    return mica_datasets_dataset_connection_page($connection_entity, $dataset_node, $study_node);
+  }
+}
+
 /**
  * Display form from CRUD a dataset connection entity.
  * @param $connection_id
@@ -170,6 +184,14 @@ function _feeds_source_status($source) {
  * @param $form_state
  */
 function mica_datasets_dataset_studies_form($form, &$form_state) {
+  mica_modal_prepare(array(
+  array(
+      'name' => 'edit-style',
+      'width' => 700,
+      'height' => 650,
+  ),
+  ));
+
   $dataset_node = _mica_datasets_get_node_form_arg($form_state);
   $dataset_node_id = $dataset_node->nid;
 
@@ -222,7 +244,14 @@ function mica_datasets_dataset_studies_form_submit($form, &$form_state) {
  * @param $form_state
  */
 function mica_datasets_study_datasets_form($form, &$form_state) {
-  //module_load_include('inc', 'mica_datasets', 'includes/connection_form');
+  mica_modal_prepare(array(
+  array(
+      'name' => 'edit-style',
+      'width' => 700,
+      'height' => 650,
+  ),
+  ));
+  
   $study_node = _mica_datasets_get_node_form_arg($form_state);
   $study_node_id = $study_node->nid;
 
@@ -338,11 +367,6 @@ function mica_datasets_dataset_connection_form($form, &$form_state, $connection_
     '#value' => t('Save'),
   );
 
-  $form['delete'] = array(
-    '#type' => 'submit',
-    '#value' => t('Delete'),
-  );
-
   $form['dataset-link'] = array(
     '#type' => 'link',
     '#title' => $dataset_node->title,
@@ -394,9 +418,6 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
   $connection_type = $form_state['values'][MICA_CONNECTION_TYPE];
 
   switch ($form_state['triggering_element']['#value']) {
-    case t('Delete'):
-      _mica_datasets_dataset_connection_delete($study_node, $dataset_node->nid);
-      break;
     case t('Save'):
       $options = _mica_datasets_connection_options_submit($form, $form_state, $connection_type);
 
@@ -428,6 +449,7 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
           drupal_set_message(t('Unable to save connection: !name', array('!name' => $connector->name)), 'error');
         }
       }
+      $form_state['complete'] = TRUE;
       break;
   }
 

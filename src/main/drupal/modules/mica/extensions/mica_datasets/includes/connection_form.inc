@@ -87,6 +87,8 @@ function _mica_datasets_connection_data_node(&$node) {
  */
 function _mica_datasets_add_connection_option(&$options, &$dataset_node, &$study_node, &$parent_node) {
   $data = _mica_datasets_connection_data($dataset_node, $study_node, $parent_node);
+  $href = 'node/'.$data['connector'][MICA_DATASET_ID].'/study/' . $data['connector'][MICA_STUDY_ID] . '/connector/' . (($data['connector']['id'] != '0') ? ($data['connector']['id'] . '/edit') : 'add');
+  
   $options[$data['child']['id']] = array(
       'child' => array(
         'data' => array(
@@ -98,10 +100,8 @@ function _mica_datasets_add_connection_option(&$options, &$dataset_node, &$study
       'description' => $data['connector']['description'],
       'actions' => array(
         'data' => array(
-          array(
-          '#type' => 'link',
-          '#title' => 'Edit',
-          '#href' => 'node/'.$data['connector'][MICA_DATASET_ID].'/study/' . $data['connector'][MICA_STUDY_ID] . '/connector/' . (($data['connector']['id'] != '0') ? ($data['connector']['id'] . '/edit') : 'add'),
+          array(          
+          '#markup' => ctools_modal_text_button(t('Edit'), 'mica/nojs/' . $href, t('Edit study connection options'), 'ctools-modal-edit-style'),
           ),
        ),
   ),
