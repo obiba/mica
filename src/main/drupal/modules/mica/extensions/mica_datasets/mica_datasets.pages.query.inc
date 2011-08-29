@@ -489,15 +489,7 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
       $row[] = array('data'=>$result['_matched'], 'class'=>array('active'));
       $rows[] = array('data'=> $row);
     } catch(Exception $e) {
-      if($e->getCode() == 401) {
-        drupal_set_message(t("Study %study: Authentication failed (401).", array("%study" => $study->title)), 'error');
-      } else if($e->getCode() == 403) {
-        drupal_set_message(t("Study %study: Not authorized to search dataset (403).", array("%study" => $study->title)), 'error');
-      } else if($e->getCode() == 404) {
-        drupal_set_message(t("Study %study: Cannot find dataset (404). Make sure the study's configuration is valid.", array("%study" => $study->title)), 'error');
-      } else {
-        drupal_set_message(t("Study %study: Failed executing search. Message was: %msg", array("%study" => $study->title, "%msg" => $e->getMessage())), 'error');
-      }
+      $connector->displayError($e);
     }
   }
 

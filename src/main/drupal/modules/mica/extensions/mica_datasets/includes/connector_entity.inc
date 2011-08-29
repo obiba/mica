@@ -34,12 +34,12 @@ class MicaDatasetConnector extends Entity {
    * @var integer
    */
   public $study_id = 0;
-  
+
   /**
    * @var integer
    */
   public $dataset_id = 0;
-  
+
   /**
    * @var string
    */
@@ -131,6 +131,19 @@ class MicaDatasetConnector extends Entity {
     }
   }
 
+  public function displayError(Exception $e) {
+    $study = node_load($this->study_id);
+    if($e->getCode() == 401) {
+      drupal_set_message(t("Study %study: Authentication failed (401).", array("%study" => $study->title)), 'error');
+    } else if($e->getCode() == 403) {
+      drupal_set_message(t("Study %study: Not authorized to search dataset (403).", array("%study" => $study->title)), 'error');
+    } else if($e->getCode() == 404) {
+      drupal_set_message(t("Study %study: Cannot find dataset (404). Make sure the study's configuration is valid.", array("%study" => $study->title)), 'error');
+    } else {
+      drupal_set_message(t("Study %study: Failed executing search. Message was: %msg", array("%study" => $study->title, "%msg" => $e->getMessage())), 'error');
+    }
+  }
+
   /**
    * If the service class defines additional methods, not specified in the
    * MicaDatasetConnectionInterface interface, then they are called via this magic
@@ -160,7 +173,7 @@ class MicaDatasetConnector extends Entity {
     $this->ensureProxy();
     return $this->proxy->configurationFormSubmit($form, $values, $form_state);
   }
-  
+
   public function supportsFeature($feature) {
     $this->ensureProxy();
     return $this->proxy->supportsFeature($feature);

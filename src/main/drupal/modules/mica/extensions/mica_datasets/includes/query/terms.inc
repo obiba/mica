@@ -141,7 +141,11 @@ abstract class AbstractTerm implements QueryTermInterface {
     $facets = array();
     $connectors = $this->getConnectors();
     foreach($connectors as $connector) {
-      $facets[$connector->study_id] = $connector->facetTerm($this);
+      try {
+        $facets[$connector->study_id] = $connector->facetTerm($this);
+      } catch(Exception $e) {
+        $connector->displayError($e);
+      }
     }
     return $facets;
   }
