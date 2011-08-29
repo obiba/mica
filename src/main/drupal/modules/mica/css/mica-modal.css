@@ -74,6 +74,10 @@ div.mica-modal-content .popups-body {
   padding: 1em 23px 1em 22px;
   -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.32) inset;
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.32) inset;
+  -moz-border-radius-bottomleft: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px; 
 }
 div.mica-modal-content .popups-title a.close {
   color: #fff;
