@@ -9,6 +9,15 @@ div.mica-modal-content {
 div.mica-modal-content .modal-scroll {
 	overflow:hidden;
 	overflow-y:auto;
+  border-left: solid 1px #bbb;
+  border-right: solid 1px #bbb;
+  border-bottom: solid 1px #bbb;
+  -moz-border-radius-bottomleft: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;  
+  -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.32) inset;
+  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.32) inset;
 }
 div.mica-modal-content #popups-overlay {
   background-color:transparent;
@@ -63,13 +72,6 @@ div.mica-modal-content div.popups-title {
 div.mica-modal-content .popups-body {
   background-color:#fff;
   padding: 1em 23px 1em 22px;
-  border-left: solid 1px #bbb;
-  border-right: solid 1px #bbb;
-  border-bottom: solid 1px #bbb;
-  -moz-border-radius-bottomleft: 10px;
-  -moz-border-radius-bottomright: 10px;
-  -webkit-border-bottom-left-radius: 10px;
-  -webkit-border-bottom-right-radius: 10px;  
   -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.32) inset;
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.32) inset;
 }

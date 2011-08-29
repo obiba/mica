@@ -12,9 +12,9 @@ Drupal.theme.prototype.MicaModal = function () {
   html += '        <span class="popups-close"><a class="close" href="#">X</a></span>';
   html += '        <div class="clear-block"></div>';
   html += '      </div>';
-  //html += '      <div class="modal-scroll">';
+  html += '      <div class="modal-scroll">';
   html += '        <div id="modal-content" class="modal-content popups-body"></div>';
-  //html += '      </div>';
+  html += '      </div>';
   html += '    </div>';
   html += '  </div>';
   html += '</div>';
