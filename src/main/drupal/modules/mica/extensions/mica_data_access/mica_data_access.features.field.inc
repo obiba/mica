@@ -1430,9 +1430,10 @@ Prof.',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'approved' => 'Approved',
+          'accepted' => 'Accepted',
           'rejected' => 'Rejected',
-          'reviewed' => 'Reviewed',
+          'submitted' => 'Submitted',
+          'incomplete' => 'Incomplete'
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
@@ -1455,7 +1456,7 @@ Prof.',
       'bundle' => 'data_access_review',
       'default_value' => array(
         0 => array(
-          'value' => 'reviewed',
+          'value' => 'submitted',
         ),
       ),
       'deleted' => '0',

@@ -332,7 +332,7 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['filters']['field_review_status_value']['field'] = 'field_review_status_value';
   $handler->display->display_options['filters']['field_review_status_value']['relationship'] = 'field_data_access_review_nid';
   $handler->display->display_options['filters']['field_review_status_value']['value'] = array(
-    'approved' => 'approved',
+    'accepted' => 'accepted',
   );
 
   /* Display: Page */
