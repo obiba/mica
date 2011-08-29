@@ -367,6 +367,12 @@ function mica_modal_prepare($styles) {
     $style_settings[$style['name']] = $settings;
   }
   drupal_add_js($style_settings, 'setting');
+  
+  // Since we have our js, css and images in well-known named directories,
+  // CTools makes it easy for us to just use them without worrying about
+  // using drupal_get_path() and all that ugliness.
+  ctools_add_js('mica-modal', 'mica');
+  ctools_add_css('mica-modal', 'mica');
 }
 
 function mica_modal_form_prepare() {

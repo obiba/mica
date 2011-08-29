@@ -426,7 +426,6 @@ function mica_datasets_dataset_query_delete_form_submit($form, &$form_state) {
 
 function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
 
-
   mica_modal_prepare(array(
     array(
       'name' => 'edit-style',
@@ -441,13 +440,9 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
    
   ));
 
-  // Since we have our js, css and images in well-known named directories,
-  // CTools makes it easy for us to just use them without worrying about
-  // using drupal_get_path() and all that ugliness.
-  ctools_add_js('mica-modal', 'mica');
-  ctools_add_css('mica-modal', 'mica');
-
   drupal_set_title(t('!title -- !query', array('!title' => $dataset_node->title, '!query' => $query_node->name)));
+  
+  $description = '<p>' . $query_node->description . '</p>';
 
   $mica_dataset_connectors = mica_dataset_connector_query_multiple($dataset_node->nid);
   $terms = mica_dataset_query_term_query($query_node->id);
@@ -517,7 +512,7 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
     $rows[] = array('data' => $totals, 'class' => array('active'));
   }
 
-  return theme('table', array("header"=>$columns, "rows"=>$rows, 'attributes'=>array('class'=>array('query-table')), 'empty' => t('No connectors available')));
+  return $description . theme('table', array("header"=>$columns, "rows"=>$rows, 'attributes'=>array('class'=>array('query-table')), 'empty' => t('No connectors available')));
 }
 
 //
