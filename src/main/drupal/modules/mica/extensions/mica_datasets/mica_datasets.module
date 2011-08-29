@@ -469,7 +469,6 @@ function mica_datasets_entity_info() {
     'entity keys' => array(
       'id' => 'id',
       'label' => 'name',
-      'name' => 'machine_name',
   ),
   );
 
@@ -522,12 +521,6 @@ function mica_datasets_entity_property_info() {
       'description' => t('The displayed name for a connector.'),
       'required' => TRUE,
   ),
-    'machine_name' => array(
-      'label' => t('Machine name'),
-      'type' => 'token',
-      'description' => t('The internally used machine name for a connector.'),
-      'required' => TRUE,
-  ),
     'description' => array(
       'label' => t('Description'),
       'type' => 'text',
@@ -567,12 +560,6 @@ function mica_datasets_entity_property_info() {
       'label' => t('Name'),
       'type' => 'text',
       'description' => t('The displayed name for a query.'),
-      'required' => TRUE,
-  ),
-    'machine_name' => array(
-      'label' => t('Machine name'),
-      'type' => 'token',
-      'description' => t('The internally used machine name for a query.'),
       'required' => TRUE,
   ),
     'description' => array(
@@ -729,7 +716,7 @@ function mica_dataset_connector_load_multiple($ids = array(), $conditions = arra
  */
 function mica_dataset_connector_url(MicaDatasetConnector $connector) {
   return array(
-    'path' => 'admin/config/system/mica/connector/' . $connector->machine_name,
+    'path' => 'admin/config/system/mica/connector/' . $connector->id,
     'options' => array(),
   );
 }

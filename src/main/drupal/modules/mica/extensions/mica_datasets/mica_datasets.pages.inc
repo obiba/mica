@@ -425,7 +425,6 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
 
       if ($connector_id == 0) {
         $values['name'] = $dataset_node->title . ' -- ' . $study_node->title;
-        $values['machine_name'] = strtolower(str_replace(array(' ','-',',','.',':',';','/'),'_', $values['name']));
         $values['description'] = $form_state['values']['description'];
         $values['dataset_id'] = $dataset_node->nid;
         $values['study_id'] = $study_node->nid;

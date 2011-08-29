@@ -31,12 +31,6 @@ function mica_datasets_schema() {
         'length' => 50,
         'not null' => TRUE,
       ),
-      'machine_name' => array(
-        'description' => 'The machine name for a connector.',
-        'type' => 'varchar',
-        'length' => 50,
-        'not null' => TRUE,
-      ),
       'description' => array(
         'description' => 'The displayed description for a connector.',
         'type' => 'text',
@@ -76,9 +70,6 @@ function mica_datasets_schema() {
     ) + entity_exportable_schema_fields(),
     'indexes' => array(
       'indexing' => array('enabled','study_id','dataset_id'),
-    ),
-    'unique keys' => array(
-      'machine_name' => array('machine_name'),
     ),
     'primary key' => array('id'),
   );

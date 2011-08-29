@@ -20,11 +20,6 @@ class MicaDatasetQuery extends Entity {
   /**
    * @var string
    */
-  public $machine_name = '';
-
-  /**
-   * @var string
-   */
   public $description = '';
 
   /**

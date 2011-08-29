@@ -23,11 +23,6 @@ class MicaDatasetConnector extends Entity {
   /**
    * @var string
    */
-  public $machine_name = '';
-
-  /**
-   * @var string
-   */
   public $description = '';
 
   /**
@@ -126,7 +121,7 @@ class MicaDatasetConnector extends Entity {
         $this->proxy = new $class['class']($this);
       }
       if (!($this->proxy instanceof MicaDatasetConnectionInterface)) {
-        throw new MicaException(t('Dataset connector with machine name !name specifies illegal service class !class.', array('!name' => $this->machine_name, '!class' => $this->class)));
+        throw new MicaException(t('Dataset connector with id !id specifies illegal service class !class.', array('!id' => $this->id, '!class' => $this->class)));
       }
     }
   }
