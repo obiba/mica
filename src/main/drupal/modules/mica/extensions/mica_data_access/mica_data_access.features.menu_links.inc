@@ -122,6 +122,25 @@ function mica_data_access_menu_default_menu_links() {
     'weight' => '-30',
     'parent_path' => 'node/1',
   );
+  // Exported menu link: main-menu:data-access/requests
+  $menu_links['main-menu:data-access/requests'] = array(
+      'menu_name' => 'main-menu',
+      'link_path' => 'data-access/requests',
+      'router_path' => 'data-access/requests',
+      'link_title' => 'My Data Access Requests',
+      'options' => array(
+        'attributes' => array(
+          'title' => '',
+  ),
+  ),
+      'module' => 'menu',
+      'hidden' => '0',
+      'external' => '0',
+      'has_children' => '0',
+      'expanded' => '0',
+      'weight' => '-30',
+      'parent_path' => 'node/1',
+  );
   // Exported menu link: main-menu:node/4
   $menu_links['main-menu:node/4'] = array(
     'menu_name' => 'main-menu',
