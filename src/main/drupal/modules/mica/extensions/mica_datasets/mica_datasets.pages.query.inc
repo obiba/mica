@@ -9,23 +9,24 @@
 // Queries
 //
 
-function _mica_datasets_dataset_query_url($dataset_node, $query_entity, $action = NULL) {
-  $url = 'node/' . $dataset_node->nid . '/queries/' . $query_entity->id;
+function _mica_datasets_dataset_query_url($dataset_node, $query, $action = NULL) {
+  $url = 'node/' . $dataset_node->nid . '/queries/' . ($query->id != 0 ? $query->id : $query->name);
   if(isset($action)) {
     $url .= "/$action";
   }
   return $url;
 }
 
-function _mica_datasets_dataset_query_link($dataset_node, $query_entity, $action = NULL, $title = NULL) {
-  $url = _mica_datasets_dataset_query_url($dataset_node, $query_entity, $action);
-  if(isset($title) == false) {$title = $query_entity->name;
+function _mica_datasets_dataset_query_link($dataset_node, $query, $action = NULL, $title = NULL) {
+  $url = _mica_datasets_dataset_query_url($dataset_node, $query, $action);
+  if(isset($title) == false) {
+    $title = $query->name;
   }
   return l($title, $url);
 }
 
-function _mica_datasets_dataset_query_term_url($dataset_node, $query_entity, $term_entity, $action = NULL) {
-  $url = 'node/' . $dataset_node->nid . '/queries/' . $query_entity->id . '/term/' . $term_entity->id;
+function _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, $action = NULL) {
+  $url = 'node/' . $dataset_node->nid . '/queries/' . ($query->id != 0 ? $query->id : $query->name) . '/term/' . $term->id;
   if(isset($action)) {
     $url .= "/$action";
   }
@@ -48,12 +49,18 @@ function mica_datasets_dataset_queries_page($dataset_node) {
 
   $options = array();
 
-  $queries = mica_dataset_query_query($dataset_node->nid);
+  $queries_persisted = mica_dataset_query_query($dataset_node->nid);
+  $queries_cached = mica_dataset_query_load_multiple_cache($dataset_node->nid);
+  $queries = array_merge($queries_persisted, $queries_cached);
   if ($queries) {
     foreach ($queries as $query) {
       if ($query->published || $query->user_id == $user->uid) {
+        $name = _mica_datasets_dataset_query_link($dataset_node, $query);
+        if ($query->id == 0) {
+          $name = $name . ' ' . t('(not saved)');
+        }
         $option = array(
-          'name' => _mica_datasets_dataset_query_link($dataset_node, $query),
+          'name' => $name,
           'description' => $query->description,
           'actions' => array('data' => array())
         );
@@ -183,7 +190,7 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
   }
   elseif ($query) {
     // add saved query terms ordered by weight
-    $terms = mica_dataset_query_term_query($query->id);
+    $terms = mica_dataset_query_term_query($query);
     $terms = $terms ? $terms : array();
     foreach ($terms as $query_term) {
       $data[] = array(
@@ -228,10 +235,22 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
     '#attributes' => array('class' => array('form-actions')),
   );
 
-  $form['actions']['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Save'),
-  );
+  // Do not offer to save for anonymous
+  global $user;
+  if ($user->uid != 0) {
+    $form['actions']['save'] = array(
+      '#type' => 'submit',
+      '#value' => t('Save and View'),
+    );
+  }
+
+  // Do not edit in the cache a persisted query
+  if (!isset($query) || $query->id == 0) {
+    $form['actions']['view'] = array(
+      '#type' => 'submit',
+      '#value' => t('View'),
+    );
+  }
 
   return $form;
 }
@@ -298,30 +317,24 @@ function mica_datasets_dataset_query_edit_form_submit($form, &$form_state) {
     case 'delete':
       $form_state['redirect'] = _mica_datasets_dataset_query_url($dataset_node, $query, 'delete');
       break;
-    case 'submit':
+    case 'save':
       if (!isset($query)) {
-        global $user;
-        $values = array();
-        $values['name'] = check_plain($form_state['values']['name']);
-        $values['description'] = $form_state['values']['description'];
-        $values['dataset_id'] = $dataset_node->nid;
-        $values['published'] = $form_state['values']['publish'];
-        $values['user_id'] = $user->uid;
-        $values['module'] = 'mica_datasets';
+        $values = _mica_datasets_extract_new_query_values($form_state);
+        $query = mica_dataset_query_insert($values);
 
-        $rval = mica_dataset_query_insert($values);
-        if ($rval === FALSE) {
+        if ($query === FALSE) {
           drupal_set_message(t('Unable to save query: !name', array('!name' => $values['name'])), 'error');
+          return;
         }
         else {
           // save the terms
           if (array_key_exists('list', $form_state['values'])) {
-            _mica_datasets_query_terms_save($rval->id, $form_state['values']['list']);
+            _mica_datasets_query_terms_insert($query, $form_state);
           }
         }
       }
       else {
-        // update the weights
+        // update query
         $query->name = check_plain($form_state['values']['name']);
         $query->description = $form_state['values']['description'];
         $query->published = $form_state['values']['publish'];
@@ -330,29 +343,55 @@ function mica_datasets_dataset_query_edit_form_submit($form, &$form_state) {
 
         // save the terms
         if (array_key_exists('list', $form_state['values'])) {
-          _mica_datasets_query_terms_save($query->id, $form_state['values']['list']);
+          _mica_datasets_query_terms_insert($query, $form_state);
         }
       }
 
-      drupal_set_message(t('Your configuration has been saved.'));
-      $form_state['redirect'] = _mica_datasets_dataset_query_url($dataset_node, isset($query) ? $query : $rval);
+      drupal_set_message(t('Your query has been saved.'));
+      $form_state['redirect'] = _mica_datasets_dataset_query_url($dataset_node, $query);
+      $form_state['complete'] = TRUE;
+      break;
+    case 'view':
+      if (!isset($query)) {
+        $values = _mica_datasets_extract_new_query_values($form_state);
+        $query = mica_dataset_query_insert_cache($values);
+        
+        // cache the terms
+        if (array_key_exists('list', $form_state['values'])) {
+          _mica_datasets_query_terms_insert_cache($query, $form_state);
+        }
+      }
+      else {
+        // TODO update cache
+      }
+      drupal_set_message(t('Your query is not saved yet.'), 'warning');
+      $form_state['redirect'] = _mica_datasets_dataset_query_url($dataset_node, $query);
+      $form_state['complete'] = TRUE;
       break;
   }
 }
 
-function _mica_datasets_query_terms_save($query_id, $data) {
+function _mica_datasets_extract_new_query_values(&$form_state) {
+  $dataset_node = $form_state['build_info']['args'][0];
+  global $user;
+  $values = array();
+
+  $values['name'] = check_plain($form_state['values']['name']);
+  $values['description'] = $form_state['values']['description'];
+  $values['dataset_id'] = $dataset_node->nid;
+  $values['published'] = $form_state['values']['publish'];
+  $values['user_id'] = $user->uid;
+  $values['module'] = 'mica_datasets';
+
+  return $values;
+}
+
+function _mica_datasets_query_terms_insert($query, &$form_state) {
+  $data = $form_state['values']['list'];
   foreach ($data as $datum) {
     if ($datum['id'] == 0) {
       // new query term
-      $values = array();
-      $values['query_id'] = $query_id;
-      $values['variable_id'] = $datum['vid'];
-      $values['weight'] = $datum['weight'];
-      $values['module'] = 'mica_datasets';
-      $values['options'] = array(
-        'type' => AbstractTerm::typeFor(node_load($values['variable_id']))
-      );
-
+      $values = _mica_datasets_extract_new_query_term_values($query, $datum);
       mica_dataset_query_term_insert($values);
     }
     else {
@@ -363,6 +402,33 @@ function _mica_datasets_query_terms_save($query_id, $data) {
   }
 }
 
+function _mica_datasets_query_terms_insert_cache($query, &$form_state) {
+  $data = $form_state['values']['list'];
+  foreach ($data as $datum) {
+    if ($datum['id'] == 0) {
+      // new query term
+      $values = _mica_datasets_extract_new_query_term_values($query, $datum);
+      mica_dataset_query_term_insert_cache($query, $values);
+    }
+    else {
+      // TODO update cache
+    }
+  }
+}
+
+function _mica_datasets_extract_new_query_term_values($query, $datum) {
+  $values = array();
+
+  $values['query_id'] = $query->id;
+  $values['variable_id'] = $datum['vid'];
+  $values['weight'] = $datum['weight'];
+  $values['module'] = 'mica_datasets';
+  $values['options'] = array(
+    'type' => AbstractTerm::typeFor(node_load($values['variable_id']))
+  );
+
+  return $values;
+}
 
 //
 // Delete Query form
@@ -406,16 +472,22 @@ function mica_datasets_dataset_query_delete_form_submit($form, &$form_state) {
   $dataset_node = $form_state['build_info']['args'][0];
   $query = $form_state['build_info']['args'][1];
 
-  // delete all terms
-  $query_terms = mica_dataset_query_term_query($query->id);
-  if ($query_terms) {
-    foreach ($query_terms as $qt) {
-      $qt->delete();
+  // remove from database or cache
+  if ($query->id != 0) {
+    // delete all terms
+    $query_terms = mica_dataset_query_term_query($query);
+    if ($query_terms) {
+      foreach ($query_terms as $qt) {
+        $qt->delete();
+      }
     }
-  }
 
-  // and then delete query
-  $query->delete();
+    // and then delete query
+    $query->delete();
+  }
+  else {
+    mica_dataset_query_delete_cache($query);
+  }
 
   $form_state['redirect'] = 'node/' . $dataset_node->nid . '/queries';
 }
@@ -424,7 +496,7 @@ function mica_datasets_dataset_query_delete_form_submit($form, &$form_state) {
 // View and Run query
 //
 
-function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
+function mica_datasets_dataset_query_run_page($dataset_node, $query) {
 
   mica_modal_prepare(array(
   array(
@@ -443,12 +515,12 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
    
   ));
 
-  drupal_set_title(t('!title -- !query', array('!title' => $dataset_node->title, '!query' => $query_node->name)));
+  drupal_set_title(t('!title -- !query', array('!title' => $dataset_node->title, '!query' => $query->name)));
 
-  $description = '<p>' . $query_node->description . '</p>';
+  $description = '<p>' . $query->description . '</p>';
 
   $mica_dataset_connectors = mica_dataset_connector_query_multiple($dataset_node->nid);
-  $terms = mica_dataset_query_term_query($query_node->id);
+  $terms = mica_dataset_query_term_query($query);
 
   $labels = array();
   if ($terms!==FALSE) {
@@ -458,12 +530,12 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query_node) {
       $variable = node_load($term->variable_id);
       $variable_link = ctools_modal_text_button($title, 'mica/nojs/node/' . $variable->nid, t('View !title', array('!title' => $variable->title)), 'ctools-modal-node-style highlight');
 
-      if (_mica_datasets_query_term_access($dataset_node, $query_node, $term)) {
+      if (_mica_datasets_query_term_access($dataset_node, $query, $term)) {
         $labels[] = $variable_link //
         . '<div>' //
-        . ctools_modal_text_button(t('Edit'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query_node, $term, 'edit'), t('Edit query term options'), 'ctools-modal-edit-style') //
+        . ctools_modal_text_button(t('Edit'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, 'edit'), t('Edit query term options'), 'ctools-modal-edit-style') //
         . '<span style="margin-left: 10px;">' //
-        . ctools_modal_text_button(t('Delete'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query_node, $term, 'delete'), t('Delete query term'), 'ctools-modal-delete-style') //
+        . ctools_modal_text_button(t('Delete'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, 'delete'), t('Delete query term'), 'ctools-modal-delete-style') //
         . '</span></div>' ;
       }
       else {
@@ -568,7 +640,7 @@ function mica_datasets_dataset_query_term_edit_form($form, &$form_state) {
   $form['actions']['cancel'] = array(
     '#type' => 'link',
     '#title' => t('Cancel'),
-    '#href' => 'node/'.$dataset_node->nid.'/queries/'.$query->id.'/view',
+    '#href' => _mica_datasets_dataset_query_url($dataset_node, $query),
   );
 
   return $form;
@@ -582,25 +654,32 @@ function mica_datasets_dataset_query_term_edit_form_validate($form, &$form_state
 
 function mica_datasets_dataset_query_term_edit_form_submit($form, &$form_state) {
   $dataset_node = $form_state['build_info']['args'][0];
-  $query_entity = $form_state['build_info']['args'][1];
-  $term_entity = $form_state['build_info']['args'][2];
+  $query = $form_state['build_info']['args'][1];
+  $term = $form_state['build_info']['args'][2];
 
-  $impl = $term_entity->termImpl();
+  $impl = $term->termImpl();
   $impl->submit($form, $form_state);
 
   $errors = form_get_errors();
   if(empty($errors)) {
     switch ($form_state['triggering_element']['#parents'][0]) {
       case 'save':
-        $term_entity->save();
-        drupal_set_message(t('Query term options saved.'));
+        if (is_numeric($term->id)) {
+          $term->save();
+          drupal_set_message(t('Query term options saved.'));
+        }
+        else {
+          // cached term
+          mica_dataset_query_term_update_cache($query, $term);
+          drupal_set_message(t('Query term options updated.'));
+        }
         $form_state['complete'] = TRUE;
         break;
       case 'cancel':
         $form_state['cancel'] = TRUE;
         break;
     }
-    $form_state['redirect'] = _mica_datasets_dataset_query_url($dataset_node, $query_entity);
+    $form_state['redirect'] = _mica_datasets_dataset_query_url($dataset_node, $query);
   }
 }
 
@@ -683,7 +762,7 @@ function mica_datasets_dataset_query_term_delete_form($form, &$form_state) {
   $form['actions']['cancel'] = array(
     '#type' => 'link',
     '#title' => t('Cancel'),
-    '#href' => 'node/'.$dataset_node->nid.'/queries/'.$query->id.'/view',
+    '#href' => _mica_datasets_dataset_query_url($dataset_node, $query),
   );
 
   return $form;
@@ -694,8 +773,13 @@ function mica_datasets_dataset_query_term_delete_form_submit($form, &$form_state
   $query = $form_state['build_info']['args'][1];
   $term = $form_state['build_info']['args'][2];
 
-  // delete term
-  $term->delete();
+  if (is_numeric($term->id)) {
+    // delete term
+    $term->delete();
+  }
+  else {
+    mica_dataset_query_term_delete_cache($query, $term);
+  }
 
   $form_state['complete'] = TRUE;
   $form_state['redirect'] = _mica_datasets_dataset_query_url($dataset_node, $query);
