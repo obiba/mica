@@ -427,7 +427,59 @@ function _mica_datasets_ensure_viewreference_arguments(&$node) {
  */
 function mica_datasets_node_delete($node) {
   if ($node->type === 'dataset') {
-    // todo MICA-129
+    
+    $dataset_id = $node->nid;
+    
+    // remove queries and their terms
+    $queries = mica_dataset_query_query($dataset_id);
+    if (!empty($queries)){
+      
+      foreach ($queries as $query){
+        $query_id = $query->id;
+        
+        $terms = mica_dataset_query_term_query($query_id);
+        if (!empty($terms)){
+          
+          foreach($terms as $term){
+            entity_delete('mica_dataset_query_term', $term->id);
+          }
+        }
+
+        entity_delete('mica_dataset_query' , $query_id);
+      }
+    }
+    
+    // remove variables
+    $variables = mica_dataset_dataset_participant_variables($dataset_id);
+    if (!empty($variables)){
+      foreach ($variables as $variable) {
+        node_delete($variable->nid);
+      }
+    }
+        
+    // remove reference from studies
+    $query = new EntityFieldQuery();
+    $entities = $query->entityCondition('entity_type', 'node')
+                  ->entityCondition('bundle', 'study')
+                  ->fieldCondition('mica_dataset', 'nid', $dataset_id)
+                  ->execute();
+    $studies = node_load_multiple(array_keys($entities['node']));
+    
+    foreach($studies as $study_node){
+     
+      foreach ($study_node->mica_dataset[$study_node->language] as $key => $value) {
+      	if ($value['nid'] == $dataset_id) {
+          unset($study_node->mica_dataset[$study_node->language][$key]);
+          
+          $connector = mica_dataset_connector_query($dataset_id, $study_node->nid);
+          if ($connector) {
+          	$connector->delete();
+          }
+          break;
+      	}
+      }
+      node_save($study_node);
+    }
   }
 }
 /**
