@@ -36,7 +36,7 @@ search_api_ranges_version=7.x-1.2
 search_api_solr_version=7.x-1.0-beta3
 strongarm_version=7.x-2.0-beta2
 views_data_export_version=7.x-3.0-beta4
-views_version=7.x-3.0-beta3
+views_version=7.x-3.0-rc1
 viewreference_version=7.x-3.0
 
 
@@ -136,7 +136,7 @@ drupal-stable-dev:
 	$(call drupal-checkout-module,http_client, 0)
 	$(call drupal-checkout-module,feeds, 0)
 	$(call drupal-patch-module,references, 0)
-	$(call drupal-patch-module,views, 1)
+#	$(call drupal-patch-module,views, 1)
 	$(call drupal-patch-module,search_api_ranges, 1)
 	$(call drupal-patch-module-file,menu_firstchild, 1)
 	
