@@ -180,4 +180,14 @@ function _mica_datasets_import_field_groups() {
     'mica_dataset',
     'mica_opal',
   ));
+  
+  // PARTICIPANT VARIABLES
+  _mica_add_fieldset_group('participant_variable', 'group_participant_variable', 'Description', '1', '', array(
+  	'field_label',
+  	'body',
+  	'field_value_type',
+  	'field_repeatable',
+  	'field_categories',
+  	'field_dataset'
+  ));
 }
