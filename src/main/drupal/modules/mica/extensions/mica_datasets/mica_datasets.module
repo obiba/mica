@@ -81,17 +81,6 @@ function mica_datasets_menu() {
       'file' => 'mica_datasets.pages.query.inc',
   );
 
-  //  $items['node/%node/queries/wizard'] = array(
-  //      'title' => 'Query Wizard',
-  //      'access callback' => '_mica_datasets_node_queries_access',
-  //      'access arguments' => array(1,'update'),
-  //      'page callback' => 'mica_datasets_dataset_query_wizard_page',
-  //      'page arguments' => array(1,NULL),
-  //      'weight' => 7,
-  //      'type' => MENU_LOCAL_ACTION,
-  //      'file' => 'mica_datasets.pages.query_wizard.inc',
-  //  );
-
   $items['node/%node/queries/%mica_dataset_query'] = array(
       'title callback' => '_mica_datasets_query_title',
       'title arguments' => array(1, 3),
