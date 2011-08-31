@@ -545,12 +545,20 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query) {
       $variable_link = ctools_modal_text_button($title, 'mica/nojs/node/' . $variable->nid, t('View !title', array('!title' => $variable->title)), 'ctools-modal-node-style highlight');
 
       if (_mica_datasets_query_term_access($dataset_node, $query, $term)) {
-        $labels[] = $variable_link //
+        $header = $variable_link //
         . '<div>' //
-        . ctools_modal_text_button(t('Edit'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, 'edit'), t('Edit query term options'), 'ctools-modal-edit-style') //
-        . '<span style="margin-left: 10px;">' //
-        . ctools_modal_text_button(t('Delete'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, 'delete'), t('Delete query term'), 'ctools-modal-delete-style') //
-        . '</span></div>' ;
+        . ctools_modal_text_button(t('Edit'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, 'edit'), t('Edit query term options'), 'ctools-modal-edit-style');
+
+        if (count($terms) > 1) {
+          $header = $header . '<span style="margin-left: 10px;">' //
+          . ctools_modal_text_button(t('Delete'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, 'delete'), t('Delete query term'), 'ctools-modal-delete-style') //
+          . '</span>' //
+          . '</div>' ;
+        } else {
+          $header = $header . '</div>' ;
+        }
+
+        $labels[] = $header;
       }
       else {
         $labels[] = $variable_link;
