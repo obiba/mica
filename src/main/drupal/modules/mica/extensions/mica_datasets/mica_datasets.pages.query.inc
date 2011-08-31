@@ -41,6 +41,14 @@ function _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, $ac
 function mica_datasets_dataset_queries_page($dataset_node) {
   drupal_set_title(t('!title -- Queries', array('!title' => $dataset_node->title)));
 
+  mica_modal_prepare(array(
+  array(
+      'name' => 'delete-style',
+      'width' => 400,
+      'height' => 150,
+  ),
+  ));
+  
   global $user;
 
   $header = array (
@@ -83,9 +91,7 @@ function mica_datasets_dataset_queries_page($dataset_node) {
           );
            
           $option['actions']['data'][] =  array(
-              '#type' => 'link',
-              '#title' => t('Delete'),
-              '#href' => _mica_datasets_dataset_query_url($dataset_node, $query, 'delete'),
+              '#markup' => ctools_modal_text_button(t('Delete'), 'mica/nojs/' . _mica_datasets_dataset_query_url($dataset_node, $query, 'delete'), t('Delete query'), 'ctools-modal-delete-style'),
           );
         }
 
@@ -468,6 +474,17 @@ function _mica_datasets_extract_new_query_term_values($query, $datum) {
 // Delete Query form
 //
 
+function mica_datasets_dataset_query_delete_modal_page($js = NULL, $dataset_node, $query) {
+  if ($js) {
+    $title = t('Delete !query', array('!query' => $query->name));
+    mica_modal_form_render($title, 'mica_datasets_dataset_query_delete_form', $dataset_node, $query);
+  }
+  else {
+    // fallback to plain page
+    return mica_datasets_dataset_query_delete_page($dataset_node, $query);
+  }
+}
+
 function mica_datasets_dataset_query_delete_page($dataset_node, $query) {
   drupal_set_title(t('Are you sure you want to delete query <em>!query</em>?', array('!query' => $query->name)), PASS_THROUGH);
 
@@ -523,7 +540,8 @@ function mica_datasets_dataset_query_delete_form_submit($form, &$form_state) {
     // remove from cache
     MicaDatasetQueryManager::delete($query);
   }
-
+  
+  $form_state['complete'] = TRUE;
   $form_state['redirect'] = 'node/' . $dataset_node->nid . '/queries';
 }
 
