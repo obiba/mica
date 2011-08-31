@@ -23,6 +23,35 @@ function mica_datasets_theme() {
 }
 
 /**
+ * Implements hook_permission().
+ */
+function mica_datasets_permission() {
+   $perms = array(
+    "view any dataset query" => array(
+      'title' => t('View any Dataset Query'),
+      'description' => t('Permission for viewing own and published queries.'),
+    ),
+    "create edit delete own dataset query" => array(
+      'title' => t('Create, edit and delete own Dataset Query'),
+    ),
+    "edit any dataset query" => array(
+      'title' => t('Edit any Dataset Query'),
+      'description' => t('Permission for editing own and published queries.'),
+    ),
+    "delete any dataset query" => array(
+      'title' => t('Delete any Dataset Query'),
+      'description' => t('Permission for deleting own and published queries.'),
+    ),
+    "publish dataset query" => array(
+      'title' => t('Publish Dataset Query'),
+      'description' => t('Edition permission on the query is required to be effectively allowed to publish it.'),
+    ),
+  );
+  
+  return $perms;
+}
+
+/**
  * Implements hook_menu().
  */
 function mica_datasets_menu() {
