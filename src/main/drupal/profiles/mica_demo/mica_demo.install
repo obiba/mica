@@ -117,6 +117,30 @@ function mica_demo_install() {
   );
   user_save(null, $user);
   
+  $user = array(
+    'name' => 'flapointe',
+    'mail' => 'flapointe@unknown.org',
+    'is_new' => TRUE,
+    'pass' => 'password',
+    'status' => 1,
+    'roles' => array(
+    	'4' => 'data access committee officer',
+    ),
+  );
+  user_save(null, $user);
+  
+  $user = array(
+    'name' => 'mlaurent',
+    'mail' => 'mlaurent@unknown.org',
+    'is_new' => TRUE,
+    'pass' => 'password',
+    'status' => 1,
+    'roles' => array(
+    	'4' => 'data access committee officer',
+  ),
+  );
+  user_save(null, $user);
+  
     $LOREM_1 = 'Proin ornare elit id orci fermentum at ultrices erat lacinia. 
    
 Nunc dolor odio, vestibulum eu euismod ac, aliquet cursus nulla. 
