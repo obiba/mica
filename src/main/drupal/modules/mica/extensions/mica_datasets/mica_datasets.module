@@ -390,7 +390,7 @@ function _mica_datasets_query_term_access($dataset_node, $query, $query_term, $o
   }
 
   // consistency check
-  if ($query->id != $query_term->query_id) {
+  if (MicaDatasetQueryManager::isCached($query) == FALSE && $query->id != $query_term->query_id) {
     return FALSE;
   }
 
@@ -432,7 +432,7 @@ function mica_datasets_node_delete($node) {
     $dataset_id = $node->nid;
     
     // remove queries and their terms
-    $queries = mica_dataset_query_query($dataset_id);
+    $queries = MicaDatasetQueryManager::getPersistedQueries($dataset_id);
     if (!empty($queries)){
       
       foreach ($queries as $query){
@@ -449,6 +449,9 @@ function mica_datasets_node_delete($node) {
         entity_delete('mica_dataset_query' , $query_id);
       }
     }
+    
+    // flush cached queries
+    MicaDatasetQueryManager::deleteQueries($dataset_id);
     
     // remove variables
     $variables = mica_dataset_dataset_participant_variables($dataset_id);
@@ -842,37 +845,6 @@ function mica_datasets_get_connection_info($id = NULL) {
 //
 
 /**
- * Load the dataset queries corresponding to the specified dataset and user id.
- *
- * @param $dataset_id
- * @param $user_id
- * @param $published
- *
- * @return MicaDatasetQuery
- *   An array of query objects or FALSE if not found.
- */
-function mica_dataset_query_query($dataset_id, $user_id = NULL, $published = NULL) {
-  $q = db_select('mica_dataset_query', 'c');
-  $q->addField('c', 'id');
-  $q->condition('c.dataset_id', $dataset_id, '=');
-  if (isset($user_id)) {
-    $q->condition('c.user_id', $user_id, '=');
-  }
-  if (isset($published)) {
-    $q->condition('c.published', $published, '=');
-  }
-  $result = $q->execute();
-
-  $rval = array();
-  while($record = $result->fetchAssoc()) {
-    $rval[] = $record['id'];
-  }
-
-  return !empty($rval) ? mica_dataset_query_load_multiple($rval) : FALSE;
-}
-
-
-/**
  * Load the dataset query with the specified id.
  *
  * @param $id
@@ -889,7 +861,7 @@ function mica_dataset_query_load($id, $reset = FALSE) {
     return $ret ? reset($ret) : FALSE;
   }
   else {
-    return MicaDatasetQueryManager::getQueryByName($id);
+    return MicaDatasetQueryManager::getQuery($id);
   }
   return FALSE;
 }
@@ -951,7 +923,7 @@ function mica_dataset_query_insert(array $values) {
  * @param MicaDatasetQuery $query
  */
 function mica_dataset_query_term_query($query) {
-  if ($query->id != 0) {
+  if (MicaDatasetQueryManager::isCached($query) == FALSE) {
     $q = db_select('mica_dataset_query_term', 'c');
     $q->addField('c', 'id');
     $q->condition('c.query_id', $query->id, '=');
@@ -1108,12 +1080,8 @@ function mica_datasets_node_view_alter(&$build) {
     $values = array();
     $values['variable_id'] = $build['#node']->nid;
     $values['dataset_id'] = $build['#node']->field_dataset['und']['0']['nid'];
-    $values['options'] = array(
-          'type' => AbstractTerm::typeFor(node_load($build['#node']->nid))
-    );
     $term = new MicaDatasetQueryTerm($values);
-
-
+    
     $build['statistics'] = array(
       '#type' => 'fieldset',
       '#title' => t('Statistics'),

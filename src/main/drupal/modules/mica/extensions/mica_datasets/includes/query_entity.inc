@@ -138,6 +138,10 @@ class MicaDatasetQueryTerm extends Entity {
    * Constructor as a helper to the parent constructor.
    */
   public function __construct(array $values = array()) {
+    $values['module'] = 'mica_datasets';
+    if (isset($values['options']['type']) == FALSE) {
+      $values['options']['type'] = AbstractTerm::typeFor(node_load($values['variable_id']));
+    }
     parent::__construct($values, 'mica_dataset_query_term');
   }
 
@@ -213,27 +217,38 @@ class MicaDatasetQueryTerm extends Entity {
 
 class MicaDatasetQueryManager {
 
+  /**
+   * Check if query is in the cache.
+   * @param MicaDatasetQuery $query
+   * @return boolean
+   */
   public static function isCached(MicaDatasetQuery $query) {
-    return isset($_SESSION['mica_dataset_query'][$query->dataset_id][$query->name]);
+    return isset($_SESSION['mica_dataset_query'][$query->id]);
   }
 
+  /**
+   * Delete query from cache.
+   * @param MicaDatasetQuery $query
+   */
   public static function delete(MicaDatasetQuery $query) {
     if (self::isCached($query)) {
-      unset($_SESSION['mica_dataset_query'][$query->dataset_id][$query->name]);
+      unset($_SESSION['mica_dataset_query'][$query->id]);
     }
   }
 
   /**
-   * @param string $dataset_id
-   * @param string $query_name
-   *
-   * @return MicaDatasetQueryCache
+   * Delete all cached queries of a dataset.
+   * @param $dataset_id
    */
-  public static function getCacheByName($dataset_id, $query_name) {
-    if (isset($_SESSION['mica_dataset_query'][$dataset_id][$query_name])) {
-      return unserialize($_SESSION['mica_dataset_query'][$dataset_id][$query_name]);
+  public static function deleteQueries($dataset_id) {
+    if (isset($_SESSION['mica_dataset_query'])) {
+      foreach ($_SESSION['mica_dataset_query'] as $query_id => $cache) {
+        $query_cache = unserialize($cache);
+        if ($query_cache->query->dataset_id == $dataset_id) {
+          unset($_SESSION['mica_dataset_query'][$query_id]);
+        }
+      }
     }
-    return FALSE;
   }
 
   /**
@@ -243,7 +258,7 @@ class MicaDatasetQueryManager {
    */
   public static function getCache(MicaDatasetQuery $query) {
     if (self::isCached($query)) {
-      return unserialize($_SESSION['mica_dataset_query'][$query->dataset_id][$query->name]);
+      return unserialize($_SESSION['mica_dataset_query'][$query->id]);
     }
     return FALSE;
   }
@@ -256,13 +271,16 @@ class MicaDatasetQueryManager {
   public static function addQuery(array $values) {
     $query = new MicaDatasetQuery($values);
     $query->is_new = TRUE;
+    //$name = str_replace(' ', '+', $query->name);
+    $name = $query->name;
+    $query->id = $query->dataset_id  . ':' . $name;
     self::newCache($query);
     return $query;
   }
 
-  public static function newCache(MicaDatasetQuery $query) {
+  private static function newCache(MicaDatasetQuery $query) {
     $cache = new MicaDatasetQueryCache($query);
-    $_SESSION['mica_dataset_query'][$query->dataset_id][$query->name] = serialize($cache);
+    $_SESSION['mica_dataset_query'][$query->id] = serialize($cache);
     return $cache;
   }
 
@@ -274,10 +292,13 @@ class MicaDatasetQueryManager {
   public static function getTerm($term_id) {
     // look for the query in the cache by name
     if (isset($_SESSION['mica_dataset_query'])) {
-      foreach ($_SESSION['mica_dataset_query'] as $dataset_id => $queries) {
-        foreach (array_keys($queries) as $query_name) {
-          if (preg_match('/^' . $query_name . ':/', $term_id)) {
-            return self::getCacheByName($dataset_id, $query_name)->getTerm($term_id);
+      foreach ($_SESSION['mica_dataset_query'] as $cache) {
+        $query_cache = unserialize($cache);
+        if (preg_match('/^'. $query_cache->query->id .':/', $term_id)) {
+          foreach ($query_cache->getTerms() as $term) {
+            if ($term->id == $term_id) {
+              return $term;
+            }
           }
         }
       }
@@ -292,42 +313,70 @@ class MicaDatasetQueryManager {
    */
   public static function getQueries($dataset_id) {
     $queries = array();
-    if (isset($_SESSION['mica_dataset_query'][$dataset_id])) {
-      foreach ($_SESSION['mica_dataset_query'][$dataset_id] as $cache) {
+    if (isset($_SESSION['mica_dataset_query'])) {
+      foreach ($_SESSION['mica_dataset_query'] as $cache) {
         $query_cache = unserialize($cache);
-        $queries[] = $query_cache->query;
+        if ($query_cache->query->dataset_id == $dataset_id) {
+          $queries[] = $query_cache->query;
+        }
       }
     }
     return $queries;
   }
 
   /**
-   * @param string $dataset_id
-   * @param string $query_name
+   * @param $query_id
    *
    * @return MicaDatasetQuery
    */
-  public static function getQuery($dataset_id, $query_name) {
-    $rval = self::getCacheByName($dataset_id, $query_name);
-    return $rval === FALSE ? FALSE : $rval->query;
+  public static function getQuery($query_id) {
+    if (isset($_SESSION['mica_dataset_query'][$query_id])) {
+      $query_cache = unserialize($_SESSION['mica_dataset_query'][$query_id]);
+      return $query_cache->query;
+    }
+    return FALSE;
   }
 
   /**
-   * @param string $query_name
-   * 
-   * @return MicaDatasetQuery
+   * Get all queries: cached and persisted.
+   * @param unknown_type $dataset_id
    */
-  public static function getQueryByName($query_name) {
-    if (isset($_SESSION['mica_dataset_query'])) {
-      foreach ($_SESSION['mica_dataset_query'] as $dataset_id => $queries) {
-        foreach ($queries as $name => $value) {
-          if ($query_name == $name) {
-            return self::getQuery($dataset_id, $query_name);
-          }
-        }
-      }
+  public static function getAllQueries($dataset_id) {
+    $queries_persisted = self::getPersistedQueries($dataset_id);
+    $queries_cached = self::getQueries($dataset_id);
+    $queries = array_merge($queries_persisted, $queries_cached);
+    // TODO sort by name
+    return $queries;
+  }
+
+  /**
+   * Load the dataset queries corresponding to the specified dataset and user id.
+   *
+   * @param $dataset_id
+   * @param $user_id
+   * @param $published
+   *
+   * @return MicaDatasetQuery
+   *   An array of query objects or FALSE if not found.
+   */
+  public static function getPersistedQueries($dataset_id, $user_id = NULL, $published = NULL) {
+    $q = db_select('mica_dataset_query', 'c');
+    $q->addField('c', 'id');
+    $q->condition('c.dataset_id', $dataset_id, '=');
+    if (isset($user_id)) {
+      $q->condition('c.user_id', $user_id, '=');
     }
-    return FALSE;
+    if (isset($published)) {
+      $q->condition('c.published', $published, '=');
+    }
+    $result = $q->execute();
+
+    $rval = array();
+    while($record = $result->fetchAssoc()) {
+      $rval[] = $record['id'];
+    }
+
+    return !empty($rval) ? mica_dataset_query_load_multiple($rval) : FALSE;
   }
 
 }
@@ -364,7 +413,7 @@ class MicaDatasetQueryCache {
     // set the term id
     $index = 1;
     $index = count($this->terms) + 1;
-    $term->id = $this->query->name . ':' . $index;
+    $term->id = $this->query->id . ':' . $index;
     $term->dataset_id = $this->query->dataset_id;
 
     $this->updateTerm($term);
@@ -405,6 +454,6 @@ class MicaDatasetQueryCache {
   }
 
   public function save() {
-    $_SESSION['mica_dataset_query'][$this->query->dataset_id][$this->query->name] = serialize($this);
+    $_SESSION['mica_dataset_query'][$this->query->dataset_id . ':' . $this->query->name] = serialize($this);
   }
 }
