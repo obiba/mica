@@ -5,6 +5,7 @@
  */
 
 include_once('mica_datasets.features.inc');
+require_once('includes/query_entity.inc');
 
 define('PRIVATE_KEY_FILE','private://mica-privatekey.pem');
 
@@ -888,16 +889,7 @@ function mica_dataset_query_load($id, $reset = FALSE) {
     return $ret ? reset($ret) : FALSE;
   }
   else {
-    // look for the query in the cache by name
-    if (isset($_SESSION['mica_dataset_query'])) {
-      foreach ($_SESSION['mica_dataset_query'] as $dataset_id => $queries) {
-        foreach ($queries as $query_name => $value) {
-          if ($query_name == $id) {
-            return mica_dataset_query_load_cache($dataset_id, $query_name);
-          }
-        }
-      }
-    }
+    return MicaDatasetQueryManager::getQueryByName($id);
   }
   return FALSE;
 }
@@ -949,65 +941,6 @@ function mica_dataset_query_insert(array $values) {
   return $query;
 }
 
-/**
- * Create a new dataset query and cache it in the session.
- *
- * @param array $values
- *   An array containing the values to be inserted.
- *
- * @return
- *   The newly created query entity.
- */
-function mica_dataset_query_insert_cache(array $values) {
-  $query = new MicaDatasetQuery($values);
-  $query->is_new = TRUE;
-  $_SESSION['mica_dataset_query'][$query->dataset_id][$query->name] = serialize(array('query' => $query));
-  return $query;
-}
-
-/**
- * Load a named query from the cache.
- *
- * @param int $dataset_id
- * @param string $query_name
- */
-function mica_dataset_query_load_cache($dataset_id, $query_name) {
-  if (!isset($_SESSION['mica_dataset_query'][$dataset_id][$query_name])) {
-    return FALSE;
-  }
-  else {
-    $query_cache = unserialize($_SESSION['mica_dataset_query'][$dataset_id][$query_name]);
-    return $query_cache['query'];
-  }
-}
-
-/**
- * Load all the queries from the cache.
- *
- * @param int $dataset_id
- */
-function mica_dataset_query_load_multiple_cache($dataset_id) {
-  $queries = array();
-  if (isset($_SESSION['mica_dataset_query'][$dataset_id])) {
-    foreach ($_SESSION['mica_dataset_query'][$dataset_id] as $cache) {
-      $query_cache = unserialize($cache);
-      $queries[] = $query_cache['query'];
-    }
-  }
-  return $queries;
-}
-
-/**
- * Delete query from cache.
- * @param MicaDatasetQuery $query
- */
-function mica_dataset_query_delete_cache($query) {
-  if (isset($_SESSION['mica_dataset_query'][$query->dataset_id][$query->name])) {
-    unset($_SESSION['mica_dataset_query'][$query->dataset_id][$query->name]);
-  }
-}
-
-
 //
 // Mica Dataset Query Term
 //
@@ -1033,7 +966,7 @@ function mica_dataset_query_term_query($query) {
     return !empty($rval) ? mica_dataset_query_term_load_multiple($rval) : FALSE;
   }
   else {
-    $rval = mica_dataset_query_term_load_multiple_cache($query);
+    $rval = MicaDatasetQueryManager::getCache($query)->getTerms();
     return !empty($rval) ? $rval : FALSE;
   }
 }
@@ -1055,16 +988,7 @@ function mica_dataset_query_term_load($id, $reset = FALSE) {
     return $ret ? reset($ret) : FALSE;
   }
   else {
-    // look for the query in the cache by name
-    if (isset($_SESSION['mica_dataset_query'])) {
-      foreach ($_SESSION['mica_dataset_query'] as $dataset_id => $queries) {
-        foreach ($queries as $query_name => $value) {
-          if (preg_match('/^' . $query_name . ':/', $id)) {
-            return mica_dataset_query_term_load_cache($dataset_id, $query_name, $id);
-          }
-        }
-      }
-    }
+    return MicaDatasetQueryManager::getTerm($id);
   }
   return FALSE;
 }
@@ -1087,6 +1011,7 @@ function mica_dataset_query_term_load($id, $reset = FALSE) {
  *   An array of query objects keyed by machine name.
  */
 function mica_dataset_query_term_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
+  // TODO filter the cached ones from the persisted ones by their id pattern
   return entity_load('mica_dataset_query_term', $ids, $conditions, $reset);
 }
 
@@ -1114,58 +1039,6 @@ function mica_dataset_query_term_insert(array $values) {
   $query_term->is_new = TRUE;
   $query_term->save();
   return $query_term->id;
-}
-
-/**
- * Inserts a new dataset query term into the database.
- *
- * @param MicaDatasetQuery $query
- * @param array $values
- *   An array containing the values to be inserted.
- *
- * @return
- *   The newly inserted query term's id, or FALSE on error.
- */
-function mica_dataset_query_term_insert_cache($query, array $values) {
-  $term = new MicaDatasetQueryTerm($values);
-  $term->is_new = TRUE;
-  $query_cache = unserialize($_SESSION['mica_dataset_query'][$query->dataset_id][$query->name]);
-
-  // set the term id 
-  $index = 1;
-  if (isset($query_cache['terms'])) {
-    $index = count($query_cache['terms']) + 1;
-  }
-  $term->id = $query->name . ':' . $index;
-  $term->dataset_id = $query->dataset_id;
-  
-  $query_cache['terms'][$term->id] = $term;
-  $_SESSION['mica_dataset_query'][$query->dataset_id][$query->name] = serialize($query_cache);
-  return $term;
-}
-
-function mica_dataset_query_term_update_cache($query, $term) {
-  $query_cache = unserialize($_SESSION['mica_dataset_query'][$query->dataset_id][$query->name]);
-  $query_cache['terms'][$term->id] = $term;
-  $_SESSION['mica_dataset_query'][$query->dataset_id][$query->name] = serialize($query_cache);
-}
-
-function mica_dataset_query_term_delete_cache($query, $term) {
-  $query_cache = unserialize($_SESSION['mica_dataset_query'][$query->dataset_id][$query->name]);
-  unset($query_cache['terms'][$term->id]);
-  $_SESSION['mica_dataset_query'][$query->dataset_id][$query->name] = serialize($query_cache);
-}
-
-
-function mica_dataset_query_term_load_cache($dataset_id, $query_name, $term_id) {
-  $query_cache = unserialize($_SESSION['mica_dataset_query'][$dataset_id][$query_name]);
-  return $query_cache['terms'][$term_id];
-}
-
-function mica_dataset_query_term_load_multiple_cache($query) {
-  $query_cache = unserialize($_SESSION['mica_dataset_query'][$query->dataset_id][$query->name]);
-  // TODO sort by weight
-  return $query_cache['terms'];
 }
 
 //

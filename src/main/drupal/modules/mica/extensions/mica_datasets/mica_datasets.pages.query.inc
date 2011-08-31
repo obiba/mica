@@ -1,5 +1,7 @@
 <?php
 
+require_once('includes/query_entity.inc');
+
 /**
  * @file
  * Mica Datasets pages.
@@ -50,7 +52,7 @@ function mica_datasets_dataset_queries_page($dataset_node) {
   $options = array();
 
   $queries_persisted = mica_dataset_query_query($dataset_node->nid);
-  $queries_cached = mica_dataset_query_load_multiple_cache($dataset_node->nid);
+  $queries_cached = MicaDatasetQueryManager::getQueries($dataset_node->nid);
   $queries = array_merge($queries_persisted, $queries_cached);
   if ($queries) {
     foreach ($queries as $query) {
@@ -354,7 +356,7 @@ function mica_datasets_dataset_query_edit_form_submit($form, &$form_state) {
     case 'view':
       if (!isset($query)) {
         $values = _mica_datasets_extract_new_query_values($form_state);
-        $query = mica_dataset_query_insert_cache($values);
+        $query = MicaDatasetQueryManager::addQuery($values);
         
         // cache the terms
         if (array_key_exists('list', $form_state['values'])) {
@@ -408,7 +410,7 @@ function _mica_datasets_query_terms_insert_cache($query, &$form_state) {
     if ($datum['id'] == 0) {
       // new query term
       $values = _mica_datasets_extract_new_query_term_values($query, $datum);
-      mica_dataset_query_term_insert_cache($query, $values);
+      MicaDatasetQueryManager::getCache($query)->addTerm($values);
     }
     else {
       // TODO update cache
@@ -486,7 +488,7 @@ function mica_datasets_dataset_query_delete_form_submit($form, &$form_state) {
     $query->delete();
   }
   else {
-    mica_dataset_query_delete_cache($query);
+    MicaDatasetQueryManager::delete($query);
   }
 
   $form_state['redirect'] = 'node/' . $dataset_node->nid . '/queries';
@@ -670,7 +672,7 @@ function mica_datasets_dataset_query_term_edit_form_submit($form, &$form_state) 
         }
         else {
           // cached term
-          mica_dataset_query_term_update_cache($query, $term);
+          MicaDatasetQueryManager::getCache($query)->updateTerm($term);
           drupal_set_message(t('Query term options updated.'));
         }
         $form_state['complete'] = TRUE;
@@ -778,7 +780,7 @@ function mica_datasets_dataset_query_term_delete_form_submit($form, &$form_state
     $term->delete();
   }
   else {
-    mica_dataset_query_term_delete_cache($query, $term);
+    MicaDatasetQueryManager::getCache($query)->deleteTerm($term);
   }
 
   $form_state['complete'] = TRUE;
