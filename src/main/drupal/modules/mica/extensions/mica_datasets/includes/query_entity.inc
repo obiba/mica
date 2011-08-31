@@ -87,6 +87,10 @@ class MicaDatasetQuery extends Entity {
     unset($ret['status'], $ret['module'], $ret['is_new']);
     return array_keys($ret);
   }
+  
+  public static function compare(MicaDatasetQuery $query_a, MicaDatasetQuery $query_b) {
+    return strcmp($query_a->name, $query_b->name);
+  }
 
 }
 
@@ -139,7 +143,7 @@ class MicaDatasetQueryTerm extends Entity {
    */
   public function __construct(array $values = array()) {
     $values['module'] = 'mica_datasets';
-    if (isset($values['options']['type']) == FALSE) {
+    if (isset($values['options']['type']) == FALSE && isset($values['variable_id'])) {
       $values['options']['type'] = AbstractTerm::typeFor(node_load($values['variable_id']));
     }
     parent::__construct($values, 'mica_dataset_query_term');
@@ -213,6 +217,11 @@ class MicaDatasetQueryTerm extends Entity {
   public function toString() {
     return $this->termImpl()->toString();
   }
+  
+  public static function compare(MicaDatasetQueryTerm $term_a, MicaDatasetQueryTerm $term_b) {
+    if ($term_a->weight == $term_b->weight) return 0;
+    else return $term_a->weight > $term_b->weight ? 1 : -1;
+  }
 }
 
 class MicaDatasetQueryManager {
@@ -271,17 +280,40 @@ class MicaDatasetQueryManager {
   public static function addQuery(array $values) {
     $query = new MicaDatasetQuery($values);
     $query->is_new = TRUE;
-    //$name = str_replace(' ', '+', $query->name);
     $name = $query->name;
     $query->id = $query->dataset_id  . ':' . $name;
     self::newCache($query);
     return $query;
   }
 
+  /**
+   * Create a new cache instance for the given query.
+   * 
+   * @param MicaDatasetQuery $query
+   * 
+   * @return MicaDatasetQueryCache
+   */
   private static function newCache(MicaDatasetQuery $query) {
     $cache = new MicaDatasetQueryCache($query);
     $_SESSION['mica_dataset_query'][$query->id] = serialize($cache);
     return $cache;
+  }
+  
+  /**
+   * Update the query in the cache.
+   * 
+   * @param MicaDatasetQuery $query
+   * 
+   * @return MicaDatasetQueryCache
+   *   NULL if was not cached
+   */
+  public static function updateQuery(MicaDatasetQuery $query) {
+    if (self::isCached($query)) {
+      $query_cache = self::getCache($query);
+      $query_cache->updateQuery($query);
+      return $query_cache;
+    }
+    return NULL;
   }
 
   /**
@@ -345,7 +377,7 @@ class MicaDatasetQueryManager {
     $queries_persisted = self::getPersistedQueries($dataset_id);
     $queries_cached = self::getQueries($dataset_id);
     $queries = array_merge($queries_persisted, $queries_cached);
-    // TODO sort by name
+    usort($queries, array("MicaDatasetQuery", "compare"));
     return $queries;
   }
 
@@ -357,7 +389,7 @@ class MicaDatasetQueryManager {
    * @param $published
    *
    * @return MicaDatasetQuery
-   *   An array of query objects or FALSE if not found.
+   *   An array of query objects
    */
   public static function getPersistedQueries($dataset_id, $user_id = NULL, $published = NULL) {
     $q = db_select('mica_dataset_query', 'c');
@@ -376,7 +408,7 @@ class MicaDatasetQueryManager {
       $rval[] = $record['id'];
     }
 
-    return !empty($rval) ? mica_dataset_query_load_multiple($rval) : FALSE;
+    return !empty($rval) ? mica_dataset_query_load_multiple($rval) : array();
   }
 
 }
@@ -397,6 +429,22 @@ class MicaDatasetQueryCache {
     $this->query = $query;
   }
 
+  /**
+   * Update the query.
+   * @param MicaDatasetQuery $query
+   * @return boolean
+   *   FALSE if not the same query id
+   */
+  public function updateQuery(MicaDatasetQuery $query) {
+    // consistency check
+    if ($query->id == $this->query->id) {
+      $this->query = $query;
+      $this->save();
+      return TRUE;
+    }
+    return FALSE;
+  }
+  
   /**
    * Inserts a new dataset query term.
    *
@@ -449,8 +497,9 @@ class MicaDatasetQueryCache {
    * @return array
    */
   public function getTerms() {
-    // TODO sort by weight
-    return $this->terms;
+    $list = $this->terms;
+    usort($list, array("MicaDatasetQueryTerm", "compare"));
+    return $list;
   }
 
   public function save() {

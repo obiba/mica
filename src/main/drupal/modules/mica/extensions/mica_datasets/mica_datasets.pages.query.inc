@@ -346,9 +346,7 @@ function mica_datasets_dataset_query_edit_form_submit($form, &$form_state) {
         }
         else {
           // save the terms
-          if (array_key_exists('list', $form_state['values'])) {
-            _mica_datasets_query_terms_insert($query, $form_state);
-          }
+          _mica_datasets_query_terms_insert($query, $form_state);
         }
       }
       else {
@@ -360,9 +358,7 @@ function mica_datasets_dataset_query_edit_form_submit($form, &$form_state) {
         $query->save();
 
         // save the terms
-        if (array_key_exists('list', $form_state['values'])) {
-          _mica_datasets_query_terms_insert($query, $form_state);
-        }
+        _mica_datasets_query_terms_insert($query, $form_state);
       }
 
       drupal_set_message(t('Your query has been saved.'));
@@ -375,12 +371,16 @@ function mica_datasets_dataset_query_edit_form_submit($form, &$form_state) {
         $query = MicaDatasetQueryManager::addQuery($values);
 
         // cache the terms
-        if (array_key_exists('list', $form_state['values'])) {
-          _mica_datasets_query_terms_insert_cache($query, $form_state);
-        }
+        _mica_datasets_query_terms_insert_cache($query, $form_state);
       }
       else {
-        // TODO update cache
+        // update query
+        $query->name = check_plain($form_state['values']['name']);
+        $query->description = $form_state['values']['description'];
+        MicaDatasetQueryManager::updateQuery($query);
+
+        // update terms cached
+        _mica_datasets_query_terms_insert_cache($query, $form_state);
       }
       $form_state['redirect'] = _mica_datasets_dataset_query_url($dataset_node, $query);
       $form_state['complete'] = TRUE;
@@ -412,9 +412,9 @@ function _mica_datasets_query_terms_insert($query, &$form_state) {
       mica_dataset_query_term_insert($values);
     }
     else {
-      $query_term = mica_dataset_query_term_load($datum['id']);
-      $query_term->weight = $datum['weight'];
-      $query_term->save();
+      $term = mica_dataset_query_term_load($datum['id']);
+      $term->weight = $datum['weight'];
+      $term->save();
     }
   }
 }
@@ -428,7 +428,9 @@ function _mica_datasets_query_terms_insert_cache($query, &$form_state) {
       MicaDatasetQueryManager::getCache($query)->addTerm($values);
     }
     else {
-      // TODO update cache
+      $term = MicaDatasetQueryManager::getCache($query)->getTerm($datum['id']);
+      $term->weight = $datum['weight'];
+      MicaDatasetQueryManager::getCache($query)->updateTerm($term);
     }
   }
 }
