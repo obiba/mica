@@ -87,7 +87,7 @@ class MicaDatasetQuery extends Entity {
     unset($ret['status'], $ret['module'], $ret['is_new']);
     return array_keys($ret);
   }
-  
+
   public static function compare(MicaDatasetQuery $query_a, MicaDatasetQuery $query_b) {
     return strcmp($query_a->name, $query_b->name);
   }
@@ -217,7 +217,7 @@ class MicaDatasetQueryTerm extends Entity {
   public function toString() {
     return $this->termImpl()->toString();
   }
-  
+
   public static function compare(MicaDatasetQueryTerm $term_a, MicaDatasetQueryTerm $term_b) {
     if ($term_a->weight == $term_b->weight) return 0;
     else return $term_a->weight > $term_b->weight ? 1 : -1;
@@ -233,6 +233,47 @@ class MicaDatasetQueryManager {
    */
   public static function isCached(MicaDatasetQuery $query) {
     return isset($_SESSION['mica_dataset_query'][$query->id]);
+  }
+
+  /**
+   * Check if query was a persisted one, modified and stored in the session.
+   * @param MicaDatasetQuery $query
+   * @return boolean
+   */
+  public static function isModified(MicaDatasetQuery $query) {
+    return self::isCached($query) && is_numeric($query->id);
+  }
+
+  /**
+   * Remove query and terms from the cache and save.
+   * @param MicaDatasetQuery $query
+   */
+  public static function save(MicaDatasetQuery $query) {
+    if (self::isCached($query)) {
+      $terms = self::getCache($query)->getTerms();
+      self::delete($query);
+      
+      if (is_numeric($query->id)) {
+        $query->save();
+        foreach($terms as $term) {
+          $term->query_id = $query->id;
+          $term->save();
+        }
+      }
+      else {
+        $query->id = 0;
+        $query->is_new = TRUE;
+        $query->module = 'mica_datasets';
+        $query->save();
+        foreach($terms as $term) {
+          $term->id = 0;
+          $term->query_id = $query->id;
+          $term->is_new = TRUE;
+          $term->module = 'mica_datasets';
+          $term->save();
+        }
+      }
+    }
   }
 
   /**
@@ -262,7 +303,6 @@ class MicaDatasetQueryManager {
 
   /**
    * @param MicaDatasetQuery $query
-   *
    * @return MicaDatasetQueryCache
    */
   public static function getCache(MicaDatasetQuery $query) {
@@ -274,36 +314,30 @@ class MicaDatasetQueryManager {
 
   /**
    * @param array $values
-   *
    * @return MicaDatasetQuery
    */
   public static function addQuery(array $values) {
     $query = new MicaDatasetQuery($values);
     $query->is_new = TRUE;
-    $name = $query->name;
-    $query->id = $query->dataset_id  . ':' . $name;
-    self::newCache($query);
+    $query->id = $query->dataset_id  . ':' . $query->name;
+    self::addCache($query);
     return $query;
   }
 
   /**
    * Create a new cache instance for the given query.
-   * 
    * @param MicaDatasetQuery $query
-   * 
    * @return MicaDatasetQueryCache
    */
-  private static function newCache(MicaDatasetQuery $query) {
+  public static function addCache(MicaDatasetQuery $query) {
     $cache = new MicaDatasetQueryCache($query);
     $_SESSION['mica_dataset_query'][$query->id] = serialize($cache);
     return $cache;
   }
-  
+
   /**
    * Update the query in the cache.
-   * 
    * @param MicaDatasetQuery $query
-   * 
    * @return MicaDatasetQueryCache
    *   NULL if was not cached
    */
@@ -318,7 +352,6 @@ class MicaDatasetQueryManager {
 
   /**
    * @param string $term_id
-   *
    * @return MicaDatasetQueryTerm
    */
   public static function getTerm($term_id) {
@@ -340,7 +373,6 @@ class MicaDatasetQueryManager {
 
   /**
    * @param string $dataset_id
-   *
    * @return array of MicaDatasetQuery
    */
   public static function getQueries($dataset_id) {
@@ -358,7 +390,6 @@ class MicaDatasetQueryManager {
 
   /**
    * @param $query_id
-   *
    * @return MicaDatasetQuery
    */
   public static function getQuery($query_id) {
@@ -371,7 +402,7 @@ class MicaDatasetQueryManager {
 
   /**
    * Get all queries: cached and persisted.
-   * @param unknown_type $dataset_id
+   * @param $dataset_id
    */
   public static function getAllQueries($dataset_id) {
     $queries_persisted = self::getPersistedQueries($dataset_id);
@@ -383,7 +414,6 @@ class MicaDatasetQueryManager {
 
   /**
    * Load the dataset queries corresponding to the specified dataset and user id.
-   *
    * @param $dataset_id
    * @param $user_id
    * @param $published
@@ -444,7 +474,7 @@ class MicaDatasetQueryCache {
     }
     return FALSE;
   }
-  
+
   /**
    * Inserts a new dataset query term.
    *
