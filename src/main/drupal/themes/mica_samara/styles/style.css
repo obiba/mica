@@ -740,13 +740,6 @@ form#comment-form #edit-actions {
 #edit-field-image {
   float: none;
 }
-.field-item .view th,
-.field-item .view thead,
-.field-item .view thead th {
-  background-color: #EEEEEE;
-  color: #222222;
-  border-top: 1px solid #CCCCCC;
-}
 
 th.views-field{
   color:#333333;

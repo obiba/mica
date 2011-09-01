@@ -63,11 +63,6 @@ li a.active {
 legend {
   background-color: #086782;
 }
-html.js fieldset.collapsible legend a,
-.fieldset-legend {
-  color: #393939;
-  font-weight: bold;
-}
 
 /* Link hovered (orange) */
 a:hover,
@@ -246,4 +241,9 @@ th a, thead a, th.views-field {
 }
 .field-label-inline .field-items div.field-item:last-child::after{
   content: "";
+}
+
+/** Modal **/
+div.mica-modal-content div.popups-title {
+  background-color: #4B4B4B;
 }

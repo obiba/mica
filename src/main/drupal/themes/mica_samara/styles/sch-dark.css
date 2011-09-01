@@ -209,3 +209,7 @@ th a, thead a, th.views-field {
   content: "";
 }
 
+/** Modal **/
+div.mica-modal-content div.popups-title {
+  background-color: #4B4B4B;
+}
