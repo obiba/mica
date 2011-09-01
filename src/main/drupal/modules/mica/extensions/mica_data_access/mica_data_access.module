@@ -76,6 +76,22 @@ function mica_data_access_menu_local_tasks_alter(&$data, $router_item, $root_pat
     } 
   }
   
+  if ($root_path === 'node/%') {
+  	$explode=explode('/', $data['tabs'][0]['output'][0]['#link']['href']);
+  	$node = node_load($explode[1]);
+  	
+  	if ($node && $node->type === 'data_access_request') {
+  	  $href='javascript:window.print();';
+  	  $links['print'] = array(
+  	    	              '#theme' => 'menu_local_action',
+  	    	              '#link' => array(
+  	    	                 'title' => t('<a href="@url">Print</a>', array('@url' => $href)),
+  	    	                 'localized_options' => array('html' => TRUE),
+  	    ),
+  	  );
+  	}
+  }
+  
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
 
