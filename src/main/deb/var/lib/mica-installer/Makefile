@@ -7,6 +7,7 @@ oldversion=
 micadir=mica
 installdir=/usr/share
 drushexec=/var/cache/mica-installer/drush/drush
+solr_version=1.4.1
 
 #
 # Mysql db access
@@ -46,7 +47,7 @@ endif
 # Mica dist install
 #
 
-mica-dist-install: mica-dist-install-prepare drupal-profiles drupal-sites drupal-doc
+mica-dist-install: mica-dist-install-prepare drupal-profiles drupal-sites drupal-doc solr-install
 
 mica-dist-install-prepare:
 	mkdir -p target	
@@ -78,6 +79,25 @@ drupal-sites:
 drupal-doc:
 	mv /usr/share/mica/*.txt /usr/share/doc/mica
 	mv /usr/share/doc/mica/robots.txt /usr/share/mica	
+
+solr-install:
+	cd target && \
+	wget -q http://apache.raffsoftware.com//lucene/solr/$(solr_version)/apache-solr-$(solr_version).tgz && \
+	tar xzf apache-solr-$(solr_version).tgz && \
+	cp -r apache-solr-$(solr_version)/example /usr/share/mica/apache-solr-$(solr_version) && \
+	cd /usr/share/mica && \
+	ln -s apache-solr-$(solr_version) apache-solr && \
+	cp sites/all/modules/search_api_solr/solrconfig.xml apache-solr/solr/conf/ && \
+	cp sites/all/modules/search_api_solr/schema.xml apache-solr/solr/conf/ && \
+	cd /etc/mica && \
+	mkdir -p apache-solr-$(solr_version) && \
+	ln -s apache-solr-$(solr_version) apache-solr && \
+	mv /usr/share/mica/apache-solr/solr/conf apache-solr && \
+	ln -s /etc/mica/apache-solr/conf /usr/share/mica/apache-solr/solr/conf && \
+	cd /var/lib/mica && \
+	mkdir -p apache-solr-$(solr_version)/data && \
+	ln -s apache-solr-$(solr_version) apache-solr && \
+	ln -s /var/lib/mica/apache-solr/data /etc/mica/apache-solr/conf/data
 
 #
 # Mica install
