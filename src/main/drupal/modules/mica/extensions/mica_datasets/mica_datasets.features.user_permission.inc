@@ -115,6 +115,48 @@ function mica_datasets_user_default_permissions() {
     ),
     'module' => 'node',
   );
+  
+  // Exported permission: view any dataset query
+  $permissions['view any dataset query'] = array(
+    'name' => 'view any dataset query',
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
+    'module' => 'node',
+  );
 
+  // Exported permission: create edit delete own dataset query
+  $permissions['create edit delete own dataset query'] = array(
+    'name' => 'create edit delete own dataset query',
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
+    'module' => 'node',
+  );
+  
+  // Exported permission: edit delete any dataset query
+  $permissions['edit delete any dataset query'] = array(
+    'name' => 'edit delete any dataset query',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
+  
+  // Exported permission: publish dataset query
+  $permissions['publish dataset query'] = array(
+    'name' => 'publish dataset query',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
+  
   return $permissions;
 }

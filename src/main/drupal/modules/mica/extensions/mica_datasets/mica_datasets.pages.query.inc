@@ -48,7 +48,7 @@ function mica_datasets_dataset_queries_page($dataset_node) {
       'height' => 150,
   ),
   ));
-  
+
   global $user;
 
   $header = array (
@@ -64,7 +64,8 @@ function mica_datasets_dataset_queries_page($dataset_node) {
     foreach ($queries as $query) {
       if ($query->published || $query->user_id == $user->uid) {
         $name = _mica_datasets_dataset_query_link($dataset_node, $query);
-        if (MicaDatasetQueryManager::isCached($query)) {
+
+        if ($user->uid != 0 && MicaDatasetQueryManager::isCached($query)) {
           $name = $name . ' ' . t('(not saved)');
         }
         $option = array(
@@ -81,17 +82,16 @@ function mica_datasets_dataset_queries_page($dataset_node) {
         );
 
         // author of the query or user with update dataset permission can edit/delete a query
-        $update_access = _mica_datasets_query_access($dataset_node, $query, 'update');
-        if ($update_access) {
+        if (_mica_datasets_query_access($dataset_node, $query, 'update')) {
           $option['actions']['data'][] = array(
-              '#type' => 'link',
-              '#title' => t('Edit'),
-              '#href' => _mica_datasets_dataset_query_url($dataset_node, $query, 'edit'),
-              '#attributes' => array('style' => array('margin-right: 10px;')),
+            '#type' => 'link',
+            '#title' => t('Edit'),
+            '#href' => _mica_datasets_dataset_query_url($dataset_node, $query, 'edit'),
+            '#attributes' => array('style' => array('margin-right: 10px;')),
           );
            
           $option['actions']['data'][] =  array(
-              '#markup' => ctools_modal_text_button(t('Delete'), 'mica/nojs/' . _mica_datasets_dataset_query_url($dataset_node, $query, 'delete'), t('Delete query'), 'ctools-modal-delete-style'),
+            '#markup' => ctools_modal_text_button(t('Delete'), 'mica/nojs/' . _mica_datasets_dataset_query_url($dataset_node, $query, 'delete'), t('Delete query'), 'ctools-modal-delete-style'),
           );
         }
 
@@ -119,6 +119,7 @@ function mica_datasets_dataset_query_edit_page($dataset_node, $query) {
 }
 
 function mica_datasets_dataset_query_edit_form($form, &$form_state) {
+  global $user;
   $dataset_node = $form_state['build_info']['args'][0];
   $query = $form_state['build_info']['args'][1];
 
@@ -143,11 +144,13 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
     '#required' => FALSE,
   );
 
-  $form['general']['publish'] = array(
-    '#type' => 'checkbox', 
-    '#title' => t('Published'),
-    '#default_value' => $query ? $query->published : 0,
-  );
+  if ($user->uid != 0 && user_access('publish dataset query')) {
+    $form['general']['publish'] = array(
+      '#type' => 'checkbox', 
+      '#title' => t('Published'),
+      '#default_value' => $query ? $query->published : 0,
+    );
+  }
 
   // Add a query term by selecting a variable
   $variable_options = array();
@@ -241,9 +244,8 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
     '#attributes' => array('class' => array('form-actions')),
   );
 
-  // Do not offer to save for anonymous
-  global $user;
-  if ($user->uid != 0) {
+  // Do not offer to save for anonymous, expected for already saved queries
+  if ($user->uid != 0 || (isset($query) && !MicaDatasetQueryManager::isCached($query))) {
     $form['actions']['save'] = array(
       '#type' => 'submit',
       '#value' => t('Save and View'),
@@ -358,7 +360,9 @@ function mica_datasets_dataset_query_edit_form_submit($form, &$form_state) {
         // update query
         $query->name = check_plain($form_state['values']['name']);
         $query->description = $form_state['values']['description'];
-        $query->published = $form_state['values']['publish'];
+        if (isset($form_state['values']['publish'])) {
+          $query->published = $form_state['values']['publish'];
+        }
 
         if (MicaDatasetQueryManager::isCached($query)) {
           // update terms cached
@@ -418,7 +422,9 @@ function _mica_datasets_extract_new_query_values(&$form_state) {
   $values['name'] = check_plain($form_state['values']['name']);
   $values['description'] = $form_state['values']['description'];
   $values['dataset_id'] = $dataset_node->nid;
-  $values['published'] = $form_state['values']['publish'];
+  if (isset($form_state['values']['publish'])) {
+    $values['published'] = $form_state['values']['publish'];
+  }
   $values['user_id'] = $user->uid;
   $values['module'] = 'mica_datasets';
 
@@ -540,7 +546,7 @@ function mica_datasets_dataset_query_delete_form_submit($form, &$form_state) {
     // remove from cache
     MicaDatasetQueryManager::delete($query);
   }
-  
+
   $form_state['complete'] = TRUE;
   $form_state['redirect'] = 'node/' . $dataset_node->nid . '/queries';
 }

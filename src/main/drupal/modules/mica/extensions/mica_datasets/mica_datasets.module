@@ -26,28 +26,24 @@ function mica_datasets_theme() {
  * Implements hook_permission().
  */
 function mica_datasets_permission() {
-   $perms = array(
+  $perms = array(
     "view any dataset query" => array(
       'title' => t('View any Dataset Query'),
       'description' => t('Permission for viewing own and published queries.'),
-    ),
+  ),
     "create edit delete own dataset query" => array(
       'title' => t('Create, edit and delete own Dataset Query'),
-    ),
-    "edit any dataset query" => array(
-      'title' => t('Edit any Dataset Query'),
-      'description' => t('Permission for editing own and published queries.'),
-    ),
-    "delete any dataset query" => array(
-      'title' => t('Delete any Dataset Query'),
-      'description' => t('Permission for deleting own and published queries.'),
-    ),
+  ),
+    "edit delete any dataset query" => array(
+      'title' => t('Edit and delete any Dataset Query'),
+      'description' => t('Permission for editing and deleting own and published queries.'),
+  ),
     "publish dataset query" => array(
       'title' => t('Publish Dataset Query'),
       'description' => t('Edition permission on the query is required to be effectively allowed to publish it.'),
-    ),
+  ),
   );
-  
+
   return $perms;
 }
 
@@ -341,10 +337,12 @@ function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
   global $user;
   if (_mica_datasets_node_access($dataset_node, 'dataset', 'view')) {
     if (mica_dataset_dataset_participant_variables($dataset_node->nid) !== FALSE) {
-      if($op == 'update') {
-        return $user->uid != 0;
+      if($op == 'view') {
+        return user_access('view any dataset query');
       }
-      return TRUE;
+      if($op == 'update') {
+        return user_access('create edit delete own dataset query');
+      }
     }
   }
   return FALSE;
@@ -373,19 +371,28 @@ function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
     return FALSE;
   }
 
-  // Test whether query is runnable.
-  if($op == 'view' && mica_dataset_query_term_query($query) == FALSE) {
-    return FALSE;
+  // View query
+  if($op == 'view') {
+    $view_perm = user_access('view any dataset query');
+    if ($query->user_id == $user->uid) {
+      return $view_perm;
+    }
+    else {
+      return $view_perm && $query->published;
+    }
   }
 
-  if ($query->user_id == $user->uid) {
-    return TRUE;
+  // Edit/delete query
+  if ($op == 'update') {
+    $edit_perm = user_access('edit delete any dataset query');
+    if ($query->user_id == $user->uid) {
+      return user_access('create edit delete own dataset query') || ($edit_perm && $query->published);
+    }
+    else {
+      return $edit_perm && $query->published;
+    }
   }
-
-  if ($op == 'view') {
-    return $query->published;
-  }
-
+  
   return FALSE;
 }
 
@@ -444,19 +451,19 @@ function _mica_datasets_ensure_viewreference_arguments(&$node) {
  */
 function mica_datasets_node_delete($node) {
   if ($node->type === 'dataset') {
-    
+
     $dataset_id = $node->nid;
-    
+
     // remove queries and their terms
     $queries = MicaDatasetQueryManager::getPersistedQueries($dataset_id);
     if (!empty($queries)){
-      
+
       foreach ($queries as $query){
         $query_id = $query->id;
-        
+
         $terms = mica_dataset_query_term_query($query_id);
         if (!empty($terms)){
-          
+
           foreach($terms as $term){
             entity_delete('mica_dataset_query_term', $term->id);
           }
@@ -465,10 +472,10 @@ function mica_datasets_node_delete($node) {
         entity_delete('mica_dataset_query' , $query_id);
       }
     }
-    
+
     // flush cached queries
     MicaDatasetQueryManager::deleteQueries($dataset_id);
-    
+
     // remove variables
     $variables = mica_dataset_dataset_participant_variables($dataset_id);
     if (!empty($variables)){
@@ -476,27 +483,27 @@ function mica_datasets_node_delete($node) {
         node_delete($variable->nid);
       }
     }
-        
+
     // remove reference from studies
     $query = new EntityFieldQuery();
     $entities = $query->entityCondition('entity_type', 'node')
-                  ->entityCondition('bundle', 'study')
-                  ->fieldCondition('mica_dataset', 'nid', $dataset_id)
-                  ->execute();
+    ->entityCondition('bundle', 'study')
+    ->fieldCondition('mica_dataset', 'nid', $dataset_id)
+    ->execute();
     $studies = node_load_multiple(array_keys($entities['node']));
-    
+
     foreach($studies as $study_node){
-     
+       
       foreach ($study_node->mica_dataset[$study_node->language] as $key => $value) {
-      	if ($value['nid'] == $dataset_id) {
+        if ($value['nid'] == $dataset_id) {
           unset($study_node->mica_dataset[$study_node->language][$key]);
-          
+
           $connector = mica_dataset_connector_query($dataset_id, $study_node->nid);
           if ($connector) {
-          	$connector->delete();
+            $connector->delete();
           }
           break;
-      	}
+        }
       }
       node_save($study_node);
     }
@@ -1081,7 +1088,7 @@ function mica_datasets_node_view_alter(&$build) {
     $values['variable_id'] = $build['#node']->nid;
     $values['dataset_id'] = $build['#node']->field_dataset['und']['0']['nid'];
     $term = new MicaDatasetQueryTerm($values);
-    
+
     $build['statistics'] = array(
       '#type' => 'fieldset',
       '#title' => t('Statistics'),
