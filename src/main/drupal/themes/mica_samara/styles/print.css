@@ -13,9 +13,15 @@ body,
   max-width: none!important;
   width: 100%!important;
   border: none!important;
-  background: none!important;
+ /* background-color: #FFF;*/
 }
 
+#page {
+  -moz-border-radius: none!important;
+  -webkit-border-radius: none!important;
+  -moz-box-shadow: none!important;
+  -webkit-box-shadow: none!important;
+}
 /**
  * Elements
  */
@@ -24,9 +30,11 @@ body {
   color: #000;
   word-spacing: 1.1pt;
   line-height: 1.4;
+  /*background-color: #FFF;*/
 }
 body * {
   font-family: "Times New Roman", serif!important;
+  background-color: #FFF;
 }
 h1 {
   font-size: 20pt;
@@ -42,9 +50,15 @@ h5,
 h6 {
   font-size: 12pt;
 }
-a {
-  border-bottom: 1px solid #cfdde5;
+
+#info a{
+  background-color:#000;
+  color:#FFF;
 }
+
+/*a[href="http://obiba.org"]:before {
+   content: 'sadasd';
+}*/
 
 /**
  * Hidden
@@ -54,6 +68,7 @@ a {
 #header-wrapper,
 .breadcrumb,
 ul.links,
+ul.action-links,
 .messages,
 .tabs,
 #sidebar-first,
@@ -62,6 +77,7 @@ ul.links,
 ul.pager,
 a.feed-icon,
 h2#add-comment-form,
-form#comment-form {
+form#comment-form,
+#login-status {
   display: none!important;
 }
