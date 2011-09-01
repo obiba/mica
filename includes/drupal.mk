@@ -7,11 +7,11 @@
 # Modules dependencies
 #
 acl_version=7.x-1.0-beta3
-calendar_version=7.x-2.0-alpha1
+calendar_version=7.x-3.0-alpha1
 chain_menu_access_version=7.x-1.0-beta2
 content_access_version=7.x-1.2-beta1
 ctools_version=7.x-1.0-rc1
-date_version=7.x-2.0-alpha3
+date_version=7.x-2.0-alpha4
 drupal_version=7.7
 email_version=7.x-1.0
 entity_version=7.x-1.0-beta10
@@ -52,10 +52,6 @@ feeds_revision=5f9ebacf6972bc5fe05f967cb33af0ddecc39ea5
 # Patch for issue http://drupal.org/node/1138196
 references_revision=7.x-2.0-beta3
 references_patch=http://drupal.org/files/issues/references.node_type_property.patch
-
-# Patch for issue http://drupal.org/node/1119466
-views_revision=7.x-3.0-beta3
-views_patch=http://drupal.org/files/issues/1119466-empty-table-class.patch
 
 # Patch for issue http://drupal.org/node/1231540
 search_api_ranges_revision=7.x-1.2
@@ -136,7 +132,6 @@ drupal-stable-dev:
 	$(call drupal-checkout-module,http_client, 0)
 	$(call drupal-checkout-module,feeds, 0)
 	$(call drupal-patch-module,references, 0)
-#	$(call drupal-patch-module,views, 1)
 	$(call drupal-patch-module,search_api_ranges, 1)
 	$(call drupal-patch-module-file,menu_firstchild, 1)
 	

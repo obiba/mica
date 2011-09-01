@@ -70,7 +70,7 @@ function mica_standard_install() {
   ),
   array(
       'module' => 'views',
-      'delta' => 'events_calendar-block_1',
+      'delta' => 'events_calendar-block_2',
       'theme' => $mica_theme,
       'status' => 1,
       'weight' => 10,
@@ -150,6 +150,12 @@ function mica_standard_install() {
   ));
   $query->execute();
 
+  // set a title to upcoming events block
+  $query = db_update('block') //
+  ->fields(array('title' => 'Upcoming Events')) //
+  ->condition('delta', 'events_calendar-block_2', '=') //
+  ->execute();
+
   _mica_standard_no_region('user', 'new');
   _mica_standard_no_region('search', 'form');
   _mica_standard_no_region('search', 'form', $mica_theme);
@@ -160,7 +166,7 @@ function mica_standard_install() {
   variable_set('theme_default', $mica_theme);
 
   // Default pages
-  
+
   $ABOUT_AND_HOME_TEXT = 'Welcome to Mica, a powerful software application used to create web portals for epidemiological study consortia.
 
 Using Mica, consortia can build personalized web sites for publishing their research activities and their membership. Mica includes many domain-specific features such as study catalogues, data dictionary browsers, on-line data access request forms, community tools (forums, events, news) and others. Moreover, Mica includes a powerful data search engine that allows authenticated researchers to perform distributed queries on the content of each individual study data collection hosted by the OBiBa Opal database software (www.obiba.org).
@@ -168,7 +174,7 @@ Using Mica, consortia can build personalized web sites for publishing their rese
 Mica is based on the content management software Drupal (www.drupal.org) used by millions of websites worldwide. As such, a webmaster benefits from all the power and flexibility of Drupal, as well as the support of an extended developer community.
 
 Installing a site with Mica demo profile will help to illustrate its functionalities. This may serve as a good starting point for customizing your web portal.';
-  
+
   mica_standard_add_page('Mica', $ABOUT_AND_HOME_TEXT, 'about', 0, 'About', 50);
   mica_standard_add_page('Mica', $ABOUT_AND_HOME_TEXT, 'home', 1);
 
@@ -192,7 +198,7 @@ Consortium guidelines refer to recommendations made by Consortium working groups
 In this first document prepared by the Consortium, the authors strived to differentiate recommendations that are policy from those that are guidelines (even if some issues are clearly a mix of both). It is up to individual projects that join the Consortium to declare a clear plan, e.g., samples, criteria for being a sample, exons used, quality control, etc.
 
 Over time, the Consortium will generate best practices documents that will describe the current state-of-the-art, and propose modifications of the guidelines.');
-  
+
   // Login destination setup
   $rule = array(
     'triggers' => serialize(array('login'=>'login','logout'=>'logout')),
@@ -218,26 +224,26 @@ function mica_standard_add_page($title, $body, $alias, $sticky = 0, $link_title 
   $node->body = array(LANGUAGE_NONE => array(array(
     'value' => $body,
     'format' => 'full_html'
-  )));
-  $node->promote = 0;
-  $node->sticky = $sticky;
-  $node->language = LANGUAGE_NONE;
-  if (isset($link_title)) {
-    $node->menu['enabled'] = 1;
-    $node->menu['expanded'] = 1;
-    $node->menu['menu_name'] = 'main-menu';
-    $node->menu['weight'] = $weight;
-    $node->menu['link_title'] = $link_title;
-    $node->menu['description'] = '';
-  }
-  node_save($node);
+    )));
+    $node->promote = 0;
+    $node->sticky = $sticky;
+    $node->language = LANGUAGE_NONE;
+    if (isset($link_title)) {
+      $node->menu['enabled'] = 1;
+      $node->menu['expanded'] = 1;
+      $node->menu['menu_name'] = 'main-menu';
+      $node->menu['weight'] = $weight;
+      $node->menu['link_title'] = $link_title;
+      $node->menu['description'] = '';
+    }
+    node_save($node);
 
-  $path = array('alias' => $alias);
-  $path['source'] = 'node/' . $node->nid;
-  $path['language'] = LANGUAGE_NONE;
-  path_save($path);
+    $path = array('alias' => $alias);
+    $path['source'] = 'node/' . $node->nid;
+    $path['language'] = LANGUAGE_NONE;
+    path_save($path);
 
-  return $node;
+    return $node;
 }
 
 function mica_standard_update_node_body($nid, $body) {
@@ -246,8 +252,8 @@ function mica_standard_update_node_body($nid, $body) {
     $node->body = array(LANGUAGE_NONE => array(array(
       'value' => $body,
       'format' => 'full_html'
-    )));
-    node_save($node);  
+      )));
+      node_save($node);
   }
 }
 
