@@ -66,7 +66,9 @@ drupal-sites:
 	rmdir /usr/share/mica/sites/default && \
 	mv /usr/share/mica/sites/* /etc/mica/sites/ && \
 	rmdir /usr/share/mica/sites && \
-	ln -s /etc/mica/sites /usr/share/mica/sites
+	ln -s /etc/mica/sites /usr/share/mica/sites && \
+	mv /etc/mica/sites/default/files /var/lib/mica/default && \
+	ln -s /var/lib/mica/default/files /etc/mica/sites/default/files && \ 
 	if [ ! -e /etc/mica/sites/default/settings.php ]; then \
 		cd /etc/mica/sites/default && \
 		cp default.settings.php settings.php && \
