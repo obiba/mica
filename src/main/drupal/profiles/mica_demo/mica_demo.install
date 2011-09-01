@@ -118,20 +118,20 @@ function mica_demo_install() {
   user_save(null, $user);
   
   $user = array(
-    'name' => 'flapointe',
-    'mail' => 'flapointe@unknown.org',
+    'name' => 'mlapointe',
+    'mail' => 'mlapointe@study.org',
     'is_new' => TRUE,
     'pass' => 'password',
     'status' => 1,
     'roles' => array(
-    	'4' => 'data access committee officer',
+    	'5' => 'researcher',
     ),
   );
   user_save(null, $user);
   
   $user = array(
-    'name' => 'mlaurent',
-    'mail' => 'mlaurent@unknown.org',
+    'name' => 'flaurent',
+    'mail' => 'flaurent@study.org',
     'is_new' => TRUE,
     'pass' => 'password',
     'status' => 1,

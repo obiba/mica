@@ -14,8 +14,7 @@ function mica_data_access_user_default_permissions() {
   $permissions['create data_access_request content'] = array(
     'name' => 'create data_access_request content',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      0 => 'researcher',
     ),
     'module' => 'node',
   );
@@ -54,7 +53,7 @@ function mica_data_access_user_default_permissions() {
   $permissions['delete own data_access_request content'] = array(
     'name' => 'delete own data_access_request content',
     'roles' => array(
-      0 => 'authenticated user',
+      0 => 'researcher',
     ),
     'module' => 'node',
   );
@@ -93,7 +92,7 @@ function mica_data_access_user_default_permissions() {
   $permissions['edit own data_access_request content'] = array(
     'name' => 'edit own data_access_request content',
     'roles' => array(
-      0 => 'authenticated user',
+      0 => 'researcher',
     ),
     'module' => 'node',
   );
