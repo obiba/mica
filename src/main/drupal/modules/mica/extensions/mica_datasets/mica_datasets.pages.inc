@@ -412,7 +412,7 @@ function mica_datasets_dataset_connection_form_validate($form, &$form_state) {
 }
 
 function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
-  $connector_id = $form_state['build_info']['args'][0];
+  $connector = $form_state['build_info']['args'][0];
   $dataset_node = $form_state['build_info']['args'][1];
   $study_node = $form_state['build_info']['args'][2];
   $connection_type = $form_state['values'][MICA_CONNECTION_TYPE];
@@ -423,7 +423,7 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
 
       $values = array();
 
-      if ($connector_id == 0) {
+      if ($connector == 0) {
         $values['name'] = $dataset_node->title . ' -- ' . $study_node->title;
         $values['description'] = $form_state['values']['description'];
         $values['dataset_id'] = $dataset_node->nid;
@@ -438,7 +438,6 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
         }
       }
       else {
-        $connector = mica_dataset_connector_load($connector_id);
         $connector->description = $form_state['values']['description'];
         $connector->class = $connection_type;
         $connector->options = $options;
