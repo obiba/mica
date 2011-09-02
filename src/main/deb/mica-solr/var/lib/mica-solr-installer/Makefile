@@ -39,7 +39,7 @@ mica-solr-install-prepare:
 
 solr-install:
 	cd target && \
-	cp -r apache-solr-$(solr_version)/example /usr/share/mica-solr
+	cp -r apache-solr-$(solr_version)/example/* /usr/share/mica-solr
 	cd /usr/share && \
 	cp mica/sites/all/modules/search_api_solr/solrconfig.xml mica-solr/solr/conf/ && \
 	cp mica/sites/all/modules/search_api_solr/schema.xml mica-solr/solr/conf/ && \
