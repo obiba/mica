@@ -2,7 +2,14 @@
 
 function unit_certificate_page() {
   $unit_certificate_form="unit_certificate_form";
-  $public_key_file_exists=is_file(PUBLIC_KEY_FILE);
+  
+  if (is_private_path_defined()) {
+    $public_key_file_exists = is_file(PUBLIC_KEY_FILE);
+  } else {
+    $public_key_file_exists = FALSE;
+    set_missing_private_warning_message();
+  }
+  
   if ($public_key_file_exists) {
     $content=file_get_contents(PUBLIC_KEY_FILE);
   }
@@ -18,6 +25,11 @@ function unit_certificate_page() {
 }
 
 function unit_form($form, &$form_state) {
+  
+  if (!is_private_path_defined()) {
+  	set_missing_private_warning_message();
+  }
+    
   $unit_form="unit_form";
   $unit_configure="configure";
    
@@ -67,6 +79,7 @@ function unit_form($form, &$form_state) {
   $form[$unit_form][$unit_configure]['submit'] = array(
     '#type' => 'submit',
     '#value' => 'Save',
+    '#disabled' => !is_private_path_defined(),
   );
   return $form;
 }
@@ -111,4 +124,11 @@ function unit_form_validate($form, &$form_state) {
   if (strlen($tlcc)!=2 || !ctype_alpha($tlcc)) {
     form_set_error('two_letter_country_code',t('Bad syntax of two letter Country code'));
   }
+}
+
+function is_private_path_defined() {
+  return in_array('private', stream_get_wrappers());
+}
+function  set_missing_private_warning_message() {
+  drupal_set_message('Please define \'<b>Private file system path</b>\' in <a href="?q=admin/config/media/file-system" >Configuration > File system</a>', 'warning');
 }
