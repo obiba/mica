@@ -37,7 +37,7 @@ db_pass=rootadmin
 # Build
 #
 
-all: drupal mica htaccess
+all: drupal mica bckphtaccess htaccess
 #	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/default.settings.php
 #	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/settings.php
 
@@ -67,8 +67,10 @@ mica-install:
 		rm -rf profiles/minimal ; \
 	fi
 	
-htaccess:
+bckphtaccess:
 	cp target/$(micadir)/.htaccess target/$(micadir)/.htaccess_bak
+	
+htaccess:
 	sed 's/# RewriteBase \/drupal/RewriteBase \/mica/' target/$(micadir)/.htaccess > target/$(micadir)/.htaccess_new
 	mv target/$(micadir)/.htaccess_new target/$(micadir)/.htaccess 
 	
