@@ -74,7 +74,7 @@ htaccess:
 	
 	@echo "\n"
 	@echo "***************************************************************************************"
-	@echo "* Module "rewrite" is required in apache for enable drupal clean urls,                  *"
+	@echo "* Module 'rewrite' is required in apache for enable drupal clean urls,                  *"
 	@echo "* execute following commands (debian-based) to install this module                    *"
 	@echo "*                                                                                     *"
 	@echo "* sudo a2enmod rewrite                                                                *"
