@@ -4,15 +4,40 @@ function mica_datashield_menu() {
   $items = array();
 
   $items['node/%node/datashield'] = array(
-      'title' => 'DataSHIELD',
       'access callback' => '_mica_datasets_node_queries_access',
       'access arguments' => array(1,'view'),
       'page callback' => 'drupal_get_form',
       'page arguments' => array('mica_datashield_form', 1),
-      'weight' => 7,
-      'type' => MENU_LOCAL_ACTION,
+      'type' => MENU_CALLBACK,
       'file' => 'mica_datashield.pages.inc',
   );
 
   return $items;
+}
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function mica_datashield_node_view_alter(&$build) {
+
+  if ($build['#view_mode'] == 'full' && $build['#bundle'] == 'dataset') {
+
+    $build['datashield_section'] = array(
+        	'#type' => 'container',
+        	'#attributes' => array(
+                'style' => 'display: table-cell',
+            ),
+    		'#weight' => -5,
+    );
+    $build['datashield_section']['datashield_form'] = array(
+            '#type' => 'form',
+            '#action' => url('node/'. $build['#node']->nid . '/datashield'),
+    );
+    $build['datashield_section']['datashield_form']['submit'] = array(
+      	    '#type' => 'button',
+      	    '#value' => 'DataSHIELD',
+            '#weight' => 5,
+            '#access' => _mica_datasets_node_queries_access(node_load($build['#node']->nid), 'view'),
+    );
+  }
 }

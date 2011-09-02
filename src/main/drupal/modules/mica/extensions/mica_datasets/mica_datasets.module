@@ -85,13 +85,11 @@ function mica_datasets_menu() {
 
   // queries
   $items['node/%node/queries'] = array(
-      'title' => 'Queries',
       'access callback' => '_mica_datasets_node_queries_access',
       'access arguments' => array(1,'view'),
       'page callback' => 'mica_datasets_dataset_queries_page',
       'page arguments' => array(1),
-      'weight' => 7,
-      'type' => MENU_LOCAL_ACTION,
+      'type' => MENU_CALLBACK,
       'file' => 'mica_datasets.pages.query.inc',
   );
 
@@ -1100,5 +1098,24 @@ function mica_datasets_node_view_alter(&$build) {
     $build['statistics']['table'] = array(
       '#markup' => $term->termImpl()->view(),
     );
+  }
+  else if ($build['#view_mode'] == 'full' && $build['#bundle'] == 'dataset'){
+    $build['queries_section'] = array(
+    	'#type' => 'container',
+    	'#attributes' => array(
+            'style' => 'display: table-cell',
+        ),
+    	'#weight' => -10,
+    );  
+    $build['queries_section']['queries_form'] = array(
+        '#type' => 'form',
+        '#action' => url('node/'. $build['#node']->nid . '/queries'),
+    ); 
+  	$build['queries_section']['queries_form']['submit'] = array(
+  	    '#type' => 'button',
+  	    '#value' => 'Queries',
+        '#weight' => -10,
+        '#access' => _mica_datasets_node_queries_access(node_load($build['#node']->nid), 'update'),
+  	);
   }
 }
