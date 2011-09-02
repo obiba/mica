@@ -18,6 +18,7 @@ docdir="/usr/share/doc/${package_name}"
 upgradesdir="${docdir}/upgrades"
 configdir="/etc/mica-solr"
 default_configfile="${configdir}/conf"
+logdir="/var/log/${package_name}"
 
 OLDVERSION="$2"
 
@@ -28,6 +29,7 @@ case "$1" in
 
 		# Permissions
 		dpkg-statoverride --list $filesdir || dpkg-statoverride --add --force --update www-data www-data 0750 $filesdir
+		dpkg-statoverride --list $logdir || dpkg-statoverride --add --force --update www-data www-data 0750 $logdir
 
     ;;
 
