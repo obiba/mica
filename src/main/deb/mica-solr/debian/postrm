@@ -38,8 +38,6 @@ case "$1" in
 
 	if [ "$1" = "purge" ]; then
       
-		db_purge || true
-
 		rm -rf ${configdir} ${datadir} ${installerdir} ${cachedir} ${docdir} ${nukedir}
 
 	fi
