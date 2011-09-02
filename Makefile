@@ -37,7 +37,7 @@ db_pass=rootadmin
 # Build
 #
 
-all: drupal mica
+all: drupal mica htaccess
 #	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/default.settings.php
 #	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/settings.php
 
@@ -66,7 +66,22 @@ mica-install:
 		rm -rf profiles/standard && \
 		rm -rf profiles/minimal ; \
 	fi
-
+	
+htaccess:
+	cp target/$(micadir)/.htaccess target/$(micadir)/.htaccess_bak
+	sed 's/# RewriteBase \/drupal/RewriteBase \/mica/' target/$(micadir)/.htaccess > target/$(micadir)/.htaccess_new
+	mv target/$(micadir)/.htaccess_new target/$(micadir)/.htaccess 
+	
+	@echo "\n"
+	@echo "***************************************************************************************"
+	@echo "* Module "rewrite" is required in apache for enable drupal clean urls,                  *"
+	@echo "* execute following commands (debian-based) to install this module                    *"
+	@echo "*                                                                                     *"
+	@echo "* sudo a2enmod rewrite                                                                *"
+	@echo "* sudo service apache2 restart                                                        *"
+	@echo "*                                                                                     *"
+	@echo "***************************************************************************************"
+	
 #
 # Deploy
 #
