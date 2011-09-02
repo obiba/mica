@@ -9,16 +9,7 @@ solr_version=1.4.1
 # Drush install
 #
 
-all: drush
-
-drush:
-	@echo "**** Drush install"
-	if [ ! -e $(drushexec) ]; then \
-	  cd /var/cache/mica-installer && \
-	  wget -q http://ftp.drupal.org/files/projects/drush-7.x-4.4.tar.gz && \
-	  tar xzf drush-7.x-4.4.tar.gz ; \
-	fi
-	$(drushexec) version
+all: mica-solr-install-prepare
 
 #
 # Install
@@ -26,10 +17,10 @@ drush:
 
 install: 
 ifndef oldversion
-	@echo "**** Mica distribution install" 
+	@echo "**** Mica Solr install" 
 	make mica-solr-install
 else
-	@echo "**** Mica modules/themes/profiles upgrade" 
+	@echo "**** Mica Solr upgrade" 
 	make mica-install
 endif
 
@@ -37,16 +28,18 @@ endif
 # Mica Solr install
 #
 
-mica-solr-install: mica-solr-install-prepare solr-install 
+mica-solr-install: solr-install 
 
 mica-solr-install-prepare:
+	@echo "**** Downloading Apache Solr version $(solr_version)"
 	mkdir -p target	
 	cd target && \
 	wget -q http://apache.raffsoftware.com//lucene/solr/$(solr_version)/apache-solr-$(solr_version).tgz && \
-	tar xzf apache-solr-$(solr_version).tgz && \
-	cp -r apache-solr-$(solr_version)/example /usr/share/mica-solr
+	tar xzf apache-solr-$(solr_version).tgz
 
 solr-install:
+	cd target && \
+	cp -r apache-solr-$(solr_version)/example /usr/share/mica-solr
 	cd /usr/share && \
 	cp mica/sites/all/modules/search_api_solr/solrconfig.xml mica-solr/solr/conf/ && \
 	cp mica/sites/all/modules/search_api_solr/schema.xml mica-solr/solr/conf/ && \
