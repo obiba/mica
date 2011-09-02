@@ -30,6 +30,7 @@ sqlfile="${docdir}database/database.mysql"
 upgradesdir="${docdir}upgrades/"
 configdir="/etc/${package_name}/"
 cachedir="/var/cache/${package_name}-installer"
+logdir="/var/log/${package_name}"
 
 webserver="apache2"
 
@@ -38,7 +39,7 @@ case "$1" in
 
 	if [ "$1" = "purge" ]; then
       
-		rm -rf ${configdir} ${datadir} ${installerdir} ${cachedir} ${docdir} ${nukedir}
+		rm -rf ${configdir} ${datadir} ${installerdir} ${cachedir} ${docdir} ${nukedir} ${logdir}
 
 	fi
 

@@ -3,3 +3,4 @@
 /usr/share/mica-solr
 /usr/share/doc/mica-solr
 /var/lib/mica-solr/data
+/var/log/mica-solr

@@ -43,6 +43,8 @@ solr-install:
 	cd /usr/share && \
 	cp mica/sites/all/modules/search_api_solr/solrconfig.xml mica-solr/solr/conf/ && \
 	cp mica/sites/all/modules/search_api_solr/schema.xml mica-solr/solr/conf/ && \
+	rmdir mica-solr/logs && \
+	ln -s /var/log/mica-solr /usr/share/mica-solr/logs && \
 	cd /etc && \
 	mv /usr/share/mica-solr/solr/conf mica-solr && \
 	ln -s /etc/mica-solr/conf /usr/share/mica-solr/solr/conf && \
