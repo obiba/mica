@@ -2015,3 +2015,22 @@ img.right, img[align="right"] {
 th .highlight {
   font-weight: bold;
 }
+
+.form-extra_task_button{
+  margin: 0 5px 0 0;
+  padding: 5px 11px;
+  /*background: url(../images/button.png) repeat-x top left;*/
+  background-color:#5D87A1;
+  /*border: 1px solid #086785;*/
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -khtml-border-radius: 8px; 
+  border-radius: 8px;
+  cursor: pointer;
+  color:#FFF;
+  font-family: "Nunito", arial, sans-serif;
+  font-size:15px;
+}
+.form-extra_task_button:hover{
+  background-color:#afc3d0;
+}

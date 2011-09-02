@@ -1103,7 +1103,7 @@ function mica_datasets_node_view_alter(&$build) {
     $build['queries_section'] = array(
     	'#type' => 'container',
     	'#attributes' => array(
-            'style' => 'display: table-cell',
+            'style' => 'display: table-cell;float:right',
         ),
     	'#weight' => -10,
     );  
@@ -1113,6 +1113,7 @@ function mica_datasets_node_view_alter(&$build) {
     ); 
   	$build['queries_section']['queries_form']['submit'] = array(
   	    '#type' => 'button',
+  	    '#button_type' => 'extra_task_button',
   	    '#value' => 'Queries',
         '#weight' => -10,
         '#access' => _mica_datasets_node_queries_access(node_load($build['#node']->nid), 'update'),
