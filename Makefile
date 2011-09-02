@@ -71,7 +71,7 @@ bckphtaccess:
 	cp target/$(micadir)/.htaccess target/$(micadir)/.htaccess_bak
 	
 htaccess:
-	sed 's/# RewriteBase \/drupal/RewriteBase \/mica/' target/$(micadir)/.htaccess > target/$(micadir)/.htaccess_new
+	sed '/# RewriteBase \/drupal/ a RewriteBase \/mica' target/$(micadir)/.htaccess > target/$(micadir)/.htaccess_new
 	mv target/$(micadir)/.htaccess_new target/$(micadir)/.htaccess 
 	
 	@echo "\n"
