@@ -31,13 +31,14 @@ if [ "$DPKG_DEBUG" = "developer" ]; then
 fi
 
 package_name="mica"
-datadir="/var/lib/${package_name}-installer/"
+installerdir="/var/lib/${package_name}-installer/"
+datadir="/var/lib/${package_name}/"
 backupdir="${datadir}backups/"
 nukedir="/usr/share/${package_name}/"
 docdir="/usr/share/doc/${package_name}/"
 sqlfile="${docdir}database/database.mysql"
 upgradesdir="${docdir}upgrades/"
-configdir="/etc/mica/"
+configdir="/etc/${package_name}/"
 configfile="${configdir}conf.php"
 includefile="${configdir}apache.conf"
 dbconfigfile="${configdir}/sites/default/dbconfig.php"
@@ -69,7 +70,7 @@ case "$1" in
         
 		db_purge || true
 
-		rm -rf ${configdir} ${datadir} ${cachedir} ${docdir} ${nukedir}
+		rm -rf ${configdir} ${datadir} ${installerdir} ${cachedir} ${docdir} ${nukedir}
 
 	fi
 
