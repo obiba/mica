@@ -46,8 +46,6 @@ solr-install:
 	cd /etc && \
 	mv /usr/share/mica-solr/solr/conf mica-solr && \
 	ln -s /etc/mica-solr/conf /usr/share/mica-solr/solr/conf && \
-	cd /var/lib && \
-	mkdir -p mica-solr/data && \
 	ln -s /var/lib/mica-solr/data /etc/mica-solr/conf/data
 
 #
