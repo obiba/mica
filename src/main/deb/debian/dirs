@@ -1,4 +1,5 @@
-var/cache/mica-installer
-etc/mica/profiles
-etc/mica/sites/default
+/var/cache/mica-installer
+/etc/mica/profiles
+/etc/mica/sites/default
 /usr/share/doc/mica
+/var/lib/mica/default
