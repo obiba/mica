@@ -3,6 +3,8 @@
 
 set -e
 
+. /usr/share/debconf/confmodule
+
 if [ "$DPKG_DEBUG" = "developer" ]; then
     set -x
 fi

@@ -126,7 +126,7 @@ debuild_opts=-us -uc
 
 debian: deb-prepare deb	
 	cd target/deb/mica && debuild $(debuild_opts) -b
-	#cd target/deb/mica-solr && debuild $(debuild_opts) -b
+	cd target/deb/mica-solr && debuild $(debuild_opts) -b
 	
 deb-prepare:
 	rm -rf target/deb
