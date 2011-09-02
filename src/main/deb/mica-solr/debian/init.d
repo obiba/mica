@@ -37,7 +37,7 @@ SCRIPTNAME=/etc/init.d/$NAME
 # Depend on lsb-base (>= 3.0-6) to ensure that this file is present.
 . /lib/lsb/init-functions
 
-DAEMON_ARGS="--name=$NAME --MICA_SOLR_USER=$MICA_SOLR_USER --pidfile=$PIDFILE --inherit --output=/var/log/$NAME/logs/stdout.log --chdir=/usr/share/$NAME"
+DAEMON_ARGS="--name=$NAME --MICA_SOLR_USER=$MICA_SOLR_USER --pidfile=$PIDFILE --inherit --output=/var/log/$NAME/stdout.log --chdir=/usr/share/$NAME"
 
 # Get the status of the daemon process
 get_daemon_status()
