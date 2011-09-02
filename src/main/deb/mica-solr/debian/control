@@ -9,7 +9,7 @@ Homepage: http://www.obiba.org
 Package: mica-solr
 Architecture: all
 Pre-Depends: debconf
-Depends: wget, make, mica
+Depends: wget, make, mica, openjdk-6-jre-headless | java6-runtime-headless
 Description: Apache Solr for OBiBa study management framework
  Mica is a dynamic web site platform which allows an individual or
  community of users to publish, manage and organize a study
