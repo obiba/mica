@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Debconf config script for Mica Solr
+
+set -e
+
+
+# Source debconf library
+. /usr/share/debconf/confmodule
+
+if [ "$DPKG_DEBUG" = "developer" ]; then
+    set -x
+fi
+ 
+##################################################
+# Begin installation directories definition block#
+##################################################
+package_name="mica-solr"
+datadir="/var/lib/${package_name}"
+backupdir="${datadir}/backups/"
+docdir="/usr/share/doc/${package_name}"
+upgradesdir="${docdir}/upgrades"
+configdir="/etc/mica-solr"
+configfile="${configdir}/conf.php"
+includefile="${configdir}/apache.conf"
+################################################
+# End installation directories definition block #
+################################################
+
+########################################################################
+# The actual configuration
+
+OLDVERSION="$2"
+
+db_stop
+
+exit 0

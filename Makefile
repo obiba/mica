@@ -125,41 +125,45 @@ debuild_opts=-us -uc
 #debuild_opts=
 
 debian: deb-prepare deb	
-	cd target/deb && debuild $(debuild_opts) -b
+	cd target/deb/mica && debuild $(debuild_opts) -b
+	#cd target/deb/mica-solr && debuild $(debuild_opts) -b
 	
 deb-prepare:
 	rm -rf target/deb
-	mkdir -p target/deb/debian
-	mkdir -p target/deb/usr/share/doc/mica
-	mkdir -p target/deb/usr/share
-	mkdir -p target/deb/etc/mica/sites
-	mkdir -p target/deb/var/lib/mica-installer
+	cp -r src/main/deb target
+	rm -rf `find target/deb -type d -name .svn`
 	
 deb: deb-install deb-changelog
 	
 deb-install:
-	cp src/main/deb/debian/* target/deb/debian
-	cp src/main/deb/etc/mica/* target/deb/etc/mica
-	cp src/main/deb/var/lib/mica-installer/* target/deb/var/lib/mica-installer
-	echo "version=$(version)" >> target/deb/var/lib/mica-installer/Makefile
-	echo "deb_version=$(deb_version)" >> target/deb/var/lib/mica-installer/Makefile
+	echo "version=$(version)" >> target/deb/mica/var/lib/mica-installer/Makefile
+	echo "deb_version=$(deb_version)" >> target/deb/mica/var/lib/mica-installer/Makefile
+	echo "version=$(version)" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
+	echo "deb_version=$(deb_version)" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
 ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
-	echo "stability=unstable" >> target/deb/var/lib/mica-installer/Makefile
+	echo "stability=unstable" >> target/deb/mica/var/lib/mica-installer/Makefile
+	echo "stability=unstable" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
 else
-	echo "stability=stable" >> target/deb/var/lib/mica-installer/Makefile
+	echo "stability=stable" >> target/deb/mica/var/lib/mica-installer/Makefile
+	echo "stability=stable" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
 endif
-	mkdir -p target/deb/var/cache/mica-installer
-	$(call deb-package,mica)
-	$(call deb-package,mica_standard)
-	$(call deb-package,mica_demo)
-	$(call deb-package,mica_samara)
+	$(call deb-package,mica,mica)
+	$(call deb-package,mica,mica_standard)
+	$(call deb-package,mica,mica_demo)
+	$(call deb-package,mica,mica_samara)
+	$(call deb-package,mica-solr,mica)
 
 deb-changelog:
-	echo "mica ($(deb_version)) unstable; urgency=low" > target/deb/debian/changelog
-	echo "" >> target/deb/debian/changelog
-	echo "  * See http://wiki.obiba.org/ for more details." >> target/deb/debian/changelog
-	echo "" >> target/deb/debian/changelog
-	echo " -- OBiBa <info@obiba.org>  $(deb_date)" >> target/deb/debian/changelog
+	echo "mica ($(deb_version)) unstable; urgency=low" > target/deb/mica/debian/changelog
+	echo "" >> target/deb/mica/debian/changelog
+	echo "  * See http://wiki.obiba.org/ for more details." >> target/deb/mica/debian/changelog
+	echo "" >> target/deb/mica/debian/changelog
+	echo " -- OBiBa <info@obiba.org>  $(deb_date)" >> target/deb/mica/debian/changelog
+	echo "mica-solr ($(deb_version)) unstable; urgency=low" > target/deb/mica-solr/debian/changelog
+	echo "" >> target/deb/mica-solr/debian/changelog
+	echo "  * See http://wiki.obiba.org/ for more details." >> target/deb/mica-solr/debian/changelog
+	echo "" >> target/deb/mica-solr/debian/changelog
+	echo " -- OBiBa <info@obiba.org>  $(deb_date)" >> target/deb/mica-solr/debian/changelog
 
 #
 # Site
@@ -240,7 +244,7 @@ make-package = cd target/$(micadir)/$(1) && \
 	mv target/$(micadir)/$(1)/*.zip target 
 
 # deb-package: echo the modules versions in debian Makefile
-deb-package = echo "$(1)_version=$($(1)_version)" >> target/deb/var/lib/mica-installer/Makefile
+deb-package = echo "$(2)_version=$($(2)_version)" >> target/deb/$(1)/var/lib/$(1)-installer/Makefile
 
 # make-git function: propagate svn changes to git
 make-git = cd target/git && \

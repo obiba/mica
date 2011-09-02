@@ -1,0 +1,4 @@
+/var/cache/mica-solr-installer
+/etc/mica-solr/conf
+/usr/share/doc/mica-solr
+/var/lib/mica-solr/data

@@ -1,0 +1,12 @@
+#! /bin/bash
+# prerm script for ${package_name}
+#
+
+set -e
+
+. /usr/share/debconf/confmodule
+. /usr/share/dbconfig-common/dpkg/prerm
+
+
+exit 0
+
