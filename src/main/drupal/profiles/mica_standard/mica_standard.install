@@ -43,7 +43,7 @@ function mica_standard_install() {
       'weight' => 30,
       'region' => 'footer',
       'visibility' => 1,
-      'pages' => '',
+      'pages' => '*',
       'cache' => -1,
   ),
   array(
@@ -54,7 +54,7 @@ function mica_standard_install() {
       'weight' => 30,
       'region' => 'header',
       'visibility' => 1,
-      'pages' => '',
+      'pages' => '*',
       'cache' => -1,
   ),
   array(
