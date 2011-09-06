@@ -25,7 +25,7 @@ function mica_datashield_node_view_alter(&$build) {
     $build['datashield_section'] = array(
         	'#type' => 'container',
         	'#attributes' => array(
-                'style' => 'display: table-cell;float:right;',
+                'class' => 'extra_task',
             ),
     		'#weight' => -5,
     );

@@ -2016,6 +2016,10 @@ th .highlight {
   font-weight: bold;
 }
 
+.extra_task{
+	display: inline;
+	float:right;
+}
 .form-extra_task_button{
   margin: 0 5px 0 0;
   padding: 5px 11px;
@@ -2026,10 +2030,13 @@ th .highlight {
   -webkit-border-radius: 8px;
   -khtml-border-radius: 8px; 
   border-radius: 8px;
+  /*border-bottom:1px solid #9f9f9f;*/
   cursor: pointer;
   color:#FFF;
   font-family: "Nunito", arial, sans-serif;
   font-size:15px;
+  box-shadow:2px 3px 3px #333;
+  /*text-shadow: 0 1px 1px black;*/
 }
 .form-extra_task_button:hover{
   background-color:#afc3d0;
