@@ -23,12 +23,10 @@ DAEMON_ARGS=""             # Arguments to run the daemon with
 TMPDIR=/tmp/$NAME
 PIDFILE=$TMPDIR/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
+JAVA=/usr/bin/java
 
 # Exit if the package is not installed
 [ -x $DAEMON ] || exit 0
-
-# Read configuration variable file if it is present
-[ -r /etc/default/$NAME ] && . /etc/default/$NAME
 
 # Load the VERBOSE setting and other rcS variables
 . /lib/init/vars.sh
@@ -37,7 +35,7 @@ SCRIPTNAME=/etc/init.d/$NAME
 # Depend on lsb-base (>= 3.0-6) to ensure that this file is present.
 . /lib/lsb/init-functions
 
-DAEMON_ARGS="--name=$NAME --MICA_SOLR_USER=$MICA_SOLR_USER --pidfile=$PIDFILE --inherit --output=/var/log/$NAME/stdout.log --chdir=/usr/share/$NAME"
+DAEMON_ARGS="--name=$NAME --user=$MICA_SOLR_USER --pidfile=$PIDFILE --inherit --output=/var/log/$NAME/stdout.log --chdir=/usr/share/$NAME"
 
 # Get the status of the daemon process
 get_daemon_status()
