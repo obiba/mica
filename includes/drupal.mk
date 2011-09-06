@@ -27,7 +27,7 @@ link_version=7.x-1.0-alpha3
 login_destination_version=7.x-1.0
 menu_firstchild_version=7.x-1.0
 multiselect_version=7.x-1.8
-name_version=7.x-1.0-beta1
+name_version=7.x-1.3
 noderefcreate_version=7.x-1.0
 panels_version=7.x-3.0-alpha3
 relation_version=7.x-1.0-alpha2
@@ -35,9 +35,9 @@ search_api_version=7.x-1.0-beta10
 search_api_ranges_version=7.x-1.2
 search_api_solr_version=7.x-1.0-beta3
 strongarm_version=7.x-2.0-beta2
-views_data_export_version=7.x-3.0-beta4
+views_data_export_version=7.x-3.0-beta5
 views_version=7.x-3.0-rc1
-viewreference_version=7.x-3.0
+viewreference_version=7.x-3.1
 
 
 #
