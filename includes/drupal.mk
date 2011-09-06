@@ -27,7 +27,8 @@ link_version=7.x-1.0-alpha3
 login_destination_version=7.x-1.0
 menu_firstchild_version=7.x-1.0
 multiselect_version=7.x-1.8
-name_version=7.x-1.0-beta1
+name_version=7.x-1.3
+namedb_version=7.x-1.0-beta2
 noderefcreate_version=7.x-1.0
 panels_version=7.x-3.0-alpha3
 relation_version=7.x-1.0-alpha2
@@ -97,6 +98,7 @@ drupal-download:
 		menu_firstchild-$(menu_firstchild_version) \
 		multiselect-$(multiselect_version) \
 		name-$(name_version) \
+		namedb-$(namedb_version) \
 		noderefcreate-$(noderefcreate_version) \
 		panels-$(panels_version) \
 		relation-$(relation_version) \
