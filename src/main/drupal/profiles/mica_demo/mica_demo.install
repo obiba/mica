@@ -17,7 +17,7 @@ function mica_demo_install() {
     'pass' => 'password',
     'status' => 1,
     'roles' => array(
-      '5' => 'consortium administrator'
+      '6' => 'consortium administrator'
     ),
   );
   user_save(null, $user);
@@ -30,7 +30,7 @@ function mica_demo_install() {
     'pass' => 'password',
     'status' => 1,
     'roles' => array(
-      '6' => 'study administrator',
+      '7' => 'study administrator',
     ),
   );
   user_save(null, $user);  
@@ -42,7 +42,7 @@ function mica_demo_install() {
     'pass' => 'password',
     'status' => 1,
     'roles' => array(
-      '6' => 'study administrator',
+      '7' => 'study administrator',
     ),
   );
   user_save(null, $user);
@@ -54,7 +54,7 @@ function mica_demo_install() {
     'pass' => 'password',
     'status' => 1,
     'roles' => array(
-      '6' => 'study administrator',
+      '7' => 'study administrator',
     ),
   );
   user_save(null, $user);
@@ -67,7 +67,7 @@ function mica_demo_install() {
     'pass' => 'password',
     'status' => 1,
     'roles' => array(
-      '6' => 'study administrator',
+      '7' => 'study administrator',
     ),
   );
   user_save(null, $user);
@@ -79,7 +79,7 @@ function mica_demo_install() {
     'pass' => 'password',
     'status' => 1,
     'roles' => array(
-      '6' => 'study administrator',
+      '7' => 'study administrator',
     ),
   );
   user_save(null, $user);
@@ -91,7 +91,7 @@ function mica_demo_install() {
     'pass' => 'password',
     'status' => 1,
     'roles' => array(
-      '6' => 'study administrator',
+      '7' => 'study administrator',
     ),
   );
   user_save(null, $user);
