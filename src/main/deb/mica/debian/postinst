@@ -47,6 +47,8 @@ case "$1" in
 			restart="$i $restart"
 	    fi
       
+      	a2enmod rewrite
+      
 		servers="apache2"
 		. /usr/share/wwwconfig-common/restart.sh
 
