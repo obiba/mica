@@ -9,7 +9,7 @@ function mica_demo_install() {
   include_once DRUPAL_ROOT . '/profiles/mica_standard/mica_standard.install';
   mica_standard_install();
 
-  // consortium users
+  // consortium administrators
   $user = array(
     'name' => 'mica',
     'mail' => 'admin@consortium.org',
@@ -22,43 +22,6 @@ function mica_demo_install() {
   );
   user_save(null, $user);
 
-  // daco members
-  $user = array(
-    'name' => 'pburton',
-    'mail' => 'pb51@leicester.ac.uk',
-    'is_new' => TRUE,
-    'pass' => 'password',
-    'status' => 1,
-    'roles' => array(
-      '7' => 'study administrator',
-    ),
-  );
-  user_save(null, $user);  
-  
-  $user = array(
-    'name' => 'jholmen',
-    'mail' => 'jostein.holmen@ntnu.no',
-    'is_new' => TRUE,
-    'pass' => 'password',
-    'status' => 1,
-    'roles' => array(
-      '7' => 'study administrator',
-    ),
-  );
-  user_save(null, $user);
-  
-  $user = array(
-    'name' => 'cgieger',
-    'mail' => 'christian.gieger@helmholtz-muenchen.de',
-    'is_new' => TRUE,
-    'pass' => 'password',
-    'status' => 1,
-    'roles' => array(
-      '7' => 'study administrator',
-    ),
-  );
-  user_save(null, $user);
-  
   // study administrators
   $user = array(
     'name' => 'ukb',
@@ -117,6 +80,7 @@ function mica_demo_install() {
   );
   user_save(null, $user);
   
+  // researchers
   $user = array(
     'name' => 'mlapointe',
     'mail' => 'mlapointe@study.org',
@@ -129,6 +93,7 @@ function mica_demo_install() {
   );
   user_save(null, $user);
   
+  // dacos
   $user = array(
     'name' => 'flaurent',
     'mail' => 'flaurent@study.org',
