@@ -78,6 +78,7 @@ ul.pager,
 a.feed-icon,
 h2#add-comment-form,
 form#comment-form,
-#login-status {
+#login-status,
+#block-mica-powered-by-mica {
   display: none!important;
 }
