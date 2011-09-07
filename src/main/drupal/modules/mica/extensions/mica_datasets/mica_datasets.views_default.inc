@@ -26,6 +26,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -50,11 +51,11 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
@@ -152,6 +153,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -220,11 +222,11 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
@@ -240,11 +242,11 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_full_name']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_full_name']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_full_name']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_full_name']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_full_name']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_full_name']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_full_name']['element_default_classes'] = 1;
@@ -266,11 +268,11 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_study_country']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_study_country']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_study_country']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_study_country']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_study_country']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_study_country']['element_default_classes'] = 1;
@@ -290,11 +292,11 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['element_default_classes'] = 1;
@@ -378,6 +380,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
@@ -437,11 +440,11 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
   $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
@@ -459,12 +462,12 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['body']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['body']['alter']['external'] = 0;
   $handler->display->display_options['fields']['body']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['body']['alter']['trim'] = 1;
   $handler->display->display_options['fields']['body']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['body']['alter']['max_length'] = '200';
   $handler->display->display_options['fields']['body']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['body']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['body']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['body']['alter']['trim'] = 1;
   $handler->display->display_options['fields']['body']['alter']['html'] = 1;
   $handler->display->display_options['fields']['body']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['body']['element_default_classes'] = 1;
@@ -576,14 +579,19 @@ function mica_datasets_views_default_views() {
     'field_repeatable' => 'field_repeatable',
     'field_value_type' => 'field_value_type',
     'field_dataset' => 'field_dataset',
+    'field_dataset_nid' => 'field_dataset_nid',
   );
-  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['default'] = 'title';
   $handler->display->display_options['style_options']['info'] = array(
     'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
     ),
     'field_label' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
     ),
@@ -591,19 +599,25 @@ function mica_datasets_views_default_views() {
       'align' => '',
       'separator' => '',
     ),
-    'field_repeatable' => array(
-      'sortable' => 0,
+    'field_value_type' => array(
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
     ),
-    'field_value_type' => array(
-      'sortable' => 0,
+    'field_repeatable' => array(
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
     ),
     'field_dataset' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
+    'field_dataset_nid' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -632,6 +646,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
   $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
@@ -642,6 +657,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
   /* Field: Node: Label */
   $handler->display->display_options['fields']['field_label']['id'] = 'field_label';
@@ -793,8 +809,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['fields'] = array(
-    'title' => 'title',
-    'field_label' => 'field_label',
+    'search_api_aggregation_1' => 'search_api_aggregation_1',
   );
 
   /* Display: Page */

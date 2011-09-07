@@ -25,31 +25,6 @@ function mica_datasets_views_api() {
 }
 
 /**
- * Implementation of hook_node_info().
- */
-function mica_datasets_node_info() {
-  $items = array(
-    'dataset' => array(
-      'name' => t('Dataset'),
-      'base' => 'mica_datasets',
-      'description' => t('Dataset resource.'),
-      'has_title' => '1',
-      'title_label' => t('Name'),
-      'help' => '',
-    ),
-    'participant_variable' => array(
-      'name' => t('Participant Variable'),
-      'base' => 'mica_datasets',
-      'description' => 'Description of participant data.',
-      'has_title' => '1',
-      'title_label' => t('Name'),
-      'help' => '',
-	),
-	);
-	return $items;
-}
-
-/**
  * Implementation of hook_default_search_api_index().
  */
 function mica_datasets_default_search_api_index() {
@@ -62,12 +37,18 @@ function mica_datasets_default_search_api_index() {
     "entity_type" : "node",
     "options" : {
       "cron_limit" : "50",
-      "index_directly" : 0,
+      "index_directly" : 1,
       "fields" : {
         "search_api_language" : {
           "name" : "Item language",
           "indexed" : 1,
           "type" : "string",
+          "boost" : "1.0"
+        },
+        "search_api_aggregation_1" : {
+          "name" : "Title and Label",
+          "indexed" : 1,
+          "type" : "text",
           "boost" : "1.0"
         },
         "nid" : { "name" : "Node ID", "indexed" : 1, "type" : "integer", "boost" : "1.0" },
@@ -84,7 +65,7 @@ function mica_datasets_default_search_api_index() {
           "type" : "string",
           "boost" : "1.0"
         },
-        "title" : { "name" : "Title", "indexed" : 1, "type" : "text", "boost" : "1.0" },
+        "title" : { "name" : "Title", "indexed" : 1, "type" : "string", "boost" : "1.0" },
         "language" : { "name" : "Language", "indexed" : 0, "type" : "string", "boost" : "1.0" },
         "url" : { "name" : "URL", "indexed" : 0, "type" : "uri", "boost" : "1.0" },
         "edit_url" : { "name" : "Edit URL", "indexed" : 0, "type" : "uri", "boost" : "1.0" },
@@ -189,7 +170,7 @@ function mica_datasets_default_search_api_index() {
           "entity_type" : "node",
           "boost" : "1.0"
         },
-        "field_label" : { "name" : "Label", "indexed" : 1, "type" : "text", "boost" : "1.0" },
+        "field_label" : { "name" : "Label", "indexed" : 1, "type" : "string", "boost" : "1.0" },
         "field_repeatable" : {
           "name" : "Repeatable",
           "indexed" : 1,
@@ -221,7 +202,7 @@ function mica_datasets_default_search_api_index() {
           "type" : "text",
           "boost" : "1.0"
         },
-        "field_original_field_label" : { "name" : "Label", "indexed" : 0, "type" : "text", "boost" : "1.0" },
+        "field_original_field_label" : { "name" : "Label", "indexed" : 0, "type" : "string", "boost" : "1.0" },
         "field_original_field_name" : { "name" : "Field Name", "indexed" : 0, "type" : "text", "boost" : "1.0" },
         "mica_dataset" : {
           "name" : "Datasets",
@@ -599,7 +580,122 @@ function mica_datasets_default_search_api_index() {
           }
         },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : null },
+        "search_api_alter_add_aggregation" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : {
+            "fields" : { "search_api_aggregation_1" : {
+                "name" : "Title and Label",
+                "type" : "fulltext",
+                "fields" : {
+                  "title" : "title",
+                  "field_label" : "field_label",
+                  "search_api_language" : 0,
+                  "search_api_aggregation_1" : 0,
+                  "nid" : 0,
+                  "vid" : 0,
+                  "is_new" : 0,
+                  "type" : 0,
+                  "language" : 0,
+                  "url" : 0,
+                  "edit_url" : 0,
+                  "status" : 0,
+                  "promote" : 0,
+                  "sticky" : 0,
+                  "created" : 0,
+                  "changed" : 0,
+                  "author" : 0,
+                  "source" : 0,
+                  "log" : 0,
+                  "revision" : 0,
+                  "comment" : 0,
+                  "comment_count" : 0,
+                  "comment_count_new" : 0,
+                  "taxonomy_forums" : 0,
+                  "field_tags" : 0,
+                  "field_categories" : 0,
+                  "field_dataset" : 0,
+                  "field_repeatable" : 0,
+                  "field_value_type" : 0,
+                  "field_studies" : 0,
+                  "field_bundle" : 0,
+                  "field_bundle_label" : 0,
+                  "field_original_field_label" : 0,
+                  "field_original_field_name" : 0,
+                  "mica_dataset" : 0,
+                  "field_contact" : 0,
+                  "field_full_name" : 0,
+                  "field_investigator" : 0,
+                  "field_study_legacy_id" : 0,
+                  "field_target_number_biosamples" : 0,
+                  "field_target_number_participants" : 0,
+                  "mica_study_documents" : 0,
+                  "mica_study_information" : 0,
+                  "field_authors" : 0,
+                  "field_publication_pmid" : 0,
+                  "field_publication_reference" : 0,
+                  "field_daco" : 0,
+                  "field_contact_email" : 0,
+                  "field_institution" : 0,
+                  "field_telephone" : 0,
+                  "field_city" : 0,
+                  "field_country_text" : 0,
+                  "field_data_access_review" : 0,
+                  "field_dataset_access" : 0,
+                  "field_institution_name" : 0,
+                  "field_postal_code" : 0,
+                  "field_rep_email" : 0,
+                  "field_street" : 0,
+                  "field_data_access" : 0,
+                  "field_review_notes" : 0,
+                  "field_review_status" : 0,
+                  "field_project" : 0,
+                  "field_teleconference_description" : 0,
+                  "field_access" : 0,
+                  "field_access_other" : 0,
+                  "field_age_max" : 0,
+                  "field_age_min" : 0,
+                  "field_biosamples_collected" : 0,
+                  "field_biosamples_collected_other" : 0,
+                  "field_biosamples_tissues" : 0,
+                  "field_design" : 0,
+                  "field_design_other" : 0,
+                  "field_design_target" : 0,
+                  "field_gender" : 0,
+                  "field_gwas_analysis" : 0,
+                  "field_gwas_number" : 0,
+                  "field_selection_criteria" : 0,
+                  "field_status_end" : 0,
+                  "field_status_start" : 0,
+                  "field_study_country" : 0,
+                  "field_target_other" : 0,
+                  "field_dataset:nid" : 0,
+                  "field_dataset:vid" : 0,
+                  "field_dataset:is_new" : 0,
+                  "field_dataset:type" : 0,
+                  "field_dataset:title" : 0,
+                  "field_dataset:language" : 0,
+                  "field_dataset:url" : 0,
+                  "field_dataset:edit_url" : 0,
+                  "field_dataset:status" : 0,
+                  "field_dataset:promote" : 0,
+                  "field_dataset:sticky" : 0,
+                  "field_dataset:created" : 0,
+                  "field_dataset:changed" : 0,
+                  "field_dataset:author" : 0,
+                  "field_dataset:source" : 0,
+                  "field_dataset:log" : 0,
+                  "field_dataset:revision" : 0,
+                  "field_dataset:comment" : 0,
+                  "field_dataset:comment_count" : 0,
+                  "field_dataset:comment_count_new" : 0
+                },
+                "actions" : { "remove" : "Remove field" }
+              }
+            },
+            "actions" : { "add_field" : "Add new field" }
+          }
+        },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
       },
       "processors" : {
@@ -611,7 +707,9 @@ function mica_datasets_default_search_api_index() {
               "field_dataset" : "field_dataset",
               "field_label" : "field_label",
               "search_api_language" : 0,
+              "search_api_aggregation_1" : 0,
               "nid" : 0,
+              "vid" : 0,
               "type" : 0,
               "field_repeatable" : 0,
               "field_value_type" : 0,
@@ -627,7 +725,9 @@ function mica_datasets_default_search_api_index() {
           "settings" : {
             "fields" : {
               "search_api_language" : 0,
+              "search_api_aggregation_1" : 0,
               "nid" : 0,
+              "vid" : 0,
               "type" : 0,
               "title" : 0,
               "field_dataset" : 0,
@@ -648,12 +748,14 @@ function mica_datasets_default_search_api_index() {
           "weight" : "20",
           "settings" : {
             "fields" : {
-              "title" : "title",
+              "search_api_aggregation_1" : "search_api_aggregation_1",
               "field_dataset" : "field_dataset",
-              "field_label" : "field_label",
               "search_api_language" : 0,
               "nid" : 0,
+              "vid" : 0,
               "type" : 0,
+              "title" : 0,
+              "field_label" : 0,
               "field_repeatable" : 0,
               "field_value_type" : 0,
               "field_dataset:nid" : 0,
