@@ -4,11 +4,13 @@ function mica_datashield_menu() {
   $items = array();
 
   $items['node/%node/datashield'] = array(
+      'title' => 'DataSHIELD',
       'access callback' => '_mica_datasets_node_queries_access',
       'access arguments' => array(1,'view'),
       'page callback' => 'drupal_get_form',
       'page arguments' => array('mica_datashield_form', 1),
-      'type' => MENU_CALLBACK,
+      'weight' => 50,
+      'type' => MENU_LOCAL_ACTION,
       'file' => 'mica_datashield.pages.inc',
   );
 
@@ -16,29 +18,21 @@ function mica_datashield_menu() {
 }
 
 /**
- * Implements hook_node_view_alter().
+ * Implements hook_menu_local_tasks_alter().
  */
-function mica_datashield_node_view_alter(&$build) {
-
-  if ($build['#view_mode'] == 'full' && $build['#bundle'] == 'dataset') {
-
-    $build['datashield_section'] = array(
-        	'#type' => 'container',
-        	'#attributes' => array(
-                'class' => 'extra_task',
-            ),
-    		'#weight' => -5,
-    );
-    $build['datashield_section']['datashield_form'] = array(
-            '#type' => 'form',
-            '#action' => url('node/'. $build['#node']->nid . '/datashield'),
-    );
-    $build['datashield_section']['datashield_form']['submit'] = array(
-      	    '#type' => 'button',
-    		'#button_type' => 'extra_task_button',
-      	    '#value' => 'DataSHIELD',
-            '#weight' => 5,
-            '#access' => _mica_datasets_node_queries_access(node_load($build['#node']->nid), 'view'),
-    );
+function mica_datashield_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  if ($root_path == 'node/%') {
+    $node = node_load($router_item['page_arguments'][0]->nid);
+    if ($node != NULL && $node->type == 'dataset') {
+      if (node_access('view', $node)) {
+        foreach ($data['actions']['output'] as $key => $link) {
+          if ($link['#link']['path'] == 'node/%/datashield') {
+            $data['actions']['output'][$key]['#link']['localized_options'] = array('attributes' => array('class' => 'highlight'));
+            $data['actions']['output'][$key]['#weight'] = 50;
+            break;
+          }
+        }
+      }
+    }
   }
 }
