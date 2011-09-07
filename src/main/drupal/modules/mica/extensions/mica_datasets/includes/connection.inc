@@ -84,7 +84,10 @@ interface MicaDatasetConnectionInterface {
    */
   public function getImporterId();
 
-  public function query($variables);
+  /**
+   * @param array of MicaDatasetQueryTerm $terms
+   */
+  public function query($terms);
   
   /**
    * Returns a facet for a specific term.
@@ -227,3 +230,193 @@ abstract class MicaDatasetAbstractConnection implements MicaDatasetConnectionInt
   }
 
 }
+
+/**
+ * An abstract implementation of a dataset connection that builds and sends an Elastic Search query from the query terms.
+ */
+abstract class MicaDatasetElasticSearchConnection extends MicaDatasetAbstractConnection {
+  
+  /**
+   * Sends the Elastic Search query to study server.
+   * @param string $query
+   * @return the Elastic Search query response
+   */
+  protected abstract function sendQuery($query);
+  
+  public function query($terms) {
+
+    $facets = array();
+    $filters = array();
+    if ($terms!==FALSE) {
+      foreach($terms as $term) {
+        $impl = $term->termImpl();
+        $facets[] = $this->asFacet($impl);
+        $filters[] = $this->asFilter($impl);
+      }
+    }
+
+    $facets[] = '"_matched" :{ "filter":{ "and":[ {'. implode('},{', $filters) . '}]}}';
+
+    $q = '{"query": {"match_all":{}},"size":0,"facets":{';
+    $q .= implode(',', $facets);
+    $q.='}}';
+
+    $data = $this->sendQuery($q);
+
+    $total = $data['hits']['total'];
+
+    $result = array('total'=>$total);
+    $result["_matched"] = $this->count($data['facets']['_matched']);
+    foreach($terms as $term) {
+      $impl = $term->termImpl();
+      $result[$impl->getName()] = $this->count($data['facets'][$impl->getName()]);
+    }
+
+
+    return $result;
+  }
+  
+  public function facetTerm(QueryTermInterface $term) {
+    switch($term->getType()) {
+      case 'CategoryTerm' :
+        $facets = <<< END
+      "{$term->getName()}" : {
+        "terms" : {
+          "field" : "{$term->getFieldName()}",
+          "size": 1000,
+          "all_fields" : true
+        }
+      }
+END;
+        break;
+      case 'RangeTerm' :
+        $facets = <<< END
+      "{$term->getName()}" : {
+        "statistical" : {
+          "field" : "{$term->getFieldName()}"
+        }
+      }
+END;
+        break;
+    }
+
+    $q = '{"query": {"match_all":{}},"size":0,"facets":{';
+    $q .= $facets;
+    $q.='}}';
+
+    $data = $this->sendQuery($q);
+
+    $facetResult = $data['facets'][$term->getName()];
+
+    // TODO: handle statistical result
+    $result = array();
+    if($term->getType() == 'CategoryTerm') {
+      foreach($facetResult['terms'] as $termCount) {
+        $result[$termCount['term']] = $termCount['count'];
+      }
+      $result['missing'] = $facetResult['missing'];
+    } else {
+      $result = $facetResult;
+    }
+    //    debug($result);
+    return $result;
+  }
+  
+  protected function asFacet(QueryTermInterface $term) {
+    $facet = <<< END
+"{$term->getName()}" : {
+  "filter" : {
+  {$this->asFilter($term)}
+  }, "golbal":true
+}
+END;
+  return $facet;
+  }
+  
+  private function asFilter(QueryTermInterface $term) {
+
+    // The default filter
+    $filter = <<< END
+  "exists" : {
+    "field" : "{$term->getFieldName()}"
+  }
+END;
+    switch ($term->getType()) {
+      case 'CategoryTerm':
+        if(count($term->categories()) > 0) {
+          $terms = '"'. implode('","', $term->categories()) . '"';
+          $filter = <<< END
+  "terms" : {
+    "{$term->getFieldName()}":[$terms]
+  }
+END;
+        }
+        break;
+      case 'RangeTerm':
+        if(count($term->ranges()) > 0) {
+          $ranges = $term->ranges();
+          $range = $ranges[0];
+          if(isset($range['value'])) {
+            $filter = <<< END
+  "term" : {
+    "{$term->getFieldName()}": {$range['value']}
+  }
+END;
+          } else {
+            $bounds = array();
+            if(isset($range['from'])) {
+              $bounds[] = '"from" : ' . $range['from'];
+              $bounds[] = '"include_lower" : true';
+            }
+            if(isset($range['to'])) {
+              $bounds[] = '"to" : ' . $range['to'];
+              $bounds[] = '"include_upper" : false';
+            }
+            $boundStr =implode(',', $bounds);
+            $filter = <<< END
+  "numeric_range" : {
+    "{$term->getFieldName()}": {
+    {$boundStr}
+    }
+  }
+END;
+          }
+        }
+        break;
+      default:
+        break;
+    }
+
+    if($term->isInverted()) {
+      $invert = $filter;
+      $filter = <<< END
+  "not" : {
+    "filter" : {
+    $invert
+    }
+  }
+END;
+    }
+    return $filter;
+  }
+  
+  private function count($facet) {
+    switch($facet['_type']) {
+      case 'filter':
+        return $facet['count'];
+      case 'terms':
+        $sum =0;
+        foreach($facet['terms'] as $term) {
+          $sum += $term['count'];
+        }
+        return $sum;
+      case 'histogram':
+        $sum =0;
+        foreach($facet['entries'] as $term) {
+          $sum += $term['count'];
+        }
+        return $sum;
+    }
+    return -1;
+  }  
+} 
