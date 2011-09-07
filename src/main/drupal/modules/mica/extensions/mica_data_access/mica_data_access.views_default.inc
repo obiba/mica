@@ -800,6 +800,7 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Operations';
   $handler->display->display_options['fields']['edit_node']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['edit_node']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['edit_node']['alter']['absolute'] = 0;
