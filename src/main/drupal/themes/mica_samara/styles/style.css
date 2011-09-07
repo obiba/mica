@@ -2018,7 +2018,7 @@ th .highlight {
 
 .extra_task{
 	display: inline;
-	float:right;
+	/*float:right;*/
 }
 .form-extra_task_button{
   margin: 0 5px 0 0;
