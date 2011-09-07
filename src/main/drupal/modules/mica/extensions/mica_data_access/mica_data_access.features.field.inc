@@ -27,8 +27,8 @@ function mica_data_access_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          0 => '',
-          1 => '',
+          0 => 'No',
+          1 => 'Yes',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
@@ -58,7 +58,7 @@ function mica_data_access_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',

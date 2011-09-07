@@ -533,7 +533,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'email',
           'settings' => array(),
           'type' => 'email_default',
