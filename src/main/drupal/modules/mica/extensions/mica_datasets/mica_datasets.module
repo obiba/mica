@@ -85,11 +85,12 @@ function mica_datasets_menu() {
 
   // queries
   $items['node/%node/queries'] = array(
+      'title' => 'Queries',
       'access callback' => '_mica_datasets_node_queries_access',
       'access arguments' => array(1,'view'),
       'page callback' => 'mica_datasets_dataset_queries_page',
       'page arguments' => array(1),
-      'type' => MENU_CALLBACK,
+      'type' => MENU_LOCAL_ACTION,
       'file' => 'mica_datasets.pages.query.inc',
   );
 
@@ -249,7 +250,7 @@ function mica_datasets_menu() {
  */
 function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   $links = array();
-
+  
   if ($root_path == 'datasets') {
     if (node_access('create', 'dataset')) {
       $links['add-dataset'] = array(
@@ -265,7 +266,16 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
     $node = node_load($router_item['page_arguments'][0]->nid);
     if ($node != NULL && $node->type == 'dataset') {
       if (node_access('view', $node)) {
-        $name = t('Participant Variables');//node_type_load('participant_variable');
+        // remove queries because it will appear as an extra task (but we want to keep the breadcrumb)
+        foreach ($data['actions']['output'] as $key => $link) {
+          if ($link['#link']['path'] == 'node/%/queries') {
+            unset($data['actions']['output'][$key]);
+           break; 
+          }
+        }
+        
+        // add participant variables
+        $name = t('Participant Variables');
         $href = url('participant-variable-search/' . $router_item['page_arguments'][0]->nid);
         $links['view-participant-variable'] = array(
   			'#weight' => -10,
