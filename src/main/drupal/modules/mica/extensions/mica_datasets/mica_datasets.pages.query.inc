@@ -160,6 +160,7 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
   }
 
   if (!empty($variable_options)) {
+    sort($variable_options);
     $form['add-term']['variables']= array(
       '#type' => 'select', 
       '#title' => t('Variables'), 
