@@ -303,3 +303,12 @@ h2 a:hover{
    font-family: "Nunito", arial, sans-serif;
    text-shadow: 0 1px 1px black;
 }
+
+/** Actions **/
+.action-links a.highlight {
+  background-color:#5D87A1;
+}
+
+.action-links a.highlight:hover{
+  background-color:#afc3d0;
+}

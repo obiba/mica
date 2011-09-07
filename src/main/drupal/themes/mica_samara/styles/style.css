@@ -2020,7 +2020,6 @@ th .highlight {
   margin: 0 5px 0 0;
   padding: 5px 11px;
   background-image: none;
-  background-color:#5D87A1;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   -khtml-border-radius: 8px; 
@@ -2034,6 +2033,3 @@ th .highlight {
   /*float: right;*/
 }
 
-.action-links a.highlight:hover{
-  background-color:#afc3d0;
-}

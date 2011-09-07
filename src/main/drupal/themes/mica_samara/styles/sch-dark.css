@@ -213,3 +213,14 @@ th a, thead a, th.views-field {
 div.mica-modal-content div.popups-title {
   background-color: #4B4B4B;
 }
+
+/** Actions **/
+.action-links a.highlight {
+  background-color:#393939;
+  font-size: 100%;
+  color: #ddd;
+}
+
+.action-links a.highlight:hover{
+  background-color:#adadad;
+}
