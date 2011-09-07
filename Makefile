@@ -59,6 +59,7 @@ mica-install:
 	cp -r ../../src/main/drupal/profiles/* profiles && \
 	cp -r ../../src/main/drupal/modules/mica sites/all/modules && \
 	cp -r ../../src/main/drupal/themes/* sites/all/themes && \
+        cp -r ../../src/main/drupal/libraries sites/all/libraries && \
 	rm -rf `find . -type d -name .svn` && \
 	rm -rf `find . -type d -name .git` && \
 	if [ -e profiles/standard/standard.install ]; then \
