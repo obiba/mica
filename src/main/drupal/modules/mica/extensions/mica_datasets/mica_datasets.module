@@ -266,7 +266,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
     $node = node_load($router_item['page_arguments'][0]->nid);
     if ($node != NULL && $node->type == 'dataset') {
       if (node_access('view', $node)) {
-        // remove queries because it will appear as an extra task (but we want to keep the breadcrumb)
+        // highlight queries
         foreach ($data['actions']['output'] as $key => $link) {
           if ($link['#link']['path'] == 'node/%/queries') {
             $data['actions']['output'][$key]['#link']['localized_options'] = array('attributes' => array('class' => 'highlight'));
