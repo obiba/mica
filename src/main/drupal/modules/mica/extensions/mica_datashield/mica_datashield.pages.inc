@@ -14,7 +14,7 @@ function mica_datashield_form($form, &$form_state) {
       $variable_options[$variable->nid] = $variable->title;
     }
   }
-  sort($variable_options);
+  asort($variable_options);
   
   $form = array();
   
