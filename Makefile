@@ -82,12 +82,12 @@ htaccess:
 deploy: package
 ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
 	cp target/deb/*.deb /var/www/pkg/unstable
-	cp target/*.zip /var/www/mica/unstable
-	cp target/*.tar.gz /var/www/mica/unstable
+	cp target/*.zip /var/www/download/mica/unstable
+	cp target/*.tar.gz /var/www/download/mica/unstable
 else
 	cp target/deb/*.deb /var/www/pkg/stable
-	cp target/*.zip /var/www/mica/stable
-	cp target/*.tar.gz /var/www/mica/stable
+	cp target/*.zip /var/www/download/mica/stable
+	cp target/*.tar.gz /var/www/download/mica/stable
 endif
 
 #
