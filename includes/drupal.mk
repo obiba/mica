@@ -134,12 +134,15 @@ drupal-cache-clear:
 	cd target/$(micadir) && \
 	$(drushexec) cache-clear	
 
-drupal-stable-dev:
+drupal-stable-dev: drupal-core-patch
 	$(call drupal-checkout-module,http_client, 0)
 	$(call drupal-checkout-module,feeds, 0)
 	$(call drupal-patch-module,references, 0)
 	$(call drupal-patch-module,search_api_ranges, 1)
 	$(call drupal-patch-module-file,menu_firstchild, 1)
+	
+drupal-core-patch:
+	patch target/$(micadir)/modules/block/block.module -i src/main/drupal/patches/MICA-205-block-info-test.patch
 	
 drupal-install-clients: jsonpath-php-client solr-php-client
 
