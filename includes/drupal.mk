@@ -134,15 +134,19 @@ drupal-cache-clear:
 	cd target/$(micadir) && \
 	$(drushexec) cache-clear	
 
-drupal-stable-dev: drupal-core-patch
-	$(call drupal-checkout-module,http_client, 0)
-	$(call drupal-checkout-module,feeds, 0)
-	$(call drupal-patch-module,references, 0)
-	$(call drupal-patch-module,search_api_ranges, 1)
-	$(call drupal-patch-module-file,menu_firstchild, 1)
+drupal-stable-dev: drupal-core-patch drupal-module-patch
+	$(call drupal-git-checkout-module,http_client, 0)
+	$(call drupal-git-checkout-module,feeds, 0)
+	$(call drupal-git-patch-module,references, 0)
+	$(call drupal-git-patch-module,search_api_ranges, 1)
+	$(call drupal-git-patch-module-file,menu_firstchild, 1)
+	
+drupal-module-patch:
+	$(call drupal-patch-module-file,sites/all/modules/search_api_ranges/search_api_ranges.module,MICA-206-ranges-block-title-truncated.patch)
+	$(call drupal-patch-module-file,sites/all/modules/search_api_ranges/search_api_ranges.module,MICA-207-hide-ranges-block-when-min-equals-max.patch)
 	
 drupal-core-patch:
-	patch target/$(micadir)/modules/block/block.module -i src/main/drupal/patches/MICA-205-block-info-test.patch
+	$(call drupal-patch-module-file,modules/block/block.module,MICA-205-block-info-test.patch)
 	
 drupal-install-clients: jsonpath-php-client solr-php-client
 
@@ -166,15 +170,17 @@ drupal-default:
 	chmod a+w sites/default/settings.php && \
 	chmod +x scripts/*.sh
 
-drupal-patch-module = $(call drupal-checkout-module,$(1)) && \
+drupal-git-patch-module = $(call drupal-git-checkout-module,$(1)) && \
 	wget -O - $($(1)_patch) | git apply -p$(2)	
 
-drupal-patch-module-file = $(call drupal-checkout-module,$(1)) && \
+drupal-git-patch-module-file = $(call drupal-git-checkout-module,$(1)) && \
 	git apply -p$(2) ../../../../../../src/main/drupal/patches/$($(1)_patch)
 	
-# drupal-checkout-module function: checkout a specific module version using git
-drupal-checkout-module = cd target/$(micadir)/sites/all/modules && \
+# drupal-git-checkout-module function: checkout a specific module version using git
+drupal-git-checkout-module = cd target/$(micadir)/sites/all/modules && \
 	rm -rf $(1) && \
 	git clone http://git.drupal.org/project/$(1).git && \
 	cd $(1) && \
 	git checkout $($(1)_revision)
+
+drupal-patch-module-file = patch target/$(micadir)/$(1) -i src/main/drupal/patches/$(2)
