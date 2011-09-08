@@ -94,7 +94,8 @@ endif
 # Package
 #
 
-package: package-modules package-profiles package-themes package-forks debian
+#package: package-modules package-profiles package-themes package-forks debian
+package: debian
 	rm -f target/mica-dist*
 	cd target && \
 	tar czf mica-dist-$(deb_version).tar.gz $(micadir) && \
