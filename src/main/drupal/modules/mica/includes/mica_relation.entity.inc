@@ -222,7 +222,8 @@ class MicaRelation extends Entity {
     if (!$this->options['cascaded']) return FALSE;
 
     $field_ref = $this->options['node_reference'];
-    $field = $parent_node->$field_ref;
+    
+    if (property_exists($parent_node, $field_ref)) $field = $parent_node->$field_ref;
     $language = $parent_node->language;
 
     // do not create child if child id is already provided (case of data import)
