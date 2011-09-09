@@ -207,7 +207,7 @@ function _mica_edit_node_type_relation($form, &$form_state) {
         foreach ($entities as $entity) {
           // create missing child nodes
           if ($relation->create_child_node($entity, isset($entity->menu) ? $entity->menu : array())) {
-            node_save($node);
+            node_save($entity);
           }
         }
       }
