@@ -1660,7 +1660,7 @@ body.page-admin input {
   width: auto;
 }
 .multiselect .form-item {
-  display: inline-block;
+  /*display: inline-block;*/
   margin: 0 10px 0 0; /* LTR */
 }
 dl.multiselect dt,
@@ -2032,4 +2032,3 @@ th .highlight {
   text-shadow: 0 1px 1px black;
   /*float: right;*/
 }
-
