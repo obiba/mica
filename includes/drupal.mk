@@ -64,12 +64,14 @@ search_api_ranges_patch=http://drupal.org/files/issues/1231540-item-to-entity.pa
 menu_firstchild_revision=7.x-1.0
 menu_firstchild_patch=1030216-undefined-index-add-shortcut.patch
 
+# CKEditor Library Version
+ckeditor_version=3.6.1
 
 #
 # Drupal Build
 #
 
-drupal: drupal-prepare drupal-download drupal-stable-dev drupal-install-clients drupal-default 
+drupal: drupal-prepare drupal-download drupal-stable-dev drupal-install-clients ckeditor-library drupal-default 
 
 drupal-prepare:
 	mkdir -p target
@@ -160,6 +162,16 @@ solr-php-client:
 	wget -q -r -R index.html,wiki -P tmp http://solr-php-client.googlecode.com/svn/\!svn/bc/22/trunk/ && \
 	mv tmp/solr-php-client.googlecode.com/svn/\!svn/bc/22/trunk/ sites/all/modules/search_api_solr/SolrPhpClient && \
 	rm -rf tmp
+
+ckeditor-library:
+	cd target/$(micadir)/sites/all/modules/ckeditor && \
+	rm -rf ckeditor && \
+  	wget -q http://download.cksource.com/CKEditor/CKEditor/CKEditor%20$(ckeditor_version)/ckeditor_$(ckeditor_version).tar.gz && \
+	tar xfz ckeditor_$(ckeditor_version).tar.gz && \
+	rm ckeditor_$(ckeditor_version).tar.gz && \
+	cd ckeditor && \
+	rm -rf _samples && \
+        rm -rf _source
 
 drupal-default:
 	cd target/$(micadir) && \
