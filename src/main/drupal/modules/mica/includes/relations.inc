@@ -259,7 +259,10 @@ function _mica_find_relation_by_parent_or_child($parent_or_child_bundle) {
   $child_result = $query->entityCondition('entity_type', 'mica_relation')
   ->propertyCondition('child_bundle', $parent_or_child_bundle)
   ->execute();
-  $result = array_merge($parent_result['mica_relation'], $child_result['mica_relation']);
+  $result = array();
+  if (isset($parent_result['mica_relation']) && isset($child_result['mica_relation'])) {
+    $result = array_merge($parent_result['mica_relation'], $child_result['mica_relation']);
+  }
   if (!empty($result)) {
     return entity_load('mica_relation', array_keys($result));
   }
