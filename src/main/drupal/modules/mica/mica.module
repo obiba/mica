@@ -202,6 +202,54 @@ function mica_node_update($node) {
 }
 
 /**
+ * Do not allow users to delete a node if the node type is part of a relation as a child.
+ */
+function mica_node_access($node, $op, $account){
+  
+  if ($op === 'delete'){
+    $type = is_string($node) ? $node : $node->type;
+
+    module_load_include('inc', 'mica', 'includes/relations');
+    $relation = _mica_find_relation_by_child($type);
+    
+    if (!is_null($relation)){
+      return NODE_ACCESS_DENY;
+    }
+  }
+  else{
+    return NODE_ACCESS_IGNORE;
+  }
+}
+
+function mica_form_alter(&$form, $form_state, $form_id) {
+  $node_type = NULL;
+  
+  if (array_key_exists('#node', $form)){
+    $node_type = $form['type']['#value'];
+    $button = 'delete';
+  }
+  
+  // Disable for feeds also
+  else if ($form_id === 'feeds_delete_tab_form' ){
+    $importer = feeds_importer($form['#importer_id']);
+    $node_type = $importer->processor->config['content_type'];
+  }
+  
+  if (!is_null($node_type)){
+    module_load_include('inc', 'mica', 'includes/relations');
+    $relation = _mica_find_relation_by_child($node_type);
+    
+    if (!is_null($relation) && array_key_exists('actions', $form)){
+    	$form['actions']['info'] = array(
+            '#markup' => '&nbsp;&nbsp;This node should not be deleted because it is used by the relation "' . $relation->label .'". Only parents of relations can be deleted.',
+            '#weight' => '50',
+    	);
+    }
+  }
+}
+
+
+/**
  * Implements hook_node_delete()
  */
 function mica_node_delete($node) {
