@@ -238,10 +238,11 @@ class MicaRelation extends Entity {
       $node_child->uid = $parent_node->uid; // same author
       $node_child->status = $parent_node->status; // same publication status
 
-      watchdog('mica', 'Create child %child for parent %parent',
+      watchdog('mica', 'Create child %child for parent %parent : %title',
       array(
-        	'%child' => $this->child_bundle, 
-          '%parent' => $parent_node->type,
+        '%child' => $this->child_bundle, 
+        '%parent' => $parent_node->type,
+        '%title' => $parent_node->title,
       ), WATCHDOG_INFO);
 
       node_save($node_child);
