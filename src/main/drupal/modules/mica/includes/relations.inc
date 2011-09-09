@@ -54,7 +54,7 @@ function _mica_node_type_form_alter(&$form, $form_state) {
 
     $form['mica_relation']['cascaded'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Cascad events'),
+      '#title' => t('Cascade events'),
       '#description' => t('Cascade parent\'s events: create, update, publish, unpublish.'),
       '#default_value' => empty($relation) ? TRUE : $relation->options['cascaded'],
     );
