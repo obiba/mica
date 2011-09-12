@@ -26,7 +26,7 @@ function mica_datashield_menu_local_tasks_alter(&$data, $router_item, $root_path
     if ($node != NULL && $node->type == 'dataset') {
       if (node_access('view', $node)) {
         foreach ($data['actions']['output'] as $key => $link) {
-          if ($link['#link']['path'] == 'node/%/datashield') {
+          if (isset($link['#link']['path']) && $link['#link']['path'] == 'node/%/datashield') {
             $data['actions']['output'][$key]['#link']['localized_options'] = array('attributes' => array('class' => 'highlight'));
             $data['actions']['output'][$key]['#weight'] = 50;
             break;
