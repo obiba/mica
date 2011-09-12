@@ -270,7 +270,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
         foreach ($data['actions']['output'] as $key => $link) {
           if (isset($link['#link']['path']) && $link['#link']['path'] == 'node/%/queries') {
             $data['actions']['output'][$key]['#link']['localized_options'] = array('attributes' => array('class' => 'highlight'));
-            $data['actions']['output'][$key]['#weight'] = 50;
+            $data['actions']['output'][$key]['#weight'] = 40;
             break; 
           }
         }
