@@ -104,13 +104,16 @@ endif
 #
 
 #package: package-modules package-profiles package-themes package-forks debian
-package: debian
+package: package-modules-prepare debian
 	rm -f target/mica-dist*
 	cd target && \
 	tar czf mica-dist-$(deb_version).tar.gz $(micadir) && \
 	zip -qr mica-dist-$(deb_version).zip $(micadir)
 
-package-modules: package-module-mica package-extension-mica_community package-extension-mica_data_access package-extension-mica_datasets package-extension-mica_datashield package-extension-mica_node_reference_field package-extension-mica_opal package-extension-mica_projects package-extension-mica_studies package-extension-node_reference_block
+package-modules-prepare: package-submodule-mica_community package-submodule-mica_data_access package-submodule-mica_datasets package-submodule-mica_datashield package-submodule-mica_node_reference_field package-submodule-mica_opal package-submodule-mica_projects package-submodule-mica_studies package-submodule-node_reference_block
+	$(call make-info,sites/all/modules,mica)
+	
+package-modules: package-modules-prepare 
 	$(call make-package,sites/all/modules,mica)
 	
 package-profiles: package-profile-mica_standard package-profile-mica_demo
@@ -123,7 +126,7 @@ package-module-%:
 	$(call make-info,sites/all/modules,$*)
 	$(call make-package,sites/all/modules,$*)
 
-package-extension-%: 
+package-submodule-%: 
 	$(call make-info,sites/all/modules/mica/extensions,$*)
 
 package-profile-%: 
