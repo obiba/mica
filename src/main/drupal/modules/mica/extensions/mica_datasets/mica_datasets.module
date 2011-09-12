@@ -538,6 +538,7 @@ function mica_datasets_field_attach_form($entity_type, $entity, &$form, &$form_s
   // do not display manual edition of study view reference field 
   if ($entity_type == 'node' && $entity->type == 'dataset') {
     $form['field_dataset_studies']['#attributes']['style'] = array('display:none;');
+    $form['field_dataset_variables']['#attributes']['style'] = array('display:none;');
   }
 }
 
