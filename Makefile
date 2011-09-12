@@ -4,13 +4,13 @@
 #
 
 
-version=1.0-SNAPSHOT
+version=1.0-rc1
 
 #
 # Mica versions
 #
 # Modules
-mica_version=7.x-1.0-dev
+mica_version=7.x-1.0-rc1
 mica_community_version=$(mica_version)
 mica_data_access_version=$(mica_version)
 mica_datasets_version=$(mica_version)
