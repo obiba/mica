@@ -8,5 +8,7 @@ set -e
 . /usr/share/dbconfig-common/dpkg/prerm
 
 
+/etc/init.d/mica-solr stop
+
 exit 0
 
