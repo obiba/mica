@@ -5,4 +5,4 @@ package = "OBiBa"
 
 dependencies[] = node_reference
 
-version = "7.x-1.0-dev"
+

@@ -6,4 +6,4 @@ files[] = "includes/datashield.inc"
 name = "Mica DataSHIELD"
 package = "OBiBa"
 project = "mica_datashield"
-version = "7.x-1.0-dev"
+

@@ -7,14 +7,24 @@
 version=1.0-SNAPSHOT
 
 #
-# Mica Modules
+# Mica versions
 #
+# Modules
 mica_version=7.x-1.0-dev
-mica_studies_version=7.x-1.0-dev
-mica_community_version=7.x-1.0-dev
-mica_standard_version=7.x-1.0-dev
-mica_demo_version=7.x-1.0-dev
-mica_samara_version=7.x-1.0-dev
+mica_community_version=$(mica_version)
+mica_data_access_version=$(mica_version)
+mica_datasets_version=$(mica_version)
+mica_datashield_version=$(mica_version)
+mica_node_reference_field_version=$(mica_version)
+mica_opal_version=$(mica_version)
+mica_projects_version=$(mica_version)
+mica_studies_version=$(mica_version)
+node_reference_block_version=$(mica_version)
+# Profiles
+mica_standard_version=$(mica_version)
+mica_demo_version=$(mica_version)
+# Themes
+mica_samara_version=$(mica_version)
 
 
 #
@@ -100,7 +110,7 @@ package: debian
 	tar czf mica-dist-$(deb_version).tar.gz $(micadir) && \
 	zip -qr mica-dist-$(deb_version).zip $(micadir)
 
-package-modules: package-module-mica
+package-modules: package-module-mica package-extension-mica_community package-extension-mica_data_access package-extension-mica_datasets package-extension-mica_datashield package-extension-mica_node_reference_field package-extension-mica_opal package-extension-mica_projects package-extension-mica_studies package-extension-node_reference_block
 	$(call make-package,sites/all/modules,mica)
 	
 package-profiles: package-profile-mica_standard package-profile-mica_demo
@@ -112,6 +122,9 @@ package-forks: package-module-content_access package-module-feeds package-module
 package-module-%: 
 	$(call make-info,sites/all/modules,$*)
 	$(call make-package,sites/all/modules,$*)
+
+package-extension-%: 
+	$(call make-info,sites/all/modules/mica/extensions,$*)
 
 package-profile-%: 
 	$(call make-info,profiles,$*)

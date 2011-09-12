@@ -11,4 +11,3 @@ dependencies[] = feeds_jsonpath_parser
 files[] = includes/opal_connection.inc
 files[] = includes/feeds/fetchers/FeedsOpalFetcher
 
-version = "7.x-1.0-dev"

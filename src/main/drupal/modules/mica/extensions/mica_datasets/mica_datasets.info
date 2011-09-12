@@ -69,4 +69,4 @@ files[] = "includes/query/terms.inc"
 name = "Mica Datasets"
 package = "OBiBa"
 project = "mica_datasets"
-version = "7.x-1.0-dev"
+
