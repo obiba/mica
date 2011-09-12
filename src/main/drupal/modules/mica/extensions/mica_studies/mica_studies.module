@@ -192,7 +192,7 @@ function _mica_import_field_groups() {
   ));
 
   // STUDY
-  _mica_add_fieldset_group('study','group_details', 'Details', '3', '', array(
+  _mica_add_mode_fieldset_group('study','default','group_details', 'Details', '3', '', array(
     'mica_study_information',
     'mica_study_documents',
   ));

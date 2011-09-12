@@ -106,6 +106,22 @@ function mica_node_type_delete($info) {
 }
 
 /**
+ * Implements hook_field_attach_form()
+ */
+function mica_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+  // do not display manual edition of the relation node reference fields
+  if ($entity_type == 'node' && $entity->type == 'study') {
+    module_load_include('inc', 'mica', 'includes/relations');
+    $relations = _mica_find_relations_by_parent($entity->type);
+    if (!empty($relations)) {
+      foreach ($relations as $relation) {
+        $form[$relation->options['node_reference']]['#attributes']['style'] = array('display:none;');
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_form().
  */
 function mica_form($node, &$form_state) {
