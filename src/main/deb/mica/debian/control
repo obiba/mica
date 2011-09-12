@@ -10,7 +10,7 @@ Package: mica
 Architecture: all
 Pre-Depends: debconf
 Depends: apache2 | httpd, wget, make, php5, php5-cli, php5-curl, php5-mysql | php5-pgsql, php5-gd, exim4 | mail-transport-agent, wwwconfig-common (>= 0.0.37), mysql-client | virtual-mysql-client | postgresql-client, dbconfig-common, curl
-Recommends: mysql-server | postgresql | mica-solr
+Recommends: mysql-server | postgresql, mica-solr
 Description: OBiBa study management framework
  Mica is a dynamic web site platform which allows an individual or
  community of users to publish, manage and organize a study
