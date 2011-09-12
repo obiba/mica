@@ -174,10 +174,8 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
 
   $data = array();
   if (array_key_exists('values', $form_state)) {
-    //debug($form_state['values']);
     if (array_key_exists('list', $form_state['values'])) {
       foreach($form_state['values']['list'] as $datum) {
-        debug($datum);
         $qt = mica_dataset_query_term_load($datum['id']);
         $data[] = array(
           'id' => $datum['id'],
@@ -436,7 +434,6 @@ function _mica_datasets_extract_new_query_values(&$form_state) {
 function _mica_datasets_query_terms_submit($query, &$form_state) {
   $data = $form_state['values']['list'];
   foreach ($data as $datum) {
-    debug($datum );
     if ($datum['id'] == 0) {
       // new query term
       $values = _mica_datasets_extract_new_query_term_values($query, $datum);
