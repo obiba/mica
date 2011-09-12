@@ -33,11 +33,13 @@ name_version=7.x-1.3
 namedb_version=7.x-1.0-beta2
 noderefcreate_version=7.x-1.0
 panels_version=7.x-3.0-alpha3
+pathauto_version=7.x-1.0-rc2
 relation_version=7.x-1.0-alpha2
 search_api_version=7.x-1.0-beta10
 search_api_ranges_version=7.x-1.2
 search_api_solr_version=7.x-1.0-beta3
 strongarm_version=7.x-2.0-beta2
+token_version=7.x-1.0-beta5
 views_data_export_version=7.x-3.0-beta5
 views_version=7.x-3.0-rc1
 viewreference_version=7.x-3.1
@@ -107,11 +109,13 @@ drupal-download:
 		namedb-$(namedb_version) \
 		noderefcreate-$(noderefcreate_version) \
 		panels-$(panels_version) \
+		pathauto-$(pathauto_version) \
 		relation-$(relation_version) \
 		search_api-$(search_api_version) \
 		search_api_ranges-$(search_api_ranges_version) \
 		search_api_solr-$(search_api_solr_version) \
 		strongarm-$(strongarm_version) \
+		token-$(token_version) \
 		viewreference-$(viewreference_version) \
 		views-$(views_version) \
 		views_data_export-$(views_data_export_version)
