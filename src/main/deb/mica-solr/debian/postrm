@@ -36,6 +36,8 @@ webserver="apache2"
 
 case "$1" in
     purge|remove)
+    
+    /etc/init.d/mica-solr stop
 
 	if [ "$1" = "purge" ]; then
       
