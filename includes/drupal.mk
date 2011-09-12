@@ -163,8 +163,8 @@ jsonpath-php-client:
 solr-php-client:
 	cd target/$(micadir) && \
 	rm -rf sites/all/modules/search_api_solr/SolrPhpClient && \
-	wget -q -r -R index.html,wiki -P tmp http://solr-php-client.googlecode.com/svn/\!svn/bc/22/trunk/ && \
-	mv tmp/solr-php-client.googlecode.com/svn/\!svn/bc/22/trunk/ sites/all/modules/search_api_solr/SolrPhpClient && \
+	wget -q -r -R index.html,wiki -P tmp http://solr-php-client.googlecode.com/svn/\!svn/bc/60/trunk/ && \
+	mv tmp/solr-php-client.googlecode.com/svn/\!svn/bc/60/trunk/ sites/all/modules/search_api_solr/SolrPhpClient && \
 	rm -rf tmp
 
 ckeditor-library:
