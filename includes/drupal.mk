@@ -144,10 +144,10 @@ drupal-stable-dev: drupal-core-patch drupal-module-patch
 	$(call drupal-git-checkout-module,http_client, 0)
 	$(call drupal-git-checkout-module,feeds, 0)
 	$(call drupal-git-patch-module,references, 0)
-	$(call drupal-git-patch-module,search_api_ranges, 1)
 	$(call drupal-git-patch-module-file,menu_firstchild, 1)
 	
 drupal-module-patch:
+	$(call drupal-git-patch-module,search_api_ranges, 1)
 	$(call drupal-patch-module-file,sites/all/modules/search_api_ranges/search_api_ranges.module,MICA-206-ranges-block-title-truncated.patch)
 	$(call drupal-patch-module-file,sites/all/modules/search_api_ranges/search_api_ranges.module,MICA-207-hide-ranges-block-when-min-equals-max.patch)
 	
