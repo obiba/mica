@@ -76,8 +76,8 @@ function mica_datasets_dataset_queries_page($dataset_node) {
 
         $option['actions']['data'][] = array(
           '#type' => 'link',
-          '#title' => t('View'),
-          '#href' => _mica_datasets_dataset_query_url($dataset_node, $query, 'view'),
+          '#title' => t('Run'),
+          '#href' => _mica_datasets_dataset_query_url($dataset_node, $query),
           '#attributes' => array('style' => array('margin-right: 10px;')),
         );
 
@@ -248,15 +248,15 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
   if ($user->uid != 0 || (isset($query) && !MicaDatasetQueryManager::isCached($query))) {
     $form['actions']['save'] = array(
       '#type' => 'submit',
-      '#value' => t('Save and View'),
+      '#value' => t('Save and Run'),
     );
   }
 
   // Do not edit in the cache a persisted query
   if (!isset($query) || MicaDatasetQueryManager::isCached($query)) {
-    $form['actions']['view'] = array(
+    $form['actions']['run'] = array(
       '#type' => 'submit',
-      '#value' => t('View'),
+      '#value' => t('Run'),
     );
   }
 
@@ -381,7 +381,7 @@ function mica_datasets_dataset_query_edit_form_submit($form, &$form_state) {
       $form_state['complete'] = TRUE;
       break;
 
-    case 'view':
+    case 'run':
       // persist query and terms in the session cache
       if (!isset($query)) {
         // new query

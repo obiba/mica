@@ -2017,7 +2017,8 @@ th .highlight {
 }
 
 .action-links a.highlight {
-  margin: 0 5px 0 0;
+  float: right;
+  margin: 0 5px 10px 5px;
   padding: 5px 11px;
   background-image: none;
   -moz-border-radius: 8px;

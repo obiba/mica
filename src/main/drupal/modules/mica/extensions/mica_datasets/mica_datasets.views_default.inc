@@ -22,7 +22,7 @@ function mica_datasets_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Participant Variables';
+  $handler->display->display_options['title'] = 'Data Dictionnary';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -118,7 +118,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['path'] = 'dataset-participant-variables';
   $translatables['dataset_participant_variables'] = array(
     t('Master'),
-    t('Participant Variables'),
+    t('Data Dictionnary'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -563,7 +563,7 @@ function mica_datasets_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Participant Variables';
+  $handler->display->display_options['title'] = 'Data Dictionnary';
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -817,7 +817,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['path'] = 'participant-variable-search';
   $translatables['participant_variable_search'] = array(
     t('Master'),
-    t('Participant Variables'),
+    t('Data Dictionnary'),
     t('more'),
     t('Apply'),
     t('Reset'),

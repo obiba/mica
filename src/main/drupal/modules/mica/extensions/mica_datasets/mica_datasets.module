@@ -53,7 +53,7 @@ function mica_datasets_permission() {
 function mica_datasets_menu() {
 
   $items['node/%node/datasets'] = array(
-      'title' => 'Datasets',
+      'title' => 'Edit Datasets',
       'access callback' => '_mica_datasets_node_access',
       'access arguments' => array(1,'study','update'),
       'page callback' => 'mica_datasets_study_datasets_edit_page',
@@ -64,7 +64,7 @@ function mica_datasets_menu() {
   );
 
   $items['node/%node/studies'] = array(
-      'title' => 'Studies',
+      'title' => 'Edit Studies',
       'access callback' => '_mica_datasets_node_access',
       'access arguments' => array(1,'dataset','update'),
       'page callback' => 'mica_datasets_dataset_studies_edit_page',
@@ -117,7 +117,7 @@ function mica_datasets_menu() {
   );
 
   $items['node/%node/queries/%mica_dataset_query/view'] = array(
-    'title' => 'View',
+    'title' => 'Run',
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'weight' => -10,
   );
@@ -276,13 +276,13 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
         }
         
         // add participant variables
-        $name = t('Participant Variables');
+        $name = t('Data Dictionnary');
         $href = url('participant-variable-search/' . $router_item['page_arguments'][0]->nid);
         $links['view-participant-variable'] = array(
-  			'#weight' => -10,
+  			'#weight' => 30,
             '#theme' => 'menu_local_action',
             '#link' => array(
-              'title' => t('<a href="@url">!name</a>', array('!name' => $name, '@url' => $href)),
+              'title' => t('<a class="highlight" href="@url">!name</a>', array('!name' => $name, '@url' => $href)),
               'localized_options' => array('html' => TRUE),
         ),
         );
