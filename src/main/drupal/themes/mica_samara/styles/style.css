@@ -2016,11 +2016,14 @@ th .highlight {
   font-weight: bold;
 }
 
+ul.action-links li a.highlight:first-child {
+  background-image: none;
+}
+
 .action-links a.highlight {
   float: right;
   margin: 0 5px 10px 5px;
   padding: 5px 11px;
-  background-image: none;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   -khtml-border-radius: 8px; 
@@ -2031,5 +2034,4 @@ th .highlight {
   font-size:15px;
   box-shadow:2px 3px 3px #333;
   text-shadow: 0 1px 1px black;
-  /*float: right;*/
 }

@@ -249,7 +249,7 @@ div.mica-modal-content div.popups-title {
 }
 
 /** Actions **/
-.action-links a.highlight {
+.action-links a.highlight:first-child {
   background-color:#B5D268;
   color:#5A6F2A;
   text-shadow: 0 1px 1px white;
