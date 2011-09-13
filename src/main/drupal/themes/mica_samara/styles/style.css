@@ -1312,7 +1312,7 @@ ul.action-links li {
   display: inline;
   padding: 0 14px 0 1px;
 }
-ul.action-links li a {
+ul.action-links li a:first-child {
   padding-left: 15px;
   background: url(../images/action-link.png) no-repeat left center;
 }

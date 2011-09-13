@@ -81,8 +81,9 @@ function mica_data_access_menu_local_tasks_alter(&$data, $router_item, $root_pat
       $links['login'] = array(
         '#theme' => 'menu_local_action',
         '#link' => array(
-          'title' => t('<a href="@login">Log in</a> to submit a Data Access Request.', array(
-          '@login' => url('user/login', array('query' => drupal_get_destination())),
+          'title' => t('<a href="@login">Log in</a> or <a href="@register">Register</a> to submit a Data Access Request.', array(
+            '@login' => url('user/login', array('query' => drupal_get_destination())),
+            '@register' => url('user/register', array('query' => drupal_get_destination())),
       )),
          'localized_options' => array('html' => TRUE),
       ),
