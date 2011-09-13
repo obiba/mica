@@ -241,7 +241,7 @@ function mica_projects_views_default_views() {
   $handler->display->display_options['fields']['field_instructions']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_instructions']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_instructions']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_instructions']['alter']['nl2br'] = 1;
+  $handler->display->display_options['fields']['field_instructions']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_instructions']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_instructions']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_instructions']['alter']['strip_tags'] = 0;
