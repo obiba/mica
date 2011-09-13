@@ -26,17 +26,6 @@ mica_demo_version=$(mica_version)
 # Themes
 mica_samara_version=$(mica_version)
 
-
-#
-# Forked Modules
-#
-http_client_version=7.x-2.x-dev-mica
-feeds_version=7.x-2.x-dev-mica
-references_version=7.x-2.0-beta3-mica
-noderefcreate_version=7.x-1.0-beta2-mica
-menu_firstchild_version=7.x-1.0-mica
-content_access_version=7.x-1.x-dev-mica
-
 #
 # Mysql db access
 #
@@ -104,38 +93,53 @@ endif
 #
 
 #package: package-modules package-profiles package-themes package-forks debian
-package: package-modules-prepare debian
+package: package-prepare debian
 	rm -f target/mica-dist*
 	cd target && \
 	tar czf mica-dist-$(deb_version).tar.gz $(micadir) && \
 	zip -qr mica-dist-$(deb_version).zip $(micadir)
 
-package-modules-prepare: package-submodule-mica_community package-submodule-mica_data_access package-submodule-mica_datasets package-submodule-mica_datashield package-submodule-mica_node_reference_field package-submodule-mica_opal package-submodule-mica_projects package-submodule-mica_studies package-submodule-node_reference_block
+package-prepare: package-modules-prepare package-profiles-prepare package-themes-prepare package-forks-prepare
+
+package-modules-prepare:
+	$(call make-info,sites/all/modules/mica/extensions,mica_community)
+	$(call make-info,sites/all/modules/mica/extensions,mica_data_access)
+	$(call make-info,sites/all/modules/mica/extensions,mica_datasets)
+	$(call make-info,sites/all/modules/mica/extensions,mica_datashield)
+	$(call make-info,sites/all/modules/mica/extensions,mica_node_reference_field)
+	$(call make-info,sites/all/modules/mica/extensions,mica_opal)
+	$(call make-info,sites/all/modules/mica/extensions,mica_projects)
+	$(call make-info,sites/all/modules/mica/extensions,mica_studies)
+	$(call make-info,sites/all/modules/mica/extensions,node_reference_block)
 	$(call make-info,sites/all/modules,mica)
 	
-package-modules: package-modules-prepare 
+package-modules:
 	$(call make-package,sites/all/modules,mica)
+
+package-profiles-prepare:
+	$(call make-info,profiles,mica_standard)
+	$(call make-info,profiles,mica_demo)
+
+package-profiles:
+
+package-themes-prepare:
+	$(call make-info,sites/all/themes,mica_samara)
 	
-package-profiles: package-profile-mica_standard package-profile-mica_demo
+package-themes:
 
-package-themes: package-theme-mica_samara
-
-package-forks: package-module-content_access package-module-feeds package-module-http_client package-module-menu_firstchild package-module-noderefcreate package-module-references
-
-package-module-%: 
-	$(call make-info,sites/all/modules,$*)
-	$(call make-package,sites/all/modules,$*)
-
-package-submodule-%: 
-	$(call make-info,sites/all/modules/mica/extensions,$*)
-
-package-profile-%: 
-	$(call make-info,profiles,$*)
-	$(call make-package,profiles,$*)
-
-package-theme-%: 
-	$(call make-info,sites/all/themes,$*)
-	$(call make-package,sites/all/themes,$*)
+package-forks-prepare:
+	$(call make-info-version,sites/all/modules,feeds,$(feeds_branch)-mica)
+	$(call make-info-version,sites/all/modules,http_client,$(http_client_branch)-mica)
+	$(call make-info-version,sites/all/modules,menu_firstchild,$(menu_firstchild_revision)-mica)
+	$(call make-info-version,sites/all/modules,references,$(references_revision)-mica)
+	$(call make-info-version,sites/all/modules,search_api_ranges,$(search_api_ranges_revision)-mica)
+	
+package-forks:
+	$(call make-package,sites/all/modules,feeds)
+	$(call make-package,sites/all/modules,http_client)
+	$(call make-package,sites/all/modules,menu_firstchild)
+	$(call make-package,sites/all/modules,references)
+	$(call make-package,sites/all/modules,search_api_ranges)
 
 package-clean:
 	rm -f target/*.zip && rm -f target/*.gz && rm -f target/*.deb
@@ -253,11 +257,15 @@ help:
 # Functions
 #
 
-# make-info function: add version number to project info file
-make-info = cd target/$(micadir)/$(1) && \
+# make-info function: add default version number to project info file
+make-info = $(call make-info-version,$(1),$(2),$($(2)_version))
+	
+# make-info-version function: add specified version number to project info file
+make-info-version = cd target/$(micadir)/$(1) && \
 	echo "\n\n; Information added by obiba.org packaging script on $(deb_date)" >> $2/$2.info && \
-	echo "version = \"$($(2)_version)\"" >> $2/$2.info && \
+	echo "version = \"$(3)\"" >> $2/$2.info && \
 	echo "datestamp = \"$(datestamp)\"" >> $2/$2.info
+
 
 # make-package function: build tar.gz and zip files of a project
 make-package = cd target/$(micadir)/$(1) && \
