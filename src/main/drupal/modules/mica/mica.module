@@ -240,9 +240,8 @@ function mica_node_access($node, $op, $account){
 function mica_form_alter(&$form, $form_state, $form_id) {
   $node_type = NULL;
   
-  if (array_key_exists('#node', $form)){
+  if (array_key_exists('#node', $form) && isset($form['type']['#value'])){
     $node_type = $form['type']['#value'];
-    $button = 'delete';
   }
   
   // Disable for feeds also
