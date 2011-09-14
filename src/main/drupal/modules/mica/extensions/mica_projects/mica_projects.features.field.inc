@@ -372,7 +372,7 @@ function mica_projects_field_default_fields() {
       'bundle' => 'project',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Consortium\'s studies involved.',
       'display' => array(
         'default' => array(
           'label' => 'above',
