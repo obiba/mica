@@ -588,6 +588,9 @@ h1.page-title,
 /**
  * Comment module
  */
+#comments {
+  border-top: 2px dashed #ccc;
+}
 #comments-wrapper {
   margin-top: 20px;
 }
