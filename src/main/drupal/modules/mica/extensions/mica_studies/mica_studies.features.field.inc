@@ -2550,7 +2550,7 @@ MD.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_p3g_observatory_link',
-      'label' => 'P3G Catalogue Link',
+      'label' => 'P3G Catalogue',
       'required' => 0,
       'settings' => array(
         'attributes' => array(
@@ -5126,7 +5126,7 @@ MD.',
   t('Other type of design');
   t('Other type of samples collected');
   t('Other type of target');
-  t('P3G Catalogue Link');
+  t('P3G Catalogue');
   t('Postal Code');
   t('Proceeding to genome-wide association (GWA) analysis');
   t('Recruitment targets');
