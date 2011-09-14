@@ -303,6 +303,9 @@ legend {
 .form-item {
   margin: 10px 0;
 }
+.form-type-item .form-item {
+  margin: 0;
+}
 legend + .form-item {
   margin-top: 0;
 }

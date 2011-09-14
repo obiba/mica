@@ -202,12 +202,16 @@ function mica_datasets_dataset_studies_form($form, &$form_state) {
   // study list
   $studies_options = _mica_datasets_studies_options($study_node_ids);
   if (!empty($studies_options)) {
-    $form['studies']= array(
+    $form['add-study'] = array(
+      '#type' => 'item',
+      '#description' => t('Select the studies that are part of the dataset.'),
+    );
+    $form['add-study']['studies']= array(
       '#type' => 'select', 
       '#title' => t('Studies'), 
       '#options' => $studies_options,
     );
-    $form['add-study'] = array(
+    $form['add-study']['add'] = array(
       '#type' => 'submit',
       '#value' => t('Add Study'),
     );
@@ -262,12 +266,16 @@ function mica_datasets_study_datasets_form($form, &$form_state) {
   // dataset list
   $datasets_options = _mica_datasets_datasets_options($study_node);
   if (!empty($datasets_options)) {
-    $form['datasets']= array(
+    $form['add-dataset'] = array(
+      '#type' => 'item',
+      '#description' => t('Select the datasets in which the study is involved.'),
+    );
+    $form['add-dataset']['datasets']= array(
       '#type' => 'select', 
       '#title' => t('Datasets'), 
       '#options' => $datasets_options,
     );
-    $form['add-dataset'] = array(
+    $form['add-dataset']['add'] = array(
       '#type' => 'submit',
       '#value' => t('Add Dataset'),
     );

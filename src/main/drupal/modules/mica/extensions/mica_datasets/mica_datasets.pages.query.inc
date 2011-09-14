@@ -161,6 +161,10 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
 
   if (!empty($variable_options)) {
     asort($variable_options);
+    $form['add-term'] = array(
+      '#type' => 'item',
+      '#description' => t('Select the variables you want to query the dataset on.'),
+    );
     $form['add-term']['variables']= array(
       '#type' => 'select', 
       '#title' => t('Variables'), 
