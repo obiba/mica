@@ -129,7 +129,7 @@ function mica_datashield_form_submit($form, &$form_state) {
       
       $form_state['rebuild'] = TRUE;
       break;
-    case 'fit':
+    case 'submit':
       $model = _mica_datashield_model_load($dataset_node);
       
       $model->launch($form_state['values']['model-to-fit'], array('family'=>$form_state['values']['model-family']));
