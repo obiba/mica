@@ -3,7 +3,7 @@
 #
 
 oldversion=
-solr_version=1.4.1
+solr_version=3.4.0
 
 #
 # Drush install
