@@ -270,10 +270,10 @@ function mica_form_alter(&$form, $form_state, $form_id) {
 function mica_node_delete($node) {
 
   if ($node->type === 'field_description') {
-    $field_bundle = $field_description->field_bundle;
+    $field_bundle = $node->field_bundle;
     $bundle = $field_bundle[LANGUAGE_NONE][0]['value'];
 
-    $field_original_field_name = $field_description->field_original_field_name;
+    $field_original_field_name = $node->field_original_field_name;
     $original_field_name = $field_original_field_name[LANGUAGE_NONE][0]['value'];
 
     module_load_include('inc', 'mica', 'includes/search');
