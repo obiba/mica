@@ -276,7 +276,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
         }
         
         // add participant variables
-        $name = t('Data Dictionnary');
+        $name = t('Data Dictionary');
         $href = url('participant-variable-search/' . $router_item['page_arguments'][0]->nid);
         $links['view-participant-variable'] = array(
   			'#weight' => 30,
