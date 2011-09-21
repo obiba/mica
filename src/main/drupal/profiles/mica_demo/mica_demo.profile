@@ -28,7 +28,7 @@ function mica_demo_install_tasks($install_state) {
 }
 
 function mica_import_demo_feeds($install_state) {
-  $root = 'profiles/mica_demo/demo_consortium_data';
+  $root = 'profiles/mica_demo/data';
   $feed_configs = array();
   $feed_configs['csv_study_import'] = array(
     'file' => $root . '/csv_study_export.csv',
@@ -49,13 +49,13 @@ function mica_import_demo_feeds($install_state) {
     'file' => $root . '/csv_event_export.csv',
   );
   $feed_configs['csv_publication_import'] = array(
-    'file' => $root . '/csv_publication.csv',
+    'file' => $root . '/csv_publication_export.csv',
   );
   $feed_configs['csv_project_import'] = array(
-    'file' => $root . '/csv_project.csv',
+    'file' => $root . '/csv_project_export.csv',
   );
   $feed_configs['csv_teleconference_import'] = array(
-    'file' => $root . '/csv_teleconference.csv',
+    'file' => $root . '/csv_teleconference_export.csv',
   );
   
   $operations = array();

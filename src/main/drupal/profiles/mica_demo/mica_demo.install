@@ -24,8 +24,8 @@ function mica_demo_install() {
 
   // study administrators
   $user = array(
-    'name' => 'ukb',
-    'mail' => 'admin@ukb.org',
+    'name' => 'basalt',
+    'mail' => 'admin@basalt.org',
     'is_new' => TRUE,
     'pass' => 'password',
     'status' => 1,
@@ -36,8 +36,8 @@ function mica_demo_install() {
   user_save(null, $user);
   
   $user = array(
-    'name' => 'hunt',
-    'mail' => 'admin@hunt.org',
+    'name' => 'dacite',
+    'mail' => 'admin@dacite.org',
     'is_new' => TRUE,
     'pass' => 'password',
     'status' => 1,
@@ -48,8 +48,8 @@ function mica_demo_install() {
   user_save(null, $user);
   
   $user = array(
-    'name' => 'kora',
-    'mail' => 'admin@kora.org',
+    'name' => 'scoria',
+    'mail' => 'admin@scoria.org',
     'is_new' => TRUE,
     'pass' => 'password',
     'status' => 1,
@@ -58,6 +58,31 @@ function mica_demo_install() {
     ),
   );
   user_save(null, $user);
+  
+  $user = array(
+    'name' => 'marl',
+    'mail' => 'admin@marl.org',
+    'is_new' => TRUE,
+    'pass' => 'password',
+    'status' => 1,
+    'roles' => array(
+      '7' => 'study administrator',
+    ),
+  );
+  user_save(null, $user);
+
+  $user = array(
+    'name' => 'skarn',
+    'mail' => 'admin@skarn.org',
+    'is_new' => TRUE,
+    'pass' => 'password',
+    'status' => 1,
+    'roles' => array(
+      '7' => 'study administrator',
+    ),
+  );
+  user_save(null, $user);
+
 
   // ordinary users
   $user = array(
