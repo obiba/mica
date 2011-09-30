@@ -37,8 +37,8 @@ db_pass=rootadmin
 #
 
 all: drupal mica bckphtaccess htaccess
-#	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/default.settings.php
-#	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/settings.php
+	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/default.settings.php
+	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/settings.php
 
 #
 # Include drupal targets
