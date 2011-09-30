@@ -28,34 +28,40 @@ function mica_demo_install_tasks($install_state) {
 }
 
 function mica_import_demo_feeds($install_state) {
-  $root = 'profiles/mica_demo/data';
+  $base = 'profiles/mica_demo';
+  $root = $base . '/data/feeds';
   $feed_configs = array();
   $feed_configs['csv_study_import'] = array(
-    'file' => $root . '/csv_study_export.csv',
+    'file' => $root . '/study.csv',
   );
   $feed_configs['csv_study_information_import'] = array(
-    'file' => $root . '/csv_study_information_export.csv',
+    'file' => $root . '/study_information.csv',
   );
   $feed_configs['csv_contact_import'] = array(
-    'file' => $root . '/csv_contact_export.csv',
+    'file' => $root . '/contact.csv',
   );
   $feed_configs['csv_institution_import'] = array(
-    'file' => $root . '/csv_institution_export.csv',
+    'file' => $root . '/institution.csv',
   );
-  $feed_configs['csv_study_documents_importer'] = array(
-    'file' => $root . '/csv_study_documents_export.csv',
+  $feed_configs['csv_study_documents_import'] = array(
+    'file' => $root . '/study_documents.csv',
   );
   $feed_configs['csv_event_import'] = array(
-    'file' => $root . '/csv_event_export.csv',
+    'file' => $root . '/event.csv',
   );
   $feed_configs['csv_publication_import'] = array(
-    'file' => $root . '/csv_publication_export.csv',
+    'file' => $root . '/publication.csv',
   );
   $feed_configs['csv_project_import'] = array(
-    'file' => $root . '/csv_project_export.csv',
+    'file' => $root . '/project.csv',
   );
   $feed_configs['csv_teleconference_import'] = array(
-    'file' => $root . '/csv_teleconference_export.csv',
+    'file' => $root . '/teleconference.csv',
+  );
+  
+  
+  $feed_configs['csv_documents_import'] = array(
+    'file' => $base . '/documents/feeds/documents.csv',
   );
   
   $operations = array();

@@ -115,9 +115,9 @@ function mica_studies_user_default_permissions() {
     'module' => 'feeds',
   );
 
-  // Exported permission: clear csv_study_documents_importer feeds
-  $permissions['clear csv_study_documents_importer feeds'] = array(
-    'name' => 'clear csv_study_documents_importer feeds',
+  // Exported permission: clear csv_study_documents_import feeds
+  $permissions['clear csv_study_documents_import feeds'] = array(
+    'name' => 'clear csv_study_documents_import feeds',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -142,6 +142,15 @@ function mica_studies_user_default_permissions() {
     'module' => 'feeds',
   );
 
+  // Exported permission: clear csv_documents_import feeds
+  $permissions['clear csv_documents_import feeds'] = array(
+    'name' => 'clear csv_documents_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+  
   // Exported permission: create article content
   $permissions['create article content'] = array(
     'name' => 'create article content',
@@ -691,9 +700,9 @@ function mica_studies_user_default_permissions() {
     'module' => 'feeds',
   );
 
-  // Exported permission: import csv_study_documents_importer feeds
-  $permissions['import csv_study_documents_importer feeds'] = array(
-    'name' => 'import csv_study_documents_importer feeds',
+  // Exported permission: import csv_study_documents_import feeds
+  $permissions['import csv_study_documents_import feeds'] = array(
+    'name' => 'import csv_study_documents_import feeds',
     'roles' => array(
       0 => 'administrator',
     ),
