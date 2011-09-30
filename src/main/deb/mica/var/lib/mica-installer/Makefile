@@ -18,7 +18,7 @@ db_pass=
 # Drush install
 #
 
-all: drush
+all: 
 
 drush:
 	@echo "**** Drush install"
