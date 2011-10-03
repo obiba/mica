@@ -3,7 +3,6 @@
 # Requires drush 4+ to be installed: http://drush.ws/
 #
 
-
 version=1.0-SNAPSHOT
 
 #
@@ -36,7 +35,7 @@ db_pass=rootadmin
 # Build
 #
 
-all: drupal mica bckphtaccess htaccess
+all: drupal mica
 	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/default.settings.php
 	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/settings.php
 
@@ -66,10 +65,8 @@ mica-install:
 		rm -rf profiles/minimal ; \
 	fi
 	
-bckphtaccess:
-	cp target/$(micadir)/.htaccess target/$(micadir)/.htaccess_bak
-	
 htaccess:
+	cp target/$(micadir)/.htaccess target/$(micadir)/.htaccess_bak
 	sed '/# RewriteBase \/drupal/ a RewriteBase \/mica' target/$(micadir)/.htaccess > target/$(micadir)/.htaccess_new
 	mv target/$(micadir)/.htaccess_new target/$(micadir)/.htaccess 
 	
