@@ -44,6 +44,11 @@ views_data_export_version=7.x-3.0-beta5
 views_version=7.x-3.0-rc1
 viewreference_version=7.x-3.1
 
+#
+# Libraries dependencies
+#
+solr-php-client-version=22
+
 
 #
 # Modules to get stable dev revisions
@@ -163,8 +168,8 @@ jsonpath-php-client:
 solr-php-client:
 	cd target/$(micadir) && \
 	rm -rf sites/all/modules/search_api_solr/SolrPhpClient && \
-	wget -q -r -R index.html,wiki -P tmp http://solr-php-client.googlecode.com/svn/\!svn/bc/22/trunk/ && \
-	mv tmp/solr-php-client.googlecode.com/svn/\!svn/bc/22/trunk/ sites/all/modules/search_api_solr/SolrPhpClient && \
+	wget -q -r -R index.html,wiki -P tmp http://solr-php-client.googlecode.com/svn/\!svn/bc/$(solr-php-client-version)/trunk/ && \
+	mv tmp/solr-php-client.googlecode.com/svn/\!svn/bc/$(solr-php-client-version)/trunk/ sites/all/modules/search_api_solr/SolrPhpClient && \
 	rm -rf tmp
 
 ckeditor-library:
