@@ -3,13 +3,13 @@
 # Requires drush 4+ to be installed: http://drush.ws/
 #
 
-version=1.0-SNAPSHOT
+version=1.1-SNAPSHOT
 
 #
 # Mica versions
 #
 # Modules
-mica_version=7.x-1.0-dev
+mica_version=7.x-1.1-dev
 mica_community_version=$(mica_version)
 mica_data_access_version=$(mica_version)
 mica_datasets_version=$(mica_version)
