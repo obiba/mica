@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Mica DataSchemas feature.
+ */
+
+include_once('mica_dataschemas.features.inc');
