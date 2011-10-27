@@ -29,6 +29,7 @@ function mica_samara_form_system_theme_settings_alter(&$form, &$form_state) {
       'default' => t('default'),
       'green' => t('green'),
       'dark'   => t('dark'),
+      'bioshare'   => t('bioshare'),
     ),
   );
   $form['common']['base_font_size'] = array(
