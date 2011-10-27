@@ -27,6 +27,14 @@ function mica_dataschemas_ctools_plugin_api() {
  */
 function mica_dataschemas_node_info() {
   $items = array(
+    'dataschema' => array(
+      'name' => t('DataSchema'),
+      'base' => 'node_content',
+      'description' => t('Identifies and describes a thematic set of core variables that are of particular value in a specified scientific setting.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'ds_variable' => array(
       'name' => t('Variable'),
       'base' => 'node_content',
