@@ -500,26 +500,27 @@ function mica_dataschemas_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_class',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
         ),
       ),
-      'module' => 'list',
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
-          'Age' => 'Age',
-          'Age of onset' => 'Age of onset',
-          'Date/time' => 'Date/time',
-          'Frequency' => 'Frequency',
-          'Identification' => 'Identification',
-          'Localization' => 'Localization',
-          'Occurence' => 'Occurence',
-          'Quantity' => 'Quantity',
-          'Status' => 'Status',
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'class',
+          ),
         ),
-        'allowed_values_function' => '',
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
@@ -534,20 +535,20 @@ function mica_dataschemas_field_default_fields() {
         ),
       ),
       'translatable' => '0',
-      'type' => 'list_text',
+      'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
       'bundle' => 'ds_variable',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Term used to define the general nature of the variable ( e.g. age, localization, occurence, date/time...).',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'list',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'list_default',
-          'weight' => 11,
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 20,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -567,8 +568,8 @@ function mica_dataschemas_field_default_fields() {
         'active' => 1,
         'module' => 'options',
         'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '8',
+        'type' => 'options_select',
+        'weight' => '31',
       ),
     ),
   );
@@ -643,7 +644,7 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '11',
+        'weight' => '34',
       ),
     ),
   );
@@ -758,7 +759,7 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '18',
+        'weight' => '41',
       ),
     ),
   );
@@ -832,7 +833,7 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '12',
+        'weight' => '35',
       ),
     ),
   );
@@ -910,7 +911,7 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '15',
+        'weight' => '38',
       ),
     ),
   );
@@ -988,7 +989,7 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '10',
+        'weight' => '33',
       ),
     ),
   );
@@ -1065,7 +1066,7 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '13',
+        'weight' => '36',
       ),
     ),
   );
@@ -1153,7 +1154,7 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '16',
+        'weight' => '39',
       ),
     ),
   );
@@ -1241,7 +1242,7 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '17',
+        'weight' => '40',
       ),
     ),
   );
@@ -1315,7 +1316,7 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '14',
+        'weight' => '37',
       ),
     ),
   );
@@ -1391,7 +1392,7 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '9',
+        'weight' => '32',
       ),
     ),
   );
@@ -1902,7 +1903,6 @@ function mica_dataschemas_field_default_fields() {
   t('Target');
   t('Target gender');
   t('Term use to describe the disease(s) specifically targeted by the variables contained in the DataSchema.');
-  t('Term used to define the general nature of the variable ( e.g. age, localization, occurence, date/time...).');
   t('Term used to define the origin from which the information could be extracted ( e.g. interviewer/nurse, participant, support, registry...).');
   t('Term used to define the sample type targeted by the variable (e.g. serum, plasma...).');
   t('Term used to describe the gender of the person targeted by the variable ( e.g. male, female).');
