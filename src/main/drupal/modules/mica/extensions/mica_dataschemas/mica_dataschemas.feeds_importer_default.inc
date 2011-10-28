@@ -82,6 +82,85 @@ function mica_dataschemas_feeds_importer_default() {
   $feeds_importer = new stdClass;
   $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
   $feeds_importer->api_version = 1;
+  $feeds_importer->id = 'csv_domain_import';
+  $feeds_importer->config = array(
+    'name' => 'Domain',
+    'description' => 'Import Domains from a CSV file',
+    'fetcher' => array(
+      'plugin_key' => 'FeedsFileFetcher',
+      'config' => array(
+        'allowed_extensions' => 'csv',
+        'direct' => 0,
+      ),
+    ),
+    'parser' => array(
+      'plugin_key' => 'FeedsMultiValueCSVParser',
+      'config' => array(
+        'delimiter' => ',',
+        'no_headers' => 0,
+        'multivalue_separator' => '||',
+        'multivalue_trim_spaces' => 1,
+      ),
+    ),
+    'processor' => array(
+      'plugin_key' => 'FeedsNodeProcessor',
+      'config' => array(
+        'content_type' => 'ds_domain',
+        'expire' => '-1',
+        'author' => 0,
+        'mappings' => array(
+          0 => array(
+            'source' => 'title',
+            'target' => 'title',
+            'unique' => FALSE,
+          ),
+          1 => array(
+            'source' => 'title',
+            'target' => 'guid',
+            'unique' => 1,
+          ),
+          2 => array(
+            'source' => 'body',
+            'target' => 'body',
+            'unique' => FALSE,
+          ),
+          3 => array(
+            'source' => 'field_uri',
+            'target' => 'field_uri',
+            'unique' => FALSE,
+          ),
+          4 => array(
+            'source' => 'field_variables_justification',
+            'target' => 'field_variables_justification',
+            'unique' => FALSE,
+          ),
+          5 => array(
+            'source' => 'field_associations',
+            'target' => 'field_associations',
+            'unique' => FALSE,
+          ),
+          6 => array(
+            'source' => 'field_scientific_references',
+            'target' => 'field_scientific_references',
+            'unique' => FALSE,
+          ),
+        ),
+        'update_existing' => '2',
+        'input_format' => 'plain_text',
+      ),
+    ),
+    'content_type' => '',
+    'update' => 0,
+    'import_period' => '-1',
+    'expire_period' => 3600,
+    'import_on_create' => 1,
+    'process_in_background' => 0,
+  );
+  $export['csv_domain_import'] = $feeds_importer;
+
+  $feeds_importer = new stdClass;
+  $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
+  $feeds_importer->api_version = 1;
   $feeds_importer->id = 'csv_ds_variable_import';
   $feeds_importer->config = array(
     'name' => 'DS Variable',
@@ -188,6 +267,134 @@ function mica_dataschemas_feeds_importer_default() {
     'process_in_background' => 0,
   );
   $export['csv_ds_variable_import'] = $feeds_importer;
+
+  $feeds_importer = new stdClass;
+  $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
+  $feeds_importer->api_version = 1;
+  $feeds_importer->id = 'csv_module_import';
+  $feeds_importer->config = array(
+    'name' => 'Module',
+    'description' => 'Import Modules from a CSV file',
+    'fetcher' => array(
+      'plugin_key' => 'FeedsFileFetcher',
+      'config' => array(
+        'allowed_extensions' => 'csv',
+        'direct' => 0,
+      ),
+    ),
+    'parser' => array(
+      'plugin_key' => 'FeedsMultiValueCSVParser',
+      'config' => array(
+        'delimiter' => ',',
+        'no_headers' => 0,
+        'multivalue_separator' => '||',
+        'multivalue_trim_spaces' => 1,
+      ),
+    ),
+    'processor' => array(
+      'plugin_key' => 'FeedsNodeProcessor',
+      'config' => array(
+        'content_type' => 'ds_module',
+        'expire' => '-1',
+        'author' => 0,
+        'mappings' => array(
+          0 => array(
+            'source' => 'title',
+            'target' => 'title',
+            'unique' => FALSE,
+          ),
+          1 => array(
+            'source' => 'title',
+            'target' => 'guid',
+            'unique' => 1,
+          ),
+          2 => array(
+            'source' => 'body',
+            'target' => 'body',
+            'unique' => FALSE,
+          ),
+          3 => array(
+            'source' => 'field_uri',
+            'target' => 'field_uri',
+            'unique' => FALSE,
+          ),
+        ),
+        'update_existing' => '2',
+        'input_format' => 'plain_text',
+      ),
+    ),
+    'content_type' => '',
+    'update' => 0,
+    'import_period' => '-1',
+    'expire_period' => 3600,
+    'import_on_create' => 1,
+    'process_in_background' => 0,
+  );
+  $export['csv_module_import'] = $feeds_importer;
+
+  $feeds_importer = new stdClass;
+  $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
+  $feeds_importer->api_version = 1;
+  $feeds_importer->id = 'csv_theme_import';
+  $feeds_importer->config = array(
+    'name' => 'Theme',
+    'description' => 'Import Themes from a CSV file',
+    'fetcher' => array(
+      'plugin_key' => 'FeedsFileFetcher',
+      'config' => array(
+        'allowed_extensions' => 'csv',
+        'direct' => 0,
+      ),
+    ),
+    'parser' => array(
+      'plugin_key' => 'FeedsMultiValueCSVParser',
+      'config' => array(
+        'delimiter' => ',',
+        'no_headers' => 0,
+        'multivalue_separator' => '||',
+        'multivalue_trim_spaces' => 1,
+      ),
+    ),
+    'processor' => array(
+      'plugin_key' => 'FeedsNodeProcessor',
+      'config' => array(
+        'content_type' => 'ds_theme',
+        'expire' => '-1',
+        'author' => 0,
+        'mappings' => array(
+          0 => array(
+            'source' => 'title',
+            'target' => 'title',
+            'unique' => FALSE,
+          ),
+          1 => array(
+            'source' => 'title',
+            'target' => 'guid',
+            'unique' => 1,
+          ),
+          2 => array(
+            'source' => 'body',
+            'target' => 'body',
+            'unique' => FALSE,
+          ),
+          3 => array(
+            'source' => 'field_uri',
+            'target' => 'field_uri',
+            'unique' => FALSE,
+          ),
+        ),
+        'update_existing' => '2',
+        'input_format' => 'plain_text',
+      ),
+    ),
+    'content_type' => '',
+    'update' => 0,
+    'import_period' => '-1',
+    'expire_period' => 3600,
+    'import_on_create' => 1,
+    'process_in_background' => 0,
+  );
+  $export['csv_theme_import'] = $feeds_importer;
 
   return $export;
 }
