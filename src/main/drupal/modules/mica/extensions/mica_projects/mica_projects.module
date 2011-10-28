@@ -73,7 +73,6 @@ function mica_projects_insert(&$node) {
 function mica_projects_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
   if ($entity_type == 'node' && $entity->type == 'project') {
     $form['field_teleconferences']['#attributes']['style'] = array('display:none;');
-    $form['field_teleconferences']['#attributes']['style'] = array('display:none;');
   }
   elseif ($entity_type == 'node' && $entity->type == 'teleconference') {
     // preselect project when specified in the url
