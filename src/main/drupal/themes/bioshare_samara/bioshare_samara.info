@@ -1,15 +1,11 @@
-project = "mica_samara"
-name = Mica Samara
-description = Sub-theme of Mica Samara for BioSHaRE. Extensive stylings for all core modules: blocks, nodes, forums, books, profiles, etc. Drop-down menu with unlimited number of submenus. 2 predefined color schemes. 1-, 2- or 3-column layout with flexible width. Configurable layout width. Configurable position of each sidebar. Configurable base font size.
+project = "bioshare_samara"
+name = BioSHaRE Samara
+description = Extensive stylings for all core modules: blocks, nodes, forums, books, profiles, etc. Drop-down menu with unlimited number of submenus. 2 predefined color schemes. 1-, 2- or 3-column layout with flexible width. Configurable layout width. Configurable position of each sidebar. Configurable base font size.
 core = 7.x
 
-stylesheets[all][]   = styles/reset.css
-stylesheets[all][]   = styles/base.css
-stylesheets[all][]   = styles/style.css
-stylesheets[all][]   = styles/drupal.css
-stylesheets[all][]   = styles/colors.css
-stylesheets[print][] = styles/print.css
+base theme = mica_samara
 
+stylesheets[all][]   = styles/bioshare_samara.css
 
 regions[header]         = Header
 regions[sidebar_first]  = First sidebar

@@ -14,7 +14,7 @@
  * @param $form_state
  *   The form state.
  */
-function mica_samara_form_system_theme_settings_alter(&$form, &$form_state) {
+function bioshare_samara_form_system_theme_settings_alter(&$form, &$form_state) {
 
   $form['common'] = array(
     '#title' => t('Samara common settings'), 
@@ -29,6 +29,7 @@ function mica_samara_form_system_theme_settings_alter(&$form, &$form_state) {
       'default' => t('default'),
       'green' => t('green'),
       'dark'   => t('dark'),
+      'bioshare' => t('bioshare'),
     ),
   );
   $form['common']['base_font_size'] = array(
@@ -155,7 +156,7 @@ function mica_samara_form_system_theme_settings_alter(&$form, &$form_state) {
 /**
  * Generate options array
  */
-function mica_samara_generate_array($min, $max, $increment, $postfix, $unlimited = NULL) {
+function bioshare_samara_generate_array($min, $max, $increment, $postfix, $unlimited = NULL) {
   $array = array();
   if ($unlimited == 'first') {
     $array['none'] = t('Unlimited');
