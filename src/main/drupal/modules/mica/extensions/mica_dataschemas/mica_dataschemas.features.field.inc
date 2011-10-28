@@ -132,67 +132,6 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'comment-comment_node_variables-comment_body'
-  $fields['comment-comment_node_variables-comment_body'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(
-        0 => 'comment',
-      ),
-      'field_name' => 'comment_body',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'comment_node_variables',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'comment',
-      'field_name' => 'comment_body',
-      'label' => 'Comment',
-      'required' => TRUE,
-      'settings' => array(
-        'text_processing' => 1,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'text',
-        'settings' => array(
-          'rows' => 5,
-        ),
-        'type' => 'text_textarea',
-        'weight' => 0,
-      ),
-    ),
-  );
-
   // Exported field: 'node-dataschema-body'
   $fields['node-dataschema-body'] = array(
     'field_config' => array(
@@ -382,7 +321,7 @@ function mica_dataschemas_field_default_fields() {
         'append_id' => 0,
         'arguments' => array(
           'delimiter' => '/',
-          'dsv_arguments' => 0,
+          'dsv_arguments' => 1,
           'php_arguments' => 0,
           'rows' => '1',
         ),
@@ -420,11 +359,11 @@ function mica_dataschemas_field_default_fields() {
           'data_access:page' => 0,
           'data_access_admin:page' => 0,
           'data_access_committee:page' => 0,
-          'dataschema_variables:page' => 'dataschema_variables:page',
           'dataset_participant_variables:page' => 0,
           'dataset_studies:page' => 0,
           'datasets:feed' => 0,
           'datasets:page' => 0,
+          'datasschema_variables:page' => 'datasschema_variables:page',
           'date_browser:date_nav_1' => 0,
           'date_browser:page' => 0,
           'documents:page' => 0,
@@ -489,7 +428,7 @@ function mica_dataschemas_field_default_fields() {
         'active' => 0,
         'module' => 'viewreference',
         'settings' => array(),
-        'type' => 'viewreference_autocomplete',
+        'type' => 'viewreference_select',
         'weight' => '34',
       ),
     ),

@@ -5,3 +5,48 @@
  */
 
 include_once('mica_dataschemas.features.inc');
+include_once DRUPAL_ROOT . '/modules/menu/menu.admin.inc';
+
+/**
+* Implements hook_install().
+*/
+
+function mica_dataschemas_install() {
+  $plid  = _get_mlid('node/3');
+
+  $path = drupal_get_normal_path($GLOBALS['base_url'] .'/?q=dataschemas');
+  
+  $form_state = array(
+      'values' => array(
+        'menu_name'   => 'main-menu',
+        'weight'      => 0,
+        'link_title'  => 'DataSchemas',
+        'link_path'   => $path,
+        'module'      => 'menu',
+        'mlid'        => 0,
+        'plid'        => $plid,
+      ),
+  );
+  
+  // Validate and transform the item, so it conforms with Drupal standards.
+  menu_edit_item_validate(array(), $form_state);
+  
+  // Save the item to database.
+  menu_link_save($form_state['values']);
+  
+  menu_cache_clear_all();
+}
+
+function _get_mlid($path) {
+	$mlid = null;
+
+	$tree =  menu_tree_all_data('main-menu');
+	foreach($tree as $item) {
+		if ($item['link']['link_path'] == $path) {
+			$mlid = $item['link']['mlid'];
+			break;
+		}
+	}
+
+	return $mlid;
+}
