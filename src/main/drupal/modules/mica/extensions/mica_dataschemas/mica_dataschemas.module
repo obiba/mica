@@ -8,6 +8,13 @@ include_once('mica_dataschemas.features.inc');
 include_once DRUPAL_ROOT . '/modules/menu/menu.admin.inc';
 
 /**
+* Implements hook_form().
+*/
+function mica_dataschemas_form($node, &$form_state) {
+	return node_content_form($node, $form_state);
+}
+
+/**
 * Implements hook_install().
 */
 
@@ -36,6 +43,42 @@ function mica_dataschemas_install() {
   
   menu_cache_clear_all();
 }
+
+/**
+* Implements hook_node_insert()
+*/
+function mica_dataschemas_insert(&$node) {
+  debug($node->nid);
+	if ($node->type === 'dataschema') {
+		$node->field_variables['und'] = array(
+  		  0 => array(
+          	'view_id' => 'dataschema_variables:page',
+          	'arguments' => $node->nid,
+  		  )
+		);
+	}
+	debug($node->field_variables);
+	return;
+}
+
+/**
+ * Implements hook_field_attach_form()
+ */
+function mica_dataschemas_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+	if ($entity_type == 'node' && $entity->type == 'dataschema') {
+// 		$form['field_variables']['#attributes']['style'] = array('display:none;');
+	}
+	/*elseif ($entity_type == 'node' && $entity->type == 'ds_variable') {
+		// preselect project when specified in the url
+		if (isset($_GET['field_dataschemas'])) {
+			$project_id = $_GET['field_project'];
+			if (isset($form['field_project'][LANGUAGE_NONE]['#options'][$project_id])) {
+				$form['field_project'][LANGUAGE_NONE]['#value'] = $project_id;
+			}
+		}
+	}*/
+}
+
 
 function _get_mlid($path) {
 	$mlid = null;
