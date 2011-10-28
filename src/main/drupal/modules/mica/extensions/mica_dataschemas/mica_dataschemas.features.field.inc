@@ -132,8 +132,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-dataschema-body'
-  $fields['node-dataschema-body'] = array(
+  // Exported field: 'node-ds_domain-body'
+  $fields['node-ds_domain-body'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -179,7 +179,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'text_with_summary',
     ),
     'field_instance' => array(
-      'bundle' => 'dataschema',
+      'bundle' => 'ds_domain',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -217,19 +217,21 @@ function mica_dataschemas_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '31',
+        'weight' => 31,
       ),
     ),
   );
 
-  // Exported field: 'node-dataschema-field_uri'
-  $fields['node-dataschema-field_uri'] = array(
+  // Exported field: 'node-ds_module-body'
+  $fields['node-ds_module-body'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_uri',
+      'entity_types' => array(
+        0 => 'node',
+      ),
+      'field_name' => 'body',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -257,78 +259,88 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
-        'max_length' => '255',
+        'variable_infos' => array(
+          'variable' => 1,
+          'variable_body' => '',
+          'variable_value_type' => 'TEXT',
+        ),
       ),
-      'translatable' => '0',
-      'type' => 'text',
+      'translatable' => '1',
+      'type' => 'text_with_summary',
     ),
     'field_instance' => array(
-      'bundle' => 'dataschema',
+      'bundle' => 'ds_module',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 1,
+          'weight' => 0,
         ),
         'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(
+            'trim_length' => 600,
+          ),
+          'type' => 'text_summary_or_trimmed',
           'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_uri',
-      'label' => 'URI',
-      'required' => 0,
+      'field_name' => 'body',
+      'label' => 'Body',
+      'required' => FALSE,
       'settings' => array(
-        'text_processing' => '0',
+        'display_summary' => TRUE,
+        'text_processing' => 1,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'size' => '60',
+          'rows' => 20,
+          'summary_rows' => 5,
         ),
-        'type' => 'text_textfield',
-        'weight' => '33',
+        'type' => 'text_textarea_with_summary',
+        'weight' => 31,
       ),
     ),
   );
 
-  // Exported field: 'node-dataschema-field_variables'
-  $fields['node-dataschema-field_variables'] = array(
+  // Exported field: 'node-ds_theme-body'
+  $fields['node-ds_theme-body'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_variables',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'view_id' => array(
-          0 => 'view_id',
+      'entity_types' => array(
+        0 => 'node',
+      ),
+      'field_name' => 'body',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
         ),
       ),
-      'module' => 'viewreference',
-      'settings' => array(
-        'append_id' => 0,
-        'arguments' => array(
-          'delimiter' => '/',
-          'dsv_arguments' => 1,
-          'php_arguments' => 0,
-          'rows' => '1',
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
         ),
+      ),
+      'module' => 'text',
+      'settings' => array(
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
           'create' => 0,
@@ -337,99 +349,55 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
-        'referenceable_views' => array(
-          'archive:block' => 0,
-          'archive:page' => 0,
-          'backlinks:block' => 0,
-          'backlinks:page' => 0,
-          'calendar:block_1' => 0,
-          'calendar:block_2' => 0,
-          'calendar:page' => 0,
-          'calendar:page_1' => 0,
-          'calendar:page_2' => 0,
-          'calendar:page_3' => 0,
-          'comments_recent:block' => 0,
-          'comments_recent:page' => 0,
-          'community:page' => 0,
-          'csv_contact_export:views_data_export_1' => 0,
-          'csv_field_description_export:views_data_export_1' => 0,
-          'csv_institution_export:views_data_export_1' => 0,
-          'csv_study_export:views_data_export_1' => 0,
-          'csv_study_information_export:views_data_export_1' => 0,
-          'data_access:page' => 0,
-          'data_access_admin:page' => 0,
-          'data_access_committee:page' => 0,
-          'dataset_participant_variables:page' => 0,
-          'dataset_studies:page' => 0,
-          'datasets:feed' => 0,
-          'datasets:page' => 0,
-          'datasschema_variables:page' => 'datasschema_variables:page',
-          'date_browser:date_nav_1' => 0,
-          'date_browser:page' => 0,
-          'documents:page' => 0,
-          'events:feed' => 0,
-          'events:page' => 0,
-          'events_calendar:block_1' => 0,
-          'events_calendar:block_2' => 0,
-          'events_calendar:page' => 0,
-          'events_calendar:page_1' => 0,
-          'events_calendar:page_2' => 0,
-          'events_calendar:page_3' => 0,
-          'feeds_log:page_1' => 0,
-          'feeds_log:page_2' => 0,
-          'feeds_log:page_3' => 0,
-          'fields_description_search:page' => 0,
-          'frontpage:feed' => 0,
-          'frontpage:page' => 0,
-          'glossary:attachment' => 0,
-          'glossary:page' => 0,
-          'my_data_access_requests:page' => 0,
-          'news:page' => 0,
-          'participant_variable_search:page' => 0,
-          'publications:page' => 0,
-          'studies:page' => 0,
-          'studies_search:page' => 0,
-          'taxonomy_term:feed' => 0,
-          'taxonomy_term:page' => 0,
-          'tracker:page' => 0,
+        'variable_infos' => array(
+          'variable' => 1,
+          'variable_body' => '',
+          'variable_value_type' => 'TEXT',
         ),
       ),
-      'translatable' => '0',
-      'type' => 'viewreference',
+      'translatable' => '1',
+      'type' => 'text_with_summary',
     ),
     'field_instance' => array(
-      'bundle' => 'dataschema',
+      'bundle' => 'ds_theme',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'viewreference',
+          'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'viewreference_default',
-          'weight' => 2,
+          'type' => 'text_default',
+          'weight' => 0,
         ),
         'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(
+            'trim_length' => 600,
+          ),
+          'type' => 'text_summary_or_trimmed',
           'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_variables',
-      'label' => 'Variables',
-      'required' => 0,
+      'field_name' => 'body',
+      'label' => 'Body',
+      'required' => FALSE,
       'settings' => array(
+        'display_summary' => TRUE,
+        'text_processing' => 1,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
-        'module' => 'viewreference',
-        'settings' => array(),
-        'type' => 'viewreference_select',
-        'weight' => '34',
+        'module' => 'text',
+        'settings' => array(
+          'rows' => 20,
+          'summary_rows' => 5,
+        ),
+        'type' => 'text_textarea_with_summary',
+        'weight' => 31,
       ),
     ),
   );
@@ -519,34 +487,39 @@ function mica_dataschemas_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '2',
+        'weight' => '1',
       ),
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dataschemas'
-  $fields['node-ds_variable-field_dataschemas'] = array(
+  // Exported field: 'node-ds_variable-field_dim_class'
+  $fields['node-ds_variable-field_dim_class'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_dataschemas',
-      'foreign keys' => array(
-        'nid' => array(
-          'columns' => array(
-            'nid' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
+      'field_name' => 'field_dim_class',
+      'foreign keys' => array(),
       'indexes' => array(
-        'nid' => array(
-          0 => 'nid',
+        'value' => array(
+          0 => 'value',
         ),
       ),
-      'module' => 'node_reference',
+      'module' => 'list',
       'settings' => array(
+        'allowed_values' => array(
+          'Age' => 'Age',
+          'Age of onset' => 'Age of onset',
+          'Date/time' => 'Date/time',
+          'Frequency' => 'Frequency',
+          'Identification' => 'Identification',
+          'Localization' => 'Localization',
+          'Occurence' => 'Occurence',
+          'Quantity' => 'Quantity',
+          'Status' => 'Status',
+        ),
+        'allowed_values_function' => '',
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
@@ -559,48 +532,21 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
-        'referenceable_types' => array(
-          'article' => 0,
-          'blog' => 0,
-          'contact' => 0,
-          'data_access_request' => 0,
-          'data_access_review' => 0,
-          'dataschema' => 'dataschema',
-          'dataset' => 0,
-          'documents' => 0,
-          'ds_variable' => 0,
-          'event' => 0,
-          'field_description' => 0,
-          'forum' => 0,
-          'institution' => 0,
-          'page' => 0,
-          'panel' => 0,
-          'participant_variable' => 0,
-          'publication' => 0,
-          'study' => 0,
-          'study_documents' => 0,
-          'study_information' => 0,
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
       ),
       'translatable' => '0',
-      'type' => 'node_reference',
+      'type' => 'list_text',
     ),
     'field_instance' => array(
       'bundle' => 'ds_variable',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Term used to define the general nature of the variable ( e.g. age, localization, occurence, date/time...).',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference',
+          'module' => 'list',
           'settings' => array(),
-          'type' => 'node_reference_default',
+          'type' => 'list_default',
           'weight' => 11,
         ),
         'teaser' => array(
@@ -611,8 +557,8 @@ function mica_dataschemas_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_dataschemas',
-      'label' => 'DataSchemas',
+      'field_name' => 'field_dim_class',
+      'label' => 'Class',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -622,7 +568,7 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '31',
+        'weight' => '8',
       ),
     ),
   );
@@ -697,7 +643,122 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '12',
+        'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-ds_variable-field_dim_disease'
+  $fields['node-ds_variable-field_dim_disease'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dim_disease',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'Arthritis' => 'Arthritis',
+          'Asthma' => 'Asthma',
+          'Blood clotting disorder / Hemophilia' => 'Blood clotting disorder / Hemophilia',
+          'Bowel cancer' => 'Bowel cancer',
+          'Breast cancer' => 'Breast cancer',
+          'Bronchial cancer / Lung cancer' => 'Bronchial cancer / Lung cancer',
+          'Cancer' => 'Cancer',
+          'Cerebral haemorrage' => 'Cerebral haemorrage',
+          'Cerebral infarction / Clot in the brain' => 'Cerebral infarction / Clot in the brain',
+          'Cerebral thrombosis resulting in stroke' => 'Cerebral thrombosis resulting in stroke',
+          'Cerebrovascular accident / Stroke' => 'Cerebrovascular accident / Stroke',
+          'Chronic bronchitis' => 'Chronic bronchitis',
+          'Chronic hepatitis' => 'Chronic hepatitis',
+          'Chronic kidney disease (CKD)' => 'Chronic kidney disease (CKD)',
+          'Chronic obstructive lung disease / Chronic obstructive pulmonary disease' => 'Chronic obstructive lung disease / Chronic obstructive pulmonary disease',
+          'Colon cancer' => 'Colon cancer',
+          'Colorectal cancer' => 'Colorectal cancer',
+          'Crohn\'s  disease' => 'Crohn\'s  disease',
+          'Depression' => 'Depression',
+          'Diabetes' => 'Diabetes',
+          'Eczema' => 'Eczema',
+          'Emphysema' => 'Emphysema',
+          'Gestational diabetes' => 'Gestational diabetes',
+          'Heart attack / Myocardial infarction' => 'Heart attack / Myocardial infarction',
+          'High blood pressure / Hypertension' => 'High blood pressure / Hypertension',
+          'Irritable bowel disease' => 'Irritable bowel disease',
+          'Large bowel cancer' => 'Large bowel cancer',
+          'Liver cirrhosis' => 'Liver cirrhosis',
+          'Major depression / Severe depression' => 'Major depression / Severe depression',
+          'Multiple sclerosis' => 'Multiple sclerosis',
+          'Osteoarthritis' => 'Osteoarthritis',
+          'Osteoporosis' => 'Osteoporosis',
+          'Prostate cancer' => 'Prostate cancer',
+          'Psoriasis' => 'Psoriasis',
+          'Rectal cancer' => 'Rectal cancer',
+          'Rhumatoid arthritis' => 'Rhumatoid arthritis',
+          'Ruptured cerebral aneurysm' => 'Ruptured cerebral aneurysm',
+          'Stomach cancer' => 'Stomach cancer',
+          'Systemic lupus erythematosus' => 'Systemic lupus erythematosus',
+          'Transient ischemic attack' => 'Transient ischemic attack',
+          'Type 1 diabetes / Insulin-dependent diabetes mellitus (IDDM)' => 'Type 1 diabetes / Insulin-dependent diabetes mellitus (IDDM)',
+          'Type 2 diabetes / Non-insulin-dependent diabetes mellitus (NIDDM)' => 'Type 2 diabetes / Non-insulin-dependent diabetes mellitus (NIDDM)',
+          'Ulcerative colitis' => 'Ulcerative colitis',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'ds_variable',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Term use to describe the disease(s) specifically targeted by the variables contained in the DataSchema.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 16,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_dim_disease',
+      'label' => 'Disease',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '18',
       ),
     ),
   );
@@ -771,7 +832,163 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '13',
+        'weight' => '12',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-ds_variable-field_dim_med_health_interv'
+  $fields['node-ds_variable-field_dim_med_health_interv'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dim_med_health_interv',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'Colon polypectomy' => 'Colon polypectomy',
+          'Hemodialysis' => 'Hemodialysis',
+          'Kidney transplant' => 'Kidney transplant',
+          'Peritoneal dialysis' => 'Peritoneal dialysis',
+          'Therapeutic intervention on the digestive system' => 'Therapeutic intervention on the digestive system',
+          'Therapeutic interventions on the urinary system' => 'Therapeutic interventions on the urinary system',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'ds_variable',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Term used to describe the intervention covered by the targeted variable.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 12,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_dim_med_health_interv',
+      'label' => 'Medical Health Intervention',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '15',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-ds_variable-field_dim_period'
+  $fields['node-ds_variable-field_dim_period'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dim_period',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'Currently' => 'Currently',
+          'For a specific period currently' => 'For a specific period currently',
+          'For a specific period in the past' => 'For a specific period in the past',
+          'For a specific period through all life' => 'For a specific period through all life',
+          'In the past' => 'In the past',
+          'Through all life' => 'Through all life',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'ds_variable',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Term used to describe the time period targeted by the variable (e.g. currently, through all life...).',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 13,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_dim_period',
+      'label' => 'Period',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '10',
       ),
     ),
   );
@@ -848,7 +1065,183 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '14',
+        'weight' => '13',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-ds_variable-field_dim_source_of_info'
+  $fields['node-ds_variable-field_dim_source_of_info'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dim_source_of_info',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'Brother' => 'Brother',
+          'Child' => 'Child',
+          'Clinical records / files' => 'Clinical records / files',
+          'Father' => 'Father',
+          'Instrument' => 'Instrument',
+          'Interviewer / nurse' => 'Interviewer / nurse',
+          'Mother' => 'Mother',
+          'Parent' => 'Parent',
+          'Participant' => 'Participant',
+          'Participant relative(s)' => 'Participant relative(s)',
+          'Partner' => 'Partner',
+          'Registry' => 'Registry',
+          'Sibling' => 'Sibling',
+          'Sister' => 'Sister',
+          'Support' => 'Support',
+          'Tube' => 'Tube',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'ds_variable',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Term used to define the origin from which the information could be extracted ( e.g. interviewer/nurse, participant, support, registry...).',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 14,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_dim_source_of_info',
+      'label' => 'Source of information',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '16',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-ds_variable-field_dim_target'
+  $fields['node-ds_variable-field_dim_target'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dim_target',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'Brother' => 'Brother',
+          'Child' => 'Child',
+          'Father' => 'Father',
+          'Instrument' => 'Instrument',
+          'Interviewer / nurse' => 'Interviewer / nurse',
+          'Localization' => 'Localization',
+          'Mother' => 'Mother',
+          'Parent' => 'Parent',
+          'Participant' => 'Participant',
+          'Participant relative(s)' => 'Participant relative(s)',
+          'Partner' => 'Partner',
+          'Registry' => 'Registry',
+          'Sibling' => 'Sibling',
+          'Sister' => 'Sister',
+          'Support' => 'Support',
+          'Tube' => 'Tube',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'ds_variable',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Term used to describe the person or the element associated to the information collected for the construction of the variable (e.g. participant, instrument, participant relative...).',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 15,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_dim_target',
+      'label' => 'Target',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '17',
       ),
     ),
   );
@@ -922,7 +1315,7 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '15',
+        'weight' => '14',
       ),
     ),
   );
@@ -998,7 +1391,7 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '11',
+        'weight' => '9',
       ),
     ),
   );
@@ -1012,24 +1405,24 @@ function mica_dataschemas_field_default_fields() {
       'entity_types' => array(),
       'field_name' => 'field_domain',
       'foreign keys' => array(
-        'format' => array(
+        'nid' => array(
           'columns' => array(
-            'format' => 'format',
+            'nid' => 'nid',
           ),
-          'table' => 'filter_format',
+          'table' => 'node',
         ),
       ),
       'indexes' => array(
-        'format' => array(
-          0 => 'format',
+        'nid' => array(
+          0 => 'nid',
         ),
       ),
-      'module' => 'text',
+      'module' => 'node_reference',
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
+          'field_description_value_type' => '',
         ),
         'field_permissions' => array(
           'create' => 0,
@@ -1038,10 +1431,41 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
-        'max_length' => '255',
+        'referenceable_types' => array(
+          'article' => 0,
+          'blog' => 0,
+          'contact' => 0,
+          'data_access_request' => 0,
+          'data_access_review' => 0,
+          'dataschema' => 0,
+          'dataset' => 0,
+          'documents' => 0,
+          'ds_domain' => 'ds_domain',
+          'ds_module' => 0,
+          'ds_theme' => 0,
+          'ds_variable' => 0,
+          'event' => 0,
+          'field_description' => 0,
+          'forum' => 0,
+          'institution' => 0,
+          'page' => 0,
+          'panel' => 0,
+          'participant_variable' => 0,
+          'project' => 0,
+          'publication' => 0,
+          'study' => 0,
+          'study_documents' => 0,
+          'study_information' => 0,
+          'teleconference' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
       ),
       'translatable' => '0',
-      'type' => 'text',
+      'type' => 'node_reference',
     ),
     'field_instance' => array(
       'bundle' => 'ds_variable',
@@ -1051,10 +1475,10 @@ function mica_dataschemas_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
+          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 3,
+          'type' => 'node_reference_default',
+          'weight' => 19,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1068,17 +1492,14 @@ function mica_dataschemas_field_default_fields() {
       'label' => 'Domain',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '5',
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '4',
       ),
     ),
   );
@@ -1092,24 +1513,24 @@ function mica_dataschemas_field_default_fields() {
       'entity_types' => array(),
       'field_name' => 'field_module',
       'foreign keys' => array(
-        'format' => array(
+        'nid' => array(
           'columns' => array(
-            'format' => 'format',
+            'nid' => 'nid',
           ),
-          'table' => 'filter_format',
+          'table' => 'node',
         ),
       ),
       'indexes' => array(
-        'format' => array(
-          0 => 'format',
+        'nid' => array(
+          0 => 'nid',
         ),
       ),
-      'module' => 'text',
+      'module' => 'node_reference',
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
+          'field_description_value_type' => '',
         ),
         'field_permissions' => array(
           'create' => 0,
@@ -1118,23 +1539,54 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
-        'max_length' => '255',
+        'referenceable_types' => array(
+          'article' => 0,
+          'blog' => 0,
+          'contact' => 0,
+          'data_access_request' => 0,
+          'data_access_review' => 0,
+          'dataschema' => 0,
+          'dataset' => 0,
+          'documents' => 0,
+          'ds_domain' => 0,
+          'ds_module' => 'ds_module',
+          'ds_theme' => 0,
+          'ds_variable' => 0,
+          'event' => 0,
+          'field_description' => 0,
+          'forum' => 0,
+          'institution' => 0,
+          'page' => 0,
+          'panel' => 0,
+          'participant_variable' => 0,
+          'project' => 0,
+          'publication' => 0,
+          'study' => 0,
+          'study_documents' => 0,
+          'study_information' => 0,
+          'teleconference' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
       ),
       'translatable' => '0',
-      'type' => 'text',
+      'type' => 'node_reference',
     ),
     'field_instance' => array(
       'bundle' => 'ds_variable',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'A module is a grouping based on variables main unit of interest, assessment modes or type of element measured or collected. Each module subsumes one or more themes.',
+      'description' => 'A module is a grouping based on variables main unit of interest, assessment modes or type of element measured or collected. ',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
+          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 1,
+          'type' => 'node_reference_default',
+          'weight' => 17,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1148,17 +1600,14 @@ function mica_dataschemas_field_default_fields() {
       'label' => 'Module',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '3',
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '2',
       ),
     ),
   );
@@ -1172,24 +1621,24 @@ function mica_dataschemas_field_default_fields() {
       'entity_types' => array(),
       'field_name' => 'field_theme',
       'foreign keys' => array(
-        'format' => array(
+        'nid' => array(
           'columns' => array(
-            'format' => 'format',
+            'nid' => 'nid',
           ),
-          'table' => 'filter_format',
+          'table' => 'node',
         ),
       ),
       'indexes' => array(
-        'format' => array(
-          0 => 'format',
+        'nid' => array(
+          0 => 'nid',
         ),
       ),
-      'module' => 'text',
+      'module' => 'node_reference',
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
+          'field_description_value_type' => '',
         ),
         'field_permissions' => array(
           'create' => 0,
@@ -1198,23 +1647,54 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
-        'max_length' => '255',
+        'referenceable_types' => array(
+          'article' => 0,
+          'blog' => 0,
+          'contact' => 0,
+          'data_access_request' => 0,
+          'data_access_review' => 0,
+          'dataschema' => 0,
+          'dataset' => 0,
+          'documents' => 0,
+          'ds_domain' => 0,
+          'ds_module' => 0,
+          'ds_theme' => 'ds_theme',
+          'ds_variable' => 0,
+          'event' => 0,
+          'field_description' => 0,
+          'forum' => 0,
+          'institution' => 0,
+          'page' => 0,
+          'panel' => 0,
+          'participant_variable' => 0,
+          'project' => 0,
+          'publication' => 0,
+          'study' => 0,
+          'study_documents' => 0,
+          'study_information' => 0,
+          'teleconference' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
       ),
       'translatable' => '0',
-      'type' => 'text',
+      'type' => 'node_reference',
     ),
     'field_instance' => array(
       'bundle' => 'ds_variable',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'A theme is a general area of interest. Each theme subsumes one or more domains.',
+      'description' => 'A theme is a general area of interest.',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
+          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 2,
+          'type' => 'node_reference_default',
+          'weight' => 18,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1228,17 +1708,14 @@ function mica_dataschemas_field_default_fields() {
       'label' => 'Theme',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '4',
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '3',
       ),
     ),
   );
@@ -1318,7 +1795,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '5',
       ),
     ),
   );
@@ -1398,7 +1875,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '8',
+        'weight' => '6',
       ),
     ),
   );
@@ -1407,28 +1884,38 @@ function mica_dataschemas_field_default_fields() {
   // Included for use with string extractors like potx.
   t('A Uniform Resource Identifier (URI) is a string of characters used to identify a name or a resource on the Internet.');
   t('A domain is a risk factor or an outcome of interest, subsuming a number of variables.');
-  t('A module is a grouping based on variables main unit of interest, assessment modes or type of element measured or collected. Each module subsumes one or more themes.');
-  t('A theme is a general area of interest. Each theme subsumes one or more domains.');
+  t('A module is a grouping based on variables main unit of interest, assessment modes or type of element measured or collected. ');
+  t('A theme is a general area of interest.');
   t('Body');
+  t('Class');
   t('Collection mode');
   t('Comment');
-  t('DataSchemas');
+  t('Disease');
   t('Domain');
   t('Format');
   t('Measuring unit of the variable (i.e. kg, siblings, cigarettes, etc.).');
+  t('Medical Health Intervention');
   t('Module');
+  t('Period');
   t('Sample');
+  t('Source of information');
+  t('Target');
   t('Target gender');
+  t('Term use to describe the disease(s) specifically targeted by the variables contained in the DataSchema.');
+  t('Term used to define the general nature of the variable ( e.g. age, localization, occurence, date/time...).');
+  t('Term used to define the origin from which the information could be extracted ( e.g. interviewer/nurse, participant, support, registry...).');
   t('Term used to define the sample type targeted by the variable (e.g. serum, plasma...).');
   t('Term used to describe the gender of the person targeted by the variable ( e.g. male, female).');
+  t('Term used to describe the intervention covered by the targeted variable.');
   t('Term used to describe the method of gathering information for the construction of the variable (e.g. Direct measure, questionnaire...).');
+  t('Term used to describe the person or the element associated to the information collected for the construction of the variable (e.g. participant, instrument, participant relative...).');
+  t('Term used to describe the time period targeted by the variable (e.g. currently, through all life...).');
   t('Term used to describe the way in which the information collected is organized for the construction of the variables (e.g. open, categorical).');
   t('Term used to specify the type of an open variable in the DataSchema (e.g. date, decimal, integer...).');
   t('Theme');
   t('Type');
   t('URI');
   t('Unit');
-  t('Variables');
 
   return $fields;
 }

@@ -20,13 +20,19 @@ function mica_dataschemas_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Dimensions',
-    'weight' => '11',
+    'weight' => '7',
     'children' => array(
-      0 => 'field_dim_collection_mode',
-      1 => 'field_dim_format',
-      2 => 'field_dim_sample',
-      3 => 'field_dim_target_gender',
-      4 => 'field_dim_type',
+      0 => 'field_dim_class',
+      1 => 'field_dim_collection_mode',
+      2 => 'field_dim_disease',
+      3 => 'field_dim_format',
+      4 => 'field_dim_med_health_interv',
+      5 => 'field_dim_period',
+      6 => 'field_dim_sample',
+      7 => 'field_dim_source_of_info',
+      8 => 'field_dim_target',
+      9 => 'field_dim_target_gender',
+      10 => 'field_dim_type',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
