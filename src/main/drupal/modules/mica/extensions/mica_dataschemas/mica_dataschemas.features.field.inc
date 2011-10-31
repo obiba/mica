@@ -1153,6 +1153,114 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-ds_variable-field_dataschema_ref'
+  $fields['node-ds_variable-field_dataschema_ref'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dataschema_ref',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'referenceable_types' => array(
+          'article' => 0,
+          'blog' => 0,
+          'contact' => 0,
+          'data_access_request' => 0,
+          'data_access_review' => 0,
+          'dataschema' => 'dataschema',
+          'dataset' => 0,
+          'documents' => 0,
+          'ds_domain' => 0,
+          'ds_module' => 0,
+          'ds_theme' => 0,
+          'ds_variable' => 0,
+          'event' => 0,
+          'field_description' => 0,
+          'forum' => 0,
+          'institution' => 0,
+          'page' => 0,
+          'panel' => 0,
+          'participant_variable' => 0,
+          'project' => 0,
+          'publication' => 0,
+          'study' => 0,
+          'study_documents' => 0,
+          'study_information' => 0,
+          'teleconference' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'ds_variable',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 21,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_dataschema_ref',
+      'label' => 'DataSchema',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '42',
+      ),
+    ),
+  );
+
   // Exported field: 'node-ds_variable-field_dim_class'
   $fields['node-ds_variable-field_dim_class'] = array(
     'field_config' => array(
@@ -2553,6 +2661,7 @@ function mica_dataschemas_field_default_fields() {
   t('Class');
   t('Collection mode');
   t('Comment');
+  t('DataSchema');
   t('Disease');
   t('Domain');
   t('Format');
@@ -2566,7 +2675,6 @@ function mica_dataschemas_field_default_fields() {
   t('Target');
   t('Target gender');
   t('Term use to describe the disease(s) specifically targeted by the variables contained in the DataSchema.');
-  t('Term used to define the general nature of the variable ( e.g. age, localization, occurence, date/time...).');
   t('Term used to define the origin from which the information could be extracted ( e.g. interviewer/nurse, participant, support, registry...).');
   t('Term used to define the sample type targeted by the variable (e.g. serum, plasma...).');
   t('Term used to describe the gender of the person targeted by the variable ( e.g. male, female).');
