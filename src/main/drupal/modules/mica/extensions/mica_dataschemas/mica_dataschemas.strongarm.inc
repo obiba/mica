@@ -258,6 +258,15 @@ function mica_dataschemas_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_dataschema';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_dataschema'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_ds_domain';
   $strongarm->value = array(
     0 => 'main-menu',
@@ -285,6 +294,15 @@ function mica_dataschemas_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_ds_variable';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_ds_variable'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_ds_domain';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_ds_domain'] = $strongarm;
@@ -302,6 +320,13 @@ function mica_dataschemas_strongarm() {
   $strongarm->name = 'menu_parent_ds_theme';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_ds_theme'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_ds_variable';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_ds_variable'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -354,6 +379,13 @@ function mica_dataschemas_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_dataschema';
+  $strongarm->value = '1';
+  $export['node_preview_dataschema'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_ds_domain';
   $strongarm->value = '1';
   $export['node_preview_ds_domain'] = $strongarm;
@@ -375,6 +407,20 @@ function mica_dataschemas_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_ds_variable';
+  $strongarm->value = '1';
+  $export['node_preview_ds_variable'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_dataschema';
+  $strongarm->value = 0;
+  $export['node_submitted_dataschema'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_ds_domain';
   $strongarm->value = 1;
   $export['node_submitted_ds_domain'] = $strongarm;
@@ -392,6 +438,13 @@ function mica_dataschemas_strongarm() {
   $strongarm->name = 'node_submitted_ds_theme';
   $strongarm->value = 1;
   $export['node_submitted_ds_theme'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_ds_variable';
+  $strongarm->value = 0;
+  $export['node_submitted_ds_variable'] = $strongarm;
 
   return $export;
 }

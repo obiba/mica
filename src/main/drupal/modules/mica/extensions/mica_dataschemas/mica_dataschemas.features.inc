@@ -103,7 +103,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "DataSchema"
+      "field_name" : "DataSchema",
+      "entity_type" : "node"
     },
     "rdf_mapping" : []
   }');
@@ -804,7 +805,7 @@ function mica_dataschemas_default_search_api_index() {
         }
       }
     },
-    "enabled" : "1",
+    "enabled" : "0",
     "read_only" : "0",
     "rdf_mapping" : []
   }');

@@ -200,58 +200,63 @@ function mica_dataschemas_feeds_importer_default() {
             'unique' => FALSE,
           ),
           2 => array(
-            'source' => 'field_module',
-            'target' => 'field_module',
-            'unique' => FALSE,
-          ),
-          3 => array(
-            'source' => 'field_theme',
-            'target' => 'field_theme',
-            'unique' => FALSE,
-          ),
-          4 => array(
-            'source' => 'field_domain',
-            'target' => 'field_domain',
-            'unique' => FALSE,
-          ),
-          5 => array(
             'source' => 'field_unit',
             'target' => 'field_unit',
             'unique' => FALSE,
           ),
-          6 => array(
+          3 => array(
             'source' => 'field_uri',
             'target' => 'field_uri',
             'unique' => FALSE,
           ),
-          7 => array(
+          4 => array(
             'source' => 'field_uri',
             'target' => 'guid',
             'unique' => 0,
           ),
-          8 => array(
+          5 => array(
             'source' => 'field_dim_type',
             'target' => 'field_dim_type',
             'unique' => FALSE,
           ),
-          9 => array(
+          6 => array(
             'source' => 'field_dim_collection_mode',
             'target' => 'field_dim_collection_mode',
             'unique' => FALSE,
           ),
-          10 => array(
+          7 => array(
             'source' => 'field_dim_format',
             'target' => 'field_dim_format',
             'unique' => FALSE,
           ),
-          11 => array(
+          8 => array(
             'source' => 'field_dim_sample',
             'target' => 'field_dim_sample',
             'unique' => FALSE,
           ),
-          12 => array(
+          9 => array(
             'source' => 'field_dim_target_gender',
             'target' => 'field_dim_target_gender',
+            'unique' => FALSE,
+          ),
+          10 => array(
+            'source' => 'field_dataschema_ref',
+            'target' => 'field_dataschema_ref:title',
+            'unique' => FALSE,
+          ),
+          11 => array(
+            'source' => 'field_module',
+            'target' => 'field_module:title',
+            'unique' => FALSE,
+          ),
+          12 => array(
+            'source' => 'field_theme',
+            'target' => 'field_theme:title',
+            'unique' => FALSE,
+          ),
+          13 => array(
+            'source' => 'field_domain',
+            'target' => 'field_domain:title',
             'unique' => FALSE,
           ),
         ),
