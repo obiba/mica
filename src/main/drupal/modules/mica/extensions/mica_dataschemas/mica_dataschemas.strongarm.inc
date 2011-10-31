@@ -126,21 +126,21 @@ function mica_dataschemas_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_ds_domain';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['comment_ds_domain'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_ds_module';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['comment_ds_module'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_ds_theme';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['comment_ds_theme'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -343,7 +343,6 @@ function mica_dataschemas_strongarm() {
   $strongarm->name = 'node_options_ds_domain';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'promote',
   );
   $export['node_options_ds_domain'] = $strongarm;
 
@@ -353,7 +352,6 @@ function mica_dataschemas_strongarm() {
   $strongarm->name = 'node_options_ds_module';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'promote',
   );
   $export['node_options_ds_module'] = $strongarm;
 
@@ -363,7 +361,6 @@ function mica_dataschemas_strongarm() {
   $strongarm->name = 'node_options_ds_theme';
   $strongarm->value = array(
     0 => 'status',
-    1 => 'promote',
   );
   $export['node_options_ds_theme'] = $strongarm;
 
@@ -422,21 +419,21 @@ function mica_dataschemas_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_ds_domain';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_ds_domain'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_ds_module';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_ds_module'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_ds_theme';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_ds_theme'] = $strongarm;
 
   $strongarm = new stdClass;

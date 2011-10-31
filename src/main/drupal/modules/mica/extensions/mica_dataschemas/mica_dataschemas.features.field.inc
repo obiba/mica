@@ -625,7 +625,7 @@ function mica_dataschemas_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => 31,
+        'weight' => '31',
       ),
     ),
   );
@@ -713,7 +713,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_domain-field_scientific_references'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_scientific_references',
@@ -744,10 +744,9 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
-        'max_length' => '255',
       ),
       'translatable' => '0',
-      'type' => 'text',
+      'type' => 'text_long',
     ),
     'field_instance' => array(
       'bundle' => 'ds_domain',
@@ -781,9 +780,9 @@ function mica_dataschemas_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'size' => '60',
+          'rows' => '5',
         ),
-        'type' => 'text_textfield',
+        'type' => 'text_textarea',
         'weight' => '36',
       ),
     ),
