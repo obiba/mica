@@ -79,7 +79,42 @@ function mica_dataschemas_field_attach_form($entity_type, $entity, &$form, &$for
 	}*/
 }
 
+/**
+* Implements hook_menu_local_tasks_alter().
+*/
+function mica_dataschemas_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+	$links = array();
+    
+	if ($root_path == 'node/%') {
+		$node = node_load($router_item['page_arguments'][0]->nid);
+		if ($node != NULL && $node->type == 'dataschema') {
+			if (node_access('view', $node)) {
+				// highlight queries
+				foreach ($data['actions']['output'] as $key => $link) {
+					if (isset($link['#link']['path']) && $link['#link']['path'] == 'node/%/queries') {
+						$data['actions']['output'][$key]['#link']['localized_options'] = array('attributes' => array('class' => 'highlight'));
+						$data['actions']['output'][$key]['#weight'] = 40;
+						break;
+					}
+				}
 
+				// add participant variables
+				$name = t('DataSchema Variables');
+				$href = url('dataschema-variables2') .'&filter[field_dataschema_ref][0]="' . $router_item['page_arguments'][0]->nid . '"';
+				$links['view-dataschema-variables'] = array(
+  					'#weight' => 30,
+            		'#theme' => 'menu_local_action',
+            		'#link' => array(
+              			'title' => t('<a class="highlight" href="@url">!name</a>', array('!name' => $name, '@url' => $href)),
+              			'localized_options' => array('html' => TRUE),
+				    ),
+				);
+			}
+		}
+	}
+
+	$data['actions']['output'] = array_merge($data['actions']['output'], $links);
+}
 function _get_mlid($path) {
 	$mlid = null;
 
