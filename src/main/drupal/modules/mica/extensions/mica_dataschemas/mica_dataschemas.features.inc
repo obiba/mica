@@ -37,6 +37,14 @@ function mica_dataschemas_views_api() {
  */
 function mica_dataschemas_node_info() {
   $items = array(
+    'category' => array(
+      'name' => t('Category'),
+      'base' => 'node_content',
+      'description' => t('Defines a category'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'dataschema' => array(
       'name' => t('DataSchema'),
       'base' => 'node_content',
@@ -73,6 +81,14 @@ function mica_dataschemas_node_info() {
       'name' => t('Variable'),
       'base' => 'node_content',
       'description' => t('DataSchema variable'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'pairing' => array(
+      'name' => t('Pairing'),
+      'base' => 'node_content',
+      'description' => t('Describe a pairing for a variable of a study within a dataset'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

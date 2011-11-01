@@ -259,6 +259,21 @@ function mica_dataschemas_feeds_importer_default() {
             'target' => 'field_domain:title',
             'unique' => FALSE,
           ),
+          14 => array(
+            'source' => 'field_interpretation_variables',
+            'target' => 'field_interpretation_variables:title',
+            'unique' => FALSE,
+          ),
+          15 => array(
+            'source' => 'field_computation_variables',
+            'target' => 'field_computation_variables:title',
+            'unique' => FALSE,
+          ),
+          16 => array(
+            'source' => 'field_contraindication_variables',
+            'target' => 'field_contraindication_variables:title',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',
@@ -336,6 +351,71 @@ function mica_dataschemas_feeds_importer_default() {
     'process_in_background' => 0,
   );
   $export['csv_module_import'] = $feeds_importer;
+
+  $feeds_importer = new stdClass;
+  $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
+  $feeds_importer->api_version = 1;
+  $feeds_importer->id = 'csv_pairing_import';
+  $feeds_importer->config = array(
+    'name' => 'Pairing',
+    'description' => 'Import Pairings from a CSV file',
+    'fetcher' => array(
+      'plugin_key' => 'FeedsFileFetcher',
+      'config' => array(
+        'allowed_extensions' => 'csv',
+        'direct' => 0,
+      ),
+    ),
+    'parser' => array(
+      'plugin_key' => 'FeedsMultiValueCSVParser',
+      'config' => array(
+        'delimiter' => ',',
+        'no_headers' => 0,
+        'multivalue_separator' => '||',
+        'multivalue_trim_spaces' => 1,
+      ),
+    ),
+    'processor' => array(
+      'plugin_key' => 'FeedsUniqueNodeProcessor',
+      'config' => array(
+        'content_type' => 'pairing',
+        'expire' => '-1',
+        'author' => 0,
+        'key_field' => 'title',
+        'mappings' => array(
+          0 => array(
+            'source' => 'field_match',
+            'target' => 'field_match',
+            'unique' => FALSE,
+          ),
+          1 => array(
+            'source' => 'field_datasets',
+            'target' => 'field_datasets:title',
+            'unique' => FALSE,
+          ),
+          2 => array(
+            'source' => 'field_pairing_studies',
+            'target' => 'field_pairing_studies:title',
+            'unique' => FALSE,
+          ),
+          3 => array(
+            'source' => 'field_pairing_variable',
+            'target' => 'field_pairing_variable:title',
+            'unique' => FALSE,
+          ),
+        ),
+        'update_existing' => '2',
+        'input_format' => 'plain_text',
+      ),
+    ),
+    'content_type' => '',
+    'update' => 0,
+    'import_period' => '-1',
+    'expire_period' => 3600,
+    'import_on_create' => 1,
+    'process_in_background' => 0,
+  );
+  $export['csv_pairing_import'] = $feeds_importer;
 
   $feeds_importer = new stdClass;
   $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
