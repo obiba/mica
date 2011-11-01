@@ -134,9 +134,6 @@ function _get_mlid($path) {
 	return $mlid;
 }
 
-/**
- * Could use module taxonomy_csv when it will work with Features
- */
 function _mica_dataschemas_createTaxonomy() {
   $taxonomies = array(
     array(
