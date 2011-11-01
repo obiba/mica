@@ -32,6 +32,7 @@ function mica_user_permission_rebuild() {
   user_permission_features_rebuild('mica_datasets');
   user_permission_features_rebuild('mica_projects');
   user_permission_features_rebuild('mica_studies');
+  user_permission_features_rebuild('mica_dataschemas');
 }
 
 function mica_import_default_feeds($install_state){
