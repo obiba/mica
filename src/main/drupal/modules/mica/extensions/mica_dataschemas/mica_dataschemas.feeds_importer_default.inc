@@ -13,6 +13,66 @@ function mica_dataschemas_feeds_importer_default() {
   $feeds_importer = new stdClass;
   $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
   $feeds_importer->api_version = 1;
+  $feeds_importer->id = 'csv_category_import';
+  $feeds_importer->config = array(
+    'name' => 'DataSchema Category',
+    'description' => 'Import Categories from a CSV file',
+    'fetcher' => array(
+      'plugin_key' => 'FeedsFileFetcher',
+      'config' => array(
+        'allowed_extensions' => 'csv',
+        'direct' => 0,
+      ),
+    ),
+    'parser' => array(
+      'plugin_key' => 'FeedsMultiValueCSVParser',
+      'config' => array(
+        'delimiter' => ',',
+        'no_headers' => 0,
+        'multivalue_separator' => '||',
+        'multivalue_trim_spaces' => 1,
+      ),
+    ),
+    'processor' => array(
+      'plugin_key' => 'FeedsUniqueNodeProcessor',
+      'config' => array(
+        'content_type' => 'category',
+        'expire' => '-1',
+        'author' => 0,
+        'key_field' => 'title',
+        'mappings' => array(
+          0 => array(
+            'source' => 'title',
+            'target' => 'title',
+            'unique' => FALSE,
+          ),
+          1 => array(
+            'source' => 'field_name',
+            'target' => 'field_name',
+            'unique' => FALSE,
+          ),
+          2 => array(
+            'source' => 'field_is_missing',
+            'target' => 'field_is_missing',
+            'unique' => FALSE,
+          ),
+        ),
+        'update_existing' => '2',
+        'input_format' => 'plain_text',
+      ),
+    ),
+    'content_type' => '',
+    'update' => 0,
+    'import_period' => '-1',
+    'expire_period' => 3600,
+    'import_on_create' => 1,
+    'process_in_background' => 0,
+  );
+  $export['csv_category_import'] = $feeds_importer;
+
+  $feeds_importer = new stdClass;
+  $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
+  $feeds_importer->api_version = 1;
   $feeds_importer->id = 'csv_dataschema_import';
   $feeds_importer->config = array(
     'name' => 'DataSchema',
@@ -84,7 +144,7 @@ function mica_dataschemas_feeds_importer_default() {
   $feeds_importer->api_version = 1;
   $feeds_importer->id = 'csv_domain_import';
   $feeds_importer->config = array(
-    'name' => 'Domain',
+    'name' => 'DataSchema Domain',
     'description' => 'Import Domains from a CSV file',
     'fetcher' => array(
       'plugin_key' => 'FeedsFileFetcher',
@@ -163,7 +223,7 @@ function mica_dataschemas_feeds_importer_default() {
   $feeds_importer->api_version = 1;
   $feeds_importer->id = 'csv_ds_variable_import';
   $feeds_importer->config = array(
-    'name' => 'DS Variable',
+    'name' => 'DataSchema Variable',
     'description' => 'Import DataSchema Variables from CSV file',
     'fetcher' => array(
       'plugin_key' => 'FeedsFileFetcher',
@@ -274,6 +334,11 @@ function mica_dataschemas_feeds_importer_default() {
             'target' => 'field_contraindication_variables:title',
             'unique' => FALSE,
           ),
+          17 => array(
+            'source' => 'field_variable_categories',
+            'target' => 'field_variable_categories:title',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',
@@ -293,7 +358,7 @@ function mica_dataschemas_feeds_importer_default() {
   $feeds_importer->api_version = 1;
   $feeds_importer->id = 'csv_module_import';
   $feeds_importer->config = array(
-    'name' => 'Module',
+    'name' => 'DataSchema Module',
     'description' => 'Import Modules from a CSV file',
     'fetcher' => array(
       'plugin_key' => 'FeedsFileFetcher',
@@ -422,7 +487,7 @@ function mica_dataschemas_feeds_importer_default() {
   $feeds_importer->api_version = 1;
   $feeds_importer->id = 'csv_theme_import';
   $feeds_importer->config = array(
-    'name' => 'Theme',
+    'name' => 'DataSchema Theme',
     'description' => 'Import Themes from a CSV file',
     'fetcher' => array(
       'plugin_key' => 'FeedsFileFetcher',

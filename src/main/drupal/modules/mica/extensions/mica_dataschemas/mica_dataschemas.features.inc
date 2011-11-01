@@ -141,7 +141,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Collection mode"
+      "field_name" : "Collection mode",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -162,7 +163,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Target"
+      "field_name" : "Target",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -183,7 +185,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Target gender"
+      "field_name" : "Target gender",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -204,7 +207,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Source of information"
+      "field_name" : "Source of information",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -247,7 +251,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Disease"
+      "field_name" : "Disease",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -268,7 +273,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Format"
+      "field_name" : "Format",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -289,7 +295,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Medical health intervention"
+      "field_name" : "Medical health intervention",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -310,7 +317,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Period"
+      "field_name" : "Period",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -331,7 +339,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Sample"
+      "field_name" : "Sample",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -352,7 +361,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Type"
+      "field_name" : "Type",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
