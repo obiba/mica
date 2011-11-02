@@ -94,11 +94,12 @@ function mica_dataschemas_feeds_importer_default() {
       ),
     ),
     'processor' => array(
-      'plugin_key' => 'FeedsNodeProcessor',
+      'plugin_key' => 'FeedsUniqueNodeProcessor',
       'config' => array(
         'content_type' => 'dataschema',
         'expire' => '-1',
         'author' => 0,
+        'key_field' => 'title',
         'mappings' => array(
           0 => array(
             'source' => 'title',
@@ -108,21 +109,11 @@ function mica_dataschemas_feeds_importer_default() {
           1 => array(
             'source' => 'title',
             'target' => 'guid',
-            'unique' => 1,
+            'unique' => FALSE,
           ),
           2 => array(
             'source' => 'body',
             'target' => 'body',
-            'unique' => FALSE,
-          ),
-          3 => array(
-            'source' => 'field_uri',
-            'target' => 'field_uri',
-            'unique' => FALSE,
-          ),
-          4 => array(
-            'source' => 'field_variables',
-            'target' => 'field_variables:title',
             'unique' => FALSE,
           ),
         ),
@@ -163,21 +154,22 @@ function mica_dataschemas_feeds_importer_default() {
       ),
     ),
     'processor' => array(
-      'plugin_key' => 'FeedsNodeProcessor',
+      'plugin_key' => 'FeedsUniqueNodeProcessor',
       'config' => array(
         'content_type' => 'ds_domain',
         'expire' => '-1',
         'author' => 0,
+        'key_field' => 'title',
         'mappings' => array(
           0 => array(
             'source' => 'title',
-            'target' => 'title',
-            'unique' => FALSE,
+            'target' => 'guid',
+            'unique' => 1,
           ),
           1 => array(
             'source' => 'title',
-            'target' => 'guid',
-            'unique' => 1,
+            'target' => 'title',
+            'unique' => FALSE,
           ),
           2 => array(
             'source' => 'body',
@@ -185,23 +177,18 @@ function mica_dataschemas_feeds_importer_default() {
             'unique' => FALSE,
           ),
           3 => array(
-            'source' => 'field_uri',
-            'target' => 'field_uri',
+            'source' => 'field_scientific_references',
+            'target' => 'field_scientific_references',
             'unique' => FALSE,
           ),
           4 => array(
-            'source' => 'field_variables_justification',
-            'target' => 'field_variables_justification',
-            'unique' => FALSE,
-          ),
-          5 => array(
             'source' => 'field_associations',
             'target' => 'field_associations',
             'unique' => FALSE,
           ),
-          6 => array(
-            'source' => 'field_scientific_references',
-            'target' => 'field_scientific_references',
+          5 => array(
+            'source' => 'field_variables_justification',
+            'target' => 'field_variables_justification',
             'unique' => FALSE,
           ),
         ),
@@ -339,6 +326,11 @@ function mica_dataschemas_feeds_importer_default() {
             'target' => 'field_variable_categories:title',
             'unique' => FALSE,
           ),
+          18 => array(
+            'source' => 'title',
+            'target' => 'guid',
+            'unique' => 1,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',
@@ -377,11 +369,12 @@ function mica_dataschemas_feeds_importer_default() {
       ),
     ),
     'processor' => array(
-      'plugin_key' => 'FeedsNodeProcessor',
+      'plugin_key' => 'FeedsUniqueNodeProcessor',
       'config' => array(
         'content_type' => 'ds_module',
         'expire' => '-1',
         'author' => 0,
+        'key_field' => 'title',
         'mappings' => array(
           0 => array(
             'source' => 'title',
@@ -391,16 +384,16 @@ function mica_dataschemas_feeds_importer_default() {
           1 => array(
             'source' => 'title',
             'target' => 'guid',
-            'unique' => 1,
+            'unique' => FALSE,
           ),
           2 => array(
-            'source' => 'body',
-            'target' => 'body',
+            'source' => 'field_uri',
+            'target' => 'field_uri',
             'unique' => FALSE,
           ),
           3 => array(
-            'source' => 'field_uri',
-            'target' => 'field_uri',
+            'source' => 'body',
+            'target' => 'body',
             'unique' => FALSE,
           ),
         ),
@@ -506,11 +499,12 @@ function mica_dataschemas_feeds_importer_default() {
       ),
     ),
     'processor' => array(
-      'plugin_key' => 'FeedsNodeProcessor',
+      'plugin_key' => 'FeedsUniqueNodeProcessor',
       'config' => array(
         'content_type' => 'ds_theme',
         'expire' => '-1',
         'author' => 0,
+        'key_field' => 'title',
         'mappings' => array(
           0 => array(
             'source' => 'title',
@@ -520,16 +514,16 @@ function mica_dataschemas_feeds_importer_default() {
           1 => array(
             'source' => 'title',
             'target' => 'guid',
-            'unique' => 1,
+            'unique' => FALSE,
           ),
           2 => array(
-            'source' => 'body',
-            'target' => 'body',
+            'source' => 'field_uri',
+            'target' => 'field_uri',
             'unique' => FALSE,
           ),
           3 => array(
-            'source' => 'field_uri',
-            'target' => 'field_uri',
+            'source' => 'body',
+            'target' => 'body',
             'unique' => FALSE,
           ),
         ),
