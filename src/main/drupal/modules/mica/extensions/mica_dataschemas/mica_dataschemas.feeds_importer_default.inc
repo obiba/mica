@@ -109,7 +109,7 @@ function mica_dataschemas_feeds_importer_default() {
           1 => array(
             'source' => 'title',
             'target' => 'guid',
-            'unique' => FALSE,
+            'unique' => 1,
           ),
           2 => array(
             'source' => 'body',
