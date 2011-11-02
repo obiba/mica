@@ -29,7 +29,7 @@ function mica_dataschemas_feeds_importer_default() {
       'config' => array(
         'delimiter' => ',',
         'no_headers' => 0,
-        'multivalue_separator' => '||',
+        'multivalue_separator' => '|',
         'multivalue_trim_spaces' => 1,
       ),
     ),
@@ -89,7 +89,7 @@ function mica_dataschemas_feeds_importer_default() {
       'config' => array(
         'delimiter' => ',',
         'no_headers' => 0,
-        'multivalue_separator' => '||',
+        'multivalue_separator' => '|',
         'multivalue_trim_spaces' => 1,
       ),
     ),
@@ -149,7 +149,7 @@ function mica_dataschemas_feeds_importer_default() {
       'config' => array(
         'delimiter' => ',',
         'no_headers' => 0,
-        'multivalue_separator' => '||',
+        'multivalue_separator' => '|',
         'multivalue_trim_spaces' => 1,
       ),
     ),
@@ -224,7 +224,7 @@ function mica_dataschemas_feeds_importer_default() {
       'config' => array(
         'delimiter' => ',',
         'no_headers' => 0,
-        'multivalue_separator' => '||',
+        'multivalue_separator' => '|',
         'multivalue_trim_spaces' => 1,
       ),
     ),
@@ -394,7 +394,7 @@ function mica_dataschemas_feeds_importer_default() {
       'config' => array(
         'delimiter' => ',',
         'no_headers' => 0,
-        'multivalue_separator' => '||',
+        'multivalue_separator' => '|',
         'multivalue_trim_spaces' => 1,
       ),
     ),
@@ -459,7 +459,7 @@ function mica_dataschemas_feeds_importer_default() {
       'config' => array(
         'delimiter' => ',',
         'no_headers' => 0,
-        'multivalue_separator' => '||',
+        'multivalue_separator' => '|',
         'multivalue_trim_spaces' => 1,
       ),
     ),
@@ -524,7 +524,7 @@ function mica_dataschemas_feeds_importer_default() {
       'config' => array(
         'delimiter' => ',',
         'no_headers' => 0,
-        'multivalue_separator' => '||',
+        'multivalue_separator' => '|',
         'multivalue_trim_spaces' => 1,
       ),
     ),
