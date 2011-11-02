@@ -331,6 +331,36 @@ function mica_dataschemas_feeds_importer_default() {
             'target' => 'guid',
             'unique' => 1,
           ),
+          19 => array(
+            'source' => 'field_dim_disease',
+            'target' => 'field_dim_disease',
+            'unique' => FALSE,
+          ),
+          20 => array(
+            'source' => 'field_dim_class',
+            'target' => 'field_dim_class',
+            'unique' => FALSE,
+          ),
+          21 => array(
+            'source' => 'field_dim_med_health_interv',
+            'target' => 'field_dim_med_health_interv',
+            'unique' => FALSE,
+          ),
+          22 => array(
+            'source' => 'field_dim_period',
+            'target' => 'field_dim_period',
+            'unique' => FALSE,
+          ),
+          23 => array(
+            'source' => 'field_dim_source_of_info',
+            'target' => 'field_dim_source_of_info',
+            'unique' => FALSE,
+          ),
+          24 => array(
+            'source' => 'field_dim_target',
+            'target' => 'field_dim_target',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',
