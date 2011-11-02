@@ -117,28 +117,6 @@ function mica_dataschemas_views_default_views() {
   $handler->display->display_options['fields']['body_value']['empty_zero'] = 0;
   $handler->display->display_options['fields']['body_value']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['body_value']['link_to_entity'] = 0;
-  /* Field: The main body text: Summary */
-  $handler->display->display_options['fields']['body_summary']['id'] = 'body_summary';
-  $handler->display->display_options['fields']['body_summary']['table'] = 'search_api_index_dataschema_variables_index';
-  $handler->display->display_options['fields']['body_summary']['field'] = 'body_summary';
-  $handler->display->display_options['fields']['body_summary']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['body_summary']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['body_summary']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['body_summary']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['body_summary']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['body_summary']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['body_summary']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['body_summary']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['body_summary']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['body_summary']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['body_summary']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['body_summary']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['body_summary']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['body_summary']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['body_summary']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['body_summary']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['body_summary']['hide_alter_empty'] = 0;
-  $handler->display->display_options['fields']['body_summary']['link_to_entity'] = 0;
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_dataschema_variables_index';
@@ -215,7 +193,8 @@ function mica_dataschemas_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = 'The consortium makes available different DataSchemas to the research community.';
+  $handler->display->display_options['header']['area']['content'] = 'A DataSchema identifies and describes a thematic set of core variables that are of particular value in a specified scientific setting. 
+It also contains associated support material including variable definitions, links to relevant Ontologies and Classifications, and access to reference questionnaires and operating procedures.<br/><br/>';
   $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   /* No results behavior: Global: Text area */
