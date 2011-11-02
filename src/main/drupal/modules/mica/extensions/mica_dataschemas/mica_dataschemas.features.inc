@@ -106,7 +106,7 @@ function mica_dataschemas_default_search_api_facet() {
     "delta" : "dataschema_variables_field_datas",
     "index_id" : "dataschema_variables_index",
     "field" : "field_dataschema_ref",
-    "name" : "DataSchema variables index: DataSchema",
+    "name" : "Dataschema facet",
     "enabled" : "1",
     "options" : {
       "limit" : "10",
@@ -128,7 +128,7 @@ function mica_dataschemas_default_search_api_facet() {
     "delta" : "dataschema_variables_field_dim_1",
     "index_id" : "dataschema_variables_index",
     "field" : "field_dim_collection_mode",
-    "name" : "DataSchema variables index: Collection mode",
+    "name" : "Collection mode facet",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -150,7 +150,7 @@ function mica_dataschemas_default_search_api_facet() {
     "delta" : "dataschema_variables_field_dim_2",
     "index_id" : "dataschema_variables_index",
     "field" : "field_dim_target",
-    "name" : "DataSchema variables index: Target",
+    "name" : "Target facet",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -172,7 +172,7 @@ function mica_dataschemas_default_search_api_facet() {
     "delta" : "dataschema_variables_field_dim_3",
     "index_id" : "dataschema_variables_index",
     "field" : "field_dim_target_gender",
-    "name" : "DataSchema variables index: Target gender",
+    "name" : "Target gender facet",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -194,7 +194,7 @@ function mica_dataschemas_default_search_api_facet() {
     "delta" : "dataschema_variables_field_dim_4",
     "index_id" : "dataschema_variables_index",
     "field" : "field_dim_source_of_info",
-    "name" : "DataSchema variables index: Source of information",
+    "name" : "Source of information facet",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -216,7 +216,7 @@ function mica_dataschemas_default_search_api_facet() {
     "delta" : "dataschema_variables_field_dim_c",
     "index_id" : "dataschema_variables_index",
     "field" : "field_dim_class",
-    "name" : "DataSchema variables index: Class",
+    "name" : "Class facet",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -238,7 +238,7 @@ function mica_dataschemas_default_search_api_facet() {
     "delta" : "dataschema_variables_field_dim_d",
     "index_id" : "dataschema_variables_index",
     "field" : "field_dim_disease",
-    "name" : "DataSchema variables index: Disease",
+    "name" : "Disease facet",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -260,7 +260,7 @@ function mica_dataschemas_default_search_api_facet() {
     "delta" : "dataschema_variables_field_dim_f",
     "index_id" : "dataschema_variables_index",
     "field" : "field_dim_format",
-    "name" : "DataSchema variables index: Format",
+    "name" : "Format facet",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -282,7 +282,7 @@ function mica_dataschemas_default_search_api_facet() {
     "delta" : "dataschema_variables_field_dim_m",
     "index_id" : "dataschema_variables_index",
     "field" : "field_dim_med_health_interv",
-    "name" : "DataSchema variables index: Medical health intervention",
+    "name" : "Medical health intervention facet",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -304,7 +304,7 @@ function mica_dataschemas_default_search_api_facet() {
     "delta" : "dataschema_variables_field_dim_p",
     "index_id" : "dataschema_variables_index",
     "field" : "field_dim_period",
-    "name" : "DataSchema variables index: Period",
+    "name" : "Period facet",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -326,7 +326,7 @@ function mica_dataschemas_default_search_api_facet() {
     "delta" : "dataschema_variables_field_dim_s",
     "index_id" : "dataschema_variables_index",
     "field" : "field_dim_sample",
-    "name" : "DataSchema variables index: Sample",
+    "name" : "Sample facet",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -348,7 +348,7 @@ function mica_dataschemas_default_search_api_facet() {
     "delta" : "dataschema_variables_field_dim_t",
     "index_id" : "dataschema_variables_index",
     "field" : "field_dim_type",
-    "name" : "DataSchema variables index: Type",
+    "name" : "Type facet",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -370,7 +370,7 @@ function mica_dataschemas_default_search_api_facet() {
     "delta" : "dataschema_variables_field_domai",
     "index_id" : "dataschema_variables_index",
     "field" : "field_domain",
-    "name" : "DataSchema variables index: Domain",
+    "name" : "Domain facet",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -392,7 +392,7 @@ function mica_dataschemas_default_search_api_facet() {
     "delta" : "dataschema_variables_field_modul",
     "index_id" : "dataschema_variables_index",
     "field" : "field_module",
-    "name" : "DataSchema variables index: Module",
+    "name" : "Module facet",
     "enabled" : "1",
     "options" : {
       "limit" : 10,
@@ -414,7 +414,7 @@ function mica_dataschemas_default_search_api_facet() {
     "delta" : "dataschema_variables_field_theme",
     "index_id" : "dataschema_variables_index",
     "field" : "field_theme",
-    "name" : "DataSchema variables index: Theme",
+    "name" : "Theme facet",
     "enabled" : "1",
     "options" : {
       "limit" : "10",
@@ -432,6 +432,10 @@ function mica_dataschemas_default_search_api_facet() {
     },
     "rdf_mapping" : []
   }');
+  
+  require_once(drupal_get_path('module', 'mica_dataschemas') . '/mica_dataschemas.blocks.inc');
+  _mica_dataschemas_configure_facet_blocks();
+  
   return $items;
 }
 
