@@ -3135,7 +3135,7 @@ function mica_dataschemas_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_uri',
       'label' => 'URI',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -3227,6 +3227,7 @@ function mica_dataschemas_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'ds_variable',
+      'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -3253,9 +3254,13 @@ function mica_dataschemas_field_default_fields() {
       ),
       'widget' => array(
         'active' => 0,
-        'module' => 'multiselect',
-        'settings' => array(),
-        'type' => 'multiselect',
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'node_reference_autocomplete',
         'weight' => '11',
       ),
     ),
