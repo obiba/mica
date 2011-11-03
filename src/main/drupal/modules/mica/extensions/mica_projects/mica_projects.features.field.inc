@@ -158,7 +158,7 @@ function mica_projects_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
           'field_description_value_type' => 'TEXT',
         ),
@@ -734,13 +734,25 @@ function mica_projects_field_default_fields() {
         'referenceable_types' => array(
           'article' => 0,
           'blog' => 0,
+          'category' => 0,
           'contact' => 0,
+          'data_access_request' => 0,
+          'data_access_review' => 0,
+          'dataschema' => 0,
+          'dataset' => 0,
+          'documents' => 0,
+          'ds_domain' => 0,
+          'ds_module' => 0,
+          'ds_theme' => 0,
+          'ds_variable' => 0,
           'event' => 0,
           'field_description' => 0,
           'forum' => 0,
           'institution' => 0,
           'page' => 0,
+          'pairing' => 0,
           'panel' => 0,
+          'participant_variable' => 0,
           'project' => 'project',
           'publication' => 0,
           'study' => 0,
@@ -749,9 +761,7 @@ function mica_projects_field_default_fields() {
           'teleconference' => 0,
         ),
         'view' => array(
-          'args' => array(
-            0 => '',
-          ),
+          'args' => array(),
           'display_name' => '',
           'view_name' => '',
         ),
@@ -974,6 +984,7 @@ function mica_projects_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Body');
   t('Comment');
+  t('Consortium\'s studies involved.');
   t('Date');
   t('Description');
   t('Files');
