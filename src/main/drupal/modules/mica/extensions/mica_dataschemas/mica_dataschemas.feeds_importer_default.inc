@@ -482,29 +482,29 @@ function mica_dataschemas_feeds_importer_default() {
             'unique' => FALSE,
           ),
           1 => array(
-            'source' => 'field_pairing_studies',
-            'target' => 'field_pairing_studies:title',
-            'unique' => FALSE,
-          ),
-          2 => array(
-            'source' => 'field_pairing_variable',
-            'target' => 'field_pairing_variable:title',
-            'unique' => FALSE,
-          ),
-          3 => array(
             'source' => 'field_project',
             'target' => 'field_project:title',
             'unique' => FALSE,
           ),
-          4 => array(
+          2 => array(
             'source' => 'title',
             'target' => 'title',
             'unique' => FALSE,
           ),
-          5 => array(
+          3 => array(
             'source' => 'title',
             'target' => 'guid',
             'unique' => 1,
+          ),
+          4 => array(
+            'source' => 'field_study',
+            'target' => 'field_study:title',
+            'unique' => FALSE,
+          ),
+          5 => array(
+            'source' => 'field_variable',
+            'target' => 'field_variable:title',
+            'unique' => FALSE,
           ),
         ),
         'update_existing' => '2',
