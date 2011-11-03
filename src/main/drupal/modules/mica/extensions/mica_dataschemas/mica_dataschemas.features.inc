@@ -433,6 +433,7 @@ function mica_dataschemas_default_search_api_facet() {
     "rdf_mapping" : []
   }');
   
+  // configure facet blocks
   require_once(drupal_get_path('module', 'mica_dataschemas') . '/includes/blocks.inc');
   _mica_dataschemas_configure_facet_blocks();
   
@@ -462,9 +463,9 @@ function mica_dataschemas_default_search_api_index() {
         },
         "search_api_aggregation_1" : {
           "name" : "title_module_theme_domain_search_field",
-          "indexed" : 0,
           "type" : "text",
-          "boost" : "1.0"
+          "boost" : "1.0",
+          "indexed" : 1
         },
         "nid" : { "name" : "Node ID", "indexed" : 0, "type" : "integer", "boost" : "1.0" },
         "vid" : {
@@ -1100,6 +1101,32 @@ function mica_dataschemas_default_search_api_index() {
                   "comment_count_new" : 0,
                   "taxonomy_forums" : 0,
                   "field_tags" : 0,
+                  "field_is_missing" : 0,
+                  "field_name" : 0,
+                  "field_associations" : 0,
+                  "field_scientific_references" : 0,
+                  "field_uri" : 0,
+                  "field_variables_justification" : 0,
+                  "field_computation_variables" : 0,
+                  "field_contraindication_variables" : 0,
+                  "field_dim_class" : 0,
+                  "field_interpretation_variables" : 0,
+                  "field_unit" : 0,
+                  "field_variable_categories" : 0,
+                  "field_dim_format" : 0,
+                  "field_dim_collection_mode" : 0,
+                  "field_dim_disease" : 0,
+                  "field_dim_type" : 0,
+                  "field_dim_target" : 0,
+                  "field_dim_target_gender" : 0,
+                  "field_dim_med_health_interv" : 0,
+                  "field_dim_period" : 0,
+                  "field_dim_sample" : 0,
+                  "field_dim_source_of_info" : 0,
+                  "field_datasets" : 0,
+                  "field_match" : 0,
+                  "field_pairing_studies" : 0,
+                  "field_pairing_variable" : 0,
                   "field_categories" : 0,
                   "field_dataset" : 0,
                   "field_label" : 0,
@@ -1119,22 +1146,6 @@ function mica_dataschemas_default_search_api_index() {
                   "field_target_number_participants" : 0,
                   "mica_study_documents" : 0,
                   "mica_study_information" : 0,
-                  "field_associations" : 0,
-                  "field_scientific_references" : 0,
-                  "field_uri" : 0,
-                  "field_variables_justification" : 0,
-                  "field_dim_class" : 0,
-                  "field_dim_collection_mode" : 0,
-                  "field_dim_disease" : 0,
-                  "field_dim_format" : 0,
-                  "field_dim_med_health_interv" : 0,
-                  "field_dim_period" : 0,
-                  "field_dim_sample" : 0,
-                  "field_dim_source_of_info" : 0,
-                  "field_dim_target" : 0,
-                  "field_dim_target_gender" : 0,
-                  "field_dim_type" : 0,
-                  "field_unit" : 0,
                   "field_authors" : 0,
                   "field_publication_pmid" : 0,
                   "field_publication_reference" : 0,
@@ -1186,9 +1197,38 @@ function mica_dataschemas_default_search_api_index() {
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
       },
       "processors" : {
+        "taxonomy_hierarchy_processor.inc" : {
+          "status" : 1,
+          "weight" : "-50",
+          "settings" : { "fields" : {
+              "field_dim_class" : "field_dim_class",
+              "field_dim_format" : "field_dim_format",
+              "field_dim_collection_mode" : "field_dim_collection_mode",
+              "field_dim_disease" : "field_dim_disease",
+              "field_dim_type" : "field_dim_type",
+              "field_dim_target" : "field_dim_target",
+              "field_dim_target_gender" : "field_dim_target_gender",
+              "field_dim_med_health_interv" : "field_dim_med_health_interv",
+              "field_dim_period" : "field_dim_period",
+              "field_dim_sample" : "field_dim_sample",
+              "field_dim_source_of_info" : "field_dim_source_of_info",
+              "search_api_language" : 0,
+              "type" : 0,
+              "title" : 0,
+              "field_uri" : 0,
+              "field_dataschema_ref" : 0,
+              "field_domain" : 0,
+              "field_module" : 0,
+              "field_theme" : 0,
+              "field_unit" : 0,
+              "body:value" : 0,
+              "body:summary" : 0
+            }
+          }
+        },
         "search_api_case_ignore" : {
           "status" : 1,
-          "weight" : "0",
+          "weight" : "-49",
           "settings" : { "fields" : {
               "title" : "title",
               "field_dataschema_ref" : "field_dataschema_ref",
@@ -1198,30 +1238,50 @@ function mica_dataschemas_default_search_api_index() {
               "field_unit" : "field_unit",
               "body:value" : "body:value",
               "search_api_language" : 0,
-              "search_api_aggregation_1" : 0,
               "type" : 0,
               "field_uri" : 0,
-              "field_dim_class" : 0
+              "field_dim_class" : 0,
+              "field_dim_format" : 0,
+              "field_dim_collection_mode" : 0,
+              "field_dim_disease" : 0,
+              "field_dim_type" : 0,
+              "field_dim_target" : 0,
+              "field_dim_target_gender" : 0,
+              "field_dim_med_health_interv" : 0,
+              "field_dim_period" : 0,
+              "field_dim_sample" : 0,
+              "field_dim_source_of_info" : 0,
+              "body:summary" : 0
             }
           }
         },
         "search_api_html_filter" : {
           "status" : 0,
-          "weight" : "10",
+          "weight" : "-48",
           "settings" : {
             "fields" : {
               "title" : "title",
               "field_unit" : "field_unit",
               "body:value" : "body:value",
               "search_api_language" : 0,
-              "search_api_aggregation_1" : 0,
               "type" : 0,
               "field_uri" : 0,
               "field_dataschema_ref" : 0,
               "field_dim_class" : 0,
               "field_domain" : 0,
               "field_module" : 0,
-              "field_theme" : 0
+              "field_theme" : 0,
+              "field_dim_format" : 0,
+              "field_dim_collection_mode" : 0,
+              "field_dim_disease" : 0,
+              "field_dim_type" : 0,
+              "field_dim_target" : 0,
+              "field_dim_target_gender" : 0,
+              "field_dim_med_health_interv" : 0,
+              "field_dim_period" : 0,
+              "field_dim_sample" : 0,
+              "field_dim_source_of_info" : 0,
+              "body:summary" : 0
             },
             "title" : 0,
             "alt" : 1,
@@ -1230,21 +1290,31 @@ function mica_dataschemas_default_search_api_index() {
         },
         "search_api_tokenizer" : {
           "status" : 1,
-          "weight" : "20",
+          "weight" : "-47",
           "settings" : {
             "fields" : {
               "title" : "title",
               "field_unit" : "field_unit",
               "body:value" : "body:value",
               "search_api_language" : 0,
-              "search_api_aggregation_1" : 0,
               "type" : 0,
               "field_uri" : 0,
               "field_dataschema_ref" : 0,
               "field_dim_class" : 0,
               "field_domain" : 0,
               "field_module" : 0,
-              "field_theme" : 0
+              "field_theme" : 0,
+              "field_dim_format" : 0,
+              "field_dim_collection_mode" : 0,
+              "field_dim_disease" : 0,
+              "field_dim_type" : 0,
+              "field_dim_target" : 0,
+              "field_dim_target_gender" : 0,
+              "field_dim_med_health_interv" : 0,
+              "field_dim_period" : 0,
+              "field_dim_sample" : 0,
+              "field_dim_source_of_info" : 0,
+              "body:summary" : 0
             },
             "spaces" : "[^\\\\p{L}\\\\p{N}^\']",
             "ignorable" : "[-]"
@@ -1252,7 +1322,7 @@ function mica_dataschemas_default_search_api_index() {
         },
         "search_api_stopwords" : {
           "status" : 0,
-          "weight" : "30",
+          "weight" : "-46",
           "settings" : { "file" : "", "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc" }
         }
       }
