@@ -27,7 +27,7 @@ function mica_dataschemas_feeds_importer_default() {
     'parser' => array(
       'plugin_key' => 'FeedsMultiValueCSVParser',
       'config' => array(
-        'delimiter' => ',',
+        'delimiter' => ';',
         'no_headers' => 0,
         'multivalue_separator' => '|',
         'multivalue_trim_spaces' => 1,
@@ -87,7 +87,7 @@ function mica_dataschemas_feeds_importer_default() {
     'parser' => array(
       'plugin_key' => 'FeedsMultiValueCSVParser',
       'config' => array(
-        'delimiter' => ',',
+        'delimiter' => ';',
         'no_headers' => 0,
         'multivalue_separator' => '|',
         'multivalue_trim_spaces' => 1,
@@ -147,7 +147,7 @@ function mica_dataschemas_feeds_importer_default() {
     'parser' => array(
       'plugin_key' => 'FeedsMultiValueCSVParser',
       'config' => array(
-        'delimiter' => ',',
+        'delimiter' => ';',
         'no_headers' => 0,
         'multivalue_separator' => '|',
         'multivalue_trim_spaces' => 1,
@@ -191,6 +191,11 @@ function mica_dataschemas_feeds_importer_default() {
             'target' => 'field_variables_justification',
             'unique' => FALSE,
           ),
+          6 => array(
+            'source' => 'field_question_block',
+            'target' => 'field_question_block',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',
@@ -222,7 +227,7 @@ function mica_dataschemas_feeds_importer_default() {
     'parser' => array(
       'plugin_key' => 'FeedsMultiValueCSVParser',
       'config' => array(
-        'delimiter' => ',',
+        'delimiter' => ';',
         'no_headers' => 0,
         'multivalue_separator' => '|',
         'multivalue_trim_spaces' => 1,
@@ -392,7 +397,7 @@ function mica_dataschemas_feeds_importer_default() {
     'parser' => array(
       'plugin_key' => 'FeedsMultiValueCSVParser',
       'config' => array(
-        'delimiter' => ',',
+        'delimiter' => ';',
         'no_headers' => 0,
         'multivalue_separator' => '|',
         'multivalue_trim_spaces' => 1,
@@ -457,7 +462,7 @@ function mica_dataschemas_feeds_importer_default() {
     'parser' => array(
       'plugin_key' => 'FeedsMultiValueCSVParser',
       'config' => array(
-        'delimiter' => ',',
+        'delimiter' => ';',
         'no_headers' => 0,
         'multivalue_separator' => '|',
         'multivalue_trim_spaces' => 1,
@@ -477,19 +482,29 @@ function mica_dataschemas_feeds_importer_default() {
             'unique' => FALSE,
           ),
           1 => array(
-            'source' => 'field_datasets',
-            'target' => 'field_datasets:title',
-            'unique' => FALSE,
-          ),
-          2 => array(
             'source' => 'field_pairing_studies',
             'target' => 'field_pairing_studies:title',
             'unique' => FALSE,
           ),
-          3 => array(
+          2 => array(
             'source' => 'field_pairing_variable',
             'target' => 'field_pairing_variable:title',
             'unique' => FALSE,
+          ),
+          3 => array(
+            'source' => 'field_project',
+            'target' => 'field_project:title',
+            'unique' => FALSE,
+          ),
+          4 => array(
+            'source' => 'title',
+            'target' => 'title',
+            'unique' => FALSE,
+          ),
+          5 => array(
+            'source' => 'title',
+            'target' => 'guid',
+            'unique' => 1,
           ),
         ),
         'update_existing' => '2',
@@ -522,7 +537,7 @@ function mica_dataschemas_feeds_importer_default() {
     'parser' => array(
       'plugin_key' => 'FeedsMultiValueCSVParser',
       'config' => array(
-        'delimiter' => ',',
+        'delimiter' => ';',
         'no_headers' => 0,
         'multivalue_separator' => '|',
         'multivalue_trim_spaces' => 1,

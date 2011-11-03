@@ -667,6 +667,90 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-ds_domain-field_question_block'
+  $fields['node-ds_domain-field_question_block'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_question_block',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'file',
+      'settings' => array(
+        'display_default' => 0,
+        'display_field' => 0,
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'file',
+    ),
+    'field_instance' => array(
+      'bundle' => 'ds_domain',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'file',
+          'settings' => array(),
+          'type' => 'file_default',
+          'weight' => 5,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_question_block',
+      'label' => 'Question Block',
+      'required' => 0,
+      'settings' => array(
+        'description_field' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'txt pdf',
+        'max_filesize' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'file',
+        'settings' => array(
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'file_generic',
+        'weight' => '37',
+      ),
+    ),
+  );
+
   // Exported field: 'node-ds_domain-field_scientific_references'
   $fields['node-ds_domain-field_scientific_references'] = array(
     'field_config' => array(
@@ -3356,115 +3440,6 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-pairing-field_datasets'
-  $fields['node-pairing-field_datasets'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_datasets',
-      'foreign keys' => array(
-        'nid' => array(
-          'columns' => array(
-            'nid' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'nid' => array(
-          0 => 'nid',
-        ),
-      ),
-      'module' => 'node_reference',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'referenceable_types' => array(
-          'article' => 0,
-          'blog' => 0,
-          'contact' => 0,
-          'data_access_request' => 0,
-          'data_access_review' => 0,
-          'dataschema' => 0,
-          'dataset' => 'dataset',
-          'documents' => 0,
-          'ds_domain' => 0,
-          'ds_module' => 0,
-          'ds_theme' => 0,
-          'ds_variable' => 0,
-          'event' => 0,
-          'field_description' => 0,
-          'forum' => 0,
-          'institution' => 0,
-          'page' => 0,
-          'pairing' => 0,
-          'panel' => 0,
-          'participant_variable' => 0,
-          'project' => 0,
-          'publication' => 0,
-          'study' => 0,
-          'study_documents' => 0,
-          'study_information' => 0,
-          'teleconference' => 0,
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'node_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'pairing',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => 2,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_datasets',
-      'label' => 'Datasets',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '33',
-      ),
-    ),
-  );
-
   // Exported field: 'node-pairing-field_match'
   $fields['node-pairing-field_match'] = array(
     'field_config' => array(
@@ -3482,8 +3457,9 @@ function mica_dataschemas_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          0 => 'IMPOSSIBLE',
-          1 => 'COMPLETE',
+          'Complete' => 'Complete',
+          'Impossible' => 'Impossible',
+          'Partial' => 'Partial',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
@@ -3757,6 +3733,120 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-pairing-field_project'
+  $fields['node-pairing-field_project'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_project',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'referenceable_types' => array(
+          'article' => 0,
+          'blog' => 0,
+          'category' => 0,
+          'contact' => 0,
+          'data_access_request' => 0,
+          'data_access_review' => 0,
+          'dataschema' => 0,
+          'dataset' => 0,
+          'documents' => 0,
+          'ds_domain' => 0,
+          'ds_module' => 0,
+          'ds_theme' => 0,
+          'ds_variable' => 0,
+          'event' => 0,
+          'field_description' => 0,
+          'forum' => 0,
+          'institution' => 0,
+          'page' => 0,
+          'pairing' => 0,
+          'panel' => 0,
+          'participant_variable' => 0,
+          'project' => 'project',
+          'publication' => 0,
+          'study' => 0,
+          'study_documents' => 0,
+          'study_information' => 0,
+          'teleconference' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'pairing',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 5,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_project',
+      'label' => 'Project',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '37',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('A Uniform Resource Identifier (URI) is a string of characters used to identify a name or a resource on the Internet.');
@@ -3771,7 +3861,6 @@ function mica_dataschemas_field_default_fields() {
   t('Computation Source Variables');
   t('Contraindication variables');
   t('DataSchema');
-  t('Datasets');
   t('Disease');
   t('Domain');
   t('Format');
@@ -3783,6 +3872,8 @@ function mica_dataschemas_field_default_fields() {
   t('Module');
   t('Name');
   t('Period');
+  t('Project');
+  t('Question Block');
   t('Sample');
   t('Scientific References');
   t('Source of information');
