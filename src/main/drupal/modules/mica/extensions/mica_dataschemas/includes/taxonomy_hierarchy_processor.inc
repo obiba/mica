@@ -3,10 +3,11 @@
 class SearchApiTaxonomyHierarchyProcessor extends SearchApiAbstractProcessor {
   
   public function preprocessIndexItems(array &$items) {
-  	
+  	/*
   	foreach ($items as &$item) {
       foreach ($item as $name => &$field) {
         if(isset($field['entity_type']) && $field['entity_type'] === 'taxonomy_term' && isset($field['value'])) {
+          debug($field);
           $new_value = array();
           if(is_array($field['value'])) {
             foreach ($field['value'] as $tid) {
@@ -25,7 +26,7 @@ class SearchApiTaxonomyHierarchyProcessor extends SearchApiAbstractProcessor {
         }
       }
   	}
-  	
+  	*/
   	parent::preprocessIndexItems($items);
   }
   
