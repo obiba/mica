@@ -97,7 +97,7 @@ function mica_dataschemas_menu_local_tasks_alter(&$data, $router_item, $root_pat
 					}
 				}
 
-				// add DataSchema variables
+				// add participant variables
 				$name = t('DataSchema Variables');
 				$href = url('dataschema-variables') .'&filter[field_dataschema_ref][0]="' . $router_item['page_arguments'][0]->nid . '"';
 				$links['view-dataschema-variables'] = array(
@@ -319,3 +319,15 @@ function _mica_dataschemas_createTaxonomy() {
   }
 }
 
+
+/**
+* Implements hook_search_api_processor_info().
+*/
+function mica_dataschemas_search_api_processor_info() {
+	$processors['taxonomy_hierarchy_processor.inc'] = array(
+    'name' => t('Taxonomy hierarchy'),
+    'description' => t('Index taxonomy parent terms.'),
+    'class' => 'SearchApiTaxonomyHierarchyProcessor',
+	);
+	return $processors;
+}

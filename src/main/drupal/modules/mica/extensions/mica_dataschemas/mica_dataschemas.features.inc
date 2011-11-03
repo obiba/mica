@@ -432,6 +432,10 @@ function mica_dataschemas_default_search_api_facet() {
     },
     "rdf_mapping" : []
   }');
+  
+  require_once(drupal_get_path('module', 'mica_dataschemas') . '/includes/blocks.inc');
+  _mica_dataschemas_configure_facet_blocks();
+  
   return $items;
 }
 
