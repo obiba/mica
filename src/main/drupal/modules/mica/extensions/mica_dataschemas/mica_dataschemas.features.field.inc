@@ -1747,7 +1747,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_class'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_class',
@@ -1829,7 +1829,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_collection_mode'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_collection_mode',
@@ -1993,7 +1993,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_format'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_format',
@@ -2075,7 +2075,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_med_health_interv'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_med_health_interv',
@@ -2157,7 +2157,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_period'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_period',
@@ -2239,7 +2239,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_sample'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_sample',
@@ -2321,7 +2321,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_source_of_info'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_source_of_info',
@@ -2485,7 +2485,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_target_gender'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_target_gender',
@@ -2567,7 +2567,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_type'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_type',
@@ -3771,25 +3771,13 @@ function mica_dataschemas_field_default_fields() {
         'referenceable_types' => array(
           'article' => 0,
           'blog' => 0,
-          'category' => 0,
           'contact' => 0,
-          'data_access_request' => 0,
-          'data_access_review' => 0,
-          'dataschema' => 0,
-          'dataset' => 0,
-          'documents' => 0,
-          'ds_domain' => 0,
-          'ds_module' => 0,
-          'ds_theme' => 0,
-          'ds_variable' => 0,
           'event' => 0,
           'field_description' => 0,
           'forum' => 0,
           'institution' => 0,
           'page' => 0,
-          'pairing' => 0,
           'panel' => 0,
-          'participant_variable' => 0,
           'project' => 'project',
           'publication' => 0,
           'study' => 0,
@@ -3798,7 +3786,9 @@ function mica_dataschemas_field_default_fields() {
           'teleconference' => 0,
         ),
         'view' => array(
-          'args' => array(),
+          'args' => array(
+            0 => '',
+          ),
           'display_name' => '',
           'view_name' => '',
         ),

@@ -435,7 +435,7 @@ function mica_dataschemas_default_search_api_facet() {
   
   // configure facet blocks
   require_once(drupal_get_path('module', 'mica_dataschemas') . '/includes/blocks.inc');
-  _mica_dataschemas_configure_facet_blocks();
+  _mica_dataschemas_configure_facet_blocks();  
   
   return $items;
 }
@@ -463,9 +463,9 @@ function mica_dataschemas_default_search_api_index() {
         },
         "search_api_aggregation_1" : {
           "name" : "title_module_theme_domain_search_field",
+          "indexed" : 1,
           "type" : "text",
-          "boost" : "1.0",
-          "indexed" : 1
+          "boost" : "1.0"
         },
         "nid" : { "name" : "Node ID", "indexed" : 0, "type" : "integer", "boost" : "1.0" },
         "vid" : {
@@ -618,7 +618,77 @@ function mica_dataschemas_default_search_api_index() {
         "field_dim_class" : {
           "name" : "Class",
           "indexed" : 1,
-          "type" : "integer",
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_collection_mode" : {
+          "name" : "Collection mode",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_disease" : {
+          "name" : "Disease",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_format" : {
+          "name" : "Format",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_med_health_interv" : {
+          "name" : "Medical health intervention",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_period" : {
+          "name" : "Period",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_sample" : {
+          "name" : "Sample",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_source_of_info" : {
+          "name" : "Source of information",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_target" : {
+          "name" : "Target",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_target_gender" : {
+          "name" : "Target gender",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_type" : {
+          "name" : "Type",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "taxonomy_term",
           "boost" : "1.0"
         },
@@ -658,86 +728,9 @@ function mica_dataschemas_default_search_api_index() {
           "entity_type" : "node",
           "boost" : "1.0"
         },
-        "field_dim_format" : {
-          "name" : "Format",
-          "indexed" : 1,
-          "type" : "integer",
-          "entity_type" : "taxonomy_term",
-          "boost" : "1.0"
-        },
-        "field_dim_collection_mode" : {
-          "name" : "Collection mode",
-          "indexed" : 1,
-          "type" : "integer",
-          "entity_type" : "taxonomy_term",
-          "boost" : "1.0"
-        },
-        "field_dim_disease" : {
-          "name" : "Disease",
-          "indexed" : 1,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "taxonomy_term",
-          "boost" : "1.0"
-        },
-        "field_dim_type" : {
-          "name" : "Type",
-          "indexed" : 1,
-          "type" : "integer",
-          "entity_type" : "taxonomy_term",
-          "boost" : "1.0"
-        },
-        "field_dim_target" : {
-          "name" : "Target",
-          "indexed" : 1,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "taxonomy_term",
-          "boost" : "1.0"
-        },
-        "field_dim_target_gender" : {
-          "name" : "Target gender",
-          "indexed" : 1,
-          "type" : "integer",
-          "entity_type" : "taxonomy_term",
-          "boost" : "1.0"
-        },
-        "field_dim_med_health_interv" : {
-          "name" : "Medical health intervention",
-          "indexed" : 1,
-          "type" : "integer",
-          "entity_type" : "taxonomy_term",
-          "boost" : "1.0"
-        },
-        "field_dim_period" : {
-          "name" : "Period",
-          "indexed" : 1,
-          "type" : "integer",
-          "entity_type" : "taxonomy_term",
-          "boost" : "1.0"
-        },
-        "field_dim_sample" : {
-          "name" : "Sample",
-          "indexed" : 1,
-          "type" : "integer",
-          "entity_type" : "taxonomy_term",
-          "boost" : "1.0"
-        },
-        "field_dim_source_of_info" : {
-          "name" : "Source of information",
-          "indexed" : 1,
-          "type" : "integer",
-          "entity_type" : "taxonomy_term",
-          "boost" : "1.0"
-        },
-        "field_datasets" : {
-          "name" : "Datasets",
-          "indexed" : 0,
-          "type" : "integer",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
         "field_match" : { "name" : "Match", "indexed" : 0, "type" : "string", "boost" : "1.0" },
         "field_pairing_studies" : {
-          "name" : "Studies",
+          "name" : "Study",
           "indexed" : 0,
           "type" : "integer",
           "entity_type" : "node",
@@ -745,6 +738,13 @@ function mica_dataschemas_default_search_api_index() {
         },
         "field_pairing_variable" : {
           "name" : "Variable",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_project" : {
+          "name" : "Project",
           "indexed" : 0,
           "type" : "integer",
           "entity_type" : "node",
@@ -918,13 +918,6 @@ function mica_dataschemas_default_search_api_index() {
         },
         "field_review_notes" : { "name" : "Notes", "indexed" : 0, "type" : "text", "boost" : "1.0" },
         "field_review_status" : { "name" : "Status", "indexed" : 0, "type" : "string", "boost" : "1.0" },
-        "field_project" : {
-          "name" : "Project",
-          "indexed" : 0,
-          "type" : "integer",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
         "field_teleconference_description" : {
           "name" : "Description",
           "indexed" : 0,
