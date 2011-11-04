@@ -436,11 +436,6 @@ function mica_dataschemas_default_search_api_facet() {
     },
     "rdf_mapping" : []
   }');
-  
-  // configure facet blocks
-  require_once(drupal_get_path('module', 'mica_dataschemas') . '/includes/blocks.inc');
-  _mica_dataschemas_configure_facet_blocks();  
-  
   return $items;
 }
 
@@ -456,19 +451,13 @@ function mica_dataschemas_default_search_api_index() {
     "server" : "solr",
     "entity_type" : "node",
     "options" : {
-      "cron_limit" : "50",
+      "cron_limit" : "100",
       "index_directly" : 1,
       "fields" : {
         "search_api_language" : {
           "name" : "Item language",
           "indexed" : 1,
           "type" : "string",
-          "boost" : "1.0"
-        },
-        "search_api_aggregation_1" : {
-          "name" : "title_module_theme_domain_search_field",
-          "indexed" : 1,
-          "type" : "text",
           "boost" : "1.0"
         },
         "nid" : { "name" : "Node ID", "indexed" : 0, "type" : "integer", "boost" : "1.0" },
@@ -601,21 +590,21 @@ function mica_dataschemas_default_search_api_index() {
         "field_computation_variables" : {
           "name" : "Computation Source Variables",
           "indexed" : 0,
-          "type" : "integer",
+          "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "node",
           "boost" : "1.0"
         },
         "field_contraindication_variables" : {
           "name" : "Contraindication variables",
           "indexed" : 0,
-          "type" : "integer",
+          "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "node",
           "boost" : "1.0"
         },
         "field_dataschema_ref" : {
           "name" : "DataSchema",
           "indexed" : 1,
-          "type" : "list\\u003cinteger\\u003e",
+          "type" : "integer",
           "entity_type" : "node",
           "boost" : "1.0"
         },
@@ -706,7 +695,7 @@ function mica_dataschemas_default_search_api_index() {
         "field_interpretation_variables" : {
           "name" : "Interpretation Variables",
           "indexed" : 0,
-          "type" : "integer",
+          "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "node",
           "boost" : "1.0"
         },
@@ -727,28 +716,28 @@ function mica_dataschemas_default_search_api_index() {
         "field_unit" : { "name" : "Unit", "indexed" : 1, "type" : "text", "boost" : "1.0" },
         "field_variable_categories" : {
           "name" : "Categories",
-          "indexed" : 0,
+          "indexed" : 1,
           "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "node",
           "boost" : "1.0"
         },
         "field_match" : { "name" : "Match", "indexed" : 0, "type" : "string", "boost" : "1.0" },
-        "field_pairing_studies" : {
+        "field_project" : {
+          "name" : "Project",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_study" : {
           "name" : "Study",
           "indexed" : 0,
           "type" : "integer",
           "entity_type" : "node",
           "boost" : "1.0"
         },
-        "field_pairing_variable" : {
+        "field_variable" : {
           "name" : "Variable",
-          "indexed" : 0,
-          "type" : "integer",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_project" : {
-          "name" : "Project",
           "indexed" : 0,
           "type" : "integer",
           "entity_type" : "node",
@@ -1062,7 +1051,7 @@ function mica_dataschemas_default_search_api_index() {
           "settings" : { "default" : "0", "bundles" : { "ds_variable" : "ds_variable" } }
         },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
-        "search_api_alter_add_aggregation" : { "status" : 1, "weight" : "0", "settings" : null },
+        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : null },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
       },
       "processors" : {
@@ -1082,7 +1071,6 @@ function mica_dataschemas_default_search_api_index() {
               "field_dim_target_gender" : "field_dim_target_gender",
               "field_dim_type" : "field_dim_type",
               "search_api_language" : 0,
-              "search_api_aggregation_1" : 0,
               "type" : 0,
               "title" : 0,
               "field_uri" : 0,
@@ -1091,6 +1079,7 @@ function mica_dataschemas_default_search_api_index() {
               "field_module" : 0,
               "field_theme" : 0,
               "field_unit" : 0,
+              "field_variable_categories" : 0,
               "body:value" : 0,
               "body:summary" : 0
             }
@@ -1102,27 +1091,27 @@ function mica_dataschemas_default_search_api_index() {
           "settings" : { "fields" : {
               "title" : "title",
               "field_dataschema_ref" : "field_dataschema_ref",
+              "field_dim_class" : "field_dim_class",
+              "field_dim_collection_mode" : "field_dim_collection_mode",
+              "field_dim_disease" : "field_dim_disease",
+              "field_dim_format" : "field_dim_format",
+              "field_dim_med_health_interv" : "field_dim_med_health_interv",
+              "field_dim_period" : "field_dim_period",
+              "field_dim_sample" : "field_dim_sample",
+              "field_dim_source_of_info" : "field_dim_source_of_info",
+              "field_dim_target" : "field_dim_target",
+              "field_dim_target_gender" : "field_dim_target_gender",
+              "field_dim_type" : "field_dim_type",
               "field_domain" : "field_domain",
               "field_module" : "field_module",
               "field_theme" : "field_theme",
               "field_unit" : "field_unit",
+              "field_variable_categories" : "field_variable_categories",
               "body:value" : "body:value",
+              "body:summary" : "body:summary",
               "search_api_language" : 0,
-              "search_api_aggregation_1" : 0,
               "type" : 0,
-              "field_uri" : 0,
-              "field_dim_class" : 0,
-              "field_dim_collection_mode" : 0,
-              "field_dim_disease" : 0,
-              "field_dim_format" : 0,
-              "field_dim_med_health_interv" : 0,
-              "field_dim_period" : 0,
-              "field_dim_sample" : 0,
-              "field_dim_source_of_info" : 0,
-              "field_dim_target" : 0,
-              "field_dim_target_gender" : 0,
-              "field_dim_type" : 0,
-              "body:summary" : 0
+              "field_uri" : 0
             }
           }
         },
@@ -1135,7 +1124,6 @@ function mica_dataschemas_default_search_api_index() {
               "field_unit" : "field_unit",
               "body:value" : "body:value",
               "search_api_language" : 0,
-              "search_api_aggregation_1" : 0,
               "type" : 0,
               "field_uri" : 0,
               "field_dataschema_ref" : 0,
@@ -1153,6 +1141,7 @@ function mica_dataschemas_default_search_api_index() {
               "field_domain" : 0,
               "field_module" : 0,
               "field_theme" : 0,
+              "field_variable_categories" : 0,
               "body:summary" : 0
             },
             "title" : 0,
@@ -1161,7 +1150,7 @@ function mica_dataschemas_default_search_api_index() {
           }
         },
         "search_api_tokenizer" : {
-          "status" : 1,
+          "status" : 0,
           "weight" : "-47",
           "settings" : {
             "fields" : {
@@ -1169,7 +1158,6 @@ function mica_dataschemas_default_search_api_index() {
               "field_unit" : "field_unit",
               "body:value" : "body:value",
               "search_api_language" : 0,
-              "search_api_aggregation_1" : 0,
               "type" : 0,
               "field_uri" : 0,
               "field_dataschema_ref" : 0,
@@ -1187,6 +1175,7 @@ function mica_dataschemas_default_search_api_index() {
               "field_domain" : 0,
               "field_module" : 0,
               "field_theme" : 0,
+              "field_variable_categories" : 0,
               "body:summary" : 0
             },
             "spaces" : "[^\\\\p{L}\\\\p{N}^\']",

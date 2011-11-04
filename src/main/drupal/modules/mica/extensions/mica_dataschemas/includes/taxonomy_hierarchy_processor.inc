@@ -1,39 +1,29 @@
 <?php
 
+/**
+ * Add taxonomy term's parents to index.
+ * Indexed field cardinality MUST BE 'unlimited', because if the associated term has parent 
+ * the field will have several values.
+ * If indexed field supports only one value and the associated term has parents, it will throw an exception.
+ */
 class SearchApiTaxonomyHierarchyProcessor extends SearchApiAbstractProcessor {
-  
+
   public function preprocessIndexItems(array &$items) {
-  	foreach ($items as &$item) {
+    foreach ($items as &$item) {
       foreach ($item as $name => &$field) {
         if (isset($field['entity_type']) && $field['entity_type'] === 'taxonomy_term' && isset($field['value'])) {
           $new_value = array();
-          if (is_array($field['value'])) {
-            foreach ($field['value'] as $tid) {
-              $parents = taxonomy_get_parents_all($tid);
-              foreach ($parents as $parent) {
-                $new_value[] = $parent->tid;
-              }
-            }
-           } else {
-            $parents = taxonomy_get_parents_all($field['value']);
+          foreach ($field['value'] as $tid) {
+            $parents = taxonomy_get_parents_all($tid);
             foreach ($parents as $parent) {
-            	$new_value[] = $parent->tid;
-            }            
-          }
-          $new_value = array_unique($new_value);
-          if (count($new_value) > 1) {
-            if (!is_array($field['value'])) {
-              $field['type'] = 'list<integer>';
-              $field['original_type'] = 'list<taxonomy_term>';
+              $new_value[] = $parent->tid;
             }
-            $field['value'] = $new_value;
-          } else {
-            $field['value'] = $new_value[0];
           }
+          $field['value'] = array_unique($new_value);
         }
       }
-  	}
-  	parent::preprocessIndexItems($items);
+    }
+    parent::preprocessIndexItems($items);
   }
-  
+
 }
