@@ -1904,7 +1904,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_collection_mode'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_collection_mode',
@@ -2094,7 +2094,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_format'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_format',
@@ -2379,7 +2379,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_sample'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_sample',
@@ -2664,7 +2664,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_target_gender'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_target_gender',
@@ -2759,7 +2759,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_type'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_type',
