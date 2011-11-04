@@ -1042,6 +1042,634 @@ function mica_dataschemas_default_search_api_index() {
           "indexed" : 0,
           "type" : "string",
           "boost" : "1.0"
+        },
+        "field_dataschema_ref:nid" : {
+          "name" : "DataSchema \\u00bb Node ID",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:vid" : {
+          "name" : "DataSchema \\u00bb Revision ID",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:is_new" : {
+          "name" : "DataSchema \\u00bb Is new",
+          "indexed" : 0,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:type" : {
+          "name" : "DataSchema \\u00bb Content type",
+          "indexed" : 0,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:title" : {
+          "name" : "DataSchema \\u00bb Title",
+          "indexed" : 1,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:language" : {
+          "name" : "DataSchema \\u00bb Language",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:url" : {
+          "name" : "DataSchema \\u00bb URL",
+          "indexed" : 0,
+          "type" : "uri",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:edit_url" : {
+          "name" : "DataSchema \\u00bb Edit URL",
+          "indexed" : 0,
+          "type" : "uri",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:status" : {
+          "name" : "DataSchema \\u00bb Published",
+          "indexed" : 0,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:promote" : {
+          "name" : "DataSchema \\u00bb Promoted to frontpage",
+          "indexed" : 0,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:sticky" : {
+          "name" : "DataSchema \\u00bb Sticky in lists",
+          "indexed" : 0,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:created" : {
+          "name" : "DataSchema \\u00bb Date created",
+          "indexed" : 0,
+          "type" : "date",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:changed" : {
+          "name" : "DataSchema \\u00bb Date changed",
+          "indexed" : 0,
+          "type" : "date",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:author" : {
+          "name" : "DataSchema \\u00bb Author",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "user",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:source" : {
+          "name" : "DataSchema \\u00bb Translation source node",
+          "indexed" : 0,
+          "type" : "integer",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:log" : {
+          "name" : "DataSchema \\u00bb Revision log message",
+          "indexed" : 0,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:revision" : {
+          "name" : "DataSchema \\u00bb Creates revision",
+          "indexed" : 0,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:comment" : {
+          "name" : "DataSchema \\u00bb Comments allowed",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:comment_count" : {
+          "name" : "DataSchema \\u00bb Comment count",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_dataschema_ref:comment_count_new" : {
+          "name" : "DataSchema \\u00bb New comment count",
+          "indexed" : 0,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_domain:nid" : {
+          "name" : "Domain \\u00bb Node ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:vid" : {
+          "name" : "Domain \\u00bb Revision ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:is_new" : {
+          "name" : "Domain \\u00bb Is new",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:type" : {
+          "name" : "Domain \\u00bb Content type",
+          "indexed" : 0,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:title" : {
+          "name" : "Domain \\u00bb Title",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:language" : {
+          "name" : "Domain \\u00bb Language",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:url" : {
+          "name" : "Domain \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:edit_url" : {
+          "name" : "Domain \\u00bb Edit URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:status" : {
+          "name" : "Domain \\u00bb Published",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:promote" : {
+          "name" : "Domain \\u00bb Promoted to frontpage",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:sticky" : {
+          "name" : "Domain \\u00bb Sticky in lists",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:created" : {
+          "name" : "Domain \\u00bb Date created",
+          "indexed" : 0,
+          "type" : "list\\u003cdate\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:changed" : {
+          "name" : "Domain \\u00bb Date changed",
+          "indexed" : 0,
+          "type" : "list\\u003cdate\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:author" : {
+          "name" : "Domain \\u00bb Author",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "user",
+          "boost" : "1.0"
+        },
+        "field_domain:source" : {
+          "name" : "Domain \\u00bb Translation source node",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_domain:log" : {
+          "name" : "Domain \\u00bb Revision log message",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:revision" : {
+          "name" : "Domain \\u00bb Creates revision",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:comment" : {
+          "name" : "Domain \\u00bb Comments allowed",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:comment_count" : {
+          "name" : "Domain \\u00bb Comment count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_domain:comment_count_new" : {
+          "name" : "Domain \\u00bb New comment count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:nid" : {
+          "name" : "Module \\u00bb Node ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:vid" : {
+          "name" : "Module \\u00bb Revision ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:is_new" : {
+          "name" : "Module \\u00bb Is new",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:type" : {
+          "name" : "Module \\u00bb Content type",
+          "indexed" : 0,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:title" : {
+          "name" : "Module \\u00bb Title",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:language" : {
+          "name" : "Module \\u00bb Language",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:url" : {
+          "name" : "Module \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:edit_url" : {
+          "name" : "Module \\u00bb Edit URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:status" : {
+          "name" : "Module \\u00bb Published",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:promote" : {
+          "name" : "Module \\u00bb Promoted to frontpage",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:sticky" : {
+          "name" : "Module \\u00bb Sticky in lists",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:created" : {
+          "name" : "Module \\u00bb Date created",
+          "indexed" : 0,
+          "type" : "list\\u003cdate\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:changed" : {
+          "name" : "Module \\u00bb Date changed",
+          "indexed" : 0,
+          "type" : "list\\u003cdate\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:author" : {
+          "name" : "Module \\u00bb Author",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "user",
+          "boost" : "1.0"
+        },
+        "field_module:source" : {
+          "name" : "Module \\u00bb Translation source node",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_module:log" : {
+          "name" : "Module \\u00bb Revision log message",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:revision" : {
+          "name" : "Module \\u00bb Creates revision",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:comment" : {
+          "name" : "Module \\u00bb Comments allowed",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:comment_count" : {
+          "name" : "Module \\u00bb Comment count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_module:comment_count_new" : {
+          "name" : "Module \\u00bb New comment count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:nid" : {
+          "name" : "Theme \\u00bb Node ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:vid" : {
+          "name" : "Theme \\u00bb Revision ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:is_new" : {
+          "name" : "Theme \\u00bb Is new",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:type" : {
+          "name" : "Theme \\u00bb Content type",
+          "indexed" : 0,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:title" : {
+          "name" : "Theme \\u00bb Title",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:language" : {
+          "name" : "Theme \\u00bb Language",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:url" : {
+          "name" : "Theme \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:edit_url" : {
+          "name" : "Theme \\u00bb Edit URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:status" : {
+          "name" : "Theme \\u00bb Published",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:promote" : {
+          "name" : "Theme \\u00bb Promoted to frontpage",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:sticky" : {
+          "name" : "Theme \\u00bb Sticky in lists",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:created" : {
+          "name" : "Theme \\u00bb Date created",
+          "indexed" : 0,
+          "type" : "list\\u003cdate\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:changed" : {
+          "name" : "Theme \\u00bb Date changed",
+          "indexed" : 0,
+          "type" : "list\\u003cdate\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:author" : {
+          "name" : "Theme \\u00bb Author",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "user",
+          "boost" : "1.0"
+        },
+        "field_theme:source" : {
+          "name" : "Theme \\u00bb Translation source node",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_theme:log" : {
+          "name" : "Theme \\u00bb Revision log message",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:revision" : {
+          "name" : "Theme \\u00bb Creates revision",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:comment" : {
+          "name" : "Theme \\u00bb Comments allowed",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:comment_count" : {
+          "name" : "Theme \\u00bb Comment count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_theme:comment_count_new" : {
+          "name" : "Theme \\u00bb New comment count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:nid" : {
+          "name" : "Categories \\u00bb Node ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:vid" : {
+          "name" : "Categories \\u00bb Revision ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:is_new" : {
+          "name" : "Categories \\u00bb Is new",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:type" : {
+          "name" : "Categories \\u00bb Content type",
+          "indexed" : 0,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:title" : {
+          "name" : "Categories \\u00bb Title",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:language" : {
+          "name" : "Categories \\u00bb Language",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:url" : {
+          "name" : "Categories \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:edit_url" : {
+          "name" : "Categories \\u00bb Edit URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:status" : {
+          "name" : "Categories \\u00bb Published",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:promote" : {
+          "name" : "Categories \\u00bb Promoted to frontpage",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:sticky" : {
+          "name" : "Categories \\u00bb Sticky in lists",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:created" : {
+          "name" : "Categories \\u00bb Date created",
+          "indexed" : 0,
+          "type" : "list\\u003cdate\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:changed" : {
+          "name" : "Categories \\u00bb Date changed",
+          "indexed" : 0,
+          "type" : "list\\u003cdate\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:author" : {
+          "name" : "Categories \\u00bb Author",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "user",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:source" : {
+          "name" : "Categories \\u00bb Translation source node",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:log" : {
+          "name" : "Categories \\u00bb Revision log message",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:revision" : {
+          "name" : "Categories \\u00bb Creates revision",
+          "indexed" : 0,
+          "type" : "list\\u003cboolean\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:comment" : {
+          "name" : "Categories \\u00bb Comments allowed",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:comment_count" : {
+          "name" : "Categories \\u00bb Comment count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:comment_count_new" : {
+          "name" : "Categories \\u00bb New comment count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:body:value" : {
+          "name" : "Categories \\u00bb The main body text \\u00bb Text",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:body:summary" : {
+          "name" : "Categories \\u00bb The main body text \\u00bb Summary",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_variable_categories:body:format" : {
+          "name" : "Categories \\u00bb The main body text \\u00bb Text format",
+          "indexed" : 0,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
         }
       },
       "data_alter_callbacks" : {
