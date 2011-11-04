@@ -134,6 +134,11 @@ function mica_dataschemas_views_default_views() {
     'field_unit' => 'field_unit',
     'body:value' => 'body:value',
     'body:summary' => 'body:summary',
+    'field_dataschema_ref:title' => 'field_dataschema_ref:title',
+    'field_domain:title' => 'field_domain:title',
+    'field_module:title' => 'field_module:title',
+    'field_theme:title' => 'field_theme:title',
+    'field_variable_categories:title' => 'field_variable_categories:title',
   );
   /* Filter criterion: Node: Content type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
