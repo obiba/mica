@@ -1809,7 +1809,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_class'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_class',
@@ -2189,7 +2189,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_med_health_interv'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_med_health_interv',
@@ -2284,7 +2284,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_period'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_period',
@@ -2474,7 +2474,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_source_of_info'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_source_of_info',
