@@ -31,7 +31,10 @@ function mica_dataschemas_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = 0;
   $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = 1;
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '15';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
@@ -324,6 +327,168 @@ It also contains associated support material including variable definitions, lin
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'dataschemas';
   $export['dataschemas'] = $view;
+
+  $view = new view;
+  $view->name = 'project_pairings';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Project Pairings';
+  $view->core = 7;
+  $view->api_version = '3.0-alpha1';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Project Pairings';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['grouping'] = 'field_study';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_variable' => 'field_variable',
+    'field_study' => 'field_study',
+    'field_match' => 'field_match',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_variable' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
+    'field_study' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
+    'field_match' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+    ),
+  );
+  $handler->display->display_options['style_options']['override'] = 1;
+  $handler->display->display_options['style_options']['sticky'] = 0;
+  $handler->display->display_options['style_options']['empty_table'] = 0;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'empty_project_pairings_text';
+  $handler->display->display_options['empty']['area']['empty'] = FALSE;
+  $handler->display->display_options['empty']['area']['content'] = 'No pairings found.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['empty']['area']['tokenize'] = 0;
+  /* Field: Content: Variable */
+  $handler->display->display_options['fields']['field_variable']['id'] = 'field_variable';
+  $handler->display->display_options['fields']['field_variable']['table'] = 'field_data_field_variable';
+  $handler->display->display_options['fields']['field_variable']['field'] = 'field_variable';
+  $handler->display->display_options['fields']['field_variable']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_variable']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_variable']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_variable']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_variable']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_variable']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_variable']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_variable']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_variable']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_variable']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_variable']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_variable']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_variable']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_variable']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_variable']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_variable']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_variable']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_variable']['field_api_classes'] = 0;
+  /* Field: Content: Study */
+  $handler->display->display_options['fields']['field_study']['id'] = 'field_study';
+  $handler->display->display_options['fields']['field_study']['table'] = 'field_data_field_study';
+  $handler->display->display_options['fields']['field_study']['field'] = 'field_study';
+  $handler->display->display_options['fields']['field_study']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_study']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_study']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_study']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_study']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_study']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_study']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_study']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_study']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_study']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_study']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_study']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_study']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_study']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_study']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_study']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_study']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_study']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_study']['field_api_classes'] = 0;
+  /* Field: Content: Match */
+  $handler->display->display_options['fields']['field_match']['id'] = 'field_match';
+  $handler->display->display_options['fields']['field_match']['table'] = 'field_data_field_match';
+  $handler->display->display_options['fields']['field_match']['field'] = 'field_match';
+  $handler->display->display_options['fields']['field_match']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_match']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_match']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_match']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_match']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_match']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_match']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_match']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_match']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_match']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_match']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_match']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_match']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_match']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_match']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_match']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_match']['hide_alter_empty'] = 0;
+  $handler->display->display_options['fields']['field_match']['field_api_classes'] = 0;
+  /* Contextual filter: Content: Project (field_project) */
+  $handler->display->display_options['arguments']['field_project_nid']['id'] = 'field_project_nid';
+  $handler->display->display_options['arguments']['field_project_nid']['table'] = 'field_data_field_project';
+  $handler->display->display_options['arguments']['field_project_nid']['field'] = 'field_project_nid';
+  $handler->display->display_options['arguments']['field_project_nid']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['field_project_nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_project_nid']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['field_project_nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_project_nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_project_nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_project_nid']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_project_nid']['not'] = 0;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'pairing' => 'pairing',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'project-pairings';
+  $export['project_pairings'] = $view;
 
   return $export;
 }

@@ -716,10 +716,9 @@ function mica_dataschemas_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'file',
           'settings' => array(),
-          'type' => 'file_default',
-          'weight' => '3',
+          'type' => 'hidden',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -802,7 +801,7 @@ function mica_dataschemas_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '4',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1688,7 +1687,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dataschema_ref'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dataschema_ref',
@@ -1722,6 +1721,7 @@ function mica_dataschemas_field_default_fields() {
         'referenceable_types' => array(
           'article' => 0,
           'blog' => 0,
+          'category' => 0,
           'contact' => 0,
           'data_access_request' => 0,
           'data_access_review' => 0,
@@ -1737,6 +1737,7 @@ function mica_dataschemas_field_default_fields() {
           'forum' => 0,
           'institution' => 0,
           'page' => 0,
+          'pairing' => 0,
           'panel' => 0,
           'participant_variable' => 0,
           'project' => 0,
@@ -2935,9 +2936,9 @@ function mica_dataschemas_field_default_fields() {
         ),
         'custom_page' => array(
           'label' => 'above',
-          'module' => 'mica_node_reference_field',
+          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'node_reference_field_name_link',
+          'type' => 'node_reference_default',
           'weight' => '4',
         ),
         'default' => array(
@@ -4165,6 +4166,120 @@ function mica_dataschemas_field_default_fields() {
         ),
         'type' => 'node_reference_autocomplete',
         'weight' => '39',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-project-field_dataschema_ref'
+  $fields['node-project-field_dataschema_ref'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dataschema_ref',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'referenceable_types' => array(
+          'article' => 0,
+          'blog' => 0,
+          'category' => 0,
+          'contact' => 0,
+          'data_access_request' => 0,
+          'data_access_review' => 0,
+          'dataschema' => 'dataschema',
+          'dataset' => 0,
+          'documents' => 0,
+          'ds_domain' => 0,
+          'ds_module' => 0,
+          'ds_theme' => 0,
+          'ds_variable' => 0,
+          'event' => 0,
+          'field_description' => 0,
+          'forum' => 0,
+          'institution' => 0,
+          'page' => 0,
+          'pairing' => 0,
+          'panel' => 0,
+          'participant_variable' => 0,
+          'project' => 0,
+          'publication' => 0,
+          'study' => 0,
+          'study_documents' => 0,
+          'study_information' => 0,
+          'teleconference' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'project',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => '1',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_dataschema_ref',
+      'label' => 'DataSchema',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '32',
       ),
     ),
   );
