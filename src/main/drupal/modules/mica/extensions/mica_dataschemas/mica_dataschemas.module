@@ -336,7 +336,6 @@ function mica_dataschemas_search_api_processor_info() {
 * Implements hook_entity_info_alter().
 */
 function mica_dataschemas_entity_info_alter(&$entity_info) {
-  var_dump($entity_info);
   $entity_info['node']['view modes']['custom_page'] = array(
     'label' => t('Custom Page Main Content'),
     'custom settings' => TRUE,
