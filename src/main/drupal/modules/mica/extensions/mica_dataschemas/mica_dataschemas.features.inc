@@ -604,7 +604,7 @@ function mica_dataschemas_default_search_api_index() {
         "field_dataschema_ref" : {
           "name" : "DataSchema",
           "indexed" : 1,
-          "type" : "integer",
+          "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "node",
           "boost" : "1.0"
         },

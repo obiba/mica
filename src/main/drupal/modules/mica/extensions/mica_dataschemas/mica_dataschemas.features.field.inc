@@ -62,6 +62,12 @@ function mica_dataschemas_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_variable' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -147,6 +153,12 @@ function mica_dataschemas_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'list',
@@ -226,6 +238,12 @@ function mica_dataschemas_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
@@ -312,11 +330,27 @@ function mica_dataschemas_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_variable' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_plain',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
+          'weight' => '0',
+        ),
+        'search_index' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(
+            'trim_length' => '200',
+          ),
+          'type' => 'text_summary_or_trimmed',
           'weight' => '0',
         ),
         'search_result' => array(
@@ -330,10 +364,10 @@ function mica_dataschemas_field_default_fields() {
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(
-            'trim_length' => 600,
+            'trim_length' => '150',
           ),
           'type' => 'text_summary_or_trimmed',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -461,7 +495,19 @@ function mica_dataschemas_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
         'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
+        'search_index' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -478,7 +524,7 @@ function mica_dataschemas_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -550,11 +596,27 @@ function mica_dataschemas_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_variable' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
+          'weight' => '0',
+        ),
+        'search_index' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(
+            'trim_length' => '200',
+          ),
+          'type' => 'text_summary_or_trimmed',
           'weight' => '0',
         ),
         'teaser' => array(
@@ -633,11 +695,24 @@ function mica_dataschemas_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
+          'weight' => '2',
+        ),
+        'search_index' => array(
+          'label' => 'inline',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_plain',
           'weight' => '2',
         ),
         'teaser' => array(
@@ -714,7 +789,19 @@ function mica_dataschemas_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
         'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
+        'search_index' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -796,11 +883,24 @@ function mica_dataschemas_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
+          'weight' => '3',
+        ),
+        'search_index' => array(
+          'label' => 'inline',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_plain',
           'weight' => '3',
         ),
         'teaser' => array(
@@ -876,7 +976,19 @@ function mica_dataschemas_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
+        ),
         'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
+        ),
+        'search_index' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -954,11 +1066,24 @@ function mica_dataschemas_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
+          'weight' => '1',
+        ),
+        'search_index' => array(
+          'label' => 'inline',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_plain',
           'weight' => '1',
         ),
         'teaser' => array(
@@ -1043,6 +1168,22 @@ function mica_dataschemas_field_default_fields() {
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
+          'settings' => array(
+            'trim_length' => '200',
+          ),
+          'type' => 'text_summary_or_trimmed',
+          'weight' => '0',
+        ),
+        'search_index' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
+        'search_result' => array(
+          'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '0',
@@ -1125,6 +1266,18 @@ function mica_dataschemas_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
+        'search_index' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
+        'search_result' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
@@ -1391,6 +1544,13 @@ function mica_dataschemas_field_default_fields() {
           'type' => 'text_default',
           'weight' => '0',
         ),
+        'custom_variable' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -1521,6 +1681,12 @@ function mica_dataschemas_field_default_fields() {
           'type' => 'node_reference_default',
           'weight' => '8',
         ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'node_reference',
@@ -1648,6 +1814,12 @@ function mica_dataschemas_field_default_fields() {
           'type' => 'node_reference_default',
           'weight' => '7',
         ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '8',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'node_reference',
@@ -1687,7 +1859,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dataschema_ref'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dataschema_ref',
@@ -1769,11 +1941,19 @@ function mica_dataschemas_field_default_fields() {
           'weight' => '14',
         ),
         'custom_page' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
+          'settings' => array(
+            'node_reference_view_mode' => 'full',
+          ),
+          'type' => 'node_reference_node',
           'weight' => '1',
+        ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
         ),
         'default' => array(
           'label' => 'inline',
@@ -1789,6 +1969,7 @@ function mica_dataschemas_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_dataschema_ref',
       'label' => 'DataSchema',
@@ -1869,6 +2050,12 @@ function mica_dataschemas_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '10',
+        ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
         ),
         'default' => array(
           'label' => 'inline',
@@ -1965,6 +2152,12 @@ function mica_dataschemas_field_default_fields() {
           'type' => 'hidden',
           'weight' => '19',
         ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '13',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
@@ -2059,6 +2252,12 @@ function mica_dataschemas_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '18',
+        ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '15',
         ),
         'default' => array(
           'label' => 'inline',
@@ -2155,6 +2354,12 @@ function mica_dataschemas_field_default_fields() {
           'type' => 'hidden',
           'weight' => '20',
         ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
@@ -2249,6 +2454,12 @@ function mica_dataschemas_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '14',
+        ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '16',
         ),
         'default' => array(
           'label' => 'inline',
@@ -2345,6 +2556,12 @@ function mica_dataschemas_field_default_fields() {
           'type' => 'hidden',
           'weight' => '13',
         ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '19',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
@@ -2439,6 +2656,12 @@ function mica_dataschemas_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '12',
+        ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '20',
         ),
         'default' => array(
           'label' => 'inline',
@@ -2535,6 +2758,12 @@ function mica_dataschemas_field_default_fields() {
           'type' => 'hidden',
           'weight' => '11',
         ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
@@ -2629,6 +2858,12 @@ function mica_dataschemas_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '16',
+        ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
         ),
         'default' => array(
           'label' => 'inline',
@@ -2725,6 +2960,12 @@ function mica_dataschemas_field_default_fields() {
           'type' => 'hidden',
           'weight' => '15',
         ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'taxonomy',
@@ -2819,6 +3060,12 @@ function mica_dataschemas_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '17',
+        ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
         ),
         'default' => array(
           'label' => 'inline',
@@ -2937,9 +3184,17 @@ function mica_dataschemas_field_default_fields() {
         'custom_page' => array(
           'label' => 'above',
           'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
+          'settings' => array(
+            'node_reference_view_mode' => 'full',
+          ),
+          'type' => 'node_reference_node',
           'weight' => '4',
+        ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '6',
         ),
         'default' => array(
           'label' => 'inline',
@@ -3068,6 +3323,12 @@ function mica_dataschemas_field_default_fields() {
           'type' => 'node_reference_default',
           'weight' => '6',
         ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'node_reference',
@@ -3189,9 +3450,17 @@ function mica_dataschemas_field_default_fields() {
         'custom_page' => array(
           'label' => 'above',
           'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
+          'settings' => array(
+            'node_reference_view_mode' => 'full',
+          ),
+          'type' => 'node_reference_node',
           'weight' => '2',
+        ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
         ),
         'default' => array(
           'label' => 'inline',
@@ -3314,9 +3583,17 @@ function mica_dataschemas_field_default_fields() {
         'custom_page' => array(
           'label' => 'above',
           'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
+          'settings' => array(
+            'node_reference_view_mode' => 'full',
+          ),
+          'type' => 'node_reference_node',
           'weight' => '3',
+        ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'default' => array(
           'label' => 'inline',
@@ -3411,6 +3688,12 @@ function mica_dataschemas_field_default_fields() {
           'type' => 'hidden',
           'weight' => '9',
         ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
@@ -3498,6 +3781,12 @@ function mica_dataschemas_field_default_fields() {
           'weight' => '21',
         ),
         'custom_page' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '21',
+        ),
+        'custom_variable' => array(
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
@@ -3624,9 +3913,17 @@ function mica_dataschemas_field_default_fields() {
         'custom_page' => array(
           'label' => 'above',
           'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_plain',
+          'settings' => array(
+            'node_reference_view_mode' => 'full',
+          ),
+          'type' => 'node_reference_node',
           'weight' => '5',
+        ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '9',
         ),
         'default' => array(
           'label' => 'inline',
@@ -4174,7 +4471,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-project-field_dataschema_ref'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dataschema_ref',
