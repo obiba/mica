@@ -344,4 +344,45 @@ function mica_dataschemas_entity_info_alter(&$entity_info) {
       'label' => t('Custom Page Dimension'),
       'custom settings' => FALSE,
   );
+  $entity_info['node']['view modes']['custom_variable'] = array(
+        'label' => t('Custom Page Variable'),
+        'custom settings' => FALSE,
+  );
 }
+
+function mica_dataschemas_entity_view($entity, $type, $view_mode, $langcode){
+  $title = $entity->title;
+  
+  if ($entity->type === 'dataschema'){
+    $entity->title = 'DataSchema: ' . $title;
+  }
+  else if ($entity->type === 'ds_module'){
+  	$entity->title = 'Module: ' . $title;
+  }
+  else if ($entity->type === 'ds_theme'){
+  	$entity->title = 'Theme: ' . $title;
+  }
+  else if ($entity->type === 'ds_domain'){
+  	$entity->title = 'Domain: ' . $title;
+  }
+}
+
+
+/*function mica_dataschemas_block_info() {
+  debug('BLOCK');
+  $blocks['variable_cart'] = array(
+    'info' => t('Variable Cart'),
+    'cache' => DRUPAL_CACHE_PER_USER,
+    'status' => TRUE,
+    'region' => 'sidebar_first',
+    'visibility' => 1, 
+  );
+  
+  
+  return $blocks;
+}*/
+
+
+
+
+
