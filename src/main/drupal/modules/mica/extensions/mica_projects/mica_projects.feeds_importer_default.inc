@@ -65,6 +65,11 @@ function mica_projects_feeds_importer_default() {
             'target' => 'field_files',
             'unique' => FALSE,
           ),
+          5 => array(
+            'source' => 'field_dataschema_ref',
+            'target' => 'field_dataschema_ref:title',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',
