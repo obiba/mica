@@ -119,7 +119,7 @@ function mica_dataschemas_menu_local_tasks_alter(&$data, $router_item, $root_pat
     		$data['actions']['output'] = array_merge($data['actions']['output'], $links);
 		}
 	}
-	else if ($root_path == 'dataschema-variables'){
+	/*else if ($root_path == 'dataschema-variables'){
 	  // Export as XLS
 	  $node = node_load($router_item['page_arguments'][2]);
 	  
@@ -144,7 +144,7 @@ function mica_dataschemas_menu_local_tasks_alter(&$data, $router_item, $root_pat
 	  );
 	  
 	  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
-	}
+	}*/
 }
 
 function _get_mlid($path) {
