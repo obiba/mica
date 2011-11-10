@@ -9,7 +9,7 @@
 acl_version=7.x-1.0-beta3
 calendar_version=7.x-3.0-alpha1
 chain_menu_access_version=7.x-1.0-beta2
-ckeditor_version=7.x-1.3
+ckeditor_version=7.x-1.6
 content_access_version=7.x-1.2-beta1
 ctools_version=7.x-1.0-rc1
 date_version=7.x-2.0-alpha4
