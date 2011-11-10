@@ -119,6 +119,32 @@ function mica_dataschemas_menu_local_tasks_alter(&$data, $router_item, $root_pat
     		$data['actions']['output'] = array_merge($data['actions']['output'], $links);
 		}
 	}
+	else if ($root_path == 'dataschema-variables'){
+	  // Export as XLS
+	  $node = node_load($router_item['page_arguments'][2]);
+	  
+	  $name = "Export to Excel";
+	  
+	  if (strpos(request_uri(), '&filter') > 0) {
+	    $filter = substr(request_uri(), strpos(request_uri(), '&filter'));  
+	  }
+	  $href = url('dataschema-variables-export') . '/' . $node->nid;
+	  
+	  if (isset($filter)) {
+	    $href .= $filter;
+	  }
+	  
+	  $links['view-dataschema-variables'] = array(
+  		'#weight' => 30,
+  		'#theme' => 'menu_local_action',
+  		'#link' => array(
+  			'title' => t('<a class="highlight" href="@url">!name</a>', array('!name' => $name, '@url' => $href)),
+  			'localized_options' => array('html' => TRUE),
+	    ),
+	  );
+	  
+	  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
+	}
 }
 
 function _get_mlid($path) {
