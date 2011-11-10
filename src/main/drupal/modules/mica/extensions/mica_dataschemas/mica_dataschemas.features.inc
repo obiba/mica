@@ -1129,14 +1129,14 @@ function mica_dataschemas_default_search_api_index() {
         "field_dataschema_ref:author" : {
           "name" : "DataSchema \\u00bb Author",
           "indexed" : 0,
-          "type" : "integer",
+          "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "user",
           "boost" : "1.0"
         },
         "field_dataschema_ref:source" : {
           "name" : "DataSchema \\u00bb Translation source node",
           "indexed" : 0,
-          "type" : "integer",
+          "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "node",
           "boost" : "1.0"
         },
@@ -1168,6 +1168,556 @@ function mica_dataschemas_default_search_api_index() {
           "name" : "DataSchema \\u00bb New comment count",
           "indexed" : 0,
           "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_dim_class:tid" : {
+          "name" : "Class \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_class:name" : {
+          "name" : "Class \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_class:description" : {
+          "name" : "Class \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_class:weight" : {
+          "name" : "Class \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_class:node_count" : {
+          "name" : "Class \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_class:url" : {
+          "name" : "Class \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_class:vocabulary" : {
+          "name" : "Class \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_class:parent" : {
+          "name" : "Class \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_collection_mode:tid" : {
+          "name" : "Collection mode \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_collection_mode:name" : {
+          "name" : "Collection mode \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_collection_mode:description" : {
+          "name" : "Collection mode \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_collection_mode:weight" : {
+          "name" : "Collection mode \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_collection_mode:node_count" : {
+          "name" : "Collection mode \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_collection_mode:url" : {
+          "name" : "Collection mode \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_collection_mode:vocabulary" : {
+          "name" : "Collection mode \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_collection_mode:parent" : {
+          "name" : "Collection mode \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_disease:tid" : {
+          "name" : "Disease \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_disease:name" : {
+          "name" : "Disease \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_disease:description" : {
+          "name" : "Disease \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_disease:weight" : {
+          "name" : "Disease \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_disease:node_count" : {
+          "name" : "Disease \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_disease:url" : {
+          "name" : "Disease \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_disease:vocabulary" : {
+          "name" : "Disease \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_disease:parent" : {
+          "name" : "Disease \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_format:tid" : {
+          "name" : "Format \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_format:name" : {
+          "name" : "Format \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_format:description" : {
+          "name" : "Format \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_format:weight" : {
+          "name" : "Format \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_format:node_count" : {
+          "name" : "Format \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_format:url" : {
+          "name" : "Format \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_format:vocabulary" : {
+          "name" : "Format \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_format:parent" : {
+          "name" : "Format \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_med_health_interv:tid" : {
+          "name" : "Medical health intervention \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_med_health_interv:name" : {
+          "name" : "Medical health intervention \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_med_health_interv:description" : {
+          "name" : "Medical health intervention \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_med_health_interv:weight" : {
+          "name" : "Medical health intervention \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_med_health_interv:node_count" : {
+          "name" : "Medical health intervention \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_med_health_interv:url" : {
+          "name" : "Medical health intervention \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_med_health_interv:vocabulary" : {
+          "name" : "Medical health intervention \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_med_health_interv:parent" : {
+          "name" : "Medical health intervention \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_period:tid" : {
+          "name" : "Period \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_period:name" : {
+          "name" : "Period \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_period:description" : {
+          "name" : "Period \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_period:weight" : {
+          "name" : "Period \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_period:node_count" : {
+          "name" : "Period \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_period:url" : {
+          "name" : "Period \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_period:vocabulary" : {
+          "name" : "Period \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_period:parent" : {
+          "name" : "Period \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_sample:tid" : {
+          "name" : "Sample \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_sample:name" : {
+          "name" : "Sample \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_sample:description" : {
+          "name" : "Sample \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_sample:weight" : {
+          "name" : "Sample \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_sample:node_count" : {
+          "name" : "Sample \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_sample:url" : {
+          "name" : "Sample \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_sample:vocabulary" : {
+          "name" : "Sample \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_sample:parent" : {
+          "name" : "Sample \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_source_of_info:tid" : {
+          "name" : "Source of information \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_source_of_info:name" : {
+          "name" : "Source of information \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_source_of_info:description" : {
+          "name" : "Source of information \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_source_of_info:weight" : {
+          "name" : "Source of information \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_source_of_info:node_count" : {
+          "name" : "Source of information \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_source_of_info:url" : {
+          "name" : "Source of information \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_source_of_info:vocabulary" : {
+          "name" : "Source of information \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_source_of_info:parent" : {
+          "name" : "Source of information \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_target:tid" : {
+          "name" : "Target \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_target:name" : {
+          "name" : "Target \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_target:description" : {
+          "name" : "Target \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_target:weight" : {
+          "name" : "Target \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_target:node_count" : {
+          "name" : "Target \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_target:url" : {
+          "name" : "Target \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_target:vocabulary" : {
+          "name" : "Target \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_target:parent" : {
+          "name" : "Target \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_target_gender:tid" : {
+          "name" : "Target gender \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_target_gender:name" : {
+          "name" : "Target gender \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_target_gender:description" : {
+          "name" : "Target gender \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_target_gender:weight" : {
+          "name" : "Target gender \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_target_gender:node_count" : {
+          "name" : "Target gender \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_target_gender:url" : {
+          "name" : "Target gender \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_target_gender:vocabulary" : {
+          "name" : "Target gender \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_target_gender:parent" : {
+          "name" : "Target gender \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_type:tid" : {
+          "name" : "Type \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_type:name" : {
+          "name" : "Type \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_type:description" : {
+          "name" : "Type \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_type:weight" : {
+          "name" : "Type \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_type:node_count" : {
+          "name" : "Type \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_type:url" : {
+          "name" : "Type \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_type:vocabulary" : {
+          "name" : "Type \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_type:parent" : {
+          "name" : "Type \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
           "boost" : "1.0"
         },
         "field_domain:nid" : {
