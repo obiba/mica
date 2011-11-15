@@ -262,11 +262,11 @@ class MicaRelation extends Entity {
 
       // link this new child node to the parent node
       $parent_node->$field_ref = array(
-      $language => array(
-      0 => array(
+        $language => array(
+          0 => array(
           	'nid' => $node_child->nid,
-      ),
-      ),
+          ),
+        ),
       );
 
       // relation
