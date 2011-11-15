@@ -5,8 +5,6 @@
  */
 
 include_once('mica_dataschemas.features.inc');
-include_once DRUPAL_ROOT . '/modules/menu/menu.admin.inc';
-
 
 /**
  * Implements hook_form().
@@ -19,44 +17,20 @@ function mica_dataschemas_form($node, &$form_state) {
  * Implements hook_install().
  */
 function mica_dataschemas_install() {
-  $plid  = _get_mlid('node/3');
-
-  $path = drupal_get_normal_path($GLOBALS['base_url'] .'/?q=dataschemas');
-
-  $form_state = array(
-    'values' => array(
-      'menu_name'   => 'main-menu',
-      'weight'      => 0,
-      'link_title'  => 'DataSchemas',
-      'link_path'   => $path,
-      'module'      => 'menu',
-      'mlid'        => 0,
-      'plid'        => $plid,
-  ),
-  );
-
-  // Validate and transform the item, so it conforms with Drupal standards.
-  menu_edit_item_validate(array(), $form_state);
-
-  // Save the item to database.
-  menu_link_save($form_state['values']);
-
   _mica_dataschemas_createTaxonomy();
-
-  menu_cache_clear_all();
 }
 
 /**
  * Implements hook_node_insert()
 */
 function mica_dataschemas_insert(&$node) {
-  debug($node->nid);
+//   debug($node->nid);
   if ($node->type === 'dataschema') {
     $node->field_variables['und'] = array(
       0 => array('view_id' => 'dataschema_variables:page', 'arguments' => $node->nid)
     );
   }
-  debug($node->field_variables);
+//   debug($node->field_variables);
   return;
 }
 
@@ -145,20 +119,6 @@ function mica_dataschemas_menu_local_tasks_alter(&$data, $router_item, $root_pat
 	  
 	  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 	}*/
-}
-
-function _get_mlid($path) {
-	$mlid = null;
-
-	$tree =  menu_tree_all_data('main-menu');
-	foreach($tree as $item) {
-		if ($item['link']['link_path'] == $path) {
-			$mlid = $item['link']['mlid'];
-			break;
-		}
-	}
-
-	return $mlid;
 }
 
 function _mica_dataschemas_createTaxonomy() {
@@ -398,21 +358,6 @@ function mica_dataschemas_entity_view($entity, $type, $view_mode, $langcode){
   	$entity->title = 'Domain: ' . $title;
   }
 }
-
-
-/*function mica_dataschemas_block_info() {
-  debug('BLOCK');
-  $blocks['variable_cart'] = array(
-    'info' => t('Variable Cart'),
-    'cache' => DRUPAL_CACHE_PER_USER,
-    'status' => TRUE,
-    'region' => 'sidebar_first',
-    'visibility' => 1, 
-  );
-  
-  
-  return $blocks;
-}*/
 
 
 

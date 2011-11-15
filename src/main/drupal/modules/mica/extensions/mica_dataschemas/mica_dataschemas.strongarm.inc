@@ -420,28 +420,28 @@ function mica_dataschemas_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_ds_domain';
-  $strongarm->value = 'main-menu:289';
+  $strongarm->value = 'main-menu:446';
   $export['menu_parent_ds_domain'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_ds_module';
-  $strongarm->value = 'main-menu:289';
+  $strongarm->value = 'main-menu:446';
   $export['menu_parent_ds_module'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_ds_theme';
-  $strongarm->value = 'main-menu:289';
+  $strongarm->value = 'main-menu:446';
   $export['menu_parent_ds_theme'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_ds_variable';
-  $strongarm->value = 'main-menu:289';
+  $strongarm->value = 'main-menu:446';
   $export['menu_parent_ds_variable'] = $strongarm;
 
   $strongarm = new stdClass;
