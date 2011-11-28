@@ -327,7 +327,7 @@ END;
 "{$term->getName()}" : {
   "filter" : {
   {$this->asFilter($term)}
-  }, "golbal":true
+  }, "global":true
 }
 END;
   return $facet;
