@@ -40,6 +40,8 @@ search_api_version=7.x-1.0-beta10
 search_api_ranges_version=7.x-1.2
 search_api_solr_version=7.x-1.0-beta4
 strongarm_version=7.x-2.0-beta2
+taxonomy_csv_version=7.x-5.7
+taxonomy_manager_version=7.x-1.0-beta2
 token_version=7.x-1.0-beta5
 views_data_export_version=7.x-3.0-beta5
 views_version=7.x-3.0-rc1
@@ -122,6 +124,8 @@ drupal-download:
 		search_api_ranges-$(search_api_ranges_version) \
 		search_api_solr-$(search_api_solr_version) \
 		strongarm-$(strongarm_version) \
+		taxonomy_csv-$(taxonomy_csv_version) \
+		taxonomy_manager-$(taxonomy_manager_version) \
 		token-$(token_version) \
 		viewreference-$(viewreference_version) \
 		views-$(views_version) \
