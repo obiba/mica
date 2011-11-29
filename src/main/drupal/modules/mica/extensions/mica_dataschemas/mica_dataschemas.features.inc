@@ -57,30 +57,6 @@ function mica_dataschemas_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
-    'ds_domain' => array(
-      'name' => t('Domain'),
-      'base' => 'node_content',
-      'description' => t('A domain is a risk factor or an outcome of interest, subsuming a number of variables.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'ds_module' => array(
-      'name' => t('Module'),
-      'base' => 'node_content',
-      'description' => t('A module is a grouping based on variables main unit of interest, assessment modes or type of element measured or collected. '),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'ds_theme' => array(
-      'name' => t('Theme'),
-      'base' => 'node_content',
-      'description' => t('A theme is a general area of interest.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
     'ds_variable' => array(
       'name' => t('Variable'),
       'base' => 'node_content',
@@ -370,77 +346,6 @@ function mica_dataschemas_default_search_api_facet() {
     },
     "rdf_mapping" : []
   }');
-  $items['dataschema_variables_field_domai'] = entity_import('search_api_facet', '{
-    "delta" : "dataschema_variables_field_domai",
-    "index_id" : "dataschema_variables_index",
-    "field" : "field_domain",
-    "name" : "Domain facet",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "",
-      "field_name" : "Domain",
-      "entity_type" : "node"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['dataschema_variables_field_modul'] = entity_import('search_api_facet', '{
-    "delta" : "dataschema_variables_field_modul",
-    "index_id" : "dataschema_variables_index",
-    "field" : "field_module",
-    "name" : "Module facet",
-    "enabled" : "1",
-    "options" : {
-      "limit" : 10,
-      "display_more_link" : false,
-      "more_limit" : 10,
-      "min_count" : 1,
-      "sort" : "count",
-      "missing" : false,
-      "show_active" : true,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "",
-      "field_name" : "Module",
-      "entity_type" : "node"
-    },
-    "rdf_mapping" : []
-  }');
-  $items['dataschema_variables_field_theme'] = entity_import('search_api_facet', '{
-    "delta" : "dataschema_variables_field_theme",
-    "index_id" : "dataschema_variables_index",
-    "field" : "field_theme",
-    "name" : "Theme facet",
-    "enabled" : "1",
-    "options" : {
-      "limit" : "10",
-      "display_more_link" : 0,
-      "more_limit" : "10",
-      "min_count" : "1",
-      "sort" : "count",
-      "missing" : 0,
-      "show_active" : 1,
-      "default_true" : true,
-      "ids_list" : [],
-      "type" : "",
-      "field_name" : "Theme",
-      "entity_type" : "node"
-    },
-    "rdf_mapping" : []
-  }');
-  
-  // configure facet blocks
-  require_once(drupal_get_path('module', 'mica_dataschemas') . '/includes/blocks.inc');
-  _mica_dataschemas_configure_facet_blocks();  
-  
   return $items;
 }
 

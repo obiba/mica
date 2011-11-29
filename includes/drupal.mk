@@ -11,6 +11,7 @@ calendar_version=7.x-3.0-alpha1
 chain_menu_access_version=7.x-1.0-beta2
 ckeditor_version=7.x-1.6
 content_access_version=7.x-1.2-beta1
+collapsiblock_version=7.x-1.0
 ctools_version=7.x-1.0-rc1
 date_version=7.x-2.0-alpha4
 drupal_version=7.9
@@ -113,6 +114,7 @@ drupal-download:
 		name-$(name_version) \
 		namedb-$(namedb_version) \
 		noderefcreate-$(noderefcreate_version) \
+		collapsiblock-$(collapsiblock_version) \
 		panels-$(panels_version) \
 		pathauto-$(pathauto_version) \
 		relation-$(relation_version) \
