@@ -37,29 +37,14 @@ function mica_dataschemas_views_default_views() {
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
-    'title' => 'title',
-    'field_module_title' => 'field_module_title',
-    'field_domain_title' => 'field_domain_title',
-    'field_theme_title' => 'field_theme_title',
+    'title' => 'title'
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
     'title' => array(
       'align' => '',
       'separator' => '',
-    ),
-    'field_module_title' => array(
-      'align' => '',
-      'separator' => '',
-    ),
-    'field_domain_title' => array(
-      'align' => '',
-      'separator' => '',
-    ),
-    'field_theme_title' => array(
-      'align' => '',
-      'separator' => '',
-    ),
+    )
   );
   $handler->display->display_options['style_options']['override'] = 1;
   $handler->display->display_options['style_options']['sticky'] = 0;
@@ -146,9 +131,6 @@ function mica_dataschemas_views_default_views() {
     'field_dim_target:name' => 'field_dim_target:name',
     'field_dim_target_gender:name' => 'field_dim_target_gender:name',
     'field_dim_type:name' => 'field_dim_type:name',
-    'field_domain:title' => 'field_domain:title',
-    'field_module:title' => 'field_module:title',
-    'field_theme:title' => 'field_theme:title',
     'field_variable_categories:title' => 'field_variable_categories:title',
   );
   /* Filter criterion: Node: Content type */

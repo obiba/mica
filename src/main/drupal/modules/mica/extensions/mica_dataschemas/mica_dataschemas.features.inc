@@ -104,6 +104,27 @@ function mica_dataschemas_default_search_api_facet() {
     },
     "rdf_mapping" : []
   }');
+  $items['dataschema_variables_field_di_10'] = entity_import('search_api_facet', '{
+    "delta" : "dataschema_variables_field_di_10",
+    "index_id" : "dataschema_variables_index",
+    "field" : "field_dim_socioeco",
+    "name" : "Socioeconomic characteristics facet",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "",
+      "field_name" : "Socioeconomic characteristics"
+    },
+    "rdf_mapping" : []
+  }');
   $items['dataschema_variables_field_dim_1'] = entity_import('search_api_facet', '{
     "delta" : "dataschema_variables_field_dim_1",
     "index_id" : "dataschema_variables_index",
@@ -192,6 +213,132 @@ function mica_dataschemas_default_search_api_facet() {
     },
     "rdf_mapping" : []
   }');
+  $items['dataschema_variables_field_dim_5'] = entity_import('search_api_facet', '{
+    "delta" : "dataschema_variables_field_dim_5",
+    "index_id" : "dataschema_variables_index",
+    "field" : "field_dim_body_structure",
+    "name" : "Body structure facet",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "",
+      "field_name" : "Body structure"
+    },
+    "rdf_mapping" : []
+  }');
+  $items['dataschema_variables_field_dim_6'] = entity_import('search_api_facet', '{
+    "delta" : "dataschema_variables_field_dim_6",
+    "index_id" : "dataschema_variables_index",
+    "field" : "field_dim_disease_history",
+    "name" : "Disease history (ICD10) facet",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "",
+      "field_name" : "Disease history (ICD10)"
+    },
+    "rdf_mapping" : []
+  }');
+  $items['dataschema_variables_field_dim_7'] = entity_import('search_api_facet', '{
+    "delta" : "dataschema_variables_field_dim_7",
+    "index_id" : "dataschema_variables_index",
+    "field" : "field_dim_physical_env",
+    "name" : "Physical environment facet",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "",
+      "field_name" : "Physical environment"
+    },
+    "rdf_mapping" : []
+  }');
+  $items['dataschema_variables_field_dim_8'] = entity_import('search_api_facet', '{
+    "delta" : "dataschema_variables_field_dim_8",
+    "index_id" : "dataschema_variables_index",
+    "field" : "field_dim_social_env",
+    "name" : "Social environment facet",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "",
+      "field_name" : "Social environment"
+    },
+    "rdf_mapping" : []
+  }');
+  $items['dataschema_variables_field_dim_9'] = entity_import('search_api_facet', '{
+    "delta" : "dataschema_variables_field_dim_9",
+    "index_id" : "dataschema_variables_index",
+    "field" : "field_dim_sociodemo_charact",
+    "name" : "Sociodemographic characteristics facet",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "",
+      "field_name" : "Sociodemographic characteristics"
+    },
+    "rdf_mapping" : []
+  }');
+  $items['dataschema_variables_field_dim_b'] = entity_import('search_api_facet', '{
+    "delta" : "dataschema_variables_field_dim_b",
+    "index_id" : "dataschema_variables_index",
+    "field" : "field_dim_body_functions",
+    "name" : "Body functions facet",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "",
+      "field_name" : "Body functions"
+    },
+    "rdf_mapping" : []
+  }');
   $items['dataschema_variables_field_dim_c'] = entity_import('search_api_facet', '{
     "delta" : "dataschema_variables_field_dim_c",
     "index_id" : "dataschema_variables_index",
@@ -255,6 +402,48 @@ function mica_dataschemas_default_search_api_facet() {
       "type" : "",
       "field_name" : "Format",
       "entity_type" : "taxonomy_term"
+    },
+    "rdf_mapping" : []
+  }');
+  $items['dataschema_variables_field_dim_h'] = entity_import('search_api_facet', '{
+    "delta" : "dataschema_variables_field_dim_h",
+    "index_id" : "dataschema_variables_index",
+    "field" : "field_dim_health_information",
+    "name" : "Health information facet",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "",
+      "field_name" : "Health information"
+    },
+    "rdf_mapping" : []
+  }');
+  $items['dataschema_variables_field_dim_l'] = entity_import('search_api_facet', '{
+    "delta" : "dataschema_variables_field_dim_l",
+    "index_id" : "dataschema_variables_index",
+    "field" : "field_dim_life_habits_behaviours",
+    "name" : "Life habits \\/ Behaviours facet",
+    "enabled" : "1",
+    "options" : {
+      "limit" : 10,
+      "display_more_link" : false,
+      "more_limit" : 10,
+      "min_count" : 1,
+      "sort" : "count",
+      "missing" : false,
+      "show_active" : true,
+      "default_true" : true,
+      "ids_list" : [],
+      "type" : "",
+      "field_name" : "Life habits \\/ Behaviours"
     },
     "rdf_mapping" : []
   }');
@@ -478,25 +667,6 @@ function mica_dataschemas_default_search_api_index() {
         },
         "field_is_missing" : { "name" : "Missing", "indexed" : 0, "type" : "boolean", "boost" : "1.0" },
         "field_name" : { "name" : "Name", "indexed" : 0, "type" : "text", "boost" : "1.0" },
-        "field_associations" : {
-          "name" : "Associations",
-          "indexed" : 0,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_scientific_references" : {
-          "name" : "Scientific References",
-          "indexed" : 0,
-          "type" : "list\\u003ctext\\u003e",
-          "boost" : "1.0"
-        },
-        "field_uri" : { "name" : "URI", "indexed" : 1, "type" : "uri", "boost" : "1.0" },
-        "field_variables_justification" : {
-          "name" : "Variables Justification",
-          "indexed" : 0,
-          "type" : "text",
-          "boost" : "1.0"
-        },
         "field_computation_variables" : {
           "name" : "Computation Source Variables",
           "indexed" : 0,
@@ -595,13 +765,6 @@ function mica_dataschemas_default_search_api_index() {
           "entity_type" : "taxonomy_term",
           "boost" : "1.0"
         },
-        "field_domain" : {
-          "name" : "Domain",
-          "indexed" : 1,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
         "field_interpretation_variables" : {
           "name" : "Interpretation Variables",
           "indexed" : 0,
@@ -609,26 +772,76 @@ function mica_dataschemas_default_search_api_index() {
           "entity_type" : "node",
           "boost" : "1.0"
         },
-        "field_module" : {
-          "name" : "Module",
-          "indexed" : 1,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_theme" : {
-          "name" : "Theme",
-          "indexed" : 1,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
         "field_unit" : { "name" : "Unit", "indexed" : 1, "type" : "text", "boost" : "1.0" },
+        "field_uri" : { "name" : "URI", "indexed" : 1, "type" : "uri", "boost" : "1.0" },
         "field_variable_categories" : {
           "name" : "Categories",
           "indexed" : 1,
           "type" : "list\\u003cinteger\\u003e",
           "entity_type" : "node",
+          "boost" : "1.0"
+        },
+        "field_dim_body_functions" : {
+          "name" : "Body functions",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_body_structure" : {
+          "name" : "Body structure",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_disease_history" : {
+          "name" : "Disease history (ICD10)",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_health_information" : {
+          "name" : "Health information",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_life_habits_behaviours" : {
+          "name" : "Life habits \\/ Behaviours",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_physical_env" : {
+          "name" : "Physical environment",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_social_env" : {
+          "name" : "Social environment",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_sociodemo_charact" : {
+          "name" : "Sociodemographic characteristics",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_socioeco" : {
+          "name" : "Socioeconomic characteristics",
+          "indexed" : 1,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_term",
           "boost" : "1.0"
         },
         "field_match" : { "name" : "Match", "indexed" : 0, "type" : "string", "boost" : "1.0" },
@@ -1625,372 +1838,6 @@ function mica_dataschemas_default_search_api_index() {
           "entity_type" : "taxonomy_term",
           "boost" : "1.0"
         },
-        "field_domain:nid" : {
-          "name" : "Domain \\u00bb Node ID",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:vid" : {
-          "name" : "Domain \\u00bb Revision ID",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:is_new" : {
-          "name" : "Domain \\u00bb Is new",
-          "indexed" : 0,
-          "type" : "list\\u003cboolean\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:type" : {
-          "name" : "Domain \\u00bb Content type",
-          "indexed" : 0,
-          "type" : "list\\u003cstring\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:title" : {
-          "name" : "Domain \\u00bb Title",
-          "indexed" : 1,
-          "type" : "list\\u003ctext\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:language" : {
-          "name" : "Domain \\u00bb Language",
-          "indexed" : 0,
-          "type" : "list\\u003ctext\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:url" : {
-          "name" : "Domain \\u00bb URL",
-          "indexed" : 0,
-          "type" : "list\\u003curi\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:edit_url" : {
-          "name" : "Domain \\u00bb Edit URL",
-          "indexed" : 0,
-          "type" : "list\\u003curi\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:status" : {
-          "name" : "Domain \\u00bb Published",
-          "indexed" : 0,
-          "type" : "list\\u003cboolean\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:promote" : {
-          "name" : "Domain \\u00bb Promoted to frontpage",
-          "indexed" : 0,
-          "type" : "list\\u003cboolean\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:sticky" : {
-          "name" : "Domain \\u00bb Sticky in lists",
-          "indexed" : 0,
-          "type" : "list\\u003cboolean\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:created" : {
-          "name" : "Domain \\u00bb Date created",
-          "indexed" : 0,
-          "type" : "list\\u003cdate\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:changed" : {
-          "name" : "Domain \\u00bb Date changed",
-          "indexed" : 0,
-          "type" : "list\\u003cdate\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:author" : {
-          "name" : "Domain \\u00bb Author",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "user",
-          "boost" : "1.0"
-        },
-        "field_domain:source" : {
-          "name" : "Domain \\u00bb Translation source node",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_domain:log" : {
-          "name" : "Domain \\u00bb Revision log message",
-          "indexed" : 0,
-          "type" : "list\\u003ctext\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:revision" : {
-          "name" : "Domain \\u00bb Creates revision",
-          "indexed" : 0,
-          "type" : "list\\u003cboolean\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:comment" : {
-          "name" : "Domain \\u00bb Comments allowed",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:comment_count" : {
-          "name" : "Domain \\u00bb Comment count",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        },
-        "field_domain:comment_count_new" : {
-          "name" : "Domain \\u00bb New comment count",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:nid" : {
-          "name" : "Module \\u00bb Node ID",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:vid" : {
-          "name" : "Module \\u00bb Revision ID",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:is_new" : {
-          "name" : "Module \\u00bb Is new",
-          "indexed" : 0,
-          "type" : "list\\u003cboolean\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:type" : {
-          "name" : "Module \\u00bb Content type",
-          "indexed" : 0,
-          "type" : "list\\u003cstring\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:title" : {
-          "name" : "Module \\u00bb Title",
-          "indexed" : 1,
-          "type" : "list\\u003ctext\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:language" : {
-          "name" : "Module \\u00bb Language",
-          "indexed" : 0,
-          "type" : "list\\u003ctext\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:url" : {
-          "name" : "Module \\u00bb URL",
-          "indexed" : 0,
-          "type" : "list\\u003curi\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:edit_url" : {
-          "name" : "Module \\u00bb Edit URL",
-          "indexed" : 0,
-          "type" : "list\\u003curi\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:status" : {
-          "name" : "Module \\u00bb Published",
-          "indexed" : 0,
-          "type" : "list\\u003cboolean\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:promote" : {
-          "name" : "Module \\u00bb Promoted to frontpage",
-          "indexed" : 0,
-          "type" : "list\\u003cboolean\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:sticky" : {
-          "name" : "Module \\u00bb Sticky in lists",
-          "indexed" : 0,
-          "type" : "list\\u003cboolean\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:created" : {
-          "name" : "Module \\u00bb Date created",
-          "indexed" : 0,
-          "type" : "list\\u003cdate\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:changed" : {
-          "name" : "Module \\u00bb Date changed",
-          "indexed" : 0,
-          "type" : "list\\u003cdate\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:author" : {
-          "name" : "Module \\u00bb Author",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "user",
-          "boost" : "1.0"
-        },
-        "field_module:source" : {
-          "name" : "Module \\u00bb Translation source node",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_module:log" : {
-          "name" : "Module \\u00bb Revision log message",
-          "indexed" : 0,
-          "type" : "list\\u003ctext\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:revision" : {
-          "name" : "Module \\u00bb Creates revision",
-          "indexed" : 0,
-          "type" : "list\\u003cboolean\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:comment" : {
-          "name" : "Module \\u00bb Comments allowed",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:comment_count" : {
-          "name" : "Module \\u00bb Comment count",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        },
-        "field_module:comment_count_new" : {
-          "name" : "Module \\u00bb New comment count",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:nid" : {
-          "name" : "Theme \\u00bb Node ID",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:vid" : {
-          "name" : "Theme \\u00bb Revision ID",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:is_new" : {
-          "name" : "Theme \\u00bb Is new",
-          "indexed" : 0,
-          "type" : "list\\u003cboolean\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:type" : {
-          "name" : "Theme \\u00bb Content type",
-          "indexed" : 0,
-          "type" : "list\\u003cstring\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:title" : {
-          "name" : "Theme \\u00bb Title",
-          "indexed" : 1,
-          "type" : "list\\u003ctext\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:language" : {
-          "name" : "Theme \\u00bb Language",
-          "indexed" : 0,
-          "type" : "list\\u003ctext\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:url" : {
-          "name" : "Theme \\u00bb URL",
-          "indexed" : 0,
-          "type" : "list\\u003curi\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:edit_url" : {
-          "name" : "Theme \\u00bb Edit URL",
-          "indexed" : 0,
-          "type" : "list\\u003curi\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:status" : {
-          "name" : "Theme \\u00bb Published",
-          "indexed" : 0,
-          "type" : "list\\u003cboolean\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:promote" : {
-          "name" : "Theme \\u00bb Promoted to frontpage",
-          "indexed" : 0,
-          "type" : "list\\u003cboolean\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:sticky" : {
-          "name" : "Theme \\u00bb Sticky in lists",
-          "indexed" : 0,
-          "type" : "list\\u003cboolean\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:created" : {
-          "name" : "Theme \\u00bb Date created",
-          "indexed" : 0,
-          "type" : "list\\u003cdate\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:changed" : {
-          "name" : "Theme \\u00bb Date changed",
-          "indexed" : 0,
-          "type" : "list\\u003cdate\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:author" : {
-          "name" : "Theme \\u00bb Author",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "user",
-          "boost" : "1.0"
-        },
-        "field_theme:source" : {
-          "name" : "Theme \\u00bb Translation source node",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "entity_type" : "node",
-          "boost" : "1.0"
-        },
-        "field_theme:log" : {
-          "name" : "Theme \\u00bb Revision log message",
-          "indexed" : 0,
-          "type" : "list\\u003ctext\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:revision" : {
-          "name" : "Theme \\u00bb Creates revision",
-          "indexed" : 0,
-          "type" : "list\\u003cboolean\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:comment" : {
-          "name" : "Theme \\u00bb Comments allowed",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:comment_count" : {
-          "name" : "Theme \\u00bb Comment count",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        },
-        "field_theme:comment_count_new" : {
-          "name" : "Theme \\u00bb New comment count",
-          "indexed" : 0,
-          "type" : "list\\u003cinteger\\u003e",
-          "boost" : "1.0"
-        },
         "field_variable_categories:nid" : {
           "name" : "Categories \\u00bb Node ID",
           "indexed" : 0,
@@ -2113,6 +1960,456 @@ function mica_dataschemas_default_search_api_index() {
           "type" : "list\\u003cinteger\\u003e",
           "boost" : "1.0"
         },
+        "field_dim_body_functions:tid" : {
+          "name" : "Body functions \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_body_functions:name" : {
+          "name" : "Body functions \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_body_functions:description" : {
+          "name" : "Body functions \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_body_functions:weight" : {
+          "name" : "Body functions \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_body_functions:node_count" : {
+          "name" : "Body functions \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_body_functions:url" : {
+          "name" : "Body functions \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_body_functions:vocabulary" : {
+          "name" : "Body functions \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_body_functions:parent" : {
+          "name" : "Body functions \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_body_structure:tid" : {
+          "name" : "Body structure \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_body_structure:name" : {
+          "name" : "Body structure \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_body_structure:description" : {
+          "name" : "Body structure \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_body_structure:weight" : {
+          "name" : "Body structure \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_body_structure:node_count" : {
+          "name" : "Body structure \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_body_structure:url" : {
+          "name" : "Body structure \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_body_structure:vocabulary" : {
+          "name" : "Body structure \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_body_structure:parent" : {
+          "name" : "Body structure \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_disease_history:tid" : {
+          "name" : "Disease history (ICD10) \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_disease_history:name" : {
+          "name" : "Disease history (ICD10) \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_disease_history:description" : {
+          "name" : "Disease history (ICD10) \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_disease_history:weight" : {
+          "name" : "Disease history (ICD10) \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_disease_history:node_count" : {
+          "name" : "Disease history (ICD10) \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_disease_history:url" : {
+          "name" : "Disease history (ICD10) \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_disease_history:vocabulary" : {
+          "name" : "Disease history (ICD10) \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_disease_history:parent" : {
+          "name" : "Disease history (ICD10) \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_health_information:tid" : {
+          "name" : "Health information \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_health_information:name" : {
+          "name" : "Health information \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_health_information:description" : {
+          "name" : "Health information \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_health_information:weight" : {
+          "name" : "Health information \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_health_information:node_count" : {
+          "name" : "Health information \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_health_information:url" : {
+          "name" : "Health information \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_health_information:vocabulary" : {
+          "name" : "Health information \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_health_information:parent" : {
+          "name" : "Health information \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_life_habits_behaviours:tid" : {
+          "name" : "Life habits \\/ Behaviours \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_life_habits_behaviours:name" : {
+          "name" : "Life habits \\/ Behaviours \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_life_habits_behaviours:description" : {
+          "name" : "Life habits \\/ Behaviours \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_life_habits_behaviours:weight" : {
+          "name" : "Life habits \\/ Behaviours \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_life_habits_behaviours:node_count" : {
+          "name" : "Life habits \\/ Behaviours \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_life_habits_behaviours:url" : {
+          "name" : "Life habits \\/ Behaviours \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_life_habits_behaviours:vocabulary" : {
+          "name" : "Life habits \\/ Behaviours \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_life_habits_behaviours:parent" : {
+          "name" : "Life habits \\/ Behaviours \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_physical_env:tid" : {
+          "name" : "Physical environment \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_physical_env:name" : {
+          "name" : "Physical environment \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_physical_env:description" : {
+          "name" : "Physical environment \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_physical_env:weight" : {
+          "name" : "Physical environment \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_physical_env:node_count" : {
+          "name" : "Physical environment \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_physical_env:url" : {
+          "name" : "Physical environment \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_physical_env:vocabulary" : {
+          "name" : "Physical environment \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_physical_env:parent" : {
+          "name" : "Physical environment \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_social_env:tid" : {
+          "name" : "Social environment \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_social_env:name" : {
+          "name" : "Social environment \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_social_env:description" : {
+          "name" : "Social environment \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_social_env:weight" : {
+          "name" : "Social environment \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_social_env:node_count" : {
+          "name" : "Social environment \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_social_env:url" : {
+          "name" : "Social environment \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_social_env:vocabulary" : {
+          "name" : "Social environment \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_social_env:parent" : {
+          "name" : "Social environment \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_sociodemo_charact:tid" : {
+          "name" : "Sociodemographic characteristics \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_sociodemo_charact:name" : {
+          "name" : "Sociodemographic characteristics \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_sociodemo_charact:description" : {
+          "name" : "Sociodemographic characteristics \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_sociodemo_charact:weight" : {
+          "name" : "Sociodemographic characteristics \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_sociodemo_charact:node_count" : {
+          "name" : "Sociodemographic characteristics \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_sociodemo_charact:url" : {
+          "name" : "Sociodemographic characteristics \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_sociodemo_charact:vocabulary" : {
+          "name" : "Sociodemographic characteristics \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_sociodemo_charact:parent" : {
+          "name" : "Sociodemographic characteristics \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
+        "field_dim_socioeco:tid" : {
+          "name" : "Socioeconomic characteristics \\u00bb Term ID",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_socioeco:name" : {
+          "name" : "Socioeconomic characteristics \\u00bb Name",
+          "indexed" : 1,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_socioeco:description" : {
+          "name" : "Socioeconomic characteristics \\u00bb Description",
+          "indexed" : 0,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_socioeco:weight" : {
+          "name" : "Socioeconomic characteristics \\u00bb Weight",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_socioeco:node_count" : {
+          "name" : "Socioeconomic characteristics \\u00bb Node count",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_socioeco:url" : {
+          "name" : "Socioeconomic characteristics \\u00bb URL",
+          "indexed" : 0,
+          "type" : "list\\u003curi\\u003e",
+          "boost" : "1.0"
+        },
+        "field_dim_socioeco:vocabulary" : {
+          "name" : "Socioeconomic characteristics \\u00bb Vocabulary",
+          "indexed" : 0,
+          "type" : "list\\u003cinteger\\u003e",
+          "entity_type" : "taxonomy_vocabulary",
+          "boost" : "1.0"
+        },
+        "field_dim_socioeco:parent" : {
+          "name" : "Socioeconomic characteristics \\u00bb Parent terms",
+          "indexed" : 0,
+          "type" : "list\\u003clist\\u003cinteger\\u003e\\u003e",
+          "entity_type" : "taxonomy_term",
+          "boost" : "1.0"
+        },
         "field_variable_categories:body:value" : {
           "name" : "Categories \\u00bb The main body text \\u00bb Text",
           "indexed" : 0,
@@ -2158,18 +2455,46 @@ function mica_dataschemas_default_search_api_index() {
               "field_dim_target" : "field_dim_target",
               "field_dim_target_gender" : "field_dim_target_gender",
               "field_dim_type" : "field_dim_type",
+              "field_dim_body_functions" : "field_dim_body_functions",
+              "field_dim_body_structure" : "field_dim_body_structure",
+              "field_dim_disease_history" : "field_dim_disease_history",
+              "field_dim_health_information" : "field_dim_health_information",
+              "field_dim_life_habits_behaviours" : "field_dim_life_habits_behaviours",
+              "field_dim_physical_env" : "field_dim_physical_env",
+              "field_dim_social_env" : "field_dim_social_env",
+              "field_dim_sociodemo_charact" : "field_dim_sociodemo_charact",
+              "field_dim_socioeco" : "field_dim_socioeco",
               "search_api_language" : 0,
               "type" : 0,
               "title" : 0,
-              "field_uri" : 0,
               "field_dataschema_ref" : 0,
-              "field_domain" : 0,
-              "field_module" : 0,
-              "field_theme" : 0,
               "field_unit" : 0,
+              "field_uri" : 0,
               "field_variable_categories" : 0,
               "body:value" : 0,
-              "body:summary" : 0
+              "body:summary" : 0,
+              "field_dataschema_ref:title" : 0,
+              "field_dim_class:name" : 0,
+              "field_dim_collection_mode:name" : 0,
+              "field_dim_disease:name" : 0,
+              "field_dim_format:name" : 0,
+              "field_dim_med_health_interv:name" : 0,
+              "field_dim_period:name" : 0,
+              "field_dim_sample:name" : 0,
+              "field_dim_source_of_info:name" : 0,
+              "field_dim_target:name" : 0,
+              "field_dim_target_gender:name" : 0,
+              "field_dim_type:name" : 0,
+              "field_variable_categories:title" : 0,
+              "field_dim_body_functions:name" : 0,
+              "field_dim_body_structure:name" : 0,
+              "field_dim_disease_history:name" : 0,
+              "field_dim_health_information:name" : 0,
+              "field_dim_life_habits_behaviours:name" : 0,
+              "field_dim_physical_env:name" : 0,
+              "field_dim_social_env:name" : 0,
+              "field_dim_sociodemo_charact:name" : 0,
+              "field_dim_socioeco:name" : 0
             }
           }
         },
@@ -2190,13 +2515,41 @@ function mica_dataschemas_default_search_api_index() {
               "field_dim_target" : "field_dim_target",
               "field_dim_target_gender" : "field_dim_target_gender",
               "field_dim_type" : "field_dim_type",
-              "field_domain" : "field_domain",
-              "field_module" : "field_module",
-              "field_theme" : "field_theme",
               "field_unit" : "field_unit",
               "field_variable_categories" : "field_variable_categories",
+              "field_dim_body_functions" : "field_dim_body_functions",
+              "field_dim_body_structure" : "field_dim_body_structure",
+              "field_dim_disease_history" : "field_dim_disease_history",
+              "field_dim_health_information" : "field_dim_health_information",
+              "field_dim_life_habits_behaviours" : "field_dim_life_habits_behaviours",
+              "field_dim_physical_env" : "field_dim_physical_env",
+              "field_dim_social_env" : "field_dim_social_env",
+              "field_dim_sociodemo_charact" : "field_dim_sociodemo_charact",
+              "field_dim_socioeco" : "field_dim_socioeco",
               "body:value" : "body:value",
               "body:summary" : "body:summary",
+              "field_dataschema_ref:title" : "field_dataschema_ref:title",
+              "field_dim_class:name" : "field_dim_class:name",
+              "field_dim_collection_mode:name" : "field_dim_collection_mode:name",
+              "field_dim_disease:name" : "field_dim_disease:name",
+              "field_dim_format:name" : "field_dim_format:name",
+              "field_dim_med_health_interv:name" : "field_dim_med_health_interv:name",
+              "field_dim_period:name" : "field_dim_period:name",
+              "field_dim_sample:name" : "field_dim_sample:name",
+              "field_dim_source_of_info:name" : "field_dim_source_of_info:name",
+              "field_dim_target:name" : "field_dim_target:name",
+              "field_dim_target_gender:name" : "field_dim_target_gender:name",
+              "field_dim_type:name" : "field_dim_type:name",
+              "field_variable_categories:title" : "field_variable_categories:title",
+              "field_dim_body_functions:name" : "field_dim_body_functions:name",
+              "field_dim_body_structure:name" : "field_dim_body_structure:name",
+              "field_dim_disease_history:name" : "field_dim_disease_history:name",
+              "field_dim_health_information:name" : "field_dim_health_information:name",
+              "field_dim_life_habits_behaviours:name" : "field_dim_life_habits_behaviours:name",
+              "field_dim_physical_env:name" : "field_dim_physical_env:name",
+              "field_dim_social_env:name" : "field_dim_social_env:name",
+              "field_dim_sociodemo_charact:name" : "field_dim_sociodemo_charact:name",
+              "field_dim_socioeco:name" : "field_dim_socioeco:name",
               "search_api_language" : 0,
               "type" : 0,
               "field_uri" : 0
@@ -2213,7 +2566,6 @@ function mica_dataschemas_default_search_api_index() {
               "body:value" : "body:value",
               "search_api_language" : 0,
               "type" : 0,
-              "field_uri" : 0,
               "field_dataschema_ref" : 0,
               "field_dim_class" : 0,
               "field_dim_collection_mode" : 0,
@@ -2226,11 +2578,40 @@ function mica_dataschemas_default_search_api_index() {
               "field_dim_target" : 0,
               "field_dim_target_gender" : 0,
               "field_dim_type" : 0,
-              "field_domain" : 0,
-              "field_module" : 0,
-              "field_theme" : 0,
+              "field_uri" : 0,
               "field_variable_categories" : 0,
-              "body:summary" : 0
+              "field_dim_body_functions" : 0,
+              "field_dim_body_structure" : 0,
+              "field_dim_disease_history" : 0,
+              "field_dim_health_information" : 0,
+              "field_dim_life_habits_behaviours" : 0,
+              "field_dim_physical_env" : 0,
+              "field_dim_social_env" : 0,
+              "field_dim_sociodemo_charact" : 0,
+              "field_dim_socioeco" : 0,
+              "body:summary" : 0,
+              "field_dataschema_ref:title" : 0,
+              "field_dim_class:name" : 0,
+              "field_dim_collection_mode:name" : 0,
+              "field_dim_disease:name" : 0,
+              "field_dim_format:name" : 0,
+              "field_dim_med_health_interv:name" : 0,
+              "field_dim_period:name" : 0,
+              "field_dim_sample:name" : 0,
+              "field_dim_source_of_info:name" : 0,
+              "field_dim_target:name" : 0,
+              "field_dim_target_gender:name" : 0,
+              "field_dim_type:name" : 0,
+              "field_variable_categories:title" : 0,
+              "field_dim_body_functions:name" : 0,
+              "field_dim_body_structure:name" : 0,
+              "field_dim_disease_history:name" : 0,
+              "field_dim_health_information:name" : 0,
+              "field_dim_life_habits_behaviours:name" : 0,
+              "field_dim_physical_env:name" : 0,
+              "field_dim_social_env:name" : 0,
+              "field_dim_sociodemo_charact:name" : 0,
+              "field_dim_socioeco:name" : 0
             },
             "title" : 0,
             "alt" : 1,
@@ -2247,7 +2628,6 @@ function mica_dataschemas_default_search_api_index() {
               "body:value" : "body:value",
               "search_api_language" : 0,
               "type" : 0,
-              "field_uri" : 0,
               "field_dataschema_ref" : 0,
               "field_dim_class" : 0,
               "field_dim_collection_mode" : 0,
@@ -2260,11 +2640,40 @@ function mica_dataschemas_default_search_api_index() {
               "field_dim_target" : 0,
               "field_dim_target_gender" : 0,
               "field_dim_type" : 0,
-              "field_domain" : 0,
-              "field_module" : 0,
-              "field_theme" : 0,
+              "field_uri" : 0,
               "field_variable_categories" : 0,
-              "body:summary" : 0
+              "field_dim_body_functions" : 0,
+              "field_dim_body_structure" : 0,
+              "field_dim_disease_history" : 0,
+              "field_dim_health_information" : 0,
+              "field_dim_life_habits_behaviours" : 0,
+              "field_dim_physical_env" : 0,
+              "field_dim_social_env" : 0,
+              "field_dim_sociodemo_charact" : 0,
+              "field_dim_socioeco" : 0,
+              "body:summary" : 0,
+              "field_dataschema_ref:title" : 0,
+              "field_dim_class:name" : 0,
+              "field_dim_collection_mode:name" : 0,
+              "field_dim_disease:name" : 0,
+              "field_dim_format:name" : 0,
+              "field_dim_med_health_interv:name" : 0,
+              "field_dim_period:name" : 0,
+              "field_dim_sample:name" : 0,
+              "field_dim_source_of_info:name" : 0,
+              "field_dim_target:name" : 0,
+              "field_dim_target_gender:name" : 0,
+              "field_dim_type:name" : 0,
+              "field_variable_categories:title" : 0,
+              "field_dim_body_functions:name" : 0,
+              "field_dim_body_structure:name" : 0,
+              "field_dim_disease_history:name" : 0,
+              "field_dim_health_information:name" : 0,
+              "field_dim_life_habits_behaviours:name" : 0,
+              "field_dim_physical_env:name" : 0,
+              "field_dim_social_env:name" : 0,
+              "field_dim_sociodemo_charact:name" : 0,
+              "field_dim_socioeco:name" : 0
             },
             "spaces" : "[^\\\\p{L}\\\\p{N}^\']",
             "ignorable" : "[-]"

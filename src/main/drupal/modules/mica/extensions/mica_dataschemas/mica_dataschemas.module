@@ -32,7 +32,6 @@ function mica_dataschemas_insert(&$node) {
   }
 }
 
-
 /**
 * Implements hook_menu_local_tasks_alter().
 */
@@ -47,7 +46,7 @@ function mica_dataschemas_menu_local_tasks_alter(&$data, $router_item, $root_pat
     		$filter_field = 'field_dataschema_ref';
 		}
 		
-		// Add link if DataSchema, Module, Theme or Domain
+		// Add link if DataSchema
 		if (isset($name)){
     		$href = url('dataschema-variables') .'&filter['.$filter_field.'][0]="' . $router_item['page_arguments'][0]->nid . '"';
     		$links['view-dataschema-variables'] = array(
@@ -90,6 +89,8 @@ function mica_dataschemas_menu_local_tasks_alter(&$data, $router_item, $root_pat
 	}*/
 }
 
+
+
 /**
 * Implements hook_search_api_processor_info().
 */
@@ -111,18 +112,18 @@ function mica_dataschemas_entity_info_alter(&$entity_info) {
     'custom settings' => TRUE,
   );
   $entity_info['node']['view modes']['custom_dimensions'] = array(
-      'label' => t('Custom Page Dimension'),
-      'custom settings' => TRUE,
+    'label' => t('Custom Page Dimension'),
+    'custom settings' => TRUE,
   );
   $entity_info['node']['view modes']['custom_variable'] = array(
-        'label' => t('Custom Page Variable'),
-        'custom settings' => TRUE,
+    'label' => t('Custom Page Variable'),
+    'custom settings' => TRUE,
   );
 }
 
 function mica_dataschemas_entity_view($entity, $type, $view_mode, $langcode){
   if ($entity->type === 'dataschema'){
-    $entity->title = t('DataSchema: ') . $entity->title;
+    $entity->title = 'DataSchema: ' . $entity->title;
   }
 }
 
@@ -135,7 +136,7 @@ function _mica_dataschemas_import_taxonomies() {
   _mica_dataschemas_import_taxonomy('disease.csv', 'Disease');
   _mica_dataschemas_import_taxonomy('format.csv', 'Format');
   _mica_dataschemas_import_taxonomy('health_information.csv', 'Health information');
-  _mica_dataschemas_import_taxonomy('life_habits_behaviours.csv', 'Life habits - Behaviours');
+  _mica_dataschemas_import_taxonomy('life_habits_behaviours.csv', 'Life habits \\/ Behaviours');
   _mica_dataschemas_import_taxonomy('medical_health_intervention.csv', 'Medical health intervention (C239)');
   _mica_dataschemas_import_taxonomy('period.csv', 'Period');
   _mica_dataschemas_import_taxonomy('physical_environment.csv', 'Physical environment');

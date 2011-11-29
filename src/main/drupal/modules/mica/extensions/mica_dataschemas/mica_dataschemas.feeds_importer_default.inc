@@ -217,71 +217,56 @@ function mica_dataschemas_feeds_importer_default() {
             'unique' => FALSE,
           ),
           11 => array(
-            'source' => 'field_module',
-            'target' => 'field_module:title',
-            'unique' => FALSE,
-          ),
-          12 => array(
-            'source' => 'field_theme',
-            'target' => 'field_theme:title',
-            'unique' => FALSE,
-          ),
-          13 => array(
-            'source' => 'field_domain',
-            'target' => 'field_domain:title',
-            'unique' => FALSE,
-          ),
-          14 => array(
             'source' => 'field_interpretation_variables',
             'target' => 'field_interpretation_variables:title',
             'unique' => FALSE,
           ),
-          15 => array(
+          12 => array(
             'source' => 'field_computation_variables',
             'target' => 'field_computation_variables:title',
             'unique' => FALSE,
           ),
-          16 => array(
+          13 => array(
             'source' => 'field_contraindication_variables',
             'target' => 'field_contraindication_variables:title',
             'unique' => FALSE,
           ),
-          17 => array(
+          14 => array(
             'source' => 'field_variable_categories',
             'target' => 'field_variable_categories:title',
             'unique' => FALSE,
           ),
-          18 => array(
+          15 => array(
             'source' => 'title',
             'target' => 'guid',
             'unique' => 1,
           ),
-          19 => array(
+          16 => array(
             'source' => 'field_dim_disease',
             'target' => 'field_dim_disease',
             'unique' => FALSE,
           ),
-          20 => array(
+          17 => array(
             'source' => 'field_dim_class',
             'target' => 'field_dim_class',
             'unique' => FALSE,
           ),
-          21 => array(
+          18 => array(
             'source' => 'field_dim_med_health_interv',
             'target' => 'field_dim_med_health_interv',
             'unique' => FALSE,
           ),
-          22 => array(
+          19 => array(
             'source' => 'field_dim_period',
             'target' => 'field_dim_period',
             'unique' => FALSE,
           ),
-          23 => array(
+          20 => array(
             'source' => 'field_dim_source_of_info',
             'target' => 'field_dim_source_of_info',
             'unique' => FALSE,
           ),
-          24 => array(
+          21 => array(
             'source' => 'field_dim_target',
             'target' => 'field_dim_target',
             'unique' => FALSE,

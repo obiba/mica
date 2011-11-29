@@ -4,9 +4,6 @@ function _mica_dataschemas_configure_facet_blocks() {
   
   $facet_order = array(
   	'Dataschema facet', 
-  	'Module facet', 
-  	'Theme facet', 
-  	'Domain facet',
     'Class facet',  
     'Type facet',  
     'Format facet',
