@@ -2377,7 +2377,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'sample58462',
+            'vocabulary' => 'sample',
           ),
         ),
         'field_description_infos' => array(
@@ -2585,7 +2585,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'sociodemographic',
+            'vocabulary' => 'sociodemographic_characteristics',
           ),
         ),
         'field_description_infos' => array(
@@ -2689,7 +2689,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'socioeconomic',
+            'vocabulary' => 'socioeconomic_characteristics',
           ),
         ),
         'field_description_infos' => array(
