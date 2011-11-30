@@ -121,7 +121,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Socioeconomic characteristics"
+      "field_name" : "Socioeconomic characteristics",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -230,7 +231,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Body structure"
+      "field_name" : "Body structure",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -251,7 +253,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Disease history (ICD10)"
+      "field_name" : "Disease history (ICD10)",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -272,7 +275,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Physical environment"
+      "field_name" : "Physical environment",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -293,7 +297,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Social environment"
+      "field_name" : "Social environment",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -314,7 +319,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Sociodemographic characteristics"
+      "field_name" : "Sociodemographic characteristics",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -335,7 +341,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Body functions"
+      "field_name" : "Body functions",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -422,7 +429,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Health information"
+      "field_name" : "Health information",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');
@@ -443,7 +451,8 @@ function mica_dataschemas_default_search_api_facet() {
       "default_true" : true,
       "ids_list" : [],
       "type" : "",
-      "field_name" : "Life habits \\/ Behaviours"
+      "field_name" : "Life habits \\/ Behaviours",
+      "entity_type" : "taxonomy_term"
     },
     "rdf_mapping" : []
   }');

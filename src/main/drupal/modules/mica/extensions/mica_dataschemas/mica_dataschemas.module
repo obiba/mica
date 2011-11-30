@@ -19,6 +19,7 @@ function mica_dataschemas_form($node, &$form_state) {
  */
 function mica_dataschemas_install() {
   _mica_dataschemas_import_taxonomies();
+  _mica_dataschemas_configure_facet_blocks();
 }
 
 /**
@@ -61,32 +62,6 @@ function mica_dataschemas_menu_local_tasks_alter(&$data, $router_item, $root_pat
     		$data['actions']['output'] = array_merge($data['actions']['output'], $links);
 		}
 	}
-	/*else if ($root_path == 'dataschema-variables'){
-	  // Export as XLS
-	  $node = node_load($router_item['page_arguments'][2]);
-	  
-	  $name = "Export to Excel";
-	  
-	  if (strpos(request_uri(), '&filter') > 0) {
-	    $filter = substr(request_uri(), strpos(request_uri(), '&filter'));  
-	  }
-	  $href = url('dataschema-variables-export') . '/' . $node->nid;
-	  
-	  if (isset($filter)) {
-	    $href .= $filter;
-	  }
-	  
-	  $links['view-dataschema-variables'] = array(
-  		'#weight' => 30,
-  		'#theme' => 'menu_local_action',
-  		'#link' => array(
-  			'title' => t('<a class="highlight" href="@url">!name</a>', array('!name' => $name, '@url' => $href)),
-  			'localized_options' => array('html' => TRUE),
-	    ),
-	  );
-	  
-	  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
-	}*/
 }
 
 
@@ -128,31 +103,36 @@ function mica_dataschemas_entity_view($entity, $type, $view_mode, $langcode){
 }
 
 function _mica_dataschemas_import_taxonomies() {
-  _mica_dataschemas_import_taxonomy('body_functions.csv', 'Body functions');
-  _mica_dataschemas_import_taxonomy('body_structures.csv', 'Body structure');
-  _mica_dataschemas_import_taxonomy('class.csv', 'Class');
-  _mica_dataschemas_import_taxonomy('collection_mode.csv', 'Collection mode');
-  _mica_dataschemas_import_taxonomy('disease_history.csv', 'Disease history (ICD10)');
-  _mica_dataschemas_import_taxonomy('disease.csv', 'Disease');
-  _mica_dataschemas_import_taxonomy('format.csv', 'Format');
-  _mica_dataschemas_import_taxonomy('health_information.csv', 'Health information');
-  _mica_dataschemas_import_taxonomy('life_habits_behaviours.csv', 'Life habits \\/ Behaviours');
-  _mica_dataschemas_import_taxonomy('medical_health_intervention.csv', 'Medical health intervention (C239)');
-  _mica_dataschemas_import_taxonomy('period.csv', 'Period');
-  _mica_dataschemas_import_taxonomy('physical_environment.csv', 'Physical environment');
-  _mica_dataschemas_import_taxonomy('sample.csv', 'Sample');
-  _mica_dataschemas_import_taxonomy('social_environment.csv', 'Social environment');
-  _mica_dataschemas_import_taxonomy('sociodemographic_characteristics.csv', 'Sociodemographic characteristics');
-  _mica_dataschemas_import_taxonomy('socioeconomic_characteristics.csv', 'Socioeconomic characteristics');
-  _mica_dataschemas_import_taxonomy('source_of_information.csv', 'Source of information');
-  _mica_dataschemas_import_taxonomy('target_gender.csv', 'Target gender');
-  _mica_dataschemas_import_taxonomy('target.csv', 'Target');
-  _mica_dataschemas_import_taxonomy('type.csv', 'Type');
+  _mica_dataschemas_import_taxonomy('body_functions.csv', 'Body functions', 'body_functions');
+  _mica_dataschemas_import_taxonomy('body_structures.csv', 'Body structure', 'body_structure');
+  _mica_dataschemas_import_taxonomy('class.csv', 'Class', 'class');
+  _mica_dataschemas_import_taxonomy('collection_mode.csv', 'Collection mode', 'collection_mode');
+  _mica_dataschemas_import_taxonomy('disease_history.csv', 'Disease history (ICD10)', 'disease_history');
+  _mica_dataschemas_import_taxonomy('disease.csv', 'Disease', 'disease');
+  _mica_dataschemas_import_taxonomy('format.csv', 'Format', 'format');
+  _mica_dataschemas_import_taxonomy('health_information.csv', 'Health information', 'health_information');
+  _mica_dataschemas_import_taxonomy('life_habits_behaviours.csv', 'Life habits \\/ Behaviours', 'life_habits_behaviours');
+  _mica_dataschemas_import_taxonomy('medical_health_intervention.csv', 'Medical health intervention (C239)', 'medical_health_information');
+  _mica_dataschemas_import_taxonomy('period.csv', 'Period', 'period');
+  _mica_dataschemas_import_taxonomy('physical_environment.csv', 'Physical environment', 'physical_environment');
+  _mica_dataschemas_import_taxonomy('sample.csv', 'Sample', 'sample');
+  _mica_dataschemas_import_taxonomy('social_environment.csv', 'Social environment', 'social_environment');
+  _mica_dataschemas_import_taxonomy('sociodemographic_characteristics.csv', 'Sociodemographic characteristics', 'sociodemographic');
+  _mica_dataschemas_import_taxonomy('socioeconomic_characteristics.csv', 'Socioeconomic characteristics', 'socioeconomic');
+  _mica_dataschemas_import_taxonomy('source_of_information.csv', 'Source of information', 'source_of_information');
+  _mica_dataschemas_import_taxonomy('target_gender.csv', 'Target gender', 'target_gender');
+  _mica_dataschemas_import_taxonomy('target.csv', 'Target', 'target');
+  _mica_dataschemas_import_taxonomy('type.csv', 'Type', 'type');
 }
 
-function _mica_dataschemas_import_taxonomy($filename, $vocabulary_name) {
+function _mica_dataschemas_import_taxonomy($filename, $vocabulary_name, $machine_name) {
   $path = drupal_get_path('module', 'mica_dataschemas') . '/taxonomies/' . $filename;
   $vocabulary = taxonomy_csv_vocabulary_create($vocabulary_name);
+
+  // we dont want autogenerated names... it breaks the mica_dataschemas.features.field.inc export features
+  $vocabulary->machine_name = $machine_name;
+  taxonomy_vocabulary_save($vocabulary);
+  
   taxonomy_csv_import(array(
     'import_format' => 'tree_structure',
     'delimiter' => ',',

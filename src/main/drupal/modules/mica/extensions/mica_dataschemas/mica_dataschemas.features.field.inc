@@ -1129,7 +1129,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'body_functions93689',
+            'vocabulary' => 'body_functions',
           ),
         ),
         'field_description_infos' => array(
@@ -1233,7 +1233,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'body_structure49191',
+            'vocabulary' => 'body_structure',
           ),
         ),
         'field_description_infos' => array(
@@ -1649,7 +1649,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'disease_history_18809',
+            'vocabulary' => 'disease_history',
           ),
         ),
         'field_description_infos' => array(
@@ -1857,7 +1857,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'health_informati59252',
+            'vocabulary' => 'health_information',
           ),
         ),
         'field_description_infos' => array(
@@ -1961,7 +1961,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'behaviours43566',
+            'vocabulary' => 'life_habits_behaviours',
           ),
         ),
         'field_description_infos' => array(
@@ -2065,7 +2065,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'medical_health_i97997',
+            'vocabulary' => 'medical_health_intervention',
           ),
         ),
         'field_description_infos' => array(
@@ -2273,7 +2273,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'physical_environ35465',
+            'vocabulary' => 'physical_environment',
           ),
         ),
         'field_description_infos' => array(
@@ -2377,7 +2377,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'sample',
+            'vocabulary' => 'sample58462',
           ),
         ),
         'field_description_infos' => array(
@@ -2481,7 +2481,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'social_environme64219',
+            'vocabulary' => 'social_environment',
           ),
         ),
         'field_description_infos' => array(
@@ -2585,7 +2585,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'sociodemographic16309',
+            'vocabulary' => 'sociodemographic',
           ),
         ),
         'field_description_infos' => array(
@@ -2689,7 +2689,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'socioeconomic_ch61547',
+            'vocabulary' => 'socioeconomic',
           ),
         ),
         'field_description_infos' => array(

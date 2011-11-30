@@ -271,6 +271,46 @@ function mica_dataschemas_feeds_importer_default() {
             'target' => 'field_dim_target',
             'unique' => FALSE,
           ),
+          22 => array(
+            'source' => 'field_dim_health_information ',
+            'target' => 'field_dim_health_information',
+            'unique' => FALSE,
+          ),
+          23 => array(
+            'source' => 'field_dim_disease_history ',
+            'target' => 'field_dim_disease_history',
+            'unique' => FALSE,
+          ),
+          24 => array(
+            'source' => 'field_dim_life_habits_behaviours',
+            'target' => 'field_dim_life_habits_behaviours',
+            'unique' => FALSE,
+          ),
+          25 => array(
+            'source' => 'field_dim_sociodemo_charact',
+            'target' => 'field_dim_sociodemo_charact',
+            'unique' => FALSE,
+          ),
+          26 => array(
+            'source' => 'field_dim_socioeco',
+            'target' => 'field_dim_socioeco',
+            'unique' => FALSE,
+          ),
+          27 => array(
+            'source' => 'field_dim_body_structure',
+            'target' => 'field_dim_body_structure',
+            'unique' => FALSE,
+          ),
+          28 => array(
+            'source' => 'field_dim_body_functions',
+            'target' => 'field_dim_body_functions',
+            'unique' => FALSE,
+          ),
+          29 => array(
+            'source' => 'field_dim_sample',
+            'target' => 'field_dim_sample',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',

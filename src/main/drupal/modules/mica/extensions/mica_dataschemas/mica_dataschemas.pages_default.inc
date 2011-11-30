@@ -282,9 +282,8 @@ function mica_dataschemas_default_page_manager_handlers() {
     $pane->position = 3;
     $display->content['new-4'] = $pane;
     $display->panels['center'][3] = 'new-4';
-   
     $pane = new stdClass;
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'node_content';
     $pane->subtype = 'node_content';
@@ -312,8 +311,8 @@ function mica_dataschemas_default_page_manager_handlers() {
     );
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-8'] = $pane;
-    $display->panels['right'][0] = 'new-8';
+    $display->content['new-5'] = $pane;
+    $display->panels['right'][0] = 'new-5';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
