@@ -3,7 +3,16 @@
 function _mica_dataschemas_configure_facet_blocks() {
   
   $facet_order = array(
-  	'Dataschema facet', 
+  	'Dataschema facet',
+  	'Health information facet',
+  	'Life habits / Behaviours facet',
+  	'Disease history (ICD10) facet',
+  	'Physical environment facet',
+  	'Body functions facet',
+  	'Body structure facet', 
+  	'Social environment facet',
+  	'Sociodemographic characteristics facet',
+  	'Socioeconomic characteristics facet',
     'Class facet',  
     'Type facet',  
     'Format facet',
