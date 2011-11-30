@@ -19,7 +19,7 @@ function mica_dataschemas_form($node, &$form_state) {
  */
 function mica_dataschemas_install() {
   _mica_dataschemas_import_taxonomies();
-  _mica_dataschemas_configure_facet_blocks();
+  //_mica_dataschemas_configure_facet_blocks();
 }
 
 /**
