@@ -92,11 +92,12 @@ drupal-download:
 	$(drushexec) dl drupal-$(drupal_version) --drupal-project-rename=$(micadir) && \
 	cd $(micadir) && \
 	$(drushexec) dl \
-		advanced_help \
 		acl-$(acl_version) \
-		chain_menu_access-$(chain_menu_access_version) \
+		advanced_help \
 		calendar-$(calendar_version) \
+		chain_menu_access-$(chain_menu_access_version) \
 		ckeditor-$(ckeditor_version) \
+		collapsiblock-$(collapsiblock_version) \
 		content_access-$(content_access_version) \
 		ctools-$(ctools_version) \
 		date-$(date_version) \
@@ -114,24 +115,23 @@ drupal-download:
 		login_destination-$(login_destination_version) \
 		menu_firstchild-$(menu_firstchild_version) \
 		multiselect-$(multiselect_version) \
-		name-$(name_version) \
 		namedb-$(namedb_version) \
+		name-$(name_version) \
 		noderefcreate-$(noderefcreate_version) \
-		collapsiblock-$(collapsiblock_version) \
 		panels-$(panels_version) \
 		pathauto-$(pathauto_version) \
 		relation-$(relation_version) \
-		search_api-$(search_api_version) \
 		search_api_ranges-$(search_api_ranges_version) \
+		search_api-$(search_api_version) \
 		search_api_solr-$(search_api_solr_version) \
 		strongarm-$(strongarm_version) \
-		taxonomy_csv-$(taxonomy_csv_version) \
 		tagging-$(tagging_version) \
+		taxonomy_csv-$(taxonomy_csv_version) \
 		taxonomy_manager-$(taxonomy_manager_version) \
 		token-$(token_version) \
 		viewreference-$(viewreference_version) \
-		views-$(views_version) \
-		views_data_export-$(views_data_export_version)
+		views_data_export-$(views_data_export_version) \
+		views-$(views_version)
 
 drupal-examples:
 	cd target/$(micadir) && \
