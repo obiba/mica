@@ -1,8 +1,8 @@
-"Tobacco use"
-"Alcohol use"
-"Illicit drug use"
-"Nutrition"
-,"Food intake and Frequency"
+"Tobacco use",,
+"Alcohol use",,
+"Illicit drug use",,
+"Nutrition",,
+,"Food intake and Frequency",
 ,,"Milk products"
 ,,"Meat, Eggs, Fish and Alternatives"
 ,,"Vegetables and Fruits"
@@ -13,14 +13,10 @@
 ,,"Beverages (other than water or alcohol)"
 ,,"Salt and Food Supplement"
 ,,"Caffeine"
-,"Nutritional Behaviours and Perception of Nutritional Habits"
-"Physical activity"
-,"Activities/Exercise and Frequency"
-,"Perception of physical health"
-"Weight related behaviours"
-"Sleep Behaviours"
-"Sexual behaviours"
-"Travel History and Habits"
-"Early life/childhood"
-,"Day care/preschool attendance"
-,"History of Being Breastfed"
+,"Nutritional Behaviours and Perception of Nutritional Habits",
+"Physical activity",,
+,"Activities/Exercise and Frequency",
+,"Perception of physical health",
+"Weight related behaviours",,
+"Sleep Behaviours",,
+"Sexual behaviours",,

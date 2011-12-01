@@ -1103,14 +1103,14 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_body_functions'
-  $fields['node-ds_variable-field_dim_body_functions'] = array(
+  // Exported field: 'node-ds_variable-field_dim_biochemical_measures'
+  $fields['node-ds_variable-field_dim_biochemical_measures'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_dim_body_functions',
+      'field_name' => 'field_dim_biochemical_measures',
       'foreign keys' => array(
         'tid' => array(
           'columns' => array(
@@ -1129,7 +1129,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'body_functions',
+            'vocabulary' => 'biochemical_measures',
           ),
         ),
         'field_description_infos' => array(
@@ -1144,7 +1144,6 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
-        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -1157,10 +1156,9 @@ function mica_dataschemas_field_default_fields() {
       'display' => array(
         'custom_dimensions' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
-          'weight' => '0',
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'custom_page' => array(
           'label' => 'above',
@@ -1179,7 +1177,7 @@ function mica_dataschemas_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 22,
+          'weight' => 33,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1189,8 +1187,8 @@ function mica_dataschemas_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_dim_body_functions',
-      'label' => 'Body functions',
+      'field_name' => 'field_dim_biochemical_measures',
+      'label' => 'Biochemical measures',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1200,22 +1198,22 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'tagging',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
+          'size' => 40,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '62',
+        'weight' => '81',
       ),
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_body_structure'
-  $fields['node-ds_variable-field_dim_body_structure'] = array(
+  // Exported field: 'node-ds_variable-field_dim_body_functions_meas'
+  $fields['node-ds_variable-field_dim_body_functions_meas'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_dim_body_structure',
+      'field_name' => 'field_dim_body_functions_meas',
       'foreign keys' => array(
         'tid' => array(
           'columns' => array(
@@ -1234,7 +1232,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'body_structures',
+            'vocabulary' => 'body_functions_measures',
           ),
         ),
         'field_description_infos' => array(
@@ -1249,7 +1247,6 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
-        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -1262,10 +1259,9 @@ function mica_dataschemas_field_default_fields() {
       'display' => array(
         'custom_dimensions' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
-          'weight' => '0',
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'custom_page' => array(
           'label' => 'above',
@@ -1284,7 +1280,7 @@ function mica_dataschemas_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 23,
+          'weight' => 34,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1294,8 +1290,8 @@ function mica_dataschemas_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_dim_body_structure',
-      'label' => 'Body structure',
+      'field_name' => 'field_dim_body_functions_meas',
+      'label' => 'Body functions and measures',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1305,10 +1301,10 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'tagging',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
+          'size' => 40,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '63',
+        'weight' => '74',
       ),
     ),
   );
@@ -1413,7 +1409,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '52',
+        'weight' => '87',
       ),
     ),
   );
@@ -1518,7 +1514,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '53',
+        'weight' => '82',
       ),
     ),
   );
@@ -1527,7 +1523,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_disease'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_disease',
@@ -1549,7 +1545,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'disease',
+            'vocabulary' => 'forums',
           ),
         ),
         'field_description_infos' => array(
@@ -1564,42 +1560,39 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
-        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
       'bundle' => 'ds_variable',
-      'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'custom_dimensions' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
-          'weight' => '4',
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'custom_page' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '18',
+          'weight' => 0,
         ),
         'custom_variable' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => 0,
         ),
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
-          'weight' => '13',
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 36,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1610,20 +1603,17 @@ function mica_dataschemas_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_dim_disease',
-      'label' => 'Disease',
+      'label' => 'dis',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'tagging',
-        'settings' => array(
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
-        ),
-        'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '54',
+        'active' => 0,
+        'module' => 'multiselect',
+        'settings' => array(),
+        'type' => 'multiselect',
+        'weight' => '91',
       ),
     ),
   );
@@ -1715,7 +1705,7 @@ function mica_dataschemas_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_dim_disease_history',
-      'label' => 'Disease history (ICD10)',
+      'label' => 'Disease history',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1725,10 +1715,113 @@ function mica_dataschemas_field_default_fields() {
         'module' => 'tagging',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
+          'size' => 40,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '64',
+        'weight' => '75',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-ds_variable-field_dim_environmental_exp'
+  $fields['node-ds_variable-field_dim_environmental_exp'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dim_environmental_exp',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'environmental_exposures',
+          ),
+        ),
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'ds_variable',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 35,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_dim_environmental_exp',
+      'label' => 'Environmental exposures',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'tagging',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 40,
+        ),
+        'type' => 'tagging_taxonomy_autocomplete',
+        'weight' => '80',
       ),
     ),
   );
@@ -1833,112 +1926,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '51',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-ds_variable-field_dim_health_information'
-  $fields['node-ds_variable-field_dim_health_information'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_dim_health_information',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'parent' => '0',
-            'vocabulary' => 'health_information',
-          ),
-        ),
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'options_list_callback' => 'content_taxonomy_allowed_values',
-      ),
-      'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'ds_variable',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'custom_dimensions' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
-          'weight' => '0',
-        ),
-        'custom_page' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'custom_variable' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 25,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_dim_health_information',
-      'label' => 'Health information',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'tagging',
-        'settings' => array(
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
-        ),
-        'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '65',
+        'weight' => '86',
       ),
     ),
   );
@@ -2043,7 +2031,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '66',
+        'weight' => '72',
       ),
     ),
   );
@@ -2052,7 +2040,7 @@ function mica_dataschemas_field_default_fields() {
   $fields['node-ds_variable-field_dim_med_health_interv'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dim_med_health_interv',
@@ -2074,7 +2062,93 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'medical_health_intervention',
+            'vocabulary' => 'forums',
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'ds_variable',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 37,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_dim_med_health_interv',
+      'label' => 'med',
+      'required' => FALSE,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'multiselect',
+        'settings' => array(),
+        'type' => 'multiselect',
+        'weight' => '92',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-ds_variable-field_dim_medication'
+  $fields['node-ds_variable-field_dim_medication'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dim_medication',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'medication',
           ),
         ),
         'field_description_infos' => array(
@@ -2089,7 +2163,6 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
-        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -2102,29 +2175,28 @@ function mica_dataschemas_field_default_fields() {
       'display' => array(
         'custom_dimensions' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
-          'weight' => '8',
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'custom_page' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => 0,
         ),
         'custom_variable' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => 0,
         ),
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
-          'weight' => '17',
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 30,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2134,21 +2206,21 @@ function mica_dataschemas_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_dim_med_health_interv',
-      'label' => 'Medical health intervention',
+      'field_name' => 'field_dim_medication',
+      'label' => 'Medication',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
+        'active' => 0,
         'module' => 'tagging',
         'settings' => array(
           'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
+          'size' => 40,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '58',
+        'weight' => '79',
       ),
     ),
   );
@@ -2253,19 +2325,19 @@ function mica_dataschemas_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '59',
+        'weight' => '89',
       ),
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_physical_env'
-  $fields['node-ds_variable-field_dim_physical_env'] = array(
+  // Exported field: 'node-ds_variable-field_dim_reproductive_history'
+  $fields['node-ds_variable-field_dim_reproductive_history'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_dim_physical_env',
+      'field_name' => 'field_dim_reproductive_history',
       'foreign keys' => array(
         'tid' => array(
           'columns' => array(
@@ -2284,7 +2356,7 @@ function mica_dataschemas_field_default_fields() {
         'allowed_values' => array(
           0 => array(
             'parent' => '0',
-            'vocabulary' => 'physical_environment',
+            'vocabulary' => 'reproductive_history',
           ),
         ),
         'field_description_infos' => array(
@@ -2299,7 +2371,6 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
-        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -2312,10 +2383,9 @@ function mica_dataschemas_field_default_fields() {
       'display' => array(
         'custom_dimensions' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
-          'weight' => '0',
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'custom_page' => array(
           'label' => 'above',
@@ -2334,7 +2404,7 @@ function mica_dataschemas_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 27,
+          'weight' => 31,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2344,8 +2414,8 @@ function mica_dataschemas_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_dim_physical_env',
-      'label' => 'Physical environment',
+      'field_name' => 'field_dim_reproductive_history',
+      'label' => 'Reproductive history',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -2358,7 +2428,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '67',
+        'weight' => '77',
       ),
     ),
   );
@@ -2463,112 +2533,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '60',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-ds_variable-field_dim_social_env'
-  $fields['node-ds_variable-field_dim_social_env'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_dim_social_env',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'parent' => '0',
-            'vocabulary' => 'social_environment',
-          ),
-        ),
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'options_list_callback' => 'content_taxonomy_allowed_values',
-      ),
-      'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'ds_variable',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'custom_dimensions' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
-          'weight' => '0',
-        ),
-        'custom_page' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'custom_variable' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 28,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_dim_social_env',
-      'label' => 'Social environment',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'tagging',
-        'settings' => array(
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
-        ),
-        'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '68',
+        'weight' => '90',
       ),
     ),
   );
@@ -2673,112 +2638,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '69',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-ds_variable-field_dim_socioeco'
-  $fields['node-ds_variable-field_dim_socioeco'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_dim_socioeco',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'parent' => '0',
-            'vocabulary' => 'socioeconomic_characteristics',
-          ),
-        ),
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'options_list_callback' => 'content_taxonomy_allowed_values',
-      ),
-      'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'ds_variable',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'custom_dimensions' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
-          'weight' => '0',
-        ),
-        'custom_page' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'custom_variable' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 30,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_dim_socioeco',
-      'label' => 'Socioeconomic characteristics',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'tagging',
-        'settings' => array(
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
-        ),
-        'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '70',
+        'weight' => '76',
       ),
     ),
   );
@@ -2883,7 +2743,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '61',
+        'weight' => '85',
       ),
     ),
   );
@@ -2988,7 +2848,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '56',
+        'weight' => '83',
       ),
     ),
   );
@@ -3093,7 +2953,110 @@ function mica_dataschemas_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '57',
+        'weight' => '84',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-ds_variable-field_dim_therapeutic_inter'
+  $fields['node-ds_variable-field_dim_therapeutic_inter'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dim_therapeutic_inter',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'parent' => '0',
+            'vocabulary' => 'therapeutic_interventions',
+          ),
+        ),
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'ds_variable',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 32,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_dim_therapeutic_inter',
+      'label' => 'Therapeutic interventions',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'tagging',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 40,
+        ),
+        'type' => 'tagging_taxonomy_autocomplete',
+        'weight' => '78',
       ),
     ),
   );
@@ -3198,7 +3161,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '55',
+        'weight' => '88',
       ),
     ),
   );
@@ -4383,42 +4346,42 @@ function mica_dataschemas_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('A Uniform Resource Identifier (URI) is a string of characters used to identify a name or a resource on the Internet.');
+  t('Biochemical measures');
   t('Body');
-  t('Body functions');
-  t('Body structure');
+  t('Body functions and measures');
   t('Categories');
   t('Class');
   t('Collection mode');
   t('Computation Source Variables');
   t('Contraindication variables');
   t('DataSchema');
-  t('Disease');
-  t('Disease history (ICD10)');
+  t('Disease history');
+  t('Environmental exposures');
   t('Format');
-  t('Health information');
   t('Interpretation Variables');
   t('Life habits / Behaviours');
   t('Match');
   t('Measuring unit of the variable (i.e. kg, siblings, cigarettes, etc.).');
-  t('Medical health intervention');
+  t('Medication');
   t('Missing');
   t('Name');
   t('Period');
-  t('Physical environment');
   t('Project');
+  t('Reproductive history');
   t('Sample');
-  t('Social environment');
   t('Sociodemographic characteristics');
-  t('Socioeconomic characteristics');
   t('Source of information');
   t('Study');
   t('Target');
   t('Target gender');
+  t('Therapeutic interventions');
   t('Type');
   t('URI');
   t('Unit');
   t('Variable');
   t('Variables');
+  t('dis');
+  t('med');
 
   return $fields;
 }

@@ -1,0 +1,474 @@
+;;;"title";"body";"field_dataschema_ref";"field_unit";"field_variable_categories";"field_interpretation_variables";"field_contraindication_variables";"field_computation_variables";"field_dim_class";"field_dim_collection_mode";"field_dim_disease_old";"field_dim_format";"field_dim_period";"field_dim_sample";"field_dim_source_of_info";"field_dim_target";"field_dim_target_gender";"field_dim_type";"field_dim_health_information";"field_dim_disease_history";"field_dim_life_habits_behaviours";"field_dim_sociodemo_charact";"field_dim_socioeco";"field_dim_body_structure";"field_dim_body_functions";"field_dim_sample";"field_dim_disease"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Cancer  ";"Occurrence of cancer";"Occurrence of cancer at any point during the life of the participant.";"Healthy Obese";;"Never had cancer | Ever had cancer";;;;"Occurrence";"Questionnaire";"Cancer";"Categorical";"Through all life";;"Participant";"Participant";;;;"Neoplasms";;;;;;;"Cancer"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Cancer  ";"Type of cancer";"Type of cancer diagnosed.";"Healthy Obese";;"Classification based on the ICD-10 codes comprised between C00 and D48 (Chapter II)";;;;;"Questionnaire";"Cancer";"Categorical";"Through all life";;"Participant";"Participant";;;;"Neoplasms";;;;;;;"Cancer"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Cancer  ";"Type of cancer onset";"Age of the participant at cancer diagnosis.";"Healthy Obese";"Years";;;;;"Age of onset";"Questionnaire";"Cancer";"Open";"Through all life";;"Participant";"Participant";;"Integer";;"Neoplasms";;;;;;;"Cancer"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Diabetes  ";"Occurrence of diabetes";"Occurrence of diabetes at any point during the life of the participant.";"Healthy Obese";;"Never had diabetes | Ever had diabetes";;;;"Occurrence";"Questionnaire";"Type 1 diabetes | Type 2 diabetes | Diabetes | Insulin-dependent diabetes mellitus (IDDM) | Non-insulin-dependent diabetes mellitus (NIDDM)";"Categorical";"Through all life";;"Participant";"Participant";;;;;;;;;;;"Diabetes"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Diabetes  ";"Type of diabetes";"Type of diabetes diagnosed.";"Healthy Obese";;"Diabetes mellitus type 1 | Diabetes mellitus type 2";;;;;"Questionnaire";"Type 1 diabetes | Type 2 diabetes | Diabetes | Insulin-dependent diabetes mellitus (IDDM) | Non-insulin-dependent diabetes mellitus (NIDDM)";"Categorical";"Through all life";;"Participant";"Participant";;;;;;;;;;;"Diabetes"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Diabetes  ";"Diabetes onset";"Age of the participant at diabetes diagnosis.";"Healthy Obese";"Years";;;;;"Age of onset";"Questionnaire";"Type 1 diabetes | Type 2 diabetes | Diabetes | Insulin-dependent diabetes mellitus (IDDM) | Non-insulin-dependent diabetes mellitus (NIDDM)";"Open";"Through all life";;"Participant";"Participant";;"Integer";;;;;;;;;"Diabetes"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of High Blood Pressure";"Occurrence of high blood pressure";"Occurrence of high blood pressure at any point during the life of the participant.";"Healthy Obese";;"Never had high blood pressure | Ever had high blood pressure";;;;"Occurrence";"Questionnaire";"High blood pressure | Hypertension";"Categorical";"Through all life";;"Participant";"Participant";;;;;;;;;;;"High blood pressure / Hypertension"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of High Blood Pressure";"High blood pressure onset";"Age of the participant at high blood pressure diagnosis.";"Healthy Obese";"Years";;;;;"Age of onset";"Questionnaire";"High blood pressure | Hypertension";"Open";"Through all life";;"Participant";"Participant";;"Integer";;;;;;;;;"High blood pressure / Hypertension"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of High Blood Pressure";"Current treatment for high blood pressure";"Indicator of wether the participant is currently treated for high blood pressure";"Healthy Obese";;"Not currently under treatment for high blood pressure | Currently under treatment for high blood pressure";;;;"Status";"Questionnaire";"High blood pressure | Hypertension";"Categorical";"Currently";;"Participant";"Participant";;;;;;;;;;;"High blood pressure / Hypertension"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Stroke ";"Occurrence of stroke";"Occurrence of stroke at any point during the life of the participant.";"Healthy Obese";;"Never had stroke | Ever had stroke";;;;"Occurrence";"Questionnaire";"Cerebral infarction | Cerebral haemorrage | Cerebrovascular accident | Cerebral thrombosis resulting in stroke | Clot in the brain | Ruptured cerebral aneurysm | Transient ischemic attack | Stroke";"Categorical";"Through all life";;"Participant";"Participant";;;;;;;;;;;"Heart attack / Myocardial infarction"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Stroke ";"Stroke onset";"Age of the participant when the stroke occurred.";"Healthy Obese";"Years";;;;;"Age of onset";"Questionnaire";"Cerebral infarction | Cerebral haemorrage | Cerebrovascular accident | Cerebral thrombosis resulting in stroke | Clot in the brain | Ruptured cerebral aneurysm | Transient ischemic attack | Stroke";"Open";"Through all life";;"Participant";"Participant";;"Integer";;;;;;;;;"Heart attack / Myocardial infarction"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Myocardial Infarction  ";"Occurrence of myocardial infarction";"Occurrence of myocardial infarction at any point during the life of the participant.";"Healthy Obese";;"Never had myocardial infarction | Ever had myocardial infarction";;;;"Occurrence";"Questionnaire";"Heart attack | Myocardial infarction";"Categorical";"Through all life";;"Participant";"Participant";;;;;;;;;;;"Heart attack / Myocardial infarction"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Myocardial Infarction  ";"Myocardial infarction onset";"Age of the participant at myocardial infarction.";"Healthy Obese";"Years";;;;;"Age of onset";"Questionnaire";"Heart attack | Myocardial infarction";"Open";"Through all life";;"Participant";"Participant";;"Integer";;;;;;;;;"Heart attack / Myocardial infarction"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Depression  ";"Occurrence of depression";"Occurrence of depression at any point during the life of the participant.";"Healthy Obese";;"Never had depression | Ever had depression";;;;"Occurrence";"Questionnaire";"Severe depression | Depression | Major depression";"Categorical";"Through all life";;"Participant";"Participant";;;;"Mental and behavioural disorders";;;;;;;"Depression"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Depression  ";"Depression onset";"Age of the participant at depression diagnosis.";"Healthy Obese";"Years";;;;;"Age of onset";"Questionnaire";"Severe depression | Depression | Major depression";"Open";"Through all life";;"Participant";"Participant";;"Integer";;"Mental and behavioural disorders";;;;;;;"Depression"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Chronic Obstructive Pulmonary Disease  ";"Occurrence of chronic obstructive pulmonary disease";"Occurrence of chronic obstructive pulmonary disease at any point during the life of the participant.";"Healthy Obese";;"Never had chronic obstructive pulmonary disease | Ever had chronic obstructive pulmonary disease";;;;"Occurrence";"Questionnaire";"Emphysema | Chronic bronchitis | Chronic obstructive lung disease | Chronic obstructive pulmonary disease";"Categorical";"Through all life";;"Participant";"Participant";;;;"Diseases of the respiratory system";;;;;;;"Chronic obstructive lung disease / Chronic obstructive pulmonary disease"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Chronic Obstructive Pulmonary Disease  ";"Chronic obstructive pulmonary disease onset";"Age of the participant at chronic obstructive pulmonary disease diagnosis.";"Healthy Obese";"Years";;;;;"Age of onset";"Questionnaire";"Emphysema | Chronic bronchitis | Chronic obstructive lung disease | Chronic obstructive pulmonary disease";"Open";"Through all life";;"Participant";"Participant";;"Integer";;"Diseases of the respiratory system";;;;;;;"Chronic obstructive lung disease / Chronic obstructive pulmonary disease"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Asthma  ";"Occurrence of asthma";"Occurrence of asthma at any point during the life of the participant.";"Healthy Obese";;"Never had asthma | Ever had asthma";;;;"Occurrence";"Questionnaire";"Asthma";"Categorical";"Through all life";;"Participant";"Participant";;;;"Diseases of the respiratory system";;;;;"Functions of the cardiovascular and respiratory systems";;"Asthma"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Asthma  ";"Asthma onset";"Age of the participant at asthma diagnosis.";"Healthy Obese";"Years";;;;;"Age of onset";"Questionnaire";"Asthma";"Open";"Through all life";;"Participant";"Participant";;"Integer";;"Diseases of the respiratory system";;;;;"Functions of the cardiovascular and respiratory systems";;"Asthma"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Arthritis  ";"Occurrence of arthritis";"Occurrence of arthritis at any point during the life of the participant.";"Healthy Obese";;"Never had arthritis | Ever had arthritis";;;;"Occurrence";"Questionnaire";"Arthritis";"Categorical";"Through all life";;"Participant";"Participant";;;;"Diseases of the musculoskeletal system and connective tissue";;;;;"Neuromusculoskeletal and movement-related functions";;"Arthritis"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Arthritis  ";"Arthritis onset";"Age of the participant at arthritis diagnosis.";"Healthy Obese";"Years";;;;;"Age of onset";"Questionnaire";"Arthritis";"Open";"Through all life";;"Participant";"Participant";;"Integer";;"Diseases of the musculoskeletal system and connective tissue";;;;;"Neuromusculoskeletal and movement-related functions";;"Arthritis"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Arthritis  ";"Type of arthritis";"Type of arthritis diagnosed.";"Healthy Obese";;"Rheumatoid arthritis | Osteoarthritis | Other";;;;;"Questionnaire";"Arthritis | Osteoarthritis | Rhumatoid arthritis";"Categorical";"Through all life";;"Participant";"Participant";;;;"Diseases of the musculoskeletal system and connective tissue";;;;;"Neuromusculoskeletal and movement-related functions";;"Arthritis"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Arthritis  ";"Name of other type of arthritis";"Name of other type of arthritis diagnosed.";"Healthy Obese";;;;;;;"Questionnaire";"Arthritis";"Open";"Through all life";;"Participant";"Participant";;;;"Diseases of the musculoskeletal system and connective tissue";;;;;"Neuromusculoskeletal and movement-related functions";;"Arthritis"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Osteoporosis  ";"Occurrence of osteoporosis";"Occurrence of osteoporosis at any point during the life of the participant.";"Healthy Obese";;"Never had osteoporosis | Ever had osteoporosis";;;;"Occurrence";"Questionnaire";"Osteoporosis";"Categorical";"Through all life";;"Participant";"Participant";;;;;;;;;"Neuromusculoskeletal and movement-related functions";;"Osteoporosis"
+"Health and Risk Factor Questionnaire";"Individual Disease History";"Individual History of Osteoporosis  ";"Osteoporosis onset";"Age of the participant at osteoporosis diagnosis.";"Healthy Obese";"Years";;;;;"Age of onset";"Questionnaire";"Osteoporosis";"Open";"Through all life";;"Participant";"Participant";;"Integer";;;;;;;"Neuromusculoskeletal and movement-related functions";;"Osteoporosis"
+"Health and Risk Factor Questionnaire";"Individual History of Injuries";"Individual History of Fractures ";"Occurrence of fractures";"Occurrence of fractures at any point during the adult life of the participant.";"Healthy Obese";;"Never had fractures | Ever had fractures";;;;"Occurrence";"Questionnaire";;"Categorical";"Through all life";;"Participant";"Participant";;;;;;;;;"Neuromusculoskeletal and movement-related functions";;
+"Health and Risk Factor Questionnaire";"Individual History of Injuries";"Individual History of Fractures ";"Number of fractures";"Number of fractures a participant has had during his adult life.";"Healthy Obese";"Fractures";;;;;"Quantity";"Questionnaire";;"Open";"Through all life";;"Participant";"Participant";;"Integer";;;;;;;"Neuromusculoskeletal and movement-related functions";;
+"Health and Risk Factor Questionnaire";"Medication";"Medication Intake ";"Current prescribed medication intake status";"Indicator of whether the participant currently uses prescribed medication.";"Healthy Obese";;"Not currently using medication | Currently using medication";;;;"Status";"Questionnaire";;"Categorical";"Currently";;"Participant";"Participant";;;"Medication Intake (ATC/DDD)";;;;;;;;
+"Health and Risk Factor Questionnaire";"Medication";"Medication Intake ";"Current prescribed medication";"Current prescribed medication.";"Healthy Obese";;"Classification based on the ATC/DDD code";;;;;"Questionnaire";;"Categorical";"Currently";;"Participant";"Participant";;;"Medication Intake (ATC/DDD)";;;;;;;;
+"Health and Risk Factor Questionnaire";"Familial Disease History";"Family History of Diabetes";"Occurrence of diabetes in the family";"Occurrence of diabetes amongst members of the biological family of the participant (mother, father, siblings and children).";"Healthy Obese";;"No family history of diabetes | Family history of diabetes";;;;"Occurrence";"Questionnaire";"Type 1 diabetes | Type 2 diabetes | Diabetes | Insulin-dependent diabetes mellitus (IDDM) | Non-insulin-dependent diabetes mellitus (NIDDM)";"Categorical";"Through all life";;"Participant";"Participant relative(s)";;;;;;;;;;;"Diabetes"
+"Health and Risk Factor Questionnaire";"Familial Disease History";"Family History of High Blood Pressure  ";"Occurrence of high blood pressure in the family";"Occurrence of  high blood pressure amongst members of the biological family of the participant (mother, father, siblings and children).";"Healthy Obese";;"No family history of high blood pressure | Family history of high blood pressure";;;;"Occurrence";"Questionnaire";"High blood pressure | Hypertension";"Categorical";"Through all life";;"Participant";"Participant relative(s)";;;;;;;;;;;"High blood pressure / Hypertension"
+"Health and Risk Factor Questionnaire";"Familial Disease History";"Family History of Stroke  ";"Occurrence of stroke in the family";"Occurrence of stroke amongst members of the biological family of the participant (mother, father, siblings and children).";"Healthy Obese";;"No family history of stroke | Family history of stroke";;;;"Occurrence";"Questionnaire";"Cerebral infarction | Cerebral haemorrage | Cerebrovascular accident | Cerebral thrombosis resulting in stroke | Clot in the brain | Ruptured cerebral aneurysm | Transient ischemic attack | Stroke";"Categorical";"Through all life";;"Participant";"Participant relative(s)";;;;;;;;;;;"Heart attack / Myocardial infarction"
+"Health and Risk Factor Questionnaire";"Familial Disease History";"Family History of Stroke  ";"Occurrence of stroke in the family before 65";"Occurrence of stroke before 65 years of age amongst members of the biological family of the participant (mother, father, siblings and children).";"Healthy Obese";;"No family history of stroke before 65 years | Family history of stroke before 65 years";;;;"Occurrence";"Questionnaire";"Cerebral infarction | Cerebral haemorrage | Cerebrovascular accident | Cerebral thrombosis resulting in stroke | Clot in the brain | Ruptured cerebral aneurysm | Transient ischemic attack | Stroke";"Categorical";;;"Participant";"Participant relative(s)";;;;;;;;;;;"Heart attack / Myocardial infarction"
+"Health and Risk Factor Questionnaire";"Familial Disease History";"Family History of Myocardial Infarction";"Occurrence of myocardial infarction in the family";"Occurrence of myocardial infarction amongst members of the biological family of the participant (mother, father, siblings and children).";"Healthy Obese";;"No family history of myocardial infarction | Family history of myocardial infarction";;;;"Occurrence";"Questionnaire";"Heart attack | Myocardial infarction";"Categorical";"Through all life";;"Participant";"Participant relative(s)";;;;;;;;;;;"Heart attack / Myocardial infarction"
+"Health and Risk Factor Questionnaire";"Familial Disease History";"Family History of Myocardial Infarction";"Occurrence of myocardial infarction in the family before 65 ";"Occurrence of myocardial infarction before 65 years of age amongst members of the biological family of the participant (mother, father, siblings and children).";"Healthy Obese";;"No family history of myocardial infarction before 65 years | Family history of myocardial infarction before 65 years ";;;;"Occurrence";"Questionnaire";"Heart attack | Myocardial infarction";"Categorical";;;"Participant";"Participant relative(s)";;;;;;;;;;;"Heart attack / Myocardial infarction"
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Tobacco Use";"Ever smoked cigarettes";"Indicator of whether the participant has ever smoked cigarettes.";"Healthy Obese";;"Never smoked cigarettes | Ever smoked cigarettes";;;;"Status";"Questionnaire";;"Categorical";"Through all life";;"Participant";"Participant";;;;;"Tobacco use";;;;;;
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Tobacco Use";"Current cigarette smoker";"Indicator of whether the participant currently  smokes cigarettes.";"Healthy Obese";;"Non-cigarettes smoker | Cigarettes smoker";;;;"Status";"Questionnaire";;"Categorical";"Currently";;"Participant";"Participant";;;;;"Tobacco use";;;;;;
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Tobacco Use";"Current quantity of cigarettes smoked";"Current average number of cigarettes smoked per week.";"Healthy Obese";"Cigarettes/week";;;;;"Quantity";"Questionnaire";;"Open";"Currently";;"Participant";"Participant";;"Integer";;;"Tobacco use";;;;;;
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Alcohol Use";"Ever alcohol consumption";"Indicator of whether the participant has ever consumed alcohol.";"Healthy Obese";;"Never consumed alcohol | Ever consumed alcohol";;;;"Status";"Questionnaire";;"Categorical";"Through all life";;"Participant";"Participant";;;;;"Alcohol use";;;;;;
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Alcohol Use";"Current use of alcohol";"Indicator of whether the participant currently consumes alcohol.";"Healthy Obese";;"Does not consume alcohol | Consumes alcohol";;;;"Status";"Questionnaire";;"Categorical";"Currently";;"Participant";"Participant";;;;;"Alcohol use";;;;;;
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Alcohol Use";"Current quantity of red wine consumed";"Average number of glasses of red wine consumed by the participant per week.";"Healthy Obese";"Glasses of red wine /week";;;;;"Quantity";"Questionnaire";;"Open";"Currently";;"Participant";"Participant";;"Integer";;;"Alcohol use";;;;;;
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Alcohol Use";"Current quantity of white wine consumed";"Average number of glasses of white wine consumed by the participant per week.";"Healthy Obese";"Glasses of white wine /week";;;;;"Quantity";"Questionnaire";;"Open";"Currently";;"Participant";"Participant";;"Integer";;;"Alcohol use";;;;;;
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Alcohol Use";"Current quantity of wine consumed";"Average number of glasses of wine (include all types of wine) consumed by the participant per week.";"Healthy Obese";"Glasses of  wine /week";;;;;"Quantity";"Questionnaire";;"Open";"Currently";;"Participant";"Participant";;"Integer";;;"Alcohol use";;;;;;
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Alcohol Use";"Current quantity of beer consumed";"Average number of beers consumed by the participant per week.";"Healthy Obese";"Beers/week";;;;;"Quantity";"Questionnaire";;"Open";"Currently";;"Participant";"Participant";;"Integer";;;"Alcohol use";;;;;;
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Alcohol Use";"Current quantity of liquor consumed";"Average number of drinks of liquor/spirits consumed by the participant per week.";"Healthy Obese";"Drinks/week";;;;;"Quantity";"Questionnaire";;"Open";"Currently";;"Participant";"Participant";;"Integer";;;"Alcohol use";;;;;;
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Physical Activity";"Level of physical activity";"Categorical indicator of the participant's level of physical activity.";"Healthy Obese";;"Low level of physical activity | Moderate level of physical activity | High level of physical activity";;;;;"Questionnaire";;"Categorical";"Currently";;;"Participant";;;;;"Physical activity";;;;;;
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Physical Activity";"Total physical activity";"Quantitative indicator of global physical activity in metabolic equivalent (MET)-minutes per week.";"Healthy Obese";"MET minutes per week";;;;;"Quantity";"Questionnaire";;"Open";"Currently";;;"Participant";;"Decimal";;;"Activities/Exercise and Frequency";;;;;;
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Physical Activity";"Total walking activity";"Quantitative indicator of the walking activities in metabolic equivalent (MET)-minutes/week.";"Healthy Obese";"MET minutes per week";;;;;"Quantity";"Questionnaire";;"Open";"Currently";;;"Participant";;"Decimal";;;"Activities/Exercise and Frequency";;;;;;
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Physical Activity";"Total moderate intensity activity";"Quantitative indicator of the moderate intensity activities in metabolic equivalent (MET)-minutes/week.";"Healthy Obese";"MET minutes per week";;;;;"Quantity";"Questionnaire";;"Open";"Currently";;;"Participant";;"Decimal";;;"Activities/Exercise and Frequency";;;;;;
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Physical Activity";"Total vigorous intensity activity";"Quantitative indicator of the vigorous activities in metabolic equivalent (MET)-minutes/week.";"Healthy Obese";"MET minutes per week";;;;;"Quantity";"Questionnaire";;"Open";"Currently";;;"Participant";;"Decimal";;;"Activities/Exercise and Frequency";;;;;;
+"Health and Risk Factor Questionnaire";"Life Habits/Behaviours";"Nutrition - Domain under development";"Caffeinated beverages consumption";"Number of servings of beverages with caffeine (coffee, tea, carbonated beverages) consumed by the participant per day, week or month.";"Healthy Obese";;;;;;"Quantity";"Questionnaire";;"Open";"Currently";;"Participant";"Participant";;"Integer";;;"Caffeine";;;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Residence";"Current country of residence";"Country where the participant currently lives.";"Healthy Obese|Healthy Obese Prevalence";;;;;;"Localization";"Questionnaire";;"Open";"Currently";;"Participant";"Participant";;;;;;"Current Residence";;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Residence";"Current region of residence";"Region (province, state, territory, etc.) where the participant currently lives.";"Healthy Obese|Healthy Obese Prevalence";;;;;;"Localization";"Questionnaire";;"Open";"Currently";;"Participant";"Participant";;"Text";;;;"Current Residence";;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Residence";"Current town of residence";"City, town or village where the participant currently lives.";"Healthy Obese|Healthy Obese Prevalence";;;;;;"Localization";"Questionnaire";;"Open";"Currently";;"Participant";"Participant";;"Text";;;;"Current Residence";;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Residence";"Current postal code";"Postal code where the participant currently lives.";"Healthy Obese|Healthy Obese Prevalence";;;;;;"Localization";"Questionnaire";;"Open";"Currently";;"Participant";"Participant";;"Text";;;;"Current Residence";;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Individual Birth Location";"Country of birth";"Country where the participant was born.";"Healthy Obese|Healthy Obese Prevalence";;;;;;"Localization";"Questionnaire";;"Open";;;"Participant";"Participant";;;;;;"Subject's birth location";;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Individual Birth Location";"Region of birth";"Region (province, state, territory, etc.) where the participant was born.";"Healthy Obese|Healthy Obese Prevalence";;;;;;"Localization";"Questionnaire";;"Open";;;"Participant";"Participant";;"Text";;;;"Subject's birth location";;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Individual Birth Location";"Town of birth";"City, town or village where the participant was born.";"Healthy Obese|Healthy Obese Prevalence";;;;;;"Localization";"Questionnaire";;"Open";;;"Participant";"Participant";;"Text";;;;"Subject's birth location";;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Sibling";"Number of biological siblings";"Number of biological (one or two common parents) brothers and sisters of the participant.";"Healthy Obese";"Siblings";;;;;"Quantity";"Questionnaire";;"Open";;;"Participant";"Participant";;"Integer";;;;"Kinship";;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Sibling";"Birth rank";"Birth rank of the participant among siblings from the same mother.";"Healthy Obese";;;;;;;"Questionnaire";;"Open";;;"Participant";"Participant";;"Integer";;;;"Kinship";;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Sibling";"Born in a multiple birth";"Indicator of whether the participant was born in a multiple birth.";"Healthy Obese";;"Not born in a multiple birth | Born in a multiple birth";;;;"Status";"Questionnaire";;"Categorical";;;"Participant";"Participant";;;;;;"Kinship";;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Household Status  ";"Marital status";"Indicator of whether the participant is currently married.";"Healthy Obese|Healthy Obese Prevalence";;"Not currently married | Currently married";;;;"Status";"Questionnaire";;"Categorical";"Currently";;"Participant";"Participant";;;;;;"Subject Household Status";;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Household Status  ";"Living with partner";"Indicator of whether the participant is currently living with a spouse or a partner in a common household.";"Healthy Obese|Healthy Obese Prevalence";;"Not currently living with a spouse or a partner | Currently living with a spouse or a partner";;;;"Status";"Questionnaire";;"Categorical";"Currently";;"Participant";"Participant";;;;;;"Subject Household Status";;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Household Status  ";"Number of people in the household";"Number of people who live with the participant in the same household.";"Healthy Obese|Healthy Obese Prevalence";"People";;;;;"Quantity";"Questionnaire";;"Open";"Currently";;"Participant";"Participant";;"Integer";;;;"Structure of the Household";;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Gender";"Gender";"Gender of the participant.";"Healthy Obese|Healthy Obese Prevalence";;"Male | Female";;;;"Status";"Questionnaire";;"Categorical";;;"Participant";"Participant";;;;;;"Gender";;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Age";"Participant's age at recruitment";"Participant's age at recruitment, calculated from birth date and date of interview. 
+Age at recruitment_calculated  = (Date of interview - Birth date) / 365";"Healthy Obese|Healthy Obese Prevalence";"Years";;;;;"Age";;;"Open";;;;"Participant";;"Integer";;;;"Subject age / birth date";;;;;
+"Health and Risk Factor Questionnaire";"Sociodemographic Characteristics";"Age";"Birth year ";"Participant's year of birth.";"Healthy Obese|Healthy Obese Prevalence";"YYYY";;;;;"Date/time";"Questionnaire";;"Open";;;"Participant";"Participant";;"Date";;;;"Subject age / birth date";;;;;
+"Health and Risk Factor Questionnaire";"Socioeconomic Characteristics";"Education Level";"Highest level of education";"Highest level of education completed by the participant.";"Healthy Obese|Healthy Obese Prevalence";;;;;;;"Questionnaire";;"Open";"Through all life";;"Participant";"Participant";;"Text";;;;;"Subject education level";;;;
+"Health and Risk Factor Questionnaire";"Socioeconomic Characteristics";"Education Level";"Number of years of education";"Number of years of education.";"Healthy Obese|Healthy Obese Prevalence";"Years";;;;;"Quantity";"Questionnaire";;"Open";"Through all life";;"Participant";"Participant";;"Integer";;;;;"Subject education level";;;;
+"Health and Risk Factor Questionnaire";"Socioeconomic Characteristics";"Education Level";"Standard level of education";"Education level according to the International Standard Classification of Education (ISCED).";"Healthy Obese|Healthy Obese Prevalence";;"Classification based on the ISCED codes";;;;;"Questionnaire";;"Categorical";"Through all life";;"Participant";"Participant";;;;;;;"Subject education level";;;;
+"Health and Risk Factor Questionnaire";"Socioeconomic Characteristics";"Education Level";"Primary education completed";"Indicator of whether the participant completed at least his primary education/first stage of basic education.";"Healthy Obese|Healthy Obese Prevalence";;"Did not complete primary education | At least primary education completed";;;;"Status";"Questionnaire";;"Categorical";"Through all life";;"Participant";"Participant";;;;;;;"Subject education level";;;;
+"Health and Risk Factor Questionnaire";"Socioeconomic Characteristics";"Education Level";"Secondary education completed";"Indicator of whether the participant completed at least his secondary education/second stage of basic education.";"Healthy Obese|Healthy Obese Prevalence";;"Did not complete secondary education | At least secondary education completed";;;;"Status";"Questionnaire";;"Categorical";"Through all life";;"Participant";"Participant";;;;;;;"Subject education level";;;;
+"Health and Risk Factor Questionnaire";"Socioeconomic Characteristics";"Education Level";"Some elements of post-secondary education completed";"Indicator of whether the participant completed at least some elements of post-secondary education.";"Healthy Obese|Healthy Obese Prevalence";;"Did not complete post-secondary education | At least some elements of post-secondary education completed";;;;"Status";"Questionnaire";;"Categorical";"Through all life";;"Participant";"Participant";;;;;;;"Subject education level";;;;
+"Health and Risk Factor Questionnaire";"Socioeconomic Characteristics";"Education Level";"Some elements of tertiary education completed";"Indicator of whether the participant completed at least some elements of tertiary education.";"Healthy Obese|Healthy Obese Prevalence";;"Did not complete first stage of tertiary education | At least first stage of tertiary education completed";;;;"Status";"Questionnaire";;"Categorical";"Through all life";;"Participant";"Participant";;;;;;;"Subject education level";;;;
+"Health and Risk Factor Questionnaire";"Socioeconomic Characteristics";"Income";"Household income";"Average current annual income, before taxes, of the participant's entire household .";"Healthy Obese|Healthy Obese Prevalence";;;;;;"Quantity";"Questionnaire";;"Open";"Currently";;"Participant";"Participant";;"Integer";;;;;"Income";;;;
+"Health and Risk Factor Questionnaire";"Socioeconomic Characteristics";"Working Status ";"Employment status";"Indicator of whether the participant is currently in paid employment or is self-employed.";"Healthy Obese|Healthy Obese Prevalence";;"No paid employment or not self-employed | Paid employment or self-employed";;;;"Status";"Questionnaire";;"Categorical";"Currently";;"Participant";"Participant";;;;;;;"Subject Working status/history";;;;
+"Health and Risk Factor Questionnaire";"Socioeconomic Characteristics";"Working Status ";"Retirement status";"Indicator of whether the participant is currently retired.";"Healthy Obese|Healthy Obese Prevalence";;"Is not retired | Is retired";;;;"Status";"Questionnaire";;"Categorical";"Currently";;"Participant";"Participant";;;;;;;"Subject Working status/history";;;;
+"Interview Administration";"Administrative Data";"Administrative Data";"Year of interview";"Year of the interview.";"Healthy Obese";"YYYY";;;;;"Date/time";;;"Open";;;;;;"Date";;;;;;;;;
+"Interview Administration";"Administrative Data";"Administrative Data";"Language of interview";"Language of the interview.";"Healthy Obese";;;;;;;;;"Open";;;;;;"Text";;;;;;;;;
+"Interview Administration";"Administrative Data";"Administrative Data";"Location of interview";"Location of the interview";"Healthy Obese";;;;;;"Localization";;;"Open";;;;;;"Text";;;;;;;;;
+"Interview Administration";"Administrative Data";"Administrative Data";"Unique identifier";"Identification number of the participant.";"Healthy Obese";;;;;;;;;"Open";;;;"Participant";;"Integer";;;;;;;;;
+"Physical and Cognitive Measures";"Anthropometric Measures";"Height";"Standing height";"The vertical measurement or distance from the foot to the head of the participant when he/she is standing.";"Healthy Obese";"Centimetres";;"Type of interpretative information for standing height measurement";"Type of contraindication for standing height measurement";;"Quantity";"Direct measure";;"Open";"Currently";;"Interviewer / nurse";"Participant";;"Decimal";;;;;;"Height";;;
+"Physical and Cognitive Measures";"Anthropometric Measures";"Weight";"Weight";"Weight of the participant.";"Healthy Obese";"Kilograms";;"Type of interpretative information for weight measurement";"Type of contraindication for weight measurement";;"Quantity";"Direct measure";;"Open";"Currently";;"Interviewer / nurse";"Participant";;"Decimal";;;;;;"Weight";;;
+"Physical and Cognitive Measures";"Anthropometric Measures";"Body Circumferences";"Hip circumference";"Measured distance around hips.";"Healthy Obese";"Centimetres";;"Type of interpretative information for hip circumference measurement";"Type of contraindication for hip circumference measurement";;"Quantity";"Direct measure";;"Open";"Currently";;"Interviewer / nurse";"Participant";;"Decimal";;;;;;"Anthropometric measures";;;
+"Physical and Cognitive Measures";"Anthropometric Measures";"Body Circumferences";"Waist circumference";"Measured distance around waist.";"Healthy Obese";"Centimetres";;"Type of interpretative information for waist circumference measurement";"Type of contraindication for waist circumference measurement";;"Quantity";"Direct measure";;"Open";"Currently";;"Interviewer / nurse";"Participant";;"Decimal";;;;;;"Anthropometric measures";;;
+"Physical and Cognitive Measures";"Body Composition Measures";"Body Mass Index ";"Body mass index";"Weight (in kg) divided by height (in m) squared.
+Body mass index  =  (Weight) / (Standing height * 0.01)^2";"Healthy Obese";"kg/m2";;;;"Standing height | Contraindication for taking standing height measurement | Information relevant for standing height measurement interpretation | Weight | Contraindication for taking weight measurement | Information relevant for weight measurement interpretation";"Quantity";"Direct measure";;"Open";"Currently";;;"Participant";;"Decimal";;;;;;"Anthropometric measures";;;
+"Physical and Cognitive Measures";"Body Function Measures";"Blood Pressure";"Diastolic blood pressure at rest";"Diastolic blood pressure measured at rest";"Healthy Obese";"mmHg";;"Type of interpretative information for blood pressure measurement | Current prescribed medication";"Type of contraindication for blood pressure measurement";;"Quantity";"Direct measure";;"Open";"Currently";;"Interviewer / nurse";"Participant";;"Integer";;;;;;;"Functions of the cardiovascular and respiratory systems";;
+"Physical and Cognitive Measures";"Body Function Measures";"Blood Pressure";"Systolic blood pressure at rest";"Systolic blood pressure measured at rest";"Healthy Obese";"mmHg";;"Type of interpretative information for blood pressure measurement | Current prescribed medication";"Type of contraindication for blood pressure measurement";;"Quantity";"Direct measure";;"Open";"Currently";;"Interviewer / nurse";"Participant";;"Integer";;;;;;;"Functions of the cardiovascular and respiratory systems";;
+"Physical and Cognitive Measures";"Body Function Measures";"Blood Pressure";"Current antihypertensive medication";"Current treatment for high blood pressure.";"Healthy Obese";;"Currently under treatment for high blood pressure | Not currently under treatment for high blood pressure";;;;"Status";"Questionnaire";"High blood pressure | Hypertension";"Categorical";"Currently";;"Participant";"Participant";;;;;;;;;"Functions of the cardiovascular and respiratory systems";;
+"Physical and Cognitive Measures";"Functions of the respiratory system";"Respiration functions";"Forced vital capacity (FVC)";"Maximal volume of air exhaled with maximum inhalation effort at first measurement ";"Healthy Obese";" Quantitative variable; 
+FVC 1 in litres; ";;;;;;;;;;;;;;;;;;;;;"Functions of the cardiovascular and respiratory systems";;
+"Physical and Cognitive Measures";"Functions of the respiratory system";"Respiration functions";"Forced expiratory volume after 1.0 second (FEV1)";"Volume expired in the first second of the test during a maximum exhalation effort at the first measurement";"Healthy Obese";" Quantitative variable;
+FEV1. 1 in litres; ";;;;;;;;;;;;;;;;;;;;;"Functions of the cardiovascular and respiratory systems";;
+"Physical and Cognitive Measures";"Functions of the respiratory system";"Respiration functions";"FEV1/ FVC";"Ratio of average FEV1 and average FVC multiplied by 100";"Healthy Obese";" Quantitative variable;
+FEV1/FVC in %; ";;;;;;;;;;;;;;;;;;;;;"Functions of the cardiovascular and respiratory systems";;
+"Physical and Cognitive Measures";"Functions of the respiratory system";"Respiration functions";"PEF (Peak expiratory flow)  ";"Highest flow achieved from a maximum forced expiration at first measurement";"Healthy Obese";"Quantitative variable; 
+PEF 1 in liters per second (L/s); ";;;;;;;;;;;;;;;;;;;;;"Functions of the cardiovascular and respiratory systems";;
+"Physical and Cognitive Measures";"Functions of the respiratory system";"Respiration functions";"FET (Forced expiratory time)  ";"Length of the expiration in seconds. ";"Healthy Obese";"Quantitative variable;
+ FET in second; ";;;;;;;;;;;;;;;;;;;;;"Functions of the cardiovascular and respiratory systems";;
+"Physical and Cognitive Measures";"Functions of the respiratory system";"Respiration functions";"Forced expiratory volume after 3.0 seconds (FEV3)  ";"Volume expired in the initial 3 second of the test at the first measurement";"Healthy Obese";" Quantitative variable; 
+FEV3.1 in litres; ";;;;;;;;;;;;;;;;;;;;;"Functions of the cardiovascular and respiratory systems";;
+"Physical and Cognitive Measures";"Functions of the respiratory system";"Respiration functions";"Forced expiratory volume after 2.0 seconds (FEV2)  ";"Volume expired in the initial 2 second of the test at the first measurement";"Healthy Obese";" Quantitative variable; 
+FEV2.1 in litres; ";;;;;;;;;;;;;;;;;;;;;"Functions of the cardiovascular and respiratory systems";;
+"Physical and Cognitive Measures";"Functions of the respiratory system";"Respiration functions";"Forced expiratory flow between 25-75% or 25-50% of the FVC  ";"Average flow (or speed) of air coming out of the lung during the middle portion of the expiration at first measurement";"Healthy Obese";" Quantitative variable; 
+FEV3.1 in litres; ";;;;;;;;;;;;;;;;;;;;;"Functions of the cardiovascular and respiratory systems";;
+"Physical and Cognitive Measures";"Functions of the respiratory system";"Respiration functions";"Forced inspiratory flow between 25-75% or 25-50% of the FVC  ";"Average flow (or speed) of air coming in the lung during the middle portion of the inspiration during a maximum inhalation effort at first measurement";"Healthy Obese";" Quantitative variable; 
+in litres per second; ";;;;;;;;;;;;;;;;;;;;;"Functions of the cardiovascular and respiratory systems";;
+"Sample Collection";"Biochemical Measures Interpretation";"Nutrition";"Consumption of food or drink, excluding plain water, in previous 24 hours";"Indicator of whether the participant had anything to eat or drink other than plain water in the last 24 hours.";"Healthy Obese";;"No consumption of food or drink, excluding plain water, in the last 24 hours[0] | Consumption of food or drink, excluding plain water, in the last 24 hours[1]";;;;"Status";"Questionnaire";;"Categorical";"Currently";;"Participant";"Participant";;;;;"Nutrition";;;;;;
+"Sample Collection";"Biochemical Measures Interpretation";"Nutrition";"Last time food or drink, excluding plain water, was consumed";"The last time food or drink, excluding plain water, was consumed by the  participant in the previous 24 hours.";"Healthy Obese";"HH:MM";;;;;"Date/time";"Questionnaire";;"Open";"Currently";;"Participant";"Participant";;"Time";;;"Nutrition";;;;;;
+"Sample Collection";"Biochemical Measures Interpretation";"Medication Intake";"Current use of lipid lowering medication";"Current treatment to decrease blood lipid level.";"Healthy Obese";;"Currently under lipid lowering treatment
+Not currently under lipid lowering treatment";;;;"Status";;;"Categorical";"Currently";;"Participant";"Participant";;;"Medication Intake (ATC/DDD)";;;;;;;;
+"Sample Collection";"Biochemical Measures Interpretation";"Medication Intake";"Current use of glucose lowering medication";"Current treatment to decrease glucose blood level.";"Healthy Obese|Healthy Obese Prevalence";;"Currently under glucose lowering treatment
+Not currently under glucose lowering treatment";;;;"Status";;;"Categorical";"Currently";;"Participant";"Participant";;;"Medication Intake (ATC/DDD)";;;;;;;;
+"Sample Collection";"Blood Collection";"Blood draw conditions and completion";"Blood collection for serum extraction tube type/model ";;"Healthy Obese";;;;;;;;;;;;;;;;;;;;;;;"Blood";
+"Sample Collection";"Urine Collection";"Urine sample collection conditions and completion";"Urine collection ";"Indicator of the type of urine specimen collected.";"Healthy Obese";;"Random Specimen | First Morning Specimen | Midstream Clean Catch Specimen | 8h Timed Collection Specimen | 24h Timed Collection Specimen";;;;"Status";;;"Categorical";;"Urine";;"Participant";;;;;;;;;;"Blood";
+"Sample Handling";"Serum Handling";"Blood Processing for Serum Extraction";"Serum initial freezing date";"Date on which processed serum sample is first frozen for long-term storage.";"Healthy Obese";"YYYY/MM/DD";;;;;"Date/time";;;"Open";;"Serum";;"Tube";;"Date";;;;;;;;"Serum";
+"Sample Handling";"Urine Handling";"Urine Processing";"Urine initial freezing date";"Date on which processed urine sample is first frozen for long-term storage.";"Healthy Obese";"YYYY/MM/DD";;;;;"Date/time";;;"Open";;"Urine";;"Tube";;"Date";;;;;;;;"Urine";
+"Sample Handling";"Serum Handling";"Blood Processing for Serum Extraction";"SST tube identification";;"Healthy Obese";;"Information not available[7777777777]";;;;"Identification";;;"Open";;"Serum";;"Tube";;"Integer";;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Processing for Serum Extraction";"Technician identification serum processing";;"Healthy Obese";;"Information not available[7777777777]";;;;"Identification";;;"Open";;"Serum";;"Tube";;"Text";;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Processing for Serum Extraction";"Serum sample processing date";;"Healthy Obese";"YYYY/MM/DD";"Information not available[7777/77/77]";;;;"Date/time";;;"Open";;"Serum";;"Tube";;"Date";;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Processing for Serum Extraction";"Serum sample  processing time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Serum";;"Tube";;"Time";;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Processing for Serum Extraction";"Serum initial freezing date";;"Healthy Obese";"YYYY/MM/DD";"Information not available[7777/77/77]";;;;"Date/time";;;"Open";;"Serum";;"Tube";;"Date";;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Processing for Serum Extraction";"Serum initial freezing time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Serum";;"Tube";;"Time";;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Processing for Serum Extraction";"Impact on serum processing";;"Healthy Obese";;"Information not available[7]";;;;;;;"Categorical";;"Serum";;"Tube";;;;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Processing for Serum Extraction";"Information critical to serum processing";;"Healthy Obese";;"Information not available[7]";;;;;;;"Categorical";;"Serum";;"Tube";;;;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Processing for Serum Extraction";"Total number of serum aliquots";;"Healthy Obese";"Aliquots";"Information not available[77]";;;;"Quantity";;;"Open";;"Serum";;"Participant";;"Integer";;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Transport for Serum Extraction";"Serum transport steps";;"Healthy Obese";;"Information not available[7]";;;;"Quantity";;;"Open";;"Serum";;"Tube";;"Integer";;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Transport for Serum Extraction";"Serum transport date";;"Healthy Obese";"YYYY/MM/DD";"Information not available[7777/77/77]";;;;"Date/time";;;"Open";;"Serum";;"Tube";;"Date";;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Transport for Serum Extraction";"Serum transport sending time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Serum";;"Tube";;"Time";;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Transport for Serum Extraction";"Serum transport reception time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Serum";;"Tube";;"Time";;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Transport for Serum Extraction";"Serum transport temperature";;"Healthy Obese";;"Information not available[7]";;;;"Status";;;"Categorical";;"Serum";;"Tube";;;;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Transport for Serum Extraction";"Serum receiving technician identification";;"Healthy Obese";;"Information not available[7777777777]";;;;"Identification";;;"Open";;"Serum";;"Tube";;"Text";;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Transport for Serum Extraction";"Serum temporary storage temperature";;"Healthy Obese";"Degree Celsius";"Information not available[777]";"Direct measure";;;"Quantity";"Direct measure";;"Open";;"Serum";;"Tube";;"Decimal";;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Transport for Serum Extraction";"Impact on serum transport";;"Healthy Obese";;"Information not available[7]";;;;;;;"Categorical";;"Serum";;"Tube";;;;;;;;;;"Serum";
+"Sample Handling";"Serum Handling";"Blood Transport for Serum Extraction";"Information critical about serum transport";;"Healthy Obese";;"Information not available[7]";;;;;;;"Open";;"Serum";;"Tube";;"Text";;;;;;;;"Serum";
+"Sample Handling";"Plasma Handling";"Blood Processing for Plasma Extraction";"EDTA tube identification";;"Healthy Obese";;"Information not available[7777777777]";;;;"Identification";;;"Open";;"Red blood cells | Buffy coat | Plasma";;"Tube";;"Integer";;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Processing for Plasma Extraction";"Technician identification plasma processing";;"Healthy Obese";;"Information not available[7777777777]";;;;"Identification";;;"Open";;"Plasma";;"Tube";;"Text";;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Processing for Plasma Extraction";"Plasma sample processing date";;"Healthy Obese";"YYYY/MM/DD";"Information not available[7777/77/77]";;;;"Date/time";;;"Open";;"Plasma";;"Tube";;"Date";;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Processing for Plasma Extraction";"Plasma sample processing time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Plasma";;"Tube";;"Time";;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Processing for Plasma Extraction";"Plasma initial freezing date";;"Healthy Obese";"YYYY/MM/DD";"Information not available[7777/77/77]";;;;"Date/time";;;"Open";;"Plasma";;"Tube";;"Date";;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Processing for Plasma Extraction";"Plasma initial freezing time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Plasma";;"Tube";;"Time";;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Processing for Plasma Extraction";"Impact on plasma processing";;"Healthy Obese";;"Information not available[7]";;;;;;;"Categorical";;"Plasma";;"Tube";;;;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Processing for Plasma Extraction";"Information critical to plasma processing";;"Healthy Obese";;"Information not available[7]";;;;;;;"Categorical";;"Plasma";;"Tube";;;;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Processing for Plasma Extraction";"Total number of plasma aliquots";;"Healthy Obese";"Aliquots";"Information not available[77]";;;;"Quantity";;;"Open";;"Plasma";;"Participant";;"Integer";;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Transport for Plasma Extraction";"Plasma transport steps";;"Healthy Obese";;"Information not available[7]";;;;"Quantity";;;"Open";;"Plasma";;"Tube";;"Integer";;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Transport for Plasma Extraction";"Plasma transport sending time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Plasma";;"Tube";;"Time";;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Transport for Plasma Extraction";"Plasma transport reception time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Plasma";;"Tube";;"Time";;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Transport for Plasma Extraction";"Plasma transport date";;"Healthy Obese";"YYYY/MM/DD";"Information not available[7777/77/77]";;;;"Date/time";;;"Open";;"Plasma";;"Tube";;"Date";;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Transport for Plasma Extraction";"Plasma transport temperature";;"Healthy Obese";;"Information not available[7]";;;;"Status";;;"Categorical";;"Plasma";;"Tube";;;;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Transport for Plasma Extraction";"Plasma receiving technician identification";;"Healthy Obese";;"Information not available[7777777777]";;;;"Identification";;;"Open";;"Plasma";;"Tube";;"Text";;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Transport for Plasma Extraction";"Plasma temporary storage temperature";;"Healthy Obese";"Degree Celsius";"Information not available[777]";"Direct measure";;;"Quantity";"Direct measure";;"Open";;"Plasma";;"Tube";;"Decimal";;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Transport for Plasma Extraction";"Impact on plasma transport";;"Healthy Obese";;"Information not available[7]";;;;;;;"Categorical";;"Plasma";;"Tube";;;;;;;;;;"Plasma";
+"Sample Handling";"Plasma Handling";"Blood Transport for Plasma Extraction";"Information critical about plasma transport";;"Healthy Obese";;"Information not available[7]";;;;;;;"Open";;"Plasma";;"Tube";;"Text";;;;;;;;"Plasma";
+"Sample Handling";"Red Blood Cells Handling";"Blood Processing for Red Blood Cells Extraction";"EDTA tube identification";;"Healthy Obese";;"Information not available[7777777777]";;;;"Identification";;;"Open";;"Red blood cells | Buffy coat | Plasma";;"Tube";;"Integer";;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Processing for Red Blood Cells Extraction";"Technician identification red blood cell processing";;"Healthy Obese";;"Information not available[7777777777]";;;;"Identification";;;"Open";;"Red blood cells";;"Tube";;"Text";;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Processing for Red Blood Cells Extraction";"Red blood cell sample processing date";;"Healthy Obese";"YYYY/MM/DD";"Information not available[7777/77/77]";;;;"Date/time";;;"Open";;"Red blood cells";;"Tube";;"Date";;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Processing for Red Blood Cells Extraction";"Red blood cell sample processing time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Red blood cells";;"Tube";;"Time";;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Processing for Red Blood Cells Extraction";"Red blood cell initial freezing date";;"Healthy Obese";"YYYY/MM/DD";"Information not available[7777/77/77]";;;;"Date/time";;;"Open";;"Red blood cells";;"Tube";;"Date";;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Processing for Red Blood Cells Extraction";"Red blood cell initial freezing time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Red blood cells";;"Tube";;"Time";;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Processing for Red Blood Cells Extraction";"Impact on red blood cell processing";;"Healthy Obese";;"Information not available[7]";;;;;;;"Categorical";;"Red blood cells";;"Tube";;;;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Processing for Red Blood Cells Extraction";"Information critical to  red blood cells processing";;"Healthy Obese";;"Information not available[7]";;;;;;;"Open";;"Red blood cells";;"Tube";;"Text";;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Processing for Red Blood Cells Extraction";"Total number of red blood cells aliquots";;"Healthy Obese";"Aliquots";"Information not available[77]";;;;"Quantity";;;"Open";;"Red blood cells";;"Participant";;"Integer";;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Transport for Red Blood Cells Extraction";"Red blood cells transport steps";;"Healthy Obese";;"Information not available[7]";;;;"Quantity";;;"Open";;"Red blood cells";;"Tube";;"Integer";;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Transport for Red Blood Cells Extraction";"Red blood cells transport sending time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Red blood cells";;"Tube";;"Time";;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Transport for Red Blood Cells Extraction";"Red blood cells transport reception time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Red blood cells";;"Tube";;"Time";;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Transport for Red Blood Cells Extraction";"Red blood cells transport date";;"Healthy Obese";"YYYY/MM/DD";"Information not available[7777/77/77]";;;;"Date/time";;;"Open";;"Red blood cells";;"Tube";;"Date";;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Transport for Red Blood Cells Extraction";"Red blood cells transport temperature";;"Healthy Obese";;"Information not available[7]";;;;"Status";;;"Categorical";;"Red blood cells";;"Tube";;;;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Transport for Red Blood Cells Extraction";"Red blood cells receiving technician identification";;"Healthy Obese";;"Information not available[7777777777]";;;;"Identification";;;"Open";;"Red blood cells";;"Tube";;"Text";;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Transport for Red Blood Cells Extraction";"Red blood cells temporary storage temperature";;"Healthy Obese";"Degree Celsius";"Information not available[777]";"Direct measure";;;"Quantity";"Direct measure";;"Open";;"Red blood cells";;"Tube";;"Decimal";;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Transport for Red Blood Cells Extraction";"Impact on red blood cells transport";;"Healthy Obese";;"Information not available[7]";;;;;;;"Categorical";;"Red blood cells";;"Tube";;;;;;;;;;"Red blood cells";
+"Sample Handling";"Red Blood Cells Handling";"Blood Transport for Red Blood Cells Extraction";"Information critical about red blood cells transport";;"Healthy Obese";;"Information not available[7]";;;;;;;"Open";;"Red blood cells";;"Tube";;"Text";;;;;;;;"Red blood cells";
+"Sample Handling";"Buffy Coat Handling";"Blood Processing for Buffy Coat Extraction";"EDTA tube identification";;"Healthy Obese";;"Information not available[7777777777]";;;;"Identification";;;"Open";;"Red blood cells | Buffy coat | Plasma";;"Tube";;"Integer";;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Processing for Buffy Coat Extraction";"Technician identification buffy coat processing";;"Healthy Obese";;"Information not available[7777777777]";;;;"Identification";;;"Open";;"Buffy coat";;"Tube";;"Text";;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Processing for Buffy Coat Extraction";"Buffy coat sample processing date";;"Healthy Obese";"YYYY/MM/DD";"Information not available[7777/77/77]";;;;"Date/time";;;"Open";;"Buffy coat";;"Tube";;"Date";;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Processing for Buffy Coat Extraction";"Buffy coat sample processing time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Buffy coat";;"Tube";;"Time";;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Processing for Buffy Coat Extraction";"Buffy coat initial freezing date";;"Healthy Obese";"YYYY/MM/DD";"Information not available[7777/77/77]";;;;"Date/time";;;"Open";;"Buffy coat";;"Tube";;"Date";;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Processing for Buffy Coat Extraction";"Buffy coat initial freezing time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Buffy coat";;"Tube";;"Time";;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Processing for Buffy Coat Extraction";"Impact on buffy coat processing";;"Healthy Obese";;"Information not available[7]";;;;;;;"Categorical";;"Buffy coat";;"Tube";;;;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Processing for Buffy Coat Extraction";"Information critical to buffy coat processing";;"Healthy Obese";;"Information not available[7]";;;;;;;"Categorical";;"Buffy coat";;"Tube";;;;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Processing for Buffy Coat Extraction";"Total number of buffy coat aliquots";;"Healthy Obese";"Aliquots";"Information not available[77]";;;;"Quantity";;;"Open";;"Buffy coat";;"Participant";;"Integer";;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Transport for Buffy Coat Extraction";"Buffy coat transport steps";;"Healthy Obese";;"Information not available[7]";;;;"Quantity";;;"Open";;"Buffy coat";;"Tube";;"Integer";;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Transport for Buffy Coat Extraction";"Buffy coat transport sending time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Buffy coat";;"Tube";;"Time";;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Transport for Buffy Coat Extraction";"Buffy coat transport reception time";;"Healthy Obese";"HH:MM";"Information not available[77:77]";;;;"Date/time";;;"Open";;"Buffy coat";;"Tube";;"Time";;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Transport for Buffy Coat Extraction";"Buffy coat transport date";;"Healthy Obese";"YYYY/MM/DD";"Information not available[7777/77/77]";;;;"Date/time";;;"Open";;"Buffy coat";;"Tube";;"Date";;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Transport for Buffy Coat Extraction";"Buffy coat transport temperature";;"Healthy Obese";;"Information not available[7]";;;;"Status";;;"Categorical";;"Buffy coat";;"Tube";;;;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Transport for Buffy Coat Extraction";"Buffy coat receiving technician identification";;"Healthy Obese";;"Information not available[7777777777]";;;;"Identification";;;"Open";;"Buffy coat";;"Tube";;"Text";;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Transport for Buffy Coat Extraction";"Buffy coat temporary storage temperature";;"Healthy Obese";"Degree Celsius";"Information not available[777]";"Direct measure";;;"Quantity";"Direct measure";;"Open";;"Buffy coat";;"Tube";;"Decimal";;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Transport for Buffy Coat Extraction";"Impact on buffy coat transport";;"Healthy Obese";;"Information not available[7]";;;;;;;"Categorical";;"Buffy coat";;"Tube";;;;;;;;;;"Buffy coat";
+"Sample Handling";"Buffy Coat Handling";"Blood Transport for Buffy Coat Extraction";"Information critical about buffy coat transport";;"Healthy Obese";;"Information not available[7]";;;;;;;"Open";;"Buffy coat";;"Tube";;"Text";;;;;;;;"Buffy coat";
+"Sample Handling";"Urine Shipment";"Urine sample transport conditions and completion";"Urine shippment mode";;"Healthy Obese";;"Information not available";;;;;;;"Categorical";;"Urine";;;;;;;;;;;;"Urine";
+"Sample Handling";"Urine Shipment";"Urine sample transport conditions and completion";"Urine transport sending date";;"Healthy Obese";"YYYY:MM:DD";"Information not available";;;;"Date/time";;;"Open";;"Urine";;;;"Date";;;;;;;;"Urine";
+"Sample Handling";"Urine Shipment";"Urine sample transport conditions and completion";"Urine transport reception  date";;"Healthy Obese";"YYYY:MM:DD";"Information not available";;;;"Date/time";;;"Open";;"Urine";;;;"Date";;;;;;;;"Urine";
+"Sample Handling";"Urine Shipment";"Urine sample transport conditions and completion";"Urine transport reception time";;"Healthy Obese";"HH:MM";"Information not available";;;;"Date/time";;;"Open";;"Urine";;;;"Time";;;;;;;;"Urine";
+"Sample Handling";"Urine Shipment";"Urine sample transport conditions and completion";"Urine receiving location";;"Healthy Obese";;"Information not available";;;;"Localization";;;"Categorical";;"Urine";;;;;;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Processing ";"Tube identification";;"Healthy Obese";;;;;;;;;"Open";;;;;;"Integer";;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Processing ";"Technician identification urine processing ";;"Healthy Obese";;;;;;;;;"Open";;;;;;"Integer";;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Processing ";"Urine sample processing date";;"Healthy Obese";;;;;;;;;"Open";;;;;;"Date";;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Processing ";"Urine sample processing time";;"Healthy Obese";;;;;;;;;"Open";;;;;;"Time";;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Processing ";"Urine initial freezing date";;"Healthy Obese";;;;;;;;;"Open";;;;;;"Date";;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Processing ";"Urine initial freezing time";;"Healthy Obese";;;;;;;;;"Open";;;;;;"Time";;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Processing ";"Impact on urine processing
+";;"Healthy Obese";;;;;;;;;"Category";;;;;;;;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Processing ";"Information critical to urine processing
+";;"Healthy Obese";;;;;;;;;"Category";;;;;;;;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Processing ";"Total number of urine aliquots
+
+";;"Healthy Obese";;;;;;;;;"Open";;;;;;"Integer";;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Transport";"Urine transport steps";;"Healthy Obese";;;;;;;;;"Open ";;;;;;"Integer";;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Transport";"Urine shipment sending time";;"Healthy Obese";;;;;;;;;"Open";;;;;;"Time";;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Transport";"Urine shipment reception time";;"Healthy Obese";;;;;;;;;"Open";;;;;;"Time";;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Transport";"Urine shipment date";;"Healthy Obese";;;;;;;;;"Open";;;;;;"Date";;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Transport";"Urine shipment temperature";;"Healthy Obese";;;;;;;;;"Category";;;;;;;;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Transport";"Receiving technician identification ";;"Healthy Obese";;;;;;;;;"Open";;;;;;"Text";;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Transport";"Urine temporary storage temperature";;"Healthy Obese";;;;;;;;;"Open";;;;;;"Integer";;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Transport";"Impact on urine transport";;"Healthy Obese";;;;;;;;;"Category";;;;;;;;;;;;;;"Urine";
+"Sample Handling";"Urine Handling";"Urine Transport";"Information critical about urine transport";;"Healthy Obese";;;;;;;;;"Open";;;;;;"Text";;;;;;;;"Urine";
+"Sample Banking";"Serum Aliquots Preservation";"Serum Aliquot Storage";"Serum storage temperature";"Temperature at which the serum sample is stored.";"Healthy Obese";"Degrees Celsius";;;;;"Quantity";;;"Open";;"Serum";;"Tube";;"Decimal";;;;;;;;"Serum";
+"Sample Banking";"Urine Preservation";"Urine Sample Storage";"Urine storage temperature";"Temperature at which the urine sample is stored.";"Healthy Obese";"Degrees Celsius";;;;;"Quantity";;;"Open";;"Urine";;"Tube";;"Decimal";;;;;;;;"Urine";
+"Survey Administration";"Administrative Data";"Sample Collection Administrative Data";"Date of blood collection";"Date on which the blood sample is collected.";"Healthy Obese";"YYYY/MM/DD";;;;;"Date/time";;;"Open";;;;;;"Date";;;;;;;;"Blood";
+"Survey Administration";"Administrative Data";"Sample Collection Administrative Data";"Date of urine collection";"Date on which the urine sample is collected.";"Healthy Obese";"YYYY";;;;;"Date/time";;;"Open";;;;;;"Date";;;;;;;;"Urine";
+"Biochemical Profiles";"Serum Profile";"Lipid profile";"Total Cholesterol";"Total Cholesterol Blood level ";"Healthy Obese";"mg/dL or  mmol/l ?";;;;;"Quantity";;;"Open";;"Serum";;"Tube";;"Decimal";;;;;;;;"Serum";
+"Biochemical Profiles";"Serum Profile";"Lipid profile";"LDL Cholesterol";"LDL Cholesterol Blood level ";"Healthy Obese";"mg/dL or  mmol/l ?";;;;;"Quantity";;;"Open";;"Serum";;"Tube";;"Decimal";;;;;;;;"Serum";
+"Biochemical Profiles";"Serum Profile";"Lipid profile";"HDL Cholesterol";"HDL Cholesterol Blood level ";"Healthy Obese";"mg/dL or  mmol/l ?";;;;;"Quantity";;;"Open";;"Serum";;"Tube";;"Decimal";;;;;;;;"Serum";
+"Biochemical Profiles";"Serum Profile";"Lipid profile";"Triglycerides";"Triglycerid Blood level ";"Healthy Obese";"mg/dL or  mmol/l ?";;;;;"Quantity";;;"Open";;"Serum";;"Tube";;"Decimal";;;;;;;;"Serum";
+"Biochemical Profiles";"Serum Profile";"Glucidic profile";"Glucose ";"Glucose blood level";"Healthy Obese|Healthy Obese Prevalence";"mg/dL or  mmol/l ?";;;;;"Quantity";;;"Open";;"Serum";;"Tube";;"Decimal";;;;;;;;"Serum";
+"Biochemical Profiles";"Serum Profile";"Kidney function blood profile";"Serum creatinine ";"Creatine level in blood serum ";"Healthy Obese";"mg/dL or  umol/l ?";;;;;"Quantity";;;"Open";;"Serum";;"Tube";;"Decimal";;;;;;;;"Serum";
+"Biochemical Profiles";"Serum Profile";"Inflammatory markers profile";"High-sensitivity CRP (hsCRP)";"High-sensitivity CRP (HsCRP) Blood level ";"Healthy Obese";"mg/L";;;;;"Quantity";;;"Open";;"Serum";;"Tube";;"Decimal";;;;;;;;"Serum";
+"Biochemical Profiles";"Urine Profile";"Kidney function urine profile";"Urine creatinine ";"Total creatinine level in urine.";"Healthy Obese";"mg/dL or  umol/l ?";;;;;"Quantity";;;"Open";;"Urine";;"Tube";;"Decimal";;;;;;;;"Urine";
+"Biochemical Profiles";"Urine Profile";"Kidney function urine profile";"Albumin ";"Albumin Urine level ";"Healthy Obese";"g/dL";;;;;"Quantity";;;"Open";;"Urine";;"Tube";;"Decimal";;;;;;;;"Urine";
+"Sample Analysis";"Biochemical Measure Analysis Interpretation";"Biochemical Measure Analysis Equipment";"Biochemical measurement equipment device manufacturer";"Manufacturer of the equipment used for biochemical measurement.";"Healthy Obese";;;;;;"Identification";;;"Open";;;;"Tube";;"Text";;;;;;;;;
+"Sample Analysis";"Biochemical Measure Analysis Interpretation";"Biochemical Measure Analysis Equipment";"Biochemical measurement equipment device model";"The model number of the equipment used for biochemical sample measurement.";"Healthy Obese";;;;;;"Identification";;;"Open";;;;"Tube";;"Text";;;;;;;;;
+"Sample Analysis";"Biochemical Measure Analysis Interpretation";"Biochemical Measure Analysis Equipment";"Biochemical measurement standardization";"Indicator of whether a standardization method was used for biochemical measurements.";"Healthy Obese";;"No use of biochemical measurement standardization method [0] | Use of biochemical measurement standardization method [1]";;;;"Status";;;"Categorical";;;;"Tube";;;;;;;;;;;
+"Sample Analysis";"Biochemical Measure Analysis Interpretation";"Biochemical Measure Analysis Equipment";"Biochemical measurement standardization type";"Type of standardization used for biochemical measurement.";"Healthy Obese";;;;;;;;;"Open";;;;"Tube";;"Text";;;;;;;;;
+"Sample Analysis";"Biochemical Measure Analysis Interpretation";"Biochemical Measure Analysis Measurement";"Biochemical measurement method";"Method used for biochemical measurement";"Healthy Obese";;;;;;;;;"Open";;;;"Tube";;"Text";;;;;;;;;
+"Sample Analysis";"Biochemical Measure Analysis Interpretation";"Biochemical Measure Analysis Measurement";"Biochemical measurement date";"Year in which biochemical sample was measured";"Healthy Obese";;;;;;"Date/time";;;"Open";;;;"Tube";;"Date";;;;;;;;;
+"Sample Analysis";"Biochemical Measure Analysis Interpretation";"Biochemical Measure Analysis Measurement";"Biochemical measurement date";"Year in which biochemical sample was measured";"Healthy Obese";;;;;;"Date/time";;;"Open";;;;"Tube";;"Date";;;;;;;;;
+"Sample Analysis";"Biochemical Measure Analysis Interpretation";"Biochemical Measure Analysis Measurement";"Blood Material Source for biochemical analyses";"Blood material in which the biochemical analyses have been done";"Healthy Obese";;"EDTA | Serum | Other";;;;;;;;;;;;;;;;;;;;;;
+"Sample Analysis";"Biochemical Measure Analysis Interpretation";"Biochemical Measure Analysis Measurement";"Blood Material Source for biochemical analyses, other specify";"Other type of blood material then EDTA or Serum in which the biochemical analyses have been done";"Healthy Obese";;;;;;;;;"Open";;;;"Tube";;"Text";;;;;;;;;
+"Sample Analysis";"Biochemical Measure Analysis Interpretation";"Biochemical Measure Analysis Measurement";"Urine Material Source for biochemical analyses";"Urine material in which the biochemical analyses have been done";"Healthy Obese";;"Single Spot Urine | Early Morning Sample | Sample from 24-hour urine collection | Other";;;;;;;"Categorical";;"Urine";;"Tube";;;;;;;;;;;
+"Sample Analysis";"Biochemical Measure Analysis Interpretation";"Biochemical Measure Analysis Measurement";"Urine Material Source for biochemical analyses, other specify";"Other type of urine material then single spot urine, early morning sample, or sample from 24-hour urine collection, in which the biochemical analyses have been done";"Healthy Obese";;;;;;;;;"Open";;"Urine";;"Tube";;"Text";;;;;;;;;
+;;;"Occurrence of cancer";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Type of cancer";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Type of cancer onset";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of diabetes";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Type of diabetes";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Diabetes onset";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of high blood pressure";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"High blood pressure onset";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current treatment for high blood pressure";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of stroke";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Stroke onset";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of myocardial infarction";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Myocardial infarction onset";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of depression";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Depression onset";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of chronic obstructive pulmonary disease";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Chronic obstructive pulmonary disease onset";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of asthma";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Asthma onset";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of arthritis";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Arthritis onset";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Type of arthritis";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Name of other type of arthritis";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of osteoporosis";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Osteoporosis onset";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of fractures";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Number of fractures";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current prescribed medication intake status";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current prescribed medication";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of diabetes in the family";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of high blood pressure in the family";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of stroke in the family";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of stroke in the family before 65";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of myocardial infarction in the family";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Occurrence of myocardial infarction in the family before 65 ";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Ever smoked cigarettes";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current cigarette smoker";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current quantity of cigarettes smoked";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Ever alcohol consumption";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current use of alcohol";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current quantity of red wine consumed";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current quantity of white wine consumed";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current quantity of wine consumed";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current quantity of beer consumed";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current quantity of liquor consumed";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Level of physical activity";;;;"Not applicable";;;;;;;;;;;;;;;;;;;;;;
+;;;"Total physical activity";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"Total walking activity";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"Total moderate intensity activity";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"Total vigorous intensity activity";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"Caffeinated beverages consumption";;;;"Don't know | Prefer not to answer";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current country of residence";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current region of residence";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current town of residence";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current postal code";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Country of birth";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Region of birth";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Town of birth";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Number of biological siblings";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Birth rank";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Born in a multiple birth";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Marital status";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Living with partner";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Number of people in the household";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Gender";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Participant's age at recruitment";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Birth year ";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Highest level of education";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Number of years of education";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Standard level of education";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Primary education completed";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Secondary education completed";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Some elements of post-secondary education completed";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Some elements of tertiary education completed";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Household income";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Employment status";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Retirement status";;;;"Prefer not to answer | Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Year of interview";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Language of interview";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Location of interview";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Unique identifier";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Standing height";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Weight";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Hip circumference";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Waist circumference";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Body mass index";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Diastolic blood pressure at rest";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Systolic blood pressure at rest";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Current antihypertensive medication";;;;"Not applicable";;;;;;;;;;;;;;;;;;;;;;
+;;;"Forced vital capacity (FVC)";;;;"Not applicable";;;;;;;;;;;;;;;;;;;;;;
+;;;"Forced expiratory volume after 1.0 second (FEV1)";;;;"Not applicable";;;;;;;;;;;;;;;;;;;;;;
+;;;"FEV1/ FVC";;;;"Not applicable";;;;;;;;;;;;;;;;;;;;;;
+;;;"PEF (Peak expiratory flow)  ";;;;"Not applicable";;;;;;;;;;;;;;;;;;;;;;
+;;;"FET (Forced expiratory time)  ";;;;"Not applicable";;;;;;;;;;;;;;;;;;;;;;
+;;;"Forced expiratory volume after 3.0 seconds (FEV3)  ";;;;"Not applicable";;;;;;;;;;;;;;;;;;;;;;
+;;;"Forced expiratory volume after 2.0 seconds (FEV2)  ";;;;"Not applicable";;;;;;;;;;;;;;;;;;;;;;
+;;;"Forced expiratory flow between 25-75% or 25-50% of the FVC  ";;;;"Not applicable";;;;;;;;;;;;;;;;;;;;;;
+;;;"Forced inspiratory flow between 25-75% or 25-50% of the FVC  ";;;;"Not applicable";;;;;;;;;;;;;;;;;;;;;;
+;;;"Consumption of food or drink, excluding plain water, in previous 24 hours";;;;"Prefer not to answer[8] | Don't know[9]";;;;;;;;;;;;;;;;;;;;;;
+;;;"Last time food or drink, excluding plain water, was consumed";;;;"Prefer not to answer[88:88] | Don't know[99:99]";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current use of lipid lowering medication";;;;"Prefer not to answer
+Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Current use of glucose lowering medication";;;;"Prefer not to answer
+Don't know";;;;;;;;;;;;;;;;;;;;;;
+;;;"Blood collection for serum extraction tube type/model ";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine collection ";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"Serum initial freezing date";;;;"Information not available[7777/77/77]";;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine initial freezing date";;;;"Information not available[7777/77/77]";;;;;;;;;;;;;;;;;;;;;;
+;;;"SST tube identification";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Technician identification serum processing";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Serum sample processing date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Serum sample  processing time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Serum initial freezing date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Serum initial freezing time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Impact on serum processing";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Information critical to serum processing";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Total number of serum aliquots";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Serum transport steps";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Serum transport date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Serum transport sending time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Serum transport reception time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Serum transport temperature";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Serum receiving technician identification";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Serum temporary storage temperature";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Impact on serum transport";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Information critical about serum transport";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"EDTA tube identification";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Technician identification plasma processing";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Plasma sample processing date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Plasma sample processing time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Plasma initial freezing date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Plasma initial freezing time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Impact on plasma processing";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Information critical to plasma processing";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Total number of plasma aliquots";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Plasma transport steps";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Plasma transport sending time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Plasma transport reception time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Plasma transport date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Plasma transport temperature";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Plasma receiving technician identification";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Plasma temporary storage temperature";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Impact on plasma transport";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Information critical about plasma transport";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"EDTA tube identification";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Technician identification red blood cell processing";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Red blood cell sample processing date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Red blood cell sample processing time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Red blood cell initial freezing date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Red blood cell initial freezing time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Impact on red blood cell processing";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Information critical to  red blood cells processing";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Total number of red blood cells aliquots";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Red blood cells transport steps";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Red blood cells transport sending time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Red blood cells transport reception time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Red blood cells transport date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Red blood cells transport temperature";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Red blood cells receiving technician identification";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Red blood cells temporary storage temperature";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Impact on red blood cells transport";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Information critical about red blood cells transport";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"EDTA tube identification";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Technician identification buffy coat processing";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Buffy coat sample processing date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Buffy coat sample processing time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Buffy coat initial freezing date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Buffy coat initial freezing time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Impact on buffy coat processing";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Information critical to buffy coat processing";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Total number of buffy coat aliquots";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Buffy coat transport steps";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Buffy coat transport sending time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Buffy coat transport reception time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Buffy coat transport date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Buffy coat transport temperature";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Buffy coat receiving technician identification";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Buffy coat temporary storage temperature";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Impact on buffy coat transport";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Information critical about buffy coat transport";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine shippment mode";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine transport sending date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine transport reception  date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine transport reception time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine receiving location";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Tube identification";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Technician identification urine processing ";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine sample processing date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine sample processing time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine initial freezing date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine initial freezing time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Impact on urine processing
+";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Information critical to urine processing
+";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Total number of urine aliquots
+
+";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine transport steps";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine shipment sending time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine shipment reception time";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine shipment date";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine shipment temperature";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Receiving technician identification ";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine temporary storage temperature";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Impact on urine transport";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Information critical about urine transport";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Serum storage temperature";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine storage temperature";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"Date of blood collection";;;;"Information not available[7]";;;;;;;;;;;;;;;;;;;;;;
+;;;"Date of urine collection";;;;"Information not available[7]";;;;;;;;;;;;;;;;;;;;;;
+;;;"Total Cholesterol";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"LDL Cholesterol";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"HDL Cholesterol";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"Triglycerides";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"Glucose ";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"Serum creatinine ";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"High-sensitivity CRP (hsCRP)";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine creatinine ";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"Albumin ";;;;"Information not available";;;;;;;;;;;;;;;;;;;;;;
+;;;"Biochemical measurement equipment device manufacturer";;;;"Information not available[7]";;;;;;;;;;;;;;;;;;;;;;
+;;;"Biochemical measurement equipment device model";;;;"Information not available[7]";;;;;;;;;;;;;;;;;;;;;;
+;;;"Biochemical measurement standardization";;;;"Information not available[7]";;;;;;;;;;;;;;;;;;;;;;
+;;;"Biochemical measurement standardization type";;;;"Information not available[7]";;;;;;;;;;;;;;;;;;;;;;
+;;;"Biochemical measurement method";;;;"Information not available[7]";;;;;;;;;;;;;;;;;;;;;;
+;;;"Biochemical measurement date";;;;"Information not available[7]";;;;;;;;;;;;;;;;;;;;;;
+;;;"Biochemical measurement date";;;;"Information not available[7]";;;;;;;;;;;;;;;;;;;;;;
+;;;"Blood Material Source for biochemical analyses";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Blood Material Source for biochemical analyses, other specify";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine Material Source for biochemical analyses";;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;"Urine Material Source for biochemical analyses, other specify";;;;;;;;;;;;;;;;;;;;;;;;;;

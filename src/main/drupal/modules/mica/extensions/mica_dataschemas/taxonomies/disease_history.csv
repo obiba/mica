@@ -1,31 +1,55 @@
-"Certain infectious and parasitic diseases"
-"Neoplasms"
-"Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism"
-"Endocrine, nutritional and metabolic diseases"
-"Mental and behavioural disorders"
-"Diseases of the nervous system"
-"Diseases of the eye and adnexa"
-"Diseases of the ear and mastoid process"
-"Diseases of the circulatory system"
-"Diseases of the respiratory system"
-"Diseases of the digestive system"
-"Diseases of the skin and subcutaneous tissue"
-"Diseases of the musculoskeletal system and connective tissue"
-"Diseases of the genitourinary system"
-"Pregnancy, childbirth and the puerperium"
-"Certain conditions originating in the perinatal period"
-"Congenital malformations, deformations and chromosomal abnormalities"
-"Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified"
-,"Symptoms and signs involving the circulatory and respiratory systems"
-,"Symptoms and signs involving the digestive system and abdomen"
-,"Symptoms and signs involving the skin and subcutaneous tissue"
-,"Symptoms and signs involving the nervous and musculoskeletal systems"
-,"Symptoms and signs involving the urinary system"
-,"Symptoms and signs involving cognition, perception, emotional state and behaviour"
-,"Symptoms and signs involving speech and voice"
-,"General symptoms and signs"
-,"Abnormal findings on examination of blood, without diagnosis"
-,"Abnormal findings on examination of urine, without diagnosis"
-"Injury, poisoning and certain other consequences of external causes"
-"External causes of morbidity and mortality"
-"Factors influencing health status and contact with health services"
+"Human Immunodefiency Virus",,
+"Cancer ",,
+,"Stomach cancer",
+,"Colon cancer",
+,"Rectal cancer",
+,"Breast cancer",
+,"Prostate Cancer ",
+,"Lung cancer",
+"Diabetes",,
+,"Gestational Diabetes",
+,"Insulin-dependent diabetes mellitus (IDDM)",
+,"Non-Insulin-dependent diabetes mellitus (NIDDM)",
+"Depression",,
+,"Major depression/Severe depression",
+"Multiple Sclerosis",,
+"Retinopathy",,
+"Hypertension/High blood pressure",,
+"Cerebrovascular disease",,
+,"Stroke",
+,"Transient Ischaemic Attack",
+,"Ischaemic Heart Disease",
+,,"Acute Ischaemic Heart Disease"
+,,"Subacute Ischaemic Heart Disease"
+,"Subarachnoid hemmorhage",
+,"Occlusion and stenosis of the precerebral",
+,"Occlusion of cerebral arteries",
+"Myocardial infarction",,
+"Congestive Heart Failure",,
+"Peripheral Vascular Disease",,
+"Hemophilia",,
+"Chronic obstructive pulmonary disease ",,
+,"Chronic bronchitis",
+,"Emphysema",
+"Asthma",,
+"Sinusitis",,
+"Nasal Polyps",,
+"Irritable Bowel Syndrome",,
+"Chrohn's Disease",,
+"Ulcerative Colitis",,
+"Liver Cirrhosis",,
+"Chronic Hepatitis",,
+"Peritonitis",,
+"Encapsulating peritoneal sclerosis",,
+"Psoriasis",,
+"Eczema",,
+"Arthritis ",,
+,"Osteoarthritis",
+,"Rhumatoid  Arthritis",
+"Osteoporosis",,
+"Systemic Lupus Erythematosus",,
+"Chronic Kidney Disease",,
+,"Chronic kidney disease, Stage 1 to IV",
+"Polyoma Virus Nephropathy",,
+"Fractures",,
+"Allergies",,

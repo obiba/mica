@@ -40,26 +40,27 @@ function mica_dataschemas_insert(&$node) {
 function mica_dataschemas_menu_local_tasks_alter(&$data, $router_item, $root_path) {
 	$links = array();
     
-  if ($root_path == 'node/%') {
+	if ($root_path == 'node/%') {
 		$node = node_load($router_item['page_arguments'][0]->nid);
 
-		if ($node != NULL && $node->type == 'dataschema' && node_access('view', $node)) {
-    	$name = t('View Variables');
-   		$filter_field = 'field_dataschema_ref';
+		if ($node != NULL && $node->type == 'dataschema' && node_access('view', $node) ) {
+    		$name = t('View Variables');
+    		$filter_field = 'field_dataschema_ref';
 		}
 		
 		// Add link if DataSchema
-		if (isset($name)) {
-   		$href = url('dataschema-variables') .'&filter['.$filter_field.'][0]="' . $router_item['page_arguments'][0]->nid . '"';
-   		$links['view-dataschema-variables'] = array(
-     		'#weight' => 30,
-     		'#theme' => 'menu_local_action',
-     		'#link' => array(
-     			'title' => t('<a class="highlight" href="@url">!name</a>', array('!name' => $name, '@url' => $href)),
-     			'localized_options' => array('html' => TRUE),
- 		    ),
-   		);
-    	$data['actions']['output'] = array_merge($data['actions']['output'], $links);
+		if (isset($name)){
+    		$href = url('dataschema-variables') .'&filter['.$filter_field.'][0]="' . $router_item['page_arguments'][0]->nid . '"';
+    		$links['view-dataschema-variables'] = array(
+        		'#weight' => 30,
+          		'#theme' => 'menu_local_action',
+          		'#link' => array(
+            			'title' => t('<a class="highlight" href="@url">!name</a>', array('!name' => $name, '@url' => $href)),
+            			'localized_options' => array('html' => TRUE),
+    		    ),
+    		);
+    		
+    		$data['actions']['output'] = array_merge($data['actions']['output'], $links);
 		}
 	}
 }
@@ -101,25 +102,31 @@ function mica_dataschemas_entity_view($entity, $type, $view_mode, $langcode){
 }
 
 function _mica_dataschemas_import_taxonomies() {
-  _mica_dataschemas_import_taxonomy('body_functions.csv', 'Body functions');
-  _mica_dataschemas_import_taxonomy('body_structures.csv', 'Body structure');
+//   _mica_dataschemas_import_taxonomy('body_functions.csv', 'Body functions');
+//   _mica_dataschemas_import_taxonomy('body_structures.csv', 'Body structure');
+//   _mica_dataschemas_import_taxonomy('disease.csv', 'Disease');
+//   _mica_dataschemas_import_taxonomy('medical_health_intervention.csv', 'Medical health intervention (C239)');
+//   _mica_dataschemas_import_taxonomy('physical_environment.csv', 'Physical environment');
+//   _mica_dataschemas_import_taxonomy('social_environment.csv', 'Social environment');
+//   _mica_dataschemas_import_taxonomy('socioeconomic_characteristics.csv', 'Socioeconomic characteristics');
+  _mica_dataschemas_import_taxonomy('body_functions_measures.csv', 'Body functions and measures');
+  _mica_dataschemas_import_taxonomy('biochemical_measures.csv', 'Biochemical measures');
   _mica_dataschemas_import_taxonomy('class.csv', 'Class');
   _mica_dataschemas_import_taxonomy('collection_mode.csv', 'Collection mode');
-  _mica_dataschemas_import_taxonomy('disease_history.csv', 'Disease history (ICD10)');
-  _mica_dataschemas_import_taxonomy('disease.csv', 'Disease');
+  _mica_dataschemas_import_taxonomy('disease_history.csv', 'Disease history');
+  _mica_dataschemas_import_taxonomy('environmental_exposures.csv', 'Environmental exposures');
   _mica_dataschemas_import_taxonomy('format.csv', 'Format');
   _mica_dataschemas_import_taxonomy('health_information.csv', 'Health information');
   _mica_dataschemas_import_taxonomy('life_habits_behaviours.csv', 'Life habits / Behaviours');
-  _mica_dataschemas_import_taxonomy('medical_health_intervention.csv', 'Medical health intervention (C239)');
+  _mica_dataschemas_import_taxonomy('medication.csv', 'Medication');
   _mica_dataschemas_import_taxonomy('period.csv', 'Period');
-  _mica_dataschemas_import_taxonomy('physical_environment.csv', 'Physical environment');
+  _mica_dataschemas_import_taxonomy('reproductive_history.csv', 'Reproductive history');
   _mica_dataschemas_import_taxonomy('sample.csv', 'Sample');
-  _mica_dataschemas_import_taxonomy('social_environment.csv', 'Social environment');
   _mica_dataschemas_import_taxonomy('sociodemographic_characteristics.csv', 'Sociodemographic characteristics');
-  _mica_dataschemas_import_taxonomy('socioeconomic_characteristics.csv', 'Socioeconomic characteristics');
   _mica_dataschemas_import_taxonomy('source_of_information.csv', 'Source of information');
-  _mica_dataschemas_import_taxonomy('target_gender.csv', 'Target gender');
   _mica_dataschemas_import_taxonomy('target.csv', 'Target');
+  _mica_dataschemas_import_taxonomy('target_gender.csv', 'Target gender');
+  _mica_dataschemas_import_taxonomy('therapeutic_interventions.csv', 'Therapeutic interventions');
   _mica_dataschemas_import_taxonomy('type.csv', 'Type');
 }
 
