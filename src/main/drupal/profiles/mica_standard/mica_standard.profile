@@ -27,12 +27,14 @@ function mica_standard_install_tasks($install_state){
 function mica_user_permission_rebuild() {
   module_load_include('inc', 'features', 'includes/features.user');
   module_load_include('inc', 'features', 'features.export');
-  user_permission_features_rebuild('mica_community');
-  user_permission_features_rebuild('mica_data_access');
-  user_permission_features_rebuild('mica_datasets');
-  user_permission_features_rebuild('mica_projects');
-  user_permission_features_rebuild('mica_studies');
-  user_permission_features_rebuild('mica_dataschemas');
+  
+  // rebuild all mica modules permissions
+  $length = strlen('mica_');
+  foreach (module_list() as $module) {
+    if (substr($module, 0, $length) === 'mica_') {
+      user_permission_features_rebuild($module);
+    }
+  }
 }
 
 function mica_import_default_feeds($install_state){
