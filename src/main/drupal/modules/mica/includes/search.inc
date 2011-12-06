@@ -258,9 +258,8 @@ function _mica_magma_search_index_type_mapping() {
  */
 function _mica_configure_search_block($facet, $module, $module_item) {
 
-  db_update('block')
-  ->fields(array(
-        'custom' => BLOCK_CUSTOM_ENABLED, // Show this block by default but let individual users hide it.
+  db_update('block')->fields(array(
+  	'custom' => BLOCK_CUSTOM_ENABLED, // Show this block by default but let individual users hide it.
   ))
   ->condition('module', $module)
   ->condition('delta', $facet->delta)
@@ -269,17 +268,17 @@ function _mica_configure_search_block($facet, $module, $module_item) {
   $theme_default = variable_get('theme_default', 'mica_samara');
 
   $max_weight = db_query("SELECT MAX(weight) as max_weight FROM {block} WHERE module = :module AND theme = :theme and region = :region",
-  array(
-                    ':module' => $module, 
-                    ':theme' => $theme_default, 
-                    ':region' => 'sidebar_first',
-  ))->fetchField();
+    array(
+      ':module' => $module, 
+      ':theme' => $theme_default, 
+      ':region' => 'sidebar_first'
+    )
+  )->fetchField();
 
-  db_update('block')
-  ->fields(array(
-        'status' => TRUE,
-        'region' => 'sidebar_first',
-        'weight' => empty($max_weight) ? 0 : ($max_weight + 1),
+  db_update('block')->fields(array(
+    'status' => TRUE,
+    'region' => 'sidebar_first',
+    'weight' => empty($max_weight) ? 0 : ($max_weight + 1),
   ))
   ->condition('module', $module)
   ->condition('delta', $facet->delta)
@@ -287,10 +286,11 @@ function _mica_configure_search_block($facet, $module, $module_item) {
   ->execute();
 
   $block = db_query('SELECT * FROM {block} WHERE module = :module AND delta = :delta AND theme = :theme',
-  array(
-                ':module' => $module, 
-                ':delta' => $facet->delta, 
-                ':theme' => $theme_default)
+    array(
+      ':module' => $module, 
+      ':delta' => $facet->delta, 
+      ':theme' => $theme_default
+    )
   )->fetchObject();
 
   $block = get_object_vars($block);

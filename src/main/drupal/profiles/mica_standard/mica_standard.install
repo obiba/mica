@@ -151,10 +151,10 @@ function mica_standard_install() {
   $query->execute();
 
   // set a title to upcoming events block
-  $query = db_update('block') //
-  ->fields(array('title' => 'Upcoming Events')) //
-  ->condition('delta', 'events_calendar-block_2', '=') //
-  ->execute();
+  $query = db_update('block') 
+    ->fields(array('title' => 'Upcoming Events')) 
+    ->condition('delta', 'events_calendar-block_2', '=') 
+    ->execute();
 
   _mica_standard_no_region('user', 'new');
   _mica_standard_no_region('search', 'form');
@@ -214,6 +214,11 @@ Over time, the Consortium will generate best practices documents that will descr
 
   // rebuild permissions
   node_access_rebuild();
+  
+  include_once(drupal_get_path('module', 'mica_dataschemas') . '/includes/blocks.inc');
+  mica_dataschemas_configure_facet_blocks();
+  
+  watchdog('mica', 'Mica standard profile installed', WATCHDOG_INFO);
 }
 
 function mica_standard_add_page($title, $body, $alias, $sticky = 0, $link_title = NULL, $weight = NULL) {

@@ -50,7 +50,7 @@ function mica_entity_info() {
     'entity keys' => array(
       'id' => 'id',
       'label' => 'label',
-  ),
+    ),
   );
   return $info;
 }
