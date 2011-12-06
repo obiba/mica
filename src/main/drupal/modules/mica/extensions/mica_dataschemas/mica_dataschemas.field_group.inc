@@ -13,10 +13,10 @@ function mica_dataschemas_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_dimension|node|ds_variable|form';
+  $field_group->identifier = 'group_dimension|node|dataschema_variable|form';
   $field_group->group_name = 'group_dimension';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'ds_variable';
+  $field_group->bundle = 'dataschema_variable';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
@@ -54,7 +54,7 @@ function mica_dataschemas_field_group_info() {
       'formatter' => 'collapsible',
     ),
   );
-  $export['group_dimension|node|ds_variable|form'] = $field_group;
+  $export['group_dimension|node|dataschema_variable|form'] = $field_group;
 
   return $export;
 }

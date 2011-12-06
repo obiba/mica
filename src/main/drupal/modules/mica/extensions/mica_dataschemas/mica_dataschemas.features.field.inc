@@ -10,310 +10,6 @@
 function mica_dataschemas_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-category-body'
-  $fields['node-category-body'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(
-        0 => 'node',
-      ),
-      'field_name' => 'body',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'variable_infos' => array(
-          'variable' => 1,
-          'variable_body' => '',
-          'variable_value_type' => 'TEXT',
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'text_with_summary',
-    ),
-    'field_instance' => array(
-      'bundle' => 'category',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'custom_dimensions' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'custom_page' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'custom_variable' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '2',
-        ),
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '0',
-        ),
-        'teaser' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(
-            'trim_length' => 600,
-          ),
-          'type' => 'text_summary_or_trimmed',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'body',
-      'label' => 'Body',
-      'required' => FALSE,
-      'settings' => array(
-        'display_summary' => TRUE,
-        'text_processing' => 1,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'text',
-        'settings' => array(
-          'rows' => 20,
-          'summary_rows' => 5,
-        ),
-        'type' => 'text_textarea_with_summary',
-        'weight' => '31',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-category-field_is_missing'
-  $fields['node-category-field_is_missing'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_is_missing',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => '',
-          1 => '',
-        ),
-        'allowed_values_function' => '',
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'list_boolean',
-    ),
-    'field_instance' => array(
-      'bundle' => 'category',
-      'default_value' => array(
-        0 => array(
-          'value' => 0,
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'custom_dimensions' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'custom_page' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'custom_variable' => array(
-          'label' => 'inline',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '2',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_is_missing',
-      'label' => 'Missing',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(
-          'display_label' => 0,
-        ),
-        'type' => 'options_onoff',
-        'weight' => '33',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-category-field_name'
-  $fields['node-category-field_name'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_name',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'category',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'custom_dimensions' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'custom_page' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'custom_variable' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '1',
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '1',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_name',
-      'label' => 'Name',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '32',
-      ),
-    ),
-  );
-
   // Exported field: 'node-dataschema-body'
   $fields['node-dataschema-body'] = array(
     'field_config' => array(
@@ -604,8 +300,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-body'
-  $fields['node-ds_variable-body'] = array(
+  // Exported field: 'node-dataschema_category-body'
+  $fields['node-dataschema_category-body'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -651,7 +347,311 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'text_with_summary',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_category',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
+        ),
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(
+            'trim_length' => 600,
+          ),
+          'type' => 'text_summary_or_trimmed',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'body',
+      'label' => 'Body',
+      'required' => FALSE,
+      'settings' => array(
+        'display_summary' => TRUE,
+        'text_processing' => 1,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'rows' => 20,
+          'summary_rows' => 5,
+        ),
+        'type' => 'text_textarea_with_summary',
+        'weight' => '31',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-dataschema_category-field_is_missing'
+  $fields['node-dataschema_category-field_is_missing'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_is_missing',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => '',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'dataschema_category',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => '2',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_is_missing',
+      'label' => 'Missing',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 0,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '33',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-dataschema_category-field_name'
+  $fields['node-dataschema_category-field_name'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_name',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'dataschema_category',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_name',
+      'label' => 'Name',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '32',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-dataschema_variable-body'
+  $fields['node-dataschema_variable-body'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(
+        0 => 'node',
+      ),
+      'field_name' => 'body',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'variable_infos' => array(
+          'variable' => 1,
+          'variable_body' => '',
+          'variable_value_type' => 'TEXT',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'text_with_summary',
+    ),
+    'field_instance' => array(
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -714,8 +714,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_computation_variables'
-  $fields['node-ds_variable-field_computation_variables'] = array(
+  // Exported field: 'node-dataschema_variable-field_computation_variables'
+  $fields['node-dataschema_variable-field_computation_variables'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -752,14 +752,14 @@ function mica_dataschemas_field_default_fields() {
         'referenceable_types' => array(
           'article' => 0,
           'blog' => 0,
-          'category' => 0,
           'contact' => 0,
           'data_access_request' => 0,
           'data_access_review' => 0,
           'dataschema' => 0,
+          'dataschema_category' => 0,
+          'dataschema_variable' => 'dataschema_variable',
           'dataset' => 0,
           'documents' => 0,
-          'ds_variable' => 'ds_variable',
           'event' => 0,
           'field_description' => 0,
           'forum' => 0,
@@ -785,7 +785,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'node_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -844,8 +844,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_contraindication_variables'
-  $fields['node-ds_variable-field_contraindication_variables'] = array(
+  // Exported field: 'node-dataschema_variable-field_contraindication_variables'
+  $fields['node-dataschema_variable-field_contraindication_variables'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -882,14 +882,14 @@ function mica_dataschemas_field_default_fields() {
         'referenceable_types' => array(
           'article' => 0,
           'blog' => 0,
-          'category' => 0,
           'contact' => 0,
           'data_access_request' => 0,
           'data_access_review' => 0,
           'dataschema' => 0,
+          'dataschema_category' => 0,
+          'dataschema_variable' => 'dataschema_variable',
           'dataset' => 0,
           'documents' => 0,
-          'ds_variable' => 'ds_variable',
           'event' => 0,
           'field_description' => 0,
           'forum' => 0,
@@ -915,7 +915,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'node_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -974,8 +974,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dataschema_ref'
-  $fields['node-ds_variable-field_dataschema_ref'] = array(
+  // Exported field: 'node-dataschema_variable-field_dataschema_ref'
+  $fields['node-dataschema_variable-field_dataschema_ref'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -1012,14 +1012,14 @@ function mica_dataschemas_field_default_fields() {
         'referenceable_types' => array(
           'article' => 0,
           'blog' => 0,
-          'category' => 0,
           'contact' => 0,
           'data_access_request' => 0,
           'data_access_review' => 0,
           'dataschema' => 'dataschema',
+          'dataschema_category' => 0,
+          'dataschema_variable' => 0,
           'dataset' => 0,
           'documents' => 0,
-          'ds_variable' => 0,
           'event' => 0,
           'field_description' => 0,
           'forum' => 0,
@@ -1045,7 +1045,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'node_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -1103,8 +1103,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_biochemical_measures'
-  $fields['node-ds_variable-field_dim_biochemical_measures'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_biochemical_measures'
+  $fields['node-dataschema_variable-field_dim_biochemical_measures'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -1150,7 +1150,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -1207,8 +1207,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_body_functions_meas'
-  $fields['node-ds_variable-field_dim_body_functions_meas'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_body_functions_meas'
+  $fields['node-dataschema_variable-field_dim_body_functions_meas'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -1254,7 +1254,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -1311,8 +1311,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_class'
-  $fields['node-ds_variable-field_dim_class'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_class'
+  $fields['node-dataschema_variable-field_dim_class'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -1358,7 +1358,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -1416,8 +1416,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_collection_mode'
-  $fields['node-ds_variable-field_dim_collection_mode'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_collection_mode'
+  $fields['node-dataschema_variable-field_dim_collection_mode'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -1463,7 +1463,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -1521,8 +1521,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_disease_history'
-  $fields['node-ds_variable-field_dim_disease_history'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_disease_history'
+  $fields['node-dataschema_variable-field_dim_disease_history'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -1568,7 +1568,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -1626,8 +1626,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_environmental_exp'
-  $fields['node-ds_variable-field_dim_environmental_exp'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_environmental_exp'
+  $fields['node-dataschema_variable-field_dim_environmental_exp'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -1673,7 +1673,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -1730,8 +1730,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_format'
-  $fields['node-ds_variable-field_dim_format'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_format'
+  $fields['node-dataschema_variable-field_dim_format'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -1777,7 +1777,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -1835,8 +1835,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_life_habits_behaviours'
-  $fields['node-ds_variable-field_dim_life_habits_behaviours'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_life_habits_behaviours'
+  $fields['node-dataschema_variable-field_dim_life_habits_behaviours'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -1882,7 +1882,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -1940,8 +1940,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_medication'
-  $fields['node-ds_variable-field_dim_medication'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_medication'
+  $fields['node-dataschema_variable-field_dim_medication'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -1987,7 +1987,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -2044,8 +2044,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_period'
-  $fields['node-ds_variable-field_dim_period'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_period'
+  $fields['node-dataschema_variable-field_dim_period'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -2091,7 +2091,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -2149,8 +2149,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_reproductive_history'
-  $fields['node-ds_variable-field_dim_reproductive_history'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_reproductive_history'
+  $fields['node-dataschema_variable-field_dim_reproductive_history'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -2196,7 +2196,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -2253,8 +2253,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_sample'
-  $fields['node-ds_variable-field_dim_sample'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_sample'
+  $fields['node-dataschema_variable-field_dim_sample'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -2300,7 +2300,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -2358,8 +2358,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_sociodemo_charact'
-  $fields['node-ds_variable-field_dim_sociodemo_charact'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_sociodemo_charact'
+  $fields['node-dataschema_variable-field_dim_sociodemo_charact'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -2405,7 +2405,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -2463,8 +2463,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_source_of_info'
-  $fields['node-ds_variable-field_dim_source_of_info'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_source_of_info'
+  $fields['node-dataschema_variable-field_dim_source_of_info'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -2510,7 +2510,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -2568,8 +2568,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_target'
-  $fields['node-ds_variable-field_dim_target'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_target'
+  $fields['node-dataschema_variable-field_dim_target'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -2615,7 +2615,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -2673,8 +2673,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_target_gender'
-  $fields['node-ds_variable-field_dim_target_gender'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_target_gender'
+  $fields['node-dataschema_variable-field_dim_target_gender'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -2720,7 +2720,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -2778,8 +2778,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_therapeutic_inter'
-  $fields['node-ds_variable-field_dim_therapeutic_inter'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_therapeutic_inter'
+  $fields['node-dataschema_variable-field_dim_therapeutic_inter'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -2825,7 +2825,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -2882,8 +2882,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_type'
-  $fields['node-ds_variable-field_dim_type'] = array(
+  // Exported field: 'node-dataschema_variable-field_dim_type'
+  $fields['node-dataschema_variable-field_dim_type'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -2929,7 +2929,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -2987,8 +2987,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_interpretation_variables'
-  $fields['node-ds_variable-field_interpretation_variables'] = array(
+  // Exported field: 'node-dataschema_variable-field_interpretation_variables'
+  $fields['node-dataschema_variable-field_interpretation_variables'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -3025,14 +3025,14 @@ function mica_dataschemas_field_default_fields() {
         'referenceable_types' => array(
           'article' => 0,
           'blog' => 0,
-          'category' => 0,
           'contact' => 0,
           'data_access_request' => 0,
           'data_access_review' => 0,
           'dataschema' => 0,
+          'dataschema_category' => 0,
+          'dataschema_variable' => 'dataschema_variable',
           'dataset' => 0,
           'documents' => 0,
-          'ds_variable' => 'ds_variable',
           'event' => 0,
           'field_description' => 0,
           'forum' => 0,
@@ -3058,7 +3058,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'node_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -3117,8 +3117,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_unit'
-  $fields['node-ds_variable-field_unit'] = array(
+  // Exported field: 'node-dataschema_variable-field_unit'
+  $fields['node-dataschema_variable-field_unit'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -3158,7 +3158,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => 'Measuring unit of the variable (i.e. kg, siblings, cigarettes, etc.).',
@@ -3215,8 +3215,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_uri'
-  $fields['node-ds_variable-field_uri'] = array(
+  // Exported field: 'node-dataschema_variable-field_uri'
+  $fields['node-dataschema_variable-field_uri'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -3256,7 +3256,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => 'A Uniform Resource Identifier (URI) is a string of characters used to identify a name or a resource on the Internet.',
@@ -3312,8 +3312,8 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_variable_categories'
-  $fields['node-ds_variable-field_variable_categories'] = array(
+  // Exported field: 'node-dataschema_variable-field_variable_categories'
+  $fields['node-dataschema_variable-field_variable_categories'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
@@ -3350,14 +3350,14 @@ function mica_dataschemas_field_default_fields() {
         'referenceable_types' => array(
           'article' => 0,
           'blog' => 0,
-          'category' => 'category',
           'contact' => 0,
           'data_access_request' => 0,
           'data_access_review' => 0,
           'dataschema' => 0,
+          'dataschema_category' => 'dataschema_category',
+          'dataschema_variable' => 0,
           'dataset' => 0,
           'documents' => 0,
-          'ds_variable' => 0,
           'event' => 0,
           'field_description' => 0,
           'forum' => 0,
@@ -3383,7 +3383,7 @@ function mica_dataschemas_field_default_fields() {
       'type' => 'node_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'ds_variable',
+      'bundle' => 'dataschema_variable',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -3683,17 +3683,14 @@ function mica_dataschemas_field_default_fields() {
         'referenceable_types' => array(
           'article' => 0,
           'blog' => 0,
-          'category' => 0,
           'contact' => 0,
           'data_access_request' => 0,
           'data_access_review' => 0,
           'dataschema' => 0,
+          'dataschema_category' => 0,
+          'dataschema_variable' => 0,
           'dataset' => 0,
           'documents' => 0,
-          'ds_domain' => 0,
-          'ds_module' => 0,
-          'ds_theme' => 0,
-          'ds_variable' => 0,
           'event' => 0,
           'field_description' => 0,
           'forum' => 0,
@@ -3815,14 +3812,14 @@ function mica_dataschemas_field_default_fields() {
         'referenceable_types' => array(
           'article' => 0,
           'blog' => 0,
-          'category' => 0,
           'contact' => 0,
           'data_access_request' => 0,
           'data_access_review' => 0,
           'dataschema' => 0,
+          'dataschema_category' => 0,
+          'dataschema_variable' => 0,
           'dataset' => 0,
           'documents' => 0,
-          'ds_variable' => 0,
           'event' => 0,
           'field_description' => 0,
           'forum' => 0,
@@ -3944,14 +3941,14 @@ function mica_dataschemas_field_default_fields() {
         'referenceable_types' => array(
           'article' => 0,
           'blog' => 0,
-          'category' => 0,
           'contact' => 0,
           'data_access_request' => 0,
           'data_access_review' => 0,
           'dataschema' => 0,
+          'dataschema_category' => 0,
+          'dataschema_variable' => 'dataschema_variable',
           'dataset' => 0,
           'documents' => 0,
-          'ds_variable' => 'ds_variable',
           'event' => 0,
           'field_description' => 0,
           'forum' => 0,
@@ -4073,14 +4070,14 @@ function mica_dataschemas_field_default_fields() {
         'referenceable_types' => array(
           'article' => 0,
           'blog' => 0,
-          'category' => 0,
           'contact' => 0,
           'data_access_request' => 0,
           'data_access_review' => 0,
           'dataschema' => 'dataschema',
+          'dataschema_category' => 0,
+          'dataschema_variable' => 0,
           'dataset' => 0,
           'documents' => 0,
-          'ds_variable' => 0,
           'event' => 0,
           'field_description' => 0,
           'forum' => 0,

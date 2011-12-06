@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_menu_default_menu_links().
+ * Implements hook_menu_default_menu_links().
  */
 function mica_community_menu_default_menu_links() {
   $menu_links = array();
@@ -28,24 +28,6 @@ function mica_community_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '2',
     'parent_path' => 'community',
-  );
-  // Exported menu link: main-menu:research
-  $menu_links['main-menu:research'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'research',
-    'router_path' => 'research',
-    'link_title' => 'Research',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '1',
-    'expanded' => '1',
-    'weight' => '8',
   );
   // Exported menu link: main-menu:community
   $menu_links['main-menu:community'] = array(
@@ -71,16 +53,12 @@ function mica_community_menu_default_menu_links() {
     'link_path' => 'events',
     'router_path' => 'events',
     'link_title' => 'Events',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
+    'options' => array(),
     'module' => 'system',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '1',
-    'expanded' => '1',
+    'expanded' => '0',
     'weight' => '0',
     'parent_path' => 'community',
   );

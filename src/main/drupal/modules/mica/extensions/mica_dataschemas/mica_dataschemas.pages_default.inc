@@ -32,7 +32,7 @@ function mica_dataschemas_default_page_manager_handlers() {
           'name' => 'node_type',
           'settings' => array(
             'type' => array(
-              'ds_variable' => 'ds_variable',
+              'dataschema_variable' => 'dataschema_variable',
             ),
           ),
           'context' => 'argument_entity_id:node_1',

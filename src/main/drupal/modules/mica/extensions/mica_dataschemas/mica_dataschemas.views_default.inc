@@ -145,7 +145,7 @@ function mica_dataschemas_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'search_api_index_dataschema_variables_index';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'ds_variable' => 'ds_variable',
+    'dataschema_variable' => 'dataschema_variable',
   );
 
   /* Display: Page */
@@ -571,7 +571,7 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'ds_variable' => 'ds_variable',
+    'dataschema_variable' => 'dataschema_variable',
   );
   /* Filter criterion: Content: Missing (field_is_missing) */
   $handler->display->display_options['filters']['field_is_missing_value']['id'] = 'field_is_missing_value';
@@ -690,7 +690,7 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'ds_variable' => 'ds_variable',
+    'dataschema_variable' => 'dataschema_variable',
   );
 
   /* Display: Block */
@@ -775,7 +775,7 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'ds_variable' => 'ds_variable',
+    'dataschema_variable' => 'dataschema_variable',
   );
   /* Filter criterion: Content: Missing (field_is_missing) */
   $handler->display->display_options['filters']['field_is_missing_value']['id'] = 'field_is_missing_value';

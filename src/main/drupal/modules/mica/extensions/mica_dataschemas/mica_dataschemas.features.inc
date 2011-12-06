@@ -45,14 +45,6 @@ function mica_dataschemas_views_api() {
  */
 function mica_dataschemas_node_info() {
   $items = array(
-    'category' => array(
-      'name' => t('Category'),
-      'base' => 'node_content',
-      'description' => t('Defines a category'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
     'dataschema' => array(
       'name' => t('DataSchema'),
       'base' => 'node_content',
@@ -61,7 +53,15 @@ function mica_dataschemas_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
-    'ds_variable' => array(
+    'dataschema_category' => array(
+      'name' => t('Category'),
+      'base' => 'node_content',
+      'description' => t('Defines a category'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'dataschema_variable' => array(
       'name' => t('Variable'),
       'base' => 'node_content',
       'description' => t('DataSchema variable'),
@@ -148,7 +148,10 @@ function mica_dataschemas_default_search_api_index() {
         "search_api_alter_bundle_filter" : {
           "status" : 1,
           "weight" : "-10",
-          "settings" : { "default" : "0", "bundles" : { "ds_variable" : "ds_variable" } }
+          "settings" : {
+            "default" : "0",
+            "bundles" : { "dataschema_variable" : "dataschema_variable" }
+          }
         },
         "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : {

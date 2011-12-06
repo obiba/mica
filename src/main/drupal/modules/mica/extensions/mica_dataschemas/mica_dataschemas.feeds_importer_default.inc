@@ -36,7 +36,7 @@ function mica_dataschemas_feeds_importer_default() {
     'processor' => array(
       'plugin_key' => 'FeedsUniqueNodeProcessor',
       'config' => array(
-        'content_type' => 'category',
+        'content_type' => 'dataschema_category',
         'expire' => '-1',
         'author' => 0,
         'key_field' => 'title',
@@ -133,7 +133,7 @@ function mica_dataschemas_feeds_importer_default() {
   $feeds_importer = new stdClass;
   $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
   $feeds_importer->api_version = 1;
-  $feeds_importer->id = 'csv_ds_variable_import';
+  $feeds_importer->id = 'csv_dataschema_variable_import';
   $feeds_importer->config = array(
     'name' => 'DataSchema Variable',
     'description' => 'Import DataSchema Variables from CSV file',
@@ -156,7 +156,7 @@ function mica_dataschemas_feeds_importer_default() {
     'processor' => array(
       'plugin_key' => 'FeedsUniqueNodeProcessor',
       'config' => array(
-        'content_type' => 'ds_variable',
+        'content_type' => 'dataschema_variable',
         'expire' => '-1',
         'author' => 0,
         'key_field' => 'title',
@@ -323,7 +323,7 @@ function mica_dataschemas_feeds_importer_default() {
     'import_on_create' => 1,
     'process_in_background' => 0,
   );
-  $export['csv_ds_variable_import'] = $feeds_importer;
+  $export['csv_dataschema_variable_import'] = $feeds_importer;
 
   $feeds_importer = new stdClass;
   $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */

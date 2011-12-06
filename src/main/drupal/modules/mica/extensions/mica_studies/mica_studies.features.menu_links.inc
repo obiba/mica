@@ -39,6 +39,24 @@ function mica_studies_menu_default_menu_links() {
     'weight' => '0',
     'parent_path' => 'node/3',
   );
+  // Exported menu link: main-menu:research
+  $menu_links['main-menu:research'] = array(
+      'menu_name' => 'main-menu',
+      'link_path' => 'research',
+      'router_path' => 'research',
+      'link_title' => 'Research',
+      'options' => array(
+        'attributes' => array(
+          'title' => '',
+         ),
+      ),
+      'module' => 'menu',
+      'hidden' => '0',
+      'external' => '0',
+      'has_children' => '1',
+      'expanded' => '1',
+      'weight' => '8',
+  );  
   // Exported menu link: main-menu:node/3
   $menu_links['main-menu:node/3'] = array(
     'menu_name' => 'main-menu',
@@ -77,6 +95,7 @@ function mica_studies_menu_default_menu_links() {
   t('Home');
   t('Resources');
   t('Studies');
+  t('Research');
 
 
   return $menu_links;

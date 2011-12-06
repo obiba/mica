@@ -73,10 +73,58 @@ function mica_studies_image_default_styles() {
 }
 
 /**
- * Implements hook_node_info().
+ * Implementation of hook_node_info().
  */
 function mica_studies_node_info() {
   $items = array(
+    'contact' => array(
+      'name' => t('Contact'),
+      'base' => 'mica',
+      'description' => t('Description of a Contact, consisting of a person and an Institution.'),
+      'has_title' => '1',
+      'title_label' => t('Person and Institution Names'),
+      'help' => '',
+    ),
+    'field_description' => array(
+      'name' => t('Field Description'),
+      'base' => 'mica',
+      'description' => t('Description of information collected about the studies.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'institution' => array(
+      'name' => t('Institution'),
+      'base' => 'mica',
+      'description' => t('Description of an Institution.'),
+      'has_title' => '1',
+      'title_label' => t('Institution Name'),
+      'help' => '',
+    ),
+    'study' => array(
+      'name' => t('Study'),
+      'base' => 'mica',
+      'description' => t('Study portal. Create a content of this type when registering a new study.'),
+      'has_title' => '1',
+      'title_label' => t('Name'),
+      'help' => '',
+    ),
+    'study_documents' => array(
+      'name' => t('Study Documents'),
+      'base' => 'mica',
+      'description' => t('Files attached to a Study. Child of Study.'),
+      'has_title' => '1',
+      'title_label' => t('Name'),
+      'help' => '',
+    ),
+    'study_information' => array(
+      'name' => t('Study Information'),
+      'base' => 'mica',
+      'description' => t('General Information about a Study. Child of Study.'),
+      'has_title' => '1',
+      'title_label' => t('Name'),
+      'help' => '',
+    ),
     'documents' => array(
       'name' => t('Documents'),
       'base' => 'node_content',

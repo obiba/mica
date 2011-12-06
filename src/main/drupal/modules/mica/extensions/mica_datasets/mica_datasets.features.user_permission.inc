@@ -10,153 +10,153 @@
 function mica_datasets_user_default_permissions() {
   $permissions = array();
 
-//   // Exported permission: create dataset content
-//   $permissions['create dataset content'] = array(
-//     'name' => 'create dataset content',
-//     'roles' => array(
-//       0 => 'administrator',
-//       1 => 'consortium administrator',
-//       2 => 'study administrator',
-//     ),
-//     'module' => 'node',
-//   );
+  // Exported permission: create dataset content
+  $permissions['create dataset content'] = array(
+    'name' => 'create dataset content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
 
-//   // Exported permission: create edit delete own dataset query
-//   $permissions['create edit delete own dataset query'] = array(
-//     'name' => 'create edit delete own dataset query',
-//     'roles' => array(
-//       0 => 'anonymous user',
-//       1 => 'authenticated user',
-//     ),
-//     'module' => 'mica_datasets',
-//   );
+  // Exported permission: create edit delete own dataset query
+  $permissions['create edit delete own dataset query'] = array(
+    'name' => 'create edit delete own dataset query',
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
+    'module' => 'mica_datasets',
+  );
 
-//   // Exported permission: create participant_variable content
-//   $permissions['create participant_variable content'] = array(
-//     'name' => 'create participant_variable content',
-//     'roles' => array(
-//       0 => 'administrator',
-//       1 => 'consortium administrator',
-//       2 => 'study administrator',
-//     ),
-//     'module' => 'node',
-//   );
+  // Exported permission: create participant_variable content
+  $permissions['create participant_variable content'] = array(
+    'name' => 'create participant_variable content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
 
-//   // Exported permission: delete any dataset content
-//   $permissions['delete any dataset content'] = array(
-//     'name' => 'delete any dataset content',
-//     'roles' => array(
-//       0 => 'administrator',
-//       1 => 'consortium administrator',
-//     ),
-//     'module' => 'node',
-//   );
+  // Exported permission: delete any dataset content
+  $permissions['delete any dataset content'] = array(
+    'name' => 'delete any dataset content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+    ),
+    'module' => 'node',
+  );
 
-//   // Exported permission: delete any participant_variable content
-//   $permissions['delete any participant_variable content'] = array(
-//     'name' => 'delete any participant_variable content',
-//     'roles' => array(
-//       0 => 'administrator',
-//       1 => 'consortium administrator',
-//     ),
-//     'module' => 'node',
-//   );
+  // Exported permission: delete any participant_variable content
+  $permissions['delete any participant_variable content'] = array(
+    'name' => 'delete any participant_variable content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+    ),
+    'module' => 'node',
+  );
 
-//   // Exported permission: delete own dataset content
-//   $permissions['delete own dataset content'] = array(
-//     'name' => 'delete own dataset content',
-//     'roles' => array(
-//       0 => 'administrator',
-//       1 => 'consortium administrator',
-//       2 => 'study administrator',
-//     ),
-//     'module' => 'node',
-//   );
+  // Exported permission: delete own dataset content
+  $permissions['delete own dataset content'] = array(
+    'name' => 'delete own dataset content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
 
-//   // Exported permission: delete own participant_variable content
-//   $permissions['delete own participant_variable content'] = array(
-//     'name' => 'delete own participant_variable content',
-//     'roles' => array(
-//       0 => 'administrator',
-//       1 => 'consortium administrator',
-//       2 => 'study administrator',
-//     ),
-//     'module' => 'node',
-//   );
+  // Exported permission: delete own participant_variable content
+  $permissions['delete own participant_variable content'] = array(
+    'name' => 'delete own participant_variable content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
 
-//   // Exported permission: edit any dataset content
-//   $permissions['edit any dataset content'] = array(
-//     'name' => 'edit any dataset content',
-//     'roles' => array(
-//       0 => 'administrator',
-//       1 => 'consortium administrator',
-//     ),
-//     'module' => 'node',
-//   );
+  // Exported permission: edit any dataset content
+  $permissions['edit any dataset content'] = array(
+    'name' => 'edit any dataset content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+    ),
+    'module' => 'node',
+  );
 
-//   // Exported permission: edit any participant_variable content
-//   $permissions['edit any participant_variable content'] = array(
-//     'name' => 'edit any participant_variable content',
-//     'roles' => array(
-//       0 => 'administrator',
-//       1 => 'consortium administrator',
-//     ),
-//     'module' => 'node',
-//   );
+  // Exported permission: edit any participant_variable content
+  $permissions['edit any participant_variable content'] = array(
+    'name' => 'edit any participant_variable content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+    ),
+    'module' => 'node',
+  );
 
-//   // Exported permission: edit delete any dataset query
-//   $permissions['edit delete any dataset query'] = array(
-//     'name' => 'edit delete any dataset query',
-//     'roles' => array(
-//       0 => 'administrator',
-//       1 => 'consortium administrator',
-//       2 => 'study administrator',
-//     ),
-//     'module' => 'mica_datasets',
-//   );
+  // Exported permission: edit delete any dataset query
+  $permissions['edit delete any dataset query'] = array(
+    'name' => 'edit delete any dataset query',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'mica_datasets',
+  );
 
-//   // Exported permission: edit own dataset content
-//   $permissions['edit own dataset content'] = array(
-//     'name' => 'edit own dataset content',
-//     'roles' => array(
-//       0 => 'administrator',
-//       1 => 'consortium administrator',
-//       2 => 'study administrator',
-//     ),
-//     'module' => 'node',
-//   );
+  // Exported permission: edit own dataset content
+  $permissions['edit own dataset content'] = array(
+    'name' => 'edit own dataset content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
 
-//   // Exported permission: edit own participant_variable content
-//   $permissions['edit own participant_variable content'] = array(
-//     'name' => 'edit own participant_variable content',
-//     'roles' => array(
-//       0 => 'administrator',
-//       1 => 'consortium administrator',
-//       2 => 'study administrator',
-//     ),
-//     'module' => 'node',
-//   );
+  // Exported permission: edit own participant_variable content
+  $permissions['edit own participant_variable content'] = array(
+    'name' => 'edit own participant_variable content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'node',
+  );
 
-//   // Exported permission: publish dataset query
-//   $permissions['publish dataset query'] = array(
-//     'name' => 'publish dataset query',
-//     'roles' => array(
-//       0 => 'administrator',
-//       1 => 'consortium administrator',
-//       2 => 'study administrator',
-//     ),
-//     'module' => 'mica_datasets',
-//   );
+  // Exported permission: publish dataset query
+  $permissions['publish dataset query'] = array(
+    'name' => 'publish dataset query',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'mica_datasets',
+  );
 
-//   // Exported permission: view any dataset query
-//   $permissions['view any dataset query'] = array(
-//     'name' => 'view any dataset query',
-//     'roles' => array(
-//       0 => 'anonymous user',
-//       1 => 'authenticated user',
-//     ),
-//     'module' => 'mica_datasets',
-//   );
+  // Exported permission: view any dataset query
+  $permissions['view any dataset query'] = array(
+    'name' => 'view any dataset query',
+    'roles' => array(
+      0 => 'anonymous user',
+      1 => 'authenticated user',
+    ),
+    'module' => 'mica_datasets',
+  );
 
   return $permissions;
 }
