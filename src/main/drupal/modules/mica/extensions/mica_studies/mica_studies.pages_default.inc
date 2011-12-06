@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_default_page_manager_handlers().
+ * Implements hook_default_page_manager_handlers().
  */
 function mica_studies_default_page_manager_handlers() {
   $export = array();
@@ -345,7 +345,7 @@ function mica_studies_default_page_manager_handlers() {
 }
 
 /**
- * Implementation of hook_default_page_manager_pages().
+ * Implements hook_default_page_manager_pages().
  */
 function mica_studies_default_page_manager_pages() {
   $page = new stdClass;
@@ -467,6 +467,6 @@ function mica_studies_default_page_manager_pages() {
   $page->default_handlers[$handler->name] = $handler;
   $pages['homepage'] = $page;
 
- return $pages;
+  return $pages;
 
 }

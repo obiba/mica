@@ -175,19 +175,19 @@ function mica_datasets_schema() {
 function _mica_datasets_import_field_groups() {
   module_load_include('inc', 'mica', 'includes/fieldgroups');
 
-  // STUDY
-  _mica_add_fieldset_group('study','group_datasets', 'Datasets', '4', '', array(
-    'mica_dataset',
-    'mica_opal',
-  ));
+//   // STUDY
+//   _mica_add_fieldset_group('study','group_datasets', 'Datasets', '4', '', array(
+//     'mica_dataset',
+//     'mica_opal',
+//   ));
   
-  // PARTICIPANT VARIABLES
-  _mica_add_fieldset_group('participant_variable', 'group_participant_variable', 'Description', '1', '', array(
-  	'field_label',
-  	'body',
-  	'field_value_type',
-  	'field_repeatable',
-  	'field_categories',
-  	'field_dataset'
-  ));
+//   // PARTICIPANT VARIABLES
+//   _mica_add_fieldset_group('participant_variable', 'group_participant_variable', 'Description', '1', '', array(
+//   	'field_label',
+//   	'body',
+//   	'field_value_type',
+//   	'field_repeatable',
+//   	'field_categories',
+//   	'field_dataset'
+//   ));
 }

@@ -17,7 +17,7 @@ function mica_community_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'Community';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -136,7 +136,7 @@ function mica_community_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'Events';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -221,7 +221,7 @@ function mica_community_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'Events Calendar';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -526,7 +526,7 @@ function mica_community_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'Publications';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */

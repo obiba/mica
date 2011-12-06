@@ -9,27 +9,27 @@
  * Implements hook_install().
  */
 function mica_data_access_install() {
-  _mica_data_access_import_field_groups();
+//   _mica_data_access_import_field_groups();
 }
 
 /**
  * Register some field groups at module install.
  */
-function _mica_data_access_import_field_groups() {
-  module_load_include('inc', 'mica', 'includes/fieldgroups');
+// function _mica_data_access_import_field_groups() {
+//   module_load_include('inc', 'mica', 'includes/fieldgroups');
 
-  // data access request
-  _mica_add_fieldset_group('data_access_request','group_investigators', t('Investigators'), '3', '', array(
-    'field_representative',
-    'field_rep_email',
-    'field_collaborator',
-  ));
+//   // data access request
+//   _mica_add_fieldset_group('data_access_request','group_investigators', t('Investigators'), '3', '', array(
+//     'field_representative',
+//     'field_rep_email',
+//     'field_collaborator',
+//   ));
   
-  _mica_add_fieldset_group('data_access_request','group_institution', t('Institution'), '4', '', array(
-    'field_institution_name',
-    'field_street',
-    'field_city',
-    'field_postal_code',
-    'field_country_text',
-  ));
-}
+//   _mica_add_fieldset_group('data_access_request','group_institution', t('Institution'), '4', '', array(
+//     'field_institution_name',
+//     'field_street',
+//     'field_city',
+//     'field_postal_code',
+//     'field_country_text',
+//   ));
+// }

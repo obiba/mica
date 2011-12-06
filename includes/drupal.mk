@@ -8,72 +8,66 @@
 #
 acl_version=7.x-1.0-beta3
 calendar_version=7.x-3.0-alpha1
-chain_menu_access_version=7.x-1.0-beta2
+chain_menu_access_version=7.x-1.0
 ckeditor_version=7.x-1.6
 collapsiblock_version=7.x-1.0
 content_access_version=7.x-1.2-beta1
-ctools_version=7.x-1.0-rc1
-date_version=7.x-2.0-alpha4
+content_taxonomy_version=7.x-1.0-beta1
+date_version=7.x-2.0-alpha5
 drupal_version=7.9
 email_version=7.x-1.0
-entity_version=7.x-1.0-beta10
-features_version=7.x-1.0-beta3
+entity_version=7.x-1.0-rc1
+facetapi_version=7.x-1.0-beta8
+features_version=7.x-1.x-beta4
+feeds_version=7.x-2.0-alpha4
 feeds_jsonpath_parser_version=7.x-1.0-beta2
-#feeds_version=7.x-2.x-dev
-field_group_version=7.x-1.0
-field_permissions_version=7.x-1.0-alpha1
+field_group_version=7.x-1.1
+field_permissions_version=7.x-1.0-beta1
 forum_access_version=7.x-1.0-alpha4
 google_fonts_version=7.x-2.3
-imce_version=7.x-1.4
+http_client_version=7.x-2.2
+imce_version=7.x-1.5
 job_scheduler_version=7.x-2.0-alpha2
-link_version=7.x-1.0-alpha3
+link_version=7.x-1.0
 login_destination_version=7.x-1.0
-menu_firstchild_version=7.x-1.0
+menu_firstchild_version=7.x-1.1
 multiselect_version=7.x-1.8
 namedb_version=7.x-1.0-beta2
 name_version=7.x-1.4
 noderefcreate_version=7.x-1.0
 panels_version=7.x-3.0-alpha3
-pathauto_version=7.x-1.0-rc2
-relation_version=7.x-1.0-alpha2
+pathauto_version=7.x-1.0
+search_api_page_version=7.x-1.0-beta2
 search_api_ranges_version=7.x-1.2
-search_api_solr_version=7.x-1.0-beta4
-search_api_version=7.x-1.0-beta10
-strongarm_version=7.x-2.0-beta2
-tagging_version=7.x-3.1
+search_api_solr_version=7.x-1.0-rc1
+search_api_version=7.x-1.0-rc1
+strongarm_version=7.x-2.0-beta4
+tagging_version=7.x-3.3
 taxonomy_csv_version=7.x-5.7
 taxonomy_manager_version=7.x-1.0-beta2
-token_version=7.x-1.0-beta5
+token_version=7.x-1.0-beta7
 viewreference_version=7.x-3.1
 views_data_export_version=7.x-3.0-beta5
-views_version=7.x-3.0-rc1
+views_version=7.x-3.0-rc3
 
 #
 # Libraries dependencies
 #
-solr-php-client-version=22
-
+solr-php-client-version=r60.2011-05-04
 
 #
 # Modules to get stable dev revisions
 #
-http_client_branch=7.x-2.x
-http_client_revision=6e65667997ffe79172249b42a897cd81dd4ab510
 
-feeds_branch=7.x-2.x
-feeds_revision=5f9ebacf6972bc5fe05f967cb33af0ddecc39ea5
+# Issue http://drupal.org/node/1234010
+ctools_revision=dd65335ef5b823702ea5f1688a3000b09a04a739
 
-# Patch for issue http://drupal.org/node/1138196
-references_revision=7.x-2.0-beta3
-references_patch=http://drupal.org/files/issues/references.node_type_property.patch
+# Issue http://drupal.org/node/1275096
+references_revision=e00686587a53cf51bdcca45248e9a72b483b8916
 
 # Patch for issue http://drupal.org/node/1231540
 search_api_ranges_revision=7.x-1.2
 search_api_ranges_patch=http://drupal.org/files/issues/1231540-item-to-entity.patch
-
-# Patch for issue http://drupal.org/node/1030216
-menu_firstchild_revision=7.x-1.0
-menu_firstchild_patch=1030216-undefined-index-add-shortcut.patch
 
 # CKEditor Library Version
 ckeditor_version=3.6.1
@@ -99,16 +93,19 @@ drupal-download:
 		ckeditor-$(ckeditor_version) \
 		collapsiblock-$(collapsiblock_version) \
 		content_access-$(content_access_version) \
-		ctools-$(ctools_version) \
+		content_taxonomy-$(content_taxonomy_version) \
 		date-$(date_version) \
 		email-$(email_version) \
 		entity-$(entity_version) \
+		facetapi-$(facetapi_version) \
 		features-$(features_version) \
+		feeds-$(feeds_version) \
 		feeds_jsonpath_parser-$(feeds_jsonpath_parser_version) \
 		field_group-$(field_group_version) \
 		field_permissions-$(field_permissions_version) \
 		forum_access-$(forum_access_version) \
 		google_fonts-$(google_fonts_version) \
+		http_client-$(http_client_version) \
 		imce-$(imce_version) \
 		job_scheduler-$(job_scheduler_version) \
 		link-$(link_version) \
@@ -120,7 +117,7 @@ drupal-download:
 		noderefcreate-$(noderefcreate_version) \
 		panels-$(panels_version) \
 		pathauto-$(pathauto_version) \
-		relation-$(relation_version) \
+		search_api_page-$(search_api_page_version) \
 		search_api_ranges-$(search_api_ranges_version) \
 		search_api-$(search_api_version) \
 		search_api_solr-$(search_api_solr_version) \
@@ -154,10 +151,8 @@ drupal-cache-clear:
 	$(drushexec) cache-clear	
 
 drupal-stable-dev: drupal-core-patch drupal-module-patch
-	$(call drupal-git-checkout-module,http_client, 0)
-	$(call drupal-git-checkout-module,feeds, 0)
-	$(call drupal-git-patch-module,references, 0)
-	$(call drupal-git-patch-module-file,menu_firstchild, 1)
+	$(call drupal-git-checkout-module,references, 0)
+	$(call drupal-git-checkout-module,ctools, 0)
 	
 drupal-module-patch:
 	$(call drupal-git-patch-module,search_api_ranges, 1)
@@ -174,21 +169,21 @@ jsonpath-php-client:
 	wget http://jsonpath.googlecode.com/files/jsonpath-0.8.1.php
 	
 solr-php-client:
-	cd target/$(micadir) && \
-	rm -rf sites/all/modules/search_api_solr/SolrPhpClient && \
-	wget -q -r -R index.html,wiki -P tmp http://solr-php-client.googlecode.com/svn/\!svn/bc/$(solr-php-client-version)/trunk/ && \
-	mv tmp/solr-php-client.googlecode.com/svn/\!svn/bc/$(solr-php-client-version)/trunk/ sites/all/modules/search_api_solr/SolrPhpClient && \
-	rm -rf tmp
+	cd target/$(micadir)/sites/all/modules/search_api_solr && \
+	rm -rf SolrPhpClient && \
+	wget http://solr-php-client.googlecode.com/files/SolrPhpClient.${solr-php-client-version}.tgz && \
+	tar -zxvf SolrPhpClient.${solr-php-client-version}.tgz && \
+	rm -rf SolrPhpClient.${solr-php-client-version}.tgz
 
 ckeditor-library:
 	cd target/$(micadir)/sites/all/modules/ckeditor && \
 	rm -rf ckeditor && \
-  	wget -q http://download.cksource.com/CKEditor/CKEditor/CKEditor%20$(ckeditor_version)/ckeditor_$(ckeditor_version).tar.gz && \
+	wget -q http://download.cksource.com/CKEditor/CKEditor/CKEditor%20$(ckeditor_version)/ckeditor_$(ckeditor_version).tar.gz && \
 	tar xfz ckeditor_$(ckeditor_version).tar.gz && \
 	rm ckeditor_$(ckeditor_version).tar.gz && \
 	cd ckeditor && \
 	rm -rf _samples && \
-        rm -rf _source
+	rm -rf _source
 
 drupal-default:
 	cd target/$(micadir) && \

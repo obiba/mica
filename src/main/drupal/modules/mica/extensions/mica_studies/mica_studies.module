@@ -11,7 +11,7 @@ require_once('mica_studies.features.inc');
  */
 function mica_studies_install() {
   _mica_import_relations();
-  _mica_import_field_groups();
+//   _mica_import_field_groups();
   _mica_import_custom_name_format();
   _mica_node_reference_block();
 }
@@ -177,56 +177,56 @@ function _mica_import_relations() {
   $relation->save();
 }
 
-function _mica_import_field_groups() {
-  module_load_include('inc', 'mica', 'includes/fieldgroups');
+// function _mica_import_field_groups() {
+//   module_load_include('inc', 'mica', 'includes/fieldgroups');
 
-  // STUDY: GENERAL INFO
-  _mica_add_fieldset_group('study','group_general_info', 'General Information', '2', '', array(
-    'field_full_name',
-    'field_website',
-    'field_investigator',
-    'field_contact',
-    'field_target_number_participants',
-    'field_target_number_biosamples',
-    'field_p3g_observatory_link',
-  ));
+//   // STUDY: GENERAL INFO
+//   _mica_add_fieldset_group('study','group_general_info', 'General Information', '2', '', array(
+//     'field_full_name',
+//     'field_website',
+//     'field_investigator',
+//     'field_contact',
+//     'field_target_number_participants',
+//     'field_target_number_biosamples',
+//     'field_p3g_observatory_link',
+//   ));
 
-  // STUDY
-  _mica_add_mode_fieldset_group('study','default','group_details', 'Details', '3', '', array(
-    'mica_study_information',
-    'mica_study_documents',
-  ));
+//   // STUDY
+//   _mica_add_mode_fieldset_group('study','default','group_details', 'Details', '3', '', array(
+//     'mica_study_information',
+//     'mica_study_documents',
+//   ));
 
-  // STUDY INFORMATION : METHOD
-  _mica_add_fieldset_group('study_information','group_method', 'Method', '1', '', array(
-    'field_design',
-    'field_design_other',
-    'field_design_target',
-    'field_target_other',
-    'field_selection_criteria',
-    'field_study_country',
-    'field_gender',
-    'field_age_min',
-    'field_age_max',
-    'field_biosamples_collected',
-    'field_biosamples_collected_other',
-    'field_biosamples_tissues',
-    'field_gwas_analysis',
-    'field_gwas_number',
-  ));
+//   // STUDY INFORMATION : METHOD
+//   _mica_add_fieldset_group('study_information','group_method', 'Method', '1', '', array(
+//     'field_design',
+//     'field_design_other',
+//     'field_design_target',
+//     'field_target_other',
+//     'field_selection_criteria',
+//     'field_study_country',
+//     'field_gender',
+//     'field_age_min',
+//     'field_age_max',
+//     'field_biosamples_collected',
+//     'field_biosamples_collected_other',
+//     'field_biosamples_tissues',
+//     'field_gwas_analysis',
+//     'field_gwas_number',
+//   ));
 
-  // STUDY INFORMATION : GOVERNANCE
-  _mica_add_fieldset_group('study_information','group_governance', 'Governance', '2', '', array(
-    'field_access',
-    'field_access_other',
-  ));
+//   // STUDY INFORMATION : GOVERNANCE
+//   _mica_add_fieldset_group('study_information','group_governance', 'Governance', '2', '', array(
+//     'field_access',
+//     'field_access_other',
+//   ));
 
-  // STUDY INFORMATION : STATUS
-  _mica_add_fieldset_group('study_information','group_status', 'Status', '3', '', array(
-    'field_status_start',
-    'field_status_end',
-  ));
-}
+//   // STUDY INFORMATION : STATUS
+//   _mica_add_fieldset_group('study_information','group_status', 'Status', '3', '', array(
+//     'field_status_start',
+//     'field_status_end',
+//   ));
+// }
 
 function _mica_import_custom_name_format(){
   // add custom field format for name until next release of views

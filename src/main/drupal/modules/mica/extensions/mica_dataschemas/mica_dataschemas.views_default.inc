@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_views_default_views().
+ * Implements hook_views_default_views().
  */
 function mica_dataschemas_views_default_views() {
   $export = array();
@@ -17,7 +17,7 @@ function mica_dataschemas_views_default_views() {
   $view->base_table = 'search_api_index_dataschema_variables_index';
   $view->human_name = 'DataSchema Variables';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -81,7 +81,7 @@ function mica_dataschemas_views_default_views() {
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Field: The main body text: Text */
+  /* Field: The main body text: Text (indexed) */
   $handler->display->display_options['fields']['body_value']['id'] = 'body_value';
   $handler->display->display_options['fields']['body_value']['table'] = 'search_api_index_dataschema_variables_index';
   $handler->display->display_options['fields']['body_value']['field'] = 'body_value';
@@ -160,7 +160,7 @@ function mica_dataschemas_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'DataSchemas';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -340,7 +340,7 @@ It also contains associated support material including variable definitions, lin
   $view->base_table = 'node';
   $view->human_name = 'Project Pairings';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -502,7 +502,7 @@ It also contains associated support material including variable definitions, lin
   $view->base_table = 'node';
   $view->human_name = 'Variable Categories';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -593,7 +593,7 @@ It also contains associated support material including variable definitions, lin
   $view->base_table = 'node';
   $view->human_name = 'Variable DataSchemas';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -704,7 +704,7 @@ It also contains associated support material including variable definitions, lin
   $view->base_table = 'node';
   $view->human_name = 'Variable Missing Categories';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */

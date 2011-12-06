@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_feeds_importer_default().
+ * Implements hook_feeds_importer_default().
  */
 function mica_dataschemas_feeds_importer_default() {
   $export = array();

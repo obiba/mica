@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_feeds_importer_default().
+ * Implements hook_feeds_importer_default().
  */
 function mica_studies_feeds_importer_default() {
   $export = array();
@@ -94,6 +94,65 @@ function mica_studies_feeds_importer_default() {
     'process_in_background' => 0,
   );
   $export['csv_contact_import'] = $feeds_importer;
+
+  $feeds_importer = new stdClass;
+  $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
+  $feeds_importer->api_version = 1;
+  $feeds_importer->id = 'csv_documents_import';
+  $feeds_importer->config = array(
+    'name' => 'Documents',
+    'description' => 'Import Documents from a CSV file',
+    'fetcher' => array(
+      'plugin_key' => 'FeedsFileFetcher',
+      'config' => array(
+        'allowed_extensions' => 'txt csv',
+        'direct' => 0,
+      ),
+    ),
+    'parser' => array(
+      'plugin_key' => 'FeedsMultiValueCSVParser',
+      'config' => array(
+        'delimiter' => ';',
+        'no_headers' => 0,
+        'multivalue_separator' => '|',
+        'multivalue_trim_spaces' => 1,
+      ),
+    ),
+    'processor' => array(
+      'plugin_key' => 'FeedsNodeProcessor',
+      'config' => array(
+        'content_type' => 'documents',
+        'expire' => '-1',
+        'author' => 0,
+        'mappings' => array(
+          1 => array(
+            'source' => 'title',
+            'target' => 'title',
+            'unique' => FALSE,
+          ),
+          2 => array(
+            'source' => 'body',
+            'target' => 'body',
+            'unique' => FALSE,
+          ),
+          3 => array(
+            'source' => 'field_files',
+            'target' => 'field_files',
+            'unique' => FALSE,
+          ),
+        ),
+        'update_existing' => '1',
+        'input_format' => 'plain_text',
+      ),
+    ),
+    'content_type' => '',
+    'update' => 0,
+    'import_period' => '-1',
+    'expire_period' => 3600,
+    'import_on_create' => 1,
+    'process_in_background' => 0,
+  );
+  $export['csv_documents_import'] = $feeds_importer;
 
   $feeds_importer = new stdClass;
   $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
@@ -592,64 +651,5 @@ function mica_studies_feeds_importer_default() {
   );
   $export['csv_study_information_import'] = $feeds_importer;
 
-  $feeds_importer = new stdClass;
-  $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
-  $feeds_importer->api_version = 1;
-  $feeds_importer->id = 'csv_documents_import';
-  $feeds_importer->config = array(
-    'name' => 'Documents',
-    'description' => 'Import Documents from a CSV file',
-    'fetcher' => array(
-      'plugin_key' => 'FeedsFileFetcher',
-      'config' => array(
-        'allowed_extensions' => 'txt csv',
-        'direct' => 0,
-      ),
-    ),
-    'parser' => array(
-      'plugin_key' => 'FeedsMultiValueCSVParser',
-      'config' => array(
-        'delimiter' => ';',
-        'no_headers' => 0,
-        'multivalue_separator' => '|',
-        'multivalue_trim_spaces' => 1,
-      ),
-    ),
-    'processor' => array(
-      'plugin_key' => 'FeedsNodeProcessor',
-      'config' => array(
-        'content_type' => 'documents',
-        'expire' => '-1',
-        'author' => 0,
-        'mappings' => array(
-          1 => array(
-            'source' => 'title',
-            'target' => 'title',
-            'unique' => FALSE,
-          ),
-          2 => array(
-            'source' => 'body',
-            'target' => 'body',
-            'unique' => FALSE,
-          ),
-          3 => array(
-            'source' => 'field_files',
-            'target' => 'field_files',
-            'unique' => FALSE,
-          ),
-        ),
-        'update_existing' => '1',
-        'input_format' => 'plain_text',
-      ),
-    ),
-    'content_type' => '',
-    'update' => 0,
-    'import_period' => '-1',
-    'expire_period' => 3600,
-    'import_on_create' => 1,
-    'process_in_background' => 0,
-  );
-  $export['csv_documents_import'] = $feeds_importer;
-  
   return $export;
 }

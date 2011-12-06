@@ -5,39 +5,126 @@
  */
 
 /**
- * Implementation of hook_field_group_info().
+ * Implements hook_field_group_info().
  */
 function mica_data_access_field_group_info() {
   $export = array();
 
   $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_description|node|participant_variable|default';
-  $field_group->group_name = 'group_description';
+  $field_group->identifier = 'group_institution|node|data_access_request|default';
+  $field_group->group_name = 'group_institution';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'participant_variable';
+  $field_group->bundle = 'data_access_request';
   $field_group->mode = 'default';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Description',
-    'weight' => '0',
+    'label' => 'Institution',
+    'weight' => '4',
     'children' => array(
-      0 => 'body',
-      1 => 'field_categories',
-      2 => 'field_dataset',
-      3 => 'field_label',
-      4 => 'field_repeatable',
-      5 => 'field_value_type',
+      0 => 'field_institution_name',
+      1 => 'field_street',
+      2 => 'field_city',
+      3 => 'field_postal_code',
+      4 => 'field_country_text',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'classes' => '',
+        'required_fields' => 1,
       ),
     ),
   );
-  $export['group_description|node|participant_variable|default'] = $field_group;
+  $export['group_institution|node|data_access_request|default'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_institution|node|data_access_request|form';
+  $field_group->group_name = 'group_institution';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'data_access_request';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Institution',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_institution_name',
+      1 => 'field_street',
+      2 => 'field_city',
+      3 => 'field_postal_code',
+      4 => 'field_country_text',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_institution|node|data_access_request|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_investigators|node|data_access_request|default';
+  $field_group->group_name = 'group_investigators';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'data_access_request';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Investigators',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_representative',
+      1 => 'field_rep_email',
+      2 => 'field_collaborator',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_investigators|node|data_access_request|default'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_investigators|node|data_access_request|form';
+  $field_group->group_name = 'group_investigators';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'data_access_request';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Investigators',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_representative',
+      1 => 'field_rep_email',
+      2 => 'field_collaborator',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_investigators|node|data_access_request|form'] = $field_group;
 
   return $export;
 }

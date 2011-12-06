@@ -127,16 +127,10 @@ package-themes-prepare:
 package-themes:
 
 package-forks-prepare:
-	$(call make-info-version,sites/all/modules,feeds,$(feeds_branch)-mica)
-	$(call make-info-version,sites/all/modules,http_client,$(http_client_branch)-mica)
-	$(call make-info-version,sites/all/modules,menu_firstchild,$(menu_firstchild_revision)-mica)
-	$(call make-info-version,sites/all/modules,references,$(references_revision)-mica)
 	$(call make-info-version,sites/all/modules,search_api_ranges,$(search_api_ranges_revision)-mica)
 	
 package-forks:
-	$(call make-package,sites/all/modules,feeds)
-	$(call make-package,sites/all/modules,http_client)
-	$(call make-package,sites/all/modules,menu_firstchild)
+	$(call make-package,sites/all/modules,ctools)
 	$(call make-package,sites/all/modules,references)
 	$(call make-package,sites/all/modules,search_api_ranges)
 

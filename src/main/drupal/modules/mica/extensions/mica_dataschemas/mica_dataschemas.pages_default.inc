@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_default_page_manager_handlers().
+ * Implements hook_default_page_manager_handlers().
  */
 function mica_dataschemas_default_page_manager_handlers() {
   $export = array();

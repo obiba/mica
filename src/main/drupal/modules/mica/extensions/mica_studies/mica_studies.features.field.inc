@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function mica_studies_field_default_fields() {
   $fields = array();
@@ -532,6 +532,24 @@ function mica_studies_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'email',
@@ -679,6 +697,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'name',
@@ -698,6 +734,8 @@ MD.',
       'label' => 'Contact Name',
       'required' => FALSE,
       'settings' => array(
+        'component_css' => '',
+        'credentials_inline' => 0,
         'generational_field' => 'select',
         'inline_css' => array(
           'credentials' => '',
@@ -707,6 +745,7 @@ MD.',
           'middle' => '',
           'title' => '',
         ),
+        'override_format' => 'default',
         'size' => array(
           'credentials' => 35,
           'family' => 20,
@@ -797,6 +836,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'node_reference',
@@ -880,6 +937,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
@@ -940,7 +1015,7 @@ MD.',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
           'field_description_value_type' => 'TEXT',
         ),
@@ -966,6 +1041,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -1051,6 +1144,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'file',
@@ -1114,7 +1225,7 @@ MD.',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
           'field_description_value_type' => 'TEXT',
         ),
@@ -1140,6 +1251,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -1220,6 +1349,24 @@ MD.',
       'deleted' => '0',
       'description' => 'Machine name of the content type that declares this field',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -1294,6 +1441,24 @@ MD.',
       'deleted' => '0',
       'description' => 'Name of the content type that declares this field',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
@@ -1374,6 +1539,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
@@ -1449,6 +1632,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
@@ -1524,6 +1725,24 @@ MD.',
       'deleted' => '0',
       'description' => 'Field machine name',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -1574,8 +1793,8 @@ MD.',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          0 => 'False',
-          1 => 'True',
+          0 => 'No',
+          1 => 'Yes',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
@@ -1604,6 +1823,24 @@ MD.',
       'deleted' => '0',
       'description' => 'Can this field have multiple values?',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'list',
@@ -1683,6 +1920,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'list',
@@ -1737,6 +1992,18 @@ MD.',
       ),
       'module' => 'text',
       'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
         'max_length' => '255',
       ),
       'translatable' => '1',
@@ -1748,6 +2015,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -1807,7 +2092,7 @@ MD.',
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
           'create' => 0,
@@ -1827,6 +2112,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -1887,7 +2190,7 @@ MD.',
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
           'create' => 0,
@@ -1907,6 +2210,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -1967,7 +2288,7 @@ MD.',
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
           'create' => 0,
@@ -1987,6 +2308,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -2047,7 +2386,7 @@ MD.',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
           'field_description_value_type' => 'TEXT',
         ),
@@ -2073,6 +2412,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -2174,6 +2531,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'node_reference',
@@ -2263,6 +2638,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
@@ -2359,6 +2752,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'node_reference',
@@ -2448,6 +2859,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2522,6 +2951,7 @@ MD.',
           'view own' => 0,
         ),
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -2534,11 +2964,29 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => '5',
         ),
         'teaser' => array(
@@ -2563,9 +3011,11 @@ MD.',
         ),
         'enable_tokens' => 1,
         'title' => 'none',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
@@ -2611,6 +3061,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -2678,6 +3146,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'number',
@@ -2758,6 +3244,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'number',
@@ -2838,6 +3342,7 @@ MD.',
           'view own' => 0,
         ),
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -2850,11 +3355,29 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => '1',
         ),
         'teaser' => array(
@@ -2879,9 +3402,11 @@ MD.',
         ),
         'enable_tokens' => 1,
         'title' => 'none',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
@@ -2938,6 +3463,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'mica_node_reference_field',
@@ -3016,6 +3559,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'mica_node_reference_field',
@@ -3099,6 +3660,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -3185,6 +3764,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'file',
@@ -3256,6 +3853,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -3334,6 +3949,24 @@ MD.',
       'deleted' => '0',
       'description' => 'Access to the following study features to external researchers or third parties provided or foreseen',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'list',
@@ -3417,6 +4050,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
@@ -3491,6 +4142,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'number',
@@ -3571,6 +4240,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'number',
@@ -3663,6 +4350,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'list',
@@ -3746,6 +4451,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
@@ -3832,6 +4555,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
@@ -3920,6 +4661,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'list',
@@ -4003,6 +4762,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
@@ -4087,6 +4864,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'list',
@@ -4167,6 +4962,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'list',
@@ -4248,6 +5061,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'list',
@@ -4319,6 +5150,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'number',
@@ -4410,6 +5259,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'list',
@@ -4481,6 +5348,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'number',
@@ -4561,6 +5446,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'number',
@@ -4896,6 +5799,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'list',
@@ -4969,6 +5890,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -5049,6 +5988,24 @@ MD.',
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',

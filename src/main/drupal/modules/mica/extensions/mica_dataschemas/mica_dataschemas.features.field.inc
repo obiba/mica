@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function mica_dataschemas_field_default_fields() {
   $fields = array();
@@ -1144,6 +1144,7 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -1247,6 +1248,7 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -1519,105 +1521,6 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_disease'
-  $fields['node-ds_variable-field_dim_disease'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_dim_disease',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'parent' => '0',
-            'vocabulary' => 'forums',
-          ),
-        ),
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'ds_variable',
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'custom_dimensions' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'custom_page' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'custom_variable' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 36,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_dim_disease',
-      'label' => 'dis',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'multiselect',
-        'settings' => array(),
-        'type' => 'multiselect',
-        'weight' => '91',
-      ),
-    ),
-  );
-
   // Exported field: 'node-ds_variable-field_dim_disease_history'
   $fields['node-ds_variable-field_dim_disease_history'] = array(
     'field_config' => array(
@@ -1764,6 +1667,7 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -2036,92 +1940,6 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-ds_variable-field_dim_med_health_interv'
-  $fields['node-ds_variable-field_dim_med_health_interv'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_dim_med_health_interv',
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'parent' => '0',
-            'vocabulary' => 'forums',
-          ),
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'ds_variable',
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'custom_dimensions' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'custom_page' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'custom_variable' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 37,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_dim_med_health_interv',
-      'label' => 'med',
-      'required' => FALSE,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'multiselect',
-        'settings' => array(),
-        'type' => 'multiselect',
-        'weight' => '92',
-      ),
-    ),
-  );
-
   // Exported field: 'node-ds_variable-field_dim_medication'
   $fields['node-ds_variable-field_dim_medication'] = array(
     'field_config' => array(
@@ -2163,6 +1981,7 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -2371,6 +2190,7 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -2999,6 +2819,7 @@ function mica_dataschemas_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -4380,8 +4201,6 @@ function mica_dataschemas_field_default_fields() {
   t('Unit');
   t('Variable');
   t('Variables');
-  t('dis');
-  t('med');
 
   return $fields;
 }

@@ -17,7 +17,7 @@ function mica_data_access_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'Data Access Committee';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+    $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -182,7 +182,7 @@ function mica_data_access_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'Data Access';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+    $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -366,7 +366,7 @@ function mica_data_access_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'Data Access Administration';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+    $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   
   /* Display: Master */
@@ -612,7 +612,7 @@ function mica_data_access_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'My Data Access Requests';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+    $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   
   /* Display: Master */

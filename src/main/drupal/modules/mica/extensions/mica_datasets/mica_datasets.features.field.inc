@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function mica_datasets_field_default_fields() {
   $fields = array();
@@ -14,7 +14,6 @@ function mica_datasets_field_default_fields() {
   $fields['node-dataset-body'] = array(
     'field_config' => array(
       'active' => '1',
-      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(
@@ -63,6 +62,24 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -106,7 +123,6 @@ function mica_datasets_field_default_fields() {
   $fields['node-dataset-field_dataschema'] = array(
     'field_config' => array(
       'active' => '1',
-      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -137,6 +153,7 @@ function mica_datasets_field_default_fields() {
           'view own' => 0,
         ),
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -149,11 +166,29 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => '5',
         ),
         'teaser' => array(
@@ -178,9 +213,11 @@ function mica_datasets_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'none',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,
@@ -196,7 +233,6 @@ function mica_datasets_field_default_fields() {
   $fields['node-dataset-field_dataset_studies'] = array(
     'field_config' => array(
       'active' => '1',
-      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -298,6 +334,24 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'viewreference',
@@ -333,7 +387,6 @@ function mica_datasets_field_default_fields() {
   $fields['node-dataset-field_dataset_variables'] = array(
     'field_config' => array(
       'active' => '1',
-      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -435,6 +488,24 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
@@ -469,7 +540,6 @@ function mica_datasets_field_default_fields() {
   $fields['node-participant_variable-body'] = array(
     'field_config' => array(
       'active' => '1',
-      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(
@@ -518,6 +588,24 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
@@ -562,7 +650,6 @@ function mica_datasets_field_default_fields() {
   $fields['node-participant_variable-field_categories'] = array(
     'field_config' => array(
       'active' => '1',
-      'locked' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -605,6 +692,24 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
@@ -643,7 +748,6 @@ function mica_datasets_field_default_fields() {
   $fields['node-participant_variable-field_dataset'] = array(
     'field_config' => array(
       'active' => '1',
-      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -709,6 +813,24 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'node_reference',
@@ -748,7 +870,6 @@ function mica_datasets_field_default_fields() {
   $fields['node-participant_variable-field_label'] = array(
     'field_config' => array(
       'active' => '1',
-      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -791,6 +912,24 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'text',
@@ -829,7 +968,6 @@ function mica_datasets_field_default_fields() {
   $fields['node-participant_variable-field_repeatable'] = array(
     'field_config' => array(
       'active' => '1',
-      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -873,6 +1011,24 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => 'Can this variable have multiple values?',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'list',
@@ -908,7 +1064,6 @@ function mica_datasets_field_default_fields() {
   $fields['node-participant_variable-field_value_type'] = array(
     'field_config' => array(
       'active' => '1',
-      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -951,6 +1106,24 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'inline',
           'module' => 'list',
@@ -1037,6 +1210,24 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'node_reference',
@@ -1076,7 +1267,6 @@ function mica_datasets_field_default_fields() {
   $fields['node-study-mica_opal'] = array(
     'field_config' => array(
       'active' => '1',
-      'locked' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
@@ -1107,6 +1297,7 @@ function mica_datasets_field_default_fields() {
           'view own' => 0,
         ),
         'title' => 'optional',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
       ),
@@ -1119,11 +1310,29 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'custom_dimensions' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_page' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'custom_variable' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'default',
+          'type' => 'link_default',
           'weight' => '7',
         ),
         'teaser' => array(
@@ -1148,9 +1357,11 @@ function mica_datasets_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'title' => 'none',
+        'title_maxlength' => 128,
         'title_value' => '',
         'url' => 0,
         'user_register_form' => FALSE,
+        'validate_url' => 1,
       ),
       'widget' => array(
         'active' => 0,

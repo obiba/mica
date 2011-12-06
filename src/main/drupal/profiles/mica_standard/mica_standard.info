@@ -62,7 +62,7 @@ dependencies[] = mica_community
 dependencies[] = mica_datasets
 dependencies[] = mica_opal
 dependencies[] = mica_data_access
-dependencies[] = mica_projects
 dependencies[] = mica_dataschemas
+dependencies[] = mica_projects
 files[] = mica_standard.profile
 

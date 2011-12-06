@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_views_default_views().
+ * Implements hook_views_default_views().
  */
 function mica_datasets_views_default_views() {
   $export = array();
@@ -17,7 +17,7 @@ function mica_datasets_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'Dataset Participant Variables';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -116,25 +116,6 @@ function mica_datasets_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'dataset-participant-variables';
-  $translatables['dataset_participant_variables'] = array(
-    t('Master'),
-    t('Data Dictionnary'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('empty_dataset_participant_variables'),
-    t('No variables found.'),
-    t('Name'),
-    t('Label'),
-    t('All'),
-    t('Page'),
-  );
   $export['dataset_participant_variables'] = $view;
 
   $view = new view;
@@ -144,7 +125,7 @@ function mica_datasets_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'Dataset Studies';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -206,7 +187,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['empty']['area']['label'] = 'empty_dataset_studies';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
   $handler->display->display_options['empty']['area']['content'] = 'No studies found.';
-  /* Relationship: Fields: Study Information (mica_study_information) - nid */
+  /* Relationship: Content: Study Information (mica_study_information) */
   $handler->display->display_options['relationships']['mica_study_information_nid']['id'] = 'mica_study_information_nid';
   $handler->display->display_options['relationships']['mica_study_information_nid']['table'] = 'field_data_mica_study_information';
   $handler->display->display_options['relationships']['mica_study_information_nid']['field'] = 'mica_study_information_nid';
@@ -282,11 +263,10 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_study_country']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_study_country']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_study_country']['field_api_classes'] = 0;
-  /* Field: Content: P3G Catalogue Link */
+  /* Field: Content: P3G Catalogue */
   $handler->display->display_options['fields']['field_p3g_observatory_link']['id'] = 'field_p3g_observatory_link';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['table'] = 'field_data_field_p3g_observatory_link';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['field'] = 'field_p3g_observatory_link';
-  $handler->display->display_options['fields']['field_p3g_observatory_link']['label'] = 'P3G Catalogue';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_p3g_observatory_link']['alter']['absolute'] = 0;
@@ -309,7 +289,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Contextual filter: Fields: Datasets (mica_dataset) - nid */
+  /* Contextual filter: Content: Datasets (mica_dataset) */
   $handler->display->display_options['arguments']['mica_dataset_nid']['id'] = 'mica_dataset_nid';
   $handler->display->display_options['arguments']['mica_dataset_nid']['table'] = 'field_data_mica_dataset';
   $handler->display->display_options['arguments']['mica_dataset_nid']['field'] = 'mica_dataset_nid';
@@ -339,29 +319,6 @@ function mica_datasets_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'dataset-studies';
-  $translatables['dataset_studies'] = array(
-    t('Master'),
-    t('Studies'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('empty_dataset_studies'),
-    t('No studies found.'),
-    t('mica_study_information'),
-    t('Name'),
-    t('Full Name'),
-    t('Target number of participants'),
-    t('Country(ies)'),
-    t('P3G Catalogue'),
-    t('All'),
-    t('Page'),
-  );
   $export['dataset_studies'] = $view;
 
   $view = new view;
@@ -371,7 +328,7 @@ function mica_datasets_views_default_views() {
   $view->base_table = 'node';
   $view->human_name = 'Datasets';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -528,27 +485,6 @@ function mica_datasets_views_default_views() {
     'default' => 'default',
     'page' => 'page',
   );
-  $translatables['datasets'] = array(
-    t('Master'),
-    t('Datasets'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('The consortium makes available different datasets to the research community. Each dataset is described by a comprehensive data dictionary which gives details on each available variable. Moreover, Mica includes for  studies using the OBiBa Opal software as main database solution, a distributed query engine that enables researchers to obtain real-time aggregated reports on the exact number of participant with specific characteristics or phenotypes. Mica makes even possible to run remotely some regression analyses on the real study data using the DataSHIELD method (Wolfson M et al. <i>Int J Epidemiol</i>. 2010), which is implemented both in Mica and Opal. <br/><br/>'),
-    t('empty_datasets'),
-    t('No dataset found.'),
-    t('Name'),
-    t('Description'),
-    t('Dataschema'),
-    t('Page'),
-    t('Feed'),
-  );
   $export['datasets'] = $view;
 
   $view = new view;
@@ -558,7 +494,7 @@ function mica_datasets_views_default_views() {
   $view->base_table = 'search_api_index_participant_variable_index';
   $view->human_name = 'Participant Variable Search';
   $view->core = 7;
-  $view->api_version = '3.0-alpha1';
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
@@ -678,7 +614,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_label']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_label']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_label']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_label']['link_to_entity'] = 0;
   /* Field: Node: Categories */
   $handler->display->display_options['fields']['field_categories']['id'] = 'field_categories';
   $handler->display->display_options['fields']['field_categories']['table'] = 'search_api_index_participant_variable_index';
@@ -699,7 +634,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_categories']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_categories']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_categories']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_categories']['link_to_entity'] = 0;
   /* Field: Node: Value Type */
   $handler->display->display_options['fields']['field_value_type']['id'] = 'field_value_type';
   $handler->display->display_options['fields']['field_value_type']['table'] = 'search_api_index_participant_variable_index';
@@ -719,8 +653,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_value_type']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_value_type']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_value_type']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['format_name'] = 1;
   /* Field: Node: Repeatable */
   $handler->display->display_options['fields']['field_repeatable']['id'] = 'field_repeatable';
   $handler->display->display_options['fields']['field_repeatable']['table'] = 'search_api_index_participant_variable_index';
@@ -740,8 +672,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_repeatable']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_repeatable']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_repeatable']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_repeatable']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['field_repeatable']['format_name'] = 1;
   /* Field: Node: Dataset */
   $handler->display->display_options['fields']['field_dataset']['id'] = 'field_dataset';
   $handler->display->display_options['fields']['field_dataset']['table'] = 'search_api_index_participant_variable_index';
@@ -765,8 +695,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_dataset']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_dataset']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['field_dataset']['link_to_entity'] = 1;
-  $handler->display->display_options['fields']['field_dataset']['format_name'] = 1;
-  /* Field: Dataset: Node ID */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_dataset_nid']['id'] = 'field_dataset_nid';
   $handler->display->display_options['fields']['field_dataset_nid']['table'] = 'search_api_index_participant_variable_index';
   $handler->display->display_options['fields']['field_dataset_nid']['field'] = 'field_dataset_nid';
@@ -788,8 +717,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_dataset_nid']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_dataset_nid']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_dataset_nid']['hide_alter_empty'] = 0;
-  $handler->display->display_options['fields']['field_dataset_nid']['link_to_entity'] = 0;
-  /* Contextual filter: Dataset: Node ID */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['field_dataset_nid']['id'] = 'field_dataset_nid';
   $handler->display->display_options['arguments']['field_dataset_nid']['table'] = 'search_api_index_participant_variable_index';
   $handler->display->display_options['arguments']['field_dataset_nid']['field'] = 'field_dataset_nid';
@@ -815,27 +743,6 @@ function mica_datasets_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'participant-variable-search';
-  $translatables['participant_variable_search'] = array(
-    t('Master'),
-    t('Data Dictionnary'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('Name'),
-    t('Label'),
-    t('Categories'),
-    t('Value Type'),
-    t('Repeatable'),
-    t('Dataset'),
-    t('Fulltext search'),
-    t('Page'),
-  );
   $export['participant_variable_search'] = $view;
 
   return $export;
