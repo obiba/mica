@@ -242,73 +242,73 @@ function mica_dataschemas_feeds_importer_default() {
             'unique' => 1,
           ),
           16 => array(
-            'source' => 'field_dim_disease',
-            'target' => 'field_dim_disease',
-            'unique' => FALSE,
-          ),
-          17 => array(
             'source' => 'field_dim_class',
             'target' => 'field_dim_class',
             'unique' => FALSE,
           ),
-          18 => array(
-            'source' => 'field_dim_med_health_interv',
-            'target' => 'field_dim_med_health_interv',
-            'unique' => FALSE,
-          ),
-          19 => array(
+          17 => array(
             'source' => 'field_dim_period',
             'target' => 'field_dim_period',
             'unique' => FALSE,
           ),
-          20 => array(
+          18 => array(
             'source' => 'field_dim_source_of_info',
             'target' => 'field_dim_source_of_info',
             'unique' => FALSE,
           ),
-          21 => array(
+          19 => array(
             'source' => 'field_dim_target',
             'target' => 'field_dim_target',
             'unique' => FALSE,
           ),
-          22 => array(
-            'source' => 'field_dim_health_information ',
-            'target' => 'field_dim_health_information',
-            'unique' => FALSE,
-          ),
-          23 => array(
-            'source' => 'field_dim_disease_history ',
-            'target' => 'field_dim_disease_history',
-            'unique' => FALSE,
-          ),
-          24 => array(
+          20 => array(
             'source' => 'field_dim_life_habits_behaviours',
             'target' => 'field_dim_life_habits_behaviours',
             'unique' => FALSE,
           ),
-          25 => array(
+          21 => array(
             'source' => 'field_dim_sociodemo_charact',
             'target' => 'field_dim_sociodemo_charact',
             'unique' => FALSE,
           ),
+          22 => array(
+            'source' => 'field_dim_sample',
+            'target' => 'field_dim_sample',
+            'unique' => FALSE,
+          ),
+          23 => array(
+            'source' => 'field_dim_therapeutic_inter',
+            'target' => 'field_dim_therapeutic_inter',
+            'unique' => FALSE,
+          ),
+          24 => array(
+            'source' => 'field_dim_reproductive_history',
+            'target' => 'field_dim_reproductive_history',
+            'unique' => FALSE,
+          ),
+          25 => array(
+            'source' => 'field_dim_disease_history',
+            'target' => 'field_dim_disease_history',
+            'unique' => FALSE,
+          ),
           26 => array(
-            'source' => 'field_dim_socioeco',
-            'target' => 'field_dim_socioeco',
+            'source' => 'field_dim_body_functions_meas',
+            'target' => 'field_dim_body_functions_meas',
             'unique' => FALSE,
           ),
           27 => array(
-            'source' => 'field_dim_body_structure',
-            'target' => 'field_dim_body_structure',
+            'source' => 'field_dim_medication',
+            'target' => 'field_dim_medication',
             'unique' => FALSE,
           ),
           28 => array(
-            'source' => 'field_dim_body_functions',
-            'target' => 'field_dim_body_functions',
+            'source' => 'field_dim_environmental_exp',
+            'target' => 'field_dim_environmental_exp',
             'unique' => FALSE,
           ),
           29 => array(
-            'source' => 'field_dim_sample',
-            'target' => 'field_dim_sample',
+            'source' => 'field_dim_biochemical_measures',
+            'target' => 'field_dim_biochemical_measures',
             'unique' => FALSE,
           ),
         ),

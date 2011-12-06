@@ -158,24 +158,24 @@ function mica_dataschemas_default_search_api_index() {
           "status" : 1,
           "weight" : "0",
           "settings" : { "fields" : {
-              "field_dim_biochemical_measures:parents_all" : "field_dim_biochemical_measures:parents_all",
-              "field_dim_body_functions_meas:parents_all" : "field_dim_body_functions_meas:parents_all",
-              "field_dim_class:parents_all" : "field_dim_class:parents_all",
-              "field_dim_collection_mode:parents_all" : "field_dim_collection_mode:parents_all",
-              "field_dim_disease_history:parents_all" : "field_dim_disease_history:parents_all",
-              "field_dim_environmental_exp:parents_all" : "field_dim_environmental_exp:parents_all",
-              "field_dim_format:parents_all" : "field_dim_format:parents_all",
-              "field_dim_life_habits_behaviours:parents_all" : "field_dim_life_habits_behaviours:parents_all",
-              "field_dim_medication:parents_all" : "field_dim_medication:parents_all",
-              "field_dim_period:parents_all" : "field_dim_period:parents_all",
-              "field_dim_reproductive_history:parents_all" : "field_dim_reproductive_history:parents_all",
-              "field_dim_sample:parents_all" : "field_dim_sample:parents_all",
-              "field_dim_sociodemo_charact:parents_all" : "field_dim_sociodemo_charact:parents_all",
-              "field_dim_source_of_info:parents_all" : "field_dim_source_of_info:parents_all",
-              "field_dim_target:parents_all" : "field_dim_target:parents_all",
-              "field_dim_target_gender:parents_all" : "field_dim_target_gender:parents_all",
-              "field_dim_therapeutic_inter:parents_all" : "field_dim_therapeutic_inter:parents_all",
-              "field_dim_type:parents_all" : "field_dim_type:parents_all"
+              "field_dim_biochemical_measures:parent" : "field_dim_biochemical_measures:parent",
+              "field_dim_body_functions_meas:parent" : "field_dim_body_functions_meas:parent",
+              "field_dim_class:parent" : "field_dim_class:parent",
+              "field_dim_collection_mode:parent" : "field_dim_collection_mode:parent",
+              "field_dim_disease_history:parent" : "field_dim_disease_history:parent",
+              "field_dim_environmental_exp:parent" : "field_dim_environmental_exp:parent",
+              "field_dim_format:parent" : "field_dim_format:parent",
+              "field_dim_life_habits_behaviours:parent" : "field_dim_life_habits_behaviours:parent",
+              "field_dim_medication:parent" : "field_dim_medication:parent",
+              "field_dim_period:parent" : "field_dim_period:parent",
+              "field_dim_reproductive_history:parent" : "field_dim_reproductive_history:parent",
+              "field_dim_sample:parent" : "field_dim_sample:parent",
+              "field_dim_sociodemo_charact:parent" : "field_dim_sociodemo_charact:parent",
+              "field_dim_source_of_info:parent" : "field_dim_source_of_info:parent",
+              "field_dim_target:parent" : "field_dim_target:parent",
+              "field_dim_target_gender:parent" : "field_dim_target_gender:parent",
+              "field_dim_therapeutic_inter:parent" : "field_dim_therapeutic_inter:parent",
+              "field_dim_type:parent" : "field_dim_type:parent"
             }
           }
         },
@@ -190,19 +190,6 @@ function mica_dataschemas_default_search_api_index() {
           "settings" : { "fields" : {
               "title" : true,
               "field_dataschema_ref" : true,
-              "field_unit" : true,
-              "body:value" : true,
-              "body:summary" : true,
-              "field_dataschema_ref:title" : true,
-              "field_variable_categories:title" : true
-            }
-          }
-        },
-        "taxonomy_hierarchy_processor.inc" : {
-          "status" : 0,
-          "weight" : "0",
-          "settings" : { "fields" : {
-              "title" : true,
               "field_unit" : true,
               "body:value" : true,
               "body:summary" : true,
