@@ -3558,19 +3558,19 @@ function mica_studies_strongarm() {
   $strongarm->value = 'Save and add fields';
   $export['save_continue_study_information'] = $strongarm;
 
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'search_api_facets_search_ids';
-  $strongarm->value = array(
-    'studies_index' => array(
-      'search_api_views:studies_search' => 'search_api_views:studies_search',
-    ),
-    'fields_description_index' => array(
-      'search_api_views:fields_description_search' => 'search_api_views:fields_description_search',
-    ),
-  );
-  $export['search_api_facets_search_ids'] = $strongarm;
+//   $strongarm = new stdClass;
+//   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+//   $strongarm->api_version = 1;
+//   $strongarm->name = 'search_api_facets_search_ids';
+//   $strongarm->value = array(
+//     'studies_index' => array(
+//       'search_api_views:studies_search' => 'search_api_views:studies_search',
+//     ),
+//     'fields_description_index' => array(
+//       'search_api_views:fields_description_search' => 'search_api_views:fields_description_search',
+//     ),
+//   );
+//   $export['search_api_facets_search_ids'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

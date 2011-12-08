@@ -127,7 +127,7 @@ package-themes-prepare:
 package-themes:
 
 package-forks-prepare:
-	$(call make-info-version,sites/all/modules,search_api_ranges,$(search_api_ranges_revision)-mica)
+#	$(call make-info-version,sites/all/modules,search_api_ranges,$(search_api_ranges_revision)-mica)
 	
 package-forks:
 	$(call make-package,sites/all/modules,ctools)

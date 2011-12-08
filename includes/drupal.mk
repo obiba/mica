@@ -38,7 +38,6 @@ noderefcreate_version=7.x-1.0
 panels_version=7.x-3.0-alpha3
 pathauto_version=7.x-1.0
 search_api_page_version=7.x-1.0-beta2
-search_api_ranges_version=7.x-1.2
 search_api_solr_version=7.x-1.0-rc1
 search_api_version=7.x-1.0-rc1
 strongarm_version=7.x-2.0-beta4
@@ -65,9 +64,8 @@ ctools_revision=dd65335ef5b823702ea5f1688a3000b09a04a739
 # Issue http://drupal.org/node/1275096
 references_revision=e00686587a53cf51bdcca45248e9a72b483b8916
 
-# Patch for issue http://drupal.org/node/1231540
-search_api_ranges_revision=7.x-1.2
-search_api_ranges_patch=http://drupal.org/files/issues/1231540-item-to-entity.patch
+# Waiting for release that supports FacetAPI
+search_api_ranges_revision=7256e42869632a939b4240396a69110a5beedf2f
 
 # CKEditor Library Version
 ckeditor_version=3.6.1
@@ -118,7 +116,6 @@ drupal-download:
 		panels-$(panels_version) \
 		pathauto-$(pathauto_version) \
 		search_api_page-$(search_api_page_version) \
-		search_api_ranges-$(search_api_ranges_version) \
 		search_api-$(search_api_version) \
 		search_api_solr-$(search_api_solr_version) \
 		strongarm-$(strongarm_version) \
@@ -153,11 +150,12 @@ drupal-cache-clear:
 drupal-stable-dev: drupal-core-patch drupal-module-patch
 	$(call drupal-git-checkout-module,references, 0)
 	$(call drupal-git-checkout-module,ctools, 0)
+	$(call drupal-git-checkout-module,search_api_ranges, 0)
 	
 drupal-module-patch:
-	$(call drupal-git-patch-module,search_api_ranges, 1)
-	$(call drupal-patch-module-file,sites/all/modules/search_api_ranges/search_api_ranges.module,MICA-206-ranges-block-title-truncated.patch)
-	$(call drupal-patch-module-file,sites/all/modules/search_api_ranges/search_api_ranges.module,MICA-207-hide-ranges-block-when-min-equals-max.patch)
+#	$(call drupal-git-patch-module,search_api_ranges, 1)
+#	$(call drupal-patch-module-file,sites/all/modules/search_api_ranges/search_api_ranges.module,MICA-206-ranges-block-title-truncated.patch)
+#	$(call drupal-patch-module-file,sites/all/modules/search_api_ranges/search_api_ranges.module,MICA-207-hide-ranges-block-when-min-equals-max.patch)
 	
 drupal-core-patch:
 	$(call drupal-patch-module-file,modules/block/block.module,MICA-205-block-info-test.patch)

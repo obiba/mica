@@ -68,11 +68,7 @@ function mica_dataschemas_configure_facet_blocks() {
     	))
     	->execute();
     	
-      watchdog('mica', 'Configured facet %facet with delta %delta',
-        array(
-          '%facet' => $facet, 
-          '%delta' => $facet_delta,
-        ), WATCHDOG_INFO);
+      watchdog('mica', 'Configured facet block %facet', array('%facet' => $facet), WATCHDOG_INFO);
     }    
     
   }

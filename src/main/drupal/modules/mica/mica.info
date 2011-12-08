@@ -5,12 +5,11 @@ package = "OBiBa"
 core = 7.x
 
 dependencies[] = entity
+dependencies[] = facetapi
 dependencies[] = search_api
-dependencies[] = search_api_facets
 dependencies[] = search_api_ranges
 dependencies[] = references
 dependencies[] = mica_node_reference_field
-;dependencies[] = relation
 dependencies[] = field_permissions
 dependencies[] = menu
 dependencies[] = menu_firstchild

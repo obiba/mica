@@ -215,6 +215,10 @@ Over time, the Consortium will generate best practices documents that will descr
   // rebuild permissions
   node_access_rebuild();
   
+  
+  include_once(drupal_get_path('module', 'mica') . '/includes/search.inc');
+  mica_configure_current_search_facet_blocks();
+  
   include_once(drupal_get_path('module', 'mica_dataschemas') . '/includes/blocks.inc');
   mica_dataschemas_configure_facet_blocks();
   

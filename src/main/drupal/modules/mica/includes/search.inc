@@ -88,7 +88,7 @@ function _mica_add_field_index($index_name, stdClass $field_description) {
   $index = search_api_index_load($index_name, TRUE);
   $options = $index->options;
   $fields = $options['fields'];
-
+  
   // check if this bundle is a child of a relation
   $relation = _mica_find_relation_by_child($bundle);
   if (!empty($relation)) {
@@ -98,10 +98,13 @@ function _mica_add_field_index($index_name, stdClass $field_description) {
   }
 
   // check if we need to reindex content
-  if (empty($fields[$field_name])) {
+  if (!isset($fields[$field_name]) || empty($fields[$field_name])) {
     $reindex = TRUE;
   } else {
-    $reindex = $fields[$field_name]['name'] != $field_label
+    $reindex = !isset($fields[$field_name]['name'])
+      || !isset($fields[$field_name]['indexed'])
+      || !isset($fields[$field_name]['type'])
+      || $fields[$field_name]['name'] != $field_label
       || !$fields[$field_name]['indexed']
       || $fields[$field_name]['type'] != $index_type;
   }
@@ -119,8 +122,9 @@ function _mica_add_field_index($index_name, stdClass $field_description) {
     $index->reindex();
   }
   
-  // Facets
+  // Facets & ranges
   $facet_supported = $discrete && _mica_is_type_supports_facet($index_type);
+  $range_supported = !$discrete && _mica_is_type_supports_ranges($index_type);
   $searcher = 'search_api@' . $index->machine_name;
   $facet = facetapi_facet_load($field_name, $searcher);
   if ($facet) {  
@@ -130,52 +134,23 @@ function _mica_add_field_index($index_name, stdClass $field_description) {
     	$delta = facetapi_hash_delta(facetapi_build_delta($searcher, $realm_name, $facet['name']));
       if ($facet_supported) {
         if (facetapi_save_facet_enabled($adapter, $realm, $facet)) {
-        	_mica_enable_search_block($delta, 'facetapi');
+        	_mica_enable_search_block($delta);
         }
+      } else if ($range_supported) {
+        $settings = $adapter->getFacet($facet)->getSettings($realm);
+        $settings->settings['widget'] = 'search_api_ranges_ui_slider';
+        ctools_export_crud_save('facetapi', $settings);
+        if (facetapi_save_facet_enabled($adapter, $realm, $facet)) {
+        	_mica_enable_search_block($delta);
+        }        
       } else {
         if (facetapi_save_facet_disabled($adapter, $realm, $facet)) {
-          _mica_disable_search_block($delta, 'facetapi');
+          _mica_disable_search_block($delta);
         }
       }
     }
     cache_clear_all();
   }  
-  
-//   // ranges
-//   $range_array = search_api_range_load_multiple(FALSE, $facets_conditions, TRUE);
-//   $range_key = array_keys($range_array);
-//   $range = empty($range_key) ? NULL : $range_array[$range_key[0]];
-//   if (!$discrete && _mica_is_type_supports_ranges($index_type)) {
-
-//     if (empty($range)) {
-
-//       $range = new SearchApiRange(array(
-//         'index_id' => $index->machine_name,
-//         'field' => $field_name,
-//         'name' => $facet_name,
-//         'enabled' => TRUE,
-//         'options' => array(),
-//         'status' => 0,
-//       ));
-//       $range->save();
-
-//       _mica_configure_search_block($range, 'search_api_ranges', 'range');
-
-//     }
-//     elseif ($reindex) {
-
-//       // field was changed, update facet
-//       $range->field = $field_name;
-//       $range->name = $field_label;
-//       $range->enabled = 1;
-//       $range->save();
-
-//     }
-//   }
-//   elseif (!empty($range)) {
-//     // delete range for unsupported field type
-//     entity_delete_multiple('search_api_range', array($range->id));
-//   }
 }
 
 function _mica_is_type_supports_facet($index_type) {
@@ -201,12 +176,17 @@ function _mica_remove_field_index($index_name, $field_name) {
     $index->reindex();
   }
 
-  $facets_conditions = array(
-    'index_id' => $index_name,
-    'field' => $field_name,
-  );
-  search_api_facet_delete_multiple($facets_conditions);
-  search_api_range_delete_multiple($facets_conditions);
+  $searcher = 'search_api@' . $index->machine_name;
+  $facet = facetapi_facet_load($field_name, $searcher);
+  if ($facet) {
+    $adapter = facetapi_adapter_load($searcher);
+    $realms = facetapi_get_realm_info();
+    foreach ($realms as $realm_name => $realm) {
+      if (facetapi_save_facet_disabled($adapter, $realm, $facet)) {
+        _mica_disable_search_block($delta);
+      }
+    }
+  }
 }
 
 /**
@@ -227,16 +207,14 @@ function _mica_magma_search_index_type_mapping() {
  * Show this block by default but let individual users hide it.
  * In this case, block will be visible for anonymous users.
  *
- * @param SearchApiFacet or SearchApiRange $facet Facet or Range item
- * @param string $module 'search_api_ranges' or 'search_api_facets'
  */
-function _mica_enable_search_block($facet_delta, $module) {
+function _mica_enable_search_block($facet_delta) {
 
   $theme_default = variable_get('theme_default', 'mica_samara');
   
   $max_weight = db_query("SELECT MAX(weight) as max_weight FROM {block} WHERE module = :module AND theme = :theme and region = :region",
     array(
-      ':module' => $module, 
+      ':module' => 'facetapi', 
       ':theme' => $theme_default, 
       ':region' => 'sidebar_first'
     )
@@ -244,7 +222,7 @@ function _mica_enable_search_block($facet_delta, $module) {
 
   $block = db_query('SELECT * FROM {block} WHERE module = :module AND delta = :delta AND theme = :theme',
     array(
-      ':module' => $module, 
+      ':module' => 'facetapi', 
       ':delta' => $facet_delta, 
       ':theme' => $theme_default
     )
@@ -258,11 +236,10 @@ function _mica_enable_search_block($facet_delta, $module) {
       	'weight' => empty($max_weight) ? 0 : ($max_weight + 1),
       )
     )
-    ->condition('module', $module)
+    ->condition('module', 'facetapi')
     ->condition('delta', $facet_delta)
     ->condition('theme', $theme_default)
     ->execute();    
-    
   } else {
     db_insert('block')->fields(
       array(
@@ -271,7 +248,7 @@ function _mica_enable_search_block($facet_delta, $module) {
       	'weight' => empty($max_weight) ? 0 : ($max_weight + 1),
     		'custom' => BLOCK_CUSTOM_ENABLED, // Show this block by default but let individual users hide it.
     		'delta' => $facet_delta,
-    		'module' => $module,
+    		'module' => 'facetapi',
     		'theme' => $theme_default,
     		'pages' => '',
       )
@@ -281,7 +258,7 @@ function _mica_enable_search_block($facet_delta, $module) {
 
 }
 
-function _mica_disable_search_block($facet_delta, $module) {
+function _mica_disable_search_block($facet_delta) {
 
 	$theme_default = variable_get('theme_default', 'mica_samara');
 
@@ -291,7 +268,7 @@ function _mica_disable_search_block($facet_delta, $module) {
      	'region' => '-1',
 	  )
   )
-	->condition('module', $module)
+	->condition('module', 'facetapi')
 	->condition('delta', $facet_delta)
 	->condition('theme', $theme_default)
 	->execute();
@@ -313,4 +290,44 @@ function _mica_drop_search_index_field($bundle, $field_name) {
       }
     }
   }
+}
+
+function mica_configure_current_search_facet_blocks() {
+  
+  $theme_default = variable_get('theme_default', 'mica_samara');
+  
+  $min_weight = db_query("SELECT MIN(weight) as max_weight FROM {block} WHERE theme = :theme and region = :region",
+    array(
+    	':theme' => $theme_default, 
+  		':region' => 'sidebar_first'
+    )
+  )
+  ->fetchField();
+  $min_weight = empty($min_weight) ? 0 : ($min_weight - 1);
+  
+  $facet_name = 'search_api@studies_index:current_search';
+	$facet_delta = facetapi_hash_delta($facet_name);
+  
+	if (empty($facet_delta)) {
+		drupal_set_message('No facet defined for ' . $facet_name, 'warning');
+		continue;
+	}
+  
+	db_insert('block')->fields(
+	  array(
+      'status' => TRUE,
+      'region' => 'sidebar_first',
+      'weight' => $min_weight,
+  		'module' => 'facetapi',
+  		'delta' => $facet_delta,
+  		'theme' => $theme_default,
+      'status' => 1,
+      'visibility' => 1,
+      'pages' => '',
+      'cache' => -1,
+	  )
+  )
+	->execute();
+  		 
+  watchdog('mica', 'Configured facet block %facet', array('%facet' => $facet_name), WATCHDOG_INFO);
 }

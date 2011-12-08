@@ -775,27 +775,27 @@ function mica_studies_user_default_permissions() {
     'module' => 'page_manager',
   );
 
-  // Exported permission: use search_api_facets
-  $permissions['use search_api_facets'] = array(
-    'name' => 'use search_api_facets',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'anonymous user',
-      2 => 'authenticated user',
-    ),
-    'module' => 'search_api_facets',
-  );
+//   // Exported permission: use search_api_facets
+//   $permissions['use search_api_facets'] = array(
+//     'name' => 'use search_api_facets',
+//     'roles' => array(
+//       0 => 'administrator',
+//       1 => 'anonymous user',
+//       2 => 'authenticated user',
+//     ),
+//     'module' => 'search_api_facets',
+//   );
 
-  // Exported permission: use search_api_ranges
-  $permissions['use search_api_ranges'] = array(
-    'name' => 'use search_api_ranges',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'anonymous user',
-      2 => 'authenticated user',
-    ),
-    'module' => 'search_api_ranges',
-  );
+//   // Exported permission: use search_api_ranges
+//   $permissions['use search_api_ranges'] = array(
+//     'name' => 'use search_api_ranges',
+//     'roles' => array(
+//       0 => 'administrator',
+//       1 => 'anonymous user',
+//       2 => 'authenticated user',
+//     ),
+//     'module' => 'search_api_ranges',
+//   );
 
   // Exported permission: view own unpublished content
   $permissions['view own unpublished content'] = array(
