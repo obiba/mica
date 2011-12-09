@@ -34,9 +34,9 @@ function _mica_find_indexes_by_bundle() {
   foreach (entity_load('search_api_index') as $index) {
     $options = $index->options;
     if (!empty($options['data_alter_callbacks'])
-    && !empty($options['data_alter_callbacks']['search_api_alter_bundle_filter'])
-    && !empty($options['data_alter_callbacks']['search_api_alter_bundle_filter']['settings'])
-    && !empty($options['data_alter_callbacks']['search_api_alter_bundle_filter']['settings']['bundles']))
+      && !empty($options['data_alter_callbacks']['search_api_alter_bundle_filter'])
+      && !empty($options['data_alter_callbacks']['search_api_alter_bundle_filter']['settings'])
+      && !empty($options['data_alter_callbacks']['search_api_alter_bundle_filter']['settings']['bundles']))
     foreach ($options['data_alter_callbacks']['search_api_alter_bundle_filter']['settings']['bundles'] as $bundle) {
       $indexes[$bundle] = array($index->machine_name => $index->name);
     }
@@ -123,8 +123,8 @@ function _mica_add_field_index($index_name, stdClass $field_description) {
   }
   
   // Facets & ranges
-  $facet_supported = $discrete && _mica_is_type_supports_facet($index_type);
-  $range_supported = !$discrete && _mica_is_type_supports_ranges($index_type);
+  $facet_supported = !_mica_is_field_excluded_form_facets($field_name) && $discrete && _mica_is_type_supports_facet($index_type);
+  $range_supported = !_mica_is_field_excluded_form_facets($field_name) && !$discrete && _mica_is_type_supports_ranges($index_type);
   $searcher = 'search_api@' . $index->machine_name;
   $facet = facetapi_facet_load($field_name, $searcher);
   if ($facet) {  
@@ -151,6 +151,15 @@ function _mica_add_field_index($index_name, stdClass $field_description) {
     }
     cache_clear_all();
   }  
+}
+
+function _mica_is_field_excluded_form_facets($field_name) {
+  // By default some fields don't have any facets...
+  $disabled_field_facets = array(
+    'mica_study_information:field_selection_criteria',
+    'mica_study_information:field_gender',
+  );  
+  return in_array($field_name, $disabled_field_facets);
 }
 
 function _mica_is_type_supports_facet($index_type) {
@@ -259,12 +268,10 @@ function _mica_enable_search_block($facet_delta) {
 }
 
 function _mica_disable_search_block($facet_delta) {
-
 	$theme_default = variable_get('theme_default', 'mica_samara');
-
 	db_update('block')->fields(
   	array(
-    	'status' => FALSE,
+    	'status' => 0,
      	'region' => '-1',
 	  )
   )
