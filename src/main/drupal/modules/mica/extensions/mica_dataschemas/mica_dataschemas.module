@@ -24,7 +24,7 @@ function mica_dataschemas_install() {
 /**
  * Implements hook_node_insert()
 */
-function mica_dataschemas_insert(&$node) {
+function mica_dataschemas_node_insert(&$node) {
   if ($node->type === 'dataschema') {
     $node->field_variables['und'] = array(
       0 => array('view_id' => 'dataschema_variables:page', 'arguments' => $node->nid)
