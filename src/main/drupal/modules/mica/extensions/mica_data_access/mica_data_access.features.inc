@@ -35,7 +35,7 @@ function mica_data_access_node_info() {
 	$items = array(
     'data_access_request' => array(
       'name' => t('Data Access Request'),
-      'base' => 'mica_data_access',
+      'base' => 'node_content',
       'description' => t('Form to be filled in for accessing study data.'),
       'has_title' => '1',
       'title_label' => t('Project Title'),
@@ -43,7 +43,7 @@ function mica_data_access_node_info() {
 	),
     'data_access_review' => array(
       'name' => t('Data Access Review'),
-      'base' => 'mica_data_access',
+      'base' => 'node_content',
       'description' => t('Describes the status of the data access form review.'),
       'has_title' => '1',
       'title_label' => t('Project Title'),

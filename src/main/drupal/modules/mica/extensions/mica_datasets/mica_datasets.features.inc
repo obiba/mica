@@ -35,7 +35,7 @@ function mica_datasets_node_info() {
   $items = array(
     'dataset' => array(
       'name' => t('Dataset'),
-      'base' => 'mica_datasets',
+      'base' => 'node_content',
       'description' => t('Dataset resource.'),
       'has_title' => '1',
       'title_label' => t('Name'),
@@ -43,7 +43,7 @@ function mica_datasets_node_info() {
     ),
     'participant_variable' => array(
       'name' => t('Participant Variable'),
-      'base' => 'mica_datasets',
+      'base' => 'node_content',
       'description' => 'Description of participant data.',
       'has_title' => '1',
       'title_label' => t('Name'),

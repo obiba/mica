@@ -35,7 +35,7 @@ function mica_projects_node_info() {
   $items = array(
     'project' => array(
       'name' => t('Project'),
-      'base' => 'mica_projects',
+      'base' => 'node_content',
       'description' => t('Research activities with a specific scientific question or target'),
       'has_title' => '1',
       'title_label' => t('Title'),
@@ -43,7 +43,7 @@ function mica_projects_node_info() {
     ),
     'teleconference' => array(
       'name' => t('Teleconference'),
-      'base' => 'mica_projects',
+      'base' => 'node_content',
       'description' => t('Teleconference event and details'),
       'has_title' => '1',
       'title_label' => t('Title'),

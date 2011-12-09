@@ -79,7 +79,7 @@ function mica_studies_node_info() {
   $items = array(
     'contact' => array(
       'name' => t('Contact'),
-      'base' => 'mica',
+      'base' => 'node_content',
       'description' => t('Description of a Contact, consisting of a person and an Institution.'),
       'has_title' => '1',
       'title_label' => t('Person and Institution Names'),
@@ -87,7 +87,7 @@ function mica_studies_node_info() {
     ),
     'field_description' => array(
       'name' => t('Field Description'),
-      'base' => 'mica',
+      'base' => 'node_content',
       'description' => t('Description of information collected about the studies.'),
       'has_title' => '1',
       'title_label' => t('Title'),
@@ -95,7 +95,7 @@ function mica_studies_node_info() {
     ),
     'institution' => array(
       'name' => t('Institution'),
-      'base' => 'mica',
+      'base' => 'node_content',
       'description' => t('Description of an Institution.'),
       'has_title' => '1',
       'title_label' => t('Institution Name'),
@@ -103,7 +103,7 @@ function mica_studies_node_info() {
     ),
     'study' => array(
       'name' => t('Study'),
-      'base' => 'mica',
+      'base' => 'node_content',
       'description' => t('Study portal. Create a content of this type when registering a new study.'),
       'has_title' => '1',
       'title_label' => t('Name'),
@@ -111,7 +111,7 @@ function mica_studies_node_info() {
     ),
     'study_documents' => array(
       'name' => t('Study Documents'),
-      'base' => 'mica',
+      'base' => 'node_content',
       'description' => t('Files attached to a Study. Child of Study.'),
       'has_title' => '1',
       'title_label' => t('Name'),
@@ -119,7 +119,7 @@ function mica_studies_node_info() {
     ),
     'study_information' => array(
       'name' => t('Study Information'),
-      'base' => 'mica',
+      'base' => 'node_content',
       'description' => t('General Information about a Study. Child of Study.'),
       'has_title' => '1',
       'title_label' => t('Name'),
