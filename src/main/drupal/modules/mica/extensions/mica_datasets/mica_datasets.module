@@ -439,7 +439,7 @@ function mica_datasets_form($node, &$form_state) {
 /**
  * Implements hook_node_insert()
  */
-function mica_datasets_node_insert($node) {
+function mica_datasets_node_insert(&$node) {
   _mica_datasets_ensure_viewreference_arguments($node);
 }
 
