@@ -714,266 +714,6 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-dataschema_variable-field_computation_variables'
-  $fields['node-dataschema_variable-field_computation_variables'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_computation_variables',
-      'foreign keys' => array(
-        'nid' => array(
-          'columns' => array(
-            'nid' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'nid' => array(
-          0 => 'nid',
-        ),
-      ),
-      'module' => 'node_reference',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'referenceable_types' => array(
-          'article' => 0,
-          'blog' => 0,
-          'contact' => 0,
-          'data_access_request' => 0,
-          'data_access_review' => 0,
-          'dataschema' => 0,
-          'dataschema_category' => 0,
-          'dataschema_variable' => 'dataschema_variable',
-          'dataset' => 0,
-          'documents' => 0,
-          'event' => 0,
-          'field_description' => 0,
-          'forum' => 0,
-          'institution' => 0,
-          'page' => 0,
-          'pairing' => 0,
-          'panel' => 0,
-          'participant_variable' => 0,
-          'project' => 0,
-          'publication' => 0,
-          'study' => 0,
-          'study_documents' => 0,
-          'study_information' => 0,
-          'teleconference' => 0,
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'node_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'dataschema_variable',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'custom_dimensions' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '13',
-        ),
-        'custom_page' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '8',
-        ),
-        'custom_variable' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '10',
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '9',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_computation_variables',
-      'label' => 'Computation Source Variables',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'node_reference',
-        'settings' => array(
-          'autocomplete_match' => 'contains',
-          'autocomplete_path' => 'node_reference/autocomplete',
-          'size' => 60,
-        ),
-        'type' => 'node_reference_autocomplete',
-        'weight' => '10',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-dataschema_variable-field_contraindication_variables'
-  $fields['node-dataschema_variable-field_contraindication_variables'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_contraindication_variables',
-      'foreign keys' => array(
-        'nid' => array(
-          'columns' => array(
-            'nid' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'nid' => array(
-          0 => 'nid',
-        ),
-      ),
-      'module' => 'node_reference',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'referenceable_types' => array(
-          'article' => 0,
-          'blog' => 0,
-          'contact' => 0,
-          'data_access_request' => 0,
-          'data_access_review' => 0,
-          'dataschema' => 0,
-          'dataschema_category' => 0,
-          'dataschema_variable' => 'dataschema_variable',
-          'dataset' => 0,
-          'documents' => 0,
-          'event' => 0,
-          'field_description' => 0,
-          'forum' => 0,
-          'institution' => 0,
-          'page' => 0,
-          'pairing' => 0,
-          'panel' => 0,
-          'participant_variable' => 0,
-          'project' => 0,
-          'publication' => 0,
-          'study' => 0,
-          'study_documents' => 0,
-          'study_information' => 0,
-          'teleconference' => 0,
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'node_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'dataschema_variable',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'custom_dimensions' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '12',
-        ),
-        'custom_page' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '7',
-        ),
-        'custom_variable' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '8',
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '8',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_contraindication_variables',
-      'label' => 'Contraindication variables',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'node_reference',
-        'settings' => array(
-          'autocomplete_match' => 'contains',
-          'autocomplete_path' => 'node_reference/autocomplete',
-          'size' => 60,
-        ),
-        'type' => 'node_reference_autocomplete',
-        'weight' => '9',
-      ),
-    ),
-  );
-
   // Exported field: 'node-dataschema_variable-field_dataschema_ref'
   $fields['node-dataschema_variable-field_dataschema_ref'] = array(
     'field_config' => array(
@@ -1306,7 +1046,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '74',
+        'weight' => '73',
       ),
     ),
   );
@@ -1621,7 +1361,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '75',
+        'weight' => '74',
       ),
     ),
   );
@@ -2248,7 +1988,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '77',
+        'weight' => '76',
       ),
     ),
   );
@@ -2458,7 +2198,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'tagging_taxonomy_autocomplete',
-        'weight' => '76',
+        'weight' => '75',
       ),
     ),
   );
@@ -2987,136 +2727,6 @@ function mica_dataschemas_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-dataschema_variable-field_interpretation_variables'
-  $fields['node-dataschema_variable-field_interpretation_variables'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_interpretation_variables',
-      'foreign keys' => array(
-        'nid' => array(
-          'columns' => array(
-            'nid' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'nid' => array(
-          0 => 'nid',
-        ),
-      ),
-      'module' => 'node_reference',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'referenceable_types' => array(
-          'article' => 0,
-          'blog' => 0,
-          'contact' => 0,
-          'data_access_request' => 0,
-          'data_access_review' => 0,
-          'dataschema' => 0,
-          'dataschema_category' => 0,
-          'dataschema_variable' => 'dataschema_variable',
-          'dataset' => 0,
-          'documents' => 0,
-          'event' => 0,
-          'field_description' => 0,
-          'forum' => 0,
-          'institution' => 0,
-          'page' => 0,
-          'pairing' => 0,
-          'panel' => 0,
-          'participant_variable' => 0,
-          'project' => 0,
-          'publication' => 0,
-          'study' => 0,
-          'study_documents' => 0,
-          'study_information' => 0,
-          'teleconference' => 0,
-        ),
-        'view' => array(
-          'args' => array(),
-          'display_name' => '',
-          'view_name' => '',
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'node_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'dataschema_variable',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'custom_dimensions' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '16',
-        ),
-        'custom_page' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '6',
-        ),
-        'custom_variable' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '1',
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '7',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_interpretation_variables',
-      'label' => 'Interpretation Variables',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'node_reference',
-        'settings' => array(
-          'autocomplete_match' => 'contains',
-          'autocomplete_path' => 'node_reference/autocomplete',
-          'size' => 60,
-        ),
-        'type' => 'node_reference_autocomplete',
-        'weight' => '8',
-      ),
-    ),
-  );
-
   // Exported field: 'node-dataschema_variable-field_unit'
   $fields['node-dataschema_variable-field_unit'] = array(
     'field_config' => array(
@@ -3210,7 +2820,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '3',
       ),
     ),
   );
@@ -3307,7 +2917,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '12',
+        'weight' => '6',
       ),
     ),
   );
@@ -3439,7 +3049,7 @@ function mica_dataschemas_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '11',
+        'weight' => '4',
       ),
     ),
   );
@@ -4170,13 +3780,10 @@ function mica_dataschemas_field_default_fields() {
   t('Categories');
   t('Class');
   t('Collection mode');
-  t('Computation Source Variables');
-  t('Contraindication variables');
   t('DataSchema');
   t('Disease history');
   t('Environmental exposures');
   t('Format');
-  t('Interpretation Variables');
   t('Life habits / Behaviours');
   t('Match');
   t('Measuring unit of the variable (i.e. kg, siblings, cigarettes, etc.).');

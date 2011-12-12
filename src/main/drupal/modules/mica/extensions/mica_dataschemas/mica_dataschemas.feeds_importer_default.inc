@@ -217,96 +217,81 @@ function mica_dataschemas_feeds_importer_default() {
             'unique' => FALSE,
           ),
           11 => array(
-            'source' => 'field_interpretation_variables',
-            'target' => 'field_interpretation_variables:title',
-            'unique' => FALSE,
-          ),
-          12 => array(
-            'source' => 'field_computation_variables',
-            'target' => 'field_computation_variables:title',
-            'unique' => FALSE,
-          ),
-          13 => array(
-            'source' => 'field_contraindication_variables',
-            'target' => 'field_contraindication_variables:title',
-            'unique' => FALSE,
-          ),
-          14 => array(
             'source' => 'field_variable_categories',
             'target' => 'field_variable_categories:title',
             'unique' => FALSE,
           ),
-          15 => array(
+          12 => array(
             'source' => 'title',
             'target' => 'guid',
             'unique' => 1,
           ),
-          16 => array(
+          13 => array(
             'source' => 'field_dim_class',
             'target' => 'field_dim_class',
             'unique' => FALSE,
           ),
-          17 => array(
+          14 => array(
             'source' => 'field_dim_period',
             'target' => 'field_dim_period',
             'unique' => FALSE,
           ),
-          18 => array(
+          15 => array(
             'source' => 'field_dim_source_of_info',
             'target' => 'field_dim_source_of_info',
             'unique' => FALSE,
           ),
-          19 => array(
+          16 => array(
             'source' => 'field_dim_target',
             'target' => 'field_dim_target',
             'unique' => FALSE,
           ),
-          20 => array(
+          17 => array(
             'source' => 'field_dim_life_habits_behaviours',
             'target' => 'field_dim_life_habits_behaviours',
             'unique' => FALSE,
           ),
-          21 => array(
+          18 => array(
             'source' => 'field_dim_sociodemo_charact',
             'target' => 'field_dim_sociodemo_charact',
             'unique' => FALSE,
           ),
-          22 => array(
+          19 => array(
             'source' => 'field_dim_sample',
             'target' => 'field_dim_sample',
             'unique' => FALSE,
           ),
-          23 => array(
+          20 => array(
             'source' => 'field_dim_therapeutic_inter',
             'target' => 'field_dim_therapeutic_inter',
             'unique' => FALSE,
           ),
-          24 => array(
+          21 => array(
             'source' => 'field_dim_reproductive_history',
             'target' => 'field_dim_reproductive_history',
             'unique' => FALSE,
           ),
-          25 => array(
+          22 => array(
             'source' => 'field_dim_disease_history',
             'target' => 'field_dim_disease_history',
             'unique' => FALSE,
           ),
-          26 => array(
+          23 => array(
             'source' => 'field_dim_body_functions_meas',
             'target' => 'field_dim_body_functions_meas',
             'unique' => FALSE,
           ),
-          27 => array(
+          24 => array(
             'source' => 'field_dim_medication',
             'target' => 'field_dim_medication',
             'unique' => FALSE,
           ),
-          28 => array(
+          25 => array(
             'source' => 'field_dim_environmental_exp',
             'target' => 'field_dim_environmental_exp',
             'unique' => FALSE,
           ),
-          29 => array(
+          26 => array(
             'source' => 'field_dim_biochemical_measures',
             'target' => 'field_dim_biochemical_measures',
             'unique' => FALSE,

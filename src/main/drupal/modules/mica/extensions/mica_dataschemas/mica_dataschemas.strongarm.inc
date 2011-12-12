@@ -44,6 +44,7 @@ function mica_dataschemas_strongarm() {
     'block-search-api-facets-dataschema-variables-field-dim-5' => '3',
     'block-search-api-facets-dataschema-variables-field-dim-b' => '3',
     'block-node-reference-block-related-content' => '1',
+    'block-facetapi-bG1PdrDzqgLvv-zbV-y33jncboC1dfn9' => '1',
   );
   $export['collapsiblock_settings'] = $strongarm;
 

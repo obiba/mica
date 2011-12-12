@@ -8,6 +8,7 @@ function mica_dataschemas_configure_facet_blocks() {
     'sidebar_second' => array(
   		'search_api@dataschema_variables_index:current_search', 
     	'search_api@dataschema_variables_index:block:field_dataschema_ref',
+  		'search_api@dataschema_variables_index:block:field_dim_collection_mode',
     	'search_api@dataschema_variables_index:block:field_dim_life_habits_behaviours',
     	'search_api@dataschema_variables_index:block:field_dim_disease_history',
     	'search_api@dataschema_variables_index:block:field_dim_therapeutic_inter',
@@ -22,7 +23,6 @@ function mica_dataschemas_configure_facet_blocks() {
       'search_api@dataschema_variables_index:block:field_dim_class',  
       'search_api@dataschema_variables_index:block:field_dim_type',  
       'search_api@dataschema_variables_index:block:field_dim_format',
-      'search_api@dataschema_variables_index:block:field_dim_collection_mode',
       'search_api@dataschema_variables_index:block:field_dim_source_of_info',
       'search_api@dataschema_variables_index:block:field_dim_target',
       'search_api@dataschema_variables_index:block:field_dim_target_gender',
