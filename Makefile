@@ -20,9 +20,11 @@ mica_opal_version=$(mica_version)
 mica_projects_version=$(mica_version)
 mica_studies_version=$(mica_version)
 node_reference_block_version=$(mica_version)
+
 # Profiles
 mica_standard_version=$(mica_version)
 mica_demo_version=$(mica_version)
+
 # Themes
 mica_samara_version=$(mica_version)
 
@@ -41,14 +43,45 @@ all: drupal mica
 	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/settings.php
 
 #
-# Include drupal targets
+# Drupal targets
 #
-include includes/drupal.mk
+drupal: drush-make drupal-default 
+
+drush-make:
+	$(drushmake_exec) mica.make target/$(micadir)
+	
+drupal-default:
+	cd target/$(micadir) && \
+	chmod a+w sites/default && \
+	mkdir sites/default/files && \
+	chmod a+w sites/default/files && \
+	cp sites/default/default.settings.php sites/default/settings.php && \
+	chmod a+w sites/default/settings.php && \
+	chmod +x scripts/*.sh
+
+drupal-examples:
+	cd target/$(micadir) && \
+	$(drushexec) dl examples
+
+drupal-dl:
+	cd target/$(micadir) && \
+	$(drushexec) dl $(module)
+
+drupal-en:
+	cd target/$(micadir) && \
+	$(drushexec) en --yes $(module)
+
+drupal-dis:
+	cd target/$(micadir) && \
+	$(drushexec) pm-disable --yes $(module)	
+
+drupal-cache-clear:
+	cd target/$(micadir) && \
+	$(drushexec) cache-clear
 
 #
 # Mica Build
 #
-
 mica: mica-install
 	cp src/main/drupal/themes/mica_samara/mica.png target/$(micadir)/themes/seven/logo.png
 	cp src/main/drupal/themes/mica_samara/favicon.ico target/$(micadir)/misc/favicon.ico
@@ -289,3 +322,4 @@ deb_version=$(version)-b$(build_number)
 deb_date=$(shell date -R)
 datestamp=$(shell date +%s)
 drushexec=drush
+drushmake_exec=drush make
