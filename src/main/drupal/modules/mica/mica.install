@@ -107,3 +107,44 @@ function mica_schema() {
   );
   return $schema;	
 }
+
+/**
+* Update script for release 1.1 
+* Implements hook_update_N()
+*/
+function mica_update_7110(&$sandbox) {
+  
+  // create new facets 
+  // Does not work because of 
+  // SearchApiException: Unknown or invalid item type node. in search_api_get_datasource_controller() 
+  // (line 1244 of sites/all/modules/search_api/search_api.module).
+  //   $query = new EntityFieldQuery;
+  //   $result = $query->entityCondition('entity_type', 'node')
+  //   ->entityCondition('bundle', 'field_description')  
+  //   ->execute();  
+  //   if (!empty($result['node'])) {
+  //   	module_load_include('inc', 'mica', 'includes/search');
+  //   	$entities = entity_load('node', array_keys($result['node']));
+  //   	foreach ($entities as $entity) {
+  //   	  debug('Create facet for node ' . $entity->nid);
+  //   	  _mica_update_index_for_field_description($entity);
+  //   	} 
+  //   } 
+  
+  // disable old facet module
+  module_disable(array('search_api_facets'));
+  
+  // hide dataschema menus as we can't disable mica_dataschemas module because it's required by mica_projects
+  db_update('menu_links')
+    ->fields(array('hidden' => 1))
+    ->condition('menu_name', 'main-menu')
+    ->condition('link_path', 'dataschema-variables')
+    ->execute();
+  db_update('menu_links')
+    ->fields(array('hidden' => 1))
+    ->condition('menu_name', 'main-menu')
+    ->condition('link_path', 'dataschemas')
+    ->execute();
+	menu_cache_clear_all();
+  
+}
