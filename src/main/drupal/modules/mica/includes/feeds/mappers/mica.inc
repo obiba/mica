@@ -77,10 +77,10 @@ function _mica_set_target($source, $entity, $target, $value, $value_field = 'val
     $new_value = $v;
     if (!is_array($new_value) && !is_object($new_value)) {
       if (isset($sub_field)) {
-        $field['und'][$i][$sub_field] = $new_value;
+        $field[LANGUAGE_NONE][$i][$sub_field] = $new_value;
       }
       else{
-        $field['und'][$i][$value_field] = $new_value;
+        $field[LANGUAGE_NONE][$i][$value_field] = $new_value;
       }
     }
     if ($info['cardinality'] == 1) {
@@ -90,8 +90,8 @@ function _mica_set_target($source, $entity, $target, $value, $value_field = 'val
   }
  
   if (isset($sub_field)) {
-    foreach ($field['und'] as $i => $sub) {
-      $entity->{$field_name}['und'][$i][$sub_field] = $field['und'][$i][$sub_field]; 
+    foreach ($field[LANGUAGE_NONE] as $i => $sub) {
+      $entity->{$field_name}[LANGUAGE_NONE][$i][$sub_field] = $field[LANGUAGE_NONE][$i][$sub_field]; 
     }
   }
   else {

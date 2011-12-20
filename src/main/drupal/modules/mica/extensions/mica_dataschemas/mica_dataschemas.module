@@ -26,7 +26,7 @@ function mica_dataschemas_install() {
 */
 function mica_dataschemas_insert(&$node) {
   if ($node->type === 'dataschema') {
-    $node->field_variables['und'] = array(
+    $node->field_variables[LANGUAGE_NONE] = array(
       0 => array('view_id' => 'dataschema_variables:page', 'arguments' => $node->nid)
     );
   }
@@ -82,7 +82,7 @@ function mica_dataschemas_entity_info_alter(&$entity_info) {
 }
 
 function mica_dataschemas_entity_view($entity, $type, $view_mode, $langcode){
-  if (isset($entity->type) && $entity->type === 'dataschema'){
+  if ($entity->type === 'dataschema'){
     $entity->title = 'DataSchema: ' . $entity->title;
   }
 }

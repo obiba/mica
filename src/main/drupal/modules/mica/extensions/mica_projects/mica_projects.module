@@ -57,7 +57,7 @@ function mica_projects_menu_local_tasks_alter(&$data, $router_item, $root_path) 
  */
 function mica_projects_insert(&$node) {
   if ($node->type === 'project') {
-    $node->field_teleconferences['und'] = array(
+    $node->field_teleconferences[LANGUAGE_NONE] = array(
       0 => array(
         'view_id' => 'teleconferences:page',
         'arguments' => $node->nid,

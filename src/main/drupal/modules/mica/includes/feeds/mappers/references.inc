@@ -139,8 +139,8 @@ function references_feeds_set_target($source, $entity, $target, $value) {
   }
 
   $field = isset($entity->$target) ? $entity->$target : array();
-  if (!isset($field['und'])) {
-    $field['und'] = array();
+  if (!isset($field[LANGUAGE_NONE])) {
+    $field[LANGUAGE_NONE] = array();
   }
 
   // Match values against nodes and add to field.
@@ -239,11 +239,11 @@ function references_feeds_set_target($source, $entity, $target, $value) {
       $reference = array($idname => $id);
       if (!empty($duplicates)) {
         // Add the reference, ignoring duplicates.
-        $field['und'][] = $reference;
+        $field[LANGUAGE_NONE][] = $reference;
       }
-      elseif (!in_array($reference, $field['und'])) {
+      elseif (!in_array($reference, $field[LANGUAGE_NONE])) {
         // Add the reference only if it doesn't already exist.
-        $field['und'][] = $reference;
+        $field[LANGUAGE_NONE][] = $reference;
       }
      
       if ($info['cardinality'] == 1) {

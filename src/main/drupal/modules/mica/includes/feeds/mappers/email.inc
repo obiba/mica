@@ -50,10 +50,10 @@ function _email_set_target($source, $entity, $target, $value, $value_field = 'va
   foreach ($value as $v) {
     if (!is_array($v) && !is_object($v)) {
       if (isset($sub_field)) {
-        $field['und'][$i][$sub_field] = $v;
+        $field[LANGUAGE_NONE][$i][$sub_field] = $v;
       }
       else{
-          $field['und'][$i][$value_field] = $v;
+          $field[LANGUAGE_NONE][$i][$value_field] = $v;
       }
     }
     if ($info['cardinality'] == 1) {
@@ -63,8 +63,8 @@ function _email_set_target($source, $entity, $target, $value, $value_field = 'va
   }
 
   if (isset($sub_field)) {
-    foreach ($field['und'] as $i => $sub) {
-      $entity->{$field_name}['und'][$i][$sub_field] = $field['und'][$i][$sub_field];
+    foreach ($field[LANGUAGE_NONE] as $i => $sub) {
+      $entity->{$field_name}[LANGUAGE_NONE][$i][$sub_field] = $field[LANGUAGE_NONE][$i][$sub_field];
     }
   }
   else{

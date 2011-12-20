@@ -1096,7 +1096,7 @@ function mica_datasets_node_view_alter(&$build) {
   if ($build['#view_mode'] == 'full' && $build['#bundle'] == 'participant_variable') {
     $values = array();
     $values['variable_id'] = $build['#node']->nid;
-    $values['dataset_id'] = $build['#node']->field_dataset['und']['0']['nid'];
+    $values['dataset_id'] = $build['#node']->field_dataset[LANGUAGE_NONE]['0']['nid'];
     $term = new MicaDatasetQueryTerm($values);
 
     $build['statistics'] = array(

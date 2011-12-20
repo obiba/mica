@@ -31,7 +31,7 @@ class DataShieldModel {
       $params['tables'] = array();
       foreach($connectors as $connector) {
         $study = node_load($connector->study_id);
-        $params['urls'][$study->title] = $study->mica_opal['und'][0]['url'];
+        $params['urls'][$study->title] = $study->mica_opal[LANGUAGE_NONE][0]['url'];
         $params['tables'][$study->title] = $connector->options['datasource'] . '.' . $connector->options['table'];
       }
       $params['variables'] = $this->names();

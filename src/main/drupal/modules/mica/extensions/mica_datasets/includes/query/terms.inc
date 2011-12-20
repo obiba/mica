@@ -85,8 +85,8 @@ abstract class AbstractTerm implements QueryTermInterface {
   }
 
   static function typeFor($variable) {
-    $is_categorical= isset($variable->field_categories['und']) && $variable->field_categories['und'][0]['value'] != '';
-    $type=$variable->field_value_type['und'][0]['value'];
+    $is_categorical= isset($variable->field_categories[LANGUAGE_NONE]) && $variable->field_categories[LANGUAGE_NONE][0]['value'] != '';
+    $type=$variable->field_value_type[LANGUAGE_NONE][0]['value'];
     if($is_categorical) {
       return 'CategoryTerm';
     } else if ($type!= 'date') {
@@ -118,7 +118,7 @@ abstract class AbstractTerm implements QueryTermInterface {
 
   function isRepeatable() {
     $variable = $this->getVariable();
-    return isset($variable->field_repeatable['und'][0]['value']) && $variable->field_repeatable['und'][0]['value'] === '1';
+    return isset($variable->field_repeatable[LANGUAGE_NONE][0]['value']) && $variable->field_repeatable[LANGUAGE_NONE][0]['value'] === '1';
   }
 
   function getOptions() {
@@ -215,7 +215,7 @@ class CategoryTerm extends AbstractTerm {
     }
 
     $rows = array();
-    foreach($variable->field_categories['und'] as $category) {
+    foreach($variable->field_categories[LANGUAGE_NONE] as $category) {
       $c = $category["value"];
       $row = array($c);
       foreach($stats as $study_id => $stat) {
@@ -247,7 +247,7 @@ class CategoryTerm extends AbstractTerm {
     $variable = $this->getVariable();
 
     $facets = $this->stats();
-    foreach($variable->field_categories['und'] as $category) {
+    foreach($variable->field_categories[LANGUAGE_NONE] as $category) {
       $defaultValues[$category["value"]] = 0;
       $row = array($category["value"]);
       foreach($connectors as $connector) {
@@ -363,7 +363,7 @@ class RangeTerm extends AbstractTerm {
   function form($form, &$form_state) {
     $variable=$this->getVariable();
 
-    $type=$variable->field_value_type['und'][0]['value'];
+    $type=$variable->field_value_type[LANGUAGE_NONE][0]['value'];
 
     $operator=isset($form_state['values']['operator']) ?
     $form_state['values']['operator'] : NULL;

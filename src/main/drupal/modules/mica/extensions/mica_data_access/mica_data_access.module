@@ -112,8 +112,8 @@ function mica_data_access_menu_local_tasks_alter(&$data, $router_item, $root_pat
 
 function mica_data_access_can_edit_request($node) {
   $node_loaded = node_load($node->nid);
-  if (isset($node_loaded->field_data_access_review['und'][0]['nid'])) {
-    $review_id = $node_loaded->field_data_access_review['und'][0]['nid'];
+  if (isset($node_loaded->field_data_access_review[LANGUAGE_NONE][0]['nid'])) {
+    $review_id = $node_loaded->field_data_access_review[LANGUAGE_NONE][0]['nid'];
     $result = db_query("SELECT * from field_data_field_review_status WHERE ".
                   "entity_type = 'node' AND ".
                   "bundle = 'data_access_review' AND ".
@@ -231,8 +231,8 @@ function mica_data_access_reviewer_contact($user) {
 function mica_data_access_delete($node) {
   $node_loaded = node_load($node->nid);
   if ($node_loaded->type === 'data_access_request') {
-    if (isset($node_loaded->field_data_access_review['und'][0]['nid'])) {
-      $nid_review_to_delete = $node_loaded->field_data_access_review['und'][0]['nid'];
+    if (isset($node_loaded->field_data_access_review[LANGUAGE_NONE][0]['nid'])) {
+      $nid_review_to_delete = $node_loaded->field_data_access_review[LANGUAGE_NONE][0]['nid'];
       mica_data_access_delete_without_calling_delete_hook(array($nid_review_to_delete));
     }
   }

@@ -146,7 +146,8 @@ function mica_search_filters_block_content() {
     if (strpos($block->module,'search_api_') !== FALSE) {
       
       $data = module_invoke($block->module, 'block_info');
-      if (array_key_exists($block->delta, $data) && $data[$block->delta]['info']) {
+      if (!empty($block->delta) && !empty($data) 
+          && array_key_exists($block->delta, $data) && $data[$block->delta]['info']) {
         $blocks[$block->module][$block->module . ':' . $block->delta] = array(
           '#type' => 'checkbox',
           '#title' => check_plain($data[$block->delta]['info']),
