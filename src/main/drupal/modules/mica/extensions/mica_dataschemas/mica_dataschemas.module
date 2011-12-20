@@ -82,7 +82,7 @@ function mica_dataschemas_entity_info_alter(&$entity_info) {
 }
 
 function mica_dataschemas_entity_view($entity, $type, $view_mode, $langcode){
-  if ($entity->type === 'dataschema'){
+  if (isset($entity->type) && $entity->type === 'dataschema'){
     $entity->title = 'DataSchema: ' . $entity->title;
   }
 }
