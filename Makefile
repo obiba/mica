@@ -208,12 +208,20 @@ endif
 	$(call deb-package,mica-solr,mica)
 
 deb-changelog:
+ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
 	echo "mica ($(deb_version)) unstable; urgency=low" > target/deb/mica/debian/changelog
+else
+	echo "mica ($(deb_version)) stable; urgency=low" > target/deb/mica/debian/changelog
+endif
 	echo "" >> target/deb/mica/debian/changelog
 	echo "  * See http://wiki.obiba.org/ for more details." >> target/deb/mica/debian/changelog
 	echo "" >> target/deb/mica/debian/changelog
 	echo " -- OBiBa <info@obiba.org>  $(deb_date)" >> target/deb/mica/debian/changelog
+ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
 	echo "mica-solr ($(deb_version)) unstable; urgency=low" > target/deb/mica-solr/debian/changelog
+else
+	echo "mica-solr ($(deb_version)) stable; urgency=low" > target/deb/mica-solr/debian/changelog
+endif
 	echo "" >> target/deb/mica-solr/debian/changelog
 	echo "  * See http://wiki.obiba.org/ for more details." >> target/deb/mica-solr/debian/changelog
 	echo "" >> target/deb/mica-solr/debian/changelog
