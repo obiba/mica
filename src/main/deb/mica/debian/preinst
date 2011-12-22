@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+# Source debconf library
+. /usr/share/debconf/confmodule
+
+# Ask user if Mica is configured as the default site
+if [ "$1" = "upgrade" ] ; then
+	
+	db_fset mica/update_only_default_site seen false
+	db_input high mica/update_only_default_site || true
+	db_go
+	
+	db_get mica/update_only_default_site
+	
+	if [ "$RET" = "false" ]; then
+	  # Stop update process as Mica is not Drupal default site
+		db_stop
+		echo "Mica upgrade canceled by user."
+	  exit 1
+	fi
+fi    

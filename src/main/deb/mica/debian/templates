@@ -1,0 +1,7 @@
+Template: mica/update_only_default_site
+Type: boolean
+Description: Do you want to continue Mica update?
+ This upgrade script only supports Mica configured as Drupal's default site.
+ .
+ If Mica is not your default site for Drupal, please update Mica manually:
+ http://wiki.obiba.org/display/MICADOC/Mica+Installation+Guide#MicaInstallationGuide-ManuallyupdatefromMicatarball

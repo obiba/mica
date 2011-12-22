@@ -40,11 +40,11 @@ case "$1" in
 		webserver="apache2"
 
 	    if [ ! -d /etc/$webserver/conf.d/ ]; then
-			install -d -m755 /etc/$webserver/conf.d/
+				install -d -m755 /etc/$webserver/conf.d/
 	    fi
 	    if [ ! -e /etc/$webserver/conf.d/mica.conf ]; then
-			ln -s ${includefile} /etc/$webserver/conf.d/mica.conf
-			restart="$i $restart"
+				ln -s ${includefile} /etc/$webserver/conf.d/mica.conf
+				restart="$i $restart"
 	    fi
       
       	a2enmod rewrite
