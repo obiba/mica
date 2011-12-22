@@ -118,24 +118,26 @@ function _mica_dataschemas_import_taxonomy($filename, $vocabulary_name) {
   taxonomy_vocabulary_save($vocabulary);
   
   $path = drupal_get_path('module', 'mica_dataschemas') . '/taxonomies/' . $filename;
-  taxonomy_csv_import(array(
+  $file_path = drupal_realpath($path);
+  $result  = taxonomy_csv_import(array(
     'import_format' => 'tree_structure',
     'delimiter' => ',',
     'enclosure' => '"',
     'keep_order' => true,
   	'file' => (object) array(
       'filename' => $filename,
-      'filepath' => drupal_realpath($path),
+      'filepath' => $file_path,
       'filesize' => filesize($path)
     ),
     'vocabulary_target' => 'existing',
     'vocabulary_id' => $vocabulary->vid
   ));
   
-  watchdog('mica', 'Imported taxonomy %file to vocabulary %vocabulary',
+  watchdog('mica', 'Imported taxonomy %file to vocabulary %vocabulary: %result',
     array(
-    	'%file' => $filename, 
+    	'%file' => $file_path, 
       '%vocabulary' => $vocabulary_name,
+      '%result' => $result,
     ), WATCHDOG_INFO);
   
 }
