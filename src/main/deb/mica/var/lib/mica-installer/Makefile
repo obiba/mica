@@ -101,7 +101,7 @@ mica-install:
 #
 include mica-1.1-update.mk
 
-mica-prepare-update: drush mica-maintenance-mode-on mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install mica-restore-user-files mica-clear-tmp-update mica-echo-update 
+mica-prepare-update: drush mica-maintenance-mode-on mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install mica-restore-user-data mica-clear-tmp-update mica-echo-update 
 
 mica-maintenance-mode-on:
 	@echo "**** Set site in maintenance mode"
@@ -136,13 +136,28 @@ delete-core:
 	rm -rf /etc/mica/profiles/* && \
 	rm -rf /etc/mica/sites/*
 	
-mica-restore-user-files:	
+mica-restore-user-data:	mica-restore-user-config mica-restore-user-profiles mica-restore-user-sites mica-restore-user-files
+
+mica-restore-user-config:	
 	@echo "**** Restore user files" 
-	cp /var/cache/mica-installer/update/.htaccess /usr/share/mica && \
-	cp -rf /var/cache/mica-installer/update/profiles/* /etc/mica/profiles && \
-	cp -rf /var/cache/mica-installer/update/sites/* /etc/mica/sites && \
-	cp -rf /var/cache/mica-installer/update/files/* /var/lib/mica/default/files
+	cp /var/cache/mica-installer/update/.htaccess /usr/share/mica
+
+mica-restore-user-profiles:	
+	if [ !$(find /var/cache/mica-installer/update/profiles -type d -empty) ] ; then \
+		cp -rf /var/cache/mica-installer/update/profiles/* /etc/mica/profiles ; \
+	fi 
 	
+mica-restore-user-sites:
+	if [ !$(find /var/cache/mica-installer/update/sites -type d -empty) ] ; then \
+		cp -rf /var/cache/mica-installer/update/sites/* /etc/mica/sites ; \
+	fi
+	
+mica-restore-user-files:
+	if [ !$(find /var/cache/mica-installer/update/files -type d -empty) ] ; then \
+		cp -rf /var/cache/mica-installer/update/files/* /var/lib/mica/default/files ; \
+	fi
+	
+		
 mica-clear-tmp-update:
 	@echo "**** Clear temp files" 
 	rm -rf /var/cache/mica-installer/update
