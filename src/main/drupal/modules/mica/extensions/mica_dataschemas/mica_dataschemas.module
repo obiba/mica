@@ -18,6 +18,7 @@ function mica_dataschemas_form($node, &$form_state) {
  * Implements hook_install().
  */
 function mica_dataschemas_install() {
+  watchdog('mica', 'Create taxonomies', array(), WATCHDOG_INFO);  
   _mica_dataschemas_import_taxonomies();
 }
 

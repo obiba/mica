@@ -52,8 +52,7 @@ mica-dist-install: mica-dist-install-prepare drupal-profiles drupal-sites drupal
 mica-dist-install-prepare:
 	mkdir -p /var/cache/mica-installer/target && \
   cd /var/cache/mica-installer/target && \
-  #wget -q http://download.obiba.org/mica/$(stability)/mica-dist-$(deb_version).tar.gz && \
-  cp /home/cthiebault/workspace/mica/target/mica-dist-$(deb_version).tar.gz /var/cache/mica-installer/target && \
+  wget -q http://download.obiba.org/mica/$(stability)/mica-dist-$(deb_version).tar.gz && \
 	tar xzf mica-dist-$(deb_version).tar.gz && \
 	mv $(micadir)-$(version) mica && \
 	mv mica /usr/share
@@ -102,13 +101,12 @@ mica-install:
 #
 include mica-1.1-update.mk
 
-mica-prepare-update: drush mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install mica-restore-user-files mica-clear-tmp-update mica-echo-update 
+mica-prepare-update: drush mica-maintenance-mode-on mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install mica-restore-user-files mica-clear-tmp-update mica-echo-update 
 
 mica-maintenance-mode-on:
 	@echo "**** Set site in maintenance mode"
 	cd /usr/share/mica/sites/default && \
-	$(drushexec) vset --always-set maintenance_mode 1 && \
-	$(drushexec) cache-clear all
+	$(drushexec) vset --always-set maintenance_mode 1
 	
 mica-backup:
 	@echo "**** Backup database and files"
@@ -157,11 +155,19 @@ mica-echo-update:
 	@echo 
 	@echo "  1. Run update.php by visiting http://www.example.com/update.php (replace www.example.com with your domain name)."
 	@echo "     This will update the database tables."
+	@echo 
+	@echo "     If you are unable to access update.php do the following:"
+	@echo "       - Open /usr/share/mica/sites/default/settings.php with a text editor."
+	@echo "       - Find the line that says: $update_free_access = FALSE;"
+	@echo "       - Change it into: $update_free_access = TRUE;"
+	@echo "     Once the upgrade is done, $update_free_access must be reverted to FALSE."	
+	@echo
 	@echo "  2. Go to Administration > Configuration > Development and clear all caches."
+	@echo
 	@echo "  3. Go to Administration > Configuration > Development > Maintenance mode." 
 	@echo "     Disable the 'Put site into maintenance mode' checkbox and save the configuration."
 	@echo  
-	@echo "Drupal files and database were backuped to:"
+	@echo "Mica files and database were backuped before update to:"
 	@echo "  $(backupdir)"
 	@echo 
 	@echo "****"
