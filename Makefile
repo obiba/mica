@@ -114,7 +114,8 @@ ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
 	cp target/*.zip /var/www/download/mica/unstable
 	cp target/*.tar.gz /var/www/download/mica/unstable
 else
-	cp target/deb/*.deb /var/www/pkg/stable
+	cp target/deb/mica_*.deb /var/www/pkg/stable
+#	cp target/deb/mica-solr_*.deb /var/www/pkg/stable
 	cp target/*.zip /var/www/download/mica/stable
 	cp target/*.tar.gz /var/www/download/mica/stable
 endif
