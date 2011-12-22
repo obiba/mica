@@ -6,7 +6,7 @@
 oldversion=
 micadir=mica
 installdir=/usr/share
-backupdir=/var/lib/mica-installer/backups/version-$(oldversion)
+backupdir=/var/lib/mica-installer/backups/mica-$(oldversion)
 drushexec=/var/cache/mica-installer/drush/drush
 
 #
@@ -51,8 +51,8 @@ mica-dist-install: mica-dist-install-prepare drupal-profiles drupal-sites drupal
 
 mica-dist-install-prepare:
 	mkdir -p /var/cache/mica-installer/target && \
-  cd /var/cache/mica-installer/target && \
-  wget -q http://download.obiba.org/mica/$(stability)/mica-dist-$(deb_version).tar.gz && \
+	cd /var/cache/mica-installer/target && \
+	wget -q http://download.obiba.org/mica/$(stability)/mica-dist-$(deb_version).tar.gz && \
 	tar xzf mica-dist-$(deb_version).tar.gz && \
 	mv $(micadir)-$(version) mica && \
 	mv mica /usr/share
