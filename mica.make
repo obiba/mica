@@ -21,7 +21,7 @@ api = 2
   
 ; Drupal 7.x. Requires the `core` property to be set to 7.x.
 projects[drupal][type] = core
-projects[drupal][version] = 7.9
+projects[drupal][version] = 7.10
 
 ; Use vocabulary machine name for permissions
 ; http://drupal.org/node/995156
@@ -58,7 +58,7 @@ projects[ctools][download][type] = git
 projects[ctools][download][url] = http://git.drupal.org/project/ctools.git
 projects[ctools][download][revision] = dd65335ef5b823702ea5f1688a3000b09a04a739
 
-projects[date][version] = 2.0-alpha5
+projects[date][version] = 2.0-rc1
 projects[date][type] = module
 
 projects[email][version] = 1.0
@@ -132,7 +132,7 @@ projects[references][download][type] = git
 projects[references][download][url] = http://git.drupal.org/project/references.git
 projects[references][download][revision] = e00686587a53cf51bdcca45248e9a72b483b8916
 
-projects[search_api][version] = 1.0-rc1
+projects[search_api][version] = 1.0
 projects[search_api][type] = module
 
 projects[search_api_db][version] = 1.0-beta2
@@ -149,7 +149,7 @@ projects[search_api_ranges][download][revision] = 7256e42869632a939b4240396a6911
 projects[search_api_solr][version] = 1.0-rc1
 projects[search_api_solr][type] = module
 
-projects[strongarm][version] = 2.0-beta4
+projects[strongarm][version] = 2.0-beta5
 projects[strongarm][type] = module
 
 projects[tagging][version] = 3.3
@@ -164,13 +164,13 @@ projects[taxonomy_manager][type] = module
 projects[token][version] = 1.0-beta7
 projects[token][type] = module
 
-projects[views][version] = 3.0-rc3
+projects[views][version] = 3.0
 projects[views][type] = module
 
 projects[views_data_export][version] = 3.0-beta5
 projects[views_data_export][type] = module
 
-projects[viewreference][version] = 3.1
+projects[viewreference][version] = 3.2
 projects[viewreference][type] = module
 
   

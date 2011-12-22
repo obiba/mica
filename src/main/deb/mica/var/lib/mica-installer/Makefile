@@ -6,6 +6,7 @@
 oldversion=
 micadir=mica
 installdir=/usr/share
+backupdir=/var/lib/mica-installer/backups/version-$(oldversion)
 drushexec=/var/cache/mica-installer/drush/drush
 
 #
@@ -38,8 +39,8 @@ ifndef oldversion
 	@echo "**** Mica distribution install" 
 	make mica-dist-install
 else
-	@echo "**** Mica modules/themes/profiles upgrade" 
-	make mica-install
+	@echo "**** Mica core/modules/themes/profiles upgrade" 
+	make mica-prepare-update
 endif
 
 #
@@ -49,9 +50,10 @@ endif
 mica-dist-install: mica-dist-install-prepare drupal-profiles drupal-sites drupal-doc
 
 mica-dist-install-prepare:
-	mkdir -p target	
-	cd target && \
-	wget -q http://download.obiba.org/mica/$(stability)/mica-dist-$(deb_version).tar.gz && \
+	mkdir -p /var/cache/mica-installer/target && \
+  cd /var/cache/mica-installer/target && \
+  #wget -q http://download.obiba.org/mica/$(stability)/mica-dist-$(deb_version).tar.gz && \
+  cp /home/cthiebault/workspace/mica/target/mica-dist-$(deb_version).tar.gz /var/cache/mica-installer/target && \
 	tar xzf mica-dist-$(deb_version).tar.gz && \
 	mv $(micadir)-$(version) mica && \
 	mv mica /usr/share
@@ -62,12 +64,14 @@ drupal-profiles:
 	ln -s /etc/mica/profiles /usr/share/mica/profiles
 
 drupal-sites:
+	mkdir -p /etc/mica/sites/default && \
 	mv /usr/share/mica/sites/default/* /etc/mica/sites/default && \
 	rmdir /usr/share/mica/sites/default && \
 	mv /usr/share/mica/sites/* /etc/mica/sites/ && \
 	rmdir /usr/share/mica/sites && \
 	ln -s /etc/mica/sites /usr/share/mica/sites && \
-	mv /etc/mica/sites/default/files /var/lib/mica/default && \
+	cp -r /etc/mica/sites/default/files /var/lib/mica/default && \
+	rm -rf /etc/mica/sites/default/files && \
 	ln -s /var/lib/mica/default/files /etc/mica/sites/default/files && \
 	if [ ! -e /etc/mica/sites/default/settings.php ]; then \
 		cd /etc/mica/sites/default && \
@@ -78,6 +82,7 @@ drupal-sites:
 drupal-doc:
 	mv /usr/share/mica/*.txt /usr/share/doc/mica
 	mv /usr/share/doc/mica/robots.txt /usr/share/mica	
+
 
 #
 # Mica install
@@ -91,6 +96,77 @@ mica-install:
 	$(call make-profiles-install,mica_standard)
 	$(call make-profiles-install,mica_demo)
 
+
+#
+# Mica prepare update
+#
+include mica-1.1-update.mk
+
+mica-prepare-update: drush mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install mica-restore-user-files mica-clear-tmp-update mica-echo-update 
+
+mica-maintenance-mode-on:
+	@echo "**** Set site in maintenance mode"
+	cd /usr/share/mica/sites/default && \
+	$(drushexec) vset --always-set maintenance_mode 1 && \
+	$(drushexec) cache-clear all
+	
+mica-backup:
+	@echo "**** Backup database and files"
+	mkdir -p $(backupdir)	 && \
+	cp -rL /usr/share/mica $(backupdir) && \
+	tar czf mica-$(oldversion).tar.gz $(backupdir)/mica && \
+	cd /usr/share/mica/sites/default && \
+	$(drushexec) sql-dump --gzip --result-file=$(backupdir)/mica-$(oldversion).sql
+
+mica-delete:
+	@echo "**** Delete Mica files"
+	$(call make-delete-mica-files,$(version))
+	
+mica-copy-user-files:
+	@echo "**** Copy user files"
+	rm -rf /var/cache/mica-installer/update && \
+	mkdir -p /var/cache/mica-installer/update && \
+	cp /usr/share/mica/.htaccess /var/cache/mica-installer/update && \
+	cp -rL /usr/share/mica/profiles /var/cache/mica-installer/update && \
+	cp -rL /usr/share/mica/sites /var/cache/mica-installer/update && \
+	rm -rf /var/cache/mica-installer/update/sites/default/files && \
+	cp -rL /var/lib/mica/default/files /var/cache/mica-installer/update
+	
+delete-core:
+	@echo "**** Delete Drupal core" 
+	rm -rf /usr/share/mica && \
+	rm -rf /etc/mica/profiles/* && \
+	rm -rf /etc/mica/sites/*
+	
+mica-restore-user-files:	
+	@echo "**** Restore user files" 
+	cp /var/cache/mica-installer/update/.htaccess /usr/share/mica && \
+	cp -rf /var/cache/mica-installer/update/profiles/* /etc/mica/profiles && \
+	cp -rf /var/cache/mica-installer/update/sites/* /etc/mica/sites && \
+	cp -rf /var/cache/mica-installer/update/files/* /var/lib/mica/default/files
+	
+mica-clear-tmp-update:
+	@echo "**** Clear temp files" 
+	rm -rf /var/cache/mica-installer/update
+	
+mica-echo-update:
+	@echo 
+	@echo "****"
+	@echo 
+	@echo "Mica updates are ready to be applied:"
+	@echo 
+	@echo "  1. Run update.php by visiting http://www.example.com/update.php (replace www.example.com with your domain name)."
+	@echo "     This will update the database tables."
+	@echo "  2. Go to Administration > Configuration > Development and clear all caches."
+	@echo "  3. Go to Administration > Configuration > Development > Maintenance mode." 
+	@echo "     Disable the 'Put site into maintenance mode' checkbox and save the configuration."
+	@echo  
+	@echo "Drupal files and database were backuped to:"
+	@echo "  $(backupdir)"
+	@echo 
+	@echo "****"
+	@echo 
+	
 #
 # Clean
 #
@@ -98,6 +174,7 @@ mica-install:
 clean:
 	rm -rf /var/cache/mica-installer/target
 	rm -rf /var/cache/mica-installer/*.gz
+
 
 #
 # Functions
@@ -114,6 +191,8 @@ make-profiles-install = cd target && \
 	tar xzf $(1)-$($(1)_version).tar.gz && \
 	rm -rf /usr/share/mica/profiles/$(1) && \
 	mv $(1) /usr/share/mica/profiles
+	
+make-delete-mica-files = make mica-delete-$(1)
 
 #
 # Versions

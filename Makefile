@@ -163,9 +163,9 @@ package-forks-prepare:
 #	$(call make-info-version,sites/all/modules,search_api_ranges,$(search_api_ranges_revision)-mica)
 	
 package-forks:
-	$(call make-package,sites/all/modules,ctools)
-	$(call make-package,sites/all/modules,references)
-	$(call make-package,sites/all/modules,search_api_ranges)
+#	$(call make-package,sites/all/modules,ctools)
+#	$(call make-package,sites/all/modules,references)
+#	$(call make-package,sites/all/modules,search_api_ranges)
 
 package-clean:
 	rm -f target/*.zip && rm -f target/*.gz && rm -f target/*.deb
