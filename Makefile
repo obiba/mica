@@ -108,16 +108,24 @@ htaccess:
 # Deploy
 #
 
-deploy: package
+deploy: package deploy-mica
+
+deploy-mica:
 ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
-	cp target/deb/*.deb /var/www/pkg/unstable
+	cp target/deb/mica_*.deb /var/www/pkg/unstable
 	cp target/*.zip /var/www/download/mica/unstable
 	cp target/*.tar.gz /var/www/download/mica/unstable
 else
 	cp target/deb/mica_*.deb /var/www/pkg/stable
-#	cp target/deb/mica-solr_*.deb /var/www/pkg/stable
 	cp target/*.zip /var/www/download/mica/stable
 	cp target/*.tar.gz /var/www/download/mica/stable
+endif
+
+deploy-mica-solr:
+ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
+	cp target/deb/mica-solr_*.deb /var/www/pkg/unstable
+else
+	cp target/deb/mica-solr_*.deb /var/www/pkg/stable
 endif
 
 #
@@ -188,27 +196,36 @@ deb-prepare:
 	cp -r src/main/deb target
 	rm -rf `find target/deb -type d -name .svn`
 	
-deb: deb-install deb-changelog
+deb: deb-mica deb-mica-solr
 	
-deb-install:
+deb-mica: deb-mica-install deb-mica-changelog
+
+deb-mica-solr: deb-mica-solr-install deb-mica-solr-changelog
+	
+deb-mica-install:
 	echo "version=$(version)" >> target/deb/mica/var/lib/mica-installer/Makefile
 	echo "deb_version=$(deb_version)" >> target/deb/mica/var/lib/mica-installer/Makefile
-	echo "version=$(version)" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
-	echo "deb_version=$(deb_version)" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
 ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
 	echo "stability=unstable" >> target/deb/mica/var/lib/mica-installer/Makefile
-	echo "stability=unstable" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
 else
 	echo "stability=stable" >> target/deb/mica/var/lib/mica-installer/Makefile
-	echo "stability=stable" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
 endif
 	$(call deb-package,mica,mica)
 	$(call deb-package,mica,mica_standard)
 	$(call deb-package,mica,mica_demo)
 	$(call deb-package,mica,mica_samara)
+
+deb-mica-solr-install:
+	echo "version=$(version)" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
+	echo "deb_version=$(deb_version)" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
+ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
+	echo "stability=unstable" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
+else
+	echo "stability=stable" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
+endif
 	$(call deb-package,mica-solr,mica)
 
-deb-changelog:
+deb-mica-changelog:
 ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
 	echo "mica ($(deb_version)) unstable; urgency=low" > target/deb/mica/debian/changelog
 else
@@ -218,6 +235,8 @@ endif
 	echo "  * See http://wiki.obiba.org/ for more details." >> target/deb/mica/debian/changelog
 	echo "" >> target/deb/mica/debian/changelog
 	echo " -- OBiBa <info@obiba.org>  $(deb_date)" >> target/deb/mica/debian/changelog
+	
+deb-mica-solr-changelog:
 ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
 	echo "mica-solr ($(deb_version)) unstable; urgency=low" > target/deb/mica-solr/debian/changelog
 else
