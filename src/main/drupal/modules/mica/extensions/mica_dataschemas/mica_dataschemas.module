@@ -49,7 +49,7 @@ function mica_dataschemas_menu_local_tasks_alter(&$data, $router_item, $root_pat
 		
 		// Add link if DataSchema
 		if (isset($name)){
-  		$href = url('dataschema-variables') .'&filter['.$filter_field.'][0]="' . $router_item['page_arguments'][0]->nid . '"';
+  		$href = url('dataschema-variables') . '?f[0]=' . rawurlencode($filter_field.':' . $router_item['page_arguments'][0]->nid . '');
   		$links['view-dataschema-variables'] = array(
     		'#weight' => 30,
       		'#theme' => 'menu_local_action',
