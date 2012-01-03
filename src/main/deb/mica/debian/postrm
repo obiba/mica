@@ -60,7 +60,7 @@ case "$1" in
 
 
 	# Remove configuration files (conf.php, $SITE.php)
-    rm -f ${configdir}/sites/default/settings.php
+  rm -f ${configdir}/sites/default/settings.php
 
 	if [ "$1" = "purge" ]; then
 		rm -f ${dbconfigfile}

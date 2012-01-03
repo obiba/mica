@@ -5,3 +5,25 @@ Description: Do you want to continue Mica update?
  .
  If Mica is not your default site for Drupal, please update Mica manually:
  http://wiki.obiba.org/display/MICADOC/Mica+Installation+Guide#MicaInstallationGuide-ManuallyupdatefromMicatarball
+
+Template: mica/ready_to_apply_updates
+Type: note
+Description: 
+ Mica updates are ready to be applied:
+ .
+  1. Run update.php by visiting http://www.example.com/update.php (replace www.example.com with your domain name).
+     This will update the database tables.
+ .
+     If you are unable to access update.php do the following:
+       - Open /usr/share/mica/sites/default/settings.php with a text editor.
+       - Find the line that says: pdate_free_access = FALSE;
+       - Change it into: pdate_free_access = TRUE;
+     Once the upgrade is done, pdate_free_access must be reverted to FALSE.
+ .
+  2. Go to Administration > Configuration > Development and clear all caches.
+ .
+  3. Go to Administration > Configuration > Development > Maintenance mode.
+     Disable the 'Put site into maintenance mode' checkbox and save the configuration.
+ .
+ Mica files and database were backuped before update to:
+ /var/lib/mica-installer/backups/mica-1.0-b13850

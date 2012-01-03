@@ -8,9 +8,12 @@ dbc_generate_include_owner='root:www-data'
 dbc_generate_include_perms='640'
 dbc_pgsql_createdb_encoding='UTF8'
 
+# Source debconf library
 . /usr/share/debconf/confmodule
-# source dbconfig-common stuff');
+
+# source dbconfig-common stuff
 . /usr/share/dbconfig-common/dpkg/postinst
+
 dbc_go mica $@
 
 if [ "$DPKG_DEBUG" = "developer" ]; then
@@ -39,21 +42,30 @@ case "$1" in
 
 		webserver="apache2"
 
-	    if [ ! -d /etc/$webserver/conf.d/ ]; then
-				install -d -m755 /etc/$webserver/conf.d/
-	    fi
-	    if [ ! -e /etc/$webserver/conf.d/mica.conf ]; then
-				ln -s ${includefile} /etc/$webserver/conf.d/mica.conf
-				restart="$i $restart"
-	    fi
+    if [ ! -d /etc/$webserver/conf.d/ ]; then
+			install -d -m755 /etc/$webserver/conf.d/
+    fi
+	  if [ ! -e /etc/$webserver/conf.d/mica.conf ]; then
+			ln -s ${includefile} /etc/$webserver/conf.d/mica.conf
+			restart="$i $restart"
+	  fi
       
-      	a2enmod rewrite
+    a2enmod rewrite
       
 		servers="apache2"
 		. /usr/share/wwwconfig-common/restart.sh
 
 		# Permissions
 		dpkg-statoverride --list $filesdir || dpkg-statoverride --add --force --update www-data www-data 0750 $filesdir
+		
+		
+		# Displays message only on upgrade
+		if [ -n "$OLDVERSION" ]; then
+			db_fset mica/ready_to_apply_updates seen false
+	  	db_input high mica/ready_to_apply_updates || true
+	    db_go
+			db_get mica/ready_to_apply_updates
+		fi    		
 
     ;;
 
