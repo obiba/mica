@@ -61,6 +61,9 @@ projects[ctools][download][revision] = dd65335ef5b823702ea5f1688a3000b09a04a739
 projects[date][version] = 2.0-rc1
 projects[date][type] = module
 
+projects[devel][version] = 1.2
+projects[devel][type] = module
+
 projects[email][version] = 1.0
 projects[email][type] = module
 

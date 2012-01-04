@@ -106,11 +106,11 @@ function mica_node_type_delete($info) {
 }
 
 /**
+ * Hide relation node reference fields.
  * Implements hook_field_attach_form()
  */
 function mica_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
-  // do not display manual edition of the relation node reference fields
-  if ($entity_type == 'node' && $entity->type == 'study') {
+  if ($entity_type === 'node') {
     module_load_include('inc', 'mica', 'includes/relations');
     $relations = _mica_find_relations_by_parent($entity->type);
     if (!empty($relations)) {
@@ -142,80 +142,78 @@ function mica_node_validate($node, $form, &$form_state) {
 }
 
 /**
- * Implements hook_insert()
+ * Implements hook_node_presave()
  */
-//TODO should use hook_node_insert()
-function mica_insert(&$node) {
-
-  if ($node->type === 'field_description') {
-    module_load_include('inc', 'mica', 'includes/search');
-    _mica_update_index_for_field_description($node);
-    return;
-  }
-
-  module_load_include('inc', 'mica', 'includes/relations');
-  $relations = _mica_find_relations_by_parent($node->type);
-  if (!empty($relations)) {
-     
-    // create menu based on content type menu config
-    $menu = $node->menu;
-    if (empty($menu)) {
-      $menu = array();
+function mica_node_presave($node) {
+  
+  if (empty($node->nid)) {
+    
+    if ($node->type === 'field_description') {
+    	module_load_include('inc', 'mica', 'includes/search');
+    	_mica_update_index_for_field_description($node);
+    	return;
     }
-    if (empty($menu['enabled']) || !$menu['enabled']) {
+    
+    module_load_include('inc', 'mica', 'includes/relations');
+    $relations = _mica_find_relations_by_parent($node->type);
+    if (!empty($relations)) {
+    
+    	// create menu based on content type menu config
+    	$menu = $node->menu;
+    	if (empty($menu)) {
+    		$menu = array();
+    	}
+    	if (empty($menu['enabled']) || !$menu['enabled']) {
+    
+    		$menu_options = variable_get('menu_options_' . $node->type);
+    
+    		if (!empty($menu_options)) {
+    			$menu['enabled'] = TRUE;
+    			$menu['expanded'] = TRUE;
+    			$menu['menu_name'] = $menu_options[0];
+    			$menu['link_title'] = $node->title;
+    			$menu['link_path'] = 'node/' . $node->nid;
+    
+    			$menu_parent = variable_get('menu_parent_' . $node->type);
+    			if (!empty($menu_parent)) {
+    				$split = explode(":", $menu_parent);
+    				if (!empty($split[1])) {
+    					$mlid = $split[1];
+    					// check that this parent menu exists
+    					$existing_menu = db_query("SELECT * FROM {menu_links} WHERE mlid = :mlid", array(':mlid' => $mlid))
+    					->fetchObject();
+    					if (!empty($existing_menu) && $existing_menu->mlid === $mlid) {
+    						$menu['plid'] = $mlid;
+    						menu_link_save($menu);
+    						menu_cache_clear($menu['menu_name']);
+    					}
+    				}
+    			}
+    		}
+    	}
+    	foreach ($relations as $relation) {
+    		$relation->create_child_node($node, $menu);
+    	}
+    }    
+    
+  } else {
 
-      $menu_options = variable_get('menu_options_' . $node->type);
-
-      if (!empty($menu_options)) {
-        $menu['enabled'] = TRUE;
-        $menu['expanded'] = TRUE;
-        $menu['menu_name'] = $menu_options[0];
-        $menu['link_title'] = $node->title;
-        $menu['link_path'] = 'node/' . $node->nid;
-         
-        $menu_parent = variable_get('menu_parent_' . $node->type);
-        if (!empty($menu_parent)) {
-          $split = explode(":", $menu_parent);
-          if (!empty($split[1])) {
-            $mlid = $split[1];
-            // check that this parent menu exists
-            $existing_menu = db_query("SELECT * FROM {menu_links} WHERE mlid = :mlid", array(':mlid' => $mlid))
-            ->fetchObject();
-            if (!empty($existing_menu) && $existing_menu->mlid === $mlid) {
-              $menu['plid'] = $mlid;
-              menu_link_save($menu);
-              menu_cache_clear($menu['menu_name']);
-            }
-          }
-        }
-      }
+    if ($node->type === 'field_description') {
+    	module_load_include('inc', 'mica', 'includes/search');
+    	_mica_update_index_for_field_description($node);
+    	return;
     }
-     
-    $to_save = FALSE;
-    foreach ($relations as $relation) {
-      $to_save = $relation->create_child_node($node, $menu);
+    
+    module_load_include('inc', 'mica', 'includes/relations');
+    $relations = _mica_find_relations_by_parent($node->type);
+    if (!empty($relations)) {
+    	foreach ($relations as $relation) {
+    		$relation->update_child_node($node);
+    	}
     }
+    
   }
-}
-
-/**
- * Implements hook_node_update().
- */
-function mica_node_update($node) {
-
-  if ($node->type === 'field_description') {
-    module_load_include('inc', 'mica', 'includes/search');
-    _mica_update_index_for_field_description($node);
-    return;
-  }
-
-  module_load_include('inc', 'mica', 'includes/relations');
-  $relations = _mica_find_relations_by_parent($node->type);
-  if (!empty($relations)) {
-    foreach ($relations as $relation) {
-      $relation->update_child_node($node);
-    }
-  }
+  
 }
 
 /**
@@ -232,8 +230,8 @@ function mica_node_access($node, $op, $account){
     if (!is_null($relation)){
       return NODE_ACCESS_DENY;
     }
-  }
-  else{
+  } 
+  else {
     return NODE_ACCESS_IGNORE;
   }
 }
@@ -339,17 +337,14 @@ function mica_block_info() {
  * This hook generates the contents of the blocks themselves.
  */
 function mica_block_view($delta = '') {
-  $block = array();
-
+	$block = array();
   switch ($delta) {
     case 'powered-by-mica':
       $block['subject'] = NULL;
       $block['content'] = '<span>' . t('Powered by <a href="@poweredby">Mica</a>', array('@poweredby' => 'http://obiba.org')) . '</span>';
-      return $block;
-    default:
-      return;
+      break;
   }
-
+  return $block;
 }
 
 /**
@@ -369,7 +364,7 @@ function mica_feeds_plugins() {
       'class' => 'FeedsMicaProcessor',
       'file' => 'FeedsMicaProcessor.inc',
       'path' => $path,
-  ),
+    ),
   );
   $info['FeedsUniqueNodeProcessor'] = array(
     'name' => 'Unique Node processor',
@@ -380,7 +375,7 @@ function mica_feeds_plugins() {
       'class' => 'FeedsUniqueNodeProcessor',
       'file' => 'FeedsUniqueNodeProcessor.inc',
       'path' => $path,
-  ),
+    ),
   );
 
   $path = drupal_get_path('module', 'mica') . '/includes/feeds/parsers';
@@ -393,7 +388,7 @@ function mica_feeds_plugins() {
       'class' => 'FeedsMultiValueCSVParser',
       'file' => 'FeedsMultiValueCSVParser.inc',
       'path' => $path,
-  ),
+    ),
   );
 
   $path = drupal_get_path('module', 'mica') . '/includes/feeds/fetchers';
@@ -406,7 +401,7 @@ function mica_feeds_plugins() {
       'class' => 'FeedsRestFetcher',
       'file' => 'FeedsRestFetcher.inc',
       'path' => $path,
-  ),
+    ),
   );
 
   return $info;

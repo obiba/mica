@@ -38,10 +38,10 @@ function _mica_node_type_form_alter(&$form, $form_state) {
       '#group' => 'additional_settings',
       '#attributes' => array(
         'class' => array('relation-node-type-settings-form'),
-    ),
+      ),
       '#attached' => array(
         'js' => array(drupal_get_path('module', 'mica') . '/includes/relations-node-form.js'),
-    ),
+      ),
     );
 
     $form['mica_relation']['parent_bundle'] = array(
@@ -68,10 +68,12 @@ function _mica_node_type_form_alter(&$form, $form_state) {
       '#ajax' => array(
         'callback' => '_mica_ajax_populate_indexes_callback',
         'wrapper' => 'child-indexes-container',
-    ),
+      ),
     );
 
-    $parent_indexes = empty($selected_parent_bundle) ? array() : $indexes[$selected_parent_bundle];
+    $parent_indexes = empty($selected_parent_bundle) || !array_key_exists($selected_parent_bundle, $indexes) 
+      ? array() 
+      : $indexes[$selected_parent_bundle];
     if (empty($relation)) {
       if (empty($parent_indexes)) {
         $child_indexes_default_value = array();
@@ -82,8 +84,8 @@ function _mica_node_type_form_alter(&$form, $form_state) {
     }
     else {
       $child_indexes_default_value = empty($relation->options['child_indexes'])
-      ? array()
-      : $relation->options['child_indexes'];
+        ? array()
+        : $relation->options['child_indexes'];
     };
 
 
@@ -177,15 +179,15 @@ function _mica_edit_node_type_relation($form, &$form_state) {
       // create new relation
 
       watchdog('mica', 'Create relation between parent %parent and child %child',
-      array(
+        array(
           '%parent' => $relation->parent_bundle,
           '%child' => $relation->child_bundle, 
-      ), WATCHDOG_INFO);
+        ), WATCHDOG_INFO);
 
       $indexes = _mica_find_indexes_by_bundle();
       $relation->options['parent_indexes'] = empty($indexes[$relation->parent_bundle])
-      ? array()
-      : array_keys($indexes[$relation->parent_bundle]);
+        ? array()
+        : array_keys($indexes[$relation->parent_bundle]);
 
       // set reference node and relation only at creation
       $relation->options['node_reference'] = 'mica_' . $new_type;
@@ -195,7 +197,6 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 
       // create node reference field
       $relation->add_node_reference_to_parent($name);
-      //$relation->add_relation_fields();
 
       // check if parent type already has content
       $query = new EntityFieldQuery;
@@ -226,12 +227,6 @@ function _mica_edit_node_type_relation($form, &$form_state) {
         field_delete_field($previous_relation->options['node_reference']);
         $relation->options['node_reference'] = 'mica_' . $new_type;
         $relation->add_node_reference_to_parent($name);
-
-        /*
-         field_delete_field($previous_relation->options['relation_parent_field']);
-         field_delete_field($previous_relation->options['relation_child_field']);
-         $relation->add_relation_fields();
-         */
 
       }
       else {

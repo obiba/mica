@@ -104,18 +104,6 @@ class MicaRelation extends Entity {
     );
 
     $existing = relation_type_load($this->options['relation']);
-
-   	// TODO: remove this patch that deletes a field instance before saving relation once it's fixed:
-   	// http://drupal.org/node/1152024
-    if (!empty($existing)) {
-      $instance = array(
-		    'field_name' => 'endpoints',
-		    'entity_type' => 'relation',
-		    'bundle' => $drupal_relation['predicate'],
-      );
-      field_delete_instance($instance, FALSE);
-    }
-
     relation_type_save($drupal_relation, empty($existing) ? array() : 'predicate');
   }
 
@@ -132,13 +120,13 @@ class MicaRelation extends Entity {
 	    'cardinality' => 1,
 	    'settings' => array(
 	      'referenceable_types' => array(
-    $this->child_bundle => $this->child_bundle,
-    ),
+          $this->child_bundle => $this->child_bundle,
+        ),
 	      'field_permissions' => array(
 	        'create' => 'create',
 	        'view' => 'view',
-    ),
-    ),
+        ),
+      ),
     ));
      
     field_create_instance(array(
@@ -148,26 +136,15 @@ class MicaRelation extends Entity {
 	    'bundle' => $this->parent_bundle,
 	    'widget' => array(
 	    	'type' => 'options_select',
-    ),
+      ),
  			'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'type' => 'node_reference_field_name_link',      
-    ),
-    ),
+        	'type' => 'node_reference_field_name_link',      
+        ),
+      ),
     ));
      
-    // give 'view' field permission to everyone
-    user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('view ' . $node_ref_field_name));
-    user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('view ' . $node_ref_field_name));
-
-    // give 'create' field permission to consortium administrator and study administrator
-    $admin_role = user_role_load_by_name('administrator');
-    $mica_admin_role = user_role_load_by_name('consortium administrator');
-    $study_admin_role = user_role_load_by_name('study administrator');
-    user_role_grant_permissions($admin_role->rid, array('create ' . $node_ref_field_name));
-    user_role_grant_permissions($mica_admin_role->rid, array('create ' . $node_ref_field_name));
-    user_role_grant_permissions($study_admin_role->rid, array('create ' . $node_ref_field_name));
   }
 
 
@@ -201,17 +178,6 @@ class MicaRelation extends Entity {
 	    'widget' => array('type' => 'relation_default'),
     ));
      
-    // give 'view' field permission to everyone
-    user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('view ' . $source));
-    user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('view ' . $source));
-
-    // give 'create' field permission to consortium administrator and study administrator
-    $admin_role = user_role_load_by_name('administrator');
-    $mica_admin_role = user_role_load_by_name('consortium administrator');
-    $study_admin_role = user_role_load_by_name('study administrator');
-    user_role_grant_permissions($admin_role->rid, array('create ' . $source));
-    user_role_grant_permissions($mica_admin_role->rid, array('create ' . $source));
-    user_role_grant_permissions($study_admin_role->rid, array('create ' . $source));
   }
 
   /**
