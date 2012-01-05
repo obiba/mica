@@ -148,6 +148,7 @@ projects[search_api_ranges][type] = module
 projects[search_api_ranges][download][type] = git
 projects[search_api_ranges][download][url] = http://git.drupal.org/project/search_api_ranges.git
 projects[search_api_ranges][download][revision] = 7256e42869632a939b4240396a69110a5beedf2f
+projects[search_api_ranges][patch][1344076] = http://drupal.org/files/rawurlencode_rangefield-1344076-6.patch
 
 projects[search_api_solr][version] = 1.0-rc1
 projects[search_api_solr][type] = module
