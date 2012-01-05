@@ -143,6 +143,9 @@ function mica_dataschemas_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_variables',
+      'field_permissions' => array(
+        'type' => '1',
+      ),
       'foreign keys' => array(),
       'indexes' => array(
         'view_id' => array(
@@ -155,6 +158,7 @@ function mica_dataschemas_field_default_fields() {
         'arguments' => array(
           'delimiter' => '/',
           'dsv_arguments' => 1,
+          'label' => '!field_label arguments',
           'php_arguments' => 0,
           'rows' => '1',
         ),
@@ -198,8 +202,6 @@ function mica_dataschemas_field_default_fields() {
           'dataset_studies:page' => 0,
           'datasets:feed' => 0,
           'datasets:page' => 0,
-          'date_browser:date_nav_1' => 0,
-          'date_browser:page' => 0,
           'documents:page' => 0,
           'events:feed' => 0,
           'events:page' => 0,
@@ -220,6 +222,9 @@ function mica_dataschemas_field_default_fields() {
           'my_data_access_requests:page' => 0,
           'news:page' => 0,
           'participant_variable_search:page' => 0,
+          'project_dataschema:block' => 0,
+          'project_pairings:page' => 0,
+          'project_studies:block' => 0,
           'projects:page' => 0,
           'publications:page' => 0,
           'studies:page' => 0,
@@ -228,6 +233,9 @@ function mica_dataschemas_field_default_fields() {
           'taxonomy_term:page' => 0,
           'teleconferences:page' => 0,
           'tracker:page' => 0,
+          'variable_categories:block' => 0,
+          'variable_dataschemas:block' => 0,
+          'variable_missing_categories:block' => 0,
         ),
       ),
       'translatable' => '0',
@@ -235,7 +243,12 @@ function mica_dataschemas_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'dataschema',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'view_id' => 'dataschema_variables:page',
+          'arguments' => '',
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -286,7 +299,7 @@ function mica_dataschemas_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_variables',
       'label' => 'Variables',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),

@@ -27,9 +27,23 @@ function mica_dataschemas_install() {
 */
 function mica_dataschemas_insert(&$node) {
   if ($node->type === 'dataschema') {
+    debug($node);
     $node->field_variables[LANGUAGE_NONE] = array(
-      0 => array('view_id' => 'dataschema_variables:page', 'arguments' => $node->nid)
+      0 => array(
+      	'view_id' => 'dataschema_variables:page', 
+      	'arguments' => $node->nid,
+      )
     );
+  }
+}
+
+/**
+* Implements hook_field_attach_form()
+*/
+function mica_dataschemas_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+  if ($entity_type == 'node' && $entity->type == 'dataschema') {
+    $form['field_variables']['#attributes']['style'] = array('display:none;');
+  	$form['field_variables']['#attributes']['style'] = array('display:none;');
   }
 }
 
@@ -37,31 +51,60 @@ function mica_dataschemas_insert(&$node) {
 * Implements hook_menu_local_tasks_alter().
 */
 function mica_dataschemas_menu_local_tasks_alter(&$data, $router_item, $root_path) {
-	$links = array();
-    
-	if ($root_path == 'node/%') {
-		$node = node_load($router_item['page_arguments'][0]->nid);
-
-		if ($node != NULL && $node->type == 'dataschema' && node_access('view', $node) ) {
-  		$name = t('View Variables');
-  		$filter_field = 'field_dataschema_ref';
-		}
-		
-		// Add link if DataSchema
-		if (isset($name)){
-  		$href = url('dataschema-variables') . '?f[0]=' . rawurlencode($filter_field.':' . $router_item['page_arguments'][0]->nid . '');
-  		$links['view-dataschema-variables'] = array(
-    		'#weight' => 30,
-      		'#theme' => 'menu_local_action',
-      		'#link' => array(
-      			'title' => t('<a class="highlight" href="@url">!name</a>', array('!name' => $name, '@url' => $href)),
-      			'localized_options' => array('html' => TRUE),
-		    ),
-  		);
-  		
-  		$data['actions']['output'] = array_merge($data['actions']['output'], $links);
-		}
+  $links = array();
+      
+  if ($root_path == 'dataschemas') {
+	if (node_access('create', 'dataschema')) {
+	  $node_type = node_type_load('dataschema');
+	  $links['add-dataschema'] = array(
+      	'#theme' => 'menu_local_action',
+        '#link' => array(
+          'title' => t('Add a !name', array('!name' => $node_type->name)),
+          'href' => 'node/add/dataschema',
+		),
+	  );
+	  
+	  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 	}
+  }
+  elseif ($root_path == 'dataschema-variables'){
+    if (node_access('create', 'dataschema-variable')) {
+    	$node_type = node_type_load('dataschema-variable');
+    	$links['add-dataschema'] = array(
+          	'#theme' => 'menu_local_action',
+            '#link' => array(
+              'title' => t('Add a !name', array('!name' => $node_type->name)),
+              'href' => 'node/add/dataschema-variable',
+    	),
+    	);
+    	 
+    	$data['actions']['output'] = array_merge($data['actions']['output'], $links);
+    }
+  }
+	
+  if ($root_path == 'node/%') {
+  	$node = node_load($router_item['page_arguments'][0]->nid);
+  
+  	if ($node != NULL && $node->type == 'dataschema' && node_access('view', $node) ) {
+  	  $name = t('View Variables');
+  	  $filter_field = 'field_dataschema_ref';
+  	}
+  	
+  	// Add link if DataSchema
+  	if (isset($name)){
+  	  $href = url('dataschema-variables') . '?f[0]=' . rawurlencode($filter_field.':' . $router_item['page_arguments'][0]->nid . '');
+  	  $links['view-dataschema-variables'] = array(
+  		'#weight' => 30,
+    	'#theme' => 'menu_local_action',
+    	'#link' => array(
+    	  'title' => t('<a class="highlight" href="@url">!name</a>', array('!name' => $name, '@url' => $href)),
+    	  'localized_options' => array('html' => TRUE),
+        ),
+  	  );
+  	
+  	  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
+    }
+  }
 }
 
 /**

@@ -58,7 +58,7 @@ function mica_dataschemas_views_default_views() {
   $handler->display->display_options['empty']['area']['content'] = 'No DataSchema variables found.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['empty']['area']['tokenize'] = 0;
-  /* Field: Node: Title */
+  /* Field: Indexed Node: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_dataschema_variables_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -140,7 +140,7 @@ function mica_dataschemas_views_default_views() {
     'field_dim_type:name' => 'field_dim_type:name',
     'field_variable_categories:title' => 'field_variable_categories:title',
   );
-  /* Filter criterion: Node: Content type */
+  /* Filter criterion: Indexed Node: Content type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'search_api_index_dataschema_variables_index';
   $handler->display->display_options['filters']['type']['field'] = 'type';
