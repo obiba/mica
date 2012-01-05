@@ -1667,7 +1667,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* Field: Node: Title */
+  /* Field: Indexed Node: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_fields_description_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -2079,7 +2079,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['empty']['area']['label'] = 'empty_studies';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
   $handler->display->display_options['empty']['area']['content'] = 'No study found.';
-  /* Field: Node: Title */
+  /* Field: Indexed Node: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_studies_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -2100,7 +2100,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Field: Node: Full Name */
+  /* Field: Indexed Node: Full Name */
   $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
   $handler->display->display_options['fields']['field_full_name']['table'] = 'search_api_index_studies_index';
   $handler->display->display_options['fields']['field_full_name']['field'] = 'field_full_name';
@@ -2119,7 +2119,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_full_name']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_full_name']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_full_name']['empty_zero'] = 0;
-  /* Field: Node: Target number of participants */
+  /* Field: Indexed Node: Target number of participants */
   $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'search_api_index_studies_index';
   $handler->display->display_options['fields']['field_target_number_participants']['field'] = 'field_target_number_participants';
@@ -2168,7 +2168,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['use_operator'] = FALSE;
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
-  /* Filter criterion: Node: Content type */
+  /* Filter criterion: Indexed Node: Content type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'search_api_index_studies_index';
   $handler->display->display_options['filters']['type']['field'] = 'type';

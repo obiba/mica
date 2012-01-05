@@ -203,3 +203,13 @@ function _mica_node_reference_block() {
   }
   $query->execute();
 }
+
+/**
+* Implements hook_node_insert()
+*/
+function mica_studies_node_insert($node) {
+  if ($node->type === 'study') {
+	mica_create_menu($node, 1);
+  }
+  return;
+}

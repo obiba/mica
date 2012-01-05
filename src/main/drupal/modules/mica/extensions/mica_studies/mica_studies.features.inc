@@ -13,6 +13,10 @@ function mica_studies_ctools_plugin_api() {
     return array("version" => "1");
   }
   list($module, $api) = func_get_args();
+  if ($module == "facetapi" && $api == "facetapi_defaults") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
   if ($module == "feeds" && $api == "feeds_importer_default") {
     return array("version" => "1");
   }
@@ -73,7 +77,7 @@ function mica_studies_image_default_styles() {
 }
 
 /**
- * Implementation of hook_node_info().
+ * Implements hook_node_info().
  */
 function mica_studies_node_info() {
   $items = array(
