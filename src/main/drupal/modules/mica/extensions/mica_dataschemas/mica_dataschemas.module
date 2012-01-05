@@ -25,9 +25,10 @@ function mica_dataschemas_install() {
 /**
  * Implements hook_node_insert()
 */
-function mica_dataschemas_insert(&$node) {
+function mica_dataschemas_node_insert($node) {
   if ($node->type === 'dataschema') {
-    debug($node);
+    mica_create_menu($node, 1);
+    
     $node->field_variables[LANGUAGE_NONE] = array(
       0 => array(
       	'view_id' => 'dataschema_variables:page', 
@@ -35,6 +36,11 @@ function mica_dataschemas_insert(&$node) {
       )
     );
   }
+  elseif ($node->type === 'dataschema_variable') {
+    mica_create_menu($node, 1);
+  }
+  
+  return;
 }
 
 /**

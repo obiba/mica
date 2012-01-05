@@ -297,8 +297,15 @@ function mica_dataschemas_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_dataschema';
+  $strongarm->value = 'main-menu:458';
+  $export['menu_parent_dataschema'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_dataschema_variable';
-  $strongarm->value = 'main-menu:446';
+  $strongarm->value = 'main-menu:459';
   $export['menu_parent_dataschema_variable'] = $strongarm;
 
   $strongarm = new stdClass;
