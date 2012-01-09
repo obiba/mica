@@ -73,7 +73,7 @@ projects[entity][type] = module
 projects[facetapi][version] = 1.0-rc1
 projects[facetapi][type] = module
 
-projects[features][version] = 1.0-beta5
+projects[features][version] = 1.0-beta6
 projects[features][type] = module
 
 projects[feeds][version] = 2.0-alpha4
