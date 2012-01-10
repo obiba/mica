@@ -68,3 +68,14 @@ function mica_community_publication_post_render(&$render){
   
   return $render;
 }
+
+/**
+* Implements hook_node_insert()
+*/
+function mica_community_node_insert($node) {
+	if ($node->type === 'publication' || $node->type === 'event') {
+		mica_create_menu($node, 1);
+	}
+
+	return;
+}
