@@ -158,39 +158,8 @@ function mica_node_presave($node) {
     $relations = _mica_find_relations_by_parent($node->type);
     if (!empty($relations)) {
     
-    	// create menu based on content type menu config
-    	$menu = $node->menu;
-    	if (empty($menu)) {
-    		$menu = array();
-    	}
-    	if (empty($menu['enabled']) || !$menu['enabled']) {
-    
-    		$menu_options = variable_get('menu_options_' . $node->type);
-    
-    		if (!empty($menu_options)) {
-    			$menu['enabled'] = TRUE;
-    			$menu['expanded'] = TRUE;
-    			$menu['menu_name'] = $menu_options[0];
-    			$menu['link_title'] = $node->title;
-    			$menu['link_path'] = 'node/' . $node->nid;
-    
-    			$menu_parent = variable_get('menu_parent_' . $node->type);
-    			if (!empty($menu_parent)) {
-    				$split = explode(":", $menu_parent);
-    				if (!empty($split[1])) {
-    					$mlid = $split[1];
-    					// check that this parent menu exists
-    					$existing_menu = db_query("SELECT * FROM {menu_links} WHERE mlid = :mlid", array(':mlid' => $mlid))
-    					->fetchObject();
-    					if (!empty($existing_menu) && $existing_menu->mlid === $mlid) {
-    						$menu['plid'] = $mlid;
-    						menu_link_save($menu);
-    						menu_cache_clear($menu['menu_name']);
-    					}
-    				}
-    			}
-    		}
-    	}
+        $menu = mica_create_menu($node, 0);
+    	
     	foreach ($relations as $relation) {
     		$relation->create_child_node($node, $menu);
     	}
@@ -517,4 +486,47 @@ function mica_node_modal_page_view($js = NULL, $node) {
   else {
     return node_page_view($node);
   }
+}
+
+/**
+* Creates a menu for the item being created if the content type as a default menu set.
+* The menu entry is hidden; this is useful to populate the breadcrumbs without having to manually add a menu entry.
+* @param $node
+*/
+function mica_create_menu($node, $hidden){
+	// create menu based on content type menu config
+	$menu = $node->menu;
+	if (empty($menu)) {
+		$menu = array();
+	}
+	if (empty($menu['enabled']) || !$menu['enabled']) {
+
+		$menu_options = variable_get('menu_options_' . $node->type);
+
+		if (!empty($menu_options)) {
+			$menu['enabled'] = 0;
+			$menu['hidden'] = $hidden;
+			$menu['expanded'] = 0;
+			$menu['menu_name'] = $menu_options[0];
+			$menu['link_title'] = $node->title;
+			$menu['link_path'] = 'node/' . $node->nid;
+
+			$menu_parent = variable_get('menu_parent_' . $node->type);
+			if (!empty($menu_parent)) {
+				$split = explode(":", $menu_parent);
+				if (!empty($split[1])) {
+					$mlid = $split[1];
+					// check that this parent menu exists
+					$existing_menu = db_query("SELECT * FROM {menu_links} WHERE mlid = :mlid", array(':mlid' => $mlid))
+					->fetchObject();
+					if (!empty($existing_menu) && $existing_menu->mlid === $mlid) {
+						$menu['plid'] = $mlid;
+						menu_link_save($menu);
+						menu_cache_clear($menu['menu_name']);
+					}
+				}
+			}
+		}
+	}
+	return $menu;
 }
