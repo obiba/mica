@@ -263,7 +263,7 @@ function mica_dataschemas_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_dataschema';
   $strongarm->value = array(
-    0 => 'main-menu',
+    0 => 'main-menu:dataschemas',
   );
   $export['menu_options_dataschema'] = $strongarm;
 
@@ -281,7 +281,7 @@ function mica_dataschemas_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_dataschema_variable';
   $strongarm->value = array(
-    0 => 'main-menu',
+    0 => 'main-menu:dataschema-variables',
   );
   $export['menu_options_dataschema_variable'] = $strongarm;
 

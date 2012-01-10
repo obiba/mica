@@ -3139,7 +3139,7 @@ function mica_studies_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_study';
   $strongarm->value = array(
-    0 => 'main-menu',
+    0 => 'main-menu:studies',
   );
   $export['menu_options_study'] = $strongarm;
 
