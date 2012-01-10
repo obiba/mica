@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function mica_projects_field_default_fields() {
   $fields = array();
@@ -844,14 +844,14 @@ function mica_projects_field_default_fields() {
         'referenceable_types' => array(
           'article' => 0,
           'blog' => 0,
-          'dataschema_category' => 0,
           'contact' => 0,
           'data_access_request' => 0,
           'data_access_review' => 0,
           'dataschema' => 0,
+          'dataschema_category' => 0,
+          'dataschema_variable' => 0,
           'dataset' => 0,
           'documents' => 0,
-          'dataschema_variable' => 0,
           'event' => 0,
           'field_description' => 0,
           'forum' => 0,

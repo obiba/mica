@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_menu_default_menu_links().
+ * Implements hook_menu_default_menu_links().
  */
 function mica_projects_menu_default_menu_links() {
   $menu_links = array();
@@ -34,11 +34,7 @@ function mica_projects_menu_default_menu_links() {
     'link_path' => 'projects',
     'router_path' => 'projects',
     'link_title' => 'Projects',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
+    'options' => array(),
     'module' => 'system',
     'hidden' => '0',
     'external' => '0',
