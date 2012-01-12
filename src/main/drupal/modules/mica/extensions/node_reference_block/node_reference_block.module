@@ -78,8 +78,8 @@ function _node_reference_block_related_content_block_content() {
   
   $exclude_types = variable_get('related_content_block_exclude', array('pairing'));
   
-  if (strpos($_GET['q'],'node/') === 0) {
-    $node_path = explode('/',$_GET['q']);
+  if (strpos($_GET['q'], 'node/') === 0) {
+    $node_path = explode('/', $_GET['q']);
     if (array_key_exists(1, $node_path) && is_numeric($node_path[1])) {
       $node = node_load($node_path[1]);
       $related_content = array();
@@ -118,9 +118,9 @@ function _node_reference_block_related_content_block_content() {
       $query = db_select('field_config', 'f');
       $query->join('field_config_instance', 'fi', 'f.id = fi.field_id');
       $query->fields('f',array('field_name'))
-      ->condition('f.type', 'node_reference','=')
-      ->condition('f.deleted', FALSE,'=')
-      ->condition('fi.bundle', $node->type,'=');
+        ->condition('f.type', 'node_reference', '=')
+        ->condition('f.deleted', FALSE, '=')
+        ->condition('fi.bundle', $node->type, '=');
 
       $result = $query->execute();
 
@@ -136,7 +136,8 @@ function _node_reference_block_related_content_block_content() {
           if ($values) {
             foreach ($values as $val) {
               $related_node = node_load($val['nid']);
-              if (node_access('view', $related_node) && $related_node->status === NODE_PUBLISHED) {
+              // displays only published related content (language independent)
+              if (node_access('view', $related_node) && $related_node->status == NODE_PUBLISHED) {
                 $related_content[$field_info['label']][$related_node->title] = $related_node->nid;
               }
             }
