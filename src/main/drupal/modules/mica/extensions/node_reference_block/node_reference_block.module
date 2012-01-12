@@ -136,7 +136,7 @@ function _node_reference_block_related_content_block_content() {
           if ($values) {
             foreach ($values as $val) {
               $related_node = node_load($val['nid']);
-              if (node_access('view', $related_node)) {
+              if (node_access('view', $related_node) && $related_node->status === NODE_PUBLISHED) {
                 $related_content[$field_info['label']][$related_node->title] = $related_node->nid;
               }
             }
