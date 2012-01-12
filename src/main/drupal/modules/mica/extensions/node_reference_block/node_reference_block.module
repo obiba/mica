@@ -131,8 +131,8 @@ function _node_reference_block_related_content_block_content() {
         $field_info = field_info_instance('node', $field_name, $node->type);
 
         $related_content[$field_info['label']] = array();
-        if (array_key_exists($node->language, $field)) {
-          $values = $field[$node->language];
+        if (array_key_exists(LANGUAGE_NONE, $field)) {
+          $values = $field[LANGUAGE_NONE];
           if ($values) {
             foreach ($values as $val) {
               $related_node = node_load($val['nid']);

@@ -190,10 +190,9 @@ class MicaRelation extends Entity {
     $field_ref = $this->options['node_reference'];
     
     if (property_exists($parent_node, $field_ref)) $field = $parent_node->$field_ref;
-    $language = $parent_node->language;
 
     // do not create child if child id is already provided (case of data import)
-    if (empty($field) || empty($field[$language])) {
+    if (empty($field) || empty($field[LANGUAGE_NONE])) {
        
       // create new child
       $node_child = new stdClass();
@@ -228,7 +227,7 @@ class MicaRelation extends Entity {
 
       // link this new child node to the parent node
       $parent_node->$field_ref = array(
-        $language => array(
+        LANGUAGE_NONE => array(
           0 => array(
           	'nid' => $node_child->nid,
           ),
@@ -270,11 +269,9 @@ class MicaRelation extends Entity {
       unset($parent_menu);
     }
 
-    $language = $parent_node->language;
-
     $field_ref = $this->options['node_reference'];
     $field = $parent_node->$field_ref;
-    $child_nid = $field[$language][0]['nid'];
+    $child_nid = $field[LANGUAGE_NONE][0]['nid'];
     $node_child = node_load($child_nid);
 
     // drop previous child menu in main-menu if exists
@@ -312,10 +309,9 @@ class MicaRelation extends Entity {
 
   public function delete_child_node($parent_node) {
     if (!$this->options['cascaded']) return;
-    $language = $parent_node->language;
     $field_ref = $this->options['node_reference'];
     $field = $parent_node->$field_ref;
-    $child_nid = $field[$language][0]['nid'];
+    $child_nid = $field[LANGUAGE_NONE][0]['nid'];
     node_delete($child_nid);
 
     watchdog('mica', 'Delete child %child for deleted parent %parent',
