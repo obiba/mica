@@ -226,6 +226,28 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['path'] = 'csv-contact';
   $handler->display->display_options['sitename_title'] = 0;
   $handler->display->display_options['use_batch'] = '0';
+  $translatables['csv_contact_export'] = array(
+    t('Master'),
+    t('CSV Contact Export'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('title'),
+    t('field_contact_name:title'),
+    t('[field_contact_name_2-title]'),
+    t('field_contact_name:given'),
+    t('field_contact_name:family'),
+    t('field_contact_email:email'),
+    t('field_telephone'),
+    t('field_institution'),
+    t('Data export'),
+  );
   $export['csv_contact_export'] = $view;
 
   $view = new view;
@@ -486,6 +508,29 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['path'] = 'csv-field-description';
   $handler->display->display_options['sitename_title'] = 0;
   $handler->display->display_options['use_batch'] = '0';
+  $translatables['csv_field_description_export'] = array(
+    t('Master'),
+    t('CSV Contact Export'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('title'),
+    t('body'),
+    t('field_original_field_label'),
+    t('field_original_field_name'),
+    t('field_bundle_label'),
+    t('field_bundle'),
+    t('field_value_type'),
+    t('field_categories'),
+    t('field_repeatable'),
+    t('Data export'),
+  );
   $export['csv_field_description_export'] = $view;
 
   $view = new view;
@@ -654,6 +699,25 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['path'] = 'csv-institution';
   $handler->display->display_options['sitename_title'] = 0;
   $handler->display->display_options['use_batch'] = '0';
+  $translatables['csv_institution_export'] = array(
+    t('Master'),
+    t('CSV Institution Export'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('title'),
+    t('field_street'),
+    t('field_city'),
+    t('field_postal_code'),
+    t('field_country'),
+    t('Data export'),
+  );
   $export['csv_institution_export'] = $view;
 
   $view = new view;
@@ -958,6 +1022,31 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['path'] = 'csv-study';
   $handler->display->display_options['use_batch'] = '0';
+  $translatables['csv_study_export'] = array(
+    t('Master'),
+    t('CSV Study Export'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('field_study_legacy_id'),
+    t('title'),
+    t('body'),
+    t('field_full_name'),
+    t('field_website'),
+    t('field_contact'),
+    t('field_investigator'),
+    t('field_target_number_participants'),
+    t('field_target_number_biosamples'),
+    t('field_p3g_observatory_link'),
+    t('[field_p3g_observatory_link-url]'),
+    t('Data export'),
+  );
   $export['csv_study_export'] = $view;
 
   $view = new view;
@@ -1494,6 +1583,39 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['path'] = 'csv-study-information';
   $handler->display->display_options['use_batch'] = '0';
+  $translatables['csv_study_information_export'] = array(
+    t('Master'),
+    t('CSV Study Information Export'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('field_study_legacy_id'),
+    t('title'),
+    t('field_design'),
+    t('field_biosamples_collected_other'),
+    t('field_design_target'),
+    t('field_target_other'),
+    t('field_selection_criteria'),
+    t('field_age_max'),
+    t('field_age_min'),
+    t('field_gender'),
+    t('field_study_country'),
+    t('field_biosamples_collected'),
+    t('field_biosamples_tissues'),
+    t('field_gwas_analysis'),
+    t('field_gwas_number'),
+    t('field_access'),
+    t('field_access_other'),
+    t('field_status_start'),
+    t('field_status_end'),
+    t('Data export'),
+  );
   $export['csv_study_information_export'] = $view;
 
   $view = new view;
@@ -1645,6 +1767,25 @@ function mica_studies_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'documents';
+  $translatables['documents'] = array(
+    t('Master'),
+    t('Documents'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_documents'),
+    t('No document found.'),
+    t('Name'),
+    t('Description'),
+    t('Download'),
+    t('Page'),
+  );
   $export['documents'] = $view;
 
   $view = new view;
@@ -1730,6 +1871,23 @@ function mica_studies_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'fields-description-search';
   $handler->display->display_options['tab_options']['weight'] = '0';
+  $translatables['fields_description_search'] = array(
+    t('Master'),
+    t('Search Filters'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('Name'),
+    t('Text (indexed)'),
+    t('Fulltext search'),
+    t('Page'),
+  );
   $export['fields_description_search'] = $view;
 
   $view = new view;
@@ -1800,6 +1958,22 @@ function mica_studies_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'news';
+  $translatables['news'] = array(
+    t('Master'),
+    t('Recent News'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_news'),
+    t('No news found.'),
+    t('Page'),
+  );
   $export['news'] = $view;
 
   $view = new view;
@@ -2020,6 +2194,31 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'studies';
+  $translatables['studies'] = array(
+    t('Master'),
+    t('Studies'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('This page displays the list of the consortium\'s studies. Each study is described in a same standard way that can be easily customized to reflect consortium specificities. However, Mica suggests by default a list of important study characteristics that should be considered if there is an aim for the consortium to participate in data harmonization projects with other consortia or studies. 
+
+This Mica study catalogue comes with an advanced query tool using user-friendly facets <br/><br/>'),
+    t('empty_studies'),
+    t('No study found.'),
+    t('mica_study_information'),
+    t('Name'),
+    t('Full Name'),
+    t('Target number of participants'),
+    t('Country(ies)'),
+    t('P3G Catalogue'),
+    t('Page'),
+  );
   $export['studies'] = $view;
 
   $view = new view;
@@ -2179,6 +2378,27 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'studies-search';
+  $translatables['studies_search'] = array(
+    t('Master'),
+    t('Studies Search'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_studies'),
+    t('No study found.'),
+    t('Name'),
+    t('Full Name'),
+    t('Target number of participants'),
+    t('Country(ies)'),
+    t('Fulltext search'),
+    t('Page'),
+  );
   $export['studies_search'] = $view;
 
   return $export;
