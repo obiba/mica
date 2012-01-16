@@ -70,11 +70,19 @@ projects[email][type] = module
 projects[entity][version] = 1.0-rc1
 projects[entity][type] = module
 
+projects[entity_translation][type] = module
+projects[entity_translation][download][type] = git
+projects[entity_translation][download][url] = http://git.drupal.org/project/entity_translation.git
+projects[entity_translation][download][revision] = c8d5a47baf08c511749b1dcf8083ef4a3898698b
+
 projects[facetapi][version] = 1.0-rc1
 projects[facetapi][type] = module
 
-projects[features][version] = 1.0-beta6
 projects[features][type] = module
+projects[features][download][type] = git
+projects[features][download][url] = http://git.drupal.org/project/features.git
+projects[features][download][revision] = a224dca266d2a7a5fc83de7719263f15c75a6e84
+projects[features][patch][1279938] = http://drupal.org/files/features-locale-1279938-8.patch
 
 projects[feeds][version] = 2.0-alpha4
 projects[feeds][type] = module
@@ -99,6 +107,18 @@ projects[http_client][type] = module
 
 projects[imce][version] = 1.5
 projects[imce][type] = module
+
+projects[i18n][version] = 1.2
+projects[i18n][download][type] = git
+projects[i18n][download][url] = http://git.drupal.org/project/i18n.git
+projects[i18n][download][revision] = ba701a2cecd87eeb98ce1e22c2ee1ab7aba1928e
+projects[i18n][patch][1407054] = http://drupal.org/files/export_per_contenttype-1407054-1.patch
+
+projects[job_scheduler][version] = 2.0-alpha2
+projects[job_scheduler][type] = module
+
+projects[l10n_update][version] = 1.x-dev
+projects[l10n_update][type] = module
 
 projects[job_scheduler][version] = 2.0-alpha2
 projects[job_scheduler][type] = module
@@ -129,6 +149,9 @@ projects[panels][type] = module
 
 projects[pathauto][version] = 1.0
 projects[pathauto][type] = module
+
+projects[potx][version] = 1.0
+projects[potx][type] = module
 
 projects[references][type] = module
 projects[references][download][type] = git
@@ -167,6 +190,12 @@ projects[taxonomy_manager][type] = module
 
 projects[token][version] = 1.0-beta7
 projects[token][type] = module
+
+projects[token][version] = 1.0-alpha2
+projects[token][type] = module
+
+projects[variable][version] = 1.1
+projects[variable][type] = module
 
 projects[views][version] = 3.0
 projects[views][type] = module
