@@ -1,0 +1,78 @@
+# $Id$
+#
+# French translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  mica_opal.module: n/a
+#  mica_opal.info: n/a
+#  includes/opal_connection.inc: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-01-12 14:11-0500\n"
+"PO-Revision-Date: 2012-01-12 14:11-0500\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: mica_opal.module:9
+msgid "Opal"
+msgstr ""
+
+#: mica_opal.module:10
+msgid "Connection for Opal data repository."
+msgstr ""
+
+#: mica_opal.info:0
+msgid "Mica Opal"
+msgstr ""
+
+#: mica_opal.info:0
+msgid "Allows using Mica and Mica Datasets with an Opal instance"
+msgstr ""
+
+#: mica_opal.info:0
+msgid "OBiBa"
+msgstr ""
+
+#: includes/opal_connection.inc:21;27
+msgid "Opal server"
+msgstr ""
+
+#: includes/opal_connection.inc:29
+msgid "The Opal server secured url (https is required)."
+msgstr ""
+
+#: includes/opal_connection.inc:34
+msgid "Datasource"
+msgstr ""
+
+#: includes/opal_connection.inc:36
+msgid "The Opal datasource name."
+msgstr ""
+
+#: includes/opal_connection.inc:40
+msgid "Table"
+msgstr "Tableau"
+
+#: includes/opal_connection.inc:42
+msgid "The Opal table name from which variables and data can be fetched."
+msgstr ""
+
+#: includes/opal_connection.inc:56
+msgid "You must provide a valid Opal server url: https://..."
+msgstr ""
+
+#: includes/opal_connection.inc:62
+msgid "You must provide a valid Opal datasource name."
+msgstr ""
+
+#: includes/opal_connection.inc:66
+msgid "You must provide a valid Opal table name."
+msgstr ""
+

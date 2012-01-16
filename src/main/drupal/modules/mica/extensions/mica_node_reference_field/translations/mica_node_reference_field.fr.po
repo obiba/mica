@@ -1,0 +1,41 @@
+# $Id$
+#
+# French translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  mica_node_reference_field.module: n/a
+#  mica_node_reference_field.info: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-01-12 14:11-0500\n"
+"PO-Revision-Date: 2012-01-12 14:11-0500\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: mica_node_reference_field.module:15
+msgid "Node reference field name (link)"
+msgstr ""
+
+#: mica_node_reference_field.module:16
+msgid "Displays the name of the node reference field as a link to the node page."
+msgstr ""
+
+#: mica_node_reference_field.info:0
+msgid "Mica Node Reference Field"
+msgstr ""
+
+#: mica_node_reference_field.info:0
+msgid "Adaptation of Node Reference Field to display relations for Mica"
+msgstr ""
+
+#: mica_node_reference_field.info:0
+msgid "OBiBa"
+msgstr ""
+

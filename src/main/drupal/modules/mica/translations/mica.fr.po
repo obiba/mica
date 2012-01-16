@@ -1,0 +1,83 @@
+# $Id$
+#
+# French translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  mica.module: n/a
+#  mica.install: n/a
+#  mica.info: n/a
+#  includes/feeds/mappers/mica.inc: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-01-12 14:08-0500\n"
+"PO-Revision-Date: 2012-01-12 14:08-0500\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: mica.module:15
+msgid "Mica Documentation can be found here:"
+msgstr ""
+
+#: mica.module:17
+msgid "Mica Administration Guide"
+msgstr ""
+
+#: mica.module:18
+msgid "Mica User Guide"
+msgstr ""
+
+#: mica.module:43
+msgid "Mica Relation"
+msgstr ""
+
+#: mica.module:139
+msgid "Study name '!title' is already given."
+msgstr ""
+
+#: mica.module:295
+msgid "Powered by Mica"
+msgstr ""
+
+#: mica.module:313
+msgid "Powered by <a href=\"@poweredby\">Mica</a>"
+msgstr ""
+
+#: mica.module:98 mica.install:117
+msgid "mica"
+msgstr ""
+
+#: mica.module:98
+msgid "Delete relation between parent %parent and child %child"
+msgstr ""
+
+#: mica.install:117
+msgid "Update to Mica 1.1"
+msgstr ""
+
+#: mica.info:0
+msgid "Mica"
+msgstr ""
+
+#: mica.info:0
+msgid "Mica module"
+msgstr ""
+
+#: mica.info:0
+msgid "OBiBa"
+msgstr ""
+
+#: includes/feeds/mappers/mica.inc:18;25
+msgid "The @label field of the node."
+msgstr ""
+
+#: includes/feeds/mappers/mica.inc:32
+msgid "The Legacy Id of the parent Study of the node."
+msgstr ""
+

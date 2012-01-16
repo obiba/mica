@@ -1,6 +1,14 @@
 <?php
 
 function mica_standard_install_tasks($install_state){
+//   $task['mica_update_languages'] = array(
+//   	'display_name' => st('Download Drupal french translations'),
+//     'display' => TRUE,
+//     'type' => 'batch',
+//     'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+//     'function' => 'mica_update_languages',
+//   );
+  
   $task['mica_standard_content'] = array(
     'display_name' => st('Add Mica default content'),
     'display' => TRUE,
@@ -17,6 +25,7 @@ function mica_standard_install_tasks($install_state){
     'function' => 'mica_user_permission_rebuild',
   ); 
   
+ 
   return $task;
 }
 
@@ -65,8 +74,24 @@ function mica_import_default_feeds($install_state){
   $batch = array(
     'title' => st('Importing'),
     'operations' => $operations,
-    'progress_message' => 'Creating default Mica content',
+    'progress_message' => st('Creating default Mica content'),
   );
 
+  return $batch;
+}
+
+function mica_update_languages($install_state){
+  module_load_include('batch.inc', 'l10n_update');
+  
+  $history = l10n_update_get_history();
+  $available = l10n_update_available_releases();
+  $updates = l10n_update_build_updates($history, $available);
+  
+//   Filter out updates in other languages. If no languages, all of them will be updated
+  $languages = array('fr');
+  $updates = _l10n_update_prepare_updates($updates, NULL, $languages);
+  
+  $batch = l10n_update_batch_multiple($updates, null);
+  
   return $batch;
 }

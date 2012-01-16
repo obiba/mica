@@ -1,0 +1,108 @@
+# $Id$
+#
+# French translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  mica_projects.features.field.inc: n/a
+#  mica_projects.features.inc: n/a
+#  mica_projects.features.menu_links.inc: n/a
+#  mica_projects.module: n/a
+#  mica_projects.info: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-01-12 14:11-0500\n"
+"PO-Revision-Date: 2012-01-12 14:11-0500\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: mica_projects.features.field.inc:1146
+msgid "Body"
+msgstr "Corps"
+
+#: mica_projects.features.field.inc:1147
+msgid "Comment"
+msgstr "Commentaire"
+
+#: mica_projects.features.field.inc:1148
+msgid "Consortium's studies involved."
+msgstr ""
+
+#: mica_projects.features.field.inc:1149
+msgid "Date"
+msgstr "Date"
+
+#: mica_projects.features.field.inc:1150
+msgid "Description"
+msgstr "Description"
+
+#: mica_projects.features.field.inc:1151
+msgid "Files"
+msgstr "Fichiers"
+
+#: mica_projects.features.field.inc:1152
+msgid "Instructions"
+msgstr ""
+
+#: mica_projects.features.field.inc:1153
+msgid "Minutes"
+msgstr ""
+
+#: mica_projects.features.field.inc:1154 mica_projects.features.inc:37
+msgid "Project"
+msgstr ""
+
+#: mica_projects.features.field.inc:1155
+msgid "Studies"
+msgstr ""
+
+#: mica_projects.features.field.inc:1156
+msgid "Teleconferences"
+msgstr ""
+
+#: mica_projects.features.inc:39
+msgid "Research activities with a specific scientific question or target"
+msgstr ""
+
+#: mica_projects.features.inc:41;49
+msgid "Title"
+msgstr "Titre"
+
+#: mica_projects.features.inc:45
+msgid "Teleconference"
+msgstr ""
+
+#: mica_projects.features.inc:47
+msgid "Teleconference event and details"
+msgstr ""
+
+#: mica_projects.features.menu_links.inc:48
+msgid "Projects"
+msgstr ""
+
+#: mica_projects.features.menu_links.inc:49
+msgid "Research"
+msgstr ""
+
+#: mica_projects.module:28
+msgid "Add a !name"
+msgstr ""
+
+#: mica_projects.info:0
+msgid "Mica Projects"
+msgstr ""
+
+#: mica_projects.info:0
+msgid "Adds Projects and Teleconferences content types to Mica"
+msgstr ""
+
+#: mica_projects.info:0
+msgid "OBiBa"
+msgstr ""
+

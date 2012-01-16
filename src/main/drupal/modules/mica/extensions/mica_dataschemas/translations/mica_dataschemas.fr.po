@@ -1,0 +1,241 @@
+# $Id$
+#
+# French translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  mica_dataschemas.features.field.inc: n/a
+#  mica_dataschemas.features.inc: n/a
+#  mica_dataschemas.features.menu_links.inc: n/a
+#  mica_dataschemas.module: n/a
+#  includes/blocks.inc: n/a
+#  mica_dataschemas.info: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-01-12 14:09-0500\n"
+"PO-Revision-Date: 2012-01-12 14:09-0500\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: mica_dataschemas.features.field.inc:3789
+msgid "A Uniform Resource Identifier (URI) is a string of characters used to identify a name or a resource on the Internet."
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3790
+msgid "Biochemical measures"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3791
+msgid "Body"
+msgstr "Corps"
+
+#: mica_dataschemas.features.field.inc:3792
+msgid "Body functions and measures"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3793
+msgid "Categories"
+msgstr "Catégories"
+
+#: mica_dataschemas.features.field.inc:3794
+msgid "Class"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3795
+msgid "Collection mode"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3796 mica_dataschemas.features.inc:53
+msgid "DataSchema"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3797
+msgid "Disease history"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3798
+msgid "Environmental exposures"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3799
+msgid "Format"
+msgstr "Format"
+
+#: mica_dataschemas.features.field.inc:3800
+msgid "Life habits / Behaviours"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3801
+msgid "Match"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3802
+msgid "Measuring unit of the variable (i.e. kg, siblings, cigarettes, etc.)."
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3803
+msgid "Medication"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3804
+msgid "Missing"
+msgstr "Manquant"
+
+#: mica_dataschemas.features.field.inc:3805
+msgid "Name"
+msgstr "Nom"
+
+#: mica_dataschemas.features.field.inc:3806
+msgid "Period"
+msgstr "Période"
+
+#: mica_dataschemas.features.field.inc:3807
+msgid "Project"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3808
+msgid "Reproductive history"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3809
+msgid "Sample"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3810
+msgid "Sociodemographic characteristics"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3811
+msgid "Source of information"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3812
+msgid "Study"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3813
+msgid "Target"
+msgstr "Cible"
+
+#: mica_dataschemas.features.field.inc:3814
+msgid "Target gender"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3815
+msgid "Therapeutic interventions"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3816
+msgid "Type"
+msgstr "Type"
+
+#: mica_dataschemas.features.field.inc:3817
+msgid "URI"
+msgstr "URI"
+
+#: mica_dataschemas.features.field.inc:3818
+msgid "Unit"
+msgstr ""
+
+#: mica_dataschemas.features.field.inc:3819 mica_dataschemas.features.inc:69
+msgid "Variable"
+msgstr "Variable"
+
+#: mica_dataschemas.features.field.inc:3820
+msgid "Variables"
+msgstr "Variables"
+
+#: mica_dataschemas.features.inc:55
+msgid "Identifies and describes a thematic set of core variables that are of particular value in a specified scientific setting."
+msgstr ""
+
+#: mica_dataschemas.features.inc:57;65;73;81
+msgid "Title"
+msgstr "Titre"
+
+#: mica_dataschemas.features.inc:61
+msgid "Category"
+msgstr "Catégorie"
+
+#: mica_dataschemas.features.inc:63
+msgid "Defines a category"
+msgstr ""
+
+#: mica_dataschemas.features.inc:71
+msgid "DataSchema variable"
+msgstr ""
+
+#: mica_dataschemas.features.inc:77
+msgid "Pairing"
+msgstr ""
+
+#: mica_dataschemas.features.inc:79
+msgid "Describe a pairing for a variable of a study within a dataset"
+msgstr ""
+
+#: mica_dataschemas.features.menu_links.inc:45
+msgid "DataSchemas"
+msgstr ""
+
+#: mica_dataschemas.features.menu_links.inc:46
+msgid "Variables Library"
+msgstr ""
+
+#: mica_dataschemas.module:68;82
+msgid "Add a !name"
+msgstr ""
+
+#: mica_dataschemas.module:95
+msgid "View Variables"
+msgstr ""
+
+#: mica_dataschemas.module:106
+msgid "<a class=\"highlight\" href=\"@url\">!name</a>"
+msgstr ""
+
+#: mica_dataschemas.module:121
+msgid "Custom Page Main Content"
+msgstr ""
+
+#: mica_dataschemas.module:125
+msgid "Custom Page Dimension"
+msgstr ""
+
+#: mica_dataschemas.module:129
+msgid "Custom Page Variable"
+msgstr ""
+
+#: mica_dataschemas.module:21;185 includes/blocks.inc:71
+msgid "mica"
+msgstr ""
+
+#: mica_dataschemas.module:21
+msgid "Create taxonomies"
+msgstr ""
+
+#: mica_dataschemas.module:185
+msgid "Imported taxonomy %file to vocabulary %vocabulary: %result"
+msgstr ""
+
+#: mica_dataschemas.info:0
+msgid "Mica DataSchemas"
+msgstr ""
+
+#: mica_dataschemas.info:0
+msgid "DataSchemas support for Mica"
+msgstr ""
+
+#: mica_dataschemas.info:0
+msgid "OBiBa"
+msgstr ""
+
+#: includes/blocks.inc:71
+msgid "Configured facet block %facet"
+msgstr ""
+

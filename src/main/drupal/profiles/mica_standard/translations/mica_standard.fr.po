@@ -1,0 +1,37 @@
+# $Id$
+#
+# French translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  mica_standard.install: n/a
+#  mica_standard.info: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-01-12 15:08-0500\n"
+"PO-Revision-Date: 2012-01-12 15:08-0500\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: mica_standard.install:225
+msgid "mica"
+msgstr ""
+
+#: mica_standard.install:225
+msgid "Mica standard profile installed"
+msgstr ""
+
+#: mica_standard.info:0
+msgid "Mica"
+msgstr ""
+
+#: mica_standard.info:0
+msgid "Mica installation of tools for making a Study Consortium site: studies, search indexes, community tools and more."
+msgstr ""
+

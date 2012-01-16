@@ -1,0 +1,49 @@
+# $Id$
+#
+# French translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  node_reference_block.module: n/a
+#  node_reference_block.info: n/a
+#  node_reference_block.js: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-01-12 14:12-0500\n"
+"PO-Revision-Date: 2012-01-12 14:13-0500\n"
+"Last-Translator: asd <asd>\n"
+"Language-Team: French <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: node_reference_block.module:11;167
+msgid "Related information"
+msgstr "Information liée"
+
+#: node_reference_block.module:29;40
+msgid "Excluded related types"
+msgstr ""
+
+#: node_reference_block.module:43
+msgid "Excludes selected types from related information."
+msgstr ""
+
+#: node_reference_block.info:0
+msgid "Node Reference Block"
+msgstr ""
+
+#: node_reference_block.info:0
+msgid "Related Content Block using Node References"
+msgstr ""
+
+#: node_reference_block.info:0
+msgid "OBiBa"
+msgstr ""
+
+#: node_reference_block.js:0
+msgid "No exclusions"
+msgstr ""
+

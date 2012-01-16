@@ -1,0 +1,696 @@
+# $Id$
+#
+# French translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  mica_studies.features.field.inc: n/a
+#  mica_studies.views_default.inc: n/a
+#  mica_studies.features.inc: n/a
+#  mica_studies.features.menu_links.inc: n/a
+#  mica_studies.features.menu_custom.inc: n/a
+#  mica_studies.pages.inc: n/a
+#  mica_studies.module: n/a
+#  mica_studies.info: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-01-12 14:12-0500\n"
+"PO-Revision-Date: 2012-01-12 15:07-0500\n"
+"Last-Translator: asd <asd>\n"
+"Language-Team: French <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: mica_studies.features.field.inc:6051
+msgid "Access to the following features is provided or foreseen"
+msgstr ""
+
+#: mica_studies.features.field.inc:6052
+msgid "Access to the following study features to external researchers or third parties provided or foreseen"
+msgstr ""
+
+#: mica_studies.features.field.inc:6053
+msgid "Baseline design of the study"
+msgstr "Design de l'étude"
+
+#: mica_studies.features.field.inc:6054
+msgid "Biological samples collected"
+msgstr ""
+
+#: mica_studies.features.field.inc:6055
+msgid "Body"
+msgstr "Corps"
+
+#: mica_studies.features.field.inc:6056
+msgid "Can this field have multiple values?"
+msgstr ""
+
+#: mica_studies.features.field.inc:6057
+msgid "Categories"
+msgstr "Catégories"
+
+#: mica_studies.features.field.inc:6058
+msgid "City"
+msgstr ""
+
+#: mica_studies.features.field.inc:6059
+msgid "Comment"
+msgstr "Commentaire"
+
+#: mica_studies.features.field.inc:6060
+msgid "Contact Name"
+msgstr ""
+
+#: mica_studies.features.field.inc:6061
+msgid "Contacts"
+msgstr ""
+
+#: mica_studies.features.field.inc:6062
+msgid "Content Type"
+msgstr "Type de contenu"
+
+#: mica_studies.features.field.inc:6063
+msgid "Content Type Label"
+msgstr ""
+
+#: mica_studies.features.field.inc:6064
+msgid "Country"
+msgstr "Pays"
+
+#: mica_studies.features.field.inc:6065
+msgid "Country selection criteria"
+msgstr ""
+
+#: mica_studies.features.field.inc:6066
+msgid "Email"
+msgstr "Courriel"
+
+#: mica_studies.features.field.inc:6067
+msgid "Field Name"
+msgstr ""
+
+#: mica_studies.features.field.inc:6068
+msgid "Field machine name"
+msgstr ""
+
+#: mica_studies.features.field.inc:6069
+msgid "Files"
+msgstr "Fichiers"
+
+#: mica_studies.features.field.inc:6070
+#: mica_studies.views_default.inc:2216;2396
+msgid "Full Name"
+msgstr ""
+
+#: mica_studies.features.field.inc:6071
+msgid "GWA approximate number of participants"
+msgstr ""
+
+#: mica_studies.features.field.inc:6072
+msgid "Gender selection criteria"
+msgstr ""
+
+#: mica_studies.features.field.inc:6073
+#: mica_studies.features.inc:101
+msgid "Institution"
+msgstr ""
+
+#: mica_studies.features.field.inc:6074
+msgid "Investigators"
+msgstr ""
+
+#: mica_studies.features.field.inc:6075
+msgid "Label"
+msgstr "Étiquette"
+
+#: mica_studies.features.field.inc:6076
+msgid "Legacy Id"
+msgstr ""
+
+#: mica_studies.features.field.inc:6077
+msgid "Logo"
+msgstr "Logo"
+
+#: mica_studies.features.field.inc:6078
+msgid "Machine name of the content type that declares this field"
+msgstr ""
+
+#: mica_studies.features.field.inc:6079
+msgid "Maximum age selection criteria"
+msgstr ""
+
+#: mica_studies.features.field.inc:6080
+msgid "Minimum age selection criteria"
+msgstr ""
+
+#: mica_studies.features.field.inc:6081
+msgid "Name of the content type that declares this field"
+msgstr ""
+
+#: mica_studies.features.field.inc:6082
+msgid "Oher type of access"
+msgstr ""
+
+#: mica_studies.features.field.inc:6083
+msgid "Other type of design"
+msgstr ""
+
+#: mica_studies.features.field.inc:6084
+msgid "Other type of samples collected"
+msgstr ""
+
+#: mica_studies.features.field.inc:6085
+msgid "Other type of target"
+msgstr ""
+
+#: mica_studies.features.field.inc:6086
+#: mica_studies.views_default.inc:2219
+msgid "P3G Catalogue"
+msgstr ""
+
+#: mica_studies.features.field.inc:6087
+msgid "Postal Code"
+msgstr ""
+
+#: mica_studies.features.field.inc:6088
+msgid "Proceeding to genome-wide association (GWA) analysis"
+msgstr ""
+
+#: mica_studies.features.field.inc:6089
+msgid "Recruitment targets"
+msgstr ""
+
+#: mica_studies.features.field.inc:6090
+msgid "Repeatable"
+msgstr ""
+
+#: mica_studies.features.field.inc:6091
+msgid "Selection criteria / Charactecteristic of the population"
+msgstr ""
+
+#: mica_studies.features.field.inc:6092
+msgid "Street"
+msgstr ""
+
+#: mica_studies.features.field.inc:6093
+#: mica_studies.features.inc:117
+msgid "Study Documents"
+msgstr ""
+
+#: mica_studies.features.field.inc:6094
+#: mica_studies.features.inc:125
+msgid "Study Information"
+msgstr ""
+
+#: mica_studies.features.field.inc:6095
+msgid "Study Legacy Id"
+msgstr ""
+
+#: mica_studies.features.field.inc:6096
+msgid "Study end year"
+msgstr ""
+
+#: mica_studies.features.field.inc:6097
+msgid "Study legacy id"
+msgstr ""
+
+#: mica_studies.features.field.inc:6098
+msgid "Study start year"
+msgstr ""
+
+#: mica_studies.features.field.inc:6099
+msgid "Target number of biological samples"
+msgstr ""
+
+#: mica_studies.features.field.inc:6100
+#: mica_studies.views_default.inc:2217;2397
+msgid "Target number of participants"
+msgstr ""
+
+#: mica_studies.features.field.inc:6101
+msgid "Telephone"
+msgstr ""
+
+#: mica_studies.features.field.inc:6102
+msgid "Type of tissues collected"
+msgstr ""
+
+#: mica_studies.features.field.inc:6103
+msgid "Value Type"
+msgstr ""
+
+#: mica_studies.features.field.inc:6104
+msgid "Website"
+msgstr "Site Web"
+
+#: mica_studies.features.inc:85
+msgid "Contact"
+msgstr "Contact"
+
+#: mica_studies.features.inc:87
+msgid "Description of a Contact, consisting of a person and an Institution."
+msgstr ""
+
+#: mica_studies.features.inc:89
+msgid "Person and Institution Names"
+msgstr ""
+
+#: mica_studies.features.inc:93
+msgid "Field Description"
+msgstr ""
+
+#: mica_studies.features.inc:95
+msgid "Description of information collected about the studies."
+msgstr ""
+
+#: mica_studies.features.inc:97;137
+msgid "Title"
+msgstr "Titre"
+
+#: mica_studies.features.inc:103
+msgid "Description of an Institution."
+msgstr ""
+
+#: mica_studies.features.inc:105
+msgid "Institution Name"
+msgstr ""
+
+#: mica_studies.features.inc:109
+msgid "Study"
+msgstr ""
+
+#: mica_studies.features.inc:111
+msgid "Study portal. Create a content of this type when registering a new study."
+msgstr ""
+
+#: mica_studies.features.inc:113;121;129
+#: mica_studies.views_default.inc:1784;1886;2215;2395
+msgid "Name"
+msgstr "Nom"
+
+#: mica_studies.features.inc:119
+msgid "Files attached to a Study. Child of Study."
+msgstr ""
+
+#: mica_studies.features.inc:127
+msgid "General Information about a Study. Child of Study."
+msgstr ""
+
+#: mica_studies.features.inc:133
+#: mica_studies.features.menu_links.inc:94
+#: mica_studies.views_default.inc:1772
+msgid "Documents"
+msgstr ""
+
+#: mica_studies.features.inc:135
+msgid "Content type to present one or more documents"
+msgstr ""
+
+#: mica_studies.features.menu_custom.inc:21
+msgid "Main menu"
+msgstr "Menu principal"
+
+#: mica_studies.features.menu_custom.inc:22
+msgid "The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar."
+msgstr "Le <em>menu Principal</em> est fréquemment utilisé pour afficher les sections importantes du site, souvent dans la barre de navigation de haut de page."
+
+#: mica_studies.features.menu_links.inc:95
+msgid "Home"
+msgstr "Accueil"
+
+#: mica_studies.features.menu_links.inc:96
+msgid "Resources"
+msgstr ""
+
+#: mica_studies.features.menu_links.inc:97
+#: mica_studies.views_default.inc:2199
+msgid "Studies"
+msgstr ""
+
+#: mica_studies.features.menu_links.inc:98
+msgid "Research"
+msgstr ""
+
+#: mica_studies.pages.inc:36
+#: mica_studies.module:25
+msgid "Export"
+msgstr "Exporter"
+
+#: mica_studies.pages.inc:37
+#: mica_studies.views_default.inc:1785
+msgid "Description"
+msgstr "Description"
+
+#: mica_studies.pages.inc:39
+msgid "There are no data exporters."
+msgstr ""
+
+#: mica_studies.views_default.inc:230;512;703;1026;1587;1771;1875;1962;2198;2382
+msgid "Master"
+msgstr "Maître"
+
+#: mica_studies.views_default.inc:231;513
+msgid "CSV Contact Export"
+msgstr ""
+
+#: mica_studies.views_default.inc:232;514;705;1028;1589;1773;1877;1964;2200;2384
+msgid "more"
+msgstr "plus"
+
+#: mica_studies.views_default.inc:233;515;706;1029;1590;1774;1878;1965;2201;2385
+msgid "Apply"
+msgstr "Appliquer"
+
+#: mica_studies.views_default.inc:234;516;707;1030;1591;1775;1879;1966;2202;2386
+msgid "Reset"
+msgstr "Réinitialiser"
+
+#: mica_studies.views_default.inc:235;517;708;1031;1592;1776;1880;1967;2203;2387
+msgid "Sort by"
+msgstr "Trier par"
+
+#: mica_studies.views_default.inc:236;518;709;1032;1593;1777;1881;1968;2204;2388
+msgid "Asc"
+msgstr "Asc"
+
+#: mica_studies.views_default.inc:237;519;710;1033;1594;1778;1882;1969;2205;2389
+msgid "Desc"
+msgstr "Desc"
+
+#: mica_studies.views_default.inc:238;520;711;1034;1595;1779;1883;1970;2206;2390
+msgid "Items per page"
+msgstr "Éléments par page"
+
+#: mica_studies.views_default.inc:239;521;712;1035;1596;1780;1884;1971;2207;2391
+msgid "- All -"
+msgstr "- Tout -"
+
+#: mica_studies.views_default.inc:240;522;713;1036;1597;1781;1885;1972;2208;2392
+msgid "Offset"
+msgstr "Décalage"
+
+#: mica_studies.views_default.inc:241;523;714;1038;1599
+msgid "title"
+msgstr ""
+
+#: mica_studies.views_default.inc:242
+msgid "field_contact_name:title"
+msgstr ""
+
+#: mica_studies.views_default.inc:243
+msgid "[field_contact_name_2-title]"
+msgstr ""
+
+#: mica_studies.views_default.inc:244
+msgid "field_contact_name:given"
+msgstr ""
+
+#: mica_studies.views_default.inc:245
+msgid "field_contact_name:family"
+msgstr ""
+
+#: mica_studies.views_default.inc:246
+msgid "field_contact_email:email"
+msgstr ""
+
+#: mica_studies.views_default.inc:247
+msgid "field_telephone"
+msgstr ""
+
+#: mica_studies.views_default.inc:248
+msgid "field_institution"
+msgstr ""
+
+#: mica_studies.views_default.inc:249;532;719;1048;1617
+msgid "Data export"
+msgstr ""
+
+#: mica_studies.views_default.inc:524;1039
+msgid "body"
+msgstr ""
+
+#: mica_studies.views_default.inc:525
+msgid "field_original_field_label"
+msgstr ""
+
+#: mica_studies.views_default.inc:526
+msgid "field_original_field_name"
+msgstr ""
+
+#: mica_studies.views_default.inc:527
+msgid "field_bundle_label"
+msgstr ""
+
+#: mica_studies.views_default.inc:528
+msgid "field_bundle"
+msgstr ""
+
+#: mica_studies.views_default.inc:529
+msgid "field_value_type"
+msgstr ""
+
+#: mica_studies.views_default.inc:530
+msgid "field_categories"
+msgstr ""
+
+#: mica_studies.views_default.inc:531
+msgid "field_repeatable"
+msgstr ""
+
+#: mica_studies.views_default.inc:704
+msgid "CSV Institution Export"
+msgstr ""
+
+#: mica_studies.views_default.inc:715
+msgid "field_street"
+msgstr ""
+
+#: mica_studies.views_default.inc:716
+msgid "field_city"
+msgstr ""
+
+#: mica_studies.views_default.inc:717
+msgid "field_postal_code"
+msgstr ""
+
+#: mica_studies.views_default.inc:718
+msgid "field_country"
+msgstr ""
+
+#: mica_studies.views_default.inc:1027
+msgid "CSV Study Export"
+msgstr ""
+
+#: mica_studies.views_default.inc:1037;1598
+msgid "field_study_legacy_id"
+msgstr ""
+
+#: mica_studies.views_default.inc:1040
+msgid "field_full_name"
+msgstr ""
+
+#: mica_studies.views_default.inc:1041
+msgid "field_website"
+msgstr ""
+
+#: mica_studies.views_default.inc:1042
+msgid "field_contact"
+msgstr ""
+
+#: mica_studies.views_default.inc:1043
+msgid "field_investigator"
+msgstr ""
+
+#: mica_studies.views_default.inc:1044
+msgid "field_target_number_participants"
+msgstr ""
+
+#: mica_studies.views_default.inc:1045
+msgid "field_target_number_biosamples"
+msgstr ""
+
+#: mica_studies.views_default.inc:1046
+msgid "field_p3g_observatory_link"
+msgstr ""
+
+#: mica_studies.views_default.inc:1047
+msgid "[field_p3g_observatory_link-url]"
+msgstr ""
+
+#: mica_studies.views_default.inc:1588
+msgid "CSV Study Information Export"
+msgstr ""
+
+#: mica_studies.views_default.inc:1600
+msgid "field_design"
+msgstr ""
+
+#: mica_studies.views_default.inc:1601
+msgid "field_biosamples_collected_other"
+msgstr ""
+
+#: mica_studies.views_default.inc:1602
+msgid "field_design_target"
+msgstr ""
+
+#: mica_studies.views_default.inc:1603
+msgid "field_target_other"
+msgstr ""
+
+#: mica_studies.views_default.inc:1604
+msgid "field_selection_criteria"
+msgstr ""
+
+#: mica_studies.views_default.inc:1605
+msgid "field_age_max"
+msgstr ""
+
+#: mica_studies.views_default.inc:1606
+msgid "field_age_min"
+msgstr ""
+
+#: mica_studies.views_default.inc:1607
+msgid "field_gender"
+msgstr ""
+
+#: mica_studies.views_default.inc:1608
+msgid "field_study_country"
+msgstr ""
+
+#: mica_studies.views_default.inc:1609
+msgid "field_biosamples_collected"
+msgstr ""
+
+#: mica_studies.views_default.inc:1610
+msgid "field_biosamples_tissues"
+msgstr ""
+
+#: mica_studies.views_default.inc:1611
+msgid "field_gwas_analysis"
+msgstr ""
+
+#: mica_studies.views_default.inc:1612
+msgid "field_gwas_number"
+msgstr ""
+
+#: mica_studies.views_default.inc:1613
+msgid "field_access"
+msgstr ""
+
+#: mica_studies.views_default.inc:1614
+msgid "field_access_other"
+msgstr ""
+
+#: mica_studies.views_default.inc:1615
+msgid "field_status_start"
+msgstr ""
+
+#: mica_studies.views_default.inc:1616
+msgid "field_status_end"
+msgstr ""
+
+#: mica_studies.views_default.inc:1782
+msgid "empty_documents"
+msgstr ""
+
+#: mica_studies.views_default.inc:1783
+msgid "No document found."
+msgstr ""
+
+#: mica_studies.views_default.inc:1786
+msgid "Download"
+msgstr "Téléchargement"
+
+#: mica_studies.views_default.inc:1787;1889;1975;2220;2400
+msgid "Page"
+msgstr "Page"
+
+#: mica_studies.views_default.inc:1876
+msgid "Search Filters"
+msgstr ""
+
+#: mica_studies.views_default.inc:1887
+msgid "Text (indexed)"
+msgstr ""
+
+#: mica_studies.views_default.inc:1888;2399
+msgid "Fulltext search"
+msgstr ""
+
+#: mica_studies.views_default.inc:1963
+msgid "Recent News"
+msgstr ""
+
+#: mica_studies.views_default.inc:1973
+msgid "empty_news"
+msgstr ""
+
+#: mica_studies.views_default.inc:1974
+msgid "No news found."
+msgstr ""
+
+#: mica_studies.views_default.inc:2209
+msgid ""
+"This page displays the list of the consortium's studies. Each study is described in a same standard way that can be easily customized to reflect consortium specificities. However, Mica suggests by default a list of important study characteristics that should be considered if there is an aim for the consortium to participate in data harmonization projects with other consortia or studies. \n"
+"\n"
+"This Mica study catalogue comes with an advanced query tool using user-friendly facets <br/><br/>"
+msgstr ""
+
+#: mica_studies.views_default.inc:2212;2393
+msgid "empty_studies"
+msgstr ""
+
+#: mica_studies.views_default.inc:2213;2394
+msgid "No study found."
+msgstr ""
+
+#: mica_studies.views_default.inc:2214
+msgid "mica_study_information"
+msgstr ""
+
+#: mica_studies.views_default.inc:2218;2398
+msgid "Country(ies)"
+msgstr ""
+
+#: mica_studies.views_default.inc:2383
+msgid "Studies Search"
+msgstr ""
+
+#: mica_studies.module:45
+msgid "Add a !name"
+msgstr ""
+
+#: mica_studies.module:57
+msgid "Add some Documents"
+msgstr ""
+
+#: mica_studies.module:73
+msgid "Export Data"
+msgstr ""
+
+#: mica_studies.module:74
+msgid "Allow exportation of data."
+msgstr ""
+
+#: mica_studies.module:87;127
+msgid "Search filters selection"
+msgstr ""
+
+#: mica_studies.module:95;117
+msgid "Search"
+msgstr "Recherche"
+
+#: mica_studies.info:0
+msgid "Mica Studies"
+msgstr ""
+
+#: mica_studies.info:0
+msgid "Initial mica configuration"
+msgstr ""
+
+#: mica_studies.info:0
+msgid "OBiBa"
+msgstr ""

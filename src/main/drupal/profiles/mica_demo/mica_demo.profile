@@ -85,7 +85,7 @@ function mica_import_demo_feeds($install_state) {
   $batch = array(
     'title' => st('Importing'),
     'operations' => $operations,
-    'progress_message' => 'Creating demo content',
+    'progress_message' => st('Creating demo content'),
   );
 
   return $batch;
