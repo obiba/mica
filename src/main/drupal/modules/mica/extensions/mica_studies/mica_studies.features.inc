@@ -109,22 +109,6 @@ function mica_studies_node_info() {
       'title_label' => t('Name'),
       'help' => '',
     ),
-    'study_documents' => array(
-      'name' => t('Study Documents'),
-      'base' => 'mica',
-      'description' => t('Files attached to a Study. Child of Study.'),
-      'has_title' => '1',
-      'title_label' => t('Name'),
-      'help' => '',
-    ),
-    'study_information' => array(
-      'name' => t('Study Information'),
-      'base' => 'mica',
-      'description' => t('General Information about a Study. Child of Study.'),
-      'has_title' => '1',
-      'title_label' => t('Name'),
-      'help' => '',
-    ),
     'documents' => array(
       'name' => t('Documents'),
       'base' => 'node_content',
@@ -276,20 +260,15 @@ function mica_studies_default_search_api_index() {
       "fields" : {
         "type" : { "type" : "string" },
         "title" : { "type" : "text" },
-        "field_full_name" : {
-          "name" : "Full Name",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
+        "field_full_name" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
         "field_target_number_biosamples" : {
-          "name" : "Target number of biological samples",
+          "name" : "How many people have provided or should provide biological samples, frolm which DNA could be extracted?",
           "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "field_target_number_participants" : {
-          "name" : "Target number of participants",
+          "name" : "How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?",
           "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
@@ -297,109 +276,109 @@ function mica_studies_default_search_api_index() {
         "search_api_language" : { "type" : "string" },
         "body:value" : { "type" : "text" },
         "mica_study_information:field_access" : {
-          "name" : "Study Information \\u00bb Access to the following features is provided or foreseen",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
-          "type" : "list\\u003cstring\\u003e",
+          "type" : "list\\u003ctext\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_access_other" : {
-          "name" : "Study Information \\u00bb Oher type of access",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_age_max" : {
-          "name" : "Study Information \\u00bb Maximum age selection criteria",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_age_min" : {
-          "name" : "Study Information \\u00bb Minimum age selection criteria",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_collected" : {
-          "name" : "Study Information \\u00bb Biological samples collected",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
-          "type" : "list\\u003cstring\\u003e",
+          "type" : "list\\u003ctext\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_collected_other" : {
-          "name" : "Study Information \\u00bb Other type of samples collected",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_tissues" : {
-          "name" : "Study Information \\u00bb Type of tissues collected",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_design" : {
-          "name" : "Study Information \\u00bb Baseline design of the study",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_design_other" : {
-          "name" : "Study Information \\u00bb Other type of design",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_design_target" : {
-          "name" : "Study Information \\u00bb Recruitment targets",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
-          "type" : "list\\u003cstring\\u003e",
+          "type" : "list\\u003ctext\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_gender" : {
-          "name" : "Study Information \\u00bb Gender selection criteria",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
-          "type" : "string",
+          "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_gwas_analysis" : {
-          "name" : "Study Information \\u00bb Proceeding to genome-wide association (GWA) analysis",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
-          "type" : "string",
+          "type" : "text",
           "boost" : "1.0"
         },
         "mica_study_information:field_gwas_number" : {
-          "name" : "Study Information \\u00bb GWA approximate number of participants",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_selection_criteria" : {
-          "name" : "Study Information \\u00bb Selection criteria \\/ Charactecteristic of the population",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
-          "type" : "list\\u003cstring\\u003e",
+          "type" : "list\\u003ctext\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_status_end" : {
-          "name" : "Study Information \\u00bb Study end year",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_status_start" : {
-          "name" : "Study Information \\u00bb Study start year",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "mica_study_information:field_study_country" : {
-          "name" : "Study Information \\u00bb Country selection criteria",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
-          "type" : "list\\u003cstring\\u003e",
+          "type" : "list\\u003ctext\\u003e",
           "boost" : "1.0"
         },
         "mica_study_information:field_target_other" : {
-          "name" : "Study Information \\u00bb Other type of target",
+          "name" : "Study Information \\u00bb ",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"

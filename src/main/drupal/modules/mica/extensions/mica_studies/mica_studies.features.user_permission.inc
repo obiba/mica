@@ -124,27 +124,9 @@ function mica_studies_user_default_permissions() {
     'module' => 'feeds',
   );
 
-  // Exported permission: clear csv_study_documents_import feeds
-  $permissions['clear csv_study_documents_import feeds'] = array(
-    'name' => 'clear csv_study_documents_import feeds',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
   // Exported permission: clear csv_study_import feeds
   $permissions['clear csv_study_import feeds'] = array(
     'name' => 'clear csv_study_import feeds',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: clear csv_study_information_import feeds
-  $permissions['clear csv_study_information_import feeds'] = array(
-    'name' => 'clear csv_study_information_import feeds',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -178,6 +160,72 @@ function mica_studies_user_default_permissions() {
       0 => 'consortium administrator',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: create field_authorising_date
+  $permissions['create field_authorising_date'] = array(
+    'name' => 'create field_authorising_date',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_authorising_date_m
+  $permissions['create field_authorising_date_m'] = array(
+    'name' => 'create field_authorising_date_m',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_authorising_person_name
+  $permissions['create field_authorising_person_name'] = array(
+    'name' => 'create field_authorising_person_name',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_authorising_person_name_m
+  $permissions['create field_authorising_person_name_m'] = array(
+    'name' => 'create field_authorising_person_name_m',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_authorization_maelstrom
+  $permissions['create field_authorization_maelstrom'] = array(
+    'name' => 'create field_authorization_maelstrom',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_authorization_specific
+  $permissions['create field_authorization_specific'] = array(
+    'name' => 'create field_authorization_specific',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: create field_description content
@@ -221,26 +269,6 @@ function mica_studies_user_default_permissions() {
   // Exported permission: create study content
   $permissions['create study content'] = array(
     'name' => 'create study content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: create study_documents content
-  $permissions['create study_documents content'] = array(
-    'name' => 'create study_documents content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: create study_information content
-  $permissions['create study_information content'] = array(
-    'name' => 'create study_information content',
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
@@ -325,26 +353,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any study_documents content
-  $permissions['delete any study_documents content'] = array(
-    'name' => 'delete any study_documents content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete any study_information content
-  $permissions['delete any study_information content'] = array(
-    'name' => 'delete any study_information content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete own article content
   $permissions['delete own article content'] = array(
     'name' => 'delete own article content',
@@ -416,26 +424,6 @@ function mica_studies_user_default_permissions() {
   // Exported permission: delete own study content
   $permissions['delete own study content'] = array(
     'name' => 'delete own study content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete own study_documents content
-  $permissions['delete own study_documents content'] = array(
-    'name' => 'delete own study_documents content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete own study_information content
-  $permissions['delete own study_information content'] = array(
-    'name' => 'delete own study_information content',
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
@@ -531,24 +519,58 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any study_documents content
-  $permissions['edit any study_documents content'] = array(
-    'name' => 'edit any study_documents content',
+  // Exported permission: edit field_authorising_date
+  $permissions['edit field_authorising_date'] = array(
+    'name' => 'edit field_authorising_date',
     'roles' => array(
       0 => 'administrator',
-      1 => 'consortium administrator',
     ),
-    'module' => 'node',
+    'module' => 'field_permissions',
   );
 
-  // Exported permission: edit any study_information content
-  $permissions['edit any study_information content'] = array(
-    'name' => 'edit any study_information content',
+  // Exported permission: edit field_authorising_date_m
+  $permissions['edit field_authorising_date_m'] = array(
+    'name' => 'edit field_authorising_date_m',
     'roles' => array(
       0 => 'administrator',
-      1 => 'consortium administrator',
     ),
-    'module' => 'node',
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_authorising_person_name
+  $permissions['edit field_authorising_person_name'] = array(
+    'name' => 'edit field_authorising_person_name',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_authorising_person_name_m
+  $permissions['edit field_authorising_person_name_m'] = array(
+    'name' => 'edit field_authorising_person_name_m',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_authorization_maelstrom
+  $permissions['edit field_authorization_maelstrom'] = array(
+    'name' => 'edit field_authorization_maelstrom',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit field_authorization_specific
+  $permissions['edit field_authorization_specific'] = array(
+    'name' => 'edit field_authorization_specific',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: edit own article content
@@ -579,6 +601,72 @@ function mica_studies_user_default_permissions() {
       1 => 'consortium administrator',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: edit own field_authorising_date
+  $permissions['edit own field_authorising_date'] = array(
+    'name' => 'edit own field_authorising_date',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_authorising_date_m
+  $permissions['edit own field_authorising_date_m'] = array(
+    'name' => 'edit own field_authorising_date_m',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_authorising_person_name
+  $permissions['edit own field_authorising_person_name'] = array(
+    'name' => 'edit own field_authorising_person_name',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_authorising_person_name_m
+  $permissions['edit own field_authorising_person_name_m'] = array(
+    'name' => 'edit own field_authorising_person_name_m',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_authorization_maelstrom
+  $permissions['edit own field_authorization_maelstrom'] = array(
+    'name' => 'edit own field_authorization_maelstrom',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: edit own field_authorization_specific
+  $permissions['edit own field_authorization_specific'] = array(
+    'name' => 'edit own field_authorization_specific',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: edit own field_description content
@@ -629,28 +717,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit own study_documents content
-  $permissions['edit own study_documents content'] = array(
-    'name' => 'edit own study_documents content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit own study_information content
-  $permissions['edit own study_information content'] = array(
-    'name' => 'edit own study_information content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: import csv_contact_import feeds
   $permissions['import csv_contact_import feeds'] = array(
     'name' => 'import csv_contact_import feeds',
@@ -687,27 +753,9 @@ function mica_studies_user_default_permissions() {
     'module' => 'feeds',
   );
 
-  // Exported permission: import csv_study_documents_import feeds
-  $permissions['import csv_study_documents_import feeds'] = array(
-    'name' => 'import csv_study_documents_import feeds',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
   // Exported permission: import csv_study_import feeds
   $permissions['import csv_study_import feeds'] = array(
     'name' => 'import csv_study_import feeds',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: import csv_study_information_import feeds
-  $permissions['import csv_study_information_import feeds'] = array(
-    'name' => 'import csv_study_information_import feeds',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -775,27 +823,125 @@ function mica_studies_user_default_permissions() {
     'module' => 'page_manager',
   );
 
-//   // Exported permission: use search_api_facets
-//   $permissions['use search_api_facets'] = array(
-//     'name' => 'use search_api_facets',
-//     'roles' => array(
-//       0 => 'administrator',
-//       1 => 'anonymous user',
-//       2 => 'authenticated user',
-//     ),
-//     'module' => 'search_api_facets',
-//   );
+  // Exported permission: view field_authorising_date
+  $permissions['view field_authorising_date'] = array(
+    'name' => 'view field_authorising_date',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
 
-//   // Exported permission: use search_api_ranges
-//   $permissions['use search_api_ranges'] = array(
-//     'name' => 'use search_api_ranges',
-//     'roles' => array(
-//       0 => 'administrator',
-//       1 => 'anonymous user',
-//       2 => 'authenticated user',
-//     ),
-//     'module' => 'search_api_ranges',
-//   );
+  // Exported permission: view field_authorising_date_m
+  $permissions['view field_authorising_date_m'] = array(
+    'name' => 'view field_authorising_date_m',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_authorising_person_name
+  $permissions['view field_authorising_person_name'] = array(
+    'name' => 'view field_authorising_person_name',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_authorising_person_name_m
+  $permissions['view field_authorising_person_name_m'] = array(
+    'name' => 'view field_authorising_person_name_m',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_authorization_maelstrom
+  $permissions['view field_authorization_maelstrom'] = array(
+    'name' => 'view field_authorization_maelstrom',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view field_authorization_specific
+  $permissions['view field_authorization_specific'] = array(
+    'name' => 'view field_authorization_specific',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_authorising_date
+  $permissions['view own field_authorising_date'] = array(
+    'name' => 'view own field_authorising_date',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_authorising_date_m
+  $permissions['view own field_authorising_date_m'] = array(
+    'name' => 'view own field_authorising_date_m',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_authorising_person_name
+  $permissions['view own field_authorising_person_name'] = array(
+    'name' => 'view own field_authorising_person_name',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_authorising_person_name_m
+  $permissions['view own field_authorising_person_name_m'] = array(
+    'name' => 'view own field_authorising_person_name_m',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_authorization_maelstrom
+  $permissions['view own field_authorization_maelstrom'] = array(
+    'name' => 'view own field_authorization_maelstrom',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_authorization_specific
+  $permissions['view own field_authorization_specific'] = array(
+    'name' => 'view own field_authorization_specific',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+    ),
+    'module' => 'field_permissions',
+  );
 
   // Exported permission: view own unpublished content
   $permissions['view own unpublished content'] = array(
