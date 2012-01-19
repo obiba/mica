@@ -53,7 +53,7 @@ projects[ckeditor][type] = module
 projects[collapsiblock][version] = 1.0
 projects[collapsiblock][type] = module
 
-projects[content_access][version] = 1.2-beta1
+projects[content_access][version] = 1.x-dev
 projects[content_access][type] = module
 
 projects[content_taxonomy][version] = 1.0-beta1
@@ -129,11 +129,11 @@ projects[i18n][patch][1407054] = http://drupal.org/files/export_per_contenttype-
 projects[job_scheduler][version] = 2.0-alpha2
 projects[job_scheduler][type] = module
 
-projects[l10n_update][version] = 1.x-dev
-projects[l10n_update][type] = module
-
 projects[job_scheduler][version] = 2.0-alpha2
 projects[job_scheduler][type] = module
+
+projects[l10n_update][version] = 1.x-dev
+projects[l10n_update][type] = module
 
 projects[link][version] = 1.0
 projects[link][type] = module
@@ -144,8 +144,14 @@ projects[link][type] = module
 projects[login_destination][version] = 1.0
 projects[login_destination][type] = module
 
+projects[masquerade][version] = 1.0-rc4
+projects[masquerade][type] = module
+
 projects[menu_firstchild][version] = 1.1
 projects[menu_firstchild][type] = module
+
+projects[module_filter][version] = 1.6
+projects[module_filter][type] = module
 
 projects[multiselect][version] = 1.8
 projects[multiselect][type] = module
@@ -218,7 +224,7 @@ projects[token][type] = module
 projects[variable][version] = 1.1
 projects[variable][type] = module
 
-projects[views][version] = 3.0
+projects[views][version] = 3.1
 projects[views][type] = module
 
 projects[views_data_export][version] = 3.0-beta5
@@ -226,6 +232,12 @@ projects[views_data_export][type] = module
 
 projects[viewreference][version] = 3.2
 projects[viewreference][type] = module
+
+projects[workbench][version] = 1.1
+projects[workbench][type] = module
+
+projects[workbench_moderation][version] = 1.1
+projects[workbench_moderation][type] = module
 
   
 ; Libraries

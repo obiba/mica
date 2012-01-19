@@ -1,0 +1,34 @@
+<?php
+/**
+ * @file
+ * Code for the mica_devel feature.
+ */
+
+include_once('mica_devel.features.inc');
+
+function mica_devel_menu() {
+	$items['admin/config/development/mica'] = array(
+    'title' => 'Mica',
+    'description' => 'development tools for Mica',
+  	'page callback' => 'drupal_get_form',
+    'page arguments' => array('_mica_devel_dummy_form'),
+    'access arguments' => array('administer site configuration'),
+	);
+	return $items;
+}
+
+function _mica_devel_dummy_form() {
+	$form['dummy']['description'] = array(
+  	'#markup' => '<p>' . t('Form exemple to run custom actions') . '</p>',
+	);
+	$form['dummy']['run'] = array(
+    '#type' => 'submit',
+    '#value' => t('Run dummy method'),
+    '#submit' => array('_mica_devel_dummy_run'),
+	);
+	return $form;
+}
+
+function _mica_devel_dummy_run() {
+  drupal_set_message("Run dummy method...");
+}

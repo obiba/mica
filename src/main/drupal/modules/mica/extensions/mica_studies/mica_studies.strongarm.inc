@@ -356,6 +356,30 @@ function mica_studies_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'content_access_study';
+  $strongarm->value = array(
+    'view_own' => array(
+      0 => 1,
+      1 => 2,
+      2 => 6,
+      3 => 5,
+      4 => 3,
+      5 => 4,
+    ),
+    'view' => array(
+      0 => 1,
+      1 => 2,
+      2 => 6,
+      3 => 5,
+      4 => 3,
+      5 => 4,
+    ),
+  );
+  $export['content_access_study'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'entity_translation_comment_filter_study';
   $strongarm->value = 0;
   $export['entity_translation_comment_filter_study'] = $strongarm;
@@ -3278,7 +3302,8 @@ function mica_studies_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_study';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_study'] = $strongarm;
 
@@ -3477,6 +3502,13 @@ function mica_studies_strongarm() {
   $strongarm->name = 'site_frontpage';
   $strongarm->value = 'homepage';
   $export['site_frontpage'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_moderation_default_state_study';
+  $strongarm->value = 'draft';
+  $export['workbench_moderation_default_state_study'] = $strongarm;
 
   return $export;
 }

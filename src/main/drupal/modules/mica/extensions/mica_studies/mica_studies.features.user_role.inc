@@ -19,6 +19,12 @@ function mica_studies_user_default_roles() {
   // Exported role: study administrator
   $roles['study administrator'] = array(
     'name' => 'study administrator',
+    'weight' => '5',
+  );
+
+  // Exported role: study reviewer
+  $roles['study reviewer'] = array(
+    'name' => 'study reviewer',
     'weight' => '4',
   );
 

@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function mica_data_access_field_default_fields() {
   $fields = array();
@@ -316,6 +316,8 @@ Prof.',
       'label' => 'Collaborators',
       'required' => 0,
       'settings' => array(
+        'component_css' => '',
+        'credentials_inline' => 0,
         'field_type' => array(
           'credentials' => 'text',
           'family' => 'text',
@@ -333,6 +335,7 @@ Prof.',
           'middle' => '',
           'title' => '',
         ),
+        'override_format' => 'default',
         'size' => array(
           'credentials' => '35',
           'family' => '20',
@@ -493,7 +496,8 @@ Prof.',
           'panel' => 0,
           'participant_variable' => 0,
           'publication' => 0,
-          'study' => 0,),
+          'study' => 0,
+        ),
         'view' => array(
           'args' => array(),
           'display_name' => '',
@@ -1098,6 +1102,8 @@ Prof.',
       'label' => 'Representative Name',
       'required' => 1,
       'settings' => array(
+        'component_css' => '',
+        'credentials_inline' => 0,
         'field_type' => array(
           'credentials' => 'text',
           'family' => 'text',
@@ -1115,6 +1121,7 @@ Prof.',
           'middle' => '',
           'title' => '',
         ),
+        'override_format' => 'default',
         'size' => array(
           'credentials' => '35',
           'family' => '20',
@@ -1426,7 +1433,7 @@ Prof.',
           'accepted' => 'Accepted',
           'rejected' => 'Rejected',
           'submitted' => 'Submitted',
-          'incomplete' => 'Incomplete'
+          'incomplete' => 'Incomplete',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
@@ -1502,7 +1509,6 @@ Prof.',
   t('Provide a clear description of the project and its specific aims.');
   t('Representative Email');
   t('Representative Name');
-  t('Reviewer');
   t('Status');
   t('Street');
   t('Summary');

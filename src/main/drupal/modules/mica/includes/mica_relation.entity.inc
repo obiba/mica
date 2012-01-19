@@ -234,24 +234,6 @@ class MicaRelation extends Entity {
         ),
       );
 
-      // relation
-      /*
-       $endpoints = array(
-      	array(
-      	'entity_type' => 'node',
-      	'entity_id' => $parent_node->nid,
-      	'entity_bundle' => $parent_node->type,
-      	),
-      	array(
-      	'entity_type' => 'node',
-      	'entity_id' => $node_child->nid,
-      	'entity_bundle' => $node_child->type,
-      	),
-      	);
-      	// create drupal relation
-      	relation_create($this->options['relation'], $endpoints);
-      	*/
-
       return TRUE;
     }
     return FALSE;
@@ -268,9 +250,11 @@ class MicaRelation extends Entity {
     if (!empty($parent_menu) && $parent_menu['menu_name'] != 'main-menu') {
       unset($parent_menu);
     }
-
+   
     $field_ref = $this->options['node_reference'];
     $field = $parent_node->$field_ref;
+    
+
     $child_nid = $field[LANGUAGE_NONE][0]['nid'];
     $node_child = node_load($child_nid);
 
@@ -300,11 +284,11 @@ class MicaRelation extends Entity {
     }
 
     $node_child->uid = $parent_node->uid;  // same author
-    $node_child->status = $parent_node->status;  // same publication status
+    //$node_child->status = $parent_node->status;  // same publication status
     $node_child->title = $parent_node->title;
-    $node_child->language = $parent_node->language;
+    //$node_child->language = $parent_node->language;
     node_save($node_child);
-
+    
   }
 
   public function delete_child_node($parent_node) {

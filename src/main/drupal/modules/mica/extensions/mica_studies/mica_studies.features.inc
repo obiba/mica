@@ -79,34 +79,10 @@ function mica_studies_node_info() {
   $items = array(
     'contact' => array(
       'name' => t('Contact'),
-      'base' => 'mica',
+      'base' => 'node_content',
       'description' => t('Description of a Contact, consisting of a person and an Institution.'),
       'has_title' => '1',
       'title_label' => t('Person and Institution Names'),
-      'help' => '',
-    ),
-    'field_description' => array(
-      'name' => t('Field Description'),
-      'base' => 'mica',
-      'description' => t('Description of information collected about the studies.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'institution' => array(
-      'name' => t('Institution'),
-      'base' => 'mica',
-      'description' => t('Description of an Institution.'),
-      'has_title' => '1',
-      'title_label' => t('Institution Name'),
-      'help' => '',
-    ),
-    'study' => array(
-      'name' => t('Study'),
-      'base' => 'mica',
-      'description' => t('Study portal. Create a content of this type when registering a new study.'),
-      'has_title' => '1',
-      'title_label' => t('Name'),
       'help' => '',
     ),
     'documents' => array(
@@ -115,6 +91,30 @@ function mica_studies_node_info() {
       'description' => t('Content type to present one or more documents'),
       'has_title' => '1',
       'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'field_description' => array(
+      'name' => t('Field Description'),
+      'base' => 'node_content',
+      'description' => t('Description of information collected about the studies.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+    'institution' => array(
+      'name' => t('Institution'),
+      'base' => 'node_content',
+      'description' => t('Description of an Institution.'),
+      'has_title' => '1',
+      'title_label' => t('Institution Name'),
+      'help' => '',
+    ),
+    'study' => array(
+      'name' => t('Study'),
+      'base' => 'node_content',
+      'description' => t('Study portal. Create a content of this type when registering a new study.'),
+      'has_title' => '1',
+      'title_label' => t('Name'),
       'help' => '',
     ),
   );
@@ -381,6 +381,54 @@ function mica_studies_default_search_api_index() {
           "name" : "Study Information \\u00bb ",
           "indexed" : true,
           "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_design_target" : {
+          "name" : null,
+          "indexed" : true,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_status_start" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
+        "field_biosamples_tissues" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_target_other" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_biosamples_collected_other" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_design_other" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_access_other" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_gender" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_selection_criteria" : {
+          "name" : null,
+          "indexed" : true,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_gwas_analysis" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_gwas_number" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
+        "field_age_min" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
+        "field_age_max" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
+        "field_status_end" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
+        "field_study_country" : {
+          "name" : null,
+          "indexed" : true,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_biosamples_collected" : {
+          "name" : null,
+          "indexed" : true,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_design" : {
+          "name" : null,
+          "indexed" : true,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_access" : {
+          "name" : null,
+          "indexed" : true,
+          "type" : "list\\u003ctext\\u003e",
           "boost" : "1.0"
         }
       },

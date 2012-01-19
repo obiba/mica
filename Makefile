@@ -253,6 +253,13 @@ endif
 
 installdir=target
 
+mica-site:
+	cd target/$(micadir) && \
+	$(drushexec) site-install mica_standard --db-url=mysql://$(db_user):$(db_pass)@localhost/mica --site-name=Mica --yes
+
+mica-dev-site: mica-site
+	$(drushexec) en mica_devel --y
+
 demo-site:
 	cd target/$(micadir) && \
 	$(drushexec) site-install mica_demo --db-url=mysql://$(db_user):$(db_pass)@localhost/mica --site-name=Mica --clean-url=$(clean_url) --yes && \
@@ -265,6 +272,12 @@ demo-export:
 #
 # Devel
 #
+
+
+mica-install-clear: mica-install
+	cd target/$(micadir) && \
+	drush cc all && \
+	cd ../..
 
 coder:
 	cd target/$(micadir) && \
@@ -297,10 +310,11 @@ help:
 	@echo "Mica version $(version)"
 	@echo
 	@echo "Available make targets:"
-	@echo "  all          : Download Drupal, required modules and install Mica modules/profiles in it. Result is available in 'target' directory."
-	@echo "  package      : Package Drupal for Mica ($(micadir).tar.gz), Mica modules and make a Mica installer Debian package."
-	@echo "  mica         : Install Mica modules/profiles in Drupal."
-	@echo "  clean        : Remove 'target' directory."
+	@echo "  all                : Download Drupal, required modules and install Mica modules/profiles in it. Result is available in 'target' directory."
+	@echo "  package            : Package Drupal for Mica ($(micadir).tar.gz), Mica modules and make a Mica installer Debian package."
+	@echo "  mica               : Install Mica modules/profiles in Drupal."
+	@echo "  clean              : Remove 'target' directory."
+	@echo "  mica-install-clear : Copy Mica files from 'src' to 'target' directory and clear all caches."
 	@echo
 	@echo "Requires drush 4+ to be installed [http://drush.ws]"
 	@echo "  " `drush version`

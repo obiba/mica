@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_user_default_roles().
+ * Implements hook_user_default_roles().
  */
 function mica_data_access_user_default_roles() {
   $roles = array();
@@ -13,13 +13,13 @@ function mica_data_access_user_default_roles() {
   // Exported role: data access committee officer
   $roles['data access committee officer'] = array(
     'name' => 'data access committee officer',
-    'weight' => '5',
+    'weight' => '6',
   );
-  
+
   // Exported role: researcher
   $roles['researcher'] = array(
-      'name' => 'researcher',
-      'weight' => '6',
+    'name' => 'researcher',
+    'weight' => '7',
   );
 
   return $roles;
