@@ -156,8 +156,8 @@ function _mica_add_field_index($index_name, stdClass $field_description) {
 function _mica_is_field_excluded_form_facets($field_name) {
   // By default some fields don't have any facets...
   $disabled_field_facets = array(
-    'mica_study_information:field_selection_criteria',
-    'mica_study_information:field_gender',
+//     'mica_study_information:field_selection_criteria',
+//     'mica_study_information:field_gender',
   );  
   return in_array($field_name, $disabled_field_facets);
 }
