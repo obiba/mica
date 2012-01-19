@@ -82,8 +82,6 @@ class MicaRelation extends Entity {
     unset($this->options['parent_indexes']);
     unset($this->options['child_indexes']);
      
-    //$this->save_drupal_relation();
-     
     return parent::save();
   }
 
@@ -97,10 +95,10 @@ class MicaRelation extends Entity {
   		'max_arity' => 2,
     	'source_bundles' => array(
     		'node:' . $this->parent_bundle => 'node:' . $this->parent_bundle, 
-    ),
+      ),
     	'target_bundles' => array(
     		'node:' . $this->child_bundle => 'node:' . $this->child_bundle, 
-    ),
+      ),
     );
 
     $existing = relation_type_load($this->options['relation']);
@@ -159,14 +157,12 @@ class MicaRelation extends Entity {
 	    'type' => 'relation',
 	    'cardinality' => 1,
 	    'settings' => array(
-	      'referenceable_types' => array(
-    $target_bundle => $target_bundle,
-    ),
+	      'referenceable_types' => array($target_bundle => $target_bundle),
 	      'field_permissions' => array(
 	        'create' => 'create',
 	        'view' => 'view',
-    ),
-    ),
+        ),
+      ),
     ));
 
     $target_bundle_info = node_type_load($target_bundle);
@@ -254,7 +250,6 @@ class MicaRelation extends Entity {
     $field_ref = $this->options['node_reference'];
     $field = $parent_node->$field_ref;
     
-
     $child_nid = $field[LANGUAGE_NONE][0]['nid'];
     $node_child = node_load($child_nid);
 
@@ -284,11 +279,8 @@ class MicaRelation extends Entity {
     }
 
     $node_child->uid = $parent_node->uid;  // same author
-    //$node_child->status = $parent_node->status;  // same publication status
     $node_child->title = $parent_node->title;
-    //$node_child->language = $parent_node->language;
     node_save($node_child);
-    
   }
 
   public function delete_child_node($parent_node) {
@@ -298,11 +290,10 @@ class MicaRelation extends Entity {
     $child_nid = $field[LANGUAGE_NONE][0]['nid'];
     node_delete($child_nid);
 
-    watchdog('mica', 'Delete child %child for deleted parent %parent',
-    array(
-        '%child' => $this->child_bundle, 
-        '%parent' => $parent_node->type,
-    ), WATCHDOG_INFO);
+    watchdog('mica', 'Delete child %child for deleted parent %parent', array(
+    		'%child' => $this->child_bundle, 
+      	'%parent' => $parent_node->type,
+      ), WATCHDOG_INFO);
   }
 
 }
