@@ -182,3 +182,123 @@ function mica_studies_node_insert($node) {
   }
 }
 
+/**
+ * Implements hook_entity_view_alter
+ */
+function mica_entity_view_alter(&$build, $type) {
+  if ($build['#view_mode'] == 'full' && $build['body']['#bundle'] == 'study') {
+    
+    $lang = $build['field_authorization_specific']['#language'];
+    
+    if ($build['field_no_limits_participants']['#object']->field_no_limits_participants[$lang][0]['value'] == 0){
+      unset($build['field_no_limits_participants']);
+    }
+    if ($build['field_no_limits_samples']['#object']->field_no_limits_samples[$lang][0]['value'] == 0){
+    	unset($build['field_no_limits_samples']);
+    }
+    
+  }
+}
+
+function mica_studies_form_alter(&$form, &$form_state, $form_id){
+  if ($form_id == 'study_node_form'){
+    
+    _mica_add_dependent_field_checked($form, 'field_design', 'field_design_other_sp', 'other');
+    _mica_add_dependent_field_checked($form, 'field_recruitment', 'field_recruitment_other_sp', 'other');
+    _mica_add_dependent_field_checked($form, 'field_select_criteria', 'field_selection_others_sp', 'others');
+    _mica_add_dependent_field_checked($form, 'field_access_data_samples', 'field_access_other_sp', 'other');
+    _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
+    _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
+    
+  }
+}
+
+/**
+ * 
+ * Implemenet hook_field_group_render
+ * Used to show/hide a fieldset based on another field selection
+ */
+function mica_field_group_pre_render(&$element, $group, &$form){
+  
+  if (isset($form['#form_id']) && $form['#form_id'] == 'study_node_form'){
+    
+    $group_name = $group->group_name;
+    $lang = $form['language']['#default_value'];
+    $to_hide = array(
+    	'group_authorising_person' => array(
+     	  'dependee' => 'field_authorization_specific['.$lang.']',
+          'condition' => 'checked',
+          'value' => TRUE,
+        ),
+        'group_authorising_person_m' => array(
+          'dependee' => 'field_authorization_maelstrom['.$lang.']',
+          'condition' => 'checked',
+      	  'value' => TRUE,
+        ),
+        'group_specify_gender' => array(
+          'dependee' => 'field_select_criteria['.$lang.'][gender]',
+          'condition' => 'checked',
+          'value' => TRUE,
+        ),
+        'group_age_range' => array(
+          'dependee' => 'field_select_criteria['.$lang.'][age]',
+          'condition' => 'checked',
+          'value' => TRUE,
+        ),
+        'group_countries' => array(
+          'dependee' => 'field_select_criteria['.$lang.'][countries]',
+          'condition' => 'checked',
+          'value' => TRUE,
+        ),
+        'group_ethnic_origin' => array(
+          'dependee' => 'field_select_criteria['.$lang.'][ethnic]',
+          'condition' => 'checked',
+          'value' => TRUE,
+        ),
+        'group_health_status' => array(
+          'dependee' => 'field_select_criteria['.$lang.'][health]',
+          'condition' => 'checked',
+          'value' => TRUE,
+        ),
+    );
+  
+    if (array_key_exists($group_name, $to_hide)){
+      $element['#states'] = array(
+          'visible' => array(
+            'input[name="'.$to_hide[$group_name]['dependee'].'"]' => array($to_hide[$group_name]['condition'] => $to_hide[$group_name]['value']),
+          ),
+      );
+    }
+  }
+}
+
+function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_selected){
+  if (array_key_exists($dependee, $form) && array_key_exists($dependent, $form)){
+    
+    $lang = $form['language']['#default_value'];
+    
+    $form[$dependent]['#states'] = array(
+      'visible' => array(
+        ':input[name="'.$dependee.'['.$lang.']['.$key_selected.']"]' => array('checked' => TRUE),
+      ),
+    );
+  }
+  else{
+    debug('dependee or dependent not found');
+  }
+}
+function _mica_add_dependent_field_filled(&$form, $dependee, $dependent){
+	if (array_key_exists($dependee, $form) && array_key_exists($dependent, $form)){
+
+    	$lang = $form['language']['#default_value'];
+    
+    	$form[$dependent]['#states'] = array(
+        	'visible' => array(
+          	':input[name="'.$dependee.'['.$lang.']"]' => array('filled' => TRUE),
+    	  ),
+    	);
+	}
+	else{
+		debug('dependee or dependent not found');
+	}
+}

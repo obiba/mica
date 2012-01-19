@@ -2399,7 +2399,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -2471,7 +2471,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -2612,7 +2612,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'number',
           'settings' => array(
             'decimal_separator' => '.',
@@ -2682,7 +2682,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'number',
           'settings' => array(
             'decimal_separator' => '.',
@@ -2851,7 +2851,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -3019,7 +3019,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -3097,7 +3097,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -3248,7 +3248,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -3336,7 +3336,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -3428,7 +3428,7 @@ MD.',
       'description' => 'What are the biological samples collected?',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -3500,7 +3500,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -3701,7 +3701,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'countries',
           'settings' => array(),
           'type' => 'country_default',
@@ -3772,7 +3772,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -3782,7 +3782,7 @@ MD.',
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '31',
+          'weight' => '36',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3851,7 +3851,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'number',
           'settings' => array(
             'decimal_separator' => '.',
@@ -3860,7 +3860,7 @@ MD.',
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => '30',
+          'weight' => '35',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3878,7 +3878,7 @@ MD.',
         'max' => '',
         'min' => '',
         'prefix' => '',
-        'suffix' => 'participants',
+        'suffix' => ' participants',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -3937,7 +3937,7 @@ MD.',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '35',
+          'weight' => '40',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4018,7 +4018,7 @@ MD.',
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '34',
+          'weight' => '39',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4096,7 +4096,7 @@ MD.',
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => '33',
+          'weight' => '38',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4114,7 +4114,7 @@ MD.',
         'max' => '',
         'min' => '',
         'prefix' => '',
-        'suffix' => 'participants',
+        'suffix' => ' participants',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -4169,11 +4169,11 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '32',
+          'weight' => '37',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4248,7 +4248,7 @@ MD.',
       'description' => 'How is information obtained? (answer by yes or no, and specify if the information collection is cross sectional or if it involves repeated measurements)',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -4330,7 +4330,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -4404,11 +4404,11 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '54',
+          'weight' => '25',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4478,7 +4478,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -4568,7 +4568,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -4642,7 +4642,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -4730,7 +4730,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -4820,7 +4820,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -5107,11 +5107,11 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '27',
+          'weight' => '30',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5184,11 +5184,11 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '28',
+          'weight' => '33',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5259,7 +5259,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -5334,7 +5334,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -5422,7 +5422,7 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -5511,11 +5511,11 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '53',
+          'weight' => '45',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5585,11 +5585,11 @@ MD.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '25',
+          'weight' => '26',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5668,11 +5668,11 @@ other|Other',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '55',
+          'weight' => '27',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5722,7 +5722,7 @@ other|Other',
       'settings' => array(
         'allowed_values' => array(
           'general_population' => 'General population',
-          'legacy_studies' => 'Participants from legacy studies, please specify',
+          'legacy_studies' => 'Participants from legacy studies',
           'specific_population' => 'Specific population',
           'other' => 'Other source',
         ),
@@ -5743,11 +5743,11 @@ other|Other',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '38',
+          'weight' => '44',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5816,11 +5816,11 @@ other|Other',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '26',
+          'weight' => '28',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5892,7 +5892,7 @@ other|Other',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -5967,11 +5967,11 @@ other|Other',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '29',
+          'weight' => '34',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -6048,7 +6048,7 @@ other|Other',
       'description' => 'when appropriate, specify the criteria.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -6119,7 +6119,7 @@ other|Other',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -6192,11 +6192,11 @@ other|Other',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '63',
+          'weight' => '38',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -6267,7 +6267,7 @@ other|Other',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -6428,11 +6428,11 @@ other|Other',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '52',
+          'weight' => '31',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -6526,7 +6526,7 @@ other|Other',
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => '30',
+          'weight' => '32',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -6550,7 +6550,7 @@ other|Other',
         'max' => '',
         'min' => '0',
         'prefix' => '',
-        'suffix' => 'Headline number of participants',
+        'suffix' => ' Headline number of participants',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -6652,7 +6652,7 @@ other|Other',
         'max' => '',
         'min' => '0',
         'prefix' => '',
-        'suffix' => 'Headline number of participants',
+        'suffix' => ' Headline number of participants',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -6708,7 +6708,7 @@ other|Other',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',

@@ -28,13 +28,11 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'htab',
     'format_settings' => array(
-      'label' => 'Access',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => 'Is access to the following study features to external researchers or third parties provided or foreseen?',
-      ),
       'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+      ),
     ),
   );
   $export['group_access|node|study|default'] = $field_group;
@@ -76,13 +74,13 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_selection_criteria';
+  $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Please specify age range',
-    'weight' => '70',
+    'weight' => '40',
     'children' => array(
-      0 => 'field_age_min',
-      1 => 'field_age_max',
+      0 => 'field_age_max',
+      1 => 'field_age_min',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -368,8 +366,8 @@ function mica_studies_field_group_info() {
     'label' => 'Authorization',
     'weight' => '7',
     'children' => array(
-      0 => 'group_authorization_specific',
-      1 => 'group_authorization_maelstrom',
+      0 => 'group_authorization_maelstrom',
+      1 => 'group_authorization_specific',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -421,23 +419,25 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_current_status';
+  $field_group->parent_name = 'group_status';
   $field_group->data = array(
     'label' => 'Baseline recruitment / initial data collection',
-    'weight' => '57',
+    'weight' => '43',
     'children' => array(
       0 => 'field_baseline_end_year',
       1 => 'field_baseline_start_year',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'Baseline recruitment / initial data collection',
+      'formatter' => 'collapsible',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+        'classes' => '',
       ),
-      'formatter' => 'collapsed',
     ),
   );
   $export['group_baseline_phase|node|study|default'] = $field_group;
@@ -535,10 +535,10 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_selection_criteria';
+  $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Please specify countries of residence',
-    'weight' => '71',
+    'weight' => '41',
     'children' => array(
       0 => 'field_county',
     ),
@@ -592,19 +592,18 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_general_design';
   $field_group->data = array(
     'label' => 'Current number of collected biological samples from which DNA could be extracted',
-    'weight' => '13',
-    'children' => array(
-      0 => 'field_current_sam_supp_indo',
-      1 => 'field_current_samples_date',
-      2 => 'field_current_samples_nb',
-    ),
-    'format_type' => 'fieldset',
+    'weight' => '45',
+    'children' => array(),
+    'format_type' => 'div',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
         'classes' => '',
-        'required_fields' => 1,
       ),
     ),
   );
@@ -650,19 +649,18 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_general_design';
   $field_group->data = array(
     'label' => 'Current number of participants recruited at baseline',
-    'weight' => '12',
-    'children' => array(
-      0 => 'field_current_part_nb_date',
-      1 => 'field_current_participants_nb',
-      2 => 'field_current_supp_info',
-    ),
-    'format_type' => 'fieldset',
+    'weight' => '44',
+    'children' => array(),
+    'format_type' => 'div',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
         'classes' => '',
-        'required_fields' => 1,
       ),
     ),
   );
@@ -708,21 +706,18 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_status';
   $field_group->data = array(
     'label' => 'Current Status',
-    'weight' => '58',
-    'children' => array(
-      0 => 'field_status_supp_info',
-      1 => 'group_baseline_phase',
-      2 => 'group_ended_phase',
-      3 => 'group_followup_phase',
-      4 => 'group_preparation_phase',
-    ),
-    'format_type' => 'fieldset',
+    'weight' => '46',
+    'children' => array(),
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Current Status',
       'instance_settings' => array(
-        'required_fields' => 1,
         'classes' => '',
-        'description' => 'What are the stage and timeline of the study?',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
       'formatter' => 'collapsible',
     ),
@@ -776,15 +771,18 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'field_data_sources',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Data Collection',
       'instance_settings' => array(
-        'required_fields' => 1,
         'classes' => '',
         'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
-      'formatter' => 'collapsed',
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_data_collection|node|study|default'] = $field_group;
@@ -879,22 +877,24 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_current_status';
+  $field_group->parent_name = 'group_status';
   $field_group->data = array(
     'label' => 'Study ended',
-    'weight' => '59',
+    'weight' => '45',
     'children' => array(
       0 => 'field_ended_end_year',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'Study ended',
+      'formatter' => 'collapsible',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+        'classes' => '',
       ),
-      'formatter' => 'collapsed',
     ),
   );
   $export['group_ended_phase|node|study|default'] = $field_group;
@@ -935,10 +935,10 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_selection_criteria';
+  $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Please specify ethnic origin',
-    'weight' => '72',
+    'weight' => '42',
     'children' => array(
       0 => 'field_ethnic_origin',
     ),
@@ -989,23 +989,25 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_current_status';
+  $field_group->parent_name = 'group_status';
   $field_group->data = array(
     'label' => 'If applicable, Follow-up of participants',
-    'weight' => '58',
+    'weight' => '44',
     'children' => array(
       0 => 'field_followup_end_year',
       1 => 'field_followup_start_year',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'If applicable, Follow-up of participants',
+      'formatter' => 'collapsible',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+        'classes' => '',
       ),
-      'formatter' => 'collapsed',
     ),
   );
   $export['group_followup_phase|node|study|default'] = $field_group;
@@ -1052,21 +1054,41 @@ function mica_studies_field_group_info() {
     'label' => 'General Design',
     'weight' => '66',
     'children' => array(
-      0 => 'group_current_number_samples',
-      1 => 'group_current_number',
-      2 => 'group_target_nb_participants',
-      3 => 'group_target_nb_samples',
-      4 => 'group_study_design',
+      0 => 'field_current_part_nb_date',
+      1 => 'field_current_participants_nb',
+      2 => 'field_current_sam_supp_indo',
+      3 => 'field_current_samples_date',
+      4 => 'field_current_samples_nb',
+      5 => 'field_current_supp_info',
+      6 => 'field_design',
+      7 => 'field_design_other_sp',
+      8 => 'field_no_limits_participants',
+      9 => 'field_no_limits_samples',
+      10 => 'field_recruitment',
+      11 => 'field_recruitment_other_sp',
+      12 => 'field_recruitment_supp_info',
+      13 => 'field_samples_supp_info',
+      14 => 'field_target_nb_supp_info',
+      15 => 'field_target_number_biosamples',
+      16 => 'field_target_number_participants',
+      17 => 'group_current_number_samples',
+      18 => 'group_current_number',
+      19 => 'group_study_design',
+      20 => 'group_target_nb_participants',
+      21 => 'group_target_nb_samples',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'General Design',
       'instance_settings' => array(
-        'required_fields' => 1,
         'classes' => '',
         'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
-      'formatter' => 'collapsed',
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_general_design|node|study|default'] = $field_group;
@@ -1120,11 +1142,9 @@ function mica_studies_field_group_info() {
       1 => 'field_acroym',
       2 => 'field_contact',
       3 => 'field_investigator',
-      4 => 'field_target_number_biosamples',
-      5 => 'field_target_number_participants',
-      6 => 'field_website',
-      7 => 'title_field',
-      8 => 'group_study_name',
+      4 => 'field_website',
+      5 => 'title_field',
+      6 => 'group_study_name',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1177,10 +1197,10 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_selection_criteria';
+  $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Please specify health status',
-    'weight' => '73',
+    'weight' => '43',
     'children' => array(
       0 => 'field_health_status',
     ),
@@ -1352,18 +1372,31 @@ function mica_studies_field_group_info() {
     'label' => 'Participants Selection',
     'weight' => '67',
     'children' => array(
-      0 => 'group_selection_criteria',
-      1 => 'group_recruitment_procedures',
+      0 => 'field_partcipant_sel_supp_info',
+      1 => 'field_recruitement_supp_info',
+      2 => 'field_recruitment_procedures',
+      3 => 'field_select_criteria',
+      4 => 'field_selection_others_sp',
+      5 => 'group_age_range',
+      6 => 'group_countries',
+      7 => 'group_ethnic_origin',
+      8 => 'group_health_status',
+      9 => 'group_recruitment_procedures',
+      10 => 'group_selection_criteria',
+      11 => 'group_specify_gender',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Participants Selection',
       'instance_settings' => array(
-        'required_fields' => 1,
         'classes' => '',
         'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
-      'formatter' => 'collapsed',
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_participants_selection|node|study|default'] = $field_group;
@@ -1405,23 +1438,25 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_current_status';
+  $field_group->parent_name = 'group_status';
   $field_group->data = array(
     'label' => 'Preparation phase / Pilot',
-    'weight' => '56',
+    'weight' => '42',
     'children' => array(
       0 => 'field_preparation_end_year',
       1 => 'field_preparation_start_year',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'Preparation phase / Pilot',
+      'formatter' => 'collapsible',
       'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+        'classes' => '',
       ),
-      'formatter' => 'collapsed',
     ),
   );
   $export['group_preparation_phase|node|study|default'] = $field_group;
@@ -1466,19 +1501,20 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Recruitment procedures',
-    'weight' => '67',
-    'children' => array(
-      0 => 'field_recruitment_procedures',
-      1 => 'field_recruitement_supp_info',
-    ),
-    'format_type' => 'fieldset',
+    'weight' => '47',
+    'children' => array(),
+    'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Recruitment procedures',
       'instance_settings' => array(
-        'description' => '',
         'classes' => '',
-        'required_fields' => 1,
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_recruitment_procedures|node|study|default'] = $field_group;
@@ -1528,15 +1564,18 @@ function mica_studies_field_group_info() {
       1 => 'field_samples_man_other_sp',
       2 => 'field_tissues_sp',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Sample Management',
       'instance_settings' => array(
-        'required_fields' => 1,
         'classes' => '',
         'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h2',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
-      'formatter' => 'collapsed',
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_sample_management|node|study|default'] = $field_group;
@@ -1582,24 +1621,18 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Selection Criteria / Characteristics of the population',
-    'weight' => '66',
-    'children' => array(
-      0 => 'field_partcipant_sel_supp_info',
-      1 => 'field_select_criteria',
-      2 => 'field_selection_others_sp',
-      3 => 'group_specify_gender',
-      4 => 'group_age_range',
-      5 => 'group_countries',
-      6 => 'group_ethnic_origin',
-      7 => 'group_health_status',
-    ),
-    'format_type' => 'fieldset',
+    'weight' => '46',
+    'children' => array(),
+    'format_type' => 'div',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
         'classes' => '',
-        'required_fields' => 1,
       ),
     ),
   );
@@ -1647,20 +1680,23 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'default';
-  $field_group->parent_name = 'group_selection_criteria';
+  $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Please specify gender',
-    'weight' => '69',
+    'weight' => '39',
     'children' => array(
       0 => 'field_selection_gender',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'div',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
         'classes' => '',
-        'required_fields' => 1,
       ),
     ),
   );
@@ -1706,7 +1742,12 @@ function mica_studies_field_group_info() {
     'label' => 'Status',
     'weight' => '10',
     'children' => array(
-      0 => 'group_current_status',
+      0 => 'field_status_supp_info',
+      1 => 'group_baseline_phase',
+      2 => 'group_current_status',
+      3 => 'group_ended_phase',
+      4 => 'group_followup_phase',
+      5 => 'group_preparation_phase',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -1760,22 +1801,20 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_general_design';
   $field_group->data = array(
     'label' => 'Study/Registry Design',
-    'weight' => '6',
-    'children' => array(
-      0 => 'field_design',
-      1 => 'field_recruitment',
-      2 => 'field_recruitment_supp_info',
-      3 => 'field_design_other_sp',
-      4 => 'field_recruitment_other_sp',
-    ),
-    'format_type' => 'fieldset',
+    'weight' => '41',
+    'children' => array(),
+    'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Study/Registry Design',
       'instance_settings' => array(
-        'description' => '',
         'classes' => '',
-        'required_fields' => 1,
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_study_design|node|study|default'] = $field_group;
@@ -1882,10 +1921,10 @@ function mica_studies_field_group_info() {
       0 => 'group_access',
       1 => 'group_authorization',
       2 => 'group_comments',
-      3 => 'group_marker_paper',
-      4 => 'group_methods',
-      5 => 'group_status',
-      6 => 'group_general_info',
+      3 => 'group_general_info',
+      4 => 'group_marker_paper',
+      5 => 'group_methods',
+      6 => 'group_status',
     ),
     'format_type' => 'htabs',
     'format_settings' => array(
@@ -1940,19 +1979,20 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_general_design';
   $field_group->data = array(
     'label' => 'Target Number of Participants',
-    'weight' => '10',
-    'children' => array(
-      0 => 'field_no_limits_participants',
-      1 => 'field_target_nb_supp_info',
-    ),
-    'format_type' => 'fieldset',
+    'weight' => '42',
+    'children' => array(),
+    'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Target Number of Participants',
       'instance_settings' => array(
-        'description' => '',
         'classes' => '',
-        'required_fields' => 1,
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_target_nb_participants|node|study|default'] = $field_group;
@@ -1997,19 +2037,20 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_general_design';
   $field_group->data = array(
     'label' => 'Target Number of Biological Samples',
-    'weight' => '11',
-    'children' => array(
-      0 => 'field_no_limits_samples',
-      1 => 'field_samples_supp_info',
-    ),
-    'format_type' => 'fieldset',
+    'weight' => '43',
+    'children' => array(),
+    'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Target Number of Biological Samples',
       'instance_settings' => array(
-        'description' => '',
         'classes' => '',
-        'required_fields' => 1,
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_target_nb_samples|node|study|default'] = $field_group;
