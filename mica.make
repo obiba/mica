@@ -33,10 +33,16 @@ projects[drupal][patch][995156] = http://drupal.org/files/issues/995156-5_portab
 projects[acl][version] = 1.0-beta3
 projects[acl][type] = module
 
+projects[addressfield][version] = 1.0-beta2
+projects[addressfield][type] = module
+
 projects[] = advanced_help
 
 projects[calendar][version] = 3.0-alpha2
 projects[calendar][type] = module
+
+projects[cck_select_other][version] = 1.0
+projects[cck_select_other][type] = module
 
 projects[chain_menu_access][version] = 1.0
 projects[chain_menu_access][type] = module
@@ -52,6 +58,9 @@ projects[content_access][type] = module
 
 projects[content_taxonomy][version] = 1.0-beta1
 projects[content_taxonomy][type] = module
+
+projects[countries][version] = 1.0
+projects[countries][type] = module
 
 projects[ctools][type] = module
 projects[ctools][download][type] = git
@@ -90,6 +99,9 @@ projects[feeds][type] = module
 projects[feeds_jsonpath_parser][version] = 1.0-beta2
 projects[feeds_jsonpath_parser][type] = module
 
+projects[field_display_label][version] = 1.2
+projects[field_display_label][type] = module
+
 projects[field_group][version] = 1.1
 projects[field_group][type] = module
 
@@ -125,6 +137,9 @@ projects[job_scheduler][type] = module
 
 projects[link][version] = 1.0
 projects[link][type] = module
+
+;projects[location_taxonomize][version] = 2.2
+;projects[location_taxonomize][type] = module
 
 projects[login_destination][version] = 1.0
 projects[login_destination][type] = module
@@ -176,6 +191,9 @@ projects[search_api_ranges][patch][1344076] = http://drupal.org/files/rawurlenco
 projects[search_api_solr][version] = 1.0-rc1
 projects[search_api_solr][type] = module
 
+;projects[select_or_other][version] = 2.7
+;projects[select_or_other][type] = module
+
 projects[strongarm][version] = 2.0-beta5
 projects[strongarm][type] = module
 
@@ -187,6 +205,9 @@ projects[taxonomy_csv][type] = module
 
 projects[taxonomy_manager][version] = 1.0-beta2
 projects[taxonomy_manager][type] = module
+
+projects[title][version] = 1.0-alpha2
+projects[title][type] = module
 
 projects[token][version] = 1.0-beta7
 projects[token][type] = module
