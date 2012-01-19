@@ -183,13 +183,6 @@ function mica_projects_views_default_views() {
   $handler->display->display_options['relationships']['field_studies_nid']['field'] = 'field_studies_nid';
   $handler->display->display_options['relationships']['field_studies_nid']['required'] = 0;
   $handler->display->display_options['relationships']['field_studies_nid']['delta'] = '-1';
-  /* Relationship: Content: Study Information (mica_study_information) */
-  $handler->display->display_options['relationships']['mica_study_information_nid']['id'] = 'mica_study_information_nid';
-  $handler->display->display_options['relationships']['mica_study_information_nid']['table'] = 'field_data_mica_study_information';
-  $handler->display->display_options['relationships']['mica_study_information_nid']['field'] = 'mica_study_information_nid';
-  $handler->display->display_options['relationships']['mica_study_information_nid']['relationship'] = 'field_studies_nid';
-  $handler->display->display_options['relationships']['mica_study_information_nid']['required'] = 0;
-  $handler->display->display_options['relationships']['mica_study_information_nid']['delta'] = '-1';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -264,33 +257,6 @@ function mica_projects_views_default_views() {
     'prefix_suffix' => 1,
   );
   $handler->display->display_options['fields']['field_target_number_participants']['field_api_classes'] = 0;
-  /* Field: Content: Country selection criteria */
-  $handler->display->display_options['fields']['field_study_country']['id'] = 'field_study_country';
-  $handler->display->display_options['fields']['field_study_country']['table'] = 'field_data_field_study_country';
-  $handler->display->display_options['fields']['field_study_country']['field'] = 'field_study_country';
-  $handler->display->display_options['fields']['field_study_country']['relationship'] = 'mica_study_information_nid';
-  $handler->display->display_options['fields']['field_study_country']['label'] = 'Countries';
-  $handler->display->display_options['fields']['field_study_country']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_study_country']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_study_country']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_study_country']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_study_country']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['hide_alter_empty'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['group_rows'] = 1;
-  $handler->display->display_options['fields']['field_study_country']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_study_country']['delta_reversed'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['field_api_classes'] = 0;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';

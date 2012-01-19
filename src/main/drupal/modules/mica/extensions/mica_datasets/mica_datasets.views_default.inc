@@ -187,12 +187,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['empty']['area']['label'] = 'empty_dataset_studies';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
   $handler->display->display_options['empty']['area']['content'] = 'No studies found.';
-  /* Relationship: Content: Study Information (mica_study_information) */
-  $handler->display->display_options['relationships']['mica_study_information_nid']['id'] = 'mica_study_information_nid';
-  $handler->display->display_options['relationships']['mica_study_information_nid']['table'] = 'field_data_mica_study_information';
-  $handler->display->display_options['relationships']['mica_study_information_nid']['field'] = 'mica_study_information_nid';
-  $handler->display->display_options['relationships']['mica_study_information_nid']['required'] = 0;
-  $handler->display->display_options['relationships']['mica_study_information_nid']['delta'] = '-1';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -238,31 +232,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'field_data_field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['field'] = 'field_target_number_participants';
-  /* Field: Content: Country selection criteria */
-  $handler->display->display_options['fields']['field_study_country']['id'] = 'field_study_country';
-  $handler->display->display_options['fields']['field_study_country']['table'] = 'field_data_field_study_country';
-  $handler->display->display_options['fields']['field_study_country']['field'] = 'field_study_country';
-  $handler->display->display_options['fields']['field_study_country']['relationship'] = 'mica_study_information_nid';
-  $handler->display->display_options['fields']['field_study_country']['label'] = 'Country(ies)';
-  $handler->display->display_options['fields']['field_study_country']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_study_country']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_study_country']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_study_country']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_study_country']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['group_rows'] = 1;
-  $handler->display->display_options['fields']['field_study_country']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_study_country']['delta_reversed'] = 0;
-  $handler->display->display_options['fields']['field_study_country']['field_api_classes'] = 0;
   /* Field: Content: P3G Catalogue */
   $handler->display->display_options['fields']['field_p3g_observatory_link']['id'] = 'field_p3g_observatory_link';
   $handler->display->display_options['fields']['field_p3g_observatory_link']['table'] = 'field_data_field_p3g_observatory_link';

@@ -283,9 +283,7 @@ function mica_datasets_field_default_fields() {
           'csv_contact_export:views_data_export_1' => 0,
           'csv_field_description_export:views_data_export_1' => 0,
           'csv_institution_export:views_data_export_1' => 0,
-          'csv_study_documents_export:views_data_export_1' => 0,
           'csv_study_export:views_data_export_1' => 0,
-          'csv_study_information_export:views_data_export_1' => 0,
           'dataschema_term:page' => 0,
           'dataset_participant_variables:page' => 0,
           'dataset_studies:page' => 'dataset_studies:page',
@@ -437,9 +435,7 @@ function mica_datasets_field_default_fields() {
           'csv_contact_export:views_data_export_1' => 0,
           'csv_field_description_export:views_data_export_1' => 0,
           'csv_institution_export:views_data_export_1' => 0,
-          'csv_study_documents_export:views_data_export_1' => 0,
           'csv_study_export:views_data_export_1' => 0,
-          'csv_study_information_export:views_data_export_1' => 0,
           'dataschema_term:page' => 0,
           'dataset_participant_variables:page' => 'dataset_participant_variables:page',
           'dataset_studies:page' => 0,
@@ -793,8 +789,6 @@ function mica_datasets_field_default_fields() {
           'participant_variable' => 0,
           'publication' => 0,
           'study' => 0,
-          'study_documents' => 0,
-          'study_information' => 0,
         ),
         'view' => array(
           'args' => array(

@@ -393,8 +393,6 @@ function mica_projects_field_default_fields() {
           'project' => 0,
           'publication' => 0,
           'study' => 'study',
-          'study_documents' => 0,
-          'study_information' => 0,
           'teleconference' => 0,
         ),
         'view' => array(
@@ -515,9 +513,7 @@ function mica_projects_field_default_fields() {
           'csv_contact_export:views_data_export_1' => 0,
           'csv_field_description_export:views_data_export_1' => 0,
           'csv_institution_export:views_data_export_1' => 0,
-          'csv_study_documents_export:views_data_export_1' => 0,
           'csv_study_export:views_data_export_1' => 0,
-          'csv_study_information_export:views_data_export_1' => 0,
           'date_browser:date_nav_1' => 0,
           'date_browser:page' => 0,
           'events:feed' => 0,
@@ -863,8 +859,6 @@ function mica_projects_field_default_fields() {
           'project' => 'project',
           'publication' => 0,
           'study' => 0,
-          'study_documents' => 0,
-          'study_information' => 0,
           'teleconference' => 0,
         ),
         'view' => array(

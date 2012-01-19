@@ -192,7 +192,6 @@ function mica_dataschemas_field_default_fields() {
           'csv_field_description_export:views_data_export_1' => 0,
           'csv_institution_export:views_data_export_1' => 0,
           'csv_study_export:views_data_export_1' => 0,
-          'csv_study_information_export:views_data_export_1' => 0,
           'data_access:page' => 0,
           'data_access_admin:page' => 0,
           'data_access_committee:page' => 0,
@@ -784,8 +783,6 @@ function mica_dataschemas_field_default_fields() {
           'project' => 0,
           'publication' => 0,
           'study' => 0,
-          'study_documents' => 0,
-          'study_information' => 0,
           'teleconference' => 0,
         ),
         'view' => array(
@@ -2992,8 +2989,6 @@ function mica_dataschemas_field_default_fields() {
           'project' => 0,
           'publication' => 0,
           'study' => 0,
-          'study_documents' => 0,
-          'study_information' => 0,
           'teleconference' => 0,
         ),
         'view' => array(
@@ -3325,8 +3320,6 @@ function mica_dataschemas_field_default_fields() {
           'project' => 'project',
           'publication' => 0,
           'study' => 0,
-          'study_documents' => 0,
-          'study_information' => 0,
           'teleconference' => 0,
         ),
         'view' => array(
@@ -3454,8 +3447,6 @@ function mica_dataschemas_field_default_fields() {
           'project' => 0,
           'publication' => 0,
           'study' => 'study',
-          'study_documents' => 0,
-          'study_information' => 0,
           'teleconference' => 0,
         ),
         'view' => array(
@@ -3583,8 +3574,6 @@ function mica_dataschemas_field_default_fields() {
           'project' => 0,
           'publication' => 0,
           'study' => 0,
-          'study_documents' => 0,
-          'study_information' => 0,
           'teleconference' => 0,
         ),
         'view' => array(
@@ -3712,8 +3701,6 @@ function mica_dataschemas_field_default_fields() {
           'project' => 0,
           'publication' => 0,
           'study' => 0,
-          'study_documents' => 0,
-          'study_information' => 0,
           'teleconference' => 0,
         ),
         'view' => array(
