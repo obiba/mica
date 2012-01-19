@@ -107,8 +107,8 @@ function mica_studies_field_group_info() {
     'label' => 'Please specify age range',
     'weight' => '70',
     'children' => array(
-      0 => 'field_age_min',
-      1 => 'field_age_max',
+      0 => 'field_age_max',
+      1 => 'field_age_min',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -395,8 +395,8 @@ function mica_studies_field_group_info() {
     'label' => 'Authorization',
     'weight' => '7',
     'children' => array(
-      0 => 'group_authorization_specific',
-      1 => 'group_authorization_maelstrom',
+      0 => 'group_authorization_maelstrom',
+      1 => 'group_authorization_specific',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -831,8 +831,7 @@ function mica_studies_field_group_info() {
       0 => 'field_study_legacy_id',
       1 => 'mica_dataset',
       2 => 'mica_opal',
-      3 => 'title',
-      4 => 'path',
+      3 => 'path',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1108,9 +1107,9 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'group_current_number_samples',
       1 => 'group_current_number',
-      2 => 'group_target_nb_participants',
-      3 => 'group_target_nb_samples',
-      4 => 'group_study_design',
+      2 => 'group_study_design',
+      3 => 'group_target_nb_participants',
+      4 => 'group_target_nb_samples',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1171,8 +1170,8 @@ function mica_studies_field_group_info() {
     'weight' => '6',
     'children' => array(
       0 => 'body',
-      1 => 'field_contact',
-      2 => 'field_investigator',
+      1 => 'field_contacts',
+      2 => 'field_investigators',
       3 => 'field_website',
       4 => 'group_study_name',
     ),
@@ -1414,8 +1413,8 @@ function mica_studies_field_group_info() {
     'label' => 'Participants Selection',
     'weight' => '67',
     'children' => array(
-      0 => 'group_selection_criteria',
-      1 => 'group_recruitment_procedures',
+      0 => 'group_recruitment_procedures',
+      1 => 'group_selection_criteria',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1532,8 +1531,8 @@ function mica_studies_field_group_info() {
     'label' => 'Recruitment procedures',
     'weight' => '67',
     'children' => array(
-      0 => 'field_recruitment_procedures',
-      1 => 'field_recruitement_supp_info',
+      0 => 'field_recruitement_supp_info',
+      1 => 'field_recruitment_procedures',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1654,11 +1653,11 @@ function mica_studies_field_group_info() {
       0 => 'field_partcipant_sel_supp_info',
       1 => 'field_select_criteria',
       2 => 'field_selection_others_sp',
-      3 => 'group_specify_gender',
-      4 => 'group_age_range',
-      5 => 'group_countries',
-      6 => 'group_ethnic_origin',
-      7 => 'group_health_status',
+      3 => 'group_age_range',
+      4 => 'group_countries',
+      5 => 'group_ethnic_origin',
+      6 => 'group_health_status',
+      7 => 'group_specify_gender',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1833,10 +1832,10 @@ function mica_studies_field_group_info() {
     'weight' => '6',
     'children' => array(
       0 => 'field_design',
-      1 => 'field_recruitment',
-      2 => 'field_recruitment_supp_info',
-      3 => 'field_design_other_sp',
-      4 => 'field_recruitment_other_sp',
+      1 => 'field_design_other_sp',
+      2 => 'field_recruitment',
+      3 => 'field_recruitment_other_sp',
+      4 => 'field_recruitment_supp_info',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -2011,8 +2010,8 @@ function mica_studies_field_group_info() {
     'weight' => '10',
     'children' => array(
       0 => 'field_no_limits_participants',
-      1 => 'field_target_number_participants',
-      2 => 'field_target_nb_supp_info',
+      1 => 'field_target_nb_supp_info',
+      2 => 'field_target_number_participants',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

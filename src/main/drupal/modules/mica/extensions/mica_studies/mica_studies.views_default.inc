@@ -59,7 +59,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-  /* Field: Content: Contact Name */
+  /* Field: Field: Contact Name */
   $handler->display->display_options['fields']['field_contact_name_2']['id'] = 'field_contact_name_2';
   $handler->display->display_options['fields']['field_contact_name_2']['table'] = 'field_data_field_contact_name';
   $handler->display->display_options['fields']['field_contact_name_2']['field'] = 'field_contact_name';
@@ -83,7 +83,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contact_name_2']['click_sort_column'] = 'title';
   $handler->display->display_options['fields']['field_contact_name_2']['type'] = 'name_raw_title';
   $handler->display->display_options['fields']['field_contact_name_2']['field_api_classes'] = 0;
-  /* Field: Content: Contact Name */
+  /* Field: Field: Contact Name */
   $handler->display->display_options['fields']['field_contact_name']['id'] = 'field_contact_name';
   $handler->display->display_options['fields']['field_contact_name']['table'] = 'field_data_field_contact_name';
   $handler->display->display_options['fields']['field_contact_name']['field'] = 'field_contact_name';
@@ -106,7 +106,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contact_name']['click_sort_column'] = 'title';
   $handler->display->display_options['fields']['field_contact_name']['type'] = 'name_plain_given';
   $handler->display->display_options['fields']['field_contact_name']['field_api_classes'] = 0;
-  /* Field: Content: Contact Name */
+  /* Field: Field: Contact Name */
   $handler->display->display_options['fields']['field_contact_name_1']['id'] = 'field_contact_name_1';
   $handler->display->display_options['fields']['field_contact_name_1']['table'] = 'field_data_field_contact_name';
   $handler->display->display_options['fields']['field_contact_name_1']['field'] = 'field_contact_name';
@@ -129,7 +129,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contact_name_1']['click_sort_column'] = 'title';
   $handler->display->display_options['fields']['field_contact_name_1']['type'] = 'name_plain_family';
   $handler->display->display_options['fields']['field_contact_name_1']['field_api_classes'] = 0;
-  /* Field: Content: Email */
+  /* Field: Field: Email */
   $handler->display->display_options['fields']['field_contact_email']['id'] = 'field_contact_email';
   $handler->display->display_options['fields']['field_contact_email']['table'] = 'field_data_field_contact_email';
   $handler->display->display_options['fields']['field_contact_email']['field'] = 'field_contact_email';
@@ -150,7 +150,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contact_email']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_contact_email']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_contact_email']['field_api_classes'] = 0;
-  /* Field: Content: Telephone */
+  /* Field: Field: Telephone */
   $handler->display->display_options['fields']['field_telephone']['id'] = 'field_telephone';
   $handler->display->display_options['fields']['field_telephone']['table'] = 'field_data_field_telephone';
   $handler->display->display_options['fields']['field_telephone']['field'] = 'field_telephone';
@@ -171,7 +171,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_telephone']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_telephone']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_telephone']['field_api_classes'] = 0;
-  /* Field: Content: Institution */
+  /* Field: Field collection item: Institution */
   $handler->display->display_options['fields']['field_institution']['id'] = 'field_institution';
   $handler->display->display_options['fields']['field_institution']['table'] = 'field_data_field_institution';
   $handler->display->display_options['fields']['field_institution']['field'] = 'field_institution';
@@ -861,7 +861,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_website']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_website']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_website']['field_api_classes'] = 0;
-  /* Field: Content: Contacts */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_contact']['id'] = 'field_contact';
   $handler->display->display_options['fields']['field_contact']['table'] = 'field_data_field_contact';
   $handler->display->display_options['fields']['field_contact']['field'] = 'field_contact';
@@ -881,13 +881,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contact']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_contact']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_contact']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_contact']['type'] = 'node_reference_plain';
-  $handler->display->display_options['fields']['field_contact']['group_rows'] = 1;
-  $handler->display->display_options['fields']['field_contact']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_contact']['delta_reversed'] = 0;
-  $handler->display->display_options['fields']['field_contact']['separator'] = '|';
-  $handler->display->display_options['fields']['field_contact']['field_api_classes'] = 0;
-  /* Field: Content: Investigators */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_investigator']['id'] = 'field_investigator';
   $handler->display->display_options['fields']['field_investigator']['table'] = 'field_data_field_investigator';
   $handler->display->display_options['fields']['field_investigator']['field'] = 'field_investigator';
@@ -907,12 +901,6 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_investigator']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_investigator']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_investigator']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_investigator']['type'] = 'node_reference_plain';
-  $handler->display->display_options['fields']['field_investigator']['group_rows'] = 1;
-  $handler->display->display_options['fields']['field_investigator']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_investigator']['delta_reversed'] = 0;
-  $handler->display->display_options['fields']['field_investigator']['separator'] = '|';
-  $handler->display->display_options['fields']['field_investigator']['field_api_classes'] = 0;
   /* Field: Content: How many people are planned to be recruited? Or if the study is completed, what is the final number of participants? */
   $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'field_data_field_target_number_participants';

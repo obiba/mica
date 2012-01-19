@@ -240,18 +240,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: create contact content
-  $permissions['create contact content'] = array(
-    'name' => 'create contact content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: create documents content
   $permissions['create documents content'] = array(
     'name' => 'create documents content',
@@ -343,18 +331,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: create institution content
-  $permissions['create institution content'] = array(
-    'name' => 'create institution content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: create page content
   $permissions['create page content'] = array(
     'name' => 'create page content',
@@ -396,16 +372,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any contact content
-  $permissions['delete any contact content'] = array(
-    'name' => 'delete any contact content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete any documents content
   $permissions['delete any documents content'] = array(
     'name' => 'delete any documents content',
@@ -421,18 +387,6 @@ function mica_studies_user_default_permissions() {
     'name' => 'delete any field_description content',
     'roles' => array(
       0 => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete any institution content
-  $permissions['delete any institution content'] = array(
-    'name' => 'delete any institution content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -476,16 +430,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete own contact content
-  $permissions['delete own contact content'] = array(
-    'name' => 'delete own contact content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete own documents content
   $permissions['delete own documents content'] = array(
     'name' => 'delete own documents content',
@@ -501,18 +445,6 @@ function mica_studies_user_default_permissions() {
     'name' => 'delete own field_description content',
     'roles' => array(
       0 => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete own institution content
-  $permissions['delete own institution content'] = array(
-    'name' => 'delete own institution content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -566,18 +498,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any contact content
-  $permissions['edit any contact content'] = array(
-    'name' => 'edit any contact content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: edit any documents content
   $permissions['edit any documents content'] = array(
     'name' => 'edit any documents content',
@@ -593,18 +513,6 @@ function mica_studies_user_default_permissions() {
     'name' => 'edit any field_description content',
     'roles' => array(
       0 => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit any institution content
-  $permissions['edit any institution content'] = array(
-    'name' => 'edit any institution content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -715,18 +623,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit own contact content
-  $permissions['edit own contact content'] = array(
-    'name' => 'edit own contact content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: edit own documents content
   $permissions['edit own documents content'] = array(
     'name' => 'edit own documents content',
@@ -814,18 +710,6 @@ function mica_studies_user_default_permissions() {
     'name' => 'edit own field_description content',
     'roles' => array(
       0 => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit own institution content
-  $permissions['edit own institution content'] = array(
-    'name' => 'edit own institution content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
     ),
     'module' => 'node',
   );

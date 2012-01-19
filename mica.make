@@ -33,7 +33,7 @@ projects[drupal][patch][995156] = http://drupal.org/files/issues/995156-5_portab
 projects[acl][version] = 1.0-beta3
 projects[acl][type] = module
 
-projects[addressfield][version] = 1.0-beta2
+projects[addressfield][version] = 1.x-dev
 projects[addressfield][type] = module
 
 projects[] = advanced_help
@@ -98,6 +98,9 @@ projects[feeds][type] = module
 
 projects[feeds_jsonpath_parser][version] = 1.0-beta2
 projects[feeds_jsonpath_parser][type] = module
+
+projects[field_collection][version] = 1.x-dev
+projects[field_collection][type] = module
 
 projects[field_display_label][version] = 1.2
 projects[field_display_label][type] = module
@@ -165,7 +168,7 @@ projects[name][type] = module
 projects[noderefcreate][version] = 1.0
 projects[noderefcreate][type] = module
 
-projects[panels][version] = 3.0-alpha3
+projects[panels][version] = 3.0
 projects[panels][type] = module
 
 projects[pathauto][version] = 1.0
@@ -218,7 +221,7 @@ projects[title][type] = module
 projects[token][version] = 1.0-beta7
 projects[token][type] = module
 
-projects[token][version] = 1.0-alpha2
+projects[token][version] = 1.0-beta7
 projects[token][type] = module
 
 projects[variable][version] = 1.1

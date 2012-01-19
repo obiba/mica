@@ -77,14 +77,6 @@ function mica_studies_image_default_styles() {
  */
 function mica_studies_node_info() {
   $items = array(
-    'contact' => array(
-      'name' => t('Contact'),
-      'base' => 'node_content',
-      'description' => t('Description of a Contact, consisting of a person and an Institution.'),
-      'has_title' => '1',
-      'title_label' => t('Person and Institution Names'),
-      'help' => '',
-    ),
     'documents' => array(
       'name' => t('Documents'),
       'base' => 'node_content',
@@ -99,14 +91,6 @@ function mica_studies_node_info() {
       'description' => t('Description of information collected about the studies.'),
       'has_title' => '1',
       'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'institution' => array(
-      'name' => t('Institution'),
-      'base' => 'node_content',
-      'description' => t('Description of an Institution.'),
-      'has_title' => '1',
-      'title_label' => t('Institution Name'),
       'help' => '',
     ),
     'study' => array(
@@ -537,6 +521,10 @@ function mica_studies_default_search_api_index() {
             "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
           }
         }
+      },
+      "additional fields" : {
+        "field_contacts" : "field_contacts",
+        "field_contacts:field_institution" : "field_contacts:field_institution"
       }
     },
     "enabled" : "1",

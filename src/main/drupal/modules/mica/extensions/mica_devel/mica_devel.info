@@ -5,6 +5,7 @@ package = "OBiBa"
 project = "mica_devel"
 dependencies[] = devel
 dependencies[] = devel_node_access
+dependencies[] = devel_generate
 dependencies[] = masquerade
 dependencies[] = features
 dependencies[] = strongarm
