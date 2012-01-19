@@ -43,6 +43,28 @@ function _mica_field_value_type($field_value_type){
  * Enhance the field settings form with field_description extensions.
  */
 function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
+   	
+  $supported_types = array(
+  	'list_boolean',
+  	'date',
+  	'datestamp',
+  	'datetime',
+  	'number_float',
+  	'number_decimal',
+  	'email',
+  	'link_field',
+  	'list_text',
+  	'text_long',
+  	'text_with_summary',
+  	'text',
+  	'text_default',
+  	'number_integer',
+  	'list_integer',
+  );
+  $field_value_type = $form_state['build_info']['args'][0]['display']['default']['type'];
+  if (!in_array($field_value_type, $supported_types)) {
+    return;
+  }
   
   $bundle = $form_state['build_info']['args'][0]['bundle'];
   if ($bundle === 'field_description') {
@@ -77,7 +99,6 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
   if (empty($field_description)) {
   	
   	// auto-detect value type based on field value type
-  	$field_value_type = $form_state['build_info']['args'][0]['display']['default']['type'];
   	$default_value_type = _mica_field_value_type($field_value_type);
 
   } 
