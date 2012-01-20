@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-01-12 14:09-0500\n"
-"PO-Revision-Date: 2012-01-12 14:09-0500\n"
+"POT-Creation-Date: 2012-01-19 15:13-0500\n"
+"PO-Revision-Date: 2012-01-19 15:13-0500\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -23,133 +23,133 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: mica_dataschemas.features.field.inc:3789
+#: mica_dataschemas.features.field.inc:3776
 msgid "A Uniform Resource Identifier (URI) is a string of characters used to identify a name or a resource on the Internet."
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3790
+#: mica_dataschemas.features.field.inc:3777
 msgid "Biochemical measures"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3791
+#: mica_dataschemas.features.field.inc:3778
 msgid "Body"
-msgstr "Corps"
+msgstr ""
 
-#: mica_dataschemas.features.field.inc:3792
+#: mica_dataschemas.features.field.inc:3779
 msgid "Body functions and measures"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3793
+#: mica_dataschemas.features.field.inc:3780
 msgid "Categories"
-msgstr "Catégories"
+msgstr ""
 
-#: mica_dataschemas.features.field.inc:3794
+#: mica_dataschemas.features.field.inc:3781
 msgid "Class"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3795
+#: mica_dataschemas.features.field.inc:3782
 msgid "Collection mode"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3796 mica_dataschemas.features.inc:53
+#: mica_dataschemas.features.field.inc:3783 mica_dataschemas.features.inc:53
 msgid "DataSchema"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3797
+#: mica_dataschemas.features.field.inc:3784
 msgid "Disease history"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3798
+#: mica_dataschemas.features.field.inc:3785
 msgid "Environmental exposures"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3799
+#: mica_dataschemas.features.field.inc:3786
 msgid "Format"
-msgstr "Format"
+msgstr ""
 
-#: mica_dataschemas.features.field.inc:3800
+#: mica_dataschemas.features.field.inc:3787
 msgid "Life habits / Behaviours"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3801
+#: mica_dataschemas.features.field.inc:3788
 msgid "Match"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3802
+#: mica_dataschemas.features.field.inc:3789
 msgid "Measuring unit of the variable (i.e. kg, siblings, cigarettes, etc.)."
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3803
+#: mica_dataschemas.features.field.inc:3790
 msgid "Medication"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3804
+#: mica_dataschemas.features.field.inc:3791
 msgid "Missing"
-msgstr "Manquant"
+msgstr ""
 
-#: mica_dataschemas.features.field.inc:3805
+#: mica_dataschemas.features.field.inc:3792
 msgid "Name"
-msgstr "Nom"
+msgstr ""
 
-#: mica_dataschemas.features.field.inc:3806
+#: mica_dataschemas.features.field.inc:3793
 msgid "Period"
-msgstr "Période"
+msgstr ""
 
-#: mica_dataschemas.features.field.inc:3807
+#: mica_dataschemas.features.field.inc:3794
 msgid "Project"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3808
+#: mica_dataschemas.features.field.inc:3795
 msgid "Reproductive history"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3809
+#: mica_dataschemas.features.field.inc:3796
 msgid "Sample"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3810
+#: mica_dataschemas.features.field.inc:3797
 msgid "Sociodemographic characteristics"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3811
+#: mica_dataschemas.features.field.inc:3798
 msgid "Source of information"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3812
+#: mica_dataschemas.features.field.inc:3799
 msgid "Study"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3813
+#: mica_dataschemas.features.field.inc:3800
 msgid "Target"
-msgstr "Cible"
+msgstr ""
 
-#: mica_dataschemas.features.field.inc:3814
+#: mica_dataschemas.features.field.inc:3801
 msgid "Target gender"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3815
+#: mica_dataschemas.features.field.inc:3802
 msgid "Therapeutic interventions"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3816
+#: mica_dataschemas.features.field.inc:3803
 msgid "Type"
-msgstr "Type"
+msgstr ""
 
-#: mica_dataschemas.features.field.inc:3817
+#: mica_dataschemas.features.field.inc:3804
 msgid "URI"
-msgstr "URI"
+msgstr ""
 
-#: mica_dataschemas.features.field.inc:3818
+#: mica_dataschemas.features.field.inc:3805
 msgid "Unit"
 msgstr ""
 
-#: mica_dataschemas.features.field.inc:3819 mica_dataschemas.features.inc:69
+#: mica_dataschemas.features.field.inc:3806 mica_dataschemas.features.inc:69
 msgid "Variable"
-msgstr "Variable"
+msgstr ""
 
-#: mica_dataschemas.features.field.inc:3820
+#: mica_dataschemas.features.field.inc:3807
 msgid "Variables"
-msgstr "Variables"
+msgstr ""
 
 #: mica_dataschemas.features.inc:55
 msgid "Identifies and describes a thematic set of core variables that are of particular value in a specified scientific setting."
@@ -157,11 +157,11 @@ msgstr ""
 
 #: mica_dataschemas.features.inc:57;65;73;81
 msgid "Title"
-msgstr "Titre"
+msgstr ""
 
 #: mica_dataschemas.features.inc:61
 msgid "Category"
-msgstr "Catégorie"
+msgstr ""
 
 #: mica_dataschemas.features.inc:63
 msgid "Defines a category"
