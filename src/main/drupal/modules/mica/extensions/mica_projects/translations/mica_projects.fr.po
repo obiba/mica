@@ -13,8 +13,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-01-12 14:11-0500\n"
-"PO-Revision-Date: 2012-01-12 14:11-0500\n"
+"POT-Creation-Date: 2012-01-19 15:15-0500\n"
+"PO-Revision-Date: 2012-01-19 15:15-0500\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -22,47 +22,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: mica_projects.features.field.inc:1146
+#: mica_projects.features.field.inc:1140
 msgid "Body"
-msgstr "Corps"
+msgstr ""
 
-#: mica_projects.features.field.inc:1147
+#: mica_projects.features.field.inc:1141
 msgid "Comment"
-msgstr "Commentaire"
+msgstr ""
 
-#: mica_projects.features.field.inc:1148
+#: mica_projects.features.field.inc:1142
 msgid "Consortium's studies involved."
 msgstr ""
 
-#: mica_projects.features.field.inc:1149
+#: mica_projects.features.field.inc:1143
 msgid "Date"
-msgstr "Date"
+msgstr ""
 
-#: mica_projects.features.field.inc:1150
+#: mica_projects.features.field.inc:1144
 msgid "Description"
-msgstr "Description"
+msgstr ""
 
-#: mica_projects.features.field.inc:1151
+#: mica_projects.features.field.inc:1145
 msgid "Files"
-msgstr "Fichiers"
+msgstr ""
 
-#: mica_projects.features.field.inc:1152
+#: mica_projects.features.field.inc:1146
 msgid "Instructions"
 msgstr ""
 
-#: mica_projects.features.field.inc:1153
+#: mica_projects.features.field.inc:1147
 msgid "Minutes"
 msgstr ""
 
-#: mica_projects.features.field.inc:1154 mica_projects.features.inc:37
+#: mica_projects.features.field.inc:1148 mica_projects.features.inc:37
 msgid "Project"
 msgstr ""
 
-#: mica_projects.features.field.inc:1155
+#: mica_projects.features.field.inc:1149
 msgid "Studies"
 msgstr ""
 
-#: mica_projects.features.field.inc:1156
+#: mica_projects.features.field.inc:1150
 msgid "Teleconferences"
 msgstr ""
 
@@ -72,7 +72,7 @@ msgstr ""
 
 #: mica_projects.features.inc:41;49
 msgid "Title"
-msgstr "Titre"
+msgstr ""
 
 #: mica_projects.features.inc:45
 msgid "Teleconference"
