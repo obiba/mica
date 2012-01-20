@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-01-12 14:12-0500\n"
-"PO-Revision-Date: 2012-01-12 14:13-0500\n"
+"POT-Creation-Date: 2012-01-19 15:15-0500\n"
+"PO-Revision-Date: 2012-01-19 17:15-0500\n"
 "Last-Translator: asd <asd>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -19,31 +19,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: node_reference_block.module:11;167
+#: node_reference_block.module:11;164
 msgid "Related information"
-msgstr "Information liée"
+msgstr "Information relative"
 
 #: node_reference_block.module:29;40
 msgid "Excluded related types"
-msgstr ""
+msgstr "Types reliés exclus"
 
 #: node_reference_block.module:43
 msgid "Excludes selected types from related information."
-msgstr ""
+msgstr "Exclure les types sélectionnés des information relatives"
 
 #: node_reference_block.info:0
 msgid "Node Reference Block"
-msgstr ""
+msgstr "Bloc Node Reference"
 
 #: node_reference_block.info:0
 msgid "Related Content Block using Node References"
-msgstr ""
+msgstr "Bloc de contenu relié par Node References"
 
 #: node_reference_block.info:0
 msgid "OBiBa"
-msgstr ""
+msgstr "OBiBa"
 
 #: node_reference_block.js:0
 msgid "No exclusions"
-msgstr ""
+msgstr "Sans exclusions"
 
