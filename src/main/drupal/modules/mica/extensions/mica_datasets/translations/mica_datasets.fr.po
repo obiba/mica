@@ -19,8 +19,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-01-12 14:09-0500\n"
-"PO-Revision-Date: 2012-01-12 14:09-0500\n"
+"POT-Creation-Date: 2012-01-19 15:13-0500\n"
+"PO-Revision-Date: 2012-01-19 15:13-0500\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -28,55 +28,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: mica_datasets.features.field.inc:1378
+#: mica_datasets.features.field.inc:1372
 msgid "Body"
-msgstr "Corps"
+msgstr ""
 
-#: mica_datasets.features.field.inc:1379
+#: mica_datasets.features.field.inc:1373
 msgid "Can this variable have multiple values?"
 msgstr ""
 
-#: mica_datasets.features.field.inc:1380
+#: mica_datasets.features.field.inc:1374
 msgid "Categories"
-msgstr "Catégories"
+msgstr ""
 
-#: mica_datasets.features.field.inc:1381
+#: mica_datasets.features.field.inc:1375
 msgid "Dataschema"
 msgstr ""
 
-#: mica_datasets.features.field.inc:1382 mica_datasets.features.inc:37
+#: mica_datasets.features.field.inc:1376 mica_datasets.features.inc:37
 msgid "Dataset"
 msgstr ""
 
-#: mica_datasets.features.field.inc:1383 mica_datasets.features.menu_links.inc:34 mica_datasets.pages.inc:275
+#: mica_datasets.features.field.inc:1377 mica_datasets.features.menu_links.inc:34 mica_datasets.pages.inc:275
 msgid "Datasets"
 msgstr ""
 
-#: mica_datasets.features.field.inc:1384 mica_datasets.pages.inc:328 mica_datasets.pages.query.inc:56;141 mica_datasets.module:614;655 includes/connection_form.inc:123
+#: mica_datasets.features.field.inc:1378 mica_datasets.pages.inc:328 mica_datasets.pages.query.inc:56;141 mica_datasets.module:614;655 includes/connection_form.inc:123
 msgid "Description"
-msgstr "Description"
+msgstr ""
 
-#: mica_datasets.features.field.inc:1385
+#: mica_datasets.features.field.inc:1379
 msgid "Label"
-msgstr "Étiquette"
+msgstr ""
 
-#: mica_datasets.features.field.inc:1386
+#: mica_datasets.features.field.inc:1380
 msgid "Opal"
 msgstr ""
 
-#: mica_datasets.features.field.inc:1387
+#: mica_datasets.features.field.inc:1381
 msgid "Participant Variables"
 msgstr ""
 
-#: mica_datasets.features.field.inc:1388
+#: mica_datasets.features.field.inc:1382
 msgid "Repeatable"
 msgstr ""
 
-#: mica_datasets.features.field.inc:1389 mica_datasets.pages.inc:211
+#: mica_datasets.features.field.inc:1383 mica_datasets.pages.inc:211
 msgid "Studies"
 msgstr ""
 
-#: mica_datasets.features.field.inc:1390
+#: mica_datasets.features.field.inc:1384
 msgid "Value Type"
 msgstr ""
 
@@ -86,7 +86,7 @@ msgstr ""
 
 #: mica_datasets.features.inc:41;49 mica_datasets.pages.query.inc:55;132 mica_datasets.module:608;649
 msgid "Name"
-msgstr "Nom"
+msgstr ""
 
 #: mica_datasets.features.inc:45
 msgid "Participant Variable"
@@ -118,11 +118,11 @@ msgstr ""
 
 #: mica_datasets.pages.inc:125
 msgid "Status"
-msgstr "Statut"
+msgstr ""
 
 #: mica_datasets.pages.inc:131
 msgid "Import"
-msgstr "Importer"
+msgstr ""
 
 #: mica_datasets.pages.inc:137
 msgid "Update variables"
@@ -130,7 +130,7 @@ msgstr ""
 
 #: mica_datasets.pages.inc:143
 msgid "Importing (@progress %)"
-msgstr "Importation en cours (@progress %)"
+msgstr ""
 
 #: mica_datasets.pages.inc:207
 msgid "Select the studies that are part of the dataset."
@@ -162,11 +162,11 @@ msgstr ""
 
 #: mica_datasets.pages.inc:353
 msgid "Configuration"
-msgstr "Configuration"
+msgstr ""
 
 #: mica_datasets.pages.inc:375;429 mica_datasets.pages.query.inc:715
 msgid "Save"
-msgstr "Enregistrer"
+msgstr ""
 
 #: mica_datasets.pages.inc:445;455
 msgid "Unable to save connection: !name"
@@ -178,7 +178,7 @@ msgstr ""
 
 #: mica_datasets.pages.query.inc:57 includes/connection_form.inc:124
 msgid "Operations"
-msgstr "Actions"
+msgstr ""
 
 #: mica_datasets.pages.query.inc:69
 msgid "(not saved)"
@@ -190,11 +190,11 @@ msgstr ""
 
 #: mica_datasets.pages.query.inc:88;599 mica_datasets.module:126;164 includes/connection_form.inc:104
 msgid "Edit"
-msgstr "Modifier"
+msgstr ""
 
 #: mica_datasets.pages.query.inc:94;520;603;835 mica_datasets.module:136;174
 msgid "Delete"
-msgstr "Supprimer"
+msgstr ""
 
 #: mica_datasets.pages.query.inc:94
 msgid "Delete query"
@@ -214,7 +214,7 @@ msgstr ""
 
 #: mica_datasets.pages.query.inc:150 mica_datasets.module:671
 msgid "Published"
-msgstr "Publié"
+msgstr ""
 
 #: mica_datasets.pages.query.inc:166
 msgid "Select the variables you want to query the dataset on."
@@ -222,7 +222,7 @@ msgstr ""
 
 #: mica_datasets.pages.query.inc:170
 msgid "Variables"
-msgstr "Variables"
+msgstr ""
 
 #: mica_datasets.pages.query.inc:175
 msgid "Add Variable"
@@ -238,7 +238,7 @@ msgstr ""
 
 #: mica_datasets.pages.query.inc:273 mica_datasets.module:694
 msgid "Weight"
-msgstr "Poids"
+msgstr ""
 
 #: mica_datasets.pages.query.inc:302
 msgid "No query term found"
@@ -266,11 +266,11 @@ msgstr ""
 
 #: mica_datasets.pages.query.inc:509;824
 msgid "This action cannot be undone."
-msgstr "Cette action est irréversible."
+msgstr ""
 
 #: mica_datasets.pages.query.inc:525;720;840
 msgid "Cancel"
-msgstr "Annuler"
+msgstr ""
 
 #: mica_datasets.pages.query.inc:581
 msgid "!title -- !query"
@@ -426,7 +426,7 @@ msgstr ""
 
 #: mica_datasets.module:603;644;679
 msgid "ID"
-msgstr "Identifiant (ID)"
+msgstr ""
 
 #: mica_datasets.module:605
 msgid "The primary identifier for a connector."
@@ -466,7 +466,7 @@ msgstr ""
 
 #: mica_datasets.module:636
 msgid "Enabled"
-msgstr "Activé"
+msgstr ""
 
 #: mica_datasets.module:638
 msgid "A flag indicating whether the connector is enabled."
@@ -486,7 +486,7 @@ msgstr ""
 
 #: mica_datasets.module:666
 msgid "User ID"
-msgstr "Identifiant (ID) utilisateur"
+msgstr ""
 
 #: mica_datasets.module:668
 msgid "The primary identifier for the user."
@@ -522,7 +522,7 @@ msgstr ""
 
 #: mica_datasets.module:699
 msgid "Depth"
-msgstr "Profondeur"
+msgstr ""
 
 #: mica_datasets.module:701
 msgid "The depth of a term in its query."
@@ -530,7 +530,7 @@ msgstr ""
 
 #: mica_datasets.module:1104
 msgid "Statistics"
-msgstr "Statistiques"
+msgstr ""
 
 #: mica_datasets.module:56
 msgid "Edit Datasets"
@@ -554,7 +554,7 @@ msgstr ""
 
 #: mica_datasets.module:158
 msgid "View"
-msgstr "Voir"
+msgstr ""
 
 #: mica_datasets.module:193;203
 msgid "Dataset Connection"
@@ -622,7 +622,7 @@ msgstr ""
 
 #: includes/query/terms.inc:231;372
 msgid "Operator"
-msgstr "Opérateur"
+msgstr ""
 
 #: includes/query/terms.inc:412
 msgid "Any value"
