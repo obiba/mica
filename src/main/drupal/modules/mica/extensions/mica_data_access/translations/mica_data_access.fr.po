@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-01-12 14:10-0500\n"
-"PO-Revision-Date: 2012-01-12 14:10-0500\n"
+"POT-Creation-Date: 2012-01-19 15:14-0500\n"
+"PO-Revision-Date: 2012-01-19 15:14-0500\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@ msgstr ""
 
 #: mica_data_access.features.field.inc:1501
 msgid "Country"
-msgstr "Pays"
+msgstr ""
 
 #: mica_data_access.features.field.inc:1502
 msgid "Data Access Committee member"
@@ -79,21 +79,17 @@ msgstr ""
 msgid "Representative Name"
 msgstr ""
 
-#: mica_data_access.features.field.inc:1512
-msgid "Reviewer"
+#: mica_data_access.features.field.inc:1512 mica_data_access.views_default.inc:457;903
+msgid "Status"
 msgstr ""
 
 #: mica_data_access.features.field.inc:1513
-msgid "Status"
-msgstr "Statut"
-
-#: mica_data_access.features.field.inc:1514
 msgid "Street"
 msgstr ""
 
-#: mica_data_access.features.field.inc:1515 mica_data_access.views_default.inc:355
+#: mica_data_access.features.field.inc:1514 mica_data_access.views_default.inc:189;453;899
 msgid "Summary"
-msgstr "Résumé"
+msgstr ""
 
 #: mica_data_access.features.inc:39
 msgid "Form to be filled in for accessing study data."
@@ -107,15 +103,15 @@ msgstr ""
 msgid "Describes the status of the data access form review."
 msgstr ""
 
-#: mica_data_access.features.menu_links.inc:165 mica_data_access.views_default.inc:343
+#: mica_data_access.features.menu_links.inc:165 mica_data_access.views_default.inc:175
 msgid "DACO Approved Projects"
 msgstr ""
 
-#: mica_data_access.features.menu_links.inc:166
+#: mica_data_access.features.menu_links.inc:166 mica_data_access.views_default.inc:438
 msgid "Data Access Administration"
 msgstr ""
 
-#: mica_data_access.features.menu_links.inc:167 mica_data_access.views_default.inc:159
+#: mica_data_access.features.menu_links.inc:167 mica_data_access.views_default.inc:610
 msgid "Data Access Committee"
 msgstr ""
 
@@ -127,85 +123,133 @@ msgstr ""
 msgid "Data Access"
 msgstr ""
 
-#: mica_data_access.views_default.inc:158;342
+#: mica_data_access.views_default.inc:174;437;609;882
 msgid "Master"
-msgstr "Maître"
+msgstr ""
 
-#: mica_data_access.views_default.inc:160;344
+#: mica_data_access.views_default.inc:176;439;611;884
 msgid "more"
-msgstr "plus"
+msgstr ""
 
-#: mica_data_access.views_default.inc:161;345
+#: mica_data_access.views_default.inc:177;440;612;885
 msgid "Apply"
-msgstr "Appliquer"
+msgstr ""
 
-#: mica_data_access.views_default.inc:162;346
+#: mica_data_access.views_default.inc:178;441;613;886
 msgid "Reset"
-msgstr "Réinitialiser"
+msgstr ""
 
-#: mica_data_access.views_default.inc:163;347
+#: mica_data_access.views_default.inc:179;442;614;887
 msgid "Sort by"
-msgstr "Trier par"
+msgstr ""
 
-#: mica_data_access.views_default.inc:164;348
+#: mica_data_access.views_default.inc:180;443;615;888
 msgid "Asc"
-msgstr "Asc"
+msgstr ""
 
-#: mica_data_access.views_default.inc:165;349
+#: mica_data_access.views_default.inc:181;444;616;889
 msgid "Desc"
-msgstr "Desc"
+msgstr ""
 
-#: mica_data_access.views_default.inc:166;350
+#: mica_data_access.views_default.inc:182;445;617;890
 msgid "Items per page"
-msgstr "Éléments par page"
+msgstr ""
 
-#: mica_data_access.views_default.inc:167;351
+#: mica_data_access.views_default.inc:183;446;618;891
 msgid "- All -"
-msgstr "- Tout -"
+msgstr ""
 
-#: mica_data_access.views_default.inc:168;352
+#: mica_data_access.views_default.inc:184;447;619;892
 msgid "Offset"
-msgstr "Décalage"
-
-#: mica_data_access.views_default.inc:169
-msgid "Contact"
-msgstr "Contact"
-
-#: mica_data_access.views_default.inc:170
-msgid "Title"
-msgstr "Titre"
-
-#: mica_data_access.views_default.inc:171
-msgid "[field_contact_name]"
 msgstr ""
 
-#: mica_data_access.views_default.inc:172
-msgid "Institution"
+#: mica_data_access.views_default.inc:185;620
+msgid "empty_data_access_committee"
 msgstr ""
 
-#: mica_data_access.views_default.inc:173
-msgid "Email"
-msgstr "Courriel"
+#: mica_data_access.views_default.inc:186
+msgid "No approved data access found."
+msgstr ""
 
-#: mica_data_access.views_default.inc:174;358
-msgid "Page"
-msgstr "Page"
-
-#: mica_data_access.views_default.inc:353
+#: mica_data_access.views_default.inc:187;450;896
 msgid "field_data_access_review"
 msgstr ""
 
-#: mica_data_access.views_default.inc:354
+#: mica_data_access.views_default.inc:188;452;898
 msgid "Project"
 msgstr ""
 
-#: mica_data_access.views_default.inc:356
+#: mica_data_access.views_default.inc:190;454;900
+msgid "Representative"
+msgstr ""
+
+#: mica_data_access.views_default.inc:191;455;625;901
+msgid "Institution"
+msgstr ""
+
+#: mica_data_access.views_default.inc:192;460;905
+msgid "All"
+msgstr ""
+
+#: mica_data_access.views_default.inc:193;461;627;906
+msgid "Page"
+msgstr ""
+
+#: mica_data_access.views_default.inc:448;893
+msgid "empty_data_access"
+msgstr ""
+
+#: mica_data_access.views_default.inc:449;894
+msgid "No data access request found."
+msgstr ""
+
+#: mica_data_access.views_default.inc:451;897
+msgid "Nid"
+msgstr ""
+
+#: mica_data_access.views_default.inc:456;902
+msgid "Updated date"
+msgstr ""
+
+#: mica_data_access.views_default.inc:458
 msgid "Review"
 msgstr ""
 
-#: mica_data_access.views_default.inc:357
-msgid "All"
-msgstr "Tous / Toutes"
+#: mica_data_access.views_default.inc:459
+msgid "<a href=\"?q=node/[nid]/review\">Start Review</a>"
+msgstr ""
+
+#: mica_data_access.views_default.inc:621
+msgid "No data access committee member found."
+msgstr ""
+
+#: mica_data_access.views_default.inc:622
+msgid "Contact"
+msgstr ""
+
+#: mica_data_access.views_default.inc:623
+msgid "Title"
+msgstr ""
+
+#: mica_data_access.views_default.inc:624
+msgid "[field_contact_name]"
+msgstr ""
+
+#: mica_data_access.views_default.inc:626
+msgid "Email"
+msgstr ""
+
+#: mica_data_access.views_default.inc:883
+msgid "My Data Access Requests"
+msgstr ""
+
+#: mica_data_access.views_default.inc:895
+msgid "author"
+msgstr ""
+
+#: mica_data_access.views_default.inc:904
+msgid "Operations"
+msgstr ""
 
 #: mica_data_access.module:71
 msgid "<a href=\"@url\">Request for Data Access</a>"
