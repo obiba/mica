@@ -8,13 +8,12 @@
 #  mica.info: n/a
 #  includes/feeds/mappers/mica.inc: n/a
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-01-12 14:08-0500\n"
-"PO-Revision-Date: 2012-01-12 14:08-0500\n"
-"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-01-19 15:12-0500\n"
+"PO-Revision-Date: 2012-01-19 17:10-0500\n"
+"Last-Translator: asd <asd>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -23,61 +22,62 @@ msgstr ""
 
 #: mica.module:15
 msgid "Mica Documentation can be found here:"
-msgstr ""
+msgstr "La documentation de Mica se trouve à cette ici: "
 
 #: mica.module:17
 msgid "Mica Administration Guide"
-msgstr ""
+msgstr "Guide d'administration de Mica"
 
 #: mica.module:18
 msgid "Mica User Guide"
-msgstr ""
+msgstr "Guide d'utilisation Mica"
 
 #: mica.module:43
 msgid "Mica Relation"
-msgstr ""
+msgstr "Relation Mica"
 
 #: mica.module:139
 msgid "Study name '!title' is already given."
-msgstr ""
+msgstr "Le nom d'étude '!title' existe déjà."
 
-#: mica.module:295
+#: mica.module:294
 msgid "Powered by Mica"
-msgstr ""
+msgstr "Généré par Mica"
 
-#: mica.module:313
+#: mica.module:312
 msgid "Powered by <a href=\"@poweredby\">Mica</a>"
-msgstr ""
+msgstr "Généré par Mica <a href=\"@poweredby\">Mica</a>"
 
-#: mica.module:98 mica.install:117
+#: mica.module:98
+#: mica.install:117
 msgid "mica"
-msgstr ""
+msgstr "mica"
 
 #: mica.module:98
 msgid "Delete relation between parent %parent and child %child"
-msgstr ""
+msgstr "Efface la relation entre le parent %parent et l'enfant %child"
 
 #: mica.install:117
 msgid "Update to Mica 1.1"
-msgstr ""
+msgstr "Mettre à jour à Mica 1.1"
 
 #: mica.info:0
 msgid "Mica"
-msgstr ""
+msgstr "Mica"
 
 #: mica.info:0
 msgid "Mica module"
-msgstr ""
+msgstr "Module Mica"
 
 #: mica.info:0
 msgid "OBiBa"
-msgstr ""
+msgstr "OBiBa"
 
 #: includes/feeds/mappers/mica.inc:18;25
 msgid "The @label field of the node."
-msgstr ""
+msgstr "Le champ @label du noeud."
 
 #: includes/feeds/mappers/mica.inc:32
 msgid "The Legacy Id of the parent Study of the node."
-msgstr ""
+msgstr "L'identifiant legacy du noeud Étude parent."
 
