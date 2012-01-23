@@ -378,7 +378,7 @@ function mica_studies_default_search_api_index() {
         "field_target_other" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
         "field_biosamples_collected_other" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
         "field_design_other" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
-        "field_access_other" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_access_other" : { "name" : null, "indexed" : true, "type" : "string", "boost" : "1.0" },
         "field_gender" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
         "field_selection_criteria" : {
           "name" : null,
@@ -388,8 +388,18 @@ function mica_studies_default_search_api_index() {
         },
         "field_gwas_analysis" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
         "field_gwas_number" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
-        "field_age_min" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
-        "field_age_max" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
+        "field_age_min" : {
+          "name" : "Age min",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_age_max" : {
+          "name" : "Age max",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
         "field_status_end" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
         "field_study_country" : {
           "name" : null,
@@ -411,6 +421,37 @@ function mica_studies_default_search_api_index() {
         },
         "field_access" : {
           "name" : null,
+          "indexed" : true,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "title_field" : {
+          "name" : "Complete name",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_acroym" : { "name" : "Acronym", "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_current_participants_nb" : {
+          "name" : "How many people have joined the study?",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_current_samples_nb" : {
+          "name" : "For how many people have biological samples been collected?",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_ethnic_origin" : {
+          "name" : "Ethnic origin",
+          "indexed" : true,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
+        },
+        "field_health_status" : {
+          "name" : "Health status",
           "indexed" : true,
           "type" : "list\\u003ctext\\u003e",
           "boost" : "1.0"

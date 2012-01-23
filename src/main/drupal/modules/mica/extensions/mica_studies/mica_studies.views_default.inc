@@ -31,8 +31,12 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Items par page';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Tout - ';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Décalage';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['view_mode'] = 'full';
@@ -42,7 +46,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'titre';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
@@ -59,7 +63,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-  /* Field: Field: Contact Name */
+  /* Field: Field collection item: Investigator Name */
   $handler->display->display_options['fields']['field_contact_name_2']['id'] = 'field_contact_name_2';
   $handler->display->display_options['fields']['field_contact_name_2']['table'] = 'field_data_field_contact_name';
   $handler->display->display_options['fields']['field_contact_name_2']['field'] = 'field_contact_name';
@@ -83,7 +87,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contact_name_2']['click_sort_column'] = 'title';
   $handler->display->display_options['fields']['field_contact_name_2']['type'] = 'name_raw_title';
   $handler->display->display_options['fields']['field_contact_name_2']['field_api_classes'] = 0;
-  /* Field: Field: Contact Name */
+  /* Field: Field collection item: Investigator Name */
   $handler->display->display_options['fields']['field_contact_name']['id'] = 'field_contact_name';
   $handler->display->display_options['fields']['field_contact_name']['table'] = 'field_data_field_contact_name';
   $handler->display->display_options['fields']['field_contact_name']['field'] = 'field_contact_name';
@@ -106,7 +110,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contact_name']['click_sort_column'] = 'title';
   $handler->display->display_options['fields']['field_contact_name']['type'] = 'name_plain_given';
   $handler->display->display_options['fields']['field_contact_name']['field_api_classes'] = 0;
-  /* Field: Field: Contact Name */
+  /* Field: Field collection item: Investigator Name */
   $handler->display->display_options['fields']['field_contact_name_1']['id'] = 'field_contact_name_1';
   $handler->display->display_options['fields']['field_contact_name_1']['table'] = 'field_data_field_contact_name';
   $handler->display->display_options['fields']['field_contact_name_1']['field'] = 'field_contact_name';
@@ -129,7 +133,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contact_name_1']['click_sort_column'] = 'title';
   $handler->display->display_options['fields']['field_contact_name_1']['type'] = 'name_plain_family';
   $handler->display->display_options['fields']['field_contact_name_1']['field_api_classes'] = 0;
-  /* Field: Field: Email */
+  /* Field: Field collection item: Email */
   $handler->display->display_options['fields']['field_contact_email']['id'] = 'field_contact_email';
   $handler->display->display_options['fields']['field_contact_email']['table'] = 'field_data_field_contact_email';
   $handler->display->display_options['fields']['field_contact_email']['field'] = 'field_contact_email';
@@ -150,7 +154,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contact_email']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_contact_email']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_contact_email']['field_api_classes'] = 0;
-  /* Field: Field: Telephone */
+  /* Field: Field collection item: Telephone */
   $handler->display->display_options['fields']['field_telephone']['id'] = 'field_telephone';
   $handler->display->display_options['fields']['field_telephone']['table'] = 'field_data_field_telephone';
   $handler->display->display_options['fields']['field_telephone']['field'] = 'field_telephone';
@@ -232,13 +236,13 @@ function mica_studies_views_default_views() {
     t('more'),
     t('Apply'),
     t('Reset'),
-    t('Sort by'),
+    t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('title'),
+    t('Items par page'),
+    t('- Tout - '),
+    t('Décalage'),
+    t('titre'),
     t('field_contact_name:title'),
     t('[field_contact_name_2-title]'),
     t('field_contact_name:given'),
@@ -271,8 +275,12 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Items par page';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Tout - ';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Décalage';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['view_mode'] = 'full';
@@ -282,7 +290,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'titre';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
@@ -514,13 +522,13 @@ function mica_studies_views_default_views() {
     t('more'),
     t('Apply'),
     t('Reset'),
-    t('Sort by'),
+    t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('title'),
+    t('Items par page'),
+    t('- Tout - '),
+    t('Décalage'),
+    t('titre'),
     t('body'),
     t('field_original_field_label'),
     t('field_original_field_name'),
@@ -554,8 +562,12 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Items par page';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Tout - ';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Décalage';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['view_mode'] = 'full';
@@ -565,7 +577,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'titre';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
@@ -705,13 +717,13 @@ function mica_studies_views_default_views() {
     t('more'),
     t('Apply'),
     t('Reset'),
-    t('Sort by'),
+    t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('title'),
+    t('Items par page'),
+    t('- Tout - '),
+    t('Décalage'),
+    t('titre'),
     t('field_street'),
     t('field_city'),
     t('field_postal_code'),
@@ -741,14 +753,18 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Items par page';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Tout - ';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Décalage';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['view_mode'] = 'full';
   $handler->display->display_options['row_options']['links'] = 1;
   $handler->display->display_options['row_options']['comments'] = 0;
-  /* Field: Content: Legacy Id */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_study_legacy_id']['id'] = 'field_study_legacy_id';
   $handler->display->display_options['fields']['field_study_legacy_id']['table'] = 'field_data_field_study_legacy_id';
   $handler->display->display_options['fields']['field_study_legacy_id']['field'] = 'field_study_legacy_id';
@@ -768,17 +784,11 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_study_legacy_id']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_study_legacy_id']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_study_legacy_id']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_study_legacy_id']['type'] = 'number_unformatted';
-  $handler->display->display_options['fields']['field_study_legacy_id']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
-  $handler->display->display_options['fields']['field_study_legacy_id']['field_api_classes'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'titre';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
@@ -1011,14 +1021,14 @@ function mica_studies_views_default_views() {
     t('more'),
     t('Apply'),
     t('Reset'),
-    t('Sort by'),
+    t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
+    t('Items par page'),
+    t('- Tout - '),
+    t('Décalage'),
     t('field_study_legacy_id'),
-    t('title'),
+    t('titre'),
     t('body'),
     t('Broken handler field_data_field_full_name.field_full_name'),
     t('field_website'),
@@ -1050,8 +1060,12 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Items par page';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Tout - ';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Décalage';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
@@ -1091,7 +1105,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Name';
+  $handler->display->display_options['fields']['title']['label'] = 'Nom';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
@@ -1187,15 +1201,15 @@ function mica_studies_views_default_views() {
     t('more'),
     t('Apply'),
     t('Reset'),
-    t('Sort by'),
+    t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
+    t('Items par page'),
+    t('- Tout - '),
+    t('Décalage'),
     t('empty_documents'),
     t('No document found.'),
-    t('Name'),
+    t('Nom'),
     t('Description'),
     t('Download'),
     t('Page'),
@@ -1219,14 +1233,18 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Items par page';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Tout - ';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Décalage';
   $handler->display->display_options['style_plugin'] = 'table';
   /* Field: Indexed Node: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_fields_description_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Name';
+  $handler->display->display_options['fields']['title']['label'] = 'Nom';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
@@ -1291,13 +1309,13 @@ function mica_studies_views_default_views() {
     t('more'),
     t('Apply'),
     t('Reset'),
-    t('Sort by'),
+    t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('Name'),
+    t('Items par page'),
+    t('- Tout - '),
+    t('Décalage'),
+    t('Nom'),
     t('Text (indexed)'),
     t('Fulltext search'),
     t('Page'),
@@ -1322,8 +1340,12 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Items par page';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Tout - ';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Décalage';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
   $handler->display->display_options['row_options']['links'] = 0;
@@ -1378,12 +1400,12 @@ function mica_studies_views_default_views() {
     t('more'),
     t('Apply'),
     t('Reset'),
-    t('Sort by'),
+    t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
+    t('Items par page'),
+    t('- Tout - '),
+    t('Décalage'),
     t('empty_news'),
     t('No news found.'),
     t('Page'),
@@ -1402,14 +1424,18 @@ function mica_studies_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Studies';
+  $handler->display->display_options['title'] = 'Études';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Items par page';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Tout - ';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Décalage';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
@@ -1477,7 +1503,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Name';
+  $handler->display->display_options['fields']['title']['label'] = 'Nom';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
@@ -1517,6 +1543,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'field_data_field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['field'] = 'field_target_number_participants';
+  $handler->display->display_options['fields']['field_target_number_participants']['label'] = 'Combien de participants seront recrutés ? Ou, si le recrutement est terminé, quel est le nombre final de participants ?';
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['absolute'] = 0;
@@ -1542,7 +1569,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_study_country']['table'] = 'field_data_field_study_country';
   $handler->display->display_options['fields']['field_study_country']['field'] = 'field_study_country';
   $handler->display->display_options['fields']['field_study_country']['relationship'] = 'mica_study_information_nid';
-  $handler->display->display_options['fields']['field_study_country']['label'] = 'Country(ies)';
+  $handler->display->display_options['fields']['field_study_country']['label'] = 'Pays';
   $handler->display->display_options['fields']['field_study_country']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_study_country']['alter']['absolute'] = 0;
@@ -1601,26 +1628,26 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['path'] = 'studies';
   $translatables['studies'] = array(
     t('Master'),
-    t('Studies'),
+    t('Études'),
     t('more'),
     t('Apply'),
     t('Reset'),
-    t('Sort by'),
+    t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
+    t('Items par page'),
+    t('- Tout - '),
+    t('Décalage'),
     t('This page displays the list of the consortium\'s studies. Each study is described in a same standard way that can be easily customized to reflect consortium specificities. However, Mica suggests by default a list of important study characteristics that should be considered if there is an aim for the consortium to participate in data harmonization projects with other consortia or studies. 
 
 This Mica study catalogue comes with an advanced query tool using user-friendly facets <br/><br/>'),
     t('empty_studies'),
     t('No study found.'),
     t('mica_study_information_nid'),
-    t('Name'),
+    t('Nom'),
     t('Broken handler field_data_field_full_name.field_full_name'),
-    t('How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?'),
-    t('Country(ies)'),
+    t('Combien de participants seront recrutés ? Ou, si le recrutement est terminé, quel est le nombre final de participants ?'),
+    t('Pays'),
     t('Broken handler field_data_field_p3g_observatory_link.field_p3g_observatory_link'),
     t('Page'),
   );
@@ -1643,8 +1670,12 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Trier par';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Items par page';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Tout - ';
+  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Décalage';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
@@ -1687,7 +1718,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_studies_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Name';
+  $handler->display->display_options['fields']['title']['label'] = 'Nom';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
@@ -1727,6 +1758,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'search_api_index_studies_index';
   $handler->display->display_options['fields']['field_target_number_participants']['field'] = 'field_target_number_participants';
+  $handler->display->display_options['fields']['field_target_number_participants']['label'] = 'Combien de participants seront recrutés ? Ou, si le recrutement est terminé, quel est le nombre final de participants ?';
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['absolute'] = 0;
@@ -1746,7 +1778,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['mica_study_information_field_study_country']['id'] = 'mica_study_information_field_study_country';
   $handler->display->display_options['fields']['mica_study_information_field_study_country']['table'] = 'search_api_index_studies_index';
   $handler->display->display_options['fields']['mica_study_information_field_study_country']['field'] = 'mica_study_information_field_study_country';
-  $handler->display->display_options['fields']['mica_study_information_field_study_country']['label'] = 'Country(ies)';
+  $handler->display->display_options['fields']['mica_study_information_field_study_country']['label'] = 'Pays';
   $handler->display->display_options['fields']['mica_study_information_field_study_country']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['mica_study_information_field_study_country']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['mica_study_information_field_study_country']['alter']['absolute'] = 0;
@@ -1789,18 +1821,18 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     t('more'),
     t('Apply'),
     t('Reset'),
-    t('Sort by'),
+    t('Trier par'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
+    t('Items par page'),
+    t('- Tout - '),
+    t('Décalage'),
     t('empty_studies'),
     t('No study found.'),
-    t('Name'),
+    t('Nom'),
     t('Broken handler search_api_index_studies_index.field_full_name'),
-    t('How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?'),
-    t('Country(ies)'),
+    t('Combien de participants seront recrutés ? Ou, si le recrutement est terminé, quel est le nombre final de participants ?'),
+    t('Pays'),
     t('Fulltext search'),
     t('Page'),
   );
