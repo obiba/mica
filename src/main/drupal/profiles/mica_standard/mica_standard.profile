@@ -1,13 +1,13 @@
 <?php
 
 function mica_standard_install_tasks($install_state){
-//   $task['mica_update_languages'] = array(
-//   	'display_name' => st('Download Drupal french translations'),
-//     'display' => TRUE,
-//     'type' => 'batch',
-//     'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-//     'function' => 'mica_update_languages',
-//   );
+  $task['mica_update_languages'] = array(
+  	'display_name' => st('Download Drupal french translations'),
+    'display' => TRUE,
+    'type' => 'batch',
+    'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+    'function' => 'mica_update_languages',
+  );
   
   $task['mica_standard_content'] = array(
     'display_name' => st('Add Mica default content'),
