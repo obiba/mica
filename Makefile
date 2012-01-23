@@ -38,7 +38,7 @@ db_pass=rootadmin
 # Build
 #
 
-all: drupal mica htaccess
+all: drupal mica package-prepare htaccess
 #	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/default.settings.php
 #	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/settings.php
 
@@ -145,6 +145,7 @@ package-modules-prepare:
 	$(call make-info,sites/all/modules/mica/extensions,mica_community)
 	$(call make-info,sites/all/modules/mica/extensions,mica_data_access)
 	$(call make-info,sites/all/modules/mica/extensions,mica_datasets)
+	$(call make-info,sites/all/modules/mica/extensions,mica_devel)
 	$(call make-info,sites/all/modules/mica/extensions,mica_dataschemas)
 	$(call make-info,sites/all/modules/mica/extensions,mica_datashield)
 	$(call make-info,sites/all/modules/mica/extensions,mica_node_reference_field)

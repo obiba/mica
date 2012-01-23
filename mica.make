@@ -123,7 +123,6 @@ projects[http_client][type] = module
 projects[imce][version] = 1.5
 projects[imce][type] = module
 
-projects[i18n][version] = 1.2
 projects[i18n][download][type] = git
 projects[i18n][download][url] = http://git.drupal.org/project/i18n.git
 projects[i18n][download][revision] = ba701a2cecd87eeb98ce1e22c2ee1ab7aba1928e
@@ -135,14 +134,13 @@ projects[job_scheduler][type] = module
 projects[job_scheduler][version] = 2.0-alpha2
 projects[job_scheduler][type] = module
 
-projects[l10n_update][version] = 1.x-dev
-projects[l10n_update][type] = module
+projects[l10n_update][download][type] = git
+projects[l10n_update][download][url] = http://git.drupal.org/project/l10n_update.git
+projects[l10n_update][download][revision] = 5019582b5b96ccf1348dd45cf3c35fb90331938e
+projects[l10n_update][patch][1407054] = http://drupal.org/files/l10n_update-module-not-released-yet-1.patch
 
 projects[link][version] = 1.0
 projects[link][type] = module
-
-;projects[location_taxonomize][version] = 2.2
-;projects[location_taxonomize][type] = module
 
 projects[login_destination][version] = 1.0
 projects[login_destination][type] = module
