@@ -35,6 +35,9 @@ projects[acl][type] = module
 
 projects[addressfield][version] = 1.x-dev
 projects[addressfield][type] = module
+;projects[addressfield][download][type] = git
+;projects[addressfield][download][url] = http://git.drupal.org/project/addressfield.git
+;projects[addressfield][download][revision] = fc024d23ffe7791127c29654f75972cc6b63e643
 
 projects[] = advanced_help
 
@@ -55,6 +58,9 @@ projects[collapsiblock][type] = module
 
 projects[content_access][version] = 1.x-dev
 projects[content_access][type] = module
+;projects[content_access][download][type] = git
+;projects[content_access][download][url] = http://git.drupal.org/project/content_access.git
+;projects[content_access][download][revision] = bba91743b9d3de0cdb73490e002f4db6a38dc48c
 
 projects[content_taxonomy][version] = 1.0-beta1
 projects[content_taxonomy][type] = module
@@ -70,7 +76,7 @@ projects[ctools][download][revision] = dd65335ef5b823702ea5f1688a3000b09a04a739
 projects[date][version] = 2.0-rc1
 projects[date][type] = module
 
-projects[devel][version] = 1.2
+projects[devel][version] = 1.x-dev
 projects[devel][type] = module
 
 projects[email][version] = 1.0
@@ -87,6 +93,9 @@ projects[entity_translation][download][revision] = c8d5a47baf08c511749b1dcf8083e
 projects[facetapi][version] = 1.0-rc1
 projects[facetapi][type] = module
 
+projects[examples][version] = 1.x-dev
+projects[examples][type] = module
+
 projects[features][type] = module
 projects[features][download][type] = git
 projects[features][download][url] = http://git.drupal.org/project/features.git
@@ -101,6 +110,9 @@ projects[feeds_jsonpath_parser][type] = module
 
 projects[field_collection][version] = 1.x-dev
 projects[field_collection][type] = module
+;projects[field_collection][download][type] = git
+;projects[field_collection][download][url] = http://git.drupal.org/project/field_collection.git
+;projects[field_collection][download][revision] = 2231eccbacb75d72298068c4c81c6dd98f7760a9
 
 projects[field_display_label][version] = 1.2
 projects[field_display_label][type] = module

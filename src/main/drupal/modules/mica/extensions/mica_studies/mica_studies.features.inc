@@ -388,18 +388,8 @@ function mica_studies_default_search_api_index() {
         },
         "field_gwas_analysis" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
         "field_gwas_number" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
-        "field_age_min" : {
-          "name" : "Age min",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_age_max" : {
-          "name" : "Age max",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
+        "field_age_min" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
+        "field_age_max" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
         "field_status_end" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
         "field_study_country" : {
           "name" : null,

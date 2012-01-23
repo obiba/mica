@@ -9,6 +9,7 @@ dependencies[] = devel_generate
 dependencies[] = masquerade
 dependencies[] = features
 dependencies[] = strongarm
+dependencies[] = examples
 features[ctools][] = "strongarm:strongarm:1"
 features[user_permission][] = "access devel information"
 features[user_permission][] = "administer masquerade"

@@ -657,7 +657,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_postal_code']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_postal_code']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_postal_code']['field_api_classes'] = 0;
-  /* Field: Broken/missing handler */
+  /* Field: Field collection item: Country */
   $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
   $handler->display->display_options['fields']['field_country']['table'] = 'field_data_field_country';
   $handler->display->display_options['fields']['field_country']['field'] = 'field_country';

@@ -569,6 +569,13 @@ function mica_studies_strongarm() {
           'display' => array(),
         ),
       ),
+      'field_country_territory' => array(
+        'view_modes' => array(),
+        'extra_fields' => array(
+          'form' => array(),
+          'display' => array(),
+        ),
+      ),
     ),
   );
   $export['field_bundle_settings'] = $strongarm;
