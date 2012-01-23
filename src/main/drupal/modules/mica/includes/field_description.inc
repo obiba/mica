@@ -43,26 +43,19 @@ function _mica_field_value_type($field_value_type){
  * Enhance the field settings form with field_description extensions.
  */
 function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
-   	
-  $supported_types = array(
-  	'list_boolean',
-  	'date',
-  	'datestamp',
-  	'datetime',
-  	'number_float',
-  	'number_decimal',
-  	'email',
-  	'link_field',
-  	'list_text',
-  	'text_long',
-  	'text_with_summary',
-  	'text',
-  	'text_default',
-  	'number_integer',
-  	'list_integer',
+
+  $unsupported_types = array(
+  	'field_collection',
+  	'addressfield',
+  	'name',
+  	'viewreference',
+  	'node_reference',
   );
-  $field_value_type = $form_state['build_info']['args'][0]['display']['default']['type'];
-  if (!in_array($field_value_type, $supported_types)) {
+  
+  $keys = array_keys($form_state['field']);
+  $field_name = $keys[0];
+  $field_type = $form_state['field'][$field_name][LANGUAGE_NONE]['field']['type'];
+  if (in_array($field_type, $unsupported_types)) {
     return;
   }
   
