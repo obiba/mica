@@ -92,6 +92,7 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
   if (empty($field_description)) {
   	
   	// auto-detect value type based on field value type
+    $field_value_type = $form_state['build_info']['args'][0]['display']['default']['type'];
   	$default_value_type = _mica_field_value_type($field_value_type);
 
   } 
