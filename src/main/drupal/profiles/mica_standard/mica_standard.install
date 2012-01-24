@@ -14,125 +14,136 @@ function mica_standard_install() {
   $admin_theme = 'seven';
   $values = array(
     array(
-        'module' => 'user',
-        'delta' => 'login',
-        'theme' => $mica_theme,
-        'status' => 1,
-        'weight' => 0,
-        'region' => 'header',
-        'visibility' => 0,
-        'pages' => '',
-        'cache' => -1,
+      'module' => 'user',
+      'delta' => 'login',
+      'theme' => $mica_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'header',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+      'cache' => -1,
     ),
     array(
-        'module' => 'system',
-        'delta' => 'main',
-        'theme' => $mica_theme,
-        'status' => 1,
-        'weight' => 0,
-        'region' => 'content',
-        'visibility' => 0,
-        'pages' => '',
-        'cache' => -1,
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $mica_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'content',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+      'cache' => -1,
     ),
     array(
-        'module' => 'mica',
-        'delta' => 'powered-by-mica',
-        'theme' => $mica_theme,
-        'status' => 1,
-        'weight' => 30,
-        'region' => 'footer',
-        'visibility' => 1,
-        'pages' => '*',
-        'cache' => -1,
+      'module' => 'mica',
+      'delta' => 'powered-by-mica',
+      'theme' => $mica_theme,
+      'status' => 1,
+      'weight' => 30,
+      'region' => 'footer',
+      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'pages' => '*',
+      'cache' => -1,
     ),
     array(
-        'module' => 'mica_studies',
-        'delta' => 'mica-search',
-        'theme' => $mica_theme,
-        'status' => 1,
-        'weight' => 30,
-        'region' => 'header',
-        'visibility' => 1,
-        'pages' => '*',
-        'cache' => -1,
+      'module' => 'mica_studies',
+      'delta' => 'mica-search',
+      'theme' => $mica_theme,
+      'status' => 1,
+      'weight' => 30,
+      'region' => 'header',
+      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'pages' => '*',
+      'cache' => -1,
     ),
     array(
-        'module' => 'system',
-        'delta' => 'navigation',
-        'theme' => $mica_theme,
-        'status' => 1,
-        'weight' => 10,
-        'region' => 'sidebar_first',
-        'visibility' => 1,
-        'pages' => '<front>',
-        'cache' => -1,
+      'module' => 'system',
+      'delta' => 'navigation',
+      'theme' => $mica_theme,
+      'status' => 1,
+      'weight' => 10,
+      'region' => 'sidebar_first',
+      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'pages' => '<front>',
+      'cache' => -1,
     ),
     array(
-        'module' => 'views',
-        'delta' => 'events_calendar-block_2',
-        'theme' => $mica_theme,
-        'status' => 1,
-        'weight' => 10,
-        'region' => 'sidebar_first',
-        'visibility' => 1,
-        'pages' => '<front>',
-        'cache' => -1,
+      'module' => 'views',
+      'delta' => 'events_calendar-block_2',
+      'theme' => $mica_theme,
+      'status' => 1,
+      'weight' => 10,
+      'region' => 'sidebar_first',
+      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'pages' => '<front>',
+      'cache' => -1,
     ),
     array(
-        'module' => 'blog',
-        'delta' => 'recent',
-        'theme' => $admin_theme,
-        'status' => 1,
-        'weight' => 0,
-        'region' => BLOCK_REGION_NONE,
-        'visibility' => 0,
-        'pages' => '',
-        'cache' => -1,
+      'module' => 'blog',
+      'delta' => 'recent',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => BLOCK_REGION_NONE,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+      'cache' => -1,
     ),
     array(
-        'module' => 'comment',
-        'delta' => 'recent',
-        'theme' => $admin_theme,
-        'status' => 1,
-        'weight' => 0,
-        'region' => BLOCK_REGION_NONE,
-        'visibility' => 0,
-        'pages' => '',
-        'cache' => -1,
+      'module' => 'comment',
+      'delta' => 'recent',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => BLOCK_REGION_NONE,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+      'cache' => -1,
     ),
     array(
-        'module' => 'user',
-        'delta' => 'online',
-        'theme' => $admin_theme,
-        'status' => 1,
-        'weight' => 0,
-        'region' => BLOCK_REGION_NONE,
-        'visibility' => 0,
-        'pages' => '',
-        'cache' => -1,
+      'module' => 'user',
+      'delta' => 'online',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => BLOCK_REGION_NONE,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+      'cache' => -1,
     ),
     array(
-        'module' => 'forum',
-        'delta' => 'active',
-        'theme' => $admin_theme,
-        'status' => 1,
-        'weight' => 0,
-        'region' => BLOCK_REGION_NONE,
-        'visibility' => 0,
-        'pages' => '',
-        'cache' => -1,
+      'module' => 'forum',
+      'delta' => 'active',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => BLOCK_REGION_NONE,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+      'cache' => -1,
     ),
     array(
-        'module' => 'forum',
-        'delta' => 'new',
-        'theme' => $admin_theme,
-        'status' => 1,
-        'weight' => 0,
-        'region' => BLOCK_REGION_NONE,
-        'visibility' => 0,
-        'pages' => '',
-        'cache' => -1,
+      'module' => 'forum',
+      'delta' => 'new',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => BLOCK_REGION_NONE,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'locale',
+      'delta' => 'language',
+      'theme' => $mica_theme,
+      'status' => 1,
+      'weight' => 35,
+      'region' => 'header',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+      'cache' => -1,
     ),
   );
   $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'visibility', 'pages', 'cache'));
@@ -215,7 +226,6 @@ Over time, the Consortium will generate best practices documents that will descr
   // rebuild permissions
   node_access_rebuild();
   
-  
   include_once(drupal_get_path('module', 'mica') . '/includes/search.inc');
   mica_configure_current_search_facet_blocks();
   
@@ -234,25 +244,25 @@ function mica_standard_add_page($title, $body, $alias, $sticky = 0, $link_title 
     'value' => $body,
     'format' => 'full_html'
     )));
-    $node->promote = 0;
-    $node->sticky = $sticky;
-    $node->language = LANGUAGE_NONE;
-    if (isset($link_title)) {
-      $node->menu['enabled'] = 1;
-      $node->menu['expanded'] = 1;
-      $node->menu['menu_name'] = 'main-menu';
-      $node->menu['weight'] = $weight;
-      $node->menu['link_title'] = $link_title;
-      $node->menu['description'] = '';
-    }
-    node_save($node);
+  $node->promote = 0;
+  $node->sticky = $sticky;
+  $node->language = LANGUAGE_NONE;
+  if (isset($link_title)) {
+    $node->menu['enabled'] = 1;
+    $node->menu['expanded'] = 1;
+    $node->menu['menu_name'] = 'main-menu';
+    $node->menu['weight'] = $weight;
+    $node->menu['link_title'] = $link_title;
+    $node->menu['description'] = '';
+  }
+  node_save($node);
 
-    $path = array('alias' => $alias);
-    $path['source'] = 'node/' . $node->nid;
-    $path['language'] = LANGUAGE_NONE;
-    path_save($path);
+  $path = array('alias' => $alias);
+  $path['source'] = 'node/' . $node->nid;
+  $path['language'] = LANGUAGE_NONE;
+  path_save($path);
 
-    return $node;
+  return $node;
 }
 
 function mica_standard_update_node_body($nid, $body) {
@@ -262,7 +272,7 @@ function mica_standard_update_node_body($nid, $body) {
       'value' => $body,
       'format' => 'full_html'
       )));
-      node_save($node);
+    node_save($node);
   }
 }
 
@@ -270,7 +280,7 @@ function _mica_standard_no_region($module, $delta, $theme = 'seven') {
   db_update('block')
   ->fields(array(
     'region' => BLOCK_REGION_NONE,
-    'visibility' => 0,
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
   ))
   ->condition('module', $module, '=')
   ->condition('delta', $delta, '=')

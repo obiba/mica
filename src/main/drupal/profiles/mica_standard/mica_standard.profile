@@ -80,18 +80,17 @@ function mica_import_default_feeds($install_state){
   return $batch;
 }
 
-function mica_update_languages($install_state){
+function mica_update_languages($install_state) {
   module_load_include('batch.inc', 'l10n_update');
   
   $history = l10n_update_get_history();
   $available = l10n_update_available_releases();
   $updates = l10n_update_build_updates($history, $available);
   
-//   Filter out updates in other languages. If no languages, all of them will be updated
+  // Filter out updates in other languages. If no languages, all of them will be updated
   $languages = array('fr');
   $updates = _l10n_update_prepare_updates($updates, NULL, $languages);
-  
   $batch = l10n_update_batch_multiple($updates, null);
-  
+
   return $batch;
 }

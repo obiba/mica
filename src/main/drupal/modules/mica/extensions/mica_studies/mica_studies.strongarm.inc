@@ -3038,6 +3038,19 @@ function mica_studies_strongarm() {
       ),
       'file' => 'includes/locale.inc',
     ),
+    'locale-user' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_user',
+      ),
+      'file' => 'includes/locale.inc',
+    ),
+    'locale-browser' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_browser',
+      ),
+      'file' => 'includes/locale.inc',
+      'cache' => 0,
+    ),
     'language-default' => array(
       'callbacks' => array(
         'language' => 'language_from_default',
@@ -3056,6 +3069,32 @@ function mica_studies_strongarm() {
         'language' => 'locale_language_from_interface',
       ),
       'file' => 'includes/locale.inc',
+    ),
+    'locale-url' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_url',
+        'switcher' => 'locale_language_switcher_url',
+        'url_rewrite' => 'locale_language_url_rewrite_url',
+      ),
+      'file' => 'includes/locale.inc',
+    ),
+    'locale-user' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_user',
+      ),
+      'file' => 'includes/locale.inc',
+    ),
+    'locale-browser' => array(
+      'callbacks' => array(
+        'language' => 'locale_language_from_browser',
+      ),
+      'file' => 'includes/locale.inc',
+      'cache' => 0,
+    ),
+    'language-default' => array(
+      'callbacks' => array(
+        'language' => 'language_from_default',
+      ),
     ),
   );
   $export['language_negotiation_language_content'] = $strongarm;
@@ -3105,13 +3144,27 @@ function mica_studies_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'locale_language_providers_weight_language';
   $strongarm->value = array(
-    'locale-url' => '-8',
+    'locale-user' => '-9',
+    'locale-url' => '-10',
+    'locale-browser' => '-8',
+    'language-default' => '-7',
     'locale-session' => '-6',
-    'locale-user' => '-4',
-    'locale-browser' => '-2',
-    'language-default' => '10',
   );
   $export['locale_language_providers_weight_language'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'locale_language_providers_weight_language_content';
+  $strongarm->value = array(
+    'locale-interface' => '-10',
+    'locale-user' => '-8',
+    'locale-url' => '-9',
+    'locale-browser' => '-7',
+    'language-default' => '-6',
+    'locale-session' => '-5',
+  );
+  $export['locale_language_providers_weight_language_content'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -3349,6 +3402,13 @@ function mica_studies_strongarm() {
   $strongarm->name = 'site_frontpage';
   $strongarm->value = 'homepage';
   $export['site_frontpage'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'translation_language_type';
+  $strongarm->value = 'language_content';
+  $export['translation_language_type'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

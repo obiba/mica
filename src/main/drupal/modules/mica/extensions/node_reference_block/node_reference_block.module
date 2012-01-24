@@ -10,7 +10,7 @@ function node_reference_block_block_info() {
   $blocks['related-content'] = array(
     'info' => t('Related information'),
     'status' => TRUE,
-    'region' => 'sidebar_first',
+    'region' => BLOCK_REGION_NONE,
     'visibility' => BLOCK_VISIBILITY_LISTED,
     'pages' => 'node/*',
   );

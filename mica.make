@@ -33,11 +33,11 @@ projects[drupal][patch][995156] = http://drupal.org/files/issues/995156-5_portab
 projects[acl][version] = 1.0-beta3
 projects[acl][type] = module
 
-projects[addressfield][version] = 1.x-dev
 projects[addressfield][type] = module
-;projects[addressfield][download][type] = git
-;projects[addressfield][download][url] = http://git.drupal.org/project/addressfield.git
-;projects[addressfield][download][revision] = fc024d23ffe7791127c29654f75972cc6b63e643
+projects[addressfield][download][type] = git
+projects[addressfield][download][url] = http://git.drupal.org/project/addressfield.git
+projects[addressfield][download][revision] = fc024d23ffe7791127c29654f75972cc6b63e643
+projects[addressfield][patch][968112] = http://drupal.org/files/issues/allow-none-country-968112-9.patch
 
 projects[] = advanced_help
 
@@ -150,6 +150,9 @@ projects[l10n_update][download][type] = git
 projects[l10n_update][download][url] = http://git.drupal.org/project/l10n_update.git
 projects[l10n_update][download][revision] = 5019582b5b96ccf1348dd45cf3c35fb90331938e
 projects[l10n_update][patch][1407054] = http://drupal.org/files/l10n_update-module-not-released-yet-1.patch
+
+projects[languageicons][version] = 1.0-beta1
+projects[languageicons][type] = module
 
 projects[link][version] = 1.0
 projects[link][type] = module
