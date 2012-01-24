@@ -336,6 +336,49 @@ function mica_node_view($node, $view_mode, $langcode){
 		if ($node->content['field_no_limits_samples']['#items'][0]['value'] === '0') {
 			$node->content['field_no_limits_samples']['#access'] = FALSE;
 		}
+		
+		/*
+		 * Deal with country-territories...field_country_territory
+		 */
+		//debug($node->content['field_select_criteria'], null, true);
+	  $field = 'field_select_criteria';
+	  $key = 'countries';
+	  $index = 0;
+  	// get the array index of the key
+  	foreach($node->content[$field]['#items'] as $i => $items){
+  		if ($items['value'] == $key){
+  			$index = $i;
+  			break;
+  		}
+  	}
+		if (isset($node->content['field_select_criteria'][$index])){
+	  
+// 		  debug($node->content['field_select_criteria'][$index]['#markup']);
+		  $node->content['field_select_criteria'][$index]['#markup'] .= ' (';
+		  
+      $countries = array();
+      for($i = 0; $i < count($node->content['field_country_territory']); $i++){
+        // only look for int keys
+        if (isset($node->content['field_country_territory'][$i])){
+          $collection = $node->content['field_country_territory'][$i]['entity']['field_collection_item'];
+          foreach($collection as $c){
+            $c_lang = $c['field_country']['#language'];
+            $name = $c['field_country']['#object']->field_country[$c_lang][0]['country']->name;
+            
+            // Add territory if defined
+            if (isset($c['field_territory'])){
+              $t_lang = $c['field_territory']['#language'];
+              $territory = $c['field_territory']['#object']->field_territory[$t_lang][0]['value'];
+              $name .= ': ' . $territory;
+            }
+            $countries[] = $name;
+            
+          }
+        }
+      }
+      $node->content['field_select_criteria'][$index]['#markup'] .=  implode(', ', $countries) . ')';
+		}
+ 		$node->content['field_country_territory']['#access'] = FALSE;
 	}
 }
 
