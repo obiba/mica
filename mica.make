@@ -65,7 +65,7 @@ projects[content_access][type] = module
 projects[content_taxonomy][version] = 1.0-beta1
 projects[content_taxonomy][type] = module
 
-projects[countries][version] = 1.0
+projects[countries][version] = 2.0-beta2
 projects[countries][type] = module
 
 projects[ctools][type] = module

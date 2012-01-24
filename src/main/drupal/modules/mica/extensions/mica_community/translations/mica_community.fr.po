@@ -10,13 +10,12 @@
 #  mica_community.module: n/a
 #  mica_community.info: n/a
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2012-01-12 14:09-0500\n"
-"PO-Revision-Date: 2012-01-12 14:09-0500\n"
-"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-01-24 14:24-0500\n"
+"Last-Translator: asd <asd>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -25,11 +24,11 @@ msgstr ""
 
 #: mica_community.features.field.inc:849
 msgid "Abstract"
-msgstr ""
+msgstr "Résumé"
 
 #: mica_community.features.field.inc:850
 msgid "Authors"
-msgstr ""
+msgstr "Auteurs"
 
 #: mica_community.features.field.inc:851
 msgid "Body"
@@ -37,15 +36,15 @@ msgstr "Corps"
 
 #: mica_community.features.field.inc:852
 msgid "Event Date"
-msgstr ""
+msgstr "Date de l'évènement"
 
 #: mica_community.features.field.inc:853
 msgid "PMID"
-msgstr ""
+msgstr "Identifiant Pubmed"
 
 #: mica_community.features.field.inc:854
 msgid "Reference"
-msgstr ""
+msgstr "Référence"
 
 #: mica_community.features.field.inc:855
 msgid "URL"
@@ -53,11 +52,11 @@ msgstr "URL"
 
 #: mica_community.features.inc:37
 msgid "Event"
-msgstr ""
+msgstr "Évènement"
 
 #: mica_community.features.inc:39
 msgid "Event description"
-msgstr ""
+msgstr "Description de l'évènement"
 
 #: mica_community.features.inc:41;49
 msgid "Title"
@@ -65,11 +64,11 @@ msgstr "Titre"
 
 #: mica_community.features.inc:45
 msgid "Publication"
-msgstr ""
+msgstr "Publication"
 
 #: mica_community.features.inc:47
 msgid "Scientific publications references and announcement."
-msgstr ""
+msgstr "Annonces et références aux publications scientifiques."
 
 #: mica_community.features.menu_custom.inc:21
 msgid "Navigation"
@@ -77,10 +76,7 @@ msgstr "Navigation"
 
 #: mica_community.features.menu_custom.inc:22
 msgid "The <em>Navigation</em> menu contains links intended for site visitors. Links are added to the <em>Navigation</em> menu automatically by some modules."
-msgstr ""
-"Le <em>menu Navigation</em> contient les liens destinés aux visiteurs "
-"du site. Des liens sont automatiquement ajoutés à ce menu par "
-"certains modules."
+msgstr "Le <em>menu Navigation</em> contient les liens destinés aux visiteurs du site. Des liens sont automatiquement ajoutés à ce menu par certains modules."
 
 #: mica_community.features.menu_links.inc:143
 msgid "Blogs"
@@ -88,15 +84,15 @@ msgstr "Blogs"
 
 #: mica_community.features.menu_links.inc:144
 msgid "Community"
-msgstr ""
+msgstr "Communauté"
 
 #: mica_community.features.menu_links.inc:145
 msgid "Events"
-msgstr ""
+msgstr "Évènements"
 
 #: mica_community.features.menu_links.inc:146
 msgid "Events Calendar"
-msgstr ""
+msgstr "Calendrier d'évènements"
 
 #: mica_community.features.menu_links.inc:147
 msgid "Forums"
@@ -104,37 +100,37 @@ msgstr "Forums"
 
 #: mica_community.features.menu_links.inc:148
 msgid "News"
-msgstr ""
+msgstr "Nouvelles"
 
 #: mica_community.features.menu_links.inc:149
 msgid "Publications"
-msgstr ""
+msgstr "Publications"
 
 #: mica_community.module:20
 msgid "Add a Contact"
-msgstr ""
+msgstr "Ajouter un Contact"
 
 #: mica_community.module:29
 msgid "Add an Institution"
-msgstr ""
+msgstr "Ajouter une institution"
 
 #: mica_community.module:40
 msgid "Add an Event"
-msgstr ""
+msgstr "Ajouter un évènement"
 
 #: mica_community.module:51
 msgid "Add a Publication"
-msgstr ""
+msgstr "Ajouter une publication"
 
 #: mica_community.info:0
 msgid "Mica Community"
-msgstr ""
+msgstr "Mica Communauté"
 
 #: mica_community.info:0
 msgid "Community feature to Mica, to activate events, blogs, forums etc."
-msgstr ""
+msgstr "Feature Mica Communauté, pour activer les évènements, blogs, forums etc."
 
 #: mica_community.info:0
 msgid "OBiBa"
-msgstr ""
+msgstr "OBiBa"
 
