@@ -4,9 +4,9 @@
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 # Generated from files:
 #  mica_studies.features.field.inc: n/a
-#  mica_studies.views_default.inc: n/a
 #  mica_studies.features.inc: n/a
 #  mica_studies.features.menu_links.inc: n/a
+#  mica_studies.views_default.inc: n/a
 #  mica_studies.features.menu_custom.inc: n/a
 #  mica_studies.pages.inc: n/a
 #  mica_studies.module: n/a
@@ -15,341 +15,300 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-01-19 14:36-0500\n"
-"PO-Revision-Date: 2012-01-20 13:25-0500\n"
-"Last-Translator: Francois L'Heureux <flheureux@p3g.org>\n"
+"POT-Creation-Date: 2012-01-23 15:32-0500\n"
+"PO-Revision-Date: 2012-01-23 15:32-0500\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: mica_studies.features.field.inc:6939
-msgid "Access to data and samples"
-msgstr "Accès aux données et échantillons"
-
-#: mica_studies.features.field.inc:6940
+#: mica_studies.features.field.inc:7166
 msgid "Acronym"
 msgstr "Acronyme"
 
-#: mica_studies.features.field.inc:6941
+#: mica_studies.features.field.inc:7167
 msgid "Acronym of the study if applicable."
-msgstr "Acronyme, si applicable"
+msgstr ""
 
-#: mica_studies.features.field.inc:6942
+#: mica_studies.features.field.inc:7168
 msgid "Age max"
 msgstr "Âge maximum"
 
-#: mica_studies.features.field.inc:6943
+#: mica_studies.features.field.inc:7169
 msgid "Age min"
 msgstr "Âge minimum"
 
-#: mica_studies.features.field.inc:6944
+#: mica_studies.features.field.inc:7170
 msgid "Authorising date"
 msgstr "Date de l'autorisation"
 
-#: mica_studies.features.field.inc:6945
+#: mica_studies.features.field.inc:7171
 msgid "Authorization Maelstrom"
 msgstr "Autorisation au programme Maelstrom"
 
-#: mica_studies.features.field.inc:6946
+#: mica_studies.features.field.inc:7172
 msgid "Authorization Specific"
 msgstr "Autorisation spécifique"
 
-#: mica_studies.features.field.inc:6947
+#: mica_studies.features.field.inc:7173
 msgid "Biological samples"
 msgstr "Échantillons Biologiques"
 
-#: mica_studies.features.field.inc:6948
+#: mica_studies.features.field.inc:7174
 msgid "Body"
 msgstr "Corps"
 
-#: mica_studies.features.field.inc:6949
+#: mica_studies.features.field.inc:7175
 msgid "Can this field have multiple values?"
 msgstr "Est-ce que ce champ peut avoir plusieurs valeurs?"
 
-#: mica_studies.features.field.inc:6950
+#: mica_studies.features.field.inc:7176
 msgid "Categories"
 msgstr "Catégories"
 
-#: mica_studies.features.field.inc:6951
-msgid "City"
-msgstr "Ville"
-
-#: mica_studies.features.field.inc:6952
+#: mica_studies.features.field.inc:7177
 msgid "Comment"
 msgstr "Commentaire"
 
-#: mica_studies.features.field.inc:6953
+#: mica_studies.features.field.inc:7178
 msgid "Comments"
 msgstr "Commentaires"
 
-#: mica_studies.features.field.inc:6954
+#: mica_studies.features.field.inc:7179
 msgid "Complete name"
 msgstr "Nom complet"
 
-#: mica_studies.features.field.inc:6955
+#: mica_studies.features.field.inc:7180
 msgid "Contact Name"
 msgstr "Nom du contact"
 
-#: mica_studies.features.field.inc:6956
+#: mica_studies.features.field.inc:7181
 msgid "Contacts"
 msgstr "Contacts"
 
-#: mica_studies.features.field.inc:6957
+#: mica_studies.features.field.inc:7182
 msgid "Content Type"
-msgstr ""
+msgstr "Type de contenu"
 
-#: mica_studies.features.field.inc:6958
+#: mica_studies.features.field.inc:7183
 msgid "Content Type Label"
 msgstr ""
 
-#: mica_studies.features.field.inc:6959
+#: mica_studies.features.field.inc:7184
 msgid "Countries"
 msgstr "Pays"
 
-#: mica_studies.features.field.inc:6960
-msgid "Country"
-msgstr "Pays"
+#: mica_studies.features.field.inc:7185
+msgid "Data (questionnaire-derived, measured…)"
+msgstr ""
 
-#: mica_studies.features.field.inc:6961
+#: mica_studies.features.field.inc:7186
+msgid "Data Access Committee member"
+msgstr ""
+
+#: mica_studies.features.field.inc:7187
 msgid "Data Sources"
 msgstr ""
 
-#: mica_studies.features.field.inc:6962
-msgid "Date"
-msgstr "Date"
-
-#: mica_studies.features.field.inc:6963
+#: mica_studies.features.field.inc:7188
 msgid "Email"
 msgstr "Courriel"
 
-#: mica_studies.features.field.inc:6964
+#: mica_studies.features.field.inc:7189
 msgid "End year"
 msgstr "Dernière année"
 
-#: mica_studies.features.field.inc:6965
+#: mica_studies.features.field.inc:7190
 msgid "Ethnic origin"
 msgstr "Origine ethnique"
 
-#: mica_studies.features.field.inc:6966
+#: mica_studies.features.field.inc:7191
 msgid "Field Name"
 msgstr ""
 
-#: mica_studies.features.field.inc:6967
+#: mica_studies.features.field.inc:7192
 msgid "Field machine name"
 msgstr ""
 
-#: mica_studies.features.field.inc:6968
+#: mica_studies.features.field.inc:7193
 msgid "Files"
-msgstr ""
+msgstr "Fichiers"
 
-#: mica_studies.features.field.inc:6969
+#: mica_studies.features.field.inc:7194
 msgid "For how many people have biological samples been collected?"
 msgstr "Combien de participants ont déjà fourni un échantillon biologique, duquel il sera possible d’extraire de l’ADN?"
 
-#: mica_studies.features.field.inc:6970
+#: mica_studies.features.field.inc:7195
 msgid "Gender"
 msgstr "Sexe"
 
-#: mica_studies.features.field.inc:6971
+#: mica_studies.features.field.inc:7196
 msgid "Health status"
 msgstr "État de santé"
 
-#: mica_studies.features.field.inc:6972
+#: mica_studies.features.field.inc:7197
 msgid "How is information obtained? (answer by yes or no, and specify if the information collection is cross sectional or if it involves repeated measurements)"
 msgstr "De quelles façons l’information est-elle recueillie ? (Si applicable, spécifier également si la collecte d’information est effectuée de façon transversale ou continue (impliquant des mesures répétées))"
 
-#: mica_studies.features.field.inc:6973
-#: mica_studies.views_default.inc:1634;1814
+#: mica_studies.features.field.inc:7198
 msgid "How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?"
 msgstr "Combien de participants seront recrutés ? Ou, si le recrutement est terminé, quel est le nombre final de participants ?"
 
-#: mica_studies.features.field.inc:6974
+#: mica_studies.features.field.inc:7199
 msgid "How many people have joined the study?"
 msgstr "Combien de participants ont déjà été recrutés ?"
 
-#: mica_studies.features.field.inc:6975
+#: mica_studies.features.field.inc:7200
 msgid "How many people have provided or should provide biological samples, frolm which DNA could be extracted?"
 msgstr "Combien de participants ont fourni ou fourniront un échantillon biologique duquel il sera possible d’extraire de l’ADN?"
 
-#: mica_studies.features.field.inc:6976
+#: mica_studies.features.field.inc:7201
 msgid "If needed, supplementary information"
 msgstr "Information supplémentaire, si nécessaire"
 
-#: mica_studies.features.field.inc:6977
+#: mica_studies.features.field.inc:7202
 msgid "In date of"
 msgstr "En date du"
 
-#: mica_studies.features.field.inc:6978
-#: mica_studies.features.inc:105
+#: mica_studies.features.field.inc:7203
 msgid "Institution"
 msgstr "Organisation"
 
-#: mica_studies.features.field.inc:6979
+#: mica_studies.features.field.inc:7205
 msgid "Investigators"
 msgstr "Chercheurs"
 
-#: mica_studies.features.field.inc:6980
+#: mica_studies.features.field.inc:7206
 msgid "Label"
-msgstr ""
+msgstr "Étiquette"
 
-#: mica_studies.features.field.inc:6981
-msgid "Legacy Id"
-msgstr ""
-
-#: mica_studies.features.field.inc:6982
+#: mica_studies.features.field.inc:7207
 msgid "Machine name of the content type that declares this field"
 msgstr ""
 
-#: mica_studies.features.field.inc:6983
+#: mica_studies.features.field.inc:7208
 msgid "Marker paper describing your study"
 msgstr "Article de référence décrivant votre étude"
 
-#: mica_studies.features.field.inc:6984
+#: mica_studies.features.field.inc:7209
 msgid "Name of the content type that declares this field"
 msgstr ""
 
-#: mica_studies.features.field.inc:6985
+#: mica_studies.features.field.inc:7210
 msgid "Name of the person authorising the contribution to Maelstrom Research"
 msgstr "Nom de la personne qui complète ce formulaire et autorise la contribution à la plateforme MAELSTROM RESEARCH"
 
-#: mica_studies.features.field.inc:6986
+#: mica_studies.features.field.inc:7211
 msgid "Name of the person authorising the contribution to [SPECIFIC NETWORK]"
 msgstr "Nom de la personne qui complète ce formulaire et autorise la contribution à [SPECIFIC NETWORK]"
 
-#: mica_studies.features.field.inc:6987
+#: mica_studies.features.field.inc:7212
 msgid "No limits in the number of participants"
 msgstr "Nombre de participants non déterminé (Illimité)"
 
-#: mica_studies.features.field.inc:6988
+#: mica_studies.features.field.inc:7213
 msgid "No limits in the number of samples"
 msgstr "Nombre de participants avec échantillons non déterminé (Illimité)"
 
-#: mica_studies.features.field.inc:6989
+#: mica_studies.features.field.inc:7214
 msgid "Objectives"
 msgstr "Objectifs"
 
-#: mica_studies.features.field.inc:6990
+#: mica_studies.features.field.inc:7216
 msgid "Please specify"
 msgstr "Spécifier"
 
-#: mica_studies.features.field.inc:6991
+#: mica_studies.features.field.inc:7217
 msgid "Please specify type of tissues"
-msgstr "Spécifier le type de tissus"
-
-#: mica_studies.features.field.inc:6992
-msgid "Postal Code"
-msgstr "Code postal"
-
-#: mica_studies.features.field.inc:6993
-msgid "Repeatable"
 msgstr ""
 
-#: mica_studies.features.field.inc:6994
+#: mica_studies.features.field.inc:7218
+msgid "Pubmed Id"
+msgstr "Identifiant Pubmed"
+
+#: mica_studies.features.field.inc:7219
+msgid "Repeatable"
+msgstr "R/p/table"
+
+#: mica_studies.features.field.inc:7220
 msgid "Specify the sources of recruitment"
 msgstr "Spécifier les sources de recrutement"
 
-#: mica_studies.features.field.inc:6995
+#: mica_studies.features.field.inc:7221
 msgid "Start year"
 msgstr "Année de départ"
 
-#: mica_studies.features.field.inc:6996
-msgid "Street"
-msgstr "Rue"
-
-#: mica_studies.features.field.inc:6997
+#: mica_studies.features.field.inc:7222
 msgid "Telephone"
 msgstr "Téléphone"
 
-#: mica_studies.features.field.inc:6998
+#: mica_studies.features.field.inc:7223
 msgid "The study targets the recruitment of"
 msgstr "L’étude vise le recrutement de"
 
-#: mica_studies.features.field.inc:6999
+#: mica_studies.features.field.inc:7224
 msgid "Value Type"
 msgstr "Type de valeur"
 
-#: mica_studies.features.field.inc:7000
+#: mica_studies.features.field.inc:7225
 msgid "Website"
 msgstr "Site Web"
 
-#: mica_studies.features.field.inc:7001
+#: mica_studies.features.field.inc:7226
 msgid "What are the biological samples collected?"
 msgstr "Quels types d’échantillons sont recueillis ?"
 
-#: mica_studies.features.field.inc:7002
+#: mica_studies.features.field.inc:7227
 msgid "What are the inclusion criteria for participants’ selection"
 msgstr "Quels sont les critères d’inclusion pour la sélection des participants"
 
-#: mica_studies.features.field.inc:7003
+#: mica_studies.features.field.inc:7228
 msgid "What are the principal objectives of the study?"
 msgstr "Quels sont les principaux objectifs de l’étude?"
 
-#: mica_studies.features.field.inc:7004
+#: mica_studies.features.field.inc:7229
 msgid "What is the Web address where information on the study is made available?"
 msgstr "Adresse du Site Web Officiel de l’étude, si disponible?"
 
-#: mica_studies.features.field.inc:7005
+#: mica_studies.features.field.inc:7230
 msgid "What is the baseline design of the study"
 msgstr "Quel est le devis de l’étude?"
 
-#: mica_studies.features.field.inc:7006
+#: mica_studies.features.field.inc:7231
 msgid "when appropriate, specify the criteria."
 msgstr ""
 
-#: mica_studies.features.inc:81
-msgid "Contact"
-msgstr "Contact"
-
-#: mica_studies.features.inc:83
-msgid "Description of a Contact, consisting of a person and an Institution."
-msgstr ""
-
-#: mica_studies.features.inc:85
-msgid "Person and Institution Names"
-msgstr ""
-
-#: mica_studies.features.inc:89
-#: mica_studies.features.menu_links.inc:76
-#: mica_studies.views_default.inc:1198
+#: mica_studies.features.inc:81 mica_studies.features.menu_links.inc:76 mica_studies.views_default.inc:1200
 msgid "Documents"
 msgstr ""
 
-#: mica_studies.features.inc:91
+#: mica_studies.features.inc:83
 msgid "Content type to present one or more documents"
 msgstr ""
 
-#: mica_studies.features.inc:93;101
+#: mica_studies.features.inc:85;93
 msgid "Title"
 msgstr "Titre"
 
-#: mica_studies.features.inc:97
+#: mica_studies.features.inc:89
 msgid "Field Description"
 msgstr ""
 
-#: mica_studies.features.inc:99
+#: mica_studies.features.inc:91
 msgid "Description of information collected about the studies."
 msgstr ""
 
-#: mica_studies.features.inc:107
-msgid "Description of an Institution."
+#: mica_studies.features.inc:97
+msgid "Study"
 msgstr ""
 
-#: mica_studies.features.inc:109
-msgid "Institution Name"
-msgstr "Nom de l'organisation"
-
-#: mica_studies.features.inc:113
-msgid "Study"
-msgstr "Étude"
-
-#: mica_studies.features.inc:115
+#: mica_studies.features.inc:99
 msgid "Study portal. Create a content of this type when registering a new study."
 msgstr ""
 
-#: mica_studies.features.inc:117
-#: mica_studies.views_default.inc:1210;1312;1632;1812
+#: mica_studies.features.inc:101
 msgid "Name"
 msgstr "Nom"
 
@@ -359,7 +318,10 @@ msgstr "Menu principal"
 
 #: mica_studies.features.menu_custom.inc:22
 msgid "The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar."
-msgstr "Le <em>Menu principla</em> est utilisé sur plusieurs sites pour présenter les principales section du site, souvent dans une barre de navigation en haut de page."
+msgstr ""
+"Le <em>menu Principal</em> est fréquemment utilisé pour afficher les "
+"sections importantes du site, souvent dans la barre de navigation de "
+"haut de page."
 
 #: mica_studies.features.menu_links.inc:77
 msgid "Home"
@@ -370,268 +332,274 @@ msgid "Resources"
 msgstr ""
 
 #: mica_studies.features.menu_links.inc:79
-#: mica_studies.views_default.inc:1616
 msgid "Studies"
 msgstr "Études"
 
-#: mica_studies.pages.inc:36
-#: mica_studies.module:23
+#: mica_studies.pages.inc:36 mica_studies.module:23
 msgid "Export"
-msgstr ""
+msgstr "Exporter"
 
-#: mica_studies.pages.inc:37
-#: mica_studies.views_default.inc:1211
+#: mica_studies.pages.inc:37 mica_studies.views_default.inc:1213
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: mica_studies.pages.inc:39
 msgid "There are no data exporters."
 msgstr ""
 
-#: mica_studies.views_default.inc:230;512;703;1021;1197;1301;1388;1615;1799
+#: mica_studies.views_default.inc:234;520;715;1019;1199;1307;1398;1630;1819
 msgid "Master"
 msgstr "Vue principale"
 
-#: mica_studies.views_default.inc:231;513
+#: mica_studies.views_default.inc:235;521
 msgid "CSV Contact Export"
 msgstr ""
 
-#: mica_studies.views_default.inc:232;514;705;1023;1199;1303;1390;1617;1801
+#: mica_studies.views_default.inc:236;522;717;1021;1201;1309;1400;1632;1821
 msgid "more"
-msgstr ""
+msgstr "plus"
 
-#: mica_studies.views_default.inc:233;515;706;1024;1200;1304;1391;1618;1802
+#: mica_studies.views_default.inc:237;523;718;1022;1202;1310;1401;1633;1822
 msgid "Apply"
 msgstr "Appliquer"
 
-#: mica_studies.views_default.inc:234;516;707;1025;1201;1305;1392;1619;1803
+#: mica_studies.views_default.inc:238;524;719;1023;1203;1311;1402;1634;1823
 msgid "Reset"
-msgstr ""
+msgstr "Réinitialiser"
 
-#: mica_studies.views_default.inc:235;517;708;1026;1202;1306;1393;1620;1804
-msgid "Sort by"
-msgstr "Trier par"
+#: mica_studies.views_default.inc:239;525;720;1024;1204;1312;1403;1635;1824
+msgid "Trier par"
+msgstr ""Trier par""
 
-#: mica_studies.views_default.inc:236;518;709;1027;1203;1307;1394;1621;1805
+#: mica_studies.views_default.inc:240;526;721;1025;1205;1313;1404;1636;1825
 msgid "Asc"
 msgstr "Asc"
 
-#: mica_studies.views_default.inc:237;519;710;1028;1204;1308;1395;1622;1806
+#: mica_studies.views_default.inc:241;527;722;1026;1206;1314;1405;1637;1826
 msgid "Desc"
 msgstr "Desc"
 
-#: mica_studies.views_default.inc:238;520;711;1029;1205;1309;1396;1623;1807
+#: mica_studies.views_default.inc:242;528;723;1027;1207;1315;1406;1638;1827
 msgid "Items per page"
 msgstr "Items par page"
 
-#: mica_studies.views_default.inc:239;521;712;1030;1206;1310;1397;1624;1808
+#: mica_studies.views_default.inc:243;529;724;1028;1208;1316;1407;1639;1828
 msgid "- All -"
 msgstr "- Tout - "
 
-#: mica_studies.views_default.inc:240;522;713;1031;1207;1311;1398;1625;1809
+#: mica_studies.views_default.inc:244;530;725;1029;1209;1317;1408;1640;1829
 msgid "Offset"
 msgstr "Décalage"
 
-#: mica_studies.views_default.inc:241;523;714;1033
+#: mica_studies.views_default.inc:245;531;726;1031
 msgid "title"
-msgstr "titre"
+msgstr "title"
 
-#: mica_studies.views_default.inc:242
+#: mica_studies.views_default.inc:246
 msgid "field_contact_name:title"
 msgstr "field_contact_name:title"
 
-#: mica_studies.views_default.inc:243
+#: mica_studies.views_default.inc:247
 msgid "[field_contact_name_2-title]"
 msgstr "[field_contact_name_2-title]"
 
-#: mica_studies.views_default.inc:244
+#: mica_studies.views_default.inc:248
 msgid "field_contact_name:given"
 msgstr "field_contact_name:given"
 
-#: mica_studies.views_default.inc:245
+#: mica_studies.views_default.inc:249
 msgid "field_contact_name:family"
 msgstr "field_contact_name:family"
 
-#: mica_studies.views_default.inc:246
+#: mica_studies.views_default.inc:250
 msgid "field_contact_email:email"
 msgstr "field_contact_email:email"
 
-#: mica_studies.views_default.inc:247
+#: mica_studies.views_default.inc:251
 msgid "field_telephone"
 msgstr "field_telephone"
 
-#: mica_studies.views_default.inc:248
+#: mica_studies.views_default.inc:252
 msgid "field_institution"
 msgstr "field_institution"
 
-#: mica_studies.views_default.inc:249;532;719;1043
+#: mica_studies.views_default.inc:253;540;731;1041
 msgid "Data export"
 msgstr "Export Data"
 
-#: mica_studies.views_default.inc:524;1034
+#: mica_studies.views_default.inc:532;1032
 msgid "body"
 msgstr "body"
 
-#: mica_studies.views_default.inc:525
+#: mica_studies.views_default.inc:533
 msgid "field_original_field_label"
 msgstr "field_original_field_label"
 
-#: mica_studies.views_default.inc:526
+#: mica_studies.views_default.inc:534
 msgid "field_original_field_name"
 msgstr "field_original_field_name"
 
-#: mica_studies.views_default.inc:527
+#: mica_studies.views_default.inc:535
 msgid "field_bundle_label"
-msgstr "field_bundle_label"
+msgstr ""
 
-#: mica_studies.views_default.inc:528
+#: mica_studies.views_default.inc:536
 msgid "field_bundle"
-msgstr "field_bundle"
+msgstr ""
 
-#: mica_studies.views_default.inc:529
+#: mica_studies.views_default.inc:537
 msgid "field_value_type"
-msgstr "field_value_type"
+msgstr ""
 
-#: mica_studies.views_default.inc:530
+#: mica_studies.views_default.inc:538
 msgid "field_categories"
-msgstr "field_categories"
+msgstr ""
 
-#: mica_studies.views_default.inc:531
+#: mica_studies.views_default.inc:539
 msgid "field_repeatable"
-msgstr "field_repeatable"
+msgstr ""
 
-#: mica_studies.views_default.inc:704
+#: mica_studies.views_default.inc:716
 msgid "CSV Institution Export"
 msgstr ""
 
-#: mica_studies.views_default.inc:715
+#: mica_studies.views_default.inc:727
 msgid "field_street"
-msgstr "field_street"
+msgstr ""
 
-#: mica_studies.views_default.inc:716
+#: mica_studies.views_default.inc:728
 msgid "field_city"
-msgstr "field_city"
+msgstr ""
 
-#: mica_studies.views_default.inc:717
+#: mica_studies.views_default.inc:729
 msgid "field_postal_code"
-msgstr "field_postal_code"
+msgstr ""
 
-#: mica_studies.views_default.inc:718
+#: mica_studies.views_default.inc:730
 msgid "field_country"
-msgstr "field_country"
+msgstr ""
 
-#: mica_studies.views_default.inc:1022
+#: mica_studies.views_default.inc:1020
 msgid "CSV Study Export"
 msgstr ""
 
-#: mica_studies.views_default.inc:1032
+#: mica_studies.views_default.inc:1030
 msgid "field_study_legacy_id"
-msgstr "field_study_legacy_id"
+msgstr ""
 
-#: mica_studies.views_default.inc:1035;1633
+#: mica_studies.views_default.inc:1033;1648
 msgid "Broken handler field_data_field_full_name.field_full_name"
 msgstr ""
 
-#: mica_studies.views_default.inc:1036
+#: mica_studies.views_default.inc:1034
 msgid "field_website"
-msgstr "field_website"
+msgstr ""
+
+#: mica_studies.views_default.inc:1035
+msgid "field_contact"
+msgstr ""
+
+#: mica_studies.views_default.inc:1036
+msgid "field_investigator"
+msgstr ""
 
 #: mica_studies.views_default.inc:1037
-msgid "field_contact"
-msgstr "field_contact"
+msgid "field_target_number_participants"
+msgstr ""
 
 #: mica_studies.views_default.inc:1038
-msgid "field_investigator"
-msgstr "field_investigator"
+msgid "field_target_number_biosamples"
+msgstr ""
 
 #: mica_studies.views_default.inc:1039
-msgid "field_target_number_participants"
-msgstr "field_target_number_participants"
+msgid "field_p3g_observatory_link"
+msgstr ""
 
 #: mica_studies.views_default.inc:1040
-msgid "field_target_number_biosamples"
-msgstr "field_target_number_biosamples"
-
-#: mica_studies.views_default.inc:1041
-msgid "field_p3g_observatory_link"
-msgstr "field_p3g_observatory_link"
-
-#: mica_studies.views_default.inc:1042
 msgid "[field_p3g_observatory_link-url]"
-msgstr "[field_p3g_observatory_link-url]"
+msgstr ""
 
-#: mica_studies.views_default.inc:1208
+#: mica_studies.views_default.inc:1210
 msgid "empty_documents"
 msgstr "empty_documents"
 
-#: mica_studies.views_default.inc:1209
+#: mica_studies.views_default.inc:1211
 msgid "No document found."
 msgstr ""
 
-#: mica_studies.views_default.inc:1212
+#: mica_studies.views_default.inc:1212;1318;1647;1832
+msgid "Nom"
+msgstr ""
+
+#: mica_studies.views_default.inc:1214
 msgid "Download"
-msgstr ""
+msgstr "Téléchargement"
 
-#: mica_studies.views_default.inc:1213;1315;1401;1637;1817
+#: mica_studies.views_default.inc:1215;1321;1411;1652;1837
 msgid "Page"
-msgstr ""
+msgstr "Page"
 
-#: mica_studies.views_default.inc:1302
+#: mica_studies.views_default.inc:1308
 msgid "Search Filters"
 msgstr ""
 
-#: mica_studies.views_default.inc:1313
+#: mica_studies.views_default.inc:1319
 msgid "Text (indexed)"
 msgstr ""
 
-#: mica_studies.views_default.inc:1314;1816
+#: mica_studies.views_default.inc:1320;1836
 msgid "Fulltext search"
 msgstr ""
 
-#: mica_studies.views_default.inc:1389
+#: mica_studies.views_default.inc:1399
 msgid "Recent News"
 msgstr ""
 
-#: mica_studies.views_default.inc:1399
+#: mica_studies.views_default.inc:1409
 msgid "empty_news"
 msgstr "empty_news"
 
-#: mica_studies.views_default.inc:1400
+#: mica_studies.views_default.inc:1410
 msgid "No news found."
 msgstr ""
 
-#: mica_studies.views_default.inc:1626
-msgid ""
-"This page displays the list of the consortium's studies. Each study is described in a same standard way that can be easily customized to reflect consortium specificities. However, Mica suggests by default a list of important study characteristics that should be considered if there is an aim for the consortium to participate in data harmonization projects with other consortia or studies. \n"
-"\n"
-"This Mica study catalogue comes with an advanced query tool using user-friendly facets <br/><br/>"
+#: mica_studies.views_default.inc:1631
+msgid "Studies"
+msgstr "Études"
+
+#: mica_studies.views_default.inc:1641
+msgid "This page displays the list of the consortium's studies. Each study is described in a same standard way that can be easily customized to reflect consortium specificities. However, Mica suggests by default a list of important study characteristics that should be considered if there is an aim for the consortium to participate in data harmonization projects with other consortia or studies. \n\nThis Mica study catalogue comes with an advanced query tool using user-friendly facets <br/><br/>"
 msgstr ""
 
-#: mica_studies.views_default.inc:1629;1810
+#: mica_studies.views_default.inc:1644;1830
 msgid "empty_studies"
 msgstr "empty_studies"
 
-#: mica_studies.views_default.inc:1630;1811
+#: mica_studies.views_default.inc:1645;1831
 msgid "No study found."
 msgstr ""
 
-#: mica_studies.views_default.inc:1631
+#: mica_studies.views_default.inc:1646
 msgid "mica_study_information_nid"
 msgstr ""
 
-#: mica_studies.views_default.inc:1635;1815
+#: mica_studies.views_default.inc:1649;1834
+msgid "How many participants..."
+msgstr ""
+
+#: mica_studies.views_default.inc:1650;1835
 msgid "Country(ies)"
 msgstr "Pays"
 
-#: mica_studies.views_default.inc:1636
+#: mica_studies.views_default.inc:1651
 msgid "Broken handler field_data_field_p3g_observatory_link.field_p3g_observatory_link"
 msgstr ""
 
-#: mica_studies.views_default.inc:1800
+#: mica_studies.views_default.inc:1820
 msgid "Studies Search"
 msgstr ""
 
-#: mica_studies.views_default.inc:1813
+#: mica_studies.views_default.inc:1833
 msgid "Broken handler search_api_index_studies_index.field_full_name"
 msgstr ""
 
@@ -657,7 +625,7 @@ msgstr ""
 
 #: mica_studies.module:93;115
 msgid "Search"
-msgstr ""
+msgstr "Recherche"
 
 #: mica_studies.info:0
 msgid "Mica Studies"
@@ -671,11 +639,6 @@ msgstr ""
 msgid "OBiBa"
 msgstr ""
 
-#: field:comment_body:comment_node_study:label
-msgctxt "comment_body:comment_node_study:label"
-msgid "Comment"
-msgstr ""
-
 #: field:body:study:label
 msgctxt "body:study:label"
 msgid "Objectives"
@@ -684,17 +647,32 @@ msgstr "Objectifs"
 #: field:body:study:description
 msgctxt "body:study:description"
 msgid "What are the principal objectives of the study?"
-msgstr "Quels sont les principaux objectifs de l’étude?"
+msgstr ""
+
+#: field:field_access_biosamples:study:label
+msgctxt "field_access_biosamples:study:label"
+msgid "Biological samples"
+msgstr "Échantillons biologiques"
+
+#: field:field_access_data:study:label
+msgctxt "field_access_data:study:label"
+msgid "Data (questionnaire-derived, measured…)"
+msgstr ""
+
+#: field:field_access_other:study:label
+msgctxt "field_access_other:study:label"
+msgid "Other"
+msgstr "Autre"
 
 #: field:field_access_other_sp:study:label
 msgctxt "field_access_other_sp:study:label"
 msgid "Please specify"
-msgstr "Spécifier"
+msgstr "Veuillez spéficier"
 
 #: field:field_acroym:study:label
 msgctxt "field_acroym:study:label"
 msgid "Acronym"
-msgstr "Acronyme"
+msgstr "Acronym"
 
 #: field:field_acroym:study:description
 msgctxt "field_acroym:study:description"
@@ -766,8 +744,8 @@ msgctxt "field_comments:study:label"
 msgid "Comments"
 msgstr "Commentaires"
 
-#: field:field_contact:study:label
-msgctxt "field_contact:study:label"
+#: field:field_contacts:study:label
+msgctxt "field_contacts:study:label"
 msgid "Contacts"
 msgstr "Contacts"
 
@@ -813,8 +791,16 @@ msgstr "Sources de données"
 
 #: field:field_data_sources:study:description
 msgctxt "field_data_sources:study:description"
-msgid "How is information obtained? (answer by yes or no, and specify if the information collection is cross sectional or if it involves repeated measurements)"
+msgid ""
+"How is information obtained? (answer by yes or no, and specify if the "
+"information collection is cross sectional or if it involves repeated "
+"measurements)"
 msgstr "De quelles façons l’information est-elle recueillie ? (Si applicable, spécifier également si la collecte d’information est effectuée de façon transversale ou continue (impliquant des mesures répétées))"
+
+#: field:field_data_sources_sp:study:label
+msgctxt "field_data_sources_sp:study:label"
+msgid "Please specify"
+msgstr "Spécifier"
 
 #: field:field_design:study:label
 msgctxt "field_design:study:label"
@@ -839,20 +825,20 @@ msgstr "Origine ethnique"
 #: field:field_followup_end_year:study:label
 msgctxt "field_followup_end_year:study:label"
 msgid "End year"
-msgstr "Dernière année"
+msgstr ""
 
 #: field:field_followup_start_year:study:label
 msgctxt "field_followup_start_year:study:label"
 msgid "Start year"
-msgstr "Année de départ"
+msgstr ""
 
 #: field:field_health_status:study:label
 msgctxt "field_health_status:study:label"
 msgid "Health status"
 msgstr "État de santé"
 
-#: field:field_investigator:study:label
-msgctxt "field_investigator:study:label"
+#: field:field_investigators:study:label
+msgctxt "field_investigators:study:label"
 msgid "Investigators"
 msgstr "Chercheurs"
 
@@ -895,6 +881,11 @@ msgstr "Information supplémentaire, si nécessaire"
 msgctxt "field_recruitment:study:label"
 msgid "The study targets the recruitment of"
 msgstr "L’étude vise le recrutement de"
+
+#: field:field_recruitment_other:study:label
+msgctxt "field_recruitment_other:study:label"
+msgid "Please specify"
+msgstr "Spécifier"
 
 #: field:field_recruitment_other_sp:study:label
 msgctxt "field_recruitment_other_sp:study:label"
@@ -953,12 +944,16 @@ msgstr "Information supplémentaire, si nécessaire"
 
 #: field:field_target_number_biosamples:study:label
 msgctxt "field_target_number_biosamples:study:label"
-msgid "How many people have provided or should provide biological samples, frolm which DNA could be extracted?"
+msgid "l"
+"How many people have provided or should provide biological samples, "
+"frolm which DNA could be extracted?"
 msgstr "Combien de participants ont fourni ou fourniront un échantillon biologique duquel il sera possible d’extraire de l’ADN?"
 
 #: field:field_target_number_participants:study:label
 msgctxt "field_target_number_participants:study:label"
-msgid "How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?"
+msgid ""
+"How many people are planned to be recruited? Or if the study is "
+"completed, what is the final number of participants?"
 msgstr "Combien de participants seront recrutés ? Ou, si le recrutement est terminé, quel est le nombre final de participants ?"
 
 #: field:field_tissues_sp:study:label
@@ -973,7 +968,9 @@ msgstr "Site Web"
 
 #: field:field_website:study:description
 msgctxt "field_website:study:description"
-msgid "What is the Web address where information on the study is made available?"
+msgid ""
+"What is the Web address where information on the study is made "
+"available?"
 msgstr "Adresse du Site Web Officiel de l’étude, si disponible?"
 
 #: field:title_field:study:label
@@ -991,25 +988,35 @@ msgctxt "mica_opal:study:label"
 msgid "Opal"
 msgstr ""
 
-#: field:field_access_data:study:label
-msgctxt "field_access_data:study:label"
-msgid "Data (questionnaire-derived, measured…)"
-msgstr "Données"
+#: field:field_access_biosamples:#allowed_values:0
+msgctxt "field_access_biosamples:#allowed_values:0"
+msgid "No"
+msgstr "Non"
 
-#: field:field_access_biosamples:study:label
-msgctxt "field_access_biosamples:study:label"
-msgid "Biological samples"
-msgstr "Échantillons biologiques"
+#: field:field_access_biosamples:#allowed_values:1
+msgctxt "field_access_biosamples:#allowed_values:1"
+msgid "Yes"
+msgstr "Oui"
 
-#: field:field_access_other:study:label
-msgctxt "field_access_other:study:label"
-msgid "Other"
-msgstr "Autre"
+#: field:field_access_data:#allowed_values:0
+msgctxt "field_access_data:#allowed_values:0"
+msgid "No"
+msgstr "Non"
 
-#: field:field_pubmedid:study:label
-msgctxt "field_pubmedid:study:label"
-msgid "Pubmed Id"
-msgstr "Identifier Pubmed"
+#: field:field_access_data:#allowed_values:1
+msgctxt "field_access_data:#allowed_values:1"
+msgid "Yes"
+msgstr "Oui"
+
+#: field:field_access_other:#allowed_values:0
+msgctxt "field_access_other:#allowed_values:0"
+msgid "No"
+msgstr "Non"
+
+#: field:field_access_other:#allowed_values:1
+msgctxt "field_access_other:#allowed_values:1"
+msgid "Yes"
+msgstr "Oui"
 
 #: field:field_authorization_maelstrom:#allowed_values:0
 msgctxt "field_authorization_maelstrom:#allowed_values:0"
@@ -1019,17 +1026,17 @@ msgstr "Non"
 #: field:field_authorization_maelstrom:#allowed_values:1
 msgctxt "field_authorization_maelstrom:#allowed_values:1"
 msgid "Yes"
-msgstr "Oui"
+msgstr ""
 
 #: field:field_authorization_specific:#allowed_values:0
 msgctxt "field_authorization_specific:#allowed_values:0"
 msgid "No"
-msgstr "Non"
+msgstr ""
 
 #: field:field_authorization_specific:#allowed_values:1
 msgctxt "field_authorization_specific:#allowed_values:1"
 msgid "Yes"
-msgstr "Oui"
+msgstr ""
 
 #: field:field_bio_samples_management:#allowed_values:blood
 msgctxt "field_bio_samples_management:#allowed_values:blood"
@@ -1088,7 +1095,9 @@ msgstr "Accès direct aux dossiers médicaux"
 
 #: field:field_data_sources:#allowed_values:health_databases
 msgctxt "field_data_sources:#allowed_values:health_databases"
-msgid "Electronic health databases (death or hospitalization registries, etc.)"
+msgid ""
+"Electronic health databases (death or hospitalization registries, "
+"etc.)"
 msgstr "Bases de données électroniques de santé (Décès, hospitalisation, etc.)"
 
 #: field:field_data_sources:#allowed_values:genealogical_recorde
@@ -1225,34 +1234,3 @@ msgstr "Homme"
 msgctxt "field_selection_gender:#allowed_values:women"
 msgid "Women"
 msgstr "Femme"
-
-#: field:field_access_data:#allowed_values:0
-msgctxt "field_access_data:#allowed_values:0"
-msgid "No"
-msgstr "Non"
-
-#: field:field_access_data:#allowed_values:1
-msgctxt "field_access_data:#allowed_values:1"
-msgid "Yes"
-msgstr "Oui"
-
-#: field:field_access_biosamples:#allowed_values:0
-msgctxt "field_access_biosamples:#allowed_values:0"
-msgid "No"
-msgstr "Non"
-
-#: field:field_access_biosamples:#allowed_values:1
-msgctxt "field_access_biosamples:#allowed_values:1"
-msgid "Yes"
-msgstr "Oui"
-
-#: field:field_access_other:#allowed_values:0
-msgctxt "field_access_other:#allowed_values:0"
-msgid "No"
-msgstr "Non"
-
-#: field:field_access_other:#allowed_values:1
-msgctxt "field_access_other:#allowed_values:1"
-msgid "Yes"
-msgstr "Oui"
-
