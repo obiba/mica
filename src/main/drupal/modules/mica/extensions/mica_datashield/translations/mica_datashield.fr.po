@@ -6,13 +6,13 @@
 #  mica_datashield.pages.inc: n/a
 #  mica_datashield.module: n/a
 #  mica_datashield.info: n/a
+# NAME <EMAIL@ADDRESS>, 2012.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2012-01-19 15:13-0500\n"
-"PO-Revision-Date: 2012-01-19 15:13-0500\n"
+"PO-Revision-Date: 2012-01-25 11:49-0500\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -22,73 +22,75 @@ msgstr ""
 
 #: mica_datashield.pages.inc:32
 msgid "Step 1: Select Variables"
-msgstr ""
+msgstr "Etape 1 : Sélectionnez une variable"
 
 #: mica_datashield.pages.inc:42
 msgid "Variables"
-msgstr ""
+msgstr "Variables"
 
 #: mica_datashield.pages.inc:47
 msgid "Add Variable"
-msgstr ""
+msgstr "Ajouter une variable"
 
 #: mica_datashield.pages.inc:54
 msgid "No variables selected"
-msgstr ""
+msgstr "Aucun variable sélectionnée"
 
 #: mica_datashield.pages.inc:59
 msgid "Remove Variable(s)"
-msgstr ""
+msgstr "Supprimer une variable"
 
 #: mica_datashield.pages.inc:64
 msgid "Step 2: Select Model"
-msgstr ""
+msgstr "Etape 2 : Sélectionnez un modèle"
 
 #: mica_datashield.pages.inc:71
 msgid "Model"
-msgstr ""
+msgstr "Modèle"
 
 #: mica_datashield.pages.inc:72
-msgid "The R formula to fit. Should reference the selected variables above (e.g.: "
+msgid ""
+"The R formula to fit. Should reference the selected variables above (e.g.: "
 msgstr ""
+"Formule R à éxecuter. Devrait référencer les variables sélectionnées ci-"
+"dessus (i.e.:"
 
 #: mica_datashield.pages.inc:79
 msgid "Family"
-msgstr ""
+msgstr "Famille"
 
 #: mica_datashield.pages.inc:80
 msgid "Gaussian"
-msgstr ""
+msgstr "Gausse"
 
 #: mica_datashield.pages.inc:80
 msgid "Binomial"
-msgstr ""
+msgstr "Binomial"
 
 #: mica_datashield.pages.inc:80
 msgid "Poisson"
-msgstr ""
+msgstr "Poisson"
 
 #: mica_datashield.pages.inc:86
 msgid "Step 3: DataSHIELD!"
-msgstr ""
+msgstr "Etape 3 : DataSHIELD!"
 
 #: mica_datashield.pages.inc:91
 msgid "DataSHIELD!"
-msgstr ""
+msgstr "DataSHIELD!"
 
 #: mica_datashield.pages.inc:97
 msgid "DataSHIELD Result"
-msgstr ""
+msgstr "Résultats DataSHIELD"
 
 #: mica_datashield.module:7
 msgid "DataSHIELD"
-msgstr ""
+msgstr "DataSHIELD"
 
 #: mica_datashield.info:0;0
 msgid "Mica DataSHIELD"
-msgstr ""
+msgstr "Mica DataSHIELD"
 
 #: mica_datashield.info:0
 msgid "OBiBa"
-msgstr ""
-
+msgstr "OBiBa"
