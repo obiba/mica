@@ -82,7 +82,7 @@ drupal-cache-clear:
 #
 # Mica Build
 #
-mica: mica-install
+mica: mica-install mica-i18n
 	cp src/main/drupal/themes/mica_samara/mica.png target/$(micadir)/themes/seven/logo.png
 	cp src/main/drupal/themes/mica_samara/favicon.ico target/$(micadir)/misc/favicon.ico
 
@@ -98,6 +98,11 @@ mica-install:
 		rm -rf profiles/standard && \
 		rm -rf profiles/minimal ; \
 	fi
+	
+mica-i18n:	
+	mkdir -p target/$(micadir)/translations && \
+	find src/main/drupal -type f -name *.po -exec cp {} target/$(micadir)/translations \;
+		
 	
 htaccess:
 	cp target/$(micadir)/.htaccess target/$(micadir)/.htaccess_bak
