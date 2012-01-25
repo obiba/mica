@@ -6,13 +6,13 @@
 #  mica_opal.module: n/a
 #  mica_opal.info: n/a
 #  includes/opal_connection.inc: n/a
+# NAME <EMAIL@ADDRESS>, 2012.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2012-01-19 15:15-0500\n"
-"PO-Revision-Date: 2012-01-19 15:15-0500\n"
+"PO-Revision-Date: 2012-01-25 11:29-0500\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -22,57 +22,57 @@ msgstr ""
 
 #: mica_opal.module:9
 msgid "Opal"
-msgstr ""
+msgstr "Opal"
 
 #: mica_opal.module:10
 msgid "Connection for Opal data repository."
-msgstr ""
+msgstr "Connexion pour le dépot de données de Opal"
 
 #: mica_opal.info:0
 msgid "Mica Opal"
-msgstr ""
+msgstr "Mica Opal"
 
 #: mica_opal.info:0
 msgid "Allows using Mica and Mica Datasets with an Opal instance"
-msgstr ""
+msgstr "Autorise l'utilisation de Mica et Mica Datasets avec une instance Opal"
 
 #: mica_opal.info:0
 msgid "OBiBa"
-msgstr ""
+msgstr "OBiBa"
 
 #: includes/opal_connection.inc:21;27
 msgid "Opal server"
-msgstr ""
+msgstr "Serveur Opal"
 
 #: includes/opal_connection.inc:29
 msgid "The Opal server secured url (https is required)."
-msgstr ""
+msgstr "URL sécurisée du serveur Opal (hhtps est requis)."
 
 #: includes/opal_connection.inc:34
 msgid "Datasource"
-msgstr ""
+msgstr "Source de données"
 
 #: includes/opal_connection.inc:36
 msgid "The Opal datasource name."
-msgstr ""
+msgstr "Nom de la source de données Opal"
 
 #: includes/opal_connection.inc:40
 msgid "Table"
-msgstr ""
+msgstr "Table"
 
 #: includes/opal_connection.inc:42
 msgid "The Opal table name from which variables and data can be fetched."
 msgstr ""
+"Nom de la table de Opal d'où les variables et les données seront récupérées."
 
 #: includes/opal_connection.inc:56
 msgid "You must provide a valid Opal server url: https://..."
-msgstr ""
+msgstr "Vous devez saisir une URL valide pour le serveur Opal : https://..."
 
 #: includes/opal_connection.inc:62
 msgid "You must provide a valid Opal datasource name."
-msgstr ""
+msgstr "Vous devez saisir un nom de la source de données Opal valide."
 
 #: includes/opal_connection.inc:66
 msgid "You must provide a valid Opal table name."
-msgstr ""
-
+msgstr "Vous devez saisir un nom de table valide pour Opal."
