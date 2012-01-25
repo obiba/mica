@@ -10,13 +10,12 @@
 #  includes/blocks.inc: n/a
 #  mica_dataschemas.info: n/a
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2012-01-19 15:13-0500\n"
-"PO-Revision-Date: 2012-01-19 15:13-0500\n"
-"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-01-25 12:17-0500\n"
+"Last-Translator: asd <asd>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -25,15 +24,15 @@ msgstr ""
 
 #: mica_dataschemas.features.field.inc:3776
 msgid "A Uniform Resource Identifier (URI) is a string of characters used to identify a name or a resource on the Internet."
-msgstr ""
+msgstr "Une URI est une chaîne de caractères utilisée pour identifier un nom ou une resour sur internet."
 
 #: mica_dataschemas.features.field.inc:3777
 msgid "Biochemical measures"
-msgstr ""
+msgstr "Mesures biochimiques"
 
 #: mica_dataschemas.features.field.inc:3778
 msgid "Body"
-msgstr ""
+msgstr "Corps"
 
 #: mica_dataschemas.features.field.inc:3779
 msgid "Body functions and measures"
@@ -41,19 +40,20 @@ msgstr ""
 
 #: mica_dataschemas.features.field.inc:3780
 msgid "Categories"
-msgstr ""
+msgstr "Catégories"
 
 #: mica_dataschemas.features.field.inc:3781
 msgid "Class"
-msgstr ""
+msgstr "Classe"
 
 #: mica_dataschemas.features.field.inc:3782
 msgid "Collection mode"
-msgstr ""
+msgstr "Mode de collection"
 
-#: mica_dataschemas.features.field.inc:3783 mica_dataschemas.features.inc:53
+#: mica_dataschemas.features.field.inc:3783
+#: mica_dataschemas.features.inc:53
 msgid "DataSchema"
-msgstr ""
+msgstr "DataSchema"
 
 #: mica_dataschemas.features.field.inc:3784
 msgid "Disease history"
@@ -65,7 +65,7 @@ msgstr ""
 
 #: mica_dataschemas.features.field.inc:3786
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 #: mica_dataschemas.features.field.inc:3787
 msgid "Life habits / Behaviours"
@@ -81,23 +81,23 @@ msgstr ""
 
 #: mica_dataschemas.features.field.inc:3790
 msgid "Medication"
-msgstr ""
+msgstr "Médication"
 
 #: mica_dataschemas.features.field.inc:3791
 msgid "Missing"
-msgstr ""
+msgstr "Manquante"
 
 #: mica_dataschemas.features.field.inc:3792
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: mica_dataschemas.features.field.inc:3793
 msgid "Period"
-msgstr ""
+msgstr "Période"
 
 #: mica_dataschemas.features.field.inc:3794
 msgid "Project"
-msgstr ""
+msgstr "Projet"
 
 #: mica_dataschemas.features.field.inc:3795
 msgid "Reproductive history"
@@ -105,7 +105,7 @@ msgstr ""
 
 #: mica_dataschemas.features.field.inc:3796
 msgid "Sample"
-msgstr ""
+msgstr "Échantillon"
 
 #: mica_dataschemas.features.field.inc:3797
 msgid "Sociodemographic characteristics"
@@ -113,11 +113,11 @@ msgstr ""
 
 #: mica_dataschemas.features.field.inc:3798
 msgid "Source of information"
-msgstr ""
+msgstr "Source d'information"
 
 #: mica_dataschemas.features.field.inc:3799
 msgid "Study"
-msgstr ""
+msgstr "Étude"
 
 #: mica_dataschemas.features.field.inc:3800
 msgid "Target"
@@ -133,23 +133,24 @@ msgstr ""
 
 #: mica_dataschemas.features.field.inc:3803
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: mica_dataschemas.features.field.inc:3804
 msgid "URI"
-msgstr ""
+msgstr "URI"
 
 #: mica_dataschemas.features.field.inc:3805
 msgid "Unit"
-msgstr ""
+msgstr "Unité"
 
-#: mica_dataschemas.features.field.inc:3806 mica_dataschemas.features.inc:69
+#: mica_dataschemas.features.field.inc:3806
+#: mica_dataschemas.features.inc:69
 msgid "Variable"
-msgstr ""
+msgstr "Variable"
 
 #: mica_dataschemas.features.field.inc:3807
 msgid "Variables"
-msgstr ""
+msgstr "Variables"
 
 #: mica_dataschemas.features.inc:55
 msgid "Identifies and describes a thematic set of core variables that are of particular value in a specified scientific setting."
@@ -157,23 +158,23 @@ msgstr ""
 
 #: mica_dataschemas.features.inc:57;65;73;81
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: mica_dataschemas.features.inc:61
 msgid "Category"
-msgstr ""
+msgstr "Catégorie"
 
 #: mica_dataschemas.features.inc:63
 msgid "Defines a category"
-msgstr ""
+msgstr "Définit une catégorie"
 
 #: mica_dataschemas.features.inc:71
 msgid "DataSchema variable"
-msgstr ""
+msgstr "Variable du DataSchéma"
 
 #: mica_dataschemas.features.inc:77
 msgid "Pairing"
-msgstr ""
+msgstr "Pairage"
 
 #: mica_dataschemas.features.inc:79
 msgid "Describe a pairing for a variable of a study within a dataset"
@@ -181,19 +182,19 @@ msgstr ""
 
 #: mica_dataschemas.features.menu_links.inc:45
 msgid "DataSchemas"
-msgstr ""
+msgstr "DataSchemas"
 
 #: mica_dataschemas.features.menu_links.inc:46
 msgid "Variables Library"
-msgstr ""
+msgstr "Librairie des variables"
 
 #: mica_dataschemas.module:68;82
 msgid "Add a !name"
-msgstr ""
+msgstr "Ajouter un !name"
 
 #: mica_dataschemas.module:95
 msgid "View Variables"
-msgstr ""
+msgstr "Accéder aux variables"
 
 #: mica_dataschemas.module:106
 msgid "<a class=\"highlight\" href=\"@url\">!name</a>"
@@ -201,23 +202,24 @@ msgstr ""
 
 #: mica_dataschemas.module:121
 msgid "Custom Page Main Content"
-msgstr ""
+msgstr "Custom Page Main Content"
 
 #: mica_dataschemas.module:125
 msgid "Custom Page Dimension"
-msgstr ""
+msgstr "Custom Page Dimension"
 
 #: mica_dataschemas.module:129
 msgid "Custom Page Variable"
-msgstr ""
+msgstr "Custom Page Variable"
 
-#: mica_dataschemas.module:21;185 includes/blocks.inc:71
+#: mica_dataschemas.module:21;185
+#: includes/blocks.inc:71
 msgid "mica"
-msgstr ""
+msgstr "mica"
 
 #: mica_dataschemas.module:21
 msgid "Create taxonomies"
-msgstr ""
+msgstr "Créer des taxonomies"
 
 #: mica_dataschemas.module:185
 msgid "Imported taxonomy %file to vocabulary %vocabulary: %result"
@@ -225,7 +227,7 @@ msgstr ""
 
 #: mica_dataschemas.info:0
 msgid "Mica DataSchemas"
-msgstr ""
+msgstr "Mica DataSchemas"
 
 #: mica_dataschemas.info:0
 msgid "DataSchemas support for Mica"
@@ -233,7 +235,7 @@ msgstr ""
 
 #: mica_dataschemas.info:0
 msgid "OBiBa"
-msgstr ""
+msgstr "OBiBa"
 
 #: includes/blocks.inc:71
 msgid "Configured facet block %facet"
