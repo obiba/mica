@@ -1,0 +1,308 @@
+# $Id$
+#
+# French translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  mica_data_access.features.field.inc: n/a
+#  mica_data_access.features.inc: n/a
+#  mica_data_access.features.menu_links.inc: n/a
+#  mica_data_access.views_default.inc: n/a
+#  mica_data_access.module: n/a
+#  mica_data_access.info: n/a
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-01-19 15:14-0500\n"
+"PO-Revision-Date: 2012-01-24 14:50-0500\n"
+"Last-Translator: asd <asd>\n"
+"Language-Team: French <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: mica_data_access.features.field.inc:1498
+msgid "Choose which dataset is needed for your project."
+msgstr "Choisissez le Dataset qui est requis pour votre projet."
+
+#: mica_data_access.features.field.inc:1499
+msgid "City"
+msgstr "Ville"
+
+#: mica_data_access.features.field.inc:1500
+msgid "Collaborators"
+msgstr "Collaborateurs"
+
+#: mica_data_access.features.field.inc:1501
+msgid "Country"
+msgstr "Pays"
+
+#: mica_data_access.features.field.inc:1502
+msgid "Data Access Committee member"
+msgstr "Membre du comité d'accès aux données"
+
+#: mica_data_access.features.field.inc:1503
+#: mica_data_access.features.inc:37
+#: mica_data_access.features.menu_links.inc:168
+msgid "Data Access Request"
+msgstr "Demande d'accès aux données"
+
+#: mica_data_access.features.field.inc:1504
+#: mica_data_access.features.inc:45
+msgid "Data Access Review"
+msgstr "Revue de demande d'accès"
+
+#: mica_data_access.features.field.inc:1505
+msgid "Dataset"
+msgstr "Dataset"
+
+#: mica_data_access.features.field.inc:1506
+msgid "Institution Name"
+msgstr "Nom de l'institution"
+
+#: mica_data_access.features.field.inc:1507
+msgid "Notes"
+msgstr "Notes"
+
+#: mica_data_access.features.field.inc:1508
+msgid "Postal Code"
+msgstr "Code postal"
+
+#: mica_data_access.features.field.inc:1509
+msgid "Provide a clear description of the project and its specific aims."
+msgstr "Fournissez une description claire du projet et des ses buts spécifiques."
+
+#: mica_data_access.features.field.inc:1510
+msgid "Representative Email"
+msgstr "Courriel du représentant"
+
+#: mica_data_access.features.field.inc:1511
+msgid "Representative Name"
+msgstr "Nom du représentant"
+
+#: mica_data_access.features.field.inc:1512
+#: mica_data_access.views_default.inc:457;903
+msgid "Status"
+msgstr "Statut"
+
+#: mica_data_access.features.field.inc:1513
+msgid "Street"
+msgstr "Rue"
+
+#: mica_data_access.features.field.inc:1514
+#: mica_data_access.views_default.inc:189;453;899
+msgid "Summary"
+msgstr "Sommaire"
+
+#: mica_data_access.features.inc:39
+msgid "Form to be filled in for accessing study data."
+msgstr "Formulaire à remplir pour accéder aux données de l'étude."
+
+#: mica_data_access.features.inc:41;49
+msgid "Project Title"
+msgstr "Titre du projet"
+
+#: mica_data_access.features.inc:47
+msgid "Describes the status of the data access form review."
+msgstr "Décrit le statut de la revue de demande d'accès aux données."
+
+#: mica_data_access.features.menu_links.inc:165
+#: mica_data_access.views_default.inc:175
+msgid "DACO Approved Projects"
+msgstr "Projets approuvés par le DACO"
+
+#: mica_data_access.features.menu_links.inc:166
+#: mica_data_access.views_default.inc:438
+msgid "Data Access Administration"
+msgstr "Administration de demandes d'accès"
+
+#: mica_data_access.features.menu_links.inc:167
+#: mica_data_access.views_default.inc:610
+msgid "Data Access Committee"
+msgstr "Comité de demandes d'accès"
+
+#: mica_data_access.features.menu_links.inc:169
+msgid "Data Access Policy"
+msgstr "Politique d'accès aux données"
+
+#: mica_data_access.features.menu_links.inc:170
+msgid "Data Access"
+msgstr "Demande d'accès"
+
+#: mica_data_access.views_default.inc:174;437;609;882
+msgid "Master"
+msgstr "Principale"
+
+#: mica_data_access.views_default.inc:176;439;611;884
+msgid "more"
+msgstr "plus"
+
+#: mica_data_access.views_default.inc:177;440;612;885
+msgid "Apply"
+msgstr "Appliquer"
+
+#: mica_data_access.views_default.inc:178;441;613;886
+msgid "Reset"
+msgstr "Reset"
+
+#: mica_data_access.views_default.inc:179;442;614;887
+msgid "Sort by"
+msgstr "Trier par"
+
+#: mica_data_access.views_default.inc:180;443;615;888
+msgid "Asc"
+msgstr "Asc"
+
+#: mica_data_access.views_default.inc:181;444;616;889
+msgid "Desc"
+msgstr "Desc"
+
+#: mica_data_access.views_default.inc:182;445;617;890
+msgid "Items per page"
+msgstr "Items par page"
+
+#: mica_data_access.views_default.inc:183;446;618;891
+msgid "- All -"
+msgstr "- Tous -"
+
+#: mica_data_access.views_default.inc:184;447;619;892
+msgid "Offset"
+msgstr "Décalage"
+
+#: mica_data_access.views_default.inc:185;620
+msgid "empty_data_access_committee"
+msgstr "empty_data_access_committee"
+
+#: mica_data_access.views_default.inc:186
+msgid "No approved data access found."
+msgstr "Aucunes demandes d'accès approuvées."
+
+#: mica_data_access.views_default.inc:187;450;896
+msgid "field_data_access_review"
+msgstr "field_data_access_review"
+
+#: mica_data_access.views_default.inc:188;452;898
+msgid "Project"
+msgstr "Projet"
+
+#: mica_data_access.views_default.inc:190;454;900
+msgid "Representative"
+msgstr "Représentant"
+
+#: mica_data_access.views_default.inc:191;455;625;901
+msgid "Institution"
+msgstr "Institution"
+
+#: mica_data_access.views_default.inc:192;460;905
+msgid "All"
+msgstr "Tout"
+
+#: mica_data_access.views_default.inc:193;461;627;906
+msgid "Page"
+msgstr "Page"
+
+#: mica_data_access.views_default.inc:448;893
+msgid "empty_data_access"
+msgstr "empty_data_access"
+
+#: mica_data_access.views_default.inc:449;894
+msgid "No data access request found."
+msgstr "Aucunes demandes d'accès trouvées."
+
+#: mica_data_access.views_default.inc:451;897
+msgid "Nid"
+msgstr "Nid"
+
+#: mica_data_access.views_default.inc:456;902
+msgid "Updated date"
+msgstr "Date de modification"
+
+#: mica_data_access.views_default.inc:458
+msgid "Review"
+msgstr "Revue"
+
+#: mica_data_access.views_default.inc:459
+msgid "<a href=\"?q=node/[nid]/review\">Start Review</a>"
+msgstr "<a href=\"?q=node/[nid]/review\">Commencer la revue</a>"
+
+#: mica_data_access.views_default.inc:621
+msgid "No data access committee member found."
+msgstr "Aucuns membre du comité d'accès aux données trouvés."
+
+#: mica_data_access.views_default.inc:622
+msgid "Contact"
+msgstr "Contact"
+
+#: mica_data_access.views_default.inc:623
+msgid "Title"
+msgstr "Titre"
+
+#: mica_data_access.views_default.inc:624
+msgid "[field_contact_name]"
+msgstr "[field_contact_name]"
+
+#: mica_data_access.views_default.inc:626
+msgid "Email"
+msgstr "Courriel"
+
+#: mica_data_access.views_default.inc:883
+msgid "My Data Access Requests"
+msgstr "Mes demandes d'accès aux données"
+
+#: mica_data_access.views_default.inc:895
+msgid "author"
+msgstr "auteur"
+
+#: mica_data_access.views_default.inc:904
+msgid "Operations"
+msgstr "Opérations"
+
+#: mica_data_access.module:71
+msgid "<a href=\"@url\">Request for Data Access</a>"
+msgstr "<a href=\"@url\">Demande d'accès aux données</a>"
+
+#: mica_data_access.module:84
+msgid "<a href=\"@login\">Log in</a> or <a href=\"@register\">Register</a> to submit a Data Access Request."
+msgstr "<a href=\"@login\">S'authentifier</a> ou <a href=\"@register\">S'enregistrer</a> pour soumettre une demande d'accès aux données."
+
+#: mica_data_access.module:103
+msgid "<a href=\"@url\">Print</a>"
+msgstr "<a href=\"@url\">Imprimer</a>"
+
+#: mica_data_access.module:150;23
+msgid "Request for Data Access"
+msgstr "Demande d'accès aux données"
+
+#: mica_data_access.module:155
+msgid "Request for Data Access is restricted"
+msgstr "L'accès aux demandes d'accès aux données est restreint"
+
+#: mica_data_access.module:158
+msgid "Submitting a Data Access Request is restricted to authorized users."
+msgstr "Soumettre une demande d'accès aux données est restreint au utilisateurs autorisés."
+
+#: mica_data_access.module:194
+msgid "mica"
+msgstr "mica"
+
+#: mica_data_access.module:194
+msgid "Created data access review %review for request %request by user %user"
+msgstr "Création d'une revue %review pour la demande %request par l'utilisateur %user"
+
+#: mica_data_access.module:32
+msgid "Review Data Access Request"
+msgstr "Revue de demandes d'accès aux données"
+
+#: mica_data_access.info:0
+msgid "Mica Data Access"
+msgstr "Mica accès aux données"
+
+#: mica_data_access.info:0
+msgid "Study Data Access requests and reviews"
+msgstr "Demandes d'accès aux données de l'étude et revues."
+
+#: mica_data_access.info:0
+msgid "OBiBa"
+msgstr "OBiBa"
+
