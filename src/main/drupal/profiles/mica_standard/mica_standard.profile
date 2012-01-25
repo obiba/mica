@@ -81,8 +81,17 @@ function mica_import_default_feeds($install_state){
 }
 
 function mica_update_languages($install_state) {
+  // Manually import fields translations
   module_load_include('batch.inc', 'l10n_update');
   
+  // Manually import translations for fields for our translated modules in french
+  $filename = '/\.fr.po$/';  
+  $files = drupal_system_listing($filename, 'sites/all/modules/mica', 'name', 0);
+  foreach($files as $file){
+  	_l10n_update_locale_import_po($file, 'fr', LOCALE_IMPORT_OVERWRITE, 'default');
+  	_l10n_update_locale_import_po($file, 'fr', LOCALE_IMPORT_OVERWRITE, 'field');
+  }
+ 
   $history = l10n_update_get_history();
   $available = l10n_update_available_releases();
   $updates = l10n_update_build_updates($history, $available);
@@ -92,5 +101,6 @@ function mica_update_languages($install_state) {
   $updates = _l10n_update_prepare_updates($updates, NULL, $languages);
   $batch = l10n_update_batch_multiple($updates, null);
 
+  
   return $batch;
 }
