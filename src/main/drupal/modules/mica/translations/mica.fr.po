@@ -22,7 +22,7 @@ msgstr ""
 
 #: mica.module:15
 msgid "Mica Documentation can be found here:"
-msgstr "La documentation de Mica se trouve à cette ici: "
+msgstr "La documentation de Mica se trouve ici: "
 
 #: mica.module:17
 msgid "Mica Administration Guide"
