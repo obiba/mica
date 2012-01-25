@@ -131,13 +131,34 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
     ),      
   );
   
-  if (empty($field_description)) {
+  if (empty($field_description) || empty($field_description->body)) {
     $default_body = NULL;
   } 
   else {
     $field_description_body = $field_description->body;
     $default_body = $field_description_body[LANGUAGE_NONE][0]['value'];
   }  
+  
+  if (empty($field_description)) {
+    $default_label = NULL;
+  } 
+  else {
+    $field_original_field_label = $field_description->field_original_field_label;
+    $default_label = $field_original_field_label[LANGUAGE_NONE][0]['value'];
+  }  
+  
+  $form['field']['settings']['field_description_infos']['field_description_label'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Label'),
+    '#default_value' => $default_label,
+    '#required' => TRUE,  
+    // Enabled only when the 'field_description' checkbox is checked
+    '#states' => array(
+      'enabled' => array(
+      	'input[name="field[settings][field_description_infos][field_description]"]' => array('checked' => TRUE)
+      ),
+    ),    
+  );  
   
   $form['field']['settings']['field_description_infos']['field_description_body'] = array(
     '#type' => 'textarea',
@@ -174,9 +195,10 @@ function _mica_edit_field_field_description($form, &$form_state) {
       $categories[] = $key . '=' . $value;
     }
   }
-  $label = isset($instance['display_label']) && !empty($instance['display_label']) 
-    ? $instance['display_label'] 
-    : $instance['label'];
+  
+  $label = $is_field_description 
+    ? $form_state['values']['field']['settings']['field_description_infos']['field_description_label']
+    : NULL;
   
   $field_description_infos = array(
     'title' =>  $node_type->name . ' » ' . $label,
@@ -212,10 +234,10 @@ function _mica_edit_field_field_description($form, &$form_state) {
 function _mica_find_field_description($bundle, $field_name) {
   $query = new EntityFieldQuery;
   $result = $query->entityCondition('entity_type', 'node')
-                  ->entityCondition('bundle', 'field_description')
-                  ->fieldCondition('field_bundle', 'value', $bundle, '=')
-                  ->fieldCondition('field_original_field_name', 'value', $field_name, '=')
-                  ->execute();      
+    ->entityCondition('bundle', 'field_description')
+    ->fieldCondition('field_bundle', 'value', $bundle, '=')
+    ->fieldCondition('field_original_field_name', 'value', $field_name, '=')
+    ->execute();      
   if (!empty($result['node'])) {
     $entities = entity_load('node', array_keys($result['node']));
     $entity_id = array_keys($entities);

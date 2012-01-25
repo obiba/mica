@@ -1,91 +1,64 @@
 "title";"body";"field_original_field_label";"field_original_field_name";"field_bundle_label";"field_bundle";"field_value_type";"field_categories";"field_repeatable"
 "Study » Website";"What is the Web address where information on the study is made available?
 ";"Website";"field_website";"Study";"study";"TEXT";"";"0"
-"Study » to";"Preparation phase / Pilot end year
-";"to";"field_preparation_end_year";"Study";"study";"INTEGER";"";"0"
-"Study » to";"Baseline recruitment / initial data collection end year
-";"to";"field_baseline_end_year";"Study";"study";"INTEGER";"";"0"
-"Study » to";"Follow-up of participants end year
-";"to";"field_followup_end_year";"Study";"study";"INTEGER";"";"0"
-"Study » The study targets the recruitment of";"Study recruitment targets
-";"The study targets the recruitment of";"field_recruitment";"Study";"study";"TEXT";"individuals=Individuals|families=Families (including twin studies, sibships and family based birth cohorts)|other=Other";"1"
 "Study » Territory";"";"Territory";"field_territory";"Study";"study";"TEXT";"";"0"
-"Study » Supplementary information";"Study/Registry design supplementary information
-";"Supplementary information";"field_recruitment_supp_info";"Study";"study";"TEXT";"";"0"
-"Study » Supplementary information";"Target number of participants supplementary information
-";"Supplementary information";"field_target_nb_supp_info";"Study";"study";"TEXT";"";"0"
-"Study » Supplementary information";"Target number of biological samples supplementary information
-";"Supplementary information";"field_samples_supp_info";"Study";"study";"TEXT";"";"0"
-"Study » Supplementary information";"Current number of participants recruited at baseline supplementary information
-";"Supplementary information";"field_current_supp_info";"Study";"study";"TEXT";"";"0"
-"Study » Supplementary information";"Supplementary information for current number of collected biological samples from which DNA could be extracted
-";"Supplementary information";"field_current_sam_supp_indo";"Study";"study";"TEXT";"";"0"
-"Study » Supplementary information";"Selection criteria supplementary information
-";"Supplementary information";"field_partcipant_sel_supp_info";"Study";"study";"TEXT";"";"0"
-"Study » Supplementary information";"Recruitment procedures supplementary information
-";"Supplementary information";"field_recruitement_supp_info";"Study";"study";"TEXT";"";"0"
-"Study » Supplementary information";"Current status supplementary information
-";"Supplementary information";"field_status_supp_info";"Study";"study";"TEXT";"";"0"
+"Study » Target number of participants supplementary information";"";"Target number of participants supplementary information";"field_target_nb_supp_info";"Study";"study";"TEXT";"";"0"
+"Study » Target number of biological samples supplementary information";"";"Target number of biological samples supplementary information";"field_samples_supp_info";"Study";"study";"TEXT";"";"0"
+"Study » Study/Registry design supplementary information";"";"Study/Registry design supplementary information";"field_recruitment_supp_info";"Study";"study";"TEXT";"";"0"
+"Study » Study recruitment targets";"";"Study recruitment targets";"field_recruitment";"Study";"study";"TEXT";"individuals=Individuals|families=Families (including twin studies, sibships and family based birth cohorts)|other=Other";"1"
 "Study » Study inclusion criteria for participants’ selection";"";"Study inclusion criteria for participants’ selection";"field_select_criteria";"Study";"study";"TEXT";"gravidity=Gravidity (pregnant women)|newborn=Newborn|twin=Twin|gender=Gender|age=Age|countries=Country(ies) of residence|ethnic=Ethnic origin|health=Health status|others=Others";"1"
-"Study » Study ended";"Study end year
-";"Study ended";"field_ended_end_year";"Study";"study";"INTEGER";"";"0"
-"Study » Specify the sources of recruitment";"Sources of recruitment
-";"Specify the sources of recruitment";"field_recruitment_procedures";"Study";"study";"TEXT";"general_population=General population|legacy_studies=Participants from legacy studies|specific_population=Specific population|other=Other source";"1"
+"Study » Study end year ";"";"Study end year ";"field_ended_end_year";"Study";"study";"INTEGER";"";"0"
+"Study » Sources of recruitment";"";"Sources of recruitment";"field_recruitment_procedures";"Study";"study";"TEXT";"general_population=General population|legacy_studies=Participants from legacy studies|specific_population=Specific population|other=Other source";"1"
+"Study » Selection criteria supplementary information";"";"Selection criteria supplementary information";"field_partcipant_sel_supp_info";"Study";"study";"TEXT";"";"0"
+"Study » Recruitment procedures supplementary information";"";"Recruitment procedures supplementary information";"field_recruitement_supp_info";"Study";"study";"TEXT";"";"0"
 "Study » Pubmed Id";"";"Pubmed Id";"field_pubmedid";"Study";"study";"TEXT";"";"0"
-"Study » Preparation phase / Pilot";"Preparation phase / Pilot start year
-";"Preparation phase / Pilot";"field_preparation_start_year";"Study";"study";"INTEGER";"";"0"
-"Study » Please specify type of tissues";"Other type of tissues
-";"Please specify type of tissues";"field_tissues_sp";"Study";"study";"TEXT";"";"0"
-"Study » Please specify";"Other baseline design of the study
-";"Please specify";"field_design_other_sp";"Study";"study";"TEXT";"";"0"
-"Study » Please specify";"Other study recruitment targets
-";"Please specify";"field_recruitment_other_sp";"Study";"study";"TEXT";"";"0"
-"Study » Please specify";"Other selection criteria
-";"Please specify";"field_selection_others_sp";"Study";"study";"TEXT";"";"0"
-"Study » Please specify";"Other sources of recruitment
-";"Please specify";"field_recruitment_other";"Study";"study";"TEXT";"";"0"
-"Study » Please specify";"Other data collection
-";"Please specify";"field_data_sources_sp";"Study";"study";"TEXT";"";"0"
-"Study » Please specify";"Other sample management
-";"Please specify";"field_samples_man_other_sp";"Study";"study";"TEXT";"";"0"
-"Study » Please specify";"Access supplementary information
-";"Please specify";"field_access_other_sp";"Study";"study";"TEXT";"";"0"
-"Study » Other";"Other access
-";"Other";"field_access_other";"Study";"study";"BOOLEAN";"0=No|1=Yes";"0"
+"Study » Preparation phase / Pilot start year";"";"Preparation phase / Pilot start year";"field_preparation_start_year";"Study";"study";"INTEGER";"";"0"
+"Study » Preparation phase / Pilot end year";"";"Preparation phase / Pilot end year";"field_preparation_end_year";"Study";"study";"INTEGER";"";"0"
+"Study » Other type of tissues";"";"Other type of tissues";"field_tissues_sp";"Study";"study";"TEXT";"";"0"
+"Study » Other sources of recruitment";"";"Other sources of recruitment";"field_recruitment_other";"Study";"study";"TEXT";"";"0"
+"Study » Other selection criteria";"";"Other selection criteria";"field_selection_others_sp";"Study";"study";"TEXT";"";"0"
+"Study » Other sample management";"";"Other sample management";"field_samples_man_other_sp";"Study";"study";"TEXT";"";"0"
+"Study » Other recruitment target";"";"Other recruitment target";"field_recruitment_other_sp";"Study";"study";"TEXT";"";"0"
+"Study » Other data sources";"";"Other data sources";"field_data_sources_sp";"Study";"study";"TEXT";"";"0"
+"Study » Other baseline design of the study";"";"Other baseline design of the study";"field_design_other_sp";"Study";"study";"TEXT";"";"0"
+"Study » Other access";"";"Other access";"field_access_other";"Study";"study";"BOOLEAN";"0=No|1=Yes";"0"
 "Study » Objectives";"What are the principal objectives of the study?
 ";"Objectives";"body";"Study";"study";"TEXT";"";"0"
 "Study » No limits in the number of samples";"";"No limits in the number of samples";"field_no_limits_samples";"Study";"study";"BOOLEAN";"0=|1=";"0"
 "Study » No limits in the number of participants";"";"No limits in the number of participants";"field_no_limits_participants";"Study";"study";"BOOLEAN";"0=|1=";"0"
 "Study » Name";"Complete name of the study
 ";"Name";"title_field";"Study";"study";"TEXT";"";"0"
-"Study » min";"";"min";"field_age_min";"Study";"study";"INTEGER";"";"0"
-"Study » max";"";"max";"field_age_max";"Study";"study";"INTEGER";"";"0"
 "Study » Marker paper";"";"Marker paper";"field_marker_paper";"Study";"study";"TEXT";"";"0"
-"Study » In date of";"Current number of participants recruited at baseline in date of
-";"In date of";"field_current_samples_date";"Study";"study";"DATE";"";"0"
-"Study » In date of";"Current number of collected biological samples from which DNA could be extracted in date of
-";"In date of";"field_current_part_nb_date";"Study";"study";"DATE";"";"0"
 "Study » Health status";"";"Health status";"field_health_status";"Study";"study";"TEXT";"";"1"
 "Study » Headline number of participants with samples";"";"Headline number of participants with samples";"field_target_number_biosamples";"Study";"study";"INTEGER";"";"0"
 "Study » Headline number of participants";"";"Headline number of participants";"field_target_number_participants";"Study";"study";"INTEGER";"";"0"
 "Study » Gender";"";"Gender";"field_selection_gender";"Study";"study";"TEXT";"men=Men|women=Women";"0"
-"Study » Follow-up of participants";"Follow-up of participants start year
-";"Follow-up of participants";"field_followup_start_year";"Study";"study";"INTEGER";"";"0"
+"Study » Follow-up of participants start year";"";"Follow-up of participants start year";"field_followup_start_year";"Study";"study";"INTEGER";"";"0"
+"Study » Follow-up of participants end year";"";"Follow-up of participants end year";"field_followup_end_year";"Study";"study";"INTEGER";"";"0"
 "Study » Ethnic origin";"";"Ethnic origin";"field_ethnic_origin";"Study";"study";"TEXT";"";"1"
+"Study » Date of current number of participants recruited at baseline";"";"Date of current number of participants recruited at baseline";"field_current_part_nb_date";"Study";"study";"DATE";"";"0"
+"Study » Date of current number of collected biological samples";"Date of current number of collected biological samples from which DNA could be extracted
+";"Date of current number of collected biological samples";"field_current_samples_date";"Study";"study";"DATE";"";"0"
 "Study » Data Sources";"How is information obtained?
 ";"Data Sources";"field_data_sources";"Study";"study";"TEXT";"questionnaires=Questionnaires to participants/respondents|physical_measures=Physical measures|biological_samples=Biological samples|medical_paper=Direct access to participants medical paper files|health_databases=Electronic health databases (death or hospitalization registries, etc.)|genealogical_recorde=Genealogical records|others=Others";"1"
-"Study » Data (questionnaire-derived, measured…)";"Data access (questionnaire-derived, measured…)
-";"Data (questionnaire-derived, measured…)";"field_access_data";"Study";"study";"BOOLEAN";"0=No|1=Yes";"0"
-"Study » Current number of participants with samples";"";"Current number of participants with samples";"field_current_samples_nb";"Study";"study";"INTEGER";"";"0"
+"Study » Data access";"Data access (questionnaire-derived, measured…)
+";"Data access";"field_access_data";"Study";"study";"BOOLEAN";"0=No|1=Yes";"0"
+"Study » Current status supplementary information";"";"Current status supplementary information";"field_status_supp_info";"Study";"study";"TEXT";"";"0"
+"Study » Current number of participants recruited at baseline supplementary information";"";"Current number of participants recruited at baseline supplementary information";"field_current_supp_info";"Study";"study";"TEXT";"";"0"
 "Study » Current number of participants recruited";"";"Current number of participants recruited";"field_current_participants_nb";"Study";"study";"INTEGER";"";"0"
+"Study » Current number of collected biological samples supplementary information";"";"Current number of collected biological samples supplementary information";"field_current_sam_supp_indo";"Study";"study";"TEXT";"";"0"
+"Study » Current number of collected biological samples";"Current number of collected biological samples from which DNA could be extracted
+";"Current number of collected biological samples";"field_current_samples_nb";"Study";"study";"INTEGER";"";"0"
 "Study » Country";"";"Country";"field_country";"Study";"study";"TEXT";"";"0"
 "Study » Comments";"";"Comments";"field_comments";"Study";"study";"TEXT";"";"0"
+"Study » Biological samples access";"";"Biological samples access";"field_access_biosamples";"Study";"study";"BOOLEAN";"0=No|1=Yes";"0"
 "Study » Biological samples";"What are the biological samples collected?
 ";"Biological samples";"field_bio_samples_management";"Study";"study";"TEXT";"blood=Blood|cord_blood=Cord blood|buccal_cells=Buccal cells|tissues=Tissues|saliva=Saliva|urine=Urine|others=Others";"1"
-"Study » Biological samples";"Biological samples access
-";"Biological samples";"field_access_biosamples";"Study";"study";"BOOLEAN";"0=No|1=Yes";"0"
-"Study » Baseline recruitment / initial data collection";"Baseline recruitment / initial data collection start year
-";"Baseline recruitment / initial data collection";"field_baseline_start_year";"Study";"study";"INTEGER";"";"0"
+"Study » Baseline recruitment / initial data collection start year";"";"Baseline recruitment / initial data collection start year";"field_baseline_start_year";"Study";"study";"INTEGER";"";"0"
+"Study » Baseline recruitment / initial data collection end year";"";"Baseline recruitment / initial data collection end year";"field_baseline_end_year";"Study";"study";"INTEGER";"";"0"
 "Study » Baseline design of the study";"";"Baseline design of the study";"field_design";"Study";"study";"TEXT";"case_control=Case-control study|case_only=Case only study|clinical_trial=Clinical trial / intervention trial|cohort_study=Cohort study|cross_sectional=Cross-sectional prevalence study|registry=Registry|other=Other";"1"
+"Study » Age min";"";"Age min";"field_age_min";"Study";"study";"INTEGER";"";"0"
+"Study » Age max";"";"Age max";"field_age_max";"Study";"study";"INTEGER";"";"0"
 "Study » Acronym";"Acronym of the study if applicable.
 ";"Acronym";"field_acroym";"Study";"study";"TEXT";"";"0"
+"Study » Access supplementary information";"";"Access supplementary information";"field_access_other_sp";"Study";"study";"TEXT";"";"0"
