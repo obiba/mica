@@ -29,10 +29,10 @@ function mica_projects_views_api() {
 }
 
 /**
-* Implementation of hook_node_info().
-*/
+ * Implements hook_node_info().
+ */
 function mica_projects_node_info() {
-	$items = array(
+  $items = array(
     'project' => array(
       'name' => t('Project'),
       'base' => 'node_content',
@@ -40,7 +40,7 @@ function mica_projects_node_info() {
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
-	),
+    ),
     'teleconference' => array(
       'name' => t('Teleconference'),
       'base' => 'node_content',
@@ -48,7 +48,7 @@ function mica_projects_node_info() {
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
-	),
-	);
-	return $items;
+    ),
+  );
+  return $items;
 }

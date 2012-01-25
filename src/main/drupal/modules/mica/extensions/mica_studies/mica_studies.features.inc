@@ -378,7 +378,12 @@ function mica_studies_default_search_api_index() {
         "field_target_other" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
         "field_biosamples_collected_other" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
         "field_design_other" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
-        "field_access_other" : { "name" : null, "indexed" : true, "type" : "string", "boost" : "1.0" },
+        "field_access_other" : {
+          "name" : "Other",
+          "indexed" : true,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
         "field_gender" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
         "field_selection_criteria" : {
           "name" : null,
@@ -388,8 +393,18 @@ function mica_studies_default_search_api_index() {
         },
         "field_gwas_analysis" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
         "field_gwas_number" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
-        "field_age_min" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
-        "field_age_max" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
+        "field_age_min" : {
+          "name" : "Age min",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_age_max" : {
+          "name" : "Age max",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
         "field_status_end" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
         "field_study_country" : {
           "name" : null,
@@ -404,7 +419,7 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_design" : {
-          "name" : null,
+          "name" : "What is the baseline design of the study",
           "indexed" : true,
           "type" : "list\\u003cstring\\u003e",
           "boost" : "1.0"
@@ -446,10 +461,246 @@ function mica_studies_default_search_api_index() {
           "type" : "list\\u003ctext\\u003e",
           "boost" : "1.0"
         },
-        "field_country" : {
-          "name" : "Country",
+        "field_country" : { "name" : "Country", "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_website" : { "name" : "Website", "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_territory" : {
+          "name" : "Territory",
           "indexed" : true,
-          "type" : "list\\u003ctext\\u003e",
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_target_nb_supp_info" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_samples_supp_info" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_recruitment_supp_info" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_recruitment" : {
+          "name" : "The study targets the recruitment of",
+          "indexed" : true,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_select_criteria" : {
+          "name" : "What are the inclusion criteria for participants\\u2019 selection",
+          "indexed" : true,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_ended_end_year" : {
+          "name" : "End year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_recruitment_procedures" : {
+          "name" : "Specify the sources of recruitment",
+          "indexed" : true,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_partcipant_sel_supp_info" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_recruitement_supp_info" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_pubmedid" : {
+          "name" : "Pubmed Id",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_preparation_start_year" : {
+          "name" : "Start year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_preparation_end_year" : {
+          "name" : "End year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_tissues_sp" : {
+          "name" : "Please specify type of tissues",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_recruitment_other" : {
+          "name" : "Please specify",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_selection_others_sp" : {
+          "name" : "Please specify",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_samples_man_other_sp" : {
+          "name" : "Please specify",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_recruitment_other_sp" : {
+          "name" : "Please specify",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_data_sources_sp" : {
+          "name" : "Please specify",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_design_other_sp" : {
+          "name" : "Please specify",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "body" : {
+          "name" : "Objectives",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_no_limits_samples" : {
+          "name" : "No limits in the number of samples",
+          "indexed" : true,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "field_no_limits_participants" : {
+          "name" : "No limits in the number of participants",
+          "indexed" : true,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "field_marker_paper" : {
+          "name" : "Marker paper describing your study",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_selection_gender" : {
+          "name" : "Gender",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_followup_start_year" : {
+          "name" : "Start year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_followup_end_year" : {
+          "name" : "End year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_current_part_nb_date" : {
+          "name" : "In date of",
+          "indexed" : true,
+          "type" : "date",
+          "boost" : "1.0"
+        },
+        "field_current_samples_date" : {
+          "name" : "In date of",
+          "indexed" : true,
+          "type" : "date",
+          "boost" : "1.0"
+        },
+        "field_data_sources" : {
+          "name" : "Data Sources",
+          "indexed" : true,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_access_data" : {
+          "name" : "Data (questionnaire-derived, measured\\u2026)",
+          "indexed" : true,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "field_status_supp_info" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_current_supp_info" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_current_sam_supp_indo" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_comments" : {
+          "name" : "Comments",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_access_biosamples" : {
+          "name" : "Biological samples",
+          "indexed" : true,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "field_bio_samples_management" : {
+          "name" : "Biological samples",
+          "indexed" : true,
+          "type" : "list\\u003cstring\\u003e",
+          "boost" : "1.0"
+        },
+        "field_baseline_start_year" : {
+          "name" : "Start year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_baseline_end_year" : {
+          "name" : "End year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_access_other_sp" : {
+          "name" : "Please specify",
+          "indexed" : true,
+          "type" : "text",
           "boost" : "1.0"
         }
       },

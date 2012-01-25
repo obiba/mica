@@ -16,7 +16,12 @@ function mica_studies_menu_default_menu_links() {
     'link_path' => '<front>',
     'router_path' => '',
     'link_title' => 'Home',
-    'options' => array(),
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'langcode' => 'en',
+    ),
     'module' => 'menu',
     'hidden' => '0',
     'external' => '1',
@@ -30,7 +35,12 @@ function mica_studies_menu_default_menu_links() {
     'link_path' => 'documents',
     'router_path' => 'documents',
     'link_title' => 'Documents',
-    'options' => array(),
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'langcode' => 'en',
+    ),
     'module' => 'system',
     'hidden' => '0',
     'external' => '0',
@@ -63,7 +73,12 @@ function mica_studies_menu_default_menu_links() {
     'link_path' => 'studies',
     'router_path' => 'studies',
     'link_title' => 'Studies',
-    'options' => array(),
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'langcode' => 'en',
+    ),
     'module' => 'system',
     'hidden' => '0',
     'external' => '0',

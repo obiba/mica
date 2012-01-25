@@ -20,6 +20,7 @@ function mica_data_access_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'langcode' => 'en',
     ),
     'module' => 'menu',
     'hidden' => '0',
@@ -39,6 +40,7 @@ function mica_data_access_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'langcode' => 'en',
     ),
     'module' => 'menu',
     'hidden' => '0',
@@ -77,6 +79,7 @@ function mica_data_access_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'langcode' => 'en',
     ),
     'module' => 'menu',
     'hidden' => '0',
@@ -96,6 +99,7 @@ function mica_data_access_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'langcode' => 'en',
     ),
     'module' => 'menu',
     'hidden' => '0',

@@ -20,6 +20,7 @@ function mica_community_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'langcode' => 'en',
     ),
     'module' => 'menu',
     'hidden' => '0',
@@ -39,6 +40,7 @@ function mica_community_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'langcode' => 'en',
     ),
     'module' => 'menu',
     'hidden' => '0',
@@ -53,7 +55,12 @@ function mica_community_menu_default_menu_links() {
     'link_path' => 'events',
     'router_path' => 'events',
     'link_title' => 'Events',
-    'options' => array(),
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'langcode' => 'en',
+    ),
     'module' => 'system',
     'hidden' => '0',
     'external' => '0',
@@ -72,6 +79,7 @@ function mica_community_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'langcode' => 'en',
     ),
     'module' => 'menu',
     'hidden' => '0',
@@ -91,6 +99,7 @@ function mica_community_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'langcode' => 'en',
     ),
     'module' => 'menu',
     'hidden' => '0',
@@ -110,6 +119,7 @@ function mica_community_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'langcode' => 'en',
     ),
     'module' => 'system',
     'hidden' => '0',
@@ -129,6 +139,7 @@ function mica_community_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
+      'langcode' => 'en',
     ),
     'module' => 'menu',
     'hidden' => '0',

@@ -15,6 +15,7 @@ dependencies[] = menu
 dependencies[] = menu_firstchild
 dependencies[] = http_client
 dependencies[] = i18n
+dependencies[] = i18n_menu
 dependencies[] = l10n_update
 dependencies[] = entity_translation
 
