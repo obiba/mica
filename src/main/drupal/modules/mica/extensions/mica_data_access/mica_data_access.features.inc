@@ -29,10 +29,10 @@ function mica_data_access_views_api() {
 }
 
 /**
-* Implementation of hook_node_info().
-*/
+ * Implements hook_node_info().
+ */
 function mica_data_access_node_info() {
-	$items = array(
+  $items = array(
     'data_access_request' => array(
       'name' => t('Data Access Request'),
       'base' => 'node_content',
@@ -40,7 +40,7 @@ function mica_data_access_node_info() {
       'has_title' => '1',
       'title_label' => t('Project Title'),
       'help' => '',
-	),
+    ),
     'data_access_review' => array(
       'name' => t('Data Access Review'),
       'base' => 'node_content',
@@ -48,8 +48,7 @@ function mica_data_access_node_info() {
       'has_title' => '1',
       'title_label' => t('Project Title'),
       'help' => '',
-	),
-	);
-	return $items;
+    ),
+  );
+  return $items;
 }
-

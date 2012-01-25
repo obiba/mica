@@ -43,20 +43,31 @@ function _mica_field_value_type($field_value_type){
  * Enhance the field settings form with field_description extensions.
  */
 function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
-
-  $unsupported_types = array(
-  	'field_collection',
-  	'addressfield',
-  	'name',
-  	'viewreference',
-  	'node_reference',
-  );
   
-  $keys = array_keys($form_state['field']);
-  $field_name = $keys[0];
-  $field_type = $form_state['field'][$field_name][LANGUAGE_NONE]['field']['type'];
-  if (in_array($field_type, $unsupported_types)) {
-    return;
+  // check supported entity type
+  $unsupported_entity_types = array(
+    'field_collection_item',
+  );  
+  $entity_type = $form_state['build_info']['args'][0]['entity_type'];
+  if (in_array($entity_type, $unsupported_entity_types)) {
+  	return;
+  }  
+
+  // check supported field type
+  if (isset($form_state['field'])) {
+    $unsupported_types = array(
+    	'field_collection',
+    	'addressfield',
+    	'name',
+    	'viewreference',
+    	'node_reference',
+    );
+    $keys = array_keys($form_state['field']);
+    $field_name = $keys[0];
+    $field_type = $form_state['field'][$field_name][LANGUAGE_NONE]['field']['type'];
+    if (in_array($field_type, $unsupported_types)) {
+      return;
+    }
   }
   
   $bundle = $form_state['build_info']['args'][0]['bundle'];
@@ -149,9 +160,11 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
  */
 function _mica_edit_field_field_description($form, &$form_state) {
 	
+  $instance = $form_state['values']['instance'];
+  
   $is_field_description = $form_state['values']['field']['settings']['field_description_infos']['field_description'];
-  $field_name = $form_state['values']['instance']['field_name'];
-  $bundle = $form_state['values']['instance']['bundle'];
+  $field_name = $instance['field_name'];
+  $bundle = $instance['bundle'];
   $field_info = field_info_field($field_name);
   $node_type = node_type_load($bundle);
   
@@ -161,14 +174,17 @@ function _mica_edit_field_field_description($form, &$form_state) {
       $categories[] = $key . '=' . $value;
     }
   }
+  $label = isset($instance['display_label']) && !empty($instance['display_label']) 
+    ? $instance['display_label'] 
+    : $instance['label'];
   
   $field_description_infos = array(
-    'title' => $node_type->name . ' » ' . $form_state['values']['instance']['label'],
+    'title' =>  $node_type->name . ' » ' . $label,
     'desc' => $is_field_description ? $form_state['values']['field']['settings']['field_description_infos']['field_description_body'] : NULL,
     'bundle' => $bundle,
     'bundle_label' => $node_type->name,
     'original_field_name' => $field_name,
-    'original_field_label' => $form_state['values']['instance']['label'],
+    'original_field_label' => $label,
     'value_type' => $is_field_description ? $form_state['values']['field']['settings']['field_description_infos']['field_description_value_type'] : NULL,
   	'repeatable' => $form_state['values']['field']['cardinality'] != 1,
   	'categories' => $categories,

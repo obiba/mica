@@ -39,7 +39,7 @@ function mica_projects_menu_default_menu_links() {
     'hidden' => '0',
     'external' => '0',
     'has_children' => '1',
-    'expanded' => '1',
+    'expanded' => '0',
     'weight' => '0',
     'parent_path' => 'node/2',
   );

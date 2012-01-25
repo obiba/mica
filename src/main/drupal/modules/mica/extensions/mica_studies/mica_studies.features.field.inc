@@ -617,9 +617,9 @@ MD.',
         'continents' => array(),
         'enabled' => '1',
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description_value_type' => 'TEXT',
         ),
         'size' => 5,
       ),
@@ -659,7 +659,7 @@ MD.',
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
@@ -905,7 +905,7 @@ MD.',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '13',
+        'weight' => '12',
       ),
     ),
   );
@@ -989,139 +989,6 @@ MD.',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '2',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_country_territory-field_country'
-  $fields['field_collection_item-field_country_territory-field_country'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_country',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(
-        'iso2' => array(
-          0 => 'iso2',
-        ),
-      ),
-      'module' => 'countries',
-      'settings' => array(
-        'continents' => array(),
-        'enabled' => '1',
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'size' => 5,
-      ),
-      'translatable' => '0',
-      'type' => 'country',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_country_territory',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'countries',
-          'settings' => array(),
-          'type' => 'country_default',
-          'weight' => 0,
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_country',
-      'label' => 'Country',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '1',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_country_territory-field_territory'
-  $fields['field_collection_item-field_country_territory-field_territory'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_territory',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_country_territory',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 1,
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_territory',
-      'label' => 'Territory',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '2',
-        ),
-        'type' => 'text_textarea',
         'weight' => '2',
       ),
     ),
@@ -1490,9 +1357,9 @@ MD.',
         'continents' => array(),
         'enabled' => '1',
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description_value_type' => 'TEXT',
         ),
         'size' => 5,
       ),
@@ -4358,25 +4225,36 @@ MD.',
     ),
   );
 
-  // Exported field: 'node-study-field_country_territory'
-  $fields['node-study-field_country_territory'] = array(
+  // Exported field: 'node-study-field_country'
+  $fields['node-study-field_country'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_country_territory',
+      'field_name' => 'field_country',
       'field_permissions' => array(
         'type' => '0',
       ),
       'foreign keys' => array(),
-      'indexes' => array(),
-      'module' => 'field_collection',
-      'settings' => array(
-        'path' => '',
+      'indexes' => array(
+        'iso2' => array(
+          0 => 'iso2',
+        ),
       ),
-      'translatable' => '1',
-      'type' => 'field_collection',
+      'module' => 'countries',
+      'settings' => array(
+        'continents' => array(),
+        'enabled' => '1',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
+        'size' => 5,
+      ),
+      'translatable' => '0',
+      'type' => 'country',
     ),
     'field_instance' => array(
       'bundle' => 'study',
@@ -4386,16 +4264,10 @@ MD.',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'field_collection',
-          'settings' => array(
-            'add' => 'Add',
-            'delete' => 'Delete',
-            'description' => TRUE,
-            'edit' => 'Edit',
-            'view_mode' => 'full',
-          ),
-          'type' => 'field_collection_view',
-          'weight' => '67',
+          'module' => 'countries',
+          'settings' => array(),
+          'type' => 'country_default',
+          'weight' => 67,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4406,18 +4278,18 @@ MD.',
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_country_territory',
-      'label' => 'Countries and territories',
+      'field_name' => 'field_country',
+      'label' => 'Country',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
-        'module' => 'field_collection',
+        'active' => 1,
+        'module' => 'options',
         'settings' => array(),
-        'type' => 'field_collection_embed',
-        'weight' => '93',
+        'type' => 'options_select',
+        'weight' => '94',
       ),
     ),
   );
@@ -7447,6 +7319,82 @@ other|Other',
     ),
   );
 
+  // Exported field: 'node-study-field_territory'
+  $fields['node-study-field_territory'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_territory',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 68,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_territory',
+      'label' => 'Territory',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '3',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '95',
+      ),
+    ),
+  );
+
   // Exported field: 'node-study-field_tissues_sp'
   $fields['node-study-field_tissues_sp'] = array(
     'field_config' => array(
@@ -7737,7 +7685,6 @@ other|Other',
   t('Contacts');
   t('Content Type');
   t('Content Type Label');
-  t('Countries and territories');
   t('Country');
   t('Data (questionnaire-derived, measured…)');
   t('Data Access Committee member');

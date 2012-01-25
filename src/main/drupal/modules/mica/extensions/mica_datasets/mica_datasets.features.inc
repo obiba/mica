@@ -29,31 +29,6 @@ function mica_datasets_views_api() {
 }
 
 /**
- * Implementation of hook_node_info().
- */
-function mica_datasets_node_info() {
-  $items = array(
-    'dataset' => array(
-      'name' => t('Dataset'),
-      'base' => 'mica_datasets',
-      'description' => t('Dataset resource.'),
-      'has_title' => '1',
-      'title_label' => t('Name'),
-      'help' => '',
-    ),
-    'participant_variable' => array(
-      'name' => t('Participant Variable'),
-      'base' => 'mica_datasets',
-      'description' => 'Description of participant data.',
-      'has_title' => '1',
-      'title_label' => t('Name'),
-      'help' => '',
-	),
-	);
-	return $items;
-}
-
-/**
  * Implements hook_default_search_api_index().
  */
 function mica_datasets_default_search_api_index() {

@@ -45,21 +45,24 @@ function mica_datasets_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_tabs';
   $field_group->data = array(
     'label' => 'Datasets',
-    'weight' => '4',
+    'weight' => '14',
     'children' => array(
       0 => 'mica_dataset',
       1 => 'mica_opal',
+      2 => 'path',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Datasets',
       'instance_settings' => array(
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => 'Datasets available to the research community.',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_datasets|node|study|form'] = $field_group;
@@ -155,6 +158,38 @@ function mica_datasets_field_group_info() {
     ),
   );
   $export['group_participant_variable|node|participant_variable|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_tabs|node|study|form';
+  $field_group->group_name = 'group_tabs';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Tabs',
+    'weight' => '0',
+    'children' => array(
+      0 => 'group_datasets',
+      1 => 'group_access',
+      2 => 'group_authorization',
+      3 => 'group_comments',
+      4 => 'group_general_info',
+      5 => 'group_marker_paper',
+      6 => 'group_methods',
+      7 => 'group_status',
+    ),
+    'format_type' => 'htabs',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_tabs|node|study|form'] = $field_group;
 
   return $export;
 }

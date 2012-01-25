@@ -1,22 +1,91 @@
 "title";"body";"field_original_field_label";"field_original_field_name";"field_bundle_label";"field_bundle";"field_value_type";"field_categories";"field_repeatable"
-"Study » Target number of participants";"Target number of participants";"Target number of participants";"field_target_number_participants";"Study";"study";"INTEGER";;"0"
-"Study » Target number of biological samples";"Target number of biological samples";"Target number of biological samples";"field_target_number_biosamples";"Study";"study";"INTEGER";;"0"
-"Study Information » Targets Recruitment of";"Recruitment targets";"Recruitment targets";"field_design_target";"Study Information";"study_information";"TEXT";"families=Families (including twin studies, sibships and family based birth cohorts)|individuals=Individuals|other=Other";"1"
-"Study Information » Start year";"Start year";"Start year";"field_status_start";"Study Information";"study_information";"INTEGER";;"0"
-"Study Information » Specify type of tissues collected";"Type of tissues collected";"Type of tissues collected";"field_biosamples_tissues";"Study Information";"study_information";"TEXT";;"0"
-"Study Information » Specify type of target";"Other type of target";"Other type of target";"field_target_other";"Study Information";"study_information";"TEXT";;"0"
-"Study Information » Specify type of samples collected";"Other type of samples collected";"Other type of samples collected";"field_biosamples_collected_other";"Study Information";"study_information";"TEXT";;"0"
-"Study Information » Specify type of design";"Other type of design";"Other type of design";"field_design_other";"Study Information";"study_information";"TEXT";;"0"
-"Study Information » Specify type of access";"Oher type of access";"Oher type of access";"field_access_other";"Study Information";"study_information";"TEXT";;"0"
-"Study Information » Specify Gender";"Gender selection criteria";"Gender selection criteria";"field_gender";"Study Information";"study_information";"TEXT";"men=Men|women=Women";"0"
-"Study Information » Selection Criteria / Charactecteristic of the Population";"Selection criteria / Charactecteristic of the population";"Selection criteria / Charactecteristic of the population";"field_selection_criteria";"Study Information";"study_information";"TEXT";"age=Age|country=Country(ies) of residence|gender=Gender|other=Other";"1"
-"Study Information » Proceeding to Genome-Wide Association (GWA) Analysis";"Proceeding to genome-wide association (GWA) analysis";"Proceeding to genome-wide association (GWA) analysis";"field_gwas_analysis";"Study Information";"study_information";"TEXT";"no=No|yes_currently=Yes, we already have, or are currently in the process of generating, GWA data|yes_later=Yes, we plan to proceed to GWA analysis later";"0"
-"Study Information » Please specify the approximate number of participants";"GWA approximate number of participants";"GWA approximate number of participants";"field_gwas_number";"Study Information";"study_information";"INTEGER";;"0"
-"Study Information » Min age";"Minimum age selection criteria";"Minimum age selection criteria";"field_age_min";"Study Information";"study_information";"INTEGER";;"0"
-"Study Information » Max age";"Maximum age selection criteria";"Maximum age selection criteria";"field_age_max";"Study Information";"study_information";"INTEGER";;"0"
-"Study » Full Name";"Full name of the study";"Full name of the study";"field_full_name";"Study";"study";"TEXT";;"0"
-"Study Information » End year";"End year";"End year";"field_status_end";"Study Information";"study_information";"INTEGER";;"0"
-"Study Information » Country";"Country selection criteria";"Country selection criteria";"field_study_country";"Study Information";"study_information";"TEXT";"ABW=Aruba|AFG=Afghanistan|AGO=Angola|AIA=Anguilla|ALA=?land Islands|ALB=Albania|AND=Andorra|ARE=United Arab Emirates|ARG=Argentina|ARM=Armenia|ASM=American Samoa|ATA=Antarctica|ATF=French Southern Territories|ATG=Antigua and Barbuda|AUS=Australia|AUT=Austria|AZE=Azerbaijan|BDI=Burundi|BEL=Belgium|BEN=Benin|BES=Bonaire, Saint Eustatius and Saba|BFA=Burkina Faso|BGD=Bangladesh|BGR=Bulgaria|BHR=Bahrain|BHS=Bahamas|BIH=Bosnia and Herzegovina|BLM=Saint Barth?lemy|BLR=Belarus|BLZ=Belize|BMU=Bermuda|BOL=Bolivia, Plurinational State of|BRA=Brazil|BRB=Barbados|BRN=Brunei Darussalam|BTN=Bhutan|BVT=Bouvet Island|BWA=Botswana|CAF=Central African Republic|CAN=Canada|CCK=Cocos (Keeling) Islands|CHE=Switzerland|CHL=Chile|CHN=China|CIV=C?te d'Ivoire|CMR=Cameroon|COD=Congo, the Democratic Republic of the|COG=Congo|COK=Cook Islands|COL=Colombia|COM=Comoros|CPV=Cape Verde|CRI=Costa Rica|CUB=Cuba|CUW=Cura?ao|CXR=Christmas Island|CYM=Cayman Islands|CYP=Cyprus|CZE=Czech Republic|DEU=Germany|DJI=Djibouti|DMA=Dominica|DNK=Denmark|DOM=Dominican Republic|DZA=Algeria|ECU=Ecuador|EGY=Egypt|ERI=Eritrea|ESH=Western Sahara|ESP=Spain|EST=Estonia|ETH=Ethiopia|FIN=Finland|FJI=Fiji|FLK=Falkland Islands (Malvinas)|FRA=France|FRO=Faroe Islands|FSM=Micronesia, Federated States of|GAB=Gabon|GBR=United Kingdom|GEO=Georgia|GGY=Guernsey|GHA=Ghana|GIB=Gibraltar|GIN=Guinea|GLP=Guadeloupe|GMB=Gambia|GNB=Guinea-Bissau|GNQ=Equatorial Guinea|GRC=Greece|GRD=Grenada|GRL=Greenland|GTM=Guatemala|GUF=French Guiana|GUM=Guam|GUY=Guyana|HKG=Hong Kong|HMD=Heard Island and McDonald Islands|HND=Honduras|HRV=Croatia|HTI=Haiti|HUN=Hungary|IDN=Indonesia|IMN=Isle of Man|IND=India|IOT=British Indian Ocean Territory|IRL=Ireland|IRN=Iran, Islamic Republic of|IRQ=Iraq|ISL=Iceland|ISR=Israel|ITA=Italy|JAM=Jamaica|JEY=Jersey|JOR=Jordan|JPN=Japan|KAZ=Kazakhstan|KEN=Kenya|KGZ=Kyrgyzstan|KHM=Cambodia|KIR=Kiribati|KNA=Saint Kitts and Nevis|KOR=Korea, Republic of|KWT=Kuwait|LAO=Lao People's Democratic Republic|LBN=Lebanon|LBR=Liberia|LBY=Libyan Arab Jamahiriya|LCA=Saint Lucia|LIE=Liechtenstein|LKA=Sri Lanka|LSO=Lesotho|LTU=Lithuania|LUX=Luxembourg|LVA=Latvia|MAC=Macao|MAF=Saint Martin (French part)|MAR=Morocco|MCO=Monaco|MDA=Moldova, Republic of|MDG=Madagascar|MDV=Maldives|MEX=Mexico|MHL=Marshall Islands|MKD=Macedonia, the former Yugoslav Republic of|MLI=Mali|MLT=Malta|MMR=Myanmar|MNE=Montenegro|MNG=Mongolia|MNP=Northern Mariana Islands|MOZ=Mozambique|MRT=Mauritania|MSR=Montserrat|MTQ=Martinique|MUS=Mauritius|MWI=Malawi|MYS=Malaysia|MYT=Mayotte|NAM=Namibia|NCL=New Caledonia|NER=Niger|NFK=Norfolk Island|NGA=Nigeria|NIC=Nicaragua|NIU=Niue|NLD=Netherlands|NOR=Norway|NPL=Nepal|NRU=Nauru|NZL=New Zealand|OMN=Oman|PAK=Pakistan|PAN=Panama|PCN=Pitcairn|PER=Peru|PHL=Philippines|PLW=Palau|PNG=Papua New Guinea|POL=Poland|PRI=Puerto Rico|PRK=Korea, Democratic People's Republic of|PRT=Portugal|PRY=Paraguay|PSE=Palestinian Territory, Occupied|PYF=French Polynesia|QAT=Qatar|REU=R?union|ROU=Romania|RUS=Russian Federation|RWA=Rwanda|SAU=Saudi Arabia|SDN=Sudan|SEN=Senegal|SGP=Singapore|SGS=South Georgia and the South Sandwich Islands|SHN=Saint Helena, Ascension and Tristan da Cunha|SJM=Svalbard and Jan Mayen|SLB=Solomon Islands|SLE=Sierra Leone|SLV=El Salvador|SMR=San Marino|SOM=Somalia|SPM=Saint Pierre and Miquelon|SRB=Serbia|STP=Sao Tome and Principe|SUR=Suriname|SVK=Slovakia|SVN=Slovenia|SWE=Sweden|SWZ=Swaziland|SXM=Sint Maarten (Dutch part)|SYC=Seychelles|SYR=Syrian Arab Republic|TCA=Turks and Caicos Islands|TCD=Chad|TGO=Togo|THA=Thailand|TJK=Tajikistan|TKL=Tokelau|TKM=Turkmenistan|TLS=Timor-Leste|TON=Tonga|TTO=Trinidad and Tobago|TUN=Tunisia|TUR=Turkey|TUV=Tuvalu|TWN=Taiwan, Province of China|TZA=Tanzania, United Republic of|UGA=Uganda|UKR=Ukraine|UMI=United States Minor Outlying Islands|URY=Uruguay|USA=United States|UZB=Uzbekistan|VAT=Holy See (Vatican City State)|VCT=Saint Vincent and the Grenadines|VEN=Venezuela, Bolivarian Republic of|VGB=Virgin Islands, British|VIR=Virgin Islands, U.S.|VNM=Viet Nam|VUT=Vanuatu|WLF=Wallis and Futuna|WSM=Samoa|YEM=Yemen|ZAF=South Africa|ZMB=Zambia|ZWE=Zimbabwe";"1"
-"Study Information » Biological Samples Collected";"Biological samples collected";"Biological samples collected";"field_biosamples_collected";"Study Information";"study_information";"TEXT";"blood=Blood|others=Others|saliva=Saliva|tissues=Tissues|urine=Urine";"1"
-"Study Information » Baseline Design of the Study";"Baseline design of the study";"Baseline design of the study";"field_design";"Study Information";"study_information";"TEXT";"case_control=Case-control study|case_only=Case only study|clinical_trial=Clinical trial / intervention trial|cohort_study=Cohort study|cross_sectional=Cross-sectional prevalence study|other=Other|registry=Registry";"1"
-"Study Information » Access to the following features is provided or foreseen";"Access to the following features is provided or foreseen";"Access to the following features is provided or foreseen";"field_access";"Study Information";"study_information";"TEXT";"biological_samples=Biological samples|data=Data (questionnaire-derived, measured...)|other=Other";"1"
+"Study » Website";"What is the Web address where information on the study is made available?
+";"Website";"field_website";"Study";"study";"TEXT";"";"0"
+"Study » to";"Preparation phase / Pilot end year
+";"to";"field_preparation_end_year";"Study";"study";"INTEGER";"";"0"
+"Study » to";"Baseline recruitment / initial data collection end year
+";"to";"field_baseline_end_year";"Study";"study";"INTEGER";"";"0"
+"Study » to";"Follow-up of participants end year
+";"to";"field_followup_end_year";"Study";"study";"INTEGER";"";"0"
+"Study » The study targets the recruitment of";"Study recruitment targets
+";"The study targets the recruitment of";"field_recruitment";"Study";"study";"TEXT";"individuals=Individuals|families=Families (including twin studies, sibships and family based birth cohorts)|other=Other";"1"
+"Study » Territory";"";"Territory";"field_territory";"Study";"study";"TEXT";"";"0"
+"Study » Supplementary information";"Study/Registry design supplementary information
+";"Supplementary information";"field_recruitment_supp_info";"Study";"study";"TEXT";"";"0"
+"Study » Supplementary information";"Target number of participants supplementary information
+";"Supplementary information";"field_target_nb_supp_info";"Study";"study";"TEXT";"";"0"
+"Study » Supplementary information";"Target number of biological samples supplementary information
+";"Supplementary information";"field_samples_supp_info";"Study";"study";"TEXT";"";"0"
+"Study » Supplementary information";"Current number of participants recruited at baseline supplementary information
+";"Supplementary information";"field_current_supp_info";"Study";"study";"TEXT";"";"0"
+"Study » Supplementary information";"Supplementary information for current number of collected biological samples from which DNA could be extracted
+";"Supplementary information";"field_current_sam_supp_indo";"Study";"study";"TEXT";"";"0"
+"Study » Supplementary information";"Selection criteria supplementary information
+";"Supplementary information";"field_partcipant_sel_supp_info";"Study";"study";"TEXT";"";"0"
+"Study » Supplementary information";"Recruitment procedures supplementary information
+";"Supplementary information";"field_recruitement_supp_info";"Study";"study";"TEXT";"";"0"
+"Study » Supplementary information";"Current status supplementary information
+";"Supplementary information";"field_status_supp_info";"Study";"study";"TEXT";"";"0"
+"Study » Study inclusion criteria for participants’ selection";"";"Study inclusion criteria for participants’ selection";"field_select_criteria";"Study";"study";"TEXT";"gravidity=Gravidity (pregnant women)|newborn=Newborn|twin=Twin|gender=Gender|age=Age|countries=Country(ies) of residence|ethnic=Ethnic origin|health=Health status|others=Others";"1"
+"Study » Study ended";"Study end year
+";"Study ended";"field_ended_end_year";"Study";"study";"INTEGER";"";"0"
+"Study » Specify the sources of recruitment";"Sources of recruitment
+";"Specify the sources of recruitment";"field_recruitment_procedures";"Study";"study";"TEXT";"general_population=General population|legacy_studies=Participants from legacy studies|specific_population=Specific population|other=Other source";"1"
+"Study » Pubmed Id";"";"Pubmed Id";"field_pubmedid";"Study";"study";"TEXT";"";"0"
+"Study » Preparation phase / Pilot";"Preparation phase / Pilot start year
+";"Preparation phase / Pilot";"field_preparation_start_year";"Study";"study";"INTEGER";"";"0"
+"Study » Please specify type of tissues";"Other type of tissues
+";"Please specify type of tissues";"field_tissues_sp";"Study";"study";"TEXT";"";"0"
+"Study » Please specify";"Other baseline design of the study
+";"Please specify";"field_design_other_sp";"Study";"study";"TEXT";"";"0"
+"Study » Please specify";"Other study recruitment targets
+";"Please specify";"field_recruitment_other_sp";"Study";"study";"TEXT";"";"0"
+"Study » Please specify";"Other selection criteria
+";"Please specify";"field_selection_others_sp";"Study";"study";"TEXT";"";"0"
+"Study » Please specify";"Other sources of recruitment
+";"Please specify";"field_recruitment_other";"Study";"study";"TEXT";"";"0"
+"Study » Please specify";"Other data collection
+";"Please specify";"field_data_sources_sp";"Study";"study";"TEXT";"";"0"
+"Study » Please specify";"Other sample management
+";"Please specify";"field_samples_man_other_sp";"Study";"study";"TEXT";"";"0"
+"Study » Please specify";"Access supplementary information
+";"Please specify";"field_access_other_sp";"Study";"study";"TEXT";"";"0"
+"Study » Other";"Other access
+";"Other";"field_access_other";"Study";"study";"BOOLEAN";"0=No|1=Yes";"0"
+"Study » Objectives";"What are the principal objectives of the study?
+";"Objectives";"body";"Study";"study";"TEXT";"";"0"
+"Study » No limits in the number of samples";"";"No limits in the number of samples";"field_no_limits_samples";"Study";"study";"BOOLEAN";"0=|1=";"0"
+"Study » No limits in the number of participants";"";"No limits in the number of participants";"field_no_limits_participants";"Study";"study";"BOOLEAN";"0=|1=";"0"
+"Study » Name";"Complete name of the study
+";"Name";"title_field";"Study";"study";"TEXT";"";"0"
+"Study » min";"";"min";"field_age_min";"Study";"study";"INTEGER";"";"0"
+"Study » max";"";"max";"field_age_max";"Study";"study";"INTEGER";"";"0"
+"Study » Marker paper";"";"Marker paper";"field_marker_paper";"Study";"study";"TEXT";"";"0"
+"Study » In date of";"Current number of participants recruited at baseline in date of
+";"In date of";"field_current_samples_date";"Study";"study";"DATE";"";"0"
+"Study » In date of";"Current number of collected biological samples from which DNA could be extracted in date of
+";"In date of";"field_current_part_nb_date";"Study";"study";"DATE";"";"0"
+"Study » Health status";"";"Health status";"field_health_status";"Study";"study";"TEXT";"";"1"
+"Study » Headline number of participants with samples";"";"Headline number of participants with samples";"field_target_number_biosamples";"Study";"study";"INTEGER";"";"0"
+"Study » Headline number of participants";"";"Headline number of participants";"field_target_number_participants";"Study";"study";"INTEGER";"";"0"
+"Study » Gender";"";"Gender";"field_selection_gender";"Study";"study";"TEXT";"men=Men|women=Women";"0"
+"Study » Follow-up of participants";"Follow-up of participants start year
+";"Follow-up of participants";"field_followup_start_year";"Study";"study";"INTEGER";"";"0"
+"Study » Ethnic origin";"";"Ethnic origin";"field_ethnic_origin";"Study";"study";"TEXT";"";"1"
+"Study » Data Sources";"How is information obtained?
+";"Data Sources";"field_data_sources";"Study";"study";"TEXT";"questionnaires=Questionnaires to participants/respondents|physical_measures=Physical measures|biological_samples=Biological samples|medical_paper=Direct access to participants medical paper files|health_databases=Electronic health databases (death or hospitalization registries, etc.)|genealogical_recorde=Genealogical records|others=Others";"1"
+"Study » Data (questionnaire-derived, measured…)";"Data access (questionnaire-derived, measured…)
+";"Data (questionnaire-derived, measured…)";"field_access_data";"Study";"study";"BOOLEAN";"0=No|1=Yes";"0"
+"Study » Current number of participants with samples";"";"Current number of participants with samples";"field_current_samples_nb";"Study";"study";"INTEGER";"";"0"
+"Study » Current number of participants recruited";"";"Current number of participants recruited";"field_current_participants_nb";"Study";"study";"INTEGER";"";"0"
+"Study » Country";"";"Country";"field_country";"Study";"study";"TEXT";"";"0"
+"Study » Comments";"";"Comments";"field_comments";"Study";"study";"TEXT";"";"0"
+"Study » Biological samples";"What are the biological samples collected?
+";"Biological samples";"field_bio_samples_management";"Study";"study";"TEXT";"blood=Blood|cord_blood=Cord blood|buccal_cells=Buccal cells|tissues=Tissues|saliva=Saliva|urine=Urine|others=Others";"1"
+"Study » Biological samples";"Biological samples access
+";"Biological samples";"field_access_biosamples";"Study";"study";"BOOLEAN";"0=No|1=Yes";"0"
+"Study » Baseline recruitment / initial data collection";"Baseline recruitment / initial data collection start year
+";"Baseline recruitment / initial data collection";"field_baseline_start_year";"Study";"study";"INTEGER";"";"0"
+"Study » Baseline design of the study";"";"Baseline design of the study";"field_design";"Study";"study";"TEXT";"case_control=Case-control study|case_only=Case only study|clinical_trial=Clinical trial / intervention trial|cohort_study=Cohort study|cross_sectional=Cross-sectional prevalence study|registry=Registry|other=Other";"1"
+"Study » Acronym";"Acronym of the study if applicable.
+";"Acronym";"field_acroym";"Study";"study";"TEXT";"";"0"

@@ -30,9 +30,11 @@ function mica_add_page($title, $body, $alias) {
   $node->type = 'page';
   node_object_prepare($node);
   $node->title = $title;
-  $node->body = array(LANGUAGE_NONE => array(array(
-    'value' => $body,
-  )));
+  $node->body = array(
+    LANGUAGE_NONE => array(
+      array('value' => $body)
+    )
+  );
   $node->promote = 0;
   $node->comment = COMMENT_NODE_CLOSED;
   $node->sticky = 0;

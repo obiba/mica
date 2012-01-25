@@ -56,7 +56,7 @@ projects[ckeditor][type] = module
 projects[collapsiblock][version] = 1.0
 projects[collapsiblock][type] = module
 
-projects[content_access][version] = 1.x-dev
+projects[content_access][version] = 1.2-beta1
 projects[content_access][type] = module
 ;projects[content_access][download][type] = git
 ;projects[content_access][download][url] = http://git.drupal.org/project/content_access.git

@@ -127,6 +127,24 @@ function mica_community_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'community';
+  $translatables['community'] = array(
+    t('Master'),
+    t('Community'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('Communication with researchers is crucial and stimulating. Mica offers out of the box different communication means such as discussion groups (forums), news and events announcement, and blogs.'),
+    t('Title'),
+    t('Updated date'),
+    t('Type'),
+    t('Page'),
+  );
   $export['community'] = $view;
 
   $view = new view;
@@ -211,6 +229,23 @@ function mica_community_views_default_views() {
   $handler->display->display_options['displays'] = array(
     'default' => 'default',
     'page' => 'page',
+  );
+  $translatables['events'] = array(
+    t('Master'),
+    t('Events'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_events'),
+    t('No event found.'),
+    t('Page'),
+    t('Feed'),
   );
   $export['events'] = $view;
 
@@ -517,6 +552,24 @@ function mica_community_views_default_views() {
   $handler->display->display_options['filters']['date_filter']['date_fields'] = array(
     'field_data_field_event_date.field_event_date_value' => 'field_data_field_event_date.field_event_date_value',
   );
+  $translatables['events_calendar'] = array(
+    t('Master'),
+    t('Events Calendar'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Month'),
+    t('All'),
+    t('Week'),
+    t('Day'),
+    t('Year'),
+    t('Block'),
+    t('Upcoming Events'),
+    t('Upcoming events block'),
+  );
   $export['events_calendar'] = $view;
 
   $view = new view;
@@ -589,6 +642,22 @@ function mica_community_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'publications';
+  $translatables['publications'] = array(
+    t('Master'),
+    t('Publications'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_publications'),
+    t('No publication found.'),
+    t('Page'),
+  );
   $export['publications'] = $view;
 
   return $export;

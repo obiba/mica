@@ -598,7 +598,8 @@ function mica_studies_field_group_info() {
     'label' => 'Please specify countries of residence',
     'weight' => '71',
     'children' => array(
-      0 => 'field_country_territory',
+      0 => 'field_country',
+      1 => 'field_territory',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1311,8 +1312,8 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'field_address',
       1 => 'field_country',
-      2 => 'field_state',
-      3 => 'field_institution_name',
+      2 => 'field_institution_name',
+      3 => 'field_state',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

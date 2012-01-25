@@ -445,6 +445,12 @@ function mica_studies_default_search_api_index() {
           "indexed" : true,
           "type" : "list\\u003ctext\\u003e",
           "boost" : "1.0"
+        },
+        "field_country" : {
+          "name" : "Country",
+          "indexed" : true,
+          "type" : "list\\u003ctext\\u003e",
+          "boost" : "1.0"
         }
       },
       "data_alter_callbacks" : {
