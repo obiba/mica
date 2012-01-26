@@ -26,7 +26,7 @@ msgstr "Opal"
 
 #: mica_opal.module:10
 msgid "Connection for Opal data repository."
-msgstr "Connexion pour le dépot de données de Opal"
+msgstr "Connexion pour le dépôt de données de Opal"
 
 #: mica_opal.info:0
 msgid "Mica Opal"
@@ -46,7 +46,7 @@ msgstr "Serveur Opal"
 
 #: includes/opal_connection.inc:29
 msgid "The Opal server secured url (https is required)."
-msgstr "URL sécurisée du serveur Opal (hhtps est requis)."
+msgstr "URL sécurisée du serveur Opal (https est requis)."
 
 #: includes/opal_connection.inc:34
 msgid "Datasource"
@@ -62,8 +62,7 @@ msgstr "Table"
 
 #: includes/opal_connection.inc:42
 msgid "The Opal table name from which variables and data can be fetched."
-msgstr ""
-"Nom de la table de Opal d'où les variables et les données seront récupérées."
+msgstr "Nom de la table de Opal d'où les variables et les données seront récupérées."
 
 #: includes/opal_connection.inc:56
 msgid "You must provide a valid Opal server url: https://..."
