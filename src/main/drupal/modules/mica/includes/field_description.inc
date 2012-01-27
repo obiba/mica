@@ -151,7 +151,7 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
     '#type' => 'textfield',
     '#title' => t('Label'),
     '#default_value' => $default_label,
-    '#required' => TRUE,  
+    '#required' => FALSE,  
     // Enabled only when the 'field_description' checkbox is checked
     '#states' => array(
       'enabled' => array(
@@ -196,13 +196,19 @@ function _mica_edit_field_field_description($form, &$form_state) {
     }
   }
   
-  $label = $is_field_description 
-    ? $form_state['values']['field']['settings']['field_description_infos']['field_description_label']
-    : NULL;
+  if ($is_field_description) {
+    $label = $form_state['values']['field']['settings']['field_description_infos']['field_description_label'];
+    if (empty($label)) {
+      $label = isset($instance['display_label']) && !empty($instance['display_label']) 
+        ? $instance['display_label'] : $instance['label']; 
+    }
+  } else {
+    $label = '';
+  }
   
   $field_description_infos = array(
     'title' =>  $node_type->name . ' » ' . $label,
-    'desc' => $is_field_description ? $form_state['values']['field']['settings']['field_description_infos']['field_description_body'] : NULL,
+    'desc' => $is_field_description ? $form_state['values']['field']['settings']['field_description_infos']['field_description_body'] : '',
     'bundle' => $bundle,
     'bundle_label' => $node_type->name,
     'original_field_name' => $field_name,
@@ -223,7 +229,7 @@ function _mica_edit_field_field_description($form, &$form_state) {
       _mica_update_field_description($field_description, $field_description_infos);
     } 
     else {
-      node_delete($field_description);
+      node_delete($field_description->nid);
     }   
   }
 }

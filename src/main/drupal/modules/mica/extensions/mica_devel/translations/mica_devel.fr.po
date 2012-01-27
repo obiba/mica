@@ -5,13 +5,13 @@
 # Generated from files:
 #  mica_devel.module: n/a
 #  mica_devel.info: n/a
+# NAME <EMAIL@ADDRESS>, 2012.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2012-01-19 15:14-0500\n"
-"PO-Revision-Date: 2012-01-19 15:14-0500\n"
+"PO-Revision-Date: 2012-01-25 16:40-0500\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: mica_devel.module:22
 msgid "Form exemple to run custom actions"
-msgstr ""
+msgstr "Example de formulaire "
 
 #: mica_devel.module:26
 msgid "Run dummy method"
@@ -41,9 +41,8 @@ msgstr ""
 
 #: mica_devel.info:0
 msgid "Mica development tools"
-msgstr ""
+msgstr "Mica - Outils de développement "
 
 #: mica_devel.info:0
 msgid "OBiBa"
-msgstr ""
-
+msgstr "OBiBa"

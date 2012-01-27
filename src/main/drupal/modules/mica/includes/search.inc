@@ -155,17 +155,14 @@ function _mica_add_field_index($index_name, stdClass $field_description) {
 
 function _mica_is_field_excluded_form_facets($field_name) {
   // By default some fields don't have any facets...
-  $disabled_field_facets = array(
-//     'mica_study_information:field_selection_criteria',
-//     'mica_study_information:field_gender',
-  );  
+  $disabled_field_facets = array();  
   return in_array($field_name, $disabled_field_facets);
 }
 
 function _mica_is_type_supports_facet($index_type) {
   return $index_type === 'string' || $index_type === 'boolean'
-  || $index_type === 'list<string>' || $index_type === 'list<boolean>' || $index_type === 'list<integer>'
-  || $index_type === 'list<decimal>' || $index_type === 'list<date>';
+    || $index_type === 'list<string>' || $index_type === 'list<boolean>' || $index_type === 'list<integer>'
+    || $index_type === 'list<decimal>' || $index_type === 'list<date>';
 }
 
 function _mica_is_type_supports_ranges($index_type) {
@@ -192,6 +189,7 @@ function _mica_remove_field_index($index_name, $field_name) {
     $realms = facetapi_get_realm_info();
     foreach ($realms as $realm_name => $realm) {
       if (facetapi_save_facet_disabled($adapter, $realm, $facet)) {
+        $delta = facetapi_hash_delta(facetapi_build_delta($searcher, $realm_name, $facet['name']));
         _mica_disable_search_block($delta);
       }
     }
@@ -282,7 +280,6 @@ function _mica_disable_search_block($facet_delta) {
 }
 
 /**
- *
  * Remove index field if exists for this bundle and field name
  * @param string $bundle
  * @param string $field_name
@@ -293,7 +290,7 @@ function _mica_drop_search_index_field($bundle, $field_name) {
     $bundles_indexes = $indexes[$bundle];
     if (!empty($bundles_indexes)) {
       foreach ($bundles_indexes as $index_machine_name => $index_name) {
-        _mica_remove_field_index($index_machine_name, $original_field_name);
+        _mica_remove_field_index($index_machine_name, $field_name);
       }
     }
   }

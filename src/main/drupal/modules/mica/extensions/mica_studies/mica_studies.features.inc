@@ -246,7 +246,7 @@ function mica_studies_default_search_api_index() {
         "title" : { "type" : "text" },
         "field_full_name" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
         "field_target_number_biosamples" : {
-          "name" : "How many people have provided or should provide biological samples, frolm which DNA could be extracted?",
+          "name" : "How many people have provided or should provide biological samples, from which DNA could be extracted?",
           "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
@@ -432,7 +432,7 @@ function mica_studies_default_search_api_index() {
         },
         "title_field" : {
           "name" : "Complete name",
-          "indexed" : true,
+          "indexed" : false,
           "type" : "text",
           "boost" : "1.0"
         },

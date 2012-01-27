@@ -137,7 +137,9 @@ function mica_dataschemas_entity_view($entity, $type, $view_mode, $langcode){
   }
 }
 
+// TODO run this as batch
 function _mica_dataschemas_import_taxonomies() {
+  drupal_set_time_limit(240);
   _mica_dataschemas_import_taxonomy('biochemical_measures.csv', 'Biochemical measures');
   _mica_dataschemas_import_taxonomy('body_functions_measures.csv', 'Body functions and measures');
   _mica_dataschemas_import_taxonomy('class.csv', 'Class');

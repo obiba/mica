@@ -34,18 +34,6 @@ function mica_import_demo_feeds($install_state) {
   $feed_configs['csv_study_import'] = array(
     'file' => $root . '/study.csv',
   );
-//   $feed_configs['csv_study_information_import'] = array(
-//     'file' => $root . '/study_information.csv',
-//   );
-  $feed_configs['csv_contact_import'] = array(
-    'file' => $root . '/contact.csv',
-  );
-  $feed_configs['csv_institution_import'] = array(
-    'file' => $root . '/institution.csv',
-  );
-//   $feed_configs['csv_study_documents_import'] = array(
-//     'file' => $root . '/study_documents.csv',
-//   );
   $feed_configs['csv_event_import'] = array(
     'file' => $root . '/event.csv',
   );

@@ -185,15 +185,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'workbench_moderation',
   );
 
-  // Exported permission: clear csv_contact_import feeds
-  $permissions['clear csv_contact_import feeds'] = array(
-    'name' => 'clear csv_contact_import feeds',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
   // Exported permission: clear csv_documents_import feeds
   $permissions['clear csv_documents_import feeds'] = array(
     'name' => 'clear csv_documents_import feeds',
@@ -206,15 +197,6 @@ function mica_studies_user_default_permissions() {
   // Exported permission: clear csv_field_description_import feeds
   $permissions['clear csv_field_description_import feeds'] = array(
     'name' => 'clear csv_field_description_import feeds',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: clear csv_institution_import feeds
-  $permissions['clear csv_institution_import feeds'] = array(
-    'name' => 'clear csv_institution_import feeds',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -754,15 +736,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'mica_studies',
   );
 
-  // Exported permission: import csv_contact_import feeds
-  $permissions['import csv_contact_import feeds'] = array(
-    'name' => 'import csv_contact_import feeds',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
   // Exported permission: import csv_documents_import feeds
   $permissions['import csv_documents_import feeds'] = array(
     'name' => 'import csv_documents_import feeds',
@@ -775,15 +748,6 @@ function mica_studies_user_default_permissions() {
   // Exported permission: import csv_field_description_import feeds
   $permissions['import csv_field_description_import feeds'] = array(
     'name' => 'import csv_field_description_import feeds',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: import csv_institution_import feeds
-  $permissions['import csv_institution_import feeds'] = array(
-    'name' => 'import csv_institution_import feeds',
     'roles' => array(
       0 => 'administrator',
     ),

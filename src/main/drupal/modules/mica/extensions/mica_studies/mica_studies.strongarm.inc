@@ -3185,7 +3185,7 @@ function mica_studies_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_study';
   $strongarm->value = array(
-    0 => 'main-menu:studies',
+    0 => 'main-menu',
   );
   $export['menu_options_study'] = $strongarm;
 
@@ -3214,7 +3214,7 @@ function mica_studies_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_study';
-  $strongarm->value = 'main-menu:467';
+  $strongarm->value = 'main-menu:533';
   $export['menu_parent_study'] = $strongarm;
 
   $strongarm = new stdClass;

@@ -108,7 +108,7 @@ projects[feeds][type] = module
 projects[feeds_jsonpath_parser][version] = 1.0-beta2
 projects[feeds_jsonpath_parser][type] = module
 
-projects[field_collection][version] = 1.0-beta3
+projects[field_collection][version] = 1.x-dev
 projects[field_collection][type] = module
 
 projects[field_display_label][version] = 1.2
@@ -117,7 +117,8 @@ projects[field_display_label][type] = module
 projects[field_group][version] = 1.1
 projects[field_group][type] = module
 
-projects[field_permissions][version] = 1.0-beta2
+;projects[field_permissions][version] = 1.0-beta2
+projects[field_permissions][version] = 1.0-beta1
 projects[field_permissions][type] = module
 
 projects[forum_access][version] = 1.0-alpha4

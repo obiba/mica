@@ -458,7 +458,10 @@ function mica_studies_field_group_info() {
   $field_group->data = array(
     'label' => 'Baseline recruitment / initial data collection',
     'weight' => '50',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_baseline_start_year',
+      1 => 'field_baseline_end_year',
+    ),
     'format_type' => 'div',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -487,8 +490,8 @@ function mica_studies_field_group_info() {
     'label' => 'Baseline recruitment / initial data collection',
     'weight' => '57',
     'children' => array(
-      0 => 'field_baseline_end_year',
-      1 => 'field_baseline_start_year',
+      0 => 'field_baseline_start_year',
+      1 => 'field_baseline_end_year',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -570,9 +573,7 @@ function mica_studies_field_group_info() {
   $field_group->data = array(
     'label' => 'Please specify countries of residence',
     'weight' => '47',
-    'children' => array(
-      0 => 'field_country_territory',
-    ),
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -915,7 +916,9 @@ function mica_studies_field_group_info() {
   $field_group->data = array(
     'label' => 'Study ended',
     'weight' => '52',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_ended_end_year',
+    ),
     'format_type' => 'div',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -1023,7 +1026,10 @@ function mica_studies_field_group_info() {
   $field_group->data = array(
     'label' => 'If applicable, Follow-up of participants',
     'weight' => '51',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_followup_start_year',
+      1 => 'field_followup_end_year',
+    ),
     'format_type' => 'div',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -1052,8 +1058,8 @@ function mica_studies_field_group_info() {
     'label' => 'If applicable, Follow-up of participants',
     'weight' => '58',
     'children' => array(
-      0 => 'field_followup_end_year',
-      1 => 'field_followup_start_year',
+      0 => 'field_followup_start_year',
+      1 => 'field_followup_end_year',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1281,9 +1287,11 @@ function mica_studies_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_address',
-      1 => 'field_country',
-      2 => 'field_state',
+      1 => 'field_city',
+      2 => 'field_country',
       3 => 'field_institution_name',
+      4 => 'field_postal_code',
+      5 => 'field_state',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1314,6 +1322,8 @@ function mica_studies_field_group_info() {
       1 => 'field_country',
       2 => 'field_institution_name',
       3 => 'field_state',
+      4 => 'field_city',
+      5 => 'field_postal_code',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1338,12 +1348,11 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Institution',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
-      0 => 'field_address',
+      0 => 'field_city',
       1 => 'field_country',
-      2 => 'field_state',
-      3 => 'field_institution_name',
+      2 => 'field_institution_name',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1370,10 +1379,12 @@ function mica_studies_field_group_info() {
     'label' => 'Institution',
     'weight' => '3',
     'children' => array(
-      0 => 'field_country',
-      1 => 'field_state',
-      2 => 'field_address',
+      0 => 'field_address',
+      1 => 'field_city',
+      2 => 'field_country',
       3 => 'field_institution_name',
+      4 => 'field_postal_code',
+      5 => 'field_state',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1400,10 +1411,12 @@ function mica_studies_field_group_info() {
     'label' => 'Institution',
     'weight' => '3',
     'children' => array(
-      0 => 'field_country',
-      1 => 'field_state',
-      2 => 'field_address',
-      3 => 'field_institution_name',
+      0 => 'field_address',
+      1 => 'field_country',
+      2 => 'field_institution_name',
+      3 => 'field_state',
+      4 => 'field_city',
+      5 => 'field_postal_code',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1428,12 +1441,11 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Institution',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
-      0 => 'field_country',
-      1 => 'field_state',
-      2 => 'field_address',
-      3 => 'field_institution_name',
+      0 => 'field_city',
+      1 => 'field_country',
+      2 => 'field_institution_name',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1653,7 +1665,10 @@ function mica_studies_field_group_info() {
   $field_group->data = array(
     'label' => 'Preparation phase / Pilot',
     'weight' => '49',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_preparation_start_year',
+      1 => 'field_preparation_end_year',
+    ),
     'format_type' => 'div',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -1682,8 +1697,8 @@ function mica_studies_field_group_info() {
     'label' => 'Preparation phase / Pilot',
     'weight' => '56',
     'children' => array(
-      0 => 'field_preparation_end_year',
-      1 => 'field_preparation_start_year',
+      0 => 'field_preparation_start_year',
+      1 => 'field_preparation_end_year',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1814,7 +1829,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsed',
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_sample_management|node|study|form'] = $field_group;
@@ -1949,19 +1964,12 @@ function mica_studies_field_group_info() {
     'label' => 'Status',
     'weight' => '10',
     'children' => array(
-      0 => 'field_baseline_end_year',
-      1 => 'field_baseline_start_year',
-      2 => 'field_ended_end_year',
-      3 => 'field_followup_end_year',
-      4 => 'field_followup_start_year',
-      5 => 'field_preparation_end_year',
-      6 => 'field_preparation_start_year',
-      7 => 'field_status_supp_info',
-      8 => 'group_baseline_phase',
-      9 => 'group_current_status',
-      10 => 'group_ended_phase',
-      11 => 'group_followup_phase',
-      12 => 'group_preparation_phase',
+      0 => 'field_status_supp_info',
+      1 => 'group_baseline_phase',
+      2 => 'group_current_status',
+      3 => 'group_ended_phase',
+      4 => 'group_followup_phase',
+      5 => 'group_preparation_phase',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

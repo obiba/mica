@@ -605,7 +605,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_street']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_street']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_street']['field_api_classes'] = 0;
-  /* Field: Content: City */
+  /* Field: Field: City */
   $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
   $handler->display->display_options['fields']['field_city']['table'] = 'field_data_field_city';
   $handler->display->display_options['fields']['field_city']['field'] = 'field_city';
@@ -626,7 +626,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_city']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_city']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_city']['field_api_classes'] = 0;
-  /* Field: Content: Postal Code */
+  /* Field: Field: Postal Code */
   $handler->display->display_options['fields']['field_postal_code']['id'] = 'field_postal_code';
   $handler->display->display_options['fields']['field_postal_code']['table'] = 'field_data_field_postal_code';
   $handler->display->display_options['fields']['field_postal_code']['field'] = 'field_postal_code';
@@ -923,7 +923,7 @@ function mica_studies_views_default_views() {
     'prefix_suffix' => 1,
   );
   $handler->display->display_options['fields']['field_target_number_participants']['field_api_classes'] = 0;
-  /* Field: Content: How many people have provided or should provide biological samples, frolm which DNA could be extracted? */
+  /* Field: Content: How many people have provided or should provide biological samples, from which DNA could be extracted? */
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['id'] = 'field_target_number_biosamples_1';
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['table'] = 'field_data_field_target_number_biosamples';
   $handler->display->display_options['fields']['field_target_number_biosamples_1']['field'] = 'field_target_number_biosamples';

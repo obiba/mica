@@ -82,7 +82,7 @@ drupal-cache-clear:
 #
 # Mica Build
 #
-mica: mica-install mica-i18n
+mica: mica-install
 	cp src/main/drupal/themes/mica_samara/mica.png target/$(micadir)/themes/seven/logo.png
 	cp src/main/drupal/themes/mica_samara/favicon.ico target/$(micadir)/misc/favicon.ico
 
@@ -98,12 +98,7 @@ mica-install:
 		rm -rf profiles/standard && \
 		rm -rf profiles/minimal ; \
 	fi
-	
-mica-i18n:	
-	mkdir -p target/$(micadir)/translations && \
-	find src/main/drupal -type f -name *.po -exec cp {} target/$(micadir)/translations \;
 		
-	
 htaccess:
 	cp target/$(micadir)/.htaccess target/$(micadir)/.htaccess_bak
 	sed '/# RewriteBase \/drupal/ a RewriteBase \/mica' target/$(micadir)/.htaccess > target/$(micadir)/.htaccess_new
@@ -279,12 +274,11 @@ demo-export:
 # Devel
 #
 
-
 mica-install-clear: mica-install
 	cd target/$(micadir) && \
 	drush cc all && \
 	cd ../..
-
+	
 coder:
 	cd target/$(micadir) && \
 	drush dl coder && \
@@ -304,6 +298,25 @@ git-themes:
 git-profiles:
 	$(call make-git,src/main/drupal/profiles,mica_standard,sandbox/yop/1144814)
 	$(call make-git,src/main/drupal/profiles,mica_demo,sandbox/yop/1144816)
+
+
+#
+# Local make: avoid downloading everything from drupal.org for faster builds
+#
+# - Run mica-local-prepare to download drupal core and all modules in a temp folder
+# - Run mica-local to build Mica with local drupal ditribution
+#
+
+mica-local-prepare:
+	$(drushmake_exec) mica.make target/$(micadir)-local
+
+mica-local: mica-local-copy drupal-default mica package-prepare htaccess
+
+mica-local-copy:
+	rm -rf target/$(micadir) && \
+	cp -r target/$(micadir)-local target/$(micadir)
+
+
 
 #
 # Misc
