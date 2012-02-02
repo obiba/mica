@@ -44,6 +44,9 @@ function _mica_field_value_type($field_value_type){
  */
 function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
   
+  //   $wrapper = entity_metadata_wrapper('node', NULL, array('bundle' => 'study'));
+  //   dvm($wrapper->getPropertyInfo());  
+  
   // check supported entity type
   $unsupported_entity_types = array(
     'field_collection_item',

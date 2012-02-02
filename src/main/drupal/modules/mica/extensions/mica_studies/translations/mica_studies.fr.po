@@ -744,8 +744,8 @@ msgctxt "field_comments:study:label"
 msgid "Comments"
 msgstr "Commentaires"
 
-#: field:field_contacts:study:label
-msgctxt "field_contacts:study:label"
+#: field:field_contacts_ref:study:label
+msgctxt "field_contacts_ref:study:label"
 msgid "Contacts"
 msgstr "Contacts"
 
@@ -764,8 +764,8 @@ msgctxt "field_current_participants_nb:study:label"
 msgid "How many people have joined the study?"
 msgstr "Combien de participants ont déjà été recrutés ?"
 
-#: field:field_current_sam_supp_indo:study:label
-msgctxt "field_current_sam_supp_indo:study:label"
+#: field:field_current_sam_supp_info:study:label
+msgctxt "field_current_sam_supp_info:study:label"
 msgid "If needed, supplementary information"
 msgstr "Information supplémentaire, si nécessaire"
 

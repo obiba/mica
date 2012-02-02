@@ -21,12 +21,11 @@ api = 2
   
 ; Drupal 7.x. Requires the `core` property to be set to 7.x.
 projects[drupal][type] = core
-projects[drupal][version] = 7.10
+projects[drupal][version] = 7.12
 
 ; Use vocabulary machine name for permissions
 ; http://drupal.org/node/995156
 projects[drupal][patch][995156] = http://drupal.org/files/issues/995156-5_portable_taxonomy_permissions.patch
-;projects[drupal][patch][MICA-205] = http://svn.obiba.org/mica/trunk/src/main/drupal/patches/MICA-205-block-info-test.patch
   
 ; Modules
 ; --------
@@ -65,22 +64,26 @@ projects[content_access][type] = module
 projects[content_taxonomy][version] = 1.0-beta1
 projects[content_taxonomy][type] = module
 
-projects[countries][version] = 2.0-beta2
 projects[countries][type] = module
+projects[countries][download][type] = git
+projects[countries][download][url] = http://git.drupal.org/project/countries.git
+projects[countries][download][revision] = 6aa27d6bd70b64d0312effa1ebd3c790e750a5c2
 
 projects[ctools][type] = module
 projects[ctools][download][type] = git
 projects[ctools][download][url] = http://git.drupal.org/project/ctools.git
 projects[ctools][download][revision] = dd65335ef5b823702ea5f1688a3000b09a04a739
 
-projects[date][version] = 2.0-rc1
+projects[date][version] = 2.0-rc2
 projects[date][type] = module
 
-projects[devel][version] = 1.x-dev
-projects[devel][type] = module
+projects[] = devel
 
-projects[email][version] = 1.0
 projects[email][type] = module
+projects[email][download][type] = git
+projects[email][download][url] = http://git.drupal.org/project/email.git
+projects[email][download][revision] = 523cd0de1387a4fca52f007f7594160a56378196
+projects[email][patch][968112] = http://drupal.org/files/email_718414_feeds_importer.patch
 
 projects[entity][version] = 1.0-rc1
 projects[entity][type] = module
@@ -90,11 +93,10 @@ projects[entity_translation][download][type] = git
 projects[entity_translation][download][url] = http://git.drupal.org/project/entity_translation.git
 projects[entity_translation][download][revision] = c8d5a47baf08c511749b1dcf8083ef4a3898698b
 
-projects[facetapi][version] = 1.0-rc1
+projects[facetapi][version] = 1.0-rc2
 projects[facetapi][type] = module
 
-projects[examples][version] = 1.x-dev
-projects[examples][type] = module
+projects[] = examples
 
 projects[features][type] = module
 projects[features][download][type] = git
@@ -102,14 +104,15 @@ projects[features][download][url] = http://git.drupal.org/project/features.git
 projects[features][download][revision] = a224dca266d2a7a5fc83de7719263f15c75a6e84
 projects[features][patch][1279938] = http://drupal.org/files/features-locale-1279938-8.patch
 
-projects[feeds][version] = 2.0-alpha4
+;projects[feeds][version] = 2.0-alpha4
+projects[feeds][version] = 2.x-dev
 projects[feeds][type] = module
 
 projects[feeds_jsonpath_parser][version] = 1.0-beta2
 projects[feeds_jsonpath_parser][type] = module
 
-projects[field_collection][version] = 1.x-dev
-projects[field_collection][type] = module
+projects[feeds_tamper][version] = 1.0-beta3
+projects[feeds_tamper][type] = module
 
 projects[field_display_label][version] = 1.2
 projects[field_display_label][type] = module
@@ -117,8 +120,7 @@ projects[field_display_label][type] = module
 projects[field_group][version] = 1.1
 projects[field_group][type] = module
 
-;projects[field_permissions][version] = 1.0-beta2
-projects[field_permissions][version] = 1.0-beta1
+projects[field_permissions][version] = 1.0-beta2
 projects[field_permissions][type] = module
 
 projects[forum_access][version] = 1.0-alpha4
@@ -170,14 +172,21 @@ projects[module_filter][type] = module
 projects[multiselect][version] = 1.8
 projects[multiselect][type] = module
 
-projects[namedb][version] = 1.0-beta2
 projects[namedb][type] = module
+projects[namedb][download][type] = git
+projects[namedb][download][url] = http://git.drupal.org/project/namedb.git
+projects[namedb][download][revision] = 7284d85b1a028ceae722eba0685a5fe7b2623c04
 
-projects[name][version] = 1.4
 projects[name][type] = module
+projects[name][download][type] = git
+projects[name][download][url] = http://git.drupal.org/project/name.git
+projects[name][download][revision] = 6644c91893ac05b681509486f01353490372a393
 
-projects[noderefcreate][version] = 1.0
 projects[noderefcreate][type] = module
+projects[noderefcreate][download][type] = git
+projects[noderefcreate][download][url] = http://git.drupal.org/project/noderefcreate.git
+projects[noderefcreate][download][revision] = 4268ba7832272348d0612e23ce11f42f0a255318
+projects[noderefcreate][patch][892052] = http://drupal.org/files/noderefcreate-workflow-options-892052-4.patch
 
 projects[panels][version] = 3.0
 projects[panels][type] = module
@@ -188,10 +197,8 @@ projects[pathauto][type] = module
 projects[potx][version] = 1.0
 projects[potx][type] = module
 
+projects[references][version] = 2.0
 projects[references][type] = module
-projects[references][download][type] = git
-projects[references][download][url] = http://git.drupal.org/project/references.git
-projects[references][download][revision] = e00686587a53cf51bdcca45248e9a72b483b8916
 
 projects[search_api][version] = 1.0
 projects[search_api][type] = module
@@ -226,10 +233,13 @@ projects[taxonomy_csv][type] = module
 projects[taxonomy_manager][version] = 1.0-beta2
 projects[taxonomy_manager][type] = module
 
-projects[title][version] = 1.0-alpha2
 projects[title][type] = module
+projects[title][download][type] = git
+projects[title][download][url] = http://git.drupal.org/project/title.git
+projects[title][download][revision] = 5cfda9bb7b2d18efaa01f85a4d10255a2866c83a
+projects[title][patch][1362790] = http://drupal.org/files/check_if_legacy_field_is_set-1362790-1.patch
 
-projects[token][version] = 1.0-beta7
+projects[token][version] = 1.0-rc1
 projects[token][type] = module
 
 projects[token][version] = 1.0-beta7

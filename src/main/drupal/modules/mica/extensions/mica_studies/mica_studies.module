@@ -189,7 +189,7 @@ function _mica_node_reference_block() {
   ->condition('type', 'study%','LIKE')
   ->execute();
   $query = db_insert('block_node_type')->fields(array('type', 'module', 'delta'));
-  foreach (array('study', 'study_information','study_documents','contact','institution') as $type) {
+  foreach (array('study', 'contact') as $type) {
     $query->values(array(
       'type' => $type,
       'module' => 'node_reference_block',
@@ -213,6 +213,7 @@ function mica_studies_node_insert($node) {
 */
 function mica_node_view($node, $view_mode, $langcode) {
 	if ($node->type === 'study') {
+	  
 		$bindings = array(
       'field_design_other_sp' => array(
         'field' => 'field_design',
@@ -295,7 +296,6 @@ function mica_node_view($node, $view_mode, $langcode) {
 
 		_mica_bind_other_specify($node, $bindings);
 		
-		
 		$status_dates = array(
 			'field_preparation_start_year' => 'field_preparation_end_year',
 		  'field_baseline_start_year' => 'field_baseline_end_year',
@@ -316,7 +316,7 @@ function mica_node_view($node, $view_mode, $langcode) {
       'field_current_supp_info' => array(
         'field' => 'field_current_participants_nb',
 		  ),
-      'field_current_sam_supp_indo' => array(
+      'field_current_sam_supp_info' => array(
         'field' => 'field_current_samples_nb',
 	  	),
       'field_partcipant_sel_supp_info' => array(
@@ -357,23 +357,81 @@ function mica_node_view($node, $view_mode, $langcode) {
 }
 
 /**
- * 
  * Implements hook_form_alter
  * To add dependent fields when filling out the form
  */
 function mica_studies_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'study_node_form') {
-    $form['#validate'][] = 'study_node_form_validate';
-    _mica_add_dependent_field_checked($form, 'field_design', 'field_design_other_sp', 'other');
-    _mica_add_dependent_field_checked($form, 'field_recruitment', 'field_recruitment_other_sp', 'other');
-    _mica_add_dependent_field_checked($form, 'field_select_criteria', 'field_selection_others_sp', 'others');
-    _mica_add_dependent_field_checked($form, 'field_access_other', 'field_access_other_sp', 'yes');
-    _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
-    _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
-    _mica_add_dependent_field_checked($form, 'field_recruitment_procedures', 'field_recruitment_other', 'other');
-    _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_data_sources_sp', 'others');
+  switch ($form_id) {
+    case 'study_node_form':
+      $form['#validate'][] = 'study_node_form_validate';
+      _mica_add_dependent_field_checked($form, 'field_design', 'field_design_other_sp', 'other');
+      _mica_add_dependent_field_checked($form, 'field_recruitment', 'field_recruitment_other_sp', 'other');
+      _mica_add_dependent_field_checked($form, 'field_select_criteria', 'field_selection_others_sp', 'others');
+      _mica_add_dependent_field_checked($form, 'field_access_other', 'field_access_other_sp', 'yes');
+      _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
+      _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
+      _mica_add_dependent_field_checked($form, 'field_recruitment_procedures', 'field_recruitment_other', 'other');
+      _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_data_sources_sp', 'others');
+      break;
+      
+    case 'contact_node_form':
+      $form['title']['#type'] = 'value';
+      $form['title']['#required'] = FALSE;      
+      break;
   }
 }
+
+/**
+* Implements hook_node_submit
+*/
+function mica_studies_node_submit($node, $form, &$form_state) {
+  if ($node->type === 'contact' && _mica_studies_contact_title_is_needed($node)) {
+    _mica_studies_set_contact_title($node);
+  }
+}
+
+/**
+* Implements hook_node_presave().
+*/
+function mica_studies_node_presave($node) {
+  if ($node->type === 'contact' && _mica_studies_contact_title_is_needed($node)) {
+    _mica_studies_set_contact_title($node);
+  }
+}
+
+function _mica_studies_set_contact_title(&$node) {
+  
+  if (isset($node->field_contact_name)) {
+
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $institution = $wrapper->field_institution_name->value();
+    
+    // cannot use entity_metadata_wrapper for Name fields because of http://drupal.org/node/1423160
+    $language = $node->language;
+    $field_contact_name = $node->field_contact_name;
+    $name = $field_contact_name[$language][0];
+    $full_name = $name['title'] . ' ' . $name['given'] . ' ' . $name['family']; 
+    
+    $node->title = $full_name;
+    if (!empty($institution)) $node->title .= ' (' . $institution . ')';
+    
+    // set title for current node revision
+   	$node->title = substr($node->title, 0, 255);
+   	
+   	// With that flag we ensure we don't apply the title two times to the same
+   	// node. See _mica_studies_contact_title_is_needed().
+   	$node->contact_title_applied = TRUE;
+
+  }
+}
+
+/**
+* Returns whether the contact title has to be set.
+*/
+function _mica_studies_contact_title_is_needed($node) {
+	return empty($node->contact_title_applied);
+}
+
 
 /**
  * Implement hook_field_group_pre_render
@@ -454,10 +512,13 @@ function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_s
  * And hide end date.  
  */
 function _mica_studies_display_status_dates(&$node, $status_dates) {
+  $wrapper = entity_metadata_wrapper('node', $node);
   foreach ($status_dates as $start_date => $end_date) {
-    if (!empty($node->content[$start_date]['#items'][0]['value'])) {
+    $start = $wrapper->$start_date->value();
+    if (!empty($start)) {
       $node->content[$start_date][0]['#markup'] = t('From') . ' ' . $node->content[$start_date][0]['#markup'];
-      if (!empty($node->content[$end_date]['#items'][0]['value'])) {
+      $end = $wrapper->$end_date->value();
+      if (!empty($end)) {
       	$node->content[$start_date][0]['#markup'] .= ' ' . t('to') . ' ' .  $node->content[$end_date][0]['#markup'];
       }
       $node->content[$end_date]['#access'] = FALSE;

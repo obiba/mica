@@ -27,10 +27,6 @@ files[] = includes/relations.inc
 files[] = includes/search.inc
 files[] = includes/field_description.inc
 
-files[] = includes/feeds/mappers/email.inc
-files[] = includes/feeds/mappers/mica.inc
-files[] = includes/feeds/mappers/name.inc
-files[] = includes/feeds/mappers/references.inc
 files[] = includes/feeds/processors/FeedsStudyChildProcessor.inc
 files[] = includes/feeds/processors/FeedsUniqueNodeProcessor.inc
 files[] = includes/feeds/parsers/FeedsMultiValueCSVParser.inc

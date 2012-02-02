@@ -459,8 +459,8 @@ function mica_studies_field_group_info() {
     'label' => 'Baseline recruitment / initial data collection',
     'weight' => '50',
     'children' => array(
-      0 => 'field_baseline_start_year',
-      1 => 'field_baseline_end_year',
+      0 => 'field_baseline_end_year',
+      1 => 'field_baseline_start_year',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -490,8 +490,8 @@ function mica_studies_field_group_info() {
     'label' => 'Baseline recruitment / initial data collection',
     'weight' => '57',
     'children' => array(
-      0 => 'field_baseline_start_year',
-      1 => 'field_baseline_end_year',
+      0 => 'field_baseline_end_year',
+      1 => 'field_baseline_start_year',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -655,7 +655,7 @@ function mica_studies_field_group_info() {
     'label' => 'Current number of collected biological samples from which DNA could be extracted',
     'weight' => '13',
     'children' => array(
-      0 => 'field_current_sam_supp_indo',
+      0 => 'field_current_sam_supp_info',
       1 => 'field_current_samples_date',
       2 => 'field_current_samples_nb',
     ),
@@ -865,7 +865,6 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'mica_dataset',
       1 => 'mica_opal',
-      2 => 'path',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1027,8 +1026,8 @@ function mica_studies_field_group_info() {
     'label' => 'If applicable, Follow-up of participants',
     'weight' => '51',
     'children' => array(
-      0 => 'field_followup_start_year',
-      1 => 'field_followup_end_year',
+      0 => 'field_followup_end_year',
+      1 => 'field_followup_start_year',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -1058,8 +1057,8 @@ function mica_studies_field_group_info() {
     'label' => 'If applicable, Follow-up of participants',
     'weight' => '58',
     'children' => array(
-      0 => 'field_followup_start_year',
-      1 => 'field_followup_end_year',
+      0 => 'field_followup_end_year',
+      1 => 'field_followup_start_year',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1089,7 +1088,7 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'field_current_part_nb_date',
       1 => 'field_current_participants_nb',
-      2 => 'field_current_sam_supp_indo',
+      2 => 'field_current_sam_supp_info',
       3 => 'field_current_samples_date',
       4 => 'field_current_samples_nb',
       5 => 'field_current_supp_info',
@@ -1172,7 +1171,7 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'body',
       1 => 'field_acroym',
-      2 => 'field_contacts',
+      2 => 'field_contacts_ref',
       3 => 'field_investigators',
       4 => 'field_website',
       5 => 'title_field',
@@ -1203,7 +1202,7 @@ function mica_studies_field_group_info() {
     'weight' => '6',
     'children' => array(
       0 => 'body',
-      1 => 'field_contacts',
+      1 => 'field_contacts_ref',
       2 => 'field_investigators',
       3 => 'field_website',
       4 => 'group_study_name',
@@ -1276,22 +1275,22 @@ function mica_studies_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_institution|field_collection_item|field_contacts|default';
+  $field_group->identifier = 'group_institution|node|contact|default';
   $field_group->group_name = 'group_institution';
-  $field_group->entity_type = 'field_collection_item';
-  $field_group->bundle = 'field_contacts';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'contact';
   $field_group->mode = 'default';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Institution',
     'weight' => '3',
     'children' => array(
-      0 => 'field_address',
-      1 => 'field_city',
-      2 => 'field_country',
-      3 => 'field_institution_name',
-      4 => 'field_postal_code',
-      5 => 'field_state',
+      0 => 'field_institution_name',
+      1 => 'field_address',
+      2 => 'field_city',
+      3 => 'field_postal_code',
+      4 => 'field_state',
+      5 => 'field_contact_country',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1303,27 +1302,27 @@ function mica_studies_field_group_info() {
       ),
     ),
   );
-  $export['group_institution|field_collection_item|field_contacts|default'] = $field_group;
+  $export['group_institution|node|contact|default'] = $field_group;
 
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_institution|field_collection_item|field_contacts|form';
+  $field_group->identifier = 'group_institution|node|contact|form';
   $field_group->group_name = 'group_institution';
-  $field_group->entity_type = 'field_collection_item';
-  $field_group->bundle = 'field_contacts';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'contact';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Institution',
-    'weight' => '3',
+    'weight' => '6',
     'children' => array(
-      0 => 'field_address',
-      1 => 'field_country',
-      2 => 'field_institution_name',
-      3 => 'field_state',
-      4 => 'field_city',
-      5 => 'field_postal_code',
+      0 => 'field_institution_name',
+      1 => 'field_address',
+      2 => 'field_city',
+      3 => 'field_postal_code',
+      4 => 'field_state',
+      5 => 'field_contact_country',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1335,129 +1334,7 @@ function mica_studies_field_group_info() {
       ),
     ),
   );
-  $export['group_institution|field_collection_item|field_contacts|form'] = $field_group;
-
-  $field_group = new stdClass;
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_institution|field_collection_item|field_contacts|token';
-  $field_group->group_name = 'group_institution';
-  $field_group->entity_type = 'field_collection_item';
-  $field_group->bundle = 'field_contacts';
-  $field_group->mode = 'token';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Institution',
-    'weight' => '2',
-    'children' => array(
-      0 => 'field_city',
-      1 => 'field_country',
-      2 => 'field_institution_name',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_institution|field_collection_item|field_contacts|token'] = $field_group;
-
-  $field_group = new stdClass;
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_institution|field_collection_item|field_investigators|default';
-  $field_group->group_name = 'group_institution';
-  $field_group->entity_type = 'field_collection_item';
-  $field_group->bundle = 'field_investigators';
-  $field_group->mode = 'default';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Institution',
-    'weight' => '3',
-    'children' => array(
-      0 => 'field_address',
-      1 => 'field_city',
-      2 => 'field_country',
-      3 => 'field_institution_name',
-      4 => 'field_postal_code',
-      5 => 'field_state',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_institution|field_collection_item|field_investigators|default'] = $field_group;
-
-  $field_group = new stdClass;
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_institution|field_collection_item|field_investigators|form';
-  $field_group->group_name = 'group_institution';
-  $field_group->entity_type = 'field_collection_item';
-  $field_group->bundle = 'field_investigators';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Institution',
-    'weight' => '3',
-    'children' => array(
-      0 => 'field_address',
-      1 => 'field_country',
-      2 => 'field_institution_name',
-      3 => 'field_state',
-      4 => 'field_city',
-      5 => 'field_postal_code',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_institution|field_collection_item|field_investigators|form'] = $field_group;
-
-  $field_group = new stdClass;
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_institution|field_collection_item|field_investigators|token';
-  $field_group->group_name = 'group_institution';
-  $field_group->entity_type = 'field_collection_item';
-  $field_group->bundle = 'field_investigators';
-  $field_group->mode = 'token';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Institution',
-    'weight' => '2',
-    'children' => array(
-      0 => 'field_city',
-      1 => 'field_country',
-      2 => 'field_institution_name',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_institution|field_collection_item|field_investigators|token'] = $field_group;
+  $export['group_institution|node|contact|form'] = $field_group;
 
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1666,8 +1543,8 @@ function mica_studies_field_group_info() {
     'label' => 'Preparation phase / Pilot',
     'weight' => '49',
     'children' => array(
-      0 => 'field_preparation_start_year',
-      1 => 'field_preparation_end_year',
+      0 => 'field_preparation_end_year',
+      1 => 'field_preparation_start_year',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -1697,8 +1574,8 @@ function mica_studies_field_group_info() {
     'label' => 'Preparation phase / Pilot',
     'weight' => '56',
     'children' => array(
-      0 => 'field_preparation_start_year',
-      1 => 'field_preparation_end_year',
+      0 => 'field_preparation_end_year',
+      1 => 'field_preparation_start_year',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

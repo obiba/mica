@@ -94,6 +94,15 @@ function mica_studies_user_default_permissions() {
     'module' => 'feeds',
   );
 
+  // Exported permission: administer feeds_tamper
+  $permissions['administer feeds_tamper'] = array(
+    'name' => 'administer feeds_tamper',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds_tamper',
+  );
+
   // Exported permission: administer field permissions
   $permissions['administer field permissions'] = array(
     'name' => 'administer field permissions',
@@ -185,6 +194,15 @@ function mica_studies_user_default_permissions() {
     'module' => 'workbench_moderation',
   );
 
+  // Exported permission: clear csv_contact_import feeds
+  $permissions['clear csv_contact_import feeds'] = array(
+    'name' => 'clear csv_contact_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
   // Exported permission: clear csv_documents_import feeds
   $permissions['clear csv_documents_import feeds'] = array(
     'name' => 'clear csv_documents_import feeds',
@@ -218,6 +236,18 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: create contact content
+  $permissions['create contact content'] = array(
+    'name' => 'create contact content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+      3 => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -354,6 +384,17 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete any contact content
+  $permissions['delete any contact content'] = array(
+    'name' => 'delete any contact content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study reviewer',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: delete any documents content
   $permissions['delete any documents content'] = array(
     'name' => 'delete any documents content',
@@ -408,6 +449,18 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own contact content
+  $permissions['delete own contact content'] = array(
+    'name' => 'delete own contact content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+      3 => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -476,6 +529,17 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any contact content
+  $permissions['edit any contact content'] = array(
+    'name' => 'edit any contact content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -601,6 +665,18 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own contact content
+  $permissions['edit own contact content'] = array(
+    'name' => 'edit own contact content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'study administrator',
+      3 => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -736,6 +812,15 @@ function mica_studies_user_default_permissions() {
     'module' => 'mica_studies',
   );
 
+  // Exported permission: import csv_contact_import feeds
+  $permissions['import csv_contact_import feeds'] = array(
+    'name' => 'import csv_contact_import feeds',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds',
+  );
+
   // Exported permission: import csv_documents_import feeds
   $permissions['import csv_documents_import feeds'] = array(
     'name' => 'import csv_documents_import feeds',
@@ -837,6 +922,42 @@ function mica_studies_user_default_permissions() {
       1 => 'authenticated user',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: tamper csv_contact_import
+  $permissions['tamper csv_contact_import'] = array(
+    'name' => 'tamper csv_contact_import',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds_tamper',
+  );
+
+  // Exported permission: tamper csv_documents_import
+  $permissions['tamper csv_documents_import'] = array(
+    'name' => 'tamper csv_documents_import',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds_tamper',
+  );
+
+  // Exported permission: tamper csv_field_description_import
+  $permissions['tamper csv_field_description_import'] = array(
+    'name' => 'tamper csv_field_description_import',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds_tamper',
+  );
+
+  // Exported permission: tamper csv_study_import
+  $permissions['tamper csv_study_import'] = array(
+    'name' => 'tamper csv_study_import',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'feeds_tamper',
   );
 
   // Exported permission: use advanced search

@@ -1,10 +1,5 @@
 <?php
 
-require_once(drupal_get_path('module', 'mica') . '/includes/feeds/mappers/mica.inc');
-require_once(drupal_get_path('module', 'mica') . '/includes/feeds/mappers/email.inc');
-require_once(drupal_get_path('module', 'mica') . '/includes/feeds/mappers/name.inc');
-require_once(drupal_get_path('module', 'mica') . '/includes/feeds/mappers/references.inc');
-
 /**
  * Implements hook_help()
  */
@@ -157,9 +152,7 @@ function mica_node_presave($node) {
     module_load_include('inc', 'mica', 'includes/relations');
     $relations = _mica_find_relations_by_parent($node->type);
     if (!empty($relations)) {
-    
-        $menu = mica_create_menu($node, 0);
-    	
+      $menu = mica_create_menu($node, 0);
     	foreach ($relations as $relation) {
     		$relation->create_child_node($node, $menu);
     	}
@@ -182,7 +175,6 @@ function mica_node_presave($node) {
     }
     
   }
-//   debug($node); 
 }
 
 /**
@@ -224,8 +216,8 @@ function mica_form_alter(&$form, $form_state, $form_id) {
     
     if (!is_null($relation) && array_key_exists('actions', $form)){
     	$form['actions']['info'] = array(
-            '#markup' => '&nbsp;&nbsp;This node should not be deleted because it is used by the relation "' . $relation->label .'". Only parents of relations can be deleted.',
-            '#weight' => '50',
+        '#markup' => '&nbsp;&nbsp;This node should not be deleted because it is used by the relation "' . $relation->label .'". Only parents of relations can be deleted.',
+        '#weight' => '50',
     	);
     }
   }

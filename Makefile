@@ -308,6 +308,7 @@ git-profiles:
 #
 
 mica-local-prepare:
+	rm -rf target/$(micadir)-local && \
 	$(drushmake_exec) mica.make target/$(micadir)-local
 
 mica-local: mica-local-copy drupal-default mica package-prepare htaccess

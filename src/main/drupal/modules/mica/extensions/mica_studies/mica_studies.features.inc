@@ -17,6 +17,10 @@ function mica_studies_ctools_plugin_api() {
     return array("version" => "1");
   }
   list($module, $api) = func_get_args();
+  if ($module == "feeds_tamper" && $api == "feeds_tamper_default") {
+    return array("version" => "2");
+  }
+  list($module, $api) = func_get_args();
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -77,6 +81,14 @@ function mica_studies_image_default_styles() {
  */
 function mica_studies_node_info() {
   $items = array(
+    'contact' => array(
+      'name' => t('Contact'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'documents' => array(
       'name' => t('Documents'),
       'base' => 'node_content',
@@ -661,7 +673,7 @@ function mica_studies_default_search_api_index() {
           "type" : "text",
           "boost" : "1.0"
         },
-        "field_current_sam_supp_indo" : {
+        "field_current_sam_supp_info" : {
           "name" : "If needed, supplementary information",
           "indexed" : true,
           "type" : "text",
@@ -811,8 +823,9 @@ function mica_studies_default_search_api_index() {
         }
       },
       "additional fields" : {
-        "field_contacts" : "field_contacts",
-        "field_contacts:field_institution" : "field_contacts:field_institution"
+        "field_contacts_ref" : "field_contacts_ref",
+        "field_contacts_ref:field_institution" : "field_contacts_ref:field_institution",
+        "field_contacts" : "field_contacts"
       }
     },
     "enabled" : "1",

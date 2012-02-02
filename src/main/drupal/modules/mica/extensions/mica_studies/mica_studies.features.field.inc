@@ -132,8 +132,8 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_contacts-field_address'
-  $fields['field_collection_item-field_contacts-field_address'] = array(
+  // Exported field: 'node-contact-field_address'
+  $fields['node-contact-field_address'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -169,27 +169,27 @@ function mica_studies_field_default_fields() {
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'field_contacts',
+      'bundle' => 'contact',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '9',
+          'weight' => '10',
         ),
-        'token' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => 0,
         ),
       ),
       'display_label' => '',
-      'entity_type' => 'field_collection_item',
+      'entity_type' => 'node',
       'field_name' => 'field_address',
       'label' => 'Address',
       'required' => 0,
@@ -204,13 +204,13 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '11',
+        'weight' => '40',
       ),
     ),
   );
 
-  // Exported field: 'field_collection_item-field_contacts-field_city'
-  $fields['field_collection_item-field_contacts-field_city'] = array(
+  // Exported field: 'node-contact-field_city'
+  $fields['node-contact-field_city'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -253,28 +253,27 @@ function mica_studies_field_default_fields() {
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'field_contacts',
+      'bundle' => 'contact',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '10',
-        ),
-        'token' => array(
           'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '1',
+          'weight' => '11',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
       'display_label' => '',
-      'entity_type' => 'field_collection_item',
+      'entity_type' => 'node',
       'field_name' => 'field_city',
       'label' => 'City',
       'required' => 0,
@@ -289,13 +288,84 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '12',
+        'weight' => '41',
       ),
     ),
   );
 
-  // Exported field: 'field_collection_item-field_contacts-field_contact_email'
-  $fields['field_collection_item-field_contacts-field_contact_email'] = array(
+  // Exported field: 'node-contact-field_contact_country'
+  $fields['node-contact-field_contact_country'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_contact_country',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'iso2' => array(
+          0 => 'iso2',
+        ),
+      ),
+      'module' => 'countries',
+      'settings' => array(
+        'continents' => array(),
+        'countries' => array(),
+        'enabled' => '1',
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => '',
+        ),
+        'size' => 5,
+      ),
+      'translatable' => '0',
+      'type' => 'country',
+    ),
+    'field_instance' => array(
+      'bundle' => 'contact',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'module' => 'countries',
+          'settings' => array(),
+          'type' => 'country_default',
+          'weight' => '14',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_contact_country',
+      'label' => 'Country',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '44',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-contact-field_contact_email'
+  $fields['node-contact-field_contact_email'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -326,28 +396,27 @@ function mica_studies_field_default_fields() {
       'type' => 'email',
     ),
     'field_instance' => array(
-      'bundle' => 'field_contacts',
+      'bundle' => 'contact',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'email',
-          'settings' => array(),
-          'type' => 'email_default',
-          'weight' => '1',
-        ),
-        'token' => array(
           'label' => 'inline',
           'module' => 'email',
           'settings' => array(),
           'type' => 'email_default',
           'weight' => '1',
         ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
       ),
       'display_label' => '',
-      'entity_type' => 'field_collection_item',
+      'entity_type' => 'node',
       'field_name' => 'field_contact_email',
       'label' => 'Email',
       'required' => 0,
@@ -361,13 +430,13 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'email_textfield',
-        'weight' => '1',
+        'weight' => '4',
       ),
     ),
   );
 
-  // Exported field: 'field_collection_item-field_contacts-field_contact_name'
-  $fields['field_collection_item-field_contacts-field_contact_name'] = array(
+  // Exported field: 'node-contact-field_contact_name'
+  $fields['node-contact-field_contact_name'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -432,18 +501,18 @@ function mica_studies_field_default_fields() {
           'field_description_value_type' => '',
         ),
         'generational_options' => '-- --
-Jr.
-Sr.
-I
-II
-III
-IV
-V
-VI
-VII
-VIII
-IX
-X',
+  Jr.
+  Sr.
+  I
+  II
+  III
+  IV
+  V
+  VI
+  VII
+  VIII
+  IX
+  X',
         'labels' => array(
           'credentials' => 'Credentials',
           'family' => 'Family',
@@ -473,43 +542,45 @@ X',
           'title' => 'title',
         ),
         'title_options' => '-- --
-Mr.
-Miss
-Dr.
-Prof.
-MD.',
+  Mr.
+  Miss
+  Dr.
+  Prof.
+  MD.',
       ),
       'translatable' => '1',
       'type' => 'name',
     ),
     'field_instance' => array(
-      'bundle' => 'field_contacts',
+      'bundle' => 'contact',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'name',
-          'settings' => array(),
+          'settings' => array(
+            'markup' => 0,
+          ),
           'type' => 'name_default',
           'weight' => '0',
         ),
-        'token' => array(
-          'label' => 'inline',
-          'module' => 'name',
+        'teaser' => array(
+          'label' => 'above',
           'settings' => array(),
-          'type' => 'name_default',
-          'weight' => '0',
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
       'display_label' => '',
-      'entity_type' => 'field_collection_item',
+      'entity_type' => 'node',
       'field_name' => 'field_contact_name',
       'label' => 'Contact Name',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'component_css' => '',
+        'component_layout' => 'default',
         'credentials_inline' => 0,
         'field_type' => array(
           'credentials' => 'text',
@@ -553,167 +624,13 @@ MD.',
         'module' => 'name',
         'settings' => array(),
         'type' => 'name_widget',
-        'weight' => '0',
+        'weight' => '3',
       ),
     ),
   );
 
-  // Exported field: 'field_collection_item-field_contacts-field_country'
-  $fields['field_collection_item-field_contacts-field_country'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_country',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(
-        'iso2' => array(
-          0 => 'iso2',
-        ),
-      ),
-      'module' => 'countries',
-      'settings' => array(
-        'continents' => array(),
-        'enabled' => '1',
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-        'size' => 5,
-      ),
-      'translatable' => '0',
-      'type' => 'country',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_contacts',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'module' => 'countries',
-          'settings' => array(),
-          'type' => 'country_default',
-          'weight' => '13',
-        ),
-        'token' => array(
-          'label' => 'inline',
-          'module' => 'countries',
-          'settings' => array(),
-          'type' => 'country_default',
-          'weight' => '2',
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_country',
-      'label' => 'Country',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '15',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_contacts-field_daco'
-  $fields['field_collection_item-field_contacts-field_daco'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_daco',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => 'No',
-          1 => 'Yes',
-        ),
-        'allowed_values_function' => '',
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'list_boolean',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_contacts',
-      'default_value' => array(
-        0 => array(
-          'value' => 0,
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '3',
-        ),
-        'token' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '5',
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_daco',
-      'label' => 'Data Access Committee member',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(
-          'display_label' => 1,
-        ),
-        'type' => 'options_onoff',
-        'weight' => '8',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_contacts-field_institution_name'
-  $fields['field_collection_item-field_contacts-field_institution_name'] = array(
+  // Exported field: 'node-contact-field_institution_name'
+  $fields['node-contact-field_institution_name'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -756,938 +673,27 @@ MD.',
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'field_contacts',
+      'bundle' => 'contact',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '8',
-        ),
-        'token' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '0',
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_institution_name',
-      'label' => 'Institution name',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '10',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_contacts-field_postal_code'
-  $fields['field_collection_item-field_contacts-field_postal_code'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_postal_code',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'max_length' => '255',
-      ),
-      'translatable' => '1',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_contacts',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '11',
-        ),
-        'token' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '7',
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_postal_code',
-      'label' => 'Postal Code',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '13',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_contacts-field_state'
-  $fields['field_collection_item-field_contacts-field_state'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_state',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_contacts',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '12',
-        ),
-        'token' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '3',
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_state',
-      'label' => 'State/Province',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '14',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_contacts-field_telephone'
-  $fields['field_collection_item-field_contacts-field_telephone'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_telephone',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'max_length' => '255',
-      ),
-      'translatable' => '1',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_contacts',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '2',
-        ),
-        'token' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '6',
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_telephone',
-      'label' => 'Telephone',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '2',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_investigators-field_address'
-  $fields['field_collection_item-field_investigators-field_address'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_address',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_investigators',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '9',
         ),
-        'token' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => 0,
         ),
       ),
       'display_label' => '',
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_address',
-      'label' => 'Address',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '10',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_investigators-field_city'
-  $fields['field_collection_item-field_investigators-field_city'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_city',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'max_length' => '255',
-      ),
-      'translatable' => '1',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_investigators',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '10',
-        ),
-        'token' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '1',
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_city',
-      'label' => 'City',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '11',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_investigators-field_contact_email'
-  $fields['field_collection_item-field_investigators-field_contact_email'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_contact_email',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'module' => 'email',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'email',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_investigators',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'email',
-          'settings' => array(),
-          'type' => 'email_default',
-          'weight' => '1',
-        ),
-        'token' => array(
-          'label' => 'inline',
-          'module' => 'email',
-          'settings' => array(),
-          'type' => 'email_default',
-          'weight' => '1',
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_contact_email',
-      'label' => 'Email',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'email',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'email_textfield',
-        'weight' => '1',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_investigators-field_contact_name'
-  $fields['field_collection_item-field_investigators-field_contact_name'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_contact_name',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(
-        'family' => array(
-          0 => 'family',
-        ),
-        'given' => array(
-          0 => 'given',
-        ),
-      ),
-      'module' => 'name',
-      'settings' => array(
-        'autocomplete_separator' => array(
-          'credentials' => ', ',
-          'family' => ' -',
-          'generational' => ' ',
-          'given' => ' -',
-          'middle' => ' -',
-          'title' => ' ',
-        ),
-        'autocomplete_source' => array(
-          'credentials' => array(
-            'namedb' => 0,
-          ),
-          'family' => array(
-            'namedb' => 0,
-          ),
-          'generational' => array(
-            'generational' => 0,
-            'namedb' => 0,
-          ),
-          'given' => array(
-            'namedb' => 0,
-          ),
-          'middle' => array(
-            'namedb' => 0,
-          ),
-          'title' => array(
-            'namedb' => 0,
-            'title' => 'title',
-          ),
-        ),
-        'components' => array(
-          'credentials' => 0,
-          'family' => 'family',
-          'generational' => 0,
-          'given' => 'given',
-          'middle' => 0,
-          'title' => 'title',
-        ),
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'generational_options' => '-- --
-Jr.
-Sr.
-I
-II
-III
-IV
-V
-VI
-VII
-VIII
-IX
-X',
-        'labels' => array(
-          'credentials' => 'Credentials',
-          'family' => 'Family',
-          'generational' => 'Generational',
-          'given' => 'Given',
-          'middle' => 'Middle name(s)',
-          'title' => 'Title',
-        ),
-        'max_length' => array(
-          'credentials' => '255',
-          'family' => '63',
-          'generational' => '15',
-          'given' => '63',
-          'middle' => '127',
-          'title' => '31',
-        ),
-        'minimum_components' => array(
-          'credentials' => 0,
-          'family' => 'family',
-          'generational' => 0,
-          'given' => 'given',
-          'middle' => 0,
-          'title' => 0,
-        ),
-        'sort_options' => array(
-          'generational' => 0,
-          'title' => 'title',
-        ),
-        'title_options' => '-- --
-Mr.
-Miss
-Dr.
-Prof.
-MD.',
-      ),
-      'translatable' => '1',
-      'type' => 'name',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_investigators',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'name',
-          'settings' => array(),
-          'type' => 'name_default',
-          'weight' => '0',
-        ),
-        'token' => array(
-          'label' => 'inline',
-          'module' => 'name',
-          'settings' => array(),
-          'type' => 'name_default',
-          'weight' => '0',
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_contact_name',
-      'label' => 'Investigator Name',
-      'required' => 0,
-      'settings' => array(
-        'component_css' => '',
-        'credentials_inline' => 0,
-        'field_type' => array(
-          'credentials' => 'text',
-          'family' => 'text',
-          'generational' => 'select',
-          'given' => 'text',
-          'middle' => 'text',
-          'title' => 'select',
-        ),
-        'generational_field' => 'select',
-        'inline_css' => array(
-          'credentials' => '',
-          'family' => '',
-          'generational' => '',
-          'given' => '',
-          'middle' => '',
-          'title' => '',
-        ),
-        'override_format' => 'default',
-        'size' => array(
-          'credentials' => '35',
-          'family' => '20',
-          'generational' => '5',
-          'given' => '20',
-          'middle' => '20',
-          'title' => '6',
-        ),
-        'title_display' => array(
-          'credentials' => 'description',
-          'family' => 'description',
-          'generational' => 'description',
-          'given' => 'description',
-          'middle' => 'description',
-          'title' => 'description',
-        ),
-        'title_field' => 'select',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'name',
-        'settings' => array(),
-        'type' => 'name_widget',
-        'weight' => '0',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_investigators-field_country'
-  $fields['field_collection_item-field_investigators-field_country'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_country',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(
-        'iso2' => array(
-          0 => 'iso2',
-        ),
-      ),
-      'module' => 'countries',
-      'settings' => array(
-        'continents' => array(),
-        'enabled' => '1',
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-        'size' => 5,
-      ),
-      'translatable' => '0',
-      'type' => 'country',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_investigators',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'module' => 'countries',
-          'settings' => array(),
-          'type' => 'country_default',
-          'weight' => '13',
-        ),
-        'token' => array(
-          'label' => 'inline',
-          'module' => 'countries',
-          'settings' => array(),
-          'type' => 'country_default',
-          'weight' => '2',
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_country',
-      'label' => 'Country',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '14',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_investigators-field_daco'
-  $fields['field_collection_item-field_investigators-field_daco'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_daco',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => 'No',
-          1 => 'Yes',
-        ),
-        'allowed_values_function' => '',
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'list_boolean',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_investigators',
-      'default_value' => array(
-        0 => array(
-          'value' => 0,
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'i18n_field',
-          'settings' => array(),
-          'type' => 'i18n_list_default',
-          'weight' => '6',
-        ),
-        'token' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '7',
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_daco',
-      'label' => 'Data Access Committee member',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(
-          'display_label' => 1,
-        ),
-        'type' => 'options_onoff',
-        'weight' => '7',
-      ),
-    ),
-  );
-
-  // Exported field: 'field_collection_item-field_investigators-field_institution_name'
-  $fields['field_collection_item-field_investigators-field_institution_name'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_institution_name',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-        'field_permissions' => array(
-          'create' => 0,
-          'edit' => 0,
-          'edit own' => 0,
-          'view' => 0,
-          'view own' => 0,
-        ),
-        'max_length' => '255',
-      ),
-      'translatable' => '1',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_investigators',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '8',
-        ),
-        'token' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '0',
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'field_collection_item',
+      'entity_type' => 'node',
       'field_name' => 'field_institution_name',
       'label' => 'Institution name',
       'required' => 0,
@@ -1702,13 +708,13 @@ MD.',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '39',
       ),
     ),
   );
 
-  // Exported field: 'field_collection_item-field_investigators-field_postal_code'
-  $fields['field_collection_item-field_investigators-field_postal_code'] = array(
+  // Exported field: 'node-contact-field_postal_code'
+  $fields['node-contact-field_postal_code'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -1751,27 +757,27 @@ MD.',
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'field_investigators',
+      'bundle' => 'contact',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '11',
+          'weight' => '12',
         ),
-        'token' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => 0,
         ),
       ),
       'display_label' => '',
-      'entity_type' => 'field_collection_item',
+      'entity_type' => 'node',
       'field_name' => 'field_postal_code',
       'label' => 'Postal Code',
       'required' => 0,
@@ -1786,13 +792,13 @@ MD.',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '12',
+        'weight' => '42',
       ),
     ),
   );
 
-  // Exported field: 'field_collection_item-field_investigators-field_state'
-  $fields['field_collection_item-field_investigators-field_state'] = array(
+  // Exported field: 'node-contact-field_state'
+  $fields['node-contact-field_state'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -1828,27 +834,27 @@ MD.',
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'field_investigators',
+      'bundle' => 'contact',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '12',
+          'weight' => '13',
         ),
-        'token' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => 0,
         ),
       ),
       'display_label' => '',
-      'entity_type' => 'field_collection_item',
+      'entity_type' => 'node',
       'field_name' => 'field_state',
       'label' => 'State/Province',
       'required' => 0,
@@ -1863,13 +869,13 @@ MD.',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '13',
+        'weight' => '43',
       ),
     ),
   );
 
-  // Exported field: 'field_collection_item-field_investigators-field_telephone'
-  $fields['field_collection_item-field_investigators-field_telephone'] = array(
+  // Exported field: 'node-contact-field_telephone'
+  $fields['node-contact-field_telephone'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -1912,27 +918,27 @@ MD.',
       'type' => 'text',
     ),
     'field_instance' => array(
-      'bundle' => 'field_investigators',
+      'bundle' => 'contact',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '2',
         ),
-        'token' => array(
+        'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => 0,
         ),
       ),
       'display_label' => '',
-      'entity_type' => 'field_collection_item',
+      'entity_type' => 'node',
       'field_name' => 'field_telephone',
       'label' => 'Telephone',
       'required' => 0,
@@ -1947,7 +953,7 @@ MD.',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '2',
+        'weight' => '5',
       ),
     ),
   );
@@ -3016,7 +2022,7 @@ MD.',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '28',
+          'weight' => '26',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -4496,48 +3502,75 @@ MD.',
     ),
   );
 
-  // Exported field: 'node-study-field_contacts'
-  $fields['node-study-field_contacts'] = array(
+  // Exported field: 'node-study-field_contacts_ref'
+  $fields['node-study-field_contacts_ref'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_contacts',
+      'field_name' => 'field_contacts_ref',
       'field_permissions' => array(
         'type' => '0',
       ),
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'module' => 'field_collection',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
         ),
-        'path' => '',
       ),
-      'translatable' => '1',
-      'type' => 'field_collection',
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'article' => 0,
+          'blog' => 0,
+          'contact' => 'contact',
+          'data_access_request' => 0,
+          'data_access_review' => 0,
+          'dataset' => 0,
+          'documents' => 0,
+          'event' => 0,
+          'field_description' => 0,
+          'forum' => 0,
+          'page' => 0,
+          'panel' => 0,
+          'participant_variable' => 0,
+          'project' => 0,
+          'publication' => 0,
+          'study' => 0,
+          'teleconference' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
     ),
     'field_instance' => array(
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Enter the Contact full name. 
+<br>
+You will be able to edit these Contacts once the Study will be saved.',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'field_collection',
+          'module' => 'node_reference',
           'settings' => array(
-            'add' => 'Add',
-            'delete' => 'Delete',
-            'description' => 1,
-            'edit' => 'Edit',
-            'view_mode' => 'token',
+            'node_reference_view_mode' => 'full',
           ),
-          'type' => 'field_collection_view',
+          'type' => 'node_reference_node',
           'weight' => '27',
         ),
         'teaser' => array(
@@ -4549,17 +3582,21 @@ MD.',
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_contacts',
+      'field_name' => 'field_contacts_ref',
       'label' => 'Contacts',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
-        'module' => 'field_collection',
-        'settings' => array(),
-        'type' => 'field_collection_embed',
+        'active' => 1,
+        'module' => 'noderefcreate',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'noderefcreate_autocomplete',
         'weight' => '2',
       ),
     ),
@@ -4569,7 +3606,7 @@ MD.',
   $fields['node-study-field_country'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_country',
@@ -4585,11 +3622,13 @@ MD.',
       'module' => 'countries',
       'settings' => array(
         'continents' => array(),
+        'countries' => array(),
         'enabled' => '1',
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
+          'field_description_label' => '',
+          'field_description_value_type' => '',
         ),
         'size' => 5,
       ),
@@ -4794,14 +3833,14 @@ MD.',
     ),
   );
 
-  // Exported field: 'node-study-field_current_sam_supp_indo'
-  $fields['node-study-field_current_sam_supp_indo'] = array(
+  // Exported field: 'node-study-field_current_sam_supp_info'
+  $fields['node-study-field_current_sam_supp_info'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_current_sam_supp_indo',
+      'field_name' => 'field_current_sam_supp_info',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -4851,7 +3890,7 @@ MD.',
       ),
       'display_label' => 'Supplementary information',
       'entity_type' => 'node',
-      'field_name' => 'field_current_sam_supp_indo',
+      'field_name' => 'field_current_sam_supp_info',
       'label' => 'If needed, supplementary information',
       'required' => 0,
       'settings' => array(
@@ -6032,38 +5071,65 @@ MD.',
       'field_permissions' => array(
         'type' => '0',
       ),
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'module' => 'field_collection',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
         ),
-        'path' => '',
       ),
-      'translatable' => '1',
-      'type' => 'field_collection',
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'article' => 0,
+          'blog' => 0,
+          'contact' => 'contact',
+          'data_access_request' => 0,
+          'data_access_review' => 0,
+          'dataset' => 0,
+          'documents' => 0,
+          'event' => 0,
+          'field_description' => 0,
+          'forum' => 0,
+          'page' => 0,
+          'panel' => 0,
+          'participant_variable' => 0,
+          'project' => 0,
+          'publication' => 0,
+          'study' => 0,
+          'teleconference' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
     ),
     'field_instance' => array(
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Enter the Investigator full name. 
+<br>
+You will be able to edit these Investigators once the Study will be saved.',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'field_collection',
+          'module' => 'node_reference',
           'settings' => array(
-            'add' => 'Add',
-            'delete' => 'Delete',
-            'description' => 1,
-            'edit' => 'Edit',
-            'view_mode' => 'token',
+            'node_reference_view_mode' => 'full',
           ),
-          'type' => 'field_collection_view',
-          'weight' => '26',
+          'type' => 'node_reference_node',
+          'weight' => '28',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -6081,10 +5147,14 @@ MD.',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
-        'module' => 'field_collection',
-        'settings' => array(),
-        'type' => 'field_collection_embed',
+        'active' => 1,
+        'module' => 'noderefcreate',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'noderefcreate_autocomplete',
         'weight' => '3',
       ),
     ),
@@ -8228,7 +7298,7 @@ other|Other',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '2',
+        'weight' => '4',
       ),
     ),
   );
@@ -8335,10 +7405,15 @@ other|Other',
   t('Content Type Label');
   t('Country');
   t('Data (questionnaire-derived, measured…)');
-  t('Data Access Committee member');
   t('Data Sources');
   t('Email');
   t('End year');
+  t('Enter the Contact full name. 
+<br>
+You will be able to edit these Contacts once the Study will be saved.');
+  t('Enter the Investigator full name. 
+<br>
+You will be able to edit these Investigators once the Study will be saved.');
   t('Ethnic origin');
   t('Field Name');
   t('Field machine name');
@@ -8353,7 +7428,6 @@ other|Other',
   t('If needed, supplementary information');
   t('In date of');
   t('Institution name');
-  t('Investigator Name');
   t('Investigators');
   t('Label');
   t('Machine name of the content type that declares this field');

@@ -24,7 +24,7 @@ function mica_standard_install_tasks($install_state) {
       'function' => 'mica_user_permission_rebuild_batch',
     ),  
 //   	'mica_standard_content' => array(
-//       'display_name' => st('Add Mica default content'),
+//       'display_name' => st('Import Mica default content'),
 //       'display' => TRUE,
 //       'type' => 'batch',
 //       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED, // default to insert content
@@ -39,20 +39,18 @@ function mica_standard_install_tasks($install_state) {
 * So rebuild them in a post-install task.
 */
 function mica_user_permission_rebuild_batch() {
-  
   $length = strlen('mica_');
   foreach (module_list() as $module) {
   	if (substr($module, 0, $length) === 'mica_') {
   		$operations[] = array('mica_user_permission_rebuild', array($module));
   	}
   }  
-  
   $batch = array(
-      'operations'    => $operations,
-      'title'         => st('Apply Mica default permissions.'),
-      'init_message'  => st('Starting user permissions rebuild.'),
-      'error_message' => st('Error while applying Mica permissions'),
-      'finished'      => 'mica_user_permission_rebuild_finished',
+    'operations' => $operations,
+    'title' => st('Apply Mica default permissions.'),
+    'init_message' => st('Starting user permissions rebuild.'),
+    'error_message' => st('Error while applying Mica permissions'),
+    'finished' => 'mica_user_permission_rebuild_finished',
   );
   return $batch;  
 }
@@ -78,7 +76,6 @@ function mica_import_default_feeds($install_state){
   $operations = array();
   foreach($feed_configs as $importer => $file){
     $source = feeds_source($importer);
-
     foreach ($source->importer->plugin_types as $type) {
       if ($source->importer->$type->hasSourceConfig()) {
         $class = get_class($source->importer->$type);
@@ -94,11 +91,11 @@ function mica_import_default_feeds($install_state){
   }
   
   $batch = array(
-    'title' => st('Importing'),
     'operations' => $operations,
-    'progress_message' => st('Creating default Mica content'),
+    'title' => st('Import Mica default content'),
+  	'init_message'  => st('Creating Mica default content'),
+  	'error_message' => st('Error while importing Mica default content'),
   );
-
   return $batch;
 }
 
@@ -129,11 +126,11 @@ function mica_update_mica_languages_batch($install_state) {
   }
   
   $batch = array(
-    'operations'    => $operations,
-    'title'         => st('Updating Mica translation.'),
-    'init_message'  => st('Downloading and importing files.'),
+    'operations' => $operations,
+    'title' => st('Updating Mica translation.'),
+    'init_message' => st('Downloading and importing files.'),
     'error_message' => st('Error importing interface translations'),
-    'finished'      => 'mica_update_mica_languages_finished',
+    'finished' => 'mica_update_mica_languages_finished',
   );
   return $batch;  
 }
@@ -144,7 +141,6 @@ function mica_update_mica_languages($file, &$context) {
   _l10n_update_locale_import_po($file, 'fr', LOCALE_IMPORT_OVERWRITE, 'field');
   $context['message'] = st('Imported: %name.', array('%name' => $file->filename));
 }
-
 
 function mica_update_mica_languages_finished($success, $results, $operations) {
 	drupal_set_message(st("Mica French translations import finished."));

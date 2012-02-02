@@ -40,7 +40,7 @@
 "Study » Current status supplementary information";"";"Current status supplementary information";"field_status_supp_info";"Study";"study";"TEXT";"";"0"
 "Study » Current number of participants recruited at baseline supplementary information";"";"Current number of participants recruited at baseline supplementary information";"field_current_supp_info";"Study";"study";"TEXT";"";"0"
 "Study » Current number of participants recruited";"";"Current number of participants recruited";"field_current_participants_nb";"Study";"study";"INTEGER";"";"0"
-"Study » Current number of collected biological samples supplementary information";"";"Current number of collected biological samples supplementary information";"field_current_sam_supp_indo";"Study";"study";"TEXT";"";"0"
+"Study » Current number of collected biological samples supplementary information";"";"Current number of collected biological samples supplementary information";"field_current_sam_supp_info";"Study";"study";"TEXT";"";"0"
 "Study » Current number of collected biological samples";"Current number of collected biological samples from which DNA could be extracted";"Current number of collected biological samples";"field_current_samples_nb";"Study";"study";"INTEGER";"";"0"
 "Study » Country";"";"Country";"field_country";"Study";"study";"TEXT";"";"0"
 "Study » Comments";"";"Comments";"field_comments";"Study";"study";"TEXT";"";"0"
