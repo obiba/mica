@@ -35,8 +35,29 @@ function mica_studies_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_study';
-  $strongarm->value = 'edit-menu';
+  $strongarm->value = 'edit-auto-nodetitle';
   $export['additional_settings__active_tab_study'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ant_pattern_study';
+  $strongarm->value = '[node:field-complete-name]';
+  $export['ant_pattern_study'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ant_php_study';
+  $strongarm->value = 0;
+  $export['ant_php_study'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ant_study';
+  $strongarm->value = '1';
+  $export['ant_study'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -335,6 +356,9 @@ function mica_studies_strongarm() {
   $strongarm->value = array(
     'csv_study_import-country-explode' => FALSE,
     'csv_study_import-country-explode_country' => FALSE,
+    'csv_contact_import-country-trim' => FALSE,
+    'csv_study_import-contacts-explode' => FALSE,
+    'csv_study_import-investigators-explode' => FALSE,
   );
   $export['default_feeds_tamper'] = $strongarm;
 
@@ -3024,6 +3048,13 @@ function mica_studies_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'indexed_study';
+  $strongarm->value = 1;
+  $export['indexed_study'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_contact';
   $strongarm->value = '4';
   $export['language_content_type_contact'] = $strongarm;
@@ -3272,7 +3303,7 @@ function mica_studies_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_study';
-  $strongarm->value = 'main-menu:533';
+  $strongarm->value = 'main-menu:0';
   $export['menu_parent_study'] = $strongarm;
 
   $strongarm = new stdClass;

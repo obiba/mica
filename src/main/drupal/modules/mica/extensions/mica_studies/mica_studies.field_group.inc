@@ -113,7 +113,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Please specify age range',
-    'weight' => '46',
+    'weight' => '47',
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -572,7 +572,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Please specify countries of residence',
-    'weight' => '47',
+    'weight' => '48',
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -972,7 +972,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Please specify ethnic origin',
-    'weight' => '48',
+    'weight' => '49',
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1174,8 +1174,7 @@ function mica_studies_field_group_info() {
       2 => 'field_contacts_ref',
       3 => 'field_investigators',
       4 => 'field_website',
-      5 => 'title_field',
-      6 => 'group_study_name',
+      5 => 'field_complete_name',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1231,7 +1230,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Please specify health status',
-    'weight' => '49',
+    'weight' => '50',
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1468,22 +1467,24 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'field_age_max',
       1 => 'field_age_min',
-      2 => 'field_ethnic_origin',
-      3 => 'field_health_status',
-      4 => 'field_partcipant_sel_supp_info',
-      5 => 'field_recruitement_supp_info',
-      6 => 'field_recruitment_other',
-      7 => 'field_recruitment_procedures',
-      8 => 'field_select_criteria',
-      9 => 'field_selection_gender',
-      10 => 'field_selection_others_sp',
-      11 => 'group_age_range',
-      12 => 'group_countries',
-      13 => 'group_ethnic_origin',
-      14 => 'group_health_status',
-      15 => 'group_recruitment_procedures',
-      16 => 'group_selection_criteria',
-      17 => 'group_specify_gender',
+      2 => 'field_country',
+      3 => 'field_ethnic_origin',
+      4 => 'field_health_status',
+      5 => 'field_partcipant_sel_supp_info',
+      6 => 'field_recruitement_supp_info',
+      7 => 'field_recruitment_other',
+      8 => 'field_recruitment_procedures',
+      9 => 'field_select_criteria',
+      10 => 'field_selection_gender',
+      11 => 'field_selection_others_sp',
+      12 => 'field_territory',
+      13 => 'group_age_range',
+      14 => 'group_countries',
+      15 => 'group_ethnic_origin',
+      16 => 'group_health_status',
+      17 => 'group_recruitment_procedures',
+      18 => 'group_selection_criteria',
+      19 => 'group_specify_gender',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -1601,7 +1602,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Recruitment procedures',
-    'weight' => '54',
+    'weight' => '55',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
@@ -1722,7 +1723,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Selection Criteria / Characteristics of the population',
-    'weight' => '53',
+    'weight' => '54',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
@@ -1784,7 +1785,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Please specify gender',
-    'weight' => '45',
+    'weight' => '46',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
@@ -1989,7 +1990,7 @@ function mica_studies_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_acroym',
-      1 => 'title_field',
+      1 => 'field_complete_name',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

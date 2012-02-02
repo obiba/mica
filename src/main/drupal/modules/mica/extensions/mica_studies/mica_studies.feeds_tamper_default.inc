@@ -13,9 +13,9 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper = new stdClass;
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
-  $feeds_tamper->id = 'csv_study_import-country-explode';
+  $feeds_tamper->id = 'csv_study_import-contacts-explode';
   $feeds_tamper->importer = 'csv_study_import';
-  $feeds_tamper->source = 'Country';
+  $feeds_tamper->source = 'contacts';
   $feeds_tamper->plugin_id = 'explode';
   $feeds_tamper->settings = array(
     'separator' => ',',
@@ -24,7 +24,7 @@ function mica_studies_feeds_tamper_default() {
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Explode';
-  $export['csv_study_import-country-explode'] = $feeds_tamper;
+  $export['csv_study_import-contacts-explode'] = $feeds_tamper;
 
   $feeds_tamper = new stdClass;
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
@@ -41,6 +41,22 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Explode';
   $export['csv_study_import-country-explode_country'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass;
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'csv_study_import-investigators-explode';
+  $feeds_tamper->importer = 'csv_study_import';
+  $feeds_tamper->source = 'investigators';
+  $feeds_tamper->plugin_id = 'explode';
+  $feeds_tamper->settings = array(
+    'separator' => ',',
+    'limit' => '',
+    'real_separator' => ',',
+  );
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'Explode';
+  $export['csv_study_import-investigators-explode'] = $feeds_tamper;
 
   return $export;
 }

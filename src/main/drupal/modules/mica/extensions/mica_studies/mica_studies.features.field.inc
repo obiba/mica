@@ -2022,7 +2022,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '26',
+          'weight' => '79',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -2393,7 +2393,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '23',
+          'weight' => '77',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2418,7 +2418,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '3',
+        'weight' => '104',
       ),
     ),
   );
@@ -3502,6 +3502,84 @@ function mica_studies_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-study-field_complete_name'
+  $fields['node-study-field_complete_name'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_complete_name',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
+        'max_length' => '255',
+      ),
+      'translatable' => '1',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '76',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_complete_name',
+      'label' => 'Complete name',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '103',
+      ),
+    ),
+  );
+
   // Exported field: 'node-study-field_contacts_ref'
   $fields['node-study-field_contacts_ref'] = array(
     'field_config' => array(
@@ -3571,7 +3649,7 @@ You will be able to edit these Contacts once the Study will be saved.',
             'node_reference_view_mode' => 'full',
           ),
           'type' => 'node_reference_node',
-          'weight' => '27',
+          'weight' => '80',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3646,7 +3724,7 @@ You will be able to edit these Contacts once the Study will be saved.',
           'module' => 'countries',
           'settings' => array(),
           'type' => 'country_default',
-          'weight' => '67',
+          'weight' => '42',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4575,7 +4653,7 @@ You will be able to edit these Contacts once the Study will be saved.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -4653,7 +4731,7 @@ You will be able to edit these Contacts once the Study will be saved.',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '43',
+          'weight' => '44',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5030,7 +5108,7 @@ You will be able to edit these Contacts once the Study will be saved.',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '44',
+          'weight' => '45',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5129,7 +5207,7 @@ You will be able to edit these Investigators once the Study will be saved.',
             'node_reference_view_mode' => 'full',
           ),
           'type' => 'node_reference_node',
-          'weight' => '28',
+          'weight' => '81',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5890,7 +5968,7 @@ You will be able to edit these Investigators once the Study will be saved.',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '52',
+          'weight' => '53',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -6048,7 +6126,7 @@ other|Other',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '51',
+          'weight' => '52',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -6200,7 +6278,7 @@ other|Other',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '50',
+          'weight' => '51',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -7081,7 +7159,7 @@ other|Other',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '68',
+          'weight' => '43',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -7260,7 +7338,7 @@ other|Other',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => '25',
+          'weight' => '78',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -7299,84 +7377,6 @@ other|Other',
         'settings' => array(),
         'type' => 'link_field',
         'weight' => '4',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-study-title_field'
-  $fields['node-study-title_field'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'title_field',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_label' => 'Name',
-          'field_description_value_type' => 'TEXT',
-        ),
-        'max_length' => '255',
-      ),
-      'translatable' => '1',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'study',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '22',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'display_label' => 'Name',
-      'entity_type' => 'node',
-      'field_name' => 'title_field',
-      'label' => 'Complete name',
-      'required' => 1,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '2',
       ),
     ),
   );

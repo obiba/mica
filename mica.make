@@ -38,6 +38,9 @@ projects[addressfield][download][url] = http://git.drupal.org/project/addressfie
 projects[addressfield][download][revision] = fc024d23ffe7791127c29654f75972cc6b63e643
 projects[addressfield][patch][968112] = http://drupal.org/files/issues/allow-none-country-968112-9.patch
 
+projects[auto_nodetitle][version] = 1.0
+projects[auto_nodetitle][type] = module
+
 projects[] = advanced_help
 
 projects[calendar][version] = 3.0-alpha2
@@ -83,7 +86,7 @@ projects[email][type] = module
 projects[email][download][type] = git
 projects[email][download][url] = http://git.drupal.org/project/email.git
 projects[email][download][revision] = 523cd0de1387a4fca52f007f7594160a56378196
-projects[email][patch][968112] = http://drupal.org/files/email_718414_feeds_importer.patch
+projects[email][patch][718414] = http://drupal.org/files/email_feeds_target-718414-36.patch
 
 projects[entity][version] = 1.0-rc1
 projects[entity][type] = module
@@ -104,8 +107,7 @@ projects[features][download][url] = http://git.drupal.org/project/features.git
 projects[features][download][revision] = a224dca266d2a7a5fc83de7719263f15c75a6e84
 projects[features][patch][1279938] = http://drupal.org/files/features-locale-1279938-8.patch
 
-;projects[feeds][version] = 2.0-alpha4
-projects[feeds][version] = 2.x-dev
+projects[feeds][version] = 2.0-alpha4
 projects[feeds][type] = module
 
 projects[feeds_jsonpath_parser][version] = 1.0-beta2

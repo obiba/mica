@@ -110,7 +110,7 @@ function mica_studies_node_info() {
       'base' => 'node_content',
       'description' => t('Study portal. Create a content of this type when registering a new study.'),
       'has_title' => '1',
-      'title_label' => t('Name'),
+      'title_label' => t('Title'),
       'help' => '',
     ),
   );
@@ -135,7 +135,7 @@ function mica_studies_default_search_api_index() {
         "title" : { "type" : "text" },
         "field_bundle" : { "type" : "string" },
         "field_bundle_label" : { "type" : "text" },
-        "field_categories" : { "type" : "list\\u003cstring\\u003e" },
+        "field_categories" : { "type" : "list\\u003Cstring\\u003E" },
         "field_original_field_label" : { "type" : "text" },
         "field_original_field_name" : { "type" : "string" },
         "field_repeatable" : { "type" : "boolean" },
@@ -218,7 +218,7 @@ function mica_studies_default_search_api_index() {
               "body:value" : true,
               "body:summary" : true
             },
-            "spaces" : "[^\\\\p{L}\\\\p{N}^\']",
+            "spaces" : "[^\\\\p{L}\\\\p{N}^\\u0027]",
             "ignorable" : "[-]"
           }
         },
@@ -274,7 +274,7 @@ function mica_studies_default_search_api_index() {
         "mica_study_information:field_access" : {
           "name" : "Study Information \\u00bb ",
           "indexed" : true,
-          "type" : "list\\u003ctext\\u003e",
+          "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
         },
         "mica_study_information:field_access_other" : {
@@ -298,7 +298,7 @@ function mica_studies_default_search_api_index() {
         "mica_study_information:field_biosamples_collected" : {
           "name" : "Study Information \\u00bb ",
           "indexed" : true,
-          "type" : "list\\u003ctext\\u003e",
+          "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
         },
         "mica_study_information:field_biosamples_collected_other" : {
@@ -316,7 +316,7 @@ function mica_studies_default_search_api_index() {
         "mica_study_information:field_design" : {
           "name" : "Study Information \\u00bb ",
           "indexed" : true,
-          "type" : "list\\u003cstring\\u003e",
+          "type" : "list\\u003Cstring\\u003E",
           "boost" : "1.0"
         },
         "mica_study_information:field_design_other" : {
@@ -328,7 +328,7 @@ function mica_studies_default_search_api_index() {
         "mica_study_information:field_design_target" : {
           "name" : "Study Information \\u00bb ",
           "indexed" : true,
-          "type" : "list\\u003ctext\\u003e",
+          "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
         },
         "mica_study_information:field_gender" : {
@@ -352,7 +352,7 @@ function mica_studies_default_search_api_index() {
         "mica_study_information:field_selection_criteria" : {
           "name" : "Study Information \\u00bb ",
           "indexed" : true,
-          "type" : "list\\u003ctext\\u003e",
+          "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
         },
         "mica_study_information:field_status_end" : {
@@ -370,7 +370,7 @@ function mica_studies_default_search_api_index() {
         "mica_study_information:field_study_country" : {
           "name" : "Study Information \\u00bb ",
           "indexed" : true,
-          "type" : "list\\u003ctext\\u003e",
+          "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
         },
         "mica_study_information:field_target_other" : {
@@ -382,7 +382,7 @@ function mica_studies_default_search_api_index() {
         "field_design_target" : {
           "name" : null,
           "indexed" : true,
-          "type" : "list\\u003ctext\\u003e",
+          "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
         },
         "field_status_start" : { "name" : null, "indexed" : true, "type" : "integer", "boost" : "1.0" },
@@ -400,7 +400,7 @@ function mica_studies_default_search_api_index() {
         "field_selection_criteria" : {
           "name" : null,
           "indexed" : true,
-          "type" : "list\\u003ctext\\u003e",
+          "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
         },
         "field_gwas_analysis" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
@@ -421,25 +421,25 @@ function mica_studies_default_search_api_index() {
         "field_study_country" : {
           "name" : null,
           "indexed" : true,
-          "type" : "list\\u003ctext\\u003e",
+          "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
         },
         "field_biosamples_collected" : {
           "name" : null,
           "indexed" : true,
-          "type" : "list\\u003ctext\\u003e",
+          "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
         },
         "field_design" : {
           "name" : "What is the baseline design of the study",
           "indexed" : true,
-          "type" : "list\\u003cstring\\u003e",
+          "type" : "list\\u003Cstring\\u003E",
           "boost" : "1.0"
         },
         "field_access" : {
           "name" : null,
           "indexed" : true,
-          "type" : "list\\u003ctext\\u003e",
+          "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
         },
         "title_field" : {
@@ -464,13 +464,13 @@ function mica_studies_default_search_api_index() {
         "field_ethnic_origin" : {
           "name" : "Ethnic origin",
           "indexed" : true,
-          "type" : "list\\u003ctext\\u003e",
+          "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
         },
         "field_health_status" : {
           "name" : "Health status",
           "indexed" : true,
-          "type" : "list\\u003ctext\\u003e",
+          "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
         },
         "field_country" : { "name" : "Country", "indexed" : true, "type" : "text", "boost" : "1.0" },
@@ -502,13 +502,13 @@ function mica_studies_default_search_api_index() {
         "field_recruitment" : {
           "name" : "The study targets the recruitment of",
           "indexed" : true,
-          "type" : "list\\u003cstring\\u003e",
+          "type" : "list\\u003Cstring\\u003E",
           "boost" : "1.0"
         },
         "field_select_criteria" : {
           "name" : "What are the inclusion criteria for participants\\u2019 selection",
           "indexed" : true,
-          "type" : "list\\u003cstring\\u003e",
+          "type" : "list\\u003Cstring\\u003E",
           "boost" : "1.0"
         },
         "field_ended_end_year" : {
@@ -520,7 +520,7 @@ function mica_studies_default_search_api_index() {
         "field_recruitment_procedures" : {
           "name" : "Specify the sources of recruitment",
           "indexed" : true,
-          "type" : "list\\u003cstring\\u003e",
+          "type" : "list\\u003Cstring\\u003E",
           "boost" : "1.0"
         },
         "field_partcipant_sel_supp_info" : {
@@ -652,7 +652,7 @@ function mica_studies_default_search_api_index() {
         "field_data_sources" : {
           "name" : "Data Sources",
           "indexed" : true,
-          "type" : "list\\u003cstring\\u003e",
+          "type" : "list\\u003Cstring\\u003E",
           "boost" : "1.0"
         },
         "field_access_data" : {
@@ -694,7 +694,7 @@ function mica_studies_default_search_api_index() {
         "field_bio_samples_management" : {
           "name" : "Biological samples",
           "indexed" : true,
-          "type" : "list\\u003cstring\\u003e",
+          "type" : "list\\u003Cstring\\u003E",
           "boost" : "1.0"
         },
         "field_baseline_start_year" : {
@@ -799,7 +799,7 @@ function mica_studies_default_search_api_index() {
               "mica_study_information:field_design_other" : true,
               "mica_study_information:field_target_other" : true
             },
-            "spaces" : "[^\\\\p{L}\\\\p{N}^\']",
+            "spaces" : "[^\\\\p{L}\\\\p{N}^\\u0027]",
             "ignorable" : "[-]"
           }
         },
