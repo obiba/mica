@@ -1,6 +1,0 @@
-"field_study_legacy_id";"title";"field_design";"field_design_other";"field_design_target";"field_target_other";"field_access";"field_biosamples_collected";"field_status_end";"field_age_max";"field_age_min";"field_biosamples_collected_other";"field_biosamples_tissues";"field_access_other";"field_gwas_number";"field_gwas_analysis";"field_selection_criteria";"field_gender";"field_status_start";"field_study_country"
-"1";"BASALT";"case_only";;"individuals";;"biological_samples";"blood";"2010";;;;;;;"no";"gender";"men";"1975";"CAN|AUS|CHL"
-"2";"DACITE";"case_only";;"families";;"biological_samples|data|other";"blood|saliva";"2030";"70";"5";;;"Other type of access";"5000";"yes";"age|other";;"2010";"FRA|CAN"
-"3";"SCORIA";"case_control|registry";;"families|other";"Other target";"data";"tissues";"2015";;;;"tissues";;"2500";"yes_later";"country";;"2000";"FRA"
-"4";"MARL";"cohort_study|other";"Other type of design";"other";"Other type of target";"biological_samples";"others";"2020";;;"Other type of sample";;;"20000";"yes_currently";"country|gender";"women";"1960";"GBR|CAN"
-"5";"SKARN";"other";"Other type of design";"individuals";;"data|other";"others";"2018";;;"Other type of sample";;"Access to other type of information";;"no";"country";;"1985";"DNK|FRA|GBR"

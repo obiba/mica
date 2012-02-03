@@ -590,33 +590,43 @@ function mica_studies_feeds_importer_default() {
             'unique' => FALSE,
           ),
           57 => array(
-            'source' => 'comments',
-            'target' => 'field_comments',
-            'unique' => FALSE,
-          ),
-          58 => array(
             'source' => 'opal',
             'target' => 'mica_opal:url',
             'unique' => FALSE,
           ),
-          59 => array(
+          58 => array(
             'source' => 'country',
             'target' => 'node:study:field_country:iso2',
             'unique' => FALSE,
           ),
-          60 => array(
+          59 => array(
             'source' => 'complete_name',
             'target' => 'field_complete_name',
             'unique' => FALSE,
           ),
+          60 => array(
+            'source' => 'supplementary_information',
+            'target' => 'field_supp_infos',
+            'unique' => FALSE,
+          ),
           61 => array(
-            'source' => 'contacts',
-            'target' => 'field_contacts_ref:guid',
+            'source' => 'documents',
+            'target' => 'field_documents',
             'unique' => FALSE,
           ),
           62 => array(
+            'source' => 'logo',
+            'target' => 'field_logo',
+            'unique' => FALSE,
+          ),
+          63 => array(
+            'source' => 'contacts',
+            'target' => 'field_contacts_ref:title',
+            'unique' => FALSE,
+          ),
+          64 => array(
             'source' => 'investigators',
-            'target' => 'field_investigators:guid',
+            'target' => 'field_investigators:title',
             'unique' => FALSE,
           ),
         ),

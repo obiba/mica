@@ -26,7 +26,7 @@ projects[drupal][version] = 7.12
 ; Use vocabulary machine name for permissions
 ; http://drupal.org/node/995156
 projects[drupal][patch][995156] = http://drupal.org/files/issues/995156-5_portable_taxonomy_permissions.patch
-
+  
 ; Modules
 ; --------
 projects[acl][version] = 1.0-beta3
@@ -133,6 +133,9 @@ projects[google_fonts][type] = module
 
 projects[http_client][version] = 2.2
 projects[http_client][type] = module
+
+projects[image_url_formatter][version] = 1.0-rc1
+projects[image_url_formatter][type] = module
 
 projects[imce][version] = 1.5
 projects[imce][type] = module

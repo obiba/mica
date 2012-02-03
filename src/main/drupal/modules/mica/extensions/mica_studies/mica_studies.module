@@ -410,10 +410,10 @@ function _mica_studies_set_contact_title(&$node) {
     $language = $node->language;
     $field_contact_name = $node->field_contact_name;
     $name = $field_contact_name[$language][0];
-    $full_name = $name['title'] . ' ' . $name['given'] . ' ' . $name['family']; 
+    $full_name = trim($name['title']) . ' ' . trim($name['given']) . ' ' . trim($name['family']); 
     
     $node->title = $full_name;
-    if (!empty($institution)) $node->title .= ' (' . $institution . ')';
+    if (!empty($institution)) $node->title .= ' (' . trim($institution) . ')';
     
     // set title for current node revision
    	$node->title = substr($node->title, 0, 255);

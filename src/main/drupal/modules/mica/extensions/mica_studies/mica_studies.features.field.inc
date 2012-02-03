@@ -2022,7 +2022,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '79',
+          'weight' => '88',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -2393,7 +2393,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '77',
+          'weight' => '86',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3426,82 +3426,6 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study-field_comments'
-  $fields['node-study-field_comments'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_comments',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'module' => 'text',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'study',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '39',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'node',
-      'field_name' => 'field_comments',
-      'label' => 'Comments',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '5',
-        ),
-        'type' => 'text_textarea',
-        'weight' => '47',
-      ),
-    ),
-  );
-
   // Exported field: 'node-study-field_complete_name'
   $fields['node-study-field_complete_name'] = array(
     'field_config' => array(
@@ -3550,7 +3474,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '76',
+          'weight' => '85',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3649,7 +3573,7 @@ You will be able to edit these Contacts once the Study will be saved.',
             'node_reference_view_mode' => 'full',
           ),
           'type' => 'node_reference_node',
-          'weight' => '80',
+          'weight' => '90',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3675,7 +3599,7 @@ You will be able to edit these Contacts once the Study will be saved.',
           'size' => '60',
         ),
         'type' => 'noderefcreate_autocomplete',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -4534,6 +4458,88 @@ You will be able to edit these Contacts once the Study will be saved.',
     ),
   );
 
+  // Exported field: 'node-study-field_documents'
+  $fields['node-study-field_documents'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_documents',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'file',
+      'settings' => array(
+        'display_default' => 1,
+        'display_field' => 1,
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => '',
+        ),
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '1',
+      'type' => 'file',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'file',
+          'settings' => array(),
+          'type' => 'file_default',
+          'weight' => '85',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_documents',
+      'label' => 'Documents',
+      'required' => 0,
+      'settings' => array(
+        'description_field' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'pdf doc docx xls xlsx csv txt',
+        'max_filesize' => '10 MB',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'file',
+        'settings' => array(
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'file_generic',
+        'weight' => '108',
+      ),
+    ),
+  );
+
   // Exported field: 'node-study-field_ended_end_year'
   $fields['node-study-field_ended_end_year'] = array(
     'field_config' => array(
@@ -5207,7 +5213,7 @@ You will be able to edit these Investigators once the Study will be saved.',
             'node_reference_view_mode' => 'full',
           ),
           'type' => 'node_reference_node',
-          'weight' => '81',
+          'weight' => '89',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5233,7 +5239,95 @@ You will be able to edit these Investigators once the Study will be saved.',
           'size' => '60',
         ),
         'type' => 'noderefcreate_autocomplete',
-        'weight' => '3',
+        'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-study-field_logo'
+  $fields['node-study-field_logo'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_logo',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'image',
+      'settings' => array(
+        'default_image' => 0,
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => '',
+        ),
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '1',
+      'type' => 'image',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => 'study_logo',
+          ),
+          'type' => 'image',
+          'weight' => '84',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_logo',
+      'label' => 'Logo',
+      'required' => 0,
+      'settings' => array(
+        'alt_field' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'png gif jpg jpeg',
+        'max_filesize' => '',
+        'max_resolution' => '',
+        'min_resolution' => '',
+        'title_field' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'image',
+        'settings' => array(
+          'preview_image_style' => 'thumbnail',
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'image_image',
+        'weight' => '107',
       ),
     ),
   );
@@ -6832,6 +6926,83 @@ other|Other',
     ),
   );
 
+  // Exported field: 'node-study-field_supp_infos'
+  $fields['node-study-field_supp_infos'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_supp_infos',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '82',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_supp_infos',
+      'label' => 'Supplementary information',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '105',
+      ),
+    ),
+  );
+
   // Exported field: 'node-study-field_target_nb_supp_info'
   $fields['node-study-field_target_nb_supp_info'] = array(
     'field_config' => array(
@@ -7338,7 +7509,7 @@ other|Other',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => '78',
+          'weight' => '87',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -7397,7 +7568,6 @@ other|Other',
   t('Categories');
   t('City');
   t('Comment');
-  t('Comments');
   t('Complete name');
   t('Contact Name');
   t('Contacts');
@@ -7406,6 +7576,7 @@ other|Other',
   t('Country');
   t('Data (questionnaire-derived, measured…)');
   t('Data Sources');
+  t('Documents');
   t('Email');
   t('End year');
   t('Enter the Contact full name. 
@@ -7430,6 +7601,7 @@ You will be able to edit these Investigators once the Study will be saved.');
   t('Institution name');
   t('Investigators');
   t('Label');
+  t('Logo');
   t('Machine name of the content type that declares this field');
   t('Marker paper describing your study');
   t('Name of the content type that declares this field');
@@ -7447,6 +7619,7 @@ You will be able to edit these Investigators once the Study will be saved.');
   t('Specify the sources of recruitment');
   t('Start year');
   t('State/Province');
+  t('Supplementary information');
   t('Telephone');
   t('Territory');
   t('The study targets the recruitment of');
