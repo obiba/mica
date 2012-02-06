@@ -691,29 +691,25 @@ function _mica_remove_exclusive_fields(&$node, $bindings) {
  * Clear 'other specify' text fields if 'other' is not checked
  */
 function study_node_form_validate($form, &$form_state) {
-  if ($form_state['values']['field_design'][LANGUAGE_NONE][0]['value'] !== 'other') {
-    form_set_value($form['field_design_other_sp'], '', $form_state);
-  }
-  if ($form_state['values']['field_recruitment'][LANGUAGE_NONE][0]['value'] !== 'other') {
-    form_set_value($form['field_recruitment_other_sp'], '', $form_state);
-  }
-  if ($form_state['values']['field_select_criteria'][LANGUAGE_NONE][0]['value'] !== 'others') {
-    form_set_value($form['field_selection_others_sp'], '', $form_state);
-  }
-  if ($form_state['values']['field_access_other'][LANGUAGE_NONE][0]['value'] !== 'yes') {
-    form_set_value($form['field_access_other_sp'], '', $form_state);
-  }
-  if ($form_state['values']['field_bio_samples_management'][LANGUAGE_NONE][0]['value'] !== 'others') {
-    form_set_value($form['field_samples_man_other_sp'], '', $form_state);
-  }
-  if ($form_state['values']['field_bio_samples_management'][LANGUAGE_NONE][0]['value'] !== 'tissues') {
-    form_set_value($form['field_tissues_sp'], '', $form_state);
-  }
-  if ($form_state['values']['field_recruitment_procedures'][LANGUAGE_NONE][0]['value'] !== 'other') {
-    form_set_value($form['field_recruitment_other'], '', $form_state);
-  }
-  if ($form_state['values']['field_data_sources'][LANGUAGE_NONE][0]['value'] !== 'others') {
-    form_set_value($form['field_data_sources_sp'], '', $form_state);
+  study_node_form_validate_field($form, $form_state, 'field_design', 'field_design_other_sp', 'other');
+  study_node_form_validate_field($form, $form_state, 'field_recruitment', 'field_recruitment_other_sp', 'other');
+  study_node_form_validate_field($form, $form_state, 'field_select_criteria', 'field_selection_others_sp', 'others');
+  study_node_form_validate_field($form, $form_state, 'field_access_other', 'field_access_other_sp', FALSE);
+  study_node_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
+  study_node_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
+  study_node_form_validate_field($form, $form_state, 'field_recruitment_procedures', 'field_recruitment_other', 'other');
+  study_node_form_validate_field($form, $form_state, 'field_data_sources', 'field_data_sources_sp', 'others');
+}
+
+function study_node_form_validate_field($form, &$form_state, $field_name, $dependent_field_name, $selection) {
+  $lang = $form_state['values']['language'];
+  $flangs = array_keys($form_state['values'][$field_name]);
+  $flang = $flangs[0];
+  $value = $form_state['values'][$field_name][$flang][0]['value'];
+  
+  if (is_null($value) || ((is_bool($value) && $value == $selection)) || (is_array($value) && in_array($selection, $value) == FALSE)) {
+    $empty_value = array($flang => array(array('value' => '')));
+    form_set_value($form[$dependent_field_name], $empty_value, $form_state);
   }
 }
 
