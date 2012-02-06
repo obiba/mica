@@ -390,7 +390,8 @@ function mica_studies_views_default_views() {
 
   /* Display: Data export */
   $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
-  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
   $handler->display->display_options['style_options']['provide_file'] = 1;
   $handler->display->display_options['style_options']['filename'] = '%view_%timestamp-yyyy-%timestamp-mm-%timestamp-dd.csv';
@@ -839,6 +840,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contacts_ref']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_contacts_ref']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_contacts_ref']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_contacts_ref']['separator'] = ',';
   $handler->display->display_options['fields']['field_contacts_ref']['field_api_classes'] = 0;
   /* Field: Content: Investigators */
   $handler->display->display_options['fields']['field_investigators']['id'] = 'field_investigators';
@@ -867,6 +869,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_investigators']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_investigators']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_investigators']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_investigators']['separator'] = ',';
   $handler->display->display_options['fields']['field_investigators']['field_api_classes'] = 0;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body_1']['id'] = 'body_1';
