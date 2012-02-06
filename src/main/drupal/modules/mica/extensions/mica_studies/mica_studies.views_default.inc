@@ -368,6 +368,30 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: Published */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'node';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  $handler->display->display_options['fields']['status']['label'] = 'published';
+  $handler->display->display_options['fields']['status']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['text'] = '[status]';
+  $handler->display->display_options['fields']['status']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['status']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['status']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['status']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['status']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['status']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['status']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['status']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['status']['not'] = 0;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -426,6 +450,8 @@ function mica_studies_views_default_views() {
     t('data_access_committee_member'),
     t('id'),
     t('title'),
+    t('published'),
+    t('[status]'),
     t('Data export'),
   );
   $export['contact_csv_export'] = $view;
@@ -1606,6 +1632,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_country']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_country']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_country']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_country']['separator'] = ',';
   $handler->display->display_options['fields']['field_country']['field_api_classes'] = 0;
   /* Field: Content: Territory */
   $handler->display->display_options['fields']['field_territory']['id'] = 'field_territory';
@@ -2299,6 +2326,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_documents']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_documents']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_documents']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_documents']['separator'] = ',';
   $handler->display->display_options['fields']['field_documents']['field_api_classes'] = 0;
   /* Field: Content: Logo */
   $handler->display->display_options['fields']['field_logo']['id'] = 'field_logo';
@@ -2353,6 +2381,29 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['mica_opal']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['mica_opal']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['mica_opal']['field_api_classes'] = 0;
+  /* Field: Content: Published */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'node';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  $handler->display->display_options['fields']['status']['label'] = 'published';
+  $handler->display->display_options['fields']['status']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['status']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['status']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['status']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['status']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['status']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['status']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['status']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['status']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['status']['not'] = 0;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -2464,6 +2515,7 @@ function mica_studies_views_default_views() {
     t('documents'),
     t('logo'),
     t('opal'),
+    t('published'),
     t('Data export'),
   );
   $export['csv_study_export'] = $view;

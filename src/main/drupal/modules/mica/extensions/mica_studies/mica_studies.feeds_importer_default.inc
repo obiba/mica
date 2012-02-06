@@ -108,6 +108,11 @@ function mica_studies_feeds_importer_default() {
             'target' => 'guid',
             'unique' => 1,
           ),
+          14 => array(
+            'source' => 'published',
+            'target' => 'status',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '0',
         'input_format' => 'plain_text',
@@ -627,6 +632,11 @@ function mica_studies_feeds_importer_default() {
           64 => array(
             'source' => 'investigators',
             'target' => 'field_investigators:title',
+            'unique' => FALSE,
+          ),
+          65 => array(
+            'source' => 'published',
+            'target' => 'status',
             'unique' => FALSE,
           ),
         ),

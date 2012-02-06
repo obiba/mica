@@ -360,6 +360,8 @@ function mica_studies_strongarm() {
     'csv_study_import-contacts-explode' => FALSE,
     'csv_study_import-investigators-explode' => FALSE,
     'csv_study_import-documents-explode' => FALSE,
+    'csv_contact_import-published-convert_to_boolean' => FALSE,
+    'csv_study_import-published-convert_to_boolean' => FALSE,
   );
   $export['default_feeds_tamper'] = $strongarm;
 
