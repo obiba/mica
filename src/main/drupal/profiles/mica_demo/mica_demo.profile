@@ -28,9 +28,11 @@ function mica_demo_install_tasks($install_state) {
 }
 
 function mica_import_demo_feeds($install_state) {
-  $base = 'profiles/mica_demo';
-  $root = $base . '/data/feeds';
+  $root = 'profiles/mica_demo/data';
   $feed_configs = array();
+  $feed_configs['csv_contact_import'] = array(
+    'file' => $root . '/contact.csv',
+  );
   $feed_configs['csv_study_import'] = array(
     'file' => $root . '/study.csv',
   );
@@ -46,10 +48,8 @@ function mica_import_demo_feeds($install_state) {
   $feed_configs['csv_teleconference_import'] = array(
     'file' => $root . '/teleconference.csv',
   );
-  
-  
   $feed_configs['csv_documents_import'] = array(
-    'file' => $base . '/documents/feeds/documents.csv',
+    'file' => $root . '/documents.csv',
   );
   
   $operations = array();
