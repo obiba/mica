@@ -32,12 +32,6 @@ projects[drupal][patch][995156] = http://drupal.org/files/issues/995156-5_portab
 projects[acl][version] = 1.0-beta3
 projects[acl][type] = module
 
-projects[addressfield][type] = module
-projects[addressfield][download][type] = git
-projects[addressfield][download][url] = http://git.drupal.org/project/addressfield.git
-projects[addressfield][download][revision] = fc024d23ffe7791127c29654f75972cc6b63e643
-projects[addressfield][patch][968112] = http://drupal.org/files/issues/allow-none-country-968112-9.patch
-
 projects[auto_nodetitle][version] = 1.0
 projects[auto_nodetitle][type] = module
 

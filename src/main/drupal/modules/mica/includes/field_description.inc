@@ -60,7 +60,6 @@ function _mica_field_settings_form_alter(&$form, $form_state, $form_id) {
   if (isset($form_state['field'])) {
     $unsupported_types = array(
     	'field_collection',
-    	'addressfield',
     	'name',
     	'viewreference',
     	'node_reference',
