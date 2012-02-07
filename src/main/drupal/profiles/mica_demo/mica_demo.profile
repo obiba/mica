@@ -17,7 +17,7 @@ function mica_demo_install_tasks($install_state) {
   $tasks = mica_standard_install_tasks($install_state);
   
   $tasks['mica_demo_content'] = array(
-    'display_name' => st('Add Mica demo content'),
+    'display_name' => st('Import Mica demo content'),
     'display' => TRUE,
     'type' => 'batch',
     'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED, // default to insert content

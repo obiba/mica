@@ -64,7 +64,7 @@ projects[content_taxonomy][type] = module
 projects[countries][type] = module
 projects[countries][download][type] = git
 projects[countries][download][url] = http://git.drupal.org/project/countries.git
-projects[countries][download][revision] = 6aa27d6bd70b64d0312effa1ebd3c790e750a5c2
+projects[countries][download][revision] = 8bb8f2aa82eac290da2c899be1fa710cb305443b
 
 projects[ctools][type] = module
 projects[ctools][download][type] = git
@@ -211,8 +211,7 @@ projects[search_api_page][type] = module
 projects[search_api_ranges][type] = module
 projects[search_api_ranges][download][type] = git
 projects[search_api_ranges][download][url] = http://git.drupal.org/project/search_api_ranges.git
-projects[search_api_ranges][download][revision] = 7256e42869632a939b4240396a69110a5beedf2f
-projects[search_api_ranges][patch][1344076] = http://drupal.org/files/rawurlencode_rangefield-1344076-6.patch
+projects[search_api_ranges][download][revision] = fe3b59f9c0206ac822c4e6474f8715fc1c2026a5
 
 projects[search_api_solr][version] = 1.0-rc1
 projects[search_api_solr][type] = module

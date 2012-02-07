@@ -10,6 +10,7 @@ dependencies[] = search_api
 dependencies[] = search_api_ranges
 dependencies[] = references
 dependencies[] = mica_node_reference_field
+dependencies[] = mica_field_description
 dependencies[] = field_permissions
 dependencies[] = menu
 dependencies[] = menu_firstchild
@@ -25,9 +26,7 @@ files[] = includes/fieldgroups.inc
 files[] = includes/mica_relation.entity.inc
 files[] = includes/relations.inc
 files[] = includes/search.inc
-files[] = includes/field_description.inc
 
-files[] = includes/feeds/processors/FeedsStudyChildProcessor.inc
 files[] = includes/feeds/processors/FeedsUniqueNodeProcessor.inc
 files[] = includes/feeds/parsers/FeedsMultiValueCSVParser.inc
 files[] = includes/feeds/fetchers/FeedsRestFetcher.inc

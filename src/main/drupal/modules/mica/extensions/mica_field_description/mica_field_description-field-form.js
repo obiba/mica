@@ -12,12 +12,14 @@
 				$('form#field-ui-field-edit-form .form-item-field-settings-field-description-infos-field-description-body').toggle(has_fd);
 				
 				// copy label or display if present to field_original_field_label 
-				var fieldDisplayLabel = $('form#field-ui-field-edit-form input#edit-instance-display-label');
 				var fieldLabel = $('form#field-ui-field-edit-form input#edit-instance-label');
+				var fieldDisplayLabel = $('form#field-ui-field-edit-form input#edit-instance-display-label');
+				
 				if(has_fd) {
 					var fd_label = $('form#field-ui-field-edit-form input#edit-field-settings-field-description-infos-field-description-label');
+					
 					if(!fd_label.val()) {
-						if(fieldDisplayLabel.length) {
+						if(fieldDisplayLabel && fieldDisplayLabel.val().length) {
 							// if display label exists we use it
 							fd_label.val(fieldDisplayLabel.val());
 							fieldDisplayLabel.change(function() {

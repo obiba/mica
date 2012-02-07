@@ -19,6 +19,7 @@ mica_node_reference_field_version=$(mica_version)
 mica_opal_version=$(mica_version)
 mica_projects_version=$(mica_version)
 mica_studies_version=$(mica_version)
+mica_field_description_version=$(mica_version)
 node_reference_block_version=$(mica_version)
 
 # Profiles
@@ -150,11 +151,12 @@ package-prepare: package-modules-prepare package-profiles-prepare package-themes
 package-modules-prepare:
 	$(call make-info,sites/all/modules/mica/extensions,mica_community)
 	$(call make-info,sites/all/modules/mica/extensions,mica_data_access)
-	$(call make-info,sites/all/modules/mica/extensions,mica_datasets)
-	$(call make-info,sites/all/modules/mica/extensions,mica_devel)
 	$(call make-info,sites/all/modules/mica/extensions,mica_dataschemas)
+	$(call make-info,sites/all/modules/mica/extensions,mica_datasets)
 	$(call make-info,sites/all/modules/mica/extensions,mica_datashield)
+	$(call make-info,sites/all/modules/mica/extensions,mica_devel)
 	$(call make-info,sites/all/modules/mica/extensions,mica_node_reference_field)
+	$(call make-info,sites/all/modules/mica/extensions,mica_field_description)
 	$(call make-info,sites/all/modules/mica/extensions,mica_opal)
 	$(call make-info,sites/all/modules/mica/extensions,mica_projects)
 	$(call make-info,sites/all/modules/mica/extensions,mica_studies)
