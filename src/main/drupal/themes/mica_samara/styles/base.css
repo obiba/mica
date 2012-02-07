@@ -315,7 +315,8 @@ fieldset .form-item:first-child {
 .form-item:last-child {
   margin-bottom: 0px;
 }
-.form-item .description {
+.form-item .description,
+.form-wrapper .description {
   background-color: #f5f9fa;
   border: 1px solid #deeaec;
   font-size: 0.917em;
