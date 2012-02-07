@@ -495,7 +495,7 @@ function mica_field_group_pre_render(&$element, $group, &$form) {
 
 function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_selected) {
   if (array_key_exists($dependee, $form) && array_key_exists($dependent, $form)) {
-    $lang = $form['language']['#default_value'];
+    $lang = $form[$dependee]['#language'];
     $form[$dependent]['#states'] = array(
       'visible' => array(
         ':input[name="' . $dependee . '[' . $lang . '][' . $key_selected . ']"]' => array('checked' => TRUE),
@@ -503,7 +503,7 @@ function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_s
     );
   }
   else {
-    debug('dependee or dependent not found');
+    debug('dependee "' . $dependee . '" or dependent "' . $dependent . '"not found');
   }
 }
 
@@ -694,25 +694,33 @@ function study_node_form_validate($form, &$form_state) {
   study_node_form_validate_field($form, $form_state, 'field_design', 'field_design_other_sp', 'other');
   study_node_form_validate_field($form, $form_state, 'field_recruitment', 'field_recruitment_other_sp', 'other');
   study_node_form_validate_field($form, $form_state, 'field_select_criteria', 'field_selection_others_sp', 'others');
-  study_node_form_validate_field($form, $form_state, 'field_access_other', 'field_access_other_sp', FALSE);
+  study_node_form_validate_field($form, $form_state, 'field_access_other', 'field_access_other_sp', '1');
   study_node_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
   study_node_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
   study_node_form_validate_field($form, $form_state, 'field_recruitment_procedures', 'field_recruitment_other', 'other');
   study_node_form_validate_field($form, $form_state, 'field_data_sources', 'field_data_sources_sp', 'others');
 }
 
-function study_node_form_validate_field($form, &$form_state, $field_name, $dependent_field_name, $selection) {
-  $flangs = array_keys($form_state['values'][$field_name]);
-  $flang = $flangs[0];
-  $value = $form_state['values'][$field_name][$flang][0]['value'];
-  
-  if (is_null($value) || ((is_bool($value) && $value == $selection)) || (is_array($value) && in_array($selection, $value) == FALSE)) {
-    $empty_value = array();
-    $lgs = array_keys($form_state['values'][$dependent_field_name]);
-    foreach ($lgs as $lg) {
-      $empty_value[$lg] = array(array('value' => ''));
+function study_node_form_validate_field($form, &$form_state, $dependee, $dependent, $selection) {
+  if (array_key_exists($dependee, $form_state['values']) && array_key_exists($dependent, $form_state['values'])) {
+    $flangs = array_keys($form_state['values'][$dependee]);
+    $flang = $flangs[0];
+    $values = array();
+    foreach($form_state['values'][$dependee][$flang] as $value) {
+      $values[] = $value['value'];
     }
-    form_set_value($form[$dependent_field_name], $empty_value, $form_state);
+    
+    if (in_array($selection, $values) == FALSE) {
+      $empty_value = array();
+      $lgs = array_keys($form_state['values'][$dependent]);
+      foreach ($lgs as $lg) {
+        $empty_value[$lg] = array(array('value' => ''));
+      }
+      form_set_value($form[$dependent], $empty_value, $form_state);
+    }
+  }
+  else {
+    debug('dependee "' . $dependee . '" or dependent "' . $dependent . '"not found');
   }
 }
 
