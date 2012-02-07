@@ -8,21 +8,17 @@ include_once(drupal_get_path('module', 'facetapi') . '/facetapi.block.inc');
 function mica_field_description_node_presave($node) {
   if ($node->type === 'field_description') {
     
-    dvm($node);
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $bundle = $wrapper->field_bundle->value();
     
-//     $wrapper = entity_metadata_wrapper('node', $node);
-//     $bundle = $wrapper->field_bundle->value();
-    
-//     dvm($bundle);
-    
-//     $indexes = _find_indexes_by_bundle();
-//     $bundles_indexes = $indexes[$bundle];
-//     if (!empty($bundles_indexes)) {
-//     	foreach ($bundles_indexes as $index_machine_name => $index_name) {
-//     	  dvm('Add to index ' . $index_machine_name); 
-// //     		_add_field_index($index_machine_name, $node);
-//     	}
-//     }    
+    $indexes = _find_indexes_by_bundle();
+    $bundles_indexes = $indexes[$bundle];
+    if (!empty($bundles_indexes)) {
+    	foreach ($bundles_indexes as $index_machine_name => $index_name) {
+    	  dvm('Add to index ' . $index_machine_name); 
+    		_add_field_index($index_machine_name, $node);
+    	}
+    }    
   }
 }
 
@@ -95,7 +91,23 @@ function mica_field_description_form_field_ui_field_edit_form_alter(&$form, $for
   }
   
   $field_description = _find_field_description($bundle, $field_name);
-
+  
+  if (empty($field_description)) {
+    // auto-detect value type based on field value type
+    $field_value_type = $form_state['build_info']['args'][0]['display']['default']['type'];
+    $default_value_type = _get_field_value_type($field_value_type);    
+    $default_label = NULL;
+    $default_body = NULL;
+  } else {
+    $wrapper = entity_metadata_wrapper('node', $field_description);
+    $default_value_type = $wrapper->field_value_type->value();
+    $default_label = $wrapper->field_original_field_label->value();
+    $default_body = $wrapper->body->value();
+    if (is_array($default_body)) {
+      $default_body = $default_body['value'];
+    }
+  }
+  
   $form['field']['settings']['field_description_infos'] = array(
     '#type' => 'fieldset', 
     '#title' => t('Field Description'), 
@@ -111,16 +123,6 @@ function mica_field_description_form_field_ui_field_edit_form_alter(&$form, $for
     '#title' => t('Use Field Descriptor for this field'),
     '#default_value' => !empty($field_description), 
   );
-  
-  if (empty($field_description)) {
-  	// auto-detect value type based on field value type
-    $field_value_type = $form_state['build_info']['args'][0]['display']['default']['type'];
-  	$default_value_type = _get_field_value_type($field_value_type);
-  } 
-  else {
-    $wrapper = entity_metadata_wrapper('node', $field_description);
-    $default_value_type = $wrapper->field_value_type->value();
-  }
   
   // retrieve available select options from field_description field 'field_value_type'
   $field_value_type_options = field_info_field('field_value_type');
@@ -140,20 +142,6 @@ function mica_field_description_form_field_ui_field_edit_form_alter(&$form, $for
       ),
     ),      
   );
-  
-  if (empty($field_description) || empty($field_description->body)) {
-    $default_body = NULL;
-  } 
-  else {
-    $default_body = $wrapper->body->value();    
-  }  
-  
-  if (empty($field_description)) {
-    $default_label = NULL;
-  } 
-  else {
-    $default_label = $wrapper->field_original_field_label->value();
-  }  
   
   $form['field']['settings']['field_description_infos']['field_description_label'] = array(
     '#type' => 'textfield',
@@ -531,10 +519,16 @@ function _edit_field_field_description($form, &$form_state) {
 	} else {
 		$label = '';
 	}
+	
+	$desc = $is_field_description ? $form_state['values']['field']['settings']['field_description_infos']['field_description_body'] : '';
 
 	$field_description_infos = array(
     'title' =>  $node_type->name . ' » ' . $label,
-    'body' => array('value' => $is_field_description ? $form_state['values']['field']['settings']['field_description_infos']['field_description_body'] : ''),
+    'body' => array(
+    	'value' => $desc,
+			'summary' => $desc,
+    	'format' => 'plain_text',
+    ),
     'field_bundle' => $bundle,
     'field_bundle_label' => $node_type->name,
     'field_original_field_name' => $field_name,
@@ -588,7 +582,6 @@ function _create_field_description(array $field_description_infos) {
 function _update_field_description(stdClass $field_description, array $field_description_infos) {
 	$wrapper = entity_metadata_wrapper('node', $field_description);
 	foreach ($field_description_infos as $key => $value) {
-	  dvm($value, 'set ' . $key);
 	  $wrapper->$key = $value;
 	}
 	$wrapper->save();
