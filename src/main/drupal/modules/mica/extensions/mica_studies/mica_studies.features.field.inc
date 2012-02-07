@@ -2328,7 +2328,7 @@ function mica_studies_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_access_other_sp',
-      'label' => 'Please specify',
+      'label' => 'Please specify what study feature',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -4281,7 +4281,7 @@ You will be able to edit these Contacts once the Study will be saved.',
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_data_sources_sp',
-      'label' => 'Please specify',
+      'label' => 'Please specify what other data sources',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -4440,7 +4440,7 @@ You will be able to edit these Contacts once the Study will be saved.',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_design_other_sp',
-      'label' => 'Please specify',
+      'label' => 'Please specify what other design',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -6232,7 +6232,7 @@ other|Other',
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_recruitment_other',
-      'label' => 'Please specify',
+      'label' => 'Please specify what other source of recruitment',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -6308,7 +6308,7 @@ other|Other',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_recruitment_other_sp',
-      'label' => 'Please specify',
+      'label' => 'Please specify what other recruitment target',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -6532,7 +6532,7 @@ other|Other',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_samples_man_other_sp',
-      'label' => 'Please specify',
+      'label' => 'Please specify what other biological samples',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -6832,7 +6832,7 @@ other|Other',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_selection_others_sp',
-      'label' => 'Please specify',
+      'label' => 'Please specify what other selection criteria',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -7612,7 +7612,14 @@ You will be able to edit these Investigators once the Study will be saved.');
   t('Objectives');
   t('Other');
   t('Please specify');
-  t('Please specify type of tissues');
+  t('Please specify what study feature');
+  t('Please specify what other data sources');
+  t('Please specify what other design');
+  t('Please specify what other recruitment target');
+  t('Please specify what other source of recruitment');
+  t('Please specify what other biological samples');
+  t('Please specify what other selection criteria');
+  t('Please specify what type of tissues');
   t('Postal Code');
   t('Pubmed Id');
   t('Repeatable');
