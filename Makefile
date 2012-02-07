@@ -20,6 +20,7 @@ mica_opal_version=$(mica_version)
 mica_projects_version=$(mica_version)
 mica_studies_version=$(mica_version)
 mica_field_description_version=$(mica_version)
+mica_core_version=$(mica_version)
 node_reference_block_version=$(mica_version)
 
 # Profiles
@@ -160,6 +161,7 @@ package-modules-prepare:
 	$(call make-info,sites/all/modules/mica/extensions,mica_opal)
 	$(call make-info,sites/all/modules/mica/extensions,mica_projects)
 	$(call make-info,sites/all/modules/mica/extensions,mica_studies)
+	$(call make-info,sites/all/modules/mica/extensions,mica_core)
 	$(call make-info,sites/all/modules/mica/extensions,node_reference_block)
 	$(call make-info,sites/all/modules,mica)
 	

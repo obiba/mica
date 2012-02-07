@@ -212,15 +212,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'feeds',
   );
 
-  // Exported permission: clear csv_field_description_import feeds
-  $permissions['clear csv_field_description_import feeds'] = array(
-    'name' => 'clear csv_field_description_import feeds',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
   // Exported permission: clear csv_study_import feeds
   $permissions['clear csv_study_import feeds'] = array(
     'name' => 'clear csv_study_import feeds',
@@ -334,15 +325,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: create field_description content
-  $permissions['create field_description content'] = array(
-    'name' => 'create field_description content',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: create page content
   $permissions['create page content'] = array(
     'name' => 'create page content',
@@ -405,15 +387,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any field_description content
-  $permissions['delete any field_description content'] = array(
-    'name' => 'delete any field_description content',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: delete any page content
   $permissions['delete any page content'] = array(
     'name' => 'delete any page content',
@@ -471,15 +444,6 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: delete own field_description content
-  $permissions['delete own field_description content'] = array(
-    'name' => 'delete own field_description content',
-    'roles' => array(
-      0 => 'administrator',
     ),
     'module' => 'node',
   );
@@ -550,15 +514,6 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-    ),
-    'module' => 'node',
-  );
-
-  // Exported permission: edit any field_description content
-  $permissions['edit any field_description content'] = array(
-    'name' => 'edit any field_description content',
-    'roles' => array(
-      0 => 'administrator',
     ),
     'module' => 'node',
   );
@@ -763,15 +718,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit own field_description content
-  $permissions['edit own field_description content'] = array(
-    'name' => 'edit own field_description content',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: edit own page content
   $permissions['edit own page content'] = array(
     'name' => 'edit own page content',
@@ -824,15 +770,6 @@ function mica_studies_user_default_permissions() {
   // Exported permission: import csv_documents_import feeds
   $permissions['import csv_documents_import feeds'] = array(
     'name' => 'import csv_documents_import feeds',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: import csv_field_description_import feeds
-  $permissions['import csv_field_description_import feeds'] = array(
-    'name' => 'import csv_field_description_import feeds',
     'roles' => array(
       0 => 'administrator',
     ),
@@ -936,15 +873,6 @@ function mica_studies_user_default_permissions() {
   // Exported permission: tamper csv_documents_import
   $permissions['tamper csv_documents_import'] = array(
     'name' => 'tamper csv_documents_import',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'feeds_tamper',
-  );
-
-  // Exported permission: tamper csv_field_description_import
-  $permissions['tamper csv_field_description_import'] = array(
-    'name' => 'tamper csv_field_description_import',
     'roles' => array(
       0 => 'administrator',
     ),

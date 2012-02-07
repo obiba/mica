@@ -1,5 +1,6 @@
 <?php
 
+include_once('mica_field_description.features.inc');
 include_once(drupal_get_path('module', 'facetapi') . '/facetapi.block.inc');
 
 /**

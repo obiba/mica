@@ -8,9 +8,11 @@ dependencies[] = entity
 dependencies[] = facetapi
 dependencies[] = search_api
 dependencies[] = search_api_ranges
+dependencies[] = search_api_solr
 dependencies[] = references
 dependencies[] = mica_node_reference_field
 dependencies[] = mica_field_description
+dependencies[] = mica_core
 dependencies[] = field_permissions
 dependencies[] = menu
 dependencies[] = menu_firstchild
@@ -33,3 +35,4 @@ files[] = includes/feeds/fetchers/FeedsRestFetcher.inc
 
 files[] = mica.install
 files[] = mica.module
+

@@ -97,14 +97,6 @@ function mica_studies_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
-    'field_description' => array(
-      'name' => t('Field Description'),
-      'base' => 'node_content',
-      'description' => t('Description of information collected about the studies.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
     'study' => array(
       'name' => t('Study'),
       'base' => 'node_content',
@@ -122,128 +114,6 @@ function mica_studies_node_info() {
  */
 function mica_studies_default_search_api_index() {
   $items = array();
-  $items['fields_description_index'] = entity_import('search_api_index', '{
-    "name" : "Fields Description Index",
-    "machine_name" : "fields_description_index",
-    "description" : null,
-    "server" : "solr",
-    "item_type" : "node",
-    "options" : {
-      "index_directly" : 0,
-      "cron_limit" : "100",
-      "fields" : {
-        "title" : { "type" : "text" },
-        "field_bundle" : { "type" : "string" },
-        "field_bundle_label" : { "type" : "text" },
-        "field_categories" : { "type" : "list\\u003Cstring\\u003E" },
-        "field_original_field_label" : { "type" : "text" },
-        "field_original_field_name" : { "type" : "string" },
-        "field_repeatable" : { "type" : "boolean" },
-        "field_value_type" : { "type" : "string" },
-        "field_full_name" : { "type" : "text" },
-        "field_target_number_biosamples" : { "type" : "integer" },
-        "field_target_number_participants" : { "type" : "integer" },
-        "search_api_language" : { "type" : "string" },
-        "body:value" : { "type" : "text" },
-        "body:summary" : { "type" : "text" }
-      },
-      "data_alter_callbacks" : {
-        "search_api_alter_bundle_filter" : {
-          "status" : 1,
-          "weight" : "-10",
-          "settings" : {
-            "default" : "0",
-            "bundles" : { "field_description" : "field_description" }
-          }
-        },
-        "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
-      },
-      "processors" : {
-        "search_api_case_ignore" : {
-          "status" : 0,
-          "weight" : "0",
-          "settings" : { "fields" : {
-              "title" : true,
-              "field_bundle_label" : true,
-              "field_original_field_label" : true,
-              "field_full_name" : true,
-              "body:value" : true,
-              "body:summary" : true
-            }
-          }
-        },
-        "taxonomy_hierarchy_processor.inc" : {
-          "status" : 0,
-          "weight" : "0",
-          "settings" : { "fields" : {
-              "title" : true,
-              "field_bundle_label" : true,
-              "field_original_field_label" : true,
-              "field_full_name" : true,
-              "body:value" : true,
-              "body:summary" : true
-            }
-          }
-        },
-        "search_api_html_filter" : {
-          "status" : 0,
-          "weight" : "10",
-          "settings" : {
-            "fields" : {
-              "title" : true,
-              "field_bundle_label" : true,
-              "field_original_field_label" : true,
-              "field_full_name" : true,
-              "body:value" : true,
-              "body:summary" : true
-            },
-            "title" : 0,
-            "alt" : 1,
-            "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
-          }
-        },
-        "search_api_tokenizer" : {
-          "status" : 0,
-          "weight" : "20",
-          "settings" : {
-            "fields" : {
-              "title" : true,
-              "field_bundle_label" : true,
-              "field_original_field_label" : true,
-              "field_full_name" : true,
-              "body:value" : true,
-              "body:summary" : true
-            },
-            "spaces" : "[^\\\\p{L}\\\\p{N}^\\u0027]",
-            "ignorable" : "[-]"
-          }
-        },
-        "search_api_stopwords" : {
-          "status" : 0,
-          "weight" : "30",
-          "settings" : {
-            "fields" : {
-              "title" : true,
-              "field_bundle_label" : true,
-              "field_original_field_label" : true,
-              "field_full_name" : true,
-              "body:value" : true,
-              "body:summary" : true
-            },
-            "file" : "",
-            "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
-          }
-        }
-      }
-    },
-    "enabled" : "1",
-    "read_only" : "0",
-    "rdf_mapping" : []
-  }');
   $items['studies_index'] = entity_import('search_api_index', '{
     "name" : "Studies Index",
     "machine_name" : "studies_index",
@@ -405,29 +275,6 @@ function mica_studies_default_search_api_index() {
     },
     "enabled" : "1",
     "read_only" : "0",
-    "rdf_mapping" : []
-  }');
-  return $items;
-}
-
-/**
- * Implements hook_default_search_api_server().
- */
-function mica_studies_default_search_api_server() {
-  $items = array();
-  $items['solr'] = entity_import('search_api_server', '{
-    "name" : "Solr",
-    "machine_name" : "solr",
-    "description" : "",
-    "class" : "search_api_solr_service",
-    "options" : {
-      "host" : "localhost",
-      "port" : "8983",
-      "path" : "\\/solr",
-      "http_user" : "",
-      "http_pass" : ""
-    },
-    "enabled" : "1",
     "rdf_mapping" : []
   }');
   return $items;
