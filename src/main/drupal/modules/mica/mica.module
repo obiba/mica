@@ -143,12 +143,6 @@ function mica_node_presave($node) {
   
   if (empty($node->nid)) {
     
-//     if ($node->type === 'field_description') {
-//     	module_load_include('inc', 'mica', 'includes/search');
-//     	_mica_update_index_for_field_description($node);
-//     	return;
-//     }
-    
     module_load_include('inc', 'mica', 'includes/relations');
     $relations = _mica_find_relations_by_parent($node->type);
     if (!empty($relations)) {
@@ -159,12 +153,6 @@ function mica_node_presave($node) {
     }    
     
   } else {
-
-//     if ($node->type === 'field_description') {
-//     	module_load_include('inc', 'mica', 'includes/search');
-//     	_mica_update_index_for_field_description($node);
-//     	return;
-//     }
     
     module_load_include('inc', 'mica', 'includes/relations');
     $relations = _mica_find_relations_by_parent($node->type);
@@ -228,18 +216,6 @@ function mica_form_alter(&$form, $form_state, $form_id) {
  */
 function mica_node_delete($node) {
 
-//   if ($node->type === 'field_description') {
-//     $field_bundle = $node->field_bundle;
-//     $bundle = $field_bundle[LANGUAGE_NONE][0]['value'];
-
-//     $field_original_field_name = $node->field_original_field_name;
-//     $original_field_name = $field_original_field_name[LANGUAGE_NONE][0]['value'];
-
-//     module_load_include('inc', 'mica', 'includes/search');
-//     _mica_drop_search_index_field($bundle, $original_field_name);
-//     return;
-//   }
-
   module_load_include('inc', 'mica', 'includes/relations');
   $relations = _mica_find_relations_by_parent($node->type);
   if (!empty($relations)) {
@@ -248,22 +224,6 @@ function mica_node_delete($node) {
     }
   }
 }
-
-// /**
-//  * Implements of hook_form_FORM_ID_alter()
-//  */
-// function mica_form_field_ui_field_edit_form_alter(&$form, $form_state, $form_id) {
-//   module_load_include('inc', 'mica', 'includes/field_description');
-//   return _mica_field_settings_form_alter($form, $form_state, $form_id);
-// }
-
-// /**
-//  * Implements hook_field_delete_instance()
-//  */
-// function mica_field_delete_instance($instance) {
-//   module_load_include('inc', 'mica', 'includes/field_description');
-//   _mica_delete_field_description_for_field_instance($instance);
-// }
 
 function mica_validate_node_type_relation($form, &$form_state) {
   module_load_include('inc', 'mica', 'includes/relations');
