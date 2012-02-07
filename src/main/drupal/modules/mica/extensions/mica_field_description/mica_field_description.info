@@ -5,3 +5,8 @@ package = "OBiBa"
 php = "5.2.4"
 version = "7.x-1.1-dev"
 project = "mica_field_description"
+
+dependencies[] = entity
+dependencies[] = facetapi
+dependencies[] = search_api
+dependencies[] = search_api_ranges
