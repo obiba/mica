@@ -15,7 +15,6 @@ function mica_field_description_node_presave($node) {
     $bundles_indexes = $indexes[$bundle];
     if (!empty($bundles_indexes)) {
     	foreach ($bundles_indexes as $index_machine_name => $index_name) {
-    	  dvm('Add to index ' . $index_machine_name); 
     		_add_field_index($index_machine_name, $node);
     	}
     }    
