@@ -20,6 +20,13 @@ function mica_devel_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'devel_error_handler';
+  $strongarm->value = '2';
+  $export['devel_error_handler'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'devel_error_handlers';
   $strongarm->value = array(
     4 => '4',
@@ -51,7 +58,7 @@ function mica_devel_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'devel_node_access_user_ajax';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['devel_node_access_user_ajax'] = $strongarm;
 
   $strongarm = new stdClass;
