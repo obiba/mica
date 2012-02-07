@@ -289,8 +289,8 @@ function mica_node_view($node, $view_mode, $langcode) {
 		  ),
       'field_access_other_sp' => array(
         'field' => 'field_access_other',
-        'key' => '',
-        'label_as_prefix' => TRUE,
+        'key' => '1',
+        'label_as_prefix' => FALSE,
 		  ),
 		);
 
@@ -367,7 +367,7 @@ function mica_studies_form_alter(&$form, &$form_state, $form_id) {
       _mica_add_dependent_field_checked($form, 'field_design', 'field_design_other_sp', 'other');
       _mica_add_dependent_field_checked($form, 'field_recruitment', 'field_recruitment_other_sp', 'other');
       _mica_add_dependent_field_checked($form, 'field_select_criteria', 'field_selection_others_sp', 'others');
-      _mica_add_dependent_field_checked($form, 'field_access_other', 'field_access_other_sp', 'yes');
+      _mica_add_dependent_field_checked($form, 'field_access_other', 'field_access_other_sp', '1');
       _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
       _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
       _mica_add_dependent_field_checked($form, 'field_recruitment_procedures', 'field_recruitment_other', 'other');
@@ -496,9 +496,20 @@ function mica_field_group_pre_render(&$element, $group, &$form) {
 function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_selected) {
   if (array_key_exists($dependee, $form) && array_key_exists($dependent, $form)) {
     $lang = $form[$dependee]['#language'];
+    $type = $form[$dependee][$lang]['#type'];
+    $input = ':input[name="' . $dependee . '[' . $lang . ']';
+    $rule = array();
+    if ($type != 'radios') {
+      $input = $input . '[' . $key_selected . ']';
+      $rule['checked'] = TRUE;
+    } else {
+      $rule['value'] = $key_selected;
+    }
+    $input = $input . '"]';
+    
     $form[$dependent]['#states'] = array(
       'visible' => array(
-        ':input[name="' . $dependee . '[' . $lang . '][' . $key_selected . ']"]' => array('checked' => TRUE),
+        $input => $rule,
       ),
     );
   }
