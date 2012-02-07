@@ -2038,3 +2038,54 @@ ul.action-links li a.highlight:first-child {
   box-shadow:2px 3px 3px #333;
   text-shadow: 0 1px 1px black;
 }
+
+/* workbench block */
+#block-workbench-block {
+  margin-bottom: 1em;
+}
+
+/* tabs */
+div.horizontal-tabs {
+  background-color: #F9F9F9;
+  margin-top: 3em;
+}
+
+div.horizontal-tabs ul.horizontal-tabs-list {
+  background-color: #FFFFFF;
+  border: none;
+  margin-bottom: 13px;
+  margin-top: -3em;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+div.horizontal-tabs ul.horizontal-tabs-list li {
+  border-top: 1px solid #CCCCCC;
+}
+div.horizontal-tabs ul.horizontal-tabs-list li.first {
+  border-left: 1px solid #CCCCCC;
+  margin-left: -1px;
+}
+div.horizontal-tabs ul.horizontal-tabs-list li.selected {
+  border-bottom: none;
+}
+
+div.horizontal-tabs ul.horizontal-tabs-list li a,
+div.horizontal-tabs ul.horizontal-tabs-list li a:hover {
+  text-decoration: none;
+  border-bottom: none;
+  color:#555;
+}
+
+div.horizontal-tabs ul.horizontal-tabs-list li a:hover {
+  background: none;
+  color:#333;
+}
+
+div.horizontal-tabs ul.horizontal-tabs-list li.selected a:hover {
+  background-color: #FFFFFF;
+  color:#333;
+}
+
+div.horizontal-tabs .horizontal-tabs-panes > fieldset {
+  margin-top: 0;
+}
