@@ -2,6 +2,8 @@
 
 include_once('mica_field_description.features.inc');
 include_once(drupal_get_path('module', 'facetapi') . '/facetapi.block.inc');
+include_once(drupal_get_path('module', 'mica') . '/includes/relations.inc');
+
 
 /**
 * Implements hook_node_presave()
@@ -31,7 +33,6 @@ function mica_field_description_node_delete($node) {
 	  $bundle = $wrapper->field_bundle->value();	  
 	  $original_field_name = $wrapper->field_original_field_name->value();	  
 
-		module_load_include('inc', 'mica', 'includes/search');
 		_drop_search_index_field($bundle, $original_field_name);
 	}
 }
@@ -45,7 +46,6 @@ function mica_field_description_field_delete_instance($instance) {
 		node_delete($field_description);
 	}
 }
-
 
 /**
 * Enhance the field settings form with field_description extensions.
@@ -199,8 +199,6 @@ function _find_indexes_by_bundle() {
 */
 function _add_field_index($index_name, stdClass $field_description) {
 
-	module_load_include('inc', 'mica', 'includes/relations');
-
 	$wrapper = entity_metadata_wrapper('node', $field_description);
 
 	$bundle = $wrapper->field_bundle->value();
@@ -293,7 +291,6 @@ function _add_field_index($index_name, stdClass $field_description) {
 	}
 }
 
-
 /**
 * Returns the value type mapping between Magma and Search API with Magma values as keys
 */
@@ -307,15 +304,13 @@ function _magma_search_index_type_mapping() {
 	);
 }
 
-
 /**
 * Add Facet/Range block to sidebar_first in mica_samara theme as last facet/range item.
 * Show this block by default but let individual users hide it.
 * In this case, block will be visible for anonymous users.
-*
 */
 function _enable_search_block($facet_delta) {
-
+  
 	$theme_default = variable_get('theme_default', 'mica_samara');
 
 	$max_weight = db_query("SELECT MAX(weight) as max_weight FROM {block} WHERE module = :module AND theme = :theme and region = :region",

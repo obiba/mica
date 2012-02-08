@@ -54,17 +54,9 @@ projects[collapsiblock][type] = module
 
 projects[content_access][version] = 1.2-beta1
 projects[content_access][type] = module
-;projects[content_access][download][type] = git
-;projects[content_access][download][url] = http://git.drupal.org/project/content_access.git
-;projects[content_access][download][revision] = bba91743b9d3de0cdb73490e002f4db6a38dc48c
 
 projects[content_taxonomy][version] = 1.0-beta1
 projects[content_taxonomy][type] = module
-
-projects[countries][type] = module
-projects[countries][download][type] = git
-projects[countries][download][url] = http://git.drupal.org/project/countries.git
-projects[countries][download][revision] = 8bb8f2aa82eac290da2c899be1fa710cb305443b
 
 projects[ctools][type] = module
 projects[ctools][download][type] = git
@@ -216,9 +208,6 @@ projects[search_api_ranges][download][revision] = fe3b59f9c0206ac822c4e6474f8715
 projects[search_api_solr][version] = 1.0-rc1
 projects[search_api_solr][type] = module
 
-;projects[select_or_other][version] = 2.7
-;projects[select_or_other][type] = module
-
 projects[strongarm][version] = 2.0-beta5
 projects[strongarm][type] = module
 
@@ -238,9 +227,6 @@ projects[title][download][revision] = 5cfda9bb7b2d18efaa01f85a4d10255a2866c83a
 projects[title][patch][1362790] = http://drupal.org/files/check_if_legacy_field_is_set-1362790-1.patch
 
 projects[token][version] = 1.0-rc1
-projects[token][type] = module
-
-projects[token][version] = 1.0-beta7
 projects[token][type] = module
 
 projects[variable][version] = 1.1

@@ -122,28 +122,14 @@ function mica_studies_default_search_api_index() {
     "item_type" : "node",
     "options" : {
       "index_directly" : 0,
-      "cron_limit" : "100",
+      "cron_limit" : "200",
       "fields" : {
-        "field_acroym" : { "type" : "text" },
-        "field_complete_name" : { "type" : "text" },
+        "type" : { "type" : "string" },
+        "title" : { "type" : "text" },
+        "status" : { "type" : "integer" },
         "search_api_language" : { "type" : "string" },
         "body:value" : { "type" : "text" },
-        "body:summary" : { "type" : "text" },
-        "field_contacts_ref:title" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_contacts_ref:field_address" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_contacts_ref:field_contact_country" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "country" },
-        "field_contacts_ref:field_contact_email" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_contacts_ref:field_institution_name" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_contacts_ref:field_state" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_contacts_ref:field_telephone" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_country:name" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_country:official_name" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_investigators:title" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_investigators:field_address" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_investigators:field_city" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_investigators:field_contact_country" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "country" },
-        "field_investigators:field_institution_name" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_investigators:field_telephone" : { "type" : "list\\u003Ctext\\u003E" }
+        "body:summary" : { "type" : "text" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
@@ -152,9 +138,9 @@ function mica_studies_default_search_api_index() {
           "settings" : { "default" : "0", "bundles" : { "study" : "study" } }
         },
         "search_api_alter_language_control" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "0",
-          "settings" : { "lang_field" : "", "languages" : [] }
+          "settings" : { "lang_field" : "", "languages" : { "und" : "und", "en" : "en" } }
         },
         "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
@@ -163,112 +149,37 @@ function mica_studies_default_search_api_index() {
         "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] }
       },
       "processors" : {
-        "search_api_stopwords" : {
-          "status" : 0,
-          "weight" : "-50",
-          "settings" : {
-            "fields" : {
-              "field_acroym" : true,
-              "field_complete_name" : true,
-              "body:value" : true,
-              "body:summary" : true,
-              "field_contacts_ref:title" : true,
-              "field_contacts_ref:field_address" : true,
-              "field_contacts_ref:field_contact_email" : true,
-              "field_contacts_ref:field_institution_name" : true,
-              "field_contacts_ref:field_state" : true,
-              "field_contacts_ref:field_telephone" : true,
-              "field_country:name" : true,
-              "field_country:official_name" : true,
-              "field_investigators:title" : true,
-              "field_investigators:field_address" : true,
-              "field_investigators:field_city" : true,
-              "field_investigators:field_institution_name" : true,
-              "field_investigators:field_telephone" : true
-            },
-            "file" : "",
-            "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
-          }
-        },
-        "search_api_tokenizer" : {
-          "status" : 0,
-          "weight" : "-50",
-          "settings" : {
-            "fields" : {
-              "field_acroym" : true,
-              "field_complete_name" : true,
-              "body:value" : true,
-              "body:summary" : true,
-              "field_contacts_ref:title" : true,
-              "field_contacts_ref:field_address" : true,
-              "field_contacts_ref:field_contact_email" : true,
-              "field_contacts_ref:field_institution_name" : true,
-              "field_contacts_ref:field_state" : true,
-              "field_contacts_ref:field_telephone" : true,
-              "field_country:name" : true,
-              "field_country:official_name" : true,
-              "field_investigators:title" : true,
-              "field_investigators:field_address" : true,
-              "field_investigators:field_city" : true,
-              "field_investigators:field_institution_name" : true,
-              "field_investigators:field_telephone" : true
-            },
-            "spaces" : "[^\\\\p{L}\\\\p{N}^\\u0027]",
-            "ignorable" : "[-]"
-          }
+        "search_api_case_ignore" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : { "fields" : { "title" : true } }
         },
         "search_api_html_filter" : {
           "status" : 0,
-          "weight" : "-50",
+          "weight" : "10",
           "settings" : {
-            "fields" : {
-              "field_acroym" : true,
-              "field_complete_name" : true,
-              "body:value" : true,
-              "body:summary" : true,
-              "field_contacts_ref:title" : true,
-              "field_contacts_ref:field_address" : true,
-              "field_contacts_ref:field_contact_email" : true,
-              "field_contacts_ref:field_institution_name" : true,
-              "field_contacts_ref:field_state" : true,
-              "field_contacts_ref:field_telephone" : true,
-              "field_country:name" : true,
-              "field_country:official_name" : true,
-              "field_investigators:title" : true,
-              "field_investigators:field_address" : true,
-              "field_investigators:field_city" : true,
-              "field_investigators:field_institution_name" : true,
-              "field_investigators:field_telephone" : true
-            },
+            "fields" : { "title" : true },
             "title" : 0,
             "alt" : 1,
             "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
           }
         },
-        "search_api_case_ignore" : {
-          "status" : 1,
-          "weight" : "-50",
-          "settings" : { "fields" : {
-              "field_acroym" : true,
-              "field_complete_name" : true,
-              "body:value" : true,
-              "body:summary" : true,
-              "field_contacts_ref:title" : true,
-              "field_contacts_ref:field_address" : true,
-              "field_contacts_ref:field_contact_country" : true,
-              "field_contacts_ref:field_contact_email" : true,
-              "field_contacts_ref:field_institution_name" : true,
-              "field_contacts_ref:field_state" : true,
-              "field_contacts_ref:field_telephone" : true,
-              "field_country:name" : true,
-              "field_country:official_name" : true,
-              "field_investigators:title" : true,
-              "field_investigators:field_address" : true,
-              "field_investigators:field_city" : true,
-              "field_investigators:field_contact_country" : true,
-              "field_investigators:field_institution_name" : true,
-              "field_investigators:field_telephone" : true
-            }
+        "search_api_tokenizer" : {
+          "status" : 0,
+          "weight" : "20",
+          "settings" : {
+            "fields" : { "title" : true },
+            "spaces" : "[^\\\\p{L}\\\\p{N}^\\u0027]",
+            "ignorable" : "[-]"
+          }
+        },
+        "search_api_stopwords" : {
+          "status" : 0,
+          "weight" : "30",
+          "settings" : {
+            "fields" : { "title" : true },
+            "file" : "",
+            "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
           }
         }
       }
