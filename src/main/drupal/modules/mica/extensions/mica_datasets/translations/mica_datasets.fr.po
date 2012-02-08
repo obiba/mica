@@ -4,6 +4,7 @@
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 # Generated from files:
 #  mica_datasets.features.field.inc: n/a
+#  mica_datasets.views_default.inc: n/a
 #  mica_datasets.features.inc: n/a
 #  mica_datasets.features.menu_links.inc: n/a
 #  mica_datasets.pages.inc: n/a
@@ -18,72 +19,81 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-01-19 15:13-0500\n"
-"PO-Revision-Date: 2012-01-25 13:13-0500\n"
-"Last-Translator: asd <asd>\n"
+"POT-Creation-Date: 2012-02-08 15:48-0500\n"
+"PO-Revision-Date: 2012-02-08 16:17-0500\n"
+"Last-Translator: obiba <info@obiba.org>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: mica_datasets.features.field.inc:1372
+#: mica_datasets.features.field.inc:1378
 msgid "Body"
 msgstr "Corps"
 
-#: mica_datasets.features.field.inc:1373
+#: mica_datasets.features.field.inc:1379
 msgid "Can this variable have multiple values?"
 msgstr "Est-ce que cette variable peut avoir plusieurs valeurs?"
 
-#: mica_datasets.features.field.inc:1374
+#: mica_datasets.features.field.inc:1380
+#: mica_datasets.views_default.inc:788
 msgid "Categories"
 msgstr "Catégories"
 
-#: mica_datasets.features.field.inc:1375
+#: mica_datasets.features.field.inc:1381
+#: mica_datasets.views_default.inc:510
 msgid "Dataschema"
 msgstr "DataSchema"
 
-#: mica_datasets.features.field.inc:1376
+#: mica_datasets.features.field.inc:1382
 #: mica_datasets.features.inc:37
+#: mica_datasets.views_default.inc:791
 msgid "Dataset"
 msgstr "Dataset"
 
-#: mica_datasets.features.field.inc:1377
+#: mica_datasets.features.field.inc:1383
 #: mica_datasets.features.menu_links.inc:34
 #: mica_datasets.pages.inc:275
+#: mica_datasets.views_default.inc:495
 msgid "Datasets"
 msgstr "Datasets"
 
-#: mica_datasets.features.field.inc:1378
+#: mica_datasets.features.field.inc:1384
 #: mica_datasets.pages.inc:328
 #: mica_datasets.pages.query.inc:56;141
+#: mica_datasets.views_default.inc:509
 #: mica_datasets.module:614;655
 #: includes/connection_form.inc:123
 msgid "Description"
 msgstr "Description"
 
-#: mica_datasets.features.field.inc:1379
+#: mica_datasets.features.field.inc:1385
+#: mica_datasets.views_default.inc:134;787
 msgid "Label"
 msgstr "Étiquette"
 
-#: mica_datasets.features.field.inc:1380
+#: mica_datasets.features.field.inc:1386
 msgid "Opal"
 msgstr "Opal"
 
-#: mica_datasets.features.field.inc:1381
+#: mica_datasets.features.field.inc:1387
 msgid "Participant Variables"
 msgstr "Variables de participant"
 
-#: mica_datasets.features.field.inc:1382
+#: mica_datasets.features.field.inc:1388
+#: mica_datasets.views_default.inc:790
 msgid "Repeatable"
 msgstr "Répétable"
 
-#: mica_datasets.features.field.inc:1383
+#: mica_datasets.features.field.inc:1389
 #: mica_datasets.pages.inc:211
+#: mica_datasets.views_default.inc:308
 msgid "Studies"
 msgstr "Études"
 
-#: mica_datasets.features.field.inc:1384
+#: mica_datasets.features.field.inc:1390
+#: mica_datasets.views_default.inc:789
 msgid "Value Type"
 msgstr "Type de valeur"
 
@@ -93,6 +103,7 @@ msgstr "Resource du Dataset"
 
 #: mica_datasets.features.inc:41;49
 #: mica_datasets.pages.query.inc:55;132
+#: mica_datasets.views_default.inc:133;320;508;786
 #: mica_datasets.module:608;649
 msgid "Name"
 msgstr "Nom"
@@ -100,6 +111,10 @@ msgstr "Nom"
 #: mica_datasets.features.inc:45
 msgid "Participant Variable"
 msgstr "Variable de participant"
+
+#: mica_datasets.features.inc:47
+msgid "Description of participant data."
+msgstr "Description des données de participant"
 
 #: mica_datasets.pages.inc:18
 msgid "!title -- Datasets"
@@ -131,7 +146,7 @@ msgstr "Statut"
 
 #: mica_datasets.pages.inc:131
 msgid "Import"
-msgstr "Import"
+msgstr "Importer"
 
 #: mica_datasets.pages.inc:137
 msgid "Update variables"
@@ -170,7 +185,7 @@ msgstr "Type de connection"
 
 #: mica_datasets.pages.inc:340
 msgid "Select which type of connection is to be used to retrieve variables and data from the study to contribute to the dataset."
-msgstr ""
+msgstr "Sélectionenr quel type de connexion est à utiliser pour extraire les variables et les données depuis l'étude qui contribue au jeu de données."
 
 #: mica_datasets.pages.inc:353
 msgid "Configuration"
@@ -179,7 +194,7 @@ msgstr "Configuration"
 #: mica_datasets.pages.inc:375;429
 #: mica_datasets.pages.query.inc:715
 msgid "Save"
-msgstr "Sauvegarder"
+msgstr "Enregistrer"
 
 #: mica_datasets.pages.inc:445;455
 msgid "Unable to save connection: !name"
@@ -192,7 +207,7 @@ msgstr "!title -- Requêtes"
 #: mica_datasets.pages.query.inc:57
 #: includes/connection_form.inc:124
 msgid "Operations"
-msgstr "Opérations"
+msgstr "Actions"
 
 #: mica_datasets.pages.query.inc:69
 msgid "(not saved)"
@@ -207,12 +222,12 @@ msgstr "Exécuter"
 #: mica_datasets.module:126;164
 #: includes/connection_form.inc:104
 msgid "Edit"
-msgstr "Édition"
+msgstr "Modifier"
 
 #: mica_datasets.pages.query.inc:94;520;603;835
 #: mica_datasets.module:136;174
 msgid "Delete"
-msgstr "Effacer"
+msgstr "Supprimer"
 
 #: mica_datasets.pages.query.inc:94
 msgid "Delete query"
@@ -237,7 +252,7 @@ msgstr "Publié"
 
 #: mica_datasets.pages.query.inc:166
 msgid "Select the variables you want to query the dataset on."
-msgstr ""
+msgstr "Sélectionner les variables à partir desquelles une recherche sur le jeu de données sera effectuée."
 
 #: mica_datasets.pages.query.inc:170
 msgid "Variables"
@@ -274,7 +289,7 @@ msgstr "Une requête du même nom existe déjà."
 
 #: mica_datasets.pages.query.inc:344
 msgid "Query term temporarily added. Changes made will not be saved until the form is submitted."
-msgstr ""
+msgstr "Le terme de requête a été ajouté temporairement. Les changements ne seront sauvegardés qu'après soumission du formulaire."
 
 #: mica_datasets.pages.query.inc:489
 msgid "Delete !query"
@@ -286,7 +301,7 @@ msgstr "Êtes-vous certain de vouloir supprimer la requête <em>!query</em>?"
 
 #: mica_datasets.pages.query.inc:509;824
 msgid "This action cannot be undone."
-msgstr "Cette action ne peut être annulée."
+msgstr "Cette action est irréversible."
 
 #: mica_datasets.pages.query.inc:525;720;840
 msgid "Cancel"
@@ -318,7 +333,7 @@ msgstr "Total"
 
 #: mica_datasets.pages.query.inc:619
 msgid "Matched"
-msgstr ""
+msgstr "Correspondance"
 
 #: mica_datasets.pages.query.inc:657
 msgid "Your query is not saved yet."
@@ -354,7 +369,7 @@ msgstr "Certificat"
 
 #: mica_datasets.pages.unit.inc:38
 msgid "Mica server can communicate with third-party using a key pair (private key/certificate)"
-msgstr ""
+msgstr "Le serveur Mica peut communiquer avec un tiers en utilisant une paire de clés de chiffrement (clé privée/certificat)"
 
 #: mica_datasets.pages.unit.inc:43
 #: mica_datasets.module:236
@@ -389,13 +404,97 @@ msgstr "Code de pays deux lettres"
 msgid "Bad syntax of two letter Country code"
 msgstr "Erreur de syntaxe pour le code de pays à deux lettres"
 
+#: mica_datasets.views_default.inc:120;307;494;773
+msgid "Master"
+msgstr "Maître"
+
+#: mica_datasets.views_default.inc:121;774
+msgid "Data Dictionnary"
+msgstr "Dictionnaire de données"
+
+#: mica_datasets.views_default.inc:122;309;496;775
+msgid "more"
+msgstr "plus"
+
+#: mica_datasets.views_default.inc:123;310;497;776
+msgid "Apply"
+msgstr "Appliquer"
+
+#: mica_datasets.views_default.inc:124;311;498;777
+msgid "Reset"
+msgstr "Réinitialiser"
+
+#: mica_datasets.views_default.inc:125;312;499;778
+msgid "Sort by"
+msgstr "Trier par"
+
+#: mica_datasets.views_default.inc:126;313;500;779
+msgid "Asc"
+msgstr "Asc"
+
+#: mica_datasets.views_default.inc:127;314;501;780
+msgid "Desc"
+msgstr "Desc"
+
+#: mica_datasets.views_default.inc:128;315;502;781
+msgid "Items per page"
+msgstr "Items par page"
+
+#: mica_datasets.views_default.inc:129;316;503;782
+msgid "- All -"
+msgstr "- Tous -"
+
+#: mica_datasets.views_default.inc:130;317;504;783
+msgid "Offset"
+msgstr "Décalage"
+
+#: mica_datasets.views_default.inc:132
+msgid "No variables found."
+msgstr "Aucune variable n' été trouvée."
+
+#: mica_datasets.views_default.inc:135;324;793
+msgid "All"
+msgstr "Tous / Toutes"
+
+#: mica_datasets.views_default.inc:136;325;511;795
+msgid "Page"
+msgstr "Page"
+
+#: mica_datasets.views_default.inc:319
+msgid "No studies found."
+msgstr "Aucune étude n'a été trouvée."
+
+#: mica_datasets.views_default.inc:322
+msgid "How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?"
+msgstr "Combien de personnes devraient être recrutées ? Ou si l'étude est terminée, quel le nombre final de participants ? "
+
+#: mica_datasets.views_default.inc:505
+msgid "The consortium makes available different datasets to the research community. Each dataset is described by a comprehensive data dictionary which gives details on each available variable. Moreover, Mica includes for  studies using the OBiBa Opal software as main database solution, a distributed query engine that enables researchers to obtain real-time aggregated reports on the exact number of participant with specific characteristics or phenotypes. Mica makes even possible to run remotely some regression analyses on the real study data using the DataSHIELD method (Wolfson M et al. <i>Int J Epidemiol</i>. 2010) which is implemented both in Mica and Opal. <br/><br/>"
+msgstr "Le consortium met à la disposition de la communauté de recherche différents jeux de données. Chaque jeu de données est décrit par un dictionnaire de données complet qui donne des détails sur chaque variable disponibles. En outre, Mica permet aux études utilisant le logiciel OBiBa Opal comme solution de base de données principale, un moteur de requête distribuée qui permet aux chercheurs d'obtenir des rapports agrégés en temps réel sur le nombre exact de participants avec des caractéristiques spécifiques ou des phénotypes. Mica rend même possible d'exécuter à distance des analyses de régression sur les données d'études en utilisant la méthode DataShield (Wolfson M et al. <i> Int J Epidemiol </ i>. 2010) qui est mis en œuvre à la fois dans Mica et Opal. <br/><br/>"
+
+#: mica_datasets.views_default.inc:507
+msgid "No dataset found."
+msgstr "Aucun jeu de données n'a été trouvé."
+
+#: mica_datasets.views_default.inc:512
+msgid "Feed"
+msgstr "Flux"
+
+#: mica_datasets.views_default.inc:785
+msgid "No participant variables found."
+msgstr "Aucune variable de participant n'a été trouvée."
+
+#: mica_datasets.views_default.inc:794
+msgid "Fulltext search"
+msgstr "Recherche en text intégral"
+
 #: mica_datasets.module:31
 msgid "View any Dataset Query"
 msgstr "Visionner une requête d'un dataset"
 
 #: mica_datasets.module:32
 msgid "Permission for viewing own and published queries."
-msgstr ""
+msgstr "Droit pour voir ses propres requètes ou les requètes publiées."
 
 #: mica_datasets.module:35
 msgid "Create, edit and delete own Dataset Query"
@@ -403,11 +502,11 @@ msgstr "Création, édition et suppression de ses propres requêtes au dataset"
 
 #: mica_datasets.module:38
 msgid "Edit and delete any Dataset Query"
-msgstr ""
+msgstr "Edit et supprimer n'importe quelle requète sur des jeux de données"
 
 #: mica_datasets.module:39
 msgid "Permission for editing and deleting own and published queries."
-msgstr ""
+msgstr "Droit d'éditer et de supprimer sa propre requète ou les requètes publiées."
 
 #: mica_datasets.module:42
 msgid "Publish Dataset Query"
@@ -415,7 +514,7 @@ msgstr "Publier la requête du dataset"
 
 #: mica_datasets.module:43
 msgid "Edition permission on the query is required to be effectively allowed to publish it."
-msgstr ""
+msgstr "Le droit d'édition de la requète est requis afin de la publier."
 
 #: mica_datasets.module:259
 msgid "Add a Dataset"
@@ -483,7 +582,7 @@ msgstr "Classe de connection"
 
 #: mica_datasets.module:632
 msgid "The ID of the connection class to use for this server."
-msgstr ""
+msgstr "L'identifiant du type de conenxion à utiliser pour ce serveur."
 
 #: mica_datasets.module:636
 msgid "Enabled"
@@ -491,7 +590,7 @@ msgstr "Activé"
 
 #: mica_datasets.module:638
 msgid "A flag indicating whether the connector is enabled."
-msgstr ""
+msgstr "Une indication que la connexion est activée."
 
 #: mica_datasets.module:646
 msgid "The primary identifier for a query."
@@ -507,7 +606,7 @@ msgstr "La description affichée d'une requête."
 
 #: mica_datasets.module:666
 msgid "User ID"
-msgstr "Identifiant d'utilisateur"
+msgstr "Identifiant (ID) utilisateur"
 
 #: mica_datasets.module:668
 msgid "The primary identifier for the user."
@@ -515,7 +614,7 @@ msgstr "L'identifiant primaire de l'utilisateur."
 
 #: mica_datasets.module:673
 msgid "A flag indicating whether the query is published."
-msgstr ""
+msgstr "Une indication que la requète est publiée."
 
 #: mica_datasets.module:681
 msgid "The primary identifier for a query term."
@@ -535,11 +634,11 @@ msgstr "Identifiant d'une variable de participant"
 
 #: mica_datasets.module:691
 msgid "The variable identifier for a query term."
-msgstr ""
+msgstr "L'identifiant de variable pour un terme de requète."
 
 #: mica_datasets.module:696
 msgid "The weight of a term in its query."
-msgstr ""
+msgstr "Le poids d'un terme dans sa requète."
 
 #: mica_datasets.module:699
 msgid "Depth"
@@ -547,7 +646,7 @@ msgstr "Profondeur"
 
 #: mica_datasets.module:701
 msgid "The depth of a term in its query."
-msgstr ""
+msgstr "La profondeur d'un erm dans sa requète."
 
 #: mica_datasets.module:1104
 msgid "Statistics"
@@ -619,7 +718,7 @@ msgstr "Effacer les items sélectionnés"
 
 #: includes/connector_entity.inc:124
 msgid "Dataset connector with id !id specifies illegal service class !class."
-msgstr ""
+msgstr "Le connecteur de jeu de données ayant l'identifiant !id spécifie un service de type !class illégal."
 
 #: includes/connector_entity.inc:132
 msgid "Study %study: Authentication failed (401)."
@@ -627,15 +726,15 @@ msgstr "Étude %study: l'authentification a échouée (401)."
 
 #: includes/connector_entity.inc:134
 msgid "Study %study: Not authorized to search dataset (403)."
-msgstr ""
+msgstr "Étude %study: La recherche sur le jeu de données n'est pas autorisée (403)."
 
 #: includes/connector_entity.inc:136
 msgid "Study %study: Cannot find dataset (404). Make sure the study's configuration is valid."
-msgstr ""
+msgstr "Étude %study: Le jeu de données n'a pas été trouvé (404). Vérifier que la configuration de l'étude est correcte."
 
 #: includes/connector_entity.inc:138
 msgid "Study %study: Failed executing search. Message was: %msg"
-msgstr ""
+msgstr "Étude %study: Échec à l'éxécution de la recherche. Le message est: %msg"
 
 #: includes/query/terms.inc:226;355
 msgid "No studies available"
@@ -659,7 +758,7 @@ msgstr "Plage de valeur"
 
 #: includes/query/terms.inc:482
 msgid "At least one value (min or max) must be specified"
-msgstr ""
+msgstr "Au moins une valeur doit être spécifiée (minimum ou maximum)"
 
 #: includes/query/terms.inc:484
 msgid "Min must be lower than max"
@@ -675,5 +774,5 @@ msgstr "La valeur pour le maximum doit être numérique"
 
 #: includes/query/terms.inc:494
 msgid "Exact value is required and must be specified as a number"
-msgstr ""
+msgstr "Une valeur exacte est requise et doit être un nombre"
 
