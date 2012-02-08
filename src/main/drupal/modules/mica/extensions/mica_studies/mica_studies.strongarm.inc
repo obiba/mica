@@ -306,6 +306,16 @@ function mica_studies_strongarm() {
     'csv_study_import-documents-explode' => FALSE,
     'csv_contact_import-published-convert_to_boolean' => FALSE,
     'csv_study_import-published-convert_to_boolean' => FALSE,
+    'csv_study_import-authorization_from_contributors_to_the_specific_network_catalogues-convert_to_boolean' => TRUE,
+    'csv_study_import-authorization_from_contributors_to_the_maelstrom_catalogues-convert_to_boolean' => TRUE,
+    'csv_study_import-study_inclusion_criteria_for_participants_selection-explode' => FALSE,
+    'csv_study_import-ethnic_origin-explode' => FALSE,
+    'csv_study_import-health_status-explode' => FALSE,
+    'csv_study_import-study_recruitment_targets-explode' => FALSE,
+    'csv_study_import-baseline_design_of_the_study-explode' => FALSE,
+    'csv_study_import-sources_of_recruitment-explode' => FALSE,
+    'csv_study_import-data_sources-explode' => FALSE,
+    'csv_study_import-biological_samples-explode' => FALSE,
   );
   $export['default_feeds_tamper'] = $strongarm;
 

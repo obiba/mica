@@ -95,6 +95,7 @@ projects[features][patch][1279938] = http://drupal.org/files/features-locale-127
 
 projects[feeds][version] = 2.0-alpha4
 projects[feeds][type] = module
+projects[feeds][patch][1107522] = http://drupal.org/files/issues/1107522-empty-fields-2.patch
 
 projects[feeds_jsonpath_parser][version] = 1.0-beta2
 projects[feeds_jsonpath_parser][type] = module

@@ -658,6 +658,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_authorization_specific']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_authorization_specific']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_authorization_specific']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_authorization_specific']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_authorization_specific']['field_api_classes'] = 0;
   /* Field: Content: Name of the person authorising the contribution to [SPECIFIC NETWORK] */
   $handler->display->display_options['fields']['field_authorising_person_name']['id'] = 'field_authorising_person_name';
@@ -734,6 +735,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_authorization_maelstrom']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_authorization_maelstrom']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_authorization_maelstrom']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_authorization_maelstrom']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_authorization_maelstrom']['field_api_classes'] = 0;
   /* Field: Content: Name of the person authorising the contribution to Maelstrom Research */
   $handler->display->display_options['fields']['field_authorising_person_name_m']['id'] = 'field_authorising_person_name_m';
@@ -810,6 +812,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_design']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_design']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_design']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_design']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_design']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_design']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_design']['delta_reversed'] = 0;
@@ -861,6 +864,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_recruitment']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_recruitment']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_recruitment']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_recruitment']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_recruitment']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_recruitment']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_recruitment']['delta_reversed'] = 0;
@@ -962,6 +966,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_no_limits_participants']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_no_limits_participants']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_no_limits_participants']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_no_limits_participants']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_no_limits_participants']['field_api_classes'] = 0;
   /* Field: Content: If needed, supplementary information */
   $handler->display->display_options['fields']['field_target_nb_supp_info']['id'] = 'field_target_nb_supp_info';
@@ -1035,6 +1040,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_no_limits_samples']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_no_limits_samples']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_no_limits_samples']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_no_limits_samples']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_no_limits_samples']['field_api_classes'] = 0;
   /* Field: Content: If needed, supplementary information */
   $handler->display->display_options['fields']['field_samples_supp_info']['id'] = 'field_samples_supp_info';
@@ -1241,6 +1247,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_select_criteria']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_select_criteria']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_select_criteria']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_select_criteria']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_select_criteria']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_select_criteria']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_select_criteria']['delta_reversed'] = 0;
@@ -1269,6 +1276,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_selection_gender']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_selection_gender']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_selection_gender']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_selection_gender']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_selection_gender']['field_api_classes'] = 0;
   /* Field: Content: Age min */
   $handler->display->display_options['fields']['field_age_min']['id'] = 'field_age_min';
@@ -1346,7 +1354,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_country']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_country']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_country']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_country']['type'] = 'i18n_list_default';
+  $handler->display->display_options['fields']['field_country']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_country']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_country']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_country']['delta_reversed'] = 0;
@@ -1500,6 +1508,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_recruitment_procedures']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_recruitment_procedures']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_recruitment_procedures']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_recruitment_procedures']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_recruitment_procedures']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_recruitment_procedures']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_recruitment_procedures']['delta_reversed'] = 0;
@@ -1574,6 +1583,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_data_sources']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_data_sources']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_data_sources']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_data_sources']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_data_sources']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_data_sources']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_data_sources']['delta_reversed'] = 0;
@@ -1625,6 +1635,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_bio_samples_management']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_bio_samples_management']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_bio_samples_management']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_bio_samples_management']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_bio_samples_management']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_bio_samples_management']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_bio_samples_management']['delta_reversed'] = 0;
@@ -1699,6 +1710,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_access_data']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_access_data']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_access_data']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_access_data']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_access_data']['field_api_classes'] = 0;
   /* Field: Content: Biological samples */
   $handler->display->display_options['fields']['field_access_biosamples']['id'] = 'field_access_biosamples';
@@ -1722,6 +1734,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_access_biosamples']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_access_biosamples']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_access_biosamples']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_access_biosamples']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_access_biosamples']['field_api_classes'] = 0;
   /* Field: Content: Other */
   $handler->display->display_options['fields']['field_access_other']['id'] = 'field_access_other';
@@ -1745,6 +1758,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_access_other']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_access_other']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_access_other']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_access_other']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_access_other']['field_api_classes'] = 0;
   /* Field: Content: Please specify what study feature */
   $handler->display->display_options['fields']['field_access_other_sp']['id'] = 'field_access_other_sp';
