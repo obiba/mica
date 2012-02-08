@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2012-02-08 15:48-0500\n"
-"PO-Revision-Date: 2012-02-08 16:17-0500\n"
+"PO-Revision-Date: 2012-02-08 16:29-0500\n"
 "Last-Translator: obiba <info@obiba.org>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "Corps"
 
 #: mica_datasets.features.field.inc:1379
 msgid "Can this variable have multiple values?"
-msgstr "Est-ce que cette variable peut avoir plusieurs valeurs?"
+msgstr "Cette variable peut-elle avoir plusieurs valeurs ?"
 
 #: mica_datasets.features.field.inc:1380
 #: mica_datasets.views_default.inc:788
@@ -50,14 +50,14 @@ msgstr "DataSchema"
 #: mica_datasets.features.inc:37
 #: mica_datasets.views_default.inc:791
 msgid "Dataset"
-msgstr "Dataset"
+msgstr "Jeu de données"
 
 #: mica_datasets.features.field.inc:1383
 #: mica_datasets.features.menu_links.inc:34
 #: mica_datasets.pages.inc:275
 #: mica_datasets.views_default.inc:495
 msgid "Datasets"
-msgstr "Datasets"
+msgstr "Jeux de données"
 
 #: mica_datasets.features.field.inc:1384
 #: mica_datasets.pages.inc:328
@@ -71,7 +71,7 @@ msgstr "Description"
 #: mica_datasets.features.field.inc:1385
 #: mica_datasets.views_default.inc:134;787
 msgid "Label"
-msgstr "Étiquette"
+msgstr "Libellé"
 
 #: mica_datasets.features.field.inc:1386
 msgid "Opal"
@@ -99,7 +99,7 @@ msgstr "Type de valeur"
 
 #: mica_datasets.features.inc:39
 msgid "Dataset resource."
-msgstr "Resource du Dataset"
+msgstr "Resource du jeu de données"
 
 #: mica_datasets.features.inc:41;49
 #: mica_datasets.pages.query.inc:55;132
@@ -118,11 +118,11 @@ msgstr "Description des données de participant"
 
 #: mica_datasets.pages.inc:18
 msgid "!title -- Datasets"
-msgstr "!title -- Datasets"
+msgstr "!title -- Jeu de données"
 
 #: mica_datasets.pages.inc:20
 msgid "dataset content type is broken, missing field: !name"
-msgstr "Le type de contenu du dataset est brisée, le champ :!name est manquant"
+msgstr "Le type de contenu du jeu de données est brisé, le champ :!name est manquant"
 
 #: mica_datasets.pages.inc:32
 msgid "!title -- Studies"
@@ -138,7 +138,7 @@ msgstr "!title -- Variables de participant"
 
 #: mica_datasets.pages.inc:107
 msgid "This dataset is not linked to a study or no external connection has been set."
-msgstr "Ce dataset n'est pas relié à une étude ou aucune connection externe n'a été définie."
+msgstr "Ce jeu de données n'est relié à aucune étude ou aucune connexion externe n'a été définie."
 
 #: mica_datasets.pages.inc:125
 msgid "Status"
@@ -158,7 +158,7 @@ msgstr "Importation (@progress %)"
 
 #: mica_datasets.pages.inc:207
 msgid "Select the studies that are part of the dataset."
-msgstr "Sélectionnez les études qui font parties de ce dataset."
+msgstr "Sélectionnez les études qui font parties de ce jeu de données."
 
 #: mica_datasets.pages.inc:216
 #: includes/connection_form.inc:164
@@ -167,16 +167,16 @@ msgstr "Ajouter une étude"
 
 #: mica_datasets.pages.inc:271
 msgid "Select the datasets in which the study is involved."
-msgstr "Sélectionnez les datasets pour lesquels l'étude est impliquée."
+msgstr "Sélectionnez les jeux de données pour lesquels l'étude est impliquée."
 
 #: mica_datasets.pages.inc:280
 #: includes/connection_form.inc:158
 msgid "Add Dataset"
-msgstr "Ajouter un Dataset"
+msgstr "Ajouter un jeu de données"
 
 #: mica_datasets.pages.inc:331
 msgid "A description of the study's data contributing to the dataset."
-msgstr "Une description des données de l'étude contribuants au dataset."
+msgstr "Une description des données de l'étude contribuants au jeu de données."
 
 #: mica_datasets.pages.inc:337
 #: includes/connection_form.inc:122
@@ -185,7 +185,7 @@ msgstr "Type de connection"
 
 #: mica_datasets.pages.inc:340
 msgid "Select which type of connection is to be used to retrieve variables and data from the study to contribute to the dataset."
-msgstr "Sélectionenr quel type de connexion est à utiliser pour extraire les variables et les données depuis l'étude qui contribue au jeu de données."
+msgstr "Sélectionner quel type de connexion est à utiliser pour extraire les variables et les données depuis l'étude qui contribue au jeu de données."
 
 #: mica_datasets.pages.inc:353
 msgid "Configuration"
@@ -277,7 +277,7 @@ msgstr "Poids"
 
 #: mica_datasets.pages.query.inc:302
 msgid "No query term found"
-msgstr "Aucun terme de requête trouvé."
+msgstr "Aucun terme de requête n'a été trouvé."
 
 #: mica_datasets.pages.query.inc:318
 msgid "At least one variable selection is required."
@@ -490,35 +490,35 @@ msgstr "Recherche en text intégral"
 
 #: mica_datasets.module:31
 msgid "View any Dataset Query"
-msgstr "Visionner une requête d'un dataset"
+msgstr "Visionner une requête d'un jeu de données"
 
 #: mica_datasets.module:32
 msgid "Permission for viewing own and published queries."
-msgstr "Droit pour voir ses propres requètes ou les requètes publiées."
+msgstr "Droit pour voir ses propres requêtes ou les requêtes publiées."
 
 #: mica_datasets.module:35
 msgid "Create, edit and delete own Dataset Query"
-msgstr "Création, édition et suppression de ses propres requêtes au dataset"
+msgstr "Création, édition et suppression de ses propres requêtes au jeu de données"
 
 #: mica_datasets.module:38
 msgid "Edit and delete any Dataset Query"
-msgstr "Edit et supprimer n'importe quelle requète sur des jeux de données"
+msgstr "Edit et supprimer n'importe quelle requête sur des jeux de données"
 
 #: mica_datasets.module:39
 msgid "Permission for editing and deleting own and published queries."
-msgstr "Droit d'éditer et de supprimer sa propre requète ou les requètes publiées."
+msgstr "Droit d'éditer et de supprimer sa propre requête ou les requêtes publiées."
 
 #: mica_datasets.module:42
 msgid "Publish Dataset Query"
-msgstr "Publier la requête du dataset"
+msgstr "Publier la requête du jeu de données"
 
 #: mica_datasets.module:43
 msgid "Edition permission on the query is required to be effectively allowed to publish it."
-msgstr "Le droit d'édition de la requète est requis afin de la publier."
+msgstr "Le droit d'édition de la requête est requis afin de la publier."
 
 #: mica_datasets.module:259
 msgid "Add a Dataset"
-msgstr "Ajouter un dataset"
+msgstr "Ajouter un jeu de données"
 
 #: mica_datasets.module:279
 msgid "Data Dictionary"
@@ -530,19 +530,19 @@ msgstr "<a class=\"highlight\" href=\"@url\">!name</a>"
 
 #: mica_datasets.module:529
 msgid "Dataset name '!title' is already given."
-msgstr "Le nom du dataset '!title' est déjà assigné."
+msgstr "Le nom du jeu de données '!title' est déjà assigné."
 
 #: mica_datasets.module:550
 msgid "Dataset connector"
-msgstr "Connecteur Dataset"
+msgstr "Connecteur de jeu de données"
 
 #: mica_datasets.module:565
 msgid "Dataset query"
-msgstr "Requête au dataset"
+msgstr "Requête au jeu de données"
 
 #: mica_datasets.module:580
 msgid "Dataset query term"
-msgstr "Terme de requête au dataset"
+msgstr "Terme de requête au jeu de données"
 
 #: mica_datasets.module:603;644;679
 msgid "ID"
@@ -562,11 +562,11 @@ msgstr "La description affichée du connecteur."
 
 #: mica_datasets.module:620;661
 msgid "Dataset ID"
-msgstr "Identifiant du dataset"
+msgstr "Identifiant du jeu de données"
 
 #: mica_datasets.module:622;663
 msgid "The primary identifier for the Dataset node."
-msgstr "L'identifiant primaire d'un dataset."
+msgstr "L'identifiant primaire d'un jeu de données."
 
 #: mica_datasets.module:625
 msgid "Study ID"
@@ -578,11 +578,11 @@ msgstr "L'identifiant primaire d'une étude."
 
 #: mica_datasets.module:630
 msgid "Connection class"
-msgstr "Classe de connection"
+msgstr "Type de connection"
 
 #: mica_datasets.module:632
 msgid "The ID of the connection class to use for this server."
-msgstr "L'identifiant du type de conenxion à utiliser pour ce serveur."
+msgstr "L'identifiant du type de connexion à utiliser pour ce serveur."
 
 #: mica_datasets.module:636
 msgid "Enabled"
@@ -614,7 +614,7 @@ msgstr "L'identifiant primaire de l'utilisateur."
 
 #: mica_datasets.module:673
 msgid "A flag indicating whether the query is published."
-msgstr "Une indication que la requète est publiée."
+msgstr "Une indication que la requête est publiée."
 
 #: mica_datasets.module:681
 msgid "The primary identifier for a query term."
@@ -634,11 +634,11 @@ msgstr "Identifiant d'une variable de participant"
 
 #: mica_datasets.module:691
 msgid "The variable identifier for a query term."
-msgstr "L'identifiant de variable pour un terme de requète."
+msgstr "L'identifiant de variable pour un terme de requête."
 
 #: mica_datasets.module:696
 msgid "The weight of a term in its query."
-msgstr "Le poids d'un terme dans sa requète."
+msgstr "Le poids d'un terme dans sa requête."
 
 #: mica_datasets.module:699
 msgid "Depth"
@@ -646,7 +646,7 @@ msgstr "Profondeur"
 
 #: mica_datasets.module:701
 msgid "The depth of a term in its query."
-msgstr "La profondeur d'un erm dans sa requète."
+msgstr "La profondeur d'un term dans sa requête."
 
 #: mica_datasets.module:1104
 msgid "Statistics"
@@ -654,7 +654,7 @@ msgstr "Statistiques"
 
 #: mica_datasets.module:56
 msgid "Edit Datasets"
-msgstr "Éditer les datasets"
+msgstr "Éditer les jeux de données"
 
 #: mica_datasets.module:67
 msgid "Edit Studies"
@@ -678,11 +678,11 @@ msgstr "Visionner"
 
 #: mica_datasets.module:193;203
 msgid "Dataset Connection"
-msgstr "Connection au dataset"
+msgstr "Connection au jeu de données"
 
 #: mica_datasets.module:213
 msgid "Dataset Connection Edit"
-msgstr "Éditer la connection au dataset"
+msgstr "Éditer la connection au jeu de données"
 
 #: mica_datasets.module:226
 msgid "Mica"
