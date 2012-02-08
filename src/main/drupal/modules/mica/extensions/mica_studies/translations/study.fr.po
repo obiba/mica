@@ -388,7 +388,7 @@ msgstr "Adresse du Site Web Officiel de l’étude, si disponible?"
 #: field:mica_dataset:study:label
 msgctxt "mica_dataset:study:label"
 msgid "Datasets"
-msgstr "Datasets"
+msgstr "Jeu de données"
 
 #: field:mica_opal:study:label
 msgctxt "mica_opal:study:label"
