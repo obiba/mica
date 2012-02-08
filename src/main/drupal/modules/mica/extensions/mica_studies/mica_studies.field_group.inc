@@ -1292,7 +1292,7 @@ function mica_studies_field_group_info() {
     'label' => 'Institution',
     'weight' => '6',
     'children' => array(
-		  0 => 'field_institution_name',
+      0 => 'field_institution_name',
       1 => 'field_address',
       2 => 'field_city',
       3 => 'field_postal_code',
@@ -1443,8 +1443,8 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'field_age_max',
       1 => 'field_age_min',
-		  2 => 'field_country',
-		  3 => 'field_territory',
+      2 => 'field_country',
+      3 => 'field_territory',
       4 => 'field_ethnic_origin',
       5 => 'field_health_status',
       6 => 'field_partcipant_sel_supp_info',
