@@ -500,6 +500,10 @@ margin-bottom: 0px;
   margin-bottom: 15px;
   padding-bottom: 15px;
 }
+.node-unpublished {
+  padding-left: 5px;
+  padding-right: 5px;
+}
 .term-listing-heading + .node {
   margin-top: 0;
 }
