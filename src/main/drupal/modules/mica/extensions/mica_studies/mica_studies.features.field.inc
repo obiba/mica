@@ -4053,9 +4053,10 @@ You will be able to edit these Contacts once the Study will be saved.',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description_label' => 'Baseline design of the study',
+          'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
           'create' => 0,

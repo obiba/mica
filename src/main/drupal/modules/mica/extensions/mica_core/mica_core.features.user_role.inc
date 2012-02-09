@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * mica_studies.features.user_role.inc
+ * mica_core.features.user_role.inc
  */
 
 /**

@@ -1,6 +1,8 @@
 <?php
 // $Id$
 
+include_once(drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.inc');
+
 /**
  * @file
  * Mica relations utilities.
@@ -28,7 +30,7 @@ function _mica_node_type_form_alter(&$form, $form_state) {
     : (empty($relation) ? '' : $relation->parent_bundle);
 
 
-    $indexes = _mica_find_indexes_by_bundle();
+    $indexes = mica_core_find_indexes_by_bundle();
 
     $form['mica_relation'] = array(
       '#type' => 'fieldset',
@@ -184,7 +186,7 @@ function _mica_edit_node_type_relation($form, &$form_state) {
           '%child' => $relation->child_bundle, 
         ), WATCHDOG_INFO);
 
-      $indexes = _mica_find_indexes_by_bundle();
+      $indexes = mica_core_find_indexes_by_bundle();
       $relation->options['parent_indexes'] = empty($indexes[$relation->parent_bundle])
         ? array()
         : array_keys($indexes[$relation->parent_bundle]);

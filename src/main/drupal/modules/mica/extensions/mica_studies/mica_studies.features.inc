@@ -129,7 +129,13 @@ function mica_studies_default_search_api_index() {
         "status" : { "type" : "integer" },
         "search_api_language" : { "type" : "string" },
         "body:value" : { "type" : "text" },
-        "body:summary" : { "type" : "text" }
+        "body:summary" : { "type" : "text" },
+        "field_design" : {
+          "name" : "What is the baseline design of the study",
+          "indexed" : true,
+          "type" : "list\\u003Cstring\\u003E",
+          "boost" : "1.0"
+        }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {

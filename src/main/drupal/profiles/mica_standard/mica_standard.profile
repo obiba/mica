@@ -19,13 +19,13 @@ function mica_standard_install_tasks($install_state) {
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
       'function' => '_rebuild_user_permission_batch',
     ),  
-//   	'mica_standard_content' => array(
-//       'display_name' => st('Import Mica default content'),
-//       'display' => TRUE,
-//       'type' => 'batch',
-//       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED, // default to insert content
-//       'function' => '_import_default_data',
-//     ),
+  	'mica_standard_content' => array(
+      'display_name' => st('Import Mica default content'),
+      'display' => TRUE,
+      'type' => 'batch',
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED, // default to insert content
+      'function' => '_import_default_data',
+    ),
   );
   return $tasks;
 }

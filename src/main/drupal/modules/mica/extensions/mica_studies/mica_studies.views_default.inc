@@ -13,7 +13,7 @@ function mica_studies_views_default_views() {
   $view = new view;
   $view->name = 'contact_csv_export';
   $view->description = 'Export of all Contacts in CSV';
-  $view->tag = 'default';
+  $view->tag = 'csv';
   $view->base_table = 'node';
   $view->human_name = 'Contact CSV Export';
   $view->core = 7;
@@ -459,7 +459,7 @@ function mica_studies_views_default_views() {
   $view = new view;
   $view->name = 'csv_study_export';
   $view->description = 'Export of all studies in CSV';
-  $view->tag = 'default';
+  $view->tag = 'csv,study';
   $view->base_table = 'node';
   $view->human_name = 'Study CSV Export';
   $view->core = 7;
@@ -2519,7 +2519,7 @@ function mica_studies_views_default_views() {
   $view = new view;
   $view->name = 'studies';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'study';
   $view->base_table = 'node';
   $view->human_name = 'Studies';
   $view->core = 7;
@@ -2718,7 +2718,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $view = new view;
   $view->name = 'studies_search';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'study,search';
   $view->base_table = 'search_api_index_studies_index';
   $view->human_name = 'Studies Search';
   $view->core = 7;

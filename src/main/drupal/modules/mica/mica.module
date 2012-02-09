@@ -1,5 +1,7 @@
 <?php
 
+include_once(drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.inc');
+
 /**
  * Implements hook_help()
  */
@@ -58,7 +60,7 @@ function mica_entity_info() {
 function mica_mica_relation_load($entities) {
   if (empty($entities)) return;
   module_load_include('inc', 'mica', 'includes/search');
-  $indexes = _mica_find_indexes_by_bundle();
+  $indexes = mica_core_find_indexes_by_bundle();
   if (!empty($indexes)) {
     foreach ($entities as $entity) {
       if (!empty($indexes[$entity->parent_bundle])) {

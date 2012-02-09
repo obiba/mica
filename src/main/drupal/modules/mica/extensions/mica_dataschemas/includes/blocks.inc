@@ -61,7 +61,6 @@ function mica_dataschemas_configure_facet_blocks() {
     		'module' => 'facetapi',
     		'delta' => $facet_delta,
     		'theme' => $theme_default,
-        'status' => 1,
         'visibility' => 1,
         'pages' => 'dataschema-variables',
         'cache' => -1,

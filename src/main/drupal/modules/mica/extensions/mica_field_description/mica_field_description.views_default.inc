@@ -13,7 +13,7 @@ function mica_field_description_views_default_views() {
   $view = new view;
   $view->name = 'csv_field_description_export';
   $view->description = 'Export of all field descriptions in CSV';
-  $view->tag = 'default';
+  $view->tag = 'field_description,csv';
   $view->base_table = 'node';
   $view->human_name = 'Field Description CSV Export';
   $view->core = 7;
@@ -297,7 +297,7 @@ function mica_field_description_views_default_views() {
   $view = new view;
   $view->name = 'fields_description_search';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'field_description,search';
   $view->base_table = 'search_api_index_fields_description_index';
   $view->human_name = 'Fields Description Search';
   $view->core = 7;
