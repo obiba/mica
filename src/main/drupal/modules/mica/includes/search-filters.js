@@ -2,19 +2,19 @@ jQuery(document).ready(function(){
   
   jQuery('#edit-block').hide();
   
-  jQuery(document).bind('click', function(e){
+  jQuery(document).bind('click', function(e) {
     jQuery('#edit-block').hide();
-    });
+  });
   
-  jQuery('#mica-search-filters-form').bind('click', function(e){
+  jQuery('#mica-search-filters-form').bind('click', function(e) {
     e.stopPropagation();
   });
   
-  jQuery('#edit-search-filter').bind('focus', function(){
+  jQuery('#edit-search-filter').bind('focus', function() {
     jQuery('#edit-block').show();
   });
   
-  jQuery('#edit-search-filter').bind('keyup', function(){
+  jQuery('#edit-search-filter').bind('keyup', function() {
     
     var criteria = jQuery('#edit-search-filter').val().toLowerCase();
     var items = jQuery('#edit-block').find('label');

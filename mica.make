@@ -76,6 +76,7 @@ projects[email][patch][718414] = http://drupal.org/files/email_feeds_target-7184
 
 projects[entity][version] = 1.0-rc1
 projects[entity][type] = module
+projects[entity][patch][1344056] = http://drupal.org/files/1344056--node-status-1.patch
 
 projects[entity_translation][type] = module
 projects[entity_translation][download][type] = git

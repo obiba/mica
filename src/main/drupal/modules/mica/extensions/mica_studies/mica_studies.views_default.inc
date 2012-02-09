@@ -2840,6 +2840,13 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     'study' => 'study',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Indexed Node: Status */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'search_api_index_studies_index';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
