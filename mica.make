@@ -193,8 +193,10 @@ projects[pathauto][type] = module
 projects[potx][version] = 1.0
 projects[potx][type] = module
 
-projects[references][version] = 2.0
 projects[references][type] = module
+projects[references][download][type] = git
+projects[references][download][url] = http://git.drupal.org/project/references.git
+projects[references][download][revision] = 311bd497bfb0f9de046d585006a7ef3d9c6c74c8
 
 projects[search_api][version] = 1.0
 projects[search_api][type] = module
