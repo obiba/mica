@@ -66,6 +66,9 @@ projects[ctools][download][revision] = dd65335ef5b823702ea5f1688a3000b09a04a739
 projects[date][version] = 2.0-rc2
 projects[date][type] = module
 
+projects[defaultcontent][version] = 1.0-alpha5
+projects[defaultcontent][type] = module
+
 projects[] = devel
 
 projects[email][type] = module
@@ -131,7 +134,7 @@ projects[imce][type] = module
 projects[i18n][download][type] = git
 projects[i18n][download][url] = http://git.drupal.org/project/i18n.git
 projects[i18n][download][revision] = ba701a2cecd87eeb98ce1e22c2ee1ab7aba1928e
-projects[i18n][patch][1407054] = http://drupal.org/files/export_per_contenttype-1407054-1.patch
+projects[i18n][patch][1407054] = http://drupal.org/files/export_per_contenttype-1407054-4.patch
 
 projects[job_scheduler][version] = 2.0-alpha2
 projects[job_scheduler][type] = module
