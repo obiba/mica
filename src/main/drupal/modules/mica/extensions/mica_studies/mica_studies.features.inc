@@ -135,6 +135,304 @@ function mica_studies_default_search_api_index() {
           "indexed" : true,
           "type" : "list\\u003Cstring\\u003E",
           "boost" : "1.0"
+        },
+        "field_website" : { "name" : "Website", "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_territory" : {
+          "name" : "Territory",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_target_nb_supp_info" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_samples_supp_info" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_recruitment_supp_info" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_recruitment" : {
+          "name" : "The study targets the recruitment of",
+          "indexed" : true,
+          "type" : "list\\u003Cstring\\u003E",
+          "boost" : "1.0"
+        },
+        "field_select_criteria" : {
+          "name" : "What are the inclusion criteria for participants\\u2019 selection",
+          "indexed" : true,
+          "type" : "list\\u003Cstring\\u003E",
+          "boost" : "1.0"
+        },
+        "field_ended_end_year" : {
+          "name" : "End year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_recruitment_procedures" : {
+          "name" : "Specify the sources of recruitment",
+          "indexed" : true,
+          "type" : "list\\u003Cstring\\u003E",
+          "boost" : "1.0"
+        },
+        "field_partcipant_sel_supp_info" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_recruitement_supp_info" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_pubmedid" : {
+          "name" : "Pubmed Id",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_preparation_start_year" : {
+          "name" : "Start year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_preparation_end_year" : {
+          "name" : "End year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_tissues_sp" : {
+          "name" : "Please specify type of tissues",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_recruitment_other" : {
+          "name" : "Please specify what other source of recruitment",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_selection_others_sp" : {
+          "name" : "Please specify what other selection criteria",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_samples_man_other_sp" : {
+          "name" : "Please specify what other biological samples",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_recruitment_other_sp" : {
+          "name" : "Please specify what other recruitment target",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_data_sources_sp" : {
+          "name" : "Please specify what other data sources",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_design_other_sp" : {
+          "name" : "Please specify what other design",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_access_other" : {
+          "name" : "Other",
+          "indexed" : true,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "body" : {
+          "name" : "Objectives",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_no_limits_samples" : {
+          "name" : "No limits in the number of samples",
+          "indexed" : true,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "field_no_limits_participants" : {
+          "name" : "No limits in the number of participants",
+          "indexed" : true,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "title_field" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_marker_paper" : {
+          "name" : "Marker paper describing your study",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_health_status" : {
+          "name" : "Health status",
+          "indexed" : true,
+          "type" : "list\\u003Ctext\\u003E",
+          "boost" : "1.0"
+        },
+        "field_target_number_biosamples" : {
+          "name" : "How many people have provided or should provide biological samples, from which DNA could be extracted?",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_target_number_participants" : {
+          "name" : "How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_selection_gender" : {
+          "name" : "Gender",
+          "indexed" : true,
+          "type" : "string",
+          "boost" : "1.0"
+        },
+        "field_followup_start_year" : {
+          "name" : "Start year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_followup_end_year" : {
+          "name" : "End year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_ethnic_origin" : {
+          "name" : "Ethnic origin",
+          "indexed" : true,
+          "type" : "list\\u003Ctext\\u003E",
+          "boost" : "1.0"
+        },
+        "field_current_part_nb_date" : {
+          "name" : "In date of",
+          "indexed" : true,
+          "type" : "date",
+          "boost" : "1.0"
+        },
+        "field_current_samples_date" : {
+          "name" : "In date of",
+          "indexed" : true,
+          "type" : "date",
+          "boost" : "1.0"
+        },
+        "field_data_sources" : {
+          "name" : "Data Sources",
+          "indexed" : true,
+          "type" : "list\\u003Cstring\\u003E",
+          "boost" : "1.0"
+        },
+        "field_access_data" : {
+          "name" : "Data (questionnaire-derived, measured\\u2026)",
+          "indexed" : true,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "field_status_supp_info" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_current_supp_info" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_current_participants_nb" : {
+          "name" : "How many people have joined the study?",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_current_sam_supp_info" : {
+          "name" : "If needed, supplementary information",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
+        },
+        "field_current_samples_nb" : {
+          "name" : "For how many people have biological samples been collected?",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_country" : {
+          "name" : "Country",
+          "indexed" : true,
+          "type" : "list\\u003Cstring\\u003E",
+          "boost" : "1.0"
+        },
+        "field_comments" : { "name" : null, "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_access_biosamples" : {
+          "name" : "Biological samples",
+          "indexed" : true,
+          "type" : "boolean",
+          "boost" : "1.0"
+        },
+        "field_bio_samples_management" : {
+          "name" : "Biological samples",
+          "indexed" : true,
+          "type" : "list\\u003Cstring\\u003E",
+          "boost" : "1.0"
+        },
+        "field_baseline_start_year" : {
+          "name" : "Start year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_baseline_end_year" : {
+          "name" : "End year",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_age_min" : {
+          "name" : "Age min",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_age_max" : {
+          "name" : "Age max",
+          "indexed" : true,
+          "type" : "integer",
+          "boost" : "1.0"
+        },
+        "field_acroym" : { "name" : "Acronym", "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_access_other_sp" : {
+          "name" : "Please specify what study feature",
+          "indexed" : true,
+          "type" : "text",
+          "boost" : "1.0"
         }
       },
       "data_alter_callbacks" : {

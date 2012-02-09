@@ -207,8 +207,6 @@ function _add_field_index($index_name, stdClass $field_description) {
 		$field_index_type = 'list<' . $field_index_type . '>';
 	}
 	
-// 	dpm($field_index_type, '$field_index_type');
-
 	$field_instance = field_info_instance('node', $field_name, $bundle);
 	$field_label = $field_instance['label'];
 
@@ -242,9 +240,6 @@ function _add_field_index($index_name, stdClass $field_description) {
     'type' => $field_index_type,
     'boost' => '1.0',
 	);
-	
-//  	debug($fields[$field_name], $field_name);
-// 	dvm($fields, '$fields');
 
 	search_api_index_edit_fields($index->id, $fields);
 
@@ -256,26 +251,20 @@ function _add_field_index($index_name, stdClass $field_description) {
 	$facet_supported = $discrete && _is_type_supports_facet($field_index_type);
 	$range_supported = !$facet_supported && _is_type_supports_ranges($field_index_type);
 	
-// 	debug($facet_supported, 'facet for ' . $field_name);
-// 	debug($range_supported, 'range for ' . $field_name);
+	cache_clear_all();
+// 	cache_clear_all(NULL, 'cache_block');
+// 	cache_clear_all('facetapi:delta_map', 'cache');	
+// 	cache_clear_all('facetapi:facet_info:', 'cache', TRUE);
 	
-	cache_clear_all('facetapi:facet_info:', 'cache', TRUE);
 	$searcher = 'search_api@' . $index->machine_name;
 	$facet = facetapi_facet_load($field_name, $searcher);
-	
 	if ($facet) {
-	  
-// 	  debug($facet['name'], '$facet');
 	  
 		$adapter = facetapi_adapter_load($searcher);
 		$realms = facetapi_get_realm_info();
-		
 		foreach ($realms as $realm_name => $realm) {
-		  
 			$delta = facetapi_hash_delta(facetapi_build_delta($searcher, $realm_name, $facet['name']));
-			
 		  if ($facet_supported || $range_supported) {
-		    
 		    if ($range_supported) {
   		    $settings = $adapter->getFacet($facet)->getSettings($realm);
 		      $settings->settings['widget'] = 'search_api_ranges_ui_slider';
@@ -286,17 +275,11 @@ function _add_field_index($index_name, stdClass $field_description) {
 		      $facet_block_title = $field_description_wrapper->field_original_field_label->value();
 		    	_enable_search_block($delta, $facet_block_title);
 		    }		    
-		    
-      } else {
-				
-        if (facetapi_save_facet_disabled($adapter, $realm, $facet)) {
-					_disable_search_block($delta);
-				}
-				
+      } else if (facetapi_save_facet_disabled($adapter, $realm, $facet)) {
+				_disable_search_block($delta);
 			}
-		  
 		}
-		cache_clear_all();
+		
 	}
 }
 
@@ -346,7 +329,7 @@ function _enable_search_block($facet_delta, $block_title) {
       	'region' => 'sidebar_first',
       	'weight' => empty($max_weight) ? 0 : ($max_weight + 1),
 				'pages' => 'studies-search',
-				'visibility' => 1,
+				'visibility' => BLOCK_VISIBILITY_LISTED,
 				'title' => $block_title,
 	  	)
 		)
@@ -365,7 +348,7 @@ function _enable_search_block($facet_delta, $block_title) {
     		'module' => 'facetapi',
     		'theme' => $theme_default,
 				'pages' => 'studies-search',
-				'visibility' => 1,
+				'visibility' => BLOCK_VISIBILITY_LISTED,
 				'title' => $block_title,
 	  	)
 		)
@@ -378,8 +361,8 @@ function _disable_search_block($facet_delta) {
 	$theme_default = variable_get('theme_default', 'mica_samara');
 	db_update('block')->fields(
 	  array(
-    	'status' => 0,
-     	'region' => '-1',
+    	'status' => FALSE,
+     	'region' => BLOCK_REGION_NONE,
 	  )
 	)
 	->condition('module', 'facetapi')

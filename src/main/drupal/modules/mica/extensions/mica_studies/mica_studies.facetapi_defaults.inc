@@ -13,6 +13,74 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet = new stdClass;
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_access_biosamples';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_access_biosamples';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'facetapi_links',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_access_biosamples'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_access_data';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_access_data';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'facetapi_links',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_access_data'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_access_other';
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
@@ -149,6 +217,176 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet = new stdClass;
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_baseline_end_year';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_baseline_end_year';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'search_api_ranges_ui_slider',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_baseline_end_year'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_baseline_start_year';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_baseline_start_year';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'search_api_ranges_ui_slider',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_baseline_start_year'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_bio_samples_management';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_bio_samples_management';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'facetapi_links',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_bio_samples_management'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_country';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_country';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'facetapi_links',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_country'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_current_part_nb_date';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_current_part_nb_date';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'search_api_ranges_ui_slider',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_current_part_nb_date'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_current_participants_nb';
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
@@ -179,6 +417,40 @@ function mica_studies_facetapi_default_facet_settings() {
     'show_expanded' => 0,
   );
   $export['search_api@studies_index:block:field_current_participants_nb'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_current_samples_date';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_current_samples_date';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'search_api_ranges_ui_slider',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_current_samples_date'] = $facet;
 
   $facet = new stdClass;
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
@@ -217,6 +489,40 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet = new stdClass;
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_data_sources';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_data_sources';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'facetapi_links',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_data_sources'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_design';
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
@@ -247,6 +553,40 @@ function mica_studies_facetapi_default_facet_settings() {
     'show_expanded' => 0,
   );
   $export['search_api@studies_index:block:field_design'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_ended_end_year';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_ended_end_year';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'search_api_ranges_ui_slider',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_ended_end_year'] = $facet;
 
   $facet = new stdClass;
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
@@ -285,6 +625,74 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet = new stdClass;
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_followup_end_year';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_followup_end_year';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'search_api_ranges_ui_slider',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_followup_end_year'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_followup_start_year';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_followup_start_year';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'search_api_ranges_ui_slider',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_followup_start_year'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_health_status';
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
@@ -315,6 +723,244 @@ function mica_studies_facetapi_default_facet_settings() {
     'show_expanded' => 0,
   );
   $export['search_api@studies_index:block:field_health_status'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_no_limits_participants';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_no_limits_participants';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'facetapi_links',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_no_limits_participants'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_no_limits_samples';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_no_limits_samples';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'facetapi_links',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_no_limits_samples'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_preparation_end_year';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_preparation_end_year';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'search_api_ranges_ui_slider',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_preparation_end_year'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_preparation_start_year';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_preparation_start_year';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'search_api_ranges_ui_slider',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_preparation_start_year'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_recruitment';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_recruitment';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'facetapi_links',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_recruitment'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_select_criteria';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_select_criteria';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'facetapi_links',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_select_criteria'] = $facet;
+
+  $facet = new stdClass;
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@studies_index:block:field_selection_gender';
+  $facet->searcher = 'search_api@studies_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_selection_gender';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'facetapi_links',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+    ),
+    'sort_weight' => array(
+      'active' => -50,
+      'count' => -49,
+      'display' => -48,
+    ),
+    'sort_order' => array(
+      'active' => 3,
+      'count' => 3,
+      'display' => 4,
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => 20,
+    'nofollow' => 1,
+    'show_expanded' => 0,
+  );
+  $export['search_api@studies_index:block:field_selection_gender'] = $facet;
 
   $facet = new stdClass;
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
@@ -384,303 +1030,5 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_target_number_participants'] = $facet;
 
-  $facet = new stdClass;
-  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
-  $facet->api_version = 1;
-  $facet->name = 'search_api@studies_index:block:mica_study_information:field_access';
-  $facet->searcher = 'search_api@studies_index';
-  $facet->realm = 'block';
-  $facet->facet = 'mica_study_information:field_access';
-  $facet->enabled = TRUE;
-  $facet->settings = array(
-    'weight' => 0,
-    'widget' => 'facetapi_links',
-    'filters' => array(),
-    'active_sorts' => array(
-      'active' => 'active',
-      'count' => 'count',
-      'display' => 'display',
-    ),
-    'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
-    ),
-    'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
-    ),
-    'empty_behavior' => 'none',
-    'soft_limit' => 20,
-    'show_expanded' => 0,
-  );
-  $export['search_api@studies_index:block:mica_study_information:field_access'] = $facet;
-
-  $facet = new stdClass;
-  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
-  $facet->api_version = 1;
-  $facet->name = 'search_api@studies_index:block:mica_study_information:field_biosamples_collected';
-  $facet->searcher = 'search_api@studies_index';
-  $facet->realm = 'block';
-  $facet->facet = 'mica_study_information:field_biosamples_collected';
-  $facet->enabled = TRUE;
-  $facet->settings = array(
-    'weight' => 0,
-    'widget' => 'facetapi_links',
-    'filters' => array(),
-    'active_sorts' => array(
-      'active' => 'active',
-      'count' => 'count',
-      'display' => 'display',
-    ),
-    'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
-    ),
-    'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
-    ),
-    'empty_behavior' => 'none',
-    'soft_limit' => 20,
-    'show_expanded' => 0,
-  );
-  $export['search_api@studies_index:block:mica_study_information:field_biosamples_collected'] = $facet;
-
-  $facet = new stdClass;
-  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
-  $facet->api_version = 1;
-  $facet->name = 'search_api@studies_index:block:mica_study_information:field_design';
-  $facet->searcher = 'search_api@studies_index';
-  $facet->realm = 'block';
-  $facet->facet = 'mica_study_information:field_design';
-  $facet->enabled = TRUE;
-  $facet->settings = array(
-    'weight' => 0,
-    'widget' => 'facetapi_links',
-    'filters' => array(),
-    'active_sorts' => array(
-      'active' => 'active',
-      'count' => 'count',
-      'display' => 'display',
-    ),
-    'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
-    ),
-    'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
-    ),
-    'empty_behavior' => 'none',
-    'soft_limit' => 20,
-    'show_expanded' => 0,
-  );
-  $export['search_api@studies_index:block:mica_study_information:field_design'] = $facet;
-
-  $facet = new stdClass;
-  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
-  $facet->api_version = 1;
-  $facet->name = 'search_api@studies_index:block:mica_study_information:field_design_target';
-  $facet->searcher = 'search_api@studies_index';
-  $facet->realm = 'block';
-  $facet->facet = 'mica_study_information:field_design_target';
-  $facet->enabled = TRUE;
-  $facet->settings = array(
-    'weight' => 0,
-    'widget' => 'facetapi_links',
-    'filters' => array(),
-    'active_sorts' => array(
-      'active' => 'active',
-      'count' => 'count',
-      'display' => 'display',
-    ),
-    'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
-    ),
-    'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
-    ),
-    'empty_behavior' => 'none',
-    'soft_limit' => 20,
-    'show_expanded' => 0,
-  );
-  $export['search_api@studies_index:block:mica_study_information:field_design_target'] = $facet;
-
-  $facet = new stdClass;
-  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
-  $facet->api_version = 1;
-  $facet->name = 'search_api@studies_index:block:mica_study_information:field_gender';
-  $facet->searcher = 'search_api@studies_index';
-  $facet->realm = 'block';
-  $facet->facet = 'mica_study_information:field_gender';
-  $facet->enabled = FALSE;
-  $facet->settings = array(
-    'weight' => 0,
-    'widget' => 'facetapi_links',
-    'filters' => array(),
-    'active_sorts' => array(
-      'active' => 'active',
-      'count' => 'count',
-      'display' => 'display',
-    ),
-    'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
-    ),
-    'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
-    ),
-    'empty_behavior' => 'none',
-    'soft_limit' => 20,
-    'show_expanded' => 0,
-  );
-  $export['search_api@studies_index:block:mica_study_information:field_gender'] = $facet;
-
-  $facet = new stdClass;
-  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
-  $facet->api_version = 1;
-  $facet->name = 'search_api@studies_index:block:mica_study_information:field_gwas_analysis';
-  $facet->searcher = 'search_api@studies_index';
-  $facet->realm = 'block';
-  $facet->facet = 'mica_study_information:field_gwas_analysis';
-  $facet->enabled = TRUE;
-  $facet->settings = array(
-    'weight' => 0,
-    'widget' => 'facetapi_links',
-    'filters' => array(),
-    'active_sorts' => array(
-      'active' => 'active',
-      'count' => 'count',
-      'display' => 'display',
-    ),
-    'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
-    ),
-    'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
-    ),
-    'empty_behavior' => 'none',
-    'soft_limit' => 20,
-    'show_expanded' => 0,
-  );
-  $export['search_api@studies_index:block:mica_study_information:field_gwas_analysis'] = $facet;
-
-  $facet = new stdClass;
-  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
-  $facet->api_version = 1;
-  $facet->name = 'search_api@studies_index:block:mica_study_information:field_selection_criteria';
-  $facet->searcher = 'search_api@studies_index';
-  $facet->realm = 'block';
-  $facet->facet = 'mica_study_information:field_selection_criteria';
-  $facet->enabled = FALSE;
-  $facet->settings = array(
-    'weight' => 0,
-    'widget' => 'facetapi_links',
-    'filters' => array(),
-    'active_sorts' => array(
-      'active' => 'active',
-      'count' => 'count',
-      'display' => 'display',
-    ),
-    'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
-    ),
-    'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
-    ),
-    'empty_behavior' => 'none',
-    'soft_limit' => 20,
-    'show_expanded' => 0,
-  );
-  $export['search_api@studies_index:block:mica_study_information:field_selection_criteria'] = $facet;
-
-  $facet = new stdClass;
-  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
-  $facet->api_version = 1;
-  $facet->name = 'search_api@studies_index:block:mica_study_information:field_study_country';
-  $facet->searcher = 'search_api@studies_index';
-  $facet->realm = 'block';
-  $facet->facet = 'mica_study_information:field_study_country';
-  $facet->enabled = TRUE;
-  $facet->settings = array(
-    'weight' => 0,
-    'widget' => 'facetapi_links',
-    'filters' => array(),
-    'active_sorts' => array(
-      'active' => 'active',
-      'count' => 'count',
-      'display' => 'display',
-    ),
-    'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
-    ),
-    'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
-    ),
-    'empty_behavior' => 'none',
-    'soft_limit' => 20,
-    'show_expanded' => 0,
-  );
-  $export['search_api@studies_index:block:mica_study_information:field_study_country'] = $facet;
-
-  $facet = new stdClass;
-  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
-  $facet->api_version = 1;
-  $facet->name = 'search_api@studies_index:block:title_field';
-  $facet->searcher = 'search_api@studies_index';
-  $facet->realm = 'block';
-  $facet->facet = 'title_field';
-  $facet->enabled = FALSE;
-  $facet->settings = array(
-    'weight' => 0,
-    'widget' => 'facetapi_links',
-    'filters' => array(),
-    'active_sorts' => array(
-      'active' => 'active',
-      'count' => 'count',
-      'display' => 'display',
-    ),
-    'sort_weight' => array(
-      'active' => -50,
-      'count' => -49,
-      'display' => -48,
-    ),
-    'sort_order' => array(
-      'active' => 3,
-      'count' => 3,
-      'display' => 4,
-    ),
-    'empty_behavior' => 'none',
-    'soft_limit' => 20,
-    'nofollow' => 1,
-    'show_expanded' => 0,
-  );
-  $export['search_api@studies_index:block:title_field'] = $facet;
-
-  return $export;
+   return $export;
 }
