@@ -41,8 +41,10 @@ db_pass=rootadmin
 #
 
 all: drupal mica package-prepare htaccess
-#	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/default.settings.php
-#	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/settings.php
+
+drupal-settings:
+	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/default.settings.php
+	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/settings.php
 
 #
 # Drupal targets
