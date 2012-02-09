@@ -34,6 +34,9 @@ msgstr "Mica"
 msgid "Mica installation of tools for making a Study Consortium site: studies, search indexes, community tools and more."
 msgstr "Installation Mica d'outils pour un site d'un consortium d'études: études, index de recherche, outils pour une communauté et plus."
 
+msgid "Installation of Mica translations"
+msgstr "Installation des traductions de Mica"
+
 msgid "Apply Mica default permissions"
 msgstr "Application des permissions par défaut de Mica"
 
@@ -65,7 +68,7 @@ msgid "Error importing interface translations"
 msgstr "Une erreur est survenue lors de l'importation des traductions de l'interface"
 
 msgid "Mica French translations import finished."
-msgstr "L'imporation des traductions francaise est terminée."
+msgstr "L'importation des traductions francaise est terminée."
 
 msgid "Rebuild Mica user permissions finished"
 msgstr "Reconstruction des permissions des utilisateurs terminée"

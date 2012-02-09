@@ -6,7 +6,7 @@
 function mica_standard_install_tasks($install_state) {
   $tasks = array(
   	'mica_update_mica_languages_batch' => array(
-    	'display_name' => st('Load Mica French translations'),
+    	'display_name' => st('Installation of Mica translations'),
       'display' => TRUE,
       'type' => 'batch',
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
@@ -118,8 +118,22 @@ function _update_mica_languages_batch($install_state) {
   
 function _update_mica_languages($file, &$context) {
   module_load_include('batch.inc', 'l10n_update');
-  _l10n_update_locale_import_po($file, 'fr', LOCALE_IMPORT_OVERWRITE, 'default');
-  _l10n_update_locale_import_po($file, 'fr', LOCALE_IMPORT_OVERWRITE, 'field');
+  
+  $langcode = 'fr';
+  
+  $field_pattern = '/.field.' . $langcode . '.po$/';
+  $menu_pattern = '/.menu.' . $langcode . '.po$/';
+  $blocks_pattern = '/.blocks.' . $langcode . '.po$/';
+  if (preg_match($field_pattern, $file->filename) == 1) {
+    _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'field'); 
+  } elseif (preg_match($menu_pattern, $file->filename) == 1) {
+    _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'menu'); 
+  } elseif (preg_match($blocks_pattern, $file->filename) == 1) {
+    _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'blocks');
+  } else {
+    _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'default');
+  }
+  
   $context['message'] = st('Imported: %name.', array('%name' => $file->filename));
 }
 
