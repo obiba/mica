@@ -24,6 +24,101 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
+# field groups
+msgid "General Information"
+msgstr "Information générale"
+
+msgid "Authorization"
+msgstr "Autorisation"
+
+msgid "Methods"
+msgstr "Méthodes"
+
+msgid "Access"
+msgstr "Accès"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Marker Paper"
+msgstr "Article de référence"
+
+msgid "Documents"
+msgstr "Documents"
+
+msgid "Supplementary information"
+msgstr "Information complémentaire"
+
+msgid "Datasets"
+msgstr "Jeux de données"
+
+msgid "Name of the study"
+msgstr "Nom de l'étude"
+
+msgid "Authorization from contributors to the [specific network] catalogues"
+msgstr "Autorisation des contributeurs aux catalogues de [réseau]"
+
+msgid "Authorization from contributors to the Maelstrom catalogues"
+msgstr "Autorisation des contributeurs aux catalogues Maelstrom"
+
+msgid "General Design"
+msgstr "Conception générale"
+
+msgid "Study/Registry Design"
+msgstr "Conception de l'étude/registre"
+
+msgid "Target Number of Participants"
+msgstr "Nombre de participants visés"
+
+msgid "Target Number of Biological Samples"
+msgstr "Nombre d'échantillons biologiques"
+
+msgid "Current number of participants recruited at baseline"
+msgstr "Nombre courant de participants recrutés dans la phase initiale"
+
+msgid "Current number of collected biological samples from which DNA could be extracted"
+msgstr "Nombre courant d'échantillons biologiques collectés desquels de l'ADN pourrait être extrait"
+
+msgid "Participants Selection"
+msgstr "Sélection des participants"
+
+msgid "Selection Criteria / Characteristics of the population"
+msgstr "Critère de sélection / Caractéristiques de la population"
+
+msgid "Please specify gender"
+msgstr "Veuillez spécifier le genre"
+
+msgid "Please specify age range"
+msgstr "Veuillez spécifier l'interval d'âge"
+
+msgid "Please specify countries of residence"
+msgstr "Veuillez préciser les pays de résidence"
+
+msgid "Recruitment procedures"
+msgstr "Procédures de recrutement"
+
+msgid "Data Collection"
+msgstr "Collect de données"
+
+msgid "Sample Management"
+msgstr "Gestion des échantillons"
+
+msgid "Current Status"
+msgstr "État courant"
+
+msgid "Preparation phase / Pilot"
+msgstr "Phase préparatoire / pilote"
+
+msgid "Baseline recruitment / initial data collection"
+msgstr "Recrutement de base / collecte de données initiale"
+
+msgid "If applicable, Follow-up of participants"
+msgstr "Si applicable, suivi des participants"
+
+msgid "Study ended"
+msgstr "Fin de l'étude"
+
+
 #: mica_studies.features.inc:85
 msgid "Contact"
 msgstr "Contact"
