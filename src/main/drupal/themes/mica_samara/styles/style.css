@@ -720,6 +720,7 @@ form#comment-form #edit-actions {
   -webkit-border-radius: 5px;
   -khtml-border-radius: 5px;
   background-color: #f4f4f4;
+  margin-bottom: 10px;
 }
 .field-item .node > h2 {
   font-size: 1.2em;
@@ -2070,7 +2071,8 @@ div.horizontal-tabs ul.horizontal-tabs-list li.first {
   margin-left: -1px;
 }
 div.horizontal-tabs ul.horizontal-tabs-list li.selected {
-  border-bottom: none;
+  border-bottom: 1px solid #FFFFFF;
+  margin-bottom: -1px;
 }
 
 div.horizontal-tabs ul.horizontal-tabs-list li a,
