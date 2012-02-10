@@ -590,7 +590,11 @@ function _mica_bind_other_specify(&$node, $bindings) {
 									$prefix = $field_info['display_label'] . ' ';
 								}
 							}
-							$specifies[] = $prefix . $node->content[$f][0]['#markup'];
+						    foreach($node->content[$f] as $k => $value) {
+							  if (is_int($k)) {
+							    $specifies[] = $prefix . $value['#markup'];
+							  }
+							}
 						}
 					}
 					$content = implode($delimiter, $specifies);
@@ -616,7 +620,9 @@ function _mica_bind_other_specify(&$node, $bindings) {
 					$node->content[$other_sp]['#access'] = FALSE;
 					$content = implode($delimiter, $specifies);
 				}
-				$node->content[$field][$index]['#markup'] .= $start . $content . $end;
+				if (strlen(trim($content)) > 0) {
+				  $node->content[$field][$index]['#markup'] .= $start . $content . $end;
+				}
 			}
 		}
 		
