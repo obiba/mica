@@ -2051,7 +2051,7 @@ ul.action-links li a.highlight:first-child {
 
 /* tabs */
 div.horizontal-tabs {
-  background-color: #F9F9F9;
+  /*background-color: #F9F9F9;*/
   margin-top: 3em;
 }
 
@@ -2092,6 +2092,15 @@ div.horizontal-tabs ul.horizontal-tabs-list li.selected a:hover {
   color:#333;
 }
 
+div.horizontal-tabs ul.horizontal-tabs-list li:hover, 
+div.horizontal-tabs ul.horizontal-tabs-list li:focus {
+  background: none;
+}
+
 div.horizontal-tabs .horizontal-tabs-panes > fieldset {
   margin-top: 0;
+}
+
+div.horizontal-tabs .horizontal-tabs-panes fieldset {
+  background-color: #FFFFFF;
 }
