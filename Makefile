@@ -47,6 +47,24 @@ drupal-settings:
 	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/settings.php
 
 #
+# Build from continuous integration
+#
+
+ci-all: ci-clean ci-update
+
+ci-clean:
+	cd target/ && \
+	cp -r $(micadir)/sites/default/ . && \
+	rm -rf $(micadir)
+
+ci-update:
+	cd target/ && \
+	rm -f $(micadir).zip && \
+	wget http://ci.obiba.org/view/Mica/job/Mica/ws/mica/target/$(micadir)/*zip*/$(micadir).zip && \
+	unzip $(micadir).zip && \
+	cp -r default $(micadir)/sites
+
+#
 # Drupal targets
 #
 drupal: drush-make drupal-default 
