@@ -409,19 +409,25 @@ function _mica_studies_set_contact_title(&$node) {
     // cannot use entity_metadata_wrapper for Name fields because of http://drupal.org/node/1423160
     $language = $node->language;
     $field_contact_name = $node->field_contact_name;
-    $name = $field_contact_name[$language][0];
-    $full_name = trim($name['title']) . ' ' . trim($name['given']) . ' ' . trim($name['family']); 
     
-    $node->title = $full_name;
-    if (!empty($institution)) $node->title .= ' (' . trim($institution) . ')';
+    if (array_key_exists($language, $field_contact_name)) {
     
-    // set title for current node revision
-   	$node->title = substr($node->title, 0, 255);
+      $name = $field_contact_name[$language][0];
+      $full_name = trim($name['title']) . ' ' . trim($name['given']) . ' ' . trim($name['family']); 
+    
+      if (strlen(trim($full_name))>0) {
+      
+        $node->title = $full_name;
+        if (!empty($institution)) $node->title .= ' (' . trim($institution) . ')';
+        
+        // set title for current node revision
+   	    $node->title = substr($node->title, 0, 255);
    	
-   	// With that flag we ensure we don't apply the title two times to the same
-   	// node. See _mica_studies_contact_title_is_needed().
-   	$node->contact_title_applied = TRUE;
-
+        // With that flag we ensure we don't apply the title two times to the same
+        // node. See _mica_studies_contact_title_is_needed().
+   	    $node->contact_title_applied = TRUE;
+      }
+    }
   }
 }
 
