@@ -50,18 +50,22 @@ drupal-settings:
 # Build from continuous integration
 #
 
-ci-all: ci-clean ci-update
-
-ci-clean:
-	cd target/ && \
-	cp -r $(micadir)/sites/default/ . && \
-	rm -rf $(micadir)
+ci-all: default-backup ci-update default-restore
 
 ci-update:
+	mkdir -p target && \
 	cd target/ && \
+	rm -rf $(micadir) && \
 	rm -f $(micadir).zip && \
 	wget http://ci.obiba.org/view/Mica/job/Mica/ws/mica/target/$(micadir)/*zip*/$(micadir).zip && \
-	unzip $(micadir).zip && \
+	unzip $(micadir).zip
+
+default-backup:
+	cd target/ && \
+	cp -r $(micadir)/sites/default/ .
+
+default-restore:
+	cd target/ && \
 	cp -r default $(micadir)/sites
 
 #
