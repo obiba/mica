@@ -110,8 +110,10 @@ projects[feeds_tamper][type] = module
 projects[field_display_label][version] = 1.2
 projects[field_display_label][type] = module
 
-projects[field_group][version] = 1.1
-projects[field_group][type] = module
+projects[field_group][download][type] = git
+projects[field_group][download][url] = http://git.drupal.org/project/field_group.git
+projects[field_group][download][revision] = 3f5af2537bd01bf42e24bc3e3782f914add43186
+projects[field_group][patch][1196890] = http://drupal.org/files/group-description-translation-1196890.patch
 
 projects[field_permissions][version] = 1.0-beta2
 projects[field_permissions][type] = module
