@@ -125,7 +125,7 @@ msgid "I agree and understand that the information collected in this form will b
 msgstr "Je comprends et j'accepte que les renseignements recueillis dans ce formulaire seront affichés sur le site web de [RÉSEAU SPÉCIFIQUE] (www.…) à leur réception."
 
 msgid "I agree and understand that the information collected in this form will be displayed on the Maelstrom Research website upon reception in agreement with “Authorization from contributors to the Maelstrom Research Catalogues” (Document available on Maelstrom Research Web page or at: …)."
-msgstr "Je comprends et j'accepte que les renseignements recueillis dans ce formulaire seront affichés sur le site de recherche Maelstrom lors de la réception en accord avec "l'autorisation des contributeurs aux Catalogues de recherche Maelstrom" (document disponible sur la page Web de recherche Maelstrom ou à l'adresse: …)."
+msgstr "Je comprends et j'accepte que les renseignements recueillis dans ce formulaire seront affichés sur le site de Maelstrom à leur réception en accord avec “l'autorisation des contributeurs aux Catalogues de Maelstrom” (document disponible sur la page Web de recherche Maelstrom ou à l'adresse: …)."
 
 msgid "Headline number of participants"
 msgstr "nombre global de participants"
