@@ -3615,7 +3615,7 @@ You will be able to edit these Contacts once the Study will be saved.',
       'display_label' => 'Supplementary information',
       'entity_type' => 'node',
       'field_name' => 'field_current_sam_supp_info',
-      'label' => 'If needed, supplementary information',
+      'label' => 'If needed, supplementary information about current number of collected biological samples',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -3851,7 +3851,7 @@ You will be able to edit these Contacts once the Study will be saved.',
       'display_label' => 'Supplementary information',
       'entity_type' => 'node',
       'field_name' => 'field_current_supp_info',
-      'label' => 'If needed, supplementary information',
+      'label' => 'If needed, supplementary information about current number of participants recruited at baseline',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -5344,7 +5344,7 @@ You will be able to edit these Investigators once the Study will be saved.',
       'display_label' => 'Supplementary information',
       'entity_type' => 'node',
       'field_name' => 'field_partcipant_sel_supp_info',
-      'label' => 'If needed, supplementary information',
+      'label' => 'If needed, supplementary information about selection criteria of the population',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -5797,7 +5797,7 @@ You will be able to edit these Investigators once the Study will be saved.',
       'display_label' => 'Supplementary information',
       'entity_type' => 'node',
       'field_name' => 'field_recruitement_supp_info',
-      'label' => 'If needed, supplementary information',
+      'label' => 'If needed, supplementary information about recruitments procedures',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -6180,7 +6180,7 @@ other|Other',
       'display_label' => 'Supplementary information',
       'entity_type' => 'node',
       'field_name' => 'field_recruitment_supp_info',
-      'label' => 'If needed, supplementary information',
+      'label' => 'If needed, supplementary information about study design',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -6331,7 +6331,7 @@ other|Other',
       'display_label' => 'Supplementary information',
       'entity_type' => 'node',
       'field_name' => 'field_samples_supp_info',
-      'label' => 'If needed, supplementary information',
+      'label' => 'If needed, supplementary information about target number of biological samples',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -6631,7 +6631,7 @@ other|Other',
       'display_label' => 'Supplementary information',
       'entity_type' => 'node',
       'field_name' => 'field_status_supp_info',
-      'label' => 'If needed, supplementary information',
+      'label' => 'If needed, supplementary information about current study status',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -6784,7 +6784,7 @@ other|Other',
       'display_label' => 'Supplementary information',
       'entity_type' => 'node',
       'field_name' => 'field_target_nb_supp_info',
-      'label' => 'If needed, supplementary information',
+      'label' => 'If needed, supplementary information about target number of participants',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -7314,7 +7314,14 @@ You will be able to edit these Investigators once the Study will be saved.');
   t('How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?');
   t('How many people have joined the study?');
   t('How many people have provided or should provide biological samples, from which DNA could be extracted?');
-  t('If needed, supplementary information');
+  t('If needed, supplementary information about current number of collected biological samples');
+  t('If needed, supplementary information about current number of participants recruited at baseline');
+  t('If needed, supplementary information about selection criteria of the population');
+  t('If needed, supplementary information about recruitments procedures');
+  t('If needed, supplementary information about study design');
+  t('If needed, supplementary information about target number of biological samples');
+  t('If needed, supplementary information about current study status');
+  t('If needed, supplementary information about target number of participants');
   t('In date of');
   t('Institution name');
   t('Investigators');

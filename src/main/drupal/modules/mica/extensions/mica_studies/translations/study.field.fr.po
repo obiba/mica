@@ -157,8 +157,8 @@ msgstr "Combien de participants ont déjà été recrutés ?"
 
 #: field:field_current_sam_supp_info:study:label
 msgctxt "field_current_sam_supp_info:study:label"
-msgid "If needed, supplementary information"
-msgstr "Information supplémentaire, si nécessaire"
+msgid "If needed, supplementary information about current number of collected biological samples"
+msgstr "Information supplémentaire sur les échantillons biologiques collectés, si nécessaire"
 
 #: field:field_current_samples_date:study:label
 msgctxt "field_current_samples_date:study:label"
@@ -172,8 +172,8 @@ msgstr "Combien de participants ont déjà fourni un échantillon biologique, du
 
 #: field:field_current_supp_info:study:label
 msgctxt "field_current_supp_info:study:label"
-msgid "If needed, supplementary information"
-msgstr "Information supplémentaire, si nécessaire"
+msgid "If needed, supplementary information about current number of participants recruited at baseline"
+msgstr "Information supplémentaire sur le nombre courant de participants recrutés durant la phase initiale, si nécessaire"
 
 #: field:field_data_sources:study:label
 msgctxt "field_data_sources:study:label"
@@ -262,8 +262,8 @@ msgstr "Nombre de participants avec échantillons non déterminé (Illimité)"
 
 #: field:field_partcipant_sel_supp_info:study:label
 msgctxt "field_partcipant_sel_supp_info:study:label"
-msgid "If needed, supplementary information"
-msgstr "Information supplémentaire, si nécessaire"
+msgid "If needed, supplementary information about selection criteria of the population"
+msgstr "Information supplémentaire sur les critères de sélection de la population, si nécessaire"
 
 #: field:field_preparation_end_year:study:label
 msgctxt "field_preparation_end_year:study:label"
@@ -282,8 +282,8 @@ msgstr "Identifiant Pubmed"
 
 #: field:field_recruitement_supp_info:study:label
 msgctxt "field_recruitement_supp_info:study:label"
-msgid "If needed, supplementary information"
-msgstr "Information supplémentaire, si nécessaire"
+msgid "If needed, supplementary information about recruitments procedures"
+msgstr "Information supplémentaire sur les procédures de recrutement, si nécessaire"
 
 #: field:field_recruitment:study:label
 msgctxt "field_recruitment:study:label"
@@ -307,8 +307,8 @@ msgstr "Spécifier les sources de recrutement"
 
 #: field:field_recruitment_supp_info:study:label
 msgctxt "field_recruitment_supp_info:study:label"
-msgid "If needed, supplementary information"
-msgstr "Information supplémentaire, si nécessaire"
+msgid "If needed, supplementary information about study design"
+msgstr "Information supplémentaire sur le devis de l'étude, si nécessaire"
 
 #: field:field_samples_man_other_sp:study:label
 msgctxt "field_samples_man_other_sp:study:label"
@@ -317,8 +317,8 @@ msgstr "Spécifier quels autres échantillons biologiques"
 
 #: field:field_samples_supp_info:study:label
 msgctxt "field_samples_supp_info:study:label"
-msgid "If needed, supplementary information"
-msgstr "Information supplémentaire, si nécessaire"
+msgid "If needed, supplementary information about target number of biological samples"
+msgstr "Information supplémentaire sur le nombre d'échantillons biologiques visés, si nécessaire"
 
 #: field:field_select_criteria:study:label
 msgctxt "field_select_criteria:study:label"
@@ -342,8 +342,8 @@ msgstr "Spécifier quel autre critère de sélection"
 
 #: field:field_status_supp_info:study:label
 msgctxt "field_status_supp_info:study:label"
-msgid "If needed, supplementary information"
-msgstr "Information supplémentaire, si nécessaire"
+msgid "If needed, supplementary information about current study status"
+msgstr "Information supplémentaire sur l'état courant de l'étude, si nécessaire"
 
 #: field:field_supp_infos:study:label
 msgctxt "field_supp_infos:study:label"
@@ -352,8 +352,8 @@ msgstr "Information complémentaire"
 
 #: field:field_target_nb_supp_info:study:label
 msgctxt "field_target_nb_supp_info:study:label"
-msgid "If needed, supplementary information"
-msgstr "Information supplémentaire, si nécessaire"
+msgid "If needed, supplementary information about target number of participants"
+msgstr "Information supplémentaire sur le nombre de participants visés, si nécessaire"
 
 #: field:field_target_number_biosamples:study:label
 msgctxt "field_target_number_biosamples:study:label"
