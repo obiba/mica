@@ -101,6 +101,9 @@ function mica_data_access_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_city',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -303,7 +306,9 @@ Prof.',
         'default' => array(
           'label' => 'above',
           'module' => 'name',
-          'settings' => array(),
+          'settings' => array(
+            'markup' => 0,
+          ),
           'type' => 'name_default',
           'weight' => '4',
         ),
@@ -320,6 +325,7 @@ Prof.',
       'required' => 0,
       'settings' => array(
         'component_css' => '',
+        'component_layout' => 'default',
         'credentials_inline' => 0,
         'field_type' => array(
           'credentials' => 'text',
@@ -742,6 +748,9 @@ Prof.',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_postal_code',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -1092,7 +1101,9 @@ Prof.',
         'default' => array(
           'label' => 'above',
           'module' => 'name',
-          'settings' => array(),
+          'settings' => array(
+            'markup' => 0,
+          ),
           'type' => 'name_default',
           'weight' => '2',
         ),
@@ -1109,6 +1120,7 @@ Prof.',
       'required' => 1,
       'settings' => array(
         'component_css' => '',
+        'component_layout' => 'default',
         'credentials_inline' => 0,
         'field_type' => array(
           'credentials' => 'text',

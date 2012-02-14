@@ -107,7 +107,7 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['fields']['field_representative']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_representative']['click_sort_column'] = 'title';
   $handler->display->display_options['fields']['field_representative']['field_api_classes'] = 0;
-  /* Field: Field: Institution name */
+  /* Field: Content: Institution Name */
   $handler->display->display_options['fields']['field_institution_name']['id'] = 'field_institution_name';
   $handler->display->display_options['fields']['field_institution_name']['table'] = 'field_data_field_institution_name';
   $handler->display->display_options['fields']['field_institution_name']['field'] = 'field_institution_name';
@@ -315,7 +315,7 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['fields']['field_representative']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_representative']['click_sort_column'] = 'title';
   $handler->display->display_options['fields']['field_representative']['field_api_classes'] = 0;
-  /* Field: Field: Institution name */
+  /* Field: Content: Institution Name */
   $handler->display->display_options['fields']['field_institution_name']['id'] = 'field_institution_name';
   $handler->display->display_options['fields']['field_institution_name']['table'] = 'field_data_field_institution_name';
   $handler->display->display_options['fields']['field_institution_name']['field'] = 'field_institution_name';
@@ -490,7 +490,7 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['empty']['area']['label'] = 'empty_data_access_committee';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
   $handler->display->display_options['empty']['area']['content'] = 'No data access committee member found.';
-  /* Field: Field collection item: Investigator Name */
+  /* Field: Content: Contact Name */
   $handler->display->display_options['fields']['field_contact_name']['id'] = 'field_contact_name';
   $handler->display->display_options['fields']['field_contact_name']['table'] = 'field_data_field_contact_name';
   $handler->display->display_options['fields']['field_contact_name']['field'] = 'field_contact_name';
@@ -554,7 +554,7 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['fields']['field_institution']['element_default_classes'] = 1;
   $handler->display->display_options['fields']['field_institution']['hide_empty'] = 0;
   $handler->display->display_options['fields']['field_institution']['empty_zero'] = 0;
-  /* Field: Field collection item: Email */
+  /* Field: Content: Email */
   $handler->display->display_options['fields']['field_contact_email']['id'] = 'field_contact_email';
   $handler->display->display_options['fields']['field_contact_email']['table'] = 'field_data_field_contact_email';
   $handler->display->display_options['fields']['field_contact_email']['field'] = 'field_contact_email';
@@ -593,7 +593,7 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'contact' => 'contact',
   );
-  /* Filter criterion: Field: Data Access Committee member (field_daco) */
+  /* Filter criterion: Content: Data Access Committee member (field_daco) */
   $handler->display->display_options['filters']['field_daco_value']['id'] = 'field_daco_value';
   $handler->display->display_options['filters']['field_daco_value']['table'] = 'field_data_field_daco';
   $handler->display->display_options['filters']['field_daco_value']['field'] = 'field_daco_value';
@@ -755,7 +755,7 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['fields']['field_representative']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_representative']['click_sort_column'] = 'title';
   $handler->display->display_options['fields']['field_representative']['field_api_classes'] = 0;
-  /* Field: Field: Institution name */
+  /* Field: Content: Institution Name */
   $handler->display->display_options['fields']['field_institution_name']['id'] = 'field_institution_name';
   $handler->display->display_options['fields']['field_institution_name']['table'] = 'field_data_field_institution_name';
   $handler->display->display_options['fields']['field_institution_name']['field'] = 'field_institution_name';

@@ -1030,5 +1030,5 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_target_number_participants'] = $facet;
 
-   return $export;
+  return $export;
 }

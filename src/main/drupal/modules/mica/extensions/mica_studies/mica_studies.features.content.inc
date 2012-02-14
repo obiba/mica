@@ -5,807 +5,238 @@
  */
 
 /**
- * Implementation of hook_content_defaults().
+ * Implements hook_content_defaults().
  */
 function mica_studies_content_defaults() {
-$content = array();
-$content['access'] = (object)array(
-  'title' => 'access',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970582',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'access',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
+  $content = array();
+
+  $content['about'] = (object) array(
+    'link' => array(
+      'menu_name' => 'main-menu',
+      'link_path' => 'node-name/about',
+      'router_path' => 'node/%',
+      'link_title' => 'About',
+      'options' => array(
+        'langcode' => 'en',
+      ),
+      'module' => 'menu',
+      'hidden' => '0',
+      'external' => '0',
+      'has_children' => '0',
+      'expanded' => '1',
+      'weight' => '-44',
+      'identifier' => 'main-menu:node-name/about',
+    ),
+    'exported_path' => 'content/about-mica',
+    'title' => 'About Mica',
+    'status' => '1',
+    'promote' => '0',
+    'sticky' => '0',
+    'type' => 'page',
+    'language' => 'en',
+    'created' => '1328794278',
+    'comment' => '1',
+    'translate' => '0',
+    'machine_name' => 'about',
+    'body' => array(
+      'en' => array(
+        0 => array(
+          'value' => '<p>Welcome to Mica, a powerful software application used to create web portals for epidemiological study consortia.</p>
+      <p>Using Mica, consortia can build personalized web sites for publishing their research activities and their membership. Mica includes many domain-specific features such as study catalogues, data dictionary browsers, on-line data access request forms, community tools (forums, events, news) and others. Moreover, Mica includes a powerful data search engine that allows authenticated researchers to perform distributed queries on the content of each individual study data collection hosted by the OBiBa Opal database software (www.obiba.org).</p>
+      <p>Mica is based on the content management software Drupal (www.drupal.org) used by millions of websites worldwide. As such, a webmaster benefits from all the power and flexibility of Drupal, as well as the support of an extended developer community.</p>
+      <p>Installing a site with Mica demo profile will help to illustrate its functionalities. This may serve as a good starting point for customizing your web portal.</p>
+      ',
+          'summary' => '',
+          'format' => 'full_html',
+          'safe_value' => '<p>Welcome to Mica, a powerful software application used to create web portals for epidemiological study consortia.</p>
+  <p>Using Mica, consortia can build personalized web sites for publishing their research activities and their membership. Mica includes many domain-specific features such as study catalogues, data dictionary browsers, on-line data access request forms, community tools (forums, events, news) and others. Moreover, Mica includes a powerful data search engine that allows authenticated researchers to perform distributed queries on the content of each individual study data collection hosted by the OBiBa Opal database software (<a href="http://www.obiba.org">www.obiba.org</a>).</p>
+  <p>Mica is based on the content management software Drupal (<a href="http://www.drupal.org">www.drupal.org</a>) used by millions of websites worldwide. As such, a webmaster benefits from all the power and flexibility of Drupal, as well as the support of an extended developer community.</p>
+  <p>Installing a site with Mica demo profile will help to illustrate its functionalities. This may serve as a good starting point for customizing your web portal.</p>
+  ',
+          'safe_summary' => '',
+        ),
+      ),
+      'fr' => array(
+        0 => array(
+          'value' => '<p>Bienvenue sur Mica, une application permettant aux consortiums d&#39;&eacute;tudes &eacute;pid&eacute;miologiques de cr&eacute;er leur propre portails.</p>
+            <p>Using Mica, consortia can build personalized web sites for publishing their research activities and their membership. Mica includes many domain-specific features such as study catalogues, data dictionary browsers, on-line data access request forms, community tools (forums, events, news) and others. Moreover, Mica includes a powerful data search engine that allows authenticated researchers to perform distributed queries on the content of each individual study data collection hosted by the OBiBa Opal database software (www.obiba.org).</p>
+            <p>Mica is based on the content management software Drupal (www.drupal.org) used by millions of websites worldwide. As such, a webmaster benefits from all the power and flexibility of Drupal, as well as the support of an extended developer community.</p>
+            <p>Installing a site with Mica demo profile will help to illustrate its functionalities. This may serve as a good starting point for customizing your web portal.</p>
+            ',
+          'summary' => '',
+          'format' => 'full_html',
+          'safe_value' => '<p>Bienvenue sur Mica, une application permettant aux consortiums d\'études épidémiologiques de créer leur propre portails.</p>
+  <p>Using Mica, consortia can build personalized web sites for publishing their research activities and their membership. Mica includes many domain-specific features such as study catalogues, data dictionary browsers, on-line data access request forms, community tools (forums, events, news) and others. Moreover, Mica includes a powerful data search engine that allows authenticated researchers to perform distributed queries on the content of each individual study data collection hosted by the OBiBa Opal database software (<a href="http://www.obiba.org">www.obiba.org</a>).</p>
+  <p>Mica is based on the content management software Drupal (<a href="http://www.drupal.org">www.drupal.org</a>) used by millions of websites worldwide. As such, a webmaster benefits from all the power and flexibility of Drupal, as well as the support of an extended developer community.</p>
+  <p>Installing a site with Mica demo profile will help to illustrate its functionalities. This may serve as a good starting point for customizing your web portal.</p>
+  ',
+          'safe_summary' => '',
+        ),
       ),
     ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_access',
-        'format' => NULL,
-        'safe_value' => 'field_access',
+  );
+
+  $content['mica'] = (object) array(
+    'exported_path' => 'content/mica',
+    'title' => 'Mica',
+    'status' => '1',
+    'promote' => '0',
+    'sticky' => '1',
+    'type' => 'page',
+    'language' => 'en',
+    'created' => '1328794278',
+    'comment' => '1',
+    'translate' => '0',
+    'machine_name' => 'mica',
+    'body' => array(
+      'en' => array(
+        0 => array(
+          'value' => '<p>Welcome to Mica, a powerful software application used to create web portals for epidemiological study consortia.</p>
+      <p>Using Mica, consortia can build personalized web sites for publishing their research activities and their membership. Mica includes many domain-specific features such as study catalogues, data dictionary browsers, on-line data access request forms, community tools (forums, events, news) and others. Moreover, Mica includes a powerful data search engine that allows authenticated researchers to perform distributed queries on the content of each individual study data collection hosted by the OBiBa Opal database software (www.obiba.org).</p>
+      <p>Mica is based on the content management software Drupal (www.drupal.org) used by millions of websites worldwide. As such, a webmaster benefits from all the power and flexibility of Drupal, as well as the support of an extended developer community.</p>
+      <p>Installing a site with Mica demo profile will help to illustrate its functionalities. This may serve as a good starting point for customizing your web portal.</p>
+      ',
+          'summary' => '',
+          'format' => 'full_html',
+          'safe_value' => '<p>Welcome to Mica, a powerful software application used to create web portals for epidemiological study consortia.</p>
+  <p>Using Mica, consortia can build personalized web sites for publishing their research activities and their membership. Mica includes many domain-specific features such as study catalogues, data dictionary browsers, on-line data access request forms, community tools (forums, events, news) and others. Moreover, Mica includes a powerful data search engine that allows authenticated researchers to perform distributed queries on the content of each individual study data collection hosted by the OBiBa Opal database software (<a href="http://www.obiba.org">www.obiba.org</a>).</p>
+  <p>Mica is based on the content management software Drupal (<a href="http://www.drupal.org">www.drupal.org</a>) used by millions of websites worldwide. As such, a webmaster benefits from all the power and flexibility of Drupal, as well as the support of an extended developer community.</p>
+  <p>Installing a site with Mica demo profile will help to illustrate its functionalities. This may serve as a good starting point for customizing your web portal.</p>
+  ',
+          'safe_summary' => '',
+        ),
+      ),
+      'fr' => array(
+        0 => array(
+          'value' => '<p>&nbsp;</p>
+            <div>
+            	<p>Bienvenue sur Mica, une application permettant aux consortiums d&#39;&eacute;tudes &eacute;pid&eacute;miologiques de cr&eacute;er leur propre portails.</p>
+            	<p>Using Mica, consortia can build personalized web sites for publishing their research activities and their membership. Mica includes many domain-specific features such as study catalogues, data dictionary browsers, on-line data access request forms, community tools (forums, events, news) and others. Moreover, Mica includes a powerful data search engine that allows authenticated researchers to perform distributed queries on the content of each individual study data collection hosted by the OBiBa Opal database software (www.obiba.org).</p>
+            	<p>Mica is based on the content management software Drupal (www.drupal.org) used by millions of websites worldwide. As such, a webmaster benefits from all the power and flexibility of Drupal, as well as the support of an extended developer community.</p>
+            	<p>Installing a site with Mica demo profile will help to illustrate its functionalities. This may serve as a good starting point for customizing your web portal.</p>
+            </div>
+            <p>&nbsp;</p>
+            ',
+          'summary' => '',
+          'format' => 'full_html',
+          'safe_value' => '<p> </p>
+  <div>
+  <p>Bienvenue sur Mica, une application permettant aux consortiums d\'études épidémiologiques de créer leur propre portails.</p>
+  <p>Using Mica, consortia can build personalized web sites for publishing their research activities and their membership. Mica includes many domain-specific features such as study catalogues, data dictionary browsers, on-line data access request forms, community tools (forums, events, news) and others. Moreover, Mica includes a powerful data search engine that allows authenticated researchers to perform distributed queries on the content of each individual study data collection hosted by the OBiBa Opal database software (<a href="http://www.obiba.org">www.obiba.org</a>).</p>
+  <p>Mica is based on the content management software Drupal (<a href="http://www.drupal.org">www.drupal.org</a>) used by millions of websites worldwide. As such, a webmaster benefits from all the power and flexibility of Drupal, as well as the support of an extended developer community.</p>
+  <p>Installing a site with Mica demo profile will help to illustrate its functionalities. This may serve as a good starting point for customizing your web portal.</p>
+  </div>
+  <p> </p>
+  ',
+          'safe_summary' => '',
+        ),
       ),
     ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'TEXT',
+  );
+
+  $content['research'] = (object) array(
+    'link' => array(
+      'menu_name' => 'main-menu',
+      'link_path' => 'node-name/research',
+      'router_path' => 'node/%',
+      'link_title' => 'Research',
+      'options' => array(
+        'attributes' => array(),
+      ),
+      'module' => 'menu',
+      'hidden' => '0',
+      'external' => '0',
+      'has_children' => '1',
+      'expanded' => '1',
+      'weight' => '-46',
+      'identifier' => 'main-menu:node-name/research',
+    ),
+    'exported_path' => 'content/research',
+    'title' => 'Research',
+    'status' => '1',
+    'promote' => '0',
+    'sticky' => '0',
+    'type' => 'page',
+    'language' => 'en',
+    'created' => '1328794227',
+    'comment' => '1',
+    'translate' => '0',
+    'machine_name' => 'research',
+    'body' => array(
+      'en' => array(
+        0 => array(
+          'value' => '<p>This section...</p>',
+          'summary' => '',
+          'format' => 'full_html',
+          'safe_value' => '<p>This section...</p>',
+          'safe_summary' => '',
+        ),
+        'fr' => array(
+          0 => array(
+            'value' => '<p>Cette section permet de pr&eacute;senter les activit&eacute;s de recherches qui sont g&eacute;n&eacute;r&eacute;es par le consortium</p>',
+            'summary' => '',
+            'format' => 'full_html',
+            'safe_value' => '<p>Cette section permet de présenter les activités de recherches qui sont générées par le consortium</p>',
+            'safe_summary' => '',
+        ),
       ),
     ),
-  ),
-);
-$content['access_other'] = (object)array(
-  'title' => 'access_other',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970606',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'access_other',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
+  );
+
+  $content['resources'] = (object) array(
+    'link' => array(
+      'menu_name' => 'main-menu',
+      'link_path' => 'node-name/resources',
+      'router_path' => 'node/%',
+      'link_title' => 'Resources',
+      'options' => array(
+        'attributes' => array(),
+        'langcode' => 'en',
+      ),
+      'module' => 'menu',
+      'hidden' => '0',
+      'external' => '0',
+      'has_children' => '1',
+      'expanded' => '1',
+      'weight' => '-48',
+      'identifier' => 'main-menu:node-name/resources',
+    ),
+    'exported_path' => 'content/resources',
+    'title' => 'Resources',
+    'status' => '1',
+    'promote' => '0',
+    'sticky' => '0',
+    'type' => 'page',
+    'language' => 'en',
+    'created' => '1328794227',
+    'comment' => '1',
+    'translate' => '0',
+    'machine_name' => 'resources',
+    'body' => array(
+      'en' => array(
+        0 => array(
+          'value' => '<p>This page aims to display the consortium resources offered to the scientific community. Two kinds of resource are currently offered with the Mica default configuration: the <a href="?q=datasets">consortium datasets</a> and the <a href="?q=documents">consortium documents</a>.</p>
+      ',
+          'summary' => '',
+          'format' => 'full_html',
+          'safe_value' => '<p>This page aims to display the consortium resources offered to the scientific community. Two kinds of resource are currently offered with the Mica default configuration: the <a href="?q=datasets">consortium datasets</a> and the <a href="?q=documents">consortium documents</a>.</p>
+  ',
+          'safe_summary' => '',
+        ),
+      ),
+      'fr' => array(
+        0 => array(
+          'value' => '<p>Cette page a pour but de pr&eacute;senter les ressources du consortium qui sont offertes &agrave; la communaut&eacute; scientifique. Deux types de ressources sont pr&eacute;sentement offertes avec l&#39;installation par d&eacute;faut de Mica: les&nbsp;<a href="?q=datasets">consortium datasets</a> et les&nbsp;<a href="?q=documents">consortium documents</a>.</p>
+            ',
+          'summary' => '',
+          'format' => 'full_html',
+          'safe_value' => '<p>Cette page a pour but de présenter les ressources du consortium qui sont offertes à la communauté scientifique. Deux types de ressources sont présentement offertes avec l\'installation par défaut de Mica: les <a href="?q=datasets">consortium datasets</a> et les <a href="?q=documents">consortium documents</a>.</p>
+  ',
+          'safe_summary' => '',
+        ),
       ),
     ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_access_other',
-        'format' => NULL,
-        'safe_value' => 'field_access_other',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'TEXT',
-      ),
-    ),
-  ),
-);
-$content['acroym'] = (object)array(
-  'title' => 'acroym',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970122',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'acroym',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_acroym',
-        'format' => NULL,
-        'safe_value' => 'field_acroym',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'TEXT',
-      ),
-    ),
-  ),
-);
-$content['age_max'] = (object)array(
-  'title' => 'age_max',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970380',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'age_max',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_age_max',
-        'format' => NULL,
-        'safe_value' => 'field_age_max',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'INTEGER',
-      ),
-    ),
-  ),
-);
-$content['age_min'] = (object)array(
-  'title' => 'age_min',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970359',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'age_min',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_age_min',
-        'format' => NULL,
-        'safe_value' => 'field_age_min',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'INTEGER',
-      ),
-    ),
-  ),
-);
-$content['biosamples_collected'] = (object)array(
-  'title' => 'biosamples_collected',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970448',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'biosamples_collected',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_biosamples_collected',
-        'format' => NULL,
-        'safe_value' => 'field_biosamples_collected',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'TEXT',
-      ),
-    ),
-  ),
-);
-$content['biosamples_collected_other'] = (object)array(
-  'title' => 'biosamples_collected_other',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970476',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'biosamples_collected_other',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_biosamples_collected_other',
-        'format' => NULL,
-        'safe_value' => 'field_biosamples_collected_other',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'TEXT',
-      ),
-    ),
-  ),
-);
-$content['biosamples_tissues'] = (object)array(
-  'title' => 'biosamples_tissues',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970493',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'biosamples_tissues',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_biosamples_tissues',
-        'format' => NULL,
-        'safe_value' => 'field_biosamples_tissues',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'TEXT',
-      ),
-    ),
-  ),
-);
-$content['design'] = (object)array(
-  'title' => 'design',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970230',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'design',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_design',
-        'format' => NULL,
-        'safe_value' => 'field_design',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'TEXT',
-      ),
-    ),
-  ),
-);
-$content['design_other'] = (object)array(
-  'title' => 'design_other',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970254',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'design_other',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_design_other',
-        'format' => NULL,
-        'safe_value' => 'field_design_other',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'TEXT',
-      ),
-    ),
-  ),
-);
-$content['design_target'] = (object)array(
-  'title' => 'design_target',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970274',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'design_target',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_design_target',
-        'format' => NULL,
-        'safe_value' => 'field_design_target',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'TEXT',
-      ),
-    ),
-  ),
-);
-$content['gender'] = (object)array(
-  'title' => 'gender',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970343',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'gender',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_gender',
-        'format' => NULL,
-        'safe_value' => 'field_gender',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'TEXT',
-      ),
-    ),
-  ),
-);
-$content['gwas_number'] = (object)array(
-  'title' => 'gwas_number',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970558',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'gwas_number',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_gwas_number',
-        'format' => NULL,
-        'safe_value' => 'field_gwas_number',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'INTEGER',
-      ),
-    ),
-  ),
-);
-$content['selection_criteria'] = (object)array(
-  'title' => 'selection_criteria',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970307',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'selection_criteria',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_selection_criteria',
-        'format' => NULL,
-        'safe_value' => 'field_selection_criteria',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'TEXT',
-      ),
-    ),
-  ),
-);
-$content['status_end'] = (object)array(
-  'title' => 'status_end',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970666',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'status_end',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_status_end',
-        'format' => NULL,
-        'safe_value' => 'field_status_end',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'INTEGER',
-      ),
-    ),
-  ),
-);
-$content['status_start'] = (object)array(
-  'title' => 'status_start',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970624',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'status_start',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_status_start',
-        'format' => NULL,
-        'safe_value' => 'field_status_start',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'INTEGER',
-      ),
-    ),
-  ),
-);
-$content['study_country'] = (object)array(
-  'title' => 'study_country',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970325',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'study_country',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_study_country',
-        'format' => NULL,
-        'safe_value' => 'field_study_country',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'TEXT',
-      ),
-    ),
-  ),
-);
-$content['target_number_biosamples'] = (object)array(
-  'title' => 'target_number_biosamples',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970427',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'target_number_biosamples',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_target_number_biosamples',
-        'format' => NULL,
-        'safe_value' => 'field_target_number_biosamples',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'INTEGER',
-      ),
-    ),
-  ),
-);
-$content['target_number_participants'] = (object)array(
-  'title' => 'target_number_participants',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970207',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'target_number_participants',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_target_number_participants',
-        'format' => NULL,
-        'safe_value' => 'field_target_number_participants',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'INTEGER',
-      ),
-    ),
-  ),
-);
-$content['target_other'] = (object)array(
-  'title' => 'target_other',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970290',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'target_other',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study_information',
-        'format' => NULL,
-        'safe_value' => 'study_information',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'field_target_other',
-        'format' => NULL,
-        'safe_value' => 'field_target_other',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'TEXT',
-      ),
-    ),
-  ),
-);
-$content['variable_body'] = (object)array(
-  'title' => 'body',
-  'status' => '1',
-  'promote' => '0',
-  'sticky' => '0',
-  'type' => 'variable',
-  'language' => 'und',
-  'created' => '1304970081',
-  'comment' => '1',
-  'translate' => '0',
-  'machine_name' => 'variable_body',
-  'body' => array(),
-  'field_bundle' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'study',
-        'format' => NULL,
-        'safe_value' => 'study',
-      ),
-    ),
-  ),
-  'field_original_field_name' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'body',
-        'format' => NULL,
-        'safe_value' => 'body',
-      ),
-    ),
-  ),
-  'field_value_type' => array(
-    'und' => array(
-      0 => array(
-        'value' => 'TEXT',
-      ),
-    ),
-  ),
-);
+  );
+
 return $content;
 }

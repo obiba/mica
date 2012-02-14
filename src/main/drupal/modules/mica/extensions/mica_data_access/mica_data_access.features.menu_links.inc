@@ -28,7 +28,7 @@ function mica_data_access_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-20',
-    'parent_path' => 'node/1',
+    'parent_path' => 'node/6',
   );
   // Exported menu link: main-menu:data-access/approved
   $menu_links['main-menu:data-access/approved'] = array(
@@ -48,7 +48,7 @@ function mica_data_access_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-50',
-    'parent_path' => 'node/2',
+    'parent_path' => 'node/6',
   );
   // Exported menu link: main-menu:data-access/committee
   $menu_links['main-menu:data-access/committee'] = array(
@@ -67,7 +67,7 @@ function mica_data_access_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-40',
-    'parent_path' => 'node/1',
+    'parent_path' => 'node/6',
   );
   // Exported menu link: main-menu:data-access/request
   $menu_links['main-menu:data-access/request'] = array(
@@ -87,7 +87,7 @@ function mica_data_access_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-30',
-    'parent_path' => 'node/1',
+    'parent_path' => 'node/6',
   );
   // Exported menu link: main-menu:data-access/requests
   $menu_links['main-menu:data-access/requests'] = array(
@@ -107,12 +107,12 @@ function mica_data_access_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-30',
-    'parent_path' => 'node/1',
+    'parent_path' => 'node/6',
   );
   // Exported menu link: main-menu:node/1
-  $menu_links['main-menu:node/1'] = array(
+  $menu_links['main-menu:node/6'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'node/1',
+    'link_path' => 'node/6',
     'router_path' => 'node/%',
     'link_title' => 'Data Access',
     'options' => array(
@@ -128,9 +128,9 @@ function mica_data_access_menu_default_menu_links() {
     'weight' => '35',
   );
   // Exported menu link: main-menu:node/4
-  $menu_links['main-menu:node/4'] = array(
+  $menu_links['main-menu:node/5'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'node/4',
+    'link_path' => 'node/5',
     'router_path' => 'node/%',
     'link_title' => 'Data Access Policy',
     'options' => array(
@@ -144,7 +144,7 @@ function mica_data_access_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '-50',
-    'parent_path' => 'node/1',
+    'parent_path' => 'node/6',
   );
   // Translatables
   // Included for use with string extractors like potx.

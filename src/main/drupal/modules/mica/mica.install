@@ -10,10 +10,11 @@
  * Implements hook_install().
  */
 function mica_install() {
-  mica_add_page('Data Access', '', 'data-access');
-  mica_add_page('Research', '', 'research');
-  mica_add_page('Resources', '', 'resources');
-  mica_add_page('Consortium Policies and Guidelines', '', 'data-access/policy');
+ 
+  $results = db_query("SELECT * FROM languages");
+  if (count($results) == 1){
+    // insert french
+  }
   
   $spec = array(
     'description' => 'An array of additional arguments configuring this index.',
@@ -23,32 +24,6 @@ function mica_install() {
     'not null' => TRUE,
   );
   db_change_field('search_api_index', 'options', 'options', $spec);
-}
-
-function mica_add_page($title, $body, $alias) {
-  $node = new stdClass();
-  $node->type = 'page';
-  node_object_prepare($node);
-  $node->title = $title;
-  $node->body = array(
-    LANGUAGE_NONE => array(
-      array('value' => $body)
-    )
-  );
-  $node->promote = 0;
-  $node->comment = COMMENT_NODE_CLOSED;
-  $node->sticky = 0;
-  $node->language = LANGUAGE_NONE;
-  node_save($node);
-
-  if (isset($alias)) {
-    $path = array('alias' => $alias);
-    $path['source'] = 'node/' . $node->nid;
-    $path['language'] = LANGUAGE_NONE;
-    path_save($path);
-  }
-  
-  return $node;
 }
 
 /**
