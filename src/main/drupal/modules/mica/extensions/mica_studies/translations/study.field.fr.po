@@ -58,7 +58,7 @@ msgstr "Spécifier quel caractéristique d'étude"
 #: field:field_acroym:study:label
 msgctxt "field_acroym:study:label"
 msgid "Acronym"
-msgstr "Acronym"
+msgstr "Acronyme"
 
 #: field:field_acroym:study:description
 msgctxt "field_acroym:study:description"
@@ -2120,4 +2120,3 @@ msgstr "Femme"
 #~ msgctxt "title_field:study:label"
 #~ msgid "Complete name"
 #~ msgstr "Nom complet"
-
