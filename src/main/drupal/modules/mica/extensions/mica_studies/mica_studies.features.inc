@@ -84,7 +84,7 @@ function mica_studies_node_info() {
     'contact' => array(
       'name' => t('Contact'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('How to contact a person in an institution.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

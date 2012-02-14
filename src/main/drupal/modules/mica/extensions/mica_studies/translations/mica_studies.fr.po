@@ -123,6 +123,10 @@ msgstr "Fin de l'étude"
 msgid "Contact"
 msgstr "Contact"
 
+#: mica_studies.features.inc:87
+msgid "How to contact a person in an institution."
+msgstr "Comment contacter une personne dans une institution."
+
 #: mica_studies.features.inc:89;97;105;113
 msgid "Title"
 msgstr "Titre"
