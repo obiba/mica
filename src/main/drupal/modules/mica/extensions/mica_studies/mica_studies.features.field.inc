@@ -3036,9 +3036,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Enter the Contact full name. 
-<br>
-You will be able to edit these Contacts once the Study will be saved.',
+      'description' => 'Enter the Contact full name. You will be able to edit these Contacts once the Study will be saved.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -4925,9 +4923,7 @@ You will be able to edit these Contacts once the Study will be saved.',
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Enter the Investigator full name. 
-<br>
-You will be able to edit these Investigators once the Study will be saved.',
+      'description' => 'Enter the Investigator full name. You will be able to edit these Investigators once the Study will be saved.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -7299,12 +7295,8 @@ other|Other',
   t('Documents');
   t('Email');
   t('End year');
-  t('Enter the Contact full name. 
-<br>
-You will be able to edit these Contacts once the Study will be saved.');
-  t('Enter the Investigator full name. 
-<br>
-You will be able to edit these Investigators once the Study will be saved.');
+  t('Enter the Contact full name. You will be able to edit these Contacts once the Study will be saved.');
+  t('Enter the Investigator full name. You will be able to edit these Investigators once the Study will be saved.');
   t('Ethnic origin');
   t('Files');
   t('For how many people have biological samples been collected?');

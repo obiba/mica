@@ -137,8 +137,8 @@ msgstr "Contacts"
 
 #: field:field_contacts_ref:study:description
 msgctxt "field_contacts_ref:study:description"
-msgid "Enter the Contact full name. <br>You will be able to edit these Contacts once the Study will be saved."
-msgstr "Entrer le nom complet du contact.<br>Vous pourrez éditer ces contacts une fois l'étude sauvegardée."
+msgid "Enter the Contact full name. You will be able to edit these Contacts once the Study will be saved."
+msgstr "Entrer le nom complet du contact. Vous pourrez éditer ces contacts une fois l'étude sauvegardée."
 
 #: field:field_country:study:label
 msgctxt "field_country:study:label"
@@ -237,8 +237,8 @@ msgstr "Chercheurs"
 
 #: field:field_investigators:study:description
 msgctxt "field_investigators:study:description"
-msgid "Enter the Investigator full name. <br>You will be able to edit these Investigators once the Study will be saved."
-msgstr "Entrer le nom complet du chercheur.<br>Vous pourrez éditer ces chercheurs une fois l'étude sauvegardée."
+msgid "Enter the Investigator full name. You will be able to edit these Investigators once the Study will be saved."
+msgstr "Entrer le nom complet du chercheur. Vous pourrez éditer ces chercheurs une fois l'étude sauvegardée."
 
 #: field:field_logo:study:label
 msgctxt "field_logo:study:label"

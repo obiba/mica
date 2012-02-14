@@ -118,6 +118,8 @@ msgstr "Si applicable, suivi des participants"
 msgid "Study ended"
 msgstr "Fin de l'étude"
 
+msgid "What is the complete name of the study?"
+msgstr "Quel est le nom complet de l'étude ?"
 
 #: mica_studies.features.inc:85
 msgid "Contact"
@@ -346,4 +348,3 @@ msgstr "Configuration initiale de Mica"
 #: mica_studies.info:0
 msgid "OBiBa"
 msgstr "OBiBa"
-
