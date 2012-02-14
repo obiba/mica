@@ -81,3 +81,9 @@ msgstr "Le champ @label du noeud."
 msgid "The Legacy Id of the parent Study of the node."
 msgstr "L'identifiant legacy du noeud Étude parent."
 
+msgid "Advanced !title"
+msgstr "!title avancée"
+
+msgid "Enter the terms you wish to search for in Site or !title."
+msgstr "Entrer les termes à chercher dans le site ou dans les !title."
+
