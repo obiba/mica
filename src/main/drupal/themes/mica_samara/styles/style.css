@@ -1191,10 +1191,10 @@ body.overlay-open div.add-or-remove-shortcuts {
   padding: 0;
 }
 .tabs ul.tabs li a {
-  -moz-border-radius: 3px 3px 0 0;
-  -webkit-border-radius: 3px 3px 0 0;
-  -khtml-border-radius: 3px 3px 0 0;
-  border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 3px 3px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  -khtml-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
   display: block;
 }
 .tabs ul.tabs li.active a {
@@ -1215,6 +1215,10 @@ body.overlay-open div.add-or-remove-shortcuts {
   margin: 3px 3px 0 0;
 }
 .tabs ul.tabs.primary li a {
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  -khtml-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
   padding: 7px 15px;
   margin: 0;
   border-bottom: none;
