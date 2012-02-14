@@ -3,11 +3,7 @@
 # French translation of Drupal (general)
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 # Generated from files:
-#  mica_projects.features.field.inc: n/a
-#  mica_projects.views_default.inc: n/a
 #  mica_projects.features.menu_links.inc: n/a
-#  mica_projects.module: n/a
-#  mica_projects.info: n/a
 # NAME <EMAIL@ADDRESS>, 2012.
 #
 msgid ""
@@ -66,15 +62,6 @@ msgstr "Etudes"
 #: mica_projects.features.field.inc:1153 mica_projects.views_default.inc:542
 msgid "Teleconferences"
 msgstr "Téléconferences"
-
-#: mica_projects.features.menu_links.inc:48
-#: mica_projects.views_default.inc:332
-msgid "Projects"
-msgstr "Projets"
-
-#: mica_projects.features.menu_links.inc:49
-msgid "Research"
-msgstr "Recherche"
 
 #: mica_projects.views_default.inc:178;331;541
 msgid "Master"
