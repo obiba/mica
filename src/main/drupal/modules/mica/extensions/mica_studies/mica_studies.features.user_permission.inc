@@ -127,7 +127,6 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study reviewer',
     ),
     'module' => 'node',
   );
