@@ -127,6 +127,7 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
+      2 => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -941,6 +942,45 @@ function mica_studies_user_default_permissions() {
       2 => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: view any unpublished contact content
+  $permissions['view any unpublished contact content'] = array(
+    'name' => 'view any unpublished contact content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'study reviewer',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: view any unpublished content
+  $permissions['view any unpublished content'] = array(
+    'name' => 'view any unpublished content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'consortium administrator',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: view any unpublished documents content
+  $permissions['view any unpublished documents content'] = array(
+    'name' => 'view any unpublished documents content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: view any unpublished study content
+  $permissions['view any unpublished study content'] = array(
+    'name' => 'view any unpublished study content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'study reviewer',
+    ),
+    'module' => 'view_unpublished',
   );
 
   // Exported permission: view field_authorising_date

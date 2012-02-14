@@ -197,7 +197,6 @@ projects[references][type] = module
 projects[references][download][type] = git
 projects[references][download][url] = http://git.drupal.org/project/references.git
 projects[references][download][revision] = 311bd497bfb0f9de046d585006a7ef3d9c6c74c8
-projects[references][patch][1094406] = http://drupal.org/files/all-node-access-references-1094406-18.patch
 
 projects[search_api][version] = 1.0
 projects[search_api][type] = module
@@ -239,6 +238,9 @@ projects[token][type] = module
 
 projects[variable][version] = 1.1
 projects[variable][type] = module
+
+projects[view_unpublished][version] = 1.0
+projects[view_unpublished][type] = module
 
 projects[views][version] = 3.1
 projects[views][type] = module
