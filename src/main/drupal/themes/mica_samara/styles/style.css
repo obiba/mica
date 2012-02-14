@@ -2051,8 +2051,9 @@ ul.action-links li a.highlight:first-child {
 
 /* tabs */
 div.horizontal-tabs {
-  /*background-color: #F9F9F9;*/
+  background-color: #FFFFFF;
   margin-top: 3em;
+  margin-bottom: 0;
 }
 
 div.horizontal-tabs ul.horizontal-tabs-list {
