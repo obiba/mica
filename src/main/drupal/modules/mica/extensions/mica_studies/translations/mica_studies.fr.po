@@ -137,7 +137,7 @@ msgid "What are the stage and timeline of the study?"
 msgstr "Quelles sont les étapes ou la chronologie de l'étude?"
 
 msgid "If relevant, please provide the bibliographic citations (i.e. published sources such as journal article, web site, or report) which should be used to refer to your study."
-msgstr "Si applicable, veuillez fournir une liste de références bibliographiques (i.e. article de journal, site web ou rapport)"
+msgstr "Si applicable, veuillez fournir une liste de références bibliographiques (i.e. article de journal, site web ou rapport) à utiliser pour votre étude."
 
 msgid "Datasets available to the research community."
 msgstr "Jeux de données mis à la disposition de la communauté"
