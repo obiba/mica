@@ -121,6 +121,28 @@ msgstr "Fin de l'étude"
 msgid "What is the complete name of the study?"
 msgstr "Quel est le nom complet de l'étude ?"
 
+msgid "I agree and understand that the information collected in this form will be displayed on the [SPECIFIC NETWORK] website (www.…) upon reception."
+msgstr "Je comprends et j'accepte que les renseignements recueillis dans ce formulaire seront affichés sur le site web de [RÉSEAU SPÉCIFIQUE] (www.…) à leur réception."
+
+msgid "I agree and understand that the information collected in this form will be displayed on the Maelstrom Research website upon reception in agreement with “Authorization from contributors to the Maelstrom Research Catalogues” (Document available on Maelstrom Research Web page or at: …)."
+msgstr "Je comprends et j'accepte que les renseignements recueillis dans ce formulaire seront affichés sur le site de recherche Maelstrom lors de la réception en accord avec "l'autorisation des contributeurs aux Catalogues de recherche Maelstrom" (document disponible sur la page Web de recherche Maelstrom ou à l'adresse: …)."
+
+msgid "Headline number of participants"
+msgstr "nombre global de participants"
+
+msgid "Is access to the following study features to external researchers or third parties provided or foreseen?"
+msgstr "L'accès aux caractéristiques suivantes de l'étude à des chercheurs externes ou à des tiers est-il fourni ou prévu?"
+
+msgid "What are the stage and timeline of the study?"
+msgstr "Quelles sont les étapes ou la chronologie de l'étude?"
+
+msgid "If relevant, please provide the bibliographic citations (i.e. published sources such as journal article, web site, or report) which should be used to refer to your study."
+msgstr "Si applicable, veuillez fournir une liste de références bibliographiques (i.e. article de journal, site web ou rapport)"
+
+msgid "Datasets available to the research community."
+msgstr "Jeux de données mis à la disposition de la communauté"
+
+
 #: mica_studies.features.inc:85
 msgid "Contact"
 msgstr "Contact"
