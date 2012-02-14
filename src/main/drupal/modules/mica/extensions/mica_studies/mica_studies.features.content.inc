@@ -171,13 +171,14 @@ function mica_studies_content_defaults() {
           'safe_value' => '<p>This section...</p>',
           'safe_summary' => '',
         ),
-        'fr' => array(
-          0 => array(
-            'value' => '<p>Cette section permet de pr&eacute;senter les activit&eacute;s de recherches qui sont g&eacute;n&eacute;r&eacute;es par le consortium</p>',
-            'summary' => '',
-            'format' => 'full_html',
-            'safe_value' => '<p>Cette section permet de présenter les activités de recherches qui sont générées par le consortium</p>',
-            'safe_summary' => '',
+      ),
+  		'fr' => array(
+        0 => array(
+          'value' => '<p>Cette section permet de pr&eacute;senter les activit&eacute;s de recherches qui sont g&eacute;n&eacute;r&eacute;es par le consortium</p>',
+          'summary' => '',
+          'format' => 'full_html',
+          'safe_value' => '<p>Cette section permet de présenter les activités de recherches qui sont générées par le consortium</p>',
+          'safe_summary' => '',
         ),
       ),
     ),
