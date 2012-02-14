@@ -5,7 +5,6 @@
 # Generated from files:
 #  mica_data_access.features.field.inc: n/a
 #  mica_data_access.features.inc: n/a
-#  mica_data_access.features.menu_links.inc: n/a
 #  mica_data_access.views_default.inc: n/a
 #  mica_data_access.module: n/a
 #  mica_data_access.info: n/a
@@ -44,7 +43,6 @@ msgstr "Membre du comité d'accès aux données"
 
 #: mica_data_access.features.field.inc:1503
 #: mica_data_access.features.inc:37
-#: mica_data_access.features.menu_links.inc:168
 msgid "Data Access Request"
 msgstr "Demande d'accès aux données"
 
@@ -106,29 +104,6 @@ msgstr "Titre du projet"
 #: mica_data_access.features.inc:47
 msgid "Describes the status of the data access form review."
 msgstr "Décrit le statut de la revue de demande d'accès aux données."
-
-#: mica_data_access.features.menu_links.inc:165
-#: mica_data_access.views_default.inc:175
-msgid "DACO Approved Projects"
-msgstr "Projets approuvés par le DACO"
-
-#: mica_data_access.features.menu_links.inc:166
-#: mica_data_access.views_default.inc:438
-msgid "Data Access Administration"
-msgstr "Administration de demandes d'accès"
-
-#: mica_data_access.features.menu_links.inc:167
-#: mica_data_access.views_default.inc:610
-msgid "Data Access Committee"
-msgstr "Comité de demandes d'accès"
-
-#: mica_data_access.features.menu_links.inc:169
-msgid "Data Access Policy"
-msgstr "Politique d'accès aux données"
-
-#: mica_data_access.features.menu_links.inc:170
-msgid "Data Access"
-msgstr "Demande d'accès"
 
 #: mica_data_access.views_default.inc:174;437;609;882
 msgid "Master"
