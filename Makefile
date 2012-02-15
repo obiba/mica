@@ -130,12 +130,15 @@ mica-install:
 		rm -rf profiles/standard && \
 		rm -rf profiles/minimal ; \
 	fi
-		
+
 htaccess:
 	cp target/$(micadir)/.htaccess target/$(micadir)/.htaccess_bak
 	sed '/# RewriteBase \/drupal/ a RewriteBase \/mica' target/$(micadir)/.htaccess > target/$(micadir)/.htaccess_new
 	mv target/$(micadir)/.htaccess_new target/$(micadir)/.htaccess 
-	
+
+delete-beta-modules:
+	rm -rf target/$(micadir)/sites/all/modules/mica/extensions/mica_dataschemas
+
 #
 # Deploy
 #
