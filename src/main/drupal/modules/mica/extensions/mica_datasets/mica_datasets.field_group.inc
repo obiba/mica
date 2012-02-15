@@ -52,6 +52,7 @@ function mica_datasets_field_group_info() {
     'children' => array(
       0 => 'mica_dataset',
       1 => 'mica_opal',
+      2 => 'path',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -174,12 +175,11 @@ function mica_datasets_field_group_info() {
       0 => 'group_datasets',
       1 => 'group_access',
       2 => 'group_authorization',
-      3 => 'group_documents',
+      3 => 'group_comments',
       4 => 'group_general_info',
       5 => 'group_marker_paper',
       6 => 'group_methods',
       7 => 'group_status',
-      8 => 'group_supp_info',
     ),
     'format_type' => 'htabs',
     'format_settings' => array(
