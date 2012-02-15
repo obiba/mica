@@ -1,7 +1,7 @@
-project = "mica"
-name = "Mica" 
+project = mica
+name = Mica
 description = "Mica module"
-package = "OBiBa"
+package = OBiBa
 core = 7.x
 
 dependencies[] = entity
