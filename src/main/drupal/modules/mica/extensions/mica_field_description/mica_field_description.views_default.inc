@@ -271,6 +271,7 @@ function mica_field_description_views_default_views() {
   $handler->display->display_options['use_batch'] = '1';
   $translatables['csv_field_description_export'] = array(
     t('Master'),
+    t('CSV Contact Export'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -365,13 +366,11 @@ function mica_field_description_views_default_views() {
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['use_operator'] = FALSE;
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'search_api_index_fields_description_index';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'field_description' => 'field_description',
-  );
+  /* Filter criterion: Indexed Node: Content Type */
+  $handler->display->display_options['filters']['field_bundle']['id'] = 'field_bundle';
+  $handler->display->display_options['filters']['field_bundle']['table'] = 'search_api_index_fields_description_index';
+  $handler->display->display_options['filters']['field_bundle']['field'] = 'field_bundle';
+  $handler->display->display_options['filters']['field_bundle']['value'] = 'field_description';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

@@ -61,18 +61,18 @@ function _mica_configuration_batch() {
 
   $operations = array();
 
-  $length = strlen('mica_');
-  foreach (module_list() as $module) {
-    if (substr($module, 0, $length) === 'mica_') {
-      $operations[] = array('_rebuild_user_permission', array($module));
-    }
-  }
-
   // find all mica french translation files
   $filename = '/fr.po$/';
   $files = drupal_system_listing($filename, 'sites/all/modules/mica', 'name', 0);
   foreach($files as $file){
     $operations[] = array('_update_mica_languages', array($file));
+  }
+
+  $length = strlen('mica_');
+  foreach (module_list() as $module) {
+    if (substr($module, 0, $length) === 'mica_') {
+      $operations[] = array('_rebuild_user_permission', array($module));
+    }
   }
 
   $operations[] = array('_update_language_french', array());
@@ -89,20 +89,20 @@ function _mica_configuration_batch() {
 }
 
 function _update_mica_languages($file, &$context) {
-  module_load_include('batch.inc', 'l10n_update');
+  module_load_include('inc', 'l10n_update', 'l10n_update.locale');
   $langcode = 'fr';
-  $field_pattern = '/.field.' . $langcode . '.po$/';
-  $menu_pattern = '/.menu.' . $langcode . '.po$/';
-  $blocks_pattern = '/.blocks.' . $langcode . '.po$/';
-  if (preg_match($field_pattern, $file->filename) == 1) {
-    _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'field');
-  } elseif (preg_match($menu_pattern, $file->filename) == 1) {
-    _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'menu');
-  } elseif (preg_match($blocks_pattern, $file->filename) == 1) {
-    _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'blocks');
-  } else {
-    _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'default');
+  $group = 'default';
+  if (preg_match('/.field.' . $langcode . '.po$/', $file->filename) === 1) {
+    $group = 'field';
+  } elseif (preg_match('/.menu.' . $langcode . '.po$/', $file->filename) === 1) {
+    $group = 'menu';
+  } elseif (preg_match('/.blocks.' . $langcode . '.po$/', $file->filename) === 1) {
+    $group = 'blocks';
   }
+  _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, $group);
+
+  watchdog('mica', 'Imported %group for %name',
+    array('%group' => $group, '%name' => $file->filename), WATCHDOG_DEBUG);
 
   $context['message'] = st('Imported interface translations: %name.', array('%name' => $file->filename));
 }

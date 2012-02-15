@@ -13,7 +13,7 @@ function mica_projects_views_default_views() {
   $view = new view;
   $view->name = 'project_studies';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'study, project';
   $view->base_table = 'node';
   $view->human_name = 'Project Studies';
   $view->core = 7;
@@ -95,33 +95,12 @@ function mica_projects_views_default_views() {
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
-  $handler->display->display_options['fields']['field_full_name']['table'] = 'field_data_field_full_name';
-  $handler->display->display_options['fields']['field_full_name']['field'] = 'field_full_name';
-  $handler->display->display_options['fields']['field_full_name']['relationship'] = 'field_studies_nid';
-  $handler->display->display_options['fields']['field_full_name']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_full_name']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_full_name']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_full_name']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_full_name']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_full_name']['hide_alter_empty'] = 0;
   /* Field: Content: How many people are planned to be recruited? Or if the study is completed, what is the final number of participants? */
   $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'field_data_field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['field'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['relationship'] = 'field_studies_nid';
+  $handler->display->display_options['fields']['field_target_number_participants']['label'] = 'Target number of participants';
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_target_number_participants']['alter']['absolute'] = 0;
@@ -144,6 +123,34 @@ function mica_projects_views_default_views() {
     'prefix_suffix' => 1,
   );
   $handler->display->display_options['fields']['field_target_number_participants']['field_api_classes'] = 0;
+  /* Field: Content: Country */
+  $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
+  $handler->display->display_options['fields']['field_country']['table'] = 'field_data_field_country';
+  $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
+  $handler->display->display_options['fields']['field_country']['relationship'] = 'field_studies_nid';
+  $handler->display->display_options['fields']['field_country']['label'] = 'Country selection criteria';
+  $handler->display->display_options['fields']['field_country']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_country']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_country']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_country']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_country']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_country']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_country']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_country']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_country']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_country']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_country']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_country']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_country']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_country']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_country']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_country']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_country']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_country']['group_rows'] = 1;
+  $handler->display->display_options['fields']['field_country']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_country']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['field_country']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_country']['field_api_classes'] = 0;
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
@@ -185,8 +192,8 @@ function mica_projects_views_default_views() {
     t('Desc'),
     t('field_studies'),
     t('Name'),
-    t('Broken handler field_data_field_full_name.field_full_name'),
-    t('How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?'),
+    t('Target number of participants'),
+    t('Country selection criteria'),
     t('All'),
     t('Block'),
   );
@@ -195,7 +202,7 @@ function mica_projects_views_default_views() {
   $view = new view;
   $view->name = 'projects';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'project';
   $view->base_table = 'node';
   $view->human_name = 'Projects';
   $view->core = 7;

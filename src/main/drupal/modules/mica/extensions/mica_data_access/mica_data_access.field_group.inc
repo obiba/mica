@@ -23,11 +23,12 @@ function mica_data_access_field_group_info() {
     'label' => 'Institution',
     'weight' => '4',
     'children' => array(
-      0 => 'field_institution_name',
-      1 => 'field_street',
-      2 => 'field_city',
+      0 => 'field_city',
+      1 => 'field_country_text',
+      2 => 'field_institution_name',
       3 => 'field_postal_code',
-      4 => 'field_country_text',
+      4 => 'field_street',
+      5 => 'field_state',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -53,11 +54,12 @@ function mica_data_access_field_group_info() {
     'label' => 'Institution',
     'weight' => '4',
     'children' => array(
-      0 => 'field_institution_name',
-      1 => 'field_street',
-      2 => 'field_city',
+      0 => 'field_city',
+      1 => 'field_country_text',
+      2 => 'field_institution_name',
       3 => 'field_postal_code',
-      4 => 'field_country_text',
+      4 => 'field_street',
+      5 => 'field_state',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -83,9 +85,9 @@ function mica_data_access_field_group_info() {
     'label' => 'Investigators',
     'weight' => '3',
     'children' => array(
-      0 => 'field_representative',
+      0 => 'field_collaborator',
       1 => 'field_rep_email',
-      2 => 'field_collaborator',
+      2 => 'field_representative',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -111,9 +113,9 @@ function mica_data_access_field_group_info() {
     'label' => 'Investigators',
     'weight' => '3',
     'children' => array(
-      0 => 'field_representative',
+      0 => 'field_collaborator',
       1 => 'field_rep_email',
-      2 => 'field_collaborator',
+      2 => 'field_representative',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

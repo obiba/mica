@@ -13,7 +13,7 @@ function mica_data_access_views_default_views() {
   $view = new view;
   $view->name = 'data_access';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'data_access';
   $view->base_table = 'node';
   $view->human_name = 'Data Access';
   $view->core = 7;
@@ -197,7 +197,7 @@ function mica_data_access_views_default_views() {
   $view = new view;
   $view->name = 'data_access_admin';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'data_access';
   $view->base_table = 'node';
   $view->human_name = 'Data Access Administration';
   $view->core = 7;
@@ -465,7 +465,7 @@ function mica_data_access_views_default_views() {
   $view = new view;
   $view->name = 'data_access_committee';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'data_access';
   $view->base_table = 'node';
   $view->human_name = 'Data Access Committee';
   $view->core = 7;
@@ -535,25 +535,29 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_institution']['id'] = 'field_institution';
-  $handler->display->display_options['fields']['field_institution']['table'] = 'field_data_field_institution';
-  $handler->display->display_options['fields']['field_institution']['field'] = 'field_institution';
-  $handler->display->display_options['fields']['field_institution']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_institution']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_institution']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_institution']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_institution']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_institution']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_institution']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_institution']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_institution']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_institution']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_institution']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_institution']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_institution']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_institution']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_institution']['empty_zero'] = 0;
+  /* Field: Content: Institution Name */
+  $handler->display->display_options['fields']['field_institution_name']['id'] = 'field_institution_name';
+  $handler->display->display_options['fields']['field_institution_name']['table'] = 'field_data_field_institution_name';
+  $handler->display->display_options['fields']['field_institution_name']['field'] = 'field_institution_name';
+  $handler->display->display_options['fields']['field_institution_name']['label'] = 'Institution';
+  $handler->display->display_options['fields']['field_institution_name']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_institution_name']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_institution_name']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_institution_name']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_institution_name']['field_api_classes'] = 0;
   /* Field: Content: Email */
   $handler->display->display_options['fields']['field_contact_email']['id'] = 'field_contact_email';
   $handler->display->display_options['fields']['field_contact_email']['table'] = 'field_data_field_contact_email';
@@ -621,7 +625,7 @@ function mica_data_access_views_default_views() {
     t('Contact'),
     t('Title'),
     t('[field_contact_name]'),
-    t('Broken handler field_data_field_institution.field_institution'),
+    t('Institution'),
     t('Email'),
     t('Page'),
   );
@@ -630,7 +634,7 @@ function mica_data_access_views_default_views() {
   $view = new view;
   $view->name = 'my_data_access_requests';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'data_access';
   $view->base_table = 'node';
   $view->human_name = 'My Data Access Requests';
   $view->core = 7;
