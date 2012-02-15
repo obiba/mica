@@ -5,13 +5,6 @@
  */
 function mica_standard_install_tasks($install_state) {
   $tasks = array(
-  	'mica_default_content' => array(
-      'display_name' => st('Import Mica default content'),
-      'display' => TRUE,
-      'type' => 'batch',
-      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED, // default to insert content
-      'function' => '_import_default_data',
-    ),
     'mica_configure' => array(
       'display_name' => st('Configure Mica'),
       'display' => TRUE,
@@ -23,16 +16,16 @@ function mica_standard_install_tasks($install_state) {
   return $tasks;
 }
 
-function _import_default_data($install_state) {
+function _mica_configuration_batch() {
 
-  // for some reason drupal_get_path('profile', 'mica_standard') is empty, maybe a cache related issue...
-  $root = 'profiles/mica_standard/data';
-  $feed_configs = array(
-  	'csv_field_description_import' => array('file' => $root . '/field_description_import.csv')
-  );
-    
   $operations = array();
-  foreach($feed_configs as $importer => $file){
+
+  // import default content
+  // for some reason drupal_get_path('profile', 'mica_standard') is empty, maybe a cache related issue...
+  $default_data = array(
+    'csv_field_description_import' => array('file' => 'profiles/mica_standard/data/field_description_import.csv')
+  );
+  foreach($default_data as $importer => $file) {
     $source = feeds_source($importer);
     foreach ($source->importer->plugin_types as $type) {
       if ($source->importer->$type->hasSourceConfig()) {
@@ -41,36 +34,23 @@ function _import_default_data($install_state) {
           $config = isset($source->config[$class]) ? $source->config[$class] : array();
           $config['source'] = $file['file'];
           $source->setConfigFor($source->importer->$type, $config);
-        }  
+        }
       }
     }
     $source->save();
     $operations[] = array('feeds_batch', array('import', $source->id, $source->feed_nid));
   }
-  
-  $batch = array(
-    'operations' => $operations,
-    'title' => st('Import Mica default content'),
-  	'init_message'  => st('Creating Mica default content'),
-  	'error_message' => st('Error while importing Mica default content'),
-  );
-  return $batch;
-}
-
-function _mica_configuration_batch() {
-
-  $operations = array();
 
   // find all mica french translation files
-  $filename = '/fr.po$/';
-  $files = drupal_system_listing($filename, 'sites/all/modules/mica', 'name', 0);
-  foreach($files as $file){
-    $operations[] = array('_update_mica_languages', array($file));
+  $po_files = drupal_system_listing('/fr.po$/', 'sites/all/modules/mica', 'name', 0);
+  foreach($po_files as $po_file) {
+    $operations[] = array('_update_mica_languages', array($po_file));
   }
 
-  $length = strlen('mica_');
+  // prepare permissions rebuild
+  $mica_length = strlen('mica_');
   foreach (module_list() as $module) {
-    if (substr($module, 0, $length) === 'mica_') {
+    if (substr($module, 0, $mica_length) === 'mica_') {
       $operations[] = array('_rebuild_user_permission', array($module));
     }
   }
@@ -89,7 +69,7 @@ function _mica_configuration_batch() {
 }
 
 function _update_mica_languages($file, &$context) {
-  module_load_include('inc', 'l10n_update', 'l10n_update.locale');
+
   $langcode = 'fr';
   $group = 'default';
   if (preg_match('/.field.' . $langcode . '.po$/', $file->filename) === 1) {
@@ -99,6 +79,7 @@ function _update_mica_languages($file, &$context) {
   } elseif (preg_match('/.blocks.' . $langcode . '.po$/', $file->filename) === 1) {
     $group = 'blocks';
   }
+  module_load_include('inc', 'l10n_update', 'l10n_update.locale');
   _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, $group);
 
   watchdog('mica', 'Imported %group for %name',
