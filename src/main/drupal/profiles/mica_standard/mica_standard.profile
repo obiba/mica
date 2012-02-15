@@ -5,13 +5,20 @@
  */
 function mica_standard_install_tasks($install_state) {
   $tasks = array(
-  	'mica_update_mica_languages_batch' => array(
-    	'display_name' => st('Installation of Mica translations'),
+  	'mica_standard_insert_language_french' => array(
+    	'display_name' => st('Install french language'),
       'display' => TRUE,
       'type' => 'batch',
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-      'function' => '_update_mica_languages_batch',
+      'function' => '_update_language_french',
     ),
+   	'mica_update_mica_languages_batch' => array(
+     	'display_name' => st('Installation of Mica translations'),
+       'display' => TRUE,
+       'type' => 'batch',
+       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+       'function' => '_update_mica_languages_batch',
+     ),
     'mica_standard_permissions' => array(
       'display_name' => st('Apply Mica default permissions'),
       'display' => TRUE,
@@ -135,6 +142,24 @@ function _update_mica_languages($file, &$context) {
   }
   
   $context['message'] = st('Imported: %name.', array('%name' => $file->filename));
+}
+
+function _update_language_french(){
+  $result = db_query("SELECT * FROM {languages} l WHERE l.language = 'fr'");
+  
+  if ($result->rowCount() == 0){
+    
+   locale_add_language('fr', 'French', 'Français', 0, '', 'fr', '1', 0);
+   
+    // Additional params, locale_add_language does not implement.
+    db_update('languages')
+      ->fields(array(
+        'plurals' => '2',
+        'formula' => '($n!=1)',
+      ))
+      ->condition('language', 'fr')
+      ->execute();
+  }
 }
 
 function _update_mica_languages_finished($success, $results, $operations) {
