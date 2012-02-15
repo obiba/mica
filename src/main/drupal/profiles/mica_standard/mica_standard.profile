@@ -80,6 +80,7 @@ function _update_mica_languages($file, &$context) {
     $group = 'blocks';
   }
   module_load_include('inc', 'l10n_update', 'l10n_update.locale');
+  module_load_include('inc', 'locale');
   _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, $group);
 
   watchdog('mica', 'Imported %group for %name',
