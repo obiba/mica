@@ -72,3 +72,6 @@ msgstr "L'importation des traductions francaise est terminée."
 
 msgid "Rebuild Mica user permissions finished"
 msgstr "Reconstruction des permissions des utilisateurs terminée"
+
+msgid "Configure Mica"
+msgstr "Configuration de Mica"

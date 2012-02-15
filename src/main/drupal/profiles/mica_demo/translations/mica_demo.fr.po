@@ -1,0 +1,44 @@
+# $Id$
+#
+# French translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from file: mica_demo.info: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-02-15 11:42-0500\n"
+"PO-Revision-Date: 2012-02-15 11:42-0500\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: French <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: mica_demo.info:0
+msgid "Mica Demo"
+msgstr ""
+
+#: mica_demo.info:0
+msgid "Mica standard install with some demo content."
+msgstr ""
+
+msgid "Import Mica demo content"
+msgstr "Importation des données de démonstration de Mica"
+
+msgid "Creating demo content"
+msgstr "Création du contenu de démonstration"
+
+msgid "Importing"
+msgstr "Importation"
+
+msgid "Configure Mica"
+msgstr "Configuration de Mica"
+
+msgid "Import Mica default content"
+msgstr "Importation des données par défaut de Mica"
+
+msgid "Install french language"
+msgstr "Installation de la langue francaise"
