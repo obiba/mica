@@ -24,48 +24,48 @@ msgstr ""
 
 #: mica_field_description.features.field.inc:788
 msgid "Body"
-msgstr ""
+msgstr "Corps"
 
 #: mica_field_description.features.field.inc:789
 msgid "Can this field have multiple values?"
-msgstr ""
+msgstr "Ce champ contient-il des valeurs multiples"
 
 #: mica_field_description.features.field.inc:790
 msgid "Categories"
-msgstr ""
+msgstr "Catégories"
 
 #: mica_field_description.features.field.inc:791
 msgid "Content Type"
-msgstr ""
+msgstr "Type de contenu"
 
 #: mica_field_description.features.field.inc:792
 msgid "Content Type Label"
-msgstr ""
+msgstr "Étiquette du type de contenu"
 
 #: mica_field_description.features.field.inc:793
 msgid "Field Name"
-msgstr ""
+msgstr "Nom du champ"
 
 #: mica_field_description.features.field.inc:794
 msgid "Field machine name"
-msgstr ""
+msgstr "Nom système du champ"
 
 #: mica_field_description.features.field.inc:795 mica_field_description.module:146
 msgid "Label"
-msgstr ""
+msgstr "Étiquette"
 
 #: mica_field_description.features.field.inc:796
 msgid "Machine name of the content type that declares this field"
-msgstr ""
+msgstr "Nom système du type de contenu qui déclare ce champ"
 
 #: mica_field_description.features.field.inc:797
 msgid "Name of the content type that declares this field"
-msgstr ""
+msgstr "Nom du type de contenu qui déclare ce champ"
 
 #: mica_field_description.features.field.inc:798
 msgid "Repeatable"
-msgstr ""
+msgstr "Répétable"
 
 #: mica_field_description.features.field.inc:799
 msgid "Value Type"
-msgstr ""
+msgstr "Type de valeur"

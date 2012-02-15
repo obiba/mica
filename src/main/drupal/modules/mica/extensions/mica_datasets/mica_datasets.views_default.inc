@@ -506,7 +506,7 @@ function mica_datasets_views_default_views() {
   $view = new view;
   $view->name = 'participant_variable_search';
   $view->description = '';
-  $view->tag = 'dataset';
+  $view->tag = 'dataset, search';
   $view->base_table = 'search_api_index_participant_variable_index';
   $view->human_name = 'Participant Variable Search';
   $view->core = 7;

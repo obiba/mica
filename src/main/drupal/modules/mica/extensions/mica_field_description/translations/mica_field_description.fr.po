@@ -25,63 +25,63 @@ msgstr ""
 
 #: mica_field_description.features.inc:37 mica_field_description.module:111 mica_field_description.info:0
 msgid "Field Description"
-msgstr ""
+msgstr "Description de champ"
 
 #: mica_field_description.features.inc:39
 msgid "Description of information collected about the studies."
-msgstr ""
+msgstr "Description des informations collectées sur les études."
 
 #: mica_field_description.features.inc:41
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: mica_field_description.views_default.inc:273;382
 msgid "Master"
-msgstr ""
+msgstr "Maitre"
 
 #: mica_field_description.views_default.inc:275;384
 msgid "more"
-msgstr ""
+msgstr "plus"
 
 #: mica_field_description.views_default.inc:276;385
 msgid "Apply"
-msgstr ""
+msgstr "Appliquer"
 
 #: mica_field_description.views_default.inc:277;386
 msgid "Reset"
-msgstr ""
+msgstr "Réinitialiser"
 
 #: mica_field_description.views_default.inc:278;387
 msgid "Sort by"
-msgstr ""
+msgstr "Ordonner par"
 
 #: mica_field_description.views_default.inc:279;388
 msgid "Asc"
-msgstr ""
+msgstr "Asc"
 
 #: mica_field_description.views_default.inc:280;389
 msgid "Desc"
-msgstr ""
+msgstr "Desc"
 
 #: mica_field_description.views_default.inc:281;390
 msgid "Items per page"
-msgstr ""
+msgstr "Items par page"
 
 #: mica_field_description.views_default.inc:282;391
 msgid "- All - "
-msgstr ""
+msgstr "- Tous - "
 
 #: mica_field_description.views_default.inc:283;392
 msgid "Offset"
-msgstr ""
+msgstr "Décalage"
 
 #: mica_field_description.views_default.inc:284
 msgid "titre"
-msgstr ""
+msgstr "titre"
 
 #: mica_field_description.views_default.inc:285
 msgid "body"
-msgstr ""
+msgstr "corps"
 
 #: mica_field_description.views_default.inc:286
 msgid "field_original_field_label"
@@ -113,53 +113,53 @@ msgstr ""
 
 #: mica_field_description.views_default.inc:293
 msgid "Data export"
-msgstr ""
+msgstr "Export Data"
 
 #: mica_field_description.views_default.inc:383
 msgid "Search Filters"
-msgstr ""
+msgstr "Filtres de recherche"
 
 #: mica_field_description.views_default.inc:393
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: mica_field_description.views_default.inc:394
 msgid "Text (indexed)"
-msgstr ""
+msgstr "Texte"
 
 #: mica_field_description.views_default.inc:395
 msgid "Fulltext search"
-msgstr ""
+msgstr "Recherche en text intégral"
 
 #: mica_field_description.views_default.inc:396
 msgid "Page"
-msgstr ""
+msgstr "Page"
 
 #: mica_field_description.module:121
 msgid "Use Field Descriptor for this field"
-msgstr ""
+msgstr "Utiliser la description de champ pour ce champ"
 
 #: mica_field_description.module:132
 msgid "Field value type"
-msgstr ""
+msgstr "Type de valeur du champ"
 
 #: mica_field_description.module:159
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: mica_field_description.module:560
 msgid "mica"
-msgstr ""
+msgstr "mica"
 
 #: mica_field_description.module:560
 msgid "Create Field Description for %field of %bundle"
-msgstr ""
+msgstr "Crée une description de champ pour %field de %bundle"
 
 #: mica_field_description.info:0
 msgid "Mica Field Description"
-msgstr ""
+msgstr "Description de champ Mica"
 
 #: mica_field_description.info:0
 msgid "OBiBa"
-msgstr ""
+msgstr "OBiBa"
 

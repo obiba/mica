@@ -84,9 +84,6 @@ function _update_mica_languages($file, &$context) {
   module_load_include('inc', 'locale');
   _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, $group);
 
-  watchdog('mica', 'Imported %group for %name',
-    array('%group' => $group, '%name' => $file->filename), WATCHDOG_DEBUG);
-
   $context['message'] = st('Imported interface translations: %name.', array('%name' => $file->filename));
 }
 
