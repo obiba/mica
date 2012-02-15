@@ -1,7 +1,7 @@
-project = mica
-name = Mica
+project = "mica"
+name = "Mica" 
 description = "Mica module"
-package = OBiBa
+package = "OBiBa"
 core = 7.x
 
 dependencies[] = entity
@@ -27,7 +27,6 @@ files[] = includes/exception.inc
 files[] = includes/fieldgroups.inc
 files[] = includes/mica_relation.entity.inc
 files[] = includes/relations.inc
-files[] = includes/search.inc
 
 files[] = includes/feeds/processors/FeedsUniqueNodeProcessor.inc
 files[] = includes/feeds/parsers/FeedsMultiValueCSVParser.inc

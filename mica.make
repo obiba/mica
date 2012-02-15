@@ -37,7 +37,7 @@ projects[auto_nodetitle][type] = module
 
 projects[] = advanced_help
 
-projects[calendar][version] = 3.0-alpha2
+projects[calendar][version] = 3.0-rc1
 projects[calendar][type] = module
 
 projects[cck_select_other][version] = 1.0
@@ -63,7 +63,7 @@ projects[ctools][download][type] = git
 projects[ctools][download][url] = http://git.drupal.org/project/ctools.git
 projects[ctools][download][revision] = dd65335ef5b823702ea5f1688a3000b09a04a739
 
-projects[date][version] = 2.0-rc2
+projects[date][version] = 2.1
 projects[date][type] = module
 
 projects[defaultcontent][version] = 1.0-alpha5
@@ -246,6 +246,7 @@ projects[view_unpublished][type] = module
 
 projects[views][version] = 3.1
 projects[views][type] = module
+projects[views][patch][1413200] = http://drupal.org/files/1413200.patch
 
 projects[views_data_export][version] = 3.0-beta5
 projects[views_data_export][type] = module

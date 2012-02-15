@@ -271,7 +271,6 @@ function mica_field_description_views_default_views() {
   $handler->display->display_options['use_batch'] = '1';
   $translatables['csv_field_description_export'] = array(
     t('Master'),
-    t('CSV Contact Export'),
     t('more'),
     t('Apply'),
     t('Reset'),

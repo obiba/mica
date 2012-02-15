@@ -5,73 +5,28 @@
  */
 function mica_standard_install_tasks($install_state) {
   $tasks = array(
-  	'mica_standard_insert_language_french' => array(
-    	'display_name' => st('Install french language'),
-      'display' => TRUE,
-      'type' => 'batch',
-      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-      'function' => '_update_language_french',
-    ),
-   	'mica_update_mica_languages_batch' => array(
-     	'display_name' => st('Installation of Mica translations'),
-       'display' => TRUE,
-       'type' => 'batch',
-       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-       'function' => '_update_mica_languages_batch',
-     ),
-    'mica_standard_permissions' => array(
-      'display_name' => st('Apply Mica default permissions'),
-      'display' => TRUE,
-      'type' => 'batch',
-      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-      'function' => '_rebuild_user_permission_batch',
-    ),  
-  	'mica_standard_content' => array(
+  	'mica_default_content' => array(
       'display_name' => st('Import Mica default content'),
       'display' => TRUE,
       'type' => 'batch',
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED, // default to insert content
       'function' => '_import_default_data',
     ),
+    'mica_configure' => array(
+      'display_name' => st('Configure Mica'),
+      'display' => TRUE,
+      'type' => 'batch',
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED, // default to insert content
+      'function' => '_mica_configuration_batch',
+    ),
   );
   return $tasks;
 }
 
-/**
-* Application of user permissions by features fails at modules installation.
-* So rebuild them in a post-install task.
-*/
-function _rebuild_user_permission_batch() {
-  $length = strlen('mica_');
-  foreach (module_list() as $module) {
-  	if (substr($module, 0, $length) === 'mica_') {
-  		$operations[] = array('_rebuild_user_permission', array($module));
-  	}
-  }  
-  $batch = array(
-    'operations' => $operations,
-    'title' => st('Apply Mica default permissions.'),
-    'init_message' => st('Starting user permissions rebuild.'),
-    'error_message' => st('Error while applying Mica permissions'),
-    'finished' => '_rebuild_user_permission_finished',
-  );
-  return $batch;  
-}
+function _import_default_data($install_state) {
 
-function _rebuild_user_permission($module, &$context) {
-  module_load_include('inc', 'features', 'includes/features.user');
-  module_load_include('inc', 'features', 'features.export');
-  user_permission_features_rebuild($module);    
-  $context['message'] = st('Rebuilt user permissions for %module.', array('%module' => $module));
-}
-
-function _rebuild_user_permission_finished($success, $results, $operations) {
-	drupal_set_message(st("Rebuild Mica user permissions finished"));
-}
-
-function _import_default_data($install_state){
-  $root = 'profiles/mica_standard/data'; // for some reason drupal_get_path('profile', 'mica_standard') is empty, maybe a cache related issue...
-  
+  // for some reason drupal_get_path('profile', 'mica_standard') is empty, maybe a cache related issue...
+  $root = 'profiles/mica_standard/data';
   $feed_configs = array(
   	'csv_field_description_import' => array('file' => $root . '/field_description_import.csv')
   );
@@ -102,66 +57,89 @@ function _import_default_data($install_state){
   return $batch;
 }
 
-function _update_mica_languages_batch($install_state) {
-  
+function _mica_configuration_batch() {
+
+  $operations = array();
+
+  $length = strlen('mica_');
+  foreach (module_list() as $module) {
+    if (substr($module, 0, $length) === 'mica_') {
+      $operations[] = array('_rebuild_user_permission', array($module));
+    }
+  }
+
   // find all mica french translation files
   $filename = '/fr.po$/';
   $files = drupal_system_listing($filename, 'sites/all/modules/mica', 'name', 0);
-
-  $operations = array();
   foreach($files as $file){
     $operations[] = array('_update_mica_languages', array($file));
   }
-  
+
+  $operations[] = array('_update_language_french', array());
+  $operations[] = array('_studies_block_configuration', array());
+
   $batch = array(
     'operations' => $operations,
-    'title' => st('Updating Mica translation.'),
-    'init_message' => st('Downloading and importing files.'),
-    'error_message' => st('Error importing interface translations'),
-    'finished' => '_update_mica_languages_finished',
+    'title' => st('Configure Mica'),
+    'init_message' => st('Starting Mica configuration'),
+    'error_message' => st('Error while configuring Mica'),
+    'finished' => '_mica_configuration_finished',
   );
-  return $batch;  
+  return $batch;
 }
-  
+
 function _update_mica_languages($file, &$context) {
   module_load_include('batch.inc', 'l10n_update');
-  
   $langcode = 'fr';
-  
   $field_pattern = '/.field.' . $langcode . '.po$/';
   $menu_pattern = '/.menu.' . $langcode . '.po$/';
   $blocks_pattern = '/.blocks.' . $langcode . '.po$/';
   if (preg_match($field_pattern, $file->filename) == 1) {
-    _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'field'); 
+    _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'field');
   } elseif (preg_match($menu_pattern, $file->filename) == 1) {
-    _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'menu'); 
+    _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'menu');
   } elseif (preg_match($blocks_pattern, $file->filename) == 1) {
     _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'blocks');
   } else {
     _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'default');
   }
-  
-  $context['message'] = st('Imported: %name.', array('%name' => $file->filename));
+
+  $context['message'] = st('Imported interface translations: %name.', array('%name' => $file->filename));
 }
 
-function _update_language_french(){
+/**
+ * Application of user permissions by features fails at modules installation.
+ * So rebuild them in a post-install task.
+ */
+function _rebuild_user_permission($module, &$context) {
+  module_load_include('inc', 'features', 'includes/features.user');
+  module_load_include('inc', 'features', 'features.export');
+  user_permission_features_rebuild($module);
+  $context['message'] = st('Rebuilt user permissions for %module.', array('%module' => $module));
+}
+
+function _studies_block_configuration(&$context) {
+  module_load_include('inc', 'mica_studies', 'mica_studies.facet_blocks');
+  mica_studies_configure_facet_blocks();
+  $context['message'] = st('Mica studies configured');
+}
+
+function _update_language_french(&$context) {
   $result = db_query("SELECT * FROM {languages} l WHERE l.language = 'fr'");
-  
-  if ($result->rowCount() == 0){
-    
-   locale_add_language('fr', 'French', 'Français', 0, '', 'fr', '1', 0);
-   
+  if ($result->rowCount() === 0) {
+    locale_add_language('fr', 'French', 'Français', 0, '', 'fr', '1', 0);
     // Additional params, locale_add_language does not implement.
     db_update('languages')
       ->fields(array(
-        'plurals' => '2',
-        'formula' => '($n!=1)',
-      ))
+      'plurals' => '2',
+      'formula' => '($n!=1)',
+    ))
       ->condition('language', 'fr')
       ->execute();
+    $context['message'] = st('French language configured');
   }
 }
 
-function _update_mica_languages_finished($success, $results, $operations) {
-	drupal_set_message(st("Mica French translations import finished."));
+function _mica_configuration_finished($success, $results, $operations) {
+  drupal_set_message(st("Mica configuration finished"));
 }

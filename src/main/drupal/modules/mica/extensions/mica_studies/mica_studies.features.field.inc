@@ -5153,9 +5153,10 @@ function mica_studies_field_default_fields() {
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description_label' => 'No limits in the number of participants',
+          'field_description_value_type' => 'BOOLEAN',
         ),
       ),
       'translatable' => '0',
@@ -5230,9 +5231,10 @@ function mica_studies_field_default_fields() {
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description_label' => 'No limits in the number of samples',
+          'field_description_value_type' => 'BOOLEAN',
         ),
       ),
       'translatable' => '0',
@@ -7308,11 +7310,11 @@ other|Other',
   t('How many people have provided or should provide biological samples, from which DNA could be extracted?');
   t('If needed, supplementary information about current number of collected biological samples');
   t('If needed, supplementary information about current number of participants recruited at baseline');
-  t('If needed, supplementary information about selection criteria of the population');
+  t('If needed, supplementary information about current study status');
   t('If needed, supplementary information about recruitments procedures');
+  t('If needed, supplementary information about selection criteria of the population');
   t('If needed, supplementary information about study design');
   t('If needed, supplementary information about target number of biological samples');
-  t('If needed, supplementary information about current study status');
   t('If needed, supplementary information about target number of participants');
   t('In date of');
   t('Institution name');

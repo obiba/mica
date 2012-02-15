@@ -302,7 +302,7 @@ function _magma_search_index_type_mapping() {
 * In this case, block will be visible for anonymous users.
 */
 function _enable_search_block($facet_delta, $block_title) {
-  
+
 	$theme_default = variable_get('theme_default', 'mica_samara');
 
 	$max_weight = db_query(
@@ -325,7 +325,7 @@ function _enable_search_block($facet_delta, $block_title) {
 	if($block) {
 		db_update('block')->fields(
 	  	array(
-      	'status' => TRUE,
+      	'status' => 1,
       	'region' => 'sidebar_first',
       	'weight' => empty($max_weight) ? 0 : ($max_weight + 1),
 				'pages' => 'studies-search',
@@ -340,7 +340,7 @@ function _enable_search_block($facet_delta, $block_title) {
 	} else {
 		db_insert('block')->fields(
 	  	array(
-      	'status' => TRUE,
+      	'status' => 1,
       	'region' => 'sidebar_first',
       	'weight' => empty($max_weight) ? 0 : ($max_weight + 1),
     		'custom' => BLOCK_CUSTOM_ENABLED, // Show this block by default but let individual users hide it.
@@ -359,9 +359,9 @@ function _enable_search_block($facet_delta, $block_title) {
 
 function _disable_search_block($facet_delta) {
 	$theme_default = variable_get('theme_default', 'mica_samara');
-	db_update('block')->fields(
+	$nb = db_update('block')->fields(
 	  array(
-    	'status' => FALSE,
+    	'status' => 0,
      	'region' => BLOCK_REGION_NONE,
 	  )
 	)
@@ -369,6 +369,10 @@ function _disable_search_block($facet_delta) {
 	->condition('delta', $facet_delta)
 	->condition('theme', $theme_default)
 	->execute();
+
+  watchdog('mica', 'Disabled facet block %facet: %status',
+    array('%facet' => $facet_delta, '%status' => ($nb > 0 ? 'Done' : 'Error')), WATCHDOG_DEBUG);
+
 }
 
 /**

@@ -1,0 +1,71 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  mica_field_description.features.field.inc: n/a
+#  mica_field_description.module: n/a
+#  mica_field_description.features.inc: n/a
+#  mica_field_description.info: n/a
+#  mica_field_description.views_default.inc: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-02-14 11:51-0500\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: mica_field_description.features.field.inc:788
+msgid "Body"
+msgstr ""
+
+#: mica_field_description.features.field.inc:789
+msgid "Can this field have multiple values?"
+msgstr ""
+
+#: mica_field_description.features.field.inc:790
+msgid "Categories"
+msgstr ""
+
+#: mica_field_description.features.field.inc:791
+msgid "Content Type"
+msgstr ""
+
+#: mica_field_description.features.field.inc:792
+msgid "Content Type Label"
+msgstr ""
+
+#: mica_field_description.features.field.inc:793
+msgid "Field Name"
+msgstr ""
+
+#: mica_field_description.features.field.inc:794
+msgid "Field machine name"
+msgstr ""
+
+#: mica_field_description.features.field.inc:795 mica_field_description.module:146
+msgid "Label"
+msgstr ""
+
+#: mica_field_description.features.field.inc:796
+msgid "Machine name of the content type that declares this field"
+msgstr ""
+
+#: mica_field_description.features.field.inc:797
+msgid "Name of the content type that declares this field"
+msgstr ""
+
+#: mica_field_description.features.field.inc:798
+msgid "Repeatable"
+msgstr ""
+
+#: mica_field_description.features.field.inc:799
+msgid "Value Type"
+msgstr ""

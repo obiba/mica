@@ -144,19 +144,19 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_target_nb_supp_info" : {
-          "name" : "If needed, supplementary information",
+          "name" : "If needed, supplementary information about target number of participants",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "field_samples_supp_info" : {
-          "name" : "If needed, supplementary information",
+          "name" : "If needed, supplementary information about target number of biological samples",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "field_recruitment_supp_info" : {
-          "name" : "If needed, supplementary information",
+          "name" : "If needed, supplementary information about study design",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
@@ -186,13 +186,13 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_partcipant_sel_supp_info" : {
-          "name" : "If needed, supplementary information",
+          "name" : "If needed, supplementary information about selection criteria of the population",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "field_recruitement_supp_info" : {
-          "name" : "If needed, supplementary information",
+          "name" : "If needed, supplementary information about recruitments procedures",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
@@ -355,13 +355,13 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_status_supp_info" : {
-          "name" : "If needed, supplementary information",
+          "name" : "If needed, supplementary information about current study status",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
         },
         "field_current_supp_info" : {
-          "name" : "If needed, supplementary information",
+          "name" : "If needed, supplementary information about current number of participants recruited at baseline",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
@@ -373,7 +373,7 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_current_sam_supp_info" : {
-          "name" : "If needed, supplementary information",
+          "name" : "If needed, supplementary information about current number of collected biological samples",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"

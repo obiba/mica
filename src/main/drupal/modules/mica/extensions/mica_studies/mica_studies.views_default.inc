@@ -894,7 +894,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_recruitment_other_sp']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_recruitment_other_sp']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_recruitment_other_sp']['field_api_classes'] = 0;
-  /* Field: Content: If needed, supplementary information */
+  /* Field: Content: If needed, supplementary information about study design */
   $handler->display->display_options['fields']['field_recruitment_supp_info']['id'] = 'field_recruitment_supp_info';
   $handler->display->display_options['fields']['field_recruitment_supp_info']['table'] = 'field_data_field_recruitment_supp_info';
   $handler->display->display_options['fields']['field_recruitment_supp_info']['field'] = 'field_recruitment_supp_info';
@@ -968,7 +968,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_no_limits_participants']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_no_limits_participants']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_no_limits_participants']['field_api_classes'] = 0;
-  /* Field: Content: If needed, supplementary information */
+  /* Field: Content: If needed, supplementary information about target number of participants */
   $handler->display->display_options['fields']['field_target_nb_supp_info']['id'] = 'field_target_nb_supp_info';
   $handler->display->display_options['fields']['field_target_nb_supp_info']['table'] = 'field_data_field_target_nb_supp_info';
   $handler->display->display_options['fields']['field_target_nb_supp_info']['field'] = 'field_target_nb_supp_info';
@@ -1042,7 +1042,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_no_limits_samples']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_no_limits_samples']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_no_limits_samples']['field_api_classes'] = 0;
-  /* Field: Content: If needed, supplementary information */
+  /* Field: Content: If needed, supplementary information about target number of biological samples */
   $handler->display->display_options['fields']['field_samples_supp_info']['id'] = 'field_samples_supp_info';
   $handler->display->display_options['fields']['field_samples_supp_info']['table'] = 'field_data_field_samples_supp_info';
   $handler->display->display_options['fields']['field_samples_supp_info']['field'] = 'field_samples_supp_info';
@@ -1122,7 +1122,7 @@ function mica_studies_views_default_views() {
     'multiple_to' => '',
   );
   $handler->display->display_options['fields']['field_current_part_nb_date']['field_api_classes'] = 0;
-  /* Field: Content: If needed, supplementary information */
+  /* Field: Content: If needed, supplementary information about current number of participants recruited at baseline */
   $handler->display->display_options['fields']['field_current_supp_info']['id'] = 'field_current_supp_info';
   $handler->display->display_options['fields']['field_current_supp_info']['table'] = 'field_data_field_current_supp_info';
   $handler->display->display_options['fields']['field_current_supp_info']['field'] = 'field_current_supp_info';
@@ -1202,7 +1202,7 @@ function mica_studies_views_default_views() {
     'multiple_to' => '',
   );
   $handler->display->display_options['fields']['field_current_samples_date']['field_api_classes'] = 0;
-  /* Field: Content: If needed, supplementary information */
+  /* Field: Content: If needed, supplementary information about current number of collected biological samples */
   $handler->display->display_options['fields']['field_current_sam_supp_info']['id'] = 'field_current_sam_supp_info';
   $handler->display->display_options['fields']['field_current_sam_supp_info']['table'] = 'field_data_field_current_sam_supp_info';
   $handler->display->display_options['fields']['field_current_sam_supp_info']['field'] = 'field_current_sam_supp_info';
@@ -1463,7 +1463,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_selection_others_sp']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_selection_others_sp']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_selection_others_sp']['field_api_classes'] = 0;
-  /* Field: Content: If needed, supplementary information */
+  /* Field: Content: If needed, supplementary information about selection criteria of the population */
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['id'] = 'field_partcipant_sel_supp_info';
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['table'] = 'field_data_field_partcipant_sel_supp_info';
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['field'] = 'field_partcipant_sel_supp_info';
@@ -1538,7 +1538,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_recruitment_other']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_recruitment_other']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_recruitment_other']['field_api_classes'] = 0;
-  /* Field: Content: If needed, supplementary information */
+  /* Field: Content: If needed, supplementary information about recruitments procedures */
   $handler->display->display_options['fields']['field_recruitement_supp_info']['id'] = 'field_recruitement_supp_info';
   $handler->display->display_options['fields']['field_recruitement_supp_info']['table'] = 'field_data_field_recruitement_supp_info';
   $handler->display->display_options['fields']['field_recruitement_supp_info']['field'] = 'field_recruitement_supp_info';
@@ -1944,7 +1944,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_ended_end_year']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_ended_end_year']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_ended_end_year']['field_api_classes'] = 0;
-  /* Field: Content: If needed, supplementary information */
+  /* Field: Content: If needed, supplementary information about current study status */
   $handler->display->display_options['fields']['field_status_supp_info']['id'] = 'field_status_supp_info';
   $handler->display->display_options['fields']['field_status_supp_info']['table'] = 'field_data_field_status_supp_info';
   $handler->display->display_options['fields']['field_status_supp_info']['field'] = 'field_status_supp_info';
@@ -2769,6 +2769,33 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
+  /* Field: Indexed Node: What is the baseline design of the study */
+  $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
+  $handler->display->display_options['fields']['field_design']['table'] = 'search_api_index_studies_index';
+  $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
+  $handler->display->display_options['fields']['field_design']['label'] = 'Baseline design';
+  $handler->display->display_options['fields']['field_design']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_design']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_design']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_design']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_design']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_design']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_design']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_design']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_design']['group_rows'] = 1;
+  $handler->display->display_options['fields']['field_design']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_design']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['field_design']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_design']['field_api_classes'] = 0;
   /* Field: Indexed Node: How many people are planned to be recruited? Or if the study is completed, what is the final number of participants? */
   $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'search_api_index_studies_index';
@@ -2866,6 +2893,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     t('empty_studies'),
     t('No study found.'),
     t('Title'),
+    t('Baseline design'),
     t('Target number of participants'),
     t('Country'),
     t('Fulltext search'),

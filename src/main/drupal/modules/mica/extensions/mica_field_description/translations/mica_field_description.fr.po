@@ -1,0 +1,165 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  mica_field_description.features.field.inc: n/a
+#  mica_field_description.module: n/a
+#  mica_field_description.features.inc: n/a
+#  mica_field_description.info: n/a
+#  mica_field_description.views_default.inc: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-02-14 11:51-0500\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+
+#: mica_field_description.features.inc:37 mica_field_description.module:111 mica_field_description.info:0
+msgid "Field Description"
+msgstr ""
+
+#: mica_field_description.features.inc:39
+msgid "Description of information collected about the studies."
+msgstr ""
+
+#: mica_field_description.features.inc:41
+msgid "Title"
+msgstr ""
+
+#: mica_field_description.views_default.inc:273;382
+msgid "Master"
+msgstr ""
+
+#: mica_field_description.views_default.inc:275;384
+msgid "more"
+msgstr ""
+
+#: mica_field_description.views_default.inc:276;385
+msgid "Apply"
+msgstr ""
+
+#: mica_field_description.views_default.inc:277;386
+msgid "Reset"
+msgstr ""
+
+#: mica_field_description.views_default.inc:278;387
+msgid "Sort by"
+msgstr ""
+
+#: mica_field_description.views_default.inc:279;388
+msgid "Asc"
+msgstr ""
+
+#: mica_field_description.views_default.inc:280;389
+msgid "Desc"
+msgstr ""
+
+#: mica_field_description.views_default.inc:281;390
+msgid "Items per page"
+msgstr ""
+
+#: mica_field_description.views_default.inc:282;391
+msgid "- All - "
+msgstr ""
+
+#: mica_field_description.views_default.inc:283;392
+msgid "Offset"
+msgstr ""
+
+#: mica_field_description.views_default.inc:284
+msgid "titre"
+msgstr ""
+
+#: mica_field_description.views_default.inc:285
+msgid "body"
+msgstr ""
+
+#: mica_field_description.views_default.inc:286
+msgid "field_original_field_label"
+msgstr ""
+
+#: mica_field_description.views_default.inc:287
+msgid "field_original_field_name"
+msgstr ""
+
+#: mica_field_description.views_default.inc:288
+msgid "field_bundle_label"
+msgstr ""
+
+#: mica_field_description.views_default.inc:289
+msgid "field_bundle"
+msgstr ""
+
+#: mica_field_description.views_default.inc:290
+msgid "field_value_type"
+msgstr ""
+
+#: mica_field_description.views_default.inc:291
+msgid "field_categories"
+msgstr ""
+
+#: mica_field_description.views_default.inc:292
+msgid "field_repeatable"
+msgstr ""
+
+#: mica_field_description.views_default.inc:293
+msgid "Data export"
+msgstr ""
+
+#: mica_field_description.views_default.inc:383
+msgid "Search Filters"
+msgstr ""
+
+#: mica_field_description.views_default.inc:393
+msgid "Name"
+msgstr ""
+
+#: mica_field_description.views_default.inc:394
+msgid "Text (indexed)"
+msgstr ""
+
+#: mica_field_description.views_default.inc:395
+msgid "Fulltext search"
+msgstr ""
+
+#: mica_field_description.views_default.inc:396
+msgid "Page"
+msgstr ""
+
+#: mica_field_description.module:121
+msgid "Use Field Descriptor for this field"
+msgstr ""
+
+#: mica_field_description.module:132
+msgid "Field value type"
+msgstr ""
+
+#: mica_field_description.module:159
+msgid "Description"
+msgstr ""
+
+#: mica_field_description.module:560
+msgid "mica"
+msgstr ""
+
+#: mica_field_description.module:560
+msgid "Create Field Description for %field of %bundle"
+msgstr ""
+
+#: mica_field_description.info:0
+msgid "Mica Field Description"
+msgstr ""
+
+#: mica_field_description.info:0
+msgid "OBiBa"
+msgstr ""
+
