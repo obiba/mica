@@ -75,7 +75,13 @@ function mica_samara_preprocess_page(&$vars) {
   }
 
   // Add $navigation variable, unlike built-in $main_menu variable it supports drop-down menus
-  $vars['navigation'] = $vars['main_menu'] ? render(menu_tree('main-menu')) : FALSE;
+  // Does not support multilingual menu (duplicated menu entries) See: http://drupal.org/node/1225094
+  if (function_exists('i18n_menu_translated_tree')){
+    $vars['navigation'] = $vars['main_menu'] ? render(i18n_menu_translated_tree(variable_get('menu_main_links_source', 'main-menu'))) : FALSE;
+  }
+  else{
+    $vars['navigation'] = $vars['main_menu'] ? render(menu_tree('main-menu')) : FALSE;
+  }
 
   // Add $copyright_information variable
   $vars['copyright_information'] = theme_get_setting('copyright_information');

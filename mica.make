@@ -94,8 +94,9 @@ projects[] = examples
 projects[features][type] = module
 projects[features][download][type] = git
 projects[features][download][url] = http://git.drupal.org/project/features.git
-projects[features][download][revision] = a224dca266d2a7a5fc83de7719263f15c75a6e84
-projects[features][patch][1279938] = http://drupal.org/files/features-locale-1279938-8.patch
+projects[features][download][revision] = 82a8c17b5c6fb23babd5a5ebad15458cbd4264f4
+projects[features][patch][1279938] = http://drupal.org/files/features-locale-1279938-11.patch
+;projects[features][patch][1167430] = http://drupal.org/files/export_i18nmenus-1167430-3.patch
 
 projects[feeds][version] = 2.0-alpha4
 projects[feeds][type] = module
@@ -160,6 +161,9 @@ projects[login_destination][type] = module
 
 projects[masquerade][version] = 1.0-rc4
 projects[masquerade][type] = module
+
+projects[menu_breadcrumb][version] = 1.3
+projects[menu_breadcrumb][type] = module
 
 projects[menu_firstchild][version] = 1.1
 projects[menu_firstchild][type] = module
