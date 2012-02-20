@@ -26,7 +26,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #: field:body:study:label
-msgctxt "body:study:label"
+# msgctxt "body:study:label"
 msgid "Objectives"
 msgstr "Objectifs"
 
@@ -56,9 +56,9 @@ msgid "Please specify what study feature"
 msgstr "Spécifier quel caractéristique d'étude"
 
 #: field:field_acroym:study:label
-msgctxt "field_acroym:study:label"
+#msgctxt "field_acroym:study:label"
 msgid "Acronym"
-msgstr "Acronyme"
+msgstr "Acronymeeee"
 
 #: field:field_acroym:study:description
 msgctxt "field_acroym:study:description"
@@ -128,7 +128,7 @@ msgstr "Quels types d’échantillons sont recueillis ?"
 #: field:field_complete_name:study:label
 msgctxt "field_complete_name:study:label"
 msgid "Complete name"
-msgstr "Nom complet"
+msgstr "Nom completeee"
 
 #: field:field_contacts_ref:study:label
 msgctxt "field_contacts_ref:study:label"

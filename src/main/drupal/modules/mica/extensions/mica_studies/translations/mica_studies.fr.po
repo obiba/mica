@@ -305,7 +305,7 @@ msgstr "Aucune nouvelle n'a été trouvée."
 
 #: mica_studies.views_default.inc:3107
 msgid "This page displays the list of the consortium's studies. Each study is described in a same standard way that can be easily customized to reflect consortium specificities. However, Mica suggests by default a list of important study characteristics that should be considered if there is an aim for the consortium to participate in data harmonization projects with other consortia or studies. \n\nThis Mica study catalogue comes with an advanced query tool using user-friendly facets <br/><br/>"
-msgstr "Cette page affiche la liste des études du consortium. Chaque étude est décrite de la même manière. Cette description peut-être adaptée afin de satisfaire les besoins spécifiques du consortium. Cependant, Mica suggère par défaut une liste de charactéristiques d'étude à considérer pour permettre au consortium de participer à des projets d'harmonisation de données avec d'autres consortiums ou études."
+msgstr "Cette page affiche la liste des études du consortium. Chaque étude est décrite de la même manière. Cette description peut être adaptée afin de satisfaire les besoins spécifiques du consortium. Cependant, Mica suggère par défaut une liste de caractéristiques d'étude à considérer pour permettre au consortium de participer à des projets d'harmonisation de données avec d'autres consortiums ou études."
 
 #: mica_studies.views_default.inc:3110;3293
 msgid "empty_studies"
