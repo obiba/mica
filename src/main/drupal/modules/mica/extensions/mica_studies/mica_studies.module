@@ -212,8 +212,8 @@ function mica_studies_node_insert($node) {
 * Implements hook_node_view()
 */
 function mica_node_view($node, $view_mode, $langcode) {
-	if ($node->type === 'study') {
-	  
+	if ($node->type === 'study' && $view_mode === 'full') {
+
 		$bindings = array(
       'field_design_other_sp' => array(
         'field' => 'field_design',
