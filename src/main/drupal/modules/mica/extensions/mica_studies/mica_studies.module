@@ -620,8 +620,13 @@ function _mica_bind_other_specify(&$node, $bindings) {
 					$node->content[$other_sp]['#access'] = FALSE;
 					$content = implode($delimiter, $specifies);
 				}
-				if (strlen(trim($content)) > 0) {
-				  $node->content[$field][$index]['#markup'] .= $start . $content . $end;
+			  if (strlen(trim($content)) > 0) {
+				  if (key_exists($index, $node->content[$field])){
+				    $node->content[$field][$index]['#markup'] .= $start . $content . $end;
+				  }
+				  else{
+				    $node->content[$field][0]['#markup'] .= $start . $content . $end;
+				  }
 				}
 			}
 		}
