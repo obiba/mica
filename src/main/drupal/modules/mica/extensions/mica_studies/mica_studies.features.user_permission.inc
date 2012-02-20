@@ -948,7 +948,8 @@ function mica_studies_user_default_permissions() {
     'name' => 'view any unpublished contact content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'study reviewer',
+      1 => 'study administrator',
+      2 => 'study reviewer',
     ),
     'module' => 'view_unpublished',
   );
