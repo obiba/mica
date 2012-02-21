@@ -366,7 +366,7 @@ function mica_studies_form_alter(&$form, &$form_state, $form_id) {
       $form['#validate'][] = '_mica_studies_form_validate';
       _mica_add_dependent_field_checked($form, 'field_design', 'field_design_other_sp', 'other');
       _mica_add_dependent_field_checked($form, 'field_recruitment', 'field_recruitment_other_sp', 'other');
-      _mica_add_dependent_field_checked($form, 'field_select_criteria', 'field_selection_others_sp', 'others');
+//       _mica_add_dependent_field_checked($form, 'field_select_criteria', 'field_selection_others_sp', 'others');
       _mica_add_dependent_field_checked($form, 'field_access_other', 'field_access_other_sp', '1');
       _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
       _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
@@ -463,31 +463,31 @@ function mica_field_group_pre_render(&$element, $group, &$form) {
         'condition' => 'checked',
     	  'value' => TRUE,
       ),
-      'group_specify_gender' => array(
-        'dependee' => 'field_select_criteria[' . $lang . '][gender]',
-        'condition' => 'checked',
-        'value' => TRUE,
-      ),
-      'group_age_range' => array(
-        'dependee' => 'field_select_criteria[' . $lang . '][age]',
-        'condition' => 'checked',
-        'value' => TRUE,
-      ),
-      'group_countries' => array(
-        'dependee' => 'field_select_criteria[' . $lang . '][countries]',
-        'condition' => 'checked',
-        'value' => TRUE,
-      ),
-      'group_ethnic_origin' => array(
-        'dependee' => 'field_select_criteria[' . $lang . '][ethnic]',
-        'condition' => 'checked',
-        'value' => TRUE,
-      ),
-      'group_health_status' => array(
-        'dependee' => 'field_select_criteria[' . $lang . '][health]',
-        'condition' => 'checked',
-        'value' => TRUE,
-      ),
+//       'group_specify_gender' => array(
+//         'dependee' => 'field_select_criteria[' . $lang . '][gender]',
+//         'condition' => 'checked',
+//         'value' => TRUE,
+//       ),
+//       'group_age_range' => array(
+//         'dependee' => 'field_select_criteria[' . $lang . '][age]',
+//         'condition' => 'checked',
+//         'value' => TRUE,
+//       ),
+//       'group_countries' => array(
+//         'dependee' => 'field_select_criteria[' . $lang . '][countries]',
+//         'condition' => 'checked',
+//         'value' => TRUE,
+//       ),
+//       'group_ethnic_origin' => array(
+//         'dependee' => 'field_select_criteria[' . $lang . '][ethnic]',
+//         'condition' => 'checked',
+//         'value' => TRUE,
+//       ),
+//       'group_health_status' => array(
+//         'dependee' => 'field_select_criteria[' . $lang . '][health]',
+//         'condition' => 'checked',
+//         'value' => TRUE,
+//       ),
     );
   
     if (array_key_exists($group_name, $to_hide)) {

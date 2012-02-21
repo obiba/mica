@@ -544,6 +544,21 @@ function mica_studies_feeds_importer_default() {
             'target' => 'field_country',
             'unique' => FALSE,
           ),
+          66 => array(
+            'source' => 'questionnaire_collection_mode',
+            'target' => 'field_questionnaire_collection',
+            'unique' => FALSE,
+          ),
+          67 => array(
+            'source' => 'biosamples_collection_mode',
+            'target' => 'field_biosamples_collection_mode',
+            'unique' => FALSE,
+          ),
+          68 => array(
+            'source' => 'phys_measures_collection_mode',
+            'target' => 'field_phys_collection_mode',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',

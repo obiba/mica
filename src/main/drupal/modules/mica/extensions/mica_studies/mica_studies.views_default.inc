@@ -1590,6 +1590,72 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_data_sources']['delta_first_last'] = 0;
   $handler->display->display_options['fields']['field_data_sources']['separator'] = ',';
   $handler->display->display_options['fields']['field_data_sources']['field_api_classes'] = 0;
+  /* Field: Content: Biological samples collection mode */
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['id'] = 'field_biosamples_collection_mode';
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['table'] = 'field_data_field_biosamples_collection_mode';
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['field'] = 'field_biosamples_collection_mode';
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_biosamples_collection_mode']['field_api_classes'] = 0;
+  /* Field: Content: Physical measures collection mode */
+  $handler->display->display_options['fields']['field_phys_collection_mode']['id'] = 'field_phys_collection_mode';
+  $handler->display->display_options['fields']['field_phys_collection_mode']['table'] = 'field_data_field_phys_collection_mode';
+  $handler->display->display_options['fields']['field_phys_collection_mode']['field'] = 'field_phys_collection_mode';
+  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_phys_collection_mode']['field_api_classes'] = 0;
+  /* Field: Content: Questionnaire collection mode */
+  $handler->display->display_options['fields']['field_questionnaire_collection']['id'] = 'field_questionnaire_collection';
+  $handler->display->display_options['fields']['field_questionnaire_collection']['table'] = 'field_data_field_questionnaire_collection';
+  $handler->display->display_options['fields']['field_questionnaire_collection']['field'] = 'field_questionnaire_collection';
+  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_questionnaire_collection']['field_api_classes'] = 0;
   /* Field: Content: Please specify what other data sources */
   $handler->display->display_options['fields']['field_data_sources_sp']['id'] = 'field_data_sources_sp';
   $handler->display->display_options['fields']['field_data_sources_sp']['table'] = 'field_data_field_data_sources_sp';
@@ -2231,6 +2297,9 @@ function mica_studies_views_default_views() {
     t('other_sources_of_recruitment'),
     t('recruitment_procedures_supplementary_information'),
     t('data_sources'),
+    t('Biological samples collection mode'),
+    t('Physical measures collection mode'),
+    t('Questionnaire collection mode'),
     t('other_data_sources'),
     t('biological_samples'),
     t('other_type_of_tissues'),
