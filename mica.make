@@ -134,10 +134,13 @@ projects[image_url_formatter][type] = module
 projects[imce][version] = 1.5
 projects[imce][type] = module
 
-projects[i18n][download][type] = git
-projects[i18n][download][url] = http://git.drupal.org/project/i18n.git
-projects[i18n][download][revision] = ba701a2cecd87eeb98ce1e22c2ee1ab7aba1928e
-projects[i18n][patch][1407054] = http://drupal.org/files/export_per_contenttype-1407054-4.patch
+projects[i18n][version] = 1.4
+projects[i18n][type] = module
+
+;projects[i18n][download][type] = git
+;projects[i18n][download][url] = http://git.drupal.org/project/i18n.git
+;projects[i18n][download][revision] = ba701a2cecd87eeb98ce1e22c2ee1ab7aba1928e
+;projects[i18n][patch][1407054] = http://drupal.org/files/export_per_contenttype-1407054-4.patch
 
 projects[job_scheduler][version] = 2.0-alpha2
 projects[job_scheduler][type] = module

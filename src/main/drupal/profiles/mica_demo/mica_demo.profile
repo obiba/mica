@@ -16,13 +16,13 @@ function mica_demo_form_install_configure_form_alter(&$form, $form_state) {
 function mica_demo_install_tasks($install_state) {
   $tasks = mica_standard_install_tasks($install_state);
   
-  $tasks['mica_demo_insert_language_french'] = array(
-    	'display_name' => st('Install french language'),
-      'display' => TRUE,
-      'type' => 'batch',
-      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-      'function' => '_update_language_french',
-  );
+//   $tasks['mica_demo_insert_language_french'] = array(
+//     	'display_name' => st('Install french language'),
+//       'display' => TRUE,
+//       'type' => 'batch',
+//       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+//       'function' => '_update_language_french',
+//   );
   $tasks['mica_demo_content'] = array(
     'display_name' => st('Import Mica demo content'),
     'display' => TRUE,
@@ -85,18 +85,3 @@ function mica_import_demo_feeds($install_state) {
 
   return $batch;
 }
-
-// function _update_language_french() {
-// 	$result = db_query("SELECT * FROM {languages} l WHERE l.language = 'fr'");
-// 	if ($result->rowCount() === 0) {
-// 		locale_add_language('fr', 'French', 'Français', 0, '', 'fr', '1', 0);
-// 		Additional params, locale_add_language does not implement.
-// 		db_update('languages')
-// 		->fields(array(
-//       'plurals' => '2',
-//       'formula' => '($n!=1)',
-// 		))
-// 		->condition('language', 'fr')
-// 		->execute();
-// 	}
-// }

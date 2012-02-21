@@ -74,7 +74,7 @@ default-restore:
 drupal: drush-make drupal-default 
 
 drush-make:
-	$(drushmake_exec) mica.make target/$(micadir) --translations=fr
+	$(drushmake_exec) mica.make target/$(micadir) #--translations=fr
 	
 drupal-default:
 	cd target/$(micadir) && \
@@ -119,12 +119,12 @@ mica-install:
 	cp -r ../../src/main/drupal/themes/* sites/all/themes && \
 	rm -rf `find . -type d -name .svn` && \
 	rm -rf `find . -type d -name .git` && \
-    if [ -e profiles/default/translations/fr.po ]; then \
-        mkdir -p profiles/mica_standard/translations && \
-        cp profiles/default/translations/fr.po profiles/mica_standard/translations && \
-        mkdir -p profiles/mica_demo/translations && \
-        cp profiles/default/translations/fr.po profiles/mica_demo/translations ; \
-    fi && \
+  #if [ -e profiles/default/translations/fr.po ]; then \
+  #  mkdir -p profiles/mica_standard/translations && \
+  #  cp profiles/default/translations/fr.po profiles/mica_standard/translations && \
+  #  mkdir -p profiles/mica_demo/translations && \
+  #  cp profiles/default/translations/fr.po profiles/mica_demo/translations ; \
+  #fi && \
 	if [ -e profiles/standard/standard.install ]; then \
 		cp profiles/standard/standard.install profiles/mica_standard/standard.install && \
 		rm -rf profiles/standard && \
@@ -346,7 +346,7 @@ git-profiles:
 
 mica-local-prepare:
 	rm -rf target/$(micadir)-local && \
-	$(drushmake_exec) mica.make target/$(micadir)-local --translations=fr
+	$(drushmake_exec) mica.make target/$(micadir)-local #--translations=fr
 
 mica-local: mica-local-copy drupal-default mica package-prepare htaccess
 

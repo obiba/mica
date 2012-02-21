@@ -218,17 +218,17 @@ function _mica_standard_default_block($mica_theme = 'mica_samara', $admin_theme 
       'pages' => '',
       'cache' => -1,
     ),
-    array(
-      'module' => 'locale',
-      'delta' => 'language',
-      'theme' => $mica_theme,
-      'status' => 1,
-      'weight' => 35,
-      'region' => 'header',
-      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-      'pages' => '',
-      'cache' => -1,
-    ),
+//     array(
+//       'module' => 'locale',
+//       'delta' => 'language',
+//       'theme' => $mica_theme,
+//       'status' => 1,
+//       'weight' => 35,
+//       'region' => 'header',
+//       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+//       'pages' => '',
+//       'cache' => -1,
+//     ),
   );
   $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'visibility', 'pages', 'cache'));
   foreach ($values as $record) {

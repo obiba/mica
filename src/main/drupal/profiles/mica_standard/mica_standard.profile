@@ -42,10 +42,10 @@ function _mica_configuration_batch() {
   }
 
   // find all mica french translation files
-  $po_files = drupal_system_listing('/fr.po$/', 'sites/all/modules/mica', 'name', 0);
-  foreach($po_files as $po_file) {
-    $operations[] = array('_update_mica_languages', array($po_file));
-  }
+//   $po_files = drupal_system_listing('/fr.po$/', 'sites/all/modules/mica', 'name', 0);
+//   foreach($po_files as $po_file) {
+//     $operations[] = array('_update_mica_languages', array($po_file));
+//   }
 
   // prepare permissions rebuild
   $mica_length = strlen('mica_');
@@ -55,7 +55,7 @@ function _mica_configuration_batch() {
     }
   }
 
-  $operations[] = array('_update_language_french', array());
+//   $operations[] = array('_update_language_french', array());
   $operations[] = array('_studies_block_configuration', array());
 
   $batch = array(
