@@ -131,7 +131,7 @@ function mica_studies_default_search_api_index() {
         "body:value" : { "type" : "text" },
         "body:summary" : { "type" : "text" },
         "field_design" : {
-          "name" : "What is the baseline design of the study",
+          "name" : "What is the design of the study",
           "indexed" : true,
           "type" : "list\\u003Cstring\\u003E",
           "boost" : "1.0"
@@ -264,7 +264,7 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "body" : {
-          "name" : "Objectives",
+          "name" : "What are the principal objectives of the study",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"

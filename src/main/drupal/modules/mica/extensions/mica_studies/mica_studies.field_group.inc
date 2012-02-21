@@ -138,11 +138,8 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_selection_criteria';
   $field_group->data = array(
     'label' => 'Please specify age range',
-    'weight' => '70',
-    'children' => array(
-      0 => 'field_age_max',
-      1 => 'field_age_min',
-    ),
+    'weight' => '76',
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -542,7 +539,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_selection_criteria';
   $field_group->data = array(
     'label' => 'Please specify countries of residence',
-    'weight' => '71',
+    'weight' => '72',
     'children' => array(
       0 => 'field_country',
       1 => 'field_territory',
@@ -975,10 +972,8 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_selection_criteria';
   $field_group->data = array(
     'label' => 'Please specify ethnic origin',
-    'weight' => '72',
-    'children' => array(
-      0 => 'field_ethnic_origin',
-    ),
+    'weight' => '77',
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -1234,10 +1229,8 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_selection_criteria';
   $field_group->data = array(
     'label' => 'Please specify health status',
-    'weight' => '73',
-    'children' => array(
-      0 => 'field_health_status',
-    ),
+    'weight' => '78',
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -1732,14 +1725,19 @@ function mica_studies_field_group_info() {
     'label' => 'Selection Criteria / Characteristics of the population',
     'weight' => '66',
     'children' => array(
-      0 => 'field_partcipant_sel_supp_info',
-      1 => 'field_select_criteria',
-      2 => 'field_selection_others_sp',
-      3 => 'group_age_range',
-      4 => 'group_countries',
-      5 => 'group_ethnic_origin',
-      6 => 'group_health_status',
-      7 => 'group_specify_gender',
+      0 => 'field_age_max',
+      1 => 'field_age_min',
+      2 => 'field_ethnic_origin',
+      3 => 'field_health_status',
+      4 => 'field_partcipant_sel_supp_info',
+      5 => 'field_select_criteria',
+      6 => 'field_selection_gender',
+      7 => 'field_selection_others_sp',
+      8 => 'group_age_range',
+      9 => 'group_countries',
+      10 => 'group_ethnic_origin',
+      11 => 'group_health_status',
+      12 => 'group_specify_gender',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1792,10 +1790,8 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_selection_criteria';
   $field_group->data = array(
     'label' => 'Please specify gender',
-    'weight' => '69',
-    'children' => array(
-      0 => 'field_selection_gender',
-    ),
+    'weight' => '75',
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -2058,9 +2054,9 @@ function mica_studies_field_group_info() {
     'label' => 'Tabs',
     'weight' => '0',
     'children' => array(
-      0 => 'group_datasets',
-      1 => 'group_access',
-      2 => 'group_authorization',
+      0 => 'group_access',
+      1 => 'group_authorization',
+      2 => 'group_datasets',
       3 => 'group_documents',
       4 => 'group_general_info',
       5 => 'group_marker_paper',

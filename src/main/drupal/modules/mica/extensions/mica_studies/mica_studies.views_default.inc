@@ -790,7 +790,7 @@ function mica_studies_views_default_views() {
     'multiple_to' => '',
   );
   $handler->display->display_options['fields']['field_authorising_date_m']['field_api_classes'] = 0;
-  /* Field: Content: What is the baseline design of the study */
+  /* Field: Content: What is the design of the study */
   $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['table'] = 'field_data_field_design';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
@@ -2838,7 +2838,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Field: Indexed Node: What is the baseline design of the study */
+  /* Field: Indexed Node: What is the design of the study */
   $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['table'] = 'search_api_index_studies_index';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';

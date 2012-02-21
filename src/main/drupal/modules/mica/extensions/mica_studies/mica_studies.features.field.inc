@@ -1236,7 +1236,8 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 0,
-          'field_description_body' => '',
+          'field_description_body' => 'What are the principal objectives of the study?',
+          'field_description_label' => 'Objectives',
           'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
@@ -1448,8 +1449,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
+          'field_description' => 1,
+          'field_description_body' => 'What are the principal objectives of the study?',
+          'field_description_label' => 'Objectives',
           'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
@@ -1472,7 +1474,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'What are the principal objectives of the study?',
+      'description' => '',
       'display' => array(
         'custom_dimensions' => array(
           'label' => 'above',
@@ -1512,7 +1514,7 @@ function mica_studies_field_default_fields() {
       'display_label' => 'Objectives',
       'entity_type' => 'node',
       'field_name' => 'body',
-      'label' => 'Objectives',
+      'label' => 'What are the principal objectives of the study',
       'required' => 1,
       'settings' => array(
         'display_summary' => 1,
@@ -1773,8 +1775,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
+          'field_description_label' => 'Access supplementary information',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -1801,6 +1804,7 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_access_other_sp',
       'label' => 'Please specify what study feature',
@@ -1813,7 +1817,7 @@ function mica_studies_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '4',
+          'rows' => '2',
         ),
         'type' => 'text_textarea',
         'weight' => '13',
@@ -1964,7 +1968,7 @@ function mica_studies_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '73',
+        'weight' => '71',
       ),
     ),
   );
@@ -2035,7 +2039,7 @@ function mica_studies_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '72',
+        'weight' => '70',
       ),
     ),
   );
@@ -3307,7 +3311,7 @@ function mica_studies_field_default_fields() {
         'module' => 'multiselect',
         'settings' => array(),
         'type' => 'multiselect',
-        'weight' => '109',
+        'weight' => '72',
       ),
     ),
   );
@@ -3499,8 +3503,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
+          'field_description_label' => 'Current number of collected biological samples supplementary information',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -3540,7 +3545,7 @@ function mica_studies_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '4',
+          'rows' => '2',
         ),
         'type' => 'text_textarea',
         'weight' => '70',
@@ -3735,8 +3740,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
+          'field_description_label' => 'Current number of participants recruited at baseline supplementary information',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -3776,7 +3782,7 @@ function mica_studies_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '4',
+          'rows' => '2',
         ),
         'type' => 'text_textarea',
         'weight' => '41',
@@ -4322,7 +4328,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '78',
+        'weight' => '73',
       ),
     ),
   );
@@ -4543,7 +4549,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '79',
+        'weight' => '74',
       ),
     ),
   );
@@ -4994,8 +5000,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
+          'field_description_label' => 'Selection criteria supplementary information',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -5035,10 +5042,10 @@ function mica_studies_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '4',
+          'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '75',
+        'weight' => '80',
       ),
     ),
   );
@@ -5435,8 +5442,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
+          'field_description_label' => 'Recruitment procedures supplementary information',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -5476,7 +5484,7 @@ function mica_studies_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '4',
+          'rows' => '2',
         ),
         'type' => 'text_textarea',
         'weight' => '90',
@@ -5818,8 +5826,9 @@ other|Other',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
+          'field_description_label' => 'Study/Registry design supplementary information',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -5859,7 +5868,7 @@ other|Other',
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '4',
+          'rows' => '2',
         ),
         'type' => 'text_textarea',
         'weight' => '11',
@@ -5894,8 +5903,9 @@ other|Other',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
+          'field_description_label' => 'Other sample management',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -5922,6 +5932,7 @@ other|Other',
           'weight' => 0,
         ),
       ),
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_samples_man_other_sp',
       'label' => 'Please specify what other biological samples',
@@ -5934,7 +5945,7 @@ other|Other',
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '4',
+          'rows' => '2',
         ),
         'type' => 'text_textarea',
         'weight' => '66',
@@ -5969,8 +5980,9 @@ other|Other',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
+          'field_description_label' => 'Target number of biological samples supplementary information',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -6010,7 +6022,7 @@ other|Other',
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '4',
+          'rows' => '2',
         ),
         'type' => 'text_textarea',
         'weight' => '68',
@@ -6156,7 +6168,7 @@ other|Other',
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '70',
+        'weight' => '69',
       ),
     ),
   );
@@ -6232,7 +6244,7 @@ other|Other',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '74',
+        'weight' => '79',
       ),
     ),
   );
@@ -6264,8 +6276,9 @@ other|Other',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
+          'field_description_label' => 'Current status supplementary information',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -6305,7 +6318,7 @@ other|Other',
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '4',
+          'rows' => '2',
         ),
         'type' => 'text_textarea',
         'weight' => '61',
@@ -6382,7 +6395,7 @@ other|Other',
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '5',
+          'rows' => '2',
         ),
         'type' => 'text_textarea',
         'weight' => '105',
@@ -6417,8 +6430,9 @@ other|Other',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
+          'field_description_label' => 'Target number of participants supplementary information',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -6458,7 +6472,7 @@ other|Other',
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '4',
+          'rows' => '2',
         ),
         'type' => 'text_textarea',
         'weight' => '38',
@@ -6699,8 +6713,9 @@ other|Other',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
+          'field_description_label' => 'Territory',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -6740,10 +6755,10 @@ other|Other',
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => '3',
+          'rows' => '1',
         ),
         'type' => 'text_textarea',
-        'weight' => '110',
+        'weight' => '73',
       ),
     ),
   );
@@ -6992,7 +7007,6 @@ other|Other',
   t('Name of the person authorising the contribution to [SPECIFIC NETWORK]');
   t('No limits in the number of participants');
   t('No limits in the number of samples');
-  t('Objectives');
   t('Other');
   t('Physical measures collection mode');
   t('Please specify type of tissues');
@@ -7016,7 +7030,7 @@ other|Other',
   t('Website');
   t('What are the biological samples collected?');
   t('What are the inclusion criteria for participants’ selection');
-  t('What are the principal objectives of the study?');
+  t('What are the principal objectives of the study');
   t('What is the Web address where information on the study is made available?');
   t('What is the design of the study');
   t('when appropriate, specify the criteria.');
