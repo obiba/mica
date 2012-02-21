@@ -1093,10 +1093,14 @@ function mica_dataset_private_file_absolute_path($reference) {
  */
 function mica_datasets_node_view_alter(&$build) {
 
-  if ($build['#view_mode'] == 'full' && $build['#bundle'] == 'participant_variable') {
+  if ($build['#view_mode'] === 'full' && $build['#bundle'] === 'participant_variable') {
+
+    $node = $build['#node'];
+    $language = $node->language;
+
     $values = array();
-    $values['variable_id'] = $build['#node']->nid;
-    $values['dataset_id'] = $build['#node']->field_dataset[LANGUAGE_NONE]['0']['nid'];
+    $values['variable_id'] = $node->nid;
+    $values['dataset_id'] = $node->field_dataset[$language][0]['nid'];
     $term = new MicaDatasetQueryTerm($values);
 
     $build['statistics'] = array(
@@ -1105,10 +1109,9 @@ function mica_datasets_node_view_alter(&$build) {
       '#weight' => 10,
       '#collapsible' => TRUE,
       '#collapsed' => FALSE,
-    );
-
-    $build['statistics']['table'] = array(
-      '#markup' => $term->termImpl()->view(),
+      'table' => array(
+        '#markup' => $term->termImpl()->view(),
+      ),
     );
   }
 }

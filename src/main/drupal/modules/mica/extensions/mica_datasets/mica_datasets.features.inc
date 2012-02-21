@@ -71,15 +71,15 @@ function mica_datasets_default_search_api_index() {
         "nid" : { "type" : "integer" },
         "type" : { "type" : "string" },
         "title" : { "type" : "text" },
+        "field_categories" : { "type" : "list\\u003Ctext\\u003E" },
         "field_repeatable" : { "type" : "boolean" },
         "field_value_type" : { "type" : "string" },
-        "mica_dataset" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
+        "field_dataset" : { "type" : "integer", "entity_type" : "node" },
         "field_label" : { "type" : "string" },
         "search_api_language" : { "type" : "string" },
-        "mica_dataset:nid" : { "type" : "list\\u003Cinteger\\u003E" },
-        "mica_dataset:title" : { "type" : "list\\u003Ctext\\u003E" },
-        "mica_dataset:url" : { "type" : "list\\u003Curi\\u003E" },
-        "search_api_aggregation_1" : { "type" : "text" }
+        "search_api_aggregation_1" : { "type" : "text" },
+        "field_dataset:nid" : { "type" : "integer" },
+        "field_dataset:title" : { "type" : "text" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
