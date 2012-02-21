@@ -9,18 +9,17 @@
 #  mica_field_description.info: n/a
 #  mica_field_description.views_default.inc: n/a
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "POT-Creation-Date: 2012-02-14 11:51-0500\n"
-"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
-"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-02-20 12:15-0500\n"
+"Last-Translator: Etienne Morency <emorency@p3g.org>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #: mica_field_description.features.field.inc:788
 msgid "Body"
@@ -50,7 +49,8 @@ msgstr "Nom du champ"
 msgid "Field machine name"
 msgstr "Nom système du champ"
 
-#: mica_field_description.features.field.inc:795 mica_field_description.module:146
+#: mica_field_description.features.field.inc:795
+#: mica_field_description.module:146
 msgid "Label"
 msgstr "Étiquette"
 
@@ -69,3 +69,4 @@ msgstr "Répétable"
 #: mica_field_description.features.field.inc:799
 msgid "Value Type"
 msgstr "Type de valeur"
+
