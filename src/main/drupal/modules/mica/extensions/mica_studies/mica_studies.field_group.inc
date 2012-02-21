@@ -544,8 +544,8 @@ function mica_studies_field_group_info() {
     'label' => 'Please specify countries of residence',
     'weight' => '71',
     'children' => array(
-      0 => 'field_territory',
-      1 => 'field_country',
+      0 => 'field_country',
+      1 => 'field_territory',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -779,8 +779,11 @@ function mica_studies_field_group_info() {
     'label' => 'Data Collection',
     'weight' => '68',
     'children' => array(
-      0 => 'field_data_sources',
-      1 => 'field_data_sources_sp',
+      0 => 'field_biosamples_collection_mode',
+      1 => 'field_data_sources',
+      2 => 'field_data_sources_sp',
+      3 => 'field_phys_collection_mode',
+      4 => 'field_questionnaire_collection',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
