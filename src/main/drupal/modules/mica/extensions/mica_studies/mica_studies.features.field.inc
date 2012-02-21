@@ -3968,7 +3968,7 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 1,
           'field_description_body' => '',
-          'field_description_label' => 'Baseline design of the study',
+          'field_description_label' => 'Study design',
           'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
@@ -4002,10 +4002,10 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Baseline design of the study',
+      'display_label' => 'Study design',
       'entity_type' => 'node',
       'field_name' => 'field_design',
-      'label' => 'What is the baseline design of the study',
+      'label' => 'What is the design of the study',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -6965,7 +6965,7 @@ other|Other',
   t('Email');
   t('End year');
   t('Enter the Contact full name. You will be able to edit these Contacts once the Study has been saved.');
-  t('Enter the Investigator full name. You will be able to edit these Investigators once the Study has been saved.');
+  t('Enter the Investigator full name. You will be able to edit these Investigators once the Study will be saved.');
   t('Ethnic origin');
   t('Files');
   t('For how many people have biological samples been collected?');
@@ -7018,7 +7018,7 @@ other|Other',
   t('What are the inclusion criteria for participants’ selection');
   t('What are the principal objectives of the study?');
   t('What is the Web address where information on the study is made available?');
-  t('What is the baseline design of the study');
+  t('What is the design of the study');
   t('when appropriate, specify the criteria.');
 
   return $fields;
