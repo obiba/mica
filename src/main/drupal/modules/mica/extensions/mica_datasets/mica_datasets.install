@@ -27,7 +27,7 @@ function mica_datasets_schema() {
       'name' => array(
         'description' => 'The displayed name for a connector.',
         'type' => 'varchar',
-        'length' => 50,
+        'length' => 200,
         'not null' => TRUE,
       ),
       'description' => array(
@@ -50,7 +50,7 @@ function mica_datasets_schema() {
       'class' => array(
         'description' => 'The id of the connection class to use for this connector.',
         'type' => 'varchar',
-        'length' => 50,
+        'length' => 100,
         'not null' => TRUE,
       ),
       'options' => array(
@@ -85,7 +85,7 @@ function mica_datasets_schema() {
       'name' => array(
         'description' => 'The displayed name for a query.',
         'type' => 'varchar',
-        'length' => 50,
+        'length' => 200,
         'not null' => TRUE,
       ),
       'description' => array(

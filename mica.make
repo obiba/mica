@@ -285,5 +285,6 @@ libraries[ckeditor][directory_name] = "ckeditor"
 libraries[jsonpath][type] = "libraries"
 libraries[jsonpath][download][type]= "get"
 libraries[jsonpath][download][url] = "http://jsonpath.googlecode.com/files/jsonpath-0.8.1.php"
-libraries[jsonpath][destination] = "modules/feeds_jsonpath_parser"
+libraries[jsonpath][destination] = "modules"
+libraries[jsonpath][directory_name] = "feeds_jsonpath_parser"
 libraries[jsonpath][overwrite] = TRUE
