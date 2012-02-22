@@ -222,6 +222,7 @@ projects[search_api_ranges][type] = module
 projects[search_api_ranges][download][type] = git
 projects[search_api_ranges][download][url] = http://git.drupal.org/project/search_api_ranges.git
 projects[search_api_ranges][download][revision] = fe3b59f9c0206ac822c4e6474f8715fc1c2026a5
+projects[search_api_ranges][patch][] = http://drupal.org/files/config-for-no-slider-no-commit-on-change_0.patch
 
 projects[search_api_solr][version] = 1.0-rc1
 projects[search_api_solr][type] = module

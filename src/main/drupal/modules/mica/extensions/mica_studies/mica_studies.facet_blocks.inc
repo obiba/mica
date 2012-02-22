@@ -55,13 +55,13 @@ function mica_studies_configure_facet_blocks() {
   $facet_order_by_region = array(
     'sidebar_second' => array(
     	'field_design',
-      'field_bio_samples_management',
     	'field_country',
     	'field_age_min',
     	'field_age_max',
-    	'field_selection_gender',
       'field_target_number_participants',
       'field_target_number_biosamples',
+      'field_bio_samples_management',
+    	'field_selection_gender',
   		'field_select_criteria',
     	'field_data_sources',
       'field_recruitment',

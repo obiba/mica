@@ -2266,6 +2266,7 @@ function mica_studies_views_default_views() {
     t('date_of_current_number_of_collected_biological_samples'),
     t('current_number_of_collected_biological_samples_supplementary_information'),
     t('study_inclusion_criteria_for_participants_selection'),
+    t('gender'),
     t('age_min'),
     t('age_max'),
     t('country'),
