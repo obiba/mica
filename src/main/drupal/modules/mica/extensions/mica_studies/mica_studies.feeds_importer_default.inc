@@ -554,6 +554,11 @@ function mica_studies_feeds_importer_default() {
             'target' => 'field_phys_collection_mode',
             'unique' => FALSE,
           ),
+          68 => array(
+            'source' => 'complete_name',
+            'target' => 'title',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',

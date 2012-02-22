@@ -5107,10 +5107,10 @@ function mica_studies_field_group_info() {
       0 => 'field_age_max',
       1 => 'field_age_min',
       2 => 'field_ethnic_origin',
-      3 => 'field_health_status',
-      4 => 'field_partcipant_sel_supp_info',
-      5 => 'field_select_criteria',
-      6 => 'field_selection_gender',
+      3 => 'field_gender',
+      4 => 'field_health_status',
+      5 => 'field_partcipant_sel_supp_info',
+      6 => 'field_select_criteria',
       7 => 'field_selection_others_sp',
       8 => 'group_age_range',
       9 => 'group_countries',
@@ -5281,7 +5281,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_selection_criteria';
   $field_group->data = array(
     'label' => 'Please specify gender',
-    'weight' => '75',
+    'weight' => '74',
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
