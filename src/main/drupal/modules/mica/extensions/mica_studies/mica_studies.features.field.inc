@@ -1916,9 +1916,9 @@ function mica_studies_field_default_fields() {
       'module' => 'number',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => 'Age max',
+          'field_description_label' => '',
           'field_description_value_type' => 'INTEGER',
         ),
       ),
@@ -1950,7 +1950,7 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Maximum age',
+      'display_label' => 'max.',
       'entity_type' => 'node',
       'field_name' => 'field_age_max',
       'label' => 'Maximum age',
@@ -1967,7 +1967,7 @@ function mica_studies_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '71',
+        'weight' => '72',
       ),
     ),
   );
@@ -1988,9 +1988,9 @@ function mica_studies_field_default_fields() {
       'module' => 'number',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => 'Age min',
+          'field_description_label' => '',
           'field_description_value_type' => 'INTEGER',
         ),
       ),
@@ -2022,7 +2022,7 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Minimum age',
+      'display_label' => 'min.',
       'entity_type' => 'node',
       'field_name' => 'field_age_min',
       'label' => 'Minimum age',
@@ -2039,7 +2039,7 @@ function mica_studies_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '70',
+        'weight' => '71',
       ),
     ),
   );
@@ -2816,7 +2816,7 @@ function mica_studies_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '66',
+        'weight' => '67',
       ),
     ),
   );
@@ -3937,7 +3937,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '67',
+        'weight' => '68',
       ),
     ),
   );
@@ -4329,7 +4329,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '73',
+        'weight' => '74',
       ),
     ),
   );
@@ -4478,6 +4478,78 @@ function mica_studies_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-study-field_gender'
+  $fields['node-study-field_gender'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_gender',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'women' => 'Women only',
+          'men' => 'Men only',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 101,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_gender',
+      'label' => 'Selection Criteria: Gender',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '69',
+      ),
+    ),
+  );
+
   // Exported field: 'node-study-field_health_status'
   $fields['node-study-field_health_status'] = array(
     'field_config' => array(
@@ -4551,7 +4623,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '74',
+        'weight' => '75',
       ),
     ),
   );
@@ -5119,7 +5191,7 @@ function mica_studies_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '65',
+        'weight' => '66',
       ),
     ),
   );
@@ -6055,8 +6127,6 @@ other|Other',
           'gravidity' => 'Gravidity (pregnant women)',
           'newborn' => 'Newborn',
           'twin' => 'Twin',
-          'women' => 'Women only',
-          'men' => 'Men only',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
@@ -6953,6 +7023,7 @@ other|Other',
   t('Pubmed Id');
   t('Questionnaire collection mode');
   t('Selection Criteria: Ethnic Origin');
+  t('Selection Criteria: Gender');
   t('Selection Criteria: Health Status');
   t('Specify the sources of recruitment');
   t('Start year');
