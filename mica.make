@@ -51,6 +51,8 @@ projects[ckeditor][type] = module
 
 projects[collapsiblock][version] = 1.0
 projects[collapsiblock][type] = module
+projects[collapsiblock][patch][1301454] = http://drupal.org/files/array2lower-1301454-1.patch
+projects[collapsiblock][patch][1429956] = http://drupal.org/files/missing-jquery-cookie-1429956-3.patch
 
 projects[content_access][version] = 1.2-beta1
 projects[content_access][type] = module
@@ -251,9 +253,8 @@ projects[variable][type] = module
 projects[view_unpublished][version] = 1.0
 projects[view_unpublished][type] = module
 
-projects[views][version] = 3.1
+projects[views][version] = 3.2
 projects[views][type] = module
-projects[views][patch][1413200] = http://drupal.org/files/1413200.patch
 
 projects[views_data_export][version] = 3.0-beta5
 projects[views_data_export][type] = module

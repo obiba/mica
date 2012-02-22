@@ -74,7 +74,7 @@ default-restore:
 drupal: drush-make drupal-default 
 
 drush-make:
-	$(drushmake_exec) mica.make target/$(micadir) #--translations=fr
+	$(drushmake_exec) mica.make target/$(micadir)
 	
 drupal-default:
 	cd target/$(micadir) && \
@@ -346,7 +346,7 @@ git-profiles:
 
 mica-local-prepare:
 	rm -rf target/$(micadir)-local && \
-	$(drushmake_exec) mica.make target/$(micadir)-local #--translations=fr
+	$(drushmake_exec) mica.make target/$(micadir)-local
 
 mica-local: mica-local-copy drupal-default mica package-prepare htaccess
 

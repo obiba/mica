@@ -189,13 +189,6 @@ function _add_field_index($index_name, stdClass $field_description) {
 	$field_categories = $field_description_wrapper->field_categories->value();
 	$discrete = count($field_categories) > 1;
 	
-// 	dpm($bundle, '$bundle');
-// 	dpm($field_name, '$field_name');
-// 	dpm($type, '$type');
-// 	dpm($repeatable, '$repeatable');
-// 	dpm($field_categories, '$field_categories');
-// 	dpm($discrete, '$discrete');
-
 	if ($type === 'TEXT') {
 		$field_index_type = $discrete ? 'string' : 'text';
 	} else {
@@ -252,24 +245,23 @@ function _add_field_index($index_name, stdClass $field_description) {
 	$range_supported = !$facet_supported && _is_type_supports_ranges($field_index_type);
 	
 	cache_clear_all();
-// 	cache_clear_all(NULL, 'cache_block');
-// 	cache_clear_all('facetapi:delta_map', 'cache');	
-// 	cache_clear_all('facetapi:facet_info:', 'cache', TRUE);
-	
+
 	$searcher = 'search_api@' . $index->machine_name;
 	$facet = facetapi_facet_load($field_name, $searcher);
 	if ($facet) {
-	  
 		$adapter = facetapi_adapter_load($searcher);
 		$realms = facetapi_get_realm_info();
 		foreach ($realms as $realm_name => $realm) {
 			$delta = facetapi_hash_delta(facetapi_build_delta($searcher, $realm_name, $facet['name']));
 		  if ($facet_supported || $range_supported) {
-		    if ($range_supported) {
-  		    $settings = $adapter->getFacet($facet)->getSettings($realm);
-		      $settings->settings['widget'] = 'search_api_ranges_ui_slider';
-   		    ctools_export_crud_save('facetapi', $settings);
+  		  $settings = $adapter->getFacet($facet)->getSettings($realm);
+		    if ($facet_supported) {
+		      $settings->settings['widget'] = 'facetapi_checkbox_links';
 		    }
+        if ($range_supported) {
+		      $settings->settings['widget'] = 'search_api_ranges_ui_slider';
+		    }
+   		  ctools_export_crud_save('facetapi', $settings);
 		    if (facetapi_save_facet_enabled($adapter, $realm, $facet)) {
 		      // overwrite facet label to use field display label if defined
 		      $facet_block_title = $field_description_wrapper->field_original_field_label->value();
@@ -279,7 +271,6 @@ function _add_field_index($index_name, stdClass $field_description) {
 				_disable_search_block($delta);
 			}
 		}
-		
 	}
 }
 
@@ -304,15 +295,18 @@ function _magma_search_index_type_mapping() {
 function _enable_search_block($facet_delta, $block_title) {
 
 	$theme_default = variable_get('theme_default', 'mica_samara');
+  $region = 'sidebar_second';
+  $page = 'studies-search';
 
 	$max_weight = db_query(
 		"SELECT MAX(weight) as max_weight FROM {block} WHERE module = :module AND theme = :theme and region = :region",
 	  array(
       ':module' => 'facetapi', 
       ':theme' => $theme_default, 
-      ':region' => 'sidebar_first'
+      ':region' => $region
 	  )
 	)->fetchField();
+  $facet_weight = empty($max_weight) ? 0 : ($max_weight + 1);
 
 	$block = db_query('SELECT * FROM {block} WHERE module = :module AND delta = :delta AND theme = :theme',
 	  array(
@@ -326,9 +320,9 @@ function _enable_search_block($facet_delta, $block_title) {
 		db_update('block')->fields(
 	  	array(
       	'status' => 1,
-      	'region' => 'sidebar_first',
-      	'weight' => empty($max_weight) ? 0 : ($max_weight + 1),
-				'pages' => 'studies-search',
+      	'region' => $region,
+      	'weight' => $facet_weight,
+				'pages' => $page,
 				'visibility' => BLOCK_VISIBILITY_LISTED,
 				'title' => $block_title,
 	  	)
@@ -341,13 +335,13 @@ function _enable_search_block($facet_delta, $block_title) {
 		db_insert('block')->fields(
 	  	array(
       	'status' => 1,
-      	'region' => 'sidebar_first',
-      	'weight' => empty($max_weight) ? 0 : ($max_weight + 1),
+      	'region' => $region,
+      	'weight' => $facet_weight,
     		'custom' => BLOCK_CUSTOM_ENABLED, // Show this block by default but let individual users hide it.
     		'delta' => $facet_delta,
     		'module' => 'facetapi',
     		'theme' => $theme_default,
-				'pages' => 'studies-search',
+				'pages' => $page,
 				'visibility' => BLOCK_VISIBILITY_LISTED,
 				'title' => $block_title,
 	  	)
@@ -580,4 +574,3 @@ function _update_field_description(stdClass $field_description, array $field_des
 	}
 	$wrapper->save();
 }
-

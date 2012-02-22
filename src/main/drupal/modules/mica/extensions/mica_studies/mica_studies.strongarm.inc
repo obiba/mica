@@ -55,6 +55,34 @@ function mica_studies_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'collapsiblock_settings';
+  $strongarm->value = array(
+    'block-facetapi-oy34mXN1nxJL14Ut9ROdWqeRVEb48MjO' => '2',
+    'block-facetapi-zGEZxPGkRtjdWEccTz6eWXRPdA7r07n0' => '2',
+    'block-current-search-standard' => '2',
+    'block-facetapi-k69xRogJmfK1B2ZAmYNs4FrhwLAL1mcP' => '2',
+    'block-facetapi-dy1TMoSk6R6h0w81KEDoQCRnxOY11SFr' => '2',
+    'block-facetapi-Y2jUzmF8fK49hirSqsFb2077JN52TV83' => '3',
+    'block-facetapi-z0XiAO0D3Qin2ZDiDHx7IM2EzCursZc0' => '3',
+    'block-facetapi-wdPtzkwl58BZF9VxxswNh31vMLOTpXSo' => '2',
+    'block-facetapi-bpv9CQJVwWZBA3J6nCH1UaaqlGFgCXZK' => '3',
+    'block-facetapi-TkDCfzldLYa0dsbSWYHGKNFJRTBkT0Tf' => '2',
+    'block-facetapi-dnv3vw1mSYr8lpyUltTWcjB95h23wJbr' => '2',
+    'block-facetapi-UXQ7up5z8qtveA4ycXIY6NwLzLCby59I' => '2',
+    'block-facetapi-mq7MQYR1vElyxwLiucoVgd7bbSNoqusp' => '2',
+    'block-facetapi-xWukjumcYmyaiQsLKBHGPpF0ORvgQLK8' => '3',
+    'block-facetapi-8oE1PNFtQBNumKt5JrXlO8OKZBPRu3Yz' => '3',
+    'block-facetapi-Fav120xnRHWPtVQXRT9w1LGri9FLKFMj' => '3',
+    'block-facetapi-fR0XzII4YGxEWQcUSvUuN1vx6kdYBx0H' => '3',
+    'block-facetapi-vVGhlmQsLUzXBUXfFv1mq8DDRz0iEYFt' => '3',
+    'block-facetapi-OyJLhGRCbeFeRkmL1dkK0M04f19Gm1P0' => '3',
+    'block-facetapi-RxYzHU2m9IE0Z1ASnUy53wJiuZDDcg8U' => '3',
+  );
+  $export['collapsiblock_settings'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_address';
   $strongarm->value = '0';
   $export['comment_address'] = $strongarm;
@@ -3000,7 +3028,7 @@ function mica_studies_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_count';
-  $strongarm->value = 2;
+  $strongarm->value = 3;
   $export['language_count'] = $strongarm;
 
   $strongarm = new stdClass;

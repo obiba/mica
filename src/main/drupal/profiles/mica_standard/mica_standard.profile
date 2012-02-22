@@ -4,6 +4,10 @@
  * Implements hook_install_tasks()
  */
 function mica_standard_install_tasks($install_state) {
+  // Preselect the English language, so users can skip the language selection form
+  if (!isset($_GET['locale'])) {
+    $_POST['locale'] = 'en';
+  }
   $tasks = array(
     'mica_configure' => array(
       'display_name' => st('Configure Mica'),

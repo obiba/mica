@@ -2109,3 +2109,88 @@ div.horizontal-tabs .horizontal-tabs-panes > fieldset {
 div.horizontal-tabs .horizontal-tabs-panes fieldset {
   background-color: #FFFFFF;
 }
+
+/**
+ * Facet API style
+ */
+body.page-studies-search div.region-sidebar-second {
+  background-color: #EEEEEE;
+  /*border-radius: 10px 10px 10px 10px;*/
+  /*box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.12) inset;*/
+}
+
+div.block-facetapi, div.block-current-search {
+  background-color: #EEEEEE;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  margin: 10px 0 0 0;
+}
+
+div.block-facetapi h2, div.block-current-search h2 {
+  background-color: #EEEEEE;
+  color: #4A6C81;
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
+  letter-spacing: 0;
+  border: none;
+  border-radius: 0;
+}
+
+div.block-facetapi h2.collapsiblock a, div.block-current-search h2.collapsiblock a {
+  color: #4A6C81;
+  padding-left: 10px;
+  background: url(../images/expanded.png) no-repeat scroll left center transparent;
+  font-weight: bold;
+}
+
+div.block-current-search h3 {
+  font-size: 1em;
+  margin: 0;
+  padding-left: 0.75em;
+}
+
+div.block-facetapi h2.collapsiblockCollapsed a, div.block-current-search h2.collapsiblockCollapsed a {
+  background: url(../images/collapsed.png) no-repeat scroll left center transparent;
+}
+
+div.block-facetapi .content, div.block-current-search .content {
+  border: none;
+  border-radius: 0;
+}
+
+div.block-facetapi .content a, div.block-current-search .content a {
+  font-weight: normal;
+}
+
+div.block-facetapi ul.facetapi-facetapi-checkbox-links li, div.block-current-search li {
+  background: none;
+  padding-top: 0;
+  padding-left: 0.75em;
+}
+
+/**
+ * Search API Ranges style
+ */
+.search-api-ranges-widget p.text-range, .search-api-ranges-widget div.range-slider-box {
+  display: none;
+}
+
+.search-api-ranges-widget div.range-box, .search-api-ranges-widget input.form-submit, .search-api-ranges-widget div.yui3-g {
+  display: inline-block;
+}
+
+.search-api-ranges-widget div.form-item-range-from, .search-api-ranges-widget div.form-item-range-to {
+  margin: 0;
+}
+
+.search-api-ranges-widget div.yui3-g {
+  margin-bottom: 5px;
+  padding-left: 0.75em;
+}
+
+.search-api-ranges-widget input {
+  padding: 3px;
+}

@@ -15,22 +15,13 @@ function mica_demo_form_install_configure_form_alter(&$form, $form_state) {
  */
 function mica_demo_install_tasks($install_state) {
   $tasks = mica_standard_install_tasks($install_state);
-  
-//   $tasks['mica_demo_insert_language_french'] = array(
-//     	'display_name' => st('Install french language'),
-//       'display' => TRUE,
-//       'type' => 'batch',
-//       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-//       'function' => '_update_language_french',
-//   );
   $tasks['mica_demo_content'] = array(
     'display_name' => st('Import Mica demo content'),
     'display' => TRUE,
     'type' => 'batch',
     'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED, // default to insert content
     'function' => 'mica_import_demo_feeds',
-  ); 
-  
+  );
   return $tasks;
 }
 

@@ -766,3 +766,12 @@ function _mica_studies_form_validate_field($form, &$form_state, $dependee, $depe
   }
 }
 
+/**
+ * Remove [all items] from the current search block
+ */
+function mica_studies_block_view_alter(&$data, $block) {
+  if ($block->delta !== 'standard' || $block->module !== 'current_search') return;
+  foreach($data['content']['active_items']['#items'] as $key => $item) {
+    if ($item === '[all items]') unset($data['content']['active_items']['#items'][$key]);
+  }
+}
