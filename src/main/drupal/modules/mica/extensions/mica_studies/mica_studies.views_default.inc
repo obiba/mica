@@ -1254,7 +1254,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_select_criteria']['delta_first_last'] = 0;
   $handler->display->display_options['fields']['field_select_criteria']['separator'] = ',';
   $handler->display->display_options['fields']['field_select_criteria']['field_api_classes'] = 0;
-  /* Field: Content: Gender */
+  /* Field: : field_selection_gender */
   $handler->display->display_options['fields']['field_selection_gender']['id'] = 'field_selection_gender';
   $handler->display->display_options['fields']['field_selection_gender']['table'] = 'field_data_field_selection_gender';
   $handler->display->display_options['fields']['field_selection_gender']['field'] = 'field_selection_gender';
@@ -1278,7 +1278,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_selection_gender']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_selection_gender']['type'] = 'list_key';
   $handler->display->display_options['fields']['field_selection_gender']['field_api_classes'] = 0;
-  /* Field: Content: Age min */
+  /* Field: Content: Minimum age */
   $handler->display->display_options['fields']['field_age_min']['id'] = 'field_age_min';
   $handler->display->display_options['fields']['field_age_min']['table'] = 'field_data_field_age_min';
   $handler->display->display_options['fields']['field_age_min']['field'] = 'field_age_min';
@@ -1305,7 +1305,7 @@ function mica_studies_views_default_views() {
     'prefix_suffix' => 1,
   );
   $handler->display->display_options['fields']['field_age_min']['field_api_classes'] = 0;
-  /* Field: Content: Age max */
+  /* Field: Content: Maximum age */
   $handler->display->display_options['fields']['field_age_max']['id'] = 'field_age_max';
   $handler->display->display_options['fields']['field_age_max']['table'] = 'field_data_field_age_max';
   $handler->display->display_options['fields']['field_age_max']['field'] = 'field_age_max';
@@ -1332,7 +1332,7 @@ function mica_studies_views_default_views() {
     'prefix_suffix' => 1,
   );
   $handler->display->display_options['fields']['field_age_max']['field_api_classes'] = 0;
-  /* Field: Content: Country */
+  /* Field: Content: Country of residence */
   $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
   $handler->display->display_options['fields']['field_country']['table'] = 'field_data_field_country';
   $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
@@ -1361,7 +1361,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_country']['delta_first_last'] = 0;
   $handler->display->display_options['fields']['field_country']['separator'] = ',';
   $handler->display->display_options['fields']['field_country']['field_api_classes'] = 0;
-  /* Field: Content: Territory */
+  /* Field: Content: Territory or city of residence */
   $handler->display->display_options['fields']['field_territory']['id'] = 'field_territory';
   $handler->display->display_options['fields']['field_territory']['table'] = 'field_data_field_territory';
   $handler->display->display_options['fields']['field_territory']['field'] = 'field_territory';
@@ -1384,7 +1384,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_territory']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_territory']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_territory']['field_api_classes'] = 0;
-  /* Field: Content: Ethnic origin */
+  /* Field: Content: Selection Criteria: Ethnic Origin */
   $handler->display->display_options['fields']['field_ethnic_origin']['id'] = 'field_ethnic_origin';
   $handler->display->display_options['fields']['field_ethnic_origin']['table'] = 'field_data_field_ethnic_origin';
   $handler->display->display_options['fields']['field_ethnic_origin']['field'] = 'field_ethnic_origin';
@@ -1412,7 +1412,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_ethnic_origin']['delta_first_last'] = 0;
   $handler->display->display_options['fields']['field_ethnic_origin']['separator'] = ',';
   $handler->display->display_options['fields']['field_ethnic_origin']['field_api_classes'] = 0;
-  /* Field: Content: Health status */
+  /* Field: Content: Selection Criteria: Health Status */
   $handler->display->display_options['fields']['field_health_status']['id'] = 'field_health_status';
   $handler->display->display_options['fields']['field_health_status']['table'] = 'field_data_field_health_status';
   $handler->display->display_options['fields']['field_health_status']['field'] = 'field_health_status';
@@ -2712,7 +2712,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     'prefix_suffix' => 0,
   );
   $handler->display->display_options['fields']['field_target_number_participants']['field_api_classes'] = 0;
-  /* Field: Content: Country */
+  /* Field: Content: Country of residence */
   $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
   $handler->display->display_options['fields']['field_country']['table'] = 'field_data_field_country';
   $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
@@ -2779,7 +2779,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     t('No study found.'),
     t('Name'),
     t('Target number of participants'),
-    t('Country'),
+    t('Country of residence'),
     t('Page'),
   );
   $export['studies'] = $view;
@@ -2892,7 +2892,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     'prefix_suffix' => 0,
   );
   $handler->display->display_options['fields']['field_target_number_participants']['field_api_classes'] = 0;
-  /* Field: Indexed Node: Country */
+  /* Field: Indexed Node: Country of residence */
   $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
   $handler->display->display_options['fields']['field_country']['table'] = 'search_api_index_studies_index';
   $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
@@ -2964,7 +2964,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     t('Title'),
     t('Baseline design'),
     t('Target number of participants'),
-    t('Country'),
+    t('Country of residence'),
     t('Fulltext search'),
     t('Page'),
   );

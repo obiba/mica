@@ -538,7 +538,7 @@ function mica_studies_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_selection_criteria';
   $field_group->data = array(
-    'label' => 'Please specify countries of residence',
+    'label' => 'Selection Criteria: Country of Residence',
     'weight' => '72',
     'children' => array(
       0 => 'field_country',
@@ -546,12 +546,13 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Selection Criteria: Country of Residence',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_countries|node|study|form'] = $field_group;
@@ -1731,13 +1732,12 @@ function mica_studies_field_group_info() {
       3 => 'field_health_status',
       4 => 'field_partcipant_sel_supp_info',
       5 => 'field_select_criteria',
-      6 => 'field_selection_gender',
-      7 => 'field_selection_others_sp',
-      8 => 'group_age_range',
-      9 => 'group_countries',
-      10 => 'group_ethnic_origin',
-      11 => 'group_health_status',
-      12 => 'group_specify_gender',
+      6 => 'field_selection_others_sp',
+      7 => 'group_age_range',
+      8 => 'group_countries',
+      9 => 'group_ethnic_origin',
+      10 => 'group_health_status',
+      11 => 'group_specify_gender',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

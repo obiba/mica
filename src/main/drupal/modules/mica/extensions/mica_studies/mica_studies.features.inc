@@ -138,7 +138,7 @@ function mica_studies_default_search_api_index() {
         },
         "field_website" : { "name" : "Website", "indexed" : true, "type" : "text", "boost" : "1.0" },
         "field_territory" : {
-          "name" : "Territory",
+          "name" : "Territory or city of residence",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"
@@ -289,7 +289,7 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_health_status" : {
-          "name" : "Health status",
+          "name" : "Selection Criteria: Health Status",
           "indexed" : true,
           "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
@@ -325,7 +325,7 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_ethnic_origin" : {
-          "name" : "Ethnic origin",
+          "name" : "Selection Criteria: Ethnic Origin",
           "indexed" : true,
           "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
@@ -385,7 +385,7 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_country" : {
-          "name" : "Country",
+          "name" : "Country of residence",
           "indexed" : true,
           "type" : "list\\u003Cstring\\u003E",
           "boost" : "1.0"
@@ -416,13 +416,13 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_age_min" : {
-          "name" : "Age min",
+          "name" : "Minimum age",
           "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
         },
         "field_age_max" : {
-          "name" : "Age max",
+          "name" : "Maximum age",
           "indexed" : true,
           "type" : "integer",
           "boost" : "1.0"
