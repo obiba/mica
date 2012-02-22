@@ -6,7 +6,6 @@ function mica_core_theme_registry_alter(&$theme_registry) {
 	if (!empty($theme_registry['form_element'])) {
 		$theme_registry['form_element']['function'] = 'mica_core_form_element';
 		$theme_registry['field_multiple_value_form']['function'] = 'mica_core_field_multiple_value_form';
-    debug($theme_registry);
 	}
 }
 
