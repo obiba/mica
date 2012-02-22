@@ -447,7 +447,7 @@ function mica_field_group_pre_render(&$element, $group, &$form) {
   if (isset($form['#form_id']) && $form['#form_id'] === 'study_node_form') {
     
     $group_name = $group->group_name;
-    $lang = $form['language']['#default_value'];
+    $lang = key_exists('#default_value', $form['language']) ? $form['language']['#default_value'] : LANGUAGE_NONE;
     $to_hide = array(
     	'group_authorising_person' => array(
      	  'dependee' => 'field_authorization_specific[' . $lang . ']',
