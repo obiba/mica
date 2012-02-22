@@ -430,6 +430,21 @@ function mica_studies_strongarm() {
           'token' => array(
             'custom_settings' => FALSE,
           ),
+          'banner_area' => array(
+            'custom_settings' => FALSE,
+          ),
+          'left_area' => array(
+            'custom_settings' => TRUE,
+          ),
+          'right_area' => array(
+            'custom_settings' => TRUE,
+          ),
+          'center_area' => array(
+            'custom_settings' => TRUE,
+          ),
+          'footer_area' => array(
+            'custom_settings' => TRUE,
+          ),
         ),
         'extra_fields' => array(
           'form' => array(
@@ -3364,7 +3379,7 @@ function mica_studies_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'page_manager_node_view_disabled';
-  $strongarm->value = TRUE;
+  $strongarm->value = FALSE;
   $export['page_manager_node_view_disabled'] = $strongarm;
 
   $strongarm = new stdClass;
