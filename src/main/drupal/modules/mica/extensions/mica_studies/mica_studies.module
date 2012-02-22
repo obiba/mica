@@ -240,33 +240,30 @@ function mica_node_view($node, $view_mode, $langcode) {
         'key' => 'others',
         'label_as_prefix' => FALSE,
 		  ),
-      'field_selection_gender' => array(
-        'field' => 'field_select_criteria',
-        'key' => 'gender',
-        'label_as_prefix' => FALSE,
-		  ),
       'field_age_min-field_age_max' => array(
-        'field_sp' => array('field_age_min', 'field_age_max'), //  Special bindings for age min-max
+				'field_sp' => array('field_age_min', 'field_age_max'),
         'field' => 'field_select_criteria',
-        'key' => 'age',
+        'key' => NULL, // set to NULL to add this to an already existing list of choices
         'label_as_prefix' => TRUE,
 		  ),
-      'field_country-field_territory' => array(
+			'field_country' => array(
 				'field_sp' => array('field_country', 'field_territory'),
         'field' => 'field_select_criteria',
-        'key' => 'countries',
-        'label_as_prefix' => false,
+        'key' => NULL, // set to NULL to add this to an already existing list of choices
+        'label_as_prefix' => FALSE,
 		  ),
-      'field_ethnic_origin'  => array(
+			'field_ethnic_origin' => array(
+				'field_sp' => array('field_ethnic_origin'),
         'field' => 'field_select_criteria',
-        'key' => 'ethnic',
-        'label_as_prefix' => FALSE, 
-	  	),
-      'field_health_status'  => array(
+        'key' => NULL, // set to NULL to add this to an already existing list of choices
+        'label_as_prefix' => FALSE,
+		  ),
+			'field_health_status' => array(
+				'field_sp' => array('field_health_status'),
         'field' => 'field_select_criteria',
-        'key' => 'health',
-        'label_as_prefix' => FALSE, 
-	  	),
+        'key' => NULL, // set to NULL to add this to an already existing list of choices
+        'label_as_prefix' => FALSE,
+		  ),
       'field_recruitment_other' => array(
         'field' => 'field_recruitment_procedures',
         'key' => 'other',
@@ -366,7 +363,6 @@ function mica_studies_form_alter(&$form, &$form_state, $form_id) {
       $form['#validate'][] = '_mica_studies_form_validate';
       _mica_add_dependent_field_checked($form, 'field_design', 'field_design_other_sp', 'other');
       _mica_add_dependent_field_checked($form, 'field_recruitment', 'field_recruitment_other_sp', 'other');
-//       _mica_add_dependent_field_checked($form, 'field_select_criteria', 'field_selection_others_sp', 'others');
       _mica_add_dependent_field_checked($form, 'field_access_other', 'field_access_other_sp', '1');
       _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
       _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
@@ -463,31 +459,6 @@ function mica_field_group_pre_render(&$element, $group, &$form) {
         'condition' => 'checked',
     	  'value' => TRUE,
       ),
-//       'group_specify_gender' => array(
-//         'dependee' => 'field_select_criteria[' . $lang . '][gender]',
-//         'condition' => 'checked',
-//         'value' => TRUE,
-//       ),
-//       'group_age_range' => array(
-//         'dependee' => 'field_select_criteria[' . $lang . '][age]',
-//         'condition' => 'checked',
-//         'value' => TRUE,
-//       ),
-//       'group_countries' => array(
-//         'dependee' => 'field_select_criteria[' . $lang . '][countries]',
-//         'condition' => 'checked',
-//         'value' => TRUE,
-//       ),
-//       'group_ethnic_origin' => array(
-//         'dependee' => 'field_select_criteria[' . $lang . '][ethnic]',
-//         'condition' => 'checked',
-//         'value' => TRUE,
-//       ),
-//       'group_health_status' => array(
-//         'dependee' => 'field_select_criteria[' . $lang . '][health]',
-//         'condition' => 'checked',
-//         'value' => TRUE,
-//       ),
     );
   
     if (array_key_exists($group_name, $to_hide)) {
@@ -550,7 +521,6 @@ function _mica_studies_display_status_dates(&$node, $status_dates) {
 function _mica_bind_other_specify(&$node, $bindings) {
 
 	foreach ($bindings as $other_sp => $options) {
-	  
 		$field = $options['field'];
 		if (isset($node->content[$field]) && (isset($node->content[$other_sp]) || isset($options['field_sp']))) {
 			$key = $options['key'];
@@ -574,6 +544,10 @@ function _mica_bind_other_specify(&$node, $bindings) {
 					}
 				}
 			}
+			else{
+			  $node->content[$field]['#items'][] = array('value' => 'extraone');
+			  $index = count($node->content[$field]['#items']) -1;
+			}
 			
 			if (isset($index)) {
 				// bind the other specify with the other option
@@ -593,7 +567,7 @@ function _mica_bind_other_specify(&$node, $bindings) {
 									$prefix = $field_info['display_label'] . ' ';
 								}
 							}
-						    foreach($node->content[$f] as $k => $value) {
+						  foreach($node->content[$f] as $k => $value) {
 							  if (is_int($k)) {
 							    $specifies[] = $prefix . $value['#markup'];
 							  }
@@ -628,7 +602,12 @@ function _mica_bind_other_specify(&$node, $bindings) {
 				    $node->content[$field][$index]['#markup'] .= $start . $content . $end;
 				  }
 				  else{
-				    $node->content[$field][0]['#markup'] .= $start . $content . $end;
+				    if (isset($key)){
+				      $node->content[$field][0]['#markup'] .= $start . $content . $end;
+				    }
+				    else{
+				      $node->content[$field][] = array('#markup' => $content);
+				    }
 				  }
 				}
 			}
@@ -725,11 +704,6 @@ function _mica_studies_form_validate($form, &$form_state) {
   _mica_studies_form_validate_field($form, $form_state, 'field_design', 'field_design_other_sp', 'other');
   _mica_studies_form_validate_field($form, $form_state, 'field_recruitment', 'field_recruitment_other_sp', 'other');
   _mica_studies_form_validate_field($form, $form_state, 'field_select_criteria', 'field_selection_others_sp', 'others');
-  _mica_studies_form_validate_field($form, $form_state, 'field_select_criteria', 'field_selection_gender', 'gender');
-  _mica_studies_form_validate_field($form, $form_state, 'field_select_criteria', 'field_age_min', 'age');
-  _mica_studies_form_validate_field($form, $form_state, 'field_select_criteria', 'field_age_max', 'age');
-  _mica_studies_form_validate_field($form, $form_state, 'field_select_criteria', 'field_country', 'countries');
-  _mica_studies_form_validate_field($form, $form_state, 'field_select_criteria', 'field_territory', 'countries');
   _mica_studies_form_validate_field($form, $form_state, 'field_access_other', 'field_access_other_sp', '1');
   _mica_studies_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
   _mica_studies_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
