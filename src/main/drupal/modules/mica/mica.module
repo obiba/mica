@@ -329,6 +329,26 @@ function mica_feeds_plugins() {
   return $info;
 }
 
+/**
+* Implements hook_entity_info_alter().
+*/
+function mica_entity_info_alter(&$entity_info) {
+  _mica_add_view_mode($entity_info,'banner_area','Banner Area');
+  _mica_add_view_mode($entity_info,'left_area','Left Area');
+  _mica_add_view_mode($entity_info,'right_area','Right Area');
+  _mica_add_view_mode($entity_info,'content_area','Content Area');
+  _mica_add_view_mode($entity_info,'footer_area','Footer Area');
+}
+
+function _mica_add_view_mode(&$entity_info, $mode, $label) {
+  if (!isset($entity_info['node']['view modes'][$mode])) {
+    $entity_info['node']['view modes'][$mode] = array(
+      'label' => t($label),
+      'custom settings' => FALSE,
+    );
+  }
+}
+
 //
 // Modal helper functions
 //
