@@ -423,31 +423,6 @@ function mica_studies_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_age_range|node|study|form';
-  $field_group->group_name = 'group_age_range';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_selection_criteria';
-  $field_group->data = array(
-    'label' => 'Please specify age range',
-    'weight' => '76',
-    'children' => array(),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_age_range|node|study|form'] = $field_group;
-
-  $field_group = new stdClass;
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_age_range|node|study|left_area';
   $field_group->group_name = 'group_age_range';
   $field_group->entity_type = 'node';
@@ -2935,31 +2910,6 @@ function mica_studies_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_ethnic_origin|node|study|form';
-  $field_group->group_name = 'group_ethnic_origin';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_selection_criteria';
-  $field_group->data = array(
-    'label' => 'Please specify ethnic origin',
-    'weight' => '77',
-    'children' => array(),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_ethnic_origin|node|study|form'] = $field_group;
-
-  $field_group = new stdClass;
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_ethnic_origin|node|study|left_area';
   $field_group->group_name = 'group_ethnic_origin';
   $field_group->entity_type = 'node';
@@ -3723,31 +3673,6 @@ function mica_studies_field_group_info() {
     ),
   );
   $export['group_health_status|node|study|footer_area'] = $field_group;
-
-  $field_group = new stdClass;
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_health_status|node|study|form';
-  $field_group->group_name = 'group_health_status';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_selection_criteria';
-  $field_group->data = array(
-    'label' => 'Please specify health status',
-    'weight' => '78',
-    'children' => array(),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_health_status|node|study|form'] = $field_group;
 
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

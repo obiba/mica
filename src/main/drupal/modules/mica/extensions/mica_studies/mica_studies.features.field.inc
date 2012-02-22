@@ -10,6 +10,67 @@
 function mica_studies_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'comment-comment_node_contact-comment_body'
+  $fields['comment-comment_node_contact-comment_body'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(
+        0 => 'comment',
+      ),
+      'field_name' => 'comment_body',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'comment_node_contact',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'comment',
+      'field_name' => 'comment_body',
+      'label' => 'Comment',
+      'required' => TRUE,
+      'settings' => array(
+        'text_processing' => 1,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'rows' => 5,
+        ),
+        'type' => 'text_textarea',
+        'weight' => 0,
+      ),
+    ),
+  );
+
   // Exported field: 'comment-comment_node_documents-comment_body'
   $fields['comment-comment_node_documents-comment_body'] = array(
     'field_config' => array(
@@ -3333,9 +3394,9 @@ function mica_studies_field_default_fields() {
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
-          'field_description_label' => '',
+          'field_description_label' => 'Biological samples collection mode',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -6581,9 +6642,9 @@ function mica_studies_field_default_fields() {
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
-          'field_description_label' => '',
+          'field_description_label' => 'Physical measures collection mode',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -7008,9 +7069,9 @@ function mica_studies_field_default_fields() {
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
-          'field_description_label' => '',
+          'field_description_label' => 'Questionnaire collection mode',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -8500,7 +8561,7 @@ other|Other',
       'module' => 'number',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
           'field_description_label' => 'Headline number of participants with samples',
           'field_description_value_type' => 'INTEGER',
@@ -8601,7 +8662,7 @@ other|Other',
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Headline number of participants with samples',
+      'display_label' => 'Target number of participants with samples',
       'entity_type' => 'node',
       'field_name' => 'field_target_number_biosamples',
       'label' => 'How many people have provided or should provide biological samples, from which DNA could be extracted?',
@@ -8740,7 +8801,7 @@ other|Other',
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Headline number of participants',
+      'display_label' => 'Target number of participants',
       'entity_type' => 'node',
       'field_name' => 'field_target_number_participants',
       'label' => 'How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?',

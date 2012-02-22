@@ -164,6 +164,12 @@ function mica_studies_default_search_api_index() {
           "type" : "integer",
           "boost" : "1.0"
         },
+        "field_authorising_date" : { "type" : "date" },
+        "field_authorising_date_m" : { "type" : "date" },
+        "field_authorising_person_name" : { "type" : "text" },
+        "field_authorising_person_name_m" : { "type" : "text" },
+        "field_authorization_maelstrom" : { "type" : "boolean" },
+        "field_authorization_specific" : { "type" : "boolean" },
         "field_baseline_end_year" : {
           "name" : "End year",
           "indexed" : true,
@@ -183,6 +189,8 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_biosamples_collection_mode" : { "type" : "string" },
+        "field_complete_name" : { "type" : "text" },
+        "field_contacts_ref" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_country" : {
           "name" : "Country of residence",
           "indexed" : true,
@@ -273,12 +281,14 @@ function mica_studies_default_search_api_index() {
           "type" : "integer",
           "boost" : "1.0"
         },
+        "field_gender" : { "type" : "string" },
         "field_health_status" : {
           "name" : "Selection Criteria: Health Status",
           "indexed" : true,
           "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
         },
+        "field_investigators" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_marker_paper" : {
           "name" : "Marker paper describing your study",
           "indexed" : true,
@@ -389,6 +399,7 @@ function mica_studies_default_search_api_index() {
           "type" : "text",
           "boost" : "1.0"
         },
+        "field_supp_infos" : { "type" : "text" },
         "field_target_nb_supp_info" : {
           "name" : "If needed, supplementary information about target number of participants",
           "indexed" : true,
@@ -422,6 +433,26 @@ function mica_studies_default_search_api_index() {
         "search_api_language" : { "type" : "string" },
         "body:value" : { "type" : "text" },
         "body:summary" : { "type" : "text" },
+        "field_contacts_ref:title" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_contacts_ref:field_address" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_contacts_ref:field_city" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_contacts_ref:field_contact_country" : { "type" : "list\\u003Cstring\\u003E" },
+        "field_contacts_ref:field_contact_email" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_contacts_ref:field_institution_name" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_contacts_ref:field_postal_code" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_contacts_ref:field_state" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_contacts_ref:field_telephone" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_contacts_ref:field_daco" : { "type" : "list\\u003Cboolean\\u003E" },
+        "field_investigators:title" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_investigators:field_address" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_investigators:field_city" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_investigators:field_contact_country" : { "type" : "list\\u003Cstring\\u003E" },
+        "field_investigators:field_contact_email" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_investigators:field_institution_name" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_investigators:field_postal_code" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_investigators:field_state" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_investigators:field_telephone" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_investigators:field_daco" : { "type" : "list\\u003Cboolean\\u003E" },
         "field_website" : { "name" : "Website", "indexed" : true, "type" : "text", "boost" : "1.0" },
         "body" : {
           "name" : "What are the principal objectives of the study",
@@ -454,7 +485,50 @@ function mica_studies_default_search_api_index() {
         "search_api_case_ignore" : {
           "status" : 1,
           "weight" : "0",
-          "settings" : { "fields" : { "title" : true } }
+          "settings" : { "fields" : {
+              "title" : true,
+              "field_acroym" : true,
+              "field_authorising_person_name" : true,
+              "field_authorising_person_name_m" : true,
+              "field_complete_name" : true,
+              "field_data_sources_sp" : true,
+              "field_design_other_sp" : true,
+              "field_health_status" : true,
+              "field_partcipant_sel_supp_info" : true,
+              "field_recruitement_supp_info" : true,
+              "field_recruitment_other" : true,
+              "field_recruitment_other_sp" : true,
+              "field_recruitment_procedures" : true,
+              "field_recruitment_supp_info" : true,
+              "field_samples_man_other_sp" : true,
+              "field_samples_supp_info" : true,
+              "field_selection_others_sp" : true,
+              "field_status_supp_info" : true,
+              "field_supp_infos" : true,
+              "field_target_nb_supp_info" : true,
+              "field_territory" : true,
+              "field_tissues_sp" : true,
+              "body:value" : true,
+              "body:summary" : true,
+              "field_contacts_ref:title" : true,
+              "field_contacts_ref:field_address" : true,
+              "field_contacts_ref:field_city" : true,
+              "field_contacts_ref:field_contact_email" : true,
+              "field_contacts_ref:field_institution_name" : true,
+              "field_contacts_ref:field_postal_code" : true,
+              "field_contacts_ref:field_state" : true,
+              "field_contacts_ref:field_telephone" : true,
+              "field_investigators:title" : true,
+              "field_investigators:field_address" : true,
+              "field_investigators:field_city" : true,
+              "field_investigators:field_contact_country" : true,
+              "field_investigators:field_contact_email" : true,
+              "field_investigators:field_institution_name" : true,
+              "field_investigators:field_postal_code" : true,
+              "field_investigators:field_state" : true,
+              "field_investigators:field_telephone" : true
+            }
+          }
         },
         "search_api_html_filter" : {
           "status" : 0,
