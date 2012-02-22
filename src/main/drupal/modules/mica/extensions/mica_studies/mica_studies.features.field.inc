@@ -1236,8 +1236,7 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 0,
-          'field_description_body' => 'What are the principal objectives of the study?',
-          'field_description_label' => 'Objectives',
+          'field_description_body' => '',
           'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
@@ -1449,9 +1448,8 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => 'What are the principal objectives of the study?',
-          'field_description_label' => 'Objectives',
+          'field_description' => 0,
+          'field_description_body' => '',
           'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
@@ -1920,6 +1918,7 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 1,
           'field_description_body' => '',
+          'field_description_label' => 'Age max',
           'field_description_value_type' => 'INTEGER',
         ),
       ),
@@ -1951,10 +1950,10 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'max',
+      'display_label' => 'Maximum age',
       'entity_type' => 'node',
       'field_name' => 'field_age_max',
-      'label' => 'Age max',
+      'label' => 'Maximum age',
       'required' => 0,
       'settings' => array(
         'max' => '110',
@@ -1991,6 +1990,7 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 1,
           'field_description_body' => '',
+          'field_description_label' => 'Age min',
           'field_description_value_type' => 'INTEGER',
         ),
       ),
@@ -2022,10 +2022,10 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'min',
+      'display_label' => 'Minimum age',
       'entity_type' => 'node',
       'field_name' => 'field_age_min',
-      'label' => 'Age min',
+      'label' => 'Minimum age',
       'required' => 0,
       'settings' => array(
         'max' => '110',
@@ -3301,7 +3301,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_country',
-      'label' => 'Country',
+      'label' => 'Country of residence',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -4285,6 +4285,7 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 1,
           'field_description_body' => '',
+          'field_description_label' => 'Ethnic origin',
           'field_description_value_type' => 'TEXT',
         ),
         'max_length' => '255',
@@ -4315,7 +4316,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_ethnic_origin',
-      'label' => 'Ethnic origin',
+      'label' => 'Selection Criteria: Ethnic Origin',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -4506,6 +4507,7 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 1,
           'field_description_body' => '',
+          'field_description_label' => 'Health status',
           'field_description_value_type' => 'TEXT',
         ),
         'max_length' => '255',
@@ -4536,7 +4538,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_health_status',
-      'label' => 'Health status',
+      'label' => 'Selection Criteria: Health Status',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -6053,6 +6055,8 @@ other|Other',
           'gravidity' => 'Gravidity (pregnant women)',
           'newborn' => 'Newborn',
           'twin' => 'Twin',
+          'women' => 'Women only',
+          'men' => 'Men only',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
@@ -6099,76 +6103,6 @@ other|Other',
         'settings' => array(),
         'type' => 'options_buttons',
         'weight' => '68',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-study-field_selection_gender'
-  $fields['node-study-field_selection_gender'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_selection_gender',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          'men' => 'Men',
-          'women' => 'Women',
-        ),
-        'allowed_values_function' => '',
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'study',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '39',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_selection_gender',
-      'label' => 'Gender',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '69',
       ),
     ),
   );
@@ -6745,7 +6679,7 @@ other|Other',
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_territory',
-      'label' => 'Territory',
+      'label' => 'Territory or city of residence',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -6960,8 +6894,6 @@ other|Other',
   t('Acronym');
   t('Acronym of the study if applicable.');
   t('Address');
-  t('Age max');
-  t('Age min');
   t('Authorising date');
   t('Authorization Maelstrom');
   t('Authorization Specific');
@@ -6974,6 +6906,7 @@ other|Other',
   t('Contact Name');
   t('Contacts');
   t('Country');
+  t('Country of residence');
   t('Data (questionnaire-derived, measured…)');
   t('Data Sources');
   t('Documents');
@@ -6981,11 +6914,8 @@ other|Other',
   t('End year');
   t('Enter the Contact full name. You will be able to edit these Contacts once the Study has been saved.');
   t('Enter the Investigator full name. You will be able to edit these Investigators once the Study will be saved.');
-  t('Ethnic origin');
   t('Files');
   t('For how many people have biological samples been collected?');
-  t('Gender');
-  t('Health status');
   t('How is information obtained? (answer by yes or no, and specify if the information collection is cross sectional or if it involves repeated measurements)');
   t('How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?');
   t('How many people have joined the study?');
@@ -7003,6 +6933,8 @@ other|Other',
   t('Investigators');
   t('Logo');
   t('Marker paper describing your study');
+  t('Maximum age');
+  t('Minimum age');
   t('Name of the person authorising the contribution to Maelstrom Research');
   t('Name of the person authorising the contribution to [SPECIFIC NETWORK]');
   t('No limits in the number of participants');
@@ -7020,12 +6952,14 @@ other|Other',
   t('Postal Code');
   t('Pubmed Id');
   t('Questionnaire collection mode');
+  t('Selection Criteria: Ethnic Origin');
+  t('Selection Criteria: Health Status');
   t('Specify the sources of recruitment');
   t('Start year');
   t('State/Province');
   t('Supplementary information');
   t('Telephone');
-  t('Territory');
+  t('Territory or city of residence');
   t('The study targets the recruitment of');
   t('Website');
   t('What are the biological samples collected?');
