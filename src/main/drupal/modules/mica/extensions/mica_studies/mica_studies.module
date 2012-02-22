@@ -511,10 +511,14 @@ function _mica_studies_display_status_dates(&$node, $status_dates) {
   foreach ($status_dates as $start_date => $end_date) {
     $start = $wrapper->$start_date->value();
     if (!empty($start)) {
-      $node->content[$start_date][0]['#markup'] = t('From') . ' ' . $node->content[$start_date][0]['#markup'];
+      if (isset($node->content[$start_date])){
+        $node->content[$start_date][0]['#markup'] = t('From') . ' ' . $node->content[$start_date][0]['#markup'];
+      }
       $end = $wrapper->$end_date->value();
       if (!empty($end)) {
-      	$node->content[$start_date][0]['#markup'] .= ' ' . t('to') . ' ' .  $node->content[$end_date][0]['#markup'];
+        if (isset($node->content[$end_date])){
+          $node->content[$start_date][0]['#markup'] .= ' ' . t('to') . ' ' .  $node->content[$end_date][0]['#markup'];
+        }
       }
       $node->content[$end_date]['#access'] = FALSE;
     }
