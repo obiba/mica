@@ -2642,6 +2642,34 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: What is the design of the study */
+  $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
+  $handler->display->display_options['fields']['field_design']['table'] = 'field_data_field_design';
+  $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
+  $handler->display->display_options['fields']['field_design']['label'] = 'Study design';
+  $handler->display->display_options['fields']['field_design']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_design']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_design']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_design']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_design']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_design']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_design']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_design']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_design']['group_rows'] = 1;
+  $handler->display->display_options['fields']['field_design']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_design']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['field_design']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_design']['field_api_classes'] = 0;
   /* Field: Content: How many people are planned to be recruited? Or if the study is completed, what is the final number of participants? */
   $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'field_data_field_target_number_participants';
@@ -2735,6 +2763,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     t('empty_studies'),
     t('No study found.'),
     t('Name'),
+    t('Study design'),
     t('Target number of participants'),
     t('Country of residence'),
     t('Page'),
@@ -2799,7 +2828,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['table'] = 'search_api_index_studies_index';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
-  $handler->display->display_options['fields']['field_design']['label'] = 'Baseline design';
+  $handler->display->display_options['fields']['field_design']['label'] = 'Study design';
   $handler->display->display_options['fields']['field_design']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['absolute'] = 0;
@@ -2809,6 +2838,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_design']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_design']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_design']['alter']['more_link'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['html'] = 0;
@@ -2919,7 +2949,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     t('empty_studies'),
     t('No study found.'),
     t('Title'),
-    t('Baseline design'),
+    t('Study design'),
     t('Target number of participants'),
     t('Country of residence'),
     t('Fulltext search'),

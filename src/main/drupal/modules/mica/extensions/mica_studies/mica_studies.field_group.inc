@@ -421,7 +421,6 @@ function mica_studies_field_group_info() {
   );
   $export['group_age_range|node|study|footer_area'] = $field_group;
 
-
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
@@ -3672,7 +3671,6 @@ function mica_studies_field_group_info() {
     ),
   );
   $export['group_health_status|node|study|footer_area'] = $field_group;
-
 
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
