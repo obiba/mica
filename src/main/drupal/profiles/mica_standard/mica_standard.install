@@ -11,7 +11,7 @@ function mica_standard_install() {
 
   // Enable some standard blocks.
   $mica_theme = 'mica_samara';
-  $admin_theme = 'seven';
+  $admin_theme = 'mica_seven';
 
   watchdog('mica', 'Configure default blocks', WATCHDOG_DEBUG);
 
@@ -25,7 +25,7 @@ function mica_standard_install() {
   _mica_standard_no_region('node', 'recent');
 
   // Set mica theme as default
-  theme_enable(array($mica_theme, 'bartik', 'seven'));
+  theme_enable(array($mica_theme, 'bartik', 'mica_seven'));
   variable_set('theme_default', $mica_theme);
 
 
@@ -83,7 +83,7 @@ Over time, the Consortium will generate best practices documents that will descr
   watchdog('mica', 'Mica standard profile installed', WATCHDOG_INFO);
 }
 
-function _mica_standard_no_region($module, $delta, $theme = 'seven') {
+function _mica_standard_no_region($module, $delta, $theme = 'mica_seven') {
   db_update('block')
   ->fields(array(
     'region' => BLOCK_REGION_NONE,
@@ -95,7 +95,7 @@ function _mica_standard_no_region($module, $delta, $theme = 'seven') {
   ->execute();
 }
 
-function _mica_standard_default_block($mica_theme = 'mica_samara', $admin_theme = 'seven') {
+function _mica_standard_default_block($mica_theme = 'mica_samara', $admin_theme = 'mica_seven') {
   $values = array(
     array(
       'module' => 'user',
