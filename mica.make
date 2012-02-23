@@ -254,7 +254,7 @@ projects[variable][type] = module
 projects[view_unpublished][version] = 1.0
 projects[view_unpublished][type] = module
 
-projects[views][version] = 3.2
+projects[views][version] = 3.3
 projects[views][type] = module
 
 projects[views_data_export][version] = 3.0-beta5

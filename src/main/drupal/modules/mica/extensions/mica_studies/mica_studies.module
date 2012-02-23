@@ -141,6 +141,7 @@ function mica_studies_block_view($delta = '') {
       $block['subject'] = t('Search');
       $block['content'] = mica_search_block_content();
       return $block;
+
     case 'mica-search-filters':
       if ($user->uid == 0) {
         // not available for anonymous user
@@ -155,12 +156,7 @@ function mica_studies_block_view($delta = '') {
         $block['content'] = $content;
         return $block;
       }
-      else {
-        // no content, then no block
-        return;
-      }
-    default:
-      return;
+
   }
 
 }
@@ -416,9 +412,17 @@ function _mica_studies_set_contact_title(&$node) {
     if (array_key_exists($language, $field_contact_name)) {
     
       $name = $field_contact_name[$language][0];
-      $full_name = trim($name['title']) . ' ' . trim($name['given']) . ' ' . trim($name['family']); 
-    
-      if (strlen(trim($full_name))>0) {
+      $full_name = isset($name['title']) ? trim($name['title']) : '';
+      if (isset($name['given'])) {
+        if (!empty($full_name)) $full_name .= ' ';
+        $full_name .= trim($name['given']);
+      }
+      if (isset($name['family'])) {
+        if (!empty($full_name)) $full_name .= ' ';
+        $full_name .= trim($name['family']);
+      }
+
+      if (strlen(trim($full_name)) > 0) {
       
         $node->title = $full_name;
         if (!empty($institution)) $node->title .= ' (' . trim($institution) . ')';
@@ -530,8 +534,6 @@ function _mica_bind_other_specify(&$node, $bindings) {
 
 	foreach ($bindings as $other_sp => $options) {
 		$field = $options['field'];
-// 		debug($node->content, null, true);
-		//$node->content[$field] = array('#title' => 'selc');
 		if (isset($node->content[$field]) && (isset($node->content[$other_sp]) || isset($options['field_sp']))) {
 			$key = $options['key'];
 			$delimiter = ', ';
@@ -690,6 +692,7 @@ function _mica_remove_suffix(&$node, $fields) {
 			}
 			$index--;
 
+      $suffix = '';
 			$field_info = field_info_instance('node', $field, 'study');
 			if (isset($field_info['settings']['suffix']) && strlen(trim($field_info['settings']['suffix'])) > 0) {
 				$suffix = $field_info['settings']['suffix'];

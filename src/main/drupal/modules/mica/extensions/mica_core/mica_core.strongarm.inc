@@ -20,6 +20,34 @@ function mica_core_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'cron_key';
+  $strongarm->value = 'kiMRMKXBTUAQuYRzuvUBCSPi9PcAuK4zCDGkPjuYwbA';
+  $export['cron_key'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'cron_last';
+  $strongarm->value = 1330012021;
+  $export['cron_last'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'cron_safe_threshold';
+  $strongarm->value = '3600';
+  $export['cron_safe_threshold'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ctools_last_cron';
+  $strongarm->value = 1330011420;
+  $export['ctools_last_cron'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'i18n_string_allowed_formats';
   $strongarm->value = array(
     'filtered_html' => 'filtered_html',
@@ -41,6 +69,13 @@ function mica_core_strongarm() {
   $strongarm->name = 'language_content_type_page';
   $strongarm->value = '4';
   $export['language_content_type_page'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_cron_last';
+  $strongarm->value = '1330011598';
+  $export['node_cron_last'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

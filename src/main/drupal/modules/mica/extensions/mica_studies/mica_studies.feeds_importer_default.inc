@@ -104,11 +104,6 @@ function mica_studies_feeds_importer_default() {
             'unique' => 0,
           ),
           13 => array(
-            'source' => 'id',
-            'target' => 'guid',
-            'unique' => 1,
-          ),
-          14 => array(
             'source' => 'published',
             'target' => 'status',
             'unique' => FALSE,
