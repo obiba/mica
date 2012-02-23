@@ -299,32 +299,6 @@ function mica_node_view($node, $view_mode, $langcode) {
 		  'field_followup_start_year' => 'field_followup_end_year',
 		);
 		_mica_studies_display_status_dates($node, $status_dates);
-		
-		$supp_infos= array(
-      'field_recruitment_supp_info' => array(
-        'field' => 'field_recruitment',
-	  	),
-      'field_target_nb_supp_info' => array(
-      	'field' => 'field_target_number_participants',
-	  	),
-      'field_samples_supp_info' => array(
-       	'field' => 'field_target_number_biosamples',
-	  	),
-      'field_current_supp_info' => array(
-        'field' => 'field_current_participants_nb',
-		  ),
-      'field_current_sam_supp_info' => array(
-        'field' => 'field_current_samples_nb',
-	  	),
-      'field_partcipant_sel_supp_info' => array(
-        'field' => 'field_select_criteria',
-		  ),
-      'field_recruitement_supp_info' => array(
-        'field' => 'field_recruitment_procedures',
-		  ),
-		);
-
-		//_mica_bind_supp_infos($node, $supp_infos);
 
 		$fields = array(
       'field_target_number_participants',
@@ -640,42 +614,6 @@ function _mica_bind_other_specify(&$node, $bindings) {
 		
 		if (isset($node->content[$other_sp])) {
 			$node->content[$other_sp]['#access'] = FALSE;
-		}
-	}
-}
-
-function _mica_bind_supp_infos(&$node, $bindings) {
-	foreach ($bindings as $supp_info => $options) {
-		$field = $options['field'];
-		if (isset($node->content[$supp_info]) && isset($node->content[$field])) {
-			// find the last integer index...
-			$index = 0;
-			for (; $index < count($node->content[$field]); $index++) {
-				if ( !isset($node->content[$field][$index])) {
-					break;
-				}
-			}
-			$index--;
-
-			$title = $node->content[$supp_info]['#title'];
-
-			// If a display field as been defined, take this title instead
-			$field_info = field_info_instance('node', $supp_info, 'study');
-			if (isset($field_info['display_label']) && strlen(trim($field_info['display_label'])) > 0) {
-				$title = $field_info['display_label'];
-			}
-
-			$node->content[$field][$index] = array(
-        '#markup' => $node->content[$field][$index]['#markup'] . 
-        '<br/><br/><span style="margin-left:-20px">' . $title . ': ' . 
-	  		$node->content[$supp_info][0]['#markup'] . '</span>',
-			);
-
-			$node->content[$supp_info]['#access'] = FALSE;
-		}
-
-		if (isset($node->content[$supp_info])) {
-			$node->content[$supp_info]['#access'] = FALSE;
 		}
 	}
 }
