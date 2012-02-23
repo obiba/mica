@@ -88,7 +88,7 @@ projects[entity_translation][download][type] = git
 projects[entity_translation][download][url] = http://git.drupal.org/project/entity_translation.git
 projects[entity_translation][download][revision] = c8d5a47baf08c511749b1dcf8083ef4a3898698b
 
-projects[facetapi][version] = 1.0-rc2
+projects[facetapi][version] = 1.0-rc3
 projects[facetapi][type] = module
 
 projects[] = examples
