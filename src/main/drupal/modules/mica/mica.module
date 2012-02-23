@@ -504,6 +504,9 @@ function mica_create_menu($node, $hidden){
 	return $menu;
 }
 
+/**
+ * Implements hook_pathauto_punctuation_chars_alter
+ */
 function mica_pathauto_punctuation_chars_alter(array &$punctuation) {
 	$punctuation['raquo'] = array('value' => '»', 'name' => t('Right double angle quotes'));
 }
