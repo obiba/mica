@@ -348,24 +348,31 @@ function _mica_studies_contact_view($node, $view_mode, $langcode) {
 function mica_studies_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
     case 'study_node_form':
-      $form['#validate'][] = '_mica_studies_form_validate';
-      _mica_add_dependent_field_checked($form, 'field_design', 'field_design_other_sp', 'other');
-      _mica_add_dependent_field_checked($form, 'field_recruitment', 'field_recruitment_other_sp', 'other');
-      _mica_add_dependent_field_checked($form, 'field_access_other', 'field_access_other_sp', '1');
-      _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
-      _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
-      _mica_add_dependent_field_checked($form, 'field_recruitment_procedures', 'field_recruitment_other', 'other');
-      _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_data_sources_sp', 'others');
-      _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_questionnaire_collection', 'questionnaires');
-      _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_phys_collection_mode', 'physical_measures');
-      _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_biosamples_collection_mode', 'biological_samples');
+      _mica_studies_study_form_alter($form, $form_state, $form_id);
       break;
-
     case 'contact_node_form':
-      $form['title']['#type'] = 'value';
-      $form['title']['#required'] = FALSE;
+      _mica_studies_contact_form_alter($form, $form_state, $form_id);
       break;
   }
+}
+
+function _mica_studies_study_form_alter(&$form, &$form_state, $form_id) {
+  $form['#validate'][] = '_mica_studies_form_validate';
+  _mica_add_dependent_field_checked($form, 'field_design', 'field_design_other_sp', 'other');
+  _mica_add_dependent_field_checked($form, 'field_recruitment', 'field_recruitment_other_sp', 'other');
+  _mica_add_dependent_field_checked($form, 'field_access_other', 'field_access_other_sp', '1');
+  _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
+  _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
+  _mica_add_dependent_field_checked($form, 'field_recruitment_procedures', 'field_recruitment_other', 'other');
+  _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_data_sources_sp', 'others');
+  _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_questionnaire_collection', 'questionnaires');
+  _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_phys_collection_mode', 'physical_measures');
+  _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_biosamples_collection_mode', 'biological_samples');
+}
+
+function _mica_studies_contact_form_alter(&$form, &$form_state, $form_id) {
+  $form['title']['#type'] = 'value';
+  $form['title']['#required'] = FALSE;
 }
 
 /**
