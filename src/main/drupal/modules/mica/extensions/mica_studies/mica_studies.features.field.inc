@@ -7005,7 +7005,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'mica_pubmed_url',
           'weight' => '3',
         ),
         'left_area' => array(
