@@ -39,7 +39,6 @@ function mica_studies_menu_default_menu_links() {
       'attributes' => array(
         'title' => '',
       ),
-      'langcode' => 'en',
     ),
     'module' => 'system',
     'hidden' => '0',

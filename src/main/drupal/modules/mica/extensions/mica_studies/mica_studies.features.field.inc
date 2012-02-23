@@ -8324,6 +8324,128 @@ function mica_studies_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-study-field_study_website'
+  $fields['node-study-field_study_website'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_study_website',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
+        'title' => 'optional',
+        'title_maxlength' => 128,
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '0',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => 95,
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_study_website',
+      'label' => 'Website',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'configurable_title' => 0,
+          'rel' => '',
+          'target' => '_blank',
+          'title' => '',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 0,
+        'title' => 'none',
+        'title_maxlength' => '128',
+        'title_value' => '',
+        'url' => 0,
+        'user_register_form' => FALSE,
+        'validate_url' => 1,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
+        'weight' => '105',
+      ),
+    ),
+  );
+
   // Exported field: 'node-study-field_supp_infos'
   $fields['node-study-field_supp_infos'] = array(
     'field_config' => array(
@@ -8926,129 +9048,6 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study-field_website'
-  $fields['node-study-field_website'] = array(
-		'field_config' => array(
-  		'active' => '1',
-        'cardinality' => '1',
-        'deleted' => '0',
-        'entity_types' => array(),
-        'field_name' => 'field_website',
-        'field_permissions' => array(
-          'type' => '0',
-        ),
-        'foreign keys' => array(),
-        'indexes' => array(),
-        'module' => 'link',
-        'settings' => array(
-          'attributes' => array(
-            'class' => '',
-            'rel' => '',
-            'target' => 'default',
-          ),
-          'display' => array(
-            'url_cutoff' => 80,
-          ),
-          'enable_tokens' => 1,
-          'field_description_infos' => array(
-            'field_description' => 0,
-            'field_description_body' => '',
-            'field_description_label' => '',
-            'field_description_value_type' => 'TEXT',
-          ),
-          'title' => 'optional',
-          'title_maxlength' => 128,
-          'title_value' => '',
-          'url' => 0,
-        ),
-        'translatable' => '0',
-        'type' => 'link_field',
-      ),
-      'field_instance' => array(
-        'bundle' => 'study',
-        'default_value' => NULL,
-        'deleted' => '0',
-        'description' => 'What is the Web address where information on the study is made available?',
-        'display' => array(
-          'banner_area' => array(
-            'label' => 'above',
-            'settings' => array(),
-            'type' => 'hidden',
-            'weight' => 0,
-          ),
-          'center_area' => array(
-            'label' => 'above',
-            'settings' => array(),
-            'type' => 'hidden',
-            'weight' => 0,
-          ),
-          'default' => array(
-            'label' => 'inline',
-            'module' => 'link',
-            'settings' => array(),
-            'type' => 'link_default',
-            'weight' => '87',
-          ),
-          'footer_area' => array(
-            'label' => 'above',
-            'settings' => array(),
-            'type' => 'hidden',
-            'weight' => 0,
-          ),
-          'left_area' => array(
-            'label' => 'above',
-            'settings' => array(),
-            'type' => 'hidden',
-            'weight' => 0,
-          ),
-          'right_area' => array(
-            'label' => 'above',
-            'module' => 'link',
-            'settings' => array(),
-            'type' => 'link_default',
-            'weight' => '1',
-          ),
-          'teaser' => array(
-            'label' => 'above',
-            'settings' => array(),
-            'type' => 'hidden',
-            'weight' => 0,
-          ),
-        ),
-        'display_label' => '',
-        'entity_type' => 'node',
-        'field_name' => 'field_website',
-        'label' => 'Website',
-        'required' => 0,
-        'settings' => array(
-          'attributes' => array(
-            'class' => '',
-            'configurable_title' => 0,
-            'rel' => '',
-            'target' => '_blank',
-            'title' => '',
-          ),
-          'display' => array(
-            'url_cutoff' => '80',
-          ),
-          'enable_tokens' => 1,
-          'title' => 'none',
-          'title_maxlength' => '128',
-          'title_value' => '',
-          'url' => 0,
-          'user_register_form' => FALSE,
-          'validate_url' => 1,
-        ),
-        'widget' => array(
-          'active' => 0,
-          'module' => 'link',
-          'settings' => array(),
-          'type' => 'link_field',
-          'weight' => '4',
-        ),
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Acronym');
@@ -9101,7 +9100,6 @@ function mica_studies_field_default_fields() {
   t('No limits in the number of samples');
   t('Other');
   t('Physical measures collection mode');
-  t('Please specify type of tissues');
   t('Please specify what other biological samples');
   t('Please specify what other data sources');
   t('Please specify what other design');
@@ -9126,7 +9124,6 @@ function mica_studies_field_default_fields() {
   t('What are the biological samples collected?');
   t('What are the inclusion criteria for participants’ selection');
   t('What are the principal objectives of the study');
-  t('What is the Web address where information on the study is made available?');
   t('What is the design of the study');
   t('when appropriate, specify the criteria.');
 
