@@ -324,7 +324,7 @@ function mica_node_view($node, $view_mode, $langcode) {
 		  ),
 		);
 
-		_mica_bind_supp_infos($node, $supp_infos);
+		//_mica_bind_supp_infos($node, $supp_infos);
 
 		$fields = array(
       'field_target_number_participants',
