@@ -168,6 +168,37 @@ function mica_node_presave($node) {
 }
 
 /**
+ * Implements hook_field_formatter_info().
+ */
+function mica_field_formatter_info() {
+  return array(
+    // This formatter just displays the link to pubmed article from its id.
+    'mica_pubmed_url' => array(
+      'label' => t('Pubmed Link'),
+      'field types' => array('text'),
+      'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function mica_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+    $element = array();
+
+  switch ($display['type']) {
+    case 'mica_pubmed_url':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array('#markup' => l('PUBMED ' . $item['value'],'http://www.ncbi.nlm.nih.gov/pubmed/' . $item['value']));
+      }
+      break;
+  }
+
+  return $element;
+}
+
+/**
  * Do not allow users to delete a node if the node type is part of a relation as a child.
  */
 function mica_node_access($node, $op, $account){
