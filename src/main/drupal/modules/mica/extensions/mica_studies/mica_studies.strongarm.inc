@@ -57,9 +57,9 @@ function mica_studies_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'collapsiblock_settings';
   $strongarm->value = array(
+    'block-current-search-standard' => '2',
     'block-facetapi-oy34mXN1nxJL14Ut9ROdWqeRVEb48MjO' => '2',
     'block-facetapi-zGEZxPGkRtjdWEccTz6eWXRPdA7r07n0' => '2',
-    'block-current-search-standard' => '2',
     'block-facetapi-k69xRogJmfK1B2ZAmYNs4FrhwLAL1mcP' => '2',
     'block-facetapi-dy1TMoSk6R6h0w81KEDoQCRnxOY11SFr' => '2',
     'block-facetapi-Y2jUzmF8fK49hirSqsFb2077JN52TV83' => '3',
@@ -77,6 +77,9 @@ function mica_studies_strongarm() {
     'block-facetapi-vVGhlmQsLUzXBUXfFv1mq8DDRz0iEYFt' => '3',
     'block-facetapi-OyJLhGRCbeFeRkmL1dkK0M04f19Gm1P0' => '3',
     'block-facetapi-RxYzHU2m9IE0Z1ASnUy53wJiuZDDcg8U' => '3',
+    'block-facetapi-x2aiUQYmnHEsSNGFTJ4LKoV88VKI97O1' => '3',
+    'block-facetapi-ZFdQ86anSHCGDPj5gckeASLBuFjA3QEf' => '3',
+    'block-facetapi-NbnHMPj12QcHHLgszNymVOLI1Et1Un7U' => '3',
   );
   $export['collapsiblock_settings'] = $strongarm;
 

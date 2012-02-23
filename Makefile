@@ -11,16 +11,17 @@ version=1.1-SNAPSHOT
 # Modules
 mica_version=7.x-1.1-dev
 mica_community_version=$(mica_version)
+mica_core_version=$(mica_version)
 mica_data_access_version=$(mica_version)
 mica_datasets_version=$(mica_version)
 mica_dataschemas_version=$(mica_version)
 mica_datashield_version=$(mica_version)
+mica_devel_version=$(mica_version)
+mica_field_description_version=$(mica_version)
 mica_node_reference_field_version=$(mica_version)
 mica_opal_version=$(mica_version)
 mica_projects_version=$(mica_version)
 mica_studies_version=$(mica_version)
-mica_field_description_version=$(mica_version)
-mica_core_version=$(mica_version)
 node_reference_block_version=$(mica_version)
 
 # Profiles
@@ -29,6 +30,7 @@ mica_demo_version=$(mica_version)
 
 # Themes
 mica_samara_version=$(mica_version)
+mica_seven_version=$(mica_version)
 
 #
 # Mysql db access
@@ -108,7 +110,7 @@ drupal-cache-clear:
 #
 # Mica Build
 #
-mica: mica-install
+mica: mica-install delete-beta-modules
 	cp src/main/drupal/themes/mica_samara/mica.png target/$(micadir)/sites/all/themes/mica_seven/logo.png
 	cp src/main/drupal/themes/mica_samara/favicon.ico target/$(micadir)/misc/favicon.ico
 
@@ -178,17 +180,17 @@ package-prepare: package-modules-prepare package-profiles-prepare package-themes
 
 package-modules-prepare:
 	$(call make-info,sites/all/modules/mica/extensions,mica_community)
+	$(call make-info,sites/all/modules/mica/extensions,mica_core)
 	$(call make-info,sites/all/modules/mica/extensions,mica_data_access)
-	$(call make-info,sites/all/modules/mica/extensions,mica_dataschemas)
 	$(call make-info,sites/all/modules/mica/extensions,mica_datasets)
+	#$(call make-info,sites/all/modules/mica/extensions,mica_dataschemas)
 	$(call make-info,sites/all/modules/mica/extensions,mica_datashield)
 	$(call make-info,sites/all/modules/mica/extensions,mica_devel)
-	$(call make-info,sites/all/modules/mica/extensions,mica_node_reference_field)
 	$(call make-info,sites/all/modules/mica/extensions,mica_field_description)
+	$(call make-info,sites/all/modules/mica/extensions,mica_node_reference_field)
 	$(call make-info,sites/all/modules/mica/extensions,mica_opal)
 	$(call make-info,sites/all/modules/mica/extensions,mica_projects)
 	$(call make-info,sites/all/modules/mica/extensions,mica_studies)
-	$(call make-info,sites/all/modules/mica/extensions,mica_core)
 	$(call make-info,sites/all/modules/mica/extensions,node_reference_block)
 	$(call make-info,sites/all/modules,mica)
 	
@@ -203,16 +205,13 @@ package-profiles:
 
 package-themes-prepare:
 	$(call make-info,sites/all/themes,mica_samara)
+	$(call make-info,sites/all/themes,mica_seven)
 	
 package-themes:
 
 package-forks-prepare:
-#	$(call make-info-version,sites/all/modules,search_api_ranges,$(search_api_ranges_revision)-mica)
-	
+
 package-forks:
-#	$(call make-package,sites/all/modules,ctools)
-#	$(call make-package,sites/all/modules,references)
-#	$(call make-package,sites/all/modules,search_api_ranges)
 
 package-clean:
 	rm -f target/*.zip && rm -f target/*.gz && rm -f target/*.deb
@@ -223,7 +222,6 @@ package-clean:
 
 # for testing (deb is not signed)
 debuild_opts=-us -uc
-#debuild_opts=
 
 debian: deb-prepare deb	
 	cd target/deb/mica && debuild $(debuild_opts) -b
@@ -385,8 +383,10 @@ help:
 # make-info function: add default version number to project info file
 make-info = $(call make-info-version,$(1),$(2),$($(2)_version))
 	
-# make-info-version function: add specified version number to project info file
+# make-info-version function: remove (if present) and add specified version number to project info file
 make-info-version = cd target/$(micadir)/$(1) && \
+	sed -i "/version/d" $2/$2.info && \
+	sed -i "/datestamp/d" $2/$2.info && \
 	echo "\n\n; Information added by obiba.org packaging script on $(deb_date)" >> $2/$2.info && \
 	echo "version = \"$(3)\"" >> $2/$2.info && \
 	echo "datestamp = \"$(datestamp)\"" >> $2/$2.info

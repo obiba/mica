@@ -4,10 +4,24 @@
  * Implements hook_install_tasks()
  */
 function mica_standard_install_tasks($install_state) {
+
+  global $conf;
+
+  // Use this early opportunity to brand the install/runtime experience.
+  // Once the generic theme settings are saved, or a custom theme's settings
+  // are saved to override it, this will not be effective anymore, which is intended.
+  if (empty($conf['theme_settings'])) {
+    $conf['theme_settings'] = array(
+      'default_logo' => 0,
+      'logo_path' => 'profiles/mica_standard/mica.png',
+    );
+  }
+
   // Preselect the English language, so users can skip the language selection form
   if (!isset($_GET['locale'])) {
     $_POST['locale'] = 'en';
   }
+
   $tasks = array(
     'mica_configure' => array(
       'display_name' => st('Configure Mica'),
