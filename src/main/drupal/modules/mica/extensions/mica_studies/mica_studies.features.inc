@@ -212,8 +212,7 @@ function mica_studies_default_search_api_index() {
         "field_investigators:field_postal_code" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_state" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_telephone" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_investigators:field_daco" : { "type" : "list\\u003Cboolean\\u003E" },
-        "field_website:url" : { "type" : "uri" }
+        "field_investigators:field_daco" : { "type" : "list\\u003Cboolean\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
