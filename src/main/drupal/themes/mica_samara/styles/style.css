@@ -558,7 +558,11 @@ h1.page-title,
   margin-bottom: 7px;
 }
 .node fieldset .field {
-  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+}
+.node fieldset .fieldset-wrapper .field:first-child {
+  border-top: none;
+  padding-top:0;
 }
 .node .field.field-label-inline {
   margin-top: 1px;
@@ -566,7 +570,7 @@ h1.page-title,
 }
 .node fieldset .field.field-label-above,
 .node fieldset .field.field-label-hidden {
-  padding-bottom: 5px;
+  padding-top: 5px;
 }
 .node .field.field-name-body {
   font-size: 115%;
@@ -2207,15 +2211,28 @@ div.block-facetapi a.facetapi-limit-link {
  * Field group styling
  */
 .field-group-more > h3 {
-  margin: -10px 0 0 20px;
   font-size: 1em;
+}
+
+.field-group-more.field-group-indent > h3 {
+  margin: -5px 0 0 20px;
 }
 
 .field-group-more > h3 a {
   border-bottom: none;
 }
 
-.field-group-more .field-group-format-wrapper {
+.field-group-more.collapsible > h3 a {
+  background: url("../images/arrow-down-black.png") no-repeat scroll 4px transparent;
+  padding-left: 15px;
+  margin-left: -5px;
+}
+
+.field-group-more.collapsible.collapsed > h3 a {
+  background: url("../images/arrow-right-black.png") no-repeat scroll 4px transparent;
+}
+
+.field-group-more.field-group-indent .field-group-format-wrapper {
   margin-left: 20px;
 }
 
