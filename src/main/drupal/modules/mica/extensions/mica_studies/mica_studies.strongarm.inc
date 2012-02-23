@@ -434,7 +434,7 @@ function mica_studies_strongarm() {
             'custom_settings' => FALSE,
           ),
           'banner_area' => array(
-            'custom_settings' => FALSE,
+            'custom_settings' => TRUE,
           ),
           'left_area' => array(
             'custom_settings' => TRUE,

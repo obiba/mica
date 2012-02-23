@@ -3390,7 +3390,7 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           'cross_sectional' => 'Cross-sectional',
-          'Longirudinal' => 'Longitudinal',
+          'Longitudinal' => 'Longitudinal',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
@@ -6640,7 +6640,7 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           'cross_sectional' => 'Cross-sectional',
-          'longirudinal' => 'Longirudinal',
+          'Longitudinal' => 'Longitudinal',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
