@@ -2202,3 +2202,23 @@ div.block-facetapi a.facetapi-limit-link {
 .search-api-ranges-widget input {
   padding: 3px;
 }
+
+/**
+ * Field group styling
+ */
+.field-group-more > h3 {
+  margin: -10px 0 0 20px;
+  font-size: 1em;
+}
+
+.field-group-more > h3 a {
+  border-bottom: none;
+}
+
+.field-group-more .field-group-format-wrapper {
+  margin-left: 20px;
+}
+
+.field-name-field-logo {
+  float: left;
+}

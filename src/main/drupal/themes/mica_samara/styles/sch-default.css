@@ -284,10 +284,10 @@ h1.page-title {
   line-height: 1.3;
 }
 
-h2 a {
+h2 a, h3 a {
  border-bottom:none;
 }
-h2 a:hover{
+h2 a:hover, h3 a:hover {
   border-bottom-width:1px;
 }
 
