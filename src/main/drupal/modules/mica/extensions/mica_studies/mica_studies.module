@@ -236,34 +236,34 @@ function mica_node_view($node, $view_mode, $langcode) {
         'key' => 'others',
         'label_as_prefix' => FALSE,
 		  ),
-//       'field_age_min-field_age_max' => array(
-// 				'field_sp' => array('field_age_min', 'field_age_max'),
-//         'field' => 'field_select_criteria',
-//         'key' => NULL, // set to NULL to add this to an already existing list of choices
-//         'label_as_prefix' => TRUE,
-//         'custom_prefix' => t('Age:'),
-// 		  ),
-// 			'field_country' => array(
-// 				'field_sp' => array('field_country', 'field_territory'),
-//         'field' => 'field_select_criteria',
-//         'key' => NULL, // set to NULL to add this to an already existing list of choices
-//         'label_as_prefix' => FALSE,
-// 				'custom_prefix' => t('Country:'),
-// 		  ),
-// 			'field_ethnic_origin' => array(
-// 				'field_sp' => array('field_ethnic_origin'),
-//         'field' => 'field_select_criteria',
-//         'key' => NULL, // set to NULL to add this to an already existing list of choices
-//         'label_as_prefix' => FALSE,
-// 				'custom_prefix' => t('Ethnic origin:'),
-// 		  ),
-// 			'field_health_status' => array(
-// 				'field_sp' => array('field_health_status'),
-//         'field' => 'field_select_criteria',
-//         'key' => NULL, // set to NULL to add this to an already existing list of choices
-//         'label_as_prefix' => FALSE,
-// 				'custom_prefix' => t('Health status:'),
-// 		  ),
+      'field_age_min-field_age_max' => array(
+ 	 'field_sp' => array('field_age_min', 'field_age_max'),
+         'field' => 'field_select_criteria',
+         'key' => NULL, // set to NULL to add this to an already existing list of choices
+         'label_as_prefix' => TRUE,
+         'custom_prefix' => t('Age:'),
+ 		  ),
+       'field_country' => array(
+ 	 'field_sp' => array('field_country', 'field_territory'),
+         'field' => 'field_select_criteria',
+         'key' => NULL, // set to NULL to add this to an already existing list of choices
+         'label_as_prefix' => FALSE,
+ 	 'custom_prefix' => t('Country:'),
+ 		  ),
+       'field_ethnic_origin' => array(
+ 	 'field_sp' => array('field_ethnic_origin'),
+         'field' => 'field_select_criteria',
+         'key' => NULL, // set to NULL to add this to an already existing list of choices
+         'label_as_prefix' => FALSE,
+ 	 'custom_prefix' => t('Ethnic origin:'),
+ 		  ),
+       'field_health_status' => array(
+ 	 'field_sp' => array('field_health_status'),
+         'field' => 'field_select_criteria',
+         'key' => NULL, // set to NULL to add this to an already existing list of choices
+         'label_as_prefix' => FALSE,
+ 	 'custom_prefix' => t('Health status:'),
+ 		  ),
       'field_recruitment_other' => array(
         'field' => 'field_recruitment_procedures',
         'key' => 'other',

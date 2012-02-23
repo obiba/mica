@@ -186,22 +186,20 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Access',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_access_biosamples',
       1 => 'field_access_data',
       2 => 'field_access_other',
       3 => 'field_access_other_sp',
-      4 => 'group_access_description',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Access',
-      'instance_settings' => array(
-        'classes' => '',
-        'description' => 'Study allows external researchers access to:',
-      ),
       'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+      ),
     ),
   );
   $export['group_access|node|study|center_area'] = $field_group;
@@ -302,9 +300,12 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Access',
-    'weight' => '17',
+    'weight' => '11',
     'children' => array(
-      0 => 'group_access_description',
+      0 => 'field_access_biosamples',
+      1 => 'field_access_data',
+      2 => 'field_access_other',
+      3 => 'field_access_other_sp',
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
@@ -419,6 +420,31 @@ function mica_studies_field_group_info() {
     ),
   );
   $export['group_age_range|node|study|footer_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_age_range|node|study|form';
+  $field_group->group_name = 'group_age_range';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_selection_criteria';
+  $field_group->data = array(
+    'label' => 'Please specify age range',
+    'weight' => '76',
+    'children' => array(),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_age_range|node|study|form'] = $field_group;
 
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -559,11 +585,8 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_authorization_maelstrom';
   $field_group->data = array(
     'label' => 'Authorization Details',
-    'weight' => '18',
-    'children' => array(
-      0 => 'field_authorising_date_m',
-      1 => 'field_authorising_person_name_m',
-    ),
+    'weight' => '20',
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Authorization Details',
@@ -709,11 +732,8 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_authorization_specific';
   $field_group->data = array(
     'label' => 'Authorization Details',
-    'weight' => '17',
-    'children' => array(
-      0 => 'field_authorising_date',
-      1 => 'field_authorising_person_name',
-    ),
+    'weight' => '18',
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Authorization Details',
@@ -787,9 +807,8 @@ function mica_studies_field_group_info() {
       0 => 'field_authorising_date_m',
       1 => 'field_authorising_person_name_m',
       2 => 'field_authorization_maelstrom',
-      3 => 'group_authorising_person_m',
     ),
-    'format_type' => 'div',
+    'format_type' => 'hidden',
     'format_settings' => array(
       'label' => 'Authorization from contributors to the Maelstrom catalogues',
       'instance_settings' => array(
@@ -821,7 +840,6 @@ function mica_studies_field_group_info() {
       0 => 'field_authorising_date_m',
       1 => 'field_authorising_person_name_m',
       2 => 'field_authorization_maelstrom',
-      3 => 'group_authorising_person_m',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -886,8 +904,10 @@ function mica_studies_field_group_info() {
     'label' => 'Authorization from contributors to the Maelstrom catalogues',
     'weight' => '17',
     'children' => array(
-      0 => 'field_authorization_maelstrom',
-      1 => 'group_authorising_person_m',
+      0 => 'field_authorising_date_m',
+      1 => 'field_authorising_person_name_m',
+      2 => 'field_authorization_maelstrom',
+      3 => 'group_authorising_person_m',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -913,12 +933,11 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_authorization';
   $field_group->data = array(
     'label' => 'Authorization from contributors to the Maelstrom catalogues',
-    'weight' => '17',
+    'weight' => '10',
     'children' => array(
       0 => 'field_authorising_date_m',
       1 => 'field_authorising_person_name_m',
       2 => 'field_authorization_maelstrom',
-      3 => 'group_authorising_person_m',
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
@@ -986,9 +1005,8 @@ function mica_studies_field_group_info() {
       0 => 'field_authorising_date',
       1 => 'field_authorising_person_name',
       2 => 'field_authorization_specific',
-      3 => 'group_authorising_person',
     ),
-    'format_type' => 'div',
+    'format_type' => 'hidden',
     'format_settings' => array(
       'label' => 'Authorization from contributors to the [specific network] catalogues',
       'instance_settings' => array(
@@ -1020,7 +1038,6 @@ function mica_studies_field_group_info() {
       0 => 'field_authorising_date',
       1 => 'field_authorising_person_name',
       2 => 'field_authorization_specific',
-      3 => 'group_authorising_person',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -1085,8 +1102,10 @@ function mica_studies_field_group_info() {
     'label' => 'Authorization from contributors to the [specific network] catalogues',
     'weight' => '16',
     'children' => array(
-      0 => 'field_authorization_specific',
-      1 => 'group_authorising_person',
+      0 => 'field_authorising_date',
+      1 => 'field_authorising_person_name',
+      2 => 'field_authorization_specific',
+      3 => 'group_authorising_person',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1109,11 +1128,15 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'left_area';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_authorization';
   $field_group->data = array(
     'label' => 'Authorization from contributors to the [specific network] catalogues',
-    'weight' => '7',
-    'children' => array(),
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_authorising_date',
+      1 => 'field_authorising_person_name',
+      2 => 'field_authorization_specific',
+    ),
     'format_type' => 'hidden',
     'format_settings' => array(
       'formatter' => '',
@@ -1159,6 +1182,41 @@ function mica_studies_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_authorizations|node|study|footer_area';
+  $field_group->group_name = 'group_authorizations';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'footer_area';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Authorizations',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_authorising_date',
+      1 => 'field_authorising_date_m',
+      2 => 'field_authorising_person_name',
+      3 => 'field_authorising_person_name_m',
+      4 => 'field_authorization_maelstrom',
+      5 => 'field_authorization_specific',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_authorizations|node|study|footer_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization|node|study|center_area';
   $field_group->group_name = 'group_authorization';
   $field_group->entity_type = 'node';
@@ -1172,11 +1230,15 @@ function mica_studies_field_group_info() {
       0 => 'group_authorization_maelstrom',
       1 => 'group_authorization_specific',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'hidden',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
         'classes' => '',
       ),
     ),
@@ -1281,9 +1343,10 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Authorization',
-    'weight' => '16',
+    'weight' => '10',
     'children' => array(
       0 => 'group_authorization_maelstrom',
+      1 => 'group_authorization_specific',
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
@@ -2327,7 +2390,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Data Collection',
-    'weight' => '3',
+    'weight' => '1',
     'children' => array(
       0 => 'field_biosamples_collection_mode',
       1 => 'field_data_sources',
@@ -2335,18 +2398,13 @@ function mica_studies_field_group_info() {
       3 => 'field_phys_collection_mode',
       4 => 'field_questionnaire_collection',
     ),
-    'format_type' => 'div',
+    'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Data Collection',
-      'instance_settings' => array(
-        'classes' => '',
-        'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h2',
-        'effect' => 'none',
-        'speed' => 'fast',
-      ),
       'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+      ),
     ),
   );
   $export['group_data_collection|node|study|left_area'] = $field_group;
@@ -2421,17 +2479,17 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'default';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_tabs';
   $field_group->data = array(
     'label' => 'Datasets',
-    'weight' => '99',
+    'weight' => '94',
     'children' => array(
       0 => 'mica_dataset',
       1 => 'mica_opal',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'htab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -2640,9 +2698,7 @@ function mica_studies_field_group_info() {
   $field_group->data = array(
     'label' => 'Documents',
     'weight' => '91',
-    'children' => array(
-      0 => 'field_documents',
-    ),
+    'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
       'formatter' => 'closed',
@@ -2910,6 +2966,31 @@ function mica_studies_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_ethnic_origin|node|study|form';
+  $field_group->group_name = 'group_ethnic_origin';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_selection_criteria';
+  $field_group->data = array(
+    'label' => 'Please specify ethnic origin',
+    'weight' => '77',
+    'children' => array(),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_ethnic_origin|node|study|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_ethnic_origin|node|study|left_area';
   $field_group->group_name = 'group_ethnic_origin';
   $field_group->entity_type = 'node';
@@ -3154,28 +3235,17 @@ function mica_studies_field_group_info() {
     'label' => 'General Design',
     'weight' => '66',
     'children' => array(
-      0 => 'field_current_part_nb_date',
-      1 => 'field_current_participants_nb',
-      2 => 'field_current_sam_supp_info',
-      3 => 'field_current_samples_date',
-      4 => 'field_current_samples_nb',
-      5 => 'field_current_supp_info',
-      6 => 'field_design',
-      7 => 'field_design_other_sp',
-      8 => 'field_no_limits_participants',
-      9 => 'field_no_limits_samples',
-      10 => 'field_recruitment',
-      11 => 'field_recruitment_other_sp',
-      12 => 'field_recruitment_supp_info',
-      13 => 'field_samples_supp_info',
-      14 => 'field_target_nb_supp_info',
-      15 => 'field_target_number_biosamples',
-      16 => 'field_target_number_participants',
-      17 => 'group_current_number_samples',
-      18 => 'group_current_number',
-      19 => 'group_study_design',
-      20 => 'group_target_nb_participants',
-      21 => 'group_target_nb_samples',
+      0 => 'field_design',
+      1 => 'field_design_other_sp',
+      2 => 'field_no_limits_participants',
+      3 => 'field_no_limits_samples',
+      4 => 'field_recruitment',
+      5 => 'field_recruitment_other_sp',
+      6 => 'field_recruitment_supp_info',
+      7 => 'field_samples_supp_info',
+      8 => 'field_target_nb_supp_info',
+      9 => 'field_target_number_biosamples',
+      10 => 'field_target_number_participants',
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
@@ -3206,28 +3276,17 @@ function mica_studies_field_group_info() {
     'label' => 'General Design',
     'weight' => '66',
     'children' => array(
-      0 => 'field_current_part_nb_date',
-      1 => 'field_current_participants_nb',
-      2 => 'field_current_sam_supp_info',
-      3 => 'field_current_samples_date',
-      4 => 'field_current_samples_nb',
-      5 => 'field_current_supp_info',
-      6 => 'field_design',
-      7 => 'field_design_other_sp',
-      8 => 'field_no_limits_participants',
-      9 => 'field_no_limits_samples',
-      10 => 'field_recruitment',
-      11 => 'field_recruitment_other_sp',
-      12 => 'field_recruitment_supp_info',
-      13 => 'field_samples_supp_info',
-      14 => 'field_target_nb_supp_info',
-      15 => 'field_target_number_biosamples',
-      16 => 'field_target_number_participants',
-      17 => 'group_current_number_samples',
-      18 => 'group_current_number',
-      19 => 'group_study_design',
-      20 => 'group_target_nb_participants',
-      21 => 'group_target_nb_samples',
+      0 => 'field_design',
+      1 => 'field_design_other_sp',
+      2 => 'field_no_limits_participants',
+      3 => 'field_no_limits_samples',
+      4 => 'field_recruitment',
+      5 => 'field_recruitment_other_sp',
+      6 => 'field_recruitment_supp_info',
+      7 => 'field_samples_supp_info',
+      8 => 'field_target_nb_supp_info',
+      9 => 'field_target_number_biosamples',
+      10 => 'field_target_number_participants',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -3339,43 +3398,27 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'General Design',
-    'weight' => '1',
+    'weight' => '0',
     'children' => array(
-      0 => 'field_current_part_nb_date',
-      1 => 'field_current_participants_nb',
-      2 => 'field_current_sam_supp_info',
-      3 => 'field_current_samples_date',
-      4 => 'field_current_samples_nb',
-      5 => 'field_current_supp_info',
-      6 => 'field_design',
-      7 => 'field_design_other_sp',
-      8 => 'field_no_limits_participants',
-      9 => 'field_no_limits_samples',
-      10 => 'field_recruitment',
-      11 => 'field_recruitment_other_sp',
-      12 => 'field_recruitment_supp_info',
-      13 => 'field_samples_supp_info',
-      14 => 'field_target_nb_supp_info',
-      15 => 'field_target_number_biosamples',
-      16 => 'field_target_number_participants',
-      17 => 'group_current_number_samples',
-      18 => 'group_current_number',
-      19 => 'group_study_design',
-      20 => 'group_target_nb_participants',
-      21 => 'group_target_nb_samples',
+      0 => 'field_design',
+      1 => 'field_design_other_sp',
+      2 => 'field_no_limits_participants',
+      3 => 'field_no_limits_samples',
+      4 => 'field_recruitment',
+      5 => 'field_recruitment_other_sp',
+      6 => 'field_target_number_biosamples',
+      7 => 'field_target_number_participants',
+      8 => 'group_more_design',
+      9 => 'group_more_target_participant',
+      10 => 'group_more_target_samples',
     ),
-    'format_type' => 'div',
+    'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'General Design',
-      'instance_settings' => array(
-        'classes' => '',
-        'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h2',
-        'effect' => 'none',
-        'speed' => 'fast',
-      ),
       'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+      ),
     ),
   );
   $export['group_general_design|node|study|left_area'] = $field_group;
@@ -3560,8 +3603,14 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'General Information',
-    'weight' => '13',
-    'children' => array(),
+    'weight' => '3',
+    'children' => array(
+      0 => 'body',
+      1 => 'field_acroym',
+      2 => 'field_complete_name',
+      3 => 'field_logo',
+      4 => 'field_website',
+    ),
     'format_type' => 'hidden',
     'format_settings' => array(
       'formatter' => '',
@@ -3584,9 +3633,8 @@ function mica_studies_field_group_info() {
     'weight' => '85',
     'children' => array(
       0 => 'body',
-      1 => 'field_acroym',
-      2 => 'field_complete_name',
-      3 => 'field_logo',
+      1 => 'field_complete_name',
+      2 => 'field_logo',
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
@@ -3673,6 +3721,31 @@ function mica_studies_field_group_info() {
     ),
   );
   $export['group_health_status|node|study|footer_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_health_status|node|study|form';
+  $field_group->group_name = 'group_health_status';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_selection_criteria';
+  $field_group->data = array(
+    'label' => 'Please specify health status',
+    'weight' => '78',
+    'children' => array(),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_health_status|node|study|form'] = $field_group;
 
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -3799,16 +3872,20 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Marker Paper',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_marker_paper',
       1 => 'field_pubmedid',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'hidden',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
         'classes' => '',
       ),
     ),
@@ -3825,18 +3902,19 @@ function mica_studies_field_group_info() {
   $field_group->mode = 'default';
   $field_group->parent_name = 'group_tabs';
   $field_group->data = array(
-    'label' => 'Marker Paper',
-    'weight' => '90',
+    'label' => 'Marker Paper / Documents',
+    'weight' => '91',
     'children' => array(
-      0 => 'field_marker_paper',
-      1 => 'field_pubmedid',
+      0 => 'field_documents',
+      1 => 'field_marker_paper',
+      2 => 'field_pubmedid',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
-      'label' => 'Marker Paper',
+      'label' => 'Marker Paper / Documents',
       'instance_settings' => array(
         'classes' => '',
-        'description' => 'Bibliographic citations which should be used to refer to this study.',
+        'description' => 'Bibliographic citations which should be used to refer to this study and study documents.',
       ),
       'formatter' => 'closed',
     ),
@@ -3851,22 +3929,25 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'footer_area';
-  $field_group->parent_name = 'group_tabs';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Marker Paper',
-    'weight' => '90',
+    'weight' => '0',
     'children' => array(
       0 => 'field_marker_paper',
       1 => 'field_pubmedid',
     ),
-    'format_type' => 'hidden',
+    'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'Marker Paper',
+      'formatter' => 'collapsible',
       'instance_settings' => array(
+        'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
         'classes' => '',
-        'description' => 'Bibliographic citations which should be used to refer to this study.',
       ),
-      'formatter' => 'closed',
     ),
   );
   $export['group_marker_paper|node|study|footer_area'] = $field_group;
@@ -3911,10 +3992,11 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Marker Paper',
-    'weight' => '21',
+    'weight' => '13',
     'children' => array(
-      0 => 'field_marker_paper',
-      1 => 'field_pubmedid',
+      0 => 'field_documents',
+      1 => 'field_marker_paper',
+      2 => 'field_pubmedid',
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
@@ -3967,12 +4049,11 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Methods',
-    'weight' => '10',
+    'weight' => '13',
     'children' => array(
       0 => 'group_data_collection',
       1 => 'group_general_design',
-      2 => 'group_participants_selection',
-      3 => 'group_sample_management',
+      2 => 'group_sample_management',
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
@@ -4108,37 +4189,340 @@ function mica_studies_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_more_current_participants|node|study|center_area';
+  $field_group->group_name = 'group_more_current_participants';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'center_area';
+  $field_group->parent_name = 'group_status';
+  $field_group->data = array(
+    'label' => 'Details',
+    'weight' => '64',
+    'children' => array(
+      0 => 'field_current_supp_info',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Details',
+      'instance_settings' => array(
+        'classes' => 'field-group-more field-group-indent',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_more_current_participants|node|study|center_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_more_current_samples|node|study|center_area';
+  $field_group->group_name = 'group_more_current_samples';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'center_area';
+  $field_group->parent_name = 'group_status';
+  $field_group->data = array(
+    'label' => 'Details',
+    'weight' => '67',
+    'children' => array(
+      0 => 'field_current_sam_supp_info',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Details',
+      'instance_settings' => array(
+        'classes' => 'field-group-more field-group-indent',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_more_current_samples|node|study|center_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_more_design|node|study|left_area';
+  $field_group->group_name = 'group_more_design';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'left_area';
+  $field_group->parent_name = 'group_general_design';
+  $field_group->data = array(
+    'label' => 'Details',
+    'weight' => '28',
+    'children' => array(
+      0 => 'field_recruitment_supp_info',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Details',
+      'instance_settings' => array(
+        'classes' => 'field-group-more field-group-indent',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_more_design|node|study|left_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_more_recruitment_proc|node|study|center_area';
+  $field_group->group_name = 'group_more_recruitment_proc';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'center_area';
+  $field_group->parent_name = 'group_participants_selection';
+  $field_group->data = array(
+    'label' => 'Details',
+    'weight' => '47',
+    'children' => array(
+      0 => 'field_recruitement_supp_info',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Details',
+      'instance_settings' => array(
+        'classes' => 'field-group-more field-group-indent',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_more_recruitment_proc|node|study|center_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_more_recruitment_proc|node|study|left_area';
+  $field_group->group_name = 'group_more_recruitment_proc';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'left_area';
+  $field_group->parent_name = 'group_recruitment_procedures';
+  $field_group->data = array(
+    'label' => '...',
+    'weight' => '41',
+    'children' => array(
+      0 => 'field_recruitement_supp_info',
+    ),
+    'format_type' => 'hidden',
+    'format_settings' => array(
+      'label' => '...',
+      'instance_settings' => array(
+        'classes' => 'field-group-more',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_more_recruitment_proc|node|study|left_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_more_selection|node|study|center_area';
+  $field_group->group_name = 'group_more_selection';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'center_area';
+  $field_group->parent_name = 'group_participants_selection';
+  $field_group->data = array(
+    'label' => 'Details',
+    'weight' => '44',
+    'children' => array(
+      0 => 'field_partcipant_sel_supp_info',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Details',
+      'instance_settings' => array(
+        'classes' => 'field-group-more field-group-indent',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_more_selection|node|study|center_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_more_selection|node|study|left_area';
+  $field_group->group_name = 'group_more_selection';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'left_area';
+  $field_group->parent_name = 'group_selection_criteria';
+  $field_group->data = array(
+    'label' => '...',
+    'weight' => '45',
+    'children' => array(
+      0 => 'field_partcipant_sel_supp_info',
+    ),
+    'format_type' => 'hidden',
+    'format_settings' => array(
+      'label' => '...',
+      'instance_settings' => array(
+        'classes' => 'field-group-more',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_more_selection|node|study|left_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_more_status|node|study|center_area';
+  $field_group->group_name = 'group_more_status';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'center_area';
+  $field_group->parent_name = 'group_status';
+  $field_group->data = array(
+    'label' => 'Status Details',
+    'weight' => '68',
+    'children' => array(
+      0 => 'field_status_supp_info',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Status Details',
+      'instance_settings' => array(
+        'classes' => 'field-group-more',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_more_status|node|study|center_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_more_target_participant|node|study|left_area';
+  $field_group->group_name = 'group_more_target_participant';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'left_area';
+  $field_group->parent_name = 'group_general_design';
+  $field_group->data = array(
+    'label' => 'Details',
+    'weight' => '33',
+    'children' => array(
+      0 => 'field_target_nb_supp_info',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Details',
+      'instance_settings' => array(
+        'classes' => 'field-group-more field-group-indent',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_more_target_participant|node|study|left_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_more_target_samples|node|study|left_area';
+  $field_group->group_name = 'group_more_target_samples';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'left_area';
+  $field_group->parent_name = 'group_general_design';
+  $field_group->data = array(
+    'label' => 'Details',
+    'weight' => '36',
+    'children' => array(
+      0 => 'field_samples_supp_info',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Details',
+      'instance_settings' => array(
+        'classes' => 'field-group-more field-group-indent',
+        'description' => '',
+        'show_label' => '1',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_more_target_samples|node|study|left_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_participants_selection|node|study|center_area';
   $field_group->group_name = 'group_participants_selection';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'center_area';
-  $field_group->parent_name = 'group_methods';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Participants Selection',
-    'weight' => '67',
+    'weight' => '0',
     'children' => array(
       0 => 'field_age_max',
       1 => 'field_age_min',
       2 => 'field_country',
       3 => 'field_ethnic_origin',
       4 => 'field_health_status',
-      5 => 'field_partcipant_sel_supp_info',
-      6 => 'field_recruitement_supp_info',
-      7 => 'field_recruitment_other',
-      8 => 'field_recruitment_procedures',
-      9 => 'field_select_criteria',
-      10 => 'field_selection_others_sp',
-      11 => 'field_territory',
-      12 => 'group_age_range',
-      13 => 'group_countries',
-      14 => 'group_ethnic_origin',
-      15 => 'group_health_status',
-      16 => 'group_recruitment_procedures',
-      17 => 'group_selection_criteria',
-      18 => 'group_specify_gender',
+      5 => 'field_recruitment_other',
+      6 => 'field_recruitment_procedures',
+      7 => 'field_select_criteria',
+      8 => 'field_selection_others_sp',
+      9 => 'field_territory',
+      10 => 'group_more_selection',
+      11 => 'group_more_recruitment_proc',
     ),
-    'format_type' => 'hidden',
+    'format_type' => 'fieldset',
     'format_settings' => array(
       'label' => 'Participants Selection',
       'instance_settings' => array(
@@ -4171,21 +4555,15 @@ function mica_studies_field_group_info() {
       1 => 'field_age_min',
       2 => 'field_country',
       3 => 'field_ethnic_origin',
-      4 => 'field_health_status',
-      5 => 'field_partcipant_sel_supp_info',
-      6 => 'field_recruitement_supp_info',
-      7 => 'field_recruitment_other',
-      8 => 'field_recruitment_procedures',
-      9 => 'field_select_criteria',
-      10 => 'field_selection_others_sp',
-      11 => 'field_territory',
-      12 => 'group_age_range',
-      13 => 'group_countries',
-      14 => 'group_ethnic_origin',
-      15 => 'group_health_status',
-      16 => 'group_recruitment_procedures',
-      17 => 'group_selection_criteria',
-      18 => 'group_specify_gender',
+      4 => 'field_gender',
+      5 => 'field_health_status',
+      6 => 'field_partcipant_sel_supp_info',
+      7 => 'field_recruitement_supp_info',
+      8 => 'field_recruitment_other',
+      9 => 'field_recruitment_procedures',
+      10 => 'field_select_criteria',
+      11 => 'field_selection_others_sp',
+      12 => 'field_territory',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -4687,12 +5065,16 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'left_area';
-  $field_group->parent_name = 'group_participants_selection';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Recruitment procedures',
-    'weight' => '55',
-    'children' => array(),
-    'format_type' => 'div',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_recruitment_other',
+      1 => 'field_recruitment_procedures',
+      2 => 'group_more_recruitment_proc',
+    ),
+    'format_type' => 'hidden',
     'format_settings' => array(
       'label' => 'Recruitment procedures',
       'instance_settings' => array(
@@ -4703,7 +5085,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_recruitment_procedures|node|study|left_area'] = $field_group;
@@ -4877,24 +5259,19 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Sample Management',
-    'weight' => '4',
+    'weight' => '2',
     'children' => array(
       0 => 'field_bio_samples_management',
       1 => 'field_samples_man_other_sp',
       2 => 'field_tissues_sp',
     ),
-    'format_type' => 'div',
+    'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Sample Management',
-      'instance_settings' => array(
-        'classes' => '',
-        'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h2',
-        'effect' => 'none',
-        'speed' => 'fast',
-      ),
       'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+      ),
     ),
   );
   $export['group_sample_management|node|study|left_area'] = $field_group;
@@ -5037,11 +5414,7 @@ function mica_studies_field_group_info() {
       5 => 'field_partcipant_sel_supp_info',
       6 => 'field_select_criteria',
       7 => 'field_selection_others_sp',
-      8 => 'group_age_range',
-      9 => 'group_countries',
-      10 => 'group_ethnic_origin',
-      11 => 'group_health_status',
-      12 => 'group_specify_gender',
+      8 => 'group_countries',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -5063,22 +5436,34 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'left_area';
-  $field_group->parent_name = 'group_participants_selection';
+  $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Selection Criteria / Characteristics of the population',
-    'weight' => '54',
-    'children' => array(),
-    'format_type' => 'div',
+    'label' => 'Selection Criteria',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_age_max',
+      1 => 'field_age_min',
+      2 => 'field_country',
+      3 => 'field_ethnic_origin',
+      4 => 'field_gender',
+      5 => 'field_health_status',
+      6 => 'field_select_criteria',
+      7 => 'field_selection_others_sp',
+      8 => 'field_territory',
+      9 => 'group_more_selection',
+    ),
+    'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Selection Criteria',
       'instance_settings' => array(
+        'classes' => '',
         'description' => '',
-        'show_label' => 1,
+        'show_label' => '1',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
-        'classes' => '',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_selection_criteria|node|study|left_area'] = $field_group;
@@ -5287,14 +5672,22 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Status',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
-      0 => 'field_status_supp_info',
-      1 => 'group_baseline_phase',
-      2 => 'group_current_status',
-      3 => 'group_ended_phase',
-      4 => 'group_followup_phase',
-      5 => 'group_preparation_phase',
+      0 => 'field_baseline_end_year',
+      1 => 'field_baseline_start_year',
+      2 => 'field_current_part_nb_date',
+      3 => 'field_current_participants_nb',
+      4 => 'field_current_samples_date',
+      5 => 'field_current_samples_nb',
+      6 => 'field_ended_end_year',
+      7 => 'field_followup_end_year',
+      8 => 'field_followup_start_year',
+      9 => 'field_preparation_end_year',
+      10 => 'field_preparation_start_year',
+      11 => 'group_more_current_participants',
+      12 => 'group_more_current_samples',
+      13 => 'group_more_status',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -5320,12 +5713,20 @@ function mica_studies_field_group_info() {
     'label' => 'Status',
     'weight' => '89',
     'children' => array(
-      0 => 'field_status_supp_info',
-      1 => 'group_baseline_phase',
-      2 => 'group_current_status',
-      3 => 'group_ended_phase',
-      4 => 'group_followup_phase',
-      5 => 'group_preparation_phase',
+      0 => 'field_baseline_end_year',
+      1 => 'field_baseline_start_year',
+      2 => 'field_current_part_nb_date',
+      3 => 'field_current_participants_nb',
+      4 => 'field_current_sam_supp_info',
+      5 => 'field_current_samples_date',
+      6 => 'field_current_samples_nb',
+      7 => 'field_current_supp_info',
+      8 => 'field_ended_end_year',
+      9 => 'field_followup_end_year',
+      10 => 'field_followup_start_year',
+      11 => 'field_preparation_end_year',
+      12 => 'field_preparation_start_year',
+      13 => 'field_status_supp_info',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -5412,14 +5813,22 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Status',
-    'weight' => '19',
+    'weight' => '12',
     'children' => array(
-      0 => 'field_status_supp_info',
-      1 => 'group_baseline_phase',
-      2 => 'group_current_status',
-      3 => 'group_ended_phase',
-      4 => 'group_followup_phase',
-      5 => 'group_preparation_phase',
+      0 => 'field_baseline_end_year',
+      1 => 'field_baseline_start_year',
+      2 => 'field_current_part_nb_date',
+      3 => 'field_current_participants_nb',
+      4 => 'field_current_sam_supp_info',
+      5 => 'field_current_samples_date',
+      6 => 'field_current_samples_nb',
+      7 => 'field_current_supp_info',
+      8 => 'field_ended_end_year',
+      9 => 'field_followup_end_year',
+      10 => 'field_followup_start_year',
+      11 => 'field_preparation_end_year',
+      12 => 'field_preparation_start_year',
+      13 => 'field_status_supp_info',
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
@@ -5687,11 +6096,15 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'field_supp_infos',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'hidden',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
         'classes' => '',
       ),
     ),
@@ -5709,7 +6122,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_tabs';
   $field_group->data = array(
     'label' => 'Supplementary information',
-    'weight' => '92',
+    'weight' => '93',
     'children' => array(
       0 => 'field_supp_infos',
     ),
@@ -5733,21 +6146,24 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'footer_area';
-  $field_group->parent_name = 'group_tabs';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Supplementary information',
-    'weight' => '92',
+    'weight' => '1',
     'children' => array(
       0 => 'field_supp_infos',
     ),
-    'format_type' => 'hidden',
+    'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'Supplementary information',
+      'formatter' => 'collapsible',
       'instance_settings' => array(
-        'classes' => '',
         'description' => '',
+        'show_label' => 1,
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+        'classes' => '',
       ),
-      'formatter' => 'closed',
     ),
   );
   $export['group_supp_info|node|study|footer_area'] = $field_group;
@@ -5791,7 +6207,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Supplementary information',
-    'weight' => '24',
+    'weight' => '14',
     'children' => array(
       0 => 'field_supp_infos',
     ),
@@ -5849,7 +6265,7 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'group_access',
       1 => 'group_authorization',
-      2 => 'group_documents',
+      2 => 'group_datasets',
       3 => 'group_general_info',
       4 => 'group_marker_paper',
       5 => 'group_methods',
@@ -5943,7 +6359,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tabs',
-    'weight' => '5',
+    'weight' => '8',
     'children' => array(
       0 => 'group_access',
       1 => 'group_authorization',
