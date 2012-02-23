@@ -21,14 +21,14 @@ function mica_studies_install() {
  */
 function _mica_studies_create_date_format() {
   $pattern = 'M Y';
-  
+
   $format = array();
   $format['format'] = $pattern;
   $format['type'] = 'custom';
   $format['locked'] = 0;
   $format['is_new'] = 1;
-  system_date_format_save($format);    
-  
+  system_date_format_save($format);
+
   $machine_name = 'month_year';
   $format_type = array();
   $format_type['title'] = 'Month year';
@@ -37,7 +37,7 @@ function _mica_studies_create_date_format() {
   $format_type['is_new'] = 1;
   system_date_format_type_save($format_type);
 
-  variable_set('date_format_' . $machine_name, $pattern);  
+  variable_set('date_format_' . $machine_name, $pattern);
 }
 
 /**
@@ -68,7 +68,7 @@ function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
         '#link' => array(
           'title' => t('Add a !name', array('!name' => $node_type->name)),
           'href' => 'node/add/study',
-      ),
+        ),
       );
     }
   }
@@ -80,7 +80,7 @@ function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
         '#link' => array(
           'title' => t('Add some Documents'),
           'href' => 'node/add/documents',
-      ),
+        ),
       );
     }
   }
@@ -172,18 +172,18 @@ function _mica_import_custom_name_format() {
   // add custom field format for name until next release of views
   $custom_format = array(
     'name' => 'Title',
-  	'machine_name' => 'title',
-  	'format' => 't',
+    'machine_name' => 'title',
+    'format' => 't',
   );
   drupal_write_record('name_custom_format', $custom_format);
 }
 
 function _mica_node_reference_block() {
   db_delete('block_node_type')
-  ->condition('module', 'node_reference_block')
-  ->condition('delta', 'related-content')
-  ->condition('type', 'study%','LIKE')
-  ->execute();
+    ->condition('module', 'node_reference_block')
+    ->condition('delta', 'related-content')
+    ->condition('type', 'study%','LIKE')
+    ->execute();
   $query = db_insert('block_node_type')->fields(array('type', 'module', 'delta'));
   foreach (array('study', 'contact') as $type) {
     $query->values(array(
@@ -196,135 +196,149 @@ function _mica_node_reference_block() {
 }
 
 /**
-* Implements hook_node_insert()
-*/
+ * Implements hook_node_insert()
+ */
 function mica_studies_node_insert($node) {
   if ($node->type === 'study') {
-	  mica_create_menu($node, 1);
+    mica_create_menu($node, 1);
   }
 }
 
 /**
-* Implements hook_node_view()
-*/
-function mica_node_view($node, $view_mode, $langcode) {
-	if ($node->type === 'study') {
+ * Implements hook_node_view()
+ */
+function mica_studies_node_view($node, $view_mode, $langcode) {
+  switch($node->type) {
+    case 'study':
+      _mica_studies_study_view($node, $view_mode, $langcode);
+      break;
+    case 'contact':
+      _mica_studies_contact_view($node, $view_mode, $langcode);
+      break;
+  }
+}
 
-		$bindings = array(
-      'field_design_other_sp' => array(
-        'field' => 'field_design',
-        'key' => 'other',
-        'label_as_prefix' => FALSE,
-	  	),
-      'field_recruitment_other_sp' => array(
-        'field' => 'field_recruitment',
-        'key' => 'other',
-        'label_as_prefix' => FALSE,
-		  ),
-      'field_current_part_nb_date' => array(
-        'field' => 'field_current_participants_nb',
-        'key' => NULL,
-       	'label_as_prefix' => TRUE,
-		  ),
-      'field_current_samples_date' => array(
-        'field' => 'field_current_samples_nb',
-        'key' => NULL,
-        'label_as_prefix' => TRUE,
-		  ),
-      'field_selection_others_sp' => array(
-        'field' => 'field_select_criteria',
-        'key' => 'others',
-        'label_as_prefix' => FALSE,
-		  ),
-      'field_age_min-field_age_max' => array(
- 	 'field_sp' => array('field_age_min', 'field_age_max'),
-         'field' => 'field_select_criteria',
-         'key' => NULL, // set to NULL to add this to an already existing list of choices
-         'label_as_prefix' => TRUE,
-         'custom_prefix' => t('Age:'),
- 		  ),
-       'field_country' => array(
- 	 'field_sp' => array('field_country', 'field_territory'),
-         'field' => 'field_select_criteria',
-         'key' => NULL, // set to NULL to add this to an already existing list of choices
-         'label_as_prefix' => FALSE,
- 	 'custom_prefix' => t('Country:'),
- 		  ),
-       'field_ethnic_origin' => array(
- 	 'field_sp' => array('field_ethnic_origin'),
-         'field' => 'field_select_criteria',
-         'key' => NULL, // set to NULL to add this to an already existing list of choices
-         'label_as_prefix' => FALSE,
- 	 'custom_prefix' => t('Ethnic origin:'),
- 		  ),
-       'field_health_status' => array(
- 	 'field_sp' => array('field_health_status'),
-         'field' => 'field_select_criteria',
-         'key' => NULL, // set to NULL to add this to an already existing list of choices
-         'label_as_prefix' => FALSE,
- 	 'custom_prefix' => t('Health status:'),
- 		  ),
-      'field_recruitment_other' => array(
-        'field' => 'field_recruitment_procedures',
-        'key' => 'other',
-        'label_as_prefix' => FALSE,
-		  ),
-      'field_data_sources_sp' => array(
-        'field' => 'field_data_sources',
-        'key' => 'others',
-        'label_as_prefix' => FALSE,
-		  ),
-      'field_tissues_sp' => array(
-        'field' => 'field_bio_samples_management',
-        'key' => 'tissues',
-        'label_as_prefix' => FALSE,
-	  	),
-      'field_samples_man_other_sp' => array(
-        'field' => 'field_bio_samples_management',
-        'key' => 'others',
-        'label_as_prefix' => FALSE,
-		  ),
-      'field_access_other_sp' => array(
-        'field' => 'field_access_other',
-        'key' => '1',
-        'label_as_prefix' => FALSE,
-		  ),
-		);
+function _mica_studies_study_view($node, $view_mode, $langcode) {
 
-		_mica_bind_other_specify($node, $bindings);
-		
-		$status_dates = array(
-			'field_preparation_start_year' => 'field_preparation_end_year',
-		  'field_baseline_start_year' => 'field_baseline_end_year',
-		  'field_followup_start_year' => 'field_followup_end_year',
-		);
-		_mica_studies_display_status_dates($node, $status_dates);
+  $bindings = array(
+    'field_design_other_sp' => array(
+      'field' => 'field_design',
+      'key' => 'other',
+      'label_as_prefix' => FALSE,
+    ),
+    'field_recruitment_other_sp' => array(
+      'field' => 'field_recruitment',
+      'key' => 'other',
+      'label_as_prefix' => FALSE,
+    ),
+    'field_current_part_nb_date' => array(
+      'field' => 'field_current_participants_nb',
+      'key' => NULL,
+      'label_as_prefix' => TRUE,
+    ),
+    'field_current_samples_date' => array(
+      'field' => 'field_current_samples_nb',
+      'key' => NULL,
+      'label_as_prefix' => TRUE,
+    ),
+    'field_selection_others_sp' => array(
+      'field' => 'field_select_criteria',
+      'key' => 'others',
+      'label_as_prefix' => FALSE,
+    ),
+    'field_age_min-field_age_max' => array(
+      'field_sp' => array('field_age_min', 'field_age_max'),
+      'field' => 'field_select_criteria',
+      'key' => NULL, // set to NULL to add this to an already existing list of choices
+      'label_as_prefix' => TRUE,
+      'custom_prefix' => t('Age:'),
+    ),
+    'field_country' => array(
+      'field_sp' => array('field_country', 'field_territory'),
+      'field' => 'field_select_criteria',
+      'key' => NULL, // set to NULL to add this to an already existing list of choices
+      'label_as_prefix' => FALSE,
+      'custom_prefix' => t('Country:'),
+    ),
+    'field_ethnic_origin' => array(
+      'field_sp' => array('field_ethnic_origin'),
+      'field' => 'field_select_criteria',
+      'key' => NULL, // set to NULL to add this to an already existing list of choices
+      'label_as_prefix' => FALSE,
+      'custom_prefix' => t('Ethnic origin:'),
+    ),
+    'field_health_status' => array(
+      'field_sp' => array('field_health_status'),
+      'field' => 'field_select_criteria',
+      'key' => NULL, // set to NULL to add this to an already existing list of choices
+      'label_as_prefix' => FALSE,
+      'custom_prefix' => t('Health status:'),
+    ),
+    'field_recruitment_other' => array(
+      'field' => 'field_recruitment_procedures',
+      'key' => 'other',
+      'label_as_prefix' => FALSE,
+    ),
+    'field_data_sources_sp' => array(
+      'field' => 'field_data_sources',
+      'key' => 'others',
+      'label_as_prefix' => FALSE,
+    ),
+    'field_tissues_sp' => array(
+      'field' => 'field_bio_samples_management',
+      'key' => 'tissues',
+      'label_as_prefix' => FALSE,
+    ),
+    'field_samples_man_other_sp' => array(
+      'field' => 'field_bio_samples_management',
+      'key' => 'others',
+      'label_as_prefix' => FALSE,
+    ),
+    'field_access_other_sp' => array(
+      'field' => 'field_access_other',
+      'key' => '1',
+      'label_as_prefix' => FALSE,
+    ),
+  );
 
-		$fields = array(
-      'field_target_number_participants',
-      'field_target_number_biosamples',
-  	  'field_current_participants_nb',
-	    'field_current_samples_nb',
-		);
-		_mica_remove_suffix($node, $fields);
+  _mica_bind_other_specify($node, $bindings);
 
-		$bindings = array(
-      'field_no_limits_participants' => 'field_target_number_participants',
-      'field_no_limits_samples' => 'field_target_number_biosamples',
-		);
-		_mica_remove_exclusive_fields($node, $bindings);
+  $status_dates = array(
+    'field_preparation_start_year' => 'field_preparation_end_year',
+    'field_baseline_start_year' => 'field_baseline_end_year',
+    'field_followup_start_year' => 'field_followup_end_year',
+  );
+  _mica_studies_display_status_dates($node, $status_dates);
 
-		// Hide the fields "No limits in the number of..." when they are false
-		if (!isset($node->content['field_no_limits_participants']) 
-		  || $node->content['field_no_limits_participants']['#items'][0]['value'] === '0') {
-			$node->content['field_no_limits_participants']['#access'] = FALSE;
-		}
+  $fields = array(
+    'field_target_number_participants',
+    'field_target_number_biosamples',
+    'field_current_participants_nb',
+    'field_current_samples_nb',
+  );
+  _mica_remove_suffix($node, $fields);
 
-		if (isset($node->content['field_no_limits_samples']) && $node->content['field_no_limits_samples']['#items'][0]['value'] === '0') {
-			$node->content['field_no_limits_samples']['#access'] = FALSE;
-		}
-		
-	}
+  $bindings = array(
+    'field_no_limits_participants' => 'field_target_number_participants',
+    'field_no_limits_samples' => 'field_target_number_biosamples',
+  );
+  _mica_remove_exclusive_fields($node, $bindings);
+
+  // Hide the fields "No limits in the number of..." when they are false
+  if (!isset($node->content['field_no_limits_participants'])
+    || $node->content['field_no_limits_participants']['#items'][0]['value'] === '0') {
+    $node->content['field_no_limits_participants']['#access'] = FALSE;
+  }
+
+  if (isset($node->content['field_no_limits_samples']) && $node->content['field_no_limits_samples']['#items'][0]['value'] === '0') {
+    $node->content['field_no_limits_samples']['#access'] = FALSE;
+  }
+
+}
+
+function _mica_studies_contact_view($node, $view_mode, $langcode) {
+  $wrapper = entity_metadata_wrapper('node', $node);
+  $node->content['field_daco']['#access'] = $wrapper->field_daco->value();
 }
 
 /**
@@ -346,17 +360,17 @@ function mica_studies_form_alter(&$form, &$form_state, $form_id) {
       _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_phys_collection_mode', 'physical_measures');
       _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_biosamples_collection_mode', 'biological_samples');
       break;
-      
+
     case 'contact_node_form':
       $form['title']['#type'] = 'value';
-      $form['title']['#required'] = FALSE;      
+      $form['title']['#required'] = FALSE;
       break;
   }
 }
 
 /**
-* Implements hook_node_submit
-*/
+ * Implements hook_node_submit
+ */
 function mica_studies_node_submit($node, $form, &$form_state) {
   if ($node->type === 'contact' && _mica_studies_contact_title_is_needed($node)) {
     _mica_studies_set_contact_title($node);
@@ -364,8 +378,8 @@ function mica_studies_node_submit($node, $form, &$form_state) {
 }
 
 /**
-* Implements hook_node_presave().
-*/
+ * Implements hook_node_presave().
+ */
 function mica_studies_node_presave($node) {
   if ($node->type === 'contact' && _mica_studies_contact_title_is_needed($node)) {
     _mica_studies_set_contact_title($node);
@@ -373,18 +387,18 @@ function mica_studies_node_presave($node) {
 }
 
 function _mica_studies_set_contact_title(&$node) {
-  
+
   if (isset($node->field_contact_name)) {
 
     $wrapper = entity_metadata_wrapper('node', $node);
     $institution = $wrapper->field_institution_name->value();
-    
+
     // cannot use entity_metadata_wrapper for Name fields because of http://drupal.org/node/1423160
     $language = $node->language;
     $field_contact_name = $node->field_contact_name;
-    
+
     if (array_key_exists($language, $field_contact_name)) {
-    
+
       $name = $field_contact_name[$language][0];
       $full_name = isset($name['title']) ? trim($name['title']) : '';
       if (isset($name['given'])) {
@@ -397,26 +411,26 @@ function _mica_studies_set_contact_title(&$node) {
       }
 
       if (strlen(trim($full_name)) > 0) {
-      
+
         $node->title = $full_name;
         if (!empty($institution)) $node->title .= ' (' . trim($institution) . ')';
-        
+
         // set title for current node revision
-   	    $node->title = substr($node->title, 0, 255);
-   	
+        $node->title = substr($node->title, 0, 255);
+
         // With that flag we ensure we don't apply the title two times to the same
         // node. See _mica_studies_contact_title_is_needed().
-   	    $node->contact_title_applied = TRUE;
+        $node->contact_title_applied = TRUE;
       }
     }
   }
 }
 
 /**
-* Returns whether the contact title has to be set.
-*/
+ * Returns whether the contact title has to be set.
+ */
 function _mica_studies_contact_title_is_needed($node) {
-	return empty($node->contact_title_applied);
+  return empty($node->contact_title_applied);
 }
 
 
@@ -425,24 +439,24 @@ function _mica_studies_contact_title_is_needed($node) {
  * Used to show/hide a fieldset based on another field selection
  */
 function mica_field_group_pre_render(&$element, $group, &$form) {
-  
+
   if (isset($form['#form_id']) && $form['#form_id'] === 'study_node_form') {
-    
+
     $group_name = $group->group_name;
     $lang = key_exists('#default_value', $form['language']) ? $form['language']['#default_value'] : LANGUAGE_NONE;
     $to_hide = array(
-    	'group_authorising_person' => array(
-     	  'dependee' => 'field_authorization_specific[' . $lang . ']',
+      'group_authorising_person' => array(
+        'dependee' => 'field_authorization_specific[' . $lang . ']',
         'condition' => 'checked',
         'value' => TRUE,
       ),
       'group_authorising_person_m' => array(
         'dependee' => 'field_authorization_maelstrom[' . $lang . ']',
         'condition' => 'checked',
-    	  'value' => TRUE,
+        'value' => TRUE,
       ),
     );
-  
+
     if (array_key_exists($group_name, $to_hide)) {
       $element['#states'] = array(
         'visible' => array(
@@ -468,7 +482,7 @@ function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_s
       $rule['value'] = $key_selected;
     }
     $input = $input . '"]';
-    
+
     $form[$dependent]['#states'] = array(
       'visible' => array(
         $input => $rule,
@@ -482,7 +496,7 @@ function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_s
 
 /**
  * Displays dates as: 'start date' to 'end date' as the start date value.
- * And hide end date.  
+ * And hide end date.
  */
 function _mica_studies_display_status_dates(&$node, $status_dates) {
   $wrapper = entity_metadata_wrapper('node', $node);
@@ -506,151 +520,151 @@ function _mica_studies_display_status_dates(&$node, $status_dates) {
 
 function _mica_bind_other_specify(&$node, $bindings) {
 
-	foreach ($bindings as $other_sp => $options) {
-		$field = $options['field'];
-		if (isset($node->content[$field]) && (isset($node->content[$other_sp]) || isset($options['field_sp']))) {
-			$key = $options['key'];
-			$delimiter = ', ';
+  foreach ($bindings as $other_sp => $options) {
+    $field = $options['field'];
+    if (isset($node->content[$field]) && (isset($node->content[$other_sp]) || isset($options['field_sp']))) {
+      $key = $options['key'];
+      $delimiter = ', ';
 
-			if (!isset($options['enclosed']) || $options['enclosed'] === TRUE) {
-				$start = ' (';
-				$end = ')';
-			}
-			else {
-				$start = ' ';
-				$end = '';
-			}
-			 
-			if (isset($key)) {
-				// get the array index of the key
-				foreach ($node->content[$field]['#items'] as $i => $items) {
-					if ($items['value'] == $key) {
-						$index = $i;
-						break;
-					}
-				}
-			}
-			else{
-			  $node->content[$field]['#items'][] = array('value' => 'extraone');
-			  $index = count($node->content[$field]['#items']) -1;
-			}
-			
-			if (isset($index)) {
-				// bind the other specify with the other option
-				$content = '';
-				$specifies = array();
-				if (isset($options['field_sp'])) {
-					// add each field
-					foreach ($options['field_sp'] as $f) {
-						if (isset($node->content[$f])) {
-							$prefix = '';
-							if ($options['label_as_prefix'] == TRUE) {
-								$prefix = $node->content[$f]['#title'] . ' ';
+      if (!isset($options['enclosed']) || $options['enclosed'] === TRUE) {
+        $start = ' (';
+        $end = ')';
+      }
+      else {
+        $start = ' ';
+        $end = '';
+      }
 
-								// If a display field as been defined, take this title instead
-								$field_info = field_info_instance('node', $f, 'study');
-								if (isset($field_info['display_label']) && strlen(trim($field_info['display_label'])) > 0) {
-									$prefix = $field_info['display_label'] . ' ';
-								}
-							}
-						  foreach($node->content[$f] as $k => $value) {
-							  if (is_int($k)) {
-							    $specifies[] = $prefix . $value['#markup'];
-							  }
-							}
-						}
-					}
-					$content = implode($delimiter, $specifies);
-					
-				}
-				else{
-					for ($i = 0; $i < count($node->content[$other_sp]); $i++) {
-						if (isset($node->content[$other_sp][$i])) {
-							$prefix = '';
-							if ($options['label_as_prefix'] == TRUE) {
-								$prefix = $node->content[$other_sp]['#title'] . ' ';
-								 
-								// If a display field as been defined, take this title instead
-								$field_info = field_info_instance('node', $other_sp, 'study');
-								if (isset($field_info['display_label']) && strlen(trim($field_info['display_label'])) > 0) {
-									$prefix = $field_info['display_label'] . ' ';
-								}
-							}
-							$specifies[] = $prefix . $node->content[$other_sp][$i]['#markup'];
-						}
-					}
+      if (isset($key)) {
+        // get the array index of the key
+        foreach ($node->content[$field]['#items'] as $i => $items) {
+          if ($items['value'] == $key) {
+            $index = $i;
+            break;
+          }
+        }
+      }
+      else{
+        $node->content[$field]['#items'][] = array('value' => 'extraone');
+        $index = count($node->content[$field]['#items']) -1;
+      }
 
-					$node->content[$other_sp]['#access'] = FALSE;
-					$content = implode($delimiter, $specifies);
-				}
-			  if (strlen(trim($content)) > 0) {
-				  if (key_exists($index, $node->content[$field])){
-				    $node->content[$field][$index]['#markup'] .= $start . $content . $end;
-				  }
-				  else{
-				    if (isset($key)){
-				      $node->content[$field][0]['#markup'] .= $start . $content . $end;
-				    }
-				    else{
-				      if (key_exists('custom_prefix', $options)){
-				        $node->content[$field][] = array('#markup' => $options['custom_prefix']  . ' ' . $content);
-				      }
-				      else{
-				        $node->content[$field][] = array('#markup' => $content);
-				      }
-				    }
-				  }
-				}
-			}
-		}
-		
-		
-	  // hide the field_sp always
-	  if (isset($options['field_sp'])) {
-	  	foreach ($options['field_sp'] as $f) {
-	  		$node->content[$f]['#access'] = FALSE;
-	  	}
-	  }
-		
-		if (isset($node->content[$other_sp])) {
-			$node->content[$other_sp]['#access'] = FALSE;
-		}
-	}
+      if (isset($index)) {
+        // bind the other specify with the other option
+        $content = '';
+        $specifies = array();
+        if (isset($options['field_sp'])) {
+          // add each field
+          foreach ($options['field_sp'] as $f) {
+            if (isset($node->content[$f])) {
+              $prefix = '';
+              if ($options['label_as_prefix'] == TRUE) {
+                $prefix = $node->content[$f]['#title'] . ' ';
+
+                // If a display field as been defined, take this title instead
+                $field_info = field_info_instance('node', $f, 'study');
+                if (isset($field_info['display_label']) && strlen(trim($field_info['display_label'])) > 0) {
+                  $prefix = $field_info['display_label'] . ' ';
+                }
+              }
+              foreach($node->content[$f] as $k => $value) {
+                if (is_int($k)) {
+                  $specifies[] = $prefix . $value['#markup'];
+                }
+              }
+            }
+          }
+          $content = implode($delimiter, $specifies);
+
+        }
+        else{
+          for ($i = 0; $i < count($node->content[$other_sp]); $i++) {
+            if (isset($node->content[$other_sp][$i])) {
+              $prefix = '';
+              if ($options['label_as_prefix'] == TRUE) {
+                $prefix = $node->content[$other_sp]['#title'] . ' ';
+
+                // If a display field as been defined, take this title instead
+                $field_info = field_info_instance('node', $other_sp, 'study');
+                if (isset($field_info['display_label']) && strlen(trim($field_info['display_label'])) > 0) {
+                  $prefix = $field_info['display_label'] . ' ';
+                }
+              }
+              $specifies[] = $prefix . $node->content[$other_sp][$i]['#markup'];
+            }
+          }
+
+          $node->content[$other_sp]['#access'] = FALSE;
+          $content = implode($delimiter, $specifies);
+        }
+        if (strlen(trim($content)) > 0) {
+          if (key_exists($index, $node->content[$field])){
+            $node->content[$field][$index]['#markup'] .= $start . $content . $end;
+          }
+          else{
+            if (isset($key)){
+              $node->content[$field][0]['#markup'] .= $start . $content . $end;
+            }
+            else{
+              if (key_exists('custom_prefix', $options)){
+                $node->content[$field][] = array('#markup' => $options['custom_prefix']  . ' ' . $content);
+              }
+              else{
+                $node->content[$field][] = array('#markup' => $content);
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+    // hide the field_sp always
+    if (isset($options['field_sp'])) {
+      foreach ($options['field_sp'] as $f) {
+        $node->content[$f]['#access'] = FALSE;
+      }
+    }
+
+    if (isset($node->content[$other_sp])) {
+      $node->content[$other_sp]['#access'] = FALSE;
+    }
+  }
 }
 
 function _mica_remove_suffix(&$node, $fields) {
-	foreach ($fields as $field) {
-		if (isset($node->content[$field])) {
-			// find the last integer index...
-			$index = 0;
-			for (; $index < count($node->content[$field]); $index++) {
-				if (!isset($node->content[$field][$index])) {
-					break;
-				}
-			}
-			$index--;
+  foreach ($fields as $field) {
+    if (isset($node->content[$field])) {
+      // find the last integer index...
+      $index = 0;
+      for (; $index < count($node->content[$field]); $index++) {
+        if (!isset($node->content[$field][$index])) {
+          break;
+        }
+      }
+      $index--;
 
       $suffix = '';
-			$field_info = field_info_instance('node', $field, 'study');
-			if (isset($field_info['settings']['suffix']) && strlen(trim($field_info['settings']['suffix'])) > 0) {
-				$suffix = $field_info['settings']['suffix'];
-			}
+      $field_info = field_info_instance('node', $field, 'study');
+      if (isset($field_info['settings']['suffix']) && strlen(trim($field_info['settings']['suffix'])) > 0) {
+        $suffix = $field_info['settings']['suffix'];
+      }
 
-			$node->content[$field][$index]['#markup'] = str_replace($suffix, '', $node->content[$field][$index]['#markup']);
-		}
-	}
+      $node->content[$field][$index]['#markup'] = str_replace($suffix, '', $node->content[$field][$index]['#markup']);
+    }
+  }
 }
 
 /**
  * Hide a field if another field has a value
  */
 function _mica_remove_exclusive_fields(&$node, $bindings) {
-	// Hide the field if the other field as a value
-	foreach ($bindings as $field => $other_field) {
-		if (isset($node->content[$other_field])) {
-  	  $node->content[$field]['#access'] = FALSE;
-		}
-	}
+  // Hide the field if the other field as a value
+  foreach ($bindings as $field => $other_field) {
+    if (isset($node->content[$other_field])) {
+      $node->content[$field]['#access'] = FALSE;
+    }
+  }
 }
 
 /**
@@ -681,7 +695,7 @@ function _mica_studies_form_validate_field($form, &$form_state, $dependee, $depe
     foreach($form_state['values'][$dependee][$flang] as $value) {
       $values[] = $value['value'];
     }
-    
+
     if (in_array($selection, $values) == FALSE) {
       $empty_value = array();
       $lgs = array_keys($form_state['values'][$dependent]);

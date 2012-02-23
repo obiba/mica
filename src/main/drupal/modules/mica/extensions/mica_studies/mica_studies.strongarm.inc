@@ -80,6 +80,7 @@ function mica_studies_strongarm() {
     'block-facetapi-x2aiUQYmnHEsSNGFTJ4LKoV88VKI97O1' => '3',
     'block-facetapi-ZFdQ86anSHCGDPj5gckeASLBuFjA3QEf' => '3',
     'block-facetapi-NbnHMPj12QcHHLgszNymVOLI1Et1Un7U' => '3',
+    'block-facetapi-9tdI9sYsuCPhlwlMzIiJkPvaOVk5Y0BF' => '3',
   );
   $export['collapsiblock_settings'] = $strongarm;
 
@@ -347,6 +348,9 @@ function mica_studies_strongarm() {
     'csv_study_import-sources_of_recruitment-explode' => FALSE,
     'csv_study_import-data_sources-explode' => FALSE,
     'csv_study_import-biological_samples-explode' => FALSE,
+    'csv_study_import-questionnaire_collection_mode-explode' => FALSE,
+    'csv_study_import-biosamples_collection_mode-explode' => FALSE,
+    'csv_study_import-phys_measures_collection_mode-explode' => FALSE,
   );
   $export['default_feeds_tamper'] = $strongarm;
 
@@ -481,6 +485,21 @@ function mica_studies_strongarm() {
           'token' => array(
             'custom_settings' => FALSE,
           ),
+          'banner_area' => array(
+            'custom_settings' => FALSE,
+          ),
+          'left_area' => array(
+            'custom_settings' => FALSE,
+          ),
+          'right_area' => array(
+            'custom_settings' => FALSE,
+          ),
+          'center_area' => array(
+            'custom_settings' => FALSE,
+          ),
+          'footer_area' => array(
+            'custom_settings' => FALSE,
+          ),
         ),
         'extra_fields' => array(
           'form' => array(
@@ -592,6 +611,20 @@ function mica_studies_strongarm() {
           'form' => array(
             'title' => array(
               'weight' => '0',
+            ),
+          ),
+          'display' => array(),
+        ),
+      ),
+      'dataset' => array(
+        'view_modes' => array(),
+        'extra_fields' => array(
+          'form' => array(
+            'title' => array(
+              'weight' => '-5',
+            ),
+            'path' => array(
+              'weight' => '30',
             ),
           ),
           'display' => array(),

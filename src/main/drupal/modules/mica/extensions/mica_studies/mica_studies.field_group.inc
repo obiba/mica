@@ -3737,10 +3737,10 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'field_address',
       1 => 'field_city',
-      2 => 'field_institution_name',
-      3 => 'field_postal_code',
-      4 => 'field_state',
-      5 => 'field_contact_country',
+      2 => 'field_contact_country',
+      3 => 'field_institution_name',
+      4 => 'field_postal_code',
+      5 => 'field_state',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

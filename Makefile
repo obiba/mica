@@ -307,7 +307,7 @@ demo-export:
 # Devel
 #
 
-mica-install-clear: mica-install
+mica-install-clear: mica-install delete-beta-modules
 	cd target/$(micadir) && \
 	drush cc all && \
 	cd ../..
