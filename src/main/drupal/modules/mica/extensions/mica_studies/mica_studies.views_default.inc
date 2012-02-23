@@ -507,6 +507,30 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_acroym']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_acroym']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_acroym']['field_api_classes'] = 0;
+  /* Field: Content: Website */
+  $handler->display->display_options['fields']['field_website']['id'] = 'field_website';
+  $handler->display->display_options['fields']['field_website']['table'] = 'field_data_field_website';
+  $handler->display->display_options['fields']['field_website']['field'] = 'field_website';
+  $handler->display->display_options['fields']['field_website']['label'] = 'website';
+  $handler->display->display_options['fields']['field_website']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_website']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_website']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_website']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_website']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_website']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_website']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_website']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_website']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_website']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_website']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_website']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_website']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_website']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_website']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_website']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_website']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_website']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_website']['field_api_classes'] = 0;
   /* Field: Content: Contacts */
   $handler->display->display_options['fields']['field_contacts_ref']['id'] = 'field_contacts_ref';
   $handler->display->display_options['fields']['field_contacts_ref']['table'] = 'field_data_field_contacts_ref';
@@ -2142,31 +2166,6 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['status']['empty_zero'] = 0;
   $handler->display->display_options['fields']['status']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Field: Content: Website */
-  $handler->display->display_options['fields']['field_study_website']['id'] = 'field_study_website';
-  $handler->display->display_options['fields']['field_study_website']['table'] = 'field_data_field_study_website';
-  $handler->display->display_options['fields']['field_study_website']['field'] = 'field_study_website';
-  $handler->display->display_options['fields']['field_study_website']['label'] = 'study_website';
-  $handler->display->display_options['fields']['field_study_website']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_study_website']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_study_website']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_study_website']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_study_website']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_study_website']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_study_website']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_study_website']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_study_website']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_study_website']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_study_website']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_study_website']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_study_website']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_study_website']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_study_website']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_study_website']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_study_website']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_study_website']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_study_website']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_study_website']['field_api_classes'] = 0;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -2281,7 +2280,6 @@ function mica_studies_views_default_views() {
     t('logo'),
     t('opal'),
     t('published'),
-    t('study_website'),
     t('Data export'),
   );
   $export['csv_study_export'] = $view;
@@ -2644,6 +2642,34 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: What is the design of the study */
+  $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
+  $handler->display->display_options['fields']['field_design']['table'] = 'field_data_field_design';
+  $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
+  $handler->display->display_options['fields']['field_design']['label'] = 'Study design';
+  $handler->display->display_options['fields']['field_design']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_design']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_design']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_design']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_design']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_design']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_design']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_design']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_design']['group_rows'] = 1;
+  $handler->display->display_options['fields']['field_design']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_design']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['field_design']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_design']['field_api_classes'] = 0;
   /* Field: Content: How many people are planned to be recruited? Or if the study is completed, what is the final number of participants? */
   $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'field_data_field_target_number_participants';
@@ -2737,6 +2763,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     t('empty_studies'),
     t('No study found.'),
     t('Name'),
+    t('Study design'),
     t('Target number of participants'),
     t('Country of residence'),
     t('Page'),
@@ -2801,7 +2828,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['table'] = 'search_api_index_studies_index';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
-  $handler->display->display_options['fields']['field_design']['label'] = 'Baseline design';
+  $handler->display->display_options['fields']['field_design']['label'] = 'Study design';
   $handler->display->display_options['fields']['field_design']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['absolute'] = 0;
@@ -2811,6 +2838,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_design']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_design']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_design']['alter']['more_link'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['html'] = 0;
@@ -2921,7 +2949,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     t('empty_studies'),
     t('No study found.'),
     t('Title'),
-    t('Baseline design'),
+    t('Study design'),
     t('Target number of participants'),
     t('Country of residence'),
     t('Fulltext search'),
