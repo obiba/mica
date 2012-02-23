@@ -93,12 +93,8 @@ projects[facetapi][type] = module
 
 projects[] = examples
 
+projects[features][version] = 1.0-beta6
 projects[features][type] = module
-projects[features][download][type] = git
-projects[features][download][url] = http://git.drupal.org/project/features.git
-projects[features][download][revision] = 82a8c17b5c6fb23babd5a5ebad15458cbd4264f4
-projects[features][patch][1279938] = http://drupal.org/files/features-locale-1279938-11.patch
-;projects[features][patch][1167430] = http://drupal.org/files/export_i18nmenus-1167430-3.patch
 
 projects[feeds][version] = 2.0-alpha4
 projects[feeds][type] = module
