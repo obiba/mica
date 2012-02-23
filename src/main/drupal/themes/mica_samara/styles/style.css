@@ -2171,6 +2171,14 @@ div.block-facetapi ul.facetapi-facetapi-checkbox-links li, div.block-current-sea
   padding-left: 0.75em;
 }
 
+div.block-facetapi ul.facetapi-facetapi-checkbox-links {
+  margin-bottom: 0;
+}
+
+div.block-facetapi a.facetapi-limit-link {
+  margin-left: 0.75em;
+}
+
 /**
  * Search API Ranges style
  */

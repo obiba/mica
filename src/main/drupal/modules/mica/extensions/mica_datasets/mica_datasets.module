@@ -437,9 +437,16 @@ function mica_datasets_form($node, &$form_state) {
 }
 
 /**
- * Implements hook_insert()
+ * Implements hook_node_submit
  */
-function mica_datasets_insert($node) {
+function mica_datasets_node_submit($node, $form, &$form_state) {
+  _mica_datasets_ensure_viewreference_arguments($node);
+}
+
+/**
+ * Implements hook_node_presave().
+ */
+function mica_datasets_node_presave($node) {
   _mica_datasets_ensure_viewreference_arguments($node);
 }
 
@@ -465,9 +472,9 @@ function mica_datasets_node_delete($node) {
 
     // remove queries and their terms
     $queries = MicaDatasetQueryManager::getPersistedQueries($dataset_id);
-    if (!empty($queries)){
+    if (!empty($queries)) {
 
-      foreach ($queries as $query){
+      foreach ($queries as $query) {
         $query_id = $query->id;
 
         $terms = mica_dataset_query_term_query($query_id);
@@ -501,7 +508,7 @@ function mica_datasets_node_delete($node) {
     ->execute();
     $studies = node_load_multiple(array_keys($entities['node']));
 
-    foreach($studies as $study_node){
+    foreach($studies as $study_node) {
        
       foreach ($study_node->mica_dataset[$study_node->language] as $key => $value) {
         if ($value['nid'] == $dataset_id) {
@@ -518,6 +525,7 @@ function mica_datasets_node_delete($node) {
     }
   }
 }
+
 /**
  * Implements hook_node_validate()
  */
@@ -558,7 +566,7 @@ function mica_datasets_entity_info() {
     'entity keys' => array(
       'id' => 'id',
       'label' => 'name',
-  ),
+    ),
   );
 
   $info['mica_dataset_query'] = array(
@@ -573,7 +581,7 @@ function mica_datasets_entity_info() {
     'entity keys' => array(
       'id' => 'id',
       'label' => 'name',
-  ),
+    ),
   );
 
   $info['mica_dataset_query_term'] = array(
@@ -588,7 +596,7 @@ function mica_datasets_entity_info() {
     'entity keys' => array(
       'id' => 'id',
       'label' => 'name',
-  ),
+    ),
   );
 
   return $info;
@@ -603,40 +611,40 @@ function mica_datasets_entity_property_info() {
       'label' => t('ID'),
       'type' => 'integer',
       'description' => t('The primary identifier for a connector.'),
-  ),
+    ),
     'name' => array(
       'label' => t('Name'),
       'type' => 'text',
       'description' => t('The displayed name for a connector.'),
       'required' => TRUE,
-  ),
+    ),
     'description' => array(
       'label' => t('Description'),
       'type' => 'text',
       'description' => t('The displayed description for a connector.'),
       'sanitize' => 'filter_xss',
-  ),
+    ),
     'dataset_id' => array(
       'label' => t('Dataset ID'),
       'type' => 'integer',
       'description' => t('The primary identifier for the Dataset node.'),
-  ),
+    ),
     'study_id' => array(
       'label' => t('Study ID'),
       'type' => 'integer',
       'description' => t('The primary identifier for the Study node.'),
-  ),
+    ),
     'class' => array(
       'label' => t('Connection class'),
       'type' => 'text',
       'description' => t('The ID of the connection class to use for this server.'),
       'required' => TRUE,
-  ),
+    ),
     'enabled' => array(
       'label' => t('Enabled'),
       'type' => 'boolean',
       'description' => t('A flag indicating whether the connector is enabled.'),
-  ),
+    ),
   );
 
   $info['mica_dataset_query']['properties'] = array(
@@ -644,34 +652,34 @@ function mica_datasets_entity_property_info() {
       'label' => t('ID'),
       'type' => 'integer',
       'description' => t('The primary identifier for a query.'),
-  ),
+    ),
     'name' => array(
       'label' => t('Name'),
       'type' => 'text',
       'description' => t('The displayed name for a query.'),
       'required' => TRUE,
-  ),
+    ),
     'description' => array(
       'label' => t('Description'),
       'type' => 'text',
       'description' => t('The displayed description for a query.'),
       'sanitize' => 'filter_xss',
-  ),
+    ),
     'dataset_id' => array(
       'label' => t('Dataset ID'),
       'type' => 'integer',
       'description' => t('The primary identifier for the Dataset node.'),
-  ),
+    ),
     'user_id' => array(
       'label' => t('User ID'),
       'type' => 'integer',
       'description' => t('The primary identifier for the user.'),
-  ),
+    ),
     'published' => array(
       'label' => t('Published'),
       'type' => 'boolean',
       'description' => t('A flag indicating whether the query is published.'),
-  ),
+    ),
   );
 
   $info['mica_dataset_query_term']['properties'] = array(
@@ -679,29 +687,28 @@ function mica_datasets_entity_property_info() {
       'label' => t('ID'),
       'type' => 'integer',
       'description' => t('The primary identifier for a query term.'),
-  ),
+    ),
     'query_id' => array(
       'label' => t('Query ID'),
       'type' => 'integer',
       'description' => t('The query identifier for a query term.'),
-  ),
+    ),
     'variable_id' => array(
       'label' => t('Participant Variable ID'),
       'type' => 'integer',
       'description' => t('The variable identifier for a query term.'),
-  ),
+    ),
     'weight' => array(
       'label' => t('Weight'),
       'type' => 'integer',
       'description' => t('The weight of a term in its query.'),
-  ),
+    ),
     'depth' => array(
       'label' => t('Depth'),
       'type' => 'integer',
       'description' => t('The depth of a term in its query.'),
-  ),
+    ),
   );
-
 
   return $info;
 }
