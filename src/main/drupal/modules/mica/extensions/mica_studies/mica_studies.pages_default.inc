@@ -39,17 +39,12 @@ function mica_studies_default_page_manager_handlers() {
           'not' => FALSE,
         ),
         1 => array(
-          'name' => 'php',
+          'name' => 'path_visibility',
           'settings' => array(
-            'description' => 'Published',
-            'php' => '//drupal_set_message(\'<pre>\' . print_r($contexts, true) . \'</pre>\');
-if (isset($contexts[\'argument_entity_id:node_1\'])) {
-  $wbm = $contexts[\'argument_entity_id:node_1\']->data->workbench_moderation;
-  $my_revision = $wbm[\'my_revision\'];
-  return $my_revision->published;
-}
-return FALSE;',
+            'visibility_setting' => '0',
+            'paths' => '*/draft',
           ),
+          'context' => 'empty',
           'not' => FALSE,
         ),
       ),
