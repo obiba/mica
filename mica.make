@@ -83,11 +83,6 @@ projects[entity][version] = 1.0-rc1
 projects[entity][type] = module
 projects[entity][patch][1344056] = http://drupal.org/files/1344056--node-status-1.patch
 
-projects[entity_translation][type] = module
-projects[entity_translation][download][type] = git
-projects[entity_translation][download][url] = http://git.drupal.org/project/entity_translation.git
-projects[entity_translation][download][revision] = c8d5a47baf08c511749b1dcf8083ef4a3898698b
-
 projects[facetapi][version] = 1.0-rc3
 projects[facetapi][type] = module
 
@@ -132,27 +127,11 @@ projects[image_url_formatter][type] = module
 projects[imce][version] = 1.5
 projects[imce][type] = module
 
-projects[i18n][version] = 1.4
-projects[i18n][type] = module
-
-;projects[i18n][download][type] = git
-;projects[i18n][download][url] = http://git.drupal.org/project/i18n.git
-;projects[i18n][download][revision] = ba701a2cecd87eeb98ce1e22c2ee1ab7aba1928e
-;projects[i18n][patch][1407054] = http://drupal.org/files/export_per_contenttype-1407054-4.patch
-
 projects[job_scheduler][version] = 2.0-alpha2
 projects[job_scheduler][type] = module
 
 projects[job_scheduler][version] = 2.0-alpha2
 projects[job_scheduler][type] = module
-
-projects[l10n_update][download][type] = git
-projects[l10n_update][download][url] = http://git.drupal.org/project/l10n_update.git
-projects[l10n_update][download][revision] = 5019582b5b96ccf1348dd45cf3c35fb90331938e
-projects[l10n_update][patch][1407054] = http://drupal.org/files/l10n_update-module-not-released-yet-1.patch
-
-projects[languageicons][version] = 1.0-beta1
-projects[languageicons][type] = module
 
 projects[link][version] = 1.0
 projects[link][type] = module
