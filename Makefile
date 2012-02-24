@@ -52,9 +52,9 @@ drupal-settings:
 # Build from continuous integration
 #
 
-ci-all: default-backup ci-update default-restore
+ci-update: default-backup ci-build default-restore
 
-ci-update:
+ci-build:
 	mkdir -p target && \
 	cd target/ && \
 	rm -rf $(micadir) && \
