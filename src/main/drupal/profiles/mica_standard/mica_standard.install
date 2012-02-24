@@ -131,8 +131,8 @@ function _mica_standard_default_block($mica_theme = 'mica_samara', $admin_theme 
       'cache' => -1,
     ),
     array(
-      'module' => 'mica_studies',
-      'delta' => 'mica-search',
+      'module' => 'search',
+      'delta' => 'form',
       'theme' => $mica_theme,
       'status' => 1,
       'weight' => 30,

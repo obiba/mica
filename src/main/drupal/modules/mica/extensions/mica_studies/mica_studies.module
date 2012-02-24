@@ -117,7 +117,7 @@ function mica_studies_block_info() {
 
   $blocks['mica-search'] = array(
     'info' => t('Search'),
-    'status' => TRUE,
+    'status' => FALSE,
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
     'pages' => '',
   );
