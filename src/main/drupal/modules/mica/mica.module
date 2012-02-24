@@ -175,7 +175,7 @@ function mica_field_formatter_info() {
     // This formatter just displays the link to pubmed article from its id.
     'mica_pubmed_url' => array(
       'label' => t('Pubmed Link'),
-      'field types' => array('text'),
+      'field types' => array('text','number_integer'),
       'multiple values' => FIELD_BEHAVIOR_DEFAULT,
     ),
   );
