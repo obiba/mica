@@ -118,6 +118,13 @@ function mica_projects_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'language_content_type_project';
+  $strongarm->value = '0';
+  $export['language_content_type_project'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_expanded';
   $strongarm->value = array(
     0 => 'main-menu',
@@ -129,7 +136,7 @@ function mica_projects_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_project';
   $strongarm->value = array(
-    0 => 'main-menu:projects',
+    0 => 'main-menu',
   );
   $export['menu_options_project'] = $strongarm;
 
@@ -137,7 +144,7 @@ function mica_projects_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_project';
-  $strongarm->value = 'main-menu:500';
+  $strongarm->value = 'main-menu:226';
   $export['menu_parent_project'] = $strongarm;
 
   $strongarm = new stdClass;

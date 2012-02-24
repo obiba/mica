@@ -111,9 +111,23 @@ function mica_community_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'language_content_type_event';
+  $strongarm->value = '0';
+  $export['language_content_type_event'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'language_content_type_publication';
+  $strongarm->value = '0';
+  $export['language_content_type_publication'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_event';
   $strongarm->value = array(
-    0 => 'main-menu:events',
+    0 => 'main-menu',
   );
   $export['menu_options_event'] = $strongarm;
 
@@ -122,7 +136,7 @@ function mica_community_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_publication';
   $strongarm->value = array(
-    0 => 'main-menu:publications',
+    0 => 'main-menu',
   );
   $export['menu_options_publication'] = $strongarm;
 
@@ -137,7 +151,7 @@ function mica_community_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_publication';
-  $strongarm->value = 'main-menu:462';
+  $strongarm->value = 'main-menu:504';
   $export['menu_parent_publication'] = $strongarm;
 
   $strongarm = new stdClass;
