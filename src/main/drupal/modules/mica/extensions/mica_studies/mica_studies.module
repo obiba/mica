@@ -489,7 +489,6 @@ function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_s
       $rule['value'] = $key_selected;
     }
     $input = $input . '"]';
-
     $form[$dependent]['#states'] = array(
       'visible' => array(
         $input => $rule,
@@ -627,13 +626,13 @@ function _mica_bind_other_specify(&$node, $bindings) {
 
 
     // hide the field_sp always
-    if (isset($options['field_sp'])) {
+    if (isset($node->content[$field]) && isset($options['field_sp'])) {
       foreach ($options['field_sp'] as $f) {
         $node->content[$f]['#access'] = FALSE;
       }
     }
 
-    if (isset($node->content[$other_sp])) {
+    if (isset($node->content[$field]) && isset($node->content[$other_sp])) {
       $node->content[$other_sp]['#access'] = FALSE;
     }
   }
