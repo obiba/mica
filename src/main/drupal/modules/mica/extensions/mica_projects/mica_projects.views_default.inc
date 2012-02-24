@@ -95,6 +95,35 @@ function mica_projects_views_default_views() {
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: What is the design of the study */
+  $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
+  $handler->display->display_options['fields']['field_design']['table'] = 'field_data_field_design';
+  $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
+  $handler->display->display_options['fields']['field_design']['relationship'] = 'field_studies_nid';
+  $handler->display->display_options['fields']['field_design']['label'] = 'Study design';
+  $handler->display->display_options['fields']['field_design']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_design']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_design']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_design']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_design']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_design']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_design']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_design']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_design']['group_rows'] = 1;
+  $handler->display->display_options['fields']['field_design']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_design']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['field_design']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_design']['field_api_classes'] = 0;
   /* Field: Content: How many people are planned to be recruited? Or if the study is completed, what is the final number of participants? */
   $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'field_data_field_target_number_participants';
@@ -123,7 +152,7 @@ function mica_projects_views_default_views() {
     'prefix_suffix' => 1,
   );
   $handler->display->display_options['fields']['field_target_number_participants']['field_api_classes'] = 0;
-  /* Field: Content: Country */
+  /* Field: Content: Country of residence */
   $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
   $handler->display->display_options['fields']['field_country']['table'] = 'field_data_field_country';
   $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
@@ -192,6 +221,7 @@ function mica_projects_views_default_views() {
     t('Desc'),
     t('field_studies'),
     t('Name'),
+    t('Study design'),
     t('Target number of participants'),
     t('Country selection criteria'),
     t('All'),
