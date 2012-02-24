@@ -4666,7 +4666,7 @@ function mica_studies_field_default_fields() {
           'longitudinal_biological_samples' => 'Longitudinal biological samples',
           'medical_paper' => 'Direct access to participants medical paper files',
           'health_databases' => 'Electronic health databases (death or hospitalization registries, etc.)',
-          'genealogical_recorde' => 'Genealogical records',
+          'genealogical_records' => 'Genealogical records',
           'others' => 'Others',
         ),
         'allowed_values_function' => '',
