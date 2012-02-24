@@ -30,7 +30,6 @@ mica_demo_version=$(mica_version)
 
 # Themes
 mica_samara_version=$(mica_version)
-mica_seven_version=$(mica_version)
 
 #
 # Mysql db access
@@ -203,8 +202,7 @@ package-profiles:
 
 package-themes-prepare:
 	$(call make-info,sites/all/themes,mica_samara)
-	$(call make-info,sites/all/themes,mica_seven)
-	
+
 package-themes:
 
 package-forks-prepare:

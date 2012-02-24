@@ -219,7 +219,7 @@ function mica_studies_node_view($node, $view_mode, $langcode) {
 }
 
 function _mica_studies_study_view($node, $view_mode, $langcode) {
-
+  $wrapper = entity_metadata_wrapper('node', $node);
   $bindings = array(
     'field_design_other_sp' => array(
       'field' => 'field_design',
@@ -330,10 +330,45 @@ function _mica_studies_study_view($node, $view_mode, $langcode) {
     $node->content['field_no_limits_participants']['#access'] = FALSE;
   }
 
-  if (isset($node->content['field_no_limits_samples']) && $node->content['field_no_limits_samples']['#items'][0]['value'] === '0') {
+  if (isset($node->content['field_no_limits_samples'])
+    && $node->content['field_no_limits_samples']['#items'][0]['value'] === '0') {
     $node->content['field_no_limits_samples']['#access'] = FALSE;
   }
 
+  // authorization fields
+  if (isset($node->content['field_authorization_specific'])) {
+    $authorization_specific = $wrapper->field_authorization_specific->value();
+    $node->content['field_authorization_specific']['#access'] = $authorization_specific;
+    $node->content['field_authorising_person_name']['#access'] = FALSE;
+    $node->content['field_authorising_date']['#access'] = FALSE;
+    if ($authorization_specific) {
+      $person_name = $wrapper->field_authorising_person_name->value();
+      $site_name = variable_get('site_name', "[SPECIFIC NETWORK]");
+      if (empty($person_name)) {
+        $txt = t("Contribution to @site authorised on ", array('@site' => $site_name));
+      } else {
+        $txt = t("@name authorised the contribution to @site on ", array('@name' => $person_name, '@site' => $site_name));
+      }
+      $node->content['field_authorization_specific'][0]['#markup'] = $txt
+        . $node->content['field_authorising_date'][0]['#markup'];
+    }
+  }
+  if (isset($node->content['field_authorization_maelstrom'])) {
+    $authorization_maelstrom = $wrapper->field_authorization_maelstrom->value();
+    $node->content['field_authorization_maelstrom']['#access'] = $authorization_maelstrom;
+    $node->content['field_authorising_person_name_m']['#access'] = FALSE;
+    $node->content['field_authorising_date_m']['#access'] = FALSE;
+    if ($authorization_maelstrom) {
+      $person_name = $wrapper->field_authorising_person_name_m->value();
+      if (empty($person_name)) {
+        $txt = t("Contribution to Maelstrom Research authorised on ");
+      } else {
+        $txt = t("@name authorised the contribution to Maelstrom Research on ", array('@name' => $person_name));
+      }
+      $node->content['field_authorization_maelstrom'][0]['#markup'] = $txt
+        . $node->content['field_authorising_date_m'][0]['#markup'];
+    }
+  }
 }
 
 function _mica_studies_contact_view($node, $view_mode, $langcode) {
@@ -509,12 +544,12 @@ function _mica_studies_display_status_dates(&$node, $status_dates) {
   foreach ($status_dates as $start_date => $end_date) {
     $start = $wrapper->$start_date->value();
     if (!empty($start)) {
-      if (isset($node->content[$start_date])){
+      if (isset($node->content[$start_date])) {
         $node->content[$start_date][0]['#markup'] = t('From') . ' ' . $node->content[$start_date][0]['#markup'];
       }
       $end = $wrapper->$end_date->value();
       if (!empty($end)) {
-        if (isset($node->content[$end_date])){
+        if (isset($node->content[$end_date])) {
           $node->content[$start_date][0]['#markup'] .= ' ' . t('to') . ' ' .  $node->content[$end_date][0]['#markup'];
         }
       }
