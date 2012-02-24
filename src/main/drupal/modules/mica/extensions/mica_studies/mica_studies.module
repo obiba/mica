@@ -233,12 +233,12 @@ function _mica_studies_study_view($node, $view_mode, $langcode) {
     ),
     'field_current_part_nb_date' => array(
       'field' => 'field_current_participants_nb',
-      'key' => NULL,
+      'key' => 0, // To specify to add the specified field to the first item
       'label_as_prefix' => TRUE,
     ),
     'field_current_samples_date' => array(
       'field' => 'field_current_samples_nb',
-      'key' => NULL,
+      'key' => 0,
       'label_as_prefix' => TRUE,
     ),
     'field_selection_others_sp' => array(
@@ -544,7 +544,7 @@ function _mica_bind_other_specify(&$node, $bindings) {
       if (isset($key)) {
         // get the array index of the key
         foreach ($node->content[$field]['#items'] as $i => $items) {
-          if ($items['value'] == $key) {
+          if ($i == $key || $items['value'] == $key) {
             $index = $i;
             break;
           }

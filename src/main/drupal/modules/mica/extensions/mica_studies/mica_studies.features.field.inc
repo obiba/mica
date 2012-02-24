@@ -9110,9 +9110,10 @@ function mica_studies_field_default_fields() {
         ),
         'right_area' => array(
           'label' => 'above',
+          'module' => 'link',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'link_default',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
