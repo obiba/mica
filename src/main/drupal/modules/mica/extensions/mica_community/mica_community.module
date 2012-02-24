@@ -58,17 +58,6 @@ function mica_community_menu_local_tasks_alter(&$data, $router_item, $root_path)
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
 
-function mica_community_node_view_alter(&$build){  
-  if (isset($build['#view_mode']) && isset($build['field_publication_pmid']) ) $build['#post_render'][] = 'mica_community_publication_post_render'; 
-}
-
-function mica_community_publication_post_render(&$render){
-  $pattern = '/(PMID:&nbsp;[[:ascii:]]+class=\"field-item even\">)([[:digit:]]+)/';
-  $render = preg_replace($pattern, '${1}<a href="http://www.ncbi.nlm.nih.gov/pubmed/${2}" target="_blank">${2}</a>', $render);
-  
-  return $render;
-}
-
 /**
 * Implements hook_node_insert()
 */
