@@ -3465,7 +3465,7 @@ function mica_studies_field_group_info() {
       3 => 'field_contacts_ref',
       4 => 'field_investigators',
       5 => 'field_logo',
-      6 => 'field_study_website',
+      6 => 'field_website',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -3497,7 +3497,7 @@ function mica_studies_field_group_info() {
       3 => 'field_contacts_ref',
       4 => 'field_investigators',
       5 => 'field_logo',
-      6 => 'field_study_website',
+      6 => 'field_website',
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
@@ -3526,7 +3526,7 @@ function mica_studies_field_group_info() {
       0 => 'body',
       1 => 'field_contacts_ref',
       2 => 'field_investigators',
-      3 => 'field_study_website',
+      3 => 'field_website',
       4 => 'group_study_name',
     ),
     'format_type' => 'htab',
@@ -3559,7 +3559,7 @@ function mica_studies_field_group_info() {
       1 => 'field_acroym',
       2 => 'field_complete_name',
       3 => 'field_logo',
-      4 => 'field_study_website',
+      4 => 'field_website',
     ),
     'format_type' => 'hidden',
     'format_settings' => array(

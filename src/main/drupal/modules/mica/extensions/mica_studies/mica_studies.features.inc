@@ -468,7 +468,7 @@ function mica_studies_default_search_api_index() {
         "field_investigators:field_state" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_telephone" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_daco" : { "type" : "list\\u003Cboolean\\u003E" },
-        "field_study_website" : { "name" : "Website", "indexed" : true, "type" : "text", "boost" : "1.0" },
+        "field_website" : { "name" : "Website", "indexed" : true, "type" : "text", "boost" : "1.0" },
         "body" : {
           "name" : "What are the principal objectives of the study",
           "indexed" : true,

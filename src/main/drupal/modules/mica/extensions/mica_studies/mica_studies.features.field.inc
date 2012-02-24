@@ -8324,14 +8324,14 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study-field_study_website'
-  $fields['node-study-field_study_website'] = array(
+  // Exported field: 'node-study-field_website'
+  $fields['node-study-field_website'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_study_website',
+      'field_name' => 'field_website',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -8414,7 +8414,7 @@ function mica_studies_field_default_fields() {
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_study_website',
+      'field_name' => 'field_website',
       'label' => 'Website',
       'required' => 0,
       'settings' => array(
