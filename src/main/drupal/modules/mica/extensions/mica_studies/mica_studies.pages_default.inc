@@ -364,7 +364,9 @@ function mica_studies_default_page_manager_handlers() {
       'admin_title' => '',
       'title' => 'Address:',
       'body' => '%node:field_institution_name
-%node:field_city %node:field_state %node:field_contact_country %node:field_postal_code',
+%node:field_address
+%node:field_city %node:field_state %node:field_postal_code
+%node:field_contact_country',
       'format' => 'plain_text',
       'substitute' => 1,
     );
