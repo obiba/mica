@@ -20,8 +20,6 @@ function mica_standard_install() {
 
   // Disable blocks
   _mica_standard_no_region('user', 'new');
-  _mica_standard_no_region('search', 'form');
-  _mica_standard_no_region('search', 'form', $mica_theme);
   _mica_standard_no_region('node', 'recent');
 
   // Set mica theme as default
