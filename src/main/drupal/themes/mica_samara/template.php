@@ -204,11 +204,8 @@ function mica_samara_form_element($variables) {
 
 function mica_samara_field_multiple_value_form($variables) {
 	$element = $variables['element'];
-
-	if (key_exists('#bundle', $element) && $element['#bundle'] === 'study'){
-  
-  	$output = '';
-  
+	$output = '';
+  if (key_exists('nid', $element[0]) && $element[0]['nid']['#bundle'] === 'study'){
   	if ($element['#cardinality'] > 1 || $element['#cardinality'] == FIELD_CARDINALITY_UNLIMITED) {
   		$table_id = drupal_html_id($element['#field_name'] . '_values');
   		$order_class = $element['#field_name'] . '-delta-order';
@@ -216,11 +213,11 @@ function mica_samara_field_multiple_value_form($variables) {
   
   		$description = $element['#description'] ? '<div class="description" style="font-variant:normal;text-transform:none;">' . $element['#description'] . '</div>' : '';
   		$header = array(
-  		array(
+  		  array(
           'data' => '<label>' . t('!title: !required', array('!title' => $element['#title'], '!required' => $required)) . "</label>" . $description,
           'colspan' => 2,
           'class' => array('field-label'),
-  		),
+  		  ),
   		t('Order'),
   		);
   		$rows = array();
@@ -255,7 +252,7 @@ function mica_samara_field_multiple_value_form($variables) {
   
   		$output = '<div class="form-item">';
       $output .= theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('id' => $table_id, 'class' => array('field-multiple-table'))));
-      $output .= $element['#description'] ? '<div class="description">' . $element['#description'] . '</div>' : '';
+      //$output .= $element['#description'] ? '<div class="description">' . $element['#description'] . '</div>' : '';
       $output .= '<div class="clearfix">' . drupal_render($add_more_button) . '</div>';
       $output .= '</div>';
   
@@ -268,8 +265,8 @@ function mica_samara_field_multiple_value_form($variables) {
   	}
   
   	return $output;
-	}
-	else{
-	  return theme_field_multiple_value_form($variables);
-	}
+  }
+  else{
+    return theme_field_multiple_value_form($variables);
+  }
 }

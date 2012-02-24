@@ -232,7 +232,7 @@ table {
 }
 th,
 td {
-  padding: 10px 14px;
+  padding: 6px 12px;
   text-align: left; /* LTR */
   vertical-align: middle;
 }
@@ -288,7 +288,7 @@ fieldset {
   border-radius: 3px;
 }
 fieldset .form-wrapper {
-  margin-bottom: 14px;
+  margin-bottom: 9px;
 }
 
 legend {
@@ -320,8 +320,8 @@ fieldset .form-item:first-child {
   background-color: #f5f9fa;
   border: 1px solid #deeaec;
   font-size: 0.917em;
-  margin: 9px 0 21px;
-  padding: 2px 6px;
+  margin: 3px 0 5px;
+  padding: 2px 2px;
 }
 .form-item label {
   vertical-align: middle;
