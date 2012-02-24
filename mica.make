@@ -220,8 +220,11 @@ projects[search_api_ranges][download][url] = http://git.drupal.org/project/searc
 projects[search_api_ranges][download][revision] = fe3b59f9c0206ac822c4e6474f8715fc1c2026a5
 projects[search_api_ranges][patch][] = http://drupal.org/files/config-for-no-slider-no-commit-on-change_0.patch
 
-projects[search_api_solr][version] = 1.0-rc1
 projects[search_api_solr][type] = module
+projects[search_api_solr][download][type] = git
+projects[search_api_solr][download][url] = http://git.drupal.org/project/search_api_solr.git
+projects[search_api_solr][download][revision] = cd54caa9e6bd554786c000b78080481b58ff75e1
+projects[search_api_solr][patch][1452146] = http://drupal.org/files/link_htmlspecialchars-1452146-2.patch
 
 projects[strongarm][version] = 2.0-beta5
 projects[strongarm][type] = module
