@@ -64,22 +64,6 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper = new stdClass;
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
-  $feeds_tamper->id = 'csv_study_import-biosamples_collection_mode-explode';
-  $feeds_tamper->importer = 'csv_study_import';
-  $feeds_tamper->source = 'biosamples_collection_mode';
-  $feeds_tamper->plugin_id = 'explode';
-  $feeds_tamper->settings = array(
-    'separator' => ',',
-    'limit' => '',
-    'real_separator' => ',',
-  );
-  $feeds_tamper->weight = 0;
-  $feeds_tamper->description = 'Explode';
-  $export['csv_study_import-biosamples_collection_mode-explode'] = $feeds_tamper;
-
-  $feeds_tamper = new stdClass;
-  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
-  $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'csv_study_import-contacts-explode';
   $feeds_tamper->importer = 'csv_study_import';
   $feeds_tamper->source = 'contacts';
@@ -192,22 +176,6 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper = new stdClass;
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
-  $feeds_tamper->id = 'csv_study_import-phys_measures_collection_mode-explode';
-  $feeds_tamper->importer = 'csv_study_import';
-  $feeds_tamper->source = 'phys_measures_collection_mode';
-  $feeds_tamper->plugin_id = 'explode';
-  $feeds_tamper->settings = array(
-    'separator' => ',',
-    'limit' => '',
-    'real_separator' => ',',
-  );
-  $feeds_tamper->weight = 0;
-  $feeds_tamper->description = 'Explode';
-  $export['csv_study_import-phys_measures_collection_mode-explode'] = $feeds_tamper;
-
-  $feeds_tamper = new stdClass;
-  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
-  $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'csv_study_import-published-convert_to_boolean';
   $feeds_tamper->importer = 'csv_study_import';
   $feeds_tamper->source = 'published';
@@ -223,22 +191,6 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Convert to boolean';
   $export['csv_study_import-published-convert_to_boolean'] = $feeds_tamper;
-
-  $feeds_tamper = new stdClass;
-  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
-  $feeds_tamper->api_version = 2;
-  $feeds_tamper->id = 'csv_study_import-questionnaire_collection_mode-explode';
-  $feeds_tamper->importer = 'csv_study_import';
-  $feeds_tamper->source = 'questionnaire_collection_mode';
-  $feeds_tamper->plugin_id = 'explode';
-  $feeds_tamper->settings = array(
-    'separator' => ',',
-    'limit' => '',
-    'real_separator' => ',',
-  );
-  $feeds_tamper->weight = 0;
-  $feeds_tamper->description = 'Explode';
-  $export['csv_study_import-questionnaire_collection_mode-explode'] = $feeds_tamper;
 
   $feeds_tamper = new stdClass;
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */

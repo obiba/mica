@@ -400,9 +400,6 @@ function _mica_studies_study_form_alter(&$form, &$form_state, $form_id) {
   _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
   _mica_add_dependent_field_checked($form, 'field_recruitment_procedures', 'field_recruitment_other', 'other');
   _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_data_sources_sp', 'others');
-  _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_questionnaire_collection', 'questionnaires');
-  _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_phys_collection_mode', 'physical_measures');
-  _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_biosamples_collection_mode', 'biological_samples');
 }
 
 function _mica_studies_contact_form_alter(&$form, &$form_state, $form_id) {

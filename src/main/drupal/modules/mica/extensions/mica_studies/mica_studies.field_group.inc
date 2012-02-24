@@ -2190,11 +2190,8 @@ function mica_studies_field_group_info() {
     'label' => 'Data Collection',
     'weight' => '68',
     'children' => array(
-      0 => 'field_biosamples_collection_mode',
-      1 => 'field_data_sources',
-      2 => 'field_data_sources_sp',
-      3 => 'field_phys_collection_mode',
-      4 => 'field_questionnaire_collection',
+      0 => 'field_data_sources',
+      1 => 'field_data_sources_sp',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

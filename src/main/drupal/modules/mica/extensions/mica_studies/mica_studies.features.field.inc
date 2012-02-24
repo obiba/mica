@@ -3369,109 +3369,6 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study-field_biosamples_collection_mode'
-  $fields['node-study-field_biosamples_collection_mode'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_biosamples_collection_mode',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          'cross_sectional' => 'Cross-sectional',
-          'Longitudinal' => 'Longitudinal',
-        ),
-        'allowed_values_function' => '',
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_label' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'study',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'banner_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '55',
-        ),
-        'center_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '55',
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '56',
-        ),
-        'footer_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '52',
-        ),
-        'left_area' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '104',
-        ),
-        'right_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '55',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'node',
-      'field_name' => 'field_biosamples_collection_mode',
-      'label' => 'Biological samples collection mode',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '67',
-      ),
-    ),
-  );
-
   // Exported field: 'node-study-field_complete_name'
   $fields['node-study-field_complete_name'] = array(
     'field_config' => array(
@@ -4761,9 +4658,12 @@ function mica_studies_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'questionnaires' => 'Questionnaires to participants/respondents',
-          'physical_measures' => 'Physical measures',
-          'biological_samples' => 'Biological samples',
+          'cross_sectional_questionnaires' => 'Cross-sectional questionnaires',
+          'longitudinal_questionnaires' => 'Longitudinal questionnaires',
+          'cross_sectional_physical_measures' => 'Cross-sectional physical measures',
+          'longitudinal_physical_measures' => 'Longitudinal physical measures',
+          'cross_sectional_biological_samples' => 'Cross-sectional biological samples',
+          'longitudinal_biological_samples' => 'Longitudinal biological samples',
           'medical_paper' => 'Direct access to participants medical paper files',
           'health_databases' => 'Electronic health databases (death or hospitalization registries, etc.)',
           'genealogical_recorde' => 'Genealogical records',
@@ -4771,9 +4671,10 @@ function mica_studies_field_default_fields() {
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description' => 1,
+          'field_description_body' => 'How is information obtained?',
+          'field_description_label' => 'Data Sources',
+          'field_description_value_type' => 'TEXT',
         ),
       ),
       'translatable' => '1',
@@ -4830,6 +4731,7 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_data_sources',
       'label' => 'Data Sources',
@@ -6620,109 +6522,6 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study-field_phys_collection_mode'
-  $fields['node-study-field_phys_collection_mode'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_phys_collection_mode',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          'cross_sectional' => 'Cross-sectional',
-          'Longitudinal' => 'Longitudinal',
-        ),
-        'allowed_values_function' => '',
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_label' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'study',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'banner_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '54',
-        ),
-        'center_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '54',
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '55',
-        ),
-        'footer_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '45',
-        ),
-        'left_area' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '103',
-        ),
-        'right_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '54',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'node',
-      'field_name' => 'field_phys_collection_mode',
-      'label' => 'Physical measures collection mode',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '66',
-      ),
-    ),
-  );
-
   // Exported field: 'node-study-field_preparation_end_year'
   $fields['node-study-field_preparation_end_year'] = array(
     'field_config' => array(
@@ -7043,109 +6842,6 @@ function mica_studies_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '49',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-study-field_questionnaire_collection'
-  $fields['node-study-field_questionnaire_collection'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_questionnaire_collection',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          'cross_sectional' => 'Cross-sectional',
-          'longitudinal' => 'Longitudinal',
-        ),
-        'allowed_values_function' => '',
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_label' => '',
-          'field_description_value_type' => 'TEXT',
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'study',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'banner_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '53',
-        ),
-        'center_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '53',
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '53',
-        ),
-        'footer_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '44',
-        ),
-        'left_area' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '102',
-        ),
-        'right_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '53',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'node',
-      'field_name' => 'field_questionnaire_collection',
-      'label' => 'Questionnaire collection mode',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '64',
       ),
     ),
   );
@@ -9165,7 +8861,6 @@ function mica_studies_field_default_fields() {
   t('Authorization Maelstrom');
   t('Authorization Specific');
   t('Biological samples');
-  t('Biological samples collection mode');
   t('Body');
   t('City');
   t('Comment');
@@ -9207,7 +8902,6 @@ function mica_studies_field_default_fields() {
   t('No limits in the number of participants');
   t('No limits in the number of samples');
   t('Other');
-  t('Physical measures collection mode');
   t('Please specify type of tissues');
   t('Please specify what other biological samples');
   t('Please specify what other data sources');
@@ -9218,7 +8912,6 @@ function mica_studies_field_default_fields() {
   t('Please specify what study feature');
   t('Postal Code');
   t('Pubmed Id');
-  t('Questionnaire collection mode');
   t('Selection Criteria: Ethnic Origin');
   t('Selection Criteria: Gender');
   t('Selection Criteria: Health Status');

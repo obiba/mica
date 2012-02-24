@@ -1542,78 +1542,6 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_data_sources']['delta_first_last'] = 0;
   $handler->display->display_options['fields']['field_data_sources']['separator'] = ',';
   $handler->display->display_options['fields']['field_data_sources']['field_api_classes'] = 0;
-  /* Field: Content: Biological samples collection mode */
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['id'] = 'field_biosamples_collection_mode';
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['table'] = 'field_data_field_biosamples_collection_mode';
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['field'] = 'field_biosamples_collection_mode';
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['label'] = 'biosamples_collection_mode';
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_biosamples_collection_mode']['field_api_classes'] = 0;
-  /* Field: Content: Physical measures collection mode */
-  $handler->display->display_options['fields']['field_phys_collection_mode']['id'] = 'field_phys_collection_mode';
-  $handler->display->display_options['fields']['field_phys_collection_mode']['table'] = 'field_data_field_phys_collection_mode';
-  $handler->display->display_options['fields']['field_phys_collection_mode']['field'] = 'field_phys_collection_mode';
-  $handler->display->display_options['fields']['field_phys_collection_mode']['label'] = 'phys_collection_mode';
-  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_phys_collection_mode']['field_api_classes'] = 0;
-  /* Field: Content: Questionnaire collection mode */
-  $handler->display->display_options['fields']['field_questionnaire_collection']['id'] = 'field_questionnaire_collection';
-  $handler->display->display_options['fields']['field_questionnaire_collection']['table'] = 'field_data_field_questionnaire_collection';
-  $handler->display->display_options['fields']['field_questionnaire_collection']['field'] = 'field_questionnaire_collection';
-  $handler->display->display_options['fields']['field_questionnaire_collection']['label'] = 'questionnaire_collection';
-  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_questionnaire_collection']['field_api_classes'] = 0;
   /* Field: Content: Please specify what other data sources */
   $handler->display->display_options['fields']['field_data_sources_sp']['id'] = 'field_data_sources_sp';
   $handler->display->display_options['fields']['field_data_sources_sp']['table'] = 'field_data_field_data_sources_sp';
@@ -2254,9 +2182,6 @@ function mica_studies_views_default_views() {
     t('other_sources_of_recruitment'),
     t('recruitment_procedures_supplementary_information'),
     t('data_sources'),
-    t('biosamples_collection_mode'),
-    t('phys_collection_mode'),
-    t('questionnaire_collection'),
     t('other_data_sources'),
     t('biological_samples'),
     t('other_type_of_tissues'),
@@ -2915,56 +2840,6 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Fulltext search';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['fields'] = array(
-    'title' => 'title',
-    'field_access_other_sp' => 'field_access_other_sp',
-    'field_acroym' => 'field_acroym',
-    'field_authorising_person_name' => 'field_authorising_person_name',
-    'field_authorising_person_name_m' => 'field_authorising_person_name_m',
-    'field_complete_name' => 'field_complete_name',
-    'field_current_sam_supp_info' => 'field_current_sam_supp_info',
-    'field_current_supp_info' => 'field_current_supp_info',
-    'field_data_sources_sp' => 'field_data_sources_sp',
-    'field_design_other_sp' => 'field_design_other_sp',
-    'field_ethnic_origin' => 'field_ethnic_origin',
-    'field_health_status' => 'field_health_status',
-    'field_marker_paper' => 'field_marker_paper',
-    'field_partcipant_sel_supp_info' => 'field_partcipant_sel_supp_info',
-    'field_pubmedid' => 'field_pubmedid',
-    'field_recruitement_supp_info' => 'field_recruitement_supp_info',
-    'field_recruitment_other' => 'field_recruitment_other',
-    'field_recruitment_other_sp' => 'field_recruitment_other_sp',
-    'field_recruitment_supp_info' => 'field_recruitment_supp_info',
-    'field_samples_man_other_sp' => 'field_samples_man_other_sp',
-    'field_samples_supp_info' => 'field_samples_supp_info',
-    'field_selection_others_sp' => 'field_selection_others_sp',
-    'field_status_supp_info' => 'field_status_supp_info',
-    'field_supp_infos' => 'field_supp_infos',
-    'field_target_nb_supp_info' => 'field_target_nb_supp_info',
-    'field_territory' => 'field_territory',
-    'field_tissues_sp' => 'field_tissues_sp',
-    'body:value' => 'body:value',
-    'body:summary' => 'body:summary',
-    'field_contacts_ref:title' => 'field_contacts_ref:title',
-    'field_contacts_ref:field_address' => 'field_contacts_ref:field_address',
-    'field_contacts_ref:field_city' => 'field_contacts_ref:field_city',
-    'field_contacts_ref:field_contact_email' => 'field_contacts_ref:field_contact_email',
-    'field_contacts_ref:field_institution_name' => 'field_contacts_ref:field_institution_name',
-    'field_contacts_ref:field_postal_code' => 'field_contacts_ref:field_postal_code',
-    'field_contacts_ref:field_state' => 'field_contacts_ref:field_state',
-    'field_contacts_ref:field_telephone' => 'field_contacts_ref:field_telephone',
-    'field_investigators:title' => 'field_investigators:title',
-    'field_investigators:field_address' => 'field_investigators:field_address',
-    'field_investigators:field_city' => 'field_investigators:field_city',
-    'field_investigators:field_contact_email' => 'field_investigators:field_contact_email',
-    'field_investigators:field_institution_name' => 'field_investigators:field_institution_name',
-    'field_investigators:field_postal_code' => 'field_investigators:field_postal_code',
-    'field_investigators:field_state' => 'field_investigators:field_state',
-    'field_investigators:field_telephone' => 'field_investigators:field_telephone',
-    'body' => 'body',
-    'title_field' => 'title_field',
-    'field_comments' => 'field_comments',
-  );
   /* Filter criterion: Indexed Node: Content type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'search_api_index_studies_index';

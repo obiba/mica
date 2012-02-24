@@ -69,8 +69,6 @@ function mica_studies_configure_facet_blocks() {
       'field_access_data',
       'field_access_biosamples',
       'field_questionnaire_collection',
-      'field_phys_collection_mode',
-      'field_biosamples_collection_mode',
       'field_preparation_start_year',
       'field_preparation_end_year',
       'field_baseline_start_year',
