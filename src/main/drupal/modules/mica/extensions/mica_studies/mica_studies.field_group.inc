@@ -2085,11 +2085,8 @@ function mica_studies_field_group_info() {
     'label' => 'Data Collection',
     'weight' => '68',
     'children' => array(
-      0 => 'field_biosamples_collection_mode',
-      1 => 'field_data_sources',
-      2 => 'field_data_sources_sp',
-      3 => 'field_phys_collection_mode',
-      4 => 'field_questionnaire_collection',
+      0 => 'field_data_sources',
+      1 => 'field_data_sources_sp',
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
@@ -3903,7 +3900,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_status';
   $field_group->data = array(
     'label' => 'Details',
-    'weight' => '64',
+    'weight' => '65',
     'children' => array(
       0 => 'field_current_supp_info',
     ),
@@ -3934,7 +3931,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_status';
   $field_group->data = array(
     'label' => 'Details',
-    'weight' => '67',
+    'weight' => '68',
     'children' => array(
       0 => 'field_current_sam_supp_info',
     ),
@@ -3996,7 +3993,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Details',
-    'weight' => '47',
+    'weight' => '48',
     'children' => array(
       0 => 'field_recruitement_supp_info',
     ),
@@ -4058,7 +4055,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Details',
-    'weight' => '44',
+    'weight' => '45',
     'children' => array(
       0 => 'field_partcipant_sel_supp_info',
     ),
@@ -4120,7 +4117,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_status';
   $field_group->data = array(
     'label' => 'Status Details',
-    'weight' => '68',
+    'weight' => '69',
     'children' => array(
       0 => 'field_status_supp_info',
     ),
@@ -4219,14 +4216,15 @@ function mica_studies_field_group_info() {
       1 => 'field_age_min',
       2 => 'field_country',
       3 => 'field_ethnic_origin',
-      4 => 'field_health_status',
-      5 => 'field_recruitment_other',
-      6 => 'field_recruitment_procedures',
-      7 => 'field_select_criteria',
-      8 => 'field_selection_others_sp',
-      9 => 'field_territory',
-      10 => 'group_more_recruitment_proc',
-      11 => 'group_more_selection',
+      4 => 'field_gender',
+      5 => 'field_health_status',
+      6 => 'field_recruitment_other',
+      7 => 'field_recruitment_procedures',
+      8 => 'field_select_criteria',
+      9 => 'field_selection_others_sp',
+      10 => 'field_territory',
+      11 => 'group_more_recruitment_proc',
+      12 => 'group_more_selection',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
