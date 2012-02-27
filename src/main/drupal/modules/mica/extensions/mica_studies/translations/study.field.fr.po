@@ -1755,8 +1755,8 @@ msgctxt "field_data_sources:#allowed_values:health_databases"
 msgid "Electronic health databases (death or hospitalization registries, etc.)"
 msgstr "Bases de données électroniques de santé (Décès, hospitalisation, etc.)"
 
-#: field:field_data_sources:#allowed_values:genealogical_recorde
-msgctxt "field_data_sources:#allowed_values:genealogical_recorde"
+#: field:field_data_sources:#allowed_values:genealogical_records
+msgctxt "field_data_sources:#allowed_values:genealogical_records"
 msgid "Genealogical records"
 msgstr "Registres généalogiques"
 
