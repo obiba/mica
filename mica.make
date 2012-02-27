@@ -37,7 +37,7 @@ projects[auto_nodetitle][type] = module
 
 projects[] = advanced_help
 
-projects[calendar][version] = 3.0-rc1
+projects[calendar][version] = 3.0
 projects[calendar][type] = module
 
 projects[cck_select_other][version] = 1.0
@@ -65,7 +65,7 @@ projects[ctools][download][type] = git
 projects[ctools][download][url] = http://git.drupal.org/project/ctools.git
 projects[ctools][download][revision] = dd65335ef5b823702ea5f1688a3000b09a04a739
 
-projects[date][version] = 2.1
+projects[date][version] = 2.2
 projects[date][type] = module
 
 projects[defaultcontent][version] = 1.0-alpha5
@@ -83,7 +83,7 @@ projects[entity][version] = 1.0-rc1
 projects[entity][type] = module
 projects[entity][patch][1344056] = http://drupal.org/files/1344056--node-status-1.patch
 
-projects[facetapi][version] = 1.0-rc3
+projects[facetapi][version] = 1.0-rc4
 projects[facetapi][type] = module
 
 projects[] = examples
@@ -118,7 +118,7 @@ projects[forum_access][type] = module
 projects[google_fonts][version] = 2.3
 projects[google_fonts][type] = module
 
-projects[http_client][version] = 2.2
+projects[http_client][version] = 2.3
 projects[http_client][type] = module
 
 projects[image_url_formatter][version] = 1.0-rc1
@@ -197,7 +197,7 @@ projects[search_api_ranges][type] = module
 projects[search_api_ranges][download][type] = git
 projects[search_api_ranges][download][url] = http://git.drupal.org/project/search_api_ranges.git
 projects[search_api_ranges][download][revision] = fe3b59f9c0206ac822c4e6474f8715fc1c2026a5
-projects[search_api_ranges][patch][1450772] = http://drupal.org/files/config-for-no-slider-no-commit-on-change_0.patch
+projects[search_api_ranges][patch][1450772] = http://drupal.org/files/force-numeric-and-config-for-no-slider-no-commit-on-change-1450772-1_1.patch
 
 projects[search_api_solr][type] = module
 projects[search_api_solr][download][type] = git
