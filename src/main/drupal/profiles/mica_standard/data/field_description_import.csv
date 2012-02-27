@@ -1,5 +1,4 @@
 "title";"body";"field_original_field_label";"field_original_field_name";"field_bundle_label";"field_bundle";"field_value_type";"field_categories";"field_repeatable"
-"Study » Website";"What is the Web address where information on the study is made available?";"Website";"field_website";"Study";"study";"TEXT";"";"0"
 "Study » Territory";"";"Territory";"field_territory";"Study";"study";"TEXT";"";"0"
 "Study » Target number of participants supplementary information";"";"Target number of participants supplementary information";"field_target_nb_supp_info";"Study";"study";"TEXT";"";"0"
 "Study » Target number of biological samples supplementary information";"";"Target number of biological samples supplementary information";"field_samples_supp_info";"Study";"study";"TEXT";"";"0"
