@@ -579,8 +579,16 @@ h1.page-title,
   padding-bottom: 0;
   border-bottom: none;
 }
-.node .field-label-above .field-items {
+.node .field-label-above .field-items,
+.panel-pane .field-label-above .field-items,
+.panel-pane.pane-custom .pane-content {
   margin-left: 20px;
+}
+.panel-pane.pane-custom .pane-title {
+  font-size: 100%;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .node .links-wrapper {
   margin: 4px 0;
