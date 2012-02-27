@@ -2539,6 +2539,11 @@ function mica_studies_views_default_views() {
 
 This Mica study catalogue comes with an advanced query tool using user-friendly facets <br/><br/>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
+  $handler->display->display_options['header']['result']['empty'] = FALSE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -2685,6 +2690,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     t('This page displays the list of the consortium\'s studies. Each study is described in a same standard way that can be easily customized to reflect consortium specificities. However, Mica suggests by default a list of important study characteristics that should be considered if there is an aim for the consortium to participate in data harmonization projects with other consortia or studies. 
 
 This Mica study catalogue comes with an advanced query tool using user-friendly facets <br/><br/>'),
+    t('Displaying @start - @end of @total'),
     t('empty_studies'),
     t('No study found.'),
     t('Name'),
