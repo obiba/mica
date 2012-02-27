@@ -359,14 +359,14 @@ function _mica_studies_study_view_selection_criteria(&$node, $view_mode, $langco
         if (!empty($age_min)) {
           $age_items['age_min'] = $node->content['field_age_min']['#items'][0];
           $age_markup .= t('minimum') . ' ' . $node->content['field_age_min'][0]['#markup'];
-          $node->content['field_age_min']['#access'] = FALSE;
         }
         if (!empty($age_max)) {
           if (!empty($age_min)) $age_markup .= ', ';
           $age_items['age_max'] = $node->content['field_age_max']['#items'][0];
           $age_markup .= t('maximum') . ' ' . $node->content['field_age_max'][0]['#markup'];
-          $node->content['field_age_max']['#access'] = FALSE;
         }
+        $node->content['field_age_max']['#access'] = FALSE;
+        $node->content['field_age_min']['#access'] = FALSE;
         $node->content['field_select_criteria']['#items'][$index] = $age_items;
         $node->content['field_select_criteria'][$index++]['#markup'] = t('Age:') . '<br />&nbsp;&nbsp;&nbsp;&nbsp;'
           . ucfirst($age_markup);
