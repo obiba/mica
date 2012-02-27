@@ -110,7 +110,7 @@ drupal-cache-clear:
 # Mica Build
 #
 mica: mica-install delete-beta-modules
-	cp src/main/drupal/themes/mica_samara/mica.png target/$(micadir)/sites/all/themes/mica_seven/logo.png
+	cp src/main/drupal/themes/mica_samara/mica.png target/$(micadir)/themes/seven/logo.png
 	cp src/main/drupal/themes/mica_samara/favicon.ico target/$(micadir)/misc/favicon.ico
 
 mica-install:
