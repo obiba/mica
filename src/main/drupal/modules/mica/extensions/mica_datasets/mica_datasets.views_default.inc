@@ -286,7 +286,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
   $handler->display->display_options['fields']['field_country']['table'] = 'field_data_field_country';
   $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
-  $handler->display->display_options['fields']['field_country']['label'] = 'Country selection criteria';
   $handler->display->display_options['fields']['field_country']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_country']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_country']['alter']['absolute'] = 0;
@@ -296,6 +295,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_country']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_country']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_country']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_country']['alter']['more_link'] = 0;
   $handler->display->display_options['fields']['field_country']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_country']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_country']['alter']['html'] = 0;
@@ -360,7 +360,7 @@ function mica_datasets_views_default_views() {
     t('Name'),
     t('Study design'),
     t('Target number of participants'),
-    t('Country selection criteria'),
+    t('Country of residence'),
     t('All'),
     t('Page'),
   );

@@ -1100,6 +1100,18 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'custom_dimensions' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1124,6 +1136,24 @@ function mica_datasets_field_default_fields() {
           'settings' => array(),
           'type' => 'node_reference_default',
           'weight' => 6,
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1200,6 +1230,18 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'custom_dimensions' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1224,6 +1266,24 @@ function mica_datasets_field_default_fields() {
           'settings' => array(),
           'type' => 'link_default',
           'weight' => '7',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
