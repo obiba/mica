@@ -60,29 +60,41 @@ function mica_studies_menu() {
 function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   $links = array();
 
-  if ($root_path == 'studies') {
-    if (node_access('create', 'study')) {
-      $node_type = node_type_load('study');
-      $links['add-study'] = array(
+  switch ($root_path) {
+    case 'studies':
+      if (node_access('create', 'study')) {
+        $node_type = node_type_load('study');
+        $links['add-study'] = array(
+          '#theme' => 'menu_local_action',
+          '#link' => array(
+            'title' => t('Add a !name', array('!name' => $node_type->name)),
+            'href' => 'node/add/study',
+          ),
+        );
+      }
+      $links['search-studies'] = array(
+        '#weight' => 30,
         '#theme' => 'menu_local_action',
         '#link' => array(
-          'title' => t('Add a !name', array('!name' => $node_type->name)),
-          'href' => 'node/add/study',
+          'title' => t('<a class="highlight" href="@url">!name</a>',
+            array('!name' => t('Search studies'), '@url' => url('studies-search'))
+          ),
+          'localized_options' => array('html' => TRUE),
         ),
       );
-    }
-  }
-  elseif ($root_path == 'documents') {
-    $links = array();
-    if (node_access('create', 'documents')) {
-      $links['add-documents'] = array(
-        '#theme' => 'menu_local_action',
-        '#link' => array(
-          'title' => t('Add some Documents'),
-          'href' => 'node/add/documents',
-        ),
-      );
-    }
+      break;
+
+    case 'documents':
+      if (node_access('create', 'documents')) {
+        $links['add-documents'] = array(
+          '#theme' => 'menu_local_action',
+          '#link' => array(
+            'title' => t('Add some Documents'),
+            'href' => 'node/add/documents',
+          ),
+        );
+      }
+      break;
   }
 
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
@@ -811,3 +823,4 @@ function mica_studies_block_view_alter(&$data, $block) {
     if ($item === '[all items]') unset($data['content']['active_items']['#items'][$key]);
   }
 }
+
