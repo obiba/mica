@@ -79,6 +79,7 @@ function mica_studies_strongarm() {
     'block-facetapi-RxYzHU2m9IE0Z1ASnUy53wJiuZDDcg8U' => '3',
     'block-facetapi-NbnHMPj12QcHHLgszNymVOLI1Et1Un7U' => '3',
     'block-facetapi-9tdI9sYsuCPhlwlMzIiJkPvaOVk5Y0BF' => '3',
+    'block-facetapi-umiWT4T0ejrdeztb4GMwwnJ00KZEDET4' => '2',
   );
   $export['collapsiblock_settings'] = $strongarm;
 

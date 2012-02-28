@@ -539,6 +539,11 @@ function mica_studies_feeds_importer_default() {
             'target' => 'title',
             'unique' => FALSE,
           ),
+          66 => array(
+            'source' => 'gender',
+            'target' => 'field_gender',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',

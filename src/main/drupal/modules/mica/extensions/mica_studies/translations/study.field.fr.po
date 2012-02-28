@@ -330,8 +330,8 @@ msgctxt "field_select_criteria:study:description"
 msgid "when appropriate, specify the criteria."
 msgstr "Quand approprié, spécifier le critère."
 
-#: field:field_selection_gender:study:label
-msgctxt "field_selection_gender:study:label"
+#: field:field_gender:study:label
+msgctxt "field_gender:study:label"
 msgid "Gender"
 msgstr "Sexe"
 
@@ -1880,13 +1880,13 @@ msgctxt "field_select_criteria:#allowed_values:others"
 msgid "Others"
 msgstr "Autres"
 
-#: field:field_selection_gender:#allowed_values:men
-msgctxt "field_selection_gender:#allowed_values:men"
+#: field:field_gender:#allowed_values:men
+msgctxt "field_gender:#allowed_values:men"
 msgid "Men"
 msgstr "Homme"
 
-#: field:field_selection_gender:#allowed_values:women
-msgctxt "field_selection_gender:#allowed_values:women"
+#: field:field_gender:#allowed_values:women
+msgctxt "field_gender:#allowed_values:women"
 msgid "Women"
 msgstr "Femme"
 
