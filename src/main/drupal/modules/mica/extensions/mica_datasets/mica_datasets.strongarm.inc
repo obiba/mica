@@ -128,7 +128,7 @@ function mica_datasets_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_dataset';
-  $strongarm->value = 'main-menu:510';
+  $strongarm->value = 'main-menu:507';
   $export['menu_parent_dataset'] = $strongarm;
 
   $strongarm = new stdClass;

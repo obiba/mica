@@ -144,14 +144,14 @@ function mica_community_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_event';
-  $strongarm->value = 'main-menu:225';
+  $strongarm->value = 'main-menu:222';
   $export['menu_parent_event'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_publication';
-  $strongarm->value = 'main-menu:504';
+  $strongarm->value = 'main-menu:501';
   $export['menu_parent_publication'] = $strongarm;
 
   $strongarm = new stdClass;
