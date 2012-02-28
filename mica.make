@@ -184,7 +184,12 @@ projects[references][download][type] = git
 projects[references][download][url] = http://git.drupal.org/project/references.git
 projects[references][download][revision] = 311bd497bfb0f9de046d585006a7ef3d9c6c74c8
 
-projects[search_api][version] = 1.0
+projects[search_api][type] = module
+projects[search_api][download][type] = git
+projects[search_api][download][url] = http://git.drupal.org/project/search_api.git
+projects[search_api][download][revision] = bfc5f152b19560089406648617aad4cc42365a2d
+projects[search_api][patch][1363114] = http://drupal.org/files/max_inclusive-1363114-5.patch
+
 projects[search_api][type] = module
 
 projects[search_api_db][version] = 1.0-beta2
