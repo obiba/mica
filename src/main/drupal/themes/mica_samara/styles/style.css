@@ -2247,3 +2247,8 @@ div.block-facetapi a.facetapi-limit-link {
 .field-name-field-logo {
   float: left;
 }
+
+.node-content-inner-view h2.pane-title {
+  font-weight: bold;
+  font-size: 100%;
+}

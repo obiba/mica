@@ -245,9 +245,8 @@ function mica_datasets_field_default_fields() {
         ),
         'default' => array(
           'label' => 'hidden',
-          'module' => 'viewreference',
           'settings' => array(),
-          'type' => 'viewreference_full',
+          'type' => 'hidden',
           'weight' => '1',
         ),
         'teaser' => array(
@@ -399,7 +398,7 @@ function mica_datasets_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',

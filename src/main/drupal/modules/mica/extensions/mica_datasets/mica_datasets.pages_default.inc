@@ -58,17 +58,20 @@ function mica_datasets_default_page_manager_handlers() {
     $pane = new stdClass;
     $pane->pid = 'new-1';
     $pane->panel = 'middle';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:body';
+    $pane->type = 'node_content';
+    $pane->subtype = 'node_content';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'label' => 'hidden',
-      'formatter' => 'text_default',
-      'formatter_settings' => array(),
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
+      'links' => 0,
+      'no_extras' => 0,
+      'override_title' => 1,
       'override_title_text' => '',
+      'identifier' => '',
+      'link' => 0,
+      'leave_node_title' => 0,
+      'build_mode' => 'full',
+      'context' => 'argument_entity_id:node_1',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -117,7 +120,7 @@ function mica_datasets_default_page_manager_handlers() {
     $display->content['new-2'] = $pane;
     $display->panels['middle'][1] = 'new-2';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-1';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $export['node_view_panel_context_4'] = $handler;
 

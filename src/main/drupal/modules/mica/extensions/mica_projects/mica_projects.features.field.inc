@@ -433,9 +433,8 @@ function mica_projects_field_default_fields() {
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'mica_node_reference_field',
           'settings' => array(),
-          'type' => 'node_reference_field_name_link',
+          'type' => 'hidden',
           'weight' => '3',
         ),
         'teaser' => array(
