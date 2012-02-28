@@ -595,6 +595,47 @@ function mica_studies_strongarm() {
           'display' => array(),
         ),
       ),
+      'project' => array(
+        'view_modes' => array(
+          'teaser' => array(
+            'custom_settings' => TRUE,
+          ),
+          'full' => array(
+            'custom_settings' => FALSE,
+          ),
+          'rss' => array(
+            'custom_settings' => FALSE,
+          ),
+          'search_index' => array(
+            'custom_settings' => FALSE,
+          ),
+          'search_result' => array(
+            'custom_settings' => FALSE,
+          ),
+          'banner_area' => array(
+            'custom_settings' => FALSE,
+          ),
+          'left_area' => array(
+            'custom_settings' => FALSE,
+          ),
+          'right_area' => array(
+            'custom_settings' => FALSE,
+          ),
+          'center_area' => array(
+            'custom_settings' => FALSE,
+          ),
+          'footer_area' => array(
+            'custom_settings' => FALSE,
+          ),
+          'token' => array(
+            'custom_settings' => FALSE,
+          ),
+        ),
+        'extra_fields' => array(
+          'form' => array(),
+          'display' => array(),
+        ),
+      ),
     ),
   );
   $export['field_bundle_settings'] = $strongarm;

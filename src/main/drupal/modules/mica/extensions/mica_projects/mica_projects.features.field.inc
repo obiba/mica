@@ -316,7 +316,7 @@ function mica_projects_field_default_fields() {
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
-          'weight' => '2',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -433,10 +433,10 @@ function mica_projects_field_default_fields() {
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference',
+          'module' => 'mica_node_reference_field',
           'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '1',
+          'type' => 'node_reference_field_name_link',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -580,7 +580,7 @@ function mica_projects_field_default_fields() {
           'module' => 'viewreference',
           'settings' => array(),
           'type' => 'viewreference_default',
-          'weight' => '3',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
