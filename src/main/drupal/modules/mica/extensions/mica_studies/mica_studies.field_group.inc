@@ -269,7 +269,7 @@ function mica_studies_field_group_info() {
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'Is access to the following study features to external researchers or third parties provided or foreseen?',
+        'description' => 'Is access to the following study features by external researchers or third parties provided or foreseen?',
       ),
       'formatter' => 'closed',
     ),
