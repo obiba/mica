@@ -2252,3 +2252,13 @@ div.block-facetapi a.facetapi-limit-link {
   font-weight: bold;
   font-size: 100%;
 }
+
+.form-item label {
+  font-weight: bold;
+  vertical-align: middle;
+  font-size: 100%;
+}
+
+label.option {
+  font-weight: normal;
+}
