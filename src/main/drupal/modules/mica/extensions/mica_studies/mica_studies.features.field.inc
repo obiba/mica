@@ -4099,7 +4099,8 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => '',
+          'field_description_body' => 'No spaces allowed',
+          'field_description_label' => 'Current number of participants recruited',
           'field_description_value_type' => 'INTEGER',
         ),
       ),
@@ -4110,7 +4111,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'No spaces allowed',
       'display' => array(
         'banner_area' => array(
           'label' => 'above',
@@ -4440,7 +4441,8 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => '',
+          'field_description_body' => 'Current number of collected biological samples from which DNA could be extracted',
+          'field_description_label' => 'Current number of collected biological samples',
           'field_description_value_type' => 'INTEGER',
         ),
       ),
@@ -4451,7 +4453,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'No spaces allowed',
       'display' => array(
         'banner_area' => array(
           'label' => 'above',
@@ -8254,8 +8256,8 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_label' => 'Headline number of participants with samples',
+          'field_description_body' => 'No spaces allowed',
+          'field_description_label' => 'Target number of participants with samples',
           'field_description_value_type' => 'INTEGER',
         ),
         'field_permissions' => array(
@@ -8273,7 +8275,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'No spaces allowed',
       'display' => array(
         'banner_area' => array(
           'label' => 'above',
@@ -8393,8 +8395,8 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_label' => 'Headline number of participants',
+          'field_description_body' => 'No spaces allowed.',
+          'field_description_label' => 'Target number of participants',
           'field_description_value_type' => 'INTEGER',
         ),
         'field_permissions' => array(
@@ -8412,7 +8414,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'No spaces allowed',
       'display' => array(
         'banner_area' => array(
           'label' => 'above',
@@ -8905,6 +8907,7 @@ function mica_studies_field_default_fields() {
   t('Name of the person authorising the contribution to [SPECIFIC NETWORK]');
   t('No limits in the number of participants');
   t('No limits in the number of samples');
+  t('No spaces allowed');
   t('Other');
   t('Please specify type of tissues');
   t('Please specify what other biological samples');
