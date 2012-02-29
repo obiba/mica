@@ -668,7 +668,7 @@ function _mica_bind_other_specify(&$node, $bindings) {
       if (isset($key)) {
         // get the array index of the key
         foreach ($node->content[$field]['#items'] as $i => $items) {
-          if ($i == $key || $items['value'] == $key) {
+          if ($i === $key || $items['value'] === $key) {
             $index = $i;
             break;
           }
