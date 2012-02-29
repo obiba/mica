@@ -2207,7 +2207,7 @@ function mica_studies_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => '41',
+          'weight' => '39',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -2315,7 +2315,7 @@ function mica_studies_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => '40',
+          'weight' => '38',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -3913,7 +3913,7 @@ function mica_studies_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '42',
+          'weight' => '40',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -5366,7 +5366,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '44',
+          'weight' => '42',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -5688,7 +5688,7 @@ function mica_studies_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '39',
+          'weight' => '37',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -5794,7 +5794,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '45',
+          'weight' => '43',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -6479,7 +6479,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '37',
+          'weight' => '45',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -6911,7 +6911,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '53',
+          'weight' => '48',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -7123,7 +7123,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '52',
+          'weight' => '47',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -7338,7 +7338,7 @@ function mica_studies_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '51',
+          'weight' => '46',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -7870,7 +7870,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '38',
+          'weight' => '44',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8579,7 +8579,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '43',
+          'weight' => '41',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8795,7 +8795,7 @@ function mica_studies_field_default_fields() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 95,
+          'weight' => '95',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8929,9 +8929,9 @@ function mica_studies_field_default_fields() {
   t('Territory or city of residence');
   t('The study targets the recruitment of');
   t('Website');
-  t('What type of sample is collected?');
+  t('What are the biological samples collected?');
   t('What are the participant selection criteria?');
-  t('What are the principal objectives of the study');
+  t('What are the principal objectives of the study?');
   t('What is the study design?');
   t('when appropriate, specify the criteria.');
 
