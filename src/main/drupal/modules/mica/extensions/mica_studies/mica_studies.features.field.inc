@@ -4058,7 +4058,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_current_part_nb_date',
-      'label' => 'In date of',
+      'label' => 'As of',
       'required' => 0,
       'settings' => array(
         'default_value' => 'blank',
@@ -4400,7 +4400,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_current_samples_date',
-      'label' => 'In date of',
+      'label' => 'As of',
       'required' => 0,
       'settings' => array(
         'default_value' => 'blank',
@@ -4961,7 +4961,7 @@ function mica_studies_field_default_fields() {
       'display_label' => 'Study design',
       'entity_type' => 'node',
       'field_name' => 'field_design',
-      'label' => 'What is the design of the study?',
+      'label' => 'What is the study design?',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -7299,7 +7299,7 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           'general_population' => 'General population',
-          'legacy_studies' => 'Participants from legacy studies',
+          'legacy_studies' => 'Participants from existing studies',
           'specific_population' => 'Specific population',
           'other' => 'Other source',
         ),
@@ -7735,7 +7735,7 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 1,
           'field_description_body' => 'when appropriate, specify the criteria.',
-          'field_description_label' => 'Study selection criteria for participants’ selection',
+          'field_description_label' => 'Study inclusion criteria for participants’ selection',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -7796,7 +7796,7 @@ function mica_studies_field_default_fields() {
       'display_label' => 'Selection criteria',
       'entity_type' => 'node',
       'field_name' => 'field_select_criteria',
-      'label' => 'What are the inclusion criteria for participants’ selection?',
+      'label' => 'What are the participant selection criteria?',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -8367,7 +8367,7 @@ function mica_studies_field_default_fields() {
         'max' => '',
         'min' => '0',
         'prefix' => '',
-        'suffix' => ' Headline number of participants',
+        'suffix' => ' participants',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -8506,7 +8506,7 @@ function mica_studies_field_default_fields() {
         'max' => '',
         'min' => '0',
         'prefix' => '',
-        'suffix' => ' Headline number of participants',
+        'suffix' => ' participants',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -8862,6 +8862,7 @@ function mica_studies_field_default_fields() {
   t('Acronym');
   t('Acronym of the study if applicable.');
   t('Address');
+  t('As of');
   t('Authorising date');
   t('Authorization Maelstrom');
   t('Authorization Specific');
@@ -8898,7 +8899,6 @@ function mica_studies_field_default_fields() {
   t('If needed, supplementary information about study design');
   t('If needed, supplementary information about target number of biological samples');
   t('If needed, supplementary information about target number of participants');
-  t('In date of');
   t('Institution name');
   t('Investigators');
   t('Logo');
@@ -8930,9 +8930,9 @@ function mica_studies_field_default_fields() {
   t('The study targets the recruitment of');
   t('Website');
   t('What are the biological samples collected?');
-  t('What are the inclusion criteria for participants’ selection?');
-  t('What are the principal objectives of the study?');
-  t('What is the design of the study?');
+  t('What are the participant selection criteria?');
+  t('What are the principal objectives of the study');
+  t('What is the study design?');
   t('when appropriate, specify the criteria.');
 
   return $fields;
