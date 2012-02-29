@@ -503,6 +503,7 @@ margin-bottom: 0px;
 .node-unpublished {
   padding-left: 5px;
   padding-right: 5px;
+  background-color:#fff !important;
 }
 .term-listing-heading + .node {
   margin-top: 0;
