@@ -6267,7 +6267,7 @@ function mica_studies_field_default_fields() {
           'weight' => '18',
         ),
         'left_area' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -6376,7 +6376,7 @@ function mica_studies_field_default_fields() {
           'weight' => '21',
         ),
         'left_area' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
