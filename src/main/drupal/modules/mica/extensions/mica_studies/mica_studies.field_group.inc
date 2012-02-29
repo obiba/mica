@@ -2007,7 +2007,7 @@ function mica_studies_field_group_info() {
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'What are the stage and timeline of the study?',
+        'description' => 'What are the stages and timelines of the study?',
       ),
       'formatter' => 'collapsible',
     ),

@@ -133,7 +133,7 @@ msgstr "nombre global de participants"
 msgid "Is access to the following study features to external researchers or third parties provided or foreseen?"
 msgstr "L'accès aux caractéristiques suivantes de l'étude à des chercheurs externes ou à des tiers est-il fourni ou prévu?"
 
-msgid "What are the stage and timeline of the study?"
+msgid "What are the stages and timelines of the study?"
 msgstr "Quelles sont les étapes ou la chronologie de l'étude?"
 
 msgid "If relevant, please provide the bibliographic citations (i.e. published sources such as journal article, web site, or report) which should be used to refer to your study."
