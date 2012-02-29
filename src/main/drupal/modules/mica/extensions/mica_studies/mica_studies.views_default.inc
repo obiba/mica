@@ -2094,6 +2094,31 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['status']['empty_zero'] = 0;
   $handler->display->display_options['fields']['status']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['status']['not'] = 0;
+  /* Field: Content: Selection Criteria: Gender */
+  $handler->display->display_options['fields']['field_gender']['id'] = 'field_gender';
+  $handler->display->display_options['fields']['field_gender']['table'] = 'field_data_field_gender';
+  $handler->display->display_options['fields']['field_gender']['field'] = 'field_gender';
+  $handler->display->display_options['fields']['field_gender']['label'] = 'gender';
+  $handler->display->display_options['fields']['field_gender']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_gender']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_gender']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_gender']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_gender']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_gender']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_gender']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_gender']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_gender']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_gender']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_gender']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_gender']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_gender']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_gender']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_gender']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_gender']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_gender']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_gender']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_gender']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_gender']['field_api_classes'] = 0;
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -2205,6 +2230,7 @@ function mica_studies_views_default_views() {
     t('logo'),
     t('opal'),
     t('published'),
+    t('gender'),
     t('Data export'),
   );
   $export['csv_study_export'] = $view;
