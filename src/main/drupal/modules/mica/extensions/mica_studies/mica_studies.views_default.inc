@@ -766,7 +766,7 @@ function mica_studies_views_default_views() {
     'multiple_to' => '',
   );
   $handler->display->display_options['fields']['field_authorising_date_m']['field_api_classes'] = 0;
-  /* Field: Content: What is the design of the study */
+  /* Field: Content: What is the design of the study? */
   $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['table'] = 'field_data_field_design';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
@@ -1201,7 +1201,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_current_sam_supp_info']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_current_sam_supp_info']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_current_sam_supp_info']['field_api_classes'] = 0;
-  /* Field: Content: What are the inclusion criteria for participants’ selection */
+  /* Field: Content: What are the inclusion criteria for participants’ selection? */
   $handler->display->display_options['fields']['field_select_criteria']['id'] = 'field_select_criteria';
   $handler->display->display_options['fields']['field_select_criteria']['table'] = 'field_data_field_select_criteria';
   $handler->display->display_options['fields']['field_select_criteria']['field'] = 'field_select_criteria';
@@ -1336,7 +1336,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_territory']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_territory']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_territory']['field_api_classes'] = 0;
-  /* Field: Content: Selection Criteria: Ethnic Origin */
+  /* Field: Content: Ethnic Origin */
   $handler->display->display_options['fields']['field_ethnic_origin']['id'] = 'field_ethnic_origin';
   $handler->display->display_options['fields']['field_ethnic_origin']['table'] = 'field_data_field_ethnic_origin';
   $handler->display->display_options['fields']['field_ethnic_origin']['field'] = 'field_ethnic_origin';
@@ -1364,7 +1364,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_ethnic_origin']['delta_first_last'] = 0;
   $handler->display->display_options['fields']['field_ethnic_origin']['separator'] = ',';
   $handler->display->display_options['fields']['field_ethnic_origin']['field_api_classes'] = 0;
-  /* Field: Content: Selection Criteria: Health Status */
+  /* Field: Content: Health Status */
   $handler->display->display_options['fields']['field_health_status']['id'] = 'field_health_status';
   $handler->display->display_options['fields']['field_health_status']['table'] = 'field_data_field_health_status';
   $handler->display->display_options['fields']['field_health_status']['field'] = 'field_health_status';
@@ -1513,7 +1513,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_recruitement_supp_info']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_recruitement_supp_info']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_recruitement_supp_info']['field_api_classes'] = 0;
-  /* Field: Content: Data Sources */
+  /* Field: Content: Data sources */
   $handler->display->display_options['fields']['field_data_sources']['id'] = 'field_data_sources';
   $handler->display->display_options['fields']['field_data_sources']['table'] = 'field_data_field_data_sources';
   $handler->display->display_options['fields']['field_data_sources']['field'] = 'field_data_sources';
@@ -2625,7 +2625,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_design_other_sp']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_design_other_sp']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_design_other_sp']['field_api_classes'] = 0;
-  /* Field: Content: What is the design of the study */
+  /* Field: Content: What is the design of the study? */
   $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['table'] = 'field_data_field_design';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
@@ -2837,7 +2837,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_design_other_sp']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_design_other_sp']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_design_other_sp']['field_api_classes'] = 0;
-  /* Field: Indexed Node: What is the design of the study */
+  /* Field: Indexed Node: What is the design of the study? */
   $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['table'] = 'search_api_index_studies_index';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';

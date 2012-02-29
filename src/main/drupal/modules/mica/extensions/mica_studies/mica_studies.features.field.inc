@@ -1297,6 +1297,7 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
+          'field_description_label' => '',
           'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
@@ -1510,6 +1511,7 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
+          'field_description_label' => '',
           'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
@@ -1603,7 +1605,7 @@ function mica_studies_field_default_fields() {
       'display_label' => 'Objectives',
       'entity_type' => 'node',
       'field_name' => 'body',
-      'label' => 'What are the principal objectives of the study',
+      'label' => 'What are the principal objectives of the study?',
       'required' => 1,
       'settings' => array(
         'display_summary' => 1,
@@ -4736,7 +4738,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_data_sources',
-      'label' => 'Data Sources',
+      'label' => 'Data sources',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -4959,7 +4961,7 @@ function mica_studies_field_default_fields() {
       'display_label' => 'Study design',
       'entity_type' => 'node',
       'field_name' => 'field_design',
-      'label' => 'What is the design of the study',
+      'label' => 'What is the design of the study?',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -7794,7 +7796,7 @@ function mica_studies_field_default_fields() {
       'display_label' => 'Selection criteria',
       'entity_type' => 'node',
       'field_name' => 'field_select_criteria',
-      'label' => 'What are the inclusion criteria for participants’ selection',
+      'label' => 'What are the inclusion criteria for participants’ selection?',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -8873,7 +8875,7 @@ function mica_studies_field_default_fields() {
   t('Country');
   t('Country of residence');
   t('Data (questionnaire-derived, measured…)');
-  t('Data Sources');
+  t('Data sources');
   t('Documents');
   t('Email');
   t('End year');
@@ -8928,9 +8930,9 @@ function mica_studies_field_default_fields() {
   t('The study targets the recruitment of');
   t('Website');
   t('What are the biological samples collected?');
-  t('What are the inclusion criteria for participants’ selection');
-  t('What are the principal objectives of the study');
-  t('What is the design of the study');
+  t('What are the inclusion criteria for participants’ selection?');
+  t('What are the principal objectives of the study?');
+  t('What is the design of the study?');
   t('when appropriate, specify the criteria.');
 
   return $fields;
