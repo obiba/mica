@@ -3307,7 +3307,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'What are the biological samples collected?',
+      'description' => 'What type of sample is collected?',
       'display' => array(
         'banner_area' => array(
           'label' => 'above',
@@ -8929,7 +8929,7 @@ function mica_studies_field_default_fields() {
   t('Territory or city of residence');
   t('The study targets the recruitment of');
   t('Website');
-  t('What are the biological samples collected?');
+  t('What type of sample is collected?');
   t('What are the participant selection criteria?');
   t('What are the principal objectives of the study');
   t('What is the study design?');

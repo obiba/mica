@@ -122,7 +122,7 @@ msgstr "Échantillons biologiques"
 
 #: field:field_bio_samples_management:study:description
 msgctxt "field_bio_samples_management:study:description"
-msgid "What are the biological samples collected?"
+msgid "What type of sample is collected?"
 msgstr "Quels types d’échantillons sont recueillis ?"
 
 #: field:field_complete_name:study:label
@@ -1988,7 +1988,7 @@ msgstr "Femme"
 #~ msgstr "Type de valeur"
 #~ msgid "Website"
 #~ msgstr "Site Web"
-#~ msgid "What are the biological samples collected?"
+#~ msgid "What type of sample is collected?"
 #~ msgstr "Quels types d’échantillons sont recueillis ?"
 #~ msgid "What are the inclusion criteria for participants’ selection"
 #~ msgstr ""
