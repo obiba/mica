@@ -2245,7 +2245,7 @@ div.block-facetapi a.facetapi-limit-link {
   margin-left: 20px;
 }
 
-.field-name-field-logo {
+body.node-type-study .field-name-field-logo {
   float: left;
 }
 
