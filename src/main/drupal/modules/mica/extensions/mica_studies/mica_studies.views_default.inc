@@ -766,7 +766,7 @@ function mica_studies_views_default_views() {
     'multiple_to' => '',
   );
   $handler->display->display_options['fields']['field_authorising_date_m']['field_api_classes'] = 0;
-  /* Field: Content: What is the design of the study? */
+  /* Field: Content: What is the study design? */
   $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['table'] = 'field_data_field_design';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
@@ -1068,7 +1068,7 @@ function mica_studies_views_default_views() {
     'prefix_suffix' => 0,
   );
   $handler->display->display_options['fields']['field_current_participants_nb']['field_api_classes'] = 0;
-  /* Field: Content: In date of */
+  /* Field: Content: On */
   $handler->display->display_options['fields']['field_current_part_nb_date']['id'] = 'field_current_part_nb_date';
   $handler->display->display_options['fields']['field_current_part_nb_date']['table'] = 'field_data_field_current_part_nb_date';
   $handler->display->display_options['fields']['field_current_part_nb_date']['field'] = 'field_current_part_nb_date';
@@ -1148,7 +1148,7 @@ function mica_studies_views_default_views() {
     'prefix_suffix' => 0,
   );
   $handler->display->display_options['fields']['field_current_samples_nb']['field_api_classes'] = 0;
-  /* Field: Content: In date of */
+  /* Field: Content: On */
   $handler->display->display_options['fields']['field_current_samples_date']['id'] = 'field_current_samples_date';
   $handler->display->display_options['fields']['field_current_samples_date']['table'] = 'field_data_field_current_samples_date';
   $handler->display->display_options['fields']['field_current_samples_date']['field'] = 'field_current_samples_date';
@@ -2625,7 +2625,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_design_other_sp']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_design_other_sp']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_design_other_sp']['field_api_classes'] = 0;
-  /* Field: Content: What is the design of the study? */
+  /* Field: Content: What is the study design? */
   $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['table'] = 'field_data_field_design';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
@@ -2837,7 +2837,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_design_other_sp']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_design_other_sp']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_design_other_sp']['field_api_classes'] = 0;
-  /* Field: Indexed Node: What is the design of the study? */
+  /* Field: Indexed Node: What is the study design? */
   $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['table'] = 'search_api_index_studies_index';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';

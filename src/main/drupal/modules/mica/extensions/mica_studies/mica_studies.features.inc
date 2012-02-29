@@ -201,12 +201,7 @@ function mica_studies_default_search_api_index() {
           "type" : "list\\u003Cstring\\u003E",
           "boost" : "1.0"
         },
-        "field_current_part_nb_date" : {
-          "name" : "In date of",
-          "indexed" : true,
-          "type" : "date",
-          "boost" : "1.0"
-        },
+        "field_current_part_nb_date" : { "name" : "On", "indexed" : true, "type" : "date", "boost" : "1.0" },
         "field_current_participants_nb" : {
           "name" : "How many people have joined the study?",
           "indexed" : true,
@@ -219,12 +214,7 @@ function mica_studies_default_search_api_index() {
           "type" : "text",
           "boost" : "1.0"
         },
-        "field_current_samples_date" : {
-          "name" : "In date of",
-          "indexed" : true,
-          "type" : "date",
-          "boost" : "1.0"
-        },
+        "field_current_samples_date" : { "name" : "On", "indexed" : true, "type" : "date", "boost" : "1.0" },
         "field_current_samples_nb" : {
           "name" : "For how many people have biological samples been collected?",
           "indexed" : true,
@@ -250,7 +240,7 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_design" : {
-          "name" : "What is the design of the study?",
+          "name" : "What is the study design?",
           "indexed" : true,
           "type" : "list\\u003Cstring\\u003E",
           "boost" : "1.0"

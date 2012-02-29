@@ -1297,7 +1297,6 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => '',
           'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
@@ -1511,7 +1510,6 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => '',
           'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
@@ -3973,10 +3971,13 @@ function mica_studies_field_default_fields() {
       'indexes' => array(),
       'module' => 'date',
       'settings' => array(
+        'cache_count' => '4',
+        'cache_enabled' => 0,
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description_label' => 'Date of current number of participants recruited at baseline',
+          'field_description_value_type' => 'DATE',
         ),
         'granularity' => array(
           'day' => 0,
@@ -4058,7 +4059,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_current_part_nb_date',
-      'label' => 'As of',
+      'label' => 'On',
       'required' => 0,
       'settings' => array(
         'default_value' => 'blank',
@@ -4315,10 +4316,13 @@ function mica_studies_field_default_fields() {
       'indexes' => array(),
       'module' => 'date',
       'settings' => array(
+        'cache_count' => '4',
+        'cache_enabled' => 0,
         'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description' => 1,
+          'field_description_body' => 'Date of current number of collected biological samples from which DNA could be extracted',
+          'field_description_label' => 'Date of current number of collected biological samples',
+          'field_description_value_type' => 'DATE',
         ),
         'granularity' => array(
           'day' => 0,
@@ -4400,7 +4404,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_current_samples_date',
-      'label' => 'As of',
+      'label' => 'On',
       'required' => 0,
       'settings' => array(
         'default_value' => 'blank',
@@ -8258,7 +8262,7 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => 'No spaces allowed',
+          'field_description_body' => '',
           'field_description_label' => 'Target number of participants with samples',
           'field_description_value_type' => 'INTEGER',
         ),
@@ -8277,7 +8281,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'No spaces allowed',
+      'description' => '',
       'display' => array(
         'banner_area' => array(
           'label' => 'above',
@@ -8397,7 +8401,7 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => 'No spaces allowed.',
+          'field_description_body' => '',
           'field_description_label' => 'Target number of participants',
           'field_description_value_type' => 'INTEGER',
         ),
@@ -8416,7 +8420,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'No spaces allowed',
+      'description' => '',
       'display' => array(
         'banner_area' => array(
           'label' => 'above',
@@ -8862,7 +8866,6 @@ function mica_studies_field_default_fields() {
   t('Acronym');
   t('Acronym of the study if applicable.');
   t('Address');
-  t('As of');
   t('Authorising date');
   t('Authorization Maelstrom');
   t('Authorization Specific');
@@ -8899,7 +8902,6 @@ function mica_studies_field_default_fields() {
   t('If needed, supplementary information about study design');
   t('If needed, supplementary information about target number of biological samples');
   t('If needed, supplementary information about target number of participants');
-  t('In date of');
   t('Institution name');
   t('Investigators');
   t('Logo');
@@ -8911,6 +8913,7 @@ function mica_studies_field_default_fields() {
   t('No limits in the number of participants');
   t('No limits in the number of samples');
   t('No spaces allowed');
+  t('On');
   t('Other');
   t('Please specify type of tissues');
   t('Please specify what other biological samples');
@@ -8930,10 +8933,10 @@ function mica_studies_field_default_fields() {
   t('Territory or city of residence');
   t('The study targets the recruitment of');
   t('Website');
-  t('What are the biological samples collected?');
-  t('What is the selection criteria for participants?');
   t('What are the principal objectives of the study?');
+  t('What is the selection criteria for participants?');
   t('What is the study design?');
+  t('What type of sample is collected?');
   t('when appropriate, specify the criteria.');
 
   return $fields;
