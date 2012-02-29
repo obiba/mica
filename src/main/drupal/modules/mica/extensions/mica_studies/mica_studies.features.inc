@@ -389,7 +389,7 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_select_criteria" : {
-          "name" : "What are the inclusion criteria for participants\\u2019 selection?",
+          "name" : "What is the selection criteria for participants?",
           "indexed" : true,
           "type" : "list\\u003Cstring\\u003E",
           "boost" : "1.0"

@@ -1201,7 +1201,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_current_sam_supp_info']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_current_sam_supp_info']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_current_sam_supp_info']['field_api_classes'] = 0;
-  /* Field: Content: What are the inclusion criteria for participants’ selection? */
+  /* Field: Content: What is the selection criteria for participants? */
   $handler->display->display_options['fields']['field_select_criteria']['id'] = 'field_select_criteria';
   $handler->display->display_options['fields']['field_select_criteria']['table'] = 'field_data_field_select_criteria';
   $handler->display->display_options['fields']['field_select_criteria']['field'] = 'field_select_criteria';

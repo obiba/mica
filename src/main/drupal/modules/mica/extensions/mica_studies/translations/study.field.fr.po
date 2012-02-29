@@ -322,7 +322,7 @@ msgstr "Information supplémentaire sur le nombre d'échantillons biologiques vi
 
 #: field:field_select_criteria:study:label
 msgctxt "field_select_criteria:study:label"
-msgid "What are the inclusion criteria for participants’ selection"
+msgid "What is the selection criteria for participants?"
 msgstr "Quels sont les critères d’inclusion pour la sélection des participants"
 
 #: field:field_select_criteria:study:description
@@ -1990,7 +1990,7 @@ msgstr "Femme"
 #~ msgstr "Site Web"
 #~ msgid "What type of sample is collected?"
 #~ msgstr "Quels types d’échantillons sont recueillis ?"
-#~ msgid "What are the inclusion criteria for participants’ selection"
+#~ msgid "What is the selection criteria for participants?"
 #~ msgstr ""
 #~ "Quels sont les critères d’inclusion pour la sélection des participants"
 #~ msgid "What are the principal objectives of the study?"

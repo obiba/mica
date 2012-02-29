@@ -7735,7 +7735,7 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 1,
           'field_description_body' => 'when appropriate, specify the criteria.',
-          'field_description_label' => 'Study inclusion criteria for participants’ selection',
+          'field_description_label' => 'Selection criteria for participants',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -7796,7 +7796,7 @@ function mica_studies_field_default_fields() {
       'display_label' => 'Selection criteria',
       'entity_type' => 'node',
       'field_name' => 'field_select_criteria',
-      'label' => 'What are the participant selection criteria?',
+      'label' => 'What is the selection criteria for participants?',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -8930,7 +8930,7 @@ function mica_studies_field_default_fields() {
   t('The study targets the recruitment of');
   t('Website');
   t('What are the biological samples collected?');
-  t('What are the participant selection criteria?');
+  t('What is the selection criteria for participants?');
   t('What are the principal objectives of the study?');
   t('What is the study design?');
   t('when appropriate, specify the criteria.');
