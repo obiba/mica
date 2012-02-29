@@ -1336,7 +1336,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_territory']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_territory']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_territory']['field_api_classes'] = 0;
-  /* Field: Content: Selection Criteria: Ethnic Origin */
+  /* Field: Content: Ethnic Origin */
   $handler->display->display_options['fields']['field_ethnic_origin']['id'] = 'field_ethnic_origin';
   $handler->display->display_options['fields']['field_ethnic_origin']['table'] = 'field_data_field_ethnic_origin';
   $handler->display->display_options['fields']['field_ethnic_origin']['field'] = 'field_ethnic_origin';
@@ -1364,7 +1364,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_ethnic_origin']['delta_first_last'] = 0;
   $handler->display->display_options['fields']['field_ethnic_origin']['separator'] = ',';
   $handler->display->display_options['fields']['field_ethnic_origin']['field_api_classes'] = 0;
-  /* Field: Content: Selection Criteria: Health Status */
+  /* Field: Content: Health Status */
   $handler->display->display_options['fields']['field_health_status']['id'] = 'field_health_status';
   $handler->display->display_options['fields']['field_health_status']['table'] = 'field_data_field_health_status';
   $handler->display->display_options['fields']['field_health_status']['field'] = 'field_health_status';
@@ -2094,7 +2094,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['status']['empty_zero'] = 0;
   $handler->display->display_options['fields']['status']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Field: Content: Selection Criteria: Gender */
+  /* Field: Content: Gender */
   $handler->display->display_options['fields']['field_gender']['id'] = 'field_gender';
   $handler->display->display_options['fields']['field_gender']['table'] = 'field_data_field_gender';
   $handler->display->display_options['fields']['field_gender']['field'] = 'field_gender';

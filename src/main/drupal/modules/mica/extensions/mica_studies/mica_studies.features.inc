@@ -268,7 +268,7 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_ethnic_origin" : {
-          "name" : "Selection Criteria: Ethnic Origin",
+          "name" : "Ethnic Origin",
           "indexed" : true,
           "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"
@@ -286,13 +286,13 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_gender" : {
-          "name" : "Selection Criteria: Gender",
+          "name" : "Gender",
           "indexed" : true,
           "type" : "string",
           "boost" : "1.0"
         },
         "field_health_status" : {
-          "name" : "Selection Criteria: Health Status",
+          "name" : "Health Status",
           "indexed" : true,
           "type" : "list\\u003Ctext\\u003E",
           "boost" : "1.0"

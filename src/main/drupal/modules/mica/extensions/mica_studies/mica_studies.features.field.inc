@@ -5389,10 +5389,10 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Ethnic Origin',
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_ethnic_origin',
-      'label' => 'Selection Criteria: Ethnic Origin',
+      'label' => 'Ethnic Origin',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -5651,9 +5651,9 @@ function mica_studies_field_default_fields() {
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
-          'field_description_label' => '',
+          'field_description_label' => 'Gender',
           'field_description_value_type' => 'TEXT',
         ),
       ),
@@ -5714,7 +5714,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_gender',
-      'label' => 'Selection Criteria: Gender',
+      'label' => 'Gender',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -5817,10 +5817,10 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Health Status',
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_health_status',
-      'label' => 'Selection Criteria: Health Status',
+      'label' => 'Health Status',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -8877,8 +8877,11 @@ function mica_studies_field_default_fields() {
   t('End year');
   t('Enter the Contact full name. You will be able to edit these Contacts once the Study has been saved.');
   t('Enter the Investigator full name. You will be able to edit these Investigators once the Study will be saved.');
+  t('Ethnic Origin');
   t('Files');
   t('For how many people have biological samples been collected?');
+  t('Gender');
+  t('Health Status');
   t('How is information obtained? (answer by yes or no, and specify if the information collection is cross sectional or if it involves repeated measurements)');
   t('How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?');
   t('How many people have joined the study?');
@@ -8913,9 +8916,6 @@ function mica_studies_field_default_fields() {
   t('Please specify what study feature');
   t('Postal Code');
   t('Pubmed Id');
-  t('Selection Criteria: Ethnic Origin');
-  t('Selection Criteria: Gender');
-  t('Selection Criteria: Health Status');
   t('Specify the sources of recruitment');
   t('Start year');
   t('State/Province');

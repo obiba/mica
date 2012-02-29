@@ -65,6 +65,7 @@ function mica_field_description_form_field_ui_field_edit_form_alter(&$form, $for
     $unsupported_types = array(
     	'field_collection',
     	'name',
+    	'link_field',
     	'viewreference',
     	'node_reference',
     );
