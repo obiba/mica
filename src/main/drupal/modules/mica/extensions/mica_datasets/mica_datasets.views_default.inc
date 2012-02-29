@@ -227,12 +227,39 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: Please specify what other design */
+  $handler->display->display_options['fields']['field_design_other_sp']['id'] = 'field_design_other_sp';
+  $handler->display->display_options['fields']['field_design_other_sp']['table'] = 'field_data_field_design_other_sp';
+  $handler->display->display_options['fields']['field_design_other_sp']['field'] = 'field_design_other_sp';
+  $handler->display->display_options['fields']['field_design_other_sp']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_design_other_sp']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_design_other_sp']['alter']['text'] = '([field_design_other_sp])';
+  $handler->display->display_options['fields']['field_design_other_sp']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_design_other_sp']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_design_other_sp']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_design_other_sp']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_design_other_sp']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_design_other_sp']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_design_other_sp']['alter']['max_length'] = '60';
+  $handler->display->display_options['fields']['field_design_other_sp']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_design_other_sp']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_design_other_sp']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_design_other_sp']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_design_other_sp']['alter']['trim'] = 1;
+  $handler->display->display_options['fields']['field_design_other_sp']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_design_other_sp']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_design_other_sp']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_design_other_sp']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_design_other_sp']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_design_other_sp']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_design_other_sp']['field_api_classes'] = 0;
   /* Field: Content: What is the design of the study */
   $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['table'] = 'field_data_field_design';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['label'] = 'Study design';
-  $handler->display->display_options['fields']['field_design']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_design']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_design']['alter']['text'] = '[field_design] [field_design_other_sp] ';
   $handler->display->display_options['fields']['field_design']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['external'] = 0;
@@ -358,7 +385,10 @@ function mica_datasets_views_default_views() {
     t('empty_dataset_studies'),
     t('No studies found.'),
     t('Name'),
+    t('Please specify what other design'),
+    t('([field_design_other_sp])'),
     t('Study design'),
+    t('[field_design] [field_design_other_sp] '),
     t('Target number of participants'),
     t('Country of residence'),
     t('All'),
