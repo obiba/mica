@@ -253,12 +253,12 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_design_other_sp']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_design_other_sp']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_design_other_sp']['field_api_classes'] = 0;
-  /* Field: Content: What is the design of the study */
+  /* Field: Content: What is the study design? */
   $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['table'] = 'field_data_field_design';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['label'] = 'Study design';
-  $handler->display->display_options['fields']['field_design']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_design']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['text'] = '[field_design] [field_design_other_sp] ';
   $handler->display->display_options['fields']['field_design']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['absolute'] = 0;

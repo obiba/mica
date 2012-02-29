@@ -2630,7 +2630,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_design']['table'] = 'field_data_field_design';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['label'] = 'Study design';
-  $handler->display->display_options['fields']['field_design']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_design']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['text'] = '[field_design] [field_design_other_sp]';
   $handler->display->display_options['fields']['field_design']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['absolute'] = 0;
@@ -2842,7 +2842,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_design']['table'] = 'search_api_index_studies_index';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['label'] = 'Study design';
-  $handler->display->display_options['fields']['field_design']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_design']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['text'] = '[field_design] [field_design_other_sp]';
   $handler->display->display_options['fields']['field_design']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_design']['alter']['absolute'] = 0;
