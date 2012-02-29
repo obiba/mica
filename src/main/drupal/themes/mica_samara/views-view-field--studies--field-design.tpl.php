@@ -19,7 +19,8 @@
  * the view is modified.
  */
 
-if (strlen($output) > 0) {
+if (strlen($output) > 0 && isset($row->field_field_design_other_sp)
+  && isset($row->field_field_design_other_sp[0]['rendered']['#markup'])) {
   $output = '';
   foreach ($row->field_field_design as $design) {
     if ($design['raw']['value'] !== 'other') {
@@ -27,10 +28,8 @@ if (strlen($output) > 0) {
       $output .= $design['rendered']['#markup'];
     }
   }
-  if (isset($row->field_field_design_other_sp) && isset($row->field_field_design_other_sp[0]['rendered']['#markup'])) {
-    if (strlen($output) > 0) $output .= ', ';
-    $output .= ucfirst($row->field_field_design_other_sp[0]['rendered']['#markup']);
-  }
+  if (strlen($output) > 0) $output .= ', ';
+  $output .= ucfirst($row->field_field_design_other_sp[0]['rendered']['#markup']);
 }
 
 ?>
