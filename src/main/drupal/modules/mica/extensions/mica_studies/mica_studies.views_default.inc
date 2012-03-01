@@ -2780,6 +2780,48 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'field_design_other_sp' => 'field_design_other_sp',
+    'field_design' => 'field_design',
+    'field_target_number_participants' => 'field_target_number_participants',
+    'field_country' => 'field_country',
+  );
+  $handler->display->display_options['style_options']['default'] = 'title';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_design_other_sp' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_design' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_target_number_participants' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_country' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['override'] = 1;
+  $handler->display->display_options['style_options']['sticky'] = 0;
+  $handler->display->display_options['style_options']['empty_table'] = 0;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -2793,6 +2835,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_studies_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'Name';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
@@ -2802,6 +2845,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['more_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
@@ -2962,7 +3006,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     t('Offset'),
     t('empty_studies'),
     t('No study found.'),
-    t('Title'),
+    t('Name'),
     t('Please specify what other design'),
     t('([field_design_other_sp])'),
     t('Study design'),
