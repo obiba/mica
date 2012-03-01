@@ -160,10 +160,10 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
-    'field_full_name' => 'field_full_name',
+    'field_design_other_sp' => 'field_design_other_sp',
+    'field_design' => 'field_design',
     'field_target_number_participants' => 'field_target_number_participants',
-    'field_study_country' => 'field_study_country',
-    'field_p3g_observatory_link' => 'field_p3g_observatory_link',
+    'field_country' => 'field_country',
   );
   $handler->display->display_options['style_options']['default'] = 'title';
   $handler->display->display_options['style_options']['info'] = array(
@@ -172,28 +172,31 @@ function mica_datasets_views_default_views() {
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
+      'empty_column' => 0,
     ),
-    'field_full_name' => array(
-      'sortable' => 1,
+    'field_design_other_sp' => array(
+      'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_design' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
     ),
     'field_target_number_participants' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
+      'empty_column' => 0,
     ),
-    'field_study_country' => array(
+    'field_country' => array(
       'align' => '',
       'separator' => '',
-    ),
-    'field_p3g_observatory_link' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
+      'empty_column' => 0,
     ),
   );
   $handler->display->display_options['style_options']['override'] = 1;
