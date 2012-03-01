@@ -3,7 +3,7 @@
 # Requires drush 4+ to be installed: http://drush.ws/
 #
 
-version=1.1
+version=1.1-SNAPSHOT
 
 #
 # Mica versions
