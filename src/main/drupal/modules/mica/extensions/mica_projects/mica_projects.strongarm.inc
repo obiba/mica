@@ -167,7 +167,7 @@ function mica_projects_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_teleconference';
-  $strongarm->value = 'main-menu:434';
+  $strongarm->value = 'main-menu:223';
   $export['menu_parent_teleconference'] = $strongarm;
 
   $strongarm = new stdClass;
