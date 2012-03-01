@@ -19,7 +19,7 @@ function mica_devel_menu() {
 
 function _mica_devel_dummy_form() {
 	$form['dummy']['description'] = array(
-  	'#markup' => '<p>' . t('Form exemple to run custom actions') . '</p>',
+  	'#markup' => '<p>' . t('Form example to run custom actions') . '</p>',
 	);
 	$form['dummy']['run'] = array(
     '#type' => 'submit',
