@@ -3,13 +3,13 @@
 # Requires drush 4+ to be installed: http://drush.ws/
 #
 
-version=1.1-SNAPSHOT
+version=1.1
 
 #
 # Mica versions
 #
 # Modules
-mica_version=7.x-1.1-dev
+mica_version=7.x-$(version)
 mica_community_version=$(mica_version)
 mica_core_version=$(mica_version)
 mica_data_access_version=$(mica_version)
@@ -167,7 +167,7 @@ endif
 #
 # Package
 #
-package: all package-prepare debian
+package: package-prepare debian
 	rm -f target/mica-dist*
 	cd target && \
 	tar czf mica-dist-$(deb_version).tar.gz $(micadir) && \

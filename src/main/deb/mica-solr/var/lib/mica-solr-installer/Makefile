@@ -19,9 +19,6 @@ install:
 ifndef oldversion
 	@echo "**** Mica Solr install" 
 	make mica-solr-install
-else
-	@echo "**** Mica Solr upgrade" 
-	make mica-install
 endif
 
 #

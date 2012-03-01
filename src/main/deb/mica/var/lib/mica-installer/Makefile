@@ -34,7 +34,7 @@ drush:
 # Install
 #
 
-install: 
+install:
 ifndef oldversion
 	@echo "**** Mica distribution install" 
 	make mica-dist-install
@@ -53,6 +53,7 @@ mica-dist-install-prepare:
 	mkdir -p /var/cache/mica-installer/target && \
 	cd /var/cache/mica-installer/target && \
 	wget -q http://download.obiba.org/mica/$(stability)/mica-dist-$(deb_version).tar.gz && \
+	#cp ~/workspace/mica/target/mica-dist-$(deb_version).tar.gz mica-dist-$(deb_version).tar.gz && \
 	tar xzf mica-dist-$(deb_version).tar.gz && \
 	mv $(micadir)-$(version) mica && \
 	mv mica /usr/share
@@ -72,28 +73,16 @@ drupal-sites:
 	cp -r /etc/mica/sites/default/files /var/lib/mica/default && \
 	rm -rf /etc/mica/sites/default/files && \
 	ln -s /var/lib/mica/default/files /etc/mica/sites/default/files && \
+	chmod a+w /var/lib/mica/default/files && \
 	if [ ! -e /etc/mica/sites/default/settings.php ]; then \
 		cd /etc/mica/sites/default && \
 		cp default.settings.php settings.php && \
 		chmod a+w settings.php ; \
 	fi
-	
+
 drupal-doc:
 	mv /usr/share/mica/*.txt /usr/share/doc/mica
 	mv /usr/share/doc/mica/robots.txt /usr/share/mica	
-
-
-#
-# Mica install
-#
-	
-mica-install:
-	mkdir -p target	
-	$(call make-sites-install,themes,mica_samara)
-	$(call make-sites-install,modules,mica)
-	$(call make-profiles-install,mica_minimal)
-	$(call make-profiles-install,mica_standard)
-	$(call make-profiles-install,mica_demo)
 
 
 #
@@ -187,7 +176,7 @@ mica-echo-update:
 	@echo 
 	@echo "****"
 	@echo 
-	
+
 #
 # Clean
 #
@@ -196,23 +185,9 @@ clean:
 	rm -rf /var/cache/mica-installer/target
 	rm -rf /var/cache/mica-installer/*.gz
 
-
 #
 # Functions
 #
-
-make-sites-install = cd target && \
-	wget -q http://download.obiba.org/mica/$(stability)/$(2)-$($(2)_version).tar.gz && \
-	tar xzf $(2)-$($(2)_version).tar.gz && \
-	rm -rf /usr/share/mica/sites/all/$(1)/$(2) && \
-	mv $(2) /usr/share/mica/sites/all/$(1)
-	
-make-profiles-install = cd target && \
-	wget -q http://download.obiba.org/mica/$(stability)/$(1)-$($(1)_version).tar.gz && \
-	tar xzf $(1)-$($(1)_version).tar.gz && \
-	rm -rf /usr/share/mica/profiles/$(1) && \
-	mv $(1) /usr/share/mica/profiles
-	
 make-delete-mica-files = make mica-delete-$(1)
 
 #
