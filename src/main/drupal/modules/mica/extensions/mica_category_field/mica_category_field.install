@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * Implements hook_field_schema()
+ */
+function mica_category_field_field_schema() {
+  return array(
+    'columns' => array(
+      'code' => array(
+        'description' => 'Code',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'label' => array(
+        'description' => 'Label',
+        'type' => 'varchar',
+        'length' => 1024,
+        'not null' => TRUE,
+      ),
+      'missing' => array(
+        'description' => 'Missing',
+        'type' => 'int',
+        'not null' => TRUE,
+      ),
+    ),
+    'indexes' => array(
+      'code' => array('code'),
+    ),
+  );
+}

@@ -38,17 +38,17 @@ function mica_datasets_views_api() {
 function mica_datasets_node_info() {
   $items = array(
     'dataset' => array(
-      'name' => t('Dataset'),
+      'name' => t('Dictionary'),
       'base' => 'node_content',
-      'description' => t('Dataset resource.'),
+      'description' => t('Variable dictionary'),
       'has_title' => '1',
       'title_label' => t('Name'),
       'help' => '',
     ),
-    'participant_variable' => array(
-      'name' => t('Participant Variable'),
+    'variable' => array(
+      'name' => t('Variable'),
       'base' => 'node_content',
-      'description' => t('Description of participant data.'),
+      'description' => '',
       'has_title' => '1',
       'title_label' => t('Name'),
       'help' => '',
@@ -62,9 +62,9 @@ function mica_datasets_node_info() {
  */
 function mica_datasets_default_search_api_index() {
   $items = array();
-  $items['participant_variable_index'] = entity_import('search_api_index', '{
+  $items['variable_index'] = entity_import('search_api_index', '{
     "name" : "Participant Variable Index",
-    "machine_name" : "participant_variable_index",
+    "machine_name" : "variable_index",
     "description" : null,
     "server" : "solr",
     "item_type" : "node",
@@ -75,7 +75,7 @@ function mica_datasets_default_search_api_index() {
         "nid" : { "type" : "integer" },
         "type" : { "type" : "string" },
         "title" : { "type" : "text" },
-        "field_categories" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_variable_categories" : { "type" : "list\\u003Ctext\\u003E" },
         "field_repeatable" : { "type" : "boolean" },
         "field_value_type" : { "type" : "string" },
         "field_dataset" : { "type" : "integer", "entity_type" : "node" },
@@ -89,10 +89,7 @@ function mica_datasets_default_search_api_index() {
         "search_api_alter_bundle_filter" : {
           "status" : 1,
           "weight" : "-10",
-          "settings" : {
-            "default" : "0",
-            "bundles" : { "participant_variable" : "participant_variable" }
-          }
+          "settings" : { "default" : "0", "bundles" : { "variable" : "variable" } }
         },
         "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },

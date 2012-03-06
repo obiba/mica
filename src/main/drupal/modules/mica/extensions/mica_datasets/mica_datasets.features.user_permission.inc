@@ -31,9 +31,9 @@ function mica_datasets_user_default_permissions() {
     'module' => 'mica_datasets',
   );
 
-  // Exported permission: create participant_variable content
-  $permissions['create participant_variable content'] = array(
-    'name' => 'create participant_variable content',
+  // Exported permission: create variable content
+  $permissions['create variable content'] = array(
+    'name' => 'create variable content',
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
@@ -52,9 +52,9 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any participant_variable content
-  $permissions['delete any participant_variable content'] = array(
-    'name' => 'delete any participant_variable content',
+  // Exported permission: delete any variable content
+  $permissions['delete any variable content'] = array(
+    'name' => 'delete any variable content',
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
@@ -73,9 +73,9 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete own participant_variable content
-  $permissions['delete own participant_variable content'] = array(
-    'name' => 'delete own participant_variable content',
+  // Exported permission: delete own variable content
+  $permissions['delete own variable content'] = array(
+    'name' => 'delete own variable content',
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
@@ -94,9 +94,9 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any participant_variable content
-  $permissions['edit any participant_variable content'] = array(
-    'name' => 'edit any participant_variable content',
+  // Exported permission: edit any variable content
+  $permissions['edit any variable content'] = array(
+    'name' => 'edit any variable content',
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
@@ -126,9 +126,9 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit own participant_variable content
-  $permissions['edit own participant_variable content'] = array(
-    'name' => 'edit own participant_variable content',
+  // Exported permission: edit own variable content
+  $permissions['edit own variable content'] = array(
+    'name' => 'edit own variable content',
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',

@@ -343,7 +343,7 @@ function _mica_datasets_node_access($node, $bundle = NULL, $op = 'update') {
 function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
   global $user;
   if (_mica_datasets_node_access($dataset_node, 'dataset', 'view')) {
-    if (mica_dataset_dataset_participant_variables($dataset_node->nid) !== FALSE) {
+    if (mica_dataset_dataset_variables($dataset_node->nid) !== FALSE) {
       if($op == 'view') {
         return user_access('view any dataset query');
       }
@@ -491,7 +491,7 @@ function mica_datasets_node_delete($node) {
     MicaDatasetQueryManager::deleteQueries($dataset_id);
 
     // remove variables
-    $variables = mica_dataset_dataset_participant_variables($dataset_id);
+    $variables = mica_dataset_dataset_variables($dataset_id);
     if (!empty($variables)){
       foreach ($variables as $variable) {
         node_delete($variable->nid);
@@ -832,15 +832,15 @@ function mica_dataset_connector_insert(array $values) {
 }
 
 /**
- * Load all node of type 'participant_variable' associated with a dataset
+ * Load all node of type 'variable' associated with a dataset
  * @param $dataset nid
  */
-function mica_dataset_dataset_participant_variables($dataset) {
+function mica_dataset_dataset_variables($dataset) {
   // Get field information
   $field = field_info_field('field_dataset');
   $query = new EntityFieldQuery;
   $query->entityCondition('entity_type', 'node')
-  ->entityCondition('bundle', 'participant_variable')
+  ->entityCondition('bundle', 'variable')
   ->fieldCondition($field, 'nid', $dataset);
 
   $entities = $query->execute();
@@ -1043,12 +1043,12 @@ function mica_dataset_query_term_insert(array $values) {
  * implements hook_feeds_after_parse
  * used to extract the dataset_id from the importer and set it on the mapper
  * so that nodes created have a link to their dataset. This method also creates
- * a guid for each participant_variable (dataset_id:title
+ * a guid for each variable (dataset_id:title
  */
 function mica_datasets_feeds_after_parse(FeedsSource $source, FeedsParserResult $result) {
   if(get_class($source->importer->processor) == 'FeedsNodeProcessor') {
     $config = $source->importer->processor->getConfig();
-    if($config['content_type'] == 'participant_variable') {
+    if($config['content_type'] == 'variable') {
       $src_config = $source->getConfigFor($source->importer->fetcher);
       $dataset_id = NULL;
       if(isset($src_config['mica_dataset_connector'])) {
@@ -1098,7 +1098,7 @@ function mica_dataset_private_file_absolute_path($reference) {
  */
 function mica_datasets_node_view_alter(&$build) {
 
-  if ($build['#view_mode'] === 'full' && $build['#bundle'] === 'participant_variable') {
+  if ($build['#view_mode'] === 'full' && $build['#bundle'] === 'variable') {
 
     $node = $build['#node'];
     $language = $node->language;

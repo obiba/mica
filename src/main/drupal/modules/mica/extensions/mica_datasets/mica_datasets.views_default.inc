@@ -11,133 +11,6 @@ function mica_datasets_views_default_views() {
   $export = array();
 
   $view = new view;
-  $view->name = 'dataset_participant_variables';
-  $view->description = '';
-  $view->tag = 'dataset';
-  $view->base_table = 'node';
-  $view->human_name = 'Dataset Participant Variables';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Data Dictionnary';
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
-  $handler->display->display_options['style_plugin'] = 'table';
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['label'] = 'empty_dataset_participant_variables';
-  $handler->display->display_options['empty']['area']['empty'] = FALSE;
-  $handler->display->display_options['empty']['area']['content'] = 'No variables found.';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Name';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-  /* Field: Content: Label */
-  $handler->display->display_options['fields']['field_label']['id'] = 'field_label';
-  $handler->display->display_options['fields']['field_label']['table'] = 'field_data_field_label';
-  $handler->display->display_options['fields']['field_label']['field'] = 'field_label';
-  $handler->display->display_options['fields']['field_label']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_label']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_label']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_label']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_label']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_label']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_label']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_label']['field_api_classes'] = 0;
-  /* Sort criterion: Content: Title */
-  $handler->display->display_options['sorts']['title']['id'] = 'title';
-  $handler->display->display_options['sorts']['title']['table'] = 'node';
-  $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Contextual filter: Content: Dataset (field_dataset) */
-  $handler->display->display_options['arguments']['field_dataset_nid']['id'] = 'field_dataset_nid';
-  $handler->display->display_options['arguments']['field_dataset_nid']['table'] = 'field_data_field_dataset';
-  $handler->display->display_options['arguments']['field_dataset_nid']['field'] = 'field_dataset_nid';
-  $handler->display->display_options['arguments']['field_dataset_nid']['default_action'] = 'empty';
-  $handler->display->display_options['arguments']['field_dataset_nid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_dataset_nid']['default_argument_skip_url'] = 0;
-  $handler->display->display_options['arguments']['field_dataset_nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_dataset_nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_dataset_nid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['field_dataset_nid']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['field_dataset_nid']['not'] = 0;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'participant_variable' => 'participant_variable',
-  );
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'dataset-participant-variables';
-  $translatables['dataset_participant_variables'] = array(
-    t('Master'),
-    t('Data Dictionnary'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('empty_dataset_participant_variables'),
-    t('No variables found.'),
-    t('Name'),
-    t('Label'),
-    t('All'),
-    t('Page'),
-  );
-  $export['dataset_participant_variables'] = $view;
-
-  $view = new view;
   $view->name = 'dataset_studies';
   $view->description = '';
   $view->tag = 'study, dataset';
@@ -400,6 +273,133 @@ function mica_datasets_views_default_views() {
   $export['dataset_studies'] = $view;
 
   $view = new view;
+  $view->name = 'dataset_variables';
+  $view->description = '';
+  $view->tag = 'dataset';
+  $view->base_table = 'node';
+  $view->human_name = 'Dataset Participant Variables';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Data Dictionnary';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
+  $handler->display->display_options['style_plugin'] = 'table';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'empty_dataset_variables';
+  $handler->display->display_options['empty']['area']['empty'] = FALSE;
+  $handler->display->display_options['empty']['area']['content'] = 'No variables found.';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'Name';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: Label */
+  $handler->display->display_options['fields']['field_label']['id'] = 'field_label';
+  $handler->display->display_options['fields']['field_label']['table'] = 'field_data_field_label';
+  $handler->display->display_options['fields']['field_label']['field'] = 'field_label';
+  $handler->display->display_options['fields']['field_label']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_label']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_label']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_label']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_label']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_label']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_label']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_label']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_label']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_label']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_label']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_label']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_label']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_label']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_label']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_label']['field_api_classes'] = 0;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Contextual filter: Content: Dataset (field_dataset) */
+  $handler->display->display_options['arguments']['field_dataset_nid']['id'] = 'field_dataset_nid';
+  $handler->display->display_options['arguments']['field_dataset_nid']['table'] = 'field_data_field_dataset';
+  $handler->display->display_options['arguments']['field_dataset_nid']['field'] = 'field_dataset_nid';
+  $handler->display->display_options['arguments']['field_dataset_nid']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['field_dataset_nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_dataset_nid']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['field_dataset_nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_dataset_nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_dataset_nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_dataset_nid']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_dataset_nid']['not'] = 0;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'variable' => 'variable',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'dataset-participant-variables';
+  $translatables['dataset_variables'] = array(
+    t('Master'),
+    t('Data Dictionnary'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_dataset_variables'),
+    t('No variables found.'),
+    t('Name'),
+    t('Label'),
+    t('All'),
+    t('Page'),
+  );
+  $export['dataset_variables'] = $view;
+
+  $view = new view;
   $view->name = 'datasets';
   $view->description = '';
   $view->tag = 'dataset';
@@ -566,10 +566,10 @@ function mica_datasets_views_default_views() {
   $export['datasets'] = $view;
 
   $view = new view;
-  $view->name = 'participant_variable_search';
+  $view->name = 'variable_search';
   $view->description = '';
   $view->tag = 'dataset, search';
-  $view->base_table = 'search_api_index_participant_variable_index';
+  $view->base_table = 'search_api_index_variable_index';
   $view->human_name = 'Participant Variable Search';
   $view->core = 7;
   $view->api_version = '3.0';
@@ -589,14 +589,14 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['label'] = 'empty_participant_variables';
+  $handler->display->display_options['empty']['area']['label'] = 'empty_variables';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
   $handler->display->display_options['empty']['area']['content'] = 'No participant variables found.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['empty']['area']['tokenize'] = 0;
   /* Field: Indexed Node: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_participant_variable_index';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = 'Name';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
@@ -619,7 +619,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['title']['link_to_entity'] = 0;
   /* Field: Indexed Node: Label */
   $handler->display->display_options['fields']['field_label']['id'] = 'field_label';
-  $handler->display->display_options['fields']['field_label']['table'] = 'search_api_index_participant_variable_index';
+  $handler->display->display_options['fields']['field_label']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_label']['field'] = 'field_label';
   $handler->display->display_options['fields']['field_label']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_label']['alter']['make_link'] = 0;
@@ -639,35 +639,9 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_label']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_label']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_label']['field_api_classes'] = 0;
-  /* Field: Indexed Node: Categories */
-  $handler->display->display_options['fields']['field_categories']['id'] = 'field_categories';
-  $handler->display->display_options['fields']['field_categories']['table'] = 'search_api_index_participant_variable_index';
-  $handler->display->display_options['fields']['field_categories']['field'] = 'field_categories';
-  $handler->display->display_options['fields']['field_categories']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_categories']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_categories']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_categories']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_categories']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_categories']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_categories']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_categories']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_categories']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_categories']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_categories']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_categories']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_categories']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_categories']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_categories']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_categories']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_categories']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_categories']['group_rows'] = 1;
-  $handler->display->display_options['fields']['field_categories']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_categories']['delta_reversed'] = 0;
-  $handler->display->display_options['fields']['field_categories']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_categories']['field_api_classes'] = 0;
   /* Field: Indexed Node: Value Type */
   $handler->display->display_options['fields']['field_value_type']['id'] = 'field_value_type';
-  $handler->display->display_options['fields']['field_value_type']['table'] = 'search_api_index_participant_variable_index';
+  $handler->display->display_options['fields']['field_value_type']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_value_type']['field'] = 'field_value_type';
   $handler->display->display_options['fields']['field_value_type']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_value_type']['alter']['make_link'] = 0;
@@ -689,7 +663,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_value_type']['field_api_classes'] = 0;
   /* Field: Indexed Node: Repeatable */
   $handler->display->display_options['fields']['field_repeatable']['id'] = 'field_repeatable';
-  $handler->display->display_options['fields']['field_repeatable']['table'] = 'search_api_index_participant_variable_index';
+  $handler->display->display_options['fields']['field_repeatable']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_repeatable']['field'] = 'field_repeatable';
   $handler->display->display_options['fields']['field_repeatable']['alter']['alter_text'] = 0;
   $handler->display->display_options['fields']['field_repeatable']['alter']['make_link'] = 0;
@@ -711,7 +685,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_repeatable']['field_api_classes'] = 0;
   /* Contextual filter: Dataset: Node ID (indexed) */
   $handler->display->display_options['arguments']['field_dataset_nid']['id'] = 'field_dataset_nid';
-  $handler->display->display_options['arguments']['field_dataset_nid']['table'] = 'search_api_index_participant_variable_index';
+  $handler->display->display_options['arguments']['field_dataset_nid']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['arguments']['field_dataset_nid']['field'] = 'field_dataset_nid';
   $handler->display->display_options['arguments']['field_dataset_nid']['default_action'] = 'empty';
   $handler->display->display_options['arguments']['field_dataset_nid']['default_argument_type'] = 'fixed';
@@ -719,7 +693,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['arguments']['field_dataset_nid']['summary']['format'] = 'default_summary';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
-  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_participant_variable_index';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['filters']['search_api_views_fulltext']['field'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['exposed'] = TRUE;
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator_id'] = 'search_api_views_fulltext_op';
@@ -728,14 +702,13 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['fields'] = array(
     'title' => 'title',
-    'field_categories' => 'field_categories',
     'search_api_aggregation_1' => 'search_api_aggregation_1',
   );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'participant-variable-search';
-  $translatables['participant_variable_search'] = array(
+  $translatables['variable_search'] = array(
     t('Master'),
     t('Data Dictionnary'),
     t('more'),
@@ -747,18 +720,17 @@ function mica_datasets_views_default_views() {
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('empty_participant_variables'),
+    t('empty_variables'),
     t('No participant variables found.'),
     t('Name'),
     t('Label'),
-    t('Categories'),
     t('Value Type'),
     t('Repeatable'),
     t('All'),
     t('Fulltext search'),
     t('Page'),
   );
-  $export['participant_variable_search'] = $view;
+  $export['variable_search'] = $view;
 
   return $export;
 }

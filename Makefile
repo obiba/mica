@@ -10,6 +10,7 @@ version=1.2-SNAPSHOT
 #
 # Modules
 mica_version=7.x-$(version)
+mica_category_field_version=$(mica_version)
 mica_community_version=$(mica_version)
 mica_core_version=$(mica_version)
 mica_data_access_version=$(mica_version)
@@ -176,11 +177,12 @@ package: package-prepare debian
 package-prepare: package-modules-prepare package-profiles-prepare package-themes-prepare package-forks-prepare
 
 package-modules-prepare:
+	$(call make-info,sites/all/modules/mica/extensions,mica_category_field)
 	$(call make-info,sites/all/modules/mica/extensions,mica_community)
 	$(call make-info,sites/all/modules/mica/extensions,mica_core)
 	$(call make-info,sites/all/modules/mica/extensions,mica_data_access)
 	$(call make-info,sites/all/modules/mica/extensions,mica_datasets)
-	#$(call make-info,sites/all/modules/mica/extensions,mica_dataschemas)
+	$(call make-info,sites/all/modules/mica/extensions,mica_dataschemas)
 	$(call make-info,sites/all/modules/mica/extensions,mica_datashield)
 	$(call make-info,sites/all/modules/mica/extensions,mica_devel)
 	$(call make-info,sites/all/modules/mica/extensions,mica_field_description)

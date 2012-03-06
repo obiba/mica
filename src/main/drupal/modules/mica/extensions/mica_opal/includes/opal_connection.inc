@@ -85,7 +85,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
 
 
   public function getImporterId() {
-    return 'opal_participant_variables';
+    return 'opal_variables';
   }
 
   public function getTableResourceURI($resource) {

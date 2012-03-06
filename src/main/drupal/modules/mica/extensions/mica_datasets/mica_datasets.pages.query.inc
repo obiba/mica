@@ -154,7 +154,7 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
 
   // Add a query term by selecting a variable
   $variable_options = array();
-  foreach(mica_dataset_dataset_participant_variables($dataset_node->nid) as $variable) {
+  foreach(mica_dataset_dataset_variables($dataset_node->nid) as $variable) {
     // todo cannot add a variable that is already in the process of being added
     $variable_options[$variable->nid] = $variable->title;
   }
@@ -761,7 +761,7 @@ function mica_datasets_dataset_query_term_edit_form_submit($form, &$form_state) 
 
 function variables_autocomplete($dataset_nid, $string) {
   $variables = array();
-  foreach(mica_dataset_dataset_participant_variables($dataset_id) as $variable) {
+  foreach(mica_dataset_dataset_variables($dataset_id) as $variable) {
     if (strpos(strtolower($variable->title), $string) === 0 || $string === "*") {
       $variables[$variable->title]=$variable->title;
     }

@@ -13,38 +13,38 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: field:body:participant_variable:label
-msgctxt "body:participant_variable:label"
+#: field:body:variable:label
+msgctxt "body:variable:label"
 msgid "Description"
 msgstr "Description"
 
-#: field:field_categories:participant_variable:label
-msgctxt "field_categories:participant_variable:label"
+#: field:field_variable_categories:variable:label
+msgctxt "field_variable_categories:variable:label"
 msgid "Categories"
 msgstr "Catégories"
 
-#: field:field_dataset:participant_variable:label
-msgctxt "field_dataset:participant_variable:label"
+#: field:field_dataset:variable:label
+msgctxt "field_dataset:variable:label"
 msgid "Dataset"
 msgstr "Jeu de données"
 
-#: field:field_label:participant_variable:label
-msgctxt "field_label:participant_variable:label"
+#: field:field_label:variable:label
+msgctxt "field_label:variable:label"
 msgid "Label"
 msgstr "Libellé"
 
-#: field:field_repeatable:participant_variable:label
-msgctxt "field_repeatable:participant_variable:label"
+#: field:field_repeatable:variable:label
+msgctxt "field_repeatable:variable:label"
 msgid "Repeatable"
 msgstr "Répétable"
 
-#: field:field_repeatable:participant_variable:description
-msgctxt "field_repeatable:participant_variable:description"
+#: field:field_repeatable:variable:description
+msgctxt "field_repeatable:variable:description"
 msgid "Can this variable have multiple values?"
 msgstr "Cette variable peut-elle avoir plusieurs valeurs ?"
 
-#: field:field_value_type:participant_variable:label
-msgctxt "field_value_type:participant_variable:label"
+#: field:field_value_type:variable:label
+msgctxt "field_value_type:variable:label"
 msgid "Value Type"
 msgstr "Type de valeur"
 

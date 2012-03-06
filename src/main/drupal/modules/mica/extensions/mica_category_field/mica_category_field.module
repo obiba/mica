@@ -1,0 +1,274 @@
+<?php
+
+// @see http://evolvingweb.ca/story/poutine-maker-introduction-field-api-drupal-7-part-1
+// @see https://github.com/tarmstrong/poutine_maker
+
+/**
+ * Implements hook_field_info()
+ */
+function mica_category_field_field_info() {
+  $fields = array();
+  $fields['category_field'] = array(
+    'label' => t('Category'),
+    'description' => t('Variable category'),
+    'settings' => array(),
+    'instance_settings' => array(),
+    'default_widget' => 'category_field_default_widget',
+    'default_formatter' => 'category_field_default_formatter',
+    'property_type' => 'category_field',
+    'property_callbacks' => array('category_field_property_info_callback'),
+  );
+  return $fields;
+}
+
+function category_field_property_info_callback(&$info, $entity_type, $field, $instance, $field_type) {
+  $name = $field['field_name'];
+  $property = &$info[$entity_type]['bundles'][$instance['bundle']]['properties'][$name];
+  $property['type'] = ($field['cardinality'] != 1) ? 'list<category_field>' : 'category_field';
+  $property['getter callback'] = 'entity_metadata_field_verbatim_get';
+  $property['setter callback'] = 'entity_metadata_field_verbatim_set';
+  $property['auto creation'] = 'category_field_default_values';
+  $property['property info'] = category_field_data_property_info();
+  unset($property['query callback']);
+}
+
+/**
+ * Defines info for the properties of the category field data structure.
+ */
+function category_field_data_property_info($name = NULL) {
+  // Build an array of basic property information for the category field.
+  return array(
+    'code' => array(
+      'label' => t('Code'),
+      'description' => t('Code of the category'),
+      'type' => 'text',
+      'getter callback' => 'entity_property_verbatim_get',
+      'setter callback' => 'entity_property_verbatim_set',
+    ),
+    'label' => array(
+      'label' => t('Label'),
+      'description' => t('Label of the category'),
+      'type' => 'text',
+      'getter callback' => 'entity_property_verbatim_get',
+      'setter callback' => 'entity_property_verbatim_set',
+    ),
+    'missing' => array(
+      'label' => t('Missing'),
+      'description' => t('Is this category a missing category?'),
+      'type' => 'boolean',
+      'getter callback' => 'entity_property_verbatim_get',
+      'setter callback' => 'entity_property_verbatim_set',
+    ),
+  );
+}
+
+/**
+ * Returns an array of default values for the category_field form elements.
+ */
+function category_field_default_values() {
+  return array(
+    'code' => '',
+    'label' => '',
+    'missing' => 0,
+  );
+}
+
+/**
+ * Implements hook_field_widget_info()
+ */
+function mica_category_field_field_widget_info() {
+  return array(
+    'category_field_default_widget' => array(
+      'label' => t('Table'),
+      'field types' => array('category_field'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_widget_form()
+ */
+function mica_category_field_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+
+  // $field_name is the name of the field instance. This is the name that the administrator 
+  // gives the field instance when attaching it to an entity.
+  $field_name = $instance['field_name'];
+
+  // Is this field instance required?
+  // We can use this $required value to make sub-elements of the widget form required.
+  $required = $element['#required'];
+
+  // $item is where the current saved values are stored
+  $item =& $items[$delta];
+
+  // $element is already populated with #title, #description, #delta, #required, #field_name, etc.
+  $element += array(
+    '#prefix' => '<div class="container-inline-category">',
+    '#suffix' => '<div>',
+    '#attached' => array(
+      'css' => array(drupal_get_path('module', 'mica_category_field') . '/mica_category_field.css'),
+    ),
+  );
+
+  // Array keys in $element correspond roughly to array keys in $item, which correspond roughly to columns in the database table.
+  // use #default_value to prepopulate the element with the current saved value
+  $element['code'] = array(
+    '#title' => t('Code'),
+    '#type' => 'textfield',
+    '#size' => 15,
+    '#required' => $required,
+    '#empty_value' => '',
+    '#default_value' => isset($item['code']) ? $item['code'] : '',
+  );
+  $element['label'] = array(
+    '#title' => t('Label'),
+    '#type' => 'textfield',
+    '#required' => $required,
+    '#default_value' => isset($item['label']) ? $item['label'] : '',
+  );
+  $element['missing'] = array(
+    '#title' => t('Missing'),
+    '#type' => 'checkbox',
+    '#default_value' => isset($item['missing']) ? $item['missing'] : '',
+  );
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function mica_category_field_field_is_empty($item, $field) {
+  return empty($item['code']) && empty($item['label']);
+}
+
+/**
+ * Implements hook_field_validate().
+ *
+ * Sets an $errors array with information about the errors detected in the field input.
+ */
+function mica_category_field_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
+  foreach ($items as $delta => $item) {
+    if (!mica_category_field_field_is_empty($item, $field)) {
+      if (empty($item['code'])) {
+        $errors[$field['field_name']][$langcode][$delta][] = array(
+          'error' => 'mica_category_field_invalid_code_required',
+          'message' => t('%title: Code is required.', array('%title' => $instance['label'])),
+        );
+      }
+      if (empty($item['label'])) {
+        $errors[$field['field_name']][$langcode][$delta][] = array(
+          'error' => 'mica_category_field_invalid_label_required',
+          'message' => t("%title: Label is required.", array('%title' => $instance['label'])),
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_widget_error().
+ *
+ * Takes the errors set in mica_category_field_field_validate()
+ * and tells Drupal how to notify the user of the error. For example, this implementation
+ * calls form_error() with each element passed in the $error['error_elements'] array, so
+ * we can identify a problem with several elements in our field.
+ */
+function mica_category_field_field_widget_error($element, $error, $form, &$form_state) {
+  switch ($error['error']) {
+    // Handle the error that was set in mica_category_field_field_validate()
+    case 'mica_category_field_invalid_code_required':
+    case 'mica_category_field_invalid_label_required':
+      form_error($element, $error['message']);
+      break;
+  }
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ *
+ * Here we tell Drupal about our custom formatters. In this
+ * case we only have one. Note that our formatter works on
+ * the field type 'category_field', which is
+ * the machine-readable name we defined in mica_category_field_field_info().
+ */
+function mica_category_field_field_formatter_info() {
+  return array(
+    'category_field_table_formatter' => array(
+      'label' => t('Table'),
+      'field types' => array('category_field'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ *
+ * This function gives Drupal a structured array, which
+ * defines how the data stored in the field should be rendered.
+ */
+function mica_category_field_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+
+  $element = array();
+  switch ($display['type']) {
+    case 'category_field_table_formatter':
+      $headers = array(
+        t('Code'),
+        t('Label'),
+        t('Missing'),
+      );
+
+      $rows = array();
+      foreach($items as $item) {
+        $row = array();
+        foreach($item as $key => $value) {
+          if ($key === 'missing') {
+            $row[$key] = $value == 1 ? 'Missing' : '';
+          } else {
+            $row[$key] = $value;
+          }
+        }
+        $rows[] = $row;
+      }
+
+      $element[] = array(
+        '#theme' => 'table',
+        '#header' => $headers,
+        '#rows' => $rows,
+      );
+      break;
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_presave().
+ */
+function mica_category_field_field_presave($entity_type, $entity, $field, $instance, $langcode, &$items) {
+  if ($field['type'] == 'category_field') {
+    foreach ($items as $delta => &$item) {
+      $new_item = array();
+      $new_item['code'] = $item['code'];
+      $new_item['label'] = $item['label'];
+      $new_item['missing'] = $item['missing'];
+      $item = $new_item;
+    }
+  }
+}
+
+/**
+ * Implements hook_field_load().
+ */
+function mica_category_field_field_load($entity_type, $entities, $field, $instances, $langcode, &$items, $age) {
+  foreach ($entities as $id => $entity) {
+    foreach ($items[$id] as $delta => &$item) {
+      $new_item = array();
+      $new_item['code'] = $item['code'];
+      $new_item['label'] = $item['label'];
+      $new_item['missing'] = $item['missing'];
+      $item = $new_item;
+    }
+  }
+}
+ 

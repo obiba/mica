@@ -9,7 +9,7 @@ function mica_datashield_form($form, &$form_state) {
   $model = _mica_datashield_model_load($dataset_node);
 
   $variable_options = array();
-  foreach(mica_dataset_dataset_participant_variables($dataset_node->nid) as $variable) {
+  foreach(mica_dataset_dataset_variables($dataset_node->nid) as $variable) {
     if($model->hasVariable($variable) == FALSE) {
       $variable_options[$variable->nid] = $variable->title;
     }

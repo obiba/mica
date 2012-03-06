@@ -85,7 +85,7 @@ abstract class AbstractTerm implements QueryTermInterface {
   }
 
   static function typeFor($variable) {
-    $is_categorical= isset($variable->field_categories[LANGUAGE_NONE]) && $variable->field_categories[LANGUAGE_NONE][0]['value'] != '';
+    $is_categorical= isset($variable->field_variable_categories[LANGUAGE_NONE]) && $variable->field_variable_categories[LANGUAGE_NONE][0]['value'] != '';
     $type=$variable->field_value_type[LANGUAGE_NONE][0]['value'];
     if($is_categorical) {
       return 'CategoryTerm';
@@ -215,7 +215,7 @@ class CategoryTerm extends AbstractTerm {
     }
 
     $rows = array();
-    foreach($variable->field_categories[LANGUAGE_NONE] as $category) {
+    foreach($variable->field_variable_categories[LANGUAGE_NONE] as $category) {
       $c = $category["value"];
       $row = array($c);
       foreach($stats as $study_id => $stat) {
@@ -247,7 +247,7 @@ class CategoryTerm extends AbstractTerm {
     $variable = $this->getVariable();
 
     $facets = $this->stats();
-    foreach($variable->field_categories[LANGUAGE_NONE] as $category) {
+    foreach($variable->field_variable_categories[LANGUAGE_NONE] as $category) {
       $defaultValues[$category["value"]] = 0;
       $row = array($category["value"]);
       foreach($connectors as $connector) {

@@ -214,7 +214,7 @@ projects[strongarm][type] = module
 projects[tagging][version] = 3.3
 projects[tagging][type] = module
 
-projects[taxonomy_csv][version] = 5.7
+projects[taxonomy_csv][version] = 5.10
 projects[taxonomy_csv][type] = module
 
 projects[taxonomy_manager][version] = 1.0-beta2

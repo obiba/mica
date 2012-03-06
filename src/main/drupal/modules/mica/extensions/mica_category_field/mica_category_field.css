@@ -1,0 +1,14 @@
+.container-inline-category {
+  clear: both;
+  float: none;
+  width: 98%;
+}
+
+.container-inline-category .form-item {
+  float: left; /* LTR */
+  margin-right: 20px !important;
+}
+
+.container-inline-category .form-type-checkbox {
+  margin-top:25px !important;
+}

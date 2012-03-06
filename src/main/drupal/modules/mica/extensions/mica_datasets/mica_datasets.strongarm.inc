@@ -20,9 +20,9 @@ function mica_datasets_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_anonymous_participant_variable';
+  $strongarm->name = 'comment_anonymous_variable';
   $strongarm->value = 0;
-  $export['comment_anonymous_participant_variable'] = $strongarm;
+  $export['comment_anonymous_variable'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -41,9 +41,9 @@ function mica_datasets_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_mode_participant_variable';
+  $strongarm->name = 'comment_default_mode_variable';
   $strongarm->value = 1;
-  $export['comment_default_mode_participant_variable'] = $strongarm;
+  $export['comment_default_mode_variable'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -55,9 +55,9 @@ function mica_datasets_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_default_per_page_participant_variable';
+  $strongarm->name = 'comment_default_per_page_variable';
   $strongarm->value = '50';
-  $export['comment_default_per_page_participant_variable'] = $strongarm;
+  $export['comment_default_per_page_variable'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -69,16 +69,9 @@ function mica_datasets_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_form_location_participant_variable';
+  $strongarm->name = 'comment_form_location_variable';
   $strongarm->value = 1;
-  $export['comment_form_location_participant_variable'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'comment_participant_variable';
-  $strongarm->value = '1';
-  $export['comment_participant_variable'] = $strongarm;
+  $export['comment_form_location_variable'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -90,9 +83,9 @@ function mica_datasets_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_preview_participant_variable';
+  $strongarm->name = 'comment_preview_variable';
   $strongarm->value = '1';
-  $export['comment_preview_participant_variable'] = $strongarm;
+  $export['comment_preview_variable'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -104,9 +97,16 @@ function mica_datasets_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'comment_subject_field_participant_variable';
+  $strongarm->name = 'comment_subject_field_variable';
   $strongarm->value = 1;
-  $export['comment_subject_field_participant_variable'] = $strongarm;
+  $export['comment_subject_field_variable'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_variable';
+  $strongarm->value = '1';
+  $export['comment_variable'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -114,6 +114,13 @@ function mica_datasets_strongarm() {
   $strongarm->name = 'language_content_type_dataset';
   $strongarm->value = '0';
   $export['language_content_type_dataset'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'language_content_type_variable';
+  $strongarm->value = '0';
+  $export['language_content_type_variable'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -127,9 +134,25 @@ function mica_datasets_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_variable';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_variable'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_dataset';
   $strongarm->value = 'main-menu:507';
   $export['menu_parent_dataset'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_variable';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_variable'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -143,11 +166,11 @@ function mica_datasets_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_participant_variable';
+  $strongarm->name = 'node_options_variable';
   $strongarm->value = array(
     0 => 'status',
   );
-  $export['node_options_participant_variable'] = $strongarm;
+  $export['node_options_variable'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -159,6 +182,13 @@ function mica_datasets_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_variable';
+  $strongarm->value = '1';
+  $export['node_preview_variable'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_dataset';
   $strongarm->value = 0;
   $export['node_submitted_dataset'] = $strongarm;
@@ -166,9 +196,9 @@ function mica_datasets_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_participant_variable';
+  $strongarm->name = 'node_submitted_variable';
   $strongarm->value = 0;
-  $export['node_submitted_participant_variable'] = $strongarm;
+  $export['node_submitted_variable'] = $strongarm;
 
   return $export;
 }
