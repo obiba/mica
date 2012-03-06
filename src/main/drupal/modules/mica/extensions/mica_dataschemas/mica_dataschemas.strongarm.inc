@@ -13,58 +13,6 @@ function mica_dataschemas_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'collapsiblock_default_state';
-  $strongarm->value = '1';
-  $export['collapsiblock_default_state'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'collapsiblock_settings';
-  $strongarm->value = array(
-    'block-search-api-facets-dataschema-variables-field-dim-3' => '3',
-    'block-search-api-facets-dataschema-variables-field-dim-2' => '3',
-    'block-search-api-facets-dataschema-variables-field-dim-4' => '3',
-    'block-search-api-facets-dataschema-variables-field-dim-s' => '3',
-    'block-search-api-facets-dataschema-variables-field-dim-p' => '3',
-    'block-search-api-facets-dataschema-variables-field-dim-m' => '3',
-    'block-search-api-facets-dataschema-variables-field-dim-f' => '3',
-    'block-search-api-facets-dataschema-variables-field-dim-d' => '3',
-    'block-search-api-facets-dataschema-variables-field-dim-c' => '3',
-    'block-search-api-facets-dataschema-variables-field-dim-t' => '3',
-    'block-search-api-facets-dataschema-variables-field-dim-l' => '2',
-    'block-search-api-facets-dataschema-variables-field-datas' => '2',
-    'block-search-api-facets-dataschema-variables-field-dim-6' => '2',
-    'block-search-api-facets-dataschema-variables-field-dim-h' => '2',
-    'block-search-api-facets-dataschema-variables-field-dim-1' => '3',
-    'block-search-api-facets-dataschema-variables-field-di-10' => '3',
-    'block-search-api-facets-dataschema-variables-field-dim-9' => '3',
-    'block-search-api-facets-dataschema-variables-field-dim-8' => '3',
-    'block-search-api-facets-dataschema-variables-field-dim-7' => '3',
-    'block-search-api-facets-dataschema-variables-field-dim-5' => '3',
-    'block-search-api-facets-dataschema-variables-field-dim-b' => '3',
-    'block-node-reference-block-related-content' => '1',
-    'block-facetapi-bG1PdrDzqgLvv-zbV-y33jncboC1dfn9' => '1',
-  );
-  $export['collapsiblock_settings'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'collapsiblock_slide_speed';
-  $strongarm->value = '200';
-  $export['collapsiblock_slide_speed'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'collapsiblock_slide_type';
-  $strongarm->value = '2';
-  $export['collapsiblock_slide_type'] = $strongarm;
-
-  $strongarm = new stdClass;
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_dataschema';
   $strongarm->value = 0;
   $export['comment_anonymous_dataschema'] = $strongarm;

@@ -13,7 +13,7 @@ function mica_dataschemas_default_page_manager_handlers() {
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
-  $handler->name = 'node_view_panel_context_2';
+  $handler->name = 'node_view_panel_context_8';
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
@@ -316,7 +316,7 @@ function mica_dataschemas_default_page_manager_handlers() {
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
-  $export['node_view_panel_context_2'] = $handler;
+  $export['node_view_panel_context_8'] = $handler;
 
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
@@ -475,6 +475,7 @@ function mica_dataschemas_default_page_manager_handlers() {
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
+    $pane->locks = '';
     $display->content['new-1'] = $pane;
     $display->panels['center'][0] = 'new-1';
   $display->hide_title = PANELS_TITLE_FIXED;

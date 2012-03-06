@@ -140,24 +140,44 @@ function mica_dataschemas_entity_view($entity, $type, $view_mode, $langcode){
 // TODO run this as batch
 function _mica_dataschemas_import_taxonomies() {
   drupal_set_time_limit(240);
-  _mica_dataschemas_import_taxonomy('biochemical_measures.csv', 'Biochemical measures');
-  _mica_dataschemas_import_taxonomy('body_functions_measures.csv', 'Body functions and measures');
-  _mica_dataschemas_import_taxonomy('class.csv', 'Class');
-  _mica_dataschemas_import_taxonomy('collection_mode.csv', 'Collection mode');
-  _mica_dataschemas_import_taxonomy('disease_history.csv', 'Disease history');
-  _mica_dataschemas_import_taxonomy('environmental_exposures.csv', 'Environmental exposures');
-  _mica_dataschemas_import_taxonomy('format.csv', 'Format');
-  _mica_dataschemas_import_taxonomy('life_habits_behaviours.csv', 'Life habits / Behaviours');
-  _mica_dataschemas_import_taxonomy('medication.csv', 'Medication');
-  _mica_dataschemas_import_taxonomy('period.csv', 'Period');
-  _mica_dataschemas_import_taxonomy('reproductive_history.csv', 'Reproductive history');
-  _mica_dataschemas_import_taxonomy('sample.csv', 'Sample');
-  _mica_dataschemas_import_taxonomy('sociodemographic_characteristics.csv', 'Sociodemographic characteristics');
-  _mica_dataschemas_import_taxonomy('source_of_information.csv', 'Source of information');
-  _mica_dataschemas_import_taxonomy('target_gender.csv', 'Target gender');
-  _mica_dataschemas_import_taxonomy('target.csv', 'Target');
-  _mica_dataschemas_import_taxonomy('therapeutic_interventions.csv', 'Therapeutic interventions');
-  _mica_dataschemas_import_taxonomy('type.csv', 'Type');
+
+  $batch = array(
+    'operations' => array(
+    	array('_mica_dataschemas_import_taxonomy', array('anthropometric_structures.csv', 'Anthropometric Structures')),
+      array('_mica_dataschemas_import_taxonomy',  array('body_functions.csv', 'Body Functions')),
+      array('_mica_dataschemas_import_taxonomy',  array('body_structures.csv', 'Body Structures')),
+      array('_mica_dataschemas_import_taxonomy',  array('class.csv', 'Class')),
+      array('_mica_dataschemas_import_taxonomy',  array('data_source.csv', 'Data Source')),		 
+      array('_mica_dataschemas_import_taxonomy', array('disease_history.csv', 'Diseases History and Related Health Problems')),
+      array('_mica_dataschemas_import_taxonomy', array('early_life.csv', 'Participant\'s Early Life/Childhood')),
+      array('_mica_dataschemas_import_taxonomy', array('format.csv', 'Format')),
+      array('_mica_dataschemas_import_taxonomy', array('life_habits_behaviours.csv', 'Life Habits/Behaviours')),
+      array('_mica_dataschemas_import_taxonomy', array('medical_health_intervention.csv', 'Medical Health Interventions/Health Services Utilization')),
+      array('_mica_dataschemas_import_taxonomy', array('medication.csv', 'Medication')),
+      array('_mica_dataschemas_import_taxonomy', array('perception_of_health.csv', 'Perception of Health/Quality of life')),
+      array('_mica_dataschemas_import_taxonomy', array('period.csv', 'Period')),
+      array('_mica_dataschemas_import_taxonomy', array('physical_environment.csv', 'Physical Environment')),
+      array('_mica_dataschemas_import_taxonomy', array('reproductive_history.csv', 'Reproductive Health and History')),
+      array('_mica_dataschemas_import_taxonomy', array('response_unit.csv', 'Response Unit')),
+      array('_mica_dataschemas_import_taxonomy', array('social_environment.csv', 'Social Environment')),
+      array('_mica_dataschemas_import_taxonomy', array('sociodemographic_characteristics.csv', 'Sociodemographic/Socioeconomic Characteristics')),
+      array('_mica_dataschemas_import_taxonomy', array('target.csv', 'Target')),
+      array('_mica_dataschemas_import_taxonomy', array('target_gender.csv', 'Target Gender')),
+      array('_mica_dataschemas_import_taxonomy', array('type.csv', 'Type')),
+  //     array('_mica_dataschemas_import_taxonomy', array('derived_status.csv', 'Derived Status')),
+  //     array('_mica_dataschemas_import_taxonomy', array('skip_pattern.csv', '')),
+  	),
+  	'title' => st('Import DataSchemas Dimensions'),
+    'init_message' => st('Starting import'),
+    'error_message' => st('Error while importing dimensions'),
+    'finished' => '_mica_dataschemas_configuration_finished',
+  );
+
+  batch_set($batch);
+	batch_process();
+}
+function _mica_dataschemas_configuration_finished($success, $results, $operations) {
+	drupal_set_message(t("DataSchemas dimensions import finished"));
 }
 
 function _mica_dataschemas_import_taxonomy($filename, $vocabulary_name) {

@@ -151,6 +151,25 @@ function mica_dataschemas_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'dataschema-variables';
+  $translatables['dataschema_variables'] = array(
+    t('Master'),
+    t('DataSchema Variables'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_dataschema_variables'),
+    t('No DataSchema variables found.'),
+    t('Variable'),
+    t('Description'),
+    t('Fulltext search'),
+    t('Page'),
+  );
   $export['dataschema_variables'] = $view;
 
   $view = new view;
@@ -331,6 +350,33 @@ It also contains associated support material including variable definitions, lin
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'dataschemas';
+  $translatables['dataschemas'] = array(
+    t('Master'),
+    t('DataSchemas'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('A DataSchema identifies and describes a thematic set of core variables that are of particular value in a specified scientific setting. 
+It also contains associated support material including variable definitions, links to relevant Ontologies and Classifications, and access to reference questionnaires and operating procedures.<br/><br/>'),
+    t('empty_dataschema'),
+    t('No DataSchema found.'),
+    t('Nid'),
+    t('Name'),
+    t('Description'),
+    t('Variables'),
+    t('<a href=\'?q=dataschema-variables/[nid]&filter%5Bfield_dataschema_ref%5D%5B0%5D="[nid]"\'>View</a>'),
+    t('sadasd'),
+    t('<b>'),
+    t('</b>'),
+    t('_blank'),
+    t('Page'),
+  );
   $export['dataschemas'] = $view;
 
   $view = new view;
@@ -493,6 +539,26 @@ It also contains associated support material including variable definitions, lin
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'project-pairings';
+  $translatables['project_pairings'] = array(
+    t('Master'),
+    t('Project Pairings'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_project_pairings_text'),
+    t('No pairings found.'),
+    t('Variable'),
+    t('Study'),
+    t('Match'),
+    t('All'),
+    t('Page'),
+  );
   $export['project_pairings'] = $view;
 
   $view = new view;
@@ -584,6 +650,19 @@ It also contains associated support material including variable definitions, lin
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
+  $translatables['variable_categories'] = array(
+    t('Master'),
+    t('Variable Categories'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('field_variable_categories'),
+    t('All'),
+    t('Block'),
+  );
   $export['variable_categories'] = $view;
 
   $view = new view;
@@ -695,6 +774,19 @@ It also contains associated support material including variable definitions, lin
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
+  $translatables['variable_dataschemas'] = array(
+    t('Master'),
+    t('Variable DataSchemas'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('field_dataschema_ref'),
+    t('All'),
+    t('Block'),
+  );
   $export['variable_dataschemas'] = $view;
 
   $view = new view;
@@ -788,6 +880,19 @@ It also contains associated support material including variable definitions, lin
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
+  $translatables['variable_missing_categories'] = array(
+    t('Master'),
+    t('Variable Missing Categories'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('field_variable_categories'),
+    t('All'),
+    t('Block'),
+  );
   $export['variable_missing_categories'] = $view;
 
   return $export;
