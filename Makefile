@@ -138,7 +138,7 @@ htaccess:
 	mv target/$(micadir)/.htaccess_new target/$(micadir)/.htaccess 
 
 delete-beta-modules:
-	rm -rf target/$(micadir)/sites/all/modules/mica/extensions/mica_dataschemas
+#	rm -rf target/$(micadir)/sites/all/modules/mica/extensions/mica_dataschemas
 
 #
 # Deploy
