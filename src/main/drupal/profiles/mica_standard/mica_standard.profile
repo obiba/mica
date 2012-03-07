@@ -55,12 +55,14 @@ function _mica_configuration_batch() {
     $operations[] = array('feeds_batch', array('import', $source->id, $source->feed_nid));
   }
 
-  // find all mica french translation files
-//   $po_files = drupal_system_listing('/fr.po$/', 'sites/all/modules/mica', 'name', 0);
-//   foreach($po_files as $po_file) {
-//     $operations[] = array('_update_mica_languages', array($po_file));
-//   }
-
+  // Import taxonomies
+  $module_dir = drupal_get_path('module', 'mica_datasets');
+  require_once("$module_dir/mica_datasets.module");
+  $taxonomies_import_operations = _mica_datasets_taxonomies_operations_import();
+  foreach($taxonomies_import_operations  as $t){
+    $operations[] = $t;
+  }
+  
   // prepare permissions rebuild
   $mica_length = strlen('mica_');
   foreach (module_list() as $module) {

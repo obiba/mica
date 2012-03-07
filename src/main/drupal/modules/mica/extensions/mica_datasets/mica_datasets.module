@@ -1199,6 +1199,86 @@ function _mica_datasets_create_dataset_menu($node) {
 
 }
 
+function _mica_datasets_taxonomies_operations_import() {
+	$operations = array(
+	array('_mica_datasets_taxonomy_import', array('anthropometric_structures.csv', 'Anthropometric Structures')),
+	array('_mica_datasets_taxonomy_import', array('body_functions.csv', 'Body Functions')),
+	array('_mica_datasets_taxonomy_import', array('body_structures.csv', 'Body Structures')),
+	array('_mica_datasets_taxonomy_import', array('class.csv', 'Class')),
+	array('_mica_datasets_taxonomy_import', array('data_source.csv', 'Data Source')),
+	array('_mica_datasets_taxonomy_import', array('disease_history.csv', 'Diseases History and Related Health Problems')),
+	array('_mica_datasets_taxonomy_import', array('early_life.csv', 'Participant\'s Early Life/Childhood')),
+	array('_mica_datasets_taxonomy_import', array('format.csv', 'Format')),
+	array('_mica_datasets_taxonomy_import', array('life_habits_behaviours.csv', 'Life Habits/Behaviours')),
+	array('_mica_datasets_taxonomy_import', array('medical_health_intervention.csv', 'Medical Health Interventions/Health Services Utilization')),
+	array('_mica_datasets_taxonomy_import', array('medication.csv', 'Medication')),
+	array('_mica_datasets_taxonomy_import', array('perception_of_health.csv', 'Perception of Health/Quality of life')),
+	array('_mica_datasets_taxonomy_import', array('period.csv', 'Period')),
+	array('_mica_datasets_taxonomy_import', array('physical_environment.csv', 'Physical Environment')),
+	array('_mica_datasets_taxonomy_import', array('reproductive_history.csv', 'Reproductive Health and History')),
+	array('_mica_datasets_taxonomy_import', array('response_unit.csv', 'Response Unit')),
+	array('_mica_datasets_taxonomy_import', array('social_environment.csv', 'Social Environment')),
+	array('_mica_datasets_taxonomy_import', array('sociodemographic_characteristics.csv', 'Sociodemographic/Socioeconomic Characteristics')),
+	array('_mica_datasets_taxonomy_import', array('target.csv', 'Target')),
+	array('_mica_datasets_taxonomy_import', array('target_gender.csv', 'Target Gender')),
+	);
+	return $operations;
+}
+
+function _mica_datasets_taxonomy_import($filename, $vocabulary_name) {
+
+	watchdog('mica', 'filename: %path, vocabulary_name: %file',
+	array(
+      '%path' => $filename,
+      '%file' => $vocabulary_name,
+	), WATCHDOG_INFO);
+
+
+	// use filename (without extension) for vocabulary machine name
+	$vocabulary = (object) array(
+    'name' => $vocabulary_name,
+    'machine_name' => substr($filename, 0, strlen($filename) - 4)
+	);
+	taxonomy_vocabulary_save($vocabulary);
+
+	$path = drupal_get_path('module', 'mica_datasets') . '/taxonomies/' . $filename;
+	$file_path = drupal_realpath($path);
+
+
+	watchdog('mica', 'Path: %path, File path: %file',
+	array(
+      '%path' => $path,
+      '%file' => $file_path,
+	), WATCHDOG_INFO);
+
+	//module_load_include('inc', 'taxonomy_csv', 'taxonomy_csv.import.api');
+	// Invoke taxonomy_csv import api.
+	$module_dir = drupal_get_path('module', 'taxonomy_csv');
+	require_once("$module_dir/import/taxonomy_csv.import.api.inc");
+	$result  = taxonomy_csv_import(array(
+    'import_format' => 'tree',
+    'delimiter' => ',',
+    'enclosure' => '"',
+    'keep_order' => true,
+    'file' => (object) array(
+      'filename' => $filename,
+      'filepath' => $file_path,
+      'filesize' => filesize($path)
+	),
+    'vocabulary_target' => 'existing',
+    'vocabulary_id' => $vocabulary->vid,
+    'source_choice' => 'file',
+	));
+
+
+	watchdog('mica', 'Imported taxonomy %file to vocabulary %vocabulary: %result',
+	array(
+      '%file' => $file_path,
+      '%vocabulary' => $vocabulary_name,
+      '%result' => $result,
+	), WATCHDOG_INFO);
+
+}
 ///**
 // * Implements hook_form_BASE_FORM_ID_alter()
 // */
