@@ -10,6 +10,25 @@
 function mica_datasets_menu_default_menu_links() {
   $menu_links = array();
 
+  // Exported menu link: main-menu:dataschemas
+  $menu_links['main-menu:dataschemas'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'dataschemas',
+    'router_path' => 'dataschemas',
+    'link_title' => 'Dataschemas',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '0',
+    'parent_path' => 'node/3',
+  );
   // Exported menu link: main-menu:datasets
   $menu_links['main-menu:datasets'] = array(
     'menu_name' => 'main-menu',
@@ -31,6 +50,7 @@ function mica_datasets_menu_default_menu_links() {
   );
   // Translatables
   // Included for use with string extractors like potx.
+  t('Dataschemas');
   t('Datasets');
 
 

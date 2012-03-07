@@ -85,11 +85,14 @@ abstract class AbstractTerm implements QueryTermInterface {
   }
 
   static function typeFor($variable) {
-    $is_categorical= isset($variable->field_variable_categories[LANGUAGE_NONE]) && $variable->field_variable_categories[LANGUAGE_NONE][0]['value'] != '';
-    $type=$variable->field_value_type[LANGUAGE_NONE][0]['value'];
+    $wrapper = entity_metadata_wrapper('node', $variable);
+    $is_categorical = count($wrapper->field_variable_categories->value()) > 1;
+    $type = $wrapper->field_value_type->value();
+
     if($is_categorical) {
       return 'CategoryTerm';
-    } else if ($type!= 'date') {
+    }
+    if ($type !== 'date') {
       return 'RangeTerm';
     }
     return 'TodoTerm';
@@ -215,8 +218,9 @@ class CategoryTerm extends AbstractTerm {
     }
 
     $rows = array();
-    foreach($variable->field_variable_categories[LANGUAGE_NONE] as $category) {
-      $c = $category["value"];
+    $wrapper = entity_metadata_wrapper('node', $variable);
+    foreach($wrapper->field_variable_categories->value() as $category) {
+      $c = $category["code"];
       $row = array($c);
       foreach($stats as $study_id => $stat) {
         $row[] = isset($stat[$c]) ? $stat[$c] : 0;
@@ -227,7 +231,7 @@ class CategoryTerm extends AbstractTerm {
   }
 
   function form($form, &$form_state) {
-    $form['inverted']=array(
+    $form['inverted'] = array(
       '#title' => t('Operator'), 
       '#type' => 'select',
       '#options' => array('in' => 'in', 'notin' => 'not in'),
@@ -247,17 +251,19 @@ class CategoryTerm extends AbstractTerm {
     $variable = $this->getVariable();
 
     $facets = $this->stats();
-    foreach($variable->field_variable_categories[LANGUAGE_NONE] as $category) {
-      $defaultValues[$category["value"]] = 0;
-      $row = array($category["value"]);
+    $wrapper = entity_metadata_wrapper('node', $variable);
+    foreach($wrapper->field_variable_categories->value() as $category) {
+      $code = $category["code"];
+      $defaultValues[$code] = 0;
+      $row = array($code);
       foreach($connectors as $connector) {
-        if(isset($facets[$connector->study_id][$category["value"]])) {
-          $row[] = $facets[$connector->study_id][$category["value"]];
+        if(isset($facets[$connector->study_id][$code])) {
+          $row[] = $facets[$connector->study_id][$code];
         } else {
           $row[] = 0;
         }
       }
-      $options['c_' . $category["value"]] = $row;
+      $options['c_' . $code] = $row;
     }
 
     $form['valuecontainer']['fieldset'] = array(
@@ -307,7 +313,7 @@ class CategoryTerm extends AbstractTerm {
    */
   private function categoriesToForm($rows) {
     foreach($this->categories() as $c) {
-      $rows['c_'.$c] = 1;
+      $rows['c_' . $c] = 1;
     }
     return $rows;
   }

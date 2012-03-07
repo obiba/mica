@@ -73,8 +73,8 @@ function mica_datasets_default_search_api_index() {
     "server" : "solr",
     "item_type" : "node",
     "options" : {
-      "index_directly" : 0,
-      "cron_limit" : "200",
+      "index_directly" : 1,
+      "cron_limit" : "-1",
       "fields" : {
         "nid" : { "type" : "integer" },
         "type" : { "type" : "string" },

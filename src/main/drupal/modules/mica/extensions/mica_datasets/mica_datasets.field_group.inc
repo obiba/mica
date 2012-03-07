@@ -179,6 +179,31 @@ function mica_datasets_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_dimensions|node|variable|form';
+  $field_group->group_name = 'group_dimensions';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'variable';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Dimensions',
+    'weight' => '33',
+    'children' => array(),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_dimensions|node|variable|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_tabs|node|study|default';
   $field_group->group_name = 'group_tabs';
   $field_group->entity_type = 'node';

@@ -496,8 +496,9 @@ function mica_node_modal_page_view($js = NULL, $node) {
 * Creates a menu for the item being created if the content type as a default menu set.
 * The menu entry is hidden; this is useful to populate the breadcrumbs without having to manually add a menu entry.
 * @param $node
+* @param $hidden 1 to hide this menu, 0 to show it
 */
-function mica_create_menu($node, $hidden){
+function mica_create_menu($node, $hidden = 0) {
 	// create menu based on content type menu config
 	$menu = $node->menu;
 	if (empty($menu)) {

@@ -9,9 +9,9 @@
  * Implements hook_install().
  */
 function mica_datasets_install() {
-  watchdog('mica', 'Import Dataschemas dimensions', array(), WATCHDOG_INFO);
+//  watchdog('mica', 'Import Dataschemas dimensions', array(), WATCHDOG_INFO);
 //  _mica_datasets_taxonomies_batch_import();
-  _mica_datasets_taxonomies_import();
+//  _mica_datasets_taxonomies_import();
 }
 
 /**
