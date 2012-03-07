@@ -115,6 +115,9 @@ projects[field_permissions][type] = module
 projects[forum_access][version] = 1.0-alpha4
 projects[forum_access][type] = module
 
+projects[google_analytics][version] = 1.2
+projects[google_analytics][type] = module
+
 projects[google_fonts][version] = 2.3
 projects[google_fonts][type] = module
 
@@ -207,6 +210,9 @@ projects[search_api_ranges][patch][1460410] = http://drupal.org/files/max-inclus
 
 projects[search_api_solr][version] = 1.0-rc1
 projects[search_api_solr][type] = module
+
+projects[smtp][version] = 1.0-beta1
+projects[smtp][type] = module
 
 projects[strongarm][version] = 2.0-beta5
 projects[strongarm][type] = module
