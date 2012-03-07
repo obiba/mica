@@ -179,7 +179,7 @@ function mica_datasets_field_default_fields() {
           'csv_study_export:views_data_export_1' => 0,
           'dataschema_term:page' => 0,
           'dataset_studies:page' => 'dataset_studies:page',
-          'dataset_variables:page' => 0,
+          'variables:page' => 0,
           'datasets:feed' => 0,
           'datasets:page' => 0,
           'date_browser:date_nav_1' => 0,
@@ -268,6 +268,78 @@ function mica_datasets_field_default_fields() {
         'module' => 'viewreference',
         'settings' => array(),
         'type' => 'viewreference_select',
+        'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-dataset-field_dataset_type'
+  $fields['node-dataset-field_dataset_type'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dataset_type',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'dataset' => 'Dataset',
+          'dataschema' => 'Dataschema',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'dataset',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 3,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_dataset_type',
+      'label' => 'Type',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
         'weight' => '2',
       ),
     ),
@@ -330,7 +402,7 @@ function mica_datasets_field_default_fields() {
           'csv_study_export:views_data_export_1' => 0,
           'dataschema_term:page' => 0,
           'dataset_studies:page' => 0,
-          'dataset_variables:page' => 'dataset_variables:page',
+          'variables:page' => 'variables:page',
           'datasets:feed' => 0,
           'datasets:page' => 0,
           'date_browser:date_nav_1' => 0,
@@ -370,7 +442,7 @@ function mica_datasets_field_default_fields() {
       'default_value' => array(
         0 => array(
           'arguments' => '',
-          'view_id' => 'dataset_variables:page',
+          'view_id' => 'variables:page',
         ),
       ),
       'deleted' => '0',
@@ -409,7 +481,7 @@ function mica_datasets_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_dataset_variables',
-      'label' => 'Participant Variables',
+      'label' => 'Variables',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -419,7 +491,7 @@ function mica_datasets_field_default_fields() {
         'module' => 'viewreference',
         'settings' => array(),
         'type' => 'viewreference_select',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -1315,9 +1387,10 @@ function mica_datasets_field_default_fields() {
   t('Description');
   t('Label');
   t('Opal');
-  t('Participant Variables');
+  t('Variables');
   t('Repeatable');
   t('Studies');
+  t('Type');
   t('Value Type');
 
   return $fields;

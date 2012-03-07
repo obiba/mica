@@ -137,10 +137,7 @@ function mica_dataschemas_entity_view($entity, $type, $view_mode, $langcode){
   }
 }
 
-// TODO run this as batch
 function _mica_dataschemas_import_taxonomies() {
-  drupal_set_time_limit(240);
-
   $batch = array(
     'operations' => array(
     	array('_mica_dataschemas_import_taxonomy', array('anthropometric_structures.csv', 'Anthropometric Structures')),
@@ -163,19 +160,16 @@ function _mica_dataschemas_import_taxonomies() {
       array('_mica_dataschemas_import_taxonomy', array('sociodemographic_characteristics.csv', 'Sociodemographic/Socioeconomic Characteristics')),
       array('_mica_dataschemas_import_taxonomy', array('target.csv', 'Target')),
       array('_mica_dataschemas_import_taxonomy', array('target_gender.csv', 'Target Gender')),
-      array('_mica_dataschemas_import_taxonomy', array('type.csv', 'Type')),
-  //     array('_mica_dataschemas_import_taxonomy', array('derived_status.csv', 'Derived Status')),
-  //     array('_mica_dataschemas_import_taxonomy', array('skip_pattern.csv', '')),
   	),
   	'title' => st('Import DataSchemas Dimensions'),
     'init_message' => st('Starting import'),
     'error_message' => st('Error while importing dimensions'),
     'finished' => '_mica_dataschemas_configuration_finished',
   );
-
   batch_set($batch);
 	batch_process();
 }
+
 function _mica_dataschemas_configuration_finished($success, $results, $operations) {
 	drupal_set_message(t("DataSchemas dimensions import finished"));
 }

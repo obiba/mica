@@ -50,8 +50,8 @@ function mica_opal_feeds_importer_default() {
   $feeds_importer->api_version = 1;
   $feeds_importer->id = 'opal_variables';
   $feeds_importer->config = array(
-    'name' => 'Participant Variables from Opal',
-    'description' => 'Download Participant Variable Description from an Opal instance.',
+    'name' => 'Variables from Opal',
+    'description' => 'Download Variable Description from an Opal instance.',
     'fetcher' => array(
       'plugin_key' => 'FeedsOpalFetcher',
       'config' => array(

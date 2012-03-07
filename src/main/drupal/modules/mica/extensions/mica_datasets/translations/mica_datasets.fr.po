@@ -40,8 +40,8 @@ msgid "Name"
 msgstr "Nom"
 
 #: mica_datasets.features.inc:45
-msgid "Participant Variable"
-msgstr "Variable de participant"
+msgid "Variable"
+msgstr "Variable"
 
 #: mica_datasets.features.inc:47
 msgid "Description of participant data."
@@ -64,8 +64,8 @@ msgid "!dataset -- !study"
 msgstr "!dataset -- !study"
 
 #: mica_datasets.pages.inc:68
-msgid "!title -- Participant Variables"
-msgstr "!title -- Variables de participant"
+msgid "!title -- Variables"
+msgstr "!title -- Variables"
 
 #: mica_datasets.pages.inc:107
 msgid "This dataset is not linked to a study or no external connection has been set."
@@ -412,8 +412,8 @@ msgid "Feed"
 msgstr "Flux"
 
 #: mica_datasets.views_default.inc:785
-msgid "No participant variables found."
-msgstr "Aucune variable de participant n'a été trouvée."
+msgid "No variables found."
+msgstr "Aucune variable n'a été trouvée."
 
 #: mica_datasets.views_default.inc:794
 msgid "Fulltext search"
@@ -560,8 +560,8 @@ msgid "The query identifier for a query term."
 msgstr "L'identifiant de requête pour un terme de requête."
 
 #: mica_datasets.module:689
-msgid "Participant Variable ID"
-msgstr "Identifiant d'une variable de participant"
+msgid "Variable ID"
+msgstr "Identifiant d'une variable"
 
 #: mica_datasets.module:691
 msgid "The variable identifier for a query term."

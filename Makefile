@@ -139,7 +139,7 @@ htaccess:
 	mv target/$(micadir)/.htaccess_new target/$(micadir)/.htaccess 
 
 delete-beta-modules:
-#	rm -rf target/$(micadir)/sites/all/modules/mica/extensions/mica_dataschemas
+	rm -rf target/$(micadir)/sites/all/modules/mica/extensions/mica_dataschemas
 
 #
 # Deploy
@@ -177,12 +177,12 @@ package: package-prepare debian
 package-prepare: package-modules-prepare package-profiles-prepare package-themes-prepare package-forks-prepare
 
 package-modules-prepare:
-	$(call make-info,sites/all/modules/mica/extensions,mica_category_field)
 	$(call make-info,sites/all/modules/mica/extensions,mica_community)
 	$(call make-info,sites/all/modules/mica/extensions,mica_core)
 	$(call make-info,sites/all/modules/mica/extensions,mica_data_access)
 	$(call make-info,sites/all/modules/mica/extensions,mica_datasets)
-	$(call make-info,sites/all/modules/mica/extensions,mica_dataschemas)
+	$(call make-info,sites/all/modules/mica/extensions/mica_datasets,mica_category_field)
+#	$(call make-info,sites/all/modules/mica/extensions,mica_dataschemas)
 	$(call make-info,sites/all/modules/mica/extensions,mica_datashield)
 	$(call make-info,sites/all/modules/mica/extensions,mica_devel)
 	$(call make-info,sites/all/modules/mica/extensions,mica_field_description)

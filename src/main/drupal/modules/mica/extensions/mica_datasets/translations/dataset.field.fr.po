@@ -30,6 +30,6 @@ msgstr "Études"
 
 #: field:field_dataset_variables:dataset:label
 msgctxt "field_dataset_variables:dataset:label"
-msgid "Participant Variables"
-msgstr "Variables de participant"
+msgid "Variables"
+msgstr "Variables"
 

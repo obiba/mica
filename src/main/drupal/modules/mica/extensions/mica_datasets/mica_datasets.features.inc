@@ -9,6 +9,10 @@
  */
 function mica_datasets_ctools_plugin_api() {
   list($module, $api) = func_get_args();
+  if ($module == "facetapi" && $api == "facetapi_defaults") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -38,9 +42,9 @@ function mica_datasets_views_api() {
 function mica_datasets_node_info() {
   $items = array(
     'dataset' => array(
-      'name' => t('Dictionary'),
+      'name' => t('Dataset'),
       'base' => 'node_content',
-      'description' => t('Variable dictionary'),
+      'description' => t('Dataset resource.'),
       'has_title' => '1',
       'title_label' => t('Name'),
       'help' => '',
@@ -63,27 +67,31 @@ function mica_datasets_node_info() {
 function mica_datasets_default_search_api_index() {
   $items = array();
   $items['variable_index'] = entity_import('search_api_index', '{
-    "name" : "Participant Variable Index",
+    "name" : "Variables Index",
     "machine_name" : "variable_index",
     "description" : null,
     "server" : "solr",
     "item_type" : "node",
     "options" : {
       "index_directly" : 0,
-      "cron_limit" : "100",
+      "cron_limit" : "200",
       "fields" : {
         "nid" : { "type" : "integer" },
         "type" : { "type" : "string" },
         "title" : { "type" : "text" },
-        "field_variable_categories" : { "type" : "list\\u003Ctext\\u003E" },
         "field_repeatable" : { "type" : "boolean" },
         "field_value_type" : { "type" : "string" },
         "field_dataset" : { "type" : "integer", "entity_type" : "node" },
         "field_label" : { "type" : "string" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
+        "body:value" : { "type" : "text" },
+        "body:summary" : { "type" : "text" },
         "field_dataset:nid" : { "type" : "integer" },
-        "field_dataset:title" : { "type" : "text" }
+        "field_dataset:title" : { "type" : "text" },
+        "field_variable_categories:code" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_variable_categories:label" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_variable_categories:missing" : { "type" : "list\\u003Cboolean\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
@@ -114,22 +122,20 @@ function mica_datasets_default_search_api_index() {
           "weight" : "0",
           "settings" : { "fields" : {
               "title" : true,
-              "mica_dataset" : true,
               "field_label" : true,
-              "mica_dataset:title" : true
+              "body:value" : true,
+              "body:summary" : true,
+              "field_dataset:title" : true,
+              "field_variable_categories:code" : true,
+              "field_variable_categories:label" : true
             }
           }
-        },
-        "taxonomy_hierarchy_processor.inc" : {
-          "status" : 0,
-          "weight" : "0",
-          "settings" : { "fields" : { "title" : true, "mica_dataset:title" : true } }
         },
         "search_api_html_filter" : {
           "status" : 0,
           "weight" : "10",
           "settings" : {
-            "fields" : { "title" : true, "mica_dataset:title" : true },
+            "fields" : { "title" : true },
             "title" : 0,
             "alt" : 1,
             "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
@@ -139,7 +145,7 @@ function mica_datasets_default_search_api_index() {
           "status" : 1,
           "weight" : "20",
           "settings" : {
-            "fields" : { "mica_dataset" : true, "search_api_aggregation_1" : true },
+            "fields" : { "search_api_aggregation_1" : true },
             "spaces" : "[^\\\\p{L}\\\\p{N}^\\u0027]",
             "ignorable" : "[-]"
           }
@@ -148,7 +154,7 @@ function mica_datasets_default_search_api_index() {
           "status" : 0,
           "weight" : "30",
           "settings" : {
-            "fields" : { "title" : true, "mica_dataset:title" : true },
+            "fields" : { "title" : true },
             "file" : "",
             "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
           }

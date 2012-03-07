@@ -200,7 +200,7 @@ function mica_dataschemas_field_default_fields() {
           'data_access_committee:page' => 0,
           'dataschema_variables:page' => 'dataschema_variables:page',
           'dataschemas:page' => 0,
-          'dataset_variables:page' => 0,
+          'variables:page' => 0,
           'dataset_studies:page' => 0,
           'datasets:feed' => 0,
           'datasets:page' => 0,

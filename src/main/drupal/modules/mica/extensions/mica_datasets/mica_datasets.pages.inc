@@ -65,7 +65,7 @@ function mica_datasets_dataset_connection_page($connection_entity, $dataset_node
  * Display form for fetching variables for a given dataset.
  */
 function mica_datasets_dataset_variables_edit_page($node) {
-  drupal_set_title(t('!title -- Participant Variables', array('!title' => $node->title)));
+  drupal_set_title(t('!title -- Variables', array('!title' => $node->title)));
   return drupal_get_form('mica_datasets_dataset_variables_form', $node);
 }
 

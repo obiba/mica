@@ -273,11 +273,11 @@ function mica_datasets_views_default_views() {
   $export['dataset_studies'] = $view;
 
   $view = new view;
-  $view->name = 'dataset_variables';
+  $view->name = 'variables';
   $view->description = '';
   $view->tag = 'dataset';
   $view->base_table = 'node';
-  $view->human_name = 'Dataset Participant Variables';
+  $view->human_name = 'Variables';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -300,7 +300,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['label'] = 'empty_dataset_variables';
+  $handler->display->display_options['empty']['area']['label'] = 'empty_variables';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
   $handler->display->display_options['empty']['area']['content'] = 'No variables found.';
   /* Field: Content: Title */
@@ -377,8 +377,8 @@ function mica_datasets_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'dataset-participant-variables';
-  $translatables['dataset_variables'] = array(
+  $handler->display->display_options['path'] = 'variables';
+  $translatables['variables'] = array(
     t('Master'),
     t('Data Dictionnary'),
     t('more'),
@@ -390,14 +390,14 @@ function mica_datasets_views_default_views() {
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('empty_dataset_variables'),
+    t('empty_variables'),
     t('No variables found.'),
     t('Name'),
     t('Label'),
     t('All'),
     t('Page'),
   );
-  $export['dataset_variables'] = $view;
+  $export['variables'] = $view;
 
   $view = new view;
   $view->name = 'datasets';
@@ -570,7 +570,7 @@ function mica_datasets_views_default_views() {
   $view->description = '';
   $view->tag = 'dataset, search';
   $view->base_table = 'search_api_index_variable_index';
-  $view->human_name = 'Participant Variable Search';
+  $view->human_name = 'Variable Search';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -707,7 +707,7 @@ function mica_datasets_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'participant-variable-search';
+  $handler->display->display_options['path'] = 'variable-search';
   $translatables['variable_search'] = array(
     t('Master'),
     t('Data Dictionnary'),

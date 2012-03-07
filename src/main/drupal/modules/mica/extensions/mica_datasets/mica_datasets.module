@@ -275,8 +275,8 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
 
         // add participant variables
         $name = t('Data Dictionary');
-        $href = url('participant-variable-search/' . $router_item['page_arguments'][0]->nid);
-        $links['view-participant-variable'] = array(
+        $href = url('variable-search/' . $router_item['page_arguments'][0]->nid);
+        $links['view-variable'] = array(
           '#weight' => 30,
           '#theme' => 'menu_local_action',
           '#link' => array(
@@ -692,7 +692,7 @@ function mica_datasets_entity_property_info() {
       'description' => t('The query identifier for a query term.'),
     ),
     'variable_id' => array(
-      'label' => t('Participant Variable ID'),
+      'label' => t('Variable ID'),
       'type' => 'integer',
       'description' => t('The variable identifier for a query term.'),
     ),
@@ -1048,7 +1048,7 @@ function mica_dataset_query_term_insert(array $values) {
 function mica_datasets_feeds_after_parse(FeedsSource $source, FeedsParserResult $result) {
   if(get_class($source->importer->processor) == 'FeedsNodeProcessor') {
     $config = $source->importer->processor->getConfig();
-    if($config['content_type'] == 'variable') {
+    if($config['content_type'] === 'variable') {
       $src_config = $source->getConfigFor($source->importer->fetcher);
       $dataset_id = NULL;
       if(isset($src_config['mica_dataset_connector'])) {
