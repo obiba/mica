@@ -5,40 +5,31 @@
  * Install, update and uninstall functions for the Mica Datasets module.
  */
 
-/**
- * Implements hook_install().
- */
-function mica_datasets_install() {
-  //watchdog('mica', 'Import Dataschemas dimensions', array(), WATCHDOG_INFO);
-  // _mica_datasets_taxonomies_batch_import();
-  //_mica_datasets_taxonomies_import();
-}
 
 /**
-* Import default taxonomy dimensions
-*/
-function mica_datasets_update_7120(){
-  watchdog('mica', 'Import dimensions', array(), WATCHDOG_INFO);
+ * Implements hook_update_N(&$sandbox)
+ * 
+ * Import default taxonomy dimensions
+ */
+function mica_datasets_update_7120(&$sandbox){
+  watchdog('mica', 'Import taxonomy dimensions', array(), WATCHDOG_INFO);
   
-  $operations = array();
-  
-  $module_dir = drupal_get_path('module', 'mica_datasets');
-  require_once("$module_dir/mica_datasets.module");
-  $taxonomies_import_operations = _mica_datasets_taxonomies_operations_import();
-  foreach($taxonomies_import_operations  as $t){
-  	$operations[] = $t;
+  $taxonomies = _mica_datasets_taxonomies();
+  if (!isset($sandbox['progress'])) {
+  	$sandbox['progress'] = 0;
+  	$sandbox['max'] = count($taxonomies);
   }
   
-  debug($operations);
-  $batch = array(
-    'operations' => $operations,
-    'title' => st('Import dimensions'),
-    'init_message' => st('Starting import '),
-    'error_message' => st('Error while importing dimensions'),
-    'finished' => '_mica_configuration_finished',
-  );
-  batch_set($batch);
-  batch_process();
+  foreach($taxonomies as $taxonomy){
+    _mica_datasets_taxonomy_import($taxonomy[0], $taxonomy[1]);
+    $sandbox['progress']++;
+  }
+  
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+  
+  return st('Taxonomies have been successfully imported!');
+  
+  throw new DrupalUpdateException('Failed to import taxonomies. You should create the taxonomies manually.');
 }
 
 function _mica_datasets_import_finished($success, $results, $operations) {
