@@ -6,8 +6,8 @@
 function mica_category_field_field_schema() {
   return array(
     'columns' => array(
-      'code' => array(
-        'description' => 'Code',
+      'name' => array(
+        'description' => 'Name',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
@@ -25,7 +25,7 @@ function mica_category_field_field_schema() {
       ),
     ),
     'indexes' => array(
-      'code' => array('code'),
+      'name' => array('name'),
     ),
   );
 }

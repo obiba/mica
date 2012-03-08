@@ -9,8 +9,20 @@
  */
 function mica_datasets_ctools_plugin_api() {
   list($module, $api) = func_get_args();
+  if ($module == "current_search" && $api == "current_search") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
   if ($module == "facetapi" && $api == "facetapi_defaults") {
     return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
+  if ($module == "feeds" && $api == "feeds_importer_default") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
+  if ($module == "feeds_tamper" && $api == "feeds_tamper_default") {
+    return array("version" => "2");
   }
   list($module, $api) = func_get_args();
   if ($module == "field_group" && $api == "field_group") {
@@ -81,15 +93,35 @@ function mica_datasets_default_search_api_index() {
         "title" : { "type" : "text" },
         "field_repeatable" : { "type" : "boolean" },
         "field_value_type" : { "type" : "string" },
+        "field_anthropometric_structures" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_body_functions" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_body_structures" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_dataset" : { "type" : "integer", "entity_type" : "node" },
         "field_label" : { "type" : "string" },
+        "field_class" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_data_source" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_disease_history" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_format" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "field_life_habits_behaviours" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_medical_health_interv" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_medication" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_early_life" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_perception_of_health" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_period" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "field_physical_environment" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_reproductive_history" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_response_unit" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "field_social_environment" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_sociodemographic_charact" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_target" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_target_gender" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
         "body:value" : { "type" : "text" },
         "body:summary" : { "type" : "text" },
         "field_dataset:nid" : { "type" : "integer" },
         "field_dataset:title" : { "type" : "text" },
-        "field_variable_categories:code" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_variable_categories:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_variable_categories:label" : { "type" : "list\\u003Ctext\\u003E" },
         "field_variable_categories:missing" : { "type" : "list\\u003Cboolean\\u003E" }
       },
@@ -126,7 +158,7 @@ function mica_datasets_default_search_api_index() {
               "body:value" : true,
               "body:summary" : true,
               "field_dataset:title" : true,
-              "field_variable_categories:code" : true,
+              "field_variable_categories:name" : true,
               "field_variable_categories:label" : true
             }
           }

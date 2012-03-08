@@ -56,8 +56,7 @@ function _mica_configuration_batch() {
   }
 
   // Import taxonomies
-  $module_dir = drupal_get_path('module', 'mica_datasets');
-  require_once("$module_dir/mica_datasets.module");
+  require_once(drupal_get_path('module', 'mica_datasets') . '/mica_datasets.module');
   $taxonomies_import_operations = _mica_datasets_taxonomies_operations_import();
   foreach($taxonomies_import_operations  as $t){
     $operations[] = $t;
@@ -73,6 +72,7 @@ function _mica_configuration_batch() {
 
 //   $operations[] = array('_update_language_french', array());
   $operations[] = array('_studies_block_configuration', array());
+  $operations[] = array('_datasets_block_configuration', array());
 
   $batch = array(
     'operations' => $operations,
@@ -120,6 +120,12 @@ function _studies_block_configuration(&$context) {
   $context['message'] = st('Mica studies configured');
 }
 
+function _datasets_block_configuration(&$context) {
+  module_load_include('inc', 'mica_datasets', 'mica_datasets.facet_blocks');
+  mica_datasets_configure_facet_blocks();
+  $context['message'] = st('Mica datasets configured');
+}
+
 function _update_language_french(&$context) {
   $result = db_query("SELECT * FROM {languages} l WHERE l.language = 'fr'");
   if ($result->rowCount() === 0) {
@@ -127,9 +133,9 @@ function _update_language_french(&$context) {
     // Additional params, locale_add_language does not implement.
     db_update('languages')
       ->fields(array(
-      'plurals' => '2',
-      'formula' => '($n!=1)',
-    ))
+        'plurals' => '2',
+        'formula' => '($n!=1)',
+      ))
       ->condition('language', 'fr')
       ->execute();
     $context['message'] = st('French language configured');

@@ -5,7 +5,7 @@
  * Mica Datasets pages.
  */
 
-include_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'mica_datasets') .  '/includes/connection_form.inc');
+include_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'mica_datasets') . '/includes/connection_form.inc');
 
 function mica_datasets_dataset_page($dataset_node) {
   drupal_goto('node/' . $dataset_node->nid . '/queries');
@@ -101,8 +101,8 @@ function mica_datasets_dataset_variables_form($form, &$form_state, $node) {
   $mica_dataset_connectors = mica_dataset_connector_query_multiple($node->nid, TRUE);
 
   if (!empty($mica_dataset_connectors)) {
-    $connector_id=$mica_dataset_connectors[0]->id;
-    $importer_id=$mica_dataset_connectors[0]->getImporterId();
+    $connector_id = $mica_dataset_connectors[0]->id;
+    $importer_id = $mica_dataset_connectors[0]->getImporterId();
   } else {
     form_set_error('',t('This dataset is not linked to a study or no external connection has been set.'));
     return;

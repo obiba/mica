@@ -7,18 +7,18 @@
  * Implements hook_field_info()
  */
 function mica_category_field_field_info() {
-  $fields = array();
-  $fields['category_field'] = array(
-    'label' => t('Category'),
-    'description' => t('Variable category'),
-    'settings' => array(),
-    'instance_settings' => array(),
-    'default_widget' => 'category_field_default_widget',
-    'default_formatter' => 'category_field_default_formatter',
-    'property_type' => 'category_field',
-    'property_callbacks' => array('category_field_property_info_callback'),
+  return array(
+    'category_field' => array(
+      'label' => t('Category'),
+      'description' => t('Variable category'),
+      'settings' => array(),
+      'instance_settings' => array(),
+      'default_widget' => 'category_field_default_widget',
+      'default_formatter' => 'category_field_default_formatter',
+      'property_type' => 'category_field',
+      'property_callbacks' => array('category_field_property_info_callback'),
+    )
   );
-  return $fields;
 }
 
 function category_field_property_info_callback(&$info, $entity_type, $field, $instance, $field_type) {
@@ -38,9 +38,9 @@ function category_field_property_info_callback(&$info, $entity_type, $field, $in
 function category_field_data_property_info($name = NULL) {
   // Build an array of basic property information for the category field.
   return array(
-    'code' => array(
-      'label' => t('Code'),
-      'description' => t('Code of the category'),
+    'name' => array(
+      'label' => t('Name'),
+      'description' => t('Name of the category'),
       'type' => 'text',
       'getter callback' => 'entity_property_verbatim_get',
       'setter callback' => 'entity_property_verbatim_set',
@@ -67,7 +67,7 @@ function category_field_data_property_info($name = NULL) {
  */
 function category_field_default_values() {
   return array(
-    'code' => '',
+    'name' => '',
     'label' => '',
     'missing' => 0,
   );
@@ -112,13 +112,13 @@ function mica_category_field_field_widget_form(&$form, &$form_state, $field, $in
 
   // Array keys in $element correspond roughly to array keys in $item, which correspond roughly to columns in the database table.
   // use #default_value to prepopulate the element with the current saved value
-  $element['code'] = array(
-    '#title' => t('Code'),
+  $element['name'] = array(
+    '#title' => t('Name'),
     '#type' => 'textfield',
     '#size' => 15,
     '#required' => $required,
     '#empty_value' => '',
-    '#default_value' => isset($item['code']) ? $item['code'] : '',
+    '#default_value' => isset($item['name']) ? $item['name'] : '',
   );
   $element['label'] = array(
     '#title' => t('Label'),
@@ -139,7 +139,7 @@ function mica_category_field_field_widget_form(&$form, &$form_state, $field, $in
  * Implements hook_field_is_empty().
  */
 function mica_category_field_field_is_empty($item, $field) {
-  return empty($item['code']) && empty($item['label']);
+  return empty($item['name']) && empty($item['label']);
 }
 
 /**
@@ -150,10 +150,10 @@ function mica_category_field_field_is_empty($item, $field) {
 function mica_category_field_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
   foreach ($items as $delta => $item) {
     if (!mica_category_field_field_is_empty($item, $field)) {
-      if (empty($item['code'])) {
+      if (empty($item['name'])) {
         $errors[$field['field_name']][$langcode][$delta][] = array(
-          'error' => 'mica_category_field_invalid_code_required',
-          'message' => t('%title: Code is required.', array('%title' => $instance['label'])),
+          'error' => 'mica_category_field_invalid_name_required',
+          'message' => t('%title: Name is required.', array('%title' => $instance['label'])),
         );
       }
       if (empty($item['label'])) {
@@ -177,7 +177,7 @@ function mica_category_field_field_validate($entity_type, $entity, $field, $inst
 function mica_category_field_field_widget_error($element, $error, $form, &$form_state) {
   switch ($error['error']) {
     // Handle the error that was set in mica_category_field_field_validate()
-    case 'mica_category_field_invalid_code_required':
+    case 'mica_category_field_invalid_name_required':
     case 'mica_category_field_invalid_label_required':
       form_error($element, $error['message']);
       break;
@@ -213,7 +213,7 @@ function mica_category_field_field_formatter_view($entity_type, $entity, $field,
   switch ($display['type']) {
     case 'category_field_table_formatter':
       $headers = array(
-        t('Code'),
+        t('Name'),
         t('Label'),
         t('Missing'),
       );
@@ -238,7 +238,6 @@ function mica_category_field_field_formatter_view($entity_type, $entity, $field,
       );
       break;
   }
-
   return $element;
 }
 
@@ -249,7 +248,7 @@ function mica_category_field_field_presave($entity_type, $entity, $field, $insta
   if ($field['type'] == 'category_field') {
     foreach ($items as $delta => &$item) {
       $new_item = array();
-      $new_item['code'] = $item['code'];
+      $new_item['name'] = $item['name'];
       $new_item['label'] = $item['label'];
       $new_item['missing'] = $item['missing'];
       $item = $new_item;
@@ -264,7 +263,7 @@ function mica_category_field_field_load($entity_type, $entities, $field, $instan
   foreach ($entities as $id => $entity) {
     foreach ($items[$id] as $delta => &$item) {
       $new_item = array();
-      $new_item['code'] = $item['code'];
+      $new_item['name'] = $item['name'];
       $new_item['label'] = $item['label'];
       $new_item['missing'] = $item['missing'];
       $item = $new_item;

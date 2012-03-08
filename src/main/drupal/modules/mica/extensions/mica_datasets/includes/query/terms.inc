@@ -220,10 +220,10 @@ class CategoryTerm extends AbstractTerm {
     $rows = array();
     $wrapper = entity_metadata_wrapper('node', $variable);
     foreach($wrapper->field_variable_categories->value() as $category) {
-      $c = $category["code"];
-      $row = array($c);
+      $category_name = $category["name"];
+      $row = array($category_name);
       foreach($stats as $study_id => $stat) {
-        $row[] = isset($stat[$c]) ? $stat[$c] : 0;
+        $row[] = isset($stat[$category_name]) ? $stat[$category_name] : 0;
       }
       $rows[] = $row;
     }
@@ -253,17 +253,17 @@ class CategoryTerm extends AbstractTerm {
     $facets = $this->stats();
     $wrapper = entity_metadata_wrapper('node', $variable);
     foreach($wrapper->field_variable_categories->value() as $category) {
-      $code = $category["code"];
-      $defaultValues[$code] = 0;
-      $row = array($code);
+      $category_name = $category["name"];
+      $defaultValues[$category_name] = 0;
+      $row = array($category_name);
       foreach($connectors as $connector) {
-        if(isset($facets[$connector->study_id][$code])) {
-          $row[] = $facets[$connector->study_id][$code];
+        if(isset($facets[$connector->study_id][$category_name])) {
+          $row[] = $facets[$connector->study_id][$category_name];
         } else {
           $row[] = 0;
         }
       }
-      $options['c_' . $code] = $row;
+      $options['c_' . $category_name] = $row;
     }
 
     $form['valuecontainer']['fieldset'] = array(

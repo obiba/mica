@@ -5,36 +5,6 @@
  * Install, update and uninstall functions for the Mica Datasets module.
  */
 
-
-/**
- * Implements hook_update_N(&$sandbox)
- * 
- * Import default taxonomy dimensions
- */
-function mica_datasets_update_7120(&$sandbox){
-  watchdog('mica', 'Import taxonomy dimensions', array(), WATCHDOG_INFO);
-  
-  $taxonomies = _mica_datasets_taxonomies();
-  if (!isset($sandbox['progress'])) {
-  	$sandbox['progress'] = 0;
-  	$sandbox['max'] = count($taxonomies);
-  }
-  
-  foreach($taxonomies as $taxonomy){
-    _mica_datasets_taxonomy_import($taxonomy[0], $taxonomy[1]);
-    $sandbox['progress']++;
-  }
-  
-  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
-  
-  return st('Taxonomies have been successfully imported!');
-  
-  throw new DrupalUpdateException('Failed to import taxonomies. You should create the taxonomies manually.');
-}
-
-function _mica_datasets_import_finished($success, $results, $operations) {
-	drupal_set_message(st("Import of dimensions finished"));
-}
 /**
  * Implements hook_schema().
  */
@@ -92,12 +62,12 @@ function mica_datasets_schema() {
       ),
     ) + entity_exportable_schema_fields(),
     'indexes' => array(
-      'indexing' => array('enabled','study_id','dataset_id'),
+      'indexing' => array('enabled', 'study_id', 'dataset_id'),
     ),
     'primary key' => array('id'),
   );
-  
-    $schema['mica_dataset_query'] = array(
+
+  $schema['mica_dataset_query'] = array(
     'description' => 'Stores all the queries that are to be applied to their associated Mica Datasets.',
     'fields' => array(
       'id' => array(
@@ -138,11 +108,11 @@ function mica_datasets_schema() {
       ),
     ) + entity_exportable_schema_fields(),
     'indexes' => array(
-      'indexing' => array('published','user_id','dataset_id'),
+      'indexing' => array('published', 'user_id', 'dataset_id'),
     ),
     'primary key' => array('id'),
   );
-  
+
   $schema['mica_dataset_query_term'] = array(
     'description' => 'Stores the query terms of a query.',
     'fields' => array(
@@ -188,41 +158,33 @@ function mica_datasets_schema() {
     ),
     'primary key' => array('id'),
   );
-  
+
   return $schema;
 }
 
-function _mica_datasets_taxonomies_import() {
-  $taxonomies = array(
-    'anthropometric_structures.csv' => 'Anthropometric Structures',
-    'body_functions.csv'=> 'Body Functions',
-    'body_structures.csv'=> 'Body Structures',
-    'class.csv'=> 'Class',
-    'data_source.csv'=> 'Data Source',
-    'disease_history.csv'=> 'Diseases History and Related Health Problems',
-    'early_life.csv'=> 'Participant\'s Early Life/Childhood',
-    'format.csv'=> 'Format',
-    'life_habits_behaviours.csv'=> 'Life Habits/Behaviours',
-    'medical_health_intervention.csv'=> 'Medical Health Interventions/Health Services Utilization',
-    'medication.csv'=> 'Medication',
-    'perception_of_health.csv'=> 'Perception of Health/Quality of life',
-    'period.csv'=> 'Period',
-    'physical_environment.csv'=> 'Physical Environment',
-    'reproductive_history.csv'=> 'Reproductive Health and History',
-    'response_unit.csv'=> 'Response Unit',
-    'social_environment.csv'=> 'Social Environment',
-    'sociodemographic_characteristics.csv'=> 'Sociodemographic/Socioeconomic Characteristics',
-    'target.csv'=> 'Target',
-    'target_gender.csv'=> 'Target Gender',
-  );
-  foreach($taxonomies as $filename => $vocabulary_name) {
-    _mica_datasets_taxonomy_import($filename, $vocabulary_name);
+/**
+ * Implements hook_update_N(&$sandbox)
+ *
+ * Import default taxonomy dimensions
+ */
+function mica_datasets_update_7120(&$sandbox) {
+  watchdog('mica', 'Import dataschema dimensions', array(), WATCHDOG_INFO);
+  try {
+
+    $taxonomies = _mica_datasets_taxonomies();
+    if (!isset($sandbox['progress'])) {
+      $sandbox['progress'] = 0;
+      $sandbox['max'] = count($taxonomies);
+    }
+    foreach ($taxonomies as $taxonomy) {
+      _mica_datasets_taxonomy_import($taxonomy[0], $taxonomy[1]);
+      $sandbox['progress']++;
+    }
+    $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+    return st('Dataschema dimensions have been successfully imported!');
+
+  } catch (Exception $e) {
+    throw new DrupalUpdateException('Failed to import taxonomies. You have to import taxonomies manually.');
   }
 }
-
-
-
-// function _mica_datasets_taxonomies_batch_import_finished($success, $results, $operations) {
-//   drupal_set_message(t("Dataschemas dimensions import finished"));
-// }
 
