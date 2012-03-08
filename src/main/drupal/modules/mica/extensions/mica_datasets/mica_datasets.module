@@ -471,34 +471,6 @@ function mica_datasets_form($node, &$form_state) {
 }
 
 /**
- * Implements hook_node_submit
- */
-//function mica_datasets_node_submit($node, $form, &$form_state) {
-//  _mica_datasets_ensure_viewreference_arguments($node);
-//}
-//
-///**
-// * Implements hook_node_presave().
-// */
-//function mica_datasets_node_presave($node) {
-//  _mica_datasets_ensure_viewreference_arguments($node);
-//}
-//
-//function _mica_datasets_ensure_viewreference_arguments(&$node) {
-//  if ($node->type === 'dataset') {
-//    dvm($node->nid);
-//    foreach (array('field_dataset_studies', 'field_dataset_variables') as $field_name) {
-//      $field = $node->$field_name;
-//      dpm($field);
-//      if ($field[$node->language][0]['arguments'] != $node->nid) {
-//        $field[$node->language][0]['arguments'] = $node->nid;
-//        $node->$field_name = $field;
-//      }
-//    }
-//  }
-//}
-
-/**
  * Implements hook_node_delete()
  */
 function mica_datasets_node_delete($node) {
@@ -539,9 +511,9 @@ function mica_datasets_node_delete($node) {
     // remove reference from studies
     $query = new EntityFieldQuery();
     $entities = $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'study')
-    ->fieldCondition('mica_dataset', 'nid', $dataset_id)
-    ->execute();
+      ->entityCondition('bundle', 'study')
+      ->fieldCondition('mica_dataset', 'nid', $dataset_id)
+      ->execute();
     $studies = node_load_multiple(array_keys($entities['node']));
 
     foreach($studies as $study_node) {
@@ -1139,23 +1111,25 @@ function mica_datasets_node_view_alter(&$build) {
   if ($build['#view_mode'] === 'full' && $build['#bundle'] === 'variable') {
 
     $node = $build['#node'];
-    $language = $node->language;
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $dataset = $wrapper->field_dataset->value();
+    if (!empty($dataset)) {
+      $values = array();
+      $values['variable_id'] = $node->nid;
+      $values['dataset_id'] = $wrapper->field_dataset->nid->value();
+      $term = new MicaDatasetQueryTerm($values);
 
-    $values = array();
-    $values['variable_id'] = $node->nid;
-    $values['dataset_id'] = $node->field_dataset[$language][0]['nid'];
-    $term = new MicaDatasetQueryTerm($values);
-
-    $build['statistics'] = array(
-      '#type' => 'fieldset',
-      '#title' => t('Statistics'),
-      '#weight' => 10,
-      '#collapsible' => TRUE,
-      '#collapsed' => FALSE,
-      'table' => array(
-        '#markup' => $term->termImpl()->view(),
-      ),
-    );
+      $build['statistics'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Statistics'),
+        '#weight' => 10,
+        '#collapsible' => TRUE,
+        '#collapsed' => FALSE,
+        'table' => array(
+          '#markup' => $term->termImpl()->view(),
+        ),
+      );
+    }
   }
 }
 

@@ -784,6 +784,7 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['more_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['title']['alter']['html'] = 0;
@@ -792,7 +793,7 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['title']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
   /* Field: Indexed Node: Label */
   $handler->display->display_options['fields']['field_label']['id'] = 'field_label';
   $handler->display->display_options['fields']['field_label']['table'] = 'search_api_index_variable_index';
@@ -804,10 +805,12 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['fields']['field_label']['alter']['replace_spaces'] = 0;
   $handler->display->display_options['fields']['field_label']['alter']['trim_whitespace'] = 0;
   $handler->display->display_options['fields']['field_label']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_label']['alter']['max_length'] = '70';
   $handler->display->display_options['fields']['field_label']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_label']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_label']['alter']['more_link'] = 0;
   $handler->display->display_options['fields']['field_label']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_label']['alter']['trim'] = 1;
   $handler->display->display_options['fields']['field_label']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_label']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_label']['element_default_classes'] = 1;
@@ -837,28 +840,6 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['fields']['field_value_type']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_value_type']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_value_type']['field_api_classes'] = 0;
-  /* Field: Indexed Node: Repeatable */
-  $handler->display->display_options['fields']['field_repeatable']['id'] = 'field_repeatable';
-  $handler->display->display_options['fields']['field_repeatable']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['fields']['field_repeatable']['field'] = 'field_repeatable';
-  $handler->display->display_options['fields']['field_repeatable']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_repeatable']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_repeatable']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_repeatable']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_repeatable']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_repeatable']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_repeatable']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_repeatable']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_repeatable']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_repeatable']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_repeatable']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_repeatable']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_repeatable']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_repeatable']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_repeatable']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_repeatable']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_repeatable']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_repeatable']['field_api_classes'] = 0;
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_variable_index';
@@ -893,7 +874,6 @@ It also contains associated support material including variable definitions, lin
     t('Name'),
     t('Label'),
     t('Value Type'),
-    t('Repeatable'),
     t('Fulltext search'),
     t('Page'),
   );
