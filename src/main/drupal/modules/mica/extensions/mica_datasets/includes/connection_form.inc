@@ -330,8 +330,8 @@ function _mica_datasets_get_study_ids($dataset_node_id) {
   $field = field_info_field('mica_dataset');
   $query = new EntityFieldQuery;
   $query->entityCondition('entity_type', 'node')
-  ->entityCondition('bundle', 'study')
-  ->fieldCondition($field, 'nid', $dataset_node_id);
+    ->entityCondition('bundle', 'study')
+    ->fieldCondition($field, 'nid', $dataset_node_id);
   
   $entities = $query->execute();
 

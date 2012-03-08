@@ -20,44 +20,40 @@ function mica_datasets_configure_facet_blocks() {
       )
     )
     ->condition('module', 'current_search')
-    ->condition('delta', 'standard')
+    ->condition('delta', 'variable_current_search')
     ->condition('theme', $theme_default)
     ->execute();
-  current_search_set_block_searcher('standard', $search_index);
+  current_search_set_block_searcher('variable_current_search', $search_index);
 
-  watchdog('mica', 'Configured current_search block: %status',
-    array('%status' => ($nb_updated> 0 ? 'Done' : 'Error')), WATCHDOG_DEBUG);
-
-//  // disable some facets because Features/FacetAPI always export them as enabled: http://drupal.org/node/1439950
-//  $disabled_facets = array(
-//    'field_access_other',
-//    'field_current_part_nb_date',
-//    'field_current_samples_date',
-//    'field_no_limits_participants',
-//    'field_no_limits_samples',
-//    'field_current_participants_nb',
-//    'field_current_samples_nb',
-//  );
-//  $searcher = 'search_api@studies_index';
-//  foreach ($disabled_facets as $disabled_facet) {
-//    $facet = facetapi_facet_load($disabled_facet, $searcher);
-//    if ($facet) {
-//      $adapter = facetapi_adapter_load($searcher);
-//      $realms = facetapi_get_realm_info();
-//      foreach ($realms as $realm_name => $realm) {
-//        $delta = facetapi_hash_delta(facetapi_build_delta($searcher, $realm_name, $facet['name']));
-//        if (facetapi_save_facet_disabled($adapter, $realm, $facet)) {
-//          _disable_search_block($delta);
-//        }
-//      }
-//    }
-//  }
+  watchdog('mica', 'variable_current_search block configuration', array(),
+    $nb_updated > 0 ? WATCHDOG_INFO : WATCHDOG_ERROR);
 
   // configure facets
   $facet_order_by_region = array(
     'sidebar_second' => array(
-    	'field_value_type',
     	'field_dataset',
+    	'field_disease_history',
+    	'field_medical_health_interv',
+    	'field_medication',
+    	'field_reproductive_history',
+    	'field_early_life',
+    	'field_life_habits_behaviours',
+    	'field_sociodemographic_charact',
+    	'field_physical_environment',
+    	'field_social_environment',
+    	'field_perception_of_health',
+    	'field_anthropometric_structures',
+    	'field_body_structures',
+    	'field_body_functions',
+    	'field_data_source',
+    	'field_response_unit',
+    	'field_value_type',
+    	'field_repeatable',
+    	'field_target',
+    	'field_target_gender',
+    	'field_period',
+    	'field_class',
+    	'field_format',
     )
   );
   
@@ -71,33 +67,71 @@ function mica_datasets_configure_facet_blocks() {
     )->fetchField();
     $max_weight = empty($max_weight) ? 0 : ($max_weight + 1);
 
-    foreach ($facet_order as $index => $facet) {
+    foreach ($facet_order as $index => $facet_field) {
       // facetapi_get_delta_map() is not loaded yet so we need to generate hash
-      $facet_delta = facetapi_hash_delta($search_index . ':block:' . $facet);
+      $facet_delta = facetapi_hash_delta($search_index . ':block:' . $facet_field);
       
       if (empty($facet_delta)) {
-        drupal_set_message('No facet defined for ' . $facet, 'warning');
+        drupal_set_message('No facet defined for ' . $facet_field, 'warning');
         continue;
       }
       
     	$facet_weight = $max_weight + $index;
 
-      $nb_updated = db_update('block')->fields(
-          array(
-            'status' => 1,
-            'region' => $region,
-            'weight' => $facet_weight,
-            'visibility' => BLOCK_VISIBILITY_LISTED,
-            'pages' => $page,
-          )
+      $block = db_query('SELECT * FROM {block} WHERE module = :module AND delta = :delta AND theme = :theme',
+        array(
+          ':module' => 'facetapi',
+          ':delta' => $facet_delta,
+          ':theme' => $theme_default
         )
-        ->condition('module', 'facetapi')
-        ->condition('delta', $facet_delta)
-        ->condition('theme', $theme_default)
-        ->execute();
+      )->fetchObject();
 
-      watchdog('mica', 'Configured facet block %facet: %status',
-        array('%facet' => $facet, '%status' => ($nb_updated> 0 ? 'Done' : 'Error')), WATCHDOG_DEBUG);
+      if($block) {
+        $nb_updated = db_update('block')->fields(
+            array(
+              'status' => 1,
+              'region' => $region,
+              'weight' => $facet_weight,
+              'visibility' => BLOCK_VISIBILITY_LISTED,
+              'pages' => $page,
+            )
+          )
+          ->condition('module', 'facetapi')
+          ->condition('delta', $facet_delta)
+          ->condition('theme', $theme_default)
+          ->execute();
+      } else {
+        $field_info = field_info_instance('node', $facet_field, 'variable');
+        $nb_updated = db_insert('block')->fields(
+            array(
+              'status' => 1,
+              'region' => $region,
+              'weight' => $facet_weight,
+              'visibility' => BLOCK_VISIBILITY_LISTED,
+              'pages' => $page,
+              'custom' => BLOCK_CUSTOM_ENABLED, // Show this block by default but let individual users hide it.
+              'delta' => $facet_delta,
+              'module' => 'facetapi',
+              'theme' => $theme_default,
+              'title' => $field_info['label'],
+            )
+          )
+          ->execute();
+      }
+
+      $success = $nb_updated > 0;
+
+      if ($success) {
+        $settings = variable_get('collapsiblock_settings', array());
+        $settings['block-facetapi-' . str_replace('_', '-', $facet_delta)] = 2; // Collapsible, expanded by default
+        variable_set('collapsiblock_settings', $settings);
+      }
+
+      watchdog('mica', 'Facet block configuration for %facet (%delta)',
+        array(
+          '%facet' => $facet_field,
+          '%delta' => $facet_delta),
+        $success ? WATCHDOG_INFO : WATCHDOG_ERROR);
     }    
     
   }

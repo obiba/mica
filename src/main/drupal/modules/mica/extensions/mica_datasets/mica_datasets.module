@@ -278,7 +278,8 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
       break;
 
     case 'node/%':
-      $node = node_load($router_item['page_arguments'][0]->nid);
+      $nid = $router_item['page_arguments'][0]->nid;
+      $node = node_load($nid);
       if ($node != NULL && $node->type === 'dataset') {
         if (node_access('update', $node)) {
           // add variables
@@ -303,12 +304,17 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
           }
 
           // variables
-          $href = url('variable-search/' . $router_item['page_arguments'][0]->nid);
+          $href = url('variable-search', array(
+            'query' => array(
+              'f[0]' => 'field_dataset:' . $nid
+            )
+          ));
           $links['view-variable'] = array(
             '#weight' => 30,
             '#theme' => 'menu_local_action',
             '#link' => array(
-              'title' => t('<a class="highlight" href="@url">!name</a>', array('!name' => t('Data Dictionary'), '@url' => $href)),
+              'title' => t('<a class="highlight" href="@url">!name</a>',
+                array('!name' => t('Data Dictionary'), '@url' => $href)),
               'localized_options' => array('html' => TRUE),
             ),
           );
@@ -1204,23 +1210,23 @@ function _mica_datasets_taxonomies() {
 //    array('anthropometric_structures.csv', 'Anthropometric Structures'),
 //    array('body_functions.csv', 'Body Functions'),
 //    array('body_structures.csv', 'Body Structures'),
-//    array('class.csv', 'Class'),
-//    array('data_source.csv', 'Data Source'),
+    array('class.csv', 'Class'),
+    array('data_source.csv', 'Data Source'),
 //    array('disease_history.csv', 'Diseases History and Related Health Problems'),
 //    array('early_life.csv', 'Participant\'s Early Life/Childhood'),
-//    array('format.csv', 'Format'),
+    array('format.csv', 'Format'),
 //    array('life_habits_behaviours.csv', 'Life Habits/Behaviours'),
 //    array('medical_health_intervention.csv', 'Medical Health Interventions/Health Services Utilization'),
 //    array('medication.csv', 'Medication'),
 //    array('perception_of_health.csv', 'Perception of Health/Quality of life'),
-//    array('period.csv', 'Period'),
+    array('period.csv', 'Period'),
 //    array('physical_environment.csv', 'Physical Environment'),
 //    array('reproductive_history.csv', 'Reproductive Health and History'),
 //    array('response_unit.csv', 'Response Unit'),
 //    array('social_environment.csv', 'Social Environment'),
 //    array('sociodemographic_characteristics.csv', 'Sociodemographic/Socioeconomic Characteristics'),
-//    array('target.csv', 'Target'),
-//    array('target_gender.csv', 'Target Gender'),
+    array('target.csv', 'Target'),
+    array('target_gender.csv', 'Target Gender'),
   );
 }
 
@@ -1289,10 +1295,11 @@ function _mica_datasets_taxonomy_import($filename, $vocabulary_name) {
 }
 
 /**
- * Implements hook_form_BASE_FORM_ID_alter()
+ * Remove [all items] from the current search block
  */
-//function mica_datasets_form_variable_node_form_alter(&$form, &$form_state, $form_id) {
-//  dvm($form_id);
-//  dpm($form);
-//  dpm($form_state);
-//}
+function mica_datasets_block_view_alter(&$data, $block) {
+  if (is_null($block) || $block->delta !== 'variable_current_search' || $block->module !== 'current_search') return;
+  foreach($data['content']['active_items']['#items'] as $key => $item) {
+    if ($item === '[all items]') unset($data['content']['active_items']['#items'][$key]);
+  }
+}

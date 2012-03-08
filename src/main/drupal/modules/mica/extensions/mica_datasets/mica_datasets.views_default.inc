@@ -859,14 +859,6 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['fields']['field_repeatable']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_repeatable']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_repeatable']['field_api_classes'] = 0;
-  /* Contextual filter: Dataset: Node ID (indexed) */
-  $handler->display->display_options['arguments']['field_dataset_nid']['id'] = 'field_dataset_nid';
-  $handler->display->display_options['arguments']['field_dataset_nid']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['arguments']['field_dataset_nid']['field'] = 'field_dataset_nid';
-  $handler->display->display_options['arguments']['field_dataset_nid']['default_action'] = 'empty';
-  $handler->display->display_options['arguments']['field_dataset_nid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_dataset_nid']['default_argument_skip_url'] = 0;
-  $handler->display->display_options['arguments']['field_dataset_nid']['summary']['format'] = 'default_summary';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_variable_index';
@@ -902,7 +894,6 @@ It also contains associated support material including variable definitions, lin
     t('Label'),
     t('Value Type'),
     t('Repeatable'),
-    t('All'),
     t('Fulltext search'),
     t('Page'),
   );
