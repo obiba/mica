@@ -93,7 +93,7 @@ function mica_datasets_feeds_importer_default() {
     'import_period' => '-1',
     'expire_period' => 3600,
     'import_on_create' => 1,
-    'process_in_background' => 1,
+    'process_in_background' => 0,
   );
   $export['csv_variables'] = $feeds_importer;
 

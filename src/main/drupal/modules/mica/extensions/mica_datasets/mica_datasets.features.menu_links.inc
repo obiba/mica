@@ -26,7 +26,7 @@ function mica_datasets_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '0',
+    'weight' => '-50',
     'parent_path' => 'node/3',
   );
   // Exported menu link: main-menu:datasets
@@ -45,13 +45,33 @@ function mica_datasets_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '0',
+    'weight' => '-49',
+    'parent_path' => 'node/3',
+  );
+  // Exported menu link: main-menu:variable-search
+  $menu_links['main-menu:variable-search'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'variable-search',
+    'router_path' => 'variable-search',
+    'link_title' => 'Variables Library',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-48',
     'parent_path' => 'node/3',
   );
   // Translatables
   // Included for use with string extractors like potx.
   t('Dataschemas');
   t('Datasets');
+  t('Variables Library');
 
 
   return $menu_links;

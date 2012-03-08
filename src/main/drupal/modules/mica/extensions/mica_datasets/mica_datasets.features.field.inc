@@ -716,6 +716,13 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '2',
+        ),
         'custom_dimensions' => array(
           'label' => 'above',
           'settings' => array(),
@@ -740,6 +747,18 @@ function mica_datasets_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '2',
+        ),
+        'left_area' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
+        ),
+        'right_area' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '22',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -824,12 +843,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 7,
+          'weight' => '7',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -908,12 +946,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '8',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 8,
+          'weight' => '8',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '8',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -993,12 +1050,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '9',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 9,
+          'weight' => '9',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '9',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1078,12 +1154,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 10,
+          'weight' => '10',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1163,12 +1258,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 11,
+          'weight' => '11',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1272,6 +1386,12 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '6',
+        ),
         'custom_dimensions' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1296,6 +1416,19 @@ function mica_datasets_field_default_fields() {
           'settings' => array(),
           'type' => 'node_reference_default',
           'weight' => '6',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => '2',
+        ),
+        'right_area' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '26',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1376,12 +1509,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 12,
+          'weight' => '12',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1461,12 +1613,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 17,
+          'weight' => '17',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1546,12 +1717,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '13',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 13,
+          'weight' => '13',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '13',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1627,6 +1817,12 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
         'custom_dimensions' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1651,6 +1847,19 @@ function mica_datasets_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => '1',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
+        ),
+        'right_area' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '21',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1729,12 +1938,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 14,
+          'weight' => '14',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1814,12 +2042,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '15',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 15,
+          'weight' => '15',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '15',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1899,12 +2146,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '16',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 16,
+          'weight' => '16',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '16',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1984,12 +2250,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 18,
+          'weight' => '18',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2069,12 +2354,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '19',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 19,
+          'weight' => '19',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '19',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2154,12 +2458,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '20',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 20,
+          'weight' => '20',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '20',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2236,6 +2559,12 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => 'Can this variable have multiple values?',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
+        ),
         'custom_dimensions' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2260,6 +2589,19 @@ function mica_datasets_field_default_fields() {
           'settings' => array(),
           'type' => 'list_default',
           'weight' => '5',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => '4',
+        ),
+        'right_area' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '25',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2335,12 +2677,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '21',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 21,
+          'weight' => '21',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '21',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2420,12 +2781,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '22',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 22,
+          'weight' => '22',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '22',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '16',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2505,12 +2885,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '23',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 23,
+          'weight' => '23',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '23',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '17',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2590,12 +2989,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '24',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 24,
+          'weight' => '24',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '24',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '18',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2675,12 +3093,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '25',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 25,
+          'weight' => '25',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '25',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2760,12 +3197,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '26',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 26,
+          'weight' => '26',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '26',
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '20',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2846,6 +3302,12 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
         'custom_dimensions' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2870,6 +3332,19 @@ function mica_datasets_field_default_fields() {
           'settings' => array(),
           'type' => 'list_default',
           'weight' => '4',
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => '3',
+        ),
+        'right_area' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '24',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2931,12 +3406,31 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
+        'banner_area' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'mica_category_field',
           'settings' => array(),
           'type' => 'category_field_table_formatter',
           'weight' => '3',
+        ),
+        'left_area' => array(
+          'label' => 'hidden',
+          'module' => 'mica_category_field',
+          'settings' => array(),
+          'type' => 'category_field_table_formatter',
+          'weight' => '5',
+        ),
+        'right_area' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '23',
         ),
         'teaser' => array(
           'label' => 'above',

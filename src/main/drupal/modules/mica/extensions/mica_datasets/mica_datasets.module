@@ -1108,7 +1108,7 @@ function mica_dataset_private_file_absolute_path($reference) {
  */
 function mica_datasets_node_view_alter(&$build) {
 
-  if ($build['#view_mode'] === 'full' && $build['#bundle'] === 'variable') {
+  if ($build['#view_mode'] === 'right_area' && $build['#bundle'] === 'variable') {
 
     $node = $build['#node'];
     $wrapper = entity_metadata_wrapper('node', $node);
@@ -1122,7 +1122,7 @@ function mica_datasets_node_view_alter(&$build) {
       $build['statistics'] = array(
         '#type' => 'fieldset',
         '#title' => t('Statistics'),
-        '#weight' => 10,
+        '#weight' => 50,
         '#collapsible' => TRUE,
         '#collapsed' => FALSE,
         'table' => array(

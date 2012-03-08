@@ -78,6 +78,32 @@ function mica_datasets_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_categories|node|variable|left_area';
+  $field_group->group_name = 'group_categories';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'variable';
+  $field_group->mode = 'left_area';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Categories',
+    'weight' => '29',
+    'children' => array(
+      0 => 'field_variable_categories',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_categories|node|variable|left_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_datasets|node|study|center_area';
   $field_group->group_name = 'group_datasets';
   $field_group->entity_type = 'node';
@@ -218,6 +244,35 @@ function mica_datasets_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_description|node|variable|left_area';
+  $field_group->group_name = 'group_description';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'variable';
+  $field_group->mode = 'left_area';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Description',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_dataset',
+      1 => 'field_label',
+      2 => 'field_repeatable',
+      3 => 'field_value_type',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_description|node|variable|left_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_dimensions|node|variable|form';
   $field_group->group_name = 'group_dimensions';
   $field_group->entity_type = 'node';
@@ -243,6 +298,51 @@ function mica_datasets_field_group_info() {
     ),
   );
   $export['group_dimensions|node|variable|form'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_dimensions|node|variable|right_area';
+  $field_group->group_name = 'group_dimensions';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'variable';
+  $field_group->mode = 'right_area';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Dimensions',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_anthropometric_structures',
+      1 => 'field_body_functions',
+      2 => 'field_body_structures',
+      3 => 'field_class',
+      4 => 'field_data_source',
+      5 => 'field_disease_history',
+      6 => 'field_early_life',
+      7 => 'field_format',
+      8 => 'field_life_habits_behaviours',
+      9 => 'field_medical_health_interv',
+      10 => 'field_medication',
+      11 => 'field_perception_of_health',
+      12 => 'field_period',
+      13 => 'field_physical_environment',
+      14 => 'field_reproductive_history',
+      15 => 'field_response_unit',
+      16 => 'field_social_environment',
+      17 => 'field_sociodemographic_charact',
+      18 => 'field_target',
+      19 => 'field_target_gender',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_dimensions|node|variable|right_area'] = $field_group;
 
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
