@@ -197,5 +197,67 @@ function mica_datasets_feeds_importer_default() {
   );
   $export['csv_variables'] = $feeds_importer;
 
+  $feeds_importer = new stdClass;
+  $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
+  $feeds_importer->api_version = 1;
+  $feeds_importer->id = 'dataset';
+  $feeds_importer->config = array(
+    'name' => 'Dataset',
+    'description' => 'Import Datasets from a CSV file',
+    'fetcher' => array(
+      'plugin_key' => 'FeedsFileFetcher',
+      'config' => array(
+        'allowed_extensions' => 'csv',
+        'direct' => 0,
+      ),
+    ),
+    'parser' => array(
+      'plugin_key' => 'FeedsCSVParser',
+      'config' => array(
+        'delimiter' => ',',
+        'no_headers' => 0,
+      ),
+    ),
+    'processor' => array(
+      'plugin_key' => 'FeedsNodeProcessor',
+      'config' => array(
+        'content_type' => 'dataset',
+        'expire' => '-1',
+        'author' => 0,
+        'mappings' => array(
+          0 => array(
+            'source' => 'title',
+            'target' => 'title',
+            'unique' => 0,
+          ),
+          1 => array(
+            'source' => 'published',
+            'target' => 'status',
+            'unique' => FALSE,
+          ),
+          2 => array(
+            'source' => 'dataset_type',
+            'target' => 'field_dataset_type',
+            'unique' => FALSE,
+          ),
+          3 => array(
+            'source' => 'body',
+            'target' => 'body',
+            'unique' => FALSE,
+          ),
+        ),
+        'update_existing' => '0',
+        'input_format' => 'plain_text',
+      ),
+    ),
+    'content_type' => '',
+    'update' => 0,
+    'import_period' => '-1',
+    'expire_period' => 3600,
+    'import_on_create' => 1,
+    'process_in_background' => 0,
+  );
+  $export['dataset'] = $feeds_importer;
+
   return $export;
 }

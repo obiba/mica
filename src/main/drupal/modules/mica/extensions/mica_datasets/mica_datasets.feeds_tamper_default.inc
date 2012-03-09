@@ -141,6 +141,18 @@ function mica_datasets_feeds_tamper_default() {
   $feeds_tamper = new stdClass;
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'csv_variables-dataset_name-required_field';
+  $feeds_tamper->importer = 'csv_variables';
+  $feeds_tamper->source = 'dataset_name';
+  $feeds_tamper->plugin_id = 'required';
+  $feeds_tamper->settings = '';
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'Required field';
+  $export['csv_variables-dataset_name-required_field'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass;
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'csv_variables-disease_history-explode';
   $feeds_tamper->importer = 'csv_variables';
   $feeds_tamper->source = 'disease_history';

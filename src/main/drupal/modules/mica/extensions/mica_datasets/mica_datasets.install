@@ -163,7 +163,27 @@ function mica_datasets_schema() {
 }
 
 /**
- * Implements hook_update_N(&$sandbox)
+ * Implements hook_requirements()
+ *
+ */
+function mica_datasets_requirements($phase) {
+  $requirements = array();
+
+  $path = drupal_get_path('module', 'taxonomy_csv');
+  $info = drupal_parse_info_file($path .'/taxonomy_csv.info');
+  $version = $info['version'];
+  $nb = explode('.', substr($version, strpos($version, '-') + 1));
+  
+  if ($nb[0] < 5 || ($nb[0] == 5 && $nb[1] < 10)){
+    $requirements['taxonomy_csv']['severity'] = REQUIREMENT_ERROR;
+    $requirements['taxonomy_csv']['title'] = 'mica_datasets';
+    $requirements['taxonomy_csv']['description'] = t('The version of taxonomy_csv must be >= 5.10');
+  }
+
+  return $requirements;
+}
+
+/**
  *
  * Import default taxonomy dimensions
  */
