@@ -143,7 +143,7 @@ class MicaDatasetQueryTerm extends Entity {
    */
   public function __construct(array $values = array()) {
     $values['module'] = 'mica_datasets';
-    if (isset($values['options']['type']) == FALSE && isset($values['variable_id'])) {
+    if (!isset($values['options']['type']) && isset($values['variable_id'])) {
       $values['options']['type'] = AbstractTerm::typeFor(node_load($values['variable_id']));
     }
     parent::__construct($values, 'mica_dataset_query_term');

@@ -49,10 +49,11 @@ projects[chain_menu_access][type] = module
 projects[ckeditor][version] = 1.6
 projects[ckeditor][type] = module
 
-projects[collapsiblock][version] = 1.0
 projects[collapsiblock][type] = module
-projects[collapsiblock][patch][1301454] = http://drupal.org/files/array2lower-1301454-1.patch
-projects[collapsiblock][patch][1429956] = http://drupal.org/files/missing-jquery-cookie-1429956-3.patch
+projects[collapsiblock][download][type] = git
+projects[collapsiblock][download][url] = http://git.drupal.org/project/collapsiblock.git
+projects[collapsiblock][download][revision] = 36f42804ee1d4072d8cbb81c25b663bd4cdcc447
+projects[collapsiblock][patch][1475244] = http://drupal.org/files/api-function-and-constants-patch1301454-patch1429956.patch
 
 projects[content_access][version] = 1.2-beta1
 projects[content_access][type] = module

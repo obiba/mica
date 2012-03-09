@@ -122,9 +122,7 @@ function mica_datasets_configure_facet_blocks() {
       $success = $nb_updated > 0;
 
       if ($success) {
-        $settings = variable_get('collapsiblock_settings', array());
-        $settings['block-facetapi-' . str_replace('_', '-', $facet_delta)] = 2; // Collapsible, expanded by default
-        variable_set('collapsiblock_settings', $settings);
+        collapsiblock_set_collapsible_type('facetapi', $facet_delta, COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT);
       }
 
       watchdog('mica', 'Facet block configuration for %facet (%delta)',
