@@ -83,6 +83,106 @@ function mica_datasets_feeds_importer_default() {
             'target' => 'field_variable_categories:missing',
             'unique' => FALSE,
           ),
+          9 => array(
+            'source' => 'disease_history',
+            'target' => 'field_disease_history',
+            'unique' => FALSE,
+          ),
+          10 => array(
+            'source' => 'medical_health_interv',
+            'target' => 'field_medical_health_interv',
+            'unique' => FALSE,
+          ),
+          11 => array(
+            'source' => 'medication',
+            'target' => 'field_medication',
+            'unique' => FALSE,
+          ),
+          12 => array(
+            'source' => 'reproductive_history',
+            'target' => 'field_reproductive_history',
+            'unique' => FALSE,
+          ),
+          13 => array(
+            'source' => 'early_life',
+            'target' => 'field_early_life',
+            'unique' => FALSE,
+          ),
+          14 => array(
+            'source' => 'life_habits_behaviours',
+            'target' => 'field_life_habits_behaviours',
+            'unique' => FALSE,
+          ),
+          15 => array(
+            'source' => 'sociodemographic_charact',
+            'target' => 'field_sociodemographic_charact',
+            'unique' => FALSE,
+          ),
+          16 => array(
+            'source' => 'physical_environment',
+            'target' => 'field_physical_environment',
+            'unique' => FALSE,
+          ),
+          17 => array(
+            'source' => 'social_environment',
+            'target' => 'field_social_environment',
+            'unique' => FALSE,
+          ),
+          18 => array(
+            'source' => 'perception_of_health',
+            'target' => 'field_perception_of_health',
+            'unique' => FALSE,
+          ),
+          19 => array(
+            'source' => 'anthropometric_structures',
+            'target' => 'field_anthropometric_structures',
+            'unique' => FALSE,
+          ),
+          20 => array(
+            'source' => 'body_structures',
+            'target' => 'field_body_structures',
+            'unique' => FALSE,
+          ),
+          21 => array(
+            'source' => 'body_functions',
+            'target' => 'field_body_functions',
+            'unique' => FALSE,
+          ),
+          22 => array(
+            'source' => 'data_source',
+            'target' => 'field_data_source',
+            'unique' => FALSE,
+          ),
+          23 => array(
+            'source' => 'response_unit',
+            'target' => 'field_response_unit',
+            'unique' => FALSE,
+          ),
+          24 => array(
+            'source' => 'target',
+            'target' => 'field_target',
+            'unique' => FALSE,
+          ),
+          25 => array(
+            'source' => 'target_gender',
+            'target' => 'field_target_gender',
+            'unique' => FALSE,
+          ),
+          26 => array(
+            'source' => 'period',
+            'target' => 'field_period',
+            'unique' => FALSE,
+          ),
+          27 => array(
+            'source' => 'class',
+            'target' => 'field_class',
+            'unique' => FALSE,
+          ),
+          28 => array(
+            'source' => 'format',
+            'target' => 'field_format',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',

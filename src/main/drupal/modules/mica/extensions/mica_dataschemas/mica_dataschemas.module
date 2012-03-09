@@ -18,8 +18,8 @@ function mica_dataschemas_form($node, &$form_state) {
  * Implements hook_install().
  */
 function mica_dataschemas_install() {
-  watchdog('mica', 'Create taxonomies', array(), WATCHDOG_INFO);  
-  _mica_dataschemas_import_taxonomies();
+//   watchdog('mica', 'Create taxonomies', array(), WATCHDOG_INFO);  
+//   _mica_dataschemas_import_taxonomies();
 }
 
 /**
@@ -137,99 +137,7 @@ function mica_dataschemas_entity_view($entity, $type, $view_mode, $langcode){
   }
 }
 
-function _mica_dataschemas_import_taxonomies() {
-  $batch = array(
-    'operations' => array(
-    	array('_mica_dataschemas_import_taxonomy', array('anthropometric_structures.csv', 'Anthropometric Structures')),
-      array('_mica_dataschemas_import_taxonomy',  array('body_functions.csv', 'Body Functions')),
-      array('_mica_dataschemas_import_taxonomy',  array('body_structures.csv', 'Body Structures')),
-      array('_mica_dataschemas_import_taxonomy',  array('class.csv', 'Class')),
-      array('_mica_dataschemas_import_taxonomy',  array('data_source.csv', 'Data Source')),		 
-      array('_mica_dataschemas_import_taxonomy', array('disease_history.csv', 'Diseases History and Related Health Problems')),
-      array('_mica_dataschemas_import_taxonomy', array('early_life.csv', 'Participant\'s Early Life/Childhood')),
-      array('_mica_dataschemas_import_taxonomy', array('format.csv', 'Format')),
-      array('_mica_dataschemas_import_taxonomy', array('life_habits_behaviours.csv', 'Life Habits/Behaviours')),
-      array('_mica_dataschemas_import_taxonomy', array('medical_health_intervention.csv', 'Medical Health Interventions/Health Services Utilization')),
-      array('_mica_dataschemas_import_taxonomy', array('medication.csv', 'Medication')),
-      array('_mica_dataschemas_import_taxonomy', array('perception_of_health.csv', 'Perception of Health/Quality of life')),
-      array('_mica_dataschemas_import_taxonomy', array('period.csv', 'Period')),
-      array('_mica_dataschemas_import_taxonomy', array('physical_environment.csv', 'Physical Environment')),
-      array('_mica_dataschemas_import_taxonomy', array('reproductive_history.csv', 'Reproductive Health and History')),
-      array('_mica_dataschemas_import_taxonomy', array('response_unit.csv', 'Response Unit')),
-      array('_mica_dataschemas_import_taxonomy', array('social_environment.csv', 'Social Environment')),
-      array('_mica_dataschemas_import_taxonomy', array('sociodemographic_characteristics.csv', 'Sociodemographic/Socioeconomic Characteristics')),
-      array('_mica_dataschemas_import_taxonomy', array('target.csv', 'Target')),
-      array('_mica_dataschemas_import_taxonomy', array('target_gender.csv', 'Target Gender')),
-  	),
-  	'title' => st('Import DataSchemas Dimensions'),
-    'init_message' => st('Starting import'),
-    'error_message' => st('Error while importing dimensions'),
-    'finished' => '_mica_dataschemas_configuration_finished',
-  );
-  batch_set($batch);
-	batch_process();
-}
 
 function _mica_dataschemas_configuration_finished($success, $results, $operations) {
 	drupal_set_message(t("DataSchemas dimensions import finished"));
 }
-
-function _mica_dataschemas_import_taxonomy($filename, $vocabulary_name) {
-  // use filename (without extension) for vocabulary machine name
-  $vocabulary = (object) array(
-  	'name' => $vocabulary_name, 
-  	'machine_name' => substr($filename, 0, strlen($filename) - 4)
-  );
-  taxonomy_vocabulary_save($vocabulary);
-  
-  $path = drupal_get_path('module', 'mica_dataschemas') . '/taxonomies/' . $filename;
-  $file_path = drupal_realpath($path);
-  $result  = taxonomy_csv_import(array(
-    'import_format' => 'tree_structure',
-    'delimiter' => ',',
-    'enclosure' => '"',
-    'keep_order' => true,
-  	'file' => (object) array(
-      'filename' => $filename,
-      'filepath' => $file_path,
-      'filesize' => filesize($path)
-    ),
-    'vocabulary_target' => 'existing',
-    'vocabulary_id' => $vocabulary->vid
-  ));
-  
-  watchdog('mica', 'Imported taxonomy %file to vocabulary %vocabulary: %result',
-    array(
-    	'%file' => $file_path, 
-      '%vocabulary' => $vocabulary_name,
-      '%result' => $result,
-    ), WATCHDOG_INFO);
-  
-}
-
-// function mica_dataschemas_menu() {
-// 	$items['admin/config/development/mica'] = array(
-//     'title' => 'Mica',
-//     'description' => 'Dev tools for Mica',
-//   	'page callback' => 'drupal_get_form',
-//     'page arguments' => array('_mica_dataschemas_facets_form'),
-//     'access arguments' => array('administer site configuration'),
-// 	);
-// 	return $items;
-// }
-
-// function _mica_dataschemas_facets_form() {
-// 	$form['description'] = array(
-//   	'#markup' => '<p>' . t('Configure facets') . '</p>',
-// 	);
-// 	$form['run'] = array(
-//     '#type' => 'submit',
-//     '#value' => t('Configure'),
-//     '#submit' => array('_mica_dataschemas_facets_configure'),
-// 	);
-// 	return $form;
-// }
-
-// function _mica_dataschemas_execute() {
-
-// }

@@ -97,8 +97,7 @@ projects[feeds][download][type] = git
 projects[feeds][download][url] = http://git.drupal.org/project/feeds.git
 projects[feeds][download][revision] = cc2d2eccfe7c8a30dcfefa49fd57407cb6f47cf5
 projects[feeds][patch][1107522] = http://drupal.org/files/issues/1107522-empty-fields-2.patch
-
-
+projects[feeds][patch][1107522] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-13.patch
 
 projects[feeds_jsonpath_parser][version] = 1.0-beta2
 projects[feeds_jsonpath_parser][type] = module
