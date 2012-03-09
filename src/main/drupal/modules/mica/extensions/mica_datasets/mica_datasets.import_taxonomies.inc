@@ -1,6 +1,6 @@
 <?php
 
-require_once(drupal_get_path('module', 'taxonomy_csv') . "/import/taxonomy_csv.import.api.inc");
+require_once(drupal_get_path('module', 'taxonomy_csv') . '/import/taxonomy_csv.import.api.inc');
 
 function _mica_datasets_taxonomies() {
   return array(

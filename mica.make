@@ -35,6 +35,11 @@ projects[acl][type] = module
 projects[auto_nodetitle][version] = 1.0
 projects[auto_nodetitle][type] = module
 
+projects[autocomplete_deluxe][type] = module
+projects[autocomplete_deluxe][download][type] = git
+projects[autocomplete_deluxe][download][url] = http://git.drupal.org/project/autocomplete_deluxe.git
+projects[autocomplete_deluxe][download][revision] = b9e4b6b745b38ba4b0b3696e26ffc4fc23c85c9f
+
 projects[] = advanced_help
 
 projects[calendar][version] = 3.0
@@ -58,8 +63,10 @@ projects[collapsiblock][patch][1475244] = http://drupal.org/files/api-function-a
 projects[content_access][version] = 1.2-beta1
 projects[content_access][type] = module
 
-projects[content_taxonomy][version] = 1.0-beta1
 projects[content_taxonomy][type] = module
+projects[content_taxonomy][download][type] = git
+projects[content_taxonomy][download][url] = http://git.drupal.org/project/content_taxonomy.git
+projects[content_taxonomy][download][revision] = 5d0257a2f955e2d9d9b74e0e3b152ebaad1a3cb1
 
 projects[ctools][type] = module
 projects[ctools][download][type] = git
@@ -220,9 +227,6 @@ projects[smtp][type] = module
 
 projects[strongarm][version] = 2.0-beta5
 projects[strongarm][type] = module
-
-projects[tagging][version] = 3.3
-projects[tagging][type] = module
 
 projects[taxonomy_csv][version] = 5.10
 projects[taxonomy_csv][type] = module
