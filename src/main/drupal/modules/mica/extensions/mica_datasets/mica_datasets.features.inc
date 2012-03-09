@@ -139,8 +139,8 @@ function mica_datasets_default_search_api_index() {
           "settings" : { "fields" : { "search_api_aggregation_1" : {
                 "name" : "Title and Label",
                 "type" : "fulltext",
-                "fields" : [ "title", "field_label" ],
-                "description" : "A Fulltext aggregation of the following fields: Title, Label."
+                "fields" : [ "title", "field_original_field_label", "field_label" ],
+                "description" : "A Fulltext aggregation of the following fields: Title, Label, Label."
               }
             }
           }

@@ -1733,7 +1733,7 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['fields']['field_variable_categories']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_variable_categories']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_variable_categories']['click_sort_column'] = 'name';
-  $handler->display->display_options['fields']['field_variable_categories']['type'] = 'category_field_table_formatter';
+  $handler->display->display_options['fields']['field_variable_categories']['type'] = 'category_field_key_formatter';
   $handler->display->display_options['fields']['field_variable_categories']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_variable_categories']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_variable_categories']['delta_reversed'] = 0;
@@ -1765,7 +1765,7 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['fields']['field_variable_categories_1']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_variable_categories_1']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_variable_categories_1']['click_sort_column'] = 'name';
-  $handler->display->display_options['fields']['field_variable_categories_1']['type'] = 'category_field_table_formatter';
+  $handler->display->display_options['fields']['field_variable_categories_1']['type'] = 'category_field_key_formatter';
   $handler->display->display_options['fields']['field_variable_categories_1']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_variable_categories_1']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_variable_categories_1']['delta_reversed'] = 0;
@@ -1797,7 +1797,7 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['fields']['field_variable_categories_2']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_variable_categories_2']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_variable_categories_2']['click_sort_column'] = 'name';
-  $handler->display->display_options['fields']['field_variable_categories_2']['type'] = 'category_field_table_formatter';
+  $handler->display->display_options['fields']['field_variable_categories_2']['type'] = 'category_field_key_formatter';
   $handler->display->display_options['fields']['field_variable_categories_2']['group_rows'] = 1;
   $handler->display->display_options['fields']['field_variable_categories_2']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_variable_categories_2']['delta_reversed'] = 0;
@@ -2029,7 +2029,6 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['fields'] = array(
-    'title' => 'title',
     'search_api_aggregation_1' => 'search_api_aggregation_1',
   );
 
