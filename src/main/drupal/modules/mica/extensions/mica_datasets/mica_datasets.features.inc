@@ -90,7 +90,7 @@ function mica_datasets_default_search_api_index() {
       "fields" : {
         "nid" : { "type" : "integer" },
         "type" : { "type" : "string" },
-        "title" : { "type" : "text" },
+        "title" : { "type" : "string" },
         "field_repeatable" : { "type" : "boolean" },
         "field_value_type" : { "type" : "string" },
         "field_anthropometric_structures" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
