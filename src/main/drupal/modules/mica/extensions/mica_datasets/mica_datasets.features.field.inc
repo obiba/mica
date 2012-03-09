@@ -867,7 +867,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '1',
+          'weight' => '16',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -893,7 +893,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '56',
+        'weight' => '54',
       ),
     ),
   );
@@ -971,7 +971,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '2',
+          'weight' => '18',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -997,7 +997,7 @@ function mica_datasets_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '58',
+        'weight' => '56',
       ),
     ),
   );
@@ -1076,7 +1076,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '3',
+          'weight' => '17',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1102,7 +1102,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '57',
+        'weight' => '55',
       ),
     ),
   );
@@ -1181,7 +1181,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '4',
+          'weight' => '22',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1207,7 +1207,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '49',
+        'weight' => '60',
       ),
     ),
   );
@@ -1564,7 +1564,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '46',
+        'weight' => '44',
       ),
     ),
   );
@@ -1643,7 +1643,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '11',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1669,7 +1669,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '50',
+        'weight' => '48',
       ),
     ),
   );
@@ -1748,7 +1748,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '7',
+          'weight' => '24',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1774,7 +1774,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '50',
+        'weight' => '62',
       ),
     ),
   );
@@ -1970,7 +1970,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '8',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1996,7 +1996,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '51',
+        'weight' => '49',
       ),
     ),
   );
@@ -2075,7 +2075,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '9',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2101,7 +2101,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '47',
+        'weight' => '45',
       ),
     ),
   );
@@ -2180,7 +2180,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '10',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2206,7 +2206,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '48',
+        'weight' => '46',
       ),
     ),
   );
@@ -2285,7 +2285,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '12',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2311,7 +2311,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '55',
+        'weight' => '53',
       ),
     ),
   );
@@ -2390,7 +2390,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '13',
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2416,7 +2416,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '48',
+        'weight' => '57',
       ),
     ),
   );
@@ -2495,7 +2495,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '14',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2521,7 +2521,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '53',
+        'weight' => '51',
       ),
     ),
   );
@@ -2715,7 +2715,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '15',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2741,7 +2741,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '49',
+        'weight' => '47',
       ),
     ),
   );
@@ -2820,7 +2820,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '16',
+          'weight' => '23',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2846,7 +2846,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '44',
+        'weight' => '61',
       ),
     ),
   );
@@ -2925,7 +2925,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '17',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2951,7 +2951,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '54',
+        'weight' => '52',
       ),
     ),
   );
@@ -3030,7 +3030,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '18',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3056,7 +3056,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '52',
+        'weight' => '50',
       ),
     ),
   );
@@ -3135,7 +3135,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '19',
+          'weight' => '20',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3161,7 +3161,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '46',
+        'weight' => '58',
       ),
     ),
   );
@@ -3240,7 +3240,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '20',
+          'weight' => '21',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3266,7 +3266,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '47',
+        'weight' => '59',
       ),
     ),
   );
