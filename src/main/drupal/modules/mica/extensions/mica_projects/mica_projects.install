@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Mica Projects module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function mica_projects_install() {
+  _mica_projects_configure_field_bundle_settings();
+}
+
+/**
+ * Manually configure field_bundle_settings variable because it is exported via strongarms
+ * so it cannot be configured in severals modules
+ */
+function _mica_projects_configure_field_bundle_settings() {
+  $project_settings = array(
+    'view_modes' => array(
+      'teaser' => array('custom_settings' => true),
+    ),
+    'extra_fields' => array(
+      'form' => array(),
+      'display' => array(),
+    ),
+  );
+  field_bundle_settings('node', 'project', $project_settings);
+}

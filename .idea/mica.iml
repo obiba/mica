@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.1-SNAPSHOT-local" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-SNAPSHOT-local" />
+      <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-SNAPSHOT/sites/all/modules/mica" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

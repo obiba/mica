@@ -1,0 +1,118 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Mica Studies module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function mica_studies_install() {
+  _mica_import_custom_name_format();
+  _mica_node_reference_block();
+  _mica_studies_create_date_format();
+  _mica_studies_configure_field_bundle_settings();
+}
+
+/**
+ * Create custom date format because Features does not support date_formats yet
+ * @see http://drupal.org/node/1279928
+ */
+function _mica_studies_create_date_format() {
+  $pattern = 'M Y';
+
+  $format = array();
+  $format['format'] = $pattern;
+  $format['type'] = 'custom';
+  $format['locked'] = 0;
+  $format['is_new'] = 1;
+  system_date_format_save($format);
+
+  $machine_name = 'month_year';
+  $format_type = array();
+  $format_type['title'] = 'Month year';
+  $format_type['type'] = $machine_name;
+  $format_type['locked'] = 0;
+  $format_type['is_new'] = 1;
+  system_date_format_type_save($format_type);
+
+  variable_set('date_format_' . $machine_name, $pattern);
+}
+
+function _mica_import_custom_name_format() {
+  // add custom field format for name until next release of views
+  $custom_format = array(
+    'name' => 'Title',
+    'machine_name' => 'title',
+    'format' => 't',
+  );
+  drupal_write_record('name_custom_format', $custom_format);
+}
+
+function _mica_node_reference_block() {
+  db_delete('block_node_type')
+    ->condition('module', 'node_reference_block')
+    ->condition('delta', 'related-content')
+    ->condition('type', 'study%','LIKE')
+    ->execute();
+  $query = db_insert('block_node_type')->fields(array('type', 'module', 'delta'));
+  foreach (array('study', 'contact') as $type) {
+    $query->values(array(
+      'type' => $type,
+      'module' => 'node_reference_block',
+      'delta' => 'related-content',
+    ));
+  }
+  $query->execute();
+}
+
+/**
+ * Manually configure field_bundle_settings variable because it is exported via strongarms
+ * so it cannot be configured in severals modules
+ */
+function _mica_studies_configure_field_bundle_settings() {
+  $study_settings = array(
+    'view_modes' => array(
+      'teaser' => array('custom_settings' => true),
+      'banner_area' => array('custom_settings' => true),
+      'left_area' => array('custom_settings' => true),
+      'right_area' => array('custom_settings' => true),
+      'center_area' => array('custom_settings' => true),
+      'footer_area' => array('custom_settings' => true),
+    ),
+    'extra_fields' => array(
+      'form' => array(
+        'title' => array('weight' => '12'),
+        'path' => array('weight' => '1'),
+      ),
+      'display' => array(),
+    ),
+  );
+  field_bundle_settings('node', 'study', $study_settings);
+
+  $contact_settings = array(
+    'view_modes' => array(
+      'teaser' => array('custom_settings' => TRUE),
+    ),
+    'extra_fields' => array(
+      'form' => array(
+        'title' => array('weight' => '0'),
+        'path' => array('weight' => '1'),
+      ),
+      'display' => array(),
+    ),
+  );
+  field_bundle_settings('node', 'contact', $contact_settings);
+
+  $documents_settings = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'title' => array('weight' => '-5'),
+      ),
+      'display' => array(),
+    ),
+  );
+  field_bundle_settings('node', 'documents', $documents_settings);
+}

@@ -6,6 +6,13 @@
  */
 
 /**
+ * Implements hook_install().
+ */
+function mica_datasets_install() {
+  _mica_datasets_configure_field_bundle_settings();
+}
+
+/**
  * Implements hook_schema().
  */
 function mica_datasets_schema() {
@@ -188,8 +195,11 @@ function mica_datasets_requirements($phase) {
  * Import default taxonomy dimensions
  */
 function mica_datasets_update_7120(&$sandbox) {
+
   watchdog('mica', 'Import dataschema dimensions', array(), WATCHDOG_INFO);
   try {
+
+    _mica_datasets_configure_field_bundle_settings();
 
     $taxonomies = _mica_datasets_taxonomies();
     if (!isset($sandbox['progress'])) {
@@ -208,3 +218,22 @@ function mica_datasets_update_7120(&$sandbox) {
   }
 }
 
+/**
+ * Manually configure field_bundle_settings variable because it is exported via strongarms in mica_studies
+ * so we can't export variable display configuration in mica_datasets.
+ */
+function _mica_datasets_configure_field_bundle_settings() {
+  $variable_settings = array(
+    'view_modes' => array(
+      'teaser' => array('custom_settings' => true),
+      'banner_area' => array('custom_settings' => true),
+      'left_area' => array('custom_settings' => true),
+      'right_area' => array('custom_settings' => true),
+    ),
+    'extra_fields' => array(
+      'form' => array(),
+      'display' => array(),
+    ),
+  );
+  field_bundle_settings('node', 'variable', $variable_settings);
+}

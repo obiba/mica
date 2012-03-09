@@ -176,6 +176,9 @@ abstract class AbstractTerm implements QueryTermInterface {
     return $connectors;
   }
 
+  function hasConnectors() {
+    return count($this->getConnectors()) > 0;
+  }
 
 }
 

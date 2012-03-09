@@ -15,14 +15,16 @@ function mica_install() {
   mica_add_page('Resources', '', 'resources');
   mica_add_page('Consortium Policies and Guidelines', '', 'data-access/policy');
   
-  $spec = array(
+  $search_api_index_options = array(
     'description' => 'An array of additional arguments configuring this index.',
     'type' => 'text',
     'size' => 'big',
     'serialize' => TRUE,
     'not null' => TRUE,
   );
-  db_change_field('search_api_index', 'options', 'options', $spec);
+  db_change_field('search_api_index', 'options', 'options', $search_api_index_options);
+
+  _mica_configure_field_bundle_settings();
 }
 
 function mica_add_page($title, $body, $alias) {
@@ -121,4 +123,21 @@ function mica_update_7110(&$sandbox) {
   // disable old facet module
   module_disable(array('search_api_facets'));
   
+}
+
+/**
+ * Manually configure field_bundle_settings variable because it is exported via strongarms
+ * so it cannot be configured in severals modules
+ */
+function _mica_configure_field_bundle_settings() {
+  $page_settings = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'title' => array('weight' => '-5')
+      ),
+      'display' => array(),
+    ),
+  );
+  field_bundle_settings('node', 'page', $page_settings);
 }

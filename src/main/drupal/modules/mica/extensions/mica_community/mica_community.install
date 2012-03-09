@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Mica Community module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function mica_community_install() {
+  _mica_community_configure_field_bundle_settings();
+}
+
+/**
+ * Manually configure field_bundle_settings variable because it is exported via strongarms
+ * so it cannot be configured in severals modules
+ */
+function _mica_community_configure_field_bundle_settings() {
+  $publication_settings = array(
+    'view_modes' => array(
+      'teaser' => array('custom_settings' => true),
+    ),
+    'extra_fields' => array(
+      'form' => array(
+        'title' => array('weight' => '0')
+      ),
+      'display' => array(),
+    ),
+  );
+  field_bundle_settings('node', 'publication', $publication_settings);
+}
