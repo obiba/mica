@@ -2261,3 +2261,7 @@ body.node-type-study .field-name-field-logo {
 label.option {
   font-weight: normal;
 }
+
+.field-type-taxonomy-term-reference .field-label {
+  color: inherit;
+}
