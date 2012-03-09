@@ -351,7 +351,6 @@ mica-local-copy:
 	cp -r target/$(micadir)-local target/$(micadir)
 
 
-
 #
 # Misc
 #
@@ -385,10 +384,10 @@ make-info = $(call make-info-version,$(1),$(2),$($(2)_version))
 make-info-version = cd target/$(micadir)/$(1) && \
 	sed -i "/version/d" $2/$2.info && \
 	sed -i "/datestamp/d" $2/$2.info && \
+	sed -i "/Information added by obiba.org packaging script/d" $2/$2.info && \
 	echo "\n\n; Information added by obiba.org packaging script on $(deb_date)" >> $2/$2.info && \
 	echo "version = \"$(3)\"" >> $2/$2.info && \
 	echo "datestamp = \"$(datestamp)\"" >> $2/$2.info
-
 
 # make-package function: build tar.gz and zip files of a project
 make-package = cd target/$(micadir)/$(1) && \
