@@ -182,11 +182,12 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Access',
       'instance_settings' => array(
-        'description' => '',
         'classes' => '',
+        'description' => 'Access to external researchers or third parties provided or foreseen for',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_access|node|study|center_area'] = $field_group;

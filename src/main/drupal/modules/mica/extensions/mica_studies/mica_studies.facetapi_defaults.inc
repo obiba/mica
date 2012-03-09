@@ -1054,7 +1054,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_current_part_nb_date';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'search_api_ranges_ui_slider',
@@ -1166,7 +1166,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_current_samples_date';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'search_api_ranges_ui_slider',
@@ -2258,7 +2258,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_select_criteria';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',
