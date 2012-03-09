@@ -1,7 +1,5 @@
 <?php
 
-// @see http://evolvingweb.ca/story/poutine-maker-introduction-field-api-drupal-7-part-1
-// @see https://github.com/tarmstrong/poutine_maker
 
 /**
  * Implements hook_field_info()
@@ -198,6 +196,10 @@ function mica_category_field_field_formatter_info() {
       'label' => t('Table'),
       'field types' => array('category_field'),
     ),
+    'category_field_key_formatter' => array(
+      'label' => t('Key'),
+      'field types' => array('category_field'),
+    ),
   );
 }
 
@@ -237,9 +239,65 @@ function mica_category_field_field_formatter_view($entity_type, $entity, $field,
         '#rows' => $rows,
       );
       break;
+
+    case 'category_field_key_formatter':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = _mica_category_field_format_key_field($item);
+      }
+      break;
   }
   return $element;
 }
+
+
+/**
+ * Helper to render a single formatted entry.
+ * Returns a structured array that will display the data stored in $item.
+ */
+function _mica_category_field_format_key_field($item) {
+  $element = array(
+    '#type' => 'container',
+    '#attributes' => array('class' => array('field-item')),
+  );
+  $element['name'] = array(
+    'label' => array(
+      '#type' => 'container',
+      '#attributes' => array('class' => array('field-label')),
+      'text' => array('#markup' => t('Name')),
+    ),
+    'item' => array(
+      '#type' => 'container',
+      '#attributes' => array('class' => array('field-item')),
+      'text' => array('#markup' => $item['name']),
+    ),
+  );
+  $element['label'] = array(
+    'label' => array(
+      '#type' => 'container',
+      '#attributes' => array('class' => array('field-label')),
+      'text' => array('#markup' => t('Label')),
+    ),
+    'item' => array(
+      '#type' => 'container',
+      '#attributes' => array('class' => array('field-item')),
+      'text' => array('#markup' => $item['label']),
+    ),
+  );
+  $element['missing'] = array(
+    'label' => array(
+      '#type' => 'container',
+      '#attributes' => array('class' => array('field-label')),
+      'text' => array('#markup' => t('Missing')),
+    ),
+    'item' => array(
+      '#type' => 'container',
+      '#attributes' => array('class' => array('field-item')),
+      'text' => array('#markup' => $item['missing']),
+    ),
+  );
+  return $element;
+}
+
 
 /**
  * Implements hook_field_presave().
