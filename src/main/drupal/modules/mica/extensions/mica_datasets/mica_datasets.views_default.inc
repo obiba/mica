@@ -2026,7 +2026,7 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['fields']['field_label']['alter']['ellipsis'] = 1;
   $handler->display->display_options['fields']['field_label']['alter']['more_link'] = 0;
   $handler->display->display_options['fields']['field_label']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['trim'] = 1;
+  $handler->display->display_options['fields']['field_label']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_label']['alter']['html'] = 0;
   $handler->display->display_options['fields']['field_label']['element_label_colon'] = 1;
   $handler->display->display_options['fields']['field_label']['element_default_classes'] = 1;
@@ -2094,133 +2094,6 @@ It also contains associated support material including variable definitions, lin
     t('Page'),
   );
   $export['variable_search'] = $view;
-
-  $view = new view;
-  $view->name = 'variables';
-  $view->description = '';
-  $view->tag = 'dataset';
-  $view->base_table = 'node';
-  $view->human_name = 'Variables';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Data Dictionnary';
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
-  $handler->display->display_options['style_plugin'] = 'table';
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['label'] = 'empty_variables';
-  $handler->display->display_options['empty']['area']['empty'] = FALSE;
-  $handler->display->display_options['empty']['area']['content'] = 'No variables found.';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Name';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-  /* Field: Content: Label */
-  $handler->display->display_options['fields']['field_label']['id'] = 'field_label';
-  $handler->display->display_options['fields']['field_label']['table'] = 'field_data_field_label';
-  $handler->display->display_options['fields']['field_label']['field'] = 'field_label';
-  $handler->display->display_options['fields']['field_label']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_label']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_label']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_label']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_label']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_label']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_label']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_label']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_label']['field_api_classes'] = 0;
-  /* Sort criterion: Content: Title */
-  $handler->display->display_options['sorts']['title']['id'] = 'title';
-  $handler->display->display_options['sorts']['title']['table'] = 'node';
-  $handler->display->display_options['sorts']['title']['field'] = 'title';
-  /* Contextual filter: Content: Dataset (field_dataset) */
-  $handler->display->display_options['arguments']['field_dataset_nid']['id'] = 'field_dataset_nid';
-  $handler->display->display_options['arguments']['field_dataset_nid']['table'] = 'field_data_field_dataset';
-  $handler->display->display_options['arguments']['field_dataset_nid']['field'] = 'field_dataset_nid';
-  $handler->display->display_options['arguments']['field_dataset_nid']['default_action'] = 'empty';
-  $handler->display->display_options['arguments']['field_dataset_nid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_dataset_nid']['default_argument_skip_url'] = 0;
-  $handler->display->display_options['arguments']['field_dataset_nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_dataset_nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_dataset_nid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['field_dataset_nid']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['field_dataset_nid']['not'] = 0;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'variable' => 'variable',
-  );
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'variables';
-  $translatables['variables'] = array(
-    t('Master'),
-    t('Data Dictionnary'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('empty_variables'),
-    t('No variables found.'),
-    t('Name'),
-    t('Label'),
-    t('All'),
-    t('Page'),
-  );
-  $export['variables'] = $view;
 
   return $export;
 }
