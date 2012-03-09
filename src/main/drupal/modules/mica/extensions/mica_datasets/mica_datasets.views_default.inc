@@ -11,172 +11,6 @@ function mica_datasets_views_default_views() {
   $export = array();
 
   $view = new view;
-  $view->name = 'category_csv_export';
-  $view->description = 'Export of all Categories in CSV';
-  $view->tag = 'csv';
-  $view->base_table = 'node';
-  $view->human_name = 'Category CSV Export';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Categories */
-  $handler->display->display_options['fields']['field_variable_categories']['id'] = 'field_variable_categories';
-  $handler->display->display_options['fields']['field_variable_categories']['table'] = 'field_data_field_variable_categories';
-  $handler->display->display_options['fields']['field_variable_categories']['field'] = 'field_variable_categories';
-  $handler->display->display_options['fields']['field_variable_categories']['label'] = 'category_name';
-  $handler->display->display_options['fields']['field_variable_categories']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories']['alter']['text'] = '[field_variable_categories-name] ';
-  $handler->display->display_options['fields']['field_variable_categories']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories']['click_sort_column'] = 'name';
-  $handler->display->display_options['fields']['field_variable_categories']['type'] = 'category_field_table_formatter';
-  $handler->display->display_options['fields']['field_variable_categories']['group_rows'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_variable_categories']['delta_reversed'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['field_api_classes'] = 0;
-  /* Field: Content: Categories */
-  $handler->display->display_options['fields']['field_variable_categories_1']['id'] = 'field_variable_categories_1';
-  $handler->display->display_options['fields']['field_variable_categories_1']['table'] = 'field_data_field_variable_categories';
-  $handler->display->display_options['fields']['field_variable_categories_1']['field'] = 'field_variable_categories';
-  $handler->display->display_options['fields']['field_variable_categories_1']['label'] = 'category_label';
-  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['text'] = '[field_variable_categories_1-label]';
-  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_1']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories_1']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories_1']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_1']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_1']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories_1']['click_sort_column'] = 'name';
-  $handler->display->display_options['fields']['field_variable_categories_1']['type'] = 'category_field_table_formatter';
-  $handler->display->display_options['fields']['field_variable_categories_1']['group_rows'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories_1']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_variable_categories_1']['delta_reversed'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_1']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_1']['separator'] = '|';
-  $handler->display->display_options['fields']['field_variable_categories_1']['field_api_classes'] = 0;
-  /* Field: Content: Categories */
-  $handler->display->display_options['fields']['field_variable_categories_2']['id'] = 'field_variable_categories_2';
-  $handler->display->display_options['fields']['field_variable_categories_2']['table'] = 'field_data_field_variable_categories';
-  $handler->display->display_options['fields']['field_variable_categories_2']['field'] = 'field_variable_categories';
-  $handler->display->display_options['fields']['field_variable_categories_2']['label'] = 'category_missing';
-  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['text'] = '[field_variable_categories_2-missing]';
-  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_2']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories_2']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories_2']['empty'] = '0';
-  $handler->display->display_options['fields']['field_variable_categories_2']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_2']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_2']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories_2']['click_sort_column'] = 'name';
-  $handler->display->display_options['fields']['field_variable_categories_2']['type'] = 'category_field_table_formatter';
-  $handler->display->display_options['fields']['field_variable_categories_2']['group_rows'] = 1;
-  $handler->display->display_options['fields']['field_variable_categories_2']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_variable_categories_2']['delta_reversed'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_2']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_2']['separator'] = '|';
-  $handler->display->display_options['fields']['field_variable_categories_2']['field_api_classes'] = 0;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: Content: Categories (field_variable_categories:name) */
-  $handler->display->display_options['filters']['field_variable_categories_name']['id'] = 'field_variable_categories_name';
-  $handler->display->display_options['filters']['field_variable_categories_name']['table'] = 'field_data_field_variable_categories';
-  $handler->display->display_options['filters']['field_variable_categories_name']['field'] = 'field_variable_categories_name';
-  $handler->display->display_options['filters']['field_variable_categories_name']['operator'] = 'not empty';
-
-  /* Display: Data export */
-  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
-  $handler->display->display_options['style_options']['provide_file'] = 1;
-  $handler->display->display_options['style_options']['filename'] = '%view_%timestamp-yyyy-%timestamp-mm-%timestamp-dd.csv';
-  $handler->display->display_options['style_options']['parent_sort'] = 0;
-  $handler->display->display_options['style_options']['quote'] = 1;
-  $handler->display->display_options['style_options']['trim'] = 0;
-  $handler->display->display_options['style_options']['replace_newlines'] = 0;
-  $handler->display->display_options['style_options']['header'] = 1;
-  $handler->display->display_options['path'] = 'catagory-csv';
-  $translatables['category_csv_export'] = array(
-    t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('category_name'),
-    t('[field_variable_categories-name] '),
-    t('category_label'),
-    t('[field_variable_categories_1-label]'),
-    t('category_missing'),
-    t('[field_variable_categories_2-missing]'),
-    t('Data export'),
-  );
-  $export['category_csv_export'] = $view;
-
-  $view = new view;
   $view->name = 'dataschemas';
   $view->description = '';
   $view->tag = 'dataset';
@@ -805,7 +639,6 @@ It also contains associated support material including variable definitions, lin
     'title' => 'title',
     'field_label' => 'field_label',
     'field_value_type' => 'field_value_type',
-    'title_1' => 'title_1',
   );
   $handler->display->display_options['style_options']['default'] = 'title';
   $handler->display->display_options['style_options']['info'] = array(
@@ -824,13 +657,6 @@ It also contains associated support material including variable definitions, lin
       'empty_column' => 0,
     ),
     'field_value_type' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'title_1' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -1882,6 +1708,102 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['fields']['field_target_gender']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_target_gender']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_target_gender']['field_api_classes'] = 0;
+  /* Field: Content: Categories */
+  $handler->display->display_options['fields']['field_variable_categories']['id'] = 'field_variable_categories';
+  $handler->display->display_options['fields']['field_variable_categories']['table'] = 'field_data_field_variable_categories';
+  $handler->display->display_options['fields']['field_variable_categories']['field'] = 'field_variable_categories';
+  $handler->display->display_options['fields']['field_variable_categories']['label'] = 'category_label';
+  $handler->display->display_options['fields']['field_variable_categories']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories']['alter']['text'] = '[field_variable_categories-label]';
+  $handler->display->display_options['fields']['field_variable_categories']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories']['click_sort_column'] = 'name';
+  $handler->display->display_options['fields']['field_variable_categories']['type'] = 'category_field_table_formatter';
+  $handler->display->display_options['fields']['field_variable_categories']['group_rows'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_variable_categories']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories']['separator'] = '| ';
+  $handler->display->display_options['fields']['field_variable_categories']['field_api_classes'] = 0;
+  /* Field: Content: Categories */
+  $handler->display->display_options['fields']['field_variable_categories_1']['id'] = 'field_variable_categories_1';
+  $handler->display->display_options['fields']['field_variable_categories_1']['table'] = 'field_data_field_variable_categories';
+  $handler->display->display_options['fields']['field_variable_categories_1']['field'] = 'field_variable_categories';
+  $handler->display->display_options['fields']['field_variable_categories_1']['label'] = 'categories_name';
+  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['text'] = '[field_variable_categories_1-name]';
+  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_1']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories_1']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories_1']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_1']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_1']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories_1']['click_sort_column'] = 'name';
+  $handler->display->display_options['fields']['field_variable_categories_1']['type'] = 'category_field_table_formatter';
+  $handler->display->display_options['fields']['field_variable_categories_1']['group_rows'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories_1']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_variable_categories_1']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_1']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_1']['separator'] = '|';
+  $handler->display->display_options['fields']['field_variable_categories_1']['field_api_classes'] = 0;
+  /* Field: Content: Categories */
+  $handler->display->display_options['fields']['field_variable_categories_2']['id'] = 'field_variable_categories_2';
+  $handler->display->display_options['fields']['field_variable_categories_2']['table'] = 'field_data_field_variable_categories';
+  $handler->display->display_options['fields']['field_variable_categories_2']['field'] = 'field_variable_categories';
+  $handler->display->display_options['fields']['field_variable_categories_2']['label'] = 'categories_missing';
+  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['text'] = '[field_variable_categories_2-missing]';
+  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_2']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories_2']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories_2']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_2']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_2']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories_2']['click_sort_column'] = 'name';
+  $handler->display->display_options['fields']['field_variable_categories_2']['type'] = 'category_field_table_formatter';
+  $handler->display->display_options['fields']['field_variable_categories_2']['group_rows'] = 1;
+  $handler->display->display_options['fields']['field_variable_categories_2']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_variable_categories_2']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_2']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_2']['separator'] = '|';
+  $handler->display->display_options['fields']['field_variable_categories_2']['field_api_classes'] = 0;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -1953,6 +1875,12 @@ It also contains associated support material including variable definitions, lin
     t('sociodemographic_charact'),
     t('target'),
     t('target_gender'),
+    t('category_label'),
+    t('[field_variable_categories-label]'),
+    t('categories_name'),
+    t('[field_variable_categories_1-name]'),
+    t('categories_missing'),
+    t('[field_variable_categories_2-missing]'),
     t('Data export'),
   );
   $export['variable_csv_export'] = $view;
@@ -1975,8 +1903,43 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'field_label' => 'field_label',
+    'field_value_type' => 'field_value_type',
+  );
+  $handler->display->display_options['style_options']['default'] = 'title';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_label' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_value_type' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['override'] = 1;
+  $handler->display->display_options['style_options']['sticky'] = 0;
+  $handler->display->display_options['style_options']['empty_table'] = 0;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
