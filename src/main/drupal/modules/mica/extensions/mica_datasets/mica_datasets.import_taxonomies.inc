@@ -1,5 +1,6 @@
 <?php
 
+require_once(drupal_get_path('module', 'taxonomy_csv') . "/import/taxonomy_csv.import.api.inc");
 
 function _mica_datasets_taxonomies() {
   return array(
@@ -61,10 +62,6 @@ function _mica_datasets_taxonomy_import($filename, $vocabulary_name) {
   $path = drupal_get_path('module', 'mica_datasets') . '/taxonomies/' . $filename;
   $file_path = drupal_realpath($path);
 
-  //module_load_include('inc', 'taxonomy_csv', 'taxonomy_csv.import.api');
-  // Invoke taxonomy_csv import api.
-  $module_dir = drupal_get_path('module', 'taxonomy_csv');
-  require_once("$module_dir/import/taxonomy_csv.import.api.inc");
   $result = taxonomy_csv_import(array(
     'import_format' => 'tree',
     'delimiter' => ',',
@@ -79,7 +76,6 @@ function _mica_datasets_taxonomy_import($filename, $vocabulary_name) {
     'vocabulary_id' => $vocabulary->vid,
     'source_choice' => 'file',
   ));
-
 
   watchdog('mica', 'Imported taxonomy %file to vocabulary %vocabulary: %result',
     array(
