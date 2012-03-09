@@ -4,7 +4,10 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.1-SNAPSHOT-local" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-SNAPSHOT-local" />
+      <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-SNAPSHOT/profiles/mica_demo" />
+      <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-SNAPSHOT/profiles/mica_standard" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-SNAPSHOT/sites/all/modules/mica" />
+      <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-SNAPSHOT/sites/all/themes/mica_samara" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

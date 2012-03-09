@@ -56,12 +56,12 @@ function _mica_configuration_batch() {
   }
 
   // Import taxonomies
-  require_once(drupal_get_path('module', 'mica_datasets') . '/mica_datasets.module');
+  module_load_include('inc', 'mica_datasets', 'mica_datasets.import_taxonomies');
   $taxonomies_import_operations = _mica_datasets_taxonomies_operations_import();
-  foreach($taxonomies_import_operations  as $t){
+  foreach($taxonomies_import_operations  as $t) {
     $operations[] = $t;
   }
-  
+
   // prepare permissions rebuild
   $mica_length = strlen('mica_');
   foreach (module_list() as $module) {
@@ -70,7 +70,6 @@ function _mica_configuration_batch() {
     }
   }
 
-//   $operations[] = array('_update_language_french', array());
   $operations[] = array('_studies_block_configuration', array());
   $operations[] = array('_datasets_block_configuration', array());
 

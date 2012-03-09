@@ -146,10 +146,6 @@ function mica_studies_export_page_access() {
   return user_access('export data');
 }
 
-
-
-
-
 /**
  * Implements hook_node_insert()
  */

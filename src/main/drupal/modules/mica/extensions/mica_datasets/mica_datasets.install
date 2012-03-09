@@ -199,7 +199,7 @@ function mica_datasets_update_7120(&$sandbox) {
   watchdog('mica', 'Import dataschema dimensions', array(), WATCHDOG_INFO);
   try {
 
-    _mica_datasets_configure_field_bundle_settings();
+    module_load_include('inc', 'mica_datasets', 'mica_datasets.import_taxonomies');
 
     $taxonomies = _mica_datasets_taxonomies();
     if (!isset($sandbox['progress'])) {
@@ -212,10 +212,15 @@ function mica_datasets_update_7120(&$sandbox) {
     }
     $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
     return st('Dataschema dimensions have been successfully imported!');
-
   } catch (Exception $e) {
-    throw new DrupalUpdateException('Failed to import taxonomies. You have to import taxonomies manually.');
+    throw new DrupalUpdateException('Failed to update taxonomies. You have to import taxonomies manually.');
   }
+
+
+  _mica_datasets_configure_field_bundle_settings();
+
+  module_load_include('inc', 'mica_datasets', 'mica_datasets.facet_blocks');
+  mica_datasets_configure_facet_blocks();
 }
 
 /**
