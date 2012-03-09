@@ -32,6 +32,7 @@ function mica_datasets_configure_facet_blocks() {
   $facet_order_by_region = array(
     'sidebar_second' => array(
     	'field_dataset',
+    	'field_data_source',
     	'field_disease_history',
     	'field_medical_health_interv',
     	'field_medication',
@@ -45,14 +46,13 @@ function mica_datasets_configure_facet_blocks() {
     	'field_anthropometric_structures',
     	'field_body_structures',
     	'field_body_functions',
-    	'field_data_source',
+    	'field_period',
+    	'field_target',
+    	'field_target_gender',
+    	'field_class',
     	'field_response_unit',
     	'field_value_type',
     	'field_repeatable',
-    	'field_target',
-    	'field_target_gender',
-    	'field_period',
-    	'field_class',
     	'field_format',
     )
   );
@@ -122,7 +122,8 @@ function mica_datasets_configure_facet_blocks() {
       $success = $nb_updated > 0;
 
       if ($success) {
-        collapsiblock_set_collapsible_type('facetapi', $facet_delta, COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT);
+        collapsiblock_set_collapsible_type('facetapi', $facet_delta,
+          $index <= 6 ? COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT : COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT);
       }
 
       watchdog('mica', 'Facet block configuration for %facet (%delta)',
