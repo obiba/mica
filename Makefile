@@ -15,7 +15,6 @@ mica_community_version=$(mica_version)
 mica_core_version=$(mica_version)
 mica_data_access_version=$(mica_version)
 mica_datasets_version=$(mica_version)
-mica_dataschemas_version=$(mica_version)
 mica_datashield_version=$(mica_version)
 mica_devel_version=$(mica_version)
 mica_field_description_version=$(mica_version)
@@ -110,7 +109,7 @@ drupal-cache-clear:
 #
 # Mica Build
 #
-mica: mica-install delete-beta-modules
+mica: mica-install
 	cp src/main/drupal/themes/mica_samara/mica.png target/$(micadir)/themes/seven/logo.png
 	cp src/main/drupal/themes/mica_samara/favicon.ico target/$(micadir)/misc/favicon.ico
 
@@ -138,8 +137,6 @@ htaccess:
 	sed '/# RewriteBase \/drupal/ a RewriteBase \/mica' target/$(micadir)/.htaccess > target/$(micadir)/.htaccess_new
 	mv target/$(micadir)/.htaccess_new target/$(micadir)/.htaccess 
 
-delete-beta-modules:
-	rm -rf target/$(micadir)/sites/all/modules/mica/extensions/mica_dataschemas
 
 #
 # Deploy
@@ -182,7 +179,6 @@ package-modules-prepare:
 	$(call make-info,sites/all/modules/mica/extensions,mica_data_access)
 	$(call make-info,sites/all/modules/mica/extensions,mica_datasets)
 	$(call make-info,sites/all/modules/mica/extensions/mica_datasets,mica_category_field)
-#	$(call make-info,sites/all/modules/mica/extensions,mica_dataschemas)
 	$(call make-info,sites/all/modules/mica/extensions,mica_datashield)
 	$(call make-info,sites/all/modules/mica/extensions,mica_devel)
 	$(call make-info,sites/all/modules/mica/extensions,mica_field_description)
@@ -307,7 +303,7 @@ demo-export:
 # Devel
 #
 
-mica-install-clear: mica-install delete-beta-modules
+mica-install-clear: mica-install
 	cd target/$(micadir) && \
 	drush cc all && \
 	cd ../..
