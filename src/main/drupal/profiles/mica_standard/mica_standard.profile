@@ -56,11 +56,11 @@ function _mica_configuration_batch() {
   }
 
   // Import taxonomies
-  module_load_include('inc', 'mica_datasets', 'mica_datasets.import_taxonomies');
-  $taxonomies_import_operations = _mica_datasets_taxonomies_operations_import();
-  foreach($taxonomies_import_operations  as $t) {
-    $operations[] = $t;
-  }
+//  module_load_include('inc', 'mica_datasets', 'mica_datasets.import_taxonomies');
+//  $taxonomies_import_operations = _mica_datasets_taxonomies_operations_import();
+//  foreach($taxonomies_import_operations  as $t) {
+//    $operations[] = $t;
+//  }
 
   // prepare permissions rebuild
   $mica_length = strlen('mica_');
