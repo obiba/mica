@@ -199,7 +199,11 @@ class MicaDatasetConnector extends Entity {
     $results = $query->entityCondition('entity_type', 'mica_dataset_connector')
       ->propertyCondition('dataset_id', $dataset_id)
       ->execute();
-    return empty($result) ? array() : entity_load('mica_dataset_connector', array_keys($result));
+    if (!empty($results['mica_dataset_connector'])) {
+      $ids =  array_keys($results['mica_dataset_connector']);
+      return entity_load('mica_dataset_connector', $ids);
+    }
+    return array();
   }
 
 }
