@@ -188,4 +188,18 @@ class MicaDatasetConnector extends Entity {
     $this->ensureProxy();
     return $this->proxy->query($variables);
   }
+
+  /**
+   * @static
+   * @param $dataset_id
+   * @return MicaDatasetConnector array
+   */
+  public static function findConnectorsByDataset($dataset_id) {
+    $query = new EntityFieldQuery();
+    $results = $query->entityCondition('entity_type', 'mica_dataset_connector')
+      ->propertyCondition('dataset_id', $dataset_id)
+      ->execute();
+    return empty($result) ? array() : entity_load('mica_dataset_connector', array_keys($result));
+  }
+
 }

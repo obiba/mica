@@ -251,11 +251,11 @@ function _mica_edit_node_type_relation($form, &$form_state) {
 function _mica_find_relation_by_parent_or_child($parent_or_child_bundle) {
   $query = new EntityFieldQuery;
   $parent_result = $query->entityCondition('entity_type', 'mica_relation')
-  ->propertyCondition('parent_bundle', $parent_or_child_bundle)
-  ->execute();
+    ->propertyCondition('parent_bundle', $parent_or_child_bundle)
+    ->execute();
   $child_result = $query->entityCondition('entity_type', 'mica_relation')
-  ->propertyCondition('child_bundle', $parent_or_child_bundle)
-  ->execute();
+    ->propertyCondition('child_bundle', $parent_or_child_bundle)
+    ->execute();
   $result = array();
   if (isset($parent_result['mica_relation']) && isset($child_result['mica_relation'])) {
     $result = array_merge($parent_result['mica_relation'], $child_result['mica_relation']);

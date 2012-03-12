@@ -388,11 +388,11 @@ function _mica_datasets_node_access($node, $bundle = NULL, $op = 'update') {
 function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
   global $user;
   if (_mica_datasets_node_access($dataset_node, 'dataset', 'view')) {
-    if (mica_dataset_dataset_variables($dataset_node->nid) !== FALSE) {
-      if($op == 'view') {
+    if (mica_dataset_dataset_variables($dataset_node->nid) && _mica_datasets_has_connectors($dataset_node->nid)) {
+      if($op === 'view') {
         return user_access('view any dataset query');
       }
-      if($op == 'update') {
+      if($op === 'update') {
         return user_access('create edit delete own dataset query');
       }
     }
@@ -1141,6 +1141,10 @@ function mica_datasets_node_view_alter(&$build) {
       }
     }
   }
+}
+
+function _mica_datasets_has_connectors($dataset_nid) {
+  return count(MicaDatasetConnector::findConnectorsByDataset($dataset_nid)) > 0;
 }
 
 /**
