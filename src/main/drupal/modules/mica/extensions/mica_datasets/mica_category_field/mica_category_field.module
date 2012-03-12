@@ -211,6 +211,8 @@ function mica_category_field_field_formatter_info() {
  */
 function mica_category_field_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
 
+  if (empty($items)) return array();
+
   $element = array();
   switch ($display['type']) {
     case 'category_field_table_formatter':
