@@ -2265,3 +2265,7 @@ label.option {
 .field-type-taxonomy-term-reference .field-label {
   color: inherit;
 }
+
+body.node-type-dataset .pane-dataset-variables {
+  margin-top: 20px;
+}
