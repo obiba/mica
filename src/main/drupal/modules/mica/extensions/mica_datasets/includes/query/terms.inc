@@ -366,7 +366,7 @@ class RangeTerm extends AbstractTerm {
 
   function f($number) {
     // TODO: figure out how to specify significant digits instead of # of decimals
-    return number_format($number, 3);
+    return is_double($number) ? number_format($number, 3) : $number;
   }
 
   function form($form, &$form_state) {
