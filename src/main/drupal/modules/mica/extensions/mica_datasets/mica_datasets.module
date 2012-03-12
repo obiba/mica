@@ -1144,7 +1144,8 @@ function mica_datasets_node_view_alter(&$build) {
 }
 
 function _mica_datasets_has_connectors($dataset_nid) {
-  return count(MicaDatasetConnector::findConnectorsByDataset($dataset_nid)) > 0;
+  return true;
+//  return count(MicaDatasetConnector::findConnectorsByDataset($dataset_nid)) > 0;
 }
 
 /**
