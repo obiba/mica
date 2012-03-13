@@ -53,7 +53,7 @@ function mica_datasets_menu_default_menu_links() {
     'menu_name' => 'main-menu',
     'link_path' => 'variable-search',
     'router_path' => 'variable-search',
-    'link_title' => 'Variables Library',
+    'link_title' => 'Variables search',
     'options' => array(
       'attributes' => array(
         'title' => '',
@@ -71,7 +71,7 @@ function mica_datasets_menu_default_menu_links() {
   // Included for use with string extractors like potx.
   t('Dataschemas');
   t('Datasets');
-  t('Variables Library');
+  t('Variables search');
 
 
   return $menu_links;

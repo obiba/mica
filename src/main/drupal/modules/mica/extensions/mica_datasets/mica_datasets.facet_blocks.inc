@@ -123,7 +123,7 @@ function mica_datasets_configure_facet_blocks() {
 
       if ($success) {
         collapsiblock_set_collapsible_type('facetapi', $facet_delta,
-          $index <= 2 ? COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT : COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT);
+          $index < 2 ? COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT : COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT);
       }
 
       watchdog('mica', 'Facet block configuration for %facet (%delta)',

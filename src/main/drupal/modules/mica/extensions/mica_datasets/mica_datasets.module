@@ -69,7 +69,7 @@ function mica_datasets_menu() {
     'access arguments' => array(1, 'dataset', 'update'),
     'page callback' => 'mica_datasets_dataset_studies_edit_page',
     'page arguments' => array(1),
-    'weight' => 1,
+    'weight' => -1,
     'type' => MENU_LOCAL_ACTION,
     'file' => 'mica_datasets.pages.inc',
   );
@@ -80,7 +80,7 @@ function mica_datasets_menu() {
     'access arguments' => array(1, 'dataset', 'update'),
     'page callback' => 'mica_datasets_dataset_variables_edit_page',
     'page arguments' => array(1),
-    'weight' => 3,
+    'weight' => 2,
     'type' => MENU_LOCAL_ACTION,
     'file' => 'mica_datasets.pages.inc',
   );
@@ -352,7 +352,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
             '#weight' => 30,
             '#theme' => 'menu_local_action',
             '#link' => array(
-              'title' => t('Data Dictionary'),
+              'title' => t('Variables'),
               'href' => 'variable-search',
               'localized_options' => array(
                 'query' => array(
