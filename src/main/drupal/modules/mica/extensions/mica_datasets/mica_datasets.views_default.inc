@@ -1911,7 +1911,7 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
     'field_label' => 'field_label',
-    'field_value_type' => 'field_value_type',
+    'field_dataset' => 'field_dataset',
   );
   $handler->display->display_options['style_options']['default'] = 'title';
   $handler->display->display_options['style_options']['info'] = array(
@@ -1929,8 +1929,8 @@ It also contains associated support material including variable definitions, lin
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_value_type' => array(
-      'sortable' => 0,
+    'field_dataset' => array(
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
@@ -1938,7 +1938,7 @@ It also contains associated support material including variable definitions, lin
     ),
   );
   $handler->display->display_options['style_options']['override'] = 1;
-  $handler->display->display_options['style_options']['sticky'] = 0;
+  $handler->display->display_options['style_options']['sticky'] = 1;
   $handler->display->display_options['style_options']['empty_table'] = 0;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -1997,28 +1997,30 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['fields']['field_label']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_label']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_label']['field_api_classes'] = 0;
-  /* Field: Indexed Node: Value Type */
-  $handler->display->display_options['fields']['field_value_type']['id'] = 'field_value_type';
-  $handler->display->display_options['fields']['field_value_type']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['fields']['field_value_type']['field'] = 'field_value_type';
-  $handler->display->display_options['fields']['field_value_type']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_value_type']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_value_type']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_value_type']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_value_type']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_value_type']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_value_type']['field_api_classes'] = 0;
+  /* Field: Indexed Node: Dataset */
+  $handler->display->display_options['fields']['field_dataset']['id'] = 'field_dataset';
+  $handler->display->display_options['fields']['field_dataset']['table'] = 'search_api_index_variable_index';
+  $handler->display->display_options['fields']['field_dataset']['field'] = 'field_dataset';
+  $handler->display->display_options['fields']['field_dataset']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_dataset']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_dataset']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_dataset']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_dataset']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_dataset']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_dataset']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_dataset']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_dataset']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_dataset']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_dataset']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_dataset']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_dataset']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_dataset']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_dataset']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_dataset']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_dataset']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_dataset']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_dataset']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_dataset']['view_mode'] = 'full';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_variable_index';
@@ -2035,6 +2037,40 @@ It also contains associated support material including variable definitions, lin
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'variable-search';
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
+  $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view-%timestamp-yyyy%timestamp-mm%timestamp-dd%timestamp-hh%timestamp-ii%timestamp-ss.xls';
+  $handler->display->display_options['style_options']['parent_sort'] = 1;
+  $handler->display->display_options['path'] = 'variables-search-xls';
+  $handler->display->display_options['displays'] = array(
+    'default' => 'default',
+    'page' => 'page',
+  );
+  $handler->display->display_options['use_batch'] = '0';
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_2');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view-%timestamp-yyyy%timestamp-mm%timestamp-dd%timestamp-hh%timestamp-ii%timestamp-ss.csv';
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['path'] = 'variables-search-xls';
+  $handler->display->display_options['displays'] = array(
+    'default' => 'default',
+    'page' => 'page',
+  );
+  $handler->display->display_options['use_batch'] = '0';
   $translatables['variable_search'] = array(
     t('Master'),
     t('Data Dictionnary'),
@@ -2051,9 +2087,10 @@ It also contains associated support material including variable definitions, lin
     t('No variables found.'),
     t('Name'),
     t('Label'),
-    t('Value Type'),
+    t('Dataset'),
     t('Fulltext search'),
     t('Page'),
+    t('Data export'),
   );
   $export['variable_search'] = $view;
 

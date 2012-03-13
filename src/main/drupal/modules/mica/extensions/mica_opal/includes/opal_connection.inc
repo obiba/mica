@@ -111,7 +111,6 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
     try {
       $client = $this->client();
       $body = $client->execute($post);
-      //      debug($body);
     }  catch(HttpClientException $e) {
       if($e->getCode() == 0) {
         // curl error

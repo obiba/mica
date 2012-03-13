@@ -3291,12 +3291,12 @@ function mica_datasets_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'BOOLEAN' => 'Boolean',
-          'DATE' => 'Date',
-          'DATE_TIME' => 'Date time',
-          'DECIMAL' => 'Decimal',
-          'INTEGER' => 'Integer',
-          'TEXT' => 'Text',
+          'boolean' => 'boolean',
+          'date' => 'date',
+          'date_time' => 'date time',
+          'decimal' => 'decimal',
+          'integer' => 'integer',
+          'Text' => 'text',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(

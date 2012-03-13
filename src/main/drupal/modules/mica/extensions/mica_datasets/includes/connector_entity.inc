@@ -135,7 +135,7 @@ class MicaDatasetConnector extends Entity {
     } else if($e->getCode() == 404) {
       drupal_set_message(t("Study %study: Cannot find dataset (404). Make sure the study's configuration is valid.", array("%study" => $study->title)), 'error');
     } else {
-      drupal_set_message(t("Study %study: Failed executing search. Message was: %msg", array("%study" => $study->title, "%msg" => $e->getMessage())), 'error');
+      drupal_set_message(t("Study %study: Failed executing search. Message was: %msg (%code)", array("%study" => $study->title, "%msg" => $e->getMessage(), "%code" => $e->getCode())), 'error');
     }
   }
 

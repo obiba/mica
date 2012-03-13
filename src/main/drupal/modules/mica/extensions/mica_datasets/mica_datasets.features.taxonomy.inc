@@ -13,7 +13,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
       'name' => 'Anthropometric Structures',
       'machine_name' => 'anthropometric_structures',
       'description' => NULL,
-      'hierarchy' => '1',
+      'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
       'rdf_mapping' => array(
@@ -36,7 +36,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
       'name' => 'Body Functions',
       'machine_name' => 'body_functions',
       'description' => NULL,
-      'hierarchy' => '1',
+      'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
       'rdf_mapping' => array(
