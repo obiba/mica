@@ -10,7 +10,6 @@
 function mica_datasets_field_group_info() {
   $export = array();
 
-
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
@@ -63,115 +62,6 @@ function mica_datasets_field_group_info() {
   );
   $export['group_categories|node|variable|left_area'] = $field_group;
 
-  $field_group = new stdClass;
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_datasets|node|study|center_area';
-  $field_group->group_name = 'group_datasets';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study';
-  $field_group->mode = 'center_area';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Datasets',
-    'weight' => '16',
-    'children' => array(
-      0 => 'mica_dataset',
-      1 => 'mica_opal',
-    ),
-    'format_type' => 'hidden',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-      ),
-    ),
-  );
-  $export['group_datasets|node|study|center_area'] = $field_group;
-
-  $field_group = new stdClass;
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_datasets|node|study|default';
-  $field_group->group_name = 'group_datasets';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study';
-  $field_group->mode = 'default';
-  $field_group->parent_name = 'group_tabs';
-  $field_group->data = array(
-    'label' => 'Datasets',
-    'weight' => '94',
-    'children' => array(
-      0 => 'mica_dataset',
-      1 => 'mica_opal',
-    ),
-    'format_type' => 'htab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-      ),
-    ),
-  );
-  $export['group_datasets|node|study|default'] = $field_group;
-
-  $field_group = new stdClass;
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_datasets|node|study|footer_area';
-  $field_group->group_name = 'group_datasets';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study';
-  $field_group->mode = 'footer_area';
-  $field_group->parent_name = 'group_tabs';
-  $field_group->data = array(
-    'label' => 'Datasets',
-    'weight' => '93',
-    'children' => array(
-      0 => 'mica_dataset',
-      1 => 'mica_opal',
-    ),
-    'format_type' => 'hidden',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-      ),
-    ),
-  );
-  $export['group_datasets|node|study|footer_area'] = $field_group;
-
-  $field_group = new stdClass;
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_datasets|node|study|form';
-  $field_group->group_name = 'group_datasets';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_tabs';
-  $field_group->data = array(
-    'label' => 'Datasets',
-    'weight' => '14',
-    'children' => array(
-      0 => 'mica_dataset',
-      1 => 'mica_opal',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'label' => 'Datasets',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => 'Datasets available to the research community.',
-      ),
-      'formatter' => 'collapsible',
-    ),
-  );
-  $export['group_datasets|node|study|form'] = $field_group;
 
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -240,10 +130,10 @@ function mica_datasets_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'variable';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_tabs';
   $field_group->data = array(
     'label' => 'Dimensions',
-    'weight' => '33',
+    'weight' => '2',
     'children' => array(
       0 => 'field_anthropometric_structures',
       1 => 'field_body_functions',
@@ -266,14 +156,15 @@ function mica_datasets_field_group_info() {
       18 => 'field_target',
       19 => 'field_target_gender',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'htab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Dimensions',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_dimensions|node|variable|form'] = $field_group;
@@ -326,90 +217,52 @@ function mica_datasets_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_tabs|node|study|default';
-  $field_group->group_name = 'group_tabs';
+  $field_group->identifier = 'group_general_info|node|variable|form';
+  $field_group->group_name = 'group_general_info';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'study';
-  $field_group->mode = 'default';
-  $field_group->parent_name = '';
+  $field_group->bundle = 'variable';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_tabs';
   $field_group->data = array(
-    'label' => 'Tabs',
-    'weight' => '0',
-    'children' => array(
-      0 => 'group_access',
-      1 => 'group_authorization',
-      2 => 'group_datasets',
-      3 => 'group_general_info',
-      4 => 'group_marker_paper',
-      5 => 'group_methods',
-      6 => 'group_status',
-      7 => 'group_supp_info',
-    ),
-    'format_type' => 'htabs',
-    'format_settings' => array(
-      'formatter' => '',
-      'instance_settings' => array(
-        'classes' => '',
-      ),
-    ),
-  );
-  $export['group_tabs|node|study|default'] = $field_group;
-
-  $field_group = new stdClass;
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_tabs|node|study|footer_area';
-  $field_group->group_name = 'group_tabs';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'study';
-  $field_group->mode = 'footer_area';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Tabs',
+    'label' => 'General Information',
     'weight' => '1',
     'children' => array(
-      0 => 'group_access',
-      1 => 'group_authorizations',
-      2 => 'group_authorization',
-      3 => 'group_datasets',
-      4 => 'group_documents',
-      5 => 'group_general_info',
-      6 => 'group_marker_paper',
-      7 => 'group_methods',
-      8 => 'group_status',
+      0 => 'body',
+      1 => 'field_dataset',
+      2 => 'field_label',
+      3 => 'field_repeatable',
+      4 => 'field_value_type',
+      5 => 'field_variable_categories',
+      6 => 'title',
     ),
-    'format_type' => 'hidden',
+    'format_type' => 'htab',
     'format_settings' => array(
-      'formatter' => '',
+      'label' => 'General Information',
       'instance_settings' => array(
+        'required_fields' => 1,
         'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'open',
     ),
   );
-  $export['group_tabs|node|study|footer_area'] = $field_group;
+  $export['group_general_info|node|variable|form'] = $field_group;
 
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_tabs|node|study|form';
+  $field_group->identifier = 'group_tabs|node|variable|form';
   $field_group->group_name = 'group_tabs';
   $field_group->entity_type = 'node';
-  $field_group->bundle = 'study';
+  $field_group->bundle = 'variable';
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tabs',
     'weight' => '0',
     'children' => array(
-      0 => 'group_access',
-      1 => 'group_authorization',
-      2 => 'group_datasets',
-      3 => 'group_documents',
-      4 => 'group_general_info',
-      5 => 'group_marker_paper',
-      6 => 'group_methods',
-      7 => 'group_status',
-      8 => 'group_supp_info',
+      0 => 'group_dimensions',
+      1 => 'group_general_info',
     ),
     'format_type' => 'htabs',
     'format_settings' => array(
@@ -419,7 +272,7 @@ function mica_datasets_field_group_info() {
       ),
     ),
   );
-  $export['group_tabs|node|study|form'] = $field_group;
+  $export['group_tabs|node|variable|form'] = $field_group;
 
   return $export;
 }

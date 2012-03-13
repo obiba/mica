@@ -121,21 +121,31 @@ class MicaDatasetConnector extends Entity {
         $this->proxy = new $class['class']($this);
       }
       if (!($this->proxy instanceof MicaDatasetConnectionInterface)) {
-        throw new MicaException(t('Dataset connector with id !id specifies illegal service class !class.', array('!id' => $this->id, '!class' => $this->class)));
+        throw new MicaException(t('Dataset connector with id !id specifies illegal service class !class.',
+          array('!id' => $this->id, '!class' => $this->class)));
       }
     }
   }
 
   public function displayError(Exception $e) {
     $study = node_load($this->study_id);
-    if($e->getCode() == 401) {
-      drupal_set_message(t("Study %study: Authentication failed (401).", array("%study" => $study->title)), 'error');
-    } else if($e->getCode() == 403) {
-      drupal_set_message(t("Study %study: Not authorized to search dataset (403).", array("%study" => $study->title)), 'error');
-    } else if($e->getCode() == 404) {
-      drupal_set_message(t("Study %study: Cannot find dataset (404). Make sure the study's configuration is valid.", array("%study" => $study->title)), 'error');
-    } else {
-      drupal_set_message(t("Study %study: Failed executing search. Message was: %msg (%code)", array("%study" => $study->title, "%msg" => $e->getMessage(), "%code" => $e->getCode())), 'error');
+    switch($e->getCode()) {
+      case 401:
+        drupal_set_message(t("Study %study: Authentication failed (401).",
+          array("%study" => $study->title)), 'error');
+        break;
+      case 403:
+        drupal_set_message(t("Study %study: Not authorized to search dataset (403).",
+          array("%study" => $study->title)), 'error');
+        break;
+      case 404:
+        drupal_set_message(t("Study %study: Cannot find dataset (404). Make sure the study's configuration is valid.",
+          array("%study" => $study->title)), 'error');
+        break;
+      default:
+        drupal_set_message(t("Study %study: Failed executing search. Message was: %msg",
+          array("%study" => $study->title, "%msg" => $e->getMessage())), 'error');
+        break;
     }
   }
 

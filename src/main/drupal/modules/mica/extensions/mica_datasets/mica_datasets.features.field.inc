@@ -787,7 +787,7 @@ function mica_datasets_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '2',
+        'weight' => '4',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
@@ -1207,7 +1207,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '60',
+        'weight' => '61',
       ),
     ),
   );
@@ -1459,7 +1459,7 @@ function mica_datasets_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '6',
+        'weight' => '8',
       ),
     ),
   );
@@ -1774,7 +1774,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '62',
+        'weight' => '63',
       ),
     ),
   );
@@ -1891,7 +1891,7 @@ function mica_datasets_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '1',
+        'weight' => '3',
       ),
     ),
   );
@@ -2416,7 +2416,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '57',
+        'weight' => '58',
       ),
     ),
   );
@@ -2534,6 +2534,9 @@ function mica_datasets_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_repeatable',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -2550,7 +2553,8 @@ function mica_datasets_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => 'TEXT',
         ),
         'field_permissions' => array(
           'create' => 0,
@@ -2567,7 +2571,7 @@ function mica_datasets_field_default_fields() {
       'bundle' => 'variable',
       'default_value' => array(
         0 => array(
-          'value' => '0',
+          'value' => 0,
         ),
       ),
       'deleted' => '0',
@@ -2624,6 +2628,7 @@ function mica_datasets_field_default_fields() {
           'weight' => '0',
         ),
       ),
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_repeatable',
       'label' => 'Repeatable',
@@ -2634,9 +2639,11 @@ function mica_datasets_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '5',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '7',
       ),
     ),
   );
@@ -2846,7 +2853,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '61',
+        'weight' => '62',
       ),
     ),
   );
@@ -3161,7 +3168,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '58',
+        'weight' => '59',
       ),
     ),
   );
@@ -3266,7 +3273,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '59',
+        'weight' => '60',
       ),
     ),
   );
@@ -3386,7 +3393,7 @@ function mica_datasets_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '4',
+        'weight' => '6',
       ),
     ),
   );
@@ -3472,7 +3479,7 @@ function mica_datasets_field_default_fields() {
         'module' => 'mica_category_field',
         'settings' => array(),
         'type' => 'category_field_default_widget',
-        'weight' => '3',
+        'weight' => '5',
       ),
     ),
   );
