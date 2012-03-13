@@ -185,6 +185,9 @@ projects[name][download][type] = git
 projects[name][download][url] = http://git.drupal.org/project/name.git
 projects[name][download][revision] = 6644c91893ac05b681509486f01353490372a393
 
+projects[nodequeue][version] = 2.0-beta1
+projects[nodequeue][type] = module
+
 projects[noderefcreate][type] = module
 projects[noderefcreate][download][type] = git
 projects[noderefcreate][download][url] = http://git.drupal.org/project/noderefcreate.git

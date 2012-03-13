@@ -2571,7 +2571,7 @@ function mica_datasets_field_default_fields() {
       'bundle' => 'variable',
       'default_value' => array(
         0 => array(
-          'value' => 0,
+          'value' => '0',
         ),
       ),
       'deleted' => '0',
@@ -2639,10 +2639,8 @@ function mica_datasets_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(
-          'display_label' => 1,
-        ),
-        'type' => 'options_onoff',
+        'settings' => array(),
+        'type' => 'options_buttons',
         'weight' => '7',
       ),
     ),
