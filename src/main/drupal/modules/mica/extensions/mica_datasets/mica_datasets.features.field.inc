@@ -3298,12 +3298,12 @@ function mica_datasets_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'boolean' => 'boolean',
-          'date' => 'date',
-          'date_time' => 'date time',
-          'decimal' => 'decimal',
-          'integer' => 'integer',
-          'Text' => 'text',
+          'boolean' => 'Boolean',
+          'date' => 'Date',
+          'date_time' => 'Date time',
+          'decimal' => 'Decimal',
+          'integer' => 'Integer',
+          'Text' => 'Text',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(

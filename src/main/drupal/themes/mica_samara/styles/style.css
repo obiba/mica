@@ -696,9 +696,15 @@ form#comment-form #edit-actions {
   bottom: -10px;
 }
 #page a.feed-icon img {
-  margin: 0;
+  margin-top: 0;
+  border-bottom:none;
 }
-
+.feed-icon{
+  margin-top: 10px !important;
+}
+.feed-icon a{
+  border-bottom:none;
+}
 /**
  * Field module
  */
