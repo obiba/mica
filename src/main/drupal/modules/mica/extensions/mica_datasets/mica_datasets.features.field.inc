@@ -3301,7 +3301,7 @@ function mica_datasets_field_default_fields() {
           'date_time' => 'Date time',
           'decimal' => 'Decimal',
           'integer' => 'Integer',
-          'Text' => 'Text',
+          'text' => 'Text',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(

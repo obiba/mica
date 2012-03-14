@@ -73,7 +73,9 @@ function mica_opal_feeds_importer_default() {
           'jsonpath_parser:1' => 'attributes[?(@[\'name\']==\'label\')].value',
           'jsonpath_parser:2' => 'valueType',
           'jsonpath_parser:3' => 'categories.*.name',
-          'jsonpath_parser:4' => 'repeatable',
+  				'jsonpath_parser:4' => 'categories.*.attributes[?(@[\'name\']==\'label\')].value',
+          'jsonpath_parser:5' => 'categories.*.isMissing',
+  				'jsonpath_parser:6' => 'repeatable',
         ),
         'debug' => array(),
       ),
@@ -102,20 +104,30 @@ function mica_opal_feeds_importer_default() {
           ),
           3 => array(
             'source' => 'jsonpath_parser:3',
-            'target' => 'field_categories',
+            'target' => 'field_variable_categories:name',
             'unique' => FALSE,
           ),
           4 => array(
             'source' => 'jsonpath_parser:4',
-            'target' => 'field_repeatable',
+            'target' => 'field_variable_categories:label',
             'unique' => FALSE,
           ),
           5 => array(
+            'source' => 'jsonpath_parser:5',
+            'target' => 'field_variable_categories:missing',
+            'unique' => FALSE,
+          ),
+          6 => array(
+            'source' => 'jsonpath_parser:6',
+            'target' => 'field_repeatable',
+            'unique' => FALSE,
+          ),
+          7 => array(
             'source' => 'dataset_id',
             'target' => 'field_dataset:nid',
             'unique' => FALSE,
           ),
-          6 => array(
+          8 => array(
             'source' => 'uid',
             'target' => 'guid',
             'unique' => TRUE,

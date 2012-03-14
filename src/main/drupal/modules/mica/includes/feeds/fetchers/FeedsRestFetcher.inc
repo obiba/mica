@@ -57,7 +57,6 @@ class FeedsRestFetcherResult extends FeedsFetcherResult {
 
       $get->addHeader('Accept', $this->config['content_type']);
       $result = $client->execute($get);
-      debug($result);
     } catch(HttpClientException $e) {
       if($e->getCode() == 0) {
         // curl error

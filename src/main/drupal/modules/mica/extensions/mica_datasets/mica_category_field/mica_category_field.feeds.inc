@@ -55,7 +55,9 @@ function mica_category_field_set_target($source, $entity, $target, $value) {
   $field = isset($entity->$field_name) ? $entity->$field_name : array();
 
   foreach ($value as $i => $v) {
-    $field['und'][$i][$sub_field] = $v;
+    // if we receive true/false, switch to '0' - '1'
+    $v = is_bool($v) ? (int) $v: $v;
+    $field['und'][$i][$sub_field] = isset($v) ? $v : '0';
   }
 
   $entity->$field_name = $field;

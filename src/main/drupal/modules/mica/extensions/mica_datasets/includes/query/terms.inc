@@ -92,7 +92,7 @@ abstract class AbstractTerm implements QueryTermInterface {
     if($is_categorical) {
       return 'CategoryTerm';
     }
-    if ($type !== 'date' && $type !== 'text') {
+    if ($type !== 'date') {
       return 'RangeTerm';
     }
     return 'TodoTerm';
