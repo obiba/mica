@@ -317,22 +317,6 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
               )
             ),
           );
-
-          if (user_access('manipulate queues') || user_access('manipulate all queues')) {
-            // reorder variables
-            module_load_include('inc', 'mica_datasets', 'mica_datasets.nodequeue');
-            $queue = _mica_datasets_get_dataset_queue($nid);
-            $subqueues = nodequeue_load_subqueues_by_queue($queue->qid);
-            $subqueue = array_pop($subqueues);
-            $links['reorder-variables'] = array(
-              '#theme' => 'menu_local_action',
-              '#weight' => 8,
-              '#link' => array(
-                'title' => t('Reorder variables'),
-                'href' => 'admin/structure/nodequeue/' . $queue->qid . '/view/' . $subqueue->sqid,
-              ),
-            );
-          }
         }
 
         if (node_access('view', $node)) {
@@ -707,10 +691,10 @@ function mica_datasets_entity_property_info() {
 function mica_dataset_connector_query($dataset_id, $study_id, $enabled = NULL) {
   $q = db_select('mica_dataset_connector', 'c');
   $q->addField('c', 'id');
-  $q->condition('c.dataset_id', $dataset_id, '=');
-  $q->condition('c.study_id', $study_id, '=');
+  $q->condition('c.dataset_id', $dataset_id);
+  $q->condition('c.study_id', $study_id);
   if (isset($enabled)) {
-    $q->condition('c.enabled', $enabled, '=');
+    $q->condition('c.enabled', $enabled);
   }
   $q->range(0,1);
   $result = $q->execute();
@@ -732,9 +716,9 @@ function mica_dataset_connector_query($dataset_id, $study_id, $enabled = NULL) {
 function mica_dataset_connector_query_multiple($dataset_id, $enabled = NULL) {
   $q = db_select('mica_dataset_connector', 'c');
   $q->addField('c', 'id');
-  $q->condition('c.dataset_id', $dataset_id, '=');
+  $q->condition('c.dataset_id', $dataset_id);
   if (isset($enabled)) {
-    $q->condition('c.enabled', $enabled, '=');
+    $q->condition('c.enabled', $enabled);
   }
   $result = $q->execute();
 
@@ -1108,34 +1092,27 @@ function _mica_datasets_has_connectors($dataset_nid) {
 }
 
 /**
+ * Implements hook_node_presave()
+ */
+function mica_datasets_node_presave($node) {
+  switch($node->type) {
+    case 'variable':
+      _mica_datasets_set_variable_position($node);
+      break;
+  }
+}
+
+/**
  * Implements hook_node_insert()
  */
 function mica_datasets_node_insert($node) {
   switch($node->type) {
     case 'dataset':
       _mica_datasets_create_dataset_menu($node);
-
-      module_load_include('inc', 'mica_datasets', 'mica_datasets.nodequeue');
-      _mica_datasets_create_queue($node);
       break;
 
     case 'variable':
       _mica_datasets_create_variable_menu($node);
-
-      module_load_include('inc', 'mica_datasets', 'mica_datasets.nodequeue');
-      _mica_datasets_add_variable_to_queue($node);
-      break;
-  }
-}
-
-/**
- * Implements hook_node_update()
- */
-function mica_datasets_node_update($node) {
-  switch($node->type) {
-    case 'dataset':
-      module_load_include('inc', 'mica_datasets', 'mica_datasets.nodequeue');
-      _mica_datasets_update_queue($node);
       break;
   }
 }
@@ -1146,9 +1123,6 @@ function mica_datasets_node_update($node) {
 function mica_datasets_node_delete($node) {
   switch($node->type) {
     case 'dataset':
-
-      module_load_include('inc', 'mica_datasets', 'mica_datasets.nodequeue');
-      _mica_datasets_delete_queue($node);
 
       $dataset_id = $node->nid;
 
@@ -1334,4 +1308,28 @@ function _mica_datasets_prepopulate_variable_after_build(&$form_element) {
     $form_element['#access'] = FALSE;
   }
   return $form_element;
+}
+
+function _mica_datasets_set_variable_position(&$variable) {
+  $wrapper = entity_metadata_wrapper('node', $variable);
+
+  if ($wrapper->field_position->value() > 0) return;
+
+  $dataset_id = $wrapper->field_dataset->nid->value();
+
+  $query = new EntityFieldQuery();
+  $results = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'variable')
+    ->fieldCondition('field_dataset', 'nid', $dataset_id)
+    ->fieldOrderBy("field_position", 'value', "desc")
+    ->range(0, 1)
+    ->execute();
+  if(empty($results['node'])) {
+    $wrapper->field_position->set(1);
+  } else {
+    $last_variable = array_pop(entity_load('node', array_keys($results['node'])));
+    $last_variable_wrapper = entity_metadata_wrapper('node', $last_variable);
+    $wrapper->field_position->set($last_variable_wrapper->field_position->value() + 1);
+  }
+  return $variable;
 }

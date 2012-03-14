@@ -359,7 +359,14 @@ class RangeTerm extends AbstractTerm {
     $stats = $this->stats();
     foreach($stats as $study_id => $stat) {
       $study = node_load($study_id);
-      $rows[] = array($study->title, $this->f($stat['min']), $this->f($stat['max']), $this->f($stat['mean']), $this->f($stat['std_deviation']), $stat['count']);
+      $rows[] = array(
+        $study->title,
+        $this->f($stat['min']),
+        $this->f($stat['max']),
+        $this->f($stat['mean']),
+        $this->f($stat['std_deviation']),
+        $stat['count']
+      );
     }
     return theme('table', array('header' => $headers, 'rows' => $rows, 'empty' => t('No studies available')));
   }

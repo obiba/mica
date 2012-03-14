@@ -787,7 +787,7 @@ function mica_datasets_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '4',
+        'weight' => '-3',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
@@ -893,7 +893,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '54',
+        'weight' => '55',
       ),
     ),
   );
@@ -997,7 +997,7 @@ function mica_datasets_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '56',
+        'weight' => '57',
       ),
     ),
   );
@@ -1102,7 +1102,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '55',
+        'weight' => '56',
       ),
     ),
   );
@@ -1459,7 +1459,7 @@ function mica_datasets_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '8',
+        'weight' => '1',
       ),
     ),
   );
@@ -1669,7 +1669,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '48',
+        'weight' => '49',
       ),
     ),
   );
@@ -1891,7 +1891,7 @@ function mica_datasets_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '3',
+        'weight' => '-4',
       ),
     ),
   );
@@ -1996,7 +1996,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '49',
+        'weight' => '50',
       ),
     ),
   );
@@ -2206,7 +2206,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '46',
+        'weight' => '47',
       ),
     ),
   );
@@ -2311,7 +2311,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '53',
+        'weight' => '54',
       ),
     ),
   );
@@ -2521,7 +2521,102 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '51',
+        'weight' => '52',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-variable-field_position'
+  $fields['node-variable-field_position'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_position',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'number',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => 'INTEGER',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'variable',
+      'default_value' => array(
+        0 => array(
+          'value' => '0',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'Position of the Variable within its Dataset. 
+Set to 0 to set variable at last position.  ',
+      'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 27,
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_position',
+      'label' => 'Position index',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '2',
       ),
     ),
   );
@@ -2641,7 +2736,7 @@ function mica_datasets_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '7',
+        'weight' => '0',
       ),
     ),
   );
@@ -2746,7 +2841,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '47',
+        'weight' => '48',
       ),
     ),
   );
@@ -2956,7 +3051,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '52',
+        'weight' => '53',
       ),
     ),
   );
@@ -3061,7 +3156,7 @@ function mica_datasets_field_default_fields() {
           'size' => 40,
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '50',
+        'weight' => '51',
       ),
     ),
   );
@@ -3391,7 +3486,7 @@ function mica_datasets_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '6',
+        'weight' => '-1',
       ),
     ),
   );
@@ -3477,7 +3572,7 @@ function mica_datasets_field_default_fields() {
         'module' => 'mica_category_field',
         'settings' => array(),
         'type' => 'category_field_default_widget',
-        'weight' => '5',
+        'weight' => '-2',
       ),
     ),
   );
@@ -3506,6 +3601,9 @@ function mica_datasets_field_default_fields() {
   t('Perception of Health/Quality of life');
   t('Period');
   t('Physical Environment');
+  t('Position index');
+  t('Position of the Variable within its Dataset. 
+Set to 0 to set variable at last position.  ');
   t('Repeatable');
   t('Reproductive Health and History');
   t('Response Unit');

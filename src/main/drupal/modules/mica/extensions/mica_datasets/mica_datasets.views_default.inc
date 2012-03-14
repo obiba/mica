@@ -1868,6 +1868,10 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['fields']['field_dataset']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_dataset']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_dataset']['view_mode'] = 'full';
+  /* Sort criterion: Indexed Node: Position index */
+  $handler->display->display_options['sorts']['field_position']['id'] = 'field_position';
+  $handler->display->display_options['sorts']['field_position']['table'] = 'search_api_index_variable_index';
+  $handler->display->display_options['sorts']['field_position']['field'] = 'field_position';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_variable_index';

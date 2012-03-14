@@ -233,7 +233,8 @@ function mica_datasets_field_group_info() {
       3 => 'field_repeatable',
       4 => 'field_value_type',
       5 => 'field_variable_categories',
-      6 => 'title',
+      6 => 'field_position',
+      7 => 'title',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
