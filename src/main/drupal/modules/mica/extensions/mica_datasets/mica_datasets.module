@@ -376,7 +376,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
               'href' => 'variable-search',
               'localized_options' => array(
                 'query' => array(
-                  'f[0]' => 'field_dataset:' . $nid
+                  'f[0]' => 'field_dataset:' . $node->nid
                 ),
                 'attributes' => array(
                   'class' => 'highlight',
