@@ -51,7 +51,7 @@ projects[cck_select_other][type] = module
 projects[chain_menu_access][version] = 1.0
 projects[chain_menu_access][type] = module
 
-projects[ckeditor][version] = 1.6
+projects[ckeditor][version] = 1.8
 projects[ckeditor][type] = module
 
 projects[collapsiblock][type] = module

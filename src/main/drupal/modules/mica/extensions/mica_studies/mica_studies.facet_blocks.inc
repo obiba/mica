@@ -7,6 +7,7 @@ include_once(drupal_get_path('module', 'mica_field_description') . '/mica_field_
 function mica_studies_configure_facet_blocks() {
 
   $theme_default = variable_get('theme_default', 'mica_samara');
+  $page = 'studies-search';
 
   // configure current search
   $nb_updated = db_update('block')->fields(
@@ -15,7 +16,7 @@ function mica_studies_configure_facet_blocks() {
         'region' => 'sidebar_second',
         'weight' => 0,
         'visibility' => BLOCK_VISIBILITY_LISTED,
-        'pages' => 'studies-search',
+        'pages' => $page,
       )
     )
     ->condition('module', 'current_search')
@@ -38,8 +39,8 @@ function mica_studies_configure_facet_blocks() {
   );
   $searcher = 'search_api@studies_index';
   foreach ($disabled_facets as $disabled_facet) {
-    $facet = facetapi_facet_load($disabled_facet, $searcher);
-    if ($facet) {
+    $facet = (array) facetapi_facet_load($disabled_facet, $searcher);
+    if (!empty($facet)) {
       $adapter = facetapi_adapter_load($searcher);
       $realms = facetapi_get_realm_info();
       foreach ($realms as $realm_name => $realm) {
@@ -54,28 +55,27 @@ function mica_studies_configure_facet_blocks() {
   // configure facets
   $facet_order_by_region = array(
     'sidebar_second' => array(
-    	'field_design',
-    	'field_country',
-    	'field_age_min',
-    	'field_age_max',
-      'field_gender',
-      'field_target_number_participants',
-      'field_target_number_biosamples',
-      'field_bio_samples_management',
-  		'field_select_criteria',
-    	'field_data_sources',
-      'field_recruitment',
-      'field_recruitment_procedures',
-      'field_access_data',
-      'field_access_biosamples',
-      'field_questionnaire_collection',
-      'field_preparation_start_year',
-      'field_preparation_end_year',
-      'field_baseline_start_year',
-      'field_baseline_end_year',
-      'field_followup_start_year',
-      'field_followup_end_year',
-      'field_ended_end_year',
+      'field_design' => COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT,
+      'field_country' => COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT,
+      'field_age_min' => COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT,
+      'field_age_max' => COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT,
+      'field_gender' => COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT,
+      'field_target_number_participants' => COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT,
+      'field_target_number_biosamples' => COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT,
+      'field_bio_samples_management' => COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT,
+      'field_select_criteria' => COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT,
+      'field_data_sources' => COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT,
+      'field_recruitment' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'field_recruitment_procedures' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'field_access_data' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'field_access_biosamples' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'field_preparation_start_year' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'field_preparation_end_year' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'field_baseline_start_year' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'field_baseline_end_year' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'field_followup_start_year' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'field_followup_end_year' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'field_ended_end_year' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
     )
   );
   
@@ -88,34 +88,74 @@ function mica_studies_configure_facet_blocks() {
       )
     )->fetchField();
     $max_weight = empty($max_weight) ? 0 : ($max_weight + 1);
-    
-    foreach ($facet_order as $index => $facet) {
+
+    $index = 0;
+    foreach ($facet_order as $facet_field => $collapsible_status) {
+
       // facetapi_get_delta_map() is not loaded yet so we need to generate hash
-      $facet_delta = facetapi_hash_delta('search_api@studies_index:block:' . $facet);
+      $facet_delta = facetapi_hash_delta('search_api@studies_index:block:' . $facet_field);
       
       if (empty($facet_delta)) {
-        drupal_set_message('No facet defined for ' . $facet, 'warning');
+        drupal_set_message('No facet defined for ' . $facet_field, 'warning');
         continue;
       }
       
-    	$facet_weight = $max_weight + $index;
+      $facet_weight = $max_weight + $index++;
 
-      $nb_updated = db_update('block')->fields(
-          array(
-            'status' => 1,
-            'region' => $region,
-            'weight' => $facet_weight,
-            'visibility' => BLOCK_VISIBILITY_LISTED,
-            'pages' => 'studies-search',
-          )
+      $block = db_query('SELECT * FROM {block} WHERE module = :module AND delta = :delta AND theme = :theme',
+        array(
+          ':module' => 'facetapi',
+          ':delta' => $facet_delta,
+          ':theme' => $theme_default
         )
-        ->condition('module', 'facetapi')
-        ->condition('delta', $facet_delta)
-        ->condition('theme', $theme_default)
-        ->execute();
+      )->fetchObject();
 
-      watchdog('mica', 'Configured facet block %facet: %status',
-        array('%facet' => $facet, '%status' => ($nb_updated> 0 ? 'Done' : 'Error')), WATCHDOG_DEBUG);
+      if($block) {
+        $nb_updated = db_update('block')->fields(
+            array(
+              'status' => 1,
+              'region' => $region,
+              'weight' => $facet_weight,
+              'visibility' => BLOCK_VISIBILITY_LISTED,
+              'pages' => $page,
+            )
+          )
+          ->condition('module', 'facetapi')
+          ->condition('delta', $facet_delta)
+          ->condition('theme', $theme_default)
+          ->execute();
+      } else {
+
+        $field_info = field_info_instance('node', $facet_field, 'study');
+        $nb_updated = db_insert('block')->fields(
+            array(
+              'status' => 1,
+              'region' => $region,
+              'weight' => $facet_weight,
+              'visibility' => BLOCK_VISIBILITY_LISTED,
+              'pages' => $page,
+              'custom' => BLOCK_CUSTOM_ENABLED, // Show this block by default but let individual users hide it.
+              'delta' => $facet_delta,
+              'module' => 'facetapi',
+              'theme' => $theme_default,
+              'title' => $field_info['label'],
+            )
+          )
+          ->execute();
+      }
+
+      $success = $nb_updated > 0;
+
+      if ($success) {
+        collapsiblock_set_collapsible_type('facetapi', $facet_delta, $collapsible_status);
+      }
+
+      watchdog('mica', 'Facet block configuration for %facet (%delta)',
+        array(
+          '%facet' => $facet_field,
+          '%delta' => $facet_delta),
+        $success ? WATCHDOG_INFO : WATCHDOG_ERROR);
+
     }    
     
   }

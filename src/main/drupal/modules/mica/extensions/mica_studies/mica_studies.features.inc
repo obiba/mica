@@ -127,306 +127,66 @@ function mica_studies_default_search_api_index() {
         "type" : { "type" : "string" },
         "title" : { "type" : "string" },
         "status" : { "type" : "integer" },
-        "field_access_biosamples" : {
-          "name" : "Biological samples",
-          "indexed" : true,
-          "type" : "boolean",
-          "boost" : "1.0"
-        },
-        "field_access_data" : {
-          "name" : "Data (questionnaire-derived, measured\\u2026)",
-          "indexed" : true,
-          "type" : "boolean",
-          "boost" : "1.0"
-        },
-        "field_access_other" : {
-          "name" : "Other",
-          "indexed" : true,
-          "type" : "boolean",
-          "boost" : "1.0"
-        },
-        "field_access_other_sp" : {
-          "name" : "Please specify what study feature",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_acroym" : { "name" : "Acronym", "indexed" : true, "type" : "text", "boost" : "1.0" },
-        "field_age_max" : {
-          "name" : "Maximum age",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_age_min" : {
-          "name" : "Minimum age",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
+        "field_access_biosamples" : { "type" : "boolean" },
+        "field_access_data" : { "type" : "boolean" },
+        "field_access_other" : { "type" : "boolean" },
+        "field_access_other_sp" : { "type" : "text" },
+        "field_acroym" : { "type" : "text" },
+        "field_age_max" : { "type" : "integer" },
+        "field_age_min" : { "type" : "integer" },
         "field_authorising_date" : { "type" : "date" },
         "field_authorising_date_m" : { "type" : "date" },
         "field_authorising_person_name" : { "type" : "text" },
         "field_authorising_person_name_m" : { "type" : "text" },
         "field_authorization_maelstrom" : { "type" : "boolean" },
         "field_authorization_specific" : { "type" : "boolean" },
-        "field_baseline_end_year" : {
-          "name" : "End year",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_baseline_start_year" : {
-          "name" : "Start year",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_bio_samples_management" : {
-          "name" : "Biological samples",
-          "indexed" : true,
-          "type" : "list\\u003Cstring\\u003E",
-          "boost" : "1.0"
-        },
-        "field_complete_name" : {
-          "name" : "Complete name",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
+        "field_baseline_end_year" : { "type" : "integer" },
+        "field_baseline_start_year" : { "type" : "integer" },
+        "field_bio_samples_management" : { "type" : "list\\u003Cstring\\u003E" },
+        "field_complete_name" : { "type" : "text" },
         "field_contacts_ref" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
-        "field_country" : {
-          "name" : "Country of residence",
-          "indexed" : true,
-          "type" : "list\\u003Cstring\\u003E",
-          "boost" : "1.0"
-        },
-        "field_current_part_nb_date" : { "name" : "On", "indexed" : true, "type" : "date", "boost" : "1.0" },
-        "field_current_participants_nb" : {
-          "name" : "How many people have joined the study?",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_current_sam_supp_info" : {
-          "name" : "If needed, supplementary information about current number of collected biological samples",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_current_samples_date" : { "name" : "On", "indexed" : true, "type" : "date", "boost" : "1.0" },
-        "field_current_samples_nb" : {
-          "name" : "For how many people have biological samples been collected?",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_current_supp_info" : {
-          "name" : "If needed, supplementary information about current number of participants recruited at baseline",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_data_sources" : {
-          "name" : "Data sources",
-          "indexed" : true,
-          "type" : "list\\u003Cstring\\u003E",
-          "boost" : "1.0"
-        },
-        "field_data_sources_sp" : {
-          "name" : "Please specify what other data sources",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_design" : {
-          "name" : "What is the study design?",
-          "indexed" : true,
-          "type" : "list\\u003Cstring\\u003E",
-          "boost" : "1.0"
-        },
-        "field_design_other_sp" : {
-          "name" : "Please specify what other design",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_ended_end_year" : {
-          "name" : "End year",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_ethnic_origin" : {
-          "name" : "Ethnic Origin",
-          "indexed" : true,
-          "type" : "list\\u003Ctext\\u003E",
-          "boost" : "1.0"
-        },
-        "field_followup_end_year" : {
-          "name" : "End year",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_followup_start_year" : {
-          "name" : "Start year",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_gender" : {
-          "name" : "Gender",
-          "indexed" : true,
-          "type" : "string",
-          "boost" : "1.0"
-        },
-        "field_health_status" : {
-          "name" : "Health Status",
-          "indexed" : true,
-          "type" : "list\\u003Ctext\\u003E",
-          "boost" : "1.0"
-        },
+        "field_country" : { "type" : "list\\u003Cstring\\u003E" },
+        "field_current_part_nb_date" : { "type" : "date" },
+        "field_current_participants_nb" : { "type" : "integer" },
+        "field_current_sam_supp_info" : { "type" : "text" },
+        "field_current_samples_date" : { "type" : "date" },
+        "field_current_samples_nb" : { "type" : "integer" },
+        "field_current_supp_info" : { "type" : "text" },
+        "field_data_sources" : { "type" : "list\\u003Cstring\\u003E" },
+        "field_data_sources_sp" : { "type" : "text" },
+        "field_design" : { "type" : "list\\u003Cstring\\u003E" },
+        "field_design_other_sp" : { "type" : "text" },
+        "field_ended_end_year" : { "type" : "integer" },
+        "field_ethnic_origin" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_followup_end_year" : { "type" : "integer" },
+        "field_followup_start_year" : { "type" : "integer" },
+        "field_gender" : { "type" : "string" },
+        "field_health_status" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
-        "field_marker_paper" : {
-          "name" : "Marker paper describing your study",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_no_limits_participants" : {
-          "name" : "No limits in the number of participants",
-          "indexed" : true,
-          "type" : "boolean",
-          "boost" : "1.0"
-        },
-        "field_no_limits_samples" : {
-          "name" : "No limits in the number of samples",
-          "indexed" : true,
-          "type" : "boolean",
-          "boost" : "1.0"
-        },
-        "field_partcipant_sel_supp_info" : {
-          "name" : "If needed, supplementary information about selection criteria of the population",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_preparation_end_year" : {
-          "name" : "End year",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_preparation_start_year" : {
-          "name" : "Start year",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_pubmedid" : {
-          "name" : "Pubmed Id",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_recruitement_supp_info" : {
-          "name" : "If needed, supplementary information about recruitments procedures",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_recruitment" : {
-          "name" : "The study targets the recruitment of",
-          "indexed" : true,
-          "type" : "list\\u003Cstring\\u003E",
-          "boost" : "1.0"
-        },
-        "field_recruitment_other" : {
-          "name" : "Please specify what other source of recruitment",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_recruitment_other_sp" : {
-          "name" : "Please specify what other recruitment target",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_recruitment_procedures" : {
-          "name" : "Specify the sources of recruitment",
-          "indexed" : true,
-          "type" : "list\\u003Cstring\\u003E",
-          "boost" : "1.0"
-        },
-        "field_recruitment_supp_info" : {
-          "name" : "If needed, supplementary information about study design",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_samples_man_other_sp" : {
-          "name" : "Please specify what other biological samples",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_samples_supp_info" : {
-          "name" : "If needed, supplementary information about target number of biological samples",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_select_criteria" : {
-          "name" : "What is the selection criteria for participants?",
-          "indexed" : true,
-          "type" : "list\\u003Cstring\\u003E",
-          "boost" : "1.0"
-        },
-        "field_selection_others_sp" : {
-          "name" : "Please specify what other selection criteria",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_status_supp_info" : {
-          "name" : "If needed, supplementary information about current study status",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
+        "field_marker_paper" : { "type" : "text" },
+        "field_no_limits_participants" : { "type" : "boolean" },
+        "field_no_limits_samples" : { "type" : "boolean" },
+        "field_partcipant_sel_supp_info" : { "type" : "text" },
+        "field_preparation_end_year" : { "type" : "integer" },
+        "field_preparation_start_year" : { "type" : "integer" },
+        "field_pubmedid" : { "type" : "text" },
+        "field_recruitement_supp_info" : { "type" : "text" },
+        "field_recruitment" : { "type" : "list\\u003Cstring\\u003E" },
+        "field_recruitment_other" : { "type" : "text" },
+        "field_recruitment_other_sp" : { "type" : "text" },
+        "field_recruitment_procedures" : { "type" : "list\\u003Cstring\\u003E" },
+        "field_recruitment_supp_info" : { "type" : "text" },
+        "field_samples_man_other_sp" : { "type" : "text" },
+        "field_samples_supp_info" : { "type" : "text" },
+        "field_select_criteria" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_selection_others_sp" : { "type" : "text" },
+        "field_status_supp_info" : { "type" : "text" },
         "field_supp_infos" : { "type" : "text" },
-        "field_target_nb_supp_info" : {
-          "name" : "If needed, supplementary information about target number of participants",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_target_number_biosamples" : {
-          "name" : "How many people have provided or should provide biological samples, from which DNA could be extracted?",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_target_number_participants" : {
-          "name" : "How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?",
-          "indexed" : true,
-          "type" : "integer",
-          "boost" : "1.0"
-        },
-        "field_territory" : {
-          "name" : "Territory or city of residence",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
-        "field_tissues_sp" : {
-          "name" : "Please specify type of tissues",
-          "indexed" : true,
-          "type" : "text",
-          "boost" : "1.0"
-        },
+        "field_target_nb_supp_info" : { "type" : "text" },
+        "field_target_number_biosamples" : { "type" : "integer" },
+        "field_target_number_participants" : { "type" : "integer" },
+        "field_territory" : { "type" : "text" },
+        "field_tissues_sp" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
         "body:value" : { "type" : "text" },
@@ -531,7 +291,7 @@ function mica_studies_default_search_api_index() {
             "fields" : { "title" : true },
             "title" : 0,
             "alt" : 1,
-            "tags" : "h1 = 5\\u000D\\u000Ah2 = 3\\u000D\\u000Ah3 = 2\\u000D\\u000Astrong = 2\\u000D\\u000Ab = 2\\u000D\\u000Aem = 1.5\\u000D\\u000Au = 1.5"
+            "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
           }
         },
         "search_api_tokenizer" : {
@@ -539,7 +299,7 @@ function mica_studies_default_search_api_index() {
           "weight" : "20",
           "settings" : {
             "fields" : { "title" : true },
-            "spaces" : "[^\\u005Cp{L}\\u005Cp{N}^\\u0027]",
+            "spaces" : "[^\\\\p{L}\\\\p{N}^\\u0027]",
             "ignorable" : "[-]"
           }
         },
@@ -549,7 +309,7 @@ function mica_studies_default_search_api_index() {
           "settings" : {
             "fields" : { "title" : true },
             "file" : "",
-            "stopwords" : "but\\u000D\\u000Adid\\u000D\\u000Athe this that those\\u000D\\u000Aetc"
+            "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
           }
         }
       }
