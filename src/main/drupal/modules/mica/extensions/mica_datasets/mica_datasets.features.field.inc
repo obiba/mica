@@ -823,7 +823,6 @@ function mica_datasets_field_default_fields() {
           0 => array(
             'vocabulary' => 'anthropometric_structures',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -885,12 +884,12 @@ function mica_datasets_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '55',
@@ -989,12 +988,12 @@ function mica_datasets_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 60,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '60',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '57',
@@ -1032,7 +1031,6 @@ function mica_datasets_field_default_fields() {
           0 => array(
             'vocabulary' => 'body_structures',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -1094,12 +1092,12 @@ function mica_datasets_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '56',
@@ -1137,7 +1135,6 @@ function mica_datasets_field_default_fields() {
           0 => array(
             'vocabulary' => 'class',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -1199,12 +1196,12 @@ function mica_datasets_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '61',
@@ -1242,7 +1239,6 @@ function mica_datasets_field_default_fields() {
           0 => array(
             'vocabulary' => 'data_source',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -1304,12 +1300,12 @@ function mica_datasets_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '43',
@@ -1494,7 +1490,6 @@ function mica_datasets_field_default_fields() {
           0 => array(
             'vocabulary' => 'disease_history',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -1556,12 +1551,12 @@ function mica_datasets_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '44',
@@ -1599,7 +1594,6 @@ function mica_datasets_field_default_fields() {
           0 => array(
             'vocabulary' => 'early_life',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -1661,12 +1655,12 @@ function mica_datasets_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '48',
@@ -1704,7 +1698,6 @@ function mica_datasets_field_default_fields() {
           0 => array(
             'vocabulary' => 'format',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -1766,12 +1759,12 @@ function mica_datasets_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '63',
@@ -1926,7 +1919,6 @@ function mica_datasets_field_default_fields() {
           0 => array(
             'vocabulary' => 'life_habits_behaviours',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -1988,12 +1980,12 @@ function mica_datasets_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '49',
@@ -2031,7 +2023,6 @@ function mica_datasets_field_default_fields() {
           0 => array(
             'vocabulary' => 'medical_health_intervention',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -2093,12 +2084,12 @@ function mica_datasets_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '45',
@@ -2136,7 +2127,6 @@ function mica_datasets_field_default_fields() {
           0 => array(
             'vocabulary' => 'medication',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -2198,12 +2188,12 @@ function mica_datasets_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '46',
@@ -2241,7 +2231,6 @@ function mica_datasets_field_default_fields() {
           0 => array(
             'vocabulary' => 'perception_of_health',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -2303,12 +2292,12 @@ function mica_datasets_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '53',
@@ -2346,7 +2335,6 @@ function mica_datasets_field_default_fields() {
           0 => array(
             'vocabulary' => 'period',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -2408,12 +2396,12 @@ function mica_datasets_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '58',
@@ -2451,7 +2439,6 @@ function mica_datasets_field_default_fields() {
           0 => array(
             'vocabulary' => 'physical_environment',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -2513,12 +2500,12 @@ function mica_datasets_field_default_fields() {
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '51',
@@ -2771,7 +2758,6 @@ Set to 0 to set variable at last position.  ',
           0 => array(
             'vocabulary' => 'reproductive_history',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -2833,12 +2819,12 @@ Set to 0 to set variable at last position.  ',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '47',
@@ -2876,7 +2862,6 @@ Set to 0 to set variable at last position.  ',
           0 => array(
             'vocabulary' => 'response_unit',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -2938,12 +2923,12 @@ Set to 0 to set variable at last position.  ',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '62',
@@ -2981,7 +2966,6 @@ Set to 0 to set variable at last position.  ',
           0 => array(
             'vocabulary' => 'social_environment',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -3043,12 +3027,12 @@ Set to 0 to set variable at last position.  ',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '52',
@@ -3086,7 +3070,6 @@ Set to 0 to set variable at last position.  ',
           0 => array(
             'vocabulary' => 'sociodemographic_characteristics',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -3148,12 +3131,12 @@ Set to 0 to set variable at last position.  ',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '50',
@@ -3191,7 +3174,6 @@ Set to 0 to set variable at last position.  ',
           0 => array(
             'vocabulary' => 'target',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -3253,12 +3235,12 @@ Set to 0 to set variable at last position.  ',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '59',
@@ -3296,7 +3278,6 @@ Set to 0 to set variable at last position.  ',
           0 => array(
             'vocabulary' => 'target_gender',
             'parent' => '0',
-            'depth' => '',
           ),
         ),
         'field_description_infos' => array(
@@ -3358,12 +3339,12 @@ Set to 0 to set variable at last position.  ',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 0,
+        'active' => 1,
         'module' => 'autocomplete_deluxe',
         'settings' => array(
           'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'autocomplete_path' => 'taxonomy/autocomplete',
-          'size' => 40,
+          'content_taxonomy_autocomplete_new_terms' => 'deny',
+          'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
         'weight' => '60',
