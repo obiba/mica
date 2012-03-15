@@ -20,6 +20,10 @@ function mica_datasets_theme() {
     'mica_datasets_dataset_query_edit_form' => array (
       'render element' => 'form'
     ),
+    'mica_datasets_reorder_variables' => array(
+      'render element' => 'form',
+      'file' => 'mica_datasets.pages.variables.inc',
+    ),
   );
 }
 
@@ -83,6 +87,17 @@ function mica_datasets_menu() {
     'weight' => 2,
     'type' => MENU_LOCAL_ACTION,
     'file' => 'mica_datasets.pages.inc',
+  );
+
+  $items['node/%node/reordervariables'] = array(
+    'title' => 'Reorder Variables',
+    'description' => 'Reorder Variables within their Dataset.',
+    'access callback' => '_mica_datasets_node_access',
+    'access arguments' => array(1, 'dataset', 'update'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mica_datasets_reorder_variables', 1),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'mica_datasets.pages.variables.inc',
   );
 
   // queries
@@ -298,9 +313,8 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
       }
       break;
 
-    case 'node/%':
-      $nid = $router_item['page_arguments'][0]->nid;
-      $node = node_load($nid);
+    case 'node/%/reordervariables':
+      $node = $router_item['page_arguments'][1];
       if ($node != NULL && $node->type === 'dataset') {
         if (node_access('update', $node)) {
           // add variables
@@ -312,7 +326,29 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
               'href' => 'node/add/variable',
               'localized_options' => array(
                 'query' => array(
-                  'dataset' => $nid
+                  'dataset' => $node->nid
+                )
+              )
+            ),
+          );
+        }
+      }
+      break;
+
+    case 'node/%':
+      $node = $router_item['page_arguments'][0];
+      if ($node != NULL && $node->type === 'dataset') {
+        if (node_access('update', $node)) {
+          // add variables
+          $links['add-variable'] = array(
+            '#theme' => 'menu_local_action',
+            '#weight' => 7,
+            '#link' => array(
+              'title' => t('Add new variable'),
+              'href' => 'node/add/variable',
+              'localized_options' => array(
+                'query' => array(
+                  'dataset' => $node->nid
                 )
               )
             ),
@@ -505,7 +541,7 @@ function mica_datasets_form($node, &$form_state) {
  */
 function mica_datasets_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
   // do not display manual edition of study view reference field 
-  if ($entity_type == 'node' && $entity->type == 'dataset') {
+  if ($entity_type === 'node' && $entity->type === 'dataset') {
     $form['field_dataset_studies']['#attributes']['style'] = array('display:none;');
     $form['field_dataset_variables']['#attributes']['style'] = array('display:none;');
   }
@@ -1288,7 +1324,9 @@ function mica_datasets_form_alter(&$form, $form_state, $form_id) {
       if (isset($_REQUEST['dataset'])) {
         $lang = $form['field_dataset']['#language'];
         $form['field_dataset'][$lang]['#after_build'][] = '_mica_datasets_prepopulate_variable_after_build';
-      }      
+      }
+      // hide field_position
+      $form['field_position']['#access'] = FALSE;
       break;
   }
 }
@@ -1313,7 +1351,7 @@ function _mica_datasets_prepopulate_variable_after_build(&$form_element) {
 function _mica_datasets_set_variable_position(&$variable) {
   $wrapper = entity_metadata_wrapper('node', $variable);
 
-  if ($wrapper->field_position->value() > 0) return;
+  if ($wrapper->field_position->value() !== 0) return;
 
   $dataset_id = $wrapper->field_dataset->nid->value();
 
