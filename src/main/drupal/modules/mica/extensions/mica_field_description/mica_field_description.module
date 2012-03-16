@@ -3,7 +3,6 @@
 include_once('mica_field_description.features.inc');
 include_once(drupal_get_path('module', 'facetapi') . '/facetapi.block.inc');
 include_once(drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.inc');
-include_once(drupal_get_path('module', 'mica') . '/includes/relations.inc');
 
 
 /**
@@ -209,7 +208,7 @@ function _add_field_index($index_name, stdClass $field_description) {
 	$fields = $options['fields'];
 
 	// check if this bundle is a child of a relation
-	$relation = _mica_find_relation_by_child($bundle);
+	$relation = mica_relation_find_relation_by_child($bundle);
 	if (!empty($relation)) {
 		$field_name = $relation->options['node_reference'] . ':' . $field_name;
 		$bundle_info = node_type_load($bundle);

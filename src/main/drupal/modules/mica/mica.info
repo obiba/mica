@@ -13,6 +13,7 @@ dependencies[] = references
 dependencies[] = mica_node_reference_field
 dependencies[] = mica_field_description
 dependencies[] = mica_core
+dependencies[] = mica_relation
 dependencies[] = field_permissions
 dependencies[] = menu
 dependencies[] = menu_firstchild
@@ -20,9 +21,6 @@ dependencies[] = http_client
 
 files[] = includes/blocks.inc
 files[] = includes/exception.inc
-files[] = includes/fieldgroups.inc
-files[] = includes/mica_relation.entity.inc
-files[] = includes/relations.inc
 
 files[] = includes/feeds/processors/FeedsUniqueNodeProcessor.inc
 files[] = includes/feeds/parsers/FeedsMultiValueCSVParser.inc

@@ -57,7 +57,7 @@ function mica_projects_menu_local_tasks_alter(&$data, $router_item, $root_path) 
  */
 function mica_projects_node_insert($node) {
   if ($node->type === 'project') {
-    mica_create_menu($node, 1);
+    mica_core_create_menu($node, 1);
     
     $node->field_teleconferences[LANGUAGE_NONE] = array(
       0 => array(

@@ -3,15 +3,15 @@
 
 /**
  * @file
- * Class definition of FeedsStudyChildProcessor.
+ * Class definition of FeedsMicaRelationProcessor.
  */
 
 /**
  * Creates nodes from feed items.
  */
-class FeedsMicaProcessor extends FeedsNodeProcessor {
+class FeedsMicaRelationProcessor extends FeedsNodeProcessor {
 
-/**
+  /**
    * Override parent::configDefaults().
    */
   public function configDefaults() {
@@ -23,15 +23,15 @@ class FeedsMicaProcessor extends FeedsNodeProcessor {
       'author' => 0,
       'parent_bundle' => '',
       'parent_unique_id_field' => '',
-    )+ parent::configDefaults();
+    ) + parent::configDefaults();
   }
-  
+
   public function configForm(&$form_state) {
     $form = parent::configForm($form_state);
     $types = node_type_get_names();
     // filter entity types that have mica_relation
     array_walk($types, 'check_plain');
-    
+
     $form['parent_bundle'] = array(
       '#type' => 'select',
       '#title' => t('Parent content type'),
@@ -48,12 +48,11 @@ class FeedsMicaProcessor extends FeedsNodeProcessor {
     );
     return $form;
   }
-  
+
   /**
    * Loads the existing Study Child from its existing parent
    */
   protected function loadParentEntity(FeedsSource $source, $parent_id) {
-    module_load_include('inc', 'mica', 'includes/relations');
 
     $query = db_select('field_data_' . $this->config['parent_unique_id_field'], 'f')
       ->condition('bundle', $this->config['parent_bundle'])
@@ -62,11 +61,11 @@ class FeedsMicaProcessor extends FeedsNodeProcessor {
     $result = $query->execute();
     // Exception when the parent does not exist return null
     foreach ($result as $row) {
-	    // Get the mica relation based on the type...
-      $relation = _mica_find_relations_by_parent_and_child($this->config['parent_bundle'], $this->config['content_type']);
+      // Get the mica relation based on the type...
+      $relation = mica_relation_find_relations_by_parent_and_child($this->config['parent_bundle'], $this->config['content_type']);
       if (!empty($relation)) {
-      	$parent = entity_load('node', array($row->entity_id));
-	$child_id = $parent[$row->entity_id]->{$relation->options['node_reference']}[LANGUAGE_NONE][0]['nid'];
+        $parent = entity_load('node', array($row->entity_id));
+        $child_id = $parent[$row->entity_id]->{$relation->options['node_reference']}[LANGUAGE_NONE][0]['nid'];
         $nodes = entity_load('node', array($child_id));
         $node = $nodes[$child_id];
         $node->changed = REQUEST_TIME;
@@ -75,14 +74,14 @@ class FeedsMicaProcessor extends FeedsNodeProcessor {
     }
     return $node;
   }
-  
+
   public function process(FeedsSource $source, FeedsParserResult $parser_result) {
     $state = $source->state(FEEDS_PROCESS);
 
     while ($item = $parser_result->shiftItem()) {
       // Always load from study_legacy_id
       if (!($entity_id = $this->existingEntityId($source, $parser_result)) ||
-           ($this->config['update_existing'] != FEEDS_SKIP_EXISTING)) {
+        ($this->config['update_existing'] != FEEDS_SKIP_EXISTING)) {
 
         // Only proceed if item has actually changed.
         $hash = $this->hash($item);
@@ -95,8 +94,8 @@ class FeedsMicaProcessor extends FeedsNodeProcessor {
           if (empty($entity_id)) {
             // Get the node from the parent study...
             $study_id_field = 'field_study_legacy_id'; // default study id field name
-            foreach ($this->config['mappings'] as $mapping){
-              if ($mapping['target'] === 'field_study_legacy_id'){
+            foreach ($this->config['mappings'] as $mapping) {
+              if ($mapping['target'] === 'field_study_legacy_id') {
                 $study_id_field = $mapping['source'];
                 break;
               }
@@ -154,7 +153,7 @@ class FeedsMicaProcessor extends FeedsNodeProcessor {
     $messages = array();
     if ($state->created) {
       $messages[] = array(
-       'message' => format_plural(
+        'message' => format_plural(
           $state->created,
           'Created @number @entity',
           'Created @number @entities',
@@ -164,7 +163,7 @@ class FeedsMicaProcessor extends FeedsNodeProcessor {
     }
     if ($state->updated) {
       $messages[] = array(
-       'message' => format_plural(
+        'message' => format_plural(
           $state->updated,
           'Updated @number @entity',
           'Updated @number @entities',
@@ -174,7 +173,7 @@ class FeedsMicaProcessor extends FeedsNodeProcessor {
     }
     if ($state->failed) {
       $messages[] = array(
-       'message' => format_plural(
+        'message' => format_plural(
           $state->failed,
           'Failed importing @number @entity',
           'Failed importing @number @entities',
@@ -193,5 +192,5 @@ class FeedsMicaProcessor extends FeedsNodeProcessor {
       $source->log('import', $message, array(), isset($message['level']) ? $message['level'] : WATCHDOG_INFO);
     }
   }
-  
+
 }

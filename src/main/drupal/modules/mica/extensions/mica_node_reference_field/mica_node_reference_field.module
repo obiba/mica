@@ -27,8 +27,8 @@ function mica_node_reference_field_field_formatter_view($entity_type, $entity, $
   if ($display['type'] === 'node_reference_field_name_link') {
 		foreach ($items as $delta => $item) {
 			if ($item['access']) {
-				$node = $item['node'];
-				if ($display['type'] == 'node_reference_field_name_link') {
+				$node = isset($item['node']) ? $item['node'] : node_load($item['nid']);
+				if ($display['type'] === 'node_reference_field_name_link') {
 					$uri = entity_uri('node', $node);
 					$result[$delta] = array(
 						'#type' => 'link',
@@ -36,13 +36,12 @@ function mica_node_reference_field_field_formatter_view($entity_type, $entity, $
 						'#href' => $uri['path'],
 						'#options' => $uri['options'],
 					);
-				}
-				else {
+				} else {
 					$result[$delta] = array(
 						'#markup' => check_plain($node->title),
 					);
 				}
-				if (!$node->status) {
+				if ($node->status == 0) {
 					$result[$delta]['#prefix'] = '<span class="node-unpublished">';
 					$result[$delta]['#suffix'] = '</span>';
 				}

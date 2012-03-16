@@ -1,0 +1,15 @@
+name = "Mica Relation"
+description = "Mica Relation"
+core = "7.x"
+package = "OBiBa"
+php = "5.2.4"
+version = "7.x-1.2-dev"
+project = "mica_relation"
+
+dependencies[] = entity
+dependencies[] = search_api
+dependencies[] = feeds
+dependencies[] = mica_core
+
+files[] = FeedsMicaRelationRelationProcessor.inc
+files[] = mica_relation.entity.inc

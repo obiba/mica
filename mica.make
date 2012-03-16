@@ -262,7 +262,7 @@ projects[views][type] = module
 projects[views_data_export][version] = 3.0-beta5
 projects[views_data_export][type] = module
 
-projects[viewreference][version] = 3.2
+projects[viewreference][version] = 3.3
 projects[viewreference][type] = module
 
 projects[workbench][version] = 1.1

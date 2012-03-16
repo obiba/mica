@@ -67,7 +67,11 @@ function mica_search_form($form, &$form_state) {
 
 function mica_search_form_submit($form, &$form_state) {
   if ($form_state['values']['target'] == 'studies') {
-    drupal_goto('studies-search' , array('query' => array('search_api_views_fulltext' => $form_state['values']['search'])));
+    drupal_goto('studies-search' , array(
+      'query' => array(
+        'search_api_views_fulltext' => $form_state['values']['search']
+      )
+    ));
   }
   else {
     drupal_goto('search/node/' . $form_state['values']['search']);
@@ -138,7 +142,8 @@ function mica_search_filters_block_content() {
   
   global $user;
   $rids = array_keys($user->roles);
-  $result = db_query("SELECT DISTINCT b.* FROM {block} b LEFT JOIN {block_role} r ON b.module = r.module AND b.delta = r.delta WHERE b.status = 1 AND b.custom <> 0 AND (r.rid IN (:rids) OR r.rid IS NULL) ORDER BY b.weight, b.module", array(':rids' => $rids));
+  $result = db_query("SELECT DISTINCT b.* FROM {block} b LEFT JOIN {block_role} r ON b.module = r.module AND b.delta = r.delta WHERE b.status = 1 AND b.custom <> 0 AND (r.rid IN (:rids) OR r.rid IS NULL) ORDER BY b.weight, b.module",
+    array(':rids' => $rids));
         
   $blocks = array();
   foreach ($result as $block)  {   
@@ -151,7 +156,9 @@ function mica_search_filters_block_content() {
         $blocks[$block->module][$block->module . ':' . $block->delta] = array(
           '#type' => 'checkbox',
           '#title' => check_plain($data[$block->delta]['info']),
-          '#default_value' => isset($user->data['block'][$block->module][$block->delta]) ? $user->data['block'][$block->module][$block->delta] : ($block->custom == 1),
+          '#default_value' => isset($user->data['block'][$block->module][$block->delta])
+            ? $user->data['block'][$block->module][$block->delta]
+            : ($block->custom == 1),
         );
       }
     }

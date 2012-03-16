@@ -63,6 +63,6 @@ function mica_community_menu_local_tasks_alter(&$data, $router_item, $root_path)
 */
 function mica_community_node_insert($node) {
 	if ($node->type === 'publication' || $node->type === 'event') {
-		mica_create_menu($node, 1);
+		mica_core_create_menu($node, 1);
 	}
 }

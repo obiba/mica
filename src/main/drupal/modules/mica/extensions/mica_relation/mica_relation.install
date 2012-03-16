@@ -1,0 +1,68 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Install Mica Relation module.
+ */
+
+
+/**
+ * Implements hook_schema()
+ */
+function mica_relation_schema() {
+
+  $schema['mica_relation'] = array(
+    'description' => 'Stores relations between content types',
+    'fields' => array(
+      'id' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique relation ID',
+      ),
+      'parent_bundle' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The parent content type machine name',
+      ),
+      'child_bundle' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The child content type machine name',
+      ),
+      'label' => array(
+        'description' => 'The human-readable name to be displayed for this relation.',
+        'type' => 'varchar',
+        'length' => 80,
+        'not null' => TRUE,
+      ),
+      'enabled' => array(
+        'description' => 'A flag indicating whether the relation is enabled.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+      'options' => array(
+        'description' => 'The options used to configure the relation.',
+        'type' => 'text',
+        'serialize' => TRUE,
+        'not null' => TRUE,
+      ),
+    ) + entity_exportable_schema_fields(),
+    'indexes' => array(
+      'parent_index' => array('parent_bundle'),
+      'enabled' => array('enabled'),
+    ),
+    'unique keys' => array(
+      'unique_child' => array('child_bundle'),
+    ),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}
+
