@@ -42,7 +42,6 @@ function mica_datasets_reorder_variables($form, $form_state, $dataset_node) {
         '#type' => 'link',
         '#title' => t('edit'),
         '#href' => 'node/' . $nid . '/edit',
-        '#options' => array('query' => drupal_get_destination()), // returns to current page after edit
       );
       $form[$nid]['delete'] = array(
         '#type' => 'link',

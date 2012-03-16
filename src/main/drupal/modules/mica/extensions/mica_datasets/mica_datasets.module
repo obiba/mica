@@ -428,7 +428,7 @@ function _mica_datasets_node_access($node, $bundle = NULL, $op = 'update') {
   }
   // Make sure the user can view the original node content.
   if ($bundle != NULL) {
-    return $node->type == $bundle && node_access($op, $node);
+    return $node->type === $bundle && node_access($op, $node);
   }
   else {
     return node_access($op, $node);
@@ -1314,19 +1314,42 @@ function mica_datasets_block_view_alter(&$data, $block) {
 function mica_datasets_form_alter(&$form, $form_state, $form_id) {
   switch($form_id) {
     case 'dataset_node_form':
-      if (isset($_REQUEST['type'])) {
-        $lang = $form['field_dataset_type']['#language'];
-        $form['field_dataset_type'][$lang]['#after_build'][] = '_mica_datasets_prepopulate_dataset_after_build';
-      }
+      _mica_datasets_form_alter_dataset($form, $form_state, $form_id);
       break;
     case 'variable_node_form':
-      if (isset($_REQUEST['dataset'])) {
-        $lang = $form['field_dataset']['#language'];
-        $form['field_dataset'][$lang]['#after_build'][] = '_mica_datasets_prepopulate_variable_after_build';
-      }
-      // hide field_position
-      $form['field_position']['#access'] = FALSE;
+      _mica_datasets_form_alter_variable($form, $form_state, $form_id);
       break;
+  }
+}
+
+function _mica_datasets_form_alter_dataset(&$form, $form_state, $form_id) {
+  if (isset($_REQUEST['type'])) {
+    $lang = $form['field_dataset_type']['#language'];
+    $form['field_dataset_type'][$lang]['#after_build'][] = '_mica_datasets_prepopulate_dataset_after_build';
+  }
+}
+
+function _mica_datasets_form_alter_variable(&$form, $form_state, $form_id) {
+  if (isset($_REQUEST['dataset'])) {
+    $lang = $form['field_dataset']['#language'];
+    $form['field_dataset'][$lang]['#after_build'][] = '_mica_datasets_prepopulate_variable_after_build';
+  }
+  // hide field_position
+  $form['field_position']['#access'] = FALSE;
+
+  $nid = $form['nid']['#value'];
+  if (!empty($nid)) {
+    $next_variable = _mica_datasets_find_next_variable($nid);
+    if ($next_variable != NULL) {
+      $form['actions']['save_edit_next'] = array(
+        '#access' => TRUE,
+        '#value' => t('Save & edit next'),
+        '#weight' => 6,
+        '#type' => 'submit',
+        '#submit' => array('node_form_submit', '_mica_datasets_save_edit_next_submit'),
+        '#next_variable_nid' => $next_variable->nid,
+      );
+    }
   }
 }
 
@@ -1347,10 +1370,36 @@ function _mica_datasets_prepopulate_variable_after_build(&$form_element) {
   return $form_element;
 }
 
-function _mica_datasets_set_variable_position(&$variable) {
-  $wrapper = entity_metadata_wrapper('node', $variable);
+function _mica_datasets_save_edit_next_submit($form, &$form_state) {
+  if (isset($form['actions']['save_edit_next'])) {
+    $form_state['redirect'] = 'node/' . $form['actions']['save_edit_next']['#next_variable_nid'] . '/edit';
+  }
+}
 
-  if ($wrapper->field_position->value() !== 0) return;
+function _mica_datasets_find_next_variable($variable_nid) {
+  $variable = node_load($variable_nid);
+  $wrapper = entity_metadata_wrapper('node', $variable);
+  $dataset_id = $wrapper->field_dataset->nid->value();
+
+  $query = new EntityFieldQuery();
+  $results = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'variable')
+    ->fieldCondition('field_dataset', 'nid', $dataset_id)
+    ->fieldCondition('field_position', 'value', $wrapper->field_position->value(), '>')
+    ->fieldOrderBy("field_position", 'value', "asc")
+    ->range(0, 1)
+    ->execute();
+  if(!empty($results['node'])) {
+    return array_pop(entity_load('node', array_keys($results['node'])));
+  }
+  return NULL;
+}
+
+function _mica_datasets_set_variable_position(&$variable) {
+
+  $wrapper = entity_metadata_wrapper('node', $variable);
+  $position = $wrapper->field_position->value();
+  if ($position != NULL && $position != 0) return;
 
   $dataset_id = $wrapper->field_dataset->nid->value();
 
