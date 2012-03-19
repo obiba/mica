@@ -96,7 +96,7 @@ projects[facetapi][type] = module
 
 projects[] = examples
 
-projects[features][version] = 1.0-beta6
+projects[features][version] = 1.0-rc1
 projects[features][type] = module
 
 projects[feeds][type] = module
@@ -191,7 +191,7 @@ projects[noderefcreate][download][url] = http://git.drupal.org/project/noderefcr
 projects[noderefcreate][download][revision] = 4268ba7832272348d0612e23ce11f42f0a255318
 projects[noderefcreate][patch][892052] = http://drupal.org/files/noderefcreate-workflow-options-892052-4.patch
 
-projects[panels][version] = 3.0
+projects[panels][version] = 3.2
 projects[panels][type] = module
 
 projects[pathauto][version] = 1.0

@@ -294,21 +294,20 @@ function _mica_studies_study_view($node, $view_mode, $langcode) {
   _mica_remove_exclusive_fields($node, $bindings);
 
   // Hide the fields "No limits in the number of..." when they are false
-  if (isset($node->content['field_no_limits_participants'])) {
+  if (isset($node->content['field_no_limits_participants']) && isset($node->content['field_no_limits_participants']['#items'])) {
     if ($node->content['field_no_limits_participants']['#items'][0]['value']) {
       $node->content['field_no_limits_participants'][0]['#markup'] = $node->content['field_no_limits_participants']['#title'];
     } else {
       $node->content['field_no_limits_participants']['#access'] = FALSE;
     }
   }
-  if (isset($node->content['field_no_limits_samples'])) {
+  if (isset($node->content['field_no_limits_samples']) && isset($node->content['field_no_limits_samples']['#items'])) {
     if ($node->content['field_no_limits_samples']['#items'][0]['value']) {
       $node->content['field_no_limits_samples'][0]['#markup'] = $node->content['field_no_limits_samples']['#title'];
     } else {
       $node->content['field_no_limits_samples']['#access'] = FALSE;
     }
   }
-
 
   // selection criteria
   _mica_studies_study_view_selection_criteria($node, $view_mode, $langcode, $wrapper);

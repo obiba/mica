@@ -80,6 +80,9 @@ function _mica_studies_configure_field_bundle_settings() {
       'right_area' => array('custom_settings' => true),
       'center_area' => array('custom_settings' => true),
       'footer_area' => array('custom_settings' => true),
+      'summary_banner_area' => array('custom_settings' => true),
+      'summary_left_area' => array('custom_settings' => true),
+      'summary_right_area' => array('custom_settings' => true),
     ),
     'extra_fields' => array(
       'form' => array(

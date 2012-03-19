@@ -185,11 +185,11 @@ function _feeds_source_status($source) {
  */
 function mica_datasets_dataset_studies_form($form, &$form_state) {
   mica_modal_prepare(array(
-  array(
+    array(
       'name' => 'edit-style',
       'width' => 700,
       'height' => 650,
-  ),
+    ),
   ));
 
   $dataset_node = _mica_datasets_get_node_form_arg($form_state);

@@ -2275,3 +2275,7 @@ label.option {
 body.node-type-dataset .pane-dataset-variables {
   margin-top: 20px;
 }
+
+.dataset_study_summary_details h2[property="dc:title"] {
+  display: none;
+}

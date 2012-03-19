@@ -3222,6 +3222,37 @@ function mica_studies_field_group_info() {
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_general_design|node|study|summary_left_area';
+  $field_group->group_name = 'group_general_design';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'summary_left_area';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'General Design',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_design',
+      1 => 'field_design_other_sp',
+      2 => 'field_no_limits_participants',
+      3 => 'field_no_limits_samples',
+      4 => 'field_target_number_biosamples',
+      5 => 'field_target_number_participants',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_general_design|node|study|summary_left_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_general_info|node|study|center_area';
   $field_group->group_name = 'group_general_info';
   $field_group->entity_type = 'node';
@@ -4400,6 +4431,40 @@ function mica_studies_field_group_info() {
     ),
   );
   $export['group_participants_selection|node|study|right_area'] = $field_group;
+
+  $field_group = new stdClass;
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_participants_selection|node|study|summary_right_area';
+  $field_group->group_name = 'group_participants_selection';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'study';
+  $field_group->mode = 'summary_right_area';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Participants Selection',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field_age_max',
+      1 => 'field_age_min',
+      2 => 'field_country',
+      3 => 'field_ethnic_origin',
+      4 => 'field_gender',
+      5 => 'field_health_status',
+      6 => 'field_select_criteria',
+      7 => 'field_selection_others_sp',
+      8 => 'field_territory',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+      ),
+    ),
+  );
+  $export['group_participants_selection|node|study|summary_right_area'] = $field_group;
 
   $field_group = new stdClass;
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
