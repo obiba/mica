@@ -10,9 +10,9 @@
 function mica_datasets_taxonomy_default_vocabularies() {
   return array(
     'anthropometric_structures' => array(
-      'name' => 'Anthropometric Structures',
+      'name' => 'Anthropometric structures',
       'machine_name' => 'anthropometric_structures',
-      'description' => NULL,
+      'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -33,9 +33,9 @@ function mica_datasets_taxonomy_default_vocabularies() {
       ),
     ),
     'body_functions' => array(
-      'name' => 'Body Functions',
+      'name' => 'Body functions',
       'machine_name' => 'body_functions',
-      'description' => NULL,
+      'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -56,32 +56,9 @@ function mica_datasets_taxonomy_default_vocabularies() {
       ),
     ),
     'body_structures' => array(
-      'name' => 'Body Structures',
+      'name' => 'Body structures',
       'machine_name' => 'body_structures',
-      'description' => NULL,
-      'hierarchy' => '0',
-      'module' => 'taxonomy',
-      'weight' => '0',
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
-    'class' => array(
-      'name' => 'Class',
-      'machine_name' => 'class',
-      'description' => NULL,
+      'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -102,9 +79,9 @@ function mica_datasets_taxonomy_default_vocabularies() {
       ),
     ),
     'data_source' => array(
-      'name' => 'Data Source',
+      'name' => 'Data source',
       'machine_name' => 'data_source',
-      'description' => NULL,
+      'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -125,9 +102,9 @@ function mica_datasets_taxonomy_default_vocabularies() {
       ),
     ),
     'disease_history' => array(
-      'name' => 'Diseases History and Related Health Problems',
+      'name' => 'Diseases history and related health problems',
       'machine_name' => 'disease_history',
-      'description' => NULL,
+      'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -148,9 +125,9 @@ function mica_datasets_taxonomy_default_vocabularies() {
       ),
     ),
     'early_life' => array(
-      'name' => 'Participant\'s Early Life/Childhood',
+      'name' => 'Participant\'s early life/Childhood',
       'machine_name' => 'early_life',
-      'description' => NULL,
+      'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -170,10 +147,10 @@ function mica_datasets_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-    'format' => array(
-      'name' => 'Format',
-      'machine_name' => 'format',
-      'description' => NULL,
+    'essence' => array(
+      'name' => 'Essence',
+      'machine_name' => 'essence',
+      'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -194,9 +171,32 @@ function mica_datasets_taxonomy_default_vocabularies() {
       ),
     ),
     'life_habits_behaviours' => array(
-      'name' => 'Life Habits/Behaviours',
+      'name' => 'Life habits/Behaviours',
       'machine_name' => 'life_habits_behaviours',
-      'description' => NULL,
+      'description' => '',
+      'hierarchy' => '0',
+      'module' => 'taxonomy',
+      'weight' => '0',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'measure' => array(
+      'name' => 'Measure',
+      'machine_name' => 'measure',
+      'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -217,9 +217,9 @@ function mica_datasets_taxonomy_default_vocabularies() {
       ),
     ),
     'medical_health_intervention' => array(
-      'name' => 'Medical Health Interventions/Health Services Utilization',
+      'name' => 'Medical health interventions/Health services utilization',
       'machine_name' => 'medical_health_intervention',
-      'description' => NULL,
+      'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -263,9 +263,9 @@ function mica_datasets_taxonomy_default_vocabularies() {
       ),
     ),
     'perception_of_health' => array(
-      'name' => 'Perception of Health/Quality of life',
+      'name' => 'Perception of health/Quality of life',
       'machine_name' => 'perception_of_health',
-      'description' => NULL,
+      'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -309,9 +309,9 @@ function mica_datasets_taxonomy_default_vocabularies() {
       ),
     ),
     'physical_environment' => array(
-      'name' => 'Physical Environment',
+      'name' => 'Physical environment',
       'machine_name' => 'physical_environment',
-      'description' => NULL,
+      'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -332,32 +332,9 @@ function mica_datasets_taxonomy_default_vocabularies() {
       ),
     ),
     'reproductive_history' => array(
-      'name' => 'Reproductive Health and History',
+      'name' => 'Reproductive health and history',
       'machine_name' => 'reproductive_history',
-      'description' => NULL,
-      'hierarchy' => '0',
-      'module' => 'taxonomy',
-      'weight' => '0',
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
-    'response_unit' => array(
-      'name' => 'Response Unit',
-      'machine_name' => 'response_unit',
-      'description' => NULL,
+      'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -378,9 +355,9 @@ function mica_datasets_taxonomy_default_vocabularies() {
       ),
     ),
     'social_environment' => array(
-      'name' => 'Social Environment',
+      'name' => 'Social environment',
       'machine_name' => 'social_environment',
-      'description' => NULL,
+      'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -401,9 +378,9 @@ function mica_datasets_taxonomy_default_vocabularies() {
       ),
     ),
     'sociodemographic_characteristics' => array(
-      'name' => 'Sociodemographic/Socioeconomic Characteristics',
+      'name' => 'Sociodemographic/Socioeconomic characteristics',
       'machine_name' => 'sociodemographic_characteristics',
-      'description' => NULL,
+      'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -426,29 +403,6 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'target' => array(
       'name' => 'Target',
       'machine_name' => 'target',
-      'description' => NULL,
-      'hierarchy' => '0',
-      'module' => 'taxonomy',
-      'weight' => '0',
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
-    'target_gender' => array(
-      'name' => 'Target Gender',
-      'machine_name' => 'target_gender',
       'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',

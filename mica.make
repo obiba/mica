@@ -106,7 +106,6 @@ projects[feeds][download][revision] = cc2d2eccfe7c8a30dcfefa49fd57407cb6f47cf5
 projects[feeds][patch][11075222] = http://drupal.org/files/issues/1107522-empty-fields-2.patch
 projects[feeds][patch][110752213] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-13.patch
 projects[feeds][patch][110752215links] = http://drupal.org/files/ignore-empty-link-fields-1107522-15.patch
-;projects[feeds][patch][110752215fields] = http://drupal.org/files/ignore-empty-field-values-1107522-15.patch
 
 projects[feeds_jsonpath_parser][version] = 1.0-beta2
 projects[feeds_jsonpath_parser][type] = module
@@ -116,8 +115,6 @@ projects[feeds_tamper][download][type] = git
 projects[feeds_tamper][download][url] = http://git.drupal.org/project/feeds_tamper.git
 projects[feeds_tamper][download][revision] = c9a97a7c881c1ff48c20bc3cc068a558c48b1de8
 projects[feeds_tamper][patch][1416700] = http://drupal.org/files/1416700-4-feeds_tamper-existing-terms-plugin.patch
-;projects[feeds_tamper][version] = 1.0-beta3
-;projects[feeds_tamper][type] = module
 
 projects[field_display_label][version] = 1.2
 projects[field_display_label][type] = module

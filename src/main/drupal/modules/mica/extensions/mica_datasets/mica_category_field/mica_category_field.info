@@ -5,6 +5,6 @@ package = "OBiBa"
 php = "5.2.4"
 project = "mica_category_field"
 
-; Information added by obiba.org packaging script on Fri, 09 Mar 2012 13:56:07 -0500
-version = "7.x-1.2-SNAPSHOT"
-datestamp = "1331319367"
+; Information added by obiba.org packaging script on Mon, 19 Mar 2012 14:51:40 -0400
+version = "7.x-1.2-dev"
+datestamp = "1332183100"

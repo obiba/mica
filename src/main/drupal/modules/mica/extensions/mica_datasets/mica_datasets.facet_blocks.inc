@@ -48,12 +48,10 @@ function mica_datasets_configure_facet_blocks() {
     	'field_body_functions',
     	'field_period',
     	'field_target',
-    	'field_target_gender',
-    	'field_class',
-    	'field_response_unit',
     	'field_value_type',
     	'field_repeatable',
-    	'field_format',
+    	'field_essence',
+    	'field_measure',
     )
   );
   
