@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Mica Field Description module.
+ */
+
+/**
+ *
+ * Updates the mapping of field_value_type. Values will be changed from-to:<br>
+ * 'INTEGER' = 'integer'<br>
+ * 'DATE' = 'date'<br>
+ * 'DECIMAL' = 'decimal'<br>
+ * 'BOOELAN' = 'boolean'<br>
+ * 'TEXT' = 'text'<br>
+ */
+function mica_field_description_update_7120() {
+
+  watchdog('mica', 'Import dataschema dimensions', array(), WATCHDOG_INFO);
+
+  db_update('field_data_field_value_type')
+    ->fields(array('field_value_type_value' => 'text'))
+    ->condition('field_value_type_value', 'TEXT')
+    ->execute();
+  
+  db_update('field_data_field_value_type')
+    ->fields(array('field_value_type_value' => 'date'))
+    ->condition('field_value_type_value', 'DATE')
+    ->execute();
+  
+  db_update('field_data_field_value_type')
+    ->fields(array('field_value_type_value' => 'integer'))
+    ->condition('field_value_type_value', 'INTEGER')
+    ->execute();
+  
+  db_update('field_data_field_value_type')
+    ->fields(array('field_value_type_value' => 'boolean'))
+    ->condition('field_value_type_value', 'BOOLEAN')
+    ->execute();
+  
+  db_update('field_data_field_value_type')
+    ->fields(array('field_value_type_value' => 'decimal'))
+    ->condition('field_value_type_value', 'DECIMAL')
+    ->execute();
+  
+  // Set the column field_value_type_value type to BINARY so the string comparions will be case sensitive, allowing list.module._list_values_in_use to return an empty array
+  $result = db_query('ALTER TABLE {field_data_field_value_type} MODIFY field_value_type_value varchar(255) BINARY DEFAULT NULL');
+  
+  _mica_full_feature_revert('mica_field_description');
+  
+  $result = db_query('ALTER TABLE {field_data_field_value_type} MODIFY field_value_type_value varchar(255) DEFAULT NULL');
+}
+

@@ -11,3 +11,10 @@
 function mica_data_access_install() {
 }
 
+/**
+*
+* Updates the mica_data_access feature
+*/
+function mica_data_access_update_7120() {
+	_mica_full_feature_revert('mica_data_access');
+}

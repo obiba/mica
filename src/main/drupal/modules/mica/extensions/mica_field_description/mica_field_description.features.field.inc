@@ -41,7 +41,7 @@ function mica_field_description_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
+          'field_description_value_type' => 'text',
         ),
         'field_permissions' => array(
           'create' => 0,
@@ -53,7 +53,7 @@ function mica_field_description_field_default_fields() {
         'variable_infos' => array(
           'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => 'TEXT',
+          'variable_value_type' => 'text',
         ),
       ),
       'translatable' => '1',
@@ -333,7 +333,7 @@ function mica_field_description_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
+          'field_description_value_type' => 'text',
         ),
         'field_permissions' => array(
           'create' => 0,
@@ -705,11 +705,11 @@ function mica_field_description_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'BOOLEAN' => 'Boolean',
-          'DATE' => 'Date',
-          'DECIMAL' => 'Decimal',
-          'INTEGER' => 'Integer',
-          'TEXT' => 'Text',
+          'boolean' => 'Boolean',
+          'date' => 'Date',
+          'decimal' => 'Decimal',
+          'integer' => 'Integer',
+          'text' => 'Text',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(

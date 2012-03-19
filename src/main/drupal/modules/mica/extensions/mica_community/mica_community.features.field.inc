@@ -41,7 +41,7 @@ function mica_community_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
+          'field_description_value_type' => 'text',
         ),
         'field_permissions' => array(
           'create' => 0,
@@ -53,7 +53,7 @@ function mica_community_field_default_fields() {
         'variable_infos' => array(
           'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => 'TEXT',
+          'variable_value_type' => 'text',
         ),
       ),
       'translatable' => '1',
@@ -368,7 +368,7 @@ function mica_community_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
+          'field_description_value_type' => 'text',
         ),
         'field_permissions' => array(
           'create' => 0,
@@ -467,7 +467,7 @@ function mica_community_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
+          'field_description_value_type' => 'text',
         ),
         'field_permissions' => array(
           'create' => 0,
@@ -555,7 +555,7 @@ function mica_community_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => 'INTEGER',
+          'field_description_value_type' => 'integer',
         ),
         'field_permissions' => array(
           'create' => 0,
@@ -654,7 +654,7 @@ function mica_community_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_value_type' => 'TEXT',
+          'field_description_value_type' => 'text',
         ),
         'field_permissions' => array(
           'create' => 0,

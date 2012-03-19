@@ -192,25 +192,67 @@ function mica_datasets_requirements($phase) {
 
 /**
  *
- * Import default taxonomy dimensions
+ * Import default taxonomy dimensions<br>
+ * Updates the mapping of field_value_type. Values will be changed from-to:<br>
+ * 'INTEGER' = 'integer'<br>
+ * 'DATE' = 'date'<br>
+ * 'DECIMAL' = 'decimal'<br>
+ * 'BOOELAN' = 'boolean'<br>
+ * 'TEXT' = 'text'<br>
  */
 function mica_datasets_update_7120(&$sandbox) {
 
   watchdog('mica', 'Import dataschema dimensions', array(), WATCHDOG_INFO);
   try {
 
-    module_load_include('inc', 'mica_datasets', 'mica_datasets.import_taxonomies');
+    // drop empty table field_data_field_dataset_type
+    _drop_tables(array(
+      'field_data_field_dataset_type',
+      )
+    );
+    // Change fields of field_data
+		if (db_table_exists('field_data_field_dataset_studies')){
+		  // update field_config
+		  db_update('field_config')
+  		  ->fields(array('type' => 'node_reference', 'module' => 'node_reference', 'data' => 'a:7:{s:12:"entity_types";a:0:{}s:17:"field_permissions";a:1:{s:4:"type";s:1:"0";}s:12:"foreign keys";a:1:{s:3:"nid";a:2:{s:5:"table";s:4:"node";s:7:"columns";a:1:{s:3:"nid";s:3:"nid";}}}s:7:"indexes";a:1:{s:3:"nid";a:1:{i:0;s:3:"nid";}}s:8:"settings";a:2:{s:19:"referenceable_types";a:17:{s:7:"article";i:0;s:4:"blog";i:0;s:7:"contact";i:0;s:19:"data_access_request";i:0;s:18:"data_access_review";i:0;s:7:"dataset";i:0;s:9:"documents";i:0;s:5:"event";i:0;s:17:"field_description";i:0;s:5:"forum";i:0;s:4:"page";i:0;s:5:"panel";i:0;s:7:"project";i:0;s:11:"publication";i:0;s:5:"study";s:5:"study";s:14:"teleconference";i:0;s:8:"variable";i:0;}s:4:"view";a:3:{s:4:"args";a:0:{}s:12:"display_name";s:0:"";s:9:"view_name";s:0:"";}}s:12:"translatable";s:1:"0";s:7:"storage";a:4:{s:4:"type";s:17:"field_sql_storage";s:8:"settings";a:0:{}s:6:"module";s:17:"field_sql_storage";s:6:"active";i:1;}}'))
+  		  ->condition('field_name', 'field_dataset_studies')
+  		  ->execute();
+		  	
+  		db_drop_field('field_data_field_dataset_studies', 'field_dataset_studies_view_id');
+  		db_drop_field('field_data_field_dataset_studies', 'field_dataset_studies_arguments');
+  		db_drop_index('field_data_field_dataset_studies', 'field_dataset_studies_view_id');
+  		db_add_field('field_data_field_dataset_studies', 'field_dataset_studies_nid', 
+  		  array(
+          'type' => 'int', 
+          'unsigned' => TRUE,
+          'default' => NULL,
+  		  )
+  		);
+  		db_add_index('field_data_field_dataset_studies', 'field_dataset_studies_nid', array('field_dataset_studies_nid'));
+		}
 
-    $taxonomies = _mica_datasets_taxonomies();
-    if (!isset($sandbox['progress'])) {
-      $sandbox['progress'] = 0;
-      $sandbox['max'] = count($taxonomies);
-    }
-    foreach ($taxonomies as $taxonomy) {
-      _mica_datasets_taxonomy_import($taxonomy[0], $taxonomy[1]);
-      $sandbox['progress']++;
-    }
-    $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+		if (db_table_exists('field_data_field_dataset_variables')){
+		  // update field_config
+		  db_update('field_config')
+  		  ->fields(array('type' => 'node_reference', 'module' => 'node_reference', 'data' => 'a:7:{s:12:"entity_types";a:0:{}s:17:"field_permissions";a:1:{s:4:"type";s:1:"0";}s:12:"foreign keys";a:1:{s:3:"nid";a:2:{s:5:"table";s:4:"node";s:7:"columns";a:1:{s:3:"nid";s:3:"nid";}}}s:7:"indexes";a:1:{s:3:"nid";a:1:{i:0;s:3:"nid";}}s:8:"settings";a:2:{s:19:"referenceable_types";a:17:{s:7:"article";i:0;s:4:"blog";i:0;s:7:"contact";i:0;s:19:"data_access_request";i:0;s:18:"data_access_review";i:0;s:7:"dataset";i:0;s:9:"documents";i:0;s:5:"event";i:0;s:17:"field_description";i:0;s:5:"forum";i:0;s:4:"page";i:0;s:5:"panel";i:0;s:7:"project";i:0;s:11:"publication";i:0;s:5:"study";i:0;s:14:"teleconference";i:0;s:8:"variable";s:8:"variable";}s:4:"view";a:3:{s:4:"args";a:0:{}s:12:"display_name";s:0:"";s:9:"view_name";s:0:"";}}s:12:"translatable";s:1:"0";s:7:"storage";a:4:{s:4:"type";s:17:"field_sql_storage";s:8:"settings";a:0:{}s:6:"module";s:17:"field_sql_storage";s:6:"active";i:1;}}'))
+  		  ->condition('field_name', 'field_dataset_variables')
+  		  ->execute();
+		}
+		
+		_mica_full_feature_revert('mica_datasets');
+		
+//     module_load_include('inc', 'mica_datasets', 'mica_datasets.import_taxonomies');
+//     $taxonomies = _mica_datasets_taxonomies();
+//     if (!isset($sandbox['progress'])) {
+//       $sandbox['progress'] = 0;
+//       $sandbox['max'] = count($taxonomies);
+//     }
+//     foreach ($taxonomies as $taxonomy) {
+//       _mica_datasets_taxonomy_import($taxonomy[0], $taxonomy[1]);
+//       $sandbox['progress']++;
+//     }
+//     $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+    
     return st('Dataschema dimensions have been successfully imported!');
   } catch (Exception $e) {
     throw new DrupalUpdateException('Failed to update taxonomies. You have to import taxonomies manually.');
@@ -221,6 +263,19 @@ function mica_datasets_update_7120(&$sandbox) {
 
   module_load_include('inc', 'mica_datasets', 'mica_datasets.facet_blocks');
   mica_datasets_configure_facet_blocks();
+}
+
+function _drop_tables($tables){
+  foreach ($tables as $t){
+    if (db_table_exists($t)){
+      db_drop_table($t);
+    }
+    $revision = preg_replace('/^field_data_/', 'field_revision_', $t);
+    debug($revision);
+    if (db_table_exists($revision)){
+    	db_drop_table($revision);
+    }
+  }  
 }
 
 /**

@@ -58,28 +58,28 @@ msgctxt "field_repeatable:#allowed_values:1"
 msgid "Yes"
 msgstr "Oui"
 
-#: field:field_value_type:#allowed_values:BOOLEAN
-msgctxt "field_value_type:#allowed_values:BOOLEAN"
+#: field:field_value_type:#allowed_values:boolean
+msgctxt "field_value_type:#allowed_values:boolean"
 msgid "Boolean"
 msgstr "Booléen"
 
-#: field:field_value_type:#allowed_values:DATE
-msgctxt "field_value_type:#allowed_values:DATE"
+#: field:field_value_type:#allowed_values:date
+msgctxt "field_value_type:#allowed_values:date"
 msgid "Date"
 msgstr "Date"
 
-#: field:field_value_type:#allowed_values:DECIMAL
-msgctxt "field_value_type:#allowed_values:DECIMAL"
+#: field:field_value_type:#allowed_values:decimal
+msgctxt "field_value_type:#allowed_values:decimal"
 msgid "Decimal"
 msgstr "Décimal"
 
-#: field:field_value_type:#allowed_values:INTEGER
-msgctxt "field_value_type:#allowed_values:INTEGER"
+#: field:field_value_type:#allowed_values:integer
+msgctxt "field_value_type:#allowed_values:integer"
 msgid "Integer"
 msgstr "Entier"
 
-#: field:field_value_type:#allowed_values:TEXT
-msgctxt "field_value_type:#allowed_values:TEXT"
+#: field:field_value_type:#allowed_values:text
+msgctxt "field_value_type:#allowed_values:text"
 msgid "Text"
 msgstr "Texte"
 

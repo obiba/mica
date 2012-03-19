@@ -13,6 +13,14 @@ function mica_projects_install() {
 }
 
 /**
+*
+* Updates the mica_projects feature
+*/
+function mica_projects_update_7120() {
+	_mica_full_feature_revert('mica_projects');
+}
+
+/**
  * Manually configure field_bundle_settings variable because it is exported via strongarms
  * so it cannot be configured in severals modules
  */
