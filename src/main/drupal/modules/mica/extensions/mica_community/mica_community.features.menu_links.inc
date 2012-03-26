@@ -55,12 +55,7 @@ function mica_community_menu_default_menu_links() {
     'link_path' => 'events',
     'router_path' => 'events',
     'link_title' => 'Events',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'langcode' => 'en',
-    ),
+    'options' => array(),
     'module' => 'system',
     'hidden' => '0',
     'external' => '0',
@@ -68,26 +63,6 @@ function mica_community_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '0',
     'parent_path' => 'community',
-  );
-  // Exported menu link: main-menu:events_calendar/month
-  $menu_links['main-menu:events_calendar/month'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'events_calendar/month',
-    'router_path' => 'events_calendar/month',
-    'link_title' => 'Events Calendar',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'langcode' => 'en',
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '0',
-    'parent_path' => 'events',
   );
   // Exported menu link: main-menu:forum
   $menu_links['main-menu:forum'] = array(
