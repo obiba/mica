@@ -250,6 +250,88 @@ function mica_community_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-event-field_event_files'
+  $fields['node-event-field_event_files'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_event_files',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'file',
+      'settings' => array(
+        'display_default' => 1,
+        'display_field' => 1,
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => 'TEXT',
+        ),
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'file',
+    ),
+    'field_instance' => array(
+      'bundle' => 'event',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'file',
+          'settings' => array(),
+          'type' => 'file_default',
+          'weight' => '3',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_event_files',
+      'label' => 'Files',
+      'required' => 0,
+      'settings' => array(
+        'description_field' => 0,
+        'file_directory' => '[current-page:page-number]',
+        'file_extensions' => 'txt pdf doc docx xls xlsx ppt pptx',
+        'max_filesize' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'file',
+        'settings' => array(
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'file_generic',
+        'weight' => '31',
+      ),
+    ),
+  );
+
   // Exported field: 'node-event-field_event_link'
   $fields['node-event-field_event_link'] = array(
     'field_config' => array(
@@ -867,6 +949,7 @@ function mica_community_field_default_fields() {
   t('Authors');
   t('Body');
   t('Event Date');
+  t('Files');
   t('PMID');
   t('Reference');
   t('URL');
