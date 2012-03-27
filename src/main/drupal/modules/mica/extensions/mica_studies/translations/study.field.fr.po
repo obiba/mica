@@ -282,7 +282,7 @@ msgstr "Identifiant Pubmed"
 
 #: field:field_recruitement_supp_info:study:label
 msgctxt "field_recruitement_supp_info:study:label"
-msgid "If needed, supplementary information about recruitments procedures"
+msgid "If needed, supplementary information about recruitment procedures"
 msgstr "Information supplémentaire sur les procédures de recrutement, si nécessaire"
 
 #: field:field_recruitment:study:label
