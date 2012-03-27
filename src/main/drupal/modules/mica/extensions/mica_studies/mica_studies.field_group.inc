@@ -3541,6 +3541,7 @@ function mica_studies_field_group_info() {
       3 => 'field_institution_name',
       4 => 'field_postal_code',
       5 => 'field_state',
+      6 => 'field_department_unit',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -3568,11 +3569,12 @@ function mica_studies_field_group_info() {
     'weight' => '6',
     'children' => array(
       0 => 'field_institution_name',
-      1 => 'field_address',
-      2 => 'field_city',
-      3 => 'field_postal_code',
-      4 => 'field_state',
-      5 => 'field_contact_country',
+      1 => 'field_department_unit',
+      2 => 'field_address',
+      3 => 'field_city',
+      4 => 'field_postal_code',
+      5 => 'field_state',
+      6 => 'field_contact_country',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

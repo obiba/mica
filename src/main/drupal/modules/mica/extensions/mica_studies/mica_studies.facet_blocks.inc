@@ -138,7 +138,7 @@ function mica_studies_configure_facet_blocks() {
               'delta' => $facet_delta,
               'module' => 'facetapi',
               'theme' => $theme_default,
-              'title' => $field_info['label'],
+              'title' => truncate_utf8($field_info['label'], 64),
             )
           )
           ->execute();
