@@ -1490,7 +1490,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_recruitment_other']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_recruitment_other']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_recruitment_other']['field_api_classes'] = 0;
-  /* Field: Content: If needed, supplementary information about recruitments procedures */
+  /* Field: Content: If needed, supplementary information about recruitment procedures */
   $handler->display->display_options['fields']['field_recruitement_supp_info']['id'] = 'field_recruitement_supp_info';
   $handler->display->display_options['fields']['field_recruitement_supp_info']['table'] = 'field_data_field_recruitement_supp_info';
   $handler->display->display_options['fields']['field_recruitement_supp_info']['field'] = 'field_recruitement_supp_info';
@@ -2803,7 +2803,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_status_supp_info']['id'] = 'field_status_supp_info';
   $handler->display->display_options['fields']['field_status_supp_info']['table'] = 'field_data_field_status_supp_info';
   $handler->display->display_options['fields']['field_status_supp_info']['field'] = 'field_status_supp_info';
-  /* Field: Content: If needed, supplementary information about recruitments procedures */
+  /* Field: Content: If needed, supplementary information about recruitment procedures */
   $handler->display->display_options['fields']['field_recruitement_supp_info']['id'] = 'field_recruitement_supp_info';
   $handler->display->display_options['fields']['field_recruitement_supp_info']['table'] = 'field_data_field_recruitement_supp_info';
   $handler->display->display_options['fields']['field_recruitement_supp_info']['field'] = 'field_recruitement_supp_info';
@@ -4039,7 +4039,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_recruitment_other']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_recruitment_other']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_recruitment_other']['field_api_classes'] = 0;
-  /* Field: Content: If needed, supplementary information about recruitments procedures */
+  /* Field: Content: If needed, supplementary information about recruitment procedures */
   $handler->display->display_options['fields']['field_recruitement_supp_info']['id'] = 'field_recruitement_supp_info';
   $handler->display->display_options['fields']['field_recruitement_supp_info']['table'] = 'field_data_field_recruitement_supp_info';
   $handler->display->display_options['fields']['field_recruitement_supp_info']['field'] = 'field_recruitement_supp_info';
@@ -5596,7 +5596,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_recruitment_other']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_recruitment_other']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_recruitment_other']['field_api_classes'] = 0;
-  /* Field: Content: If needed, supplementary information about recruitments procedures */
+  /* Field: Content: If needed, supplementary information about recruitment procedures */
   $handler->display->display_options['fields']['field_recruitement_supp_info']['id'] = 'field_recruitement_supp_info';
   $handler->display->display_options['fields']['field_recruitement_supp_info']['table'] = 'field_data_field_recruitement_supp_info';
   $handler->display->display_options['fields']['field_recruitement_supp_info']['field'] = 'field_recruitement_supp_info';
@@ -6257,7 +6257,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     t('If needed, supplementary information about current number of collected biological samples'),
     t('If needed, supplementary information about current number of participants recruited at baseline'),
     t('If needed, supplementary information about current study status'),
-    t('If needed, supplementary information about recruitments procedures'),
+    t('If needed, supplementary information about recruitment procedures'),
     t('If needed, supplementary information about selection criteria of the population'),
     t('If needed, supplementary information about study design'),
     t('If needed, supplementary information about target number of biological samples'),

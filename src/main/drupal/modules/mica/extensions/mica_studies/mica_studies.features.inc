@@ -305,7 +305,7 @@ function mica_studies_default_search_api_index() {
           "boost" : "1.0"
         },
         "field_recruitement_supp_info" : {
-          "name" : "If needed, supplementary information about recruitments procedures",
+          "name" : "If needed, supplementary information about recruitment procedures",
           "indexed" : true,
           "type" : "text",
           "boost" : "1.0"

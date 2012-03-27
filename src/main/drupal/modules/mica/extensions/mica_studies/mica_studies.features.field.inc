@@ -7893,7 +7893,7 @@ function mica_studies_field_default_fields() {
       'display_label' => 'Supplementary information',
       'entity_type' => 'node',
       'field_name' => 'field_recruitement_supp_info',
-      'label' => 'If needed, supplementary information about recruitments procedures',
+      'label' => 'If needed, supplementary information about recruitment procedures',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -10167,7 +10167,7 @@ function mica_studies_field_default_fields() {
   t('If needed, supplementary information about current number of collected biological samples');
   t('If needed, supplementary information about current number of participants recruited at baseline');
   t('If needed, supplementary information about current study status');
-  t('If needed, supplementary information about recruitments procedures');
+  t('If needed, supplementary information about recruitment procedures');
   t('If needed, supplementary information about selection criteria of the population');
   t('If needed, supplementary information about study design');
   t('If needed, supplementary information about target number of biological samples');
