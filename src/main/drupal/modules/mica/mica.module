@@ -280,18 +280,3 @@ function mica_node_modal_page_view($js = NULL, $node) {
     return node_page_view($node);
   }
 }
-
-/**
- * 
- * Fully reverts a feature. Useful when updating a feature to bypass the need to have to go to Features and revert features that
- * are marked as "Needs Review"
- * @param unknown_type $feature_module
- */
-function _mica_full_feature_revert($feature_module) {
-	$info = drupal_parse_info_file(drupal_get_path('module', $feature_module) . '/' . $feature_module . '.info');
-	$revert = array(
-	$feature_module => array_keys($info['features']),
-	);
-	//watchdog('full_feature_revert', 'Reverting feature @feature on behalf of @function', array('@feature' => $feature_module, '@function' => _calling_function()));
-	features_revert($revert);
-}

@@ -175,9 +175,11 @@ function mica_community_views_default_views() {
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['label'] = 'empty_events';
+  $handler->display->display_options['empty']['area']['label'] = 'empty_past_events';
   $handler->display->display_options['empty']['area']['empty'] = FALSE;
-  $handler->display->display_options['empty']['area']['content'] = 'No event found.';
+  $handler->display->display_options['empty']['area']['content'] = 'No past events found.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['empty']['area']['tokenize'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -216,7 +218,7 @@ function mica_community_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'events';
+  $handler->display->display_options['path'] = 'all-events';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Events';
   $handler->display->display_options['menu']['name'] = 'main-menu';
@@ -236,6 +238,16 @@ function mica_community_views_default_views() {
   $handler = $view->new_display('page', 'Upcoming Events', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Upcoming Events';
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['label'] = 'empty_upcoming_events';
+  $handler->display->display_options['empty']['area']['empty'] = FALSE;
+  $handler->display->display_options['empty']['area']['content'] = 'No upcoming events found.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['empty']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -258,9 +270,10 @@ function mica_community_views_default_views() {
   $handler->display->display_options['filters']['field_event_date_value']['operator'] = '>=';
   $handler->display->display_options['filters']['field_event_date_value']['default_date'] = '+0';
   $handler->display->display_options['path'] = 'upcoming-events';
-  $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Events';
+  $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['context'] = 0;
 
   /* Display: Past Events */
   $handler = $view->new_display('page', 'Past Events', 'page_2');
@@ -297,9 +310,10 @@ function mica_community_views_default_views() {
   $handler->display->display_options['filters']['field_event_date_value']['operator'] = '<=';
   $handler->display->display_options['filters']['field_event_date_value']['default_date'] = '+0';
   $handler->display->display_options['path'] = 'past-events';
-  $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Events';
+  $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['context'] = 0;
   $translatables['events'] = array(
     t('Master'),
     t('Events'),
@@ -312,11 +326,13 @@ function mica_community_views_default_views() {
     t('Items per page'),
     t('- All -'),
     t('Offset'),
-    t('empty_events'),
-    t('No event found.'),
+    t('empty_past_events'),
+    t('No past events found.'),
     t('Page'),
     t('Feed'),
     t('Upcoming Events'),
+    t('empty_upcoming_events'),
+    t('No upcoming events found.'),
     t('Past Events'),
   );
   $export['events'] = $view;

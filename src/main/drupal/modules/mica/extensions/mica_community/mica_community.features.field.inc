@@ -90,6 +90,12 @@ function mica_community_field_default_fields() {
           'type' => 'text_default',
           'weight' => '2',
         ),
+        'right_area' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
+        ),
         'teaser' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -181,7 +187,19 @@ function mica_community_field_default_fields() {
             'multiple_from' => '',
             'multiple_number' => '',
             'multiple_to' => '',
-            'show_repeat_rule' => 'show',
+          ),
+          'type' => 'date_default',
+          'weight' => '0',
+        ),
+        'right_area' => array(
+          'label' => 'inline',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'long',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
           ),
           'type' => 'date_default',
           'weight' => '0',
@@ -302,6 +320,12 @@ function mica_community_field_default_fields() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
+          'weight' => '1',
+        ),
+        'right_area' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '1',
         ),
         'teaser' => array(

@@ -1,0 +1,24 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Install Mica Core module.
+ */
+
+/**
+* Update script for release 1.2
+* Implements hook_update_N()
+*/
+function mica_core_update_7120(&$sandbox) {
+
+  
+  db_update('registry')
+  ->fields(array(
+  	'module' => 'mica_relation',
+  	  		'filename' => 'sites/all/modules/mica/extensions/mica_relation/includes/mica_relation.entity.inc'
+  	))
+  	->condition('filename', 'sites/all/modules/mica/includes/mica_relation.entity.inc')
+  	->execute();
+
+}

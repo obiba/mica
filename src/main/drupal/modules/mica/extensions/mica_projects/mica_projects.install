@@ -14,10 +14,10 @@ function mica_projects_install() {
 
 /**
 *
-* Updates the mica_projects feature
+* Updates the mica_projects feature fields
 */
 function mica_projects_update_7120() {
-	_mica_full_feature_revert('mica_projects');
+	features_revert(array('mica_projects' => array('field')));
 }
 
 /**

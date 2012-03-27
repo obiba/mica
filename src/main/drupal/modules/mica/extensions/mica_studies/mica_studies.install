@@ -37,8 +37,7 @@ function mica_studies_update_7120(&$sandbox) {
 			->condition('field_data_sources_value', '%_'.$mapping, 'LIKE')
 			->execute();
 		}
-		_mica_full_feature_revert('mica_studies');
-		
+		features_revert(array('mica_studies' => array('field', 'field_group', 'variable', 'views_view')));
 		return t('The field_data_sources mapping update is completed and the field field_dateset_studies has been updated.');
 	}
 	catch(Exception $e){

@@ -14,10 +14,10 @@ function mica_community_install() {
 
 /**
 *
-* Updates the mica_community feature
+* Updates the mica_community fields
 */
 function mica_community_update_7120() {
-  _mica_full_feature_revert('mica_community');
+  features_revert(array('mica_community' => array('field')));
 }
 
 /**

@@ -65,4 +65,3 @@ function mica_relation_schema() {
   );
   return $schema;
 }
-
