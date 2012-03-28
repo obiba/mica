@@ -179,11 +179,13 @@ function _mica_studies_study_view($node, $view_mode, $langcode) {
       'field' => 'field_design',
       'key' => 'other',
       'label_as_prefix' => FALSE,
+      'enclosed' => FALSE, 
     ),
     'field_recruitment_other_sp' => array(
       'field' => 'field_recruitment',
       'key' => 'other',
       'label_as_prefix' => FALSE,
+      'enclosed' => FALSE,
     ),
     'field_current_part_nb_date' => array(
       'field' => 'field_current_participants_nb',
@@ -199,26 +201,31 @@ function _mica_studies_study_view($node, $view_mode, $langcode) {
       'field' => 'field_recruitment_procedures',
       'key' => 'other',
       'label_as_prefix' => FALSE,
+      'enclosed' => FALSE,
     ),
     'field_data_sources_sp' => array(
       'field' => 'field_data_sources',
       'key' => 'others',
       'label_as_prefix' => FALSE,
+      'enclosed' => FALSE,
     ),
     'field_tissues_sp' => array(
       'field' => 'field_bio_samples_management',
       'key' => 'tissues',
       'label_as_prefix' => FALSE,
+      'enclosed' => FALSE,
     ),
     'field_samples_man_other_sp' => array(
       'field' => 'field_bio_samples_management',
       'key' => 'others',
       'label_as_prefix' => FALSE,
+      'enclosed' => FALSE,
     ),
     'field_access_other_sp' => array(
       'field' => 'field_access_other',
       'key' => '1',
       'label_as_prefix' => FALSE,
+      'enclosed' => FALSE,
     ),
   );
 
@@ -598,10 +605,7 @@ function _mica_bind_other_specify(&$node, $bindings) {
       if (!isset($options['enclosed']) || $options['enclosed']) {
         $start = ' (';
         $end = ')';
-      } else {
-        $start = ' ';
-        $end = '';
-      }
+      } 
 
       if (isset($key)) {
         // get the array index of the key
@@ -666,10 +670,20 @@ function _mica_bind_other_specify(&$node, $bindings) {
         }
         if (strlen(trim($content)) > 0) {
           if (key_exists($index, $node->content[$field])){
-            $node->content[$field][$index]['#markup'] .= $start . $content . $end;
+            if (isset($options['enclosed']) && !$options['enclosed']) {
+              $node->content[$field][$index]['#markup'] = $content;
+            }
+            else{
+              $node->content[$field][$index]['#markup'] .= $start . $content . $end;
+            }
           } else {
             if (isset($key)) {
-              $node->content[$field][0]['#markup'] .= $start . $content . $end;
+              if (isset($options['enclosed']) && !$options['enclosed']) {
+                $node->content[$field][0]['#markup'] = $content;
+              }
+              else{
+                $node->content[$field][0]['#markup'] .= $start . $content . $end;
+              }
             } else {
               if (key_exists('custom_prefix', $options)) {
                 $node->content[$field][] = array('#markup' => $options['custom_prefix']  . ': ' . $content);
