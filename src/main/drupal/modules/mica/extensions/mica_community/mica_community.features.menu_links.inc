@@ -49,6 +49,25 @@ function mica_community_menu_default_menu_links() {
     'expanded' => '1',
     'weight' => '45',
   );
+  // Exported menu link: main-menu:events
+  $menu_links['main-menu:events'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'events',
+    'router_path' => 'events',
+    'link_title' => 'Events',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '0',
+    'parent_path' => 'community',
+  );
   // Exported menu link: main-menu:forum
   $menu_links['main-menu:forum'] = array(
     'menu_name' => 'main-menu',
@@ -113,6 +132,7 @@ function mica_community_menu_default_menu_links() {
   // Included for use with string extractors like potx.
   t('Blogs');
   t('Community');
+  t('Events');
   t('Forums');
   t('News');
   t('Publications');
