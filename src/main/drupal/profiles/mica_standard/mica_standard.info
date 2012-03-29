@@ -5,6 +5,7 @@ distribution_name = Mica
 description = Mica installation of tools for making a Study Consortium site: studies, search indexes, community tools and more.
 core = 7.x
 dependencies[] = block
+dependencies[] = book
 dependencies[] = color
 dependencies[] = comment
 dependencies[] = contextual

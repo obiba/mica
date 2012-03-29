@@ -282,7 +282,7 @@ function mica_community_field_default_fields() {
           'field_description' => 0,
           'field_description_body' => '',
           'field_description_label' => '',
-          'field_description_value_type' => 'TEXT',
+          'field_description_value_type' => 'text',
         ),
         'uri_scheme' => 'public',
       ),

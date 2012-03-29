@@ -11,9 +11,9 @@ function mica_community_default_page_manager_pages() {
   $page = new stdClass;
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
-  $page->name = 'news_events';
+  $page->name = 'events';
   $page->task = 'page';
-  $page->admin_title = 'Events';
+  $page->admin_title = 'events';
   $page->admin_description = 'Past and upcoming events';
   $page->path = 'events';
   $page->access = array();
@@ -26,9 +26,9 @@ function mica_community_default_page_manager_pages() {
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
-  $handler->name = 'page_news_events_panel_context';
+  $handler->name = 'page_events_panel_context';
   $handler->task = 'page';
-  $handler->subtask = 'news_events';
+  $handler->subtask = 'events';
   $handler->handler = 'panel_context';
   $handler->weight = 0;
   $handler->conf = array(
@@ -73,14 +73,14 @@ function mica_community_default_page_manager_pages() {
       'center' => array(
         'type' => 'region',
         'title' => 'Center',
-        'width' => '70.',
+        'width' => '69.95565410199556',
         'width_type' => '%',
         'parent' => 'main-row',
       ),
       'right' => array(
         'type' => 'region',
         'title' => 'right',
-        'width' => '30',
+        'width' => '30.04434589800444',
         'width_type' => '%',
         'parent' => 'main-row',
         'class' => '',
@@ -114,14 +114,14 @@ function mica_community_default_page_manager_pages() {
       'pager_id' => '0',
       'offset' => '0',
       'more_link' => 0,
-      'feed_icons' => 0,
+      'feed_icons' => 1,
       'panel_args' => 0,
       'link_to_view' => 0,
       'args' => '',
       'url' => '',
-      'display' => 'page_1',
+      'display' => 'page_2',
       'override_title' => 0,
-      'override_title_text' => 'Past Events',
+      'override_title_text' => 'Upcoming Events',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -147,14 +147,14 @@ function mica_community_default_page_manager_pages() {
       'pager_id' => '0',
       'offset' => '0',
       'more_link' => 0,
-      'feed_icons' => 1,
+      'feed_icons' => 0,
       'panel_args' => 0,
       'link_to_view' => 0,
       'args' => '',
       'url' => '',
-      'display' => 'page_2',
+      'display' => 'page_1',
       'override_title' => 0,
-      'override_title_text' => 'Upcoming Events',
+      'override_title_text' => 'Past Events',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -167,10 +167,10 @@ function mica_community_default_page_manager_pages() {
     $display->content['new-2'] = $pane;
     $display->panels['right'][0] = 'new-2';
   $display->hide_title = PANELS_TITLE_NONE;
-  $display->title_pane = 'new-2';
+  $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
-  $pages['news_events'] = $page;
+  $pages['events'] = $page;
 
   return $pages;
 

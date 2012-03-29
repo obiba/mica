@@ -461,7 +461,7 @@ function mica_relation_feeds_plugins() {
     'handler' => array(
       'parent' => 'FeedsNodeProcessor',
       'class' => 'FeedsMicaRelationProcessor',
-      'file' => 'FeedsMicaRelationProcessor.inc',
+      'file' => 'includes/FeedsMicaRelationProcessor.inc',
       'path' => drupal_get_path('module', 'mica_relation'),
     ),
   );

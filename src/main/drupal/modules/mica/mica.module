@@ -280,3 +280,30 @@ function mica_node_modal_page_view($js = NULL, $node) {
     return node_page_view($node);
   }
 }
+
+/**
+ * Creates a book or a book child page
+ */
+function mica_add_book_page($title, $body, $parent_id = null){
+	$node = new stdClass();
+	$node->type = 'book';
+	node_object_prepare($node);
+	$node->title = $title;
+	$node->body = array(LANGUAGE_NONE => array(array(
+      'value' => $body,
+      'format' => 'full_html'
+	)));
+	$node->promote = 0;
+	$node->sticky = 0;
+	$node->language = LANGUAGE_NONE;
+
+	$node->book['bid'] = isset($parent_id) ? $parent_id : 'new';
+	node_save($node);
+
+	/*$path = array('alias' => $alias);
+	 $path['source'] = 'node/' . $node->nid;
+	$path['language'] = LANGUAGE_NONE;
+	path_save($path);*/
+
+	return $node;
+}

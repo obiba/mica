@@ -53,7 +53,7 @@ function mica_datasets_field_default_fields() {
         'variable_infos' => array(
           'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => 'TEXT',
+          'variable_value_type' => 'text',
         ),
       ),
       'translatable' => '1',
@@ -752,7 +752,7 @@ function mica_datasets_field_default_fields() {
         'variable_infos' => array(
           'variable' => 1,
           'variable_body' => '',
-          'variable_value_type' => 'TEXT',
+          'variable_value_type' => 'text',
         ),
       ),
       'translatable' => '1',

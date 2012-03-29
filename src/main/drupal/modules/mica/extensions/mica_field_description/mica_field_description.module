@@ -189,7 +189,7 @@ function _add_field_index($index_name, stdClass $field_description) {
 	$field_categories = $field_description_wrapper->field_categories->value();
 	$discrete = count($field_categories) > 1;
 	
-	if ($type === 'TEXT') {
+	if ($type === 'text') {
 		$field_index_type = $discrete ? 'string' : 'text';
 	} else {
 		$mapping = _magma_search_index_type_mapping();
@@ -279,11 +279,11 @@ function _add_field_index($index_name, stdClass $field_description) {
 */
 function _magma_search_index_type_mapping() {
 	return array(
-    'TEXT' => 'text',
-    'INTEGER' => 'integer',
-    'DECIMAL' => 'decimal',
-    'DATE' => 'date',
-    'BOOLEAN' => 'boolean', 
+    'text' => 'text',
+    'integer' => 'integer',
+    'decimal' => 'decimal',
+    'date' => 'date',
+    'boolean' => 'boolean', 
 	);
 }
 
@@ -427,17 +427,17 @@ function _is_type_supports_ranges($field_index_type) {
 function _get_field_value_type($field_value_type){
 	switch ($field_value_type) {
 		case 'list_boolean':
-			return 'BOOLEAN';
+			return 'boolean';
 				
 		case 'date':
 		case 'datestamp':
 		case 'datetime':
-			return 'DATE';
+			return 'date';
 				
 		case 'number_float':
 		case 'list_float':
 		case 'number_decimal':
-			return 'DECIMAL';
+			return 'decimal';
 				
 		case 'email':
 		case 'link_field':
@@ -447,14 +447,14 @@ function _get_field_value_type($field_value_type){
 		case 'text':
 		case 'text_default':
 		case 'list_default':
-			return 'TEXT';
+			return 'text';
 				
 		case 'number_integer':
 		case 'list_integer':
-			return 'INTEGER';
+			return 'integer';
 				
 		default:
-			return 'TEXT';
+			return 'text';
 	}
 }
 
