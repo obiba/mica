@@ -4834,7 +4834,7 @@ function mica_studies_field_group_info() {
   $field_group->mode = 'center_area';
   $field_group->parent_name = 'group_methods';
   $field_group->data = array(
-    'label' => 'Sample Management',
+    'label' => 'Sample Collection',
     'weight' => '69',
     'children' => array(
       0 => 'field_bio_samples_management',
@@ -4843,7 +4843,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'label' => 'Sample Management',
+      'label' => 'Sample Collection',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
@@ -4867,7 +4867,7 @@ function mica_studies_field_group_info() {
   $field_group->mode = 'default';
   $field_group->parent_name = 'group_methods';
   $field_group->data = array(
-    'label' => 'Sample Management',
+    'label' => 'Sample Collection',
     'weight' => '69',
     'children' => array(
       0 => 'field_bio_samples_management',
@@ -4876,7 +4876,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'label' => 'Sample Management',
+      'label' => 'Sample Collection',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
@@ -4900,7 +4900,7 @@ function mica_studies_field_group_info() {
   $field_group->mode = 'footer_area';
   $field_group->parent_name = 'group_methods';
   $field_group->data = array(
-    'label' => 'Sample Management',
+    'label' => 'Sample Collection',
     'weight' => '69',
     'children' => array(
       0 => 'field_bio_samples_management',
@@ -4909,7 +4909,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'label' => 'Sample Management',
+      'label' => 'Sample Collection',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
@@ -4933,7 +4933,7 @@ function mica_studies_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_methods';
   $field_group->data = array(
-    'label' => 'Sample Management',
+    'label' => 'Sample Collection',
     'weight' => '69',
     'children' => array(
       0 => 'field_bio_samples_management',
@@ -4942,7 +4942,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Sample Management',
+      'label' => 'Sample Collection',
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
@@ -4963,7 +4963,7 @@ function mica_studies_field_group_info() {
   $field_group->mode = 'left_area';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Sample Management',
+    'label' => 'Sample Collection',
     'weight' => '2',
     'children' => array(
       0 => 'field_bio_samples_management',
@@ -4991,7 +4991,7 @@ function mica_studies_field_group_info() {
   $field_group->mode = 'right_area';
   $field_group->parent_name = 'group_methods';
   $field_group->data = array(
-    'label' => 'Sample Management',
+    'label' => 'Sample Collection',
     'weight' => '69',
     'children' => array(
       0 => 'field_bio_samples_management',
@@ -5000,7 +5000,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'label' => 'Sample Management',
+      'label' => 'Sample Collection',
       'instance_settings' => array(
         'classes' => '',
         'description' => '',
