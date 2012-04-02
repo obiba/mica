@@ -10199,7 +10199,6 @@ function mica_studies_field_default_fields() {
   t('Start year');
   t('State/Province');
   t('Supplementary information');
-  t('Target number of participants');
   t('Telephone');
   t('Territory or city of residence');
   t('The study targets the recruitment of');

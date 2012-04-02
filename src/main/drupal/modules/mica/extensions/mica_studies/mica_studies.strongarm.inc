@@ -337,6 +337,18 @@ function mica_studies_strongarm() {
     'csv_variables-class-only_existing_terms' => FALSE,
     'csv_variables-format-only_existing_terms' => FALSE,
     'csv_variables-social_environment-only_existing_terms' => FALSE,
+    'csv_study_import-baseline_design_of_the_study-trim' => FALSE,
+    'csv_study_import-biological_samples-trim' => FALSE,
+    'csv_study_import-contacts-trim' => FALSE,
+    'csv_study_import-country-trim' => FALSE,
+    'csv_study_import-data_sources-trim' => FALSE,
+    'csv_study_import-documents-trim' => FALSE,
+    'csv_study_import-ethnic_origin-trim' => FALSE,
+    'csv_study_import-health_status-trim' => FALSE,
+    'csv_study_import-investigators-trim' => FALSE,
+    'csv_study_import-sources_of_recruitment-trim' => FALSE,
+    'csv_study_import-study_inclusion_criteria_for_participants_selection-trim' => FALSE,
+    'csv_study_import-study_recruitment_targets-trim' => FALSE,
   );
   $export['default_feeds_tamper'] = $strongarm;
 
