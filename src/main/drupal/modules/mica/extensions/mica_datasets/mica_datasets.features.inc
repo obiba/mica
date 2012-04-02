@@ -8,14 +8,44 @@
  * Implements hook_ctools_plugin_api().
  */
 function mica_datasets_ctools_plugin_api() {
-  return array("version" => "1");
+  list($module, $api) = func_get_args();
+  if ($module == "current_search" && $api == "current_search") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
+  if ($module == "facetapi" && $api == "facetapi_defaults") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
+  if ($module == "feeds" && $api == "feeds_importer_default") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
+  if ($module == "feeds_tamper" && $api == "feeds_tamper_default") {
+    return array("version" => "2");
+  }
+  list($module, $api) = func_get_args();
+  if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
+  if ($module == "page_manager" && $api == "pages_default") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
 }
 
 /**
  * Implements hook_views_api().
  */
 function mica_datasets_views_api() {
-  return array("version" => "3.0");
+  list($module, $api) = func_get_args();
+  if ($module == "views" && $api == "views_default") {
+    return array("version" => "3.0");
+  }
 }
 
 /**
@@ -92,6 +122,7 @@ function mica_datasets_default_search_api_index() {
         "body:summary" : { "type" : "text" },
         "field_dataset:nid" : { "type" : "integer" },
         "field_dataset:title" : { "type" : "text" },
+        "field_dataset:field_studies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_variable_categories:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_variable_categories:label" : { "type" : "list\\u003Ctext\\u003E" },
         "field_variable_categories:missing" : { "type" : "list\\u003Cboolean\\u003E" }

@@ -163,27 +163,6 @@ It also contains associated support material including variable definitions, lin
     'default' => 'default',
     'page' => 'page',
   );
-  $translatables['dataschemas'] = array(
-    t('Master'),
-    t('Dataschemas'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('A DataSchema identifies and describes a thematic set of core variables that are of particular value in a specified scientific setting. 
-It also contains associated support material including variable definitions, links to relevant Ontologies and Classifications, and access to reference questionnaires and operating procedures.<br/><br/>'),
-    t('empty_dataschemas'),
-    t('No dataschema found.'),
-    t('Name'),
-    t('Description'),
-    t('Page'),
-    t('Feed'),
-  );
   $export['dataschemas'] = $view;
 
   $view = new view;
@@ -334,24 +313,6 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['style_options']['replace_newlines'] = 0;
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['path'] = 'dataset-csv';
-  $translatables['dataset_csv_export'] = array(
-    t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('title'),
-    t('dataset_type'),
-    t('body'),
-    t('published'),
-    t('[status]'),
-    t('Data export'),
-  );
   $export['dataset_csv_export'] = $view;
 
   $view = new view;
@@ -589,30 +550,6 @@ It also contains associated support material including variable definitions, lin
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
-  $translatables['dataset_studies'] = array(
-    t('Master'),
-    t('Studies'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('empty_dataset_studies'),
-    t('No studies found.'),
-    t('Name'),
-    t('Please specify what other design'),
-    t('([field_design_other_sp])'),
-    t('Study design'),
-    t('[field_design] [field_design_other_sp] '),
-    t('Target number of participants'),
-    t('Country of residence'),
-    t('All'),
-    t('Block'),
-  );
   $export['dataset_studies'] = $view;
 
   $view = new view;
@@ -765,26 +702,6 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['displays'] = array(
     'default' => 'default',
     'page' => 'page',
-  );
-  $translatables['datasets'] = array(
-    t('Master'),
-    t('Datasets'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('The consortium makes available different datasets to the research community. Each dataset is described by a comprehensive data dictionary which gives details on each available variable. Moreover, Mica includes for  studies using the OBiBa Opal software as main database solution, a distributed query engine that enables researchers to obtain real-time aggregated reports on the exact number of participant with specific characteristics or phenotypes. Mica makes even possible to run remotely some regression analyses on the real study data using the DataSHIELD method (Wolfson M et al. <i>Int J Epidemiol</i>. 2010) which is implemented both in Mica and Opal. <br/><br/>'),
-    t('empty_datasets'),
-    t('No dataset found.'),
-    t('Name'),
-    t('Description'),
-    t('Page'),
-    t('Feed'),
   );
   $export['datasets'] = $view;
 
@@ -1580,51 +1497,6 @@ It also contains associated support material including variable definitions, lin
   $handler->display->display_options['style_options']['replace_newlines'] = 0;
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['path'] = 'variable-csv';
-  $translatables['variable_csv_export'] = array(
-    t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('title'),
-    t('body'),
-    t('published'),
-    t('[status]'),
-    t('anthropometric_structures'),
-    t('body_functions'),
-    t('body_structures'),
-    t('data_source'),
-    t('dataset'),
-    t('disease_history'),
-    t('format'),
-    t('label'),
-    t('life_habits_behaviours'),
-    t('medical_health_interv'),
-    t('medication'),
-    t('early_life'),
-    t('perception_of_health'),
-    t('period'),
-    t('physical_environment'),
-    t('repeatable'),
-    t('reproductive_history'),
-    t('response_unit'),
-    t('social_environment'),
-    t('sociodemographic_charact'),
-    t('target'),
-    t('target_gender'),
-    t('category_label'),
-    t('[field_variable_categories-label]'),
-    t('categories_name'),
-    t('[field_variable_categories_1-name]'),
-    t('categories_missing'),
-    t('[field_variable_categories_2-missing]'),
-    t('Data export'),
-  );
   $export['variable_csv_export'] = $view;
 
   $view = new view;
@@ -2983,50 +2855,6 @@ It also contains associated support material including variable definitions, lin
     'page' => 'page',
   );
   $handler->display->display_options['use_batch'] = '0';
-  $translatables['variable_search'] = array(
-    t('Master'),
-    t('Data Dictionnary'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('empty_variables'),
-    t('No variables found.'),
-    t('Name'),
-    t('Label'),
-    t('Dataset'),
-    t('Fulltext search'),
-    t('Page'),
-    t('Export XLS'),
-    t('Categories'),
-    t('Label:[field_variable_categories-name] Name: [field_variable_categories-name] Missing:[field_variable_categories-missing]'),
-    t('Data Source'),
-    t('Diseases History and Related Health Problems'),
-    t('Medical Health Interventions/Health Services Utilization'),
-    t('Medication'),
-    t('Reproductive Health and History'),
-    t('Participant\'s Early Life/Childhood'),
-    t('Life Habits/Behaviours'),
-    t('Sociodemographic/Socioeconomic Characteristics'),
-    t('Physical Environment'),
-    t('Social Environment'),
-    t('Perception of Health/Quality of life'),
-    t('Anthropometric Structures'),
-    t('Body Structures'),
-    t('Body Functions'),
-    t('Essence'),
-    t('Target'),
-    t('Period'),
-    t('Measure'),
-    t('Value Type'),
-    t('Repeatable'),
-    t('Export CSV'),
-  );
   $export['variable_search'] = $view;
 
   return $export;

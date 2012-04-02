@@ -32,9 +32,12 @@ function _mica_datasets_delete_taxonomies() {
 }
 
 function _mica_datasets_import_taxonomies_run() {
+  $node = mica_add_book_page('Dimensions', 'Here is a description of our dimensions');
   foreach (_mica_datasets_taxonomies() as $taxonomy) {
     $machine_name = substr($taxonomy[0], 0, strlen($taxonomy[0]) - 4);
     drupal_set_message("Importing " . $machine_name);
     _mica_datasets_taxonomy_import($taxonomy[0], $taxonomy[1]);
+    
+    mica_add_book_page($taxonomy[1], "List of terms for $taxonomy[1]", $node->nid);
   }
 }
