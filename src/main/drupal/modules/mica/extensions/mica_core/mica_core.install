@@ -12,7 +12,6 @@
 */
 function mica_core_update_7120(&$sandbox) {
 
-  
   db_update('registry')
   ->fields(array(
   	'module' => 'mica_relation',
@@ -20,5 +19,4 @@ function mica_core_update_7120(&$sandbox) {
   	))
   	->condition('filename', 'sites/all/modules/mica/includes/mica_relation.entity.inc')
   	->execute();
-
 }
