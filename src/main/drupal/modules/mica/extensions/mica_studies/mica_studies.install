@@ -31,12 +31,14 @@ function mica_studies_update_7120(&$sandbox) {
 	$mappings = array( 'questionnaires', 'physical_measures', 'biological_samples');
 
 	try{
-		foreach ($mappings as $mapping){
-			db_update('field_data_field_data_sources')
-			->fields(array('field_data_sources_value' => $mapping))
-			->condition('field_data_sources_value', '%_'.$mapping, 'LIKE')
-			->execute();
-		}
+	  if (db_table_exists('field_data_field_data_sources')){
+  		foreach ($mappings as $mapping){
+  			db_update('field_data_field_data_sources')
+  			->fields(array('field_data_sources_value' => $mapping))
+  			->condition('field_data_sources_value', '%_'.$mapping, 'LIKE')
+  			->execute();
+  		}
+	  }
 		features_revert(array('mica_studies' => array('field', 'field_group', 'variable', 'views_view')));
 		return t('The field_data_sources mapping update is completed and the field field_dateset_studies has been updated.');
 	}
