@@ -315,65 +315,49 @@ function _mica_relation_edit_node_type_relation($form, &$form_state) {
     if (empty($previous_relation)) {
 
       // create new relation
-
       watchdog('mica', 'Create relation between parent %parent and child %child',
         array(
           '%parent' => $relation->parent_bundle,
           '%child' => $relation->child_bundle,
         ), WATCHDOG_INFO);
 
-      $indexes = mica_core_find_indexes_by_bundle();
-      $relation->options['parent_indexes'] = empty($indexes[$relation->parent_bundle])
-        ? array()
-        : array_keys($indexes[$relation->parent_bundle]);
-
-      // set reference node and relation only at creation
-      $relation->options['node_reference'] = 'mica_' . $new_type;
-      $relation->options['relation'] = $relation->parent_bundle . '_' . $relation->child_bundle;
-      $relation->options['relation_parent_field'] = $relation->child_bundle . '_relation';
-      $relation->options['relation_child_field'] = $relation->parent_bundle . '_relation';
-
-      // create node reference field
-      $relation->add_node_reference_to_parent($name);
-
-      // check if parent type already has content
-      $query = new EntityFieldQuery;
-      $result = $query->entityCondition('entity_type', 'node')
-        ->entityCondition('bundle', $relation->parent_bundle)
-        ->execute();
-      if (!empty($result['node']) && $relation->options['cascaded']) {
-        $entities = entity_load('node', array_keys($result['node']));
-        foreach ($entities as $entity) {
-          // create missing child nodes
-          if ($relation->create_child_node($entity, isset($entity->menu) ? $entity->menu : array())) {
-            node_save($entity);
-          }
-        }
-      }
+      $relation = _mica_relation_configure($relation, $new_type, $name);
 
     }
     else {
-
       // check if parent type has content
       $query = new EntityFieldQuery;
       $result = $query->entityCondition('entity_type', 'node')
         ->entityCondition('bundle', $previous_relation->parent_bundle)
         ->execute();
       if (empty($result)) {
-
         // no content for parent type, we can replace node reference field and relation
         field_delete_field($previous_relation->options['node_reference']);
-        $relation->options['node_reference'] = 'mica_' . $new_type;
-        $relation->add_node_reference_to_parent($name);
+        
+        // Override previous_relation parameters with current ones
+        $relation->parent_bundle = $parent_bundle;
+  
+        $parent_bundle_infos = node_type_load($parent_bundle);
+        $child_bundle_infos = node_type_load($new_type);
+        $relation->label = $parent_bundle_infos->name . ' » ' . $child_bundle_infos->name;
+      
+        $relation = _mica_relation_configure($relation, $new_type, $name);
 
       }
       else {
-
-        // update node reference field label
-        $field_instance = field_info_instance('node', $previous_relation->options['node_reference'], $previous_relation->parent_bundle);
-        $field_instance['label'] = $name;
-        field_update_instance($field_instance);
-
+        // if parent_bundle has not changed
+        if ($previous_relation->parent_bundle == $parent_bundle){
+          // update node reference field label
+          $field_instance = field_info_instance('node', $previous_relation->options['node_reference'], $previous_relation->parent_bundle);
+          $field_instance['label'] = $name;
+          field_update_instance($field_instance);
+        }
+        else{
+          // Cannot create another field node_reference with the same name...
+          drupal_get_messages('status');
+          form_set_error('parent_bundle', t('Failed to update parent: @parent_bundle because a mica_relation already exists for the current content type and content exists for that relation.', array('@parent_bundle' => $parent_bundle)));
+          return;
+        }
       }
     }
     $relation->save();
@@ -381,6 +365,38 @@ function _mica_relation_edit_node_type_relation($form, &$form_state) {
 
 }
 
+function _mica_relation_configure($relation, $new_type, $name){
+  $indexes = mica_core_find_indexes_by_bundle();
+  $relation->options['parent_indexes'] = empty($indexes[$relation->parent_bundle])
+    ? array()
+    : array_keys($indexes[$relation->parent_bundle]);
+  
+  // set reference node and relation only at creation
+  $relation->options['node_reference'] = 'mica_' . $new_type;
+  $relation->options['relation'] = $relation->parent_bundle . '_' . $relation->child_bundle;
+  $relation->options['relation_parent_field'] = $relation->child_bundle . '_relation';
+  $relation->options['relation_child_field'] = $relation->parent_bundle . '_relation';
+  
+  // create node reference field
+  $relation->add_node_reference_to_parent($name);
+  
+  // check if parent type already has content
+  $query = new EntityFieldQuery;
+  $result = $query->entityCondition('entity_type', 'node')
+  ->entityCondition('bundle', $relation->parent_bundle)
+  ->execute();
+  if (!empty($result['node']) && $relation->options['cascaded']) {
+  	$entities = entity_load('node', array_keys($result['node']));
+  	foreach ($entities as $entity) {
+  		// create missing child nodes
+  		if ($relation->create_child_node($entity, isset($entity->menu) ? $entity->menu : array())) {
+  			node_save($entity);
+  		}
+  	}
+  }
+  
+  return $relation;
+}
 /**
  * Returns an array of MicaRelations with relation ID as key
  */
