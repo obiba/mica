@@ -11,5 +11,5 @@ dependencies[] = search_api
 dependencies[] = feeds
 dependencies[] = mica_core
 
-files[] = FeedsMicaRelationRelationProcessor.inc
-files[] = mica_relation.entity.inc
+files[] = includes/FeedsMicaRelationRelationProcessor.inc
+files[] = includes/mica_relation.entity.inc

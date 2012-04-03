@@ -73,7 +73,7 @@ projects[ctools][download][type] = git
 projects[ctools][download][url] = http://git.drupal.org/project/ctools.git
 projects[ctools][download][revision] = dd65335ef5b823702ea5f1688a3000b09a04a739
 
-projects[date][version] = 2.2
+projects[date][version] = 2.3
 projects[date][type] = module
 
 projects[defaultcontent][version] = 1.0-alpha5
@@ -136,6 +136,8 @@ projects[google_analytics][type] = module
 projects[google_fonts][version] = 2.3
 projects[google_fonts][type] = module
 
+projects[] = graphapi
+
 projects[http_client][version] = 2.3
 projects[http_client][type] = module
 
@@ -191,6 +193,9 @@ projects[noderefcreate][patch][892052] = http://drupal.org/files/noderefcreate-w
 projects[panels][version] = 3.2
 projects[panels][type] = module
 
+projects[password_policy][version] = 1.0-rc2
+projects[password_policy][type] = module
+
 projects[pathauto][version] = 1.0
 projects[pathauto][type] = module
 
@@ -229,7 +234,7 @@ projects[search_api_solr][type] = module
 projects[smtp][version] = 1.0-beta1
 projects[smtp][type] = module
 
-projects[strongarm][version] = 2.0-beta5
+projects[strongarm][version] = 2.0-rc1
 projects[strongarm][type] = module
 
 projects[taxonomy_csv][version] = 5.10

@@ -7,14 +7,21 @@
 include_once('mica_devel.features.inc');
 
 function mica_devel_menu() {
-	$items['admin/config/development/mica'] = array(
+  $items = array();
+  $items['admin/config/development/mica_modules_graph'] = array(
+    'title' => 'Mica module dependencies graph',
+    'description' => '',
+    'page callback' => '_mica_devel_modules_graph',
+    'access arguments' => array('administer site configuration'),
+  );
+  $items['admin/config/development/mica'] = array(
     'title' => 'Mica Devel',
     'description' => 'development tools for Mica',
-  	'page callback' => 'drupal_get_form',
+    'page callback' => 'drupal_get_form',
     'page arguments' => array('_mica_devel_form'),
     'access arguments' => array('administer site configuration'),
-	);
-	return $items;
+  );
+  return $items;
 }
 
 function _mica_devel_form() {
@@ -41,7 +48,52 @@ function _mica_devel_form() {
     '#submit' => array('_mica_devel_dummy_run'),
   );
 
-	return $form;
+  return $form;
+}
+
+
+function _mica_devel_modules_graph() {
+  $graph = array();
+  $modules = system_rebuild_module_data();
+  foreach ($modules as $module => $data) {
+    if (_mica_devel_is_mica_module($module) && (!isset($data->info['hidden']) || !$data->info['hidden'])) {
+      $graph[$module]['edges'] = array();
+      foreach ($data->info['dependencies'] as $key) {
+        if (_mica_devel_is_mica_module($key) && $module != $key) {
+          $graph[$module]['edges'][$key] = 1;
+        }
+      }
+      $graph[$module]['data'] = array(
+        'title' => $module,
+        'content' => print_r($data, true),
+        'background-color' => "#00ff00",
+      );
+    }
+  }
+//  dpm($graph);
+  $config = array(
+    'id' => 'mica_modules_graph',
+    'width' => 900,
+    'height' => 700,
+    'engine' => 'graph_phyz',
+    'menu' => true,
+    'background-color' => '#ccc',
+    'animate' => TRUE,
+    'randomize' => TRUE,
+    'showForces' => FALSE,
+    'applyAttractToCenter' => TRUE,
+    'applyBoundingBox' => TRUE,
+    'applyBoxOverlap' => TRUE,
+    'applyCoulombsLaw' => TRUE,
+    'applyDamping' => TRUE,
+    'applyHookesLaw' => TRUE,
+    'applyCompass' => TRUE,
+  );
+  return theme('graphapi_dispatch', array('graph' => $graph, 'config' => $config));
+}
+
+function _mica_devel_is_mica_module($module) {
+  return substr($module, 0, strlen("mica")) === "mica";
 }
 
 function _mica_devel_dummy_run() {
