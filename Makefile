@@ -146,7 +146,7 @@ htaccess:
 deploy: package deploy-mica
 
 deploy-mica:
-ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
+ifeq ($(findstring dev,$(version)),dev)
 	cp target/deb/mica_*.deb /var/www/pkg/unstable
 	cp target/*.zip /var/www/download/mica/unstable
 	cp target/*.tar.gz /var/www/download/mica/unstable
@@ -157,7 +157,7 @@ else
 endif
 
 deploy-mica-solr:
-ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
+ifeq ($(findstring dev,$(version)),dev)
 	cp target/deb/mica-solr_*.deb /var/www/pkg/unstable
 else
 	cp target/deb/mica-solr_*.deb /var/www/pkg/stable
@@ -237,7 +237,7 @@ deb-mica-solr: deb-mica-solr-install deb-mica-solr-changelog
 deb-mica-install:
 	echo "version=$(version)" >> target/deb/mica/var/lib/mica-installer/Makefile
 	echo "deb_version=$(deb_version)" >> target/deb/mica/var/lib/mica-installer/Makefile
-ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
+ifeq ($(findstring dev,$(version)),dev)
 	echo "stability=unstable" >> target/deb/mica/var/lib/mica-installer/Makefile
 else
 	echo "stability=stable" >> target/deb/mica/var/lib/mica-installer/Makefile
@@ -250,7 +250,7 @@ endif
 deb-mica-solr-install:
 	echo "version=$(version)" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
 	echo "deb_version=$(deb_version)" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
-ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
+ifeq ($(findstring dev,$(version)),dev)
 	echo "stability=unstable" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
 else
 	echo "stability=stable" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
@@ -258,7 +258,7 @@ endif
 	$(call deb-package,mica-solr,mica)
 
 deb-mica-changelog:
-ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
+ifeq ($(findstring dev,$(version)),dev)
 	echo "mica ($(deb_version)) unstable; urgency=low" > target/deb/mica/debian/changelog
 else
 	echo "mica ($(deb_version)) stable; urgency=low" > target/deb/mica/debian/changelog
@@ -269,7 +269,7 @@ endif
 	echo " -- OBiBa <info@obiba.org>  $(deb_date)" >> target/deb/mica/debian/changelog
 	
 deb-mica-solr-changelog:
-ifeq ($(findstring SNAPSHOT,$(version)),SNAPSHOT)
+ifeq ($(findstring dev,$(version)),dev)
 	echo "mica-solr ($(deb_version)) unstable; urgency=low" > target/deb/mica-solr/debian/changelog
 else
 	echo "mica-solr ($(deb_version)) stable; urgency=low" > target/deb/mica-solr/debian/changelog
