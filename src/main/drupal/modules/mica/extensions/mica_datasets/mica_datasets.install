@@ -193,6 +193,8 @@ function mica_datasets_requirements($phase) {
 /**
  *
  * Import default taxonomy dimensions<br>
+ * Update field : dataset_studies<br>
+ * Update field : dataset_variables
  */
 function mica_datasets_update_7120(&$sandbox) {
 
@@ -212,17 +214,17 @@ function mica_datasets_update_7120(&$sandbox) {
   		  ->condition('field_name', 'field_dataset_studies')
   		  ->execute();
 		  	
-//   		db_drop_field('field_data_field_dataset_studies', 'field_dataset_studies_view_id');
-//   		db_drop_field('field_data_field_dataset_studies', 'field_dataset_studies_arguments');
-//   		db_drop_index('field_data_field_dataset_studies', 'field_dataset_studies_view_id');
-//   		db_add_field('field_data_field_dataset_studies', 'field_dataset_studies_nid', 
-//   		  array(
-//           'type' => 'int', 
-//           'unsigned' => TRUE,
-//           'default' => NULL,
-//   		  )
-//   		);
-//   		db_add_index('field_data_field_dataset_studies', 'field_dataset_studies_nid', array('field_dataset_studies_nid'));
+  		db_drop_field('field_data_field_dataset_studies', 'field_dataset_studies_view_id');
+  		db_drop_field('field_data_field_dataset_studies', 'field_dataset_studies_arguments');
+  		db_drop_index('field_data_field_dataset_studies', 'field_dataset_studies_view_id');
+  		db_add_field('field_data_field_dataset_studies', 'field_dataset_studies_nid', 
+  		  array(
+          'type' => 'int', 
+          'unsigned' => TRUE,
+          'default' => NULL,
+  		  )
+  		);
+  		db_add_index('field_data_field_dataset_studies', 'field_dataset_studies_nid', array('field_dataset_studies_nid'));
 		}
 
 		if (db_table_exists('field_data_field_dataset_variables')){
@@ -272,8 +274,8 @@ function mica_datasets_update_7120(&$sandbox) {
 		drupal_bootstrap(DRUPAL_BOOTSTRAP_SESSION);
 		
 		registry_rebuild_rebuild();
-// 		_mica_feature_revert('mica_datasets', array('field', 'user_permission', 'variable'));
-		features_revert(array('mica_datasets' => array('variable', 'user_permission', 'field')));
+		_mica_feature_revert('mica_datasets', array('field', 'user_permission', 'variable'));
+// 		features_revert(array('mica_datasets' => array('variable', 'user_permission', 'field')));
 //     module_load_include('inc', 'mica_datasets', 'mica_datasets.import_taxonomies');
 //     $taxonomies = _mica_datasets_taxonomies();
 //     if (!isset($sandbox['progress'])) {
@@ -370,7 +372,7 @@ function registry_rebuild_rebuild() {
 		db_delete('registry')
 		->condition('filename', $filenames)
 		->execute();
-		print("Deleted " . count($filenames) . ' stale files from registry manually.');
+		drupal_set_message("Deleted " . count($filenames) . ' stale files from registry manually.');
 	}
 
 	$parsed_after = registry_get_parsed_files();
