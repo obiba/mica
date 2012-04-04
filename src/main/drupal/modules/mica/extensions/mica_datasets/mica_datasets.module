@@ -1212,7 +1212,7 @@ function mica_datasets_node_validate($node, $form, &$form_state) {
 }
 
 function _mica_datasets_create_dataset_menu($node) {
-  $parent_menu = db_query("SELECT * FROM {menu_links} WHERE link_title = :title", array(':title' => 'Datasets'))
+  $parent_menu = db_query("SELECT * FROM {menu_links} WHERE link_title = :title", array(':title' => 'Datasets / Data Dictionary'))
     ->fetchObject();
   if (!empty($parent_menu)) {
     $menu = $node->menu;
