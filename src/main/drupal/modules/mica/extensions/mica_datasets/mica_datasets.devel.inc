@@ -32,39 +32,12 @@ function _mica_datasets_delete_taxonomies() {
 }
 
 function _mica_datasets_import_taxonomies_run() {
-//  $node = mica_add_book_page('Dimensions', 'Here is a description of our dimensions');
+  $node = mica_add_book_page('Dimensions', 'Here is a description of our dimensions');
   foreach (_mica_datasets_taxonomies() as $taxonomy) {
     $machine_name = substr($taxonomy[0], 0, strlen($taxonomy[0]) - 4);
     drupal_set_message("Importing " . $machine_name);
     _mica_datasets_taxonomy_import($taxonomy[0], $taxonomy[1]);
     
-//    mica_add_book_page($taxonomy[1], "List of terms for $taxonomy[1]", $node->nid);
+    mica_add_book_page($taxonomy[1], "List of terms for $taxonomy[1]", $node->nid);
   }
 }
-
-///**
-// * Creates a book or a book child page
-// */
-//function mica_add_book_page($title, $body, $parent_id = null){
-//  $node = new stdClass();
-//  $node->type = 'book';
-//  node_object_prepare($node);
-//  $node->title = $title;
-//  $node->body = array(LANGUAGE_NONE => array(array(
-//    'value' => $body,
-//    'format' => 'full_html'
-//  )));
-//  $node->promote = 0;
-//  $node->sticky = 0;
-//  $node->language = LANGUAGE_NONE;
-//
-//  $node->book['bid'] = isset($parent_id) ? $parent_id : 'new';
-//  node_save($node);
-//
-//  /*$path = array('alias' => $alias);
-//    $path['source'] = 'node/' . $node->nid;
-//   $path['language'] = LANGUAGE_NONE;
-//   path_save($path);*/
-//
-//  return $node;
-//}
