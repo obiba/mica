@@ -64,10 +64,11 @@ function mica_datasets_default_search_api_index() {
         "status" : { "type" : "integer" },
         "field_dataset_studies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "search_api_language" : { "type" : "string" },
+        "search_api_aggregation_1" : { "type" : "text" },
+        "search_api_aggregation_2" : { "type" : "integer" },
         "body:value" : { "type" : "text" },
         "body:summary" : { "type" : "text" },
-        "search_api_aggregation_1" : { "type" : "text" },
-        "search_api_aggregation_2" : { "type" : "integer" }
+        "field_dataset_studies:title" : { "type" : "list\\u003Ctext\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {

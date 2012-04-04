@@ -15,13 +15,13 @@ function mica_datasets_menu_default_menu_links() {
     'menu_name' => 'main-menu',
     'link_path' => '<firstchild>',
     'router_path' => '<firstchild>',
-    'link_title' => 'Datasets',
+    'link_title' => 'Datasets / Data Dictionary',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
       'alter' => TRUE,
-      'unaltered_hidden' => 0,
+      'unaltered_hidden' => '0',
     ),
     'module' => 'menu',
     'hidden' => '0',
@@ -43,7 +43,7 @@ function mica_datasets_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-49',
+    'weight' => '1',
     'parent_path' => '<firstchild>',
   );
   // Exported menu link: main-menu:single-study-datasets
@@ -58,7 +58,7 @@ function mica_datasets_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-50',
+    'weight' => '0',
     'parent_path' => '<firstchild>',
   );
   // Exported menu link: main-menu:variable-search
@@ -82,7 +82,7 @@ function mica_datasets_menu_default_menu_links() {
   );
   // Translatables
   // Included for use with string extractors like potx.
-  t('Datasets');
+  t('Datasets / Data Dictionary');
   t('Multiple Studies Datasets');
   t('Single Study Datasets');
   t('Variables search');

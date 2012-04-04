@@ -611,6 +611,30 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['body']['empty_zero'] = 0;
   $handler->display->display_options['fields']['body']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['body']['field_api_classes'] = 0;
+  /* Field: Studies: Title (indexed) */
+  $handler->display->display_options['fields']['field_dataset_studies_title']['id'] = 'field_dataset_studies_title';
+  $handler->display->display_options['fields']['field_dataset_studies_title']['table'] = 'search_api_index_dataset_index';
+  $handler->display->display_options['fields']['field_dataset_studies_title']['field'] = 'field_dataset_studies_title';
+  $handler->display->display_options['fields']['field_dataset_studies_title']['label'] = 'Study';
+  $handler->display->display_options['fields']['field_dataset_studies_title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_dataset_studies_title']['link_to_entity'] = 1;
   /* Sort criterion: Indexed Node: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'search_api_index_dataset_index';
