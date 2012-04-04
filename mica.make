@@ -42,8 +42,11 @@ projects[autocomplete_deluxe][download][revision] = b9e4b6b745b38ba4b0b3696e26ff
 
 projects[] = advanced_help
 
-projects[calendar][version] = 3.0
 projects[calendar][type] = module
+projects[calendar][download][type] = git
+projects[calendar][download][url] = http://git.drupal.org/project/calendar.git
+projects[calendar][download][revision] = 3f4c3c70f25b980800e381e81d99f74a3ccf7711
+;projects[calendar][patch][1445228] = http://drupal.org/files/calendar-granularity-1445228-12.patch
 
 projects[cck_select_other][version] = 1.0
 projects[cck_select_other][type] = module
@@ -110,10 +113,9 @@ projects[feeds][patch][110752215links] = http://drupal.org/files/ignore-empty-li
 projects[feeds_jsonpath_parser][version] = 1.0-beta2
 projects[feeds_jsonpath_parser][type] = module
 
-projects[feeds_tamper][type] = module
 projects[feeds_tamper][download][type] = git
 projects[feeds_tamper][download][url] = http://git.drupal.org/project/feeds_tamper.git
-projects[feeds_tamper][download][revision] = c9a97a7c881c1ff48c20bc3cc068a558c48b1de8
+projects[feeds_tamper][download][revision] = 8f7f581512249d73c4e7e82239ab854bef03635e
 projects[feeds_tamper][patch][1416700] = http://drupal.org/files/1416700-4-feeds_tamper-existing-terms-plugin.patch
 
 projects[field_display_label][version] = 1.2
@@ -159,6 +161,9 @@ projects[link][type] = module
 projects[login_destination][version] = 1.0
 projects[login_destination][type] = module
 
+projects[mail_edit][version] = 1.0-beta2
+projects[mail_edit][type] = module
+
 projects[masquerade][version] = 1.0-rc4
 projects[masquerade][type] = module
 
@@ -202,6 +207,9 @@ projects[pathauto][type] = module
 projects[potx][version] = 1.0
 projects[potx][type] = module
 
+projects[recaptcha][version] = 1.7
+projects[recaptcha][type] = module
+
 projects[references][type] = module
 projects[references][download][type] = git
 projects[references][download][url] = http://git.drupal.org/project/references.git
@@ -210,7 +218,7 @@ projects[references][download][revision] = 311bd497bfb0f9de046d585006a7ef3d9c6c7
 projects[search_api][type] = module
 projects[search_api][download][type] = git
 projects[search_api][download][url] = http://git.drupal.org/project/search_api.git
-projects[search_api][download][revision] = bfc5f152b19560089406648617aad4cc42365a2d
+projects[search_api][download][revision] = 3189be2d3b34bc6a766b9e5c8cc4a15ea16ff5cd
 projects[search_api][patch][1363114] = http://drupal.org/files/max_inclusive-1363114-5.patch
 
 projects[search_api][type] = module
@@ -230,6 +238,7 @@ projects[search_api_ranges][patch][1460410] = http://drupal.org/files/max-inclus
 
 projects[search_api_solr][version] = 1.0-rc1
 projects[search_api_solr][type] = module
+projects[search_api_solr][patch][1276970] = http://drupal.org/files/solr_queries_post-1276970-10.patch
 
 projects[smtp][version] = 1.0-beta1
 projects[smtp][type] = module
