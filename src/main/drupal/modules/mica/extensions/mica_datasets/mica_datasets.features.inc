@@ -8,44 +8,14 @@
  * Implements hook_ctools_plugin_api().
  */
 function mica_datasets_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
-  if ($module == "current_search" && $api == "current_search") {
-    return array("version" => "1");
-  }
-  list($module, $api) = func_get_args();
-  if ($module == "facetapi" && $api == "facetapi_defaults") {
-    return array("version" => "1");
-  }
-  list($module, $api) = func_get_args();
-  if ($module == "feeds" && $api == "feeds_importer_default") {
-    return array("version" => "1");
-  }
-  list($module, $api) = func_get_args();
-  if ($module == "feeds_tamper" && $api == "feeds_tamper_default") {
-    return array("version" => "2");
-  }
-  list($module, $api) = func_get_args();
-  if ($module == "field_group" && $api == "field_group") {
-    return array("version" => "1");
-  }
-  list($module, $api) = func_get_args();
-  if ($module == "page_manager" && $api == "pages_default") {
-    return array("version" => "1");
-  }
-  list($module, $api) = func_get_args();
-  if ($module == "strongarm" && $api == "strongarm") {
-    return array("version" => "1");
-  }
+  return array("version" => "1");
 }
 
 /**
  * Implements hook_views_api().
  */
 function mica_datasets_views_api() {
-  list($module, $api) = func_get_args();
-  if ($module == "views" && $api == "views_default") {
-    return array("version" => "3.0");
-  }
+  return array("version" => "3.0");
 }
 
 /**
@@ -78,6 +48,97 @@ function mica_datasets_node_info() {
  */
 function mica_datasets_default_search_api_index() {
   $items = array();
+  $items['dataset_index'] = entity_import('search_api_index', '{
+    "name" : "Dataset Index",
+    "machine_name" : "dataset_index",
+    "description" : null,
+    "server" : "solr",
+    "item_type" : "node",
+    "options" : {
+      "index_directly" : 1,
+      "cron_limit" : "200",
+      "fields" : {
+        "nid" : { "type" : "integer" },
+        "type" : { "type" : "string" },
+        "title" : { "type" : "string" },
+        "status" : { "type" : "integer" },
+        "field_dataset_studies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
+        "search_api_language" : { "type" : "string" },
+        "body:value" : { "type" : "text" },
+        "body:summary" : { "type" : "text" },
+        "search_api_aggregation_1" : { "type" : "text" },
+        "search_api_aggregation_2" : { "type" : "integer" }
+      },
+      "data_alter_callbacks" : {
+        "search_api_alter_bundle_filter" : {
+          "status" : 1,
+          "weight" : "-10",
+          "settings" : { "default" : "0", "bundles" : { "dataset" : "dataset" } }
+        },
+        "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
+        "search_api_alter_add_aggregation" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : { "fields" : {
+              "search_api_aggregation_1" : {
+                "name" : "Title full text",
+                "type" : "fulltext",
+                "fields" : [ "title" ],
+                "description" : "A Fulltext aggregation of the following fields: Title."
+              },
+              "search_api_aggregation_2" : {
+                "name" : "Study count",
+                "type" : "count",
+                "fields" : [ "field_dataset_studies" ],
+                "description" : "A Count aggregation of the following fields: Studies."
+              }
+            }
+          }
+        },
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
+      },
+      "processors" : {
+        "search_api_case_ignore" : {
+          "status" : 0,
+          "weight" : "0",
+          "settings" : { "fields" : { "title" : true, "body:value" : true, "body:summary" : true } }
+        },
+        "search_api_html_filter" : {
+          "status" : 0,
+          "weight" : "10",
+          "settings" : {
+            "fields" : { "title" : true, "body:value" : true, "body:summary" : true },
+            "title" : 0,
+            "alt" : 1,
+            "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
+          }
+        },
+        "search_api_tokenizer" : {
+          "status" : 0,
+          "weight" : "20",
+          "settings" : {
+            "fields" : { "title" : true, "body:value" : true, "body:summary" : true },
+            "spaces" : "[^\\\\p{L}\\\\p{N}^\\u0027]",
+            "ignorable" : "[-]"
+          }
+        },
+        "search_api_stopwords" : {
+          "status" : 0,
+          "weight" : "30",
+          "settings" : {
+            "fields" : { "title" : true, "body:value" : true, "body:summary" : true },
+            "file" : "",
+            "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
+          }
+        }
+      }
+    },
+    "enabled" : "1",
+    "read_only" : "0",
+    "rdf_mapping" : []
+  }');
   $items['variable_index'] = entity_import('search_api_index', '{
     "name" : "Variables Index",
     "machine_name" : "variable_index",

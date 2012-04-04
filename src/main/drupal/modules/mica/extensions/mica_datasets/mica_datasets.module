@@ -279,7 +279,8 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
 
   switch($root_path) {
 
-    case 'datasets':
+    case 'single-study-datasets':
+    case 'multiple-studies-datasets':
       if (node_access('create', 'dataset')) {
         $links['add-dataset'] = array(
           '#theme' => 'menu_local_action',
@@ -289,23 +290,6 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
             'localized_options' => array(
               'query' => array(
                 'type' => 'dataset'
-              )
-            )
-          ),
-        );
-      }
-      break;
-
-    case 'dataschemas':
-      if (node_access('create', 'dataset')) {
-        $links['add-dataschema'] = array(
-          '#theme' => 'menu_local_action',
-          '#link' => array(
-            'title' => t('Add a Dataschema'),
-            'href' => 'node/add/dataset',
-            'localized_options' => array(
-              'query' => array(
-                'type' => 'dataschema'
               )
             )
           ),
@@ -1228,19 +1212,7 @@ function mica_datasets_node_validate($node, $form, &$form_state) {
 }
 
 function _mica_datasets_create_dataset_menu($node) {
-  $wrapper = entity_metadata_wrapper('node', $node);
-  $dataset_type = $wrapper->field_dataset_type->value();
-  $parent_menu_title = '';
-  switch($dataset_type) {
-    case 'dataschema':
-      $parent_menu_title = 'Dataschemas';
-      break;
-    case 'dataset':
-      $parent_menu_title = 'Datasets';
-      break;
-  }
-
-  $parent_menu = db_query("SELECT * FROM {menu_links} WHERE link_title = :title", array(':title' => $parent_menu_title))
+  $parent_menu = db_query("SELECT * FROM {menu_links} WHERE link_title = :title", array(':title' => 'Datasets'))
     ->fetchObject();
   if (!empty($parent_menu)) {
     $menu = $node->menu;
@@ -1313,19 +1285,9 @@ function mica_datasets_block_view_alter(&$data, $block) {
  */
 function mica_datasets_form_alter(&$form, $form_state, $form_id) {
   switch($form_id) {
-    case 'dataset_node_form':
-      _mica_datasets_form_alter_dataset($form, $form_state, $form_id);
-      break;
     case 'variable_node_form':
       _mica_datasets_form_alter_variable($form, $form_state, $form_id);
       break;
-  }
-}
-
-function _mica_datasets_form_alter_dataset(&$form, $form_state, $form_id) {
-  if (isset($_REQUEST['type'])) {
-    $lang = $form['field_dataset_type']['#language'];
-    $form['field_dataset_type'][$lang]['#after_build'][] = '_mica_datasets_prepopulate_dataset_after_build';
   }
 }
 
@@ -1351,14 +1313,6 @@ function _mica_datasets_form_alter_variable(&$form, $form_state, $form_id) {
       );
     }
   }
-}
-
-function _mica_datasets_prepopulate_dataset_after_build(&$form_element) {
-  if (isset($_REQUEST['type'])) {
-    $form_element['#value'] = $_REQUEST['type'];
-    $form_element['#access'] = FALSE;
-  }
-  return $form_element;
 }
 
 function _mica_datasets_prepopulate_variable_after_build(&$form_element) {

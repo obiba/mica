@@ -201,11 +201,6 @@ function mica_datasets_update_7120(&$sandbox) {
   watchdog('mica', 'Import dataschema dimensions', array(), WATCHDOG_INFO);
   try {
 
-    // drop empty table field_data_field_dataset_type
-//     _drop_tables(array(
-//       'field_data_field_dataset_type',
-//       )
-//     );
     // Change fields of field_data
 		if (db_table_exists('field_data_field_dataset_studies')){
 // 		  update field_config
