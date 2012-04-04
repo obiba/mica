@@ -16,35 +16,36 @@ function mica_studies_install() {
 }
 
 /**
-*
-* Updates the mapping of field_data_sources. Values will be changed from-to:<br>
-* 'cross_sectional_questionnaires' = 'questionnaires'<br>
-* 'longitudinal_questionnaires' = 'questionnaires'<br>
-* 'cross_sectional_physical_measures' = 'physical_measures'<br>
-* 'longitudinal_physical_measures' = 'physical_measures'<br>
-* 'cross_sectional_biological_samples' = 'biological_samples'<br>
-* 'longitudinal_biological_samples' = 'biological_samples'<br><br>
-* Updates field_dateset_studies from viewreference to node_reference
-*/
+ *
+ * Updates the mapping of field_data_sources. Values will be changed from-to:<br>
+ * 'cross_sectional_questionnaires' = 'questionnaires'<br>
+ * 'longitudinal_questionnaires' = 'questionnaires'<br>
+ * 'cross_sectional_physical_measures' = 'physical_measures'<br>
+ * 'longitudinal_physical_measures' = 'physical_measures'<br>
+ * 'cross_sectional_biological_samples' = 'biological_samples'<br>
+ * 'longitudinal_biological_samples' = 'biological_samples'<br><br>
+ * Updates field_dateset_studies from viewreference to node_reference
+ */
 function mica_studies_update_7120(&$sandbox) {
+  try {
 
-	$mappings = array( 'questionnaires', 'physical_measures', 'biological_samples');
+    _mica_studies_configure_field_bundle_settings();
 
-	try{
-	  if (db_table_exists('field_data_field_data_sources')){
-  		foreach ($mappings as $mapping){
-  			db_update('field_data_field_data_sources')
-  			->fields(array('field_data_sources_value' => $mapping))
-  			->condition('field_data_sources_value', '%_'.$mapping, 'LIKE')
-  			->execute();
-  		}
-	  }
-		features_revert(array('mica_studies' => array('field', 'field_group', 'variable', 'views_view')));
-		return t('The field_data_sources mapping update is completed and the field field_dateset_studies has been updated.');
-	}
-	catch(Exception $e){
-		throw new DrupalUpdateException('Failed to update mica_studies: '.$e->getMessage());
-	}
+    if (db_table_exists('field_data_field_data_sources')) {
+      $mappings = array('questionnaires', 'physical_measures', 'biological_samples');
+      foreach ($mappings as $mapping) {
+        db_update('field_data_field_data_sources')
+          ->fields(array('field_data_sources_value' => $mapping))
+          ->condition('field_data_sources_value', '%_' . $mapping, 'LIKE')
+          ->execute();
+      }
+    }
+    features_revert(array('mica_studies' => array('field', 'field_group', 'variable', 'views_view')));
+    return t('The field_data_sources mapping update is completed and the field field_dateset_studies has been updated.');
+  }
+  catch (Exception $e) {
+    throw new DrupalUpdateException('Failed to update mica_studies: ' . $e->getMessage());
+  }
 }
 
 /**
@@ -86,7 +87,7 @@ function _mica_node_reference_block() {
   db_delete('block_node_type')
     ->condition('module', 'node_reference_block')
     ->condition('delta', 'related-content')
-    ->condition('type', 'study%','LIKE')
+    ->condition('type', 'study%', 'LIKE')
     ->execute();
   $query = db_insert('block_node_type')->fields(array('type', 'module', 'delta'));
   foreach (array('study', 'contact') as $type) {

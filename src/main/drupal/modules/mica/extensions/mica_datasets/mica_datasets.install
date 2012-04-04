@@ -171,17 +171,16 @@ function mica_datasets_schema() {
 
 /**
  * Implements hook_requirements()
- *
  */
 function mica_datasets_requirements($phase) {
   $requirements = array();
 
   $path = drupal_get_path('module', 'taxonomy_csv');
-  $info = drupal_parse_info_file($path .'/taxonomy_csv.info');
+  $info = drupal_parse_info_file($path . '/taxonomy_csv.info');
   $version = $info['version'];
   $nb = explode('.', substr($version, strpos($version, '-') + 1));
-  
-  if ($nb[0] < 5 || ($nb[0] == 5 && $nb[1] < 10)){
+
+  if ($nb[0] < 5 || ($nb[0] == 5 && $nb[1] < 10)) {
     $requirements['taxonomy_csv']['severity'] = REQUIREMENT_ERROR;
     $requirements['taxonomy_csv']['title'] = 'mica_datasets';
     $requirements['taxonomy_csv']['description'] = t('The version of taxonomy_csv must be >= 5.10');
@@ -191,7 +190,6 @@ function mica_datasets_requirements($phase) {
 }
 
 /**
- *
  * Import default taxonomy dimensions<br>
  * Update field : dataset_studies<br>
  * Update field : dataset_variables
@@ -202,90 +200,90 @@ function mica_datasets_update_7120(&$sandbox) {
   try {
 
     // Change fields of field_data
-		if (db_table_exists('field_data_field_dataset_studies')){
-// 		  update field_config
-		  db_update('field_config')
-  		  ->fields(array('type' => 'node_reference', 'module' => 'node_reference', 'data' => 'a:7:{s:12:"entity_types";a:0:{}s:17:"field_permissions";a:1:{s:4:"type";s:1:"0";}s:12:"foreign keys";a:1:{s:3:"nid";a:2:{s:5:"table";s:4:"node";s:7:"columns";a:1:{s:3:"nid";s:3:"nid";}}}s:7:"indexes";a:1:{s:3:"nid";a:1:{i:0;s:3:"nid";}}s:8:"settings";a:2:{s:19:"referenceable_types";a:17:{s:7:"article";i:0;s:4:"blog";i:0;s:7:"contact";i:0;s:19:"data_access_request";i:0;s:18:"data_access_review";i:0;s:7:"dataset";i:0;s:9:"documents";i:0;s:5:"event";i:0;s:17:"field_description";i:0;s:5:"forum";i:0;s:4:"page";i:0;s:5:"panel";i:0;s:7:"project";i:0;s:11:"publication";i:0;s:5:"study";s:5:"study";s:14:"teleconference";i:0;s:8:"variable";i:0;}s:4:"view";a:3:{s:4:"args";a:0:{}s:12:"display_name";s:0:"";s:9:"view_name";s:0:"";}}s:12:"translatable";s:1:"0";s:7:"storage";a:4:{s:4:"type";s:17:"field_sql_storage";s:8:"settings";a:0:{}s:6:"module";s:17:"field_sql_storage";s:6:"active";i:1;}}'))
-  		  ->condition('field_name', 'field_dataset_studies')
-  		  ->execute();
-		  	
-  		db_drop_field('field_data_field_dataset_studies', 'field_dataset_studies_view_id');
-  		db_drop_field('field_data_field_dataset_studies', 'field_dataset_studies_arguments');
-  		db_drop_index('field_data_field_dataset_studies', 'field_dataset_studies_view_id');
-  		db_add_field('field_data_field_dataset_studies', 'field_dataset_studies_nid', 
-  		  array(
-          'type' => 'int', 
+    if (db_table_exists('field_data_field_dataset_studies')) {
+      // update field_config
+      db_update('field_config')
+        ->fields(array('type' => 'node_reference', 'module' => 'node_reference', 'data' => 'a:7:{s:12:"entity_types";a:0:{}s:17:"field_permissions";a:1:{s:4:"type";s:1:"0";}s:12:"foreign keys";a:1:{s:3:"nid";a:2:{s:5:"table";s:4:"node";s:7:"columns";a:1:{s:3:"nid";s:3:"nid";}}}s:7:"indexes";a:1:{s:3:"nid";a:1:{i:0;s:3:"nid";}}s:8:"settings";a:2:{s:19:"referenceable_types";a:17:{s:7:"article";i:0;s:4:"blog";i:0;s:7:"contact";i:0;s:19:"data_access_request";i:0;s:18:"data_access_review";i:0;s:7:"dataset";i:0;s:9:"documents";i:0;s:5:"event";i:0;s:17:"field_description";i:0;s:5:"forum";i:0;s:4:"page";i:0;s:5:"panel";i:0;s:7:"project";i:0;s:11:"publication";i:0;s:5:"study";s:5:"study";s:14:"teleconference";i:0;s:8:"variable";i:0;}s:4:"view";a:3:{s:4:"args";a:0:{}s:12:"display_name";s:0:"";s:9:"view_name";s:0:"";}}s:12:"translatable";s:1:"0";s:7:"storage";a:4:{s:4:"type";s:17:"field_sql_storage";s:8:"settings";a:0:{}s:6:"module";s:17:"field_sql_storage";s:6:"active";i:1;}}'))
+        ->condition('field_name', 'field_dataset_studies')
+        ->execute();
+
+      db_drop_field('field_data_field_dataset_studies', 'field_dataset_studies_view_id');
+      db_drop_field('field_data_field_dataset_studies', 'field_dataset_studies_arguments');
+      db_drop_index('field_data_field_dataset_studies', 'field_dataset_studies_view_id');
+      db_add_field('field_data_field_dataset_studies', 'field_dataset_studies_nid',
+        array(
+          'type' => 'int',
           'unsigned' => TRUE,
           'default' => NULL,
-  		  )
-  		);
-  		db_add_index('field_data_field_dataset_studies', 'field_dataset_studies_nid', array('field_dataset_studies_nid'));
-		}
+        )
+      );
+      db_add_index('field_data_field_dataset_studies', 'field_dataset_studies_nid', array('field_dataset_studies_nid'));
+    }
 
-		if (db_table_exists('field_data_field_dataset_variables')){
-// 		  update field_config
-		  db_update('field_config')
-  		  ->fields(array('type' => 'node_reference', 'module' => 'node_reference', 'data' => 'a:7:{s:12:"entity_types";a:0:{}s:17:"field_permissions";a:1:{s:4:"type";s:1:"0";}s:12:"foreign keys";a:1:{s:3:"nid";a:2:{s:5:"table";s:4:"node";s:7:"columns";a:1:{s:3:"nid";s:3:"nid";}}}s:7:"indexes";a:1:{s:3:"nid";a:1:{i:0;s:3:"nid";}}s:8:"settings";a:2:{s:19:"referenceable_types";a:17:{s:7:"article";i:0;s:4:"blog";i:0;s:7:"contact";i:0;s:19:"data_access_request";i:0;s:18:"data_access_review";i:0;s:7:"dataset";i:0;s:9:"documents";i:0;s:5:"event";i:0;s:17:"field_description";i:0;s:5:"forum";i:0;s:4:"page";i:0;s:5:"panel";i:0;s:7:"project";i:0;s:11:"publication";i:0;s:5:"study";i:0;s:14:"teleconference";i:0;s:8:"variable";s:8:"variable";}s:4:"view";a:3:{s:4:"args";a:0:{}s:12:"display_name";s:0:"";s:9:"view_name";s:0:"";}}s:12:"translatable";s:1:"0";s:7:"storage";a:4:{s:4:"type";s:17:"field_sql_storage";s:8:"settings";a:0:{}s:6:"module";s:17:"field_sql_storage";s:6:"active";i:1;}}'))
-  		  ->condition('field_name', 'field_dataset_variables')
-  		  ->execute();
-		}
-		
-		// Rebuild registry
-		ini_set('memory_limit', -1);
-		chdir(DRUPAL_ROOT);
-		
-		global $_SERVER;
-		$_SERVER['REMOTE_ADDR'] = 'nothing';
-		
-		global $include_dir;
-		$include_dir = DRUPAL_ROOT . '/includes';
-		$module_dir = DRUPAL_ROOT . '/modules';
-		// Use core directory if it exists.
-		if (file_exists(DRUPAL_ROOT . '/core/includes/bootstrap.inc')) {
-			$include_dir = DRUPAL_ROOT . '/core/includes';
-			$module_dir = DRUPAL_ROOT . '/core/modules';
-		}
-		
-		$includes = array(
-		$include_dir . '/bootstrap.inc',
-		$include_dir . '/common.inc',
-		$module_dir . '/entity/entity.module',
-		$module_dir . '/entity/entity.controller.inc',
-		$module_dir . '/system/system.module',
-		$include_dir . '/database/query.inc',
-		$include_dir . '/database/select.inc',
-		$module_dir . '/entity/entity.module',
-		$include_dir . '/registry.inc',
-		$include_dir . '/module.inc',
-		);
-		
-		foreach ($includes as $include) {
-			if (file_exists($include)) {
-				require_once($include);
-			}
-		}
-		
-// 		print "Bootstrapping to DRUPAL_BOOTSTRAP_SESSION<br/>\n";
-		drupal_bootstrap(DRUPAL_BOOTSTRAP_SESSION);
-		
-		registry_rebuild_rebuild();
-		_mica_feature_revert('mica_datasets', array('field', 'user_permission', 'variable'));
-// 		features_revert(array('mica_datasets' => array('variable', 'user_permission', 'field')));
-//     module_load_include('inc', 'mica_datasets', 'mica_datasets.import_taxonomies');
-//     $taxonomies = _mica_datasets_taxonomies();
-//     if (!isset($sandbox['progress'])) {
-//       $sandbox['progress'] = 0;
-//       $sandbox['max'] = count($taxonomies);
-//     }
-//     foreach ($taxonomies as $taxonomy) {
-//       _mica_datasets_taxonomy_import($taxonomy[0], $taxonomy[1]);
-//       $sandbox['progress']++;
-//     }
-//     $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
-    
+    if (db_table_exists('field_data_field_dataset_variables')) {
+      // update field_config
+      db_update('field_config')
+        ->fields(array('type' => 'node_reference', 'module' => 'node_reference', 'data' => 'a:7:{s:12:"entity_types";a:0:{}s:17:"field_permissions";a:1:{s:4:"type";s:1:"0";}s:12:"foreign keys";a:1:{s:3:"nid";a:2:{s:5:"table";s:4:"node";s:7:"columns";a:1:{s:3:"nid";s:3:"nid";}}}s:7:"indexes";a:1:{s:3:"nid";a:1:{i:0;s:3:"nid";}}s:8:"settings";a:2:{s:19:"referenceable_types";a:17:{s:7:"article";i:0;s:4:"blog";i:0;s:7:"contact";i:0;s:19:"data_access_request";i:0;s:18:"data_access_review";i:0;s:7:"dataset";i:0;s:9:"documents";i:0;s:5:"event";i:0;s:17:"field_description";i:0;s:5:"forum";i:0;s:4:"page";i:0;s:5:"panel";i:0;s:7:"project";i:0;s:11:"publication";i:0;s:5:"study";i:0;s:14:"teleconference";i:0;s:8:"variable";s:8:"variable";}s:4:"view";a:3:{s:4:"args";a:0:{}s:12:"display_name";s:0:"";s:9:"view_name";s:0:"";}}s:12:"translatable";s:1:"0";s:7:"storage";a:4:{s:4:"type";s:17:"field_sql_storage";s:8:"settings";a:0:{}s:6:"module";s:17:"field_sql_storage";s:6:"active";i:1;}}'))
+        ->condition('field_name', 'field_dataset_variables')
+        ->execute();
+    }
+
+    // Rebuild registry
+    ini_set('memory_limit', -1);
+    chdir(DRUPAL_ROOT);
+
+    global $_SERVER;
+    $_SERVER['REMOTE_ADDR'] = 'nothing';
+
+    global $include_dir;
+    $include_dir = DRUPAL_ROOT . '/includes';
+    $module_dir = DRUPAL_ROOT . '/modules';
+    // Use core directory if it exists.
+    if (file_exists(DRUPAL_ROOT . '/core/includes/bootstrap.inc')) {
+      $include_dir = DRUPAL_ROOT . '/core/includes';
+      $module_dir = DRUPAL_ROOT . '/core/modules';
+    }
+
+    $includes = array(
+      $include_dir . '/bootstrap.inc',
+      $include_dir . '/common.inc',
+      $module_dir . '/entity/entity.module',
+      $module_dir . '/entity/entity.controller.inc',
+      $module_dir . '/system/system.module',
+      $include_dir . '/database/query.inc',
+      $include_dir . '/database/select.inc',
+      $module_dir . '/entity/entity.module',
+      $include_dir . '/registry.inc',
+      $include_dir . '/module.inc',
+    );
+
+    foreach ($includes as $include) {
+      if (file_exists($include)) {
+        require_once($include);
+      }
+    }
+
+    drupal_bootstrap(DRUPAL_BOOTSTRAP_SESSION);
+
+    registry_rebuild_rebuild();
+    _mica_feature_revert('mica_datasets', array('field', 'user_permission', 'variable'));
+    // 		features_revert(array('mica_datasets' => array('variable', 'user_permission', 'field')));
+    //     module_load_include('inc', 'mica_datasets', 'mica_datasets.import_taxonomies');
+    //     $taxonomies = _mica_datasets_taxonomies();
+    //     if (!isset($sandbox['progress'])) {
+    //       $sandbox['progress'] = 0;
+    //       $sandbox['max'] = count($taxonomies);
+    //     }
+    //     foreach ($taxonomies as $taxonomy) {
+    //       _mica_datasets_taxonomy_import($taxonomy[0], $taxonomy[1]);
+    //       $sandbox['progress']++;
+    //     }
+    //     $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+
     return st('Dataschema dimensions have been successfully imported!');
   } catch (Exception $e) {
-    throw new DrupalUpdateException('Failed to update taxonomies. You have to import taxonomies manually.' . $e->getFile() . ':' .$e->getLine() . $e->getTrace());
+    throw new DrupalUpdateException('Failed to update taxonomies. You have to import taxonomies manually.' .
+      $e->getFile() . ':' . $e->getLine() . $e->getTrace());
   }
 
 
@@ -295,17 +293,17 @@ function mica_datasets_update_7120(&$sandbox) {
   mica_datasets_configure_facet_blocks();
 }
 
-function _drop_tables($tables){
-  foreach ($tables as $t){
-    if (db_table_exists($t)){
+function _drop_tables($tables) {
+  foreach ($tables as $t) {
+    if (db_table_exists($t)) {
       db_drop_table($t);
     }
     $revision = preg_replace('/^field_data_/', 'field_revision_', $t);
     debug($revision);
-    if (db_table_exists($revision)){
-    	db_drop_table($revision);
+    if (db_table_exists($revision)) {
+      db_drop_table($revision);
     }
-  }  
+  }
 }
 
 /**
@@ -329,49 +327,49 @@ function _mica_datasets_configure_field_bundle_settings() {
 }
 
 /**
-* Before calling this we need to be bootstrapped to DRUPAL_BOOTSTRAP_DATABASE.
-*/
+ * Before calling this we need to be bootstrapped to DRUPAL_BOOTSTRAP_DATABASE.
+ */
 function registry_rebuild_rebuild() {
-	// This section is not functionally important. It's just getting the
-	// registry_parsed_files() so that it can report the change.
-	$connection_info = Database::getConnectionInfo();
-	$driver = $connection_info['default']['driver'];
-	global $include_dir;
-	require_once $include_dir . '/database/' . $driver . '/query.inc';
+  // This section is not functionally important. It's just getting the
+  // registry_parsed_files() so that it can report the change.
+  $connection_info = Database::getConnectionInfo();
+  $driver = $connection_info['default']['driver'];
+  global $include_dir;
+  require_once $include_dir . '/database/' . $driver . '/query.inc';
 
-	$parsed_before = registry_get_parsed_files();
+  $parsed_before = registry_get_parsed_files();
 
-	cache_clear_all('lookup_cache', 'cache_bootstrap');
-	cache_clear_all('variables', 'cache_bootstrap');
-	cache_clear_all('module_implements', 'cache_bootstrap');
+  cache_clear_all('lookup_cache', 'cache_bootstrap');
+  cache_clear_all('variables', 'cache_bootstrap');
+  cache_clear_all('module_implements', 'cache_bootstrap');
 
-	registry_rebuild(); // At lower level
+  registry_rebuild(); // At lower level
 
-	drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
-	db_query('TRUNCATE {cache}');
-	registry_rebuild();
-	$parsed_after = registry_get_parsed_files();
+  drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
+  db_query('TRUNCATE {cache}');
+  registry_rebuild();
+  $parsed_after = registry_get_parsed_files();
 
-	// Remove files which don't exist anymore.
-	$filenames = array();
-	foreach ($parsed_after as $filename => $file) {
-		if (!file_exists($filename)) {
-			$filenames[] = $filename;
-		}
-	}
+  // Remove files which don't exist anymore.
+  $filenames = array();
+  foreach ($parsed_after as $filename => $file) {
+    if (!file_exists($filename)) {
+      $filenames[] = $filename;
+    }
+  }
 
-	if (!empty($filenames)) {
-		db_delete('registry_file')
-		->condition('filename', $filenames)
-		->execute();
-		db_delete('registry')
-		->condition('filename', $filenames)
-		->execute();
-		drupal_set_message("Deleted " . count($filenames) . ' stale files from registry manually.');
-	}
+  if (!empty($filenames)) {
+    db_delete('registry_file')
+      ->condition('filename', $filenames)
+      ->execute();
+    db_delete('registry')
+      ->condition('filename', $filenames)
+      ->execute();
+    drupal_set_message("Deleted " . count($filenames) . ' stale files from registry manually.');
+  }
 
-	$parsed_after = registry_get_parsed_files();
+  $parsed_after = registry_get_parsed_files();
 
-	drupal_flush_all_caches();
+  drupal_flush_all_caches();
 
 }
