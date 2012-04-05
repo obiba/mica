@@ -12,7 +12,7 @@ include_once('mica_community.features.inc');
 function mica_community_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   $links = array();
   
-  if ($root_path == 'community') {  
+  if ($root_path === 'community') {
     if (node_access('create', 'contact')) {
       $links['add-contact'] = array(
         '#theme' => 'menu_local_action',
@@ -32,7 +32,7 @@ function mica_community_menu_local_tasks_alter(&$data, $router_item, $root_path)
       );
     } 
   }
-  elseif ($root_path == 'events') {
+  elseif ($root_path === 'events') {
     if (node_access('create', 'event')) {
       $links['add-event'] = array(
         '#theme' => 'menu_local_action',
@@ -43,7 +43,7 @@ function mica_community_menu_local_tasks_alter(&$data, $router_item, $root_path)
       ); 
     }
   }
-  elseif ($root_path == 'publications') {
+  elseif ($root_path === 'publications') {
     if (node_access('create', 'publication')) {
       $links['add-publication'] = array(
         '#theme' => 'menu_local_action',

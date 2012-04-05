@@ -80,66 +80,6 @@ function mica_studies_permission() {
 }
 
 /**
- * Implements hook_block_info().
- *
- * This hook declares what blocks are provided by the module.
- */
-function mica_studies_block_info() {
-  $blocks['mica-search-filters'] = array(
-    'info' => t('Search filters selection'),
-    'status' => TRUE,
-    'region' => 'sidebar_first',
-    'visibility' => BLOCK_VISIBILITY_LISTED,
-    'pages' => 'studies-search',
-  );
-
-  $blocks['mica-search'] = array(
-    'info' => t('Search'),
-    'status' => FALSE,
-    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-    'pages' => '',
-  );
-
-  return $blocks;
-}
-
-/**
- * Implements hook_block_view().
- *
- * This hook generates the contents of the blocks themselves.
- */
-function mica_studies_block_view($delta = '') {
-  global $user;
-  $block = array();
-
-  //The $delta parameter tells us which block is being requested.
-  switch ($delta) {
-    case 'mica-search':
-      module_load_include('inc', 'mica', 'includes/blocks');
-      $block['subject'] = t('Search');
-      $block['content'] = mica_search_block_content();
-      return $block;
-
-    case 'mica-search-filters':
-      if ($user->uid == 0) {
-        // not available for anonymous user
-        return;
-      }
-
-      module_load_include('inc', 'mica', 'includes/blocks');
-      $block['subject'] = t('Search filters selection');
-      $content = mica_search_filters_block_content();
-
-      if ($content) {
-        $block['content'] = $content;
-        return $block;
-      }
-
-  }
-
-}
-
-/**
  * Menu access callback.
  */
 function mica_studies_export_page_access() {

@@ -3,10 +3,11 @@ description = Allows using Mica and Mica Datasets with an Opal instance
 core = 7.x
 package = "OBiBa"
 
-dependencies[] = mica
+dependencies[] = mica_core
 dependencies[] = mica_datasets
 dependencies[] = feeds
 dependencies[] = feeds_jsonpath_parser
+dependencies[] = http_client
 
 files[] = includes/opal_connection.inc
 files[] = includes/feeds/fetchers/FeedsOpalFetcher

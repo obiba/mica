@@ -5,27 +5,12 @@ package = "OBiBa"
 core = 7.x
 
 dependencies[] = entity
-dependencies[] = facetapi
 dependencies[] = search_api
-dependencies[] = search_api_ranges
 dependencies[] = search_api_solr
-dependencies[] = references
-dependencies[] = mica_node_reference_field
-dependencies[] = mica_field_description
 dependencies[] = mica_core
-dependencies[] = mica_relation
+dependencies[] = mica_studies
 dependencies[] = field_permissions
 dependencies[] = menu
 dependencies[] = menu_firstchild
-dependencies[] = http_client
 
 files[] = includes/blocks.inc
-files[] = includes/exception.inc
-
-files[] = includes/feeds/processors/FeedsUniqueNodeProcessor.inc
-files[] = includes/feeds/parsers/FeedsMultiValueCSVParser.inc
-files[] = includes/feeds/fetchers/FeedsRestFetcher.inc
-
-files[] = mica.install
-files[] = mica.module
-

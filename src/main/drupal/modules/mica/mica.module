@@ -1,7 +1,5 @@
 <?php
 
-include_once(drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.inc');
-
 /**
  * Implements hook_help()
  */
@@ -9,51 +7,13 @@ function mica_help($path, $arg) {
   switch ($path) {
     case "admin/help#mica":
       return '<p>' //
-      . t("Mica Documentation can be found here:") . '</p>' //
-      . '<ul>' //
-      . ' <li><a href="http://wiki.obiba.org/display/MICADOC/Mica+Administration+Guide">' . t('Mica Administration Guide') . '</a></li>' //
-      . ' <li><a href="http://wiki.obiba.org/display/MICADOC/Mica+User+Guide">' . t('Mica User Guide') . '</a></li>' //
-      . '</ul>';
+        . t("Mica Documentation can be found here:") . '</p>' //
+        . '<ul>' //
+        . ' <li><a href="http://wiki.obiba.org/display/MICADOC/Mica+Administration+Guide">' . t('Mica Administration Guide') . '</a></li>' //
+        . ' <li><a href="http://wiki.obiba.org/display/MICADOC/Mica+User+Guide">' . t('Mica User Guide') . '</a></li>' //
+        . '</ul>';
       break;
   }
-}
-
-/**
- * Implements hook_form().
- */
-function mica_form($node, &$form_state) {
-  return node_content_form($node, $form_state);
-}
-
-/**
- * Implements hook_field_formatter_info().
- */
-function mica_field_formatter_info() {
-  return array(
-    // This formatter just displays the link to pubmed article from its id.
-    'mica_pubmed_url' => array(
-      'label' => t('Pubmed Link'),
-      'field types' => array('text','number_integer'),
-      'multiple values' => FIELD_BEHAVIOR_DEFAULT,
-    ),
-  );
-}
-
-/**
- * Implements hook_field_formatter_view().
- */
-function mica_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
-    $element = array();
-
-  switch ($display['type']) {
-    case 'mica_pubmed_url':
-      foreach ($items as $delta => $item) {
-        $element[$delta] = array('#markup' => l('PUBMED ' . $item['value'],'http://www.ncbi.nlm.nih.gov/pubmed/' . $item['value']));
-      }
-      break;
-  }
-
-  return $element;
 }
 
 /**
@@ -62,12 +22,25 @@ function mica_field_formatter_view($entity_type, $entity, $field, $instance, $la
  * This hook declares what blocks are provided by the module.
  */
 function mica_block_info() {
+  $blocks = array();
   $blocks['powered-by-mica'] = array(
     'info' => t('Powered by Mica'),
     'weight' => '10',
     'cache' => DRUPAL_NO_CACHE,
   );
-
+  $blocks['mica-search-filters'] = array(
+    'info' => t('Search filters selection'),
+    'status' => TRUE,
+    'region' => 'sidebar_first',
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'studies-search',
+  );
+  $blocks['mica-search'] = array(
+    'info' => t('Search'),
+    'status' => FALSE,
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'pages' => '',
+  );
   return $blocks;
 }
 
@@ -77,82 +50,33 @@ function mica_block_info() {
  * This hook generates the contents of the blocks themselves.
  */
 function mica_block_view($delta = '') {
-	$block = array();
+  module_load_include('inc', 'mica', 'includes/blocks');
+
+  global $user;
+  $block = array();
   switch ($delta) {
     case 'powered-by-mica':
       $block['subject'] = NULL;
       $block['content'] = '<span>' . t('Powered by <a href="@poweredby">Mica</a>', array('@poweredby' => 'http://obiba.org')) . '</span>';
       break;
+
+    case 'mica-search':
+      $block['subject'] = t('Search');
+      $block['content'] = mica_search_block_content();
+      return $block;
+
+    case 'mica-search-filters':
+      if ($user->uid == 0) {
+        return; // not available for anonymous user
+      }
+      $block['subject'] = t('Search filters selection');
+      $content = mica_search_filters_block_content();
+      if ($content) {
+        $block['content'] = $content;
+        return $block;
+      }
+      return;
   }
   return $block;
-}
-
-/**
- * Implements hook_feeds_plugins().
- */
-function mica_feeds_plugins() {
-
-  $info = array();
-  $info['FeedsUniqueNodeProcessor'] = array(
-    'name' => 'Unique Node processor',
-    'description' => 'Update nodes if it already exists or creates a new one.',
-    'help' => 'Update nodes from parsed content.',
-    'handler' => array(
-      'parent' => 'FeedsNodeProcessor',
-      'class' => 'FeedsUniqueNodeProcessor',
-      'file' => 'FeedsUniqueNodeProcessor.inc',
-      'path' => drupal_get_path('module', 'mica') . '/includes/feeds/processors',
-    ),
-  );
-
-  $info['FeedsMultiValueCSVParser'] = array(
-    'name' => 'Multivalue CSV parser',
-    'description' => 'Parse data in Comma Separated Value format, with the option for multiple values per cell.',
-    'handler' => array(
-      'parent' => 'FeedsCSVParser',
-      'class' => 'FeedsMultiValueCSVParser',
-      'file' => 'FeedsMultiValueCSVParser.inc',
-      'path' => drupal_get_path('module', 'mica') . '/includes/feeds/parsers',
-    ),
-  );
-
-  $info['FeedsRestFetcher'] = array(
-    'name' => 'RESTful HTTP Fetcher',
-    'description' => 'Download content from a RESTful web service.',
-    'handler' => array(
-      'parent' => 'FeedsFetcher',
-      'class' => 'FeedsRestFetcher',
-      'file' => 'FeedsRestFetcher.inc',
-      'path' => drupal_get_path('module', 'mica') . '/includes/feeds/fetchers',
-    ),
-  );
-
-  return $info;
-}
-
-/**
-* Implements hook_entity_info_alter().
-*/
-function mica_entity_info_alter(&$entity_info) {
-  _mica_add_view_mode($entity_info, 'banner_area', 'Banner Area');
-  _mica_add_view_mode($entity_info, 'left_area', 'Left Area');
-  _mica_add_view_mode($entity_info, 'right_area', 'Right Area');
-  _mica_add_view_mode($entity_info, 'center_area', 'Center Area');
-  _mica_add_view_mode($entity_info, 'footer_area', 'Footer Area');
-  _mica_add_view_mode($entity_info, 'summary_area', 'Summary');
-  _mica_add_view_mode($entity_info, 'summary_banner_area', 'Summary Banner Area');
-  _mica_add_view_mode($entity_info, 'summary_left_area', 'Summary Left Area');
-  _mica_add_view_mode($entity_info, 'summary_right_area', 'Summary Right Area');
-  _mica_add_view_mode($entity_info, 'summary_center_area', 'Summary Center Area');
-  _mica_add_view_mode($entity_info, 'summary_footer_area', 'Summary Footer Area');
-}
-
-function _mica_add_view_mode(&$entity_info, $mode, $label) {
-  if (!isset($entity_info['node']['view modes'][$mode])) {
-    $entity_info['node']['view modes'][$mode] = array(
-      'label' => t($label),
-      'custom settings' => FALSE,
-    );
-  }
 }
 

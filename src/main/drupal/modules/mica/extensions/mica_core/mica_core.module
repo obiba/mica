@@ -2,6 +2,12 @@
 
 require_once('mica_core.features.inc');
 
+/**
+ * Implements hook_form().
+ */
+function mica_core_form($node, &$form_state) {
+  return node_content_form($node, $form_state);
+}
 
 function mica_core_node_title_exists($node_type, $title) {
   $q = db_select('node', 'n');
@@ -190,3 +196,100 @@ function mica_core_node_modal_page_view($js = NULL, $node) {
     return node_page_view($node);
   }
 }
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function mica_core_field_formatter_info() {
+  return array(
+    // This formatter just displays the link to pubmed article from its id.
+    'mica_pubmed_url' => array(
+      'label' => t('Pubmed Link'),
+      'field types' => array('text', 'number_integer'),
+      'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function mica_core_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  switch ($display['type']) {
+    case 'mica_pubmed_url':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array('#markup' => l('PUBMED ' . $item['value'], 'http://www.ncbi.nlm.nih.gov/pubmed/' . $item['value']));
+      }
+      break;
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function mica_core_entity_info_alter(&$entity_info) {
+  _mica_core_add_view_mode($entity_info, 'banner_area', 'Banner Area');
+  _mica_core_add_view_mode($entity_info, 'left_area', 'Left Area');
+  _mica_core_add_view_mode($entity_info, 'right_area', 'Right Area');
+  _mica_core_add_view_mode($entity_info, 'center_area', 'Center Area');
+  _mica_core_add_view_mode($entity_info, 'footer_area', 'Footer Area');
+  _mica_core_add_view_mode($entity_info, 'summary_area', 'Summary');
+  _mica_core_add_view_mode($entity_info, 'summary_banner_area', 'Summary Banner Area');
+  _mica_core_add_view_mode($entity_info, 'summary_left_area', 'Summary Left Area');
+  _mica_core_add_view_mode($entity_info, 'summary_right_area', 'Summary Right Area');
+  _mica_core_add_view_mode($entity_info, 'summary_center_area', 'Summary Center Area');
+  _mica_core_add_view_mode($entity_info, 'summary_footer_area', 'Summary Footer Area');
+}
+
+function _mica_core_add_view_mode(&$entity_info, $mode, $label) {
+  if (!isset($entity_info['node']['view modes'][$mode])) {
+    $entity_info['node']['view modes'][$mode] = array(
+      'label' => t($label),
+      'custom settings' => FALSE,
+    );
+  }
+}
+
+/**
+ * Implements hook_feeds_plugins().
+ */
+function mica_core_feeds_plugins() {
+  $info = array();
+  $info['FeedsUniqueNodeProcessor'] = array(
+    'name' => 'Unique Node processor',
+    'description' => 'Update nodes if it already exists or creates a new one.',
+    'help' => 'Update nodes from parsed content.',
+    'handler' => array(
+      'parent' => 'FeedsNodeProcessor',
+      'class' => 'FeedsUniqueNodeProcessor',
+      'file' => 'FeedsUniqueNodeProcessor.inc',
+      'path' => drupal_get_path('module', 'mica_core') . '/includes/feeds/processors',
+    ),
+  );
+  $info['FeedsMultiValueCSVParser'] = array(
+    'name' => 'Multivalue CSV parser',
+    'description' => 'Parse data in Comma Separated Value format, with the option for multiple values per cell.',
+    'handler' => array(
+      'parent' => 'FeedsCSVParser',
+      'class' => 'FeedsMultiValueCSVParser',
+      'file' => 'FeedsMultiValueCSVParser.inc',
+      'path' => drupal_get_path('module', 'mica_core') . '/includes/feeds/parsers',
+    ),
+  );
+  $info['FeedsRestFetcher'] = array(
+    'name' => 'RESTful HTTP Fetcher',
+    'description' => 'Download content from a RESTful web service.',
+    'handler' => array(
+      'parent' => 'FeedsFetcher',
+      'class' => 'FeedsRestFetcher',
+      'file' => 'FeedsRestFetcher.inc',
+      'path' => drupal_get_path('module', 'mica_core') . '/includes/feeds/fetchers',
+    ),
+  );
+  return $info;
+}
+
+
+

@@ -11,43 +11,42 @@
  *
  * @see FeedsNodeProcessor::getMappingTargets().
  */
-function mica_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name) {
+function mica_core_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name) {
   foreach (field_info_instances($entity_type, $bundle_name) as $name => $instance) {
-    if ($name == 'body') {
+    if ($name === 'body') {
       $targets[$name] = array(
         'name' => $name,
-        'callback' => 'mica_feeds_set_target_body',
+        'callback' => 'mica_core_feeds_set_target_body',
         'description' => t('The @label field of the node.', array('@label' => $instance['label'])),
       );
     }
-    elseif ($name == 'title') {
+    elseif ($name === 'title') {
       $targets[$name] = array(
         'name' => $name,
-        'callback' => 'mica_feeds_set_target_title',
+        'callback' => 'mica_core_feeds_set_target_title',
         'description' => t('The @label field of the node.', array('@label' => $instance['label'])),
       );
     }
-    elseif ($name == 'field_study_legacy_id') {
+    elseif ($name === 'field_study_legacy_id') {
       $targets['field_study_legacy_id'] = array(
         'name' => $instance['label'],
-        'callback' => 'mica_feeds_set_target_legacy_id',
+        'callback' => 'mica_core_feeds_set_target_legacy_id',
         'description' => t('The Legacy Id of the parent Study of the node.', array('@label' => $instance['label'])),
       );
     }
   }
 }
 
-function mica_feeds_set_target_title($source, $entity, $target, $value ) {
-  _mica_set_target($source, $entity, $target, $value);
+function mica_core_feeds_set_target_title($source, $entity, $target, $value ) {
+  _mica_core_set_target($source, $entity, $target, $value);
 }
 
-function mica_feeds_set_target_body($source, $entity, $target, $value) {
-  _mica_set_target($source, $entity, $target, $value);
+function mica_core_feeds_set_target_body($source, $entity, $target, $value) {
+  _mica_core_set_target($source, $entity, $target, $value);
 }
 
-function mica_feeds_set_target_legacy_id($source, $entity, $target, $value) {
-  // Get the study parent of this node...
-  _mica_set_target($source, $entity, $target, $value);
+function mica_core_feeds_set_target_legacy_id($source, $entity, $target, $value) {
+  _mica_core_set_target($source, $entity, $target, $value);
 }
 
 /**
@@ -57,7 +56,7 @@ function mica_feeds_set_target_legacy_id($source, $entity, $target, $value) {
  * user has decided to map to and $value contains the value of the feed item
  * element the user has picked as a source.
  */
-function _mica_set_target($source, $entity, $target, $value, $value_field = 'value') {
+function _mica_core_set_target($source, $entity, $target, $value, $value_field = 'value') {
   if (empty($value)) {
     return;
   }
@@ -71,7 +70,6 @@ function _mica_set_target($source, $entity, $target, $value, $value_field = 'val
   $i = 0;
   $info = field_info_field($target);
   $field_name = $target;
-  $sub_field;
   if (strpos($target, ':') !== FALSE) {
     list($field_name, $sub_field) = explode(':', $target);
   }
