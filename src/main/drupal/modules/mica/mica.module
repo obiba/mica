@@ -19,19 +19,6 @@ function mica_help($path, $arg) {
 }
 
 /**
- * Implements hook_menu().
- */
-function mica_menu() {
-  $items['mica/%ctools_js/node/%node'] = array(
-    'page callback' => 'mica_node_modal_page_view',
-    'page arguments' => array(1,3),
-    'access callback' => 'node_access',
-    'access arguments' => array('view', 3),
-  );
-  return $items;
-}
-
-/**
  * Implements hook_form().
  */
 function mica_form($node, &$form_state) {
@@ -166,118 +153,6 @@ function _mica_add_view_mode(&$entity_info, $mode, $label) {
       'label' => t($label),
       'custom settings' => FALSE,
     );
-  }
-}
-
-//
-// Modal helper functions
-//
-
-/**
- * Declare styles for Mica modal dialogs.
- * @param $styles array of styles: name (required) and width, height (required for a dialog with a fixed size)
- */
-function mica_modal_prepare($styles) {
-  // Include the CTools tools that we need.
-  ctools_include('ajax');
-  ctools_include('modal');
-
-  // Add CTools' javascript to the page.
-  ctools_modal_add_js();
-
-  $style_settings = array();
-
-  // Create our own javascript that will be used to theme a modal.
-  foreach ($styles as $style) {
-    $settings = array();
-
-    if (!empty($style['width']) && !empty($style['height'])) {
-      $settings['modalSize'] = array(
-        'type' => 'fixed',
-        'width' => $style['width'],
-        'height' => $style['height'],
-        'addWidth' => 20,
-        'addHeight' => 15,
-      );
-    }
-    else {
-      $settings['modalSize'] = array(
-        'type' => 'scale',
-        'addWidth' => 20,
-        'addHeight' => 15,
-      );
-    }
-
-    $settings['modalOptions'] = array(
-        'opacity' => .5,
-        'background-color' => '#000',
-    );
-
-    $settings['animation'] = 'fadeIn';
-    $settings['modalTheme'] = 'MicaModal';
-
-    $style_settings[$style['name']] = $settings;
-  }
-  drupal_add_js($style_settings, 'setting');
-
-  // Since we have our js, css and images in well-known named directories,
-  // CTools makes it easy for us to just use them without worrying about
-  // using drupal_get_path() and all that ugliness.
-  ctools_add_js('mica-modal', 'mica');
-  ctools_add_css('mica-modal', 'mica');
-}
-
-/**
- * Renders the form identified by $form_id in a modal dialog, with provided title. Additional arguments are added to the $form_state.
- * @param $title
- * @param $form_id
- */
-function mica_modal_form_render($title, $form_id) {
-  ctools_include('ajax');
-  ctools_include('modal');
-  ctools_add_js('ajax-responder');
-
-  $form_state = array(
-      'ajax' => TRUE,
-      'title' => $title,
-  );
-  $args = func_get_args();
-  // Remove $title and $form_id from the arguments.
-  array_shift($args);
-  array_shift($args);
-  $form_state['build_info']['args'] = $args;
-
-  $commands = ctools_modal_form_wrapper($form_id, $form_state);
-
-  // If cancelling or complete, return to the activity.
-  if (!empty($form_state['complete'])) {
-    $commands = array();
-    $commands[] = ctools_modal_command_dismiss();
-    if (!empty($form_state['redirect'])) {
-      $commands[] = ctools_ajax_command_redirect($form_state['redirect']);
-    }
-  }
-  elseif (!empty($form_state['cancel'])) {
-    $commands = array();
-    $commands[] = ctools_modal_command_dismiss();
-  }
-
-  print ajax_render($commands);
-}
-
-/**
- * Renders the node page in a modal window. Use mica_modal_prepare() to set up a link to the node page.
- * @param $js
- * @param $node
- */
-function mica_node_modal_page_view($js = NULL, $node) {
-  if ($js) {
-    ctools_include('ajax');
-    ctools_include('modal');
-    ctools_modal_render($node->title, node_show($node));
-  }
-  else {
-    return node_page_view($node);
   }
 }
 

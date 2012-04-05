@@ -41,12 +41,12 @@ function _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, $ac
 function mica_datasets_dataset_queries_page($dataset_node) {
   drupal_set_title(t('!title -- Queries', array('!title' => $dataset_node->title)));
 
-  mica_modal_prepare(array(
-  array(
+  mica_core_modal_prepare(array(
+    array(
       'name' => 'delete-style',
       'width' => 400,
       'height' => 150,
-  ),
+    ),
   ));
 
   global $user;
@@ -487,7 +487,7 @@ function _mica_datasets_extract_new_query_term_values($query, $datum) {
 function mica_datasets_dataset_query_delete_modal_page($js = NULL, $dataset_node, $query) {
   if ($js) {
     $title = t('Delete !query', array('!query' => $query->name));
-    mica_modal_form_render($title, 'mica_datasets_dataset_query_delete_form', $dataset_node, $query);
+    mica_core_modal_form_render($title, 'mica_datasets_dataset_query_delete_form', $dataset_node, $query);
   }
   else {
     // fallback to plain page
@@ -561,21 +561,20 @@ function mica_datasets_dataset_query_delete_form_submit($form, &$form_state) {
 
 function mica_datasets_dataset_query_run_page($dataset_node, $query) {
 
-  mica_modal_prepare(array(
-  array(
+  mica_core_modal_prepare(array(
+    array(
       'name' => 'node-style',
-  ),
-  array(
+    ),
+    array(
       'name' => 'edit-style',
       'width' => 600,
       'height' => 500,
-  ),
-  array(
+    ),
+    array(
       'name' => 'delete-style',
       'width' => 400,
       'height' => 150,
-  ),
-   
+    ),
   ));
 
   drupal_set_title(t('!title -- !query', array('!title' => $dataset_node->title, '!query' => $query->name)));
@@ -676,7 +675,7 @@ function mica_datasets_dataset_query_term_edit_modal_page($js = NULL, $node, $qu
   if ($js) {
     $impl = $term->termImpl();
     $title = t('Edit !term', array('!term' => $impl->getFieldName()));
-    mica_modal_form_render($title, 'mica_datasets_dataset_query_term_edit_form', $node, $query, $term);
+    mica_core_modal_form_render($title, 'mica_datasets_dataset_query_term_edit_form', $node, $query, $term);
   }
   else {
     // fallback to plain page
@@ -795,7 +794,7 @@ function mica_datasets_dataset_query_term_delete_modal_page($js = NULL, $node, $
   if ($js) {
     $impl = $term->termImpl();
     $title = t('Delete !term', array('!term' => $impl->getFieldName()));
-    mica_modal_form_render($title, 'mica_datasets_dataset_query_term_delete_form', $node, $query, $term);
+    mica_core_modal_form_render($title, 'mica_datasets_dataset_query_term_delete_form', $node, $query, $term);
   }
   else {
     // fallback to plain page

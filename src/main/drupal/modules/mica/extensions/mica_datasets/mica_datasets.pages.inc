@@ -38,8 +38,8 @@ function mica_datasets_dataset_connection_modal_page($js = NULL, $connection_ent
     $title = t('!dataset -- !study', array(
       '!dataset' => $dataset_node->title, 
       '!study' => $study_node->title));
-    
-    mica_modal_form_render($title, 'mica_datasets_dataset_connection_form', $connection_entity, $dataset_node, $study_node);
+
+    mica_core_modal_form_render($title, 'mica_datasets_dataset_connection_form', $connection_entity, $dataset_node, $study_node);
   }
   else {
     // fallback to plain page
@@ -184,7 +184,7 @@ function _feeds_source_status($source) {
  * @param $form_state
  */
 function mica_datasets_dataset_studies_form($form, &$form_state) {
-  mica_modal_prepare(array(
+  mica_core_modal_prepare(array(
     array(
       'name' => 'edit-style',
       'width' => 700,
@@ -225,7 +225,6 @@ function mica_datasets_dataset_studies_form($form, &$form_state) {
 
   _mica_datasets_add_table_form($form, 'Study', 'No studies found', $options);
 
-
   return $form;
 }
 
@@ -248,12 +247,12 @@ function mica_datasets_dataset_studies_form_submit($form, &$form_state) {
  * @param $form_state
  */
 function mica_datasets_study_datasets_form($form, &$form_state) {
-  mica_modal_prepare(array(
-  array(
+  mica_core_modal_prepare(array(
+    array(
       'name' => 'edit-style',
       'width' => 700,
       'height' => 650,
-  ),
+    ),
   ));
   
   $study_node = _mica_datasets_get_node_form_arg($form_state);
