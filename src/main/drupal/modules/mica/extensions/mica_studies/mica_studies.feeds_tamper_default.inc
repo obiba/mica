@@ -420,5 +420,21 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper->description = 'Trim';
   $export['csv_study_import-study_recruitment_targets-trim'] = $feeds_tamper;
 
+  $feeds_tamper = new stdClass;
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'csv_documents_import-field_files-explode';
+  $feeds_tamper->importer = 'csv_documents_import';
+  $feeds_tamper->source = 'field_files';
+  $feeds_tamper->plugin_id = 'explode';
+  $feeds_tamper->settings = array(
+    'separator' => '|',
+    'limit' => '',
+    'real_separator' => '|',
+  );
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'Explode';
+  $export['csv_documents_import-field_files-explode'] = $feeds_tamper;
+
   return $export;
 }

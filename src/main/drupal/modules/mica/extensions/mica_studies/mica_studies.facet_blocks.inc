@@ -40,7 +40,7 @@ function mica_studies_configure_facet_blocks() {
   $searcher = 'search_api@studies_index';
   foreach ($disabled_facets as $disabled_facet) {
     $facet = (array) facetapi_facet_load($disabled_facet, $searcher);
-    if (!empty($facet)) {
+    if (!empty($facet) && isset($facet['name'])) {
       $adapter = facetapi_adapter_load($searcher);
       $realms = facetapi_get_realm_info();
       foreach ($realms as $realm_name => $realm) {

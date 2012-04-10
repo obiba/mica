@@ -10,6 +10,7 @@
  */
 function mica_projects_install() {
   _mica_projects_configure_field_bundle_settings();
+  mica_core_configure_feeds_tamper('mica_projects');
 }
 
 /**
@@ -18,6 +19,7 @@ function mica_projects_install() {
 */
 function mica_projects_update_7120() {
 	features_revert(array('mica_projects' => array('field')));
+  mica_core_configure_feeds_tamper('mica_projects');
 }
 
 /**
@@ -36,3 +38,4 @@ function _mica_projects_configure_field_bundle_settings() {
   );
   field_bundle_settings('node', 'project', $project_settings);
 }
+

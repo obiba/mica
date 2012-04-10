@@ -44,7 +44,7 @@ function _mica_configuration_batch() {
     foreach ($source->importer->plugin_types as $type) {
       if ($source->importer->$type->hasSourceConfig()) {
         $class = get_class($source->importer->$type);
-        if ($class == 'FeedsFileFetcher') {
+        if ($class === 'FeedsFileFetcher') {
           $config = isset($source->config[$class]) ? $source->config[$class] : array();
           $config['source'] = $file['file'];
           $source->setConfigFor($source->importer->$type, $config);
@@ -83,24 +83,24 @@ function _mica_configuration_batch() {
   return $batch;
 }
 
-function _update_mica_languages($file, &$context) {
-
-  $langcode = 'fr';
-  $group = 'default';
-  if (preg_match('/.field.' . $langcode . '.po$/', $file->filename) === 1) {
-    $group = 'field';
-  } elseif (preg_match('/.menu.' . $langcode . '.po$/', $file->filename) === 1) {
-    $group = 'menu';
-  } elseif (preg_match('/.blocks.' . $langcode . '.po$/', $file->filename) === 1) {
-    $group = 'blocks';
-  }
-  module_load_include('inc', 'l10n_update', 'l10n_update.locale');
-  module_load_include('inc', 'l10n_update');
-  module_load_include('inc', 'locale');
-  _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, $group);
-
-  $context['message'] = st('Imported interface translations: %name.', array('%name' => $file->filename));
-}
+//function _update_mica_languages($file, &$context) {
+//
+//  $langcode = 'fr';
+//  $group = 'default';
+//  if (preg_match('/.field.' . $langcode . '.po$/', $file->filename) === 1) {
+//    $group = 'field';
+//  } elseif (preg_match('/.menu.' . $langcode . '.po$/', $file->filename) === 1) {
+//    $group = 'menu';
+//  } elseif (preg_match('/.blocks.' . $langcode . '.po$/', $file->filename) === 1) {
+//    $group = 'blocks';
+//  }
+//  module_load_include('inc', 'l10n_update', 'l10n_update.locale');
+//  module_load_include('inc', 'l10n_update');
+//  module_load_include('inc', 'locale');
+//  _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, $group);
+//
+//  $context['message'] = st('Imported interface translations: %name.', array('%name' => $file->filename));
+//}
 
 /**
  * Application of user permissions by features fails at modules installation.
@@ -125,21 +125,21 @@ function _datasets_block_configuration(&$context) {
   $context['message'] = st('Mica datasets configured');
 }
 
-function _update_language_french(&$context) {
-  $result = db_query("SELECT * FROM {languages} l WHERE l.language = 'fr'");
-  if ($result->rowCount() === 0) {
-    locale_add_language('fr', 'French', 'Français', 0, '', 'fr', '1', 0);
-    // Additional params, locale_add_language does not implement.
-    db_update('languages')
-      ->fields(array(
-        'plurals' => '2',
-        'formula' => '($n!=1)',
-      ))
-      ->condition('language', 'fr')
-      ->execute();
-    $context['message'] = st('French language configured');
-  }
-}
+//function _update_language_french(&$context) {
+//  $result = db_query("SELECT * FROM {languages} l WHERE l.language = 'fr'");
+//  if ($result->rowCount() === 0) {
+//    locale_add_language('fr', 'French', 'Français', 0, '', 'fr', '1', 0);
+//    // Additional params, locale_add_language does not implement.
+//    db_update('languages')
+//      ->fields(array(
+//        'plurals' => '2',
+//        'formula' => '($n!=1)',
+//      ))
+//      ->condition('language', 'fr')
+//      ->execute();
+//    $context['message'] = st('French language configured');
+//  }
+//}
 
 function _mica_configuration_finished($success, $results, $operations) {
   drupal_set_message(st("Mica configuration finished"));

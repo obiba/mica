@@ -245,6 +245,7 @@ projects[smtp][type] = module
 
 projects[strongarm][version] = 2.0-rc1
 projects[strongarm][type] = module
+projects[strongarm][patch][1525768] = http://drupal.org/files/print_stdclass_variables.patch
 
 projects[taxonomy_csv][version] = 5.10
 projects[taxonomy_csv][type] = module

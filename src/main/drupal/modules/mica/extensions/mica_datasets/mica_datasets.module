@@ -1029,7 +1029,7 @@ function mica_dataset_query_term_insert(array $values) {
  * a guid for each variable (dataset_id:title
  */
 function mica_datasets_feeds_after_parse(FeedsSource $source, FeedsParserResult $result) {
-  if(get_class($source->importer->processor) == 'FeedsNodeProcessor') {
+  if(get_class($source->importer->processor) === 'FeedsNodeProcessor') {
     $config = $source->importer->processor->getConfig();
     if($config['content_type'] === 'variable') {
       $src_config = $source->getConfigFor($source->importer->fetcher);

@@ -140,7 +140,7 @@ function mica_core_modal_prepare($styles) {
   // CTools makes it easy for us to just use them without worrying about
   // using drupal_get_path() and all that ugliness.
   ctools_add_js('mica_core_modal', 'mica_core');
-  //  ctools_add_css('mica-modal', 'mica');
+  ctools_add_css('mica_core_modal', 'mica_core');
 }
 
 /**
@@ -257,27 +257,6 @@ function _mica_core_add_view_mode(&$entity_info, $mode, $label) {
  */
 function mica_core_feeds_plugins() {
   $info = array();
-  $info['FeedsUniqueNodeProcessor'] = array(
-    'name' => 'Unique Node processor',
-    'description' => 'Update nodes if it already exists or creates a new one.',
-    'help' => 'Update nodes from parsed content.',
-    'handler' => array(
-      'parent' => 'FeedsNodeProcessor',
-      'class' => 'FeedsUniqueNodeProcessor',
-      'file' => 'FeedsUniqueNodeProcessor.inc',
-      'path' => drupal_get_path('module', 'mica_core') . '/includes/feeds'
-    ),
-  );
-  $info['FeedsMultiValueCSVParser'] = array(
-    'name' => 'Multivalue CSV parser',
-    'description' => 'Parse data in Comma Separated Value format, with the option for multiple values per cell.',
-    'handler' => array(
-      'parent' => 'FeedsCSVParser',
-      'class' => 'FeedsMultiValueCSVParser',
-      'file' => 'FeedsMultiValueCSVParser.inc',
-      'path' => drupal_get_path('module', 'mica_core') . '/includes/feeds',
-    ),
-  );
   $info['FeedsRestFetcher'] = array(
     'name' => 'RESTful HTTP Fetcher',
     'description' => 'Download content from a RESTful web service.',
@@ -292,4 +271,14 @@ function mica_core_feeds_plugins() {
 }
 
 
-
+/**
+ * Cannot export global default_feeds_tamper via strongarm in each modules, so do it manually
+ */
+function mica_core_configure_feeds_tamper($module_name) {
+  $disabled = variable_get('default_feeds_tamper', array());
+  $info = drupal_parse_info_file(drupal_get_path('module', $module_name) . '/' . $module_name . '.info');
+  foreach ($info['features']['feeds_tamper'] as $feeds_tamper) {
+    $disabled[$feeds_tamper] = FALSE;
+  }
+  variable_set('default_feeds_tamper', $disabled);
+}

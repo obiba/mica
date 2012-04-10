@@ -137,12 +137,10 @@ function mica_studies_feeds_importer_default() {
       ),
     ),
     'parser' => array(
-      'plugin_key' => 'FeedsMultiValueCSVParser',
+      'plugin_key' => 'FeedsCSVParser',
       'config' => array(
         'delimiter' => ';',
         'no_headers' => 0,
-        'multivalue_separator' => '|',
-        'multivalue_trim_spaces' => 1,
       ),
     ),
     'processor' => array(

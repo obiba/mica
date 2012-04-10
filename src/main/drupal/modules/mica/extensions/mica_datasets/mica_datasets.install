@@ -10,6 +10,7 @@
  */
 function mica_datasets_install() {
   _mica_datasets_configure_field_bundle_settings();
+  mica_core_configure_feeds_tamper('mica_datasets');
 }
 
 /**
@@ -291,6 +292,8 @@ function mica_datasets_update_7120(&$sandbox) {
 
   module_load_include('inc', 'mica_datasets', 'mica_datasets.facet_blocks');
   mica_datasets_configure_facet_blocks();
+
+  mica_core_configure_feeds_tamper('mica_datasets');
 }
 
 function _drop_tables($tables) {
@@ -371,5 +374,4 @@ function registry_rebuild_rebuild() {
   $parsed_after = registry_get_parsed_files();
 
   drupal_flush_all_caches();
-
 }

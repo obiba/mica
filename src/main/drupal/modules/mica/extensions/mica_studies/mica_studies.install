@@ -13,6 +13,7 @@ function mica_studies_install() {
   _mica_node_reference_block();
   _mica_studies_create_date_format();
   _mica_studies_configure_field_bundle_settings();
+  mica_core_configure_feeds_tamper('mica_studies');
 }
 
 /**
@@ -30,6 +31,7 @@ function mica_studies_update_7120(&$sandbox) {
   try {
 
     _mica_studies_configure_field_bundle_settings();
+    mica_core_configure_feeds_tamper('mica_studies');
 
     if (db_table_exists('field_data_field_data_sources')) {
       $mappings = array('questionnaires', 'physical_measures', 'biological_samples');

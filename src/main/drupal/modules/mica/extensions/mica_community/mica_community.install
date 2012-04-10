@@ -10,6 +10,7 @@
  */
 function mica_community_install() {
   _mica_community_configure_field_bundle_settings();
+  mica_core_configure_feeds_tamper('mica_community');
 }
 
 /**
@@ -18,6 +19,7 @@ function mica_community_install() {
 */
 function mica_community_update_7120() {
   features_revert(array('mica_community' => array('field')));
+  mica_core_configure_feeds_tamper('mica_community');
 }
 
 /**
@@ -38,4 +40,3 @@ function _mica_community_configure_field_bundle_settings() {
   );
   field_bundle_settings('node', 'publication', $publication_settings);
 }
-

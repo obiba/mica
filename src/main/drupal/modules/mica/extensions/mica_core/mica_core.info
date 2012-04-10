@@ -41,7 +41,5 @@ features[variable][] = "file_private_path"
 features[variable][] = "file_public_path"
 
 files[] = includes/exception.inc
-files[] = includes/feeds/FeedsUniqueNodeProcessor.inc
-files[] = includes/feeds/FeedsMultiValueCSVParser.inc
 files[] = includes/feeds/FeedsRestFetcher.inc
 files[] = mica_core.search.utils.inc

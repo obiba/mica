@@ -5,6 +5,14 @@
  * Install, update and uninstall functions for the Mica Field Description module.
  */
 
+
+/**
+ * Implements hook_install().
+ */
+function mica_field_description_install() {
+  mica_core_configure_feeds_tamper('mica_field_description');
+}
+
 /**
  *
  * Updates the mapping of field_value_type. Values will be changed from-to:<br>
@@ -66,6 +74,7 @@ function mica_field_description_update_7120() {
 // 		  )
 // 		  ->execute();
 //   }
-  
+
+  mica_core_configure_feeds_tamper('mica_field_description');
 }
 

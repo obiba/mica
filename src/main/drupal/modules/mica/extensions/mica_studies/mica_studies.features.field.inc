@@ -7724,7 +7724,7 @@ function mica_studies_field_default_fields() {
         ),
         'left_area' => array(
           'label' => 'above',
-          'module' => 'mica',
+          'module' => 'mica_core',
           'settings' => array(),
           'type' => 'mica_pubmed_url',
           'weight' => '41',
