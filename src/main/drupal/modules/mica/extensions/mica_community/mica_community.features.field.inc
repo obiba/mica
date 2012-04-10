@@ -739,14 +739,14 @@ function mica_community_field_default_fields() {
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'mica',
+          'module' => 'mica_core',
           'settings' => array(),
           'type' => 'mica_pubmed_url',
           'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
-          'module' => 'mica',
+          'module' => 'mica_core',
           'settings' => array(),
           'type' => 'mica_pubmed_url',
           'weight' => '2',

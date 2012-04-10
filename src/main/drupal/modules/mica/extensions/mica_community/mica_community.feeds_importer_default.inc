@@ -32,44 +32,38 @@ function mica_community_feeds_importer_default() {
       ),
     ),
     'processor' => array(
-      'plugin_key' => 'FeedsUniqueNodeProcessor',
+      'plugin_key' => 'FeedsNodeProcessor',
       'config' => array(
         'content_type' => 'event',
         'expire' => '-1',
         'author' => 0,
-        'key_field' => 'title',
         'mappings' => array(
           0 => array(
             'source' => 'title',
             'target' => 'title',
-            'unique' => FALSE,
-          ),
-          1 => array(
-            'source' => 'title',
-            'target' => 'guid',
             'unique' => 1,
           ),
-          2 => array(
+          1 => array(
             'source' => 'body',
             'target' => 'body',
             'unique' => FALSE,
           ),
-          3 => array(
+          2 => array(
             'source' => 'field_event_date:start',
             'target' => 'field_event_date:start',
             'unique' => FALSE,
           ),
-          4 => array(
+          3 => array(
             'source' => 'field_event_date:end',
             'target' => 'field_event_date:end',
             'unique' => FALSE,
           ),
-          5 => array(
+          4 => array(
             'source' => 'field_event_link:title',
             'target' => 'field_event_link:title',
             'unique' => FALSE,
           ),
-          6 => array(
+          5 => array(
             'source' => 'field_event_link:url',
             'target' => 'field_event_link:url',
             'unique' => FALSE,
@@ -103,58 +97,50 @@ function mica_community_feeds_importer_default() {
       ),
     ),
     'parser' => array(
-      'plugin_key' => 'FeedsMultiValueCSVParser',
+      'plugin_key' => 'FeedsCSVParser',
       'config' => array(
         'delimiter' => ';',
         'no_headers' => 0,
-        'multivalue_separator' => '|',
-        'multivalue_trim_spaces' => 1,
       ),
     ),
     'processor' => array(
-      'plugin_key' => 'FeedsUniqueNodeProcessor',
+      'plugin_key' => 'FeedsNodeProcessor',
       'config' => array(
         'content_type' => 'publication',
         'expire' => '-1',
         'author' => 0,
-        'key_field' => 'title',
         'mappings' => array(
           0 => array(
             'source' => 'title',
             'target' => 'title',
-            'unique' => FALSE,
-          ),
-          1 => array(
-            'source' => 'title',
-            'target' => 'guid',
             'unique' => 1,
           ),
-          2 => array(
+          1 => array(
             'source' => 'field_publication_pmid',
             'target' => 'field_publication_pmid',
             'unique' => FALSE,
           ),
-          3 => array(
+          2 => array(
             'source' => 'field_publication_url:url',
             'target' => 'field_publication_url:url',
-            'unique' => 0,
+            'unique' => FALSE,
           ),
-          4 => array(
+          3 => array(
             'source' => 'field_abstract',
             'target' => 'field_abstract',
             'unique' => FALSE,
           ),
-          5 => array(
+          4 => array(
             'source' => 'field_authors',
             'target' => 'field_authors',
             'unique' => FALSE,
           ),
-          6 => array(
+          5 => array(
             'source' => 'field_publication_url:title',
             'target' => 'field_publication_url:title',
             'unique' => FALSE,
           ),
-          7 => array(
+          6 => array(
             'source' => 'field_reference',
             'target' => 'field_publication_reference',
             'unique' => FALSE,
