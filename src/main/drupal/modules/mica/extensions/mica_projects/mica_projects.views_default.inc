@@ -249,26 +249,6 @@ function mica_projects_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
-  $translatables['project_studies'] = array(
-    t('Master'),
-    t('Studies'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('field_studies'),
-    t('Name'),
-    t('Please specify what other design'),
-    t('([field_design_other_sp])'),
-    t('Study design'),
-    t('[field_design] [field_design_other_sp]'),
-    t('Target number of participants'),
-    t('Country of residence'),
-    t('All'),
-    t('Block'),
-  );
   $export['project_studies'] = $view;
 
   $view = new view;
@@ -406,26 +386,6 @@ function mica_projects_views_default_views() {
   $handler->display->display_options['menu']['title'] = 'Projects';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
-  $translatables['projects'] = array(
-    t('Master'),
-    t('Projects'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('header_projects'),
-    t('List of all projects of the consortium'),
-    t('empty_projects'),
-    t('No project found.'),
-    t('Name'),
-    t('Description'),
-    t('Page'),
-  );
   $export['projects'] = $view;
 
   $view = new view;
@@ -616,27 +576,6 @@ function mica_projects_views_default_views() {
   $handler->display->display_options['menu']['title'] = 'Studies';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
-  $translatables['teleconferences'] = array(
-    t('Master'),
-    t('Teleconferences'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('empty_teleconferences'),
-    t('No teleconference found.'),
-    t('Date'),
-    t('Title'),
-    t('Description'),
-    t('Instructions'),
-    t('All'),
-    t('Page'),
-  );
   $export['teleconferences'] = $view;
 
   return $export;

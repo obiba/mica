@@ -25,12 +25,10 @@ function mica_projects_feeds_importer_default() {
       ),
     ),
     'parser' => array(
-      'plugin_key' => 'FeedsMultiValueCSVParser',
+      'plugin_key' => 'FeedsCSVParser',
       'config' => array(
         'delimiter' => ';',
         'no_headers' => 0,
-        'multivalue_separator' => '|',
-        'multivalue_trim_spaces' => 1,
       ),
     ),
     'processor' => array(
@@ -46,28 +44,18 @@ function mica_projects_feeds_importer_default() {
             'unique' => FALSE,
           ),
           1 => array(
-            'source' => 'title',
-            'target' => 'guid',
-            'unique' => 1,
-          ),
-          2 => array(
             'source' => 'body',
             'target' => 'body',
             'unique' => FALSE,
           ),
-          3 => array(
+          2 => array(
             'source' => 'field_studies',
             'target' => 'field_studies:title',
             'unique' => FALSE,
           ),
-          4 => array(
+          3 => array(
             'source' => 'field_files',
             'target' => 'field_files',
-            'unique' => FALSE,
-          ),
-          5 => array(
-            'source' => 'field_dataschema_ref',
-            'target' => 'field_dataschema_ref:title',
             'unique' => FALSE,
           ),
         ),
@@ -99,12 +87,10 @@ function mica_projects_feeds_importer_default() {
       ),
     ),
     'parser' => array(
-      'plugin_key' => 'FeedsMultiValueCSVParser',
+      'plugin_key' => 'FeedsCSVParser',
       'config' => array(
         'delimiter' => ';',
         'no_headers' => 0,
-        'multivalue_separator' => '|',
-        'multivalue_trim_spaces' => 1,
       ),
     ),
     'processor' => array(

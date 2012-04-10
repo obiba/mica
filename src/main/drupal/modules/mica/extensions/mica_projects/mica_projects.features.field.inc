@@ -857,11 +857,11 @@ function mica_projects_field_default_fields() {
           'page' => 0,
           'pairing' => 0,
           'panel' => 0,
-          'variable' => 0,
           'project' => 'project',
           'publication' => 0,
           'study' => 0,
           'teleconference' => 0,
+          'variable' => 0,
         ),
         'view' => array(
           'args' => array(),
