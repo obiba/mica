@@ -265,7 +265,7 @@ function mica_core_feeds_plugins() {
       'parent' => 'FeedsNodeProcessor',
       'class' => 'FeedsUniqueNodeProcessor',
       'file' => 'FeedsUniqueNodeProcessor.inc',
-      'path' => drupal_get_path('module', 'mica_core') . '/includes/feeds/processors',
+      'path' => drupal_get_path('module', 'mica_core') . '/includes/feeds'
     ),
   );
   $info['FeedsMultiValueCSVParser'] = array(
@@ -275,7 +275,7 @@ function mica_core_feeds_plugins() {
       'parent' => 'FeedsCSVParser',
       'class' => 'FeedsMultiValueCSVParser',
       'file' => 'FeedsMultiValueCSVParser.inc',
-      'path' => drupal_get_path('module', 'mica_core') . '/includes/feeds/parsers',
+      'path' => drupal_get_path('module', 'mica_core') . '/includes/feeds',
     ),
   );
   $info['FeedsRestFetcher'] = array(
@@ -285,7 +285,7 @@ function mica_core_feeds_plugins() {
       'parent' => 'FeedsFetcher',
       'class' => 'FeedsRestFetcher',
       'file' => 'FeedsRestFetcher.inc',
-      'path' => drupal_get_path('module', 'mica_core') . '/includes/feeds/fetchers',
+      'path' => drupal_get_path('module', 'mica_core') . '/includes/feeds',
     ),
   );
   return $info;
