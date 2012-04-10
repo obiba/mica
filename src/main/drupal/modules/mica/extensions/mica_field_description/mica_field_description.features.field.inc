@@ -714,6 +714,7 @@ function mica_field_description_field_default_fields() {
         'allowed_values' => array(
           'boolean' => 'Boolean',
           'date' => 'Date',
+          'date_time' => 'Date time',
           'decimal' => 'Decimal',
           'integer' => 'Integer',
           'text' => 'Text',

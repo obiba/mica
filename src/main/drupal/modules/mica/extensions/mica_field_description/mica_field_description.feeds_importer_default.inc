@@ -25,68 +25,60 @@ function mica_field_description_feeds_importer_default() {
       ),
     ),
     'parser' => array(
-      'plugin_key' => 'FeedsMultiValueCSVParser',
+      'plugin_key' => 'FeedsCSVParser',
       'config' => array(
         'delimiter' => ';',
         'no_headers' => 0,
-        'multivalue_separator' => '|',
-        'multivalue_trim_spaces' => 1,
       ),
     ),
     'processor' => array(
-      'plugin_key' => 'FeedsUniqueNodeProcessor',
+      'plugin_key' => 'FeedsNodeProcessor',
       'config' => array(
         'content_type' => 'field_description',
         'expire' => '-1',
         'author' => 0,
-        'key_field' => 'title',
         'mappings' => array(
           0 => array(
             'source' => 'title',
             'target' => 'title',
-            'unique' => FALSE,
-          ),
-          1 => array(
-            'source' => 'title',
-            'target' => 'guid',
             'unique' => 1,
           ),
-          2 => array(
+          1 => array(
             'source' => 'field_bundle',
             'target' => 'field_bundle',
             'unique' => FALSE,
           ),
-          3 => array(
+          2 => array(
             'source' => 'field_value_type',
             'target' => 'field_value_type',
             'unique' => FALSE,
           ),
-          4 => array(
+          3 => array(
             'source' => 'field_original_field_name',
             'target' => 'field_original_field_name',
             'unique' => FALSE,
           ),
-          5 => array(
+          4 => array(
             'source' => 'body',
             'target' => 'body',
             'unique' => FALSE,
           ),
-          6 => array(
+          5 => array(
             'source' => 'field_original_field_label',
             'target' => 'field_original_field_label',
             'unique' => FALSE,
           ),
-          7 => array(
+          6 => array(
             'source' => 'field_bundle_label',
             'target' => 'field_bundle_label',
             'unique' => FALSE,
           ),
-          8 => array(
+          7 => array(
             'source' => 'field_categories',
             'target' => 'field_categories',
             'unique' => FALSE,
           ),
-          9 => array(
+          8 => array(
             'source' => 'field_repeatable',
             'target' => 'field_repeatable',
             'unique' => FALSE,
