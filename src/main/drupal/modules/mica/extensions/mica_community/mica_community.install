@@ -18,7 +18,7 @@ function mica_community_install() {
 * Updates the mica_community fields
 */
 function mica_community_update_7120() {
-  features_revert(array('mica_community' => array('field')));
+  features_revert(array('mica_community' => array('field', 'menu_links')));
   mica_core_configure_feeds_tamper('mica_community');
 }
 

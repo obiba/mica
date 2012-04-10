@@ -12,11 +12,102 @@
 */
 function mica_core_update_7120(&$sandbox) {
 
-  db_update('registry')
-  ->fields(array(
-  	'module' => 'mica_relation',
-  	  		'filename' => 'sites/all/modules/mica/extensions/mica_relation/includes/mica_relation.entity.inc'
-  	))
-  	->condition('filename', 'sites/all/modules/mica/includes/mica_relation.entity.inc')
-  	->execute();
+  // install mica_relation
+  db_drop_table('mica_relation');
+  
+  _mica_core_rebuild_registry();
+}
+
+/**
+ * Rebuild registry tables
+ */
+function _mica_core_rebuild_registry(){
+  cache_clear_all('lookup_cache', 'cache_bootstrap');
+  cache_clear_all('variables', 'cache_bootstrap');
+  cache_clear_all('module_implements', 'cache_bootstrap');
+  
+  registry_rebuild(); // At lower level
+//   ini_set('memory_limit', -1);
+//   chdir(DRUPAL_ROOT);
+  
+//   global $_SERVER;
+//   $_SERVER['REMOTE_ADDR'] = 'nothing';
+  
+//   global $include_dir;
+//   $include_dir = DRUPAL_ROOT . '/includes';
+//   $module_dir = DRUPAL_ROOT . '/modules';
+//     Use core directory if it exists.
+//   if (file_exists(DRUPAL_ROOT . '/core/includes/bootstrap.inc')) {
+//   	$include_dir = DRUPAL_ROOT . '/core/includes';
+//   	$module_dir = DRUPAL_ROOT . '/core/modules';
+//   }
+  
+//   $includes = array(
+//   $include_dir . '/bootstrap.inc',
+//   $include_dir . '/common.inc',
+//   $module_dir . '/entity/entity.module',
+//   $module_dir . '/entity/entity.controller.inc',
+//   $module_dir . '/system/system.module',
+//   $include_dir . '/database/query.inc',
+//   $include_dir . '/database/select.inc',
+//   $module_dir . '/entity/entity.module',
+//   $include_dir . '/registry.inc',
+//   $include_dir . '/module.inc',
+//   );
+  
+//   foreach ($includes as $include) {
+//   	if (file_exists($include)) {
+//   		require_once($include);
+//   	}
+//   }
+  
+//   drupal_bootstrap(DRUPAL_BOOTSTRAP_SESSION);
+//   registry_rebuild_rebuild();
+}
+/**
+* Before calling this we need to be bootstrapped to DRUPAL_BOOTSTRAP_DATABASE.
+*/
+function registry_rebuild_rebuild() {
+  // This section is not functionally important. It's just getting the
+  // registry_parsed_files() so that it can report the change.
+	$connection_info = Database::getConnectionInfo();
+  $driver = $connection_info['default']['driver'];
+  global $include_dir;
+  require_once $include_dir . '/database/' . $driver . '/query.inc';
+
+  $parsed_before = registry_get_parsed_files();
+
+  cache_clear_all('lookup_cache', 'cache_bootstrap');
+  cache_clear_all('variables', 'cache_bootstrap');
+  cache_clear_all('module_implements', 'cache_bootstrap');
+
+  registry_rebuild(); // At lower level
+
+  drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
+  db_query('TRUNCATE {cache}');
+  
+  registry_rebuild();
+  $parsed_after = registry_get_parsed_files();
+
+//   Remove files which don't exist anymore.
+  $filenames = array();
+  foreach ($parsed_after as $filename => $file) {
+    if (!file_exists($filename)) {
+      $filenames[] = $filename;
+    }
+  }
+
+  if (!empty($filenames)) {
+    db_delete('registry_file')
+      ->condition('filename', $filenames)
+      ->execute();
+    db_delete('registry')
+      ->condition('filename', $filenames)
+      ->execute();
+  }
+
+//   $parsed_after = registry_get_parsed_files();
+
+  drupal_flush_all_caches();
+  debug('Rebuild complete');
 }

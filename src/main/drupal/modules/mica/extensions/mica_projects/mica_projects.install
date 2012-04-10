@@ -23,6 +23,16 @@ function mica_projects_update_7120() {
 }
 
 /**
+*
+* Update to 7120 depends on the update of mica_core
+*/
+function mica_projects_update_dependencies(){
+	$dependencies['mica_projects'][7120] = array('mica_core' => 7120);
+	
+	return $dependencies;
+}
+
+/**
  * Manually configure field_bundle_settings variable because it is exported via strongarms
  * so it cannot be configured in severals modules
  */

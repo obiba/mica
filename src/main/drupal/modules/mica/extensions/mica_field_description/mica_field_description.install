@@ -51,30 +51,21 @@ function mica_field_description_update_7120() {
     ->condition('field_value_type_value', 'DECIMAL')
     ->execute();
   
-//   db_drop_table('mica_relation');
-  
 //   Set the column field_value_type_value type to BINARY so the string comparions will be case sensitive, allowing list.module._list_values_in_use to return an empty array
   $result = db_query('ALTER TABLE {field_data_field_value_type} MODIFY field_value_type_value varchar(255) BINARY DEFAULT NULL');
-
   features_revert(array('mica_field_description' => array('field', 'node', 'user_permission')));
-  
   $result = db_query('ALTER TABLE {field_data_field_value_type} MODIFY field_value_type_value varchar(255) DEFAULT NULL');
   
-//   foreach($relations as $relation){
-//     db_update('mica_relation')
-// 		  ->fields(array(
-//   		  	'parent_bundle' => $relation['parent_bundle'], 
-//   		  	'child_bundle' => $relation['child_bundle'], 
-//   		  	'label' => $relation['label'], 
-//   		  	'enabled' => $relation['enabled'], 
-//   		  	'options' => $relation['options'], 
-//   		  	'status' => $relation['status'], 
-//   		  	'module' => $relation['module'], 
-// 		  	)
-// 		  )
-// 		  ->execute();
-//   }
-
   mica_core_configure_feeds_tamper('mica_field_description');
+}
+
+/**
+*
+* Update to 7120 depends on the update of mica_core
+*/
+function mica_field_description_update_dependencies(){
+	$dependencies['mica_field_description'][7120] = array('mica_core' => 7120);
+	
+	return $dependencies;
 }
 
