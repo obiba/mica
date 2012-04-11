@@ -418,9 +418,10 @@ function mica_datasets_field_default_fields() {
         ),
         'right_area' => array(
           'label' => 'above',
+          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'node_reference_default',
+          'weight' => '4',
         ),
         'summary_area' => array(
           'label' => 'above',
