@@ -14,22 +14,20 @@ function mica_projects_install() {
 }
 
 /**
-*
-* Updates the mica_projects feature fields
-*/
+ * Updates the mica_projects feature fields
+ */
 function mica_projects_update_7120() {
-	features_revert(array('mica_projects' => array('field')));
+  features_revert(array('mica_projects' => array('field')));
   mica_core_configure_feeds_tamper('mica_projects');
 }
 
 /**
-*
-* Update to 7120 depends on the update of mica_core
-*/
-function mica_projects_update_dependencies(){
-	$dependencies['mica_projects'][7120] = array('mica_core' => 7120);
-	
-	return $dependencies;
+ * Update to 7120 depends on the update of mica_core
+ */
+function mica_projects_update_dependencies() {
+  $dependencies = array();
+  $dependencies['mica_projects'][7120] = array('mica_core' => 7120);
+  return $dependencies;
 }
 
 /**
