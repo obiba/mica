@@ -65,3 +65,20 @@ function mica_relation_schema() {
   );
   return $schema;
 }
+
+function mica_relation_install(){
+  $export = variable_get('mica_relation_export');
+  if (isset($export)){
+    foreach(unserialize($export) as $relation){
+      db_insert('mica_relation')
+        ->fields(array(
+        	'id' => $relation->id,
+					'label' => $relation->label,
+          'parent_bundle' => $relation->parent_bundle,
+          'child_bundle' => $relation->child_bundle,
+          'options' => $relation->options,
+          'enabled' =>  $relation->enabled,
+        ))->execute();
+    }
+  }
+}
