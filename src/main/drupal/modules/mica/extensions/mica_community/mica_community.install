@@ -14,9 +14,8 @@ function mica_community_install() {
 }
 
 /**
-*
-* Updates the mica_community fields
-*/
+ * Updates the mica_community fields
+ */
 function mica_community_update_7120() {
   features_revert(array('mica_community' => array('field', 'menu_links')));
   mica_core_configure_feeds_tamper('mica_community');
@@ -32,9 +31,7 @@ function _mica_community_configure_field_bundle_settings() {
       'teaser' => array('custom_settings' => true),
     ),
     'extra_fields' => array(
-      'form' => array(
-        'title' => array('weight' => '0')
-      ),
+      'form' => array('title' => array('weight' => '0')),
       'display' => array(),
     ),
   );

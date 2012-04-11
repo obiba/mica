@@ -368,6 +368,7 @@ function _mica_datasets_migrate_participant_variable($participant_variables) {
     $variable = entity_property_values_create_entity('node', $infos);
     foreach ($wrapper->field_categories->value() as $index => $category) {
       $variable->field_variable_categories[$index]->name = $category;
+      $variable->field_variable_categories[$index]->label = $category;
     }
     $variable->save();
   }
