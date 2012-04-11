@@ -2751,14 +2751,14 @@ function mica_studies_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_documents';
-  $strongarm->value = 'main-menu:509';
+  $strongarm->value = 'main-menu:496';
   $export['menu_parent_documents'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_study';
-  $strongarm->value = 'main-menu:499';
+  $strongarm->value = 'main-menu:495';
   $export['menu_parent_study'] = $strongarm;
 
   $strongarm = new stdClass;
