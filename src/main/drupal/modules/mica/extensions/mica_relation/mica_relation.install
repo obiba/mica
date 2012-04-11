@@ -80,5 +80,6 @@ function mica_relation_install(){
           'enabled' =>  $relation->enabled,
         ))->execute();
     }
+    variable_del('mica_relation_export');
   }
 }
