@@ -63,6 +63,9 @@ projects[collapsiblock][download][url] = http://git.drupal.org/project/collapsib
 projects[collapsiblock][download][revision] = 36f42804ee1d4072d8cbb81c25b663bd4cdcc447
 projects[collapsiblock][patch][1475244] = http://drupal.org/files/api-function-and-constants-patch1301454-patch1429956.patch
 
+projects[cnr][version] = 4.22
+projects[cnr][type] = module
+
 projects[content_access][version] = 1.2-beta1
 projects[content_access][type] = module
 
