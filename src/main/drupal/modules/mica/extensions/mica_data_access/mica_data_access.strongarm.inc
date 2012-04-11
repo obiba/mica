@@ -144,14 +144,14 @@ function mica_data_access_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_data_access_request';
-  $strongarm->value = 'main-menu:504';
+  $strongarm->value = 'main-menu:508';
   $export['menu_parent_data_access_request'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_data_access_review';
-  $strongarm->value = 'main-menu:496';
+  $strongarm->value = 'main-menu:492';
   $export['menu_parent_data_access_review'] = $strongarm;
 
   $strongarm = new stdClass;
