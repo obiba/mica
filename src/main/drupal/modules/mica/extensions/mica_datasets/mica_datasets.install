@@ -216,7 +216,9 @@ function mica_datasets_update_7120(&$sandbox) {
   features_revert(array('mica_datasets' => array('field', 'user_permission', 'variable', 'menu_links')));
 
   _mica_datasets_migrate_participant_variable($variables);
-
+  
+  _mica_datasets_disable_participant_variable_index();
+  
   _mica_datasets_configure_field_bundle_settings();
 
   module_load_include('inc', 'mica_datasets', 'mica_datasets.facet_blocks');
@@ -372,4 +374,11 @@ function _mica_datasets_migrate_participant_variable($participant_variables) {
   node_type_cache_reset();
   node_types_rebuild();
   variable_del('node_preview_participant_variable');
+}
+
+/**
+ * Disable the Participant Variable index if exists
+ */
+function _mica_datasets_disable_participant_variable_index(){
+  search_api_index_delete('participant_variable_index');
 }
