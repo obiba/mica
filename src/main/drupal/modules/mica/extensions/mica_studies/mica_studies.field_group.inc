@@ -5978,7 +5978,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tabs',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'group_access',
       1 => 'group_authorization',

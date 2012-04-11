@@ -5801,7 +5801,7 @@ function mica_studies_field_default_fields() {
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'summary_banner_area' => array(
           'label' => 'above',
@@ -6434,7 +6434,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'summary_banner_area' => array(
           'label' => 'above',
