@@ -375,11 +375,13 @@ function _mica_datasets_migrate_participant_variable($participant_variables) {
 
   // manual node delete instead of node_delete_multiple() to avoid calls the node-specific callbacks
   $nids = array_keys($participant_variables);
-  db_delete('node')->condition('nid', $nids, 'IN')->execute();
-  db_delete('node_revision')->condition('nid', $nids, 'IN')->execute();
-  db_delete('history')->condition('nid', $nids, 'IN')->execute();
-  db_delete('node_access')->condition('nid', $nids, 'IN')->execute();
-
+  if (!empty($nids)){
+    db_delete('node')->condition('nid', $nids, 'IN')->execute();
+    db_delete('node_revision')->condition('nid', $nids, 'IN')->execute();
+    db_delete('history')->condition('nid', $nids, 'IN')->execute();
+    db_delete('node_access')->condition('nid', $nids, 'IN')->execute();
+  }
+  
   search_api_index_delete('participant_variable_index');
 
   node_type_delete('participant_variable');
