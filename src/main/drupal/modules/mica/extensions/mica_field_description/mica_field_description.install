@@ -19,7 +19,7 @@ function mica_field_description_install() {
  * 'INTEGER' = 'integer'<br>
  * 'DATE' = 'date'<br>
  * 'DECIMAL' = 'decimal'<br>
- * 'BOOELAN' = 'boolean'<br>
+ * 'BOOLEAN' = 'boolean'<br>
  * 'TEXT' = 'text'<br>
  */
 function mica_field_description_update_7120() {
