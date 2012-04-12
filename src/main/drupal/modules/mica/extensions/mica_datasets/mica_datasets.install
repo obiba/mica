@@ -283,14 +283,16 @@ function _mica_datasets_change_dataset_studies_column() {
     db_drop_field('field_data_field_dataset_studies', 'field_dataset_studies_arguments');
     db_drop_index('field_data_field_dataset_studies', 'field_dataset_studies_view_id');
 
-    db_add_field('field_data_field_dataset_studies', 'field_dataset_studies_nid',
-      array(
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'default' => NULL,
-      )
-    );
-    db_add_index('field_data_field_dataset_studies', 'field_dataset_studies_nid', array('field_dataset_studies_nid'));
+    if (!db_field_exists('field_data_field_dataset_studies', 'field_dataset_studies_nid')){
+      db_add_field('field_data_field_dataset_studies', 'field_dataset_studies_nid',
+        array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'default' => NULL,
+        )
+      );
+      db_add_index('field_data_field_dataset_studies', 'field_dataset_studies_nid', array('field_dataset_studies_nid'));
+    }
 
     $result = db_select('field_data_mica_dataset', 'f')
       ->fields('f', array('entity_id'))
@@ -325,15 +327,17 @@ function _mica_datasets_change_dataset_variables_column() {
     db_drop_field('field_data_field_dataset_variables', 'field_dataset_variables_arguments');
     db_drop_index('field_data_field_dataset_variables', 'field_dataset_variables_view_id');
 
-    db_add_field('field_data_field_dataset_variables', 'field_dataset_variables_nid',
-      array(
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'default' => NULL,
-      )
-    );
-    db_add_index('field_data_field_dataset_variables', 'field_dataset_variables_nid', array('field_dataset_variables_nid'));
-
+    if (!db_field_exists('field_data_field_dataset_variables', 'field_dataset_variables_nid')){
+      db_add_field('field_data_field_dataset_variables', 'field_dataset_variables_nid',
+        array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'default' => NULL,
+        )
+      );
+      db_add_index('field_data_field_dataset_variables', 'field_dataset_variables_nid', array('field_dataset_variables_nid'));
+    }
+    
     $result = db_select('field_data_field_dataset', 'f')
       ->fields('f', array('entity_id'))
       ->fields('f', array('field_dataset_nid'))
