@@ -26,4 +26,4 @@ Description:
      Disable the 'Put site into maintenance mode' checkbox and save the configuration.
  .
  Mica files and database were backuped before update to:
- /var/lib/mica-installer/backups/mica-1.0-b13850
+ /var/lib/mica-installer/backups

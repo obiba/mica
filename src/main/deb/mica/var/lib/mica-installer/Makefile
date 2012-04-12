@@ -89,6 +89,7 @@ drupal-doc:
 # Mica prepare update
 #
 include mica-1.1-update.mk
+include mica-1.2-update.mk
 
 mica-prepare-update: drush mica-maintenance-mode-on mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install mica-restore-user-data mica-clear-tmp-update mica-echo-update 
 

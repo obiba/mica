@@ -196,8 +196,8 @@ function mica_datasets_requirements($phase) {
 
 /**
  * Import taxonomy dimensions<br>
- * Update field: dataset_studies<br>
- * Update field: dataset_variables<br>
+ * Update dataset_studies field type from view_reference to node_reference<br>
+ * Update dataset_variables field type from view_reference to node_reference<br>
  * Rename content type 'Participant Variable' to 'Variable'
  */
 function mica_datasets_update_7120(&$sandbox) {
@@ -375,7 +375,7 @@ function _mica_datasets_migrate_participant_variable($participant_variables) {
 
   // manual node delete instead of node_delete_multiple() to avoid calls the node-specific callbacks
   $nids = array_keys($participant_variables);
-  if (!empty($nids)){
+  if (!empty($nids)) {
     db_delete('node')->condition('nid', $nids, 'IN')->execute();
     db_delete('node_revision')->condition('nid', $nids, 'IN')->execute();
     db_delete('history')->condition('nid', $nids, 'IN')->execute();
