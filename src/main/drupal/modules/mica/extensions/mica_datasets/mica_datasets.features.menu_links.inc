@@ -50,12 +50,12 @@ function mica_datasets_menu_default_menu_links() {
     'weight' => '-52',
     'parent_path' => '<firstchild>',
   );
-  // Exported menu link: main-menu:multiple-studies-datasets
-  $menu_links['main-menu:multiple-studies-datasets'] = array(
+  // Exported menu link: main-menu:multiple-study-datasets
+  $menu_links['main-menu:multiple-study-datasets'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'multiple-studies-datasets',
-    'router_path' => 'multiple-studies-datasets',
-    'link_title' => 'Multiple Studies',
+    'link_path' => 'multiple-study-datasets',
+    'router_path' => 'multiple-study-datasets',
+    'link_title' => 'Multiple-study Datasets',
     'options' => array(
       'attributes' => array(
         'title' => '',
@@ -91,8 +91,8 @@ function mica_datasets_menu_default_menu_links() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Datasets / Data Dictionary');
-  t('Multiple Studies');
-  t('Single Study');
+  t('Multiple-study Datasets');
+  t('Single-study Datasets');
   t('Variables Search');
 
 

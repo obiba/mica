@@ -371,14 +371,14 @@ function mica_datasets_views_default_views() {
   $view->description = '';
   $view->tag = 'dataset';
   $view->base_table = 'search_api_index_dataset_index';
-  $view->human_name = 'Multiple Studies Datasets';
+  $view->human_name = 'Multiple-study Datasets';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Multiple Studies Datasets';
+  $handler->display->display_options['title'] = 'Multiple-study Datasets';
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -492,12 +492,19 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['filters']['search_api_aggregation_2']['field'] = 'search_api_aggregation_2';
   $handler->display->display_options['filters']['search_api_aggregation_2']['operator'] = '>';
   $handler->display->display_options['filters']['search_api_aggregation_2']['value'] = '1';
+  /* Filter criterion: Indexed Node: Status */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'search_api_index_dataset_index';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'multiple-studies-datasets';
+  $handler->display->display_options['path'] = 'multiple-study-datasets';
   $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Multiple Studies Datasets';
+  $handler->display->display_options['menu']['title'] = 'Multiple-study Datasets';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
@@ -508,14 +515,14 @@ function mica_datasets_views_default_views() {
   $view->description = '';
   $view->tag = 'dataset';
   $view->base_table = 'search_api_index_dataset_index';
-  $view->human_name = 'Single Study Datasets';
+  $view->human_name = 'Single-study Datasets';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Single Study Datasets';
+  $handler->display->display_options['title'] = 'Single-study Datasets';
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -653,12 +660,19 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['filters']['search_api_aggregation_2']['field'] = 'search_api_aggregation_2';
   $handler->display->display_options['filters']['search_api_aggregation_2']['operator'] = '<=';
   $handler->display->display_options['filters']['search_api_aggregation_2']['value'] = '1';
+  /* Filter criterion: Indexed Node: Status */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'search_api_index_dataset_index';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = array(
+    1 => '1',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'single-study-datasets';
   $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Single Study Datasets';
+  $handler->display->display_options['menu']['title'] = 'Single-study Datasets';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
