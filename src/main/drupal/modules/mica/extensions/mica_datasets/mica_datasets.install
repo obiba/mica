@@ -237,6 +237,34 @@ function mica_datasets_update_7120(&$sandbox) {
 }
 
 /**
+* Add fields for dataset_studies and dataset_variables to the field_revision 
+*/
+function mica_datasets_update_7121(&$sandbox) {
+  
+  db_drop_field('field_revision_field_dataset_studies', 'field_dataset_studies_view_id');
+  db_drop_field('field_revision_field_dataset_studies', 'field_dataset_studies_arguments');
+  db_drop_index('field_revision_field_dataset_studies', 'field_dataset_studies_view_id');
+  db_add_field('field_revision_field_dataset_studies', 'field_dataset_studies_nid',
+    array(
+      'type' => 'int',
+      'unsigned' => TRUE,
+      'default' => NULL,
+    )
+  );
+  
+  db_drop_field('field_revision_field_dataset_variables', 'field_dataset_variables_view_id');
+  db_drop_field('field_revision_field_dataset_variables', 'field_dataset_variables_arguments');
+  db_drop_index('field_revision_field_dataset_variables', 'field_dataset_variables_view_id');
+  db_add_field('field_revision_field_dataset_variables', 'field_dataset_variables_nid',
+    array(
+      'type' => 'int',
+      'unsigned' => TRUE,
+      'default' => NULL,
+    )
+  );
+  
+}
+/**
  *
  * Update to 7120 depends on the update of mica_core
  */
@@ -280,20 +308,10 @@ function _mica_datasets_change_dataset_studies_column() {
       ->execute();
 
     db_drop_field('field_data_field_dataset_studies', 'field_dataset_studies_view_id');
-    db_drop_field('field_revision_field_dataset_studies', 'field_dataset_studies_view_id');
     db_drop_field('field_data_field_dataset_studies', 'field_dataset_studies_arguments');
-    db_drop_field('field_revision_field_dataset_studies', 'field_dataset_studies_arguments');
     db_drop_index('field_data_field_dataset_studies', 'field_dataset_studies_view_id');
-    db_drop_index('field_revision_field_dataset_studies', 'field_dataset_studies_view_id');
 
     db_add_field('field_data_field_dataset_studies', 'field_dataset_studies_nid',
-      array(
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'default' => NULL,
-      )
-    );
-    db_add_field('field_revision_field_dataset_studies', 'field_dataset_studies_nid',
       array(
         'type' => 'int',
         'unsigned' => TRUE,
@@ -333,20 +351,10 @@ function _mica_datasets_change_dataset_variables_column() {
       ->execute();
 
     db_drop_field('field_data_field_dataset_variables', 'field_dataset_variables_view_id');
-    db_drop_field('field_revision_field_dataset_variables', 'field_dataset_variables_view_id');
     db_drop_field('field_data_field_dataset_variables', 'field_dataset_variables_arguments');
-    db_drop_field('field_revision_field_dataset_variables', 'field_dataset_variables_arguments');
     db_drop_index('field_data_field_dataset_variables', 'field_dataset_variables_view_id');
-    db_drop_index('field_revision_field_dataset_variables', 'field_dataset_variables_view_id');
 
     db_add_field('field_data_field_dataset_variables', 'field_dataset_variables_nid',
-      array(
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'default' => NULL,
-      )
-    );
-    db_add_field('field_revision_field_dataset_variables', 'field_dataset_variables_nid',
       array(
         'type' => 'int',
         'unsigned' => TRUE,
