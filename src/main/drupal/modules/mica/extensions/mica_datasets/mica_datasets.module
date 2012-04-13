@@ -280,7 +280,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
   switch($root_path) {
 
     case 'single-study-datasets':
-    case 'multiple-studies-datasets':
+    case 'multiple-study-datasets':
       if (node_access('create', 'dataset')) {
         $links['add-dataset'] = array(
           '#theme' => 'menu_local_action',
