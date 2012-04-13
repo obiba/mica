@@ -280,8 +280,11 @@ function _mica_datasets_change_dataset_studies_column() {
       ->execute();
 
     db_drop_field('field_data_field_dataset_studies', 'field_dataset_studies_view_id');
+    db_drop_field('field_revision_field_dataset_studies', 'field_dataset_studies_view_id');
     db_drop_field('field_data_field_dataset_studies', 'field_dataset_studies_arguments');
+    db_drop_field('field_revision_field_dataset_studies', 'field_dataset_studies_arguments');
     db_drop_index('field_data_field_dataset_studies', 'field_dataset_studies_view_id');
+    db_drop_index('field_revision_field_dataset_studies', 'field_dataset_studies_view_id');
 
     db_add_field('field_data_field_dataset_studies', 'field_dataset_studies_nid',
       array(
@@ -290,6 +293,14 @@ function _mica_datasets_change_dataset_studies_column() {
         'default' => NULL,
       )
     );
+    db_add_field('field_revision_field_dataset_studies', 'field_dataset_studies_nid',
+      array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'default' => NULL,
+      )
+    );
+    
     db_add_index('field_data_field_dataset_studies', 'field_dataset_studies_nid', array('field_dataset_studies_nid'));
 
     $result = db_select('field_data_mica_dataset', 'f')
@@ -322,8 +333,11 @@ function _mica_datasets_change_dataset_variables_column() {
       ->execute();
 
     db_drop_field('field_data_field_dataset_variables', 'field_dataset_variables_view_id');
+    db_drop_field('field_revision_field_dataset_variables', 'field_dataset_variables_view_id');
     db_drop_field('field_data_field_dataset_variables', 'field_dataset_variables_arguments');
+    db_drop_field('field_revision_field_dataset_variables', 'field_dataset_variables_arguments');
     db_drop_index('field_data_field_dataset_variables', 'field_dataset_variables_view_id');
+    db_drop_index('field_revision_field_dataset_variables', 'field_dataset_variables_view_id');
 
     db_add_field('field_data_field_dataset_variables', 'field_dataset_variables_nid',
       array(
@@ -332,6 +346,14 @@ function _mica_datasets_change_dataset_variables_column() {
         'default' => NULL,
       )
     );
+    db_add_field('field_revision_field_dataset_variables', 'field_dataset_variables_nid',
+      array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'default' => NULL,
+      )
+    );
+    
     db_add_index('field_data_field_dataset_variables', 'field_dataset_variables_nid', array('field_dataset_variables_nid'));
 
     $result = db_select('field_data_field_dataset', 'f')
@@ -355,6 +377,7 @@ function _mica_datasets_migrate_participant_variable($participant_variables) {
 
   foreach ($participant_variables as $nid => $participant_variable) {
     $wrapper = entity_metadata_wrapper('node', $participant_variable);
+    $repeatable = $wrapper->field_repeatable->value());
     $infos = array(
       'type' => 'variable',
       'language' => LANGUAGE_NONE,
@@ -362,7 +385,7 @@ function _mica_datasets_migrate_participant_variable($participant_variables) {
       'body' => $wrapper->body->value(),
       'field_label' => $wrapper->field_label->value(),
       'field_value_type' => $wrapper->field_value_type->value(),
-      'field_repeatable' => $wrapper->field_repeatable->value(),
+      'field_repeatable' => empty($repeatable) ? 0 : $wrapper->field_repeatable->value(),
       'field_dataset' => $wrapper->field_dataset->value(),
     );
     $variable = entity_property_values_create_entity('node', $infos);
