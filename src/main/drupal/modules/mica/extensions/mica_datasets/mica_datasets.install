@@ -377,7 +377,7 @@ function _mica_datasets_migrate_participant_variable($participant_variables) {
 
   foreach ($participant_variables as $nid => $participant_variable) {
     $wrapper = entity_metadata_wrapper('node', $participant_variable);
-    $repeatable = $wrapper->field_repeatable->value());
+    $repeatable = $wrapper->field_repeatable->value();
     $infos = array(
       'type' => 'variable',
       'language' => LANGUAGE_NONE,
