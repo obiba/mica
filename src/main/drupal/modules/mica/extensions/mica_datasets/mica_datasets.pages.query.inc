@@ -13,7 +13,7 @@ require_once('includes/query_entity.inc');
 
 function _mica_datasets_dataset_query_url($dataset_node, $query, $action = NULL) {
   $url = 'node/' . $dataset_node->nid . '/queries/' . $query->id;
-  if(isset($action)) {
+  if (isset($action)) {
     $url .= "/$action";
   }
   return $url;
@@ -21,7 +21,7 @@ function _mica_datasets_dataset_query_url($dataset_node, $query, $action = NULL)
 
 function _mica_datasets_dataset_query_link($dataset_node, $query, $action = NULL, $title = NULL) {
   $url = _mica_datasets_dataset_query_url($dataset_node, $query, $action);
-  if(isset($title) == false) {
+  if (!isset($title)) {
     $title = $query->name;
   }
   return l($title, $url);
@@ -29,7 +29,7 @@ function _mica_datasets_dataset_query_link($dataset_node, $query, $action = NULL
 
 function _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, $action = NULL) {
   $url = 'node/' . $dataset_node->nid . '/queries/' . $query->id . '/term/' . $term->id;
-  if(isset($action)) {
+  if (isset($action)) {
     $url .= "/$action";
   }
   return $url;
@@ -51,7 +51,7 @@ function mica_datasets_dataset_queries_page($dataset_node) {
 
   global $user;
 
-  $header = array (
+  $header = array(
     'name' => t('Name'),
     'description' => t('Description'),
     'actions' => t('Operations'),
@@ -89,8 +89,8 @@ function mica_datasets_dataset_queries_page($dataset_node) {
             '#href' => _mica_datasets_dataset_query_url($dataset_node, $query, 'edit'),
             '#attributes' => array('style' => array('margin-right: 10px;')),
           );
-           
-          $option['actions']['data'][] =  array(
+
+          $option['actions']['data'][] = array(
             '#markup' => ctools_modal_text_button(t('Delete'), 'mica/nojs/' . _mica_datasets_dataset_query_url($dataset_node, $query, 'delete'), t('Delete query'), 'ctools-modal-delete-style'),
           );
         }
@@ -115,7 +115,7 @@ function mica_datasets_dataset_query_edit_page($dataset_node, $query) {
     drupal_set_title(t('!title -- Add Query', array('!title' => $dataset_node->title)));
   }
 
-  return  drupal_get_form('mica_datasets_dataset_query_edit_form', $dataset_node, $query);
+  return drupal_get_form('mica_datasets_dataset_query_edit_form', $dataset_node, $query);
 }
 
 function mica_datasets_dataset_query_edit_form($form, &$form_state) {
@@ -124,29 +124,29 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
   $query = $form_state['build_info']['args'][1];
 
   $form = array(
-  	'#attached' => array('css' => array(drupal_get_path('module', 'mica_datasets') . '/includes/connection.css'),),
+    '#attached' => array('css' => array(drupal_get_path('module', 'mica_datasets') . '/includes/connection.css')),
   );
 
   $form['general']['name'] = array(
     '#type' => 'textfield',
-    '#title' => t('Name'), 
+    '#title' => t('Name'),
     '#default_value' => $query ? $query->name : '',
     '#size' => 60,
-    '#maxlength' => 128, 
+    '#maxlength' => 128,
     '#required' => TRUE,
   );
 
   $form['general']['description'] = array(
-    '#type' => 'textarea', 
-    '#title' => t('Description'), 
-    '#default_value' => $query ? $query->description : '', 
+    '#type' => 'textarea',
+    '#title' => t('Description'),
+    '#default_value' => $query ? $query->description : '',
     '#rows' => 3,
     '#required' => FALSE,
   );
 
   if ($user->uid != 0 && user_access('publish dataset query')) {
     $form['general']['publish'] = array(
-      '#type' => 'checkbox', 
+      '#type' => 'checkbox',
       '#title' => t('Published'),
       '#default_value' => $query ? $query->published : 0,
     );
@@ -154,7 +154,7 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
 
   // Add a query term by selecting a variable
   $variable_options = array();
-  foreach(mica_dataset_dataset_variables($dataset_node->nid) as $variable) {
+  foreach (mica_dataset_dataset_variables($dataset_node->nid) as $variable) {
     // todo cannot add a variable that is already in the process of being added
     $variable_options[$variable->nid] = $variable->title;
   }
@@ -165,9 +165,9 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
       '#type' => 'item',
       '#description' => t('Select the variables you want to query the dataset on.'),
     );
-    $form['add-term']['variables']= array(
-      '#type' => 'select', 
-      '#title' => t('Variables'), 
+    $form['add-term']['variables'] = array(
+      '#type' => 'select',
+      '#title' => t('Variables'),
       '#options' => $variable_options,
     );
     $form['add-term']['add-variable'] = array(
@@ -179,7 +179,7 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
   $data = array();
   if (array_key_exists('values', $form_state)) {
     if (array_key_exists('list', $form_state['values'])) {
-      foreach($form_state['values']['list'] as $datum) {
+      foreach ($form_state['values']['list'] as $datum) {
         $qt = mica_dataset_query_term_load($datum['id']);
         $data[] = array(
           'id' => $datum['id'],
@@ -224,26 +224,26 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
     );
     if ($datum['id'] == 0) {
       $form['list'][$key]['expression'] = array(
-        '#type' => 'hidden', 
+        '#type' => 'hidden',
         '#value' => $datum['title'],
       );
     }
     $form['list'][$key]['weight'] = array(
-      '#type' => 'weight', 
-      '#delta' => count($data), 
+      '#type' => 'weight',
+      '#delta' => count($data),
       '#default_value' => $datum['weight'],
     );
     $form['list'][$key]['id'] = array(
-      '#type' => 'hidden', 
+      '#type' => 'hidden',
       '#value' => $datum['id'],
     );
     $form['list'][$key]['vid'] = array(
-      '#type' => 'hidden', 
+      '#type' => 'hidden',
       '#value' => $datum['vid'],
     );
   }
 
-  $form['actions']= array(
+  $form['actions'] = array(
     '#type' => 'container',
     '#attributes' => array('class' => array('form-actions')),
   );
@@ -270,7 +270,7 @@ function mica_datasets_dataset_query_edit_form($form, &$form_state) {
 function theme_mica_datasets_dataset_query_edit_form($variables) {
   $form = $variables['form'];
   drupal_add_tabledrag('draggabledemo-sort', 'order', 'sibling', 'sort');
-  $header = array(t('Query Term'),t('Weight'));
+  $header = array(t('Query Term'), t('Weight'));
 
   $rows = array();
   foreach (element_children($form['list']) as $key) {
@@ -295,17 +295,17 @@ function theme_mica_datasets_dataset_query_edit_form($variables) {
     $rows[] = array('data' => $row, 'class' => array('draggable')); //note the difference between $row and $rows
   }
 
-  $output = drupal_render_children($form,array('general'));
+  $output = drupal_render_children($form, array('general'));
   if (array_key_exists('add-term', $form)) {
-    $output .= drupal_render_children($form,array('add-term'));
+    $output .= drupal_render_children($form, array('add-term'));
   }
   $output .= theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No query term found'), 'attributes' => array('id' => 'draggabledemo-sort')));
-  $output .= drupal_render_children($form,array('actions'));
+  $output .= drupal_render_children($form, array('actions'));
 
   // add form hidden items, otherwise submit and validate will be ignored
-  foreach(element_children($form) as $key) {
-    if (strpos($key,'form_') === 0) {
-      $output .= drupal_render_children($form,array($key));
+  foreach (element_children($form) as $key) {
+    if (strpos($key, 'form_') === 0) {
+      $output .= drupal_render_children($form, array($key));
     }
   }
 
@@ -510,7 +510,7 @@ function mica_datasets_dataset_query_delete_form($form, &$form_state) {
     '#attributes' => array('style'),
   );
 
-  $form['actions']= array(
+  $form['actions'] = array(
     '#type' => 'container',
     '#attributes' => array('class' => array('form-actions')),
   );
@@ -523,7 +523,7 @@ function mica_datasets_dataset_query_delete_form($form, &$form_state) {
   $form['actions']['cancel'] = array(
     '#type' => 'link',
     '#title' => t('Cancel'),
-    '#href' => 'node/'.$dataset_node->nid.'/queries',
+    '#href' => 'node/' . $dataset_node->nid . '/queries',
   );
 
   return $form;
@@ -585,8 +585,8 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query) {
   $terms = mica_dataset_query_term_query($query);
 
   $labels = array();
-  if ($terms!==FALSE) {
-    foreach($terms as $term) {
+  if ($terms !== FALSE) {
+    foreach ($terms as $term) {
       $impl = $term->termImpl();
       $title = $impl->toString();
       $variable = node_load($term->variable_id);
@@ -594,16 +594,17 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query) {
 
       if (_mica_datasets_query_term_access($dataset_node, $query, $term)) {
         $header = $variable_link //
-        . '<div>' //
-        . ctools_modal_text_button(t('Edit'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, 'edit'), t('Edit query term options'), 'ctools-modal-edit-style');
+          . '<div>' //
+          . ctools_modal_text_button(t('Edit'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, 'edit'), t('Edit query term options'), 'ctools-modal-edit-style');
 
         if (count($terms) > 1) {
           $header = $header . '<span style="margin-left: 10px;">' //
-          . ctools_modal_text_button(t('Delete'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, 'delete'), t('Delete query term'), 'ctools-modal-delete-style') //
-          . '</span>' //
-          . '</div>' ;
-        } else {
-          $header = $header . '</div>' ;
+            . ctools_modal_text_button(t('Delete'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, 'delete'), t('Delete query term'), 'ctools-modal-delete-style') //
+            . '</span>' //
+            . '</div>';
+        }
+        else {
+          $header = $header . '</div>';
         }
 
         $labels[] = $header;
@@ -614,35 +615,35 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query) {
     }
   }
 
-  $columns = array_merge(array(t('Study'), t('Total')) , $labels);
+  $columns = array_merge(array(t('Study'), t('Total')), $labels);
   $columns[] = t('Matched');
 
   $rows = array();
-  foreach($mica_dataset_connectors as $connector) {
+  foreach ($mica_dataset_connectors as $connector) {
     $study = node_load($connector->study_id);
-    $row = array(array('data'=>$study->title));
+    $row = array(array('data' => $study->title));
     try {
       $result = $connector->query($terms);
       $row[] = $result['total'];
-      foreach($terms as $t) {
+      foreach ($terms as $t) {
         $impl = $t->termImpl();
         $row[] = $result[$impl->getName()];
       }
-      $row[] = array('data'=>$result['_matched'], 'class'=>array('active'));
-      $rows[] = array('data'=> $row);
-    } catch(Exception $e) {
+      $row[] = array('data' => $result['_matched'], 'class' => array('active'));
+      $rows[] = array('data' => $row);
+    } catch (Exception $e) {
       $connector->displayError($e);
     }
   }
 
   // Add a summary row if there's more than one connector
-  if(count($mica_dataset_connectors) > 1) {
-    $totals = array(array('data'=>'Totals', 'class'=>array('active')));
-    foreach($rows as $row) {
-      foreach($row['data'] as $key => $value) {
-        if($key == 0) continue;
-        if(isset($totals[$key]) == FALSE) {
-          $totals[$key] = array('data'=> 0, 'class'=>'active');
+  if (count($mica_dataset_connectors) > 1) {
+    $totals = array(array('data' => 'Totals', 'class' => array('active')));
+    foreach ($rows as $row) {
+      foreach ($row['data'] as $key => $value) {
+        if ($key == 0) continue;
+        if (isset($totals[$key]) == FALSE) {
+          $totals[$key] = array('data' => 0, 'class' => 'active');
         }
         $totals[$key]['data'] += isset($value['data']) ? $value['data'] : $value;
       }
@@ -657,7 +658,7 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query) {
     }
   }
 
-  return $description . theme('table', array("header"=>$columns, "rows"=>$rows, 'attributes'=>array('class'=>array('query-table')), 'empty' => t('No connectors available')));
+  return $description . theme('table', array("header" => $columns, "rows" => $rows, 'attributes' => array('class' => array('query-table')), 'empty' => t('No connectors available')));
 }
 
 //
@@ -692,7 +693,7 @@ function mica_datasets_dataset_query_term_edit_modal_page($js = NULL, $node, $qu
 function mica_datasets_dataset_query_term_edit_page($node, $query, $term) {
   $impl = $term->termImpl();
   drupal_set_title(t('!title -- Edit !term in !query', array('!title' => $node->title, '!query' => $query->name, '!term' => $impl->getFieldName())));
-  return  drupal_get_form('mica_datasets_dataset_query_term_edit_form', $node, $query, $term);
+  return drupal_get_form('mica_datasets_dataset_query_term_edit_form', $node, $query, $term);
 }
 
 function mica_datasets_dataset_query_term_edit_form($form, &$form_state) {
@@ -703,11 +704,11 @@ function mica_datasets_dataset_query_term_edit_form($form, &$form_state) {
   $term = $form_state['build_info']['args'][2];
   $variable = node_load($term->variable_id);
 
-  $form=array();
+  $form = array();
 
   $impl = $term->termImpl();
-  $termForm = $impl->form($form, $form_state);
-  $form[] = $termForm;
+  $term_form = $impl->form($form, $form_state);
+  $form[] = $term_form;
 
   $form['actions']['save'] = array(
     '#type' => 'submit',
@@ -738,7 +739,7 @@ function mica_datasets_dataset_query_term_edit_form_submit($form, &$form_state) 
   $impl->submit($form, $form_state);
 
   $errors = form_get_errors();
-  if(empty($errors)) {
+  if (empty($errors)) {
     switch ($form_state['triggering_element']['#parents'][0]) {
       case 'save':
         if (is_numeric($term->id)) {
@@ -760,9 +761,9 @@ function mica_datasets_dataset_query_term_edit_form_submit($form, &$form_state) 
 
 function variables_autocomplete($dataset_nid, $string) {
   $variables = array();
-  foreach(mica_dataset_dataset_variables($dataset_id) as $variable) {
+  foreach (mica_dataset_dataset_variables($dataset_id) as $variable) {
     if (strpos(strtolower($variable->title), $string) === 0 || $string === "*") {
-      $variables[$variable->title]=$variable->title;
+      $variables[$variable->title] = $variable->title;
     }
   }
   print drupal_json_encode($variables);
@@ -824,7 +825,7 @@ function mica_datasets_dataset_query_term_delete_form($form, &$form_state) {
     '#attributes' => array('style'),
   );
 
-  $form['actions']= array(
+  $form['actions'] = array(
     '#type' => 'container',
     '#attributes' => array('class' => array('form-actions')),
   );

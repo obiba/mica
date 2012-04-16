@@ -1,6 +1,4 @@
 <?php
-// $Id$
-
 /**
  * @file
  * Install Mica module.
@@ -14,7 +12,7 @@ function mica_install() {
   mica_add_page('Research', '', 'research');
   mica_add_page('Resources', '', 'resources');
   mica_add_page('Consortium Policies and Guidelines', '', 'data-access/policy');
-  
+
   $search_api_index_options = array(
     'description' => 'An array of additional arguments configuring this index.',
     'type' => 'text',
@@ -49,21 +47,21 @@ function mica_add_page($title, $body, $alias) {
     $path['language'] = LANGUAGE_NONE;
     path_save($path);
   }
-  
+
   return $node;
 }
 
 /**
-* Update script for release 1.1 
-* Implements hook_update_N()
-*/
+ * Update script for release 1.1
+ * Implements hook_update_N()
+ */
 function mica_update_7110(&$sandbox) {
-  
-  watchdog('mica', 'Update to Mica 1.1', array(), WATCHDOG_INFO);  
-  
+
+  watchdog('mica', 'Update to Mica 1.1', array(), WATCHDOG_INFO);
+
   // disable old facet module
   module_disable(array('search_api_facets'));
-  
+
 }
 
 /**

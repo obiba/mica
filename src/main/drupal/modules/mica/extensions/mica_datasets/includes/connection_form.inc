@@ -29,9 +29,10 @@ define('MICA_CONNECTION_CONFIG', 'connection-config');
  * Base form for connectors.
  */
 function _mica_datasets_connectors_form() {
-  $form = array();
   $form = array(
-    '#attached' => array('css' => array(drupal_get_path('module', 'mica_datasets') . '/includes/connection.css'),),
+    '#attached' => array(
+      'css' => array(drupal_get_path('module', 'mica_datasets') . '/includes/connection.css')
+    ),
     '#attributes' => array('id' => 'dataset-connectors'),
   );
   return $form;

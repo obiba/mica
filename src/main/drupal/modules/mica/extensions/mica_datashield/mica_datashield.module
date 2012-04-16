@@ -4,14 +4,14 @@ function mica_datashield_menu() {
   $items = array();
 
   $items['node/%node/datashield'] = array(
-      'title' => 'DataSHIELD',
-      'access callback' => '_mica_datasets_node_queries_access',
-      'access arguments' => array(1,'view'),
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('mica_datashield_form', 1),
-      'weight' => 50,
-      'type' => MENU_LOCAL_ACTION,
-      'file' => 'mica_datashield.pages.inc',
+    'title' => 'DataSHIELD',
+    'access callback' => '_mica_datasets_node_queries_access',
+    'access arguments' => array(1, 'view'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mica_datashield_form', 1),
+    'weight' => 50,
+    'type' => MENU_LOCAL_ACTION,
+    'file' => 'mica_datashield.pages.inc',
   );
 
   return $items;

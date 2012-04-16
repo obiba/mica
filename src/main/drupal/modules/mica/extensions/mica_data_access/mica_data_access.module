@@ -68,9 +68,9 @@ function mica_data_access_menu_local_tasks_alter(&$data, $router_item, $root_pat
       $links['add-data-access-request'] = array(
         '#theme' => 'menu_local_action',
         '#link' => array(
-           'title' => t('<a href="@url">Request for Data Access</a>', array('@url' => $href)),
-           'localized_options' => array('html' => TRUE),
-      ),
+          'title' => t('<a href="@url">Request for Data Access</a>', array('@url' => $href)),
+          'localized_options' => array('html' => TRUE),
+        ),
       );
     }
   }
@@ -84,25 +84,25 @@ function mica_data_access_menu_local_tasks_alter(&$data, $router_item, $root_pat
           'title' => t('<a href="@login">Log in</a> or <a href="@register">Register</a> to submit a Data Access Request.', array(
             '@login' => url('user/login', array('query' => drupal_get_destination())),
             '@register' => url('user/register', array('query' => drupal_get_destination())),
-      )),
-         'localized_options' => array('html' => TRUE),
-      ),
+          )),
+          'localized_options' => array('html' => TRUE),
+        ),
       );
     }
   }
 
   if ($root_path === 'node/%') {
-    $explode=explode('/', $data['tabs'][0]['output'][0]['#link']['href']);
+    $explode = explode('/', $data['tabs'][0]['output'][0]['#link']['href']);
     $node = node_load($explode[1]);
-     
+
     if ($node && $node->type === 'data_access_request') {
-      $href='javascript:window.print();';
+      $href = 'javascript:window.print();';
       $links['print'] = array(
         '#theme' => 'menu_local_action',
         '#link' => array(
           'title' => t('<a href="@url">Print</a>', array('@url' => $href)),
           'localized_options' => array('html' => TRUE),
-      ),
+        ),
       );
     }
   }
@@ -114,15 +114,14 @@ function mica_data_access_can_edit_request($node) {
   $node_loaded = node_load($node->nid);
   if (isset($node_loaded->field_data_access_review[LANGUAGE_NONE][0]['nid'])) {
     $review_id = $node_loaded->field_data_access_review[LANGUAGE_NONE][0]['nid'];
-    $result = db_query("SELECT * from field_data_field_review_status WHERE ".
-                  "entity_type = 'node' AND ".
-                  "bundle = 'data_access_review' AND ".
-                  "entity_id = ".$review_id." AND ".
-                  "field_review_status_value IN ('accepted', 'rejected', 'submitted') ");
+    $result = db_query("SELECT * from {field_data_field_review_status} WHERE " .
+      "entity_type = 'node' AND " .
+      "bundle = 'data_access_review' AND " .
+      "entity_id = " . $review_id . " AND " .
+      "field_review_status_value IN ('accepted', 'rejected', 'submitted') ");
     return $result->rowCount() == 0;
-  } else {
-    return true;
   }
+  return TRUE;
 }
 
 /**
@@ -161,7 +160,7 @@ function mica_data_access_request_add() {
   }
 }
 
-function mica_data_access_request_review_access($node,$op = NULL) {
+function mica_data_access_request_review_access($node, $op = NULL) {
   if ($node->type != 'data_access_request') {
     return FALSE;
   }
@@ -192,11 +191,11 @@ function mica_data_access_request_review($node) {
     node_save($review_node);
 
     watchdog('mica', 'Created data access review %review for request %request by user %user',
-    array(
-        '%review' => $review_node->nid, 
+      array(
+        '%review' => $review_node->nid,
         '%request' => $node->nid,
         '%user' => $user->uid,
-    ), WATCHDOG_INFO);
+      ), WATCHDOG_INFO);
 
     $node->field_data_access_review[$node->language] = array(array('nid' => $review_node->nid));
     node_save($node);
@@ -215,8 +214,8 @@ function mica_data_access_reviewer_contact($user) {
   $field = field_info_field('field_daco');
   $query = new EntityFieldQuery;
   $query->entityCondition('entity_type', 'node')
-  ->entityCondition('bundle', 'contact')
-  ->fieldCondition($field, 'uid', $user->uid);
+    ->entityCondition('bundle', 'contact')
+    ->fieldCondition($field, 'uid', $user->uid);
 
   $entities = $query->execute();
 
@@ -241,8 +240,8 @@ function mica_data_access_delete($node) {
     $field = field_info_field('field_data_access_review');
     $query = new EntityFieldQuery;
     $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'data_access_request')
-    ->fieldCondition($field, 'nid', $node_loaded->nid);
+      ->entityCondition('bundle', 'data_access_request')
+      ->fieldCondition($field, 'nid', $node_loaded->nid);
 
     $entity = $query->execute();
     $keys = array_keys($entity['node']);
@@ -251,6 +250,7 @@ function mica_data_access_delete($node) {
   }
 
 }
+
 /**
  * Copy of node_delete_multiple from node.module
  * BUT don't call node_invoke($node, 'delete') to avoid hook loop
@@ -282,17 +282,17 @@ function mica_data_access_delete_without_calling_delete_hook($nids) {
 
       // Delete after calling hooks so that they can query node tables as needed.
       db_delete('node')
-      ->condition('nid', $nids, 'IN')
-      ->execute();
+        ->condition('nid', $nids, 'IN')
+        ->execute();
       db_delete('node_revision')
-      ->condition('nid', $nids, 'IN')
-      ->execute();
+        ->condition('nid', $nids, 'IN')
+        ->execute();
       db_delete('history')
-      ->condition('nid', $nids, 'IN')
-      ->execute();
+        ->condition('nid', $nids, 'IN')
+        ->execute();
       db_delete('node_access')
-      ->condition('nid', $nids, 'IN')
-      ->execute();
+        ->condition('nid', $nids, 'IN')
+        ->execute();
     }
     catch (Exception $e) {
       $transaction->rollback();

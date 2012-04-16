@@ -8,16 +8,16 @@ include_once('mica_datasets.features.inc');
 include_once('mica_datasets.devel.inc');
 require_once('includes/query_entity.inc');
 
-define('PRIVATE_KEY_FILE','private://mica-privatekey.pem');
+define('PRIVATE_KEY_FILE', 'private://mica-privatekey.pem');
 
-define('PUBLIC_KEY_FILE','private://mica-publickey.pem');
+define('PUBLIC_KEY_FILE', 'private://mica-publickey.pem');
 
 /**
  * Implements hook_theme().
  */
 function mica_datasets_theme() {
-  return array (
-    'mica_datasets_dataset_query_edit_form' => array (
+  return array(
+    'mica_datasets_dataset_query_edit_form' => array(
       'render element' => 'form'
     ),
     'mica_datasets_reorder_variables' => array(
@@ -263,7 +263,7 @@ function mica_datasets_menu() {
   $items['admin/config/development/mica_datasets'] = array(
     'title' => 'Mica Datasets',
     'description' => 'development tools for Mica Datasets',
-  	'page callback' => 'drupal_get_form',
+    'page callback' => 'drupal_get_form',
     'page arguments' => array('_mica_datasets_devel_form'),
     'access arguments' => array('administer site configuration'),
   );
@@ -277,7 +277,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
 
   $links = array();
 
-  switch($root_path) {
+  switch ($root_path) {
 
     case 'single-study-datasets':
     case 'multiple-study-datasets':
@@ -430,10 +430,10 @@ function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
   global $user;
   if (_mica_datasets_node_access($dataset_node, 'dataset', 'view')) {
     if (mica_dataset_dataset_variables($dataset_node->nid) && _mica_datasets_has_connectors($dataset_node->nid)) {
-      if($op === 'view') {
+      if ($op === 'view') {
         return user_access('view any dataset query');
       }
-      if($op === 'update') {
+      if ($op === 'update') {
         return user_access('create edit delete own dataset query');
       }
     }
@@ -465,7 +465,7 @@ function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
   }
 
   // View query
-  if($op == 'view') {
+  if ($op == 'view') {
     $view_perm = user_access('view any dataset query');
     if ($query->user_id == $user->uid) {
       return $view_perm;
@@ -485,7 +485,7 @@ function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
       return $edit_perm && $query->published;
     }
   }
-  
+
   return FALSE;
 }
 
@@ -497,7 +497,7 @@ function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
  * @param mica_dataset_query_term $query_term
  * @param string $op
  */
-function _mica_datasets_query_term_access($dataset_node, $query, $query_term, $op  = 'update') {
+function _mica_datasets_query_term_access($dataset_node, $query, $query_term, $op = 'update') {
   if (!is_object($query_term)) {
     $query_term = mica_dataset_query_term_load($query_term);
   }
@@ -716,7 +716,7 @@ function mica_dataset_connector_query($dataset_id, $study_id, $enabled = NULL) {
   if (isset($enabled)) {
     $q->condition('c.enabled', $enabled);
   }
-  $q->range(0,1);
+  $q->range(0, 1);
   $result = $q->execute();
 
   $rval = $result->fetchField();
@@ -744,7 +744,7 @@ function mica_dataset_connector_query_multiple($dataset_id, $enabled = NULL) {
 
   $connectors = array();
 
-  while($record = $result->fetchAssoc()) {
+  while ($record = $result->fetchAssoc()) {
     $connectors[] = mica_dataset_connector_load($record['id']);
   }
 
@@ -823,8 +823,8 @@ function mica_dataset_dataset_variables($dataset) {
   $field = field_info_field('field_dataset');
   $query = new EntityFieldQuery;
   $query->entityCondition('entity_type', 'node')
-  ->entityCondition('bundle', 'variable')
-  ->fieldCondition($field, 'nid', $dataset);
+    ->entityCondition('bundle', 'variable')
+    ->fieldCondition($field, 'nid', $dataset);
 
   $entities = $query->execute();
 
@@ -936,7 +936,7 @@ function mica_dataset_query_term_query($query) {
     $result = $q->execute();
 
     $rval = array();
-    while($record = $result->fetchAssoc()) {
+    while ($record = $result->fetchAssoc()) {
       $rval[] = $record['id'];
     }
 
@@ -1029,12 +1029,12 @@ function mica_dataset_query_term_insert(array $values) {
  * a guid for each variable (dataset_id:title
  */
 function mica_datasets_feeds_after_parse(FeedsSource $source, FeedsParserResult $result) {
-  if(get_class($source->importer->processor) === 'FeedsNodeProcessor') {
+  if (get_class($source->importer->processor) === 'FeedsNodeProcessor') {
     $config = $source->importer->processor->getConfig();
-    if($config['content_type'] === 'variable') {
+    if ($config['content_type'] === 'variable') {
       $src_config = $source->getConfigFor($source->importer->fetcher);
       $dataset_id = NULL;
-      if(isset($src_config['mica_dataset_connector'])) {
+      if (isset($src_config['mica_dataset_connector'])) {
         $nid = $src_config['mica_dataset_connector'];
         $connector_node = mica_dataset_connector_load($nid);
         $dataset_id = $connector_node->dataset_id;
@@ -1057,8 +1057,8 @@ function mica_datasets_feeds_after_parse(FeedsSource $source, FeedsParserResult 
  */
 function _find_source_for_target(FeedsProcessor $processor, $target) {
   $config = $processor->getConfig();
-  foreach($config['mappings'] as $map) {
-    if($map['target'] == $target) {
+  foreach ($config['mappings'] as $map) {
+    if ($map['target'] == $target) {
       return $map['source'];
     }
   }
@@ -1067,9 +1067,9 @@ function _find_source_for_target(FeedsProcessor $processor, $target) {
 
 
 function mica_dataset_private_file_absolute_path($reference) {
-  if(file_valid_uri($reference)) {
+  if (file_valid_uri($reference)) {
     $wrapper = file_stream_wrapper_get_instance_by_uri($reference);
-    if($wrapper) {
+    if ($wrapper) {
       return $wrapper->realpath();
     }
   }
@@ -1115,7 +1115,7 @@ function _mica_datasets_has_connectors($dataset_nid) {
  * Implements hook_node_presave()
  */
 function mica_datasets_node_presave($node) {
-  switch($node->type) {
+  switch ($node->type) {
     case 'variable':
       _mica_datasets_set_variable_position($node);
       break;
@@ -1126,7 +1126,7 @@ function mica_datasets_node_presave($node) {
  * Implements hook_node_insert()
  */
 function mica_datasets_node_insert($node) {
-  switch($node->type) {
+  switch ($node->type) {
     case 'dataset':
       _mica_datasets_create_dataset_menu($node);
       break;
@@ -1141,7 +1141,7 @@ function mica_datasets_node_insert($node) {
  * Implements hook_node_delete()
  */
 function mica_datasets_node_delete($node) {
-  switch($node->type) {
+  switch ($node->type) {
     case 'dataset':
 
       $dataset_id = $node->nid;
@@ -1153,11 +1153,11 @@ function mica_datasets_node_delete($node) {
           $query_id = $query->id;
           $terms = mica_dataset_query_term_query($query_id);
           if (!empty($terms)) {
-            foreach($terms as $term){
+            foreach ($terms as $term) {
               entity_delete('mica_dataset_query_term', $term->id);
             }
           }
-          entity_delete('mica_dataset_query' , $query_id);
+          entity_delete('mica_dataset_query', $query_id);
         }
       }
 
@@ -1166,7 +1166,7 @@ function mica_datasets_node_delete($node) {
 
       // remove variables
       $variables = mica_dataset_dataset_variables($dataset_id);
-      if (!empty($variables)){
+      if (!empty($variables)) {
         foreach ($variables as $variable) {
           node_delete($variable->nid);
         }
@@ -1180,7 +1180,7 @@ function mica_datasets_node_delete($node) {
         ->execute();
       $studies = node_load_multiple(array_keys($entities['node']));
 
-      foreach($studies as $study_node) {
+      foreach ($studies as $study_node) {
 
         foreach ($study_node->mica_dataset[$study_node->language] as $key => $value) {
           if ($value['nid'] == $dataset_id) {
@@ -1206,7 +1206,7 @@ function mica_datasets_node_validate($node, $form, &$form_state) {
   // check dataset node title is unique
   if (!isset($node->nid) && $node->type === 'dataset') {
     if (mica_core_node_title_exists($node->type, $node->title)) {
-      form_set_error('title',t('Dataset name \'!title\' is already given.', array('!title' => $node->title)));
+      form_set_error('title', t('Dataset name \'!title\' is already given.', array('!title' => $node->title)));
     }
   }
 }
@@ -1274,7 +1274,7 @@ function _mica_datasets_create_variable_menu($node) {
  */
 function mica_datasets_block_view_alter(&$data, $block) {
   if (is_null($block) || $block->delta !== 'variable_current_search' || $block->module !== 'current_search') return;
-  foreach($data['content']['active_items']['#items'] as $key => $item) {
+  foreach ($data['content']['active_items']['#items'] as $key => $item) {
     if ($item === '[all items]') unset($data['content']['active_items']['#items'][$key]);
   }
 }
@@ -1284,7 +1284,7 @@ function mica_datasets_block_view_alter(&$data, $block) {
  * Implementation of hook_form_alter().
  */
 function mica_datasets_form_alter(&$form, $form_state, $form_id) {
-  switch($form_id) {
+  switch ($form_id) {
     case 'variable_node_form':
       _mica_datasets_form_alter_variable($form, $form_state, $form_id);
       break;
@@ -1343,7 +1343,7 @@ function _mica_datasets_find_next_variable($variable_nid) {
     ->fieldOrderBy("field_position", 'value', "asc")
     ->range(0, 1)
     ->execute();
-  if(!empty($results['node'])) {
+  if (!empty($results['node'])) {
     return array_pop(entity_load('node', array_keys($results['node'])));
   }
   return NULL;
@@ -1364,9 +1364,10 @@ function _mica_datasets_set_variable_position(&$variable) {
     ->fieldOrderBy("field_position", 'value', "desc")
     ->range(0, 1)
     ->execute();
-  if(empty($results['node'])) {
+  if (empty($results['node'])) {
     $wrapper->field_position->set(1);
-  } else {
+  }
+  else {
     $last_variable = array_pop(entity_load('node', array_keys($results['node'])));
     $last_variable_wrapper = entity_metadata_wrapper('node', $last_variable);
     $wrapper->field_position->set($last_variable_wrapper->field_position->value() + 1);

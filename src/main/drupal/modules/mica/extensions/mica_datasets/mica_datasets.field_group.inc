@@ -242,8 +242,5 @@ function mica_datasets_field_group_info() {
     ),
   );
   $export['group_general_info|node|variable|form'] = $field_group;
-
-
-
   return $export;
 }

@@ -28,7 +28,7 @@ function mica_community_update_7120() {
 function _mica_community_configure_field_bundle_settings() {
   $publication_settings = array(
     'view_modes' => array(
-      'teaser' => array('custom_settings' => true),
+      'teaser' => array('custom_settings' => TRUE),
     ),
     'extra_fields' => array(
       'form' => array('title' => array('weight' => '0')),

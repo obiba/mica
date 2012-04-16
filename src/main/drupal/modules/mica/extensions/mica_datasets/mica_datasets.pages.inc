@@ -15,9 +15,9 @@ function mica_datasets_dataset_page($dataset_node) {
  * Display form for linking datsets to a given study.
  */
 function mica_datasets_study_datasets_edit_page($node) {
-  drupal_set_title(t('!title -- Datasets', array('!title' => $node->title)));
-  if (!property_exists($node, 'mica_dataset'))  {
-    drupal_set_message(t('dataset content type is broken, missing field: !name', array('!name' => 'mica_dataset')), 'error');
+  drupal_set_title(t('!title -- Datasets', array('!title' => check_plain($node->title))));
+  if (!property_exists($node, 'mica_dataset')) {
+    drupal_set_message(t('dataset content type is broken, missing field: mica_dataset'), 'error');
     return '';
   }
   else {
@@ -29,14 +29,14 @@ function mica_datasets_study_datasets_edit_page($node) {
  * Display form for linking studies to a given dataset.
  */
 function mica_datasets_dataset_studies_edit_page($node) {
-  drupal_set_title(t('!title -- Studies', array('!title' => $node->title)));
+  drupal_set_title(t('!title -- Studies', array('!title' => check_plain($node->title))));
   return drupal_get_form('mica_datasets_dataset_studies_form', $node);
 }
 
 function mica_datasets_dataset_connection_modal_page($js = NULL, $connection_entity, $dataset_node, $study_node) {
   if ($js) {
     $title = t('!dataset -- !study', array(
-      '!dataset' => $dataset_node->title, 
+      '!dataset' => $dataset_node->title,
       '!study' => $study_node->title));
 
     mica_core_modal_form_render($title, 'mica_datasets_dataset_connection_form', $connection_entity, $dataset_node, $study_node);
@@ -55,8 +55,8 @@ function mica_datasets_dataset_connection_modal_page($js = NULL, $connection_ent
  */
 function mica_datasets_dataset_connection_page($connection_entity, $dataset_node, $study_node) {
   drupal_set_title(t('!dataset -- !study', array(
-      '!dataset' => $dataset_node->title, 
-      '!study' => $study_node->title)));
+    '!dataset' => check_plain($dataset_node->title),
+    '!study' => check_plain($study_node->title))));
 
   return drupal_get_form('mica_datasets_dataset_connection_form', $connection_entity, $dataset_node, $study_node);
 }
@@ -65,7 +65,7 @@ function mica_datasets_dataset_connection_page($connection_entity, $dataset_node
  * Display form for fetching variables for a given dataset.
  */
 function mica_datasets_dataset_variables_edit_page($node) {
-  drupal_set_title(t('!title -- Variables', array('!title' => $node->title)));
+  drupal_set_title(t('!title -- Variables', array('!title' => check_plain($node->title))));
   return drupal_get_form('mica_datasets_dataset_variables_form', $node);
 }
 
@@ -103,11 +103,12 @@ function mica_datasets_dataset_variables_form($form, &$form_state, $node) {
   if (!empty($mica_dataset_connectors)) {
     $connector_id = $mica_dataset_connectors[0]->id;
     $importer_id = $mica_dataset_connectors[0]->getImporterId();
-  } else {
-    form_set_error('',t('This dataset is not linked to a study or no external connection has been set.'));
+  }
+  else {
+    form_set_error('', t('This dataset is not linked to a study or no external connection has been set.'));
     return;
   }
-   
+
   $source = feeds_source($importer_id);
   $fetcher_config = $source->getConfigFor($source->importer->fetcher);
   $fetcher_config['mica_dataset_connector'] = $connector_id;
@@ -127,20 +128,20 @@ function mica_datasets_dataset_variables_form($form, &$form_state, $node) {
     '#value' => _feeds_source_status($source),
   );
   $form['feeds'] = array(
-  '#type' => 'fieldset',
-  '#title' => t('Import'),
-  '#tree' => TRUE,
+    '#type' => 'fieldset',
+    '#title' => t('Import'),
+    '#tree' => TRUE,
   );
   $form['feeds'] += $source->configForm($form_state);
   $form['submit'] = array(
-  '#type' => 'submit',
-  '#value' => t('Update variables'),
+    '#type' => 'submit',
+    '#value' => t('Update variables'),
   );
   $progress = $source->progressImporting();
   if ($progress !== FEEDS_BATCH_COMPLETE) {
     $form['submit']['#disabled'] = TRUE;
     $form['submit']['#value'] =
-    t('Importing (@progress %)', array('@progress' => number_format(100 * $progress, 0)));
+      t('Importing (@progress %)', array('@progress' => number_format(100 * $progress, 0)));
   }
   return $form;
 }
@@ -206,9 +207,9 @@ function mica_datasets_dataset_studies_form($form, &$form_state) {
       '#type' => 'item',
       '#description' => t('Select the studies that are part of the dataset.'),
     );
-    $form['add-study']['studies']= array(
-      '#type' => 'select', 
-      '#title' => t('Studies'), 
+    $form['add-study']['studies'] = array(
+      '#type' => 'select',
+      '#title' => t('Studies'),
       '#options' => $studies_options,
     );
     $form['add-study']['add'] = array(
@@ -254,7 +255,7 @@ function mica_datasets_study_datasets_form($form, &$form_state) {
       'height' => 650,
     ),
   ));
-  
+
   $study_node = _mica_datasets_get_node_form_arg($form_state);
   $study_node_id = $study_node->nid;
 
@@ -269,9 +270,9 @@ function mica_datasets_study_datasets_form($form, &$form_state) {
       '#type' => 'item',
       '#description' => t('Select the datasets in which the study is involved.'),
     );
-    $form['add-dataset']['datasets']= array(
-      '#type' => 'select', 
-      '#title' => t('Datasets'), 
+    $form['add-dataset']['datasets'] = array(
+      '#type' => 'select',
+      '#title' => t('Datasets'),
       '#options' => $datasets_options,
     );
     $form['add-dataset']['add'] = array(
@@ -323,24 +324,24 @@ function mica_datasets_dataset_connection_form($form, &$form_state, $connection_
 
   // description
   $form['description'] = array(
-      '#type' => 'textarea', 
-      '#title' => t('Description'), 
-      '#default_value' => $connector ? $connector->description : '',
-      '#rows' => 3,
-      '#description' => t('A description of the study\'s data contributing to the dataset.'),
+    '#type' => 'textarea',
+    '#title' => t('Description'),
+    '#default_value' => $connector ? $connector->description : '',
+    '#rows' => 3,
+    '#description' => t('A description of the study\'s data contributing to the dataset.'),
   );
 
   // connection-type
-  $form[MICA_CONNECTION_TYPE]= array(
-    '#type' => 'select', 
-    '#title' => t('Connection Type'), 
+  $form[MICA_CONNECTION_TYPE] = array(
+    '#type' => 'select',
+    '#title' => t('Connection Type'),
     '#options' => $connection_types,
     '#default_value' => $connector ? $connector->class : 'none',
     '#description' => t('Select which type of connection is to be used to retrieve variables and data from the study to contribute to the dataset.'),
     '#ajax' => array(
       'path' => 'mica/ajax/dataset/' . $dataset_node->nid . '/' . $study_node->nid . '/edit',
       'wrapper' => MICA_CONNECTION_CONFIG . '-replace',
-  ),
+    ),
   );
 
   // connection-config
@@ -348,7 +349,7 @@ function mica_datasets_dataset_connection_form($form, &$form_state, $connection_
   if ($selected_type == 'none') {
     $prefix = '<div id="' . MICA_CONNECTION_CONFIG . '-replace" style="display:none;">';
   }
-  $form[MICA_CONNECTION_CONFIG]= array(
+  $form[MICA_CONNECTION_CONFIG] = array(
     '#title' => t('Configuration'),
     '#type' => 'fieldset',
     '#prefix' => $prefix,
@@ -376,14 +377,14 @@ function mica_datasets_dataset_connection_form($form, &$form_state, $connection_
 
   $form['dataset-link'] = array(
     '#type' => 'link',
-    '#title' => $dataset_node->title,
+    '#title' => check_plain($dataset_node->title),
     '#href' => 'node/' . $dataset_node->nid . '/studies',
     '#attributes' => array('style' => 'margin:0 5px 0 5px;'),
   );
 
   $form['study-link'] = array(
     '#type' => 'link',
-    '#title' => $study_node->title,
+    '#title' => check_plain($study_node->title),
     '#href' => 'node/' . $study_node->nid . '/datasets',
     '#attributes' => array('style' => 'margin:0 5px 0 5px;'),
   );
@@ -441,7 +442,7 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
         $values['module'] = 'mica_datasets';
 
         if (mica_dataset_connector_insert($values) === FALSE) {
-          drupal_set_message(t('Unable to save connection: !name', array('!name' => $values['name'])), 'error');
+          drupal_set_message(t('Unable to save connection: !name', array('!name' => check_plain($values['name']))), 'error');
         }
       }
       else {
@@ -451,7 +452,7 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
         $connector->enabled = $connection_type == 'none' ? FALSE : TRUE;
 
         if ($connector->save() === FALSE) {
-          drupal_set_message(t('Unable to save connection: !name', array('!name' => $connector->name)), 'error');
+          drupal_set_message(t('Unable to save connection: !name', array('!name' => check_plain($connector->name))), 'error');
         }
       }
       $form_state['complete'] = TRUE;

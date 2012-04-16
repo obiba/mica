@@ -1,6 +1,4 @@
 <?php
-// $Id$
-
 /**
  * @file
  * Mica mapper for mica fields.
@@ -37,7 +35,7 @@ function mica_core_feeds_processor_targets_alter(&$targets, $entity_type, $bundl
   }
 }
 
-function mica_core_feeds_set_target_title($source, $entity, $target, $value ) {
+function mica_core_feeds_set_target_title($source, $entity, $target, $value) {
   _mica_core_set_target($source, $entity, $target, $value);
 }
 
@@ -79,7 +77,7 @@ function _mica_core_set_target($source, $entity, $target, $value, $value_field =
       if (isset($sub_field)) {
         $field[LANGUAGE_NONE][$i][$sub_field] = $new_value;
       }
-      else{
+      else {
         $field[LANGUAGE_NONE][$i][$value_field] = $new_value;
       }
     }
@@ -88,10 +86,10 @@ function _mica_core_set_target($source, $entity, $target, $value, $value_field =
     }
     $i++;
   }
- 
+
   if (isset($sub_field)) {
     foreach ($field[LANGUAGE_NONE] as $i => $sub) {
-      $entity->{$field_name}[LANGUAGE_NONE][$i][$sub_field] = $field[LANGUAGE_NONE][$i][$sub_field]; 
+      $entity->{$field_name}[LANGUAGE_NONE][$i][$sub_field] = $field[LANGUAGE_NONE][$i][$sub_field];
     }
   }
   else {

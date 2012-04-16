@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Mica category field install file
+ */
 
 /**
  * Implements hook_field_schema()

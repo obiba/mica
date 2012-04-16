@@ -65,18 +65,18 @@ function _mica_devel_modules_graph() {
       }
       $graph[$module]['data'] = array(
         'title' => $module,
-        'content' => print_r($data, true),
+        'content' => print_r($data, TRUE),
         'background-color' => "#00ff00",
       );
     }
   }
-//  dpm($graph);
+  //  dpm($graph);
   $config = array(
     'id' => 'mica_modules_graph',
     'width' => 900,
     'height' => 700,
     'engine' => 'graph_phyz',
-    'menu' => true,
+    'menu' => TRUE,
     'background-color' => '#ccc',
     'animate' => TRUE,
     'randomize' => TRUE,
@@ -97,5 +97,5 @@ function _mica_devel_is_mica_module($module) {
 }
 
 function _mica_devel_dummy_run() {
-  drupal_set_message("Run dummy method...");
+  drupal_set_message(t("Run dummy method..."));
 }

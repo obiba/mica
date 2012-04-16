@@ -9,7 +9,7 @@
  * Result of FeedsHTTPFetcher::fetch().
  */
 class FeedsRestFetcherResult extends FeedsFetcherResult {
-  
+
   protected $url;
   protected $config;
 
@@ -19,7 +19,7 @@ class FeedsRestFetcherResult extends FeedsFetcherResult {
   public function __construct($url = NULL, $fetcher_config = NULL) {
     $this->url = $url;
     $this->config = $fetcher_config;
-    
+
     $this->no_verify_peer = $fetcher_config['no_verify_peer'];
     $this->no_verify_host = $fetcher_config['no_verify_host'];
     $this->client_cert = $fetcher_config['client_cert_file'];
@@ -33,7 +33,7 @@ class FeedsRestFetcherResult extends FeedsFetcherResult {
   public function getRaw() {
     $client = new HttpClient($formatter = FALSE);
 
-    if(!isset($client->options['curlopts'])) {
+    if (!isset($client->options['curlopts'])) {
       $client->options['curlopts'] = array();
     }
 
@@ -42,8 +42,8 @@ class FeedsRestFetcherResult extends FeedsFetcherResult {
       CURLOPT_SSL_VERIFYPEER => ($this->config['no_verify_peer'] == FALSE),
     );
 
-    if($this->config['use_client_cert']) {
-      $client->options['curlopts'] += array(    
+    if ($this->config['use_client_cert']) {
+      $client->options['curlopts'] += array(
         CURLOPT_SSLCERT => $this->realpath($this->config['client_cert_file']),
         CURLOPT_SSLKEY => $this->realpath($this->config['private_key_file']),
       );
@@ -57,11 +57,12 @@ class FeedsRestFetcherResult extends FeedsFetcherResult {
 
       $get->addHeader('Accept', $this->config['content_type']);
       $result = $client->execute($get);
-    } catch(HttpClientException $e) {
-      if($e->getCode() == 0) {
+    } catch (HttpClientException $e) {
+      if ($e->getCode() == 0) {
         // curl error
         throw new Exception(t('Download of @url failed: @msg', array('@url' => $this->url, '@msg' => $e->getMessage())));
-      } else if (!in_array($e->getCode(), array(200, 201, 202, 203, 204, 205, 206))) {
+      }
+      elseif (!in_array($e->getCode(), array(200, 201, 202, 203, 204, 205, 206))) {
         throw new Exception(t('Download of @url failed with code !code.', array('@url' => $this->url, '!code' => $e->getCode())));
       }
       // http_client throws an exception on all codes that are not 200 (even 201)
@@ -70,14 +71,14 @@ class FeedsRestFetcherResult extends FeedsFetcherResult {
     }
     return $this->sanitizeRaw($result);
   }
-  
+
   /**
    * Extract the underlying file-system path from a file reference (private://someFile.pem)
    */
   private function realpath($reference) {
-    if(file_valid_uri($reference)) {
+    if (file_valid_uri($reference)) {
       $wrapper = file_stream_wrapper_get_instance_by_uri($reference);
-      if($wrapper) {
+      if ($wrapper) {
         return $wrapper->realpath();
       }
     }
@@ -103,15 +104,15 @@ class FeedsRestFetcher extends FeedsFetcher {
    */
   public function configDefaults() {
     $config = array(
-      'method' => 'GET', 
-      'content_type' => '*', 
-      'no_verify_peer' => FALSE, 
-      'no_verify_host' => FALSE, 
+      'method' => 'GET',
+      'content_type' => '*',
+      'no_verify_peer' => FALSE,
+      'no_verify_host' => FALSE,
       'use_client_cert' => FALSE,
       'private_key_file' => '',
       'client_cert_file' => '',
-    ); 
-    return $config; 
+    );
+    return $config;
   }
 
   /**
@@ -120,20 +121,20 @@ class FeedsRestFetcher extends FeedsFetcher {
   public function configForm(&$form_state) {
     $form = array();
 
-    $form['method'] = array (
+    $form['method'] = array(
       '#type' => 'select',
       '#title' => t('HTTP Method'),
       '#description' => t('The HTTP verb to use'),
       '#options' => array('GET', 'POST'),
       '#default_value' => $this->config['method'],
     );
-    $form['content_type'] = array (
+    $form['content_type'] = array(
       '#type' => 'textfield',
       '#title' => t('Accept Header'),
       '#description' => t('The value for the Accept HTTP header. Used for content-type negotiation (e.g.: application/json).'),
       '#default_value' => $this->config['content_type'],
     );
-    $form['https'] = array (
+    $form['https'] = array(
       '#type' => 'fieldset',
       '#title' => t('HTTPs Options'),
       '#description' => t('Change the behaviour for https connections'),
@@ -194,5 +195,5 @@ class FeedsRestFetcher extends FeedsFetcher {
     );
     return $form;
   }
-  
+
 }

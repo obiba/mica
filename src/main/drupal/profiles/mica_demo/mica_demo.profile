@@ -1,4 +1,9 @@
 <?php
+/**
+ * @file
+ * Mica Demo profile file
+ */
+
 include_once('profiles/mica_standard/mica_standard.profile');
 
 /**
@@ -49,25 +54,25 @@ function mica_import_demo_feeds($install_state) {
   $feed_configs['csv_documents_import'] = array(
     'file' => $root . '/documents.csv',
   );
-  
+
   $operations = array();
-  foreach ($feed_configs as $importer => $file){
+  foreach ($feed_configs as $importer => $file) {
     $source = feeds_source($importer);
 
     foreach ($source->importer->plugin_types as $type) {
       if ($source->importer->$type->hasSourceConfig()) {
         $class = get_class($source->importer->$type);
-        if ($class == 'FeedsFileFetcher'){
+        if ($class == 'FeedsFileFetcher') {
           $config = isset($source->config[$class]) ? $source->config[$class] : array();
           $config['source'] = $file['file'];
           $source->setConfigFor($source->importer->$type, $config);
-        }  
+        }
       }
     }
     $source->save();
     $operations[] = array('feeds_batch', array('import', $source->id, $source->feed_nid));
   }
-  
+
   $batch = array(
     'title' => st('Importing'),
     'operations' => $operations,

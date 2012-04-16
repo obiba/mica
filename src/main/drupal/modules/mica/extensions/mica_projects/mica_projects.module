@@ -18,8 +18,8 @@ function mica_projects_form($node, &$form_state) {
  */
 function mica_projects_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   $links = array();
-  
-  if ($root_path == 'projects') {  
+
+  if ($root_path == 'projects') {
     if (node_access('create', 'project')) {
       $node_type = node_type_load('project');
       $links['add-project'] = array(
@@ -29,7 +29,7 @@ function mica_projects_menu_local_tasks_alter(&$data, $router_item, $root_path) 
           'href' => 'node/add/project',
         ),
       );
-    } 
+    }
   }
   /*elseif ($root_path == 'node/%') {
     if (node_access('create', 'teleconference')) {
@@ -47,8 +47,8 @@ function mica_projects_menu_local_tasks_alter(&$data, $router_item, $root_path) 
       }
     }
   }*/
-  
-  
+
+
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
 
@@ -58,14 +58,14 @@ function mica_projects_menu_local_tasks_alter(&$data, $router_item, $root_path) 
 function mica_projects_node_insert($node) {
   if ($node->type === 'project') {
     mica_core_create_menu($node, 1);
-    
+
     $node->field_teleconferences[LANGUAGE_NONE] = array(
       0 => array(
         'view_id' => 'teleconferences:page',
         'arguments' => $node->nid,
       )
     );
-  }  
+  }
   return;
 }
 

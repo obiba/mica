@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Mica Datasets Query entity
+ */
+
+/**
  * Class representing a dataset query.
  */
 class MicaDatasetQuery extends Entity {
@@ -207,7 +212,7 @@ class MicaDatasetQueryTerm extends Entity {
 
   public function termImpl() {
     $type = $this->options['type'];
-    if(isset($type) == false) {
+    if (!isset($type)) {
       $variable = node_load($this->variable_id);
       $type = AbstractTerm::typeFor($variable);
     }
@@ -252,10 +257,10 @@ class MicaDatasetQueryManager {
     if (self::isCached($query)) {
       $terms = self::getCache($query)->getTerms();
       self::delete($query);
-      
+
       if (is_numeric($query->id)) {
         $query->save();
-        foreach($terms as $term) {
+        foreach ($terms as $term) {
           $term->query_id = $query->id;
           $term->save();
         }
@@ -265,7 +270,7 @@ class MicaDatasetQueryManager {
         $query->is_new = TRUE;
         $query->module = 'mica_datasets';
         $query->save();
-        foreach($terms as $term) {
+        foreach ($terms as $term) {
           $term->id = 0;
           $term->query_id = $query->id;
           $term->is_new = TRUE;
@@ -319,7 +324,7 @@ class MicaDatasetQueryManager {
   public static function addQuery(array $values) {
     $query = new MicaDatasetQuery($values);
     $query->is_new = TRUE;
-    $query->id = $query->dataset_id  . ':' . $query->name;
+    $query->id = $query->dataset_id . ':' . $query->name;
     self::addCache($query);
     return $query;
   }
@@ -359,7 +364,7 @@ class MicaDatasetQueryManager {
     if (isset($_SESSION['mica_dataset_query'])) {
       foreach ($_SESSION['mica_dataset_query'] as $cache) {
         $query_cache = unserialize($cache);
-        if (preg_match('/^'. $query_cache->query->id .':/', $term_id)) {
+        if (preg_match('/^' . $query_cache->query->id . ':/', $term_id)) {
           foreach ($query_cache->getTerms() as $term) {
             if ($term->id == $term_id) {
               return $term;
@@ -434,7 +439,7 @@ class MicaDatasetQueryManager {
     $result = $q->execute();
 
     $rval = array();
-    while($record = $result->fetchAssoc()) {
+    while ($record = $result->fetchAssoc()) {
       $rval[] = $record['id'];
     }
 

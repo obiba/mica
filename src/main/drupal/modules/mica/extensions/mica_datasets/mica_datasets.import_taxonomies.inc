@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Mica Datasets taxonomies importer
+ */
+
 require_once(drupal_get_path('module', 'taxonomy_csv') . '/import/taxonomy_csv.import.api.inc');
 
 function _mica_datasets_taxonomies() {
@@ -40,13 +45,14 @@ function _mica_datasets_taxonomy_create($filename, $vocabulary_name) {
   $vocabulary = (object) array(
     'name' => $vocabulary_name,
     'machine_name' => $machine_name,
-    'vid' => null,
+    'vid' => NULL,
   );
 
   $taxonomies = taxonomy_vocabulary_get_names();
   if (array_key_exists($machine_name, $taxonomies)) {
     $vocabulary->vid = $taxonomies[$machine_name]->vid;
-  } else {
+  }
+  else {
     taxonomy_vocabulary_save($vocabulary);
   }
 
@@ -64,7 +70,7 @@ function _mica_datasets_taxonomy_import($filename, $vocabulary_name) {
     'import_format' => 'tree',
     'delimiter' => ',',
     'enclosure' => '"',
-    'keep_order' => true,
+    'keep_order' => TRUE,
     'file' => (object) array(
       'filename' => $filename,
       'filepath' => $file_path,

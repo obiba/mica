@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Mica Datasets variable pages.
@@ -23,9 +22,9 @@ function mica_datasets_reorder_variables($form, $form_state, $dataset_node) {
     ->fieldCondition('field_dataset', 'nid', $dataset_node->nid)
     ->fieldOrderBy("field_position", 'value', "asc")
     ->execute();
-  if(!empty($results['node'])) {
+  if (!empty($results['node'])) {
     $variables = entity_load('node', array_keys($results['node']));
-    foreach($variables as $variable) {
+    foreach ($variables as $variable) {
       $nid = $variable->nid;
       $wrapper = entity_metadata_wrapper('node', $variable);
       $form[$nid]['#variable'] = $variable;
@@ -54,7 +53,8 @@ function mica_datasets_reorder_variables($form, $form_state, $dataset_node) {
     if (count($variables) > 1) {
       $form['actions'] = array('#type' => 'actions');
       $form['actions']['submit'] = array('#type' => 'submit', '#value' => t('Save'));
-    } elseif (isset($nid)) {
+    }
+    elseif (isset($nid)) {
       unset($form[$nid]['weight']);
     }
   }
@@ -108,10 +108,10 @@ function theme_mica_datasets_reorder_variables($variables) {
   ));
 
   $output = theme('table', array(
-    'header' => $header,
-    'rows' => $rows,
-    'empty' => $empty,
-    'attributes' => array('id' => 'variable'))
+      'header' => $header,
+      'rows' => $rows,
+      'empty' => $empty,
+      'attributes' => array('id' => 'variable'))
   );
   $output .= drupal_render_children($form);
   return $output;

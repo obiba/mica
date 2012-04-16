@@ -109,15 +109,15 @@ function _mica_node_reference_block() {
 function _mica_studies_configure_field_bundle_settings() {
   $study_settings = array(
     'view_modes' => array(
-      'teaser' => array('custom_settings' => true),
-      'banner_area' => array('custom_settings' => true),
-      'left_area' => array('custom_settings' => true),
-      'right_area' => array('custom_settings' => true),
-      'center_area' => array('custom_settings' => true),
-      'footer_area' => array('custom_settings' => true),
-      'summary_banner_area' => array('custom_settings' => true),
-      'summary_left_area' => array('custom_settings' => true),
-      'summary_right_area' => array('custom_settings' => true),
+      'teaser' => array('custom_settings' => TRUE),
+      'banner_area' => array('custom_settings' => TRUE),
+      'left_area' => array('custom_settings' => TRUE),
+      'right_area' => array('custom_settings' => TRUE),
+      'center_area' => array('custom_settings' => TRUE),
+      'footer_area' => array('custom_settings' => TRUE),
+      'summary_banner_area' => array('custom_settings' => TRUE),
+      'summary_left_area' => array('custom_settings' => TRUE),
+      'summary_right_area' => array('custom_settings' => TRUE),
     ),
     'extra_fields' => array(
       'form' => array(

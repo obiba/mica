@@ -95,7 +95,8 @@ function mica_field_description_form_field_ui_field_edit_form_alter(&$form, $for
     $default_value_type = _get_field_value_type($field_value_type);
     $default_label = NULL;
     $default_body = NULL;
-  } else {
+  }
+  else {
     $wrapper = entity_metadata_wrapper('node', $field_description);
     $default_value_type = $wrapper->field_value_type->value();
     $default_label = $wrapper->field_original_field_label->value();
@@ -190,7 +191,8 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
 
   if ($type === 'text') {
     $field_index_type = $discrete ? 'string' : 'text';
-  } else {
+  }
+  else {
     $mapping = _magma_search_index_type_mapping();
     $field_index_type = $mapping[$type];
   }
@@ -217,7 +219,8 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
   // check if we need to reindex content
   if (!isset($fields[$field_name]) || empty($fields[$field_name])) {
     $reindex = TRUE;
-  } else {
+  }
+  else {
     $reindex = !isset($fields[$field_name]['name'])
       || !isset($fields[$field_name]['indexed'])
       || !isset($fields[$field_name]['type'])
@@ -267,7 +270,8 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
           $facet_block_title = $field_description_wrapper->field_original_field_label->value();
           _enable_search_block($delta, $facet_block_title);
         }
-      } else if (facetapi_save_facet_disabled($adapter, $realm, $facet)) {
+      }
+      elseif (facetapi_save_facet_disabled($adapter, $realm, $facet)) {
         _disable_search_block($delta);
       }
     }
@@ -331,7 +335,8 @@ function _enable_search_block($facet_delta, $block_title) {
       ->condition('delta', $facet_delta)
       ->condition('theme', $theme_default)
       ->execute();
-  } else {
+  }
+  else {
     db_insert('block')->fields(
       array(
         'status' => 1,
@@ -504,7 +509,8 @@ function _edit_field_field_description($form, &$form_state) {
         ? $instance['display_label']
         : $instance['label'];
     }
-  } else {
+  }
+  else {
     $label = '';
   }
 
@@ -535,7 +541,8 @@ function _edit_field_field_description($form, &$form_state) {
   else {
     if ($is_field_description) {
       _update_field_description($field_description, $field_description_infos);
-    } else {
+    }
+    else {
       node_delete($field_description->nid);
     }
   }

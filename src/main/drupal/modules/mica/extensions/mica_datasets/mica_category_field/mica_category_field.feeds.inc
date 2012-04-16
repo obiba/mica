@@ -38,13 +38,13 @@ function mica_category_field_feeds_processor_targets_alter(&$targets, $entity_ty
  *   The value to populate the target with.
  */
 function mica_category_field_set_target($source, $entity, $target, $value) {
-	
-	if (empty($value)) return;
-	if (is_array($value)) {
-		$filtered = array_filter($value);
-		if (empty($filtered)) return;
-	}
-	
+
+  if (empty($value)) return;
+  if (is_array($value)) {
+    $filtered = array_filter($value);
+    if (empty($filtered)) return;
+  }
+
   list($field_name, $sub_field) = explode(':', $target, 2);
 
   // Handle non-multiple value fields.
@@ -56,7 +56,7 @@ function mica_category_field_set_target($source, $entity, $target, $value) {
 
   foreach ($value as $i => $v) {
     // if we receive true/false, switch to '0' - '1'
-    $v = is_bool($v) ? (int) $v: $v;
+    $v = is_bool($v) ? (int) $v : $v;
     $field['und'][$i][$sub_field] = isset($v) ? $v : '0';
   }
 

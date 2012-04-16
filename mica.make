@@ -102,7 +102,7 @@ projects[facetapi][type] = module
 
 projects[] = examples
 
-projects[features][version] = 1.0-rc1
+projects[features][version] = 1.0-rc2
 projects[features][type] = module
 
 projects[feeds][type] = module

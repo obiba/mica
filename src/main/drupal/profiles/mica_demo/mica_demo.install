@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Mica Demo profile install file
+ */
 
 /**
  * Implements hook_install().
@@ -34,7 +38,7 @@ function mica_demo_install() {
     ),
   );
   user_save(null, $user);
-  
+
   $user = array(
     'name' => 'dacite',
     'mail' => 'admin@dacite.org',
@@ -46,7 +50,7 @@ function mica_demo_install() {
     ),
   );
   user_save(null, $user);
-  
+
   $user = array(
     'name' => 'scoria',
     'mail' => 'admin@scoria.org',
@@ -58,7 +62,7 @@ function mica_demo_install() {
     ),
   );
   user_save(null, $user);
-  
+
   $user = array(
     'name' => 'marl',
     'mail' => 'admin@marl.org',
@@ -104,7 +108,7 @@ function mica_demo_install() {
     'roles' => array(),
   );
   user_save(null, $user);
-  
+
   // researchers
   $user = array(
     'name' => 'mlapointe',
@@ -113,11 +117,11 @@ function mica_demo_install() {
     'pass' => 'password',
     'status' => 1,
     'roles' => array(
-    	'5' => 'researcher',
+      '5' => 'researcher',
     ),
   );
   user_save(null, $user);
-  
+
   // dacos
   $user = array(
     'name' => 'flaurent',
@@ -126,12 +130,12 @@ function mica_demo_install() {
     'pass' => 'password',
     'status' => 1,
     'roles' => array(
-    	'4' => 'data access committee officer',
-  ),
+      '4' => 'data access committee officer',
+    ),
   );
   user_save(null, $user);
-  
-    $LOREM_1 = 'Proin ornare elit id orci fermentum at ultrices erat lacinia. 
+
+  $LOREM_1 = 'Proin ornare elit id orci fermentum at ultrices erat lacinia.
    
 Nunc dolor odio, vestibulum eu euismod ac, aliquet cursus nulla. 
    - Nulla quis nunc ipsum, nec sagittis lectus. 
@@ -140,14 +144,14 @@ Nunc dolor odio, vestibulum eu euismod ac, aliquet cursus nulla.
    
 Aliquam augue nibh, tristique sit amet egestas quis, lobortis a urna. Mauris euismod nisi arcu, quis ornare tellus. Maecenas id odio eget ipsum dictum convallis aliquet nec sem. Ut ac vulputate nunc. Aenean faucibus tristique purus, in semper libero dictum ac. Proin bibendum lorem vel lectus ultrices vitae tempor quam sollicitudin.';
 
-    $LOREM_2 = 'Mauris lectus dui, consectetur a lobortis sed, laoreet eu purus. 
+  $LOREM_2 = 'Mauris lectus dui, consectetur a lobortis sed, laoreet eu purus.
     
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida pellentesque est eget lobortis. Donec malesuada nisl ac ligula placerat tempus. Integer eu massa vitae velit venenatis pellentesque. Aenean pellentesque blandit molestie. Quisque eros libero, euismod at aliquam quis, eleifend nec est. Fusce nunc eros, ullamcorper convallis adipiscing vel, egestas vitae diam. 
 
 Proin ut orci eget eros mattis ultrices. Morbi nulla risus, commodo euismod cursus ullamcorper, euismod eu arcu. Duis tincidunt malesuada elementum. Nullam eget arcu sem. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce enim erat, ultrices sit amet placerat sit amet, vestibulum a erat. Curabitur ultrices venenatis sollicitudin. Cras id lobortis tellus. Donec nunc arcu, laoreet a hendrerit sit amet, interdum ut augue. 
 
 Mauris et leo quam. Sed pulvinar est ac sem aliquam ornare.';
-    
+
   mica_standard_add_blog('New Pilot Project Announcement', $LOREM, '', 'blog1', 50, 0, 0);
   mica_standard_add_blog('Installation of Mica completed !', $LOREM, '', 'blog2', 50, 0, 0);
 }
@@ -161,7 +165,7 @@ function mica_standard_add_blog($title, $body, $link_title, $alias, $weight, $st
     'value' => $body,
     'format' => 'full_html'
   )));
-  
+
   $node->promote = 0;
   $node->sticky = $sticky;
   $node->language = LANGUAGE_NONE;

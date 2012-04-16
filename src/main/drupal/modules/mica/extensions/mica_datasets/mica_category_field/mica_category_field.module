@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @file
+ * Mica Category Field module file
+ */
 
 /**
  * Implements hook_field_info()
@@ -223,12 +226,13 @@ function mica_category_field_field_formatter_view($entity_type, $entity, $field,
       );
 
       $rows = array();
-      foreach($items as $item) {
+      foreach ($items as $item) {
         $row = array();
-        foreach($item as $key => $value) {
+        foreach ($item as $key => $value) {
           if ($key === 'missing') {
             $row[$key] = $value == 1 ? 'Missing' : '';
-          } else {
+          }
+          else {
             $row[$key] = $value;
           }
         }

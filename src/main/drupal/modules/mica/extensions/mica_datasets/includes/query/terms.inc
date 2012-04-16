@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * QueryTerm model
+ */
+
 interface QueryTermInterface {
 
   /**
@@ -89,7 +94,7 @@ abstract class AbstractTerm implements QueryTermInterface {
     $is_categorical = count($wrapper->field_variable_categories->value()) > 1;
     $type = $wrapper->field_value_type->value();
 
-    if($is_categorical) {
+    if ($is_categorical) {
       return 'CategoryTerm';
     }
     if ($type !== 'date') {
@@ -143,10 +148,10 @@ abstract class AbstractTerm implements QueryTermInterface {
     // One column for the category name and one per study
     $facets = array();
     $connectors = $this->getConnectors();
-    foreach($connectors as $connector) {
+    foreach ($connectors as $connector) {
       try {
         $facets[$connector->study_id] = $connector->facetTerm($this);
-      } catch(Exception $e) {
+      } catch (Exception $e) {
         $connector->displayError($e);
       }
     }
@@ -165,7 +170,7 @@ abstract class AbstractTerm implements QueryTermInterface {
       $query = mica_dataset_query_load($this->qt->query_id);
       $dataset_id = $query->dataset_id;
     }
-    else if (!empty($this->qt->dataset_id)) {
+    elseif (!empty($this->qt->dataset_id)) {
       $dataset_id = $this->qt->dataset_id;
     }
 
@@ -215,17 +220,17 @@ class CategoryTerm extends AbstractTerm {
 
     $headers = array('Value');
     $stats = $this->stats();
-    foreach($stats as $study_id => $stat) {
+    foreach ($stats as $study_id => $stat) {
       $study = node_load($study_id);
       $headers[] = $study->title;
     }
 
     $rows = array();
     $wrapper = entity_metadata_wrapper('node', $variable);
-    foreach($wrapper->field_variable_categories->value() as $category) {
+    foreach ($wrapper->field_variable_categories->value() as $category) {
       $category_name = $category["name"];
       $row = array($category_name);
-      foreach($stats as $study_id => $stat) {
+      foreach ($stats as $study_id => $stat) {
         $row[] = isset($stat[$category_name]) ? $stat[$category_name] : 0;
       }
       $rows[] = $row;
@@ -235,7 +240,7 @@ class CategoryTerm extends AbstractTerm {
 
   function form($form, &$form_state) {
     $form['inverted'] = array(
-      '#title' => t('Operator'), 
+      '#title' => t('Operator'),
       '#type' => 'select',
       '#options' => array('in' => 'in', 'notin' => 'not in'),
       '#default_value' => $this->isInverted() ? 'notin' : 'in',
@@ -244,7 +249,7 @@ class CategoryTerm extends AbstractTerm {
     // One column for the category name and one per study
     $headers = array('Value');
     $connectors = $this->getConnectors();
-    foreach($connectors as $connector) {
+    foreach ($connectors as $connector) {
       $study = node_load($connector->study_id);
       $headers[] = $study->title;
     }
@@ -255,14 +260,15 @@ class CategoryTerm extends AbstractTerm {
 
     $facets = $this->stats();
     $wrapper = entity_metadata_wrapper('node', $variable);
-    foreach($wrapper->field_variable_categories->value() as $category) {
+    foreach ($wrapper->field_variable_categories->value() as $category) {
       $category_name = $category["name"];
       $defaultValues[$category_name] = 0;
       $row = array($category_name);
-      foreach($connectors as $connector) {
-        if(isset($facets[$connector->study_id][$category_name])) {
+      foreach ($connectors as $connector) {
+        if (isset($facets[$connector->study_id][$category_name])) {
           $row[] = $facets[$connector->study_id][$category_name];
-        } else {
+        }
+        else {
           $row[] = 0;
         }
       }
@@ -276,7 +282,7 @@ class CategoryTerm extends AbstractTerm {
 
     $form['valuecontainer']['fieldset']['categories'] = array(
       '#type' => 'tableselect',
-      '#header' => $headers, 
+      '#header' => $headers,
       '#options' => $options,
       '#default_value' => $this->categoriesToForm($defaultValues),
     );
@@ -297,13 +303,13 @@ class CategoryTerm extends AbstractTerm {
 
   function toString() {
     $str = parent::toString();
-    if(count($this->categories()) > 0) {
+    if (count($this->categories()) > 0) {
       switch ($this->operator()) {
         case 'AND':
-          $str.= $this->isInverted() ? ' is not ' : ' is ';
+          $str .= $this->isInverted() ? ' is not ' : ' is ';
           break;
         default:
-          $str.= $this->isInverted() ? ' not in ' : ' in ';
+          $str .= $this->isInverted() ? ' not in ' : ' in ';
           break;
       }
       $str .= '(' . implode(', ', $this->categories()) . ')';
@@ -315,7 +321,7 @@ class CategoryTerm extends AbstractTerm {
    * Returns an array category => 0/1
    */
   private function categoriesToForm($rows) {
-    foreach($this->categories() as $c) {
+    foreach ($this->categories() as $c) {
       $rows['c_' . $c] = 1;
     }
     return $rows;
@@ -330,7 +336,7 @@ class CategoryTerm extends AbstractTerm {
     // array_keys will return only the array keys
     $selected = array_keys(array_filter($formCategories));
     $categories = array();
-    foreach($selected as $c) {
+    foreach ($selected as $c) {
       $categories[] = substr($c, 2);
     }
     return $categories;
@@ -357,7 +363,7 @@ class RangeTerm extends AbstractTerm {
     $headers = array('Study', 'Min', 'Max', 'Mean', 'Std. Dev', 'Count');
     $rows = array();
     $stats = $this->stats();
-    foreach($stats as $study_id => $stat) {
+    foreach ($stats as $study_id => $stat) {
       $study = node_load($study_id);
       $rows[] = array(
         $study->title,
@@ -377,24 +383,24 @@ class RangeTerm extends AbstractTerm {
   }
 
   function form($form, &$form_state) {
-    $variable=$this->getVariable();
+    $variable = $this->getVariable();
 
-    $type=$variable->field_value_type[LANGUAGE_NONE][0]['value'];
+    $type = $variable->field_value_type[LANGUAGE_NONE][0]['value'];
 
-    $operator=isset($form_state['values']['operator']) ?
-    $form_state['values']['operator'] : NULL;
+    $operator = isset($form_state['values']['operator']) ?
+      $form_state['values']['operator'] : NULL;
 
-    $form['inverted']=array(
-      '#title' => t('Operator'), 
+    $form['inverted'] = array(
+      '#title' => t('Operator'),
       '#type' => 'select',
       '#options' => array('in' => 'in', 'notin' => 'not in'),
       '#default_value' => $this->isInverted() ? 'notin' : 'in',
     );
 
     $form['valuecontainer'] = array(
-     '#type' => 'item',
-     '#prefix' => '<div id="'."valuecontainer".'">',
-     '#suffix' => '</div>',
+      '#type' => 'item',
+      '#prefix' => '<div id="' . "valuecontainer" . '">',
+      '#suffix' => '</div>',
     );
 
     $form['valuecontainer']['fieldset'] = array(
@@ -403,20 +409,22 @@ class RangeTerm extends AbstractTerm {
     );
 
     //TODO incomplete
-    $default_exact='exact';
-    $default_value=NULL;
-    $default_range_min=NULL;
-    $default_range_max=NULL;
-    $ranges=$this->ranges();
+    $default_exact = 'exact';
+    $default_value = NULL;
+    $default_range_min = NULL;
+    $default_range_max = NULL;
+    $ranges = $this->ranges();
 
     if (isset($ranges[0]['value'])) {
       $default_exact = 'exact';
-      $default_value=$ranges[0]['value'];
-    } else if(isset($ranges[0]['from']) || isset($ranges[0]['to'])) {
+      $default_value = $ranges[0]['value'];
+    }
+    elseif (isset($ranges[0]['from']) || isset($ranges[0]['to'])) {
       $default_exact = 'range';
-      $default_range_min=isset($ranges[0]['from']) ? $ranges[0]['from'] : NULL;
-      $default_range_max=isset($ranges[0]['to']) ? $ranges[0]['to'] : NULL;
-    } else {
+      $default_range_min = isset($ranges[0]['from']) ? $ranges[0]['from'] : NULL;
+      $default_range_max = isset($ranges[0]['to']) ? $ranges[0]['to'] : NULL;
+    }
+    else {
       $default_exact = 'exists';
     }
 
@@ -437,17 +445,17 @@ class RangeTerm extends AbstractTerm {
       '#states' => array(
         'visible' => array(
           ':input[name="exact-radio"]' => array('value' => 'exact'),
-    ),
+        ),
         'required' => array(
           ':input[name="exact-radio"]' => array('value' => 'exact'),
-    ),
-    ),
+        ),
+      ),
     );
 
     $sharedStates = array(
-        'visible' => array(
-          ':input[name="exact-radio"]' => array('value' => 'range'),
-    ),
+      'visible' => array(
+        ':input[name="exact-radio"]' => array('value' => 'range'),
+      ),
     );
 
     $form['valuecontainer']['fieldset']['min'] = array(
@@ -491,40 +499,44 @@ class RangeTerm extends AbstractTerm {
   }
 
   function validate($form, &$form_state) {
-    if($form_state['values']['exact-radio'] === 'range') {
-      $min=$form_state['values']['min'];
-      $max=$form_state['values']['max'];
-      if(empty($min) && empty($max)) {
+    if ($form_state['values']['exact-radio'] === 'range') {
+      $min = $form_state['values']['min'];
+      $max = $form_state['values']['max'];
+      if (empty($min) && empty($max)) {
         form_set_error('exact-radio', t('At least one value (min or max) must be specified'));
-      } else if(empty($min) == FALSE&& empty($max) == FALSE && $min >= $max) {
+      }
+      elseif (empty($min) == FALSE && empty($max) == FALSE && $min >= $max) {
         form_set_error('exact-radio', t('Min must be lower than max'));
-      } else if(empty($min) == FALSE && is_numeric($min) == FALSE) {
+      }
+      elseif (empty($min) == FALSE && is_numeric($min) == FALSE) {
         form_set_error('min', t('Value for min must be numeric'));
-      } else if(empty($max) == FALSE && is_numeric($max) == FALSE ) {
+      }
+      elseif (empty($max) == FALSE && is_numeric($max) == FALSE) {
         form_set_error('max', t('Value for max must be numeric'));
       }
     }
-    else if($form_state['values']['exact-radio'] === 'exact'){
-      $value=$form_state['values']['value'];
-      if(empty($value) || is_numeric($value) == FALSE) {
+    elseif ($form_state['values']['exact-radio'] === 'exact') {
+      $value = $form_state['values']['value'];
+      if (empty($value) || is_numeric($value) == FALSE) {
         form_set_error('value', t('Exact value is required and must be specified as a number'));
       }
     }
   }
 
   function submit($form, &$form_state) {
-    $inverted=$form_state['values']['inverted'];
-    $selection=NULL;
-    if($form_state['values']['exact-radio'] === 'range') {
-      $min=$form_state['values']['min'];
-      $max=$form_state['values']['max'];
-      $min = empty($min) ? NULL :$min;
-      $max = empty($max) ? NULL :$max;
-      $selection=$this->formToRanges(NULL, $min, $max);
-    } else if($form_state['values']['exact-radio'] === 'exact'){
-      $value=$form_state['values']['value'];
-      $value = empty($value) ? NULL :$value;
-      $selection=$this->formToRanges($value, NULL, NULL);
+    $inverted = $form_state['values']['inverted'];
+    $selection = NULL;
+    if ($form_state['values']['exact-radio'] === 'range') {
+      $min = $form_state['values']['min'];
+      $max = $form_state['values']['max'];
+      $min = empty($min) ? NULL : $min;
+      $max = empty($max) ? NULL : $max;
+      $selection = $this->formToRanges(NULL, $min, $max);
+    }
+    elseif ($form_state['values']['exact-radio'] === 'exact') {
+      $value = $form_state['values']['value'];
+      $value = empty($value) ? NULL : $value;
+      $selection = $this->formToRanges($value, NULL, NULL);
     }
     $this->setInverted($inverted === 'notin');
     $this->setRange($selection);
@@ -532,9 +544,9 @@ class RangeTerm extends AbstractTerm {
 
   private function formToRanges($value, $min, $max) {
     $range = array();
-    if(isset($value)) $range['value'] = $value;
-    if(isset($min)) $range['from'] = $min;
-    if(isset($max)) $range['to'] = $max;
+    if (isset($value)) $range['value'] = $value;
+    if (isset($min)) $range['from'] = $min;
+    if (isset($max)) $range['to'] = $max;
     return array($range);
   }
 
@@ -544,21 +556,23 @@ class RangeTerm extends AbstractTerm {
 
   function toString() {
     $str = parent::toString();
-    $str_range=' ';
-    $ranges=$this->ranges();
+    $str_range = ' ';
+    $ranges = $this->ranges();
     if (isset($ranges['0'])) {
-      $first_range=$ranges['0'];
+      $first_range = $ranges['0'];
       if (isset($first_range['from']) || isset($first_range['to'])) {
-        $from = isset($first_range['from']) ? '['. $first_range['from'] : '*' ; // can't print infinity symbol: &#8734;
-        $to = isset($first_range['to']) ? $first_range['to'] . '[' : '*' ;
-        $str_range.=": $from, $to";
-      } else if(isset($first_range['value'])) {
-        $str_range .= '= '.$first_range['value'];
-      } else {
+        $from = isset($first_range['from']) ? '[' . $first_range['from'] : '*'; // can't print infinity symbol: &#8734;
+        $to = isset($first_range['to']) ? $first_range['to'] . '[' : '*';
+        $str_range .= ": $from, $to";
+      }
+      elseif (isset($first_range['value'])) {
+        $str_range .= '= ' . $first_range['value'];
+      }
+      else {
         return $str;
       }
     }
-    return $str . ($this->isInverted() ? ' not' :'') . $str_range;
+    return $str . ($this->isInverted() ? ' not' : '') . $str_range;
   }
 }
 

@@ -223,7 +223,7 @@ function mica_datasets_update_7120(&$sandbox) {
   features_revert(array('mica_datasets' => array('field', 'user_permission', 'variable', 'menu_links')));
 
   _mica_datasets_migrate_participant_variable($participant_variable);
-  
+
   _mica_datasets_configure_field_bundle_settings();
 
   module_load_include('inc', 'mica_datasets', 'mica_datasets.facet_blocks');
@@ -237,10 +237,10 @@ function mica_datasets_update_7120(&$sandbox) {
 }
 
 /**
-* Add fields for dataset_studies and dataset_variables to the field_revision 
-*/
+ * Add fields for dataset_studies and dataset_variables to the field_revision
+ */
 function mica_datasets_update_7121(&$sandbox) {
-  
+
   db_drop_field('field_revision_field_dataset_studies', 'field_dataset_studies_view_id');
   db_drop_field('field_revision_field_dataset_studies', 'field_dataset_studies_arguments');
   db_drop_index('field_revision_field_dataset_studies', 'field_dataset_studies_view_id');
@@ -251,7 +251,7 @@ function mica_datasets_update_7121(&$sandbox) {
       'default' => NULL,
     )
   );
-  
+
   db_drop_field('field_revision_field_dataset_variables', 'field_dataset_variables_view_id');
   db_drop_field('field_revision_field_dataset_variables', 'field_dataset_variables_arguments');
   db_drop_index('field_revision_field_dataset_variables', 'field_dataset_variables_view_id');
@@ -262,8 +262,8 @@ function mica_datasets_update_7121(&$sandbox) {
       'default' => NULL,
     )
   );
-  
 }
+
 /**
  *
  * Update to 7120 depends on the update of mica_core
@@ -281,10 +281,10 @@ function mica_datasets_update_dependencies() {
 function _mica_datasets_configure_field_bundle_settings() {
   $variable_settings = array(
     'view_modes' => array(
-      'teaser' => array('custom_settings' => true),
-      'banner_area' => array('custom_settings' => true),
-      'left_area' => array('custom_settings' => true),
-      'right_area' => array('custom_settings' => true),
+      'teaser' => array('custom_settings' => TRUE),
+      'banner_area' => array('custom_settings' => TRUE),
+      'left_area' => array('custom_settings' => TRUE),
+      'right_area' => array('custom_settings' => TRUE),
     ),
     'extra_fields' => array(
       'form' => array(),
@@ -298,12 +298,12 @@ function _mica_datasets_change_dataset_studies_column() {
   if (db_table_exists('field_data_field_dataset_studies')) {
     db_update('field_config')
       ->fields(
-        array(
-          'type' => 'node_reference',
-          'module' => 'node_reference',
-          'data' => 'a:7:{s:12:"entity_types";a:0:{}s:17:"field_permissions";a:1:{s:4:"type";s:1:"0";}s:12:"foreign keys";a:1:{s:3:"nid";a:2:{s:5:"table";s:4:"node";s:7:"columns";a:1:{s:3:"nid";s:3:"nid";}}}s:7:"indexes";a:1:{s:3:"nid";a:1:{i:0;s:3:"nid";}}s:8:"settings";a:2:{s:19:"referenceable_types";a:17:{s:7:"article";i:0;s:4:"blog";i:0;s:7:"contact";i:0;s:19:"data_access_request";i:0;s:18:"data_access_review";i:0;s:7:"dataset";i:0;s:9:"documents";i:0;s:5:"event";i:0;s:17:"field_description";i:0;s:5:"forum";i:0;s:4:"page";i:0;s:5:"panel";i:0;s:7:"project";i:0;s:11:"publication";i:0;s:5:"study";s:5:"study";s:14:"teleconference";i:0;s:8:"variable";i:0;}s:4:"view";a:3:{s:4:"args";a:0:{}s:12:"display_name";s:0:"";s:9:"view_name";s:0:"";}}s:12:"translatable";s:1:"0";s:7:"storage";a:4:{s:4:"type";s:17:"field_sql_storage";s:8:"settings";a:0:{}s:6:"module";s:17:"field_sql_storage";s:6:"active";i:1;}}'
-        )
+      array(
+        'type' => 'node_reference',
+        'module' => 'node_reference',
+        'data' => 'a:7:{s:12:"entity_types";a:0:{}s:17:"field_permissions";a:1:{s:4:"type";s:1:"0";}s:12:"foreign keys";a:1:{s:3:"nid";a:2:{s:5:"table";s:4:"node";s:7:"columns";a:1:{s:3:"nid";s:3:"nid";}}}s:7:"indexes";a:1:{s:3:"nid";a:1:{i:0;s:3:"nid";}}s:8:"settings";a:2:{s:19:"referenceable_types";a:17:{s:7:"article";i:0;s:4:"blog";i:0;s:7:"contact";i:0;s:19:"data_access_request";i:0;s:18:"data_access_review";i:0;s:7:"dataset";i:0;s:9:"documents";i:0;s:5:"event";i:0;s:17:"field_description";i:0;s:5:"forum";i:0;s:4:"page";i:0;s:5:"panel";i:0;s:7:"project";i:0;s:11:"publication";i:0;s:5:"study";s:5:"study";s:14:"teleconference";i:0;s:8:"variable";i:0;}s:4:"view";a:3:{s:4:"args";a:0:{}s:12:"display_name";s:0:"";s:9:"view_name";s:0:"";}}s:12:"translatable";s:1:"0";s:7:"storage";a:4:{s:4:"type";s:17:"field_sql_storage";s:8:"settings";a:0:{}s:6:"module";s:17:"field_sql_storage";s:6:"active";i:1;}}'
       )
+    )
       ->condition('field_name', 'field_dataset_studies')
       ->execute();
 
@@ -318,7 +318,7 @@ function _mica_datasets_change_dataset_studies_column() {
         'default' => NULL,
       )
     );
-    
+
     db_add_index('field_data_field_dataset_studies', 'field_dataset_studies_nid', array('field_dataset_studies_nid'));
 
     $result = db_select('field_data_mica_dataset', 'f')
@@ -340,13 +340,13 @@ function _mica_datasets_change_dataset_studies_column() {
 function _mica_datasets_change_dataset_variables_column() {
   if (db_table_exists('field_data_field_dataset_variables')) {
     db_update('field_config')
-        ->fields(
-        array(
-          'type' => 'node_reference',
-          'module' => 'node_reference',
-          'data' => 'a:7:{s:12:"entity_types";a:0:{}s:17:"field_permissions";a:1:{s:4:"type";s:1:"0";}s:12:"foreign keys";a:1:{s:3:"nid";a:2:{s:5:"table";s:4:"node";s:7:"columns";a:1:{s:3:"nid";s:3:"nid";}}}s:7:"indexes";a:1:{s:3:"nid";a:1:{i:0;s:3:"nid";}}s:8:"settings";a:2:{s:19:"referenceable_types";a:17:{s:7:"article";i:0;s:4:"blog";i:0;s:7:"contact";i:0;s:19:"data_access_request";i:0;s:18:"data_access_review";i:0;s:7:"dataset";i:0;s:9:"documents";i:0;s:5:"event";i:0;s:17:"field_description";i:0;s:5:"forum";i:0;s:4:"page";i:0;s:5:"panel";i:0;s:7:"project";i:0;s:11:"publication";i:0;s:5:"study";i:0;s:14:"teleconference";i:0;s:8:"variable";s:8:"variable";}s:4:"view";a:3:{s:4:"args";a:0:{}s:12:"display_name";s:0:"";s:9:"view_name";s:0:"";}}s:12:"translatable";s:1:"0";s:7:"storage";a:4:{s:4:"type";s:17:"field_sql_storage";s:8:"settings";a:0:{}s:6:"module";s:17:"field_sql_storage";s:6:"active";i:1;}}'
-        )
+      ->fields(
+      array(
+        'type' => 'node_reference',
+        'module' => 'node_reference',
+        'data' => 'a:7:{s:12:"entity_types";a:0:{}s:17:"field_permissions";a:1:{s:4:"type";s:1:"0";}s:12:"foreign keys";a:1:{s:3:"nid";a:2:{s:5:"table";s:4:"node";s:7:"columns";a:1:{s:3:"nid";s:3:"nid";}}}s:7:"indexes";a:1:{s:3:"nid";a:1:{i:0;s:3:"nid";}}s:8:"settings";a:2:{s:19:"referenceable_types";a:17:{s:7:"article";i:0;s:4:"blog";i:0;s:7:"contact";i:0;s:19:"data_access_request";i:0;s:18:"data_access_review";i:0;s:7:"dataset";i:0;s:9:"documents";i:0;s:5:"event";i:0;s:17:"field_description";i:0;s:5:"forum";i:0;s:4:"page";i:0;s:5:"panel";i:0;s:7:"project";i:0;s:11:"publication";i:0;s:5:"study";i:0;s:14:"teleconference";i:0;s:8:"variable";s:8:"variable";}s:4:"view";a:3:{s:4:"args";a:0:{}s:12:"display_name";s:0:"";s:9:"view_name";s:0:"";}}s:12:"translatable";s:1:"0";s:7:"storage";a:4:{s:4:"type";s:17:"field_sql_storage";s:8:"settings";a:0:{}s:6:"module";s:17:"field_sql_storage";s:6:"active";i:1;}}'
       )
+    )
       ->condition('field_name', 'field_dataset_variables')
       ->execute();
 
@@ -361,7 +361,7 @@ function _mica_datasets_change_dataset_variables_column() {
         'default' => NULL,
       )
     );
-    
+
     db_add_index('field_data_field_dataset_variables', 'field_dataset_variables_nid', array('field_dataset_variables_nid'));
 
     $result = db_select('field_data_field_dataset', 'f')
@@ -412,7 +412,7 @@ function _mica_datasets_migrate_participant_variable($participant_variables) {
     db_delete('history')->condition('nid', $nids, 'IN')->execute();
     db_delete('node_access')->condition('nid', $nids, 'IN')->execute();
   }
-  
+
   search_api_index_delete('participant_variable_index');
 
   node_type_delete('participant_variable');

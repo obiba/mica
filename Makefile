@@ -313,6 +313,7 @@ mica-install-clear: mica-install
 coder:
 	cd target/$(micadir) && \
 	drush dl coder && \
+	drush dl grammar_parser_lib && \
  	drush en coder* --yes
 
 git: git-prepare git-modules git-themes git-profiles

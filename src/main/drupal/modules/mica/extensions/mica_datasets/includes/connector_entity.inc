@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Mica Datasets Connector entity
+ */
+
+/**
  * Class representing a dataset connector.
  *
  * This can handle the same calls as defined in the MicaDatasetConnectionInterface
@@ -129,7 +134,7 @@ class MicaDatasetConnector extends Entity {
 
   public function displayError(Exception $e) {
     $study = node_load($this->study_id);
-    switch($e->getCode()) {
+    switch ($e->getCode()) {
       case 401:
         drupal_set_message(t("Study %study: Authentication failed (401).",
           array("%study" => $study->title)), 'error');
@@ -210,7 +215,7 @@ class MicaDatasetConnector extends Entity {
       ->propertyCondition('dataset_id', $dataset_id)
       ->execute();
     if (!empty($results['mica_dataset_connector'])) {
-      $ids =  array_keys($results['mica_dataset_connector']);
+      $ids = array_keys($results['mica_dataset_connector']);
       return entity_load('mica_dataset_connector', $ids);
     }
     return array();

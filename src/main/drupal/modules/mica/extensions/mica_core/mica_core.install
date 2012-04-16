@@ -1,6 +1,4 @@
 <?php
-// $Id$
-
 /**
  * @file
  * Install Mica Core module.
@@ -12,11 +10,11 @@
  */
 function mica_core_update_7120(&$sandbox) {
   $result = db_query('SELECT * FROM {mica_relation}')->fetchAll();
-  if (!empty($result)){
-  	variable_set('mica_relation_export', $result);
+  if (!empty($result)) {
+    variable_set('mica_relation_export', $result);
   }
   db_drop_table('mica_relation');
-  
+
   _mica_core_rebuild_registry();
 }
 

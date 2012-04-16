@@ -1,6 +1,4 @@
 <?php
-// $Id$ 
-
 /**
  * @file
  * Class definition of FeedsMicaRelationProcessor.
@@ -81,7 +79,8 @@ class FeedsMicaRelationProcessor extends FeedsNodeProcessor {
     while ($item = $parser_result->shiftItem()) {
       // Always load from study_legacy_id
       if (!($entity_id = $this->existingEntityId($source, $parser_result)) ||
-        ($this->config['update_existing'] != FEEDS_SKIP_EXISTING)) {
+        ($this->config['update_existing'] != FEEDS_SKIP_EXISTING)
+      ) {
 
         // Only proceed if item has actually changed.
         $hash = $this->hash($item);

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * MicaRelation entity
+ */
 
 /**
  * Class representing a relation.
@@ -77,27 +81,27 @@ class MicaRelation extends Entity {
       $index->options['data_alter_callbacks']['search_api_alter_bundle_filter']['settings']['bundles'][$this->child_bundle] = $this->child_bundle;
       entity_save('search_api_index', $index);
     }
-     
+
     // we don't want to keep index info in mica_relation table
     unset($this->options['parent_indexes']);
     unset($this->options['child_indexes']);
-     
+
     return parent::save();
   }
 
   private function save_drupal_relation() {
     $drupal_relation = array(
-    	'predicate' => $this->options['relation'],
-    	'label' => $this->label,
-    	'directional' => TRUE,
-    	'transitive' => TRUE,
-    	'min_arity' => 2,
-  		'max_arity' => 2,
-    	'source_bundles' => array(
-    		'node:' . $this->parent_bundle => 'node:' . $this->parent_bundle, 
+      'predicate' => $this->options['relation'],
+      'label' => $this->label,
+      'directional' => TRUE,
+      'transitive' => TRUE,
+      'min_arity' => 2,
+      'max_arity' => 2,
+      'source_bundles' => array(
+        'node:' . $this->parent_bundle => 'node:' . $this->parent_bundle,
       ),
-    	'target_bundles' => array(
-    		'node:' . $this->child_bundle => 'node:' . $this->child_bundle, 
+      'target_bundles' => array(
+        'node:' . $this->child_bundle => 'node:' . $this->child_bundle,
       ),
     );
 
@@ -111,38 +115,38 @@ class MicaRelation extends Entity {
   public function add_node_reference_to_parent($child_name) {
 
     $node_ref_field_name = $this->options['node_reference'];
-     
+
     field_create_field(array(
-	    'field_name' => $node_ref_field_name,
-	    'type' => 'node_reference',
-	    'cardinality' => 1,
-	    'settings' => array(
-	      'referenceable_types' => array(
+      'field_name' => $node_ref_field_name,
+      'type' => 'node_reference',
+      'cardinality' => 1,
+      'settings' => array(
+        'referenceable_types' => array(
           $this->child_bundle => $this->child_bundle,
         ),
-	      'field_permissions' => array(
-	        'create' => 'create',
-	        'view' => 'view',
+        'field_permissions' => array(
+          'create' => 'create',
+          'view' => 'view',
         ),
       ),
     ));
-     
+
     field_create_instance(array(
-	    'field_name' => $node_ref_field_name,
-	    'label' => $child_name,
-	    'entity_type' => 'node',
-	    'bundle' => $this->parent_bundle,
-	    'widget' => array(
-	    	'type' => 'options_select',
+      'field_name' => $node_ref_field_name,
+      'label' => $child_name,
+      'entity_type' => 'node',
+      'bundle' => $this->parent_bundle,
+      'widget' => array(
+        'type' => 'options_select',
       ),
- 			'display' => array(
+      'display' => array(
         'default' => array(
           'label' => 'hidden',
-        	'type' => 'node_reference_field_name_link',      
+          'type' => 'node_reference_field_name_link',
         ),
       ),
     ));
-     
+
   }
 
 
@@ -153,27 +157,27 @@ class MicaRelation extends Entity {
 
   private function add_relation_field($source, $source_bundle, $target_bundle) {
     field_create_field(array(
-	    'field_name' => $source,
-	    'type' => 'relation',
-	    'cardinality' => 1,
-	    'settings' => array(
-	      'referenceable_types' => array($target_bundle => $target_bundle),
-	      'field_permissions' => array(
-	        'create' => 'create',
-	        'view' => 'view',
+      'field_name' => $source,
+      'type' => 'relation',
+      'cardinality' => 1,
+      'settings' => array(
+        'referenceable_types' => array($target_bundle => $target_bundle),
+        'field_permissions' => array(
+          'create' => 'create',
+          'view' => 'view',
         ),
       ),
     ));
 
     $target_bundle_info = node_type_load($target_bundle);
     field_create_instance(array(
-	    'field_name' => $source,
-	    'label' => $target_bundle_info->name,
-	    'entity_type' => 'node',
-	    'bundle' => $source_bundle,
-	    'widget' => array('type' => 'relation_default'),
+      'field_name' => $source,
+      'label' => $target_bundle_info->name,
+      'entity_type' => 'node',
+      'bundle' => $source_bundle,
+      'widget' => array('type' => 'relation_default'),
     ));
-     
+
   }
 
   /**
@@ -184,12 +188,12 @@ class MicaRelation extends Entity {
     if (!$this->options['cascaded']) return FALSE;
 
     $field_ref = $this->options['node_reference'];
-    
+
     if (property_exists($parent_node, $field_ref)) $field = $parent_node->$field_ref;
 
     // do not create child if child id is already provided (case of data import)
     if (empty($field) || empty($field[LANGUAGE_NONE])) {
-       
+
       // create new child
       $node_child = new stdClass();
       $node_child->type = $this->child_bundle;
@@ -200,11 +204,11 @@ class MicaRelation extends Entity {
       $node_child->status = $parent_node->status; // same publication status
 
       watchdog('mica', 'Create child %child for parent %parent : %title',
-      array(
-        '%child' => $this->child_bundle, 
-        '%parent' => $parent_node->type,
-        '%title' => $parent_node->title,
-      ), WATCHDOG_INFO);
+        array(
+          '%child' => $this->child_bundle,
+          '%parent' => $parent_node->type,
+          '%title' => $parent_node->title,
+        ), WATCHDOG_INFO);
 
       node_save($node_child);
 
@@ -212,10 +216,10 @@ class MicaRelation extends Entity {
       if (!empty($parent_menu) && $parent_menu['mlid'] != 0 && array_key_exists('enabled', $parent_menu) && $parent_menu['enabled']) {
         $field_ref_info = field_info_instance('node', $field_ref, $this->parent_bundle);
         $child_menu_item = array(
-				  'menu_name' => 'main-menu',
-				  'link_title' => t($field_ref_info['label']),
-				  'link_path' => 'node/' . $node_child->nid,
-				  'plid' => $parent_menu['mlid'],
+          'menu_name' => 'main-menu',
+          'link_title' => t($field_ref_info['label']),
+          'link_path' => 'node/' . $node_child->nid,
+          'plid' => $parent_menu['mlid'],
         );
         menu_link_save($child_menu_item);
         menu_cache_clear('main-menu');
@@ -225,7 +229,7 @@ class MicaRelation extends Entity {
       $parent_node->$field_ref = array(
         LANGUAGE_NONE => array(
           0 => array(
-          	'nid' => $node_child->nid,
+            'nid' => $node_child->nid,
           ),
         ),
       );
@@ -246,10 +250,10 @@ class MicaRelation extends Entity {
     if (!empty($parent_menu) && $parent_menu['menu_name'] != 'main-menu') {
       unset($parent_menu);
     }
-   
+
     $field_ref = $this->options['node_reference'];
     $field = $parent_node->$field_ref;
-    
+
     $child_nid = $field[LANGUAGE_NONE][0]['nid'];
     $node_child = node_load($child_nid);
 
@@ -260,25 +264,25 @@ class MicaRelation extends Entity {
       menu_link_delete($child_menu['mlid']);
       $clear_menu_cache = TRUE;
     }
-     
+
     // create child menu if needed
     if (!empty($parent_menu) && $parent_menu['mlid'] != 0 && array_key_exists('enabled', $parent_menu) && $parent_menu['enabled']) {
       $field_ref_info = field_info_instance('node', $field_ref, $this->parent_bundle);
       $child_menu_item = array(
-				'menu_name' => 'main-menu',
-				'link_title' => t($field_ref_info['label']),
-				'link_path' => 'node/' . $child_nid,
-				'plid' => $parent_menu['mlid'],
+        'menu_name' => 'main-menu',
+        'link_title' => t($field_ref_info['label']),
+        'link_path' => 'node/' . $child_nid,
+        'plid' => $parent_menu['mlid'],
       );
       menu_link_save($child_menu_item);
       $clear_menu_cache = TRUE;
- 	  }
+    }
 
- 	  if ($clear_menu_cache) {
+    if ($clear_menu_cache) {
       menu_cache_clear('main-menu');
     }
 
-    $node_child->uid = $parent_node->uid;  // same author
+    $node_child->uid = $parent_node->uid; // same author
     $node_child->title = $parent_node->title;
     node_save($node_child);
   }
@@ -291,9 +295,9 @@ class MicaRelation extends Entity {
     node_delete($child_nid);
 
     watchdog('mica', 'Delete child %child for deleted parent %parent', array(
-    		'%child' => $this->child_bundle, 
-      	'%parent' => $parent_node->type,
-      ), WATCHDOG_INFO);
+      '%child' => $this->child_bundle,
+      '%parent' => $parent_node->type,
+    ), WATCHDOG_INFO);
   }
 
 }

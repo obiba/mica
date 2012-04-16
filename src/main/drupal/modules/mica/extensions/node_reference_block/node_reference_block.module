@@ -19,40 +19,40 @@ function node_reference_block_block_info() {
 }
 
 /**
-* Implements hook_block_configure().
-*/
+ * Implements hook_block_configure().
+ */
 function node_reference_block_block_configure($delta = '') {
- 
-	if ($delta === 'related-content') {
-	  $form['visibility']['exclude_related_type'] = array(
-			'#type' => 'fieldset',
+
+  if ($delta === 'related-content') {
+    $form['visibility']['exclude_related_type'] = array(
+      '#type' => 'fieldset',
       '#title' => t('Excluded related types'),
       '#collapsible' => TRUE,
       '#collapsed' => TRUE,
       '#group' => 'visibility',
       '#weight' => 6,
-  		'#attached' => array(
+      '#attached' => array(
         'js' => array(drupal_get_path('module', 'node_reference_block') . '/node_reference_block.js'),
-	    ),
-	  );	  
-		$form['visibility']['exclude_related_type']['related_content_block_exclude'] = array(
-  		'#type' => 'checkboxes',
-	    '#title' => t('Excluded related types'),
-	    '#default_value' => variable_get('related_content_block_exclude', array('pairing')),
-	    '#options' => node_type_get_names(),
-	    '#description' => t('Excludes selected types from related information.'),		
-		);
-		return $form;
-	}
+      ),
+    );
+    $form['visibility']['exclude_related_type']['related_content_block_exclude'] = array(
+      '#type' => 'checkboxes',
+      '#title' => t('Excluded related types'),
+      '#default_value' => variable_get('related_content_block_exclude', array('pairing')),
+      '#options' => node_type_get_names(),
+      '#description' => t('Excludes selected types from related information.'),
+    );
+    return $form;
+  }
 }
 
 /**
-* Implements hook_block_save().
-*/
+ * Implements hook_block_save().
+ */
 function node_reference_block_block_save($delta = '', $edit = array()) {
-	if ($delta === 'related-content') {
-		variable_set('related_content_block_exclude', array_filter($edit['related_content_block_exclude']));
-	}
+  if ($delta === 'related-content') {
+    variable_set('related_content_block_exclude', array_filter($edit['related_content_block_exclude']));
+  }
 }
 
 /**
@@ -75,15 +75,15 @@ function node_reference_block_block_view($delta = '') {
  * Related content block content.
  */
 function _node_reference_block_related_content_block_content() {
-  
+
   $exclude_types = variable_get('related_content_block_exclude', array('pairing'));
-  
+
   if (strpos($_GET['q'], 'node/') === 0) {
     $node_path = explode('/', $_GET['q']);
     if (array_key_exists(1, $node_path) && is_numeric($node_path[1])) {
       $node = node_load($node_path[1]);
       $related_content = array();
-      
+
       // look for nodes refering the current node
       $query = db_select('field_config', 'f')
         ->fields('f', array('field_name'))
@@ -91,17 +91,17 @@ function _node_reference_block_related_content_block_content() {
         ->condition('f.deleted', FALSE, '=');
 
       $result = $query->execute();
-      while($record = $result->fetchAssoc()) {
+      while ($record = $result->fetchAssoc()) {
         $field_name = $record['field_name'];
         $q = db_select('field_data_' . $field_name, 'f')
           ->fields('f', array('entity_id'))
           ->condition('f.deleted', FALSE, '=')
-          ->condition('f.' . $field_name .'_nid', $node->nid, '=');
+          ->condition('f.' . $field_name . '_nid', $node->nid, '=');
         $res = $q->execute();
 
-        while($rec = $res->fetchAssoc()) {
+        while ($rec = $res->fetchAssoc()) {
           $related_node = node_load($rec['entity_id']);
-          
+
           if (in_array($related_node->type, $exclude_types)) continue;
 
           if (node_access('view', $related_node)) {
@@ -117,14 +117,14 @@ function _node_reference_block_related_content_block_content() {
       // look for nodes referred by the current node
       $query = db_select('field_config', 'f');
       $query->join('field_config_instance', 'fi', 'f.id = fi.field_id');
-      $query->fields('f',array('field_name'))
+      $query->fields('f', array('field_name'))
         ->condition('f.type', 'node_reference', '=')
         ->condition('f.deleted', FALSE, '=')
         ->condition('fi.bundle', $node->type, '=');
 
       $result = $query->execute();
 
-      while($record = $result->fetchAssoc()) {
+      while ($record = $result->fetchAssoc()) {
         $field_name = $record['field_name'];
         $field = $node->$field_name;
 
@@ -154,7 +154,7 @@ function _node_reference_block_related_content_block_content() {
         if (!empty($relations)) {
           $content .= '<li>' . t($group) . '<ul>';
           foreach ($relations as $title => $nid) {
-            $content .= '<li>' . l(t($title),'node/' . $nid) . '</li>';
+            $content .= '<li>' . l(t($title), 'node/' . $nid) . '</li>';
           }
           $content .= '</ul></li>';
         }

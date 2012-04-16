@@ -99,7 +99,7 @@ function mica_studies_node_insert($node) {
  * Implements hook_node_view()
  */
 function mica_studies_node_view($node, $view_mode, $langcode) {
-  switch($node->type) {
+  switch ($node->type) {
     case 'study':
       _mica_studies_study_view($node, $view_mode, $langcode);
       break;
@@ -119,7 +119,7 @@ function _mica_studies_study_view($node, $view_mode, $langcode) {
       'field' => 'field_design',
       'key' => 'other',
       'label_as_prefix' => FALSE,
-      'enclosed' => FALSE, 
+      'enclosed' => FALSE,
     ),
     'field_recruitment_other_sp' => array(
       'field' => 'field_recruitment',
@@ -196,14 +196,16 @@ function _mica_studies_study_view($node, $view_mode, $langcode) {
   if (isset($node->content['field_no_limits_participants']) && isset($node->content['field_no_limits_participants']['#items'])) {
     if ($node->content['field_no_limits_participants']['#items'][0]['value']) {
       $node->content['field_no_limits_participants'][0]['#markup'] = $node->content['field_no_limits_participants']['#title'];
-    } else {
+    }
+    else {
       $node->content['field_no_limits_participants']['#access'] = FALSE;
     }
   }
   if (isset($node->content['field_no_limits_samples']) && isset($node->content['field_no_limits_samples']['#items'])) {
     if ($node->content['field_no_limits_samples']['#items'][0]['value']) {
       $node->content['field_no_limits_samples'][0]['#markup'] = $node->content['field_no_limits_samples']['#title'];
-    } else {
+    }
+    else {
       $node->content['field_no_limits_samples']['#access'] = FALSE;
     }
   }
@@ -223,7 +225,8 @@ function _mica_studies_contact_view($node, $view_mode, $langcode) {
 
 function _mica_studies_study_view_selection_criteria(&$node, $view_mode, $langcode, $wrapper) {
   if (isset($node->content['#groups']['group_participants_selection'])
-    && $node->content['#groups']['group_participants_selection']->format_type !== 'hidden') {
+    && $node->content['#groups']['group_participants_selection']->format_type !== 'hidden'
+  ) {
 
     if (!isset($node->content['field_select_criteria'])) {
       // create empty field_select_criteria if it has no values
@@ -300,8 +303,8 @@ function _mica_studies_study_view_selection_criteria_item(&$node, $wrapper, $fie
     $node->content['field_select_criteria']['#items'][$index] = $node->content[$field]['#items'];
     $markup = '';
     for ($i = 0; $i < $nb_items; $i++) {
-      $markup .=  $node->content[$field][$i]['#markup'];
-      if ($i < $nb_items - 1)  $markup .= ', ';
+      $markup .= $node->content[$field][$i]['#markup'];
+      if ($i < $nb_items - 1) $markup .= ', ';
     }
     $markup_label = $label;
     if ($nb_items > 1 && strlen($label_plural) > 0) {
@@ -325,7 +328,8 @@ function _mica_studies_study_view_authorization(&$node, $view_mode, $langcode, $
       $site_name = variable_get('site_name', "[SPECIFIC NETWORK]");
       if (empty($person_name)) {
         $txt = t("Contribution to @site authorised", array('@site' => $site_name));
-      } else {
+      }
+      else {
         $txt = t("@name authorised the contribution to @site", array('@name' => $person_name, '@site' => $site_name));
       }
       $node->content['field_authorization_specific'][0]['#markup'] = $txt;
@@ -344,7 +348,8 @@ function _mica_studies_study_view_authorization(&$node, $view_mode, $langcode, $
       $person_name = $wrapper->field_authorising_person_name_m->value();
       if (empty($person_name)) {
         $txt = t("Contribution to Maelstrom Research authorised");
-      } else {
+      }
+      else {
         $txt = t("@name authorised the contribution to Maelstrom Research", array('@name' => $person_name));
       }
       $node->content['field_authorization_maelstrom'][0]['#markup'] = $txt;
@@ -497,7 +502,8 @@ function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_s
     if ($type != 'radios') {
       $input = $input . '[' . $key_selected . ']';
       $rule['checked'] = TRUE;
-    } else {
+    }
+    else {
       $rule['value'] = $key_selected;
     }
     $input = $input . '"]';
@@ -526,7 +532,7 @@ function _mica_studies_display_status_dates(&$node, $status_dates) {
       }
       $end = $wrapper->$end_date->value();
       if (!empty($end) && isset($node->content[$end_date])) {
-        $node->content[$start_date][0]['#markup'] .= ' ' . t('to') . ' ' .  $node->content[$end_date][0]['#markup'];
+        $node->content[$start_date][0]['#markup'] .= ' ' . t('to') . ' ' . $node->content[$end_date][0]['#markup'];
       }
       $node->content[$end_date]['#access'] = FALSE;
     }
@@ -545,7 +551,7 @@ function _mica_bind_other_specify(&$node, $bindings) {
       if (!isset($options['enclosed']) || $options['enclosed']) {
         $start = ' (';
         $end = ')';
-      } 
+      }
 
       if (isset($key)) {
         // get the array index of the key
@@ -555,9 +561,10 @@ function _mica_bind_other_specify(&$node, $bindings) {
             break;
           }
         }
-      } else {
+      }
+      else {
         $node->content[$field]['#items'][] = array('value' => 'extraone');
-        $index = count($node->content[$field]['#items']) -1;
+        $index = count($node->content[$field]['#items']) - 1;
       }
 
       if (isset($index)) {
@@ -574,7 +581,8 @@ function _mica_bind_other_specify(&$node, $bindings) {
                 $field_info = field_info_instance('node', $f, 'study');
                 if (isset($field_info['display_label']) && strlen(trim($field_info['display_label'])) > 0) {
                   $prefix = $field_info['display_label'] . ' ';
-                } else {
+                }
+                else {
                   $prefix = $node->content[$f]['#title'] . ' ';
                 }
               }
@@ -588,7 +596,8 @@ function _mica_bind_other_specify(&$node, $bindings) {
           }
           $content = implode($delimiter, $specifies);
 
-        } else {
+        }
+        else {
 
           for ($i = 0; $i < count($node->content[$other_sp]); $i++) {
             if (isset($node->content[$other_sp][$i])) {
@@ -609,25 +618,28 @@ function _mica_bind_other_specify(&$node, $bindings) {
           $content = implode($delimiter, $specifies);
         }
         if (strlen(trim($content)) > 0) {
-          if (key_exists($index, $node->content[$field])){
+          if (key_exists($index, $node->content[$field])) {
             if (isset($options['enclosed']) && !$options['enclosed']) {
               $node->content[$field][$index]['#markup'] = $content;
             }
-            else{
+            else {
               $node->content[$field][$index]['#markup'] .= $start . $content . $end;
             }
-          } else {
+          }
+          else {
             if (isset($key)) {
               if (isset($options['enclosed']) && !$options['enclosed']) {
                 $node->content[$field][0]['#markup'] = $content;
               }
-              else{
+              else {
                 $node->content[$field][0]['#markup'] .= $start . $content . $end;
               }
-            } else {
+            }
+            else {
               if (key_exists('custom_prefix', $options)) {
-                $node->content[$field][] = array('#markup' => $options['custom_prefix']  . ': ' . $content);
-              } else {
+                $node->content[$field][] = array('#markup' => $options['custom_prefix'] . ': ' . $content);
+              }
+              else {
                 $node->content[$field][] = array('#markup' => $content);
               }
             }
@@ -705,7 +717,7 @@ function _mica_studies_form_validate_field($form, &$form_state, $dependee, $depe
     $flangs = array_keys($form_state['values'][$dependee]);
     $flang = $flangs[0];
     $values = array();
-    foreach($form_state['values'][$dependee][$flang] as $value) {
+    foreach ($form_state['values'][$dependee][$flang] as $value) {
       $values[] = $value['value'];
     }
 
@@ -728,7 +740,7 @@ function _mica_studies_form_validate_field($form, &$form_state, $dependee, $depe
  */
 function mica_studies_block_view_alter(&$data, $block) {
   if (is_null($block) || $block->delta !== 'standard' || $block->module !== 'current_search') return;
-  foreach($data['content']['active_items']['#items'] as $key => $item) {
+  foreach ($data['content']['active_items']['#items'] as $key => $item) {
     if ($item === '[all items]') unset($data['content']['active_items']['#items'][$key]);
   }
 }

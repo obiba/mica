@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Studies facet blocks configuration
+ */
 
 include_once(drupal_get_path('module', 'facetapi') . '/facetapi.block.inc');
 include_once(drupal_get_path('module', 'current_search') . '/current_search.block.inc');
@@ -11,21 +15,21 @@ function mica_studies_configure_facet_blocks() {
 
   // configure current search
   $nb_updated = db_update('block')->fields(
-      array(
-        'status' => 1,
-        'region' => 'sidebar_second',
-        'weight' => 0,
-        'visibility' => BLOCK_VISIBILITY_LISTED,
-        'pages' => $page,
-      )
+    array(
+      'status' => 1,
+      'region' => 'sidebar_second',
+      'weight' => 0,
+      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'pages' => $page,
     )
+  )
     ->condition('module', 'current_search')
     ->condition('delta', 'standard')
     ->condition('theme', $theme_default)
     ->execute();
   current_search_set_block_searcher('standard', 'search_api@studies_index');
   watchdog('mica', 'Configured current_search block: %status',
-    array('%status' => ($nb_updated> 0 ? 'Done' : 'Error')), WATCHDOG_DEBUG);
+    array('%status' => ($nb_updated > 0 ? 'Done' : 'Error')), WATCHDOG_DEBUG);
 
   // disable some facets because Features/FacetAPI always export them as enabled: http://drupal.org/node/1439950
   $disabled_facets = array(
@@ -78,12 +82,12 @@ function mica_studies_configure_facet_blocks() {
       'field_ended_end_year' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
     )
   );
-  
+
   foreach ($facet_order_by_region as $region => $facet_order) {
-    
+
     $max_weight = db_query("SELECT MAX(weight) as max_weight FROM {block} WHERE theme = :theme and region = :region",
       array(
-      	':theme' => $theme_default, 
+        ':theme' => $theme_default,
         ':region' => $region
       )
     )->fetchField();
@@ -94,12 +98,12 @@ function mica_studies_configure_facet_blocks() {
 
       // facetapi_get_delta_map() is not loaded yet so we need to generate hash
       $facet_delta = facetapi_hash_delta('search_api@studies_index:block:' . $facet_field);
-      
+
       if (empty($facet_delta)) {
-        drupal_set_message('No facet defined for ' . $facet_field, 'warning');
+        drupal_set_message(t('No facet defined for @facet', array('@facet' => check_plain($facet_field))), 'warning');
         continue;
       }
-      
+
       $facet_weight = $max_weight + $index++;
 
       $block = db_query('SELECT * FROM {block} WHERE module = :module AND delta = :delta AND theme = :theme',
@@ -110,37 +114,38 @@ function mica_studies_configure_facet_blocks() {
         )
       )->fetchObject();
 
-      if($block) {
+      if ($block) {
         $nb_updated = db_update('block')->fields(
-            array(
-              'status' => 1,
-              'region' => $region,
-              'weight' => $facet_weight,
-              'visibility' => BLOCK_VISIBILITY_LISTED,
-              'pages' => $page,
-            )
+          array(
+            'status' => 1,
+            'region' => $region,
+            'weight' => $facet_weight,
+            'visibility' => BLOCK_VISIBILITY_LISTED,
+            'pages' => $page,
           )
+        )
           ->condition('module', 'facetapi')
           ->condition('delta', $facet_delta)
           ->condition('theme', $theme_default)
           ->execute();
-      } else {
+      }
+      else {
 
         $field_info = field_info_instance('node', $facet_field, 'study');
         $nb_updated = db_insert('block')->fields(
-            array(
-              'status' => 1,
-              'region' => $region,
-              'weight' => $facet_weight,
-              'visibility' => BLOCK_VISIBILITY_LISTED,
-              'pages' => $page,
-              'custom' => BLOCK_CUSTOM_ENABLED, // Show this block by default but let individual users hide it.
-              'delta' => $facet_delta,
-              'module' => 'facetapi',
-              'theme' => $theme_default,
-              'title' => truncate_utf8($field_info['label'], 64),
-            )
+          array(
+            'status' => 1,
+            'region' => $region,
+            'weight' => $facet_weight,
+            'visibility' => BLOCK_VISIBILITY_LISTED,
+            'pages' => $page,
+            'custom' => BLOCK_CUSTOM_ENABLED, // Show this block by default but let individual users hide it.
+            'delta' => $facet_delta,
+            'module' => 'facetapi',
+            'theme' => $theme_default,
+            'title' => truncate_utf8($field_info['label'], 64),
           )
+        )
           ->execute();
       }
 
@@ -156,8 +161,8 @@ function mica_studies_configure_facet_blocks() {
           '%delta' => $facet_delta),
         $success ? WATCHDOG_INFO : WATCHDOG_ERROR);
 
-    }    
-    
+    }
+
   }
 
 }

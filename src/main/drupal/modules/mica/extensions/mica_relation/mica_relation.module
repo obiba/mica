@@ -70,7 +70,8 @@ function mica_relation_node_presave($node) {
       }
     }
 
-  } else {
+  }
+  else {
 
     $relations = mica_relation_find_relations_by_parent($node->type);
     if (!empty($relations)) {
@@ -122,7 +123,8 @@ function mica_relation_node_access($node, $op, $account) {
     $type = is_string($node) ? $node : $node->type;
     $relation = mica_relation_find_relation_by_child($type);
     if (!is_null($relation)) return NODE_ACCESS_DENY;
-  } else {
+  }
+  else {
     return NODE_ACCESS_IGNORE;
   }
 }
@@ -130,20 +132,21 @@ function mica_relation_node_access($node, $op, $account) {
 function mica_relation_form_alter(&$form, $form_state, $form_id) {
   $node_type = NULL;
 
-  if (array_key_exists('#node', $form) && isset($form['type']['#value'])){
+  if (array_key_exists('#node', $form) && isset($form['type']['#value'])) {
     $node_type = $form['type']['#value'];
-  } else if ($form_id === 'feeds_delete_tab_form' ) { // Disable for feeds also
+  }
+  elseif ($form_id === 'feeds_delete_tab_form') { // Disable for feeds also
     $importer = feeds_importer($form['#importer_id']);
     $node_type = $importer->processor->config['content_type'];
   }
 
-  if (!is_null($node_type)){
+  if (!is_null($node_type)) {
     $relation = mica_relation_find_relation_by_child($node_type);
 
-    if (!is_null($relation) && array_key_exists('actions', $form)){
+    if (!is_null($relation) && array_key_exists('actions', $form)) {
       $form['actions']['info'] = array(
         '#markup' => '&nbsp;&nbsp;This node should not be deleted because it is used by the relation "' .
-          $relation->label .'". Only parents of relations can be deleted.',
+          $relation->label . '". Only parents of relations can be deleted.',
         '#weight' => '50',
       );
     }
@@ -222,7 +225,8 @@ function mica_relation_form_node_type_form_alter(&$form, $form_state) {
       : $indexes[$selected_parent_bundle];
     if (empty($relation)) {
       $child_indexes_default_value = empty($parent_indexes) ? array() : array_keys($parent_indexes);
-    } else {
+    }
+    else {
       $child_indexes_default_value = empty($relation->options['child_indexes'])
         ? array()
         : $relation->options['child_indexes'];
@@ -290,7 +294,8 @@ function _mica_relation_edit_node_type_relation($form, &$form_state) {
         ), WATCHDOG_INFO);
     }
 
-  } else {
+  }
+  else {
 
     if (empty($relation)) {
       $relation = new MicaRelation();
@@ -333,26 +338,26 @@ function _mica_relation_edit_node_type_relation($form, &$form_state) {
       if (empty($result)) {
         // no content for parent type, we can replace node reference field and relation
         field_delete_field($previous_relation->options['node_reference']);
-        
+
         // Override previous_relation parameters with current ones
         $relation->parent_bundle = $parent_bundle;
-  
+
         $parent_bundle_infos = node_type_load($parent_bundle);
         $child_bundle_infos = node_type_load($new_type);
         $relation->label = $parent_bundle_infos->name . ' » ' . $child_bundle_infos->name;
-      
+
         $relation = _mica_relation_configure($relation, $new_type, $name);
 
       }
       else {
         // if parent_bundle has not changed
-        if ($previous_relation->parent_bundle == $parent_bundle){
+        if ($previous_relation->parent_bundle == $parent_bundle) {
           // update node reference field label
           $field_instance = field_info_instance('node', $previous_relation->options['node_reference'], $previous_relation->parent_bundle);
           $field_instance['label'] = $name;
           field_update_instance($field_instance);
         }
-        else{
+        else {
           // Cannot create another field node_reference with the same name...
           drupal_get_messages('status');
           form_set_error('parent_bundle', t('Failed to update parent: @parent_bundle because a mica_relation already exists for the current content type and content exists for that relation.', array('@parent_bundle' => $parent_bundle)));
@@ -365,38 +370,39 @@ function _mica_relation_edit_node_type_relation($form, &$form_state) {
 
 }
 
-function _mica_relation_configure($relation, $new_type, $name){
+function _mica_relation_configure($relation, $new_type, $name) {
   $indexes = mica_core_find_indexes_by_bundle();
   $relation->options['parent_indexes'] = empty($indexes[$relation->parent_bundle])
     ? array()
     : array_keys($indexes[$relation->parent_bundle]);
-  
+
   // set reference node and relation only at creation
   $relation->options['node_reference'] = 'mica_' . $new_type;
   $relation->options['relation'] = $relation->parent_bundle . '_' . $relation->child_bundle;
   $relation->options['relation_parent_field'] = $relation->child_bundle . '_relation';
   $relation->options['relation_child_field'] = $relation->parent_bundle . '_relation';
-  
+
   // create node reference field
   $relation->add_node_reference_to_parent($name);
-  
+
   // check if parent type already has content
   $query = new EntityFieldQuery;
   $result = $query->entityCondition('entity_type', 'node')
-  ->entityCondition('bundle', $relation->parent_bundle)
-  ->execute();
+    ->entityCondition('bundle', $relation->parent_bundle)
+    ->execute();
   if (!empty($result['node']) && $relation->options['cascaded']) {
-  	$entities = entity_load('node', array_keys($result['node']));
-  	foreach ($entities as $entity) {
-  		// create missing child nodes
-  		if ($relation->create_child_node($entity, isset($entity->menu) ? $entity->menu : array())) {
-  			node_save($entity);
-  		}
-  	}
+    $entities = entity_load('node', array_keys($result['node']));
+    foreach ($entities as $entity) {
+      // create missing child nodes
+      if ($relation->create_child_node($entity, isset($entity->menu) ? $entity->menu : array())) {
+        node_save($entity);
+      }
+    }
   }
-  
+
   return $relation;
 }
+
 /**
  * Returns an array of MicaRelations with relation ID as key
  */

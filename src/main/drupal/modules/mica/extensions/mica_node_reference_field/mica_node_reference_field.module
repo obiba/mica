@@ -1,8 +1,7 @@
 <?php
-
 /**
  * @file
- * Defines a field type for referencing one node from another that 
+ * Defines a field type for referencing one node from another that
  * displays refered node type instead of node title in the link.
  */
 
@@ -12,7 +11,7 @@
 function mica_node_reference_field_field_formatter_info() {
   return array(
     'node_reference_field_name_link' => array(
-      'label'       => t('Node reference field name (link)'),
+      'label' => t('Node reference field name (link)'),
       'description' => t('Displays the name of the node reference field as a link to the node page.'),
       'field types' => array('node_reference'),
     ),
@@ -25,28 +24,29 @@ function mica_node_reference_field_field_formatter_info() {
 function mica_node_reference_field_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
   $result = array();
   if ($display['type'] === 'node_reference_field_name_link') {
-		foreach ($items as $delta => $item) {
-			if ($item['access']) {
-				$node = isset($item['node']) ? $item['node'] : node_load($item['nid']);
-				if ($display['type'] === 'node_reference_field_name_link') {
-					$uri = entity_uri('node', $node);
-					$result[$delta] = array(
-						'#type' => 'link',
-						'#title' => t($instance['label']),
-						'#href' => $uri['path'],
-						'#options' => $uri['options'],
-					);
-				} else {
-					$result[$delta] = array(
-						'#markup' => check_plain($node->title),
-					);
-				}
-				if ($node->status == 0) {
-					$result[$delta]['#prefix'] = '<span class="node-unpublished">';
-					$result[$delta]['#suffix'] = '</span>';
-				}
-			}
-		}  	
+    foreach ($items as $delta => $item) {
+      if ($item['access']) {
+        $node = isset($item['node']) ? $item['node'] : node_load($item['nid']);
+        if ($display['type'] === 'node_reference_field_name_link') {
+          $uri = entity_uri('node', $node);
+          $result[$delta] = array(
+            '#type' => 'link',
+            '#title' => t($instance['label']),
+            '#href' => $uri['path'],
+            '#options' => $uri['options'],
+          );
+        }
+        else {
+          $result[$delta] = array(
+            '#markup' => check_plain($node->title),
+          );
+        }
+        if ($node->status == 0) {
+          $result[$delta]['#prefix'] = '<span class="node-unpublished">';
+          $result[$delta]['#suffix'] = '</span>';
+        }
+      }
+    }
   }
   return $result;
 }

@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Studies module pages
+ */
 
 /**
  * Render a page of available exporters.
@@ -23,8 +27,8 @@ function mica_studies_export_page() {
           // filter by access right
           if ($item && $item['access']) {
             $rows[] = array(
-            l($view->human_name, $path),
-            check_plain($view->description),
+              l($view->human_name, $path),
+              check_plain($view->description),
             );
           }
         }
@@ -33,8 +37,8 @@ function mica_studies_export_page() {
   }
 
   $header = array(
-  t('Export'),
-  t('Description'),
+    t('Export'),
+    t('Description'),
   );
   return theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('There are no data exporters.')));
 }

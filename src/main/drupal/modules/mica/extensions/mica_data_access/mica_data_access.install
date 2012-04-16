@@ -12,9 +12,8 @@ function mica_data_access_install() {
 }
 
 /**
-*
-* Updates the mica_data_access feature
-*/
+ * Updates the mica_data_access feature
+ */
 function mica_data_access_update_7120() {
-	features_revert(array('mica_data_access' => array('field', 'user_permission', 'variable')));
+  features_revert(array('mica_data_access' => array('field', 'user_permission', 'variable')));
 }

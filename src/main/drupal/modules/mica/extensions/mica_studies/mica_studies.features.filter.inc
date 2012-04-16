@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_filter_default_formats().
+ * Implements hook_filter_default_formats().
  */
 function mica_studies_filter_default_formats() {
   $formats = array();
