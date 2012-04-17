@@ -82,9 +82,6 @@ projects[ctools][download][revision] = dd65335ef5b823702ea5f1688a3000b09a04a739
 projects[date][version] = 2.3
 projects[date][type] = module
 
-projects[defaultcontent][version] = 1.0-alpha5
-projects[defaultcontent][type] = module
-
 projects[] = devel
 
 projects[email][type] = module

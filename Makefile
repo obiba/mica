@@ -121,17 +121,31 @@ mica-install:
 	cp -r ../../src/main/drupal/themes/* sites/all/themes && \
 	rm -rf `find . -type d -name .svn` && \
 	rm -rf `find . -type d -name .git` && \
-  #if [ -e profiles/default/translations/fr.po ]; then \
-  #  mkdir -p profiles/mica_standard/translations && \
-  #  cp profiles/default/translations/fr.po profiles/mica_standard/translations && \
-  #  mkdir -p profiles/mica_demo/translations && \
-  #  cp profiles/default/translations/fr.po profiles/mica_demo/translations ; \
-  #fi && \
+	#if [ -e profiles/default/translations/fr.po ]; then \
+	#  mkdir -p profiles/mica_standard/translations && \
+	#  cp profiles/default/translations/fr.po profiles/mica_standard/translations && \
+	#  mkdir -p profiles/mica_demo/translations && \
+	#  cp profiles/default/translations/fr.po profiles/mica_demo/translations ; \
+	#fi && \
 	if [ -e profiles/standard/standard.install ]; then \
 		cp profiles/standard/standard.install profiles/mica_standard/standard.install && \
 		rm -rf profiles/standard && \
 		rm -rf profiles/minimal ; \
 	fi
+
+mica-link:
+	ln -s $(CURDIR)/src/main/drupal/modules/* $(CURDIR)/target/$(micadir)/sites/all/modules && \
+	ln -s $(CURDIR)/src/main/drupal/themes/* $(CURDIR)/target/$(micadir)/sites/all/themes && \
+	ln -s $(CURDIR)/src/main/drupal/profiles/* $(CURDIR)/target/$(micadir)/profiles && \
+	if [ -e target/$(micadir)/profiles/standard/standard.install ]; then \
+		cp target/$(micadir)/profiles/standard/standard.install target/$(micadir)/profiles/mica_standard/standard.install && \
+		rm -rf target/$(micadir)/profiles/standard && \
+		rm -rf target/$(micadir)/profiles/minimal ; \
+	fi
+	rm target/$(micadir)/themes/seven/logo.png && \
+	rm target/$(micadir)/misc/favicon.ico && \
+	ln -s $(CURDIR)/src/main/drupal/themes/mica_samara/mica.png $(CURDIR)/target/$(micadir)/themes/seven/logo.png && \
+	ln -s $(CURDIR)/src/main/drupal/themes/mica_samara/favicon.ico $(CURDIR)/target/$(micadir)/misc
 
 htaccess:
 	cp target/$(micadir)/.htaccess target/$(micadir)/.htaccess_bak
@@ -172,7 +186,7 @@ package: package-prepare debian
 	tar czf mica-dist-$(deb_version).tar.gz $(micadir) && \
 	zip -qr mica-dist-$(deb_version).zip $(micadir)
 
-package-prepare: package-modules-prepare package-profiles-prepare package-themes-prepare package-forks-prepare
+package-prepare: package-modules-prepare package-profiles-prepare package-themes-prepare
 
 package-modules-prepare:
 	$(call make-info,sites/all/modules/mica/extensions,mica_community)
@@ -191,26 +205,13 @@ package-modules-prepare:
 	$(call make-info,sites/all/modules/mica/extensions,node_reference_block)
 	$(call make-info,sites/all/modules,mica)
 	
-package-modules:
-	$(call make-package,sites/all/modules,mica)
-
 package-profiles-prepare:
 	$(call make-info,profiles,mica_standard)
 	$(call make-info,profiles,mica_demo)
 
-package-profiles:
-
 package-themes-prepare:
 	$(call make-info,sites/all/themes,mica_samara)
 
-package-themes:
-
-package-forks-prepare:
-
-package-forks:
-
-package-clean:
-	rm -f target/*.zip && rm -f target/*.gz && rm -f target/*.deb
 
 #
 # Debian Package
