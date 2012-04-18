@@ -1178,22 +1178,26 @@ function mica_datasets_node_delete($node) {
         ->entityCondition('bundle', 'study')
         ->fieldCondition('mica_dataset', 'nid', $dataset_id)
         ->execute();
+      
+      if (!empty($entities)){
+      
       $studies = node_load_multiple(array_keys($entities['node']));
 
-      foreach ($studies as $study_node) {
-
-        foreach ($study_node->mica_dataset[$study_node->language] as $key => $value) {
-          if ($value['nid'] == $dataset_id) {
-            unset($study_node->mica_dataset[$study_node->language][$key]);
-
-            $connector = mica_dataset_connector_query($dataset_id, $study_node->nid);
-            if ($connector) {
-              $connector->delete();
+        foreach ($studies as $study_node) {
+  
+          foreach ($study_node->mica_dataset[$study_node->language] as $key => $value) {
+            if ($value['nid'] == $dataset_id) {
+              unset($study_node->mica_dataset[$study_node->language][$key]);
+  
+              $connector = mica_dataset_connector_query($dataset_id, $study_node->nid);
+              if ($connector) {
+                $connector->delete();
+              }
+              break;
             }
-            break;
           }
+          node_save($study_node);
         }
-        node_save($study_node);
       }
       break;
   }
