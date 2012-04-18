@@ -1,0 +1,16 @@
+<?php
+
+function mica_opal_xml_format_autoload_info() {
+  return array(
+    'OpalXmlFormatView' => array(
+      'file' => 'OpalXmlFormatView.inc',
+    ),
+  );
+}
+
+function mica_opal_xml_format_rest_server_response_formatters_alter(&$formatters) {
+  $formatters['opal'] = array(
+    'mime types' => array('application/xml'),
+    'view' => 'OpalXmlFormatView',
+  );
+}
