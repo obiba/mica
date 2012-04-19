@@ -194,6 +194,7 @@ projects[noderefcreate][download][type] = git
 projects[noderefcreate][download][url] = http://git.drupal.org/project/noderefcreate.git
 projects[noderefcreate][download][revision] = 4268ba7832272348d0612e23ce11f42f0a255318
 projects[noderefcreate][patch][892052] = http://drupal.org/files/noderefcreate-workflow-options-892052-4.patch
+projects[noderefcreate][patch][1538328] = http://drupal.org/files/maxlength-1538328-1.patch
 
 projects[panels][version] = 3.2
 projects[panels][type] = module
