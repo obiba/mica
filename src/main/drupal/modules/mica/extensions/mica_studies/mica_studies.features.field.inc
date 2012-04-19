@@ -7781,6 +7781,137 @@ function mica_studies_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-study-field_questionnaires'
+  $fields['node-study-field_questionnaires'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_questionnaires',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'module' => 'file',
+      'settings' => array(
+        'display_default' => 0,
+        'display_field' => 1,
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => 'text',
+        ),
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'file',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'file',
+          'settings' => array(),
+          'type' => 'file_default',
+          'weight' => '43',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'file',
+          'settings' => array(),
+          'type' => 'file_default',
+          'weight' => '6',
+        ),
+        'summary_banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'summary_left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'summary_right_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_questionnaires',
+      'label' => 'Questionnaires',
+      'required' => 0,
+      'settings' => array(
+        'description_field' => 1,
+        'file_directory' => '[current-page:page-number]',
+        'file_extensions' => 'txt pdf doc docx xls xlsx',
+        'max_filesize' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'file',
+        'settings' => array(
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'file_generic',
+        'weight' => '109',
+      ),
+    ),
+  );
+
   // Exported field: 'node-study-field_recruitement_supp_info'
   $fields['node-study-field_recruitement_supp_info'] = array(
     'field_config' => array(
@@ -10046,7 +10177,7 @@ function mica_studies_field_default_fields() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 95,
+          'weight' => '95',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -10191,6 +10322,7 @@ function mica_studies_field_default_fields() {
   t('Please specify what study feature');
   t('Postal Code');
   t('Pubmed Id');
+  t('Questionnaires');
   t('Specify the sources of recruitment');
   t('Start year');
   t('State/Province');

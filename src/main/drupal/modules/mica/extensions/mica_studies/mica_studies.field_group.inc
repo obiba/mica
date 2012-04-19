@@ -2460,6 +2460,7 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'field_documents',
       1 => 'field_logo',
+      2 => 'field_questionnaires',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -3635,6 +3636,7 @@ function mica_studies_field_group_info() {
       0 => 'field_documents',
       1 => 'field_marker_paper',
       2 => 'field_pubmedid',
+      3 => 'field_questionnaires',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
