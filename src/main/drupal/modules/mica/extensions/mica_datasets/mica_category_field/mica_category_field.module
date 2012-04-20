@@ -140,7 +140,7 @@ function mica_category_field_field_widget_form(&$form, &$form_state, $field, $in
  * Implements hook_field_is_empty().
  */
 function mica_category_field_field_is_empty($item, $field) {
-  return empty($item['name']) && empty($item['label']);
+  return drupal_strlen($item['name']) > 0 && drupal_strlen($item['label']) > 0;
 }
 
 /**
