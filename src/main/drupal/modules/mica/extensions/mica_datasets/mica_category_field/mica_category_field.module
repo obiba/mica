@@ -140,7 +140,7 @@ function mica_category_field_field_widget_form(&$form, &$form_state, $field, $in
  * Implements hook_field_is_empty().
  */
 function mica_category_field_field_is_empty($item, $field) {
-  return drupal_strlen($item['name']) > 0 && drupal_strlen($item['label']) > 0;
+  return drupal_strlen($item['name']) === 0 && drupal_strlen($item['label']) === 0;
 }
 
 /**
@@ -151,13 +151,13 @@ function mica_category_field_field_is_empty($item, $field) {
 function mica_category_field_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
   foreach ($items as $delta => $item) {
     if (!mica_category_field_field_is_empty($item, $field)) {
-      if (empty($item['name'])) {
+      if (drupal_strlen($item['name']) === 0) {
         $errors[$field['field_name']][$langcode][$delta][] = array(
           'error' => 'mica_category_field_invalid_name_required',
           'message' => t('%title: Name is required.', array('%title' => $instance['label'])),
         );
       }
-      if (empty($item['label'])) {
+      if (drupal_strlen($item['label']) === 0) {
         $errors[$field['field_name']][$langcode][$delta][] = array(
           'error' => 'mica_category_field_invalid_label_required',
           'message' => t("%title: Label is required.", array('%title' => $instance['label'])),
