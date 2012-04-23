@@ -24,6 +24,7 @@ function mica_datasets_reorder_variables($form, $form_state, $dataset_node) {
     ->execute();
   if (!empty($results['node'])) {
     $variables = entity_load('node', array_keys($results['node']));
+    $delta = count($variables)/2 +1;
     foreach ($variables as $variable) {
       $nid = $variable->nid;
       $wrapper = entity_metadata_wrapper('node', $variable);
@@ -34,7 +35,7 @@ function mica_datasets_reorder_variables($form, $form_state, $dataset_node) {
         '#type' => 'weight',
         '#title' => t('Weight for @title', array('@title' => $wrapper->title->value())),
         '#title_display' => 'invisible',
-        '#delta' => 10,
+        '#delta' => $delta,
         '#default_value' => $wrapper->field_position->value(),
       );
       $form[$nid]['edit'] = array(
