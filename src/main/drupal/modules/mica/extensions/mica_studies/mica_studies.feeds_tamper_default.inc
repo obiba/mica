@@ -53,9 +53,9 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper->source = 'baseline_design_of_the_study';
   $feeds_tamper->plugin_id = 'explode';
   $feeds_tamper->settings = array(
-    'separator' => ',',
+    'separator' => '|',
     'limit' => '',
-    'real_separator' => ',',
+    'real_separator' => '|',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Explode';
@@ -84,9 +84,9 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper->source = 'biological_samples';
   $feeds_tamper->plugin_id = 'explode';
   $feeds_tamper->settings = array(
-    'separator' => ',',
+    'separator' => '|',
     'limit' => '',
-    'real_separator' => ',',
+    'real_separator' => '|',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Explode';
@@ -115,9 +115,9 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper->source = 'contacts';
   $feeds_tamper->plugin_id = 'explode';
   $feeds_tamper->settings = array(
-    'separator' => ',',
+    'separator' => '|',
     'limit' => '',
-    'real_separator' => ',',
+    'real_separator' => '|',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Explode';
@@ -146,9 +146,9 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper->source = 'country';
   $feeds_tamper->plugin_id = 'explode';
   $feeds_tamper->settings = array(
-    'separator' => ',',
+    'separator' => '|',
     'limit' => '',
-    'real_separator' => ',',
+    'real_separator' => '|',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Explode';
@@ -177,9 +177,9 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper->source = 'data_sources';
   $feeds_tamper->plugin_id = 'explode';
   $feeds_tamper->settings = array(
-    'separator' => ',',
+    'separator' => '|',
     'limit' => '',
-    'real_separator' => ',',
+    'real_separator' => '|',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Explode';
@@ -203,14 +203,30 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper = new stdClass;
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'csv_study_import-dataset-explode';
+  $feeds_tamper->importer = 'csv_study_import';
+  $feeds_tamper->source = 'dataset';
+  $feeds_tamper->plugin_id = 'explode';
+  $feeds_tamper->settings = array(
+    'separator' => '|',
+    'limit' => '',
+    'real_separator' => '|',
+  );
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'Explode';
+  $export['csv_study_import-dataset-explode'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass;
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'csv_study_import-documents-explode';
   $feeds_tamper->importer = 'csv_study_import';
   $feeds_tamper->source = 'documents';
   $feeds_tamper->plugin_id = 'explode';
   $feeds_tamper->settings = array(
-    'separator' => ',',
+    'separator' => '|',
     'limit' => '',
-    'real_separator' => ',',
+    'real_separator' => '|',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Explode';
@@ -239,9 +255,9 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper->source = 'ethnic_origin';
   $feeds_tamper->plugin_id = 'explode';
   $feeds_tamper->settings = array(
-    'separator' => ',',
+    'separator' => '|',
     'limit' => '',
-    'real_separator' => ',',
+    'real_separator' => '|',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Explode';
@@ -270,9 +286,9 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper->source = 'health_status';
   $feeds_tamper->plugin_id = 'explode';
   $feeds_tamper->settings = array(
-    'separator' => ',',
+    'separator' => '|',
     'limit' => '',
-    'real_separator' => ',',
+    'real_separator' => '|',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Explode';
@@ -301,9 +317,9 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper->source = 'investigators';
   $feeds_tamper->plugin_id = 'explode';
   $feeds_tamper->settings = array(
-    'separator' => ',',
+    'separator' => '|',
     'limit' => '',
-    'real_separator' => ',',
+    'real_separator' => '|',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Explode';
@@ -351,9 +367,9 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper->source = 'sources_of_recruitment';
   $feeds_tamper->plugin_id = 'explode';
   $feeds_tamper->settings = array(
-    'separator' => ',',
+    'separator' => '|',
     'limit' => '',
-    'real_separator' => ',',
+    'real_separator' => '|',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Explode';
@@ -382,9 +398,9 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper->source = 'study_inclusion_criteria_for_participants_selection';
   $feeds_tamper->plugin_id = 'explode';
   $feeds_tamper->settings = array(
-    'separator' => ',',
+    'separator' => '|',
     'limit' => '',
-    'real_separator' => ',',
+    'real_separator' => '|',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Explode';
@@ -413,9 +429,9 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper->source = 'study_recruitment_targets';
   $feeds_tamper->plugin_id = 'explode';
   $feeds_tamper->settings = array(
-    'separator' => ',',
+    'separator' => '|',
     'limit' => '',
-    'real_separator' => ',',
+    'real_separator' => '|',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Explode';
