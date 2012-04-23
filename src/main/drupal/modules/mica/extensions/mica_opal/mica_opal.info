@@ -8,6 +8,9 @@ dependencies[] = mica_datasets
 dependencies[] = feeds
 dependencies[] = feeds_jsonpath_parser
 dependencies[] = http_client
+dependencies[] = services
+dependencies[] = rest_server
+dependencies[] = mica_opal_view
 
 files[] = includes/opal_connection.inc
 files[] = includes/feeds/fetchers/FeedsOpalFetcher

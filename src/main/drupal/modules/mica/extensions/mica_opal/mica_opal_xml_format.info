@@ -1,9 +1,0 @@
-name = Opal view formats
-description = Provides Opal view formatters for the REST server.
-core = 7.x
-package = "OBiBa"
-
-dependencies[] = services
-dependencies[] = mica_opal
-
-files[] = includes/OpalXmlFormatView.inc
