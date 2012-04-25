@@ -26,6 +26,7 @@ class OpalXmlFormatView extends RESTServerView {
     $date->setAttribute('valueType', 'dateTime');
     $date->appendChild($doc->createTextNode(date('Y-m-j\TH:i:s.000Z')));
     
+    $dataset = check_plain($this->model->title); 
     $nids = array();
     $lang = $this->model->language;
     foreach ($this->model->field_dataset_variables[$lang] as $item) {
@@ -82,7 +83,8 @@ class OpalXmlFormatView extends RESTServerView {
         }
       }
     }
-        
+
+    drupal_add_http_header('Content-Disposition', "attachment; filename=$dataset.xml" );
     $doc->formatOutput = TRUE;
     return $doc->saveXml();
   }

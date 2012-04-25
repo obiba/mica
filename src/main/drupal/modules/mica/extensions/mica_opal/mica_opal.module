@@ -148,3 +148,35 @@ function mica_opal_feeds_importer_default() {
 
   return $export;
 }
+
+/**
+* Implements hook_menu_local_tasks_alter().
+*/
+function mica_opal_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+
+	$links = array();
+
+	debug($root_path);
+	switch ($root_path) {
+
+	  case 'node/%':
+			$node = $router_item['page_arguments'][0];
+			if ($node != NULL && $node->type === 'dataset') {
+			  
+				if (node_access('update', $node)) {
+					// add variables
+					$links['export-opal'] = array(
+            '#theme' => 'menu_local_action',
+            '#weight' => 6,
+            '#link' => array(
+              'title' => t('Export an Opal View'),
+              'href' => 'opal-dataset-variables/node/' . $node->nid,
+  					),
+					);
+				}
+			}
+		  break;
+	}
+
+	$data['actions']['output'] = array_merge($data['actions']['output'], $links);
+}
