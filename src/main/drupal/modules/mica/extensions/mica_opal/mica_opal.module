@@ -156,7 +156,6 @@ function mica_opal_menu_local_tasks_alter(&$data, $router_item, $root_path) {
 
 	$links = array();
 
-	debug($root_path);
 	switch ($root_path) {
 
 	  case 'node/%':
@@ -170,7 +169,7 @@ function mica_opal_menu_local_tasks_alter(&$data, $router_item, $root_path) {
             '#weight' => 6,
             '#link' => array(
               'title' => t('Export an Opal View'),
-              'href' => 'opal-dataset-variables/node/' . $node->nid,
+              'href' => 'opal-dataset/node/' . $node->nid,
   					),
 					);
 				}

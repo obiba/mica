@@ -39,7 +39,7 @@ function mica_opal_view_default_services_endpoint(){
   $endpoint->api_version = 3;
   $endpoint->name = 'dataset_variables';
   $endpoint->server = 'rest_server';
-  $endpoint->path = 'opal-dataset-variables';
+  $endpoint->path = 'opal-dataset';
   $endpoint->authentication = array(
     'services' => 'services',
   );
