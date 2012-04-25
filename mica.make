@@ -126,8 +126,7 @@ projects[field_display_label][type] = module
 
 projects[field_group][download][type] = git
 projects[field_group][download][url] = http://git.drupal.org/project/field_group.git
-projects[field_group][download][revision] = 3f5af2537bd01bf42e24bc3e3782f914add43186
-projects[field_group][patch][1196890] = http://drupal.org/files/group-description-translation-1196890.patch
+projects[field_group][download][revision] = 233c425892af59a9c8597990faedd3efcd618703
 
 projects[field_permissions][version] = 1.0-beta2
 projects[field_permissions][type] = module

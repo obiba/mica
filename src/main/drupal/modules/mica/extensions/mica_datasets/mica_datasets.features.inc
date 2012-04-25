@@ -9,6 +9,14 @@
  */
 function mica_datasets_ctools_plugin_api() {
   list($module, $api) = func_get_args();
+  if ($module == "corresponding_node_references" && $api == "default_corresponding_node_references_presets") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
+  if ($module == "current_search" && $api == "current_search") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
   if ($module == "facetapi" && $api == "facetapi_defaults") {
     return array("version" => "1");
   }
@@ -38,10 +46,7 @@ function mica_datasets_ctools_plugin_api() {
  * Implements hook_views_api().
  */
 function mica_datasets_views_api() {
-  list($module, $api) = func_get_args();
-  if ($module == "views" && $api == "views_default") {
-    return array("version" => "3.0");
-  }
+  return array("version" => "3.0");
 }
 
 /**
@@ -55,6 +60,14 @@ function mica_datasets_node_info() {
       'description' => t('Dataset resource.'),
       'has_title' => '1',
       'title_label' => t('Name'),
+      'help' => '',
+    ),
+    'study_variable' => array(
+      'name' => t('Study Variable'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Title'),
       'help' => '',
     ),
     'variable' => array(

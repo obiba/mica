@@ -10,7 +10,7 @@
 function mica_datasets_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: create dataset content
+  // Exported permission: create dataset content.
   $permissions['create dataset content'] = array(
     'name' => 'create dataset content',
     'roles' => array(
@@ -21,7 +21,7 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: create edit delete own dataset query
+  // Exported permission: create edit delete own dataset query.
   $permissions['create edit delete own dataset query'] = array(
     'name' => 'create edit delete own dataset query',
     'roles' => array(
@@ -31,7 +31,14 @@ function mica_datasets_user_default_permissions() {
     'module' => 'mica_datasets',
   );
 
-  // Exported permission: create variable content
+  // Exported permission: create study_variable content.
+  $permissions['create study_variable content'] = array(
+    'name' => 'create study_variable content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: create variable content.
   $permissions['create variable content'] = array(
     'name' => 'create variable content',
     'roles' => array(
@@ -42,7 +49,7 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any dataset content
+  // Exported permission: delete any dataset content.
   $permissions['delete any dataset content'] = array(
     'name' => 'delete any dataset content',
     'roles' => array(
@@ -52,7 +59,14 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any variable content
+  // Exported permission: delete any study_variable content.
+  $permissions['delete any study_variable content'] = array(
+    'name' => 'delete any study_variable content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any variable content.
   $permissions['delete any variable content'] = array(
     'name' => 'delete any variable content',
     'roles' => array(
@@ -62,7 +76,7 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete own dataset content
+  // Exported permission: delete own dataset content.
   $permissions['delete own dataset content'] = array(
     'name' => 'delete own dataset content',
     'roles' => array(
@@ -73,7 +87,14 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete own variable content
+  // Exported permission: delete own study_variable content.
+  $permissions['delete own study_variable content'] = array(
+    'name' => 'delete own study_variable content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own variable content.
   $permissions['delete own variable content'] = array(
     'name' => 'delete own variable content',
     'roles' => array(
@@ -84,7 +105,7 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any dataset content
+  // Exported permission: edit any dataset content.
   $permissions['edit any dataset content'] = array(
     'name' => 'edit any dataset content',
     'roles' => array(
@@ -94,7 +115,14 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any variable content
+  // Exported permission: edit any study_variable content.
+  $permissions['edit any study_variable content'] = array(
+    'name' => 'edit any study_variable content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any variable content.
   $permissions['edit any variable content'] = array(
     'name' => 'edit any variable content',
     'roles' => array(
@@ -104,7 +132,7 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit delete any dataset query
+  // Exported permission: edit delete any dataset query.
   $permissions['edit delete any dataset query'] = array(
     'name' => 'edit delete any dataset query',
     'roles' => array(
@@ -115,7 +143,7 @@ function mica_datasets_user_default_permissions() {
     'module' => 'mica_datasets',
   );
 
-  // Exported permission: edit own dataset content
+  // Exported permission: edit own dataset content.
   $permissions['edit own dataset content'] = array(
     'name' => 'edit own dataset content',
     'roles' => array(
@@ -126,7 +154,14 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit own variable content
+  // Exported permission: edit own study_variable content.
+  $permissions['edit own study_variable content'] = array(
+    'name' => 'edit own study_variable content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own variable content.
   $permissions['edit own variable content'] = array(
     'name' => 'edit own variable content',
     'roles' => array(
@@ -137,7 +172,7 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: publish dataset query
+  // Exported permission: publish dataset query.
   $permissions['publish dataset query'] = array(
     'name' => 'publish dataset query',
     'roles' => array(
@@ -148,7 +183,7 @@ function mica_datasets_user_default_permissions() {
     'module' => 'mica_datasets',
   );
 
-  // Exported permission: view any dataset query
+  // Exported permission: view any dataset query.
   $permissions['view any dataset query'] = array(
     'name' => 'view any dataset query',
     'roles' => array(
