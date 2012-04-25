@@ -119,6 +119,7 @@ projects[feeds_tamper][download][type] = git
 projects[feeds_tamper][download][url] = http://git.drupal.org/project/feeds_tamper.git
 projects[feeds_tamper][download][revision] = 8f7f581512249d73c4e7e82239ab854bef03635e
 projects[feeds_tamper][patch][1416700] = http://drupal.org/files/1416700-4-feeds_tamper-existing-terms-plugin.patch
+projects[feeds_tamper][patch][1180726] = http://drupal.org/files/empty_check-1180726-6.patch
 
 projects[field_display_label][version] = 1.2
 projects[field_display_label][type] = module
@@ -242,6 +243,10 @@ projects[search_api_ranges][patch][1460410] = http://drupal.org/files/max-inclus
 projects[search_api_solr][version] = 1.0-rc1
 projects[search_api_solr][type] = module
 projects[search_api_solr][patch][1276970] = http://drupal.org/files/solr_queries_post-1276970-10.patch
+
+projects[services][version] = 3.1
+projects[services][type] = module
+;projects[services][patch][1240074] = http://drupal.org/files/session_restore-1240074-54.patch
 
 projects[smtp][version] = 1.0-beta1
 projects[smtp][type] = module
