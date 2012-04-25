@@ -1499,8 +1499,9 @@ function mica_datasets_views_default_views() {
     'title' => 'title',
     'field_label' => 'field_label',
     'field_dataset' => 'field_dataset',
+    'field_position' => 'field_position',
   );
-  $handler->display->display_options['style_options']['default'] = 'title';
+  $handler->display->display_options['style_options']['default'] = 'field_position';
   $handler->display->display_options['style_options']['info'] = array(
     'title' => array(
       'sortable' => 1,
@@ -1518,6 +1519,13 @@ function mica_datasets_views_default_views() {
     ),
     'field_dataset' => array(
       'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_position' => array(
+      'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
@@ -1608,6 +1616,34 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_dataset']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_dataset']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_dataset']['view_mode'] = 'full';
+  /* Field: Indexed Node: Position index */
+  $handler->display->display_options['fields']['field_position']['id'] = 'field_position';
+  $handler->display->display_options['fields']['field_position']['table'] = 'search_api_index_variable_index';
+  $handler->display->display_options['fields']['field_position']['field'] = 'field_position';
+  $handler->display->display_options['fields']['field_position']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_position']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_position']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_position']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_position']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_position']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_position']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_position']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_position']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_position']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_position']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_position']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_position']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_position']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_position']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_position']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_position']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_position']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_position']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_position']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  $handler->display->display_options['fields']['field_position']['field_api_classes'] = 0;
   /* Sort criterion: Indexed Node: Position index */
   $handler->display->display_options['sorts']['field_position']['id'] = 'field_position';
   $handler->display->display_options['sorts']['field_position']['table'] = 'search_api_index_variable_index';
