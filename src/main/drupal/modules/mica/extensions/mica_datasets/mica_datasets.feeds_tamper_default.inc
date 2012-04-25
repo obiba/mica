@@ -433,6 +433,51 @@ function mica_datasets_feeds_tamper_default() {
   $feeds_tamper = new stdClass;
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'csv_variables-essence-explode';
+  $feeds_tamper->importer = 'csv_variables';
+  $feeds_tamper->source = 'essence';
+  $feeds_tamper->plugin_id = 'explode';
+  $feeds_tamper->settings = array(
+    'separator' => '|',
+    'limit' => '',
+    'real_separator' => '|',
+  );
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'Explode';
+  $export['csv_variables-essence-explode'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass;
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'csv_variables-essence-only_existing_terms';
+  $feeds_tamper->importer = 'csv_variables';
+  $feeds_tamper->source = 'essence';
+  $feeds_tamper->plugin_id = 'existing_terms';
+  $feeds_tamper->settings = array(
+    'vocabulary' => 'essence',
+  );
+  $feeds_tamper->weight = 2;
+  $feeds_tamper->description = 'Only existing terms';
+  $export['csv_variables-essence-only_existing_terms'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass;
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'csv_variables-essence-trim';
+  $feeds_tamper->importer = 'csv_variables';
+  $feeds_tamper->source = 'essence';
+  $feeds_tamper->plugin_id = 'trim';
+  $feeds_tamper->settings = array(
+    'mask' => '',
+    'side' => 'trim',
+  );
+  $feeds_tamper->weight = 1;
+  $feeds_tamper->description = 'Trim';
+  $export['csv_variables-essence-trim'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass;
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'csv_variables-format-explode';
   $feeds_tamper->importer = 'csv_variables';
   $feeds_tamper->source = 'format';
@@ -519,6 +564,51 @@ function mica_datasets_feeds_tamper_default() {
   $feeds_tamper->weight = 1;
   $feeds_tamper->description = 'Trim';
   $export['csv_variables-life_habits_behaviours-trim'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass;
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'csv_variables-measure-explode';
+  $feeds_tamper->importer = 'csv_variables';
+  $feeds_tamper->source = 'measure';
+  $feeds_tamper->plugin_id = 'explode';
+  $feeds_tamper->settings = array(
+    'separator' => '|',
+    'limit' => '',
+    'real_separator' => '|',
+  );
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'Explode';
+  $export['csv_variables-measure-explode'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass;
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'csv_variables-measure-only_existing_terms';
+  $feeds_tamper->importer = 'csv_variables';
+  $feeds_tamper->source = 'measure';
+  $feeds_tamper->plugin_id = 'existing_terms';
+  $feeds_tamper->settings = array(
+    'vocabulary' => 'measure',
+  );
+  $feeds_tamper->weight = 2;
+  $feeds_tamper->description = 'Only existing terms';
+  $export['csv_variables-measure-only_existing_terms'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass;
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'csv_variables-measure-trim';
+  $feeds_tamper->importer = 'csv_variables';
+  $feeds_tamper->source = 'measure';
+  $feeds_tamper->plugin_id = 'trim';
+  $feeds_tamper->settings = array(
+    'mask' => '',
+    'side' => 'trim',
+  );
+  $feeds_tamper->weight = 1;
+  $feeds_tamper->description = 'Trim';
+  $export['csv_variables-measure-trim'] = $feeds_tamper;
 
   $feeds_tamper = new stdClass;
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
@@ -1023,9 +1113,24 @@ function mica_datasets_feeds_tamper_default() {
   $feeds_tamper->source = 'value_type';
   $feeds_tamper->plugin_id = 'required';
   $feeds_tamper->settings = '';
-  $feeds_tamper->weight = 0;
+  $feeds_tamper->weight = 2;
   $feeds_tamper->description = 'Required field';
   $export['csv_variables-value_type-required_field'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass;
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'csv_variables-value_type-trim';
+  $feeds_tamper->importer = 'csv_variables';
+  $feeds_tamper->source = 'value_type';
+  $feeds_tamper->plugin_id = 'trim';
+  $feeds_tamper->settings = array(
+    'mask' => '',
+    'side' => 'trim',
+  );
+  $feeds_tamper->weight = 1;
+  $feeds_tamper->description = 'Trim';
+  $export['csv_variables-value_type-trim'] = $feeds_tamper;
 
   return $export;
 }

@@ -154,33 +154,23 @@ function mica_datasets_feeds_importer_default() {
             'unique' => FALSE,
           ),
           23 => array(
-            'source' => 'response_unit',
-            'target' => 'field_response_unit',
-            'unique' => FALSE,
-          ),
-          24 => array(
             'source' => 'target',
             'target' => 'field_target',
             'unique' => FALSE,
           ),
-          25 => array(
-            'source' => 'target_gender',
-            'target' => 'field_target_gender',
-            'unique' => FALSE,
-          ),
-          26 => array(
+          24 => array(
             'source' => 'period',
             'target' => 'field_period',
             'unique' => FALSE,
           ),
-          27 => array(
-            'source' => 'class',
-            'target' => 'field_class',
+          25 => array(
+            'source' => 'essence',
+            'target' => 'field_essence',
             'unique' => FALSE,
           ),
-          28 => array(
-            'source' => 'format',
-            'target' => 'field_format',
+          26 => array(
+            'source' => 'measure',
+            'target' => 'field_measure',
             'unique' => FALSE,
           ),
         ),
