@@ -5,6 +5,7 @@
  */
 
 require_once('mica_studies.features.inc');
+require_once('mica_studies.import_taxonomies.inc');
 
 /**
  * Implements hook_menu().

@@ -2078,7 +2078,7 @@ function mica_studies_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
@@ -2204,7 +2204,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
@@ -3439,7 +3439,7 @@ function mica_studies_field_default_fields() {
             'thousand_separator' => '',
           ),
           'type' => 'number_integer',
-          'weight' => '58',
+          'weight' => '59',
         ),
         'default' => array(
           'label' => 'above',
@@ -3565,7 +3565,7 @@ function mica_studies_field_default_fields() {
             'thousand_separator' => '',
           ),
           'type' => 'number_integer',
-          'weight' => '57',
+          'weight' => '58',
         ),
         'default' => array(
           'label' => 'above',
@@ -4743,7 +4743,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '67',
+          'weight' => '68',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -4882,7 +4882,7 @@ function mica_studies_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '66',
+          'weight' => '67',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -5847,7 +5847,7 @@ function mica_studies_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'file_generic',
-        'weight' => '108',
+        'weight' => '121',
       ),
     ),
   );
@@ -6153,7 +6153,7 @@ function mica_studies_field_default_fields() {
             'thousand_separator' => '',
           ),
           'type' => 'number_integer',
-          'weight' => '60',
+          'weight' => '61',
         ),
         'default' => array(
           'label' => 'above',
@@ -6279,7 +6279,7 @@ function mica_studies_field_default_fields() {
             'thousand_separator' => '',
           ),
           'type' => 'number_integer',
-          'weight' => '59',
+          'weight' => '60',
         ),
         'default' => array(
           'label' => 'above',
@@ -6890,7 +6890,7 @@ function mica_studies_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '107',
+        'weight' => '120',
       ),
     ),
   );
@@ -7398,7 +7398,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '80',
+        'weight' => '77',
       ),
     ),
   );
@@ -7835,7 +7835,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'default' => array(
           'label' => 'above',
@@ -7879,7 +7879,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -7907,7 +7907,7 @@ function mica_studies_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'file_generic',
-        'weight' => '109',
+        'weight' => '122',
       ),
     ),
   );
@@ -7965,14 +7965,14 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '54',
+          'weight' => '58',
         ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '53',
+          'weight' => '48',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8033,7 +8033,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '90',
+        'weight' => '75',
       ),
     ),
   );
@@ -8220,7 +8220,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '52',
+          'weight' => '47',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8281,7 +8281,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '89',
+        'weight' => '74',
       ),
     ),
   );
@@ -8411,41 +8411,48 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study-field_recruitment_procedures'
-  $fields['node-study-field_recruitment_procedures'] = array(
+  // Exported field: 'node-study-field_recruitment_sources'
+  $fields['node-study-field_recruitment_sources'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_recruitment_procedures',
+      'field_name' => 'field_recruitment_sources',
       'field_permissions' => array(
         'type' => '0',
       ),
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
         ),
       ),
-      'module' => 'list',
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
-          'general_population' => 'General population',
-          'legacy_studies' => 'Participants from existing studies',
-          'specific_population' => 'Specific population',
-          'other' => 'Other source',
+          0 => array(
+            'vocabulary' => 'sources_of_recruitment',
+            'parent' => '0',
+          ),
         ),
-        'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => 'Sources of recruitment',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
-      'translatable' => '1',
-      'type' => 'list_text',
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
     ),
     'field_instance' => array(
       'bundle' => 'study',
@@ -8457,21 +8464,21 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '51',
+          'weight' => 0,
         ),
         'center_area' => array(
           'label' => 'above',
-          'module' => 'list',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '46',
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '44',
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'list',
+          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '51',
+          'type' => 'taxonomy_term_reference_plain',
+          'weight' => '46',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8505,6 +8512,7 @@ function mica_studies_field_default_fields() {
         ),
         'summary_right_area' => array(
           'label' => 'above',
+          'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '24',
@@ -8518,7 +8526,7 @@ function mica_studies_field_default_fields() {
       ),
       'display_label' => 'Sources of recruitment',
       'entity_type' => 'node',
-      'field_name' => 'field_recruitment_procedures',
+      'field_name' => 'field_recruitment_sources',
       'label' => 'Specify the sources of recruitment',
       'required' => 0,
       'settings' => array(
@@ -8526,10 +8534,13 @@ function mica_studies_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_buttons',
-        'weight' => '88',
+        'module' => 'autocomplete_deluxe',
+        'settings' => array(
+          'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+          'size' => '60',
+        ),
+        'type' => 'autocomplete_deluxe_taxonomy',
+        'weight' => '73',
       ),
     ),
   );
@@ -9087,7 +9098,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '44',
+          'weight' => '45',
         ),
         'default' => array(
           'label' => 'above',
@@ -9131,7 +9142,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '9',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -9155,7 +9166,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '79',
+        'weight' => '76',
       ),
     ),
   );
@@ -9220,7 +9231,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '68',
+          'weight' => '69',
         ),
         'footer_area' => array(
           'label' => 'above',

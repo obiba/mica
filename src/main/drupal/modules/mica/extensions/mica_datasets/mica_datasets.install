@@ -205,8 +205,9 @@ function mica_datasets_update_7120(&$sandbox) {
   watchdog('mica', 'Update Mica Datasets', array(), WATCHDOG_INFO);
 
   // Import taxonomies
+  $base_path = drupal_get_path('module', 'mica_datasets') . '/taxonomies/';
   foreach (_mica_datasets_taxonomies() as $taxonomy) {
-    _mica_datasets_taxonomy_import($taxonomy[0], $taxonomy[1]);
+    mica_core_taxonomy_import($filename, $base_path, $vocabulary_name);
   }
 
   module_enable(array('mica_category_field'));

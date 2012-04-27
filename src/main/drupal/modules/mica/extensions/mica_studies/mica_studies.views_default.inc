@@ -1410,7 +1410,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['field_api_classes'] = 0;
-  /* Field: Content: Specify the sources of recruitment */
+  /* Field: : field_recruitment_procedures */
   $handler->display->display_options['fields']['field_recruitment_procedures']['id'] = 'field_recruitment_procedures';
   $handler->display->display_options['fields']['field_recruitment_procedures']['table'] = 'field_data_field_recruitment_procedures';
   $handler->display->display_options['fields']['field_recruitment_procedures']['field'] = 'field_recruitment_procedures';
@@ -2764,7 +2764,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_pubmedid']['id'] = 'field_pubmedid';
   $handler->display->display_options['fields']['field_pubmedid']['table'] = 'field_data_field_pubmedid';
   $handler->display->display_options['fields']['field_pubmedid']['field'] = 'field_pubmedid';
-  /* Field: Content: Specify the sources of recruitment */
+  /* Field: : field_recruitment_procedures */
   $handler->display->display_options['fields']['field_recruitment_procedures']['id'] = 'field_recruitment_procedures';
   $handler->display->display_options['fields']['field_recruitment_procedures']['table'] = 'field_data_field_recruitment_procedures';
   $handler->display->display_options['fields']['field_recruitment_procedures']['field'] = 'field_recruitment_procedures';
@@ -3800,6 +3800,36 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_health_status']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_health_status']['delta_first_last'] = 0;
   $handler->display->display_options['fields']['field_health_status']['field_api_classes'] = 0;
+  /* Field: Content: Recruitment procedures */
+  $handler->display->display_options['fields']['field_recruitment_sources']['id'] = 'field_recruitment_sources';
+  $handler->display->display_options['fields']['field_recruitment_sources']['table'] = 'field_data_field_recruitment_sources';
+  $handler->display->display_options['fields']['field_recruitment_sources']['field'] = 'field_recruitment_sources';
+  $handler->display->display_options['fields']['field_recruitment_sources']['label'] = 'sources_of_recruitment';
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_recruitment_sources']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_recruitment_sources']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_recruitment_sources']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_recruitment_sources']['group_rows'] = 1;
+  $handler->display->display_options['fields']['field_recruitment_sources']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_recruitment_sources']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['separator'] = '|';
+  $handler->display->display_options['fields']['field_recruitment_sources']['field_api_classes'] = 0;
   /* Field: Content: Please specify what other selection criteria */
   $handler->display->display_options['fields']['field_selection_others_sp']['id'] = 'field_selection_others_sp';
   $handler->display->display_options['fields']['field_selection_others_sp']['table'] = 'field_data_field_selection_others_sp';
@@ -3846,33 +3876,6 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['field_api_classes'] = 0;
-  /* Field: Content: Specify the sources of recruitment */
-  $handler->display->display_options['fields']['field_recruitment_procedures']['id'] = 'field_recruitment_procedures';
-  $handler->display->display_options['fields']['field_recruitment_procedures']['table'] = 'field_data_field_recruitment_procedures';
-  $handler->display->display_options['fields']['field_recruitment_procedures']['field'] = 'field_recruitment_procedures';
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['group_rows'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_recruitment_procedures']['delta_reversed'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['field_api_classes'] = 0;
   /* Field: Content: Please specify what other source of recruitment */
   $handler->display->display_options['fields']['field_recruitment_other']['id'] = 'field_recruitment_other';
   $handler->display->display_options['fields']['field_recruitment_other']['table'] = 'field_data_field_recruitment_other';
@@ -5357,6 +5360,36 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_health_status']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_health_status']['delta_first_last'] = 0;
   $handler->display->display_options['fields']['field_health_status']['field_api_classes'] = 0;
+  /* Field: Content: Recruitment procedures */
+  $handler->display->display_options['fields']['field_recruitment_sources']['id'] = 'field_recruitment_sources';
+  $handler->display->display_options['fields']['field_recruitment_sources']['table'] = 'field_data_field_recruitment_sources';
+  $handler->display->display_options['fields']['field_recruitment_sources']['field'] = 'field_recruitment_sources';
+  $handler->display->display_options['fields']['field_recruitment_sources']['label'] = 'sources_of_recruitment';
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_recruitment_sources']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_recruitment_sources']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_recruitment_sources']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_recruitment_sources']['group_rows'] = 1;
+  $handler->display->display_options['fields']['field_recruitment_sources']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_recruitment_sources']['delta_reversed'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['delta_first_last'] = 0;
+  $handler->display->display_options['fields']['field_recruitment_sources']['separator'] = '|';
+  $handler->display->display_options['fields']['field_recruitment_sources']['field_api_classes'] = 0;
   /* Field: Content: Please specify what other selection criteria */
   $handler->display->display_options['fields']['field_selection_others_sp']['id'] = 'field_selection_others_sp';
   $handler->display->display_options['fields']['field_selection_others_sp']['table'] = 'field_data_field_selection_others_sp';
@@ -5403,33 +5436,6 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['field_api_classes'] = 0;
-  /* Field: Content: Specify the sources of recruitment */
-  $handler->display->display_options['fields']['field_recruitment_procedures']['id'] = 'field_recruitment_procedures';
-  $handler->display->display_options['fields']['field_recruitment_procedures']['table'] = 'field_data_field_recruitment_procedures';
-  $handler->display->display_options['fields']['field_recruitment_procedures']['field'] = 'field_recruitment_procedures';
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['group_rows'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['delta_offset'] = '0';
-  $handler->display->display_options['fields']['field_recruitment_procedures']['delta_reversed'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['field_api_classes'] = 0;
   /* Field: Content: Please specify what other source of recruitment */
   $handler->display->display_options['fields']['field_recruitment_other']['id'] = 'field_recruitment_other';
   $handler->display->display_options['fields']['field_recruitment_other']['table'] = 'field_data_field_recruitment_other';

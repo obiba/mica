@@ -378,173 +378,173 @@ function mica_studies_feeds_importer_default() {
             'unique' => FALSE,
           ),
           34 => array(
-            'source' => 'sources_of_recruitment',
-            'target' => 'field_recruitment_procedures',
-            'unique' => FALSE,
-          ),
-          35 => array(
             'source' => 'Other sources of recruitment',
             'target' => 'field_recruitment_other',
             'unique' => FALSE,
           ),
-          36 => array(
+          35 => array(
             'source' => 'recruitment_procedures_supplementary_information',
             'target' => 'field_recruitement_supp_info',
             'unique' => FALSE,
           ),
-          37 => array(
+          36 => array(
             'source' => 'data_sources',
             'target' => 'field_data_sources',
             'unique' => FALSE,
           ),
-          38 => array(
+          37 => array(
             'source' => 'other_data_sources',
             'target' => 'field_data_sources_sp',
             'unique' => FALSE,
           ),
-          39 => array(
+          38 => array(
             'source' => 'biological_samples',
             'target' => 'field_bio_samples_management',
             'unique' => FALSE,
           ),
-          40 => array(
+          39 => array(
             'source' => 'other_type_of_tissues',
             'target' => 'field_tissues_sp',
             'unique' => FALSE,
           ),
-          41 => array(
+          40 => array(
             'source' => 'other_sample_management',
             'target' => 'field_samples_man_other_sp',
             'unique' => FALSE,
           ),
-          42 => array(
+          41 => array(
             'source' => 'data_access',
             'target' => 'field_access_data',
             'unique' => FALSE,
           ),
-          43 => array(
+          42 => array(
             'source' => 'biological_samples_access',
             'target' => 'field_access_biosamples',
             'unique' => FALSE,
           ),
-          44 => array(
+          43 => array(
             'source' => 'other_access',
             'target' => 'field_access_other',
             'unique' => FALSE,
           ),
-          45 => array(
+          44 => array(
             'source' => 'access_supplementary_information',
             'target' => 'field_access_other_sp',
             'unique' => FALSE,
           ),
-          46 => array(
+          45 => array(
             'source' => 'preparation_phase_start_year',
             'target' => 'field_preparation_start_year',
             'unique' => FALSE,
           ),
-          47 => array(
+          46 => array(
             'source' => 'preparation_phase_end_year',
             'target' => 'field_preparation_end_year',
             'unique' => FALSE,
           ),
-          48 => array(
+          47 => array(
             'source' => 'baseline_recruitment_start_year',
             'target' => 'field_baseline_start_year',
             'unique' => FALSE,
           ),
-          49 => array(
+          48 => array(
             'source' => 'baseline_recruitment_end_year',
             'target' => 'field_baseline_end_year',
             'unique' => FALSE,
           ),
-          50 => array(
+          49 => array(
             'source' => 'followup_start_year',
             'target' => 'field_followup_start_year',
             'unique' => FALSE,
           ),
-          51 => array(
+          50 => array(
             'source' => 'followup_end_year',
             'target' => 'field_followup_end_year',
             'unique' => FALSE,
           ),
-          52 => array(
+          51 => array(
             'source' => 'study_end_year',
             'target' => 'field_ended_end_year',
             'unique' => FALSE,
           ),
-          53 => array(
+          52 => array(
             'source' => 'current_status_supplementary_information',
             'target' => 'field_status_supp_info',
             'unique' => FALSE,
           ),
-          54 => array(
+          53 => array(
             'source' => 'marker_paper',
             'target' => 'field_marker_paper',
             'unique' => FALSE,
           ),
-          55 => array(
+          54 => array(
             'source' => 'pubmed_id',
             'target' => 'field_pubmedid',
             'unique' => FALSE,
           ),
-          56 => array(
+          55 => array(
             'source' => 'opal',
             'target' => 'mica_opal:url',
             'unique' => FALSE,
           ),
-          57 => array(
+          56 => array(
             'source' => 'complete_name',
             'target' => 'field_complete_name',
             'unique' => FALSE,
           ),
-          58 => array(
+          57 => array(
             'source' => 'supplementary_information',
             'target' => 'field_supp_infos',
             'unique' => FALSE,
           ),
-          59 => array(
+          58 => array(
             'source' => 'documents',
             'target' => 'field_documents',
             'unique' => FALSE,
           ),
-          60 => array(
+          59 => array(
             'source' => 'logo',
             'target' => 'field_logo',
             'unique' => FALSE,
           ),
-          61 => array(
+          60 => array(
             'source' => 'contacts',
             'target' => 'field_contacts_ref:title',
             'unique' => FALSE,
           ),
-          62 => array(
+          61 => array(
             'source' => 'investigators',
             'target' => 'field_investigators:title',
             'unique' => FALSE,
           ),
-          63 => array(
+          62 => array(
             'source' => 'published',
             'target' => 'status',
             'unique' => FALSE,
           ),
-          64 => array(
+          63 => array(
             'source' => 'country',
             'target' => 'field_country',
             'unique' => FALSE,
           ),
-          65 => array(
+          64 => array(
             'source' => 'complete_name',
             'target' => 'title',
-            'unique' => FALSE,
+            'unique' => 0,
           ),
-          66 => array(
+          65 => array(
             'source' => 'gender',
             'target' => 'field_gender',
             'unique' => FALSE,
           ),
-          67 => array(
+          66 => array(
             'source' => 'dataset',
             'target' => 'mica_dataset:title',
+            'unique' => FALSE,
+          ),
+          67 => array(
+            'source' => 'sources_of_recruitment',
+            'target' => 'field_recruitment_sources',
             'unique' => FALSE,
           ),
         ),

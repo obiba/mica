@@ -1,6 +1,7 @@
 <?php
 
 require_once('mica_core.features.inc');
+require_once(drupal_get_path('module', 'taxonomy_csv') . '/import/taxonomy_csv.import.api.inc');
 
 /**
  * Implements hook_form().
@@ -281,4 +282,58 @@ function mica_core_configure_feeds_tamper($module_name) {
     $disabled[$feeds_tamper] = FALSE;
   }
   variable_set('default_feeds_tamper', $disabled);
+}
+
+
+function _mica_core_taxonomy_create($filename, $vocabulary_name) {
+	// use filename (without extension) for vocabulary machine name
+	$machine_name = substr($filename, 0, strlen($filename) - 4);
+	$vocabulary = (object) array(
+    'name' => $vocabulary_name,
+    'machine_name' => $machine_name,
+    'vid' => NULL,
+	);
+
+	$taxonomies = taxonomy_vocabulary_get_names();
+	if (array_key_exists($machine_name, $taxonomies)) {
+		$vocabulary->vid = $taxonomies[$machine_name]->vid;
+	}
+	else {
+		taxonomy_vocabulary_save($vocabulary);
+	}
+
+	return $vocabulary;
+}
+
+/**
+* Create taxonomy from a csv file
+*/
+function mica_core_taxonomy_import($filename, $base_path, $vocabulary_name) {
+	$vocabulary = _mica_core_taxonomy_create($filename, $vocabulary_name);
+
+	$path = $base_path . $filename;
+	$file_path = drupal_realpath($path);
+
+	$result = taxonomy_csv_import(array(
+    'import_format' => 'tree',
+    'delimiter' => ',',
+    'enclosure' => '"',
+    'keep_order' => TRUE,
+    'file' => (object) array(
+      'filename' => $filename,
+      'filepath' => $file_path,
+      'filesize' => filesize($path)
+	),
+    'vocabulary_target' => 'existing',
+    'vocabulary_id' => $vocabulary->vid,
+    'source_choice' => 'file',
+	));
+
+	watchdog('mica', 'Imported taxonomy %file to vocabulary %vocabulary: %result',
+	array(
+      '%file' => $file_path,
+      '%vocabulary' => $vocabulary_name,
+      '%result' => $result,
+	), WATCHDOG_INFO);
+
 }

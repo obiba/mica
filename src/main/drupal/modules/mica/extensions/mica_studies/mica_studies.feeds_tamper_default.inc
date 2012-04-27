@@ -378,6 +378,20 @@ function mica_studies_feeds_tamper_default() {
   $feeds_tamper = new stdClass;
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'csv_study_import-sources_of_recruitment-only_existing_terms';
+  $feeds_tamper->importer = 'csv_study_import';
+  $feeds_tamper->source = 'sources_of_recruitment';
+  $feeds_tamper->plugin_id = 'existing_terms';
+  $feeds_tamper->settings = array(
+    'vocabulary' => 'sources_of_recruitment',
+  );
+  $feeds_tamper->weight = 2;
+  $feeds_tamper->description = 'Only existing terms';
+  $export['csv_study_import-sources_of_recruitment-only_existing_terms'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass;
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'csv_study_import-sources_of_recruitment-trim';
   $feeds_tamper->importer = 'csv_study_import';
   $feeds_tamper->source = 'sources_of_recruitment';

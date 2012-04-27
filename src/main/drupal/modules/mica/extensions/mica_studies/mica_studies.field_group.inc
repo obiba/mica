@@ -4133,7 +4133,7 @@ function mica_studies_field_group_info() {
       4 => 'field_gender',
       5 => 'field_health_status',
       6 => 'field_recruitment_other',
-      7 => 'field_recruitment_procedures',
+      7 => 'field_recruitment_sources',
       8 => 'field_select_criteria',
       9 => 'field_selection_others_sp',
       10 => 'field_territory',
@@ -4178,7 +4178,7 @@ function mica_studies_field_group_info() {
       6 => 'field_partcipant_sel_supp_info',
       7 => 'field_recruitement_supp_info',
       8 => 'field_recruitment_other',
-      9 => 'field_recruitment_procedures',
+      9 => 'field_recruitment_sources',
       10 => 'field_select_criteria',
       11 => 'field_selection_others_sp',
       12 => 'field_territory',
@@ -4640,7 +4640,7 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'field_recruitement_supp_info',
       1 => 'field_recruitment_other',
-      2 => 'field_recruitment_procedures',
+      2 => 'field_recruitment_sources',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -4760,7 +4760,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_methods';
   $field_group->data = array(
     'label' => 'Sample Collection',
-    'weight' => '69',
+    'weight' => '70',
     'children' => array(
       0 => 'field_bio_samples_management',
       1 => 'field_samples_man_other_sp',
@@ -5255,7 +5255,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_tabs';
   $field_group->data = array(
     'label' => 'Status',
-    'weight' => '89',
+    'weight' => '90',
     'children' => array(
       0 => 'field_baseline_end_year',
       1 => 'field_baseline_start_year',
@@ -5633,7 +5633,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_tabs';
   $field_group->data = array(
     'label' => 'Supplementary information',
-    'weight' => '93',
+    'weight' => '92',
     'children' => array(
       0 => 'field_supp_infos',
     ),
