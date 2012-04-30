@@ -6,7 +6,7 @@ Study » Study/Registry design supplementary information;;Study/Registry design 
 Study » Study recruitment targets;;Study recruitment targets;field_recruitment;Study;study;text;individuals=Individuals|families=Families (including twin studies, sibships and family based birth cohorts)|other=Other;1;;
 Study » Study inclusion criteria for participants' selection;;Study inclusion criteria for participants' selection;field_select_criteria;Study;study;text;gravidity=Gravidity (pregnant women)|newborn=Newborn|twin=Twin|others=Others;1;;;
 Study » Study end year ;;Study end year ;field_ended_end_year;Study;study;integer;;0;;;
-Study » Sources of recruitment;;Sources of recruitment;field_recruitment_procedures;Study;study;text;general_population=General population|legacy_studies=Participants from legacy studies|specific_population=Specific population|other=Other source;1;;;
+Study » Sources of recruitment;;Sources of recruitment;field_recruitment_sources;Study;study;text;;1;;;
 Study » Selection criteria supplementary information;;Selection criteria supplementary information;field_partcipant_sel_supp_info;Study;study;text;;0;;;
 Study » Recruitment procedures supplementary information;;Recruitment procedures supplementary information;field_recruitement_supp_info;Study;study;text;;0;;;
 Study » Pubmed Id;;Pubmed Id;field_pubmedid;Study;study;text;;0;;;
