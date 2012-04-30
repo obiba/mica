@@ -7835,7 +7835,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'default' => array(
           'label' => 'above',
@@ -7879,7 +7879,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -8411,48 +8411,41 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study-field_recruitment_sources'
-  $fields['node-study-field_recruitment_sources'] = array(
+  // Exported field: 'node-study-field_recruitment_procedures'
+  $fields['node-study-field_recruitment_procedures'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_recruitment_sources',
+      'field_name' => 'field_recruitment_procedures',
       'field_permissions' => array(
         'type' => '0',
       ),
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
+      'foreign keys' => array(),
       'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
+        'value' => array(
+          0 => 'value',
         ),
       ),
-      'module' => 'taxonomy',
+      'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'sources_of_recruitment',
-            'parent' => '0',
-          ),
+          'general_population' => 'General population',
+          'legacy_studies' => 'Participants from existing studies',
+          'specific_population' => 'Specific population',
+          'other' => 'Other source',
         ),
+        'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
-          'field_description_label' => '',
+          'field_description_label' => 'Sources of recruitment',
           'field_description_value_type' => 'text',
         ),
-        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
-      'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
+      'translatable' => '1',
+      'type' => 'list_text',
     ),
     'field_instance' => array(
       'bundle' => 'study',
@@ -8464,21 +8457,21 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '51',
         ),
         'center_area' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
+          'module' => 'list',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
-          'weight' => '44',
+          'type' => 'list_default',
+          'weight' => '46',
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
+          'module' => 'list',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_plain',
-          'weight' => '46',
+          'type' => 'list_default',
+          'weight' => '51',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8512,7 +8505,6 @@ function mica_studies_field_default_fields() {
         ),
         'summary_right_area' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '24',
@@ -8526,7 +8518,7 @@ function mica_studies_field_default_fields() {
       ),
       'display_label' => 'Sources of recruitment',
       'entity_type' => 'node',
-      'field_name' => 'field_recruitment_sources',
+      'field_name' => 'field_recruitment_procedures',
       'label' => 'Specify the sources of recruitment',
       'required' => 0,
       'settings' => array(
@@ -8534,13 +8526,140 @@ function mica_studies_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'autocomplete_deluxe',
-        'settings' => array(
-          'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
-          'size' => '60',
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '88',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-study-field_recruitment_sources'
+  $fields['node-study-field_recruitment_sources'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_recruitment_sources',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
         ),
-        'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '73',
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'sources_of_recruitment',
+            'parent' => '0',
+            'depth' => '',
+          ),
+        ),
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => 'text',
+        ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 97,
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'summary_banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'summary_left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'summary_right_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_recruitment_sources',
+      'label' => 'Recruitment procedures',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '123',
       ),
     ),
   );
@@ -9098,7 +9217,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '45',
+          'weight' => '44',
         ),
         'default' => array(
           'label' => 'above',
@@ -9142,7 +9261,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '10',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -9166,7 +9285,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '76',
+        'weight' => '79',
       ),
     ),
   );
@@ -9231,7 +9350,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '69',
+          'weight' => '68',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -10334,6 +10453,7 @@ function mica_studies_field_default_fields() {
   t('Postal Code');
   t('Pubmed Id');
   t('Questionnaires');
+  t('Recruitment procedures');
   t('Specify the sources of recruitment');
   t('Start year');
   t('State/Province');
