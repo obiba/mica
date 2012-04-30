@@ -2180,7 +2180,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_methods';
   $field_group->data = array(
     'label' => 'Data Collection',
-    'weight' => '68',
+    'weight' => '69',
     'children' => array(
       0 => 'field_data_sources',
       1 => 'field_data_sources_sp',
@@ -2346,7 +2346,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_tabs';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '12',
+    'weight' => '13',
     'children' => array(
       0 => 'field_documents',
       1 => 'field_logo',
@@ -3907,7 +3907,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_participants_selection';
   $field_group->data = array(
     'label' => 'Details',
-    'weight' => '48',
+    'weight' => '49',
     'children' => array(
       0 => 'field_recruitement_supp_info',
     ),
@@ -4134,11 +4134,12 @@ function mica_studies_field_group_info() {
       5 => 'field_health_status',
       6 => 'field_recruitment_other',
       7 => 'field_recruitment_procedures',
-      8 => 'field_select_criteria',
-      9 => 'field_selection_others_sp',
-      10 => 'field_territory',
-      11 => 'group_more_recruitment_proc',
-      12 => 'group_more_selection',
+      8 => 'field_recruitment_sources',
+      9 => 'field_select_criteria',
+      10 => 'field_selection_others_sp',
+      11 => 'field_territory',
+      12 => 'group_more_recruitment_proc',
+      13 => 'group_more_selection',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -4179,9 +4180,10 @@ function mica_studies_field_group_info() {
       7 => 'field_recruitement_supp_info',
       8 => 'field_recruitment_other',
       9 => 'field_recruitment_procedures',
-      10 => 'field_select_criteria',
-      11 => 'field_selection_others_sp',
-      12 => 'field_territory',
+      10 => 'field_recruitment_sources',
+      11 => 'field_select_criteria',
+      12 => 'field_selection_others_sp',
+      13 => 'field_territory',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -4641,6 +4643,7 @@ function mica_studies_field_group_info() {
       0 => 'field_recruitement_supp_info',
       1 => 'field_recruitment_other',
       2 => 'field_recruitment_procedures',
+      3 => 'field_recruitment_sources',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -4826,7 +4829,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_methods';
   $field_group->data = array(
     'label' => 'Sample Collection',
-    'weight' => '69',
+    'weight' => '70',
     'children' => array(
       0 => 'field_bio_samples_management',
       1 => 'field_samples_man_other_sp',
@@ -5690,7 +5693,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_tabs';
   $field_group->data = array(
     'label' => 'Supplementary information',
-    'weight' => '13',
+    'weight' => '14',
     'children' => array(
       0 => 'field_supp_infos',
     ),
@@ -5774,9 +5777,9 @@ function mica_studies_field_group_info() {
     'label' => 'Tabs',
     'weight' => '0',
     'children' => array(
-      0 => 'group_access',
-      1 => 'group_authorization',
-      2 => 'group_datasets',
+      0 => 'group_datasets',
+      1 => 'group_access',
+      2 => 'group_authorization',
       3 => 'group_general_info',
       4 => 'group_marker_paper',
       5 => 'group_methods',

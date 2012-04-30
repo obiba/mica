@@ -70,7 +70,7 @@ function mica_studies_configure_facet_blocks() {
       'field_select_criteria' => COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT,
       'field_data_sources' => COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT,
       'field_recruitment' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
-      'field_recruitment_procedures' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'field_recruitment_sources' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'field_access_data' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'field_access_biosamples' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'field_preparation_start_year' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,

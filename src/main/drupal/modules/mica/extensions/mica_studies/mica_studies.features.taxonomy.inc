@@ -12,8 +12,8 @@ function mica_studies_taxonomy_default_vocabularies() {
     'sources_of_recruitment' => array(
       'name' => 'Source of Recruitment',
       'machine_name' => 'sources_of_recruitment',
-      'description' => NULL,
-      'hierarchy' => '0',
+      'description' => '',
+      'hierarchy' => '1',
       'module' => 'taxonomy',
       'weight' => '0',
       'rdf_mapping' => array(

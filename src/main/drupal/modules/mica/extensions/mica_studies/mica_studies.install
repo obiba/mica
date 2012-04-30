@@ -51,17 +51,6 @@ function mica_studies_update_7120(&$sandbox) {
 }
 
 /**
-* Import taxonomy source_of_information<br>
-*/
-function mica_studies_update_7130(&$sandbox) {
-
-	// Import taxonomies
-	$base_path = drupal_get_path('module', 'mica_studies') . '/taxonomies/';
-	foreach (_mica_studies_taxonomies() as $taxonomy) {
-		mica_core_taxonomy_import($filename, $base_path, $vocabulary_name);
-	}
-}
-/**
  * Create custom date format because Features does not support date_formats yet
  * @see http://drupal.org/node/1279928
  */
