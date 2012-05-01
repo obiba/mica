@@ -238,6 +238,17 @@ function mica_datasets_menu() {
     'file' => 'mica_datasets.pages.inc',
   );
 
+  $items['node/%node/dataset-harmonization'] = array(
+    'title' => 'Harmonization',
+    'description' => 'View the list of harmonized variables',
+    'page callback' => 'mica_datasets_dataset_harmonization_page',
+    'page arguments' => array(1),
+    'access callback' => '_mica_datasets_node_access',
+    'access arguments' => array(1, 'dataset', 'view'),
+    'type' => MENU_LOCAL_ACTION,
+    'file' => 'mica_datasets.pages.harmonization.inc',
+  );
+  
   // Mica administration
   $items['admin/config/system/mica'] = array(
     'title' => 'Mica',
@@ -340,9 +351,9 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
         }
 
         if (node_access('view', $node)) {
-          // highlight queries
+          // highlight queries and harmonization
           foreach ($data['actions']['output'] as $key => $link) {
-            if (isset($link['#link']['path']) && $link['#link']['path'] == 'node/%/queries') {
+            if (isset($link['#link']['path']) && ($link['#link']['path'] == 'node/%/queries' || $link['#link']['path'] == 'node/%/dataset-harmonization')) {
               $data['actions']['output'][$key]['#link']['localized_options'] = array(
                 'attributes' => array('class' => 'highlight')
               );

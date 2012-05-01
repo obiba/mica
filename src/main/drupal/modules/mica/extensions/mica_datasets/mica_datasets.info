@@ -317,6 +317,7 @@ features[variable][] = node_submitted_dataset
 features[variable][] = node_submitted_study_variable
 features[variable][] = node_submitted_variable
 features[variable][] = parent_bundle_study_variable
+features[variable][] = tipsy
 features[variable][] = workbench_moderation_default_state_study_variable
 features[views_view][] = dataset_csv_export
 features[views_view][] = dataset_studies

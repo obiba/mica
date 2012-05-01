@@ -2279,3 +2279,37 @@ body.node-type-dataset .pane-dataset-variables {
 .dataset_study_summary_details h2[property="dc:title"] {
   display: none;
 }
+
+/**
+ * Harmonization style
+ */
+.header_center{
+  margin:0px auto;
+}
+.harmonization-complete{
+  background-image:url('../images/bullet_green.png');
+  background-repeat:no-repeat;
+  min-width:16px;
+  width:16px;
+  min-height:16px;
+  /*text-align:center;*/
+  margin-left:10px;
+}
+.harmonization-in_progress{
+  background-image:url('../images/bullet_yellow.png');
+  background-repeat:no-repeat;
+  min-width:16px;
+  width:16px;
+  min-height:16px;
+  /*text-align:center;*/
+  margin-left:10px;
+}
+.harmonization-impossible{
+  background-image:url('../images/bullet_red.png');
+  background-repeat:no-repeat;
+  min-width:16px;
+  min-height:16px;
+  width:16px;
+  /*text-align:center;*/
+  margin-left:10px;
+}
