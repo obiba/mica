@@ -8,7 +8,7 @@
 /**
  * @defgroup mica_datasets_form_constants Mica datasets form constants
  * @{
- * Constants used to build the Mica dataset entity forms.
+ *           Constants used to build the Mica dataset entity forms.
  */
 
 define('MICA_STUDY_ID', 'study-id');
@@ -40,6 +40,7 @@ function _mica_datasets_connectors_form() {
 
 /**
  * Build a connection data structure.
+ *
  * @param $dataset_node
  * @param $study_node
  * @param $parent_node
@@ -67,6 +68,7 @@ function _mica_datasets_connection_data(&$dataset_node, &$study_node, $parent_no
 
 /**
  * Extract usefull information from a node.
+ *
  * @param $node
  */
 function _mica_datasets_connection_data_node(&$node) {
@@ -81,6 +83,7 @@ function _mica_datasets_connection_data_node(&$node) {
 
 /**
  * Add a tableselect option.
+ *
  * @param $options
  * @param $dataset_node
  * @param $study_node
@@ -97,14 +100,17 @@ function _mica_datasets_add_connection_option(&$options, &$dataset_node, &$study
         '#type' => 'link',
         '#title' => $data['child']['title'],
         '#href' => $data['child']['path'],
-      )),
+      )
+    ),
     'connection-type' => $data['connector']['type'],
     'description' => $data['connector']['description'],
     'actions' => array(
       'data' => array(
         array(
-          '#markup' => ctools_modal_text_button(t('Edit'), 'mica/nojs/' . $href, t('Edit study connection options'),
-            'ctools-modal-edit-style'),
+          '#markup' => ctools_modal_text_button(
+            t('Edit'), 'mica/nojs/' . $href, t('Edit study connection options'),
+            'ctools-modal-edit-style'
+          ),
         ),
       ),
     ),
@@ -114,9 +120,10 @@ function _mica_datasets_add_connection_option(&$options, &$dataset_node, &$study
 
 /**
  * Add tableselect form with delete selected items button.
+ *
  * @param $form
- * @param $header first column header
- * @param $empty text when list is empty
+ * @param $header  first column header
+ * @param $empty   text when list is empty
  * @param $options list of rows
  */
 function _mica_datasets_add_table_form(&$form, $header, $empty, &$options) {
@@ -183,7 +190,56 @@ function _mica_datasets_add_study_to_dataset($study, $dataset) {
   $study->mica_dataset[$study->language][] = array('nid' => $dataset->nid);
   node_save($study);
 
- // No need to update the dataset since we have the corresponding node reference module
+  _mica_datasets_study_variable($study, $dataset);
+
+  // No need to update the dataset since we have the corresponding node reference module
+}
+
+/**
+ * @param $study
+ * @param $dataset
+ *
+ * For all variable in $dataset,link them to $study with Study Variables entity
+ */
+function _mica_datasets_study_variable(&$study, &$dataset) {
+  global $user;
+  $wrapper_study = entity_metadata_wrapper('node', $study);
+  $wrapper_dataset = entity_metadata_wrapper('node', $dataset);
+
+  $query = new EntityFieldQuery();
+  $results = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'study_variable')
+    ->fieldCondition('field_sv_study', 'nid', $wrapper_study->nid->value())
+    ->execute();
+
+  $study_variables = array();
+  if (empty($results['node']) == FALSE) {
+    $study_variables = entity_load('node', array_keys($results['node']));
+  }
+
+  foreach ($wrapper_dataset->field_dataset_variables as $variable) {
+    $exist = FALSE;
+    foreach ($study_variables as $sv) {
+      $wrapper_sv = entity_metadata_wrapper('node', $sv);
+      if ($wrapper_sv->field_sv_variable->nid->value() === $variable->nid->value()
+        && $wrapper_sv->field_sv_study->nid->value() === $wrapper_study->nid->value()
+      ) {
+        $exist = TRUE;
+      }
+    }
+    if ($exist === FALSE) {
+      $infos = array(
+        'type' => 'study_variable',
+        'title' => 'sv_' . $study->title . '_' . $variable->title->value(),
+        'language' => LANGUAGE_NONE,
+        'field_sv_study' => $wrapper_study->nid->value(),
+        'field_sv_variable' => $variable->nid->value(),
+        'uid' => $user->uid
+      );
+      $new_study_variable = entity_property_values_create_entity('node', $infos);
+      $new_study_variable->save();
+    }
+  }
 }
 
 function _mica_datasets_dataset_connection_delete(&$study_node, $dataset_node_id) {
@@ -191,7 +247,9 @@ function _mica_datasets_dataset_connection_delete(&$study_node, $dataset_node_id
 
   // todo delete connector entity too
   $connector = mica_dataset_connector_query($dataset_node_id, $study_node->nid);
-  if ($connector) $connector->delete();
+  if ($connector) {
+    $connector->delete();
+  }
 }
 
 function _mica_datasets_remove_study_to_dataset(&$study, &$dataset) {
@@ -252,6 +310,7 @@ function _mica_datasets_new_connector($connection_type) {
 
 /**
  * Submit the options
+ *
  * @param $form
  * @param $form_state
  * @param $connection_type
@@ -266,6 +325,7 @@ function _mica_datasets_connection_options_submit(&$form, &$form_state, $connect
 
 /**
  * Get the node provided provided as an argument to the form.
+ *
  * @param  $form_state
  */
 function _mica_datasets_get_node_form_arg(&$form_state) {
@@ -275,6 +335,7 @@ function _mica_datasets_get_node_form_arg(&$form_state) {
 /**
  * Get all nodes of dataset type that are published, accessible
  * and not already datasets of current study.
+ *
  * @param study node $study_node
  */
 function _mica_datasets_datasets_options($study_node) {
@@ -307,6 +368,7 @@ function _mica_datasets_datasets_options($study_node) {
 /**
  * Get all nodes of study type that are published, accessible
  * and are not already related to current dataset.
+ *
  * @param $study_node_ids
  */
 function _mica_datasets_studies_options(&$study_node_ids) {
@@ -334,6 +396,7 @@ function _mica_datasets_studies_options(&$study_node_ids) {
 /**
  * Get all nodes of study type that are published, accessible
  * and are related to current dataset.
+ *
  * @param $dataset_node_id
  */
 function _mica_datasets_get_study_ids($dataset_node_id) {
@@ -363,6 +426,7 @@ function _mica_datasets_get_study_ids($dataset_node_id) {
 /**
  * Get all nodes of dataset type that are published, accessible
  * and are related to current study.
+ *
  * @param $study_node_id
  */
 function _mica_datasets_get_dataset_ids($study_node_id) {
@@ -390,7 +454,8 @@ function _mica_datasets_get_dataset_ids($study_node_id) {
 
 /**
  * Get the values for a node field.
- * @param node $node
+ *
+ * @param node   $node
  * @param string $field_name
  */
 function _mica_datasets_node_field_values($node, $field_name) {
@@ -403,6 +468,7 @@ function _mica_datasets_node_field_values($node, $field_name) {
 
 /**
  * Extract connection config specific values from form_state.
+ *
  * @param $form
  * @param $form_state
  */

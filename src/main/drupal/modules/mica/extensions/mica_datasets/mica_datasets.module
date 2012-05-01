@@ -380,7 +380,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
 /**
  * Get the title for the query.
  *
- * @param node $dataset_node
+ * @param node               $dataset_node
  * @param mica_dataset_query $query
  */
 function _mica_datasets_query_title($dataset_node, $query) {
@@ -390,8 +390,8 @@ function _mica_datasets_query_title($dataset_node, $query) {
 /**
  * Get the title for the query term.
  *
- * @param node $dataset_node
- * @param mica_dataset_query $query
+ * @param node                    $dataset_node
+ * @param mica_dataset_query      $query
  * @param mica_dataset_query_term $term
  */
 function _mica_datasets_query_term_title($dataset_node, $query, $term) {
@@ -402,7 +402,7 @@ function _mica_datasets_query_term_title($dataset_node, $query, $term) {
 /**
  * Check node type (if provided) and node access.
  *
- * @param node $node
+ * @param node   $node
  * @param string $bundle
  * @param string $op
  */
@@ -423,7 +423,7 @@ function _mica_datasets_node_access($node, $bundle = NULL, $op = 'update') {
  * Check whether queries tab is accessible: requires to have access to dataset node and having participant variables
  * defined for this dataset.
  *
- * @param node $dataset_node
+ * @param node   $dataset_node
  * @param string $op
  */
 function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
@@ -445,9 +445,9 @@ function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
  * Check for query accessibility: associated dataset is accessible and user is the query author,
  * or query is published for viewing.
  *
- * @param node $dataset_node
+ * @param node             $dataset_node
  * @param MicaDatasetQuery $query
- * @param string $op
+ * @param string           $op
  */
 function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
   global $user;
@@ -492,10 +492,10 @@ function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
 /**
  * Check for query term access: associated query must be accessible.
  *
- * @param node $dataset_node
- * @param mica_dataset_query $query
+ * @param node                    $dataset_node
+ * @param mica_dataset_query      $query
  * @param mica_dataset_query_term $query_term
- * @param string $op
+ * @param string                  $op
  */
 function _mica_datasets_query_term_access($dataset_node, $query, $query_term, $op = 'update') {
   if (!is_object($query_term)) {
@@ -782,7 +782,7 @@ function mica_dataset_connector_load($id, $reset = FALSE) {
  *   Whether to reset the internal entity_load cache.
  *
  * @return array
- *   An array of connector objects keyed by machine name.
+ *      An array of connector objects keyed by machine name.
  */
 function mica_dataset_connector_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
   return entity_load('mica_dataset_connector', $ids, $conditions, $reset);
@@ -816,6 +816,7 @@ function mica_dataset_connector_insert(array $values) {
 
 /**
  * Load all node of type 'variable' associated with a dataset
+ *
  * @param $dataset nid
  */
 function mica_dataset_dataset_variables($dataset) {
@@ -844,9 +845,9 @@ function mica_dataset_dataset_variables($dataset) {
  *   The ID of the connection info to retrieve.
  *
  * @return array
- *   If $id was not specified, an array of all available service classes.
- *   Otherwise, either the service info with the specified id (if it exists),
- *   or NULL.
+ *      If $id was not specified, an array of all available service classes.
+ *      Otherwise, either the service info with the specified id (if it exists),
+ *      or NULL.
  */
 function mica_datasets_get_connection_info($id = NULL) {
   $connections = &drupal_static(__FUNCTION__);
@@ -902,7 +903,7 @@ function mica_dataset_query_load($id, $reset = FALSE) {
  *   Whether to reset the internal entity_load cache.
  *
  * @return array
- *   An array of query objects keyed by id.
+ *      An array of query objects keyed by id.
  */
 function mica_dataset_query_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
   return entity_load('mica_dataset_query', $ids, $conditions, $reset);
@@ -985,7 +986,7 @@ function mica_dataset_query_term_load($id, $reset = FALSE) {
  *   Whether to reset the internal entity_load cache.
  *
  * @return array
- *   An array of query objects keyed by machine name.
+ *      An array of query objects keyed by machine name.
  */
 function mica_dataset_query_term_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
   // TODO filter the cached ones from the persisted ones by their id pattern
@@ -1051,8 +1052,10 @@ function mica_datasets_feeds_after_parse(FeedsSource $source, FeedsParserResult 
 
 /**
  * Returns the name of the source for a specified target.
+ *
  * @param FeedsProcessor $processor
- * @param String $target the nane of the target field (e.g.: 'title')
+ * @param String         $target the name of the target field (e.g.: 'title')
+ *
  * @return the name of source item mapped to the target (e.g.: 'jsonpath:0')
  */
 function _find_source_for_target(FeedsProcessor $processor, $target) {
@@ -1118,6 +1121,7 @@ function mica_datasets_node_presave($node) {
   switch ($node->type) {
     case 'variable':
       _mica_datasets_set_variable_position($node);
+      _mica_datasets_add_study_variable_to($node);
       break;
   }
 }
@@ -1178,17 +1182,17 @@ function mica_datasets_node_delete($node) {
         ->entityCondition('bundle', 'study')
         ->fieldCondition('mica_dataset', 'nid', $dataset_id)
         ->execute();
-      
-      if (!empty($entities)){
-      
-      $studies = node_load_multiple(array_keys($entities['node']));
+
+      if (!empty($entities)) {
+
+        $studies = node_load_multiple(array_keys($entities['node']));
 
         foreach ($studies as $study_node) {
-  
+
           foreach ($study_node->mica_dataset[$study_node->language] as $key => $value) {
             if ($value['nid'] == $dataset_id) {
               unset($study_node->mica_dataset[$study_node->language][$key]);
-  
+
               $connector = mica_dataset_connector_query($dataset_id, $study_node->nid);
               if ($connector) {
                 $connector->delete();
@@ -1216,7 +1220,9 @@ function mica_datasets_node_validate($node, $form, &$form_state) {
 }
 
 function _mica_datasets_create_dataset_menu($node) {
-  $parent_menu = db_query("SELECT * FROM {menu_links} WHERE link_title = :title", array(':title' => 'Datasets / Data Dictionary'))
+  $parent_menu = db_query(
+    "SELECT * FROM {menu_links} WHERE link_title = :title", array(':title' => 'Datasets / Data Dictionary')
+  )
     ->fetchObject();
   if (!empty($parent_menu)) {
     $menu = $node->menu;
@@ -1249,7 +1255,8 @@ function _mica_datasets_create_variable_menu($node) {
     array(
       ':title' => $dataset_title,
       ':link_path' => 'node/' . $dataset_nid,
-    ))
+    )
+  )
     ->fetchObject();
   if (!empty($parent_menu)) {
     $menu = $node->menu;
@@ -1277,9 +1284,13 @@ function _mica_datasets_create_variable_menu($node) {
  * Remove [all items] from the current search block
  */
 function mica_datasets_block_view_alter(&$data, $block) {
-  if (is_null($block) || $block->delta !== 'variable_current_search' || $block->module !== 'current_search') return;
+  if (is_null($block) || $block->delta !== 'variable_current_search' || $block->module !== 'current_search') {
+    return;
+  }
   foreach ($data['content']['active_items']['#items'] as $key => $item) {
-    if ($item === '[all items]') unset($data['content']['active_items']['#items'][$key]);
+    if ($item === '[all items]') {
+      unset($data['content']['active_items']['#items'][$key]);
+    }
   }
 }
 
@@ -1357,7 +1368,9 @@ function _mica_datasets_set_variable_position(&$variable) {
 
   $wrapper = entity_metadata_wrapper('node', $variable);
   $position = $wrapper->field_position->value();
-  if ($position != NULL && $position != 0) return;
+  if ($position != NULL && $position != 0) {
+    return;
+  }
 
   $dataset_id = $wrapper->field_dataset->nid->value();
 
@@ -1377,6 +1390,37 @@ function _mica_datasets_set_variable_position(&$variable) {
     $wrapper->field_position->set($last_variable_wrapper->field_position->value() + 1);
   }
   return $variable;
+}
+
+function _mica_datasets_add_study_variable_to(&$variable) {
+  global $user;
+  $wrapper_variable = entity_metadata_wrapper('node', $variable);
+  $wrapper_dataset = entity_metadata_wrapper('node', $wrapper_variable->field_dataset->nid->value());
+  if ($wrapper_dataset->field_dataset_studies->count() != 0) {
+    foreach ($wrapper_dataset->field_dataset_studies as $study) {
+      $infos = array(
+        'type' => 'study_variable',
+        'title' => 'sv_' . $study->title->value() . '_' . $wrapper_variable->title->value(),
+        'language' => LANGUAGE_NONE,
+        'field_sv_study' => $study->nid->value(),
+        'field_sv_variable' => $wrapper_variable->nid->value(),
+        'uid' => $user->uid
+      );
+      $new_study_variable = entity_property_values_create_entity('node', $infos);
+      $new_study_variable->save();
+    }
+  }
+}
+
+function mica_datasets_node_view($node, $view_mode) {
+  if ($node->type === 'study_variable') {
+    $path = drupal_get_path('module', 'mica_datasets');
+    drupal_add_css($path . '/includes/prettify.css');
+    drupal_add_js($path . '/includes/prettify.js');
+    drupal_add_js('jQuery(document).ready(function (){prettyPrint()});', 'inline');
+    $script = &$node->content['field_sv_script'][0]['#markup'];
+    $script = '<code class=\'prettyprint\'>' . $script . '</code>';
+  }
 }
 
 
