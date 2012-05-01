@@ -232,10 +232,7 @@ function mica_datasets_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_study_variable';
-  $strongarm->value = array(
-    0 => 'status',
-    1 => 'promote',
-  );
+  $strongarm->value = array();
   $export['node_options_study_variable'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -279,7 +276,7 @@ function mica_datasets_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_study_variable';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_study_variable'] = $strongarm;
 
   $strongarm = new stdClass;
