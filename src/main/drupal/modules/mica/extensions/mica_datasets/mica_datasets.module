@@ -1121,7 +1121,6 @@ function mica_datasets_node_presave($node) {
   switch ($node->type) {
     case 'variable':
       _mica_datasets_set_variable_position($node);
-      _mica_datasets_add_study_variable_to($node);
       break;
   }
 }
@@ -1136,6 +1135,7 @@ function mica_datasets_node_insert($node) {
       break;
 
     case 'variable':
+      _mica_datasets_add_study_variable_to($node);
       _mica_datasets_create_variable_menu($node);
       break;
   }
