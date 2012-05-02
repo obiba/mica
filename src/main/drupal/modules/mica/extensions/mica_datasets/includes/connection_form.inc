@@ -230,7 +230,7 @@ function _mica_datasets_study_variable(&$study, &$dataset) {
     if ($exist === FALSE) {
       $infos = array(
         'type' => 'study_variable',
-        'title' => 'sv_' . $study->title . '_' . $variable->title->value(),
+        'title' => $variable->title->value() . ' in ' . $study->title,
         'language' => LANGUAGE_NONE,
         'field_sv_study' => $wrapper_study->nid->value(),
         'field_sv_variable' => $variable->nid->value(),

@@ -248,7 +248,7 @@ function mica_datasets_menu() {
     'type' => MENU_LOCAL_ACTION,
     'file' => 'mica_datasets.pages.harmonization.inc',
   );
-  
+
   // Mica administration
   $items['admin/config/system/mica'] = array(
     'title' => 'Mica',
@@ -353,7 +353,10 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
         if (node_access('view', $node)) {
           // highlight queries and harmonization
           foreach ($data['actions']['output'] as $key => $link) {
-            if (isset($link['#link']['path']) && ($link['#link']['path'] == 'node/%/queries' || $link['#link']['path'] == 'node/%/dataset-harmonization')) {
+            if (isset($link['#link']['path'])
+              && (
+                $link['#link']['path'] == 'node/%/queries' || $link['#link']['path'] == 'node/%/dataset-harmonization')
+            ) {
               $data['actions']['output'][$key]['#link']['localized_options'] = array(
                 'attributes' => array('class' => 'highlight')
               );
@@ -535,10 +538,24 @@ function mica_datasets_form($node, &$form_state) {
  * Implements hook_field_attach_form()
  */
 function mica_datasets_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
-  // do not display manual edition of study view reference field 
-  if ($entity_type === 'node' && $entity->type === 'dataset') {
-    $form['field_dataset_studies']['#attributes']['style'] = array('display:none;');
-    $form['field_dataset_variables']['#attributes']['style'] = array('display:none;');
+  // do not display manual edition of study view reference field
+  if ($entity_type === 'node') {
+    switch ($entity->type) {
+      case 'dataset';
+        $form['field_dataset_studies']['#attributes']['style'] = array('display:none;');
+        $form['field_dataset_variables']['#attributes']['style'] = array('display:none;');
+        break;
+      case 'study':
+        $form['field_study_study_variables']['#attributes']['style'] = array('display:none;');
+        break;
+      case 'variable':
+        $form['field_variable_study_variables']['#attributes']['style'] = array('display:none;');
+        break;
+      case 'study_variable':
+        $form['field_sv_variable']['#attributes']['style'] = array('display:none;');
+        $form['field_sv_study']['#attributes']['style'] = array('display:none;');
+        break;
+    }
   }
 }
 
@@ -1411,7 +1428,7 @@ function _mica_datasets_add_study_variable_to(&$variable) {
     foreach ($wrapper_dataset->field_dataset_studies as $study) {
       $infos = array(
         'type' => 'study_variable',
-        'title' => 'sv_' . $study->title->value() . '_' . $wrapper_variable->title->value(),
+        'title' => $wrapper_variable->title->value() . ' in ' . $study->title->value(),
         'language' => LANGUAGE_NONE,
         'field_sv_study' => $study->nid->value(),
         'field_sv_variable' => $wrapper_variable->nid->value(),

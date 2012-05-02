@@ -38,7 +38,7 @@ projects[auto_nodetitle][type] = module
 projects[autocomplete_deluxe][type] = module
 projects[autocomplete_deluxe][download][type] = git
 projects[autocomplete_deluxe][download][url] = http://git.drupal.org/project/autocomplete_deluxe.git
-projects[autocomplete_deluxe][download][revision] = b9e4b6b745b38ba4b0b3696e26ffc4fc23c85c9f
+projects[autocomplete_deluxe][download][revision] = a92b71e91208356b93a83525c695732b189d0653
 
 projects[] = advanced_help
 
@@ -77,9 +77,7 @@ projects[content_taxonomy][download][url] = http://git.drupal.org/project/conten
 projects[content_taxonomy][download][revision] = 5d0257a2f955e2d9d9b74e0e3b152ebaad1a3cb1
 
 projects[ctools][type] = module
-projects[ctools][download][type] = git
-projects[ctools][download][url] = http://git.drupal.org/project/ctools.git
-projects[ctools][download][revision] = dd65335ef5b823702ea5f1688a3000b09a04a739
+projects[ctools][version] = 1.0
 
 projects[date][version] = 2.3
 projects[date][type] = module
