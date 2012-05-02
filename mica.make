@@ -42,11 +42,8 @@ projects[autocomplete_deluxe][download][revision] = a92b71e91208356b93a83525c695
 
 projects[] = advanced_help
 
+projects[calendar][version] = 3.3
 projects[calendar][type] = module
-projects[calendar][download][type] = git
-projects[calendar][download][url] = http://git.drupal.org/project/calendar.git
-projects[calendar][download][revision] = 3f4c3c70f25b980800e381e81d99f74a3ccf7711
-;projects[calendar][patch][1445228] = http://drupal.org/files/calendar-granularity-1445228-12.patch
 
 projects[cck_select_other][version] = 1.0
 projects[cck_select_other][type] = module
@@ -54,7 +51,7 @@ projects[cck_select_other][type] = module
 projects[chain_menu_access][version] = 1.0
 projects[chain_menu_access][type] = module
 
-projects[ckeditor][version] = 1.8
+projects[ckeditor][version] = 1.9
 projects[ckeditor][type] = module
 
 projects[collapsiblock][type] = module
@@ -79,7 +76,7 @@ projects[content_taxonomy][download][revision] = 5d0257a2f955e2d9d9b74e0e3b152eb
 projects[ctools][type] = module
 projects[ctools][version] = 1.0
 
-projects[date][version] = 2.3
+projects[date][version] = 2.5
 projects[date][type] = module
 
 projects[] = devel
@@ -90,9 +87,8 @@ projects[email][download][url] = http://git.drupal.org/project/email.git
 projects[email][download][revision] = 523cd0de1387a4fca52f007f7594160a56378196
 projects[email][patch][718414] = http://drupal.org/files/email_feeds_target-718414-36.patch
 
-projects[entity][version] = 1.0-rc1
+projects[entity][version] = 1.0-rc2
 projects[entity][type] = module
-projects[entity][patch][1344056] = http://drupal.org/files/1344056--node-status-1.patch
 
 projects[facetapi][version] = 1.0-rc4
 projects[facetapi][type] = module
@@ -143,7 +139,7 @@ projects[] = graphapi
 projects[http_client][version] = 2.3
 projects[http_client][type] = module
 
-projects[image_url_formatter][version] = 1.0-rc1
+projects[image_url_formatter][version] = 1.0
 projects[image_url_formatter][type] = module
 
 projects[imce][version] = 1.5
@@ -298,7 +294,7 @@ libraries[solr_php_client][directory_name] = "SolrPhpClient"
 
 libraries[ckeditor][type] = "libraries"
 libraries[ckeditor][download][type]= "get"
-libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.1/ckeditor_3.6.1.tar.gz"
+libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.3/ckeditor_3.6.3.tar.gz"
 libraries[ckeditor][directory_name] = "ckeditor"
 
 libraries[jsonpath][type] = "libraries"
