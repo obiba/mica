@@ -7,8 +7,6 @@ project = "mica_category_field"
 
 
 
-
-
-; Information added by obiba.org packaging script on Tue, 01 May 2012 16:12:54 -0400
+; Information added by obiba.org packaging script on Wed, 02 May 2012 14:07:17 -0400
 version = "7.x-1.3-dev"
-datestamp = "1335903174"
+datestamp = "1335982037"
