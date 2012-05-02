@@ -353,10 +353,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
         if (node_access('view', $node)) {
           // highlight queries and harmonization
           foreach ($data['actions']['output'] as $key => $link) {
-            if (isset($link['#link']['path'])
-              && (
-                $link['#link']['path'] == 'node/%/queries' || $link['#link']['path'] == 'node/%/dataset-harmonization')
-            ) {
+            if (isset($link['#link']['path']) && ($link['#link']['path'] == 'node/%/queries' || $link['#link']['path'] == 'node/%/dataset-harmonization')) {
               $data['actions']['output'][$key]['#link']['localized_options'] = array(
                 'attributes' => array('class' => 'highlight')
               );
@@ -385,7 +382,37 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
         }
       }
       break;
-
+      
+    case 'node/%/dataset-harmonization':
+      $node = $router_item['page_arguments'][0];
+      if ($node != NULL && $node->type === 'dataset') {
+      	if (node_access('update', $node)) {
+      		// add variables
+      		$links['add-variable'] = array(
+            '#theme' => 'menu_local_action',
+            '#weight' => 7,
+            '#link' => array(
+              'title' => t('Add new variable'),
+              'href' => 'node/add/variable',
+              'localized_options' => array(
+                'query' => array(
+                  'dataset' => $node->nid
+      		      )
+      		    )
+      		  ),
+      		);
+      		
+      		// Edit studies
+      		$item = menu_get_item("node/$node->nid/studies");
+      		if ($item['access']) {
+      			$data['actions']['output'][] = array(
+  		        '#theme' => 'menu_local_action',
+  		        '#link' => $item,
+      			);
+      		}
+      	}
+      }
+    	break;
   }
 
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
@@ -1428,7 +1455,7 @@ function _mica_datasets_add_study_variable_to(&$variable) {
     foreach ($wrapper_dataset->field_dataset_studies as $study) {
       $infos = array(
         'type' => 'study_variable',
-        'title' => $wrapper_variable->title->value() . ' in ' . $study->title->value(),
+        'title' => 'sv_' . $study->title->value() . '_' . $wrapper_variable->title->value(),
         'language' => LANGUAGE_NONE,
         'field_sv_study' => $study->nid->value(),
         'field_sv_variable' => $wrapper_variable->nid->value(),

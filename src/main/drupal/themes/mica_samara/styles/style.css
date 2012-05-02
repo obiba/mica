@@ -1405,7 +1405,7 @@ html.js fieldset.collapsed .action {
   display: none;
 }
 html.js fieldset.collapsed {
-  padding: 10px 20px;
+  padding: 11px 20px;
 }
 html.js fieldset.collapsed {
   border-width: 1px;
@@ -2287,29 +2287,65 @@ body.node-type-dataset .pane-dataset-variables {
   margin:0px auto;
 }
 .harmonization-complete{
-  background-image:url('../images/bullet_green.png');
+  /*background-image:url('../images/bullet_green.png');*/
+  background-image:url('../images/accept.png');
   background-repeat:no-repeat;
   min-width:16px;
-  width:16px;
+  /*width:16px;*/
   min-height:16px;
   /*text-align:center;*/
+  margin-top: 0px;
   margin-left:10px;
+  /*display:inline;*/
 }
 .harmonization-in_progress{
-  background-image:url('../images/bullet_yellow.png');
+  /*background-image:url('../images/bullet_yellow.png');*/
+  background-image:url('../images/accept_2.png');
   background-repeat:no-repeat;
   min-width:16px;
-  width:16px;
+  /*width:16px;*/
   min-height:16px;
   /*text-align:center;*/
+  margin-top: 0px;
   margin-left:10px;
 }
 .harmonization-impossible{
-  background-image:url('../images/bullet_red.png');
+  background-image:url('../images/exclamation.png');
   background-repeat:no-repeat;
   min-width:16px;
   min-height:16px;
-  width:16px;
-  /*text-align:center;*/
+  margin-top: 0px;
   margin-left:10px;
 }
+.harmonization-not_available{
+	background-image:url('../images/bullet_black.png');
+  background-repeat:no-repeat;
+  min-width:16px;
+  min-height:16px;
+  margin-top: 0px;
+  margin-left:10px;
+}
+.harmonization-complete.tipsy{
+	margin-top:-8px;
+}
+.harmonization-in_progress.tipsy{
+  margin-top:-8px;
+}
+.harmonization-impossible.tipsy{
+  margin-top:-8px;
+}
+.harmonization-not_available.tipsy{
+  margin-top:-8px;
+}
+.tipsy { padding: 5px; font-size: 10px; position: absolute; z-index: 100000; }
+.tipsy-inner { padding: 5px 8px 4px 8px; background-color: #DDD; color: black; max-width: 400px; text-align: left; }
+.tipsy-inner { border-radius: 3px; -moz-border-radius:3px; -webkit-border-radius:3px; }
+.tipsy-arrow { position: absolute; background: url('../images/tipsy.gif') no-repeat top left; width: 9px; height: 5px;}
+.tipsy-n .tipsy-arrow { top: 0; left: 50%; margin-left: -4px; }
+.tipsy-nw .tipsy-arrow { top: 0; left: 10px; }
+.tipsy-ne .tipsy-arrow { top: 0; right: 10px; }
+.tipsy-s .tipsy-arrow { bottom: 0; left: 50%; margin-left: -4px; background-position: bottom left; }
+.tipsy-sw .tipsy-arrow { bottom: 0; left: 10px; background-position: bottom left; }
+.tipsy-se .tipsy-arrow { bottom: 0; right: 10px; background-position: bottom left; }
+.tipsy-e .tipsy-arrow { top: 50%; margin-top: -4px; right: 0; width: 5px; height: 9px; background-position: top right; }
+.tipsy-w .tipsy-arrow { top: 50%; margin-top: -4px; left: 0; width: 5px; height: 9px; }
