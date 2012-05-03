@@ -1138,8 +1138,9 @@ function mica_dataset_private_file_absolute_path($reference) {
  * Implements hook_node_view_alter().
  */
 function mica_datasets_node_view_alter(&$build) {
+  require_once('mica_datasets.pages.harmonization.inc');
+  
   if ($build['#view_mode'] === 'right_area' && $build['#bundle'] === 'variable') {
-
     $node = $build['#node'];
     $wrapper = entity_metadata_wrapper('node', $node);
     $dataset = $wrapper->field_dataset->value();
@@ -1162,6 +1163,63 @@ function mica_datasets_node_view_alter(&$build) {
         );
       }
     }
+  }
+  if ($build['#view_mode'] === 'footer_area' && $build['#bundle'] === 'variable') {
+  	$node = $build['#node'];
+  	$wrapper = entity_metadata_wrapper('node', $node);
+  	$dataset = $wrapper->field_dataset->value();
+  	if (!empty($dataset)) {
+  	  
+  	  $header = array(
+	      'study' => t('Study'),
+	      'status' => t('Status'),
+	      'script' => t('Script'),
+	      'comment' => t('Comment'),
+  	  );
+  	  $options = array();
+  	  $status_values = field_info_field('field_sv_script_status');
+  	  foreach($wrapper->field_variable_study_variables->value() as $study_variable){
+  	    if (!empty($study_variable->field_sv_script_status)){
+  	    	$status = $study_variable->field_sv_script_status['und'][0]['value'];
+  	    	$status_label = $status_values['settings']['allowed_values'][$status];
+  	    }
+  	    else{
+  	    	$status = 'not_available';
+  	    	$status_label = t('Not Available');
+  	    }
+  	    $script = empty($study_variable->field_sv_script['und'][0]['value']) ? '':$study_variable->field_sv_script['und'][0]['value'];
+  	    $script = '<code>'.check_markup($script).'</code>';
+   	    $comment = empty($study_variable->field_sv_comment['und'][0]['value']) ? '': $study_variable->field_sv_comment['und'][0]['value'];
+  	    $study = node_load($study_variable->field_sv_study['und'][0]['nid']);
+  	    
+  	    $name = !empty($study->field_acroym['und'][0]['value'])? $study->field_acroym['und'][0]['value'] : $study->title;
+  	    $option = array(
+  	    	'study' => $name,
+  	      'status' => "<a href=\"".url('node/'.$study_variable->nid)."\"><div class=\"harmonization-".$status."\"></div></a>",
+  	      'script' => $script,
+  	      'comment' => $comment,
+  	    );
+  	    
+  	    $options[] = $option;
+  	  }
+  	  
+  	  $output = theme('table', array('header' => $header, 'rows' => $options, 'empty' => t('No harmonization found')));
+  	  $output = drupal_get_form('mica_datasets_harmonization_legend_form');
+
+  	  $build['harmonization']= array(
+    	  '#type' => 'fieldset',
+        '#title' => t('Harmonization'),
+        '#weight' => 50,
+        '#collapsible' => TRUE,
+        '#collapsed' => FALSE,
+        'table' => array(
+          '#markup' => theme('table', array('header' => $header, 'rows' => $options, 'empty' => t('No harmonization found'))),
+        ),
+        'legend' => array(
+  	  		'#markup' => drupal_render(drupal_get_form('mica_datasets_harmonization_legend_form')),
+        ),
+  	  );
+  	}
   }
 }
 

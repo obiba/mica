@@ -6,16 +6,6 @@
 function mica_datasets_dataset_harmonization_page($dataset_node) {
 	drupal_set_title(t('!title -- Harmonization', array('!title' => $dataset_node->title)));
 
-	mica_core_modal_prepare(array(
-	array(
-      'name' => 'delete-style',
-      'width' => 400,
-      'height' => 150,
-	),
-	));
-
-	global $user;
-
 	$header = array(
     'name' => t('Variable'),
 	);
@@ -41,15 +31,14 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
  	  
  	  $query = new EntityFieldQuery();
  	  $result = $query->entityCondition('entity_type', 'node')
- 	  ->entityCondition('bundle', 'study_variable')
- 	  ->execute();
+ 	    ->entityCondition('bundle', 'study_variable')
+ 	    ->execute();
  	  $study_variables = node_load_multiple(array_keys($result['node']));
 
  	  foreach($variables as $variable){
 				$option = array(
-          'name' => $variable->title,
+          'name' => "<a href='".url('node/'.$variable->nid)."'>$variable->title</a>",
 				);
-				
 				
 		  foreach($variable->field_variable_study_variables[$variable->language] as $study_variable){
 		  
@@ -81,10 +70,17 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
 			$options[] = $option;
 		}
 	}
-
+  unset($result);
+  unset($study_variables);
+  
+//   pager_default_initialize(32, 1, $element = 0);
+//   debug(theme('pager', array('quantity' => 3)));
+  
+  
 	$output = theme('table', array('header' => $header, 'rows' => $options, 'empty' => t('No harmonization found')));
-
+// 	$output .= theme('pager', array('quantity' => 3));
 	$output .= drupal_render(drupal_get_form('mica_datasets_harmonization_legend_form'));
+	
 	return $output; 
 }
 
