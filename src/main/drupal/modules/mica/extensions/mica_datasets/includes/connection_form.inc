@@ -217,27 +217,18 @@ function _mica_datasets_study_variable(&$study, &$dataset) {
     $study_variables = entity_load('node', array_keys($results['node']));
   }
 
-  foreach ($wrapper_dataset->field_dataset_variables as $variable) {
+  foreach ($wrapper_dataset->field_dataset_variables as $wrapper_variable) {
     $exist = FALSE;
     foreach ($study_variables as $sv) {
       $wrapper_sv = entity_metadata_wrapper('node', $sv);
-      if ($wrapper_sv->field_sv_variable->nid->value() === $variable->nid->value()
+      if ($wrapper_sv->field_sv_variable->nid->value() === $wrapper_variable->nid->value()
         && $wrapper_sv->field_sv_study->nid->value() === $wrapper_study->nid->value()
       ) {
         $exist = TRUE;
       }
     }
     if ($exist === FALSE) {
-      $infos = array(
-        'type' => 'study_variable',
-        'title' => $variable->title->value() . ' in ' . $study->title,
-        'language' => LANGUAGE_NONE,
-        'field_sv_study' => $wrapper_study->nid->value(),
-        'field_sv_variable' => $variable->nid->value(),
-        'uid' => $user->uid
-      );
-      $new_study_variable = entity_property_values_create_entity('node', $infos);
-      $new_study_variable->save();
+      _mica_datasets_create_study_variable($wrapper_study, $wrapper_variable);
     }
   }
 }
