@@ -1165,6 +1165,11 @@ function mica_datasets_node_view_alter(&$build) {
     }
   }
   if ($build['#view_mode'] === 'footer_area' && $build['#bundle'] === 'variable') {
+    $path = drupal_get_path('module', 'mica_datasets');
+    drupal_add_css($path . '/includes/prettify.css');
+    drupal_add_js($path . '/includes/prettify.js');
+    drupal_add_js('jQuery(document).ready(function (){prettyPrint()});', 'inline');
+    
   	$node = $build['#node'];
   	$wrapper = entity_metadata_wrapper('node', $node);
   	$dataset = $wrapper->field_dataset->value();
@@ -1196,15 +1201,12 @@ function mica_datasets_node_view_alter(&$build) {
   	    $option = array(
   	    	'study' => $name,
   	      'status' => "<a href=\"".url('node/'.$study_variable->nid)."\"><div class=\"harmonization-".$status."\"></div></a>",
-  	      'script' => $script,
+  	      'script' => '<code class=\'prettyprint\'>'.$script.'</code>',
   	      'comment' => $comment,
   	    );
 
   	    $options[] = $option;
   	  }
-
-  	  $output = theme('table', array('header' => $header, 'rows' => $options, 'empty' => t('No harmonization found')));
-  	  $output = drupal_get_form('mica_datasets_harmonization_legend_form');
 
   	  $build['harmonization']= array(
     	  '#type' => 'fieldset',
@@ -1509,25 +1511,10 @@ function _mica_datasets_add_study_variable_to(&$variable) {
   $wrapper_variable = entity_metadata_wrapper('node', $variable);
   $wrapper_dataset = entity_metadata_wrapper('node', $wrapper_variable->field_dataset->nid->value());
   if ($wrapper_dataset->field_dataset_studies->count() != 0) {
-    foreach ($wrapper_dataset->field_dataset_studies as $wrapper_study) {
+  foreach ($wrapper_dataset->field_dataset_studies as $wrapper_study) {
       _mica_datasets_create_study_variable($wrapper_study, $wrapper_variable);
     }
   }
-}
-
-function _mica_datasets_create_study_variable($wrapper_study, $wrapper_variable) {
-  global $user;
-  $infos = array(
-    'type' => 'study_variable',
-    'title' => $wrapper_variable->title->value() . ' -- ' . $wrapper_study->title->value(),
-    'language' => LANGUAGE_NONE,
-    'field_sv_study' => $wrapper_study->nid->value(),
-    'field_sv_variable' => $wrapper_variable->nid->value(),
-    'uid' => $user->uid,
-    'status' => $wrapper_study->status->value()
-  );
-  $new_study_variable = entity_property_values_create_entity('node', $infos);
-  $new_study_variable->save();
 }
 
 function mica_datasets_node_view($node, $view_mode) {
@@ -1536,8 +1523,11 @@ function mica_datasets_node_view($node, $view_mode) {
     drupal_add_css($path . '/includes/prettify.css');
     drupal_add_js($path . '/includes/prettify.js');
     drupal_add_js('jQuery(document).ready(function (){prettyPrint()});', 'inline');
-    $script = &$node->content['field_sv_script'][0]['#markup'];
-    $script = '<code class=\'prettyprint\'>' . $script . '</code>';
+    $node->content['field_sv_script'][0]['#prefix'] = '<code class=\'prettyprint\'>';
+    $node->content['field_sv_script'][0]['#suffix'] = '</code>';
+    
+    
+    $node->content['field_sv_script'][0]['#markup'] = check_markup(drupal_html_to_text($node->content['field_sv_script'][0]['#markup']));
   }
 }
 

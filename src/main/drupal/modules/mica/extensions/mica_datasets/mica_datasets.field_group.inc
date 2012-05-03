@@ -10,7 +10,7 @@
 function mica_datasets_field_group_info() {
   $export = array();
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_categories|node|variable|default';
@@ -36,7 +36,7 @@ function mica_datasets_field_group_info() {
   );
   $export['group_categories|node|variable|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_categories|node|variable|left_area';
@@ -62,7 +62,7 @@ function mica_datasets_field_group_info() {
   );
   $export['group_categories|node|variable|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_datasets|node|study|center_area';
@@ -89,7 +89,7 @@ function mica_datasets_field_group_info() {
   );
   $export['group_datasets|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_datasets|node|study|default';
@@ -116,7 +116,7 @@ function mica_datasets_field_group_info() {
   );
   $export['group_datasets|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_datasets|node|study|footer_area';
@@ -143,7 +143,7 @@ function mica_datasets_field_group_info() {
   );
   $export['group_datasets|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_datasets|node|study|form';
@@ -172,7 +172,7 @@ function mica_datasets_field_group_info() {
   );
   $export['group_datasets|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_description|node|variable|default';
@@ -202,7 +202,7 @@ function mica_datasets_field_group_info() {
   );
   $export['group_description|node|variable|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_description|node|variable|left_area';
@@ -231,7 +231,7 @@ function mica_datasets_field_group_info() {
   );
   $export['group_description|node|variable|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_dimensions|node|variable|form';
@@ -276,7 +276,7 @@ function mica_datasets_field_group_info() {
   );
   $export['group_dimensions|node|variable|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_dimensions|node|variable|right_area';
@@ -319,7 +319,7 @@ function mica_datasets_field_group_info() {
   );
   $export['group_dimensions|node|variable|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_general_info|node|variable|form';
@@ -353,7 +353,7 @@ function mica_datasets_field_group_info() {
   );
   $export['group_general_info|node|variable|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tabs|node|variable|form';

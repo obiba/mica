@@ -840,7 +840,14 @@ function mica_datasets_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
+        ),
+        'footer_area' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -920,7 +927,14 @@ function mica_datasets_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 5,
+          'weight' => '5',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -997,7 +1011,14 @@ function mica_datasets_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 3,
+          'weight' => '3',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1064,7 +1085,11 @@ function mica_datasets_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'study_variable',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => 'in_progress',
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -1073,7 +1098,14 @@ function mica_datasets_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 4,
+          'weight' => '4',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1166,7 +1198,14 @@ function mica_datasets_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 2,
+          'weight' => '2',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1259,7 +1298,14 @@ function mica_datasets_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 1,
+          'weight' => '1',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1373,6 +1419,12 @@ function mica_datasets_field_default_fields() {
           'type' => 'text_default',
           'weight' => '2',
         ),
+        'footer_area' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
         'left_area' => array(
           'label' => 'inline',
           'settings' => array(),
@@ -1480,6 +1532,12 @@ function mica_datasets_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => '7',
         ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
+        ),
         'left_area' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1582,6 +1640,12 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
+          'weight' => '8',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '8',
         ),
         'left_area' => array(
@@ -1688,6 +1752,12 @@ function mica_datasets_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => '9',
         ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
         'left_area' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1791,6 +1861,12 @@ function mica_datasets_field_default_fields() {
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => '11',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
         ),
         'left_area' => array(
           'label' => 'above',
@@ -1939,6 +2015,12 @@ function mica_datasets_field_default_fields() {
           'type' => 'node_reference_default',
           'weight' => '6',
         ),
+        'footer_area' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
+        ),
         'left_area' => array(
           'label' => 'above',
           'module' => 'node_reference',
@@ -2042,6 +2124,12 @@ function mica_datasets_field_default_fields() {
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => '12',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
         ),
         'left_area' => array(
           'label' => 'above',
@@ -2147,6 +2235,12 @@ function mica_datasets_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => '17',
         ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '15',
+        ),
         'left_area' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2249,7 +2343,13 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 28,
+          'weight' => '28',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '23',
         ),
         'left_area' => array(
           'label' => 'above',
@@ -2370,6 +2470,12 @@ function mica_datasets_field_default_fields() {
           'type' => 'text_default',
           'weight' => '1',
         ),
+        'footer_area' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '0',
+        ),
         'left_area' => array(
           'label' => 'above',
           'module' => 'text',
@@ -2471,6 +2577,12 @@ function mica_datasets_field_default_fields() {
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => '14',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '9',
         ),
         'left_area' => array(
           'label' => 'above',
@@ -2574,7 +2686,13 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 29,
+          'weight' => '29',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '25',
         ),
         'left_area' => array(
           'label' => 'above',
@@ -2680,6 +2798,12 @@ function mica_datasets_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => '15',
         ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '13',
+        ),
         'left_area' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2783,6 +2907,12 @@ function mica_datasets_field_default_fields() {
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => '16',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
         ),
         'left_area' => array(
           'label' => 'above',
@@ -2888,6 +3018,12 @@ function mica_datasets_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => '18',
         ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '16',
+        ),
         'left_area' => array(
           'label' => 'above',
           'settings' => array(),
@@ -2991,6 +3127,12 @@ function mica_datasets_field_default_fields() {
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => '19',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
         ),
         'left_area' => array(
           'label' => 'above',
@@ -3096,6 +3238,12 @@ function mica_datasets_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => '20',
         ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
+        ),
         'left_area' => array(
           'label' => 'above',
           'settings' => array(),
@@ -3190,7 +3338,13 @@ Set to 0 to set variable at last position.  ',
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 27,
+          'weight' => '27',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '24',
         ),
         'left_area' => array(
           'label' => 'above',
@@ -3315,6 +3469,12 @@ Set to 0 to set variable at last position.  ',
           'type' => 'list_default',
           'weight' => '5',
         ),
+        'footer_area' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '6',
+        ),
         'left_area' => array(
           'label' => 'above',
           'module' => 'list',
@@ -3414,6 +3574,12 @@ Set to 0 to set variable at last position.  ',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => '21',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
         ),
         'left_area' => array(
           'label' => 'above',
@@ -3519,6 +3685,12 @@ Set to 0 to set variable at last position.  ',
           'type' => 'taxonomy_term_reference_link',
           'weight' => '23',
         ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '20',
+        ),
         'left_area' => array(
           'label' => 'above',
           'settings' => array(),
@@ -3623,6 +3795,12 @@ Set to 0 to set variable at last position.  ',
           'type' => 'taxonomy_term_reference_link',
           'weight' => '24',
         ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '21',
+        ),
         'left_area' => array(
           'label' => 'above',
           'settings' => array(),
@@ -3726,6 +3904,12 @@ Set to 0 to set variable at last position.  ',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => '25',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '19',
         ),
         'left_area' => array(
           'label' => 'above',
@@ -3851,6 +4035,12 @@ Set to 0 to set variable at last position.  ',
           'type' => 'list_default',
           'weight' => '4',
         ),
+        'footer_area' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
         'left_area' => array(
           'label' => 'above',
           'module' => 'list',
@@ -3936,6 +4126,12 @@ Set to 0 to set variable at last position.  ',
           'settings' => array(),
           'type' => 'category_field_table_formatter',
           'weight' => '3',
+        ),
+        'footer_area' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
         ),
         'left_area' => array(
           'label' => 'hidden',
@@ -4047,7 +4243,13 @@ Set to 0 to set variable at last position.  ',
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 30,
+          'weight' => '30',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '22',
         ),
         'left_area' => array(
           'label' => 'above',

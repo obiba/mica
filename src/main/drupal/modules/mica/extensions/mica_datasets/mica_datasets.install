@@ -286,6 +286,7 @@ function _mica_datasets_configure_field_bundle_settings() {
       'banner_area' => array('custom_settings' => TRUE),
       'left_area' => array('custom_settings' => TRUE),
       'right_area' => array('custom_settings' => TRUE),
+  	  'footer_area' => array('custom_settings' => TRUE),
     ),
     'extra_fields' => array(
       'form' => array(),

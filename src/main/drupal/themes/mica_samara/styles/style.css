@@ -2300,7 +2300,7 @@ body.node-type-dataset .pane-dataset-variables {
 }
 .harmonization-in_progress{
   /*background-image:url('../images/bullet_yellow.png');*/
-  background-image:url('../images/accept_2.png');
+  background-image:url('../images/in_progress.png');
   background-repeat:no-repeat;
   min-width:16px;
   /*width:16px;*/
@@ -2318,12 +2318,14 @@ body.node-type-dataset .pane-dataset-variables {
   margin-left:10px;
 }
 .harmonization-not_available{
+	position:relative;
 	background-image:url('../images/bullet_black.png');
   background-repeat:no-repeat;
   min-width:16px;
   min-height:16px;
   margin-top: 0px;
   margin-left:10px;
+  z-index:1000;
 }
 .harmonization-complete.tipsy{
 	margin-top:-8px;
@@ -2337,9 +2339,13 @@ body.node-type-dataset .pane-dataset-variables {
 .harmonization-not_available.tipsy{
   margin-top:-8px;
 }
-.tipsy { padding: 5px; font-size: 10px; position: absolute; z-index: 100000; }
-.tipsy-inner { padding: 5px 8px 4px 8px; background-color: #DDD; color: black; max-width: 400px; text-align: left; }
-.tipsy-inner { border-radius: 3px; -moz-border-radius:3px; -webkit-border-radius:3px; }
+
+.tooltip_content{
+	display:none;
+}
+.tipsy { padding: 5px; font-size: 10px; position: absolute; z-index: 100;}
+.tipsy-inner { padding: 5px 8px 4px 8px; background-color: #F8F8F8; color: black; max-width: 400px; text-align: left; }
+.tipsy-inner { border-radius: 3px; -moz-border-radius:3px; -webkit-border-radius:3px;}
 .tipsy-arrow { position: absolute; background: url('../images/tipsy.gif') no-repeat top left; width: 9px; height: 5px;}
 .tipsy-n .tipsy-arrow { top: 0; left: 50%; margin-left: -4px; }
 .tipsy-nw .tipsy-arrow { top: 0; left: 10px; }
