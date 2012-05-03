@@ -1519,7 +1519,7 @@ function _mica_datasets_create_study_variable($wrapper_study, $wrapper_variable)
   global $user;
   $infos = array(
     'type' => 'study_variable',
-    'title' => $wrapper_variable->title->value() . ' (' . $wrapper_study->title->value() . ')',
+    'title' => $wrapper_variable->title->value() . ' -- ' . $wrapper_study->title->value(),
     'language' => LANGUAGE_NONE,
     'field_sv_study' => $wrapper_study->nid->value(),
     'field_sv_variable' => $wrapper_variable->nid->value(),
