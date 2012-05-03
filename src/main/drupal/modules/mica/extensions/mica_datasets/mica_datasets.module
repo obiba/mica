@@ -1523,11 +1523,11 @@ function _mica_datasets_create_study_variable($wrapper_study, $wrapper_variable)
     'language' => LANGUAGE_NONE,
     'field_sv_study' => $wrapper_study->nid->value(),
     'field_sv_variable' => $wrapper_variable->nid->value(),
-    'uid' => $user->uid
+    'uid' => $user->uid,
+    'status' => $wrapper_study->status->value()
   );
   $new_study_variable = entity_property_values_create_entity('node', $infos);
   $new_study_variable->save();
-
 }
 
 function mica_datasets_node_view($node, $view_mode) {
