@@ -260,6 +260,10 @@ projects[title][download][url] = http://git.drupal.org/project/title.git
 projects[title][download][revision] = 5cfda9bb7b2d18efaa01f85a4d10255a2866c83a
 projects[title][patch][1362790] = http://drupal.org/files/check_if_legacy_field_is_set-1362790-1.patch
 
+projects[tipsy][version] = 1.0-rc1
+projects[tipsy][type] = module
+projects[tipsy][patch][1199546] = http://drupal.org/files/1199546_tipsy_multiple-tooltips.patch
+
 projects[token][version] = 1.0
 projects[token][type] = module
 
