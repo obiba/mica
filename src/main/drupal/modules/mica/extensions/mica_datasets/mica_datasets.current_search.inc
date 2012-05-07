@@ -10,7 +10,7 @@
 function mica_datasets_current_search_default_items() {
   $export = array();
 
-  $item = new stdClass;
+  $item = new stdClass();
   $item->disabled = FALSE; /* Edit this to true to make a default item disabled initially */
   $item->api_version = 1;
   $item->name = 'variable_current_search';

@@ -1011,7 +1011,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -1098,7 +1098,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '4',
+          'weight' => '3',
         ),
         'footer_area' => array(
           'label' => 'above',

@@ -12,7 +12,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'anthropometric_structures' => array(
       'name' => 'Anthropometric structures',
       'machine_name' => 'anthropometric_structures',
-      'description' => '',
+      'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -35,7 +35,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'body_functions' => array(
       'name' => 'Body functions',
       'machine_name' => 'body_functions',
-      'description' => '',
+      'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -58,7 +58,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'body_structures' => array(
       'name' => 'Body structures',
       'machine_name' => 'body_structures',
-      'description' => '',
+      'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -81,7 +81,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'data_source' => array(
       'name' => 'Data source',
       'machine_name' => 'data_source',
-      'description' => '',
+      'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -104,7 +104,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'disease_history' => array(
       'name' => 'Diseases history and related health problems',
       'machine_name' => 'disease_history',
-      'description' => '',
+      'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -127,7 +127,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'early_life' => array(
       'name' => 'Participant\'s early life/Childhood',
       'machine_name' => 'early_life',
-      'description' => '',
+      'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -150,7 +150,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'essence' => array(
       'name' => 'Essence',
       'machine_name' => 'essence',
-      'description' => '',
+      'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -173,7 +173,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'life_habits_behaviours' => array(
       'name' => 'Life habits/Behaviours',
       'machine_name' => 'life_habits_behaviours',
-      'description' => '',
+      'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -196,7 +196,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'measure' => array(
       'name' => 'Measure',
       'machine_name' => 'measure',
-      'description' => '',
+      'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -219,7 +219,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'medical_health_intervention' => array(
       'name' => 'Medical health interventions/Health services utilization',
       'machine_name' => 'medical_health_intervention',
-      'description' => '',
+      'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -265,7 +265,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'perception_of_health' => array(
       'name' => 'Perception of health/Quality of life',
       'machine_name' => 'perception_of_health',
-      'description' => '',
+      'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -311,7 +311,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'physical_environment' => array(
       'name' => 'Physical environment',
       'machine_name' => 'physical_environment',
-      'description' => '',
+      'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -334,7 +334,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'reproductive_history' => array(
       'name' => 'Reproductive health and history',
       'machine_name' => 'reproductive_history',
-      'description' => '',
+      'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -357,7 +357,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'social_environment' => array(
       'name' => 'Social environment',
       'machine_name' => 'social_environment',
-      'description' => '',
+      'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
@@ -380,7 +380,7 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'sociodemographic_characteristics' => array(
       'name' => 'Sociodemographic/Socioeconomic characteristics',
       'machine_name' => 'sociodemographic_characteristics',
-      'description' => '',
+      'description' => NULL,
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
