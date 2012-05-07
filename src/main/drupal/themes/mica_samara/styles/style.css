@@ -2287,25 +2287,18 @@ body.node-type-dataset .pane-dataset-variables {
   margin:0px auto;
 }
 .harmonization-complete{
-  /*background-image:url('../images/bullet_green.png');*/
   background-image:url('../images/accept.png');
   background-repeat:no-repeat;
   min-width:16px;
-  /*width:16px;*/
   min-height:16px;
-  /*text-align:center;*/
   margin-top: 0px;
   margin-left:10px;
-  /*display:inline;*/
 }
-.harmonization-in_progress{
+.harmonization-undetermined{
   background-image:url('../images/bullet_black.png');
-/*   background-image:url('../images/in_progress.png'); */
   background-repeat:no-repeat;
   min-width:16px;
-  /*width:16px;*/
   min-height:16px;
-  /*text-align:center;*/
   margin-top: 0px;
   margin-left:10px;
 }
@@ -2330,7 +2323,7 @@ body.node-type-dataset .pane-dataset-variables {
 .harmonization-complete.tipsy{
 	margin-top:-8px;
 }
-.harmonization-in_progress.tipsy{
+.harmonization-undetermined.tipsy{
   margin-top:-8px;
 }
 .harmonization-impossible.tipsy{

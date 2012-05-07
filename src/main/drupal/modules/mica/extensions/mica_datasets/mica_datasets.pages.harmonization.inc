@@ -78,7 +78,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
             }
           }
           
-          if ($status !== 'in_progress'){
+          if ($status !== 'undetermined'){
             $option[$header_ids[$study_id]]['data'][] = array(
             	'#type' => 'markup',
             	'#markup' => "<a href='".url('node/'.$study_variable['nid'])."'><div class='harmonization-" . $status ." tipsy'><div class=\"tooltip_content\">$tooltip</div></div></a>",

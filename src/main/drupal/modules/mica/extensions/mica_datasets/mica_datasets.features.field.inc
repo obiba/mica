@@ -1069,7 +1069,7 @@ function mica_datasets_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           'complete' => 'Complete',
-          'in_progress' => 'In progress',
+          'undetermined' => 'Undetermined',
           'impossible' => 'Impossible',
         ),
         'allowed_values_function' => '',
@@ -1087,7 +1087,7 @@ function mica_datasets_field_default_fields() {
       'bundle' => 'study_variable',
       'default_value' => array(
         0 => array(
-          'value' => 'in_progress',
+          'value' => 'undetermined',
         ),
       ),
       'deleted' => '0',
