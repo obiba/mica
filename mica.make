@@ -42,6 +42,9 @@ projects[autocomplete_deluxe][download][revision] = a92b71e91208356b93a83525c695
 
 projects[] = advanced_help
 
+projects[background_process][version] = 1.12
+projects[background_process][type] = module
+
 projects[calendar][version] = 3.3
 projects[calendar][type] = module
 
@@ -203,6 +206,9 @@ projects[pathauto][type] = module
 
 projects[potx][version] = 1.0
 projects[potx][type] = module
+
+projects[progress][version] = 1.3
+projects[progress][type] = module
 
 projects[recaptcha][version] = 1.7
 projects[recaptcha][type] = module
