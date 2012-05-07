@@ -688,3 +688,5 @@ features[views_view][] = documents
 features[views_view][] = news
 features[views_view][] = studies
 features[views_view][] = studies_search
+
+files[] = mica_studies.import_taxonomies.inc

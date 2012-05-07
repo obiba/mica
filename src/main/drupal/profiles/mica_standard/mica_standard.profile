@@ -56,6 +56,7 @@ function _mica_configuration_batch() {
   }
 
   // Import taxonomies by invoking the hook_taxonomies_operations_import
+  include_once(drupal_get_path('module', 'mica_studies') . '/mica_studies.import_taxonomies.inc');
   $operations = array_merge($operations, module_invoke('mica_studies', 'taxonomies_operations_import'));
 //   $operations = array_merge($operations, module_invoke('mica_datasets', 'taxonomies_operations_import'));
 
