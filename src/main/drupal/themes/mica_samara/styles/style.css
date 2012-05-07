@@ -2299,8 +2299,8 @@ body.node-type-dataset .pane-dataset-variables {
   /*display:inline;*/
 }
 .harmonization-in_progress{
-  /*background-image:url('../images/bullet_yellow.png');*/
-  background-image:url('../images/in_progress.png');
+  background-image:url('../images/bullet_black.png');
+/*   background-image:url('../images/in_progress.png'); */
   background-repeat:no-repeat;
   min-width:16px;
   /*width:16px;*/
@@ -2343,8 +2343,8 @@ body.node-type-dataset .pane-dataset-variables {
 .tooltip_content{
 	display:none;
 }
-.tipsy { padding: 5px; font-size: 10px; position: absolute; z-index: 100;}
-.tipsy-inner { padding: 5px 8px 4px 8px; background-color: #F8F8F8; color: black; max-width: 400px; text-align: left; }
+.tipsy { padding-right: 5px; padding-left: 5px; font-size: 10px; position: absolute; z-index: 100;}
+.tipsy-inner { padding: 5px 8px 4px 8px; background-color: #F4F4F4; color: black; max-width: 400px; text-align: left; }
 .tipsy-inner { border-radius: 3px; -moz-border-radius:3px; -webkit-border-radius:3px;}
 .tipsy-arrow { position: absolute; background: url('../images/tipsy.gif') no-repeat top left; width: 9px; height: 5px;}
 .tipsy-n .tipsy-arrow { top: 0; left: 50%; margin-left: -4px; }

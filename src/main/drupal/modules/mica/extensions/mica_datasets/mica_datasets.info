@@ -27,6 +27,7 @@ dependencies[] = taxonomy
 dependencies[] = taxonomy_csv
 dependencies[] = taxonomy_manager
 dependencies[] = viewreference
+dependencies[] = tipsy
 datestamp = 1335982037
 features[corresponding_node_references][] = dataset*field_dataset_studies*study*mica_dataset
 features[corresponding_node_references][] = dataset*field_dataset_variables*variable*field_dataset

@@ -3,8 +3,8 @@
 
 class OpalXmlFormatView extends RESTServerView {
   
-  const MICA_NS = 'MICA';
-  const MAELSTROM_NS = 'MAER';
+  const MICA_NS = 'mica';
+  const MAELSTROM_NS = 'maelstrom';
   
   function render() {
     $doc = new DOMDocument();
@@ -50,6 +50,8 @@ class OpalXmlFormatView extends RESTServerView {
         $attributes = $v->appendChild($doc->createElement('attributes'));
         $this->addAttribute($doc, $attributes, 'label', 'text', 'en', $node->field_label);
         $this->addAttribute($doc, $attributes, 'body', 'text', 'en', $node->body);
+				$this->addStatusAttribute($doc, $attributes, 'en');
+				
         $this->addTaxonomyAttribute($doc, $attributes, 'anthropometric_structures', 'text', 'en', $node->field_anthropometric_structures);
         $this->addTaxonomyAttribute($doc, $attributes, 'body_functions', 'text', 'en', $node->field_body_functions);
         $this->addTaxonomyAttribute($doc, $attributes, 'body_structures', 'text', 'en', $node->field_body_structures);
@@ -90,7 +92,15 @@ class OpalXmlFormatView extends RESTServerView {
     return $doc->saveXml();
   }
 
-  private function addAttribute($doc, $attributes, $name, $valueType, $lang, $field){
+	private function addStatusAttribute($doc, $attributes, $lang){
+    $attribute = $attributes->appendChild($doc->createElement('attribute'));
+    $attribute->setAttribute('name', 'status');
+    $attribute->setAttribute('valueType', 'text');
+    $attribute->setAttribute('locale', $lang);
+    $attribute->setAttribute('namespace', self::MICA_NS);
+  }
+	
+  private function addAttribute($doc, $attributes, $name, $valueType, $lang, $field, $namespace = NULL){
     if (!empty($field['und'][0]['value'])){
       $attribute = $attributes->appendChild($doc->createElement('attribute'));
       $attribute->setAttribute('name', $name);
@@ -106,7 +116,7 @@ class OpalXmlFormatView extends RESTServerView {
   		$attribute->setAttribute('name', $name);
   		$attribute->setAttribute('valueType', $valueType);
   		$attribute->setAttribute('locale', $lang); // set to $lang to support multiple languages
-  		$attribute->setAttribute('namespace', self::MICA_NS);
+  		$attribute->setAttribute('namespace', self::MAELSTROM_NS);
   		
   		$term = taxonomy_term_load($field['und'][0]['tid']);
   		$attribute->appendChild($doc->createTextNode($term->name)); 

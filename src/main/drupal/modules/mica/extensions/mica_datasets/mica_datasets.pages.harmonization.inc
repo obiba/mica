@@ -33,58 +33,74 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
 	
  	if (!empty($variables) && !empty($studies)) {
  	  
- 	  $query = new EntityFieldQuery();
- 	  $result = $query->entityCondition('entity_type', 'node')
- 	    ->entityCondition('bundle', 'study_variable')
- 	    ->execute();
- 	  $study_variables = node_load_multiple(array_keys($result['node']));
-
+ 	  uasort($variables, 'sort_by_position');
+ 	  
+ 	  // sort varibles based on their field_position
+ 	  // get the ids of all study_variable and load at once
+   	$svids = array();
  	  foreach($variables as $variable){
-				$option = array(
-          'name' => "<a href='".url('node/'.$variable->nid)."'>$variable->title</a>",
-				);
-				
-		  $i = 0;
+			foreach($variable->field_variable_study_variables[$variable->language] as $study_variable){
+   	  	$svids[] = $study_variable['nid'];
+   	  }
+ 	  }
+   	$study_variables = node_load_multiple($svids);
+   	
+ 	  // Add rows to the harmonization table
+ 	  foreach($variables as $variable){
+ 	    $option = array(
+ 	          	'name' => "<a href='".url('node/'.$variable->nid)."'>$variable->title</a>",
+ 	    );
 		  foreach($variable->field_variable_study_variables[$variable->language] as $study_variable){
+		    // Do not add study variable attributes that are always Undetermined.... ?
+		    
         $study_id = $study_variables[$study_variable['nid']]->field_sv_study['und'][0]['nid'];
+        $study_variable_node = $study_variables[$study_variable['nid']];
         if (array_key_exists($study_id, $header_ids)){
-          if (!empty($study_variables[$study_variable['nid']]->field_sv_script_status)){
-            $status = $study_variables[$study_variable['nid']]->field_sv_script_status['und'][0]['value'];
+          if (!empty($study_variable_node->field_sv_script_status)){
+            $status = $study_variable_node->field_sv_script_status['und'][0]['value'];
             $status_label = $status_values['settings']['allowed_values'][$status];
           }
           else{
             $status = 'not_available';
             $status_label = t('Not Available');
           }
-          $script = empty($study_variables[$study_variable['nid']]->field_sv_script['und'][0]['value']) ? '':$study_variables[$study_variable['nid']]->field_sv_script['und'][0]['value'];
-          $script = '<code class=\'prettyprint\'>'.check_markup($script).'</code>';
-          $comment = empty($study_variables[$study_variable['nid']]->field_sv_comment['und'][0]['value']) ? '': $study_variables[$study_variable['nid']]->field_sv_comment['und'][0]['value'];
+          $script = empty($study_variable_node->field_sv_script['und'][0]['value']) ? '':$study_variable_node->field_sv_script['und'][0]['value'];
           
           // inner tooltip
-          //$tooltip = "<table><tr><td style=\"vertical-align:top\"><b>Status:</b></td><td>$status_label</td></tr><tr><td style=\"vertical-align:top\"><b>Script:</b></td><td>".$script."</td></tr>";
-          $tooltip = "<table><tr><td style=\"vertical-align:top\">$status_label</td></tr><tr><td style=\"vertical-align:top\">$script</td></tr>";
+          $tooltip = "<p>$status_label</p>";
           
-          if (!empty($comment)){
-            $tooltip .= "<tr><td style=\"vertical-align:top\">$comment</td>";
+          if (!empty($script)){
+            if (strlen($script) > 500){
+              $tooltip .= "<p><code class=\'prettyprint\'>".check_markup(truncate_utf8($script, 400, FALSE))."</code>[script truncated]</p>";
+            }
+            else{
+              $tooltip .= "<p><code class=\'prettyprint\'>".check_markup($script)."</code></p>";
+            }
           }
-          $tooltip .= '</tr></table>';
           
-          $option[$header_ids[$study_id]]['data'][] = array(
-          	'#type' => 'markup',
-          	'#markup' => "<a href='".url('node/'.$study_variable['nid'])."'><div class='harmonization-" . $status ." tipsy'><div id='$i' class=\"tooltip_content\">$tooltip</div></div></a>",
-          );
+          if ($status !== 'in_progress'){
+            $option[$header_ids[$study_id]]['data'][] = array(
+            	'#type' => 'markup',
+            	'#markup' => "<a href='".url('node/'.$study_variable['nid'])."'><div class='harmonization-" . $status ." tipsy'><div class=\"tooltip_content\">$tooltip</div></div></a>",
+            );
+          }
+          else{
+            $option[$header_ids[$study_id]]['data'][] = array(
+            	'#type' => 'markup',
+            	'#markup' => "<a href='".url('node/'.$study_variable['nid'])."'><div class='harmonization-" . $status ." tipsy'><div class=\"tooltip_content\">$status_label</div></div></a>",
+            );
+          }
   			}
-  
-  			$options[] = $option;
-  			$i++;
 		  }
+  		$options[] = $option;
 		}
 	}
   unset($result);
   unset($study_variables);
   
-	$output = theme('table', array('header' => $header, 'rows' => $options, 'empty' => t('No harmonization found')));
-	$output .= drupal_render(drupal_get_form('mica_datasets_harmonization_legend_form'));
+	$output = drupal_render(drupal_get_form('mica_datasets_harmonization_legend_form'));
+	$output .= '<br>';
+	$output .= theme('table', array('header' => $header, 'rows' => $options, 'empty' => t('No harmonization found')));
 	
 	return $output; 
 }
@@ -99,16 +115,16 @@ function mica_datasets_harmonization_legend_form($form, $form_state){
 // 	  '#collapsible' => FALSE,
 // 	  '#tree' => TRUE,
   );
-  $form['legend']['complete'] = array(
-  	'#type' => 'markup',
-  	'#markup' => "<br><div class='harmonization-complete'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Complete</b> - 
-  		<i> the study assessment item(s) (e.g. survey question, physical measure, biochemical measure) allow construction 
-  		of the variable as defined in the dataset.</i></div>",
-  );
   $form['legend']['inprogress'] = array(
 		'#type' => 'markup',
-	  '#markup' => "<div class='harmonization-in_progress'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>In Progress</b> - 
+	  '#markup' => "<div class='harmonization-in_progress'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Undetermined</b> - 
   		<i>the harmonization potential of this variable has not yet been evaluated.</i></div>",
+  );
+	$form['legend']['complete'] = array(
+  	'#type' => 'markup',
+  	'#markup' => "<div class='harmonization-complete'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Complete</b> - 
+  		<i> the study assessment item(s) (e.g. survey question, physical measure, biochemical measure) allow construction 
+  		of the variable as defined in the dataset.</i></div>",
   );
   $form['legend']['impossible'] = array(
 		'#type' => 'markup',
@@ -123,4 +139,13 @@ function mica_datasets_harmonization_legend_form($form, $form_state){
   );*/
   
   return $form;
+}
+
+function sort_by_position($x, $y){
+	if ( $x->field_position['und'][0]['value'] === $y->field_position['und'][0]['value'] )
+	  return 0;
+	else if ( $x->field_position['und'][0]['value'] < $y->field_position['und'][0]['value'] )
+	  return -1;
+	else
+	  return 1;
 }

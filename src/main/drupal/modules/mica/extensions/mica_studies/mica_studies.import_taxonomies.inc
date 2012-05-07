@@ -8,7 +8,7 @@
 function _mica_studies_taxonomies() {
 	$base_path = drupal_get_path('module', 'mica_studies') . '/taxonomies/';
 	return array(
-	array('sources_of_recruitment.csv', $base_path, 'Source of Recruitment'),
+	  array('sources_of_recruitment.csv', $base_path, 'Source of Recruitment'),
 	);
 }
 

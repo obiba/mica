@@ -1138,8 +1138,6 @@ function mica_dataset_private_file_absolute_path($reference) {
  * Implements hook_node_view_alter().
  */
 function mica_datasets_node_view_alter(&$build) {
-  require_once('mica_datasets.pages.harmonization.inc');
-
   if ($build['#view_mode'] === 'right_area' && $build['#bundle'] === 'variable') {
     $node = $build['#node'];
     $wrapper = entity_metadata_wrapper('node', $node);
@@ -1165,6 +1163,7 @@ function mica_datasets_node_view_alter(&$build) {
     }
   }
   if ($build['#view_mode'] === 'footer_area' && $build['#bundle'] === 'variable') {
+    require_once('mica_datasets.pages.harmonization.inc');
     $path = drupal_get_path('module', 'mica_datasets');
     drupal_add_css($path . '/includes/prettify.css');
     drupal_add_js($path . '/includes/prettify.js');
@@ -1178,12 +1177,15 @@ function mica_datasets_node_view_alter(&$build) {
   	  $header = array(
 	      'study' => t('Study'),
 	      'status' => t('Status'),
+  	  	'comment' => t('Comment'),
 	      'script' => t('Script'),
-	      'comment' => t('Comment'),
+	      //'edit' => '',
   	  );
   	  $options = array();
   	  $status_values = field_info_field('field_sv_script_status');
   	  foreach($wrapper->field_variable_study_variables->value() as $study_variable){
+  	    $study_variable_node = node_load($study_variable->nid);
+  	    
   	    if (!empty($study_variable->field_sv_script_status)){
   	    	$status = $study_variable->field_sv_script_status['und'][0]['value'];
   	    	$status_label = $status_values['settings']['allowed_values'][$status];
@@ -1192,19 +1194,27 @@ function mica_datasets_node_view_alter(&$build) {
   	    	$status = 'not_available';
   	    	$status_label = t('Not Available');
   	    }
+  	    
   	    $script = empty($study_variable->field_sv_script['und'][0]['value']) ? '':$study_variable->field_sv_script['und'][0]['value'];
-  	    $script = '<code>'.check_markup($script).'</code>';
+  	    $script = '<code class=\'prettyprint\'>'.check_markup(truncate_utf8($script, 400, FALSE)).'</code>';
    	    $comment = empty($study_variable->field_sv_comment['und'][0]['value']) ? '': $study_variable->field_sv_comment['und'][0]['value'];
   	    $study = node_load($study_variable->field_sv_study['und'][0]['nid']);
-
   	    $name = !empty($study->field_acroym['und'][0]['value'])? $study->field_acroym['und'][0]['value'] : $study->title;
+  	    $status = "<div class=\"harmonization-".$status."\" title='$status_label'></div>";
+  	    
   	    $option = array(
   	    	'study' => $name,
-  	      'status' => "<a href=\"".url('node/'.$study_variable->nid)."\"><div class=\"harmonization-".$status."\"></div></a>",
-  	      'script' => '<code class=\'prettyprint\'>'.$script.'</code>',
-  	      'comment' => $comment,
+  	      'status' => $status,
+  	    	'comment' => truncate_utf8($comment, 100, FALSE, TRUE),
+  	      'script' => $script,
   	    );
 
+  	    if (node_access('view', $study_variable_node)) {
+  	      $header['view'] = '';
+  	      
+  	      $option['view'] = "<a href='".url('node/'.$study_variable_node->nid)."'>".t('View')."</a>";
+  	    }
+  	    
   	    $options[] = $option;
   	  }
 
@@ -1214,12 +1224,15 @@ function mica_datasets_node_view_alter(&$build) {
         '#weight' => 50,
         '#collapsible' => TRUE,
         '#collapsed' => FALSE,
-        'table' => array(
-          '#markup' => theme('table', array('header' => $header, 'rows' => $options, 'empty' => t('No harmonization found'))),
-        ),
         'legend' => array(
   	  		'#markup' => drupal_render(drupal_get_form('mica_datasets_harmonization_legend_form')),
         ),
+        'table' => array(
+          '#markup' => theme('table', array('header' => $header, 'rows' => $options, 'empty' => t('No harmonization found'))),
+        ),
+  	  	'overview' => array(
+  	      '#markup' => "<p><a href='".url("node/$dataset->nid/dataset-harmonization")."'><b>".t("View $dataset->title Harmonization")."</a></b></p>",
+  	    ),
   	  );
   	}
   }
@@ -1425,6 +1438,8 @@ function _mica_datasets_form_alter_variable(&$form, $form_state, $form_id) {
   if (isset($_REQUEST['dataset'])) {
     $lang = $form['field_dataset']['#language'];
     $form['field_dataset'][$lang]['#after_build'][] = '_mica_datasets_prepopulate_variable_after_build';
+    // Hide this way to prevent a 'dataset field is required' after adding a category
+    $form['field_dataset']['#attributes'] = array('style' => 'display:none');
   }
   // hide field_position
   $form['field_position']['#access'] = FALSE;
@@ -1449,8 +1464,8 @@ function _mica_datasets_prepopulate_variable_after_build(&$form_element) {
   if (isset($_REQUEST['dataset'])) {
     $form_element[0]['nid']['#default_value'] = $_REQUEST['dataset'];
     $form_element[0]['nid']['#value'] = node_reference_autocomplete_value($form_element[0]['nid'], FALSE, NULL);
-    $form_element['#access'] = FALSE;
   }
+  
   return $form_element;
 }
 
@@ -1511,11 +1526,38 @@ function _mica_datasets_add_study_variable_to(&$variable) {
   $wrapper_variable = entity_metadata_wrapper('node', $variable);
   $wrapper_dataset = entity_metadata_wrapper('node', $wrapper_variable->field_dataset->nid->value());
   if ($wrapper_dataset->field_dataset_studies->count() != 0) {
+    
+    $batch = array(
+      'finished' => '',
+      'title' => t('Processing variables'),
+      'init_message' => t('Starting to process dataset variables'),
+      'progress_message' => t('Processed @current out of @total.'),
+      'error_message' => t('An error occured.'),
+      //'file' => drupal_get_path('module', 'batch_example') . '/batch_example.inc',
+    );
+  
+    $args = array();
     foreach ($wrapper_dataset->field_dataset_studies as $wrapper_study) {
-      _mica_datasets_create_study_variable($wrapper_study, $wrapper_variable);
+      $operations[] = array('_mica_datasets_create_study_variable', array($wrapper_study, $wrapper_variable));
     }
+    
+    drupal_set_message('Processing harmonization information of variable \''.$wrapper_variable->title->value().'\' for '. count($operations) . ' studies');
+    
+    $batch['operations'] = $operations;
+    batch_set($batch);
+
+    // process batch in the background and redirect to the harmonization page
+    background_batch_process_batch('node/'.$wrapper_dataset->nid->value().'/dataset-harmonization');
   }
 }
+
+// function _mica_datasets_create_study_variables($args) {
+//   if (!empty($args)){
+//     foreach($args as $arg){
+//       _mica_datasets_create_study_variable($arg[0], $arg[1]);
+//     }
+//   }
+// }
 
 function _mica_datasets_create_study_variable($wrapper_study, $wrapper_variable) {
   global $user;
@@ -1533,7 +1575,7 @@ function _mica_datasets_create_study_variable($wrapper_study, $wrapper_variable)
 }
 
 function mica_datasets_node_view($node, $view_mode) {
-  if ($node->type === 'study_variable') {
+  if ($node->type === 'study_variable' && !empty($node->content['field_sv_script'])) {
     $path = drupal_get_path('module', 'mica_datasets');
     drupal_add_css($path . '/includes/prettify.css');
     drupal_add_js($path . '/includes/prettify.js');
@@ -1541,8 +1583,15 @@ function mica_datasets_node_view($node, $view_mode) {
     $node->content['field_sv_script'][0]['#prefix'] = '<code class=\'prettyprint\'>';
     $node->content['field_sv_script'][0]['#suffix'] = '</code>';
     
-    
     $node->content['field_sv_script'][0]['#markup'] = check_markup(drupal_html_to_text($node->content['field_sv_script'][0]['#markup']));
+  }
+  
+  if ($node->type === 'study_variable'){
+    // add icon to script status
+    $status_values = field_info_field('field_sv_script_status');
+    $status = array_search($node->content['field_sv_script_status'][0]['#markup'], $status_values['settings']['allowed_values']);
+    $node->content['field_sv_script_status'][0]['#prefix'] = "<div class='harmonization-$status'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    $node->content['field_sv_script_status'][0]['#suffix'] = '</div>';
   }
 }
 
