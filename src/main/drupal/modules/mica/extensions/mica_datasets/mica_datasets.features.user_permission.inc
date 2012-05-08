@@ -59,10 +59,12 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any study_variable content.
-  $permissions['delete any study_variable content'] = array(
-    'name' => 'delete any study_variable content',
-    'roles' => array(),
+  // Exported permission: delete any study_variable_attributes content.
+  $permissions['delete any study_variable_attributes content'] = array(
+    'name' => 'delete any study_variable_attributes content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -87,9 +89,9 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete own study_variable content.
-  $permissions['delete own study_variable content'] = array(
-    'name' => 'delete own study_variable content',
+  // Exported permission: delete own study_variable_attributes content.
+  $permissions['delete own study_variable_attributes content'] = array(
+    'name' => 'delete own study_variable_attributes content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -115,9 +117,9 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any study_variable content.
-  $permissions['edit any study_variable content'] = array(
-    'name' => 'edit any study_variable content',
+  // Exported permission: edit any study_variable_attributes content.
+  $permissions['edit any study_variable_attributes content'] = array(
+    'name' => 'edit any study_variable_attributes content',
     'roles' => array(),
     'module' => 'node',
   );
@@ -154,9 +156,9 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit own study_variable content.
-  $permissions['edit own study_variable content'] = array(
-    'name' => 'edit own study_variable content',
+  // Exported permission: edit own study_variable_attributes content.
+  $permissions['edit own study_variable_attributes content'] = array(
+    'name' => 'edit own study_variable_attributes content',
     'roles' => array(),
     'module' => 'node',
   );

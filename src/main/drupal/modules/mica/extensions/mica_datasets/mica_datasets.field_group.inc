@@ -21,7 +21,7 @@ function mica_datasets_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Categories',
-    'weight' => '9',
+    'weight' => '3',
     'children' => array(
       0 => 'field_variable_categories',
     ),
@@ -183,13 +183,14 @@ function mica_datasets_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Description',
-    'weight' => '1',
+    'weight' => '0',
     'children' => array(
       0 => 'body',
       1 => 'field_dataset',
       2 => 'field_label',
       3 => 'field_repeatable',
       4 => 'field_value_type',
+      5 => 'field_unit',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -219,6 +220,7 @@ function mica_datasets_field_group_info() {
       1 => 'field_label',
       2 => 'field_repeatable',
       3 => 'field_value_type',
+      4 => 'field_unit',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -336,9 +338,10 @@ function mica_datasets_field_group_info() {
       1 => 'field_dataset',
       2 => 'field_label',
       3 => 'field_repeatable',
-      4 => 'field_value_type',
-      5 => 'field_variable_categories',
-      6 => 'title',
+		  4 => 'field_unit',
+      5 => 'field_value_type',
+      6 => 'field_variable_categories',
+      7 => 'title',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

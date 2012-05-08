@@ -226,7 +226,8 @@ function mica_datasets_default_search_api_index() {
         "field_dataset:field_studies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_variable_categories:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_variable_categories:label" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_variable_categories:missing" : { "type" : "list\\u003Cboolean\\u003E" }
+        "field_variable_categories:missing" : { "type" : "list\\u003Cboolean\\u003E" },
+        "field_unit" : { "type" : "text" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
