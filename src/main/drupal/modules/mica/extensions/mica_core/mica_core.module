@@ -312,7 +312,6 @@ function mica_core_taxonomy_import($filename, $base_path, $vocabulary_name) {
 	$vocabulary = _mica_core_taxonomy_create($filename, $vocabulary_name);
 
 	$path = $base_path . $filename;
-	$file_path = drupal_realpath($path);
 
 	$result = taxonomy_csv_import(array(
     'import_format' => 'tree',
@@ -321,7 +320,7 @@ function mica_core_taxonomy_import($filename, $base_path, $vocabulary_name) {
     'keep_order' => TRUE,
     'file' => (object) array(
       'filename' => $filename,
-      'filepath' => $file_path,
+      'filepath' => $path,
       'filesize' => filesize($path)
 	),
     'vocabulary_target' => 'existing',
@@ -331,7 +330,7 @@ function mica_core_taxonomy_import($filename, $base_path, $vocabulary_name) {
 
 	watchdog('mica', 'Imported taxonomy %file to vocabulary %vocabulary: %result',
 	array(
-      '%file' => $file_path,
+      '%file' => $path,
       '%vocabulary' => $vocabulary_name,
       '%result' => $result,
 	), WATCHDOG_INFO);
