@@ -1527,28 +1527,13 @@ function _mica_datasets_add_study_variable_attributes_to(&$variable) {
   $wrapper_dataset = entity_metadata_wrapper('node', $wrapper_variable->field_dataset->nid->value());
   if ($wrapper_dataset->field_dataset_studies->count() != 0) {
     
-//     $batch = array(
-//       'finished' => '',
-//       'title' => t('Processing variables'),
-//       'init_message' => t('Starting to process dataset variables'),
-//       'progress_message' => t('Processed @current out of @total.'),
-//       'error_message' => t('An error occured.'),
-//     );
-  
     $args = array();
     foreach ($wrapper_dataset->field_dataset_studies as $wrapper_study) {
       $args[] = array($wrapper_study, $wrapper_variable);
-//       $operations[] = array('_mica_datasets_create_study_variable_attributes', array($wrapper_study, $wrapper_variable));
     }
     
-//     drupal_set_message('Processing harmonization information of variable \''.$wrapper_variable->title->value().'\' for '. count($operations) . ' studies');
     drupal_set_message('Processing harmonization information of variable \''.$args[0][1]->title->value().'\' for '. count($args) . ' studies');
     background_process_start('_mica_datasets_create_study_variable_attributes', $args);
-    
-    // process batch in the background and redirect to the harmonization page
-//     $batch['operations'] = $operations;
-//     batch_set($batch);
-//     background_batch_process_batch('node/'.$wrapper_dataset->nid->value().'/dataset-harmonization');
   }
 }
 
@@ -1556,7 +1541,6 @@ function _mica_datasets_create_study_variable_attributes($args) {
   if (!empty($args)){
     foreach($args as $arg){
       _mica_datasets_create_study_variable_attribute($arg[0], $arg[1]);
-      break;
     }
   }
 }
