@@ -4015,9 +4015,9 @@ Set to 0 to set variable at last position.  ',
         ),
         'left_area' => array(
           'label' => 'above',
-          'module' => 'mica_core',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'mica_pubmed_url',
+          'type' => 'text_default',
           'weight' => '4',
         ),
         'right_area' => array(
