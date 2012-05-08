@@ -1084,7 +1084,7 @@ function mica_datasets_field_default_fields() {
       'type' => 'list_text',
     ),
     'field_instance' => array(
-      'bundle' => 'study_variable',
+      'bundle' => 'study_variable_attributes',
       'default_value' => array(
         0 => array(
           'value' => 'undetermined',
