@@ -138,7 +138,7 @@ function _mica_studies_study_view($node, $view_mode, $langcode) {
       'label_as_prefix' => TRUE,
     ),
     'field_recruitment_other' => array(
-      'field' => 'field_recruitment_procedures',
+      'field' => 'field_recruitment_sources',
       'key' => 'other',
       'label_as_prefix' => FALSE,
       'enclosed' => FALSE,

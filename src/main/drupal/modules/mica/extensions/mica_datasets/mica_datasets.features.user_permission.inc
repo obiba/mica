@@ -31,9 +31,9 @@ function mica_datasets_user_default_permissions() {
     'module' => 'mica_datasets',
   );
 
-  // Exported permission: create study_variable content.
-  $permissions['create study_variable content'] = array(
-    'name' => 'create study_variable content',
+  // Exported permission: create study_variable_attributes content.
+  $permissions['create study_variable_attributes content'] = array(
+    'name' => 'create study_variable_attributes content',
     'roles' => array(),
     'module' => 'node',
   );

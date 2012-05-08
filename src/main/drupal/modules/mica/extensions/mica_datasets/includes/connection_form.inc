@@ -190,7 +190,7 @@ function _mica_datasets_add_study_to_dataset($study, $dataset) {
   $study->mica_dataset[$study->language][] = array('nid' => $dataset->nid);
   node_save($study);
 
-  _mica_datasets_study_variable($study, $dataset);
+  _mica_datasets_study_variable_attributes($study, $dataset);
 
   // No need to update the dataset since we have the corresponding node reference module
 }
@@ -201,34 +201,34 @@ function _mica_datasets_add_study_to_dataset($study, $dataset) {
  *
  * For all variable in $dataset,link them to $study with Study Variables entity
  */
-function _mica_datasets_study_variable(&$study, &$dataset) {
+function _mica_datasets_study_variable_attributes(&$study, &$dataset) {
   global $user;
   $wrapper_study = entity_metadata_wrapper('node', $study);
   $wrapper_dataset = entity_metadata_wrapper('node', $dataset);
 
   $query = new EntityFieldQuery();
   $results = $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'study_variable')
-    ->fieldCondition('field_sv_study', 'nid', $wrapper_study->nid->value())
+    ->entityCondition('bundle', 'study_variable_attributes')
+    ->fieldCondition('field_sva_study', 'nid', $wrapper_study->nid->value())
     ->execute();
 
-  $study_variables = array();
+  $study_variable_attributes = array();
   if (empty($results['node']) == FALSE) {
-    $study_variables = entity_load('node', array_keys($results['node']));
+    $study_variable_attributes = entity_load('node', array_keys($results['node']));
   }
 
   foreach ($wrapper_dataset->field_dataset_variables as $wrapper_variable) {
     $exist = FALSE;
-    foreach ($study_variables as $sv) {
+    foreach ($study_variable_attributes as $sv) {
       $wrapper_sv = entity_metadata_wrapper('node', $sv);
-      if ($wrapper_sv->field_sv_variable->nid->value() === $wrapper_variable->nid->value()
-        && $wrapper_sv->field_sv_study->nid->value() === $wrapper_study->nid->value()
+      if ($wrapper_sv->field_sva_variable->nid->value() === $wrapper_variable->nid->value()
+        && $wrapper_sv->field_sva_study->nid->value() === $wrapper_study->nid->value()
       ) {
         $exist = TRUE;
       }
     }
     if ($exist === FALSE) {
-      _mica_datasets_create_study_variable($wrapper_study, $wrapper_variable);
+      _mica_datasets_create_study_variable_attribute($wrapper_study, $wrapper_variable);
     }
   }
 }

@@ -62,8 +62,8 @@ function mica_datasets_node_info() {
       'title_label' => t('Name'),
       'help' => '',
     ),
-    'study_variable' => array(
-      'name' => t('Study Variable'),
+    'study_variable_attributes' => array(
+      'name' => t('Study Variable Attributes'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',

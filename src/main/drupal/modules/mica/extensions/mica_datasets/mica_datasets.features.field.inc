@@ -312,14 +312,14 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study-field_study_study_variables'
-  $fields['node-study-field_study_study_variables'] = array(
+  // Exported field: 'node-study-field_study_study_variable_att'
+  $fields['node-study-field_study_study_variable_att'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_study_study_variables',
+      'field_name' => 'field_study_study_variable_att',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -354,7 +354,7 @@ function mica_datasets_field_default_fields() {
           'project' => 0,
           'publication' => 0,
           'study' => 0,
-          'study_variable' => 'study_variable',
+          'study_variable_attributes' => 'study_variable_attributes',
           'teleconference' => 0,
           'variable' => 0,
         ),
@@ -437,7 +437,7 @@ function mica_datasets_field_default_fields() {
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_study_study_variables',
+      'field_name' => 'field_study_study_variable_att',
       'label' => 'Study Variables',
       'required' => 0,
       'settings' => array(
@@ -780,8 +780,8 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study_variable-body'
-  $fields['node-study_variable-body'] = array(
+  // Exported field: 'node-study_variable_attributes-body'
+  $fields['node-study_variable_attributes-body'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -830,7 +830,7 @@ function mica_datasets_field_default_fields() {
       'type' => 'text_with_summary',
     ),
     'field_instance' => array(
-      'bundle' => 'study_variable',
+      'bundle' => 'study_variable_attributes',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -880,14 +880,14 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study_variable-field_sv_comment'
-  $fields['node-study_variable-field_sv_comment'] = array(
+  // Exported field: 'node-study_variable_attributes-field_sva_comment'
+  $fields['node-study_variable_attributes-field_sva_comment'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_sv_comment',
+      'field_name' => 'field_sva_comment',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -917,7 +917,7 @@ function mica_datasets_field_default_fields() {
       'type' => 'text_long',
     ),
     'field_instance' => array(
-      'bundle' => 'study_variable',
+      'bundle' => 'study_variable_attributes',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -945,7 +945,7 @@ function mica_datasets_field_default_fields() {
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_sv_comment',
+      'field_name' => 'field_sva_comment',
       'label' => 'Comment',
       'required' => 0,
       'settings' => array(
@@ -964,14 +964,14 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study_variable-field_sv_script'
-  $fields['node-study_variable-field_sv_script'] = array(
+  // Exported field: 'node-study_variable_attributes-field_sva_script'
+  $fields['node-study_variable_attributes-field_sva_script'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_sv_script',
+      'field_name' => 'field_sva_script',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -1001,7 +1001,7 @@ function mica_datasets_field_default_fields() {
       'type' => 'text_long',
     ),
     'field_instance' => array(
-      'bundle' => 'study_variable',
+      'bundle' => 'study_variable_attributes',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -1029,7 +1029,7 @@ function mica_datasets_field_default_fields() {
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_sv_script',
+      'field_name' => 'field_sva_script',
       'label' => 'Script',
       'required' => 0,
       'settings' => array(
@@ -1048,14 +1048,14 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study_variable-field_sv_script_status'
-  $fields['node-study_variable-field_sv_script_status'] = array(
+  // Exported field: 'node-study_variable-field_sva_script_status'
+  $fields['node-study_variable_attributes-field_sva_script_status'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_sv_script_status',
+      'field_name' => 'field_sva_script_status',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -1116,7 +1116,7 @@ function mica_datasets_field_default_fields() {
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_sv_script_status',
+      'field_name' => 'field_sva_script_status',
       'label' => 'Script Status',
       'required' => 0,
       'settings' => array(
@@ -1132,14 +1132,14 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study_variable-field_sv_study'
-  $fields['node-study_variable-field_sv_study'] = array(
+  // Exported field: 'node-study_variable_attributes-field_sva_study'
+  $fields['node-study_variable_attributes-field_sva_study'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_sv_study',
+      'field_name' => 'field_sva_study',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -1174,7 +1174,7 @@ function mica_datasets_field_default_fields() {
           'project' => 0,
           'publication' => 0,
           'study' => 'study',
-          'study_variable' => 0,
+          'study_variable_attributes' => 0,
           'teleconference' => 0,
           'variable' => 0,
         ),
@@ -1188,7 +1188,7 @@ function mica_datasets_field_default_fields() {
       'type' => 'node_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'study_variable',
+      'bundle' => 'study_variable_attributes',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -1216,7 +1216,7 @@ function mica_datasets_field_default_fields() {
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_sv_study',
+      'field_name' => 'field_sva_study',
       'label' => 'Study',
       'required' => 0,
       'settings' => array(
@@ -1232,14 +1232,14 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study_variable-field_sv_variable'
-  $fields['node-study_variable-field_sv_variable'] = array(
+  // Exported field: 'node-study_variable_attributes-field_sva_variable'
+  $fields['node-study_variable_attributes-field_sva_variable'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_sv_variable',
+      'field_name' => 'field_sva_variable',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -1274,7 +1274,7 @@ function mica_datasets_field_default_fields() {
           'project' => 0,
           'publication' => 0,
           'study' => 0,
-          'study_variable' => 0,
+          'study_variable_attributes' => 0,
           'teleconference' => 0,
           'variable' => 'variable',
         ),
@@ -1288,7 +1288,7 @@ function mica_datasets_field_default_fields() {
       'type' => 'node_reference',
     ),
     'field_instance' => array(
-      'bundle' => 'study_variable',
+      'bundle' => 'study_variable_attributes',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
@@ -1316,7 +1316,7 @@ function mica_datasets_field_default_fields() {
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_sv_variable',
+      'field_name' => 'field_sva_variable',
       'label' => 'Variable',
       'required' => 0,
       'settings' => array(
@@ -4171,14 +4171,14 @@ Set to 0 to set variable at last position.  ',
     ),
   );
 
-  // Exported field: 'node-variable-field_variable_study_variables'
-  $fields['node-variable-field_variable_study_variables'] = array(
+  // Exported field: 'node-variable-field_variable_study_var_att'
+  $fields['node-variable-field_variable_study_var_att'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_variable_study_variables',
+      'field_name' => 'field_variable_study_var_att',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -4213,7 +4213,7 @@ Set to 0 to set variable at last position.  ',
           'project' => 0,
           'publication' => 0,
           'study' => 0,
-          'study_variable' => 'study_variable',
+          'study_variable_attributes' => 'study_variable_attributes',
           'teleconference' => 0,
           'variable' => 0,
         ),
@@ -4272,8 +4272,8 @@ Set to 0 to set variable at last position.  ',
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_variable_study_variables',
-      'label' => 'Study Variables',
+      'field_name' => 'field_variable_study_var_att',
+      'label' => 'Study Variables Attributes',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -4324,7 +4324,7 @@ Set to 0 to set variable at last position.  ');
   t('Sociodemographic/Socioeconomic Characteristics');
   t('Studies');
   t('Study');
-  t('Study Variables');
+  t('Study Variables Attributes');
   t('Target');
   t('Value Type');
   t('Variable');
