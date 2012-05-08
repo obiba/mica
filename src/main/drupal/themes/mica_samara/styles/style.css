@@ -745,7 +745,6 @@ form#comment-form #edit-actions {
   font-size: 1.2em;
 }
 .field-type-taxonomy-term-reference .field-label {
-  color: #808080;
   font-weight: 700;
 }
 .field-type-taxonomy-term-reference .field-item {
@@ -2332,7 +2331,13 @@ body.node-type-dataset .pane-dataset-variables {
 .harmonization-not_available.tipsy{
   margin-top:-8px;
 }
-
+.variable_category-missing{
+  background-image:url('../images/tick.png');
+  background-repeat:no-repeat;
+  min-width:16px;
+  min-height:16px;
+  margin-top: 0px;
+}
 .tooltip_content{
 	display:none;
 }
