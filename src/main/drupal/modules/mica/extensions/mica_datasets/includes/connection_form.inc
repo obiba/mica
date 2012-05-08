@@ -228,9 +228,12 @@ function _mica_datasets_study_variable_attributes(&$study, &$dataset) {
       }
     }
     if ($exist === FALSE) {
-      _mica_datasets_create_study_variable_attribute($wrapper_study, $wrapper_variable);
+      $args[] = array($wrapper_study, $wrapper_variable);
     }
   }
+  
+  drupal_set_message('Processing harmonization information of study \''.$args[0][0]->title->value().'\' for '. count($args) . ' variables');
+  background_process_start('_mica_datasets_create_study_variable_attributes', $args);
 }
 
 function _mica_datasets_dataset_connection_delete(&$study_node, $dataset_node_id) {
