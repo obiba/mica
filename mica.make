@@ -148,10 +148,7 @@ projects[image_url_formatter][type] = module
 projects[imce][version] = 1.5
 projects[imce][type] = module
 
-projects[job_scheduler][version] = 2.0-alpha2
-projects[job_scheduler][type] = module
-
-projects[job_scheduler][version] = 2.0-alpha2
+projects[job_scheduler][version] = 2.0-alpha3
 projects[job_scheduler][type] = module
 
 projects[link][version] = 1.0

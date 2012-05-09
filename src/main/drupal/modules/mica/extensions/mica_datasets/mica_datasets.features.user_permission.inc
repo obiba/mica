@@ -34,7 +34,9 @@ function mica_datasets_user_default_permissions() {
   // Exported permission: create study_variable_attributes content.
   $permissions['create study_variable_attributes content'] = array(
     'name' => 'create study_variable_attributes content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -92,7 +94,9 @@ function mica_datasets_user_default_permissions() {
   // Exported permission: delete own study_variable_attributes content.
   $permissions['delete own study_variable_attributes content'] = array(
     'name' => 'delete own study_variable_attributes content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -120,7 +124,9 @@ function mica_datasets_user_default_permissions() {
   // Exported permission: edit any study_variable_attributes content.
   $permissions['edit any study_variable_attributes content'] = array(
     'name' => 'edit any study_variable_attributes content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -159,7 +165,9 @@ function mica_datasets_user_default_permissions() {
   // Exported permission: edit own study_variable_attributes content.
   $permissions['edit own study_variable_attributes content'] = array(
     'name' => 'edit own study_variable_attributes content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'node',
   );
 
