@@ -780,90 +780,6 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study_variable-field_sva_script_status'
-  $fields['node-study_variable-field_sva_script_status'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_sva_script_status',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          'complete' => 'Complete',
-          'undetermined' => 'Undetermined',
-          'impossible' => 'Impossible',
-        ),
-        'allowed_values_function' => '',
-        'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_label' => '',
-          'field_description_value_type' => 'text',
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'study_variable_attributes',
-      'default_value' => array(
-        0 => array(
-          'value' => 'undetermined',
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '3',
-        ),
-        'footer_area' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '4',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'node',
-      'field_name' => 'field_sva_script_status',
-      'label' => 'Script Status',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '35',
-      ),
-    ),
-  );
-
   // Exported field: 'node-study_variable_attributes-body'
   $fields['node-study_variable_attributes-body'] = array(
     'field_config' => array(
@@ -1128,6 +1044,90 @@ function mica_datasets_field_default_fields() {
         ),
         'type' => 'text_textarea',
         'weight' => '34',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-study_variable_attributes-field_sva_script_status'
+  $fields['node-study_variable_attributes-field_sva_script_status'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_sva_script_status',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'complete' => 'Complete',
+          'undetermined' => 'Undetermined',
+          'impossible' => 'Impossible',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => 'text',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study_variable_attributes',
+      'default_value' => array(
+        0 => array(
+          'value' => 'undetermined',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => '3',
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => '4',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_sva_script_status',
+      'label' => 'Script Status',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '35',
       ),
     ),
   );
