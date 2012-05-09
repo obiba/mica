@@ -32,7 +32,6 @@ dependencies[] = viewreference
 datestamp = 1335982037
 features[corresponding_node_references][] = dataset*field_dataset_studies*study*mica_dataset
 features[corresponding_node_references][] = dataset*field_dataset_variables*variable*field_dataset
-features[corresponding_node_references][] = study_variable_attributes*field_sva_variable*variable*field_variable_study_var_att
 features[ctools][] = corresponding_node_references:default_corresponding_node_references_presets:1
 features[ctools][] = current_search:current_search:1
 features[ctools][] = facetapi:facetapi_defaults:1

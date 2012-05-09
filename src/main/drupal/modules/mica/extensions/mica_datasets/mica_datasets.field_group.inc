@@ -338,7 +338,7 @@ function mica_datasets_field_group_info() {
       1 => 'field_dataset',
       2 => 'field_label',
       3 => 'field_repeatable',
-		  4 => 'field_unit',
+      4 => 'field_unit',
       5 => 'field_value_type',
       6 => 'field_variable_categories',
       7 => 'title',

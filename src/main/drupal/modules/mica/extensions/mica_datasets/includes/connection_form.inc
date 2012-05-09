@@ -202,7 +202,6 @@ function _mica_datasets_add_study_to_dataset($study, $dataset) {
  * For all variable in $dataset,link them to $study with Study Variables entity
  */
 function _mica_datasets_study_variable_attributes(&$study, &$dataset) {
-  global $user;
   $wrapper_study = entity_metadata_wrapper('node', $study);
   $wrapper_dataset = entity_metadata_wrapper('node', $dataset);
 
@@ -231,9 +230,14 @@ function _mica_datasets_study_variable_attributes(&$study, &$dataset) {
       $args[] = array($wrapper_study, $wrapper_variable);
     }
   }
-  
-  drupal_set_message('Processing harmonization information of study \''.$args[0][0]->title->value().'\' for '. count($args) . ' variables');
-  background_process_start('_mica_datasets_create_study_variable_attributes', $args);
+
+  if (isset($args)) {
+    drupal_set_message(
+      'Processing harmonization information of study \'' . $args[0][0]->title->value() . '\' for ' . count($args)
+        . ' variables'
+    );
+    background_process_start('_mica_datasets_create_study_variable_attributes', $args);
+  }
 }
 
 function _mica_datasets_dataset_connection_delete(&$study_node, $dataset_node_id) {
