@@ -1560,30 +1560,37 @@ function _mica_datasets_create_study_variable_attribute($wrapper_study, $wrapper
   $new_study_variable_attributes = entity_property_values_create_entity('node', $infos);
   $saved = $new_study_variable_attributes->save();
 
-  $variable_svs = $wrapper_variable->field_variable_study_var_att->value();
-  $variable_svs_nids = _mica_study_variables_add_reverse_link($variable_svs, $saved);
+  $variable_svas = $wrapper_variable->field_variable_study_var_att->value();
+  $variable_svas_nids = _mica_study_variables_add_reverse_link($variable_svas, $saved);
 
-  $study_svs = $wrapper_study->field_study_study_variable_att->value();
-  $study_svs_nids = _mica_study_variables_add_reverse_link($study_svs, $saved);
+  $study_svas = $wrapper_study->field_study_study_variable_att->value();
+  $study_svas_nids = _mica_study_variables_add_reverse_link($study_svas, $saved);
 
-  $wrapper_variable->field_variable_study_var_att->set($variable_svs_nids);
+  $wrapper_variable->field_variable_study_var_att->set($variable_svas_nids);
   $wrapper_variable->save();
 
-  $wrapper_study->field_study_study_variable_att->set($study_svs_nids);
+  $wrapper_study->field_study_study_variable_att->set($study_svas_nids);
   $wrapper_study->save();
 }
 
-function _mica_study_variables_add_reverse_link($svs, $new_svs) {
-  $svs_nids = array();
-  if (isset($svs)) {
-    foreach ($svs as $sv) {
-      if (isset($sv)) {
-        array_push($svs_nids, $sv->nid);
+/**
+ * add $new_sva (new study variable attribute) to $svs ()
+ * @param $svas
+ * @param $new_sva
+ * @return array
+ */
+function _mica_study_variables_add_reverse_link($svas, $new_sva) {
+  // recreate list of study variable attribute nid each time
+  $svas_nids = array();
+  if (isset($svas)) {
+    foreach ($svas as $sva) {
+      if (isset($sva)) {
+        array_push($svas_nids, $sva->nid);
       }
     }
   }
-  array_push($svs_nids, $new_svs->nid->value());
-  return $svs_nids;
+  array_push($svas_nids, $new_sva->nid->value());
+  return $svas_nids;
 }
 
 function mica_datasets_node_view($node, $view_mode) {
