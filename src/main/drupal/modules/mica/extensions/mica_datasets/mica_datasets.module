@@ -1550,6 +1550,7 @@ function _mica_datasets_create_study_variable_attributes_for_variable(&$variable
       _mica_datasets_create_study_variable_attribute($variable, $study);
       $study->save();
     }
+    //do not called ->save(), because drupal will not update $variable but save, then: duplication error
     field_attach_update('variable', $variable);
   }
 }
