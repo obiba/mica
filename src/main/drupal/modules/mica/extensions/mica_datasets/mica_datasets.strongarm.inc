@@ -202,7 +202,7 @@ function mica_datasets_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_dataset';
-  $strongarm->value = 'main-menu:501';
+  $strongarm->value = 'main-menu:0';
   $export['menu_parent_dataset'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -224,7 +224,8 @@ function mica_datasets_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_dataset';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_dataset'] = $strongarm;
 
@@ -240,7 +241,8 @@ function mica_datasets_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_variable';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_variable'] = $strongarm;
 
@@ -335,9 +337,23 @@ function mica_datasets_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_moderation_default_state_dataset';
+  $strongarm->value = 'draft';
+  $export['workbench_moderation_default_state_dataset'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'workbench_moderation_default_state_study_variable_attributes';
   $strongarm->value = 'draft';
   $export['workbench_moderation_default_state_study_variable_attributes'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_moderation_default_state_variable';
+  $strongarm->value = 'draft';
+  $export['workbench_moderation_default_state_variable'] = $strongarm;
 
   return $export;
 }

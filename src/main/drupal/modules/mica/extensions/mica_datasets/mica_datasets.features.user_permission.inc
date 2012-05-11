@@ -16,7 +16,9 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
+      2 => 'dataset administrator',
+      3 => 'dataset reviewer',
+      4 => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -46,7 +48,8 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
+      2 => 'dataset administrator',
+      3 => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -106,7 +109,8 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
+      2 => 'dataset administrator',
+      3 => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -117,6 +121,7 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
+      2 => 'dataset reviewer',
     ),
     'module' => 'node',
   );
@@ -146,7 +151,8 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
+      2 => 'dataset administrator',
+      3 => 'study administrator',
     ),
     'module' => 'mica_datasets',
   );
@@ -157,7 +163,9 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
+      2 => 'dataset administrator',
+      3 => 'dataset reviewer',
+      4 => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -177,7 +185,8 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
+      2 => 'dataset administrator',
+      3 => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -188,7 +197,8 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
+      2 => 'dataset administrator',
+      3 => 'study administrator',
     ),
     'module' => 'mica_datasets',
   );

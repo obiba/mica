@@ -216,6 +216,7 @@ function _mica_datasets_study_variable_attributes(&$study, &$dataset) {
     $study_variable_attributes = entity_load('node', array_keys($results['node']));
   }
 
+  $variables = array();
   foreach ($wrapper_dataset->field_dataset_variables as $wrapper_variable) {
     $exist = FALSE;
     foreach ($study_variable_attributes as $sv) {
@@ -227,16 +228,12 @@ function _mica_datasets_study_variable_attributes(&$study, &$dataset) {
       }
     }
     if ($exist === FALSE) {
-      $args[] = array($wrapper_study, $wrapper_variable);
+      array_push($variables, $wrapper_variable);
     }
   }
 
-  if (isset($args)) {
-    drupal_set_message(
-      'Processing harmonization information of study \'' . $args[0][0]->title->value() . '\' for ' . count($args)
-        . ' variables'
-    );
-    background_process_start('_mica_datasets_create_study_variable_attributes', $args);
+  if (isset($variables)) {
+    _mica_datasets_create_study_variable_attributes_for_study($wrapper_study, $variables);
   }
 }
 
