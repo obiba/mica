@@ -877,6 +877,7 @@ function mica_dataset_connector_insert(array $values) {
  *
  * @param $dataset nid
  */
+//TODO maybe use wrapper and dataset->field_dataset_variables field instead of query...
 function mica_dataset_dataset_variables($dataset) {
   // Get field information
   $field = field_info_field('field_dataset');
@@ -1307,10 +1308,11 @@ function mica_datasets_node_delete($node) {
       MicaDatasetQueryManager::deleteQueries($dataset_id);
 
       // remove variables
-      $variables = mica_dataset_dataset_variables($dataset_id);
+      $dataset = entity_metadata_wrapper('node', $dataset_id);
+      $variables = $dataset->field_dataset_variables;
       if (!empty($variables)) {
         foreach ($variables as $variable) {
-          node_delete($variable->nid);
+          node_delete($variable->nid->value());
         }
       }
 
