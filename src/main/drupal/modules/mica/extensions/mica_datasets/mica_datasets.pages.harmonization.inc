@@ -75,8 +75,8 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
 
               // inner tooltip
               $tooltip = "<p>$status_label</p>";
-              $tooltip .= toHtmlTruncate($comment, 'i');
-              $tooltip .= toHtmlTruncate($script, '');
+              $tooltip .= toHtmlTruncate($comment, 'comment', 'i');
+              $tooltip .= toHtmlTruncate($script, 'script', '');
 
               if ($status !== 'undetermined') {
                 $option[$header_ids[$study_id]]['data'][] = array(
@@ -111,7 +111,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
   return $output;
 }
 
-function toHtmlTruncate($text, $surrounded_tag) {
+function toHtmlTruncate($text, $label, $surrounded_tag) {
   $start = empty($surrounded_tag) ? "" : "<" . $surrounded_tag . ">";
   $end = empty($surrounded_tag) ? "" : "</" . $surrounded_tag . ">";
   $htmlTruncate = '';
@@ -119,7 +119,7 @@ function toHtmlTruncate($text, $surrounded_tag) {
     if (strlen($text) > 500) {
       $htmlTruncate
         = "<p><code class=\'prettyprint\'>" . $start . check_markup(truncate_utf8($text, 400, FALSE))
-        . $end . "</code>[script truncated]</p>";
+        . $end . "</code>[" . $label . " truncated]</p>";
     }
     else {
       $htmlTruncate

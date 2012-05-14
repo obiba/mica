@@ -1342,6 +1342,18 @@ function mica_datasets_node_delete($node) {
         }
       }
       break;
+    case 'study':
+      $study = entity_metadata_wrapper('node', $node);
+      foreach ($study->field_study_study_variable_att as $sva) {
+        $sva->delete();
+      }
+      break;
+    case 'variable':
+      $variable = entity_metadata_wrapper('node', $node);
+      foreach ($variable->field_variable_study_var_att as $sva) {
+        $sva->delete();
+      }
+      break;
   }
 }
 
@@ -1592,7 +1604,7 @@ function _mica_datasets_create_study_variable_attribute(&$wrapper_variable, &$wr
 }
 
 /**
- * add $new_sva (new study variable attribute) to $svs ()
+ * add $new_sva (new study variable attribute) to $svas (study variables attributes)
  *
  * @param $svas
  * @param $new_sva
