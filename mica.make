@@ -244,7 +244,6 @@ projects[search_api_solr][patch][1276970] = http://drupal.org/files/solr_queries
 
 projects[services][version] = 3.1
 projects[services][type] = module
-;projects[services][patch][1240074] = http://drupal.org/files/session_restore-1240074-54.patch
 
 projects[smtp][version] = 1.0-beta1
 projects[smtp][type] = module
