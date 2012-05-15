@@ -192,6 +192,7 @@ function mica_datasets_default_search_api_index() {
         "nid" : { "type" : "integer" },
         "type" : { "type" : "string" },
         "title" : { "type" : "string" },
+        "status" : { "type" : "integer" },
         "field_repeatable" : { "type" : "boolean" },
         "field_value_type" : { "type" : "string" },
         "field_data_sources" : { "type" : "list\\u003Cstring\\u003E" },
@@ -217,6 +218,7 @@ function mica_datasets_default_search_api_index() {
         "field_social_environment" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_sociodemographic_charact" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_target" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_unit" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
         "body:value" : { "type" : "text" },
@@ -226,8 +228,7 @@ function mica_datasets_default_search_api_index() {
         "field_dataset:field_studies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_variable_categories:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_variable_categories:label" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_variable_categories:missing" : { "type" : "list\\u003Cboolean\\u003E" },
-        "field_unit" : { "type" : "text" }
+        "field_variable_categories:missing" : { "type" : "list\\u003Cboolean\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {

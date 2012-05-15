@@ -21,7 +21,7 @@ api = 2
   
 ; Drupal 7.x. Requires the `core` property to be set to 7.x.
 projects[drupal][type] = core
-projects[drupal][version] = 7.12
+projects[drupal][version] = 7.14
 
 ; Use vocabulary machine name for permissions
 ; http://drupal.org/node/995156
@@ -90,8 +90,10 @@ projects[email][download][url] = http://git.drupal.org/project/email.git
 projects[email][download][revision] = 523cd0de1387a4fca52f007f7594160a56378196
 projects[email][patch][718414] = http://drupal.org/files/email_feeds_target-718414-36.patch
 
-projects[entity][version] = 1.0-rc2
 projects[entity][type] = module
+projects[entity][download][type] = git
+projects[entity][download][url] = http://git.drupal.org/project/entity.git
+projects[entity][download][revision] = b24826fc0a763ac962007dc38adb72187be51344
 
 projects[facetapi][version] = 1.0-rc4
 projects[facetapi][type] = module
@@ -172,7 +174,7 @@ projects[menu_firstchild][type] = module
 projects[module_filter][version] = 1.6
 projects[module_filter][type] = module
 
-projects[multiselect][version] = 1.8
+projects[multiselect][version] = 1.9
 projects[multiselect][type] = module
 
 projects[namedb][type] = module
@@ -198,7 +200,7 @@ projects[panels][type] = module
 projects[password_policy][version] = 1.0-rc2
 projects[password_policy][type] = module
 
-projects[pathauto][version] = 1.0
+projects[pathauto][version] = 1.1
 projects[pathauto][type] = module
 
 projects[potx][version] = 1.0
@@ -279,7 +281,7 @@ projects[view_unpublished][type] = module
 projects[views][version] = 3.3
 projects[views][type] = module
 
-projects[views_data_export][version] = 3.0-beta5
+projects[views_data_export][version] = 3.0-beta6
 projects[views_data_export][type] = module
 
 projects[viewreference][version] = 3.3
