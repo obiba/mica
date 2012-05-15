@@ -10,7 +10,7 @@
 function mica_studies_facetapi_default_facet_settings() {
   $export = array();
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_access_biosamples';
@@ -35,7 +35,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_access_biosamples'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_access_data';
@@ -60,7 +60,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_access_data'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_age_max';
@@ -85,7 +85,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_age_max'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_age_min';
@@ -110,7 +110,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_age_min'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_baseline_end_year';
@@ -135,7 +135,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_baseline_end_year'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_baseline_start_year';
@@ -160,7 +160,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_baseline_start_year'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_bio_samples_management';
@@ -185,7 +185,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_bio_samples_management'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_country';
@@ -210,7 +210,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_country'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_data_sources';
@@ -235,7 +235,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_data_sources'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_design';
@@ -260,7 +260,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_design'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_ended_end_year';
@@ -285,7 +285,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_ended_end_year'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_followup_end_year';
@@ -310,7 +310,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_followup_end_year'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_followup_start_year';
@@ -335,7 +335,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_followup_start_year'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_gender';
@@ -360,7 +360,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_gender'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_preparation_end_year';
@@ -385,7 +385,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_preparation_end_year'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_preparation_start_year';
@@ -410,7 +410,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_preparation_start_year'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_recruitment';
@@ -435,7 +435,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_recruitment'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_recruitment_sources';
@@ -444,11 +444,12 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->facet = 'field_recruitment_sources';
   $facet->enabled = FALSE;
   $facet->settings = array(
-    'operator' => 'and',
+    'operator' => 'or',
     'hard_limit' => '50',
     'dependencies' => array(
       'bundle' => 'none',
       'bundle_selected' => array(),
+      'roles' => array(),
     ),
     'facet_mincount' => '1',
     'facet_missing' => '0',
@@ -459,7 +460,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_recruitment_sources'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_select_criteria';
@@ -484,7 +485,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_select_criteria'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_target_number_biosamples';
@@ -509,7 +510,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_target_number_biosamples'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index::field_target_number_participants';
@@ -534,7 +535,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index::field_target_number_participants'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_access_biosamples';
@@ -581,7 +582,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_access_biosamples'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_access_data';
@@ -628,7 +629,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_access_data'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_access_other';
@@ -662,7 +663,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_access_other'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_access_other_sp';
@@ -696,7 +697,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_access_other_sp'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_acroym';
@@ -730,7 +731,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_acroym'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_age_max';
@@ -777,7 +778,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_age_max'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_age_min';
@@ -824,7 +825,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_age_min'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_baseline_end_year';
@@ -871,7 +872,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_baseline_end_year'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_baseline_start_year';
@@ -918,7 +919,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_baseline_start_year'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_bio_samples_management';
@@ -965,7 +966,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_bio_samples_management'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_complete_name';
@@ -999,7 +1000,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_complete_name'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_country';
@@ -1046,7 +1047,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_country'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_current_part_nb_date';
@@ -1085,7 +1086,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_current_part_nb_date'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_current_participants_nb';
@@ -1124,7 +1125,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_current_participants_nb'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_current_sam_supp_info';
@@ -1158,7 +1159,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_current_sam_supp_info'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_current_samples_date';
@@ -1197,7 +1198,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_current_samples_date'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_current_samples_nb';
@@ -1236,7 +1237,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_current_samples_nb'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_current_supp_info';
@@ -1270,7 +1271,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_current_supp_info'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_data_sources';
@@ -1317,7 +1318,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_data_sources'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_data_sources_sp';
@@ -1351,7 +1352,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_data_sources_sp'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_design';
@@ -1398,7 +1399,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_design'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_design_other_sp';
@@ -1432,7 +1433,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_design_other_sp'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_ended_end_year';
@@ -1479,7 +1480,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_ended_end_year'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_ethnic_origin';
@@ -1513,7 +1514,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_ethnic_origin'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_followup_end_year';
@@ -1560,7 +1561,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_followup_end_year'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_followup_start_year';
@@ -1607,7 +1608,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_followup_start_year'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_gender';
@@ -1654,7 +1655,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_gender'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_health_status';
@@ -1688,7 +1689,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_health_status'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_marker_paper';
@@ -1722,7 +1723,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_marker_paper'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_no_limits_participants';
@@ -1756,7 +1757,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_no_limits_participants'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_no_limits_samples';
@@ -1790,7 +1791,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_no_limits_samples'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_partcipant_sel_supp_info';
@@ -1824,7 +1825,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_partcipant_sel_supp_info'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_preparation_end_year';
@@ -1871,7 +1872,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_preparation_end_year'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_preparation_start_year';
@@ -1918,7 +1919,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_preparation_start_year'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_pubmedid';
@@ -1952,7 +1953,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_pubmedid'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_recruitement_supp_info';
@@ -1986,7 +1987,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_recruitement_supp_info'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_recruitment';
@@ -2033,7 +2034,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_recruitment'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_recruitment_other';
@@ -2067,7 +2068,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_recruitment_other'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_recruitment_other_sp';
@@ -2101,7 +2102,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_recruitment_other_sp'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_recruitment_sources';
@@ -2132,7 +2133,7 @@ function mica_studies_facetapi_default_facet_settings() {
       'indexed' => '4',
     ),
     'empty_behavior' => 'none',
-    'soft_limit' => '20',
+    'soft_limit' => '5',
     'nofollow' => 1,
     'show_expanded' => 0,
     'name' => '',
@@ -2148,7 +2149,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_recruitment_sources'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_recruitment_supp_info';
@@ -2182,7 +2183,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_recruitment_supp_info'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_samples_man_other_sp';
@@ -2216,7 +2217,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_samples_man_other_sp'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_samples_supp_info';
@@ -2250,7 +2251,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_samples_supp_info'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_select_criteria';
@@ -2297,7 +2298,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_select_criteria'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_selection_others_sp';
@@ -2331,7 +2332,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_selection_others_sp'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_status_supp_info';
@@ -2365,7 +2366,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_status_supp_info'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_target_nb_supp_info';
@@ -2399,7 +2400,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_target_nb_supp_info'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_target_number_biosamples';
@@ -2446,7 +2447,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_target_number_biosamples'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_target_number_participants';
@@ -2493,7 +2494,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_target_number_participants'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_territory';
@@ -2527,7 +2528,7 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_territory'] = $facet;
 
-  $facet = new stdClass;
+  $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
   $facet->name = 'search_api@studies_index:block:field_tissues_sp';
