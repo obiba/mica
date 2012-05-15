@@ -37,8 +37,8 @@ projects[auto_nodetitle][type] = module
 
 projects[autocomplete_deluxe][type] = module
 projects[autocomplete_deluxe][download][type] = git
-projects[autocomplete_deluxe][download][url] = http://git.drupal.org/project/autocomplete_deluxe.git
-projects[autocomplete_deluxe][download][revision] = a92b71e91208356b93a83525c695732b189d0653
+projects[autocomplete_deluxe][download][revision] = a92b71e
+projects[autocomplete_deluxe][download][branch] = 7.x-1.x
 
 projects[] = advanced_help
 
@@ -59,22 +59,22 @@ projects[ckeditor][type] = module
 
 projects[collapsiblock][type] = module
 projects[collapsiblock][download][type] = git
-projects[collapsiblock][download][url] = http://git.drupal.org/project/collapsiblock.git
-projects[collapsiblock][download][revision] = 36f42804ee1d4072d8cbb81c25b663bd4cdcc447
+projects[collapsiblock][download][revision] = 36f4280
+projects[collapsiblock][download][branch] = 7.x-1.x
 projects[collapsiblock][patch][1475244] = http://drupal.org/files/api-function-and-constants-patch1301454-patch1429956.patch
 
 projects[cnr][type] = module
 projects[cnr][download][type] = git
-projects[cnr][download][url] = http://git.drupal.org/project/cnr.git
-projects[cnr][download][revision] = 89f859e9d555cbab02631d9501726437d74f39e4
+projects[cnr][download][revision] =  89f859e
+projects[cnr][download][branch] =  7.x-4.x
 
 projects[content_access][version] = 1.2-beta1
 projects[content_access][type] = module
 
 projects[content_taxonomy][type] = module
 projects[content_taxonomy][download][type] = git
-projects[content_taxonomy][download][url] = http://git.drupal.org/project/content_taxonomy.git
-projects[content_taxonomy][download][revision] = 5d0257a2f955e2d9d9b74e0e3b152ebaad1a3cb1
+projects[content_taxonomy][download][revision] = 5d0257a
+projects[content_taxonomy][download][branch] = 7.x-1.x
 
 projects[ctools][type] = module
 projects[ctools][version] = 1.0
@@ -86,14 +86,14 @@ projects[] = devel
 
 projects[email][type] = module
 projects[email][download][type] = git
-projects[email][download][url] = http://git.drupal.org/project/email.git
-projects[email][download][revision] = 523cd0de1387a4fca52f007f7594160a56378196
+projects[email][download][revision] = 523cd0d
+projects[email][download][branch] = 7.x-1.x
 projects[email][patch][718414] = http://drupal.org/files/email_feeds_target-718414-36.patch
 
 projects[entity][type] = module
 projects[entity][download][type] = git
-projects[entity][download][url] = http://git.drupal.org/project/entity.git
-projects[entity][download][revision] = b24826fc0a763ac962007dc38adb72187be51344
+projects[entity][download][revision] = b24826f
+projects[entity][download][branch] = 7.x-1.x
 
 projects[facetapi][version] = 1.0-rc4
 projects[facetapi][type] = module
@@ -105,8 +105,8 @@ projects[features][type] = module
 
 projects[feeds][type] = module
 projects[feeds][download][type] = git
-projects[feeds][download][url] = http://git.drupal.org/project/feeds.git
-projects[feeds][download][revision] = cc2d2eccfe7c8a30dcfefa49fd57407cb6f47cf5
+projects[feeds][download][revision] = cc2d2ec
+projects[feeds][download][branch] = 7.x-2.x
 projects[feeds][patch][11075222] = http://drupal.org/files/issues/1107522-empty-fields-2.patch
 projects[feeds][patch][110752213] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-13.patch
 projects[feeds][patch][110752215links] = http://drupal.org/files/ignore-empty-link-fields-1107522-15.patch
@@ -115,8 +115,8 @@ projects[feeds_jsonpath_parser][version] = 1.0-beta2
 projects[feeds_jsonpath_parser][type] = module
 
 projects[feeds_tamper][download][type] = git
-projects[feeds_tamper][download][url] = http://git.drupal.org/project/feeds_tamper.git
-projects[feeds_tamper][download][revision] = 8f7f581512249d73c4e7e82239ab854bef03635e
+projects[feeds_tamper][download][revision] = 8f7f581
+projects[feeds_tamper][download][branch] = 7.x-1.x
 projects[feeds_tamper][patch][1416700] = http://drupal.org/files/1416700-4-feeds_tamper-existing-terms-plugin.patch
 projects[feeds_tamper][patch][1180726] = http://drupal.org/files/empty_check-1180726-6.patch
 
@@ -124,8 +124,8 @@ projects[field_display_label][version] = 1.2
 projects[field_display_label][type] = module
 
 projects[field_group][download][type] = git
-projects[field_group][download][url] = http://git.drupal.org/project/field_group.git
-projects[field_group][download][revision] = 233c425892af59a9c8597990faedd3efcd618703
+projects[field_group][download][revision] = 233c425
+projects[field_group][download][branch] = 7.x-1.x
 
 projects[field_permissions][version] = 1.0-beta2
 projects[field_permissions][type] = module
@@ -179,18 +179,18 @@ projects[multiselect][type] = module
 
 projects[namedb][type] = module
 projects[namedb][download][type] = git
-projects[namedb][download][url] = http://git.drupal.org/project/namedb.git
-projects[namedb][download][revision] = 7284d85b1a028ceae722eba0685a5fe7b2623c04
+projects[namedb][download][revision] = 7284d85
+projects[namedb][download][branch] = 7.x-1.x
 
 projects[name][type] = module
 projects[name][download][type] = git
-projects[name][download][url] = http://git.drupal.org/project/name.git
-projects[name][download][revision] = 6644c91893ac05b681509486f01353490372a393
+projects[name][download][revision] = 6644c91
+projects[name][download][branch] = 7.x-1.x
 
 projects[noderefcreate][type] = module
 projects[noderefcreate][download][type] = git
-projects[noderefcreate][download][url] = http://git.drupal.org/project/noderefcreate.git
-projects[noderefcreate][download][revision] = 4268ba7832272348d0612e23ce11f42f0a255318
+projects[noderefcreate][download][revision] = 4268ba7
+projects[noderefcreate][download][branch] = 7.x-1.x
 projects[noderefcreate][patch][892052] = http://drupal.org/files/noderefcreate-workflow-options-892052-4.patch
 projects[noderefcreate][patch][1538328] = http://drupal.org/files/maxlength-1538328-1.patch
 
@@ -214,13 +214,13 @@ projects[recaptcha][type] = module
 
 projects[references][type] = module
 projects[references][download][type] = git
-projects[references][download][url] = http://git.drupal.org/project/references.git
-projects[references][download][revision] = 311bd497bfb0f9de046d585006a7ef3d9c6c74c8
+projects[references][download][revision] = 311bd49
+projects[references][download][branch] = 7.x-2.x
 
 projects[search_api][type] = module
 projects[search_api][download][type] = git
-projects[search_api][download][url] = http://git.drupal.org/project/search_api.git
-projects[search_api][download][revision] = 3189be2d3b34bc6a766b9e5c8cc4a15ea16ff5cd
+projects[search_api][download][revision] = 3189be2
+projects[search_api][download][branch] = 7.x-1.x
 projects[search_api][patch][1363114] = http://drupal.org/files/max_inclusive-1363114-5.patch
 
 projects[search_api][type] = module
@@ -233,8 +233,8 @@ projects[search_api_page][type] = module
 
 projects[search_api_ranges][type] = module
 projects[search_api_ranges][download][type] = git
-projects[search_api_ranges][download][url] = http://git.drupal.org/project/search_api_ranges.git
-projects[search_api_ranges][download][revision] = fe3b59f9c0206ac822c4e6474f8715fc1c2026a5
+projects[search_api_ranges][download][revision] = fe3b59f
+projects[search_api_ranges][download][branch] = 7.x-1.x
 projects[search_api_ranges][patch][1450772] = http://drupal.org/files/force-numeric-and-config-for-no-slider-no-commit-on-change-1450772-1_1.patch
 projects[search_api_ranges][patch][1460410] = http://drupal.org/files/max-inclusive.patch
 
@@ -261,8 +261,8 @@ projects[taxonomy_manager][type] = module
 
 projects[title][type] = module
 projects[title][download][type] = git
-projects[title][download][url] = http://git.drupal.org/project/title.git
-projects[title][download][revision] = 5cfda9bb7b2d18efaa01f85a4d10255a2866c83a
+projects[title][download][revision] = 5cfda9b
+projects[title][download][branch] = 7.x-1.x
 projects[title][patch][1362790] = http://drupal.org/files/check_if_legacy_field_is_set-1362790-1.patch
 
 projects[tipsy][version] = 1.0-rc1
