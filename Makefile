@@ -77,9 +77,10 @@ drupal: drush-make drupal-default
 
 drush-make:
 	$(drushmake_exec) mica.make target/$(micadir)
-	
+
 drupal-default:
 	cd target/$(micadir) && \
+	chmod a+r sites/all/modules/services/servers/rest_server/lib/spyc.php && \
 	chmod a+w sites/default && \
 	mkdir sites/default/files && \
 	chmod a+w sites/default/files && \
