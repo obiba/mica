@@ -1,4 +1,0 @@
-558c558
-<       if ($data[$block->delta]['info']) {
----
->       if (!empty($data[$block->delta]['info'])) {

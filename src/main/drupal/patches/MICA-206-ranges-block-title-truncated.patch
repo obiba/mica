@@ -1,4 +1,0 @@
-288c288
-<     'subject' => $range->options['field_name'],
----
->     'subject' => $range->name,
