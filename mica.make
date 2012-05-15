@@ -242,8 +242,10 @@ projects[search_api_solr][version] = 1.0-rc1
 projects[search_api_solr][type] = module
 projects[search_api_solr][patch][1276970] = http://drupal.org/files/solr_queries_post-1276970-10.patch
 
-projects[services][version] = 3.1
 projects[services][type] = module
+projects[services][download][type] = git
+projects[services][download][revision] = e3ced70
+projects[services][download][branch] = 7.x-3.x
 
 projects[smtp][version] = 1.0-beta1
 projects[smtp][type] = module
@@ -295,19 +297,24 @@ projects[workbench_moderation][type] = module
   
 ; Libraries
 ; ---------
-libraries[solr_php_client][type] = "libraries"
-libraries[solr_php_client][download][type] = "get"
-libraries[solr_php_client][download][url] = "http://solr-php-client.googlecode.com/files/SolrPhpClient.r60.2011-05-04.tgz"
-libraries[solr_php_client][directory_name] = "SolrPhpClient"
+libraries[solr_php_client][type] = libraries
+libraries[solr_php_client][download][type] = get
+libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.com/files/SolrPhpClient.r60.2011-05-04.tgz
+libraries[solr_php_client][directory_name] = SolrPhpClient
 
-libraries[ckeditor][type] = "libraries"
-libraries[ckeditor][download][type]= "get"
-libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.3/ckeditor_3.6.3.tar.gz"
-libraries[ckeditor][directory_name] = "ckeditor"
+libraries[ckeditor][type] = libraries
+libraries[ckeditor][download][type]= get
+libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.3/ckeditor_3.6.3.tar.gz
+libraries[ckeditor][directory_name] = ckeditor
 
-libraries[jsonpath][type] = "libraries"
-libraries[jsonpath][download][type]= "get"
-libraries[jsonpath][download][url] = "http://jsonpath.googlecode.com/files/jsonpath-0.8.1.php"
-libraries[jsonpath][destination] = "modules"
-libraries[jsonpath][directory_name] = "feeds_jsonpath_parser"
+libraries[jsonpath][type] = libraries
+libraries[jsonpath][download][type]= get
+libraries[jsonpath][download][url] = http://jsonpath.googlecode.com/files/jsonpath-0.8.1.php
+libraries[jsonpath][destination] = modules
+libraries[jsonpath][directory_name] = feeds_jsonpath_parser
 libraries[jsonpath][overwrite] = TRUE
+
+libraries[spyc][type] = libraries
+libraries[spyc][download][type]= get
+libraries[spyc][download][url] = http://spyc.googlecode.com/svn/trunk/spyc.php
+libraries[spyc][directory_name] = spyc

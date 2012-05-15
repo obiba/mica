@@ -119,7 +119,6 @@ mica-install:
 	cp -r ../../src/main/drupal/profiles/* profiles && \
 	cp -r ../../src/main/drupal/modules/mica sites/all/modules && \
 	cp -r ../../src/main/drupal/themes/* sites/all/themes && \
-	cp ../../src/main/drupal/libraries/spyc.php sites/all/modules/services/servers/rest_server/lib && \
 	rm -rf `find . -type d -name .svn` && \
 	rm -rf `find . -type d -name .git` && \
 	#if [ -e profiles/default/translations/fr.po ]; then \
