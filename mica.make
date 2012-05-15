@@ -242,10 +242,8 @@ projects[search_api_solr][version] = 1.0-rc1
 projects[search_api_solr][type] = module
 projects[search_api_solr][patch][1276970] = http://drupal.org/files/solr_queries_post-1276970-10.patch
 
+projects[services][version] = 3.1
 projects[services][type] = module
-projects[services][download][type] = git
-projects[services][download][revision] = e3ced70
-projects[services][download][branch] = 7.x-3.x
 
 projects[smtp][version] = 1.0-beta1
 projects[smtp][type] = module
@@ -317,4 +315,6 @@ libraries[jsonpath][overwrite] = TRUE
 libraries[spyc][type] = libraries
 libraries[spyc][download][type]= get
 libraries[spyc][download][url] = http://spyc.googlecode.com/svn/trunk/spyc.php
-libraries[spyc][directory_name] = spyc
+libraries[spyc][destination] = modules
+libraries[spyc][directory_name] = services/servers/rest_server/lib
+libraries[spyc][overwrite] = TRUE
