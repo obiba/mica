@@ -56,11 +56,11 @@ function mica_data_access_node_access($node, $op, $account) {
 function mica_data_access_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   $links = array();
 
-  if ($root_path == 'data-access/approved' || $root_path == 'node/%/queries/%' || $root_path == 'data-access/requests') {
+  if ($root_path === 'data-access/approved' || $root_path === 'node/%/queries/%' || $root_path === 'data-access/requests') {
     if (node_access('create', 'data_access_request')) {
 
       $href = url('data-access/request');
-      if ($root_path == 'node/%/queries/%') {
+      if ($root_path === 'node/%/queries/%') {
         $dataset_node = $router_item['page_arguments'][0];
         $href = url('data-access/request', array('query' => array('field_dataset_access' => $dataset_node->nid)));
       }
@@ -75,7 +75,7 @@ function mica_data_access_menu_local_tasks_alter(&$data, $router_item, $root_pat
     }
   }
 
-  if ($root_path == 'data-access/request') {
+  if ($root_path === 'data-access/request') {
     global $user;
     if ($user->uid == 0 && !node_access('create', 'data_access_request')) {
       $links['login'] = array(

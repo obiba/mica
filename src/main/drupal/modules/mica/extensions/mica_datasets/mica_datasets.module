@@ -294,6 +294,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
 
   switch ($root_path) {
 
+    case 'datasets':
     case 'single-study-datasets':
     case 'multiple-study-datasets':
       if (node_access('create', 'dataset')) {
@@ -1028,10 +1029,7 @@ function mica_dataset_query_term_load($id, $reset = FALSE) {
     $ret = mica_dataset_query_term_load_multiple(array($id), array(), $reset);
     return $ret ? reset($ret) : FALSE;
   }
-  else {
-    return MicaDatasetQueryManager::getTerm($id);
-  }
-  return FALSE;
+  return MicaDatasetQueryManager::getTerm($id);
 }
 
 /**
@@ -1406,8 +1404,8 @@ function mica_datasets_node_validate($node, $form, &$form_state) {
 
 function _mica_datasets_create_dataset_menu($node) {
   $parent_menu = db_query(
-    "SELECT * FROM {menu_links} WHERE link_title = :title", array(':title' => 'Datasets / Data Dictionary')
-  )
+      "SELECT * FROM {menu_links} WHERE link_title = :title", array(':title' => 'Datasets')
+    )
     ->fetchObject();
   if (!empty($parent_menu)) {
     $menu = $node->menu;
@@ -1436,12 +1434,12 @@ function _mica_datasets_create_variable_menu($node) {
   $dataset_nid = $wrapper->field_dataset->nid->value();
   $dataset_title = $wrapper->field_dataset->title->value();
   $parent_menu = db_query(
-    "SELECT * FROM {menu_links} WHERE link_title = :title AND link_path = :link_path",
-    array(
-      ':title' => $dataset_title,
-      ':link_path' => 'node/' . $dataset_nid,
+      "SELECT * FROM {menu_links} WHERE link_title = :title AND link_path = :link_path",
+      array(
+        ':title' => $dataset_title,
+        ':link_path' => 'node/' . $dataset_nid,
+      )
     )
-  )
     ->fetchObject();
   if (!empty($parent_menu)) {
     $menu = $node->menu;
