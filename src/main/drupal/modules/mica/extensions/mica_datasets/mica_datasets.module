@@ -1189,10 +1189,10 @@ function mica_datasets_node_view_alter(&$build) {
       $options = array();
       $status_values = field_info_field('field_sva_script_status');
       foreach ($wrapper->field_variable_study_var_att->value() as $study_variable_attributes) {
-        $sva_node = node_load($study_variable_attributes->nid);
+        $sva_wrapper = entity_metadata_wrapper('node', $study_variable_attributes);
 
         if (!empty($study_variable_attributes->field_sva_script_status)) {
-          $status = $study_variable_attributes->field_sva_script_status['und'][0]['value'];
+          $status = $sva_wrapper->field_sva_script_status->value();
           $status_label = $status_values['settings']['allowed_values'][$status];
         }
         else {
@@ -1200,14 +1200,13 @@ function mica_datasets_node_view_alter(&$build) {
           $status_label = t('Undetermined');
         }
 
-        $script = empty($study_variable_attributes->field_sva_script['und'][0]['value']) ? ''
-          : $study_variable_attributes->field_sva_script['und'][0]['value'];
+        $script = $sva_wrapper->field_sva_script->value() ? '' : $sva_wrapper->field_sva_script->value();
         $script = '<code class=\'prettyprint\'>' . check_markup(truncate_utf8($script, 400, FALSE)) . '</code>';
-        $comment = empty($study_variable_attributes->field_sva_comment['und'][0]['value']) ? ''
-          : $study_variable_attributes->field_sva_comment['und'][0]['value'];
-        $study = node_load($study_variable_attributes->field_sva_study['und'][0]['nid']);
-        $name = !empty($study->field_acroym['und'][0]['value']) ? $study->field_acroym['und'][0]['value']
-          : $study->title;
+        $comment = $sva_wrapper->field_sva_comment->value() ? '' : $sva_wrapper->field_sva_comment->value();
+        
+        $study_wrapper = entity_metadata_wrapper('node', $sva_wrapper->field_sva_study->value()->nid);
+        
+        $name = $study_wrapper->field_acroym->value() ? $study_wrapper->title->value() : $study_wrapper->field_acroym->value();
         $status = "<img src=\"".constant("mica_harmonization_{$status}")."\" title='$status_label'></div>";
 
         $option = array(
@@ -1217,10 +1216,11 @@ function mica_datasets_node_view_alter(&$build) {
           'script' => $script,
         );
 
-        if (node_access('view', $sva_node)) {
+        $sva = node_load($sva_wrapper->nid->value());
+        if (node_access('view',  $sva)) {
           $header['view'] = '';
 
-          $option['view'] = "<a href='" . url('node/' . $sva_node->nid) . "'>" . t('View') . "</a>";
+          $option['view'] = "<a href='" . url('node/' . $sva_wrapper->nid->value()) . "'>" . t('View') . "</a>";
         }
 
         $options[] = $option;
