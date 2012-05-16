@@ -144,15 +144,13 @@ function toHtmlTruncate($text, $label, $surrounded_tag) {
   $start = empty($surrounded_tag) ? "" : "<" . $surrounded_tag . ">";
   $end = empty($surrounded_tag) ? "" : "</" . $surrounded_tag . ">";
   $htmlTruncate = '';
-  if (empty($text) === FALSE) {
+  if (!empty($text)) {
     if (strlen($text) > 500) {
-      $htmlTruncate
-        = "<code class=\'prettyprint\'>" . $start . check_markup(truncate_utf8($text, 400, FALSE))
-        . $end . "</code>[" . $label . " truncated]";
+      $htmlTruncate = "<code class=\"prettyprint\">" . $start . check_markup(truncate_utf8($text, 400, FALSE))
+        . $end . "</code>[" . $label . " " . t("truncated") . "]";
     }
     else {
-      $htmlTruncate
-        = "<code class=\'prettyprint\'>" . $start . check_markup($text) . $end . "</code>";
+      $htmlTruncate = "<code class=\"prettyprint\">" . $start . check_markup($text) . $end . "</code>";
     }
   }
   return $htmlTruncate;
@@ -164,20 +162,24 @@ function mica_datasets_harmonization_legend_form($form, $form_state) {
   );
   $form['legend']['undetermined'] = array(
     '#type' => 'markup',
-    '#markup' => "<img src='".constant('mica_harmonization_undetermined')."' style='vertical-align: middle'>&nbsp;<b>Undetermined</b> -
-  		<i>the harmonization potential of this variable has not yet been evaluated.</i><br>",
+    '#markup' => "<img src=\"" . constant('MICA_HARMONIZATION_UNDETERMINED') . "\" style=\"vertical-align: middle\">&nbsp;<b>"
+      . t("Undetermined") . "</b> - <i>"
+      . t("the harmonization potential of this variable has not yet been evaluated.")
+      . "</i><br />",
   );
   $form['legend']['complete'] = array(
     '#type' => 'markup',
-    '#markup' => "<img src='".constant('mica_harmonization_complete')."' style='vertical-align: middle'>&nbsp;<b>Complete</b> -
-  		<i> the study assessment item(s) (e.g. survey question, physical measure, biochemical measure) allow construction 
-  		of the variable as defined in the dataset.</i><br>",
+    '#markup' => "<img src=\"" . constant('MICA_HARMONIZATION_COMPLETE') . "\" style=\"vertical-align: middle\">&nbsp;<b>"
+      . t("Complete") . "</b> - <i>"
+      . t("the study assessment item(s) (e.g. survey question, physical measure, biochemical measure) allow construction of the variable as defined in the dataset.")
+      . "</i><br />",
   );
   $form['legend']['impossible'] = array(
     '#type' => 'markup',
-    '#markup' => "<img src='".constant('mica_harmonization_impossible')."' style='vertical-align: middle'>&nbsp;<b>Impossible</b> -
-  		<i>there is no information or insufficient information collected by this study to allow the construction of 
-  		the variable as defined in the dataset.</i>",
+    '#markup' => "<img src=\"" . constant('MICA_HARMONIZATION_IMPOSSIBLE') . "\" style=\"vertical-align: middle\">&nbsp;<b>"
+      . t("Impossible") . "</b> - <i>"
+      . t("there is no information or insufficient information collected by this study to allow the construction of the variable as defined in the dataset.")
+      . "</i>",
   );
 
   return $form;
@@ -231,9 +233,7 @@ function mica_datasets_harmonization_refresh_form_submit($form, &$form_state){
   }
   
   if (is_array($array)) {
-  	require_once drupal_get_path('module', 'mica_opal'). '/includes/jsonpath-0.8.1.php';//drupal_get_library('mica_opal', 'jsonpath-0.8.1.php');
-  	require_once drupal_get_path('module', 'mica_datasets'). '/mica_datasets.module';
-  
+
   	$all_items = mica_opal_jsonPath($array, '$.*');
   	unset($array);
   
@@ -322,7 +322,7 @@ function mica_datasets_harmonization_refresh_form_submit($form, &$form_state){
   		  for ($i = 0; $i < count($categories_name); $i++) {
   		    $wrapper->field_variable_categories[$i]->name->set($categories_name[$i]);
 					$wrapper->field_variable_categories[$i]->label->set($categories_label[$i]);
-					$wrapper->field_variable_categories[$i]->missing->set($categories_missing[$i]?'1':'0');
+					$wrapper->field_variable_categories[$i]->missing->set($categories_missing[$i] ? '1' : '0');
   		  }
   		}
 			$wrapper->save();
@@ -334,17 +334,16 @@ function mica_datasets_harmonization_refresh_form_submit($form, &$form_state){
 }
 
 function sort_by_position($x, $y) {
-  if ($x->field_position['und'][0]['value'] === $y->field_position['und'][0]['value']) {
+  // TODO use entity_metadata_wrapper
+  $x_pos = $x->field_position['und'][0]['value'];
+  $y_pos = $y->field_position['und'][0]['value'];
+  if ($x_pos === $y_pos) {
     return 0;
   }
-  else {
-    if ($x->field_position['und'][0]['value'] < $y->field_position['und'][0]['value']) {
-      return -1;
-    }
-    else {
-      return 1;
-    }
+  if ($x_pos < $y_pos) {
+    return -1;
   }
+  return 1;
 }
 
 /**
@@ -363,6 +362,14 @@ function sort_by_position($x, $y) {
 *   Returns an array that is the output of jsonPath
 */
 function mica_opal_jsonPath($array, $expression) {
+
+  $libraries_jsonpath_loc = libraries_get_path('jsonpath') . '/jsonpath-0.8.1.php';
+  if(!file_exists($libraries_jsonpath_loc)) {
+    drupal_set_message("Cannot find jsonpath-0.8.1.php", "error");
+    return NULL;
+  }
+  include_once $libraries_jsonpath_loc;
+
 	$result = jsonPath($array, $expression);
 	return ($result === FALSE) ? array() : $result;
 }

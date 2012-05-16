@@ -6,7 +6,6 @@ package = "OBiBa"
 dependencies[] = mica_core
 dependencies[] = mica_datasets
 dependencies[] = feeds
-dependencies[] = feeds_jsonpath_parser
 dependencies[] = http_client
 dependencies[] = services
 dependencies[] = rest_server

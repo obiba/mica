@@ -81,6 +81,7 @@ drush-make:
 drupal-default:
 	cd target/$(micadir) && \
 	chmod a+r sites/all/modules/services/servers/rest_server/lib/spyc.php && \
+	chmod -R a+r sites/all/libraries && \
 	chmod a+w sites/default && \
 	mkdir sites/default/files && \
 	chmod a+w sites/default/files && \

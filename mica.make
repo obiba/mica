@@ -111,9 +111,6 @@ projects[feeds][patch][11075222] = http://drupal.org/files/issues/1107522-empty-
 projects[feeds][patch][110752213] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-13.patch
 projects[feeds][patch][110752215links] = http://drupal.org/files/ignore-empty-link-fields-1107522-15.patch
 
-projects[feeds_jsonpath_parser][version] = 1.0-beta2
-projects[feeds_jsonpath_parser][type] = module
-
 projects[feeds_tamper][download][type] = git
 projects[feeds_tamper][download][revision] = 8f7f581
 projects[feeds_tamper][download][branch] = 7.x-1.x
@@ -309,9 +306,7 @@ libraries[ckeditor][directory_name] = ckeditor
 libraries[jsonpath][type] = libraries
 libraries[jsonpath][download][type]= get
 libraries[jsonpath][download][url] = http://jsonpath.googlecode.com/files/jsonpath-0.8.1.php
-libraries[jsonpath][destination] = modules
-libraries[jsonpath][directory_name] = feeds_jsonpath_parser
-libraries[jsonpath][overwrite] = TRUE
+libraries[jsonpath][directory_name] = jsonpath
 
 libraries[spyc][type] = libraries
 libraries[spyc][download][type]= get

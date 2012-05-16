@@ -222,12 +222,11 @@ function _mica_datasets_study_variable_attributes(&$study, &$dataset) {
     foreach ($study_variable_attributes as $sv) {
       $wrapper_sv = entity_metadata_wrapper('node', $sv);
       if ($wrapper_sv->field_sva_variable->nid->value() === $wrapper_variable->nid->value()
-        && $wrapper_sv->field_sva_study->nid->value() === $wrapper_study->nid->value()
-      ) {
+        && $wrapper_sv->field_sva_study->nid->value() === $wrapper_study->nid->value()) {
         $exist = TRUE;
       }
     }
-    if ($exist === FALSE) {
+    if (!$exist) {
       array_push($variables, $wrapper_variable);
     }
   }
@@ -325,7 +324,7 @@ function _mica_datasets_new_connector($connection_type) {
  */
 function _mica_datasets_connection_options_submit(&$form, &$form_state, $connection_type) {
   $options = _mica_datasets_connection_config_values($form, $form_state);
-  if ($connection_type == 'none') {
+  if ($connection_type === 'none') {
     return $options;
   }
   return _mica_datasets_new_connector($connection_type)->configurationFormSubmit($form, $options, $form_state);
@@ -341,8 +340,7 @@ function _mica_datasets_get_node_form_arg(&$form_state) {
 }
 
 /**
- * Get all nodes of dataset type that are published, accessible
- * and not already datasets of current study.
+ * Get all nodes of dataset type, accessible and not already datasets of current study.
  *
  * @param study node $study_node
  */
@@ -357,7 +355,6 @@ function _mica_datasets_datasets_options($study_node) {
   $q->addField('n', 'nid');
   $q->addField('n', 'title');
   $q->condition('n.type', 'dataset');
-  $q->condition('n.status', 1);
   if (!empty($dataset_node_ids)) {
     $q->condition('n.nid', $dataset_node_ids, 'NOT IN');
   }
@@ -402,8 +399,7 @@ function _mica_datasets_studies_options(&$study_node_ids) {
 }
 
 /**
- * Get all nodes of study type that are published, accessible
- * and are related to current dataset.
+ * Get all nodes of study type that accessible and are related to current dataset.
  *
  * @param $dataset_node_id
  */
@@ -442,7 +438,7 @@ function _mica_datasets_get_dataset_ids($study_node_id) {
 
   $q = db_select('field_data_mica_dataset', 'f');
   $q->addField('f', 'mica_dataset_nid');
-  $q->condition('f.entity_id', $study_node_id, '=');
+  $q->condition('f.entity_id', $study_node_id);
   $q->condition('f.entity_type', 'node');
   $q->condition('f.bundle', 'study');
   $q->condition('f.deleted', 0);

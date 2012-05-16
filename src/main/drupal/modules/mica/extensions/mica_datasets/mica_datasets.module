@@ -12,9 +12,9 @@ define('PRIVATE_KEY_FILE', 'private://mica-privatekey.pem');
 
 define('PUBLIC_KEY_FILE', 'private://mica-publickey.pem');
 
-define('mica_harmonization_impossible', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/exclamation.png');
-define('mica_harmonization_complete', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/accept.png');
-define('mica_harmonization_undetermined', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/bullet_black.png');
+define('MICA_HARMONIZATION_IMPOSSIBLE', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/exclamation.png');
+define('MICA_HARMONIZATION_COMPLETE', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/accept.png');
+define('MICA_HARMONIZATION_UNDETERMINED', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/bullet_black.png');
 
 /**
  * Implements hook_theme().
