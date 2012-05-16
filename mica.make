@@ -291,6 +291,7 @@ projects[workbench][type] = module
 
 projects[workbench_moderation][version] = 1.1
 projects[workbench_moderation][type] = module
+projects[workbench_moderation][patch][218648] = http://drupal.org/files/retaintitle-1245590-12.patch
 
   
 ; Libraries
