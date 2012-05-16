@@ -238,6 +238,7 @@ function mica_datasets_harmonization_refresh_form_submit($form, &$form_state){
   	unset($array);
   
 		$i = 1;
+		entity_info_cache_clear();
   	foreach ($all_items as $item) {
   		$parsed_item = $variables = array();
   		// check if variable already exists
@@ -258,7 +259,9 @@ function mica_datasets_harmonization_refresh_form_submit($form, &$form_state){
   		$description = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[\'name\']==\'description\')].value'));
   		
   		$categories_name = mica_opal_jsonPath($item, 'categories.*.name');
-  		
+  		$categories_label = mica_opal_jsonPath($item, 'categories.*.attributes[?(@[\'name\']==\'label\')].value');
+			$categories_missing = mica_opal_jsonPath($item, 'categories.*.isMissing');
+			
   		$query = new EntityFieldQuery();
   		$result = $query->entityCondition('entity_type', 'node')
         ->entityCondition('bundle', 'variable')
@@ -278,30 +281,22 @@ function mica_datasets_harmonization_refresh_form_submit($form, &$form_state){
   			  'menu' => '',
 			  	'field_label' => $label,
   		  	'field_value_type' => $value_type,
-  			  'field_repeatable' =>  $repeatable,
   			  'field_dataset' => $dataset_nid,
-					'field_position' => $i++,
   			);
-
-  			// categories
-  			//          
-  			//          'categories.*.attributes[?(@[\'name\']==\'label\')].value',
-  			//          'categories.*.isMissing',
   
   			$variable = entity_property_values_create_entity('node', $infos);
-  			$variable->save();
+				$variable = entity_load_single('node', $variable->nid->value());
+				$wrapper = entity_metadata_wrapper('node', $variable);
 				
   		}else{
   		  $variable = entity_load_single('node', array_shift(array_keys($result['node'])));
   		  $wrapper = entity_metadata_wrapper('node', $variable);
-  		  $wrapper->field_label->set($label);
-  		  $wrapper->field_repeatable->set($repeatable);
   		  $wrapper->field_value_type->set($value_type);
-				$wrapper->field_position->set($i++);
-  		  $wrapper->save();
   		}
   		
-  		//debug($variable->field_variable_study_var_att[$variable->language], null, true);
+			$wrapper->field_repeatable->set($repeatable);
+			$wrapper->field_position->set($i++);
+			
   		// Update study_variable_attributes
   		foreach ($variable->field_variable_study_var_att[$variable->language] as $study_variable_attributes){
   		  $sva = entity_load_single('node', $study_variable_attributes['nid']);
@@ -317,18 +312,20 @@ function mica_datasets_harmonization_refresh_form_submit($form, &$form_state){
   		}
   		
   		// Update categories
-  		//if (!empty($categories_name)){
-  		 // for ($i = 0; $i < $categories_name.lenght; $i++) {
-  		 //   $wrapper->field_variable_categories[$i]->name->set();
-  		  //}
-  		  //$wrapper->field_variable_categories;
-//     		if (!empty($wrapper->field_variable_categories)){
-//     			foreach($wrapper->field_variable_categories as $category){
-//     				debug($category->name->value(), null, true);
-//     				break;
-//     			}
-//     		}
-  		//}
+  		if (!empty($categories_name)){
+				// clear existing categories
+				$size = count($wrapper->field_variable_categories->value());
+				for ($i = 0; $i < $size; $i++){
+					unset($wrapper->field_variable_categories[$i]);
+				}
+				
+  		  for ($i = 0; $i < count($categories_name); $i++) {
+  		    $wrapper->field_variable_categories[$i]->name->set($categories_name[$i]);
+					$wrapper->field_variable_categories[$i]->label->set($categories_label[$i]);
+					$wrapper->field_variable_categories[$i]->missing->set($categories_missing[$i]?'1':'0');
+  		  }
+  		}
+			$wrapper->save();
   	}
   }
   else {
