@@ -167,7 +167,7 @@ function mica_studies_default_search_api_index() {
         "field_recruitment" : { "type" : "list\\u003Cstring\\u003E" },
         "field_recruitment_other" : { "type" : "text" },
         "field_recruitment_other_sp" : { "type" : "text" },
-        "field_recruitment_sources" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_recruitment_sources" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_recruitment_supp_info" : { "type" : "text" },
         "field_samples_man_other_sp" : { "type" : "text" },
         "field_samples_supp_info" : { "type" : "text" },
@@ -203,7 +203,7 @@ function mica_studies_default_search_api_index() {
         "field_investigators:field_postal_code" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_state" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_telephone" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_investigators:field_daco" : { "type" : "list\\u003Cboolean\\u003E" },
+        "field_investigators:field_daco" : { "type" : "list\\u003Cboolean\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
@@ -212,15 +212,7 @@ function mica_studies_default_search_api_index() {
           "settings" : { "default" : "0", "bundles" : { "study" : "study" } }
         },
         "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_hierarchy" : {
-          "status" : 1,
-          "weight" : "0",
-          "settings" : { "fields" : {
-              "field_recruitment_sources:parent" : "field_recruitment_sources:parent",
-              "field_recruitment_sources:parents_all" : "field_recruitment_sources:parents_all"
-            }
-          }
-        },
+        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_add_aggregation" : {
           "status" : 1,
           "weight" : "0",
