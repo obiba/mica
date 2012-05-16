@@ -2285,51 +2285,19 @@ body.node-type-dataset .pane-dataset-variables {
 .header_center{
   margin:0px auto;
 }
-.harmonization-complete{
-  background-image:url('../images/accept.png');
-  background-repeat:no-repeat;
-  min-width:16px;
-  min-height:16px;
-  margin-top: 0px;
-  margin-left:10px;
+
+div.tipsy *{
+  margin-top:-8px;
 }
-.harmonization-undetermined{
-  background-image:url('../images/bullet_black.png');
-  background-repeat:no-repeat;
-  min-width:16px;
-  min-height:16px;
-  margin-top: 0px;
-  margin-left:10px;
-}
-.harmonization-impossible{
-  background-image:url('../images/exclamation.png');
-  background-repeat:no-repeat;
-  min-width:16px;
-  min-height:16px;
-  margin-top: 0px;
-  margin-left:10px;
-}
-.harmonization-not_available{
+.harmonization-study-title{
 	position:relative;
-	background-image:url('../images/bullet_black.png');
+	display:inline;
+}
+.harmonization-study-icon{
+	display:inline;
+  background-image:url('../images/cog_get.png');
   background-repeat:no-repeat;
-  min-width:16px;
-  min-height:16px;
-  margin-top: 0px;
   margin-left:10px;
-  z-index:1000;
-}
-.harmonization-complete.tipsy{
-	margin-top:-8px;
-}
-.harmonization-undetermined.tipsy{
-  margin-top:-8px;
-}
-.harmonization-impossible.tipsy{
-  margin-top:-8px;
-}
-.harmonization-not_available.tipsy{
-  margin-top:-8px;
 }
 .variable_category-missing{
   background-image:url('../images/tick.png');
@@ -2341,10 +2309,10 @@ body.node-type-dataset .pane-dataset-variables {
 .tooltip_content{
 	display:none;
 }
-.tipsy { padding-right: 5px; padding-left: 5px; font-size: 10px; position: absolute; z-index: 100;}
+.tipsy { padding-right: 5px; padding-left: 5px; font-size: 10px; position: absolute; z-index:0}
 .tipsy-inner { padding: 5px 8px 4px 8px; background-color: #F4F4F4; color: black; max-width: 400px; text-align: left; }
 .tipsy-inner { border-radius: 3px; -moz-border-radius:3px; -webkit-border-radius:3px;}
-.tipsy-arrow { position: absolute; background: url('../images/tipsy.gif') no-repeat top left; width: 9px; height: 5px;}
+.tipsy-arrow { position: inherit; background: url('../images/tipsy.gif') no-repeat top left; width: 9px; height: 5px;}
 .tipsy-n .tipsy-arrow { top: 0; left: 50%; margin-left: -4px; }
 .tipsy-nw .tipsy-arrow { top: 0; left: 10px; }
 .tipsy-ne .tipsy-arrow { top: 0; right: 10px; }
