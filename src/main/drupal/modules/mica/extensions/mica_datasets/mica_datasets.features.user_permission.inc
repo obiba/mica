@@ -18,7 +18,6 @@ function mica_datasets_user_default_permissions() {
       1 => 'consortium administrator',
       2 => 'dataset administrator',
       3 => 'dataset reviewer',
-      4 => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -49,7 +48,7 @@ function mica_datasets_user_default_permissions() {
       0 => 'administrator',
       1 => 'consortium administrator',
       2 => 'dataset administrator',
-      3 => 'study administrator',
+      3 => 'dataset reviewer',
     ),
     'module' => 'node',
   );
@@ -60,6 +59,7 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
+      2 => 'dataset reviewer',
     ),
     'module' => 'node',
   );
@@ -79,6 +79,7 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
+      2 => 'dataset reviewer',
     ),
     'module' => 'node',
   );
@@ -89,7 +90,8 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
+      2 => 'dataset administrator',
+      3 => 'dataset reviewer',
     ),
     'module' => 'node',
   );
@@ -110,7 +112,7 @@ function mica_datasets_user_default_permissions() {
       0 => 'administrator',
       1 => 'consortium administrator',
       2 => 'dataset administrator',
-      3 => 'study administrator',
+      3 => 'dataset reviewer',
     ),
     'module' => 'node',
   );
@@ -141,6 +143,7 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
+      2 => 'dataset reviewer',
     ),
     'module' => 'node',
   );
@@ -152,7 +155,6 @@ function mica_datasets_user_default_permissions() {
       0 => 'administrator',
       1 => 'consortium administrator',
       2 => 'dataset administrator',
-      3 => 'study administrator',
     ),
     'module' => 'mica_datasets',
   );
@@ -165,7 +167,6 @@ function mica_datasets_user_default_permissions() {
       1 => 'consortium administrator',
       2 => 'dataset administrator',
       3 => 'dataset reviewer',
-      4 => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -186,7 +187,7 @@ function mica_datasets_user_default_permissions() {
       0 => 'administrator',
       1 => 'consortium administrator',
       2 => 'dataset administrator',
-      3 => 'study administrator',
+      3 => 'dataset reviewer',
     ),
     'module' => 'node',
   );
@@ -198,7 +199,7 @@ function mica_datasets_user_default_permissions() {
       0 => 'administrator',
       1 => 'consortium administrator',
       2 => 'dataset administrator',
-      3 => 'study administrator',
+      3 => 'dataset reviewer',
     ),
     'module' => 'mica_datasets',
   );
@@ -211,6 +212,36 @@ function mica_datasets_user_default_permissions() {
       1 => 'authenticated user',
     ),
     'module' => 'mica_datasets',
+  );
+
+  // Exported permission: view any unpublished dataset content.
+  $permissions['view any unpublished dataset content'] = array(
+    'name' => 'view any unpublished dataset content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'dataset reviewer',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: view any unpublished study_variable_attributes content.
+  $permissions['view any unpublished study_variable_attributes content'] = array(
+    'name' => 'view any unpublished study_variable_attributes content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'dataset reviewer',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: view any unpublished variable content.
+  $permissions['view any unpublished variable content'] = array(
+    'name' => 'view any unpublished variable content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'dataset reviewer',
+    ),
+    'module' => 'view_unpublished',
   );
 
   return $permissions;

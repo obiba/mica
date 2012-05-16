@@ -58,8 +58,10 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      2 => 'dataset administrator',
+      3 => 'dataset reviewer',
+      4 => 'study administrator',
+      5 => 'study reviewer',
     ),
     'module' => 'toolbar',
   );
@@ -70,8 +72,10 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      2 => 'dataset administrator',
+      3 => 'dataset reviewer',
+      4 => 'study administrator',
+      5 => 'study reviewer',
     ),
     'module' => 'workbench',
   );
@@ -321,6 +325,15 @@ function mica_studies_user_default_permissions() {
       1 => 'consortium administrator',
       2 => 'study administrator',
       3 => 'study reviewer',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: create field_questionnaires.
+  $permissions['create field_questionnaires'] = array(
+    'name' => 'create field_questionnaires',
+    'roles' => array(
+      0 => 'administrator',
     ),
     'module' => 'field_permissions',
   );
@@ -614,6 +627,15 @@ function mica_studies_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: edit field_questionnaires.
+  $permissions['edit field_questionnaires'] = array(
+    'name' => 'edit field_questionnaires',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: edit own article content.
   $permissions['edit own article content'] = array(
     'name' => 'edit own article content',
@@ -718,6 +740,15 @@ function mica_studies_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: edit own field_questionnaires.
+  $permissions['edit own field_questionnaires'] = array(
+    'name' => 'edit own field_questionnaires',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: edit own page content.
   $permissions['edit own page content'] = array(
     'name' => 'edit own page content',
@@ -791,8 +822,10 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      2 => 'dataset administrator',
+      3 => 'dataset reviewer',
+      4 => 'study administrator',
+      5 => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -803,7 +836,8 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study reviewer',
+      2 => 'dataset reviewer',
+      3 => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -814,7 +848,8 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study reviewer',
+      2 => 'dataset reviewer',
+      3 => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -914,8 +949,10 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      2 => 'dataset administrator',
+      3 => 'dataset reviewer',
+      4 => 'study administrator',
+      5 => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -926,8 +963,10 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      2 => 'dataset administrator',
+      3 => 'dataset reviewer',
+      4 => 'study administrator',
+      5 => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -938,7 +977,8 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study reviewer',
+      2 => 'dataset reviewer',
+      3 => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -1049,14 +1089,25 @@ function mica_studies_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: view field_questionnaires.
+  $permissions['view field_questionnaires'] = array(
+    'name' => 'view field_questionnaires',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: view moderation history.
   $permissions['view moderation history'] = array(
     'name' => 'view moderation history',
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      2 => 'dataset administrator',
+      3 => 'dataset reviewer',
+      4 => 'study administrator',
+      5 => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -1067,8 +1118,10 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      2 => 'dataset administrator',
+      3 => 'dataset reviewer',
+      4 => 'study administrator',
+      5 => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -1141,6 +1194,15 @@ function mica_studies_user_default_permissions() {
       1 => 'consortium administrator',
       2 => 'study administrator',
       3 => 'study reviewer',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: view own field_questionnaires.
+  $permissions['view own field_questionnaires'] = array(
+    'name' => 'view own field_questionnaires',
+    'roles' => array(
+      0 => 'administrator',
     ),
     'module' => 'field_permissions',
   );
