@@ -255,7 +255,20 @@ function _mica_datasets_remove_study_to_dataset(&$study, &$dataset) {
       break;
     }
   }
-  // No need to update the dataset since we have the corresponding node reference module
+
+  //remove svas
+  $dataset_wrapper = entity_metadata_wrapper('node', $dataset->nid);
+  $study_wrapper = entity_metadata_wrapper('node', $study->nid);
+  $variables = $dataset_wrapper->field_dataset_variables;
+  foreach ($variables as $variable) {
+    foreach ($variable->field_variable_study_var_att as $sva) {
+      if ($sva->field_sva_study->nid->value() === $study_wrapper->nid->value()) {
+        $sva->delete();
+        _mica_datasets_unlink_sva_of_entity($variable, $sva, 'field_variable_study_var_att');
+      }
+    }
+  }
+// No need to update the dataset since we have the corresponding node reference module
 }
 
 //

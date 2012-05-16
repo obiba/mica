@@ -1347,15 +1347,45 @@ function mica_datasets_node_delete($node) {
     case 'study':
       $study = entity_metadata_wrapper('node', $node);
       foreach ($study->field_study_study_variable_att as $sva) {
+        _mica_datasets_unlink_sva_of_entity($sva->field_sva_variable, $sva, 'field_variable_study_var_att');
         $sva->delete();
       }
       break;
     case 'variable':
       $variable = entity_metadata_wrapper('node', $node);
       foreach ($variable->field_variable_study_var_att as $sva) {
+        _mica_datasets_unlink_sva_of_entity($sva->field_sva_study, $sva, 'field_study_study_variable_att');
         $sva->delete();
       }
       break;
+  }
+}
+
+/**
+ * Delete the oriented link between a study (or variable) to a sva
+ * (not the one between a sva to a study (or variable))
+ *
+ * @param $entity
+ * @param $sva
+ * @param $sva_field_name
+ */
+function _mica_datasets_unlink_sva_of_entity($entity, $sva, $sva_field_name) {
+  $index_to_delete = NULL;
+  foreach ($entity->$sva_field_name as $key => $meta_value) {
+    $value = $meta_value->value();
+    if (isset($value)) {
+      if ($value->nid === $sva->nid->value()) {
+        $index_to_delete = $key;
+        break;
+      }
+    }
+  }
+
+  if (isset($index_to_delete)) {
+    $svas = $entity->$sva_field_name->value();
+    unset($svas[$index_to_delete]);
+    $entity->$sva_field_name->set($svas);
+    $entity->save();
   }
 }
 
