@@ -387,7 +387,7 @@ function _mica_studies_study_form_alter(&$form, &$form_state, $form_id) {
   _mica_add_dependent_field_checked($form, 'field_access_other', 'field_access_other_sp', '1');
   _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
   _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
-  _mica_add_dependent_field_checked($form, 'field_recruitment_procedures', 'field_recruitment_other', 'other');
+  _mica_add_dependent_field_checked($form, 'field_recruitment_sources', 'field_recruitment_other', '9');
   _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_data_sources_sp', 'others');
 }
 
@@ -709,7 +709,7 @@ function _mica_studies_form_validate($form, &$form_state) {
   _mica_studies_form_validate_field($form, $form_state, 'field_access_other', 'field_access_other_sp', '1');
   _mica_studies_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
   _mica_studies_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
-  _mica_studies_form_validate_field($form, $form_state, 'field_recruitment_procedures', 'field_recruitment_other', 'other');
+  _mica_studies_form_validate_field($form, $form_state, 'field_recruitment_sources', 'field_recruitment_other', '9');
   _mica_studies_form_validate_field($form, $form_state, 'field_data_sources', 'field_data_sources_sp', 'others');
 }
 
@@ -721,10 +721,17 @@ function _mica_studies_form_validate_field($form, &$form_state, $dependee, $depe
     $flangs = array_keys($form_state['values'][$dependee]);
     $flang = $flangs[0];
     $values = array();
+    debug($form_state['values'][$dependee][$flang]);
     foreach ($form_state['values'][$dependee][$flang] as $value) {
-      $values[] = $value['value'];
+      if (array_key_exists('value', $value)){
+        $values[] = $value['value'];  
+      }
+      else if (array_key_exists('tid', $value)){
+        $values[] = $value['tid'];
+      }
+      
     }
-
+    
     if (in_array($selection, $values) == FALSE) {
       $empty_value = array();
       $lgs = array_keys($form_state['values'][$dependent]);
