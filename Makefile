@@ -1,6 +1,6 @@
 #
 # Mica Makefile
-# Requires drush 4+ to be installed: http://drush.ws/
+# Requires drush 5+ to be installed: http://drush.ws/
 #
 
 version=1.3-dev
