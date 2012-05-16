@@ -268,7 +268,7 @@ projects[tipsy][version] = 1.0-rc1
 projects[tipsy][type] = module
 projects[tipsy][patch][1199546] = http://drupal.org/files/1199546_tipsy_multiple-tooltips.patch
 
-projects[token][version] = 1.0
+projects[token][version] = 1.1
 projects[token][type] = module
 
 projects[variable][version] = 1.1

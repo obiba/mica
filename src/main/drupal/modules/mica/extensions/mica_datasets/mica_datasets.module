@@ -1207,7 +1207,7 @@ function mica_datasets_node_view_alter(&$build) {
         $study_wrapper = entity_metadata_wrapper('node', $sva_wrapper->field_sva_study->value()->nid);
         
         $name = $study_wrapper->field_acroym->value() ? $study_wrapper->title->value() : $study_wrapper->field_acroym->value();
-        $status = "<img src=\"".constant("mica_harmonization_{$status}")."\" title='$status_label'></div>";
+        $status = "<img src=\"" . constant("mica_harmonization_{$status}") . "\" title=\"$status_label\"></div>";
 
         $option = array(
           'study' => $name,
@@ -1579,14 +1579,14 @@ function _mica_datasets_set_variable_position(&$variable) {
 
 function _mica_datasets_add_study_variable_attributes_to(&$variable) {
   $wrapper_variable = entity_metadata_wrapper('node', $variable);
-  $wrapper_dataset = entity_metadata_wrapper('node', $wrapper_variable->field_dataset->nid->value());
-  if ($wrapper_dataset->field_dataset_studies->count() != 0) {
-    $studies = array();
-    foreach ($wrapper_dataset->field_dataset_studies as $wrapper_study) {
-      array_push($studies, $wrapper_study);
+    $wrapper_dataset = entity_metadata_wrapper('node', $wrapper_variable->field_dataset->nid->value());
+    if ($wrapper_dataset->field_dataset_studies->count() != 0) {
+      $studies = array();
+      foreach ($wrapper_dataset->field_dataset_studies as $wrapper_study) {
+        array_push($studies, $wrapper_study);
+      }
+      _mica_datasets_create_study_variable_attributes_for_variable($wrapper_variable, $studies);
     }
-    _mica_datasets_create_study_variable_attributes_for_variable($wrapper_variable, $studies);
-  }
 }
 
 function _mica_datasets_create_study_variable_attributes_for_variable(&$variable, $studies) {
