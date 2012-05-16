@@ -829,7 +829,7 @@ function mica_datasets_views_default_views() {
   $view = new view;
   $view->name = 'variable_csv_export';
   $view->description = 'Export of all Variables in CSV';
-  $view->tag = 'csv';
+  $view->tag = 'csv, dataset';
   $view->base_table = 'node';
   $view->human_name = 'Variable CSV Export';
   $view->core = 7;
@@ -1500,7 +1500,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_variable_categories']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_variable_categories']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_variable_categories']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories']['alter']['trim_whitespace'] = 1;
   $handler->display->display_options['fields']['field_variable_categories']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_variable_categories']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_variable_categories']['alter']['ellipsis'] = 1;
@@ -1519,7 +1519,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_variable_categories']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_variable_categories']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_variable_categories']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories']['separator'] = '| ';
+  $handler->display->display_options['fields']['field_variable_categories']['separator'] = '|';
   $handler->display->display_options['fields']['field_variable_categories']['field_api_classes'] = 0;
   /* Field: Content: Categories */
   $handler->display->display_options['fields']['field_variable_categories_1']['id'] = 'field_variable_categories_1';
@@ -1532,7 +1532,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_variable_categories_1']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_variable_categories_1']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_variable_categories_1']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_1']['alter']['trim_whitespace'] = 1;
   $handler->display->display_options['fields']['field_variable_categories_1']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_variable_categories_1']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_variable_categories_1']['alter']['ellipsis'] = 1;
@@ -1564,7 +1564,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_variable_categories_2']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_variable_categories_2']['alter']['external'] = 0;
   $handler->display->display_options['fields']['field_variable_categories_2']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_variable_categories_2']['alter']['trim_whitespace'] = 1;
   $handler->display->display_options['fields']['field_variable_categories_2']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_variable_categories_2']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_variable_categories_2']['alter']['ellipsis'] = 1;
@@ -1590,13 +1590,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
