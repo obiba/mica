@@ -721,7 +721,6 @@ function _mica_studies_form_validate_field($form, &$form_state, $dependee, $depe
     $flangs = array_keys($form_state['values'][$dependee]);
     $flang = $flangs[0];
     $values = array();
-    debug($form_state['values'][$dependee][$flang]);
     foreach ($form_state['values'][$dependee][$flang] as $value) {
       if (array_key_exists('value', $value)){
         $values[] = $value['value'];  
