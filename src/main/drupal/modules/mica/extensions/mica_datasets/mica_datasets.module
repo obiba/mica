@@ -1646,6 +1646,8 @@ function _mica_datasets_create_study_variable_attribute(&$wrapper_variable, &$wr
  */
 function _mica_study_variables_add_reverse_link($svas, $new_sva) {
   // recreate list of study variable attribute nid each time
+  // if $svas is not empty, it contains sva instance of nid
+  // and we can only add a nid in this array...then we 'recreate' this nid's array
   $svas_nids = array();
   if (isset($svas)) {
     foreach ($svas as $sva) {
