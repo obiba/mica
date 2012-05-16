@@ -1619,7 +1619,6 @@ function _mica_datasets_create_study_variable_attribute(&$wrapper_variable, &$wr
     'field_sva_study' => $wrapper_study->nid->value(),
     'field_sva_variable' => $wrapper_variable->nid->value(),
     'uid' => $user->uid,
-    'status' => $wrapper_study->status->value()
   );
   $new_study_variable_attributes = entity_property_values_create_entity('node', $infos);
   $saved = $new_study_variable_attributes->save();
