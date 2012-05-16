@@ -43,7 +43,7 @@ function mica_datasets_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'twocol_stacked';
+  $display->layout = 'onecol';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -56,102 +56,12 @@ function mica_datasets_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
     $pane->pid = 'new-1';
-    $pane->panel = 'left';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_dataset_studies';
-    $pane->shown = TRUE;
-    $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'php',
-          'settings' => array(
-            'description' => 'Has only one study',
-            'php' => '$values = array_values($contexts);
-$dataset_context = $values[0];
-$dataset = $dataset_context->data;
-$has_one_study = isset($dataset->field_dataset_studies[$dataset->language]) && count($dataset->field_dataset_studies[$dataset->language]) == 1;
-return $has_one_study;',
-          ),
-          'not' => FALSE,
-        ),
-      ),
-    );
-    $pane->configuration = array(
-      'label' => 'title',
-      'formatter' => 'node_reference_node',
-      'formatter_settings' => array(
-        'node_reference_view_mode' => 'summary_left_area',
-      ),
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 1,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'dataset_study_summary_details',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['left'][0] = 'new-1';
-    $pane = new stdClass();
-    $pane->pid = 'new-2';
-    $pane->panel = 'right';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_dataset_studies';
-    $pane->shown = TRUE;
-    $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'php',
-          'settings' => array(
-            'description' => 'Has only one study',
-            'php' => '$values = array_values($contexts);
-$dataset_context = $values[0];
-$dataset = $dataset_context->data;
-$has_one_study = isset($dataset->field_dataset_studies[$dataset->language]) && count($dataset->field_dataset_studies[$dataset->language]) == 1;
-return $has_one_study;',
-          ),
-          'not' => FALSE,
-        ),
-      ),
-    );
-    $pane->configuration = array(
-      'label' => 'title',
-      'formatter' => 'node_reference_node',
-      'formatter_settings' => array(
-        'node_reference_view_mode' => 'summary_right_area',
-      ),
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 1,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => 'dataset_study_summary_details',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['right'][0] = 'new-2';
-    $pane = new stdClass();
-    $pane->pid = 'new-3';
-    $pane->panel = 'top';
+    $pane->panel = 'middle';
     $pane->type = 'node_content';
     $pane->subtype = 'node_content';
     $pane->shown = TRUE;
@@ -175,29 +85,16 @@ return $has_one_study;',
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['top'][0] = 'new-3';
+    $display->content['new-1'] = $pane;
+    $display->panels['middle'][0] = 'new-1';
     $pane = new stdClass();
-    $pane->pid = 'new-4';
-    $pane->panel = 'top';
+    $pane->pid = 'new-2';
+    $pane->panel = 'middle';
     $pane->type = 'views';
     $pane->subtype = 'dataset_studies';
     $pane->shown = TRUE;
     $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'php',
-          'settings' => array(
-            'description' => 'Has multiple studies',
-            'php' => '$values = array_values($contexts);
-$dataset_context = $values[0];
-$dataset = $dataset_context->data;
-$has_multiple_studies = isset($dataset->field_dataset_studies[$dataset->language]) && count($dataset->field_dataset_studies[$dataset->language]) > 1;
-return $has_multiple_studies;',
-          ),
-          'not' => FALSE,
-        ),
-      ),
+      'plugins' => array(),
     );
     $pane->configuration = array(
       'override_pager_settings' => 0,
@@ -226,52 +123,10 @@ return $has_multiple_studies;',
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['top'][1] = 'new-4';
-    $pane = new stdClass();
-    $pane->pid = 'new-5';
-    $pane->panel = 'top';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_dataset_studies';
-    $pane->shown = TRUE;
-    $pane->access = array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'php',
-          'settings' => array(
-            'description' => 'Has only one study',
-            'php' => '$values = array_values($contexts);
-$dataset_context = $values[0];
-$dataset = $dataset_context->data;
-$has_one_study = isset($dataset->field_dataset_studies[$dataset->language]) && count($dataset->field_dataset_studies[$dataset->language]) == 1;
-return $has_one_study;',
-          ),
-          'not' => FALSE,
-        ),
-      ),
-    );
-    $pane->configuration = array(
-      'label' => 'title',
-      'formatter' => 'node_reference_node',
-      'formatter_settings' => array(
-        'node_reference_view_mode' => 'summary_banner_area',
-      ),
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 1,
-      'override_title_text' => 'Study',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['top'][2] = 'new-5';
-  $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = '0';
+    $display->content['new-2'] = $pane;
+    $display->panels['middle'][1] = 'new-2';
+  $display->hide_title = PANELS_TITLE_PANE;
+  $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
   $export['node_view_panel_context_4'] = $handler;
 
@@ -324,7 +179,7 @@ return $has_one_study;',
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-3';
     $pane->panel = 'bottom';
     $pane->type = 'node_content';
     $pane->subtype = 'node_content';
@@ -349,10 +204,10 @@ return $has_one_study;',
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['bottom'][0] = 'new-6';
+    $display->content['new-3'] = $pane;
+    $display->panels['bottom'][0] = 'new-3';
     $pane = new stdClass();
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-4';
     $pane->panel = 'left';
     $pane->type = 'node_content';
     $pane->subtype = 'node_content';
@@ -377,10 +232,10 @@ return $has_one_study;',
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['left'][0] = 'new-7';
+    $display->content['new-4'] = $pane;
+    $display->panels['left'][0] = 'new-4';
     $pane = new stdClass();
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'node_content';
     $pane->subtype = 'node_content';
@@ -405,10 +260,10 @@ return $has_one_study;',
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-8'] = $pane;
-    $display->panels['right'][0] = 'new-8';
+    $display->content['new-5'] = $pane;
+    $display->panels['right'][0] = 'new-5';
     $pane = new stdClass();
-    $pane->pid = 'new-9';
+    $pane->pid = 'new-6';
     $pane->panel = 'top';
     $pane->type = 'node_content';
     $pane->subtype = 'node_content';
@@ -433,10 +288,10 @@ return $has_one_study;',
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-9'] = $pane;
-    $display->panels['top'][0] = 'new-9';
+    $display->content['new-6'] = $pane;
+    $display->panels['top'][0] = 'new-6';
   $display->hide_title = PANELS_TITLE_PANE;
-  $display->title_pane = 'new-7';
+  $display->title_pane = 'new-4';
   $handler->conf['display'] = $display;
   $export['node_view_panel_context_5'] = $handler;
 
