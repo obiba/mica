@@ -1203,9 +1203,9 @@ function mica_datasets_node_view_alter(&$build) {
         $script = $sva_wrapper->field_sva_script->value() ? '' : $sva_wrapper->field_sva_script->value();
         $script = '<code class=\'prettyprint\'>' . check_markup(truncate_utf8($script, 400, FALSE)) . '</code>';
         $comment = $sva_wrapper->field_sva_comment->value() ? '' : $sva_wrapper->field_sva_comment->value();
-        
+
         $study_wrapper = entity_metadata_wrapper('node', $sva_wrapper->field_sva_study->value()->nid);
-        
+
         $name = $study_wrapper->field_acroym->value() ? $study_wrapper->title->value() : $study_wrapper->field_acroym->value();
         $status = "<img src=\"" . constant("mica_harmonization_{$status}") . "\" title=\"$status_label\"></div>";
 
@@ -1217,7 +1217,7 @@ function mica_datasets_node_view_alter(&$build) {
         );
 
         $sva = node_load($sva_wrapper->nid->value());
-        if (node_access('view',  $sva)) {
+        if (node_access('view', $sva)) {
           $header['view'] = '';
 
           $option['view'] = "<a href='" . url('node/' . $sva_wrapper->nid->value()) . "'>" . t('View') . "</a>";
@@ -1348,15 +1348,28 @@ function mica_datasets_node_delete($node) {
     case 'study':
       $study = entity_metadata_wrapper('node', $node);
       foreach ($study->field_study_study_variable_att as $sva) {
-        _mica_datasets_unlink_sva_of_entity($sva->field_sva_variable, $sva, 'field_variable_study_var_att');
-        $sva->delete();
+        if (empty($sva->field_sva_variable) == FALSE) {
+          _mica_datasets_unlink_sva_of_entity($sva->field_sva_variable, $sva, 'field_variable_study_var_att');
+          $sva->delete();
+        }
       }
       break;
     case 'variable':
       $variable = entity_metadata_wrapper('node', $node);
       foreach ($variable->field_variable_study_var_att as $sva) {
+        if (empty($sva->field_sva_study) == FALSE) {
+          _mica_datasets_unlink_sva_of_entity($sva->field_sva_study, $sva, 'field_study_study_variable_att');
+          $sva->delete();
+        }
+      }
+      break;
+    case 'study_variable_attributes':
+      $sva = entity_metadata_wrapper('node', $node);
+      if (empty($sva->field_sva_variable) == FALSE) {
+        _mica_datasets_unlink_sva_of_entity($sva->field_sva_variable, $sva, 'field_variable_study_var_att');
+      }
+      if (empty($sva->field_sva_study) == FALSE) {
         _mica_datasets_unlink_sva_of_entity($sva->field_sva_study, $sva, 'field_study_study_variable_att');
-        $sva->delete();
       }
       break;
   }
@@ -1404,8 +1417,8 @@ function mica_datasets_node_validate($node, $form, &$form_state) {
 
 function _mica_datasets_create_dataset_menu($node) {
   $parent_menu = db_query(
-      "SELECT * FROM {menu_links} WHERE link_title = :title", array(':title' => 'Datasets')
-    )
+    "SELECT * FROM {menu_links} WHERE link_title = :title", array(':title' => 'Datasets')
+  )
     ->fetchObject();
   if (!empty($parent_menu)) {
     $menu = $node->menu;
@@ -1434,12 +1447,12 @@ function _mica_datasets_create_variable_menu($node) {
   $dataset_nid = $wrapper->field_dataset->nid->value();
   $dataset_title = $wrapper->field_dataset->title->value();
   $parent_menu = db_query(
-      "SELECT * FROM {menu_links} WHERE link_title = :title AND link_path = :link_path",
-      array(
-        ':title' => $dataset_title,
-        ':link_path' => 'node/' . $dataset_nid,
-      )
+    "SELECT * FROM {menu_links} WHERE link_title = :title AND link_path = :link_path",
+    array(
+      ':title' => $dataset_title,
+      ':link_path' => 'node/' . $dataset_nid,
     )
+  )
     ->fetchObject();
   if (!empty($parent_menu)) {
     $menu = $node->menu;
@@ -1579,14 +1592,14 @@ function _mica_datasets_set_variable_position(&$variable) {
 
 function _mica_datasets_add_study_variable_attributes_to(&$variable) {
   $wrapper_variable = entity_metadata_wrapper('node', $variable);
-    $wrapper_dataset = entity_metadata_wrapper('node', $wrapper_variable->field_dataset->nid->value());
-    if ($wrapper_dataset->field_dataset_studies->count() != 0) {
-      $studies = array();
-      foreach ($wrapper_dataset->field_dataset_studies as $wrapper_study) {
-        array_push($studies, $wrapper_study);
-      }
-      _mica_datasets_create_study_variable_attributes_for_variable($wrapper_variable, $studies);
+  $wrapper_dataset = entity_metadata_wrapper('node', $wrapper_variable->field_dataset->nid->value());
+  if ($wrapper_dataset->field_dataset_studies->count() != 0) {
+    $studies = array();
+    foreach ($wrapper_dataset->field_dataset_studies as $wrapper_study) {
+      array_push($studies, $wrapper_study);
     }
+    _mica_datasets_create_study_variable_attributes_for_variable($wrapper_variable, $studies);
+  }
 }
 
 function _mica_datasets_create_study_variable_attributes_for_variable(&$variable, $studies) {
@@ -1682,20 +1695,23 @@ function mica_datasets_node_view($node, $view_mode) {
       );
     }
   }
-  else if ($node->type === 'variable') {
+  else {
+    if ($node->type === 'variable') {
 
-    // Show moderation state messages if we're on a node page.
-    if (node_is_page($node) && $view_mode === 'banner_area' && empty($node->in_preview)) {
-      workbench_moderation_messages('view', $node);
-    }
+      // Show moderation state messages if we're on a node page.
+      if (node_is_page($node) && $view_mode === 'banner_area' && empty($node->in_preview)) {
+        workbench_moderation_messages('view', $node);
+      }
 
-    // Replace "Missing" by an icon
-    if (!(empty($node->content['field_variable_categories']))
-      && !empty($node->content['field_variable_categories']['#object']->field_variable_categories)) {
-      foreach ($node->content['field_variable_categories'][0]['#rows'] as &$row) {
-        if (!empty($row['missing'])) {
-          // replace with div icon
-          $row['missing'] = "<div class='variable_category-missing' title='Missing'></div>";
+      // Replace "Missing" by an icon
+      if (!(empty($node->content['field_variable_categories']))
+        && !empty($node->content['field_variable_categories']['#object']->field_variable_categories)
+      ) {
+        foreach ($node->content['field_variable_categories'][0]['#rows'] as &$row) {
+          if (!empty($row['missing'])) {
+            // replace with div icon
+            $row['missing'] = "<div class='variable_category-missing' title='Missing'></div>";
+          }
         }
       }
     }
