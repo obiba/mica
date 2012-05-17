@@ -47,8 +47,11 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
     $study_wrapper = entity_metadata_wrapper('node', $study);
     $acronym = $study_wrapper->field_acroym->value();
     $name = !empty($acronym) ? $study_wrapper->field_acroym->value() : $study_wrapper->title->value();
-    $call = drupal_render(drupal_get_form('mica_datasets_harmonization_refresh_form', $wrapper->nid->value(), $study_wrapper->nid->value()));
-    $header[] = "<div class='harmonization-study-title'>$name</div><br>".$call;//"<div class='harmonization-study-icon'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>";
+    
+    // See http://www.jide.fr/english/using-ajax-in-drupal-7-outside-of-form-api
+    $ajax_link = l("<img src='".MICA_HARMONIZATION_REFRESH."' class='harmonization-refresh-icon' title='Refresh harmonization of $name'/>", 'mica_datasets_harmonization/ajax/nojs/' . $wrapper->nid->value() . '/' .$study_wrapper->nid->value(), array('html' => TRUE, 'attributes' => array('class' => array('use-ajax'))));
+    
+    $header[] = "<div class='harmonization-study-title'>$name$ajax_link</div><br>";//"<div class='harmonization-study-icon'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>";
 
     $header_ids[$study_wrapper->nid->value()] = $name;
   }
@@ -169,12 +172,14 @@ function mica_datasets_harmonization_legend_form($form, $form_state) {
 function mica_datasets_harmonization_refresh_form($form, &$form_state, $dataset_nid, $study_nid) {  
   $connector = mica_dataset_connector_query($dataset_nid, $study_nid);
   if ($connector){
+    // See http://www.jide.fr/english/using-ajax-in-drupal-7-outside-of-form-api
+    drupal_add_library('system', 'drupal.ajax');
+    drupal_add_library('system', 'jquery.form');
+    $ajax_link = l("<img src='".MICA_HARMONIZATION_REFRESH."' />", 'mica_datasets_harmonization/ajax/nojs/' . $dataset_nid . '/' .$study_nid, array('html' => TRUE, 'attributes' => array('class' => array('use-ajax'))));
+    
     $form['refresh'] = array(
-      '#type' => 'image_button',
-      '#src' => MICA_HARMONIZATION_REFRESH,
-      '#ajax' => array(
-        'callback' => 'mica_datasets_harmonization_refresh_callback',
-      ),
+      '#type' => 'markup',
+      '#markup' => $ajax_link//,
     );
     $form['study_nid'] = array(
       '#type' => 'hidden',
@@ -192,10 +197,11 @@ function mica_datasets_harmonization_refresh_form($form, &$form_state, $dataset_
 }
 
 
-function mica_datasets_harmonization_refresh_callback($form, &$form_state){
-
-  $dataset_nid = $form['dataset_nid']['#value'];
-  $study_nid = $form['study_nid']['#value'];
+function mica_datasets_harmonization_refresh_callback($type = 'ajax', $dataset_nid, $study_nid){
+debug('icitte' . $dataset_nid);
+debug('icitte' . $study_nid);
+//   $dataset_nid = $form['dataset_nid']['#value'];
+//   $study_nid = $form['study_nid']['#value'];
   
   $harmonizations = _mica_opal_fetch_harmonization_view($dataset_nid, $study_nid);
     

@@ -283,6 +283,22 @@ function mica_datasets_menu() {
     'page arguments' => array('_mica_datasets_devel_form'),
     'access arguments' => array('administer site configuration'),
   );
+  
+  $items['mica_datasets_harmonization/ajax'] = array(
+  	'file' => 'mica_datasets.pages.harmonization.inc',
+    'page callback' => 'mica_datasets_harmonization_refresh_callback',
+    'access arguments' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  
+  $items['mica_datasets_harmonization/ajax/%/%/%'] = array(
+  	'file' => 'mica_datasets.pages.harmonization.inc',
+    'page callback' => 'mica_datasets_harmonization_refresh_callback',
+    'page arguments' => array(2, 3, 4),
+    'access arguments' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  
   return $items;
 }
 

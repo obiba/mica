@@ -2282,6 +2282,14 @@ body.node-type-dataset .pane-dataset-variables {
 /**
  * Harmonization style
  */
+a.use-ajax.ajax-processed{
+	border-bottom:none;
+}
+.harmonization-refresh-icon{
+	position:relative;
+	margin-left:5px;
+	margin-bottom:-3px;
+}
 .header_center{
   margin:0px auto;
 }
