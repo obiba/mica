@@ -171,7 +171,7 @@ function mica_datasets_harmonization_refresh_form($form, &$form_state, $dataset_
   if ($connector){
     $form['refresh'] = array(
       '#type' => 'image_button',
-      '#src' => "./images/refresh.png",
+      '#src' => MICA_HARMONIZATION_REFRESH,
       '#ajax' => array(
         'callback' => 'mica_datasets_harmonization_refresh_callback',
       ),
