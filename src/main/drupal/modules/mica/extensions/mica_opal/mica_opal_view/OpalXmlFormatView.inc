@@ -19,18 +19,18 @@ class OpalXmlFormatView extends RESTServerView {
     
     $variables = $opal->appendChild($this->doc->createElement('variables'));
     $variables->setAttribute('class', 'org.obiba.magma.js.views.VariablesClause');
-       
-    $linked = $variables->appendChild($this->doc->createElement('variables'));
-    $linked->setAttribute('class', 'linked-hash-set');
 
     $date = $opal->appendChild($this->doc->createElement('created'));
     $date->setAttribute('valueType', 'dateTime');
     $date->appendChild($this->doc->createTextNode(date('Y-m-j\TH:i:s.000Z')));
-    
+       
+    $linked = $variables->appendChild($this->doc->createElement('variables'));
+    $linked->setAttribute('class', 'linked-hash-set');
+
     $dataset = check_plain($this->model->title);
     $lang = $this->model->language;
-    $nids = array();
     if (isset($this->model->field_dataset_variables[$lang])){
+      $nids = array();
       foreach ($this->model->field_dataset_variables[$lang] as $item) {
       	$nids[] = $item['nid'];
       }
@@ -53,7 +53,7 @@ class OpalXmlFormatView extends RESTServerView {
         }
         $attributes = $v->appendChild($this->doc->createElement('attributes'));
         $this->addAttribute($attributes, 'label', 'text', 'en', $wrapper->field_label->value());
-        $this->addAttribute($attributes, 'description', 'text', 'en', $wrapper->body->value->value(), self::MAELSTROM_NS);
+        $this->addAttribute($attributes, 'description', 'text', 'en', $wrapper->body->value->value(array('decode' => TRUE)), self::MAELSTROM_NS);
 				
         $this->addTaxonomyAttribute($attributes, 'anthropometric_structures', 'text', 'en', $node->field_anthropometric_structures);
         $this->addTaxonomyAttribute($attributes, 'body_functions', 'text', 'en', $node->field_body_functions);

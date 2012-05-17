@@ -16,22 +16,21 @@ function mica_opal_view_rest_server_response_formatters_alter(&$formatters) {
 }
 
 /**
-* Implements hook_ctools_plugin_api().
-*/
+ * Implements hook_ctools_plugin_api().
+ */
 function mica_opal_view_ctools_plugin_api($owner, $api) {
-	if ($owner == 'services' && $api == 'services') {
-		return array(
+  if ($owner == 'services' && $api == 'services') {
+    return array(
       'version' => 3,
-		);
-	}
+    );
+  }
 }
 
 /**
  * Implements hook_default_services_endpoint
  */
-function mica_opal_view_default_services_endpoint(){
-  $endpoints = array();
-  
+function mica_opal_view_default_services_endpoint() {
+
   $endpoint = new stdClass;
   $endpoint->disabled = FALSE; /* Edit this to true to make a default endpoint disabled initially */
   $endpoint->api_version = 3;
@@ -71,8 +70,6 @@ function mica_opal_view_default_services_endpoint(){
     ),
   );
   $endpoint->debug = 0;
-  
-  $endpoints[] = $endpoint;
-  
-  return $endpoints;
+
+  return array($endpoint);
 }
