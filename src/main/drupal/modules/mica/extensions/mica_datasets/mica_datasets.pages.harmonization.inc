@@ -81,38 +81,35 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
             $study_id = $svas[$study_variable_attributes['nid']]->field_sva_study['und'][0]['nid'];
             $sva_node = $svas[$study_variable_attributes['nid']];
             if (array_key_exists($study_id, $header_ids)) {
-              
+              $sva_wrapper = entity_metadata_wrapper('node', $sva_node);
+							
               if (!empty($sva_node->field_sva_script_status)) {
-                $status = $sva_node->field_sva_script_status['und'][0]['value'];
+                $status = $sva_wrapper->field_sva_script_status->value();
                 $status_label = $status_values['settings']['allowed_values'][$status];
               }
               else {
                 $status = 'undetermined';
                 $status_label = t('Undetermined');
               }
-              $status_image = "mica_harmonization_{$status}";
               
-              $script = empty($sva_node->field_sva_script['und'][0]['value']) ? ''
-                : $sva_node->field_sva_script['und'][0]['value'];
-
-              $comment = empty($sva_node->field_sva_comment['und'][0]['value']) ? ''
-                : $sva_node->field_sva_comment['und'][0]['value'];
+              $script = $sva_wrapper->field_sva_script->value() ? $sva_wrapper->field_sva_script->value(): '';
+              $comment = $sva_wrapper->field_sva_comment->value() ? $sva_wrapper->field_sva_comment->value(): '';
 
               // inner tooltip
               $tooltip = "<table><tr><td><b>".t('Status')."</b></td><td>$status_label</td></tr>";
               
               if (!empty($comment)){
-                $tooltip .= "<tr><td style='vertical-align: top'><b>".t('Comment')."</b></td><td style='vertical-align: top'>".toHtmlTruncate($comment, 'comment', 'i')."</td></tr>";
+                $tooltip .= "<tr><td style='vertical-align: text-top'><b>".t('Comment')."</b></td><td>"._mica_datasets_toHtmlTruncate($comment, 'comment', 200, FALSE)."</td></tr>";
               }
               
-              $tooltip .= "<tr><td style='vertical-align: top'><b>".t('Script')."</b></td><td style='vertical-align: top'>".toHtmlTruncate($script, 'script', '') . "</td></tr></table>";
+              $tooltip .= "<tr><td style='vertical-align: top'><b>".t('Script')."</b></td><td>"._mica_datasets_toHtmlTruncate($script, 'script', 200, TRUE) . "</td></tr></table>";
 
               if ($status !== 'undetermined') {
                 $option[$header_ids[$study_id]]['data'][] = array(
                   '#type' => 'markup',
                   '#markup' =>
                   "<a href='" . url('node/' . $study_variable_attributes['nid']) . "'><div class='tipsy'><img src='"
-                    . constant($status_image). "'><div class=\"tooltip_content\">$tooltip</div></div></a>",
+                    . _mica_datasets_get_status_icon($status). "' /><div class=\"tooltip_content\">$tooltip</div></div></a>",
                 );
               }
               else {
@@ -120,7 +117,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
                   '#type' => 'markup',
                   '#markup' =>
                   "<a href='" . url('node/' . $study_variable_attributes['nid']) . "'><div class='tipsy'><img src='"
-                    .  constant($status_image) . "'><div class=\"tooltip_content\"><b>".t('Status')."</b>  $status_label</div></div></a>",
+                    .  _mica_datasets_get_status_icon($status) . "'><div class=\"tooltip_content\"><b>".t('Status')."</b>  $status_label</div></div></a>",
                 );
               }
             }
@@ -135,25 +132,9 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
 
   $output = drupal_render(drupal_get_form('mica_datasets_harmonization_legend_form'));
   $output .= '<br>';
-  $output .= theme('table', array('header' => $header, 'rows' => $options, 'empty' => t('No harmonization found'), 'sticky' => FALSE));
+  $output .= theme('table', array('header' => $header, 'rows' => $options, 'empty' => t('No harmonization found'), 'sticky' => FALSE, 'attributes' => array('id' => 'harmonization_overview')));
 
   return $output;
-}
-
-function toHtmlTruncate($text, $label, $surrounded_tag) {
-  $start = empty($surrounded_tag) ? "" : "<" . $surrounded_tag . ">";
-  $end = empty($surrounded_tag) ? "" : "</" . $surrounded_tag . ">";
-  $htmlTruncate = '';
-  if (!empty($text)) {
-    if (strlen($text) > 500) {
-      $htmlTruncate = "<code class=\"prettyprint\">" . $start . check_markup(truncate_utf8($text, 400, FALSE))
-        . $end . "</code>[" . $label . " " . t("truncated") . "]";
-    }
-    else {
-      $htmlTruncate = "<code class=\"prettyprint\">" . $start . check_markup($text) . $end . "</code>";
-    }
-  }
-  return $htmlTruncate;
 }
 
 function mica_datasets_harmonization_legend_form($form, $form_state) {
@@ -189,8 +170,11 @@ function mica_datasets_harmonization_refresh_form($form, &$form_state, $dataset_
   $connector = mica_dataset_connector_query($dataset_nid, $study_nid);
   if ($connector){
     $form['refresh'] = array(
-      '#type' => 'submit',
-      '#value' => 'refresh',
+      '#type' => 'image_button',
+      '#src' => "./images/refresh.png",
+      '#ajax' => array(
+        'callback' => 'mica_datasets_harmonization_refresh_callback',
+      ),
     );
     $form['study_nid'] = array(
       '#type' => 'hidden',
@@ -205,132 +189,88 @@ function mica_datasets_harmonization_refresh_form($form, &$form_state, $dataset_
     $form['refresh'] = array('#markup' => '&nbsp;');
   }
   return $form;
-  
 }
 
 
-function mica_datasets_harmonization_refresh_form_submit($form, &$form_state){
-  // Load the connection_entity
+function mica_datasets_harmonization_refresh_callback($form, &$form_state){
+
   $dataset_nid = $form['dataset_nid']['#value'];
   $study_nid = $form['study_nid']['#value'];
   
-  $connector = mica_dataset_connector_query($dataset_nid, $study_nid);
-  $opal = new MicaDatasetOpalConnectionClass($connector);
-  $post = new HttpClientRequest($connector->__call("getTableResourceURI", array("variables")), array(
-      'method' => 'GET',
-      'headers' => array('Accept' => array('application/json')),
-      'data' => array(),
-      'parameters' => array(),
-  ));
-  $raw= $opal->client()->execute($post);
-  
-  $array = json_decode($raw, TRUE);
-  // Support JSON lines format.
-  if (!is_array($array)) {
-  	$raw = preg_replace('/}\s*{/', '},{', $raw);
-  	$raw = '[' . $raw . ']';
-  	$array = json_decode($raw, TRUE);
-  }
-  
-  if (is_array($array)) {
+  $harmonizations = _mica_opal_fetch_harmonization_view($dataset_nid, $study_nid);
+    
+  global $user;
+  $position = 1;
+  foreach($harmonizations['variables'] as $harmonization){
+    $query = new EntityFieldQuery();
+    
+		$result = $query->entityCondition('entity_type', 'node')
+  		->entityCondition('bundle', 'variable')
+  		->propertyCondition('title', $harmonization['title'])
+  		->fieldCondition('field_dataset', 'nid', $harmonizations['dataset_nid'])
+  		->execute();
+    
+    if (empty($result)){
+			$infos = array(
+			  'type' => 'variable',
+			  'title' =>  $harmonization['title'],
+			  'language' => LANGUAGE_NONE,
+			  'uid' => $user->uid,
+			  'status' => 1,// status of the...
+			  'menu' => '',
+			  'field_dataset' => $harmonizations['dataset_nid'],
+			);
 
-  	$all_items = mica_opal_jsonPath($array, '$.*');
-  	unset($array);
-  
-		$i = 1;
-		entity_info_cache_clear();
-  	foreach ($all_items as $item) {
-  		$parsed_item = $variables = array();
-  		// check if variable already exists
-  		
-  		$title = array_shift(mica_opal_jsonPath($item, 'name'));
-  		$label = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[\'name\']==\'label\')].value'));
-  		$value_type = array_shift(mica_opal_jsonPath($item, 'valueType'));
-  		$repeatable = array_shift(mica_opal_jsonPath($item, 'repeatable'));
-  		if (empty($repeatable)){
-  		  $repeatable = '0';
-  		}
-  		
-  		$script = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[\'name\']==\'script\')].value'));
-      $status = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[\'name\']==\'status\')].value'));
-      if (empty($status)){
-        $status = 'undetermined';
-      }
-  		$description = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[\'name\']==\'description\')].value'));
-  		
-  		$categories_name = mica_opal_jsonPath($item, 'categories.*.name');
-  		$categories_label = mica_opal_jsonPath($item, 'categories.*.attributes[?(@[\'name\']==\'label\')].value');
-			$categories_missing = mica_opal_jsonPath($item, 'categories.*.isMissing');
-			
-  		$query = new EntityFieldQuery();
-  		$result = $query->entityCondition('entity_type', 'node')
-        ->entityCondition('bundle', 'variable')
-        ->propertyCondition('title', $title)
-  		  ->fieldCondition('field_dataset', 'nid', $dataset_nid)
-  		  ->execute();
-  		
-  		if (empty($result)){
-  			global $user;
-  
-  			$infos = array(
-  			  'type' => 'variable',
-  			  'title' => $title,
-  			  'language' => LANGUAGE_NONE,
-  			  'uid' => $user->uid,
-  			  'status' => 1,
-  			  'menu' => '',
-			  	'field_label' => $label,
-  		  	'field_value_type' => $value_type,
-  			  'field_dataset' => $dataset_nid,
-  			);
-  
-  			$variable = entity_property_values_create_entity('node', $infos);
-				$variable = entity_load_single('node', $variable->nid->value());
-				$wrapper = entity_metadata_wrapper('node', $variable);
+			$variable = entity_property_values_create_entity('node', $infos);
+			$variable->save();
+
+    }else{
+		  $variable = entity_load_single('node', array_shift(array_keys($result['node'])));
+		}
+		
+		$wrapper = entity_metadata_wrapper('node', $variable);
+		$wrapper->field_label->set($harmonization['label']);
+		$wrapper->field_value_type->set($harmonization['value_type']);
+    $wrapper->field_position->set($position++);
+    $wrapper->body->value->set($harmonization['description']);
+    
+    // Update categories
+    if (!empty($harmonization['categories'])){
+    	//  clear existing categories
+			$size = count($wrapper->field_variable_categories->value());
+			for ($i = 0; $i < $size; $i++){
+				unset($wrapper->field_variable_categories[$i]);
+			}
+    
+    	for ($i = 0; $i < count($harmonization['categories']); $i++) {
+				$wrapper->field_variable_categories[$i]->name->set($harmonization['categories'][$i]['name']);
+				$wrapper->field_variable_categories[$i]->label->set($harmonization['categories'][$i]['label']);
+				$wrapper->field_variable_categories[$i]->missing->set($harmonization['categories'][$i]['missing']);
+    	}
+    }
+    
+    // Update study_variable_attributes
+		foreach ($wrapper->field_variable_study_var_att->value() as $study_variable_attributes){
+			$sva = entity_metadata_wrapper('node', $study_variable_attributes);
+
+			if ($sva->field_sva_study->nid->value() === $harmonizations['study_nid']){
+				$sva->field_sva_script->set($harmonization['script']);
+				$sva->field_sva_script_status->set($harmonization['status']);
+				$sva->field_sva_comment->set($harmonization['comment']);
 				
-  		}else{
-  		  $variable = entity_load_single('node', array_shift(array_keys($result['node'])));
-  		  $wrapper = entity_metadata_wrapper('node', $variable);
-  		  $wrapper->field_value_type->set($value_type);
-  		}
-  		
-			$wrapper->field_repeatable->set($repeatable);
-			$wrapper->field_position->set($i++);
-			
-  		// Update study_variable_attributes
-  		foreach ($variable->field_variable_study_var_att[$variable->language] as $study_variable_attributes){
-  		  $sva = entity_load_single('node', $study_variable_attributes['nid']);
-  		  
-  		  if ($sva->field_sva_study[$variable->language][0]['nid'] === $study_nid){
-  		    $sva_wrapper = entity_metadata_wrapper('node', $sva);
-  		    $sva_wrapper->field_sva_script->set($script);
-			  	$sva_wrapper->field_sva_script_status->set($status);
-			  	$sva_wrapper->field_sva_comment->set($description);
-			  	
-			  	$sva_wrapper->save();
-  		  }
-  		}
-  		
-  		// Update categories
-  		if (!empty($categories_name)){
-				// clear existing categories
-				$size = count($wrapper->field_variable_categories->value());
-				for ($i = 0; $i < $size; $i++){
-					unset($wrapper->field_variable_categories[$i]);
-				}
-				
-  		  for ($i = 0; $i < count($categories_name); $i++) {
-  		    $wrapper->field_variable_categories[$i]->name->set($categories_name[$i]);
-					$wrapper->field_variable_categories[$i]->label->set($categories_label[$i]);
-					$wrapper->field_variable_categories[$i]->missing->set($categories_missing[$i] ? '1' : '0');
-  		  }
-  		}
-			$wrapper->save();
-  	}
+				$sva->save();
+			}
+		}
+		
+    $wrapper->save();
   }
-  else {
-  	throw new Exception(t('There was an error decoding the JSON document.'));
-  }
+  drupal_set_message(t('Harmonization variables have been refreshed.'));
+
+  ctools_include('ajax');
+  ctools_add_js('ajax-responder');
+  $commands[] = ctools_ajax_command_reload(); //region-content
+  print ajax_render($commands);
+  exit;
 }
 
 function sort_by_position($x, $y) {
@@ -346,30 +286,3 @@ function sort_by_position($x, $y) {
   return 1;
 }
 
-/**
-* Utilizes the jsonPath function from jsonpath-0.8.1.php
-*
-* jsonPath returns false if the expression returns zero results and that will
-* mess up our for loops, so return an empty array instead.
-*
-* @todo
-*   Firgure out error handling.
-* @param $array
-*   The input array to parse
-* @$expression
-*   The JSONPath expression.
-* @return array
-*   Returns an array that is the output of jsonPath
-*/
-function mica_opal_jsonPath($array, $expression) {
-
-  $libraries_jsonpath_loc = libraries_get_path('jsonpath') . '/jsonpath-0.8.1.php';
-  if(!file_exists($libraries_jsonpath_loc)) {
-    drupal_set_message("Cannot find jsonpath-0.8.1.php", "error");
-    return NULL;
-  }
-  include_once $libraries_jsonpath_loc;
-
-	$result = jsonPath($array, $expression);
-	return ($result === FALSE) ? array() : $result;
-}

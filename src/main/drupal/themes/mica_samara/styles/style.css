@@ -2286,7 +2286,7 @@ body.node-type-dataset .pane-dataset-variables {
   margin:0px auto;
 }
 
-div.tipsy *{
+div.tipsy {
   margin-top:-8px;
 }
 .harmonization-study-title{
