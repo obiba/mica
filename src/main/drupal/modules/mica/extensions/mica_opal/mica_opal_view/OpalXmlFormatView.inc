@@ -54,7 +54,9 @@ class OpalXmlFormatView extends RESTServerView {
         $attributes = $v->appendChild($this->doc->createElement('attributes'));
         $this->addAttribute($attributes, 'label', 'text', 'en', $wrapper->field_label->value());
         $this->addAttribute($attributes, 'description', 'text', 'en', $wrapper->body->value->value(array('decode' => TRUE)), self::MAELSTROM_NS);
-				
+        $this->addAttribute($attributes, 'status', 'text', NULL, 'undetermined', self::MAELSTROM_NS);
+        $this->addAttribute($attributes, 'comment', 'text', 'en', '', self::MAELSTROM_NS);
+
         $this->addTaxonomyAttribute($attributes, 'anthropometric_structures', 'text', 'en', $node->field_anthropometric_structures);
         $this->addTaxonomyAttribute($attributes, 'body_functions', 'text', 'en', $node->field_body_functions);
         $this->addTaxonomyAttribute($attributes, 'body_structures', 'text', 'en', $node->field_body_structures);
@@ -99,11 +101,9 @@ class OpalXmlFormatView extends RESTServerView {
     $attribute = $attributes->appendChild($this->doc->createElement('attribute'));
     $attribute->setAttribute('name', $name);
     $attribute->setAttribute('valueType', $valueType);
-    $attribute->setAttribute('locale', $lang); // set to $lang to support multiple languages
-    if (!empty($namespace)){
-      $attribute->setAttribute('namespace', $namespace);
-    }
-    $attribute->appendChild($this->doc->createTextNode($value)); //$this->doc->createTextNode()
+    if (!empty($lang)) $attribute->setAttribute('locale', $lang); // set to $lang to support multiple languages
+    if (!empty($namespace)) $attribute->setAttribute('namespace', $namespace);
+    $attribute->appendChild($this->doc->createTextNode($value));
   }
   
   private function addTaxonomyAttribute($attributes, $name, $valueType, $lang, $field) {
@@ -125,7 +125,7 @@ class OpalXmlFormatView extends RESTServerView {
     $attribute->setAttribute('name', $name);
     $attribute->setAttribute('valueType', $valueType);
     $attribute->setAttribute('locale', $lang); // set to $lang to support multiple languages
-    $attribute->appendChild($this->doc->createTextNode($value)); //$this->doc->createTextNode()
+    $attribute->appendChild($this->doc->createTextNode($value));
   }
   
   function sort_by_position($x, $y) {

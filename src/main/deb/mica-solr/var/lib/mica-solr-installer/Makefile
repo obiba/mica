@@ -3,7 +3,7 @@
 #
 
 oldversion=
-solr_version=3.4.0
+solr_version=3.6.0
 
 #
 # Drush install
@@ -53,24 +53,3 @@ solr-install:
 
 clean:
 	rm -rf /var/cache/mica-solr-installer/target
-
-#
-# Functions
-#
-
-make-sites-install = cd target && \
-	wget -q http://download.obiba.org/mica/$(stability)/$(2)-$($(2)_version).tar.gz && \
-	tar xzf $(2)-$($(2)_version).tar.gz && \
-	rm -rf /usr/share/mica/sites/all/$(1)/$(2) && \
-	mv $(2) /usr/share/mica/sites/all/$(1)
-	
-make-profiles-install = cd target && \
-	wget -q http://download.obiba.org/mica/$(stability)/$(1)-$($(1)_version).tar.gz && \
-	tar xzf $(1)-$($(1)_version).tar.gz && \
-	rm -rf /usr/share/mica/profiles/$(1) && \
-	mv $(1) /usr/share/mica/profiles
-
-#
-# Versions
-#
-
