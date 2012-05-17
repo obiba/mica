@@ -517,6 +517,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contacts_ref']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_contacts_ref']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_contacts_ref']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_contacts_ref']['alter']['more_link'] = 0;
   $handler->display->display_options['fields']['field_contacts_ref']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_contacts_ref']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_contacts_ref']['alter']['html'] = 0;
@@ -530,7 +531,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_contacts_ref']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_contacts_ref']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_contacts_ref']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_contacts_ref']['separator'] = ',';
+  $handler->display->display_options['fields']['field_contacts_ref']['separator'] = '|';
   $handler->display->display_options['fields']['field_contacts_ref']['field_api_classes'] = 0;
   /* Field: Content: Investigators */
   $handler->display->display_options['fields']['field_investigators']['id'] = 'field_investigators';
@@ -546,6 +547,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_investigators']['alter']['nl2br'] = 0;
   $handler->display->display_options['fields']['field_investigators']['alter']['word_boundary'] = 1;
   $handler->display->display_options['fields']['field_investigators']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_investigators']['alter']['more_link'] = 0;
   $handler->display->display_options['fields']['field_investigators']['alter']['strip_tags'] = 0;
   $handler->display->display_options['fields']['field_investigators']['alter']['trim'] = 0;
   $handler->display->display_options['fields']['field_investigators']['alter']['html'] = 0;
@@ -559,7 +561,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_investigators']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_investigators']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_investigators']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_investigators']['separator'] = ',';
+  $handler->display->display_options['fields']['field_investigators']['separator'] = '|';
   $handler->display->display_options['fields']['field_investigators']['field_api_classes'] = 0;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body_1']['id'] = 'body_1';
@@ -1410,28 +1412,6 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['field_api_classes'] = 0;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_recruitment_procedures']['id'] = 'field_recruitment_procedures';
-  $handler->display->display_options['fields']['field_recruitment_procedures']['table'] = 'field_data_field_recruitment_procedures';
-  $handler->display->display_options['fields']['field_recruitment_procedures']['field'] = 'field_recruitment_procedures';
-  $handler->display->display_options['fields']['field_recruitment_procedures']['label'] = 'sources_of_recruitment';
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_recruitment_procedures']['hide_alter_empty'] = 1;
   /* Field: Content: Please specify what other source of recruitment */
   $handler->display->display_options['fields']['field_recruitment_other']['id'] = 'field_recruitment_other';
   $handler->display->display_options['fields']['field_recruitment_other']['table'] = 'field_data_field_recruitment_other';

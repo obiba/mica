@@ -1050,7 +1050,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_variable_categories']['id'] = 'field_variable_categories';
   $handler->display->display_options['fields']['field_variable_categories']['table'] = 'field_data_field_variable_categories';
   $handler->display->display_options['fields']['field_variable_categories']['field'] = 'field_variable_categories';
-  $handler->display->display_options['fields']['field_variable_categories']['label'] = 'category_label';
+  $handler->display->display_options['fields']['field_variable_categories']['label'] = 'categories_label';
   $handler->display->display_options['fields']['field_variable_categories']['alter']['alter_text'] = 1;
   $handler->display->display_options['fields']['field_variable_categories']['alter']['text'] = '[field_variable_categories-label]';
   $handler->display->display_options['fields']['field_variable_categories']['alter']['make_link'] = 0;
