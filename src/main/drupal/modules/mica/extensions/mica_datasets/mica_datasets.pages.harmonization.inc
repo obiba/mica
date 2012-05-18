@@ -50,7 +50,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
     
     // See http://www.jide.fr/english/using-ajax-in-drupal-7-outside-of-form-api
     // show link only for studies that have an opal connection
-    if (mica_dataset_connector_query($wrapper->nid->value(), $study_wrapper->nid->value())){
+    if (node_access('update', $dataset_node) && mica_dataset_connector_query($wrapper->nid->value(), $study_wrapper->nid->value())){
       $ajax_link = l("<img src='".MICA_HARMONIZATION_REFRESH."' class='harmonization-refresh-icon' title='Refresh harmonization of $name'/>", 'mica_datasets_harmonization/ajax/nojs/' . $wrapper->nid->value() . '/' .$study_wrapper->nid->value(), array('html' => TRUE, 'attributes' => array('class' => array('use-ajax'))));
     }
     else{
