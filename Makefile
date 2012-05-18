@@ -82,7 +82,6 @@ drush-make:
 drupal-default:
 	cd target/$(micadir) && \
 	chmod a+r sites/all/modules/services/servers/rest_server/lib/spyc.php && \
-	chmod -R a+r sites/all/libraries && \
 	chmod a+w sites/default && \
 	mkdir sites/default/files && \
 	chmod a+w sites/default/files && \
@@ -124,12 +123,6 @@ mica-install:
 	cp -r ../../src/main/drupal/themes/* sites/all/themes && \
 	rm -rf `find . -type d -name .svn` && \
 	rm -rf `find . -type d -name .git` && \
-	#if [ -e profiles/default/translations/fr.po ]; then \
-	#  mkdir -p profiles/mica_standard/translations && \
-	#  cp profiles/default/translations/fr.po profiles/mica_standard/translations && \
-	#  mkdir -p profiles/mica_demo/translations && \
-	#  cp profiles/default/translations/fr.po profiles/mica_demo/translations ; \
-	#fi && \
 	if [ -e profiles/standard/standard.install ]; then \
 		cp profiles/standard/standard.install profiles/mica_standard/standard.install && \
 		rm -rf profiles/standard && \
@@ -208,7 +201,7 @@ package-modules-prepare:
 	$(call make-info,sites/all/modules/mica/extensions,mica_studies)
 	$(call make-info,sites/all/modules/mica/extensions,node_reference_block)
 	$(call make-info,sites/all/modules,mica)
-	
+
 package-profiles-prepare:
 	$(call make-info,profiles,mica_standard)
 	$(call make-info,profiles,mica_demo)
@@ -232,13 +225,13 @@ deb-prepare:
 	rm -rf target/deb
 	cp -r src/main/deb target
 	rm -rf `find target/deb -type d -name .svn`
-	
+
 deb: deb-mica deb-mica-solr
-	
+
 deb-mica: deb-mica-install deb-mica-changelog
 
 deb-mica-solr: deb-mica-solr-install deb-mica-solr-changelog
-	
+
 deb-mica-install:
 	echo "version=$(version)" >> target/deb/mica/var/lib/mica-installer/Makefile
 	echo "deb_version=$(deb_version)" >> target/deb/mica/var/lib/mica-installer/Makefile
@@ -272,7 +265,7 @@ endif
 	echo "  * See http://wiki.obiba.org/ for more details." >> target/deb/mica/debian/changelog
 	echo "" >> target/deb/mica/debian/changelog
 	echo " -- OBiBa <info@obiba.org>  $(deb_date)" >> target/deb/mica/debian/changelog
-	
+
 deb-mica-solr-changelog:
 ifeq ($(findstring dev,$(version)),dev)
 	echo "mica-solr ($(deb_version)) unstable; urgency=low" > target/deb/mica-solr/debian/changelog
@@ -305,7 +298,7 @@ demo-site:
 demo-export:
 	cd target/$(micadir) && \
 	$(drushexec) ne-export 2 3 4 5 -u 1 --file=../mica-demo.txt
-	
+
 #
 # Devel
 #
@@ -314,7 +307,7 @@ mica-install-clear: mica-install
 	cd target/$(micadir) && \
 	drush cc all && \
 	cd ../..
-	
+
 coder:
 	cd target/$(micadir) && \
 	drush dl coder && \
@@ -331,7 +324,7 @@ git-modules:
 
 git-themes: 
 	$(call make-git,src/main/drupal/themes,mica_samara,sandbox/yop/1144820)
-	
+
 git-profiles:
 	$(call make-git,src/main/drupal/profiles,mica_standard,sandbox/yop/1144814)
 	$(call make-git,src/main/drupal/profiles,mica_demo,sandbox/yop/1144816)
@@ -376,14 +369,14 @@ help:
 	@echo "  " `drush version`
 	@echo
 
-	
+
 #
 # Functions
 #
 
 # make-info function: add default version number to project info file
 make-info = $(call make-info-version,$(1),$(2),$($(2)_version))
-	
+
 # make-info-version function: remove (if present) and add specified version number to project info file
 make-info-version = cd target/$(micadir)/$(1) && \
 	sed -i "/version/d" $2/$2.info && \

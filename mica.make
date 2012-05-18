@@ -98,7 +98,7 @@ projects[entity][download][branch] = 7.x-1.x
 projects[facetapi][version] = 1.0-rc4
 projects[facetapi][type] = module
 
-projects[] = examples
+;projects[] = examples
 
 projects[features][version] = 1.0-rc2
 projects[features][type] = module
