@@ -2297,6 +2297,10 @@ a.use-ajax.ajax-processed{
 div.tipsy {
   margin-top:-8px;
 }
+div.tooltip_content table, tbody, tr {
+  border-style:none;
+  border-color:transparent;
+}
 .harmonization-study-title{
 	position:relative;
 	display:inline;
