@@ -303,11 +303,6 @@ libraries[ckeditor][download][type]= get
 libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.3/ckeditor_3.6.3.tar.gz
 libraries[ckeditor][directory_name] = ckeditor
 
-;libraries[jsonpath][type] = libraries
-;libraries[jsonpath][download][type]= get
-;libraries[jsonpath][download][url] = http://jsonpath.googlecode.com/svn/trunk/src/php/jsonpath.php
-;libraries[jsonpath][directory_name] = jsonpath
-
 libraries[spyc][type] = libraries
 libraries[spyc][download][type]= get
 libraries[spyc][download][url] = http://spyc.googlecode.com/svn/trunk/spyc.php
