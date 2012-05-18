@@ -93,6 +93,8 @@ function _mica_opal_fetch_harmonization_view($dataset_nid, $study_nid){
   		if (empty($status)){
   			$status = 'undetermined';
   		}
+  		$status = strtolower($status);
+  		
   		$description = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[\'name\']==\'description\'), ?(@[\'namespace\']==\'maelstrom\')].value'));
   		$comment = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[\'name\']==\'comment\'), ?(@[\'namespace\']==\'maelstrom\')].value'));
   
