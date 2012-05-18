@@ -49,7 +49,13 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
     $name = !empty($acronym) ? $study_wrapper->field_acroym->value() : $study_wrapper->title->value();
     
     // See http://www.jide.fr/english/using-ajax-in-drupal-7-outside-of-form-api
-    $ajax_link = l("<img src='".MICA_HARMONIZATION_REFRESH."' class='harmonization-refresh-icon' title='Refresh harmonization of $name'/>", 'mica_datasets_harmonization/ajax/nojs/' . $wrapper->nid->value() . '/' .$study_wrapper->nid->value(), array('html' => TRUE, 'attributes' => array('class' => array('use-ajax'))));
+    // show link only for studies that have an opal connection
+    if (mica_dataset_connector_query($wrapper->nid->value(), $study_wrapper->nid->value())){
+      $ajax_link = l("<img src='".MICA_HARMONIZATION_REFRESH."' class='harmonization-refresh-icon' title='Refresh harmonization of $name'/>", 'mica_datasets_harmonization/ajax/nojs/' . $wrapper->nid->value() . '/' .$study_wrapper->nid->value(), array('html' => TRUE, 'attributes' => array('class' => array('use-ajax'))));
+    }
+    else{
+      $ajax_link = '';
+    }
     
     $header[] = "<div class='harmonization-study-title'>$name$ajax_link</div><br>";//"<div class='harmonization-study-icon'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>";
 
@@ -199,9 +205,6 @@ function mica_datasets_harmonization_refresh_form($form, &$form_state, $dataset_
 
 function mica_datasets_harmonization_refresh_callback($type = 'ajax', $dataset_nid, $study_nid){
 
-//   $dataset_nid = $form['dataset_nid']['#value'];
-//   $study_nid = $form['study_nid']['#value'];
-  
   $harmonizations = _mica_opal_fetch_harmonization_view($dataset_nid, $study_nid);
     
   global $user;
