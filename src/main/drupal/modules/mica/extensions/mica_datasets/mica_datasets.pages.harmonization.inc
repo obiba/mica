@@ -198,8 +198,7 @@ function mica_datasets_harmonization_refresh_form($form, &$form_state, $dataset_
 
 
 function mica_datasets_harmonization_refresh_callback($type = 'ajax', $dataset_nid, $study_nid){
-debug('icitte' . $dataset_nid);
-debug('icitte' . $study_nid);
+
 //   $dataset_nid = $form['dataset_nid']['#value'];
 //   $study_nid = $form['study_nid']['#value'];
   
@@ -222,7 +221,7 @@ debug('icitte' . $study_nid);
 			  'title' =>  $harmonization['title'],
 			  'language' => LANGUAGE_NONE,
 			  'uid' => $user->uid,
-			  'status' => 1,// status of the...
+			  'status' => 0,// sva should be draft by default
 			  'menu' => '',
 			  'field_dataset' => $harmonizations['dataset_nid'],
 			);

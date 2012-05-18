@@ -84,7 +84,7 @@ function _mica_opal_fetch_harmonization_view($dataset_nid, $study_nid){
   			$repeatable = '0';
   		}
   
-  		$script = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[\'name\']==\'script\'), ?(@[\'namespace\']==\'opal\')].value'));
+  		$script = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[\'name\']==\'script\'),?(@[\'namespace\']==\'opal\')].value'));
   		if (strlen($script) === 0){
   		  $script = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[\'name\']==\'script\')].value'));
   		}
@@ -145,7 +145,7 @@ function _mica_opal_fetch_harmonization_view($dataset_nid, $study_nid){
 */
 function mica_opal_jsonPath($array, $expression) {
 
-	$libraries_jsonpath_loc = libraries_get_path('jsonpath') . '/jsonpath-0.8.1.php';
+	$libraries_jsonpath_loc = drupal_get_path('module', 'mica_datasets') . '/includes/jsonpath-0.8.1.php';
 	if(!file_exists($libraries_jsonpath_loc)) {
 		drupal_set_message("Cannot find jsonpath-0.8.1.php", "error");
 		return NULL;
