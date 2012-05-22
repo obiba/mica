@@ -240,6 +240,11 @@ function mica_datasets_feeds_importer_default() {
             'target' => 'body',
             'unique' => FALSE,
           ),
+          3 => array(
+            'source' => 'type',
+            'target' => 'field_dataset_type',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '0',
         'input_format' => 'plain_text',

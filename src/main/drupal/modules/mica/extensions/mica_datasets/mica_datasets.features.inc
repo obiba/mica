@@ -102,6 +102,7 @@ function mica_datasets_default_search_api_index() {
         "title" : { "type" : "string" },
         "status" : { "type" : "integer" },
         "field_dataset_studies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
+        "field_dataset_type" : { "type" : "string" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
         "search_api_aggregation_2" : { "type" : "integer" },

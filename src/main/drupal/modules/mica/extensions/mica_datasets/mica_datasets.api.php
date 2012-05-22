@@ -20,6 +20,7 @@
  *     MicaDatasetConnectionInterface interface.
  */
 function hook_mica_datasets_connection_info() {
+  $connections = array();
   $connections['example_some'] = array(
     'name' => t('Some Connection'),
     'description' => t('Connection for some data repository.'),

@@ -45,7 +45,7 @@ projects[] = advanced_help
 projects[background_process][version] = 1.12
 projects[background_process][type] = module
 
-projects[calendar][version] = 3.3
+projects[calendar][version] = 3.4
 projects[calendar][type] = module
 
 projects[cck_select_other][version] = 1.0
@@ -286,9 +286,9 @@ projects[viewreference][type] = module
 projects[workbench][version] = 1.1
 projects[workbench][type] = module
 
-projects[workbench_moderation][version] = 1.1
+projects[workbench_moderation][version] = 1.2
 projects[workbench_moderation][type] = module
-projects[workbench_moderation][patch][218648] = http://drupal.org/files/retaintitle-1245590-12.patch
+projects[workbench_moderation][patch][1245590] = http://drupal.org/files/retaintitle-1245590-12.patch
 
   
 ; Libraries
