@@ -827,7 +827,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '5',
+          'weight' => '3',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -998,7 +998,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '3',
+          'weight' => '2',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -1098,7 +1098,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => '2',
+          'weight' => '1',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -1198,7 +1198,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => '1',
+          'weight' => '0',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -4320,9 +4320,9 @@ Set to 0 to set variable at last position.  ');
   t('Repeatable');
   t('Reproductive Health and History');
   t('Script');
-  t('Script Status');
   t('Social Environment');
   t('Sociodemographic/Socioeconomic Characteristics');
+  t('Status');
   t('Studies');
   t('Study');
   t('Study Variables');
