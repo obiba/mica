@@ -270,3 +270,19 @@ function mica_samara_field_multiple_value_form($variables) {
     return theme_field_multiple_value_form($variables);
   }
 }
+
+/**
+ * Implements hook_html_head_alter()
+ */
+function mica_samara_html_head_alter(&$head_elements){
+  // See http://drupal.org/node/1234304
+  $head_elements['ie-edge'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'http-equiv' => 'X-UA-Compatible',
+      'content' => 'IE=Edge',
+    ),
+  );
+  return $head_elements;
+}
