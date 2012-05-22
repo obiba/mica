@@ -2305,12 +2305,6 @@ div.tooltip_content table, tbody, tr {
 	position:relative;
 	display:inline;
 }
-.harmonization-study-icon{
-	display:inline;
-  background-image:url('../images/cog_get.png');
-  background-repeat:no-repeat;
-  margin-left:10px;
-}
 .variable_category-missing{
   background-image:url('../images/tick.png');
   background-repeat:no-repeat;
