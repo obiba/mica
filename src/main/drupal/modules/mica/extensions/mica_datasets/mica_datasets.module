@@ -1204,12 +1204,12 @@ function mica_datasets_node_view_alter(&$build) {
         'script' => t('Script'),
       );
       $options = array();
-      $status_values = field_info_field('field_sva_script_status');
+      $status_values = field_info_field('field_sva_status');
       foreach ($wrapper->field_variable_study_var_att->value() as $study_variable_attributes) {
         $sva_wrapper = entity_metadata_wrapper('node', $study_variable_attributes);
 
-        if (!empty($study_variable_attributes->field_sva_script_status)) {
-          $status = $sva_wrapper->field_sva_script_status->value();
+        if (!empty($study_variable_attributes->field_sva_status)) {
+          $status = $sva_wrapper->field_sva_status->value();
           $status_label = $status_values['settings']['allowed_values'][$status];
         }
         else {
@@ -1692,13 +1692,13 @@ function _mica_study_variables_add_reverse_link($svas, $new_sva) {
 function mica_datasets_node_view($node, $view_mode) {
   if ($node->type === 'study_variable_attributes') {
     // add icon to script status
-    $status_values = field_info_field('field_sva_script_status');
+    $status_values = field_info_field('field_sva_status');
     $status = array_search(
-      $node->content['field_sva_script_status'][0]['#markup'], $status_values['settings']['allowed_values']
+      $node->content['field_sva_status'][0]['#markup'], $status_values['settings']['allowed_values']
     );
-    $node->content['field_sva_script_status'][0]['#prefix']
+    $node->content['field_sva_status'][0]['#prefix']
       = "<div class='harmonization-$status'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-    $node->content['field_sva_script_status'][0]['#suffix'] = '</div>';
+    $node->content['field_sva_status'][0]['#suffix'] = '</div>';
 
     if (!empty($node->content['field_sva_script'])) {
       $path = drupal_get_path('module', 'mica_datasets');

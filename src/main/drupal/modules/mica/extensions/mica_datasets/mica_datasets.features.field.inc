@@ -948,14 +948,14 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study_variable_attributes-field_sva_script_status'
-  $fields['node-study_variable_attributes-field_sva_script_status'] = array(
+  // Exported field: 'node-study_variable_attributes-field_sva_status'
+  $fields['node-study_variable_attributes-field_sva_status'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_sva_script_status',
+      'field_name' => 'field_sva_status',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -1016,8 +1016,8 @@ function mica_datasets_field_default_fields() {
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_sva_script_status',
-      'label' => 'Script Status',
+      'field_name' => 'field_sva_status',
+      'label' => 'Status',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,

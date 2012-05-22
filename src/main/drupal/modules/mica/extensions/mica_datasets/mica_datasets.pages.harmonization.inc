@@ -41,7 +41,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
   $variables = $wrapper->field_dataset_variables->value();
   $studies = $wrapper->field_dataset_studies->value();
 
-  $status_values = field_info_field('field_sva_script_status');
+  $status_values = field_info_field('field_sva_status');
   $header_ids = array();
   foreach ($studies as $study) {
     $study_wrapper = entity_metadata_wrapper('node', $study);
@@ -92,8 +92,8 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
             if (array_key_exists($study_id, $header_ids)) {
               $sva_wrapper = entity_metadata_wrapper('node', $sva_node);
 							
-              if (!empty($sva_node->field_sva_script_status)) {
-                $status = $sva_wrapper->field_sva_script_status->value();
+              if (!empty($sva_node->field_sva_status)) {
+                $status = $sva_wrapper->field_sva_status->value();
                 $status_label = $status_values['settings']['allowed_values'][$status];
               }
               else {
@@ -263,7 +263,7 @@ function mica_datasets_harmonization_refresh_callback($type = 'ajax', $dataset_n
 
 			if ($sva->field_sva_study->nid->value() === $harmonizations['study_nid']){
 				$sva->field_sva_script->set($harmonization['script']);
-				$sva->field_sva_script_status->set($harmonization['status']);
+				$sva->field_sva_status->set($harmonization['status']);
 				$sva->field_sva_comment->set($harmonization['comment']);
 				
 				$sva->save();
