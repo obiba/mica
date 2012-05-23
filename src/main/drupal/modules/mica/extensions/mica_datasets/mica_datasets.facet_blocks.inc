@@ -36,6 +36,7 @@ function mica_datasets_configure_facet_blocks() {
   $facet_order_by_region = array(
     'sidebar_second' => array(
       'field_dataset',
+  		'field_dataset:field_dataset_studies',
       'field_data_source',
       'field_disease_history',
       'field_medical_health_interv',
@@ -71,7 +72,8 @@ function mica_datasets_configure_facet_blocks() {
 
     foreach ($facet_order as $index => $facet_field) {
       // facetapi_get_delta_map() is not loaded yet so we need to generate hash
-      $facet_delta = facetapi_hash_delta($search_index . ':block:' . $facet_field);
+      $string = facetapi_build_delta($search_index, 'block', $facet_field);
+      $facet_delta = facetapi_hash_delta($string);
 
       if (empty($facet_delta)) {
         drupal_set_message(t('No facet defined for @facet', array('@facet' => check_plain($facet_field))), 'warning');
@@ -104,7 +106,14 @@ function mica_datasets_configure_facet_blocks() {
           ->execute();
       }
       else {
-        $field_info = field_info_instance('node', $facet_field, 'variable');
+        // field_dataset:field_dataset_studies is from the dataset content type, not variable
+        if ($facet_field === 'field_dataset:field_dataset_studies'){
+        	$field_info = field_info_instance('node', 'field_dataset_studies', 'dataset');
+        }
+        else{
+        	$field_info = field_info_instance('node', $facet_field, 'variable');
+        }
+        
         $nb_updated = db_insert('block')->fields(
           array(
             'status' => 1,

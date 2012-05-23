@@ -97,7 +97,8 @@ function mica_studies_configure_facet_blocks() {
     foreach ($facet_order as $facet_field => $collapsible_status) {
 
       // facetapi_get_delta_map() is not loaded yet so we need to generate hash
-      $facet_delta = facetapi_hash_delta('search_api@studies_index:block:' . $facet_field);
+      $string = facetapi_build_delta('search_api@studies_index', 'block', $facet_field);
+      $facet_delta = facetapi_hash_delta($string);
 
       if (empty($facet_delta)) {
         drupal_set_message(t('No facet defined for @facet', array('@facet' => check_plain($facet_field))), 'warning');
