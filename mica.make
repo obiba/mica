@@ -279,6 +279,7 @@ projects[views][type] = module
 
 projects[views_data_export][version] = 3.0-beta6
 projects[views_data_export][type] = module
+projects[views_data_export][patch][1224894] = http://drupal.org/files/html_in_csv-1224894-10.patch
 
 projects[viewreference][version] = 3.3
 projects[viewreference][type] = module
