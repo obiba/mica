@@ -101,7 +101,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
   }
 
   protected function sendQuery($query) {
-    //    debug($query);
+    //debug($query);
 
     $url = $this->getTableResourceURI("index/_search");
 
@@ -118,6 +118,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
     } catch (HttpClientException $e) {
       if ($e->getCode() == 0) {
         // curl error
+
         throw new Exception($e->getMessage());
       }
       elseif (!in_array($e->getCode(), array(200, 201, 202, 203, 204, 205, 206))) {
@@ -127,6 +128,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
       // http://drupal.org/node/722886
       $body = $e->getResponse()->body;
     }
+    //debug($body);
 
     return json_decode($body, TRUE);
   }
@@ -152,6 +154,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
     }
 
     $client->options['curlopts'] += array(
+      CURLOPT_SSLVERSION => 3,
       CURLOPT_SSL_VERIFYHOST => FALSE,
       CURLOPT_SSL_VERIFYPEER => FALSE,
       CURLOPT_SSLCERT => $this->realpath(PUBLIC_KEY_FILE),
