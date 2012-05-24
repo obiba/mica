@@ -2098,6 +2098,23 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['path'] = 'csv-study';
   $handler->display->display_options['use_batch'] = '1';
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_2');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = '%view_%timestamp-yyyy-%timestamp-mm-%timestamp-dd.csv';
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 1;
+  $handler->display->display_options['path'] = 'csv-study-html';
+  $handler->display->display_options['sitename_title'] = 0;
+  $handler->display->display_options['use_batch'] = '1';
   $export['csv_study_export'] = $view;
 
   $view = new view;
