@@ -1696,7 +1696,6 @@ function _mica_datasets_remove_and_save_element_from_entity_list_wrapper(&$entit
 }
 
 function mica_datasets_node_view($node, $view_mode) {
-  debug($node, NULL, TRUE);
   if ($node->type === 'study_variable_attributes') {
     // add icon to script status
     $status_values = field_info_field('field_sva_status');
@@ -1885,7 +1884,6 @@ function mica_datasets_create_variables($harmonizations){
   	}
   
   	$wrapper->save();
-  	break;
   }
 }
 
