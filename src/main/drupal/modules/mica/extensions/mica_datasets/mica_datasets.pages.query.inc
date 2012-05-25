@@ -624,12 +624,12 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query) {
     $row = array(array('data' => $study->title));
     try {
       $result = $connector->query($terms);
-      $row[] = $result['total'];
+      $row[] = $result['total']['_all'];
       foreach ($terms as $t) {
         $impl = $t->termImpl();
-        $row[] = $result[$impl->getName()];
+        $row[] = $result[$impl->getName()]['_all'];
       }
-      $row[] = array('data' => $result['_matched'], 'class' => array('active'));
+      $row[] = array('data' => $result['_matched']['_all'], 'class' => array('active'));
       $rows[] = array('data' => $row);
     } catch (Exception $e) {
       $connector->displayError($e);

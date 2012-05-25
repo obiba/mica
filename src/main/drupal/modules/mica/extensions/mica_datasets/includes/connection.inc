@@ -288,14 +288,14 @@ abstract class MicaDatasetElasticSearchConnection extends MicaDatasetAbstractCon
 
     $total = $data['hits']['total'];
 
-    $result = array('total' => $total);
-    $result["_matched"] = $this->count($data['facets']['_matched']);
+    $result = array('total' => array('_all' => $total));
+    $result["_matched"] = array('_all' => $this->count($data['facets']['_matched']));
     foreach ($terms as $term) {
       $impl = $term->termImpl();
-      $result[$impl->getName()] = $this->count($data['facets'][$impl->getName()]);
+      $result[$impl->getName()] = array('_all' => $this->count($data['facets'][$impl->getName()]));
     }
 
-
+    //debug($result);
     return $result;
   }
 
