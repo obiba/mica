@@ -263,7 +263,7 @@ function _mica_datasets_remove_study_to_dataset(&$study, &$dataset) {
     foreach ($variable->field_variable_study_var_att as $sva) {
       if ($sva->field_sva_study->nid->value() === $study_wrapper->nid->value()) {
         $sva->delete();
-        _mica_datasets_unlink_sva_of_entity($variable, $sva, 'field_variable_study_var_att');
+        _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable, $sva, 'field_variable_study_var_att');
       }
     }
   }
