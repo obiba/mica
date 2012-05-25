@@ -83,16 +83,17 @@ function mica_datasets_menu() {
     'file' => 'mica_datasets.pages.inc',
   );
 
-  $items['node/%node/variables'] = array(
-    'title' => 'Import Variables',
-    'access callback' => '_mica_datasets_node_access',
-    'access arguments' => array(1, 'dataset', 'update'),
-    'page callback' => 'mica_datasets_dataset_variables_edit_page',
-    'page arguments' => array(1),
-    'weight' => 2,
-    'type' => MENU_LOCAL_ACTION,
-    'file' => 'mica_datasets.pages.inc',
-  );
+//   $items['node/%node/variables'] = array(
+//     'title' => 'Import Variables',
+//     'access callback' => '_mica_datasets_node_access',
+//     'access arguments' => array(1, 'dataset', 'update'),
+//     'page callback' => 'mica_datasets_dataset_variables_edit_page',
+//     'page arguments' => array(1),
+//     'weight' => 2,
+//     'type' => MENU_LOCAL_ACTION,
+//     'file' => 'mica_datasets.pages.inc',
+
+//   );
 
   $items['node/%node/reordervariables'] = array(
     'title' => 'Reorder Variables',
@@ -284,18 +285,42 @@ function mica_datasets_menu() {
     'access arguments' => array('administer site configuration'),
   );
   
-  $items['mica_datasets_harmonization/ajax'] = array(
-  	'file' => 'mica_datasets.pages.harmonization.inc',
-    'page callback' => 'mica_datasets_harmonization_refresh_callback',
-    'access arguments' => TRUE,
+//   $items['mica_datasets_harmonization/ajax'] = array(
+//     	'file' => 'mica_datasets.pages.harmonization.inc',
+//       'page callback' => 'mica_datasets_import_variables_callback',
+//       'access arguments' => TRUE,
+//       'type' => MENU_CALLBACK,
+//   );
+  
+//   $items['mica_datasets_harmonization/ajax'] = array(
+//     	'file' => 'mica_datasets.pages.harmonization.inc',
+//       'page callback' => 'mica_datasets_import_variables_callback',
+//     	'page arguments' => array(2, 3, NULL),
+//       'access arguments' => TRUE,
+//       'type' => MENU_CALLBACK,
+//   );
+  
+//   $items['mica_datasets_harmonization/ajax/%/%'] = array(
+//   	'file' => 'mica_datasets.pages.harmonization.inc',
+//     'page callback' => 'mica_datasets_import_variables_callback',
+//   	'page arguments' => array(2, 3, NULL),
+//     'access arguments' => TRUE,
+//     'type' => MENU_CALLBACK,
+//   );
+  
+  $items['mica_datasets_harmonization/ajax/%/%/%'] = array(
+    'page callback' => 'mica_datasets_import_variables_callback',
+    'page arguments' => array(2, 3, 4),
+		'access callback' => '_mica_datasets_node_access',
+    'access arguments' => array(3, 'dataset', 'update'),
     'type' => MENU_CALLBACK,
   );
   
-  $items['mica_datasets_harmonization/ajax/%/%/%'] = array(
-  	'file' => 'mica_datasets.pages.harmonization.inc',
-    'page callback' => 'mica_datasets_harmonization_refresh_callback',
-    'page arguments' => array(2, 3, 4),
-    'access arguments' => TRUE,
+  $items['mica_datasets_harmonization/ajax/%/%'] = array(
+    'page callback' => 'mica_datasets_import_variables_callback',
+    'page arguments' => array(2, 3),
+		'access callback' => '_mica_datasets_node_access',
+    'access arguments' => array(3, 'dataset', 'update'),
     'type' => MENU_CALLBACK,
   );
   
@@ -369,6 +394,19 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
                 )
               )
             ),
+          );
+          
+          // import variables
+          $links['import-variables'] = array(
+            '#theme' => 'menu_local_action',
+            '#weight' => 7,
+            '#link' => array(
+              'title' => t('Import Opal Variables'),
+              'href' => 'mica_datasets_harmonization/ajax/nojs/' . $node->nid,
+              'localized_options' => array(
+              	'attributes' => array('class' => array('use-ajax'))
+              ),
+            )
           );
         }
 
@@ -1774,4 +1812,100 @@ function _mica_datasets_get_status_icon($status){
     default: 
       return MICA_HARMONIZATION_UNDETERMINED;
   }
+}
+
+function mica_datasets_import_variables_callback($type = 'ajax', $dataset_nid, $study_nid = NULL){
+
+	if (isset($study_nid)){
+		$study_nids = array($study_nid);
+	}
+	else{
+		// fetch all study_nids of the dataset
+		$dataset = entity_load_single('node', $dataset_nid);
+		$dataset_wrapper = entity_metadata_wrapper('node', $dataset);
+
+		foreach ($dataset_wrapper->field_dataset_studies->value() as $study){
+			$study_nids[] = $study->nid;
+		}
+	}
+
+	foreach($study_nids as $nid){
+	  debug($dataset_nid);
+	  debug($nid);
+		$harmonizations = _mica_opal_fetch_harmonization_view($dataset_nid, $nid);
+
+		global $user;
+		$position = 1;
+		$query = new EntityFieldQuery();
+
+		foreach($harmonizations['variables'] as $harmonization){
+			$result = $query->entityCondition('entity_type', 'node')
+			->entityCondition('bundle', 'variable')
+			->propertyCondition('title', $harmonization['title'])
+			->fieldCondition('field_dataset', 'nid', $harmonizations['dataset_nid'])
+			->execute();
+
+			if (empty($result)){
+				$infos = array(
+  			  'type' => 'variable',
+  			  'title' =>  $harmonization['title'],
+  			  'language' => LANGUAGE_NONE,
+  			  'uid' => $user->uid,
+  			  'status' => 0,// sva should be draft by default
+  			  'menu' => '',
+  			  'field_dataset' => $harmonizations['dataset_nid'],
+				);
+
+				$variable = entity_property_values_create_entity('node', $infos);
+				$variable->save();
+
+			}else{
+				$variable = entity_load_single('node', array_shift(array_keys($result['node'])));
+			}
+
+			$wrapper = entity_metadata_wrapper('node', $variable);
+			$wrapper->field_label->set($harmonization['label']);
+			$wrapper->field_value_type->set($harmonization['value_type']);
+			$wrapper->field_position->set($position++);
+			$wrapper->body->value->set($harmonization['description']);
+
+			// Update categories
+			if (!empty($harmonization['categories'])){
+				//  clear existing categories
+				$size = count($wrapper->field_variable_categories->value());
+				for ($i = 0; $i < $size; $i++){
+					unset($wrapper->field_variable_categories[$i]);
+				}
+
+				for ($i = 0; $i < count($harmonization['categories']); $i++) {
+					$wrapper->field_variable_categories[$i]->name->set($harmonization['categories'][$i]['name']);
+					$wrapper->field_variable_categories[$i]->label->set($harmonization['categories'][$i]['label']);
+					$wrapper->field_variable_categories[$i]->missing->set($harmonization['categories'][$i]['missing']);
+				}
+			}
+
+			// Update study_variable_attributes
+			foreach ($wrapper->field_variable_study_var_att->value() as $study_variable_attributes){
+				$sva = entity_metadata_wrapper('node', $study_variable_attributes);
+
+				if ($sva->field_sva_study->nid->value() === $harmonizations['study_nid']){
+					$sva->field_sva_script->set($harmonization['script']);
+					$sva->field_sva_status->set($harmonization['status']);
+					$sva->field_sva_comment->set($harmonization['comment']);
+
+					$sva->save();
+				}
+			}
+
+			$wrapper->save();
+		}
+	}
+
+	drupal_set_message(t('Harmonization variables have been refreshed.'));
+
+	ctools_include('ajax');
+	ctools_add_js('ajax-responder');
+	$commands[] = ctools_ajax_command_reload(); //region-content
+	print ajax_render($commands);
+	exit;
 }

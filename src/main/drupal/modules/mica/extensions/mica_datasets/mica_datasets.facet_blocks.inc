@@ -38,6 +38,7 @@ function mica_datasets_configure_facet_blocks() {
       'field_dataset',
   		'field_dataset:field_dataset_studies',
       'field_data_source',
+      'field_individual_participant_mea',
       'field_disease_history',
       'field_medical_health_interv',
       'field_medication',
@@ -51,12 +52,13 @@ function mica_datasets_configure_facet_blocks() {
       'field_anthropometric_structures',
       'field_body_structures',
       'field_body_functions',
-      'field_period',
+      'field_laboratory_measures',
+      'field_essence',
       'field_target',
+      'field_period',
+      'field_measure',
       'field_value_type',
       'field_repeatable',
-      'field_essence',
-      'field_measure',
     )
   );
 

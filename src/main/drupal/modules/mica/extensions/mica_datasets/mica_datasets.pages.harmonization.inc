@@ -3,21 +3,21 @@
 /*
  * Menu for callback of refresh harmonization
  */
-function mica_datasets_harmonization_menu(){
- $items = array();
- $items['mica/mica_datasets_harmonization/ajax'] = array(
- 	'page callback' => 'mica_datasets_harmonization_ajax_callback',
-  'access arguments' => TRUE,
-  'type' => MENU_CALLBACK,
- );
- $items['/mica/mica_datasets_harmonization/ajax/%'] = array(
-     'page callback' => 'mica_datasets_harmonization_ajax_callback',
-     'page arguments' => array(2, 3),
-     'access arguments' => TRUE,
-     'type' => MENU_CALLBACK,
- );
- return $items;
-}
+// function mica_datasets_harmonization_menu(){
+//  $items = array();
+//  $items['mica/mica_datasets_harmonization/ajax'] = array(
+//  	'page callback' => 'mica_datasets_harmonization_ajax_callback',
+//   'access arguments' => TRUE,
+//   'type' => MENU_CALLBACK,
+//  );
+//  $items['mica/mica_datasets_harmonization/ajax/%'] = array(
+//      'page callback' => 'mica_datasets_harmonization_ajax_callback',
+//      'page arguments' => array(2, 3),
+//      'access arguments' => TRUE,
+//      'type' => MENU_CALLBACK,
+//  );
+//  return $items;
+// }
 
 /**
  * Display queries.
@@ -173,112 +173,6 @@ function mica_datasets_harmonization_legend_form($form, $form_state) {
   );
 
   return $form;
-}
-
-function mica_datasets_harmonization_refresh_form($form, &$form_state, $dataset_nid, $study_nid) {  
-  $connector = mica_dataset_connector_query($dataset_nid, $study_nid);
-  if ($connector){
-    // See http://www.jide.fr/english/using-ajax-in-drupal-7-outside-of-form-api
-    drupal_add_library('system', 'drupal.ajax');
-    drupal_add_library('system', 'jquery.form');
-    $ajax_link = l("<img src='".MICA_HARMONIZATION_REFRESH."' />", 'mica_datasets_harmonization/ajax/nojs/' . $dataset_nid . '/' .$study_nid, array('html' => TRUE, 'attributes' => array('class' => array('use-ajax'))));
-    
-    $form['refresh'] = array(
-      '#type' => 'markup',
-      '#markup' => $ajax_link//,
-    );
-    $form['study_nid'] = array(
-      '#type' => 'hidden',
-      '#value' => $study_nid,
-    );
-    $form['dataset_nid'] = array(
-      '#type' => 'hidden',
-      '#value' => $dataset_nid,
-    );
-  }
-  else{
-    $form['refresh'] = array('#markup' => '&nbsp;');
-  }
-  return $form;
-}
-
-
-function mica_datasets_harmonization_refresh_callback($type = 'ajax', $dataset_nid, $study_nid){
-
-  $harmonizations = _mica_opal_fetch_harmonization_view($dataset_nid, $study_nid);
-    
-  global $user;
-  $position = 1;
-  foreach($harmonizations['variables'] as $harmonization){
-    $query = new EntityFieldQuery();
-    
-		$result = $query->entityCondition('entity_type', 'node')
-  		->entityCondition('bundle', 'variable')
-  		->propertyCondition('title', $harmonization['title'])
-  		->fieldCondition('field_dataset', 'nid', $harmonizations['dataset_nid'])
-  		->execute();
-    
-    if (empty($result)){
-			$infos = array(
-			  'type' => 'variable',
-			  'title' =>  $harmonization['title'],
-			  'language' => LANGUAGE_NONE,
-			  'uid' => $user->uid,
-			  'status' => 0,// sva should be draft by default
-			  'menu' => '',
-			  'field_dataset' => $harmonizations['dataset_nid'],
-			);
-
-			$variable = entity_property_values_create_entity('node', $infos);
-			$variable->save();
-
-    }else{
-		  $variable = entity_load_single('node', array_shift(array_keys($result['node'])));
-		}
-		
-		$wrapper = entity_metadata_wrapper('node', $variable);
-		$wrapper->field_label->set($harmonization['label']);
-		$wrapper->field_value_type->set($harmonization['value_type']);
-    $wrapper->field_position->set($position++);
-    $wrapper->body->value->set($harmonization['description']);
-    
-    // Update categories
-    if (!empty($harmonization['categories'])){
-    	//  clear existing categories
-			$size = count($wrapper->field_variable_categories->value());
-			for ($i = 0; $i < $size; $i++){
-				unset($wrapper->field_variable_categories[$i]);
-			}
-    
-    	for ($i = 0; $i < count($harmonization['categories']); $i++) {
-				$wrapper->field_variable_categories[$i]->name->set($harmonization['categories'][$i]['name']);
-				$wrapper->field_variable_categories[$i]->label->set($harmonization['categories'][$i]['label']);
-				$wrapper->field_variable_categories[$i]->missing->set($harmonization['categories'][$i]['missing']);
-    	}
-    }
-    
-    // Update study_variable_attributes
-		foreach ($wrapper->field_variable_study_var_att->value() as $study_variable_attributes){
-			$sva = entity_metadata_wrapper('node', $study_variable_attributes);
-
-			if ($sva->field_sva_study->nid->value() === $harmonizations['study_nid']){
-				$sva->field_sva_script->set($harmonization['script']);
-				$sva->field_sva_status->set($harmonization['status']);
-				$sva->field_sva_comment->set($harmonization['comment']);
-				
-				$sva->save();
-			}
-		}
-		
-    $wrapper->save();
-  }
-  drupal_set_message(t('Harmonization variables have been refreshed.'));
-
-  ctools_include('ajax');
-  ctools_add_js('ajax-responder');
-  $commands[] = ctools_ajax_command_reload(); //region-content
-  print ajax_render($commands);
-  exit;
 }
 
 function sort_by_position($x, $y) {

@@ -15,6 +15,8 @@ function _mica_datasets_taxonomies() {
   	array('disease_history.csv', 'Diseases history and related health problems'),
   	array('early_life.csv', 'Participant\'s early life/Childhood'),
   	array('essence.csv', 'Essence'),
+	  array('individual_participant_measures.csv', 'Individual Participant Measures'),
+	  array('laboratory_measures.csv', 'Laboratory Measures'),
   	array('life_habits_behaviours.csv', 'Life habits/Behaviours'),
   	array('measure.csv', 'Measure'),
   	array('medical_health_intervention.csv', 'Medical health interventions/Health services utilization'),
