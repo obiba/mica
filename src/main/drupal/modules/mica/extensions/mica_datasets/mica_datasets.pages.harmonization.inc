@@ -70,7 +70,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
     // get the ids of all study_variable_attributes and load at once
     $svids = array();
     foreach ($variables as $variable) {
-      if (!empty($variable->field_variable_study_var_att[$variable->language])) {
+      if (isset($variable->field_variable_study_var_att[$variable->language])) {
         foreach ($variable->field_variable_study_var_att[$variable->language] as $study_variable_attributes) {
           $svids[] = $study_variable_attributes['nid'];
         }
@@ -177,8 +177,8 @@ function mica_datasets_harmonization_legend_form($form, $form_state) {
 
 function sort_by_position($x, $y) {
   // TODO use entity_metadata_wrapper
-  $x_pos = $x->field_position['und'][0]['value'];
-  $y_pos = $y->field_position['und'][0]['value'];
+  $x_pos = isset($x->field_position['und'][0]['value'])? $x->field_position['und'][0]['value']: 9999;
+  $y_pos = isset($y->field_position['und'][0]['value']) ? $y->field_position['und'][0]['value']: 9999;
   if ($x_pos === $y_pos) {
     return 0;
   }
