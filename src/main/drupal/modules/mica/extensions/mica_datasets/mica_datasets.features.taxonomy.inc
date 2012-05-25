@@ -170,6 +170,52 @@ function mica_datasets_taxonomy_default_vocabularies() {
         ),
       ),
     ),
+    'individual_participant_measures' => array(
+      'name' => 'Individual Participant Measures',
+      'machine_name' => 'individual_participant_measures',
+      'description' => NULL,
+      'hierarchy' => '0',
+      'module' => 'taxonomy',
+      'weight' => '0',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'laboratory_measures' => array(
+      'name' => 'Laboratory Measures',
+      'machine_name' => 'laboratory_measures',
+      'description' => NULL,
+      'hierarchy' => '0',
+      'module' => 'taxonomy',
+      'weight' => '0',
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
     'life_habits_behaviours' => array(
       'name' => 'Life habits/Behaviours',
       'machine_name' => 'life_habits_behaviours',

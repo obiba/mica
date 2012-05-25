@@ -183,6 +183,16 @@ function mica_datasets_feeds_importer_default() {
             'target' => 'field_measure',
             'unique' => FALSE,
           ),
+          29 => array(
+            'source' => 'individual_participant_measures',
+            'target' => 'field_individual_participant_mea',
+            'unique' => FALSE,
+          ),
+          30 => array(
+            'source' => 'laboratory_measures',
+            'target' => 'field_laboratory_measures',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',

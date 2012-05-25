@@ -264,6 +264,8 @@ function mica_datasets_field_group_info() {
       15 => 'field_social_environment',
       16 => 'field_sociodemographic_charact',
       17 => 'field_target',
+      18 => 'field_individual_participant_mea',
+      19 => 'field_laboratory_measures',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -309,6 +311,8 @@ function mica_datasets_field_group_info() {
       15 => 'field_social_environment',
       16 => 'field_sociodemographic_charact',
       17 => 'field_target',
+      18 => 'field_individual_participant_mea',
+      19 => 'field_laboratory_measures',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -1525,7 +1525,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '16',
+          'weight' => '17',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1635,7 +1635,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '18',
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1745,7 +1745,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '17',
+          'weight' => '18',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2118,7 +2118,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2144,7 +2144,7 @@ function mica_datasets_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '44',
+        'weight' => '45',
       ),
     ),
   );
@@ -2228,7 +2228,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '10',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2254,7 +2254,7 @@ function mica_datasets_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '48',
+        'weight' => '49',
       ),
     ),
   );
@@ -2338,7 +2338,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '19',
+          'weight' => '21',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2363,7 +2363,105 @@ function mica_datasets_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '58',
+        'weight' => '59',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-variable-field_individual_participant_mea'
+  $fields['node-variable-field_individual_participant_mea'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_individual_participant_mea',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'individual_participant_measures',
+            'parent' => '0',
+          ),
+        ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'variable',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 23,
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => '6',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_individual_participant_mea',
+      'label' => 'Individual Participant Measures',
+      'required' => FALSE,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'autocomplete_deluxe',
+        'settings' => array(
+          'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+          'size' => 60,
+        ),
+        'type' => 'autocomplete_deluxe_taxonomy',
+        'weight' => '44',
       ),
     ),
   );
@@ -2491,6 +2589,115 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-variable-field_laboratory_measures'
+  $fields['node-variable-field_laboratory_measures'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_laboratory_measures',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'laboratory_measures',
+            'parent' => '0',
+          ),
+        ),
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => 'text',
+        ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'variable',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 24,
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => '20',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_laboratory_measures',
+      'label' => 'Laboratory Measures',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'autocomplete_deluxe',
+        'settings' => array(
+          'autocomplete_deluxe_path' => 'autocomplete_deluxe/taxonomy',
+          'size' => '60',
+        ),
+        'type' => 'autocomplete_deluxe_taxonomy',
+        'weight' => '58',
+      ),
+    ),
+  );
+
   // Exported field: 'node-variable-field_life_habits_behaviours'
   $fields['node-variable-field_life_habits_behaviours'] = array(
     'field_config' => array(
@@ -2570,7 +2777,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '11',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2596,7 +2803,7 @@ function mica_datasets_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '49',
+        'weight' => '50',
       ),
     ),
   );
@@ -2680,7 +2887,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '22',
+          'weight' => '24',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2706,7 +2913,7 @@ function mica_datasets_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '61',
+        'weight' => '62',
       ),
     ),
   );
@@ -2790,7 +2997,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2816,7 +3023,7 @@ function mica_datasets_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '45',
+        'weight' => '46',
       ),
     ),
   );
@@ -2900,7 +3107,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2926,7 +3133,7 @@ function mica_datasets_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '46',
+        'weight' => '47',
       ),
     ),
   );
@@ -3010,7 +3217,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '15',
+          'weight' => '16',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3120,7 +3327,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '21',
+          'weight' => '23',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3145,7 +3352,7 @@ function mica_datasets_field_default_fields() {
           'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '60',
+        'weight' => '61',
       ),
     ),
   );
@@ -3229,7 +3436,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '13',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3566,7 +3773,7 @@ Set to 0 to set variable at last position.  ',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '9',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3592,7 +3799,7 @@ Set to 0 to set variable at last position.  ',
           'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '47',
+        'weight' => '48',
       ),
     ),
   );
@@ -3676,7 +3883,7 @@ Set to 0 to set variable at last position.  ',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '14',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3786,7 +3993,7 @@ Set to 0 to set variable at last position.  ',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '12',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3896,7 +4103,7 @@ Set to 0 to set variable at last position.  ',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_plain',
-          'weight' => '20',
+          'weight' => '22',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3922,7 +4129,7 @@ Set to 0 to set variable at last position.  ',
           'size' => '40',
         ),
         'type' => 'autocomplete_deluxe_taxonomy',
-        'weight' => '59',
+        'weight' => '60',
       ),
     ),
   );
@@ -4000,7 +4207,7 @@ Set to 0 to set variable at last position.  ',
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4338,7 +4545,7 @@ Set to 0 to set variable at last position.  ',
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4380,7 +4587,9 @@ Set to 0 to set variable at last position.  ',
   t('Description');
   t('Diseases History and Related Health Problems');
   t('Essence');
+  t('Individual Participant Measures');
   t('Label');
+  t('Laboratory Measures');
   t('Life Habits/Behaviours');
   t('Measure');
   t('Medical Health Interventions/Health Services Utilization');

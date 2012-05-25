@@ -21,7 +21,7 @@ function mica_datasets_menu_default_menu_links() {
         'title' => '',
       ),
       'alter' => TRUE,
-      'unaltered_hidden' => 0,
+      'unaltered_hidden' => '0',
     ),
     'module' => 'menu',
     'hidden' => '0',
