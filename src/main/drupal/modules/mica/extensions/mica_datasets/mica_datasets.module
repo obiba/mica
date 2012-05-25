@@ -1622,7 +1622,7 @@ function _mica_datasets_set_variable_position(&$variable) {
 function _mica_datasets_add_study_variable_attributes_to(&$variable) {
   $wrapper_variable = entity_metadata_wrapper('node', $variable);
   $wrapper_dataset = entity_metadata_wrapper('node', $wrapper_variable->field_dataset->nid->value());
-  if ($wrapper_dataset->field_dataset_studies->count() != 0) {
+  if ($wrapper_dataset->field_dataset_studies->count() != 0 && $wrapper_dataset->field_dataset_type->value() === 'harmonization') {
     $studies = array();
     foreach ($wrapper_dataset->field_dataset_studies as $wrapper_study) {
       array_push($studies, $wrapper_study);
@@ -1696,6 +1696,7 @@ function _mica_datasets_remove_and_save_element_from_entity_list_wrapper(&$entit
 }
 
 function mica_datasets_node_view($node, $view_mode) {
+  debug($node, NULL, TRUE);
   if ($node->type === 'study_variable_attributes') {
     // add icon to script status
     $status_values = field_info_field('field_sva_status');

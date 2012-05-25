@@ -205,34 +205,37 @@ function _mica_datasets_study_variable_attributes(&$study, &$dataset) {
   $wrapper_study = entity_metadata_wrapper('node', $study);
   $wrapper_dataset = entity_metadata_wrapper('node', $dataset);
 
-  $query = new EntityFieldQuery();
-  $results = $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'study_variable_attributes')
-    ->fieldCondition('field_sva_study', 'nid', $wrapper_study->nid->value())
-    ->execute();
+  if ($wrapper_dataset->field_dataset_type->value() === 'harmonization') {
+    $query = new EntityFieldQuery();
+    $results = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'study_variable_attributes')
+      ->fieldCondition('field_sva_study', 'nid', $wrapper_study->nid->value())
+      ->execute();
 
-  $study_variable_attributes = array();
-  if (empty($results['node']) == FALSE) {
-    $study_variable_attributes = entity_load('node', array_keys($results['node']));
-  }
+    $study_variable_attributes = array();
+    if (empty($results['node']) == FALSE) {
+      $study_variable_attributes = entity_load('node', array_keys($results['node']));
+    }
 
-  $variables = array();
-  foreach ($wrapper_dataset->field_dataset_variables as $wrapper_variable) {
-    $exist = FALSE;
-    foreach ($study_variable_attributes as $sv) {
-      $wrapper_sv = entity_metadata_wrapper('node', $sv);
-      if ($wrapper_sv->field_sva_variable->nid->value() === $wrapper_variable->nid->value()
-        && $wrapper_sv->field_sva_study->nid->value() === $wrapper_study->nid->value()) {
-        $exist = TRUE;
+    $variables = array();
+    foreach ($wrapper_dataset->field_dataset_variables as $wrapper_variable) {
+      $exist = FALSE;
+      foreach ($study_variable_attributes as $sv) {
+        $wrapper_sv = entity_metadata_wrapper('node', $sv);
+        if ($wrapper_sv->field_sva_variable->nid->value() === $wrapper_variable->nid->value()
+          && $wrapper_sv->field_sva_study->nid->value() === $wrapper_study->nid->value()
+        ) {
+          $exist = TRUE;
+        }
+      }
+      if (!$exist) {
+        array_push($variables, $wrapper_variable);
       }
     }
-    if (!$exist) {
-      array_push($variables, $wrapper_variable);
-    }
-  }
 
-  if (isset($variables)) {
-    _mica_datasets_create_study_variable_attributes_for_study($wrapper_study, $variables);
+    if (isset($variables)) {
+      _mica_datasets_create_study_variable_attributes_for_study($wrapper_study, $variables);
+    }
   }
 }
 
