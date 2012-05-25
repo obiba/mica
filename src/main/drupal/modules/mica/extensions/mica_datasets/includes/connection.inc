@@ -248,6 +248,24 @@ abstract class MicaDatasetElasticSearchConnection extends MicaDatasetAbstractCon
    */
   protected abstract function sendQuery($query);
 
+  /**
+   * Given a query term, get with which field it is indexed in ES.
+   * @param QueryTermInterface $term
+   * @return the field name string
+   */
+  protected function getFieldName(QueryTermInterface $term) {
+    return $this->getFieldNameMapping($term->getFieldName());
+  }
+
+  /**
+   * Given a expected field name, allow mapping to a study specific field name. Default implementation is identity,
+   * @param $fieldname
+   * @return the field name string
+   */
+  protected function getFieldNameMapping($fieldname) {
+    return $fieldname;
+  }
+
   public function query($terms) {
 
     $facets = array();
@@ -282,12 +300,13 @@ abstract class MicaDatasetElasticSearchConnection extends MicaDatasetAbstractCon
   }
 
   public function facetTerm(QueryTermInterface $term) {
+    $fieldname = $this->getFieldName($term);
     switch ($term->getType()) {
       case 'CategoryTerm' :
         $facets = <<< END
       "{$term->getName()}" : {
         "terms" : {
-          "field" : "{$term->getFieldName()}",
+          "field" : "{$fieldname}",
           "size": 1000,
           "all_fields" : true
         }
@@ -298,7 +317,7 @@ END;
         $facets = <<< END
       "{$term->getName()}" : {
         "statistical" : {
-          "field" : "{$term->getFieldName()}"
+          "field" : "{$fieldname}"
         }
       }
 END;
@@ -340,11 +359,11 @@ END;
   }
 
   private function asFilter(QueryTermInterface $term) {
-
+    $fieldname = $this->getFieldName($term);
     // The default filter
     $filter = <<< END
   "exists" : {
-    "field" : "{$term->getFieldName()}"
+    "field" : "{$fieldname}"
   }
 END;
     switch ($term->getType()) {
@@ -353,7 +372,7 @@ END;
           $terms = '"' . implode('","', $term->categories()) . '"';
           $filter = <<< END
   "terms" : {
-    "{$term->getFieldName()}":[$terms]
+    "{$fieldname}":[$terms]
   }
 END;
         }
@@ -365,7 +384,7 @@ END;
           if (isset($range['value'])) {
             $filter = <<< END
   "term" : {
-    "{$term->getFieldName()}": {$range['value']}
+    "{$fieldname}": {$range['value']}
   }
 END;
           }
@@ -382,7 +401,7 @@ END;
             $boundStr = implode(',', $bounds);
             $filter = <<< END
   "numeric_range" : {
-    "{$term->getFieldName()}": {
+    "{$fieldname}": {
     {$boundStr}
     }
   }

@@ -6,6 +6,8 @@
 
 class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection {
 
+  protected $fieldname_map;
+
   public function __construct(MicaDatasetConnector $connector) {
     parent::__construct($connector);
   }
@@ -98,6 +100,54 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
     $url = $study_node->mica_opal[$study_node->language][0]['url'];
     $url .= "/ws/datasource/" . $connector->options['datasource'] . '/table/' . $connector->options['table'] . "/" . $resource;
     return $url;
+  }
+
+  protected function getFieldNameMapping($fieldname) {
+    if (!is_array($this->fieldname_map)) {
+      $this->requestFieldNameMapping();
+    }
+
+    // if mapping is defined return it, otherwise return identity
+    if (array_key_exists($fieldname,$this->fieldname_map)) {
+      return $this->fieldname_map[$fieldname];
+    } else {
+      return $fieldname;
+    }
+  }
+
+  /**
+   * Get the field name mapping from Opal if this is defined.
+   */
+  private function requestFieldNameMapping() {
+      $url = $this->getTableResourceURI("index/_schema");
+
+      $get = new HttpClientRequest($url, array(
+          'method' => 'GET',
+          'headers' => array('Accept' => array('application/json')),
+          'parameters' => array(),
+      ));
+
+      $this->fieldname_map = array();
+      try {
+          $client = $this->client();
+          $schema = json_decode($client->execute($get), TRUE);
+          //debug($schema);
+          if (is_array($schema['keys'])) {
+              $keys = $schema['keys'];
+              $values = $schema['values'];
+              $count = count($keys);
+              foreach($keys as $idx => $key) {
+                $this->fieldname_map[$key] = $values[$idx];
+                // do not know why it goes in infinite loop
+                if ($idx>=$count) {
+                    break;
+                }
+              }
+          }
+      } catch (HttpClientException $e) {
+          // ignore
+      }
+      //debug($this->fieldname_map);
   }
 
   protected function sendQuery($query) {
