@@ -624,12 +624,15 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query) {
     $row = array(array('data' => $study->title));
     try {
       $result = $connector->query($terms);
-      $row[] = $result['total']['_all'];
+      $total = $result['total']['_all'];
+      $row[] = $total;
       foreach ($terms as $t) {
         $impl = $t->termImpl();
-        $row[] = $result[$impl->getName()]['_all'];
+        $count = $result[$impl->getName()]['_all'];
+        $row[] = array('data' => mica_datasets_dataset_query_count_str($count,$total), 'count' => $count);
       }
-      $row[] = array('data' => $result['_matched']['_all'], 'class' => array('active'));
+      $count = $result['_matched']['_all'];
+      $row[] = array('data' => mica_datasets_dataset_query_count_str($count,$total), 'count' => $count, 'class' => array('active'));
       $rows[] = array('data' => $row);
     } catch (Exception $e) {
       $connector->displayError($e);
@@ -643,9 +646,20 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query) {
       foreach ($row['data'] as $key => $value) {
         if ($key == 0) continue;
         if (isset($totals[$key]) == FALSE) {
-          $totals[$key] = array('data' => 0, 'class' => 'active');
+          $totals[$key] = array('data' => 0, 'count' => 0, 'class' => 'active');
         }
-        $totals[$key]['data'] += isset($value['data']) ? $value['data'] : $value;
+        $totals[$key]['count'] += isset($value['count']) ? $value['count'] : $value;
+      }
+    }
+    // We have the count sums, now build the count display strings (i.e. with percentage)
+    $totals_count = 0;
+    foreach ($totals as $key => $value) {
+      if ($key == 0) continue;
+      if ($key == 1) {
+        $totals_count = $totals[$key]['count'];
+        $totals[$key]['data'] = $totals_count;
+      } else {
+        $totals[$key]['data'] = mica_datasets_dataset_query_count_str($totals[$key]['count'],$totals_count);
       }
     }
     $rows[] = array('data' => $totals, 'class' => array('active'));
@@ -659,6 +673,20 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query) {
   }
 
   return $description . theme('table', array("header" => $columns, "rows" => $rows, 'attributes' => array('class' => array('query-table')), 'empty' => t('No connectors available')));
+}
+
+/**
+ * Display the count with the percentage (if applicable).
+ * @param $count
+ * @param $total
+ * @return string
+ */
+function mica_datasets_dataset_query_count_str($count,$total) {
+  $data = $count;
+  if (isset($count) && $total>0) {
+    $data = $count . '<br/>(' . (100*$count/$total) . '%)';
+  }
+  return $data;
 }
 
 //
