@@ -1783,110 +1783,111 @@ function _mica_datasets_get_status_icon($status) {
   }
 }
 
-function mica_datasets_import_variables_callback($type = 'ajax', $dataset_nid, $study_nid = NULL){
+function mica_datasets_import_variables_callback($type = 'ajax', $dataset_nid, $study_nid = NULL) {
 
-	if (isset($study_nid)){
-		$study_nids = array($study_nid);
-	}
-	else{
-		// fetch all study_nids of the dataset
-		$dataset = entity_load_single('node', $dataset_nid);
-		$dataset_wrapper = entity_metadata_wrapper('node', $dataset);
+  if (isset($study_nid)) {
+    $study_nids = array($study_nid);
+  }
+  else {
+    // fetch all study_nids of the dataset
+    $dataset = entity_load_single('node', $dataset_nid);
+    $dataset_wrapper = entity_metadata_wrapper('node', $dataset);
 
-		foreach ($dataset_wrapper->field_dataset_studies->value() as $study){
-			$study_nids[] = $study->nid;
-		}
-	}
+    foreach ($dataset_wrapper->field_dataset_studies->value() as $study) {
+      $study_nids[] = $study->nid;
+    }
+  }
 
-	$batch = array(
-		'finished' => 'mica_datasets_create_variables_finished',
+  $batch = array(
+    'finished' => 'mica_datasets_create_variables_finished',
     'title' => t('Importing Variables'),
     'init_message' => t('Import of variables is starting.'),
     'progress_message' => t('Processed @current out of @total.'),
     'error_message' => t('Import of variables has encountered an error.'),
     'file' => drupal_get_path('module', 'mica_datasets') . '/mica_datasets.module',
-	);
-	
-	foreach($study_nids as $nid){
-		$harmonizations = _mica_opal_fetch_harmonization_view($dataset_nid, $nid);
+  );
 
-		$batch['operations'][] = array('mica_datasets_create_variables', array($harmonizations));
-	}
-	drupal_set_message('Import of variables in background');
-	
-	batch_set($batch);
-	background_batch_process_batch();
+  foreach ($study_nids as $nid) {
+    $harmonizations = _mica_opal_fetch_harmonization_view($dataset_nid, $nid);
+
+    $batch['operations'][] = array('mica_datasets_create_variables', array($harmonizations));
+  }
+  drupal_set_message('Import of variables in background');
+
+  batch_set($batch);
+  background_batch_process_batch();
 }
 
-function mica_datasets_create_variables($harmonizations){
+function mica_datasets_create_variables($harmonizations) {
   global $user;
   $position = 1;
-  
-  foreach($harmonizations['variables'] as $harmonization){
-    
+
+  foreach ($harmonizations['variables'] as $harmonization) {
+
     $query = new EntityFieldQuery();
-  	$result = $query->entityCondition('entity_type', 'node')
-  	->entityCondition('bundle', 'variable')
-  	->propertyCondition('title', $harmonization['title'])
-  	->fieldCondition('field_dataset', 'nid', $harmonizations['dataset_nid'])
-  	->execute();
-  
-  	if (empty($result)){
-  		$infos = array(
-			  'type' => 'variable',
-			  'title' =>  $harmonization['title'],
-			  'language' => LANGUAGE_NONE,
-			  'uid' => $user->uid,
-			  'status' => 0,// sva should be draft by default
-			  'menu' => '',
-			  'field_dataset' => $harmonizations['dataset_nid'],
-  		);
-  
-  		$variable = entity_property_values_create_entity('node', $infos);
-  		$variable->save();
-  
-  	}else{
-  		$variable = entity_load_single('node', array_shift(array_keys($result['node'])));
-  	}
-  
-  	$wrapper = entity_metadata_wrapper('node', $variable);
-  	$wrapper->field_label->set($harmonization['label']);
-  	$wrapper->field_value_type->set($harmonization['value_type']);
-  	$wrapper->field_position->set($position++);
-  	$wrapper->body->value->set($harmonization['description']);
-  
-  	// Update categories
-  	if (!empty($harmonization['categories'])){
-  		//  clear existing categories
-  		$size = count($wrapper->field_variable_categories->value());
-  		for ($i = 0; $i < $size; $i++){
-  			unset($wrapper->field_variable_categories[$i]);
-  		}
-  
-  		for ($i = 0; $i < count($harmonization['categories']); $i++) {
-  			$wrapper->field_variable_categories[$i]->name->set($harmonization['categories'][$i]['name']);
-  			$wrapper->field_variable_categories[$i]->label->set($harmonization['categories'][$i]['label']);
-  			$wrapper->field_variable_categories[$i]->missing->set($harmonization['categories'][$i]['missing']);
-  		}
-  	}
-  
-  	// Update study_variable_attributes
-  	foreach ($wrapper->field_variable_study_var_att->value() as $study_variable_attributes){
-  		$sva = entity_metadata_wrapper('node', $study_variable_attributes);
-  
-  		if ($sva->field_sva_study->nid->value() === $harmonizations['study_nid']){
-  			$sva->field_sva_script->set($harmonization['script']);
-  			$sva->field_sva_status->set($harmonization['status']);
-  			$sva->field_sva_comment->set($harmonization['comment']);
-  
-  			$sva->save();
-  		}
-  	}
-  
-  	$wrapper->save();
+    $result = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'variable')
+      ->propertyCondition('title', $harmonization['title'])
+      ->fieldCondition('field_dataset', 'nid', $harmonizations['dataset_nid'])
+      ->execute();
+
+    if (empty($result)) {
+      $infos = array(
+        'type' => 'variable',
+        'title' => $harmonization['title'],
+        'language' => LANGUAGE_NONE,
+        'uid' => $user->uid,
+        'status' => 0, // sva should be draft by default
+        'menu' => '',
+        'field_dataset' => $harmonizations['dataset_nid'],
+      );
+
+      $variable = entity_property_values_create_entity('node', $infos);
+      $variable->save();
+
+    }
+    else {
+      $variable = entity_load_single('node', array_shift(array_keys($result['node'])));
+    }
+
+    $wrapper = entity_metadata_wrapper('node', $variable);
+    $wrapper->field_label->set($harmonization['label']);
+    $wrapper->field_value_type->set($harmonization['value_type']);
+    $wrapper->field_position->set($position++);
+    $wrapper->body->value->set($harmonization['description']);
+
+    // Update categories
+    if (!empty($harmonization['categories'])) {
+      //  clear existing categories
+      $size = count($wrapper->field_variable_categories->value());
+      for ($i = 0; $i < $size; $i++) {
+        unset($wrapper->field_variable_categories[$i]);
+      }
+
+      for ($i = 0; $i < count($harmonization['categories']); $i++) {
+        $wrapper->field_variable_categories[$i]->name->set($harmonization['categories'][$i]['name']);
+        $wrapper->field_variable_categories[$i]->label->set($harmonization['categories'][$i]['label']);
+        $wrapper->field_variable_categories[$i]->missing->set($harmonization['categories'][$i]['missing']);
+      }
+    }
+
+    // Update study_variable_attributes
+    foreach ($wrapper->field_variable_study_var_att->value() as $study_variable_attributes) {
+      $sva = entity_metadata_wrapper('node', $study_variable_attributes);
+
+      if ($sva->field_sva_study->nid->value() === $harmonizations['study_nid']) {
+        $sva->field_sva_script->set($harmonization['script']);
+        $sva->field_sva_status->set($harmonization['status']);
+        $sva->field_sva_comment->set($harmonization['comment']);
+
+        $sva->save();
+      }
+    }
+
+    $wrapper->save();
   }
 }
 
-function mica_datasets_create_variables_finished(){
+function mica_datasets_create_variables_finished() {
   drupal_set_message('Import finished');
 }
