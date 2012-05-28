@@ -1317,6 +1317,19 @@ function mica_datasets_node_presave($node) {
     case 'variable':
       _mica_datasets_set_variable_position($node);
       break;
+    case 'dataset':
+      $dataset = entity_metadata_wrapper('node', $node);
+      if ($dataset->field_dataset_type->value() === 'harmonization') {
+        foreach ($dataset->field_dataset_studies as $study) {
+          _mica_datasets_create_svas($study->value(), $dataset->value());
+        }
+      }
+      else {
+        foreach ($dataset->field_dataset_studies as $study) {
+          _mica_datasets_delete_svas($dataset->value(), $study->value());
+        }
+      }
+      break;
   }
 }
 
@@ -1480,7 +1493,7 @@ function _mica_datasets_create_svas(&$study, &$dataset) {
   }
 }
 
-function _mica_datasets_delete_svas($dataset, $study) {
+function _mica_datasets_delete_svas(&$dataset, &$study) {
   $dataset_wrapper = entity_metadata_wrapper('node', $dataset->nid);
   $study_wrapper = entity_metadata_wrapper('node', $study->nid);
   $variables = $dataset_wrapper->field_dataset_variables;
