@@ -289,10 +289,10 @@ abstract class MicaDatasetElasticSearchConnection extends MicaDatasetAbstractCon
     $total = $data['hits']['total'];
 
     $result = array('total' => array('_all' => $total));
-    $result["_matched"] = array('_all' => $this->count($data['facets']['_matched']));
+    $result["_matched"] = $this->count($data['facets']['_matched']);
     foreach ($terms as $term) {
       $impl = $term->termImpl();
-      $result[$impl->getName()] = array('_all' => $this->count($data['facets'][$impl->getName()]));
+      $result[$impl->getName()] = $this->count($data['facets'][$impl->getName()]);
     }
 
     //debug($result);
@@ -335,15 +335,12 @@ END;
     // TODO: handle statistical result
     $result = array();
     if ($term->getType() == 'CategoryTerm') {
-      foreach ($facetResult['terms'] as $termCount) {
-        $result[$termCount['term']] = $termCount['count'];
-      }
-      $result['missing'] = $facetResult['missing'];
+      $result = $this->count($facetResult);
     }
     else {
       $result = $facetResult;
     }
-    //    debug($result);
+    //debug($result);
     return $result;
   }
 
@@ -427,22 +424,28 @@ END;
   }
 
   private function count($facet) {
+    $rval = array('_all' => 0);
     switch ($facet['_type']) {
       case 'filter':
-        return $facet['count'];
+        $rval['_all'] = $facet['count'];
+        break;
       case 'terms':
-        $sum = 0;
+        $rval['_all'] =  $facet['total'];
+        $rval['_missing'] = $facet['missing'];
+        $rval['_other'] = $facet['other'];
         foreach ($facet['terms'] as $term) {
-          $sum += $term['count'];
+          $rval[$term['term']] =  $term['count'];
         }
-        return $sum;
+        break;
       case 'histogram':
         $sum = 0;
         foreach ($facet['entries'] as $term) {
           $sum += $term['count'];
         }
-        return $sum;
+        $rval['_all'] =  $sum;
+        break;
     }
-    return -1;
+    return $rval;
   }
+
 }
