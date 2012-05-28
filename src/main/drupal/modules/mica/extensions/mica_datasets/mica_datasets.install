@@ -207,7 +207,7 @@ function mica_datasets_update_7120(&$sandbox) {
   // Import taxonomies
   $base_path = drupal_get_path('module', 'mica_datasets') . '/taxonomies/';
   foreach (_mica_datasets_taxonomies() as $taxonomy) {
-    mica_core_taxonomy_import($filename, $base_path, $vocabulary_name);
+    mica_core_taxonomy_import($taxonomy[0], $base_path, $taxonomy[1]);
   }
 
   module_enable(array('mica_category_field'));
@@ -265,6 +265,10 @@ function mica_datasets_update_7121(&$sandbox) {
   );
 }
 
+function mica_datasets_update_7230(&$sandbox) {
+  _mica_datasets_default_data();
+}
+
 /**
  *
  * Update to 7120 depends on the update of mica_core
@@ -286,7 +290,7 @@ function _mica_datasets_configure_field_bundle_settings() {
       'banner_area' => array('custom_settings' => TRUE),
       'left_area' => array('custom_settings' => TRUE),
       'right_area' => array('custom_settings' => TRUE),
-  	  'footer_area' => array('custom_settings' => TRUE),
+      'footer_area' => array('custom_settings' => TRUE),
     ),
     'extra_fields' => array(
       'form' => array(),

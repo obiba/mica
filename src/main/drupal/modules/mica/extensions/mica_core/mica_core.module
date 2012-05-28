@@ -1,6 +1,7 @@
 <?php
 
 require_once('mica_core.features.inc');
+require_once('mica_core.menu.utils.inc');
 require_once(drupal_get_path('module', 'taxonomy_csv') . '/import/taxonomy_csv.import.api.inc');
 
 /**
@@ -21,56 +22,11 @@ function mica_core_node_title_exists($node_type, $title) {
 }
 
 /**
- * Creates a menu for the item being created if the content type as a default menu set.
- * The menu entry is hidden; this is useful to populate the breadcrumbs without having to manually add a menu entry.
- * @param $node
- * @param $hidden 1 to hide this menu, 0 to show it
- */
-function mica_core_create_menu($node, $hidden = 0) {
-  // create menu based on content type menu config
-  $menu = $node->menu;
-  if (empty($menu)) {
-    $menu = array();
-  }
-  if (empty($menu['enabled']) || !$menu['enabled']) {
-
-    $menu_options = variable_get('menu_options_' . $node->type);
-
-    if (!empty($menu_options)) {
-      $menu['enabled'] = 0;
-      $menu['hidden'] = $hidden;
-      $menu['expanded'] = 0;
-      $menu['menu_name'] = $menu_options[0];
-      $menu['link_title'] = $node->title;
-      $menu['link_path'] = 'node/' . $node->nid;
-
-      $menu_parent = variable_get('menu_parent_' . $node->type);
-      if (!empty($menu_parent)) {
-        $split = explode(":", $menu_parent);
-        if (!empty($split[1])) {
-          $mlid = $split[1];
-          // check that this parent menu exists
-          $existing_menu = db_query("SELECT * FROM {menu_links} WHERE mlid = :mlid", array(':mlid' => $mlid))
-            ->fetchObject();
-          if (!empty($existing_menu) && $existing_menu->mlid === $mlid) {
-            $menu['plid'] = $mlid;
-            menu_link_save($menu);
-            menu_cache_clear($menu['menu_name']);
-          }
-        }
-      }
-    }
-  }
-  return $menu;
-}
-
-/**
  * Implements hook_pathauto_punctuation_chars_alter
  */
 function mica_core_pathauto_punctuation_chars_alter(array &$punctuation) {
   $punctuation['raquo'] = array('value' => '»', 'name' => t('Right double angle quotes'));
 }
-
 
 /**
  * Implements hook_menu().
@@ -271,7 +227,6 @@ function mica_core_feeds_plugins() {
   return $info;
 }
 
-
 /**
  * Cannot export global default_feeds_tamper via strongarm in each modules, so do it manually
  */
@@ -286,34 +241,34 @@ function mica_core_configure_feeds_tamper($module_name) {
 
 
 function _mica_core_taxonomy_create($filename, $vocabulary_name) {
-	// use filename (without extension) for vocabulary machine name
-	$machine_name = substr($filename, 0, strlen($filename) - 4);
-	$vocabulary = (object) array(
+  // use filename (without extension) for vocabulary machine name
+  $machine_name = substr($filename, 0, strlen($filename) - 4);
+  $vocabulary = (object) array(
     'name' => $vocabulary_name,
     'machine_name' => $machine_name,
     'vid' => NULL,
-	);
+  );
 
-	$taxonomies = taxonomy_vocabulary_get_names();
-	if (array_key_exists($machine_name, $taxonomies)) {
-		$vocabulary->vid = $taxonomies[$machine_name]->vid;
-	}
-	else {
-		taxonomy_vocabulary_save($vocabulary);
-	}
+  $taxonomies = taxonomy_vocabulary_get_names();
+  if (array_key_exists($machine_name, $taxonomies)) {
+    $vocabulary->vid = $taxonomies[$machine_name]->vid;
+  }
+  else {
+    taxonomy_vocabulary_save($vocabulary);
+  }
 
-	return $vocabulary;
+  return $vocabulary;
 }
 
 /**
-* Create taxonomy from a csv file
-*/
+ * Create taxonomy from a csv file
+ */
 function mica_core_taxonomy_import($filename, $base_path, $vocabulary_name) {
-	$vocabulary = _mica_core_taxonomy_create($filename, $vocabulary_name);
+  $vocabulary = _mica_core_taxonomy_create($filename, $vocabulary_name);
 
-	$path = $base_path . $filename;
+  $path = $base_path . $filename;
 
-	$result = taxonomy_csv_import(array(
+  $result = taxonomy_csv_import(array(
     'import_format' => 'tree',
     'delimiter' => ',',
     'enclosure' => '"',
@@ -322,17 +277,43 @@ function mica_core_taxonomy_import($filename, $base_path, $vocabulary_name) {
       'filename' => $filename,
       'filepath' => $path,
       'filesize' => filesize($path)
-	),
+    ),
     'vocabulary_target' => 'existing',
     'vocabulary_id' => $vocabulary->vid,
     'source_choice' => 'file',
-	));
+  ));
 
-	watchdog('mica', 'Imported taxonomy %file to vocabulary %vocabulary: %result',
-	array(
+  watchdog('mica', 'Imported taxonomy %file to vocabulary %vocabulary: %result',
+    array(
       '%file' => $path,
       '%vocabulary' => $vocabulary_name,
       '%result' => $result,
-	), WATCHDOG_INFO);
+    ), WATCHDOG_INFO);
 
+}
+
+function mica_core_add_page($title, $body_html, $alias = NULL) {
+
+  $page_wrapper = entity_property_values_create_entity(
+    'node',
+    array(
+      'type' => 'page',
+      'title' => $title,
+      'body' => array(
+        'value' => $body_html,
+        'format' => 'full_html',
+      ),
+      'language' => LANGUAGE_NONE,
+      'comment' => COMMENT_NODE_CLOSED,
+    )
+  )->save();
+
+  if (isset($alias)) {
+    $path = array('alias' => $alias);
+    $path['source'] = 'node/' . $page_wrapper->nid->value();
+    $path['language'] = LANGUAGE_NONE;
+    path_save($path);
+  }
+
+  return $page_wrapper->value();
 }

@@ -91,7 +91,7 @@ function mica_studies_export_page_access() {
  */
 function mica_studies_node_insert($node) {
   if ($node->type === 'study') {
-    mica_core_create_menu($node, 1);
+    mica_core_create_node_default_menu($node, TRUE, FALSE, 0, 'studies');
   }
 }
 
@@ -765,4 +765,14 @@ function mica_studies_node_validate($node, $form, &$form_state) {
       form_set_error('title', t('Study name \'!title\' is already given.', array('!title' => $node->title)));
     }
   }
+}
+
+/**
+ * Implements hook_create_default_content().
+ */
+function mica_studies_create_default_content() {
+  mica_core_create_menu(st('Studies'), 'studies', 'studies', FALSE, FALSE, 5);
+
+  $base_path = drupal_get_path('module', 'mica_studies') . '/taxonomies/';
+  mica_core_taxonomy_import('sources_of_recruitment.csv', $base_path, 'Source of Recruitment');
 }

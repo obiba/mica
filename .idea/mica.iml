@@ -2,17 +2,12 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-SNAPSHOT-local" />
-      <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-SNAPSHOT/profiles/mica_demo" />
-      <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-SNAPSHOT/profiles/mica_standard" />
-      <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-SNAPSHOT/sites/all/themes/mica_samara" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-dev-local" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-dev/profiles/mica_demo" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-dev/profiles/mica_standard" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-dev/sites/all/themes/mica_samara" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.3-dev-local" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.3-dev/profiles/mica_demo" />
-      <excludeFolder url="file://$MODULE_DIR$/target/mica-1.3-dev/profiles/mica_standard" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.3-dev/sites/all/modules/mica" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.3-dev/sites/all/themes/mica_samara" />
     </content>

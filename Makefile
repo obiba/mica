@@ -124,24 +124,14 @@ mica-install:
 	rm -rf `find . -type d -name .svn` && \
 	rm -rf `find . -type d -name .git` && \
 	if [ -e profiles/standard/standard.install ]; then \
-		cp profiles/standard/standard.install profiles/mica_standard/standard.install && \
+#		cp profiles/standard/standard.install profiles/mica_standard/standard.install && \
 		rm -rf profiles/standard && \
 		rm -rf profiles/minimal ; \
 	fi
 
-mica-link:
-	ln -s $(CURDIR)/src/main/drupal/modules/* $(CURDIR)/target/$(micadir)/sites/all/modules && \
-	ln -s $(CURDIR)/src/main/drupal/themes/* $(CURDIR)/target/$(micadir)/sites/all/themes && \
-	ln -s $(CURDIR)/src/main/drupal/profiles/* $(CURDIR)/target/$(micadir)/profiles && \
-	if [ -e target/$(micadir)/profiles/standard/standard.install ]; then \
-		cp target/$(micadir)/profiles/standard/standard.install target/$(micadir)/profiles/mica_standard/standard.install && \
-		rm -rf target/$(micadir)/profiles/standard && \
-		rm -rf target/$(micadir)/profiles/minimal ; \
-	fi
-	rm target/$(micadir)/themes/seven/logo.png && \
-	rm target/$(micadir)/misc/favicon.ico && \
-	ln -s $(CURDIR)/src/main/drupal/themes/mica_samara/mica.png $(CURDIR)/target/$(micadir)/themes/seven/logo.png && \
-	ln -s $(CURDIR)/src/main/drupal/themes/mica_samara/favicon.ico $(CURDIR)/target/$(micadir)/misc
+mica-link: mica
+	rm -rf $(CURDIR)/target/$(micadir)/sites/all/modules/mica && \
+	ln -s $(CURDIR)/src/main/drupal/modules/* $(CURDIR)/target/$(micadir)/sites/all/modules
 
 htaccess:
 	cp target/$(micadir)/.htaccess target/$(micadir)/.htaccess_bak
@@ -342,6 +332,8 @@ mica-local-prepare:
 	$(drushmake_exec) mica.make target/$(micadir)-local
 
 mica-local: mica-local-copy drupal-default mica package-prepare htaccess
+
+mica-local-link: mica-local-copy drupal-default mica-link package-prepare htaccess
 
 mica-local-copy:
 	rm -rf target/$(micadir) && \

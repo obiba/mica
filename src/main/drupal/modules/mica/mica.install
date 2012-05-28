@@ -8,11 +8,6 @@
  * Implements hook_install().
  */
 function mica_install() {
-  mica_add_page('Data Access', '', 'data-access');
-  mica_add_page('Research', '', 'research');
-  mica_add_page('Resources', '', 'resources');
-  mica_add_page('Consortium Policies and Guidelines', '', 'data-access/policy');
-
   $search_api_index_options = array(
     'description' => 'An array of additional arguments configuring this index.',
     'type' => 'text',
@@ -25,32 +20,6 @@ function mica_install() {
   _mica_configure_field_bundle_settings();
 }
 
-function mica_add_page($title, $body, $alias) {
-  $node = new stdClass();
-  $node->type = 'page';
-  node_object_prepare($node);
-  $node->title = $title;
-  $node->body = array(
-    LANGUAGE_NONE => array(
-      array('value' => $body)
-    )
-  );
-  $node->promote = 0;
-  $node->comment = COMMENT_NODE_CLOSED;
-  $node->sticky = 0;
-  $node->language = LANGUAGE_NONE;
-  node_save($node);
-
-  if (isset($alias)) {
-    $path = array('alias' => $alias);
-    $path['source'] = 'node/' . $node->nid;
-    $path['language'] = LANGUAGE_NONE;
-    path_save($path);
-  }
-
-  return $node;
-}
-
 /**
  * Update script for release 1.1
  * Implements hook_update_N()
@@ -61,12 +30,11 @@ function mica_update_7110(&$sandbox) {
 
   // disable old facet module
   module_disable(array('search_api_facets'));
-
 }
 
 /**
  * Manually configure field_bundle_settings variable because it is exported via strongarms
- * so it cannot be configured in severals modules
+ * so it cannot be configured in several modules
  */
 function _mica_configure_field_bundle_settings() {
   $page_settings = array(

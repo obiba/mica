@@ -4,6 +4,27 @@
  * Install Mica Core module.
  */
 
+require_once('mica_core.default_data.inc');
+
+/**
+ * Implements hook_install().
+ */
+function mica_core_install() {
+  $text_formats = _mica_core_default_text_formats();
+  _mica_core_default_content_types();
+  _mica_core_default_variables();
+
+  $filtered_html_permission = filter_permission_name($text_formats['filtered_html']);
+  _mica_core_default_permissions($filtered_html_permission);
+
+  _mica_core_default_admin_theme();
+
+  node_types_rebuild();
+
+  // need to create default content here because other modules are based on this
+  _mica_core_default_pages();
+}
+
 /**
  * Update script for release 1.2
  * Implements hook_update_N()

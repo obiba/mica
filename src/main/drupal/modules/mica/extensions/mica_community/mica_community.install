@@ -23,7 +23,7 @@ function mica_community_update_7120() {
 
 /**
  * Manually configure field_bundle_settings variable because it is exported via strongarms
- * so it cannot be configured in severals modules
+ * so it cannot be configured in several modules
  */
 function _mica_community_configure_field_bundle_settings() {
   $publication_settings = array(

@@ -55,10 +55,9 @@ function _mica_configuration_batch() {
     $operations[] = array('feeds_batch', array('import', $source->id, $source->feed_nid));
   }
 
-  // Import taxonomies by invoking the hook_taxonomies_operations_import
-  include_once(drupal_get_path('module', 'mica_studies') . '/mica_studies.import_taxonomies.inc');
-  $operations = array_merge($operations, module_invoke('mica_studies', 'taxonomies_operations_import'));
-//   $operations = array_merge($operations, module_invoke('mica_datasets', 'taxonomies_operations_import'));
+  $operations[] = array('_create_default_content', array());
+
+  $operations[] = array('_import_taxonomies', array());
 
   // prepare permissions rebuild
   $mica_length = strlen('mica_');
@@ -79,6 +78,16 @@ function _mica_configuration_batch() {
     'finished' => '_mica_configuration_finished',
   );
   return $batch;
+}
+
+//TODO merge this with _create_default_content
+function _import_taxonomies($module, &$context) {
+  module_invoke_all('taxonomies_operations_import');
+}
+
+function _create_default_content($module, &$context) {
+  drupal_flush_all_caches();
+  module_invoke_all('create_default_content');
 }
 
 /**

@@ -382,10 +382,6 @@ function mica_projects_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'projects';
-  $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Projects';
-  $handler->display->display_options['menu']['weight'] = '0';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
   $export['projects'] = $view;
 
   $view = new view;
@@ -573,9 +569,6 @@ function mica_projects_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'teleconferences';
-  $handler->display->display_options['menu']['title'] = 'Studies';
-  $handler->display->display_options['menu']['weight'] = '0';
-  $handler->display->display_options['menu']['name'] = 'main-menu';
   $export['teleconferences'] = $view;
 
   return $export;

@@ -7,7 +7,7 @@
 /**
  * Implements hook_menu_default_menu_custom().
  */
-function mica_studies_menu_default_menu_custom() {
+function mica_core_menu_default_menu_custom() {
   $menus = array();
 
   // Exported menu: main-menu

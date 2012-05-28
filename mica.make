@@ -72,9 +72,7 @@ projects[content_access][version] = 1.2-beta1
 projects[content_access][type] = module
 
 projects[content_taxonomy][type] = module
-projects[content_taxonomy][download][type] = git
-projects[content_taxonomy][download][revision] = 5d0257a
-projects[content_taxonomy][download][branch] = 7.x-1.x
+projects[content_taxonomy][version] = 1.0-beta1
 
 projects[ctools][type] = module
 projects[ctools][version] = 1.0
@@ -91,9 +89,7 @@ projects[email][download][branch] = 7.x-1.x
 projects[email][patch][718414] = http://drupal.org/files/email_feeds_target-718414-36.patch
 
 projects[entity][type] = module
-projects[entity][download][type] = git
-projects[entity][download][revision] = b24826f
-projects[entity][download][branch] = 7.x-1.x
+projects[entity][version] = 1.0-rc3
 
 projects[facetapi][version] = 1.0-rc4
 projects[facetapi][type] = module
@@ -102,11 +98,10 @@ projects[facetapi][type] = module
 
 projects[features][version] = 1.0-rc2
 projects[features][type] = module
+projects[features][patch][1530386] = http://drupal.org/files/features-1530386-10-improve_installation_performance.patch
 
 projects[feeds][type] = module
-projects[feeds][download][type] = git
-projects[feeds][download][revision] = cc2d2ec
-projects[feeds][download][branch] = 7.x-2.x
+projects[feeds][version] = 2.0-alpha4
 projects[feeds][patch][11075222] = http://drupal.org/files/issues/1107522-empty-fields-2.patch
 projects[feeds][patch][110752213] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-13.patch
 projects[feeds][patch][110752215links] = http://drupal.org/files/ignore-empty-link-fields-1107522-15.patch
@@ -235,7 +230,7 @@ projects[search_api_ranges][download][branch] = 7.x-1.x
 projects[search_api_ranges][patch][1450772] = http://drupal.org/files/force-numeric-and-config-for-no-slider-no-commit-on-change-1450772-1_1.patch
 projects[search_api_ranges][patch][1460410] = http://drupal.org/files/max-inclusive.patch
 
-projects[search_api_solr][version] = 1.0-rc1
+projects[search_api_solr][version] = 1.0-rc2
 projects[search_api_solr][type] = module
 projects[search_api_solr][patch][1276970] = http://drupal.org/files/solr_queries_post-1276970-10.patch
 

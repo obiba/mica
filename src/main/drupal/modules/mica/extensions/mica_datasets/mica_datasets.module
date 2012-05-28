@@ -17,6 +17,23 @@ define('MICA_HARMONIZATION_COMPLETE', base_path() . drupal_get_path('module', 'm
 define('MICA_HARMONIZATION_UNDETERMINED', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/bullet_black.png');
 define('MICA_HARMONIZATION_REFRESH', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/refresh.png');
 
+
+/**
+ * Implements hook_create_default_content().
+ */
+function mica_datasets_create_default_content() {
+  $page = mica_core_add_page(
+    st("Datasets"),
+    st("The consortium makes study-specific datasets and harmonized datasets (i.e. multiple-study datasets) available to the research community. Each dataset is described by a comprehensive data dictionary which gives details on each available variable.<br/>Moreover, Mica includes for  studies using the OBiBa Opal software as main database solution, a distributed query engine that enables researchers to obtain real-time aggregated reports on the exact number of participant with specific characteristics or phenotypes. Mica makes even possible to run remotely some regression analyses on the real study data using the DataSHIELD method (Wolfson M et al. <i>Int J Epidemiol</i>. 2010) which is implemented both in Mica and Opal. <br/><br/>"),
+    "datasets");
+  $datasets_path = 'node/' . $page->nid;
+  $resource_menu = mica_core_find_menu_for_alias('resources');
+  mica_core_create_node_menu($page, FALSE, TRUE, 0, $resource_menu->link_path);
+  mica_core_create_menu(st('Study Datasets'), 'study-datasets', 'study-datasets', FALSE, FALSE, 1, $datasets_path);
+  mica_core_create_menu(st('Harmonization Datasets'), 'harmonization-datasets', 'harmonization-datasets', FALSE, FALSE, 2, $datasets_path);
+  mica_core_create_menu(st('Variables Search'), 'variable-search', 'variable-search', FALSE, FALSE, 3, $datasets_path);
+}
+
 /**
  * Implements hook_theme().
  */

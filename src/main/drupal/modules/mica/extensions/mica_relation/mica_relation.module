@@ -64,7 +64,7 @@ function mica_relation_node_presave($node) {
 
     $relations = mica_relation_find_relations_by_parent($node->type);
     if (!empty($relations)) {
-      $menu = mica_core_create_menu($node, 0);
+      $menu = mica_core_create_node_default_menu($node, FALSE);
       foreach ($relations as $relation) {
         $relation->create_child_node($node, $menu);
       }

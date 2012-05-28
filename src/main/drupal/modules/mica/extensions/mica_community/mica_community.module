@@ -6,6 +6,21 @@
 
 include_once('mica_community.features.inc');
 
+
+/**
+ * Implements hook_create_default_content().
+ */
+function mica_community_create_default_content() {
+  mica_core_create_menu(st('Community'), 'community', 'community', FALSE, TRUE, 45, NULL);
+  mica_core_create_menu(st('News'), 'news', 'news', FALSE, FALSE, 1, 'community');
+  mica_core_create_menu(st('Events'), 'events', 'events', FALSE, FALSE, 2, 'community');
+  mica_core_create_menu(st('Forums'), 'forum', 'forum', FALSE, FALSE, 3, 'community');
+  mica_core_create_menu(st('Blogs'), 'blog', 'blog', FALSE, FALSE, 4, 'community');
+
+  $research_menu = mica_core_find_menu_for_alias('research');
+  mica_core_create_menu(st('Publications'), 'publications', 'publications', FALSE, FALSE, 10, $research_menu->link_path);
+}
+
 /**
  * Implements hook_menu_local_tasks_alter().
  */
@@ -63,6 +78,6 @@ function mica_community_menu_local_tasks_alter(&$data, $router_item, $root_path)
  */
 function mica_community_node_insert($node) {
   if ($node->type === 'publication' || $node->type === 'event') {
-    mica_core_create_menu($node, 1);
+    mica_core_create_node_default_menu($node, TRUE);
   }
 }

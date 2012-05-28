@@ -6,6 +6,15 @@
 
 include_once('mica_projects.features.inc');
 
+
+/**
+ * Implements hook_create_default_content().
+ */
+function mica_projects_create_default_content() {
+  $research_menu = mica_core_find_menu_for_alias('research');
+  mica_core_create_menu(st('Projects'), 'projects', 'projects', FALSE, FALSE, 2, $research_menu->link_path);
+}
+
 /**
  * Implements hook_form().
  */
@@ -57,7 +66,7 @@ function mica_projects_menu_local_tasks_alter(&$data, $router_item, $root_path) 
  */
 function mica_projects_node_insert($node) {
   if ($node->type === 'project') {
-    mica_core_create_menu($node, 1);
+    mica_core_create_node_default_menu($node, TRUE);
 
     $node->field_teleconferences[LANGUAGE_NONE] = array(
       0 => array(
