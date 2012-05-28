@@ -1317,15 +1317,6 @@ function mica_datasets_node_presave($node) {
     case 'variable':
       _mica_datasets_set_variable_position($node);
       break;
-    //TODO CLEMENT
-    case 'dataset':
-      $dataset = entity_metadata_wrapper('node', $node);
-      foreach ($dataset->field_dataset_studies as $study) {
-//        debug($study->nid, NULL, TRUE);
-//        debug($node->nid, NULL, TRUE);
-        _mica_datasets_create_svas($study, $dataset);
-      }
-      break;
   }
 }
 
