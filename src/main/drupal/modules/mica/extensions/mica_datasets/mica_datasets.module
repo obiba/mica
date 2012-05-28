@@ -1418,6 +1418,7 @@ function mica_datasets_node_delete($node) {
           $sva->delete();
         }
       }
+      _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable->field_dataset, $variable, 'field_dataset_variables');
       break;
     case 'study_variable_attributes':
       $sva = entity_metadata_wrapper('node', $node);
