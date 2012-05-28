@@ -1439,6 +1439,9 @@ function mica_datasets_node_delete($node) {
           $sva->delete();
         }
       }
+      foreach ($study->mica_dataset as $dataset) {
+        _mica_datasets_remove_and_save_element_from_entity_list_wrapper($dataset, $study, 'field_dataset_studies');
+      }
       break;
     case 'variable':
       $variable = entity_metadata_wrapper('node', $node);
@@ -1719,7 +1722,9 @@ function _mica_datasets_add_study_variable_attributes_to(&$variable) {
   if ($wrapper_dataset->field_dataset_studies->count() != 0 && $wrapper_dataset->field_dataset_type->value() === 'harmonization') {
     $studies = array();
     foreach ($wrapper_dataset->field_dataset_studies as $wrapper_study) {
-      array_push($studies, $wrapper_study);
+      if ($wrapper_study->value() !== NULL) {
+        array_push($studies, $wrapper_study);
+      }
     }
     _mica_datasets_create_study_variable_attributes_for_variable($wrapper_variable, $studies);
   }
