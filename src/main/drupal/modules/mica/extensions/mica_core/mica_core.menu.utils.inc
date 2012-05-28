@@ -44,12 +44,8 @@ function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $
     }
   }
 
-  $saved = menu_link_save($menu);
+  menu_link_save($menu);
   menu_cache_clear($menu['menu_name']);
-
-  watchdog('mica_core', 'Created menu (' . $saved .') ' . $menu_title . ' for path ' . $menu_path . ' and parent ' . $menu['plid'],
-    array(), WATCHDOG_DEBUG);
-  debug($menu, 'Menu ' . $menu_title);
 }
 
 /**
@@ -69,27 +65,19 @@ function mica_core_create_node_default_menu($node, $hidden = FALSE, $expanded = 
     $menu = array();
   }
 
-  watchdog('mica_core', 'Create node menu for ' . $node->type . ':' . $node->title, array(), WATCHDOG_DEBUG);
-  debug($menu);
-
   if (empty($menu['enabled']) || !$menu['enabled']) {
 
     $menu_options = variable_get('menu_options_' . $node->type);
 
     if (empty($menu_options)) {
-      watchdog('mica_core', '$default_parent_path: ' . $default_parent_path,
-        array(), WATCHDOG_DEBUG);
-
       if (!empty($default_menu_name)) {
         _mica_core_create_menu($menu, $node->title, 'node/' . $node->nid, '', $hidden, $expanded, $weight, $default_parent_path);
       }
     }
     else {
-      debug($menu_options, '$menu_options');
 
       $menu_parent = variable_get('menu_parent_' . $node->type);
       if (!empty($menu_parent)) {
-        debug($menu_parent, '$menu_parent');
         $split = explode(":", $menu_parent);
         if (!empty($split[1])) {
           $mlid = $split[1];
