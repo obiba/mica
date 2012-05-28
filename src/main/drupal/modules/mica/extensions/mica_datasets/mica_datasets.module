@@ -1366,9 +1366,10 @@ function mica_datasets_node_delete($node) {
       // remove variables
       $dataset = entity_metadata_wrapper('node', $dataset_id);
       $variables = $dataset->field_dataset_variables;
-      if (!empty($variables)) {
+      $variables_value = $variables->value();
+      if (!empty($variables_value)) {
         foreach ($variables as $variable) {
-          node_delete($variable->nid->value());
+          $variable->delete();
         }
       }
 
