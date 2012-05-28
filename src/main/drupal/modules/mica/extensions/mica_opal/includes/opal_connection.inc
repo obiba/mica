@@ -151,7 +151,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
   }
 
   protected function sendQuery($query) {
-    //debug($query);
+    debug($query);
 
     $url = $this->getTableResourceURI("index/_search");
 
@@ -178,7 +178,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
       // http://drupal.org/node/722886
       $body = $e->getResponse()->body;
     }
-    //debug($body);
+    debug(json_decode($body,TRUE));
 
     return json_decode($body, TRUE);
   }
