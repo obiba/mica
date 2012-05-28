@@ -190,54 +190,11 @@ function _mica_datasets_add_study_to_dataset($study, $dataset) {
   $study->mica_dataset[$study->language][] = array('nid' => $dataset->nid);
   node_save($study);
 
-  _mica_datasets_study_variable_attributes($study, $dataset);
+  _mica_datasets_create_svas($study, $dataset);
 
   // No need to update the dataset since we have the corresponding node reference module
 }
 
-/**
- * @param $study
- * @param $dataset
- *
- * For all variable in $dataset,link them to $study with Study Variables entity
- */
-function _mica_datasets_study_variable_attributes(&$study, &$dataset) {
-  $wrapper_study = entity_metadata_wrapper('node', $study);
-  $wrapper_dataset = entity_metadata_wrapper('node', $dataset);
-
-  if ($wrapper_dataset->field_dataset_type->value() === 'harmonization') {
-    $query = new EntityFieldQuery();
-    $results = $query->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', 'study_variable_attributes')
-      ->fieldCondition('field_sva_study', 'nid', $wrapper_study->nid->value())
-      ->execute();
-
-    $study_variable_attributes = array();
-    if (empty($results['node']) == FALSE) {
-      $study_variable_attributes = entity_load('node', array_keys($results['node']));
-    }
-
-    $variables = array();
-    foreach ($wrapper_dataset->field_dataset_variables as $wrapper_variable) {
-      $exist = FALSE;
-      foreach ($study_variable_attributes as $sv) {
-        $wrapper_sv = entity_metadata_wrapper('node', $sv);
-        if ($wrapper_sv->field_sva_variable->nid->value() === $wrapper_variable->nid->value()
-          && $wrapper_sv->field_sva_study->nid->value() === $wrapper_study->nid->value()
-        ) {
-          $exist = TRUE;
-        }
-      }
-      if (!$exist) {
-        array_push($variables, $wrapper_variable);
-      }
-    }
-
-    if (isset($variables)) {
-      _mica_datasets_create_study_variable_attributes_for_study($wrapper_study, $variables);
-    }
-  }
-}
 
 function _mica_datasets_dataset_connection_delete(&$study_node, $dataset_node_id) {
   _mica_datasets_remove_study_to_dataset($study_node, node_load($dataset_node_id));
@@ -257,21 +214,10 @@ function _mica_datasets_remove_study_to_dataset(&$study, &$dataset) {
       break;
     }
   }
-
-  //remove svas
-  $dataset_wrapper = entity_metadata_wrapper('node', $dataset->nid);
-  $study_wrapper = entity_metadata_wrapper('node', $study->nid);
-  $variables = $dataset_wrapper->field_dataset_variables;
-  foreach ($variables as $variable) {
-    foreach ($variable->field_variable_study_var_att as $sva) {
-      if ($sva->field_sva_study->nid->value() === $study_wrapper->nid->value()) {
-        $sva->delete();
-        _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable, $sva, 'field_variable_study_var_att');
-      }
-    }
-  }
-// No need to update the dataset since we have the corresponding node reference module
+  _mica_datasets_delete_svas($dataset, $study);
 }
+
+
 
 //
 // utilities

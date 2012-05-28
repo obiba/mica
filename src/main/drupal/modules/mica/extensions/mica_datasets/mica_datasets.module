@@ -1317,6 +1317,15 @@ function mica_datasets_node_presave($node) {
     case 'variable':
       _mica_datasets_set_variable_position($node);
       break;
+    //TODO CLEMENT
+    case 'dataset':
+      $dataset = entity_metadata_wrapper('node', $node);
+      foreach ($dataset->field_dataset_studies as $study) {
+//        debug($study->nid, NULL, TRUE);
+//        debug($node->nid, NULL, TRUE);
+        _mica_datasets_create_svas($study, $dataset);
+      }
+      break;
   }
 }
 
@@ -1418,7 +1427,9 @@ function mica_datasets_node_delete($node) {
           $sva->delete();
         }
       }
-      _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable->field_dataset, $variable, 'field_dataset_variables');
+      if (property_exists($variable, 'field_dataset')) {
+        _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable->field_dataset, $variable, 'field_dataset_variables');
+      }
       break;
     case 'study_variable_attributes':
       $sva = entity_metadata_wrapper('node', $node);
@@ -1431,6 +1442,64 @@ function mica_datasets_node_delete($node) {
         _mica_datasets_remove_and_save_element_from_entity_list_wrapper($sva->field_sva_study, $sva, 'field_study_study_variable_att');
       }
       break;
+  }
+}
+
+/**
+ * @param $study
+ * @param $dataset
+ *
+ * For all variable in $dataset,link them to $study with Study Variables entity
+ */
+function _mica_datasets_create_svas(&$study, &$dataset) {
+  $wrapper_study = entity_metadata_wrapper('node', $study);
+  $wrapper_dataset = entity_metadata_wrapper('node', $dataset);
+
+  if ($wrapper_dataset->field_dataset_type->value() === 'harmonization') {
+    $query = new EntityFieldQuery();
+    $results = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'study_variable_attributes')
+      ->fieldCondition('field_sva_study', 'nid', $wrapper_study->nid->value())
+      ->execute();
+
+    $study_variable_attributes = array();
+    if (empty($results['node']) == FALSE) {
+      $study_variable_attributes = entity_load('node', array_keys($results['node']));
+    }
+
+    $variables = array();
+    foreach ($wrapper_dataset->field_dataset_variables as $wrapper_variable) {
+      $exist = FALSE;
+      foreach ($study_variable_attributes as $sv) {
+        $wrapper_sv = entity_metadata_wrapper('node', $sv);
+        if ($wrapper_sv->field_sva_variable->nid->value() === $wrapper_variable->nid->value()
+          && $wrapper_sv->field_sva_study->nid->value() === $wrapper_study->nid->value()
+        ) {
+          $exist = TRUE;
+        }
+      }
+      if (!$exist) {
+        array_push($variables, $wrapper_variable);
+      }
+    }
+
+    if (isset($variables)) {
+      _mica_datasets_create_study_variable_attributes_for_study($wrapper_study, $variables);
+    }
+  }
+}
+
+function _mica_datasets_delete_svas($dataset, $study) {
+  $dataset_wrapper = entity_metadata_wrapper('node', $dataset->nid);
+  $study_wrapper = entity_metadata_wrapper('node', $study->nid);
+  $variables = $dataset_wrapper->field_dataset_variables;
+  foreach ($variables as $variable) {
+    foreach ($variable->field_variable_study_var_att as $sva) {
+      if ($sva->field_sva_study->nid->value() === $study_wrapper->nid->value()) {
+        $sva->delete();
+        _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable, $sva, 'field_variable_study_var_att');
+      }
+    }
   }
 }
 
@@ -1674,9 +1743,9 @@ function _mica_datasets_create_study_variable_attribute(&$wrapper_variable, &$wr
 function _mica_datasets_add_element_in_entity_list_wrapper(&$entity, &$entity_to_add, $field_name) {
   $nids = array();
   if (isset($entity->$field_name)) {
-    foreach ($entity->$field_name as $item) {
+    foreach ($entity->$field_name->value() as $item) {
       if (isset($item)) {
-        array_push($nids, $item->nid->value());
+        array_push($nids, $item->nid);
       }
     }
   }
@@ -1685,8 +1754,7 @@ function _mica_datasets_add_element_in_entity_list_wrapper(&$entity, &$entity_to
 }
 
 function _mica_datasets_remove_and_save_element_from_entity_list_wrapper(&$entity, &$entity_to_remove, $field_name) {
-  foreach ($entity->$field_name as $key => $meta_value) {
-    $value = $meta_value->value();
+  foreach ($entity->$field_name->value() as $key => $value) {
     if (isset($value)) {
       if ($value->nid === $entity_to_remove->nid->value()) {
         $entity->$field_name->offsetUnset($key);
