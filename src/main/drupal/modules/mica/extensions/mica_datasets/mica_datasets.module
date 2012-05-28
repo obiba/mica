@@ -1431,6 +1431,8 @@ function mica_datasets_node_delete($node) {
           $sva->delete();
         }
       }
+      //check property_exists,
+      //because while deleting a dataset, 'field_dataset' of $variable could not exist instead to be empty or null... (but why ?)
       if (property_exists($variable, 'field_dataset')) {
         _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable->field_dataset, $variable, 'field_dataset_variables');
       }
