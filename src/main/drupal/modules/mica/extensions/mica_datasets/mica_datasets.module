@@ -388,7 +388,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
                 '#theme' => 'menu_local_action',
                 '#weight' => 7,
                 '#link' => array(
-                  'title' => t('Import Opal Variables'),
+                  'title' => t('Import Variables'),
                   'href' => 'mica_datasets_harmonization/ajax/nojs/' . $node->nid,
                   'localized_options' => array(
                     'attributes' => array('class' => array('use-ajax'))
