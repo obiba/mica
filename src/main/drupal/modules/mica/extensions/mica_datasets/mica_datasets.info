@@ -5,7 +5,6 @@ package = OBiBa
 php = 5.2.4
 project = mica_datasets
 dependencies[] = autocomplete_deluxe
-dependencies[] = background_batch
 dependencies[] = collapsiblock
 dependencies[] = content_taxonomy
 dependencies[] = corresponding_node_references
