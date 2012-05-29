@@ -506,13 +506,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'dataset' => 'dataset',
   );
-  /* Filter criterion: Indexed Node: Status */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'search_api_index_dataset_index';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = array(
-    1 => '1',
-  );
   /* Filter criterion: Indexed Node: Type */
   $handler->display->display_options['filters']['field_dataset_type']['id'] = 'field_dataset_type';
   $handler->display->display_options['filters']['field_dataset_type']['table'] = 'search_api_index_dataset_index';
@@ -649,13 +642,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'dataset' => 'dataset',
-  );
-  /* Filter criterion: Indexed Node: Status */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'search_api_index_dataset_index';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = array(
-    1 => '1',
   );
   /* Filter criterion: Indexed Node: Type */
   $handler->display->display_options['filters']['field_dataset_type']['id'] = 'field_dataset_type';
@@ -1740,13 +1726,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['fields'] = array(
     'search_api_aggregation_1' => 'search_api_aggregation_1',
-  );
-  /* Filter criterion: Indexed Node: Status */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = array(
-    1 => '1',
   );
 
   /* Display: Page */

@@ -100,7 +100,7 @@ function mica_datasets_default_search_api_index() {
         "nid" : { "type" : "integer" },
         "type" : { "type" : "string" },
         "title" : { "type" : "string" },
-        "status" : { "type" : "integer" },
+        "status" : { "type" : "boolean" },
         "field_dataset_studies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_dataset_type" : { "type" : "string" },
         "search_api_language" : { "type" : "string" },
@@ -108,7 +108,9 @@ function mica_datasets_default_search_api_index() {
         "search_api_aggregation_2" : { "type" : "integer" },
         "body:value" : { "type" : "text" },
         "body:summary" : { "type" : "text" },
-        "field_dataset_studies:title" : { "type" : "list\\u003Ctext\\u003E" }
+        "field_dataset_studies:title" : { "type" : "list\\u003Ctext\\u003E" },
+        "author" : { "type" : "integer", "entity_type" : "user" },
+        "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
@@ -116,7 +118,7 @@ function mica_datasets_default_search_api_index() {
           "weight" : "-10",
           "settings" : { "default" : "0", "bundles" : { "dataset" : "dataset" } }
         },
-        "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_add_aggregation" : {
           "status" : 1,
@@ -193,7 +195,7 @@ function mica_datasets_default_search_api_index() {
         "nid" : { "type" : "integer" },
         "type" : { "type" : "string" },
         "title" : { "type" : "string" },
-        "status" : { "type" : "integer" },
+        "status" : { "type" : "boolean" },
         "field_repeatable" : { "type" : "boolean" },
         "field_value_type" : { "type" : "string" },
         "field_data_sources" : { "type" : "list\\u003Cstring\\u003E" },
@@ -231,7 +233,9 @@ function mica_datasets_default_search_api_index() {
         "field_dataset:field_dataset_studies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_variable_categories:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_variable_categories:label" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_variable_categories:missing" : { "type" : "list\\u003Cboolean\\u003E" }
+        "field_variable_categories:missing" : { "type" : "list\\u003Cboolean\\u003E" },
+        "author" : { "type" : "integer", "entity_type" : "user" },
+        "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
@@ -239,7 +243,7 @@ function mica_datasets_default_search_api_index() {
           "weight" : "-10",
           "settings" : { "default" : "0", "bundles" : { "variable" : "variable" } }
         },
-        "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : {
           "status" : 1,
           "weight" : "0",
