@@ -100,18 +100,6 @@ function mica_datasets_menu() {
     'file' => 'mica_datasets.pages.inc',
   );
 
-//   $items['node/%node/variables'] = array(
-//     'title' => 'Import Variables',
-//     'access callback' => '_mica_datasets_node_access',
-//     'access arguments' => array(1, 'dataset', 'update'),
-//     'page callback' => 'mica_datasets_dataset_variables_edit_page',
-//     'page arguments' => array(1),
-//     'weight' => 2,
-//     'type' => MENU_LOCAL_ACTION,
-//     'file' => 'mica_datasets.pages.inc',
-
-//   );
-
   $items['node/%node/reordervariables'] = array(
     'title' => 'Reorder Variables',
     'description' => 'Reorder Variables within their Dataset.',
@@ -302,29 +290,6 @@ function mica_datasets_menu() {
     'access arguments' => array('administer site configuration'),
   );
 
-//   $items['mica_datasets_harmonization/ajax'] = array(
-//     	'file' => 'mica_datasets.pages.harmonization.inc',
-//       'page callback' => 'mica_datasets_import_variables_callback',
-//       'access arguments' => TRUE,
-//       'type' => MENU_CALLBACK,
-//   );
-
-//   $items['mica_datasets_harmonization/ajax'] = array(
-//     	'file' => 'mica_datasets.pages.harmonization.inc',
-//       'page callback' => 'mica_datasets_import_variables_callback',
-//     	'page arguments' => array(2, 3, NULL),
-//       'access arguments' => TRUE,
-//       'type' => MENU_CALLBACK,
-//   );
-
-//   $items['mica_datasets_harmonization/ajax/%/%'] = array(
-//   	'file' => 'mica_datasets.pages.harmonization.inc',
-//     'page callback' => 'mica_datasets_import_variables_callback',
-//   	'page arguments' => array(2, 3, NULL),
-//     'access arguments' => TRUE,
-//     'type' => MENU_CALLBACK,
-//   );
-
   $items['mica_datasets_harmonization/ajax/%/%/%'] = array(
     'page callback' => 'mica_datasets_import_variables_callback',
     'page arguments' => array(2, 3, 4),
@@ -338,6 +303,7 @@ function mica_datasets_menu() {
     'page arguments' => array(2, 3),
     'access callback' => '_mica_datasets_node_access',
     'access arguments' => array(3, 'dataset', 'update'),
+    'delivery callback' => 'mica_datasets_import_variables_delivery_callback', 
     'type' => MENU_CALLBACK,
   );
 
@@ -413,32 +379,51 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
             ),
           );
 
-          // import variables
-          $links['import-variables'] = array(
-            '#theme' => 'menu_local_action',
-            '#weight' => 7,
-            '#link' => array(
-              'title' => t('Import Opal Variables'),
-              'href' => 'mica_datasets_harmonization/ajax/nojs/' . $node->nid,
-              'localized_options' => array(
-                'attributes' => array('class' => array('use-ajax'))
-              ),
-            )
-          );
+          // If at least one study as a connection to Opal
+          $dataset_wrapper = entity_metadata_wrapper('node', $node);
+          foreach ($dataset_wrapper->field_dataset_studies->value() as $study) {
+            if (mica_dataset_connector_query($dataset_wrapper->nid->value(), $study->nid, 1)) {
+              // import variables
+              $links['import-variables'] = array(
+                '#theme' => 'menu_local_action',
+                '#weight' => 7,
+                '#link' => array(
+                  'title' => t('Import Opal Variables'),
+                  'href' => 'mica_datasets_harmonization/ajax/nojs/' . $node->nid,
+                  'localized_options' => array(
+                    'attributes' => array('class' => array('use-ajax'))
+                  ),
+                )
+              );
+              break;
+            }
+          }
         }
 
         if (node_access('view', $node)) {
           // highlight queries and harmonization
           foreach ($data['actions']['output'] as $key => $link) {
-            if (isset($link['#link']['path'])
-              && (
-                $link['#link']['path'] == 'node/%/queries' || $link['#link']['path'] == 'node/%/dataset-harmonization')
-            ) {
+            if (isset($link['#link']['path']) && $link['#link']['path'] == 'node/%/queries') {
               $data['actions']['output'][$key]['#link']['localized_options'] = array(
                 'attributes' => array('class' => 'highlight')
               );
               $data['actions']['output'][$key]['#weight'] = 40;
-              break;
+            }
+            
+            if (isset($link['#link']['path']) && $link['#link']['path'] == 'node/%/dataset-harmonization') {
+              
+              //Hide Harmonization button when its a study dataset
+              $dataset_wrapper = entity_metadata_wrapper('node', $node);
+              
+              if ($dataset_wrapper->field_dataset_type->value() === 'study'){
+              	$data['actions']['output'][$key]['#access'] = FALSE;
+              }
+              else{
+                $data['actions']['output'][$key]['#link']['localized_options'] = array(
+                	'attributes' => array('class' => 'highlight')
+                );
+                $data['actions']['output'][$key]['#weight'] = 42;
+              }
             }
           }
 
@@ -1241,83 +1226,89 @@ function mica_datasets_node_view_alter(&$build) {
     }
   }
   if ($build['#view_mode'] === 'footer_area' && $build['#bundle'] === 'variable') {
-    require_once('mica_datasets.pages.harmonization.inc');
-    $path = drupal_get_path('module', 'mica_datasets');
-    drupal_add_css($path . '/includes/prettify.css');
-    drupal_add_js($path . '/includes/prettify.js');
-    drupal_add_js('jQuery(document).ready(function (){prettyPrint()});', 'inline');
-
     $node = $build['#node'];
     $wrapper = entity_metadata_wrapper('node', $node);
     $dataset = $wrapper->field_dataset->value();
     if (!empty($dataset)) {
 
-      $header = array(
-        'study' => t('Study'),
-        'status' => t('Status'),
-        'comment' => t('Comment'),
-        'script' => t('Script'),
-      );
-      $options = array();
-      $status_values = field_info_field('field_sva_status');
-      foreach ($wrapper->field_variable_study_var_att->value() as $study_variable_attributes) {
-        $sva_wrapper = entity_metadata_wrapper('node', $study_variable_attributes);
-
-        if (!empty($study_variable_attributes->field_sva_status)) {
-          $status = $sva_wrapper->field_sva_status->value();
-          $status_label = $status_values['settings']['allowed_values'][$status];
-        }
-        else {
-          $status = 'undetermined';
-          $status_label = t('Undetermined');
-        }
-
-        $script = $sva_wrapper->field_sva_script->value() ? $sva_wrapper->field_sva_script->value() : '';
-        $script = '<code class=\'prettyprint\'>' . check_markup(truncate_utf8($script, 400, FALSE)) . '</code>';
-        $comment = $sva_wrapper->field_sva_comment->value() ? $sva_wrapper->field_sva_comment->value() : '';
-
-        $study_wrapper = entity_metadata_wrapper('node', $sva_wrapper->field_sva_study->value()->nid);
-
-        $name = $study_wrapper->field_acroym->value() ? $study_wrapper->field_acroym->value() : $study_wrapper->title->value();
-        $status = "<img src=\"" . _mica_datasets_get_status_icon($status) . "\" title=\"$status_label\"></div>";
-
-        $option = array(
-          'study' => $name,
-          'status' => $status,
-          'comment' => truncate_utf8($comment, 100, FALSE, TRUE),
-          'script' => $script,
+      $dataset = entity_load_single('node', $dataset->nid);
+      $dataset_wrapper = entity_metadata_wrapper('node', entity_load_single('node', $dataset->nid));
+      
+      if ($dataset_wrapper->field_dataset_type->value() !== 'study'){
+        
+        require_once('mica_datasets.pages.harmonization.inc');
+        $path = drupal_get_path('module', 'mica_datasets');
+        drupal_add_css($path . '/includes/prettify.css');
+        drupal_add_js($path . '/includes/prettify.js');
+        drupal_add_js('jQuery(document).ready(function (){prettyPrint()});', 'inline');
+        
+        $header = array(
+          'study' => t('Study'),
+          'status' => t('Status'),
+          'comment' => t('Comment'),
+          'script' => t('Script'),
         );
-
-        $sva = node_load($sva_wrapper->nid->value());
-        if (node_access('view', $sva)) {
-          $header['view'] = '';
-
-          $option['view'] = "<a href='" . url('node/' . $sva_wrapper->nid->value()) . "'>" . t('View') . "</a>";
+        $options = array();
+        $status_values = field_info_field('field_sva_status');
+        foreach ($wrapper->field_variable_study_var_att->value() as $study_variable_attributes) {
+          $sva_wrapper = entity_metadata_wrapper('node', $study_variable_attributes);
+  
+          if (!empty($study_variable_attributes->field_sva_status)) {
+            $status = $sva_wrapper->field_sva_status->value();
+            $status_label = $status_values['settings']['allowed_values'][$status];
+          }
+          else {
+            $status = 'undetermined';
+            $status_label = t('Undetermined');
+          }
+  
+          $script = $sva_wrapper->field_sva_script->value() ? $sva_wrapper->field_sva_script->value() : '';
+          $script = '<code class=\'prettyprint\'>' . check_markup(truncate_utf8($script, 400, FALSE)) . '</code>';
+          $comment = $sva_wrapper->field_sva_comment->value() ? $sva_wrapper->field_sva_comment->value() : '';
+  
+          $study_wrapper = entity_metadata_wrapper('node', $sva_wrapper->field_sva_study->value()->nid);
+  
+          $name = $study_wrapper->field_acroym->value() ? $study_wrapper->field_acroym->value() : $study_wrapper->title->value();
+          $status = "<img src=\"" . _mica_datasets_get_status_icon($status) . "\" title=\"$status_label\"></div>";
+  
+          $option = array(
+            'study' => $name,
+            'status' => $status,
+            'comment' => truncate_utf8($comment, 100, FALSE, TRUE),
+            'script' => $script,
+          );
+  
+          $sva = node_load($sva_wrapper->nid->value());
+          if (node_access('view', $sva)) {
+            $header['view'] = '';
+  
+            $option['view'] = "<a href='" . url('node/' . $sva_wrapper->nid->value()) . "'>" . t('View') . "</a>";
+          }
+  
+          $options[] = $option;
         }
-
-        $options[] = $option;
-      }
-
-      $build['harmonization'] = array(
-        '#type' => 'fieldset',
-        '#title' => t('Harmonization'),
-        '#weight' => 50,
-        '#collapsible' => TRUE,
-        '#collapsed' => FALSE,
-        'legend' => array(
-          '#markup' => drupal_render(drupal_get_form('mica_datasets_harmonization_legend_form')),
-        ),
-        'table' => array(
-          '#markup' => theme(
-            'table', array('header' => $header, 'rows' => $options, 'empty' => t('No harmonization found'))
+  
+        $build['harmonization'] = array(
+          '#type' => 'fieldset',
+          '#title' => t('Harmonization'),
+          '#weight' => 50,
+          '#collapsible' => TRUE,
+          '#collapsed' => FALSE,
+          'legend' => array(
+            '#markup' => drupal_render(drupal_get_form('mica_datasets_harmonization_legend_form')),
           ),
-        ),
-        'overview' => array(
-          '#markup' => "<p><a href='" . url("node/$dataset->nid/dataset-harmonization") . "'><b>" . t(
-            "View $dataset->title Harmonization"
-          ) . "</a></b></p>",
-        ),
-      );
+          'table' => array(
+            '#markup' => theme(
+              'table', array('header' => $header, 'rows' => $options, 'empty' => t('No harmonization found'))
+            ),
+          ),
+          'overview' => array(
+            '#markup' => "<p><a href='" . url("node/$dataset->nid/dataset-harmonization") . "'><b>" . t(
+              "View $dataset->title Harmonization"
+            ) . "</a></b></p>",
+          ),
+        );
+      }
     }
   }
 }
@@ -1896,30 +1887,33 @@ function mica_datasets_import_variables_callback($type = 'ajax', $dataset_nid, $
     }
   }
 
-  $batch = array(
-    'finished' => 'mica_datasets_create_variables_finished',
-    'title' => t('Importing Variables'),
-    'init_message' => t('Import of variables is starting.'),
-    'progress_message' => t('Processed @current out of @total.'),
-    'error_message' => t('Import of variables has encountered an error.'),
-    'file' => drupal_get_path('module', 'mica_datasets') . '/mica_datasets.module',
-  );
-
   foreach ($study_nids as $nid) {
+    $study = entity_load_single('node', $nid);
+    $study_wrapper = entity_metadata_wrapper('node', $study);
+    
     $harmonizations = _mica_opal_fetch_harmonization_view($dataset_nid, $nid);
-
-    $batch['operations'][] = array('mica_datasets_create_variables', array($harmonizations));
+    
+    if ($harmonizations) {
+      $nb = mica_datasets_create_variables($harmonizations);
+      
+      drupal_set_message(t('@count variables have been imported for study @study into the dataset @dataset', 
+        array(
+          '@count' => $nb, 
+          '@study' => $study_wrapper->title->value(), 
+          '@dataset' => $dataset_wrapper->title->value(),
+        )
+      ));
+    }
   }
-  drupal_set_message('Import of variables in background');
 
-  batch_set($batch);
-  background_batch_process_batch();
+  drupal_goto('node/' . $dataset_nid);
 }
 
 function mica_datasets_create_variables($harmonizations) {
   global $user;
   $position = 1;
-
+  $nb_created = 0;
+  
   foreach ($harmonizations['variables'] as $harmonization) {
 
     $query = new EntityFieldQuery();
@@ -1983,9 +1977,8 @@ function mica_datasets_create_variables($harmonizations) {
     }
 
     $wrapper->save();
+    $nb_created++;
   }
-}
-
-function mica_datasets_create_variables_finished() {
-  drupal_set_message('Import finished');
+  
+  return $nb_created;
 }
