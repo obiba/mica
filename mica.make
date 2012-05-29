@@ -101,7 +101,9 @@ projects[features][type] = module
 projects[features][patch][1530386] = http://drupal.org/files/features-1530386-10-improve_installation_performance.patch
 
 projects[feeds][type] = module
-projects[feeds][version] = 2.0-alpha4
+projects[feeds][download][type] = git
+projects[feeds][download][revision] = cc2d2ec
+projects[feeds][download][branch] = 7.x-2.x
 projects[feeds][patch][11075222] = http://drupal.org/files/issues/1107522-empty-fields-2.patch
 projects[feeds][patch][110752213] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-13.patch
 projects[feeds][patch][110752215links] = http://drupal.org/files/ignore-empty-link-fields-1107522-15.patch
