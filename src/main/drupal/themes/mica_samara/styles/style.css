@@ -2328,3 +2328,12 @@ div.tooltip_content table, tbody, tr {
 .tipsy-se .tipsy-arrow { bottom: 0; right: 10px; background-position: bottom left; }
 .tipsy-e .tipsy-arrow { top: 50%; margin-top: -4px; right: 0; width: 5px; height: 9px; background-position: top right; }
 .tipsy-w .tipsy-arrow { top: 50%; margin-top: -4px; left: 0; width: 5px; height: 9px; }
+
+
+table.query-table th, table.query-table td {
+  text-align: center;
+}
+
+.form-item-cross-variable label {
+  display: inline;
+}

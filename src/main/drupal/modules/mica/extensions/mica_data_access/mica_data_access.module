@@ -101,7 +101,7 @@ function mica_data_access_menu_local_tasks_alter(&$data, $router_item, $root_pat
 
       $href = url('data-access/request');
       if ($root_path === 'node/%/queries/%') {
-        $dataset_node = $router_item['page_arguments'][0];
+        $dataset_node = $router_item['page_arguments'][1];
         $href = url('data-access/request', array('query' => array('field_dataset_access' => $dataset_node->nid)));
       }
 

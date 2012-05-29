@@ -39,7 +39,7 @@ function _mica_devel_form() {
 
   $form['dummy'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Exemple'),
+    '#title' => t('Example'),
     '#description' => t('Form example to run custom actions'),
   );
   $form['dummy']['run'] = array(

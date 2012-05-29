@@ -1,6 +1,7 @@
 <?php
 
 require_once('includes/query_entity.inc');
+require_once('mica_datasets.utils.inc');
 
 /**
  * @file
@@ -299,7 +300,14 @@ function theme_mica_datasets_dataset_query_edit_form($variables) {
   if (array_key_exists('add-term', $form)) {
     $output .= drupal_render_children($form, array('add-term'));
   }
-  $output .= theme('table', array('header' => $header, 'rows' => $rows, 'empty' => t('No query term found'), 'attributes' => array('id' => 'draggabledemo-sort')));
+  $output .= theme('table',
+    array(
+      'header' => $header,
+      'rows' => $rows,
+      'empty' => t('No query term found'),
+      'attributes' => array('id' => 'draggabledemo-sort')
+    )
+  );
   $output .= drupal_render_children($form, array('actions'));
 
   // add form hidden items, otherwise submit and validate will be ignored
@@ -559,7 +567,22 @@ function mica_datasets_dataset_query_delete_form_submit($form, &$form_state) {
 // View and Run query
 //
 
-function mica_datasets_dataset_query_run_page($dataset_node, $query) {
+function mica_datasets_dataset_query_run_page($form, &$form_state, $dataset_node, $query) {
+
+  $is_cross = FALSE;
+  $category_label_by_name = array();
+
+  $cross_variable_nid = isset($form_state['values']['cross_variable']) ? $form_state['values']['cross_variable'] : NULL;
+  if (!empty($cross_variable_nid)) {
+    $cross_variable = node_load($cross_variable_nid);
+    $is_cross = !empty($cross_variable);
+    if ($is_cross) {
+      $cross_variable_wrapper = entity_metadata_wrapper('node', $cross_variable);
+      foreach ($cross_variable_wrapper->field_variable_categories->value() as $category) {
+        $category_label_by_name[$category['name']] = $category['label'];
+      }
+    }
+  }
 
   mica_core_modal_prepare(array(
     array(
@@ -584,85 +607,202 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query) {
   $mica_dataset_connectors = mica_dataset_connector_query_multiple($dataset_node->nid);
   $terms = mica_dataset_query_term_query($query);
 
-  $labels = array();
-  if ($terms !== FALSE) {
-    foreach ($terms as $term) {
-      $impl = $term->termImpl();
-      $title = $impl->toString();
-      $variable = node_load($term->variable_id);
-      $variable_link = ctools_modal_text_button($title, 'mica/nojs/node/' . $variable->nid, t('View !title', array('!title' => $variable->title)), 'ctools-modal-node-style highlight');
+  $headers = array();
+  $sub_headers = array();
+  $rows = array();
 
-      if (_mica_datasets_query_term_access($dataset_node, $query, $term)) {
-        $header = $variable_link //
-          . '<div>' //
-          . ctools_modal_text_button(t('Edit'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, 'edit'), t('Edit query term options'), 'ctools-modal-edit-style');
+  $headers[] = t('Study');
+  $sub_headers[] = array(
+    'data' => ' ',
+    'header' => TRUE,
+  );
+  $headers_initialized = FALSE;
+  $header_total_nb_sub_header = 0;
+  $header_matched_tooltip = '';
 
-        if (count($terms) > 1) {
-          $header = $header . '<span style="margin-left: 10px;">' //
-            . ctools_modal_text_button(t('Delete'), 'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, 'delete'), t('Delete query term'), 'ctools-modal-delete-style') //
-            . '</span>' //
-            . '</div>';
+  foreach ($mica_dataset_connectors as $connector) {
+    $row = array();
+
+    $study = node_load($connector->study_id);
+    $row[] = filter_xss($study->title);
+
+    try {
+      $result = $is_cross ? $connector->queryBy($terms, array($cross_variable->title)) : $connector->query($terms);
+//      debug($result);
+
+      $total = $is_cross ? $result['_all']['_all'] : $result['total']['_all'];
+
+      if ($is_cross) {
+
+        $categories = $result['_all'];
+        unset($categories['_missing']);
+        unset($categories['_other']);
+        unset($categories['_all']);
+
+        if (!$headers_initialized) {
+          $headers[] = array(
+            'data' => t('Total'),
+            'colspan' => count($categories) + 1,
+          );
+          $header_total_nb_sub_header = count($categories) + 1;
         }
-        else {
-          $header = $header . '</div>';
-        }
 
-        $labels[] = $header;
+        foreach ($categories as $name => $value) {
+          if (!$headers_initialized) {
+            $sub_headers[] = array(
+              'data' => $name,
+              'header' => TRUE,
+              'title' => $category_label_by_name[$name],
+            );
+          }
+          $row[] = array(
+            'data' => $value,
+          );
+        }
+        if (!$headers_initialized) {
+          $sub_headers[] = array(
+            'data' => t('All'),
+            'header' => TRUE,
+          );
+        }
+        $row[] = array(
+          'data' => $result['_all']['_all'],
+        );
       }
       else {
-        $labels[] = $variable_link;
+
+        if (!$headers_initialized) $headers[] = t('Total');
+        $row[] = $total;
+
       }
-    }
-  }
 
-  $columns = array_merge(array(t('Study'), t('Total')), $labels);
-  $columns[] = t('Matched');
-
-  $rows = array();
-  foreach ($mica_dataset_connectors as $connector) {
-    $study = node_load($connector->study_id);
-    $row = array(array('data' => $study->title));
-    try {
-      $result = $connector->query($terms);
-      $total = $result['total']['_all'];
-      $row[] = $total;
-      foreach ($terms as $t) {
-        $impl = $t->termImpl();
+      $has_multiple_terms = count($terms) > 1;
+      foreach ($terms as $term) {
+        $impl = $term->termImpl();
         $count = $result[$impl->getName()]['_all'];
-        $row[] = array('data' => mica_datasets_dataset_query_count_str($count,$total), 'count' => $count);
+
+        if ($is_cross) {
+
+          $categories = $result[$impl->getName()];
+          unset($categories['_missing']);
+          unset($categories['_other']);
+          unset($categories['_all']);
+
+          if (!$headers_initialized) {
+            $headers[] = array(
+              'data' => _mica_datasets_dataset_query_run_page_header($dataset_node, $query, $term, $has_multiple_terms, $header_matched_tooltip),
+              'colspan' => count($categories) + 1,
+            );
+          }
+
+          foreach ($categories as $name => $value) {
+            if (!$headers_initialized) {
+              $sub_headers[] = array(
+                'data' => $name,
+                'header' => TRUE,
+                'title' => $category_label_by_name[$name],
+              );
+            }
+            $row[] = array(
+              'data' => mica_datasets_dataset_query_count_str($value, $total),
+              'count' => $value,
+            );
+          }
+
+          if (!$headers_initialized) {
+            $sub_headers[] = array(
+              'data' => t('All'),
+              'header' => TRUE,
+            );
+          }
+          $row[] = array(
+            'data' => mica_datasets_dataset_query_count_str($result[$impl->getName()]['_all'], $total),
+            'count' => $value,
+          );
+
+        }
+        else {
+
+          if (!$headers_initialized) {
+            $headers[] = _mica_datasets_dataset_query_run_page_header($dataset_node, $query, $term, $has_multiple_terms,
+              $header_matched_tooltip);
+          }
+          $row[] = array(
+            'data' => mica_datasets_dataset_query_count_str($count, $total),
+            'count' => $count
+          );
+
+        }
+
       }
-      $count = $result['_matched']['_all'];
-      $row[] = array('data' => mica_datasets_dataset_query_count_str($count,$total), 'count' => $count, 'class' => array('active'));
+
+      if ($is_cross) {
+
+        $categories = $result['_matched'];
+        unset($categories['_missing']);
+        unset($categories['_other']);
+        unset($categories['_all']);
+
+        if (!$headers_initialized) {
+          $headers[] = array(
+            'data' => t('Matched'),
+            'colspan' => count($categories) + 1,
+          );
+        }
+
+        foreach ($categories as $name => $value) {
+          if (!$headers_initialized) {
+            $sub_headers[] = array(
+              'data' => $name,
+              'header' => TRUE,
+              'title' => $category_label_by_name[$name],
+            );
+          }
+          $row[] = array(
+            'data' => mica_datasets_dataset_query_count_str($value, $total),
+            'class' => array('active'),
+          );
+        }
+
+        if (!$headers_initialized) {
+          $sub_headers[] = array(
+            'data' => t('All'),
+            'header' => TRUE,
+          );
+        }
+        $row[] = array(
+          'data' => mica_datasets_dataset_query_count_str($result['_matched']['_all'], $total),
+          'class' => array('active'),
+        );
+
+      }
+      else {
+
+        if (!$headers_initialized) {
+          $headers[] = array('data' => t('Matched'));
+        }
+
+        $count = $result['_matched']['_all'];
+        $row[] = array(
+          'data' => mica_datasets_dataset_query_count_str($count, $total),
+          'count' => $count,
+          'class' => array('active')
+        );
+      }
+
       $rows[] = array('data' => $row);
+
     } catch (Exception $e) {
       $connector->displayError($e);
     }
+
+    $headers_initialized = TRUE;
+
   }
 
   // Add a summary row if there's more than one connector
   if (count($mica_dataset_connectors) > 1) {
-    $totals = array(array('data' => 'Totals', 'class' => array('active')));
-    foreach ($rows as $row) {
-      foreach ($row['data'] as $key => $value) {
-        if ($key == 0) continue;
-        if (isset($totals[$key]) == FALSE) {
-          $totals[$key] = array('data' => 0, 'count' => 0, 'class' => 'active');
-        }
-        $totals[$key]['count'] += isset($value['count']) ? $value['count'] : $value;
-      }
-    }
-    // We have the count sums, now build the count display strings (i.e. with percentage)
-    $totals_count = 0;
-    foreach ($totals as $key => $value) {
-      if ($key == 0) continue;
-      if ($key == 1) {
-        $totals_count = $totals[$key]['count'];
-        $totals[$key]['data'] = $totals_count;
-      } else {
-        $totals[$key]['data'] = mica_datasets_dataset_query_count_str($totals[$key]['count'],$totals_count);
-      }
-    }
-    $rows[] = array('data' => $totals, 'class' => array('active'));
+    _mica_datasets_dataset_query_run_page_summary($rows, $header_total_nb_sub_header);
   }
 
   if (MicaDatasetQueryManager::isCached($query)) {
@@ -672,7 +812,144 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query) {
     }
   }
 
-  return $description . theme('table', array("header" => $columns, "rows" => $rows, 'attributes' => array('class' => array('query-table')), 'empty' => t('No connectors available')));
+  // add tooltip to Matched header
+  $headers[count($headers) - 1]['title'] = $header_matched_tooltip;
+
+  $table_result = theme(
+    'table',
+    array(
+      'header' => $headers,
+      'rows' => $is_cross ? array_merge(array($sub_headers), $rows) : $rows,
+      'attributes' => array('class' => array('query-table')),
+      'empty' => t('No connectors available')
+    )
+  );
+
+  $categorical_variables = mica_datasets_find_categorical_variables($dataset_node->nid);
+  $options = array();
+  foreach ($categorical_variables as $variable) {
+    $options[$variable->nid] = $variable->title;
+  }
+
+  $form['description'] = array(
+    '#markup' => $description,
+  );
+  $form['cross_variable'] = array(
+    '#type' => 'select',
+    '#title' => t('Cross with'),
+    '#options' => $options,
+    '#empty_options' => -1,
+    '#empty_value' => ' - ' . t('None') . ' - ',
+    '#ajax' => array(
+      'callback' => 'mica_datasets_dataset_query_run_page_submit_callback',
+      'wrapper' => 'query-results-table',
+    ),
+  );
+  $form['results'] = array(
+    '#markup' => $table_result,
+    '#prefix' => '<div id="query-results-table">',
+    '#suffix' => '</div>',
+  );
+  return $form;
+}
+
+function mica_datasets_dataset_query_run_page_submit($form, &$form_state) {
+  // Setting $form_state['rebuild'] = TRUE causes the form to be rebuilt again.
+  $form_state['rebuild'] = TRUE;
+}
+
+/**
+ * Selects just the result table to be returned for re-rendering.
+ */
+function mica_datasets_dataset_query_run_page_submit_callback($form, $form_state) {
+  return $form['results'];
+}
+
+function _mica_datasets_dataset_query_run_page_header($dataset_node, $query, $term, $has_multiple_terms, &$header_matched_tooltip) {
+  $impl = $term->termImpl();
+  $title = $impl->toString();
+  $variable = node_load($term->variable_id);
+
+  if (!empty($header_matched_tooltip)) $header_matched_tooltip .= ' ' . t('and') . ' ';
+  $header_matched_tooltip .= $title;
+
+  $variable_link = ctools_modal_text_button(
+    $title,
+    'mica/nojs/node/' . $variable->nid,
+    t('View !title', array('!title' => $variable->title)),
+    'ctools-modal-node-style highlight'
+  );
+
+  $header = NULL;
+  if (_mica_datasets_query_term_access($dataset_node, $query, $term)) {
+    $header = $variable_link //
+      . '<div>' //
+      . ctools_modal_text_button(
+        t('Edit'),
+        'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, 'edit'),
+        t('Edit query term options'),
+        'ctools-modal-edit-style'
+      );
+
+    if ($has_multiple_terms) {
+      $header .= '<span style="margin-left: 10px;">' //
+        . ctools_modal_text_button(
+          t('Delete'),
+          'mica/nojs/' . _mica_datasets_dataset_query_term_url($dataset_node, $query, $term, 'delete'),
+          t('Delete query term'),
+          'ctools-modal-delete-style') //
+        . '</span>';
+    }
+
+    $header .= '</div>';
+  }
+  else {
+    $header = $variable_link;
+  }
+
+  return $header;
+}
+
+
+function _mica_datasets_dataset_query_run_page_summary(&$rows, $header_total_nb_sub_header) {
+  $totals = array(
+    array(
+      'data' => 'Totals',
+      'class' => array('active')
+    )
+  );
+  foreach ($rows as $row) {
+    foreach ($row['data'] as $key => $value) {
+      if ($key == 0) continue;
+      if (!isset($totals[$key])) {
+        $totals[$key] = array(
+          'data' => 0,
+          'count' => 0,
+          'class' => array('active'),
+        );
+      }
+      $totals[$key]['count'] +=
+        isset($value['count'])
+          ? $value['count']
+          : isset($value['data']) ? $value['data'] : $value;
+    }
+  }
+  // We have the count sums, now build the count display strings (i.e. with percentage)
+  $totals_count = 0;
+  foreach ($totals as $key => $value) {
+    if ($key == 0) continue;
+    if ($key <= $header_total_nb_sub_header) {
+      $totals_count = $totals[$key]['count'];
+      $totals[$key]['data'] = $totals_count;
+    }
+    else {
+      $totals[$key]['data'] = mica_datasets_dataset_query_count_str($totals[$key]['count'], $totals_count);
+    }
+  }
+  $rows[] = array(
+    'data' => $totals,
+    'class' => array('active'),
+  );
 }
 
 /**
@@ -681,10 +958,10 @@ function mica_datasets_dataset_query_run_page($dataset_node, $query) {
  * @param $total
  * @return string
  */
-function mica_datasets_dataset_query_count_str($count,$total) {
+function mica_datasets_dataset_query_count_str($count, $total) {
   $data = $count;
-  if (isset($count) && $total>0) {
-    $data = $count . '<br/>(' . (100*$count/$total) . '%)';
+  if (isset($count) && $total > 0) {
+    $data = $count . '<br/>(' . round(100 * $count / $total) . '%)';
   }
   return $data;
 }
@@ -789,7 +1066,7 @@ function mica_datasets_dataset_query_term_edit_form_submit($form, &$form_state) 
 
 function variables_autocomplete($dataset_nid, $string) {
   $variables = array();
-  foreach (mica_dataset_dataset_variables($dataset_id) as $variable) {
+  foreach (mica_dataset_dataset_variables($dataset_nid) as $variable) {
     if (strpos(strtolower($variable->title), $string) === 0 || $string === "*") {
       $variables[$variable->title] = $variable->title;
     }

@@ -148,8 +148,8 @@ class MicaDatasetConnector extends Entity {
           array("%study" => $study->title)), 'error');
         break;
       default:
-        drupal_set_message(t("Study %study: Failed executing search. Message was: %msg",
-          array("%study" => $study->title, "%msg" => $e->getMessage())), 'error');
+        drupal_set_message(t("Study %study: Failed executing search. Message was: %msg. Code: %code",
+          array("%study" => $study->title, "%msg" => $e->getMessage(), '%code' => $e->getCode())), 'error');
         break;
     }
   }

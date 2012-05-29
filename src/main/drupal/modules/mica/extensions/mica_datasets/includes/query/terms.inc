@@ -126,7 +126,8 @@ abstract class AbstractTerm implements QueryTermInterface {
 
   function isRepeatable() {
     $variable = $this->getVariable();
-    return isset($variable->field_repeatable[LANGUAGE_NONE][0]['value']) && $variable->field_repeatable[LANGUAGE_NONE][0]['value'] === '1';
+    return isset($variable->field_repeatable[LANGUAGE_NONE][0]['value'])
+      && $variable->field_repeatable[LANGUAGE_NONE][0]['value'] === '1';
   }
 
   function getOptions() {

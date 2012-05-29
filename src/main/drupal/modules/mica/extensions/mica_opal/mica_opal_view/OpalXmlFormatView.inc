@@ -35,6 +35,8 @@ class OpalXmlFormatView extends RESTServerView {
       	$nids[] = $item['nid'];
       }
       $vars = entity_load('node', $nids);
+
+      // TODO use mica_datasets.utils.inc --> mica_datasets_sort_by_position
       uasort($vars, array($this, 'sort_by_position'));
       
       foreach($vars as $node) {

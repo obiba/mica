@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #: mica_devel.module:22
-msgid "Form exemple to run custom actions"
+msgid "Form example to run custom actions"
 msgstr "Example de formulaire "
 
 #: mica_devel.module:26

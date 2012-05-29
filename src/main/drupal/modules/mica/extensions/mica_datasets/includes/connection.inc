@@ -93,13 +93,13 @@ interface MicaDatasetConnectionInterface
     /**
      * @param array of MicaDatasetQueryTerm $terms
      */
-    public function query($terms);
+    public function query(array $terms);
 
     /**
      * @param array of MicaDatasetQueryTerm $terms
      * @param array of strings $fields
      */
-    public function queryBy($terms, $fields);
+    public function queryBy(array $terms, array $fields);
 
     /**
      * Returns a facet for a specific term.
@@ -283,7 +283,7 @@ abstract class MicaDatasetElasticSearchConnection extends MicaDatasetAbstractCon
         return $fieldname;
     }
 
-    public function query($terms)
+    public function query(array $terms)
     {
         $facets = array();
         $filters = array();
@@ -301,6 +301,8 @@ abstract class MicaDatasetElasticSearchConnection extends MicaDatasetAbstractCon
         $q .= implode(',', $facets);
         $q .= '}}';
 
+//        debug($q);
+
         $data = $this->sendQuery($q);
 
         $total = $data['hits']['total'];
@@ -312,11 +314,11 @@ abstract class MicaDatasetElasticSearchConnection extends MicaDatasetAbstractCon
             $result[$impl->getName()] = $this->count($data['facets'][$impl->getName()]);
         }
 
-        //debug($result);
+//        debug($result);
         return $result;
     }
 
-    public function queryBy($terms,$fields)
+    public function queryBy(array $terms,array $fields)
     {
         $by_field = $fields[0];
 
