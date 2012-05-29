@@ -10,7 +10,7 @@
 function mica_studies_default_page_manager_handlers() {
   $export = array();
 
-  $handler = new stdClass;
+  $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
   $handler->name = 'node_view_panel_context';
@@ -51,7 +51,7 @@ function mica_studies_default_page_manager_handlers() {
       'logic' => 'and',
     ),
   );
-  $display = new panels_display;
+  $display = new panels_display();
   $display->layout = 'flexible';
   $display->layout_settings = array(
     'items' => array(
@@ -159,7 +159,7 @@ function mica_studies_default_page_manager_handlers() {
   $display->title = '%node:field_complete_name';
   $display->content = array();
   $display->panels = array();
-    $pane = new stdClass;
+    $pane = new stdClass();
     $pane->pid = 'new-1';
     $pane->panel = 'banner';
     $pane->type = 'node';
@@ -186,7 +186,7 @@ function mica_studies_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-1'] = $pane;
     $display->panels['banner'][0] = 'new-1';
-    $pane = new stdClass;
+    $pane = new stdClass();
     $pane->pid = 'new-2';
     $pane->panel = 'center';
     $pane->type = 'node';
@@ -213,7 +213,7 @@ function mica_studies_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-2'] = $pane;
     $display->panels['center'][0] = 'new-2';
-    $pane = new stdClass;
+    $pane = new stdClass();
     $pane->pid = 'new-3';
     $pane->panel = 'footer';
     $pane->type = 'node';
@@ -240,7 +240,7 @@ function mica_studies_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-3'] = $pane;
     $display->panels['footer'][0] = 'new-3';
-    $pane = new stdClass;
+    $pane = new stdClass();
     $pane->pid = 'new-4';
     $pane->panel = 'left';
     $pane->type = 'node';
@@ -267,7 +267,7 @@ function mica_studies_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-4'] = $pane;
     $display->panels['left'][0] = 'new-4';
-    $pane = new stdClass;
+    $pane = new stdClass();
     $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'node';
@@ -299,7 +299,7 @@ function mica_studies_default_page_manager_handlers() {
   $handler->conf['display'] = $display;
   $export['node_view_panel_context'] = $handler;
 
-  $handler = new stdClass;
+  $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
   $handler->name = 'node_view_panel_context_2';
@@ -340,7 +340,7 @@ function mica_studies_default_page_manager_handlers() {
       'logic' => 'and',
     ),
   );
-  $display = new panels_display;
+  $display = new panels_display();
   $display->layout = 'flexible';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -353,7 +353,7 @@ function mica_studies_default_page_manager_handlers() {
   $display->title = '%node:title';
   $display->content = array();
   $display->panels = array();
-    $pane = new stdClass;
+    $pane = new stdClass();
     $pane->pid = 'new-6';
     $pane->panel = 'center';
     $pane->type = 'custom';
@@ -380,7 +380,7 @@ function mica_studies_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-6'] = $pane;
     $display->panels['center'][0] = 'new-6';
-    $pane = new stdClass;
+    $pane = new stdClass();
     $pane->pid = 'new-7';
     $pane->panel = 'center';
     $pane->type = 'entity_field';
@@ -405,7 +405,7 @@ function mica_studies_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-7'] = $pane;
     $display->panels['center'][1] = 'new-7';
-    $pane = new stdClass;
+    $pane = new stdClass();
     $pane->pid = 'new-8';
     $pane->panel = 'center';
     $pane->type = 'entity_field';
@@ -442,7 +442,7 @@ function mica_studies_default_page_manager_handlers() {
  * Implements hook_default_page_manager_pages().
  */
 function mica_studies_default_page_manager_pages() {
-  $page = new stdClass;
+  $page = new stdClass();
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
   $page->name = 'homepage';
@@ -466,7 +466,7 @@ function mica_studies_default_page_manager_pages() {
   $page->arguments = array();
   $page->conf = array();
   $page->default_handlers = array();
-  $handler = new stdClass;
+  $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
   $handler->name = 'page_homepage_panel_context';
@@ -483,7 +483,7 @@ function mica_studies_default_page_manager_pages() {
     'contexts' => array(),
     'relationships' => array(),
   );
-  $display = new panels_display;
+  $display = new panels_display();
   $display->layout = 'onecol';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -496,7 +496,7 @@ function mica_studies_default_page_manager_pages() {
   $display->title = 'Homepage';
   $display->content = array();
   $display->panels = array();
-    $pane = new stdClass;
+    $pane = new stdClass();
     $pane->pid = 'new-9';
     $pane->panel = 'middle';
     $pane->type = 'node';
@@ -524,7 +524,7 @@ function mica_studies_default_page_manager_pages() {
     $pane->locks = '';
     $display->content['new-9'] = $pane;
     $display->panels['middle'][0] = 'new-9';
-    $pane = new stdClass;
+    $pane = new stdClass();
     $pane->pid = 'new-10';
     $pane->panel = 'middle';
     $pane->type = 'views';

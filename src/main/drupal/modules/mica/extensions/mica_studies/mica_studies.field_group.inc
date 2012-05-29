@@ -10,7 +10,7 @@
 function mica_studies_field_group_info() {
   $export = array();
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_access_description|node|study|center_area';
@@ -31,7 +31,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_access_description|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_access_description|node|study|default';
@@ -65,7 +65,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_access_description|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_access_description|node|study|footer_area';
@@ -99,7 +99,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_access_description|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_access_description|node|study|left_area';
@@ -128,7 +128,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_access_description|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_access_description|node|study|right_area';
@@ -162,7 +162,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_access_description|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_access|node|study|center_area';
@@ -192,7 +192,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_access|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_access|node|study|default';
@@ -219,7 +219,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_access|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_access|node|study|footer_area';
@@ -246,7 +246,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_access|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_access|node|study|form';
@@ -277,7 +277,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_access|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_access|node|study|left_area';
@@ -307,7 +307,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_access|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_access|node|study|right_area';
@@ -334,7 +334,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_access|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_age_range|node|study|center_area';
@@ -359,7 +359,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_age_range|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_age_range|node|study|default';
@@ -384,7 +384,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_age_range|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_age_range|node|study|footer_area';
@@ -409,7 +409,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_age_range|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_age_range|node|study|right_area';
@@ -434,7 +434,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_age_range|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorising_person_m|node|study|center_area';
@@ -460,7 +460,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorising_person_m|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorising_person_m|node|study|default';
@@ -486,7 +486,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorising_person_m|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorising_person_m|node|study|footer_area';
@@ -512,7 +512,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorising_person_m|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorising_person_m|node|study|form';
@@ -538,7 +538,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorising_person_m|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorising_person_m|node|study|left_area';
@@ -564,7 +564,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorising_person_m|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorising_person_m|node|study|right_area';
@@ -590,7 +590,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorising_person_m|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorising_person|node|study|center_area';
@@ -613,7 +613,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorising_person|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorising_person|node|study|default';
@@ -636,7 +636,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorising_person|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorising_person|node|study|footer_area';
@@ -659,7 +659,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorising_person|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorising_person|node|study|form';
@@ -685,7 +685,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorising_person|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorising_person|node|study|left_area';
@@ -706,7 +706,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorising_person|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorising_person|node|study|right_area';
@@ -729,7 +729,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorising_person|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization_maelstrom|node|study|center_area';
@@ -762,7 +762,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization_maelstrom|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization_maelstrom|node|study|default';
@@ -795,7 +795,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization_maelstrom|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization_maelstrom|node|study|footer_area';
@@ -826,7 +826,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization_maelstrom|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization_maelstrom|node|study|form';
@@ -857,7 +857,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization_maelstrom|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization_maelstrom|node|study|left_area';
@@ -878,7 +878,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization_maelstrom|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization_maelstrom|node|study|right_area';
@@ -912,7 +912,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization_maelstrom|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization_specific|node|study|center_area';
@@ -945,7 +945,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization_specific|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization_specific|node|study|default';
@@ -978,7 +978,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization_specific|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization_specific|node|study|footer_area';
@@ -1009,7 +1009,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization_specific|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization_specific|node|study|form';
@@ -1040,7 +1040,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization_specific|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization_specific|node|study|left_area';
@@ -1061,7 +1061,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization_specific|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization_specific|node|study|right_area';
@@ -1095,7 +1095,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization_specific|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorizations|node|study|footer_area';
@@ -1130,7 +1130,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorizations|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization|node|study|center_area';
@@ -1161,7 +1161,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization|node|study|default';
@@ -1190,7 +1190,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization|node|study|footer_area';
@@ -1219,7 +1219,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization|node|study|form';
@@ -1248,7 +1248,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization|node|study|left_area';
@@ -1279,7 +1279,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_authorization|node|study|right_area';
@@ -1308,7 +1308,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_authorization|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_baseline_phase|node|study|center_area';
@@ -1336,7 +1336,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_baseline_phase|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_baseline_phase|node|study|default';
@@ -1367,7 +1367,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_baseline_phase|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_baseline_phase|node|study|footer_area';
@@ -1398,7 +1398,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_baseline_phase|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_baseline_phase|node|study|form';
@@ -1427,7 +1427,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_baseline_phase|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_baseline_phase|node|study|left_area';
@@ -1455,7 +1455,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_baseline_phase|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_baseline_phase|node|study|right_area';
@@ -1486,7 +1486,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_baseline_phase|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_countries|node|study|center_area';
@@ -1511,7 +1511,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_countries|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_countries|node|study|default';
@@ -1536,7 +1536,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_countries|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_countries|node|study|footer_area';
@@ -1561,7 +1561,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_countries|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_countries|node|study|form';
@@ -1589,7 +1589,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_countries|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_countries|node|study|right_area';
@@ -1614,7 +1614,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_countries|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_number_samples|node|study|center_area';
@@ -1642,7 +1642,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_number_samples|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_number_samples|node|study|default';
@@ -1670,7 +1670,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_number_samples|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_number_samples|node|study|footer_area';
@@ -1698,7 +1698,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_number_samples|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_number_samples|node|study|form';
@@ -1727,7 +1727,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_number_samples|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_number_samples|node|study|right_area';
@@ -1755,7 +1755,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_number_samples|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_number|node|study|center_area';
@@ -1783,7 +1783,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_number|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_number|node|study|default';
@@ -1811,7 +1811,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_number|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_number|node|study|footer_area';
@@ -1839,7 +1839,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_number|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_number|node|study|form';
@@ -1868,7 +1868,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_number|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_number|node|study|right_area';
@@ -1896,7 +1896,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_number|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_status|node|study|center_area';
@@ -1925,7 +1925,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_status|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_status|node|study|default';
@@ -1954,7 +1954,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_status|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_status|node|study|footer_area';
@@ -1983,7 +1983,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_status|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_status|node|study|form';
@@ -2015,7 +2015,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_status|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_status|node|study|left_area';
@@ -2044,7 +2044,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_status|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_current_status|node|study|right_area';
@@ -2073,7 +2073,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_current_status|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_data_collection|node|study|center_area';
@@ -2105,7 +2105,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_data_collection|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_data_collection|node|study|default';
@@ -2137,7 +2137,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_data_collection|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_data_collection|node|study|footer_area';
@@ -2169,7 +2169,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_data_collection|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_data_collection|node|study|form';
@@ -2198,7 +2198,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_data_collection|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_data_collection|node|study|left_area';
@@ -2225,7 +2225,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_data_collection|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_data_collection|node|study|right_area';
@@ -2257,7 +2257,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_data_collection|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_documents|node|study|center_area';
@@ -2283,7 +2283,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_documents|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_documents|node|study|default';
@@ -2309,7 +2309,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_documents|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_documents|node|study|footer_area';
@@ -2335,7 +2335,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_documents|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_documents|node|study|form';
@@ -2364,7 +2364,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_documents|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_documents|node|study|left_area';
@@ -2388,7 +2388,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_documents|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_documents|node|study|right_area';
@@ -2412,7 +2412,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_documents|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_ended_phase|node|study|center_area';
@@ -2440,7 +2440,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_ended_phase|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_ended_phase|node|study|default';
@@ -2470,7 +2470,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_ended_phase|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_ended_phase|node|study|footer_area';
@@ -2500,7 +2500,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_ended_phase|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_ended_phase|node|study|form';
@@ -2528,7 +2528,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_ended_phase|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_ended_phase|node|study|left_area';
@@ -2556,7 +2556,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_ended_phase|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_ended_phase|node|study|right_area';
@@ -2586,7 +2586,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_ended_phase|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_ethnic_origin|node|study|center_area';
@@ -2611,7 +2611,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_ethnic_origin|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_ethnic_origin|node|study|default';
@@ -2636,7 +2636,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_ethnic_origin|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_ethnic_origin|node|study|footer_area';
@@ -2661,7 +2661,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_ethnic_origin|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_ethnic_origin|node|study|right_area';
@@ -2686,7 +2686,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_ethnic_origin|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_followup_phase|node|study|center_area';
@@ -2707,7 +2707,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_followup_phase|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_followup_phase|node|study|default';
@@ -2738,7 +2738,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_followup_phase|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_followup_phase|node|study|footer_area';
@@ -2769,7 +2769,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_followup_phase|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_followup_phase|node|study|form';
@@ -2798,7 +2798,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_followup_phase|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_followup_phase|node|study|left_area';
@@ -2826,7 +2826,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_followup_phase|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_followup_phase|node|study|right_area';
@@ -2857,7 +2857,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_followup_phase|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_general_design|node|study|center_area';
@@ -2898,7 +2898,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_general_design|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_general_design|node|study|default';
@@ -2939,7 +2939,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_general_design|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_general_design|node|study|footer_area';
@@ -2991,7 +2991,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_general_design|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_general_design|node|study|form';
@@ -3022,7 +3022,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_general_design|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_general_design|node|study|left_area';
@@ -3058,7 +3058,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_general_design|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_general_design|node|study|right_area';
@@ -3110,7 +3110,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_general_design|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_general_design|node|study|summary_left_area';
@@ -3141,7 +3141,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_general_design|node|study|summary_left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_general_info|node|study|center_area';
@@ -3162,7 +3162,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_general_info|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_general_info|node|study|default';
@@ -3194,7 +3194,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_general_info|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_general_info|node|study|footer_area';
@@ -3226,7 +3226,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_general_info|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_general_info|node|study|form';
@@ -3258,7 +3258,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_general_info|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_general_info|node|study|left_area';
@@ -3285,7 +3285,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_general_info|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_general_info|node|study|right_area';
@@ -3313,7 +3313,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_general_info|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_health_status|node|study|center_area';
@@ -3338,7 +3338,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_health_status|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_health_status|node|study|default';
@@ -3363,7 +3363,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_health_status|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_health_status|node|study|footer_area';
@@ -3388,7 +3388,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_health_status|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_health_status|node|study|right_area';
@@ -3413,7 +3413,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_health_status|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_institution|node|contact|default';
@@ -3446,7 +3446,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_institution|node|contact|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_institution|node|contact|form';
@@ -3479,7 +3479,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_institution|node|contact|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_marker_paper|node|study|center_area';
@@ -3510,7 +3510,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_marker_paper|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_marker_paper|node|study|default';
@@ -3540,7 +3540,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_marker_paper|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_marker_paper|node|study|footer_area';
@@ -3571,7 +3571,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_marker_paper|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_marker_paper|node|study|form';
@@ -3600,7 +3600,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_marker_paper|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_marker_paper|node|study|left_area';
@@ -3627,7 +3627,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_marker_paper|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_marker_paper|node|study|right_area';
@@ -3655,7 +3655,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_marker_paper|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_methods|node|study|center_area';
@@ -3683,7 +3683,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_methods|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_methods|node|study|default';
@@ -3713,7 +3713,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_methods|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_methods|node|study|footer_area';
@@ -3743,7 +3743,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_methods|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_methods|node|study|form';
@@ -3773,7 +3773,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_methods|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_methods|node|study|right_area';
@@ -3803,7 +3803,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_methods|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_more_current_participants|node|study|center_area';
@@ -3834,7 +3834,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_more_current_participants|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_more_current_samples|node|study|center_area';
@@ -3865,7 +3865,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_more_current_samples|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_more_design|node|study|left_area';
@@ -3896,7 +3896,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_more_design|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_more_recruitment_proc|node|study|center_area';
@@ -3927,7 +3927,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_more_recruitment_proc|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_more_recruitment_proc|node|study|left_area';
@@ -3958,7 +3958,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_more_recruitment_proc|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_more_selection|node|study|center_area';
@@ -3989,7 +3989,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_more_selection|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_more_selection|node|study|left_area';
@@ -4020,7 +4020,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_more_selection|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_more_status|node|study|center_area';
@@ -4051,7 +4051,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_more_status|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_more_target_participant|node|study|left_area';
@@ -4082,7 +4082,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_more_target_participant|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_more_target_samples|node|study|left_area';
@@ -4113,7 +4113,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_more_target_samples|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_participants_selection|node|study|center_area';
@@ -4157,7 +4157,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_participants_selection|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_participants_selection|node|study|default';
@@ -4201,7 +4201,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_participants_selection|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_participants_selection|node|study|footer_area';
@@ -4250,7 +4250,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_participants_selection|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_participants_selection|node|study|form';
@@ -4279,7 +4279,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_participants_selection|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_participants_selection|node|study|right_area';
@@ -4328,7 +4328,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_participants_selection|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_participants_selection|node|study|summary_right_area';
@@ -4362,7 +4362,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_participants_selection|node|study|summary_right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_preparation_phase|node|study|center_area';
@@ -4390,7 +4390,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_preparation_phase|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_preparation_phase|node|study|default';
@@ -4421,7 +4421,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_preparation_phase|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_preparation_phase|node|study|footer_area';
@@ -4452,7 +4452,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_preparation_phase|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_preparation_phase|node|study|form';
@@ -4481,7 +4481,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_preparation_phase|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_preparation_phase|node|study|left_area';
@@ -4509,7 +4509,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_preparation_phase|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_preparation_phase|node|study|right_area';
@@ -4540,7 +4540,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_preparation_phase|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_recruitment_procedures|node|study|center_area';
@@ -4569,7 +4569,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_recruitment_procedures|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_recruitment_procedures|node|study|default';
@@ -4598,7 +4598,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_recruitment_procedures|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_recruitment_procedures|node|study|footer_area';
@@ -4627,7 +4627,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_recruitment_procedures|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_recruitment_procedures|node|study|form';
@@ -4657,7 +4657,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_recruitment_procedures|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_recruitment_procedures|node|study|left_area';
@@ -4690,7 +4690,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_recruitment_procedures|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_recruitment_procedures|node|study|right_area';
@@ -4719,7 +4719,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_recruitment_procedures|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_sample_management|node|study|center_area';
@@ -4752,7 +4752,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_sample_management|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_sample_management|node|study|default';
@@ -4785,7 +4785,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_sample_management|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_sample_management|node|study|footer_area';
@@ -4818,7 +4818,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_sample_management|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_sample_management|node|study|form';
@@ -4848,7 +4848,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_sample_management|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_sample_management|node|study|left_area';
@@ -4876,7 +4876,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_sample_management|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_sample_management|node|study|right_area';
@@ -4909,7 +4909,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_sample_management|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_selection_criteria|node|study|center_area';
@@ -4937,7 +4937,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_selection_criteria|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_selection_criteria|node|study|default';
@@ -4965,7 +4965,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_selection_criteria|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_selection_criteria|node|study|footer_area';
@@ -4993,7 +4993,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_selection_criteria|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_selection_criteria|node|study|form';
@@ -5028,7 +5028,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_selection_criteria|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_selection_criteria|node|study|left_area';
@@ -5068,7 +5068,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_selection_criteria|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_selection_criteria|node|study|right_area';
@@ -5096,7 +5096,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_selection_criteria|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_specify_gender|node|study|center_area';
@@ -5124,7 +5124,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_specify_gender|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_specify_gender|node|study|default';
@@ -5152,7 +5152,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_specify_gender|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_specify_gender|node|study|footer_area';
@@ -5180,7 +5180,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_specify_gender|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_specify_gender|node|study|right_area';
@@ -5208,7 +5208,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_specify_gender|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_status|node|study|center_area';
@@ -5247,7 +5247,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_status|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_status|node|study|default';
@@ -5288,7 +5288,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_status|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_status|node|study|footer_area';
@@ -5321,7 +5321,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_status|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_status|node|study|form';
@@ -5349,7 +5349,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_status|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_status|node|study|left_area';
@@ -5390,7 +5390,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_status|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_status|node|study|right_area';
@@ -5423,7 +5423,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_status|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_study_design|node|study|center_area';
@@ -5452,7 +5452,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_study_design|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_study_design|node|study|default';
@@ -5481,7 +5481,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_study_design|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_study_design|node|study|footer_area';
@@ -5510,7 +5510,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_study_design|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_study_design|node|study|form';
@@ -5541,7 +5541,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_study_design|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_study_design|node|study|right_area';
@@ -5570,7 +5570,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_study_design|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_study_name|node|study|form';
@@ -5599,7 +5599,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_study_name|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_supp_info|node|study|center_area';
@@ -5625,7 +5625,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_supp_info|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_supp_info|node|study|default';
@@ -5652,7 +5652,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_supp_info|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_supp_info|node|study|footer_area';
@@ -5682,7 +5682,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_supp_info|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_supp_info|node|study|form';
@@ -5710,7 +5710,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_supp_info|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_supp_info|node|study|left_area';
@@ -5737,7 +5737,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_supp_info|node|study|left_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_supp_info|node|study|right_area';
@@ -5764,7 +5764,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_supp_info|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tabs|node|study|default';
@@ -5796,7 +5796,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_tabs|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tabs|node|study|footer_area';
@@ -5829,7 +5829,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_tabs|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tabs|node|study|form';
@@ -5862,7 +5862,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_tabs|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tabs|node|study|right_area';
@@ -5894,7 +5894,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_tabs|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_target_nb_participants|node|study|center_area';
@@ -5923,7 +5923,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_target_nb_participants|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_target_nb_participants|node|study|default';
@@ -5952,7 +5952,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_target_nb_participants|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_target_nb_participants|node|study|footer_area';
@@ -5981,7 +5981,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_target_nb_participants|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_target_nb_participants|node|study|form';
@@ -6010,7 +6010,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_target_nb_participants|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_target_nb_participants|node|study|right_area';
@@ -6039,7 +6039,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_target_nb_participants|node|study|right_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_target_nb_samples|node|study|center_area';
@@ -6068,7 +6068,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_target_nb_samples|node|study|center_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_target_nb_samples|node|study|default';
@@ -6097,7 +6097,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_target_nb_samples|node|study|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_target_nb_samples|node|study|footer_area';
@@ -6126,7 +6126,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_target_nb_samples|node|study|footer_area'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_target_nb_samples|node|study|form';
@@ -6155,7 +6155,7 @@ function mica_studies_field_group_info() {
   );
   $export['group_target_nb_samples|node|study|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_target_nb_samples|node|study|right_area';
