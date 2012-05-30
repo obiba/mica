@@ -122,3 +122,18 @@ function mica_core_find_menu_for_alias($url_alias) {
   )->fetchObject();
   return $menu;
 }
+
+function mica_core_set_menu_option($type, $mlid){
+  
+  $name = 'menu_parent_' . $type;
+  $value = serialize(MAIN_MENU . ':' . $mlid);
+  
+  $num = db_update('variable')
+    ->fields(array(
+      'value' => $value,
+    ))
+    ->condition('name', $name)
+    ->execute();
+  
+  return $num;
+}

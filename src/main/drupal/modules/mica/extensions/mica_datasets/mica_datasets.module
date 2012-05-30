@@ -31,10 +31,13 @@ function mica_datasets_create_default_content() {
   );
   $datasets_path = 'node/' . $page->nid;
   $resource_menu = mica_core_find_menu_for_alias('resources');
-  mica_core_create_node_menu($page, FALSE, TRUE, 0, $resource_menu->link_path);
+  $dataset_menu = mica_core_create_node_menu($page, FALSE, TRUE, 0, $resource_menu->link_path);
   mica_core_create_menu(st('Study Datasets'), 'study-datasets', 'study-datasets', FALSE, FALSE, 1, $datasets_path);
   mica_core_create_menu(st('Harmonization Datasets'), 'harmonization-datasets', 'harmonization-datasets', FALSE, FALSE, 2, $datasets_path);
   mica_core_create_menu(st('Variables Search'), 'variable-search', 'variable-search', FALSE, FALSE, 3, $datasets_path);
+  
+  // Set menu parent option for dataset
+  mica_core_set_menu_option('dataset', $dataset_menu['mlid']);
 }
 
 /**

@@ -12,7 +12,9 @@ include_once('mica_projects.features.inc');
  */
 function mica_projects_create_default_content() {
   $research_menu = mica_core_find_menu_for_alias('research');
-  mica_core_create_menu(st('Projects'), 'projects', 'projects', FALSE, FALSE, 2, $research_menu->link_path);
+  $project_menu = mica_core_create_menu(st('Projects'), 'projects', 'projects', FALSE, FALSE, 2, $research_menu->link_path);
+  
+  mica_core_set_menu_option('projects', $project_menu['mlid']);
 }
 
 /**
