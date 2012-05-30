@@ -1897,7 +1897,7 @@ function mica_datasets_import_variables_callback($type = 'ajax', $dataset_nid, $
     $study = entity_load_single('node', $nid);
     $study_wrapper = entity_metadata_wrapper('node', $study);
 
-    $harmonizations = _mica_opal_fetch_harmonization_view($dataset_nid, $nid);
+    $harmonizations = mica_opal_fetch_harmonization_view($dataset_nid, $nid);
 
     if ($harmonizations) {
       $nb = mica_datasets_create_variables($harmonizations);
