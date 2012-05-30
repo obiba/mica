@@ -1880,12 +1880,13 @@ function _mica_datasets_get_status_icon($status) {
 
 function mica_datasets_import_variables_callback($type = 'ajax', $dataset_nid, $study_nid = NULL) {
 
+  $dataset = entity_load_single('node', $dataset_nid);
+  
   if (isset($study_nid)) {
     $study_nids = array($study_nid);
   }
   else {
     // fetch all study_nids of the dataset
-    $dataset = entity_load_single('node', $dataset_nid);
     $dataset_wrapper = entity_metadata_wrapper('node', $dataset);
 
     foreach ($dataset_wrapper->field_dataset_studies->value() as $study) {
@@ -1902,16 +1903,16 @@ function mica_datasets_import_variables_callback($type = 'ajax', $dataset_nid, $
     if ($harmonizations) {
       $nb = mica_datasets_create_variables($harmonizations);
 
-     /* drupal_set_message(
+      drupal_set_message(
         t(
           '@count variables have been imported for study @study into the dataset @dataset',
           array(
             '@count' => $nb,
             '@study' => $study_wrapper->title->value(),
-            '@dataset' => $dataset_wrapper->title->value(),
+            '@dataset' => $dataset->title,
           )
         )
-      );*/
+      );
     }
   }
 
