@@ -45,7 +45,7 @@ function mica_opal_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
 
-function _mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
+function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
 
   $connector = mica_dataset_connector_query($dataset_nid, $study_nid);
   

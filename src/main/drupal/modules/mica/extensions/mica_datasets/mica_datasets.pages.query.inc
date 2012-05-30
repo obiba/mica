@@ -617,8 +617,8 @@ function mica_datasets_dataset_query_run_page($form, &$form_state, $dataset_node
     'header' => TRUE,
   );
   $headers_initialized = FALSE;
-  $header_total_nb_sub_header = 0;
   $header_matched_tooltip = '';
+  $header_colspan = count($category_label_by_name) + 1;
 
   foreach ($mica_dataset_connectors as $connector) {
     $row = array();
@@ -634,29 +634,23 @@ function mica_datasets_dataset_query_run_page($form, &$form_state, $dataset_node
 
       if ($is_cross) {
 
-        $categories = $result['_all'];
-        unset($categories['_missing']);
-        unset($categories['_other']);
-        unset($categories['_all']);
-
         if (!$headers_initialized) {
           $headers[] = array(
             'data' => t('Total'),
-            'colspan' => count($categories) + 1,
+            'colspan' => $header_colspan,
           );
-          $header_total_nb_sub_header = count($categories) + 1;
         }
 
-        foreach ($categories as $name => $value) {
+        foreach ($category_label_by_name as $name => $label) {
           if (!$headers_initialized) {
             $sub_headers[] = array(
               'data' => $name,
               'header' => TRUE,
-              'title' => $category_label_by_name[$name],
+              'title' => $label,
             );
           }
           $row[] = array(
-            'data' => $value,
+            'data' => isset($result['_all'][$name]) ? $result['_all'][$name] : 0,
           );
         }
         if (!$headers_initialized) {
@@ -683,26 +677,23 @@ function mica_datasets_dataset_query_run_page($form, &$form_state, $dataset_node
 
         if ($is_cross) {
 
-          $categories = $result[$impl->getName()];
-          unset($categories['_missing']);
-          unset($categories['_other']);
-          unset($categories['_all']);
-
           if (!$headers_initialized) {
             $headers[] = array(
               'data' => _mica_datasets_dataset_query_run_page_header($dataset_node, $query, $term, $has_multiple_terms, $header_matched_tooltip),
-              'colspan' => count($categories) + 1,
+              'colspan' => $header_colspan,
             );
           }
 
-          foreach ($categories as $name => $value) {
+          foreach ($category_label_by_name as $name => $label) {
+
             if (!$headers_initialized) {
               $sub_headers[] = array(
                 'data' => $name,
                 'header' => TRUE,
-                'title' => $category_label_by_name[$name],
+                'title' => $label,
               );
             }
+            $value = isset($result[$impl->getName()][$name]) ? $result[$impl->getName()][$name] : 0;
             $row[] = array(
               'data' => mica_datasets_dataset_query_count_str($value, $total),
               'count' => $value,
@@ -715,8 +706,9 @@ function mica_datasets_dataset_query_run_page($form, &$form_state, $dataset_node
               'header' => TRUE,
             );
           }
+          $value = isset($result[$impl->getName()]['_all']) ? $result[$impl->getName()]['_all'] : 0;
           $row[] = array(
-            'data' => mica_datasets_dataset_query_count_str($result[$impl->getName()]['_all'], $total),
+            'data' => mica_datasets_dataset_query_count_str($value, $total),
             'count' => $value,
           );
 
@@ -738,26 +730,23 @@ function mica_datasets_dataset_query_run_page($form, &$form_state, $dataset_node
 
       if ($is_cross) {
 
-        $categories = $result['_matched'];
-        unset($categories['_missing']);
-        unset($categories['_other']);
-        unset($categories['_all']);
-
         if (!$headers_initialized) {
           $headers[] = array(
             'data' => t('Matched'),
-            'colspan' => count($categories) + 1,
+            'colspan' => $header_colspan,
           );
         }
 
-        foreach ($categories as $name => $value) {
+        foreach ($category_label_by_name as $name => $label) {
+
           if (!$headers_initialized) {
             $sub_headers[] = array(
               'data' => $name,
               'header' => TRUE,
-              'title' => $category_label_by_name[$name],
+              'title' => $label,
             );
           }
+          $value = isset($result['_matched'][$name]) ? $result['_matched'][$name] : 0;
           $row[] = array(
             'data' => mica_datasets_dataset_query_count_str($value, $total),
             'class' => array('active'),
@@ -802,7 +791,7 @@ function mica_datasets_dataset_query_run_page($form, &$form_state, $dataset_node
 
   // Add a summary row if there's more than one connector
   if (count($mica_dataset_connectors) > 1) {
-    _mica_datasets_dataset_query_run_page_summary($rows, $header_total_nb_sub_header);
+    _mica_datasets_dataset_query_run_page_summary($rows, $header_colspan);
   }
 
   if (MicaDatasetQueryManager::isCached($query)) {
@@ -864,6 +853,8 @@ function mica_datasets_dataset_query_run_page_submit($form, &$form_state) {
 function mica_datasets_dataset_query_run_page_submit_callback($form, $form_state) {
   return $form['results'];
 }
+
+
 
 function _mica_datasets_dataset_query_run_page_header($dataset_node, $query, $term, $has_multiple_terms, &$header_matched_tooltip) {
   $impl = $term->termImpl();
