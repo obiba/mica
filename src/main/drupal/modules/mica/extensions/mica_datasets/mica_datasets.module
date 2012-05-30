@@ -1902,7 +1902,7 @@ function mica_datasets_import_variables_callback($type = 'ajax', $dataset_nid, $
     if ($harmonizations) {
       $nb = mica_datasets_create_variables($harmonizations);
 
-      drupal_set_message(
+     /* drupal_set_message(
         t(
           '@count variables have been imported for study @study into the dataset @dataset',
           array(
@@ -1911,7 +1911,7 @@ function mica_datasets_import_variables_callback($type = 'ajax', $dataset_nid, $
             '@dataset' => $dataset_wrapper->title->value(),
           )
         )
-      );
+      );*/
     }
   }
 
