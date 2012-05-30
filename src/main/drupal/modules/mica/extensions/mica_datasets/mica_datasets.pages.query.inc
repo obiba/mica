@@ -922,7 +922,7 @@ function _mica_datasets_dataset_query_run_page_summary(&$rows, $header_total_nb_
       $totals[$key]['count'] +=
         isset($value['count'])
           ? $value['count']
-          : isset($value['data']) ? $value['data'] : $value;
+          : (isset($value['data']) ? $value['data'] : $value);
     }
   }
   // We have the count sums, now build the count display strings (i.e. with percentage)
