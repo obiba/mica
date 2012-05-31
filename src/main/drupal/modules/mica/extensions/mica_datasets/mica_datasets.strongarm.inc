@@ -201,27 +201,6 @@ function mica_datasets_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_dataset';
-  $strongarm->value = 'main-menu:0';
-  $export['menu_parent_dataset'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_study_variable_attributes';
-  $strongarm->value = 'main-menu:0';
-  $export['menu_parent_study_variable_attributes'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_variable';
-  $strongarm->value = 'main-menu:0';
-  $export['menu_parent_variable'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'node_options_dataset';
   $strongarm->value = array(
     0 => 'moderation',
