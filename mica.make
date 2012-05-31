@@ -42,9 +42,6 @@ projects[autocomplete_deluxe][download][branch] = 7.x-1.x
 
 projects[] = advanced_help
 
-projects[background_process][version] = 1.12
-projects[background_process][type] = module
-
 projects[calendar][version] = 3.4
 projects[calendar][type] = module
 
@@ -79,6 +76,9 @@ projects[ctools][version] = 1.0
 
 projects[date][version] = 2.5
 projects[date][type] = module
+
+projects[diff][version] = 2.0
+projects[diff][type] = module
 
 projects[] = devel
 
