@@ -3510,15 +3510,9 @@ Set to 0 to set variable at last position.  ',
         ),
         'default' => array(
           'label' => 'above',
-          'module' => 'number',
-          'settings' => array(
-            'decimal_separator' => '.',
-            'prefix_suffix' => TRUE,
-            'scale' => 0,
-            'thousand_separator' => ' ',
-          ),
-          'type' => 'number_integer',
-          'weight' => '19',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'footer_area' => array(
           'label' => 'above',
