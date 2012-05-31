@@ -57,7 +57,7 @@ function _mica_standard_drupal_default_blocks($default_theme, $admin_theme) {
       'theme' => $default_theme,
       'status' => 1,
       'weight' => 10,
-      'region' => 'footer',
+      'region' => BLOCK_REGION_NONE,
       'pages' => '',
       'cache' => -1,
     ),
@@ -126,9 +126,9 @@ function _mica_standard_no_region($module, $delta, $theme = 'seven') {
     'region' => BLOCK_REGION_NONE,
     'visibility' => BLOCK_VISIBILITY_NOTLISTED,
   ))
-    ->condition('module', $module, '=')
-    ->condition('delta', $delta, '=')
-    ->condition('theme', $theme, '=')
+    ->condition('module', $module)
+    ->condition('delta', $delta)
+    ->condition('theme', $theme)
     ->execute();
 }
 
@@ -272,7 +272,7 @@ function _mica_standard_default_block($mica_theme = 'mica_samara', $admin_theme 
   $query->execute();
 
   // set a title to upcoming events block
-  $query = db_update('block')
+  db_update('block')
     ->fields(array('title' => 'Upcoming Events'))
     ->condition('delta', 'events_calendar-block_2')
     ->execute();

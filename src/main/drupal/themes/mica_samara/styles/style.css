@@ -2347,5 +2347,6 @@ table.query-table th, table.query-table td {
 }
 
 #cross-variable-detail {
- margin-left: 5px;
+  margin-left: 5px;
+  display: inline;
 }
