@@ -514,7 +514,7 @@ function mica_datasets_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_study_study_variable_att',
-      'label' => 'Study Variables',
+      'label' => 'Study Variables Attributes',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -4610,7 +4610,6 @@ Set to 0 to set variable at last position.  ');
   t('Status');
   t('Studies');
   t('Study');
-  t('Study Variables');
   t('Study Variables Attributes');
   t('Target');
   t('Type');
