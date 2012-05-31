@@ -1874,7 +1874,8 @@ function _mica_datasets_get_status_icon($status) {
 }
 
 function mica_datasets_import_variables_callback($type, $dataset_nid, $study_nid = NULL) {
-  $is_ajax = ($type === 'ajax');
+  ctools_include('ajax');
+  ctools_add_js('ajax-responder');
 
   $dataset = entity_load_single('node', $dataset_nid);
 
@@ -1894,19 +1895,11 @@ function mica_datasets_import_variables_callback($type, $dataset_nid, $study_nid
     $study = entity_load_single('node', $nid);
     $study_wrapper = entity_metadata_wrapper('node', $study);
 
+    $harmonizations = FALSE;
     try {
       $harmonizations = mica_opal_fetch_harmonization_view($dataset_nid, $nid);
     } catch (Exception $e) {
       drupal_set_message($e->getMessage(), 'error');
-      if ($is_ajax) {
-        ctools_include('ajax');
-        ctools_add_js('ajax-responder');
-        $commands[] = ctools_ajax_command_reload();
-        return array('#type' => 'ajax', '#commands' => $commands);
-      }
-      else {
-        drupal_goto('node/' . $dataset_nid);
-      }
     }
 
     if ($harmonizations) {
@@ -1924,9 +1917,8 @@ function mica_datasets_import_variables_callback($type, $dataset_nid, $study_nid
       );
     }
   }
-  if ($is_ajax) {
-    require_once('mica_datasets.pages.harmonization.inc');
-    $commands[] = ajax_command_html("#harmonization_overview_wrapper", mica_datasets_dataset_harmonization_page_output($dataset));
+  if ($type === 'ajax') {
+    $commands[] = ctools_ajax_command_reload();
     return array(
       '#type' => 'ajax',
       '#commands' => $commands
