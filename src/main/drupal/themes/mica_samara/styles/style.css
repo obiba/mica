@@ -2334,6 +2334,14 @@ table.query-table th, table.query-table td {
   text-align: center;
 }
 
+.border-left {
+  border-left: 1px solid #CCCCCC;
+}
+
+.border-right {
+  border-right: 1px solid #CCCCCC;
+}
+
 .form-item-cross-variable label {
   display: inline;
 }

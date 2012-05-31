@@ -639,10 +639,13 @@ function mica_datasets_dataset_query_run_page_submit_callback($form, $form_state
   $dataset_node = $form_state['mica']['dataset_node'];
   $query = $form_state['mica']['query'];
 
-  $cross_variable = NULL;
+  $cross_variable = isset($form_state['values']['cross_variable'])
+    ? node_load($form_state['values']['cross_variable'])
+    : NULL;
+  $result_table = _mica_datasets_dataset_query_result_table($dataset_node, $query, $cross_variable);
+
   $variable_link = '';
-  if (isset($form_state['values']['cross_variable'])) {
-    $cross_variable = node_load($form_state['values']['cross_variable']);
+  if (!empty($cross_variable)) {
     $variable_link = ctools_modal_text_button(
       t('Details'),
       'mica/nojs/node/' . $cross_variable->nid,
@@ -650,7 +653,6 @@ function mica_datasets_dataset_query_run_page_submit_callback($form, $form_state
       'ctools-modal-node-style highlight'
     );
   }
-  $result_table = _mica_datasets_dataset_query_result_table($dataset_node, $query, $cross_variable);
 
   return array(
     '#type' => 'ajax',
@@ -684,6 +686,7 @@ function _mica_datasets_dataset_query_result_table($dataset_node, $query, $cross
   $sub_headers[] = array(
     'data' => ' ',
     'header' => TRUE,
+    'class' => 'border-right',
   );
   $headers_initialized = FALSE;
   $header_matched_tooltip = '';
@@ -693,7 +696,10 @@ function _mica_datasets_dataset_query_result_table($dataset_node, $query, $cross
     $row = array();
 
     $study = node_load($connector->study_id);
-    $row[] = filter_xss($study->title);
+    $row[] = array(
+      'data' => filter_xss($study->title),
+      'class' => $is_cross ? 'border-right' : '',
+    );
 
     try {
       $result = $is_cross ? $connector->queryBy($terms, array($cross_variable->title)) : $connector->query($terms);
@@ -707,6 +713,7 @@ function _mica_datasets_dataset_query_result_table($dataset_node, $query, $cross
           $headers[] = array(
             'data' => t('Total'),
             'colspan' => $header_colspan,
+            'class' => array('border-left', 'border-right'),
           );
         }
 
@@ -726,10 +733,12 @@ function _mica_datasets_dataset_query_result_table($dataset_node, $query, $cross
           $sub_headers[] = array(
             'data' => t('All'),
             'header' => TRUE,
+            'class' => 'border-right',
           );
         }
         $row[] = array(
           'data' => $result['_all']['_all'],
+          'class' => 'border-right',
         );
       }
       else {
@@ -750,6 +759,7 @@ function _mica_datasets_dataset_query_result_table($dataset_node, $query, $cross
             $headers[] = array(
               'data' => _mica_datasets_dataset_query_run_page_header($dataset_node, $query, $term, $has_multiple_terms, $header_matched_tooltip),
               'colspan' => $header_colspan,
+              'class' => array('border-left', 'border-right'),
             );
           }
 
@@ -773,12 +783,14 @@ function _mica_datasets_dataset_query_result_table($dataset_node, $query, $cross
             $sub_headers[] = array(
               'data' => t('All'),
               'header' => TRUE,
+              'class' => 'border-right',
             );
           }
           $value = isset($result[$impl->getName()]['_all']) ? $result[$impl->getName()]['_all'] : 0;
           $row[] = array(
             'data' => mica_datasets_dataset_query_count_str($value, $total),
             'count' => $value,
+            'class' => 'border-right',
           );
 
         }
@@ -803,6 +815,7 @@ function _mica_datasets_dataset_query_result_table($dataset_node, $query, $cross
           $headers[] = array(
             'data' => t('Matched'),
             'colspan' => $header_colspan,
+            'class' => array('border-left', 'border-right'),
           );
         }
 
@@ -826,11 +839,12 @@ function _mica_datasets_dataset_query_result_table($dataset_node, $query, $cross
           $sub_headers[] = array(
             'data' => t('All'),
             'header' => TRUE,
+            'class' => 'border-right',
           );
         }
         $row[] = array(
           'data' => mica_datasets_dataset_query_count_str($result['_matched']['_all'], $total),
-          'class' => array('active'),
+          'class' => array('active', 'border-right'),
         );
 
       }
