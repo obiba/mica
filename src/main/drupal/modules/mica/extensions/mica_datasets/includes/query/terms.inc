@@ -236,6 +236,20 @@ class CategoryTerm extends AbstractTerm {
       }
       $rows[] = $row;
     }
+    $row = array(
+      array(
+      'data' => t('All'),
+      'class' => array('active')
+        )
+    );
+    foreach ($stats as $study_id => $stat) {
+      $row[] = array(
+        'data' => isset($stat['_all']) ? $stat['_all'] : 0,
+        'class' => array('active')
+      );
+    }
+    $rows[] = $row;
+
     return theme('table', array('header' => $headers, 'rows' => $rows, 'empty' => t('No studies available')));
   }
 
@@ -584,10 +598,51 @@ class TodoTerm extends AbstractTerm {
   }
 
   function view() {
+    $variable = $this->getVariable();
 
+    $headers = array('Value');
+    $stats = $this->stats();
+    foreach ($stats as $study_id => $stat) {
+      $study = node_load($study_id);
+      $headers[] = $study->title;
+    }
+
+    $row = array(
+      array(
+        'data' => t('All'),
+        'class' => array('active')
+      )
+    );
+    foreach ($stats as $study_id => $stat) {
+      $row[] = array(
+        'data' => isset($stat['_all']) ? $stat['_all'] : 0,
+        'class' => array('active')
+      );
+    }
+    $rows[] = $row;
+
+    return theme('table', array('header' => $headers, 'rows' => $rows, 'empty' => t('No studies available')));
   }
 
   function form($form, &$form_state) {
+    $form['inverted'] = array(
+      '#title' => t('Operator'),
+      '#type' => 'select',
+      '#options' => array('in' => 'in', 'notin' => 'not in'),
+      '#default_value' => $this->isInverted() ? 'notin' : 'in',
+    );
+
+    $form['valuecontainer']['fieldset'] = array(
+      '#type' => 'fieldset',
+      '#title' => 'Values',
+    );
+
+    $default_value = implode(" ", $this->match());
+    $form['valuecontainer']['fieldset']['value'] = array(
+      '#type' => 'textfield',
+      '#default_value' => $default_value,
+    );
+
     return $form;
   }
 
@@ -596,11 +651,36 @@ class TodoTerm extends AbstractTerm {
   }
 
   function submit($form, &$form_state) {
+    $selection = trim($form_state['values']['value']);
+    $inverted = $form_state['values']['inverted'];
 
+    if (strcmp($selection,'') == 0) {
+      $selection = array();
+    } else {
+      $selection = explode(" ", $selection);
+      foreach($selection as $key => $value) {
+        $selection[$key] = strtolower($value);
+      }
+    }
+
+    $this->setInverted($inverted == 'notin');
+    $this->setMatch($selection);
+  }
+
+  function setMatch($value = array()) {
+    $this->options['match'] = $value;
+  }
+
+  public function match() {
+    return isset($this->options['match']) ? $this->options['match'] : array();
   }
 
   function toString() {
     $str = parent::toString();
-    return $str . ' ToDo';
+    if (count($this->match())>0) {
+      $str .= $this->isInverted() ? ' not in ' : ' in ';
+      $str .= '(' . implode(', ',$this->match()) . ')';
+    }
+    return $str;
   }
 }
