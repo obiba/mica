@@ -35,7 +35,7 @@ function mica_datasets_create_default_content() {
   mica_core_create_menu(st('Study Datasets'), 'study-datasets', 'study-datasets', FALSE, FALSE, 1, $datasets_path);
   mica_core_create_menu(st('Harmonization Datasets'), 'harmonization-datasets', 'harmonization-datasets', FALSE, FALSE, 2, $datasets_path);
   mica_core_create_menu(st('Variables Search'), 'variable-search', 'variable-search', FALSE, FALSE, 3, $datasets_path);
-  
+
   // Set menu parent option for dataset
   mica_core_set_menu_option('dataset', $dataset_menu['mlid']);
 }
@@ -296,21 +296,21 @@ function mica_datasets_menu() {
     'access arguments' => array('administer site configuration'),
   );
 
-  $items['mica_datasets_harmonization/ajax/%/%/%'] = array(
+  $items['mica_datasets_harmonization/nojs/%'] = array(
     'page callback' => 'mica_datasets_import_variables_callback',
-    'page arguments' => array(2, 3, 4),
+    'page arguments' => array(1, 2),
     'access callback' => '_mica_datasets_node_access',
-    'access arguments' => array(3, 'dataset', 'update'),
+    'access arguments' => array(2, 'dataset', 'update'),
     'type' => MENU_CALLBACK,
   );
 
   $items['mica_datasets_harmonization/ajax/%/%'] = array(
     'page callback' => 'mica_datasets_import_variables_callback',
-    'page arguments' => array(2, 3),
+    'page arguments' => array(1, 2, 3),
     'access callback' => '_mica_datasets_node_access',
-    'access arguments' => array(3, 'dataset', 'update'),
-    'delivery callback' => 'mica_datasets_import_variables_delivery_callback',
+    'access arguments' => array(2, 'dataset', 'update'),
     'type' => MENU_CALLBACK,
+    'delivery callback' => 'ajax_deliver',
   );
 
   return $items;
@@ -323,7 +323,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
 
   $links = array();
   switch ($root_path) {
-      
+
     case 'study-datasets':
     case 'harmonization-datasets':
       if (node_access('create', 'dataset')) {
@@ -393,10 +393,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
                 '#weight' => 7,
                 '#link' => array(
                   'title' => t('Import Variables'),
-                  'href' => 'mica_datasets_harmonization/ajax/nojs/' . $node->nid,
-                  'localized_options' => array(
-                    'attributes' => array('class' => array('use-ajax'))
-                  ),
+                  'href' => 'mica_datasets_harmonization/nojs/' . $node->nid,
                 )
               );
               break;
@@ -1876,10 +1873,10 @@ function _mica_datasets_get_status_icon($status) {
   }
 }
 
-function mica_datasets_import_variables_callback($type = 'ajax', $dataset_nid, $study_nid = NULL) {
+function mica_datasets_import_variables_callback($type, $dataset_nid, $study_nid = NULL) {
 
   $dataset = entity_load_single('node', $dataset_nid);
-  
+
   if (isset($study_nid)) {
     $study_nids = array($study_nid);
   }
@@ -1913,8 +1910,17 @@ function mica_datasets_import_variables_callback($type = 'ajax', $dataset_nid, $
       );
     }
   }
-
-  drupal_goto('node/' . $dataset_nid);
+  if ($type === 'ajax') {
+    require_once('mica_datasets.pages.harmonization.inc');
+    $commands[] = ajax_command_html("#harmonization_overview_wrapper", mica_datasets_dataset_harmonization_page_output($dataset));
+    return array(
+      '#type' => 'ajax',
+      '#commands' => $commands
+    );
+  }
+  else {
+    drupal_goto('node/' . $dataset_nid);
+  }
 }
 
 function mica_datasets_create_variables($harmonizations) {
