@@ -145,7 +145,7 @@ function mica_datasets_menu() {
     'access callback' => '_mica_datasets_query_access',
     'access arguments' => array(1, 3, 'view'),
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('mica_datasets_dataset_query_run_page', 1, 3, 4),
+    'page arguments' => array('mica_datasets_query_run_page', 1, 3, 4),
     'weight' => 7,
     'file' => 'mica_datasets.pages.query.inc',
   );
@@ -199,7 +199,7 @@ function mica_datasets_menu() {
     'access callback' => '_mica_datasets_query_term_access',
     'access arguments' => array(3, 5, 7, 'update'),
     'page callback' => 'mica_datasets_query_term_edit_modal_page',
-    'page arguments' => array(1, 3, 5, 7),
+    'page arguments' => array(1, 3, 5, 7, 9),
     'type' => MENU_CALLBACK,
     'file' => 'mica_datasets.pages.query.term.inc',
   );
@@ -209,7 +209,7 @@ function mica_datasets_menu() {
     'access callback' => '_mica_datasets_query_term_access',
     'access arguments' => array(3, 5, 7, 'update'),
     'page callback' => 'mica_datasets_query_term_delete_modal_page',
-    'page arguments' => array(1, 3, 5, 7),
+    'page arguments' => array(1, 3, 5, 7, 9),
     'type' => MENU_CALLBACK,
     'file' => 'mica_datasets.pages.query.term.inc',
   );

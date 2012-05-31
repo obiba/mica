@@ -55,6 +55,7 @@ function mica_datasets_query_term_edit_form($form, &$form_state) {
   $term = $form_state['build_info']['args'][2];
   $cross_variable = $form_state['build_info']['args'][3];
 
+
   $impl = $term->termImpl();
   $term_form = $impl->form($form, $form_state);
   $form[] = $term_form;
@@ -67,7 +68,7 @@ function mica_datasets_query_term_edit_form($form, &$form_state) {
   $form['actions']['cancel'] = array(
     '#type' => 'link',
     '#title' => t('Cancel'),
-    '#href' => _mica_datasets_query_url($dataset_node, $query, $cross_variable),
+    '#href' => _mica_datasets_query_url($dataset_node, $query),
   );
 
   return $form;
@@ -105,7 +106,8 @@ function mica_datasets_query_term_edit_form_submit($form, &$form_state) {
         $form_state['cancel'] = TRUE;
         break;
     }
-    $form_state['redirect'] = _mica_datasets_query_url($dataset_node, $query, $cross_variable);
+    $form_state['redirect'] = _mica_datasets_query_url($dataset_node, $query);
+    if (!empty($cross_variable)) $form_state['redirect'] .= '/' . $cross_variable;
   }
 }
 
@@ -177,7 +179,7 @@ function mica_datasets_query_term_delete_form($form, &$form_state) {
   $form['actions']['cancel'] = array(
     '#type' => 'link',
     '#title' => t('Cancel'),
-    '#href' => _mica_datasets_query_url($dataset_node, $query, $cross_variable),
+    '#href' => _mica_datasets_query_url($dataset_node, $query),
   );
 
   return $form;
@@ -198,5 +200,6 @@ function mica_datasets_query_term_delete_form_submit($form, &$form_state) {
   }
 
   $form_state['complete'] = TRUE;
-  $form_state['redirect'] = _mica_datasets_query_url($dataset_node, $query, $cross_variable);
+  $form_state['redirect'] = _mica_datasets_query_url($dataset_node, $query);
+  if (!empty($cross_variable)) $form_state['redirect'] .= '/' . $cross_variable;
 }
