@@ -569,18 +569,12 @@ function mica_datasets_dataset_query_delete_form_submit($form, &$form_state) {
 
 function mica_datasets_dataset_query_run_page($form, &$form_state, $dataset_node, $query) {
 
-  $is_cross = FALSE;
-  $category_label_by_name = array();
+  drupal_set_title(t('!title -- !query', array('!title' => $dataset_node->title, '!query' => $query->name)));
 
-  $cross_variable_nid = isset($form_state['values']['cross_variable']) ? $form_state['values']['cross_variable'] : NULL;
-  if (!empty($cross_variable_nid)) {
-    $cross_variable = node_load($cross_variable_nid);
-    $is_cross = !empty($cross_variable);
-    if ($is_cross) {
-      $cross_variable_wrapper = entity_metadata_wrapper('node', $cross_variable);
-      foreach ($cross_variable_wrapper->field_variable_categories->value() as $category) {
-        $category_label_by_name[$category['name']] = $category['label'];
-      }
+  if (MicaDatasetQueryManager::isCached($query)) {
+    global $user;
+    if ($user->uid != 0) {
+      drupal_set_message(t('Your query is not saved yet.'), 'warning');
     }
   }
 
@@ -600,9 +594,84 @@ function mica_datasets_dataset_query_run_page($form, &$form_state, $dataset_node
     ),
   ));
 
-  drupal_set_title(t('!title -- !query', array('!title' => $dataset_node->title, '!query' => $query->name)));
+  $cross_variable = NULL;
+  if (isset($form_state['values']['cross_variable'])) {
+    $cross_variable = node_load($form_state['values']['cross_variable']);
+  }
+  $result_table = _mica_datasets_dataset_query_result_table($dataset_node, $query, $cross_variable);
 
-  $description = '<p>' . $query->description . '</p>';
+  $categorical_variables = mica_datasets_find_categorical_variables($dataset_node->nid);
+  $options = array();
+  foreach ($categorical_variables as $variable) {
+    $options[$variable->nid] = $variable->title;
+  }
+
+  $form_state['mica']['dataset_node'] = $dataset_node;
+  $form_state['mica']['query'] = $query;
+
+  $form['description'] = array(
+    '#markup' => '<p>' . $query->description . '</p>',
+  );
+  $form['cross_variable'] = array(
+    '#type' => 'select',
+    '#title' => t('Cross with'),
+    '#options' => $options,
+    '#empty_options' => -1,
+    '#empty_value' => ' - ' . t('None') . ' - ',
+    '#ajax' => array(
+      'callback' => 'mica_datasets_dataset_query_run_page_submit_callback',
+    ),
+    '#field_suffix' => '<span id="cross-variable-detail"></span>',
+  );
+  $form['results'] = array(
+    '#markup' => $result_table,
+    '#prefix' => '<div id="result-wrapper">',
+    '#suffix' => '</div>',
+  );
+  return $form;
+}
+
+/**
+ * Selects just the result table to be returned for re-rendering.
+ */
+function mica_datasets_dataset_query_run_page_submit_callback($form, $form_state) {
+
+  $dataset_node = $form_state['mica']['dataset_node'];
+  $query = $form_state['mica']['query'];
+
+  $cross_variable = NULL;
+  $variable_link = '';
+  if (isset($form_state['values']['cross_variable'])) {
+    $cross_variable = node_load($form_state['values']['cross_variable']);
+    $variable_link = ctools_modal_text_button(
+      t('Details'),
+      'mica/nojs/node/' . $cross_variable->nid,
+      t('View !title', array('!title' => $cross_variable->title)),
+      'ctools-modal-node-style highlight'
+    );
+  }
+  $result_table = _mica_datasets_dataset_query_result_table($dataset_node, $query, $cross_variable);
+
+  return array(
+    '#type' => 'ajax',
+    '#commands' => array(
+      ajax_command_html("#result-wrapper", $result_table),
+      ajax_command_html("#cross-variable-detail", $variable_link),
+    )
+  );
+}
+
+function _mica_datasets_dataset_query_result_table($dataset_node, $query, $cross_variable) {
+
+  $is_cross = !empty($cross_variable);
+  $category_label_by_name = array();
+
+  if ($is_cross) {
+    $cross_variable_wrapper = entity_metadata_wrapper('node', $cross_variable);
+    foreach ($cross_variable_wrapper->field_variable_categories->value() as $category) {
+      $category_label_by_name[$category['name']] = $category['label'];
+    }
+  }
 
   $mica_dataset_connectors = mica_dataset_connector_query_multiple($dataset_node->nid);
   $terms = mica_dataset_query_term_query($query);
@@ -794,17 +863,10 @@ function mica_datasets_dataset_query_run_page($form, &$form_state, $dataset_node
     _mica_datasets_dataset_query_run_page_summary($rows, $header_colspan);
   }
 
-  if (MicaDatasetQueryManager::isCached($query)) {
-    global $user;
-    if ($user->uid != 0) {
-      drupal_set_message(t('Your query is not saved yet.'), 'warning');
-    }
-  }
-
   // add tooltip to Matched header
   $headers[count($headers) - 1]['title'] = $header_matched_tooltip;
 
-  $table_result = theme(
+  return theme(
     'table',
     array(
       'header' => $headers,
@@ -813,48 +875,7 @@ function mica_datasets_dataset_query_run_page($form, &$form_state, $dataset_node
       'empty' => t('No connectors available')
     )
   );
-
-  $categorical_variables = mica_datasets_find_categorical_variables($dataset_node->nid);
-  $options = array();
-  foreach ($categorical_variables as $variable) {
-    $options[$variable->nid] = $variable->title;
-  }
-
-  $form['description'] = array(
-    '#markup' => $description,
-  );
-  $form['cross_variable'] = array(
-    '#type' => 'select',
-    '#title' => t('Cross with'),
-    '#options' => $options,
-    '#empty_options' => -1,
-    '#empty_value' => ' - ' . t('None') . ' - ',
-    '#ajax' => array(
-      'callback' => 'mica_datasets_dataset_query_run_page_submit_callback',
-      'wrapper' => 'query-results-table',
-    ),
-  );
-  $form['results'] = array(
-    '#markup' => $table_result,
-    '#prefix' => '<div id="query-results-table">',
-    '#suffix' => '</div>',
-  );
-  return $form;
 }
-
-function mica_datasets_dataset_query_run_page_submit($form, &$form_state) {
-  // Setting $form_state['rebuild'] = TRUE causes the form to be rebuilt again.
-  $form_state['rebuild'] = TRUE;
-}
-
-/**
- * Selects just the result table to be returned for re-rendering.
- */
-function mica_datasets_dataset_query_run_page_submit_callback($form, $form_state) {
-  return $form['results'];
-}
-
-
 
 function _mica_datasets_dataset_query_run_page_header($dataset_node, $query, $term, $has_multiple_terms, &$header_matched_tooltip) {
   $impl = $term->termImpl();

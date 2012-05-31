@@ -2337,3 +2337,7 @@ table.query-table th, table.query-table td {
 .form-item-cross-variable label {
   display: inline;
 }
+
+#cross-variable-detail {
+ margin-left: 5px;
+}
