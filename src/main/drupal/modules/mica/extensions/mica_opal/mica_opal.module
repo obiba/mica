@@ -81,7 +81,8 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
         $name = array_shift(mica_opal_jsonPath($item, 'name'));
         $label = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[\'name\']==\'label\')].value'));
         $value_type = array_shift(mica_opal_jsonPath($item, 'valueType'));
-        $repeatable = array_shift(mica_opal_jsonPath($item, 'repeatable'));
+        $unit = array_shift(mica_opal_jsonPath($item, 'unit'));
+        $repeatable = array_shift(mica_opal_jsonPath($item, 'isRepeatable'));
         // Explicitely set to 0 to avoid the error when saving an empty field into the database
         if (empty($repeatable)) {
           $repeatable = '0';
@@ -109,6 +110,7 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
           'title' => $name,
           'label' => $label,
           'value_type' => $value_type,
+          'unit' => $unit,
           'repeatable' => $repeatable,
           'script' => $script,
           'status' => $status,
