@@ -117,9 +117,8 @@ projects[feeds_tamper][patch][1180726] = http://drupal.org/files/empty_check-118
 projects[field_display_label][version] = 1.2
 projects[field_display_label][type] = module
 
-projects[field_group][download][type] = git
-projects[field_group][download][revision] = 233c425
-projects[field_group][download][branch] = 7.x-1.x
+projects[field_group][version] = 1.1
+projects[field_group][type] = module
 
 projects[field_permissions][version] = 1.0-beta2
 projects[field_permissions][type] = module
@@ -176,10 +175,8 @@ projects[namedb][download][type] = git
 projects[namedb][download][revision] = 7284d85
 projects[namedb][download][branch] = 7.x-1.x
 
+projects[name][version] = 1.5
 projects[name][type] = module
-projects[name][download][type] = git
-projects[name][download][revision] = 6644c91
-projects[name][download][branch] = 7.x-1.x
 
 projects[noderefcreate][type] = module
 projects[noderefcreate][download][type] = git
@@ -211,13 +208,9 @@ projects[references][download][type] = git
 projects[references][download][revision] = 311bd49
 projects[references][download][branch] = 7.x-2.x
 
+projects[search_api][version] = 1.1
 projects[search_api][type] = module
-projects[search_api][download][type] = git
-projects[search_api][download][revision] = 3189be2
-projects[search_api][download][branch] = 7.x-1.x
 projects[search_api][patch][1363114] = http://drupal.org/files/max_inclusive-1363114-5.patch
-
-projects[search_api][type] = module
 
 projects[search_api_db][version] = 1.0-beta2
 projects[search_api_db][type] = module
