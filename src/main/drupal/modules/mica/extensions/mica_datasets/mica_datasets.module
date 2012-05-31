@@ -322,12 +322,10 @@ function mica_datasets_menu() {
 function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) {
 
   $links = array();
-
   switch ($root_path) {
-
-    case 'datasets':
-    case 'single-study-datasets':
-    case 'multiple-study-datasets':
+      
+    case 'study-datasets':
+    case 'harmonization-datasets':
       if (node_access('create', 'dataset')) {
         $links['add-dataset'] = array(
           '#theme' => 'menu_local_action',
@@ -1955,6 +1953,8 @@ function mica_datasets_create_variables($harmonizations) {
     $wrapper = entity_metadata_wrapper('node', $variable);
     $wrapper->field_label->set($harmonization['label']);
     $wrapper->field_value_type->set($harmonization['value_type']);
+    $wrapper->field_repeatable->set($harmonization['repeatable']);
+    $wrapper->field_unit->set($harmonization['unit']);
     $wrapper->field_position->set($position++);
     $wrapper->body->value->set($harmonization['description']);
 
