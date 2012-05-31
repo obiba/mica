@@ -2418,7 +2418,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 23,
+          'weight' => '23',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -2648,7 +2648,7 @@ function mica_datasets_field_default_fields() {
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 24,
+          'weight' => '24',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -4522,10 +4522,9 @@ Set to 0 to set variable at last position.  ',
           'weight' => 0,
         ),
         'default' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'node_reference_default',
+          'type' => 'hidden',
           'weight' => '22',
         ),
         'footer_area' => array(

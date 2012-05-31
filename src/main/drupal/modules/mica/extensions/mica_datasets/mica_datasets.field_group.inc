@@ -189,8 +189,8 @@ function mica_datasets_field_group_info() {
       1 => 'field_dataset',
       2 => 'field_label',
       3 => 'field_repeatable',
-      4 => 'field_value_type',
-      5 => 'field_unit',
+      4 => 'field_unit',
+      5 => 'field_value_type',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
