@@ -102,6 +102,31 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['status']['empty_zero'] = 0;
   $handler->display->display_options['fields']['status']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['status']['not'] = 0;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['field_dataset_type']['id'] = 'field_dataset_type';
+  $handler->display->display_options['fields']['field_dataset_type']['table'] = 'field_data_field_dataset_type';
+  $handler->display->display_options['fields']['field_dataset_type']['field'] = 'field_dataset_type';
+  $handler->display->display_options['fields']['field_dataset_type']['label'] = 'dataset_type';
+  $handler->display->display_options['fields']['field_dataset_type']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_dataset_type']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_dataset_type']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_dataset_type']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_dataset_type']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_dataset_type']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_dataset_type']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_dataset_type']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_dataset_type']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_dataset_type']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_dataset_type']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_dataset_type']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_dataset_type']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_dataset_type']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_dataset_type']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_dataset_type']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_dataset_type']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_dataset_type']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_dataset_type']['type'] = 'list_key';
+  $handler->display->display_options['fields']['field_dataset_type']['field_api_classes'] = 0;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
