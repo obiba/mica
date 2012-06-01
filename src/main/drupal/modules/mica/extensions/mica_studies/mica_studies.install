@@ -65,6 +65,8 @@ function mica_studies_update_7130(&$sandbox) {
   
   $base_path = drupal_get_path('module', 'mica_studies') . '/taxonomies/';
   mica_core_taxonomy_import('sources_of_recruitment.csv', $base_path, 'Source of Recruitment');
+  
+  // Configure block for source of recruitment
 }
 
 /**
