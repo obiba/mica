@@ -314,7 +314,7 @@ function mica_category_field_field_presave($entity_type, $entity, $field, $insta
       $new_item = array();
       $new_item['name'] = $item['name'];
       $new_item['label'] = $item['label'];
-      $new_item['missing'] = $item['missing'];
+      $new_item['missing'] = empty($item['missing']) ? '0' : $item['missing'];
       $item = $new_item;
     }
   }

@@ -40,10 +40,6 @@ function mica_category_field_feeds_processor_targets_alter(&$targets, $entity_ty
 function mica_category_field_set_target($source, $entity, $target, $value) {
 
   if (empty($value)) return;
-  if (is_array($value)) {
-    $filtered = array_filter($value);
-    if (empty($filtered)) return;
-  }
 
   list($field_name, $sub_field) = explode(':', $target, 2);
 
