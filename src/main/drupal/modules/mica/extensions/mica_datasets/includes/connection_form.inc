@@ -186,7 +186,6 @@ function _mica_datasets_connectors_form_submit($form, &$form_state) {
 }
 
 function _mica_datasets_add_study_to_dataset($study, $dataset) {
-  // Check if study already exists
   $study_wrapper = entity_metadata_wrapper('node', $study);
   $dataset_wrapper = entity_metadata_wrapper('node', $dataset);
 
@@ -210,13 +209,10 @@ function _mica_datasets_dataset_connection_delete(&$study_node, $dataset_node_id
 }
 
 function _mica_datasets_remove_study_to_dataset(&$study, &$dataset) {
-  foreach ($study->mica_dataset[$study->language] as $key => $value) {
-    if ($value['nid'] == $dataset->nid) {
-      unset($study->mica_dataset[$study->language][$key]);
-      node_save($study);
-      break;
-    }
-  }
+  $study_wrapper = entity_metadata_wrapper('node', $study);
+  $dataset_wrapper = entity_metadata_wrapper('node', $dataset);
+
+  _mica_datasets_remove_and_save_element_from_entity_list_wrapper($study_wrapper, $dataset_wrapper, 'mica_dataset');
   _mica_datasets_delete_svas($dataset, $study);
 }
 
