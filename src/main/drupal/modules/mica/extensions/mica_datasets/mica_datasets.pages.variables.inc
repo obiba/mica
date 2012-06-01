@@ -9,8 +9,8 @@
  * Form builder to reorder variables within a Dataset
  *
  * @ingroup forms
- * @see mica_datasets_reorder_variables_submit()
- * @see theme_mica_datasets_reorder_variables()
+ * @see     mica_datasets_reorder_variables_submit()
+ * @see     theme_mica_datasets_reorder_variables()
  */
 function mica_datasets_reorder_variables($form, $form_state, $dataset_node) {
   $form['#dataset'] = $dataset_node;
@@ -24,7 +24,7 @@ function mica_datasets_reorder_variables($form, $form_state, $dataset_node) {
     ->execute();
   if (!empty($results['node'])) {
     $variables = entity_load('node', array_keys($results['node']));
-    $delta = count($variables)/2 +1;
+    $delta = (int) (count($variables) / 2 + 1);
     foreach ($variables as $variable) {
       $nid = $variable->nid;
       $wrapper = entity_metadata_wrapper('node', $variable);
@@ -70,7 +70,7 @@ function mica_datasets_reorder_variables($form, $form_state, $dataset_node) {
  *   An associative array containing:
  *   - form: A render element representing the form.
  *
- * @see mica_datasets_reorder_variables()
+ * @see     mica_datasets_reorder_variables()
  * @ingroup themeable
  */
 function theme_mica_datasets_reorder_variables($variables) {
@@ -103,16 +103,20 @@ function theme_mica_datasets_reorder_variables($variables) {
   }
   $header[] = array('data' => t('Operations'), 'colspan' => '2');
 
-  $empty = t('No variables found for @dataset. <a href="@link">Add new variable</a>.', array(
-    '@dataset' => $dataset->title,
-    '@link' => url('node/add/variable', array('query' => array('dataset' => $dataset->nid))),
-  ));
+  $empty = t(
+    'No variables found for @dataset. <a href="@link">Add new variable</a>.', array(
+      '@dataset' => $dataset->title,
+      '@link' => url('node/add/variable', array('query' => array('dataset' => $dataset->nid))),
+    )
+  );
 
-  $output = theme('table', array(
+  $output = theme(
+    'table', array(
       'header' => $header,
       'rows' => $rows,
       'empty' => $empty,
-      'attributes' => array('id' => 'variable'))
+      'attributes' => array('id' => 'variable')
+    )
   );
   $output .= drupal_render_children($form);
   return $output;
