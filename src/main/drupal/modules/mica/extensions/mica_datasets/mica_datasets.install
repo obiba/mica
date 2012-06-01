@@ -265,8 +265,19 @@ function mica_datasets_update_7121(&$sandbox) {
   );
 }
 
-function mica_datasets_update_7230(&$sandbox) {
-  _mica_datasets_default_data();
+/**
+ *
+ * Apply new permissions.<br>
+ * Import taxonomies 'Individual Participant Measures' and 'Laboratory Measures'
+ */
+function mica_datasets_update_7130(&$sandbox) {
+  
+  features_revert(array('mica_datasets' => array('user_permission')));
+
+  // import new taxonomies
+  $base_path = drupal_get_path('module', 'mica_datasets') . '/taxonomies/';
+  mica_core_taxonomy_import('individual_participant_measures.csv', $base_path, 'Individual Participant Measures');	
+  mica_core_taxonomy_import('laboratory_measures.csv',  $base_path, 'Laboratory Measures');
 }
 
 /**

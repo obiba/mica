@@ -55,14 +55,16 @@ function mica_studies_update_7120(&$sandbox) {
 
 /**
  *
- * Migrate data from recruitment_procedures to recruitment_sources field.
+ * Migrate data from recruitment_procedures to recruitment_sources field. Apply new permissions.
  */
 function mica_studies_update_7130(&$sandbox) {
-  // import sources_of_recruitment taxonnomy
-  $info = field_info_field('field_recruitment_procedures');
-  debug($info, null, true);
-//   field_delete_field('field_recruitment_procedures');
 
+  // map values from recruitment_procedures to recruitment_sources
+
+  features_revert(array('mica_studies' => array('field', 'field_group', 'search_api_index', 'user_permission')));
+  
+  $base_path = drupal_get_path('module', 'mica_studies') . '/taxonomies/';
+  mica_core_taxonomy_import('sources_of_recruitment.csv', $base_path, 'Source of Recruitment');
 }
 
 /**
