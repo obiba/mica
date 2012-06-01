@@ -80,14 +80,15 @@ function _mica_configuration_batch() {
   return $batch;
 }
 
-//TODO merge this with _create_default_content
-function _import_taxonomies($module, &$context) {
+function _import_taxonomies(&$context) {
   module_invoke_all('taxonomies_operations_import');
+  $context['message'] = st('Created default taxonomies.');
 }
 
-function _create_default_content($module, &$context) {
+function _create_default_content(&$context) {
   drupal_flush_all_caches();
   module_invoke_all('create_default_content');
+  $context['message'] = st('Created default content.');
 }
 
 /**

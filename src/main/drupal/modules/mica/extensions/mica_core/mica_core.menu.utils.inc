@@ -15,10 +15,7 @@ function mica_core_create_menu($menu_title, $menu_path, $router_path, $hidden = 
 }
 
 function mica_core_create_node_menu($node, $hidden = FALSE, $expanded = FALSE, $weight = 0, $parent_path = '') {
-  $menu = $node->menu;
-  if (empty($menu)) {
-    $menu = array();
-  }
+  $menu = isset($node->menu) ? $node->menu : array();
   _mica_core_create_menu($menu, $node->title, 'node/' . $node->nid, 'node/%', $hidden, $expanded, $weight, $parent_path);
   return $menu;
 }
@@ -60,10 +57,7 @@ function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $
  */
 function mica_core_create_node_default_menu($node, $hidden = FALSE, $expanded = FALSE, $weight = 0, $default_parent_path = '') {
   // create menu based on content type menu config
-  $menu = $node->menu;
-  if (empty($menu)) {
-    $menu = array();
-  }
+  $menu = isset($node->menu) ? $node->menu : array();
 
   if (empty($menu['enabled']) || !$menu['enabled']) {
 
@@ -123,17 +117,6 @@ function mica_core_find_menu_for_alias($url_alias) {
   return $menu;
 }
 
-function mica_core_set_menu_option($type, $mlid){
-  
-  $name = 'menu_parent_' . $type;
-  $value = serialize(MAIN_MENU . ':' . $mlid);
-  
-  $num = db_update('variable')
-    ->fields(array(
-      'value' => $value,
-    ))
-    ->condition('name', $name)
-    ->execute();
-  
-  return $num;
+function mica_core_set_menu_option($type, $menu_mlid) {
+  variable_set('menu_parent_' . $type, MAIN_MENU . ':' . $menu_mlid);
 }
