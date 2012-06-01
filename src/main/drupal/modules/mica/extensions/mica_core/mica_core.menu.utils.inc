@@ -20,7 +20,8 @@ function mica_core_create_node_menu($node, $hidden = FALSE, $expanded = FALSE, $
   return $menu;
 }
 
-function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $hidden = FALSE, $expanded = FALSE, $weight = 0, $parent_path = '') {
+function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $hidden = FALSE, $expanded = FALSE,
+  $weight = 0, $parent_path = '') {
 
   $menu['enabled'] = 1;
   $menu['expanded'] = $expanded ? 1 : 0;

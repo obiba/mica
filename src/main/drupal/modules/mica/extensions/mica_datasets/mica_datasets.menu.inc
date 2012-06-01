@@ -1,0 +1,58 @@
+<?php
+/**
+ * @file
+ * Mica Datasets menu
+ */
+
+function _mica_datasets_create_dataset_menu($node) {
+  $parent_path = NULL;
+  $wrapper = entity_metadata_wrapper('node', $node);
+  switch ($wrapper->field_dataset_type->value()) {
+    case 'study':
+      $parent_path = 'study-datasets';
+      break;
+    case 'harmonization':
+      $parent_path = 'harmonization-datasets';
+      break;
+  }
+  mica_core_create_node_menu($node, TRUE, FALSE, 0, $parent_path);
+}
+
+function _mica_datasets_create_variable_menu($node) {
+  $wrapper = entity_metadata_wrapper('node', $node);
+  mica_core_create_node_menu($node, TRUE, FALSE, 0, 'node/' . $wrapper->field_dataset->nid->value());
+}
+
+function _mica_datasets_regenerate_menus() {
+
+  $nb_dataset_menus = 0;
+  $query = new EntityFieldQuery;
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'dataset')
+    ->execute();
+  if (!empty($entities)) {
+    $nodes = node_load_multiple(array_keys($entities['node']));
+    foreach ($nodes as $node) {
+      menu_link_delete(NULL, 'node/' . $node->nid);
+      _mica_datasets_create_dataset_menu($node);
+      $nb_dataset_menus++;
+    }
+  }
+
+  $nb_variable_menus = 0;
+  $query = new EntityFieldQuery;
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'variable')
+    ->execute();
+  if (!empty($entities)) {
+    $nodes = node_load_multiple(array_keys($entities['node']));
+    foreach ($nodes as $node) {
+      menu_link_delete(NULL, 'node/' . $node->nid);
+      _mica_datasets_create_variable_menu($node);
+      $nb_variable_menus++;
+    }
+  }
+
+  drupal_set_message(t('Menus regenerated for %datasets datasets and %variables variables.',
+    array('%datasets' => $nb_dataset_menus, '%variables' => $nb_variable_menus)));
+}
