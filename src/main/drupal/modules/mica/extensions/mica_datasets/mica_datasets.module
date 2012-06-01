@@ -1706,6 +1706,7 @@ function _mica_datasets_add_element_in_entity_list_wrapper(&$entity, &$entity_to
     }
   }
   array_push($nids, $entity_to_add->nid->value());
+  $nids = array_unique($nids);
   $entity->$field_name->set($nids);
 }
 
