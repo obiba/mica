@@ -871,6 +871,7 @@ function mica_studies_user_default_permissions() {
       0 => 'administrator',
       1 => 'consortium administrator',
       2 => 'study reviewer',
+      3 => 'dataset reviewer',
     ),
     'module' => 'node',
   );
@@ -1211,10 +1212,7 @@ function mica_studies_user_default_permissions() {
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      0 => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -1227,6 +1225,8 @@ function mica_studies_user_default_permissions() {
       1 => 'consortium administrator',
       2 => 'study administrator',
       3 => 'study reviewer',
+      4 => 'dataset administrator',
+      5 => 'dataset reviewer',
     ),
     'module' => 'node',
   );

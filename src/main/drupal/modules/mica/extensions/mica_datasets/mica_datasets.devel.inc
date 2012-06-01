@@ -11,7 +11,7 @@ function _mica_datasets_devel_form() {
 
   $form['generate_menus'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Rebuild menus'),
+    '#title' => t('Menus'),
     '#description' => t('Regenerate dataset and variables menus.'),
   );
   $form['generate_menus']['run'] = array(
