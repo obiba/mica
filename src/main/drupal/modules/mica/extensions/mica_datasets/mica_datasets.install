@@ -279,6 +279,7 @@ function mica_datasets_update_7130(&$sandbox) {
   mica_core_taxonomy_import('individual_participant_measures.csv', $base_path, 'Individual Participant Measures');	
   mica_core_taxonomy_import('laboratory_measures.csv',  $base_path, 'Laboratory Measures');
   
+  _mica_datasets_configure_field_bundle_settings();
   // enable footer area for variable
 }
 
