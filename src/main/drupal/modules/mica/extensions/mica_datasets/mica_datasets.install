@@ -280,7 +280,6 @@ function mica_datasets_update_7130(&$sandbox) {
   mica_core_taxonomy_import('laboratory_measures.csv',  $base_path, 'Laboratory Measures');
   
   // enable footer area for variable
-  // remove count > 1 in dataschemas view (bioshare)
 }
 
 /**

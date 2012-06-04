@@ -2436,7 +2436,7 @@ function mica_datasets_field_default_fields() {
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '6',
         ),
         'teaser' => array(
@@ -2666,7 +2666,7 @@ function mica_datasets_field_default_fields() {
           'label' => 'above',
           'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'taxonomy_term_reference_plain',
           'weight' => '20',
         ),
         'teaser' => array(
