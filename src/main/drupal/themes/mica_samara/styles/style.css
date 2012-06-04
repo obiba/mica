@@ -2306,8 +2306,6 @@ div.tooltip_content table, tbody, tr {
 	display:inline;
 }
 .variable_category-missing{
-  background-image:url('../images/tick.png');
-  background-repeat:no-repeat;
   min-width:16px;
   min-height:16px;
   margin-top: 0px;
