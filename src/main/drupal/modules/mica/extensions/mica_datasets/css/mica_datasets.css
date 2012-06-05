@@ -1,0 +1,8 @@
+.form-item-cross-variable label {
+  display: inline;
+}
+
+#cross-variable-detail {
+  margin-left: 5px;
+  display: inline;
+}

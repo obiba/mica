@@ -211,6 +211,7 @@ projects[references][download][branch] = 7.x-2.x
 projects[search_api][version] = 1.1
 projects[search_api][type] = module
 projects[search_api][patch][1363114] = http://drupal.org/files/max_inclusive-1363114-5.patch
+projects[search_api][patch][1617794] = http://drupal.org/files/search_api-view_unpublished-support-1617794-6.patch
 
 projects[search_api_db][version] = 1.0-beta2
 projects[search_api_db][type] = module
@@ -261,8 +262,11 @@ projects[token][type] = module
 projects[variable][version] = 1.1
 projects[variable][type] = module
 
-projects[view_unpublished][version] = 1.0
 projects[view_unpublished][type] = module
+projects[view_unpublished][download][type] = git
+projects[view_unpublished][download][revision] = 9682ab9
+projects[view_unpublished][download][branch] = 7.x-1.x
+projects[view_unpublished][patch][1192074] = http://drupal.org/files/view_unpublished-access_to_view_unpublished-1192074.patch
 
 projects[views][version] = 3.3
 projects[views][type] = module
