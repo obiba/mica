@@ -2340,11 +2340,3 @@ table.query-table th, table.query-table td {
   border-right: 1px solid #CCCCCC;
 }
 
-.form-item-cross-variable label {
-  display: inline;
-}
-
-#cross-variable-detail {
-  margin-left: 5px;
-  display: inline;
-}

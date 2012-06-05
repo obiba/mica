@@ -32,6 +32,13 @@ function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $
   $menu['weight'] = $weight;
   if (!empty($router_path)) $menu['router_path'] = $router_path;
 
+  if ($menu['link_path'] === '<firstchild>') {
+    $menu['options']['alter'] = TRUE;
+    $menu['options']['unaltered_hidden'] = $menu['hidden'];
+  } else {
+    unset($menu['options']['unaltered_hidden']);
+  }
+
   if (!empty($parent_path)) {
     $parent_menu = db_query(
       "SELECT * FROM {menu_links} WHERE link_path = :link_path",

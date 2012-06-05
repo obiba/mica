@@ -573,6 +573,8 @@ function mica_datasets_query_run_page($form, &$form_state, $dataset_node, $query
 
   drupal_set_title(t('!title -- !query', array('!title' => $dataset_node->title, '!query' => $query->name)));
 
+  ctools_add_css('mica_datasets', 'mica_datasets');
+
   if (MicaDatasetQueryManager::isCached($query)) {
     global $user;
     if ($user->uid != 0) {
