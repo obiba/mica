@@ -6,3 +6,7 @@
   margin-left: 5px;
   display: inline;
 }
+
+#result-wrapper {
+  overflow: auto;
+}
