@@ -26,7 +26,9 @@ define('MICA_HARMONIZATION_MISING_TICK', base_path() . drupal_get_path('module',
 function mica_datasets_create_default_content() {
   $page = mica_core_add_page(
     st("Datasets"),
-    st("The consortium makes study-specific datasets and harmonized datasets (i.e. multiple-study datasets) available to the research community. Each dataset is described by a comprehensive data dictionary which gives details on each available variable.<br/>Moreover, Mica includes for  studies using the OBiBa Opal software as main database solution, a distributed query engine that enables researchers to obtain real-time aggregated reports on the exact number of participant with specific characteristics or phenotypes. Mica makes even possible to run remotely some regression analyses on the real study data using the DataSHIELD method (Wolfson M et al. <i>Int J Epidemiol</i>. 2010) which is implemented both in Mica and Opal. <br/><br/>"),
+    st(
+      "The consortium makes study-specific datasets and harmonized datasets (i.e. multiple-study datasets) available to the research community. Each dataset is described by a comprehensive data dictionary which gives details on each available variable.<br/>Moreover, Mica includes for  studies using the OBiBa Opal software as main database solution, a distributed query engine that enables researchers to obtain real-time aggregated reports on the exact number of participant with specific characteristics or phenotypes. Mica makes even possible to run remotely some regression analyses on the real study data using the DataSHIELD method (Wolfson M et al. <i>Int J Epidemiol</i>. 2010) which is implemented both in Mica and Opal. <br/><br/>"
+    ),
     "datasets"
   );
   $datasets_path = 'node/' . $page->nid;
@@ -1264,10 +1266,12 @@ function mica_datasets_node_view_alter(&$build) {
           }
 
           $script = $sva_wrapper->field_sva_script->value() ? $sva_wrapper->field_sva_script->value() : '';
-          $script = _mica_datasets_toHtmlTruncate($script, t('script'), 200, TRUE);//'<code class=\'prettyprint\'>' . check_markup(truncate_utf8($script, 400, FALSE)) . '</code>';
+          $script = _mica_datasets_toHtmlTruncate(
+            $script, t('script'), 200, TRUE
+          ); //'<code class=\'prettyprint\'>' . check_markup(truncate_utf8($script, 400, FALSE)) . '</code>';
           $comment = $sva_wrapper->field_sva_comment->value() ? $sva_wrapper->field_sva_comment->value() : '';
           $comment = _mica_datasets_toHtmlTruncate($comment, t('comment'), 200, FALSE);
-          
+
           $study_wrapper = entity_metadata_wrapper('node', $sva_wrapper->field_sva_study->value()->nid);
 
           $name = $study_wrapper->field_acroym->value() ? $study_wrapper->field_acroym->value() : $study_wrapper->title->value();
@@ -1426,10 +1430,13 @@ function mica_datasets_node_delete($node) {
       break;
     case 'study':
       $study = entity_metadata_wrapper('node', $node);
-      foreach ($study->field_study_study_variable_att as $sva) {
-        if (empty($sva->field_sva_variable) == FALSE) {
-          _mica_datasets_remove_and_save_element_from_entity_list_wrapper($sva->field_sva_variable, $sva, 'field_variable_study_var_att');
-          $sva->delete();
+      $field_study_study_variable_att_value = $study->field_study_study_variable_att->value();
+      if (empty($field_study_study_variable_att_value) == FALSE) {
+        foreach ($study->field_study_study_variable_att as $sva) {
+          if (empty($sva->field_sva_variable) == FALSE) {
+            _mica_datasets_remove_and_save_element_from_entity_list_wrapper($sva->field_sva_variable, $sva, 'field_variable_study_var_att');
+            $sva->delete();
+          }
         }
       }
       foreach ($study->mica_dataset as $dataset) {
@@ -1438,10 +1445,13 @@ function mica_datasets_node_delete($node) {
       break;
     case 'variable':
       $variable = entity_metadata_wrapper('node', $node);
-      foreach ($variable->field_variable_study_var_att as $sva) {
-        if (empty($sva->field_sva_study) == FALSE) {
-          _mica_datasets_remove_and_save_element_from_entity_list_wrapper($sva->field_sva_study, $sva, 'field_study_study_variable_att');
-          $sva->delete();
+      $field_variable_study_var_att_value = $variable->field_variable_study_var_att->value();
+      if (empty($field_variable_study_var_att_value) == FALSE) {
+        foreach ($variable->field_variable_study_var_att as $sva) {
+          if (empty($sva->field_sva_study) == FALSE) {
+            _mica_datasets_remove_and_save_element_from_entity_list_wrapper($sva->field_sva_study, $sva, 'field_study_study_variable_att');
+            $sva->delete();
+          }
         }
       }
       _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable->field_dataset, $variable, 'field_dataset_variables');
@@ -1763,7 +1773,7 @@ function mica_datasets_node_view($node, $view_mode) {
         foreach ($node->content['field_variable_categories'][0]['#rows'] as &$row) {
           if (!empty($row['missing'])) {
             // replace with div icon
-            $row['missing'] = "<div class='variable_category-missing' title='Missing'><img src='".MICA_HARMONIZATION_MISING_TICK."'></div>";
+            $row['missing'] = "<div class='variable_category-missing' title='Missing'><img src='" . MICA_HARMONIZATION_MISING_TICK . "'></div>";
           }
         }
       }
@@ -1772,9 +1782,9 @@ function mica_datasets_node_view($node, $view_mode) {
 }
 
 function _mica_datasets_toHtmlTruncate($text, $label, $size, $is_code) {
-   $htmlTruncate = '';
+  $htmlTruncate = '';
   if (!empty($text)) {
-    
+
     // split to respect line size
     if ($is_code) {
       $htmlTruncate = "<code class=\"prettyprint\">";
@@ -1782,7 +1792,7 @@ function _mica_datasets_toHtmlTruncate($text, $label, $size, $is_code) {
       $lines = explode(").", $text);
       $text = implode(")\n.", $lines);
     }
-    else{
+    else {
       $lines = str_split($text, 60);
       $text = implode("\n", $lines);
     }
@@ -1912,14 +1922,14 @@ function mica_datasets_create_variables($harmonizations) {
       $wrapper->field_unit->set($harmonization['unit']);
       $wrapper->field_position->set($position++);
       $wrapper->body->value->set($harmonization['description']);
-      
+
       // Update categories
-      if (!empty($harmonization['categories'])) {      
-      	for ($i = 0; $i < count($harmonization['categories']); $i++) {
-      		$wrapper->field_variable_categories[$i]->name->set($harmonization['categories'][$i]['name']);
-      		$wrapper->field_variable_categories[$i]->label->set($harmonization['categories'][$i]['label']);
-      		$wrapper->field_variable_categories[$i]->missing->set($harmonization['categories'][$i]['missing']);
-      	}
+      if (!empty($harmonization['categories'])) {
+        for ($i = 0; $i < count($harmonization['categories']); $i++) {
+          $wrapper->field_variable_categories[$i]->name->set($harmonization['categories'][$i]['name']);
+          $wrapper->field_variable_categories[$i]->label->set($harmonization['categories'][$i]['label']);
+          $wrapper->field_variable_categories[$i]->missing->set($harmonization['categories'][$i]['missing']);
+        }
       }
       $wrapper->save();
     }
