@@ -1521,10 +1521,12 @@ function _mica_datasets_delete_svas(&$dataset, &$study) {
   $study_wrapper = entity_metadata_wrapper('node', $study->nid);
   $variables = $dataset_wrapper->field_dataset_variables;
   foreach ($variables as $variable) {
-    foreach ($variable->field_variable_study_var_att as $sva) {
-      if ($sva->field_sva_study->nid->value() === $study_wrapper->nid->value()) {
-        $sva->delete();
-        _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable, $sva, 'field_variable_study_var_att');
+    if (isset($variable->field_variable_study_var_att)) {
+      foreach ($variable->field_variable_study_var_att as $sva) {
+        if ($sva->field_sva_study->nid->value() === $study_wrapper->nid->value()) {
+          $sva->delete();
+          _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable, $sva, 'field_variable_study_var_att');
+        }
       }
     }
   }
