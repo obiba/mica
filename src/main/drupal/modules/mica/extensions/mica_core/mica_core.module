@@ -94,8 +94,7 @@ function mica_core_modal_prepare($styles) {
   drupal_add_js($style_settings, 'setting');
 
   // Since we have our js, css and images in well-known named directories,
-  // CTools makes it easy for us to just use them without worrying about
-  // using drupal_get_path() and all that ugliness.
+  // CTools makes it easy for us to just use them without worrying about using drupal_get_path() and all that ugliness.
   ctools_add_js('mica_core_modal', 'mica_core');
   ctools_add_css('mica_core_modal', 'mica_core');
 }
@@ -144,13 +143,14 @@ function mica_core_modal_form_render($title, $form_id) {
  * @param $node
  */
 function mica_core_node_modal_page_view($js = NULL, $node) {
+  require_once(drupal_get_path('module', 'ctools') . '/page_manager/plugins/tasks/node_view.inc');
   if ($js) {
     ctools_include('ajax');
     ctools_include('modal');
-    ctools_modal_render($node->title, node_show($node));
+    ctools_modal_render($node->title, page_manager_node_view_page($node));
   }
   else {
-    return node_page_view($node);
+    return page_manager_node_view_page($node);
   }
 }
 
