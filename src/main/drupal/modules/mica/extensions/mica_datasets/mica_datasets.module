@@ -1478,6 +1478,7 @@ function mica_datasets_node_delete($node) {
  */
 function _mica_datasets_create_svas(&$study, &$dataset) {
   $wrapper_study = entity_metadata_wrapper('node', $study);
+  $study_value = $wrapper_study->value();
   $wrapper_dataset = entity_metadata_wrapper('node', $dataset);
 
   if ($wrapper_dataset->field_dataset_type->value() === 'harmonization') {
@@ -1495,16 +1496,19 @@ function _mica_datasets_create_svas(&$study, &$dataset) {
     $variables = array();
     foreach ($wrapper_dataset->field_dataset_variables as $wrapper_variable) {
       $exist = FALSE;
+      $variable_value = $wrapper_variable->value();
       foreach ($study_variable_attributes as $sv) {
         $wrapper_sv = entity_metadata_wrapper('node', $sv);
-        if ($wrapper_sv->field_sva_variable->nid->value() === $wrapper_variable->nid->value()
-          && $wrapper_sv->field_sva_study->nid->value() === $wrapper_study->nid->value()
+        $field_sva_variable_value = $wrapper_sv->field_sva_variable->value();
+        $field_sva_study_value = $wrapper_sv->field_sva_study->value();
+        if ($field_sva_variable_value->nid === $variable_value->nid
+          && $field_sva_study_value->nid === $study_value->nid
         ) {
           $exist = TRUE;
         }
       }
       if (!$exist) {
-        if ($wrapper_variable->value() !== NULL) {
+        if ($variable_value !== NULL) {
           array_push($variables, $wrapper_variable);
         }
       }
