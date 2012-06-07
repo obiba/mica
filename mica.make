@@ -90,6 +90,7 @@ projects[email][patch][718414] = http://drupal.org/files/email_feeds_target-7184
 
 projects[entity][type] = module
 projects[entity][version] = 1.0-rc3
+projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info-on-validation-exception.patch
 
 projects[facetapi][version] = 1.0-rc4
 projects[facetapi][type] = module

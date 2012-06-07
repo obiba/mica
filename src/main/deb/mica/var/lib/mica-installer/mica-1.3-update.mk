@@ -5,7 +5,7 @@
 # drush pm-list --pipe --no-core
 #
 
-mica-delete-1.2:
+mica-delete-1.3:
 	rm -rf /usr/share/mica/sites/all/modules/acl && \
 	rm -rf /usr/share/mica/sites/all/modules/content_access && \
 	rm -rf /usr/share/mica/sites/all/modules/content_access_rules && \
@@ -21,7 +21,6 @@ mica-delete-1.2:
 	rm -rf /usr/share/mica/sites/all/modules/stylizer && \
 	rm -rf /usr/share/mica/sites/all/modules/views_content && \
 	rm -rf /usr/share/mica/sites/all/modules/calendar && \
-	rm -rf /usr/share/mica/sites/all/modules/calendar_ical && \
 	rm -rf /usr/share/mica/sites/all/modules/date && \
 	rm -rf /usr/share/mica/sites/all/modules/date_all_day && \
 	rm -rf /usr/share/mica/sites/all/modules/date_api && \
@@ -36,45 +35,12 @@ mica-delete-1.2:
 	rm -rf /usr/share/mica/sites/all/modules/devel_generate && \
 	rm -rf /usr/share/mica/sites/all/modules/graphapi_devel && \
 	rm -rf /usr/share/mica/sites/all/modules/devel_node_access && \
-	rm -rf /usr/share/mica/sites/all/modules/action_example && \
-	rm -rf /usr/share/mica/sites/all/modules/ajax_example && \
-	rm -rf /usr/share/mica/sites/all/modules/batch_example && \
-	rm -rf /usr/share/mica/sites/all/modules/block_example && \
-	rm -rf /usr/share/mica/sites/all/modules/cache_example && \
-	rm -rf /usr/share/mica/sites/all/modules/contextual_links_example && \
-	rm -rf /usr/share/mica/sites/all/modules/cron_example && \
-	rm -rf /usr/share/mica/sites/all/modules/dbtng_example && \
-	rm -rf /usr/share/mica/sites/all/modules/email_example && \
-	rm -rf /usr/share/mica/sites/all/modules/examples && \
-	rm -rf /usr/share/mica/sites/all/modules/field_example && \
-	rm -rf /usr/share/mica/sites/all/modules/file_example && \
-	rm -rf /usr/share/mica/sites/all/modules/filter_example && \
-	rm -rf /usr/share/mica/sites/all/modules/form_example && \
-	rm -rf /usr/share/mica/sites/all/modules/image_example && \
-	rm -rf /usr/share/mica/sites/all/modules/js_example && \
-	rm -rf /usr/share/mica/sites/all/modules/menu_example && \
 	rm -rf /usr/share/mica/sites/all/modules/multiselect_fapi_example && \
-	rm -rf /usr/share/mica/sites/all/modules/node_access_example && \
-	rm -rf /usr/share/mica/sites/all/modules/node_example && \
-	rm -rf /usr/share/mica/sites/all/modules/nodeapi_example && \
-	rm -rf /usr/share/mica/sites/all/modules/page_example && \
-	rm -rf /usr/share/mica/sites/all/modules/pager_example && \
-	rm -rf /usr/share/mica/sites/all/modules/queue_example && \
-	rm -rf /usr/share/mica/sites/all/modules/render_example && \
-	rm -rf /usr/share/mica/sites/all/modules/simpletest_example && \
-	rm -rf /usr/share/mica/sites/all/modules/tablesort_example && \
-	rm -rf /usr/share/mica/sites/all/modules/theming_example && \
-	rm -rf /usr/share/mica/sites/all/modules/token_example && \
-	rm -rf /usr/share/mica/sites/all/modules/trigger_example && \
-	rm -rf /usr/share/mica/sites/all/modules/vertical_tabs_example && \
-	rm -rf /usr/share/mica/sites/all/modules/xmlrpc_example && \
 	rm -rf /usr/share/mica/sites/all/modules/date_migrate_example && \
-	rm -rf /usr/share/mica/sites/all/modules/defaultcontent && \
 	rm -rf /usr/share/mica/sites/all/modules/features && \
 	rm -rf /usr/share/mica/sites/all/modules/feeds && \
 	rm -rf /usr/share/mica/sites/all/modules/feeds_ui && \
 	rm -rf /usr/share/mica/sites/all/modules/feeds_import && \
-	rm -rf /usr/share/mica/sites/all/modules/feeds_jsonpath_parser && \
 	rm -rf /usr/share/mica/sites/all/modules/feeds_news && \
 	rm -rf /usr/share/mica/sites/all/modules/feeds_tamper && \
 	rm -rf /usr/share/mica/sites/all/modules/feeds_tamper_ui && \
@@ -86,6 +52,8 @@ mica-delete-1.2:
 	rm -rf /usr/share/mica/sites/all/modules/field_permissions && \
 	rm -rf /usr/share/mica/sites/all/modules/field_group && \
 	rm -rf /usr/share/mica/sites/all/modules/link && \
+	rm -rf /usr/share/mica/sites/all/modules/namedb && \
+	rm -rf /usr/share/mica/sites/all/modules/name && \
 	rm -rf /usr/share/mica/sites/all/modules/node_reference && \
 	rm -rf /usr/share/mica/sites/all/modules/noderefcreate && \
 	rm -rf /usr/share/mica/sites/all/modules/references && \
@@ -107,6 +75,7 @@ mica-delete-1.2:
 	rm -rf /usr/share/mica/sites/all/modules/mica_field_description && \
 	rm -rf /usr/share/mica/sites/all/modules/mica_node_reference_field && \
 	rm -rf /usr/share/mica/sites/all/modules/mica_opal && \
+	rm -rf /usr/share/mica/sites/all/modules/mica_opal_view && \
 	rm -rf /usr/share/mica/sites/all/modules/mica_projects && \
 	rm -rf /usr/share/mica/sites/all/modules/mica_relation && \
 	rm -rf /usr/share/mica/sites/all/modules/mica_studies && \
@@ -116,11 +85,13 @@ mica-delete-1.2:
 	rm -rf /usr/share/mica/sites/all/modules/auto_nodetitle && \
 	rm -rf /usr/share/mica/sites/all/modules/chain_menu_access && \
 	rm -rf /usr/share/mica/sites/all/modules/corresponding_node_references && \
+	rm -rf /usr/share/mica/sites/all/modules/diff && \
 	rm -rf /usr/share/mica/sites/all/modules/entity && \
 	rm -rf /usr/share/mica/sites/all/modules/entity_token && \
 	rm -rf /usr/share/mica/sites/all/modules/google_fonts && \
 	rm -rf /usr/share/mica/sites/all/modules/image_url_formatter && \
 	rm -rf /usr/share/mica/sites/all/modules/job_scheduler && \
+	rm -rf /usr/share/mica/sites/all/modules/job_scheduler_trigger && \
 	rm -rf /usr/share/mica/sites/all/modules/login_destination && \
 	rm -rf /usr/share/mica/sites/all/modules/mail_edit && \
 	rm -rf /usr/share/mica/sites/all/modules/masquerade && \
@@ -130,7 +101,9 @@ mica-delete-1.2:
 	rm -rf /usr/share/mica/sites/all/modules/password_policy_password_tab && \
 	rm -rf /usr/share/mica/sites/all/modules/password_policy && \
 	rm -rf /usr/share/mica/sites/all/modules/pathauto && \
+	rm -rf /usr/share/mica/sites/all/modules/progress && \
 	rm -rf /usr/share/mica/sites/all/modules/strongarm && \
+	rm -rf /usr/share/mica/sites/all/modules/tipsy && \
 	rm -rf /usr/share/mica/sites/all/modules/token && \
 	rm -rf /usr/share/mica/sites/all/modules/variable && \
 	rm -rf /usr/share/mica/sites/all/modules/variable_admin && \
@@ -143,7 +116,6 @@ mica-delete-1.2:
 	rm -rf /usr/share/mica/sites/all/modules/panels_ipe && \
 	rm -rf /usr/share/mica/sites/all/modules/view_unpublished && \
 	rm -rf /usr/share/mica/sites/all/modules/search_api_db && \
-	rm -rf /usr/share/mica/sites/all/modules/search_api_facets && \
 	rm -rf /usr/share/mica/sites/all/modules/search_api && \
 	rm -rf /usr/share/mica/sites/all/modules/search_api_facetapi && \
 	rm -rf /usr/share/mica/sites/all/modules/search_api_page && \
@@ -152,14 +124,21 @@ mica-delete-1.2:
 	rm -rf /usr/share/mica/sites/all/modules/search_api_solr && \
 	rm -rf /usr/share/mica/sites/all/modules/current_search && \
 	rm -rf /usr/share/mica/sites/all/modules/facetapi && \
+	rm -rf /usr/share/mica/sites/all/modules/services && \
+	rm -rf /usr/share/mica/sites/all/modules/services_test_resource && \
+	rm -rf /usr/share/mica/sites/all/modules/xcal_format && \
+	rm -rf /usr/share/mica/sites/all/modules/services_oauth && \
 	rm -rf /usr/share/mica/sites/all/modules/http_client && \
 	rm -rf /usr/share/mica/sites/all/modules/http_client_oauth && \
+	rm -rf /usr/share/mica/sites/all/modules/rest_server && \
+	rm -rf /usr/share/mica/sites/all/modules/xmlrpc_server && \
 	rm -rf /usr/share/mica/sites/all/modules/recaptcha && \
 	rm -rf /usr/share/mica/sites/all/modules/recaptcha_mailhide && \
 	rm -rf /usr/share/mica/sites/all/modules/googleanalytics && \
 	rm -rf /usr/share/mica/sites/all/modules/taxonomy_csv && \
 	rm -rf /usr/share/mica/sites/all/modules/taxonomy_manager && \
 	rm -rf /usr/share/mica/sites/all/modules/features_test && \
+	rm -rf /usr/share/mica/sites/all/modules/autocomplete_deluxe && \
 	rm -rf /usr/share/mica/sites/all/modules/ckeditor && \
 	rm -rf /usr/share/mica/sites/all/modules/collapsiblock && \
 	rm -rf /usr/share/mica/sites/all/modules/views && \

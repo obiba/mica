@@ -1,6 +1,6 @@
 #
 # Mica Installer Makefile
-# Requires drush 4+ to be installed: http://drush.ws/
+# Requires drush 5+ to be installed: http://drush.ws/
 #
 
 oldversion=
@@ -19,14 +19,16 @@ db_pass=
 # Drush install
 #
 
+drush_version=5.4
+
 all: 
 
 drush:
 	@echo "**** Drush install"
 	if [ ! -e $(drushexec) ]; then \
 	  cd /var/cache/mica-installer && \
-	  wget -q http://ftp.drupal.org/files/projects/drush-7.x-4.4.tar.gz && \
-	  tar xzf drush-7.x-4.4.tar.gz ; \
+	  wget -q http://ftp.drupal.org/files/projects/drush-7.x-$(drush_version).tar.gz && \
+	  tar xzf drush-7.x-$(drush_version).tar.gz ; \
 	fi
 	$(drushexec) version
 
@@ -90,6 +92,7 @@ drupal-doc:
 #
 include mica-1.1-update.mk
 include mica-1.2-update.mk
+include mica-1.3-update.mk
 
 mica-prepare-update: drush mica-maintenance-mode-on mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install mica-restore-user-data mica-clear-tmp-update mica-echo-update 
 
