@@ -708,7 +708,11 @@ function _mica_datasets_query_result_table($dataset_node, $query, $cross_variabl
   foreach ($mica_dataset_connectors as $connector) {
     $row = array();
 
+    // check that study is visible by user
     $study = node_load($connector->study_id);
+    if (node_access('view', $study) == FALSE) continue;
+
+    // study is visible, carry on...
     $row[] = array(
       'data' => filter_xss($study->title),
       'class' => $is_cross ? 'border-right' : '',

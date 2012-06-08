@@ -151,6 +151,10 @@ abstract class AbstractTerm implements QueryTermInterface {
     $connectors = $this->getConnectors();
     foreach ($connectors as $connector) {
       try {
+        // check that study is visible by user
+        $study = node_load($connector->study_id);
+        if (node_access('view', $study) == FALSE) continue;
+
         $facets[$connector->study_id] = $connector->facetTerm($this);
       } catch (Exception $e) {
         $connector->displayError($e);
