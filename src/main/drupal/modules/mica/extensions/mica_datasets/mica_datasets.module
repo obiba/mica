@@ -868,7 +868,13 @@ function mica_dataset_connector_query_multiple($dataset_id, $enabled = NULL) {
   $connectors = array();
 
   while ($record = $result->fetchAssoc()) {
-    $connectors[] = mica_dataset_connector_load($record['id']);
+    $connector = mica_dataset_connector_load($record['id']);
+
+    // check that study is visible by user
+    $study = node_load($connector->study_id);
+    if (node_access('view', $study)) {
+      $connectors[] = $connector;
+    }
   }
 
   return $connectors;
