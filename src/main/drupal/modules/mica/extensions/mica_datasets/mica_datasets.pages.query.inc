@@ -611,7 +611,9 @@ function mica_datasets_query_run_page($form, &$form_state, $dataset_node, $query
   $categorical_variables = mica_datasets_find_categorical_variables($dataset_node->nid);
   $options = array();
   foreach ($categorical_variables as $variable) {
-    $options[$variable->nid] = $variable->title;
+    if (node_access('view', $variable)) {
+      $options[$variable->nid] = $variable->title;
+    }
   }
 
   $form_state['mica']['dataset_node'] = $dataset_node;
