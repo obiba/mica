@@ -90,8 +90,10 @@ a {
 .block {
   -moz-border-radius: 10px 10px 10px 10px;
   -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
   -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.12) inset;
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.12) inset;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.12) inset;
   background-color: #ffffff;
 }
 
@@ -189,8 +191,10 @@ a {
   border: 1px solid #dddddd;
   -moz-border-radius: 10px 10px 10px 10px;
   -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
   -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.12) inset;
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.12) inset;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.12) inset;
   background: none repeat scroll 0 0 #FFFFFF;
 }
 /* Border strong (dark gray) */
@@ -240,8 +244,10 @@ fieldset {
 #login-status {
   -moz-border-radius: 20px 20px 20px 20px;
   -webkit-border-radius: 20px 20px 20px 20px;
+  border-radius: 20px 20px 20px 20px;
   -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.3) inset;
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.3) inset;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.3) inset;
   background-color: #4A6C81;
   color: #BBBBBB;
   padding: 5px;
