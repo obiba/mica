@@ -551,8 +551,8 @@ function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
 }
 
 /**
- * Check for query accessibility: associated dataset is accessible and user is the query author,
- * or query is published for viewing.
+ * Check for query accessibility: associated dataset is accessible, and query terms are all visible,
+ * and user is the query author or query is published for viewing.
  *
  * @param node             $dataset_node
  * @param MicaDatasetQuery $query
@@ -560,9 +560,6 @@ function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
  */
 function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
   global $user;
-  if (!is_object($query)) {
-    $query = mica_dataset_query_load($query);
-  }
 
   // consistency check
   if ($dataset_node->nid != $query->dataset_id) {
@@ -571,6 +568,16 @@ function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
 
   if (!_mica_datasets_node_access($dataset_node, 'dataset', 'view')) {
     return FALSE;
+  }
+
+  // All variables associated to the query terms must be visible
+  $terms = mica_dataset_query_term_query($query);
+  if (isset($terms)) {
+    foreach($terms as $term) {
+      if (node_access('view',node_load($term->variable_id)) == FALSE) {
+        return FALSE;
+      }
+    }
   }
 
   // View query
@@ -1039,7 +1046,14 @@ function mica_dataset_query_load($id, $reset = FALSE) {
  *      An array of query objects keyed by id.
  */
 function mica_dataset_query_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
-  return entity_load('mica_dataset_query', $ids, $conditions, $reset);
+  $queries = array();
+  $qs = entity_load('mica_dataset_query', $ids, $conditions, $reset);
+  foreach ($qs as $q) {
+    if (_mica_datasets_query_access(node_load($q->dataset_id),$q,'view')) {
+      $queries[] = $q;
+    }
+  }
+  return $queries;
 }
 
 /**
