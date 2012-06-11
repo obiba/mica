@@ -81,7 +81,6 @@ html {
 #page {
   background-color: #e3e3e3;
   min-height: 170px;
-  border-radius: 6px;
   margin-bottom: 7px;
   padding: 25px 30px;
   -webkit-border-radius: 6px;
@@ -407,19 +406,21 @@ ul.menu li ul.menu {
 }
 
 .block h2 {
-font-size: 1em;
-color: #ffffff;
-padding: 4px 4px 1px 4px;
-text-align: center;
-line-height: 1.3;
-letter-spacing: -0.4px;
-text-shadow: #000000 1px 1px; 
--moz-border-radius-topleft: 5px;
--moz-border-radius-topright: 5px;
--webkit-border-top-left-radius: 5px;
--webkit-border-top-right-radius: 5px;
-border-bottom: 1px solid #e5e5e5;
-margin-bottom: 0px;
+  font-size: 1em;
+  color: #ffffff;
+  padding: 4px 4px 1px 4px;
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: -0.4px;
+  text-shadow: #000000 1px 1px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 0px;
 }
 .block .content {
   padding-left: 7px;
@@ -431,6 +432,8 @@ margin-bottom: 0px;
   -moz-border-radius-bottomright: 5px;
   -webkit-border-bottom-left-radius: 5px;
   -webkit-border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .block .content a:hover {
   text-decoration: underline;
@@ -458,6 +461,8 @@ margin-bottom: 0px;
 }
 .region-highlight {
   -moz-border-radius:3px 3px 3px 3px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  border-radius: 3px 3px 3px 3px;
   background-color: #f5f9fa;
   border: 1px solid #b3cfd4;
   margin: 5px 0 10px 0;
@@ -738,6 +743,7 @@ form#comment-form #edit-actions {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -khtml-border-radius: 5px;
+  border-radius: 5px;
   background-color: #f4f4f4;
   margin-bottom: 10px;
 }
@@ -789,6 +795,7 @@ a.active{
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -khtml-border-radius: 5px;
+  border-radius: 5px;
 }
 
 /**
@@ -1875,6 +1882,7 @@ img.right, img[align="right"] {
   margin: 10px 0 0 20px;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
+  box-shadow: none;
 }
 .region-header .block h2 {
   display: none;
@@ -1986,6 +1994,7 @@ img.right, img[align="right"] {
   margin: 10px 0 0 20px;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
+  box-shadow: none;
 }
 .region-footer .block h2 {
   display: none;
