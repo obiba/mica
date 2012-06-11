@@ -186,6 +186,13 @@ abstract class AbstractTerm implements QueryTermInterface {
     return count($this->getConnectors()) > 0;
   }
 
+  protected function getStudyName($study_id) {
+    $study = node_load($study_id);
+    $study_wrapper = entity_metadata_wrapper('node', $study);
+    $acronym = $study_wrapper->field_acroym->value();
+    return !empty($acronym) ? $study_wrapper->field_acroym->value() : $study_wrapper->title->value();
+  }
+
 }
 
 /**
@@ -222,8 +229,7 @@ class CategoryTerm extends AbstractTerm {
     $headers = array('Value');
     $stats = $this->stats();
     foreach ($stats as $study_id => $stat) {
-      $study = node_load($study_id);
-      $headers[] = $study->title;
+      $headers[] = $this->getStudyName($study_id);
     }
 
     $rows = array();
@@ -379,9 +385,8 @@ class RangeTerm extends AbstractTerm {
     $rows = array();
     $stats = $this->stats();
     foreach ($stats as $study_id => $stat) {
-      $study = node_load($study_id);
       $rows[] = array(
-        $study->title,
+        $this->getStudyName($study_id),
         $this->f($stat['min']),
         $this->f($stat['max']),
         $this->f($stat['mean']),
@@ -603,8 +608,7 @@ class TodoTerm extends AbstractTerm {
     $headers = array('Value');
     $stats = $this->stats();
     foreach ($stats as $study_id => $stat) {
-      $study = node_load($study_id);
-      $headers[] = $study->title;
+      $headers[] = $this->getStudyName($study_id);
     }
 
     $row = array(

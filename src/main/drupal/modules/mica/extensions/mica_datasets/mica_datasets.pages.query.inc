@@ -709,8 +709,12 @@ function _mica_datasets_query_result_table($dataset_node, $query, $cross_variabl
     $row = array();
 
     $study = node_load($connector->study_id);
+    $study_wrapper = entity_metadata_wrapper('node', $study);
+    $acronym = $study_wrapper->field_acroym->value();
+    $name = !empty($acronym) ? $study_wrapper->field_acroym->value() : $study_wrapper->title->value();
+
     $row[] = array(
-      'data' => filter_xss($study->title),
+      'data' => filter_xss($name),
       'class' => $is_cross ? 'border-right' : '',
     );
 
