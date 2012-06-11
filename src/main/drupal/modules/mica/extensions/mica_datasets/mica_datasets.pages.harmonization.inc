@@ -48,27 +48,29 @@ function mica_datasets_dataset_harmonization_page_output($dataset_node) {
   $status_values = field_info_field('field_sva_status');
   $header_ids = array();
   foreach ($studies as $study) {
-    $study_wrapper = entity_metadata_wrapper('node', $study);
-    $acronym = $study_wrapper->field_acroym->value();
-    $name = !empty($acronym) ? $study_wrapper->field_acroym->value() : $study_wrapper->title->value();
+    if (node_access('view', $study)) {
+      $study_wrapper = entity_metadata_wrapper('node', $study);
+      $acronym = $study_wrapper->field_acroym->value();
+      $name = !empty($acronym) ? $study_wrapper->field_acroym->value() : $study_wrapper->title->value();
 
-    // See http://www.jide.fr/english/using-ajax-in-drupal-7-outside-of-form-api
-    // show link only for studies that have an opal connection
-    if (node_access('update', $dataset_node) && mica_dataset_connector_query($wrapper->nid->value(), $study_wrapper->nid->value())) {
-      $ajax_link = l(
-        "<img src='" . MICA_HARMONIZATION_REFRESH . "' class='harmonization-refresh-icon' title='Refresh harmonization of $name'/>",
-        'mica_datasets_harmonization/ajax/' . $wrapper->nid->value() . '/' . $study_wrapper->nid->value(),
-        array('html' => TRUE, 'attributes' => array('class' => array('use-ajax')))
-      );
+      // See http://www.jide.fr/english/using-ajax-in-drupal-7-outside-of-form-api
+      // show link only for studies that have an opal connection
+      if (node_access('update', $dataset_node) && mica_dataset_connector_query($wrapper->nid->value(), $study_wrapper->nid->value())) {
+        $ajax_link = l(
+          "<img src='" . MICA_HARMONIZATION_REFRESH . "' class='harmonization-refresh-icon' title='Refresh harmonization of $name'/>",
+          'mica_datasets_harmonization/ajax/' . $wrapper->nid->value() . '/' . $study_wrapper->nid->value(),
+          array('html' => TRUE, 'attributes' => array('class' => array('use-ajax')))
+        );
+      }
+      else {
+        $ajax_link = '';
+      }
+
+      $header[]
+        = "<div class='harmonization-study-title'>$name$ajax_link</div><br>"; //"<div class='harmonization-study-icon'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>";
+
+      $header_ids[$study_wrapper->nid->value()] = $name;
     }
-    else {
-      $ajax_link = '';
-    }
-
-    $header[]
-      = "<div class='harmonization-study-title'>$name$ajax_link</div><br>"; //"<div class='harmonization-study-icon'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>";
-
-    $header_ids[$study_wrapper->nid->value()] = $name;
   }
 
   if (!empty($variables) && !empty($studies)) {
@@ -89,61 +91,70 @@ function mica_datasets_dataset_harmonization_page_output($dataset_node) {
 
     // Add rows to the harmonization table
     foreach ($variables as $variable) {
-      $option = array(
-        'name' => "<a href='" . url('node/' . $variable->nid) . "'>$variable->title</a>",
-      );
-      if (!empty($variable->field_variable_study_var_att[$variable->language])) {
-        foreach (array_keys($header_ids) as $header_id){
-          foreach ($variable->field_variable_study_var_att[$variable->language] as $study_variable_attributes) {
-            if (!empty($svas[$study_variable_attributes['nid']]->field_sva_study)) {
-              $study_id = $svas[$study_variable_attributes['nid']]->field_sva_study['und'][0]['nid'];
-              // get the sva that match the study id
-  						if ($study_id == $header_id){
-                $sva_node = $svas[$study_variable_attributes['nid']];
-                if (array_key_exists($study_id, $header_ids)) {
-                  $sva_wrapper = entity_metadata_wrapper('node', $sva_node);
-    
-                  if (!empty($sva_node->field_sva_status) && array_key_exists($sva_wrapper->field_sva_status->value(), $status_values['settings']['allowed_values'])) {
-                    $status = $sva_wrapper->field_sva_status->value();
-                    $status_label = $status_values['settings']['allowed_values'][$status]; 
+      if (node_access('view', $variable)) {
+        $option = array(
+          'name' => "<a href='" . url('node/' . $variable->nid) . "'>$variable->title</a>",
+        );
+        if (!empty($variable->field_variable_study_var_att[$variable->language])) {
+          foreach (array_keys($header_ids) as $header_id) {
+            foreach ($variable->field_variable_study_var_att[$variable->language] as $study_variable_attributes) {
+              if (!empty($svas[$study_variable_attributes['nid']]->field_sva_study)) {
+                $study_id = $svas[$study_variable_attributes['nid']]->field_sva_study['und'][0]['nid'];
+                // get the sva that match the study id
+                if ($study_id == $header_id) {
+                  $sva_node = $svas[$study_variable_attributes['nid']];
+                  if (array_key_exists($study_id, $header_ids)) {
+                    $sva_wrapper = entity_metadata_wrapper('node', $sva_node);
+
+                    $script = $sva_wrapper->field_sva_script->value() ? $sva_wrapper->field_sva_script->value() : '';
+                    $comment = $sva_wrapper->field_sva_comment->value() ? $sva_wrapper->field_sva_comment->value() : ''; // TODO: Force break
+
+                    if ($sva_wrapper->access('view') == FALSE) {
+                      $status = 'forbidden';
+                      $status_label = t('Access Denied');
+                      $script = NULL;
+                      $comment = NULL;
+                    }
+                    elseif (!empty($sva_node->field_sva_status) && array_key_exists($sva_wrapper->field_sva_status->value(), $status_values['settings']['allowed_values'])) {
+                      $status = $sva_wrapper->field_sva_status->value();
+                      $status_label = $status_values['settings']['allowed_values'][$status];
+                    }
+                    else {
+                      $status = 'undetermined';
+                      $status_label = t('Undetermined');
+                      $script = NULL;
+                    }
+
+                    // inner tooltip
+                    $tooltip = "<table><tr><td><b>" . t('Status') . "</b></td><td>$status_label</td></tr>";
+
+                    if (!empty($comment)) {
+                      $tooltip .= "<tr><td style='vertical-align: text-top'><b>" . t('Comment') . "</b></td><td>" . _mica_datasets_toHtmlTruncate(
+                        $comment, 'comment', 200, FALSE
+                      ) . "</td></tr>";
+                    }
+
+                    if (!empty($script)) {
+                      $tooltip .= "<tr><td style='vertical-align: top'><b>" . t('Script') . "</b></td><td>" . _mica_datasets_toHtmlTruncate(
+                        $script, 'script', 200, TRUE
+                      ) . "</td></tr>";
+                    }
+                    $tooltip .= '</table>';
+
+                    $option[$header_ids[$study_id]]['data'][] = array(
+                      '#type' => 'markup',
+                      '#markup' =>
+                      "<a href='" . url('node/' . $study_variable_attributes['nid']) . "'><div class='tipsy'><img src='"
+                        . _mica_datasets_get_status_icon($status) . "' /><div class=\"tooltip_content\">$tooltip</div></div></a>",
+                    );
                   }
-                  else {
-                    $status = 'undetermined';
-                    $status_label = t('Undetermined');
-                  }
-    
-                  $script = $sva_wrapper->field_sva_script->value() ? $sva_wrapper->field_sva_script->value() : '';
-                  $comment = $sva_wrapper->field_sva_comment->value() ? $sva_wrapper->field_sva_comment->value() : ''; // TODO: Force break
-    
-                  // inner tooltip
-                  $tooltip = "<table><tr><td><b>" . t('Status') . "</b></td><td>$status_label</td></tr>";
-    
-                  if (!empty($comment)) {
-                    $tooltip .= "<tr><td style='vertical-align: text-top'><b>" . t('Comment') . "</b></td><td>" . _mica_datasets_toHtmlTruncate(
-                      $comment, 'comment', 200, FALSE
-                    ) . "</td></tr>";
-                  }
-    
-                  if (!empty($script)) {
-                    $tooltip .= "<tr><td style='vertical-align: top'><b>" . t('Script') . "</b></td><td>" . _mica_datasets_toHtmlTruncate(
-                      $script, 'script', 200, TRUE
-                    ) . "</td></tr>";
-                  }
-                  $tooltip .= '</table>';
-                  
-                  $option[$header_ids[$study_id]]['data'][] = array(
-                    '#type' => 'markup',
-                    '#markup' =>
-                    "<a href='" . url('node/' . $study_variable_attributes['nid']) . "'><div class='tipsy'><img src='"
-                      . _mica_datasets_get_status_icon($status) . "' /><div class=\"tooltip_content\">$tooltip</div></div></a>",
-                  );
+                  break;
                 }
-                break;
               }
             }
           }
+          $options[] = $option;
         }
-        $options[] = $option;
       }
     }
   }

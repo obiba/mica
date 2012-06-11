@@ -15,6 +15,7 @@ define('PUBLIC_KEY_FILE', 'private://mica-publickey.pem');
 
 define('MICA_HARMONIZATION_IMPOSSIBLE', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/bullet_red.png');
 define('MICA_HARMONIZATION_COMPLETE', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/bullet_green.png');
+define('MICA_HARMONIZATION_FORBIDDEN', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/bullet_white.png');
 define('MICA_HARMONIZATION_UNDETERMINED', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/bullet_black.png');
 define('MICA_HARMONIZATION_REFRESH', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/refresh.png');
 define('MICA_HARMONIZATION_MISING_TICK', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/tick.png');
@@ -573,8 +574,8 @@ function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
   // All variables associated to the query terms must be visible
   $terms = mica_dataset_query_term_query($query);
   if (isset($terms)) {
-    foreach($terms as $term) {
-      if (node_access('view',node_load($term->variable_id)) == FALSE) {
+    foreach ($terms as $term) {
+      if (node_access('view', node_load($term->variable_id)) == FALSE) {
         return FALSE;
       }
     }
@@ -1049,7 +1050,7 @@ function mica_dataset_query_load_multiple($ids = array(), $conditions = array(),
   $queries = array();
   $qs = entity_load('mica_dataset_query', $ids, $conditions, $reset);
   foreach ($qs as $q) {
-    if (_mica_datasets_query_access(node_load($q->dataset_id),$q,'view')) {
+    if (_mica_datasets_query_access(node_load($q->dataset_id), $q, 'view')) {
       $queries[] = $q;
     }
   }
@@ -1278,43 +1279,49 @@ function mica_datasets_node_view_alter(&$build) {
         $status_values = field_info_field('field_sva_status');
         foreach ($wrapper->field_variable_study_var_att->value() as $study_variable_attributes) {
           $sva_wrapper = entity_metadata_wrapper('node', $study_variable_attributes);
-
-          if (!empty($study_variable_attributes->field_sva_status)) {
-            $status = $sva_wrapper->field_sva_status->value();
-            $status_label = $status_values['settings']['allowed_values'][$status];
-          }
-          else {
-            $status = 'undetermined';
-            $status_label = t('Undetermined');
-          }
-
-          $script = $sva_wrapper->field_sva_script->value() ? $sva_wrapper->field_sva_script->value() : '';
-          $script = _mica_datasets_toHtmlTruncate(
-            $script, t('script'), 200, TRUE
-          ); //'<code class=\'prettyprint\'>' . check_markup(truncate_utf8($script, 400, FALSE)) . '</code>';
-          $comment = $sva_wrapper->field_sva_comment->value() ? $sva_wrapper->field_sva_comment->value() : '';
-          $comment = _mica_datasets_toHtmlTruncate($comment, t('comment'), 200, FALSE);
-
           $study_wrapper = entity_metadata_wrapper('node', $sva_wrapper->field_sva_study->value()->nid);
+          if ($study_wrapper->access('view')) {
 
-          $name = $study_wrapper->field_acroym->value() ? $study_wrapper->field_acroym->value() : $study_wrapper->title->value();
-          $status = "<img src=\"" . _mica_datasets_get_status_icon($status) . "\" title=\"$status_label\"></div>";
+            $script = $sva_wrapper->field_sva_script->value() ? $sva_wrapper->field_sva_script->value() : '';
+            $script = _mica_datasets_toHtmlTruncate(
+              $script, t('script'), 200, TRUE
+            ); //'<code class=\'prettyprint\'>' . check_markup(truncate_utf8($script, 400, FALSE)) . '</code>';
+            $comment = $sva_wrapper->field_sva_comment->value() ? $sva_wrapper->field_sva_comment->value() : '';
+            $comment = _mica_datasets_toHtmlTruncate($comment, t('comment'), 200, FALSE);
 
-          $option = array(
-            'study' => $name,
-            'status' => $status,
-            'comment' => truncate_utf8($comment, 100, FALSE, TRUE),
-            'script' => $script,
-          );
+            if ($sva_wrapper->access('view') == FALSE) {
+              $status = 'forbidden';
+              $status_label = t('Access Denied');
+              $script = NULL;
+              $comment = NULL;
+            }
+            elseif (!empty($study_variable_attributes->field_sva_status)) {
+              $status = $sva_wrapper->field_sva_status->value();
+              $status_label = $status_values['settings']['allowed_values'][$status];
+            }
+            else {
+              $status = 'undetermined';
+              $status_label = t('Undetermined');
+              $script = NULL;
+            }
 
-          $sva = node_load($sva_wrapper->nid->value());
-          if (node_access('view', $sva)) {
-            $header['view'] = '';
+            $name = $study_wrapper->field_acroym->value() ? $study_wrapper->field_acroym->value() : $study_wrapper->title->value();
+            $status = "<img src=\"" . _mica_datasets_get_status_icon($status) . "\" title=\"$status_label\"></div>";
 
-            $option['view'] = "<a href='" . url('node/' . $sva_wrapper->nid->value()) . "'>" . t('View') . "</a>";
+            $option = array(
+              'study' => $name,
+              'status' => $status,
+              'comment' => truncate_utf8($comment, 100, FALSE, TRUE),
+              'script' => $script,
+            );
+
+            if ($sva_wrapper->access('view')) {
+              $header['view'] = '';
+              $option['view'] = "<a href='" . url('node/' . $sva_wrapper->nid->value()) . "'>" . t('View') . "</a>";
+            }
+
+            $options[] = $option;
           }
-
-          $options[] = $option;
         }
 
         $build['harmonization'] = array(
@@ -1854,6 +1861,9 @@ function _mica_datasets_get_status_icon($status) {
 
     case 'complete':
       return MICA_HARMONIZATION_COMPLETE;
+
+    case 'forbidden':
+      return MICA_HARMONIZATION_FORBIDDEN;
 
     default:
       return MICA_HARMONIZATION_UNDETERMINED;
