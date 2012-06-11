@@ -12,6 +12,8 @@ div.mica-modal-content .modal-scroll {
   border-left: solid 1px #bbb;
   border-right: solid 1px #bbb;
   border-bottom: solid 1px #bbb;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
   -moz-border-radius-bottomleft: 10px;
   -moz-border-radius-bottomright: 10px;
   -webkit-border-bottom-left-radius: 10px;
@@ -27,6 +29,7 @@ div.mica-modal-content #popups-loading {
   position:absolute;
   display:none;
   opacity:1;
+  border-radius: 8px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   z-index:99;
@@ -57,6 +60,8 @@ div.mica-modal-content .popups-container {
   background-color:none;
 }
 div.mica-modal-content div.popups-title {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   -moz-border-radius-topleft: 10px;
   -moz-border-radius-topright: 10px;
   -webkit-border-top-left-radius: 10px;
@@ -74,6 +79,8 @@ div.mica-modal-content .popups-body {
   padding: 1em 23px 1em 22px;
   -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.32) inset;
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.32) inset;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   -moz-border-radius-bottomleft: 10px;
   -moz-border-radius-bottomright: 10px;
   -webkit-border-bottom-left-radius: 10px;
