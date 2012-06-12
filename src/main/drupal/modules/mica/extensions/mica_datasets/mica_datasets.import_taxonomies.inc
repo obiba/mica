@@ -6,7 +6,6 @@
  */
 
 function _mica_datasets_taxonomies() {
-	$base_path = drupal_get_path('module', 'mica_datasets') . '/taxonomies/';
 	return array(
   	array('anthropometric_structures.csv', 'Anthropometric structures'),
   	array('body_functions.csv', 'Body functions'),

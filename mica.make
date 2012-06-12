@@ -263,11 +263,8 @@ projects[token][type] = module
 projects[variable][version] = 1.1
 projects[variable][type] = module
 
+projects[view_unpublished][version] = 1.1
 projects[view_unpublished][type] = module
-projects[view_unpublished][download][type] = git
-projects[view_unpublished][download][revision] = 9682ab9
-projects[view_unpublished][download][branch] = 7.x-1.x
-projects[view_unpublished][patch][1192074] = http://drupal.org/files/view_unpublished-access_to_view_unpublished-1192074.patch
 
 projects[views][version] = 3.3
 projects[views][type] = module

@@ -276,11 +276,11 @@ function mica_datasets_update_7130(&$sandbox) {
 
   // import new taxonomies
   $base_path = drupal_get_path('module', 'mica_datasets') . '/taxonomies/';
-  mica_core_taxonomy_import('individual_participant_measures.csv', $base_path, 'Individual Participant Measures');	
+  mica_core_taxonomy_import('individual_participant_measures.csv', $base_path, 'Individual Participant Measures');
   mica_core_taxonomy_import('laboratory_measures.csv',  $base_path, 'Laboratory Measures');
-  
-  _mica_datasets_configure_field_bundle_settings();
+
   // enable footer area for variable
+  _mica_datasets_configure_field_bundle_settings();
 }
 
 /**
@@ -290,6 +290,9 @@ function mica_datasets_update_7130(&$sandbox) {
 function mica_datasets_update_dependencies() {
   $dependencies = array();
   $dependencies['mica_datasets'][7120] = array('mica_core' => 7120, 'mica_field_description' => 7120);
+
+  // need to execute field_update_7002() before mica_datasets_update_7130()
+  $dependencies['mica_datasets'][7130] = array('field' => 7002);
   return $dependencies;
 }
 

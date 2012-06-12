@@ -142,8 +142,8 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
  * jsonPath returns false if the expression returns zero results and that will
  * mess up our for loops, so return an empty array instead.
  *
- * @todo
- *   Firgure out error handling.
+ * TODO Figure out error handling.
+ *
  * @param $array
  *   The input array to parse
  * @$expression
