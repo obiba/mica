@@ -349,7 +349,7 @@ function _mica_datasets_change_dataset_studies_column() {
       ->fields('f', array('mica_dataset_nid'))
       ->execute();
     foreach ($result as $row) {
-      watchdog('mica', 'Copy datset %dataset - study %study',
+      watchdog('mica', 'Copy dataset %dataset - study %study',
         array('%dataset' => $row->mica_dataset_nid, '%study' => $row->entity_id), WATCHDOG_DEBUG);
 
       db_update('field_data_field_dataset_studies')
@@ -393,7 +393,7 @@ function _mica_datasets_change_dataset_variables_column() {
       ->condition('bundle', 'variable')
       ->execute();
     foreach ($result as $row) {
-      watchdog('mica', 'Copy datset %dataset - variable %variable',
+      watchdog('mica', 'Copy dataset %dataset - variable %variable',
         array('%dataset' => $row->mica_dataset_nid, '%variable' => $row->entity_id), WATCHDOG_DEBUG);
 
       db_update('field_data_field_dataset_variables')
