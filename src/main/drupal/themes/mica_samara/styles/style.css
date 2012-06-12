@@ -2177,6 +2177,20 @@ div.block-current-search h3 {
   padding-left: 0.75em;
 }
 
+div.block-current-search h3.current-search-result {
+  display: inline;
+}
+
+div.block-current-search a.current-search-clear-all {
+  /*margin-left: 5px;*/
+}
+
+div.block-current-search h4.current-search-group-title {
+  font-size: 1em;
+  margin: 0;
+  padding-left: 0.75em;
+}
+
 div.block-facetapi h2.collapsiblockCollapsed a, div.block-current-search h2.collapsiblockCollapsed a {
   background: url(../images/collapsed.png) no-repeat scroll left center transparent;
 }
