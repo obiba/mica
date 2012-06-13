@@ -128,6 +128,13 @@ function mica_datasets_query_edit_form($form, &$form_state) {
     '#attached' => array('css' => array(drupal_get_path('module', 'mica_datasets') . '/includes/connection.css')),
   );
 
+  $form['general'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Name'),
+    '#collapsible' => FALSE,
+    '#collapsed' => FALSE,
+  );
+
   $form['general']['name'] = array(
     '#type' => 'textfield',
     '#title' => t('Name'),
@@ -150,30 +157,6 @@ function mica_datasets_query_edit_form($form, &$form_state) {
       '#type' => 'checkbox',
       '#title' => t('Published'),
       '#default_value' => $query ? $query->published : 0,
-    );
-  }
-
-  // Add a query term by selecting a variable
-  $variable_options = array();
-  foreach (mica_dataset_dataset_variables($dataset_node->nid) as $variable) {
-    // todo cannot add a variable that is already in the process of being added
-    $variable_options[$variable->nid] = $variable->title;
-  }
-
-  if (!empty($variable_options)) {
-    asort($variable_options);
-    $form['add-term'] = array(
-      '#type' => 'item',
-      '#description' => t('Select the variables you want to query the dataset on.'),
-    );
-    $form['add-term']['variables'] = array(
-      '#type' => 'select',
-      '#title' => t('Variables'),
-      '#options' => $variable_options,
-    );
-    $form['add-term']['add-variable'] = array(
-      '#type' => 'submit',
-      '#value' => t('Add Variable'),
     );
   }
 
@@ -217,6 +200,35 @@ function mica_datasets_query_edit_form($form, &$form_state) {
     }
   }
 
+  // Add a query term by selecting a variable
+  $variable_options = array();
+  foreach (mica_dataset_dataset_variables($dataset_node->nid) as $variable) {
+    if (node_access('view', $variable)) {
+      $variable_options[$variable->nid] = $variable->title;
+    }
+  }
+  // remove variables that are already term of this query
+  foreach ($data as $datum) {
+    unset($variable_options[$datum['vid']]);
+  }
+
+  if (!empty($variable_options)) {
+    asort($variable_options);
+    $form['add-term'] = array(
+      '#type' => 'item',
+      '#description' => t('Select the variables you want to query the dataset on.'),
+    );
+    $form['add-term']['variables'] = array(
+      '#type' => 'select',
+      '#title' => t('Variables'),
+      '#options' => $variable_options,
+    );
+    $form['add-term']['add-variable'] = array(
+      '#type' => 'submit',
+      '#value' => t('Add Variable'),
+    );
+  }
+
   $form['list']['#tree'] = TRUE;
   $form['list']['#theme'] = 'mica_datasets_query_edit_form';
   foreach ($data as $key => $datum) {
@@ -241,6 +253,35 @@ function mica_datasets_query_edit_form($form, &$form_state) {
     $form['list'][$key]['vid'] = array(
       '#type' => 'hidden',
       '#value' => $datum['vid'],
+    );
+  }
+
+  $categorical_variables = mica_datasets_find_categorical_variables($dataset_node->nid);
+  $cross_options = array();
+  foreach ($categorical_variables as $variable) {
+    if (node_access('view', $variable)) {
+      $cross_options[$variable->nid] = $variable->title;
+    }
+  }
+  // remove variables that are already term of this query
+  foreach ($data as $datum) {
+    unset($cross_options[$datum['vid']]);
+  }
+
+  if (!empty($cross_options)) {
+    $form['cross'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Cross variable'),
+      '#collapsible' => FALSE,
+      '#collapsed' => FALSE,
+    );
+    $form['cross']['cross-variable'] = array(
+      '#type' => 'select',
+      '#title' => t('Variable to cross with'),
+      '#options' => $cross_options,
+      '#default_value' => $query ? $query->cross_variable_id : -1,
+      '#empty_options' => -1,
+      '#empty_value' => ' - ' . t('None') . ' - ',
     );
   }
 
@@ -308,6 +349,9 @@ function theme_mica_datasets_query_edit_form($variables) {
       'attributes' => array('id' => 'draggabledemo-sort')
     )
   );
+
+  $output .= drupal_render_children($form, array('cross'));
+
   $output .= drupal_render_children($form, array('actions'));
 
   // add form hidden items, otherwise submit and validate will be ignored
@@ -374,6 +418,8 @@ function mica_datasets_query_edit_form_submit($form, &$form_state) {
         // update query
         $query->name = check_plain($form_state['values']['name']);
         $query->description = $form_state['values']['description'];
+        $query->cross_variable_id = $form_state['values']['cross-variable'] == '-1' ? NULL : $form_state['values']['cross-variable'];
+
         if (isset($form_state['values']['publish'])) {
           $query->published = $form_state['values']['publish'];
         }
@@ -409,6 +455,7 @@ function mica_datasets_query_edit_form_submit($form, &$form_state) {
         // update query
         $query->name = check_plain($form_state['values']['name']);
         $query->description = $form_state['values']['description'];
+        $query->cross_variable_id = $form_state['values']['cross-variable'] == '-1' ? NULL : $form_state['values']['cross-variable'];
 
         if (MicaDatasetQueryManager::isCached($query)) {
           // update query cached
@@ -436,6 +483,7 @@ function _mica_datasets_extract_new_query_values(&$form_state) {
   $values['name'] = check_plain($form_state['values']['name']);
   $values['description'] = $form_state['values']['description'];
   $values['dataset_id'] = $dataset_node->nid;
+  $values['cross_variable_id'] = $form_state['values']['cross-variable'] == '-1' ? NULL : $form_state['values']['cross-variable'];
   if (isset($form_state['values']['publish'])) {
     $values['published'] = $form_state['values']['publish'];
   }
@@ -598,7 +646,7 @@ function mica_datasets_query_run_page($form, &$form_state, $dataset_node, $query
     ),
   ));
 
-  $cross_variable = NULL;
+  $cross_variable = node_load($query->cross_variable_id);
   if (isset($form_state['values']['cross_variable'])) {
     $cross_variable = node_load($form_state['values']['cross_variable']);
   }

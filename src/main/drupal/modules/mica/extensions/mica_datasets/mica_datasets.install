@@ -105,6 +105,12 @@ function mica_datasets_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
+      'cross_variable_id' => array(
+        'description' => 'The cross variable identifier for a query.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+      ),
       'user_id' => array(
         'description' => 'The query author identifier.',
         'type' => 'int',
@@ -271,13 +277,21 @@ function mica_datasets_update_7121(&$sandbox) {
  * Import taxonomies 'Individual Participant Measures' and 'Laboratory Measures'
  */
 function mica_datasets_update_7130(&$sandbox) {
-  
+
+  db_add_field('mica_dataset_query', 'cross_variable_id',
+    array(
+      'type' => 'int',
+      'unsigned' => TRUE,
+      'default' => NULL,
+    )
+  );
+
   features_revert(array('mica_datasets' => array('field', 'user_permission')));
 
   // import new taxonomies
   $base_path = drupal_get_path('module', 'mica_datasets') . '/taxonomies/';
   mica_core_taxonomy_import('individual_participant_measures.csv', $base_path, 'Individual Participant Measures');
-  mica_core_taxonomy_import('laboratory_measures.csv',  $base_path, 'Laboratory Measures');
+  mica_core_taxonomy_import('laboratory_measures.csv', $base_path, 'Laboratory Measures');
 
   // enable footer area for variable
   _mica_datasets_configure_field_bundle_settings();

@@ -40,6 +40,11 @@ class MicaDatasetQuery extends Entity {
   /**
    * @var integer
    */
+  public $cross_variable_id = 0;
+
+  /**
+   * @var integer
+   */
   public $published = 0;
 
 
