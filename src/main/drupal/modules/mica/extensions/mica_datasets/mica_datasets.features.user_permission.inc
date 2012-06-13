@@ -26,8 +26,11 @@ function mica_datasets_user_default_permissions() {
   $permissions['create edit delete own dataset query'] = array(
     'name' => 'create edit delete own dataset query',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'dataset administrator',
+      3 => 'dataset reviewer',
+      4 => 'researcher',
     ),
     'module' => 'mica_datasets',
   );
@@ -208,8 +211,11 @@ function mica_datasets_user_default_permissions() {
   $permissions['view any dataset query'] = array(
     'name' => 'view any dataset query',
     'roles' => array(
-      0 => 'anonymous user',
-      1 => 'authenticated user',
+      0 => 'administrator',
+      1 => 'consortium administrator',
+      2 => 'dataset administrator',
+      3 => 'dataset reviewer',
+      4 => 'researcher',
     ),
     'module' => 'mica_datasets',
   );
