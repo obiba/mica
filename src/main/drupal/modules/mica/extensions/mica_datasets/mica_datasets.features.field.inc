@@ -278,7 +278,7 @@ function mica_datasets_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_dataset_type',
-      'label' => 'Type',
+      'label' => 'Dataset Type',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -4575,6 +4575,7 @@ Set to 0 to set variable at last position.  ',
   t('Comment');
   t('Data Source');
   t('Dataset');
+  t('Dataset Type');
   t('Datasets');
   t('Description');
   t('Diseases History and Related Health Problems');
@@ -4604,7 +4605,6 @@ Set to 0 to set variable at last position.  ');
   t('Study');
   t('Study Variables Attributes');
   t('Target');
-  t('Type');
   t('Unit');
   t('Value Type');
   t('Variable');

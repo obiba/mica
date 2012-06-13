@@ -94,6 +94,7 @@ projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info
 
 projects[facetapi][version] = 1.0-rc4
 projects[facetapi][type] = module
+projects[facetapi][patch][1630714] = http://drupal.org/files/undefined-index-html-item_group-inc.patch
 
 ;projects[] = examples
 

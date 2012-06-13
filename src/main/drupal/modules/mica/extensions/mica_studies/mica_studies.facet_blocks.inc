@@ -24,11 +24,12 @@ function mica_studies_configure_facet_blocks() {
     )
   )
     ->condition('module', 'current_search')
-    ->condition('delta', 'standard')
+    ->condition('delta', 'study_current_search')
     ->condition('theme', $theme_default)
     ->execute();
-  current_search_set_block_searcher('standard', 'search_api@studies_index');
-  watchdog('mica', 'Configured current_search block: %status',
+  current_search_set_block_searcher('study_current_search', 'search_api@studies_index');
+
+  watchdog('mica', 'Configured study_current_search block: %status',
     array('%status' => ($nb_updated > 0 ? 'Done' : 'Error')), WATCHDOG_DEBUG);
 
   // disable some facets because Features/FacetAPI always export them as enabled: http://drupal.org/node/1439950

@@ -36,7 +36,8 @@ function mica_datasets_configure_facet_blocks() {
   $facet_order_by_region = array(
     'sidebar_second' => array(
       'field_dataset',
-  		'field_dataset:field_dataset_studies',
+      'field_dataset:field_dataset_type',
+      'field_dataset:field_dataset_studies',
       'field_data_source',
       'field_individual_participant_mea',
       'field_disease_history',
@@ -94,13 +95,13 @@ function mica_datasets_configure_facet_blocks() {
 
       if ($block) {
         $f = explode(":", $facet_field);
-        if (count($f) > 1){
-        	$field_info = field_info_instance('node', $f[1], 'dataset');
+        if (count($f) > 1) {
+          $field_info = field_info_instance('node', $f[1], 'dataset');
         }
-        else{
-        	$field_info = field_info_instance('node', $facet_field, 'variable');
+        else {
+          $field_info = field_info_instance('node', $facet_field, 'variable');
         }
-        
+
         $nb_updated = db_update('block')->fields(
           array(
             'status' => 1,
@@ -108,7 +109,7 @@ function mica_datasets_configure_facet_blocks() {
             'weight' => $facet_weight,
             'visibility' => BLOCK_VISIBILITY_LISTED,
             'pages' => $page,
-        		'title' => $field_info['label'],
+            'title' => $field_info['label'],
           )
         )
           ->condition('module', 'facetapi')
@@ -119,13 +120,13 @@ function mica_datasets_configure_facet_blocks() {
       else {
         // field_dataset:field_dataset_studies is from the dataset content type, not variable
         $f = explode(":", $facet_field);
-        if (count($f) > 1){
-        	$field_info = field_info_instance('node', $f[1], 'dataset');
+        if (count($f) > 1) {
+          $field_info = field_info_instance('node', $f[1], 'dataset');
         }
-        else{
-        	$field_info = field_info_instance('node', $facet_field, 'variable');
+        else {
+          $field_info = field_info_instance('node', $facet_field, 'variable');
         }
-        
+
         $nb_updated = db_insert('block')->fields(
           array(
             'status' => 1,

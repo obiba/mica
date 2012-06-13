@@ -102,7 +102,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['status']['empty_zero'] = 0;
   $handler->display->display_options['fields']['status']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Field: Content: Type */
+  /* Field: Content: Dataset Type */
   $handler->display->display_options['fields']['field_dataset_type']['id'] = 'field_dataset_type';
   $handler->display->display_options['fields']['field_dataset_type']['table'] = 'field_data_field_dataset_type';
   $handler->display->display_options['fields']['field_dataset_type']['field'] = 'field_dataset_type';
@@ -531,7 +531,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'dataset' => 'dataset',
   );
-  /* Filter criterion: Indexed Node: Type */
+  /* Filter criterion: Indexed Node: Dataset Type */
   $handler->display->display_options['filters']['field_dataset_type']['id'] = 'field_dataset_type';
   $handler->display->display_options['filters']['field_dataset_type']['table'] = 'search_api_index_dataset_index';
   $handler->display->display_options['filters']['field_dataset_type']['field'] = 'field_dataset_type';
@@ -668,7 +668,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'dataset' => 'dataset',
   );
-  /* Filter criterion: Indexed Node: Type */
+  /* Filter criterion: Indexed Node: Dataset Type */
   $handler->display->display_options['filters']['field_dataset_type']['id'] = 'field_dataset_type';
   $handler->display->display_options['filters']['field_dataset_type']['table'] = 'search_api_index_dataset_index';
   $handler->display->display_options['filters']['field_dataset_type']['field'] = 'field_dataset_type';

@@ -746,12 +746,33 @@ function _mica_studies_form_validate_field($form, &$form_state, $dependee, $depe
 }
 
 /**
- * Remove [all items] from the current search block
+ * Implements hook_block_view_alter()
  */
 function mica_studies_block_view_alter(&$data, $block) {
-  if (is_null($block) || $block->delta !== 'standard' || $block->module !== 'current_search') return;
-  foreach ($data['content']['active_items']['#items'] as $key => $item) {
-    if ($item === '[all items]') unset($data['content']['active_items']['#items'][$key]);
+  if (!empty($block) && $block->delta === 'study_current_search' && $block->module === 'current_search') {
+    _mica_studies_study_current_search($data, $block);
+  }
+}
+
+function _mica_studies_study_current_search(&$data, $block) {
+  if (isset($data['content']['field_group'])) {
+    $data['content']['results']['#markup'] .= ' - ' . l(
+      t('Clear all criteria') . ' [X]',
+      'studies-search',
+      array(
+        'attributes' => array(
+          'rel' => 'nofollow',
+          'class' => array('current-search-clear-all'),
+        )
+      )
+    );
+    foreach($data['content']['field_group'] as $field =>$field_group) {
+      $field_info = field_info_instance('node', $field, 'study');
+      if (isset($field_info['display_label']) && strlen(trim($field_info['display_label'])) > 0) {
+        $data['content']['field_group'][$field]['title']['#markup'] = '<h4 class="current-search-group-title">'
+          . $field_info['display_label'] . ':</h4>';
+      }
+    }
   }
 }
 

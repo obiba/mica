@@ -201,6 +201,7 @@ function mica_datasets_default_search_api_index() {
         "field_value_type" : { "type" : "string" },
         "field_data_sources" : { "type" : "list\\u003Cstring\\u003E" },
         "field_data_sources_sp" : { "type" : "text" },
+        "field_dataset_type" : { "type" : "string" },
         "field_anthropometric_structures" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_body_functions" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_body_structures" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
