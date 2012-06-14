@@ -10,3 +10,17 @@
 #result-wrapper {
   overflow: auto;
 }
+
+table.sva-tooltip th {
+  background-color: inherit;
+  border: none;
+  font-weight: bold;
+}
+
+table.sva-tooltip th, table.sva-tooltip td {
+  vertical-align: text-top;
+}
+
+#harmonization_overview a {
+  border: none;
+}

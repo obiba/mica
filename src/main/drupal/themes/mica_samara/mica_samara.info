@@ -9,7 +9,6 @@ stylesheets[all][]   = styles/style.css
 stylesheets[all][]   = styles/drupal.css
 stylesheets[all][]   = styles/colors.css
 stylesheets[print][] = styles/print.css
-stylesheets[all][] = tipsy/tipsy.css
 
 
 regions[header]         = Header

@@ -31,7 +31,7 @@ define('MICA_CONNECTION_CONFIG', 'connection-config');
 function _mica_datasets_connectors_form() {
   $form = array(
     '#attached' => array(
-      'css' => array(drupal_get_path('module', 'mica_datasets') . '/includes/connection.css')
+      'css' => array(drupal_get_path('module', 'mica_datasets') . '/css/connection.css')
     ),
     '#attributes' => array('id' => 'dataset-connectors'),
   );

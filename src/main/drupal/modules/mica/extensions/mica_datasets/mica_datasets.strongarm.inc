@@ -277,45 +277,6 @@ function mica_datasets_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'tipsy';
-  $strongarm->value = array(
-    'drupal_forms' => array(
-      'forms' => 0,
-      'options' => array(
-        'fade' => 1,
-        'gravity' => 'autoWE',
-        'delayIn' => '0',
-        'delayOut' => '0',
-        'trigger' => 'hover',
-        'opacity' => '0.8',
-        'offset' => '0',
-      ),
-    ),
-    'custom_selectors' => array(
-      0 => array(
-        'selector' => '.tipsy',
-        'options' => array(
-          'fade' => 1,
-          'gravity' => 'autoWE',
-          'trigger' => 'hover',
-          'delayIn' => '0',
-          'delayOut' => '0',
-          'opacity' => '1',
-          'offset' => '0',
-          'html' => 1,
-          'tooltip_content' => array(
-            'source' => 'child',
-            'selector' => '.tooltip_content',
-          ),
-        ),
-      ),
-    ),
-  );
-  $export['tipsy'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'workbench_moderation_default_state_dataset';
   $strongarm->value = 'draft';
   $export['workbench_moderation_default_state_dataset'] = $strongarm;

@@ -3,38 +3,31 @@
 /*
  * Menu for callback of refresh harmonization
  */
-// function mica_datasets_harmonization_menu(){
-//  $items = array();
-//  $items['mica/mica_datasets_harmonization/ajax'] = array(
-//  	'page callback' => 'mica_datasets_harmonization_ajax_callback',
-//   'access arguments' => TRUE,
-//   'type' => MENU_CALLBACK,
-//  );
-//  $items['mica/mica_datasets_harmonization/ajax/%'] = array(
-//      'page callback' => 'mica_datasets_harmonization_ajax_callback',
-//      'page arguments' => array(2, 3),
-//      'access arguments' => TRUE,
-//      'type' => MENU_CALLBACK,
-//  );
-//  return $items;
-// }
+
+include_once('mica_datasets.utils.inc');
 
 /**
  * Display queries.
  */
 function mica_datasets_dataset_harmonization_page($dataset_node) {
   drupal_set_title(t('!title -- Harmonization', array('!title' => $dataset_node->title)));
-  $path = drupal_get_path('module', 'mica_datasets');
-  drupal_add_css($path . '/includes/prettify.css');
-  drupal_add_js($path . '/includes/prettify.js');
+
   drupal_add_library('system', 'drupal.ajax');
   drupal_add_library('system', 'jquery.form');
-  drupal_add_js('jQuery(document).ready(function (){prettyPrint()});', 'inline');
 
-  return mica_datasets_dataset_harmonization_page_output($dataset_node);
-}
+  //prettify
+  ctools_add_css('prettify', 'mica_datasets');
+  ctools_add_js('prettify', 'mica_datasets');
+  ctools_add_js('mica_datasets_harmonization', 'mica_datasets');
 
-function mica_datasets_dataset_harmonization_page_output($dataset_node) {
+  // tooltips
+  ctools_add_js('jquery.tooltip.min', 'mica_core');
+  ctools_add_js('mica_core_tooltip', 'mica_core');
+  ctools_add_css('jquery.tooltip', 'mica_core');
+  ctools_add_css('mica_core_tooltip', 'mica_core');
+
+  ctools_add_css('mica_datasets', 'mica_datasets');
+
   $header = array(
     'name' => t('Variable'),
   );
@@ -66,8 +59,7 @@ function mica_datasets_dataset_harmonization_page_output($dataset_node) {
         $ajax_link = '';
       }
 
-      $header[]
-        = "<div class='harmonization-study-title'>$name$ajax_link</div><br>"; //"<div class='harmonization-study-icon'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>";
+      $header[] = "<div class='harmonization-study-title'>$name$ajax_link</div><br>";
 
       $header_ids[$study_wrapper->nid->value()] = $name;
     }
@@ -75,7 +67,7 @@ function mica_datasets_dataset_harmonization_page_output($dataset_node) {
 
   if (!empty($variables) && !empty($studies)) {
 
-    uasort($variables, 'sort_by_position');
+    uasort($variables, 'mica_datasets_sort_by_position');
 
     // sort variables based on their field_position
     // get the ids of all study_variable_attributes and load at once
@@ -92,22 +84,36 @@ function mica_datasets_dataset_harmonization_page_output($dataset_node) {
     // Add rows to the harmonization table
     foreach ($variables as $variable) {
       if (node_access('view', $variable)) {
-        $option = array(
-          'name' => "<a href='" . url('node/' . $variable->nid) . "'>$variable->title</a>",
+
+        $variable_link = l($variable->title, 'node/' . $variable->nid, array(
+            'attributes' => array(
+              'id' => 'variable_' . $variable->nid,
+              'class' => 'tooltip',
+            )
+          )
         );
+        $variable_link .= '<div id="variable_' . $variable->nid . '_tooltip" class="tooltip-content">'
+          . _mica_datasets_harmonization_variable_tooltip($variable)
+          . '</div>';
+
+        $option = array('name' => $variable_link);
+
         if (!empty($variable->field_variable_study_var_att[$variable->language])) {
           foreach (array_keys($header_ids) as $header_id) {
             foreach ($variable->field_variable_study_var_att[$variable->language] as $study_variable_attributes) {
-              if (!empty($svas[$study_variable_attributes['nid']]->field_sva_study)) {
-                $study_id = $svas[$study_variable_attributes['nid']]->field_sva_study['und'][0]['nid'];
+
+              $sva_nid = $study_variable_attributes['nid'];
+
+              if (!empty($svas[$sva_nid]->field_sva_study)) {
+                $study_id = $svas[$sva_nid]->field_sva_study[LANGUAGE_NONE][0]['nid'];
                 // get the sva that match the study id
                 if ($study_id == $header_id) {
-                  $sva_node = $svas[$study_variable_attributes['nid']];
+                  $sva_node = $svas[$sva_nid];
                   if (array_key_exists($study_id, $header_ids)) {
                     $sva_wrapper = entity_metadata_wrapper('node', $sva_node);
 
                     $script = $sva_wrapper->field_sva_script->value() ? $sva_wrapper->field_sva_script->value() : '';
-                    $comment = $sva_wrapper->field_sva_comment->value() ? $sva_wrapper->field_sva_comment->value() : ''; // TODO: Force break
+                    $comment = $sva_wrapper->field_sva_comment->value() ? $sva_wrapper->field_sva_comment->value() : '';
 
                     if ($sva_wrapper->access('view') == FALSE) {
                       $status = 'forbidden';
@@ -115,7 +121,9 @@ function mica_datasets_dataset_harmonization_page_output($dataset_node) {
                       $script = NULL;
                       $comment = NULL;
                     }
-                    elseif (!empty($sva_node->field_sva_status) && array_key_exists($sva_wrapper->field_sva_status->value(), $status_values['settings']['allowed_values'])) {
+                    elseif (!empty($sva_node->field_sva_status)
+                      && array_key_exists($sva_wrapper->field_sva_status->value(), $status_values['settings']['allowed_values'])
+                    ) {
                       $status = $sva_wrapper->field_sva_status->value();
                       $status_label = $status_values['settings']['allowed_values'][$status];
                     }
@@ -125,27 +133,14 @@ function mica_datasets_dataset_harmonization_page_output($dataset_node) {
                       $script = NULL;
                     }
 
-                    // inner tooltip
-                    $tooltip = "<table><tr><td><b>" . t('Status') . "</b></td><td>$status_label</td></tr>";
-
-                    if (!empty($comment)) {
-                      $tooltip .= "<tr><td style='vertical-align: text-top'><b>" . t('Comment') . "</b></td><td>" . _mica_datasets_toHtmlTruncate(
-                        $comment, 'comment', 200, FALSE
-                      ) . "</td></tr>";
-                    }
-
-                    if (!empty($script)) {
-                      $tooltip .= "<tr><td style='vertical-align: top'><b>" . t('Script') . "</b></td><td>" . _mica_datasets_toHtmlTruncate(
-                        $script, 'script', 200, TRUE
-                      ) . "</td></tr>";
-                    }
-                    $tooltip .= '</table>';
-
+                    $sva_link = '<a href="' . url('node/' . $sva_nid) . '" id="sva_' . $sva_nid
+                      . '" class="tooltip"><img src="' . _mica_datasets_get_status_icon($status) . '" /></a>';
+                    $sva_link .= '<div id="sva_' . $sva_nid . '_tooltip" class="tooltip-content">'
+                      . _mica_datasets_harmonization_sva_tooltip($status_label, $comment, $script)
+                      . '</div>';
                     $option[$header_ids[$study_id]]['data'][] = array(
                       '#type' => 'markup',
-                      '#markup' =>
-                      "<a href='" . url('node/' . $study_variable_attributes['nid']) . "'><div class='tipsy'><img src='"
-                        . _mica_datasets_get_status_icon($status) . "' /><div class=\"tooltip_content\">$tooltip</div></div></a>",
+                      '#markup' => $sva_link,
                     );
                   }
                   break;
@@ -161,7 +156,7 @@ function mica_datasets_dataset_harmonization_page_output($dataset_node) {
   unset($svas);
 
   $output = drupal_render(drupal_get_form('mica_datasets_harmonization_legend_form'));
-  $output .= '<br>';
+  $output .= '<br/>';
   $output .= theme(
     'table',
     array(
@@ -176,8 +171,6 @@ function mica_datasets_dataset_harmonization_page_output($dataset_node) {
   return '<div id=\'harmonization_overview_wrapper\'>' . $output . '</div>';
 }
 
-function _mica_datasets_build_harmoniztion_table_output($form) {
-}
 
 function mica_datasets_harmonization_legend_form($form, $form_state) {
   $form['legend'] = array(
@@ -212,16 +205,29 @@ function mica_datasets_harmonization_legend_form($form, $form_state) {
   return $form;
 }
 
-function sort_by_position($x, $y) {
-  // TODO use entity_metadata_wrapper
-  $x_pos = isset($x->field_position['und'][0]['value']) ? $x->field_position['und'][0]['value'] : 9999;
-  $y_pos = isset($y->field_position['und'][0]['value']) ? $y->field_position['und'][0]['value'] : 9999;
-  if ($x_pos === $y_pos) {
-    return 0;
-  }
-  if ($x_pos < $y_pos) {
-    return -1;
-  }
-  return 1;
+function _mica_datasets_harmonization_variable_tooltip($variable) {
+  $wrapper = entity_metadata_wrapper('node', $variable);
+  $tooltip = '<h4>' . $wrapper->field_label->value() . '</h4>';
+  $body = $wrapper->body->value->value();
+  if (!empty($body)) $tooltip .= $body;
+  return $tooltip;
 }
 
+function _mica_datasets_harmonization_sva_tooltip($status_label, $comment, $script) {
+  $tooltip = '<table class="sva-tooltip"><tr><th>' . t('Status') . '</th><td>' . $status_label . '</td></tr>';
+
+  if (!empty($comment)) {
+    $tooltip .= '<tr><th>' . t('Comment') . '</th><td>'
+      . _mica_datasets_toHtmlTruncate($comment, t('Comment'))
+      . '</td></tr>';
+  }
+
+  if (!empty($script)) {
+    $tooltip .= '<tr><th>' . t('Script') . '</th><td>'
+      . _mica_datasets_toHtmlTruncate($script, t('Script'), 200, TRUE)
+      . '</td></tr>';
+  }
+  $tooltip .= '</table>';
+
+  return $tooltip;
+}

@@ -1827,7 +1827,7 @@ function mica_datasets_node_view($node, $view_mode) {
   }
 }
 
-function _mica_datasets_toHtmlTruncate($text, $label, $size, $is_code) {
+function _mica_datasets_toHtmlTruncate($text, $label, $size = 200, $is_code = FALSE) {
   $htmlTruncate = '';
   if (!empty($text)) {
 

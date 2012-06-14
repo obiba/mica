@@ -103,7 +103,6 @@ mica-delete-1.3:
 	rm -rf /usr/share/mica/sites/all/modules/pathauto && \
 	rm -rf /usr/share/mica/sites/all/modules/progress && \
 	rm -rf /usr/share/mica/sites/all/modules/strongarm && \
-	rm -rf /usr/share/mica/sites/all/modules/tipsy && \
 	rm -rf /usr/share/mica/sites/all/modules/token && \
 	rm -rf /usr/share/mica/sites/all/modules/variable && \
 	rm -rf /usr/share/mica/sites/all/modules/variable_admin && \

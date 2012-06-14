@@ -254,10 +254,6 @@ projects[title][download][revision] = 5cfda9b
 projects[title][download][branch] = 7.x-1.x
 projects[title][patch][1362790] = http://drupal.org/files/check_if_legacy_field_is_set-1362790-1.patch
 
-projects[tipsy][version] = 1.0-rc1
-projects[tipsy][type] = module
-projects[tipsy][patch][1199546] = http://drupal.org/files/1199546_tipsy_multiple-tooltips.patch
-
 projects[token][version] = 1.1
 projects[token][type] = module
 

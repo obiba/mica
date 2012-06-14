@@ -2316,9 +2316,7 @@ a.use-ajax.ajax-processed{
   margin:0px auto;
 }
 
-div.tipsy {
-  margin-top:-8px;
-}
+
 div.tooltip_content table, tbody, tr {
   border-style:none;
   border-color:transparent;
@@ -2332,22 +2330,6 @@ div.tooltip_content table, tbody, tr {
   min-height:16px;
   margin-top: 0px;
 }
-
-.tooltip_content{
-	display:none;
-}
-.tipsy { padding-right: 5px; padding-left: 5px; font-size: 10px; position: absolute; z-index:0}
-.tipsy-inner { padding: 5px 8px 4px 8px; background-color: #F4F4F4; color: black; max-width: 400px; text-align: left; }
-.tipsy-inner { border-radius: 3px; -moz-border-radius:3px; -webkit-border-radius:3px;}
-.tipsy-arrow { position: inherit; background: url('../images/tipsy.gif') no-repeat top left; width: 9px; height: 5px;}
-.tipsy-n .tipsy-arrow { top: 0; left: 50%; margin-left: -4px; }
-.tipsy-nw .tipsy-arrow { top: 0; left: 10px; }
-.tipsy-ne .tipsy-arrow { top: 0; right: 10px; }
-.tipsy-s .tipsy-arrow { bottom: 0; left: 50%; margin-left: -4px; background-position: bottom left; }
-.tipsy-sw .tipsy-arrow { bottom: 0; left: 10px; background-position: bottom left; }
-.tipsy-se .tipsy-arrow { bottom: 0; right: 10px; background-position: bottom left; }
-.tipsy-e .tipsy-arrow { top: 50%; margin-top: -4px; right: 0; width: 5px; height: 9px; background-position: top right; }
-.tipsy-w .tipsy-arrow { top: 50%; margin-top: -4px; left: 0; width: 5px; height: 9px; }
 
 
 table.query-table th, table.query-table td {

@@ -125,7 +125,7 @@ function mica_datasets_query_edit_form($form, &$form_state) {
   $query = $form_state['build_info']['args'][1];
 
   $form = array(
-    '#attached' => array('css' => array(drupal_get_path('module', 'mica_datasets') . '/includes/connection.css')),
+    '#attached' => array('css' => array(drupal_get_path('module', 'mica_datasets') . '/css/connection.css')),
   );
 
   $form['general'] = array(
