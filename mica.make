@@ -154,7 +154,7 @@ projects[link][type] = module
 projects[login_destination][version] = 1.0
 projects[login_destination][type] = module
 
-projects[mail_edit][version] = 1.0-beta2
+projects[mail_edit][version] = 1.0-rc1
 projects[mail_edit][type] = module
 
 projects[masquerade][version] = 1.0-rc4
