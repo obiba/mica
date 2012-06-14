@@ -133,8 +133,7 @@ acronym[title] {
   border-bottom: 1px solid #bf8060;
 }
 samp,
-var,
-{
+var {
   background-color: #efefef;
 }
 ins {
