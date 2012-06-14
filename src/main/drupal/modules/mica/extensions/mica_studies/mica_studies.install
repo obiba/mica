@@ -55,18 +55,17 @@ function mica_studies_update_7120(&$sandbox) {
 
 /**
  *
- * Migrate data from recruitment_procedures to recruitment_sources field. Apply new permissions.
+ * Migrate data from recruitment_procedures to recruitment_sources field.<br>
+ * Apply new permissions.
  */
 function mica_studies_update_7130(&$sandbox) {
-
-  // map values from recruitment_procedures to recruitment_sources
-
   features_revert(array('mica_studies' => array('field', 'field_group', 'search_api_index', 'user_permission')));
   
-  $base_path = drupal_get_path('module', 'mica_studies') . '/taxonomies/';
-  mica_core_taxonomy_import('sources_of_recruitment.csv', $base_path, 'Source of Recruitment');
+//   $base_path = drupal_get_path('module', 'mica_studies') . '/taxonomies/';
+  _mica_studies_create_source_of_recruitment_taxonomy();
   
-  // Configure block for source of recruitment
+  // map values from recruitment_procedures to recruitment_sources
+  _mica_studies_migrate_field_recruitment_procedures();
 }
 
 /**
@@ -172,4 +171,70 @@ function _mica_studies_configure_field_bundle_settings() {
     ),
   );
   field_bundle_settings('node', 'documents', $documents_settings);
+}
+
+function _mica_studies_create_source_of_recruitment_taxonomy(){
+  $vocabulary = _mica_core_taxonomy_create('sources_of_recruitment.csv', 'Source of Recruitment');
+  $vid = $vocabulary->vid;
+  
+  $term = mica_core_taxonomy_term_save($vid, 'General population');
+  mica_core_taxonomy_term_save($vid, 'Volunteer enrolment', $term->tid, 40);
+  mica_core_taxonomy_term_save($vid, 'Selected sample (e.g.: from governmental databases)', $term->tid, 50);
+  
+  mica_core_taxonomy_term_save($vid, 'Participants from existing studies');
+  
+  $term = mica_core_taxonomy_term_save($vid, 'Specific population');
+  mica_core_taxonomy_term_save($vid, 'Clinic patients', $term->tid, 30);
+  mica_core_taxonomy_term_save($vid, 'Members of specific association (professional association, patients network, etc)', $term->tid, 40);
+  mica_core_taxonomy_term_save($vid, 'Other source', $term->tid, 50);
+}
+
+function _mica_studies_migrate_field_recruitment_procedures(){
+
+	// Move data from field_recruitement_procedures to taxonomy field_recruitment_source
+	$result = db_select('field_data_field_recruitment_procedures', 'r')
+	->fields('r', array('entity_id', 'field_recruitment_procedures_value'))
+	->execute();
+
+	while($record = $result->fetchAssoc()) {
+		$value = $record['field_recruitment_procedures_value'];
+
+		// insert taxonomy data
+		$study = node_load((int)$record['entity_id']);
+		$wrapper = entity_metadata_wrapper('node', $study);
+		
+		$sources = $wrapper->field_recruitment_sources->value();
+		$terms = array();		 
+		switch ($value) {
+			case 'general_population' :
+				$terms = taxonomy_get_term_by_name('General population', 'sources_of_recruitment');
+				break;
+			case 'legacy_studies' :
+				$terms = taxonomy_get_term_by_name('Participants from existing studies', 'sources_of_recruitment');
+				break;
+			case 'specific_population' :
+				$terms = taxonomy_get_term_by_name('Specific population', 'sources_of_recruitment');
+				break;
+			case 'other' :
+				$terms = taxonomy_get_term_by_name('Other source', 'sources_of_recruitment');
+				break;
+		}
+		
+		if (!empty($terms)){
+  		$k = array_keys($terms);
+  		$tids = array();
+  		if (!empty($sources)){
+  		  foreach($sources as $source){
+  		    $tids[] = $source->tid;
+  		  }
+  		}
+  		array_push($tids, $k[0]);
+  		$wrapper->field_recruitment_sources->set($tids);
+  		$wrapper->save();
+		}
+	}
+	
+  spl_autoload_register('_search_api_solr_autoload');
+	$instance = field_info_instance('node', 'field_recruitment_procedures', 'study');
+	field_delete_instance($instance);
 }
