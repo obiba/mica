@@ -98,7 +98,4 @@ function _mica_devel_is_mica_module($module) {
 
 function _mica_devel_dummy_run() {
   drupal_set_message(t("Run dummy method..."));
-  
-  require_once(drupal_get_path('module', 'mica_core') . '/mica_core.menu.utils.inc');
-  mica_core_set_menu_option('dataset', '600');
 }
