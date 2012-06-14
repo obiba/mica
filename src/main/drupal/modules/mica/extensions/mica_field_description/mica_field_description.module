@@ -39,7 +39,7 @@ function mica_field_description_node_delete($node) {
 function mica_field_description_field_delete_instance($instance) {
   $field_description = _find_field_description($instance['bundle'], $instance['field_name']);
   if (!empty($field_description)) {
-    node_delete($field_description);
+    node_delete($field_description->nid);
   }
 }
 
