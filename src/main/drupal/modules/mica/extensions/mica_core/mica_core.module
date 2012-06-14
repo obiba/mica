@@ -292,6 +292,24 @@ function mica_core_taxonomy_import($filename, $base_path, $vocabulary_name) {
 
 }
 
+function mica_core_taxonomy_term_save($vocabulary_id, $name, $parent_id = NULL, $weight = NULL){
+	$term = new stdClass();
+	$term->vid = $vocabulary_id;
+	$term->name = $name;
+
+	if (!empty($parent_id)){
+		$term->parent = $parent_id;
+	}
+
+	if (!empty($weight)){
+		$term->weight = $weight;
+	}
+
+	taxonomy_term_save($term);
+	
+	return $term;
+}
+
 function mica_core_add_page($title, $body_html, $alias = NULL) {
 
   $page_wrapper = entity_property_values_create_entity(
