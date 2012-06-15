@@ -61,11 +61,15 @@ function mica_studies_update_7120(&$sandbox) {
 function mica_studies_update_7130(&$sandbox) {
   features_revert(array('mica_studies' => array('field', 'field_group', 'search_api_index', 'user_permission')));
   
-//   $base_path = drupal_get_path('module', 'mica_studies') . '/taxonomies/';
+  // $base_path = drupal_get_path('module', 'mica_studies') . '/taxonomies/';
   _mica_studies_create_source_of_recruitment_taxonomy();
   
   // map values from recruitment_procedures to recruitment_sources
   _mica_studies_migrate_field_recruitment_procedures();
+  
+  // configure facet blocks
+  require_once(drupal_get_path('module', 'mica_studies') . '/mica_studies.facet_blocks.inc');
+  mica_studies_configure_facet_blocks();
 }
 
 /**
@@ -235,6 +239,6 @@ function _mica_studies_migrate_field_recruitment_procedures(){
 	}
 	
   spl_autoload_register('_search_api_solr_autoload');
-	$instance = field_info_instance('node', 'field_recruitment_procedures', 'study');
-	field_delete_instance($instance);
+	field_delete_field('field_recruitment_procedures');
+	//field_delete_instance($instance);
 }
