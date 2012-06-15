@@ -128,6 +128,7 @@ function mica_studies_default_search_api_index() {
         "type" : { "type" : "string" },
         "title" : { "type" : "string" },
         "status" : { "type" : "boolean" },
+        "author" : { "type" : "integer", "entity_type" : "user" },
         "field_access_biosamples" : { "type" : "boolean" },
         "field_access_data" : { "type" : "boolean" },
         "field_access_other" : { "type" : "boolean" },
@@ -171,7 +172,7 @@ function mica_studies_default_search_api_index() {
         "field_recruitment" : { "type" : "list\\u003Cstring\\u003E" },
         "field_recruitment_other" : { "type" : "text" },
         "field_recruitment_other_sp" : { "type" : "text" },
-        "field_recruitment_sources" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_recruitment_sources" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_recruitment_supp_info" : { "type" : "text" },
         "field_samples_man_other_sp" : { "type" : "text" },
         "field_samples_supp_info" : { "type" : "text" },
@@ -186,6 +187,7 @@ function mica_studies_default_search_api_index() {
         "field_tissues_sp" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
+        "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "body:value" : { "type" : "text" },
         "body:summary" : { "type" : "text" },
         "field_contacts_ref:title" : { "type" : "list\\u003Ctext\\u003E" },
@@ -207,10 +209,7 @@ function mica_studies_default_search_api_index() {
         "field_investigators:field_postal_code" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_state" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_telephone" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_investigators:field_daco" : { "type" : "list\\u003Cboolean\\u003E" },
-        "0" : { "type" : "date" },
-        "author" : { "type" : "integer", "entity_type" : "user" },
-        "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" }
+        "field_investigators:field_daco" : { "type" : "list\\u003Cboolean\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {

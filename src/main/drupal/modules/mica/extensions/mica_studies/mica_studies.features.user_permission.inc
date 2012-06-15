@@ -870,8 +870,8 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study reviewer',
-      3 => 'dataset reviewer',
+      2 => 'dataset reviewer',
+      3 => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -1223,10 +1223,10 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       0 => 'administrator',
       1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
-      4 => 'dataset administrator',
-      5 => 'dataset reviewer',
+      2 => 'dataset administrator',
+      3 => 'dataset reviewer',
+      4 => 'study administrator',
+      5 => 'study reviewer',
     ),
     'module' => 'node',
   );
