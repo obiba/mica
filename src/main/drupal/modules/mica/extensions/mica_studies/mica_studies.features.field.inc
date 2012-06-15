@@ -8528,7 +8528,7 @@ function mica_studies_field_default_fields() {
       'display_label' => 'Sources of recruitment',
       'entity_type' => 'node',
       'field_name' => 'field_recruitment_sources',
-      'label' => 'Specify the sources of recruitment',
+      'label' => 'Sources of recruitment',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -10332,7 +10332,7 @@ function mica_studies_field_default_fields() {
   t('Postal Code');
   t('Pubmed Id');
   t('Questionnaires');
-  t('Specify the sources of recruitment');
+  t('Sources of recruitment');
   t('Start year');
   t('State/Province');
   t('Supplementary information');
