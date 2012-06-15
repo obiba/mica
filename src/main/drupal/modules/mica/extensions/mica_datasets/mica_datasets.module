@@ -969,12 +969,7 @@ function mica_dataset_dataset_variables($dataset) {
     ->fieldCondition($field, 'nid', $dataset);
 
   $entities = $query->execute();
-
-  if (!empty($entities)) {
-    $nodes = node_load_multiple(array_keys($entities['node']));
-    return $nodes;
-  }
-  return FALSE;
+  return empty($entities) ? FALSE : node_load_multiple(array_keys($entities['node']));
 }
 
 /**
@@ -1023,10 +1018,7 @@ function mica_dataset_query_load($id, $reset = FALSE) {
     $ret = mica_dataset_query_load_multiple(array($id), array(), $reset);
     return $ret ? reset($ret) : FALSE;
   }
-  else {
-    return MicaDatasetQueryManager::getQuery($id);
-  }
-  return FALSE;
+  return MicaDatasetQueryManager::getQuery($id);
 }
 
 /**
@@ -1091,10 +1083,9 @@ function mica_dataset_query_term_query($query) {
 
     return !empty($rval) ? mica_dataset_query_term_load_multiple($rval) : FALSE;
   }
-  else {
-    $rval = MicaDatasetQueryManager::getCache($query)->getTerms();
-    return !empty($rval) ? $rval : FALSE;
-  }
+
+  $rval = MicaDatasetQueryManager::getCache($query)->getTerms();
+  return empty($rval) ? FALSE : $rval;
 }
 
 /**
