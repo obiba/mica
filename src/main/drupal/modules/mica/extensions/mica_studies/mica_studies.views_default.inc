@@ -4471,7 +4471,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_supp_infos']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_supp_infos']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_supp_infos']['field_api_classes'] = 0;
-  /* Field: Content: Specify the sources of recruitment */
+  /* Field: Content: Sources of recruitment */
   $handler->display->display_options['fields']['field_recruitment_sources']['id'] = 'field_recruitment_sources';
   $handler->display->display_options['fields']['field_recruitment_sources']['table'] = 'field_data_field_recruitment_sources';
   $handler->display->display_options['fields']['field_recruitment_sources']['field'] = 'field_recruitment_sources';
@@ -6031,7 +6031,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_supp_infos']['empty_zero'] = 0;
   $handler->display->display_options['fields']['field_supp_infos']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_supp_infos']['field_api_classes'] = 0;
-  /* Field: Content: Specify the sources of recruitment */
+  /* Field: Content: Sources of recruitment */
   $handler->display->display_options['fields']['field_recruitment_sources']['id'] = 'field_recruitment_sources';
   $handler->display->display_options['fields']['field_recruitment_sources']['table'] = 'field_data_field_recruitment_sources';
   $handler->display->display_options['fields']['field_recruitment_sources']['field'] = 'field_recruitment_sources';
