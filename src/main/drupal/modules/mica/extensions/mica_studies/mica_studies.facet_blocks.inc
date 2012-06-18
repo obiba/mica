@@ -156,12 +156,11 @@ function mica_studies_configure_facets($facet_order_by_region, $page, $theme_def
   			)
   			->execute();
   			
-//   			$searcher, $realm_name, $facet_name
-//     			$searcher = 'search_api@studies_index';
-//     			$adapter = facetapi_adapter_load($searcher);
-//   				$facet = (array) facetapi_facet_load($facet_field, $searcher);
-//     			facetapi_save_facet_enabled($adapter, facetapi_get_realm_info(), $facet);
-//     			debug('SAVE ENABLED FACET');
+  			$searcher = 'search_api@studies_index';
+  			$adapter = facetapi_adapter_load($searcher);
+  			$facet = (array) facetapi_facet_load($facet_field, $searcher);
+  			$realm = facetapi_realm_load('block');
+  			facetapi_save_facet_status($adapter, $realm, $facet, TRUE, FALSE, FALSE);
   		}
   
   		$success = $nb_updated > 0;
