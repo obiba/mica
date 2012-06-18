@@ -69,7 +69,16 @@ function mica_studies_update_7130(&$sandbox) {
   
   // configure facet blocks
   require_once(drupal_get_path('module', 'mica_studies') . '/mica_studies.facet_blocks.inc');
-  mica_studies_configure_facet_blocks();
+  // configure facets
+  $theme_default = variable_get('theme_default', 'mica_samara');
+  $page = 'variable-search';
+  $facet_order_by_region = array(
+    'sidebar_second' => array(
+      'field_recruitment_sources' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+    )
+  );
+
+  mica_studies_configure_facets($facet_order_by_region, $page, $theme_default);
 }
 
 /**
@@ -240,5 +249,4 @@ function _mica_studies_migrate_field_recruitment_procedures(){
 	
   spl_autoload_register('_search_api_solr_autoload');
 	field_delete_field('field_recruitment_procedures');
-	//field_delete_instance($instance);
 }

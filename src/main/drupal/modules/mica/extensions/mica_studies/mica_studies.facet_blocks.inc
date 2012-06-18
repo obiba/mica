@@ -84,88 +84,99 @@ function mica_studies_configure_facet_blocks() {
     )
   );
 
-  foreach ($facet_order_by_region as $region => $facet_order) {
-
-    $max_weight = db_query("SELECT MAX(weight) as max_weight FROM {block} WHERE theme = :theme and region = :region",
-      array(
-        ':theme' => $theme_default,
-        ':region' => $region
-      )
-    )->fetchField();
-    $max_weight = empty($max_weight) ? 0 : ($max_weight + 1);
-
-    $index = 0;
-    foreach ($facet_order as $facet_field => $collapsible_status) {
-
-      // facetapi_get_delta_map() is not loaded yet so we need to generate hash
-      $string = facetapi_build_delta('search_api@studies_index', 'block', $facet_field);
-      $facet_delta = facetapi_hash_delta($string);
-
-      if (empty($facet_delta)) {
-        drupal_set_message(t('No facet defined for @facet', array('@facet' => check_plain($facet_field))), 'warning');
-        continue;
-      }
-
-      $facet_weight = $max_weight + $index++;
-
-      $block = db_query('SELECT * FROM {block} WHERE module = :module AND delta = :delta AND theme = :theme',
-        array(
-          ':module' => 'facetapi',
-          ':delta' => $facet_delta,
-          ':theme' => $theme_default
-        )
-      )->fetchObject();
-
-      if ($block) {
-        $nb_updated = db_update('block')->fields(
-          array(
-            'status' => 1,
-            'region' => $region,
-            'weight' => $facet_weight,
-            'visibility' => BLOCK_VISIBILITY_LISTED,
-            'pages' => $page,
-          )
-        )
-          ->condition('module', 'facetapi')
-          ->condition('delta', $facet_delta)
-          ->condition('theme', $theme_default)
-          ->execute();
-      }
-      else {
-
-        $field_info = field_info_instance('node', $facet_field, 'study');
-        $nb_updated = db_insert('block')->fields(
-          array(
-            'status' => 1,
-            'region' => $region,
-            'weight' => $facet_weight,
-            'visibility' => BLOCK_VISIBILITY_LISTED,
-            'pages' => $page,
-            'custom' => BLOCK_CUSTOM_ENABLED, // Show this block by default but let individual users hide it.
-            'delta' => $facet_delta,
-            'module' => 'facetapi',
-            'theme' => $theme_default,
-            'title' => truncate_utf8($field_info['label'], 64),
-          )
-        )
-          ->execute();
-      }
-
-      $success = $nb_updated > 0;
-
-      if ($success) {
-        collapsiblock_set_collapsible_type('facetapi', $facet_delta, $collapsible_status);
-      }
-
-      watchdog('mica', 'Facet block configuration for %facet (%delta)',
-        array(
-          '%facet' => $facet_field,
-          '%delta' => $facet_delta),
-        $success ? WATCHDOG_INFO : WATCHDOG_ERROR);
-
-    }
-
-  }
-
+  mica_studies_configure_facets($facet_order_by_region, $page, $theme_default);
 }
 
+function mica_studies_configure_facets($facet_order_by_region, $page, $theme_default) {
+    
+  foreach ($facet_order_by_region as $region => $facet_order) {
+  
+  	$max_weight = db_query("SELECT MAX(weight) as max_weight FROM {block} WHERE theme = :theme and region = :region",
+  	array(
+          ':theme' => $theme_default,
+          ':region' => $region
+  	)
+  	)->fetchField();
+  	$max_weight = empty($max_weight) ? 0 : ($max_weight + 1);
+  
+  	$index = 0;
+  	foreach ($facet_order as $facet_field => $collapsible_status) {
+  
+  		// facetapi_get_delta_map() is not loaded yet so we need to generate hash
+  		$string = facetapi_build_delta('search_api@studies_index', 'block', $facet_field);
+  		$facet_delta = facetapi_hash_delta($string);
+  
+  		if (empty($facet_delta)) {
+  			drupal_set_message(t('No facet defined for @facet', array('@facet' => check_plain($facet_field))), 'warning');
+  			continue;
+  		}
+  
+  		$facet_weight = $max_weight + $index++;
+  
+  		$block = db_query('SELECT * FROM {block} WHERE module = :module AND delta = :delta AND theme = :theme',
+  		array(
+            ':module' => 'facetapi',
+            ':delta' => $facet_delta,
+            ':theme' => $theme_default
+  		)
+  		)->fetchObject();
+  
+  		if ($block) {
+  			$nb_updated = db_update('block')->fields(
+  			array(
+              'status' => 1,
+              'region' => $region,
+              'weight' => $facet_weight,
+              'visibility' => BLOCK_VISIBILITY_LISTED,
+              'pages' => $page,
+  			)
+  			)
+  			->condition('module', 'facetapi')
+  			->condition('delta', $facet_delta)
+  			->condition('theme', $theme_default)
+  			->execute();
+  		}
+  		else {
+  
+  			$field_info = field_info_instance('node', $facet_field, 'study');
+  			$nb_updated = db_insert('block')->fields(
+  			array(
+          'status' => 1,
+          'region' => $region,
+          'weight' => $facet_weight,
+          'visibility' => BLOCK_VISIBILITY_LISTED,
+          'pages' => $page,
+          'custom' => BLOCK_CUSTOM_ENABLED, // Show this block by default but let individual users hide it.
+          'delta' => $facet_delta,
+          'module' => 'facetapi',
+          'theme' => $theme_default,
+          'title' => truncate_utf8($field_info['label'], 64),
+          'cache' => -1,
+  			)
+  			)
+  			->execute();
+  			
+//   			$searcher, $realm_name, $facet_name
+//     			$searcher = 'search_api@studies_index';
+//     			$adapter = facetapi_adapter_load($searcher);
+//   				$facet = (array) facetapi_facet_load($facet_field, $searcher);
+//     			facetapi_save_facet_enabled($adapter, facetapi_get_realm_info(), $facet);
+//     			debug('SAVE ENABLED FACET');
+  		}
+  
+  		$success = $nb_updated > 0;
+  
+  		if ($success) {
+  			collapsiblock_set_collapsible_type('facetapi', $facet_delta, $collapsible_status);
+  		}
+  
+  		watchdog('mica', 'Facet block configuration for %facet (%delta)',
+  		array(
+            '%facet' => $facet_field,
+            '%delta' => $facet_delta),
+  		$success ? WATCHDOG_INFO : WATCHDOG_ERROR);
+  
+  	}
+  }
+  
+}
