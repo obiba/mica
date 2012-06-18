@@ -138,7 +138,7 @@ function mica_datasets_default_search_api_index() {
               }
             }
           }
-        },
+      },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
       },
@@ -201,7 +201,6 @@ function mica_datasets_default_search_api_index() {
         "field_value_type" : { "type" : "string" },
         "field_data_sources" : { "type" : "list\\u003Cstring\\u003E" },
         "field_data_sources_sp" : { "type" : "text" },
-        "field_dataset_type" : { "type" : "string" },
         "field_anthropometric_structures" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_body_functions" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_body_structures" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
@@ -228,6 +227,7 @@ function mica_datasets_default_search_api_index() {
         "field_unit" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
+        "search_api_combined_1" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "body:value" : { "type" : "text" },
         "body:summary" : { "type" : "text" },
@@ -237,7 +237,8 @@ function mica_datasets_default_search_api_index() {
         "field_dataset:field_dataset_type" : { "type" : "string" },
         "field_variable_categories:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_variable_categories:label" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_variable_categories:missing" : { "type" : "list\\u003Cboolean\\u003E" }
+        "field_variable_categories:missing" : { "type" : "list\\u003Cboolean\\u003E" },
+        "field_variable_study_var_att:field_sva_status" : { "type" : "list\\u003Cstring\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
@@ -246,6 +247,21 @@ function mica_datasets_default_search_api_index() {
           "settings" : { "default" : "0", "bundles" : { "variable" : "variable" } }
         },
         "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_combined" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : { "fields" : { "search_api_combined_1" : {
+                "name" : "Study",
+                "imitate" : "field_dataset:field_dataset_studies",
+                "fields" : [
+                  "field_dataset:field_dataset_studies",
+                  "field_variable_study_var_att:field_sva_study"
+                ],
+                "description" : "A @type combined of the following fields: Dataset \\u00bb Studies, Study Variables Attributes \\u00bb Study."
+              }
+            }
+          }
+        },
         "search_api_alter_add_hierarchy" : {
           "status" : 1,
           "weight" : "0",
@@ -289,6 +305,8 @@ function mica_datasets_default_search_api_index() {
             }
           }
         },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_aggregation" : {
           "status" : 1,
           "weight" : "0",
@@ -300,9 +318,7 @@ function mica_datasets_default_search_api_index() {
               }
             }
           }
-        },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
+        }
       },
       "processors" : {
         "search_api_case_ignore" : {

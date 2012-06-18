@@ -35,9 +35,10 @@ function mica_datasets_configure_facet_blocks() {
   // configure facets
   $facet_order_by_region = array(
     'sidebar_second' => array(
-      'field_dataset',
       'field_dataset:field_dataset_type',
-      'field_dataset:field_dataset_studies',
+      'field_dataset',
+      'field_variable_study_var_att:field_sva_status',
+      'search_api_combined_1',
       'field_data_source',
       'field_individual_participant_mea',
       'field_disease_history',
@@ -59,8 +60,13 @@ function mica_datasets_configure_facet_blocks() {
       'field_period',
       'field_measure',
       'field_value_type',
-      'field_repeatable',
     )
+  );
+
+  $facet_block_name = array(
+    'field_dataset:field_dataset_type' => t('Dataset Type'),
+    'field_variable_study_var_att:field_sva_status' => t('Harmonization Status'),
+    'search_api_combined_1' => t('Study'),
   );
 
   foreach ($facet_order_by_region as $region => $facet_order) {
@@ -93,15 +99,18 @@ function mica_datasets_configure_facet_blocks() {
         )
       )->fetchObject();
 
-      if ($block) {
-        $f = explode(":", $facet_field);
-        if (count($f) > 1) {
-          $field_info = field_info_instance('node', $f[1], 'dataset');
-        }
-        else {
-          $field_info = field_info_instance('node', $facet_field, 'variable');
-        }
+      // block name
+      if (isset($facet_block_name[$facet_field])) {
+        $block_title = $facet_block_name[$facet_field];
+      }
+      else {
+        $field_info = field_info_instance('node', $facet_field, 'variable');
+        $block_title = $field_info['label'];
+      }
 
+      debug($facet_field . ' -> ' . $block_title);
+
+      if ($block) {
         $nb_updated = db_update('block')->fields(
           array(
             'status' => 1,
@@ -109,7 +118,7 @@ function mica_datasets_configure_facet_blocks() {
             'weight' => $facet_weight,
             'visibility' => BLOCK_VISIBILITY_LISTED,
             'pages' => $page,
-            'title' => $field_info['label'],
+            'title' => $block_title,
           )
         )
           ->condition('module', 'facetapi')
@@ -118,14 +127,6 @@ function mica_datasets_configure_facet_blocks() {
           ->execute();
       }
       else {
-        // field_dataset:field_dataset_studies is from the dataset content type, not variable
-        $f = explode(":", $facet_field);
-        if (count($f) > 1) {
-          $field_info = field_info_instance('node', $f[1], 'dataset');
-        }
-        else {
-          $field_info = field_info_instance('node', $facet_field, 'variable');
-        }
 
         $nb_updated = db_insert('block')->fields(
           array(
@@ -138,7 +139,7 @@ function mica_datasets_configure_facet_blocks() {
             'delta' => $facet_delta,
             'module' => 'facetapi',
             'theme' => $theme_default,
-            'title' => $field_info['label'],
+            'title' => $block_title,
           )
         )
           ->execute();
@@ -154,7 +155,7 @@ function mica_datasets_configure_facet_blocks() {
 
       if ($success) {
         collapsiblock_set_collapsible_type('facetapi', $facet_delta,
-          $index < 2 ? COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT : COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT);
+          $index < 4 ? COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT : COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT);
       }
 
       watchdog('mica', 'Facet block configuration for %facet (%delta)',
