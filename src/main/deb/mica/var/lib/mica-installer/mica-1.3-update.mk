@@ -117,6 +117,7 @@ mica-delete-1.3:
 	rm -rf /usr/share/mica/sites/all/modules/search_api_db && \
 	rm -rf /usr/share/mica/sites/all/modules/search_api && \
 	rm -rf /usr/share/mica/sites/all/modules/search_api_facetapi && \
+	rm -rf /usr/share/mica/sites/all/modules/search_api_combined && \
 	rm -rf /usr/share/mica/sites/all/modules/search_api_page && \
 	rm -rf /usr/share/mica/sites/all/modules/search_api_ranges && \
 	rm -rf /usr/share/mica/sites/all/modules/search_api_views && \
