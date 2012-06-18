@@ -18,7 +18,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
   //prettify
   ctools_add_css('prettify', 'mica_datasets');
   ctools_add_js('prettify', 'mica_datasets');
-  ctools_add_js('mica_datasets_harmonization', 'mica_datasets');
+  ctools_add_js('mica_datasets_prettify', 'mica_datasets');
 
   // tooltips
   ctools_add_js('jquery.tooltip.min', 'mica_core');

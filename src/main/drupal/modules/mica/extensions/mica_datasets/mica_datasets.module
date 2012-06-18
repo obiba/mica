@@ -1255,10 +1255,10 @@ function mica_datasets_node_view_alter(&$build) {
       if ($dataset_wrapper->field_dataset_type->value() !== 'study') {
 
         require_once('mica_datasets.pages.harmonization.inc');
-        $path = drupal_get_path('module', 'mica_datasets');
-        drupal_add_css($path . '/includes/prettify.css');
-        drupal_add_js($path . '/includes/prettify.js');
-        drupal_add_js('jQuery(document).ready(function (){prettyPrint()});', 'inline');
+
+        ctools_add_css('prettify', 'mica_datasets');
+        ctools_add_js('prettify', 'mica_datasets');
+        ctools_add_js('mica_datasets_prettify', 'mica_datasets');
 
         $header = array(
           'study' => t('Study'),
@@ -1785,15 +1785,14 @@ function mica_datasets_node_view($node, $view_mode) {
     $node->content['field_sva_status'][0]['#suffix'] = '</div>';
 
     if (!empty($node->content['field_sva_script'])) {
-      $path = drupal_get_path('module', 'mica_datasets');
-      drupal_add_css($path . '/includes/prettify.css');
-      drupal_add_js($path . '/includes/prettify.js');
-      drupal_add_js('jQuery(document).ready(function (){prettyPrint()});', 'inline');
       $node->content['field_sva_script'][0]['#prefix'] = '<code class=\'prettyprint\'>';
       $node->content['field_sva_script'][0]['#suffix'] = '</code>';
       $node->content['field_sva_script'][0]['#markup'] = check_markup(
         drupal_html_to_text($node->content['field_sva_script'][0]['#markup'])
       );
+      ctools_add_css('prettify', 'mica_datasets');
+      ctools_add_js('prettify', 'mica_datasets');
+      ctools_add_js('mica_datasets_prettify', 'mica_datasets');
     }
   }
   else {
