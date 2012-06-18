@@ -142,6 +142,12 @@ function mica_datasets_configure_facet_blocks() {
           )
         )
           ->execute();
+        
+        $searcher = 'search_api@variable_index';
+        $adapter = facetapi_adapter_load($searcher);
+        $facet = (array) facetapi_facet_load($facet_field, $searcher);
+        $realm = facetapi_realm_load('block');
+        facetapi_save_facet_status($adapter, $realm, $facet, TRUE, FALSE, FALSE);
       }
 
       $success = $nb_updated > 0;
