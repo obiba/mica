@@ -11,6 +11,8 @@
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.3-dev/profiles/mica_standard" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.3-dev/sites/all/modules/mica" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.3-dev/sites/all/themes/mica_samara" />
+      <excludeFolder url="file://$MODULE_DIR$/target/mica-1.4-dev-local" />
+      <excludeFolder url="file://$MODULE_DIR$/target/mica-1.4-dev/sites/all/modules/mica" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

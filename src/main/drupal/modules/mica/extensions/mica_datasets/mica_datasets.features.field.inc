@@ -10,7 +10,7 @@
 function mica_datasets_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-dataset-body'
+  // Exported field: 'node-dataset-body'.
   $fields['node-dataset-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -36,6 +36,7 @@ function mica_datasets_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -122,7 +123,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-dataset-field_dataset_studies'
+  // Exported field: 'node-dataset-field_dataset_studies'.
   $fields['node-dataset-field_dataset_studies'] = array(
     'field_config' => array(
       'active' => '1',
@@ -146,6 +147,7 @@ function mica_datasets_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -217,7 +219,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-dataset-field_dataset_type'
+  // Exported field: 'node-dataset-field_dataset_type'.
   $fields['node-dataset-field_dataset_type'] = array(
     'field_config' => array(
       'active' => '1',
@@ -234,6 +236,7 @@ function mica_datasets_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -293,7 +296,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-dataset-field_dataset_variables'
+  // Exported field: 'node-dataset-field_dataset_variables'.
   $fields['node-dataset-field_dataset_variables'] = array(
     'field_config' => array(
       'active' => '1',
@@ -317,6 +320,7 @@ function mica_datasets_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -388,7 +392,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study-field_study_study_variable_att'
+  // Exported field: 'node-study-field_study_study_variable_att'.
   $fields['node-study-field_study_study_variable_att'] = array(
     'field_config' => array(
       'active' => '1',
@@ -412,6 +416,7 @@ function mica_datasets_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -528,7 +533,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study-mica_dataset'
+  // Exported field: 'node-study-mica_dataset'.
   $fields['node-study-mica_dataset'] = array(
     'field_config' => array(
       'active' => '1',
@@ -549,6 +554,7 @@ function mica_datasets_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'field_description_infos' => array(
@@ -691,7 +697,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study-mica_opal'
+  // Exported field: 'node-study-mica_opal'.
   $fields['node-study-mica_opal'] = array(
     'field_config' => array(
       'active' => '1',
@@ -701,6 +707,7 @@ function mica_datasets_field_default_fields() {
       'field_name' => 'mica_opal',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -855,7 +862,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study_variable_attributes-field_sva_comment'
+  // Exported field: 'node-study_variable_attributes-field_sva_comment'.
   $fields['node-study_variable_attributes-field_sva_comment'] = array(
     'field_config' => array(
       'active' => '1',
@@ -879,6 +886,7 @@ function mica_datasets_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -939,7 +947,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study_variable_attributes-field_sva_script'
+  // Exported field: 'node-study_variable_attributes-field_sva_script'.
   $fields['node-study_variable_attributes-field_sva_script'] = array(
     'field_config' => array(
       'active' => '1',
@@ -963,6 +971,7 @@ function mica_datasets_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -1023,7 +1032,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study_variable_attributes-field_sva_status'
+  // Exported field: 'node-study_variable_attributes-field_sva_status'.
   $fields['node-study_variable_attributes-field_sva_status'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1040,6 +1049,7 @@ function mica_datasets_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -1107,7 +1117,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study_variable_attributes-field_sva_study'
+  // Exported field: 'node-study_variable_attributes-field_sva_study'.
   $fields['node-study_variable_attributes-field_sva_study'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1131,6 +1141,7 @@ function mica_datasets_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -1207,7 +1218,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study_variable_attributes-field_sva_variable'
+  // Exported field: 'node-study_variable_attributes-field_sva_variable'.
   $fields['node-study_variable_attributes-field_sva_variable'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1231,6 +1242,7 @@ function mica_datasets_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(
@@ -1307,7 +1319,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-body'
+  // Exported field: 'node-variable-body'.
   $fields['node-variable-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1333,6 +1345,7 @@ function mica_datasets_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -1445,7 +1458,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_anthropometric_structures'
+  // Exported field: 'node-variable-field_anthropometric_structures'.
   $fields['node-variable-field_anthropometric_structures'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1469,6 +1482,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -1555,7 +1569,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_body_functions'
+  // Exported field: 'node-variable-field_body_functions'.
   $fields['node-variable-field_body_functions'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1579,6 +1593,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -1665,7 +1680,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_body_structures'
+  // Exported field: 'node-variable-field_body_structures'.
   $fields['node-variable-field_body_structures'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1689,6 +1704,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -1775,7 +1791,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_data_source'
+  // Exported field: 'node-variable-field_data_source'.
   $fields['node-variable-field_data_source'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1799,6 +1815,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -1885,7 +1902,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_dataset'
+  // Exported field: 'node-variable-field_dataset'.
   $fields['node-variable-field_dataset'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1909,6 +1926,7 @@ function mica_datasets_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'field_description_infos' => array(
@@ -2038,7 +2056,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_disease_history'
+  // Exported field: 'node-variable-field_disease_history'.
   $fields['node-variable-field_disease_history'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2062,6 +2080,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -2148,7 +2167,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_early_life'
+  // Exported field: 'node-variable-field_early_life'.
   $fields['node-variable-field_early_life'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2172,6 +2191,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -2258,7 +2278,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_essence'
+  // Exported field: 'node-variable-field_essence'.
   $fields['node-variable-field_essence'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2282,6 +2302,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -2367,7 +2388,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_individual_participant_mea'
+  // Exported field: 'node-variable-field_individual_participant_mea'.
   $fields['node-variable-field_individual_participant_mea'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2388,6 +2409,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -2465,7 +2487,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_label'
+  // Exported field: 'node-variable-field_label'.
   $fields['node-variable-field_label'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2486,6 +2508,7 @@ function mica_datasets_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -2588,7 +2611,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_laboratory_measures'
+  // Exported field: 'node-variable-field_laboratory_measures'.
   $fields['node-variable-field_laboratory_measures'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2612,6 +2635,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -2697,7 +2721,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_life_habits_behaviours'
+  // Exported field: 'node-variable-field_life_habits_behaviours'.
   $fields['node-variable-field_life_habits_behaviours'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2721,6 +2745,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -2807,7 +2832,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_measure'
+  // Exported field: 'node-variable-field_measure'.
   $fields['node-variable-field_measure'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2831,6 +2856,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -2917,7 +2943,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_medical_health_interv'
+  // Exported field: 'node-variable-field_medical_health_interv'.
   $fields['node-variable-field_medical_health_interv'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2941,6 +2967,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -3027,7 +3054,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_medication'
+  // Exported field: 'node-variable-field_medication'.
   $fields['node-variable-field_medication'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3051,6 +3078,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -3137,7 +3165,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_perception_of_health'
+  // Exported field: 'node-variable-field_perception_of_health'.
   $fields['node-variable-field_perception_of_health'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3161,6 +3189,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -3247,7 +3276,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_period'
+  // Exported field: 'node-variable-field_period'.
   $fields['node-variable-field_period'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3271,6 +3300,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -3356,7 +3386,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_physical_environment'
+  // Exported field: 'node-variable-field_physical_environment'.
   $fields['node-variable-field_physical_environment'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3380,6 +3410,7 @@ function mica_datasets_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -3466,7 +3497,7 @@ function mica_datasets_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-variable-field_position'
+  // Exported field: 'node-variable-field_position'.
   $fields['node-variable-field_position'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3479,6 +3510,7 @@ function mica_datasets_field_default_fields() {
       ),
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(
         'field_description_infos' => array(
@@ -3561,7 +3593,7 @@ Set to 0 to set variable at last position.  ',
     ),
   );
 
-  // Exported field: 'node-variable-field_repeatable'
+  // Exported field: 'node-variable-field_repeatable'.
   $fields['node-variable-field_repeatable'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3578,6 +3610,7 @@ Set to 0 to set variable at last position.  ',
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -3687,7 +3720,7 @@ Set to 0 to set variable at last position.  ',
     ),
   );
 
-  // Exported field: 'node-variable-field_reproductive_history'
+  // Exported field: 'node-variable-field_reproductive_history'.
   $fields['node-variable-field_reproductive_history'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3711,6 +3744,7 @@ Set to 0 to set variable at last position.  ',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -3797,7 +3831,7 @@ Set to 0 to set variable at last position.  ',
     ),
   );
 
-  // Exported field: 'node-variable-field_social_environment'
+  // Exported field: 'node-variable-field_social_environment'.
   $fields['node-variable-field_social_environment'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3821,6 +3855,7 @@ Set to 0 to set variable at last position.  ',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -3907,7 +3942,7 @@ Set to 0 to set variable at last position.  ',
     ),
   );
 
-  // Exported field: 'node-variable-field_sociodemographic_charact'
+  // Exported field: 'node-variable-field_sociodemographic_charact'.
   $fields['node-variable-field_sociodemographic_charact'] = array(
     'field_config' => array(
       'active' => '1',
@@ -3931,6 +3966,7 @@ Set to 0 to set variable at last position.  ',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -4017,7 +4053,7 @@ Set to 0 to set variable at last position.  ',
     ),
   );
 
-  // Exported field: 'node-variable-field_target'
+  // Exported field: 'node-variable-field_target'.
   $fields['node-variable-field_target'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4041,6 +4077,7 @@ Set to 0 to set variable at last position.  ',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -4127,7 +4164,7 @@ Set to 0 to set variable at last position.  ',
     ),
   );
 
-  // Exported field: 'node-variable-field_unit'
+  // Exported field: 'node-variable-field_unit'.
   $fields['node-variable-field_unit'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4151,6 +4188,7 @@ Set to 0 to set variable at last position.  ',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -4230,7 +4268,7 @@ Set to 0 to set variable at last position.  ',
     ),
   );
 
-  // Exported field: 'node-variable-field_value_type'
+  // Exported field: 'node-variable-field_value_type'.
   $fields['node-variable-field_value_type'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4247,6 +4285,7 @@ Set to 0 to set variable at last position.  ',
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -4356,7 +4395,7 @@ Set to 0 to set variable at last position.  ',
     ),
   );
 
-  // Exported field: 'node-variable-field_variable_categories'
+  // Exported field: 'node-variable-field_variable_categories'.
   $fields['node-variable-field_variable_categories'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4373,6 +4412,7 @@ Set to 0 to set variable at last position.  ',
           0 => 'name',
         ),
       ),
+      'locked' => '0',
       'module' => 'mica_category_field',
       'settings' => array(
         'field_description_infos' => array(
@@ -4448,7 +4488,7 @@ Set to 0 to set variable at last position.  ',
     ),
   );
 
-  // Exported field: 'node-variable-field_variable_study_var_att'
+  // Exported field: 'node-variable-field_variable_study_var_att'.
   $fields['node-variable-field_variable_study_var_att'] = array(
     'field_config' => array(
       'active' => '1',
@@ -4472,6 +4512,7 @@ Set to 0 to set variable at last position.  ',
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'referenceable_types' => array(

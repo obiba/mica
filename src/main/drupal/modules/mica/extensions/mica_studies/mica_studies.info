@@ -3,7 +3,7 @@ description = Mica Studies Features
 core = 7.x
 package = OBiBa
 php = 5.2.4
-version = 7.x-1.3-dev
+version = 7.x-1.4-dev
 project = mica_studies
 dependencies[] = advanced_help
 dependencies[] = auto_nodetitle
@@ -691,5 +691,5 @@ features[views_view][] = studies_search
 
 
 ; Information added by obiba.org packaging script on Wed, 23 May 2012 11:04:00 -0400
-version = "7.x-1.3-dev"
+version = "7.x-1.4-dev"
 datestamp = "1337785440"
