@@ -154,44 +154,44 @@ function mica_core_node_modal_page_view($js = NULL, $node) {
   }
 }
 
-/** 
+/**
  * Implements hook_form_alter() to fix the issue where selected facets were lost when executing a full text search.
  * See http://drupal.org/sandbox/pl2/1438442
  */
 function mica_core_form_alter(&$form, $form_state, $form_id) {
-	switch ($form_id) {
-		case 'views_exposed_form': // Full text search form id
-			foreach ($form_state['input'] as $input_key => $value) {
-				// If there is an argument in input that is not in the keys of the form
-				// then that argument must be added as a hidden field to the form.
-				if (!isset($form[$input_key])) {
-					_mica_core_persist_url_params_param_from_array($form, $input_key, $input_key, $value);
-				}
-			}
-			break;
-	}
+  switch ($form_id) {
+    case 'views_exposed_form': // Full text search form id
+      foreach ($form_state['input'] as $input_key => $value) {
+        // If there is an argument in input that is not in the keys of the form
+        // then that argument must be added as a hidden field to the form.
+        if (!isset($form[$input_key])) {
+          _mica_core_persist_url_params_param_from_array($form, $input_key, $input_key, $value);
+        }
+      }
+      break;
+  }
 }
 
 /**
-* Converts an array that was previously parsed from the url arguments
-* to an array of hidden values that will be added to the form so these arguments
-* are not lost in form submission.
-* See http://drupal.org/sandbox/pl2/1438442 
-*/
+ * Converts an array that was previously parsed from the url arguments
+ * to an array of hidden values that will be added to the form so these arguments
+ * are not lost in form submission.
+ * See http://drupal.org/sandbox/pl2/1438442
+ */
 function _mica_core_persist_url_params_param_from_array(&$form, $root_key, $key, $value, $array_key = '') {
-	if (!is_array($value)) {
-		$form[$key] = array(
+  if (!is_array($value)) {
+    $form[$key] = array(
       '#type' => 'hidden',
       '#value' => $value,
       '#name' => "$root_key$array_key",
-		);
-	}
-	else {
-		$form[$key] = array();
-		foreach ($value as $val_key => $val_value) {
-			_mica_core_persist_url_params_param_from_array($form[$key], $root_key, $val_key, $val_value, $array_key . "[$val_key]");
-		}
-	}
+    );
+  }
+  else {
+    $form[$key] = array();
+    foreach ($value as $val_key => $val_value) {
+      _mica_core_persist_url_params_param_from_array($form[$key], $root_key, $val_key, $val_value, $array_key . "[$val_key]");
+    }
+  }
 }
 
 /**
@@ -205,6 +205,11 @@ function mica_core_field_formatter_info() {
       'field types' => array('text', 'number_integer'),
       'multiple values' => FIELD_BEHAVIOR_DEFAULT,
     ),
+    'node_reference_url_or_plain' => array(
+      'label' => t('Title (link for published item or plain text for unpublished)'),
+      'description' => t('Display the title of the referenced node as a link to the node page for published items or as plain text for unpublished. Does not check node access!'),
+      'field types' => array('node_reference'),
+    ),
   );
 }
 
@@ -217,6 +222,27 @@ function mica_core_field_formatter_view($entity_type, $entity, $field, $instance
     case 'mica_pubmed_url':
       foreach ($items as $delta => $item) {
         $element[$delta] = array('#markup' => l('PUBMED ' . $item['value'], 'http://www.ncbi.nlm.nih.gov/pubmed/' . $item['value']));
+      }
+      break;
+
+    case 'node_reference_url_or_plain':
+      foreach ($items as $delta => $item) {
+        $node = node_load($item['nid']);
+        $label = entity_label('node', $node);
+        if ($node->status) {
+          $uri = entity_uri('node', $node);
+          $element[$delta] = array(
+            '#type' => 'link',
+            '#title' => $label,
+            '#href' => $uri['path'],
+            '#options' => $uri['options'],
+          );
+        }
+        else {
+          $element[$delta] = array(
+            '#markup' => check_plain($label),
+          );
+        }
       }
       break;
   }
@@ -332,22 +358,22 @@ function mica_core_taxonomy_import($filename, $base_path, $vocabulary_name) {
 
 }
 
-function mica_core_taxonomy_term_save($vocabulary_id, $name, $parent_id = NULL, $weight = NULL){
-	$term = new stdClass();
-	$term->vid = $vocabulary_id;
-	$term->name = $name;
+function mica_core_taxonomy_term_save($vocabulary_id, $name, $parent_id = NULL, $weight = NULL) {
+  $term = new stdClass();
+  $term->vid = $vocabulary_id;
+  $term->name = $name;
 
-	if (!empty($parent_id)){
-		$term->parent = $parent_id;
-	}
+  if (!empty($parent_id)) {
+    $term->parent = $parent_id;
+  }
 
-	if (!empty($weight)){
-		$term->weight = $weight;
-	}
+  if (!empty($weight)) {
+    $term->weight = $weight;
+  }
 
-	taxonomy_term_save($term);
-	
-	return $term;
+  taxonomy_term_save($term);
+
+  return $term;
 }
 
 function mica_core_add_page($title, $body_html, $alias = NULL) {

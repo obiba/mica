@@ -108,8 +108,6 @@ function mica_datasets_configure_facet_blocks() {
         $block_title = $field_info['label'];
       }
 
-      debug($facet_field . ' -> ' . $block_title);
-
       if ($block) {
         $nb_updated = db_update('block')->fields(
           array(

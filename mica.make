@@ -98,9 +98,8 @@ projects[facetapi][patch][1630714] = http://drupal.org/files/undefined-index-htm
 
 ;projects[] = examples
 
-projects[features][version] = 1.0-rc2
+projects[features][version] = 1.0-rc3
 projects[features][type] = module
-projects[features][patch][1530386] = http://drupal.org/files/features-1530386-10-improve_installation_performance.patch
 
 projects[feeds][type] = module
 projects[feeds][download][type] = git
@@ -241,7 +240,7 @@ projects[services][type] = module
 projects[smtp][version] = 1.0-beta1
 projects[smtp][type] = module
 
-projects[strongarm][version] = 2.0-rc1
+projects[strongarm][version] = 2.0
 projects[strongarm][type] = module
 projects[strongarm][patch][1525768] = http://drupal.org/files/print_stdclass_variables.patch
 
