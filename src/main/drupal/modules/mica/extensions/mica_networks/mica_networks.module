@@ -1,0 +1,32 @@
+<?php
+/**
+ * @file
+ * Code for the Mica Networks module.
+ */
+
+include_once 'mica_networks.features.inc';
+
+/**
+ * Implements hook_create_default_content().
+ */
+function mica_networks_create_default_content() {
+  $menu = mica_core_create_menu(st('Networks'), 'networks', 'networks', FALSE, FALSE, 6);
+  mica_core_set_menu_option('network', $menu['mlid']);
+}
+
+/**
+ * Implements hook_node_view()
+ */
+function mica_networks_node_view($node, $view_mode, $langcode) {
+  if ($node->type === 'network') {
+    _mica_networks_network_view($node, $view_mode, $langcode);
+  }
+}
+
+function _mica_networks_network_view($node, $view_mode, $langcode) {
+  // Show moderation state messages if we're on a node page.
+  if (node_is_page($node) && $view_mode === 'banner_area' && empty($node->in_preview)) {
+    workbench_moderation_messages('view', $node);
+  }
+}
+
