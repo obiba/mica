@@ -36,7 +36,7 @@ function _mica_datasets_taxonomies() {
 function mica_datasets_taxonomies_operations_import() {
 	$operations = array();
 	foreach (_mica_datasets_taxonomies() as $taxonomy) {
-//		$operations[] = array('mica_core_taxonomy_import', $taxonomy);
+		$operations[] = array('mica_core_taxonomy_import', $taxonomy);
 	}
 	return $operations;
 }
