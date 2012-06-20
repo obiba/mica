@@ -5,7 +5,6 @@
  */
 
 include_once 'mica_networks.features.inc';
-include_once(drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.inc');
 
 
 /**
@@ -77,41 +76,48 @@ function mica_networks_menu() {
 }
 
 function _mica_networks_add_index() {
-
   $form['run'] = array(
     '#type' => 'submit',
-    '#value' => t('_mica_networks_add_networks_to_studies_index_test'),
-    '#submit' => array('_mica_networks_add_networks_to_studies_index_test'),
+    '#value' => t('_mica_networks_add_networks_to_studies_index'),
+    '#submit' => array('_mica_networks_add_networks_to_studies_index'),
   );
-
   return $form;
 }
 
-function _mica_networks_add_networks_to_studies_index_test() {
-  $index = search_api_index_load('studies_index', TRUE);
-  $options = $index->options;
-  $fields = $options['fields'];
-  $fields['field_networks'] = array(
-    'type' => 'list<integer>',
-    'entity_type' => 'node',
-  );
-  dpm($index, 'before save');
-  search_api_index_edit_fields($index->id, $fields);
-  dpm(search_api_index_load('studies_index', TRUE), 'after save');
+function mica_networks_features_rebuild_completed() {
+  debug('mica_networks_features_rebuild_completed');
+  _mica_networks_configure_permissions();
+}
 
-  $searcher = 'search_api@studies_index';
-  $facet = facetapi_facet_load('field_networks', $searcher);
-  if ($facet) {
-    $adapter = facetapi_adapter_load($searcher);
-    $realms = facetapi_get_realm_info();
-    foreach ($realms as $realm_name => $realm) {
-      $delta = facetapi_hash_delta(facetapi_build_delta($searcher, $realm_name, $facet['name']));
-      $settings = $adapter->getFacet($facet)->getSettings($realm);
-      $settings->settings['widget'] = 'facetapi_checkbox_links';
-      ctools_export_crud_save('facetapi', $settings);
-      if (facetapi_save_facet_enabled($adapter, $realm, $facet)) {
-        mica_core_enable_facet_block($delta, t('Networks'), 'studies-search');
-      }
-    }
+function _mica_networks_configure_permissions() {
+  _mica_networks_configure_role_permissions('network reviewer',
+    array(
+      'access workbench' => TRUE,
+      'view moderation history' => TRUE,
+      'view moderation messages' => TRUE,
+      'use workbench_moderation my drafts tab' => TRUE,
+      'use workbench_moderation needs review tab' => TRUE,
+      'moderate content from draft to needs_review' => TRUE,
+      'moderate content from needs_review to draft' => TRUE,
+      'moderate content from needs_review to published' => TRUE,
+    )
+  );
+
+  _mica_networks_configure_role_permissions('network administrator',
+    array(
+      'access workbench' => TRUE,
+      'view moderation history' => TRUE,
+      'view moderation messages' => TRUE,
+      'use workbench_moderation my drafts tab' => TRUE,
+      'moderate content from draft to needs_review' => TRUE,
+      'moderate content from needs_review to draft' => TRUE,
+    )
+  );
+}
+
+function _mica_networks_configure_role_permissions($role_name, $permissions) {
+  $role = user_role_load_by_name($role_name);
+  if ($role) {
+    user_role_change_permissions($role->rid, $permissions);
   }
 }
