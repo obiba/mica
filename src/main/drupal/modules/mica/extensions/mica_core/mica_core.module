@@ -229,7 +229,7 @@ function mica_core_field_formatter_view($entity_type, $entity, $field, $instance
       foreach ($items as $delta => $item) {
         $node = node_load($item['nid']);
         $label = entity_label('node', $node);
-        if ($node->status) {
+        if ($item['access']) {
           $uri = entity_uri('node', $node);
           $element[$delta] = array(
             '#type' => 'link',

@@ -230,7 +230,7 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
   }
 
   if ($field_index_type === 'date' || $field_index_type === 'list<date>') {
-    $field_name += ':value';
+    $field_name .= ':value';
   }
 
   $fields[$field_name] = array(
@@ -268,7 +268,7 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
         if (facetapi_save_facet_enabled($adapter, $realm, $facet)) {
           // overwrite facet label to use field display label if defined
           $facet_block_title = $field_description_wrapper->field_original_field_label->value();
-          _enable_search_block($delta, $facet_block_title);
+          mica_core_enable_facet_block($delta, $facet_block_title, 'studies-search');
         }
       }
       elseif (facetapi_save_facet_disabled($adapter, $realm, $facet)) {
@@ -291,70 +291,6 @@ function _magma_search_index_type_mapping() {
   );
 }
 
-/**
- * Add Facet/Range block to sidebar_first in mica_samara theme as last facet/range item.
- * Show this block by default but let individual users hide it.
- * In this case, block will be visible for anonymous users.
- */
-function _enable_search_block($facet_delta, $block_title) {
-
-  $theme_default = variable_get('theme_default', 'mica_samara');
-  $region = 'sidebar_second';
-  $page = 'studies-search';
-
-  $max_weight = db_query(
-    "SELECT MAX(weight) as max_weight FROM {block} WHERE module = :module AND theme = :theme and region = :region",
-    array(
-      ':module' => 'facetapi',
-      ':theme' => $theme_default,
-      ':region' => $region
-    )
-  )->fetchField();
-  $facet_weight = empty($max_weight) ? 0 : ($max_weight + 1);
-
-  $block = db_query('SELECT * FROM {block} WHERE module = :module AND delta = :delta AND theme = :theme',
-    array(
-      ':module' => 'facetapi',
-      ':delta' => $facet_delta,
-      ':theme' => $theme_default
-    )
-  )->fetchObject();
-
-  if ($block) {
-    db_update('block')->fields(
-      array(
-        'status' => 1,
-        'region' => $region,
-        'weight' => $facet_weight,
-        'pages' => $page,
-        'visibility' => BLOCK_VISIBILITY_LISTED,
-        'title' => $block_title,
-      )
-    )
-      ->condition('module', 'facetapi')
-      ->condition('delta', $facet_delta)
-      ->condition('theme', $theme_default)
-      ->execute();
-  }
-  else {
-    db_insert('block')->fields(
-      array(
-        'status' => 1,
-        'region' => $region,
-        'weight' => $facet_weight,
-        'custom' => BLOCK_CUSTOM_ENABLED, // Show this block by default but let individual users hide it.
-        'delta' => $facet_delta,
-        'module' => 'facetapi',
-        'theme' => $theme_default,
-        'pages' => $page,
-        'visibility' => BLOCK_VISIBILITY_LISTED,
-        'title' => $block_title,
-      )
-    )
-      ->execute();
-  }
-
-}
 
 function _disable_search_block($facet_delta) {
   $theme_default = variable_get('theme_default', 'mica_samara');
