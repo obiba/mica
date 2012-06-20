@@ -5,15 +5,14 @@
  * Install, update and uninstall functions for the Mica Networks module.
  */
 
-include_once(drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.inc');
+include_once drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.inc';
 
 
 /**
  * Implements hook_install().
  */
 function mica_networks_install() {
-//  _mica_networks_add_networks_to_studies_index();
-//  _mica_networks_configure_permissions();
+  _mica_networks_add_networks_to_studies_index();
 }
 
 function _mica_networks_add_networks_to_studies_index() {
@@ -41,29 +40,4 @@ function _mica_networks_add_networks_to_studies_index() {
       }
     }
   }
-}
-
-function _mica_networks_configure_permissions() {
-
-  $reviewer_rid = user_role_load_by_name('network reviewer');
-  user_role_change_permissions($reviewer_rid, array(
-    'access workbench' => TRUE,
-    'view moderation history' => TRUE,
-    'view moderation messages' => TRUE,
-    'use workbench_moderation my drafts tab' => TRUE,
-    'use workbench_moderation needs review tab' => TRUE,
-    'moderate content from draft to needs_review' => TRUE,
-    'moderate content from needs_review to draft' => TRUE,
-    'moderate content from needs_review to published' => TRUE,
-  ));
-
-  $administrator_rid = user_role_load_by_name('network administrator');
-  user_role_change_permissions($administrator_rid, array(
-    'access workbench' => TRUE,
-    'view moderation history' => TRUE,
-    'view moderation messages' => TRUE,
-    'use workbench_moderation my drafts tab' => TRUE,
-    'moderate content from draft to needs_review' => TRUE,
-    'moderate content from needs_review to draft' => TRUE,
-  ));
 }

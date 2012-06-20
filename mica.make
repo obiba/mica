@@ -103,6 +103,8 @@ projects[facetapi][patch][1630714] = http://drupal.org/files/undefined-index-htm
 
 projects[features][version] = 1.0-rc3
 projects[features][type] = module
+projects[features][patch][981248] = http://drupal.org/files/hook_features_post_install-981248-58.patch
+projects[features][patch][656312] = http://drupal.org/files/keep_negative_permissions-656312-17.patch
 
 projects[feeds][type] = module
 projects[feeds][download][type] = git
