@@ -30,3 +30,14 @@ function _mica_networks_network_view($node, $view_mode, $langcode) {
   }
 }
 
+/**
+ * Implements hook_node_insert()
+ */
+function mica_networks_node_insert($node) {
+  switch ($node->type) {
+    case 'network':
+      mica_core_create_node_menu($node, TRUE, FALSE, 0, 'networks');
+      break;
+  }
+}
+
