@@ -31,7 +31,7 @@ function mica_node_reference_field_field_formatter_view($entity_type, $entity, $
           $uri = entity_uri('node', $node);
           $result[$delta] = array(
             '#type' => 'link',
-            '#title' => t($instance['label']),
+            '#title' => t('@label', array('@label' => $instance['label'])),
             '#href' => $uri['path'],
             '#options' => $uri['options'],
           );

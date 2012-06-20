@@ -3,20 +3,19 @@
 # French translation of Drupal (general)
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 # Generated from files:
+#  mica_studies.facet_blocks.inc: n/a
 #  mica_studies.features.field.inc: n/a
 #  mica_studies.features.inc: n/a
-#  mica_studies.features.menu_links.inc: n/a
-#  mica_studies.views_default.inc: n/a
-#  mica_studies.features.menu_custom.inc: n/a
 #  mica_studies.pages.inc: n/a
 #  mica_studies.module: n/a
 #  mica_studies.info: n/a
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-02-07 14:23-0500\n"
-"PO-Revision-Date: 2012-02-07 14:23-0500\n"
+"POT-Creation-Date: 2012-06-19 11:46-0400\n"
+"PO-Revision-Date: 2012-06-19 11:46-0400\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -24,349 +23,486 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-# field groups
-msgid "General Information"
-msgstr "Information générale"
+#: mica_studies.facet_blocks.inc:110
+msgid "No facet defined for @facet"
+msgstr ""
 
-msgid "Authorization"
-msgstr "Autorisation"
+#: mica_studies.facet_blocks.inc:32;172
+msgid "mica"
+msgstr "mica"
 
-msgid "Methods"
-msgstr "Méthodes"
+#: mica_studies.facet_blocks.inc:32
+msgid "Configured study_current_search block: %status"
+msgstr ""
 
-msgid "Access"
-msgstr "Accès"
+#: mica_studies.facet_blocks.inc:172
+msgid "Facet block configuration for %facet (%delta)"
+msgstr ""
 
-msgid "Status"
-msgstr "Status"
+#: mica_studies.features.field.inc:10271
+msgid "Acronym"
+msgstr "Acronymeeee"
 
-msgid "Marker Paper"
-msgstr "Article de référence"
+#: mica_studies.features.field.inc:10272
+msgid "Acronym of the study if applicable."
+msgstr "Acronyme de l'étude, si applicable"
 
+#: mica_studies.features.field.inc:10273
+msgid "Address"
+msgstr "Adresse"
+
+#: mica_studies.features.field.inc:10274
+msgid "Authorising date"
+msgstr "Date de l'autorisation"
+
+#: mica_studies.features.field.inc:10275
+msgid "Authorization Maelstrom"
+msgstr "Autorisation au programme MAELSTROM"
+
+#: mica_studies.features.field.inc:10276
+msgid "Authorization Specific"
+msgstr "Autorisation spécifique"
+
+#: mica_studies.features.field.inc:10277
+msgid "Biological samples"
+msgstr "Échantillons biologiques"
+
+#: mica_studies.features.field.inc:10278
+msgid "Body"
+msgstr "Corps"
+
+#: mica_studies.features.field.inc:10279
+msgid "City"
+msgstr "Ville"
+
+#: mica_studies.features.field.inc:10280
+msgid "Comment"
+msgstr "Commentaire"
+
+#: mica_studies.features.field.inc:10281
+msgid "Complete name"
+msgstr "Nom completeee"
+
+#: mica_studies.features.field.inc:10282
+msgid "Contact Name"
+msgstr "Nom du contact"
+
+#: mica_studies.features.field.inc:10283
+msgid "Contacts"
+msgstr "Contacts"
+
+#: mica_studies.features.field.inc:10284
+msgid "Country"
+msgstr "Pays"
+
+#: mica_studies.features.field.inc:10285
+msgid "Country of residence"
+msgstr ""
+
+#: mica_studies.features.field.inc:10286
+msgid "Data (questionnaire-derived, measured…)"
+msgstr "Données (issues d'un questionnaire, mesurées...)"
+
+#: mica_studies.features.field.inc:10287
+msgid "Data sources"
+msgstr ""
+
+#: mica_studies.features.field.inc:10288
+msgid "Department/Unit"
+msgstr ""
+
+#: mica_studies.features.field.inc:10289 mica_studies.features.inc:94
 msgid "Documents"
 msgstr "Documents"
 
+#: mica_studies.features.field.inc:10290
+msgid "Email"
+msgstr "Courriel"
+
+#: mica_studies.features.field.inc:10291
+msgid "End year"
+msgstr "Dernière année"
+
+#: mica_studies.features.field.inc:10292
+msgid "Enter the Contact full name. You will be able to edit these Contacts once the Study has been saved."
+msgstr ""
+
+#: mica_studies.features.field.inc:10293
+msgid "Enter the Investigator full name. You will be able to edit these Investigators once the Study will be saved."
+msgstr ""
+"Entrer le nom complet du chercheur. Vous pourrez éditer ces "
+"chercheurs une fois l'étude sauvegardée."
+
+#: mica_studies.features.field.inc:10294
+msgid "Ethnic Origin"
+msgstr ""
+
+#: mica_studies.features.field.inc:10295
+msgid "Files"
+msgstr "Fichiers"
+
+#: mica_studies.features.field.inc:10296
+msgid "For how many people have biological samples been collected?"
+msgstr ""
+"Combien de participants ont déjà fourni un échantillon biologique, "
+"duquel il sera possible d’extraire de l’ADN?"
+
+#: mica_studies.features.field.inc:10297
+msgid "Gender"
+msgstr "Sexe"
+
+#: mica_studies.features.field.inc:10298
+msgid "Health Status"
+msgstr ""
+
+#: mica_studies.features.field.inc:10299
+msgid "How is information obtained? (answer by yes or no, and specify if the information collection is cross sectional or if it involves repeated measurements)"
+msgstr ""
+"De quelles façons l’information est-elle recueillie ? (Si "
+"applicable, spécifier également si la collecte d’information est "
+"effectuée de façon transversale ou continue (impliquant des mesures "
+"répétées))"
+
+#: mica_studies.features.field.inc:10300
+msgid "How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?"
+msgstr ""
+"Combien de personnes devraient être recrutées ? Ou si l'étude est "
+"terminée, quel le nombre final de participants ? "
+
+#: mica_studies.features.field.inc:10301
+msgid "How many people have joined the study?"
+msgstr "Combien de participants ont déjà été recrutés ?"
+
+#: mica_studies.features.field.inc:10302
+msgid "How many people have provided or should provide biological samples, from which DNA could be extracted?"
+msgstr ""
+"Combien de participants ont fourni ou fourniront des échantillons "
+"biologiques desquels il sera possible d’extraire de l’ADN?"
+
+#: mica_studies.features.field.inc:10303
+msgid "If needed, supplementary information about current number of collected biological samples"
+msgstr ""
+"Information supplémentaire sur les échantillons biologiques "
+"collectés, si nécessaire"
+
+#: mica_studies.features.field.inc:10304
+msgid "If needed, supplementary information about current number of participants recruited at baseline"
+msgstr ""
+"Information supplémentaire sur le nombre courant de participants "
+"recrutés durant la phase initiale, si nécessaire"
+
+#: mica_studies.features.field.inc:10305
+msgid "If needed, supplementary information about current study status"
+msgstr ""
+"Information supplémentaire sur l'état courant de l'étude, si "
+"nécessaire"
+
+#: mica_studies.features.field.inc:10306
+msgid "If needed, supplementary information about recruitment procedures"
+msgstr ""
+"Information supplémentaire sur les procédures de recrutement, si "
+"nécessaire"
+
+#: mica_studies.features.field.inc:10307
+msgid "If needed, supplementary information about selection criteria of the population"
+msgstr ""
+"Information supplémentaire sur les critères de sélection de la "
+"population, si nécessaire"
+
+#: mica_studies.features.field.inc:10308
+msgid "If needed, supplementary information about study design"
+msgstr "Information supplémentaire sur le devis de l'étude, si nécessaire"
+
+#: mica_studies.features.field.inc:10309
+msgid "If needed, supplementary information about target number of biological samples"
+msgstr ""
+"Information supplémentaire sur le nombre d'échantillons biologiques "
+"visés, si nécessaire"
+
+#: mica_studies.features.field.inc:10310
+msgid "If needed, supplementary information about target number of participants"
+msgstr ""
+"Information supplémentaire sur le nombre de participants visés, si "
+"nécessaire"
+
+#: mica_studies.features.field.inc:10311
+msgid "Institution name"
+msgstr "Nom de l'institution"
+
+#: mica_studies.features.field.inc:10312
+msgid "Investigators"
+msgstr "Chercheurs"
+
+#: mica_studies.features.field.inc:10313
+msgid "Logo"
+msgstr "Logo"
+
+#: mica_studies.features.field.inc:10314
+msgid "Marker paper describing your study"
+msgstr "Article de référence décrivant votre étude"
+
+#: mica_studies.features.field.inc:10315
+msgid "Maximum age"
+msgstr ""
+
+#: mica_studies.features.field.inc:10316
+msgid "Minimum age"
+msgstr ""
+
+#: mica_studies.features.field.inc:10317
+msgid "Name of the person authorising the contribution to Maelstrom Research"
+msgstr ""
+"Nom de la personne qui complète ce formulaire et autorise la "
+"contribution à la plateforme MAELSTROM RESEARCH"
+
+#: mica_studies.features.field.inc:10318
+msgid "Name of the person authorising the contribution to [SPECIFIC NETWORK]"
+msgstr ""
+"Nom de la personne qui complète ce formulaire et autorise la "
+"contribution à [SPECIFIC NETWORK]"
+
+#: mica_studies.features.field.inc:10319
+msgid "No limits in the number of participants"
+msgstr "Nombre de participants non déterminé (Illimité)"
+
+#: mica_studies.features.field.inc:10320
+msgid "No limits in the number of samples"
+msgstr "Nombre de participants avec échantillons non déterminé (Illimité)"
+
+#: mica_studies.features.field.inc:10321
+msgid "No spaces allowed"
+msgstr ""
+
+#: mica_studies.features.field.inc:10322
+msgid "On"
+msgstr ""
+
+#: mica_studies.features.field.inc:10323
+msgid "Other"
+msgstr "Autre"
+
+#: mica_studies.features.field.inc:10324
+msgid "Please specify type of tissues"
+msgstr "Spécifier le type de tissus"
+
+#: mica_studies.features.field.inc:10325
+msgid "Please specify what other biological samples"
+msgstr "Spécifier quels autres échantillons biologiques"
+
+#: mica_studies.features.field.inc:10326
+msgid "Please specify what other data sources"
+msgstr "Spécifier quelle autre source de données"
+
+#: mica_studies.features.field.inc:10327
+msgid "Please specify what other design"
+msgstr "Spécifier quel autre devis"
+
+#: mica_studies.features.field.inc:10328
+msgid "Please specify what other recruitment target"
+msgstr "Spécifier quel autre type de recrues"
+
+#: mica_studies.features.field.inc:10329
+msgid "Please specify what other selection criteria"
+msgstr "Spécifier quel autre critère de sélection"
+
+#: mica_studies.features.field.inc:10330
+msgid "Please specify what other source of recruitment"
+msgstr "Spécifier les sources de recrutement"
+
+#: mica_studies.features.field.inc:10331
+msgid "Please specify what study feature"
+msgstr "Spécifier quel caractéristique d'étude"
+
+#: mica_studies.features.field.inc:10332
+msgid "Postal Code"
+msgstr "Code postal"
+
+#: mica_studies.features.field.inc:10333
+msgid "Pubmed Id"
+msgstr "Identifiant Pubmed"
+
+#: mica_studies.features.field.inc:10334
+msgid "Questionnaires"
+msgstr ""
+
+#: mica_studies.features.field.inc:10335
+msgid "Sources of recruitment"
+msgstr ""
+
+#: mica_studies.features.field.inc:10336
+msgid "Start year"
+msgstr "Année de départ"
+
+#: mica_studies.features.field.inc:10337
+msgid "State/Province"
+msgstr "État/Province"
+
+#: mica_studies.features.field.inc:10338
 msgid "Supplementary information"
 msgstr "Information complémentaire"
 
-msgid "Datasets"
-msgstr "Jeux de données"
+#: mica_studies.features.field.inc:10339
+msgid "Telephone"
+msgstr "Téléphone"
 
-msgid "Name of the study"
-msgstr "Nom de l'étude"
+#: mica_studies.features.field.inc:10340
+msgid "Territory or city of residence"
+msgstr ""
 
-msgid "Authorization from contributors to the [specific network] catalogues"
-msgstr "Autorisation des contributeurs aux catalogues de [réseau]"
+#: mica_studies.features.field.inc:10341
+msgid "The study targets the recruitment of"
+msgstr "L’étude vise le recrutement de"
 
-msgid "Authorization from contributors to the Maelstrom catalogues"
-msgstr "Autorisation des contributeurs aux catalogues Maelstrom"
+#: mica_studies.features.field.inc:10342
+msgid "Website"
+msgstr "Site Web"
 
-msgid "General Design"
-msgstr "Conception générale"
+#: field:body:study:label
+msgctxt "body:study:label"
+msgid "What are the principal objectives of the study?"
+msgstr "Quels sont les principaux objectifs de l'étude?"
 
-msgid "Study/Registry Design"
-msgstr "Conception de l'étude/registre"
+#: mica_studies.features.field.inc:10343
+msgid "What are the principal objectives of the study?"
+msgstr "Quels sont les principaux objectifs de l'étude?"
 
-msgid "Target Number of Participants"
-msgstr "Nombre de participants visés"
+#: mica_studies.features.field.inc:10344
+msgid "What is the selection criteria for participants?"
+msgstr ""
+"Quels sont les critères d’inclusion pour la sélection des "
+"participants"
 
-msgid "Target Number of Biological Samples"
-msgstr "Nombre d'échantillons biologiques"
+#: mica_studies.features.field.inc:10345
+msgid "What is the study design?"
+msgstr ""
 
-msgid "Current number of participants recruited at baseline"
-msgstr "Nombre courant de participants recrutés dans la phase initiale"
+#: mica_studies.features.field.inc:10346
+msgid "What type of sample is collected?"
+msgstr "Quels types d’échantillons sont recueillis ?"
 
-msgid "Current number of collected biological samples from which DNA could be extracted"
-msgstr "Nombre courant d'échantillons biologiques collectés desquels de l'ADN pourrait être extrait"
+#: mica_studies.features.field.inc:10347
+msgid "when appropriate, specify the criteria."
+msgstr "Quand approprié, spécifier le critère."
 
-msgid "Participants Selection"
-msgstr "Sélection des participants"
-
-msgid "Selection Criteria / Characteristics of the population"
-msgstr "Critère de sélection / Caractéristiques de la population"
-
-msgid "Please specify gender"
-msgstr "Veuillez spécifier le genre"
-
-msgid "Please specify age range"
-msgstr "Veuillez spécifier l'interval d'âge"
-
-msgid "Please specify countries of residence"
-msgstr "Veuillez préciser les pays de résidence"
-
-msgid "Recruitment procedures"
-msgstr "Procédures de recrutement"
-
-msgid "Data Collection"
-msgstr "Collect de données"
-
-msgid "Sample Management"
-msgstr "Gestion des échantillons"
-
-msgid "Current Status"
-msgstr "État courant"
-
-msgid "Preparation phase / Pilot"
-msgstr "Phase préparatoire / pilote"
-
-msgid "Baseline recruitment / initial data collection"
-msgstr "Recrutement de base / collecte de données initiale"
-
-msgid "If applicable, Follow-up of participants"
-msgstr "Si applicable, suivi des participants"
-
-msgid "Study ended"
-msgstr "Fin de l'étude"
-
-msgid "What is the complete name of the study?"
-msgstr "Quel est le nom complet de l'étude ?"
-
-msgid "I agree and understand that the information collected in this form will be displayed on the [SPECIFIC NETWORK] website upon reception."
-msgstr "Je comprends et j'accepte que les renseignements recueillis dans ce formulaire seront affichés sur le site web de [RÉSEAU SPÉCIFIQUE] à leur réception."
-
-msgid "I agree and understand that the information collected in this form will be displayed on the Maelstrom Research website upon reception in agreement with “Authorization from contributors to the Maelstrom Research Catalogues” (Document available on Maelstrom Research Web page or at: …)."
-msgstr "Je comprends et j'accepte que les renseignements recueillis dans ce formulaire seront affichés sur le site de Maelstrom à leur réception en accord avec “l'autorisation des contributeurs aux Catalogues de Maelstrom” (document disponible sur la page Web de recherche Maelstrom ou à l'adresse: …)."
-
-msgid "Headline number of participants"
-msgstr "nombre global de participants"
-
-msgid "Is access to the following study features by external researchers or third parties provided or foreseen?"
-msgstr "L'accès aux caractéristiques suivantes de l'étude à des chercheurs externes ou à des tiers est-il fourni ou prévu?"
-
-msgid "What are the stages and timelines of the study?"
-msgstr "Quelles sont les étapes ou la chronologie de l'étude?"
-
-msgid "If relevant, please provide the bibliographic citations (i.e. published sources such as journal article, web site, or report) which should be used to refer to your study."
-msgstr "Si applicable, veuillez fournir une liste de références bibliographiques (i.e. article de journal, site web ou rapport) à utiliser pour votre étude."
-
-msgid "Datasets available to the research community."
-msgstr "Jeux de données mis à la disposition de la communauté"
-
-
-#: mica_studies.features.inc:85
+#: mica_studies.features.inc:86
 msgid "Contact"
 msgstr "Contact"
 
-#: mica_studies.features.inc:87
+#: mica_studies.features.inc:88
 msgid "How to contact a person in an institution."
 msgstr "Comment contacter une personne dans une institution."
 
-#: mica_studies.features.inc:89;97;105;113
+#: mica_studies.features.inc:90;98;106
 msgid "Title"
 msgstr "Titre"
 
-#: mica_studies.features.inc:95
+#: mica_studies.features.inc:96
 msgid "Content type to present one or more documents"
 msgstr "Type de contenu pour présenter un ou plusieurs documents"
 
-#: mica_studies.features.inc:101
-msgid "Field Description"
-msgstr "Decription de champ"
-
-#: mica_studies.features.inc:103
-msgid "Description of information collected about the studies."
-msgstr "Description de l'information collectée sur les études"
-
-#: mica_studies.features.inc:109
+#: mica_studies.features.inc:102
 msgid "Study"
 msgstr "Étude"
 
-#: mica_studies.features.inc:111
+#: mica_studies.features.inc:104
 msgid "Study portal. Create a content of this type when registering a new study."
-msgstr "Portail d'étude. Créer un contenu de ce type quand une nouvelle étude est à enregistrer."
+msgstr ""
+"Portail d'étude. Créer un contenu de ce type quand une nouvelle "
+"étude est à enregistrer."
 
-#: mica_studies.features.menu_custom.inc:23
-msgid "Main menu"
-msgstr "Menu principal"
-
-#: mica_studies.features.menu_custom.inc:24
-msgid "The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar."
-msgstr "Le <em>menu Principal</em> est fréquemment utilisé pour afficher les sections importantes du site, souvent dans la barre de navigation de haut de page."
-
-#: mica_studies.features.menu_links.inc:92
-msgid "Home"
-msgstr "Accueil"
-
-#: mica_studies.features.menu_links.inc:93
-msgid "Resources"
-msgstr "Ressources"
-
-#: mica_studies.features.menu_links.inc:94 mica_studies.views_default.inc:3097
-msgid "Studies"
-msgstr "Études"
-
-#: mica_studies.pages.inc:36 mica_studies.module:49
+#: mica_studies.pages.inc:40 mica_studies.module:15
 msgid "Export"
 msgstr "Exporter"
 
-#: mica_studies.pages.inc:37 mica_studies.views_default.inc:2688
+#: mica_studies.pages.inc:41
 msgid "Description"
 msgstr "Description"
 
-#: mica_studies.pages.inc:39
+#: mica_studies.pages.inc:43
 msgid "There are no data exporters."
 msgstr "Pas d'exporteurs de données."
 
-#: mica_studies.views_default.inc:429;719;2442;2674;2779;2867;3096;3282
-msgid "Master"
-msgstr "Maître"
-
-#: mica_studies.views_default.inc:430;721;2444;2676;2781;2869;3098;3284
-msgid "more"
-msgstr "plus"
-
-#: mica_studies.views_default.inc:431;722;2445;2677;2782;2870;3099;3285
-msgid "Apply"
-msgstr "Appliquer"
-
-#: mica_studies.views_default.inc:432;723;2446;2678;2783;2871;3100;3286
-msgid "Reset"
-msgstr "Réinitialiser"
-
-#: mica_studies.views_default.inc:433;724;2447;2679;2784;2872;3101;3287
-msgid "Sort by"
-msgstr "Trier par"
-
-#: mica_studies.views_default.inc:434;725;2448;2680;2785;2873;3102;3288
-msgid "Asc"
-msgstr "Asc"
-
-#: mica_studies.views_default.inc:435;726;2449;2681;2786;2874;3103;3289
-msgid "Desc"
-msgstr "Desc"
-
-#: mica_studies.views_default.inc:436;727;2450;2682;2787;2875;3104;3290
-msgid "Items per page"
-msgstr "Items par page"
-
-#: mica_studies.views_default.inc:437
-msgid "- All -"
-msgstr "- Tous -"
-
-#: mica_studies.views_default.inc:438;729;2452;2684;2789;2877;3106;3292
-msgid "Offset"
-msgstr "Décalage"
-
-#: mica_studies.views_default.inc:455;739;2519
-msgid "Data export"
-msgstr "Export Data"
-
-#: mica_studies.views_default.inc:720
-msgid "CSV Contact Export"
-msgstr "Export CSV des contacts"
-
-#: mica_studies.views_default.inc:728;2451;2683;2788;2876;3105;3291
-msgid "- All - "
-msgstr "- Tous -"
-
-#: mica_studies.views_default.inc:2443
-msgid "CSV Study Export"
-msgstr "Export d'une étude en CSV"
-
-#: mica_studies.views_default.inc:2686
-msgid "No document found."
-msgstr "Aucun document n'a été trouvé."
-
-#: mica_studies.views_default.inc:2687;2790;3113;3295
-msgid "Name"
-msgstr "Nom"
-
-#: mica_studies.views_default.inc:2689
-msgid "Download"
-msgstr "Téléchargement"
-
-#: mica_studies.views_default.inc:2690;2793;2880;3118;3300
-msgid "Page"
-msgstr "Page"
-
-#: mica_studies.views_default.inc:2780
-msgid "Search Filters"
-msgstr "Filtres de recherche"
-
-#: mica_studies.views_default.inc:2791
-msgid "Text (indexed)"
-msgstr "Texte (indexé)"
-
-#: mica_studies.views_default.inc:2792;3299
-msgid "Fulltext search"
-msgstr "Recherche en text intégral"
-
-#: mica_studies.views_default.inc:2868
-msgid "Recent News"
-msgstr "Nouvelles récentes"
-
-#: mica_studies.views_default.inc:2878
-msgid "empty_news"
-msgstr "empty_news"
-
-#: mica_studies.views_default.inc:2879
-msgid "No news found."
-msgstr "Aucune nouvelle n'a été trouvée."
-
-#: mica_studies.views_default.inc:3107
-msgid "This page displays the list of the consortium's studies. Each study is described in a same standard way that can be easily customized to reflect consortium specificities. However, Mica suggests by default a list of important study characteristics that should be considered if there is an aim for the consortium to participate in data harmonization projects with other consortia or studies. \n\nThis Mica study catalogue comes with an advanced query tool using user-friendly facets <br/><br/>"
-msgstr "Cette page affiche la liste des études du consortium. Chaque étude est décrite de la même manière. Cette description peut être adaptée afin de satisfaire les besoins spécifiques du consortium. Cependant, Mica suggère par défaut une liste de caractéristiques d'étude à considérer pour permettre au consortium de participer à des projets d'harmonisation de données avec d'autres consortiums ou études."
-
-#: mica_studies.views_default.inc:3110;3293
-msgid "empty_studies"
-msgstr "empty_studies"
-
-#: mica_studies.views_default.inc:3111;3294
-msgid "No study found."
-msgstr "Aucune étude n'a été trouvée."
-
-#: mica_studies.views_default.inc:3115;3297
-msgid "Target number of participants"
-msgstr "Nombre de participants visé"
-
-#: mica_studies.views_default.inc:3116;3298
-msgid "Countries"
-msgstr "Pays"
-
-#: mica_studies.views_default.inc:3283
-msgid "Studies Search"
-msgstr "Recherche d'études"
-
-#: mica_studies.module:69
+#: mica_studies.module:36
 msgid "Add a !name"
 msgstr "Ajouter un(e) !name"
 
-#: mica_studies.module:81
+#: mica_studies.module:45
+msgid "<a class=\"highlight\" href=\"@url\">!name</a>"
+msgstr "<a class=\"highlight\" href=\"@url\">!name</a>"
+
+#: mica_studies.module:46
+msgid "Search studies"
+msgstr "Chercher les études"
+
+#: mica_studies.module:58
 msgid "Add some Documents"
 msgstr "Ajouter des documents"
 
-#: mica_studies.module:97
+#: mica_studies.module:75
 msgid "Export Data"
 msgstr "Exporter les données"
 
-#: mica_studies.module:98
+#: mica_studies.module:76
 msgid "Allow exportation of data."
 msgstr "Autoriser l'exportation de données."
 
-#: mica_studies.module:111;151
-msgid "Search filters selection"
-msgstr "Sélection des filtres de recherche"
+#: mica_studies.module:272
+msgid "minimum"
+msgstr ""
 
-#: mica_studies.module:119;141
-msgid "Search"
-msgstr "Recherche"
+#: mica_studies.module:277
+msgid "maximum"
+msgstr ""
 
-#: mica_studies.module:530
+#: mica_studies.module:282
+msgid "Age:"
+msgstr ""
+
+#: mica_studies.module:334
+msgid "Contribution to @site authorised"
+msgstr ""
+
+#: mica_studies.module:337
+msgid "@name authorised the contribution to @site"
+msgstr ""
+
+#: mica_studies.module:341;361
+msgid "on"
+msgstr ""
+
+#: mica_studies.module:354
+msgid "Contribution to Maelstrom Research authorised"
+msgstr ""
+
+#: mica_studies.module:357
+msgid "@name authorised the contribution to Maelstrom Research"
+msgstr ""
+
+#: mica_studies.module:541
 msgid "From"
 msgstr "De"
 
-#: mica_studies.module:533
+#: mica_studies.module:545
 msgid "to"
 msgstr "à"
+
+#: mica_studies.module:772
+msgid "Clear all criteria"
+msgstr ""
+
+#: mica_studies.module:798
+msgid "Study name '!title' is already given."
+msgstr "Le nom d'étude '!title' existe déjà."
 
 #: mica_studies.info:0
 msgid "Mica Studies"
 msgstr "Études Mica"
 
 #: mica_studies.info:0
-msgid "Initial mica configuration"
-msgstr "Configuration initiale de Mica"
+msgid "Mica Studies Features"
+msgstr ""
 
 #: mica_studies.info:0
 msgid "OBiBa"
 msgstr "OBiBa"
+

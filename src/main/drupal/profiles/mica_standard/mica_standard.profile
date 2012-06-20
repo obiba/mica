@@ -117,3 +117,49 @@ function _datasets_block_configuration(&$context) {
 function _mica_configuration_finished($success, $results, $operations) {
   drupal_set_message(st("Mica configuration finished"));
 }
+
+/*function _update_mica_languages_batch($install_state) {
+
+// find all mica french translation files
+$filename = '/fr.po$/';
+$files = drupal_system_listing($filename, 'sites/all/modules/mica', 'name', 0);
+
+$operations = array();
+foreach($files as $file){
+$operations[] = array('_update_mica_languages', array($file));
+}
+
+$batch = array(
+'operations' => $operations,
+'title' => st('Updating Mica translation.'),
+'init_message' => st('Downloading and importing files.'),
+'error_message' => st('Error importing interface translations'),
+'finished' => '_update_mica_languages_finished',
+);
+return $batch;
+}
+
+function _update_mica_languages($file, &$context) {
+module_load_include('batch.inc', 'l10n_update');
+
+$langcode = 'fr';
+
+$field_pattern = '/.field.' . $langcode . '.po$/';
+$menu_pattern = '/.menu.' . $langcode . '.po$/';
+$blocks_pattern = '/.blocks.' . $langcode . '.po$/';
+if (preg_match($field_pattern, $file->filename) == 1) {
+_l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'field');
+} elseif (preg_match($menu_pattern, $file->filename) == 1) {
+_l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'menu');
+} elseif (preg_match($blocks_pattern, $file->filename) == 1) {
+_l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'blocks');
+} else {
+_l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'default');
+}
+
+$context['message'] = st('Imported: %name.', array('%name' => $file->filename));
+}
+
+function _update_mica_languages_finished($success, $results, $operations) {
+drupal_set_message(st("Mica French translations import finished."));
+}*/

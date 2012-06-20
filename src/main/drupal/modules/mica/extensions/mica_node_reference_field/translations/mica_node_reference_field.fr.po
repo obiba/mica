@@ -5,13 +5,13 @@
 # Generated from files:
 #  mica_node_reference_field.module: n/a
 #  mica_node_reference_field.info: n/a
-# NAME <EMAIL@ADDRESS>, 2012.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-01-19 15:15-0500\n"
-"PO-Revision-Date: 2012-01-25 11:43-0500\n"
+"POT-Creation-Date: 2012-06-19 11:44-0400\n"
+"PO-Revision-Date: 2012-06-19 11:44-0400\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -19,15 +19,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: mica_node_reference_field.module:15
+#: mica_node_reference_field.module:14
 msgid "Node reference field name (link)"
 msgstr "Node reference field name (link)"
 
-#: mica_node_reference_field.module:16
-msgid ""
-"Displays the name of the node reference field as a link to the node page."
+#: mica_node_reference_field.module:15
+msgid "Displays the name of the node reference field as a link to the node page."
 msgstr ""
-"Affiche le nom du champ node reference comme un lien vers la page du noeud."
+"Affiche le nom du champ node reference comme un lien vers la page du "
+"noeud."
 
 #: mica_node_reference_field.info:0
 msgid "Mica Node Reference Field"
@@ -36,8 +36,10 @@ msgstr "Mica Node Reference Field"
 #: mica_node_reference_field.info:0
 msgid "Adaptation of Node Reference Field to display relations for Mica"
 msgstr ""
-"Adaptation de Node Reference Field pour afficher les relations dans Mica"
+"Adaptation de Node Reference Field pour afficher les relations dans "
+"Mica"
 
 #: mica_node_reference_field.info:0
 msgid "OBiBa"
 msgstr "OBiBa"
+

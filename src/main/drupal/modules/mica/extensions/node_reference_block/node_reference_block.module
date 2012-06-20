@@ -152,9 +152,9 @@ function _node_reference_block_related_content_block_content() {
       $content = '<ul>';
       foreach ($related_content as $group => $relations) {
         if (!empty($relations)) {
-          $content .= '<li>' . t($group) . '<ul>';
+          $content .= '<li>' . t('@group', array('@group' => $group)) . '<ul>';
           foreach ($relations as $title => $nid) {
-            $content .= '<li>' . l(t($title), 'node/' . $nid) . '</li>';
+            $content .= '<li>' . l(t('@title', array('@title' => $title)), 'node/' . $nid) . '</li>';
           }
           $content .= '</ul></li>';
         }

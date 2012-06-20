@@ -314,7 +314,7 @@ function _mica_studies_study_view_selection_criteria_item(&$node, $wrapper, $fie
     if ($nb_items > 1 && strlen($label_plural) > 0) {
       $markup_label = $label_plural;
     }
-    $node->content['field_select_criteria'][$index++]['#markup'] = t($markup_label)
+    $node->content['field_select_criteria'][$index++]['#markup'] = t('@label', array('@label' => $markup_label))
       . '<br />&nbsp;&nbsp;&nbsp;&nbsp;' . $markup;
     $node->content[$field]['#access'] = FALSE;
   }
