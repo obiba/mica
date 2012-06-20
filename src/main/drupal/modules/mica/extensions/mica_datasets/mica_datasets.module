@@ -1355,7 +1355,7 @@ function mica_datasets_node_view_alter(&$build) {
           ),
           'overview' => array(
             '#markup' => "<p><a href='" . url("node/$dataset->nid/dataset-harmonization") . "'><b>" . t(
-              "View $dataset->title Harmonization"
+              "View @title Harmonization", array('@title' => $dataset->title)
             ) . "</a></b></p>",
           ),
         );

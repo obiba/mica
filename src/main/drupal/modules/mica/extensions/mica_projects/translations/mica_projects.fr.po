@@ -3,14 +3,17 @@
 # French translation of Drupal (general)
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 # Generated from files:
-#  mica_projects.features.menu_links.inc: n/a
-# NAME <EMAIL@ADDRESS>, 2012.
+#  mica_projects.features.field.inc: n/a
+#  mica_projects.features.inc: n/a
+#  mica_projects.module: n/a
+#  mica_projects.info: n/a
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-01-25 11:03-0500\n"
-"PO-Revision-Date: 2012-01-25 11:17-0500\n"
+"POT-Creation-Date: 2012-06-19 11:45-0400\n"
+"PO-Revision-Date: 2012-06-19 11:45-0400\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -18,156 +21,67 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: mica_projects.features.field.inc:1143
+#: mica_projects.features.field.inc:1142
 msgid "Body"
 msgstr "Corps"
 
-#: mica_projects.features.field.inc:1144
+#: mica_projects.features.field.inc:1143
 msgid "Comment"
 msgstr "Commentaire"
 
-#: mica_projects.features.field.inc:1145
+#: mica_projects.features.field.inc:1144
 msgid "Consortium's studies involved."
 msgstr "Etudes du consortium impliquées"
 
-#: mica_projects.features.field.inc:1146 mica_projects.views_default.inc:554
+#: mica_projects.features.field.inc:1145
 msgid "Date"
 msgstr "Date"
 
-#: mica_projects.features.field.inc:1147
-#: mica_projects.views_default.inc:347;556
+#: mica_projects.features.field.inc:1146
 msgid "Description"
 msgstr "Description"
 
-#: mica_projects.features.field.inc:1148
+#: mica_projects.features.field.inc:1147
 msgid "Files"
 msgstr "Fichiers"
 
-#: mica_projects.features.field.inc:1149 mica_projects.views_default.inc:557
+#: mica_projects.features.field.inc:1148
 msgid "Instructions"
 msgstr "Instructions"
 
-#: mica_projects.features.field.inc:1150
+#: mica_projects.features.field.inc:1149
 msgid "Minutes"
 msgstr "Minutes"
 
-#: mica_projects.features.field.inc:1151
+#: mica_projects.features.field.inc:1150 mica_projects.features.inc:49
 msgid "Project"
 msgstr "Projet"
 
-#: mica_projects.features.field.inc:1152
+#: mica_projects.features.field.inc:1151
 msgid "Studies"
 msgstr "Etudes"
 
-#: mica_projects.features.field.inc:1153 mica_projects.views_default.inc:542
+#: mica_projects.features.field.inc:1152
 msgid "Teleconferences"
 msgstr "Téléconferences"
 
-#: mica_projects.views_default.inc:178;331;541
-msgid "Master"
-msgstr "Maître"
-
-#: mica_projects.views_default.inc:179
-msgid "Project Studies"
-msgstr "Projet d'études"
-
-#: mica_projects.views_default.inc:180;333;543
-msgid "more"
-msgstr "plus"
-
-#: mica_projects.views_default.inc:181;334;544
-msgid "Apply"
-msgstr "Appliquer"
-
-#: mica_projects.views_default.inc:182;335;545
-msgid "Reset"
-msgstr "Réinitialiser"
-
-#: mica_projects.views_default.inc:183;336;546
-msgid "Sort by"
-msgstr "Trier par"
-
-#: mica_projects.views_default.inc:184;337;547
-msgid "Asc"
-msgstr "Asc"
-
-#: mica_projects.views_default.inc:185;338;548
-msgid "Desc"
-msgstr "Desc"
-
-#: mica_projects.views_default.inc:186
-msgid "field_studies"
+#: mica_projects.features.inc:51
+msgid "Research activities with a specific scientific question or target"
 msgstr ""
 
-#: mica_projects.views_default.inc:187;346
-msgid "Name"
-msgstr "Nom"
-
-#: mica_projects.views_default.inc:188
-msgid "Broken handler field_data_field_full_name.field_full_name"
-msgstr ""
-
-#: mica_projects.views_default.inc:189
-msgid ""
-"How many people are planned to be recruited? Or if the study is completed, "
-"what is the final number of participants?"
-msgstr ""
-"Combien de personnes devraient être recrutées ? Ou si l'étude est terminée, "
-"quel le nombre final de participants ? "
-
-#: mica_projects.views_default.inc:190;558
-msgid "All"
-msgstr "Tous / Toutes"
-
-#: mica_projects.views_default.inc:191
-msgid "Block"
-msgstr "Bloc"
-
-#: mica_projects.views_default.inc:339;549
-msgid "Items per page"
-msgstr "Éléments par page"
-
-#: mica_projects.views_default.inc:340;550
-msgid "- All -"
-msgstr "- Tout -"
-
-#: mica_projects.views_default.inc:341;551
-msgid "Offset"
-msgstr "Décalage"
-
-#: mica_projects.views_default.inc:342
-msgid "header_projects"
-msgstr ""
-
-#: mica_projects.views_default.inc:343
-msgid "List of all projects of the consortium"
-msgstr "Liste de tous les projets du consortium"
-
-#: mica_projects.views_default.inc:344
-msgid "empty_projects"
-msgstr ""
-
-#: mica_projects.views_default.inc:345
-msgid "No project found."
-msgstr "Aucun projet trouvé"
-
-#: mica_projects.views_default.inc:348;559
-msgid "Page"
-msgstr "Page"
-
-#: mica_projects.views_default.inc:552
-msgid "empty_teleconferences"
-msgstr ""
-
-#: mica_projects.views_default.inc:553
-msgid "No teleconference found."
-msgstr "Aucune téléconférence trouvée"
-
-#: mica_projects.views_default.inc:555
+#: mica_projects.features.inc:53;61
 msgid "Title"
 msgstr "Titre"
 
-#: mica_projects.module:28
+#: mica_projects.features.inc:57
+msgid "Teleconference"
+msgstr ""
+
+#: mica_projects.features.inc:59
+msgid "Teleconference event and details"
+msgstr ""
+
+#: mica_projects.module:39
 msgid "Add a !name"
 msgstr "Ajouter un(e) !name"
 
@@ -182,3 +96,4 @@ msgstr "Supporte les Projets et les Téléconférences pour Mica"
 #: mica_projects.info:0
 msgid "OBiBa"
 msgstr "OBiBa"
+

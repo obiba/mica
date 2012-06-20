@@ -5,120 +5,87 @@
 # Generated from files:
 #  mica_community.features.field.inc: n/a
 #  mica_community.features.inc: n/a
-#  mica_community.features.menu_custom.inc: n/a
-#  mica_community.features.menu_links.inc: n/a
 #  mica_community.module: n/a
 #  mica_community.info: n/a
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-01-12 14:09-0500\n"
-"PO-Revision-Date: 2012-01-24 14:24-0500\n"
-"Last-Translator: asd <asd>\n"
+"POT-Creation-Date: 2012-06-19 11:38-0400\n"
+"PO-Revision-Date: 2012-06-19 11:38-0400\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: mica_community.features.field.inc:849
+#: mica_community.features.field.inc:987
 msgid "Abstract"
 msgstr "Résumé"
 
-#: mica_community.features.field.inc:850
+#: mica_community.features.field.inc:988
 msgid "Authors"
 msgstr "Auteurs"
 
-#: mica_community.features.field.inc:851
+#: mica_community.features.field.inc:989
 msgid "Body"
 msgstr "Corps"
 
-#: mica_community.features.field.inc:852
+#: mica_community.features.field.inc:990
 msgid "Event Date"
 msgstr "Date de l'évènement"
 
-#: mica_community.features.field.inc:853
+#: mica_community.features.field.inc:991
+msgid "Files"
+msgstr "Fichiers"
+
+#: mica_community.features.field.inc:992
 msgid "PMID"
 msgstr "Identifiant Pubmed"
 
-#: mica_community.features.field.inc:854
+#: mica_community.features.field.inc:993
 msgid "Reference"
 msgstr "Référence"
 
-#: mica_community.features.field.inc:855
+#: mica_community.features.field.inc:994
 msgid "URL"
 msgstr "URL"
 
-#: mica_community.features.inc:37
+#: mica_community.features.inc:45
 msgid "Event"
 msgstr "Évènement"
 
-#: mica_community.features.inc:39
+#: mica_community.features.inc:47
 msgid "Event description"
 msgstr "Description de l'évènement"
 
-#: mica_community.features.inc:41;49
+#: mica_community.features.inc:49;57
 msgid "Title"
 msgstr "Titre"
 
-#: mica_community.features.inc:45
+#: mica_community.features.inc:53
 msgid "Publication"
 msgstr "Publication"
 
-#: mica_community.features.inc:47
+#: mica_community.features.inc:55
 msgid "Scientific publications references and announcement."
 msgstr "Annonces et références aux publications scientifiques."
 
-#: mica_community.features.menu_custom.inc:21
-msgid "Navigation"
-msgstr "Navigation"
-
-#: mica_community.features.menu_custom.inc:22
-msgid "The <em>Navigation</em> menu contains links intended for site visitors. Links are added to the <em>Navigation</em> menu automatically by some modules."
-msgstr "Le <em>menu Navigation</em> contient les liens destinés aux visiteurs du site. Des liens sont automatiquement ajoutés à ce menu par certains modules."
-
-#: mica_community.features.menu_links.inc:143
-msgid "Blogs"
-msgstr "Blogs"
-
-#: mica_community.features.menu_links.inc:144
-msgid "Community"
-msgstr "Communauté"
-
-#: mica_community.features.menu_links.inc:145
-msgid "Events"
-msgstr "Évènements"
-
-#: mica_community.features.menu_links.inc:146
-msgid "Events Calendar"
-msgstr "Calendrier d'évènements"
-
-#: mica_community.features.menu_links.inc:147
-msgid "Forums"
-msgstr "Forums"
-
-#: mica_community.features.menu_links.inc:148
-msgid "News"
-msgstr "Nouvelles"
-
-#: mica_community.features.menu_links.inc:149
-msgid "Publications"
-msgstr "Publications"
-
-#: mica_community.module:20
+#: mica_community.module:40
 msgid "Add a Contact"
 msgstr "Ajouter un Contact"
 
-#: mica_community.module:29
+#: mica_community.module:49
 msgid "Add an Institution"
 msgstr "Ajouter une institution"
 
-#: mica_community.module:40
+#: mica_community.module:60
 msgid "Add an Event"
 msgstr "Ajouter un évènement"
 
-#: mica_community.module:51
+#: mica_community.module:71
 msgid "Add a Publication"
 msgstr "Ajouter une publication"
 
@@ -128,7 +95,9 @@ msgstr "Mica Communauté"
 
 #: mica_community.info:0
 msgid "Community feature to Mica, to activate events, blogs, forums etc."
-msgstr "Feature Mica Communauté, pour activer les évènements, blogs, forums etc."
+msgstr ""
+"Feature Mica Communauté, pour activer les évènements, blogs, forums "
+"etc."
 
 #: mica_community.info:0
 msgid "OBiBa"

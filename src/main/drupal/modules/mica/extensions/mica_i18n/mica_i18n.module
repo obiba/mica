@@ -1,0 +1,69 @@
+<?php
+/**
+ * @file
+ * Code for the Mica i18n feature.
+ */
+
+include_once 'mica_i18n.features.inc';
+
+function mica_i18n_enable(){
+  // configure language switcher block
+  $block = array(
+    'module' => 'lang_dropdown',
+    'delta' => 'language',
+    'theme' => 'mica_samara',
+    'status' => 1,
+    'weight' => -10,
+    'region' => 'header',
+    'pages' => '',
+    'cache' => -1,
+  );
+  
+  $query = db_insert('block')
+    ->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'))
+    ->values($block)
+    ->execute();
+}
+
+function mica_i18n_menu() {
+	$items = array();
+	$items['admin/config/development/mica_i18n'] = array(
+    'title' => 'Mica Internationalization',
+    'description' => 'Utilities for Mica internationalization',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_mica_i18n_form'),
+    'access arguments' => array('administer site configuration'),
+	);
+	return $items;
+}
+
+function _mica_i18n_form() {
+
+	$form['mica_i18n'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Rebuild menus'),
+    '#description' => t('(Re)populate the database tables used by various menu functions.'),
+	);
+	$form['mica_devel']['rebuild'] = array(
+    '#type' => 'submit',
+    '#value' => t('Rebuild menus'),
+    '#submit' => array('menu_rebuild'),
+	);
+
+	$form['dummy'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Example'),
+    '#description' => t('Form example to run custom actions'),
+	);
+	$form['dummy']['run'] = array(
+    '#type' => 'submit',
+    '#value' => t('Run dummy method'),
+    '#submit' => array('_mica_devel_dummy_run'),
+	);
+
+	return $form;
+}
+
+function _mica_devel_dummy_run() {
+	drupal_set_message(t("Run dummy method..."));
+}

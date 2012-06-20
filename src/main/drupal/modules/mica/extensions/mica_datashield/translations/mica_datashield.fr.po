@@ -6,13 +6,13 @@
 #  mica_datashield.pages.inc: n/a
 #  mica_datashield.module: n/a
 #  mica_datashield.info: n/a
-# NAME <EMAIL@ADDRESS>, 2012.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-01-19 15:13-0500\n"
-"PO-Revision-Date: 2012-01-25 11:49-0500\n"
+"POT-Creation-Date: 2012-06-19 11:40-0400\n"
+"PO-Revision-Date: 2012-06-19 11:40-0400\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -20,77 +20,75 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: mica_datashield.pages.inc:32
-msgid "Step 1: Select Variables"
-msgstr "Etape 1 : Sélectionnez une variable"
+#: mica_datashield.pages.inc:10;96
+msgid "DataSHIELD!"
+msgstr ""
 
-#: mica_datashield.pages.inc:42
+#: mica_datashield.pages.inc:36
+msgid "Step 1: Select Variables"
+msgstr ""
+
+#: mica_datashield.pages.inc:46
 msgid "Variables"
 msgstr "Variables"
 
-#: mica_datashield.pages.inc:47
+#: mica_datashield.pages.inc:51
 msgid "Add Variable"
 msgstr "Ajouter une variable"
 
-#: mica_datashield.pages.inc:54
+#: mica_datashield.pages.inc:58
 msgid "No variables selected"
-msgstr "Aucun variable sélectionnée"
-
-#: mica_datashield.pages.inc:59
-msgid "Remove Variable(s)"
-msgstr "Supprimer une variable"
-
-#: mica_datashield.pages.inc:64
-msgid "Step 2: Select Model"
-msgstr "Etape 2 : Sélectionnez un modèle"
-
-#: mica_datashield.pages.inc:71
-msgid "Model"
-msgstr "Modèle"
-
-#: mica_datashield.pages.inc:72
-msgid ""
-"The R formula to fit. Should reference the selected variables above (e.g.: "
 msgstr ""
-"Formule R à éxecuter. Devrait référencer les variables sélectionnées ci-"
-"dessus (i.e.:"
 
-#: mica_datashield.pages.inc:79
+#: mica_datashield.pages.inc:63
+msgid "Remove Variable(s)"
+msgstr ""
+
+#: mica_datashield.pages.inc:68
+msgid "Step 2: Select Model"
+msgstr ""
+
+#: mica_datashield.pages.inc:75
+msgid "Model"
+msgstr ""
+
+#: mica_datashield.pages.inc:76
+msgid "The R formula to fit. Should reference the selected variables above (e.g.:"
+msgstr ""
+
+#: mica_datashield.pages.inc:84
 msgid "Family"
-msgstr "Famille"
+msgstr ""
 
-#: mica_datashield.pages.inc:80
+#: mica_datashield.pages.inc:85
 msgid "Gaussian"
-msgstr "Gausse"
+msgstr ""
 
-#: mica_datashield.pages.inc:80
+#: mica_datashield.pages.inc:85
 msgid "Binomial"
-msgstr "Binomial"
+msgstr ""
 
-#: mica_datashield.pages.inc:80
+#: mica_datashield.pages.inc:85
 msgid "Poisson"
-msgstr "Poisson"
-
-#: mica_datashield.pages.inc:86
-msgid "Step 3: DataSHIELD!"
-msgstr "Etape 3 : DataSHIELD!"
+msgstr ""
 
 #: mica_datashield.pages.inc:91
-msgid "DataSHIELD!"
-msgstr "DataSHIELD!"
+msgid "Step 3: DataSHIELD!"
+msgstr ""
 
-#: mica_datashield.pages.inc:97
+#: mica_datashield.pages.inc:102
 msgid "DataSHIELD Result"
-msgstr "Résultats DataSHIELD"
+msgstr ""
 
 #: mica_datashield.module:7
 msgid "DataSHIELD"
-msgstr "DataSHIELD"
+msgstr ""
 
 #: mica_datashield.info:0;0
 msgid "Mica DataSHIELD"
-msgstr "Mica DataSHIELD"
+msgstr ""
 
 #: mica_datashield.info:0
 msgid "OBiBa"
 msgstr "OBiBa"
+

@@ -1,139 +1,86 @@
 # $Id$
 #
-# LANGUAGE translation of Drupal (general)
+# French translation of Drupal (general)
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 # Generated from files:
 #  mica_field_description.features.field.inc: n/a
 #  mica_field_description.module: n/a
 #  mica_field_description.features.inc: n/a
 #  mica_field_description.info: n/a
-#  mica_field_description.views_default.inc: n/a
+#  mica_field_description.install: n/a
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-02-14 11:51-0500\n"
-"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"POT-Creation-Date: 2012-06-19 11:43-0400\n"
+"PO-Revision-Date: 2012-06-19 11:43-0400\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"Language-Team: French <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
+#: mica_field_description.features.field.inc:797
+msgid "Body"
+msgstr "Corps"
 
-#: mica_field_description.features.inc:37 mica_field_description.module:111 mica_field_description.info:0
+#: mica_field_description.features.field.inc:798
+msgid "Can this field have multiple values?"
+msgstr "Ce champ contient-il des valeurs multiples"
+
+#: mica_field_description.features.field.inc:799
+msgid "Categories"
+msgstr "Catégories"
+
+#: mica_field_description.features.field.inc:800
+msgid "Content Type"
+msgstr "Type de contenu"
+
+#: mica_field_description.features.field.inc:801
+msgid "Content Type Label"
+msgstr "Étiquette du type de contenu"
+
+#: mica_field_description.features.field.inc:802
+msgid "Field Name"
+msgstr "Nom du champ"
+
+#: mica_field_description.features.field.inc:803
+msgid "Field machine name"
+msgstr "Nom système du champ"
+
+#: mica_field_description.features.field.inc:804 mica_field_description.module:146
+msgid "Label"
+msgstr "Étiquette"
+
+#: mica_field_description.features.field.inc:805
+msgid "Machine name of the content type that declares this field"
+msgstr "Nom système du type de contenu qui déclare ce champ"
+
+#: mica_field_description.features.field.inc:806
+msgid "Name of the content type that declares this field"
+msgstr "Nom du type de contenu qui déclare ce champ"
+
+#: mica_field_description.features.field.inc:807
+msgid "Repeatable"
+msgstr "Répétable"
+
+#: mica_field_description.features.field.inc:808
+msgid "Value Type"
+msgstr "Type de valeur"
+
+#: mica_field_description.features.inc:41 mica_field_description.module:111 mica_field_description.info:0
 msgid "Field Description"
 msgstr "Description de champ"
 
-#: mica_field_description.features.inc:39
+#: mica_field_description.features.inc:43
 msgid "Description of information collected about the studies."
 msgstr "Description des informations collectées sur les études."
 
-#: mica_field_description.features.inc:41
+#: mica_field_description.features.inc:45
 msgid "Title"
 msgstr "Titre"
-
-#: mica_field_description.views_default.inc:273;382
-msgid "Master"
-msgstr "Maitre"
-
-#: mica_field_description.views_default.inc:275;384
-msgid "more"
-msgstr "plus"
-
-#: mica_field_description.views_default.inc:276;385
-msgid "Apply"
-msgstr "Appliquer"
-
-#: mica_field_description.views_default.inc:277;386
-msgid "Reset"
-msgstr "Réinitialiser"
-
-#: mica_field_description.views_default.inc:278;387
-msgid "Sort by"
-msgstr "Ordonner par"
-
-#: mica_field_description.views_default.inc:279;388
-msgid "Asc"
-msgstr "Asc"
-
-#: mica_field_description.views_default.inc:280;389
-msgid "Desc"
-msgstr "Desc"
-
-#: mica_field_description.views_default.inc:281;390
-msgid "Items per page"
-msgstr "Items par page"
-
-#: mica_field_description.views_default.inc:282;391
-msgid "- All - "
-msgstr "- Tous - "
-
-#: mica_field_description.views_default.inc:283;392
-msgid "Offset"
-msgstr "Décalage"
-
-#: mica_field_description.views_default.inc:284
-msgid "titre"
-msgstr "titre"
-
-#: mica_field_description.views_default.inc:285
-msgid "body"
-msgstr "corps"
-
-#: mica_field_description.views_default.inc:286
-msgid "field_original_field_label"
-msgstr ""
-
-#: mica_field_description.views_default.inc:287
-msgid "field_original_field_name"
-msgstr ""
-
-#: mica_field_description.views_default.inc:288
-msgid "field_bundle_label"
-msgstr ""
-
-#: mica_field_description.views_default.inc:289
-msgid "field_bundle"
-msgstr ""
-
-#: mica_field_description.views_default.inc:290
-msgid "field_value_type"
-msgstr ""
-
-#: mica_field_description.views_default.inc:291
-msgid "field_categories"
-msgstr ""
-
-#: mica_field_description.views_default.inc:292
-msgid "field_repeatable"
-msgstr ""
-
-#: mica_field_description.views_default.inc:293
-msgid "Data export"
-msgstr "Export Data"
-
-#: mica_field_description.views_default.inc:383
-msgid "Search Filters"
-msgstr "Filtres de recherche"
-
-#: mica_field_description.views_default.inc:393
-msgid "Name"
-msgstr "Nom"
-
-#: mica_field_description.views_default.inc:394
-msgid "Text (indexed)"
-msgstr "Texte"
-
-#: mica_field_description.views_default.inc:395
-msgid "Fulltext search"
-msgstr "Recherche en text intégral"
-
-#: mica_field_description.views_default.inc:396
-msgid "Page"
-msgstr "Page"
 
 #: mica_field_description.module:121
 msgid "Use Field Descriptor for this field"
@@ -147,13 +94,21 @@ msgstr "Type de valeur du champ"
 msgid "Description"
 msgstr "Description"
 
-#: mica_field_description.module:560
+#: mica_field_description.module:372;563 mica_field_description.install:27
 msgid "mica"
 msgstr "mica"
 
-#: mica_field_description.module:560
+#: mica_field_description.module:372
+msgid "Disabled facet block %facet: %status"
+msgstr ""
+
+#: mica_field_description.module:563
 msgid "Create Field Description for %field of %bundle"
 msgstr "Crée une description de champ pour %field de %bundle"
+
+#: mica_field_description.install:27
+msgid "Import dataschema dimensions"
+msgstr ""
 
 #: mica_field_description.info:0
 msgid "Mica Field Description"

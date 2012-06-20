@@ -156,7 +156,7 @@ class MicaRelation extends Entity {
         $field_ref_info = field_info_instance('node', $field_ref, $this->parent_bundle);
         $child_menu_item = array(
           'menu_name' => 'main-menu',
-          'link_title' => t($field_ref_info['label']),
+          'link_title' => t('@label', array('@label' => $field_ref_info['label'])),
           'link_path' => 'node/' . $node_child->nid,
           'plid' => $parent_menu['mlid'],
         );
@@ -186,7 +186,7 @@ class MicaRelation extends Entity {
     if (!$this->options['cascaded']) return;
 
     $parent_menu = menu_link_get_preferred('node/' . $parent_node->nid);
-    if (!empty($parent_menu) && $parent_menu['menu_name'] !== 'main-menu') {
+    if (!empty($parent_menu) && $parent_menu['menu_name'] != 'main-menu') {
       unset($parent_menu);
     }
 
@@ -209,7 +209,7 @@ class MicaRelation extends Entity {
       $field_ref_info = field_info_instance('node', $field_ref, $this->parent_bundle);
       $child_menu_item = array(
         'menu_name' => 'main-menu',
-        'link_title' => t($field_ref_info['label']),
+        'link_title' => t('@label', array('@label' => $field_ref_info['label'])),
         'link_path' => 'node/' . $child_nid,
         'plid' => $parent_menu['mlid'],
       );

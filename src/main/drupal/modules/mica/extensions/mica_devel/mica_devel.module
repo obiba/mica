@@ -27,7 +27,7 @@ function mica_devel_menu() {
   $items = array();
   $items['admin/config/development/mica_modules_graph'] = array(
     'title' => 'Mica module dependencies graph',
-    'description' => '',
+    'description' => 'Graph of dependencies of mica modules',
     'page callback' => '_mica_devel_modules_graph',
     'access arguments' => array('administer site configuration'),
   );

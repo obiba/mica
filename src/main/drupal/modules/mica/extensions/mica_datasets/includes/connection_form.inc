@@ -128,7 +128,7 @@ function _mica_datasets_add_connection_option(&$options, &$dataset_node, &$study
  */
 function _mica_datasets_add_table_form(&$form, $header, $empty, &$options) {
   $header = array(
-    'child' => t($header),
+    'child' => t('@header', array('@header' => $header)),
     'connection-type' => t('Connection Type'),
     'description' => t('Description'),
     'actions' => t('Operations'),
@@ -138,7 +138,7 @@ function _mica_datasets_add_table_form(&$form, $header, $empty, &$options) {
     '#type' => 'tableselect',
     '#header' => $header,
     '#options' => $options,
-    '#empty' => t($empty),
+    '#empty' => t('@empty', array('@empty' => $empty)),
   );
 
   if (!empty($options)) {
