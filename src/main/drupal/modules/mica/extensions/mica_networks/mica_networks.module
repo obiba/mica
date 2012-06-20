@@ -85,11 +85,13 @@ function _mica_networks_add_index() {
 }
 
 function mica_networks_features_rebuild_completed() {
-  debug('mica_networks_features_rebuild_completed');
   _mica_networks_configure_permissions();
 }
 
 function _mica_networks_configure_permissions() {
+
+  watchdog('mica', 'Configure Networks custom permissions', array(), WATCHDOG_DEBUG);
+
   _mica_networks_configure_role_permissions('network reviewer',
     array(
       'access workbench' => TRUE,
