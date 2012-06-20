@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * mica_studies.features.menu_custom.inc
+ * mica_core.features.menu_custom.inc
  */
 
 /**
