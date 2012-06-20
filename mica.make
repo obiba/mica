@@ -92,6 +92,9 @@ projects[entity][type] = module
 projects[entity][version] = 1.0-rc3
 projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info-on-validation-exception.patch
 
+projects[entity_translation][type] = module
+projects[entity_translation][version] = 1.0-alpha2
+
 projects[facetapi][version] = 1.0-rc4
 projects[facetapi][type] = module
 projects[facetapi][patch][1630714] = http://drupal.org/files/undefined-index-html-item_group-inc.patch
@@ -139,6 +142,9 @@ projects[] = graphapi
 projects[http_client][version] = 2.3
 projects[http_client][type] = module
 
+projects[i18n][version] = 1.5
+projects[i18n][type] = module
+
 projects[image_url_formatter][version] = 1.0
 projects[image_url_formatter][type] = module
 
@@ -147,6 +153,12 @@ projects[imce][type] = module
 
 projects[job_scheduler][version] = 2.0-alpha3
 projects[job_scheduler][type] = module
+
+projects[lang_dropdown][version] = 1.5
+projects[lang_dropdown][type] = module
+
+projects[languageicons][version] = 1.0
+projects[languageicons][type] = module
 
 projects[link][version] = 1.0
 projects[link][type] = module
