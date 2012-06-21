@@ -68,7 +68,7 @@ dependencies[] = views_content
 dependencies[] = views_data_export
 dependencies[] = workbench
 dependencies[] = workbench_moderation
-datestamp = 1337785440
+datestamp = 1340284751
 features[ctools][] = current_search:current_search:1
 features[ctools][] = facetapi:facetapi_defaults:1
 features[ctools][] = feeds:feeds_importer_default:1
@@ -637,6 +637,9 @@ features[variable][] = comment_subject_field_documents
 features[variable][] = comment_subject_field_study
 features[variable][] = content_access_study
 features[variable][] = date_format_month_year
+features[variable][] = field_bundle_settings_node__contact
+features[variable][] = field_bundle_settings_node__documents
+features[variable][] = field_bundle_settings_node__study
 features[variable][] = google_fonts_enabled_fonts
 features[variable][] = google_fonts_webfonts
 features[variable][] = image_toolkit
@@ -688,8 +691,3 @@ features[views_view][] = documents
 features[views_view][] = news
 features[views_view][] = studies
 features[views_view][] = studies_search
-
-
-; Information added by obiba.org packaging script on Wed, 23 May 2012 11:04:00 -0400
-version = "7.x-1.4-dev"
-datestamp = "1337785440"

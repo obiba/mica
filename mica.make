@@ -198,7 +198,7 @@ projects[noderefcreate][type] = module
 projects[noderefcreate][download][type] = git
 projects[noderefcreate][download][revision] = 4268ba7
 projects[noderefcreate][download][branch] = 7.x-1.x
-projects[noderefcreate][patch][892052] = http://drupal.org/files/noderefcreate-workflow-options-892052-4.patch
+projects[noderefcreate][patch][1181544] = http://drupal.org/files/noderefcreate-alter-and-worlflow-options-1181544-5.patch
 projects[noderefcreate][patch][1538328] = http://drupal.org/files/maxlength-1538328-1.patch
 
 projects[panels][version] = 3.2
