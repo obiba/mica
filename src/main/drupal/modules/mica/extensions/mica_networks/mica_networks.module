@@ -63,33 +63,10 @@ function mica_networks_menu_local_tasks_alter(&$data, $router_item, $root_path) 
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
 
-
-function mica_networks_menu() {
-  $items = array();
-  $items['admin/config/development/mica_network'] = array(
-    'title' => 'Mica Network',
-    'description' => 'development tools for Mica',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('_mica_networks_add_index'),
-    'access arguments' => array('administer site configuration'),
-  );
-  return $items;
-}
-
-function _mica_networks_add_index() {
-  $form['run'] = array(
-    '#type' => 'submit',
-    '#value' => t('_mica_networks_add_networks_to_studies_index'),
-    '#submit' => array('_mica_networks_add_networks_to_studies_index'),
-  );
-  return $form;
-}
-
 function mica_networks_features_rebuild_completed() {
   _mica_networks_configure_permissions();
   _mica_networks_add_networks_to_studies_index();
 }
-
 
 function _mica_networks_add_networks_to_studies_index() {
 
@@ -97,20 +74,23 @@ function _mica_networks_add_networks_to_studies_index() {
 
   $index = search_api_index_load('studies_index', TRUE);
   $options = $index->options;
-  $options['fields']['field_networks'] = array(
+  $fields = $options['fields'];
+  $fields['field_networks'] = array(
     'type' => 'list<integer>',
     'entity_type' => 'node',
   );
-  $ret = $index->update(array('options' => $options));
+  $ret = search_api_index_edit_fields($index->id, $fields);
+  $index->reindex();
   if ($ret) {
     watchdog('mica', 'Networks field was successfully added to Studies index', array(), WATCHDOG_INFO);
   }
   else {
     watchdog('mica', 'Failed to add Networks field to Studies index', array(), WATCHDOG_ERROR);
   }
-  dpm(search_api_index_load('studies_index', TRUE), 'index');
 
-  $searcher = 'search_api@studies_index';
+  cache_clear_all();
+
+  $searcher = 'search_api@' . $index->machine_name;
   $facet = facetapi_facet_load('field_networks', $searcher);
   if ($facet) {
     $adapter = facetapi_adapter_load($searcher);
@@ -119,12 +99,28 @@ function _mica_networks_add_networks_to_studies_index() {
       $delta = facetapi_hash_delta(facetapi_build_delta($searcher, $realm_name, $facet['name']));
       $settings = $adapter->getFacet($facet)->getSettings($realm);
       $settings->settings['widget'] = 'facetapi_checkbox_links';
+
       ctools_export_crud_save('facetapi', $settings);
       if (facetapi_save_facet_enabled($adapter, $realm, $facet)) {
         mica_core_enable_facet_block($delta, t('Networks'), 'studies-search');
       }
     }
   }
+
+
+  $msg = t('Mica Networks module was successfully enabled. To complete configuration, you need to:');
+  $msg .= '<ul>';
+  $msg .= '<li>Go to <a href="' . url('admin/config/search/search_api/index/studies_index/fields')
+    . '" target="_index">Studies index fields</a> and click Save to enable Study networks field indexing.</li>';
+  $msg .= '<li>Go to <a href="' . url('admin/config/search/search_api/index/studies_index/facets')
+    . '" target="_facet">Studies index facet configuration</a> and configure Networks facet</li>';
+  $msg .= '<li>Go to <a href="' . url('admin/structure/block')
+    . '" target="_block">Blocks configuration</a> and configure your facet block</li>';
+  $msg .= '<li>Go to <a href="' . url('admin/structure/types/manage/study/fields')
+    . '" target="_fields">Study fields configuration</a> and move Networks field to the field group you want.</li>';
+  $msg .= '</ul>';
+  drupal_set_message($msg, 'status', FALSE);
+
 }
 
 function _mica_networks_configure_permissions() {

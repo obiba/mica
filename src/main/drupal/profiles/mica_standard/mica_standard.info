@@ -58,7 +58,6 @@ dependencies[] = features
 dependencies[] = strongarm
 dependencies[] = mica
 dependencies[] = mica_studies
-dependencies[] = mica_networks
 dependencies[] = mica_community
 dependencies[] = mica_datasets
 dependencies[] = mica_opal
