@@ -5,39 +5,3 @@
  * Install, update and uninstall functions for the Mica Networks module.
  */
 
-include_once drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.inc';
-
-
-/**
- * Implements hook_install().
- */
-function mica_networks_install() {
-  _mica_networks_add_networks_to_studies_index();
-}
-
-function _mica_networks_add_networks_to_studies_index() {
-  $index = search_api_index_load('studies_index', TRUE);
-  $options = $index->options;
-  $fields = $options['fields'];
-  $fields['field_networks'] = array(
-    'type' => 'list<integer>',
-    'entity_type' => 'node',
-  );
-  search_api_index_edit_fields($index->id, $fields);
-
-  $searcher = 'search_api@studies_index';
-  $facet = facetapi_facet_load('field_networks', $searcher);
-  if ($facet) {
-    $adapter = facetapi_adapter_load($searcher);
-    $realms = facetapi_get_realm_info();
-    foreach ($realms as $realm_name => $realm) {
-      $delta = facetapi_hash_delta(facetapi_build_delta($searcher, $realm_name, $facet['name']));
-      $settings = $adapter->getFacet($facet)->getSettings($realm);
-      $settings->settings['widget'] = 'facetapi_checkbox_links';
-      ctools_export_crud_save('facetapi', $settings);
-      if (facetapi_save_facet_enabled($adapter, $realm, $facet)) {
-        mica_core_enable_facet_block($delta, t('Networks'), 'studies-search');
-      }
-    }
-  }
-}

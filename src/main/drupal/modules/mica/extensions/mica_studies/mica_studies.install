@@ -12,7 +12,6 @@ function mica_studies_install() {
   _mica_import_custom_name_format();
   _mica_node_reference_block();
   _mica_studies_create_date_format();
-  _mica_studies_configure_field_bundle_settings();
   mica_core_configure_feeds_tamper('mica_studies');
 }
 
@@ -25,7 +24,7 @@ function mica_studies_install() {
  * 'longitudinal_physical_measures' = 'physical_measures'<br>
  * 'cross_sectional_biological_samples' = 'biological_samples'<br>
  * 'longitudinal_biological_samples' = 'biological_samples'<br><br>
- * Updates field_dateset_studies from viewreference to node_reference
+ * Updates field_dataset_studies from viewreference to node_reference
  * @param $sandbox
  * @throws DrupalUpdateException
  * @return message
@@ -46,7 +45,7 @@ function mica_studies_update_7120(&$sandbox) {
       }
     }
     features_revert(array('mica_studies' => array('field', 'field_group', 'variable', 'views_view')));
-    return st('The field_data_sources mapping update is completed and the field field_dateset_studies has been updated.');
+    return st('The field_data_sources mapping update is completed and the field field_dataset_studies has been updated.');
   }
   catch (Exception $e) {
     throw new DrupalUpdateException('Failed to update mica_studies: ' . $e->getMessage());
@@ -68,7 +67,7 @@ function mica_studies_update_7130(&$sandbox) {
   _mica_studies_migrate_field_recruitment_procedures();
   
   // configure facet blocks
-  require_once(drupal_get_path('module', 'mica_studies') . '/mica_studies.facet_blocks.inc');
+  require_once 'mica_studies.facet_blocks.inc';
   // configure facets
   $theme_default = variable_get('theme_default', 'mica_samara');
   $page = 'variable-search';
@@ -135,7 +134,7 @@ function _mica_node_reference_block() {
 
 /**
  * Manually configure field_bundle_settings variable because it is exported via strongarms
- * so it cannot be configured in severals modules
+ * so it cannot be configured in several modules
  */
 function _mica_studies_configure_field_bundle_settings() {
   $study_settings = array(
@@ -204,7 +203,7 @@ function _mica_studies_create_source_of_recruitment_taxonomy(){
 
 function _mica_studies_migrate_field_recruitment_procedures(){
 
-	// Move data from field_recruitement_procedures to taxonomy field_recruitment_source
+	// Move data from field_recruitment_procedures to taxonomy field_recruitment_source
 	$result = db_select('field_data_field_recruitment_procedures', 'r')
 	->fields('r', array('entity_id', 'field_recruitment_procedures_value'))
 	->execute();
