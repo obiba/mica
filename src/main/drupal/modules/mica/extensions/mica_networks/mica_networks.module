@@ -64,13 +64,17 @@ function mica_networks_menu_local_tasks_alter(&$data, $router_item, $root_path) 
 }
 
 function mica_networks_features_rebuild_completed() {
-  _mica_networks_configure_permissions();
-  _mica_networks_add_networks_to_studies_index();
+  if (!variable_get('mica_networks_features_rebuild_completed', FALSE)) {
+    _mica_networks_configure_permissions();
+    _mica_networks_add_networks_to_studies_index();
+    _mica_networks_configure_message();
+    variable_set('mica_networks_features_rebuild_completed', TRUE);
+  }
 }
 
 function _mica_networks_add_networks_to_studies_index() {
 
-  watchdog('mica', 'Add Networks field to Studies index', array(), WATCHDOG_DEBUG);
+  cache_clear_all();
 
   $index = search_api_index_load('studies_index', TRUE);
   $options = $index->options;
@@ -80,8 +84,8 @@ function _mica_networks_add_networks_to_studies_index() {
     'entity_type' => 'node',
   );
   $ret = search_api_index_edit_fields($index->id, $fields);
-  $index->reindex();
   if ($ret) {
+    $index->reindex();
     watchdog('mica', 'Networks field was successfully added to Studies index', array(), WATCHDOG_INFO);
   }
   else {
@@ -106,21 +110,31 @@ function _mica_networks_add_networks_to_studies_index() {
       }
     }
   }
+}
 
-
-  $msg = t('Mica Networks module was successfully enabled. To complete configuration, you need to:');
+function _mica_networks_configure_message() {
+  $msg = t('Mica Networks module was successfully enabled. To complete configuration, go to:');
   $msg .= '<ul>';
-  $msg .= '<li>Go to <a href="' . url('admin/config/search/search_api/index/studies_index/fields')
-    . '" target="_index">Studies index fields</a> and click Save to enable Study networks field indexing.</li>';
-  $msg .= '<li>Go to <a href="' . url('admin/config/search/search_api/index/studies_index/facets')
-    . '" target="_facet">Studies index facet configuration</a> and configure Networks facet</li>';
-  $msg .= '<li>Go to <a href="' . url('admin/structure/block')
-    . '" target="_block">Blocks configuration</a> and configure your facet block</li>';
-  $msg .= '<li>Go to <a href="' . url('admin/structure/types/manage/study/fields')
-    . '" target="_fields">Study fields configuration</a> and move Networks field to the field group you want.</li>';
+  $msg .= '<li>';
+  $msg .= l(t('Studies index fields'), 'admin/config/search/search_api/index/studies_index/fields', array('attributes' => array('target' => '_index')));
+  $msg .= ' ' . t('and click Save to enable Study networks field indexing');
+  $msg .= '</li>';
+  $msg .= '<li>';
+  $msg .= l(t('Studies facets configuration'), 'admin/config/search/search_api/index/studies_index/facets', array('attributes' => array('target' => '_facets')));
+  $msg .= ' ' . t('and configure Networks facet');
+  $msg .= '</li>';
+  $msg .= '<li>';
+  $msg .= l(t('Blocks configuration'), 'admin/structure/block', array('attributes' => array('target' => '_block')));
+  $msg .= ' ' . t('and configure Study Networks facet block');
+  $msg .= '</li>';
+  $msg .= '<li>';
+  $msg .= l(t('Study fields configuration'), 'admin/structure/types/manage/study/fields', array('attributes' => array('target' => '_fields')));
+  $msg .= ' ' . t('and move Networks field to the field group you want');
+  $msg .= '</li>';
   $msg .= '</ul>';
   drupal_set_message($msg, 'status', FALSE);
 
+  watchdog('mica', $msg, array(), WATCHDOG_INFO);
 }
 
 function _mica_networks_configure_permissions() {
