@@ -5,6 +5,7 @@
  */
 
 include_once 'mica_networks.features.inc';
+include_once drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.inc';
 
 
 /**
@@ -86,6 +87,44 @@ function _mica_networks_add_index() {
 
 function mica_networks_features_rebuild_completed() {
   _mica_networks_configure_permissions();
+  _mica_networks_add_networks_to_studies_index();
+}
+
+
+function _mica_networks_add_networks_to_studies_index() {
+
+  watchdog('mica', 'Add Networks field to Studies index', array(), WATCHDOG_DEBUG);
+
+  $index = search_api_index_load('studies_index', TRUE);
+  $options = $index->options;
+  $options['fields']['field_networks'] = array(
+    'type' => 'list<integer>',
+    'entity_type' => 'node',
+  );
+  $ret = $index->update(array('options' => $options));
+  if ($ret) {
+    watchdog('mica', 'Networks field was successfully added to Studies index', array(), WATCHDOG_INFO);
+  }
+  else {
+    watchdog('mica', 'Failed to add Networks field to Studies index', array(), WATCHDOG_ERROR);
+  }
+  dpm(search_api_index_load('studies_index', TRUE), 'index');
+
+  $searcher = 'search_api@studies_index';
+  $facet = facetapi_facet_load('field_networks', $searcher);
+  if ($facet) {
+    $adapter = facetapi_adapter_load($searcher);
+    $realms = facetapi_get_realm_info();
+    foreach ($realms as $realm_name => $realm) {
+      $delta = facetapi_hash_delta(facetapi_build_delta($searcher, $realm_name, $facet['name']));
+      $settings = $adapter->getFacet($facet)->getSettings($realm);
+      $settings->settings['widget'] = 'facetapi_checkbox_links';
+      ctools_export_crud_save('facetapi', $settings);
+      if (facetapi_save_facet_enabled($adapter, $realm, $facet)) {
+        mica_core_enable_facet_block($delta, t('Networks'), 'studies-search');
+      }
+    }
+  }
 }
 
 function _mica_networks_configure_permissions() {
@@ -122,4 +161,13 @@ function _mica_networks_configure_role_permissions($role_name, $permissions) {
   if ($role) {
     user_role_change_permissions($role->rid, $permissions);
   }
+}
+
+/**
+ * When creating networks via noderefcreate, set the complete name form the title because of auto_node_title
+ * Implements hook_noderefcreate_alter()
+ */
+function mica_networks_noderefcreate_alter(&$newnode, $element, $form_state) {
+  $wrapper = entity_metadata_wrapper('node', $newnode);
+  $wrapper->field_complete_name->set($wrapper->title->value());
 }

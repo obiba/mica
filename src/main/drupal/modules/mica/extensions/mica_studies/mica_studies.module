@@ -388,12 +388,12 @@ function _mica_studies_study_form_alter(&$form, &$form_state, $form_id) {
   _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
   _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
   _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_data_sources_sp', 'others');
-  
+
   // Add dependent field "Please specify other source of recruitment" to taxonomy checkbox identified by its tid
   $terms = taxonomy_get_term_by_name('Other source', 'sources_of_recruitment');
-  if (!empty($terms)){
-  	$k = array_keys($terms);
-  	_mica_add_dependent_field_checked($form, 'field_recruitment_sources', 'field_recruitment_other', $k[0]);
+  if (!empty($terms)) {
+    $k = array_keys($terms);
+    _mica_add_dependent_field_checked($form, 'field_recruitment_sources', 'field_recruitment_other', $k[0]);
   }
 }
 
@@ -716,12 +716,12 @@ function _mica_studies_form_validate($form, &$form_state) {
   _mica_studies_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
   _mica_studies_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
   _mica_studies_form_validate_field($form, $form_state, 'field_data_sources', 'field_data_sources_sp', 'others');
-  
+
   // Add dependent field "Please specify other source of recruitment" to taxonomy checkbox identified by its tid
   $terms = taxonomy_get_term_by_name('Other source', 'sources_of_recruitment');
-  if (!empty($terms)){
-  	$k = array_keys($terms);
-  	_mica_add_dependent_field_checked($form, 'field_recruitment_sources', 'field_recruitment_other', $k[0]);
+  if (!empty($terms)) {
+    $k = array_keys($terms);
+    _mica_add_dependent_field_checked($form, 'field_recruitment_sources', 'field_recruitment_other', $k[0]);
   }
 }
 
@@ -734,15 +734,15 @@ function _mica_studies_form_validate_field($form, &$form_state, $dependee, $depe
     $flang = $flangs[0];
     $values = array();
     foreach ($form_state['values'][$dependee][$flang] as $value) {
-      if (array_key_exists('value', $value)){
-        $values[] = $value['value'];  
+      if (array_key_exists('value', $value)) {
+        $values[] = $value['value'];
       }
-      else if (array_key_exists('tid', $value)){
+      else if (array_key_exists('tid', $value)) {
         $values[] = $value['tid'];
       }
-      
+
     }
-    
+
     if (in_array($selection, $values) == FALSE) {
       $empty_value = array();
       $lgs = array_keys($form_state['values'][$dependent]);
@@ -778,7 +778,7 @@ function _mica_studies_study_current_search(&$data, $block) {
         )
       )
     );
-    foreach($data['content']['field_group'] as $field =>$field_group) {
+    foreach ($data['content']['field_group'] as $field => $field_group) {
       $field_info = field_info_instance('node', $field, 'study');
       if (isset($field_info['display_label']) && strlen(trim($field_info['display_label'])) > 0) {
         $data['content']['field_group'][$field]['title']['#markup'] = '<h4 class="current-search-group-title">'
@@ -808,6 +808,15 @@ function mica_studies_create_default_content() {
 
   $base_path = drupal_get_path('module', 'mica_studies') . '/taxonomies/';
   mica_core_taxonomy_import('sources_of_recruitment.csv', $base_path, 'Source of Recruitment');
-  
+
   mica_core_set_menu_option('study', $study_menu['mlid']);
+}
+
+/**
+ * When creating studies via noderefcreate, set the complete name form the title because of auto_node_title
+ * Implements hook_noderefcreate_alter()
+ */
+function mica_studies_noderefcreate_alter(&$newnode, $element, $form_state) {
+  $wrapper = entity_metadata_wrapper('node', $newnode);
+  $wrapper->field_complete_name->set($wrapper->title->value());
 }
