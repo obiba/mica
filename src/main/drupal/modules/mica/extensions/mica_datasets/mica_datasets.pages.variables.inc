@@ -133,6 +133,9 @@ function mica_datasets_reorder_variables_submit($form, &$form_state) {
       $wrapper = entity_metadata_wrapper('node', $form[$nid]['#variable']);
       $position = $wrapper->field_position->value();
       $new_position = $form_state['values'][$nid]['weight'];
+      if ($new_position >= 0) {
+        $new_position++;
+      }
       if ($position != $new_position) {
         $wrapper = entity_metadata_wrapper('node', $form[$nid]['#variable']);
         $wrapper->field_position->set($new_position);
