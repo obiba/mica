@@ -208,7 +208,7 @@ function mica_datasets_harmonization_legend_form($form, $form_state) {
 function _mica_datasets_harmonization_variable_tooltip($variable) {
   $wrapper = entity_metadata_wrapper('node', $variable);
   $tooltip = '<h4>' . $wrapper->field_label->value() . '</h4>';
-  $body = $wrapper->body->value->value();
+  $body =  $wrapper->body->value() ? $wrapper->body->value->value() : '';
   if (!empty($body)) $tooltip .= $body;
   return $tooltip;
 }
