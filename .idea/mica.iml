@@ -2,6 +2,7 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/target/mica-1 (copy).4-dev" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-dev-local" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-dev/profiles/mica_demo" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-dev/profiles/mica_standard" />
