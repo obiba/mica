@@ -23,7 +23,6 @@ dependencies[] = search_api
 dependencies[] = strongarm
 dependencies[] = view_unpublished
 dependencies[] = views
-dependencies[] = devel
 datestamp = 1340135688
 features[corresponding_node_references][] = network*field_studies*study*field_networks
 features[ctools][] = corresponding_node_references:default_corresponding_node_references_presets:1
