@@ -20,11 +20,18 @@ define('MICA_HARMONIZATION_UNDETERMINED', base_path() . drupal_get_path('module'
 define('MICA_HARMONIZATION_REFRESH', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/refresh.png');
 define('MICA_HARMONIZATION_MISING_TICK', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/tick.png');
 
-
 /**
- * Implements hook_create_default_content().
+ * Creates default content after Features successfully installed
+ * Implements hook_features_rebuild_completed()
  */
-function mica_datasets_create_default_content() {
+function mica_datasets_features_rebuild_completed() {
+  if (!variable_get('mica_datasets_features_rebuild_completed', FALSE)) {
+    _mica_datasets_create_default_content();
+    variable_set('mica_datasets_features_rebuild_completed', TRUE);
+  }
+}
+
+function _mica_datasets_create_default_content() {
   $page = mica_core_add_page(
     st("Datasets"),
     st(

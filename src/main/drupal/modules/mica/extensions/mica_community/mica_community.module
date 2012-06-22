@@ -6,11 +6,18 @@
 
 include_once('mica_community.features.inc');
 
-
 /**
- * Implements hook_create_default_content().
+ * Creates default content after Features successfully installed
+ * Implements hook_features_rebuild_completed()
  */
-function mica_community_create_default_content() {
+function mica_community_features_rebuild_completed() {
+  if (!variable_get('mica_community_features_rebuild_completed', FALSE)) {
+    _mica_community_create_default_content();
+    variable_set('mica_community_features_rebuild_completed', TRUE);
+  }
+}
+
+function _mica_community_create_default_content() {
   mica_core_create_menu(st('Community'), 'community', 'community', FALSE, TRUE, 45, NULL);
   mica_core_create_menu(st('News'), 'news', 'news', FALSE, FALSE, 1, 'community');
   $event_menu = mica_core_create_menu(st('Events'), 'events', 'events', FALSE, FALSE, 2, 'community');
@@ -19,7 +26,7 @@ function mica_community_create_default_content() {
 
   $research_menu = mica_core_find_menu_for_alias('research');
   $publication_menu = mica_core_create_menu(st('Publications'), 'publications', 'publications', FALSE, FALSE, 10, $research_menu->link_path);
-  
+
   mica_core_set_menu_option('event', $event_menu['mlid']);
   mica_core_set_menu_option('publication', $publication_menu['mlid']);
   mica_core_set_menu_option('forum', $forum_menu['mlid']);
