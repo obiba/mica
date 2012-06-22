@@ -35,7 +35,8 @@ function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $
   if ($menu['link_path'] === '<firstchild>') {
     $menu['options']['alter'] = TRUE;
     $menu['options']['unaltered_hidden'] = $menu['hidden'];
-  } else {
+  }
+  else {
     unset($menu['options']['unaltered_hidden']);
   }
 
@@ -127,4 +128,19 @@ function mica_core_find_menu_for_alias($url_alias) {
 
 function mica_core_set_menu_option($type, $menu_mlid) {
   variable_set('menu_parent_' . $type, MAIN_MENU . ':' . $menu_mlid);
+}
+
+function mica_core_disable_menu($menu_path) {
+  $menu = db_query(
+    "SELECT * FROM {menu_links} WHERE link_path = :link_path AND menu_name = :menu_name",
+    array(
+      ':link_path' => $menu_path,
+      ':menu_name' => MAIN_MENU
+    )
+  )->fetchObject();
+  if (!empty($menu)) {
+    $menu->hidden = 1;
+    menu_link_save($menu);
+    menu_cache_clear(MAIN_MENU);
+  }
 }
