@@ -382,6 +382,7 @@ features[variable][] = comment_subject_field_dataset
 features[variable][] = comment_subject_field_study_variable_attributes
 features[variable][] = comment_subject_field_variable
 features[variable][] = comment_variable
+features[variable][] = field_bundle_settings_node__variable
 features[variable][] = language_content_type_dataset
 features[variable][] = language_content_type_variable
 features[variable][] = menu_options_dataset

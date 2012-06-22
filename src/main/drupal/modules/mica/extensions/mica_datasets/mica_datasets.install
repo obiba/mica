@@ -12,7 +12,6 @@ include_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'content_taxonomy') .
  * Implements hook_install().
  */
 function mica_datasets_install() {
-  _mica_datasets_configure_field_bundle_settings();
   mica_core_configure_feeds_tamper('mica_datasets');
 }
 
