@@ -120,5 +120,23 @@ function mica_data_access_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: view any unpublished data_access_request content.
+  $permissions['view any unpublished data_access_request content'] = array(
+    'name' => 'view any unpublished data_access_request content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: view any unpublished data_access_review content.
+  $permissions['view any unpublished data_access_review content'] = array(
+    'name' => 'view any unpublished data_access_review content',
+    'roles' => array(
+      0 => 'administrator',
+    ),
+    'module' => 'view_unpublished',
+  );
+
   return $permissions;
 }
