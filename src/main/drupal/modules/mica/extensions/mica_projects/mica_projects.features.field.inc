@@ -10,7 +10,7 @@
 function mica_projects_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'comment-comment_node_project-comment_body'
+  // Exported field: 'comment-comment_node_project-comment_body'.
   $fields['comment-comment_node_project-comment_body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function mica_projects_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -71,7 +72,7 @@ function mica_projects_field_default_fields() {
     ),
   );
 
-  // Exported field: 'comment-comment_node_teleconference-comment_body'
+  // Exported field: 'comment-comment_node_teleconference-comment_body'.
   $fields['comment-comment_node_teleconference-comment_body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -94,6 +95,7 @@ function mica_projects_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '0',
@@ -132,7 +134,7 @@ function mica_projects_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-project-body'
+  // Exported field: 'node-project-body'.
   $fields['node-project-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -158,6 +160,7 @@ function mica_projects_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -245,7 +248,7 @@ function mica_projects_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-project-field_files'
+  // Exported field: 'node-project-field_files'.
   $fields['node-project-field_files'] = array(
     'field_config' => array(
       'active' => '1',
@@ -266,6 +269,7 @@ function mica_projects_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 1,
@@ -348,7 +352,7 @@ function mica_projects_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-project-field_studies'
+  // Exported field: 'node-project-field_studies'.
   $fields['node-project-field_studies'] = array(
     'field_config' => array(
       'active' => '1',
@@ -369,6 +373,7 @@ function mica_projects_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'field_description_infos' => array(
@@ -461,7 +466,7 @@ function mica_projects_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-project-field_teleconferences'
+  // Exported field: 'node-project-field_teleconferences'.
   $fields['node-project-field_teleconferences'] = array(
     'field_config' => array(
       'active' => '1',
@@ -475,6 +480,7 @@ function mica_projects_field_default_fields() {
           0 => 'view_id',
         ),
       ),
+      'locked' => '0',
       'module' => 'viewreference',
       'settings' => array(
         'append_id' => 0,
@@ -605,7 +611,7 @@ function mica_projects_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-teleconference-field_instructions'
+  // Exported field: 'node-teleconference-field_instructions'.
   $fields['node-teleconference-field_instructions'] = array(
     'field_config' => array(
       'active' => '1',
@@ -626,6 +632,7 @@ function mica_projects_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -702,7 +709,7 @@ function mica_projects_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-teleconference-field_minutes'
+  // Exported field: 'node-teleconference-field_minutes'.
   $fields['node-teleconference-field_minutes'] = array(
     'field_config' => array(
       'active' => '1',
@@ -723,6 +730,7 @@ function mica_projects_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 0,
@@ -804,7 +812,7 @@ function mica_projects_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-teleconference-field_project'
+  // Exported field: 'node-teleconference-field_project'.
   $fields['node-teleconference-field_project'] = array(
     'field_config' => array(
       'active' => '1',
@@ -825,6 +833,7 @@ function mica_projects_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'field_description_infos' => array(
@@ -927,7 +936,7 @@ function mica_projects_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-teleconference-field_teleconference_date'
+  // Exported field: 'node-teleconference-field_teleconference_date'.
   $fields['node-teleconference-field_teleconference_date'] = array(
     'field_config' => array(
       'active' => '1',
@@ -937,6 +946,7 @@ function mica_projects_field_default_fields() {
       'field_name' => 'field_teleconference_date',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'field_description_infos' => array(
@@ -1040,7 +1050,7 @@ function mica_projects_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-teleconference-field_teleconference_description'
+  // Exported field: 'node-teleconference-field_teleconference_description'.
   $fields['node-teleconference-field_teleconference_description'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1061,6 +1071,7 @@ function mica_projects_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
