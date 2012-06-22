@@ -6,11 +6,18 @@
 
 include_once('mica_data_access.features.inc');
 
-
 /**
- * Implements hook_create_default_content().
+ * Creates default content after Features successfully installed
+ * Implements hook_features_rebuild_completed()
  */
-function mica_data_access_create_default_content() {
+function mica_data_access_features_rebuild_completed() {
+  if (!variable_get('mica_data_access_features_rebuild_completed', FALSE)) {
+    _mica_data_access_create_default_content();
+    variable_set('mica_data_access_features_rebuild_completed', TRUE);
+  }
+}
+
+function _mica_data_access_create_default_content() {
 
   $data_access_page = mica_core_add_page(
     st('Data Access'),
@@ -88,6 +95,7 @@ function mica_data_access_node_access($node, $op, $account) {
   if ($type === 'data_access_request' && $op === 'update' && !mica_data_access_can_edit_request($node)) {
     return NODE_ACCESS_DENY;
   }
+  return NODE_ACCESS_IGNORE;
 }
 
 /**

@@ -55,8 +55,6 @@ function _mica_configuration_batch() {
     $operations[] = array('feeds_batch', array('import', $source->id, $source->feed_nid));
   }
 
-  $operations[] = array('_create_default_content', array());
-
   $operations[] = array('_import_taxonomies', array());
 
   // prepare permissions rebuild
@@ -83,12 +81,6 @@ function _mica_configuration_batch() {
 function _import_taxonomies(&$context) {
   module_invoke_all('taxonomies_operations_import');
   $context['message'] = st('Created default taxonomies.');
-}
-
-function _create_default_content(&$context) {
-  drupal_flush_all_caches();
-  module_invoke_all('create_default_content');
-  $context['message'] = st('Created default content.');
 }
 
 /**

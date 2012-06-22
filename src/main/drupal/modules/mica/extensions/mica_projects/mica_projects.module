@@ -8,9 +8,17 @@ include_once('mica_projects.features.inc');
 
 
 /**
- * Implements hook_create_default_content().
+ * Creates default content after Features successfully installed
+ * Implements hook_features_rebuild_completed()
  */
-function mica_projects_create_default_content() {
+function mica_projects_features_rebuild_completed() {
+  if (!variable_get('mica_projects_features_rebuild_completed', FALSE)) {
+    _mica_projects_create_default_content();
+    variable_set('mica_projects_features_rebuild_completed', TRUE);
+  }
+}
+
+function _mica_projects_create_default_content() {
   $research_menu = mica_core_find_menu_for_alias('research');
   $project_menu = mica_core_create_menu(st('Projects'), 'projects', 'projects', FALSE, FALSE, 2, $research_menu->link_path);
   
