@@ -138,7 +138,7 @@ function mica_datasets_default_search_api_index() {
               }
             }
           }
-      },
+        },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
       },
