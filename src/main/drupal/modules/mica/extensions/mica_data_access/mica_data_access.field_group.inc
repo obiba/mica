@@ -10,7 +10,7 @@
 function mica_data_access_field_group_info() {
   $export = array();
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_institution|node|data_access_request|default';
@@ -41,7 +41,7 @@ function mica_data_access_field_group_info() {
   );
   $export['group_institution|node|data_access_request|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_institution|node|data_access_request|form';
@@ -72,7 +72,7 @@ function mica_data_access_field_group_info() {
   );
   $export['group_institution|node|data_access_request|form'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_investigators|node|data_access_request|default';
@@ -100,7 +100,7 @@ function mica_data_access_field_group_info() {
   );
   $export['group_investigators|node|data_access_request|default'] = $field_group;
 
-  $field_group = new stdClass;
+  $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_investigators|node|data_access_request|form';

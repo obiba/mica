@@ -10,7 +10,7 @@
 function mica_data_access_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-contact-field_daco'
+  // Exported field: 'node-contact-field_daco'.
   $fields['node-contact-field_daco'] = array(
     'field_config' => array(
       'active' => '1',
@@ -27,6 +27,7 @@ function mica_data_access_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -93,7 +94,7 @@ function mica_data_access_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-data_access_request-field_city'
+  // Exported field: 'node-data_access_request-field_city'.
   $fields['node-data_access_request-field_city'] = array(
     'field_config' => array(
       'active' => '1',
@@ -117,6 +118,7 @@ function mica_data_access_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -176,7 +178,7 @@ function mica_data_access_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-data_access_request-field_collaborator'
+  // Exported field: 'node-data_access_request-field_collaborator'.
   $fields['node-data_access_request-field_collaborator'] = array(
     'field_config' => array(
       'active' => '1',
@@ -193,6 +195,7 @@ function mica_data_access_field_default_fields() {
           0 => 'given',
         ),
       ),
+      'locked' => '0',
       'module' => 'name',
       'settings' => array(
         'autocomplete_separator' => array(
@@ -307,9 +310,17 @@ Prof.',
           'label' => 'above',
           'module' => 'name',
           'settings' => array(
+            'format' => 'default',
             'markup' => 0,
+            'multiple' => 'default',
+            'multiple_and' => 'text',
+            'multiple_delimiter' => ', ',
+            'multiple_delimiter_precedes_last' => 'never',
+            'multiple_el_al_first' => 1,
+            'multiple_el_al_min' => 3,
+            'output' => 'default',
           ),
-          'type' => 'name_default',
+          'type' => 'name_formatter',
           'weight' => '4',
         ),
         'teaser' => array(
@@ -374,7 +385,7 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-data_access_request-field_country_text'
+  // Exported field: 'node-data_access_request-field_country_text'.
   $fields['node-data_access_request-field_country_text'] = array(
     'field_config' => array(
       'active' => '1',
@@ -395,6 +406,7 @@ Prof.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -454,7 +466,7 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-data_access_request-field_data_access_review'
+  // Exported field: 'node-data_access_request-field_data_access_review'.
   $fields['node-data_access_request-field_data_access_review'] = array(
     'field_config' => array(
       'active' => '1',
@@ -475,6 +487,7 @@ Prof.',
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'field_description_infos' => array(
@@ -503,9 +516,9 @@ Prof.',
           'institution' => 0,
           'page' => 0,
           'panel' => 0,
-          'variable' => 0,
           'publication' => 0,
           'study' => 0,
+          'variable' => 0,
         ),
         'view' => array(
           'args' => array(),
@@ -556,7 +569,7 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-data_access_request-field_dataset_access'
+  // Exported field: 'node-data_access_request-field_dataset_access'.
   $fields['node-data_access_request-field_dataset_access'] = array(
     'field_config' => array(
       'active' => '1',
@@ -577,6 +590,7 @@ Prof.',
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'field_description_infos' => array(
@@ -605,11 +619,11 @@ Prof.',
           'institution' => 0,
           'page' => 0,
           'panel' => 0,
-          'variable' => 0,
           'project' => 0,
           'publication' => 0,
           'study' => 0,
           'teleconference' => 0,
+          'variable' => 0,
         ),
         'view' => array(
           'args' => array(),
@@ -657,7 +671,7 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-data_access_request-field_institution_name'
+  // Exported field: 'node-data_access_request-field_institution_name'.
   $fields['node-data_access_request-field_institution_name'] = array(
     'field_config' => array(
       'active' => '1',
@@ -681,6 +695,7 @@ Prof.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -740,7 +755,7 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-data_access_request-field_postal_code'
+  // Exported field: 'node-data_access_request-field_postal_code'.
   $fields['node-data_access_request-field_postal_code'] = array(
     'field_config' => array(
       'active' => '1',
@@ -764,6 +779,7 @@ Prof.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -823,7 +839,7 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-data_access_request-field_project_summary'
+  // Exported field: 'node-data_access_request-field_project_summary'.
   $fields['node-data_access_request-field_project_summary'] = array(
     'field_config' => array(
       'active' => '1',
@@ -844,6 +860,7 @@ Prof.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -904,7 +921,7 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-data_access_request-field_rep_email'
+  // Exported field: 'node-data_access_request-field_rep_email'.
   $fields['node-data_access_request-field_rep_email'] = array(
     'field_config' => array(
       'active' => '1',
@@ -914,6 +931,7 @@ Prof.',
       'field_name' => 'field_rep_email',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'email',
       'settings' => array(
         'field_description_infos' => array(
@@ -971,7 +989,7 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-data_access_request-field_representative'
+  // Exported field: 'node-data_access_request-field_representative'.
   $fields['node-data_access_request-field_representative'] = array(
     'field_config' => array(
       'active' => '1',
@@ -988,6 +1006,7 @@ Prof.',
           0 => 'given',
         ),
       ),
+      'locked' => '0',
       'module' => 'name',
       'settings' => array(
         'autocomplete_separator' => array(
@@ -1102,9 +1121,17 @@ Prof.',
           'label' => 'above',
           'module' => 'name',
           'settings' => array(
+            'format' => 'default',
             'markup' => 0,
+            'multiple' => 'default',
+            'multiple_and' => 'text',
+            'multiple_delimiter' => ', ',
+            'multiple_delimiter_precedes_last' => 'never',
+            'multiple_el_al_first' => 1,
+            'multiple_el_al_min' => 3,
+            'output' => 'default',
           ),
-          'type' => 'name_default',
+          'type' => 'name_formatter',
           'weight' => '2',
         ),
         'teaser' => array(
@@ -1169,7 +1196,7 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-data_access_request-field_state'
+  // Exported field: 'node-data_access_request-field_state'.
   $fields['node-data_access_request-field_state'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1193,6 +1220,7 @@ Prof.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -1247,7 +1275,7 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-data_access_request-field_street'
+  // Exported field: 'node-data_access_request-field_street'.
   $fields['node-data_access_request-field_street'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1268,6 +1296,7 @@ Prof.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -1327,7 +1356,7 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-data_access_review-field_data_access'
+  // Exported field: 'node-data_access_review-field_data_access'.
   $fields['node-data_access_review-field_data_access'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1348,6 +1377,7 @@ Prof.',
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'field_description_infos' => array(
@@ -1376,9 +1406,9 @@ Prof.',
           'institution' => 0,
           'page' => 0,
           'panel' => 0,
-          'variable' => 0,
           'publication' => 0,
           'study' => 0,
+          'variable' => 0,
         ),
         'view' => array(
           'args' => array(),
@@ -1430,7 +1460,7 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-data_access_review-field_review_notes'
+  // Exported field: 'node-data_access_review-field_review_notes'.
   $fields['node-data_access_review-field_review_notes'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1451,6 +1481,7 @@ Prof.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -1509,7 +1540,7 @@ Prof.',
     ),
   );
 
-  // Exported field: 'node-data_access_review-field_review_status'
+  // Exported field: 'node-data_access_review-field_review_status'.
   $fields['node-data_access_review-field_review_status'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1523,6 +1554,7 @@ Prof.',
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
