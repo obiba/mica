@@ -10,7 +10,7 @@
 function mica_projects_feeds_tamper_default() {
   $export = array();
 
-  $feeds_tamper = new stdClass;
+  $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'csv_project_import-field_files-explode';
@@ -26,7 +26,7 @@ function mica_projects_feeds_tamper_default() {
   $feeds_tamper->description = 'Explode';
   $export['csv_project_import-field_files-explode'] = $feeds_tamper;
 
-  $feeds_tamper = new stdClass;
+  $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'csv_project_import-field_studies-explode';

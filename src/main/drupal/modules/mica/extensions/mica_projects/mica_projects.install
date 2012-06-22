@@ -9,7 +9,6 @@
  * Implements hook_install().
  */
 function mica_projects_install() {
-  _mica_projects_configure_field_bundle_settings();
   mica_core_configure_feeds_tamper('mica_projects');
 }
 
