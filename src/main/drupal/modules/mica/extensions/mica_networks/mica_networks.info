@@ -1,5 +1,5 @@
 name = Mica Networks
-description = Mica Networks module
+description = Module for managing several study consortia or networks within a single Mica instance.
 core = 7.x
 package = OBiBa
 php = 5.2.4
