@@ -249,7 +249,7 @@ projects[strongarm][patch][1525768] = http://drupal.org/files/print_stdclass_var
 projects[taxonomy_csv][version] = 5.10
 projects[taxonomy_csv][type] = module
 
-projects[taxonomy_manager][version] = 1.0-beta2
+projects[taxonomy_manager][version] = 1.0-beta3
 projects[taxonomy_manager][type] = module
 
 projects[title][type] = module
