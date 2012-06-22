@@ -73,8 +73,11 @@ function mica_block_view($delta = '') {
   $block = array();
   switch ($delta) {
     case 'powered-by-mica':
+      $info = drupal_parse_info_file(drupal_get_path('module', 'mica_core') . '/mica_core.info');
+      $version = str_replace('7.x-', '', $info['version']);
       $block['subject'] = NULL;
-      $block['content'] = '<span>' . t('Powered by <a href="@poweredby">Mica</a>', array('@poweredby' => 'http://obiba.org')) . '</span>';
+      $block['content'] = '<span>' . t('Powered by <a href="@poweredby">Mica @version</a>',
+        array('@poweredby' => 'http://obiba.org/node/174', '@version' => $version)) . '</span>';
       break;
 
     case 'mica-search':
