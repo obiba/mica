@@ -10,7 +10,7 @@
 function mica_community_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-event-body'
+  // Exported field: 'node-event-body'.
   $fields['node-event-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -36,6 +36,7 @@ function mica_community_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -135,7 +136,7 @@ function mica_community_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-event-field_event_date'
+  // Exported field: 'node-event-field_event_date'.
   $fields['node-event-field_event_date'] = array(
     'field_config' => array(
       'active' => '1',
@@ -145,6 +146,7 @@ function mica_community_field_default_fields() {
       'field_name' => 'field_event_date',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'granularity' => array(
@@ -270,7 +272,7 @@ function mica_community_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-event-field_event_files'
+  // Exported field: 'node-event-field_event_files'.
   $fields['node-event-field_event_files'] = array(
     'field_config' => array(
       'active' => '1',
@@ -294,6 +296,7 @@ function mica_community_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 1,
@@ -364,7 +367,7 @@ function mica_community_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-event-field_event_link'
+  // Exported field: 'node-event-field_event_link'.
   $fields['node-event-field_event_link'] = array(
     'field_config' => array(
       'active' => '1',
@@ -374,6 +377,7 @@ function mica_community_field_default_fields() {
       'field_name' => 'field_event_link',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -487,7 +491,7 @@ function mica_community_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-publication-field_abstract'
+  // Exported field: 'node-publication-field_abstract'.
   $fields['node-publication-field_abstract'] = array(
     'field_config' => array(
       'active' => '1',
@@ -508,6 +512,7 @@ function mica_community_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -586,7 +591,7 @@ function mica_community_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-publication-field_authors'
+  // Exported field: 'node-publication-field_authors'.
   $fields['node-publication-field_authors'] = array(
     'field_config' => array(
       'active' => '1',
@@ -607,6 +612,7 @@ function mica_community_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -685,7 +691,7 @@ function mica_community_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-publication-field_publication_pmid'
+  // Exported field: 'node-publication-field_publication_pmid'.
   $fields['node-publication-field_publication_pmid'] = array(
     'field_config' => array(
       'active' => '1',
@@ -695,6 +701,7 @@ function mica_community_field_default_fields() {
       'field_name' => 'field_publication_pmid',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'number',
       'settings' => array(
         'field_description_infos' => array(
@@ -773,7 +780,7 @@ function mica_community_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-publication-field_publication_reference'
+  // Exported field: 'node-publication-field_publication_reference'.
   $fields['node-publication-field_publication_reference'] = array(
     'field_config' => array(
       'active' => '1',
@@ -794,6 +801,7 @@ function mica_community_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -872,7 +880,7 @@ function mica_community_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-publication-field_publication_url'
+  // Exported field: 'node-publication-field_publication_url'.
   $fields['node-publication-field_publication_url'] = array(
     'field_config' => array(
       'active' => '1',
@@ -882,6 +890,7 @@ function mica_community_field_default_fields() {
       'field_name' => 'field_publication_url',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
