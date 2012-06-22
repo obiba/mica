@@ -51,7 +51,7 @@ function mica_studies_views_api() {
 function mica_studies_image_default_styles() {
   $styles = array();
 
-  // Exported image style: study_logo
+  // Exported image style: study_logo.
   $styles['study_logo'] = array(
     'name' => 'study_logo',
     'effects' => array(
