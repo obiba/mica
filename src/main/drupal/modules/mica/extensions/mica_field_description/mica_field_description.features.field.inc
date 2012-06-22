@@ -10,7 +10,7 @@
 function mica_field_description_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-field_description-body'
+  // Exported field: 'node-field_description-body'.
   $fields['node-field_description-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -36,6 +36,7 @@ function mica_field_description_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -122,7 +123,7 @@ function mica_field_description_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-field_description-field_bundle'
+  // Exported field: 'node-field_description-field_bundle'.
   $fields['node-field_description-field_bundle'] = array(
     'field_config' => array(
       'active' => '1',
@@ -143,6 +144,7 @@ function mica_field_description_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_permissions' => array(
@@ -214,7 +216,7 @@ function mica_field_description_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-field_description-field_bundle_label'
+  // Exported field: 'node-field_description-field_bundle_label'.
   $fields['node-field_description-field_bundle_label'] = array(
     'field_config' => array(
       'active' => '1',
@@ -235,6 +237,7 @@ function mica_field_description_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_permissions' => array(
@@ -307,7 +310,7 @@ function mica_field_description_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-field_description-field_categories'
+  // Exported field: 'node-field_description-field_categories'.
   $fields['node-field_description-field_categories'] = array(
     'field_config' => array(
       'active' => '1',
@@ -328,6 +331,7 @@ function mica_field_description_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
@@ -405,7 +409,7 @@ function mica_field_description_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-field_description-field_original_field_label'
+  // Exported field: 'node-field_description-field_original_field_label'.
   $fields['node-field_description-field_original_field_label'] = array(
     'field_config' => array(
       'active' => '1',
@@ -426,6 +430,7 @@ function mica_field_description_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_permissions' => array(
@@ -498,7 +503,7 @@ function mica_field_description_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-field_description-field_original_field_name'
+  // Exported field: 'node-field_description-field_original_field_name'.
   $fields['node-field_description-field_original_field_name'] = array(
     'field_config' => array(
       'active' => '1',
@@ -519,6 +524,7 @@ function mica_field_description_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'field_permissions' => array(
@@ -590,7 +596,7 @@ function mica_field_description_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-field_description-field_repeatable'
+  // Exported field: 'node-field_description-field_repeatable'.
   $fields['node-field_description-field_repeatable'] = array(
     'field_config' => array(
       'active' => '1',
@@ -607,6 +613,7 @@ function mica_field_description_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -692,7 +699,7 @@ function mica_field_description_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-field_description-field_value_type'
+  // Exported field: 'node-field_description-field_value_type'.
   $fields['node-field_description-field_value_type'] = array(
     'field_config' => array(
       'active' => '1',
@@ -709,6 +716,7 @@ function mica_field_description_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
