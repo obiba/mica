@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * mica_studies.features.menu_custom.inc
+ * mica_core.features.menu_custom.inc
  */
 
 /**
@@ -10,7 +10,7 @@
 function mica_core_menu_default_menu_custom() {
   $menus = array();
 
-  // Exported menu: main-menu
+  // Exported menu: main-menu.
   $menus['main-menu'] = array(
     'menu_name' => 'main-menu',
     'title' => 'Main menu',
