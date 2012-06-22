@@ -141,147 +141,189 @@ function mica_datasets_user_default_permissions() {
   // Exported permission: delete terms in anthropometric_structures.
   $permissions['delete terms in anthropometric_structures'] = array(
     'name' => 'delete terms in anthropometric_structures',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in body_functions.
   $permissions['delete terms in body_functions'] = array(
     'name' => 'delete terms in body_functions',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in body_structures.
   $permissions['delete terms in body_structures'] = array(
     'name' => 'delete terms in body_structures',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in data_source.
   $permissions['delete terms in data_source'] = array(
     'name' => 'delete terms in data_source',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in disease_history.
   $permissions['delete terms in disease_history'] = array(
     'name' => 'delete terms in disease_history',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in early_life.
   $permissions['delete terms in early_life'] = array(
     'name' => 'delete terms in early_life',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in essence.
   $permissions['delete terms in essence'] = array(
     'name' => 'delete terms in essence',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in individual_participant_measures.
   $permissions['delete terms in individual_participant_measures'] = array(
     'name' => 'delete terms in individual_participant_measures',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in laboratory_measures.
   $permissions['delete terms in laboratory_measures'] = array(
     'name' => 'delete terms in laboratory_measures',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in life_habits_behaviours.
   $permissions['delete terms in life_habits_behaviours'] = array(
     'name' => 'delete terms in life_habits_behaviours',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in measure.
   $permissions['delete terms in measure'] = array(
     'name' => 'delete terms in measure',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in medical_health_intervention.
   $permissions['delete terms in medical_health_intervention'] = array(
     'name' => 'delete terms in medical_health_intervention',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in medication.
   $permissions['delete terms in medication'] = array(
     'name' => 'delete terms in medication',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in perception_of_health.
   $permissions['delete terms in perception_of_health'] = array(
     'name' => 'delete terms in perception_of_health',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in period.
   $permissions['delete terms in period'] = array(
     'name' => 'delete terms in period',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in physical_environment.
   $permissions['delete terms in physical_environment'] = array(
     'name' => 'delete terms in physical_environment',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in reproductive_history.
   $permissions['delete terms in reproductive_history'] = array(
     'name' => 'delete terms in reproductive_history',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in social_environment.
   $permissions['delete terms in social_environment'] = array(
     'name' => 'delete terms in social_environment',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in sociodemographic_characteristics.
   $permissions['delete terms in sociodemographic_characteristics'] = array(
     'name' => 'delete terms in sociodemographic_characteristics',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in sources_of_recruitment.
   $permissions['delete terms in sources_of_recruitment'] = array(
     'name' => 'delete terms in sources_of_recruitment',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: delete terms in target.
   $permissions['delete terms in target'] = array(
     'name' => 'delete terms in target',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -363,147 +405,189 @@ function mica_datasets_user_default_permissions() {
   // Exported permission: edit terms in anthropometric_structures.
   $permissions['edit terms in anthropometric_structures'] = array(
     'name' => 'edit terms in anthropometric_structures',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in body_functions.
   $permissions['edit terms in body_functions'] = array(
     'name' => 'edit terms in body_functions',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in body_structures.
   $permissions['edit terms in body_structures'] = array(
     'name' => 'edit terms in body_structures',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in data_source.
   $permissions['edit terms in data_source'] = array(
     'name' => 'edit terms in data_source',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in disease_history.
   $permissions['edit terms in disease_history'] = array(
     'name' => 'edit terms in disease_history',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in early_life.
   $permissions['edit terms in early_life'] = array(
     'name' => 'edit terms in early_life',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in essence.
   $permissions['edit terms in essence'] = array(
     'name' => 'edit terms in essence',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in individual_participant_measures.
   $permissions['edit terms in individual_participant_measures'] = array(
     'name' => 'edit terms in individual_participant_measures',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in laboratory_measures.
   $permissions['edit terms in laboratory_measures'] = array(
     'name' => 'edit terms in laboratory_measures',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in life_habits_behaviours.
   $permissions['edit terms in life_habits_behaviours'] = array(
     'name' => 'edit terms in life_habits_behaviours',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in measure.
   $permissions['edit terms in measure'] = array(
     'name' => 'edit terms in measure',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in medical_health_intervention.
   $permissions['edit terms in medical_health_intervention'] = array(
     'name' => 'edit terms in medical_health_intervention',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in medication.
   $permissions['edit terms in medication'] = array(
     'name' => 'edit terms in medication',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in perception_of_health.
   $permissions['edit terms in perception_of_health'] = array(
     'name' => 'edit terms in perception_of_health',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in period.
   $permissions['edit terms in period'] = array(
     'name' => 'edit terms in period',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in physical_environment.
   $permissions['edit terms in physical_environment'] = array(
     'name' => 'edit terms in physical_environment',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in reproductive_history.
   $permissions['edit terms in reproductive_history'] = array(
     'name' => 'edit terms in reproductive_history',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in social_environment.
   $permissions['edit terms in social_environment'] = array(
     'name' => 'edit terms in social_environment',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in sociodemographic_characteristics.
   $permissions['edit terms in sociodemographic_characteristics'] = array(
     'name' => 'edit terms in sociodemographic_characteristics',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in sources_of_recruitment.
   $permissions['edit terms in sources_of_recruitment'] = array(
     'name' => 'edit terms in sources_of_recruitment',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
   // Exported permission: edit terms in target.
   $permissions['edit terms in target'] = array(
     'name' => 'edit terms in target',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'administrator',
+    ),
     'module' => 'taxonomy',
   );
 
