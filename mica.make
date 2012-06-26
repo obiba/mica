@@ -140,8 +140,9 @@ projects[] = graphapi
 projects[http_client][version] = 2.3
 projects[http_client][type] = module
 
-projects[i18n][version] = 1.5
+projects[i18n][version] = 1.6
 projects[i18n][type] = module
+;projects[noderefcreate][patch][1350638] = http://drupal.org/files/i18n-hide_language_by_default-1350638-5.patch
 
 projects[image_url_formatter][version] = 1.0
 projects[image_url_formatter][type] = module
@@ -264,7 +265,7 @@ projects[title][type] = module
 projects[token][version] = 1.1
 projects[token][type] = module
 
-projects[variable][version] = 1.1
+projects[variable][version] = 2.0
 projects[variable][type] = module
 
 projects[view_unpublished][version] = 1.1
