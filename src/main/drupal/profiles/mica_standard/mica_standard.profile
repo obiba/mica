@@ -55,7 +55,7 @@ function _mica_configuration_batch() {
     $operations[] = array('feeds_batch', array('import', $source->id, $source->feed_nid));
   }
 
-  $operations[] = array('_import_taxonomies', array());
+  $operations = array_merge($operations, module_invoke_all('taxonomies_operations_import'));
 
   // prepare permissions rebuild
   $mica_length = strlen('mica_');
@@ -78,10 +78,6 @@ function _mica_configuration_batch() {
   return $batch;
 }
 
-function _import_taxonomies(&$context) {
-  module_invoke_all('taxonomies_operations_import');
-  $context['message'] = st('Created default taxonomies.');
-}
 
 /**
  * Application of user permissions by features fails at modules installation.

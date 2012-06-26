@@ -34,9 +34,10 @@ function _mica_datasets_taxonomies() {
  * Implements hook_taxonomies_operations_import()
  */
 function mica_datasets_taxonomies_operations_import() {
-	$operations = array();
-	foreach (_mica_datasets_taxonomies() as $taxonomy) {
-		$operations[] = array('mica_core_taxonomy_import', $taxonomy);
+  $base_path = drupal_get_path('module', 'mica_datasets') . '/taxonomies/';
+  $operations = array();
+  foreach (_mica_datasets_taxonomies() as $taxonomy) {
+		$operations[] = array('mica_core_taxonomy_import', array($taxonomy[0], $base_path, $taxonomy[1]));
 	}
 	return $operations;
 }

@@ -252,11 +252,8 @@ projects[taxonomy_csv][type] = module
 projects[taxonomy_manager][version] = 1.0-beta3
 projects[taxonomy_manager][type] = module
 
+projects[title][version] = 1.0-alpha3
 projects[title][type] = module
-projects[title][download][type] = git
-projects[title][download][revision] = 5cfda9b
-projects[title][download][branch] = 7.x-1.x
-projects[title][patch][1362790] = http://drupal.org/files/check_if_legacy_field_is_set-1362790-1.patch
 
 projects[token][version] = 1.1
 projects[token][type] = module
