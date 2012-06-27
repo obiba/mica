@@ -278,6 +278,8 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
     'type' => $field_index_type,
   );
 
+  debug($fields, '$fields');
+
   search_api_index_edit_fields($index->id, $fields);
 
   if ($reindex) {
