@@ -39,7 +39,7 @@ function _mica_configuration_batch() {
   $default_data = array(
     'csv_field_description_import' => array('file' => 'profiles/mica_standard/data/field_description_import.csv')
   );
-  foreach($default_data as $importer => $file) {
+  foreach ($default_data as $importer => $file) {
     $source = feeds_source($importer);
     foreach ($source->importer->plugin_types as $type) {
       if ($source->importer->$type->hasSourceConfig()) {
@@ -61,12 +61,17 @@ function _mica_configuration_batch() {
   $mica_length = strlen('mica_');
   foreach (module_list() as $module) {
     if (substr($module, 0, $mica_length) === 'mica_') {
-      $operations[] = array('_rebuild_user_permission', array($module));
+      if (module_exists($module)) {
+        $operations[] = array('_rebuild_user_permission', array($module));
+      }
     }
   }
 
   $operations[] = array('_studies_block_configuration', array());
-  $operations[] = array('_datasets_block_configuration', array());
+
+  if (module_exists('mica_datasets')) {
+    $operations[] = array('_datasets_block_configuration', array());
+  }
 
   $batch = array(
     'operations' => $operations,

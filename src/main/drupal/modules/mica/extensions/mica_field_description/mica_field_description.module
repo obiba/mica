@@ -30,9 +30,21 @@ function mica_field_description_node_presave($node) {
     $wrapper = entity_metadata_wrapper('node', $node);
     $bundle = $wrapper->field_bundle->value();
     $indexes = mica_core_find_indexes_by_bundle();
+
     if (isset($indexes[$bundle]) && !empty($indexes[$bundle])) {
       foreach ($indexes[$bundle] as $index_machine_name => $index_name) {
         _mica_field_description_add_field_index($index_machine_name, $node);
+      }
+    }
+    else {
+      $relation = mica_relation_find_relation_by_child($bundle);
+      if (!empty($relation)) {
+        $parent_bundle = $relation->parent_bundle;
+        if (isset($indexes[$parent_bundle]) && !empty($indexes[$parent_bundle])) {
+          foreach ($indexes[$parent_bundle] as $index_machine_name => $index_name) {
+            _mica_field_description_add_field_index($index_machine_name, $node);
+          }
+        }
       }
     }
   }
@@ -253,6 +265,8 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
   $fields[$field_name] = array(
     'type' => $field_index_type,
   );
+
+  debug($fields, '$fields');
 
   search_api_index_edit_fields($index->id, $fields);
 
