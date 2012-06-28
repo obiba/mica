@@ -65,6 +65,9 @@ function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $
  * @param $default_parent_path used if no menu was configured for this node type
  */
 function mica_core_create_node_default_menu($node, $hidden = FALSE, $expanded = FALSE, $weight = 0, $default_parent_path = '') {
+
+  if(empty($node)) return NULL;
+
   // create menu based on content type menu config
   $menu = isset($node->menu) ? $node->menu : array();
 

@@ -22,14 +22,12 @@
  */
 function mica_help($path, $arg) {
   switch ($path) {
-    case "admin/help#mica":
-      return '<p>' //
-        . t("Mica Documentation can be found here:") . '</p>' //
-        . '<ul>' //
-        . ' <li><a href="http://wiki.obiba.org/display/MICADOC/Mica+Administration+Guide">' . t('Mica Administration Guide') . '</a></li>' //
-        . ' <li><a href="http://wiki.obiba.org/display/MICADOC/Mica+User+Guide">' . t('Mica User Guide') . '</a></li>' //
+    case 'admin/help#mica':
+      return '<p>' . t('Mica Documentation can be found here:') . '</p>'
+        . '<ul>'
+        . ' <li><a href="http://wiki.obiba.org/display/MICADOC/Mica+Administration+Guide">' . t('Mica Administration Guide') . '</a></li>'
+        . ' <li><a href="http://wiki.obiba.org/display/MICADOC/Mica+User+Guide">' . t('Mica User Guide') . '</a></li>'
         . '</ul>';
-      break;
   }
 }
 
@@ -76,8 +74,14 @@ function mica_block_view($delta = '') {
       $info = drupal_parse_info_file(drupal_get_path('module', 'mica_core') . '/mica_core.info');
       $version = str_replace('7.x-', '', $info['version']);
       $block['subject'] = NULL;
-      $block['content'] = '<span>' . t('Powered by <a href="@poweredby">Mica @version</a>',
-        array('@poweredby' => 'http://obiba.org/node/174', '@version' => $version)) . '</span>';
+      $block['content'] = '<span>'
+        . t('Powered by <a href="@poweredby">Mica @version</a>',
+          array(
+            '@poweredby' => 'http://obiba.org/node/174',
+            '@version' => $version
+          )
+        )
+        . '</span>';
       break;
 
     case 'mica-search':

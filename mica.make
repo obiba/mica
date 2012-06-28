@@ -216,9 +216,6 @@ projects[search_api][type] = module
 projects[search_api][patch][1363114] = http://drupal.org/files/max_inclusive-1363114-5.patch
 projects[search_api][patch][1617794] = http://drupal.org/files/search_api-view_unpublished-support-1617794-6.patch
 
-projects[search_api_db][version] = 1.0-beta2
-projects[search_api_db][type] = module
-
 projects[search_api_combined][version] = 1.0-alpha1
 projects[search_api_combined][type] = module
 

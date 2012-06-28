@@ -38,7 +38,7 @@ mica_samara_version=$(mica_version)
 # Mysql db access
 #
 db_user=root
-db_pass=rootadmin
+db_pass=1234
 
 #
 # Build
@@ -306,6 +306,9 @@ coder:
 	drush dl grammar_parser_lib && \
  	drush en coder* --yes
 
+dump:
+	mysqldump -u $(db_user) --password=$(db_pass) --hex-blob mica --result-file="mica.sql" 
+
 git: git-prepare git-modules git-themes git-profiles
 
 git-prepare:
@@ -363,6 +366,34 @@ help:
 	@echo "  " `drush version`
 	@echo
 
+#
+# Release to Drupal.org
+#
+release: release-mica release-mica-dist
+
+release-mica:
+	rm -rf target/drupal.org && \
+	mkdir -p target/drupal.org && \
+	git clone $(drupal_org_mica) target/drupal.org/mica && \
+	cd target/drupal.org/mica && \
+	git rm -rf * && \
+	cp -r ../../../src/main/drupal/modules/mica/* . && \
+	git add . && \
+	git commit -m "Release Mica $(version)" && \
+	cd ../../..
+
+release-mica-dist:
+	rm -rf target/drupal.org && \
+	mkdir -p target/drupal.org && \
+	git clone $(drupal_org_mica_dist) target/drupal.org/mica_dist && \
+	cd target/drupal.org/mica_dist && \
+	git rm -rf * && \
+	cp -r ../../../src/main/drupal/profiles/mica_standard/* . && \
+	cp -r ../../../src/main/drupal/themes . && \
+	git add . && \
+	git commit -m "Release Mica Distribution $(version)" && \
+	cd ../../..
+
 
 #
 # Functions
@@ -410,3 +441,6 @@ deb_date=$(shell date -R)
 datestamp=$(shell date +%s)
 drushexec=drush
 drushmake_exec=drush make
+drupal_org_mica=/home/cthiebault/workspace/mica-drupal/mica
+drupal_org_mica_dist=/home/cthiebault/workspace/mica-drupal/mica_dist
+
