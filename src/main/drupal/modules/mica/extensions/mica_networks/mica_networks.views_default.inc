@@ -52,6 +52,15 @@ function mica_networks_views_default_views() {
   $handler->display->display_options['style_options']['override'] = 1;
   $handler->display->display_options['style_options']['sticky'] = 0;
   $handler->display->display_options['style_options']['empty_table'] = 0;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = 'This page is meant for managing several study consortia or networks within a single Mica instance.  Each study of a network is linked to its own entry in the Mica Study Catalog. Simply deactivate the Mica Network Module if this section is not relevant for your project.
+<br/>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['header']['area']['tokenize'] = 0;
   /* Field: Indexed Node: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_network_index';
