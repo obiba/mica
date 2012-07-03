@@ -69,7 +69,6 @@ features[variable][] = comment_preview_network
 features[variable][] = comment_subject_field_network
 features[variable][] = field_bundle_settings_node__network
 features[variable][] = menu_options_network
-features[variable][] = menu_parent_network
 features[variable][] = node_options_network
 features[variable][] = node_preview_network
 features[variable][] = node_submitted_network
