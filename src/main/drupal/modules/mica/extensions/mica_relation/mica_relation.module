@@ -395,9 +395,6 @@ function _mica_relation_configure($relation, $new_type, $name) {
 
   // set reference node and relation only at creation
   $relation->options['node_reference'] = 'mica_' . $new_type;
-  $relation->options['relation'] = $relation->parent_bundle . '_' . $relation->child_bundle;
-  $relation->options['relation_parent_field'] = $relation->child_bundle . '_relation';
-  $relation->options['relation_child_field'] = $relation->parent_bundle . '_relation';
 
   // create node reference field
   $relation->add_node_reference_to_parent($name);

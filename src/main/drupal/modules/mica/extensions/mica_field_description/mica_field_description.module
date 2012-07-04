@@ -89,114 +89,111 @@ function mica_field_description_form_field_ui_field_edit_form_alter(&$form, $for
 
   // check supported field type
   if (isset($form_state['field'])) {
-    $unsupported_types = array(
-      'field_collection',
-      'name',
-      'link_field',
-      'viewreference',
-      'node_reference',
-    );
     $keys = array_keys($form_state['field']);
     $field_name = $keys[0];
     $field_type = $form_state['field'][$field_name][LANGUAGE_NONE]['field']['type'];
-    if (in_array($field_type, $unsupported_types)) {
+
+    // auto-detect value type based on field value type
+    $default_value_type = mica_field_description_get_field_value_type($field_type);
+
+    // check for unsupported types
+    if (empty($default_value_type)) {
       return;
     }
-  }
 
-  $bundle = $form_state['build_info']['args'][0]['bundle'];
-  if ($bundle === 'field_description') {
-    return; // cannot create field_description form field_description content type field
-  }
 
-  $field_name = $form_state['build_info']['args'][0]['field_name'];
-
-  $field = field_read_field($field_name);
-  if (!$field || $field['locked']) {
-    return; // field is locked, cannot edit it
-  }
-
-  $field_description = _find_field_description($bundle, $field_name);
-
-  if (empty($field_description)) {
-    // auto-detect value type based on field value type
-    $field_value_type = $form_state['build_info']['args'][0]['display']['default']['type'];
-    $default_value_type = _get_field_value_type($field_value_type);
-    $default_label = NULL;
-    $default_body = NULL;
-  }
-  else {
-    $wrapper = entity_metadata_wrapper('node', $field_description);
-    $default_value_type = $wrapper->field_value_type->value();
-    $default_label = $wrapper->field_original_field_label->value();
-    $default_body = $wrapper->body->value();
-    if (is_array($default_body)) {
-      $default_body = $default_body['value'];
+    $bundle = $form_state['build_info']['args'][0]['bundle'];
+    if ($bundle === 'field_description') {
+      return; // cannot create field_description form field_description content type field
     }
+
+    $field_name = $form_state['build_info']['args'][0]['field_name'];
+
+    $field = field_read_field($field_name);
+    if (!$field || $field['locked']) {
+      return; // field is locked, cannot edit it
+    }
+
+    $field_description = _find_field_description($bundle, $field_name);
+
+    if (empty($field_description)) {
+
+      $default_label = NULL;
+      $default_body = NULL;
+    }
+    else {
+      $wrapper = entity_metadata_wrapper('node', $field_description);
+      $default_value_type = $wrapper->field_value_type->value();
+      $default_label = $wrapper->field_original_field_label->value();
+      $default_body = $wrapper->body->value();
+      if (is_array($default_body)) {
+        $default_body = $default_body['value'];
+      }
+    }
+
+    $form['field']['settings']['field_description_infos'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Field Description'),
+      '#collapsible' => FALSE,
+      '#collapsed' => FALSE,
+      '#attached' => array(
+        'js' => array(drupal_get_path('module', 'mica_field_description') . '/mica_field_description-field-form.js'),
+      ),
+    );
+
+    $form['field']['settings']['field_description_infos']['field_description'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Use Field Descriptor for this field'),
+      '#default_value' => !empty($field_description),
+    );
+
+    // retrieve available select options from field_description field 'field_value_type'
+    $field_value_type_options = field_info_field('field_value_type');
+
+    $form['field']['settings']['field_description_infos']['field_description_value_type'] = array(
+      '#type' => 'select',
+      // enables value type input only if we were not able to detect it
+      // '#disabled' => !empty($default_value_type),
+      '#title' => t('Field value type'),
+      '#required' => FALSE,
+      '#options' => $field_value_type_options['settings']['allowed_values'],
+      '#default_value' => $default_value_type,
+      // Enabled only when the 'field_description' checkbox is checked
+      '#states' => array(
+        'enabled' => array(
+          'input[name="field[settings][field_description_infos][field_description]"]' => array('checked' => TRUE)
+        ),
+      ),
+    );
+
+    $form['field']['settings']['field_description_infos']['field_description_label'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Label'),
+      '#default_value' => $default_label,
+      '#required' => FALSE,
+      // Enabled only when the 'field_description' checkbox is checked
+      '#states' => array(
+        'enabled' => array(
+          'input[name="field[settings][field_description_infos][field_description]"]' => array('checked' => TRUE)
+        ),
+      ),
+    );
+
+    $form['field']['settings']['field_description_infos']['field_description_body'] = array(
+      '#type' => 'textarea',
+      '#title' => t('Description'),
+      '#default_value' => $default_body,
+      '#required' => FALSE,
+      // Enabled only when the 'field_description' checkbox is checked
+      '#states' => array(
+        'enabled' => array(
+          'input[name="field[settings][field_description_infos][field_description]"]' => array('checked' => TRUE)
+        ),
+      ),
+    );
+
+    $form['#submit'][] = '_edit_field_field_description';
   }
-
-  $form['field']['settings']['field_description_infos'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Field Description'),
-    '#collapsible' => FALSE,
-    '#collapsed' => FALSE,
-    '#attached' => array(
-      'js' => array(drupal_get_path('module', 'mica_field_description') . '/mica_field_description-field-form.js'),
-    ),
-  );
-
-  $form['field']['settings']['field_description_infos']['field_description'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Use Field Descriptor for this field'),
-    '#default_value' => !empty($field_description),
-  );
-
-  // retrieve available select options from field_description field 'field_value_type'
-  $field_value_type_options = field_info_field('field_value_type');
-
-  $form['field']['settings']['field_description_infos']['field_description_value_type'] = array(
-    '#type' => 'select',
-    // enables value type input only if we were not able to detect it
-    // '#disabled' => !empty($default_value_type),
-    '#title' => t('Field value type'),
-    '#required' => FALSE,
-    '#options' => $field_value_type_options['settings']['allowed_values'],
-    '#default_value' => $default_value_type,
-    // Enabled only when the 'field_description' checkbox is checked
-    '#states' => array(
-      'enabled' => array(
-        'input[name="field[settings][field_description_infos][field_description]"]' => array('checked' => TRUE)
-      ),
-    ),
-  );
-
-  $form['field']['settings']['field_description_infos']['field_description_label'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Label'),
-    '#default_value' => $default_label,
-    '#required' => FALSE,
-    // Enabled only when the 'field_description' checkbox is checked
-    '#states' => array(
-      'enabled' => array(
-        'input[name="field[settings][field_description_infos][field_description]"]' => array('checked' => TRUE)
-      ),
-    ),
-  );
-
-  $form['field']['settings']['field_description_infos']['field_description_body'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Description'),
-    '#default_value' => $default_body,
-    '#required' => FALSE,
-    // Enabled only when the 'field_description' checkbox is checked
-    '#states' => array(
-      'enabled' => array(
-        'input[name="field[settings][field_description_infos][field_description]"]' => array('checked' => TRUE)
-      ),
-    ),
-  );
-
-  $form['#submit'][] = '_edit_field_field_description';
 }
 
 
@@ -265,8 +262,6 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
   $fields[$field_name] = array(
     'type' => $field_index_type,
   );
-
-  debug($fields, '$fields');
 
   search_api_index_edit_fields($index->id, $fields);
 
@@ -386,17 +381,22 @@ function _remove_field_index($index_name, $field_name) {
 }
 
 function _is_type_supports_facet($field_index_type) {
-  return $field_index_type === 'string' || $field_index_type === 'boolean'
-    || $field_index_type === 'list<string>' || $field_index_type === 'list<boolean>'
-    || $field_index_type === 'list<integer>' || $field_index_type === 'list<decimal>'
-    || $field_index_type === 'list<date>';
+  return $field_index_type === 'string' || $field_index_type === 'list<string>'
+    || $field_index_type === 'boolean' || $field_index_type === 'list<boolean>'
+    || $field_index_type === 'integer' || $field_index_type === 'list<integer>'
+    || $field_index_type === 'decimal' || $field_index_type === 'list<decimal>'
+    || $field_index_type === 'date' || $field_index_type === 'list<date>';
 }
 
 function _is_type_supports_ranges($field_index_type) {
   return $field_index_type === 'integer' || $field_index_type === 'decimal' || $field_index_type === 'date';
 }
 
-function _get_field_value_type($field_value_type) {
+/**
+ * @param $field_value_type
+ * @return null|string return NULL if unsupported field type
+ */
+function mica_field_description_get_field_value_type($field_value_type) {
   switch ($field_value_type) {
     case 'list_boolean':
       return 'boolean';
@@ -425,7 +425,16 @@ function _get_field_value_type($field_value_type) {
     case 'list_integer':
       return 'integer';
 
+    // unsupported types
+    case 'field_collection':
+    case 'name':
+    case 'link_field':
+    case 'viewreference':
+    case 'node_reference':
+      return NULL;
+
     default:
+      watchdog('mica', 'Unknown field type: %type', array('%type', $field_value_type), WATCHDOG_NOTICE);
       return 'text';
   }
 }

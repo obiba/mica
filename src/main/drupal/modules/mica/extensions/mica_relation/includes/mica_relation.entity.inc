@@ -61,9 +61,6 @@ class MicaRelation extends Entity {
       'indexed' => TRUE,
       'cascaded' => TRUE,
       'node_reference' => '',
-      'relation' => '',
-      'relation_parent_field' => '',
-      'relation_child_field' => '',
     );
     if (isset($was_serialized)) {
       $this->options = serialize($this->options);
@@ -72,7 +69,6 @@ class MicaRelation extends Entity {
 
   /**
    * Add children to search index
-   * Create drupal relation
    * @see Entity::save()
    */
   public function save() {
@@ -81,32 +77,7 @@ class MicaRelation extends Entity {
       $index->options['data_alter_callbacks']['search_api_alter_bundle_filter']['settings']['bundles'][$this->child_bundle] = $this->child_bundle;
       entity_save('search_api_index', $index);
     }
-
-    // we don't want to keep index info in mica_relation table
-    unset($this->options['parent_indexes']);
-    unset($this->options['child_indexes']);
-
     return parent::save();
-  }
-
-  private function save_drupal_relation() {
-    $drupal_relation = array(
-      'predicate' => $this->options['relation'],
-      'label' => $this->label,
-      'directional' => TRUE,
-      'transitive' => TRUE,
-      'min_arity' => 2,
-      'max_arity' => 2,
-      'source_bundles' => array(
-        'node:' . $this->parent_bundle => 'node:' . $this->parent_bundle,
-      ),
-      'target_bundles' => array(
-        'node:' . $this->child_bundle => 'node:' . $this->child_bundle,
-      ),
-    );
-
-    $existing = relation_type_load($this->options['relation']);
-    relation_type_save($drupal_relation, empty($existing) ? array() : 'predicate');
   }
 
   /**
@@ -120,13 +91,12 @@ class MicaRelation extends Entity {
       'field_name' => $node_ref_field_name,
       'type' => 'node_reference',
       'cardinality' => 1,
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'settings' => array(
         'referenceable_types' => array(
           $this->child_bundle => $this->child_bundle,
-        ),
-        'field_permissions' => array(
-          'create' => 'create',
-          'view' => 'view',
         ),
       ),
     ));
@@ -145,37 +115,6 @@ class MicaRelation extends Entity {
           'type' => 'node_reference_field_name_link',
         ),
       ),
-    ));
-
-  }
-
-
-  public function add_relation_fields() {
-    $this->add_relation_field($this->options['relation_parent_field'], $this->parent_bundle, $this->child_bundle);
-    $this->add_relation_field($this->options['relation_child_field'], $this->child_bundle, $this->parent_bundle);
-  }
-
-  private function add_relation_field($source, $source_bundle, $target_bundle) {
-    field_create_field(array(
-      'field_name' => $source,
-      'type' => 'relation',
-      'cardinality' => 1,
-      'settings' => array(
-        'referenceable_types' => array($target_bundle => $target_bundle),
-        'field_permissions' => array(
-          'create' => 'create',
-          'view' => 'view',
-        ),
-      ),
-    ));
-
-    $target_bundle_info = node_type_load($target_bundle);
-    field_create_instance(array(
-      'field_name' => $source,
-      'label' => $target_bundle_info->name,
-      'entity_type' => 'node',
-      'bundle' => $source_bundle,
-      'widget' => array('type' => 'relation_default'),
     ));
 
   }
@@ -247,7 +186,7 @@ class MicaRelation extends Entity {
     if (!$this->options['cascaded']) return;
 
     $parent_menu = menu_link_get_preferred('node/' . $parent_node->nid);
-    if (!empty($parent_menu) && $parent_menu['menu_name'] != 'main-menu') {
+    if (!empty($parent_menu) && $parent_menu['menu_name'] !== 'main-menu') {
       unset($parent_menu);
     }
 
