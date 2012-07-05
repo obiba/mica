@@ -168,6 +168,24 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 1;
   $handler->display->display_options['path'] = 'dataset-csv-html';
+  $translatables['dataset_csv_export'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('title'),
+    t('body'),
+    t('published'),
+    t('[status]'),
+    t('dataset_type'),
+    t('Data export'),
+  );
   $export['dataset_csv_export'] = $view;
 
   $view = new view;
@@ -405,6 +423,30 @@ function mica_datasets_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
+  $translatables['dataset_studies'] = array(
+    t('Master'),
+    t('Studies'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_dataset_studies'),
+    t('No studies found.'),
+    t('Name'),
+    t('Please specify what other design'),
+    t('([field_design_other_sp])'),
+    t('Study design'),
+    t('[field_design] [field_design_other_sp] '),
+    t('Target number of participants'),
+    t('Country of residence'),
+    t('All'),
+    t('Block'),
+  );
   $export['dataset_studies'] = $view;
 
   $view = new view;
@@ -542,6 +584,25 @@ function mica_datasets_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'harmonization-datasets';
+  $translatables['harmonization_datasets'] = array(
+    t('Master'),
+    t('Harmonization Datasets'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('A Harmonization Dataset documents and annotates a set of core variables which provides a concise but effective list of information to be harmonized in a specific scientific context. Variables found in a Harmonization Dataset therefore represent the reference format into which study-specific data needs to be processed to arrive at harmonized data. When a study can generate a variable defined in a Harmonization Dataset, a processing algorithm is developed to map study-specific data to the variable format defined in the Harmonization Dataset.<br/><br/>'),
+    t('empty_datasets'),
+    t('No dataset found.'),
+    t('Name'),
+    t('Description'),
+    t('Page'),
+  );
   $export['harmonization_datasets'] = $view;
 
   $view = new view;
@@ -679,6 +740,25 @@ function mica_datasets_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'study-datasets';
+  $translatables['study_datasets'] = array(
+    t('Master'),
+    t('Study Datasets'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('A Study Dataset holds and describes variables collected by studies participating in a consortium. Study Datasets make use of standardized data dictionary which gives information on variable definitions and characteristics (e.g. type, unit, categories, and area of information covered). Using the variable search tool, researchers are able to query data collected across studies participating in the consortium.<br/><br/>'),
+    t('empty_datasets'),
+    t('No dataset found.'),
+    t('Name'),
+    t('Description'),
+    t('Page'),
+  );
   $export['study_datasets'] = $view;
 
   $view = new view;
@@ -1562,6 +1642,52 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 1;
   $handler->display->display_options['path'] = 'variable-csv-html';
+  $translatables['variable_csv_export'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('title'),
+    t('label'),
+    t('body'),
+    t('dataset'),
+    t('value_type'),
+    t('unit'),
+    t('repeatable'),
+    t('categories_name'),
+    t('[field_variable_categories_1-name]'),
+    t('categories_label'),
+    t('[field_variable_categories-label]'),
+    t('categories_missing'),
+    t('[field_variable_categories_2-missing]'),
+    t('published'),
+    t('[status]'),
+    t('anthropometric_structures'),
+    t('body_functions'),
+    t('body_structures'),
+    t('data_source'),
+    t('disease_history'),
+    t('life_habits_behaviours'),
+    t('medical_health_interv'),
+    t('medication'),
+    t('early_life'),
+    t('perception_of_health'),
+    t('period'),
+    t('physical_environment'),
+    t('reproductive_history'),
+    t('social_environment'),
+    t('sociodemographic_charact'),
+    t('target'),
+    t('individual_participant_measures'),
+    t('laboratory_measures'),
+    t('Data export'),
+  );
   $export['variable_csv_export'] = $view;
 
   $view = new view;
@@ -2956,6 +3082,51 @@ function mica_datasets_views_default_views() {
     'page' => 'page',
   );
   $handler->display->display_options['use_batch'] = '0';
+  $translatables['variable_search'] = array(
+    t('Master'),
+    t('Variables'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_variables'),
+    t('No variables found.'),
+    t('Name'),
+    t('Label'),
+    t('Dataset'),
+    t('Position index'),
+    t('Fulltext search'),
+    t('Page'),
+    t('Export XLS'),
+    t('Categories'),
+    t('Label:[field_variable_categories-label] Name: [field_variable_categories-name] Missing:[field_variable_categories-missing]'),
+    t('Data Source'),
+    t('Diseases History and Related Health Problems'),
+    t('Medical Health Interventions/Health Services Utilization'),
+    t('Medication'),
+    t('Reproductive Health and History'),
+    t('Participant\'s Early Life/Childhood'),
+    t('Life Habits/Behaviours'),
+    t('Sociodemographic/Socioeconomic Characteristics'),
+    t('Physical Environment'),
+    t('Social Environment'),
+    t('Perception of Health/Quality of life'),
+    t('Anthropometric Structures'),
+    t('Body Structures'),
+    t('Body Functions'),
+    t('Essence'),
+    t('Target'),
+    t('Period'),
+    t('Measure'),
+    t('Value Type'),
+    t('Repeatable'),
+    t('Export CSV'),
+  );
   $export['variable_search'] = $view;
 
   return $export;

@@ -275,7 +275,7 @@ function _mica_studies_study_view_selection_criteria(&$node, $view_mode, $langco
       );
     }
 
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_gender', 'Gender:');
+    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_gender', t('Gender:'));
 
     if (isset($node->content['field_age_min']) || isset($node->content['field_age_max'])) {
       $index = count($node->content['field_select_criteria']['#items']);
@@ -301,11 +301,11 @@ function _mica_studies_study_view_selection_criteria(&$node, $view_mode, $langco
       }
     }
 
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_country', 'Country:', 'Countries:');
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_territory', 'Territory:', 'Territories:');
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_ethnic_origin', 'Ethnic origin:', 'Ethnic origins:');
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_health_status', 'Health status:');
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_selection_others_sp', 'Other:');
+    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_country', t('Country:'), t('Countries:'));
+    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_territory', t('Territory:'), t('Territories:'));
+    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_ethnic_origin', t('Ethnic origin:'), t('Ethnic origins:'));
+    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_health_status', t('Health status:'));
+    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_selection_others_sp', t('Other:'));
 
     if (strlen($node->content['field_select_criteria'][0]['#markup']) === 0) {
       $node->content['field_select_criteria']['#access'] = FALSE;

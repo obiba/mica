@@ -170,6 +170,28 @@ function mica_data_access_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'data-access/approved';
+  $translatables['data_access'] = array(
+    t('Master'),
+    t('DACO Approved Projects'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_data_access_committee'),
+    t('No approved data access found.'),
+    t('field_data_access_review'),
+    t('Project'),
+    t('Summary'),
+    t('Representative'),
+    t('Institution'),
+    t('All'),
+    t('Page'),
+  );
   $export['data_access'] = $view;
 
   $view = new view;
@@ -411,6 +433,33 @@ function mica_data_access_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'data-access/admin';
+  $translatables['data_access_admin'] = array(
+    t('Master'),
+    t('Data Access Administration'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_data_access'),
+    t('No data access request found.'),
+    t('field_data_access_review'),
+    t('Nid'),
+    t('Project'),
+    t('Summary'),
+    t('Representative'),
+    t('Institution'),
+    t('Updated date'),
+    t('Status'),
+    t('Review'),
+    t('<a href="?q=node/[nid]/review">Start Review</a>'),
+    t('All'),
+    t('Page'),
+  );
   $export['data_access_admin'] = $view;
 
   $view = new view;
@@ -559,6 +608,27 @@ function mica_data_access_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'data-access/committee';
+  $translatables['data_access_committee'] = array(
+    t('Master'),
+    t('Data Access Committee'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_data_access_committee'),
+    t('No data access committee member found.'),
+    t('Contact'),
+    t('Title'),
+    t('[field_contact_name]'),
+    t('Institution'),
+    t('Email'),
+    t('Page'),
+  );
   $export['data_access_committee'] = $view;
 
   $view = new view;
@@ -811,6 +881,33 @@ function mica_data_access_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'data-access/requests';
+  $translatables['my_data_access_requests'] = array(
+    t('Master'),
+    t('My Data Access Requests'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('empty_data_access'),
+    t('No data access request found.'),
+    t('author'),
+    t('field_data_access_review'),
+    t('Nid'),
+    t('Project'),
+    t('Summary'),
+    t('Representative'),
+    t('Institution'),
+    t('Updated date'),
+    t('Status'),
+    t('Operations'),
+    t('All'),
+    t('Page'),
+  );
   $export['my_data_access_requests'] = $view;
 
   return $export;

@@ -2345,3 +2345,6 @@ table.query-table th, table.query-table td {
   border-right: 1px solid #CCCCCC;
 }
 
+div#edit-lang-dropdown-select_msdd{
+  margin-top:18px;
+}

@@ -4,27 +4,6 @@
  * Code for the Mica i18n feature.
  */
 
-include_once 'mica_i18n.features.inc';
-
-function mica_i18n_enable() {
-  // configure language switcher block
-  /*$block = array(
-    'module' => 'lang_dropdown',
-    'delta' => 'language',
-    'theme' => 'mica_samara',
-    'status' => 1,
-    'weight' => -10,
-    'region' => 'header',
-    'pages' => '',
-    'cache' => -1,
-  );
-  
-  $query = db_insert('block')
-    ->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'))
-    ->values($block)
-    ->execute();*/
-}
-
 function mica_i18n_menu() {
   $items = array();
   $items['admin/config/development/mica_i18n'] = array(
@@ -47,121 +26,119 @@ function _mica_i18n_form() {
   $form['mica_i18n']['refresh'] = array(
     '#type' => 'submit',
     '#value' => t('Refresh translations'),
-    '#submit' => array('mica_i18n_prepare'),
+    '#submit' => array('mica_i18n_test'),
   );
-
-  /*$form['dummy'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Example'),
-    '#description' => t('Form example to run custom actions'),
-  );
-  $form['dummy']['run'] = array(
-    '#type' => 'submit',
-    '#value' => t('Run dummy method'),
-    '#submit' => array('_mica_devel_dummy_run'),
-  );*/
 
   return $form;
 }
 
-function mica_i18n_prepare() {
+function mica_i18n_test(){
+//  require_once(drupal_get_path('module', 'mica_i18n') . '/mica_i18n.install');
+//  mica_i18n_fix_views_display();
+//  mica_i18n_configure_block();
 
-  // TODO: Check that l10n module is enabled
-  // find all mica french translation files
-  if (db_query("SELECT COUNT(language) FROM {languages} WHERE language = :language", array(':language' => 'fr'))->fetchField()) {
-    $filename = '/fr.po$/';
-    $files = drupal_system_listing($filename, 'sites/all/modules/mica/translations', 'name', 0);
+//  mica_i18n_fix_entity_display();
+}
 
-    foreach ($files as $file) {
-//      _mica_i18n_update_mica_languages($file);
+
+/**
+ * Implements hook_menu_breadcrumb_alter() to translate links title of breadcrumb
+ */
+function mica_i18n_menu_breadcrumb_alter(&$active_trail, $item) {
+  foreach (array_keys($active_trail) as $trail) {
+    $active_trail[$trail]['title'] = t($active_trail[$trail]['title']);
+  }
+}
+
+// pathauto are not translated
+function mica_i18n_pathauto_alias_alter(&$alias, array &$context) {
+  if (array_key_exists('node', $context['data']) && !i18n_node_type_enabled($context['data']['node']->type)) {
+    $context['language'] = LANGUAGE_NONE;
+  }
+}
+
+/**
+ * Implements hook_multilingual_settings_changed()
+ */
+function mica_i18n_multilingual_settings_changed() {
+
+  // Prepare Mica i18n for new language
+  foreach (array_keys(language_list()) as $lang) {
+    // skip default language
+    if ($lang !== language_default()->language) {
+      mica_i18n_configure_block();
+
+      // find all mica translation files
+      mica_i18n_import_po_files($lang);
+
+      // translate menus
+      mica_i18n_translate_menus($lang);
+
+      // set homepage variable for new language
+      i18n_variable_set('site_frontpage', 'node/1', $lang);
     }
   }
+}
 
-  // Process fields updates for entities that can be translated
-  $types = node_type_get_names();
-  foreach ($types as $type) {
-    $result = db_select('variable', 'v')
-      ->fields('v', array('value'))
-      ->condition('name', 'language_content_type_' . $type)
-      ->execute()
-      ->fetchAssoc();
-    if (!empty($result['value']) && unserialize($result['value'])) {
-
-      // Set all display to default translated
-      $instances = field_read_instances(array('entity_type' => 'node', 'bundle' => 'study'));
-      foreach ($instances as $instance) {
-        $update = FALSE;
-        foreach (array_keys($instance['display']) as $display) {
-          if ($instance['display'][$display]['type'] === 'list_default') {
-            $update = TRUE;
-            $instance['display'][$display]['type'] = 'i18n_list_default';
-            $instance['display'][$display]['module'] = 'i18n_field';
-          }
-          else {
-            if ($instance['display'][$display]['type'] === 'text_default') {
-              $update = TRUE;
-              $instance['display'][$display]['type'] = 'i18n_text_default';
-              $instance['display'][$display]['module'] = 'NULL';
-            }
-          }
-        }
-        if ($update) {
-          field_update_instance($instance);
-        }
-      }
-    }
-
-    // Remove language from all display
-//  $settings = field_view_mode_settings('node', 'study');
-//  debug($settings);
-//  if (array_key_exists('language', $settings['extra_fields']['display'])) {
-//    foreach (array_keys($settings['extra_fields']['display']['language']) as $display) {
-//      $settings['extra_fields']['display']['language'][$display]['visible'] = FALSE;
-//    }
-//    field_bundle_settings('node', 'study', $settings);
-//  }
-  }
+function mica_i18n_translate_menus($langcode) {
 
   // Resave all menu links of main-menu to enable the translate tab
-//  $results = db_query(
-//    "SELECT * FROM {menu_links} WHERE menu_name = 'MAIN_MENU'"
-//  )->execute();
   module_load_include('inc', 'l10n_update');
-  module_load_include('locale.inc', 'l10n_update');
-  module_load_include('batch.inc', 'l10n_update');
+  module_load_include('locale . inc', 'l10n_update');
+  module_load_include('admin . inc', 'i18n_string');
+
+  // Enable translation mode for main-menu
+  db_update('menu_custom')
+    ->expression('i18n_mode', ':mode', array(':mode' => I18N_MODE_MULTIPLE))
+    ->condition('menu_name', MAIN_MENU)
+    ->execute();
+
   $result = db_query("SELECT mlid FROM {menu_links} WHERE menu_name = :menu_name",
     array(':menu_name' => MAIN_MENU), array('fetch' => PDO::FETCH_ASSOC));
 
-  $translations =_mica_i18n_menu_translations_fr();
   foreach ($result as $m) {
     $link = menu_link_load($m['mlid']);
     $link['customized'] = 1;
-    $link['language'] = 'und';
     menu_link_save($link);
 
-    // Add french translation
+    // Add menu link translation
     $value = array(
       'msgctxt' => 'item:' . $link['mlid'] . ':title',
       'msgid' => $link['link_title'],
-      'msgstr' => _mica_i18n_get_translation_fr($translations , $link['link_title']),
+      'msgstr' => _mica_i18n_get_menu_translations($langcode, $link['link_title']),
     );
 
-    _l10n_update_locale_import_one_string('db-store', $value, LOCALE_IMPORT_OVERWRITE, 'fr', NULL, 'menu');
+    _l10n_update_locale_import_one_string('db-store', $value, LOCALE_IMPORT_OVERWRITE, $langcode, NULL, 'menu');
+    // import to interface to use on menu_breadcrumb_alter
+    _l10n_update_locale_import_one_string('db-store', $value, LOCALE_IMPORT_OVERWRITE, $langcode, NULL, 'default');
   }
 
+  _menu_clear_page_cache();
   menu_cache_clear(MAIN_MENU);
 }
 
-function _mica_i18n_update_mica_languages($file) {
+function mica_i18n_import_po_files($langcode = 'fr') {
+  if (db_query("SELECT COUNT(language) FROM {languages} WHERE language = :language", array(':language' => $langcode))->fetchField()) {
+    $filename = '/' . $langcode . '.po$/';
+    $path = drupal_get_path('module', 'mica') . '/translations';
+    $files = drupal_system_listing($filename, $path, 'name', 0);
 
+    if (!empty($files)) {
+      foreach ($files as $file) {
+        _mica_i18n_update_mica_languages($file, $langcode);
+      }
+    }
+  }
+}
 
-  $langcode = 'fr';
+function _mica_i18n_update_mica_languages($file, $langcode) {
+  module_load_include('batch.inc', 'l10n_update');
 
-  $field_pattern = '/.field.' . $langcode . '.po$/';
-  $menu_pattern = '/.menu.' . $langcode . '.po$/';
-  $blocks_pattern = '/.blocks.' . $langcode . '.po$/';
-  $node_pattern = '/.node.' . $langcode . '.po$/';
-  $taxonomy_pattern = '/.taxonomy.' . $langcode . '.po$/';
+  $field_pattern = '/.field.' . $langcode . ' . po$/';
+  $menu_pattern = '/.menu.' . $langcode . ' . po$/';
+  $blocks_pattern = '/.blocks.' . $langcode . ' . po$/';
+  $node_pattern = '/.node.' . $langcode . ' . po$/';
+  $taxonomy_pattern = '/.taxonomy.' . $langcode . ' . po$/';
 
   if (preg_match($field_pattern, $file->filename) == 1) {
     _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'field');
@@ -180,40 +157,68 @@ function _mica_i18n_update_mica_languages($file) {
   }
   else {
     _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'default');
+    _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'field');
   }
 
 }
 
-function _mica_i18n_menu_translations_fr() {
-  $translations = array(
-    'Home' => 'Accueil',
-    'Studies' => 'Études',
-    'About' => 'À propos de nous',
-    'Resources' => 'Ressources',
-    'Research' => 'Recherche',
-    'Community' => 'Communauté',
-    'Data Access' => 'Accès aux données',
-    'Datasets' => 'Jeux de données',
-    'Publications' => 'Publications',
-    'DACO Approved Projects' => 'Projets approuvés par le DACO',
-    'Projects' => 'Projets',
-    'News' => 'Nouvelles',
-    'Events' => 'Évènements',
-    'Forums' => 'Forums',
-    'Blogs' => 'Blogs',
-    'Study Datasets' => "Jeux de données d'études",
-    'Harmonization Datasets' => "Jeux de données d'harmonization",
-    'Variables Search' => 'Recherche de variables',
-    'Consortium Policies and Guidelines' => 'Politiques et lignes directrices du consortium',
-    'Data Access Administration' => "Administration des demandes d'accès",
-    'Data Access Committee' => "Comité de demandes d'accès",
-    'Data Access Request' => "Demandes d'accès",
-    'My Data Access Requests' => "Mes demandes d'accès",
-  );
+function _mica_i18n_get_menu_translations($langcode, $title) {
+  if ($langcode === 'fr') {
+    $translations = array(
+      'Home' => 'Accueil',
+      'Studies' => 'Études',
+      'About' => 'À propos de nous',
+      'Resources' => 'Ressources',
+      'Research' => 'Recherche',
+      'Community' => 'Communauté',
+      'Data Access' => 'Accès aux données',
+      'Datasets' => 'Jeux de données',
+      'Publications' => 'Publications',
+      'DACO Approved Projects' => 'Projets approuvés par le DACO',
+      'Projects' => 'Projets',
+      'News' => 'Nouvelles',
+      'Events' => 'Évènements',
+      'Forums' => 'Forums',
+      'Blogs' => 'Blogs',
+      'Study Datasets' => "Jeux de données d'études",
+      'Harmonization Datasets' => "Jeux de données d'harmonization",
+      'Variables Search' => 'Recherche de variables',
+      'Consortium Policies and Guidelines' => 'Politiques et lignes directrices du consortium',
+      'Data Access Administration' => "Administration des demandes d'accès",
+      'Data Access Committee' => "Comité de demandes d'accès",
+      'Data Access Request' => "Demandes d'accès",
+      'My Data Access Requests' => "Mes demandes d'accès",
+    );
 
-  return $translations;
+    return !empty($translations[$title]) ? $translations[$title] : '';
+  }
+
+  return '';
 }
 
-function _mica_i18n_get_translation_fr($translations, $title) {
-  return !empty($translations[$title]) ? $translations[$title] : '';
+function mica_i18n_configure_block() {
+
+  // add the language switcher dropdown block to the header
+  $theme_default = variable_get('theme_default', 'mica_samara');
+  db_update('block')->fields(
+    array(
+      'status' => 1,
+      'region' => 'header',
+      'weight' => 0,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    )
+  )
+    ->condition('module', 'lang_dropdown')
+    ->condition('delta', 'language')
+    ->condition('theme', $theme_default)
+    ->execute();
+
+  // Set all facetApi blocks to be translatable...
+  db_update('block')->fields(
+    array(
+      'i18n_mode' => 1,
+    )
+  )
+    ->condition('module', 'facetapi')
+    ->execute();
 }

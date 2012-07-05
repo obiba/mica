@@ -4,9 +4,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-06-22 15:49-0400\n"
-"PO-Revision-Date: 2012-06-22 15:49-0400\n"
-"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-07-04 07:47-0400\n"
+"PO-Revision-Date: 2012-07-04 10:09-0500\n"
+"Last-Translator: Camille Craig <ccraig@p3g.org>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -16,42 +16,27 @@ msgstr ""
 #: taxonomy:vocabulary:1:name
 msgctxt "vocabulary:1:name"
 msgid "Forums"
-msgstr ""
+msgstr "Forums"
 
 #: taxonomy:vocabulary:1:description
 msgctxt "vocabulary:1:description"
 msgid "Forum navigation vocabulary"
-msgstr ""
-
-#: taxonomy:vocabulary:2:name
-msgctxt "vocabulary:2:name"
-msgid "Tags"
-msgstr ""
-
-#: taxonomy:vocabulary:2:description
-msgctxt "vocabulary:2:description"
-msgid "Use tags to group articles on similar topics into categories."
-msgstr ""
-
-#: taxonomy:vocabulary:3:name
-msgctxt "vocabulary:3:name"
-msgid "Source of Recruitment"
-msgstr ""
+msgstr "Vocabulaire de navigation du forum"
 
 #: taxonomy:vocabulary:4:name
 msgctxt "vocabulary:4:name"
 msgid "Anthropometric structures"
-msgstr ""
+msgstr "Structures anthropométriques"
 
 #: taxonomy:vocabulary:5:name
 msgctxt "vocabulary:5:name"
 msgid "Body functions"
-msgstr ""
+msgstr "Fonctions organiques"
 
 #: taxonomy:vocabulary:6:name
 msgctxt "vocabulary:6:name"
 msgid "Body structures"
-msgstr ""
+msgstr "Structures anatomiques"
 
 #: taxonomy:vocabulary:7:name
 msgctxt "vocabulary:7:name"
@@ -61,1534 +46,1565 @@ msgstr "Source de données"
 #: taxonomy:vocabulary:8:name
 msgctxt "vocabulary:8:name"
 msgid "Diseases history and related health problems"
-msgstr ""
-
-#: taxonomy:vocabulary:9:name
-msgctxt "vocabulary:9:name"
-msgid "Participant's early life/Childhood"
-msgstr ""
+msgstr "Histoire des maladies et des problèmes de santé connexes"
 
 #: taxonomy:vocabulary:10:name
 msgctxt "vocabulary:10:name"
 msgid "Essence"
-msgstr ""
+msgstr "Essence"
 
 #: taxonomy:vocabulary:11:name
 msgctxt "vocabulary:11:name"
 msgid "Individual Participant Measures"
-msgstr ""
+msgstr "Mesures individuelles des participants"
 
 #: taxonomy:vocabulary:12:name
 msgctxt "vocabulary:12:name"
 msgid "Laboratory Measures"
-msgstr ""
+msgstr "Mesures de laboratoire"
 
 #: taxonomy:vocabulary:13:name
 msgctxt "vocabulary:13:name"
 msgid "Life habits/Behaviours"
-msgstr ""
+msgstr "Habitudes de vie/Comportements"
 
 #: taxonomy:vocabulary:14:name
 msgctxt "vocabulary:14:name"
 msgid "Measure"
-msgstr ""
+msgstr "Mesure"
 
 #: taxonomy:vocabulary:15:name
 msgctxt "vocabulary:15:name"
 msgid "Medical health interventions/Health services utilization"
-msgstr ""
+msgstr "Interventions médicales/Utilisation des services de santé"
 
 #: taxonomy:vocabulary:16:name
 msgctxt "vocabulary:16:name"
 msgid "Medication"
-msgstr ""
+msgstr "Médication"
+
+#: taxonomy:vocabulary:9:name
+msgctxt "vocabulary:9:name"
+msgid "Participant's early life/Childhood"
+msgstr "Naissance du participant/Enfance"
 
 #: taxonomy:vocabulary:17:name
 msgctxt "vocabulary:17:name"
 msgid "Perception of health/Quality of life"
-msgstr ""
+msgstr "Perception de la santé/Qualité de vie"
 
 #: taxonomy:vocabulary:18:name
 msgctxt "vocabulary:18:name"
 msgid "Period"
-msgstr ""
+msgstr "Période"
 
 #: taxonomy:vocabulary:19:name
 msgctxt "vocabulary:19:name"
 msgid "Physical environment"
-msgstr ""
+msgstr "Environnement physique"
 
 #: taxonomy:vocabulary:20:name
 msgctxt "vocabulary:20:name"
 msgid "Reproductive health and history"
-msgstr ""
+msgstr "Histoire et santé de la reproduction"
 
 #: taxonomy:vocabulary:21:name
 msgctxt "vocabulary:21:name"
 msgid "Social environment"
-msgstr ""
+msgstr "Environnement social"
 
 #: taxonomy:vocabulary:22:name
 msgctxt "vocabulary:22:name"
 msgid "Sociodemographic/Socioeconomic characteristics"
-msgstr ""
+msgstr "Caractéristiques sociodémographiques/socioéconomiques"
+
+#: taxonomy:vocabulary:3:name
+msgctxt "vocabulary:3:name"
+msgid "Source of Recruitment"
+msgstr "Source de recrutement"
+
+#: taxonomy:vocabulary:2:name
+msgctxt "vocabulary:2:name"
+msgid "Tags"
+msgstr "Étiquettes"
+
+#: taxonomy:vocabulary:2:description
+msgctxt "vocabulary:2:description"
+msgid "Use tags to group articles on similar topics into categories."
+msgstr "Utilisez les étiquettes pour regrouper les articles sur des sujets similaires en catégories."
 
 #: taxonomy:vocabulary:23:name
 msgctxt "vocabulary:23:name"
 msgid "Target"
-msgstr ""
-
-#: taxonomy:term:10:name
-msgctxt "term:10:name"
-msgid "Weight"
-msgstr ""
-
-#: taxonomy:term:11:name
-msgctxt "term:11:name"
-msgid "Height"
-msgstr ""
-
-#: taxonomy:term:12:name
-msgctxt "term:12:name"
-msgid "Standing height"
-msgstr ""
-
-#: taxonomy:term:13:name
-msgctxt "term:13:name"
-msgid "Sitting height"
-msgstr ""
-
-#: taxonomy:term:14:name
-msgctxt "term:14:name"
-msgid "Body circumferences"
-msgstr ""
-
-#: taxonomy:term:15:name
-msgctxt "term:15:name"
-msgid "Waist circumference"
-msgstr ""
-
-#: taxonomy:term:16:name
-msgctxt "term:16:name"
-msgid "Hip circumference"
-msgstr ""
-
-#: taxonomy:term:17:name
-msgctxt "term:17:name"
-msgid "Bioimpedance"
-msgstr ""
-
-#: taxonomy:term:18:name
-msgctxt "term:18:name"
-msgid "Bone density"
-msgstr ""
-
-#: taxonomy:term:19:name
-msgctxt "term:19:name"
-msgid "Skinfold thickness"
-msgstr ""
-
-#: taxonomy:term:20:name
-msgctxt "term:20:name"
-msgid "Other antropometric structures"
-msgstr ""
-
-#: taxonomy:term:21:name
-msgctxt "term:21:name"
-msgid "Handedness/Laterality"
-msgstr ""
-
-#: taxonomy:term:22:name
-msgctxt "term:22:name"
-msgid "Mental functions"
-msgstr ""
-
-#: taxonomy:term:23:name
-msgctxt "term:23:name"
-msgid "Intellectual functions"
-msgstr ""
-
-#: taxonomy:term:24:name
-msgctxt "term:24:name"
-msgid "Intelligence"
-msgstr ""
-
-#: taxonomy:term:25:name
-msgctxt "term:25:name"
-msgid "Cognitive functions"
-msgstr ""
-
-#: taxonomy:term:26:name
-msgctxt "term:26:name"
-msgid "Temperament and personality functions"
-msgstr ""
-
-#: taxonomy:term:27:name
-msgctxt "term:27:name"
-msgid "Emotional functions"
-msgstr ""
-
-#: taxonomy:term:28:name
-msgctxt "term:28:name"
-msgid "Anxiety/Depression"
-msgstr ""
-
-#: taxonomy:term:29:name
-msgctxt "term:29:name"
-msgid "Attention functions"
-msgstr ""
-
-#: taxonomy:term:30:name
-msgctxt "term:30:name"
-msgid "Memory functions"
-msgstr ""
-
-#: taxonomy:term:31:name
-msgctxt "term:31:name"
-msgid "Psychomotor functions"
-msgstr ""
-
-#: taxonomy:term:32:name
-msgctxt "term:32:name"
-msgid "Mental functions of language"
-msgstr ""
-
-#: taxonomy:term:33:name
-msgctxt "term:33:name"
-msgid "Calculation functions"
-msgstr ""
-
-#: taxonomy:term:34:name
-msgctxt "term:34:name"
-msgid "Sensory functions and pain"
-msgstr ""
-
-#: taxonomy:term:35:name
-msgctxt "term:35:name"
-msgid "Seeing functions"
-msgstr ""
-
-#: taxonomy:term:36:name
-msgctxt "term:36:name"
-msgid "Hearing functions"
-msgstr ""
-
-#: taxonomy:term:37:name
-msgctxt "term:37:name"
-msgid "Sensory functions related to temperature and other stimuli"
-msgstr ""
-
-#: taxonomy:term:38:name
-msgctxt "term:38:name"
-msgid "Voice and speech functions"
-msgstr ""
-
-#: taxonomy:term:39:name
-msgctxt "term:39:name"
-msgid "Fluency and rhythm of speech functions"
-msgstr ""
-
-#: taxonomy:term:40:name
-msgctxt "term:40:name"
-msgid ""
-"functions of the cardiovascular, haematological, immunological and "
-"respiratory systems"
-msgstr ""
-
-#: taxonomy:term:41:name
-msgctxt "term:41:name"
-msgid "Heart functions"
-msgstr ""
-
-#: taxonomy:term:42:name
-msgctxt "term:42:name"
-msgid "Heart rate"
-msgstr ""
-
-#: taxonomy:term:43:name
-msgctxt "term:43:name"
-msgid "Heart rate at rest"
-msgstr ""
-
-#: taxonomy:term:44:name
-msgctxt "term:44:name"
-msgid "Heart rate under stress"
-msgstr ""
-
-#: taxonomy:term:45:name
-msgctxt "term:45:name"
-msgid "Electrical activity"
-msgstr ""
-
-#: taxonomy:term:46:name
-msgctxt "term:46:name"
-msgid "Blood vessel functions"
-msgstr ""
-
-#: taxonomy:term:47:name
-msgctxt "term:47:name"
-msgid "Vascular stiffness"
-msgstr ""
-
-#: taxonomy:term:48:name
-msgctxt "term:48:name"
-msgid "Carotid intima-media thickness"
-msgstr ""
-
-#: taxonomy:term:49:name
-msgctxt "term:49:name"
-msgid "Blood pressure functions"
-msgstr ""
-
-#: taxonomy:term:50:name
-msgctxt "term:50:name"
-msgid "Respiration functions"
-msgstr ""
-
-#: taxonomy:term:51:name
-msgctxt "term:51:name"
-msgid "Functions of the digestive, metabolic and endocrine systems"
-msgstr ""
-
-#: taxonomy:term:52:name
-msgctxt "term:52:name"
-msgid "Genitourinary and reproductive functions"
-msgstr ""
-
-#: taxonomy:term:53:name
-msgctxt "term:53:name"
-msgid "Neuromusculoskeletal and movement-related functions"
-msgstr ""
-
-#: taxonomy:term:54:name
-msgctxt "term:54:name"
-msgid "Muscle functions"
-msgstr ""
-
-#: taxonomy:term:55:name
-msgctxt "term:55:name"
-msgid "Grip strenght"
-msgstr ""
-
-#: taxonomy:term:56:name
-msgctxt "term:56:name"
-msgid "Movement functions"
-msgstr ""
-
-#: taxonomy:term:57:name
-msgctxt "term:57:name"
-msgid "Reaction time"
-msgstr ""
-
-#: taxonomy:term:58:name
-msgctxt "term:58:name"
-msgid "Sit and reach"
-msgstr ""
-
-#: taxonomy:term:59:name
-msgctxt "term:59:name"
-msgid "Mobility"
-msgstr ""
-
-#: taxonomy:term:60:name
-msgctxt "term:60:name"
-msgid "Functions of the skin and related structures"
-msgstr ""
-
-#: taxonomy:term:61:name
-msgctxt "term:61:name"
-msgid "Structures of the nervous systems"
-msgstr ""
-
-#: taxonomy:term:62:name
-msgctxt "term:62:name"
-msgid "The eye, ear and related structures"
-msgstr ""
-
-#: taxonomy:term:63:name
-msgctxt "term:63:name"
-msgid "Structures involved in voice and speech"
-msgstr ""
-
-#: taxonomy:term:64:name
-msgctxt "term:64:name"
-msgid ""
-"Structures of the cardiovascular, immunological and respiratory "
-"systems"
-msgstr ""
-
-#: taxonomy:term:65:name
-msgctxt "term:65:name"
-msgid "Structures related to the digestive, metabolic and endocrine systems"
-msgstr ""
-
-#: taxonomy:term:66:name
-msgctxt "term:66:name"
-msgid "Structures related to the genitourinary and reproductive systems"
-msgstr ""
-
-#: taxonomy:term:67:name
-msgctxt "term:67:name"
-msgid "Structures related to movement"
-msgstr ""
-
-#: taxonomy:term:68:name
-msgctxt "term:68:name"
-msgid "Skin and related structures"
-msgstr ""
-
-#: taxonomy:term:69:name
-msgctxt "term:69:name"
-msgid "Questionnaire"
-msgstr "Questionnaire"
-
-#: taxonomy:term:70:name
-msgctxt "term:70:name"
-msgid "Physical measure"
-msgstr "Mesure Physique"
-
-#: taxonomy:term:71:name
-msgctxt "term:71:name"
-msgid "Biosample"
-msgstr "Échantillon biologique"
-
-#: taxonomy:term:72:name
-msgctxt "term:72:name"
-msgid "Administrative database"
-msgstr "Base de données administrative"
-
-#: taxonomy:term:73:name
-msgctxt "term:73:name"
-msgid "Certain infectious and parasitic diseases"
-msgstr ""
-
-#: taxonomy:term:74:name
-msgctxt "term:74:name"
-msgid "Neoplasms"
-msgstr ""
-
-#: taxonomy:term:75:name
-msgctxt "term:75:name"
-msgid ""
-"Diseases of the blood and blood-forming organs and certain disorders "
-"involving the immune mechanism"
-msgstr ""
-
-#: taxonomy:term:76:name
-msgctxt "term:76:name"
-msgid "Endocrine, nutritional and metabolic diseases"
-msgstr ""
-
-#: taxonomy:term:77:name
-msgctxt "term:77:name"
-msgid "Mental and behavioural disorders"
-msgstr ""
-
-#: taxonomy:term:78:name
-msgctxt "term:78:name"
-msgid "Diseases of the nervous system"
-msgstr ""
-
-#: taxonomy:term:79:name
-msgctxt "term:79:name"
-msgid "Diseases of the eye and adnexa"
-msgstr ""
-
-#: taxonomy:term:80:name
-msgctxt "term:80:name"
-msgid "Diseases of the ear and mastoid process"
-msgstr ""
-
-#: taxonomy:term:81:name
-msgctxt "term:81:name"
-msgid "Diseases of the circulatory system"
-msgstr ""
-
-#: taxonomy:term:82:name
-msgctxt "term:82:name"
-msgid "Diseases of the respiratory system"
-msgstr ""
-
-#: taxonomy:term:83:name
-msgctxt "term:83:name"
-msgid "Diseases of the digestive system"
-msgstr ""
-
-#: taxonomy:term:84:name
-msgctxt "term:84:name"
-msgid "Diseases of the skin and subcutaneous tissue"
-msgstr ""
-
-#: taxonomy:term:85:name
-msgctxt "term:85:name"
-msgid "Diseases of the musculoskeletal system and connective tissue"
-msgstr ""
-
-#: taxonomy:term:86:name
-msgctxt "term:86:name"
-msgid "Diseases of the genitourinary system"
-msgstr ""
-
-#: taxonomy:term:87:name
-msgctxt "term:87:name"
-msgid "Pregnancy, childbirth and the puerperium"
-msgstr ""
-
-#: taxonomy:term:88:name
-msgctxt "term:88:name"
-msgid "Certain conditions originating in the perinatal period"
-msgstr ""
-
-#: taxonomy:term:89:name
-msgctxt "term:89:name"
-msgid "Congenital malformations, deformations and chromosomal abnormalities"
-msgstr ""
-
-#: taxonomy:term:90:name
-msgctxt "term:90:name"
-msgid ""
-"Symptoms, signs and abnormal clinical and laboratory findings, not "
-"elsewhere classified"
-msgstr ""
-
-#: taxonomy:term:91:name
-msgctxt "term:91:name"
-msgid "Symptoms and signs involving the circulatory and respiratory systems"
-msgstr ""
-
-#: taxonomy:term:92:name
-msgctxt "term:92:name"
-msgid "Symptoms and signs involving the digestive system and abdomen"
-msgstr ""
-
-#: taxonomy:term:93:name
-msgctxt "term:93:name"
-msgid "Symptoms and signs involving the skin and subcutaneous tissue"
-msgstr ""
-
-#: taxonomy:term:94:name
-msgctxt "term:94:name"
-msgid "Symptoms and signs involving the nervous and musculoskeletal systems"
-msgstr ""
-
-#: taxonomy:term:95:name
-msgctxt "term:95:name"
-msgid "Symptoms and signs involving the urinary system"
-msgstr ""
-
-#: taxonomy:term:96:name
-msgctxt "term:96:name"
-msgid ""
-"Symptoms and signs involving cognition, perception, emotional state "
-"and behaviour"
-msgstr ""
-
-#: taxonomy:term:97:name
-msgctxt "term:97:name"
-msgid "Symptoms and signs involving speech and voice"
-msgstr ""
-
-#: taxonomy:term:98:name
-msgctxt "term:98:name"
-msgid "General symptoms and signs"
-msgstr ""
-
-#: taxonomy:term:99:name
-msgctxt "term:99:name"
-msgid "Abnormal findings on examination of blood, without diagnosis"
-msgstr ""
-
-#: taxonomy:term:100:name
-msgctxt "term:100:name"
-msgid "Abnormal findings on examination of urine, without diagnosis"
-msgstr ""
-
-#: taxonomy:term:101:name
-msgctxt "term:101:name"
-msgid ""
-"Abnormal findings on examination of other body fluids, substances and "
-"tissues, without diagnosis"
-msgstr ""
-
-#: taxonomy:term:102:name
-msgctxt "term:102:name"
-msgid ""
-"Abnormal findings on diagnostic imaging and in function studies, "
-"without diagnosis"
-msgstr ""
-
-#: taxonomy:term:103:name
-msgctxt "term:103:name"
-msgid "Ill-defined and unknown causes of mortality"
-msgstr ""
-
-#: taxonomy:term:104:name
-msgctxt "term:104:name"
-msgid "Injury, poisoning and certain other consequences of external causes"
-msgstr ""
-
-#: taxonomy:term:105:name
-msgctxt "term:105:name"
-msgid "External causes of morbidity and mortality"
-msgstr ""
-
-#: taxonomy:term:113:name
-msgctxt "term:113:name"
-msgid "Occurrence/Status/Named category"
-msgstr ""
-
-#: taxonomy:term:114:name
-msgctxt "term:114:name"
-msgid "Date/Time/Onset/Duration"
-msgstr ""
-
-#: taxonomy:term:115:name
-msgctxt "term:115:name"
-msgid "Quantity/Frequency"
-msgstr ""
-
-#: taxonomy:term:116:name
-msgctxt "term:116:name"
-msgid "Localization"
-msgstr ""
-
-#: taxonomy:term:117:name
-msgctxt "term:117:name"
-msgid "Health Outcomes and Risk Factors Measures"
-msgstr ""
-
-#: taxonomy:term:118:name
-msgctxt "term:118:name"
-msgid "Physical Measures"
-msgstr ""
-
-#: taxonomy:term:119:name
-msgctxt "term:119:name"
-msgid "Laboratory Measures"
-msgstr ""
-
-#: taxonomy:term:120:name
-msgctxt "term:120:name"
-msgid "SOPs related Measures"
-msgstr ""
-
-#: taxonomy:term:121:name
-msgctxt "term:121:name"
-msgid "Administrative Information"
-msgstr ""
-
-#: taxonomy:term:122:name
-msgctxt "term:122:name"
-msgid "Biochemical Measures"
-msgstr ""
-
-#: taxonomy:term:123:name
-msgctxt "term:123:name"
-msgid "Glucids"
-msgstr ""
-
-#: taxonomy:term:124:name
-msgctxt "term:124:name"
-msgid "Lipids"
-msgstr ""
-
-#: taxonomy:term:125:name
-msgctxt "term:125:name"
-msgid "Proteins"
-msgstr ""
-
-#: taxonomy:term:126:name
-msgctxt "term:126:name"
-msgid "Ions and Electrolytes"
-msgstr ""
-
-#: taxonomy:term:127:name
-msgctxt "term:127:name"
-msgid "Vitamins"
-msgstr ""
-
-#: taxonomy:term:128:name
-msgctxt "term:128:name"
-msgid "Hormones"
-msgstr ""
-
-#: taxonomy:term:129:name
-msgctxt "term:129:name"
-msgid "Hematology"
-msgstr ""
-
-#: taxonomy:term:130:name
-msgctxt "term:130:name"
-msgid "Serology"
-msgstr ""
-
-#: taxonomy:term:131:name
-msgctxt "term:131:name"
-msgid "Bacteriology/Parasitology"
-msgstr ""
-
-#: taxonomy:term:132:name
-msgctxt "term:132:name"
-msgid "Pharmacology"
-msgstr ""
-
-#: taxonomy:term:133:name
-msgctxt "term:133:name"
-msgid "Toxicology"
-msgstr ""
-
-#: taxonomy:term:134:name
-msgctxt "term:134:name"
-msgid "Tobacco use"
-msgstr ""
-
-#: taxonomy:term:135:name
-msgctxt "term:135:name"
-msgid "Alcohol use"
-msgstr ""
-
-#: taxonomy:term:136:name
-msgctxt "term:136:name"
-msgid "Illicit drug use"
-msgstr ""
-
-#: taxonomy:term:137:name
-msgctxt "term:137:name"
-msgid "Nutrition"
-msgstr ""
-
-#: taxonomy:term:138:name
-msgctxt "term:138:name"
-msgid "Food intake and frequency"
-msgstr ""
-
-#: taxonomy:term:139:name
-msgctxt "term:139:name"
-msgid "Milk products"
-msgstr ""
-
-#: taxonomy:term:140:name
-msgctxt "term:140:name"
-msgid "Meat, eggs, fish and alternatives"
-msgstr ""
-
-#: taxonomy:term:141:name
-msgctxt "term:141:name"
-msgid "Vegetables and fruits"
-msgstr ""
-
-#: taxonomy:term:142:name
-msgctxt "term:142:name"
-msgid "Cereals, bread and starches"
-msgstr ""
-
-#: taxonomy:term:143:name
-msgctxt "term:143:name"
-msgid "Sweet and baked goods"
-msgstr ""
-
-#: taxonomy:term:144:name
-msgctxt "term:144:name"
-msgid "Fat intake"
-msgstr ""
-
-#: taxonomy:term:145:name
-msgctxt "term:145:name"
-msgid "Water intake"
-msgstr ""
-
-#: taxonomy:term:146:name
-msgctxt "term:146:name"
-msgid "Beverages (other than water or alcohol)"
-msgstr ""
-
-#: taxonomy:term:147:name
-msgctxt "term:147:name"
-msgid "Salt and food supplement"
-msgstr ""
-
-#: taxonomy:term:148:name
-msgctxt "term:148:name"
-msgid "Caffeine"
-msgstr ""
-
-#: taxonomy:term:149:name
-msgctxt "term:149:name"
-msgid "Nutrional behaviours and perception of nutritional habits"
-msgstr ""
-
-#: taxonomy:term:150:name
-msgctxt "term:150:name"
-msgid "Physical activity"
-msgstr ""
-
-#: taxonomy:term:151:name
-msgctxt "term:151:name"
-msgid "Activities/Exercice and frequency"
-msgstr ""
-
-#: taxonomy:term:152:name
-msgctxt "term:152:name"
-msgid "Perception of physical activity habits"
-msgstr ""
-
-#: taxonomy:term:153:name
-msgctxt "term:153:name"
-msgid "Weight-control behaviours"
-msgstr ""
-
-#: taxonomy:term:154:name
-msgctxt "term:154:name"
-msgid "Sleep behaviours"
-msgstr ""
-
-#: taxonomy:term:155:name
-msgctxt "term:155:name"
-msgid "Sexual behaviours"
-msgstr ""
-
-#: taxonomy:term:156:name
-msgctxt "term:156:name"
-msgid "Travel history and habits"
-msgstr ""
-
-#: taxonomy:term:157:name
-msgctxt "term:157:name"
-msgid "Binary"
-msgstr ""
-
-#: taxonomy:term:158:name
-msgctxt "term:158:name"
-msgid "Categorical ordered"
-msgstr ""
-
-#: taxonomy:term:159:name
-msgctxt "term:159:name"
-msgid "Categorical nominal"
-msgstr ""
-
-#: taxonomy:term:160:name
-msgctxt "term:160:name"
-msgid "Continuous"
-msgstr ""
-
-#: taxonomy:term:161:name
-msgctxt "term:161:name"
-msgid "Open text"
-msgstr ""
-
-#: taxonomy:term:162:name
-msgctxt "term:162:name"
-msgid "Health services utilization"
-msgstr ""
-
-#: taxonomy:term:163:name
-msgctxt "term:163:name"
-msgid "Physical/Physiological therapeutic interventions"
-msgstr ""
-
-#: taxonomy:term:164:name
-msgctxt "term:164:name"
-msgid "Therapeutic interventions on the nervous system"
-msgstr ""
-
-#: taxonomy:term:165:name
-msgctxt "term:165:name"
-msgid "Therapeutic interventions on the eyes and ocular adnexa"
-msgstr ""
-
-#: taxonomy:term:166:name
-msgctxt "term:166:name"
-msgid "Therapeutic interventions on the ears and mastoid (process)"
-msgstr ""
-
-#: taxonomy:term:167:name
-msgctxt "term:167:name"
-msgid "Therapeutic interventions on the orocraniofacial unit"
-msgstr ""
-
-#: taxonomy:term:168:name
-msgctxt "term:168:name"
-msgid "Therapeutic interventions on the respiratory system"
-msgstr ""
-
-#: taxonomy:term:169:name
-msgctxt "term:169:name"
-msgid "Therapeutic interventions on the cardiovascular system"
-msgstr ""
-
-#: taxonomy:term:170:name
-msgctxt "term:170:name"
-msgid "Therapeutic interventions on the lymphatic system"
-msgstr ""
-
-#: taxonomy:term:171:name
-msgctxt "term:171:name"
-msgid "Therapeutic interventions on the digestive and hepatobiliary tract"
-msgstr ""
-
-#: taxonomy:term:172:name
-msgctxt "term:172:name"
-msgid "Therapeutic interventions on the genitourinary system"
-msgstr ""
-
-#: taxonomy:term:173:name
-msgctxt "term:173:name"
-msgid "Therapeutic interventions on the musculoskelatal system"
-msgstr ""
-
-#: taxonomy:term:174:name
-msgctxt "term:174:name"
-msgid "Therapeutic interventions on the skin, subcutaneous tissue, and breast"
-msgstr ""
-
-#: taxonomy:term:175:name
-msgctxt "term:175:name"
-msgid "Therapeutic interventions on body system NEC"
-msgstr ""
-
-#: taxonomy:term:176:name
-msgctxt "term:176:name"
-msgid "Diagnostic interventions"
-msgstr ""
-
-#: taxonomy:term:177:name
-msgctxt "term:177:name"
-msgid "Diagnostic interventions on the nervous system"
-msgstr ""
-
-#: taxonomy:term:178:name
-msgctxt "term:178:name"
-msgid "Diagnostic interventions on the eyes and ocular adnexa"
-msgstr ""
-
-#: taxonomy:term:179:name
-msgctxt "term:179:name"
-msgid "Diagnostic interventions on the ears and mastoid (process)"
-msgstr ""
-
-#: taxonomy:term:180:name
-msgctxt "term:180:name"
-msgid "Diagnostic interventions on the orocraniofacial unit"
-msgstr ""
-
-#: taxonomy:term:181:name
-msgctxt "term:181:name"
-msgid "Diagnostic interventions on the respiratory system"
-msgstr ""
-
-#: taxonomy:term:182:name
-msgctxt "term:182:name"
-msgid "Diagnostic interventions on the cardiovascular system"
-msgstr ""
-
-#: taxonomy:term:183:name
-msgctxt "term:183:name"
-msgid "Diagnostic interventions on the lymphatic system"
-msgstr ""
-
-#: taxonomy:term:184:name
-msgctxt "term:184:name"
-msgid "Diagnostic interventions on the digestive and hepatobiliary tract"
-msgstr ""
-
-#: taxonomy:term:185:name
-msgctxt "term:185:name"
-msgid "Diagnostic interventions on the genitourinary system"
-msgstr ""
-
-#: taxonomy:term:186:name
-msgctxt "term:186:name"
-msgid "Diagnostic interventions on the musculoskelatal system"
-msgstr ""
-
-#: taxonomy:term:187:name
-msgctxt "term:187:name"
-msgid "Diagnostic interventions on the skin, subcutaneous tissue, and breast"
-msgstr ""
-
-#: taxonomy:term:188:name
-msgctxt "term:188:name"
-msgid "Diagnostic interventions on body system NEC"
-msgstr ""
-
-#: taxonomy:term:189:name
-msgctxt "term:189:name"
-msgid "Diagnostic imaging interventions"
-msgstr ""
-
-#: taxonomy:term:190:name
-msgctxt "term:190:name"
-msgid "Diagnostic imaging interventions on the nervous system"
-msgstr ""
-
-#: taxonomy:term:191:name
-msgctxt "term:191:name"
-msgid "Diagnostic imaging interventions on the eyes and ocular adnexa"
-msgstr ""
-
-#: taxonomy:term:192:name
-msgctxt "term:192:name"
-msgid "Diagnostic imaging interventions on the ears and mastoid (process)"
-msgstr ""
-
-#: taxonomy:term:193:name
-msgctxt "term:193:name"
-msgid "Diagnostic imaging interventions on the orocraniofacial unit"
-msgstr ""
-
-#: taxonomy:term:194:name
-msgctxt "term:194:name"
-msgid "Diagnostic imaging interventions on the respiratory system"
-msgstr ""
-
-#: taxonomy:term:195:name
-msgctxt "term:195:name"
-msgid "Diagnostic imaging interventions on the cardiovascular system"
-msgstr ""
-
-#: taxonomy:term:196:name
-msgctxt "term:196:name"
-msgid "Diagnostic imaging interventions on the lymphatic system"
-msgstr ""
-
-#: taxonomy:term:197:name
-msgctxt "term:197:name"
-msgid ""
-"Diagnostic imaging interventions on the digestive and hepatobiliary "
-"tract"
-msgstr ""
-
-#: taxonomy:term:198:name
-msgctxt "term:198:name"
-msgid "Diagnostic imaging interventions on the genitourinary system"
-msgstr ""
-
-#: taxonomy:term:199:name
-msgctxt "term:199:name"
-msgid "Diagnostic imaging interventions on the musculoskelatal system"
-msgstr ""
-
-#: taxonomy:term:200:name
-msgctxt "term:200:name"
-msgid ""
-"Diagnostic imaging interventions on the skin, subcutaneous tissue, and "
-"breast"
-msgstr ""
-
-#: taxonomy:term:201:name
-msgctxt "term:201:name"
-msgid "Diagnostic imaging interventions on body system NEC"
-msgstr ""
-
-#: taxonomy:term:202:name
-msgctxt "term:202:name"
-msgid "Clinical laboratory interventions"
-msgstr ""
-
-#: taxonomy:term:203:name
-msgctxt "term:203:name"
-msgid "Obstetrical and fetal interventions"
-msgstr ""
-
-#: taxonomy:term:204:name
-msgctxt "term:204:name"
-msgid "Antepartum obstetrical interventions"
-msgstr ""
-
-#: taxonomy:term:205:name
-msgctxt "term:205:name"
-msgid "Termination of pregnancy"
-msgstr ""
-
-#: taxonomy:term:206:name
-msgctxt "term:206:name"
-msgid "interventions on the fetus"
-msgstr ""
-
-#: taxonomy:term:207:name
-msgctxt "term:207:name"
-msgid "interventions during labour (latent and active)"
-msgstr ""
-
-#: taxonomy:term:208:name
-msgctxt "term:208:name"
-msgid "Delivery (birthing) interventions"
-msgstr ""
-
-#: taxonomy:term:209:name
-msgctxt "term:209:name"
-msgid "Postpartum obstetrical interventions"
-msgstr ""
-
-#: taxonomy:term:210:name
-msgctxt "term:210:name"
-msgid "Cognitive, psychosocial and sensory therapeutic interventions"
-msgstr ""
-
-#: taxonomy:term:211:name
-msgctxt "term:211:name"
-msgid "Therapeutic interventions on the psyche (mental health)"
-msgstr ""
-
-#: taxonomy:term:212:name
-msgctxt "term:212:name"
-msgid "Therapeutic interventions for interpersonal relationships"
-msgstr ""
-
-#: taxonomy:term:213:name
-msgctxt "term:213:name"
-msgid "Therapeutic interventions for cognition and learning"
-msgstr ""
-
-#: taxonomy:term:214:name
-msgctxt "term:214:name"
-msgid "Therapeutic interventions for communication"
-msgstr ""
-
-#: taxonomy:term:215:name
-msgctxt "term:215:name"
-msgid "Therapeutic interventions for hearing"
-msgstr ""
-
-#: taxonomy:term:216:name
-msgctxt "term:216:name"
-msgid "Therapeutic interventions for voice"
-msgstr ""
-
-#: taxonomy:term:217:name
-msgctxt "term:217:name"
-msgid "Therapeutic interventions for sight and other senses NEC"
-msgstr ""
-
-#: taxonomy:term:218:name
-msgctxt "term:218:name"
-msgid "Therapeutic interventions for motor functions"
-msgstr ""
-
-#: taxonomy:term:219:name
-msgctxt "term:219:name"
-msgid "Other healthcare interventions"
-msgstr ""
-
-#: taxonomy:term:220:name
-msgctxt "term:220:name"
-msgid "Other healthcare interventions, personnal care"
-msgstr ""
-
-#: taxonomy:term:221:name
-msgctxt "term:221:name"
-msgid "Other healthcare interventions, service"
-msgstr ""
-
-#: taxonomy:term:222:name
-msgctxt "term:222:name"
-msgid "Other healthcare interventions, support activity"
-msgstr ""
-
-#: taxonomy:term:223:name
-msgctxt "term:223:name"
-msgid ""
-"Other healthcare interventions, promoting health and preventing "
-"disease"
-msgstr ""
-
-#: taxonomy:term:224:name
-msgctxt "term:224:name"
-msgid ""
-"Therapeutic interventions strengthening the immune system and/or "
-"genetic composition"
-msgstr ""
-
-#: taxonomy:term:225:name
-msgctxt "term:225:name"
-msgid "Medication Intake"
-msgstr ""
-
-#: taxonomy:term:226:name
-msgctxt "term:226:name"
-msgid "Alimentary tract and metabolism"
-msgstr ""
-
-#: taxonomy:term:227:name
-msgctxt "term:227:name"
-msgid "Blood and blood forming organs"
-msgstr ""
-
-#: taxonomy:term:228:name
-msgctxt "term:228:name"
-msgid "Cardiovascular system"
-msgstr ""
-
-#: taxonomy:term:229:name
-msgctxt "term:229:name"
-msgid "Dermatologicals"
-msgstr ""
-
-#: taxonomy:term:230:name
-msgctxt "term:230:name"
-msgid "Genito urinary system and sex hormones"
-msgstr ""
-
-#: taxonomy:term:231:name
-msgctxt "term:231:name"
-msgid "Systemic hormonal preparations, excl. Sex hormones and insulins"
-msgstr ""
-
-#: taxonomy:term:232:name
-msgctxt "term:232:name"
-msgid "Antiinfectives for systemic use"
-msgstr ""
-
-#: taxonomy:term:233:name
-msgctxt "term:233:name"
-msgid "Antineoplastic and immunomodulating agents"
-msgstr ""
-
-#: taxonomy:term:234:name
-msgctxt "term:234:name"
-msgid "Musculo-skeletal system"
-msgstr ""
-
-#: taxonomy:term:235:name
-msgctxt "term:235:name"
-msgid "Nervous system"
-msgstr ""
-
-#: taxonomy:term:236:name
-msgctxt "term:236:name"
-msgid "Antiparasitic products, insecticides and repellents"
-msgstr ""
-
-#: taxonomy:term:237:name
-msgctxt "term:237:name"
-msgid "Respiratory system"
-msgstr ""
-
-#: taxonomy:term:238:name
-msgctxt "term:238:name"
-msgid "Sensory organs"
-msgstr ""
-
-#: taxonomy:term:239:name
-msgctxt "term:239:name"
-msgid "Various"
-msgstr ""
-
-#: taxonomy:term:240:name
-msgctxt "term:240:name"
-msgid "Adherence to medication"
-msgstr ""
-
-#: taxonomy:term:106:name
-msgctxt "term:106:name"
-msgid "Newborn characteristics"
-msgstr ""
-
-#: taxonomy:term:107:name
-msgctxt "term:107:name"
-msgid "Birth weight"
-msgstr ""
-
-#: taxonomy:term:108:name
-msgctxt "term:108:name"
-msgid "Birth height"
-msgstr ""
-
-#: taxonomy:term:109:name
-msgctxt "term:109:name"
-msgid "Gestational age/Prematurity"
-msgstr ""
-
-#: taxonomy:term:110:name
-msgctxt "term:110:name"
-msgid "Newborn/Childhood health"
-msgstr ""
-
-#: taxonomy:term:111:name
-msgctxt "term:111:name"
-msgid "Day care/Preschool attendance"
-msgstr ""
-
-#: taxonomy:term:112:name
-msgctxt "term:112:name"
-msgid "History of being breastfed"
-msgstr ""
-
-#: taxonomy:term:241:name
-msgctxt "term:241:name"
-msgid "Perception of health"
-msgstr ""
-
-#: taxonomy:term:242:name
-msgctxt "term:242:name"
-msgid "Quality of life"
-msgstr ""
-
-#: taxonomy:term:243:name
-msgctxt "term:243:name"
-msgid "Currently"
-msgstr ""
-
-#: taxonomy:term:244:name
-msgctxt "term:244:name"
-msgid "Today"
-msgstr ""
-
-#: taxonomy:term:245:name
-msgctxt "term:245:name"
-msgid "Today and up to the last 12 months"
-msgstr ""
-
-#: taxonomy:term:246:name
-msgctxt "term:246:name"
-msgid "Today and up to more than the last 12 months"
-msgstr ""
-
-#: taxonomy:term:247:name
-msgctxt "term:247:name"
-msgid "In the past"
-msgstr ""
-
-#: taxonomy:term:248:name
-msgctxt "term:248:name"
-msgid "Specific period of time in the past"
-msgstr ""
-
-#: taxonomy:term:249:name
-msgctxt "term:249:name"
-msgid "Specific point in the past"
-msgstr ""
-
-#: taxonomy:term:250:name
-msgctxt "term:250:name"
-msgid "Through all life"
-msgstr ""
-
-#: taxonomy:term:251:name
-msgctxt "term:251:name"
-msgid "Radiation"
-msgstr ""
-
-#: taxonomy:term:252:name
-msgctxt "term:252:name"
-msgid "Sunlight/UV exposure"
-msgstr ""
-
-#: taxonomy:term:253:name
-msgctxt "term:253:name"
-msgid "Radio waves/Mobile phone use"
-msgstr ""
-
-#: taxonomy:term:254:name
-msgctxt "term:254:name"
-msgid "Noise/Vibrations"
-msgstr ""
-
-#: taxonomy:term:255:name
-msgctxt "term:255:name"
-msgid "Chemicals"
-msgstr ""
-
-#: taxonomy:term:256:name
-msgctxt "term:256:name"
-msgid "Passive smoke exposure"
-msgstr ""
-
-#: taxonomy:term:257:name
-msgctxt "term:257:name"
-msgid "Solvents"
-msgstr ""
-
-#: taxonomy:term:258:name
-msgctxt "term:258:name"
-msgid "Pesticides"
-msgstr ""
-
-#: taxonomy:term:259:name
-msgctxt "term:259:name"
-msgid "Allergens"
-msgstr ""
-
-#: taxonomy:term:260:name
-msgctxt "term:260:name"
-msgid "Housing characteristics"
-msgstr ""
-
-#: taxonomy:term:261:name
-msgctxt "term:261:name"
-msgid "Built environment/Neighborhood"
-msgstr ""
-
-#: taxonomy:term:262:name
-msgctxt "term:262:name"
-msgid "Others"
-msgstr ""
-
-#: taxonomy:term:263:name
-msgctxt "term:263:name"
-msgid "Pregnancy"
-msgstr ""
-
-#: taxonomy:term:264:name
-msgctxt "term:264:name"
-msgid "Parity/Gravidity"
-msgstr ""
-
-#: taxonomy:term:265:name
-msgctxt "term:265:name"
-msgid "Pregnancy outcomes"
-msgstr ""
-
-#: taxonomy:term:266:name
-msgctxt "term:266:name"
-msgid "Breast feeding"
-msgstr ""
-
-#: taxonomy:term:267:name
-msgctxt "term:267:name"
-msgid "Menstruation"
-msgstr ""
-
-#: taxonomy:term:268:name
-msgctxt "term:268:name"
-msgid "Menopause"
-msgstr ""
-
-#: taxonomy:term:269:name
-msgctxt "term:269:name"
-msgid "Fertility and reproductive problems"
-msgstr ""
-
-#: taxonomy:term:270:name
-msgctxt "term:270:name"
-msgid "Number of children"
-msgstr ""
-
-#: taxonomy:term:271:name
-msgctxt "term:271:name"
-msgid "Familial and social environment"
-msgstr ""
-
-#: taxonomy:term:272:name
-msgctxt "term:272:name"
-msgid "Working social environment"
-msgstr ""
-
-#: taxonomy:term:273:name
-msgctxt "term:273:name"
-msgid "Age/Birth date"
-msgstr ""
-
-#: taxonomy:term:274:name
-msgctxt "term:274:name"
-msgid "Gender"
-msgstr ""
-
-#: taxonomy:term:275:name
-msgctxt "term:275:name"
-msgid "Birth location"
-msgstr ""
-
-#: taxonomy:term:276:name
-msgctxt "term:276:name"
-msgid "Ethnic background"
-msgstr ""
-
-#: taxonomy:term:277:name
-msgctxt "term:277:name"
-msgid "Religion"
-msgstr ""
-
-#: taxonomy:term:278:name
-msgctxt "term:278:name"
-msgid "Language"
-msgstr ""
-
-#: taxonomy:term:279:name
-msgctxt "term:279:name"
-msgid "Citizenship"
-msgstr ""
-
-#: taxonomy:term:280:name
-msgctxt "term:280:name"
-msgid "Residence"
-msgstr ""
-
-#: taxonomy:term:281:name
-msgctxt "term:281:name"
-msgid "Household"
-msgstr ""
-
-#: taxonomy:term:282:name
-msgctxt "term:282:name"
-msgid "Marital/Partner status"
-msgstr ""
-
-#: taxonomy:term:283:name
-msgctxt "term:283:name"
-msgid "Structure of the household"
-msgstr ""
-
-#: taxonomy:term:284:name
-msgctxt "term:284:name"
-msgid "Kinship"
-msgstr ""
-
-#: taxonomy:term:285:name
-msgctxt "term:285:name"
-msgid "Education level"
-msgstr ""
-
-#: taxonomy:term:286:name
-msgctxt "term:286:name"
-msgid "Income"
-msgstr ""
-
-#: taxonomy:term:287:name
-msgctxt "term:287:name"
-msgid "Working status"
-msgstr ""
+msgstr "Cible"
+
+#: taxonomy:term:1:name
+msgctxt "term:1:name"
+msgid "General discussion"
+msgstr "Discussion générale"
 
 #: taxonomy:term:2:name
 msgctxt "term:2:name"
-msgid "General population"
-msgstr ""
+msgid "Weight"
+msgstr "Poids"
 
 #: taxonomy:term:3:name
 msgctxt "term:3:name"
-msgid "Volunteer enrolment"
-msgstr ""
+msgid "Height"
+msgstr "Taille"
 
 #: taxonomy:term:4:name
 msgctxt "term:4:name"
-msgid "Selected sample (e.g.: from governmental databases)"
-msgstr ""
+msgid "Standing height"
+msgstr "Taille en position debout"
 
 #: taxonomy:term:5:name
 msgctxt "term:5:name"
-msgid "Participants from existing studies"
-msgstr ""
+msgid "Sitting height"
+msgstr "Taille en position assise"
 
 #: taxonomy:term:6:name
 msgctxt "term:6:name"
-msgid "Specific population"
-msgstr ""
+msgid "Body circumferences"
+msgstr "Circonférences du corps"
 
 #: taxonomy:term:7:name
 msgctxt "term:7:name"
-msgid "Clinic patients"
-msgstr ""
+msgid "Waist circumference"
+msgstr "Circonférence de la taille"
 
 #: taxonomy:term:8:name
 msgctxt "term:8:name"
-msgid ""
-"Members of specific association (professional association, patients "
-"network, etc)"
-msgstr ""
+msgid "Hip circumference"
+msgstr "Circonférence des hanches"
 
 #: taxonomy:term:9:name
 msgctxt "term:9:name"
+msgid "Bioimpedance"
+msgstr "Bioimpédance"
+
+#: taxonomy:term:10:name
+msgctxt "term:10:name"
+msgid "Bone density"
+msgstr "Densité osseuse"
+
+#: taxonomy:term:11:name
+msgctxt "term:11:name"
+msgid "Skinfold thickness"
+msgstr "Épaisseur du pli cutané"
+
+#: taxonomy:term:12:name
+msgctxt "term:12:name"
+msgid "Other antropometric structures"
+msgstr "Autres structures anthropométriques"
+
+#: taxonomy:term:13:name
+msgctxt "term:13:name"
+msgid "Handedness/Laterality"
+msgstr "Préférence manuelle/Latéralité"
+
+#: taxonomy:term:14:name
+msgctxt "term:14:name"
+msgid "Mental functions"
+msgstr "Fonctions mentales"
+
+#: taxonomy:term:15:name
+msgctxt "term:15:name"
+msgid "Intellectual functions"
+msgstr "Fonctions intellectuelles"
+
+#: taxonomy:term:16:name
+msgctxt "term:16:name"
+msgid "Intelligence"
+msgstr "Intelligence"
+
+#: taxonomy:term:17:name
+msgctxt "term:17:name"
+msgid "Cognitive functions"
+msgstr "Fontions cognitives"
+
+#: taxonomy:term:18:name
+msgctxt "term:18:name"
+msgid "Temperament and personality functions"
+msgstr "Fonctions du tempérament et de la personnalité"
+
+#: taxonomy:term:19:name
+msgctxt "term:19:name"
+msgid "Emotional functions"
+msgstr "Fonctions émotionnelles"
+
+#: taxonomy:term:20:name
+msgctxt "term:20:name"
+msgid "Anxiety/Depression"
+msgstr "Anxiété/Dépression"
+
+#: taxonomy:term:21:name
+msgctxt "term:21:name"
+msgid "Attention functions"
+msgstr "Fonctions de l'attention"
+
+#: taxonomy:term:22:name
+msgctxt "term:22:name"
+msgid "Memory functions"
+msgstr "Fonctions de la mémoire"
+
+#: taxonomy:term:23:name
+msgctxt "term:23:name"
+msgid "Psychomotor functions"
+msgstr "Fonctions psychomotrices"
+
+#: taxonomy:term:24:name
+msgctxt "term:24:name"
+msgid "Mental functions of language"
+msgstr "Fonctions mentales du language"
+
+#: taxonomy:term:25:name
+msgctxt "term:25:name"
+msgid "Calculation functions"
+msgstr "Fonctions du calcul"
+
+#: taxonomy:term:26:name
+msgctxt "term:26:name"
+msgid "Sensory functions and pain"
+msgstr "Fonctions sensorielles et douleur"
+
+#: taxonomy:term:27:name
+msgctxt "term:27:name"
+msgid "Seeing functions"
+msgstr "Fonctions visuelles"
+
+#: taxonomy:term:28:name
+msgctxt "term:28:name"
+msgid "Hearing functions"
+msgstr "Fonctions de l'audition"
+
+#: taxonomy:term:29:name
+msgctxt "term:29:name"
+msgid "Sensory functions related to temperature and other stimuli"
+msgstr "Fonctions sensorielles associées à la température et à d'autres stimulus"
+
+#: taxonomy:term:30:name
+msgctxt "term:30:name"
+msgid "Voice and speech functions"
+msgstr "Fonctions de la voix et de la parole"
+
+#: taxonomy:term:31:name
+msgctxt "term:31:name"
+msgid "Fluency and rhythm of speech functions"
+msgstr "Fonctions de fluidité et de rythme de la parole"
+
+#: taxonomy:term:32:name
+msgctxt "term:32:name"
+msgid "functions of the cardiovascular, haematological, immunological and respiratory systems"
+msgstr "Fonctions des systèmes cardiovasculaire, hématopoïétique, immunitaire et respiratoire"
+
+#: taxonomy:term:33:name
+msgctxt "term:33:name"
+msgid "Heart functions"
+msgstr "Fonctions du coeur"
+
+#: taxonomy:term:34:name
+msgctxt "term:34:name"
+msgid "Heart rate"
+msgstr "Fréquence cardiaque"
+
+#: taxonomy:term:35:name
+msgctxt "term:35:name"
+msgid "Heart rate at rest"
+msgstr "Fréquence cardiaque au repos"
+
+#: taxonomy:term:36:name
+msgctxt "term:36:name"
+msgid "Heart rate under stress"
+msgstr "Fréquence cardiaque à l'effort"
+
+#: taxonomy:term:37:name
+msgctxt "term:37:name"
+msgid "Electrical activity"
+msgstr "Activité électrique"
+
+#: taxonomy:term:38:name
+msgctxt "term:38:name"
+msgid "Blood vessel functions"
+msgstr "Fonctions des vaisseaux sanguins"
+
+#: taxonomy:term:39:name
+msgctxt "term:39:name"
+msgid "Vascular stiffness"
+msgstr "Rigidité vasculaire"
+
+#: taxonomy:term:40:name
+msgctxt "term:40:name"
+msgid "Carotid intima-media thickness"
+msgstr "Épaisseur intima-média de la carotide"
+
+#: taxonomy:term:41:name
+msgctxt "term:41:name"
+msgid "Blood pressure functions"
+msgstr "Fonctions de la pression artérielle"
+
+#: taxonomy:term:42:name
+msgctxt "term:42:name"
+msgid "Respiration functions"
+msgstr "Fonctions respiratoires"
+
+#: taxonomy:term:43:name
+msgctxt "term:43:name"
+msgid "Functions of the digestive, metabolic and endocrine systems"
+msgstr "Fonctions des systèmes digestif, métabolique et endocrinien"
+
+#: taxonomy:term:44:name
+msgctxt "term:44:name"
+msgid "Genitourinary and reproductive functions"
+msgstr "Fonctions génito-urinaires et reproductives"
+
+#: taxonomy:term:45:name
+msgctxt "term:45:name"
+msgid "Neuromusculoskeletal and movement-related functions"
+msgstr "Fonctions de l'appareil locomoteur et liées au mouvement"
+
+#: taxonomy:term:46:name
+msgctxt "term:46:name"
+msgid "Muscle functions"
+msgstr "Fonctions des muscles"
+
+#: taxonomy:term:47:name
+msgctxt "term:47:name"
+msgid "Grip strenght"
+msgstr "Force de la préhension des mains"
+
+#: taxonomy:term:48:name
+msgctxt "term:48:name"
+msgid "Movement functions"
+msgstr "Fontions liées au mouvement"
+
+#: taxonomy:term:49:name
+msgctxt "term:49:name"
+msgid "Reaction time"
+msgstr "Temps de réaction"
+
+#: taxonomy:term:50:name
+msgctxt "term:50:name"
+msgid "Sit and reach"
+msgstr "Test de flexion avant du tronc"
+
+#: taxonomy:term:51:name
+msgctxt "term:51:name"
+msgid "Mobility"
+msgstr "Mobilité"
+
+#: taxonomy:term:52:name
+msgctxt "term:52:name"
+msgid "Functions of the skin and related structures"
+msgstr "Fonctions de la peau et des structures associées"
+
+#: taxonomy:term:53:name
+msgctxt "term:53:name"
+msgid "Structures of the nervous systems"
+msgstr "Structures du système nerveux"
+
+#: taxonomy:term:54:name
+msgctxt "term:54:name"
+msgid "The eye, ear and related structures"
+msgstr "Oeil, oreille et structures annexes"
+
+#: taxonomy:term:55:name
+msgctxt "term:55:name"
+msgid "Structures involved in voice and speech"
+msgstr "Structures liées à la voix et à la parole"
+
+#: taxonomy:term:56:name
+msgctxt "term:56:name"
+msgid "Structures of the cardiovascular, immunological and respiratory systems"
+msgstr "Structures des systèmes cardiovasculaire, immunitaire et respiratoire"
+
+#: taxonomy:term:57:name
+msgctxt "term:57:name"
+msgid "Structures related to the digestive, metabolic and endocrine systems"
+msgstr "Structures liées aux systèmes digestif, métabolique et endocrinien"
+
+#: taxonomy:term:58:name
+msgctxt "term:58:name"
+msgid "Structures related to the genitourinary and reproductive systems"
+msgstr "Structures liées à l'appareil génito-urinaire"
+
+#: taxonomy:term:59:name
+msgctxt "term:59:name"
+msgid "Structures related to movement"
+msgstr "Structures liées au mouvement"
+
+#: taxonomy:term:60:name
+msgctxt "term:60:name"
+msgid "Skin and related structures"
+msgstr "Peau et structures annexes"
+
+#: taxonomy:term:61:name
+msgctxt "term:61:name"
+msgid "Questionnaire"
+msgstr "Questionnaire"
+
+#: taxonomy:term:62:name
+msgctxt "term:62:name"
+msgid "Physical measure"
+msgstr "Mesure physique"
+
+#: taxonomy:term:63:name
+msgctxt "term:63:name"
+msgid "Biosample"
+msgstr "Échantillon biologique"
+
+#: taxonomy:term:64:name
+msgctxt "term:64:name"
+msgid "Administrative database"
+msgstr "Base de données administratives"
+
+#: taxonomy:term:65:name
+msgctxt "term:65:name"
+msgid "Certain infectious and parasitic diseases"
+msgstr "Certaines maladies infectieuses et parasitaires"
+
+#: taxonomy:term:66:name
+msgctxt "term:66:name"
+msgid "Neoplasms"
+msgstr "Tumeurs"
+
+#: taxonomy:term:67:name
+msgctxt "term:67:name"
+msgid "Diseases of the blood and blood-forming organs and certain disorders involving the immune mechanism"
+msgstr "Maladies du sang et des organes hématopoïétiques et certains troubles du système immunitaire"
+
+#: taxonomy:term:68:name
+msgctxt "term:68:name"
+msgid "Endocrine, nutritional and metabolic diseases"
+msgstr "Maladies endocriniennes, nutritionnelles et métaboliques"
+
+#: taxonomy:term:69:name
+msgctxt "term:69:name"
+msgid "Mental and behavioural disorders"
+msgstr "Troubles mentaux et du comportement"
+
+#: taxonomy:term:70:name
+msgctxt "term:70:name"
+msgid "Diseases of the nervous system"
+msgstr "Maladies du système nerveux"
+
+#: taxonomy:term:71:name
+msgctxt "term:71:name"
+msgid "Diseases of the eye and adnexa"
+msgstr "Maladies de l'œil et de ses annexes"
+
+#: taxonomy:term:72:name
+msgctxt "term:72:name"
+msgid "Diseases of the ear and mastoid process"
+msgstr "Maladies de l'oreille et de l'apophyse mastoïde"
+
+#: taxonomy:term:73:name
+msgctxt "term:73:name"
+msgid "Diseases of the circulatory system"
+msgstr "Maladies de l'appareil circulatoire"
+
+#: taxonomy:term:74:name
+msgctxt "term:74:name"
+msgid "Diseases of the respiratory system"
+msgstr "Maladies de l'appareil respiratoire"
+
+#: taxonomy:term:75:name
+msgctxt "term:75:name"
+msgid "Diseases of the digestive system"
+msgstr "Maladies de l'appareil digestif"
+
+#: taxonomy:term:76:name
+msgctxt "term:76:name"
+msgid "Diseases of the skin and subcutaneous tissue"
+msgstr "Maladies de la peau et du tissu cellulaire sous-cutané"
+
+#: taxonomy:term:77:name
+msgctxt "term:77:name"
+msgid "Diseases of the musculoskeletal system and connective tissue"
+msgstr "Maladies du système ostéo-articulaire, des muscles et du tissu conjonctif"
+
+#: taxonomy:term:78:name
+msgctxt "term:78:name"
+msgid "Diseases of the genitourinary system"
+msgstr "Maladies de l'appareil génito-urinaire"
+
+#: taxonomy:term:79:name
+msgctxt "term:79:name"
+msgid "Pregnancy, childbirth and the puerperium"
+msgstr "Grossesse, accouchement et puerpéralité"
+
+#: taxonomy:term:80:name
+msgctxt "term:80:name"
+msgid "Certain conditions originating in the perinatal period"
+msgstr "Certaines affections dont l'origine se situe dans la période périnatale"
+
+#: taxonomy:term:81:name
+msgctxt "term:81:name"
+msgid "Congenital malformations, deformations and chromosomal abnormalities"
+msgstr "Malformations congénitales et anomalies chromosomiques"
+
+#: taxonomy:term:82:name
+msgctxt "term:82:name"
+msgid "Symptoms, signs and abnormal clinical and laboratory findings, not elsewhere classified"
+msgstr "Symptômes, signes et résultats anormaux d'examens cliniques et de laboratoire, non classés ailleurs"
+
+#: taxonomy:term:83:name
+msgctxt "term:83:name"
+msgid "Symptoms and signs involving the circulatory and respiratory systems"
+msgstr "Symptômes et signes relatifs aux appareils circulatoire et respiratoire"
+
+#: taxonomy:term:84:name
+msgctxt "term:84:name"
+msgid "Symptoms and signs involving the digestive system and abdomen"
+msgstr "Symptômes et signes relatifs à l'appareil digestif et à l'abdomen"
+
+#: taxonomy:term:85:name
+msgctxt "term:85:name"
+msgid "Symptoms and signs involving the skin and subcutaneous tissue"
+msgstr "Symptômes et signes relatifs à la peau et au tissu cellulaire sous-cutané"
+
+#: taxonomy:term:86:name
+msgctxt "term:86:name"
+msgid "Symptoms and signs involving the nervous and musculoskeletal systems"
+msgstr "Symptômes et signes relatifs aux systèmes nerveux et ostéo-musculaire"
+
+#: taxonomy:term:87:name
+msgctxt "term:87:name"
+msgid "Symptoms and signs involving the urinary system"
+msgstr "Symptômes et signes relatifs à l'appareil urinaire"
+
+#: taxonomy:term:88:name
+msgctxt "term:88:name"
+msgid "Symptoms and signs involving cognition, perception, emotional state and behaviour"
+msgstr "Symptômes et signes relatifs à la connaissance, la perception, l'humeur et le comportement"
+
+#: taxonomy:term:89:name
+msgctxt "term:89:name"
+msgid "Symptoms and signs involving speech and voice"
+msgstr "Symptômes et signes relatifs au langage et à la voix"
+
+#: taxonomy:term:90:name
+msgctxt "term:90:name"
+msgid "General symptoms and signs"
+msgstr "Symptômes et signes généraux"
+
+#: taxonomy:term:91:name
+msgctxt "term:91:name"
+msgid "Abnormal findings on examination of blood, without diagnosis"
+msgstr "Résultats anormaux de l'examen du sang, sans diagnostic"
+
+#: taxonomy:term:92:name
+msgctxt "term:92:name"
+msgid "Abnormal findings on examination of urine, without diagnosis"
+msgstr "Résultats anormaux de l'examen des urines, sans diagnostic"
+
+#: taxonomy:term:93:name
+msgctxt "term:93:name"
+msgid "Abnormal findings on examination of other body fluids, substances and tissues, without diagnosis"
+msgstr "Résultats anormaux de l'examen d'autres liquides, substances et tissus, sans diagnostic"
+
+#: taxonomy:term:94:name
+msgctxt "term:94:name"
+msgid "Abnormal findings on diagnostic imaging and in function studies, without diagnosis"
+msgstr "Résultats anormaux d'imagerie diagnostique et d'épreuves fonctionnelles, sans diagnostic"
+
+#: taxonomy:term:95:name
+msgctxt "term:95:name"
+msgid "Ill-defined and unknown causes of mortality"
+msgstr "Causes de mortalité mal définies et inconnues"
+
+#: taxonomy:term:96:name
+msgctxt "term:96:name"
+msgid "Injury, poisoning and certain other consequences of external causes"
+msgstr "Lésions traumatiques, empoisonnements et certaines autres conséquences de causes externes"
+
+#: taxonomy:term:97:name
+msgctxt "term:97:name"
+msgid "External causes of morbidity and mortality"
+msgstr "Causes externes de morbidité et de mortalité"
+
+#: taxonomy:term:98:name
+msgctxt "term:98:name"
+msgid "Newborn characteristics"
+msgstr "Caractéristiques du nouveau-né"
+
+#: taxonomy:term:99:name
+msgctxt "term:99:name"
+msgid "Birth weight"
+msgstr "Poids à la naissance"
+
+#: taxonomy:term:100:name
+msgctxt "term:100:name"
+msgid "Birth height"
+msgstr "Taille à la naissance"
+
+#: taxonomy:term:101:name
+msgctxt "term:101:name"
+msgid "Gestational age/Prematurity"
+msgstr "Âge gestationnel/Prématurité"
+
+#: taxonomy:term:102:name
+msgctxt "term:102:name"
+msgid "Newborn/Childhood health"
+msgstr "Naissance/Santé à l'enfance"
+
+#: taxonomy:term:103:name
+msgctxt "term:103:name"
+msgid "Day care/Preschool attendance"
+msgstr "Garderie/Prématernelle"
+
+#: taxonomy:term:104:name
+msgctxt "term:104:name"
+msgid "History of being breastfed"
+msgstr "Statut d'enfant allaité"
+
+#: taxonomy:term:105:name
+msgctxt "term:105:name"
+msgid "Occurrence/Status/Named category"
+msgstr "Occurence/Statut/Catégorie nommée"
+
+#: taxonomy:term:106:name
+msgctxt "term:106:name"
+msgid "Date/Time/Onset/Duration"
+msgstr "Date/Temps/Survenue/Durée"
+
+#: taxonomy:term:107:name
+msgctxt "term:107:name"
+msgid "Quantity/Frequency"
+msgstr "Quantité/Fréquence"
+
+#: taxonomy:term:108:name
+msgctxt "term:108:name"
+msgid "Localization"
+msgstr "Localisation"
+
+#: taxonomy:term:109:name
+msgctxt "term:109:name"
+msgid "Health Outcomes and Risk Factors Measures"
+msgstr "Issues en santé et mesures des facteurs de risque"
+
+#: taxonomy:term:110:name
+msgctxt "term:110:name"
+msgid "Physical Measures"
+msgstr "Mesures physiques"
+
+#: taxonomy:term:111:name
+msgctxt "term:111:name"
+msgid "Laboratory Measures"
+msgstr "Mesures du laboratoire"
+
+#: taxonomy:term:112:name
+msgctxt "term:112:name"
+msgid "SOPs related Measures"
+msgstr "Mesures liées aux SOPs"
+
+#: taxonomy:term:113:name
+msgctxt "term:113:name"
+msgid "Administrative Information"
+msgstr "Information administrative"
+
+#: taxonomy:term:114:name
+msgctxt "term:114:name"
+msgid "Biochemical Measures"
+msgstr "Mesures biochimiques"
+
+#: taxonomy:term:115:name
+msgctxt "term:115:name"
+msgid "Glucids"
+msgstr "Glucides"
+
+#: taxonomy:term:116:name
+msgctxt "term:116:name"
+msgid "Lipids"
+msgstr "Lipides"
+
+#: taxonomy:term:117:name
+msgctxt "term:117:name"
+msgid "Proteins"
+msgstr "Protéines"
+
+#: taxonomy:term:118:name
+msgctxt "term:118:name"
+msgid "Ions and Electrolytes"
+msgstr "Ions et électrolytes"
+
+#: taxonomy:term:119:name
+msgctxt "term:119:name"
+msgid "Vitamins"
+msgstr "Vitamines"
+
+#: taxonomy:term:120:name
+msgctxt "term:120:name"
+msgid "Hormones"
+msgstr "Hormones"
+
+#: taxonomy:term:121:name
+msgctxt "term:121:name"
+msgid "Hematology"
+msgstr "Hématologie"
+
+#: taxonomy:term:122:name
+msgctxt "term:122:name"
+msgid "Serology"
+msgstr "Sérologie"
+
+#: taxonomy:term:123:name
+msgctxt "term:123:name"
+msgid "Bacteriology/Parasitology"
+msgstr "Bactériologie/Parasitologie"
+
+#: taxonomy:term:124:name
+msgctxt "term:124:name"
+msgid "Pharmacology"
+msgstr "Pharmacologie"
+
+#: taxonomy:term:125:name
+msgctxt "term:125:name"
+msgid "Toxicology"
+msgstr "Toxicologie"
+
+#: taxonomy:term:126:name
+msgctxt "term:126:name"
+msgid "Tobacco use"
+msgstr "Usage du tabac"
+
+#: taxonomy:term:127:name
+msgctxt "term:127:name"
+msgid "Alcohol use"
+msgstr "Usage d'alcool"
+
+#: taxonomy:term:128:name
+msgctxt "term:128:name"
+msgid "Illicit drug use"
+msgstr "Usage de drogues illicites"
+
+#: taxonomy:term:129:name
+msgctxt "term:129:name"
+msgid "Nutrition"
+msgstr "Nutrition"
+
+#: taxonomy:term:130:name
+msgctxt "term:130:name"
+msgid "Food intake and frequency"
+msgstr "Consommation d'aliments et fréquence"
+
+#: taxonomy:term:131:name
+msgctxt "term:131:name"
+msgid "Milk products"
+msgstr "Produits laitiers"
+
+#: taxonomy:term:132:name
+msgctxt "term:132:name"
+msgid "Meat, eggs, fish and alternatives"
+msgstr "Viande, oeufs, poissons et substituts"
+
+#: taxonomy:term:133:name
+msgctxt "term:133:name"
+msgid "Vegetables and fruits"
+msgstr "Fruits et légumes"
+
+#: taxonomy:term:134:name
+msgctxt "term:134:name"
+msgid "Cereals, bread and starches"
+msgstr "Céréales, pain et produits de blé"
+
+#: taxonomy:term:135:name
+msgctxt "term:135:name"
+msgid "Sweet and baked goods"
+msgstr "Sucreries et pâtisseries"
+
+#: taxonomy:term:136:name
+msgctxt "term:136:name"
+msgid "Fat intake"
+msgstr "Consommation de lipides"
+
+#: taxonomy:term:137:name
+msgctxt "term:137:name"
+msgid "Water intake"
+msgstr "Consommation d'eau"
+
+#: taxonomy:term:138:name
+msgctxt "term:138:name"
+msgid "Beverages (other than water or alcohol)"
+msgstr "Brevages (autre que l'eau ou l'alcool)"
+
+#: taxonomy:term:139:name
+msgctxt "term:139:name"
+msgid "Salt and food supplement"
+msgstr "Supplément de repas et sel"
+
+#: taxonomy:term:140:name
+msgctxt "term:140:name"
+msgid "Caffeine"
+msgstr "Cafféïne"
+
+#: taxonomy:term:141:name
+msgctxt "term:141:name"
+msgid "Nutrional behaviours and perception of nutritional habits"
+msgstr "Comportements nutritionnels et perception des habitudes nutritionnelles"
+
+#: taxonomy:term:142:name
+msgctxt "term:142:name"
+msgid "Physical activity"
+msgstr "Activité physique"
+
+#: taxonomy:term:143:name
+msgctxt "term:143:name"
+msgid "Activities/Exercice and frequency"
+msgstr "Activités/Exercice et fréquence"
+
+#: taxonomy:term:144:name
+msgctxt "term:144:name"
+msgid "Perception of physical activity habits"
+msgstr "Perception des habitudes d'activité physique"
+
+#: taxonomy:term:145:name
+msgctxt "term:145:name"
+msgid "Weight-control behaviours"
+msgstr "Comportements liés au contrôle du poids"
+
+#: taxonomy:term:146:name
+msgctxt "term:146:name"
+msgid "Sleep behaviours"
+msgstr "Comportements liés au sommeil"
+
+#: taxonomy:term:147:name
+msgctxt "term:147:name"
+msgid "Sexual behaviours"
+msgstr "Comportements sexuels"
+
+#: taxonomy:term:148:name
+msgctxt "term:148:name"
+msgid "Travel history and habits"
+msgstr "Habitudes et histoire de voyage"
+
+#: taxonomy:term:149:name
+msgctxt "term:149:name"
+msgid "Binary"
+msgstr "Binaire"
+
+#: taxonomy:term:150:name
+msgctxt "term:150:name"
+msgid "Categorical ordered"
+msgstr "Catégoriel ordonné"
+
+#: taxonomy:term:151:name
+msgctxt "term:151:name"
+msgid "Categorical nominal"
+msgstr "Catégoriel nomial"
+
+#: taxonomy:term:152:name
+msgctxt "term:152:name"
+msgid "Continuous"
+msgstr "Continu"
+
+#: taxonomy:term:153:name
+msgctxt "term:153:name"
+msgid "Open text"
+msgstr "Texte ouvert"
+
+#: taxonomy:term:154:name
+msgctxt "term:154:name"
+msgid "Health services utilization"
+msgstr "Utilisation des services de santé"
+
+#: taxonomy:term:155:name
+msgctxt "term:155:name"
+msgid "Physical/Physiological therapeutic interventions"
+msgstr "Interventions thérapeutiques physiques et physiologiques"
+
+#: taxonomy:term:156:name
+msgctxt "term:156:name"
+msgid "Therapeutic interventions on the nervous system"
+msgstr "Interventions thérapeutiques sur le système nerveux"
+
+#: taxonomy:term:157:name
+msgctxt "term:157:name"
+msgid "Therapeutic interventions on the eyes and ocular adnexa"
+msgstr "Interventions thérapeutiques sur l’œil et ses annexes"
+
+#: taxonomy:term:158:name
+msgctxt "term:158:name"
+msgid "Therapeutic interventions on the ears and mastoid (process)"
+msgstr "Interventions thérapeutiques sur l'oreille et l'apophyse mastoïde"
+
+#: taxonomy:term:159:name
+msgctxt "term:159:name"
+msgid "Therapeutic interventions on the orocraniofacial unit"
+msgstr "Interventions thérapeutiques sur la région bucco-faciale"
+
+#: taxonomy:term:160:name
+msgctxt "term:160:name"
+msgid "Therapeutic interventions on the respiratory system"
+msgstr "Interventions thérapeutiques sur l'appareil respiratoire"
+
+#: taxonomy:term:161:name
+msgctxt "term:161:name"
+msgid "Therapeutic interventions on the cardiovascular system"
+msgstr "Interventions thérapeutiques sur l'appareil cardiovasculaire"
+
+#: taxonomy:term:162:name
+msgctxt "term:162:name"
+msgid "Therapeutic interventions on the lymphatic system"
+msgstr "Interventions thérapeutiques sur le système lymphatique"
+
+#: taxonomy:term:163:name
+msgctxt "term:163:name"
+msgid "Therapeutic interventions on the digestive and hepatobiliary tract"
+msgstr "Interventions thérapeutiques sur le tube digestif et les voies hépato-biliaires"
+
+#: taxonomy:term:164:name
+msgctxt "term:164:name"
+msgid "Therapeutic interventions on the genitourinary system"
+msgstr "Interventions thérapeutiques sur l'appareil génito-urinaire"
+
+#: taxonomy:term:165:name
+msgctxt "term:165:name"
+msgid "Therapeutic interventions on the musculoskelatal system"
+msgstr "Interventions thérapeutiques sur le système musculo-squelettique"
+
+#: taxonomy:term:166:name
+msgctxt "term:166:name"
+msgid "Therapeutic interventions on the skin, subcutaneous tissue, and breast"
+msgstr "Interventions thérapeutiques sur la peau, les tissus sous-cutanés et la poitrine"
+
+#: taxonomy:term:167:name
+msgctxt "term:167:name"
+msgid "Therapeutic interventions on body system NEC"
+msgstr "Interventions thérapeutiques sur le corps NCA"
+
+#: taxonomy:term:168:name
+msgctxt "term:168:name"
+msgid "Diagnostic interventions"
+msgstr "Interventions diagnostiques"
+
+#: taxonomy:term:169:name
+msgctxt "term:169:name"
+msgid "Diagnostic interventions on the nervous system"
+msgstr "Interventions diagnostiques sur le système nerveux"
+
+#: taxonomy:term:170:name
+msgctxt "term:170:name"
+msgid "Diagnostic interventions on the eyes and ocular adnexa"
+msgstr "Interventions diagnostiques sur l’œil et ses annexes"
+
+#: taxonomy:term:171:name
+msgctxt "term:171:name"
+msgid "Diagnostic interventions on the ears and mastoid (process)"
+msgstr "Interventions diagnostiques sur l'oreille et l'apophyse mastoïde"
+
+#: taxonomy:term:172:name
+msgctxt "term:172:name"
+msgid "Diagnostic interventions on the orocraniofacial unit"
+msgstr "Interventions diagnostiques sur la région bucco-faciale"
+
+#: taxonomy:term:173:name
+msgctxt "term:173:name"
+msgid "Diagnostic interventions on the respiratory system"
+msgstr "Interventions diagnostiques sur l'appareil respiratoire"
+
+#: taxonomy:term:174:name
+msgctxt "term:174:name"
+msgid "Diagnostic interventions on the cardiovascular system"
+msgstr "Interventions diagnostiques sur l'appareil cardiovasculaire"
+
+#: taxonomy:term:175:name
+msgctxt "term:175:name"
+msgid "Diagnostic interventions on the lymphatic system"
+msgstr "Interventions diagnostiques sur le système lymphatique"
+
+#: taxonomy:term:176:name
+msgctxt "term:176:name"
+msgid "Diagnostic interventions on the digestive and hepatobiliary tract"
+msgstr "Interventions diagnostiques sur le tube digestif et les voies hépato-biliaires"
+
+#: taxonomy:term:177:name
+msgctxt "term:177:name"
+msgid "Diagnostic interventions on the genitourinary system"
+msgstr "Interventions diagnostiques sur l'appareil génito-urinaire"
+
+#: taxonomy:term:178:name
+msgctxt "term:178:name"
+msgid "Diagnostic interventions on the musculoskelatal system"
+msgstr "Interventions diagnostiques sur le système musculo-squelettique"
+
+#: taxonomy:term:179:name
+msgctxt "term:179:name"
+msgid "Diagnostic interventions on the skin, subcutaneous tissue, and breast"
+msgstr "Interventions diagnostiques sur la peau, les tissus sous-cutanés et la poitrine"
+
+#: taxonomy:term:180:name
+msgctxt "term:180:name"
+msgid "Diagnostic interventions on body system NEC"
+msgstr "Interventions diagnostiques sur le système corporel NCA"
+
+#: taxonomy:term:181:name
+msgctxt "term:181:name"
+msgid "Diagnostic imaging interventions"
+msgstr "Interventions d'imagerie diagnostique"
+
+#: taxonomy:term:182:name
+msgctxt "term:182:name"
+msgid "Diagnostic imaging interventions on the nervous system"
+msgstr "Interventions d'imagerie diagnostique sur le système nerveux"
+
+#: taxonomy:term:183:name
+msgctxt "term:183:name"
+msgid "Diagnostic imaging interventions on the eyes and ocular adnexa"
+msgstr "Interventions d'imagerie diagnostique sur l’œil et ses annexes"
+
+#: taxonomy:term:184:name
+msgctxt "term:184:name"
+msgid "Diagnostic imaging interventions on the ears and mastoid (process)"
+msgstr "Interventions d'imagerie diagnostique sur l'oreille et l'apophyse mastoïde"
+
+#: taxonomy:term:185:name
+msgctxt "term:185:name"
+msgid "Diagnostic imaging interventions on the orocraniofacial unit"
+msgstr "Interventions d'imagerie diagnostique sur la région bucco-faciale"
+
+#: taxonomy:term:186:name
+msgctxt "term:186:name"
+msgid "Diagnostic imaging interventions on the respiratory system"
+msgstr "Interventions d'imagerie diagnostique sur l'appareil respiratoire"
+
+#: taxonomy:term:187:name
+msgctxt "term:187:name"
+msgid "Diagnostic imaging interventions on the cardiovascular system"
+msgstr "Interventions d'imagerie diagnostique sur l'appareil cardiovasculaire"
+
+#: taxonomy:term:188:name
+msgctxt "term:188:name"
+msgid "Diagnostic imaging interventions on the lymphatic system"
+msgstr "Interventions d'imagerie diagnostique sur le système lymphatique"
+
+#: taxonomy:term:189:name
+msgctxt "term:189:name"
+msgid "Diagnostic imaging interventions on the digestive and hepatobiliary tract"
+msgstr "Interventions d'imagerie diagnostique sur le tube digestif et les voies hépato-biliaires"
+
+#: taxonomy:term:190:name
+msgctxt "term:190:name"
+msgid "Diagnostic imaging interventions on the genitourinary system"
+msgstr "Interventions d'imagerie diagnostique sur l'appareil génito-urinaire"
+
+#: taxonomy:term:191:name
+msgctxt "term:191:name"
+msgid "Diagnostic imaging interventions on the musculoskelatal system"
+msgstr "Interventions d'imagerie diagnostique sur le système musculo-squelettique"
+
+#: taxonomy:term:192:name
+msgctxt "term:192:name"
+msgid "Diagnostic imaging interventions on the skin, subcutaneous tissue, and breast"
+msgstr "Interventions d'imagerie diagnostique sur la peau, les tissus sous-cutanés et la poitrine"
+
+#: taxonomy:term:193:name
+msgctxt "term:193:name"
+msgid "Diagnostic imaging interventions on body system NEC"
+msgstr "Interventions d'imagerie diagnostique sur le corps NCA"
+
+#: taxonomy:term:194:name
+msgctxt "term:194:name"
+msgid "Clinical laboratory interventions"
+msgstr "Interventions cliniques de laboratoire"
+
+#: taxonomy:term:195:name
+msgctxt "term:195:name"
+msgid "Obstetrical and fetal interventions"
+msgstr "Interventions obstétriques et fœtales"
+
+#: taxonomy:term:196:name
+msgctxt "term:196:name"
+msgid "Antepartum obstetrical interventions"
+msgstr "Interventions ante partum"
+
+#: taxonomy:term:197:name
+msgctxt "term:197:name"
+msgid "Termination of pregnancy"
+msgstr "Interruption de grossesse"
+
+#: taxonomy:term:198:name
+msgctxt "term:198:name"
+msgid "interventions on the fetus"
+msgstr "Interventions sur le fœtus"
+
+#: taxonomy:term:199:name
+msgctxt "term:199:name"
+msgid "interventions during labour (latent and active)"
+msgstr "Interventions au cours du travail et de l'accouchement"
+
+#: taxonomy:term:200:name
+msgctxt "term:200:name"
+msgid "Delivery (birthing) interventions"
+msgstr "Interventions lors de l'accouchement (Naissance)"
+
+#: taxonomy:term:201:name
+msgctxt "term:201:name"
+msgid "Postpartum obstetrical interventions"
+msgstr "Interventions post-partum"
+
+#: taxonomy:term:202:name
+msgctxt "term:202:name"
+msgid "Cognitive, psychosocial and sensory therapeutic interventions"
+msgstr "Interventions thérapeutiques cognitives, psychosociales et sensorielles"
+
+#: taxonomy:term:203:name
+msgctxt "term:203:name"
+msgid "Therapeutic interventions on the psyche (mental health)"
+msgstr "Interventions thérapeutiques pour la santé mentale"
+
+#: taxonomy:term:204:name
+msgctxt "term:204:name"
+msgid "Therapeutic interventions for interpersonal relationships"
+msgstr "Interventions thérapeutiques pour les relations interpersonnelles"
+
+#: taxonomy:term:205:name
+msgctxt "term:205:name"
+msgid "Therapeutic interventions for cognition and learning"
+msgstr "Interventions thérapeutiques pour la cognition et l'apprentissage"
+
+#: taxonomy:term:206:name
+msgctxt "term:206:name"
+msgid "Therapeutic interventions for communication"
+msgstr "Interventions thérapeutiques pour la communication"
+
+#: taxonomy:term:207:name
+msgctxt "term:207:name"
+msgid "Therapeutic interventions for hearing"
+msgstr "Interventions thérapeutiques pour l’audition"
+
+#: taxonomy:term:208:name
+msgctxt "term:208:name"
+msgid "Therapeutic interventions for voice"
+msgstr "Interventions thérapeutiques pour la voix"
+
+#: taxonomy:term:209:name
+msgctxt "term:209:name"
+msgid "Therapeutic interventions for sight and other senses NEC"
+msgstr "Interventions thérapeutiques pour la vue et les autres sens NCA"
+
+#: taxonomy:term:210:name
+msgctxt "term:210:name"
+msgid "Therapeutic interventions for motor functions"
+msgstr "Interventions thérapeutiques pour les fonctions motrices"
+
+#: taxonomy:term:211:name
+msgctxt "term:211:name"
+msgid "Other healthcare interventions"
+msgstr "Autres interventions médicales"
+
+#: taxonomy:term:212:name
+msgctxt "term:212:name"
+msgid "Other healthcare interventions, personnal care"
+msgstr "Interventions de santé liées aux soins personnels"
+
+#: taxonomy:term:213:name
+msgctxt "term:213:name"
+msgid "Other healthcare interventions, service"
+msgstr "Interventions de santé liées aux services"
+
+#: taxonomy:term:214:name
+msgctxt "term:214:name"
+msgid "Other healthcare interventions, support activity"
+msgstr "Interventions de santé liées aux activités de soutien"
+
+#: taxonomy:term:215:name
+msgctxt "term:215:name"
+msgid "Other healthcare interventions, promoting health and preventing disease"
+msgstr "Interventions de santé liées à la promotion de la sant é et à la prévention des maladies"
+
+#: taxonomy:term:216:name
+msgctxt "term:216:name"
+msgid "Therapeutic interventions strengthening the immune system and/or genetic composition"
+msgstr "Interventions thérapeutiques renforçant le système immunitaire et/ou la composition génétique"
+
+#: taxonomy:term:217:name
+msgctxt "term:217:name"
+msgid "Medication Intake"
+msgstr "Consommation de médicaments"
+
+#: taxonomy:term:218:name
+msgctxt "term:218:name"
+msgid "Alimentary tract and metabolism"
+msgstr "Système digestif et métabolisme"
+
+#: taxonomy:term:219:name
+msgctxt "term:219:name"
+msgid "Blood and blood forming organs"
+msgstr "Sang et organes hématopoiétiques"
+
+#: taxonomy:term:220:name
+msgctxt "term:220:name"
+msgid "Cardiovascular system"
+msgstr "Système cardiovasculaire"
+
+#: taxonomy:term:221:name
+msgctxt "term:221:name"
+msgid "Dermatologicals"
+msgstr "Dermatologie"
+
+#: taxonomy:term:222:name
+msgctxt "term:222:name"
+msgid "Genito urinary system and sex hormones"
+msgstr "Système génito-urinaire et hormones sexuelles"
+
+#: taxonomy:term:223:name
+msgctxt "term:223:name"
+msgid "Systemic hormonal preparations, excl. Sex hormones and insulins"
+msgstr "Préparations systémiques hormonales, à l'exclusion des hormones sexuelles et des insulines"
+
+#: taxonomy:term:224:name
+msgctxt "term:224:name"
+msgid "Antiinfectives for systemic use"
+msgstr "Anti-infectieux à usage systémique"
+
+#: taxonomy:term:225:name
+msgctxt "term:225:name"
+msgid "Antineoplastic and immunomodulating agents"
+msgstr "Antinéoplasiques et agents immunomodulants"
+
+#: taxonomy:term:226:name
+msgctxt "term:226:name"
+msgid "Musculo-skeletal system"
+msgstr "Système musculo-squelettique"
+
+#: taxonomy:term:227:name
+msgctxt "term:227:name"
+msgid "Nervous system"
+msgstr "Système nerveux"
+
+#: taxonomy:term:228:name
+msgctxt "term:228:name"
+msgid "Antiparasitic products, insecticides and repellents"
+msgstr "Produits antiparasitaires, insecticides et répellants"
+
+#: taxonomy:term:229:name
+msgctxt "term:229:name"
+msgid "Respiratory system"
+msgstr "Système respiratoire"
+
+#: taxonomy:term:230:name
+msgctxt "term:230:name"
+msgid "Sensory organs"
+msgstr "Organes sensoriels"
+
+#: taxonomy:term:231:name
+msgctxt "term:231:name"
+msgid "Various"
+msgstr "Divers"
+
+#: taxonomy:term:232:name
+msgctxt "term:232:name"
+msgid "Adherence to medication"
+msgstr "Adhérence aux médicaments"
+
+#: taxonomy:term:233:name
+msgctxt "term:233:name"
+msgid "Perception of health"
+msgstr "Perception de la santé"
+
+#: taxonomy:term:234:name
+msgctxt "term:234:name"
+msgid "Quality of life"
+msgstr "Qualité de vie"
+
+#: taxonomy:term:235:name
+msgctxt "term:235:name"
+msgid "Currently"
+msgstr "Présentement"
+
+#: taxonomy:term:236:name
+msgctxt "term:236:name"
+msgid "Today"
+msgstr "Aujourd'hui"
+
+#: taxonomy:term:237:name
+msgctxt "term:237:name"
+msgid "Today and up to the last 12 months"
+msgstr "Dans la derniers 12 mois incluant aujourd'hui"
+
+#: taxonomy:term:238:name
+msgctxt "term:238:name"
+msgid "Today and up to more than the last 12 months"
+msgstr "Dans une période plus grande que les derniers 12 mois incluant aujourd'hui"
+
+#: taxonomy:term:239:name
+msgctxt "term:239:name"
+msgid "In the past"
+msgstr "Dans le passé"
+
+#: taxonomy:term:240:name
+msgctxt "term:240:name"
+msgid "Specific period of time in the past"
+msgstr "Période spécifique de temps dans le passé"
+
+#: taxonomy:term:241:name
+msgctxt "term:241:name"
+msgid "Specific point in the past"
+msgstr "Événement pontuel dans le passé"
+
+#: taxonomy:term:242:name
+msgctxt "term:242:name"
+msgid "Through all life"
+msgstr "Au cours de la vie entière"
+
+#: taxonomy:term:243:name
+msgctxt "term:243:name"
+msgid "Radiation"
+msgstr "Radiation"
+
+#: taxonomy:term:244:name
+msgctxt "term:244:name"
+msgid "Sunlight/UV exposure"
+msgstr "Rayons du soleil/Exposition UV"
+
+#: taxonomy:term:245:name
+msgctxt "term:245:name"
+msgid "Radio waves/Mobile phone use"
+msgstr "Ondes radio/Utilisation d'un téléphone cellulaire"
+
+#: taxonomy:term:246:name
+msgctxt "term:246:name"
+msgid "Noise/Vibrations"
+msgstr "Bruit/Vibrations"
+
+#: taxonomy:term:247:name
+msgctxt "term:247:name"
+msgid "Chemicals"
+msgstr "Substances chimiques"
+
+#: taxonomy:term:248:name
+msgctxt "term:248:name"
+msgid "Passive smoke exposure"
+msgstr "Exposition à la fumée secondaire"
+
+#: taxonomy:term:249:name
+msgctxt "term:249:name"
+msgid "Solvents"
+msgstr "Solvants"
+
+#: taxonomy:term:250:name
+msgctxt "term:250:name"
+msgid "Pesticides"
+msgstr "Pesticides"
+
+#: taxonomy:term:251:name
+msgctxt "term:251:name"
+msgid "Allergens"
+msgstr "Allergènes"
+
+#: taxonomy:term:252:name
+msgctxt "term:252:name"
+msgid "Housing characteristics"
+msgstr "Caractéristiques du logis"
+
+#: taxonomy:term:253:name
+msgctxt "term:253:name"
+msgid "Built environment/Neighborhood"
+msgstr "Environnement urbain/Entourage"
+
+#: taxonomy:term:254:name
+msgctxt "term:254:name"
+msgid "Others"
+msgstr "Autres"
+
+#: taxonomy:term:255:name
+msgctxt "term:255:name"
+msgid "Pregnancy"
+msgstr "Grossesse"
+
+#: taxonomy:term:256:name
+msgctxt "term:256:name"
+msgid "Parity/Gravidity"
+msgstr "Parité/Gravidité"
+
+#: taxonomy:term:257:name
+msgctxt "term:257:name"
+msgid "Pregnancy outcomes"
+msgstr "Issues liées à la grossesse"
+
+#: taxonomy:term:258:name
+msgctxt "term:258:name"
+msgid "Breast feeding"
+msgstr "Allaitement"
+
+#: taxonomy:term:259:name
+msgctxt "term:259:name"
+msgid "Menstruation"
+msgstr "Menstruation"
+
+#: taxonomy:term:260:name
+msgctxt "term:260:name"
+msgid "Menopause"
+msgstr "Ménopause"
+
+#: taxonomy:term:261:name
+msgctxt "term:261:name"
+msgid "Fertility and reproductive problems"
+msgstr "Fertilité et problèmes liés à la reproduction"
+
+#: taxonomy:term:262:name
+msgctxt "term:262:name"
+msgid "Number of children"
+msgstr "Nombre d'enfants"
+
+#: taxonomy:term:263:name
+msgctxt "term:263:name"
+msgid "Familial and social environment"
+msgstr "Environnement familial et social"
+
+#: taxonomy:term:264:name
+msgctxt "term:264:name"
+msgid "Working social environment"
+msgstr "Environnement social au travail"
+
+#: taxonomy:term:265:name
+msgctxt "term:265:name"
+msgid "Age/Birth date"
+msgstr "Âge/Date de naissance"
+
+#: taxonomy:term:266:name
+msgctxt "term:266:name"
+msgid "Gender"
+msgstr "Genre"
+
+#: taxonomy:term:267:name
+msgctxt "term:267:name"
+msgid "Birth location"
+msgstr "Lieu de naissance"
+
+#: taxonomy:term:268:name
+msgctxt "term:268:name"
+msgid "Ethnic background"
+msgstr "Origine ethnique"
+
+#: taxonomy:term:269:name
+msgctxt "term:269:name"
+msgid "Religion"
+msgstr "Religion"
+
+#: taxonomy:term:270:name
+msgctxt "term:270:name"
+msgid "Language"
+msgstr "Language"
+
+#: taxonomy:term:271:name
+msgctxt "term:271:name"
+msgid "Citizenship"
+msgstr "Citoyenneté"
+
+#: taxonomy:term:272:name
+msgctxt "term:272:name"
+msgid "Residence"
+msgstr "Résidence"
+
+#: taxonomy:term:273:name
+msgctxt "term:273:name"
+msgid "Household"
+msgstr "Ménage"
+
+#: taxonomy:term:274:name
+msgctxt "term:274:name"
+msgid "Marital/Partner status"
+msgstr "Statut conjuguale"
+
+#: taxonomy:term:275:name
+msgctxt "term:275:name"
+msgid "Structure of the household"
+msgstr "Structure du ménage"
+
+#: taxonomy:term:276:name
+msgctxt "term:276:name"
+msgid "Kinship"
+msgstr "Parenté"
+
+#: taxonomy:term:277:name
+msgctxt "term:277:name"
+msgid "Education level"
+msgstr "Niveau d'éducation"
+
+#: taxonomy:term:278:name
+msgctxt "term:278:name"
+msgid "Income"
+msgstr "Revenu"
+
+#: taxonomy:term:279:name
+msgctxt "term:279:name"
+msgid "Working status"
+msgstr "Statut de travail"
+
+#: taxonomy:term:280:name
+msgctxt "term:280:name"
+msgid "Participant"
+msgstr "Participant"
+
+#: taxonomy:term:281:name
+msgctxt "term:281:name"
+msgid "Participant's relative(s)"
+msgstr "parent(s) du participant"
+
+#: taxonomy:term:282:name
+msgctxt "term:282:name"
+msgid "Children"
+msgstr "Enfants"
+
+#: taxonomy:term:283:name
+msgctxt "term:283:name"
+msgid "Parents"
+msgstr "Parents"
+
+#: taxonomy:term:284:name
+msgctxt "term:284:name"
+msgid "Grand-parents"
+msgstr "Grand-parents"
+
+#: taxonomy:term:285:name
+msgctxt "term:285:name"
+msgid "Siblings"
+msgstr "Frères et soeurs"
+
+#: taxonomy:term:286:name
+msgctxt "term:286:name"
+msgid "Participant's partner"
+msgstr "Partenaire du participant"
+
+#: taxonomy:term:287:name
+msgctxt "term:287:name"
+msgid "General population"
+msgstr "Population générale"
+
+#: taxonomy:term:288:name
+msgctxt "term:288:name"
+msgid "Volunteer enrolment"
+msgstr "Enrollement volontaire"
+
+#: taxonomy:term:289:name
+msgctxt "term:289:name"
+msgid "Selected sample (e.g.: from governmental databases)"
+msgstr "Sous-échantillon (ex. bases de données gouvernementales)"
+
+#: taxonomy:term:290:name
+msgctxt "term:290:name"
+msgid "Participants from existing studies"
+msgstr "Participants d'études existantes"
+
+#: taxonomy:term:291:name
+msgctxt "term:291:name"
+msgid "Specific population"
+msgstr "Population spécifique"
+
+#: taxonomy:term:292:name
+msgctxt "term:292:name"
+msgid "Clinic patients"
+msgstr "Patients d'une clinique"
+
+#: taxonomy:term:293:name
+msgctxt "term:293:name"
+msgid "Members of specific association (professional association, patients network, etc)"
+msgstr "Membres d'une association spécifiques (association professionnelle, réseau de patients, etc)"
+
+#: taxonomy:term:294:name
+msgctxt "term:294:name"
 msgid "Other source"
-msgstr ""
+msgstr "Autre source"
 
