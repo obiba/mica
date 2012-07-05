@@ -4,14 +4,264 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-06-22 09:10-0400\n"
-"PO-Revision-Date: 2012-06-22 09:10-0400\n"
-"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-07-03 14:39-0400\n"
+"PO-Revision-Date: 2012-07-04 10:20-0500\n"
+"Last-Translator: Camille Craig <ccraig@p3g.org>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: blocks:facetapi:oy34mXN1nxJL14Ut9ROdWqeRVEb48MjO:title
+msgctxt "facetapi:oy34mXN1nxJL14Ut9ROdWqeRVEb48MjO:title"
+msgid "Study design"
+msgstr "Devis d'étude"
+
+#: blocks:facetapi:8oE1PNFtQBNumKt5JrXlO8OKZBPRu3Yz:title
+msgctxt "facetapi:8oE1PNFtQBNumKt5JrXlO8OKZBPRu3Yz:title"
+msgid "Preparation phase / Pilot end year"
+msgstr "Phase préparatoire / Dernière année du pilote"
+
+#: blocks:facetapi:bpv9CQJVwWZBA3J6nCH1UaaqlGFgCXZK:title
+msgctxt "facetapi:bpv9CQJVwWZBA3J6nCH1UaaqlGFgCXZK:title"
+msgid "Study recruitment targets"
+msgstr "L'étude cible le recrutement de"
+
+#: blocks:facetapi:k69xRogJmfK1B2ZAmYNs4FrhwLAL1mcP:title
+msgctxt "facetapi:k69xRogJmfK1B2ZAmYNs4FrhwLAL1mcP:title"
+msgid "Study inclusion criteria for participants' selection"
+msgstr "Les critères de sélection des participants de l'étude"
+
+#: blocks:facetapi:RxYzHU2m9IE0Z1ASnUy53wJiuZDDcg8U:title
+msgctxt "facetapi:RxYzHU2m9IE0Z1ASnUy53wJiuZDDcg8U:title"
+msgid "Study end year "
+msgstr "Dernière année de l'étude"
+
+#: blocks:facetapi:xWukjumcYmyaiQsLKBHGPpF0ORvgQLK8:title
+msgctxt "facetapi:xWukjumcYmyaiQsLKBHGPpF0ORvgQLK8:title"
+msgid "Preparation phase / Pilot start year"
+msgstr "Phase préparatoire / Année de début du pilote"
+
+#: blocks:facetapi:zYb90HzT530kHq8se0O39xpfLxK7TS1x:title
+msgctxt "facetapi:zYb90HzT530kHq8se0O39xpfLxK7TS1x:title"
+msgid "Other access"
+msgstr "Autre accès"
+
+#: blocks:facetapi:YoxJSHIwNjGefzK42vNF50KiloA1UBMt:title
+msgctxt "facetapi:YoxJSHIwNjGefzK42vNF50KiloA1UBMt:title"
+msgid "No limits in the number of samples"
+msgstr "Aucune limite dans le nombre d'échantillons"
+
+#: blocks:facetapi:A04b2GrvIOkC7aGFJjkttVxDdWoAibud:title
+msgctxt "facetapi:A04b2GrvIOkC7aGFJjkttVxDdWoAibud:title"
+msgid "No limits in the number of participants"
+msgstr "Aucune limite dans le nombre de participants"
+
+#: blocks:facetapi:mq7MQYR1vElyxwLiucoVgd7bbSNoqusp:title
+msgctxt "facetapi:mq7MQYR1vElyxwLiucoVgd7bbSNoqusp:title"
+msgid "Target number of participants with samples"
+msgstr "Nombre ciblé de participants avec échantillons"
+
+#: blocks:facetapi:UXQ7up5z8qtveA4ycXIY6NwLzLCby59I:title
+msgctxt "facetapi:UXQ7up5z8qtveA4ycXIY6NwLzLCby59I:title"
+msgid "Target number of participants"
+msgstr "Nombre ciblé de participants"
+
+#: blocks:facetapi:umiWT4T0ejrdeztb4GMwwnJ00KZEDET4:title
+msgctxt "facetapi:umiWT4T0ejrdeztb4GMwwnJ00KZEDET4:title"
+msgid "Gender"
+msgstr "Genre"
+
+#: blocks:facetapi:vVGhlmQsLUzXBUXfFv1mq8DDRz0iEYFt:title
+msgctxt "facetapi:vVGhlmQsLUzXBUXfFv1mq8DDRz0iEYFt:title"
+msgid "Follow-up of participants start year"
+msgstr "Année de début du suivi des participants"
+
+#: blocks:facetapi:OyJLhGRCbeFeRkmL1dkK0M04f19Gm1P0:title
+msgctxt "facetapi:OyJLhGRCbeFeRkmL1dkK0M04f19Gm1P0:title"
+msgid "Follow-up of participants end year"
+msgstr "Dernière année du suivi des participants"
+
+#: blocks:facetapi:zGEZxPGkRtjdWEccTz6eWXRPdA7r07n0:title
+msgctxt "facetapi:zGEZxPGkRtjdWEccTz6eWXRPdA7r07n0:title"
+msgid "Data Sources"
+msgstr "Sources de données"
+
+#: blocks:facetapi:T1NPl1GJ2aiHua1xBUxKNDbBrgLAkloZ:title
+msgctxt "facetapi:T1NPl1GJ2aiHua1xBUxKNDbBrgLAkloZ:title"
+msgid "Current number of participants recruited"
+msgstr "Nombre actuel de participants recrutés"
+
+#: blocks:facetapi:MX5nnQncOFYTgE3GmyrZGDYN5SFKoiG7:title
+msgctxt "facetapi:MX5nnQncOFYTgE3GmyrZGDYN5SFKoiG7:title"
+msgid "Current number of collected biological samples"
+msgstr "Nombre actuel d'échantillons biologiques collectés"
+
+#: blocks:facetapi:dy1TMoSk6R6h0w81KEDoQCRnxOY11SFr:title
+msgctxt "facetapi:dy1TMoSk6R6h0w81KEDoQCRnxOY11SFr:title"
+msgid "Country"
+msgstr "Pays"
+
+#: blocks:facetapi:z0XiAO0D3Qin2ZDiDHx7IM2EzCursZc0:title
+msgctxt "facetapi:z0XiAO0D3Qin2ZDiDHx7IM2EzCursZc0:title"
+msgid "Biological samples access"
+msgstr "Accàs aux échantillons biologiques"
+
+#: blocks:facetapi:wdPtzkwl58BZF9VxxswNh31vMLOTpXSo:title
+msgctxt "facetapi:wdPtzkwl58BZF9VxxswNh31vMLOTpXSo:title"
+msgid "Biological samples"
+msgstr "Échantillons biologiques"
+
+#: blocks:facetapi:Fav120xnRHWPtVQXRT9w1LGri9FLKFMj:title
+msgctxt "facetapi:Fav120xnRHWPtVQXRT9w1LGri9FLKFMj:title"
+msgid "Baseline recruitment / initial data collection start year"
+msgstr "Recrutement au baseline / Année de début de la collecte initiale des données"
+
+#: blocks:facetapi:fR0XzII4YGxEWQcUSvUuN1vx6kdYBx0H:title
+msgctxt "facetapi:fR0XzII4YGxEWQcUSvUuN1vx6kdYBx0H:title"
+msgid "Baseline recruitment / initial data collection end year"
+msgstr "Recrutement au baseline / Dernière année de la collecte initiale des données"
+
+#: blocks:facetapi:TkDCfzldLYa0dsbSWYHGKNFJRTBkT0Tf:title
+msgctxt "facetapi:TkDCfzldLYa0dsbSWYHGKNFJRTBkT0Tf:title"
+msgid "Age min"
+msgstr "Âge minimal"
+
+#: blocks:facetapi:dnv3vw1mSYr8lpyUltTWcjB95h23wJbr:title
+msgctxt "facetapi:dnv3vw1mSYr8lpyUltTWcjB95h23wJbr:title"
+msgid "Age max"
+msgstr "Âge maximal"
+
+#: blocks:facetapi:aG2I0fpbt51mxSy9iyRcjuFPcFQvQqT2:title
+msgctxt "facetapi:aG2I0fpbt51mxSy9iyRcjuFPcFQvQqT2:title"
+msgid "Sources of recruitment"
+msgstr "Sources de recrutement"
+
+#: blocks:facetapi:Y2jUzmF8fK49hirSqsFb2077JN52TV83:title
+msgctxt "facetapi:Y2jUzmF8fK49hirSqsFb2077JN52TV83:title"
+msgid "Data (questionnaire-derived, measured…)"
+msgstr "Données (dérivées de questionnaire, mesurées...)"
+
+#: blocks:facetapi:6tZH3VkoxMw4fmXJEk42Ct31RR37ET3C:title
+msgctxt "facetapi:6tZH3VkoxMw4fmXJEk42Ct31RR37ET3C:title"
+msgid "Dataset Type"
+msgstr "Type de jeu de données"
+
+#: blocks:facetapi:GH9lIqQBZkB15cKnWp0A1o2hsuNoVXy7:title
+msgctxt "facetapi:GH9lIqQBZkB15cKnWp0A1o2hsuNoVXy7:title"
+msgid "Dataset"
+msgstr "Jeu de données"
+
+#: blocks:facetapi:1vPgYmVUltQDloo7E1KZ4hgvNEVqyx5p:title
+msgctxt "facetapi:1vPgYmVUltQDloo7E1KZ4hgvNEVqyx5p:title"
+msgid "Harmonization Status"
+msgstr "Statut d'harmonisation"
+
+#: blocks:facetapi:kuAauH4ZwcBENFQB682Gr8wNAIYSJ7IQ:title
+msgctxt "facetapi:kuAauH4ZwcBENFQB682Gr8wNAIYSJ7IQ:title"
+msgid "Data Source"
+msgstr "Source de données"
+
+#: blocks:facetapi:YOJk0YKGBO6i59Sg1LGDC361WTluMigF:title
+msgctxt "facetapi:YOJk0YKGBO6i59Sg1LGDC361WTluMigF:title"
+msgid "Individual Participant Measures"
+msgstr "Mesures individuelles des participants"
+
+#: blocks:facetapi:VtHarua11sVKjupu3NEeogm7P9Txjrjr:title
+msgctxt "facetapi:VtHarua11sVKjupu3NEeogm7P9Txjrjr:title"
+msgid "Diseases History and Related Health Problems"
+msgstr "Histoire des maladies et des problèmes de santé connexes"
+
+#: blocks:facetapi:XOuc1fKZWeI0Uq79bg0Jdk1Cqxynufjr:title
+msgctxt "facetapi:XOuc1fKZWeI0Uq79bg0Jdk1Cqxynufjr:title"
+msgid "Medical Health Interventions/Health Services Utilization"
+msgstr "Interventions médicales/Utilisation des services de santé"
+
+#: blocks:facetapi:fABDbsrHZSBHP8P34Ami6Kqo9b8SnD3U:title
+msgctxt "facetapi:fABDbsrHZSBHP8P34Ami6Kqo9b8SnD3U:title"
+msgid "Medication"
+msgstr "Médication"
+
+#: blocks:facetapi:wG4i5Lu6TfAPWV3WRN8xbZRBpOQ0U6Tr:title
+msgctxt "facetapi:wG4i5Lu6TfAPWV3WRN8xbZRBpOQ0U6Tr:title"
+msgid "Reproductive Health and History"
+msgstr "Histoire et santé de la reproduction"
+
+#: blocks:facetapi:AgeiuCPy9CAzCV3oCgPVkiNiOV7Z8IGd:title
+msgctxt "facetapi:AgeiuCPy9CAzCV3oCgPVkiNiOV7Z8IGd:title"
+msgid "Participant's Early Life/Childhood"
+msgstr "Naissance du participant/Enfance"
+
+#: blocks:facetapi:j8cx4BRyhJAVkkeH1zEnJhsuW2ARmpfT:title
+msgctxt "facetapi:j8cx4BRyhJAVkkeH1zEnJhsuW2ARmpfT:title"
+msgid "Life Habits/Behaviours"
+msgstr "Habitudes de vie/Comportements"
+
+#: blocks:facetapi:wuuSJH4Ls8avr4WWA0JVv1zbxqMLyc0e:title
+msgctxt "facetapi:wuuSJH4Ls8avr4WWA0JVv1zbxqMLyc0e:title"
+msgid "Sociodemographic/Socioeconomic Characteristics"
+msgstr "Caractéristiques sociodémographiques/socioéconomiques"
+
+#: blocks:facetapi:1PcMpiSpS9dUnvLtvgib9Q3VpCBnk2fn:title
+msgctxt "facetapi:1PcMpiSpS9dUnvLtvgib9Q3VpCBnk2fn:title"
+msgid "Physical Environment"
+msgstr "Environnement physique"
+
+#: blocks:facetapi:08VHfUt1FcDbNNN3e8e3ALFkgkOraV0P:title
+msgctxt "facetapi:08VHfUt1FcDbNNN3e8e3ALFkgkOraV0P:title"
+msgid "Social Environment"
+msgstr "Environnement social"
+
+#: blocks:facetapi:X0CsULWYGsOH1YEFmPaiNGrjbwq91ucq:title
+msgctxt "facetapi:X0CsULWYGsOH1YEFmPaiNGrjbwq91ucq:title"
+msgid "Perception of Health/Quality of life"
+msgstr "Perception de la santé/Qualité de vie"
+
+#: blocks:facetapi:0YXGz425IAVYG5aKshpTRxgUyOmVnrkk:title
+msgctxt "facetapi:0YXGz425IAVYG5aKshpTRxgUyOmVnrkk:title"
+msgid "Anthropometric Structures"
+msgstr "Structures anthropométriques"
+
+#: blocks:facetapi:XtBh4Jt1W0fjb2GI0lgUrvAvFOdk88A5:title
+msgctxt "facetapi:XtBh4Jt1W0fjb2GI0lgUrvAvFOdk88A5:title"
+msgid "Body Structures"
+msgstr "Structures anatomiques"
+
+#: blocks:facetapi:yQQDQrXg6ob0w2HdpiMXRpDZo6qTXyXR:title
+msgctxt "facetapi:yQQDQrXg6ob0w2HdpiMXRpDZo6qTXyXR:title"
+msgid "Body Functions"
+msgstr "Fonctions organiques"
+
+#: blocks:facetapi:a9LyUTOi1ffLzGTcQwh9xp8oRxCMeEKL:title
+msgctxt "facetapi:a9LyUTOi1ffLzGTcQwh9xp8oRxCMeEKL:title"
+msgid "Laboratory Measures"
+msgstr "Mesures de laboratoire"
+
+#: blocks:facetapi:6uOPuZzqOq6rQ7ky0HA390011GWOgoIt:title
+msgctxt "facetapi:6uOPuZzqOq6rQ7ky0HA390011GWOgoIt:title"
+msgid "Essence"
+msgstr "Essence"
+
+#: blocks:facetapi:awsaDlbzLwJuMcc68Z1Cf44LPAE8qXvc:title
+msgctxt "facetapi:awsaDlbzLwJuMcc68Z1Cf44LPAE8qXvc:title"
+msgid "Target"
+msgstr "Cible"
+
+#: blocks:facetapi:29YgnsW1QFZtjnTgWODpd0uL7N1t63CZ:title
+msgctxt "facetapi:29YgnsW1QFZtjnTgWODpd0uL7N1t63CZ:title"
+msgid "Period"
+msgstr "Période"
+
+#: blocks:facetapi:PlU5OUknS008BbPAb3GDYwLBMoPON1ZH:title
+msgctxt "facetapi:PlU5OUknS008BbPAb3GDYwLBMoPON1ZH:title"
+msgid "Measure"
+msgstr "Mesure"
+
+#: blocks:facetapi:yA10jWhmiIxzbT1U06UOjm0CUcDpxcGq:title
+msgctxt "facetapi:yA10jWhmiIxzbT1U06UOjm0CUcDpxcGq:title"
+msgid "Value Type"
+msgstr "Type de valeur"
 
 #: mica.module:15
 msgid "Mica Documentation can be found here:"
@@ -41,7 +291,7 @@ msgstr "Généré par Mica"
 msgid "Powered by <a href=\"@poweredby\">Mica</a>"
 msgstr "Généré par Mica <a href=\"@poweredby\">Mica</a>"
 
-#: mica.module:98,  mica.install:117
+#: mica_field_description.module:560
 msgid "mica"
 msgstr "mica"
 
@@ -53,7 +303,7 @@ msgstr "Efface la relation entre le parent %parent et l'enfant %child"
 msgid "Update to Mica 1.1"
 msgstr "Mettre à jour à Mica 1.1"
 
-#: mica.info:0
+#: mica_datasets.module:226
 msgid "Mica"
 msgstr "Mica"
 
@@ -61,7 +311,7 @@ msgstr "Mica"
 msgid "Mica module"
 msgstr "Module Mica"
 
-#: mica.info:0
+#: node_reference_block.info:0
 msgid "OBiBa"
 msgstr "OBiBa"
 
@@ -78,4 +328,1249 @@ msgstr "!title avancée"
 
 msgid "Enter the terms you wish to search for in Site or !title."
 msgstr "Entrer les termes à chercher dans le site ou dans les !title."
+
+#: mica_community.features.field.inc:849
+msgid "Abstract"
+msgstr "Résumé"
+
+#: mica_community.features.field.inc:850
+msgid "Authors"
+msgstr "Auteurs"
+
+#: mica_projects.features.field.inc:1143
+msgid "Body"
+msgstr "Corps"
+
+#: mica_community.features.field.inc:852
+msgid "Event Date"
+msgstr "Date de l'évènement"
+
+#: mica_community.features.field.inc:853
+msgid "PMID"
+msgstr "Identifiant Pubmed"
+
+#: mica_community.features.field.inc:854
+msgid "Reference"
+msgstr "Référence"
+
+#: mica_community.features.field.inc:855
+msgid "URL"
+msgstr "URL"
+
+#: mica_community.features.inc:37
+msgid "Event"
+msgstr "Évènement"
+
+#: mica_community.features.inc:39
+msgid "Event description"
+msgstr "Description de l'évènement"
+
+#: mica_projects.views_default.inc:555
+msgid "Title"
+msgstr "Titre"
+
+#: mica_community.features.inc:45
+msgid "Publication"
+msgstr "Publication"
+
+#: mica_community.features.inc:47
+msgid "Scientific publications references and announcement."
+msgstr "Annonces et références aux publications scientifiques."
+
+#: mica_community.features.menu_custom.inc:21
+msgid "Navigation"
+msgstr "Navigation"
+
+#: mica_community.features.menu_custom.inc:22
+msgid "The <em>Navigation</em> menu contains links intended for site visitors. Links are added to the <em>Navigation</em> menu automatically by some modules."
+msgstr "Le <em>menu Navigation</em> contient les liens destinés aux visiteurs du site. Des liens sont automatiquement ajoutés à ce menu par certains modules."
+
+#: mica_community.features.menu_links.inc:143
+msgid "Blogs"
+msgstr "Blogs"
+
+#: mica_community.features.menu_links.inc:144
+msgid "Community"
+msgstr "Communauté"
+
+#: mica_community.features.menu_links.inc:145
+msgid "Events"
+msgstr "Évènements"
+
+#: mica_community.features.menu_links.inc:146
+msgid "Events Calendar"
+msgstr "Calendrier d'évènements"
+
+#: mica_community.features.menu_links.inc:147
+msgid "Forums"
+msgstr "Forums"
+
+#: mica_community.features.menu_links.inc:148
+msgid "News"
+msgstr "Nouvelles"
+
+#: mica_community.features.menu_links.inc:149
+msgid "Publications"
+msgstr "Publications"
+
+#: mica_community.module:20
+msgid "Add a Contact"
+msgstr "Ajouter un Contact"
+
+#: mica_community.module:29
+msgid "Add an Institution"
+msgstr "Ajouter une institution"
+
+#: mica_community.module:40
+msgid "Add an Event"
+msgstr "Ajouter un évènement"
+
+#: mica_community.module:51
+msgid "Add a Publication"
+msgstr "Ajouter une publication"
+
+#: mica_community.info:0
+msgid "Mica Community"
+msgstr "Mica Communauté"
+
+#: mica_community.info:0
+msgid "Community feature to Mica, to activate events, blogs, forums etc."
+msgstr "Feature Mica Communauté, pour activer les évènements, blogs, forums etc."
+
+#: mica_data_access.features.field.inc:1498
+msgid "Choose which dataset is needed for your project."
+msgstr "Choisissez le Dataset qui est requis pour votre projet."
+
+#: mica_data_access.features.field.inc:1499
+msgid "City"
+msgstr "Ville"
+
+#: mica_data_access.features.field.inc:1500
+msgid "Collaborators"
+msgstr "Collaborateurs"
+
+#: mica_data_access.features.field.inc:1501
+msgid "Country"
+msgstr "Pays"
+
+#: mica_data_access.features.field.inc:1502
+msgid "Data Access Committee member"
+msgstr "Membre du comité d'accès aux données"
+
+#: mica_data_access.features.field.inc:1503,
+#: mica_data_access.features.inc:37
+msgid "Data Access Request"
+msgstr "Demande d'accès aux données"
+
+#: mica_data_access.features.field.inc:1504,
+#: mica_data_access.features.inc:45
+msgid "Data Access Review"
+msgstr "Revue de demande d'accès"
+
+#: mica_data_access.features.field.inc:1505
+msgid "Dataset"
+msgstr "Dataset"
+
+#: mica_data_access.features.field.inc:1506
+msgid "Institution Name"
+msgstr "Nom de l'institution"
+
+#: mica_data_access.features.field.inc:1507
+msgid "Notes"
+msgstr "Notes"
+
+#: mica_data_access.features.field.inc:1508
+msgid "Postal Code"
+msgstr "Code postal"
+
+#: mica_data_access.features.field.inc:1509
+msgid "Provide a clear description of the project and its specific aims."
+msgstr "Fournissez une description claire du projet et des ses buts spécifiques."
+
+#: mica_data_access.features.field.inc:1510
+msgid "Representative Email"
+msgstr "Courriel du représentant"
+
+#: mica_data_access.features.field.inc:1511
+msgid "Representative Name"
+msgstr "Nom du représentant"
+
+#: mica_datasets.pages.inc:125
+msgid "Status"
+msgstr "Statut"
+
+#: mica_data_access.features.field.inc:1513
+msgid "Street"
+msgstr "Rue"
+
+#: mica_data_access.features.field.inc:1514,
+#: mica_data_access.views_default.inc:189;453;899
+msgid "Summary"
+msgstr "Sommaire"
+
+#: mica_data_access.features.inc:39
+msgid "Form to be filled in for accessing study data."
+msgstr "Formulaire à remplir pour accéder aux données de l'étude."
+
+#: mica_data_access.features.inc:41;49
+msgid "Project Title"
+msgstr "Titre du projet"
+
+#: mica_data_access.features.inc:47
+msgid "Describes the status of the data access form review."
+msgstr "Décrit le statut de la revue de demande d'accès aux données."
+
+#: mica_projects.views_default.inc:178;331;541
+msgid "Master"
+msgstr "Principale"
+
+#: mica_projects.views_default.inc:180;333;543
+msgid "more"
+msgstr "plus"
+
+#: mica_projects.views_default.inc:181;334;544
+msgid "Apply"
+msgstr "Appliquer"
+
+#: mica_projects.views_default.inc:182;335;545
+msgid "Reset"
+msgstr "Reset"
+
+#: mica_projects.views_default.inc:183;336;546
+msgid "Sort by"
+msgstr "Trier par"
+
+#: mica_projects.views_default.inc:184;337;547
+msgid "Asc"
+msgstr "Asc"
+
+#: mica_projects.views_default.inc:185;338;548
+msgid "Desc"
+msgstr "Desc"
+
+#: mica_projects.views_default.inc:339;549
+msgid "Items per page"
+msgstr "Items par page"
+
+#: mica_projects.views_default.inc:340;550
+msgid "- All -"
+msgstr "- Tous -"
+
+#: mica_projects.views_default.inc:341;551
+msgid "Offset"
+msgstr "Décalage"
+
+#: mica_data_access.views_default.inc:185;620
+msgid "empty_data_access_committee"
+msgstr "empty_data_access_committee"
+
+#: mica_data_access.views_default.inc:186
+msgid "No approved data access found."
+msgstr "Aucunes demandes d'accès approuvées."
+
+#: mica_data_access.views_default.inc:187;450;896
+msgid "field_data_access_review"
+msgstr "field_data_access_review"
+
+#: mica_projects.features.field.inc:1151
+msgid "Project"
+msgstr "Projet"
+
+#: mica_data_access.views_default.inc:190;454;900
+msgid "Representative"
+msgstr "Représentant"
+
+#: mica_data_access.views_default.inc:191;455;625;901
+msgid "Institution"
+msgstr "Institution"
+
+#: mica_projects.views_default.inc:190;558
+msgid "All"
+msgstr "Tout"
+
+#: mica_projects.views_default.inc:348;559
+msgid "Page"
+msgstr "Page"
+
+#: mica_data_access.views_default.inc:448;893
+msgid "empty_data_access"
+msgstr "empty_data_access"
+
+#: mica_data_access.views_default.inc:449;894
+msgid "No data access request found."
+msgstr "Aucunes demandes d'accès trouvées."
+
+#: mica_data_access.views_default.inc:451;897
+msgid "Nid"
+msgstr "Nid"
+
+#: mica_data_access.views_default.inc:456;902
+msgid "Updated date"
+msgstr "Date de modification"
+
+#: mica_data_access.views_default.inc:458
+msgid "Review"
+msgstr "Revue"
+
+#: mica_data_access.views_default.inc:459
+msgid "<a href=\"?q=node/[nid]/review\">Start Review</a>"
+msgstr "<a href=\"?q=node/[nid]/review\">Commencer la revue</a>"
+
+#: mica_data_access.views_default.inc:621
+msgid "No data access committee member found."
+msgstr "Aucuns membre du comité d'accès aux données trouvés."
+
+#: mica_data_access.views_default.inc:622
+msgid "Contact"
+msgstr "Contact"
+
+#: mica_data_access.views_default.inc:624
+msgid "[field_contact_name]"
+msgstr "[field_contact_name]"
+
+#: mica_data_access.views_default.inc:626
+msgid "Email"
+msgstr "Courriel"
+
+#: mica_data_access.views_default.inc:883
+msgid "My Data Access Requests"
+msgstr "Mes demandes d'accès aux données"
+
+#: mica_data_access.views_default.inc:895
+msgid "author"
+msgstr "auteur"
+
+#: mica_datasets.pages.query.inc:57,
+#: includes/connection_form.inc:124
+msgid "Operations"
+msgstr "Opérations"
+
+#: mica_data_access.module:71
+msgid "<a href=\"@url\">Request for Data Access</a>"
+msgstr "<a href=\"@url\">Demande d'accès aux données</a>"
+
+#: mica_data_access.module:84
+msgid "<a href=\"@login\">Log in</a> or <a href=\"@register\">Register</a> to submit a Data Access Request."
+msgstr "<a href=\"@login\">S'authentifier</a> ou <a href=\"@register\">S'enregistrer</a> pour soumettre une demande d'accès aux données."
+
+#: mica_data_access.module:103
+msgid "<a href=\"@url\">Print</a>"
+msgstr "<a href=\"@url\">Imprimer</a>"
+
+#: mica_data_access.module:150;23
+msgid "Request for Data Access"
+msgstr "Demande d'accès aux données"
+
+#: mica_data_access.module:155
+msgid "Request for Data Access is restricted"
+msgstr "L'accès aux demandes d'accès aux données est restreint"
+
+#: mica_data_access.module:158
+msgid "Submitting a Data Access Request is restricted to authorized users."
+msgstr "Soumettre une demande d'accès aux données est restreint au utilisateurs autorisés."
+
+#: mica_data_access.module:194
+msgid "Created data access review %review for request %request by user %user"
+msgstr "Création d'une revue %review pour la demande %request par l'utilisateur %user"
+
+#: mica_data_access.module:32
+msgid "Review Data Access Request"
+msgstr "Revue de demandes d'accès aux données"
+
+#: mica_data_access.info:0
+msgid "Mica Data Access"
+msgstr "Mica accès aux données"
+
+#: mica_data_access.info:0
+msgid "Study Data Access requests and reviews"
+msgstr "Demandes d'accès aux données de l'étude et revues."
+
+#: mica_datasets.features.inc:39
+msgid "Dataset resource."
+msgstr "Resource du jeu de données"
+
+#: mica_projects.views_default.inc:187;346
+msgid "Name"
+msgstr "Nom"
+
+#: mica_datasets.features.inc:45
+msgid "Variable"
+msgstr "Variable"
+
+#: mica_datasets.features.inc:47
+msgid "Description of participant data."
+msgstr "Description des données de participant"
+
+#: mica_datasets.pages.inc:18
+msgid "!title -- Datasets"
+msgstr "!title -- Jeu de données"
+
+#: mica_datasets.pages.inc:20
+msgid "dataset content type is broken, missing field: !name"
+msgstr "Le type de contenu du jeu de données est brisé, le champ :!name est manquant"
+
+#: mica_datasets.pages.inc:32
+msgid "!title -- Studies"
+msgstr "!title -- Études"
+
+#: mica_datasets.pages.inc:38;57
+msgid "!dataset -- !study"
+msgstr "!dataset -- !study"
+
+#: mica_datasets.pages.inc:68
+msgid "!title -- Variables"
+msgstr "!title -- Variables"
+
+#: mica_datasets.pages.inc:107
+msgid "This dataset is not linked to a study or no external connection has been set."
+msgstr "Ce jeu de données n'est relié à aucune étude ou aucune connexion externe n'a été définie."
+
+#: mica_datasets.pages.inc:131
+msgid "Import"
+msgstr "Importer"
+
+#: mica_datasets.pages.inc:137
+msgid "Update variables"
+msgstr "Mettre à jour les variables"
+
+#: mica_datasets.pages.inc:143
+msgid "Importing (@progress %)"
+msgstr "Importation (@progress %)"
+
+#: mica_datasets.pages.inc:207
+msgid "Select the studies that are part of the dataset."
+msgstr "Sélectionnez les études qui font parties de ce jeu de données."
+
+#: mica_datasets.pages.inc:216,
+#: includes/connection_form.inc:164
+msgid "Add Study"
+msgstr "Ajouter une étude"
+
+#: mica_datasets.pages.inc:271
+msgid "Select the datasets in which the study is involved."
+msgstr "Sélectionnez les jeux de données pour lesquels l'étude est impliquée."
+
+#: mica_datasets.pages.inc:280,
+#: includes/connection_form.inc:158
+msgid "Add Dataset"
+msgstr "Ajouter un jeu de données"
+
+#: mica_datasets.pages.inc:331
+msgid "A description of the study's data contributing to the dataset."
+msgstr "Une description des données de l'étude contribuants au jeu de données."
+
+#: mica_datasets.pages.inc:337,
+#: includes/connection_form.inc:122
+msgid "Connection Type"
+msgstr "Type de connection"
+
+#: mica_datasets.pages.inc:340
+msgid "Select which type of connection is to be used to retrieve variables and data from the study to contribute to the dataset."
+msgstr "Sélectionner quel type de connexion est à utiliser pour extraire les variables et les données depuis l'étude qui contribue au jeu de données."
+
+#: mica_datasets.pages.inc:353
+msgid "Configuration"
+msgstr "Configuration"
+
+#: mica_datasets.pages.inc:375;429,
+#: mica_datasets.pages.query.inc:715
+msgid "Save"
+msgstr "Enregistrer"
+
+#: mica_datasets.pages.inc:445;455
+msgid "Unable to save connection: !name"
+msgstr "Impossible de sauvegarder la connection: !name"
+
+#: mica_datasets.pages.query.inc:42
+msgid "!title -- Queries"
+msgstr "!title -- Requêtes"
+
+#: mica_datasets.pages.query.inc:69
+msgid "(not saved)"
+msgstr "(pas sauvegardé)"
+
+#: mica_datasets.pages.query.inc:79;263,
+#: mica_datasets.module:120
+msgid "Run"
+msgstr "Exécuter"
+
+#: mica_datasets.pages.query.inc:88;599,
+#: mica_datasets.module:126;164,
+#: includes/connection_form.inc:104
+msgid "Edit"
+msgstr "Modifier"
+
+#: mica_datasets.pages.query.inc:94;520;603;835,
+#: mica_datasets.module:136;174
+msgid "Delete"
+msgstr "Supprimer"
+
+#: mica_datasets.pages.query.inc:94
+msgid "Delete query"
+msgstr "Effacer la requête"
+
+#: mica_datasets.pages.query.inc:103
+msgid "No query found"
+msgstr "Pas de requêtes trouvées"
+
+#: mica_datasets.pages.query.inc:112
+msgid "!title -- Edit Query"
+msgstr "!title -- Éditer une requête"
+
+#: mica_datasets.pages.query.inc:115
+msgid "!title -- Add Query"
+msgstr "!title -- Ajouter une requête"
+
+#: mica_datasets.pages.query.inc:150,
+#: mica_datasets.module:671
+msgid "Published"
+msgstr "Publié"
+
+#: mica_datasets.pages.query.inc:166
+msgid "Select the variables you want to query the dataset on."
+msgstr "Sélectionner les variables à partir desquelles une recherche sur le jeu de données sera effectuée."
+
+#: mica_datashield.pages.inc:42
+msgid "Variables"
+msgstr "Variables"
+
+#: mica_datashield.pages.inc:47
+msgid "Add Variable"
+msgstr "Ajouter une variable"
+
+#: mica_datasets.pages.query.inc:255
+msgid "Save and Run"
+msgstr "Sauvegarder et exécuter"
+
+#: mica_datasets.pages.query.inc:273
+msgid "Query Term"
+msgstr "Terme d'une requête"
+
+#: mica_datasets.pages.query.inc:273,
+#: mica_datasets.module:694
+msgid "Weight"
+msgstr "Poids"
+
+#: mica_datasets.pages.query.inc:302
+msgid "No query term found"
+msgstr "Aucun terme de requête n'a été trouvé."
+
+#: mica_datasets.pages.query.inc:318
+msgid "At least one variable selection is required."
+msgstr "Au moins une variable est requise."
+
+#: mica_datasets.pages.query.inc:325
+msgid "A query with this name already exists."
+msgstr "Une requête du même nom existe déjà."
+
+#: mica_datasets.pages.query.inc:344
+msgid "Query term temporarily added. Changes made will not be saved until the form is submitted."
+msgstr "Le terme de requête a été ajouté temporairement. Les changements ne seront sauvegardés qu'après soumission du formulaire."
+
+#: mica_datasets.pages.query.inc:489
+msgid "Delete !query"
+msgstr "Effacer !query"
+
+#: mica_datasets.pages.query.inc:499
+msgid "Are you sure you want to delete query <em>!query</em>?"
+msgstr "Êtes-vous certain de vouloir supprimer la requête <em>!query</em>?"
+
+#: mica_datasets.pages.query.inc:509;824
+msgid "This action cannot be undone."
+msgstr "Cette action est irréversible."
+
+#: mica_datasets.pages.query.inc:525;720;840
+msgid "Cancel"
+msgstr "Annuler"
+
+#: mica_datasets.pages.query.inc:581
+msgid "!title -- !query"
+msgstr "!title -- !query"
+
+#: mica_datasets.pages.query.inc:594
+msgid "View !title"
+msgstr "Visionner !title"
+
+#: mica_datasets.pages.query.inc:599
+msgid "Edit query term options"
+msgstr "Édition des options du terme de requête"
+
+#: mica_datasets.pages.query.inc:603
+msgid "Delete query term"
+msgstr "Effacer le terme de requête"
+
+#: mica_datasets.pages.query.inc:618
+msgid "Study"
+msgstr "Étude"
+
+#: mica_datasets.pages.query.inc:618
+msgid "Total"
+msgstr "Total"
+
+#: mica_datasets.pages.query.inc:619
+msgid "Matched"
+msgstr "Correspondance"
+
+#: mica_datasets.pages.query.inc:657
+msgid "Your query is not saved yet."
+msgstr "Votre requête n'est pas encore sauvegardée."
+
+#: mica_datasets.pages.query.inc:661
+msgid "No connectors available"
+msgstr "Aucun connecteurs disponible"
+
+#: mica_datasets.pages.query.inc:678
+msgid "Edit !term"
+msgstr "Editer !term"
+
+#: mica_datasets.pages.query.inc:695
+msgid "!title -- Edit !term in !query"
+msgstr "!title -- Éditer !term de la requête !query"
+
+#: mica_datasets.pages.query.inc:779
+msgid "!title -- !term"
+msgstr "!title -- !term"
+
+#: mica_datasets.pages.query.inc:797
+msgid "Delete !term"
+msgstr "Effacer !term"
+
+#: mica_datasets.pages.query.inc:813
+msgid "Are you sure you want to delete query term <em>!term</em>?"
+msgstr "Êtes-vous certain de vouloir supprimer le terme de requête <em>!term</em>?"
+
+#: mica_datasets.pages.unit.inc:19
+msgid "Certificate"
+msgstr "Certificat"
+
+#: mica_datasets.pages.unit.inc:38
+msgid "Mica server can communicate with third-party using a key pair (private key/certificate)"
+msgstr "Le serveur Mica peut communiquer avec un tiers en utilisant une paire de clés de chiffrement (clé privée/certificat)"
+
+#: mica_datasets.pages.unit.inc:43,
+#: mica_datasets.module:236
+msgid "Configure key pair"
+msgstr "Configurer la paire de clé"
+
+#: mica_datasets.pages.unit.inc:48
+msgid "First and last name"
+msgstr "Nom et nom de famille"
+
+#: mica_datasets.pages.unit.inc:53
+msgid "Organizational unit"
+msgstr "Unité organisationnelle"
+
+#: mica_datasets.pages.unit.inc:58
+msgid "Name of the organization"
+msgstr "Nom de l'organisation"
+
+#: mica_datasets.pages.unit.inc:63
+msgid "City or Locality name"
+msgstr "Nom de la ville ou localité"
+
+#: mica_datasets.pages.unit.inc:68
+msgid "State or province"
+msgstr "État ou province"
+
+#: mica_datasets.pages.unit.inc:73
+msgid "Two letter Country code"
+msgstr "Code de pays deux lettres"
+
+#: mica_datasets.pages.unit.inc:125
+msgid "Bad syntax of two letter Country code"
+msgstr "Erreur de syntaxe pour le code de pays à deux lettres"
+
+#: mica_datasets.views_default.inc:121;774
+msgid "Data Dictionnary"
+msgstr "Dictionnaire de données"
+
+#: mica_datasets.views_default.inc:785
+msgid "No variables found."
+msgstr "Aucune variable n' été trouvée."
+
+#: mica_datasets.views_default.inc:319
+msgid "No studies found."
+msgstr "Aucune étude n'a été trouvée."
+
+#: mica_projects.views_default.inc:189
+msgid "How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?"
+msgstr "Combien de personnes devraient être recrutées ? Ou si l'étude est terminée, quel le nombre final de participants ? "
+
+#: mica_datasets.views_default.inc:505
+msgid "The consortium makes study-specific datasets and harmonized datasets (i.e. multiple-study datasets) available to the research community. Each dataset is described by a comprehensive data dictionary which gives details on each available variable.<br/>Moreover, Mica includes for  studies using the OBiBa Opal software as main database solution, a distributed query engine that enables researchers to obtain real-time aggregated reports on the exact number of participant with specific characteristics or phenotypes. Mica makes even possible to run remotely some regression analyses on the real study data using the DataSHIELD method (Wolfson M et al. <i>Int J Epidemiol</i>. 2010) which is implemented both in Mica and Opal. <br/><br/>"
+msgstr "Le consortium met à la disposition de la communauté de recherche différents jeux de données. Chaque jeu de données est décrit par un dictionnaire de données complet qui donne des détails sur chaque variable disponibles.<br/>En outre, Mica permet aux études utilisant le logiciel OBiBa Opal comme solution de base de données principale, un moteur de requête distribuée qui permet aux chercheurs d'obtenir des rapports agrégés en temps réel sur le nombre exact de participants avec des caractéristiques spécifiques ou des phénotypes. Mica rend même possible d'exécuter à distance des analyses de régression sur les données d'études en utilisant la méthode DataShield (Wolfson M et al. <i> Int J Epidemiol </ i>. 2010) qui est mis en œuvre à la fois dans Mica et Opal. <br/><br/>"
+
+#: mica_datasets.views_default.inc:507
+msgid "No dataset found."
+msgstr "Aucun jeu de données n'a été trouvé."
+
+#: mica_datasets.views_default.inc:512
+msgid "Feed"
+msgstr "Flux"
+
+#: mica_field_description.views_default.inc:395
+msgid "Fulltext search"
+msgstr "Recherche en text intégral"
+
+#: mica_datasets.module:31
+msgid "View any Dataset Query"
+msgstr "Visionner une requête d'un jeu de données"
+
+#: mica_datasets.module:32
+msgid "Permission for viewing own and published queries."
+msgstr "Droit pour voir ses propres requêtes ou les requêtes publiées."
+
+#: mica_datasets.module:35
+msgid "Create, edit and delete own Dataset Query"
+msgstr "Création, édition et suppression de ses propres requêtes au jeu de données"
+
+#: mica_datasets.module:38
+msgid "Edit and delete any Dataset Query"
+msgstr "Edit et supprimer n'importe quelle requête sur des jeux de données"
+
+#: mica_datasets.module:39
+msgid "Permission for editing and deleting own and published queries."
+msgstr "Droit d'éditer et de supprimer sa propre requête ou les requêtes publiées."
+
+#: mica_datasets.module:42
+msgid "Publish Dataset Query"
+msgstr "Publier la requête du jeu de données"
+
+#: mica_datasets.module:43
+msgid "Edition permission on the query is required to be effectively allowed to publish it."
+msgstr "Le droit d'édition de la requête est requis afin de la publier."
+
+#: mica_datasets.module:259
+msgid "Add a Dataset"
+msgstr "Ajouter un jeu de données"
+
+#: mica_datasets.module:279
+msgid "Data Dictionary"
+msgstr "Dictionnaire de données"
+
+#: mica_datasets.module:285
+msgid "<a class=\"highlight\" href=\"@url\">!name</a>"
+msgstr "<a class=\"highlight\" href=\"@url\">!name</a>"
+
+#: mica_datasets.module:529
+msgid "Dataset name '!title' is already given."
+msgstr "Le nom du jeu de données '!title' est déjà assigné."
+
+#: mica_datasets.module:550
+msgid "Dataset connector"
+msgstr "Connecteur de jeu de données"
+
+#: mica_datasets.module:565
+msgid "Dataset query"
+msgstr "Requête au jeu de données"
+
+#: mica_datasets.module:580
+msgid "Dataset query term"
+msgstr "Terme de requête au jeu de données"
+
+#: mica_datasets.module:603;644;679
+msgid "ID"
+msgstr "Identifiant"
+
+#: mica_datasets.module:605
+msgid "The primary identifier for a connector."
+msgstr "L'identifiant primaire d'un connecteur."
+
+#: mica_datasets.module:610
+msgid "The displayed name for a connector."
+msgstr "Le nom affiché du connecteur."
+
+#: mica_datasets.module:616
+msgid "The displayed description for a connector."
+msgstr "La description affichée du connecteur."
+
+#: mica_datasets.module:620;661
+msgid "Dataset ID"
+msgstr "Identifiant du jeu de données"
+
+#: mica_datasets.module:622;663
+msgid "The primary identifier for the Dataset node."
+msgstr "L'identifiant primaire d'un jeu de données."
+
+#: mica_datasets.module:625
+msgid "Study ID"
+msgstr "Identifiant de l'étude"
+
+#: mica_datasets.module:627
+msgid "The primary identifier for the Study node."
+msgstr "L'identifiant primaire d'une étude."
+
+#: mica_datasets.module:630
+msgid "Connection class"
+msgstr "Type de connection"
+
+#: mica_datasets.module:632
+msgid "The ID of the connection class to use for this server."
+msgstr "L'identifiant du type de connexion à utiliser pour ce serveur."
+
+#: mica_datasets.module:636
+msgid "Enabled"
+msgstr "Activé"
+
+#: mica_datasets.module:638
+msgid "A flag indicating whether the connector is enabled."
+msgstr "Une indication que la connexion est activée."
+
+#: mica_datasets.module:646
+msgid "The primary identifier for a query."
+msgstr "L'identifiant primaire pour une requête."
+
+#: mica_datasets.module:651
+msgid "The displayed name for a query."
+msgstr "Le nom affiché pour d'une requête."
+
+#: mica_datasets.module:657
+msgid "The displayed description for a query."
+msgstr "La description affichée d'une requête."
+
+#: mica_datasets.module:666
+msgid "User ID"
+msgstr "Identifiant (ID) utilisateur"
+
+#: mica_datasets.module:668
+msgid "The primary identifier for the user."
+msgstr "L'identifiant primaire de l'utilisateur."
+
+#: mica_datasets.module:673
+msgid "A flag indicating whether the query is published."
+msgstr "Une indication que la requête est publiée."
+
+#: mica_datasets.module:681
+msgid "The primary identifier for a query term."
+msgstr "L'identifiant primaire pour un terme de requête."
+
+#: mica_datasets.module:684
+msgid "Query ID"
+msgstr "Identifiant de requête"
+
+#: mica_datasets.module:686
+msgid "The query identifier for a query term."
+msgstr "L'identifiant de requête pour un terme de requête."
+
+#: mica_datasets.module:689
+msgid "Variable ID"
+msgstr "Identifiant d'une variable"
+
+#: mica_datasets.module:691
+msgid "The variable identifier for a query term."
+msgstr "L'identifiant de variable pour un terme de requête."
+
+#: mica_datasets.module:696
+msgid "The weight of a term in its query."
+msgstr "Le poids d'un terme dans sa requête."
+
+#: mica_datasets.module:699
+msgid "Depth"
+msgstr "Profondeur"
+
+#: mica_datasets.module:701
+msgid "The depth of a term in its query."
+msgstr "La profondeur d'un term dans sa requête."
+
+#: mica_datasets.module:1104
+msgid "Statistics"
+msgstr "Statistiques"
+
+#: mica_datasets.module:56
+msgid "Edit Datasets"
+msgstr "Éditer les jeux de données"
+
+#: mica_datasets.module:67
+msgid "Edit Studies"
+msgstr "Éditer les études"
+
+#: mica_datasets.module:77
+msgid "Import Variables"
+msgstr "Importer des variables"
+
+#: mica_datasets.module:88
+msgid "Queries"
+msgstr "Requêtes"
+
+#: mica_datasets.module:98
+msgid "Add Query"
+msgstr "Ajouter une requête"
+
+#: mica_datasets.module:158
+msgid "View"
+msgstr "Visionner"
+
+#: mica_datasets.module:193;203
+msgid "Dataset Connection"
+msgstr "Connection au jeu de données"
+
+#: mica_datasets.module:213
+msgid "Dataset Connection Edit"
+msgstr "Éditer la connection au jeu de données"
+
+#: mica_datasets.module:227
+msgid "Manage Mica Unit."
+msgstr "Gérer les Unité Mica"
+
+#: mica_datasets.info:0
+msgid "Mica Datasets"
+msgstr "Mica Datasets"
+
+#: mica_datasets.info:0
+msgid "Mica Datasets Feature"
+msgstr "Mica Datasets Feature"
+
+#: includes/connection_form.inc:59;200;212
+msgid "-none-"
+msgstr "-aucun-"
+
+#: includes/connection_form.inc:104
+msgid "Edit study connection options"
+msgstr "Éditer les options de connection de l'étude"
+
+#: includes/connection_form.inc:137;145
+msgid "Delete selected items"
+msgstr "Effacer les items sélectionnés"
+
+#: includes/connector_entity.inc:124
+msgid "Dataset connector with id !id specifies illegal service class !class."
+msgstr "Le connecteur de jeu de données ayant l'identifiant !id spécifie un service de type !class illégal."
+
+#: includes/connector_entity.inc:132
+msgid "Study %study: Authentication failed (401)."
+msgstr "Étude %study: l'authentification a échouée (401)."
+
+#: includes/connector_entity.inc:134
+msgid "Study %study: Not authorized to search dataset (403)."
+msgstr "Étude %study: La recherche sur le jeu de données n'est pas autorisée (403)."
+
+#: includes/connector_entity.inc:136
+msgid "Study %study: Cannot find dataset (404). Make sure the study's configuration is valid."
+msgstr "Étude %study: Le jeu de données n'a pas été trouvé (404). Vérifier que la configuration de l'étude est correcte."
+
+#: includes/connector_entity.inc:138
+msgid "Study %study: Failed executing search. Message was: %msg"
+msgstr "Étude %study: Échec à l'éxécution de la recherche. Le message est: %msg"
+
+#: includes/query/terms.inc:226;355
+msgid "No studies available"
+msgstr "Aucune études disponible"
+
+#: includes/query/terms.inc:231;372
+msgid "Operator"
+msgstr "Opérateur"
+
+#: includes/query/terms.inc:412
+msgid "Any value"
+msgstr "Toute valeur"
+
+#: includes/query/terms.inc:413
+msgid "Exact Value"
+msgstr "Valeur exacte"
+
+#: includes/query/terms.inc:414
+msgid "Range"
+msgstr "Plage de valeur"
+
+#: includes/query/terms.inc:482
+msgid "At least one value (min or max) must be specified"
+msgstr "Au moins une valeur doit être spécifiée (minimum ou maximum)"
+
+#: includes/query/terms.inc:484
+msgid "Min must be lower than max"
+msgstr "Le minimum doit être plus petite que le maximum"
+
+#: includes/query/terms.inc:486
+msgid "Value for min must be numeric"
+msgstr "La valeur pour le minimum doit être numérique"
+
+#: includes/query/terms.inc:488
+msgid "Value for max must be numeric"
+msgstr "La valeur pour le maximum doit être numérique"
+
+#: includes/query/terms.inc:494
+msgid "Exact value is required and must be specified as a number"
+msgstr "Une valeur exacte est requise et doit être un nombre"
+
+#: mica_datashield.pages.inc:32
+msgid "Step 1: Select Variables"
+msgstr "Etape 1 : Sélectionnez une variable"
+
+#: mica_datashield.pages.inc:54
+msgid "No variables selected"
+msgstr "Aucun variable sélectionnée"
+
+#: mica_datashield.pages.inc:59
+msgid "Remove Variable(s)"
+msgstr "Supprimer une variable"
+
+#: mica_datashield.pages.inc:64
+msgid "Step 2: Select Model"
+msgstr "Etape 2 : Sélectionnez un modèle"
+
+#: mica_datashield.pages.inc:71
+msgid "Model"
+msgstr "Modèle"
+
+#: mica_datashield.pages.inc:72
+msgid "The R formula to fit. Should reference the selected variables above (e.g.: "
+msgstr "Formule R à éxecuter. Devrait référencer les variables sélectionnées ci-dessus (i.e.:"
+
+#: mica_datashield.pages.inc:79
+msgid "Family"
+msgstr "Famille"
+
+#: mica_datashield.pages.inc:80
+msgid "Gaussian"
+msgstr "Gausse"
+
+#: mica_datashield.pages.inc:80
+msgid "Binomial"
+msgstr "Binomial"
+
+#: mica_datashield.pages.inc:80
+msgid "Poisson"
+msgstr "Poisson"
+
+#: mica_datashield.pages.inc:86
+msgid "Step 3: DataSHIELD!"
+msgstr "Etape 3 : DataSHIELD!"
+
+#: mica_datashield.pages.inc:91
+msgid "DataSHIELD!"
+msgstr "DataSHIELD!"
+
+#: mica_datashield.pages.inc:97
+msgid "DataSHIELD Result"
+msgstr "Résultats DataSHIELD"
+
+#: mica_datashield.module:7
+msgid "DataSHIELD"
+msgstr "DataSHIELD"
+
+#: mica_datashield.info:0;0
+msgid "Mica DataSHIELD"
+msgstr "Mica DataSHIELD"
+
+#: mica_devel.module:22
+msgid "Form exemple to run custom actions"
+msgstr "Example de formulaire "
+
+#: mica_devel.info:0
+msgid "Mica development tools"
+msgstr "Mica - Outils de développement "
+
+#: mica_field_description.features.inc:37
+#: mica_field_description.module:111
+#: mica_field_description.info:0
+msgid "Field Description"
+msgstr "Description de champ"
+
+#: mica_field_description.features.inc:39
+msgid "Description of information collected about the studies."
+msgstr "Description des informations collectées sur les études."
+
+#: mica_field_description.views_default.inc:282;391
+msgid "- All - "
+msgstr "- Tous - "
+
+#: mica_field_description.views_default.inc:284
+msgid "titre"
+msgstr "titre"
+
+#: mica_field_description.views_default.inc:285
+msgid "body"
+msgstr "corps"
+
+#: mica_field_description.views_default.inc:293
+msgid "Data export"
+msgstr "Export Data"
+
+#: mica_field_description.views_default.inc:383
+msgid "Search Filters"
+msgstr "Filtres de recherche"
+
+#: mica_field_description.views_default.inc:394
+msgid "Text (indexed)"
+msgstr "Texte"
+
+#: mica_field_description.module:121
+msgid "Use Field Descriptor for this field"
+msgstr "Utiliser la description de champ pour ce champ"
+
+#: mica_field_description.module:132
+msgid "Field value type"
+msgstr "Type de valeur du champ"
+
+#: mica_projects.features.field.inc:1147,
+#: mica_projects.views_default.inc:347;556
+msgid "Description"
+msgstr "Description"
+
+#: mica_field_description.module:560
+msgid "Create Field Description for %field of %bundle"
+msgstr "Crée une description de champ pour %field de %bundle"
+
+#: mica_field_description.info:0
+msgid "Mica Field Description"
+msgstr "Description de champ Mica"
+
+#: mica_node_reference_field.module:15
+msgid "Node reference field name (link)"
+msgstr "Node reference field name (link)"
+
+#: mica_node_reference_field.module:16
+msgid "Displays the name of the node reference field as a link to the node page."
+msgstr "Affiche le nom du champ node reference comme un lien vers la page du noeud."
+
+#: mica_node_reference_field.info:0
+msgid "Mica Node Reference Field"
+msgstr "Mica Node Reference Field"
+
+#: mica_node_reference_field.info:0
+msgid "Adaptation of Node Reference Field to display relations for Mica"
+msgstr "Adaptation de Node Reference Field pour afficher les relations dans Mica"
+
+#: mica_opal.module:9
+msgid "Opal"
+msgstr "Opal"
+
+#: mica_opal.module:10
+msgid "Connection for Opal data repository."
+msgstr "Connexion pour le dépôt de données de Opal"
+
+#: mica_opal.info:0
+msgid "Mica Opal"
+msgstr "Mica Opal"
+
+#: mica_opal.info:0
+msgid "Allows using Mica and Mica Datasets with an Opal instance"
+msgstr "Autorise l'utilisation de Mica et Mica Datasets avec une instance Opal"
+
+#: includes/opal_connection.inc:21;27
+msgid "Opal server"
+msgstr "Serveur Opal"
+
+#: includes/opal_connection.inc:29
+msgid "The Opal server secured url (https is required)."
+msgstr "URL sécurisée du serveur Opal (https est requis)."
+
+#: includes/opal_connection.inc:34
+msgid "Datasource"
+msgstr "Source de données"
+
+#: includes/opal_connection.inc:36
+msgid "The Opal datasource name."
+msgstr "Nom de la source de données Opal"
+
+#: includes/opal_connection.inc:40
+msgid "Table"
+msgstr "Table"
+
+#: includes/opal_connection.inc:42
+msgid "The Opal table name from which variables and data can be fetched."
+msgstr "Nom de la table de Opal d'où les variables et les données seront récupérées."
+
+#: includes/opal_connection.inc:56
+msgid "You must provide a valid Opal server url: https://..."
+msgstr "Vous devez saisir une URL valide pour le serveur Opal : https://..."
+
+#: includes/opal_connection.inc:62
+msgid "You must provide a valid Opal datasource name."
+msgstr "Vous devez saisir un nom de la source de données Opal valide."
+
+#: includes/opal_connection.inc:66
+msgid "You must provide a valid Opal table name."
+msgstr "Vous devez saisir un nom de table valide pour Opal."
+
+#: mica_projects.features.field.inc:1144
+msgid "Comment"
+msgstr "Commentaire"
+
+#: mica_projects.features.field.inc:1145
+msgid "Consortium's studies involved."
+msgstr "Etudes du consortium impliquées"
+
+#: mica_projects.features.field.inc:1146
+#: mica_projects.views_default.inc:554
+msgid "Date"
+msgstr "Date"
+
+#: mica_projects.features.field.inc:1148
+msgid "Files"
+msgstr "Fichiers"
+
+#: mica_projects.features.field.inc:1149
+#: mica_projects.views_default.inc:557
+msgid "Instructions"
+msgstr "Instructions"
+
+#: mica_projects.features.field.inc:1150
+msgid "Minutes"
+msgstr "Minutes"
+
+#: mica_projects.features.field.inc:1152
+msgid "Studies"
+msgstr "Etudes"
+
+#: mica_projects.features.field.inc:1153
+#: mica_projects.views_default.inc:542
+msgid "Teleconferences"
+msgstr "Téléconferences"
+
+#: mica_projects.views_default.inc:179
+msgid "Project Studies"
+msgstr "Projet d'études"
+
+#: mica_projects.views_default.inc:191
+msgid "Block"
+msgstr "Bloc"
+
+#: mica_projects.views_default.inc:343
+msgid "List of all projects of the consortium"
+msgstr "Liste de tous les projets du consortium"
+
+#: mica_projects.views_default.inc:345
+msgid "No project found."
+msgstr "Aucun projet trouvé"
+
+#: mica_projects.views_default.inc:553
+msgid "No teleconference found."
+msgstr "Aucune téléconférence trouvée"
+
+#: mica_projects.module:28
+msgid "Add a !name"
+msgstr "Ajouter un(e) !name"
+
+#: mica_projects.info:0
+msgid "Mica Projects"
+msgstr "Projets Mica"
+
+#: mica_projects.info:0
+msgid "Adds Projects and Teleconferences content types to Mica"
+msgstr "Supporte les Projets et les Téléconférences pour Mica"
+
+#: node_reference_block.module:11;164
+msgid "Related information"
+msgstr "Information relative"
+
+#: node_reference_block.module:29;40
+msgid "Excluded related types"
+msgstr "Types reliés exclus"
+
+#: node_reference_block.module:43
+msgid "Excludes selected types from related information."
+msgstr "Exclure les types sélectionnés des information relatives"
+
+#: node_reference_block.info:0
+msgid "Node Reference Block"
+msgstr "Bloc Node Reference"
+
+#: node_reference_block.info:0
+msgid "Related Content Block using Node References"
+msgstr "Bloc de contenu relié par Node References"
+
+#: node_reference_block.js:0
+msgid "No exclusions"
+msgstr "Sans exclusion"
 

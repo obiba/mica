@@ -269,6 +269,29 @@ function mica_field_description_views_default_views() {
   $handler->display->display_options['path'] = 'csv-field-description';
   $handler->display->display_options['sitename_title'] = 0;
   $handler->display->display_options['use_batch'] = '1';
+  $translatables['csv_field_description_export'] = array(
+    t('Master'),
+    t('CSV Contact Export'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All - '),
+    t('Offset'),
+    t('titre'),
+    t('body'),
+    t('field_original_field_label'),
+    t('field_original_field_name'),
+    t('field_bundle_label'),
+    t('field_bundle'),
+    t('field_value_type'),
+    t('field_categories'),
+    t('field_repeatable'),
+    t('Data export'),
+  );
   $export['csv_field_description_export'] = $view;
 
   $view = new view;
@@ -354,6 +377,23 @@ function mica_field_description_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'fields-description-search';
+  $translatables['fields_description_search'] = array(
+    t('Master'),
+    t('Search Filters'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All - '),
+    t('Offset'),
+    t('Name'),
+    t('Text (indexed)'),
+    t('Fulltext search'),
+    t('Page'),
+  );
   $export['fields_description_search'] = $view;
 
   return $export;

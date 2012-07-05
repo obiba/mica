@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2012-06-22 09:10-0400\n"
-"PO-Revision-Date: 2012-06-22 09:10-0400\n"
+"POT-Creation-Date: 2012-07-03 14:46-0400\n"
+"PO-Revision-Date: 2012-07-03 14:46-0400\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -26,55 +26,6 @@ msgstr ""
 #: node:type:blog:description
 msgctxt "type:blog:description"
 msgid "Use for multi-user blogs. Every user gets a personal blog."
-msgstr ""
-
-#: node:type:forum:name
-msgctxt "type:forum:name"
-msgid "Forum topic"
-msgstr ""
-
-#: node:type:forum:title_label
-msgctxt "type:forum:title_label"
-msgid "Subject"
-msgstr ""
-
-#: node:type:forum:description
-msgctxt "type:forum:description"
-msgid "A <em>forum topic</em> starts a new discussion thread within a forum."
-msgstr ""
-
-#: node:type:page:name
-msgctxt "type:page:name"
-msgid "Basic page"
-msgstr ""
-
-#: node:type:page:title_label
-msgctxt "type:page:title_label"
-msgid "Title"
-msgstr ""
-
-#: node:type:page:description
-msgctxt "type:page:description"
-msgid ""
-"Use <em>basic pages</em> for your static content, such as an 'About "
-"us' page."
-msgstr ""
-
-#: node:type:article:name
-msgctxt "type:article:name"
-msgid "Article"
-msgstr ""
-
-#: node:type:article:title_label
-msgctxt "type:article:title_label"
-msgid "Title"
-msgstr ""
-
-#: node:type:article:description
-msgctxt "type:article:description"
-msgid ""
-"Use <em>articles</em> for time-sensitive content like news, press "
-"releases or blog posts."
 msgstr ""
 
 #: node:type:event:name
@@ -264,6 +215,21 @@ msgid ""
 "study."
 msgstr ""
 
+#: node:type:forum:name
+msgctxt "type:forum:name"
+msgid "Forum topic"
+msgstr ""
+
+#: node:type:forum:title_label
+msgctxt "type:forum:title_label"
+msgid "Subject"
+msgstr ""
+
+#: node:type:forum:description
+msgctxt "type:forum:description"
+msgid "A <em>forum topic</em> starts a new discussion thread within a forum."
+msgstr ""
+
 #: node:type:panel:name
 msgctxt "type:panel:name"
 msgid "Panel"
@@ -279,69 +245,37 @@ msgctxt "type:panel:description"
 msgid "A panel layout broken up into rows and columns."
 msgstr ""
 
-#: mica.module:15
-msgid "Mica Documentation can be found here:"
-msgstr "La documentation de Mica se trouve ici: "
+#: node:type:article:name
+msgctxt "type:article:name"
+msgid "Article"
+msgstr ""
 
-#: mica.module:17
-msgid "Mica Administration Guide"
-msgstr "Guide d'administration de Mica"
+#: node:type:article:title_label
+msgctxt "type:article:title_label"
+msgid "Title"
+msgstr ""
 
-#: mica.module:18
-msgid "Mica User Guide"
-msgstr "Guide d'utilisation Mica"
+#: node:type:article:description
+msgctxt "type:article:description"
+msgid ""
+"Use <em>articles</em> for time-sensitive content like news, press "
+"releases or blog posts."
+msgstr ""
 
-#: mica.module:43
-msgid "Mica Relation"
-msgstr "Relation Mica"
+#: node:type:page:name
+msgctxt "type:page:name"
+msgid "Basic page"
+msgstr ""
 
-#: mica.module:139
-msgid "Study name '!title' is already given."
-msgstr "Le nom d'étude '!title' existe déjà."
+#: node:type:page:title_label
+msgctxt "type:page:title_label"
+msgid "Title"
+msgstr ""
 
-#: mica.module:294
-msgid "Powered by Mica"
-msgstr "Généré par Mica"
-
-#: mica.module:312
-msgid "Powered by <a href=\"@poweredby\">Mica</a>"
-msgstr "Généré par Mica <a href=\"@poweredby\">Mica</a>"
-
-#: mica.module:98,  mica.install:117
-msgid "mica"
-msgstr "mica"
-
-#: mica.module:98
-msgid "Delete relation between parent %parent and child %child"
-msgstr "Efface la relation entre le parent %parent et l'enfant %child"
-
-#: mica.install:117
-msgid "Update to Mica 1.1"
-msgstr "Mettre à jour à Mica 1.1"
-
-#: mica.info:0
-msgid "Mica"
-msgstr "Mica"
-
-#: mica.info:0
-msgid "Mica module"
-msgstr "Module Mica"
-
-#: mica.info:0
-msgid "OBiBa"
-msgstr "OBiBa"
-
-#: includes/feeds/mappers/mica.inc:18;25
-msgid "The @label field of the node."
-msgstr "Le champ @label du noeud."
-
-#: includes/feeds/mappers/mica.inc:32
-msgid "The Legacy Id of the parent Study of the node."
-msgstr "L'identifiant legacy du noeud Étude parent."
-
-msgid "Advanced !title"
-msgstr "!title avancée"
-
-msgid "Enter the terms you wish to search for in Site or !title."
-msgstr "Entrer les termes à chercher dans le site ou dans les !title."
+#: node:type:page:description
+msgctxt "type:page:description"
+msgid ""
+"Use <em>basic pages</em> for your static content, such as an 'About "
+"us' page."
+msgstr ""
 

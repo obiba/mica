@@ -98,6 +98,9 @@ projects[entity_translation][version] = 1.0-alpha2
 projects[facetapi][version] = 1.0
 projects[facetapi][type] = module
 
+projects[facetapi_i18n][version] = 1.0-beta2
+projects[facetapi_i18n][type] = module
+
 ;projects[] = examples
 
 projects[features][version] = 1.0-rc3
@@ -122,6 +125,7 @@ projects[field_display_label][type] = module
 
 projects[field_group][version] = 1.1
 projects[field_group][type] = module
+projects[field_group][patch][1175102] = http://drupal.org/files/description_translation-1175102-10.patch
 
 projects[field_permissions][version] = 1.0-beta2
 projects[field_permissions][type] = module
@@ -140,9 +144,9 @@ projects[] = graphapi
 projects[http_client][version] = 2.3
 projects[http_client][type] = module
 
-projects[i18n][version] = 1.6
+projects[i18n][version] = 1.7
 projects[i18n][type] = module
-;projects[noderefcreate][patch][1350638] = http://drupal.org/files/i18n-hide_language_by_default-1350638-5.patch
+projects[i18n][patch][1662884] = http://drupal.org/files/support_multiple_translation_modes-1662884-1.patch
 
 projects[image_url_formatter][version] = 1.0
 projects[image_url_formatter][type] = module
@@ -152,6 +156,9 @@ projects[imce][type] = module
 
 projects[job_scheduler][version] = 2.0-alpha3
 projects[job_scheduler][type] = module
+
+projects[l10n_update][version] = 1.0-beta3
+projects[l10n_update][type] = module
 
 projects[lang_dropdown][version] = 1.5
 projects[lang_dropdown][type] = module
@@ -182,6 +189,7 @@ projects[module_filter][type] = module
 
 projects[multiselect][version] = 1.9
 projects[multiselect][type] = module
+projects[multiselect][patch][1670224] = http://drupal.org/files/options_translations-1670224-2.patch
 
 projects[namedb][type] = module
 projects[namedb][download][type] = git
@@ -225,6 +233,7 @@ projects[search_api][version] = 1.1
 projects[search_api][type] = module
 projects[search_api][patch][1363114] = http://drupal.org/files/max_inclusive-1363114-5.patch
 projects[search_api][patch][1617794] = http://drupal.org/files/search_api-view_unpublished-support-1617794-6.patch
+projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-1.patch
 
 projects[search_api_combined][version] = 1.0-alpha1
 projects[search_api_combined][type] = module
@@ -265,7 +274,7 @@ projects[title][type] = module
 projects[token][version] = 1.1
 projects[token][type] = module
 
-projects[variable][version] = 2.0
+projects[variable][version] = 2.1
 projects[variable][type] = module
 
 projects[view_unpublished][version] = 1.1
