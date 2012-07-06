@@ -422,13 +422,6 @@ make-package = cd target/$(micadir)/$(1) && \
 # deb-package: echo the modules versions in debian Makefile
 deb-package = echo "$(2)_version=$($(2)_version)" >> target/deb/$(1)/var/lib/$(1)-installer/Makefile
 
-# make-git function: propagate svn changes to git
-make-git = cd target/git && \
-	git svn clone http://svn.obiba.org/mica/trunk/$(1)/$(2) $(2) && \
-	cd $(2) && \
-	git remote add origin $(git_user)@git.drupal.org:$(3) && \
-	git pull --rebase origin master && \
-	git push origin master
 
 #
 # Variables (not to be overridden)
