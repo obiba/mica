@@ -164,7 +164,7 @@ projects[menu_breadcrumb][type] = module
 projects[menu_firstchild][version] = 1.1
 projects[menu_firstchild][type] = module
 
-projects[module_filter][version] = 1.6
+projects[module_filter][version] = 1.7
 projects[module_filter][type] = module
 
 projects[multiselect][version] = 1.9
