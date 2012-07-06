@@ -69,9 +69,6 @@ function mica_field_description_default_search_api_index() {
         "field_original_field_name" : { "type" : "string" },
         "field_repeatable" : { "type" : "boolean" },
         "field_value_type" : { "type" : "string" },
-        "field_full_name" : { "type" : "text" },
-        "field_target_number_biosamples" : { "type" : "integer" },
-        "field_target_number_participants" : { "type" : "integer" },
         "search_api_language" : { "type" : "string" },
         "body:value" : { "type" : "text" },
         "body:summary" : { "type" : "text" }
@@ -99,20 +96,6 @@ function mica_field_description_default_search_api_index() {
               "title" : true,
               "field_bundle_label" : true,
               "field_original_field_label" : true,
-              "field_full_name" : true,
-              "body:value" : true,
-              "body:summary" : true
-            }
-          }
-        },
-        "taxonomy_hierarchy_processor.inc" : {
-          "status" : 0,
-          "weight" : "0",
-          "settings" : { "fields" : {
-              "title" : true,
-              "field_bundle_label" : true,
-              "field_original_field_label" : true,
-              "field_full_name" : true,
               "body:value" : true,
               "body:summary" : true
             }
@@ -126,7 +109,6 @@ function mica_field_description_default_search_api_index() {
               "title" : true,
               "field_bundle_label" : true,
               "field_original_field_label" : true,
-              "field_full_name" : true,
               "body:value" : true,
               "body:summary" : true
             },
@@ -143,7 +125,6 @@ function mica_field_description_default_search_api_index() {
               "title" : true,
               "field_bundle_label" : true,
               "field_original_field_label" : true,
-              "field_full_name" : true,
               "body:value" : true,
               "body:summary" : true
             },
@@ -159,7 +140,6 @@ function mica_field_description_default_search_api_index() {
               "title" : true,
               "field_bundle_label" : true,
               "field_original_field_label" : true,
-              "field_full_name" : true,
               "body:value" : true,
               "body:summary" : true
             },

@@ -18,11 +18,9 @@ function mica_search_block_content() {
 /**
  * Returns a form for site or studies full text search.
  */
-function mica_search_form($form, &$form_state) {
-  $form = array(
-    '#attached' => array(
-      'css' => array(drupal_get_path('module', 'mica') . '/includes/blocks.css'),
-    ),
+function mica_search_form(&$form, &$form_state) {
+  $form['#attached'] = array(
+    'css' => array(drupal_get_path('module', 'mica') . '/includes/blocks.css'),
   );
 
   // get studies view default display title
@@ -125,7 +123,9 @@ function mica_search_api_form($form, &$form_state) {
 }
 
 function mica_search_api_form_submit($form, &$form_state) {
-  drupal_goto($form_state['build_info']['args'][0], array('query' => array('search_api_views_fulltext' => $form_state['values']['search'])));
+  drupal_goto($form_state['build_info']['args'][0], array(
+      'query' => array('search_api_views_fulltext' => $form_state['values']['search']))
+  );
 }
 
 //
@@ -145,16 +145,26 @@ function mica_search_filters_block_content() {
 
   $blocks = array();
   foreach ($result as $block) {
-    // only configure blocks from search_api related modules
-    if (strpos($block->module, 'search_api_') !== FALSE) {
+    // only configure blocks from facetapi related modules
+    if (strpos($block->module, 'facetapi') !== FALSE) {
 
       $data = module_invoke($block->module, 'block_info');
       if (!empty($block->delta) && !empty($data)
-        && array_key_exists($block->delta, $data) && $data[$block->delta]['info']
-      ) {
+        && array_key_exists($block->delta, $data) && $data[$block->delta]['info']) {
+
+        $name = $data[$block->delta]['info'];
+        $parts = explode(':', $name);
+        if(count($parts) > 3) {
+          unset($parts[0]);
+          unset($parts[1]);
+          unset($parts[2]);
+          $parts[3] = trim($parts[3]);
+          $name = implode(':', $parts);
+        }
+
         $blocks[$block->module][$block->module . ':' . $block->delta] = array(
           '#type' => 'checkbox',
-          '#title' => check_plain($data[$block->delta]['info']),
+          '#title' => check_plain($name),
           '#default_value' => isset($user->data['block'][$block->module][$block->delta])
             ? $user->data['block'][$block->module][$block->delta]
             : ($block->custom == 1),
@@ -166,10 +176,7 @@ function mica_search_filters_block_content() {
   if ($blocks) {
     return drupal_get_form('mica_search_filters_form', $blocks);
   }
-  else {
-    // nothing to be shown
-    return;
-  }
+  return NULL; // nothing to be shown
 }
 
 /**
