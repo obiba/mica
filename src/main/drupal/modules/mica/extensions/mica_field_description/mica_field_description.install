@@ -88,3 +88,6 @@ function mica_field_description_update_dependencies() {
   return $dependencies;
 }
 
+function mica_field_description_update_7141() {
+  watchdog('mica', 'mica_field_description_update_7141', array(), WATCHDOG_DEBUG);
+}

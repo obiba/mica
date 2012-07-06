@@ -41,6 +41,9 @@ function mica_field_description_configure_facet_blocks() {
  * Implements hook_features_rebuild_completed()
  */
 function mica_field_description_features_rebuild_completed() {
+
+  watchdog('mica', 'mica_field_description_features_rebuild_completed', array(), WATCHDOG_DEBUG);
+
   if (!variable_get('mica_field_description_features_rebuild_completed', FALSE)) {
     mica_field_description_configure_facet_blocks();
     variable_set('mica_field_description_features_rebuild_completed', TRUE);
