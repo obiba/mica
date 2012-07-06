@@ -46,9 +46,10 @@ function mica_block_info() {
   $blocks['mica-search-filters'] = array(
     'info' => t('Search filters selection'),
     'status' => TRUE,
-    'region' => 'sidebar_first',
+    'region' => 'sidebar_second',
     'visibility' => BLOCK_VISIBILITY_LISTED,
     'pages' => 'studies-search',
+    'weight' => '1000',
   );
   $blocks['mica-search'] = array(
     'info' => t('Search'),
@@ -82,7 +83,7 @@ function mica_block_view($delta = '') {
           )
         )
         . '</span>';
-      break;
+      return $block;
 
     case 'mica-search':
       $block['subject'] = t('Search');
@@ -91,7 +92,7 @@ function mica_block_view($delta = '') {
 
     case 'mica-search-filters':
       if ($user->uid == 0) {
-        return; // not available for anonymous user
+        return NULL; // not available for anonymous user
       }
       $block['subject'] = t('Search filters selection');
       $content = mica_search_filters_block_content();
@@ -99,8 +100,16 @@ function mica_block_view($delta = '') {
         $block['content'] = $content;
         return $block;
       }
-      return;
   }
   return $block;
 }
 
+/**
+ * Implements hook_preprocess_block().
+ */
+function mica_preprocess_block(&$variables) {
+  // add block-facetapi css class to search-filters block
+  if ($variables['block']->module === 'mica' && $variables['block']->delta === 'mica-search-filters') {
+    $variables['classes_array'][] = 'block-facetapi';
+  }
+}

@@ -68,7 +68,7 @@ function mica_field_description_update_7120() {
     ->condition('field_value_type_value', 'DECIMAL')
     ->execute();
 
-  // set the column field_value_type_value type to BINARY so the string comparions will be case sensitive,
+  // set the column field_value_type_value type to BINARY so the string comparisons will be case sensitive,
   // allowing list.module._list_values_in_use to return an empty array
   db_query('ALTER TABLE {field_data_field_value_type} MODIFY field_value_type_value varchar(255) BINARY DEFAULT NULL');
 
@@ -80,7 +80,6 @@ function mica_field_description_update_7120() {
 }
 
 /**
- *
  * Update to 7120 depends on the update of mica_core
  */
 function mica_field_description_update_dependencies() {
@@ -89,3 +88,6 @@ function mica_field_description_update_dependencies() {
   return $dependencies;
 }
 
+function mica_field_description_update_7141() {
+  watchdog('mica', 'mica_field_description_update_7141', array(), WATCHDOG_DEBUG);
+}
