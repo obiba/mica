@@ -92,9 +92,8 @@ projects[entity][type] = module
 projects[entity][version] = 1.0-rc3
 projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info-on-validation-exception.patch
 
-projects[facetapi][version] = 1.0-rc4
+projects[facetapi][version] = 1.0
 projects[facetapi][type] = module
-projects[facetapi][patch][1630714] = http://drupal.org/files/undefined-index-html-item_group-inc.patch
 
 ;projects[] = examples
 
@@ -104,9 +103,7 @@ projects[features][patch][981248] = http://drupal.org/files/hook_features_post_i
 projects[features][patch][656312] = http://drupal.org/files/keep_negative_permissions-656312-17.patch
 
 projects[feeds][type] = module
-projects[feeds][download][type] = git
-projects[feeds][download][revision] = cc2d2ec
-projects[feeds][download][branch] = 7.x-2.x
+projects[feeds][version] = 2.0-alpha5
 projects[feeds][patch][11075222] = http://drupal.org/files/issues/1107522-empty-fields-2.patch
 projects[feeds][patch][110752213] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-13.patch
 projects[feeds][patch][110752215links] = http://drupal.org/files/ignore-empty-link-fields-1107522-15.patch
