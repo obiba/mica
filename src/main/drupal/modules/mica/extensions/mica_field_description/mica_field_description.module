@@ -23,6 +23,31 @@ include_once(drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.i
 
 
 /**
+ * Implements hook_features_rebuild_completed()
+ */
+function mica_field_description_features_rebuild_completed() {
+  if (!variable_get('mica_field_description_features_rebuild_completed', FALSE)) {
+    mica_field_description_configure_facet_blocks();
+    variable_set('mica_field_description_features_rebuild_completed', TRUE);
+  }
+}
+
+function mica_field_description_configure_facet_blocks() {
+  $config = array(
+    'field_bundle' => array(
+      'name' => t('Content type'),
+    ),
+    'field_value_type' => array(
+      'name' => t('Value type'),
+    ),
+    'field_repeatable' => array(
+      'name' => t('Repeatable'),
+    ),
+  );
+  mica_core_configure_facet_blocks('fields_description_index', $config, 'fields-description-search');
+}
+
+/**
  * Implements hook_node_presave()
  */
 function mica_field_description_node_presave($node) {
