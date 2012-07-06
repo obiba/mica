@@ -3,7 +3,7 @@
 # Requires drush 5+ to be installed: http://drush.ws/
 #
 
-version=1.4.1
+version=1.4-dev
 
 
 #
