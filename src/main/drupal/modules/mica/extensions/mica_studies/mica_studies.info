@@ -13,6 +13,7 @@ dependencies[] = ckeditor
 dependencies[] = collapsiblock
 dependencies[] = comment
 dependencies[] = content_access
+dependencies[] = content_taxonomy
 dependencies[] = contextual
 dependencies[] = ctools
 dependencies[] = ctools_access_ruleset

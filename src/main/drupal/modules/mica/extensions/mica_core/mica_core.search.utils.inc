@@ -49,6 +49,11 @@ function mica_core_enable_facet_block($facet_delta, $block_title, $page, $region
     )
   )->fetchObject();
 
+  // trim to 64 char max because of block table title field limitation
+  if (strlen($block_title) > 64) {
+    $block_title = substr($block_title, 0, 64);
+  }
+
   if ($block) {
     db_update('block')->fields(
       array(
