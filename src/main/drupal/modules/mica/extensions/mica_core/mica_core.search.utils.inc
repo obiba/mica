@@ -64,10 +64,12 @@ function mica_core_configure_facet_blocks($search_index, $config, $page, $curren
       $nb_updated > 0 ? WATCHDOG_INFO : WATCHDOG_ERROR);
   }
 
-  $max_weight = db_query("SELECT MAX(weight) as max_weight FROM {block} WHERE theme = :theme and region = :region",
+  $max_weight = db_query('SELECT MAX(weight) as max_weight FROM {block} '
+      . 'WHERE theme = :theme and region = :region and delta <> :delta',
     array(
       ':theme' => $theme_default,
-      ':region' => $region
+      ':region' => $region,
+      ':delta' => 'mica-search-filters',
     )
   )->fetchField();
   $max_weight = empty($max_weight) ? 0 : ($max_weight + 1);
@@ -137,9 +139,8 @@ function mica_core_configure_facet_blocks($search_index, $config, $page, $curren
       )
         ->execute();
 
-      $searcher = 'search_api@variable_index';
-      $adapter = facetapi_adapter_load($searcher);
-      $facet = (array) facetapi_facet_load($facet_name, $searcher);
+      $adapter = facetapi_adapter_load($search_index);
+      $facet = (array) facetapi_facet_load($facet_name, $search_index);
       $realm = facetapi_realm_load('block');
       facetapi_save_facet_status($adapter, $realm, $facet, TRUE, FALSE, FALSE);
     }
