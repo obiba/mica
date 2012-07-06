@@ -422,25 +422,20 @@ make-package = cd target/$(micadir)/$(1) && \
 # deb-package: echo the modules versions in debian Makefile
 deb-package = echo "$(2)_version=$($(2)_version)" >> target/deb/$(1)/var/lib/$(1)-installer/Makefile
 
-# make-git function: propagate svn changes to git
-make-git = cd target/git && \
-	git svn clone http://svn.obiba.org/mica/trunk/$(1)/$(2) $(2) && \
-	cd $(2) && \
-	git remote add origin $(git_user)@git.drupal.org:$(3) && \
-	git pull --rebase origin master && \
-	git push origin master
 
 #
 # Variables (not to be overridden)
 #
 
 micadir=mica-$(version)
-build_number=$(shell svnversion -n | cut -d : -f 1)
-deb_version=$(version)-b$(build_number)
+ifeq ($(findstring dev,$(version)),dev)
+	deb_version=$(subst -dev,,$(version))-b$(shell git describe --match build_number | cut -d - -f2)
+else
+	deb_version=$(version)
+endif
 deb_date=$(shell date -R)
 datestamp=$(shell date +%s)
 drushexec=drush
 drushmake_exec=drush make
 drupal_org_mica=/home/cthiebault/workspace/mica-drupal/mica
 drupal_org_mica_dist=/home/cthiebault/workspace/mica-drupal/mica_dist
-
