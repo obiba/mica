@@ -3,7 +3,7 @@
 # Requires drush 5+ to be installed: http://drush.ws/
 #
 
-version=1.4-dev
+version=1.4.0
 
 
 #
@@ -405,8 +405,11 @@ make-git = cd target/git && \
 #
 
 micadir=mica-$(version)
-build_number=$(shell svnversion -n | cut -d : -f 1)
-deb_version=$(version)-b$(build_number)
+ifeq ($(findstring dev,$(version)),dev)
+	deb_version=$(subst -dev,,$(version))-b$(shell git describe --match build_number | cut -d - -f2)
+else
+	deb_version=$(version)
+endif
 deb_date=$(shell date -R)
 datestamp=$(shell date +%s)
 drushexec=drush
