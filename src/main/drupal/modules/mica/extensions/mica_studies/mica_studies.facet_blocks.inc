@@ -82,5 +82,5 @@ function mica_studies_configure_facet_blocks() {
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT
     ),
   );
-  mica_core_configure_facet_blocks('studies_index', $config, 'studies-search', 'study_current_search');
+  mica_core_configure_facet_blocks('studies_index', 'study', $config, 'studies-search', 'study_current_search');
 }

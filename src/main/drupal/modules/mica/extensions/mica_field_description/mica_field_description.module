@@ -22,19 +22,6 @@ include_once(drupal_get_path('module', 'facetapi') . '/facetapi.block.inc');
 include_once(drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.inc');
 
 
-/**
- * Implements hook_features_rebuild_completed()
- */
-function mica_field_description_features_rebuild_completed() {
-
-  watchdog('mica', 'mica_field_description_features_rebuild_completed', array(), WATCHDOG_DEBUG);
-
-  if (!variable_get('mica_field_description_features_rebuild_completed', FALSE)) {
-    mica_field_description_configure_facet_blocks();
-    variable_set('mica_field_description_features_rebuild_completed', TRUE);
-  }
-}
-
 function mica_field_description_configure_facet_blocks() {
   $config = array(
     'field_bundle' => array(
@@ -47,7 +34,7 @@ function mica_field_description_configure_facet_blocks() {
       'name' => t('Repeatable'),
     ),
   );
-  mica_core_configure_facet_blocks('fields_description_index', $config, 'fields-description-search');
+  mica_core_configure_facet_blocks('fields_description_index', 'field_description', $config, 'fields-description-search');
 }
 
 /**
@@ -303,32 +290,39 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
 
   cache_clear_all();
 
-  $searcher = 'search_api@' . $index->machine_name;
-  $facet = facetapi_facet_load($field_name, $searcher);
-  if ($facet) {
-    $adapter = facetapi_adapter_load($searcher);
-    $realms = facetapi_get_realm_info();
-    foreach ($realms as $realm_name => $realm) {
-      $delta = facetapi_hash_delta(facetapi_build_delta($searcher, $realm_name, $facet['name']));
-      if ($facet_supported || $range_supported) {
-        $settings = $adapter->getFacet($facet)->getSettings($realm);
-        if ($facet_supported) {
-          $settings->settings['widget'] = 'facetapi_checkbox_links';
+  try {
+    $searcher = 'search_api@' . $index->machine_name;
+    $facet = facetapi_facet_load($field_name, $searcher);
+    if ($facet) {
+      $adapter = facetapi_adapter_load($searcher);
+      $realms = facetapi_get_realm_info();
+      foreach ($realms as $realm_name => $realm) {
+        $delta = facetapi_hash_delta(facetapi_build_delta($searcher, $realm_name, $facet['name']));
+        if ($facet_supported || $range_supported) {
+          $settings = $adapter->getFacet($facet)->getSettings($realm);
+          if ($facet_supported) {
+            $settings->settings['widget'] = 'facetapi_checkbox_links';
+          }
+          if ($range_supported) {
+            $settings->settings['widget'] = 'search_api_ranges_ui_slider';
+          }
+          ctools_export_crud_save('facetapi', $settings);
+          if (facetapi_save_facet_enabled($adapter, $realm, $facet)) {
+            // overwrite facet label to use field display label if defined
+            $facet_block_title = $field_description_wrapper->field_original_field_label->value();
+            mica_core_enable_facet_block($delta, $facet_block_title, 'studies-search');
+          }
         }
-        if ($range_supported) {
-          $settings->settings['widget'] = 'search_api_ranges_ui_slider';
+        elseif (facetapi_save_facet_disabled($adapter, $realm, $facet)) {
+          _disable_search_block($delta);
         }
-        ctools_export_crud_save('facetapi', $settings);
-        if (facetapi_save_facet_enabled($adapter, $realm, $facet)) {
-          // overwrite facet label to use field display label if defined
-          $facet_block_title = $field_description_wrapper->field_original_field_label->value();
-          mica_core_enable_facet_block($delta, $facet_block_title, 'studies-search');
-        }
-      }
-      elseif (facetapi_save_facet_disabled($adapter, $realm, $facet)) {
-        _disable_search_block($delta);
       }
     }
+  }
+  catch (Exception $e) {
+    watchdog_exception('mica', $e, 'Error while configuring facet %facet for %index',
+      array('%facet' => $field_name, '%index' => $index->machine_name));
+    throw $e;
   }
 }
 

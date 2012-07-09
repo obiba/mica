@@ -38,7 +38,7 @@ function mica_core_find_indexes_by_bundle() {
  * @param $page path of the page where to display these blocks ('variable-search' for example)
  * @param $current_search_delta delta of the current search block ('variable_current_search' for example)
  */
-function mica_core_configure_facet_blocks($search_index, $config, $page, $current_search_delta = NULL, $region = 'sidebar_second') {
+function mica_core_configure_facet_blocks($search_index, $content_type, $config, $page, $current_search_delta = NULL, $region = 'sidebar_second') {
 
   $theme_default = variable_get('theme_default', 'mica_samara');
   $search_index = 'search_api@' . $search_index;
@@ -77,92 +77,102 @@ function mica_core_configure_facet_blocks($search_index, $config, $page, $curren
   $index = 0;
   foreach ($config as $facet_name => $block_config) {
 
-    // facetapi_get_delta_map() is not loaded yet so we need to generate hash
-    $string = facetapi_build_delta($search_index, 'block', $facet_name);
-    $facet_delta = facetapi_hash_delta($string);
+    try {
 
-    if (empty($facet_delta)) {
-      drupal_set_message(t('No facet defined for @facet', array('@facet' => check_plain($facet_name))), 'warning');
-      continue;
-    }
+      // facetapi_get_delta_map() is not loaded yet so we need to generate hash
+      $string = facetapi_build_delta($search_index, 'block', $facet_name);
+      $facet_delta = facetapi_hash_delta($string);
 
-    // block name
-    if (isset($block_config['name']) && !empty($block_config['name'])) {
-      $block_title = $block_config['name'];
-    }
-    else {
-      $field_info = field_info_instance('node', $facet_name, 'variable');
-      $block_title = $field_info['label'];
-    }
+      if (empty($facet_delta)) {
+        drupal_set_message(t('No facet defined for @facet', array('@facet' => check_plain($facet_name))), 'warning');
+        continue;
+      }
 
-    $facet_weight = $max_weight + $index++;
+      // block name
+      if (isset($block_config['name']) && !empty($block_config['name'])) {
+        $block_title = $block_config['name'];
+      }
+      else {
+        $field_info = field_info_instance('node', $facet_name, $content_type);
+        $block_title = $field_info['label'];
+      }
 
-    $block = db_query('SELECT * FROM {block} WHERE module = :module AND delta = :delta AND theme = :theme',
-      array(
-        ':module' => 'facetapi',
-        ':delta' => $facet_delta,
-        ':theme' => $theme_default
-      )
-    )->fetchObject();
+      if (strlen($block_title) > 64) {
+        $block_title = truncate_utf8($block_title, 64, TRUE);
+      }
 
-    if ($block) {
-      $nb_updated = db_update('block')->fields(
+      $facet_weight = $max_weight + $index++;
+
+      $block = db_query('SELECT * FROM {block} WHERE module = :module AND delta = :delta AND theme = :theme',
         array(
-          'status' => 1,
-          'region' => $region,
-          'weight' => $facet_weight,
-          'visibility' => BLOCK_VISIBILITY_LISTED,
-          'pages' => $page,
-          'title' => $block_title,
+          ':module' => 'facetapi',
+          ':delta' => $facet_delta,
+          ':theme' => $theme_default
         )
-      )
-        ->condition('module', 'facetapi')
-        ->condition('delta', $facet_delta)
-        ->condition('theme', $theme_default)
-        ->execute();
-    }
-    else {
+      )->fetchObject();
 
-      $nb_updated = db_insert('block')->fields(
+      if ($block) {
+        $nb_updated = db_update('block')->fields(
+          array(
+            'status' => 1,
+            'region' => $region,
+            'weight' => $facet_weight,
+            'visibility' => BLOCK_VISIBILITY_LISTED,
+            'pages' => $page,
+            'title' => $block_title,
+          )
+        )
+          ->condition('module', 'facetapi')
+          ->condition('delta', $facet_delta)
+          ->condition('theme', $theme_default)
+          ->execute();
+      }
+      else {
+
+        $nb_updated = db_insert('block')->fields(
+          array(
+            'status' => 1,
+            'region' => $region,
+            'weight' => $facet_weight,
+            'visibility' => BLOCK_VISIBILITY_LISTED,
+            'pages' => $page,
+            'custom' => BLOCK_CUSTOM_ENABLED, // Show this block by default but let individual users hide it.
+            'delta' => $facet_delta,
+            'module' => 'facetapi',
+            'theme' => $theme_default,
+            'title' => $block_title,
+          )
+        )
+          ->execute();
+
+        $adapter = facetapi_adapter_load($search_index);
+        $facet = (array) facetapi_facet_load($facet_name, $search_index);
+        $realm = facetapi_realm_load('block');
+        facetapi_save_facet_status($adapter, $realm, $facet, TRUE, FALSE, FALSE);
+      }
+
+      $success = $nb_updated > 0;
+
+      if ($success) {
+
+        $collapsible = isset($block_config['collapsible']) && !empty($block_config['collapsible'])
+          ? $block_config['collapsible']
+          : COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT;
+        collapsiblock_set_collapsible_type('facetapi', $facet_delta, $collapsible);
+      }
+
+      watchdog('mica', 'Facet block configuration for %facet (%delta)',
         array(
-          'status' => 1,
-          'region' => $region,
-          'weight' => $facet_weight,
-          'visibility' => BLOCK_VISIBILITY_LISTED,
-          'pages' => $page,
-          'custom' => BLOCK_CUSTOM_ENABLED, // Show this block by default but let individual users hide it.
-          'delta' => $facet_delta,
-          'module' => 'facetapi',
-          'theme' => $theme_default,
-          'title' => $block_title,
-        )
-      )
-        ->execute();
-
-      $adapter = facetapi_adapter_load($search_index);
-      $facet = (array) facetapi_facet_load($facet_name, $search_index);
-      $realm = facetapi_realm_load('block');
-      facetapi_save_facet_status($adapter, $realm, $facet, TRUE, FALSE, FALSE);
+          '%facet' => $facet_name,
+          '%delta' => $facet_delta),
+        $success ? WATCHDOG_INFO : WATCHDOG_ERROR);
     }
-
-    $success = $nb_updated > 0;
-
-    if ($success) {
-
-      $collapsible = isset($block_config['collapsible']) && !empty($block_config['collapsible'])
-        ? $block_config['collapsible']
-        : COLLAPSIBLOCK_TYPE_EXPANDED_BY_DEFAULT;
-      collapsiblock_set_collapsible_type('facetapi', $facet_delta, $collapsible);
+    catch (Exception $e) {
+      watchdog_exception('mica', $e, 'Error while configuring facet %facet for %index for %region region (%config)',
+        array('%facet' => $facet_name, '%index' => $search_index, '%region' => $region, '%config' => $block_config));
+      throw $e;
     }
-
-    watchdog('mica', 'Facet block configuration for %facet (%delta)',
-      array(
-        '%facet' => $facet_name,
-        '%delta' => $facet_delta),
-      $success ? WATCHDOG_INFO : WATCHDOG_ERROR);
-
   }
-
 }
 
 /**
@@ -192,7 +202,7 @@ function mica_core_enable_facet_block($facet_delta, $block_title, $page, $region
 
   // trim to 64 char max because of block table title field limitation
   if (strlen($block_title) > 64) {
-    $block_title = substr($block_title, 0, 64);
+    $block_title = truncate_utf8($block_title, 64, TRUE);
   }
 
   if ($block) {
