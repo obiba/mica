@@ -67,6 +67,7 @@ function _mica_configuration_batch() {
     }
   }
 
+  $operations[] = array('_field_description_block_configuration', array());
   $operations[] = array('_studies_block_configuration', array());
 
   if (module_exists('mica_datasets')) {
@@ -93,6 +94,11 @@ function _rebuild_user_permission($module, &$context) {
   module_load_include('inc', 'features', 'features.export');
   user_permission_features_rebuild($module);
   $context['message'] = st('Rebuilt user permissions for %module.', array('%module' => $module));
+}
+
+function _field_description_block_configuration(&$context) {
+  mica_field_description_configure_facet_blocks();
+  $context['message'] = st('Mica Field Description configured');
 }
 
 function _studies_block_configuration(&$context) {
