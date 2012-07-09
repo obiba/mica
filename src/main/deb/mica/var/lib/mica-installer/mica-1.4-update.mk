@@ -154,3 +154,7 @@ mica-delete-1.4:
 	rm -rf /usr/share/mica/profiles/mica_demo && \
 	rm -rf /usr/share/mica/profiles/mica_standard && \
 	rm -rf /usr/share/mica/sites/all/themes/mica_samara
+
+mica-delete-1.4.1: mica-delete-1.4
+
+mica-delete-1.4.2: mica-delete-1.4
