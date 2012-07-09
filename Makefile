@@ -38,7 +38,7 @@ mica_samara_version=$(mica_version)
 # Mysql db access
 #
 db_user=root
-db_pass=1234
+db_pass=rootadmin
 
 #
 # Build
