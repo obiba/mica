@@ -2140,7 +2140,9 @@ div.horizontal-tabs .horizontal-tabs-panes fieldset {
 /**
  * Facet API style
  */
-body.page-studies-search div.region-sidebar-second, body.page-variable-search div.region-sidebar-second {
+body.page-fields-description-search div.region-sidebar-second,
+body.page-studies-search div.region-sidebar-second,
+body.page-variable-search div.region-sidebar-second {
   background-color: #EEEEEE;
 }
 
