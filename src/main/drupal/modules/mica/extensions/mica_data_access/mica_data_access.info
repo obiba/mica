@@ -1,7 +1,7 @@
 name = Mica Data Access
 description = Study Data Access requests and reviews
 core = 7.x
-package = OBiBa
+package = Mica
 php = 5.2.4
 version = 7.x-1.5-dev
 project = mica_data_access

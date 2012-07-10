@@ -4,6 +4,6 @@ dependencies[] = "mica_opal"
 description = "Mica DataSHIELD"
 files[] = "includes/datashield.inc"
 name = "Mica DataSHIELD"
-package = "OBiBa"
+package = Mica
 project = "mica_datashield"
 

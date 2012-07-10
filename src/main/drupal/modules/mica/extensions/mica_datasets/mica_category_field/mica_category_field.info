@@ -1,7 +1,7 @@
 name = "Mica Category Field"
 description = "Mica Category Field"
 core = "7.x"
-package = "OBiBa"
+package = Mica
 php = "5.2.4"
 project = "mica_category_field"
 

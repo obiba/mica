@@ -1,7 +1,7 @@
 name = Mica Opal
 description = Allows using Mica and Mica Datasets with an Opal instance
 core = 7.x
-package = "OBiBa"
+package = Mica
 
 dependencies[] = mica_core
 dependencies[] = mica_datasets

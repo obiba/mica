@@ -1,7 +1,7 @@
 name = "Mica devel"
 description = "Mica development tools"
 core = "7.x"
-package = "OBiBa"
+package = Mica
 php = "5.2.4"
 project = "mica_devel"
 dependencies[] = "devel"
