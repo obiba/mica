@@ -36,7 +36,7 @@ msgstr ""
 #: node:type:event:title_label
 msgctxt "type:event:title_label"
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: node:type:event:description
 msgctxt "type:event:description"
@@ -46,7 +46,7 @@ msgstr ""
 #: node:type:publication:name
 msgctxt "type:publication:name"
 msgid "Publication"
-msgstr ""
+msgstr "Publication"
 
 #: node:type:publication:title_label
 msgctxt "type:publication:title_label"

@@ -254,7 +254,10 @@ function mica_i18n_search_index_update() {
     $index->options['data_alter_callbacks']['search_api_alter_language_control'] = array(
       'status' => 1,
       'weight' => '0',
-      'settings' => array('lang_field' => 'language', 'languages' => array()),
+      'settings' => array(
+        'lang_field' => 'language',
+        'languages' => array()
+      ),
     );
 
     module_load_include('admin.inc', 'search_api');

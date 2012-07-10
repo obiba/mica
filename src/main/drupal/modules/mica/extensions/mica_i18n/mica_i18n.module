@@ -32,7 +32,7 @@ function _mica_i18n_form() {
   return $form;
 }
 
-function mica_i18n_test(){
+function mica_i18n_test() {
 //  require_once(drupal_get_path('module', 'mica_i18n') . '/mica_i18n.install');
 //  mica_i18n_fix_views_display();
 //  mica_i18n_configure_block();
