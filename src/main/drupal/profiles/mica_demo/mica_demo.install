@@ -10,8 +10,8 @@
  * Perform actions to set up the site for this profile.
  */
 function mica_demo_install() {
-  include_once DRUPAL_ROOT . '/profiles/mica_standard/mica_standard.install';
-  mica_standard_install();
+  include_once DRUPAL_ROOT . '/profiles/mica_distribution/mica_distribution.install';
+  mica_distribution_install();
 
   // consortium administrators
   $user = array(
@@ -152,11 +152,11 @@ Proin ut orci eget eros mattis ultrices. Morbi nulla risus, commodo euismod curs
 
 Mauris et leo quam. Sed pulvinar est ac sem aliquam ornare.';
 
-  mica_standard_add_blog('New Pilot Project Announcement', $LOREM, '', 'blog1', 50, 0, 0);
-  mica_standard_add_blog('Installation of Mica completed !', $LOREM, '', 'blog2', 50, 0, 0);
+  mica_distribution_add_blog('New Pilot Project Announcement', $LOREM, '', 'blog1', 50, 0, 0);
+  mica_distribution_add_blog('Installation of Mica completed !', $LOREM, '', 'blog2', 50, 0, 0);
 }
 
-function mica_standard_add_blog($title, $body, $link_title, $alias, $weight, $sticky, $add_to_menu) {
+function mica_distribution_add_blog($title, $body, $link_title, $alias, $weight, $sticky, $add_to_menu) {
   $node = new stdClass();
   $node->type = 'blog';
   node_object_prepare($node);

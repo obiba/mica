@@ -3,8 +3,8 @@
 # French translation of Drupal (general)
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 # Generated from files:
-#  mica_standard.install: n/a
-#  mica_standard.info: n/a
+#  mica_distribution.install: n/a
+#  mica_distribution.info: n/a
 #
 msgid ""
 msgstr ""
@@ -18,19 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: mica_standard.install:225
+#: mica_distribution.install:225
 msgid "mica"
 msgstr "mica"
 
-#: mica_standard.install:225
+#: mica_distribution.install:225
 msgid "Mica standard profile installed"
 msgstr "Le profil standard de Mica est installé"
 
-#: mica_standard.info:0
+#: mica_distribution.info:0
 msgid "Mica"
 msgstr "Mica"
 
-#: mica_standard.info:0
+#: mica_distribution.info:0
 msgid "Mica installation of tools for making a Study Consortium site: studies, search indexes, community tools and more."
 msgstr "Installation Mica d'outils pour un site d'un consortium d'études: études, index de recherche, outils pour une communauté et plus."
 

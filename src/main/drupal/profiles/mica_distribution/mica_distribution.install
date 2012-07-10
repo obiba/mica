@@ -5,7 +5,7 @@
  *
  * Perform actions to set up the site for this profile.
  */
-function mica_standard_install() {
+function mica_distribution_install() {
 
   // Enable some standard blocks.
   $mica_theme = 'mica_samara';
@@ -15,21 +15,21 @@ function mica_standard_install() {
   theme_enable(array($mica_theme, 'bartik', $admin_theme));
   variable_set('theme_default', $mica_theme);
 
-  _mica_standard_drupal_default_blocks($mica_theme, $admin_theme);
+  _mica_distribution_drupal_default_blocks($mica_theme, $admin_theme);
 
   // Enable some standard blocks.
-  _mica_standard_default_block($mica_theme, $admin_theme);
+  _mica_distribution_default_block($mica_theme, $admin_theme);
 
   // Login destination setup
-  _mica_standard_login_destination();
+  _mica_distribution_login_destination();
 
   // rebuild permissions
   node_access_rebuild();
 
-  watchdog('mica', 'Mica standard profile installed', WATCHDOG_INFO);
+  watchdog('mica', 'Mica distribution profile installed', WATCHDOG_INFO);
 }
 
-function _mica_standard_login_destination() {
+function _mica_distribution_login_destination() {
   $rule = array(
     'triggers' => serialize(array('login' => 'login', 'logout' => 'logout')),
     'roles' => serialize(array()),
@@ -48,7 +48,7 @@ function _mica_standard_login_destination() {
  * @param $default_theme
  * @param $admin_theme
  */
-function _mica_standard_drupal_default_blocks($default_theme, $admin_theme) {
+function _mica_distribution_drupal_default_blocks($default_theme, $admin_theme) {
   // Enable some standard blocks.
   $blocks = array(
     array(
@@ -120,7 +120,7 @@ function _mica_standard_drupal_default_blocks($default_theme, $admin_theme) {
 
 }
 
-function _mica_standard_no_region($module, $delta, $theme = 'seven') {
+function _mica_distribution_no_region($module, $delta, $theme = 'seven') {
   db_update('block')
     ->fields(array(
     'region' => BLOCK_REGION_NONE,
@@ -132,7 +132,7 @@ function _mica_standard_no_region($module, $delta, $theme = 'seven') {
     ->execute();
 }
 
-function _mica_standard_default_block($mica_theme = 'mica_samara', $admin_theme = 'seven') {
+function _mica_distribution_default_block($mica_theme = 'mica_samara', $admin_theme = 'seven') {
   $values = array(
     array(
       'module' => 'user',

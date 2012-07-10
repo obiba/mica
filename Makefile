@@ -4,6 +4,7 @@
 #
 
 version=1.5-dev
+branch=7.x-1.x
 
 #
 # Mica versions
@@ -28,7 +29,7 @@ mica_studies_version=$(mica_version)
 node_reference_block_version=$(mica_version)
 
 # Profiles
-mica_standard_version=$(mica_version)
+mica_distribution_version=$(mica_version)
 mica_demo_version=$(mica_version)
 
 # Themes
@@ -78,7 +79,7 @@ default-restore:
 drupal: drush-make drupal-default 
 
 drush-make:
-	$(drushmake_exec) mica.make target/$(micadir)
+	$(drushmake_exec) src/main/drupal/profiles/mica_distribution/mica_distribution.make target/$(micadir)
 
 drupal-default:
 	cd target/$(micadir) && \
@@ -125,7 +126,7 @@ mica-install:
 	rm -rf `find . -type d -name .svn` && \
 	rm -rf `find . -type d -name .git` && \
 	if [ -e profiles/standard/standard.install ]; then \
-#		cp profiles/standard/standard.install profiles/mica_standard/standard.install && \
+#		cp profiles/standard/standard.install profiles/mica_distribution/standard.install && \
 		rm -rf profiles/standard && \
 		rm -rf profiles/minimal ; \
 	fi
@@ -195,7 +196,7 @@ package-modules-prepare:
 	$(call make-info,sites/all/modules,mica)
 
 package-profiles-prepare:
-	$(call make-info,profiles,mica_standard)
+	$(call make-info,profiles,mica_distribution)
 	$(call make-info,profiles,mica_demo)
 
 package-themes-prepare:
@@ -233,7 +234,7 @@ else
 	echo "stability=stable" >> target/deb/mica/var/lib/mica-installer/Makefile
 endif
 	$(call deb-package,mica,mica)
-	$(call deb-package,mica,mica_standard)
+	$(call deb-package,mica,mica_distribution)
 	$(call deb-package,mica,mica_demo)
 	$(call deb-package,mica,mica_samara)
 
@@ -277,7 +278,7 @@ installdir=target
 
 mica-site:
 	cd target/$(micadir) && \
-	$(drushexec) site-install mica_standard --db-url=mysql://$(db_user):$(db_pass)@localhost/mica --site-name=Mica --yes
+	$(drushexec) site-install mica_distribution --db-url=mysql://$(db_user):$(db_pass)@localhost/mica --site-name=Mica --yes
 
 mica-dev-site: mica-site
 	$(drushexec) en mica_devel --y
@@ -309,20 +310,6 @@ coder:
 dump:
 	mysqldump -u $(db_user) --password=$(db_pass) --hex-blob mica --result-file="mica.sql" 
 
-git: git-prepare git-modules git-themes git-profiles
-
-git-prepare:
-	rm -rf target/git && mkdir -p target/git
-
-git-modules: 
-	$(call make-git,src/main/drupal/modules,mica,sandbox/emorency/1128690)
-
-git-themes: 
-	$(call make-git,src/main/drupal/themes,mica_samara,sandbox/yop/1144820)
-
-git-profiles:
-	$(call make-git,src/main/drupal/profiles,mica_standard,sandbox/yop/1144814)
-	$(call make-git,src/main/drupal/profiles,mica_demo,sandbox/yop/1144816)
 
 
 #
@@ -334,7 +321,7 @@ git-profiles:
 
 mica-local-prepare:
 	rm -rf target/$(micadir)-local && \
-	$(drushmake_exec) mica.make target/$(micadir)-local
+	$(drushmake_exec) src/main/drupal/profiles/mica_distribution/mica_distribution.make target/$(micadir)-local
 
 mica-local: mica-local-copy drupal-default mica package-prepare htaccess
 
@@ -376,6 +363,7 @@ release-mica:
 	mkdir -p target/drupal.org && \
 	git clone $(drupal_org_mica) target/drupal.org/mica && \
 	cd target/drupal.org/mica && \
+	git checkout $(branch) && \
 	git rm -rf * && \
 	cp -r ../../../src/main/drupal/modules/mica/* . && \
 	git add . && \
@@ -387,8 +375,9 @@ release-mica-dist:
 	mkdir -p target/drupal.org && \
 	git clone $(drupal_org_mica_dist) target/drupal.org/mica_dist && \
 	cd target/drupal.org/mica_dist && \
+  git checkout $(branch) && \
 	git rm -rf * && \
-	cp -r ../../../src/main/drupal/profiles/mica_standard/* . && \
+	cp -r ../../../src/main/drupal/profiles/mica_distribution/* . && \
 	cp -r ../../../src/main/drupal/themes . && \
 	git add . && \
 	git commit -m "Release Mica Distribution $(version)" && \
@@ -437,5 +426,5 @@ deb_date=$(shell date -R)
 datestamp=$(shell date +%s)
 drushexec=drush
 drushmake_exec=drush make
-drupal_org_mica=/home/cthiebault/workspace/mica-drupal/mica
-drupal_org_mica_dist=/home/cthiebault/workspace/mica-drupal/mica_dist
+drupal_org_mica=cthiebault@git.drupal.org:sandbox/cthiebault/1678054.git
+drupal_org_mica_dist=cthiebault@git.drupal.org:sandbox/cthiebault/1664248.git
