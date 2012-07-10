@@ -229,9 +229,8 @@ projects[references][download][type] = git
 projects[references][download][revision] = 311bd49
 projects[references][download][branch] = 7.x-2.x
 
-projects[search_api][version] = 1.1
+projects[search_api][version] = 1.2
 projects[search_api][type] = module
-projects[search_api][patch][1363114] = http://drupal.org/files/max_inclusive-1363114-5.patch
 projects[search_api][patch][1617794] = http://drupal.org/files/search_api-view_unpublished-support-1617794-6.patch
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-1.patch
 
