@@ -41,7 +41,7 @@ function mica_projects_feeds_importer_default() {
           0 => array(
             'source' => 'title',
             'target' => 'title',
-            'unique' => FALSE,
+            'unique' => 0,
           ),
           1 => array(
             'source' => 'body',
@@ -56,6 +56,11 @@ function mica_projects_feeds_importer_default() {
           3 => array(
             'source' => 'field_files',
             'target' => 'field_files',
+            'unique' => FALSE,
+          ),
+          4 => array(
+            'source' => 'title',
+            'target' => 'title_field',
             'unique' => FALSE,
           ),
         ),
@@ -103,7 +108,7 @@ function mica_projects_feeds_importer_default() {
           0 => array(
             'source' => 'title',
             'target' => 'title',
-            'unique' => FALSE,
+            'unique' => 0,
           ),
           1 => array(
             'source' => 'field_teleconference_description',
@@ -128,6 +133,11 @@ function mica_projects_feeds_importer_default() {
           5 => array(
             'source' => 'field_instructions',
             'target' => 'field_instructions',
+            'unique' => FALSE,
+          ),
+          6 => array(
+            'source' => 'title',
+            'target' => 'title_field',
             'unique' => FALSE,
           ),
         ),
