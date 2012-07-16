@@ -202,6 +202,7 @@ features[field][] = node-contact-field_telephone
 features[field][] = node-contact-title_field
 features[field][] = node-documents-body
 features[field][] = node-documents-field_files
+features[field][] = node-documents-title_field
 features[field][] = node-study-body
 features[field][] = node-study-field_access_biosamples
 features[field][] = node-study-field_access_data

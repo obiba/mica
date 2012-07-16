@@ -150,19 +150,24 @@ function mica_studies_feeds_importer_default() {
         'expire' => '-1',
         'author' => 0,
         'mappings' => array(
-          1 => array(
+          0 => array(
             'source' => 'title',
             'target' => 'title',
-            'unique' => FALSE,
+            'unique' => 0,
           ),
-          2 => array(
+          1 => array(
             'source' => 'body',
             'target' => 'body',
             'unique' => FALSE,
           ),
-          3 => array(
+          2 => array(
             'source' => 'field_files',
             'target' => 'field_files',
+            'unique' => FALSE,
+          ),
+          3 => array(
+            'source' => 'title',
+            'target' => 'title_field',
             'unique' => FALSE,
           ),
         ),

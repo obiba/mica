@@ -39,159 +39,164 @@ function mica_datasets_feeds_importer_default() {
         'author' => 0,
         'mappings' => array(
           0 => array(
-            'source' => 'title',
-            'target' => 'title',
-            'unique' => 1,
-          ),
-          1 => array(
             'source' => 'label',
             'target' => 'field_label',
             'unique' => FALSE,
           ),
-          2 => array(
+          1 => array(
             'source' => 'body',
             'target' => 'body',
             'unique' => FALSE,
           ),
-          3 => array(
+          2 => array(
             'source' => 'dataset',
             'target' => 'field_dataset:title',
             'unique' => FALSE,
           ),
-          4 => array(
+          3 => array(
             'source' => 'value_type',
             'target' => 'field_value_type',
             'unique' => FALSE,
           ),
-          5 => array(
+          4 => array(
             'source' => 'unit',
             'target' => 'field_unit',
             'unique' => FALSE,
           ),
-          6 => array(
+          5 => array(
             'source' => 'repeatable',
             'target' => 'field_repeatable',
             'unique' => FALSE,
           ),
-          7 => array(
+          6 => array(
             'source' => 'categories_name',
             'target' => 'field_variable_categories:name',
             'unique' => FALSE,
           ),
-          8 => array(
+          7 => array(
             'source' => 'categories_label',
             'target' => 'field_variable_categories:label',
             'unique' => FALSE,
           ),
-          9 => array(
+          8 => array(
             'source' => 'categories_missing',
             'target' => 'field_variable_categories:missing',
             'unique' => FALSE,
           ),
-          10 => array(
+          9 => array(
             'source' => 'published',
             'target' => 'status',
             'unique' => FALSE,
           ),
-          11 => array(
+          10 => array(
             'source' => 'disease_history',
             'target' => 'field_disease_history',
             'unique' => FALSE,
           ),
-          12 => array(
+          11 => array(
             'source' => 'medical_health_interv',
             'target' => 'field_medical_health_interv',
             'unique' => FALSE,
           ),
-          13 => array(
+          12 => array(
             'source' => 'medication',
             'target' => 'field_medication',
             'unique' => FALSE,
           ),
-          14 => array(
+          13 => array(
             'source' => 'reproductive_history',
             'target' => 'field_reproductive_history',
             'unique' => FALSE,
           ),
-          15 => array(
+          14 => array(
             'source' => 'early_life',
             'target' => 'field_early_life',
             'unique' => FALSE,
           ),
-          16 => array(
+          15 => array(
             'source' => 'life_habits_behaviours',
             'target' => 'field_life_habits_behaviours',
             'unique' => FALSE,
           ),
-          17 => array(
+          16 => array(
             'source' => 'sociodemographic_charact',
             'target' => 'field_sociodemographic_charact',
             'unique' => FALSE,
           ),
-          18 => array(
+          17 => array(
             'source' => 'physical_environment',
             'target' => 'field_physical_environment',
             'unique' => FALSE,
           ),
-          19 => array(
+          18 => array(
             'source' => 'social_environment',
             'target' => 'field_social_environment',
             'unique' => FALSE,
           ),
-          20 => array(
+          19 => array(
             'source' => 'perception_of_health',
             'target' => 'field_perception_of_health',
             'unique' => FALSE,
           ),
-          21 => array(
+          20 => array(
             'source' => 'anthropometric_structures',
             'target' => 'field_anthropometric_structures',
             'unique' => FALSE,
           ),
-          22 => array(
+          21 => array(
             'source' => 'body_structures',
             'target' => 'field_body_structures',
             'unique' => FALSE,
           ),
-          23 => array(
+          22 => array(
             'source' => 'body_functions',
             'target' => 'field_body_functions',
             'unique' => FALSE,
           ),
-          24 => array(
+          23 => array(
             'source' => 'data_source',
             'target' => 'field_data_source',
             'unique' => FALSE,
           ),
-          25 => array(
+          24 => array(
             'source' => 'target',
             'target' => 'field_target',
             'unique' => FALSE,
           ),
-          26 => array(
+          25 => array(
             'source' => 'period',
             'target' => 'field_period',
             'unique' => FALSE,
           ),
-          27 => array(
+          26 => array(
             'source' => 'essence',
             'target' => 'field_essence',
             'unique' => FALSE,
           ),
-          28 => array(
+          27 => array(
             'source' => 'measure',
             'target' => 'field_measure',
             'unique' => FALSE,
           ),
-          29 => array(
+          28 => array(
             'source' => 'individual_participant_measures',
             'target' => 'field_individual_participant_mea',
             'unique' => FALSE,
           ),
-          30 => array(
+          29 => array(
             'source' => 'laboratory_measures',
             'target' => 'field_laboratory_measures',
             'unique' => FALSE,
+          ),
+          30 => array(
+            'source' => 'title',
+            'target' => 'title_field',
+            'unique' => FALSE,
+          ),
+          31 => array(
+            'source' => 'title',
+            'target' => 'title',
+            'unique' => 1,
           ),
         ),
         'update_existing' => '2',
@@ -236,24 +241,29 @@ function mica_datasets_feeds_importer_default() {
         'author' => 0,
         'mappings' => array(
           0 => array(
-            'source' => 'title',
-            'target' => 'title',
-            'unique' => 0,
-          ),
-          1 => array(
             'source' => 'published',
             'target' => 'status',
             'unique' => FALSE,
           ),
-          2 => array(
+          1 => array(
             'source' => 'body',
             'target' => 'body',
             'unique' => FALSE,
           ),
-          3 => array(
+          2 => array(
             'source' => 'type',
             'target' => 'field_dataset_type',
             'unique' => FALSE,
+          ),
+          3 => array(
+            'source' => 'title',
+            'target' => 'title_field',
+            'unique' => FALSE,
+          ),
+          4 => array(
+            'source' => 'title',
+            'target' => 'title',
+            'unique' => 0,
           ),
         ),
         'update_existing' => '0',
