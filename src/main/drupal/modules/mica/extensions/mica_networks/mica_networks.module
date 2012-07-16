@@ -195,6 +195,8 @@ function _mica_networks_configure_role_permissions($role_name, $permissions) {
  * Implements hook_noderefcreate_alter()
  */
 function mica_networks_noderefcreate_alter(&$newnode, $element, $form_state) {
-  $wrapper = entity_metadata_wrapper('node', $newnode);
-  $wrapper->field_complete_name->set($wrapper->title->value());
+  if ($newnode->type === 'network') {
+    $wrapper = entity_metadata_wrapper('node', $newnode);
+    $wrapper->title_field->set($wrapper->title->value());
+  }
 }

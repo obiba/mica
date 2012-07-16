@@ -57,7 +57,7 @@ function mica_networks_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title_field';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();

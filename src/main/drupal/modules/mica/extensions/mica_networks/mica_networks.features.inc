@@ -70,13 +70,13 @@ function mica_networks_default_search_api_index() {
         "status" : { "type" : "boolean" },
         "author" : { "type" : "integer", "entity_type" : "user" },
         "field_acroym" : { "type" : "text" },
-        "field_complete_name" : { "type" : "text" },
+        "title_field" : { "type" : "text" },
         "field_contacts_ref" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_investigators" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_supp_infos" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
-        "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_aggregation_1" : { "type" : "text" },
+        "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "body:value" : { "type" : "text" },
         "body:summary" : { "type" : "text" }
       },
@@ -93,8 +93,8 @@ function mica_networks_default_search_api_index() {
           "settings" : { "fields" : { "search_api_aggregation_1" : {
                 "name" : "Title_Full_text",
                 "type" : "fulltext",
-                "fields" : [ "title" ],
-                "description" : "A Fulltext aggregation of the following fields: Title."
+                "fields" : [ "title_field" ],
+                "description" : "A Fulltext aggregation of the following fields: Complete name."
               }
             }
           }
