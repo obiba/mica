@@ -122,13 +122,14 @@ function mica_studies_default_search_api_index() {
     "server" : "solr",
     "item_type" : "node",
     "options" : {
-      "index_directly" : 0,
-      "cron_limit" : "200",
+      "index_directly" : 1,
+      "cron_limit" : "500",
       "fields" : {
         "type" : { "type" : "string" },
         "title" : { "type" : "string" },
         "status" : { "type" : "boolean" },
         "author" : { "type" : "integer", "entity_type" : "user" },
+        "title_field" : { "type" : "text" },
         "field_access_biosamples" : { "type" : "boolean" },
         "field_access_data" : { "type" : "boolean" },
         "field_access_other" : { "type" : "boolean" },
@@ -143,7 +144,6 @@ function mica_studies_default_search_api_index() {
         "field_baseline_end_year" : { "type" : "integer" },
         "field_baseline_start_year" : { "type" : "integer" },
         "field_bio_samples_management" : { "type" : "list\\u003Cstring\\u003E" },
-        "field_complete_name" : { "type" : "text" },
         "field_contacts_ref" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_country" : { "type" : "list\\u003Cstring\\u003E" },
         "field_current_participants_nb" : { "type" : "integer" },
@@ -218,21 +218,22 @@ function mica_studies_default_search_api_index() {
           "settings" : { "default" : "0", "bundles" : { "study" : "study" } }
         },
         "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_combined" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_aggregation" : {
           "status" : 1,
           "weight" : "0",
           "settings" : { "fields" : { "search_api_aggregation_1" : {
                 "name" : "Title_Full_text",
                 "type" : "fulltext",
-                "fields" : [ "title" ],
-                "description" : "A Fulltext aggregation of the following fields: Title."
+                "fields" : [ "title_field" ],
+                "description" : "A Fulltext aggregation of the following fields: Complete name."
               }
             }
           }
-        },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
+        }
       },
       "processors" : {
         "search_api_case_ignore" : {
@@ -243,7 +244,6 @@ function mica_studies_default_search_api_index() {
               "field_acroym" : true,
               "field_authorising_person_name" : true,
               "field_authorising_person_name_m" : true,
-              "field_complete_name" : true,
               "field_data_sources_sp" : true,
               "field_design_other_sp" : true,
               "field_health_status" : true,

@@ -20,6 +20,13 @@ function mica_studies_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'additional_settings__active_tab_contact';
+  $strongarm->value = 'edit-auto-nodetitle';
+  $export['additional_settings__active_tab_contact'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_documents';
   $strongarm->value = 'edit-menu';
   $export['additional_settings__active_tab_documents'] = $strongarm;
@@ -28,29 +35,48 @@ function mica_studies_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_study';
-  $strongarm->value = 'edit-menu';
+  $strongarm->value = 'edit-auto-nodetitle';
   $export['additional_settings__active_tab_study'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'ant_pattern_study';
-  $strongarm->value = '[node:field-complete-name]';
-  $export['ant_pattern_study'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ant_php_study';
-  $strongarm->value = 0;
-  $export['ant_php_study'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'ant_study';
+  $strongarm->name = 'auto_entitylabel_node_contact';
   $strongarm->value = '1';
-  $export['ant_study'] = $strongarm;
+  $export['auto_entitylabel_node_contact'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_pattern_node_contact';
+  $strongarm->value = '<?php
+$wrapper = entity_metadata_wrapper(\'node\', $entity);
+$institution = $wrapper->field_institution_name->value();
+$parts = array();
+$parts[] = trim($wrapper->field_contact_name->title->value());
+$parts[] = trim($wrapper->field_contact_name->given->value());
+$parts[] = trim($wrapper->field_contact_name->family->value());
+$parts = array_filter($parts);
+$title = implode(\' \', $parts);
+if (!empty($institution)) $title .= \' (\' . trim($institution) . \')\';
+if (strlen($title) > 255) $title = truncate_utf8($title, 255, TRUE);
+return $title;
+?>';
+  $export['auto_entitylabel_pattern_node_contact'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_pattern_node_study';
+  $strongarm->value = '[node:field-complete-name]';
+  $export['auto_entitylabel_pattern_node_study'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_php_node_contact';
+  $strongarm->value = 1;
+  $export['auto_entitylabel_php_node_contact'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

@@ -22,7 +22,7 @@
 "Study » Other access";;"Other access";"field_access_other";"Study";"study";"boolean";"0=No|1=Yes";0
 "Study » No limits in the number of samples";;"No limits in the number of samples";"field_no_limits_samples";"Study";"study";"boolean";"0=|1=";0
 "Study » No limits in the number of participants";;"No limits in the number of participants";"field_no_limits_participants";"Study";"study";"boolean";"0=|1=";0
-"Study » Name";;"Complete name";"field_complete_name";"Study";"study";"text";;
+"Study » Name";;"Complete name";"title_field";"Study";"study";"text";;
 "Study » Marker paper";;"Marker paper";"field_marker_paper";"Study";"study";"text";;0
 "Study » Health status";;"Health status";"field_health_status";"Study";"study";"text";;1
 "Study » Target number of participants with samples";;"Target number of participants with samples";"field_target_number_biosamples";"Study";"study";"integer";;0

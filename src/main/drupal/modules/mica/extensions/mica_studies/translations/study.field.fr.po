@@ -128,7 +128,7 @@ msgstr "Quels types d’échantillons sont recueillis ?"
 #: field:field_complete_name:study:label
 msgctxt "field_complete_name:study:label"
 msgid "Complete name"
-msgstr "Nom completeee"
+msgstr "Nom complet"
 
 #: field:field_contacts_ref:study:label
 msgctxt "field_contacts_ref:study:label"

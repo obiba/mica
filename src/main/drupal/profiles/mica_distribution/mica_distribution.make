@@ -20,8 +20,11 @@ api = 2
 ; install profiles *should not* include a core project.
   
 ; Drupal 7.x. Requires the `core` property to be set to 7.x.
+; Need dev version because of http://drupal.org/node/1495648
 projects[drupal][type] = core
-projects[drupal][version] = 7.14
+projects[drupal][download][type] = git
+projects[drupal][download][revision] = 34ac2b6
+projects[drupal][download][branch] = 7.x
 
 ; Use vocabulary machine name for permissions
 ; http://drupal.org/node/995156
@@ -34,6 +37,9 @@ projects[acl][type] = module
 
 projects[auto_nodetitle][version] = 1.0
 projects[auto_nodetitle][type] = module
+
+projects[auto_entitylabel][version] = 1.0
+projects[auto_entitylabel][type] = module
 
 projects[autocomplete_deluxe][type] = module
 projects[autocomplete_deluxe][download][type] = git
@@ -107,6 +113,9 @@ projects[features][version] = 1.0-rc3
 projects[features][type] = module
 projects[features][patch][981248] = http://drupal.org/files/hook_features_post_install-981248-58.patch
 projects[features][patch][656312] = http://drupal.org/files/keep_negative_permissions-656312-17.patch
+
+projects[features_override][version] = 2.0-beta1
+projects[features_override][type] = module
 
 projects[feeds][type] = module
 projects[feeds][version] = 2.0-alpha5
@@ -191,11 +200,6 @@ projects[multiselect][version] = 1.9
 projects[multiselect][type] = module
 projects[multiselect][patch][1670224] = http://drupal.org/files/options_translations-1670224-2.patch
 
-projects[namedb][type] = module
-projects[namedb][download][type] = git
-projects[namedb][download][revision] = 7284d85
-projects[namedb][download][branch] = 7.x-1.x
-
 projects[name][version] = 1.5
 projects[name][type] = module
 
@@ -267,8 +271,10 @@ projects[taxonomy_csv][type] = module
 projects[taxonomy_manager][version] = 1.0-beta3
 projects[taxonomy_manager][type] = module
 
-projects[title][version] = 1.0-alpha3
 projects[title][type] = module
+projects[title][download][type] = git
+projects[title][download][revision] = 2ec5945
+projects[title][download][branch] = 7.x-1.x
 
 projects[token][version] = 1.1
 projects[token][type] = module

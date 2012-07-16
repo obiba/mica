@@ -3177,11 +3177,10 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'body',
       1 => 'field_acroym',
-      2 => 'field_complete_name',
-      3 => 'field_contacts_ref',
-      4 => 'field_investigators',
-      5 => 'field_logo',
-      6 => 'field_website',
+      2 => 'field_contacts_ref',
+      3 => 'field_investigators',
+      4 => 'field_logo',
+      5 => 'field_website',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -3209,11 +3208,10 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'body',
       1 => 'field_acroym',
-      2 => 'field_complete_name',
-      3 => 'field_contacts_ref',
-      4 => 'field_investigators',
-      5 => 'field_logo',
-      6 => 'field_website',
+      2 => 'field_contacts_ref',
+      3 => 'field_investigators',
+      4 => 'field_logo',
+      5 => 'field_website',
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
@@ -3273,9 +3271,8 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'body',
       1 => 'field_acroym',
-      2 => 'field_complete_name',
-      3 => 'field_logo',
-      4 => 'field_website',
+      2 => 'field_logo',
+      3 => 'field_website',
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
@@ -3299,8 +3296,7 @@ function mica_studies_field_group_info() {
     'weight' => '85',
     'children' => array(
       0 => 'body',
-      1 => 'field_complete_name',
-      2 => 'field_logo',
+      1 => 'field_logo',
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
@@ -4642,8 +4638,7 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'field_recruitement_supp_info',
       1 => 'field_recruitment_other',
-      2 => 'field_recruitment_procedures',
-      3 => 'field_recruitment_sources',
+      2 => 'field_recruitment_sources',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -5584,7 +5579,7 @@ function mica_studies_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_acroym',
-      1 => 'field_complete_name',
+      1 => 'title_field',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

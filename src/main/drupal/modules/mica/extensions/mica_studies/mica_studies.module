@@ -250,7 +250,8 @@ function _mica_studies_contact_view($node, $view_mode, $langcode) {
 
 function _mica_studies_study_view_selection_criteria(&$node, $view_mode, $langcode, $wrapper) {
   if (isset($node->content['#groups']['group_participants_selection'])
-    && $node->content['#groups']['group_participants_selection']->format_type !== 'hidden') {
+    && $node->content['#groups']['group_participants_selection']->format_type !== 'hidden'
+  ) {
 
     if (!isset($node->content['field_select_criteria'])) {
       // create empty field_select_criteria if it has no values
@@ -394,9 +395,6 @@ function mica_studies_form_alter(&$form, &$form_state, $form_id) {
     case 'study_node_form':
       _mica_studies_study_form_alter($form, $form_state, $form_id);
       break;
-    case 'contact_node_form':
-      _mica_studies_contact_form_alter($form, $form_state, $form_id);
-      break;
   }
 }
 
@@ -416,77 +414,6 @@ function _mica_studies_study_form_alter(&$form, &$form_state, $form_id) {
     _mica_add_dependent_field_checked($form, 'field_recruitment_sources', 'field_recruitment_other', $k[0]);
   }
 }
-
-function _mica_studies_contact_form_alter(&$form, &$form_state, $form_id) {
-  $form['title']['#type'] = 'value';
-  $form['title']['#required'] = FALSE;
-}
-
-/**
- * Implements hook_node_submit
- */
-function mica_studies_node_submit($node, $form, &$form_state) {
-  if ($node->type === 'contact' && _mica_studies_contact_title_is_needed($node)) {
-    _mica_studies_set_contact_title($node);
-  }
-}
-
-/**
- * Implements hook_node_presave().
- */
-function mica_studies_node_presave($node) {
-  if ($node->type === 'contact' && _mica_studies_contact_title_is_needed($node)) {
-    _mica_studies_set_contact_title($node);
-  }
-}
-
-function _mica_studies_set_contact_title(&$node) {
-
-  if (isset($node->field_contact_name)) {
-
-    $wrapper = entity_metadata_wrapper('node', $node);
-    $institution = $wrapper->field_institution_name->value();
-
-    // cannot use entity_metadata_wrapper for Name fields because of http://drupal.org/node/1423160
-    $language = $node->language;
-    $field_contact_name = $node->field_contact_name;
-
-    if (array_key_exists($language, $field_contact_name)) {
-
-      $name = $field_contact_name[$language][0];
-      $full_name = isset($name['title']) ? trim($name['title']) : '';
-      if (isset($name['given'])) {
-        if (!empty($full_name)) $full_name .= ' ';
-        $full_name .= trim($name['given']);
-      }
-      if (isset($name['family'])) {
-        if (!empty($full_name)) $full_name .= ' ';
-        $full_name .= trim($name['family']);
-      }
-
-      if (strlen(trim($full_name)) > 0) {
-
-        $node->title = $full_name;
-        if (!empty($institution)) $node->title .= ' (' . trim($institution) . ')';
-
-        // set title for current node revision
-        $node->title = substr($node->title, 0, 255);
-
-        // With that flag we ensure we don't apply the title two times to the same
-        // node. See _mica_studies_contact_title_is_needed().
-        $node->contact_title_applied = TRUE;
-      }
-    }
-  }
-}
-
-/**
- * Returns whether the contact title has to be set.
- */
-function _mica_studies_contact_title_is_needed($node) {
-  return empty($node->contact_title_applied);
-}
-
 
 /**
  * Implement hook_field_group_pre_render
@@ -845,6 +772,14 @@ function _mica_studies_create_default_content() {
  * Implements hook_noderefcreate_alter()
  */
 function mica_studies_noderefcreate_alter(&$newnode, $element, $form_state) {
-  $wrapper = entity_metadata_wrapper('node', $newnode);
-  $wrapper->field_complete_name->set($wrapper->title->value());
+  switch ($newnode->type) {
+    case 'study':
+      $wrapper = entity_metadata_wrapper('node', $newnode);
+      $wrapper->title_field->set($wrapper->title->value());
+      break;
+    case 'contact':
+      $wrapper = entity_metadata_wrapper('node', $newnode);
+      $wrapper->field_contact_name->given->set($wrapper->title->value());
+      break;
+  }
 }

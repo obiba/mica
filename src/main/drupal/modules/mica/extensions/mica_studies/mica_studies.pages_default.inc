@@ -156,7 +156,7 @@ function mica_studies_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '%node:field_complete_name';
+  $display->title = '%node:title_field';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();

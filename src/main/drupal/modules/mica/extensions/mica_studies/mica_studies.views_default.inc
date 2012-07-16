@@ -402,34 +402,6 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['style_options']['replace_newlines'] = 0;
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['path'] = 'contact-csv';
-  $translatables['contact_csv_export'] = array(
-    t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('contact_title'),
-    t('given_name'),
-    t('family_name'),
-    t('email'),
-    t('telephone'),
-    t('institution'),
-    t('address'),
-    t('city'),
-    t('postal_code'),
-    t('state'),
-    t('country'),
-    t('data_access_committee_member'),
-    t('title'),
-    t('published'),
-    t('[status]'),
-    t('Data export'),
-  );
   $export['contact_csv_export'] = $view;
 
   $view = new view;
@@ -462,28 +434,29 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['row_options']['links'] = 1;
   $handler->display->display_options['row_options']['comments'] = 0;
   /* Field: Content: Complete name */
-  $handler->display->display_options['fields']['field_complete_name']['id'] = 'field_complete_name';
-  $handler->display->display_options['fields']['field_complete_name']['table'] = 'field_data_field_complete_name';
-  $handler->display->display_options['fields']['field_complete_name']['field'] = 'field_complete_name';
-  $handler->display->display_options['fields']['field_complete_name']['label'] = 'complete_name';
-  $handler->display->display_options['fields']['field_complete_name']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_complete_name']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_complete_name']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_complete_name']['field_api_classes'] = 0;
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = 'Name';
+  $handler->display->display_options['fields']['title_field']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['title_field']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['title_field']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title_field']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['title_field']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title_field']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title_field']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title_field']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['title_field']['field_api_classes'] = 0;
   /* Field: Content: Acronym */
   $handler->display->display_options['fields']['field_acroym']['id'] = 'field_acroym';
   $handler->display->display_options['fields']['field_acroym']['table'] = 'field_data_field_acroym';
@@ -2143,85 +2116,6 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['path'] = 'csv-study-html';
   $handler->display->display_options['sitename_title'] = 0;
   $handler->display->display_options['use_batch'] = '1';
-  $translatables['csv_study_export'] = array(
-    t('Master'),
-    t('CSV Study Export'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All - '),
-    t('Offset'),
-    t('complete_name'),
-    t('acronym'),
-    t('website'),
-    t('contacts'),
-    t('investigators'),
-    t('objectives'),
-    t('authorization_from_contributors_to_the_specific_network_catalogues'),
-    t('name_of_the_person_authorising_the_contribution_to_specific_network'),
-    t('authorization_date_from_contributors_to_the_specific_network_catalogues'),
-    t('authorization_from_contributors_to_the_maelstrom_catalogues'),
-    t('name_of_the_person_authorising_the_contribution_to_maelstrom_research'),
-    t('authorization_date_from_contributors_to_the_maelstrom_catalogues'),
-    t('baseline_design_of_the_study'),
-    t('other_baseline_design_of_the_study'),
-    t('study_recruitment_targets'),
-    t('other_recruitment_target'),
-    t('study_design_supplementary_information'),
-    t('headline_number_of_participants'),
-    t('no_limits_in_the_number_of_participants'),
-    t('target_number_of_participants_supplementary_information'),
-    t('headline_number_of_participants_with_samples'),
-    t('no_limits_in_the_number_of_samples'),
-    t('target_number_of_biological_samples_supplementary_information'),
-    t('current_number_of_participants_recruited'),
-    t('date_of_current_number_of_participants_recruited_at_baseline'),
-    t('current_number_of_participants_recruited_at_baseline_supplementary_information'),
-    t('current_number_of_collected_biological_samples'),
-    t('date_of_current_number_of_collected_biological_samples'),
-    t('current_number_of_collected_biological_samples_supplementary_information'),
-    t('study_inclusion_criteria_for_participants_selection'),
-    t('age_min'),
-    t('age_max'),
-    t('country'),
-    t('territory'),
-    t('ethnic_origin'),
-    t('health_status'),
-    t('other_selection_criteria'),
-    t('selection_criteria_supplementary_information'),
-    t('other_sources_of_recruitment'),
-    t('recruitment_procedures_supplementary_information'),
-    t('data_sources'),
-    t('other_data_sources'),
-    t('biological_samples'),
-    t('other_type_of_tissues'),
-    t('other_sample_management'),
-    t('data_access'),
-    t('biological_samples_access'),
-    t('other_access'),
-    t('access_supplementary_information'),
-    t('preparation_phase_start_year'),
-    t('preparation_phase_end_year'),
-    t('baseline_recruitment_start_year'),
-    t('baseline_recruitment_end_year'),
-    t('followup_start_year'),
-    t('followup_end_year'),
-    t('study_end_year'),
-    t('current_status_supplementary_information'),
-    t('supplementary_information'),
-    t('marker_paper'),
-    t('pubmed_id'),
-    t('documents'),
-    t('logo'),
-    t('opal'),
-    t('published'),
-    t('gender'),
-    t('Data export'),
-  );
   $export['csv_study_export'] = $view;
 
   $view = new view;
@@ -2374,25 +2268,6 @@ function mica_studies_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'documents';
-  $translatables['documents'] = array(
-    t('Master'),
-    t('Documents'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All - '),
-    t('Offset'),
-    t('empty_documents'),
-    t('No document found.'),
-    t('Name'),
-    t('Description'),
-    t('Download'),
-    t('Page'),
-  );
   $export['documents'] = $view;
 
   $view = new view;
@@ -2464,22 +2339,6 @@ function mica_studies_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'news';
-  $translatables['news'] = array(
-    t('Master'),
-    t('Recent News'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All - '),
-    t('Offset'),
-    t('empty_news'),
-    t('No news found.'),
-    t('Page'),
-  );
   $export['news'] = $view;
 
   $view = new view;
@@ -2712,10 +2571,6 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['body_1']['id'] = 'body_1';
   $handler->display->display_options['fields']['body_1']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body_1']['field'] = 'body';
-  /* Field: Content: Complete name */
-  $handler->display->display_options['fields']['field_complete_name']['id'] = 'field_complete_name';
-  $handler->display->display_options['fields']['field_complete_name']['table'] = 'field_data_field_complete_name';
-  $handler->display->display_options['fields']['field_complete_name']['field'] = 'field_complete_name';
   /* Field: Content: Contacts */
   $handler->display->display_options['fields']['field_contacts_ref']['id'] = 'field_contacts_ref';
   $handler->display->display_options['fields']['field_contacts_ref']['table'] = 'field_data_field_contacts_ref';
@@ -2962,27 +2817,55 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Name';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['nid']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['nid']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['nid']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['nid']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['nid']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['nid']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['nid']['link_to_node'] = 0;
+  /* Field: Content: Complete name */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = 'Name';
+  $handler->display->display_options['fields']['title_field']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['make_link'] = 1;
+  $handler->display->display_options['fields']['title_field']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['title_field']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['title_field']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['title_field']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title_field']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['title_field']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title_field']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title_field']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title_field']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['title_field']['field_api_classes'] = 0;
   /* Field: Content: Please specify what other design */
   $handler->display->display_options['fields']['field_design_other_sp']['id'] = 'field_design_other_sp';
   $handler->display->display_options['fields']['field_design_other_sp']['table'] = 'field_data_field_design_other_sp';
@@ -3094,8 +2977,11 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_country']['field_api_classes'] = 0;
   $handler->display->display_options['path'] = 'studies';
 
-  /* Display: Data export */
-  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  /* Display: Export XLS */
+  $handler = $view->new_display('views_data_export', 'Export XLS', 'views_data_export_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Studies (xls)';
+  $handler->display->display_options['display_description'] = 'Export Studies to Excel file';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_xls';
@@ -3124,29 +3010,6 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-  /* Field: Content: Complete name */
-  $handler->display->display_options['fields']['field_complete_name']['id'] = 'field_complete_name';
-  $handler->display->display_options['fields']['field_complete_name']['table'] = 'field_data_field_complete_name';
-  $handler->display->display_options['fields']['field_complete_name']['field'] = 'field_complete_name';
-  $handler->display->display_options['fields']['field_complete_name']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_complete_name']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_complete_name']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_complete_name']['field_api_classes'] = 0;
   /* Field: Content: Acronym */
   $handler->display->display_options['fields']['field_acroym']['id'] = 'field_acroym';
   $handler->display->display_options['fields']['field_acroym']['table'] = 'field_data_field_acroym';
@@ -4648,10 +4511,14 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     'page' => 'page',
     'default' => 0,
   );
+  $handler->display->display_options['sitename_title'] = 0;
   $handler->display->display_options['use_batch'] = '0';
 
-  /* Display: Data export */
-  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_2');
+  /* Display: Export CSV */
+  $handler = $view->new_display('views_data_export', 'Export CSV', 'views_data_export_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Studies (csv)';
+  $handler->display->display_options['display_description'] = 'Export studies to CSV file';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
@@ -4684,29 +4551,6 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['link_to_node'] = 1;
-  /* Field: Content: Complete name */
-  $handler->display->display_options['fields']['field_complete_name']['id'] = 'field_complete_name';
-  $handler->display->display_options['fields']['field_complete_name']['table'] = 'field_data_field_complete_name';
-  $handler->display->display_options['fields']['field_complete_name']['field'] = 'field_complete_name';
-  $handler->display->display_options['fields']['field_complete_name']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['field_complete_name']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_complete_name']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_complete_name']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_complete_name']['field_api_classes'] = 0;
   /* Field: Content: Acronym */
   $handler->display->display_options['fields']['field_acroym']['id'] = 'field_acroym';
   $handler->display->display_options['fields']['field_acroym']['table'] = 'field_data_field_acroym';
@@ -6208,99 +6052,8 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     'page' => 'page',
     'default' => 0,
   );
+  $handler->display->display_options['sitename_title'] = 0;
   $handler->display->display_options['use_batch'] = '0';
-  $translatables['studies'] = array(
-    t('Master'),
-    t('Studies'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All - '),
-    t('Offset'),
-    t('This page displays the list of the consortium\'s studies. Each study is described in a same standard way that can be easily customized to reflect consortium specificities. However, Mica suggests by default a list of important study characteristics that should be considered if there is an aim for the consortium to participate in data harmonization projects with other consortia or studies. 
-
-This Mica study catalogue comes with an advanced query tool using user-friendly facets <br/><br/>'),
-    t('Displaying @start - @end of @total'),
-    t('empty_studies'),
-    t('No study found.'),
-    t('Name'),
-    t('([field_design_other_sp])'),
-    t('Study design'),
-    t('[field_design] [field_design_other_sp]'),
-    t('Target number of participants'),
-    t('Country of residence'),
-    t('Acronym'),
-    t('Biological samples'),
-    t('Body'),
-    t('Complete name'),
-    t('Contacts'),
-    t('Data (questionnaire-derived, measured…)'),
-    t('Data sources'),
-    t('Datasets'),
-    t('End year'),
-    t('Ethnic Origin'),
-    t('For how many people have biological samples been collected?'),
-    t('Gender'),
-    t('Health Status'),
-    t('How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?'),
-    t('How many people have joined the study?'),
-    t('How many people have provided or should provide biological samples, from which DNA could be extracted?'),
-    t('If needed, supplementary information about current number of collected biological samples'),
-    t('If needed, supplementary information about current number of participants recruited at baseline'),
-    t('If needed, supplementary information about current study status'),
-    t('If needed, supplementary information about recruitment procedures'),
-    t('If needed, supplementary information about selection criteria of the population'),
-    t('If needed, supplementary information about study design'),
-    t('If needed, supplementary information about target number of biological samples'),
-    t('If needed, supplementary information about target number of participants'),
-    t('Investigators'),
-    t('Logo'),
-    t('Marker paper describing your study'),
-    t('Maximum age'),
-    t('Minimum age'),
-    t('Name of the person authorising the contribution to [SPECIFIC NETWORK]'),
-    t('Name of the person authorising the contribution to Maelstrom Research'),
-    t('No limits in the number of participants'),
-    t('No limits in the number of samples'),
-    t('On'),
-    t('Other'),
-    t('Please specify type of tissues'),
-    t('Please specify what other biological samples'),
-    t('Please specify what other data sources'),
-    t('Please specify what other design'),
-    t('Please specify what other recruitment target'),
-    t('Please specify what other selection criteria'),
-    t('Please specify what other source of recruitment'),
-    t('Please specify what study feature'),
-    t('Pubmed Id'),
-    t('Broken handler field_data_field_recruitment_procedures.field_recruitment_procedures'),
-    t('Start year'),
-    t('Supplementary information'),
-    t('Territory or city of residence'),
-    t('The study targets the recruitment of'),
-    t('Website'),
-    t('What is the selection criteria for participants?'),
-    t('What is the study design?'),
-    t('What is the study design? (field_design:delta)'),
-    t('.'),
-    t(','),
-    t('Page'),
-    t('Data export'),
-    t('Preparation phase / Pilot start year'),
-    t('Preparation phase / Pilot end year'),
-    t('Baseline recruitment / initial data collection start year'),
-    t('Baseline recruitment / initial data collection end year'),
-    t('Follow-up of participants start year'),
-    t('Follow-up participants end year'),
-    t('Study end year'),
-    t('For how many people have biological samples been collected as of?'),
-    t('How many people have joined the study as of?'),
-    t('recruitment_sources'),
-  );
   $export['studies'] = $view;
 
   $view = new view;
@@ -6377,30 +6130,56 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['empty']['area']['content'] = 'No study found.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['empty']['area']['tokenize'] = 0;
-  /* Field: Indexed Node: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_studies_index';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Name';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['title']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = 1;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
+  /* Field: Indexed Node: Node ID */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_studies_index';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['nid']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['nid']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['nid']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['nid']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['nid']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['nid']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['nid']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['nid']['format_plural'] = 0;
+  $handler->display->display_options['fields']['nid']['link_to_entity'] = 0;
+  /* Field: Indexed Node: Complete name */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_studies_index';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = 'Name';
+  $handler->display->display_options['fields']['title_field']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['make_link'] = 1;
+  $handler->display->display_options['fields']['title_field']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['title_field']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['title_field']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['title_field']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title_field']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title_field']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['title_field']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title_field']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title_field']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title_field']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['title_field']['field_api_classes'] = 0;
   /* Field: Indexed Node: Please specify what other design */
   $handler->display->display_options['fields']['field_design_other_sp']['id'] = 'field_design_other_sp';
   $handler->display->display_options['fields']['field_design_other_sp']['table'] = 'search_api_index_studies_index';
@@ -6531,30 +6310,6 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'studies-search';
-  $translatables['studies_search'] = array(
-    t('Master'),
-    t('Studies Search'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('empty_studies'),
-    t('No study found.'),
-    t('Name'),
-    t('Please specify what other design'),
-    t('([field_design_other_sp])'),
-    t('Study design'),
-    t('[field_design] [field_design_other_sp]'),
-    t('Target number of participants'),
-    t('Country of residence'),
-    t('Fulltext search'),
-    t('Page'),
-  );
   $export['studies_search'] = $view;
 
   return $export;
