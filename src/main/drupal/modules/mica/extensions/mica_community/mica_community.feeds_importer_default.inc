@@ -68,6 +68,11 @@ function mica_community_feeds_importer_default() {
             'target' => 'field_event_link:url',
             'unique' => FALSE,
           ),
+          6 => array(
+            'source' => 'title',
+            'target' => 'title_field',
+            'unique' => FALSE,
+          ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',
@@ -111,39 +116,44 @@ function mica_community_feeds_importer_default() {
         'author' => 0,
         'mappings' => array(
           0 => array(
-            'source' => 'title',
-            'target' => 'title',
-            'unique' => 1,
-          ),
-          1 => array(
             'source' => 'field_publication_pmid',
             'target' => 'field_publication_pmid',
             'unique' => FALSE,
           ),
-          2 => array(
+          1 => array(
             'source' => 'field_publication_url:url',
             'target' => 'field_publication_url:url',
             'unique' => FALSE,
           ),
-          3 => array(
+          2 => array(
             'source' => 'field_abstract',
             'target' => 'field_abstract',
             'unique' => FALSE,
           ),
-          4 => array(
+          3 => array(
             'source' => 'field_authors',
             'target' => 'field_authors',
             'unique' => FALSE,
           ),
-          5 => array(
+          4 => array(
             'source' => 'field_publication_url:title',
             'target' => 'field_publication_url:title',
             'unique' => FALSE,
           ),
-          6 => array(
+          5 => array(
             'source' => 'field_reference',
             'target' => 'field_publication_reference',
             'unique' => FALSE,
+          ),
+          6 => array(
+            'source' => 'title',
+            'target' => 'title_field',
+            'unique' => FALSE,
+          ),
+          7 => array(
+            'source' => 'title',
+            'target' => 'title',
+            'unique' => 1,
           ),
         ),
         'update_existing' => '2',

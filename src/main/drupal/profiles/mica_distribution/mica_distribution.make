@@ -35,9 +35,6 @@ projects[drupal][patch][995156] = http://drupal.org/files/issues/995156-5_portab
 projects[acl][version] = 1.0-beta3
 projects[acl][type] = module
 
-projects[auto_nodetitle][version] = 1.0
-projects[auto_nodetitle][type] = module
-
 projects[auto_entitylabel][version] = 1.0
 projects[auto_entitylabel][type] = module
 
