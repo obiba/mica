@@ -17,4 +17,4 @@ To have Mica in another language than english, follow these steps:
   Then clear & re-index each indexes.
   See http://jira.obiba.org/jira/browse/MICA-624
 
-- To enable translation of a content type title, edit the content type and replace the title field.
+- To enable translation of a content type title, edit the content type and replace the title by a field instance.

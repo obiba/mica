@@ -10525,6 +10525,9 @@ function mica_studies_field_default_fields() {
   t('Authorising date');
   t('Authorization Maelstrom');
   t('Authorization Specific');
+  t('Authorization from contributors to the Maelstrom Catalogues');
+  t('Authorization from contributors to the [specific network] catalogues');
+  t('Baseline recruitment / initial data collection');
   t('Biological samples');
   t('Body');
   t('City');
@@ -10534,6 +10537,8 @@ function mica_studies_field_default_fields() {
   t('Contacts');
   t('Country');
   t('Country of residence');
+  t('Current number of participants recruited');
+  t('Current number of participants with samples');
   t('Data (questionnaire-derived, measured…)');
   t('Data sources');
   t('Department/Unit');
@@ -10544,6 +10549,7 @@ function mica_studies_field_default_fields() {
   t('Enter the Investigator full name. You will be able to edit these Investigators once the Study will be saved.');
   t('Ethnic Origin');
   t('Files');
+  t('Follow-up of participants');
   t('For how many people have biological samples been collected?');
   t('Gender');
   t('Health Status');
@@ -10562,6 +10568,7 @@ function mica_studies_field_default_fields() {
   t('Institution name');
   t('Investigators');
   t('Logo');
+  t('Marker paper');
   t('Marker paper describing your study');
   t('Maximum age');
   t('Minimum age');
@@ -10570,6 +10577,7 @@ function mica_studies_field_default_fields() {
   t('No limits in the number of participants');
   t('No limits in the number of samples');
   t('No spaces allowed');
+  t('Objectives');
   t('On');
   t('Other');
   t('Please specify type of tissues');
@@ -10581,12 +10589,19 @@ function mica_studies_field_default_fields() {
   t('Please specify what other source of recruitment');
   t('Please specify what study feature');
   t('Postal Code');
+  t('Preparation phase / Pilot');
   t('Pubmed Id');
   t('Questionnaires');
+  t('Recruitment target');
+  t('Selection criteria');
   t('Sources of recruitment');
   t('Start year');
   t('State/Province');
+  t('Study design');
+  t('Study end');
   t('Supplementary information');
+  t('Target number of participants');
+  t('Target number of participants with samples');
   t('Telephone');
   t('Territory or city of residence');
   t('The study targets the recruitment of');
