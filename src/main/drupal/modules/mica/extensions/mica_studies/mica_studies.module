@@ -50,18 +50,19 @@ function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
         $links['add-study'] = array(
           '#theme' => 'menu_local_action',
           '#link' => array(
-            'title' => t('Add a !name', array('!name' => $node_type->name)),
+            'title' => t('Add a ' . $node_type->name),
             'href' => 'node/add/study',
           ),
         );
       }
+      $url_title = t('Search ' . ($node_type->name === 'Study' ? 'Studies' : $node_type->name . 's'));
       $links['search-studies'] = array(
         '#weight' => 30,
         '#theme' => 'menu_local_action',
         '#link' => array(
           'title' => t('<a class="highlight" href="@url">!name</a>',
             array(
-              '!name' => t('Search !name', array('!name' => $node_type->name === 'Study' ? 'Studies' : $node_type->name . 's')),
+              '!name' => $url_title,
               '@url' => url('studies-search')
             )
           ),

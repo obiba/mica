@@ -3207,7 +3207,7 @@ msgid "Accueil"
 msgstr "Accueil"
 
 msgid "Acronym"
-msgstr "Acronymeeee"
+msgstr "Acronyme"
 
 msgid "Acronym of the study if applicable."
 msgstr "Acronyme de l'étude, si applicable"

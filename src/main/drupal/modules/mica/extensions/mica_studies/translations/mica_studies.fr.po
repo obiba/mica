@@ -41,7 +41,7 @@ msgstr ""
 
 #: mica_studies.features.field.inc:10271
 msgid "Acronym"
-msgstr "Acronymeeee"
+msgstr "Acronyme"
 
 #: mica_studies.features.field.inc:10272
 msgid "Acronym of the study if applicable."

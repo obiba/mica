@@ -110,6 +110,7 @@ projects[features][version] = 1.0-rc3
 projects[features][type] = module
 projects[features][patch][981248] = http://drupal.org/files/hook_features_post_install-981248-58.patch
 projects[features][patch][656312] = http://drupal.org/files/keep_negative_permissions-656312-17.patch
+projects[features][patch][1689598] = http://drupal.org/files/field_display_label_support.patch
 
 projects[features_override][version] = 2.0-beta1
 projects[features_override][type] = module
@@ -128,6 +129,7 @@ projects[feeds_tamper][patch][1180726] = http://drupal.org/files/empty_check-118
 
 projects[field_display_label][version] = 1.2
 projects[field_display_label][type] = module
+projects[field_display_label][patch][1689574] = http://drupal.org/files/i18n_support-1689574-2.patch
 
 projects[field_group][version] = 1.1
 projects[field_group][type] = module
