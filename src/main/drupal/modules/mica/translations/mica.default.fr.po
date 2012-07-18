@@ -10082,7 +10082,10 @@ msgid "Data Access Review"
 msgstr "Revue de demande d'accès"
 
 msgid "Data Collection"
-msgstr "Collect de données"
+msgstr "Collecte de données"
+
+msgid "Sample Collection"
+msgstr "Collecte d'échantillons"
 
 msgid "Data Dictionary"
 msgstr "Dictionnaire de données"
@@ -46538,3 +46541,7 @@ msgstr "‹‹"
 
 msgid "››"
 msgstr "››"
+
+msgid "Address"
+msgstr "Adresse"
+

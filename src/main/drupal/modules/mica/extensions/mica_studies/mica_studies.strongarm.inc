@@ -51,7 +51,7 @@ function mica_studies_strongarm() {
   $strongarm->name = 'auto_entitylabel_pattern_node_contact';
   $strongarm->value = '<?php
 $wrapper = entity_metadata_wrapper(\'node\', $entity);
-$institution = $wrapper->field_institution_name->value();
+$institution = $wrapper->language($language)->field_institution_name->value();
 $parts = array();
 $parts[] = trim($wrapper->field_contact_name->title->value());
 $parts[] = trim($wrapper->field_contact_name->given->value());
