@@ -1,0 +1,3104 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-07-03 14:46-0400\n"
+"PO-Revision-Date: 2012-07-04 10:21-0500\n"
+"Last-Translator: Camille Craig <ccraig@p3g.org>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+
+msgid "Body"
+msgstr "Description"
+
+
+msgid "Body"
+msgstr "Description"
+
+
+msgid "Body"
+msgstr "Description"
+
+
+msgid "Body"
+msgstr "Description"
+
+
+msgid "Body"
+msgstr "Description"
+
+
+msgid "Body"
+msgstr "Description"
+
+
+msgid "Body"
+msgstr "Description"
+
+
+msgid "Body"
+msgstr "Description"
+
+
+msgid "Body"
+msgstr "Description"
+
+
+msgid "What are the principal objectives of the study?"
+msgstr "Quels sont les principaux objectifs de l'étude?"
+
+
+msgid "Description"
+msgstr "Description"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Abstract"
+msgstr "Résumé"
+
+
+msgid "No"
+msgstr "Non"
+
+
+msgid "Yes"
+msgstr "Oui"
+
+
+msgid "Biological samples"
+msgstr "Échantillons biologiques"
+
+
+msgid "No"
+msgstr "Non"
+
+
+msgid "Yes"
+msgstr "Oui"
+
+
+msgid "Data (questionnaire-derived, measured…)"
+msgstr "Données (issues d'un questionnaire, mesurées...)"
+
+
+msgid "No"
+msgstr "Non"
+
+
+msgid "Yes"
+msgstr "Oui"
+
+
+msgid "Other"
+msgstr "Autre"
+
+
+msgid "Please specify what study feature"
+msgstr "Précisez la caractéristique de l'étude"
+
+
+msgid "Acronym of the study if applicable."
+msgstr "Acronyme de l'étude, si applicable"
+
+
+msgid "Acronym"
+msgstr "Acronyme"
+
+
+msgid "Address"
+msgstr "Adresse"
+
+
+msgid "Maximum age"
+msgstr "Âge maximal"
+
+
+msgid "Minimum age"
+msgstr "Âge minimal"
+
+
+msgid "Anthropometric Structures"
+msgstr "Structures anthropométriques"
+
+
+msgid "Authorising date"
+msgstr "Date de l'autorisation"
+
+
+msgid "Authorising date"
+msgstr "Date de l'autorisation"
+
+
+msgid "Name of the person authorising the contribution to [SPECIFIC NETWORK]"
+msgstr ""
+"Nom de la personne qui complète ce formulaire et autorise la contribution à "
+"[SPECIFIC NETWORK]"
+
+
+msgid "Name of the person authorising the contribution to Maelstrom Research"
+msgstr ""
+"Nom de la personne qui complète ce formulaire et autorise la contribution à "
+"la plateforme MAELSTROM RESEARCH"
+
+
+msgid "No"
+msgstr "Non"
+
+
+msgid "Yes"
+msgstr "Oui"
+
+
+msgid "Authorization Maelstrom"
+msgstr "Autorisation au programme MAELSTROM"
+
+
+msgid "No"
+msgstr "No"
+
+
+msgid "Yes"
+msgstr "Oui"
+
+
+msgid "Authorization Specific"
+msgstr "Autorisation spécifique"
+
+
+msgid "Authors"
+msgstr "Auteurs"
+
+
+msgid "End year"
+msgstr "Dernière année"
+
+
+msgid "Start year"
+msgstr "Année de départ"
+
+
+msgid "Blood"
+msgstr "Sang"
+
+
+msgid "Buccal cells"
+msgstr "Cellules buccales"
+
+
+msgid "Cord blood"
+msgstr "Sang de cordon"
+
+
+msgid "Others"
+msgstr "Autres"
+
+
+msgid "Saliva"
+msgstr "Salive"
+
+
+msgid "Tissues"
+msgstr "Tissus"
+
+
+msgid "Urine"
+msgstr "Urine"
+
+
+msgid "What type of sample is collected?"
+msgstr "Quels types d’échantillons sont recueillis ?"
+
+
+msgid "Biological samples"
+msgstr "Échantillons biologiques"
+
+
+msgid "Body Functions"
+msgstr "Fonctions organiques"
+
+
+msgid "Body Structures"
+msgstr "Structures anatomiques"
+
+
+msgid "Content Type"
+msgstr "Type de contenu"
+
+
+msgid "Content Type Label"
+msgstr "Libellé du type de contenu"
+
+
+msgid "Categories"
+msgstr "Catégories"
+
+
+msgid "City"
+msgstr "Ville"
+
+
+msgid "City"
+msgstr "Ville"
+
+
+msgid "Collaborators"
+msgstr "Collaborateurs"
+
+
+msgid "Complete name"
+msgstr "Nom complet"
+
+
+msgid "Andorra"
+msgstr "Andore"
+
+
+msgid "United Arab Emirates"
+msgstr "Émirats arabes unis"
+
+
+msgid "Afghanistan"
+msgstr "Afghanistan"
+
+
+msgid "Antigua and Barbuda"
+msgstr "Antigua et Barbuda"
+
+
+msgid "Anguilla"
+msgstr "Anguilla"
+
+
+msgid "Albania"
+msgstr "Albanie"
+
+
+msgid "Armenia"
+msgstr "Arménie"
+
+
+msgid "Netherlands Antilles"
+msgstr "Antilles néerlandaises"
+
+
+msgid "Angola"
+msgstr "Angola"
+
+
+msgid "Antarctica"
+msgstr "Antarctique"
+
+
+msgid "Argentina"
+msgstr "Argentine"
+
+
+msgid "American Samoa"
+msgstr "Samoa américaines"
+
+
+msgid "Austria"
+msgstr "Autriche"
+
+
+msgid "Australia"
+msgstr "Australie"
+
+
+msgid "Aruba"
+msgstr "Aruba"
+
+
+msgid "Aland Islands"
+msgstr "îles Åland"
+
+
+msgid "Azerbaijan"
+msgstr "Azerbaïdjan"
+
+
+msgid "Bosnia and Herzegovina"
+msgstr "Bosnie-Herzégovine"
+
+
+msgid "Barbados"
+msgstr "Barbade"
+
+
+msgid "Bangladesh"
+msgstr "Bangladesh"
+
+
+msgid "Belgium"
+msgstr "Belgique"
+
+
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+
+msgid "Bulgaria"
+msgstr "Bulgarie"
+
+
+msgid "Bahrain"
+msgstr "Bahreïn"
+
+
+msgid "Burundi"
+msgstr "Burundi"
+
+
+msgid "Benin"
+msgstr "Bénin"
+
+
+msgid "Saint Barthélemy"
+msgstr "Saint Barthélemy"
+
+
+msgid "Bermuda"
+msgstr "Bermudes"
+
+
+msgid "Brunei"
+msgstr "Brunei"
+
+
+msgid "Bolivia"
+msgstr "Bolivie"
+
+
+msgid "Bonaire, Sint Eustatius and Saba"
+msgstr "Bonaire, Sint Eustatius et Saba"
+
+
+msgid "Brazil"
+msgstr "Brésil"
+
+
+msgid "Bahamas"
+msgstr "Bahamas"
+
+
+msgid "Bhutan"
+msgstr "Bhoutan"
+
+
+msgid "Bouvet Island"
+msgstr "île Bouvet"
+
+
+msgid "Botswana"
+msgstr "Botswana"
+
+
+msgid "Belarus"
+msgstr "Biélorussie"
+
+
+msgid "Belize"
+msgstr "Belize"
+
+
+msgid "Canada"
+msgstr "Canada"
+
+
+msgid "Cocos (Keeling) Islands"
+msgstr "Îles Cocos (Keeling)"
+
+
+msgid "Congo (Kinshasa)"
+msgstr "Congo (Kinshasa)"
+
+
+msgid "Central African Republic"
+msgstr "République centrafricaine"
+
+
+msgid "Congo (Brazzaville)"
+msgstr "Congo (Brazzaville)"
+
+
+msgid "Switzerland"
+msgstr "Suisse"
+
+
+msgid "Ivory Coast"
+msgstr "Côte-d'Ivoire"
+
+
+msgid "Cook Islands"
+msgstr "îles Cook"
+
+
+msgid "Chile"
+msgstr "Chili"
+
+
+msgid "Cameroon"
+msgstr "Cameroun"
+
+
+msgid "China"
+msgstr "Chine"
+
+
+msgid "Colombia"
+msgstr "Colombie"
+
+
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+
+msgid "Cuba"
+msgstr "Cuba"
+
+
+msgid "Cape Verde"
+msgstr "Cap Vert"
+
+
+msgid "Curaçao"
+msgstr "Curaçao"
+
+
+msgid "Christmas Island"
+msgstr "île Christmas"
+
+
+msgid "Cyprus"
+msgstr "Chypre"
+
+
+msgid "Czech Republic"
+msgstr "République Tchèque"
+
+
+msgid "Germany"
+msgstr "Allemagne"
+
+
+msgid "Djibouti"
+msgstr "Djibouti"
+
+
+msgid "Denmark"
+msgstr "Danemark"
+
+
+msgid "Dominica"
+msgstr "Dominique"
+
+
+msgid "Dominican Republic"
+msgstr "République dominicaine"
+
+
+msgid "Algeria"
+msgstr "Algérie"
+
+
+msgid "Ecuador"
+msgstr "Équateur"
+
+
+msgid "Estonia"
+msgstr "Estonie"
+
+
+msgid "Egypt"
+msgstr "Égypte"
+
+
+msgid "Western Sahara"
+msgstr "Sahara Occidental"
+
+
+msgid "Eritrea"
+msgstr "Erythrée"
+
+
+msgid "Spain"
+msgstr "Espagne"
+
+
+msgid "Ethiopia"
+msgstr "Éthiopie"
+
+
+msgid "Finland"
+msgstr "Finlande"
+
+
+msgid "Fiji"
+msgstr "Fidji"
+
+
+msgid "Falkland Islands"
+msgstr "îles Falkland"
+
+
+msgid "Micronesia"
+msgstr "Micronésie"
+
+
+msgid "Faroe Islands"
+msgstr "îles Féroé"
+
+
+msgid "France"
+msgstr "France"
+
+
+msgid "Gabon"
+msgstr "Gabon"
+
+
+msgid "United Kingdom"
+msgstr "Royaume-Uni"
+
+
+msgid "Grenada"
+msgstr "Grenade"
+
+
+msgid "Georgia"
+msgstr "Géorgie"
+
+
+msgid "French Guiana"
+msgstr "Guyane française"
+
+
+msgid "Guernsey"
+msgstr "Guernesey"
+
+
+msgid "Ghana"
+msgstr "Ghana"
+
+
+msgid "Gibraltar"
+msgstr "Gibraltar"
+
+
+msgid "Greenland"
+msgstr "Groenland"
+
+
+msgid "Gambia"
+msgstr "Gambie"
+
+
+msgid "Guinea"
+msgstr "Guinée"
+
+
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+
+msgid "Equatorial Guinea"
+msgstr "Guinée équatoriale"
+
+
+msgid "Greece"
+msgstr "Grèce"
+
+
+msgid "South Georgia and the South Sandwich Islands"
+msgstr "Géorgie du Sud et les îles Sandwich du Sud"
+
+
+msgid "Guatemala"
+msgstr "Guatemala"
+
+
+msgid "Guam"
+msgstr "Guam"
+
+
+msgid "Guinea-Bissau"
+msgstr "Guinée-Bissau"
+
+
+msgid "Guyana"
+msgstr "Guyane"
+
+
+msgid "Hong Kong S.A.R., China"
+msgstr "Hong Kong"
+
+
+msgid "Heard Island and McDonald Islands"
+msgstr "Île Heard et îles McDonald"
+
+
+msgid "Honduras"
+msgstr "Honduras"
+
+
+msgid "Croatia"
+msgstr "Croatie"
+
+
+msgid "Haiti"
+msgstr "Haïti"
+
+
+msgid "Hungary"
+msgstr "Hongrie"
+
+
+msgid "Indonesia"
+msgstr "Indonésie"
+
+
+msgid "Ireland"
+msgstr "Irelande"
+
+
+msgid "Israel"
+msgstr "Israël"
+
+
+msgid "Isle of Man"
+msgstr "Île de Man"
+
+
+msgid "India"
+msgstr "Inde"
+
+
+msgid "British Indian Ocean Territory"
+msgstr "Territoire britannique de l'océan Indien"
+
+
+msgid "Iraq"
+msgstr "Irak"
+
+
+msgid "Iran"
+msgstr "Iran"
+
+
+msgid "Iceland"
+msgstr "Islande"
+
+
+msgid "Italy"
+msgstr "Italie"
+
+
+msgid "Jersey"
+msgstr "Jersey"
+
+
+msgid "Jamaica"
+msgstr "Jamaïque"
+
+
+msgid "Jordan"
+msgstr "Jordanie"
+
+
+msgid "Japan"
+msgstr "Japon"
+
+
+msgid "Kenya"
+msgstr "Kenya"
+
+
+msgid "Kyrgyzstan"
+msgstr "Kirghizistan"
+
+
+msgid "Cambodia"
+msgstr "Cambodge"
+
+
+msgid "Kiribati"
+msgstr "Kiribati"
+
+
+msgid "Comoros"
+msgstr "Comores"
+
+
+msgid "Saint Kitts and Nevis"
+msgstr "Saint-Kitts-et-Nevis"
+
+
+msgid "North Korea"
+msgstr "Corée du nord"
+
+
+msgid "South Korea"
+msgstr "Corée du Sud"
+
+
+msgid "Kuwait"
+msgstr "Koweit"
+
+
+msgid "Cayman Islands"
+msgstr "Îles Caïmans"
+
+
+msgid "Kazakhstan"
+msgstr "Kazakhstan"
+
+
+msgid "Laos"
+msgstr "Laos"
+
+
+msgid "Lebanon"
+msgstr "Liban"
+
+
+msgid "Saint Lucia"
+msgstr "Sainte-Lucie"
+
+
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+
+msgid "Sri Lanka"
+msgstr "Sri Lanka"
+
+
+msgid "Liberia"
+msgstr "Libéria"
+
+
+msgid "Lesotho"
+msgstr "Lesotho"
+
+
+msgid "Lithuania"
+msgstr "Lituanie"
+
+
+msgid "Luxembourg"
+msgstr "Luxembourg"
+
+
+msgid "Latvia"
+msgstr "Lettonie"
+
+
+msgid "Libya"
+msgstr "Lybie"
+
+
+msgid "Morocco"
+msgstr "Maroc"
+
+
+msgid "Monaco"
+msgstr "Monaco"
+
+
+msgid "Moldova"
+msgstr "Moldavie"
+
+
+msgid "Montenegro"
+msgstr "Monténégro"
+
+
+msgid "Saint Martin (French part)"
+msgstr "Saint-Martin (partie française)"
+
+
+msgid "Madagascar"
+msgstr "Madagascar"
+
+
+msgid "Marshall Islands"
+msgstr "îles Marshall"
+
+
+msgid "Macedonia"
+msgstr "Macédoine"
+
+
+msgid "Mali"
+msgstr "Mali"
+
+
+msgid "Myanmar"
+msgstr "Myanmar"
+
+
+msgid "Mongolia"
+msgstr "Mongolie"
+
+
+msgid "Macao S.A.R., China"
+msgstr "Macao"
+
+
+msgid "Northern Mariana Islands"
+msgstr "Îles Mariannes du Nord"
+
+
+msgid "Martinique"
+msgstr "Martinique"
+
+
+msgid "Mauritania"
+msgstr "Mauritanie"
+
+
+msgid "Montserrat"
+msgstr "Montserrat"
+
+
+msgid "Malta"
+msgstr "Malte"
+
+
+msgid "Mauritius"
+msgstr "île Maurice"
+
+
+msgid "Maldives"
+msgstr "Maldives"
+
+
+msgid "Malawi"
+msgstr "Malawi"
+
+
+msgid "Mexico"
+msgstr "Mexique"
+
+
+msgid "Malaysia"
+msgstr "Malaisie"
+
+
+msgid "Mozambique"
+msgstr "Mozambique"
+
+
+msgid "Namibia"
+msgstr "Namibie"
+
+
+msgid "New Caledonia"
+msgstr "Nouvelle Calédonie"
+
+
+msgid "Niger"
+msgstr "Niger"
+
+
+msgid "Norfolk Island"
+msgstr "île Norfolk"
+
+
+msgid "Nigeria"
+msgstr "Nigeria"
+
+
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+
+msgid "Netherlands"
+msgstr "Pays-Bas"
+
+
+msgid "Norway"
+msgstr "Norvège"
+
+
+msgid "Nepal"
+msgstr "Népal"
+
+
+msgid "Nauru"
+msgstr "Nauru"
+
+
+msgid "Niue"
+msgstr "Niue"
+
+
+msgid "New Zealand"
+msgstr "Nouvelle Zélande"
+
+
+msgid "Oman"
+msgstr "Oman"
+
+
+msgid "Panama"
+msgstr "Panama"
+
+
+msgid "Peru"
+msgstr "Pérou"
+
+
+msgid "French Polynesia"
+msgstr "Polynésie française"
+
+
+msgid "Papua New Guinea"
+msgstr "Papouasie-Nouvelle-Guinée"
+
+
+msgid "Philippines"
+msgstr "Philippines"
+
+
+msgid "Pakistan"
+msgstr "Pakistan"
+
+
+msgid "Poland"
+msgstr "Pologne"
+
+
+msgid "Saint Pierre and Miquelon"
+msgstr "Saint Pierre et Miquelon"
+
+
+msgid "Pitcairn"
+msgstr "Pitcairn"
+
+
+msgid "Puerto Rico"
+msgstr "Porto Rico"
+
+
+msgid "Palestinian Territory"
+msgstr "Territoire Palestinien"
+
+
+msgid "Portugal"
+msgstr "Portugal"
+
+
+msgid "Palau"
+msgstr "Palau"
+
+
+msgid "Paraguay"
+msgstr "Paraguay"
+
+
+msgid "Qatar"
+msgstr "Qatar"
+
+
+msgid "Reunion"
+msgstr "Réunion"
+
+
+msgid "Romania"
+msgstr "Roumanie"
+
+
+msgid "Serbia"
+msgstr "Serbie"
+
+
+msgid "Russia"
+msgstr "Russie"
+
+
+msgid "Rwanda"
+msgstr "Rwanda"
+
+
+msgid "Saudi Arabia"
+msgstr "Arabie Saoudite"
+
+
+msgid "Solomon Islands"
+msgstr "Îles Salomon"
+
+
+msgid "Seychelles"
+msgstr "Seychelles"
+
+
+msgid "Sudan"
+msgstr "Soudan"
+
+
+msgid "Sweden"
+msgstr "Suède"
+
+
+msgid "Singapore"
+msgstr "Singapour"
+
+
+msgid "Saint Helena"
+msgstr "Sainte-Hélène"
+
+
+msgid "Slovenia"
+msgstr "Slovénie"
+
+
+msgid "Svalbard and Jan Mayen"
+msgstr "Svalbard et Jan Mayen"
+
+
+msgid "Slovakia"
+msgstr "Slovaquie"
+
+
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+
+msgid "San Marino"
+msgstr "Saint-Marin"
+
+
+msgid "Senegal"
+msgstr "Sénégal"
+
+
+msgid "Somalia"
+msgstr "Somalie"
+
+
+msgid "Suriname"
+msgstr "Suriname"
+
+
+msgid "South Sudan"
+msgstr "Sud-Soudan"
+
+
+msgid "Sao Tome and Principe"
+msgstr "Sao Tomé et Principe"
+
+
+msgid "El Salvador"
+msgstr "El Salvador"
+
+
+msgid "Sint Maarten (Dutch part)"
+msgstr "Saint-Martin (partie néerlandaise)"
+
+
+msgid "Syria"
+msgstr "Syrie"
+
+
+msgid "Swaziland"
+msgstr "Swaziland"
+
+
+msgid "Turks and Caicos Islands"
+msgstr "Îles Turques et Caïques"
+
+
+msgid "Chad"
+msgstr "Tchad"
+
+
+msgid "French Southern Territories"
+msgstr "Terres australes françaises"
+
+
+msgid "Togo"
+msgstr "Togo"
+
+
+msgid "Thailand"
+msgstr "Thaïlande"
+
+
+msgid "Tajikistan"
+msgstr "Tadjikistan"
+
+
+msgid "Tokelau"
+msgstr "Tokelau"
+
+
+msgid "Timor-Leste"
+msgstr "Timor-Leste"
+
+
+msgid "Turkmenistan"
+msgstr "Turkménistan"
+
+
+msgid "Tunisia"
+msgstr "Tunisie"
+
+
+msgid "Tonga"
+msgstr "Tonga"
+
+
+msgid "Turkey"
+msgstr "Turquie"
+
+
+msgid "Trinidad and Tobago"
+msgstr "Trinité-et-Tobago"
+
+
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+
+msgid "Taiwan"
+msgstr "Taiwan"
+
+
+msgid "Tanzania"
+msgstr "Tanzanie"
+
+
+msgid "Ukraine"
+msgstr "Ukraine"
+
+
+msgid "Uganda"
+msgstr "Ouganda"
+
+
+msgid "United States Minor Outlying Islands"
+msgstr "États-Unis Îles Mineures Éloignées"
+
+
+msgid "United States"
+msgstr "États-Unis"
+
+
+msgid "Uruguay"
+msgstr "Uruguay"
+
+
+msgid "Uzbekistan"
+msgstr "Ouzbékistan"
+
+
+msgid "Vatican"
+msgstr "Vatican"
+
+
+msgid "Saint Vincent and the Grenadines"
+msgstr "Saint-Vincent-et-les Grenadines"
+
+
+msgid "Venezuela"
+msgstr "Venezuela"
+
+
+msgid "British Virgin Islands"
+msgstr "Îles Vierges britanniques"
+
+
+msgid "U.S. Virgin Islands"
+msgstr "Îles Vierges américaines"
+
+
+msgid "Vietnam"
+msgstr "Vietnam"
+
+
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+
+msgid "Wallis and Futuna"
+msgstr "Wallis et Futuna"
+
+
+msgid "Samoa"
+msgstr "Samoa"
+
+
+msgid "Yemen"
+msgstr "Yemen"
+
+
+msgid "Mayotte"
+msgstr "Mayotte"
+
+
+msgid "South Africa"
+msgstr "Afrique du Sud"
+
+
+msgid "Zambia"
+msgstr "Zambie"
+
+
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
+
+
+msgid "Country"
+msgstr "Pays"
+
+
+msgid "Email"
+msgstr "Courriel"
+
+
+msgid "Contact Name"
+msgstr "Nom du contact"
+
+
+msgid ""
+"Enter the Contact full name. You will be able to edit these Contacts once "
+"the Study has been saved."
+msgstr ""
+"Entrer le nom complet du contact. Vous serez en mesure d'éditer les contacts "
+"lorsque l'étude sera enregistrée."
+
+
+msgid "Contacts"
+msgstr "Contacts"
+
+
+msgid "Andorra"
+msgstr "Andore"
+
+
+msgid "United Arab Emirates"
+msgstr "Émirats arabes unis"
+
+
+msgid "Afghanistan"
+msgstr "Afghanistan"
+
+
+msgid "Antigua and Barbuda"
+msgstr "Antigua et Barbuda"
+
+
+msgid "Anguilla"
+msgstr "Anguilla"
+
+
+msgid "Albania"
+msgstr "Albanie"
+
+
+msgid "Armenia"
+msgstr "Arménie"
+
+
+msgid "Netherlands Antilles"
+msgstr "Antilles néerlandaises"
+
+
+msgid "Angola"
+msgstr "Angola"
+
+
+msgid "Antarctica"
+msgstr "Antarctique"
+
+
+msgid "Argentina"
+msgstr "Argentine"
+
+
+msgid "American Samoa"
+msgstr "Samoa américaines"
+
+
+msgid "Austria"
+msgstr "Autriche"
+
+
+msgid "Australia"
+msgstr "Australie"
+
+
+msgid "Aruba"
+msgstr "Aruba"
+
+
+msgid "Aland Islands"
+msgstr "îles Åland"
+
+
+msgid "Azerbaijan"
+msgstr "Azerbaïdjan"
+
+
+msgid "Bosnia and Herzegovina"
+msgstr "Bosnie-Herzégovine"
+
+
+msgid "Barbados"
+msgstr "Barbade"
+
+
+msgid "Bangladesh"
+msgstr "Bangladesh"
+
+
+msgid "Belgium"
+msgstr "Belgique"
+
+
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+
+msgid "Bulgaria"
+msgstr "Bulgarie"
+
+
+msgid "Bahrain"
+msgstr "Bahreïn"
+
+
+msgid "Burundi"
+msgstr "Burundi"
+
+
+msgid "Benin"
+msgstr "Bénin"
+
+
+msgid "Saint Barthélemy"
+msgstr "Saint Barthélemy"
+
+
+msgid "Bermuda"
+msgstr "Bermudes"
+
+
+msgid "Brunei"
+msgstr "Brunei"
+
+
+msgid "Bolivia"
+msgstr "Bolivie"
+
+
+msgid "Bonaire, Sint Eustatius and Saba"
+msgstr "Bonaire, Sint Eustatius et Saba"
+
+
+msgid "Brazil"
+msgstr "Brésil"
+
+
+msgid "Bahamas"
+msgstr "Bahamas"
+
+
+msgid "Bhutan"
+msgstr "Bhoutan"
+
+
+msgid "Bouvet Island"
+msgstr "île Bouvet"
+
+
+msgid "Botswana"
+msgstr "Botswana"
+
+
+msgid "Belarus"
+msgstr "Biélorussie"
+
+
+msgid "Belize"
+msgstr "Belize"
+
+
+msgid "Canada"
+msgstr "Canada"
+
+
+msgid "Cocos (Keeling) Islands"
+msgstr "Îles Cocos (Keeling)"
+
+
+msgid "Congo (Kinshasa)"
+msgstr "Congo (Kinshasa)"
+
+
+msgid "Central African Republic"
+msgstr "République centrafricaine"
+
+
+msgid "Congo (Brazzaville)"
+msgstr "Congo (Brazzaville)"
+
+
+msgid "Switzerland"
+msgstr "Suisse"
+
+
+msgid "Ivory Coast"
+msgstr "Côte-d'Ivoire"
+
+
+msgid "Cook Islands"
+msgstr "îles Cook"
+
+
+msgid "Chile"
+msgstr "Chili"
+
+
+msgid "Cameroon"
+msgstr "Cameroun"
+
+
+msgid "China"
+msgstr "Chine"
+
+
+msgid "Colombia"
+msgstr "Colombie"
+
+
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+
+msgid "Cuba"
+msgstr "Cuba"
+
+
+msgid "Cape Verde"
+msgstr "Cap Vert"
+
+
+msgid "Curaçao"
+msgstr "Curaçao"
+
+
+msgid "Christmas Island"
+msgstr "île Christmas"
+
+
+msgid "Cyprus"
+msgstr "Chypre"
+
+
+msgid "Czech Republic"
+msgstr "République Tchèque"
+
+
+msgid "Germany"
+msgstr "Allemagne"
+
+
+msgid "Djibouti"
+msgstr "Djibouti"
+
+
+msgid "Denmark"
+msgstr "Danemark"
+
+
+msgid "Dominica"
+msgstr "Dominique"
+
+
+msgid "Dominican Republic"
+msgstr "République dominicaine"
+
+
+msgid "Algeria"
+msgstr "Algérie"
+
+
+msgid "Ecuador"
+msgstr "Équateur"
+
+
+msgid "Estonia"
+msgstr "Estonie"
+
+
+msgid "Egypt"
+msgstr "Égypte"
+
+
+msgid "Western Sahara"
+msgstr "Sahara Occidental"
+
+
+msgid "Eritrea"
+msgstr "Erythrée"
+
+
+msgid "Spain"
+msgstr "Espagne"
+
+
+msgid "Ethiopia"
+msgstr "Éthiopie"
+
+
+msgid "Finland"
+msgstr "Finlande"
+
+
+msgid "Fiji"
+msgstr "Fidji"
+
+
+msgid "Falkland Islands"
+msgstr "îles Falkland"
+
+
+msgid "Micronesia"
+msgstr "Micronésie"
+
+
+msgid "Faroe Islands"
+msgstr "îles Féroé"
+
+
+msgid "France"
+msgstr "France"
+
+
+msgid "Gabon"
+msgstr "Gabon"
+
+
+msgid "United Kingdom"
+msgstr "Royaume-Uni"
+
+
+msgid "Grenada"
+msgstr "Grenade"
+
+
+msgid "Georgia"
+msgstr "Géorgie"
+
+
+msgid "French Guiana"
+msgstr "Guyane française"
+
+
+msgid "Guernsey"
+msgstr "Guernesey"
+
+
+msgid "Ghana"
+msgstr "Ghana"
+
+
+msgid "Gibraltar"
+msgstr "Gibraltar"
+
+
+msgid "Greenland"
+msgstr "Groenland"
+
+
+msgid "Gambia"
+msgstr "Gambie"
+
+
+msgid "Guinea"
+msgstr "Guinée"
+
+
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+
+msgid "Equatorial Guinea"
+msgstr "Guinée équatoriale"
+
+
+msgid "Greece"
+msgstr "Grèce"
+
+
+msgid "South Georgia and the South Sandwich Islands"
+msgstr "Géorgie du Sud et les îles Sandwich du Sud"
+
+
+msgid "Guatemala"
+msgstr "Guatemala"
+
+
+msgid "Guam"
+msgstr "Guam"
+
+
+msgid "Guinea-Bissau"
+msgstr "Guinée-Bissau"
+
+
+msgid "Guyana"
+msgstr "Guyane"
+
+
+msgid "Hong Kong S.A.R., China"
+msgstr "Hong Kong"
+
+
+msgid "Heard Island and McDonald Islands"
+msgstr "Île Heard et îles McDonald"
+
+
+msgid "Honduras"
+msgstr "Honduras"
+
+
+msgid "Croatia"
+msgstr "Croatie"
+
+
+msgid "Haiti"
+msgstr "Haïti"
+
+
+msgid "Hungary"
+msgstr "Hongrie"
+
+
+msgid "Indonesia"
+msgstr "Indonésie"
+
+
+msgid "Ireland"
+msgstr "Irelande"
+
+
+msgid "Israel"
+msgstr "Israël"
+
+
+msgid "Isle of Man"
+msgstr "Île de Man"
+
+
+msgid "India"
+msgstr "Inde"
+
+
+msgid "British Indian Ocean Territory"
+msgstr "Territoire britannique de l'océan Indien"
+
+
+msgid "Iraq"
+msgstr "Irak"
+
+
+msgid "Iran"
+msgstr "Iran"
+
+
+msgid "Iceland"
+msgstr "Islande"
+
+
+msgid "Italy"
+msgstr "Italie"
+
+
+msgid "Jersey"
+msgstr "Jersey"
+
+
+msgid "Jamaica"
+msgstr "Jamaïque"
+
+
+msgid "Jordan"
+msgstr "Jordanie"
+
+
+msgid "Japan"
+msgstr "Japon"
+
+
+msgid "Kenya"
+msgstr "Kenya"
+
+
+msgid "Kyrgyzstan"
+msgstr "Kirghizistan"
+
+
+msgid "Cambodia"
+msgstr "Cambodge"
+
+
+msgid "Kiribati"
+msgstr "Kiribati"
+
+
+msgid "Comoros"
+msgstr "Comores"
+
+
+msgid "Saint Kitts and Nevis"
+msgstr "Saint-Kitts-et-Nevis"
+
+
+msgid "North Korea"
+msgstr "Corée du nord"
+
+
+msgid "South Korea"
+msgstr "Corée du Sud"
+
+
+msgid "Kuwait"
+msgstr "Koweit"
+
+
+msgid "Cayman Islands"
+msgstr "Îles Caïmans"
+
+
+msgid "Kazakhstan"
+msgstr "Kazakhstan"
+
+
+msgid "Laos"
+msgstr "Laos"
+
+
+msgid "Lebanon"
+msgstr "Liban"
+
+
+msgid "Saint Lucia"
+msgstr "Sainte-Lucie"
+
+
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+
+msgid "Sri Lanka"
+msgstr "Sri Lanka"
+
+
+msgid "Liberia"
+msgstr "Libéria"
+
+
+msgid "Lesotho"
+msgstr "Lesotho"
+
+
+msgid "Lithuania"
+msgstr "Lituanie"
+
+
+msgid "Luxembourg"
+msgstr "Luxembourg"
+
+
+msgid "Latvia"
+msgstr "Lettonie"
+
+
+msgid "Libya"
+msgstr "Lybie"
+
+
+msgid "Morocco"
+msgstr "Maroc"
+
+
+msgid "Monaco"
+msgstr "Monaco"
+
+
+msgid "Moldova"
+msgstr "Moldavie"
+
+
+msgid "Montenegro"
+msgstr "Monténégro"
+
+
+msgid "Saint Martin (French part)"
+msgstr "Saint-Martin (partie française)"
+
+
+msgid "Madagascar"
+msgstr "Madagascar"
+
+
+msgid "Marshall Islands"
+msgstr "îles Marshall"
+
+
+msgid "Macedonia"
+msgstr "Macédoine"
+
+
+msgid "Mali"
+msgstr "Mali"
+
+
+msgid "Myanmar"
+msgstr "Myanmar"
+
+
+msgid "Mongolia"
+msgstr "Mongolie"
+
+
+msgid "Macao S.A.R., China"
+msgstr "Macao"
+
+
+msgid "Northern Mariana Islands"
+msgstr "Îles Mariannes du Nord"
+
+
+msgid "Martinique"
+msgstr "Martinique"
+
+
+msgid "Mauritania"
+msgstr "Mauritanie"
+
+
+msgid "Montserrat"
+msgstr "Montserrat"
+
+
+msgid "Malta"
+msgstr "Malte"
+
+
+msgid "Mauritius"
+msgstr "île Maurice"
+
+
+msgid "Maldives"
+msgstr "Maldives"
+
+
+msgid "Malawi"
+msgstr "Malawi"
+
+
+msgid "Mexico"
+msgstr "Mexique"
+
+
+msgid "Malaysia"
+msgstr "Malaisie"
+
+
+msgid "Mozambique"
+msgstr "Mozambique"
+
+
+msgid "Namibia"
+msgstr "Namibie"
+
+
+msgid "New Caledonia"
+msgstr "Nouvelle Calédonie"
+
+
+msgid "Niger"
+msgstr "Niger"
+
+
+msgid "Norfolk Island"
+msgstr "île Norfolk"
+
+
+msgid "Nigeria"
+msgstr "Nigeria"
+
+
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+
+msgid "Netherlands"
+msgstr "Pays-Bas"
+
+
+msgid "Norway"
+msgstr "Norvège"
+
+
+msgid "Nepal"
+msgstr "Népal"
+
+
+msgid "Nauru"
+msgstr "Nauru"
+
+
+msgid "Niue"
+msgstr "Niue"
+
+
+msgid "New Zealand"
+msgstr "Nouvelle Zélande"
+
+
+msgid "Oman"
+msgstr "Oman"
+
+
+msgid "Panama"
+msgstr "Panama"
+
+
+msgid "Peru"
+msgstr "Pérou"
+
+
+msgid "French Polynesia"
+msgstr "Polynésie française"
+
+
+msgid "Papua New Guinea"
+msgstr "Papouasie-Nouvelle-Guinée"
+
+
+msgid "Philippines"
+msgstr "Philippines"
+
+
+msgid "Pakistan"
+msgstr "Pakistan"
+
+
+msgid "Poland"
+msgstr "Pologne"
+
+
+msgid "Saint Pierre and Miquelon"
+msgstr "Saint Pierre et Miquelon"
+
+
+msgid "Pitcairn"
+msgstr "Pitcairn"
+
+
+msgid "Puerto Rico"
+msgstr "Porto Rico"
+
+
+msgid "Palestinian Territory"
+msgstr "Territoire Palestinien"
+
+
+msgid "Portugal"
+msgstr "Portugal"
+
+
+msgid "Palau"
+msgstr "Palau"
+
+
+msgid "Paraguay"
+msgstr "Paraguay"
+
+
+msgid "Qatar"
+msgstr "Qatar"
+
+
+msgid "Reunion"
+msgstr "Réunion"
+
+
+msgid "Romania"
+msgstr "Roumanie"
+
+
+msgid "Serbia"
+msgstr "Serbie"
+
+
+msgid "Russia"
+msgstr "Russie"
+
+
+msgid "Rwanda"
+msgstr "Rwanda"
+
+
+msgid "Saudi Arabia"
+msgstr "Arabie Saoudite"
+
+
+msgid "Solomon Islands"
+msgstr "Îles Salomon"
+
+
+msgid "Seychelles"
+msgstr "Seychelles"
+
+
+msgid "Sudan"
+msgstr "Soudan"
+
+
+msgid "Sweden"
+msgstr "Suède"
+
+
+msgid "Singapore"
+msgstr "Singapour"
+
+
+msgid "Saint Helena"
+msgstr "Sainte-Hélène"
+
+
+msgid "Slovenia"
+msgstr "Slovénie"
+
+
+msgid "Svalbard and Jan Mayen"
+msgstr "Svalbard et Jan Mayen"
+
+
+msgid "Slovakia"
+msgstr "Slovaquie"
+
+
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+
+msgid "San Marino"
+msgstr "Saint-Marin"
+
+
+msgid "Senegal"
+msgstr "Sénégal"
+
+
+msgid "Somalia"
+msgstr "Somalie"
+
+
+msgid "Suriname"
+msgstr "Suriname"
+
+
+msgid "South Sudan"
+msgstr "Sud-Soudan"
+
+
+msgid "Sao Tome and Principe"
+msgstr "Sao Tomé et Principe"
+
+
+msgid "El Salvador"
+msgstr "El Salvador"
+
+
+msgid "Sint Maarten (Dutch part)"
+msgstr "Saint-Martin (partie néerlandaise)"
+
+
+msgid "Syria"
+msgstr "Syrie"
+
+
+msgid "Swaziland"
+msgstr "Swaziland"
+
+
+msgid "Turks and Caicos Islands"
+msgstr "Îles Turques et Caïques"
+
+
+msgid "Chad"
+msgstr "Tchad"
+
+
+msgid "French Southern Territories"
+msgstr "Terres australes françaises"
+
+
+msgid "Togo"
+msgstr "Togo"
+
+
+msgid "Thailand"
+msgstr "Thaïlande"
+
+
+msgid "Tajikistan"
+msgstr "Tadjikistan"
+
+
+msgid "Tokelau"
+msgstr "Tokelau"
+
+
+msgid "Timor-Leste"
+msgstr "Timor-Leste"
+
+
+msgid "Turkmenistan"
+msgstr "Turkménistan"
+
+
+msgid "Tunisia"
+msgstr "Tunisie"
+
+
+msgid "Tonga"
+msgstr "Tonga"
+
+
+msgid "Turkey"
+msgstr "Turquie"
+
+
+msgid "Trinidad and Tobago"
+msgstr "Trinité-et-Tobago"
+
+
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+
+msgid "Taiwan"
+msgstr "Taiwan"
+
+
+msgid "Tanzania"
+msgstr "Tanzanie"
+
+
+msgid "Ukraine"
+msgstr "Ukraine"
+
+
+msgid "Uganda"
+msgstr "Ouganda"
+
+
+msgid "United States Minor Outlying Islands"
+msgstr "États-Unis Îles Mineures Éloignées"
+
+
+msgid "United States"
+msgstr "États-Unis"
+
+
+msgid "Uruguay"
+msgstr "Uruguay"
+
+
+msgid "Uzbekistan"
+msgstr "Ouzbékistan"
+
+
+msgid "Vatican"
+msgstr "Vatican"
+
+
+msgid "Saint Vincent and the Grenadines"
+msgstr "Saint-Vincent-et-les Grenadines"
+
+
+msgid "Venezuela"
+msgstr "Venezuela"
+
+
+msgid "British Virgin Islands"
+msgstr "Îles Vierges britanniques"
+
+
+msgid "U.S. Virgin Islands"
+msgstr "Îles Vierges américaines"
+
+
+msgid "Vietnam"
+msgstr "Vietnam"
+
+
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+
+msgid "Wallis and Futuna"
+msgstr "Wallis et Futuna"
+
+
+msgid "Samoa"
+msgstr "Samoa"
+
+
+msgid "Yemen"
+msgstr "Yemen"
+
+
+msgid "Mayotte"
+msgstr "Mayotte"
+
+
+msgid "South Africa"
+msgstr "Afrique du Sud"
+
+
+msgid "Zambia"
+msgstr "Zambie"
+
+
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
+
+
+msgid "Country of residence"
+msgstr "Pays de résidence "
+
+
+msgid "Country"
+msgstr "Pays"
+
+
+msgid "On"
+msgstr "En date du"
+
+
+msgid "No spaces allowed"
+msgstr "Aucun espace alloué"
+
+
+msgid "How many people have joined the study?"
+msgstr "Combien de participants ont déjà été recrutés ?"
+
+
+msgid ""
+"If needed, supplementary information about current number of collected "
+"biological samples"
+msgstr ""
+"Information supplémentaire sur les échantillons biologiques collectés, si "
+"nécessaire"
+
+
+msgid "On"
+msgstr "En date du"
+
+
+msgid "No spaces allowed"
+msgstr "Aucun espace alloué"
+
+
+msgid "For how many people have biological samples been collected?"
+msgstr ""
+"Combien de participants ont déjà fourni un échantillon biologique, duquel il "
+"sera possible d’extraire de l’ADN?"
+
+
+msgid ""
+"If needed, supplementary information about current number of participants "
+"recruited at baseline"
+msgstr ""
+"Information supplémentaire sur le nombre courant de participants recrutés "
+"durant la phase initiale, si nécessaire"
+
+
+msgid "No"
+msgstr "Non"
+
+
+msgid "Yes"
+msgstr "Oui"
+
+
+msgid "Data Access Committee member"
+msgstr "Membre du comité d'accès aux données"
+
+
+msgid "Data Access Request"
+msgstr "Demande d'accès aux données"
+
+
+msgid "Data Access Review"
+msgstr "Revue des accès aux données"
+
+
+msgid "Data Source"
+msgstr "Source de données"
+
+
+msgid "Biological samples"
+msgstr "Échantillons biologiques"
+
+
+msgid "Genealogical records"
+msgstr "Registres généalogiques"
+
+
+msgid "Electronic health databases (death or hospitalization registries, etc.)"
+msgstr "Bases de données électroniques en santé (Décès, hospitalisation, etc.)"
+
+
+msgid "Direct access to participants medical paper files"
+msgstr "Accès direct aux dossiers médicaux"
+
+
+msgid "Others"
+msgstr "Autres"
+
+
+msgid "Physical measures"
+msgstr "Mesures physiques"
+
+
+msgid "Questionnaires"
+msgstr "Questionnaires"
+
+
+msgid ""
+"How is information obtained? (answer by yes or no, and specify if the "
+"information collection is cross sectional or if it involves repeated "
+"measurements)"
+msgstr ""
+"De quelle façon l’information est-elle recueillie ? (Si applicable, "
+"spécifiez également si la collecte d’information est effectuée de façon "
+"transversale ou continue (impliquant des mesures répétées))"
+
+
+msgid "Data sources"
+msgstr "Sources de données"
+
+
+msgid "Please specify what other data sources"
+msgstr "Précisez les autres sources de données"
+
+
+msgid "Dataset"
+msgstr "Jeu de données"
+
+
+msgid "Choose which dataset is needed for your project."
+msgstr "Sélectionner le jeu de données requis pour votre projet."
+
+
+msgid "Dataset"
+msgstr "Jeu de données"
+
+
+msgid "Studies"
+msgstr "Études"
+
+
+msgid "Harmonization dataset"
+msgstr "Jeu de données d'harmonisation"
+
+
+msgid "Study dataset"
+msgstr "Jeu de données d'une étude"
+
+
+msgid "Dataset Type"
+msgstr "Type de jeu de données"
+
+
+msgid "Variables"
+msgstr "Variables"
+
+
+msgid "Department/Unit"
+msgstr "Département/Unité"
+
+
+msgid "Case-control study"
+msgstr "Cas-témoin"
+
+
+msgid "Case only study"
+msgstr "Étude de cas"
+
+
+msgid "Clinical trial / intervention trial"
+msgstr "Essai clinique"
+
+
+msgid "Cohort study"
+msgstr "Cohorte/Étude longitudinale"
+
+
+msgid "Cross-sectional prevalence study"
+msgstr "Étude transversale"
+
+
+msgid "Other"
+msgstr "Autre"
+
+
+msgid "Registry"
+msgstr "Registre"
+
+
+msgid "What is the study design?"
+msgstr "Quel est le devis de l'étude?"
+
+
+msgid "Please specify what other design"
+msgstr "Précisez les autres devis"
+
+
+msgid "Diseases History and Related Health Problems"
+msgstr "Histoire des maladies et des problèmes de santé connexes"
+
+
+msgid "Documents"
+msgstr "Documents"
+
+
+msgid "Participant's Early Life/Childhood"
+msgstr "Naissance du participant/Enfance"
+
+
+msgid "End year"
+msgstr "Dernière année"
+
+
+msgid "Essence"
+msgstr "Essence"
+
+
+msgid "Ethnic Origin"
+msgstr "Origine ethnique"
+
+
+msgid "Event Date"
+msgstr "Date de l'événement"
+
+
+msgid "Files"
+msgstr "Fichiers"
+
+
+msgid "URL"
+msgstr "URL"
+
+
+msgid "Files"
+msgstr "Fichiers"
+
+
+msgid "Files"
+msgstr "Fichiers"
+
+
+msgid "End year"
+msgstr "Dernière année"
+
+
+msgid "Start year"
+msgstr "Année de début"
+
+
+msgid "Men only"
+msgstr "Hommes uniquement"
+
+
+msgid "Women only"
+msgstr "Femmes uniquement"
+
+
+msgid "Gender"
+msgstr "Sexe"
+
+
+msgid "Health Status"
+msgstr "Condition de santé"
+
+
+msgid "Upload an image to go with this article."
+msgstr "Télécharger une image allant avec l'article."
+
+
+msgid "Image"
+msgstr "Image"
+
+
+msgid "Individual Participant Measures"
+msgstr "Mesures individuelles des participants"
+
+
+msgid "Institution name"
+msgstr "Nom de l'institution"
+
+
+msgid "Institution Name"
+msgstr "Nom de l'institution"
+
+
+msgid "Instructions"
+msgstr "Instructions"
+
+
+msgid ""
+"Enter the Investigator full name. You will be able to edit these "
+"Investigators once the Study will be saved."
+msgstr ""
+"Entrez le nom complet du chercheur. Vous pourrez éditer ces chercheurs une "
+"fois l'étude enregistrée."
+
+
+msgid "Investigators"
+msgstr "Chercheurs"
+
+
+msgid "Label"
+msgstr "Libellé"
+
+
+msgid "Laboratory Measures"
+msgstr "Mesures de laboratoire"
+
+
+msgid "Life Habits/Behaviours"
+msgstr "Habitudes de vie/Comportements"
+
+
+msgid "Logo"
+msgstr "Logo"
+
+
+msgid "Marker paper describing your study"
+msgstr "Article de référence décrivant votre étude"
+
+
+msgid "Measure"
+msgstr "Mesure"
+
+
+msgid "Medical Health Interventions/Health Services Utilization"
+msgstr "Interventions médicales/Utilisation des services médicaux"
+
+
+msgid "Medication"
+msgstr "Médication"
+
+
+msgid "Minutes"
+msgstr "Compte-rendus"
+
+
+msgid "No limits in the number of participants"
+msgstr "Aucune limite dans le nombre de participants"
+
+
+msgid "No limits in the number of samples"
+msgstr "Aucune limite dans le nombre d'échantillons"
+
+
+msgid "Label"
+msgstr "Libellé"
+
+
+msgid "Field Name"
+msgstr "Nom du champ"
+
+
+msgid ""
+"If needed, supplementary information about selection criteria of the "
+"population"
+msgstr ""
+"Information supplémentaire sur les critères de sélection de la population, "
+"si nécessaire"
+
+
+msgid "Perception of Health/Quality of life"
+msgstr "Perception de la santé/Qualité de vie"
+
+
+msgid "Period"
+msgstr "Période"
+
+
+msgid "Physical Environment"
+msgstr "Environnement physique"
+
+
+msgid ""
+"Position of the Variable within its Dataset. \n"
+"Set to 0 to set variable at last position.  "
+msgstr ""
+"Position de la variable dans le jeu de données. \n"
+"Placez à 0 pour mettre la variable à la dernière position."
+
+
+msgid "Position index"
+msgstr "Index de position"
+
+
+msgid "Postal Code"
+msgstr "Code postal"
+
+
+msgid "Postal Code"
+msgstr "Code postal"
+
+
+msgid "End year"
+msgstr "Dernière année"
+
+
+msgid "Start year"
+msgstr "Année de début"
+
+
+msgid "Project"
+msgstr "Projet"
+
+
+msgid "Provide a clear description of the project and its specific aims."
+msgstr ""
+"Ajouter une description précise de votre projet et des objectifs spécifiques."
+
+
+msgid "Summary"
+msgstr "Résumé"
+
+
+msgid "PMID"
+msgstr "PMID"
+
+
+msgid "Reference"
+msgstr "Référence"
+
+
+msgid "URL"
+msgstr "URL"
+
+
+msgid "Pubmed Id"
+msgstr "Identifiant Pubmed"
+
+
+msgid "Questionnaires"
+msgstr "Questionnaires"
+
+
+msgid "If needed, supplementary information about recruitment procedures"
+msgstr ""
+"Information supplémentaire sur les procédures de recrutement, si nécessaire"
+
+
+msgid ""
+"Families (including twin studies, sibships and family based birth cohorts)"
+msgstr ""
+"Familles (Incluant les études de jumeaux et les cohortes de naissances "
+"ciblant la famille)"
+
+
+msgid "Individuals"
+msgstr "Individus"
+
+
+msgid "Other"
+msgstr "Autre"
+
+
+msgid "The study targets the recruitment of"
+msgstr "L’étude vise le recrutement de"
+
+
+msgid "Please specify what other source of recruitment"
+msgstr "Précisez les autres sources de recrutement"
+
+
+msgid "Please specify what other recruitment target"
+msgstr "Précisez les autres types de participants"
+
+
+msgid "Sources of recruitment"
+msgstr "Sources de recrutement"
+
+
+msgid "If needed, supplementary information about study design"
+msgstr "Information supplémentaire sur le devis de l'étude, si nécessaire"
+
+
+msgid "Representative Email"
+msgstr "Email représentatif"
+
+
+msgid "No"
+msgstr "Non"
+
+
+msgid "Yes"
+msgstr "Oui"
+
+
+msgid "Can this field have multiple values?"
+msgstr "Ce champ peut-il avoir plusieurs valeurs?"
+
+
+msgid "Repeatable"
+msgstr "Répétable"
+
+
+msgid "Can this variable have multiple values?"
+msgstr "Cette variable peut-elle avoir plusieurs valeurs ?"
+
+
+msgid "Repeatable"
+msgstr "Répétable"
+
+
+msgid "Representative Name"
+msgstr "Nom représentatif"
+
+
+msgid "Reproductive Health and History"
+msgstr "Histoire et santé de la reproduction"
+
+
+msgid "Notes"
+msgstr "Notes"
+
+
+msgid "Accepted"
+msgstr "Accepté"
+
+
+msgid "Incomplete"
+msgstr "Incomplet"
+
+
+msgid "Rejected"
+msgstr "Rejeté"
+
+
+msgid "Submitted"
+msgstr "Soumis"
+
+
+msgid "Status"
+msgstr "Statut"
+
+
+msgid "Please specify what other biological samples"
+msgstr "Précisez les autres échantillons biologiques"
+
+
+msgid ""
+"If needed, supplementary information about target number of biological "
+"samples"
+msgstr ""
+"Information supplémentaire sur le nombre ciblé d'échantillons biologiques, "
+"si nécessaire"
+
+
+msgid "Gravidity (pregnant women)"
+msgstr "Femmes enceintes"
+
+
+msgid "Newborn"
+msgstr "Nouveau-nés"
+
+
+msgid "Twin"
+msgstr "Jumeaux"
+
+
+msgid "when appropriate, specify the criteria."
+msgstr "Lorsqu'approprié, précisez le critère."
+
+
+msgid "What is the selection criteria for participants?"
+msgstr "Quels sont les critères de sélection des participants"
+
+
+msgid "Please specify what other selection criteria"
+msgstr "Précisez les autres critères de sélection"
+
+
+msgid "Social Environment"
+msgstr "Environnement social"
+
+
+msgid "Sociodemographic/Socioeconomic Characteristics"
+msgstr "Caractéristiques sociodémographiques/socioéconomiques"
+
+
+msgid "State/Province"
+msgstr "État/Province"
+
+
+msgid "State/Province"
+msgstr "État/Province"
+
+
+msgid "If needed, supplementary information about current study status"
+msgstr ""
+"Information supplémentaire sur le statut actuel de l'étude, si nécessaire"
+
+
+msgid "Street"
+msgstr "Rue"
+
+
+msgid "Consortium's studies involved."
+msgstr "Études du consortium impliquées"
+
+
+msgid "Studies"
+msgstr "Études"
+
+
+msgid "Study Variables Attributes"
+msgstr "Attributs des variables de l'étude"
+
+
+msgid "Supplementary information"
+msgstr "Information supplémentaire"
+
+
+msgid "Comment"
+msgstr "Commentaire"
+
+
+msgid "Script"
+msgstr "Script"
+
+
+msgid "Complete"
+msgstr "Complet"
+
+
+msgid "Impossible"
+msgstr "Impossible"
+
+
+msgid "Undetermined"
+msgstr "Indéterminé"
+
+
+msgid "Status"
+msgstr "Statut"
+
+
+msgid "Study"
+msgstr "Étude"
+
+
+msgid "Variable"
+msgstr "Variable"
+
+
+msgid "Enter a comma-separated list of words to describe your content."
+msgstr ""
+"Entrer une virgule pour séparer la liste des mots décrivant votre contenu. "
+
+
+msgid "Tags"
+msgstr "Étiquettes"
+
+
+msgid "Target"
+msgstr "Cible"
+
+
+msgid ""
+"If needed, supplementary information about target number of participants"
+msgstr ""
+"Information supplémentaire sur le nombre ciblé de participants, si nécessaire"
+
+
+msgid ""
+"How many people have provided or should provide biological samples, from "
+"which DNA could be extracted?"
+msgstr ""
+"Combien de participants ont fourni ou fourniront des échantillons "
+"biologiques desquels il sera possible d’extraire de l’ADN?"
+
+
+msgid ""
+"How many people are planned to be recruited? Or if the study is completed, "
+"what is the final number of participants?"
+msgstr ""
+"Combien de participants seront recrutés ? Ou, si le recrutement est terminé, "
+"quel est le nombre final de participants ?"
+
+
+msgid "Date"
+msgstr "Date"
+
+
+msgid "Description"
+msgstr "Description"
+
+
+msgid "Teleconferences"
+msgstr "Téléconférences"
+
+
+msgid "Telephone"
+msgstr "Téléphone"
+
+
+msgid "Territory or city of residence"
+msgstr "Territoire ou ville de résidence"
+
+
+msgid "Please specify type of tissues"
+msgstr "Précisez le type de tissus"
+
+
+msgid "Unit"
+msgstr "Unité"
+
+
+msgid "Boolean"
+msgstr "Booléen"
+
+
+msgid "Date"
+msgstr "Date"
+
+
+msgid "Date time"
+msgstr "Date temps"
+
+
+msgid "Decimal"
+msgstr "Décimal"
+
+
+msgid "Integer"
+msgstr "Entier"
+
+
+msgid "Text"
+msgstr "Texte"
+
+
+msgid "Value Type"
+msgstr "Type de valeur"
+
+
+msgid "Value Type"
+msgstr "Type de valeur"
+
+
+msgid "Categories"
+msgstr "Catégories"
+
+
+msgid "Study Variables Attributes"
+msgstr "Attributs des variables de l'étude"
+
+
+msgid "Website"
+msgstr "Site Web"
+
+
+msgid "Datasets"
+msgstr "Jeu de données"
+
+
+msgid "Opal"
+msgstr "Opal"
+
+
+msgid "Forums"
+msgstr "Forums"

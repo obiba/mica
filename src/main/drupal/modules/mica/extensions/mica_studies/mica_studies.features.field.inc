@@ -226,6 +226,7 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
         'max_length' => '255',
@@ -240,11 +241,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '11',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -326,10 +327,9 @@ function mica_studies_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '12',
+          'type' => 'hidden',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -650,10 +650,9 @@ function mica_studies_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'list',
           'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '15',
+          'type' => 'hidden',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -719,11 +718,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'email',
           'settings' => array(),
           'type' => 'email_default',
-          'weight' => '0',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -879,7 +878,7 @@ function mica_studies_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -992,8 +991,8 @@ function mica_studies_field_default_fields() {
           'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '10',
+          'type' => 'hidden',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1075,10 +1074,9 @@ function mica_studies_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '9',
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1160,10 +1158,9 @@ function mica_studies_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '13',
+          'type' => 'hidden',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1239,10 +1236,9 @@ function mica_studies_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '14',
+          'type' => 'hidden',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1323,7 +1319,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -1405,7 +1401,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 16,
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',

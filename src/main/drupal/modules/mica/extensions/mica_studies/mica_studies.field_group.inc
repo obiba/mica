@@ -3420,17 +3420,16 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Institution',
-    'weight' => '3',
+    'weight' => '6',
     'children' => array(
-      0 => 'field_address',
-      1 => 'field_city',
-      2 => 'field_contact_country',
+      0 => 'field_city',
+      1 => 'field_contact_country',
+      2 => 'field_department_unit',
       3 => 'field_institution_name',
       4 => 'field_postal_code',
       5 => 'field_state',
-      6 => 'field_department_unit',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'hidden',
     'format_settings' => array(
       'formatter' => 'collapsible',
       'instance_settings' => array(

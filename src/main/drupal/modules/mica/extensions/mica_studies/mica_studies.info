@@ -480,7 +480,6 @@ features[node][] = contact
 features[node][] = documents
 features[node][] = study
 features[page_manager_handlers][] = node_view_panel_context
-features[page_manager_handlers][] = node_view_panel_context_2
 features[page_manager_pages][] = homepage
 features[search_api_index][] = studies_index
 features[taxonomy][] = sources_of_recruitment
