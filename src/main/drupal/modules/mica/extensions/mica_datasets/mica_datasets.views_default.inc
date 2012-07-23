@@ -471,7 +471,7 @@ function mica_datasets_views_default_views() {
     t('Please specify what other design'),
     t('([field_design_other_sp])'),
     t('Study design'),
-    t('[field_design] [field_design_other_sp] '),
+    t('[field_design] [field_design_other_sp]'),
     t('Target number of participants'),
     t('Country of residence'),
     t('All'),

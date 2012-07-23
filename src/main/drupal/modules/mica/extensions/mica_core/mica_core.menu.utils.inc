@@ -30,7 +30,9 @@ function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $
   $menu['link_title'] = $menu_title;
   $menu['link_path'] = $menu_path;
   $menu['weight'] = $weight;
-  if (!empty($router_path)) $menu['router_path'] = $router_path;
+  if (!empty($router_path)) {
+    $menu['router_path'] = $router_path;
+  }
 
   if ($menu['link_path'] === '<firstchild>') {
     $menu['options']['alter'] = TRUE;
@@ -66,7 +68,9 @@ function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $
  */
 function mica_core_create_node_default_menu($node, $hidden = FALSE, $expanded = FALSE, $weight = 0, $default_parent_path = '') {
 
-  if(empty($node)) return NULL;
+  if (empty($node)) {
+    return NULL;
+  }
 
   // create menu based on content type menu config
   $menu = isset($node->menu) ? $node->menu : array();
@@ -118,7 +122,9 @@ function mica_core_find_menu_weight($menu_path) {
 
 function mica_core_find_menu_for_alias($url_alias) {
   $path = path_load(array('alias' => $url_alias));
-  if (empty($path)) return NULL;
+  if (empty($path)) {
+    return NULL;
+  }
   $menu = db_query(
     "SELECT * FROM {menu_links} WHERE link_path = :link_path AND menu_name = :menu_name",
     array(

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Mica Dataset Harmonization page
+ */
+
 /*
  * Menu for callback of refresh harmonization
  */

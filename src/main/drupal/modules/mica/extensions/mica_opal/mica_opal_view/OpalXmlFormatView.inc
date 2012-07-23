@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Mica Opal XML View generator
+ */
 
 
 class OpalXmlFormatView extends RESTServerView {

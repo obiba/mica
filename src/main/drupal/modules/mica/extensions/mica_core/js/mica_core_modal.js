@@ -2,7 +2,7 @@
 * Provide the HTML to create the modal dialog.
 */
 Drupal.theme.prototype.MicaModal = function () {
-  var html = ''
+  var html = '';
 
   html += '<div id="ctools-modal" class="popups-box">';
   html += '  <div class="ctools-modal-content mica-modal-content">';
@@ -21,4 +21,4 @@ Drupal.theme.prototype.MicaModal = function () {
 
   return html;
 
-}
+};

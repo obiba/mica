@@ -37,7 +37,8 @@ function mica_datasets_dataset_connection_modal_page($js = NULL, $connection_ent
   if ($js) {
     $title = t('!dataset -- !study', array(
       '!dataset' => $dataset_node->title,
-      '!study' => $study_node->title));
+      '!study' => $study_node->title
+    ));
 
     mica_core_modal_form_render($title, 'mica_datasets_dataset_connection_form', $connection_entity, $dataset_node, $study_node);
   }
@@ -56,7 +57,8 @@ function mica_datasets_dataset_connection_modal_page($js = NULL, $connection_ent
 function mica_datasets_dataset_connection_page($connection_entity, $dataset_node, $study_node) {
   drupal_set_title(t('!dataset -- !study', array(
     '!dataset' => check_plain($dataset_node->title),
-    '!study' => check_plain($study_node->title))));
+    '!study' => check_plain($study_node->title)
+  )));
 
   return drupal_get_form('mica_datasets_dataset_connection_form', $connection_entity, $dataset_node, $study_node);
 }
@@ -194,7 +196,6 @@ function mica_datasets_dataset_studies_form($form, &$form_state) {
   ));
 
   $dataset_node = _mica_datasets_get_node_form_arg($form_state);
-  $dataset_node_id = $dataset_node->nid;
 
   $study_node_ids = _mica_datasets_get_study_ids($dataset_node->nid);
 
@@ -220,11 +221,11 @@ function mica_datasets_dataset_studies_form($form, &$form_state) {
 
   // build the table options
   $options = array();
-  foreach ($study_node_ids as $study_node_id => $study_node) {
+  foreach ($study_node_ids as $study_node) {
     _mica_datasets_add_connection_option($options, $dataset_node, $study_node, $dataset_node);
   }
 
-  _mica_datasets_add_table_form($form, 'Study', 'No studies found', $options);
+  _mica_datasets_add_table_form($form, t('Study'), t('No studies found'), $options);
 
   return $form;
 }
@@ -413,7 +414,7 @@ function mica_datasets_dataset_connection_form_validate($form, &$form_state) {
     // display errors
     if (!empty($form_errors)) {
       foreach ($form_errors as $key => $msg) {
-        form_set_error($key, $msg);
+        form_set_error($key, check_plain($msg));
       }
     }
   }
@@ -442,7 +443,7 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
         $values['module'] = 'mica_datasets';
 
         if (mica_dataset_connector_insert($values) === FALSE) {
-          drupal_set_message(t('Unable to save connection: !name', array('!name' => check_plain($values['name']))), 'error');
+          drupal_set_message(check_plain(t('Unable to save connection: !name', array('!name' => check_plain($values['name'])))), 'error');
         }
       }
       else {
@@ -452,7 +453,7 @@ function mica_datasets_dataset_connection_form_submit($form, &$form_state) {
         $connector->enabled = $connection_type == 'none' ? FALSE : TRUE;
 
         if ($connector->save() === FALSE) {
-          drupal_set_message(t('Unable to save connection: !name', array('!name' => check_plain($connector->name))), 'error');
+          drupal_set_message(check_plain(t('Unable to save connection: !name', array('!name' => check_plain($connector->name)))), 'error');
         }
       }
       $form_state['complete'] = TRUE;

@@ -244,9 +244,9 @@ class CategoryTerm extends AbstractTerm {
     }
     $row = array(
       array(
-      'data' => t('All'),
-      'class' => array('active')
-        )
+        'data' => t('All'),
+        'class' => array('active')
+      )
     );
     foreach ($stats as $study_id => $stat) {
       $row[] = array(
@@ -455,7 +455,8 @@ class RangeTerm extends AbstractTerm {
       '#options' => array(
         'exists' => t('Any value'),
         'exact' => t('Exact Value'),
-        'range' => t('Range')),
+        'range' => t('Range')
+      ),
     );
 
     $form['valuecontainer']['fieldset']['value'] = array(
@@ -564,9 +565,15 @@ class RangeTerm extends AbstractTerm {
 
   private function formToRanges($value, $min, $max) {
     $range = array();
-    if (isset($value)) $range['value'] = $value;
-    if (isset($min)) $range['from'] = $min;
-    if (isset($max)) $range['to'] = $max;
+    if (isset($value)) {
+      $range['value'] = $value;
+    }
+    if (isset($min)) {
+      $range['from'] = $min;
+    }
+    if (isset($max)) {
+      $range['to'] = $max;
+    }
     return array($range);
   }
 
@@ -658,11 +665,12 @@ class TodoTerm extends AbstractTerm {
     $selection = trim($form_state['values']['value']);
     $inverted = $form_state['values']['inverted'];
 
-    if (strcmp($selection,'') == 0) {
+    if (strcmp($selection, '') == 0) {
       $selection = array();
-    } else {
+    }
+    else {
       $selection = explode(" ", $selection);
-      foreach($selection as $key => $value) {
+      foreach ($selection as $key => $value) {
         $selection[$key] = strtolower($value);
       }
     }
@@ -681,9 +689,9 @@ class TodoTerm extends AbstractTerm {
 
   function toString() {
     $str = parent::toString();
-    if (count($this->match())>0) {
+    if (count($this->match()) > 0) {
       $str .= $this->isInverted() ? ' not in ' : ' in ';
-      $str .= '(' . implode(', ',$this->match()) . ')';
+      $str .= '(' . implode(', ', $this->match()) . ')';
     }
     return $str;
   }

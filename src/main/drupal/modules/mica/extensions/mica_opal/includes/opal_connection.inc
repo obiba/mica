@@ -99,8 +99,8 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
     $study_node = node_load($connector->study_id);
     $url = $study_node->mica_opal[$study_node->language][0]['url'];
     // remove trailing slashes
-    while (strlen($url) > 0 && substr($url,strlen($url)-1) == '/') {
-      $url = substr($url,0,strlen($url)-1);
+    while (strlen($url) > 0 && substr($url, strlen($url) - 1) == '/') {
+      $url = substr($url, 0, strlen($url) - 1);
     }
     $url .= "/ws/datasource/" . $connector->options['datasource'] . '/table/' . $connector->options['table'] . "/" . $resource;
     return $url;
@@ -112,9 +112,10 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
     }
 
     // if mapping is defined return it, otherwise return identity
-    if (array_key_exists($fieldname,$this->fieldname_map)) {
+    if (array_key_exists($fieldname, $this->fieldname_map)) {
       return $this->fieldname_map[$fieldname];
-    } else {
+    }
+    else {
       return $fieldname;
     }
   }
@@ -123,35 +124,35 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
    * Get the field name mapping from Opal if this is defined.
    */
   private function requestFieldNameMapping() {
-      $url = $this->getTableResourceURI("index/_schema");
+    $url = $this->getTableResourceURI("index/_schema");
 
-      $get = new HttpClientRequest($url, array(
-          'method' => 'GET',
-          'headers' => array('Accept' => array('application/json')),
-          'parameters' => array(),
-      ));
+    $get = new HttpClientRequest($url, array(
+      'method' => 'GET',
+      'headers' => array('Accept' => array('application/json')),
+      'parameters' => array(),
+    ));
 
-      $this->fieldname_map = array();
-      try {
-          $client = $this->client();
-          $schema = json_decode($client->execute($get), TRUE);
-          //debug($schema);
-          if (is_array($schema['keys'])) {
-              $keys = $schema['keys'];
-              $values = $schema['values'];
-              $count = count($keys);
-              foreach($keys as $idx => $key) {
-                $this->fieldname_map[$key] = $values[$idx];
-                // do not know why it goes in infinite loop
-                if ($idx>=$count) {
-                    break;
-                }
-              }
+    $this->fieldname_map = array();
+    try {
+      $client = $this->client();
+      $schema = json_decode($client->execute($get), TRUE);
+      //debug($schema);
+      if (is_array($schema['keys'])) {
+        $keys = $schema['keys'];
+        $values = $schema['values'];
+        $count = count($keys);
+        foreach ($keys as $idx => $key) {
+          $this->fieldname_map[$key] = $values[$idx];
+          // do not know why it goes in infinite loop
+          if ($idx >= $count) {
+            break;
           }
-      } catch (HttpClientException $e) {
-          // ignore
+        }
       }
-      //debug($this->fieldname_map);
+    } catch (HttpClientException $e) {
+      // ignore
+    }
+    //debug($this->fieldname_map);
   }
 
   protected function sendQuery($query) {

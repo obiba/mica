@@ -496,8 +496,8 @@ END;
         }
         break;
       case 'TodoTerm':
-        if (count($term->match())>0) {
-          $matchStr = implode('","',$term->match());
+        if (count($term->match()) > 0) {
+          $matchStr = implode('","', $term->match());
           $filter = <<< END
   "terms" : {
     "{$fieldname}":["{$matchStr}"]

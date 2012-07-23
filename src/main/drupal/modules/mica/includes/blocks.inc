@@ -51,7 +51,7 @@ function mica_search_form(&$form, &$form_state) {
 
   $form['link'] = array(
     '#type' => 'link',
-    '#title' => t('Advanced !title', array('!title' => t($title))),
+    '#title' => check_plain(t('Advanced !title', array('!title' => t($title)))),
     '#href' => 'studies-search',
     '#prefix' => '<div class="advanced">',
     '#suffix' => '</div>',
@@ -124,7 +124,8 @@ function mica_search_api_form($form, &$form_state) {
 
 function mica_search_api_form_submit($form, &$form_state) {
   drupal_goto($form_state['build_info']['args'][0], array(
-      'query' => array('search_api_views_fulltext' => $form_state['values']['search']))
+      'query' => array('search_api_views_fulltext' => $form_state['values']['search'])
+    )
   );
 }
 
@@ -154,7 +155,7 @@ function mica_search_filters_block_content() {
 
         $name = $data[$block->delta]['info'];
         $parts = explode(':', $name);
-        if(count($parts) > 3) {
+        if (count($parts) > 3) {
           unset($parts[0]);
           unset($parts[1]);
           unset($parts[2]);
@@ -215,7 +216,7 @@ function mica_search_filters_form($form, &$form_state, $blocks) {
 
   $form['link'] = array(
     '#type' => 'link',
-    '#title' => t('More about !title', array('!title' => t($title))),
+    '#title' => check_plain(t('More about !title', array('!title' => t($title)))),
     '#href' => 'fields-description-search',
     '#prefix' => '<div class="advanced">',
     '#suffix' => '</div>',
