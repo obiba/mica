@@ -15,6 +15,7 @@
             <option name="USE_RELATIVE_INDENTS" value="false" />
           </value>
         </option>
+        <option name="LINE_SEPARATOR" value="&#10;" />
         <JSCodeStyleSettings>
           <option name="SPACE_AFTER_PROPERTY_COLON" value="true" />
         </JSCodeStyleSettings>

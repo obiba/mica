@@ -31,7 +31,7 @@ function mica_studies_configure_facet_blocks() {
       foreach ($realms as $realm_name => $realm) {
         $delta = facetapi_hash_delta(facetapi_build_delta($searcher, $realm_name, $facet['name']));
         if (facetapi_save_facet_disabled($adapter, $realm, $facet)) {
-          _disable_search_block($delta);
+          _mica_field_description_disable_search_block($delta);
         }
       }
     }

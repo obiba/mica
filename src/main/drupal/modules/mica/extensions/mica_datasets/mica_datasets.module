@@ -243,7 +243,7 @@ function mica_datasets_menu() {
 
   $items['variables/autocomplete/%'] = array(
     'access callback' => TRUE,
-    'page callback' => 'variables_autocomplete',
+    'page callback' => 'mica_datasets_variables_autocomplete',
     'page arguments' => array(2),
     'type' => MENU_CALLBACK,
     'file' => 'mica_datasets.pages.query.inc',
@@ -299,7 +299,7 @@ function mica_datasets_menu() {
     'description' => 'Manage Mica Unit.',
     'access callback' => 'user_access',
     'access arguments' => array(0),
-    'page callback' => 'unit_certificate_page',
+    'page callback' => 'mica_datasets_unit_certificate_page',
     'page arguments' => array(0),
     'file' => 'mica_datasets.pages.unit.inc',
     'type' => MENU_NORMAL_ITEM,
@@ -309,7 +309,7 @@ function mica_datasets_menu() {
     'access callback' => 'user_access',
     'access arguments' => array(0),
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('unit_form'),
+    'page arguments' => array('mica_datasets_unit_form'),
     'file' => 'mica_datasets.pages.unit.inc',
     'type' => MENU_LOCAL_ACTION,
   );
@@ -1199,7 +1199,7 @@ function mica_datasets_feeds_after_parse(FeedsSource $source, FeedsParserResult 
         $nid = $src_config['mica_dataset_connector'];
         $connector_node = mica_dataset_connector_load($nid);
         $dataset_id = $connector_node->dataset_id;
-        $titleSource = _find_source_for_target($source->importer->processor, 'title');
+        $titleSource = _mica_datasets_find_source_for_target($source->importer->processor, 'title');
         foreach ($result->items as &$item) {
           $item['dataset_id'] = $dataset_id;
           $item['uid'] = $dataset_id . ":" . $item[$titleSource];
@@ -1218,7 +1218,7 @@ function mica_datasets_feeds_after_parse(FeedsSource $source, FeedsParserResult 
  *
  * @return the name of source item mapped to the target (e.g.: 'jsonpath:0')
  */
-function _find_source_for_target(FeedsProcessor $processor, $target) {
+function _mica_datasets_find_source_for_target(FeedsProcessor $processor, $target) {
   $config = $processor->getConfig();
   foreach ($config['mappings'] as $map) {
     if ($map['target'] == $target) {

@@ -127,7 +127,7 @@ function mica_datasets_dataset_variables_form($form, &$form_state, $node) {
     '#type' => 'fieldset',
     '#title' => t('Status'),
     '#tree' => TRUE,
-    '#value' => _feeds_source_status($source),
+    '#value' => _mica_datasets_feeds_source_status($source),
   );
   $form['feeds'] = array(
     '#type' => 'fieldset',
@@ -160,7 +160,7 @@ function mica_datasets_dataset_variables_form_validate($form, &$form_state) {
  * TODO COPY FROM feeds.page.inc, call of feeds_source_status($source) failed...
  * Renders a status display for a source.
  */
-function _feeds_source_status($source) {
+function _mica_datasets_feeds_source_status($source) {
   $progress_importing = $source->progressImporting();
   $v = array();
   if ($progress_importing != FEEDS_BATCH_COMPLETE) {

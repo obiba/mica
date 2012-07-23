@@ -1,5 +1,5 @@
 name = Mica Studies
-description = Mica Studies Features
+description = Mica Studies
 core = 7.x
 package = Mica
 php = 5.2.4

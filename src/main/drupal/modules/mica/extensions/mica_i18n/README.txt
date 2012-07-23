@@ -4,6 +4,9 @@ Mica i18n
 Configure Mica internationalization.
 
 
+INSTALLATION
+------------------------
+
 To have Mica in another language than english, follow these steps:
 
 - Enable the module "Mica_i18n" at /admin/modules
@@ -21,5 +24,6 @@ To have Mica in another language than english, follow these steps:
 
 
 KNOWN ISSUES:
+------------------------
 
 - Noderef_create does not work with i18n stuff

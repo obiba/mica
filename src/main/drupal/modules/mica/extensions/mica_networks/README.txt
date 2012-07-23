@@ -4,6 +4,9 @@ Mica networks
 Module for managing several study consortia or networks within a single Mica instance.
 
 
+INSTALLATION
+------------------------
+
 Once this module is enabled, to complete configuration, go to:
 
 1. Studies index fields (admin/config/search/search_api/index/studies_index/fields)

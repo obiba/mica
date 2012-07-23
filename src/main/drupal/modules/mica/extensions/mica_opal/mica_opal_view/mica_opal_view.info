@@ -1,5 +1,5 @@
 name = Mica Opal View formats
-description = Provides Opal view formatters for the REST server.
+description = Provides Opal view XML formatter for the REST server.
 core = 7.x
 package = Mica
 

@@ -101,7 +101,7 @@ function mica_field_description_node_delete($node) {
     $wrapper = entity_metadata_wrapper('node', $node);
     $bundle = $wrapper->field_bundle->value();
     $original_field_name = $wrapper->field_original_field_name->value();
-    _drop_search_index_field($bundle, $original_field_name);
+    _mica_field_description_drop_search_index_field($bundle, $original_field_name);
   }
 }
 
@@ -109,7 +109,7 @@ function mica_field_description_node_delete($node) {
  * Implements hook_field_delete_instance()
  */
 function mica_field_description_field_delete_instance($instance) {
-  $field_description = _find_field_description($instance['bundle'], $instance['field_name']);
+  $field_description = _mica_field_description_find_field_description($instance['bundle'], $instance['field_name']);
   if (!empty($field_description)) {
     node_delete($field_description->nid);
   }
@@ -157,7 +157,7 @@ function mica_field_description_form_field_ui_field_edit_form_alter(&$form, $for
       return; // field is locked, cannot edit it
     }
 
-    $field_description = _find_field_description($bundle, $field_name);
+    $field_description = _mica_field_description_find_field_description($bundle, $field_name);
 
     if (empty($field_description)) {
 
@@ -235,7 +235,7 @@ function mica_field_description_form_field_ui_field_edit_form_alter(&$form, $for
       ),
     );
 
-    $form['#submit'][] = '_edit_field_field_description';
+    $form['#submit'][] = '_mica_field_description_edit_field_field_description';
   }
 }
 
@@ -262,7 +262,7 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
     $field_index_type = $discrete ? 'string' : 'text';
   }
   else {
-    $mapping = _magma_search_index_type_mapping();
+    $mapping = _mica_field_description_magma_search_index_type_mapping();
     $field_index_type = $mapping[$type];
   }
 
@@ -313,8 +313,8 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
   }
 
   // Facets & ranges
-  $facet_supported = $discrete && _is_type_supports_facet($field_index_type);
-  $range_supported = !$facet_supported && _is_type_supports_ranges($field_index_type);
+  $facet_supported = $discrete && _mica_field_description_is_type_supports_facet($field_index_type);
+  $range_supported = !$facet_supported && _mica_field_description_is_type_supports_ranges($field_index_type);
 
   cache_clear_all();
 
@@ -342,7 +342,7 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
           }
         }
         elseif (facetapi_save_facet_disabled($adapter, $realm, $facet)) {
-          _disable_search_block($delta);
+          _mica_field_description_disable_search_block($delta);
         }
       }
     }
@@ -357,7 +357,7 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
 /**
  * Returns the value type mapping between Magma and Search API with Magma values as keys
  */
-function _magma_search_index_type_mapping() {
+function _mica_field_description_magma_search_index_type_mapping() {
   return array(
     'text' => 'text',
     'integer' => 'integer',
@@ -368,7 +368,7 @@ function _magma_search_index_type_mapping() {
 }
 
 
-function _disable_search_block($facet_delta) {
+function _mica_field_description_disable_search_block($facet_delta) {
   $theme_default = variable_get('theme_default', 'mica_samara');
   $nb = db_update('block')->fields(
     array(
@@ -391,13 +391,13 @@ function _disable_search_block($facet_delta) {
  * @param string $bundle
  * @param string $field_name
  */
-function _drop_search_index_field($bundle, $field_name) {
+function _mica_field_description_drop_search_index_field($bundle, $field_name) {
   $indexes = mica_core_find_indexes_by_bundle();
   if (isset($indexes[$bundle])) {
     $bundles_indexes = $indexes[$bundle];
     if (!empty($bundles_indexes)) {
       foreach ($bundles_indexes as $index_machine_name => $index_name) {
-        _remove_field_index($index_machine_name, $field_name);
+        _mica_field_description_remove_field_index($index_machine_name, $field_name);
       }
     }
   }
@@ -406,7 +406,7 @@ function _drop_search_index_field($bundle, $field_name) {
 /**
  * Disable field in search index
  */
-function _remove_field_index($index_name, $field_name) {
+function _mica_field_description_remove_field_index($index_name, $field_name) {
   $index = search_api_index_load($index_name, TRUE);
   $options = $index->options;
   $fields = $options['fields'];
@@ -424,13 +424,13 @@ function _remove_field_index($index_name, $field_name) {
     foreach ($realms as $realm_name => $realm) {
       if (facetapi_save_facet_disabled($adapter, $realm, $facet)) {
         $delta = facetapi_hash_delta(facetapi_build_delta($searcher, $realm_name, $facet['name']));
-        _disable_search_block($delta);
+        _mica_field_description_disable_search_block($delta);
       }
     }
   }
 }
 
-function _is_type_supports_facet($field_index_type) {
+function _mica_field_description_is_type_supports_facet($field_index_type) {
   return $field_index_type === 'string' || $field_index_type === 'list<string>'
     || $field_index_type === 'boolean' || $field_index_type === 'list<boolean>'
     || $field_index_type === 'integer' || $field_index_type === 'list<integer>'
@@ -438,7 +438,7 @@ function _is_type_supports_facet($field_index_type) {
     || $field_index_type === 'date' || $field_index_type === 'list<date>';
 }
 
-function _is_type_supports_ranges($field_index_type) {
+function _mica_field_description_is_type_supports_ranges($field_index_type) {
   return $field_index_type === 'integer' || $field_index_type === 'decimal' || $field_index_type === 'date';
 }
 
@@ -492,7 +492,7 @@ function mica_field_description_get_field_value_type($field_value_type) {
 /**
  * Returns a unique field_description for a bundle and field name or NULL
  */
-function _find_field_description($bundle, $field_name) {
+function _mica_field_description_find_field_description($bundle, $field_name) {
   $query = new EntityFieldQuery;
   $result = $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'field_description')
@@ -510,7 +510,7 @@ function _find_field_description($bundle, $field_name) {
 /**
  * Additional submit handler for the 'Edit field instance' form.
  */
-function _edit_field_field_description($form, &$form_state) {
+function _mica_field_description_edit_field_field_description($form, &$form_state) {
 
   $instance = $form_state['values']['instance'];
   $form_field_description_infos = $form_state['values']['field']['settings']['field_description_infos'];
@@ -558,15 +558,15 @@ function _edit_field_field_description($form, &$form_state) {
     'field_categories' => $categories,
   );
 
-  $field_description = _find_field_description($bundle, $field_name);
+  $field_description = _mica_field_description_find_field_description($bundle, $field_name);
   if (empty($field_description)) {
     if ($is_field_description) {
-      _create_field_description($field_description_infos);
+      _mica_field_description_create_field_description($field_description_infos);
     }
   }
   else {
     if ($is_field_description) {
-      _update_field_description($field_description, $field_description_infos);
+      _mica_field_description_update_field_description($field_description, $field_description_infos);
     }
     else {
       node_delete($field_description->nid);
@@ -580,7 +580,7 @@ function _edit_field_field_description($form, &$form_state) {
  * @param array $field_description_infos with 'title', 'body', 'field_bundle', 'field_bundle_label', 'field_original_field_name',
  * 'field_original_field_label', 'field_value_type', 'field_repeatable', 'field_categories'
  */
-function _create_field_description(array $field_description_infos) {
+function _mica_field_description_create_field_description(array $field_description_infos) {
 
   $field_description_infos['type'] = 'field_description';
   $field_description_infos['language'] = LANGUAGE_NONE;
@@ -600,7 +600,7 @@ function _create_field_description(array $field_description_infos) {
  * @param array $field_description_infos with 'title', 'body', 'field_bundle', 'field_bundle_label', 'field_original_field_name',
  * 'field_original_field_label', 'field_value_type', 'field_repeatable', 'field_categories'
  */
-function _update_field_description(stdClass $field_description, array $field_description_infos) {
+function _mica_field_description_update_field_description(stdClass $field_description, array $field_description_infos) {
   $wrapper = entity_metadata_wrapper('node', $field_description);
   foreach ($field_description_infos as $key => $value) {
     $wrapper->$key = $value;

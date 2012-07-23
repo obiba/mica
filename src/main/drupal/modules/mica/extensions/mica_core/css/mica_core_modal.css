@@ -1,14 +1,15 @@
 div.mica-modal-content {
-  background:none;
-  border:0;
-  color:#000000;
-  margin:0;
-  padding:0;
-  text-align:left;
+  background: none;
+  border: 0;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
+
 div.mica-modal-content .modal-scroll {
-  overflow:hidden;
-  overflow-y:auto;
+  overflow: hidden;
+  overflow-y: auto;
   border-left: solid 1px #bbb;
   border-right: solid 1px #bbb;
   border-bottom: solid 1px #bbb;
@@ -22,44 +23,49 @@ div.mica-modal-content .modal-scroll {
   -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.32) inset;
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.32) inset;
 }
+
 div.mica-modal-content #popups-overlay {
-  background-color:transparent;
+  background-color: transparent;
 }
+
 div.mica-modal-content #popups-loading {
-  width:248px;
-  position:absolute;
-  display:none;
-  opacity:1;
+  width: 248px;
+  position: absolute;
+  display: none;
+  opacity: 1;
   border-radius: 8px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
-  z-index:99;
+  z-index: 99;
 }
+
 div.mica-modal-content #popups-loading span.popups-loading-message {
-  background:#FFF url(../images/loading-large.gif) no-repeat 8px center;
-  display:block;
-  color:#444444;
-  font-family:Arial;
-  font-size:22px;
-  font-weight:bold;
-  height:36px;
-  line-height:36px;
-  padding:0 40px;
+  background: #FFF url(../images/loading-large.gif) no-repeat 8px center;
+  display: block;
+  color: #444444;
+  font-family: Arial;
+  font-size: 22px;
+  font-weight: bold;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 40px;
 }
 
 div.mica-modal-content .popups-box,
 div.mica-modal-content #popups-loading {
   border: 0px solid #454545;
-  opacity:1;
-  overflow:hidden;
-  padding:0;
-  background-color:transparent;
+  opacity: 1;
+  overflow: hidden;
+  padding: 0;
+  background-color: transparent;
 }
+
 div.mica-modal-content .popups-container {
-  overflow:hidden;
-  height:100%;
-  background-color:none;
+  overflow: hidden;
+  height: 100%;
+  background-color: none;
 }
+
 div.mica-modal-content div.popups-title {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -67,16 +73,17 @@ div.mica-modal-content div.popups-title {
   -moz-border-radius-topright: 10px;
   -webkit-border-top-left-radius: 10px;
   -webkit-border-top-right-radius: 10px;
-  margin-bottom:0px;
-  background-color:#4A6C81;
-  border:none;
-  padding:4px 10px 5px;
-  color:white;
-  font-size:1em;
-  font-weight:bold;
+  margin-bottom: 0px;
+  background-color: #4A6C81;
+  border: none;
+  padding: 4px 10px 5px;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
 }
+
 div.mica-modal-content .popups-body {
-  background-color:#fff;
+  background-color: #fff;
   padding: 1em 23px 1em 22px;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.32) inset;
   -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 0, 0, 0.32) inset;
@@ -86,24 +93,27 @@ div.mica-modal-content .popups-body {
   -moz-border-radius-bottomleft: 10px;
   -moz-border-radius-bottomright: 10px;
   -webkit-border-bottom-left-radius: 10px;
-  -webkit-border-bottom-right-radius: 10px; 
+  -webkit-border-bottom-right-radius: 10px;
 }
+
 div.mica-modal-content .popups-title a.close {
   color: #fff;
   font-weight: bold;
-  text-decoration:none;
+  text-decoration: none;
   border-bottom: none;
 }
+
 div.mica-modal-content .popups-close {
-  font-size:120%;
-  float:right;
-  text-align:right;
+  font-size: 120%;
+  float: right;
+  text-align: right;
 }
+
 div.mica-modal-content .modal-loading-wrapper {
-  width:220px;
-  height:19px;
-  margin:0 auto;
-  margin-top:2%;
+  width: 220px;
+  height: 19px;
+  margin: 0 auto;
+  margin-top: 2%;
 }
 
 div.mica-modal-content .modal-content .modal-throbber-wrapper img {
@@ -114,6 +124,7 @@ div.ctools-modal-content.mica-modal-content .form-item label {
   float: none;
   width: 100%;
 }
+
 div.ctools-modal-content.mica-modal-content .resizable-textarea {
   margin-left: 0;
   margin-right: 0;

@@ -4,7 +4,7 @@
  * Copyright (c) 2007 Stefan Goessner (goessner.net)
  * Licensed under the MIT (MIT-LICENSE.txt) licence.
  * 
- * Etienne Morency-Bachand: Modified the signature of the evalx function to remove unecessary arguments that was
+ * Etienne Morency-Bachand: Modified the signature of the evalx function to remove unnecessary arguments that was
  * launching a lot of warnings
  */
 
@@ -110,4 +110,3 @@ class JsonPath {
          return $name;
    }
 }
-?>

@@ -372,35 +372,22 @@ help:
 	@echo "  " `drush version`
 	@echo
 
-#
-# Release to Drupal.org
-#
-release: release-mica release-mica-dist
 
-release-mica:
-	rm -rf target/drupal.org && \
-	mkdir -p target/drupal.org && \
-	git clone $(drupal_org_mica) target/drupal.org/mica && \
-	cd target/drupal.org/mica && \
-	git checkout $(branch) && \
-	git rm -rf * && \
+#
+# Push to Drupal.org
+#
+git-push: git-push-mica git-push-mica-dist
+
+git-push-mica: 
+	$(call git-prepare,$(drupal_org_mica),mica) . && \
 	cp -r ../../../src/main/drupal/modules/mica/* . && \
-	git add . && \
-	git commit -m "Release Mica $(version)" && \
-	cd ../../..
+	$(call git-finish)
 
-release-mica-dist:
-	rm -rf target/drupal.org && \
-	mkdir -p target/drupal.org && \
-	git clone $(drupal_org_mica_dist) target/drupal.org/mica_dist && \
-	cd target/drupal.org/mica_dist && \
-  git checkout $(branch) && \
-	git rm -rf * && \
+git-push-mica-dist:
+	$(call git-prepare,$(drupal_org_mica_dist),mica_dist) . && \
 	cp -r ../../../src/main/drupal/profiles/mica_distribution/* . && \
 	cp -r ../../../src/main/drupal/themes . && \
-	git add . && \
-	git commit -m "Release Mica Distribution $(version)" && \
-	cd ../../..
+	$(call git-finish)
 
 
 #
@@ -415,11 +402,13 @@ clear-info = $(call clear-info-version,$(1),$(2),$($(2)_version))
 # make-info-version function: add specified version number to project info file
 make-info-version = echo "\n\n; Information added by obiba.org packaging script on $(deb_date)" >> target/$(micadir)/$(1)/$2/$2.info && \
 	echo "version = \"$(3)\"" >> target/$(micadir)/$(1)/$2/$2.info && \
+	echo "project = \"$(2)\"" >> target/$(micadir)/$(1)/$2/$2.info && \
 	echo "datestamp = \"$(datestamp)\"" >> target/$(micadir)/$(1)/$2/$2.info
 
 # clear-info-version function: remove (if present) version number from project info file
 clear-info-version = sed -i "/version/d" $(1)/$2/$2.info && \
 	sed -i "/datestamp/d" $(1)/$2/$2.info && \
+	sed -i "/project/d" $(1)/$2/$2.info && \
 	sed -i "/Information added by obiba.org packaging script/d" $(1)/$2/$2.info
 
 # make-package function: build tar.gz and zip files of a project
@@ -433,6 +422,23 @@ make-package = cd target/$(micadir)/$(1) && \
 # deb-package: echo the modules versions in debian Makefile
 deb-package = echo "$(2)_version=$($(2)_version)" >> target/deb/$(1)/var/lib/$(1)-installer/Makefile
 
+#git-prepare: checkout git repo $(1) to target $(2) and delete all files from this repo
+git-prepare = rm -rf target/drupal.org && \
+	mkdir -p target/drupal.org && \
+	git clone $(1) target/drupal.org/$(2) && \
+	cd target/drupal.org/$(2) && \
+	git checkout $(branch) && \
+	git rm -rf *
+
+#git-finish: sanitize, add, commit and push all files to Git 
+git-finish = rm `find . -type f -name LICENSE.txt` && \
+	rm -rf translations && \
+	git add . && \
+	echo "Enter a message for this commit?" && \
+	read git_commit_msg && \
+	git commit -m "$$git_commit_msg" && \
+	git push origin && \
+	cd ../../..
 
 #
 # Variables (not to be overridden)

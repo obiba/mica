@@ -4,15 +4,15 @@
  * Mica Datasets unit pages
  */
 
-function unit_certificate_page() {
+function mica_datasets_unit_certificate_page() {
   $unit_certificate_form = "unit_certificate_form";
 
-  if (is_private_path_defined()) {
+  if (_mica_datasets_is_private_path_defined()) {
     $public_key_file_exists = is_file(PUBLIC_KEY_FILE);
   }
   else {
     $public_key_file_exists = FALSE;
-    set_missing_private_warning_message();
+    _mica_datasets_set_missing_private_warning_message();
   }
 
   if ($public_key_file_exists) {
@@ -29,14 +29,14 @@ function unit_certificate_page() {
   return $form;
 }
 
-function unit_form($form, &$form_state) {
+function mica_datasets_unit_form($form, &$form_state) {
 
-  if (!is_private_path_defined()) {
-    set_missing_private_warning_message();
+  if (!_mica_datasets_is_private_path_defined()) {
+    _mica_datasets_set_missing_private_warning_message();
   }
 
-  $unit_form = "unit_form";
-  $unit_configure = "configure";
+  $unit_form = 'mica_datasets_unit_form';
+  $unit_configure = 'configure';
 
   $form[$unit_form]['description'] = array(
     '#type' => 'item',
@@ -84,22 +84,26 @@ function unit_form($form, &$form_state) {
   $form[$unit_form][$unit_configure]['submit'] = array(
     '#type' => 'submit',
     '#value' => 'Save',
-    '#disabled' => !is_private_path_defined(),
+    '#disabled' => !_mica_datasets_is_private_path_defined(),
   );
   return $form;
 }
 
-function unit_form_submit($form, &$form_state) {
+function mica_datasets_unit_form_submit($form, &$form_state) {
 
-  $dn = array('countryName' => $form_state['values']['two_letter_country_code'],
+  $dn = array(
+    'countryName' => $form_state['values']['two_letter_country_code'],
     'stateOrProvinceName' => $form_state['values']['state_or_province_name'],
     'localityName' => $form_state['values']['city_name'],
     'organizationName' => $form_state['values']['city_or_organization_name'],
     'organizationalUnitName' => $form_state['values']['organizational_unit'],
-    'commonName' => $form_state['values']['first_and_last_name']);
+    'commonName' => $form_state['values']['first_and_last_name']
+  );
 
-  $configargs = array('private_key_bits' => 2048,
-    'private_key_type' => OPENSSL_KEYTYPE_RSA);
+  $configargs = array(
+    'private_key_bits' => 2048,
+    'private_key_type' => OPENSSL_KEYTYPE_RSA
+  );
 
   // get existing key if exists
   if (is_file(PRIVATE_KEY_FILE)) {
@@ -120,22 +124,23 @@ function unit_form_submit($form, &$form_state) {
 
   openssl_pkey_free($privkey);
 
-  //TODO maybe drupal can do different (maybe directly call a method like _unit_certificate_page())
+  //TODO maybe drupal can do different (maybe directly call a method like mica_datasets_unit_certificate_page())
   return drupal_goto('admin/config/system/mica');
 }
 
 
-function unit_form_validate($form, &$form_state) {
+function mica_datasets_unit_form_validate($form, &$form_state) {
   $tlcc = $form_state['values']['two_letter_country_code'];
   if (strlen($tlcc) != 2 || !ctype_alpha($tlcc)) {
     form_set_error('two_letter_country_code', t('Bad syntax of two letter Country code'));
   }
 }
 
-function is_private_path_defined() {
+function _mica_datasets_is_private_path_defined() {
   return in_array('private', stream_get_wrappers());
 }
 
-function  set_missing_private_warning_message() {
-  drupal_set_message(t('Please define \'<b>Private file system path</b>\' in <a href="?q=admin/config/media/file-system" >Configuration > File system</a>'), 'warning');
+function _mica_datasets_set_missing_private_warning_message() {
+  drupal_set_message(t('Please define \'<b>Private file system path</b>\' in <a href="?q=admin/config/media/file-system" >Configuration > File system</a>'),
+    'warning');
 }
