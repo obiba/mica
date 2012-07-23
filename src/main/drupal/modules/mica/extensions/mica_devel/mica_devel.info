@@ -12,8 +12,6 @@ dependencies[] = "masquerade"
 dependencies[] = "strongarm"
 dependencies[] = "graphapi"
 dependencies[] = "graph_phyz"
-
-datestamp = "1328646361"
 features[ctools][] = "strongarm:strongarm:1"
 features[user_permission][] = "access devel information"
 features[user_permission][] = "administer masquerade"
