@@ -98,11 +98,9 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
     $connector = $this->connector;
     $study_node = node_load($connector->study_id);
     $url = $study_node->mica_opal[$study_node->language][0]['url'];
-
     // remove trailing slashes
-    $url_length = drupal_strlen($url);
-    while ($url_length > 0 && substr($url, $url_length - 1) == '/') {
-      $url = substr($url, 0, $url_length - 1);
+    while (strlen($url) > 0 && substr($url, strlen($url) - 1) == '/') {
+      $url = substr($url, 0, strlen($url) - 1);
     }
     $url .= "/ws/datasource/" . $connector->options['datasource'] . '/table/' . $connector->options['table'] . "/" . $resource;
     return $url;

@@ -494,16 +494,16 @@ class RangeTerm extends AbstractTerm {
     );
 
     //Code for add range.
-//    $form['add_range'] = array(
-//    '#type' => 'button',
-//    '#value' => 'add range',
-//    '#ajax' => array(
-//    'callback' => 'append_range',
-//    'wrapper' => 'valuecontainer',
-//    'method' => 'append'),
-//    '#prefix' => '<span id="add_range">',
-//    '#suffix' => '</span>',
-//    );
+    /*$form['add_range'] = array(
+    '#type' => 'button',
+    '#value' => 'add range',
+    '#ajax' => array(
+    'callback' => 'append_range',
+    'wrapper' => 'valuecontainer',
+    'method' => 'append'),
+    '#prefix' => '<span id="add_range">',
+    '#suffix' => '</span>',
+    );*/
 
     $form['view']['fieldset'] = array(
       '#type' => 'fieldset',
@@ -671,7 +671,7 @@ class TodoTerm extends AbstractTerm {
     else {
       $selection = explode(" ", $selection);
       foreach ($selection as $key => $value) {
-        $selection[$key] = drupal_strtolower($value);
+        $selection[$key] = strtolower($value);
       }
     }
 
