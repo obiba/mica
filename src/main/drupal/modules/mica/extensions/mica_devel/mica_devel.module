@@ -43,15 +43,26 @@ function mica_devel_menu() {
 
 function _mica_devel_form() {
 
-  $form['mica_devel'] = array(
+  $form['menu_rebuild'] = array(
     '#type' => 'fieldset',
     '#title' => t('Rebuild menus'),
     '#description' => t('(Re)populate the database tables used by various menu functions.'),
   );
-  $form['mica_devel']['rebuild'] = array(
+  $form['menu_rebuild']['rebuild'] = array(
     '#type' => 'submit',
     '#value' => t('Rebuild menus'),
     '#submit' => array('menu_rebuild'),
+  );
+
+  $form['rebuild_registry'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Rebuild registry'),
+    '#description' => t('Rescans all code in modules or includes directories, storing the location of each interface or class in the database.'),
+  );
+  $form['rebuild_registry']['rebuild'] = array(
+    '#type' => 'submit',
+    '#value' => t('Rebuild'),
+    '#submit' => array('_mica_devel_rebuild_registry'),
   );
 
   $form['dummy'] = array(
@@ -66,6 +77,14 @@ function _mica_devel_form() {
   );
 
   return $form;
+}
+
+function _mica_devel_rebuild_registry() {
+  cache_clear_all('lookup_cache', 'cache_bootstrap');
+  cache_clear_all('variables', 'cache_bootstrap');
+  cache_clear_all('module_implements', 'cache_bootstrap');
+
+  registry_rebuild(); // At lower level
 }
 
 

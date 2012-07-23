@@ -65,7 +65,7 @@ class OpalXmlFormatView extends RESTServerView {
 
     $v = $element->appendChild($this->doc->createElement('variable'));
     $v->setAttribute('name', $wrapper->title->value());
-    $v->setAttribute('valueType', strtolower($wrapper->field_value_type->value()));
+    $v->setAttribute('valueType', drupal_strtolower($wrapper->field_value_type->value()));
     $v->setAttribute('entityType', 'Participant');
 
     // repeatable

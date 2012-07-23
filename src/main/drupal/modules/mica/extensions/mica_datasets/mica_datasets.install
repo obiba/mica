@@ -197,7 +197,7 @@ function mica_datasets_schema() {
 }
 
 /**
- * Implements hook_requirements()
+ * Implements hook_requirements().
  */
 function mica_datasets_requirements($phase) {
   $requirements = array();
@@ -311,7 +311,7 @@ function mica_datasets_update_7130(&$sandbox) {
 
   // enable footer area for variable
   _mica_datasets_configure_field_bundle_settings();
-  
+
   // configure facet blocks
   require_once(drupal_get_path('module', 'mica_datasets') . '/mica_datasets.facet_blocks.inc');
   // configure facets, we can call this configuration for all facet blocks since its a new feature in 1.3
@@ -319,7 +319,7 @@ function mica_datasets_update_7130(&$sandbox) {
 }
 
 /**
- *
+ * Implements hook_update_dependencies().
  * Update to 7120 depends on the update of mica_core
  */
 function mica_datasets_update_dependencies() {

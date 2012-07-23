@@ -31,7 +31,7 @@ function _mica_datasets_taxonomies() {
 }
 
 /**
- * Implements hook_taxonomies_operations_import()
+ * Implements hook_taxonomies_operations_import().
  */
 function mica_datasets_taxonomies_operations_import() {
   $base_path = drupal_get_path('module', 'mica_datasets') . '/taxonomies/';

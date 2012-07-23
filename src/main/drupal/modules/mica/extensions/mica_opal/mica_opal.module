@@ -64,8 +64,8 @@ function mica_opal_menu_local_tasks_alter(&$data, $router_item, $root_path) {
 function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
 
   $connector = mica_dataset_connector_query($dataset_nid, $study_nid);
-  
-  if ($connector){
+
+  if ($connector) {
     $opal = new MicaDatasetOpalConnectionClass($connector);
     $post = new HttpClientRequest($connector->__call("getTableResourceURI", array("variables")), array(
       'method' => 'GET',
@@ -74,7 +74,7 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
       'parameters' => array(),
     ));
     $raw = $opal->client()->execute($post);
-  
+
     $array = json_decode($raw, TRUE);
     // Support JSON lines format.
     if (!is_array($array)) {
@@ -82,15 +82,15 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
       $raw = '[' . $raw . ']';
       $array = json_decode($raw, TRUE);
     }
-  
+
     if (is_array($array)) {
       $harmonization = array();
       $harmonization['dataset_nid'] = $dataset_nid;
       $harmonization['study_nid'] = $study_nid;
-  
+
       $all_items = mica_opal_jsonPath($array, '$.*');
       unset($array);
-  
+
       $position = 1;
       global $user;
       foreach ($all_items as $item) {
@@ -103,25 +103,25 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
         if (empty($repeatable)) {
           $repeatable = '0';
         }
-  
+
         $script = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[@name == \'script\' and @namespace == \'opal\'].value'));
         if (strlen($script) === 0) {
           $script = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[\'name\']==\'script\')].value'));
         }
-  
+
         $status = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[\'name\']==\'status\'), ?(@[\'namespace\']==\'maelstrom\')].value'));
         if (empty($status)) {
           $status = 'undetermined';
         }
         $status = strtolower($status);
-  
+
         $description = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[\'name\']==\'description\'), ?(@[\'namespace\']==\'maelstrom\')].value'));
         $comment = array_shift(mica_opal_jsonPath($item, 'attributes[?(@[\'name\']==\'comment\'), ?(@[\'namespace\']==\'maelstrom\')].value'));
-  
+
         $categories_name = mica_opal_jsonPath($item, 'categories.*.name');
         $categories_label = mica_opal_jsonPath($item, 'categories.*.attributes[?(@[\'name\']==\'label\')].value');
         $categories_missing = mica_opal_jsonPath($item, 'categories.*.isMissing');
-  
+
         $harmonization['variables'][$name] = array(
           'title' => $name,
           'label' => $label,
@@ -133,7 +133,7 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
           'description' => $description,
           'comment' => $comment,
         );
-  
+
         if (!empty($categories_name)) {
           for ($i = 0; $i < count($categories_name); $i++) {
             $harmonization['variables'][$name]['categories'][] = array(
@@ -148,7 +148,7 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
     }
     throw new Exception(t('There was an error decoding the JSON document.'));
   }
-  
+
   return FALSE;
 }
 
@@ -169,12 +169,40 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
  */
 function mica_opal_jsonPath($array, $expression) {
 
-  $libraries_jsonpath_loc = drupal_get_path('module', 'mica_opal') . '/includes/jsonpath-0.8.1.php';
-  if (!file_exists($libraries_jsonpath_loc)) {
-    drupal_set_message("Cannot find jsonpath-0.8.1.php", "error");
-    return NULL;
+  static $path = NULL;
+
+  if (!isset($path)) {
+    $path = FALSE;
+
+    // If Libraries API is installed, we first use that to try and find the library.
+    // Otherwise we manually check a few locations.
+    $search_dirs = array();
+    if (function_exists('libraries_get_path')) {
+      $dir = libraries_get_path('jsonpath');
+      // Confusingly, Libraries API 1.x will return sites/all/libraries/NAME on failure,
+      // while Libraries API 2.x returns FALSE in that case.
+      if ($dir) {
+        $search_dirs[] = $dir;
+      }
+    }
+    else {
+      // Include libraries + current profile folders in searched directories.
+      $search_dirs[] = 'sites/all/libraries/jsonpath';
+      $search_dirs[] = 'profiles/' . drupal_get_profile() . '/libraries/jsonpath';
+    }
+    $search_dirs[] = drupal_get_path('module', 'mica_opal') . '/includes';
+    foreach ($search_dirs as $dir) {
+      $path = DRUPAL_ROOT . '/' . $dir . '/jsonpath-0.8.1.php';
+      if (file_exists($path)) {
+        include_once $path;
+        break;
+      }
+    }
   }
-  include_once $libraries_jsonpath_loc;
+
+  if ($path == FALSE) {
+    throw new Exception('jsonpath-0.8.1.php library not found! Please follow the instructions in mica_opal/README.txt');
+  }
 
   $result = jsonPath($array, $expression);
   return ($result === FALSE) ? array() : $result;

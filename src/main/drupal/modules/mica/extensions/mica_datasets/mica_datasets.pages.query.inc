@@ -1063,7 +1063,7 @@ function _mica_datasets_query_count_str($count, $total) {
 function mica_datasets_variables_autocomplete($dataset_nid, $string) {
   $variables = array();
   foreach (mica_dataset_dataset_variables($dataset_nid) as $variable) {
-    if (strpos(strtolower($variable->title), $string) === 0 || $string === "*") {
+    if (strpos(drupal_strtolower($variable->title), $string) === 0 || $string === "*") {
       $variables[$variable->title] = $variable->title;
     }
   }

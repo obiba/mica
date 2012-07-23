@@ -18,7 +18,7 @@
  */
 
 /**
- * Implements hook_help()
+ * Implements hook_help().
  */
 function mica_help($path, $arg) {
   switch ($path) {

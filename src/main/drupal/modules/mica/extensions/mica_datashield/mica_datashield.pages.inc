@@ -22,10 +22,10 @@ function mica_datashield_form($form, &$form_state) {
 
   $form = array();
 
-  $intro = '<p>DataSHIELD is a new parallelized approach that enables data to be analysed as if one had full access to the individual-level records, 
-   	 		but in fact the data never leave the computer on which they are stored at their study of origin. Using this form, statisticians 
-  			can fit data models on this distributed and harmonized dataset. For more details, see 
-  			this <a href="http://www.p3gobservatory.org/datashield/summary.htm" target="_blank">link</a>.</p>';
+  $intro = '<p>DataSHIELD is a new parallelized approach that enables data to be analysed as if one had full access to the individual-level records, '
+    . 'but in fact the data never leave the computer on which they are stored at their study of origin. Using this form, statisticians '
+    . 'can fit data models on this distributed and harmonized dataset. For more details, see '
+    . 'this <a href="http://www.p3gobservatory.org/datashield/summary.htm" target="_blank">link</a>.</p>';
 
   $form['intro'] = array(
     '#markup' => $intro,

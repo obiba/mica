@@ -1,5 +1,4 @@
-project = "mica"
-name = "Mica" 
+name = "Mica"
 description = "Mica module"
 package = Mica
 core = 7.x

@@ -304,15 +304,21 @@ projects[workbench_moderation][patch][1245590] = http://drupal.org/files/retaint
   
 ; Libraries
 ; ---------
-libraries[solr_php_client][type] = libraries
-libraries[solr_php_client][download][type] = get
-libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.com/files/SolrPhpClient.r60.2011-05-04.tgz
-libraries[solr_php_client][directory_name] = SolrPhpClient
-
 libraries[ckeditor][type] = libraries
 libraries[ckeditor][download][type]= get
 libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.3/ckeditor_3.6.3.tar.gz
 libraries[ckeditor][directory_name] = ckeditor
+
+libraries[jsonpath][type] = libraries
+libraries[jsonpath][download][type]= get
+libraries[jsonpath][download][url] = http://svn.obiba.org/mica/branches/mica-1.3.x/src/main/drupal/modules/mica/extensions/mica_opal/includes/jsonpath-0.8.1.php
+libraries[jsonpath][download][filename] = jsonpath-0.8.1.php
+libraries[jsonpath][directory_name] = jsonpath
+
+libraries[solr_php_client][type] = libraries
+libraries[solr_php_client][download][type] = get
+libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.com/files/SolrPhpClient.r60.2011-05-04.tgz
+libraries[solr_php_client][directory_name] = SolrPhpClient
 
 libraries[spyc][type] = libraries
 libraries[spyc][download][type]= get

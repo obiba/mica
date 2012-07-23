@@ -80,6 +80,7 @@ function mica_field_description_update_7120() {
 }
 
 /**
+ * Implements hook_update_dependencies().
  * Update to 7120 depends on the update of mica_core
  */
 function mica_field_description_update_dependencies() {

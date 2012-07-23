@@ -25,7 +25,7 @@
 require_once drupal_get_path('module', 'mica_core') . '/mica_core.menu.utils.inc';
 
 /**
- * Implements hook_disable()
+ * Implements hook_disable().
  */
 function mica_networks_disable() {
 //  mica_core_disable_menu('networks');

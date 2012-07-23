@@ -26,21 +26,39 @@
  * Implements hook_install().
  */
 function mica_install() {
-  $search_api_index_options = array(
-    'description' => 'An array of additional arguments configuring this index.',
-    'type' => 'text',
-    'size' => 'big',
-    'serialize' => TRUE,
-    'not null' => TRUE,
+  // set options column size from medium to bo big
+  db_change_field('search_api_index', 'options', 'options',
+    array(
+      'description' => 'An array of additional arguments configuring this index.',
+      'type' => 'text',
+      'size' => 'big',
+      'serialize' => TRUE,
+      'not null' => TRUE,
+    )
   );
-  db_change_field('search_api_index', 'options', 'options', $search_api_index_options);
 
   _mica_configure_field_bundle_settings();
 }
 
 /**
+ * Implements hook_uninstall().
+ */
+function mica_uninstall() {
+  // set options column size back to medium
+  db_change_field('search_api_index', 'options', 'options',
+    array(
+      'description' => 'An array of additional arguments configuring this index.',
+      'type' => 'text',
+      'size' => 'medium',
+      'serialize' => TRUE,
+      'not null' => TRUE,
+    )
+  );
+}
+
+/**
  * Update script for release 1.1
- * Implements hook_update_N()
+ * Implements hook_update_N().
  */
 function mica_update_7110(&$sandbox) {
 

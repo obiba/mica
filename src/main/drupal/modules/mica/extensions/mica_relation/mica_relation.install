@@ -23,7 +23,7 @@
 
 
 /**
- * Implements hook_schema()
+ * Implements hook_schema().
  */
 function mica_relation_schema() {
 
@@ -82,7 +82,7 @@ function mica_relation_schema() {
 }
 
 /**
- * Implements hook_install()
+ * Implements hook_install().
  */
 function mica_relation_install() {
   _mica_relation_import_data();

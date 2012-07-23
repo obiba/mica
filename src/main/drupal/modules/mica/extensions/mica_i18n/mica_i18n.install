@@ -24,7 +24,7 @@
 include_once 'mica_i18n.features.inc';
 
 /**
- * Implements hook_enable()
+ * Implements hook_enable().
  * Manually set those variables because they are not set by features-strongarm (?)
  */
 function mica_i18n_install() {

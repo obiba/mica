@@ -39,7 +39,7 @@ function mica_core_node_title_exists($node_type, $title) {
 }
 
 /**
- * Implements hook_pathauto_punctuation_chars_alter
+ * Implements hook_pathauto_punctuation_chars_alter().
  */
 function mica_core_pathauto_punctuation_chars_alter(array &$punctuation) {
   $punctuation['raquo'] = array('value' => '»', 'name' => t('Right double angle quotes'));
@@ -325,7 +325,7 @@ function mica_core_configure_feeds_tamper($module_name) {
 
 function _mica_core_taxonomy_create($filename, $vocabulary_name) {
   // use filename (without extension) for vocabulary machine name
-  $machine_name = substr($filename, 0, strlen($filename) - 4);
+  $machine_name = substr($filename, 0, drupal_strlen($filename) - 4);
   $vocabulary = (object) array(
     'name' => $vocabulary_name,
     'machine_name' => $machine_name,

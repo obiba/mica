@@ -124,11 +124,15 @@ class MicaRelation extends Entity {
    */
   public function create_child_node($parent_node, array $parent_menu) {
 
-    if (!$this->options['cascaded']) return FALSE;
+    if (!$this->options['cascaded']) {
+      return FALSE;
+    }
 
     $field_ref = $this->options['node_reference'];
 
-    if (property_exists($parent_node, $field_ref)) $field = $parent_node->$field_ref;
+    if (property_exists($parent_node, $field_ref)) {
+      $field = $parent_node->$field_ref;
+    }
 
     // do not create child if child id is already provided (case of data import)
     if (empty($field) || empty($field[LANGUAGE_NONE])) {
@@ -183,7 +187,9 @@ class MicaRelation extends Entity {
    */
   public function update_child_node($parent_node) {
 
-    if (!$this->options['cascaded']) return;
+    if (!$this->options['cascaded']) {
+      return;
+    }
 
     $parent_menu = menu_link_get_preferred('node/' . $parent_node->nid);
     if (!empty($parent_menu) && $parent_menu['menu_name'] != 'main-menu') {
@@ -227,7 +233,9 @@ class MicaRelation extends Entity {
   }
 
   public function delete_child_node($parent_node) {
-    if (!$this->options['cascaded']) return;
+    if (!$this->options['cascaded']) {
+      return;
+    }
     $field_ref = $this->options['node_reference'];
     $field = $parent_node->$field_ref;
     $child_nid = $field[LANGUAGE_NONE][0]['nid'];

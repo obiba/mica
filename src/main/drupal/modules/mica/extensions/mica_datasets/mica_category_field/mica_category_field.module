@@ -5,7 +5,7 @@
  */
 
 /**
- * Implements hook_field_info()
+ * Implements hook_field_info().
  */
 function mica_category_field_field_info() {
   return array(
@@ -75,7 +75,7 @@ function mica_category_field_default_values() {
 }
 
 /**
- * Implements hook_field_widget_info()
+ * Implements hook_field_widget_info().
  */
 function mica_category_field_field_widget_info() {
   return array(
@@ -87,7 +87,7 @@ function mica_category_field_field_widget_info() {
 }
 
 /**
- * Implements hook_field_widget_form()
+ * Implements hook_field_widget_form().
  */
 function mica_category_field_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
 
@@ -214,7 +214,9 @@ function mica_category_field_field_formatter_info() {
  */
 function mica_category_field_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
 
-  if (empty($items)) return array();
+  if (empty($items)) {
+    return array();
+  }
 
   $element = array();
   switch ($display['type']) {

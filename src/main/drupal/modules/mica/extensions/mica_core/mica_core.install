@@ -44,7 +44,7 @@ function mica_core_install() {
 
 /**
  * Update script for release 1.2
- * Implements hook_update_N()
+ * Implements hook_update_N().
  */
 function mica_core_update_7120(&$sandbox) {
   $result = db_query('SELECT * FROM {mica_relation}')->fetchAll();
@@ -53,6 +53,14 @@ function mica_core_update_7120(&$sandbox) {
   }
   db_drop_table('mica_relation');
 
+  _mica_core_rebuild_registry();
+}
+
+/**
+ * Update script for release 1.5
+ * Implements hook_update_N().
+ */
+function mica_core_update_7150(&$sandbox) {
   _mica_core_rebuild_registry();
 }
 

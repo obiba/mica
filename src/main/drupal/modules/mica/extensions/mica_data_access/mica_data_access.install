@@ -23,12 +23,6 @@
  */
 
 /**
- * Implements hook_install().
- */
-function mica_data_access_install() {
-}
-
-/**
  * Updates the mica_data_access feature
  */
 function mica_data_access_update_7120() {

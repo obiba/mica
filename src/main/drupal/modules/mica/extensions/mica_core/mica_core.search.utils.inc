@@ -97,7 +97,7 @@ function mica_core_configure_facet_blocks($search_index, $content_type, $config,
         $block_title = $field_info['label'];
       }
 
-      if (strlen($block_title) > 64) {
+      if (drupal_strlen($block_title) > 64) {
         $block_title = truncate_utf8($block_title, 64, TRUE);
       }
 
@@ -201,7 +201,7 @@ function mica_core_enable_facet_block($facet_delta, $block_title, $page, $region
   )->fetchObject();
 
   // trim to 64 char max because of block table title field limitation
-  if (strlen($block_title) > 64) {
+  if (drupal_strlen($block_title) > 64) {
     $block_title = truncate_utf8($block_title, 64, TRUE);
   }
 

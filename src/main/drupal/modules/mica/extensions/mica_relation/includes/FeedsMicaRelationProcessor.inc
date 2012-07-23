@@ -146,8 +146,8 @@ class FeedsMicaRelationProcessor extends FeedsNodeProcessor {
     }
     $info = $this->entityInfo();
     $tokens = array(
-      '@entity' => strtolower($info['label']),
-      '@entities' => strtolower($info['label plural']),
+      '@entity' => drupal_strtolower($info['label']),
+      '@entities' => drupal_strtolower($info['label plural']),
     );
     $messages = array();
     if ($state->created) {
@@ -183,7 +183,7 @@ class FeedsMicaRelationProcessor extends FeedsNodeProcessor {
     }
     if (empty($messages)) {
       $messages[] = array(
-        'message' => t('There are no new @entities.', array('@entities' => strtolower($info['label plural']))),
+        'message' => t('There are no new @entities.', array('@entities' => drupal_strtolower($info['label plural']))),
       );
     }
     foreach ($messages as $message) {

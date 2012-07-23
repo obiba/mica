@@ -4,11 +4,14 @@
       <w>daco</w>
       <w>dataschema</w>
       <w>facetapi</w>
+      <w>filepath</w>
+      <w>imagecache</w>
       <w>infos</w>
       <w>langcode</w>
       <w>noderefcreate</w>
       <w>plid</w>
       <w>presave</w>
+      <w>searchdir</w>
       <w>solr</w>
       <w>strongarms</w>
       <w>viewreference</w>

@@ -5,7 +5,7 @@
  */
 
 /**
- * Implements hook_field_schema()
+ * Implements hook_field_schema().
  */
 function mica_category_field_field_schema() {
   return array(
@@ -32,4 +32,14 @@ function mica_category_field_field_schema() {
       'name' => array('name'),
     ),
   );
+}
+
+/**
+ * Implements hook_update_dependencies().
+ * Update to 7.1.5.0 depends on the update of mica_core
+ */
+function mica_category_field_update_dependencies() {
+  $dependencies = array();
+  $dependencies['mica_category_field'][7150] = array('mica_core' => 7150);
+  return $dependencies;
 }

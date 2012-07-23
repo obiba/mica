@@ -9,8 +9,8 @@
  * Form builder to reorder variables within a Dataset
  *
  * @ingroup forms
- * @see     mica_datasets_reorder_variables_submit()
- * @see     theme_mica_datasets_reorder_variables()
+ * @see mica_datasets_reorder_variables_submit()
+ * @see theme_mica_datasets_reorder_variables()
  */
 function mica_datasets_reorder_variables($form, $form_state, $dataset_node) {
   $form['#dataset'] = $dataset_node;
@@ -70,7 +70,7 @@ function mica_datasets_reorder_variables($form, $form_state, $dataset_node) {
  *   An associative array containing:
  *   - form: A render element representing the form.
  *
- * @see     mica_datasets_reorder_variables()
+ * @see mica_datasets_reorder_variables()
  * @ingroup themeable
  */
 function theme_mica_datasets_reorder_variables($variables) {

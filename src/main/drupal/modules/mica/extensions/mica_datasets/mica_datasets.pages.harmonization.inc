@@ -64,7 +64,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
         $ajax_link = '';
       }
 
-      $header[] = "<div class='harmonization-study-title'>$name$ajax_link</div><br>";
+      $header[] = "<div class='harmonization-study-title'>$name$ajax_link</div><br/>";
 
       $header_ids[$study_wrapper->nid->value()] = $name;
     }
