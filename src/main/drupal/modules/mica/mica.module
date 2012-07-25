@@ -73,7 +73,7 @@ function mica_block_view($delta = '') {
   switch ($delta) {
     case 'powered-by-mica':
       $info = drupal_parse_info_file(drupal_get_path('module', 'mica_core') . '/mica_core.info');
-      $version = str_replace('7.x-', '', $info['version']);
+      $version = str_replace('7.x-', '', isset($info['version']) ? $info['version'] : 'dev');
       $block['subject'] = NULL;
       $block['content'] = '<span>'
         . t('Powered by <a href="@poweredby">Mica @version</a>',

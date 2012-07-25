@@ -33,6 +33,16 @@ function mica_category_field_property_info_callback(&$info, $entity_type, $field
   unset($property['query callback']);
 }
 
+// used for transition for version < 1.5
+function category_field_data_property_info($name = NULL) {
+  mica_category_field_data_property_info($name);
+}
+
+// used for transition for version < 1.5
+function category_field_property_info_callback(&$info, $entity_type, $field, $instance, $field_type) {
+  mica_category_field_property_info_callback($info, $entity_type, $field, $instance, $field_type);
+}
+
 /**
  * Defines info for the properties of the category field data structure.
  */
