@@ -20,3 +20,8 @@ Once this module is enabled, to complete configuration, go to:
 
 3. Study fields configuration (admin/structure/types/manage/study/fields)
    and move Networks field to the field group you want.
+
+
+------------------------
+This project is sponsored by OBiBa [http://www.obiba.org].
+OBiBa is a collaborative international project whose mission is to build high-quality open source software for biobanks.

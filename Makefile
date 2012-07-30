@@ -376,7 +376,7 @@ help:
 #
 # Push to Drupal.org
 #
-git-push: git-push-mica git-push-mica-dist
+git-push: package-modules-clear git-push-mica git-push-mica-dist
 
 git-push-mica: 
 	$(call git-prepare,$(drupal_org_mica),mica) . && \
@@ -395,20 +395,23 @@ git-push-mica-dist:
 #
 
 # make-info function: add default version number to project info file
-make-info = $(call clear-info-version,$(1),$(2),$($(2)_version)) $(call make-info-version,$(1),$(2),$($(2)_version))
+make-info = $(call make-info-version,$(1),$(2),$($(2)_version))
 
-clear-info = $(call clear-info-version,$(1),$(2),$($(2)_version))
+clear-info = $(call clear-info-version,$(1),$(2))
 
-# make-info-version function: add specified version number to project info file
-make-info-version = echo "\n\n; Information added by obiba.org packaging script on $(deb_date)" >> target/$(micadir)/$(1)/$2/$2.info && \
-	echo "version = \"$(3)\"" >> target/$(micadir)/$(1)/$2/$2.info && \
-	echo "project = \"$(2)\"" >> target/$(micadir)/$(1)/$2/$2.info && \
-	echo "datestamp = \"$(datestamp)\"" >> target/$(micadir)/$(1)/$2/$2.info
+# make-info-version function: remove (if present) and add specified version number to project info file
+make-info-version = cd target/$(micadir)/$(1) && \
+	sed -i "/version/d" $2/$2.info && \
+	sed -i "/datestamp/d" $2/$2.info && \
+	sed -i "/Information added by obiba.org packaging script/d" $2/$2.info && \
+	echo "\n\n; Information added by obiba.org packaging script on $(deb_date)" >> $2/$2.info && \
+	echo "version = \"$(3)\"" >> $2/$2.info && \
+	echo "datestamp = \"$(datestamp)\"" >> $2/$2.info
 
 # clear-info-version function: remove (if present) version number from project info file
 clear-info-version = sed -i "/version/d" $(1)/$2/$2.info && \
-	sed -i "/datestamp/d" $(1)/$2/$2.info && \
 	sed -i "/project/d" $(1)/$2/$2.info && \
+	sed -i "/datestamp/d" $(1)/$2/$2.info && \
 	sed -i "/Information added by obiba.org packaging script/d" $(1)/$2/$2.info
 
 # make-package function: build tar.gz and zip files of a project
@@ -432,8 +435,10 @@ git-prepare = rm -rf target/drupal.org && \
 
 #git-finish: sanitize, add, commit and push all files to Git 
 git-finish = rm `find . -type f -name LICENSE.txt` && \
+	rm `find . -type f -name COPYRIGHT.txt` && \
 	rm -rf translations && \
 	git add . && \
+	git status && \
 	echo "Enter a message for this commit?" && \
 	read git_commit_msg && \
 	git commit -m "$$git_commit_msg" && \

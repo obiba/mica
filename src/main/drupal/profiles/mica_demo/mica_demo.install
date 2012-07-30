@@ -24,7 +24,7 @@ function mica_demo_install() {
       '6' => 'consortium administrator'
     ),
   );
-  user_save(null, $user);
+  user_save(NULL, $user);
 
   // study administrators
   $user = array(
@@ -37,7 +37,7 @@ function mica_demo_install() {
       '7' => 'study administrator',
     ),
   );
-  user_save(null, $user);
+  user_save(NULL, $user);
 
   $user = array(
     'name' => 'dacite',
@@ -49,7 +49,7 @@ function mica_demo_install() {
       '7' => 'study administrator',
     ),
   );
-  user_save(null, $user);
+  user_save(NULL, $user);
 
   $user = array(
     'name' => 'scoria',
@@ -61,7 +61,7 @@ function mica_demo_install() {
       '7' => 'study administrator',
     ),
   );
-  user_save(null, $user);
+  user_save(NULL, $user);
 
   $user = array(
     'name' => 'marl',
@@ -73,7 +73,7 @@ function mica_demo_install() {
       '7' => 'study administrator',
     ),
   );
-  user_save(null, $user);
+  user_save(NULL, $user);
 
   $user = array(
     'name' => 'skarn',
@@ -85,7 +85,7 @@ function mica_demo_install() {
       '7' => 'study administrator',
     ),
   );
-  user_save(null, $user);
+  user_save(NULL, $user);
 
 
   // ordinary users
@@ -97,7 +97,7 @@ function mica_demo_install() {
     'status' => 1,
     'roles' => array(),
   );
-  user_save(null, $user);
+  user_save(NULL, $user);
 
   $user = array(
     'name' => 'mtremblay',
@@ -107,7 +107,7 @@ function mica_demo_install() {
     'status' => 1,
     'roles' => array(),
   );
-  user_save(null, $user);
+  user_save(NULL, $user);
 
   // researchers
   $user = array(
@@ -120,7 +120,7 @@ function mica_demo_install() {
       '5' => 'researcher',
     ),
   );
-  user_save(null, $user);
+  user_save(NULL, $user);
 
   // dacos
   $user = array(
@@ -133,7 +133,7 @@ function mica_demo_install() {
       '4' => 'data access committee officer',
     ),
   );
-  user_save(null, $user);
+  user_save(NULL, $user);
 
   $LOREM_1 = 'Proin ornare elit id orci fermentum at ultrices erat lacinia.
    
@@ -161,10 +161,14 @@ function mica_distribution_add_blog($title, $body, $link_title, $alias, $weight,
   $node->type = 'blog';
   node_object_prepare($node);
   $node->title = $title;
-  $node->body = array(LANGUAGE_NONE => array(array(
-    'value' => $body,
-    'format' => 'full_html'
-  )));
+  $node->body = array(
+    LANGUAGE_NONE => array(
+      array(
+        'value' => $body,
+        'format' => 'full_html'
+      )
+    )
+  );
 
   $node->promote = 0;
   $node->sticky = $sticky;

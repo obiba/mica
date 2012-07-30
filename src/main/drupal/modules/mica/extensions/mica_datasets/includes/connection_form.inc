@@ -89,7 +89,7 @@ function _mica_datasets_connection_data_node(&$node) {
  * @param $study_node
  * @param $parent_node
  */
-function _mica_datasets_add_connection_option(&$options, &$dataset_node, &$study_node, &$parent_node) {
+function _mica_datasets_add_connection_option(array &$options, &$dataset_node, &$study_node, &$parent_node) {
   $data = _mica_datasets_connection_data($dataset_node, $study_node, $parent_node);
   $href = 'node/' . $data['connector'][MICA_DATASET_ID] . '/study/' . $data['connector'][MICA_STUDY_ID]
     . '/connector/' . (($data['connector']['id'] != '0') ? ($data['connector']['id'] . '/edit') : 'add');
@@ -126,7 +126,7 @@ function _mica_datasets_add_connection_option(&$options, &$dataset_node, &$study
  * @param $empty   text when list is empty
  * @param $options list of rows
  */
-function _mica_datasets_add_table_form(&$form, $header, $empty, &$options) {
+function _mica_datasets_add_table_form(&$form, $header, $empty, array &$options) {
   $header = array(
     'child' => t('@header', array('@header' => $header)),
     'connection-type' => t('Connection Type'),

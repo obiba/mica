@@ -10,3 +10,8 @@ Mica provides provides such a relational mechanism:
 
 * Define a parent-child relation between any content-types (e.g. Study being the parent and Study Information being the child for example),
 * Create/delete a content of type Study will cascade creation/deletion of child contents and link them together using references.
+
+
+------------------------
+This project is sponsored by OBiBa [http://www.obiba.org].
+OBiBa is a collaborative international project whose mission is to build high-quality open source software for biobanks.

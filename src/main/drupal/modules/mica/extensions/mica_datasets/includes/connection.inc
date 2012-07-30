@@ -408,7 +408,6 @@ END;
     $facetResult = $data['facets'][$term->getName()];
 
     // TODO: handle statistical result
-    $result = array();
     if ($term->getType() == 'CategoryTerm' || $term->getType() == 'TodoTerm') {
       $result = $this->count($facetResult);
     }

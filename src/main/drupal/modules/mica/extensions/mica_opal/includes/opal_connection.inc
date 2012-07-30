@@ -58,17 +58,17 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
 
     if (array_key_exists('opal-url', $values)) {
       $value = trim($values['opal-url']);
-      if ($value == '' || strpos($value, 'https://') === FALSE) {
+      if ($value === '' || strpos($value, 'https://') === FALSE) {
         $form_errors['opal-url'] = t('You must provide a valid Opal server url: https://...');
       }
     }
     // todo check for valid chars in names
     $value = trim($values['datasource']);
-    if ($value == '') {
+    if ($value === '') {
       $form_errors['datasource'] = t('You must provide a valid Opal datasource name.');
     }
     $value = trim($values['table']);
-    if ($value == '') {
+    if ($value === '') {
       $form_errors['table'] = t('You must provide a valid Opal table name.');
     }
 
@@ -99,8 +99,8 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
     $study_node = node_load($connector->study_id);
     $url = $study_node->mica_opal[$study_node->language][0]['url'];
     // remove trailing slashes
-    while (strlen($url) > 0 && substr($url, strlen($url) - 1) == '/') {
-      $url = substr($url, 0, strlen($url) - 1);
+    while (drupal_strlen($url) > 0 && substr($url, drupal_strlen($url) - 1) == '/') {
+      $url = substr($url, 0, drupal_strlen($url) - 1);
     }
     $url .= "/ws/datasource/" . $connector->options['datasource'] . '/table/' . $connector->options['table'] . "/" . $resource;
     return $url;

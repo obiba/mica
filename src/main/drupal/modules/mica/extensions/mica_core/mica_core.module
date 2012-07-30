@@ -1,20 +1,8 @@
 <?php
+
 /**
- * Copyright 2012(c) OBiBa, All rights reserved.
- *
- * This program and the accompanying materials are made available under the terms of the GNU Public License v3.0.
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
- * TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
- * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
- * IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
- * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * @file
+ * Code for the Mica Code module.
  */
 
 require_once('mica_core.features.inc');
@@ -418,3 +406,35 @@ function mica_core_add_page($title, $body_html, $alias = NULL) {
 
   return $page_wrapper->value();
 }
+
+function mica_core_prepare_tooltip() {
+
+  static $dir = NULL;
+
+  if (!isset($dir)) {
+    // If Libraries API is installed, we first use that to try and find the library.
+    // Otherwise we manually check a few locations.
+    $dir = function_exists('libraries_get_path')
+      ? libraries_get_path('jquery_tooltip')
+      : 'sites/all/libraries/jquery_tooltip';
+  }
+
+  $path = $dir . '/jquery.tooltip.min.js';
+  if (file_exists($path)) {
+    drupal_add_js($path);
+  }
+  else {
+    throw new Exception('jquery.tooltip.min.js library not found! Please follow the instructions in mica_core/README.txt');
+  }
+  ctools_add_js('mica_core_tooltip', 'mica_core');
+
+  $path = $dir . '/jquery.tooltip.css';
+  if (file_exists($path)) {
+    drupal_add_css($path);
+  }
+  else {
+    throw new Exception('jquery.tooltip.css library not found! Please follow the instructions in mica_core/README.txt');
+  }
+  ctools_add_css('mica_core_tooltip', 'mica_core');
+}
+

@@ -229,8 +229,12 @@ class MicaDatasetQueryTerm extends Entity {
   }
 
   public static function compare(MicaDatasetQueryTerm $term_a, MicaDatasetQueryTerm $term_b) {
-    if ($term_a->weight == $term_b->weight) return 0;
-    else return $term_a->weight > $term_b->weight ? 1 : -1;
+    if ($term_a->weight == $term_b->weight) {
+      return 0;
+    }
+    else {
+      return $term_a->weight > $term_b->weight ? 1 : -1;
+    }
   }
 }
 
@@ -499,7 +503,6 @@ class MicaDatasetQueryCache {
     $term->is_new = TRUE;
 
     // set the term id
-    $index = 1;
     $index = count($this->terms) + 1;
     $term->id = $this->query->id . ':' . $index;
     $term->dataset_id = $this->query->dataset_id;

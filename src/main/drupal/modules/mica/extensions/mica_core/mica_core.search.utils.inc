@@ -15,18 +15,19 @@ function mica_core_find_indexes_by_bundle() {
     if (!empty($options['data_alter_callbacks'])
       && !empty($options['data_alter_callbacks']['search_api_alter_bundle_filter'])
       && !empty($options['data_alter_callbacks']['search_api_alter_bundle_filter']['settings'])
-      && !empty($options['data_alter_callbacks']['search_api_alter_bundle_filter']['settings']['bundles'])
-    )
+      && !empty($options['data_alter_callbacks']['search_api_alter_bundle_filter']['settings']['bundles'])) {
       foreach ($options['data_alter_callbacks']['search_api_alter_bundle_filter']['settings']['bundles'] as $bundle) {
         $indexes[$bundle] = array($index->machine_name => $index->name);
       }
+    }
   }
   return $indexes;
 }
 
 /**
- * @param $search_index index machine name ('variable_index' for example)
- * @param $config facet block configuration
+ * @param string $search_index index machine name ('variable_index' for example)
+ * @param string $content_type
+ * @param array $config facet block configuration
  * <code>
  *  $config = array(
  *    'field_bundle' => array(
@@ -35,10 +36,13 @@ function mica_core_find_indexes_by_bundle() {
  *    ),
  *  );
  * </code>
- * @param $page path of the page where to display these blocks ('variable-search' for example)
- * @param $current_search_delta delta of the current search block ('variable_current_search' for example)
+ * @param string $page path of the page where to display these blocks ('variable-search' for example)
+ * @param string $current_search_delta delta of the current search block ('variable_current_search' for example)
+ * @param string $region
+ * @throws Exception
  */
-function mica_core_configure_facet_blocks($search_index, $content_type, $config, $page, $current_search_delta = NULL, $region = 'sidebar_second') {
+function mica_core_configure_facet_blocks($search_index, $content_type, array $config, $page,
+  $current_search_delta = NULL, $region = 'sidebar_second') {
 
   $theme_default = variable_get('theme_default', 'mica_samara');
   $search_index = 'search_api@' . $search_index;
@@ -164,10 +168,10 @@ function mica_core_configure_facet_blocks($search_index, $content_type, $config,
       watchdog('mica', 'Facet block configuration for %facet (%delta)',
         array(
           '%facet' => $facet_name,
-          '%delta' => $facet_delta),
+          '%delta' => $facet_delta
+        ),
         $success ? WATCHDOG_INFO : WATCHDOG_ERROR);
-    }
-    catch (Exception $e) {
+    } catch (Exception $e) {
       watchdog_exception('mica', $e, 'Error while configuring facet %facet for %index for %region region (%config)',
         array('%facet' => $facet_name, '%index' => $search_index, '%region' => $region, '%config' => $block_config));
       throw $e;

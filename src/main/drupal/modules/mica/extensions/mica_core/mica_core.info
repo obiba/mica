@@ -10,6 +10,7 @@ dependencies[] = entity
 dependencies[] = facetapi
 dependencies[] = features
 dependencies[] = feeds
+dependencies[] = libraries
 dependencies[] = menu
 dependencies[] = page_manager
 dependencies[] = rdf

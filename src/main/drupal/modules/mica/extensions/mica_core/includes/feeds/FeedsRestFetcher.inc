@@ -60,10 +60,16 @@ class FeedsRestFetcherResult extends FeedsFetcherResult {
     } catch (HttpClientException $e) {
       if ($e->getCode() == 0) {
         // curl error
-        throw new Exception(t('Download of @url failed: @msg', array('@url' => $this->url, '@msg' => $e->getMessage())));
+        throw new Exception(t('Download of @url failed: @msg', array(
+          '@url' => $this->url,
+          '@msg' => $e->getMessage()
+        )));
       }
       elseif (!in_array($e->getCode(), array(200, 201, 202, 203, 204, 205, 206))) {
-        throw new Exception(t('Download of @url failed with code !code.', array('@url' => $this->url, '!code' => $e->getCode())));
+        throw new Exception(t('Download of @url failed with code !code.', array(
+          '@url' => $this->url,
+          '!code' => $e->getCode()
+        )));
       }
       // http_client throws an exception on all codes that are not 200 (even 201)
       // http://drupal.org/node/722886

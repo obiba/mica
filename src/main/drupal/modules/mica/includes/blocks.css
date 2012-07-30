@@ -30,7 +30,7 @@
   margin-right: 0px;
 }
 
-#mica-search-api-form table, 
+#mica-search-api-form table,
 #mica-search-api-form tr {
   border-width: 0px;
 }
@@ -55,10 +55,10 @@
   padding: 0;
   margin-bottom: 5px;
   margin-top: -9px;
-  position:absolute;
-  z-index:1000;
-  width:350px;
-  background-color:#f2f2f2;
+  position: absolute;
+  z-index: 1000;
+  width: 350px;
+  background-color: #f2f2f2;
 }
 
 #mica-search-filters-form #edit-block .form-item {
@@ -69,6 +69,6 @@
 }
 
 #mica-search-filters-form #edit-submit {
-  margin-left:5px;
+  margin-left: 5px;
   margin-top: 5px;
 }

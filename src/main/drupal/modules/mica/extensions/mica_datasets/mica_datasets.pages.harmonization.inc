@@ -21,15 +21,10 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
   drupal_add_library('system', 'jquery.form');
 
   //prettify
-  ctools_add_css('prettify', 'mica_datasets');
-  ctools_add_js('prettify', 'mica_datasets');
-  ctools_add_js('mica_datasets_prettify', 'mica_datasets');
+  mica_datasets_prepare_prettify();
 
   // tooltips
-  ctools_add_js('jquery.tooltip.min', 'mica_core');
-  ctools_add_js('mica_core_tooltip', 'mica_core');
-  ctools_add_css('jquery.tooltip', 'mica_core');
-  ctools_add_css('mica_core_tooltip', 'mica_core');
+  mica_core_prepare_tooltip();
 
   ctools_add_css('mica_datasets', 'mica_datasets');
 
@@ -192,18 +187,14 @@ function mica_datasets_harmonization_legend_form($form, $form_state) {
     '#type' => 'markup',
     '#markup' => "<img src=\"" . MICA_HARMONIZATION_COMPLETE . "\" style=\"vertical-align: middle\">&nbsp;<b>"
       . t("Complete") . "</b> - <i>"
-      . t(
-        "the study assessment item(s) (e.g. survey question, physical measure, biochemical measure) allow construction of the variable as defined in the dataset."
-      )
+      . t("the study assessment item(s) (e.g. survey question, physical measure, biochemical measure) allow construction of the variable as defined in the dataset.")
       . "</i><br />",
   );
   $form['legend']['impossible'] = array(
     '#type' => 'markup',
     '#markup' => "<img src=\"" . MICA_HARMONIZATION_IMPOSSIBLE . "\" style=\"vertical-align: middle\">&nbsp;<b>"
       . t("Impossible") . "</b> - <i>"
-      . t(
-        "there is no information or insufficient information collected by this study to allow the construction of the variable as defined in the dataset."
-      )
+      . t("there is no information or insufficient information collected by this study to allow the construction of the variable as defined in the dataset.")
       . "</i>",
   );
 
@@ -213,8 +204,10 @@ function mica_datasets_harmonization_legend_form($form, $form_state) {
 function _mica_datasets_harmonization_variable_tooltip($variable) {
   $wrapper = entity_metadata_wrapper('node', $variable);
   $tooltip = '<h4>' . $wrapper->field_label->value() . '</h4>';
-  $body =  $wrapper->body->value() ? $wrapper->body->value->value() : '';
-  if (!empty($body)) $tooltip .= $body;
+  $body = $wrapper->body->value() ? $wrapper->body->value->value() : '';
+  if (!empty($body)) {
+    $tooltip .= $body;
+  }
   return $tooltip;
 }
 

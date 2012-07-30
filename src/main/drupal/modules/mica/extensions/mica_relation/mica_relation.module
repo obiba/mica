@@ -106,7 +106,9 @@ function mica_relation_node_presave($node) {
  * Load search index infos from Search API
  */
 function mica_relation_mica_relation_load($entities) {
-  if (empty($entities)) return;
+  if (empty($entities)) {
+    return;
+  }
   $indexes = mica_core_find_indexes_by_bundle();
   if (!empty($indexes)) {
     foreach ($entities as $entity) {
@@ -139,7 +141,9 @@ function mica_relation_node_access($node, $op, $account) {
   if ($op === 'delete') {
     $type = is_string($node) ? $node : $node->type;
     $relation = mica_relation_find_relation_by_child($type);
-    if (!is_null($relation)) return NODE_ACCESS_DENY;
+    if (!is_null($relation)) {
+      return NODE_ACCESS_DENY;
+    }
   }
   else {
     return NODE_ACCESS_IGNORE;
@@ -162,8 +166,7 @@ function mica_relation_form_alter(&$form, $form_state, $form_id) {
 
     if (!is_null($relation) && array_key_exists('actions', $form)) {
       $form['actions']['info'] = array(
-        '#markup' => '&nbsp;&nbsp;This node should not be deleted because it is used by the relation "' .
-          $relation->label . '". Only parents of relations can be deleted.',
+        '#markup' => t('This node should not be deleted because it is used by the relation "%relation". Only parents of relations can be deleted.', array('%relation' => $relation->label)),
         '#weight' => '50',
       );
     }

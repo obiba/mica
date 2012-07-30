@@ -119,7 +119,9 @@ function _node_reference_block_related_content_block_content() {
         while ($rec = $res->fetchAssoc()) {
           $related_node = node_load($rec['entity_id']);
 
-          if (in_array($related_node->type, $exclude_types)) continue;
+          if (in_array($related_node->type, $exclude_types)) {
+            continue;
+          }
 
           if (node_access('view', $related_node)) {
             $node_type = node_type_load($related_node->type);

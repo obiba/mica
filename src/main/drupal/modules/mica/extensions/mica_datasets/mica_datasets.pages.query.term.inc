@@ -53,8 +53,7 @@ function mica_datasets_query_term_edit_form($form, &$form_state) {
   $dataset_node = $form_state['build_info']['args'][0];
   $query = $form_state['build_info']['args'][1];
   $term = $form_state['build_info']['args'][2];
-  $cross_variable = $form_state['build_info']['args'][3];
-
+//  $cross_variable = $form_state['build_info']['args'][3];
 
   $impl = $term->termImpl();
   $term_form = $impl->form($form, $form_state);
@@ -107,7 +106,9 @@ function mica_datasets_query_term_edit_form_submit($form, &$form_state) {
         break;
     }
     $form_state['redirect'] = _mica_datasets_query_url($dataset_node, $query);
-    if (!empty($cross_variable)) $form_state['redirect'] .= '/' . $cross_variable;
+    if (!empty($cross_variable)) {
+      $form_state['redirect'] .= '/' . $cross_variable;
+    }
   }
 }
 
@@ -158,8 +159,8 @@ function mica_datasets_query_term_delete_page($dataset_node, $query, $term, $cro
 function mica_datasets_query_term_delete_form($form, &$form_state) {
   $dataset_node = $form_state['build_info']['args'][0];
   $query = $form_state['build_info']['args'][1];
-  $term = $form_state['build_info']['args'][2];
-  $cross_variable = $form_state['build_info']['args'][3];
+//  $term = $form_state['build_info']['args'][2];
+//  $cross_variable = $form_state['build_info']['args'][3];
 
   $form['message'] = array(
     '#markup' => t('This action cannot be undone.'),
@@ -201,5 +202,7 @@ function mica_datasets_query_term_delete_form_submit($form, &$form_state) {
 
   $form_state['complete'] = TRUE;
   $form_state['redirect'] = _mica_datasets_query_url($dataset_node, $query);
-  if (!empty($cross_variable)) $form_state['redirect'] .= '/' . $cross_variable;
+  if (!empty($cross_variable)) {
+    $form_state['redirect'] .= '/' . $cross_variable;
+  }
 }

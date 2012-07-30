@@ -50,21 +50,6 @@ function mica_field_description_features_rebuild_completed() {
   }
 }
 
-function mica_field_description_configure_facet_blocks() {
-  $config = array(
-    'field_bundle' => array(
-      'name' => t('Content type'),
-    ),
-    'field_value_type' => array(
-      'name' => t('Value type'),
-    ),
-    'field_repeatable' => array(
-      'name' => t('Repeatable'),
-    ),
-  );
-  mica_core_configure_facet_blocks('fields_description_index', $config, 'fields-description-search');
-}
-
 /**
  * Implements hook_node_presave()
  */
@@ -246,6 +231,7 @@ function mica_field_description_form_field_ui_field_edit_form_alter(&$form, $for
  *
  * @param string $index_name
  * @param stdClass $field_description
+ * @throws Exception
  */
 function _mica_field_description_add_field_index($index_name, stdClass $field_description) {
 
@@ -346,8 +332,7 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
         }
       }
     }
-  }
-  catch (Exception $e) {
+  } catch (Exception $e) {
     watchdog_exception('mica', $e, 'Error while configuring facet %facet for %index',
       array('%facet' => $field_name, '%index' => $index->machine_name));
     throw $e;

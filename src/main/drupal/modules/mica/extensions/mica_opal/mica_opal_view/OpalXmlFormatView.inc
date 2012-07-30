@@ -50,12 +50,10 @@ class OpalXmlFormatView extends RESTServerView {
       drupal_add_http_header('Content-Disposition', "attachment; filename=$dataset.xml");
       $this->doc->formatOutput = TRUE;
       return $this->doc->saveXml();
-    }
-    catch (Exception $e) {
+    } catch (Exception $e) {
       watchdog_exception('mica', $e);
       throw $e;
     }
-    return NULL;
   }
 
   function render_node($node, &$element) {
@@ -118,12 +116,18 @@ class OpalXmlFormatView extends RESTServerView {
   }
 
   private function addAttribute($attributes, $name, $valueType, $lang, $value, $namespace = NULL) {
-    if (is_null($value)) return;
+    if (is_null($value)) {
+      return;
+    }
     $attribute = $attributes->appendChild($this->doc->createElement('attribute'));
     $attribute->setAttribute('name', $name);
     $attribute->setAttribute('valueType', $valueType);
-    if (!empty($lang)) $attribute->setAttribute('locale', $lang); // set to $lang to support multiple languages
-    if (!empty($namespace)) $attribute->setAttribute('namespace', $namespace);
+    if (!empty($lang)) {
+      $attribute->setAttribute('locale', $lang);
+    } // set to $lang to support multiple languages
+    if (!empty($namespace)) {
+      $attribute->setAttribute('namespace', $namespace);
+    }
     $attribute->appendChild($this->doc->createTextNode($value));
   }
 
@@ -146,7 +150,9 @@ class OpalXmlFormatView extends RESTServerView {
   }
 
   private function addAttributeValue($attributes, $name, $valueType, $lang, $value) {
-    if (is_null($value)) return;
+    if (is_null($value)) {
+      return;
+    }
     $attribute = $attributes->appendChild($this->doc->createElement('attribute'));
     $attribute->setAttribute('name', $name);
     $attribute->setAttribute('valueType', $valueType);
@@ -157,7 +163,9 @@ class OpalXmlFormatView extends RESTServerView {
   function sort_by_position($x, $y) {
     $x_pos = entity_metadata_wrapper('node', $x)->field_position->value();
     $y_pos = entity_metadata_wrapper('node', $y)->field_position->value();
-    if ($x_pos === $y_pos) return 0;
+    if ($x_pos === $y_pos) {
+      return 0;
+    }
     return $x_pos < $y_pos ? -1 : 1;
   }
 }

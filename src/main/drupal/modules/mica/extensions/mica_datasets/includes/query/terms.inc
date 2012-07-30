@@ -350,9 +350,9 @@ class CategoryTerm extends AbstractTerm {
 
   /**
    * Undoes the categoriesToForm() function
-   * @param unknown_type $formCategories
+   * @param array $formCategories
    */
-  private function formToCategories($formCategories) {
+  private function formToCategories(array $formCategories) {
     // array_filter will remove all non-selected categories
     // array_keys will return only the array keys
     $selected = array_keys(array_filter($formCategories));
@@ -403,12 +403,10 @@ class RangeTerm extends AbstractTerm {
   }
 
   function form($form, &$form_state) {
-    $variable = $this->getVariable();
-
-    $type = $variable->field_value_type[LANGUAGE_NONE][0]['value'];
-
-    $operator = isset($form_state['values']['operator']) ?
-      $form_state['values']['operator'] : NULL;
+//    $variable = $this->getVariable();
+//    $type = $variable->field_value_type[LANGUAGE_NONE][0]['value'];
+//    $operator = isset($form_state['values']['operator']) ?
+//      $form_state['values']['operator'] : NULL;
 
     $form['inverted'] = array(
       '#title' => t('Operator'),
@@ -429,7 +427,7 @@ class RangeTerm extends AbstractTerm {
     );
 
     //TODO incomplete
-    $default_exact = 'exact';
+//    $default_exact = 'exact';
     $default_value = NULL;
     $default_range_min = NULL;
     $default_range_max = NULL;
@@ -610,7 +608,7 @@ class TodoTerm extends AbstractTerm {
   }
 
   function view() {
-    $variable = $this->getVariable();
+//    $variable = $this->getVariable();
 
     $headers = array('Value');
     $stats = $this->stats();
@@ -671,7 +669,7 @@ class TodoTerm extends AbstractTerm {
     else {
       $selection = explode(" ", $selection);
       foreach ($selection as $key => $value) {
-        $selection[$key] = strtolower($value);
+        $selection[$key] = drupal_strtolower($value);
       }
     }
 

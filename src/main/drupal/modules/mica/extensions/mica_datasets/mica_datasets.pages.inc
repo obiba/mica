@@ -258,7 +258,6 @@ function mica_datasets_study_datasets_form($form, &$form_state) {
   ));
 
   $study_node = _mica_datasets_get_node_form_arg($form_state);
-  $study_node_id = $study_node->nid;
 
   $dataset_node_ids = _mica_datasets_get_dataset_ids($study_node->nid);
 
@@ -284,7 +283,7 @@ function mica_datasets_study_datasets_form($form, &$form_state) {
 
   // build the table options
   $options = array();
-  foreach ($dataset_node_ids as $dataset_node_id => $dataset_node) {
+  foreach ($dataset_node_ids as $dataset_node) {
     _mica_datasets_add_connection_option($options, $dataset_node, $study_node, $study_node);
   }
 

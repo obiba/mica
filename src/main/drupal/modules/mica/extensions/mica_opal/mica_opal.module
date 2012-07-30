@@ -164,6 +164,8 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
  *   The input array to parse
  * @$expression
  *   The JSONPath expression.
+ * @param $expression
+ * @throws Exception
  * @return array
  *   Returns an array that is the output of jsonPath
  */

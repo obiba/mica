@@ -112,7 +112,16 @@ function _mica_distribution_drupal_default_blocks($default_theme, $admin_theme) 
       'cache' => -1,
     ),
   );
-  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+  $query = db_insert('block')->fields(array(
+    'module',
+    'delta',
+    'theme',
+    'status',
+    'weight',
+    'region',
+    'pages',
+    'cache'
+  ));
   foreach ($blocks as $block) {
     $query->values($block);
   }
@@ -256,7 +265,17 @@ function _mica_distribution_default_block($mica_theme = 'mica_samara', $admin_th
       'cache' => -1,
     ),
   );
-  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'visibility', 'pages', 'cache'));
+  $query = db_insert('block')->fields(array(
+    'module',
+    'delta',
+    'theme',
+    'status',
+    'weight',
+    'region',
+    'visibility',
+    'pages',
+    'cache'
+  ));
   foreach ($values as $record) {
     $query->values($record);
   }

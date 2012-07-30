@@ -1,6 +1,6 @@
 /**
-* Provide the HTML to create the modal dialog.
-*/
+ * Provide the HTML to create the modal dialog.
+ */
 Drupal.theme.prototype.MicaModal = function () {
   var html = '';
 

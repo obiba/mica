@@ -31,7 +31,9 @@ function mica_datasets_is_variable_categorical($variable_nid) {
   $variable = node_load($variable_nid);
   $variable_wrapper = entity_metadata_wrapper('node', $variable);
   foreach ($variable_wrapper->field_variable_categories->value() as $category) {
-    if ($category['missing'] == 0) return TRUE;
+    if ($category['missing'] == 0) {
+      return TRUE;
+    }
   }
   return FALSE;
 }
@@ -39,13 +41,17 @@ function mica_datasets_is_variable_categorical($variable_nid) {
 function mica_datasets_sort_by_title($x, $y) {
   $x_pos = entity_metadata_wrapper('node', $x)->title->value();
   $y_pos = entity_metadata_wrapper('node', $y)->title->value();
-  if ($x_pos === $y_pos) return 0;
+  if ($x_pos === $y_pos) {
+    return 0;
+  }
   return $x_pos < $y_pos ? -1 : 1;
 }
 
 function mica_datasets_sort_by_position($x, $y) {
   $x_pos = entity_metadata_wrapper('node', $x)->field_position->value();
   $y_pos = entity_metadata_wrapper('node', $y)->field_position->value();
-  if ($x_pos === $y_pos) return 0;
+  if ($x_pos === $y_pos) {
+    return 0;
+  }
   return $x_pos < $y_pos ? -1 : 1;
 }

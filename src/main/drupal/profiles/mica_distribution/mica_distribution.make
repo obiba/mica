@@ -106,7 +106,7 @@ projects[facetapi_i18n][type] = module
 
 ;projects[] = examples
 
-projects[features][version] = 1.0-rc3
+projects[features][version] = 1.0
 projects[features][type] = module
 projects[features][patch][981248] = http://drupal.org/files/hook_features_post_install-981248-58.patch
 projects[features][patch][656312] = http://drupal.org/files/keep_negative_permissions-656312-17.patch
@@ -173,6 +173,11 @@ projects[lang_dropdown][type] = module
 
 projects[languageicons][version] = 1.0
 projects[languageicons][type] = module
+
+projects[libraries][type] = module
+projects[libraries][download][type] = git
+projects[libraries][download][revision] = 7b06333
+projects[libraries][download][branch] = 7.x-2.x
 
 projects[link][version] = 1.0
 projects[link][type] = module
@@ -309,11 +314,28 @@ libraries[ckeditor][download][type]= get
 libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.3/ckeditor_3.6.3.tar.gz
 libraries[ckeditor][directory_name] = ckeditor
 
+libraries[jquery_tooltip][type] = libraries
+libraries[jquery_tooltip][download][type]= get
+libraries[jquery_tooltip][download][url] = http://jquery.bassistance.de/tooltip/jquery.tooltip.zip
+libraries[jquery_tooltip][directory_name] = jquery_tooltip
+
 libraries[jsonpath][type] = libraries
 libraries[jsonpath][download][type]= get
 libraries[jsonpath][download][url] = http://svn.obiba.org/mica/branches/mica-1.3.x/src/main/drupal/modules/mica/extensions/mica_opal/includes/jsonpath-0.8.1.php
 libraries[jsonpath][download][filename] = jsonpath-0.8.1.php
 libraries[jsonpath][directory_name] = jsonpath
+
+libraries[prettify_css][type] = libraries
+libraries[prettify_css][download][type] = get
+libraries[prettify_css][download][url] = http://google-code-prettify.googlecode.com/svn/branches/release-1-Jun-2011/src/prettify.css
+libraries[prettify_css][directory_name] = prettify
+libraries[prettify_css][overwrite] = TRUE
+
+libraries[prettify_js][type] = libraries
+libraries[prettify_js][download][type] = get
+libraries[prettify_js][download][url] = http://google-code-prettify.googlecode.com/svn/branches/release-1-Jun-2011/src/prettify.js
+libraries[prettify_js][directory_name] = prettify
+libraries[prettify_js][overwrite] = TRUE
 
 libraries[solr_php_client][type] = libraries
 libraries[solr_php_client][download][type] = get

@@ -126,8 +126,7 @@ class FeedsMicaRelationProcessor extends FeedsNodeProcessor {
           else {
             $state->updated++;
           }
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
           $state->failed++;
           drupal_set_message($e->getMessage(), 'warning');
           $message = $e->getMessage();

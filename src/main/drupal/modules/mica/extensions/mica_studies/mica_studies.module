@@ -557,10 +557,8 @@ function _mica_bind_other_specify(&$node, $bindings) {
       $key = $options['key'];
       $delimiter = ', ';
 
-      if (!isset($options['enclosed']) || $options['enclosed']) {
-        $start = ' (';
-        $end = ')';
-      }
+      $start = !isset($options['enclosed']) || $options['enclosed'] ? ' (' : '';
+      $end = !isset($options['enclosed']) || $options['enclosed'] ? ')' : '';
 
       if (isset($key)) {
         // get the array index of the key

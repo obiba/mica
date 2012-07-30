@@ -38,7 +38,7 @@ function mica_projects_features_rebuild_completed() {
 function _mica_projects_create_default_content() {
   $research_menu = mica_core_find_menu_for_alias('research');
   $project_menu = mica_core_create_menu(st('Projects'), 'projects', 'projects', FALSE, FALSE, 2, $research_menu->link_path);
-  
+
   mica_core_set_menu_option('projects', $project_menu['mlid']);
 }
 

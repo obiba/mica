@@ -15,14 +15,12 @@ function mica_datasets_unit_certificate_page() {
     _mica_datasets_set_missing_private_warning_message();
   }
 
-  if ($public_key_file_exists) {
-    $content = file_get_contents(PUBLIC_KEY_FILE);
-  }
+  $content = $public_key_file_exists ? file_get_contents(PUBLIC_KEY_FILE) : '';
 
   $form[$unit_certificate_form]['certificate'] = array(
     '#type' => 'textarea',
     '#title' => t('Certificate'),
-    '#value' => $public_key_file_exists ? $content : '',
+    '#value' => $content,
     '#rows' => 20,
     '#attributes' => array('readonly' => 'readonly'),
   );
@@ -125,7 +123,7 @@ function mica_datasets_unit_form_submit($form, &$form_state) {
   openssl_pkey_free($privkey);
 
   //TODO maybe drupal can do different (maybe directly call a method like mica_datasets_unit_certificate_page())
-  return drupal_goto('admin/config/system/mica');
+  drupal_goto('admin/config/system/mica');
 }
 
 

@@ -14,20 +14,28 @@ require_once('mica_datasets.utils.inc');
 
 function _mica_datasets_query_url($dataset_node, $query, $action = NULL) {
   $url = 'node/' . $dataset_node->nid . '/queries/' . $query->id;
-  if (!empty($action)) $url .= '/' . $action;
+  if (!empty($action)) {
+    $url .= '/' . $action;
+  }
   return $url;
 }
 
 function _mica_datasets_query_link($dataset_node, $query, $action = NULL, $title = NULL) {
   $url = _mica_datasets_query_url($dataset_node, $query, $action);
-  if (!isset($title)) $title = $query->name;
+  if (!isset($title)) {
+    $title = $query->name;
+  }
   return l($title, $url);
 }
 
 function _mica_datasets_query_term_url($dataset_node, $query, $term, $action, $cross_variable = NULL) {
   $url = 'node/' . $dataset_node->nid . '/queries/' . $query->id . '/term/' . $term->id;
-  if (!empty($action)) $url .= '/' . $action;
-  if (!empty($cross_variable)) $url .= '/' . $cross_variable->nid;
+  if (!empty($action)) {
+    $url .= '/' . $action;
+  }
+  if (!empty($cross_variable)) {
+    $url .= '/' . $cross_variable->nid;
+  }
   return $url;
 }
 
@@ -713,7 +721,9 @@ function mica_datasets_query_run_page_submit_callback($form, $form_state) {
 }
 
 function _mica_datasets_query_cross_variable_detail_link($cross_variable) {
-  if (empty($cross_variable)) return '';
+  if (empty($cross_variable)) {
+    return '';
+  }
   return ctools_modal_text_button(
     t('Details'),
     'mica/nojs/node/' . $cross_variable->nid,
@@ -810,7 +820,9 @@ function _mica_datasets_query_result_table($dataset_node, $query, $cross_variabl
       }
       else {
 
-        if (!$headers_initialized) $headers[] = t('Total');
+        if (!$headers_initialized) {
+          $headers[] = t('Total');
+        }
         $row[] = $total;
 
       }
@@ -963,7 +975,9 @@ function _mica_datasets_query_run_page_header($dataset_node, $query, $term, $cro
   $title = $impl->toString();
   $variable = node_load($term->variable_id);
 
-  if (!empty($header_matched_tooltip)) $header_matched_tooltip .= ' ' . t('and') . ' ';
+  if (!empty($header_matched_tooltip)) {
+    $header_matched_tooltip .= ' ' . t('and') . ' ';
+  }
   $header_matched_tooltip .= $title;
 
   $variable_link = ctools_modal_text_button(
@@ -1014,7 +1028,9 @@ function _mica_datasets_query_run_page_summary(&$rows, $header_total_nb_sub_head
   );
   foreach ($rows as $row) {
     foreach ($row['data'] as $key => $value) {
-      if ($key == 0) continue;
+      if ($key == 0) {
+        continue;
+      }
       if (!isset($totals[$key])) {
         $totals[$key] = array(
           'data' => 0,
@@ -1031,7 +1047,9 @@ function _mica_datasets_query_run_page_summary(&$rows, $header_total_nb_sub_head
   // We have the count sums, now build the count display strings (i.e. with percentage)
   $totals_count = 0;
   foreach ($totals as $key => $value) {
-    if ($key == 0) continue;
+    if ($key == 0) {
+      continue;
+    }
     if ($key <= $header_total_nb_sub_header) {
       $totals_count = $totals[$key]['count'];
       $totals[$key]['data'] = $totals_count;
