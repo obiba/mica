@@ -21,7 +21,11 @@ include_once('mica_field_description.features.inc');
 include_once(drupal_get_path('module', 'facetapi') . '/facetapi.block.inc');
 include_once(drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.inc');
 
-
+/**
+ * Configure facet blocks for field description search page
+ * Cannot configure this from hook_features_rebuild_completed because of exceptions like
+ * Notice: Undefined index: name in FacetapiAdapter->getFacet() (line 823 of sites/all/modules/facetapi/plugins/facetapi/adapter.inc).
+ */
 function mica_field_description_configure_facet_blocks() {
   $config = array(
     'field_bundle' => array(
@@ -35,19 +39,6 @@ function mica_field_description_configure_facet_blocks() {
     ),
   );
   mica_core_configure_facet_blocks('fields_description_index', 'field_description', $config, 'fields-description-search');
-}
-
-/**
- * Implements hook_features_rebuild_completed()
- */
-function mica_field_description_features_rebuild_completed() {
-
-  watchdog('mica', 'mica_field_description_features_rebuild_completed', array(), WATCHDOG_DEBUG);
-
-  if (!variable_get('mica_field_description_features_rebuild_completed', FALSE)) {
-    mica_field_description_configure_facet_blocks();
-    variable_set('mica_field_description_features_rebuild_completed', TRUE);
-  }
 }
 
 /**

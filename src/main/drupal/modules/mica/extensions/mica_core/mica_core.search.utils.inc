@@ -25,6 +25,10 @@ function mica_core_find_indexes_by_bundle() {
 }
 
 /**
+ * WARNING:
+ * Cannot execute this from hook_features_rebuild_completed() because of exceptions like
+ * Notice: Undefined index: name in FacetapiAdapter->getFacet() (line 823 of sites/all/modules/facetapi/plugins/facetapi/adapter.inc).
+ *
  * @param string $search_index index machine name ('variable_index' for example)
  * @param string $content_type
  * @param array $config facet block configuration
