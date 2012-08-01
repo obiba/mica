@@ -4788,7 +4788,7 @@ Set to 0 to set variable at last position.  ',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => -5,
+        'weight' => '-5',
       ),
     ),
   );
