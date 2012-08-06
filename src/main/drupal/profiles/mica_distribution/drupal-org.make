@@ -2,9 +2,6 @@
 core = "7.x"
 api = "2"
 
-;Include the definition for how to build Drupal core directly, including patches:
-includes[] = drupal-org-core.make
-
 projects[acl][version] = 1.0-beta3
 
 projects[auto_entitylabel][version] = 1.0
