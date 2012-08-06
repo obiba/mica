@@ -1,4 +1,3 @@
-project = "mica"
 name = "Mica" 
 description = "Mica module"
 package = "OBiBa"

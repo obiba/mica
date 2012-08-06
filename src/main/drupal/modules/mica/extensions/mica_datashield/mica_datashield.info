@@ -5,5 +5,4 @@ description = "Mica DataSHIELD"
 files[] = "includes/datashield.inc"
 name = "Mica DataSHIELD"
 package = "OBiBa"
-project = "mica_datashield"
 

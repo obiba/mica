@@ -3,8 +3,4 @@ description = "Mica Category Field"
 core = "7.x"
 package = "OBiBa"
 php = "5.2.4"
-project = "mica_category_field"
 
-; Information added by obiba.org packaging script on Thu, 31 May 2012 15:55:07 -0400
-version = "7.x-1.4-dev"
-datestamp = "1338494107"

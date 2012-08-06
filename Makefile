@@ -195,6 +195,25 @@ package-modules-prepare:
 	$(call make-info,sites/all/modules/mica/extensions,node_reference_block)
 	$(call make-info,sites/all/modules,mica)
 
+package-modules-clear:
+	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_community)
+	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_core)
+	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_data_access)
+	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_datasets)
+	$(call clear-info,src/main/drupal/modules/mica/extensions/mica_datasets,mica_category_field)
+	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_datashield)
+	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_devel)
+	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_field_description)
+	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_networks)
+	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_node_reference_field)
+	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_opal)
+	$(call clear-info,src/main/drupal/modules/mica/extensions/mica_opal,mica_opal_view)
+	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_projects)
+	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_relation)
+	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_studies)
+	$(call clear-info,src/main/drupal/modules/mica/extensions,node_reference_block)
+	$(call clear-info,src/main/drupal/modules,mica)
+
 package-profiles-prepare:
 	$(call make-info,profiles,mica_standard)
 	$(call make-info,profiles,mica_demo)
@@ -372,14 +391,22 @@ help:
 # make-info function: add default version number to project info file
 make-info = $(call make-info-version,$(1),$(2),$($(2)_version))
 
+clear-info = $(call clear-info-version,$(1),$(2))
+
 # make-info-version function: remove (if present) and add specified version number to project info file
 make-info-version = cd target/$(micadir)/$(1) && \
-	sed -i "/version/d" $2/$2.info && \
-	sed -i "/datestamp/d" $2/$2.info && \
-	sed -i "/Information added by obiba.org packaging script/d" $2/$2.info && \
+	sed -i "/^version/d" $2/$2.info && \
+	sed -i "/^datestamp/d" $2/$2.info && \
+	sed -i "/^Information added by obiba.org packaging script/d" $2/$2.info && \
 	echo "\n\n; Information added by obiba.org packaging script on $(deb_date)" >> $2/$2.info && \
 	echo "version = \"$(3)\"" >> $2/$2.info && \
 	echo "datestamp = \"$(datestamp)\"" >> $2/$2.info
+
+# clear-info-version function: remove (if present) version number from project info file
+clear-info-version = sed -i "/^version/d" $(1)/$2/$2.info && \
+	sed -i "/^project/d" $(1)/$2/$2.info && \
+	sed -i "/^datestamp/d" $(1)/$2/$2.info && \
+	sed -i "/^Information added by obiba.org packaging script/d" $(1)/$2/$2.info
 
 # make-package function: build tar.gz and zip files of a project
 make-package = cd target/$(micadir)/$(1) && \
