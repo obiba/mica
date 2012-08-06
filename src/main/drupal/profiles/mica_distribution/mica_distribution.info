@@ -1,5 +1,3 @@
-; $Id$
-project = "mica_distribution"
 name = Mica
 distribution_name = Mica
 description = Mica installation of tools for making a Study Consortium site: studies, search indexes, community tools and more.

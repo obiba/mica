@@ -1,5 +1,5 @@
 <?php
-// $Id:
+
 
 /**
  * Override or insert variables into the html template.

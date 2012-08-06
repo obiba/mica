@@ -1,5 +1,5 @@
 <?php
-// $Id:
+
 ?>
 <div id="skip-link">
     <a href="#main-content">Skip to main content</a>

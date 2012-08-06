@@ -24,13 +24,13 @@ function mica_distribution_install_tasks($install_state) {
       'display' => TRUE,
       'type' => 'batch',
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED, // default to insert content
-      'function' => '_mica_configuration_batch',
+      'function' => '_mica_distribution_configuration_batch',
     ),
   );
   return $tasks;
 }
 
-function _mica_configuration_batch() {
+function _mica_distribution_configuration_batch() {
 
   $operations = array();
 
@@ -62,16 +62,16 @@ function _mica_configuration_batch() {
   foreach (module_list() as $module) {
     if (substr($module, 0, $mica_length) === 'mica_') {
       if (module_exists($module)) {
-        $operations[] = array('_rebuild_user_permission', array($module));
+        $operations[] = array('_mica_distribution_rebuild_user_permission', array($module));
       }
     }
   }
 
-  $operations[] = array('_field_description_block_configuration', array());
-  $operations[] = array('_studies_block_configuration', array());
+  $operations[] = array('_mica_distribution_field_description_block_configuration', array());
+  $operations[] = array('_mica_distribution_studies_block_configuration', array());
 
   if (module_exists('mica_datasets')) {
-    $operations[] = array('_datasets_block_configuration', array());
+    $operations[] = array('_mica_distribution_datasets_block_configuration', array());
   }
 
   $batch = array(
@@ -79,41 +79,40 @@ function _mica_configuration_batch() {
     'title' => st('Configure Mica'),
     'init_message' => st('Starting Mica configuration'),
     'error_message' => st('Error while configuring Mica'),
-    'finished' => '_mica_configuration_finished',
+    'finished' => '_mica_distribution_mica_configuration_finished',
   );
   return $batch;
 }
-
 
 /**
  * Application of user permissions by features fails at modules installation.
  * So rebuild them in a post-install task.
  */
-function _rebuild_user_permission($module, &$context) {
+function _mica_distribution_rebuild_user_permission($module, &$context) {
   module_load_include('inc', 'features', 'includes/features.user');
   module_load_include('inc', 'features', 'features.export');
   user_permission_features_rebuild($module);
   $context['message'] = st('Rebuilt user permissions for %module.', array('%module' => $module));
 }
 
-function _field_description_block_configuration(&$context) {
+function _mica_distribution_field_description_block_configuration(&$context) {
   mica_field_description_configure_facet_blocks();
   $context['message'] = st('Mica Field Description configured');
 }
 
-function _studies_block_configuration(&$context) {
+function _mica_distribution_studies_block_configuration(&$context) {
   module_load_include('inc', 'mica_studies', 'mica_studies.facet_blocks');
   mica_studies_configure_facet_blocks();
   $context['message'] = st('Mica studies configured');
 }
 
-function _datasets_block_configuration(&$context) {
+function _mica_distribution_datasets_block_configuration(&$context) {
   module_load_include('inc', 'mica_datasets', 'mica_datasets.facet_blocks');
   mica_datasets_configure_facet_blocks();
   $context['message'] = st('Mica datasets configured');
 }
 
-function _mica_configuration_finished($success, $results, $operations) {
+function _mica_distribution_mica_configuration_finished($success, $results, $operations) {
   drupal_set_message(st("Mica configuration finished"));
 }
 

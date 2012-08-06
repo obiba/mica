@@ -79,7 +79,7 @@ default-restore:
 drupal: drush-make drupal-default 
 
 drush-make:
-	$(drushmake_exec) src/main/drupal/profiles/mica_distribution/mica_distribution.make target/$(micadir)
+	$(drushmake_exec) src/main/drupal/profiles/mica_distribution/build-mica_distribution.make target/$(micadir)
 
 drupal-default:
 	cd target/$(micadir) && \
@@ -340,7 +340,7 @@ dump:
 
 mica-local-prepare:
 	rm -rf target/$(micadir)-local && \
-	$(drushmake_exec) src/main/drupal/profiles/mica_distribution/mica_distribution.make target/$(micadir)-local
+	$(drushmake_exec) src/main/drupal/profiles/mica_distribution/drupal-org.make target/$(micadir)-local --contrib-destination profiles/mica_distribution
 
 mica-local: mica-local-copy drupal-default mica package-prepare htaccess
 
@@ -384,7 +384,7 @@ git-push-mica:
 	$(call git-finish)
 
 git-push-mica-dist:
-	$(call git-prepare,$(drupal_org_mica_dist),mica_dist) . && \
+	$(call git-prepare,$(drupal_org_mica_dist),mica_distribution) . && \
 	cp -r ../../../src/main/drupal/profiles/mica_distribution/* . && \
 	cp -r ../../../src/main/drupal/themes . && \
 	$(call git-finish)
@@ -428,7 +428,9 @@ deb-package = echo "$(2)_version=$($(2)_version)" >> target/deb/$(1)/var/lib/$(1
 #git-prepare: checkout git repo $(1) to target $(2) and delete all files from this repo
 git-prepare = rm -rf target/drupal.org && \
 	mkdir -p target/drupal.org && \
-	git clone $(1) target/drupal.org/$(2) && \
+	echo "Enter Drupal username?" && \
+	read git_username && \
+	git clone $$git_username@$(1) target/drupal.org/$(2) && \
 	cd target/drupal.org/$(2) && \
 	git checkout $(branch) && \
 	git rm -rf *
@@ -459,5 +461,5 @@ deb_date=$(shell date -R)
 datestamp=$(shell date +%s)
 drushexec=drush
 drushmake_exec=drush make
-drupal_org_mica=cthiebault@git.drupal.org:sandbox/cthiebault/1678054.git
-drupal_org_mica_dist=cthiebault@git.drupal.org:sandbox/cthiebault/1664248.git
+drupal_org_mica=git.drupal.org:project/mica.git
+drupal_org_mica_dist=git.drupal.org:project/mica_distribution.git

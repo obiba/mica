@@ -16,7 +16,6 @@
           </value>
         </option>
         <option name="LINE_SEPARATOR" value="&#10;" />
-        <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="true" />
         <JSCodeStyleSettings>
           <option name="SPACE_AFTER_PROPERTY_COLON" value="true" />
         </JSCodeStyleSettings>
