@@ -3,7 +3,6 @@ description = Mica Studies
 core = 7.x
 package = Mica
 php = 5.2.4
-project = mica_studies
 dependencies[] = advanced_help
 dependencies[] = auto_entitylabel
 dependencies[] = autocomplete_deluxe

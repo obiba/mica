@@ -3,7 +3,6 @@ description = "Mica Relation"
 core = "7.x"
 package = Mica
 php = "5.2.4"
-project = "mica_relation"
 
 dependencies[] = entity
 dependencies[] = search_api

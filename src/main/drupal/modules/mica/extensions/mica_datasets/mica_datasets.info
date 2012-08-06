@@ -3,7 +3,6 @@ description = Mica Datasets Module
 core = 7.x
 package = Mica
 php = 5.2.4
-project = mica_datasets
 dependencies[] = autocomplete_deluxe
 dependencies[] = collapsiblock
 dependencies[] = content_taxonomy

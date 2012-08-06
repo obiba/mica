@@ -3,7 +3,6 @@ description = Community module for Mica, to activate events, blogs, forums etc.
 core = 7.x
 package = Mica
 php = 5.2.4
-project = mica_community
 dependencies[] = blog
 dependencies[] = calendar
 dependencies[] = ctools

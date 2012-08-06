@@ -401,18 +401,18 @@ clear-info = $(call clear-info-version,$(1),$(2))
 
 # make-info-version function: remove (if present) and add specified version number to project info file
 make-info-version = cd target/$(micadir)/$(1) && \
-	sed -i "/version/d" $2/$2.info && \
-	sed -i "/datestamp/d" $2/$2.info && \
-	sed -i "/Information added by obiba.org packaging script/d" $2/$2.info && \
+	sed -i "/^version/d" $2/$2.info && \
+	sed -i "/^datestamp/d" $2/$2.info && \
+	sed -i "/^Information added by obiba.org packaging script/d" $2/$2.info && \
 	echo "\n\n; Information added by obiba.org packaging script on $(deb_date)" >> $2/$2.info && \
 	echo "version = \"$(3)\"" >> $2/$2.info && \
 	echo "datestamp = \"$(datestamp)\"" >> $2/$2.info
 
 # clear-info-version function: remove (if present) version number from project info file
-clear-info-version = sed -i "/version/d" $(1)/$2/$2.info && \
-	sed -i "/project/d" $(1)/$2/$2.info && \
-	sed -i "/datestamp/d" $(1)/$2/$2.info && \
-	sed -i "/Information added by obiba.org packaging script/d" $(1)/$2/$2.info
+clear-info-version = sed -i "/^version/d" $(1)/$2/$2.info && \
+	sed -i "/^project/d" $(1)/$2/$2.info && \
+	sed -i "/^datestamp/d" $(1)/$2/$2.info && \
+	sed -i "/^Information added by obiba.org packaging script/d" $(1)/$2/$2.info
 
 # make-package function: build tar.gz and zip files of a project
 make-package = cd target/$(micadir)/$(1) && \

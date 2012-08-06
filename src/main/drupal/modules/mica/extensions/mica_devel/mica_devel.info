@@ -3,7 +3,6 @@ description = "Mica development tools"
 core = "7.x"
 package = Mica
 php = "5.2.4"
-project = "mica_devel"
 dependencies[] = "devel"
 dependencies[] = "devel_generate"
 dependencies[] = "devel_node_access"

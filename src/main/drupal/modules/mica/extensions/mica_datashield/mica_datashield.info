@@ -5,5 +5,4 @@ description = "Mica DataSHIELD"
 files[] = "includes/datashield.inc"
 name = "Mica DataSHIELD"
 package = Mica
-project = "mica_datashield"
 
