@@ -3,7 +3,7 @@
 #
 
 oldversion=
-solr_version=3.6.0
+solr_version=3.6.1
 
 #
 # Drush install
@@ -31,7 +31,7 @@ mica-solr-install-prepare:
 	@echo "**** Downloading Apache Solr version $(solr_version)"
 	mkdir -p target	
 	cd target && \
-	wget -q http://apache.raffsoftware.com//lucene/solr/$(solr_version)/apache-solr-$(solr_version).tgz && \
+	wget -q http://archive.apache.org/dist/lucene/solr/$(solr_version)/apache-solr-$(solr_version).tgz && \
 	tar xzf apache-solr-$(solr_version).tgz
 
 solr-install:

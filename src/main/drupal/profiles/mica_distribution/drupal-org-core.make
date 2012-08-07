@@ -6,8 +6,14 @@ core = "7.x"
 projects[drupal][type] = core
 projects[drupal][version] = 7.15
 
-; Use vocabulary machine name for permissions - http://drupal.org/node/995156
+; Use vocabulary machine name for permissions
+; http://drupal.org/node/995156
 projects[drupal][patch][995156] = http://drupal.org/files/issues/995156-5_portable_taxonomy_permissions.patch
 
-; Add backtrace to all errors - http://drupal.org/node/1158322
+; Install profile is disabled for lots of different reasons and core doesn't allow for that
+; http://drupal.org/node/1170362
+projects[drupal][patch][1170362] = http://drupal.org/files/mimimal-install-profile-1170362-168.patch
+
+; Add backtrace to all errors
+; http://drupal.org/node/1158322
 projects[drupal][patch][1158322] = http://drupal.org/files/drupal-1158322-82-add-backtrace-to-errors-D7.patch

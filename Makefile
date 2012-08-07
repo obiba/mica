@@ -1,6 +1,6 @@
 #
 # Mica Makefile
-# Requires drush 5+ to be installed: http://drush.ws/
+# Requires drush 5+ to be installed: http://drush.ws
 #
 
 version=1.5-dev
@@ -41,15 +41,111 @@ mica_samara_version=$(mica_version)
 db_user=root
 db_pass=1234
 
+all: dev
+
+help:
+	@echo "Mica version $(version)"
+	@echo
+	@echo "Available make targets:"
+	@echo "  dev (default)      : Download Drupal, required modules and install Mica local dev version modules/profiles in it. Result is available in 'target' directory."
+	@echo "  prod               : Download Drupal, required modules and install Mica $(version) modules/profiles in it. Result is available in 'target' directory."
+	@echo "  package            : Package Drupal for Mica ($(micadir).tar.gz), Mica modules and make a Mica installer Debian package."
+	@echo
+	@echo "  git-push-mica      : Clone Drupal.org Mica Git repository, add current files, commit and push them."
+	@echo "  git-push-mica-dist : Clone Drupal.org Mica Distribution Git repository, add current files, commit and push them."
+	@echo
+	@echo "  clean              : Remove 'target' directory."
+	@echo
+	@echo "  prepare-local      : Download Drupal and required modules to temp folder to avoid downloading everything from drupal.org for faster builds."
+	@echo "  local              : Create a complete Mica Distribution with local Mica files based on previously downloaded Drupal and required modules (with target prepare-local)."
+	@echo "                       This avoid downloading everything from drupal.org for faster builds "
+	@echo
+	@echo "  mica-install       : Copy Mica files from 'src' to distribution built in 'target' directory."
+	@echo "  mica-install-clear : Copy Mica files from 'src' to distribution built in 'target' directory and clear all caches."
+	@echo
+	@echo "  dump               : Exports the Drupal DB as SQL using mysqldump."
+	@echo
+	@echo "  deploy             : Used by continuous integration server to copy packaged distribution to stable (for prod) or unstable (for dev)."
+	@echo "                       http://ci.obiba.org/view/Mica/job/Mica"
+	@echo
+	@echo "Requires drush 5+ to be installed [http://drush.ws]"
+	@echo "  " `drush version`
+	@echo
+
+
 #
 # Build
 #
 
-all: drupal mica package-prepare htaccess
+prod: drush-make-prod prepare-mica-distribution htaccess
 
-drupal-settings:
-	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/default.settings.php
-	echo "ini_set('max_execution_time', 0);" >> target/$(micadir)/sites/default/settings.php
+dev: drush-make-dev mica-install prepare-mica-distribution inject-version-info htaccess
+
+drush-make-prod:
+	drush make --prepare-install src/main/drupal/profiles/mica_distribution/build-mica_distribution.make target/$(micadir)
+
+drush-make-dev:
+	$(call drush-make-dev,$(micadir))
+
+mica-install:
+	rm -rf target/$(micadir)/profiles/mica_distribution/modules/mica && \
+	cp -R src/main/drupal/modules target/$(micadir)/profiles/mica_distribution && \
+	cp -R src/main/drupal/themes target/$(micadir)/profiles/mica_distribution && \
+	cp -R src/main/drupal/profiles/mica_distribution target/$(micadir)/profiles && \
+	make inject-version-info
+
+prepare-mica-distribution:
+	cp src/main/drupal/themes/mica_samara/mica.png target/$(micadir)/themes/seven/logo.png && \
+	cp src/main/drupal/themes/mica_samara/favicon.ico target/$(micadir)/misc/favicon.ico && \
+	rm -rf target/$(micadir)/profiles/minimal target/$(micadir)/profiles/standard target/$(micadir)/profiles/testing
+
+htaccess:
+	cp target/$(micadir)/.htaccess target/$(micadir)/.htaccess_bak && \
+	sed '/# RewriteBase \/drupal/ a RewriteBase \/mica' target/$(micadir)/.htaccess > target/$(micadir)/.htaccess_new && \
+	mv target/$(micadir)/.htaccess_new target/$(micadir)/.htaccess
+
+inject-version-info:
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_community)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_core)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_data_access)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_datasets)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions/mica_datasets,mica_category_field)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_datashield)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_devel)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_field_description)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_networks)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_node_reference_field)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_opal)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions/mica_opal,mica_opal_view)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_projects)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_relation)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_studies)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,node_reference_block)
+	$(call inject-version-info,mica_distribution/modules,mica)
+	$(call inject-version-info,,mica_distribution)
+	$(call inject-version-info,mica_distribution/themes,mica_samara)
+
+clear-version-info:
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_community)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_core)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_data_access)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_datasets)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions/mica_datasets,mica_category_field)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_datashield)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_devel)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_field_description)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_networks)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_node_reference_field)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_opal)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions/mica_opal,mica_opal_view)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_projects)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_relation)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_studies)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,node_reference_block)
+	$(call clear-version-info,src/main/drupal/modules,mica)
+	$(call clear-version-info,src/main/drupal/profiles,mica_distribution)
+	$(call clear-version-info,src/main/drupal/profiles,mica_demo)
+	$(call clear-version-info,src/main/drupal/themes,mica_samara)
 
 #
 # Build from continuous integration
@@ -72,74 +168,6 @@ default-backup:
 default-restore:
 	cd target/ && \
 	cp -r default $(micadir)/sites
-
-#
-# Drupal targets
-#
-drupal: drush-make drupal-default 
-
-drush-make:
-	$(drushmake_exec) src/main/drupal/profiles/mica_distribution/build-mica_distribution.make target/$(micadir)
-
-drupal-default:
-	cd target/$(micadir) && \
-	chmod a+r sites/all/modules/services/servers/rest_server/lib/spyc.php && \
-	chmod a+w sites/default && \
-	mkdir sites/default/files && \
-	chmod a+w sites/default/files && \
-	cp sites/default/default.settings.php sites/default/settings.php && \
-	chmod a+w sites/default/settings.php && \
-	chmod +x scripts/*.sh
-
-drupal-examples:
-	cd target/$(micadir) && \
-	$(drushexec) dl examples
-
-drupal-dl:
-	cd target/$(micadir) && \
-	$(drushexec) dl $(module)
-
-drupal-en:
-	cd target/$(micadir) && \
-	$(drushexec) en --yes $(module)
-
-drupal-dis:
-	cd target/$(micadir) && \
-	$(drushexec) pm-disable --yes $(module)	
-
-drupal-cache-clear:
-	cd target/$(micadir) && \
-	$(drushexec) cache-clear
-
-#
-# Mica Build
-#
-mica: mica-install
-	cp src/main/drupal/themes/mica_samara/mica.png target/$(micadir)/themes/seven/logo.png
-	cp src/main/drupal/themes/mica_samara/favicon.ico target/$(micadir)/misc/favicon.ico
-
-mica-install:
-	cd target/$(micadir) && \
-	cp -r ../../src/main/drupal/profiles/* profiles && \
-	cp -r ../../src/main/drupal/modules/mica sites/all/modules && \
-	cp -r ../../src/main/drupal/themes/* sites/all/themes && \
-	rm -rf `find . -type d -name .svn` && \
-	rm -rf `find . -type d -name .git` && \
-	if [ -e profiles/standard/standard.install ]; then \
-#		cp profiles/standard/standard.install profiles/mica_distribution/standard.install && \
-		rm -rf profiles/standard && \
-		rm -rf profiles/minimal ; \
-	fi
-
-mica-link: mica
-	rm -rf $(CURDIR)/target/$(micadir)/sites/all/modules/mica && \
-	ln -s $(CURDIR)/src/main/drupal/modules/* $(CURDIR)/target/$(micadir)/sites/all/modules
-
-htaccess:
-	cp target/$(micadir)/.htaccess target/$(micadir)/.htaccess_bak
-	sed '/# RewriteBase \/drupal/ a RewriteBase \/mica' target/$(micadir)/.htaccess > target/$(micadir)/.htaccess_new
-	mv target/$(micadir)/.htaccess_new target/$(micadir)/.htaccess 
-
 
 #
 # Deploy
@@ -168,58 +196,11 @@ endif
 #
 # Package
 #
-package: package-prepare debian
+package: debian
 	rm -f target/mica-dist*
 	cd target && \
 	tar czf mica-dist-$(deb_version).tar.gz $(micadir) && \
 	zip -qr mica-dist-$(deb_version).zip $(micadir)
-
-package-prepare: package-modules-prepare package-profiles-prepare package-themes-prepare
-
-package-modules-prepare:
-	$(call make-info,sites/all/modules/mica/extensions,mica_community)
-	$(call make-info,sites/all/modules/mica/extensions,mica_core)
-	$(call make-info,sites/all/modules/mica/extensions,mica_data_access)
-	$(call make-info,sites/all/modules/mica/extensions,mica_datasets)
-	$(call make-info,sites/all/modules/mica/extensions/mica_datasets,mica_category_field)
-	$(call make-info,sites/all/modules/mica/extensions,mica_datashield)
-	$(call make-info,sites/all/modules/mica/extensions,mica_devel)
-	$(call make-info,sites/all/modules/mica/extensions,mica_field_description)
-	$(call make-info,sites/all/modules/mica/extensions,mica_networks)
-	$(call make-info,sites/all/modules/mica/extensions,mica_node_reference_field)
-	$(call make-info,sites/all/modules/mica/extensions,mica_opal)
-	$(call make-info,sites/all/modules/mica/extensions/mica_opal,mica_opal_view)
-	$(call make-info,sites/all/modules/mica/extensions,mica_projects)
-	$(call make-info,sites/all/modules/mica/extensions,mica_relation)
-	$(call make-info,sites/all/modules/mica/extensions,mica_studies)
-	$(call make-info,sites/all/modules/mica/extensions,node_reference_block)
-	$(call make-info,sites/all/modules,mica)
-
-package-modules-clear:
-	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_community)
-	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_core)
-	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_data_access)
-	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_datasets)
-	$(call clear-info,src/main/drupal/modules/mica/extensions/mica_datasets,mica_category_field)
-	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_datashield)
-	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_devel)
-	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_field_description)
-	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_networks)
-	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_node_reference_field)
-	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_opal)
-	$(call clear-info,src/main/drupal/modules/mica/extensions/mica_opal,mica_opal_view)
-	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_projects)
-	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_relation)
-	$(call clear-info,src/main/drupal/modules/mica/extensions,mica_studies)
-	$(call clear-info,src/main/drupal/modules/mica/extensions,node_reference_block)
-	$(call clear-info,src/main/drupal/modules,mica)
-	
-package-profiles-prepare:
-	$(call make-info,profiles,mica_distribution)
-	$(call make-info,profiles,mica_demo)
-
-package-themes-prepare:
-	$(call make-info,sites/all/themes,mica_samara)
 
 
 #
@@ -232,7 +213,7 @@ debuild_opts=-us -uc
 debian: deb-prepare deb	
 	cd target/deb/mica && debuild $(debuild_opts) -b
 	cd target/deb/mica-solr && debuild $(debuild_opts) -b
-	
+
 deb-prepare:
 	rm -rf target/deb
 	cp -r src/main/deb target
@@ -254,7 +235,6 @@ else
 endif
 	$(call deb-package,mica,mica)
 	$(call deb-package,mica,mica_distribution)
-	$(call deb-package,mica,mica_demo)
 	$(call deb-package,mica,mica_samara)
 
 deb-mica-solr-install:
@@ -290,28 +270,6 @@ endif
 	echo " -- OBiBa <info@obiba.org>  $(deb_date)" >> target/deb/mica-solr/debian/changelog
 
 #
-# Site
-#
-
-installdir=target
-
-mica-site:
-	cd target/$(micadir) && \
-	$(drushexec) site-install mica_distribution --db-url=mysql://$(db_user):$(db_pass)@localhost/mica --site-name=Mica --yes
-
-mica-dev-site: mica-site
-	$(drushexec) en mica_devel --y
-
-demo-site:
-	cd target/$(micadir) && \
-	$(drushexec) site-install mica_demo --db-url=mysql://$(db_user):$(db_pass)@localhost/mica --site-name=Mica --clean-url=$(clean_url) --yes && \
-	$(drushexec) ne-import --file=profiles/mica_demo/data/mica-demo.txt
-
-demo-export:
-	cd target/$(micadir) && \
-	$(drushexec) ne-export 2 3 4 5 -u 1 --file=../mica-demo.txt
-
-#
 # Devel
 #
 
@@ -324,32 +282,29 @@ coder:
 	cd target/$(micadir) && \
 	drush dl coder && \
 	drush dl grammar_parser_lib && \
- 	drush en coder* --yes
+	drush en coder* --yes
 
 dump:
-	mysqldump -u $(db_user) --password=$(db_pass) --hex-blob mica --result-file="mica.sql" 
-
+	mysqldump -u $(db_user) --password=$(db_pass) --hex-blob mica --result-file="target/mica.sql"
+	@echo ">>> Database dumped to target/mica.sql"
 
 
 #
 # Local make: avoid downloading everything from drupal.org for faster builds
 #
 # - Run mica-local-prepare to download drupal core and all modules in a temp folder
-# - Run mica-local to build Mica with local drupal ditribution
+# - Run mica-local to build Mica with local drupal distribution
 #
 
-mica-local-prepare:
+prepare-local:
 	rm -rf target/$(micadir)-local && \
-	$(drushmake_exec) src/main/drupal/profiles/mica_distribution/drupal-org.make target/$(micadir)-local --contrib-destination profiles/mica_distribution
+	$(call drush-make-dev,$(micadir)-local)
 
-mica-local: mica-local-copy drupal-default mica package-prepare htaccess
+local: local-copy mica-install prepare-mica-distribution htaccess
 
-mica-local-link: mica-local-copy drupal-default mica-link package-prepare htaccess
-
-mica-local-copy:
+local-copy:
 	rm -rf target/$(micadir) && \
 	cp -r target/$(micadir)-local target/$(micadir)
-
 
 #
 # Misc
@@ -358,69 +313,46 @@ mica-local-copy:
 clean:
 	rm -rf target
 
-help:
-	@echo "Mica version $(version)"
-	@echo
-	@echo "Available make targets:"
-	@echo "  all                : Download Drupal, required modules and install Mica modules/profiles in it. Result is available in 'target' directory."
-	@echo "  package            : Package Drupal for Mica ($(micadir).tar.gz), Mica modules and make a Mica installer Debian package."
-	@echo "  mica               : Install Mica modules/profiles in Drupal."
-	@echo "  clean              : Remove 'target' directory."
-	@echo "  mica-install-clear : Copy Mica files from 'src' to 'target' directory and clear all caches."
-	@echo
-	@echo "Requires drush 4+ to be installed [http://drush.ws]"
-	@echo "  " `drush version`
-	@echo
-
-
 #
 # Push to Drupal.org
 #
-git-push: package-modules-clear git-push-mica git-push-mica-dist
-
-git-push-mica: 
+git-push-mica: clear-version-info
 	$(call git-prepare,$(drupal_org_mica),mica) . && \
 	cp -r ../../../src/main/drupal/modules/mica/* . && \
 	$(call git-finish)
 
-git-push-mica-dist:
+git-push-mica-dist: clear-version-info
 	$(call git-prepare,$(drupal_org_mica_dist),mica_distribution) . && \
 	cp -r ../../../src/main/drupal/profiles/mica_distribution/* . && \
 	cp -r ../../../src/main/drupal/themes . && \
 	$(call git-finish)
 
-
 #
 # Functions
 #
 
-# make-info function: add default version number to project info file
-make-info = $(call make-info-version,$(1),$(2),$($(2)_version))
-
-clear-info = $(call clear-info-version,$(1),$(2))
-
-# make-info-version function: remove (if present) and add specified version number to project info file
-make-info-version = cd target/$(micadir)/$(1) && \
+# inject-version-info-version function: remove (if present) and add specified version number to project info file
+inject-version-info = cd target/$(micadir)/profiles/$(1) && \
 	sed -i "/^version/d" $2/$2.info && \
+	sed -i "/^project/d" $2/$2.info && \
 	sed -i "/^datestamp/d" $2/$2.info && \
 	sed -i "/^Information added by obiba.org packaging script/d" $2/$2.info && \
 	echo "\n\n; Information added by obiba.org packaging script on $(deb_date)" >> $2/$2.info && \
-	echo "version = \"$(3)\"" >> $2/$2.info && \
-	echo "datestamp = \"$(datestamp)\"" >> $2/$2.info
+	echo "version = $($(2)_version)" >> $2/$2.info && \
+	echo "project = $2" >> $2/$2.info && \
+	echo "datestamp = $(datestamp)" >> $2/$2.info
 
-# clear-info-version function: remove (if present) version number from project info file
-clear-info-version = sed -i "/^version/d" $(1)/$2/$2.info && \
+# clear-version-info function: remove (if present) version number from project info file
+clear-version-info = sed -i "/^version/d" $(1)/$2/$2.info && \
 	sed -i "/^project/d" $(1)/$2/$2.info && \
 	sed -i "/^datestamp/d" $(1)/$2/$2.info && \
 	sed -i "/^Information added by obiba.org packaging script/d" $(1)/$2/$2.info
 
-# make-package function: build tar.gz and zip files of a project
-make-package = cd target/$(micadir)/$(1) && \
-	tar --exclude-vcs -czf $(2)-$($(2)_version).tar.gz $(2) && \
-	zip -qr $(2)-$($(2)_version).zip $(2) && \
-	cd - && \
-	mv target/$(micadir)/$(1)/*.tar.gz target && \
-	mv target/$(micadir)/$(1)/*.zip target 
+drush-make-dev = drush make --prepare-install src/main/drupal/profiles/mica_distribution/drupal-org-core.make target/$(1) && \
+	rm -rf target/$(1)-no-core && \
+	drush make --no-core src/main/drupal/profiles/mica_distribution/drupal-org.make target/$(1)-no-core && \
+	mv target/$(1)-no-core/sites/all target/$(1)/profiles/mica_distribution && \
+	rm -rf target/$(1)-no-core
 
 # deb-package: echo the modules versions in debian Makefile
 deb-package = echo "$(2)_version=$($(2)_version)" >> target/deb/$(1)/var/lib/$(1)-installer/Makefile
@@ -435,7 +367,7 @@ git-prepare = rm -rf target/drupal.org && \
 	git checkout $(branch) && \
 	git rm -rf *
 
-#git-finish: sanitize, add, commit and push all files to Git 
+#git-finish: sanitize, add, commit and push all files to Git
 git-finish = rm `find . -type f -name LICENSE.txt` && \
 	rm `find . -type f -name COPYRIGHT.txt` && \
 	rm -rf translations && \
