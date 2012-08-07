@@ -1,5 +1,3 @@
-; $Id$
-project = "mica_demo"
 name = Mica Demo
 distribution_name = Mica
 description = Mica standard install with some demo content.

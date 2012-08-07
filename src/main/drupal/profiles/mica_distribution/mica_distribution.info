@@ -1,5 +1,3 @@
-; $Id$
-project = "mica_standard"
 name = Mica
 distribution_name = Mica
 description = Mica installation of tools for making a Study Consortium site: studies, search indexes, community tools and more.
@@ -63,5 +61,5 @@ dependencies[] = mica_datasets
 dependencies[] = mica_opal
 dependencies[] = mica_data_access
 dependencies[] = mica_projects
-files[] = mica_standard.profile
+files[] = mica_distribution.profile
 

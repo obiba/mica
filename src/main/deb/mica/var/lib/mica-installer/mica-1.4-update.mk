@@ -65,21 +65,6 @@ mica-delete-1.4:
 	rm -rf /usr/share/mica/sites/all/modules/imce && \
 	rm -rf /usr/share/mica/sites/all/modules/potx && \
 	rm -rf /usr/share/mica/sites/all/modules/mica && \
-	rm -rf /usr/share/mica/sites/all/modules/mica_category_field && \
-	rm -rf /usr/share/mica/sites/all/modules/mica_community && \
-	rm -rf /usr/share/mica/sites/all/modules/mica_core && \
-	rm -rf /usr/share/mica/sites/all/modules/mica_data_access && \
-	rm -rf /usr/share/mica/sites/all/modules/mica_datasets && \
-	rm -rf /usr/share/mica/sites/all/modules/mica_datashield && \
-	rm -rf /usr/share/mica/sites/all/modules/mica_devel && \
-	rm -rf /usr/share/mica/sites/all/modules/mica_field_description && \
-	rm -rf /usr/share/mica/sites/all/modules/mica_node_reference_field && \
-	rm -rf /usr/share/mica/sites/all/modules/mica_opal && \
-	rm -rf /usr/share/mica/sites/all/modules/mica_opal_view && \
-	rm -rf /usr/share/mica/sites/all/modules/mica_projects && \
-	rm -rf /usr/share/mica/sites/all/modules/mica_relation && \
-	rm -rf /usr/share/mica/sites/all/modules/mica_studies && \
-	rm -rf /usr/share/mica/sites/all/modules/node_reference_block && \
 	rm -rf /usr/share/mica/sites/all/modules/advanced_help && \
 	rm -rf /usr/share/mica/sites/all/modules/help_example && \
 	rm -rf /usr/share/mica/sites/all/modules/auto_nodetitle && \
@@ -158,3 +143,13 @@ mica-delete-1.4:
 mica-delete-1.4.1: mica-delete-1.4
 
 mica-delete-1.4.2: mica-delete-1.4
+
+mica-delete-1.4.2: mica-delete-1.4
+
+mica-delete-1.4.3: mica-delete-1.4
+
+mica-delete-1.44: mica-sql-1.44 mica-delete-1.4
+
+mica-sql-1.44:
+	cd /etc/mica/sites/default && \
+	drush sql-connect < $(CURDIR)/mica-1.44.sql

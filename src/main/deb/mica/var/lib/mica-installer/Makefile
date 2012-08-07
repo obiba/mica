@@ -8,6 +8,11 @@ micadir=mica
 installdir=/usr/share
 backupdir=/var/lib/mica-installer/backups/mica-$(oldversion)
 drushexec=/var/cache/mica-installer/drush/drush
+ifeq (exists, $(shell [ -d /usr/share/mica/sites/all/modules/mica ] && echo exists))
+	module_in_sites_all=true
+else 
+	module_in_sites_all=false
+endif
 
 #
 # Mysql db access
@@ -95,13 +100,13 @@ include mica-1.2-update.mk
 include mica-1.3-update.mk
 include mica-1.4-update.mk
 
-mica-prepare-update: drush mica-maintenance-mode-on mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install mica-restore-user-data mica-clear-tmp-update mica-echo-update 
+mica-prepare-update: drush mica-maintenance-mode-on mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install move-module-to-sites-all mica-restore-user-data mica-clear-tmp-update mica-echo-update 
 
 mica-maintenance-mode-on:
 	@echo "**** Set site in maintenance mode"
 	cd /usr/share/mica/sites/default && \
 	$(drushexec) vset --always-set maintenance_mode 1
-	
+
 mica-backup:
 	@echo "**** Backup database and files"
 	mkdir -p $(backupdir)	 && \
@@ -113,7 +118,10 @@ mica-backup:
 mica-delete:
 	@echo "**** Delete Mica files"
 	$(call make-delete-mica-files,$(version))
-	
+
+# - Tells the make to ignore errors (in case of no delete taret for this release)
+make-delete-mica-files = -make mica-delete-$(1)
+
 mica-copy-user-files:
 	@echo "**** Copy user files"
 	rm -rf /var/cache/mica-installer/update && \
@@ -123,13 +131,24 @@ mica-copy-user-files:
 	cp -rL /usr/share/mica/sites /var/cache/mica-installer/update && \
 	rm -rf /var/cache/mica-installer/update/sites/default/files && \
 	cp -rL /var/lib/mica/default/files /var/cache/mica-installer/update
-	
+
 delete-core:
 	@echo "**** Delete Drupal core" 
 	rm -rf /usr/share/mica && \
 	rm -rf /etc/mica/profiles/* && \
 	rm -rf /etc/mica/sites/*
-	
+
+move-module-to-sites-all:
+ifeq ($(module_in_sites_all),true)
+	@echo "**** Move files from profiles to sites/all" 
+	mkdir -p /usr/share/mica/sites/all/modules && \
+	mkdir -p /usr/share/mica/sites/all/libraries && \
+	mkdir -p /usr/share/mica/sites/all/themes && \
+	mv /etc/mica/profiles/mica_distribution/modules/* /usr/share/mica/sites/all/modules && \
+	mv /etc/mica/profiles/mica_distribution/libraries/* /usr/share/mica/sites/all/libraries && \
+	mv /etc/mica/profiles/mica_distribution/themes/* /usr/share/mica/sites/all/themes
+endif
+
 mica-restore-user-data:	mica-restore-user-config mica-restore-user-profiles mica-restore-user-sites mica-restore-user-files
 
 mica-restore-user-config:	
@@ -140,22 +159,21 @@ mica-restore-user-profiles:
 	if [ !$(find /var/cache/mica-installer/update/profiles -type d -empty) ] ; then \
 		cp -rf /var/cache/mica-installer/update/profiles/* /etc/mica/profiles ; \
 	fi 
-	
+
 mica-restore-user-sites:
 	if [ !$(find /var/cache/mica-installer/update/sites -type d -empty) ] ; then \
 		cp -rf /var/cache/mica-installer/update/sites/* /etc/mica/sites ; \
 	fi
-	
+
 mica-restore-user-files:
 	if [ !$(find /var/cache/mica-installer/update/files -type d -empty) ] ; then \
 		cp -rf /var/cache/mica-installer/update/files/* /var/lib/mica/default/files ; \
 	fi
-	
-		
+
 mica-clear-tmp-update:
 	@echo "**** Clear temp files" 
 	rm -rf /var/cache/mica-installer/update
-	
+
 mica-echo-update:
 	@echo 
 	@echo "****"
@@ -189,13 +207,3 @@ mica-echo-update:
 clean:
 	rm -rf /var/cache/mica-installer/target
 	rm -rf /var/cache/mica-installer/*.gz
-
-#
-# Functions
-#
-make-delete-mica-files = make mica-delete-$(1)
-
-#
-# Versions
-#
-

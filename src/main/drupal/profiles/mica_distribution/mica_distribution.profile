@@ -3,13 +3,13 @@
 /**
  * Implements hook_install_tasks()
  */
-function mica_standard_install_tasks($install_state) {
+function mica_distribution_install_tasks($install_state) {
 
   global $conf;
   if (empty($conf['theme_settings'])) {
     $conf['theme_settings'] = array(
       'default_logo' => 0,
-      'logo_path' => 'profiles/mica_standard/mica.png',
+      'logo_path' => 'profiles/mica_distribution/mica.png',
     );
   }
 
@@ -35,9 +35,9 @@ function _mica_configuration_batch() {
   $operations = array();
 
   // import default content
-  // for some reason drupal_get_path('profile', 'mica_standard') is empty, maybe a cache related issue...
+  // for some reason drupal_get_path('profile', 'mica_distribution') is empty, maybe a cache related issue...
   $default_data = array(
-    'csv_field_description_import' => array('file' => 'profiles/mica_standard/data/field_description_import.csv')
+    'csv_field_description_import' => array('file' => 'profiles/mica_distribution/data/field_description_import.csv')
   );
   foreach ($default_data as $importer => $file) {
     $source = feeds_source($importer);
