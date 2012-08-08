@@ -119,8 +119,7 @@ mica-delete:
 	@echo "**** Delete Mica files"
 	$(call make-delete-mica-files,$(version))
 
-# - Tells the make to ignore errors (in case of no delete taret for this release)
-make-delete-mica-files = -make mica-delete-$(1)
+make-delete-mica-files = make mica-delete-$(1)
 
 mica-copy-user-files:
 	@echo "**** Copy user files"
