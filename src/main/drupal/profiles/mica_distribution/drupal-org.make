@@ -127,7 +127,7 @@ projects[menu_breadcrumb] = 1.3
 
 projects[menu_firstchild] = 1.1
 
-projects[mica] = 1.x-dev
+projects[mica] = 5.x-dev
 
 projects[module_filter] = 1.7
 

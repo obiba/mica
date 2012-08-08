@@ -3,8 +3,8 @@
 # Requires drush 5+ to be installed: http://drush.ws
 #
 
-version=1.5-dev
-branch=7.x-1.x
+version=5.x-dev
+branch=7.x-5.x
 
 #
 # Mica versions
@@ -362,9 +362,8 @@ git-prepare = rm -rf target/drupal.org && \
 	mkdir -p target/drupal.org && \
 	echo "Enter Drupal username?" && \
 	read git_username && \
-	git clone $$git_username@$(1) target/drupal.org/$(2) && \
+	git clone --recursive --branch $(branch) $$git_username@$(1) target/drupal.org/$(2) && \
 	cd target/drupal.org/$(2) && \
-	git checkout $(branch) && \
 	git rm -rf *
 
 #git-finish: sanitize, add, commit and push all files to Git
@@ -391,7 +390,5 @@ else
 endif
 deb_date=$(shell date -R)
 datestamp=$(shell date +%s)
-drushexec=drush
-drushmake_exec=drush make
 drupal_org_mica=git.drupal.org:project/mica.git
 drupal_org_mica_dist=git.drupal.org:project/mica_distribution.git
