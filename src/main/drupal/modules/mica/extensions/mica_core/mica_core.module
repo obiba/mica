@@ -409,32 +409,51 @@ function mica_core_add_page($title, $body_html, $alias = NULL) {
 
 function mica_core_prepare_tooltip() {
 
-  static $dir = NULL;
+  static $paths = array();
 
-  if (!isset($dir)) {
+  if (empty($paths) || !isset($paths['css']) || !isset($paths['js'])) {
+
     // If Libraries API is installed, we first use that to try and find the library.
     // Otherwise we manually check a few locations.
-    $dir = function_exists('libraries_get_path')
-      ? libraries_get_path('jquery_tooltip')
-      : 'sites/all/libraries/jquery_tooltip';
+    $search_dirs = array();
+    if (function_exists('libraries_get_path')) {
+      $dir = libraries_get_path('jquery_tooltip');
+      // Confusingly, Libraries API 1.x will return sites/all/libraries/NAME on failure,
+      // while Libraries API 2.x returns FALSE in that case.
+      if ($dir) {
+        $search_dirs[] = $dir;
+      }
+    }
+    else {
+      // Include libraries + current profile folders in searched directories.
+      $search_dirs[] = 'sites/all/libraries/jquery_tooltip';
+      $search_dirs[] = 'profiles/' . drupal_get_profile() . '/libraries/jquery_tooltip';
+    }
+    $search_dirs[] = drupal_get_path('module', 'mica_core') . '/includes';
+    foreach ($search_dirs as $dir) {
+      if (file_exists($dir . '/jquery.tooltip.css') && file_exists($dir . '/jquery.tooltip.min.js')) {
+        $paths['css'] = $dir . '/jquery.tooltip.css';
+        $paths['js'] = $dir . '/jquery.tooltip.min.js';
+        break;
+      }
+    }
   }
 
-  $path = $dir . '/jquery.tooltip.min.js';
-  if (file_exists($path)) {
-    drupal_add_js($path);
-  }
-  else {
-    throw new Exception('jquery.tooltip.min.js library not found! Please follow the instructions in mica_core/README.txt');
-  }
-  ctools_add_js('mica_core_tooltip', 'mica_core');
-
-  $path = $dir . '/jquery.tooltip.css';
-  if (file_exists($path)) {
-    drupal_add_css($path);
+  if (isset($paths['css'])) {
+    drupal_add_css($paths['css']);
   }
   else {
     throw new Exception('jquery.tooltip.css library not found! Please follow the instructions in mica_core/README.txt');
   }
+
+  if (isset($paths['js'])) {
+    drupal_add_js($paths['js']);
+  }
+  else {
+    throw new Exception('jquery.tooltip.min.js library not found! Please follow the instructions in mica_core/README.txt');
+  }
+
+  ctools_add_js('mica_core_tooltip', 'mica_core');
   ctools_add_css('mica_core_tooltip', 'mica_core');
 }
 

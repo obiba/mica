@@ -1231,21 +1231,29 @@ function mica_datasets_prepare_prettify() {
 
     // If Libraries API is installed, we first use that to try and find the library.
     // Otherwise we manually check a few locations.
-    $dir = function_exists('libraries_get_path')
-      ? libraries_get_path('prettify')
-      : 'sites/all/libraries/prettify';
-
-    $css_path = $dir . '/prettify.css';
-    if (file_exists($css_path)) {
-      $paths['css'] = $css_path;
+    $search_dirs = array();
+    if (function_exists('libraries_get_path')) {
+      $dir = libraries_get_path('prettify');
+      // Confusingly, Libraries API 1.x will return sites/all/libraries/NAME on failure,
+      // while Libraries API 2.x returns FALSE in that case.
+      if ($dir) {
+        $search_dirs[] = $dir;
+      }
     }
-
-    $js_path = $dir . '/prettify.js';
-    if (file_exists($js_path)) {
-      $paths['js'] = $js_path;
+    else {
+      // Include libraries + current profile folders in searched directories.
+      $search_dirs[] = 'sites/all/libraries/prettify';
+      $search_dirs[] = 'profiles/' . drupal_get_profile() . '/libraries/prettify';
+    }
+    $search_dirs[] = drupal_get_path('module', 'mica_datasets') . '/includes';
+    foreach ($search_dirs as $dir) {
+      if (file_exists($dir . '/prettify.css') && file_exists($dir . '/prettify.js')) {
+        $paths['css'] = $dir . '/prettify.css';
+        $paths['js'] = $dir . '/prettify.js';
+        break;
+      }
     }
   }
-
 
   if (isset($paths['css'])) {
     drupal_add_css($paths['css']);

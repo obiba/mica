@@ -12,7 +12,9 @@ INSTALLATION
    http://drupalcode.org/project/search_api_solr.git/blob_plain/refs/heads/7.x-1.x:/INSTALL.txt
 
 2. Download jquery tooltip library: http://jquery.bassistance.de/tooltip/jquery.tooltip.zip
-   Extract it to: DRUPAL_ROOT/sites/all/libraries/jquery_tooltip
+   Extract it to one of these location:
+      - DRUPAL_ROOT/profiles/CURRENT_PROFILE/libraries/jquery_tooltip
+      - DRUPAL_ROOT/sites/all/libraries/jquery_tooltip
    The library should then be found by the module.
 
 
