@@ -148,8 +148,8 @@ mica-delete-1.4.2: mica-delete-1.4
 
 mica-delete-1.4.3: mica-delete-1.4
 
-mica-delete-1.44: mica-sql-1.44 mica-delete-1.4
+mica-delete-4.4: mica-sql-4.4 mica-delete-1.4
 
-mica-sql-1.44:
+mica-sql-4.4:
 	cd /etc/mica/sites/default && \
-	drush sql-connect < $(CURDIR)/mica-1.44.sql
+	drush sql-connect < $(CURDIR)/mica-4.4.sql
