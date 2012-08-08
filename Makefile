@@ -352,7 +352,8 @@ drush-make-dev = drush make --prepare-install src/main/drupal/profiles/mica_dist
 	rm -rf target/$(1)-no-core && \
 	drush make --no-core src/main/drupal/profiles/mica_distribution/drupal-org.make target/$(1)-no-core && \
 	mv target/$(1)-no-core/sites/all target/$(1)/profiles/mica_distribution && \
-	rm -rf target/$(1)-no-core
+	rm -rf target/$(1)-no-core && \
+	chmod -R a+w target/$(1)/sites/default
 
 # deb-package: echo the modules versions in debian Makefile
 deb-package = echo "$(2)_version=$($(2)_version)" >> target/deb/$(1)/var/lib/$(1)-installer/Makefile
