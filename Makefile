@@ -344,7 +344,7 @@ inject-version-info = cd target/$(micadir)/profiles/$(1) && \
 	sed -i "/^project/d" $2/$2.info && \
 	sed -i "/^datestamp/d" $2/$2.info && \
 	sed -i "/Information added by obiba.org packaging script/d" $2/$2.info && \
-	echo "\n\n; Information added by obiba.org packaging script on $(deb_date)" >> $2/$2.info && \
+	echo "; Information added by obiba.org packaging script on $(deb_date)" >> $2/$2.info && \
 	echo "version = $($(2)_version)" >> $2/$2.info && \
 	echo "project = $2" >> $2/$2.info && \
 	echo "datestamp = $(datestamp)" >> $2/$2.info
