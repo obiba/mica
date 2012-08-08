@@ -343,7 +343,7 @@ inject-version-info = cd target/$(micadir)/profiles/$(1) && \
 	sed -i "/^version/d" $2/$2.info && \
 	sed -i "/^project/d" $2/$2.info && \
 	sed -i "/^datestamp/d" $2/$2.info && \
-	sed -i "/^Information added by obiba.org packaging script/d" $2/$2.info && \
+	sed -i "/Information added by obiba.org packaging script/d" $2/$2.info && \
 	echo "\n\n; Information added by obiba.org packaging script on $(deb_date)" >> $2/$2.info && \
 	echo "version = $($(2)_version)" >> $2/$2.info && \
 	echo "project = $2" >> $2/$2.info && \
@@ -353,7 +353,7 @@ inject-version-info = cd target/$(micadir)/profiles/$(1) && \
 clear-version-info = sed -i "/^version/d" $(1)/$2/$2.info && \
 	sed -i "/^project/d" $(1)/$2/$2.info && \
 	sed -i "/^datestamp/d" $(1)/$2/$2.info && \
-	sed -i "/^Information added by obiba.org packaging script/d" $(1)/$2/$2.info
+	sed -i "/Information added by obiba.org packaging script/d" $(1)/$2/$2.info
 
 drush-make-dev = drush make --prepare-install src/main/drupal/profiles/mica_distribution/drupal-org-core.make target/$(1) && \
 	rm -rf target/$(1)-no-core && \

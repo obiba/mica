@@ -150,6 +150,10 @@ mica-delete-1.4.3: mica-delete-1.4
 
 mica-delete-4.4: mica-sql-4.4 mica-delete-1.4
 
+mica-delete-4.4-rc1: mica-delete-4.4
+
+mica-delete-4.4-rc2: mica-delete-4.4
+
 mica-sql-4.4:
 	cd /etc/mica/sites/default && \
 	drush sql-connect < $(CURDIR)/mica-4.4.sql
