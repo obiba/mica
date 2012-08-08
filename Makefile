@@ -3,7 +3,7 @@
 # Requires drush 5+ to be installed: http://drush.ws
 #
 
-version=4.x-dev
+version=4.4-rc2
 branch=7.x-4.x
 
 #
@@ -82,7 +82,8 @@ prod: drush-make-prod prepare-mica-distribution htaccess
 dev: drush-make-dev mica-install prepare-mica-distribution inject-version-info htaccess
 
 drush-make-prod:
-	drush make --prepare-install src/main/drupal/profiles/mica_distribution/build-mica_distribution.make target/$(micadir)
+	drush make --prepare-install src/main/drupal/profiles/mica_distribution/build-mica_distribution.make target/$(micadir) && \
+	chmod -R a+w target/$(micadir)/sites/default
 
 drush-make-dev:
 	$(call drush-make-dev,$(micadir))
@@ -321,11 +322,17 @@ git-push-mica: clear-version-info
 	cp -r ../../../src/main/drupal/modules/mica/* . && \
 	$(call git-finish)
 
-git-push-mica-dist: clear-version-info
+git-push-mica-dist: clear-version-info git-prepare-distribution
 	$(call git-prepare,$(drupal_org_mica_dist),mica_distribution) . && \
 	cp -r ../../../src/main/drupal/profiles/mica_distribution/* . && \
 	cp -r ../../../src/main/drupal/themes . && \
 	$(call git-finish)
+
+git-prepare-distribution:
+	cd src/main/drupal/profiles/mica_distribution && \
+	sed -i 's/^projects\[mica\].*$$/projects[mica] = $(version)/' drupal-org.make && \
+	sed -i 's/^projects\[mica_distribution\]\[download\]\[branch\].*$$/projects[mica_distribution][download][branch] = 7.x-$(version)/' build-mica_distribution.make
+
 
 #
 # Functions
