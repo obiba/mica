@@ -4,8 +4,8 @@
  * Copyright (c) 2007 Stefan Goessner (goessner.net)
  * Licensed under the MIT (MIT-LICENSE.txt) licence.
  * 
- * Etienne Morency-Bachand: Modified the signature of the evalx function to remove unnecessary arguments that was
- * launching a lot of warnings
+ * Use this fixed version instead of the original one (http://jsonpath.googlecode.com/files/jsonpath-0.8.1.php)
+ * because of http://code.google.com/p/jsonpath/issues/detail?id=8
  */
 
 // API function 

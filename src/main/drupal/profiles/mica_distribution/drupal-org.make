@@ -213,6 +213,9 @@ projects[workbench_moderation][patch][1245590] = http://drupal.org/files/retaint
 
 ; Libraries
 ; ---------
+
+; jsonpath is not downloaded here because of http://code.google.com/p/jsonpath/issues/detail?id=8
+
 libraries[ckeditor][download][type]= get
 libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.3/ckeditor_3.6.3.tar.gz
 libraries[ckeditor][directory_name] = ckeditor
@@ -220,13 +223,6 @@ libraries[ckeditor][directory_name] = ckeditor
 libraries[jquery_tooltip][download][type]= get
 libraries[jquery_tooltip][download][url] = http://jquery.bassistance.de/tooltip/jquery.tooltip.zip
 libraries[jquery_tooltip][directory_name] = jquery_tooltip
-
-; Use this fixed version instead of the original one (http://jsonpath.googlecode.com/files/jsonpath-0.8.1.php)
-; because of http://code.google.com/p/jsonpath/issues/detail?id=8
-libraries[jsonpath][download][type]= get
-libraries[jsonpath][download][url] = http://svn.obiba.org/mica/branches/mica-1.3.x/src/main/drupal/modules/mica/extensions/mica_opal/includes/jsonpath-0.8.1.php
-libraries[jsonpath][download][filename] = jsonpath-0.8.1.php
-libraries[jsonpath][directory_name] = jsonpath
 
 libraries[prettify_css][download][type] = get
 libraries[prettify_css][download][url] = http://google-code-prettify.googlecode.com/svn/branches/release-1-Jun-2011/src/prettify.css
