@@ -105,7 +105,7 @@ projects[menu_breadcrumb] = 1.3
 
 projects[menu_firstchild] = 1.1
 
-projects[mica] = 4.4-rc2
+projects[mica] = 4.4
 
 projects[module_filter] = 1.6
 
