@@ -38,8 +38,18 @@ solr-install:
 	cd target && \
 	cp -r apache-solr-$(solr_version)/example/* /usr/share/mica-solr
 	cd /usr/share && \
-	cp mica/sites/all/modules/search_api_solr/solrconfig.xml mica-solr/solr/conf/ && \
-	cp mica/sites/all/modules/search_api_solr/schema.xml mica-solr/solr/conf/ && \
+	if [ -e mica/sites/all/modules/search_api_solr/solrconfig.xml ]; then \
+		cp mica/sites/all/modules/search_api_solr/solrconfig.xml mica-solr/solr/conf/ ; \
+	fi && \
+	if [ -e /etc/mica/profiles/mica_distribution/modules/search_api_solr/solrconfig.xml ]; then \
+		cp /etc/mica/profiles/mica_distribution/modules/search_api_solr/solrconfig.xml mica-solr/solr/conf/ ; \
+	fi && \
+	if [ -e mica/sites/all/modules/search_api_solr/schema.xml ]; then \
+		cp mica/sites/all/modules/search_api_solr/schema.xml mica-solr/solr/conf/ ; \
+	fi && \
+	if [ -e /etc/mica/profiles/mica_distribution/modules/search_api_solr/schema.xml ]; then \
+		cp /etc/mica/profiles/mica_distribution/modules/search_api_solr/schema.xml mica-solr/solr/conf/ ; \
+	fi && \
 	rmdir mica-solr/logs && \
 	ln -s /var/log/mica-solr /usr/share/mica-solr/logs && \
 	cd /etc && \
