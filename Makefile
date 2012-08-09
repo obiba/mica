@@ -180,7 +180,7 @@ default-restore:
 # Deploy
 #
 
-deploy: package deploy-mica
+deploy: package deploy-mica deploy-mica-solr
 
 deploy-mica:
 ifeq ($(findstring dev,$(version)),dev)
