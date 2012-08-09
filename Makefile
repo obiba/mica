@@ -41,7 +41,7 @@ mica_samara_version=$(mica_version)
 db_user=root
 db_pass=1234
 
-all: dev
+all: help
 
 help:
 	@echo "Mica version $(version)"
