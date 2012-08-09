@@ -46,7 +46,7 @@ ifndef oldversion
 	@echo "**** Mica distribution install" 
 	make mica-dist-install
 else
-	@echo "**** Mica core/modules/themes/profiles upgrade" 
+	@echo "**** Mica core/modules/themes/profiles upgrade from $(oldversion)"
 	make mica-prepare-update
 endif
 
