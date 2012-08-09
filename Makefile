@@ -41,7 +41,7 @@ mica_samara_version=$(mica_version)
 db_user=root
 db_pass=1234
 
-all: dev
+all: help
 
 help:
 	@echo "Mica version $(version)"
@@ -79,7 +79,7 @@ help:
 
 prod: drush-make-prod prepare-mica-distribution htaccess
 
-dev: drush-make-dev mica-install prepare-mica-distribution inject-version-info htaccess
+dev: drush-make-dev mica-install prepare-mica-distribution inject-version-info set-distribution-version htaccess
 
 drush-make-prod:
 	drush make --prepare-install src/main/drupal/profiles/mica_distribution/build-mica_distribution.make target/$(micadir) && \
@@ -147,6 +147,12 @@ clear-version-info:
 	$(call clear-version-info,src/main/drupal/profiles,mica_distribution)
 	$(call clear-version-info,src/main/drupal/profiles,mica_demo)
 	$(call clear-version-info,src/main/drupal/themes,mica_samara)
+
+set-distribution-version:
+	cd src/main/drupal/profiles/mica_distribution && \
+	sed -i 's/^projects\[mica\].*$$/projects[mica] = $(version)/' drupal-org.make && \
+	sed -i 's/^projects\[mica_distribution\]\[download\]\[branch\].*$$/projects[mica_distribution][download][branch] = 7.x-$(version)/' build-mica_distribution.make
+
 
 #
 # Build from continuous integration
@@ -322,16 +328,11 @@ git-push-mica: clear-version-info
 	cp -r ../../../src/main/drupal/modules/mica/* . && \
 	$(call git-finish)
 
-git-push-mica-dist: clear-version-info git-prepare-distribution
+git-push-mica-dist: clear-version-info set-distribution-version
 	$(call git-prepare,$(drupal_org_mica_dist),mica_distribution) . && \
 	cp -r ../../../src/main/drupal/profiles/mica_distribution/* . && \
 	cp -r ../../../src/main/drupal/themes . && \
 	$(call git-finish)
-
-git-prepare-distribution:
-	cd src/main/drupal/profiles/mica_distribution && \
-	sed -i 's/^projects\[mica\].*$$/projects[mica] = $(version)/' drupal-org.make && \
-	sed -i 's/^projects\[mica_distribution\]\[download\]\[branch\].*$$/projects[mica_distribution][download][branch] = 7.x-$(version)/' build-mica_distribution.make
 
 
 #
