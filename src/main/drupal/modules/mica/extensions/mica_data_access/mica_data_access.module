@@ -179,15 +179,16 @@ function mica_data_access_can_edit_request($node) {
 function mica_data_access_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
   if ($entity_type == 'node' && $entity->type == 'data_access_request') {
     // remove the data access review field
-    unset($form['field_data_access_review']);
+    // See http://drupal.org/node/1029486 for why we do not use unset($form[$id])
+    $form['field_data_access_review'] = array('#language' => NULL);
     // set default values provided as arguments (if any)
     if (array_key_exists('field_dataset_access', $_GET)) {
       $form['field_dataset_access'][LANGUAGE_NONE]['#default_value'] = array($_GET['field_dataset_access']);
     }
   }
   elseif ($entity_type == 'node' && $entity->type == 'data_access_review') {
-    unset($form['field_data_access']);
-    unset($form['title']);
+    $form['field_data_access'] = array('#language' => NULL);
+    $form['title'] = array('#language' => NULL);
   }
 }
 

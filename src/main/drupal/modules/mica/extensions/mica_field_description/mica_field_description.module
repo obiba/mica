@@ -345,7 +345,7 @@ function _mica_field_description_magma_search_index_type_mapping() {
 
 
 function _mica_field_description_disable_search_block($facet_delta) {
-  $theme_default = variable_get('theme_default', 'mica_samara');
+  $theme_default = variable_get('theme_default', 'mica_corolla');
   $nb = db_update('block')->fields(
     array(
       'status' => 0,

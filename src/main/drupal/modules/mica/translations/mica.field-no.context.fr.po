@@ -2356,7 +2356,7 @@ msgstr "Pays"
 
 
 msgid "On"
-msgstr "En date du"
+msgstr "En date de"
 
 
 msgid "No spaces allowed"
@@ -2376,7 +2376,7 @@ msgstr ""
 
 
 msgid "On"
-msgstr "En date du"
+msgstr "En date de"
 
 
 msgid "No spaces allowed"

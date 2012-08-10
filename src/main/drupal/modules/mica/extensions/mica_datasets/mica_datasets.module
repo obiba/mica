@@ -1646,6 +1646,20 @@ function _mica_datasets_variable_current_search(&$data, $block) {
         )
       )
     );
+
+    // Translate titles
+    foreach ($data['content']['field_group'] as $field => $field_group) {
+      if (isset($data['content']['field_group'][$field]) && isset($data['content']['field_group'][$field]['title']['#markup'])){
+        $text = $data['content']['field_group'][$field]['title']['#markup'];
+        $start = strpos($text, '<h4 class="current-search-group-title">');
+        $end = strpos($text, '</h4>');
+        $length = strlen($text) - 45;
+        $title = substr($text, $start+39, $length);
+
+        $data['content']['field_group'][$field]['title']['#markup'] = '<h4 class="current-search-group-title">'
+          . filter_xss(t($title)) . ':</h4>';
+      }
+    }
   }
 }
 

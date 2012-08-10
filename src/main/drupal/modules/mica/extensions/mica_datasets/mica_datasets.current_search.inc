@@ -20,9 +20,9 @@ function mica_datasets_current_search_default_items() {
       'results' => array(
         'id' => 'text',
         'label' => 'Results',
-        'text' => 'Search found [facetapi_results:result-count] variable',
+        'text' => t('Search found [facetapi_results:result-count] variable'),
         'plural' => 1,
-        'text_plural' => 'Search found [facetapi_results:result-count] variables',
+        'text_plural' => t('Search found [facetapi_results:result-count] variables'),
         'plural_condition' => 'facetapi_results:result-count',
         'wrapper' => 1,
         'element' => 'h3',
@@ -33,7 +33,7 @@ function mica_datasets_current_search_default_items() {
       'field_group' => array(
         'id' => 'group',
         'label' => 'Field group',
-        'field_pattern' => '[facetapi_facet:facet-label]:',
+        'field_pattern' => t('[facetapi_facet:facet-label]:'),
         'nofollow' => 1,
         'weight' => '0',
       ),

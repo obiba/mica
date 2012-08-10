@@ -22,6 +22,7 @@
  */
 
 require_once('mica_studies.features.inc');
+include_once('mica_studies.import_taxonomies.inc');
 
 /**
  * Implements hook_menu().
@@ -325,7 +326,7 @@ function _mica_studies_study_view_selection_criteria(&$node, $view_mode, $langco
       );
     }
 
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_gender', t('Gender:'));
+    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_gender', t('Gender'));
 
     if (isset($node->content['field_age_min']) || isset($node->content['field_age_max'])) {
       $index = count($node->content['field_select_criteria']['#items']);
@@ -348,16 +349,16 @@ function _mica_studies_study_view_selection_criteria(&$node, $view_mode, $langco
         $node->content['field_age_max']['#access'] = FALSE;
         $node->content['field_age_min']['#access'] = FALSE;
         $node->content['field_select_criteria']['#items'][$index] = $age_items;
-        $node->content['field_select_criteria'][$index++]['#markup'] = t('Age:') . '<br />&nbsp;&nbsp;&nbsp;&nbsp;'
+        $node->content['field_select_criteria'][$index++]['#markup'] = t('Age') . '<br />&nbsp;&nbsp;&nbsp;&nbsp;'
           . ucfirst($age_markup);
       }
     }
 
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_country', t('Country:'), t('Countries:'));
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_territory', t('Territory:'), t('Territories:'));
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_ethnic_origin', t('Ethnic origin:'), t('Ethnic origins:'));
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_health_status', t('Health status:'));
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_selection_others_sp', t('Other:'));
+    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_country', t('Country'), t('Countries'));
+    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_territory', t('Territory'), t('Territories'));
+    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_ethnic_origin', t('Ethnic origin'), t('Ethnic origins'));
+    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_health_status', t('Health status'));
+    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_selection_others_sp', t('Other'));
 
     if (strlen($node->content['field_select_criteria'][0]['#markup']) === 0) {
       $node->content['field_select_criteria']['#access'] = FALSE;
@@ -388,7 +389,7 @@ function _mica_studies_study_view_selection_criteria_item(&$node, $wrapper, $fie
       $markup_label = $label_plural;
     }
     $node->content['field_select_criteria'][$index++]['#markup'] = t('@label', array('@label' => $markup_label))
-      . '<br />&nbsp;&nbsp;&nbsp;&nbsp;' . $markup;
+      . ':<br />&nbsp;&nbsp;&nbsp;&nbsp;' . $markup;
     $node->content[$field]['#access'] = FALSE;
   }
 }
@@ -627,7 +628,7 @@ function _mica_bind_other_specify(&$node, $bindings) {
           $content = implode($delimiter, $specifies);
         }
         if (strlen(trim($content)) > 0) {
-          if (key_exists($index, $node->content[$field])) {
+          if (array_key_exists($index, $node->content[$field])) {
             if (isset($options['enclosed']) && !$options['enclosed']) {
               $node->content[$field][$index]['#markup'] = $content;
             }
@@ -645,7 +646,7 @@ function _mica_bind_other_specify(&$node, $bindings) {
               }
             }
             else {
-              if (key_exists('custom_prefix', $options)) {
+              if (array_key_exists('custom_prefix', $options)) {
                 $node->content[$field][] = array('#markup' => $options['custom_prefix'] . ': ' . $content);
               }
               else {
@@ -781,7 +782,7 @@ function _mica_studies_study_current_search(&$data, $block) {
       $field_info = field_info_instance('node', $field, 'study');
       if (isset($field_info['display_label']) && strlen(trim($field_info['display_label'])) > 0) {
         $data['content']['field_group'][$field]['title']['#markup'] = '<h4 class="current-search-group-title">'
-          . $field_info['display_label'] . ':</h4>';
+          . filter_xss(t($field_info['display_label'])) . ':</h4>';
       }
     }
   }

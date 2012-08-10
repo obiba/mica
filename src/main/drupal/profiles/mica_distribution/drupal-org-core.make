@@ -17,3 +17,10 @@ projects[drupal][patch][1170362] = http://drupal.org/files/mimimal-install-profi
 ; Add backtrace to all errors
 ; http://drupal.org/node/1158322
 projects[drupal][patch][1158322] = http://drupal.org/files/drupal-1158322-82-add-backtrace-to-errors-D7.patch
+
+; Remove file_attach_load() from field_field_update()
+; http://drupal.org/node/1714596 and http://drupal.org/node/985642
+projects[drupal][patch][985642] = http://drupal.org/files/load-original-entity-985642-31.patch
+
+; My Data Access Requests does not show requests for other users than administrators
+projects[drupal][patch][1349080] = http://drupal.org/files/d7_move_access_to_join_condition-1349080-89.patch

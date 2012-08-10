@@ -7,11 +7,15 @@ api = "2"
 
 projects[acl] = 1.0-beta3
 
-projects[auto_entitylabel] = 1.0
+projects[adaptivetheme] = 3.0
 
-projects[autocomplete_deluxe][download][type] = git
-projects[autocomplete_deluxe][download][revision] = a92b71e
-projects[autocomplete_deluxe][download][branch] = 7.x-1.x
+projects[ajax_register] = 4.0-rc10
+
+projects[auto_entitylabel][download][type] = git
+projects[auto_entitylabel][download][revision] = 218ba66
+projects[auto_entitylabel][download][branch] = 7.x-1.x
+
+projects[autocomplete_deluxe] = 2.0-beta2
 
 projects[] = advanced_help
 
@@ -28,26 +32,28 @@ projects[collapsiblock][download][revision] = 36f4280
 projects[collapsiblock][download][branch] = 7.x-1.x
 projects[collapsiblock][patch][1475244] = http://drupal.org/files/api-function-and-constants-patch1301454-patch1429956.patch
 
+projects[corolla] = 3.0-rc1
+
 projects[cnr][download][type] = git
-projects[cnr][download][revision] =  89f859e
-projects[cnr][download][branch] =  7.x-4.x
+projects[cnr][download][revision] = 89f859e
+projects[cnr][download][branch] = 7.x-4.x
 
 projects[content_access] = 1.2-beta1
 
 projects[content_taxonomy] = 1.0-beta1
 
-projects[ctools] = 1.0
+projects[ctools] = 1.2
 
-projects[date] = 2.5
+projects[date] = 2.6
 
 projects[diff] = 2.0
 
 projects[] = devel
 
-projects[email][download][type] = git
-projects[email][download][revision] = 523cd0d
-projects[email][download][branch] = 7.x-1.x
-projects[email][patch][718414] = http://drupal.org/files/email_feeds_target-718414-36.patch
+;projects[email][download][type] = git
+;projects[email][download][revision] = 523cd0d
+projects[email] = 1.1
+;projects[email][patch][718414] = http://drupal.org/files/email_feeds_target-718414-36.patch
 
 projects[entity][version] = 1.0-rc3
 projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info-on-validation-exception.patch
@@ -72,17 +78,17 @@ projects[feeds][patch][11075222] = http://drupal.org/files/issues/1107522-empty-
 projects[feeds][patch][110752213] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-13.patch
 projects[feeds][patch][110752215links] = http://drupal.org/files/ignore-empty-link-fields-1107522-15.patch
 
-projects[feeds_tamper][download][type] = git
-projects[feeds_tamper][download][revision] = 8f7f581
-projects[feeds_tamper][download][branch] = 7.x-1.x
+;projects[feeds_tamper][download][type] = git
+;projects[feeds_tamper][download][revision] = 8f7f581
+projects[feeds_tamper] = 1.0-beta3
 projects[feeds_tamper][patch][1416700] = http://drupal.org/files/1416700-4-feeds_tamper-existing-terms-plugin.patch
-projects[feeds_tamper][patch][1180726] = http://drupal.org/files/empty_check-1180726-6.patch
+;projects[feeds_tamper][patch][1180726] = http://drupal.org/files/empty_check-1180726-6.patch
 
 projects[field_display_label][version] = 1.2
-projects[field_display_label][patch][1689574] = http://drupal.org/files/i18n_support-1689574-2.patch
+projects[field_display_label][patch][1689574] = http://drupal.org/files/field_display_label_i18n_field-1689574-6.patch
 
 projects[field_group][version] = 1.1
-projects[field_group][patch][1175102] = http://drupal.org/files/description_translation-1175102-10.patch
+projects[field_group][patch][1175102] = http://drupal.org/files/description_translation-1175102-16.patch
 
 projects[field_permissions] = 1.0-beta2
 
@@ -94,7 +100,7 @@ projects[google_fonts] = 2.3
 
 projects[] = graphapi
 
-projects[http_client] = 2.3
+projects[http_client] = 2.4
 
 projects[i18n][version] = 1.7
 projects[i18n][patch][1662884] = http://drupal.org/files/support_multiple_translation_modes-1662884-1.patch
@@ -102,6 +108,8 @@ projects[i18n][patch][1662884] = http://drupal.org/files/support_multiple_transl
 projects[image_url_formatter] = 1.0
 
 projects[imce] = 1.5
+
+projects[itweak_login] = 1.0
 
 projects[job_scheduler] = 2.0-alpha3
 
@@ -111,13 +119,13 @@ projects[lang_dropdown] = 1.5
 
 projects[languageicons] = 1.0
 
-projects[libraries][download][type] = git
-projects[libraries][download][revision] = 7b06333
-projects[libraries][download][branch] = 7.x-2.x
+projects[libraries] = 2.0
 
 projects[link] = 1.0
 
 projects[login_destination] = 1.0
+
+projects[logintoboggan] = 1.3
 
 projects[mail_edit] = 1.0-rc1
 
@@ -160,7 +168,8 @@ projects[references][download][branch] = 7.x-2.x
 
 projects[search_api][version] = 1.2
 projects[search_api][patch][1617794] = http://drupal.org/files/search_api-view_unpublished-support-1617794-6.patch
-projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-1.patch
+projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch
+projects[search_api][patch][1471310] = http://drupal.org/files/1471310--unset-field-8_0.patch
 
 projects[search_api_combined] = 1.0-alpha1
 
@@ -184,6 +193,8 @@ projects[smtp] = 1.0-beta1
 projects[strongarm][version] = 2.0
 projects[strongarm][patch][1525768] = http://drupal.org/files/print_stdclass_variables.patch
 
+projects[superfish] = 1.9-beta4
+
 projects[taxonomy_csv] = 5.10
 
 projects[taxonomy_manager] = 1.0-beta3
@@ -198,7 +209,7 @@ projects[variable] = 2.1
 
 projects[view_unpublished] = 1.1
 
-projects[views] = 3.3
+projects[views] = 3.4
 
 projects[views_data_export][version] = 3.0-beta6
 projects[views_data_export][patch][1224894] = http://drupal.org/files/html_in_csv-1224894-10.patch
@@ -243,3 +254,10 @@ libraries[spyc][download][url] = https://raw.github.com/mustangostang/spyc/maste
 libraries[spyc][destination] = modules
 libraries[spyc][directory_name] = services/servers/rest_server/lib
 libraries[spyc][overwrite] = TRUE
+
+libraries[superfish][download][type]= get
+libraries[superfish][download][url] = http://localhost/files/superfish.tar.gz
+;https://github.com/mehrpadin/Superfish-for-Drupal/zipball/master
+libraries[superfish][directory_name] = superfish
+libraries[superfish][overwrite] = TRUE
+

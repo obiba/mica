@@ -98,6 +98,7 @@ mica-install:
 prepare-mica-distribution:
 	cp src/main/drupal/themes/mica_samara/mica.png target/$(micadir)/themes/seven/logo.png && \
 	cp src/main/drupal/themes/mica_samara/favicon.ico target/$(micadir)/misc/favicon.ico && \
+	cp -r target/$(micadir)/profiles/mica_distribution/libraries/ckeditor/* target/$(micadir)/profiles/mica_distribution/modules/ckeditor/ckeditor && \
 	rm -rf target/$(micadir)/profiles/minimal target/$(micadir)/profiles/standard target/$(micadir)/profiles/testing
 
 htaccess:
@@ -237,6 +238,7 @@ deb-mica-install:
 	echo "deb_version=$(deb_version)" >> target/deb/mica/var/lib/mica-installer/Makefile
 ifeq ($(findstring dev,$(version)),dev)
 	echo "stability=unstable" >> target/deb/mica/var/lib/mica-installer/Makefile
+	echo "stability=unstable" >> target/deb/mica/var/lib/mica-installer/Makefile
 else
 	echo "stability=stable" >> target/deb/mica/var/lib/mica-installer/Makefile
 endif
@@ -311,7 +313,7 @@ local: local-copy mica-install prepare-mica-distribution htaccess
 
 local-copy:
 	rm -rf target/$(micadir) && \
-	cp -r target/$(micadir)-local target/$(micadir)
+	cp -p -r target/$(micadir)-local target/$(micadir)
 
 #
 # Misc

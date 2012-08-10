@@ -8,4 +8,4 @@ includes[] = drupal-org-core.make
 projects[mica_distribution][type] = profile
 projects[mica_distribution][download][type] = git
 projects[mica_distribution][download][url] = http://git.drupal.org/project/mica_distribution.git
-projects[mica_distribution][download][branch] = 7.x-5.x
+projects[mica_distribution][download][branch] = 7.x-5.x-dev

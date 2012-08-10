@@ -134,11 +134,11 @@ function mica_i18n_import_po_files($langcode = 'fr') {
 function _mica_i18n_update_mica_languages($file, $langcode) {
   module_load_include('batch.inc', 'l10n_update');
 
-  $field_pattern = '/.field.' . $langcode . ' . po$/';
-  $menu_pattern = '/.menu.' . $langcode . ' . po$/';
-  $blocks_pattern = '/.blocks.' . $langcode . ' . po$/';
-  $node_pattern = '/.node.' . $langcode . ' . po$/';
-  $taxonomy_pattern = '/.taxonomy.' . $langcode . ' . po$/';
+  $field_pattern = '/.field.' . $langcode . '.po$/';
+  $menu_pattern = '/.menu.' . $langcode . '.po$/';
+  $blocks_pattern = '/.blocks.' . $langcode . '.po$/';
+  $node_pattern = '/.node.' . $langcode . '.po$/';
+  $taxonomy_pattern = '/.taxonomy.' . $langcode . '.po$/';
 
   if (preg_match($field_pattern, $file->filename) == 1) {
     _l10n_update_locale_import_po($file, $langcode, LOCALE_IMPORT_OVERWRITE, 'field');
@@ -199,7 +199,7 @@ function _mica_i18n_get_menu_translations($langcode, $title) {
 function mica_i18n_configure_block() {
 
   // add the language switcher dropdown block to the header
-  $theme_default = variable_get('theme_default', 'mica_samara');
+  $theme_default = variable_get('theme_default', 'mica_corolla');
   db_update('block')->fields(
     array(
       'status' => 1,

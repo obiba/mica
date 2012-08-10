@@ -45217,7 +45217,7 @@ msgstr "Pays de résidence"
 
 msgctxt "field_current_part_nb_date:study:label"
 msgid "In date of"
-msgstr "En date du"
+msgstr "En date de"
 
 msgctxt "field_current_participants_nb:study:description"
 msgid "No spaces allowed"
@@ -45237,7 +45237,7 @@ msgstr ""
 
 msgctxt "field_current_samples_date:study:label"
 msgid "In date of"
-msgstr "En date du"
+msgstr "En date de"
 
 msgctxt "field_current_samples_nb:study:description"
 msgid "No spaces allowed"

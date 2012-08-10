@@ -20,6 +20,79 @@ function mica_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_register_enabled_links';
+  $strongarm->value = array(
+    'login' => 'login',
+    'register' => 'register',
+  );
+  $export['ajax_register_enabled_links'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_register_form_enable_modal_links';
+  $strongarm->value = 0;
+  $export['ajax_register_form_enable_modal_links'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_register_hide_captcha';
+  $strongarm->value = FALSE;
+  $export['ajax_register_hide_captcha'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_register_login_redirect_behavior';
+  $strongarm->value = 'refresh';
+  $export['ajax_register_login_redirect_behavior'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_register_modal_background_color';
+  $strongarm->value = '000000';
+  $export['ajax_register_modal_background_color'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_register_modal_background_opacity';
+  $strongarm->value = '0.5';
+  $export['ajax_register_modal_background_opacity'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_register_modal_width';
+  $strongarm->value = '550';
+  $export['ajax_register_modal_width'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_register_password_redirect_behavior';
+  $strongarm->value = 'refresh';
+  $export['ajax_register_password_redirect_behavior'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_register_register_redirect_behavior';
+  $strongarm->value = 'refresh';
+  $export['ajax_register_register_redirect_behavior'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'ajax_register_show_links_inline';
+  $strongarm->value = 1;
+  $export['ajax_register_show_links_inline'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'cron_key';
   $strongarm->value = 'kiMRMKXBTUAQuYRzuvUBCSPi9PcAuK4zCDGkPjuYwbA';
   $export['cron_key'] = $strongarm;
@@ -73,9 +146,170 @@ function mica_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'itweak_login_login_button_name';
+  $strongarm->value = '';
+  $export['itweak_login_login_button_name'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'itweak_login_password_label';
+  $strongarm->value = '';
+  $export['itweak_login_password_label'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'itweak_login_recover_button_name';
+  $strongarm->value = '';
+  $export['itweak_login_recover_button_name'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'itweak_login_recover_mode';
+  $strongarm->value = '2';
+  $export['itweak_login_recover_mode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'itweak_login_recover_name';
+  $strongarm->value = '';
+  $export['itweak_login_recover_name'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'itweak_login_recover_url';
+  $strongarm->value = '';
+  $export['itweak_login_recover_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'itweak_login_register_button_name';
+  $strongarm->value = '';
+  $export['itweak_login_register_button_name'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'itweak_login_register_mode';
+  $strongarm->value = '2';
+  $export['itweak_login_register_mode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'itweak_login_register_name';
+  $strongarm->value = '';
+  $export['itweak_login_register_name'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'itweak_login_register_url';
+  $strongarm->value = '';
+  $export['itweak_login_register_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'itweak_login_username_inpage_prefix';
+  $strongarm->value = '';
+  $export['itweak_login_username_inpage_prefix'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'itweak_login_username_label';
+  $strongarm->value = '';
+  $export['itweak_login_username_label'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_page';
   $strongarm->value = '4';
   $export['language_content_type_page'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'logintoboggan_confirm_email_at_registration';
+  $strongarm->value = '0';
+  $export['logintoboggan_confirm_email_at_registration'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'logintoboggan_immediate_login_on_register';
+  $strongarm->value = 1;
+  $export['logintoboggan_immediate_login_on_register'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'logintoboggan_login_successful_message';
+  $strongarm->value = '0';
+  $export['logintoboggan_login_successful_message'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'logintoboggan_login_with_email';
+  $strongarm->value = '1';
+  $export['logintoboggan_login_with_email'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'logintoboggan_minimum_password_length';
+  $strongarm->value = '0';
+  $export['logintoboggan_minimum_password_length'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'logintoboggan_override_destination_parameter';
+  $strongarm->value = 0;
+  $export['logintoboggan_override_destination_parameter'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'logintoboggan_pre_auth_role';
+  $strongarm->value = '2';
+  $export['logintoboggan_pre_auth_role'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'logintoboggan_purge_unvalidated_user_interval';
+  $strongarm->value = '0';
+  $export['logintoboggan_purge_unvalidated_user_interval'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'logintoboggan_redirect_on_confirm';
+  $strongarm->value = '';
+  $export['logintoboggan_redirect_on_confirm'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'logintoboggan_redirect_on_register';
+  $strongarm->value = '';
+  $export['logintoboggan_redirect_on_register'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'logintoboggan_unified_login';
+  $strongarm->value = 1;
+  $export['logintoboggan_unified_login'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

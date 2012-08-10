@@ -21,7 +21,7 @@ msgstr ""
 #: node:type:blog:title_label
 msgctxt "type:blog:title_label"
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: node:type:blog:description
 msgctxt "type:blog:description"
@@ -31,7 +31,7 @@ msgstr ""
 #: node:type:event:name
 msgctxt "type:event:name"
 msgid "Event"
-msgstr ""
+msgstr "Évènement"
 
 #: node:type:event:title_label
 msgctxt "type:event:title_label"

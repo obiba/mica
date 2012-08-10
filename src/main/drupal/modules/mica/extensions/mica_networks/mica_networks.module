@@ -63,7 +63,7 @@ function mica_networks_menu_local_tasks_alter(&$data, $router_item, $root_path) 
       $links['add-network'] = array(
         '#theme' => 'menu_local_action',
         '#link' => array(
-          'title' => t('Add a !name', array('!name' => $node_type->name)),
+          'title' => t('Add a Network'),
           'href' => 'node/add/network',
         ),
       );

@@ -369,7 +369,7 @@ msgstr ""
 
 msgctxt "term:17:name"
 msgid "Cognitive functions"
-msgstr "Fontions cognitives"
+msgstr "Fonctions cognitives"
 
 msgctxt "term:180:name"
 msgid "Diagnostic interventions on body system NEC"
