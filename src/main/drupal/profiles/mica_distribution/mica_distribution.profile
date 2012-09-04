@@ -55,7 +55,7 @@ function _mica_distribution_configuration_batch() {
     $operations[] = array('feeds_batch', array('import', $source->id, $source->feed_nid));
   }
 
-  //$operations = array_merge($operations, module_invoke_all('taxonomies_operations_import'));
+  $operations = array_merge($operations, module_invoke_all('taxonomies_operations_import'));
 
   // prepare permissions rebuild
   $mica_length = strlen('mica_');

@@ -256,8 +256,7 @@ libraries[spyc][directory_name] = services/servers/rest_server/lib
 libraries[spyc][overwrite] = TRUE
 
 libraries[superfish][download][type]= get
-libraries[superfish][download][url] = http://localhost/files/superfish.tar.gz
-;https://github.com/mehrpadin/Superfish-for-Drupal/zipball/master
+libraries[superfish][download][url] = https://github.com/mehrpadin/Superfish-for-Drupal/zipball/master
 libraries[superfish][directory_name] = superfish
 libraries[superfish][overwrite] = TRUE
 
