@@ -427,6 +427,7 @@ section.block-facetapi ul.facetapi-facetapi-checkbox-links li, div.block-current
 
 section.block-facetapi ul.facetapi-facetapi-checkbox-links {
   margin-bottom: 0;
+  margin-left: 0;
 }
 
 section.block-facetapi a.facetapi-limit-link {
@@ -453,8 +454,13 @@ section.block-facetapi a.facetapi-limit-link {
   padding-left: 0.75em;
 }
 
-.search-api-ranges-widget input {
+.search-api-ranges-widget input[type="text"] {
+  width: 80px;
   padding: 3px;
+}
+
+.search-api-ranges-widget input[type="submit"] {
+  padding: 1px;
 }
 
 /**
