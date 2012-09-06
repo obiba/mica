@@ -38,48 +38,79 @@ function mica_studies_configure_facet_blocks() {
   }
 
   $config = array(
-    'field_design' => array(),
-    'field_country' => array(),
-    'field_age_min' => array(),
-    'field_age_max' => array(),
-    'field_gender' => array(),
-    'field_target_number_participants' => array(),
-    'field_target_number_biosamples' => array(),
-    'field_bio_samples_management' => array(),
-    'field_select_criteria' => array(),
-    'field_data_sources' => array(),
+    'field_design' => array(
+      'name' => t('Study design'),
+    ),
+    'field_country' => array(
+      'name' => t('Country'),
+    ),
+    'field_age_min' => array(
+      'name' => t('Age min'),
+    ),
+    'field_age_max' => array(
+      'name' => t('Age max'),
+    ),
+    'field_gender' => array(
+      'name' => t('Gender'),
+    ),
+    'field_target_number_participants' => array(
+      'name' => t('Target number of participants'),
+    ),
+    'field_target_number_biosamples' => array(
+      'name' => t('Target number of participants with samples'),
+    ),
+    'field_bio_samples_management' => array(
+      'name' => t('Biological samples'),
+    ),
+    'field_select_criteria' => array(
+      'name' => t('Study inclusion criteria'),
+    ),
+    'field_data_sources' => array(
+      'name' => t('Data sources')
+    ),
     'field_recruitment' => array(
-      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT
+      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'name' => t('Study recruitment targets'),
     ),
     'field_recruitment_sources' => array(
-      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT
+      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'name' => t('Recruitment sources'),
     ),
     'field_access_data' => array(
-      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT
+      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'name' => t('Data access'),
     ),
     'field_access_biosamples' => array(
-      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT
+      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'name' => t('Biological samples access'),
     ),
     'field_preparation_start_year' => array(
-      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT
+      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'name' => t('Preparation phase / Pilot start year'),
     ),
     'field_preparation_end_year' => array(
-      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT
+      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'name' => t('Preparation phase / Pilot end year'),
     ),
     'field_baseline_start_year' => array(
-      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT
+      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'name' => t('Baseline recruitment / initial data collection start year'),
     ),
     'field_baseline_end_year' => array(
-      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT
+      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'name' => t('Baseline recruitment / initial data collection end year'),
     ),
     'field_followup_start_year' => array(
-      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT
+      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'name' => t('Follow-up of participants start year'),
     ),
     'field_followup_end_year' => array(
-      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT
+      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'name' => t('Follow-up of participants end year'),
     ),
     'field_ended_end_year' => array(
-      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT
+      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+      'name' => t('Study end year '),
     ),
   );
   mica_core_configure_facet_blocks('studies_index', 'study', $config, 'studies-search', 'study_current_search');

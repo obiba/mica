@@ -84,6 +84,7 @@ function mica_studies_update_7130(&$sandbox) {
 
   $config = array(
     'field_recruitment_sources' => array(
+      'name' => t('Recruitment sources'),
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT
     ),
   );
