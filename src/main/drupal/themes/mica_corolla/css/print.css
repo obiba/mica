@@ -41,6 +41,7 @@ footer,
 .block-title,
 .block-content,
 table {
+table {
   background:none !important;
 }
 
@@ -57,7 +58,8 @@ ul.links a,
 .comment-form,
 #comment-form,
 .book-navigation,
-.tabs {
+.tabs,
+div.region.region-header {
   display: none;
 }
 /* Display the main content region */

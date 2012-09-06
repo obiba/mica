@@ -8,7 +8,7 @@
 
 ;----------// CSS
 
-  stylesheets[all][] = css/mica_corolla.settings.style.css
+  stylesheets[all][] = css/mica_corolla.css
   stylesheets[all][] = color/colors.css
   stylesheets[print][] = css/print.css
 
