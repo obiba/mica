@@ -45,10 +45,10 @@ function mica_studies_configure_facet_blocks() {
       'name' => t('Country'),
     ),
     'field_age_min' => array(
-      'name' => t('Age min'),
+      'name' => t('Minimum age'),
     ),
     'field_age_max' => array(
-      'name' => t('Age max'),
+      'name' => t('Maximum age'),
     ),
     'field_gender' => array(
       'name' => t('Gender'),
@@ -63,14 +63,14 @@ function mica_studies_configure_facet_blocks() {
       'name' => t('Biological samples'),
     ),
     'field_select_criteria' => array(
-      'name' => t('Study inclusion criteria'),
+      'name' => t('Selection criteria'),
     ),
     'field_data_sources' => array(
       'name' => t('Data sources')
     ),
     'field_recruitment' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
-      'name' => t('Study recruitment targets'),
+      'name' => t('Recruitment target'),
     ),
     'field_recruitment_sources' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
