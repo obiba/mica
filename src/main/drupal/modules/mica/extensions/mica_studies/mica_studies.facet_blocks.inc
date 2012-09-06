@@ -42,7 +42,7 @@ function mica_studies_configure_facet_blocks() {
       'name' => t('Study design'),
     ),
     'field_country' => array(
-      'name' => t('Country'),
+      'name' => t('Country of residence'),
     ),
     'field_age_min' => array(
       'name' => t('Minimum age'),
