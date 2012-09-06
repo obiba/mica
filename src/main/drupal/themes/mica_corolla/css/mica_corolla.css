@@ -580,7 +580,7 @@ table.query-table th, table.query-table td {
 }
 
 div#edit-lang-dropdown-select_msdd{
-  margin-top:18px;
+  margin-top:-5px;
 }
 
 /* Facet Api style override*/
@@ -645,7 +645,8 @@ ul.ajax-register-links a{
 }
 
 div#block-ajax-register-ajax-register-block {
-  width:180px;
+  width:220px;
+  text-align: right;
 }
 
 .region-header div.item-list ul li {
