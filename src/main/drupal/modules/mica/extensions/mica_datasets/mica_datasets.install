@@ -302,9 +302,14 @@ function mica_datasets_update_7130(&$sandbox) {
 }
 
 /**
+ * Replace built-in node title by title_field.
  * Fix typo from the "Medical health interventions / Health services" taxonomy.
  */
-function mica_datasets_update_7150(&$sandbox){
+function mica_datasets_update_7500(&$sandbox){
+
+  module_load_install('mica_core');
+  mica_core_replace_titles(array('dataset', 'variable'));
+
   db_update('taxonomy_term_data')
     ->fields(array('name' => 'Diagnostic imaging interventions on the musculoskelatal system'))
     ->condition('name', 'Diagnostic imaging interventions on the musculoskeletal system')
@@ -323,7 +328,6 @@ function mica_datasets_update_7150(&$sandbox){
 
 /**
  * Implements hook_update_dependencies().
- * Update to 7120 depends on the update of mica_core
  */
 function mica_datasets_update_dependencies() {
   $dependencies = array();
@@ -331,6 +335,10 @@ function mica_datasets_update_dependencies() {
 
   // need to execute field_update_7002() before mica_datasets_update_7130()
   $dependencies['mica_datasets'][7130] = array('field' => 7002);
+
+  // need to upgrade core before datasets
+  $dependencies['mica_datasets'][7500] = array('mica_core' => 7500);
+
   return $dependencies;
 }
 
@@ -481,3 +489,4 @@ function _mica_datasets_migrate_participant_variable($participant_variables) {
   node_types_rebuild();
   variable_del('node_preview_participant_variable');
 }
+

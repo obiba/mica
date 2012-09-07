@@ -11,3 +11,20 @@
 function mica_data_access_update_7120() {
   features_revert(array('mica_data_access' => array('field', 'user_permission', 'variable')));
 }
+
+/**
+ * Replace built-in node title by title_field
+ */
+function mica_data_access_update_7500(&$sandbox) {
+  module_load_install('mica_core');
+  mica_core_replace_titles(array('data_access_request', 'data_access_review'));
+}
+
+/**
+ * Implements hook_update_dependencies().
+ */
+function mica_data_access_update_dependencies() {
+  $dependencies = array();
+  $dependencies['mica_data_access'][7500] = array('mica_core' => 7500);
+  return $dependencies;
+}

@@ -28,7 +28,6 @@ function mica_core_install() {
 
 /**
  * Update script for release 1.2
- * Implements hook_update_N().
  */
 function mica_core_update_7120(&$sandbox) {
   $result = db_query('SELECT * FROM {mica_relation}')->fetchAll();
@@ -41,11 +40,31 @@ function mica_core_update_7120(&$sandbox) {
 }
 
 /**
- * Update script for release 1.5
- * Implements hook_update_N().
+ * Replace built-in node title by title_field
  */
-function mica_core_update_7150(&$sandbox) {
+function mica_core_update_7500(&$sandbox) {
   _mica_core_rebuild_registry();
+  mica_core_replace_titles(array('page', 'article'));
+}
+
+function mica_core_replace_titles($types) {
+  foreach ($types as $type) {
+    _mica_core_replace_node_titles($type);
+  }
+  cache_clear_all();
+}
+
+function _mica_core_replace_node_titles($type) {
+  title_field_replacement_toggle('node', $type, 'title');
+
+  $query = new EntityFieldQuery;
+  $result = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', $type)
+    ->execute();
+  if (!empty($result['node'])) {
+    $ids = array_keys($result['node']);
+    title_field_replacement_init('node', $type, 'title', $ids);
+  }
 }
 
 /**

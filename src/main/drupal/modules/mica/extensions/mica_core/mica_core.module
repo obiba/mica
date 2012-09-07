@@ -388,6 +388,7 @@ function mica_core_add_page($title, $body_html, $alias = NULL) {
     array(
       'type' => 'page',
       'title' => $title,
+      'title_field' => $title,
       'body' => array(
         'value' => $body_html,
         'format' => 'full_html',

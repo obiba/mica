@@ -1,21 +1,4 @@
 <?php
-/**
- * Copyright 2012(c) OBiBa, All rights reserved.
- *
- * This program and the accompanying materials are made available under the terms of the GNU Public License v3.0.
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
- * TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
- * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
- * IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
- * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
 
 /**
  * @file
@@ -259,4 +242,21 @@ function _mica_studies_migrate_field_recruitment_procedures() {
 
   spl_autoload_register('_search_api_solr_autoload');
   field_delete_field('field_recruitment_procedures');
+}
+
+/**
+ * Replace built-in node title by title_field
+ */
+function mica_studies_update_7500(&$sandbox) {
+  module_load_install('mica_core');
+  mica_core_replace_titles(array('contact', 'documents', 'study'));
+}
+
+/**
+ * Implements hook_update_dependencies().
+ */
+function mica_studies_update_dependencies() {
+  $dependencies = array();
+  $dependencies['mica_studies'][7500] = array('mica_core' => 7500);
+  return $dependencies;
 }
