@@ -250,6 +250,9 @@ function _mica_studies_study_view($node, $view_mode, $langcode) {
 function _mica_studies_contact_view($node, $view_mode, $langcode) {
   $wrapper = entity_metadata_wrapper('node', $node);
 
+  // Fix until http://drupal.org/node/1376126 is resolved
+  $wrapper->language->set($langcode);
+
   $address_lines = array();
   $address_lines[] = $wrapper->field_institution_name->value();
   $address_lines[] = $wrapper->field_department_unit->value();
