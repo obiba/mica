@@ -47209,7 +47209,7 @@ msgstr ""
 "pour"
 
 msgid "Ethnic Origins"
-msgstr "Origines ethnique"
+msgstr "Origine ethnique"
 
 msgid "Birth height"
 msgstr "Taille à la naissance"

@@ -16,12 +16,12 @@ msgstr ""
 #: field:field_authorization_maelstrom:study:display_label
 msgctxt "field_authorization_maelstrom:study:display_label"
 msgid "Authorization from contributors to the Maelstrom Catalogues"
-msgstr ""
+msgstr "Autorisation des contributeurs aux catalogues Maelstrom"
 
 #: field:field_authorization_specific:study:display_label
 msgctxt "field_authorization_specific:study:display_label"
 msgid "Authorization from contributors to the [specific network] catalogues"
-msgstr ""
+msgstr "Autorisation des contributeurs aux catalogues de [specific network]"
 
 #: field:body:blog:label
 msgctxt "body:blog:label"

@@ -46545,3 +46545,11 @@ msgstr "››"
 msgid "Address"
 msgstr "Adresse"
 
+msgid "the harmonization potential of this variable has not yet been evaluated."
+msgstr "Le potentiel d'harmonisation de cette variable n'a pas encore été évalué."
+
+msgid "the study assessment item(s) (e.g. survey question, physical measure, biochemical measure) allow construction of the variable as defined in the dataset."
+msgstr "Les items d'évaluation de l'étude (ex: question, mesure physique, mesure biochimique) permettent la construction de la variable tel que définie dans le jeu de données."
+
+msgid "there is no information or insufficient information collected by this study to allow the construction of the variable as defined in the dataset."
+msgstr "Il n'y a pas d'information ou l'information collectée par cette étude est insuffisante pour permettre la construction de la variable tel que définie dans le jeu de données."
