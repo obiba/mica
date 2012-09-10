@@ -5,9 +5,6 @@
 oldversion=
 solr_version=3.6.1
 
-#
-# Drush install
-#
 
 all: mica-solr-install-prepare
 

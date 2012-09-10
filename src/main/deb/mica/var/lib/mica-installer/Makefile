@@ -24,7 +24,7 @@ db_pass=
 # Drush install
 #
 
-drush_version=5.4
+drush_version=5.7
 
 all: 
 
