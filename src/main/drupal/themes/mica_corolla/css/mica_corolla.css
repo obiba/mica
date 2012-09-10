@@ -28,9 +28,6 @@ section#block-lang-dropdown-language.block.block-lang-dropdown {
   clear: none;
 }
 
-section#block-lang-dropdown{
-}
-
 section#block-user-login.block.block-user {
   margin-top:0px;
   margin-bottom: 0px;
@@ -285,9 +282,9 @@ th .highlight {
   box-shadow:2px 3px 3px #333;
   /*text-shadow: 0 1px 1px black;*/
   background-image: none;
-  background-color: #f8f8f8;
+  background-color: #086782;
+  color:#ffffff;
 }
-
 
 /* workbench block */
 #block-workbench-block {
@@ -525,8 +522,13 @@ label.option {
   font-weight: normal;
 }
 
-.field-type-taxonomy-term-reference .field-label {
-  color: inherit;
+.field-type-taxonomy-term-reference li.field-item:after {
+  content: ",";
+  /*color: inherit;*/
+}
+
+.field-type-taxonomy-term-reference li.field-item:last-child:after{
+  content: "";
 }
 
 body.node-type-dataset .pane-dataset-variables {
