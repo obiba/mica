@@ -81,15 +81,11 @@ function mica_i18n_install() {
   // Explicitly set 'Default translated' display format for all fields of type list_text
   mica_i18n_fix_views_display();
 
-  // Add language mapping for feeds import once
-  mica_i18n_feeds_config();
-
   // set all taxonomies to be localizable
   mica_i18n_taxonomy_localizable();
 
   // Modify all search index... Add language field and processors
   mica_i18n_search_index_update();
-
 }
 
 function mica_i18n_fix_views_display() {
@@ -128,6 +124,7 @@ function mica_i18n_fix_entity_display() {
   foreach ($types as $type) {
     // Enable multilingual support (field translation) and locked options
     variable_set('i18n_node_extended_' . $type->type, I18N_LANGUAGE_ENABLED);
+    variable_set('i18n_node_options_' . $type->type, array('current')); // No constant found in in i18n_node.variable
     variable_set('language_content_type_' . $type->type, I18N_MODE_TRANSLATE);
     variable_set('entity_translation_comment_filter_' . $type->type, FALSE);
     variable_set('entity_translation_node_metadata_' . $type->type, FALSE);
@@ -141,6 +138,7 @@ function mica_i18n_fix_entity_display() {
 
       // Configure fields that should be 'translatable'
       $info = field_info_field_by_id($instance['field_id']);
+      // Exclude field_dataset
       if (in_array($instance['widget']['type'], $translatables_widget_types)) {
 
         // only update the field if not already translatables
@@ -209,32 +207,6 @@ function mica_i18n_hide_language_display($type) {
   );
 
   field_bundle_settings('node', $type, $settings);
-}
-
-function mica_i18n_feeds_config() {
-
-  // Feeds mapping for language field
-  foreach (array_keys(_feeds_importer_digest()) as $feed_id) {
-    $feed = feeds_importer_load($feed_id);
-    $config = $feed->processor->getConfig();
-    $config['mappings'][] = array(
-      'source' => 'language',
-      'target' => 'language',
-      'unique' => FALSE,
-    );
-    $feed->processor->setConfig($config);
-    $feed->save();
-
-    $tamper = feeds_tamper_new_instance();
-    $tamper->id = $feed_id . '-language-set_default_value';
-    $tamper->importer = $feed_id;
-    $tamper->source = 'language';
-    $tamper->plugin_id = 'default_value';
-    $tamper->settings = array('default_value' => language_default()->language);
-    $tamper->description = 'Set default value';
-
-    feeds_tamper_save_instance($tamper);
-  }
 }
 
 function mica_i18n_taxonomy_localizable() {

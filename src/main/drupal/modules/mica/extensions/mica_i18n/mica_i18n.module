@@ -4,43 +4,6 @@
  * Code for the Mica i18n feature.
  */
 
-//function mica_i18n_menu() {
-//  $items = array();
-//  $items['admin/config/development/mica_i18n'] = array(
-//    'title' => 'Mica Internationalization',
-//    'description' => 'Utilities for Mica internationalization',
-//    'page callback' => 'drupal_get_form',
-//    'page arguments' => array('_mica_i18n_form'),
-//    'access arguments' => array('administer site configuration'),
-//  );
-//  return $items;
-//}
-//
-//function _mica_i18n_form() {
-//
-//  $form['mica_i18n'] = array(
-//    '#type' => 'fieldset',
-//    '#title' => t('Internationalization'),
-//    '#description' => t(''),
-//  );
-//  $form['mica_i18n']['refresh'] = array(
-//    '#type' => 'submit',
-//    '#value' => t('Refresh translations'),
-//    '#submit' => array('mica_i18n_test'),
-//  );
-//
-//  return $form;
-//}
-//
-//function mica_i18n_test() {
-////  require_once(drupal_get_path('module', 'mica_i18n') . '/mica_i18n.install');
-////  mica_i18n_fix_views_display();
-////  mica_i18n_configure_block();
-//
-////  mica_i18n_fix_entity_display();
-//}
-
-
 /**
  * Implements hook_menu_breadcrumb_alter() to translate links title of breadcrumb
  */
@@ -78,6 +41,12 @@ function mica_i18n_multilingual_settings_changed() {
       i18n_variable_set('site_frontpage', 'node/1', $lang);
     }
   }
+
+  // Refresh strings
+  module_load_include('inc', 'i18n_string', 'i18n_string.admin');
+  $batch = i18n_string_refresh_batch(array('field', 'menu', 'node', 'taxonomy', 'default', 'field'), TRUE);
+  batch_set($batch);
+  batch_process();
 }
 
 function mica_i18n_translate_menus($langcode) {
