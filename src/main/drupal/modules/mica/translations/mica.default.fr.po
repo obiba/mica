@@ -2354,7 +2354,7 @@ msgid ""
 "algorithm is developed to map study-specific data to the variable format "
 "defined in the Harmonization Dataset.<br/><br/>"
 msgstr ""
-"Un jeu de données d'harmonization documente et annotes un ensemble de "
+"Un jeu de données d'harmonisation documente et annotes un ensemble de "
 "variables \"core\" fournissant une liste précise et concise de l'information "
 "à harmoniser dans un contexte scientifique spécifique. Les variables "
 "incluses dans l'ensemble de données d'harmonisation constituent le format de "
@@ -13835,8 +13835,8 @@ msgid ""
 "Enter the Contact full name. You will be able to edit these Contacts once "
 "the Study has been saved."
 msgstr ""
-"Entrez le nom complet du contact. Vous pourrez modifier ces contacts lorsque "
-"l'étude aura été sauvegardée."
+"Entrez le nom complet du contact. Vous pourrez éditer ces contacts lorsque "
+"une fois l'étude sauvegardée."
 
 msgid "Enter the ID of an entity for this context."
 msgstr "Entrez l'ID de l'entité pour ce contexte."
@@ -24720,7 +24720,7 @@ msgid "Please specify what other source of recruitment"
 msgstr "Spécifier les sources de recrutement"
 
 msgid "Please specify what study feature"
-msgstr "Spécifier quel caractéristique d'étude"
+msgstr "Spécifier quelle caractéristique d'étude"
 
 msgid "Please wait..."
 msgstr "Veuillez patienter..."
@@ -29414,7 +29414,7 @@ msgid "Structure"
 msgstr "Structure"
 
 msgid "Studies"
-msgstr "Etudes"
+msgstr "Études"
 
 msgid "Studies Search"
 msgstr "Recherche d'études"
@@ -44069,7 +44069,7 @@ msgstr "Autre"
 
 msgctxt "field_access_other_sp:study:label"
 msgid "Please specify what study feature"
-msgstr "Spécifier quel caractéristique d'étude"
+msgstr "Spécifier quelle caractéristique d'étude"
 
 msgctxt "field_acroym:study:description"
 msgid "Acronym of the study if applicable."
@@ -44192,8 +44192,8 @@ msgid ""
 "Enter the Contact full name. You will be able to edit these Contacts once "
 "the Study has been saved."
 msgstr ""
-"Entrez le nom complet du contact. Vous pourrez modifier ces contacts lorsque "
-"l'étude aura été sauvegardée."
+"Entrez le nom complet du contact. Vous pourrez éditer ces contacts lorsque "
+"une fois l'étude sauvegardée."
 
 msgctxt "field_contacts_ref:study:description"
 msgid ""
@@ -46553,3 +46553,15 @@ msgstr "Les items d'évaluation de l'étude (ex: question, mesure physique, mesu
 
 msgid "there is no information or insufficient information collected by this study to allow the construction of the variable as defined in the dataset."
 msgstr "Il n'y a pas d'information ou l'information collectée par cette étude est insuffisante pour permettre la construction de la variable tel que définie dans le jeu de données."
+
+msgid "No harmonization found"
+msgstr "Aucune harmonisation"
+
+msgid "View @title Harmonization"
+msgstr "Voir l'harmonisation de @title"
+
+msgid "Harmonization"
+msgstr "Harmonisation"
+
+msgid "Search Studies"
+msgstr "Recherche d'études"

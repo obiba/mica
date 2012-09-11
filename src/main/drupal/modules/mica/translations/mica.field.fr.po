@@ -1668,7 +1668,7 @@ msgstr "Autre"
 #: field:field_access_other_sp:study:label
 msgctxt "field_access_other_sp:study:label"
 msgid "Please specify what study feature"
-msgstr "Spécifier quel caractéristique d'étude"
+msgstr "Spécifier quelle caractéristique d'étude"
 
 #: field:field_acroym:study:label
 msgctxt "field_acroym:study:label"
@@ -3691,8 +3691,8 @@ msgid ""
 "Enter the Contact full name. You will be able to edit these Contacts "
 "once the Study has been saved."
 msgstr ""
-"Entrez le nom complet du contact. Vous pourrez modifier ces contacts "
-"lorsque l'étude aura été sauvegardée."
+"Entrez le nom complet du contact. Vous pourrez éditer ces contacts "
+"une fois l'étude sauvegardée."
 
 #: field:field_current_part_nb_date:study:label
 msgctxt "field_current_part_nb_date:study:label"

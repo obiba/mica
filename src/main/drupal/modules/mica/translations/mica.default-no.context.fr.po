@@ -256,7 +256,7 @@ msgstr ""
 
 #: /mica-dev/?q=fr/studies
 msgid "Studies (xls)"
-msgstr ""
+msgstr "Études (xls)"
 
 #: /mica-dev/?q=fr/studies
 msgid "Export Studies to Excel file"
@@ -319,7 +319,7 @@ msgid "1"
 msgstr ""
 
 #: /mica-dev/?q=fr/studies
-msgid "Add a Étude"
+msgid "Add a Study"
 msgstr "Ajouter une étude"
 
 #: /mica-dev/?q=fr/studies
@@ -9880,7 +9880,7 @@ msgstr ""
 "pour mettre en place des redirections quand vos alias changent."
 
 msgid "Consortium's studies involved."
-msgstr "Etudes du consortium impliquées"
+msgstr "Études du consortium impliquées"
 
 msgid "Contact"
 msgstr "Contact"
@@ -15072,8 +15072,8 @@ msgid ""
 "Enter the Contact full name. You will be able to edit these Contacts "
 "once the Study has been saved."
 msgstr ""
-"Entrez le nom complet du contact. Vous pourrez modifier ces contacts "
-"lorsque l'étude aura été sauvegardée."
+"Entrez le nom complet du contact. Vous pourrez éditer ces contacts "
+"une fois l'étude sauvegardée."
 
 msgid "Enter the ID of an entity for this context."
 msgstr "Entrez l'ID de l'entité pour ce contexte."
@@ -26194,7 +26194,7 @@ msgid "Please specify what other source of recruitment"
 msgstr "Spécifier les sources de recrutement"
 
 msgid "Please specify what study feature"
-msgstr "Spécifier quel caractéristique d'étude"
+msgstr "Spécifier quelle caractéristique d'étude"
 
 msgid "Please wait..."
 msgstr "Veuillez patienter..."
@@ -30970,7 +30970,7 @@ msgid "Structure"
 msgstr "Structure"
 
 msgid "Studies"
-msgstr "Etudes"
+msgstr "Études"
 
 msgid "Studies Search"
 msgstr "Recherche d'études"
@@ -48619,7 +48619,7 @@ msgstr "Autre"
 
 msgctxt "field_access_other_sp:study:label"
 msgid "Please specify what study feature"
-msgstr "Spécifier quel caractéristique d'étude"
+msgstr "Spécifier quelle caractéristique d'étude"
 
 msgctxt "field_acroym:study:description"
 msgid "Acronym of the study if applicable."
@@ -50316,7 +50316,7 @@ msgstr "Jeux de données d'études"
 
 msgctxt "item:528:title"
 msgid "Harmonization Datasets"
-msgstr "Jeux de données d'harmonization"
+msgstr "Jeux de données d'harmonisation"
 
 msgctxt "item:529:title"
 msgid "Variables Search"
@@ -50440,7 +50440,7 @@ msgstr "Jeux de données d'études"
 
 msgctxt "item:544:title"
 msgid "Harmonization Datasets"
-msgstr "Jeux de données d'harmonization"
+msgstr "Jeux de données d'harmonisation"
 
 msgctxt "item:545:title"
 msgid "Variables Search"
