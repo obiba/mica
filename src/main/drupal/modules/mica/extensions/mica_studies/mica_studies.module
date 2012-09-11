@@ -166,12 +166,6 @@ function _mica_studies_study_view($node, $view_mode, $langcode) {
       'key' => 0,
       'label_as_prefix' => TRUE,
     ),
-    'field_recruitment_other' => array(
-      'field' => 'field_recruitment_sources',
-      'key' => 'other',
-      'label_as_prefix' => FALSE,
-      'enclosed' => FALSE,
-    ),
     'field_data_sources_sp' => array(
       'field' => 'field_data_sources',
       'key' => 'others',
@@ -545,16 +539,17 @@ function _mica_studies_display_status_dates(&$node, $status_dates) {
   $wrapper = entity_metadata_wrapper('node', $node);
   foreach ($status_dates as $start_date => $end_date) {
     $start = $wrapper->$start_date->value();
+    $end = $wrapper->$end_date->value();
     if (!empty($start)) {
-      if (isset($node->content[$start_date]) && isset($node->content[$start_date][0]['#markup'])) {
+      if (isset($node->content[$start_date])) {
         $node->content[$start_date][0]['#markup'] = t('From') . ' ' . $node->content[$start_date][0]['#markup'];
       }
-      $end = $wrapper->$end_date->value();
-      if (!empty($end) && isset($node->content[$end_date]) && isset($node->content[$end_date][0]['#markup'])) {
+
+      if (!empty($end) && isset($node->content[$end_date])) {
         $node->content[$start_date][0]['#markup'] .= ' ' . t('to') . ' ' . $node->content[$end_date][0]['#markup'];
       }
-      $node->content[$end_date]['#access'] = FALSE;
     }
+    $node->content[$end_date]['#access'] = FALSE;
   }
 }
 
@@ -573,7 +568,7 @@ function _mica_bind_other_specify(&$node, $bindings) {
       if (isset($key)) {
         // get the array index of the key
         foreach ($node->content[$field]['#items'] as $i => $items) {
-          if ($i === $key || $items['value'] === $key) {
+          if ($i === $key || (isset($items['value']) &&  $items['value'] === $key)) {
             $index = $i;
             break;
           }
