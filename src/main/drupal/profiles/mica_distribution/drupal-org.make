@@ -10,12 +10,16 @@ projects[acl] = 1.0-beta3
 projects[adaptivetheme] = 3.1
 
 projects[ajax_register] = 4.0-rc10
+projects[ajax_register][patch][1646106] = http://drupal.org/files/submit_on_enter_key-1646106-6.patch
 
 projects[auto_entitylabel][download][type] = git
 projects[auto_entitylabel][download][revision] = 218ba66
 projects[auto_entitylabel][download][branch] = 7.x-1.x
 
-projects[autocomplete_deluxe] = 2.0-beta2
+projects[autocomplete_deluxe][download][type] = git
+projects[autocomplete_deluxe][download][revision] = 90d95d3
+projects[autocomplete_deluxe][download][branch] = 7.x-2.x
+
 
 projects[] = advanced_help
 
@@ -253,13 +257,15 @@ libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.co
 libraries[solr_php_client][directory_name] = SolrPhpClient
 
 libraries[spyc][download][type]= get
-libraries[spyc][download][url] = https://raw.github.com/mustangostang/spyc/master/spyc.php
+libraries[spyc][download][url] = http://localhost/files/spyc.php.tar.gz
+;libraries[spyc][download][url] = https://raw.github.com/mustangostang/spyc/master/spyc.php
 libraries[spyc][destination] = modules
 libraries[spyc][directory_name] = services/servers/rest_server/lib
 libraries[spyc][overwrite] = TRUE
 
 libraries[superfish][download][type]= get
-libraries[superfish][download][url] = https://github.com/mehrpadin/Superfish-for-Drupal/zipball/master
+libraries[superfish][download][url] = http://localhost/files/superfish.tar.gz
+;libraries[superfish][download][url] = https://githubcom/mehrpadin/Superfish-for-Drupal/zipball/master
 libraries[superfish][directory_name] = superfish
 libraries[superfish][overwrite] = TRUE
 

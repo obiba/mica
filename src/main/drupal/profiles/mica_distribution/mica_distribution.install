@@ -24,7 +24,7 @@ function mica_distribution_install() {
   // rebuild permissions
   node_access_rebuild();
 
-  watchdog('mica', 'Mica Distribution profile installed', WATCHDOG_INFO);
+  watchdog('mica', 'Mica Distribution profile installed', array(), WATCHDOG_INFO);
 }
 
 /*

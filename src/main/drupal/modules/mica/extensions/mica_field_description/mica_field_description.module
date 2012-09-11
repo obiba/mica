@@ -120,7 +120,6 @@ function mica_field_description_form_field_ui_field_edit_form_alter(&$form, $for
       return;
     }
 
-
     $bundle = $form_state['build_info']['args'][0]['bundle'];
     if ($bundle === 'field_description') {
       return; // cannot create field_description form field_description content type field
@@ -238,6 +237,9 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
   if ($type === 'text') {
     $field_index_type = $discrete ? 'string' : 'text';
   }
+  else if ($type === 'term') {
+    $field_index_type = 'integer';
+  }
   else {
     $mapping = _mica_field_description_magma_search_index_type_mapping();
     $field_index_type = $mapping[$type];
@@ -282,6 +284,10 @@ function _mica_field_description_add_field_index($index_name, stdClass $field_de
   $fields[$field_name] = array(
     'type' => $field_index_type,
   );
+
+  if ($type === 'term') {
+    $fields[$field_name]['entity_type'] = 'taxonomy_term';
+  }
 
   search_api_index_edit_fields($index->id, $fields);
 

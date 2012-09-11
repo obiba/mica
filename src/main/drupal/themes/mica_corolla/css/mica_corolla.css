@@ -524,7 +524,6 @@ label.option {
 
 .field-type-taxonomy-term-reference li.field-item:after {
   content: ",";
-  /*color: inherit;*/
 }
 
 .field-type-taxonomy-term-reference li.field-item:last-child:after{
