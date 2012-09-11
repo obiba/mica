@@ -153,19 +153,9 @@ function mica_search_filters_block_content() {
       if (!empty($block->delta) && !empty($data)
         && array_key_exists($block->delta, $data) && $data[$block->delta]['info']) {
 
-        $name = $data[$block->delta]['info'];
-        $parts = explode(':', $name);
-        if (count($parts) > 3) {
-          unset($parts[0]);
-          unset($parts[1]);
-          unset($parts[2]);
-          $parts[3] = trim($parts[3]);
-          $name = implode(':', $parts);
-        }
-
         $blocks[$block->module][$block->module . ':' . $block->delta] = array(
           '#type' => 'checkbox',
-          '#title' => check_plain($name),
+          '#title' => $block->title,
           '#default_value' => isset($user->data['block'][$block->module][$block->delta])
             ? $user->data['block'][$block->module][$block->delta]
             : ($block->custom == 1),
