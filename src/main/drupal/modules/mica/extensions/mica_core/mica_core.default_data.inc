@@ -81,7 +81,7 @@ function _mica_core_default_text_formats() {
  */
 function _mica_core_default_content_types() {
   $types = array(
-    array(
+    'page' => array(
       'type' => 'page',
       'name' => st('Basic page'),
       'base' => 'node_content',
@@ -90,7 +90,7 @@ function _mica_core_default_content_types() {
       'modified' => 1,
       'locked' => 0,
     ),
-    array(
+    'article' => array(
       'type' => 'article',
       'name' => st('Article'),
       'base' => 'node_content',
@@ -100,10 +100,11 @@ function _mica_core_default_content_types() {
       'locked' => 0,
     ),
   );
-  foreach ($types as $type) {
+  foreach ($types as $name => $type) {
     $type = node_type_set_defaults($type);
     node_type_save($type);
     node_add_body_field($type);
+    title_field_replacement_toggle('node', $name, 'title');
   }
 
   // Insert default pre-defined RDF mapping into the database.

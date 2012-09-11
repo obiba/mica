@@ -24,6 +24,8 @@
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.5-dev/profiles/mica_standard" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.5-dev/sites/all/modules/mica" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.5-dev/sites/all/themes/mica_samara" />
+      <excludeFolder url="file://$MODULE_DIR$/target/mica-5.x-dev-local" />
+      <excludeFolder url="file://$MODULE_DIR$/target/mica-5.x-dev/profiles/mica_distribution/modules/mica" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

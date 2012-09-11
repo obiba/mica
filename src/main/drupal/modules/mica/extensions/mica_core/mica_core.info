@@ -22,6 +22,7 @@ dependencies[] = search_api
 dependencies[] = search_api_solr
 dependencies[] = strongarm
 dependencies[] = superfish
+dependencies[] = title
 datestamp = 1346160048
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:1

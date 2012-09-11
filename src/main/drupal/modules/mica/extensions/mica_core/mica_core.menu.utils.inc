@@ -16,7 +16,9 @@ function mica_core_create_menu($menu_title, $menu_path, $router_path, $hidden = 
 
 function mica_core_create_node_menu($node, $hidden = FALSE, $expanded = FALSE, $weight = 0, $parent_path = '') {
   $menu = isset($node->menu) ? $node->menu : array();
-  _mica_core_create_menu($menu, $node->title, 'node/' . $node->nid, 'node/%', $hidden, $expanded, $weight, $parent_path);
+
+  $wrapper = entity_metadata_wrapper('node', $node);
+  _mica_core_create_menu($menu, $wrapper->title->value(), 'node/' . $node->nid, 'node/%', $hidden, $expanded, $weight, $parent_path);
   return $menu;
 }
 
@@ -78,10 +80,11 @@ function mica_core_create_node_default_menu($node, $hidden = FALSE, $expanded = 
   if (empty($menu['enabled']) || !$menu['enabled']) {
 
     $menu_options = variable_get('menu_options_' . $node->type);
+    $wrapper = entity_metadata_wrapper('node', $node);
 
     if (empty($menu_options)) {
       if (!empty($default_menu_name)) {
-        _mica_core_create_menu($menu, $node->title, 'node/' . $node->nid, '', $hidden, $expanded, $weight, $default_parent_path);
+        _mica_core_create_menu($menu, $wrapper->title->value(), 'node/' . $node->nid, '', $hidden, $expanded, $weight, $default_parent_path);
       }
     }
     else {
@@ -102,7 +105,7 @@ function mica_core_create_node_default_menu($node, $hidden = FALSE, $expanded = 
         }
       }
 
-      _mica_core_create_menu($menu, $node->title, 'node/' . $node->nid, '', $hidden, $expanded, $weight, NULL);
+      _mica_core_create_menu($menu, $wrapper->title->value(), 'node/' . $node->nid, '', $hidden, $expanded, $weight, NULL);
     }
 
   }

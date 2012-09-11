@@ -20,3 +20,19 @@ function mica_community_update_7120() {
   mica_core_configure_feeds_tamper('mica_community');
 }
 
+/**
+ * Replace built-in node title by title_field
+ */
+function mica_community_update_7500(&$sandbox) {
+  module_load_install('mica_core');
+  mica_core_replace_titles(array('event', 'publication'));
+}
+
+/**
+ * Implements hook_update_dependencies().
+ */
+function mica_community_update_dependencies() {
+  $dependencies = array();
+  $dependencies['mica_community'][7500] = array('mica_core' => 7500);
+  return $dependencies;
+}

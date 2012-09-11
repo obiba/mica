@@ -64,13 +64,9 @@ function _mica_devel_form() {
 }
 
 function _mica_devel_rebuild_registry() {
-  cache_clear_all('lookup_cache', 'cache_bootstrap');
-  cache_clear_all('variables', 'cache_bootstrap');
-  cache_clear_all('module_implements', 'cache_bootstrap');
-
-  registry_rebuild(); // At lower level
+  module_load_install('mica_core');
+  _mica_core_rebuild_registry();
 }
-
 
 function _mica_devel_modules_graph() {
   $graph = array();

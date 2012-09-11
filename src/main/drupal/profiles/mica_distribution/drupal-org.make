@@ -21,6 +21,9 @@ projects[autocomplete_deluxe][download][revision] = 90d95d3
 projects[autocomplete_deluxe][download][branch] = 7.x-2.x
 
 
+; needed because of migration to auto_entitylabel
+projects[auto_nodetitle] = 1.0
+
 projects[] = advanced_help
 
 projects[calendar] = 3.4
@@ -157,11 +160,11 @@ projects[noderefcreate][download][branch] = 7.x-1.x
 projects[noderefcreate][patch][1181544] = http://drupal.org/files/noderefcreate-alter-and-worlflow-options-1181544-5.patch
 projects[noderefcreate][patch][1538328] = http://drupal.org/files/maxlength-1538328-1.patch
 
-projects[panels] = 3.2
+projects[panels] = 3.3
 
 projects[password_policy] = 1.0-rc2
 
-projects[pathauto] = 1.1
+projects[pathauto] = 1.2
 
 projects[potx] = 1.0
 
@@ -210,18 +213,18 @@ projects[title][download][type] = git
 projects[title][download][revision] = 2ec5945
 projects[title][download][branch] = 7.x-1.x
 
-projects[token] = 1.1
+projects[token] = 1.2
 
 projects[variable] = 2.1
 
 projects[view_unpublished] = 1.1
 
-projects[views] = 3.4
+projects[views] = 3.5
 
 projects[views_data_export][version] = 3.0-beta6
 projects[views_data_export][patch][1224894] = http://drupal.org/files/html_in_csv-1224894-10.patch
 
-projects[viewreference] = 3.3
+projects[viewreference] = 3.4
 
 projects[workbench] = 1.1
 
