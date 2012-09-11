@@ -41,6 +41,7 @@ projects[collapsiblock][download][type] = git
 projects[collapsiblock][download][revision] = 36f4280
 projects[collapsiblock][download][branch] = 7.x-1.x
 projects[collapsiblock][patch][1475244] = http://drupal.org/files/api-function-and-constants-patch1301454-patch1429956.patch
+;projects[collapsiblock][patch][1301454] = http://drupal.org/files/array2lower-1301454-1.patch
 
 projects[corolla] = 3.0-rc1
 
@@ -65,7 +66,12 @@ projects[email] = 1.2
 projects[entity][version] = 1.0-rc3
 projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info-on-validation-exception.patch
 
+;projects[entity_translation][download][type] = git
+;projects[entity_translation][download][revision] = 3cefb78
 projects[entity_translation] = 1.0-alpha2
+;projects[entity_translation][patch][1279372] = http://drupal.org/files/et-translatable-switch-1279372-89.patch
+
+
 
 projects[facetapi] = 1.1
 
