@@ -22285,10 +22285,13 @@ msgid "No profiles found. Click here to !create."
 msgstr "Aucun profil trouvé. Cliquer ici pour !create."
 
 msgid "No project found."
-msgstr "Aucun projet trouvé"
+msgstr "Aucun projet trouvé."
 
 msgid "No projects or languages to update."
 msgstr "Aucun projet ou langue à mettre à jour."
+
+msgid "No publication found."
+msgstr "Aucune publication trouvée."
 
 msgid "No query found"
 msgstr "Pas de requêtes trouvées"

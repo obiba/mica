@@ -666,3 +666,14 @@ h1#page-title, .in-maintenance h1#page-title{
 .block-title{
   text-transform: capitalize;
 }
+
+input.form-button, input.form-submit {
+  margin: 0 5px 0 0;
+  padding: 5px 11px;
+  border: 1px solid #CCC;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}

@@ -40,7 +40,8 @@ table.system-status-report tr {
 /* Links */
 a,
 a.active,
-li a.active {
+li a.active,
+div.ctools-modal-content .modal-header {
   color: #086782;
 }
 legend {

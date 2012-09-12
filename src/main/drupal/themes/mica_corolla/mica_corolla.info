@@ -33,8 +33,6 @@
   regions[page_top]          = Page top
   regions[page_bottom]       = Page bottom
 
-
-
 ;----------// Gpanel Regions
 
   ; This theme uses Gpanels from Adaptivetheme core. You can add more Gpanel
@@ -93,6 +91,9 @@
   settings[h5_font_size] = '1em'
   settings[h6_font_size] = '1em'
 
+  ; Custom CSS selector for collapsiblock
+  settings[collapsiblock_block] = 'section.block'
+  settings[scheme] = 'mica'
 
 stylesheets[all][] = css/mica_corolla.css
 stylesheets[all][] = color/colors.css
