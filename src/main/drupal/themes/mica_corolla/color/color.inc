@@ -38,6 +38,26 @@ $info = array(
         'fieldsetborder'  => '#e1e1e2',
       ),
     ),
+    'mica' => array(
+      'title' => t('Mica'),
+      'colors' => array(
+        'base'            => '#ffffff',
+        'background'      => '#fdfdfd',
+        'text'            => '#2e2e2e',
+        'link'            => '#53777a',
+        'linkhover'       => '#94c7b6',
+        'linkunderline'   => '#53777b',
+        'slogan'          => '#ca592b',
+        'navigation'      => '#d95b45',
+        'navigationhover' => '#d95b44',
+        'tab'             => '#fafafa',
+        'blocktitle'      => '#53777c',
+        'border'          => '#dce5e6',
+        'borderstrong'    => '#adc2c3',
+        'fieldset'        => '#febfba',
+        'fieldsetborder'  => '#adc2c4',
+      ),
+    ),
     'green1' => array(
       'title' => t('Green 1'),
       'colors' => array(
