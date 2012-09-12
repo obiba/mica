@@ -15,6 +15,7 @@ table.sva-tooltip th {
   background-color: inherit;
   border: none;
   font-weight: bold;
+  color: black;
 }
 
 table.sva-tooltip th, table.sva-tooltip td {
