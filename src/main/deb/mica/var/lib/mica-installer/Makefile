@@ -57,6 +57,7 @@ endif
 mica-dist-install: mica-dist-install-prepare drupal-profiles drupal-sites drupal-doc
 
 mica-dist-install-prepare:
+	@echo "**** Download Mica archive"
 	mkdir -p /var/cache/mica-installer/target && \
 	cd /var/cache/mica-installer/target && \
 	wget -q http://download.obiba.org/mica/$(stability)/mica-dist-$(deb_version).tar.gz && \
@@ -66,11 +67,13 @@ mica-dist-install-prepare:
 	mv mica /usr/share
 
 drupal-profiles:
+	@echo "**** Prepare Mica profile"
 	mv /usr/share/mica/profiles/* /etc/mica/profiles && \
 	rmdir /usr/share/mica/profiles && \
 	ln -s /etc/mica/profiles /usr/share/mica/profiles
 
 drupal-sites:
+	@echo "**** Prepare Mica site"
 	mkdir -p /etc/mica/sites/default && \
 	mv /usr/share/mica/sites/default/* /etc/mica/sites/default && \
 	rmdir /usr/share/mica/sites/default && \
