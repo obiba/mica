@@ -478,8 +478,8 @@ function _mica_field_description_find_field_description($bundle, $field_name) {
   $query = new EntityFieldQuery;
   $result = $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'field_description')
-    ->fieldCondition('field_bundle', 'value', $bundle, '=')
-    ->fieldCondition('field_original_field_name', 'value', $field_name, '=')
+    ->fieldCondition('field_bundle', 'value', $bundle)
+    ->fieldCondition('field_original_field_name', 'value', $field_name)
     ->execute();
   if (!empty($result['node'])) {
     $entities = entity_load('node', array_keys($result['node']));

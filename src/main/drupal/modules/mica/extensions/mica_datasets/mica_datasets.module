@@ -18,7 +18,6 @@ define('MICA_HARMONIZATION_IMPOSSIBLE', base_path() . drupal_get_path('module', 
 define('MICA_HARMONIZATION_COMPLETE', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/bullet_green.png');
 define('MICA_HARMONIZATION_FORBIDDEN', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/bullet_white.png');
 define('MICA_HARMONIZATION_UNDETERMINED', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/bullet_black.png');
-define('MICA_HARMONIZATION_REFRESH', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/refresh.png');
 define('MICA_HARMONIZATION_MISING_TICK', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/tick.png');
 
 /**
@@ -1167,7 +1166,8 @@ function mica_dataset_query_term_insert(array $values) {
 //
 
 /**
- * implements hook_feeds_after_parse
+ * Implements hook_feeds_after_parse().
+ *
  * used to extract the dataset_id from the importer and set it on the mapper
  * so that nodes created have a link to their dataset. This method also creates
  * a guid for each variable (dataset_id:title

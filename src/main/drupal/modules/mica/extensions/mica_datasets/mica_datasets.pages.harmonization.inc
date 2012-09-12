@@ -20,6 +20,8 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
   drupal_add_library('system', 'drupal.ajax');
   drupal_add_library('system', 'jquery.form');
 
+  mica_core_include_bootstrap_css();
+
   //prettify
   mica_datasets_prepare_prettify();
 
@@ -32,7 +34,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
     'name' => t('Variable'),
   );
 
-  $options = array();
+  $rows = array();
 
   $wrapper = entity_metadata_wrapper('node', $dataset_node);
   $variables = $wrapper->field_dataset_variables->value();
@@ -48,18 +50,39 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
 
       // See http://www.jide.fr/english/using-ajax-in-drupal-7-outside-of-form-api
       // show link only for studies that have an opal connection
-      if (node_access('update', $dataset_node) && mica_dataset_connector_query($wrapper->nid->value(), $study_wrapper->nid->value())) {
-        $ajax_link = l(
-          "<img src='" . MICA_HARMONIZATION_REFRESH . "' class='harmonization-refresh-icon' title='Refresh harmonization of $name'/>",
+      if (node_access('update', $dataset_node)
+        && mica_dataset_connector_query($wrapper->nid->value(), $study_wrapper->nid->value())) {
+        $refresh_link = l(
+          '<i class="icon-refresh icon-white"></i>',
           'mica_datasets_harmonization/ajax/' . $wrapper->nid->value() . '/' . $study_wrapper->nid->value(),
-          array('html' => TRUE, 'attributes' => array('class' => array('use-ajax')))
+          array(
+            'html' => TRUE,
+            'attributes' => array(
+              'class' => array('use-ajax'),
+              'title' => t('Refresh harmonization of %study', array('%study' => $name))
+            )
+          )
         );
       }
       else {
-        $ajax_link = '';
+        $refresh_link = '';
       }
 
-      $header[] = "<div class='harmonization-study-title'>$name$ajax_link</div><br/>";
+      $opal_xml = l(
+        '<i class="icon-download-alt icon-white"></i>',
+        'opal-export/node/' . $wrapper->nid->value(),
+        array(
+          'html' => TRUE,
+          'attributes' => array(
+            'title' => t('Export an Opal View for %study', array('%study' => $name))
+          ),
+          'query' => array(
+            'study' => $study_wrapper->nid->value(),
+          ),
+        )
+      );
+
+      $header[] = "<div class='study-title'>$name</div><div class='study-actions'>$refresh_link $opal_xml</div>";
 
       $header_ids[$study_wrapper->nid->value()] = $name;
     }
@@ -96,7 +119,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
           . _mica_datasets_harmonization_variable_tooltip($variable)
           . '</div>';
 
-        $option = array('name' => $variable_link);
+        $row = array('name' => $variable_link);
 
         if (!empty($variable->field_variable_study_var_att[$variable->language])) {
           foreach (array_keys($header_ids) as $header_id) {
@@ -138,9 +161,13 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
                     $sva_link .= '<div id="sva_' . $sva_nid . '_tooltip" class="tooltip-content">'
                       . _mica_datasets_harmonization_sva_tooltip($status_label, $comment, $script)
                       . '</div>';
-                    $option[$header_ids[$study_id]]['data'][] = array(
-                      '#type' => 'markup',
-                      '#markup' => $sva_link,
+
+                    $row[$header_ids[$study_id]] = array(
+                      'data' => array(
+                        '#type' => 'markup',
+                        '#markup' => $sva_link,
+                      ),
+                      'class' => array('center')
                     );
                   }
                   break;
@@ -148,7 +175,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
               }
             }
           }
-          $options[] = $option;
+          $rows[] = $row;
         }
       }
     }
@@ -161,7 +188,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
     'table',
     array(
       'header' => $header,
-      'rows' => $options,
+      'rows' => $rows,
       'empty' => t('No harmonization found'),
       'sticky' => FALSE,
       'attributes' => array('id' => 'harmonization_overview')

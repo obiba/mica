@@ -458,3 +458,6 @@ function mica_core_prepare_tooltip() {
   ctools_add_css('mica_core_tooltip', 'mica_core');
 }
 
+function mica_core_include_bootstrap_css() {
+  ctools_add_css('bootstrap_icons', 'mica_core');
+}

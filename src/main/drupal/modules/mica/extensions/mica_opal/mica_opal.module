@@ -50,7 +50,7 @@ function mica_opal_menu_local_tasks_alter(&$data, $router_item, $root_path) {
             '#weight' => 6,
             '#link' => array(
               'title' => t('Export an Opal View'),
-              'href' => 'opal-dataset/node/' . $node->nid,
+              'href' => 'opal-export/node/' . $node->nid,
             ),
           );
         }
