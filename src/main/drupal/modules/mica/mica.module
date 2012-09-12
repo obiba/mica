@@ -49,7 +49,7 @@ function mica_block_info() {
  * This hook generates the contents of the blocks themselves.
  */
 function mica_block_view($delta = '') {
-  module_load_include('inc', 'mica', 'includes/blocks');
+  module_load_include('inc', 'mica', 'includes/mica_blocks');
 
   global $user;
   $block = array();

@@ -20,7 +20,7 @@ function mica_search_block_content() {
  */
 function mica_search_form(&$form, &$form_state) {
   $form['#attached'] = array(
-    'css' => array(drupal_get_path('module', 'mica') . '/includes/blocks.css'),
+    'css' => array(drupal_get_path('module', 'mica') . '/includes/mica_blocks.css'),
   );
 
   // get studies view default display title
@@ -91,7 +91,7 @@ function mica_search_api_block_content($search_api_view, $help = '') {
 function mica_search_api_form($form, &$form_state) {
   $form = array(
     '#attached' => array(
-      'css' => array(drupal_get_path('module', 'mica') . '/includes/blocks.css'),
+      'css' => array(drupal_get_path('module', 'mica') . '/includes/mica_blocks.css'),
     ),
   );
 
@@ -177,7 +177,7 @@ function mica_search_filters_form($form, &$form_state, $blocks) {
 
   $form = array(
     '#attached' => array(
-      'css' => array(drupal_get_path('module', 'mica') . '/includes/blocks.css'),
+      'css' => array(drupal_get_path('module', 'mica') . '/includes/mica_blocks.css'),
       'js' => array(drupal_get_path('module', 'mica') . '/includes/search-filters.js'),
     ),
   );

@@ -12,4 +12,4 @@ dependencies[] = field_permissions
 dependencies[] = menu
 dependencies[] = menu_firstchild
 
-files[] = includes/blocks.inc
+files[] = includes/mica_blocks.inc
