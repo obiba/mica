@@ -35,10 +35,9 @@ projects[chain_menu_access] = 1.0
 projects[ckeditor] = 1.9
 
 projects[collapsiblock][download][type] = git
-projects[collapsiblock][download][revision] = 5ad9824
+projects[collapsiblock][download][revision] = 36f4280
 projects[collapsiblock][download][branch] = 7.x-1.x
-projects[collapsiblock][patch][1475244] = http://drupal.org/files/api-function-and-constants-1475244-2.patch
-;projects[collapsiblock][patch][1301454] = http://drupal.org/files/array2lower-1301454-1.patch
+projects[collapsiblock][patch][1475244] = http://drupal.org/files/api-function-and-constants-patch1301454-patch1429956.patch
 
 projects[corolla] = 3.0-rc1
 
