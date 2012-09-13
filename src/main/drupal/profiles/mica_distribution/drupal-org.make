@@ -20,7 +20,6 @@ projects[autocomplete_deluxe][download][type] = git
 projects[autocomplete_deluxe][download][revision] = 90d95d3
 projects[autocomplete_deluxe][download][branch] = 7.x-2.x
 
-
 ; needed because of migration to auto_entitylabel
 projects[auto_nodetitle] = 1.0
 
@@ -62,12 +61,7 @@ projects[email] = 1.2
 projects[entity][version] = 1.0-rc3
 projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info-on-validation-exception.patch
 
-;projects[entity_translation][download][type] = git
-;projects[entity_translation][download][revision] = 3cefb78
 projects[entity_translation] = 1.0-alpha2
-;projects[entity_translation][patch][1279372] = http://drupal.org/files/et-translatable-switch-1279372-89.patch
-
-
 
 projects[facetapi] = 1.1
 
@@ -87,11 +81,8 @@ projects[feeds][patch][11075222] = http://drupal.org/files/issues/1107522-empty-
 projects[feeds][patch][110752213] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-13.patch
 projects[feeds][patch][110752215links] = http://drupal.org/files/ignore-empty-link-fields-1107522-15.patch
 
-;projects[feeds_tamper][download][type] = git
-;projects[feeds_tamper][download][revision] = 8f7f581
 projects[feeds_tamper] = 1.0-beta3
 projects[feeds_tamper][patch][1416700] = http://drupal.org/files/1416700-4-feeds_tamper-existing-terms-plugin.patch
-;projects[feeds_tamper][patch][1180726] = http://drupal.org/files/empty_check-1180726-6.patch
 
 projects[field_display_label][version] = 1.2
 projects[field_display_label][patch][1689574] = http://drupal.org/files/field_display_label_i18n_field-1689574-6.patch
