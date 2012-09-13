@@ -146,9 +146,9 @@ class OpalXmlFormatView extends RESTServerView {
 
     if (!empty($sva)) {
       $sva_wrapper = entity_metadata_wrapper('node', $sva);
-      $this->addAttribute($attributes, 'script', 'text', 'en', $sva_wrapper->field_sva_script->value());
+      $this->addAttribute($attributes, 'script', 'text', NULL, $sva_wrapper->field_sva_script->value(), NULL, TRUE);
       $this->addAttribute($attributes, 'status', 'text', NULL, $sva_wrapper->field_sva_status->value(), self::MAELSTROM_NS);
-      $this->addAttribute($attributes, 'comment', 'text', NULL, $sva_wrapper->field_sva_comment->value(), self::MAELSTROM_NS);
+      $this->addAttribute($attributes, 'comment', 'text', 'en', $sva_wrapper->field_sva_comment->value(), self::MAELSTROM_NS);
     }
 
     $nbCategories = count($wrapper->field_variable_categories->value());
@@ -166,7 +166,7 @@ class OpalXmlFormatView extends RESTServerView {
     }
   }
 
-  private function addAttribute($attributes, $name, $valueType, $lang, $value, $namespace = NULL) {
+  private function addAttribute($attributes, $name, $valueType, $lang, $value, $namespace = NULL, $use_cdata = FALSE) {
     if (is_null($value)) {
       return;
     }
@@ -179,7 +179,7 @@ class OpalXmlFormatView extends RESTServerView {
     if (!empty($namespace)) {
       $attribute->setAttribute('namespace', $namespace);
     }
-    $attribute->appendChild($this->doc->createTextNode($value));
+    $attribute->appendChild($use_cdata ? $this->doc->createCDATASection($value) : $this->doc->createTextNode($value));
   }
 
   private function addTaxonomyAttribute($attributes, $name, $valueType, $lang, $field) {

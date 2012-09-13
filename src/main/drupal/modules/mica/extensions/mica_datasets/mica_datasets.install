@@ -459,6 +459,7 @@ function _mica_datasets_migrate_participant_variable($participant_variables) {
       'type' => 'variable',
       'language' => LANGUAGE_NONE,
       'title' => $wrapper->title->value(),
+      'title_field' => $wrapper->title->value(),
       'body' => $wrapper->body->value(),
       'field_label' => $wrapper->field_label->value(),
       'field_value_type' => $wrapper->field_value_type->value(),

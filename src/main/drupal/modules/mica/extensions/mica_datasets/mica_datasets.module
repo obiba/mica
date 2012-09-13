@@ -2013,13 +2013,13 @@ function mica_datasets_create_variables($harmonizations) {
       $infos = array(
         'type' => 'variable',
         'title' => $harmonization['title'],
+        'title_field' => $harmonization['title'],
         'language' => LANGUAGE_NONE,
         'uid' => $user->uid,
         'status' => 0, // sva should be draft by default
         'menu' => '',
         'field_dataset' => $harmonizations['dataset_nid'],
       );
-
       $variable = entity_property_values_create_entity('node', $infos);
       $variable->save();
 
