@@ -45,18 +45,27 @@ function _mica_set_default_themes($mica_theme, $admin_theme) {
 
   $GLOBALS['theme_key'] = $mica_theme;
   $config = array(
-    'values' =>  array_merge(unserialize($default), $mica_corolla_settings),
+    'values' => array_merge(unserialize($default), $mica_corolla_settings),
     'build_info' => array('args' => array($mica_theme)),
   );
 
-  require_once DRUPAL_ROOT . '/profiles/mica_distribution/themes/adaptivetheme/at_core/inc/forms/at_core.submit.inc';
-  require_once DRUPAL_ROOT . '/profiles/mica_distribution/themes/adaptivetheme/at_core/inc/get.inc';
+  _mica_distribution_include_theme_file('adaptivetheme/at_core/inc/forms/at_core.submit.inc');
+  _mica_distribution_include_theme_file('adaptivetheme/at_core/inc/get.inc');
   at_core_settings_submit(array(), $config);
 
   variable_set('theme_mica_corolla_settings', $config['values']);
   drupal_set_message(t('The configuration options have been saved.'));
 
   cache_clear_all();
+}
+
+function _mica_distribution_include_theme_file($theme_file) {
+  if (file_exists(DRUPAL_ROOT . '/profiles/mica_distribution/themes/' . $theme_file)) {
+    require_once DRUPAL_ROOT . '/profiles/mica_distribution/themes/' . $theme_file;
+  }
+  else if (file_exists(DRUPAL_ROOT . '/sites/all/themes/' . $theme_file)) {
+    require_once DRUPAL_ROOT . '/sites/all/themes/' . $theme_file;
+  }
 }
 
 function _mica_distribution_login_destination() {

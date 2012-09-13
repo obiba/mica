@@ -44,6 +44,14 @@ function mica_core_update_7120(&$sandbox) {
  */
 function mica_core_update_7500(&$sandbox) {
   _mica_core_rebuild_registry();
+
+  _mica_core_set_features_rebuild_variable('mica_community');
+  _mica_core_set_features_rebuild_variable('mica_data_access');
+  _mica_core_set_features_rebuild_variable('mica_datasets');
+  _mica_core_set_features_rebuild_variable('mica_networks');
+  _mica_core_set_features_rebuild_variable('mica_projects');
+  _mica_core_set_features_rebuild_variable('mica_studies');
+
   mica_core_replace_titles(array('page', 'article'));
 }
 
@@ -76,4 +84,10 @@ function _mica_core_rebuild_registry() {
   cache_clear_all('module_implements', 'cache_bootstrap');
 
   registry_rebuild(); // At lower level
+}
+
+function _mica_core_set_features_rebuild_variable($module) {
+  if (module_exists($module)) {
+    variable_set($module . '_features_rebuild_completed', TRUE);
+  }
 }
