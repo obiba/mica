@@ -43,6 +43,7 @@ function mica_core_update_7120(&$sandbox) {
  * Replace built-in node title by title_field
  */
 function mica_core_update_7500(&$sandbox) {
+  cache_clear_all();
   _mica_core_rebuild_registry();
 
   _mica_core_set_features_rebuild_variable('mica_community');
@@ -63,6 +64,7 @@ function mica_core_replace_titles($types) {
 }
 
 function _mica_core_replace_node_titles($type) {
+  include_once(DRUPAL_ROOT . '/profiles/mica_distribution/modules/title/title.module');
   title_field_replacement_toggle('node', $type, 'title');
 
   $query = new EntityFieldQuery;

@@ -46568,3 +46568,12 @@ msgstr "Harmonisation"
 
 msgid "Search Studies"
 msgstr "Recherche d'études"
+
+msgid "Data Access"
+msgstr "Accès aux données"
+
+msgid "This section aims to inform researchers about the consortium data access policy and its committee. It provides a simple data request  web form as an example of what can be achieved for managing researcher\'s requests. As usual, the content and the form of this section can be easily customized."
+msgstr "Cette section informe les chercheurs à propos de la politique d'accès aux données du consortium et ses comités."
+
+msgid "Consortium Policies and Guidelines"
+msgstr "Politique et ligne directrice du consortium"
