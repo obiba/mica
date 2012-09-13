@@ -9,7 +9,7 @@ projects[acl] = 1.0-beta3
 
 projects[adaptivetheme] = 3.1
 
-projects[ajax_register] = 4.0-rc10
+projects[ajax_register][version] = 4.0-rc10
 projects[ajax_register][patch][1646106] = http://drupal.org/files/submit_on_enter_key-1646106-6.patch
 
 projects[auto_entitylabel][download][type] = git
@@ -81,7 +81,7 @@ projects[feeds][patch][11075222] = http://drupal.org/files/issues/1107522-empty-
 projects[feeds][patch][110752213] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-13.patch
 projects[feeds][patch][110752215links] = http://drupal.org/files/ignore-empty-link-fields-1107522-15.patch
 
-projects[feeds_tamper] = 1.0-beta3
+projects[feeds_tamper][version] = 1.0-beta3
 projects[feeds_tamper][patch][1416700] = http://drupal.org/files/1416700-4-feeds_tamper-existing-terms-plugin.patch
 
 projects[field_display_label][version] = 1.2
@@ -203,7 +203,7 @@ projects[title][download][type] = git
 projects[title][download][revision] = 2ec5945
 projects[title][download][branch] = 7.x-1.x
 
-projects[token] = 1.2
+projects[token] = 1.3
 
 projects[variable] = 2.1
 
