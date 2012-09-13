@@ -20,6 +20,7 @@ class OpalXmlFormatView extends RESTServerView {
 
       $filename = check_plain($dataset_name);
 
+      $study_name = NULL;
       if (isset($_GET['study'])) {
         $study = node_load($_GET['study']);
         $study_wrapper = entity_metadata_wrapper('node', $study);
