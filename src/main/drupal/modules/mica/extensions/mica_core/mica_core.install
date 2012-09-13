@@ -64,7 +64,12 @@ function mica_core_replace_titles($types) {
 }
 
 function _mica_core_replace_node_titles($type) {
-  include_once(DRUPAL_ROOT . '/profiles/mica_distribution/modules/title/title.module');
+  if (file_exists(DRUPAL_ROOT . '/profiles/mica_distribution/modules/title/title.module')) {
+    require_once DRUPAL_ROOT . '/profiles/mica_distribution/modules/title/title.module';
+  } else if (file_exists(DRUPAL_ROOT . '/sites/all/modules/title/title.module')) {
+    require_once DRUPAL_ROOT . '/sites/all/modules/title/title.module';
+  }
+
   title_field_replacement_toggle('node', $type, 'title');
 
   $query = new EntityFieldQuery;
