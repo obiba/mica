@@ -260,15 +260,13 @@ libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.co
 libraries[solr_php_client][directory_name] = SolrPhpClient
 
 libraries[spyc][download][type]= get
-libraries[spyc][download][url] = http://localhost/files/spyc.php.tar.gz
-;libraries[spyc][download][url] = https://raw.github.com/mustangostang/spyc/master/spyc.php
+libraries[spyc][download][url] = https://raw.github.com/mustangostang/spyc/master/spyc.php
 libraries[spyc][destination] = modules
 libraries[spyc][directory_name] = services/servers/rest_server/lib
 libraries[spyc][overwrite] = TRUE
 
 libraries[superfish][download][type]= get
-libraries[superfish][download][url] = http://localhost/files/superfish.tar.gz
-;libraries[superfish][download][url] = https://githubcom/mehrpadin/Superfish-for-Drupal/zipball/master
+libraries[superfish][download][url] = https://github.com/mehrpadin/Superfish-for-Drupal/zipball/master
 libraries[superfish][directory_name] = superfish
 libraries[superfish][overwrite] = TRUE
 

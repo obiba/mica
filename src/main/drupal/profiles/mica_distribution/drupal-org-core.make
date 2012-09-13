@@ -24,3 +24,7 @@ projects[drupal][patch][985642] = http://drupal.org/files/load-original-entity-9
 
 ; My Data Access Requests does not show requests for other users than administrators
 projects[drupal][patch][1349080] = http://drupal.org/files/d7_move_access_to_join_condition-1349080-89.patch
+
+; Undefined index in field.info.inc
+http://drupal.org/files/field-undefined-index-module-1001060-57.patch
+http://drupal.org/files/field-undefined-index-module-955658-42.patch
