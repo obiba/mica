@@ -11,7 +11,7 @@ function mica_distribution_install() {
   $mica_theme = 'mica_corolla';
   $admin_theme = 'seven';
 
-  _mica_set_default_themes($mica_theme, $admin_theme);
+  _mica_distribution_set_default_themes($mica_theme, $admin_theme);
 
   _mica_distribution_drupal_default_blocks($mica_theme, $admin_theme);
 

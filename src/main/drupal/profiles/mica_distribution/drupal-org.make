@@ -1,6 +1,8 @@
 ; Note that if we define more attributes for a specific project than just the version,
 ; the 'version' key *must* be defined for the project!
 
+; Support Drush 5.4 only
+
 ; Drupal Core
 core = "7.x"
 api = "2"
