@@ -1,6 +1,8 @@
 ; Note that if we define more attributes for a specific project than just the version,
 ; the 'version' key *must* be defined for the project!
 
+; Support Drush 5.4 only
+
 ; Drupal Core
 core = "7.x"
 api = "2"
@@ -9,7 +11,7 @@ projects[acl] = 1.0-beta3
 
 projects[adaptivetheme] = 3.1
 
-projects[ajax_register] = 4.0-rc10
+projects[ajax_register][version] = 4.0-rc10
 projects[ajax_register][patch][1646106] = http://drupal.org/files/submit_on_enter_key-1646106-6.patch
 
 projects[auto_entitylabel][download][type] = git
@@ -20,13 +22,14 @@ projects[autocomplete_deluxe][download][type] = git
 projects[autocomplete_deluxe][download][revision] = 90d95d3
 projects[autocomplete_deluxe][download][branch] = 7.x-2.x
 
-
 ; needed because of migration to auto_entitylabel
 projects[auto_nodetitle] = 1.0
 
 projects[] = advanced_help
 
 projects[calendar] = 3.4
+
+projects[captcha] = 1.0-beta2
 
 projects[cck_select_other] = 1.0
 
@@ -38,7 +41,6 @@ projects[collapsiblock][download][type] = git
 projects[collapsiblock][download][revision] = 36f4280
 projects[collapsiblock][download][branch] = 7.x-1.x
 projects[collapsiblock][patch][1475244] = http://drupal.org/files/api-function-and-constants-patch1301454-patch1429956.patch
-;projects[collapsiblock][patch][1301454] = http://drupal.org/files/array2lower-1301454-1.patch
 
 projects[corolla] = 3.0-rc1
 
@@ -63,12 +65,7 @@ projects[email] = 1.2
 projects[entity][version] = 1.0-rc3
 projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info-on-validation-exception.patch
 
-;projects[entity_translation][download][type] = git
-;projects[entity_translation][download][revision] = 3cefb78
 projects[entity_translation] = 1.0-alpha2
-;projects[entity_translation][patch][1279372] = http://drupal.org/files/et-translatable-switch-1279372-89.patch
-
-
 
 projects[facetapi] = 1.1
 
@@ -88,11 +85,8 @@ projects[feeds][patch][11075222] = http://drupal.org/files/issues/1107522-empty-
 projects[feeds][patch][110752213] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-13.patch
 projects[feeds][patch][110752215links] = http://drupal.org/files/ignore-empty-link-fields-1107522-15.patch
 
-;projects[feeds_tamper][download][type] = git
-;projects[feeds_tamper][download][revision] = 8f7f581
-projects[feeds_tamper] = 1.0-beta3
+projects[feeds_tamper][version] = 1.0-beta3
 projects[feeds_tamper][patch][1416700] = http://drupal.org/files/1416700-4-feeds_tamper-existing-terms-plugin.patch
-;projects[feeds_tamper][patch][1180726] = http://drupal.org/files/empty_check-1180726-6.patch
 
 projects[field_display_label][version] = 1.2
 projects[field_display_label][patch][1689574] = http://drupal.org/files/field_display_label_i18n_field-1689574-6.patch
@@ -213,7 +207,7 @@ projects[title][download][type] = git
 projects[title][download][revision] = 2ec5945
 projects[title][download][branch] = 7.x-1.x
 
-projects[token] = 1.2
+projects[token] = 1.3
 
 projects[variable] = 2.1
 
@@ -260,15 +254,13 @@ libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.co
 libraries[solr_php_client][directory_name] = SolrPhpClient
 
 libraries[spyc][download][type]= get
-libraries[spyc][download][url] = http://localhost/files/spyc.php.tar.gz
-;libraries[spyc][download][url] = https://raw.github.com/mustangostang/spyc/master/spyc.php
+libraries[spyc][download][url] = https://raw.github.com/mustangostang/spyc/master/spyc.php
 libraries[spyc][destination] = modules
 libraries[spyc][directory_name] = services/servers/rest_server/lib
 libraries[spyc][overwrite] = TRUE
 
 libraries[superfish][download][type]= get
-libraries[superfish][download][url] = http://localhost/files/superfish.tar.gz
-;libraries[superfish][download][url] = https://githubcom/mehrpadin/Superfish-for-Drupal/zipball/master
+libraries[superfish][download][url] = https://github.com/mehrpadin/Superfish-for-Drupal/zipball/master
 libraries[superfish][directory_name] = superfish
 libraries[superfish][overwrite] = TRUE
 
