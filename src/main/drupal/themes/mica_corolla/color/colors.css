@@ -40,8 +40,7 @@ table.system-status-report tr {
 /* Links */
 a,
 a.active,
-li a.active,
-div.ctools-modal-content .modal-header {
+li a.active {
   color: #086782;
 }
 legend {
@@ -280,4 +279,8 @@ fieldset {
 /* Fieldset border */
 fieldset {
   border: 1px solid #e1e1e2;
+}
+
+div.ctools-modal-content .modal-header{
+  background-color: #e25402;
 }
