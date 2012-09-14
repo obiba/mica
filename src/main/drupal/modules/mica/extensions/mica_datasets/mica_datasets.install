@@ -308,6 +308,8 @@ function mica_datasets_update_7130(&$sandbox) {
 function mica_datasets_update_7500(&$sandbox){
 
   module_load_install('mica_core');
+  features_revert(array('mica_datasets' => array('variable', 'search_api_index', 'views_view', 'field')));
+  features_revert(array('mica_field_description' => array('field')));
   mica_core_replace_titles(array('dataset', 'variable'));
 
   db_update('taxonomy_term_data')

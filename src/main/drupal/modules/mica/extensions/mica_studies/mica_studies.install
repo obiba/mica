@@ -249,6 +249,7 @@ function _mica_studies_migrate_field_recruitment_procedures() {
  */
 function mica_studies_update_7500(&$sandbox) {
   module_load_install('mica_core');
+  features_revert(array('mica_studies' => array('variable', 'search_api_index', 'field')));
   mica_core_replace_titles(array('contact', 'documents', 'study'));
 }
 
