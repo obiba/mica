@@ -29,6 +29,8 @@ projects[] = advanced_help
 
 projects[calendar] = 3.4
 
+projects[captcha] = 1.0-beta2
+
 projects[cck_select_other] = 1.0
 
 projects[chain_menu_access] = 1.0
