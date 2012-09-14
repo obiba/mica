@@ -26,7 +26,6 @@ function mica_community_update_7120() {
 function mica_community_update_7500(&$sandbox) {
   module_load_install('mica_core');
   mica_core_replace_titles(array('event', 'publication'));
-  features_revert(array('mica_community' => array('field')));
 }
 
 /**

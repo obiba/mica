@@ -18,7 +18,6 @@ function mica_data_access_update_7120() {
 function mica_data_access_update_7500(&$sandbox) {
   module_load_install('mica_core');
   mica_core_replace_titles(array('data_access_request', 'data_access_review'));
-  features_revert(array('mica_data_access' => array('field')));
 }
 
 /**
