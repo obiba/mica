@@ -40,7 +40,8 @@ function mica_core_update_7120(&$sandbox) {
 }
 
 /**
- * Replace built-in node title by title_field
+ * Replace built-in node title by title_field.
+ * Disable auto_nodetitle module as it is replaced by auto_entitylabel
  */
 function mica_core_update_7500(&$sandbox) {
   cache_clear_all();
@@ -54,6 +55,8 @@ function mica_core_update_7500(&$sandbox) {
   _mica_core_set_features_rebuild_variable('mica_studies');
 
   mica_core_replace_titles(array('page', 'article'));
+
+  module_disable(array('auto_nodetitle'));
 }
 
 function mica_core_replace_titles($types) {
