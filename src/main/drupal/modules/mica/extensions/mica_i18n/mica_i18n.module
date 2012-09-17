@@ -393,6 +393,11 @@ function mica_i18n_get_translatables_widget_types() {
 function mica_i18n_hide_language_display($type) {
   $settings = field_bundle_settings('node', $type);
 
+  // Set language dropdown to appear before all other fields
+  if (!array_key_exists('language', $settings['extra_fields']['form'])) {
+    $settings['extra_fields']['form']['language']['weight'] = -50;
+  }
+
   if (!array_key_exists('language', $settings['extra_fields']['display'])) {
     $settings['extra_fields']['display']['language'] = array();
   }
