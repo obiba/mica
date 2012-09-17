@@ -4,6 +4,29 @@
  * Code for the Mica i18n feature.
  */
 
+include_once('mica_i18n.devel.inc');
+
+define('MEMENTO_BUNDLES', 'mica_i18n_memento_bundles');
+define('MEMENTO_VIEWS', 'mica_i18n_memento_views');
+define('MEMENTO_TAXONOMIES', 'mica_i18n_memento_taxonomies');
+define('MEMENTO_INDEXES', 'mica_i18n_memento_indexes');
+
+/**
+ * Implements hook_menu().
+ */
+function mica_i18n_menu() {
+  // Mica i18n configure content types
+  $items['admin/config/system/mica_i18n'] = array(
+    'title' => 'Mica i18n',
+    'description' => 'development tools for Mica I18n',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_mica_i18n_devel_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+
+  return $items;
+}
+
 /**
  * Implements hook_menu_breadcrumb_alter() to translate links title of breadcrumb
  */
@@ -190,4 +213,201 @@ function mica_i18n_configure_block() {
   )
     ->condition('module', 'facetapi')
     ->execute();
+}
+
+/**
+ * Set variable to enable translated content types, hide language fields from all view modes,
+ * change display type for lists and texts to enable translation
+ */
+function mica_i18n_fix_entity_display() {
+
+  $memento = variable_get(MEMENTO_BUNDLES, array());
+  $types = node_type_get_types();
+  $translatables_widget_types = mica_i18n_get_translatables_widget_types();
+  foreach ($types as $type) {
+    if (!in_array($type->type, $memento)){
+      $memento[] = $type->type;
+
+      // Enable multilingual support (field translation) and locked options
+      variable_set('i18n_node_extended_' . $type->type, I18N_LANGUAGE_ENABLED);
+      variable_set('i18n_node_options_' . $type->type, array('current')); // No constant found in in i18n_node.variable
+      variable_set('language_content_type_' . $type->type, I18N_MODE_TRANSLATE);
+      variable_set('entity_translation_comment_filter_' . $type->type, FALSE);
+      variable_set('entity_translation_node_metadata_' . $type->type, FALSE);
+
+      // Remove language from all display
+      mica_i18n_hide_language_display($type->type);
+
+      // Set all display to default translated
+      $instances = field_read_instances(array('entity_type' => 'node', 'bundle' => $type->type));
+      foreach ($instances as $instance) {
+
+        // Configure fields that should be 'translatable'
+        $info = field_info_field_by_id($instance['field_id']);
+        // Exclude field_dataset
+        if (in_array($instance['widget']['type'], $translatables_widget_types)) {
+
+          // only update the field if not already translatables
+          if (empty($info['translatable'])) { // Returns true when array is empty or when contains '0'
+            $info['translatable'] = '1';
+            field_update_field($info);
+          }
+        }
+        else {
+          // Explicitly set translatables to FALSE
+          if (isset($info['translatable']) && $info['translatable'] === '1') {
+            $info['translatable'] = '0';
+            field_update_field($info);
+          }
+        }
+
+        // Configure 'Field Display'
+        $update = FALSE;
+        foreach (array_keys($instance['display']) as $display) {
+          if ($instance['display'][$display]['type'] === 'list_default') {
+            $update = TRUE;
+            $instance['display'][$display]['type'] = 'i18n_list_default';
+            $instance['display'][$display]['module'] = 'i18n_field';
+          }
+          else {
+            if ($instance['display'][$display]['type'] === 'text_default') {
+              $update = TRUE;
+              $instance['display'][$display]['type'] = 'i18n_text_default';
+              $instance['display'][$display]['module'] = 'NULL';
+            }
+            else {
+              if ($instance['display'][$display]['type'] === 'taxonomy_term_reference_plain') {
+                $update = TRUE;
+                $instance['display'][$display]['type'] = 'i18n_taxonomy_term_reference_plain';
+                $instance['display'][$display]['module'] = 'i18n_taxonomy';
+              }
+            }
+          }
+        }
+        if ($update) {
+          field_update_instance($instance);
+        }
+      }
+    }
+  }
+
+  variable_set(MEMENTO_BUNDLES, $memento);
+}
+
+function mica_i18n_fix_views_display() {
+
+  $memento = variable_get(MEMENTO_VIEWS, array());
+  $views = views_get_all_views();
+
+  foreach ($views as $view) {
+    if (!array_key_exists($view->name, $memento)){
+      $memento[] = $view->name;
+      $save = FALSE;
+
+      // Set translation of list items for page and default
+      foreach (array_keys($view->display) as $display) {
+        if (isset($view->display[$display]) && isset($view->display[$display]->display_options['fields'])) {
+          foreach (array_keys($view->display[$display]->display_options['fields']) as $key) {
+            // If the field is a list type
+            $info = field_info_field($key);
+            if (isset($info['type']) && $info['type'] === 'list_text') {
+              $view->display[$display]->display_options['fields'][$key]['type'] = 'i18n_list_default';
+              $save = TRUE;
+            }
+          }
+        }
+      }
+
+      if ($save) {
+        $view->save();
+        variable_set(MEMENTO_VIEWS, $memento);
+      }
+    }
+  }
+}
+
+
+
+function mica_i18n_taxonomy_localizable() {
+  $memento = variable_get(MEMENTO_TAXONOMIES, array());
+  $taxonomies = taxonomy_get_vocabularies();
+  foreach ($taxonomies as $taxonomy) {
+    if (!array_key_exists($taxonomy->machine_name, $memento)){
+      $memento[] = $taxonomy->machine_name;
+
+      $taxonomy->i18n_mode = I18N_MODE_LOCALIZE;
+      taxonomy_vocabulary_save($taxonomy);
+    }
+  }
+  variable_set(MEMENTO_TAXONOMIES, $memento);
+}
+
+function mica_i18n_search_index_update() {
+
+  $memento = variable_get(MEMENTO_INDEXES, array());
+  $indexes = search_api_index_load_multiple(FALSE);
+  foreach ($indexes as $index) {
+
+    if (!array_key_exists($index->machine_name, $memento)){
+      $memento[] = $index->machine_name;
+
+      $index->options['fields']['language'] = array('type' => 'string');
+      $index->options['data_alter_callbacks']['search_api_alter_language_control'] = array(
+        'status' => 1,
+        'weight' => '0',
+        'settings' => array(
+          'lang_field' => 'language',
+          'languages' => array()
+        ),
+      );
+
+      module_load_include('admin.inc', 'search_api');
+      uasort($index->options['data_alter_callbacks'], 'search_api_admin_element_compare');
+
+      $index->save();
+      $index->reindex();
+    }
+  }
+
+  variable_set(MEMENTO_INDEXES, $memento);
+}
+
+function mica_i18n_get_translatables_widget_types() {
+  /*
+   * These are all widget types that are currently used by Mica:
+   * 'text_textarea_with_summary', 'date_popup','file_generic','link_field','text_textfield','number',
+   * 'node_reference_autocomplete','options_buttons','text_textarea','options_select','autocomplete_deluxe_taxonomy',
+   * 'category_field_default_widget','name_widget','email_textfield','options_onoff','viewreference_select',
+   * 'noderefcreate_autocomplete', 'multiselect', 'date_select', 'image_image', 'taxonomy_autocomplete',
+   */
+
+  // Translatables types are
+  return array(
+    'text_textarea_with_summary',
+    'text_textfield',
+    'text_textarea',
+  );
+}
+
+function mica_i18n_hide_language_display($type) {
+  $settings = field_bundle_settings('node', $type);
+
+  if (!array_key_exists('language', $settings['extra_fields']['display'])) {
+    $settings['extra_fields']['display']['language'] = array();
+  }
+
+  foreach (array_keys(field_view_mode_settings('node', $type)) as $view_mode) {
+    $settings['extra_fields']['display']['language'][$view_mode] = array(
+      'weight' => 0,
+      'visible' => FALSE,
+    );
+  }
+
+  // set default view_mode also
+  $settings['extra_fields']['display']['language']['default'] = array(
+    'weight' => 0,
+    'visible' => FALSE,
+  );
+
+  field_bundle_settings('node', $type, $settings);
 }
