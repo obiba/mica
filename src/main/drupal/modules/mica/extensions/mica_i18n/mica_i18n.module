@@ -386,6 +386,7 @@ function mica_i18n_get_translatables_widget_types() {
     'text_textarea_with_summary',
     'text_textfield',
     'text_textarea',
+    'category_field_default_widget',
   );
 }
 
