@@ -2064,3 +2064,13 @@ function mica_datasets_create_variables($harmonizations) {
 
   return $nb_created;
 }
+
+/*
+ * Hook hook_translation_exclude_fields()
+ */
+function mica_datasets_translation_exclude_fields(){
+
+  return array(
+    'study_variable_attribute' => array('field_sva_script', 'field_sva_status'),
+   );
+}

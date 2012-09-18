@@ -824,3 +824,13 @@ function mica_studies_noderefcreate_alter(&$newnode, $element, $form_state) {
       break;
   }
 }
+
+/*
+ * Hook hook_translation_exclude_fields()
+ */
+function mica_studies_translation_exclude_fields(){
+
+  return array(
+    'study' => array('mica_opal'),
+  );
+}
