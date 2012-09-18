@@ -67,7 +67,7 @@ function mica_i18n_multilingual_settings_changed() {
 
   // Refresh strings
   module_load_include('inc', 'i18n_string', 'i18n_string.admin');
-  $batch = i18n_string_refresh_batch(array('field', 'menu', 'node', 'taxonomy', 'default', 'field'), TRUE);
+  $batch = i18n_string_refresh_batch(array('field', 'menu', 'node', 'taxonomy', 'default', 'blocks'), TRUE);
   batch_set($batch);
   batch_process();
 }
@@ -169,11 +169,12 @@ function _mica_i18n_get_menu_translations($langcode, $title) {
       'DACO Approved Projects' => 'Projets approuvés par le DACO',
       'Projects' => 'Projets',
       'News' => 'Nouvelles',
-      'Events' => 'Évènements',
+      'Events' => 'Événements',
+      'Calendar' => 'Calendrier',
       'Forums' => 'Forums',
       'Blogs' => 'Blogs',
       'Study Datasets' => "Jeux de données d'études",
-      'Harmonization Datasets' => "Jeux de données d'harmonization",
+      'Harmonization Datasets' => "Jeux de données d'harmonisation",
       'Variables Search' => 'Recherche de variables',
       'Consortium Policies and Guidelines' => 'Politiques et lignes directrices du consortium',
       'Data Access Administration' => "Administration des demandes d'accès",

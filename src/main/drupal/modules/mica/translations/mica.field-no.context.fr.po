@@ -2470,58 +2470,41 @@ msgstr "Précisez les autres sources de données"
 msgid "Dataset"
 msgstr "Jeu de données"
 
-
 msgid "Choose which dataset is needed for your project."
 msgstr "Sélectionner le jeu de données requis pour votre projet."
-
-
-msgid "Dataset"
-msgstr "Jeu de données"
-
 
 msgid "Studies"
 msgstr "Études"
 
-
 msgid "Harmonization dataset"
 msgstr "Jeu de données d'harmonisation"
-
 
 msgid "Study dataset"
 msgstr "Jeu de données d'une étude"
 
-
 msgid "Dataset Type"
 msgstr "Type de jeu de données"
-
 
 msgid "Variables"
 msgstr "Variables"
 
-
 msgid "Department/Unit"
 msgstr "Département/Unité"
-
 
 msgid "Case-control study"
 msgstr "Cas-témoin"
 
-
 msgid "Case only study"
 msgstr "Étude de cas"
-
 
 msgid "Clinical trial / intervention trial"
 msgstr "Essai clinique"
 
-
 msgid "Cohort study"
 msgstr "Cohorte/Étude longitudinale"
 
-
 msgid "Cross-sectional prevalence study"
 msgstr "Étude transversale"
-
 
 msgid "Other"
 msgstr "Autre"

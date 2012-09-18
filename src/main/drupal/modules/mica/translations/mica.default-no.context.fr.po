@@ -215,7 +215,7 @@ msgid "Billet de blog"
 msgstr ""
 
 #: /mica-dev/?q=fr/community
-msgid "Évènement"
+msgid "Événement"
 msgstr ""
 
 #: /mica-dev/?q=fr/community
@@ -5963,7 +5963,7 @@ msgstr ""
 "recommandé de changer le champ <em>Description</em> afin d'identifier "
 "plus précisement l'action qui va se dérouler. Cette description sera "
 "affichée dans des modules tels que Trigger au moment d'associer des "
-"actions aux évènements du système, donc il est préférable de "
+"actions aux événements du système, donc il est préférable de "
 "décrire de façon aussi détaillée que possible (par exemple : "
 "\"envoyer un courriel à l'équipe de modération\" plutôt que "
 "seulement \"envoyer un courriel\")"
@@ -9408,7 +9408,7 @@ msgstr "Communauté"
 
 msgid "Community feature to Mica, to activate events, blogs, forums etc."
 msgstr ""
-"Feature Mica Communauté, pour activer les évènements, blogs, forums "
+"Feature Mica Communauté, pour activer les événements, blogs, forums "
 "etc."
 
 msgid "Comoros"
@@ -11306,9 +11306,6 @@ msgstr "Mises à jour de la base de données"
 msgid "Database username"
 msgstr "Nom d'utilisateur de la base de données"
 
-msgid "Dataset"
-msgstr "Dataset"
-
 msgid "Dataset Connection"
 msgstr "Connection au jeu de données"
 
@@ -11336,7 +11333,7 @@ msgid "Dataset query term"
 msgstr "Terme de requête au jeu de données"
 
 msgid "Dataset resource."
-msgstr "Resource du jeu de données"
+msgstr "Ressource du jeu de données"
 
 msgid "Datasets"
 msgstr "Jeux de données"
@@ -15399,10 +15396,10 @@ msgid "Event description"
 msgstr "Description de l'évènement"
 
 msgid "Events"
-msgstr "Évènements"
+msgstr "Événements"
 
 msgid "Events Calendar"
-msgstr "Calendrier d'évènements"
+msgstr "Calendrier d'événements"
 
 msgid "Ewe"
 msgstr "Ewé"
@@ -17175,7 +17172,7 @@ msgid "Fulltext"
 msgstr "Plein texte"
 
 msgid "Fulltext search"
-msgstr "Recherche en text intégral"
+msgstr "Recherche en texte intégral"
 
 msgid "Function"
 msgstr "Fonction"
@@ -17355,7 +17352,7 @@ msgid "Give content node grants priority"
 msgstr "Prioriser les autorisations basées sur le contenu des nœuds"
 
 msgid "Given"
-msgstr "Donné"
+msgstr "Prénom"
 
 msgid ""
 "Gives you the ability to define additional fields, combining data from "
@@ -17632,7 +17629,7 @@ msgid "Hardcoded"
 msgstr "Codé \"en dur\""
 
 msgid "Harmonization Datasets"
-msgstr "Jeux de données d'harmonization"
+msgstr "Jeux de données d'harmonisation"
 
 msgid "Has Avatar"
 msgstr "A un avatar"
@@ -19575,7 +19572,7 @@ msgid ""
 msgstr ""
 "En cas d'erreurs ou problemes avec le site, les <a "
 "href=\"@dblog\">messages récents du journal</a> peuvent être utiles "
-"pour débugguer, depuis qu'il montre la séquence des évènements. "
+"pour débugguer, depuis qu'il montre la séquence des événements. "
 "Les messages du journal incluent des informations sur l'utilisation, "
 "des avertissements et des erreurs."
 
@@ -20557,7 +20554,7 @@ msgid "LID"
 msgstr "LID"
 
 msgid "Label"
-msgstr "Étiquette"
+msgstr "Libellé"
 
 msgid "Label HTML element"
 msgstr "Élément HTML de l'étiquette"
@@ -23301,7 +23298,7 @@ msgid "No alternate"
 msgstr "Pas d'alternance"
 
 msgid "No approved data access found."
-msgstr "Aucunes demandes d'accès approuvées."
+msgstr "Aucune demande d'accès approuvée."
 
 msgid "No argument"
 msgstr "Aucun argument"
@@ -23414,13 +23411,13 @@ msgstr ""
 "href=\"@link\">Ajouter un format de date</a>."
 
 msgid "No data access committee member found."
-msgstr "Aucuns membre du comité d'accès aux données trouvés."
+msgstr "Aucun membre du comité d'accès aux données trouvé."
 
 msgid "No data access request found."
 msgstr "Aucunes demandes d'accès trouvées."
 
 msgid "No dataset found."
-msgstr "Aucun jeux de données."
+msgstr "Aucun jeu de données."
 
 msgid "No date types available. <a href=\"@link\">Add date type</a>."
 msgstr ""
@@ -49866,6 +49863,9 @@ msgctxt "field_data_sources_sp:study:label"
 msgid "Please specify what other data sources"
 msgstr "Spécifier quelle autre source de données"
 
+msgid "Dataset"
+msgstr "Jeu de données"
+
 msgctxt "field_dataset:variable:label"
 msgid "Dataset"
 msgstr "Jeu de données"
@@ -50412,7 +50412,7 @@ msgstr "Blogs"
 
 msgctxt "item:530:title"
 msgid "Events"
-msgstr "Évènements"
+msgstr "Événements"
 
 msgctxt "item:536:title"
 msgid "Consortium Policies and Guidelines"

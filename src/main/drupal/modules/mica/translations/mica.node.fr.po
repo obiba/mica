@@ -31,7 +31,7 @@ msgstr ""
 #: node:type:event:name
 msgctxt "type:event:name"
 msgid "Event"
-msgstr "Évènement"
+msgstr "Événement"
 
 #: node:type:event:title_label
 msgctxt "type:event:title_label"
@@ -41,7 +41,7 @@ msgstr "Titre"
 #: node:type:event:description
 msgctxt "type:event:description"
 msgid "Event description"
-msgstr ""
+msgstr "Description de l'événement"
 
 #: node:type:publication:name
 msgctxt "type:publication:name"
@@ -51,231 +51,231 @@ msgstr "Publication"
 #: node:type:publication:title_label
 msgctxt "type:publication:title_label"
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: node:type:publication:description
 msgctxt "type:publication:description"
 msgid "Scientific publications references and announcement."
-msgstr ""
+msgstr "Références aux publications scientifiques et annonces"
 
 #: node:type:dataset:name
 msgctxt "type:dataset:name"
 msgid "Dataset"
-msgstr ""
+msgstr "Jeu de données"
 
 #: node:type:dataset:title_label
 msgctxt "type:dataset:title_label"
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: node:type:dataset:description
 msgctxt "type:dataset:description"
 msgid "Dataset resource."
-msgstr ""
+msgstr "Ressource jeu de données"
 
 #: node:type:study_variable_attributes:name
 msgctxt "type:study_variable_attributes:name"
 msgid "Study Variable Attributes"
-msgstr ""
+msgstr "Attributs de variable d'étude"
 
 #: node:type:study_variable_attributes:title_label
 msgctxt "type:study_variable_attributes:title_label"
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: node:type:variable:name
 msgctxt "type:variable:name"
 msgid "Variable"
-msgstr ""
+msgstr "Variable"
 
 #: node:type:variable:title_label
 msgctxt "type:variable:title_label"
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: node:type:data_access_request:name
 msgctxt "type:data_access_request:name"
 msgid "Data Access Request"
-msgstr ""
+msgstr "Demande d'accès aux données"
 
 #: node:type:data_access_request:title_label
 msgctxt "type:data_access_request:title_label"
 msgid "Project Title"
-msgstr ""
+msgstr "Titre du projet"
 
 #: node:type:data_access_request:description
 msgctxt "type:data_access_request:description"
 msgid "Form to be filled in for accessing study data."
-msgstr ""
+msgstr "Formulaire à remplir pour accéder aux données de l'étude"
 
 #: node:type:data_access_review:name
 msgctxt "type:data_access_review:name"
 msgid "Data Access Review"
-msgstr ""
+msgstr "Revue de demande d'accès"
 
 #: node:type:data_access_review:title_label
 msgctxt "type:data_access_review:title_label"
 msgid "Project Title"
-msgstr ""
+msgstr "Titre du projet"
 
 #: node:type:data_access_review:description
 msgctxt "type:data_access_review:description"
 msgid "Describes the status of the data access form review."
-msgstr ""
+msgstr "Décrit le statut de la demande d'accès aux données"
 
 #: node:type:field_description:name
 msgctxt "type:field_description:name"
 msgid "Field Description"
-msgstr ""
+msgstr "Description de champ"
 
 #: node:type:field_description:title_label
 msgctxt "type:field_description:title_label"
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: node:type:field_description:description
 msgctxt "type:field_description:description"
 msgid "Description of information collected about the studies."
-msgstr ""
+msgstr "Description de l'information receuillie à propos des études"
 
 #: node:type:project:name
 msgctxt "type:project:name"
 msgid "Project"
-msgstr ""
+msgstr "Projet"
 
 #: node:type:project:title_label
 msgctxt "type:project:title_label"
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: node:type:project:description
 msgctxt "type:project:description"
 msgid "Research activities with a specific scientific question or target"
-msgstr ""
+msgstr "Activités de recherche ayant un but ou une question scientifique spécifique"
 
 #: node:type:teleconference:name
 msgctxt "type:teleconference:name"
 msgid "Teleconference"
-msgstr ""
+msgstr "Téléconférence"
 
 #: node:type:teleconference:title_label
 msgctxt "type:teleconference:title_label"
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: node:type:teleconference:description
 msgctxt "type:teleconference:description"
 msgid "Teleconference event and details"
-msgstr ""
+msgstr "Détails de la téléconférence"
 
 #: node:type:contact:name
 msgctxt "type:contact:name"
 msgid "Contact"
-msgstr ""
+msgstr "Contact"
 
 #: node:type:contact:title_label
 msgctxt "type:contact:title_label"
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: node:type:contact:description
 msgctxt "type:contact:description"
 msgid "How to contact a person in an institution."
-msgstr ""
+msgstr "Comment contacter une personne de l'institution"
 
 #: node:type:documents:name
 msgctxt "type:documents:name"
 msgid "Documents"
-msgstr ""
+msgstr "Documents"
 
 #: node:type:documents:title_label
 msgctxt "type:documents:title_label"
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: node:type:documents:description
 msgctxt "type:documents:description"
 msgid "Content type to present one or more documents"
-msgstr ""
+msgstr "Type de contenu pour présenter un ou plusieurs documents"
 
 #: node:type:study:name
 msgctxt "type:study:name"
 msgid "Study"
-msgstr ""
+msgstr "Étude"
 
 #: node:type:study:title_label
 msgctxt "type:study:title_label"
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: node:type:study:description
 msgctxt "type:study:description"
 msgid ""
 "Study portal. Create a content of this type when registering a new "
 "study."
-msgstr ""
+msgstr "Portail d'étude. Créer un type de contenu de ce type pour créer une nouvelle étude."
 
 #: node:type:forum:name
 msgctxt "type:forum:name"
 msgid "Forum topic"
-msgstr ""
+msgstr "Sujet de forum"
 
 #: node:type:forum:title_label
 msgctxt "type:forum:title_label"
 msgid "Subject"
-msgstr ""
+msgstr "Sujet"
 
 #: node:type:forum:description
 msgctxt "type:forum:description"
 msgid "A <em>forum topic</em> starts a new discussion thread within a forum."
-msgstr ""
+msgstr "Un <em>sujet de forum</em> démarre un nouveau fil de discussion d'un forum."
 
 #: node:type:panel:name
 msgctxt "type:panel:name"
 msgid "Panel"
-msgstr ""
+msgstr "Panneau"
 
 #: node:type:panel:title_label
 msgctxt "type:panel:title_label"
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: node:type:panel:description
 msgctxt "type:panel:description"
 msgid "A panel layout broken up into rows and columns."
-msgstr ""
+msgstr "Un paneau séparé en rangés et colonnes."
 
 #: node:type:article:name
 msgctxt "type:article:name"
 msgid "Article"
-msgstr ""
+msgstr "Article"
 
 #: node:type:article:title_label
 msgctxt "type:article:title_label"
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: node:type:article:description
 msgctxt "type:article:description"
 msgid ""
 "Use <em>articles</em> for time-sensitive content like news, press "
 "releases or blog posts."
-msgstr ""
+msgstr "Utiliser un article pour de l'information tel que des nouvelles, annonces de presse ou article de blog."
 
 #: node:type:page:name
 msgctxt "type:page:name"
 msgid "Basic page"
-msgstr ""
+msgstr "Page de base"
 
 #: node:type:page:title_label
 msgctxt "type:page:title_label"
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: node:type:page:description
 msgctxt "type:page:description"
 msgid ""
 "Use <em>basic pages</em> for your static content, such as an 'About "
 "us' page."
-msgstr ""
+msgstr "Utiliser les pages de base pour le contenu statique tel que la page 'À propos de nous'"
 

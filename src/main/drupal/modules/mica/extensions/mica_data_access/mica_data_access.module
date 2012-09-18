@@ -202,7 +202,7 @@ function mica_data_access_request_add() {
   else {
     global $user;
     drupal_set_title(t('Request for Data Access is restricted'));
-    $output = 'You must have an account before submitting any data access application to the Data Access Officer.';
+    $output = t('You must have an account before submitting any data access application to the Data Access Officer.');
     if ($user->uid != 0) {
       $output = '<div><p>' . t('Submitting a Data Access Request is restricted to authorized users.') . '</p></div>';
     }

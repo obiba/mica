@@ -4091,3 +4091,102 @@ msgctxt "field_teleconference_date:teleconference:label"
 msgid "Date"
 msgstr "Date"
 
+#: field:title_field:page:label
+msgctxt "title_field:page:label"
+msgid "Title"
+msgstr "Titre"
+
+#: field:title_field:page:description
+msgctxt "title_field:page:description"
+msgid "A field replacing node title."
+msgstr "Un champ remplacant le titre du noeud"
+
+#: field:title_field:article:label
+msgctxt "title_field:article:label"
+msgid "Title"
+msgstr "Titre"
+
+#: field:title_field:article:description
+msgctxt "title_field:article:description"
+msgid "A field replacing node title."
+msgstr "Un champ remplacant le titre du noeud"
+
+#: field:comment_body:comment_node_network:label
+msgctxt "comment_body:comment_node_network:label"
+msgid "Comment"
+msgstr "Commentaire"
+
+#: field:body:network:label
+msgctxt "body:network:label"
+msgid "Body"
+msgstr "Description"
+
+#: field:field_acroym:network:label
+msgctxt "field_acroym:network:label"
+msgid "Acronym"
+msgstr "Acronyme"
+
+#: field:field_acroym:network:description
+msgctxt "field_acroym:network:description"
+msgid "Acronym of the network if applicable."
+msgstr "Acronyme du réseau si applicable"
+
+#: field:field_authorising_date_m:network:label
+msgctxt "field_authorising_date_m:network:label"
+msgid "Authorising date"
+msgstr "Date de l'autorisation"
+
+#: field:field_authorising_person_name_m:network:label
+msgctxt "field_authorising_person_name_m:network:label"
+msgid "Name of the person authorising the contribution to Maelstrom Research"
+msgstr "Nom de la personne autorisant la contribution à Maelstrom Research"
+
+#: field:field_authorization_maelstrom:network:label
+msgctxt "field_authorization_maelstrom:network:label"
+msgid "Authorization Maelstrom"
+msgstr "Autorisation Maelstrom"
+
+#: field:field_authorization_maelstrom:network:display_label
+msgctxt "field_authorization_maelstrom:network:display_label"
+msgid "Authorization from contributors to the Maelstrom Catalogues"
+msgstr "Autorisation des contributeurs aux catalogues de Maelstrom"
+
+#: field:field_contacts_ref:network:label
+msgctxt "field_contacts_ref:network:label"
+msgid "Contacts"
+msgstr "Contacts"
+
+#: field:field_investigators:network:label
+msgctxt "field_investigators:network:label"
+msgid "Investigators"
+msgstr "Investigateurs"
+
+#: field:field_logo:network:label
+msgctxt "field_logo:network:label"
+msgid "Logo"
+msgstr "Logo"
+
+#: field:field_studies:network:label
+msgctxt "field_studies:network:label"
+msgid "Studies"
+msgstr "Études"
+
+#: field:field_supp_infos:network:label
+msgctxt "field_supp_infos:network:label"
+msgid "Supplementary information"
+msgstr "Information supplémentaire"
+
+#: field:field_website:network:label
+msgctxt "field_website:network:label"
+msgid "Website"
+msgstr "Site web"
+
+#: field:title_field:network:label
+msgctxt "title_field:network:label"
+msgid "Complete name"
+msgstr "Nom complet"
+
+#: field:field_networks:study:label
+msgctxt "field_networks:study:label"
+msgid "Networks"
+msgstr "Réseaux"

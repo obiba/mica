@@ -147,6 +147,7 @@ projects[multiselect][version] = 1.9
 projects[multiselect][patch][1670224] = http://drupal.org/files/options_translations-1670224-2.patch
 
 projects[name] = 1.5
+projects[name][patch][1788156] = http://drupal.org/files/name_title_translation-1788156-1.patch
 
 projects[noderefcreate][download][type] = git
 projects[noderefcreate][download][revision] = 4268ba7

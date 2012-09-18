@@ -40,7 +40,7 @@ msgstr "Nouvelles"
 
 msgctxt "item:515:title"
 msgid "Events"
-msgstr "Évènements"
+msgstr "Événements"
 
 msgctxt "item:516:title"
 msgid "Forums"

@@ -117,8 +117,8 @@ function mica_datasets_menu() {
   );
 
   $items['node/%node/reordervariables'] = array(
-    'title' => 'Reorder Variables',
-    'description' => 'Reorder Variables within their Dataset.',
+    'title' => t('Reorder Variables'),
+    'description' => t('Reorder Variables within their Dataset.'),
     'access callback' => '_mica_datasets_node_access',
     'access arguments' => array(1, 'dataset', 'update'),
     'page callback' => 'drupal_get_form',
