@@ -664,7 +664,7 @@ h1#page-title, .in-maintenance h1#page-title{
 }
 
 .block-title{
-  text-transform: capitalize;
+  text-transform: none;
 }
 
 input.form-button, input.form-submit {
