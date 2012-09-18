@@ -15,17 +15,15 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
   public function configurationForm($study_node) {
     $form_items = array();
 
-    $opal_url = array();
-    $field = $study_node->mica_opal;
-    if ($field) {
-      $opal_url = $field[$study_node->language];
-    }
+    $study_wrapper = entity_metadata_wrapper('node', $study_node);
+    $mica_opal = $study_wrapper->mica_opal->value();
+    $opal_url = empty($mica_opal) ? '' : $study_wrapper->mica_opal->url->value();
 
-    if (isset($opal_url) && !empty($opal_url)) {
+    if (!empty($opal_url)) {
       $form_items['opal-url'] = array(
         '#type' => 'item',
         '#title' => t('Opal server'),
-        '#markup' => !empty($opal_url) ? '<a href="' . $opal_url[0]['url'] . '">' . $opal_url[0]['url'] . '</a></div>' : '',
+        '#markup' => empty($opal_url) ? '' : ('<a href="' . $opal_url . '">' . $opal_url . '</a>'),
       );
     }
     else {
@@ -55,23 +53,17 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
 
   public function configurationFormValidate(array $form, array &$values, array &$form_state) {
     $form_errors = array();
-
-    if (array_key_exists('opal-url', $values)) {
-      $value = trim($values['opal-url']);
-      if ($value === '' || strpos($value, 'https://') === FALSE) {
-        $form_errors['opal-url'] = t('You must provide a valid Opal server url: https://...');
-      }
+    if (isset($values['opal-url'])
+      && (trim($values['opal-url']) === '' || strpos($values['opal-url'], 'https://') === FALSE)) {
+      $form_errors['opal-url'] = t('You must provide a valid Opal server url: https://...');
     }
     // todo check for valid chars in names
-    $value = trim($values['datasource']);
-    if ($value === '') {
+    if (!isset($values['datasource']) || trim($values['datasource']) === '') {
       $form_errors['datasource'] = t('You must provide a valid Opal datasource name.');
     }
-    $value = trim($values['table']);
-    if ($value === '') {
+    if (!isset($values['table']) || trim($values['table']) === '') {
       $form_errors['table'] = t('You must provide a valid Opal table name.');
     }
-
     return $form_errors;
   }
 
@@ -80,7 +72,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
     $options = array();
     if (array_key_exists('opal-url', $values)) {
       $study_node = node_load($form_state['values'][MICA_STUDY_ID]);
-      $study_node->mica_opal[$study_node->language][] = array('url' => $values['opal-url']);
+      $study_node->mica_opal[LANGUAGE_NONE][0]['url'] = $values['opal-url'];
       node_save($study_node);
     }
     $options['datasource'] = trim($values['datasource']);
@@ -97,12 +89,14 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
   public function getTableResourceURI($resource) {
     $connector = $this->connector;
     $study_node = node_load($connector->study_id);
-    $url = $study_node->mica_opal[$study_node->language][0]['url'];
+    $study_wrapper = entity_metadata_wrapper('node', $study_node);
+    $url = $study_wrapper->mica_opal->url->value();
+
     // remove trailing slashes
     while (drupal_strlen($url) > 0 && substr($url, drupal_strlen($url) - 1) == '/') {
       $url = substr($url, 0, drupal_strlen($url) - 1);
     }
-    $url .= "/ws/datasource/" . $connector->options['datasource'] . '/table/' . $connector->options['table'] . "/" . $resource;
+    $url .= '/ws/datasource/' . $connector->options['datasource'] . '/table/' . $connector->options['table'] . '/' . $resource;
     return $url;
   }
 
@@ -124,7 +118,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
    * Get the field name mapping from Opal if this is defined.
    */
   private function requestFieldNameMapping() {
-    $url = $this->getTableResourceURI("index/_schema");
+    $url = $this->getTableResourceURI('index/_schema');
 
     $get = new HttpClientRequest($url, array(
       'method' => 'GET',
@@ -158,7 +152,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
   protected function sendQuery($query) {
     //debug($query);
 
-    $url = $this->getTableResourceURI("index/_search");
+    $url = $this->getTableResourceURI('index/_search');
 
     $post = new HttpClientRequest($url, array(
       'method' => 'GET',

@@ -204,9 +204,7 @@ projects[taxonomy_csv] = 5.10
 
 projects[taxonomy_manager] = 1.0-beta3
 
-projects[title][download][type] = git
-projects[title][download][revision] = 2ec5945
-projects[title][download][branch] = 7.x-1.x
+projects[title] = 1.0-alpha4
 
 projects[token] = 1.3
 

@@ -55,7 +55,8 @@ function mica_category_field_set_target($source, $entity, $target, $value) {
   foreach ($value as $i => $v) {
     // if we receive true/false, switch to '0' - '1'
     $v = is_bool($v) ? (int) $v : $v;
-    $field['und'][$i][$sub_field] = isset($v) ? $v : '0';
+    // TODO this does not support i18n
+    $field[LANGUAGE_NONE][$i][$sub_field] = isset($v) ? $v : '0';
   }
 
   $entity->$field_name = $field;

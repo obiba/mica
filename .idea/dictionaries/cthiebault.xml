@@ -3,11 +3,14 @@
     <words>
       <w>daco</w>
       <w>dataschema</w>
+      <w>datasource</w>
       <w>facetapi</w>
       <w>filepath</w>
       <w>godiagram</w>
+      <w>harmonizations</w>
       <w>imagecache</w>
       <w>infos</w>
+      <w>jsonpath</w>
       <w>langcode</w>
       <w>noderefcreate</w>
       <w>plid</w>
