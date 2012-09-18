@@ -2016,8 +2016,6 @@ function mica_datasets_create_variables($harmonizations) {
 
   foreach ($harmonizations['variables'] as $harmonization) {
 
-    dvm($harmonization);
-
     $query = new EntityFieldQuery();
     $result = $query->entityCondition('entity_type', 'node')
       ->entityCondition('bundle', 'variable')

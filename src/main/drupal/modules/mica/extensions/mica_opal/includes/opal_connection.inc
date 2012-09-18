@@ -14,10 +14,9 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
 
   public function configurationForm($study_node) {
     $form_items = array();
-
-    $study_wrapper = entity_metadata_wrapper('node', $study_node);
-    $mica_opal = $study_wrapper->mica_opal->value();
-    $opal_url = empty($mica_opal) ? '' : $study_wrapper->mica_opal->url->value();
+    $opal_url = isset($study_node->mica_opal[LANGUAGE_NONE])
+      && isset($study_node->mica_opal[LANGUAGE_NONE][0])
+      && isset($study_node->mica_opal[LANGUAGE_NONE][0]['url']) ? $study_node->mica_opal[LANGUAGE_NONE][0]['url'] : '';
 
     if (!empty($opal_url)) {
       $form_items['opal-url'] = array(
@@ -89,8 +88,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
   public function getTableResourceURI($resource) {
     $connector = $this->connector;
     $study_node = node_load($connector->study_id);
-    $study_wrapper = entity_metadata_wrapper('node', $study_node);
-    $url = $study_wrapper->mica_opal->url->value();
+    $url = $study_node->mica_opal[LANGUAGE_NONE][0]['url'];
 
     // remove trailing slashes
     while (drupal_strlen($url) > 0 && substr($url, drupal_strlen($url) - 1) == '/') {
