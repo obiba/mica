@@ -2071,6 +2071,6 @@ function mica_datasets_create_variables($harmonizations) {
 function mica_datasets_translation_exclude_fields(){
 
   return array(
-    'study_variable_attribute' => array('field_sva_script', 'field_sva_status'),
+    'study_variable_attributes' => array('field_sva_script', 'field_sva_status'),
    );
 }

@@ -247,46 +247,44 @@ function mica_i18n_fix_entity_display() {
         // Configure fields that should be 'translatable'
         $info = field_info_field_by_id($instance['field_id']);
 
-        // Do not process field that have been excluded
-        if (!array_key_exists($type->type, $excludes) || !in_array($info['field_name'], $excludes[$type->type])) {
+        // only update the field if not already translatables but do not process field that have been excluded
+        if (in_array($instance['widget']['type'], $translatables_widget_types) && empty($info['translatable']) &&
+          (!array_key_exists($type->type, $excludes) || !in_array($info['field_name'], $excludes[$type->type]))
+        ) {
+          $info['translatable'] = '1';
+          field_update_field($info);
+        }
+        else if (isset($info['translatable']) && $info['translatable'] === '1') {
+          // Explicitly set translatables to FALSE
+          $info['translatable'] = '0';
+          field_update_field($info);
+        }
 
-          // only update the field if not already translatables
-          if (in_array($instance['widget']['type'], $translatables_widget_types) && empty($info['translatable'])) {
-            $info['translatable'] = '1';
-            field_update_field($info);
+        // Configure 'Field Display'
+        $update = FALSE;
+        foreach (array_keys($instance['display']) as $display) {
+          if ($instance['display'][$display]['type'] === 'list_default') {
+            $update = TRUE;
+            $instance['display'][$display]['type'] = 'i18n_list_default';
+            $instance['display'][$display]['module'] = 'i18n_field';
           }
-          else if (isset($info['translatable']) && $info['translatable'] === '1') {
-            // Explicitly set translatables to FALSE
-            $info['translatable'] = '0';
-            field_update_field($info);
-          }
-
-          // Configure 'Field Display'
-          $update = FALSE;
-          foreach (array_keys($instance['display']) as $display) {
-            if ($instance['display'][$display]['type'] === 'list_default') {
+          else {
+            if ($instance['display'][$display]['type'] === 'text_default') {
               $update = TRUE;
-              $instance['display'][$display]['type'] = 'i18n_list_default';
-              $instance['display'][$display]['module'] = 'i18n_field';
+              $instance['display'][$display]['type'] = 'i18n_text_default';
+              $instance['display'][$display]['module'] = 'NULL';
             }
             else {
-              if ($instance['display'][$display]['type'] === 'text_default') {
+              if ($instance['display'][$display]['type'] === 'taxonomy_term_reference_plain') {
                 $update = TRUE;
-                $instance['display'][$display]['type'] = 'i18n_text_default';
-                $instance['display'][$display]['module'] = 'NULL';
-              }
-              else {
-                if ($instance['display'][$display]['type'] === 'taxonomy_term_reference_plain') {
-                  $update = TRUE;
-                  $instance['display'][$display]['type'] = 'i18n_taxonomy_term_reference_plain';
-                  $instance['display'][$display]['module'] = 'i18n_taxonomy';
-                }
+                $instance['display'][$display]['type'] = 'i18n_taxonomy_term_reference_plain';
+                $instance['display'][$display]['module'] = 'i18n_taxonomy';
               }
             }
           }
-          if ($update) {
-            field_update_instance($instance);
-          }
+        }
+        if ($update) {
+          field_update_instance($instance);
         }
       }
     }
