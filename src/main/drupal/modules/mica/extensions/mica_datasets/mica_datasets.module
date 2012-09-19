@@ -1649,12 +1649,12 @@ function _mica_datasets_variable_current_search(&$data, $block) {
 
     // Translate titles
     foreach ($data['content']['field_group'] as $field => $field_group) {
-      if (isset($data['content']['field_group'][$field]) && isset($data['content']['field_group'][$field]['title']['#markup'])){
+      if (isset($data['content']['field_group'][$field]) && isset($data['content']['field_group'][$field]['title']['#markup'])) {
         $text = $data['content']['field_group'][$field]['title']['#markup'];
         $start = strpos($text, '<h4 class="current-search-group-title">');
         $end = strpos($text, '</h4>');
         $length = strlen($text) - 45;
-        $title = substr($text, $start+39, $length);
+        $title = substr($text, $start + 39, $length);
 
         $data['content']['field_group'][$field]['title']['#markup'] = '<h4 class="current-search-group-title">'
           . filter_xss(t($title)) . ':</h4>';
@@ -1965,7 +1965,21 @@ function mica_datasets_import_variables_callback($type, $dataset_nid, $study_nid
     try {
       $harmonizations = mica_opal_fetch_harmonization_view($dataset_nid, $nid);
     } catch (Exception $e) {
-      drupal_set_message($e->getMessage(), 'error');
+      switch ($e->getCode()) {
+        case 404:
+          drupal_set_message(
+            t('Opal server was not found (error 404) for study %study.',
+              array('%study' => $study_wrapper->title->value())),
+            'error'
+          );
+          break;
+        default:
+          drupal_set_message(
+            t('Error while importing variables for study %study: %error',
+              array('%study' => $study_wrapper->title->value(), '%error' => $e->getMessage())),
+            'error'
+          );
+      }
     }
 
     if ($harmonizations) {
@@ -2009,52 +2023,62 @@ function mica_datasets_create_variables($harmonizations) {
       ->fieldCondition('field_dataset', 'nid', $harmonizations['dataset_nid'])
       ->execute();
 
+    $default_language = language_default()->language;
+
     if (empty($result)) {
       $infos = array(
         'type' => 'variable',
         'title' => $harmonization['title'],
         'title_field' => $harmonization['title'],
-        'language' => LANGUAGE_NONE,
+        'language' => $default_language,
         'uid' => $user->uid,
-        'status' => 0, // sva should be draft by default
+        'status' => NODE_NOT_PUBLISHED,
         'menu' => '',
         'field_dataset' => $harmonizations['dataset_nid'],
+        'field_value_type' => $harmonization['value_type'],
+        'field_repeatable' => $harmonization['repeatable'],
+        'field_unit' => $harmonization['unit'],
+        'field_position' => $position++,
       );
-      $variable = entity_property_values_create_entity('node', $infos);
-      $variable->save();
+      $wrapper = entity_property_values_create_entity('node', $infos);
 
-      $wrapper = entity_metadata_wrapper('node', $variable);
-      $wrapper->field_label->set($harmonization['label']);
-      $wrapper->field_value_type->set($harmonization['value_type']);
-      $wrapper->field_repeatable->set($harmonization['repeatable']);
-      $wrapper->field_unit->set($harmonization['unit']);
-      $wrapper->field_position->set($position++);
-      $wrapper->body->value->set($harmonization['description']);
+      foreach ($harmonization['label'] as $language => $value) {
+        $wrapper->language($language)->field_label->set($value);
+      }
+      foreach ($harmonization['description'] as $language => $value) {
+        $wrapper->language($language)->body->value->set($value);
+      }
 
       // Update categories
-      if (!empty($harmonization['categories'])) {
-        for ($i = 0; $i < count($harmonization['categories']); $i++) {
-          $wrapper->field_variable_categories[$i]->name->set($harmonization['categories'][$i]['name']);
-          $wrapper->field_variable_categories[$i]->label->set($harmonization['categories'][$i]['label']);
-          $wrapper->field_variable_categories[$i]->missing->set($harmonization['categories'][$i]['missing']);
+      $i = 0;
+      foreach ($harmonization['categories'] as $category) {
+        $wrapper->language($default_language)->field_variable_categories[$i]->name->set($category['name']);
+        $wrapper->language($default_language)->field_variable_categories[$i]->missing->set($category['missing']);
+        foreach ($category['label'] as $language => $value) {
+          $wrapper->language($language)->field_variable_categories[$i]->label->set($value);
+
+          // needed to share values between languages
+          $wrapper->language($language)->field_variable_categories[$i]->name->set($category['name']);
+          $wrapper->language($language)->field_variable_categories[$i]->missing->set($category['missing']);
         }
+        $i++;
       }
       $wrapper->save();
     }
     else {
-      $variable = entity_load_single('node', array_shift(array_keys($result['node'])));
+      $variable = node_load(array_shift(array_keys($result['node'])));
       $wrapper = entity_metadata_wrapper('node', $variable);
     }
 
     // Update study_variable_attributes
     foreach ($wrapper->field_variable_study_var_att->value() as $study_variable_attributes) {
       $sva = entity_metadata_wrapper('node', $study_variable_attributes);
-
-      if ($sva->field_sva_study->nid->value() === $harmonizations['study_nid']) {
+      if ($sva->field_sva_study->nid->value() == $harmonizations['study_nid']) {
         $sva->field_sva_script->set($harmonization['script']);
         $sva->field_sva_status->set($harmonization['status']);
-        $sva->field_sva_comment->set($harmonization['comment']);
-
+        foreach ($harmonization['comment'] as $language => $value) {
+          $sva->language($language)->field_sva_comment->set($value);
+        }
         $sva->save();
       }
     }
