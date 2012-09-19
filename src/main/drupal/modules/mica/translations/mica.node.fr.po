@@ -260,7 +260,7 @@ msgctxt "type:article:description"
 msgid ""
 "Use <em>articles</em> for time-sensitive content like news, press "
 "releases or blog posts."
-msgstr "Utiliser un article pour de l'information tel que des nouvelles, annonces de presse ou article de blog."
+msgstr "Utiliser un article pour de l'information telle que des nouvelles, annonces de presse ou article de blog."
 
 #: node:type:page:name
 msgctxt "type:page:name"
