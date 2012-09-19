@@ -1578,7 +1578,7 @@ function _mica_datasets_create_svas(&$study, &$dataset) {
         $wrapper_sv = entity_metadata_wrapper('node', $sv);
         $field_sva_variable_value = $wrapper_sv->field_sva_variable->value();
         $field_sva_study_value = $wrapper_sv->field_sva_study->value();
-        if ($field_sva_variable_value->nid === $variable_value->nid
+        if ($field_sva_variable_value != null && $field_sva_variable_value->nid === $variable_value->nid
           && $field_sva_study_value->nid === $study_value->nid
         ) {
           $exist = TRUE;
@@ -2095,6 +2095,6 @@ function mica_datasets_create_variables($harmonizations) {
 function mica_datasets_translation_exclude_fields(){
 
   return array(
-    'study_variable_attributes' => array('field_sva_script', 'field_sva_status'),
+    'study_variable_attribute' => array('field_sva_script', 'field_sva_status'),
    );
 }
