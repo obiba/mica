@@ -1325,6 +1325,10 @@ function mica_datasets_node_view_alter(&$build) {
         $status_values = field_info_field('field_sva_status');
         foreach ($wrapper->field_variable_study_var_att->value() as $study_variable_attributes) {
           $sva_wrapper = entity_metadata_wrapper('node', $study_variable_attributes);
+          // comment is not showing in the right language
+          if (function_exists('i18n_language')){
+            $sva_wrapper->language->set(i18n_language()->language);
+          }
           $study_wrapper = entity_metadata_wrapper('node', $sva_wrapper->field_sva_study->value()->nid);
           if ($study_wrapper->access('view')) {
 
@@ -1332,7 +1336,7 @@ function mica_datasets_node_view_alter(&$build) {
             $script = _mica_datasets_toHtmlTruncate(
               $script, t('script'), 200, TRUE
             );
-            //'<code class=\'prettyprint\'>' . check_markup(truncate_utf8($script, 400, FALSE)) . '</code>';
+
             $comment = $sva_wrapper->field_sva_comment->value() ? $sva_wrapper->field_sva_comment->value() : '';
             $comment = _mica_datasets_toHtmlTruncate($comment, t('comment'), 200, FALSE);
 
@@ -2104,6 +2108,6 @@ function mica_datasets_create_variables($harmonizations) {
 function mica_datasets_translation_exclude_fields(){
 
   return array(
-    'study_variable_attribute' => array('field_sva_script', 'field_sva_status'),
+    'study_variable_attributes' => array('field_sva_script', 'field_sva_status'),
    );
 }
