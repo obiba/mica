@@ -369,7 +369,7 @@ drush-make-dev = drush make --prepare-install src/main/drupal/profiles/mica_dist
 deb-package = echo "$(2)_version=$($(2)_version)" >> target/deb/$(1)/var/lib/$(1)-installer/Makefile
 
 #git-prepare: checkout git repo $(1) to target $(2) and delete all files from this repo
-git-prepare = rm -rf target/drupal.org && \
+git-prepare = rm -rf target/drupal.org/$(2) && \
 	mkdir -p target/drupal.org && \
 	echo "Enter Drupal username?" && \
 	read git_username && \
