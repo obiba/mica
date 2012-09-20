@@ -7,7 +7,7 @@
 core = "7.x"
 api = "2"
 
-projects[acl] = 1.0-beta3
+projects[acl] = 1.0
 
 projects[adaptivetheme] = 3.1
 
@@ -96,7 +96,7 @@ projects[field_group][patch][1175102] = http://drupal.org/files/description_tran
 
 projects[field_permissions] = 1.0-beta2
 
-projects[forum_access] = 1.0-alpha4
+projects[forum_access] = 1.2
 
 projects[google_analytics] = 1.2
 
@@ -131,7 +131,7 @@ projects[login_destination] = 1.0
 
 projects[logintoboggan] = 1.3
 
-projects[mail_edit] = 1.0-rc1
+projects[mail_edit] = 1.0
 
 projects[masquerade] = 1.0-rc4
 
@@ -143,7 +143,7 @@ projects[menu_view_unpublished][download][type] = git
 projects[menu_view_unpublished][download][revision] = 5f1f951
 projects[menu_view_unpublished][download][branch] = 7.x-1.x
 
-projects[mica] = 5.x-dev
+projects[mica] = 5.0-rc1
 
 projects[module_filter] = 1.7
 
@@ -161,7 +161,7 @@ projects[noderefcreate][patch][1538328] = http://drupal.org/files/maxlength-1538
 
 projects[panels] = 3.3
 
-projects[password_policy] = 1.0-rc2
+projects[password_policy] = 1.2
 
 projects[pathauto] = 1.2
 

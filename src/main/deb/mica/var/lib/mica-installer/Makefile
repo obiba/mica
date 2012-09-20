@@ -60,10 +60,13 @@ mica-dist-install-prepare:
 	@echo "**** Download Mica archive"
 	mkdir -p /var/cache/mica-installer/target && \
 	cd /var/cache/mica-installer/target && \
-	wget -q http://download.obiba.org/mica/$(stability)/mica-dist-$(deb_version).tar.gz && \
+	wget -q http://ftp.drupal.org/files/projects/mica_distribution-7.x-$(dist_version)-core.tar.gz && \
 	#cp ~/workspace/mica/target/mica-dist-$(deb_version).tar.gz mica-dist-$(deb_version).tar.gz && \
-	tar xzf mica-dist-$(deb_version).tar.gz && \
-	mv $(micadir)-$(version) mica && \
+	tar xzf mica_distribution-7.x-$(dist_version)-core.tar.gz && \
+	mv mica_distribution-7.x-$(dist_version) mica && \
+	rm -rf mica/profiles/minimal && \
+	rm -rf mica/profiles/standard && \
+	rm -rf mica/profiles/testing && \
 	mv mica /usr/share
 
 drupal-profiles:
@@ -80,6 +83,7 @@ drupal-sites:
 	mv /usr/share/mica/sites/* /etc/mica/sites/ && \
 	rmdir /usr/share/mica/sites && \
 	ln -s /etc/mica/sites /usr/share/mica/sites && \
+	mkdir -p /etc/mica/sites/default/files && \
 	cp -r /etc/mica/sites/default/files /var/lib/mica/default && \
 	rm -rf /etc/mica/sites/default/files && \
 	ln -s /var/lib/mica/default/files /etc/mica/sites/default/files && \
@@ -210,3 +214,4 @@ mica-echo-update:
 clean:
 	rm -rf /var/cache/mica-installer/target
 	rm -rf /var/cache/mica-installer/*.gz
+

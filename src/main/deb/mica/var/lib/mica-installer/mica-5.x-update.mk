@@ -317,4 +317,4 @@ mica-delete-5.0:
 	rm -rf /etc/mica/profiles/mica_distribution/themes/adaptivetheme_subtheme && \
 	rm -rf /etc/mica/profiles/mica_distribution/themes/mica_samara
 
-mica-delete-5.0-rc1: mica-delete-5.0:
+mica-delete-5.0-rc1: mica-delete-5.0

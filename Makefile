@@ -4,6 +4,7 @@
 #
 
 version=5.0-rc1
+dist_version=5.0-rc3
 branch=7.x-5.x
 
 #
@@ -34,6 +35,7 @@ mica_demo_version=$(mica_version)
 
 # Themes
 mica_samara_version=$(mica_version)
+mica_corolla_version=$(mica_version)
 
 #
 # Mysql db access
@@ -77,7 +79,7 @@ help:
 # Build
 #
 
-prod: drush-make-prod prepare-mica-distribution htaccess
+prod: set-distribution-version drush-make-prod prepare-mica-distribution htaccess
 
 dev: drush-make-dev mica-install prepare-mica-distribution inject-version-info set-distribution-version htaccess
 
@@ -126,6 +128,7 @@ inject-version-info:
 	$(call inject-version-info,mica_distribution/modules,mica)
 	$(call inject-version-info,,mica_distribution)
 	$(call inject-version-info,mica_distribution/themes,mica_samara)
+	$(call inject-version-info,mica_distribution/themes,mica_corolla)
 
 clear-version-info:
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_community)
@@ -148,11 +151,12 @@ clear-version-info:
 	$(call clear-version-info,src/main/drupal/profiles,mica_distribution)
 	$(call clear-version-info,src/main/drupal/profiles,mica_demo)
 	$(call clear-version-info,src/main/drupal/themes,mica_samara)
+	$(call clear-version-info,src/main/drupal/themes,mica_corolla)
 
 set-distribution-version:
 	cd src/main/drupal/profiles/mica_distribution && \
 	sed -i 's/^projects\[mica\].*$$/projects[mica] = $(version)/' drupal-org.make && \
-	sed -i 's/^projects\[mica_distribution\]\[download\]\[branch\].*$$/projects[mica_distribution][download][branch] = 7.x-$(version)/' build-mica_distribution.make
+	sed -i 's/^projects\[mica_distribution\]\[version\].*$$/projects[mica_distribution][version] = $(dist_version)/' build-mica_distribution.make
 
 
 #
@@ -235,6 +239,7 @@ deb-mica-solr: deb-mica-solr-install deb-mica-solr-changelog
 
 deb-mica-install:
 	echo "version=$(version)" >> target/deb/mica/var/lib/mica-installer/Makefile
+	echo "dist_version=$(dist_version)" >> target/deb/mica/var/lib/mica-installer/Makefile
 	echo "deb_version=$(deb_version)" >> target/deb/mica/var/lib/mica-installer/Makefile
 ifeq ($(findstring dev,$(version)),dev)
 	echo "stability=unstable" >> target/deb/mica/var/lib/mica-installer/Makefile
@@ -242,9 +247,6 @@ ifeq ($(findstring dev,$(version)),dev)
 else
 	echo "stability=stable" >> target/deb/mica/var/lib/mica-installer/Makefile
 endif
-	$(call deb-package,mica,mica)
-	$(call deb-package,mica,mica_distribution)
-	$(call deb-package,mica,mica_samara)
 
 deb-mica-solr-install:
 	echo "version=$(version)" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
@@ -254,7 +256,6 @@ ifeq ($(findstring dev,$(version)),dev)
 else
 	echo "stability=stable" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
 endif
-	$(call deb-package,mica-solr,mica)
 
 deb-mica-changelog:
 ifeq ($(findstring dev,$(version)),dev)
@@ -364,9 +365,6 @@ drush-make-dev = drush make --prepare-install src/main/drupal/profiles/mica_dist
 	mv target/$(1)-no-core/sites/all target/$(1)/profiles/mica_distribution && \
 	rm -rf target/$(1)-no-core && \
 	chmod -R a+w target/$(1)/sites/default
-
-# deb-package: echo the modules versions in debian Makefile
-deb-package = echo "$(2)_version=$($(2)_version)" >> target/deb/$(1)/var/lib/$(1)-installer/Makefile
 
 #git-prepare: checkout git repo $(1) to target $(2) and delete all files from this repo
 git-prepare = rm -rf target/drupal.org/$(2) && \
