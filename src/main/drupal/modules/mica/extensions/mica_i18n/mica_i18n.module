@@ -69,7 +69,6 @@ function mica_i18n_multilingual_settings_changed() {
   module_load_include('inc', 'i18n_string', 'i18n_string.admin');
   $batch = i18n_string_refresh_batch(array('field', 'menu', 'node', 'taxonomy', 'default', 'blocks'), TRUE);
   batch_set($batch);
-  batch_process();
 }
 
 function mica_i18n_translate_menus($langcode) {
@@ -216,6 +215,34 @@ function mica_i18n_configure_block() {
     ->execute();
 }
 
+function mica_i18n_update_displays($instance) {
+  $update = FALSE;
+  foreach (array_keys($instance['display']) as $display) {
+    if ($instance['display'][$display]['type'] === 'list_default') {
+      $update = TRUE;
+      $instance['display'][$display]['type'] = 'i18n_list_default';
+      $instance['display'][$display]['module'] = 'i18n_field';
+    }
+    else {
+      if ($instance['display'][$display]['type'] === 'text_default') {
+        $update = TRUE;
+        $instance['display'][$display]['type'] = 'i18n_text_default';
+        $instance['display'][$display]['module'] = 'NULL';
+      }
+      else {
+        if ($instance['display'][$display]['type'] === 'taxonomy_term_reference_plain') {
+          $update = TRUE;
+          $instance['display'][$display]['type'] = 'i18n_taxonomy_term_reference_plain';
+          $instance['display'][$display]['module'] = 'i18n_taxonomy';
+        }
+      }
+    }
+  }
+  if ($update) {
+    field_update_instance($instance);
+  }
+}
+
 /**
  * Set variable to enable translated content types, hide language fields from all view modes,
  * change display type for lists and texts to enable translation
@@ -248,49 +275,34 @@ function mica_i18n_fix_entity_display() {
         $info = field_info_field_by_id($instance['field_id']);
 
         // only update the field if not already translatables but do not process field that have been excluded
-        if (in_array($instance['widget']['type'], $translatables_widget_types) && empty($info['translatable']) &&
+        if (in_array($instance['widget']['type'], $translatables_widget_types) &&
           (!array_key_exists($type->type, $excludes) || !in_array($info['field_name'], $excludes[$type->type]))
         ) {
-          $info['translatable'] = '1';
-          field_update_field($info);
+          $operations[] = array('entity_translation_translatable_batch', array(TRUE, $info['field_name']));
+          $operations[] = array('entity_translation_translatable_switch', array(TRUE, $info['field_name']));
+
         }
         else if (isset($info['translatable']) && $info['translatable'] === '1') {
           // Explicitly set translatables to FALSE
-          $info['translatable'] = '0';
-          field_update_field($info);
+          $operations[] = array('entity_translation_translatable_switch', array(FALSE, $info['field_name']));
+          $operations[] = array('entity_translation_translatable_batch', array(FALSE, $info['field_name']));
         }
 
         // Configure 'Field Display'
-        $update = FALSE;
-        foreach (array_keys($instance['display']) as $display) {
-          if ($instance['display'][$display]['type'] === 'list_default') {
-            $update = TRUE;
-            $instance['display'][$display]['type'] = 'i18n_list_default';
-            $instance['display'][$display]['module'] = 'i18n_field';
-          }
-          else {
-            if ($instance['display'][$display]['type'] === 'text_default') {
-              $update = TRUE;
-              $instance['display'][$display]['type'] = 'i18n_text_default';
-              $instance['display'][$display]['module'] = 'NULL';
-            }
-            else {
-              if ($instance['display'][$display]['type'] === 'taxonomy_term_reference_plain') {
-                $update = TRUE;
-                $instance['display'][$display]['type'] = 'i18n_taxonomy_term_reference_plain';
-                $instance['display'][$display]['module'] = 'i18n_taxonomy';
-              }
-            }
-          }
-        }
-        if ($update) {
-          field_update_instance($instance);
-        }
+        $operations[] = array('mica_i18n_update_displays', array($instance));
       }
     }
   }
 
-  variable_set(MEMENTO_BUNDLES, $memento);
+  $operations[] = array('variable_set', array(MEMENTO_BUNDLES, $memento));
+
+  $batch = array(
+    'title' => 'Enabling field translations',
+    'operations' => $operations,
+    'file' => drupal_get_path('module', 'entity_translation') . '/entity_translation.admin.inc',
+  );
+
+  batch_set($batch);
 }
 
 function mica_i18n_fix_views_display() {
