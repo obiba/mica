@@ -1522,12 +1522,20 @@ function mica_datasets_node_delete($node) {
       break;
     case 'variable':
       $variable = entity_metadata_wrapper('node', $node);
-      $field_variable_study_var_att_value = $variable->field_variable_study_var_att->value();
-      if (empty($field_variable_study_var_att_value) == FALSE) {
-        foreach ($variable->field_variable_study_var_att as $sva) {
+
+      $query = new EntityFieldQuery();
+      $results =  $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'study_variable_attributes')
+        ->fieldCondition('field_sva_variable', 'nid', $variable->nid->value())
+        ->execute();
+
+      if (!empty($results)) {
+        foreach ($results['node'] as $result) {
+          $sva = node_load($result->nid);
+          $sva_wrapper = entity_metadata_wrapper('node', $sva);
           if (empty($sva->field_sva_study) == FALSE) {
-            _mica_datasets_remove_and_save_element_from_entity_list_wrapper($sva->field_sva_study, $sva, 'field_study_study_variable_att');
-            $sva->delete();
+            _mica_datasets_remove_and_save_element_from_entity_list_wrapper($sva_wrapper->field_sva_study, $sva_wrapper, 'field_study_study_variable_att');
+            $sva_wrapper->delete();
           }
         }
       }
@@ -1578,7 +1586,8 @@ function _mica_datasets_create_svas(&$study, &$dataset) {
         $wrapper_sv = entity_metadata_wrapper('node', $sv);
         $field_sva_variable_value = $wrapper_sv->field_sva_variable->value();
         $field_sva_study_value = $wrapper_sv->field_sva_study->value();
-        if ($field_sva_variable_value != null && $field_sva_variable_value->nid === $variable_value->nid
+        // this method is called also when deleting a variable and $field_sva_variable_value is null in that case
+        if (!is_null($field_sva_variable_value) && $field_sva_variable_value->nid === $variable_value->nid
           && $field_sva_study_value->nid === $study_value->nid
         ) {
           $exist = TRUE;
@@ -1803,7 +1812,7 @@ function _mica_datasets_create_study_variable_attribute(&$wrapper_variable, &$wr
   $infos = array(
     'type' => 'study_variable_attributes',
     'title' => $wrapper_variable->title->value() . ' -- ' . $wrapper_study->title->value(),
-    'language' => LANGUAGE_NONE,
+    'language' => $wrapper_variable->language->value(),
     'field_sva_study' => $wrapper_study->nid->value(),
     'field_sva_variable' => $wrapper_variable->nid->value(),
     'uid' => $user->uid,

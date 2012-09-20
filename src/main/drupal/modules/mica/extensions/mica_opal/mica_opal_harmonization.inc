@@ -94,7 +94,7 @@ function _mica_opal_parse_localized($item, $expression) {
   $localized_items = mica_opal_jsonPath($item, $expression);
   if (!empty($localized_items)) {
     foreach ($localized_items as $localized_item) {
-      $locale = $localized_item['locale'];
+      $locale = isset($localized_item['locale']) ? $localized_item['locale'] : LANGUAGE_NONE;
       $result[empty($locale) ? LANGUAGE_NONE : $locale] = $localized_item['value'];
     }
   }
