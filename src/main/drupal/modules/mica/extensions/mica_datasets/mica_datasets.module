@@ -27,6 +27,7 @@ define('MICA_HARMONIZATION_MISING_TICK', base_path() . drupal_get_path('module',
 function mica_datasets_features_rebuild_completed() {
   if (!variable_get('mica_datasets_features_rebuild_completed', FALSE)) {
     _mica_datasets_create_default_content();
+    _mica_datasets_configure_permissions();
     variable_set('mica_datasets_features_rebuild_completed', TRUE);
   }
 }
@@ -48,6 +49,20 @@ function _mica_datasets_create_default_content() {
 
   // Set menu parent option for dataset
   mica_core_set_menu_option('dataset', $dataset_menu['mlid']);
+}
+
+function _mica_datasets_configure_permissions() {
+  watchdog('mica', 'Configure Datasets custom permissions', array(), WATCHDOG_DEBUG);
+  mica_core_configure_role_permissions('dataset reviewer',
+    array(
+      'menu view unpublished' => TRUE,
+    )
+  );
+  mica_core_configure_role_permissions('dataset administrator',
+    array(
+      'menu view unpublished' => TRUE,
+    )
+  );
 }
 
 /**
@@ -2027,6 +2042,8 @@ function mica_datasets_create_variables($harmonizations) {
   $position = 1;
   $nb_created = 0;
 
+  $dataset = node_load($harmonizations['dataset_nid']);
+
   foreach ($harmonizations['variables'] as $harmonization) {
 
     $query = new EntityFieldQuery();
@@ -2043,7 +2060,7 @@ function mica_datasets_create_variables($harmonizations) {
         'type' => 'variable',
         'title' => $harmonization['title'],
         'title_field' => $harmonization['title'],
-        'language' => $default_language,
+        'language' => $dataset->language,
         'uid' => $user->uid,
         'status' => NODE_NOT_PUBLISHED,
         'menu' => '',
@@ -2065,8 +2082,8 @@ function mica_datasets_create_variables($harmonizations) {
       // Update categories
       $i = 0;
       foreach ($harmonization['categories'] as $category) {
-        $wrapper->language($default_language)->field_variable_categories[$i]->name->set($category['name']);
-        $wrapper->language($default_language)->field_variable_categories[$i]->missing->set($category['missing']);
+        $wrapper->language($dataset->language)->field_variable_categories[$i]->name->set($category['name']);
+        $wrapper->language($dataset->language)->field_variable_categories[$i]->missing->set($category['missing']);
         foreach ($category['label'] as $language => $value) {
           $wrapper->language($language)->field_variable_categories[$i]->label->set($value);
 

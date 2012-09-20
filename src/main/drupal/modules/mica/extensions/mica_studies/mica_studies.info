@@ -61,6 +61,7 @@ dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = title
 dependencies[] = toolbar
+dependencies[] = menu_view_unpublished
 dependencies[] = view_unpublished
 dependencies[] = views
 dependencies[] = views_content

@@ -461,3 +461,10 @@ function mica_core_prepare_tooltip() {
 function mica_core_include_bootstrap_css() {
   ctools_add_css('bootstrap_icons', 'mica_core');
 }
+
+function mica_core_configure_role_permissions($role_name, $permissions) {
+  $role = user_role_load_by_name($role_name);
+  if ($role) {
+    user_role_change_permissions($role->rid, $permissions);
+  }
+}

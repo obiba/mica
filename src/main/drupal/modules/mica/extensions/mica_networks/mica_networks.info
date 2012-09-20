@@ -20,6 +20,7 @@ dependencies[] = page_manager
 dependencies[] = search_api
 dependencies[] = strongarm
 dependencies[] = view_unpublished
+dependencies[] = menu_view_unpublished
 dependencies[] = views
 features[corresponding_node_references][] = network*field_studies*study*field_networks
 features[ctools][] = corresponding_node_references:default_corresponding_node_references_presets:1

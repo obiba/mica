@@ -29,6 +29,7 @@ dependencies[] = taxonomy
 dependencies[] = taxonomy_csv
 dependencies[] = taxonomy_manager
 dependencies[] = view_unpublished
+dependencies[] = menu_view_unpublished
 dependencies[] = viewreference
 dependencies[] = views
 dependencies[] = workbench

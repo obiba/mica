@@ -141,7 +141,7 @@ function _mica_networks_configure_permissions() {
 
   watchdog('mica', 'Configure Networks custom permissions', array(), WATCHDOG_DEBUG);
 
-  _mica_networks_configure_role_permissions('network reviewer',
+  mica_core_configure_role_permissions('network reviewer',
     array(
       'access workbench' => TRUE,
       'view moderation history' => TRUE,
@@ -151,10 +151,11 @@ function _mica_networks_configure_permissions() {
       'moderate content from draft to needs_review' => TRUE,
       'moderate content from needs_review to draft' => TRUE,
       'moderate content from needs_review to published' => TRUE,
+      'menu view unpublished' => TRUE,
     )
   );
 
-  _mica_networks_configure_role_permissions('network administrator',
+  mica_core_configure_role_permissions('network administrator',
     array(
       'access workbench' => TRUE,
       'view moderation history' => TRUE,
@@ -162,15 +163,9 @@ function _mica_networks_configure_permissions() {
       'use workbench_moderation my drafts tab' => TRUE,
       'moderate content from draft to needs_review' => TRUE,
       'moderate content from needs_review to draft' => TRUE,
+      'menu view unpublished' => TRUE,
     )
   );
-}
-
-function _mica_networks_configure_role_permissions($role_name, $permissions) {
-  $role = user_role_load_by_name($role_name);
-  if ($role) {
-    user_role_change_permissions($role->rid, $permissions);
-  }
 }
 
 /**
