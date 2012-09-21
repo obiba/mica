@@ -67,7 +67,7 @@ projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info
 
 projects[entity_translation] = 1.0-alpha2
 
-projects[facetapi] = 1.1
+projects[facetapi] = 1.2
 
 projects[facetapi_i18n] = 1.0-beta2
 

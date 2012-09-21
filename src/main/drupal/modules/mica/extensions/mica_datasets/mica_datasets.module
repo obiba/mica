@@ -1341,7 +1341,7 @@ function mica_datasets_node_view_alter(&$build) {
         foreach ($wrapper->field_variable_study_var_att->value() as $study_variable_attributes) {
           $sva_wrapper = entity_metadata_wrapper('node', $study_variable_attributes);
           // comment is not showing in the right language
-          if (function_exists('i18n_language')){
+          if (function_exists('i18n_language')) {
             $sva_wrapper->language->set(i18n_language()->language);
           }
           $study_wrapper = entity_metadata_wrapper('node', $sva_wrapper->field_sva_study->value()->nid);
@@ -1524,6 +1524,7 @@ function mica_datasets_node_delete($node) {
         }
       }
       break;
+
     case 'study':
       $study = entity_metadata_wrapper('node', $node);
       $field_study_study_variable_att_value = $study->field_study_study_variable_att->value();
@@ -1539,11 +1540,12 @@ function mica_datasets_node_delete($node) {
         _mica_datasets_remove_and_save_element_from_entity_list_wrapper($dataset, $study, 'field_dataset_studies');
       }
       break;
+
     case 'variable':
       $variable = entity_metadata_wrapper('node', $node);
 
       $query = new EntityFieldQuery();
-      $results =  $query->entityCondition('entity_type', 'node')
+      $results = $query->entityCondition('entity_type', 'node')
         ->entityCondition('bundle', 'study_variable_attributes')
         ->fieldCondition('field_sva_variable', 'nid', $variable->nid->value())
         ->execute();
@@ -1560,6 +1562,7 @@ function mica_datasets_node_delete($node) {
       }
       _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable->field_dataset, $variable, 'field_dataset_variables');
       break;
+
     case 'study_variable_attributes':
       $sva = entity_metadata_wrapper('node', $node);
       $field_sva_variable_value = $sva->field_sva_variable->value();
@@ -2100,19 +2103,25 @@ function mica_datasets_create_variables($harmonizations) {
       $wrapper = entity_metadata_wrapper('node', $variable);
     }
 
-    // Update study_variable_attributes
-    foreach ($wrapper->field_variable_study_var_att->value() as $study_variable_attributes) {
-      $sva = entity_metadata_wrapper('node', $study_variable_attributes);
-      if ($sva->field_sva_study->nid->value() == $harmonizations['study_nid']) {
-        $sva->field_sva_script->set($harmonization['script']);
-        $sva->field_sva_status->set($harmonization['status']);
-        foreach ($harmonization['comment'] as $language => $value) {
-          $sva->language($language)->field_sva_comment->set($value);
+    $query = new EntityFieldQuery();
+    $results = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'study_variable_attributes')
+      ->fieldCondition('field_sva_variable', 'nid', $wrapper->nid->value())
+      ->execute();
+
+    if (!empty($results)) {
+      foreach ($results['node'] as $result) {
+        $sva = entity_metadata_wrapper('node', node_load($result->nid));
+        if ($sva->field_sva_study->nid->value() == $harmonizations['study_nid']) {
+          $sva->field_sva_script->set($harmonization['script']);
+          $sva->field_sva_status->set($harmonization['status']);
+          foreach ($harmonization['comment'] as $language => $value) {
+            $sva->language($language)->field_sva_comment->set($value);
+          }
+          $sva->save();
         }
-        $sva->save();
       }
     }
-
     $nb_created++;
   }
 
@@ -2120,11 +2129,10 @@ function mica_datasets_create_variables($harmonizations) {
 }
 
 /*
- * Hook hook_translation_exclude_fields()
+ * Implements hook_translation_exclude_fields()
  */
-function mica_datasets_translation_exclude_fields(){
-
+function mica_datasets_translation_exclude_fields() {
   return array(
     'study_variable_attributes' => array('field_sva_script', 'field_sva_status'),
-   );
+  );
 }
