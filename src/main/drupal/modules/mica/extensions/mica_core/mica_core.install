@@ -60,18 +60,18 @@ function mica_core_update_7500(&$sandbox) {
 }
 
 function mica_core_replace_titles($types) {
-  function mica_core_replace_titles($types) {
 
-    foreach ($types as $type) {
-      $batch = batch_get();
-      $batch['operations'][] = array('title_field_replacement_toggle', array('node', $type, 'title'));
-      $batch['operations'][] = array('title_field_replacement_batch', array('node', $type, 'title'));
+  spl_autoload_register('_search_api_solr_autoload');
 
-      batch_set($batch);
-    }
+  foreach ($types as $type) {
+    $batch = batch_get();
+    $batch['operations'][] = array('title_field_replacement_toggle', array('node', $type, 'title'));
+    $batch['operations'][] = array('title_field_replacement_batch', array('node', $type, 'title'));
 
-    cache_clear_all();
+    batch_set($batch);
   }
+
+  cache_clear_all();
 }
 
 /**
