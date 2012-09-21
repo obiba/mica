@@ -60,22 +60,17 @@ function mica_core_update_7500(&$sandbox) {
 }
 
 function mica_core_replace_titles($types) {
-  foreach ($types as $type) {
-    _mica_core_replace_node_titles($type);
-  }
-  cache_clear_all();
-}
+  function mica_core_replace_titles($types) {
 
-function _mica_core_replace_node_titles($type) {
-  title_field_replacement_toggle('node', $type, 'title');
+    foreach ($types as $type) {
+      $batch = batch_get();
+      $batch['operations'][] = array('title_field_replacement_toggle', array('node', $type, 'title'));
+      $batch['operations'][] = array('title_field_replacement_batch', array('node', $type, 'title'));
 
-  $query = new EntityFieldQuery;
-  $result = $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', $type)
-    ->execute();
-  if (!empty($result['node'])) {
-    $ids = array_keys($result['node']);
-    title_field_replacement_init('node', $type, 'title', $ids);
+      batch_set($batch);
+    }
+
+    cache_clear_all();
   }
 }
 
