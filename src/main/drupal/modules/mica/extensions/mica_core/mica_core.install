@@ -56,6 +56,10 @@ function mica_core_update_7500(&$sandbox) {
 
   mica_core_replace_titles(array('page', 'article'));
 
+  // Disable module auto_nodetitle
+  variable_del('ant_pattern_study');
+  variable_del('ant_php_study');
+  variable_del('ant_study');
   module_disable(array('auto_nodetitle'));
 }
 

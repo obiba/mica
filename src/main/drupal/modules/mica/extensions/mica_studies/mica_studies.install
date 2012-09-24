@@ -254,11 +254,6 @@ function mica_studies_update_7500(&$sandbox) {
 
   field_delete_field('field_complete_name');
 
-  // We no longer use auto node title for the title of studies
-  variable_del('auto_entitylabel_node_study');
-  variable_del('auto_entitylabel_pattern_node_study');
-  variable_del('auto_entitylabel_php_node_study');
-
   features_revert(array('mica_studies' => array('variable', 'search_api_index', 'views_view')));
 }
 /**

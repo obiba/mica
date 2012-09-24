@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="mica" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="CHROME" server_name="localhost" start_url="/mica-dev">
+  <configuration default="false" name="mica" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="CHROME" server_name="localhost" start_url="/mica">
     <RunnerSettings RunnerId="PhpRunner" />
     <RunnerSettings RunnerId="PhpWebAppDebugRunner" />
     <ConfigurationWrapper RunnerId="PhpRunner" />
