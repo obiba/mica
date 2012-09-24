@@ -339,6 +339,6 @@ Installing a site with Mica demo profile will help to illustrate its functionali
   mica_core_create_node_menu($research_page, FALSE, TRUE, 30);
 
   $about_page = mica_core_add_page(st('About'), $ABOUT_AND_HOME_TEXT, 'about');
-  mica_core_create_node_menu($about_page, FALSE, FALSE, 100);
+  mica_core_create_node_menu($about_page, FALSE, FALSE, 50);
 
 }

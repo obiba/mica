@@ -206,11 +206,11 @@ projects[superfish] = 1.9-beta4
 
 projects[taxonomy_csv] = 5.10
 
-projects[taxonomy_manager] = 1.0-beta3
+projects[taxonomy_manager] = 1.0-rc1
 
 projects[title] = 1.0-alpha4
 
-projects[token] = 1.3
+projects[token] = 1.4
 
 projects[variable] = 2.1
 
