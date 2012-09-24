@@ -48,9 +48,16 @@ class OpalXmlFormatView extends RESTServerView {
       }
       else {
         foreach ($variables as $variable) {
-          $variable_wrapper = entity_metadata_wrapper('node', $variable);
+
+          $sva_query = new EntityFieldQuery();
+          $sva_results = $sva_query->entityCondition('entity_type', 'node')
+            ->entityCondition('bundle', 'study_variable_attributes')
+            ->fieldCondition('field_sva_variable', 'nid', $variable->nid)
+            ->execute();
+          $svas = empty($sva_results['node']) ? array() : node_load_multiple(array_keys($sva_results['node']));
           $found = FALSE;
-          foreach ($variable_wrapper->field_variable_study_var_att->value() as $sva) {
+          foreach ($svas as $sva) {
+
             $sva_wrapper = entity_metadata_wrapper('node', $sva);
             if ($study->nid == $sva_wrapper->field_sva_study->nid->value()) {
               $this->render_variable($variable, $element, $sva);

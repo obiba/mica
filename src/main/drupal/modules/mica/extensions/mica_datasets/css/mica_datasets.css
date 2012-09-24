@@ -22,6 +22,12 @@ table.sva-tooltip th, table.sva-tooltip td {
   vertical-align: text-top;
 }
 
-#harmonization_overview a {
+table#harmonization_overview a {
   border: none;
+}
+
+table#harmonization_overview th .study-title,
+table#harmonization_overview th .study-actions,
+table#harmonization_overview td.center {
+  text-align: center;
 }
