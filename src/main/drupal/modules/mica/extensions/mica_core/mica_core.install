@@ -65,10 +65,12 @@ function mica_core_replace_titles($types) {
 
   foreach ($types as $type) {
     $batch = batch_get();
-    $batch['operations'][] = array('title_field_replacement_toggle', array('node', $type, 'title'));
-    $batch['operations'][] = array('title_field_replacement_batch', array('node', $type, 'title'));
+    if (!title_field_replacement_enabled('node', $type, 'title')){
+      $batch['operations'][] = array('title_field_replacement_toggle', array('node', $type, 'title'));
+      $batch['operations'][] = array('title_field_replacement_batch', array('node', $type, 'title'));
 
-    batch_set($batch);
+      batch_set($batch);
+    }
   }
 
   cache_clear_all();

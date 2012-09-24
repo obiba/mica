@@ -48,6 +48,13 @@ function mica_studies_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_node_study';
+  $strongarm->value = '0';
+  $export['auto_entitylabel_node_study'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'auto_entitylabel_pattern_node_contact';
   $strongarm->value = '<?php
 $wrapper = entity_metadata_wrapper(\'node\', $entity);
@@ -63,13 +70,6 @@ if (strlen($title) > 255) $title = truncate_utf8($title, 255, TRUE);
 return $title;
 ?>';
   $export['auto_entitylabel_pattern_node_contact'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'auto_entitylabel_pattern_node_study';
-  $strongarm->value = '[node:field-complete-name]';
-  $export['auto_entitylabel_pattern_node_study'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
