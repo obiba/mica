@@ -229,7 +229,7 @@ function mica_studies_default_search_api_index() {
                 "name" : "Title_Full_text",
                 "type" : "fulltext",
                 "fields" : [ "title_field" ],
-                "description" : "A Fulltext aggregation of the following fields: Complete name."
+                "description" : "A Fulltext aggregation of the following fields: Title."
               }
             }
           }
@@ -237,7 +237,7 @@ function mica_studies_default_search_api_index() {
       },
       "processors" : {
         "search_api_case_ignore" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "0",
           "settings" : { "fields" : {
               "title" : true,
@@ -284,11 +284,11 @@ function mica_studies_default_search_api_index() {
           }
         },
         "search_api_html_filter" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "10",
           "settings" : {
-            "fields" : { "title" : true },
-            "title" : 0,
+            "fields" : { "title" : true, "body:value" : true, "body:summary" : true },
+            "title" : 1,
             "alt" : 1,
             "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
           }

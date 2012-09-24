@@ -119,7 +119,10 @@ function mica_datasets_default_search_api_index() {
           "settings" : { "default" : "0", "bundles" : { "dataset" : "dataset" } }
         },
         "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_combined" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_aggregation" : {
           "status" : 1,
           "weight" : "0",
@@ -138,18 +141,24 @@ function mica_datasets_default_search_api_index() {
               }
             }
           }
-        },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
+        }
       },
       "processors" : {
         "search_api_case_ignore" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "0",
-          "settings" : { "fields" : { "title" : true, "body:value" : true, "body:summary" : true } }
+          "settings" : { "fields" : {
+              "title" : true,
+              "field_dataset_type" : true,
+              "search_api_aggregation_1" : true,
+              "body:value" : true,
+              "body:summary" : true,
+              "field_dataset_studies:title" : true
+            }
+          }
         },
         "search_api_html_filter" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "10",
           "settings" : {
             "fields" : { "title" : true, "body:value" : true, "body:summary" : true },
@@ -336,10 +345,10 @@ function mica_datasets_default_search_api_index() {
           }
         },
         "search_api_html_filter" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "10",
           "settings" : {
-            "fields" : { "title" : true },
+            "fields" : { "title" : true, "body:value" : true, "body:summary" : true },
             "title" : 0,
             "alt" : 1,
             "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
