@@ -3,6 +3,7 @@
   name        = Mica Corolla
   description = Mica Corolla is a subtheme of Corolla.
   core        = 7.x
+  release     = 7.3.x
   base theme  = corolla
   screenshot  = screenshot.png
 
@@ -94,6 +95,3 @@
   ; Custom CSS selector for collapsiblock
   settings[collapsiblock_block] = 'section.block'
   settings[scheme] = 'mica'
-
-stylesheets[all][] = css/mica_corolla.css
-stylesheets[all][] = color/colors.css

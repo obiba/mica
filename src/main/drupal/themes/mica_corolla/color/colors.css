@@ -1,7 +1,7 @@
 
 /* Background */
 body {
-  background-color: #f8f8f8;
+  background-color: #fdfdfd;
 }
 body.corolla .color-form {
   max-width: 100%;
@@ -41,10 +41,10 @@ table.system-status-report tr {
 a,
 a.active,
 li a.active {
-  color: #086782;
+  color: #53777a;
 }
 legend {
-  background-color: #086782;
+  background-color: #53777a;
   color: #fff;
 }
 
@@ -55,17 +55,17 @@ a.active:hover,
 a.active:focus,
 li a.active:hover,
 li a.active:focus {
-  color: #e25401;
-  border-bottom-color: #e25401;
+  color: #94c7b6;
+  border-bottom-color: #94c7b6;
 }
 .node h1.node-title a:hover,
 .node h2.node-title a:hover {
-  color: #e25401;
+  color: #94c7b6;
 }
 
 /* Menu bar */
 #menu-bar-wrapper {
-  background: #2e2e2d;
+  background: #adc2c3;
 }
 .nav .block-menu ul li a,
 .nav .block-menu ul li a:visited {
@@ -75,62 +75,62 @@ li a.active:focus {
 .nav .block-menu ul a:hover,
 .nav .block-menu ul a:active,
 .nav .block-menu ul a:visited {
-  background: #e25402;
+  background: #adc2c4;
 }
 .nav .block-menu ul li a.active {
-  color: #2e2e2d;
-  background-color: #f8f8f8;
+  color: #adc2c3;
+  background-color: #fdfdfd;
 }
 
 /* Superfish Skin - we keep the Superfish skin seperate so we can special case
    if we really need to */
 .sf-menu.sf-style-default a {
    border: 0;
-   color: #779125;
+   color: #53777c;
 }
 .sf-menu.sf-style-default li.last a {
 }
 .sf-menu.sf-style-default a,
 .sf-menu.sf-style-default a:visited {
-  color: #779125;
+  color: #53777c;
 }
 .sf-menu.sf-style-default span.sf-description {
   color: #ffffef;
 }
 .sf-menu.sf-style-default li li,
 .sf-menu.sf-style-default.sf-navbar li ul {
-  background-color: #2e2e2d;
+  background-color: #adc2c3;
   opacity:0.925;
   filter:alpha(opacity=92.5);
 }
 .sf-menu.sf-style-default li li li {
-  background-color: #2e2e2d;
+  background-color: #adc2c3;
 }
 .sf-menu.sf-style-default li {
   background: transparent;
 }
 .sf-menu.sf-style-default.sf-navbar {
-  background: #2e2e2d;
+  background: #adc2c3;
 }
 .sf-menu.sf-style-default li a,
 .sf-menu.sf-style-default li a:visited {
-  color: #779125;
+  color: #53777c;
 }
 .sf-menu.sf-style-default li:hover,
 .sf-menu.sf-style-default li.sfHover,
 .sf-menu.sf-style-default a:focus,
 .sf-menu.sf-style-default a:hover,
 .sf-menu.sf-style-default a:active {
-  background-color: #e25402;
+  background-color: #adc2c4;
 }
 .sf-menu.sf-style-default .active-trail.sf-depth-1,
 .sf-menu.sf-style-default .sf-depth-1 > a.active {
-  color: #2e2e2d;
+  color: #adc2c3;
   background-color: transparent;
 }
 #menu-bar-wrapper .sf-menu.sf-style-default .active-trail.sf-depth-1,
 #menu-bar-wrapper .sf-menu.sf-style-default .sf-depth-1 > a.active {
-  background-color: #f8f8f8;
+  background-color: #fdfdfd;
 }
 .sf-menu.sf-style-default.sf-navbar li ul li ul {
   background-color: transparent;
@@ -139,29 +139,29 @@ li a.active:focus {
 /* Region header menus */
 .region-header .block-menu li a,
 .region-header .sf-depth-1 > a {
-  border-bottom: 3px solid #c4c4c4;
+  border-bottom: 3px solid #adc2c3;
 }
 .region-header .block-menu ul li a,
 .region-header .block-menu ul li a:visited {
-  color: #2e2e2d;
+  color: #adc2c3;
 }
 .region-header .block-menu li a:hover,
 .region-header .block-menu li a:focus,
 .region-header .block-menu li a:active {
   color: #fcfcfc !important;
-  border-color: #2e2e2d !important;
-  background-color: #e25402;
+  border-color: #adc2c3 !important;
+  background-color: #adc2c4;
 }
 
 .region-header .sf-depth-1 > a:hover,
 .region-header .sf-depth-1 > a:focus {
-  border-color: #2e2e2d !important;
+  border-color: #adc2c3 !important;
 }
 
 .region-header .sf-menu.sf-style-default .active-trail.sf-depth-1,
 .region-header .sf-menu.sf-style-default .sf-depth-1 > a.active {
   color: #fcfcfc;
-  background-color: #e25402;
+  background-color: #adc2c4;
 }
 .region-header .sf-menu.sf-style-default li li a,
 .region-header .sf-menu.sf-style-default li li a:visited {
@@ -174,10 +174,10 @@ li a.active:focus {
 ul.primary li a,
 ul.primary li a:hover,
 ul.primary li a:focus {
-  border-color: #e1e1e1;
+  border-color: #dce5e6;
 }
 ul.primary li.active a {
-  border-color: #e1e1e1 #e1e1e1 #fff;
+  border-color: #dce5e6 #dce5e6 #fff;
 }
 ul.primary li.active a:hover,
 ul.primary li.active a:focus {
@@ -188,7 +188,7 @@ ul.primary li.active a:focus {
 input.form-select,
 input.form-text,
 input.form-submit {
-  border: 1px solid #c4c4c4;
+  border: 1px solid #adc2c3;
 }
 .form-text:focus,
 .form-checkbox:focus,
@@ -209,18 +209,18 @@ textarea:focus {
 }
 /* Slogan */
 #site-slogan {
-  color: #e25400;
+  color: #ca592b;
 }
 #site-slogan::selection {
-  background-color:  #e25400;
+  background-color:  #ca592b;
 }
 #site-slogan::-moz-selection {
-  background-color:  #e25400;
+  background-color:  #ca592b;
 }
 
 /* Poll */
 .poll .bar .foreground {
-  background-color: #e25400 !important;
+  background-color: #ca592b !important;
 }
 .block-poll .poll .percent {
   color: #fff;
@@ -228,7 +228,7 @@ textarea:focus {
 
 /* Border (gray) */
 .content-style {
-  border: 1px solid #e1e1e1;
+  border: 1px solid #dce5e6;
 }
 
 /* Region block borders (uncomment to enable).
@@ -238,7 +238,7 @@ textarea:focus {
 .region-highlighted .block-inner,
 .four-4x25 .block-inner,
 .three-3x33 .block-inner {
-  border: 1px solid #e1e1e1;
+  border: 1px solid #dce5e6;
   padding: 10px;
 }
 */
@@ -246,29 +246,29 @@ textarea:focus {
 /* Border strong (dark gray) */
 #sidebar-first input,
 #sidebar-second input {
-  border: 1px solid #c4c4c4;
+  border: 1px solid #adc2c3;
 }
 .tabs ul.tabs li a {
-  border: 1px solid #c4c4c4;
+  border: 1px solid #adc2c3;
 }
 
 
 /* Verticle tabs */
 ul.vertical-tabs-list li a {
-  background-color: #f5f4f3;
+  background-color: #fafafa;
 }
 
 /* Block title */
 .block h2,
 h2 {
-  color: #779125;
+  color: #53777c;
 }
 .block h2::selection {
   color: #fff;
-  background-color: #779125;
+  background-color: #53777c;
 }
 .block h2::-moz-selection {
-  background-color: #779125;
+  background-color: #53777c;
   color: #fff;
 }
 
@@ -278,9 +278,13 @@ fieldset {
 }
 /* Fieldset border */
 fieldset {
-  border: 1px solid #e1e1e2;
+  border: 1px solid #adc2c4;
 }
 
 div.ctools-modal-content .modal-header{
-  background-color: #e25402;
+  background-color: #adc2c4;
+}
+
+tr.even{
+  background-color: #fafafa;
 }
