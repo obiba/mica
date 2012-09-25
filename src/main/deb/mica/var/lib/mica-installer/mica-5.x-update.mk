@@ -322,4 +322,5 @@ mica-delete-5.0-rc1: mica-delete-5.0
 mica-delete-5.0-rc2: mica-delete-5.0
 mica-delete-5.0-rc3: mica-delete-5.0
 mica-delete-5.0-rc4: mica-delete-5.0
+mica-delete-5.0-rc5: mica-delete-5.0
 
