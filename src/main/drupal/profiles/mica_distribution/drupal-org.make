@@ -197,7 +197,7 @@ projects[search_api_solr][patch][1276970] = http://drupal.org/files/solr_queries
 
 projects[services] = 3.1
 
-projects[smtp] = 1.0-beta1
+projects[smtp] = 1.0-beta2
 
 projects[strongarm][version] = 2.0
 projects[strongarm][patch][1525768] = http://drupal.org/files/print_stdclass_variables.patch
