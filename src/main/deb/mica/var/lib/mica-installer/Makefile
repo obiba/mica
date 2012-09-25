@@ -90,9 +90,9 @@ drupal-sites:
 	chmod a+w /var/lib/mica/default/files && \
 	if [ ! -e /etc/mica/sites/default/settings.php ]; then \
 		cd /etc/mica/sites/default && \
-		cp default.settings.php settings.php && \
-		chmod a+w settings.php ; \
+		cp default.settings.php settings.php ; \
 	fi
+	chmod a+w /etc/mica/sites/default/settings.php
 
 drupal-doc:
 	mv /usr/share/mica/*.txt /usr/share/doc/mica
