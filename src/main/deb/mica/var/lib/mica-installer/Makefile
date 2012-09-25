@@ -32,8 +32,8 @@ drush:
 	@echo "**** Drush install"
 	if [ ! -e $(drushexec) ]; then \
 	  cd /var/cache/mica-installer && \
-	  wget -q http://ftp.drupal.org/files/projects/drush-7.x-$(drush_version).tar.gz && \
-	  tar xzf drush-7.x-$(drush_version).tar.gz ; \
+	  wget -q http://ftp.drupal.org/files/projects/drush-$(drupal_version)-$(drush_version).tar.gz && \
+	  tar xzf drush-$(drupal_version)-$(drush_version).tar.gz ; \
 	fi
 	$(drushexec) version
 
@@ -60,10 +60,10 @@ mica-dist-install-prepare:
 	@echo "**** Download Mica archive"
 	mkdir -p /var/cache/mica-installer/target && \
 	cd /var/cache/mica-installer/target && \
-	wget -q http://ftp.drupal.org/files/projects/mica_distribution-7.x-$(dist_version)-core.tar.gz && \
-	#cp ~/workspace/mica/target/mica-dist-$(deb_version).tar.gz mica-dist-$(deb_version).tar.gz && \
-	tar xzf mica_distribution-7.x-$(dist_version)-core.tar.gz && \
-	mv mica_distribution-7.x-$(dist_version) mica && \
+	#wget -q http://ftp.drupal.org/files/projects/mica_distribution-$(drupal_version)-$(dist_version)-core.tar.gz && \
+	cp ~/workspace/mica/target/mica_distribution-$(drupal_version)-$(dist_version).tar.gz mica_distribution-$(drupal_version)-$(dist_version)-core.tar.gz && \
+	tar xzf mica_distribution-$(drupal_version)-$(dist_version)-core.tar.gz && \
+	mv mica_distribution-$(drupal_version)-$(dist_version) mica && \
 	rm -rf mica/profiles/minimal && \
 	rm -rf mica/profiles/standard && \
 	rm -rf mica/profiles/testing && \
@@ -125,7 +125,7 @@ mica-backup:
 
 mica-delete:
 	@echo "**** Delete Mica files"
-	$(call make-delete-mica-files,$(version))
+	$(call make-delete-mica-files,$(dist_version))
 
 make-delete-mica-files = make mica-delete-$(1)
 

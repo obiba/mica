@@ -3,15 +3,16 @@
 # Requires drush 5+ to be installed: http://drush.ws
 #
 
-version=5.0-rc1
-dist_version=5.0-rc3
-branch=7.x-5.x
+version=5.0-rc2
+dist_version=5.0-rc4
+drupal_version=7.x
+branch=$(drupal_version)-5.x
 
 #
 # Mica versions
 #
 # Modules
-mica_version=7.x-$(version)
+mica_version=$(drupal_version)-$(version)
 mica_category_field_version=$(mica_version)
 mica_community_version=$(mica_version)
 mica_core_version=$(mica_version)
@@ -29,13 +30,12 @@ mica_relation_version=$(mica_version)
 mica_studies_version=$(mica_version)
 node_reference_block_version=$(mica_version)
 
-# Profiles
-mica_distribution_version=$(mica_version)
-mica_demo_version=$(mica_version)
-
 # Themes
 mica_samara_version=$(mica_version)
 mica_corolla_version=$(mica_version)
+
+# Profiles
+mica_distribution_version=$(drupal_version)-$(dist_version)
 
 #
 # Mysql db access
@@ -46,11 +46,13 @@ db_pass=1234
 all: help
 
 help:
-	@echo "Mica version $(version)"
+	@echo "Mica version $(dist_version)"
 	@echo
 	@echo "Available make targets:"
-	@echo "  dev (default)      : Download Drupal, required modules and install Mica local dev version modules/profiles in it. Result is available in 'target' directory."
-	@echo "  prod               : Download Drupal, required modules and install Mica $(version) modules/profiles in it. Result is available in 'target' directory."
+	@echo "  dev (default)      : Download Drupal, required modules and install Mica local dev version modules/profiles in it."
+	@echo "                       Result is available in 'target' directory."
+	@echo "  prod               : Download Drupal, required modules and install Mica $(dist_version) modules/profiles in it."
+	@echo "                       Result is available in 'target' directory."
 	@echo "  package            : Package Drupal for Mica ($(micadir).tar.gz), Mica modules and make a Mica installer Debian package."
 	@echo
 	@echo "  git-push-mica      : Clone Drupal.org Mica Git repository, add current files, commit and push them."
@@ -188,7 +190,7 @@ default-restore:
 deploy: package deploy-mica deploy-mica-solr
 
 deploy-mica:
-ifeq ($(findstring dev,$(version)),dev)
+ifeq ($(findstring dev,$(dist_version)),dev)
 	cp target/deb/mica_*.deb /var/www/pkg/unstable
 	cp target/*.zip /var/www/download/mica/unstable
 	cp target/*.tar.gz /var/www/download/mica/unstable
@@ -199,7 +201,7 @@ else
 endif
 
 deploy-mica-solr:
-ifeq ($(findstring dev,$(version)),dev)
+ifeq ($(findstring dev,$(dist_version)),dev)
 	cp target/deb/mica-solr_*.deb /var/www/pkg/unstable
 else
 	cp target/deb/mica-solr_*.deb /var/www/pkg/stable
@@ -209,10 +211,12 @@ endif
 # Package
 #
 package: debian
-	rm -f target/mica-dist*
+	rm -rf target/mica_distribution*
 	cd target && \
-	tar czf mica-dist-$(deb_version).tar.gz $(micadir) && \
-	zip -qr mica-dist-$(deb_version).zip $(micadir)
+	cp -r $(micadir) mica_distribution-$(drupal_version)-$(deb_version) && \
+	tar czf mica_distribution-$(drupal_version)-$(deb_version).tar.gz mica_distribution-$(drupal_version)-$(deb_version) && \
+	zip -qr mica_distribution-$(drupal_version)-$(deb_version).zip mica_distribution-$(drupal_version)-$(deb_version) && \
+	rm -rf mica_distribution-$(drupal_version)-$(deb_version)
 
 
 #
@@ -238,10 +242,10 @@ deb-mica: deb-mica-install deb-mica-changelog
 deb-mica-solr: deb-mica-solr-install deb-mica-solr-changelog
 
 deb-mica-install:
-	echo "version=$(version)" >> target/deb/mica/var/lib/mica-installer/Makefile
+	echo "drupal_version=$(drupal_version)" >> target/deb/mica/var/lib/mica-installer/Makefile
 	echo "dist_version=$(dist_version)" >> target/deb/mica/var/lib/mica-installer/Makefile
 	echo "deb_version=$(deb_version)" >> target/deb/mica/var/lib/mica-installer/Makefile
-ifeq ($(findstring dev,$(version)),dev)
+ifeq ($(findstring dev,$(dist_version)),dev)
 	echo "stability=unstable" >> target/deb/mica/var/lib/mica-installer/Makefile
 	echo "stability=unstable" >> target/deb/mica/var/lib/mica-installer/Makefile
 else
@@ -249,16 +253,16 @@ else
 endif
 
 deb-mica-solr-install:
-	echo "version=$(version)" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
+	echo "version=$(dist_version)" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
 	echo "deb_version=$(deb_version)" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
-ifeq ($(findstring dev,$(version)),dev)
+ifeq ($(findstring dev,$(dist_version)),dev)
 	echo "stability=unstable" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
 else
 	echo "stability=stable" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
 endif
 
 deb-mica-changelog:
-ifeq ($(findstring dev,$(version)),dev)
+ifeq ($(findstring dev,$(dist_version)),dev)
 	echo "mica ($(deb_version)) unstable; urgency=low" > target/deb/mica/debian/changelog
 else
 	echo "mica ($(deb_version)) stable; urgency=low" > target/deb/mica/debian/changelog
@@ -269,7 +273,7 @@ endif
 	echo " -- OBiBa <info@obiba.org>  $(deb_date)" >> target/deb/mica/debian/changelog
 
 deb-mica-solr-changelog:
-ifeq ($(findstring dev,$(version)),dev)
+ifeq ($(findstring dev,$(dist_version)),dev)
 	echo "mica-solr ($(deb_version)) unstable; urgency=low" > target/deb/mica-solr/debian/changelog
 else
 	echo "mica-solr ($(deb_version)) stable; urgency=low" > target/deb/mica-solr/debian/changelog
@@ -391,11 +395,11 @@ git-finish = rm `find . -type f -name LICENSE.txt` && \
 # Variables (not to be overridden)
 #
 
-micadir=mica-$(version)
-ifeq ($(findstring dev,$(version)),dev)
-	deb_version=$(subst -dev,,$(version))-b$(shell git describe --match build_number | cut -d - -f2)
+micadir=mica-dev
+ifeq ($(findstring dev,$(dist_version)),dev)
+	deb_version=$(subst -dev,,$(dist_version))-b$(shell git describe --match build_number | cut -d - -f2)
 else
-	deb_version=$(version)
+	deb_version=$(dist_version)
 endif
 deb_date=$(shell date -R)
 datestamp=$(shell date +%s)
