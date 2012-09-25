@@ -47,6 +47,8 @@ function mica_core_update_7500(&$sandbox) {
   cache_clear_all();
   _mica_core_rebuild_registry();
 
+  module_enable(array('menu_view_unpublished'));
+
   _mica_core_set_features_rebuild_variable('mica_community');
   _mica_core_set_features_rebuild_variable('mica_data_access');
   _mica_core_set_features_rebuild_variable('mica_datasets');
