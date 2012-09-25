@@ -222,7 +222,12 @@ class OpalXmlFormatView extends RESTServerView {
 
   private function addTermAttribute($attributes, $name, $term) {
     foreach ($this->languages as $language) {
-      $this->addAttribute($attributes, $name, 'text', $language, i18n_taxonomy_term_name($term, $language), self::MAELSTROM_NS);
+      if (function_exists('i18n_taxonomy_term_name')) {
+        $this->addAttribute($attributes, $name, 'text', $language, i18n_taxonomy_term_name($term, $language), self::MAELSTROM_NS);
+      }
+      else{
+        $this->addAttribute($attributes, $name, 'text', $language, $term->name, self::MAELSTROM_NS);
+      }
     }
   }
 
