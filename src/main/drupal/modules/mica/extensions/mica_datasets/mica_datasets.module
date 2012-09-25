@@ -1542,8 +1542,9 @@ function mica_datasets_node_delete($node) {
       if (!empty($sva_results['node'])) {
         foreach (node_load_multiple(array_keys($sva_results['node'])) as $sva) {
           $sva_wrapper = entity_metadata_wrapper('node', $sva);
-          if (!empty($sva_wrapper->field_sva_variable)) {
-            _mica_datasets_remove_and_save_element_from_entity_list_wrapper($sva->field_sva_variable, $sva_wrapper, 'field_variable_study_var_att');
+          if ($sva_wrapper->field_sva_variable->value() !== NULL) {
+            $variable_wrapper = entity_metadata_wrapper('node', $sva_wrapper->field_sva_variable->value());
+            _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable_wrapper, $sva_wrapper, 'field_variable_study_var_att');
             $sva_wrapper->delete();
           }
         }
