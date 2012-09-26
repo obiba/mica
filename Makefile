@@ -43,6 +43,35 @@ mica_distribution_version=$(drupal_version)-$(dist_version)
 db_user=root
 db_pass=1234
 
+#
+# Variables (not to be overridden)
+#
+micadir=mica-dev
+deb_date=$(shell date -R)
+datestamp=$(shell date +%s)
+drupal_org_mica=git.drupal.org:project/mica.git
+drupal_org_mica_dist=git.drupal.org:project/mica_distribution.git
+
+ifeq ($(findstring rc,$(dist_version)),rc)
+	stability=unstable
+else
+ifeq ($(findstring dev,$(dist_version)),dev)
+	stability=unstable
+else
+	stability=stable
+endif
+endif
+
+ifeq ($(findstring dev,$(dist_version)),dev)
+	deb_version=$(subst -dev,,$(dist_version))-b$(shell git describe --match build_number | cut -d - -f2)
+else
+	deb_version=$(dist_version)
+endif
+
+#
+# Targets
+#
+
 all: help
 
 help:
@@ -190,7 +219,7 @@ default-restore:
 deploy: package deploy-mica deploy-mica-solr
 
 deploy-mica:
-ifeq ($(findstring dev,$(dist_version)),dev)
+ifeq ($(stability),unstable)
 	cp target/deb/mica_*.deb /var/www/pkg/unstable
 	cp target/*.zip /var/www/download/mica/unstable
 	cp target/*.tar.gz /var/www/download/mica/unstable
@@ -201,7 +230,7 @@ else
 endif
 
 deploy-mica-solr:
-ifeq ($(findstring dev,$(dist_version)),dev)
+ifeq ($(stability),unstable)
 	cp target/deb/mica-solr_*.deb /var/www/pkg/unstable
 else
 	cp target/deb/mica-solr_*.deb /var/www/pkg/stable
@@ -245,7 +274,7 @@ deb-mica-install:
 	echo "drupal_version=$(drupal_version)" >> target/deb/mica/var/lib/mica-installer/Makefile
 	echo "dist_version=$(dist_version)" >> target/deb/mica/var/lib/mica-installer/Makefile
 	echo "deb_version=$(deb_version)" >> target/deb/mica/var/lib/mica-installer/Makefile
-ifeq ($(findstring dev,$(dist_version)),dev)
+ifeq ($(stability),unstable)
 	echo "stability=unstable" >> target/deb/mica/var/lib/mica-installer/Makefile
 	echo "stability=unstable" >> target/deb/mica/var/lib/mica-installer/Makefile
 else
@@ -255,14 +284,14 @@ endif
 deb-mica-solr-install:
 	echo "version=$(dist_version)" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
 	echo "deb_version=$(deb_version)" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
-ifeq ($(findstring dev,$(dist_version)),dev)
+ifeq ($(stability),unstable)
 	echo "stability=unstable" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
 else
 	echo "stability=stable" >> target/deb/mica-solr/var/lib/mica-solr-installer/Makefile
 endif
 
 deb-mica-changelog:
-ifeq ($(findstring dev,$(dist_version)),dev)
+ifeq ($(stability),unstable)
 	echo "mica ($(deb_version)) unstable; urgency=low" > target/deb/mica/debian/changelog
 else
 	echo "mica ($(deb_version)) stable; urgency=low" > target/deb/mica/debian/changelog
@@ -273,7 +302,7 @@ endif
 	echo " -- OBiBa <info@obiba.org>  $(deb_date)" >> target/deb/mica/debian/changelog
 
 deb-mica-solr-changelog:
-ifeq ($(findstring dev,$(dist_version)),dev)
+ifeq ($(stability),unstable)
 	echo "mica-solr ($(deb_version)) unstable; urgency=low" > target/deb/mica-solr/debian/changelog
 else
 	echo "mica-solr ($(deb_version)) stable; urgency=low" > target/deb/mica-solr/debian/changelog
@@ -390,18 +419,3 @@ git-finish = rm `find . -type f -name LICENSE.txt` && \
 	git commit -m "$$git_commit_msg" && \
 	git push origin && \
 	cd ../../..
-
-#
-# Variables (not to be overridden)
-#
-
-micadir=mica-dev
-ifeq ($(findstring dev,$(dist_version)),dev)
-	deb_version=$(subst -dev,,$(dist_version))-b$(shell git describe --match build_number | cut -d - -f2)
-else
-	deb_version=$(dist_version)
-endif
-deb_date=$(shell date -R)
-datestamp=$(shell date +%s)
-drupal_org_mica=git.drupal.org:project/mica.git
-drupal_org_mica_dist=git.drupal.org:project/mica_distribution.git
