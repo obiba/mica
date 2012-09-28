@@ -2110,12 +2110,14 @@ function mica_datasets_create_variables($harmonizations) {
       foreach ($harmonization['categories'] as $category) {
         $wrapper->language($dataset->language)->field_variable_categories[$i]->name->set($category['name']);
         $wrapper->language($dataset->language)->field_variable_categories[$i]->missing->set($category['missing']);
-        foreach ($category['label'] as $language => $value) {
-          $wrapper->language($language)->field_variable_categories[$i]->label->set($value);
+        if (isset($category['label'])) {
+          foreach ($category['label'] as $language => $value) {
+            $wrapper->language($language)->field_variable_categories[$i]->label->set($value);
 
-          // needed to share values between languages
-          $wrapper->language($language)->field_variable_categories[$i]->name->set($category['name']);
-          $wrapper->language($language)->field_variable_categories[$i]->missing->set($category['missing']);
+            // needed to share values between languages
+            $wrapper->language($language)->field_variable_categories[$i]->name->set($category['name']);
+            $wrapper->language($language)->field_variable_categories[$i]->missing->set($category['missing']);
+          }
         }
         $i++;
       }
