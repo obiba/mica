@@ -235,7 +235,7 @@ projects[workbench_moderation][patch][1245590] = http://drupal.org/files/retaint
 ; jsonpath is not downloaded here because of http://code.google.com/p/jsonpath/issues/detail?id=8
 
 libraries[ckeditor][download][type]= get
-libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.3/ckeditor_3.6.3.tar.gz
+libraries[ckeditor][download][url] = http://drupal.org/files/ckeditor_3.6.4.tar_.gz
 libraries[ckeditor][directory_name] = ckeditor
 
 libraries[jquery_tooltip][download][type]= get
