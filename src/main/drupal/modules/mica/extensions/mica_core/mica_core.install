@@ -62,6 +62,9 @@ function mica_core_update_7500(&$sandbox) {
   variable_del('ant_pattern_study');
   variable_del('ant_php_study');
   variable_del('ant_study');
+  variable_del('ant_pattern_network');
+  variable_del('ant_php_network');
+  variable_del('ant_network');
   module_disable(array('auto_nodetitle'));
 }
 
