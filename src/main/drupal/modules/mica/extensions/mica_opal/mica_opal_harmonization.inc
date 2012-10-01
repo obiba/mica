@@ -1,4 +1,4 @@
-<?
+<?php
 
 function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
 
@@ -15,7 +15,7 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
     $raw = $opal->client()->execute($post);
 
     $array = json_decode($raw, TRUE);
-    // Support JSON lines format.
+    // Support JSON lines format.r
     if (!is_array($array)) {
       $raw = preg_replace('/}\s*{/', '},{', $raw);
       $raw = '[' . $raw . ']';
