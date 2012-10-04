@@ -714,3 +714,10 @@ input.form-button, input.form-submit {
   border-radius: 8px;
   cursor: pointer;
 }
+
+/* Views Bulk Operation */
+.form-item.form-type-radio,
+.form-item.form-type-checkbox {
+  margin: 4px 0;
+  padding-right: 15px;
+}

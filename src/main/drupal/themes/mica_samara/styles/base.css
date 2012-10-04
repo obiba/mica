@@ -273,10 +273,10 @@ caption {
  * Forms
  */
 form .field-multiple-table {
-    margin: 0 0 10px 0;
+  margin: 0 0 10px 0;
 }
 form .field-multiple-table th.field-label {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 fieldset {
   margin: 15px 0;
@@ -400,6 +400,7 @@ select {
 .form-item.form-type-radio,
 .form-item.form-type-checkbox {
   margin: 4px 0;
+  padding-right: 15px;
 }
 input.form-checkbox,
 input.form-radio {
@@ -422,7 +423,7 @@ input.form-button:hover,
 input.form-submit:hover,
 input.form-button:focus,
 input.form-submit:focus {
-   border-color: #666!important;
+  border-color: #666!important;
 }
 input[disabled="disabled"] {
   background-color: #eaeaea;
