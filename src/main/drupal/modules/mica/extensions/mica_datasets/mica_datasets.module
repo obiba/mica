@@ -395,9 +395,9 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
           // set variable dimensions
           $links['variable-dimensions'] = array(
             '#theme' => 'menu_local_action',
-            '#weight' => 5,
+            '#weight' => 45,
             '#link' => array(
-              'title' => t('Assign dimensions'),
+              'title' => t('Add dimensions'),
               'href' => 'variables-dimensions/' . $node->nid,
               'localized_options' => array(
                 'query' => array(
@@ -410,7 +410,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
           // add variables
           $links['add-variable'] = array(
             '#theme' => 'menu_local_action',
-            '#weight' => 7,
+            '#weight' => 50,
             '#link' => array(
               'title' => t('Add new variable'),
               'href' => 'node/add/variable',
@@ -429,7 +429,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
               // import variables
               $links['import-variables'] = array(
                 '#theme' => 'menu_local_action',
-                '#weight' => 7,
+                '#weight' => 40,
                 '#link' => array(
                   'title' => t('Import Variables'),
                   'href' => 'mica_datasets_harmonization/nojs/' . $node->nid,
