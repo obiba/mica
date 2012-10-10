@@ -219,6 +219,8 @@ projects[view_unpublished] = 1.1
 
 projects[views] = 3.5
 
+projects[views_bulk_operations] = 3.0
+
 projects[views_data_export][version] = 3.0-beta6
 projects[views_data_export][patch][1224894] = http://drupal.org/files/html_in_csv-1224894-10.patch
 

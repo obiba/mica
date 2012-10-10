@@ -41,6 +41,8 @@ function mica_datasets_configure_facet_blocks() {
     'field_measure' => array(),
     'field_value_type' => array(),
   );
-  mica_core_configure_facet_blocks('variable_index', 'variable', $config, 'variable-search', 'variable_current_search');
+  mica_core_configure_facet_blocks('variable_index', 'variable', $config, 'variable-search
+variables-dimensions
+variables-dimensions/*', 'variable_current_search');
 }
 

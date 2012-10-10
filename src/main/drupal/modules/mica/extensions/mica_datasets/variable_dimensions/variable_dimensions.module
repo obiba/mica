@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Variable dimensions feature.
- */
-
-include_once 'variable_dimensions.features.inc';

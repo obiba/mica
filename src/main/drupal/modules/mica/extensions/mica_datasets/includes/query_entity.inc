@@ -152,6 +152,7 @@ class MicaDatasetQueryTerm extends Entity {
    * Constructor as a helper to the parent constructor.
    */
   public function __construct(array $values = array()) {
+    require_once('query/terms.inc');
     $values['module'] = 'mica_datasets';
     if (!isset($values['options']['type']) && isset($values['variable_id'])) {
       $values['options']['type'] = AbstractTerm::typeFor(node_load($values['variable_id']));

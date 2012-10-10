@@ -327,6 +327,51 @@ function mica_datasets_update_7500(&$sandbox){
     ->execute();
 }
 
+/*
+ * Configure facet block for the new page "Manage Variable Dimensions"
+ */
+function mica_datasets_update_7510(&$update) {
+
+  require_once(drupal_get_path('module', 'mica_datasets') . '/mica_datasets.facet_blocks.inc');
+
+  $config = array(
+    'field_dataset:field_dataset_type' => array(
+      'name' => t('Dataset Type'),
+    ),
+    'field_dataset' => array(),
+    'field_variable_study_var_att:field_sva_status' => array(
+      'name' => t('Harmonization Status')
+    ),
+    'search_api_combined_1' => array(
+      'name' => t('Study')
+    ),
+    'field_data_source' => array(),
+    'field_individual_participant_mea' => array(),
+    'field_disease_history' => array(),
+    'field_medical_health_interv' => array(),
+    'field_medication' => array(),
+    'field_reproductive_history' => array(),
+    'field_early_life' => array(),
+    'field_life_habits_behaviours' => array(),
+    'field_sociodemographic_charact' => array(),
+    'field_physical_environment' => array(),
+    'field_social_environment' => array(),
+    'field_perception_of_health' => array(),
+    'field_anthropometric_structures' => array(),
+    'field_body_structures' => array(),
+    'field_body_functions' => array(),
+    'field_laboratory_measures' => array(),
+    'field_essence' => array(),
+    'field_target' => array(),
+    'field_period' => array(),
+    'field_measure' => array(),
+    'field_value_type' => array(),
+  );
+  mica_core_configure_facet_blocks('variable_index', 'variable', $config, 'variables-dimensions
+variables-dimensions
+variables-dimensions/*');
+}
+
 /**
  * Implements hook_update_dependencies().
  */
