@@ -1508,7 +1508,7 @@ function mica_datasets_views_default_views() {
     ),
     'action::views_bulk_operations_modify_action' => array(
       'selected' => 1,
-      'use_queue' => 1,
+      'use_queue' => 0,
       'skip_confirmation' => 1,
       'override_label' => 1,
       'label' => 'Set dimensions',
