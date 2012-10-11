@@ -46620,3 +46620,9 @@ msgstr "Ajouter une étude"
 
 msgid "!title -- Harmonization"
 msgstr "!title -- Harmonisation"
+
+msgid "Add dimensions"
+msgstr "Ajouter des dimensions"
+
+msgid "Manage Variable Dimensions"
+msgstr "Gestion des dimensions de variable"

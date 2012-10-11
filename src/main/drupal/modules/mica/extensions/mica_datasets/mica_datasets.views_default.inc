@@ -1511,7 +1511,7 @@ function mica_datasets_views_default_views() {
       'use_queue' => 0,
       'skip_confirmation' => 1,
       'override_label' => 1,
-      'label' => 'Set dimensions',
+      'label' => 'Add dimensions',
       'settings' => array(
         'show_all_tokens' => 0,
         'display_values' => array(
