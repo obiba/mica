@@ -327,7 +327,7 @@ function mica_datasets_update_7500(&$sandbox){
     ->execute();
 }
 
-/*
+/**
  * Configure facet block for the new page "Manage Variable Dimensions"
  */
 function mica_datasets_update_7510(&$update) {
@@ -367,9 +367,12 @@ function mica_datasets_update_7510(&$update) {
     'field_measure' => array(),
     'field_value_type' => array(),
   );
-  mica_core_configure_facet_blocks('variable_index', 'variable', $config, 'variables-dimensions
+  mica_core_configure_facet_blocks('variable_index', 'variable', $config, 'variable-search
 variables-dimensions
 variables-dimensions/*');
+
+  module_enable(array('views_bulk_operations'));
+  features_rebuild(array('mica_datasets' => 'views_view'));
 }
 
 /**

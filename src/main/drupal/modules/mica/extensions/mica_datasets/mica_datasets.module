@@ -8,8 +8,8 @@
 include_once('mica_datasets.features.inc');
 include_once('mica_datasets.devel.inc');
 include_once('mica_datasets.menu.inc');
+include_once('mica_datasets.views_bulk_operations.inc');
 require_once('includes/query_entity.inc');
-require_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'views_bulk_operations') . '/views/views_bulk_operations_handler_field_operations.inc');
 
 define('PRIVATE_KEY_FILE', 'private://mica-privatekey.pem');
 
@@ -2195,11 +2195,6 @@ function mica_datasets_translation_exclude_fields() {
   );
 }
 
-
-/**
- * Views bulk operations integration
- */
-
 /**
  * Implements hook_views_data_alter().
  */
@@ -2217,22 +2212,5 @@ function mica_datasets_views_data_alter(&$data) {
         ),
       );
     }
-  }
-}
-
-class mica_datasets_handler_field_operations extends views_bulk_operations_handler_field_operations {
-  /**
-   * Override their get entity type since the base table name won't match at all.
-   */
-  function get_entity_type() {
-    return $this->definition['item_type'];
-  }
-
-  /**
-   * Overridden to try to fish out the id.
-   */
-  public function get_value($values, $field = NULL) {
-    // I'm not sure this is the best source for this but the name seemed consistent.
-    return $values->_entity_properties['search_api_item_id'];
   }
 }
