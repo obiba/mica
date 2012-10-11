@@ -1,0 +1,18 @@
+/**
+ * Do not delete or rename this file, if you do not use it leave it blank.
+ */
+#branding,
+.region-header  {
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+#branding hgroup {
+  margin-top: 0.8em;
+}
+#site-name {
+  font-size: 3.5em;
+}
+.region-secondary-content .block {
+  margin-bottom: 0;
+  font-size: 1.077em;
+}
