@@ -4,7 +4,7 @@
 #
 
 version=5.1-rc2
-dist_version=5.1-rc1
+dist_version=5.1-rc2
 drupal_version=7.x
 branch=$(drupal_version)-5.x
 
