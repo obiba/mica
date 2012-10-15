@@ -20,6 +20,7 @@ div#block-search-form.block.block-search {
   margin-top: 0px;
   margin-bottom: 0px;
   clear: right !important;
+  width:174px;
 }
 
 section#block-lang-dropdown-language.block.block-lang-dropdown {
@@ -196,6 +197,7 @@ ul.ajax-register-links.inline li.even.first:after {
 
 #mica-search-form input.form-submit,
 #search-block-form input.form-submit {
+  margin-top: -10px;
   margin-left: 0;
   margin-right: 0;
   height: 25px;
