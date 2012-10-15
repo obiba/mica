@@ -41,6 +41,7 @@ code {
 
 fieldset .form-wrapper {
   margin-bottom: 9px;
+  padding-top: 20px !important;
 }
 
 form .field-multiple-table {

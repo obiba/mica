@@ -85,7 +85,7 @@ projects[feeds][patch][11075222] = http://drupal.org/files/issues/1107522-empty-
 projects[feeds][patch][110752213] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-13.patch
 projects[feeds][patch][110752215links] = http://drupal.org/files/ignore-empty-link-fields-1107522-15.patch
 
-projects[feeds_tamper][version] = 1.0-beta3
+projects[feeds_tamper][version] = 1.0-beta4
 projects[feeds_tamper][patch][1416700] = http://drupal.org/files/1416700-4-feeds_tamper-existing-terms-plugin.patch
 
 projects[field_display_label][version] = 1.2
