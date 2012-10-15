@@ -638,3 +638,4 @@ mica-delete-5.1:
 
 mica-delete-5.1-dev: mica-delete-5.1
 mica-delete-5.1-rc1: mica-delete-5.1
+mica-delete-5.1-rc2: mica-delete-5.1
