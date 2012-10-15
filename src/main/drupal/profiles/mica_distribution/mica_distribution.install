@@ -56,7 +56,7 @@ function _mica_distribution_set_default_themes($mica_theme, $admin_theme) {
 
   variable_set('theme_mica_corolla_settings', $config['values']);
 
-  drupal_set_message(t('The configuration options have been saved.'));
+  drupal_set_message(t('The theme \'Mica Corolla has been installed. You must save the theme preference to fix display issues (navigate to Appearance - Mica Corolla - Settings - Save). \''));
 
   cache_clear_all();
 }

@@ -3,10 +3,10 @@
 # Requires drush 5+ to be installed: http://drush.ws
 #
 
-version=6.0-dev
-dist_version=6.0-dev
+version=5.1-rc1
+dist_version=5.1-rc1
 drupal_version=7.x
-branch=$(drupal_version)-6.x
+branch=$(drupal_version)-5.x
 
 #
 # Mica versions

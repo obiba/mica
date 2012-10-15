@@ -13,7 +13,7 @@
   line-height: 1.3;
   margin: 0;
   padding: 0 0 4px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 #block-system-main .block-inner {
   margin: 0;
@@ -31,9 +31,9 @@
   text-align: center;
   margin-bottom: 35px;
 }
-.region-header .block {
+/*.region-header .block {
   margin-top: 20px;
-}
+}*/
 .region-header .block-superfish {
   margin-top: 36px;
 }
@@ -45,9 +45,9 @@
 #menu-bar #block-system-user-menu {
   float: right;
 }
-.block .item-list ul  {
+/*.block .item-list ul  {
   margin-left: 1em;
-}
+}*/
 .block-panels_mini .mini-panel-title {
   margin: 0 10px;
 }

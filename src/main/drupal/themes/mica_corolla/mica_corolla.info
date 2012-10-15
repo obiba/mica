@@ -5,7 +5,7 @@
   core        = 7.x
   release     = 7.3.x
   engine      = phptemplate
-  base theme  = corolla
+  base theme  = adaptivetheme
   screenshot  = screenshot.png
 
 ;----------// CSS
@@ -19,7 +19,7 @@
   stylesheets[all][] = css/articles.css
   stylesheets[all][] = css/comments.css
   stylesheets[all][] = css/fields.css
-  ;stylesheets[all][] = css/blocks.css
+  stylesheets[all][] = css/blocks.css
   stylesheets[all][] = css/navigation.css
   stylesheets[all][] = css/fonts.css
   stylesheets[all][] = css/mica_corolla.css
