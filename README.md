@@ -47,3 +47,7 @@ obiba-users@googlegroups.com
 
 [http://groups.google.com/group/obiba-users](http://groups.google.com/group/obiba-users)
 
+
+## License
+
+OBiBa software are open source and made available under the [GPL3 licence](http://www.obiba.org/node/62). OBiBa software are free of charge.
