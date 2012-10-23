@@ -768,7 +768,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_design']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_design']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_design']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_design']['separator'] = ',';
+  $handler->display->display_options['fields']['field_design']['separator'] = '|';
   $handler->display->display_options['fields']['field_design']['field_api_classes'] = 0;
   /* Field: Content: Please specify what other design */
   $handler->display->display_options['fields']['field_design_other_sp']['id'] = 'field_design_other_sp';
@@ -820,7 +820,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_recruitment']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_recruitment']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_recruitment']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_recruitment']['separator'] = ',';
+  $handler->display->display_options['fields']['field_recruitment']['separator'] = '|';
   $handler->display->display_options['fields']['field_recruitment']['field_api_classes'] = 0;
   /* Field: Content: Please specify what other recruitment target */
   $handler->display->display_options['fields']['field_recruitment_other_sp']['id'] = 'field_recruitment_other_sp';
@@ -1203,7 +1203,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_select_criteria']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_select_criteria']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_select_criteria']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_select_criteria']['separator'] = ',';
+  $handler->display->display_options['fields']['field_select_criteria']['separator'] = '|';
   $handler->display->display_options['fields']['field_select_criteria']['field_api_classes'] = 0;
   /* Field: Content: Minimum age */
   $handler->display->display_options['fields']['field_age_min']['id'] = 'field_age_min';
@@ -1286,7 +1286,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_country']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_country']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_country']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_country']['separator'] = ',';
+  $handler->display->display_options['fields']['field_country']['separator'] = '|';
   $handler->display->display_options['fields']['field_country']['field_api_classes'] = 0;
   /* Field: Content: Territory or city of residence */
   $handler->display->display_options['fields']['field_territory']['id'] = 'field_territory';
@@ -1337,7 +1337,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_ethnic_origin']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_ethnic_origin']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_ethnic_origin']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_ethnic_origin']['separator'] = ',';
+  $handler->display->display_options['fields']['field_ethnic_origin']['separator'] = '|';
   $handler->display->display_options['fields']['field_ethnic_origin']['field_api_classes'] = 0;
   /* Field: Content: Health Status */
   $handler->display->display_options['fields']['field_health_status']['id'] = 'field_health_status';
@@ -1365,7 +1365,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_health_status']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_health_status']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_health_status']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_health_status']['separator'] = ',';
+  $handler->display->display_options['fields']['field_health_status']['separator'] = '|';
   $handler->display->display_options['fields']['field_health_status']['field_api_classes'] = 0;
   /* Field: Content: Please specify what other selection criteria */
   $handler->display->display_options['fields']['field_selection_others_sp']['id'] = 'field_selection_others_sp';
@@ -1486,7 +1486,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_data_sources']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_data_sources']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_data_sources']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_data_sources']['separator'] = ',';
+  $handler->display->display_options['fields']['field_data_sources']['separator'] = '|';
   $handler->display->display_options['fields']['field_data_sources']['field_api_classes'] = 0;
   /* Field: Content: Please specify what other data sources */
   $handler->display->display_options['fields']['field_data_sources_sp']['id'] = 'field_data_sources_sp';
@@ -1538,7 +1538,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_bio_samples_management']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_bio_samples_management']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_bio_samples_management']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_bio_samples_management']['separator'] = ',';
+  $handler->display->display_options['fields']['field_bio_samples_management']['separator'] = '|';
   $handler->display->display_options['fields']['field_bio_samples_management']['field_api_classes'] = 0;
   /* Field: Content: Please specify type of tissues */
   $handler->display->display_options['fields']['field_tissues_sp']['id'] = 'field_tissues_sp';
@@ -1962,7 +1962,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_documents']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_documents']['delta_reversed'] = 0;
   $handler->display->display_options['fields']['field_documents']['delta_first_last'] = 0;
-  $handler->display->display_options['fields']['field_documents']['separator'] = ',';
+  $handler->display->display_options['fields']['field_documents']['separator'] = '|';
   $handler->display->display_options['fields']['field_documents']['field_api_classes'] = 0;
   /* Field: Content: Logo */
   $handler->display->display_options['fields']['field_logo']['id'] = 'field_logo';

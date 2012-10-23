@@ -1,0 +1,47 @@
+<?php
+/**
+ * @file
+ * Mica Datasets Crosstab module file
+ */
+
+
+function mica_datasets_crosstab_menu(){
+
+  $items['dataset-crosstab'] = array(
+    'title' => 'Dataset Crosstab',
+    'description' => '',
+    'page callback' => 'mica_datasets_crosstab_page',
+    //'page arguments' => array(1),
+    'access callback' => TRUE,
+    //'access arguments' => array(1, 'dataset', 'view'),
+    'type' => MENU_LOCAL_ACTION,
+    'file' => 'mica_datasets_crosstab.pages.inc',
+  );
+
+  return $items;
+}
+  /**
+   * Implements hook_menu_local_tasks_alter().
+   */
+function mica_datasets_crosstab_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+
+  $links = array();
+
+  switch ($root_path) {
+
+    case 'node/%':
+      //if (node_access('create', 'dataset')) {
+        $links['view-dataset-crosstab'] = array(
+          '#theme' => 'menu_local_action',
+          '#link' => array(
+            'title' => t('Comparison table'),
+            'href' => 'dataset-crosstab', // Arguments could be taxonomies and dataset
+          ),
+        );
+      //}
+      break;
+  }
+
+  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
+
+}
