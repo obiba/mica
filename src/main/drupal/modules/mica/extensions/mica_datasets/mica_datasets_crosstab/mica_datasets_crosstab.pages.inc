@@ -15,6 +15,8 @@
  * Display queries.
  */
 function mica_datasets_crosstab_page() {
+  ctools_add_css('mica_datasets_crosstab', 'mica_datasets_crosstab');
+
   drupal_set_title(t('Dimensions Comparison Table'));
 
   $output = drupal_render(drupal_get_form('mica_datasets_crosstab_legend_form'));
@@ -45,7 +47,6 @@ function mica_datasets_crosstab_page() {
     foreach($taxonomy_fields as $taxonomy_field => $info){
       $map_field_by_title[strtolower($info['name'])] = $taxonomy_field;
     }
-
     $taxonomy_fields = array_keys($taxonomy_fields);
 
 
@@ -54,8 +55,14 @@ function mica_datasets_crosstab_page() {
       // Filter permissions
       if (_mica_datasets_node_access($dataset_id, 'dataset', 'view')){
         $node = node_load($dataset_id);
-        $header[$dataset_id] = $node->title;
+        $header[$dataset_id] = array(
+          'data' => array(
+            '#markup' => $node->title,
+          ),
+          'class' => array('dataset-title')
+        );
 
+        $datasets[$dataset_id]['title'] =$node->title;
         // Execute search query once and build the facet count map
         $result = $index->query()->condition('field_dataset', $dataset_id)->execute();
         if (!empty($result['search_api_facets'])){
@@ -90,25 +97,31 @@ function _mica_datasets_crosstab_dimension_table($header, $datasets, $taxonomy, 
   // Fetch all terms
   $machine_name = substr($taxonomy[0], 0, drupal_strlen($taxonomy[0]) - 4);
   $vocabulary = taxonomy_vocabulary_machine_name_load($machine_name);
-  //$output = '<h1>' . t("@title", array('@title' => $taxonomy[1])) . '</h1>';
 
   $tree = taxonomy_get_tree($vocabulary->vid);
   if (!empty($tree)) {
     $options = array();
     foreach ($tree as $term) {
-      // See taxonomy.admin.inc:573
-      if (isset($map_field_by_title[strtolower($term->name)])){
-        $term_url = l(t("@name", array('@name' => $term->name)), 'variable-search',
-          array(
-            'query' => array(
-              'f[0]' => $map_field_by_title[strtolower($term->name)] . ':' . $term->tid,
-            )
-          )
-        );
-      }else{
-        $term_url = t("@name", array('@name' => $term->name));
-      }
-      $row[0] = (isset($term->depth) && $term->depth > 0 ? theme('indentation', array('size' => $term->depth)) : ''). $term_url;
+      // Initializes variables passed to theme hook.
+      $variables = array(
+        'text' => $term->name,
+        'path' => '',
+        //'count' => 0,
+        'options' => array(
+          'attributes' => array('class' => 'facetapi-inactive'),
+          'html' => FALSE,
+          'query' => array(
+            'f[0]' => $map_field_by_title[strtolower($taxonomy[1])] . ':' . $term->tid,
+          ),
+        ),
+      );
+
+      // Themes the link, adds row to facets.
+      $row[0] = array(
+        'class' => array('leaf'),
+        'data' => (isset($term->depth) && $term->depth > 0 ? theme('indentation', array('size' => $term->depth)) : '') .
+          theme('facetapi_link_inactive', $variables),
+      );
 
       // Fill facet count in the same order as the header
       foreach($header as $dataset_id => $title){
@@ -120,13 +133,23 @@ function _mica_datasets_crosstab_dimension_table($header, $datasets, $taxonomy, 
                 'query' => array(
                   'f[0]' => 'field_dataset:' . $dataset_id,
                   'f[1]' => $datasets[$dataset_id][$term->tid]['facet'] . ':' . $term->tid,
-                )
+                ),
               )
             );
-            $row[$dataset_id] = $url;
+            $row[$dataset_id] = array(
+              'data' => array(
+                '#markup' => $url,
+              ),
+              'class' => array('center')
+            );
           }
           else{
-            $row[$dataset_id] = '&nbsp;';
+            $row[$dataset_id] = array(
+              'data' => array(
+                '#markup' => '-',
+              ),
+              'class' => array('center')
+            );
           }
         }
       }
@@ -134,7 +157,7 @@ function _mica_datasets_crosstab_dimension_table($header, $datasets, $taxonomy, 
     }
   }
 
-  $header[0] = '<div style="width:250px;">' . t("@title", array('@title' => $taxonomy[1])) . '</div>';
+  $header[0] = t("@title", array('@title' => $taxonomy[1]));
   $output = theme(
     'table',
     array(
@@ -142,8 +165,7 @@ function _mica_datasets_crosstab_dimension_table($header, $datasets, $taxonomy, 
       'rows' => $rows,
       'empty' => t('No information found'),
       'sticky' => FALSE,
-      //'attributes' => array('id' => 'harmonization_overview'),
-      'sticky' => TRUE,
+      'attributes' => array('class' => 'dataset_crosstab'),
     )
   );
 

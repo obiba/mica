@@ -1,0 +1,12 @@
+table.dataset_crosstab th.dataset-title,
+table.dataset_crosstab td.center {
+  text-align: center;
+}
+
+table.dataset_crosstab th:first-child{
+  width:40%;
+}
+
+table.dataset_crosstab{
+  margin: 0px;
+}
