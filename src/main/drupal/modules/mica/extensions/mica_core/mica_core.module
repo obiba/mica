@@ -469,36 +469,6 @@ function mica_core_configure_role_permissions($role_name, $permissions) {
   }
 }
 
-/**
- * Add metadata to the node entity. Metadata to store Fetched Uri and Fetched datetime
- */
-/*function mica_core_entity_property_info(){
-  $info = array();
-
-  // Add meta-data about the basic node properties.
-  $properties = &$info['node']['properties'];
-
-  $properties['remote_url'] = array(
-    'label' => t("Remote URI"),
-    'description' => t("The URL of the remote node's edit page."),
-    'schema field' => 'remote_url',
-    'type' => 'uri',
-    'setter callback' => 'entity_property_verbatim_set',
-    'getter callback' => 'entity_property_verbatim_get',
-  );
-
-  $properties['remote_last_fetch'] = array(
-    'label' => t("Last fetched date"),
-    'description' => t("The timestamp of the last fetch."),
-    'schema field' => 'remote_last_fetch',
-    'type' => 'date',
-    'setter callback' => 'entity_property_verbatim_set',
-    'getter callback' => 'entity_property_verbatim_get',
-  );
-
-  return $info;
-}*/
-
 function mica_core_feeds_processor_targets_alter(&$targets, $content_type) {
 
   $targets['remote_url'] = array(

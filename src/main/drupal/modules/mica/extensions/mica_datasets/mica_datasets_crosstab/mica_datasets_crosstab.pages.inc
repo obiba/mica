@@ -14,11 +14,12 @@
 /**
  * Display queries.
  */
+/*
 function mica_datasets_crosstab_page() {
   ctools_add_css('mica_datasets_crosstab', 'mica_datasets_crosstab');
 
-  drupal_set_title(t('Dimensions Comparison Table'));
-
+//  drupal_set_title(t('Dimensions Comparison Table'));
+//
   $output = drupal_render(drupal_get_form('mica_datasets_crosstab_legend_form'));
 
   // Study datasets with at least one variable
@@ -42,13 +43,11 @@ function mica_datasets_crosstab_page() {
       }
     }
 
-
     $map_field_by_title = array();
     foreach($taxonomy_fields as $taxonomy_field => $info){
       $map_field_by_title[strtolower($info['name'])] = $taxonomy_field;
     }
     $taxonomy_fields = array_keys($taxonomy_fields);
-
 
     $keys = array_keys($entities['node']);
     foreach ($keys as $dataset_id) {
@@ -185,7 +184,7 @@ function mica_datasets_crosstab_legend_form($form, $form_state) {
 
   return $form;
 }
-
+*/
 function _mica_datasets_harmonization_variable_tooltip($variable) {
   $wrapper = entity_metadata_wrapper('node', $variable);
   $tooltip = '<h4>' . $wrapper->field_label->value() . '</h4>';
