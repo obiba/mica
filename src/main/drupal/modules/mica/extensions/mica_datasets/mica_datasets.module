@@ -175,6 +175,14 @@ function mica_datasets_menu() {
     'weight' => 7,
     'file' => 'mica_datasets.pages.query.inc',
   );
+  $items['node/%node/queries/%mica_dataset_query/xlsx'] = array(
+    'access callback' => '_mica_datasets_query_access',
+    'access arguments' => array(1, 3, 'view'),
+    'page callback' => 'mica_datasets_query_run_xlsx',
+    'page arguments' => array(1, 3, 5),
+    'weight' => 8,
+    'file' => 'mica_datasets.pages.query.inc',
+  );
 
   $items['node/%node/queries/%mica_dataset_query/view'] = array(
     'title' => 'Run',

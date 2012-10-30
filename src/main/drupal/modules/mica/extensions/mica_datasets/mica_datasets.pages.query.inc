@@ -569,7 +569,7 @@ function mica_datasets_dataset_query_delete_page($dataset_node, $query) {
 
 function mica_datasets_query_delete_form($form, &$form_state) {
   $dataset_node = $form_state['build_info']['args'][0];
-  $query = $form_state['build_info']['args'][1];
+//  $query = $form_state['build_info']['args'][1];
 
   $form['message'] = array(
     '#markup' => t('This action cannot be undone.'),
@@ -664,6 +664,12 @@ function mica_datasets_query_run_page($form, &$form_state, $dataset_node, $query
 
   $result_table = _mica_datasets_query_result_table($dataset_node, $query, $cross_variable);
 
+  $xls_url = url('node/' . $dataset_node->nid . '/queries/' . $query->id . '/xlsx' . (empty($cross_variable) ? '' : '/' . $cross_variable->nid));
+  $xls_img_path = drupal_get_path('module', 'views_data_export') . '/images/xls.png';
+  $xls_img_alt = t('Download as Excel');
+  $xls_img = "<img typeof='foaf:Image' class='image-style-none' src='$xls_img_path' alt='$xls_img_alt' title='$xls_img_alt' />";
+  $xls_link = "<div class='feed-icon'><a href='$xls_url'>$xls_img</a></div>";
+
   $categorical_variables = mica_datasets_find_categorical_variables($dataset_node->nid);
   $options = array();
   foreach ($categorical_variables as $variable) {
@@ -691,11 +697,30 @@ function mica_datasets_query_run_page($form, &$form_state, $dataset_node, $query
     '#field_suffix' => '<span id="cross-variable-detail">' . _mica_datasets_query_cross_variable_detail_link($cross_variable) . '</span>',
   );
   $form['results'] = array(
-    '#markup' => $result_table,
+    '#markup' => $result_table . $xls_link,
     '#prefix' => '<div id="result-wrapper">',
     '#suffix' => '</div>',
   );
   return $form;
+}
+
+/**
+ * Generate HTML array and save it to an XLSX file.
+ *
+ * @param $dataset_node
+ * @param $query
+ * @param null $cross_variable_nid
+ */
+function mica_datasets_query_run_xlsx($dataset_node, $query, $cross_variable_nid = NULL) {
+  $cross_variable = empty($cross_variable_nid) ? NULL : node_load($cross_variable_nid);
+  $html = _mica_datasets_query_result_table($dataset_node, $query, $cross_variable, FALSE);
+
+  $filename = $dataset_node->title . ' - ' . $query->name;
+  drupal_add_http_header('Content-Type', 'application/vnd.ms-excel');
+  drupal_add_http_header('Content-Disposition', "attachment; filename=$filename.xlsx");
+
+  print $html;
+  drupal_exit();
 }
 
 /**
@@ -732,7 +757,7 @@ function _mica_datasets_query_cross_variable_detail_link($cross_variable) {
   );
 }
 
-function _mica_datasets_query_result_table($dataset_node, $query, $cross_variable) {
+function _mica_datasets_query_result_table($dataset_node, $query, $cross_variable, $add_links = TRUE) {
 
   $is_cross = !empty($cross_variable);
   $category_label_by_name = array();
@@ -836,7 +861,8 @@ function _mica_datasets_query_result_table($dataset_node, $query, $cross_variabl
 
           if (!$headers_initialized) {
             $headers[] = array(
-              'data' => _mica_datasets_query_run_page_header($dataset_node, $query, $term, $cross_variable, $has_multiple_terms, $header_matched_tooltip),
+              'data' => _mica_datasets_query_run_page_header($dataset_node, $query, $term, $cross_variable,
+                $has_multiple_terms, $header_matched_tooltip, $add_links),
               'colspan' => $header_colspan,
               'class' => array('border-left', 'border-right'),
             );
@@ -877,7 +903,7 @@ function _mica_datasets_query_result_table($dataset_node, $query, $cross_variabl
 
           if (!$headers_initialized) {
             $headers[] = _mica_datasets_query_run_page_header($dataset_node, $query, $term, $cross_variable, $has_multiple_terms,
-              $header_matched_tooltip);
+              $header_matched_tooltip, $add_links);
           }
           $row[] = array(
             'data' => _mica_datasets_query_count_str($count, $total),
@@ -970,7 +996,7 @@ function _mica_datasets_query_result_table($dataset_node, $query, $cross_variabl
   );
 }
 
-function _mica_datasets_query_run_page_header($dataset_node, $query, $term, $cross_variable, $has_multiple_terms, &$header_matched_tooltip) {
+function _mica_datasets_query_run_page_header($dataset_node, $query, $term, $cross_variable, $has_multiple_terms, &$header_matched_tooltip, $add_links = TRUE) {
   $impl = $term->termImpl();
   $title = $impl->toString();
   $variable = node_load($term->variable_id);
@@ -980,41 +1006,45 @@ function _mica_datasets_query_run_page_header($dataset_node, $query, $term, $cro
   }
   $header_matched_tooltip .= $title;
 
-  $variable_link = ctools_modal_text_button(
-    $title,
-    'mica/nojs/node/' . $variable->nid,
-    t('View !title', array('!title' => $variable->title)),
-    'ctools-modal-node-style highlight'
-  );
+  if ($add_links) {
+    $variable_link = ctools_modal_text_button(
+      $title,
+      'mica/nojs/node/' . $variable->nid,
+      t('View !title', array('!title' => $variable->title)),
+      'ctools-modal-node-style highlight'
+    );
 
-  $header = NULL;
-  if (_mica_datasets_query_term_access($dataset_node, $query, $term)) {
+    $header = NULL;
+    if (_mica_datasets_query_term_access($dataset_node, $query, $term)) {
 
-    $header = $variable_link //
-      . '<div>' //
-      . ctools_modal_text_button(
-        t('Edit'),
-        'mica/nojs/' . _mica_datasets_query_term_url($dataset_node, $query, $term, 'edit', $cross_variable),
-        t('Edit query term options'),
-        'ctools-modal-edit-style'
-      );
-
-    if ($has_multiple_terms) {
-      $header .= '<span style="margin-left: 10px;">' //
+      $header = $variable_link //
+        . '<div>' //
         . ctools_modal_text_button(
-          t('Delete'),
-          'mica/nojs/' . _mica_datasets_query_term_url($dataset_node, $query, $term, 'delete', $cross_variable),
-          t('Delete query term'),
-          'ctools-modal-delete-style') //
-        . '</span>';
-    }
+          t('Edit'),
+          'mica/nojs/' . _mica_datasets_query_term_url($dataset_node, $query, $term, 'edit', $cross_variable),
+          t('Edit query term options'),
+          'ctools-modal-edit-style'
+        );
 
-    $header .= '</div>';
+      if ($has_multiple_terms) {
+        $header .= '<span style="margin-left: 10px;">' //
+          . ctools_modal_text_button(
+            t('Delete'),
+            'mica/nojs/' . _mica_datasets_query_term_url($dataset_node, $query, $term, 'delete', $cross_variable),
+            t('Delete query term'),
+            'ctools-modal-delete-style') //
+          . '</span>';
+      }
+
+      $header .= '</div>';
+    }
+    else {
+      $header = $variable_link;
+    }
   }
   else {
-    $header = $variable_link;
+    $header = $title;
   }
-
   return $header;
 }
 
