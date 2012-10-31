@@ -36,22 +36,6 @@ function mica_datasets_crosstab_menu_local_tasks_alter(&$data, $router_item, $ro
   switch ($root_path) {
 
     case 'study-datasets':
-      if (node_access('view', 'dataset')) {
-        $links['view-dataset-crosstab'] = array(
-          '#theme' => 'menu_local_action',
-          '#link' => array(
-            'title' => t('Comparison table'),
-            'href' => 'content/dataset-crosstab', // Arguments could be taxonomies and dataset
-            'localized_options' => array(
-              'attributes' => array('class' => 'highlight'),
-              'query' => array(
-                'type' => 'study'
-              )
-            )
-          ),
-        );
-      }
-      break;
     case 'harmonization-datasets':
       if (node_access('view', 'dataset')) {
         $links['view-dataset-crosstab'] = array(
@@ -62,10 +46,10 @@ function mica_datasets_crosstab_menu_local_tasks_alter(&$data, $router_item, $ro
             'localized_options' => array(
               'attributes' => array('class' => 'highlight'),
               'query' => array(
-                'type' => 'harmonization'
+                'type' => ($root_path === 'study-datasets') ? 'study' : 'harmonization',
               )
             )
-          )
+          ),
         );
       }
       break;

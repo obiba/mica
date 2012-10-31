@@ -128,7 +128,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
     try {
       $client = $this->client();
       $schema = json_decode($client->execute($get), TRUE);
-      //debug($schema);
+
       if (is_array($schema['keys'])) {
         $keys = $schema['keys'];
         $values = $schema['values'];
