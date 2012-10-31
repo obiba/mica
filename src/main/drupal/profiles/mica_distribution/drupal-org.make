@@ -80,10 +80,10 @@ projects[features][patch][1689598] = http://drupal.org/files/field_display_label
 
 projects[features_override] = 2.0-beta1
 
-projects[feeds][version] = 2.0-alpha5
-projects[feeds][patch][11075222] = http://drupal.org/files/issues/1107522-empty-fields-2.patch
-projects[feeds][patch][110752213] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-13.patch
-projects[feeds][patch][110752215links] = http://drupal.org/files/ignore-empty-link-fields-1107522-15.patch
+projects[feeds][version] = 2.0-alpha7
+projects[feeds][patch][1107522-59] = http://drupal.org/files/feeds-empty-behavior-1107522-59.patch
+projects[feeds][patch][1107522-13] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-13.patch
+projects[feeds][patch][1107522-15] = http://drupal.org/files/ignore-empty-link-fields-1107522-60.patch
 
 projects[feeds_tamper][version] = 1.0-beta4
 projects[feeds_tamper][patch][1416700] = http://drupal.org/files/1416700-4-feeds_tamper-existing-terms-plugin.patch
@@ -143,7 +143,7 @@ projects[menu_view_unpublished][download][type] = git
 projects[menu_view_unpublished][download][revision] = 5f1f951
 projects[menu_view_unpublished][download][branch] = 7.x-1.x
 
-projects[mica] = 5.1-rc1
+projects[mica] = 6.0-dev
 
 projects[module_filter] = 1.7
 
@@ -175,7 +175,7 @@ projects[references][download][type] = git
 projects[references][download][revision] = 311bd49
 projects[references][download][branch] = 7.x-2.x
 
-projects[search_api][version] = 1.2
+projects[search_api][version] = 1.3
 projects[search_api][patch][1617794] = http://drupal.org/files/search_api-view_unpublished-support-1617794-6.patch
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch
 projects[search_api][patch][1471310] = http://drupal.org/files/1471310--unset-field-8_0.patch
@@ -190,8 +190,6 @@ projects[search_api_ranges][download][revision] = fe3b59f
 projects[search_api_ranges][download][branch] = 7.x-1.x
 projects[search_api_ranges][patch][1450772] = http://drupal.org/files/force-numeric-and-config-for-no-slider-no-commit-on-change-1450772-1_1.patch
 projects[search_api_ranges][patch][1460410] = http://drupal.org/files/max-inclusive.patch
-
-;projects[search_api_ranges] = 1.3
 
 projects[search_api_solr][version] = 1.0-rc2
 projects[search_api_solr][patch][1276970] = http://drupal.org/files/solr_queries_post-1276970-10.patch
@@ -260,7 +258,8 @@ libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.co
 libraries[solr_php_client][directory_name] = SolrPhpClient
 
 libraries[spyc][download][type]= get
-libraries[spyc][download][url] = https://raw.github.com/mustangostang/spyc/master/spyc.php
+libraries[spyc][download][url] = https://github.com/mustangostang/spyc/raw/master/Spyc.php
+libraries[spyc][download][filename] = spyc.php
 libraries[spyc][destination] = modules
 libraries[spyc][directory_name] = services/servers/rest_server/lib
 libraries[spyc][overwrite] = TRUE
