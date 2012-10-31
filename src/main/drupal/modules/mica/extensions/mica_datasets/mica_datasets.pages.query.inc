@@ -805,7 +805,6 @@ function _mica_datasets_query_result_table($dataset_node, $query, $cross_variabl
 
     try {
       $result = $is_cross ? $connector->queryBy($terms, array($cross_variable->title)) : $connector->query($terms);
-//      debug($result);
 
       $total = $is_cross ? $result['_all']['_all'] : $result['total']['_all'];
 

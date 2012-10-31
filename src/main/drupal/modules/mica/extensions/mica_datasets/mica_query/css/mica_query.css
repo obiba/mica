@@ -1,0 +1,19 @@
+table.query-table th:first-child{
+  width: 25%;
+}
+
+table.query-table th:nth-child(2){
+  width: 25%;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #CCC;
+}
+
+.border-right {
+  border-right: 1px solid #CCC;
+}
+
+.border-left {
+  border-left: 1px solid #CCC;
+}

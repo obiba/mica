@@ -362,6 +362,68 @@ END;
     return $result;
   }
 
+  public function crossQueryBy(array $terms, array $fields) {
+    $by_field = $fields[0];
+    $is_continuous = (isset($fields[1]) ? $fields[1] : FALSE);
+
+    // one facet for population matching each term
+    $facets = array();
+    if ($terms !== FALSE) {
+      // Always only one term for this type of query
+      $term = $terms[0];
+      $impl = $term->termImpl();
+
+      foreach($impl->categories() as $i => $category){
+
+        if (!$is_continuous){
+          $facets[] = $this->asCrossFacetBy($impl, $by_field, $category);
+        }
+        else {
+          $facets[] = $this->asCrossStatFacetBy($impl, $by_field, $category);
+        }
+      }
+    }
+
+    // one facet for the population matching all terms
+
+    $facets[] = <<< END
+"_matched" : {
+      "terms" : {
+        "field":"{$this->getFieldName($impl)}","all_terms":true
+      }
+      , "facet_filter":  {
+        "exists":{
+            "field":"{$this->getFieldNameMapping($by_field)}"}
+        }
+      }
+}
+END;
+
+    $q = '{"query": {"match_all":{}},"size":0,"facets":{';
+    $q .= implode(',', $facets);
+    $q .= '}}';
+
+    $data = $this->sendQuery($q);
+
+    $total = $data['hits']['total'];
+
+    $result = array('total' => array('_all' => $total));
+    $result["_all"] = $this->count($data['facets']['_all']);
+    $result["_matched"] = $this->count($data['facets']['_matched']);
+    $term = $terms[0];
+    $impl = $term->termImpl();
+
+    foreach($impl->categories() as $i => $category){
+      if (!$is_continuous){
+        $result[$category] = $this->count($data['facets'][$category]);
+      }
+    else{
+        $result[$category] = $data['facets'][$category];
+      }
+    }
+
+    return $result;
+  }
 
   public function facetTerm(QueryTermInterface $term) {
     $fieldname = $this->getFieldName($term);
@@ -443,6 +505,35 @@ END;
     return $facet;
   }
 
+  protected function asCrossFacetBy(QueryTermInterface $term, $field, $category) {
+    $facet = <<< END
+"{$category}" : {
+      "terms" : {
+        "field":"{$this->getFieldNameMapping($field)}","all_terms":true
+      }
+      , "facet_filter":  {
+        {$this->asCrossFilter($term, $category)}
+      }
+}
+END;
+    return $facet;
+  }
+
+  protected function asCrossStatFacetBy(QueryTermInterface $term, $field, $category) {
+    $facet = <<< END
+"{$category}" : {
+      "statistical" : {
+        "field":"{$this->getFieldNameMapping($field)}","size":0
+      }
+      , "facet_filter":  {
+        {$this->asCrossFilter($term, $category)}
+      }
+}
+END;
+    return $facet;
+  }
+
+
   private function asFilter(QueryTermInterface $term) {
     $fieldname = $this->getFieldName($term);
     // The default filter
@@ -517,6 +608,27 @@ END;
     }
   }
 END;
+    }
+    return $filter;
+  }
+
+  private function asCrossFilter(QueryTermInterface $term, $category) {
+    $fieldname = $this->getFieldName($term);
+    // The default filter
+
+    switch ($term->getType()) {
+      case 'CategoryTerm':
+        if (count($term->categories()) > 0) {
+          //$terms = '"' . $category . '"';
+          $filter = <<< END
+  "term" : {
+    "{$fieldname}":"{$category}"
+  }
+END;
+        }
+        break;
+      default:
+        break;
     }
     return $filter;
   }
