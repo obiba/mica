@@ -468,3 +468,12 @@ function mica_core_configure_role_permissions($role_name, $permissions) {
     user_role_change_permissions($role->rid, $permissions);
   }
 }
+
+function mica_core_nodes_access($op, array $nodes, $account = NULL) {
+  foreach ($nodes as $node) {
+    if (!node_access($op, $node, $account)) {
+      return FALSE;
+    }
+  }
+  return TRUE;
+}
