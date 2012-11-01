@@ -1,9 +1,34 @@
-table.query-table th:first-child{
+table.query-table.continuous_1{
+  width:90%;
+}
+
+table.query-table.continuous_1 th:first-child{
   width: 25%;
 }
 
-table.query-table th:nth-child(2){
+table.query-table.continuous_1 th:nth-child(2){
   width: 25%;
+}
+
+table.query-table.continuous_1 thead th:nth-child(3){
+  width: 50%;
+}
+
+table.query-table.continuous_{
+  width:100%;
+}
+
+table.query-table.continuous_ th:first-child{
+  width: 22.5%;
+}
+
+table.query-table.continuous_ th:nth-child(2){
+  width: 22.5%;
+}
+
+
+table.query-table.continuous_ th:last-child{
+  width: 10%;
 }
 
 .border-bottom {
@@ -16,4 +41,23 @@ table.query-table th:nth-child(2){
 
 .border-left {
   border-left: 1px solid #CCC;
+}
+
+td{
+  border-left: 1px solid #CCC;
+}
+
+div.no-results{
+  margin-top: 10px;
+}
+
+div.dependent-variable-description{
+  margin-top: 10px;
+}
+span.variable-title{
+  font-weight: bold;
+}
+div.crosstab-result{
+  margin-top: 20px;
+  margin-bottom: 5px;
 }

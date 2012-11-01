@@ -408,7 +408,7 @@ END;
     $total = $data['hits']['total'];
 
     $result = array('total' => array('_all' => $total));
-    $result["_all"] = $this->count($data['facets']['_all']);
+    //$result["_all"] = $this->count($data['facets']['_all']);
     $result["_matched"] = $this->count($data['facets']['_matched']);
     $term = $terms[0];
     $impl = $term->termImpl();
