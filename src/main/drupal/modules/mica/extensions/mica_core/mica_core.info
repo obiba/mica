@@ -10,7 +10,6 @@ dependencies[] = entity
 dependencies[] = facetapi
 dependencies[] = features
 dependencies[] = feeds
-dependencies[] = itweak_login
 dependencies[] = libraries
 dependencies[] = logintoboggan
 dependencies[] = menu
