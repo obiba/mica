@@ -123,6 +123,7 @@ function _mica_query_result_table($dataset_node, $query, $cross_variable) {
 
   $cross_variable_wrapper = entity_metadata_wrapper('node', $cross_variable);
   $is_continuous = TRUE;
+  $cross_category_label_by_name = array();
   foreach ($cross_variable_wrapper->field_variable_categories->value() as $category) {
     if ($category['missing'] == FALSE) {
       $cross_category_label_by_name[$category['name']] = $category['label'];
@@ -289,6 +290,13 @@ function _mica_query_result_table($dataset_node, $query, $cross_variable) {
     )
   );
 
+  $xls_url = url('variable-crosstab/' . $query->variable_id . '/' . $cross_variable->nid . '/xlsx');
+  $xls_img_path = drupal_get_path('module', 'views_data_export') . '/images/xls.png';
+  $xls_img_alt = t('Download as Excel');
+  $xls_img = "<img typeof='foaf:Image' class='image-style-none' src='$xls_img_path' alt='$xls_img_alt' title='$xls_img_alt' />";
+  $xls_link = "<div class='feed-icon'><a href='$xls_url'>$xls_img</a></div>";
+  $output .= $xls_link;
+
   return $output;
 }
 
@@ -345,4 +353,17 @@ function _mica_query_get_percentage($value, $total) {
     return round(($value / $total) * 100, 2) . '%';
   }
   return "0%";
+}
+
+function mica_query_run_xlsx($var1, $var2) {
+
+  $html = NULL;
+//  $html = _mica_datasets_query_result_table($dataset_node, $query, $cross_variable, FALSE);
+
+  $filename = $var1->title . ' - ' . $var2->title;
+  drupal_add_http_header('Content-Type', 'application/vnd.ms-excel');
+  drupal_add_http_header('Content-Disposition', "attachment; filename=$filename.xlsx");
+
+  print $html;
+  drupal_exit();
 }

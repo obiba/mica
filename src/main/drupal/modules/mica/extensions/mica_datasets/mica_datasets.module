@@ -906,7 +906,7 @@ function mica_dataset_connector_query($dataset_id, $study_id, $enabled = NULL) {
  * @param $dataset_id
  * @param $enabled
  *
- * @return MicaDatasetConnector
+ * @return array MicaDatasetConnector
  *   An array of connectors (may be empty).
  */
 function mica_dataset_connector_query_multiple($dataset_id, $enabled = NULL) {
