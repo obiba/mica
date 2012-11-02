@@ -285,7 +285,6 @@ function mica_datasets_update_7600(&$update) {
   module_enable(array('mica_query'));
 
   _mica_datasets_move_query_permissions();
-  _mica_datasets_move_query_entities();
 
   menu_rebuild();
   cache_clear_all();
@@ -318,18 +317,6 @@ function _mica_datasets_move_query_permissions() {
     ->condition('permission', array_keys(mica_query_user_default_permissions()), 'IN')
     ->execute();
   node_access_rebuild();
-}
-
-/**
- * Update query entities module
- */
-function _mica_datasets_move_query_entities() {
-  db_update('mica_dataset_query')
-    ->fields(array('module' => 'mica_query'))
-    ->execute();
-  db_update('mica_dataset_query_term')
-    ->fields(array('module' => 'mica_query'))
-    ->execute();
 }
 
 /**

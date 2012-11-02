@@ -11,7 +11,7 @@
 function mica_query_schema() {
   $schema = array();
 
-  $schema['mica_dataset_query'] = array(
+  $schema['mica_query'] = array(
     'description' => 'Stores all the queries that are to be applied to their associated Mica Datasets.',
     'fields' => array(
       'id' => array(
@@ -63,7 +63,7 @@ function mica_query_schema() {
     'primary key' => array('id'),
   );
 
-  $schema['mica_dataset_query_term'] = array(
+  $schema['mica_query_term'] = array(
     'description' => 'Stores the query terms of a query.',
     'fields' => array(
       'id' => array(
@@ -110,4 +110,53 @@ function mica_query_schema() {
   );
 
   return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function mica_query_install() {
+  _mica_query_migrate_data();
+}
+
+/**
+ * Import mica_datasets_query previously exported by mica_core, if any.
+ */
+function _mica_query_migrate_data() {
+  $query_export = variable_get('mica_query_export');
+  if (!empty($query_export)) {
+    foreach ($query_export as $query) {
+      db_insert('mica_query')
+        ->fields(array(
+        'id' => $query->id,
+        'name' => $query->name,
+        'description' => $query->description,
+        'dataset_id' => $query->dataset_id,
+        'cross_variable_id' => $query->cross_variable_id,
+        'user_id' => $query->user_id,
+        'published' => $query->published,
+        'status' => $query->status,
+        'module' => 'mica_query',
+      ))->execute();
+    }
+    variable_del('mica_query_export');
+  }
+
+  $term_export = variable_get('mica_query_term_export');
+  if (!empty($term_export)) {
+    foreach ($term_export as $term) {
+      db_insert('mica_query_term')
+        ->fields(array(
+        'id' => $term->id,
+        'query_id' => $term->query_id,
+        'variable_id' => $term->variable_id,
+        'weight' => $term->weight,
+        'depth' => $term->depth,
+        'options' => $term->options,
+        'status' => $term->status,
+        'module' => 'mica_query',
+      ))->execute();
+    }
+    variable_del('mica_query_term_export');
+  }
 }

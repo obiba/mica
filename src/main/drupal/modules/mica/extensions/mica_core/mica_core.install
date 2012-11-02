@@ -72,7 +72,22 @@ function mica_core_update_7500(&$sandbox) {
  * Move queries from Mica Datasets to Mica Query module
  */
 function mica_core_update_7600(&$update) {
+  _mica_core_export_queries();
   _mica_core_rebuild_registry();
+}
+
+function _mica_core_export_queries() {
+  $result = db_query('SELECT * FROM mica_dataset_query')->fetchAll();
+  if (!empty($result)) {
+    variable_set('mica_query_export', $result);
+  }
+  db_drop_table('mica_dataset_query');
+
+  $result = db_query('SELECT * FROM mica_dataset_query_term')->fetchAll();
+  if (!empty($result)) {
+    variable_set('mica_query_term_export', $result);
+  }
+  db_drop_table('mica_dataset_query_term');
 }
 
 function mica_core_replace_titles($types) {
@@ -81,7 +96,7 @@ function mica_core_replace_titles($types) {
 
   foreach ($types as $type) {
     $batch = batch_get();
-    if (!title_field_replacement_enabled('node', $type, 'title')){
+    if (!title_field_replacement_enabled('node', $type, 'title')) {
       $batch['operations'][] = array('title_field_replacement_toggle', array('node', $type, 'title'));
       $batch['operations'][] = array('title_field_replacement_batch', array('node', $type, 'title'));
 

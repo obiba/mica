@@ -12,12 +12,12 @@ include_once('mica_query.features.inc');
  */
 function mica_query_entity_info() {
   $info = array();
-  $info['mica_dataset_query'] = array(
+  $info['mica_query'] = array(
     'label' => t('Dataset query'),
     'controller class' => 'EntityAPIController',
     'metadata controller class' => FALSE,
     'entity class' => 'MicaDatasetQuery',
-    'base table' => 'mica_dataset_query',
+    'base table' => 'mica_query',
     'uri callback' => 'mica_query_url',
     'module' => 'mica_dataset',
     'exportable' => FALSE,
@@ -27,12 +27,12 @@ function mica_query_entity_info() {
     ),
   );
 
-  $info['mica_dataset_query_term'] = array(
+  $info['mica_query_term'] = array(
     'label' => t('Dataset query term'),
     'controller class' => 'EntityAPIController',
     'metadata controller class' => FALSE,
     'entity class' => 'MicaDatasetQueryTerm',
-    'base table' => 'mica_dataset_query_term',
+    'base table' => 'mica_query_term',
     'uri callback' => 'mica_query_term_url',
     'module' => 'mica_dataset',
     'exportable' => FALSE,
@@ -49,7 +49,7 @@ function mica_query_entity_info() {
  * Implements hook_entity_property_info().
  */
 function mica_query_entity_property_info() {
-  $info['mica_dataset_query']['properties'] = array(
+  $info['mica_query']['properties'] = array(
     'id' => array(
       'label' => t('ID'),
       'type' => 'integer',
@@ -84,7 +84,7 @@ function mica_query_entity_property_info() {
     ),
   );
 
-  $info['mica_dataset_query_term']['properties'] = array(
+  $info['mica_query_term']['properties'] = array(
     'id' => array(
       'label' => t('ID'),
       'type' => 'integer',
@@ -349,7 +349,7 @@ function mica_query_load($id, $reset = FALSE) {
  * @param $ids
  *   An array of query IDs or machine names.
  * @param $conditions
- *   An array of conditions on the {mica_dataset_query} table in the form
+ *   An array of conditions on the {mica_query} table in the form
  *   'field' => $value.
  * @param $reset
  *   Whether to reset the internal entity_load cache.
@@ -359,7 +359,7 @@ function mica_query_load($id, $reset = FALSE) {
  */
 function mica_query_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
   $queries = array();
-  $qs = entity_load('mica_dataset_query', $ids, $conditions, $reset);
+  $qs = entity_load('mica_query', $ids, $conditions, $reset);
   foreach ($qs as $q) {
     if (_mica_datasets_query_access(node_load($q->dataset_id), $q, 'view')) {
       $queries[] = $q;
@@ -389,7 +389,7 @@ function mica_query_url(MicaDatasetQuery $query) {
  */
 function mica_query_term_query($query) {
   if (MicaDatasetQueryManager::isCached($query) == FALSE) {
-    $q = db_select('mica_dataset_query_term', 'c');
+    $q = db_select('mica_query_term', 'c');
     $q->addField('c', 'id');
     $q->condition('c.query_id', $query->id, '=');
     $q->orderBy('c.weight', 'ASC');
@@ -435,7 +435,7 @@ function mica_query_term_load($id, $reset = FALSE) {
  * @param $ids
  *   An array of query term IDs or machine names.
  * @param $conditions
- *   An array of conditions on the {mica_dataset_query_term} table in the form
+ *   An array of conditions on the {mica_query_term} table in the form
  *   'field' => $value.
  * @param $reset
  *   Whether to reset the internal entity_load cache.
@@ -445,7 +445,7 @@ function mica_query_term_load($id, $reset = FALSE) {
  */
 function mica_query_term_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
   // TODO filter the cached ones from the persisted ones by their id pattern
-  return entity_load('mica_dataset_query_term', $ids, $conditions, $reset);
+  return entity_load('mica_query_term', $ids, $conditions, $reset);
 }
 
 /**
@@ -478,7 +478,7 @@ function mica_query_term_insert(array $values) {
  * Get the title for the query.
  *
  * @param node               $dataset_node
- * @param mica_dataset_query $query
+ * @param mica_query $query
  */
 function _mica_query_title($query) {
   return $query->name;
@@ -488,8 +488,8 @@ function _mica_query_title($query) {
  * Get the title for the query term.
  *
  * @param node                    $dataset_node
- * @param mica_dataset_query      $query
- * @param mica_dataset_query_term $term
+ * @param mica_query      $query
+ * @param mica_query_term $term
  */
 function _mica_query_term_title($dataset_node, $query, $term) {
   $variable_node = node_load($term->variable_id);
