@@ -2,11 +2,13 @@
 
 require_once(drupal_get_path('module', 'mica_datasets') . '/mica_datasets.utils.inc');
 
-function mica_query_crosstab_run_page($form, &$form_state, $dataset, $variable, $cross_variable) {
+function mica_query_crosstab_run_page($form, &$form_state, $dataset, $variable = NULL) {
   ctools_add_css('mica_query', 'mica_query');
 
   drupal_set_breadcrumb();
   drupal_set_title(t('!title -- Crosstab', array('!title' => $dataset->title)));
+
+  $cross_variables = (isset($_REQUEST['cross']) ? $_REQUEST['cross'] : array());
 
   $categorical_variables = mica_datasets_find_categorical_variables($dataset->nid);
   $options = array();
@@ -19,9 +21,9 @@ function mica_query_crosstab_run_page($form, &$form_state, $dataset, $variable, 
   $form_state['mica']['dataset_node'] = $dataset;
   $form['variable'] = array(
     '#type' => 'select',
-    '#title' => t('Select a dependent variable'),
+    '#title' => t('Select a variable'),
     '#options' => $options,
-    '#default_value' => empty($variable) ? NULL : $variable,
+    '#default_value' => isset($variable) ?  $variable->nid : NULL,
     '#empty_options' => -1,
     '#empty_value' => ' - ' . t('None') . ' - ',
   );
@@ -39,13 +41,13 @@ function mica_query_crosstab_run_page($form, &$form_state, $dataset, $variable, 
     '#size' => 6,
     '#title' => t('Cross with'),
     '#options' => $cross_options,
-    '#default_value' => empty($cross_variable) ? NULL : $cross_variable,
+    '#default_value' => empty($cross_variables) ? NULL : $cross_variables,
     '#empty_options' => -1,
     '#empty_value' => ' - ' . t('None') . ' - ',
   );
 
   $form['submit'] = array(
-    '#type' => 'button',
+    '#type' => 'submit',
     '#value' => t('Submit'),
     //'#disabled' => TRUE,
     '#ajax' => array(
@@ -69,32 +71,23 @@ function mica_query_crosstab_run_page_submit_callback($form, $form_state) {
   if (!empty($form_state['values']['cross_variable'])) {
     $dataset_node = $form_state['mica']['dataset_node'];
 
-    $variable_node = node_load($form_state['values']['variable']);
-
-    $values = array();
-    $values['name'] = check_plain('ssas');
-    $values['dataset_id'] = $dataset_node->nid;
-    $values['cross_variable_id'] = NULL;
-    $values['variable_id'] = $variable_node->nid;
-    $values['module'] = 'mica_datasets';
-    foreach (entity_metadata_wrapper('node', $variable_node)->field_variable_categories->value() as $category) {
-      if ($category['missing'] === '0') {
-        $values['options']['categories'][] = $category['name'];
-      }
-    }
-    $query = MicaDatasetQueryManager::addQuery($values);
-    $query->is_new = TRUE;
-    MicaDatasetQueryManager::getCache($query)->addTerm($values);
+    $variable_wrapper = entity_metadata_wrapper('node', node_load($form_state['values']['variable']));
+    $variable_title = $variable_wrapper->title->value();
+    $variable_label = $variable_wrapper->field_label->value();
+    $query = _mica_query_crosstab_get_query($dataset_node->nid, $variable_wrapper);
 
     // Variable description
-    $variable_wrapper = entity_metadata_wrapper('node', $variable_node->nid);
-    $result_table = '<div class="dependent-variable-description"><span class="variable-title">' . $variable_wrapper->title->value() . '</span> ('
-      . $variable_wrapper->field_label->value() . ')</div>';
+    $result_table = "<div class='dependent-variable-description'><span class='variable-title'>$variable_title</span> ($variable_label)</div>";
     foreach ($variable_wrapper->field_variable_categories->value() as $category) {
       if ($category['missing'] == FALSE) {
         $result_table .= $category['name'] . ' : ' . $category['label'] . '<br>';
       }
     }
+    // Display a download all results link
+    if (count($form_state['values']['cross_variable']) > 1){
+      $result_table .= _mica_query_get_xlsx_link($query, $form_state['values']['cross_variable'], 'Download all results as');
+    }
+
 
     foreach ($variable_wrapper->field_variable_categories->value() as $category) {
       if ($category['missing'] == FALSE) {
@@ -105,8 +98,10 @@ function mica_query_crosstab_run_page_submit_callback($form, $form_state) {
     foreach ($form_state['values']['cross_variable'] as $cross_variable_id) {
       $cross_variable = node_load($cross_variable_id);
       $cross_variable_wrapper = entity_metadata_wrapper('node', $cross_variable);
-      $result_table .= '<div class="crosstab-result">Crosstabulation results with <span class="variable-title">' . $cross_variable_wrapper->title->value()
-        . '</span> (' . $cross_variable_wrapper->field_label->value() . ')</div>';
+      $cross_title = $cross_variable_wrapper->title->value();
+      $result_table .= "<div class='crosstab-result'>" . t('Cross tabulation results of') .
+        "<span class='variable-title'> $variable_title * $cross_title</span>";
+      $result_table .= _mica_query_get_xlsx_link($query, array($cross_variable->nid)) . "</div>";
       $result_table .= _mica_query_crosstab_result_table($dataset_node, $query, $cross_variable);
     }
   }
@@ -123,6 +118,37 @@ function mica_query_crosstab_run_page_submit_callback($form, $form_state) {
   );
 }
 
+function _mica_query_get_xlsx_link($query, $cross_variable_ids, $title = 'Download as') {
+  $xls_url = url('variable-crosstab/' . $query->variable_id . '/xlsx', array(
+      'query' => array('cross' => $cross_variable_ids),
+    )
+  );
+  $xls_img_path = drupal_get_path('module', 'mica_query') . '/images/excel.png';
+  $xls_img_alt = t('Download as Excel');
+  $xls_img = "<img typeof='foaf:Image' class='image-style-none' src='$xls_img_path' alt='$xls_img_alt' title='$xls_img_alt' />";
+  $xls_link = " (<a href='$xls_url'>". t('!title', array('!title' => $title)) ." $xls_img</a>)";
+  return  $xls_link;
+}
+
+function _mica_query_crosstab_get_query($dataset_id, $variable) {
+  $values = array();
+  $values['name'] = check_plain('Crosstab of ' . $variable->title);
+  $values['dataset_id'] = $dataset_id;
+  $values['cross_variable_id'] = NULL;
+  $values['variable_id'] = $variable->nid->value();
+  $values['module'] = 'mica_datasets';
+  foreach ($variable->field_variable_categories->value() as $category) {
+    if ($category['missing'] === '0') {
+      $values['options']['categories'][] = $category['name'];
+    }
+  }
+  $query = MicaDatasetQueryManager::addQuery($values);
+  $query->is_new = TRUE;
+  MicaDatasetQueryManager::getCache($query)->addTerm($values);
+
+  return $query;
+}
+
 function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variable) {
   $output = '';
 
@@ -136,14 +162,13 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
   }
 
   $cross_variable_wrapper = entity_metadata_wrapper('node', $cross_variable);
-  $is_continuous = TRUE;
   $cross_category_label_by_name = array();
   foreach ($cross_variable_wrapper->field_variable_categories->value() as $category) {
     if ($category['missing'] == FALSE) {
       $cross_category_label_by_name[$category['name']] = $category['label'];
-      $is_continuous = FALSE;
     }
   }
+  $is_continuous = empty($cross_category_label_by_name);
 
   $mica_dataset_connectors = mica_dataset_connector_query_multiple($dataset_node->nid);
   $terms = mica_dataset_query_term_query($query);
@@ -157,7 +182,7 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
     $rows[] = array('data' => $sub_header);
   }
 
-  $study_rowspan = $is_continuous ? 1 : count($cross_category_label_by_name) + 1; // account for N
+  $study_rowspan = $is_continuous ? 2 : count($cross_category_label_by_name) + 1; // account for N
   $totals = array();
   foreach ($mica_dataset_connectors as $connector) {
     $row = array();
@@ -180,49 +205,21 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
 
         if (!$is_continuous) {
           // Cross categories
-          // N
-          $row[] = array(
-            'data' => t('N'),
-            'class' => array('border-right'),
-          );
-          $N_total = 0;
-          foreach ($category_label_by_name as $name => $label) {
-            $value = isset($result['_matched'][$name]) ? $result['_matched'][$name] : 0;
-            $row[] = array(
-              'data' => $value,
-              'title' => $value,
-            );
-            $N_total += $value;
-            if (isset($totals[$name]['N'])) {
-              $totals[$name]['N'] += $value;
-            }
-            else {
-              $totals[$name]['N'] = $value;
-            }
-          }
-          $row[] = array(
-            'data' => $N_total,
-            'title' => $N_total,
-          );
-          $rows[] = array('data' => $row);
-          $row = array();
-          $i = 2; // account for N
+//          $totals['N'] = 0;
           foreach ($cross_category_label_by_name as $cross_name => $cross_label) {
-            $class = ($i == $study_rowspan ? array('border-bottom') : array(''));
             $row[] = array(
               'data' => $cross_label . ' (' . $cross_name . ')',
-              'class' => array_merge(array('border-right'), $class),
+              'class' => array('border-right'),
             );
 
             $total_per_line = 0;
             foreach ($category_label_by_name as $name => $label) {
               $value = isset($result[$name][$cross_name]) ? $result[$name][$cross_name] : 0;
               $total = isset($result[$name]['_all']) ? $result[$name]['_all'] : 0;
-              $pct = _mica_query_crosstab_get_percentage($value, $total);
+              $value_pct = _mica_query_crosstab_get_percentage($value, $total);
               $row[] = array(
-                'data' => $value . ' (' . $pct . ')',
-                'title' => $value,
-                'class' => $class,
+                'data' => $value_pct,
+                'title' => $value_pct,
               );
 
               $total_per_line += $value;
@@ -233,16 +230,44 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
                 $totals[$name][$cross_name] = $value;
               }
             }
+            $value = _mica_query_crosstab_get_percentage($total_per_line, $result['total']['_all']);
             $row[] = array(
-              'data' => $total_per_line,
-              'title' => $total_per_line,
-              'class' => $class,
+              'data' => $value,
+              'title' => $value,
             );
 
             $rows[] = array('data' => $row);
             $row = array();
-            $i++;
           }
+          // N
+          $row[] = array(
+            'data' => t('N'),
+            'class' => array('border-right', 'border-bottom'),
+          );
+          $N_total = 0;
+          foreach ($category_label_by_name as $name => $label) {
+            $value = isset($result['_matched'][$name]) ? $result['_matched'][$name] : 0;
+            $row[] = array(
+              'data' => "$value (100%)",
+              'title' => "$value (100%)",
+              'class' => array('border-bottom'),
+            );
+            $N_total += $value;
+            if (isset($totals[$name]['N'])) {
+              $totals[$name]['N'] += $value;
+            }
+            else {
+              $totals[$name]['N'] = $value;
+            }
+          }
+          //$totals['N'] += $N_total;
+          $row[] = array(
+            'data' => "$N_total (100%)",
+            'title' => "$N_total (100%)",
+            'class' => array('border-bottom'),
+          );
+          $rows[] = array('data' => $row);
+          $row = array();
         }
         else {
           $row[] = array(
@@ -271,58 +296,57 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
   // Add a summary row if there's more than one connector
   if (count($mica_dataset_connectors) > 1 && !$is_continuous) {
     $row[] = array(
-      'data' => t('Study Totals'),
+      'data' => t('All Studies'),
       'class' => array('border-right', 'border-bottom'),
       'rowspan' => $study_rowspan,
     );
     // Cross categories
+    foreach ($cross_category_label_by_name as $cross_name => $cross_label) {
+      $row[] = array(
+        'data' => $cross_label . ' (' . $cross_name . ')',
+        'class' =>array('border-right'),
+      );
+
+      $total = 0;
+      foreach ($category_label_by_name as $name => $label) {
+        $value = _mica_query_crosstab_get_percentage($totals[$name][$cross_name], $totals[$name]['N']);
+        $row[] = array(
+          'data' => $value,
+          'title' => $value,
+        );
+        $total += $totals[$name][$cross_name];
+      }
+      // summary total
+//      $value = _mica_query_crosstab_get_percentage($total, $totals['N']);
+      $row[] = array(
+        'data' => $total,
+        'title' => $total,
+      );
+      $rows[] = array('data' => $row);
+      $row = array();
+    }
     // N
     $row[] = array(
       'data' => t('N'),
-      'class' => 'border-right',
+      'class' => array('border-right', 'border-bottom'),
     );
 
     $N_total = 0;
     foreach ($category_label_by_name as $name => $label) {
       $row[] = array(
-        'data' => $totals[$name]['N'],
-        'title' => $totals[$name]['N'],
+        'data' => $totals[$name]['N'] . ' (100%)',
+        'title' => $totals[$name]['N'] . ' (100%)',
+        'class' => array('border-bottom'),
       );
       $N_total += $totals[$name]['N'];
     }
     $row[] = array(
-      'data' => $N_total,
-      'title' => $N_total,
+      'data' => "$N_total (100%)",
+      'title' => "$N_total (100%)",
+      'class' => array('border-bottom'),
     );
 
     $rows[] = array('data' => $row);
-    $row = array();
-    $i = 2;
-    foreach ($cross_category_label_by_name as $cross_name => $cross_label) {
-      $class = ($i == $study_rowspan ? array('border-bottom') : array(''));
-      $row[] = array(
-        'data' => $cross_label . ' (' . $cross_name . ')',
-        'class' => array_merge(array('border-right'), $class),
-      );
-
-      $total = 0;
-      foreach ($category_label_by_name as $name => $label) {
-        $row[] = array(
-          'data' => $totals[$name][$cross_name],
-          'class' => $class,
-        );
-        $total += $totals[$name][$cross_name];
-      }
-      // summary total
-      $row[] = array(
-        'data' => $total,
-        'title' => $total,
-        'class' => $class,
-      );
-      $rows[] = array('data' => $row);
-      $row = array();
-      $i++;
-    }
   }
 
   $output .= theme(
@@ -334,13 +358,6 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
       'empty' => t('No connectors available')
     )
   );
-
-  $xls_url = url('variable-crosstab/' . $query->variable_id . '/' . $cross_variable->nid . '/xlsx');
-  $xls_img_path = drupal_get_path('module', 'views_data_export') . '/images/xls.png';
-  $xls_img_alt = t('Download as Excel');
-  $xls_img = "<img typeof='foaf:Image' class='image-style-none' src='$xls_img_path' alt='$xls_img_alt' title='$xls_img_alt' />";
-  $xls_link = "<div class='feed-icon'><a href='$xls_url'>$xls_img</a></div>";
-  $output .= $xls_link;
 
   return $output;
 }
@@ -370,7 +387,6 @@ function _mica_query_crosstab_process_header($category_label_by_name, $terms, $i
   if (!$is_continuous){
     $headers[] = array(
       'data' => t('Total'),
-      'colspan' => 2,
       'class' => array('border-left', 'border-right'),
     );
   }
@@ -411,20 +427,33 @@ function _mica_query_crosstab_process_subheader($cross_variable_wrapper, $catego
 
 function _mica_query_crosstab_get_percentage($value, $total) {
   if ($value > 0 && $total > 0) {
-    return round(($value / $total) * 100, 2) . '%';
+    $pct =  round(($value / $total) * 100, 2);
+    return "$value ($pct%)";
   }
-  return "0%";
+  return "$value (0%)";
 }
 
-function mica_query_run_xlsx($var1, $var2) {
+function mica_query_crosstab_run_xlsx($variable) {
 
-  $html = NULL;
-//  $html = _mica_datasets_query_result_table($dataset_node, $query, $cross_variable, FALSE);
+  $variable1_wrapper = entity_metadata_wrapper('node', $variable);
+  $dataset_node = node_load($variable1_wrapper->field_dataset->nid->value());
 
-  $filename = $var1->title . ' - ' . $var2->title;
+  $cross_variables = (isset($_REQUEST['cross']) ? $_REQUEST['cross'] : array());
+  $filename = $variable1_wrapper->title->value() . ' -- Crosstab';
+
+  if (!empty($cross_variables)){
+    $html = '';
+    foreach($cross_variables as $cross_variable_id){
+      $variable2 = node_load($cross_variable_id);
+      $filename .= ' - ' . $variable2->title;
+
+      $query = _mica_query_crosstab_get_query($dataset_node->nid, $variable1_wrapper);
+      $html .= _mica_query_crosstab_result_table($dataset_node, $query, $variable2);
+    }
+  }
+
   drupal_add_http_header('Content-Type', 'application/vnd.ms-excel');
   drupal_add_http_header('Content-Disposition', "attachment; filename=$filename.xlsx");
-
   print $html;
   drupal_exit();
 }

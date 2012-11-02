@@ -263,16 +263,24 @@ function mica_query_menu() {
     'access callback' => 'node_access',
     'access arguments' => array('view', 1),
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('mica_query_crosstab_run_page', 1, 3, 4),
+    'page arguments' => array('mica_query_crosstab_run_page', 1),
     'file' => 'mica_query.pages.crosstab.inc',
   );
-  $items['variable-crosstab/%node/%node/xlsx'] = array(
+  $items['node/%node/variable-crosstab/%node'] = array(
+    'access callback' => 'node_access',
+    'access arguments' => array('view', 1),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mica_query_crosstab_run_page', 1, 3),
+    'file' => 'mica_query.pages.crosstab.inc',
+  );
+  $items['variable-crosstab/%node/xlsx'] = array(
     'access callback' => 'mica_core_nodes_access',
-    'access arguments' => array('view', array(1, 2)),
-    'page callback' => 'mica_query_run_xlsx',
-    'page arguments' => array(1, 2),
+    'access arguments' => array('view', array(1)),
+    'page callback' => 'mica_query_crosstab_run_xlsx',
+    'page arguments' => array(1),
     'file' => 'mica_query.pages.crosstab.inc',
   );
+
   return $items;
 }
 
