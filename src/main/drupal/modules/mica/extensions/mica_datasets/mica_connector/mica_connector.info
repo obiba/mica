@@ -1,0 +1,10 @@
+name = "Mica Connector"
+description = "Mica Datasets Connector"
+core = "7.x"
+package = Mica
+php = "5.2.4"
+
+files[] = mica_connector.api.php
+files[] = mica_connector.entity.inc
+files[] = mica_connector.connection.inc
+files[] = mica_connector.connection.form.inc

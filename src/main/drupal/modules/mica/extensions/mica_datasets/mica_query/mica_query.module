@@ -19,7 +19,7 @@ function mica_query_entity_info() {
     'entity class' => 'MicaDatasetQuery',
     'base table' => 'mica_query',
     'uri callback' => 'mica_query_url',
-    'module' => 'mica_dataset',
+    'module' => 'mica_query',
     'exportable' => FALSE,
     'entity keys' => array(
       'id' => 'id',
@@ -34,7 +34,7 @@ function mica_query_entity_info() {
     'entity class' => 'MicaDatasetQueryTerm',
     'base table' => 'mica_query_term',
     'uri callback' => 'mica_query_term_url',
-    'module' => 'mica_dataset',
+    'module' => 'mica_query',
     'exportable' => FALSE,
     'entity keys' => array(
       'id' => 'id',

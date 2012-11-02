@@ -18,6 +18,7 @@ dependencies[] = menu
 dependencies[] = menu_view_unpublished
 dependencies[] = mica_category_field
 dependencies[] = mica_query
+dependencies[] = mica_connector
 dependencies[] = mica_datasets_crosstab
 dependencies[] = mica_core
 dependencies[] = mica_field_description
@@ -409,5 +410,4 @@ features[views_view][] = study_datasets
 features[views_view][] = variable_csv_export
 features[views_view][] = variable_search
 features[views_view][] = variables_dimensions
-files[] = includes/connector_entity.inc
-files[] = includes/connection.inc
+

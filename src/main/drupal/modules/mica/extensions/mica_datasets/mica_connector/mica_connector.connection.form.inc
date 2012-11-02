@@ -6,9 +6,9 @@
  */
 
 /**
- * @defgroup mica_datasets_form_constants Mica datasets form constants
+ * @defgroup mica_datasets_form_constants Mica connector form constants
  * @{
- *           Constants used to build the Mica dataset entity forms.
+ *           Constants used to build the Mica connector entity forms.
  */
 
 define('MICA_STUDY_ID', 'study-id');
@@ -18,7 +18,7 @@ define('MICA_CONNECTION_TYPE', 'connection-type');
 define('MICA_CONNECTION_CONFIG', 'connection-config');
 
 /**
- * @} End of "Mica datasets form constants".
+ * @} End of "Mica connector form constants".
  */
 
 //
@@ -28,10 +28,10 @@ define('MICA_CONNECTION_CONFIG', 'connection-config');
 /**
  * Base form for connectors.
  */
-function _mica_datasets_connectors_form() {
+function _mica_connector_form() {
   $form = array(
     '#attached' => array(
-      'css' => array(drupal_get_path('module', 'mica_datasets') . '/css/connection.css')
+      'css' => array(drupal_get_path('module', 'mica_connector') . '/css/mica_connector.css')
     ),
     '#attributes' => array('id' => 'dataset-connectors'),
   );
@@ -45,20 +45,20 @@ function _mica_datasets_connectors_form() {
  * @param $study_node
  * @param $parent_node
  */
-function _mica_datasets_connection_data(&$dataset_node, &$study_node, $parent_node) {
+function _mica_connector_connection_data(&$dataset_node, &$study_node, $parent_node) {
   // todo fetch the connector entity
   $child_node = $parent_node->nid == $dataset_node->nid ? $study_node : $dataset_node;
 
-  $connector = mica_dataset_connector_query($dataset_node->nid, $study_node->nid);
+  $connector = mica_connector_query($dataset_node->nid, $study_node->nid);
 
   $row = array(
-    'parent' => _mica_datasets_connection_data_node($parent_node),
-    'child' => _mica_datasets_connection_data_node($child_node),
+    'parent' => _mica_connector_connection_data_node($parent_node),
+    'child' => _mica_connector_connection_data_node($child_node),
     'connector' => array(
       'id' => $connector ? $connector->id : 0,
       MICA_DATASET_ID => $dataset_node->nid,
       MICA_STUDY_ID => $study_node->nid,
-      'type' => $connector ? _mica_datasets_connection_type_name($connector->class) : t('-none-'),
+      'type' => $connector ? _mica_connector_connection_type_name($connector->class) : t('-none-'),
       'description' => $connector ? $connector->description : '',
     ),
   );
@@ -71,7 +71,7 @@ function _mica_datasets_connection_data(&$dataset_node, &$study_node, $parent_no
  *
  * @param $node
  */
-function _mica_datasets_connection_data_node(&$node) {
+function _mica_connector_connection_data_node(&$node) {
   $uri = entity_uri('node', $node);
   return array(
     'title' => $node->title,
@@ -89,8 +89,8 @@ function _mica_datasets_connection_data_node(&$node) {
  * @param $study_node
  * @param $parent_node
  */
-function _mica_datasets_add_connection_option(array &$options, &$dataset_node, &$study_node, &$parent_node) {
-  $data = _mica_datasets_connection_data($dataset_node, $study_node, $parent_node);
+function _mica_connector_add_connection_option(array &$options, &$dataset_node, &$study_node, &$parent_node) {
+  $data = _mica_connector_connection_data($dataset_node, $study_node, $parent_node);
   $href = 'node/' . $data['connector'][MICA_DATASET_ID] . '/study/' . $data['connector'][MICA_STUDY_ID]
     . '/connector/' . (($data['connector']['id'] != '0') ? ($data['connector']['id'] . '/edit') : 'add');
 
@@ -126,7 +126,7 @@ function _mica_datasets_add_connection_option(array &$options, &$dataset_node, &
  * @param $empty   text when list is empty
  * @param $options list of rows
  */
-function _mica_datasets_add_table_form(&$form, $header, $empty, array &$options) {
+function _mica_connector_add_table_form(&$form, $header, $empty, array &$options) {
   $header = array(
     'child' => t('@header', array('@header' => $header)),
     'connection-type' => t('Connection Type'),
@@ -149,7 +149,7 @@ function _mica_datasets_add_table_form(&$form, $header, $empty, array &$options)
   }
 }
 
-function _mica_datasets_connectors_form_submit($form, &$form_state) {
+function _mica_connector_connectors_form_submit($form, &$form_state) {
 
   switch ($form_state['triggering_element']['#value']) {
     case t('Delete selected items'):
@@ -157,11 +157,11 @@ function _mica_datasets_connectors_form_submit($form, &$form_state) {
         if ($selection != 0) {
           $row = $form['table']['#options'][$selection]['row'];
           // update node referenced by the form_state
-          $node = _mica_datasets_get_node_form_arg($form_state);
+          $node = _mica_connector_get_node_form_arg($form_state);
           if ($node->type !== 'study') {
             $node = node_load($row['connector'][MICA_STUDY_ID]);
           }
-          _mica_datasets_dataset_connection_delete($node, $row['connector'][MICA_DATASET_ID]);
+          _mica_connector_dataset_connection_delete($node, $row['connector'][MICA_DATASET_ID]);
         }
       }
       break;
@@ -170,14 +170,14 @@ function _mica_datasets_connectors_form_submit($form, &$form_state) {
       // update node referenced by the form_state
       $dataset_node = node_load($form_state['values']['datasets']);
       $study_node = $form_state['build_info']['args'][0];
-      _mica_datasets_add_study_to_dataset($study_node, $dataset_node);
+      _mica_connector_add_study_to_dataset($study_node, $dataset_node);
       break;
 
     case t('Add Study'):
       // update selected node referenced with the one from the form_state
       $dataset_node = $form_state['build_info']['args'][0];
       $study_node = node_load($form_state['values']['studies']);
-      _mica_datasets_add_study_to_dataset($study_node, $dataset_node);
+      _mica_connector_add_study_to_dataset($study_node, $dataset_node);
       break;
   }
 
@@ -185,7 +185,7 @@ function _mica_datasets_connectors_form_submit($form, &$form_state) {
   $form_state['rebuild'] = TRUE;
 }
 
-function _mica_datasets_add_study_to_dataset($study, $dataset) {
+function _mica_connector_add_study_to_dataset($study, $dataset) {
   $study_wrapper = entity_metadata_wrapper('node', $study);
   $dataset_wrapper = entity_metadata_wrapper('node', $dataset);
 
@@ -198,17 +198,17 @@ function _mica_datasets_add_study_to_dataset($study, $dataset) {
 }
 
 
-function _mica_datasets_dataset_connection_delete(&$study_node, $dataset_node_id) {
-  _mica_datasets_remove_study_to_dataset($study_node, node_load($dataset_node_id));
+function _mica_connector_dataset_connection_delete(&$study_node, $dataset_node_id) {
+  _mica_connector_remove_study_to_dataset($study_node, node_load($dataset_node_id));
 
   // todo delete connector entity too
-  $connector = mica_dataset_connector_query($dataset_node_id, $study_node->nid);
+  $connector = mica_connector_query($dataset_node_id, $study_node->nid);
   if ($connector) {
     $connector->delete();
   }
 }
 
-function _mica_datasets_remove_study_to_dataset(&$study, &$dataset) {
+function _mica_connector_remove_study_to_dataset(&$study, &$dataset) {
   $study_wrapper = entity_metadata_wrapper('node', $study);
   $dataset_wrapper = entity_metadata_wrapper('node', $dataset);
 
@@ -221,26 +221,24 @@ function _mica_datasets_remove_study_to_dataset(&$study, &$dataset) {
 // utilities
 //
 
-function _mica_datasets_connection_type_name($type) {
+function _mica_connector_connection_type_name($type) {
   if ($type == 'none') {
     return t('-none-');
   }
-  $connection = mica_datasets_get_connection_info($type);
+  $connection = mica_connector_get_connection_info($type);
   if (isset($connection) && array_key_exists('name', $connection)) {
     return $connection['name'];
   }
   return $type;
 }
 
-function _mica_datasets_connection_types() {
+function _mica_connector_connection_types() {
   // todo get list of MicaDatasetConnectionInterface implementations
   $types = array(
     'none' => t('-none-'),
   );
 
-  //debug(mica_datasets_get_connection_info());
-  $connections = mica_datasets_get_connection_info();
-
+  $connections = mica_connector_get_connection_info();
   if (isset($connections)) {
     foreach ($connections as $key => $connection) {
       $types[$key] = $connection['name'];
@@ -250,15 +248,15 @@ function _mica_datasets_connection_types() {
   return $types;
 }
 
-function _mica_datasets_add_connection_config_implementation_form(&$study_node, $connection_type) {
-  return _mica_datasets_new_connector($connection_type)->configurationForm($study_node);
+function _mica_connector_add_connection_config_implementation_form(&$study_node, $connection_type) {
+  return _mica_connector_new_connector($connection_type)->configurationForm($study_node);
 }
 
-function _mica_datasets_connection_options_validate(&$form, &$values, &$form_state, $connection_type) {
-  return _mica_datasets_new_connector($connection_type)->configurationFormValidate($form, $values, $form_state);
+function _mica_connector_connection_options_validate(&$form, &$values, &$form_state, $connection_type) {
+  return _mica_connector_new_connector($connection_type)->configurationFormValidate($form, $values, $form_state);
 }
 
-function _mica_datasets_new_connector($connection_type) {
+function _mica_connector_new_connector($connection_type) {
   return new MicaDatasetConnector(array('class' => $connection_type));
 }
 
@@ -269,12 +267,12 @@ function _mica_datasets_new_connector($connection_type) {
  * @param $form_state
  * @param $connection_type
  */
-function _mica_datasets_connection_options_submit(&$form, &$form_state, $connection_type) {
-  $options = _mica_datasets_connection_config_values($form, $form_state);
+function _mica_connector_connection_options_submit(&$form, &$form_state, $connection_type) {
+  $options = _mica_connector_connection_config_values($form, $form_state);
   if ($connection_type === 'none') {
     return $options;
   }
-  return _mica_datasets_new_connector($connection_type)->configurationFormSubmit($form, $options, $form_state);
+  return _mica_connector_new_connector($connection_type)->configurationFormSubmit($form, $options, $form_state);
 }
 
 /**
@@ -282,7 +280,7 @@ function _mica_datasets_connection_options_submit(&$form, &$form_state, $connect
  *
  * @param  $form_state
  */
-function _mica_datasets_get_node_form_arg(&$form_state) {
+function _mica_connector_get_node_form_arg(&$form_state) {
   return $form_state['build_info']['args'][0];
 }
 
@@ -291,10 +289,10 @@ function _mica_datasets_get_node_form_arg(&$form_state) {
  *
  * @param study node $study_node
  */
-function _mica_datasets_datasets_options($study_node) {
+function _mica_connector_datasets_options($study_node) {
   $rval = array();
   $dataset_node_ids = array();
-  foreach (_mica_datasets_node_field_values($study_node, 'mica_dataset') as $dataset_node_id_value) {
+  foreach (_mica_connector_node_field_values($study_node, 'mica_dataset') as $dataset_node_id_value) {
     $dataset_node_ids[] = $dataset_node_id_value['nid'];
   }
 
@@ -323,7 +321,7 @@ function _mica_datasets_datasets_options($study_node) {
  *
  * @param $study_node_ids
  */
-function _mica_datasets_studies_options(&$study_node_ids) {
+function _mica_connector_studies_options(&$study_node_ids) {
   $rval = array();
 
   $q = db_select('node', 'n');
@@ -350,7 +348,7 @@ function _mica_datasets_studies_options(&$study_node_ids) {
  *
  * @param $dataset_node_id
  */
-function _mica_datasets_get_study_ids($dataset_node_id) {
+function _mica_connector_get_study_ids($dataset_node_id) {
   $rval = array();
 
   // Get field information
@@ -380,7 +378,7 @@ function _mica_datasets_get_study_ids($dataset_node_id) {
  *
  * @param $study_node_id
  */
-function _mica_datasets_get_dataset_ids($study_node_id) {
+function _mica_connector_get_dataset_ids($study_node_id) {
   $rval = array();
 
   $q = db_select('field_data_mica_dataset', 'f');
@@ -409,7 +407,7 @@ function _mica_datasets_get_dataset_ids($study_node_id) {
  * @param node   $node
  * @param string $field_name
  */
-function _mica_datasets_node_field_values($node, $field_name) {
+function _mica_connector_node_field_values($node, $field_name) {
   $field = $node->$field_name;
   if ($field) {
     return $field[$node->language];
@@ -423,7 +421,7 @@ function _mica_datasets_node_field_values($node, $field_name) {
  * @param $form
  * @param $form_state
  */
-function _mica_datasets_connection_config_values(&$form, &$form_state) {
+function _mica_connector_connection_config_values(&$form, &$form_state) {
   $values = array();
   foreach ($form_state['values'] as $key => $value) {
     if (array_key_exists($key, $form[MICA_CONNECTION_CONFIG])) {

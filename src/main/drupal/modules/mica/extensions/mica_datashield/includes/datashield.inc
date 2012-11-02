@@ -19,7 +19,7 @@ class DataShieldModel {
   }
 
   public function launch($model, $glm) {
-    $connectors = mica_dataset_connector_query_multiple($this->dataset->nid, TRUE);
+    $connectors = mica_connector_query_multiple($this->dataset->nid, TRUE);
 
     $params = array();
     $params['curlopts'] = array(

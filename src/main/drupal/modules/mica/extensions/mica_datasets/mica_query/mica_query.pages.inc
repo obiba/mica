@@ -769,7 +769,7 @@ function _mica_query_result_table($dataset_node, $query, $cross_variable, $add_l
     }
   }
 
-  $mica_dataset_connectors = mica_dataset_connector_query_multiple($dataset_node->nid);
+  $mica_connectors = mica_connector_query_multiple($dataset_node->nid);
   $terms = mica_query_term_query($query);
 
   $headers = array();
@@ -790,7 +790,7 @@ function _mica_query_result_table($dataset_node, $query, $cross_variable, $add_l
   $header_matched_tooltip = '';
   $header_colspan = count($category_label_by_name) + 1;
 
-  foreach ($mica_dataset_connectors as $connector) {
+  foreach ($mica_connectors as $connector) {
     $row = array();
 
     $study = node_load($connector->study_id);
@@ -977,7 +977,7 @@ function _mica_query_result_table($dataset_node, $query, $cross_variable, $add_l
   }
 
   // Add a summary row if there's more than one connector
-  if (count($mica_dataset_connectors) > 1) {
+  if (count($mica_connectors) > 1) {
     _mica_query_run_page_summary($rows, $header_colspan);
   }
 

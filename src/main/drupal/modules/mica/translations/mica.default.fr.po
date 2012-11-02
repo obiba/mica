@@ -20934,8 +20934,8 @@ msgstr ""
 msgid "Mica standard profile installed"
 msgstr "Le profil standard de Mica est installé"
 
-msgid "Mica_dataset_connector"
-msgstr "Mica_dataset_connector"
+msgid "Mica_connector"
+msgstr "Mica_connector"
 
 msgid "Mica_dataset_query"
 msgstr "Mica_dataset_query"

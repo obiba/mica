@@ -4,9 +4,9 @@ include_once('mica_opal_harmonization.inc');
 
 
 /**
- * Implements hook_mica_datasets_connection_info().
+ * Implements hook_mica_connector_connection_info().
  */
-function mica_opal_mica_datasets_connection_info() {
+function mica_opal_mica_connector_connection_info() {
   $connections = array();
   $connections['mica_dataset_opal_connection'] = array(
     'name' => t('Opal'),

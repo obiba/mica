@@ -4,6 +4,8 @@ core = "7.x"
 package = Mica
 php = "5.2.4"
 
+dependencies[] = mica_connector
+
 features[user_permission][] = create edit delete own dataset query
 features[user_permission][] = edit delete any dataset query
 features[user_permission][] = publish dataset query

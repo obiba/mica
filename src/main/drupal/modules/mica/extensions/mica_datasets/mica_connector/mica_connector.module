@@ -1,0 +1,310 @@
+<?php
+
+/**
+ * @file
+ * Code for the Mica Connector module
+ */
+
+
+/**
+ * Implements hook_entity_info().
+ */
+function mica_connector_entity_info() {
+  $info = array();
+  $info['mica_connector'] = array(
+    'label' => t('Dataset connector'),
+    'controller class' => 'EntityAPIController',
+    'metadata controller class' => FALSE,
+    'entity class' => 'MicaDatasetConnector',
+    'base table' => 'mica_connector',
+    'uri callback' => 'mica_connector_url',
+    'module' => 'mica_connector',
+    'exportable' => FALSE,
+    'entity keys' => array(
+      'id' => 'id',
+      'label' => 'name',
+    ),
+  );
+  return $info;
+}
+
+/**
+ * Implements hook_entity_property_info().
+ */
+function mica_connector_entity_property_info() {
+  $info['mica_connector']['properties'] = array(
+    'id' => array(
+      'label' => t('ID'),
+      'type' => 'integer',
+      'description' => t('The primary identifier for a connector.'),
+    ),
+    'name' => array(
+      'label' => t('Name'),
+      'type' => 'text',
+      'description' => t('The displayed name for a connector.'),
+      'required' => TRUE,
+    ),
+    'description' => array(
+      'label' => t('Description'),
+      'type' => 'text',
+      'description' => t('The displayed description for a connector.'),
+      'sanitize' => 'filter_xss',
+    ),
+    'dataset_id' => array(
+      'label' => t('Dataset ID'),
+      'type' => 'integer',
+      'description' => t('The primary identifier for the Dataset node.'),
+    ),
+    'study_id' => array(
+      'label' => t('Study ID'),
+      'type' => 'integer',
+      'description' => t('The primary identifier for the Study node.'),
+    ),
+    'class' => array(
+      'label' => t('Connection class'),
+      'type' => 'text',
+      'description' => t('The ID of the connection class to use for this server.'),
+      'required' => TRUE,
+    ),
+    'enabled' => array(
+      'label' => t('Enabled'),
+      'type' => 'boolean',
+      'description' => t('A flag indicating whether the connector is enabled.'),
+    ),
+  );
+  return $info;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function mica_connector_menu() {
+
+  $items = array();
+  $items['mica/%ctools_js/node/%node/study/%node/connector/add'] = array(
+    'title' => 'Dataset Connection',
+    'access callback' => '_mica_datasets_node_access',
+    'access arguments' => array(3, 'dataset', 'update'),
+    'page callback' => 'mica_connector_dataset_connection_modal_page',
+    'page arguments' => array(1, NULL, 3, 5),
+    'type' => MENU_CALLBACK,
+    'file' => 'mica_connector.pages.inc',
+  );
+  $items['mica/%ctools_js/node/%node/study/%node/connector/%mica_connector/edit'] = array(
+    'title' => 'Dataset Connection',
+    'access callback' => '_mica_datasets_node_access',
+    'access arguments' => array(3, 'dataset', 'update'),
+    'page callback' => 'mica_connector_dataset_connection_modal_page',
+    'page arguments' => array(1, 7, 3, 5),
+    'type' => MENU_CALLBACK,
+    'file' => 'mica_connector.pages.inc',
+  );
+  return $items;
+}
+
+/**
+ * Load the dataset connector corresponding to the specified dataset and study ids.
+ *
+ * @param $dataset_id
+ * @param $study_id
+ * @param $enabled
+ *
+ * @return MicaDatasetConnector
+ *   A connector or FALSE if not found.
+ */
+function mica_connector_query($dataset_id, $study_id, $enabled = NULL) {
+  $q = db_select('mica_connector', 'c');
+  $q->addField('c', 'id');
+  $q->condition('c.dataset_id', $dataset_id);
+  $q->condition('c.study_id', $study_id);
+  if (isset($enabled)) {
+    $q->condition('c.enabled', $enabled);
+  }
+  $q->range(0, 1);
+  $result = $q->execute();
+
+  $rval = $result->fetchField();
+
+  return $rval ? mica_connector_load($rval) : FALSE;
+}
+
+/**
+ * Load the dataset connectors corresponding to the specified dataset id.
+ *
+ * @param $dataset_id
+ * @param $enabled
+ *
+ * @return array MicaDatasetConnector
+ *   An array of connectors (may be empty).
+ */
+function mica_connector_query_multiple($dataset_id, $enabled = NULL) {
+  $connectors = array();
+
+  // check rights to make query
+  if (_mica_datasets_node_queries_access(node_load($dataset_id), 'view')) {
+    $q = db_select('mica_connector', 'c');
+    $q->addField('c', 'id');
+    $q->condition('c.dataset_id', $dataset_id);
+    if (isset($enabled)) {
+      $q->condition('c.enabled', $enabled);
+    }
+    $result = $q->execute();
+
+    while ($record = $result->fetchAssoc()) {
+      $connector = mica_connector_load($record['id']);
+
+      // check that study is visible by user
+      $study = node_load($connector->study_id);
+      if (node_access('view', $study)) {
+        $connectors[] = $connector;
+      }
+    }
+  }
+
+  return $connectors;
+}
+
+/**
+ * Load the dataset connector with the specified id.
+ *
+ * @param $id
+ *   The dataset connector's id.
+ * @param $reset
+ *   Whether to reset the internal cache.
+ *
+ * @return MicaDatasetConnector
+ *   An object representing the connector with the specified id.
+ */
+function mica_connector_load($id, $reset = FALSE) {
+  $ret = mica_connector_load_multiple(array($id), array(), $reset);
+  return $ret ? reset($ret) : FALSE;
+}
+
+/**
+ * Load multiple connectors at once, determined by IDs or machine names, or by
+ * other conditions.
+ *
+ * @see entity_load()
+ *
+ * @param $ids
+ *   An array of connector IDs or machine names.
+ * @param $conditions
+ *   An array of conditions on the {mica_connector} table in the form
+ *   'field' => $value.
+ * @param $reset
+ *   Whether to reset the internal entity_load cache.
+ *
+ * @return array
+ *      An array of connector objects keyed by machine name.
+ */
+function mica_connector_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
+  return entity_load('mica_connector', $ids, $conditions, $reset);
+}
+
+/**
+ * Entity uri callback.
+ */
+function mica_connector_url(MicaDatasetConnector $connector) {
+  return array(
+    'path' => 'admin/config/system/mica/connector/' . $connector->id,
+    'options' => array(),
+  );
+}
+
+/**
+ * Inserts a new dataset connector into the database.
+ *
+ * @param array $values
+ *   An array containing the values to be inserted.
+ *
+ * @return
+ *   The newly inserted connector's id, or FALSE on error.
+ */
+function mica_connector_insert(array $values) {
+  $connector = new MicaDatasetConnector($values);
+  $connector->is_new = TRUE;
+  $connector->save();
+  return $connector->id;
+}
+
+/**
+ * Returns either a list of all available connection infos, or a specific one.
+ *
+ * @see hook_mica_connector_connection_info()
+ *
+ * @param $id
+ *   The ID of the connection info to retrieve.
+ *
+ * @return array
+ *      If $id was not specified, an array of all available service classes.
+ *      Otherwise, either the service info with the specified id (if it exists),
+ *      or NULL.
+ */
+function mica_connector_get_connection_info($id = NULL) {
+  $connections = &drupal_static(__FUNCTION__);
+
+  if (!isset($connections)) {
+    $connections = module_invoke_all('mica_connector_connection_info');
+  }
+
+  if (isset($id)) {
+    return isset($connections[$id]) ? $connections[$id] : NULL;
+  }
+  return $connections;
+}
+
+//
+// Feeds
+//
+
+/**
+ * Implements hook_feeds_after_parse().
+ *
+ * used to extract the dataset_id from the importer and set it on the mapper
+ * so that nodes created have a link to their dataset. This method also creates
+ * a guid for each variable (dataset_id:title
+ */
+function mica_connector_feeds_after_parse(FeedsSource $source, FeedsParserResult $result) {
+  if (get_class($source->importer->processor) === 'FeedsNodeProcessor') {
+    $config = $source->importer->processor->getConfig();
+    if ($config['content_type'] === 'variable') {
+      $src_config = $source->getConfigFor($source->importer->fetcher);
+      $dataset_id = NULL;
+      if (isset($src_config['mica_connector'])) {
+        $nid = $src_config['mica_connector'];
+        $connector_node = mica_connector_load($nid);
+        $dataset_id = $connector_node->dataset_id;
+        $titleSource = _mica_connector_find_source_for_target($source->importer->processor, 'title');
+        foreach ($result->items as &$item) {
+          $item['dataset_id'] = $dataset_id;
+          $item['uid'] = $dataset_id . ":" . $item[$titleSource];
+        }
+        unset($item);
+      }
+    }
+  }
+}
+
+/**
+ * Returns the name of the source for a specified target.
+ *
+ * @param FeedsProcessor $processor
+ * @param String         $target the name of the target field (e.g.: 'title')
+ *
+ * @throws Exception
+ * @return the name of source item mapped to the target (e.g.: 'jsonpath:0')
+ */
+function _mica_connector_find_source_for_target(FeedsProcessor $processor, $target) {
+  $config = $processor->getConfig();
+  foreach ($config['mappings'] as $map) {
+    if ($map['target'] == $target) {
+      return $map['source'];
+    }
+  }
+  throw new Exception("could not find source for $target", 500);
+}
+
+
+function mica_connector_dataset_has_connectors($dataset_nid) {
+  return count(MicaDatasetConnector::findConnectorsByDataset($dataset_nid)) > 0;
+}

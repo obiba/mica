@@ -131,13 +131,13 @@ function _mica_query_result_table($dataset_node, $query, $cross_variable) {
     }
   }
 
-  $mica_dataset_connectors = mica_dataset_connector_query_multiple($dataset_node->nid);
+  $mica_connectors = mica_connector_query_multiple($dataset_node->nid);
   $terms = mica_query_term_query($query);
 
   $rows = array();
 
   // Process header
-  if (count($mica_dataset_connectors) > 0) {
+  if (count($mica_connectors) > 0) {
     $headers = _mica_query_process_header($category_label_by_name, $terms);
     $sub_header = _mica_query_process_subheader($cross_variable_wrapper, $category_label_by_name);
     $rows[] = array('data' => $sub_header);
@@ -145,7 +145,7 @@ function _mica_query_result_table($dataset_node, $query, $cross_variable) {
 
   $study_rowspan = $is_continuous ? 1 : count($cross_category_label_by_name) + 1; // account for N
   $totals = array();
-  foreach ($mica_dataset_connectors as $connector) {
+  foreach ($mica_connectors as $connector) {
     $row = array();
 
     $study = node_load($connector->study_id);
@@ -240,7 +240,7 @@ function _mica_query_result_table($dataset_node, $query, $cross_variable) {
   }
 
   // Add a summary row if there's more than one connector
-  if (count($mica_dataset_connectors) > 1 && !$is_continuous) {
+  if (count($mica_connectors) > 1 && !$is_continuous) {
     $row[] = array(
       'data' => 'Totals',
       'class' => array('border-right', 'border-bottom'),

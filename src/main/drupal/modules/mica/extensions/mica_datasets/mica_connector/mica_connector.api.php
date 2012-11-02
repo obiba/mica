@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Hooks provided by the Mica Datasets module.
+ * Hooks provided by the Mica Connector module.
  */
 
 /**
@@ -19,7 +19,7 @@
  *   - class: The service class, which has to implement the
  *     MicaDatasetConnectionInterface interface.
  */
-function hook_mica_datasets_connection_info() {
+function hook_mica_connector_connection_info() {
   $connections = array();
   $connections['example_some'] = array(
     'name' => t('Some Connection'),

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Mica Datasets Connector entity
+ * Mica Connector entity
  */
 
 /**
@@ -66,7 +66,7 @@ class MicaDatasetConnector extends Entity {
    * Constructor as a helper to the parent constructor.
    */
   public function __construct(array $values = array()) {
-    parent::__construct($values, 'mica_dataset_connector');
+    parent::__construct($values, 'mica_connector');
   }
 
   /**
@@ -117,7 +117,7 @@ class MicaDatasetConnector extends Entity {
    */
   protected function ensureProxy() {
     if (!isset($this->proxy)) {
-      $class = mica_datasets_get_connection_info($this->class);
+      $class = mica_connector_get_connection_info($this->class);
       if ($class && class_exists($class['class'])) {
         if (empty($this->options)) {
           // We always have to provide the options.
@@ -211,12 +211,12 @@ class MicaDatasetConnector extends Entity {
    */
   public static function findConnectorsByDataset($dataset_id) {
     $query = new EntityFieldQuery();
-    $results = $query->entityCondition('entity_type', 'mica_dataset_connector')
+    $results = $query->entityCondition('entity_type', 'mica_connector')
       ->propertyCondition('dataset_id', $dataset_id)
       ->execute();
-    if (!empty($results['mica_dataset_connector'])) {
-      $ids = array_keys($results['mica_dataset_connector']);
-      return entity_load('mica_dataset_connector', $ids);
+    if (!empty($results['mica_connector'])) {
+      $ids = array_keys($results['mica_connector']);
+      return entity_load('mica_connector', $ids);
     }
     return array();
   }

@@ -1,0 +1,106 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Mica Connector module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function mica_connector_schema() {
+  $schema = array();
+  $schema['mica_connector'] = array(
+    'description' => 'Stores all dataset connectors created through Mica Datasets.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'The primary identifier for a connector.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'name' => array(
+        'description' => 'The displayed name for a connector.',
+        'type' => 'varchar',
+        'length' => 200,
+        'not null' => TRUE,
+      ),
+      'description' => array(
+        'description' => 'The displayed description for a connector.',
+        'type' => 'text',
+        'not null' => FALSE,
+      ),
+      'dataset_id' => array(
+        'description' => 'The dataset identifier for a connector.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'study_id' => array(
+        'description' => 'The study identifier for a connector.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'class' => array(
+        'description' => 'The id of the connection class to use for this connector.',
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+      ),
+      'options' => array(
+        'description' => 'The options used to configure the service object.',
+        'type' => 'text',
+        'serialize' => TRUE,
+        'not null' => TRUE,
+      ),
+      'enabled' => array(
+        'description' => 'A flag indicating whether the connector is enabled.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+    ) + entity_exportable_schema_fields(),
+    'indexes' => array(
+      'indexing' => array('enabled', 'study_id', 'dataset_id'),
+    ),
+    'primary key' => array('id'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function mica_connector_install() {
+  _mica_connector_migrate_data();
+}
+
+/**
+ * Import mica_dataset_connector previously exported by mica_core, if any.
+ */
+function _mica_connector_migrate_data() {
+  $connector_export = variable_get('mica_connector_export');
+  if (!empty($connector_export)) {
+    foreach ($connector_export as $connector) {
+      db_insert('mica_connector')
+        ->fields(
+        array(
+          'id' => $connector->id,
+          'name' => $connector->name,
+          'description' => $connector->description,
+          'dataset_id' => $connector->dataset_id,
+          'study_id' => $connector->study_id,
+          'class' => $connector->class,
+          'options' => $connector->options,
+          'enabled' => $connector->enabled,
+          'status' => $connector->status,
+          'module' => 'mica_connector',
+        )
+      )->execute();
+    }
+    variable_del('mica_connector_export');
+  }
+}
