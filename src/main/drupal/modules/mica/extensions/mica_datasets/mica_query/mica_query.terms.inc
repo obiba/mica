@@ -168,7 +168,7 @@ abstract class AbstractTerm implements QueryTermInterface {
 
     $dataset_id = NULL;
     if (!empty($this->qt->query_id)) {
-      $query = mica_dataset_query_load($this->qt->query_id);
+      $query = mica_query_load($this->qt->query_id);
       $dataset_id = $query->dataset_id;
     }
     elseif (!empty($this->qt->dataset_id)) {

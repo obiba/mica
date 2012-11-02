@@ -1,8 +1,8 @@
 <?php
 
-require_once('includes/query_entity.inc');
-require_once('mica_datasets.utils.inc');
-require_once('mica_datasets.pages.query.inc');
+require_once('mica_query.entity.inc');
+require_once('mica_query.pages.inc');
+require_once(drupal_get_path('module', 'mica_datasets') . '/mica_datasets.utils.inc');
 
 /**
  * @file
@@ -67,7 +67,7 @@ function mica_datasets_query_term_edit_form($form, &$form_state) {
   $form['actions']['cancel'] = array(
     '#type' => 'link',
     '#title' => t('Cancel'),
-    '#href' => _mica_datasets_query_url($dataset_node, $query),
+    '#href' => _mica_query_url($dataset_node, $query),
   );
 
   return $form;
@@ -105,7 +105,7 @@ function mica_datasets_query_term_edit_form_submit($form, &$form_state) {
         $form_state['cancel'] = TRUE;
         break;
     }
-    $form_state['redirect'] = _mica_datasets_query_url($dataset_node, $query);
+    $form_state['redirect'] = _mica_query_url($dataset_node, $query);
     if (!empty($cross_variable)) {
       $form_state['redirect'] .= '/' . $cross_variable;
     }
@@ -180,7 +180,7 @@ function mica_datasets_query_term_delete_form($form, &$form_state) {
   $form['actions']['cancel'] = array(
     '#type' => 'link',
     '#title' => t('Cancel'),
-    '#href' => _mica_datasets_query_url($dataset_node, $query),
+    '#href' => _mica_query_url($dataset_node, $query),
   );
 
   return $form;
@@ -201,7 +201,7 @@ function mica_datasets_query_term_delete_form_submit($form, &$form_state) {
   }
 
   $form_state['complete'] = TRUE;
-  $form_state['redirect'] = _mica_datasets_query_url($dataset_node, $query);
+  $form_state['redirect'] = _mica_query_url($dataset_node, $query);
   if (!empty($cross_variable)) {
     $form_state['redirect'] .= '/' . $cross_variable;
   }

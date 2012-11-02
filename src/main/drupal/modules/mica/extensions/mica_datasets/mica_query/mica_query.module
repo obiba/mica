@@ -4,7 +4,260 @@
  * Mica Datasets Crosstab module file
  */
 
+include_once('mica_query.features.inc');
+
+
+/**
+ * Implements hook_entity_info().
+ */
+function mica_query_entity_info() {
+  $info = array();
+  $info['mica_dataset_query'] = array(
+    'label' => t('Dataset query'),
+    'controller class' => 'EntityAPIController',
+    'metadata controller class' => FALSE,
+    'entity class' => 'MicaDatasetQuery',
+    'base table' => 'mica_dataset_query',
+    'uri callback' => 'mica_query_url',
+    'module' => 'mica_dataset',
+    'exportable' => FALSE,
+    'entity keys' => array(
+      'id' => 'id',
+      'label' => 'name',
+    ),
+  );
+
+  $info['mica_dataset_query_term'] = array(
+    'label' => t('Dataset query term'),
+    'controller class' => 'EntityAPIController',
+    'metadata controller class' => FALSE,
+    'entity class' => 'MicaDatasetQueryTerm',
+    'base table' => 'mica_dataset_query_term',
+    'uri callback' => 'mica_query_term_url',
+    'module' => 'mica_dataset',
+    'exportable' => FALSE,
+    'entity keys' => array(
+      'id' => 'id',
+      'label' => 'name',
+    ),
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_entity_property_info().
+ */
+function mica_query_entity_property_info() {
+  $info['mica_dataset_query']['properties'] = array(
+    'id' => array(
+      'label' => t('ID'),
+      'type' => 'integer',
+      'description' => t('The primary identifier for a query.'),
+    ),
+    'name' => array(
+      'label' => t('Name'),
+      'type' => 'text',
+      'description' => t('The displayed name for a query.'),
+      'required' => TRUE,
+    ),
+    'description' => array(
+      'label' => t('Description'),
+      'type' => 'text',
+      'description' => t('The displayed description for a query.'),
+      'sanitize' => 'filter_xss',
+    ),
+    'dataset_id' => array(
+      'label' => t('Dataset ID'),
+      'type' => 'integer',
+      'description' => t('The primary identifier for the Dataset node.'),
+    ),
+    'user_id' => array(
+      'label' => t('User ID'),
+      'type' => 'integer',
+      'description' => t('The primary identifier for the user.'),
+    ),
+    'published' => array(
+      'label' => t('Published'),
+      'type' => 'boolean',
+      'description' => t('A flag indicating whether the query is published.'),
+    ),
+  );
+
+  $info['mica_dataset_query_term']['properties'] = array(
+    'id' => array(
+      'label' => t('ID'),
+      'type' => 'integer',
+      'description' => t('The primary identifier for a query term.'),
+    ),
+    'query_id' => array(
+      'label' => t('Query ID'),
+      'type' => 'integer',
+      'description' => t('The query identifier for a query term.'),
+    ),
+    'variable_id' => array(
+      'label' => t('Variable ID'),
+      'type' => 'integer',
+      'description' => t('The variable identifier for a query term.'),
+    ),
+    'weight' => array(
+      'label' => t('Weight'),
+      'type' => 'integer',
+      'description' => t('The weight of a term in its query.'),
+    ),
+    'depth' => array(
+      'label' => t('Depth'),
+      'type' => 'integer',
+      'description' => t('The depth of a term in its query.'),
+    ),
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function mica_query_theme() {
+  return array(
+    'mica_query_edit_form' => array(
+      'render element' => 'form'
+    ),
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function mica_query_permission() {
+  $perms = array(
+    "view any dataset query" => array(
+      'title' => t('View any Dataset Query'),
+      'description' => t('Permission for viewing own and published queries.'),
+    ),
+    "create edit delete own dataset query" => array(
+      'title' => t('Create, edit and delete own Dataset Query'),
+    ),
+    "edit delete any dataset query" => array(
+      'title' => t('Edit and delete any Dataset Query'),
+      'description' => t('Permission for editing and deleting own and published queries.'),
+    ),
+    "publish dataset query" => array(
+      'title' => t('Publish Dataset Query'),
+      'description' => t('Edition permission on the query is required to be effectively allowed to publish it.'),
+    ),
+  );
+  return $perms;
+}
+
+/**
+ * Implements hook_menu().
+ */
 function mica_query_menu() {
+  $items = array();
+  $items['node/%node/queries/add'] = array(
+    'title' => 'Add Query',
+    'access callback' => '_mica_datasets_node_queries_access',
+    'access arguments' => array(1, 'update'),
+    'page callback' => 'mica_query_edit_page',
+    'page arguments' => array(1, NULL),
+    'weight' => 7,
+    'type' => MENU_LOCAL_ACTION,
+    'file' => 'mica_query.pages.inc',
+  );
+
+  // be careful % is the actual wildcard, the rest simply names a load function
+  $items['node/%node/queries/%mica_query/edit'] = array(
+    'title' => 'Edit',
+    'access callback' => '_mica_datasets_query_access',
+    'access arguments' => array(1, 3, 'update'),
+    'page callback' => 'mica_query_edit_page',
+    'page arguments' => array(1, 3),
+    'type' => MENU_LOCAL_TASK,
+    'file' => 'mica_query.pages.inc',
+  );
+
+  $items['node/%node/queries'] = array(
+    'title' => 'Queries',
+    'access callback' => '_mica_datasets_node_queries_access',
+    'access arguments' => array(1, 'view'),
+    'page callback' => 'mica_query_queries_page',
+    'page arguments' => array(1),
+    'type' => MENU_LOCAL_ACTION,
+    'file' => 'mica_query.pages.inc',
+  );
+
+  $items['node/%node/queries/%mica_query'] = array(
+    'title callback' => '_mica_query_title',
+    'title arguments' => array(3),
+    'access callback' => '_mica_datasets_query_access',
+    'access arguments' => array(1, 3, 'view'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mica_query_run_page', 1, 3, 4),
+    'weight' => 7,
+    'file' => 'mica_query.pages.inc',
+  );
+  $items['node/%node/queries/%mica_query/xlsx'] = array(
+    'access callback' => '_mica_datasets_query_access',
+    'access arguments' => array(1, 3, 'view'),
+    'page callback' => 'mica_query_run_xlsx',
+    'page arguments' => array(1, 3, 5),
+    'weight' => 8,
+    'file' => 'mica_query.pages.inc',
+  );
+
+  $items['node/%node/queries/%mica_query/view'] = array(
+    'title' => 'Run',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+
+  $items['mica/%ctools_js/node/%node/queries/%mica_query/delete'] = array(
+    'title' => 'Delete',
+    'access callback' => '_mica_datasets_query_access',
+    'access arguments' => array(3, 5, 'update'),
+    'page callback' => 'mica_query_delete_modal_page',
+    'page arguments' => array(1, 3, 5),
+    'type' => MENU_CALLBACK,
+    'file' => 'mica_query.pages.inc',
+  );
+
+  // query term
+  $items['node/%node/queries/%mica_query/term/%mica_query_term'] = array(
+    'title callback' => '_mica_query_term_title',
+    'title arguments' => array(1, 3, 5),
+    'access callback' => '_mica_datasets_query_access',
+    'access arguments' => array(1, 3, 'view'),
+    'page callback' => 'mica_datasets_query_term_page',
+    'page arguments' => array(1, 3, 5),
+    'file' => 'mica_query.pages.term.inc',
+  );
+
+  $items['node/%node/queries/%mica_query/term/%mica_query_term/view'] = array(
+    'title' => 'View',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+
+  $items['mica/%ctools_js/node/%node/queries/%mica_query/term/%mica_query_term/edit'] = array(
+    'title' => 'Edit',
+    'access callback' => '_mica_datasets_query_term_access',
+    'access arguments' => array(3, 5, 7, 'update'),
+    'page callback' => 'mica_datasets_query_term_edit_modal_page',
+    'page arguments' => array(1, 3, 5, 7, 9),
+    'type' => MENU_CALLBACK,
+    'file' => 'mica_query.pages.term.inc',
+  );
+
+  $items['mica/%ctools_js/node/%node/queries/%mica_query/term/%mica_query_term/delete'] = array(
+    'title' => 'Delete',
+    'access callback' => '_mica_datasets_query_term_access',
+    'access arguments' => array(3, 5, 7, 'update'),
+    'page callback' => 'mica_datasets_query_term_delete_modal_page',
+    'page arguments' => array(1, 3, 5, 7, 9),
+    'type' => MENU_CALLBACK,
+    'file' => 'mica_query.pages.term.inc',
+  );
 
   $items['node/%node/variable-crosstab'] = array(
     'access callback' => 'node_access',
@@ -13,7 +266,7 @@ function mica_query_menu() {
     'page arguments' => array('mica_query_run_page', 1, 3),
     'file' => 'mica_query.pages.crosstab.inc',
   );
-  $items['variable-crosstab/%var1/%var2/xlsx'] = array(
+  $items['variable-crosstab/%node/%node/xlsx'] = array(
     'access callback' => 'mica_core_nodes_access',
     'access arguments' => array('view', array(1, 2)),
     'page callback' => 'mica_query_run_xlsx',
@@ -66,6 +319,179 @@ function mica_query_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   }
 
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
-
 }
 
+/**
+ * Load the dataset query with the specified id.
+ *
+ * @param $id
+ *   The dataset query's id.
+ * @param $reset
+ *   Whether to reset the internal cache.
+ *
+ * @return MicaDatasetQuery
+ *   An object representing the query with the specified id.
+ */
+function mica_query_load($id, $reset = FALSE) {
+  if (is_numeric($id)) {
+    $ret = mica_query_load_multiple(array($id), array(), $reset);
+    return $ret ? reset($ret) : FALSE;
+  }
+  return MicaDatasetQueryManager::getQuery($id);
+}
+
+/**
+ * Load multiple queries at once, determined by IDs or machine names, or by
+ * other conditions.
+ *
+ * @see entity_load()
+ *
+ * @param $ids
+ *   An array of query IDs or machine names.
+ * @param $conditions
+ *   An array of conditions on the {mica_dataset_query} table in the form
+ *   'field' => $value.
+ * @param $reset
+ *   Whether to reset the internal entity_load cache.
+ *
+ * @return array
+ *      An array of query objects keyed by id.
+ */
+function mica_query_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
+  $queries = array();
+  $qs = entity_load('mica_dataset_query', $ids, $conditions, $reset);
+  foreach ($qs as $q) {
+    if (_mica_datasets_query_access(node_load($q->dataset_id), $q, 'view')) {
+      $queries[] = $q;
+    }
+  }
+  return $queries;
+}
+
+/**
+ * Entity uri callback.
+ */
+function mica_query_url(MicaDatasetQuery $query) {
+  return array(
+    'path' => 'admin/config/system/mica/query/' . $query->id,
+    'options' => array(),
+  );
+}
+
+//
+// Mica Dataset Query Term
+//
+
+/**
+ * Load the dataset query terms corresponding to the specified query id, ordered by weight.
+ *
+ * @param MicaDatasetQuery $query
+ */
+function mica_query_term_query($query) {
+  if (MicaDatasetQueryManager::isCached($query) == FALSE) {
+    $q = db_select('mica_dataset_query_term', 'c');
+    $q->addField('c', 'id');
+    $q->condition('c.query_id', $query->id, '=');
+    $q->orderBy('c.weight', 'ASC');
+    $result = $q->execute();
+
+    $rval = array();
+    while ($record = $result->fetchAssoc()) {
+      $rval[] = $record['id'];
+    }
+
+    return !empty($rval) ? mica_query_term_load_multiple($rval) : FALSE;
+  }
+
+  $rval = MicaDatasetQueryManager::getCache($query)->getTerms();
+  return empty($rval) ? FALSE : $rval;
+}
+
+/**
+ * Load the dataset query term with the specified id.
+ *
+ * @param $id
+ *   The dataset query term's id.
+ * @param $reset
+ *   Whether to reset the internal cache.
+ *
+ * @return MicaDatasetQueryTerm
+ *   An object representing the query term with the specified id.
+ */
+function mica_query_term_load($id, $reset = FALSE) {
+  if (is_numeric($id)) {
+    $ret = mica_query_term_load_multiple(array($id), array(), $reset);
+    return $ret ? reset($ret) : FALSE;
+  }
+  return MicaDatasetQueryManager::getTerm($id);
+}
+
+/**
+ * Load multiple query terms at once, determined by IDs or machine names, or by
+ * other conditions.
+ *
+ * @see entity_load()
+ *
+ * @param $ids
+ *   An array of query term IDs or machine names.
+ * @param $conditions
+ *   An array of conditions on the {mica_dataset_query_term} table in the form
+ *   'field' => $value.
+ * @param $reset
+ *   Whether to reset the internal entity_load cache.
+ *
+ * @return array
+ *      An array of query objects keyed by machine name.
+ */
+function mica_query_term_load_multiple($ids = array(), $conditions = array(), $reset = FALSE) {
+  // TODO filter the cached ones from the persisted ones by their id pattern
+  return entity_load('mica_dataset_query_term', $ids, $conditions, $reset);
+}
+
+/**
+ * Entity uri callback.
+ */
+function mica_query_term_url(MicaDatasetQueryTerm $query_term) {
+  return array(
+    'path' => 'admin/config/system/mica/query/' . $query_term->query_id . '/term/' . $query_term->id,
+    'options' => array(),
+  );
+}
+
+/**
+ * Inserts a new dataset query term into the database.
+ *
+ * @param array $values
+ *   An array containing the values to be inserted.
+ *
+ * @return
+ *   The newly inserted query term's id, or FALSE on error.
+ */
+function mica_query_term_insert(array $values) {
+  $query_term = new MicaDatasetQueryTerm($values);
+  $query_term->is_new = TRUE;
+  $query_term->save();
+  return $query_term->id;
+}
+
+/**
+ * Get the title for the query.
+ *
+ * @param node               $dataset_node
+ * @param mica_dataset_query $query
+ */
+function _mica_query_title($query) {
+  return $query->name;
+}
+
+/**
+ * Get the title for the query term.
+ *
+ * @param node                    $dataset_node
+ * @param mica_dataset_query      $query
+ * @param mica_dataset_query_term $term
+ */
+function _mica_query_term_title($dataset_node, $query, $term) {
+  $variable_node = node_load($term->variable_id);
+  return $variable_node->title;
+}

@@ -133,7 +133,7 @@ projects[logintoboggan] = 1.3
 
 projects[mail_edit] = 1.0
 
-projects[masquerade] = 1.0-rc4
+projects[masquerade] = 1.0-rc5
 
 projects[menu_breadcrumb] = 1.3
 

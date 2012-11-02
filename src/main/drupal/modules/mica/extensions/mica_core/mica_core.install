@@ -68,6 +68,13 @@ function mica_core_update_7500(&$sandbox) {
   module_disable(array('auto_nodetitle'));
 }
 
+/**
+ * Move queries from Mica Datasets to Mica Query module
+ */
+function mica_core_update_7600(&$update) {
+  _mica_core_rebuild_registry();
+}
+
 function mica_core_replace_titles($types) {
 
   spl_autoload_register('_search_api_solr_autoload');

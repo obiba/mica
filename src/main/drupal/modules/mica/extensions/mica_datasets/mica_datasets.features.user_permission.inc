@@ -40,19 +40,6 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: create edit delete own dataset query.
-  $permissions['create edit delete own dataset query'] = array(
-    'name' => 'create edit delete own dataset query',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
-      3 => 'dataset reviewer',
-      4 => 'researcher',
-    ),
-    'module' => 'mica_datasets',
-  );
-
   // Exported permission: create study_variable_attributes content.
   $permissions['create study_variable_attributes content'] = array(
     'name' => 'create study_variable_attributes content',
@@ -358,17 +345,6 @@ function mica_datasets_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit delete any dataset query.
-  $permissions['edit delete any dataset query'] = array(
-    'name' => 'edit delete any dataset query',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
-    ),
-    'module' => 'mica_datasets',
-  );
-
   // Exported permission: edit own dataset content.
   $permissions['edit own dataset content'] = array(
     'name' => 'edit own dataset content',
@@ -609,18 +585,6 @@ function mica_datasets_user_default_permissions() {
     'module' => 'feeds',
   );
 
-  // Exported permission: publish dataset query.
-  $permissions['publish dataset query'] = array(
-    'name' => 'publish dataset query',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
-      3 => 'dataset reviewer',
-    ),
-    'module' => 'mica_datasets',
-  );
-
   // Exported permission: tamper csv_variables.
   $permissions['tamper csv_variables'] = array(
     'name' => 'tamper csv_variables',
@@ -637,19 +601,6 @@ function mica_datasets_user_default_permissions() {
       0 => 'administrator',
     ),
     'module' => 'feeds_tamper',
-  );
-
-  // Exported permission: view any dataset query.
-  $permissions['view any dataset query'] = array(
-    'name' => 'view any dataset query',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
-      3 => 'dataset reviewer',
-      4 => 'researcher',
-    ),
-    'module' => 'mica_datasets',
   );
 
   // Exported permission: view any unpublished dataset content.

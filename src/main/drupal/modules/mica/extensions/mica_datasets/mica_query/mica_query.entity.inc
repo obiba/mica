@@ -152,8 +152,8 @@ class MicaDatasetQueryTerm extends Entity {
    * Constructor as a helper to the parent constructor.
    */
   public function __construct(array $values = array()) {
-    require_once('query/terms.inc');
-    $values['module'] = 'mica_datasets';
+    require_once('mica_query.terms.inc');
+    $values['module'] = 'mica_query';
     if (!isset($values['options']['type']) && isset($values['variable_id'])) {
       $values['options']['type'] = AbstractTerm::typeFor(node_load($values['variable_id']));
     }
@@ -278,13 +278,13 @@ class MicaDatasetQueryManager {
       else {
         $query->id = 0;
         $query->is_new = TRUE;
-        $query->module = 'mica_datasets';
+        $query->module = 'mica_query';
         $query->save();
         foreach ($terms as $term) {
           $term->id = 0;
           $term->query_id = $query->id;
           $term->is_new = TRUE;
-          $term->module = 'mica_datasets';
+          $term->module = 'mica_query';
           $term->save();
         }
       }
@@ -453,7 +453,7 @@ class MicaDatasetQueryManager {
       $rval[] = $record['id'];
     }
 
-    return !empty($rval) ? mica_dataset_query_load_multiple($rval) : array();
+    return !empty($rval) ? mica_query_load_multiple($rval) : array();
   }
 
 }

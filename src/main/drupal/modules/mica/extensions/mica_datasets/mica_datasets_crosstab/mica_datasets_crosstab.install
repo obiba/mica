@@ -1,0 +1,12 @@
+<?php
+/**
+ * @file
+ * Mica Datasets Crosstab module file
+ */
+
+function mica_datasets_crosstab_install() {
+
+  $text = 'Crosstable of dataset dimensions...';
+
+  mica_core_add_page(st('Dataset dimensions crosstable'), $text, 'content/dataset-crosstab');
+}

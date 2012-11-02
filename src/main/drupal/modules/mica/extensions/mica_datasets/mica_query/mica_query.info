@@ -1,5 +1,13 @@
 name = "Mica Query"
-description = "Mica Query"
+description = "Mica Datasets Query"
 core = "7.x"
 package = Mica
 php = "5.2.4"
+
+features[user_permission][] = create edit delete own dataset query
+features[user_permission][] = edit delete any dataset query
+features[user_permission][] = publish dataset query
+features[user_permission][] = view any dataset query
+
+files[] = mica_query.entity.inc
+files[] = mica_query.terms.inc

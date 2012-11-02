@@ -101,7 +101,7 @@ function mica_query_run_page_submit_callback($form, $form_state) {
     '#type' => 'ajax',
     '#commands' => array(
       ajax_command_html("#result-wrapper", $result_table),
-      //ajax_command_html("#cross-variable-detail", _mica_datasets_query_cross_variable_detail_link($cross_variable)),
+      //ajax_command_html("#cross-variable-detail", _mica_query_cross_variable_detail_link($cross_variable)),
     )
   );
 }
@@ -132,7 +132,7 @@ function _mica_query_result_table($dataset_node, $query, $cross_variable) {
   }
 
   $mica_dataset_connectors = mica_dataset_connector_query_multiple($dataset_node->nid);
-  $terms = mica_dataset_query_term_query($query);
+  $terms = mica_query_term_query($query);
 
   $rows = array();
 
@@ -225,7 +225,7 @@ function _mica_query_result_table($dataset_node, $query, $cross_variable) {
             $std_dev = isset($result[$name]['std_deviation']) ? $result[$name]['std_deviation'] : 0;
             $row[] = array(
               'data' => round($value, 2) . ' (' . round($std_dev, 2) . ')',
-              //_mica_datasets_query_count_str($value, $total),
+              //_mica_query_count_str($value, $total),
               'title' => $value . ' (' . $std_dev . ')',
               'class' => array('border-right', 'border-bottom'),
             );
@@ -358,7 +358,7 @@ function _mica_query_get_percentage($value, $total) {
 function mica_query_run_xlsx($var1, $var2) {
 
   $html = NULL;
-//  $html = _mica_datasets_query_result_table($dataset_node, $query, $cross_variable, FALSE);
+//  $html = _mica_query_result_table($dataset_node, $query, $cross_variable, FALSE);
 
   $filename = $var1->title . ' - ' . $var2->title;
   drupal_add_http_header('Content-Type', 'application/vnd.ms-excel');

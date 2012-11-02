@@ -5,11 +5,8 @@
  * Mica Datasets pages.
  */
 
-include_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'mica_datasets') . '/includes/connection_form.inc');
+include_once('includes/connection_form.inc');
 
-function mica_datasets_dataset_page($dataset_node) {
-  drupal_goto('node/' . $dataset_node->nid . '/queries');
-}
 
 /**
  * Display form for linking datsets to a given study.
@@ -469,4 +466,15 @@ function mica_dataset_edit_ajax_form_callback($dataset_node, $study_node) {
   list($form, $form_state) = ajax_get_form();
   drupal_process_form($form['#form_id'], $form, $form_state);
   return $form[MICA_CONNECTION_CONFIG];
+}
+
+function mica_datasets_variables_autocomplete($dataset_nid, $string) {
+  $variables = array();
+  foreach (mica_dataset_dataset_variables($dataset_nid) as $variable) {
+    if (strpos(drupal_strtolower($variable->title), $string) === 0 || $string === "*") {
+      $variables[$variable->title] = $variable->title;
+    }
+  }
+  print drupal_json_encode($variables);
+  exit;
 }

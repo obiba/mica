@@ -78,104 +78,6 @@ function mica_datasets_schema() {
     'primary key' => array('id'),
   );
 
-  $schema['mica_dataset_query'] = array(
-    'description' => 'Stores all the queries that are to be applied to their associated Mica Datasets.',
-    'fields' => array(
-      'id' => array(
-        'description' => 'The primary identifier for a query.',
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-      ),
-      'name' => array(
-        'description' => 'The displayed name for a query.',
-        'type' => 'varchar',
-        'length' => 200,
-        'not null' => TRUE,
-      ),
-      'description' => array(
-        'description' => 'The displayed description for a query.',
-        'type' => 'text',
-        'not null' => FALSE,
-      ),
-      'dataset_id' => array(
-        'description' => 'The dataset identifier for a query.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-      ),
-      'cross_variable_id' => array(
-        'description' => 'The cross variable identifier for a query.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => FALSE,
-      ),
-      'user_id' => array(
-        'description' => 'The query author identifier.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-      ),
-      'published' => array(
-        'description' => 'A flag indicating whether the query is available to users that are not the author.',
-        'type' => 'int',
-        'size' => 'tiny',
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-    ) + entity_exportable_schema_fields(),
-    'indexes' => array(
-      'indexing' => array('published', 'user_id', 'dataset_id'),
-    ),
-    'primary key' => array('id'),
-  );
-
-  $schema['mica_dataset_query_term'] = array(
-    'description' => 'Stores the query terms of a query.',
-    'fields' => array(
-      'id' => array(
-        'description' => 'The primary identifier for a query term.',
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-      ),
-      'query_id' => array(
-        'description' => 'The query identifier for a query term.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-      ),
-      'variable_id' => array(
-        'description' => 'The variable identifier for a query term.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-      ),
-      'weight' => array(
-        'description' => 'The weight of a term in its query.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'depth' => array(
-        'description' => 'The depth of a term in its query.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'options' => array(
-        'description' => 'The options that describe the query term.',
-        'type' => 'text',
-        'serialize' => TRUE,
-        'not null' => TRUE,
-      ),
-    ) + entity_exportable_schema_fields(),
-    'indexes' => array(
-      'indexing' => array('query_id'),
-    ),
-    'primary key' => array('id'),
-  );
-
   return $schema;
 }
 
@@ -305,7 +207,7 @@ function mica_datasets_update_7130(&$sandbox) {
  * Replace built-in node title by title_field.
  * Fix typo from the "Medical health interventions / Health services" taxonomy.
  */
-function mica_datasets_update_7500(&$sandbox){
+function mica_datasets_update_7500(&$sandbox) {
 
   module_load_install('mica_core');
   features_revert(array('mica_datasets' => array('variable', 'search_api_index', 'views_view')));
@@ -376,6 +278,20 @@ variables-dimensions/*');
 }
 
 /**
+ * Move queries from Mica Datasets to Mica Query module
+ */
+function mica_datasets_update_7600(&$update) {
+
+  module_enable(array('mica_query'));
+
+  _mica_datasets_move_query_permissions();
+  _mica_datasets_move_query_entities();
+
+  menu_rebuild();
+  cache_clear_all();
+}
+
+/**
  * Implements hook_update_dependencies().
  */
 function mica_datasets_update_dependencies() {
@@ -387,8 +303,33 @@ function mica_datasets_update_dependencies() {
 
   // need to upgrade core before datasets
   $dependencies['mica_datasets'][7500] = array('mica_core' => 7500);
+  $dependencies['mica_datasets'][7600] = array('mica_core' => 7600);
 
   return $dependencies;
+}
+
+/**
+ * Update query permissions module
+ */
+function _mica_datasets_move_query_permissions() {
+  include_once(DRUPAL_ROOT . '/' . drupal_get_path('module', 'mica_query') . '/mica_query.features.user_permission.inc');
+  db_update('role_permission')
+    ->fields(array('module' => 'mica_query'))
+    ->condition('permission', array_keys(mica_query_user_default_permissions()), 'IN')
+    ->execute();
+  node_access_rebuild();
+}
+
+/**
+ * Update query entities module
+ */
+function _mica_datasets_move_query_entities() {
+  db_update('mica_dataset_query')
+    ->fields(array('module' => 'mica_query'))
+    ->execute();
+  db_update('mica_dataset_query_term')
+    ->fields(array('module' => 'mica_query'))
+    ->execute();
 }
 
 /**

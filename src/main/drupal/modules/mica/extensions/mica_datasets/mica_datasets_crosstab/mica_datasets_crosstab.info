@@ -4,4 +4,3 @@ core = "7.x"
 package = Mica
 php = "5.2.4"
 
-files[] = mica_datasets_crosstab.pages.inc
