@@ -1424,15 +1424,46 @@ function mica_datasets_views_data_alter(&$data) {
 }
 
 /**
- * Check whether queries tab is accessible: requires to have access to dataset node and having participant variables
+ * Check whether queries/crosstab tab is accessible: requires to have access to dataset node and having participant variables
  * defined for this dataset.
  *
  * @param node   $dataset_node
  * @param string $op
  */
 function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
+
   if (_mica_datasets_node_access($dataset_node, 'dataset', 'view')) {
     if (mica_dataset_dataset_variables($dataset_node->nid) && mica_connector_dataset_has_connectors($dataset_node->nid)) {
+      if ($op === 'view') {
+        return user_access('view any dataset query');
+      }
+      if ($op === 'update') {
+        return user_access('create edit delete own dataset query');
+      }
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Check whether crosstab tab is accessible in variable: requires to have access to dataset node and having participant variables
+ * defined for this dataset.
+ *
+ * @param node   $dataset_node
+ * @param string $op
+ */
+function _mica_datasets_node_crosstab_access($node, $op = 'update') {
+
+  $n = node_load($node->nid);
+  if (_mica_datasets_node_access($node, $n->type, 'view')) {
+    if ($n->type === 'variable'){
+      $variable_wrapper = entity_metadata_wrapper('node', $node);
+      $dataset_id = $variable_wrapper->field_dataset->nid->value();
+    }
+    else if ($n->type === 'dataset'){
+      $dataset_id = $node->nid;
+    }
+    if (mica_dataset_dataset_variables($dataset_id) && mica_connector_dataset_has_connectors($dataset_id)) {
       if ($op === 'view') {
         return user_access('view any dataset query');
       }

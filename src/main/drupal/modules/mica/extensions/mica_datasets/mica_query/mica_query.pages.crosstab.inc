@@ -2,13 +2,27 @@
 
 require_once(drupal_get_path('module', 'mica_datasets') . '/mica_datasets.utils.inc');
 
-function mica_query_crosstab_run_page($form, &$form_state, $dataset, $variable = NULL) {
+function mica_query_crosstab_run_page($dataset, $variable = NULL) {
   ctools_add_css('mica_query', 'mica_query');
 
-  drupal_set_breadcrumb();
   drupal_set_title(t('!title -- Cross tabulation', array('!title' => $dataset->title)));
 
+  $form_state['mica']['dataset_node'] = $dataset;
+  $form_state['mica']['variable_node'] = $variable;
+
+  $output = drupal_render(drupal_build_form('mica_query_crosstab_form', $form_state));
+
+  return $output;
+}
+
+/*
+ * Returns the form to execute a crosstab query
+ */
+function mica_query_crosstab_form($form, &$form_state){
   $cross_variables = (isset($_REQUEST['cross']) ? $_REQUEST['cross'] : array());
+
+  $dataset = $form_state['mica']['dataset_node'];
+  $variable = $form_state['mica']['variable_node'];
 
   $categorical_variables = mica_datasets_find_categorical_variables($dataset->nid);
   $options = array();
@@ -18,7 +32,6 @@ function mica_query_crosstab_run_page($form, &$form_state, $dataset, $variable =
     }
   }
 
-  $form_state['mica']['dataset_node'] = $dataset;
   $form['variable'] = array(
     '#type' => 'select',
     '#title' => t('Select a variable'),
@@ -47,7 +60,7 @@ function mica_query_crosstab_run_page($form, &$form_state, $dataset, $variable =
   );
 
   $form['submit'] = array(
-    '#type' => 'submit',
+    '#type' => 'button',
     '#value' => t('Submit'),
     //'#disabled' => TRUE,
     '#ajax' => array(
@@ -62,7 +75,6 @@ function mica_query_crosstab_run_page($form, &$form_state, $dataset, $variable =
   );
   return $form;
 }
-
 /**
  * Selects just the result table to be returned for re-rendering.
  */
@@ -77,7 +89,12 @@ function mica_query_crosstab_run_page_submit_callback($form, $form_state) {
     $query = _mica_query_crosstab_get_query($dataset_node->nid, $variable_wrapper);
 
     // Variable description
-    $result_table = "<div class='dependent-variable-description'><span class='variable-title'>$variable_title</span> ($variable_label)</div>";
+    $result_table = "<div class='dependent-variable-description'><span class='variable-title'>$variable_title</span>";
+    if (!empty($variable_label)){
+      $result_table .= " ($variable_label)";
+    }
+    $result_table .= '</div>';
+
     foreach ($variable_wrapper->field_variable_categories->value() as $category) {
       if ($category['missing'] == FALSE) {
         $result_table .= $category['name'] . ' : ' . $category['label'] . '<br>';
@@ -139,7 +156,7 @@ function _mica_query_get_xlsx_link($query, $cross_variable_ids, $title = 'Downlo
 
 function _mica_query_crosstab_get_query($dataset_id, $variable) {
   $values = array();
-  $values['name'] = check_plain('Crosstab of ' . $variable->title);
+  $values['name'] = check_plain('Cross tabulation of ' . $variable->title);
   $values['dataset_id'] = $dataset_id;
   $values['cross_variable_id'] = NULL;
   $values['variable_id'] = $variable->nid->value();
