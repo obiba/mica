@@ -1,5 +1,5 @@
 table.query-table.continuous_1{
-  width:90%;
+  width:100%;
 }
 
 table.query-table.continuous_1 th:first-child{
@@ -9,25 +9,25 @@ table.query-table.continuous_1 th:first-child{
 table.query-table.continuous_1 th:nth-child(2){
   width: 25%;
 }
-
+/*
 table.query-table.continuous_1 thead th:nth-child(3){
   width: 50%;
-}
+}*/
 
 table.query-table.continuous_{
   width:100%;
 }
 
 table.query-table.continuous_ th:first-child{
-  width: 22.5%;
+  width: 25%;
 }
 
 table.query-table.continuous_ th:nth-child(2){
-  width: 22.5%;
+  width: 25%;
 }
 
 
-table.query-table.continuous_ th:last-child{
+table.query-table th:last-child{
   width: 10%;
 }
 

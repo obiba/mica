@@ -91,7 +91,15 @@ abstract class AbstractTerm implements QueryTermInterface {
 
   static function typeFor($variable) {
     $wrapper = entity_metadata_wrapper('node', $variable);
-    $is_categorical = count($wrapper->field_variable_categories->value()) > 1;
+
+    $is_categorical = FALSE;
+    foreach ($wrapper->field_variable_categories->value() as $category){
+      if ($category['missing'] == FALSE){
+        $is_categorical = TRUE;
+        break;
+      }
+    }
+
     $type = $wrapper->field_value_type->value();
 
     if ($is_categorical) {
