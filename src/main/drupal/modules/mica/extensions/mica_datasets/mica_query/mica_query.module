@@ -398,23 +398,31 @@ function mica_query_url(MicaDatasetQuery $query) {
  * @param MicaDatasetQuery $query
  */
 function mica_query_term_query($query) {
-  if (MicaDatasetQueryManager::isCached($query) == FALSE) {
-    $q = db_select('mica_query_term', 'c');
-    $q->addField('c', 'id');
-    $q->condition('c.query_id', $query->id, '=');
-    $q->orderBy('c.weight', 'ASC');
-    $result = $q->execute();
-
-    $rval = array();
-    while ($record = $result->fetchAssoc()) {
-      $rval[] = $record['id'];
-    }
-
-    return !empty($rval) ? mica_query_term_load_multiple($rval) : FALSE;
+  if (MicaDatasetQueryManager::isCached($query)) {
+    $terms = MicaDatasetQueryManager::getCache($query)->getTerms();
+    return empty($terms) ? FALSE : $terms;
   }
 
-  $rval = MicaDatasetQueryManager::getCache($query)->getTerms();
-  return empty($rval) ? FALSE : $rval;
+  $q = db_select('mica_query_term', 'c');
+  $q->addField('c', 'id');
+  $q->condition('c.query_id', $query->id, '=');
+  $q->orderBy('c.weight', 'ASC');
+  $result = $q->execute();
+
+  $terms = array();
+  while ($record = $result->fetchAssoc()) {
+    $terms[] = $record['id'];
+  }
+  return empty($terms) ? FALSE : mica_query_term_load_multiple($terms);
+}
+
+function mica_query_term_delete($id) {
+  $term = mica_query_term_load($id);
+  $query = mica_query_load($term->query_id);
+  if (MicaDatasetQueryManager::isCached($query)) {
+    MicaDatasetQueryManager::getCache($query)->deleteTerm($term);
+  }
+  db_delete('mica_query_term')->condition('id', $id)->execute();
 }
 
 /**

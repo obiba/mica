@@ -212,7 +212,7 @@ variables-dimensions/*');
 }
 
 /**
- * Move queries from Mica Datasets to Mica Query module
+ * Move queries to Mica Query module and connectors to Mica Connector module.
  */
 function mica_datasets_update_7600(&$update) {
 

@@ -1001,7 +1001,6 @@ function _mica_datasets_prepopulate_variable_after_build(&$form_element) {
     $form_element[0]['nid']['#default_value'] = $_REQUEST['dataset'];
     $form_element[0]['nid']['#value'] = node_reference_autocomplete_value($form_element[0]['nid'], FALSE, NULL);
   }
-
   return $form_element;
 }
 

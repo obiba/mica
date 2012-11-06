@@ -117,13 +117,11 @@ function mica_query_queries_page($dataset_node) {
 //
 
 function mica_query_edit_page($dataset_node, $query) {
-
-  if (isset($query)) {
-    drupal_set_title(t('!title -- Edit Query', array('!title' => $dataset_node->title)));
-  }
-  else {
-    drupal_set_title(t('!title -- Add Query', array('!title' => $dataset_node->title)));
-  }
+  drupal_set_title(t('!title -- !action Query', array(
+      '!title' => $dataset_node->title,
+      '!action' => $query ? t('Edit') : t('Add'),
+    )
+  ));
   return drupal_get_form('mica_query_edit_form', $dataset_node, $query);
 }
 
@@ -133,7 +131,7 @@ function mica_query_edit_form($form, &$form_state) {
   $query = $form_state['build_info']['args'][1];
 
   $form = array(
-    '#attached' => array('css' => array(drupal_get_path('module', 'mica_datasets') . '/css/connection.css')),
+    '#attached' => array('css' => array(drupal_get_path('module', 'mica_connector') . '/css/mica_connector.css')),
   );
 
   $form['general'] = array(
@@ -169,20 +167,20 @@ function mica_query_edit_form($form, &$form_state) {
   }
 
   $data = array();
-  if (array_key_exists('values', $form_state)) {
-    if (array_key_exists('list', $form_state['values'])) {
+  if (isset($form_state['values'])) {
+    if (isset($form_state['values']['list'])) {
       foreach ($form_state['values']['list'] as $datum) {
         $qt = mica_query_term_load($datum['id']);
         $data[] = array(
           'id' => $datum['id'],
-          'title' => $qt ? $qt->toString() : node_load($datum['vid'])->title,
+          'title' => ($qt ? $qt->toString() : node_load($datum['vid'])->title),
           'vid' => $datum['vid'],
           'weight' => $datum['weight'],
           'depth' => 0,
         );
       }
     }
-    if (array_key_exists('added-term', $form_state['values'])) {
+    if (isset($form_state['values']['added-term'])) {
       $added_term = $form_state['values']['added-term'];
       $data[] = array(
         'id' => 0,
@@ -207,6 +205,8 @@ function mica_query_edit_form($form, &$form_state) {
       );
     }
   }
+
+  _mica_query_edit_form_remove_term($form_state, $data);
 
   // Add a query term by selecting a variable
   $variable_options = array();
@@ -261,6 +261,11 @@ function mica_query_edit_form($form, &$form_state) {
     $form['list'][$key]['vid'] = array(
       '#type' => 'hidden',
       '#value' => $datum['vid'],
+    );
+    $form['remove-term'][$key] = array(
+      '#type' => 'submit',
+      '#value' => t('Remove') . ' ' . $datum['title'],
+      '#vid' => $datum['vid'],
     );
   }
 
@@ -320,10 +325,11 @@ function mica_query_edit_form($form, &$form_state) {
 function theme_mica_query_edit_form($variables) {
   $form = $variables['form'];
   drupal_add_tabledrag('draggabledemo-sort', 'order', 'sibling', 'sort');
-  $header = array(t('Query Term'), t('Weight'));
+  $header = array(t('Query Term'), t('Weight'), t('Operations'));
 
   $rows = array();
   foreach (element_children($form['list']) as $key) {
+
     // Add class to group weight fields for drag and drop.
     $form['list'][$key]['weight']['#attributes'] = array(
       'class' => array('sort'),
@@ -341,6 +347,9 @@ function theme_mica_query_edit_form($variables) {
     }
     $row_rendered .= drupal_render($form['list'][$key]['id']) . drupal_render($form['list'][$key]['vid']);
     $row[] = $row_rendered;
+
+    // operation
+    $row[] = drupal_render($form['remove-term'][$key]);
 
     $rows[] = array('data' => $row, 'class' => array('draggable')); //note the difference between $row and $rows
   }
@@ -372,6 +381,18 @@ function theme_mica_query_edit_form($variables) {
   return $output;
 }
 
+function _mica_query_edit_form_remove_term(&$form_state, &$data) {
+  if (isset($form_state['values']) && isset($form_state['values']['removed-term'])) {
+    $removed_term_vid = $form_state['values']['removed-term']['vid'];
+    foreach ($data as $index => $datum) {
+      if ($datum['vid'] == $removed_term_vid) {
+        unset($data[$index]);
+        break;
+      }
+    }
+  }
+}
+
 function mica_query_edit_form_validate($form, &$form_state) {
   if ($form_state['triggering_element']['#parents'][0] != 'add-variable') {
     if (isset($form_state['values']['list']) == FALSE) {
@@ -394,92 +415,102 @@ function mica_query_edit_form_submit($form, &$form_state) {
   $dataset_node = $form_state['build_info']['args'][0];
   $query = $form_state['build_info']['args'][1];
 
-  switch ($form_state['triggering_element']['#parents'][0]) {
+  if (isset($form_state['triggering_element']['#array_parents'])
+    && $form_state['triggering_element']['#array_parents'][0] === 'remove-term'
+  ) {
+    $form_state['values']['removed-term']['vid'] = $form_state['triggering_element']['#vid'];
+    drupal_set_message(t('Query term temporarily removed. Changes made will not be saved until the form is submitted.'), 'warning');
+    $form_state['rebuild'] = TRUE;
+  }
+  else {
 
-    case 'add-variable':
-      $vid = $form_state['values']['variables'];
-      $form_state['values']['added-term'] = array(
-        'vid' => $vid,
-        'title' => $form['add-term']['variables']['#options'][$vid],
-      );
-      drupal_set_message(t('Query term temporarily added. Changes made will not be saved until the form is submitted.'), 'warning');
-      $form_state['rebuild'] = TRUE;
-      break;
+    switch ($form_state['triggering_element']['#parents'][0]) {
 
-    case 'delete':
-      $form_state['redirect'] = _mica_query_url($dataset_node, $query, 'delete');
-      break;
+      case 'add-variable':
+        $vid = $form_state['values']['variables'];
+        $form_state['values']['added-term'] = array(
+          'vid' => $vid,
+          'title' => $form['add-term']['variables']['#options'][$vid],
+        );
+        drupal_set_message(t('Query term temporarily added. Changes made will not be saved until the form is submitted.'), 'warning');
+        $form_state['rebuild'] = TRUE;
+        break;
 
-    case 'save':
-      // persist query and terms in the database
-      // remove from cache
-      if (!isset($query)) {
-        // new query
-        $values = _mica_query_extract_new_query_values($form_state);
-        $query = new MicaDatasetQuery($values);
-        $query->is_new = TRUE;
-        $query->save();
-        // save the terms
-        _mica_query_terms_submit($query, $form_state);
-      }
-      else {
-        // update query
-        $query->name = check_plain($form_state['values']['name']);
-        $query->description = $form_state['values']['description'];
-        $query->cross_variable_id = $form_state['values']['cross-variable'] == '-1' ? NULL : $form_state['values']['cross-variable'];
+      case 'delete':
+        $form_state['redirect'] = _mica_query_url($dataset_node, $query, 'delete');
+        break;
 
-        if (isset($form_state['values']['publish'])) {
-          $query->published = $form_state['values']['publish'];
-        }
-
-        if (MicaDatasetQueryManager::isCached($query)) {
-          // update terms cached
-          _mica_query_terms_submit_cache($query, $form_state);
-          // then save all and remove from cache
-          MicaDatasetQueryManager::save($query);
-        }
-        else {
-          // save query
+      case 'save':
+        // persist query and terms in the database
+        // remove from cache
+        if (!isset($query)) {
+          // new query
+          $values = _mica_query_extract_new_query_values($form_state);
+          $query = new MicaDatasetQuery($values);
+          $query->is_new = TRUE;
           $query->save();
           // save the terms
           _mica_query_terms_submit($query, $form_state);
         }
-      }
-      $form_state['redirect'] = _mica_query_url($dataset_node, $query);
-      $form_state['complete'] = TRUE;
-      break;
+        else {
+          // update query
+          $query->name = check_plain($form_state['values']['name']);
+          $query->description = $form_state['values']['description'];
+          $query->cross_variable_id = $form_state['values']['cross-variable'] == '-1' ? NULL : $form_state['values']['cross-variable'];
 
-    case 'run':
-      // persist query and terms in the session cache
-      if (!isset($query)) {
-        // new query
-        $values = _mica_query_extract_new_query_values($form_state);
-        $query = MicaDatasetQueryManager::addQuery($values);
+          if (isset($form_state['values']['publish'])) {
+            $query->published = $form_state['values']['publish'];
+          }
 
-        // cache the terms
-        _mica_query_terms_submit_cache($query, $form_state);
-      }
-      else {
-        // update query
-        $query->name = check_plain($form_state['values']['name']);
-        $query->description = $form_state['values']['description'];
-        $query->cross_variable_id = $form_state['values']['cross-variable'] == '-1' ? NULL : $form_state['values']['cross-variable'];
+          if (MicaDatasetQueryManager::isCached($query)) {
+            // update terms cached
+            _mica_query_terms_submit_cache($query, $form_state);
+            // then save all and remove from cache
+            MicaDatasetQueryManager::save($query);
+          }
+          else {
+            // save query
+            $query->save();
+            // save the terms
+            _mica_query_terms_submit($query, $form_state);
+          }
+        }
+        $form_state['redirect'] = _mica_query_url($dataset_node, $query);
+        $form_state['complete'] = TRUE;
+        break;
 
-        if (MicaDatasetQueryManager::isCached($query)) {
-          // update query cached
-          MicaDatasetQueryManager::updateQuery($query);
-          // update terms cached
+      case 'run':
+        // persist query and terms in the session cache
+        if (!isset($query)) {
+          // new query
+          $values = _mica_query_extract_new_query_values($form_state);
+          $query = MicaDatasetQueryManager::addQuery($values);
+
+          // cache the terms
           _mica_query_terms_submit_cache($query, $form_state);
         }
         else {
-          // TODO not tested (currently not accessible because View is not offered for persisted queries)
-          $cache = MicaDatasetQueryManager::addCache($query);
-          _mica_query_terms_submit_cache($query, $form_state);
+          // update query
+          $query->name = check_plain($form_state['values']['name']);
+          $query->description = $form_state['values']['description'];
+          $query->cross_variable_id = $form_state['values']['cross-variable'] == '-1' ? NULL : $form_state['values']['cross-variable'];
+
+          if (MicaDatasetQueryManager::isCached($query)) {
+            // update query cached
+            MicaDatasetQueryManager::updateQuery($query);
+            // update terms cached
+            _mica_query_terms_submit_cache($query, $form_state);
+          }
+          else {
+            // TODO not tested (currently not accessible because View is not offered for persisted queries)
+            $cache = MicaDatasetQueryManager::addCache($query);
+            _mica_query_terms_submit_cache($query, $form_state);
+          }
         }
-      }
-      $form_state['redirect'] = _mica_query_url($dataset_node, $query);
-      $form_state['complete'] = TRUE;
-      break;
+        $form_state['redirect'] = _mica_query_url($dataset_node, $query);
+        $form_state['complete'] = TRUE;
+        break;
+    }
   }
 }
 
@@ -487,7 +518,6 @@ function _mica_query_extract_new_query_values(&$form_state) {
   $dataset_node = $form_state['build_info']['args'][0];
   global $user;
   $values = array();
-
   $values['name'] = check_plain($form_state['values']['name']);
   $values['description'] = $form_state['values']['description'];
   $values['dataset_id'] = $dataset_node->nid;
@@ -497,7 +527,6 @@ function _mica_query_extract_new_query_values(&$form_state) {
   }
   $values['user_id'] = $user->uid;
   $values['module'] = 'mica_query';
-
   return $values;
 }
 
@@ -515,6 +544,7 @@ function _mica_query_terms_submit($query, &$form_state) {
       $term->save();
     }
   }
+  _mica_query_remove_term($query, $form_state);
 }
 
 function _mica_query_terms_submit_cache($query, &$form_state) {
@@ -536,13 +566,25 @@ function _mica_query_terms_submit_cache($query, &$form_state) {
   }
 }
 
+function _mica_query_remove_term($query, &$form_state) {
+  $vids = array();
+  $data = $form_state['values']['list'];
+  foreach ($data as $datum) {
+    $vids[$datum['vid']] = $datum['vid'];
+  }
+  $terms = mica_query_term_query($query);
+  foreach ($terms as $term) {
+    if (!isset($vids[$term->variable_id])) {
+      mica_query_term_delete($term->id);
+    }
+  }
+}
+
 function _mica_query_extract_new_query_term_values($query, $datum) {
   $values = array();
-
   $values['query_id'] = $query->id;
   $values['variable_id'] = $datum['vid'];
   $values['weight'] = $datum['weight'];
-
   return $values;
 }
 
