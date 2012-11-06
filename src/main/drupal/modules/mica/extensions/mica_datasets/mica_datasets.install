@@ -216,7 +216,7 @@ variables-dimensions/*');
  */
 function mica_datasets_update_7600(&$update) {
 
-  module_enable(array('mica_query', 'mica_connector'));
+  module_enable(array('mica_query', 'mica_connector', 'mica_datasets_crosstab'));
 
   _mica_datasets_move_query_permissions();
 

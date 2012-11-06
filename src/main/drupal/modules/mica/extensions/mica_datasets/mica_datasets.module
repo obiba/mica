@@ -1455,6 +1455,7 @@ function _mica_datasets_node_crosstab_access($node, $op = 'update') {
 
   $n = node_load($node->nid);
   if (_mica_datasets_node_access($node, $n->type, 'view')) {
+    $dataset_id = NULL;
     if ($n->type === 'variable'){
       $variable_wrapper = entity_metadata_wrapper('node', $node);
       $dataset_id = $variable_wrapper->field_dataset->nid->value();
@@ -1462,7 +1463,7 @@ function _mica_datasets_node_crosstab_access($node, $op = 'update') {
     else if ($n->type === 'dataset'){
       $dataset_id = $node->nid;
     }
-    if (mica_dataset_dataset_variables($dataset_id) && mica_connector_dataset_has_connectors($dataset_id)) {
+    if (isset($dataset_id) && mica_dataset_dataset_variables($dataset_id) && mica_connector_dataset_has_connectors($dataset_id)) {
       if ($op === 'view') {
         return user_access('view any dataset query');
       }
