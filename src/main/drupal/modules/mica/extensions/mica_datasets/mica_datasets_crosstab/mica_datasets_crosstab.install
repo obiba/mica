@@ -6,7 +6,7 @@
 
 function mica_datasets_crosstab_install() {
 
-  $text = 'Crosstable of dataset dimensions...';
+  $text = 'Making use of a classification model covering all domains of information collected by studies, the current table permit to explore the potential to harmonize variables across studies or harmonization initiatives.';
 
-  mica_core_add_page(st('Dataset dimensions crosstable'), $text, 'content/dataset-crosstab');
+  mica_core_add_page(st('Datasets dimensions coverage'), $text, 'content/dataset-crosstab');
 }
