@@ -1,0 +1,6 @@
+name = "Mica Dimensions Coverage"
+description = "Mica datasets dimensions coverage comparison table"
+core = "7.x"
+package = Mica
+php = "5.2.4"
+

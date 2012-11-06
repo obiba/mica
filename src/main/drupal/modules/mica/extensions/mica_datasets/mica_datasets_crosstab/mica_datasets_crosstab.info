@@ -1,6 +1,0 @@
-name = "Mica Datasets Crosstab"
-description = "Mica Datasets Crosstab with Dimensions"
-core = "7.x"
-package = Mica
-php = "5.2.4"
-

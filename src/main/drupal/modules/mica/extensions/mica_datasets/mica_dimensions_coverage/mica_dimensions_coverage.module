@@ -4,10 +4,13 @@
  * Mica Datasets Crosstab module file
  */
 
-function mica_datasets_crosstab_menu(){
+/**
+ * Implements hook_menu()
+ */
+function mica_dimensions_coverage_menu(){
 
-  $items['content/dataset-crosstab'] = array(
-    'title' => 'Dataset Crosstab',
+  $items['content/content/datasets-dimensions-coverage'] = array(
+    'title' => 'Dimensions Coverage',
     'description' => '',
     'page arguments' => array(1),
     'access callback' => TRUE,
@@ -18,7 +21,7 @@ function mica_datasets_crosstab_menu(){
 /**
  * Implements hook_menu_local_tasks_alter().
  */
-function mica_datasets_crosstab_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $root_path) {
 
   $links = array();
 
@@ -30,8 +33,8 @@ function mica_datasets_crosstab_menu_local_tasks_alter(&$data, $router_item, $ro
         $links['view-dataset-crosstab'] = array(
           '#theme' => 'menu_local_action',
           '#link' => array(
-            'title' => t('Comparison table'),
-            'href' => 'content/dataset-crosstab', // Arguments could be taxonomies and dataset
+            'title' => t('Dimensions Coverage'),
+            'href' => 'content/datasets-dimensions-coverage', // Arguments could be taxonomies and dataset
             'localized_options' => array(
               'attributes' => array('class' => 'highlight'),
               'query' => array(
@@ -50,7 +53,7 @@ function mica_datasets_crosstab_menu_local_tasks_alter(&$data, $router_item, $ro
 /**
  * Implements hook_block_info().
  */
-function mica_datasets_crosstab_block_info() {
+function mica_dimensions_coverage_block_info() {
   $blocks = array();
 
   $taxonomies = _mica_datasets_taxonomies();
@@ -59,12 +62,12 @@ function mica_datasets_crosstab_block_info() {
     $vocabulary = taxonomy_vocabulary_machine_name_load($machine_name);
     if (!empty($vocabulary)) {
       $blocks[$vocabulary->vid] = array(
-        'info' => 'Mica Datasets Crosstab: ' . $vocabulary->name,
+        'info' => 'Mica Dimension Coverage: ' . $vocabulary->name,
         'title' => NULL,
         'status' => TRUE,
         'region' => 'content',
         'visibility' => BLOCK_VISIBILITY_LISTED,
-        'pages' => 'content/dataset-crosstab',
+        'pages' => 'content/datasets-dimensions-coverage',
         'weight' => 50,
         'custom' => 1,
       );
@@ -77,12 +80,12 @@ function mica_datasets_crosstab_block_info() {
 /**
  * Implements hook_block_view().
  */
-function mica_datasets_crosstab_block_view($delta){
+function mica_dimensions_coverage_block_view($delta){
 
-  ctools_add_css('mica_datasets_crosstab', 'mica_datasets_crosstab');
+  ctools_add_css('mica_dimensions_coverage', 'mica_dimensions_coverage');
 
-  $datasets = mica_datasets_crosstab_datasets();
-  $content =_mica_datasets_crosstab_dimension_table($delta, $datasets);
+  $datasets = mica_dimensions_coverage_datasets();
+  $content =_mica_dimensions_coverage_dimension_table($delta, $datasets);
 
   $block = array(
     'subject' => NULL,
@@ -91,7 +94,7 @@ function mica_datasets_crosstab_block_view($delta){
   return $block;
 }
 
-function mica_datasets_crosstab_datasets() {
+function mica_dimensions_coverage_datasets() {
   $data = &drupal_static(__FUNCTION__);
 
   if (!isset($data)){
@@ -158,7 +161,7 @@ function mica_datasets_crosstab_datasets() {
 }
 
 
-function _mica_datasets_crosstab_dimension_table($vid, $data){
+function _mica_dimensions_coverage_dimension_table($vid, $data){
   $rows = array();
 
   // Fetch all terms
