@@ -143,7 +143,7 @@ projects[menu_view_unpublished][download][type] = git
 projects[menu_view_unpublished][download][revision] = 5f1f951
 projects[menu_view_unpublished][download][branch] = 7.x-1.x
 
-projects[mica] = 6.0-rc1
+projects[mica] = 6.0
 
 projects[module_filter] = 1.7
 
