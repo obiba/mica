@@ -258,7 +258,7 @@ libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.co
 libraries[solr_php_client][directory_name] = SolrPhpClient
 
 libraries[spyc][download][type]= get
-libraries[spyc][download][url] = https://github.com/mustangostang/spyc/raw/master/Spyc.php
+libraries[spyc][download][url] = https://raw.github.com/mustangostang/spyc/master/Spyc.php
 libraries[spyc][download][filename] = spyc.php
 libraries[spyc][destination] = modules
 libraries[spyc][directory_name] = services/servers/rest_server/lib
