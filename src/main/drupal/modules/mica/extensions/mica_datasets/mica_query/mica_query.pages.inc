@@ -706,11 +706,6 @@ function mica_query_run_page($form, &$form_state, $dataset_node, $query, $cross_
 
   $result_table = _mica_query_result_table($dataset_node, $query, $cross_variable);
 
-  $xls_url = url('node/' . $dataset_node->nid . '/queries/' . $query->id . '/xlsx' . (empty($cross_variable) ? '' : '/' . $cross_variable->nid));
-  $xls_img_path = drupal_get_path('module', 'views_data_export') . '/images/xls.png';
-  $xls_img_alt = t('Download as Excel');
-  $xls_img = "<img typeof='foaf:Image' class='image-style-none' src='$xls_img_path' alt='$xls_img_alt' title='$xls_img_alt' />";
-  $xls_link = "<div class='feed-icon'><a href='$xls_url'>$xls_img</a></div>";
 
   $categorical_variables = mica_datasets_find_categorical_variables($dataset_node->nid);
   $options = array();
@@ -722,6 +717,8 @@ function mica_query_run_page($form, &$form_state, $dataset_node, $query, $cross_
 
   $form_state['mica']['dataset_node'] = $dataset_node;
   $form_state['mica']['query'] = $query;
+
+  $xls_link = _mica_query_xls_link($dataset_node, $query, $cross_variable);
 
   $form['description'] = array(
     '#markup' => '<p>' . $query->description . '</p>',
@@ -744,6 +741,15 @@ function mica_query_run_page($form, &$form_state, $dataset_node, $query, $cross_
     '#suffix' => '</div>',
   );
   return $form;
+}
+
+function _mica_query_xls_link($dataset_node, $query, $cross_variable) {
+  $xls_url = url('node/' . $dataset_node->nid . '/queries/' . $query->id . '/xlsx' . (empty($cross_variable) ? '' : '/' . $cross_variable->nid));
+  $xls_img_path = drupal_get_path('module', 'mica_query') . '/images/excel.png';
+  $xls_title = t('Download as Excel');
+  $xls_img = "<img typeof='foaf:Image' class='image-style-none' src='$xls_img_path' alt='$xls_title' title='$xls_title' />";
+  $xls_link = "<div class='xls-icon'><a href='$xls_url'>$xls_title $xls_img</a></div>";
+  return $xls_link;
 }
 
 /**
@@ -777,11 +783,12 @@ function mica_query_run_page_submit_callback($form, $form_state) {
     ? node_load($form_state['values']['cross_variable'])
     : NULL;
   $result_table = _mica_query_result_table($dataset_node, $query, $cross_variable);
+  $xls_link = _mica_query_xls_link($dataset_node, $query, $cross_variable);
 
   return array(
     '#type' => 'ajax',
     '#commands' => array(
-      ajax_command_html("#result-wrapper", $result_table),
+      ajax_command_html("#result-wrapper", $result_table . $xls_link),
       ajax_command_html("#cross-variable-detail", _mica_query_cross_variable_detail_link($cross_variable)),
     )
   );
