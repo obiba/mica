@@ -28,6 +28,11 @@ interface QueryTermInterface {
   function getFieldName();
 
   /**
+   * The label of the field this term works on (i.e.: the variable label)
+   */
+  function getFieldLabel();
+
+  /**
    * Returns true when this term's condition should be inverted (not operator)
    */
   function isInverted();
@@ -121,6 +126,11 @@ abstract class AbstractTerm implements QueryTermInterface {
 
   function getFieldName() {
     return $this->getVariable()->title;
+  }
+
+  function getFieldLabel() {
+    $wrapper = entity_metadata_wrapper('node', $this->getVariable());
+    return $wrapper->field_label->value();
   }
 
   function isInverted() {
