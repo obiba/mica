@@ -195,6 +195,7 @@ projects[search_api_solr][version] = 1.0-rc2
 projects[search_api_solr][patch][1276970] = http://drupal.org/files/solr_queries_post-1276970-10.patch
 
 projects[services] = 3.2
+projects[services][patch][1834618] = http://drupal.org/files/spyc-url.patch
 
 projects[smtp] = 1.0-beta2
 

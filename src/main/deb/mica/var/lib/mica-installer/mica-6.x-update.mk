@@ -403,3 +403,4 @@ mica-delete-6.0-dev: mica-delete-6.0
 mica-delete-6.0-rc1: mica-delete-6.0
 mica-delete-6.0-rc2: mica-delete-6.0
 mica-delete-6.0-rc3: mica-delete-6.0
+mica-delete-6.0-rc4: mica-delete-6.0
