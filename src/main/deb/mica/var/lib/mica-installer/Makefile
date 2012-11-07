@@ -61,7 +61,7 @@ mica-dist-install-prepare:
 	mkdir -p /var/cache/mica-installer/target && \
 	cd /var/cache/mica-installer/target && \
 	wget -q http://ftp.drupal.org/files/projects/mica_distribution-$(drupal_version)-$(dist_version)-core.tar.gz && \
-	#cp ~/projects/mica/target/mica_distribution-$(drupal_version)-$(dist_version).tar.gz mica_distribution-$(drupal_version)-$(dist_version)-core.tar.gz && \
+	#cp ~/workspace/mica/target/mica_distribution-$(drupal_version)-$(dist_version).tar.gz mica_distribution-$(drupal_version)-$(dist_version)-core.tar.gz && \
 	tar xzf mica_distribution-$(drupal_version)-$(dist_version)-core.tar.gz && \
 	mv mica_distribution-$(drupal_version)-$(dist_version) mica && \
 	rm -rf mica/profiles/minimal && \
