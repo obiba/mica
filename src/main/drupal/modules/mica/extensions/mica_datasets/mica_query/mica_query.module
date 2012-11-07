@@ -260,7 +260,7 @@ function mica_query_menu() {
   );
 
   $items['node/%node/variable-crosstab'] = array(
-    'title' => t('Crosstab'),
+    'title' => t('Crosstabs'),
     'access callback' => '_mica_datasets_node_crosstab_access',
     'access arguments' => array(1, 'view'),
     'page callback' => 'mica_query_crosstab_run_page',
@@ -269,7 +269,7 @@ function mica_query_menu() {
     'file' => 'mica_query.pages.crosstab.inc',
   );
   $items['node/%node/variable-crosstab/%node'] = array(
-    'title' => t('Crosstab'),
+    'title' => t('Crosstabs'),
     'access callback' => '_mica_datasets_node_crosstab_access',
     'access arguments' => array(1, 'view'),
     'page callback' => 'mica_query_crosstab_run_page',

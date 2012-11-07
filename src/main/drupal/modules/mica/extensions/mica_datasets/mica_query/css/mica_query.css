@@ -32,15 +32,15 @@ table.query-table th:last-child{
 }
 
 .border-bottom {
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid #CCC !important;
 }
 
 .border-right {
-  border-right: 1px solid #CCC;
+  border-right: 1px solid #CCC !important;
 }
 
 .border-left {
-  border-left: 1px solid #CCC;
+  border-left: 1px solid #CCC !important;
 }
 
 td{
@@ -60,4 +60,29 @@ span.variable-title{
 div.crosstab-result{
   margin-top: 20px;
   margin-bottom: 5px;
+}
+
+table.query-table th, table.query-table td {
+  text-align: center;
+}
+table.query-table td,table.query-table th {
+  border-bottom: none;
+  border-top: none;
+  margin: 0;
+  padding: 5px 7px;
+  vertical-align: middle;
+}
+table.query-table thead tr {
+  border-bottom: none;
+}
+table.query-table tr.even, table.query-table tr.odd{
+  border-bottom: none;
+}
+
+table.query-table tr.odd{
+  background-color:#f8f8f8;
+}
+
+table.query-table {
+  margin-bottom: 10px;
 }

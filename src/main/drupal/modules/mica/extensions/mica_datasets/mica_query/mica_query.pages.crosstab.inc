@@ -226,7 +226,7 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
 
     $row[] = array(
       'data' => filter_xss($study_name),
-      'class' => array('border-right', 'border-bottom'),
+      'class' => array('border-right', 'border-bottom', 'border-left'),
       'rowspan' => $study_rowspan,
     );
 
@@ -265,12 +265,14 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
               $row[] = array(
                 'data' => $value_pct,
                 'title' => $value_pct,
+                'class' => array('border-right'),
               );
             }
             $value = _mica_query_crosstab_get_percentage($totals[$study_name]['cross'][$cross_name], $totals[$study_name]['N']);
             $row[] = array(
               'data' => $value,
               'title' => $value,
+              'class' => array('border-right'),
             );
 
             $rows[] = array('data' => $row);
@@ -286,13 +288,13 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
             $row[] = array(
               'data' => $totals[$study_name]['variable'][$name] . ' (100%)',
               'title' => $totals[$study_name]['variable'][$name] . ' (100%)',
-              'class' => array('border-bottom'),
+              'class' => array('border-bottom', 'border-right'),
             );
           }
           $row[] = array(
             'data' => $totals[$study_name]['N'] . ' (100%)',
             'title' => $totals[$study_name]['N'] . ' (100%)',
-            'class' => array('border-bottom'),
+            'class' => array('border-bottom', 'border-right'),
           );
           $rows[] = array('data' => $row);
           $row = array();
@@ -311,6 +313,7 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
             $row[] = array(
               'data' => round($value, 2) . ' (' . round($std_dev, 2) . ')',
               'title' => $value . ' (' . $std_dev . ')',
+              'class' => array('border-right'),
             );
 
             // Info for weighted mean
@@ -325,6 +328,7 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
           $row[] = array(
             'data' => round($total_mean, 2),
             'title' => $total_mean,
+            'class' => array('border-right'),
           );
           $rows[] = array('data' => $row);
 
@@ -351,7 +355,7 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
           $row[] = array(
             'data' => $N_total,
             'title' => $N_total,
-            'class' => array('border-bottom'),
+            'class' => array('border-bottom', 'border-right'),
           );
 
           $rows[] = array('data' => $row);
@@ -365,17 +369,18 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
 
   // Add a summary row if there's more than one connector
   if (count($mica_connectors) > 1 && !$is_continuous) {
-    //$row = array();
+    $rows[] = array('data' => $row);
+    $row = array();
     $row[] = array(
       'data' => t('All Studies'),
-      'class' => array('border-right', 'border-bottom'),
+      'class' => array('border-right', 'border-bottom', 'border-left'),
       'rowspan' => $study_rowspan,
     );
     // Cross categories
     foreach ($cross_category_label_by_name as $cross_name => $cross_label) {
       $row[] = array(
         'data' => $cross_label . ' (' . $cross_name . ')',
-        'class' =>array('border-right'),
+        'class' => array('border-right'),
       );
 
       $total_line = 0;
@@ -384,6 +389,7 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
         $row[] = array(
           'data' => $value,
           'title' => $value,
+          'class' => array('border-right'),
         );
         $total_line += $totals[$cross_name][$name];
       }
@@ -392,6 +398,7 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
       $row[] = array(
         'data' => $total_pct,
         'title' => $total_pct,
+        'class' => array('border-right'),
       );
       $rows[] = array('data' => $row);
       $row = array();
@@ -406,23 +413,24 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
       $row[] = array(
         'data' => $totals[$name]['N'] . ' (100%)',
         'title' => $totals[$name]['N'] . ' (100%)',
-        'class' => array('border-bottom'),
+        'class' => array('border-bottom', 'border-right'),
       );
     }
     $row[] = array(
       'data' => $totals['N'] . ' (100%)',
       'title' => $totals['N'] . ' (100%)',
-      'class' => array('border-bottom'),
+      'class' => array('border-bottom', 'border-right'),
     );
 
     $rows[] = array('data' => $row);
   }
   else if (count($mica_connectors) > 1 && $is_continuous){
-//    $row = array();
+    $rows[] = array('data' => $row);
+    $row = array();
     // Weighted mean
     $row[] = array(
       'data' => t('All Studies'),
-      'class' => array('border-right', 'border-bottom'),
+      'class' => array('border-right', 'border-bottom', 'border-left'),
       'rowspan' => $study_rowspan,
     );
     $row[] = array(
@@ -436,12 +444,13 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
       $row[] = array(
         'data' => $value,
         'title' => $value,
+        'class' => array('border-right'),
       );
 
       $total_w_mean += $totals[$name]['w_mean'];// * $totals[$name]['N'];
 
     }
-    $w_mean = $total_w_mean / $totals['N'];
+    $w_mean = $totals['N'] > 0 ? $total_w_mean / $totals['N']: 0;
     $row[] = array(
       'data' => round($w_mean, 2),
       'title' => $w_mean,
