@@ -29,23 +29,21 @@ function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $
 
     case 'study-datasets':
     case 'harmonization-datasets':
-      if (node_access('view', 'dataset')) {
-        $links['view-dataset-crosstab'] = array(
-          '#theme' => 'menu_local_action',
-          '#link' => array(
-            'title' => t('Dimensions Coverage'),
-            'href' => 'content/datasets-dimensions-coverage', // Arguments could be taxonomies and dataset
-            'localized_options' => array(
-              'attributes' => array('class' => 'highlight'),
-              'query' => array(
-                'type' => ($root_path === 'study-datasets') ? 'study' : 'harmonization',
-              )
+      $links['view-dataset-crosstab'] = array(
+        '#theme' => 'menu_local_action',
+        '#link' => array(
+          'title' => t('Dimensions Coverage'),
+          'href' => 'content/datasets-dimensions-coverage', // Arguments could be taxonomies and dataset
+          'localized_options' => array(
+            'attributes' => array('class' => 'highlight'),
+            'query' => array(
+              'type' => ($root_path === 'study-datasets') ? 'study' : 'harmonization',
             )
-          ),
-        );
-      }
-      break;
-      }
+          )
+        ),
+      );
+    break;
+    }
 
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
