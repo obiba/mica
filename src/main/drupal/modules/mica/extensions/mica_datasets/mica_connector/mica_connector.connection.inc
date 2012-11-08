@@ -384,6 +384,19 @@ END;
       }
     }
 
+    // if stats facet, have a facet for total mean and std deviation
+    if ($is_continuous){
+      $facets[] = <<< END
+"total_mean" : {
+      "statistical" : {
+        "field":"{$this->getFieldNameMapping($by_field)}","size":0
+      }
+      , "facet_filter":  {
+          "terms" : { "{$this->getFieldName($impl)}" : ["1", "2", "3"] }
+      }
+}
+END;
+    }
     // one facet for the population matching all terms
 
     $facets[] = <<< END
@@ -417,9 +430,13 @@ END;
       if (!$is_continuous){
         $result[$category] = $this->count($data['facets'][$category]);
       }
-    else{
+      else{
         $result[$category] = $data['facets'][$category];
       }
+    }
+
+    if ($is_continuous){
+      $result['total_mean'] = $data['facets']['total_mean'];
     }
 
     return $result;
