@@ -143,7 +143,7 @@ projects[menu_view_unpublished][download][type] = git
 projects[menu_view_unpublished][download][revision] = 5f1f951
 projects[menu_view_unpublished][download][branch] = 7.x-1.x
 
-projects[mica] = 6.0
+projects[mica] = 7.0-dev
 
 projects[module_filter] = 1.7
 
@@ -181,7 +181,7 @@ projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_trans
 projects[search_api][patch][1471310] = http://drupal.org/files/1471310--unset-field-8_0.patch
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 
-projects[search_api_combined] = 1.0-alpha1
+projects[search_api_combined] = 1.0
 
 projects[search_api_page] = 1.0-beta2
 
