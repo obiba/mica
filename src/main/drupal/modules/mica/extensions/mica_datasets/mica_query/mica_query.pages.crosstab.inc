@@ -349,7 +349,7 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
             $study_w_mean += $w_mean;
             $count_total += $count;
           }
-          $total_mean = $count_total > 0 ? $study_w_mean / $count_total: 0; //
+          //$total_mean = $count_total > 0 ? $study_w_mean / $count_total: 0; //
           $row[] = array(
             'data' => round($result['total_mean']['mean'], 2) . ' (' . round($result['total_mean']['std_deviation'], 2) . ')',
             'title' => $result['total_mean']['mean'] . ' (' . $result['total_mean']['std_deviation'] . ')',
@@ -366,20 +366,22 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
 
           $N_total = 0;
           foreach ($category_label_by_name as $name => $label) {
-            $value = isset($result[$name]['count']) ? $result[$name]['count'] : 0;
+            $count = isset($result[$name]['count']) ? $result[$name]['count'] : 0;
+            $value = _mica_query_crosstab_get_percentage($count, $result['total_mean']['count']);
             $row[] = array(
               'data' => $value,
               'title' => $value,
               'class' => array('border-right', 'border-bottom'),
             );
-            $totals['variable'][$name]['N'] = (isset($totals['variable'][$name]['N']) ? $totals['variable'][$name]['N'] + $value: $value);
-            $N_total += $value;
+            $totals['variable'][$name]['N'] = (isset($totals['variable'][$name]['N']) ? $totals['variable'][$name]['N'] + $count: $count);
+            $N_total += $count;
           }
-
           $totals['N'] = (isset($totals['N']) ? $totals['N'] + $N_total: $N_total);
+
+//          $value = _mica_query_crosstab_get_percentage($N_total, $totals['N']);
           $row[] = array(
-            'data' => $N_total,
-            'title' => $N_total,
+            'data' => $N_total . ' (100%)',
+            'title' => $N_total . ' (100%)',
             'class' => array('border-bottom', 'border-right'),
           );
 
@@ -408,7 +410,6 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
         'class' => array('border-right'),
       );
 
-//      $total_line = 0;
       foreach ($category_label_by_name as $name => $label) {
         $value = _mica_query_crosstab_get_percentage($totals['cross'][$cross_name][$name],  $totals['cross'][$cross_name]['N']);
         $row[] = array(
@@ -416,7 +417,6 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
           'title' => $value,
           'class' => array('border-right'),
         );
-//        $total_line += $totals[$cross_name][$name];
       }
       // summary total
       $total_pct = _mica_query_crosstab_get_percentage($totals['cross'][$cross_name]['N'], $totals['N']);
@@ -491,14 +491,15 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
       'class' => array('border-right', 'border-bottom'),
     );
     foreach ($category_label_by_name as $name => $label) {
+      $value = _mica_query_crosstab_get_percentage($totals['variable'][$name]['N'], $totals['N']);
       $row[] = array(
-        'data' => $totals['variable'][$name]['N'],
-        'title' => $totals['variable'][$name]['N'],
+        'data' => $value,
+        'title' => $value,
         'class' => array('border-right', 'border-bottom'),
       );
     }
     $row[] = array(
-      'data' => $totals['N'],
+      'data' => $totals['N'] . ' (100%)',
       'class' => array('border-right', 'border-bottom'),
     );
     $rows[] = array('data' => $row);
