@@ -334,15 +334,14 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
             // Info for weighted mean
             $count = isset($result[$name]['count']) ? $result[$name]['count'] : 0;
             $w_mean = $value * $count;
-            $totals[$name]['w_mean'] = (isset($totals[$name]['w_mean']) ? $totals[$name]['w_mean'] + $w_mean: $w_mean);
 
             $study_w_mean += $w_mean;
             $count_total += $count;
           }
-          $total_mean = $study_w_mean/$count_total; //
+          $total_mean = $count_total > 0 ? $study_w_mean / $count_total: 0; //
           $row[] = array(
-            'data' => round($total_mean, 2),
-            'title' => $total_mean,
+            'data' => round($result['total_mean']['mean'], 2) . ' (' . round($result['total_mean']['std_deviation'], 2) . ')',
+            'title' => $result['total_mean']['mean'] . ' (' . $result['total_mean']['std_deviation'] . ')',
             'class' => array('border-right'),
           );
           $rows[] = array('data' => $row);
