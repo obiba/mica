@@ -86,3 +86,9 @@ table.query-table tr.odd{
 table.query-table {
   margin-bottom: 10px;
 }
+
+select#edit-variable.form-select,
+select#edit-cross-variable.form-select {
+  width: auto;
+  max-width: 650px;
+}
