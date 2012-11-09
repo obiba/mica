@@ -615,7 +615,7 @@ function mica_query_crosstab_run_xlsx($variable) {
   $filename = truncate_utf8($filename, 255);
 
   drupal_add_http_header('Content-Type', 'application/vnd.ms-excel');
-  drupal_add_http_header('Content-Disposition', "attachment; filename=$filename.xlsx");
+  drupal_add_http_header('Content-Disposition', "attachment; filename=$filename.xls");
 
   print $prefix . $html . $suffix;
   drupal_exit();

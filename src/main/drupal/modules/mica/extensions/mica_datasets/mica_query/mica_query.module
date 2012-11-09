@@ -278,8 +278,8 @@ function mica_query_menu() {
     'file' => 'mica_query.pages.crosstab.inc',
   );
   $items['variable-crosstab/%node/xlsx'] = array(
-    'access callback' => 'mica_core_nodes_access',
-    'access arguments' => array('view', array(1)),
+    'access callback' => TRUE,
+//    'access arguments' => array('view', array(1)),
     'page callback' => 'mica_query_crosstab_run_xlsx',
     'page arguments' => array(1),
     'file' => 'mica_query.pages.crosstab.inc',
