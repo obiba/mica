@@ -372,7 +372,7 @@ END;
       // Always only one term for this type of query
       $term = $terms[0];
       $impl = $term->termImpl();
-
+      $categories_filter = array();
       foreach($impl->categories() as $i => $category){
 
         if (!$is_continuous){
@@ -380,19 +380,21 @@ END;
         }
         else {
           $facets[] = $this->asCrossStatFacetBy($impl, $by_field, $category);
+          $categories_filter[] = "\"$category\"";
         }
       }
     }
 
     // if stats facet, have a facet for total mean and std deviation
     if ($is_continuous){
+      $filter = implode(',', $categories_filter);
       $facets[] = <<< END
 "total_mean" : {
       "statistical" : {
         "field":"{$this->getFieldNameMapping($by_field)}","size":0
       }
       , "facet_filter":  {
-          "terms" : { "{$this->getFieldName($impl)}" : ["1", "2", "3"] }
+          "terms" : { "{$this->getFieldName($impl)}" : [{$filter}] }
       }
 }
 END;
