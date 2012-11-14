@@ -745,10 +745,13 @@ function mica_query_run_page($form, &$form_state, $dataset_node, $query, $cross_
 
 function _mica_query_xls_link($dataset_node, $query, $cross_variable) {
   $xls_url = url('node/' . $dataset_node->nid . '/queries/' . $query->id . '/xlsx' . (empty($cross_variable) ? '' : '/' . $cross_variable->nid));
-  $xls_img_path = drupal_get_path('module', 'mica_query') . '/images/excel.png';
+  $xls_img_path = $GLOBALS['base_url'] . '/' . ctools_image_path('excel.png', 'mica_query');
+
   $xls_title = t('Download as Excel');
   $xls_img = "<img typeof='foaf:Image' class='image-style-none' src='$xls_img_path' alt='$xls_title' title='$xls_title' />";
-  $xls_link = "<div class='xls-icon'><a href='$xls_url'>$xls_title $xls_img</a></div>";
+
+  $xls_link = " <a href='$xls_url'>". t('!title', array('!title' => $xls_title )) ." $xls_img</a>";
+
   return $xls_link;
 }
 
@@ -765,7 +768,7 @@ function mica_query_run_xlsx($dataset_node, $query, $cross_variable_nid = NULL) 
 
   $filename = $dataset_node->title . ' - ' . $query->name;
   drupal_add_http_header('Content-Type', 'application/vnd.ms-excel');
-  drupal_add_http_header('Content-Disposition', "attachment; filename=$filename.xlsx");
+  drupal_add_http_header('Content-Disposition', "attachment; filename=$filename.xls");
 
   print $html;
   drupal_exit();

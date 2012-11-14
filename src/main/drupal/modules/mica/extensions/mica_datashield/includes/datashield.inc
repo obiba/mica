@@ -27,6 +27,7 @@ class DataShieldModel {
       'sslkey' => mica_dataset_private_file_absolute_path(PRIVATE_KEY_FILE),
       'ssl.verifyhost' => FALSE,
       'ssl.verifypeer' => FALSE,
+      'sslversion' => 3,
       'cookiejar' => mica_dataset_private_file_absolute_path('private://mycookies'),
     );
     $params['datasource'] = 'bioshare';

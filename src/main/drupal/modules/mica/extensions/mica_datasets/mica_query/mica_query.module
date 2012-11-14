@@ -278,8 +278,8 @@ function mica_query_menu() {
     'file' => 'mica_query.pages.crosstab.inc',
   );
   $items['variable-crosstab/%node/xlsx'] = array(
-    'access callback' => 'mica_core_nodes_access',
-    'access arguments' => array('view', array(1)),
+    'access callback' => TRUE,
+//    'access arguments' => array('view', array(1)),
     'page callback' => 'mica_query_crosstab_run_xlsx',
     'page arguments' => array(1),
     'file' => 'mica_query.pages.crosstab.inc',
@@ -312,7 +312,15 @@ function mica_query_menu_local_tasks_alter(&$data, $router_item, $root_path) {
           }
         }
       }
-      else if ($node != NULL && $node->type === 'dataset' && node_access('view', $node)) {
+      else if ($node != NULL && $node->type === 'variable'){
+        // Hide the links
+        foreach ($data['actions']['output'] as $key => $link) {
+          if (isset($link['#link']['path']) && $link['#link']['path'] == 'node/%/variable-crosstab') {
+            $data['actions']['output'][$key]['#access'] = FALSE;
+          }
+        }
+      }
+      if ($node != NULL && $node->type === 'dataset' && node_access('view', $node)) {
         foreach ($data['actions']['output'] as $key => $link) {
           if (isset($link['#link']['path']) && $link['#link']['path'] == 'node/%/variable-crosstab') {
             $data['actions']['output'][$key]['#link']['localized_options'] = array(

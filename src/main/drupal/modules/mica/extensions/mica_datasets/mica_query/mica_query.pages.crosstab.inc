@@ -367,14 +367,20 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
           $N_total = 0;
           foreach ($category_label_by_name as $name => $label) {
             $count = isset($result[$name]['count']) ? $result[$name]['count'] : 0;
-            $value = _mica_query_crosstab_get_percentage($count, $result['total_mean']['count']);
+            $N_total += $count;
+          }
+
+          //$totals['N'] = (isset($totals['N']) ? $totals['N'] + $N_total: $N_total);
+          foreach ($category_label_by_name as $name => $label) {
+            $count = isset($result[$name]['count']) ? $result[$name]['count'] : 0;
+            $value = _mica_query_crosstab_get_percentage($count, $N_total);
             $row[] = array(
               'data' => $value,
               'title' => $value,
               'class' => array('border-right', 'border-bottom'),
             );
             $totals['variable'][$name]['N'] = (isset($totals['variable'][$name]['N']) ? $totals['variable'][$name]['N'] + $count: $count);
-            $N_total += $count;
+            //$N_total += $count;
           }
           $totals['N'] = (isset($totals['N']) ? $totals['N'] + $N_total: $N_total);
 
@@ -609,7 +615,7 @@ function mica_query_crosstab_run_xlsx($variable) {
   $filename = truncate_utf8($filename, 255);
 
   drupal_add_http_header('Content-Type', 'application/vnd.ms-excel');
-  drupal_add_http_header('Content-Disposition', "attachment; filename=$filename.xlsx");
+  drupal_add_http_header('Content-Disposition', "attachment; filename=$filename.xls");
 
   print $prefix . $html . $suffix;
   drupal_exit();
