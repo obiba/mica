@@ -78,6 +78,8 @@ header#navbar {
 }
 
 ul.action-links {
+  .clearfix;
+  margin-bottom: 20px !important;
   li {
     padding-right: 0 !important;
     a {
@@ -93,6 +95,17 @@ ul.action-links {
         }
       }
     }
+  }
+}
+
+ul.inline {
+  display: inline;
+  padding-left: 0;
+
+  li {
+    display: inline;
+    list-style-type: none;
+    padding-left: 5px;
   }
 }
 
@@ -119,6 +132,21 @@ fieldset {
   .fieldset-wrapper {
     padding: 0 10px 10px 10px;
   }
+
+  .collapsible-fieldset-icon(@icon: 0) {
+    background: url(@icon) no-repeat scroll left center transparent;
+    padding-left: 15px;
+    background-position: 5px 55%;
+  }
+
+  &.collapsible legend .fieldset-legend {
+    .collapsible-fieldset-icon("../img/expanded.png");
+  }
+
+  &.collapsed legend .fieldset-legend {
+    .collapsible-fieldset-icon("../img/collapsed.png");
+  }
+
 }
 
 .table-striped {
@@ -137,6 +165,3 @@ fieldset {
   margin-top: 25px !important;
 }
 
-html.js fieldset.collapsible .fieldset-legend {
-  background-position: 5px 55%;
-}

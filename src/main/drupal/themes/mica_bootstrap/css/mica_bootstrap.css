@@ -8790,6 +8790,33 @@ header#navbar form.search-form .form-actions {
   margin-bottom: 20px;
 }
 
+ul.action-links {
+  margin-bottom: 20px !important;
+  *zoom: 1;
+}
+
+ul.action-links:before,
+ul.action-links:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+ul.action-links:after {
+  clear: both;
+}
+
+ul.action-links:before,
+ul.action-links:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+ul.action-links:after {
+  clear: both;
+}
+
 ul.action-links li {
   padding-right: 0 !important;
 }
@@ -8977,6 +9004,17 @@ ul.action-links li a.highlight i {
   display: none;
 }
 
+ul.inline {
+  display: inline;
+  padding-left: 0;
+}
+
+ul.inline li {
+  display: inline;
+  padding-left: 5px;
+  list-style-type: none;
+}
+
 .view-header {
   margin-bottom: 10px;
 }
@@ -9002,6 +9040,18 @@ fieldset .fieldset-wrapper {
   padding: 0 10px 10px 10px;
 }
 
+fieldset.collapsible legend .fieldset-legend {
+  padding-left: 15px;
+  background: url("../img/expanded.png") no-repeat scroll left center transparent;
+  background-position: 5px 55%;
+}
+
+fieldset.collapsed legend .fieldset-legend {
+  padding-left: 15px;
+  background: url("../img/collapsed.png") no-repeat scroll left center transparent;
+  background-position: 5px 55%;
+}
+
 .table-striped tr.even,
 .table-striped tr.odd {
   background-color: transparent;
@@ -9014,10 +9064,6 @@ fieldset .fieldset-wrapper {
 
 .views-exposed-form .views-submit-button button {
   margin-top: 25px !important;
-}
-
-html.js fieldset.collapsible .fieldset-legend {
-  background-position: 5px 55%;
 }
 
 #block-system-navigation h2 {
@@ -9185,7 +9231,7 @@ form#feeds-import-form input#edit-feeds-feedscsvparser-no-headers {
 }
 
 .block-current-search h3.current-search-result {
-  padding-left: 12px;
+  padding-left: 5px;
   margin-bottom: 0;
   font-size: 13px;
   font-weight: normal;
@@ -9193,20 +9239,16 @@ form#feeds-import-form input#edit-feeds-feedscsvparser-no-headers {
 }
 
 .block-current-search a.current-search-clear-all {
-  padding-left: 12px;
+  padding-left: 5px;
 }
 
 .block-current-search h4.current-search-group-title {
-  padding-left: 12px;
+  padding-left: 5px;
   margin: 0;
 }
 
 .block-current-search .current-search-group ul {
   margin-left: 0;
-}
-
-.block-current-search .current-search-group ul li {
-  list-style: none;
 }
 
 /**
