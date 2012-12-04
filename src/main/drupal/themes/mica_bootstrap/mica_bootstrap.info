@@ -17,4 +17,3 @@ regions[footer]         = 'Footer'
 settings[toggle_name] = 0
 settings[toggle_search] = 1
 
-exclude[css][] = 'themes/bootstrap/bootstrap/bootstrap.css'
