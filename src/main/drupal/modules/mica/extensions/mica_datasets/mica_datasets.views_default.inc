@@ -99,31 +99,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 1;
   $handler->display->display_options['path'] = 'dataset-csv-html';
-  $translatables['dataset_csv_export'] = array(
-    t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('title'),
-    t('body'),
-    t('published'),
-    t('[status]'),
-    t('dataset_type'),
-    t('Export CSV'),
-    t('Export datasets to CSV file'),
-    t('Export CSV (html)'),
-    t('Export datasets to CSV file (text is exported as html)'),
-  );
   $export['dataset_csv_export'] = $view;
 
   $view = new view();
@@ -139,6 +114,7 @@ function mica_datasets_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Studies';
+  $handler->display->display_options['css_class'] = 'table-striped';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -268,35 +244,6 @@ function mica_datasets_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $translatables['dataset_studies'] = array(
-    t('Master'),
-    t('Studies'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('empty_dataset_studies'),
-    t('No studies found.'),
-    t('Nid'),
-    t('Name'),
-    t('Please specify what other design'),
-    t('([field_design_other_sp])'),
-    t('Study design'),
-    t('[field_design] [field_design_other_sp] '),
-    t('Target number of participants'),
-    t('Country of residence'),
-    t('All'),
-    t('Block'),
-  );
   $export['dataset_studies'] = $view;
 
   $view = new view();
@@ -312,6 +259,7 @@ function mica_datasets_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Harmonization Datasets';
+  $handler->display->display_options['css_class'] = 'table-striped';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -396,29 +344,6 @@ function mica_datasets_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'harmonization-datasets';
-  $translatables['harmonization_datasets'] = array(
-    t('Master'),
-    t('Harmonization Datasets'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('A Harmonization Dataset documents and annotates a set of core variables which provides a concise but effective list of information to be harmonized in a specific scientific context. Variables found in a Harmonization Dataset therefore represent the reference format into which study-specific data needs to be processed to arrive at harmonized data. When a study can generate a variable defined in a Harmonization Dataset, a processing algorithm is developed to map study-specific data to the variable format defined in the Harmonization Dataset.<br/><br/>'),
-    t('empty_datasets'),
-    t('No dataset found.'),
-    t('Name'),
-    t('Description'),
-    t('Page'),
-  );
   $export['harmonization_datasets'] = $view;
 
   $view = new view();
@@ -434,6 +359,7 @@ function mica_datasets_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Study Datasets';
+  $handler->display->display_options['css_class'] = 'table-striped';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -517,29 +443,6 @@ function mica_datasets_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'study-datasets';
-  $translatables['study_datasets'] = array(
-    t('Master'),
-    t('Study Datasets'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('A Study Dataset holds and describes variables collected by studies participating in a consortium. Study Datasets make use of standardized data dictionary which gives information on variable definitions and characteristics (e.g. type, unit, categories, and area of information covered). Using the variable search tool, researchers are able to query data collected across studies participating in the consortium.<br/><br/>'),
-    t('empty_datasets'),
-    t('No dataset found.'),
-    t('Name'),
-    t('Description'),
-    t('Page'),
-  );
   $export['study_datasets'] = $view;
 
   $view = new view();
@@ -828,56 +731,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 1;
   $handler->display->display_options['path'] = 'variable-csv-html';
-  $translatables['variable_csv_export'] = array(
-    t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('title'),
-    t('label'),
-    t('body'),
-    t('dataset'),
-    t('value_type'),
-    t('unit'),
-    t('repeatable'),
-    t('categories_name'),
-    t('[field_variable_categories_1-name]'),
-    t('categories_label'),
-    t('[field_variable_categories-label]'),
-    t('categories_missing'),
-    t('[field_variable_categories_2-missing]'),
-    t('published'),
-    t('[status]'),
-    t('anthropometric_structures'),
-    t('body_functions'),
-    t('body_structures'),
-    t('data_source'),
-    t('disease_history'),
-    t('life_habits_behaviours'),
-    t('medical_health_interv'),
-    t('medication'),
-    t('early_life'),
-    t('perception_of_health'),
-    t('period'),
-    t('physical_environment'),
-    t('reproductive_history'),
-    t('social_environment'),
-    t('sociodemographic_charact'),
-    t('target'),
-    t('individual_participant_measures'),
-    t('laboratory_measures'),
-    t('Data export'),
-  );
   $export['variable_csv_export'] = $view;
 
   $view = new view();
@@ -893,6 +746,7 @@ function mica_datasets_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Variables';
+  $handler->display->display_options['css_class'] = 'table-striped';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -1321,55 +1175,6 @@ function mica_datasets_views_default_views() {
     'page' => 'page',
   );
   $handler->display->display_options['use_batch'] = '0';
-  $translatables['variable_search'] = array(
-    t('Master'),
-    t('Variables'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('empty_variables'),
-    t('No variables found.'),
-    t('Name'),
-    t('Label'),
-    t('Dataset'),
-    t('Position index'),
-    t('Fulltext search'),
-    t('Page'),
-    t('Export XLS'),
-    t('Categories'),
-    t('Label:[field_variable_categories-label] Name: [field_variable_categories-name] Missing:[field_variable_categories-missing]'),
-    t('Data Source'),
-    t('Diseases History and Related Health Problems'),
-    t('Medical Health Interventions/Health Services Utilization'),
-    t('Medication'),
-    t('Reproductive Health and History'),
-    t('Participant\'s Early Life/Childhood'),
-    t('Life Habits/Behaviours'),
-    t('Sociodemographic/Socioeconomic Characteristics'),
-    t('Physical Environment'),
-    t('Social Environment'),
-    t('Perception of Health/Quality of life'),
-    t('Anthropometric Structures'),
-    t('Body Structures'),
-    t('Body Functions'),
-    t('Essence'),
-    t('Target'),
-    t('Period'),
-    t('Measure'),
-    t('Value Type'),
-    t('Repeatable'),
-    t('Export CSV'),
-  );
   $export['variable_search'] = $view;
 
   $view = new view();
@@ -2122,75 +1927,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
     'default' => 0,
-  );
-  $translatables['variables_dimensions'] = array(
-    t('Master'),
-    t('Manage Variable Dimensions'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('Assign dimensions'),
-    t('Title'),
-    t('Label'),
-    t('Anthropometric Structures'),
-    t('[field_anthropometric_structures],'),
-    t('Body Functions'),
-    t('[field_body_functions],'),
-    t('Body Structures'),
-    t('[field_body_structures],'),
-    t('Data Source'),
-    t('[field_data_source],'),
-    t('Diseases History and Related Health Problems'),
-    t('[field_disease_history],'),
-    t('Essence'),
-    t('[field_essence],'),
-    t('Individual Participant Measures'),
-    t('[field_individual_participant_mea],'),
-    t('Laboratory Measures'),
-    t('[field_laboratory_measures],'),
-    t('Life Habits/Behaviours'),
-    t('[field_life_habits_behaviours],'),
-    t('Measure'),
-    t('[field_measure],'),
-    t('Medical Health Interventions/Health Services Utilization'),
-    t('[field_medical_health_interv],'),
-    t('Medication'),
-    t('[field_medication],'),
-    t('Participant\'s Early Life/Childhood'),
-    t('[field_early_life],'),
-    t('Perception of Health/Quality of life'),
-    t('[field_perception_of_health],'),
-    t('Period'),
-    t('[field_period],'),
-    t('Physical Environment'),
-    t('[field_physical_environment],'),
-    t('Reproductive Health and History'),
-    t('[field_reproductive_history],'),
-    t('Social Environment'),
-    t('[field_social_environment],'),
-    t('Sociodemographic/Socioeconomic Characteristics'),
-    t('[field_sociodemographic_charact],'),
-    t('Target'),
-    t('[field_target],'),
-    t('Description'),
-    t('Dimensions'),
-    t('[field_anthropometric_structures][field_body_functions][field_body_structures][field_medical_health_interv][field_medication][field_data_source][field_disease_history][field_individual_participant_mea][field_laboratory_measures][field_life_habits_behaviours][field_early_life][field_perception_of_health][field_period][field_physical_environment][field_reproductive_history][field_social_environment][field_sociodemographic_charact][field_measure][field_essence][field_target]'),
-    t('Edit'),
-    t('All'),
-    t('Fulltext search'),
-    t('Page'),
-    t('Variable Dimensions XLS'),
-    t('Variables Dimensions CSV'),
   );
   $export['variables_dimensions'] = $view;
 
