@@ -8992,25 +8992,27 @@ html.js fieldset.collapsible .fieldset-legend {
   background-position: 5px 55%;
 }
 
-/* Powered By Mica block */
+#block-system-navigation h2 {
+  margin-bottom: 0;
+  font-size: 16.25px;
+  line-height: 20px;
+}
 
-section#block-mica-powered-by-mica {
+#block-system-navigation ul.nav {
+  margin-left: 20px;
+}
+
+#block-mica-powered-by-mica {
   float: right;
   font-size: 85%;
 }
 
-section#block-mica-powered-by-mica .block-content a {
+#block-mica-powered-by-mica .block-content a {
   display: inline-block;
   height: 25px;
   padding-left: 25px;
   margin-left: 5px;
   background: url("../logo-small.png") no-repeat scroll 0 0 transparent;
-}
-
-section#block-system-navigation h2 {
-  margin-bottom: 0;
-  font-size: 16.25px;
-  line-height: 20px;
 }
 
 .workbench-info-block {
