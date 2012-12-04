@@ -378,6 +378,7 @@ git-push-mica-dist: clear-version-info set-distribution-version
 # Bootstrap related stuff
 #
 install-nodejs:
+	apt-get install g++ curl libssl-dev apache2-utils && \
 	mkdir target/nodejs && \
 	cd target/nodejs && \
 	wget http://nodejs.org/dist/v0.8.15/node-v0.8.15.tar.gz && \

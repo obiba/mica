@@ -79,14 +79,18 @@ header#navbar {
 
 ul.action-links {
   li {
-    a.highlight {
-      .btn;
-      .btn-primary;
-      .pull-right;
-      margin: -4px 5px 10px 5px;
+    padding-right: 0 !important;
+    a {
+      margin-right: 20px;
+      &.highlight {
+        .btn;
+        .btn-primary;
+        .pull-right;
+        margin: -4px 5px 10px 5px;
 
-      i {
-        display: none;
+        i {
+          display: none;
+        }
       }
     }
   }
@@ -99,7 +103,7 @@ ul.action-links {
 .node .field-label-above .field-items,
 .panel-pane .field-label-above .field-items,
 .panel-pane.pane-custom .pane-content {
-  margin-left: 20px;
+  margin-left: @items_margin_left;
 }
 
 fieldset {

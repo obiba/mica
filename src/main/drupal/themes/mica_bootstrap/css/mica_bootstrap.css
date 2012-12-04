@@ -8790,6 +8790,14 @@ header#navbar form.search-form .form-actions {
   margin-bottom: 20px;
 }
 
+ul.action-links li {
+  padding-right: 0 !important;
+}
+
+ul.action-links li a {
+  margin-right: 20px;
+}
+
 ul.action-links li a.highlight {
   display: inline-block;
   *display: inline;
@@ -9197,6 +9205,10 @@ form#feeds-import-form input#edit-feeds-feedscsvparser-no-headers {
   margin-left: 0;
 }
 
+.block-current-search .current-search-group ul li {
+  list-style: none;
+}
+
 /**
  * Search API Ranges style
  */
@@ -9411,4 +9423,9 @@ form#feeds-import-form input#edit-feeds-feedscsvparser-no-headers {
 
 .pane-dataset-studies h2 {
   font-size: 13px;
+}
+
+.pane-dataset-studies .view-empty,
+.pane-dataset-studies .view-content {
+  margin-left: 20px;
 }
