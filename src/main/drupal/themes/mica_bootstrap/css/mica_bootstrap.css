@@ -8730,6 +8730,15 @@ h4 small {
   line-height: 20px;
 }
 
+header#navbar {
+  font-size: 14px;
+}
+
+header#navbar .btn-group > .btn,
+header#navbar .btn-group > .dropdown-menu {
+  font-size: 14px;
+}
+
 header#navbar a.logo img {
   width: 30px;
   height: 30px;

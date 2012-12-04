@@ -23,6 +23,15 @@ h2, h3, h4 {
 }
 
 header#navbar {
+  @navbar-font-size: 14px;
+
+  font-size: @navbar-font-size;
+
+  .btn-group > .btn,
+  .btn-group > .dropdown-menu {
+    font-size: @navbar-font-size;
+  }
+
   a.logo img {
     width: 30px;
     height: 30px;
