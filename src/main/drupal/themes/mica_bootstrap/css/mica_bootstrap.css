@@ -161,7 +161,7 @@ textarea {
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 20px;
   color: #333333;
   background-color: #ffffff;
@@ -1019,7 +1019,7 @@ p {
 
 .lead {
   margin-bottom: 20px;
-  font-size: 21px;
+  font-size: 19.5px;
   font-weight: 200;
   line-height: 30px;
 }
@@ -1108,43 +1108,43 @@ h3 {
 }
 
 h1 {
-  font-size: 38.5px;
+  font-size: 35.75px;
 }
 
 h2 {
-  font-size: 31.5px;
+  font-size: 29.25px;
 }
 
 h3 {
-  font-size: 24.5px;
+  font-size: 22.75px;
 }
 
 h4 {
-  font-size: 17.5px;
+  font-size: 16.25px;
 }
 
 h5 {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 h6 {
-  font-size: 11.9px;
+  font-size: 11.049999999999999px;
 }
 
 h1 small {
-  font-size: 24.5px;
+  font-size: 22.75px;
 }
 
 h2 small {
-  font-size: 17.5px;
+  font-size: 16.25px;
 }
 
 h3 small {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 h4 small {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .page-header {
@@ -1313,7 +1313,7 @@ code,
 pre {
   padding: 0 3px 2px;
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-  font-size: 12px;
+  font-size: 11px;
   color: #333333;
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
@@ -1331,7 +1331,7 @@ pre {
   display: block;
   padding: 9.5px;
   margin: 0 0 10px;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 20px;
   word-break: break-all;
   word-wrap: break-word;
@@ -1376,7 +1376,7 @@ legend {
   width: 100%;
   padding: 0;
   margin-bottom: 20px;
-  font-size: 21px;
+  font-size: 19.5px;
   line-height: 40px;
   color: #333333;
   border: 0;
@@ -1393,7 +1393,7 @@ input,
 button,
 select,
 textarea {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: normal;
   line-height: 20px;
 }
@@ -1431,7 +1431,7 @@ input[type="color"],
   height: 20px;
   padding: 4px 6px;
   margin-bottom: 10px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 20px;
   color: #555555;
   vertical-align: middle;
@@ -2292,7 +2292,7 @@ select:focus:required:invalid:focus {
 .input-prepend .uneditable-input,
 .input-append .dropdown-menu,
 .input-prepend .dropdown-menu {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .input-append input,
@@ -2326,7 +2326,7 @@ select:focus:required:invalid:focus {
   height: 20px;
   min-width: 16px;
   padding: 4px 5px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: normal;
   line-height: 20px;
   text-align: center;
@@ -3775,7 +3775,7 @@ button.close {
   padding: 4px 12px;
   margin-bottom: 0;
   *margin-left: .3em;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 20px;
   *line-height: 20px;
   color: #333333;
@@ -3890,7 +3890,7 @@ button.close {
 
 .btn-large {
   padding: 11px 19px;
-  font-size: 17.5px;
+  font-size: 16.25px;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
@@ -3903,7 +3903,7 @@ button.close {
 
 .btn-small {
   padding: 2px 10px;
-  font-size: 11.9px;
+  font-size: 11.049999999999999px;
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
           border-radius: 3px;
@@ -3916,7 +3916,7 @@ button.close {
 
 .btn-mini {
   padding: 1px 6px;
-  font-size: 10.5px;
+  font-size: 9.75px;
   -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
           border-radius: 3px;
@@ -4346,7 +4346,7 @@ input[type="submit"].btn.btn-mini {
 
 .btn-group > .btn,
 .btn-group > .dropdown-menu {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .btn-group > .btn-mini {
@@ -5763,7 +5763,7 @@ input[type="submit"].btn.btn-mini {
 .pagination-large ul > li > a,
 .pagination-large ul > li > span {
   padding: 11px 19px;
-  font-size: 17.5px;
+  font-size: 16.25px;
 }
 
 .pagination-large ul > li:first-child > a,
@@ -5813,13 +5813,13 @@ input[type="submit"].btn.btn-mini {
 .pagination-small ul > li > a,
 .pagination-small ul > li > span {
   padding: 2px 10px;
-  font-size: 11.9px;
+  font-size: 11.049999999999999px;
 }
 
 .pagination-mini ul > li > a,
 .pagination-mini ul > li > span {
   padding: 1px 6px;
-  font-size: 10.5px;
+  font-size: 9.75px;
 }
 
 .pager {
@@ -6353,7 +6353,7 @@ a.thumbnail:hover {
 .badge {
   display: inline-block;
   padding: 2px 4px;
-  font-size: 11.844px;
+  font-size: 10.998px;
   font-weight: bold;
   line-height: 14px;
   color: #ffffff;
@@ -8691,42 +8691,42 @@ a.badge:hover {
 }
 
 h1 {
-  font-size: 31.5px;
+  font-size: 29.25px;
 }
 
 h2 {
-  font-size: 24.5px;
+  font-size: 22.75px;
 }
 
 h3 {
-  font-size: 17.5px;
+  font-size: 16.25px;
 }
 
 h4 {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 h5 {
-  font-size: 11.9px;
+  font-size: 11.049999999999999px;
 }
 
 h6 {
-  font-size: 9.799999999999999px;
+  font-size: 9.1px;
 }
 
 h1 small {
-  font-size: 17.5px;
+  font-size: 16.25px;
 }
 
 h2 small,
 h3 small,
 h4 small {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .h2-section {
   margin-bottom: 0;
-  font-size: 17.5px;
+  font-size: 16.25px;
   line-height: 20px;
 }
 
@@ -8744,6 +8744,10 @@ header#navbar form.search-form .form-actions {
   margin-top: 0;
 }
 
+.page-header {
+  margin-bottom: 20px;
+}
+
 ul.action-links li a.highlight {
   display: inline-block;
   *display: inline;
@@ -8752,7 +8756,7 @@ ul.action-links li a.highlight {
   margin: -4px 5px 10px 5px;
   margin-bottom: 0;
   *margin-left: .3em;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 20px;
   *line-height: 20px;
   color: #333333;
@@ -8940,7 +8944,7 @@ fieldset {
 
 fieldset legend {
   margin-bottom: 10px;
-  font-size: 17.5px;
+  font-size: 16.25px;
   background-color: #f9f9f9;
 }
 
@@ -8956,6 +8960,14 @@ fieldset .fieldset-wrapper {
 
 .table-striped th {
   border-bottom: none;
+}
+
+.views-exposed-form .views-submit-button button {
+  margin-top: 25px !important;
+}
+
+html.js fieldset.collapsible .fieldset-legend {
+  background-position: 5px 55%;
 }
 
 /* Powered By Mica block */
@@ -8975,7 +8987,7 @@ section#block-mica-powered-by-mica .block-content a {
 
 section#block-system-navigation h2 {
   margin-bottom: 0;
-  font-size: 17.5px;
+  font-size: 16.25px;
   line-height: 20px;
 }
 
@@ -8993,12 +9005,18 @@ form#feeds-import-form input#edit-feeds-feedscsvparser-no-headers {
 
 #block-mica-mica-search-filters h2 {
   margin-bottom: 0;
-  font-size: 17.5px;
+  font-size: 16.25px;
   line-height: 20px;
 }
 
 #block-mica-mica-search-filters tbody {
   border: none;
+}
+
+#block-mica-mica-search-filters .control-group,
+#block-mica-mica-search-filters .form-item {
+  margin-top: 3px;
+  margin-bottom: 0;
 }
 
 #block-mica-mica-search-filters input#edit-search-filter {
@@ -9034,48 +9052,49 @@ form#feeds-import-form input#edit-feeds-feedscsvparser-no-headers {
 }
 
 #block-mica-mica-search-filters .advanced {
-  font-size: 11.9px;
+  margin-top: -8px;
+  font-size: 11.049999999999999px;
 }
 
 .h2-facet {
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 20px;
 }
 
 .h2-facet-collapsible {
   padding-left: 12px;
-  font-size: 14px;
+  font-size: 13px;
   background: url('../img/expanded.png') no-repeat scroll left center transparent;
 }
 
 .h2-facet-collapsed {
   padding-left: 12px;
-  font-size: 14px;
+  font-size: 13px;
   background: url('../img/collapsed.png') no-repeat scroll left center transparent;
 }
 
 .block-facetapi h2 {
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 20px;
 }
 
 .block-facetapi h2.block-title {
   margin-bottom: 0;
-  font-size: 17.5px;
+  font-size: 16.25px;
   line-height: 20px;
 }
 
 .block-facetapi h2.collapsiblock a {
   padding-left: 12px;
-  font-size: 14px;
+  font-size: 13px;
   background: url('../img/expanded.png') no-repeat scroll left center transparent;
 }
 
 .block-facetapi h2.collapsiblockCollapsed a {
   padding-left: 12px;
-  font-size: 14px;
+  font-size: 13px;
   background: url('../img/collapsed.png') no-repeat scroll left center transparent;
 }
 
@@ -9095,25 +9114,25 @@ form#feeds-import-form input#edit-feeds-feedscsvparser-no-headers {
 
 .block-current-search h2 {
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 20px;
 }
 
 .block-current-search h2.block-title {
   margin-bottom: 0;
-  font-size: 17.5px;
+  font-size: 16.25px;
   line-height: 20px;
 }
 
 .block-current-search h2.collapsiblock a {
   padding-left: 12px;
-  font-size: 14px;
+  font-size: 13px;
   background: url('../img/expanded.png') no-repeat scroll left center transparent;
 }
 
 .block-current-search h2.collapsiblockCollapsed a {
   padding-left: 12px;
-  font-size: 14px;
+  font-size: 13px;
   background: url('../img/collapsed.png') no-repeat scroll left center transparent;
 }
 
@@ -9124,7 +9143,7 @@ form#feeds-import-form input#edit-feeds-feedscsvparser-no-headers {
 .block-current-search h3.current-search-result {
   padding-left: 12px;
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: normal;
   line-height: 20px;
 }
@@ -9146,6 +9165,10 @@ form#feeds-import-form input#edit-feeds-feedscsvparser-no-headers {
  * Search API Ranges style
  */
 
+.search-api-ranges-widget form {
+  margin-bottom: 0;
+}
+
 .search-api-ranges-widget p.text-range,
 .search-api-ranges-widget .range-slider-box {
   display: none;
@@ -9164,7 +9187,7 @@ form#feeds-import-form input#edit-feeds-feedscsvparser-no-headers {
 
 .search-api-ranges-widget .yui3-g {
   padding-left: 0.75em;
-  margin-bottom: 5px;
+  margin-bottom: 0;
 }
 
 .search-api-ranges-widget input[type="text"] {
@@ -9180,7 +9203,7 @@ form#feeds-import-form input#edit-feeds-feedscsvparser-no-headers {
   margin-top: -8px;
   margin-bottom: 0;
   *margin-left: .3em;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 20px;
   *line-height: 20px;
   color: #333333;
