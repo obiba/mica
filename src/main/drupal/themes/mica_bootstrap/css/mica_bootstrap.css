@@ -8736,6 +8736,13 @@ form {
   line-height: 20px;
 }
 
+.block-title,
+.pane-title {
+  margin-bottom: 0;
+  font-size: 16.25px;
+  line-height: 20px;
+}
+
 header#navbar {
   font-size: 14px;
 }
@@ -9387,4 +9394,8 @@ form#feeds-import-form input#edit-feeds-feedscsvparser-no-headers {
 .search-api-ranges-widget button .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
+}
+
+.pane-dataset-studies h2 {
+  font-size: 13px;
 }
