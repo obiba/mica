@@ -244,6 +244,8 @@ projects[bootstrap][type] = theme
 projects[bootstrap][download][type] = git
 projects[bootstrap][download][revision] = 0999214
 projects[bootstrap][download][branch] = 7.x-2.x
+projects[bootstrap][patch][1706180] = http://drupal.org/files/dropdown_menu_v2.patch
+
 
 projects[corolla] = 3.0-rc1
 

@@ -756,7 +756,7 @@ function mica_studies_block_view_alter(&$data, $block) {
 
 function _mica_studies_study_current_search(&$data, $block) {
   if (isset($data['content']['field_group'])) {
-    $data['content']['results']['#markup'] .= ' - ' . l(
+    $data['content']['results']['#markup'] .= l(
       t('Clear all criteria') . ' [X]',
       'studies-search',
       array(

@@ -19,9 +19,6 @@ function mica_search_block_content() {
  * Returns a form for site or studies full text search.
  */
 function mica_search_form(&$form, &$form_state) {
-  $form['#attached'] = array(
-    'css' => array(drupal_get_path('module', 'mica') . '/includes/mica_blocks.css'),
-  );
 
   // get studies view default display title
   $title = views_get_view('studies')->display['default']->display_options['title'];
@@ -89,12 +86,6 @@ function mica_search_api_block_content($search_api_view, $help = '') {
  * Returns a form for search api full text search.
  */
 function mica_search_api_form($form, &$form_state) {
-  $form = array(
-    '#attached' => array(
-      'css' => array(drupal_get_path('module', 'mica') . '/includes/mica_blocks.css'),
-    ),
-  );
-
   $form['search'] = array(
     '#type' => 'textfield',
     '#attributes' => array(
@@ -177,7 +168,6 @@ function mica_search_filters_form($form, &$form_state, $blocks) {
 
   $form = array(
     '#attached' => array(
-      'css' => array(drupal_get_path('module', 'mica') . '/includes/mica_blocks.css'),
       'js' => array(drupal_get_path('module', 'mica') . '/includes/search-filters.js'),
     ),
   );

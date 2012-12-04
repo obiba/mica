@@ -1,36 +1,26 @@
-// ~32px
-h1 { font-size: @baseFontSize * 2.25; }
+h1 { font-size: @h1_font_size; }
 
-// ~24px
-h2 { font-size: @baseFontSize * 1.75; }
+h2 { font-size: @h2_font_size; }
 
-// ~18px
-h3 { font-size: @baseFontSize * 1.25; }
+h3 { font-size: @h3_font_size; }
 
-// ~14px
-h4 { font-size: @baseFontSize; }
+h4 { font-size: @h4_font_size; }
 
-// ~12px
-h5 { font-size: @baseFontSize * 0.85; }
+h5 { font-size: @h5_font_size; }
 
-// 10px
-h6 { font-size: @baseFontSize * 0.70; }
+h6 { font-size: @h6_font_size; }
 
-// ~18px
-h1 small { font-size: @baseFontSize * 1.25; }
+h1 small { font-size: @h3_font_size; }
 
-// ~14px
 h2, h3, h4 {
-  small { font-size: @baseFontSize; }
+  small { font-size: @h4_font_size; }
 }
 
-//body {
-//  background-color: #F9F9F9;
-//}
-//
-//.container {
-//  background-color: #ffffff;
-//}
+.h2-section {
+  font-size: @h3_font_size;
+  line-height: 20px;
+  margin-bottom: 0;
+}
 
 header#navbar {
   a.logo img {
@@ -73,11 +63,11 @@ ul.action-links {
 
 fieldset {
   margin-bottom: 10px;
-  background-color: #F9F9F9;
+  background-color: @fieldset_bkg_color;
 
   legend {
-    font-size: 18px;
-    background-color: #F9F9F9;
+    font-size: @h3_font_size;
+    background-color: @fieldset_bkg_color;
     margin-bottom: 10px;
   }
 
@@ -86,5 +76,14 @@ fieldset {
   }
 }
 
+.table-striped {
+  tr.even,
+  tr.odd {
+    background-color: transparent;
+    border-bottom: none;
+  }
 
-
+  th {
+    border-bottom: none;
+  }
+}
