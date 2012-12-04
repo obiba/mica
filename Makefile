@@ -191,7 +191,8 @@ set-distribution-version:
 
 compile-less:
 	recess --compile src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap.less > src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap.css && \
-	recess --compile src/main/drupal/modules/mica/extensions/mica_studies/less/mica_studies.less > src/main/drupal/modules/mica/extensions/mica_studies/css/mica_studies.css
+	recess --compile src/main/drupal/modules/mica/extensions/mica_studies/less/mica_studies.less > src/main/drupal/modules/mica/extensions/mica_studies/css/mica_studies.css && \
+	recess --compile src/main/drupal/modules/mica/extensions/mica_datasets/less/mica_datasets.less > src/main/drupal/modules/mica/extensions/mica_datasets/css/mica_datasets.css
 
 #
 # Build from continuous integration

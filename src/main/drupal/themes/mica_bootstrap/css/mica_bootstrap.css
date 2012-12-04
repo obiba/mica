@@ -8690,6 +8690,8 @@ a.badge:hover {
   }
 }
 
+/* overwrite bootstrap variables */
+
 h1 {
   font-size: 29.25px;
 }
@@ -8722,6 +8724,10 @@ h2 small,
 h3 small,
 h4 small {
   font-size: 13px;
+}
+
+form {
+  margin: 0;
 }
 
 .h2-section {
@@ -9202,6 +9208,10 @@ form#feeds-import-form input#edit-feeds-feedscsvparser-no-headers {
 .search-api-ranges-widget input[type="text"] {
   width: 80px;
   padding: 3px;
+}
+
+.search-api-ranges-widget label {
+  margin-bottom: 0;
 }
 
 .search-api-ranges-widget button {

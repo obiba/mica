@@ -3,8 +3,8 @@
 }
 
 #cross-variable-detail {
-  margin-left: 5px;
   display: inline;
+  margin-left: 5px;
 }
 
 #result-wrapper {
@@ -12,13 +12,14 @@
 }
 
 table.sva-tooltip th {
-  background-color: inherit;
-  border: none;
   font-weight: bold;
   color: black;
+  background-color: inherit;
+  border: none;
 }
 
-table.sva-tooltip th, table.sva-tooltip td {
+table.sva-tooltip th,
+table.sva-tooltip td {
   vertical-align: text-top;
 }
 
