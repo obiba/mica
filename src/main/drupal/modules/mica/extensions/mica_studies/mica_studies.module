@@ -40,18 +40,17 @@ function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
           ),
         );
       }
-      $url_title = t('Search ' . ($node_type->name === 'Study' ? 'Studies' : $node_type->name . 's'));
       $links['search-studies'] = array(
         '#weight' => 30,
         '#theme' => 'menu_local_action',
         '#link' => array(
-          'title' => t('<a class="highlight" href="@url">!name</a>',
-            array(
-              '!name' => $url_title,
-              '@url' => url('studies-search')
-            )
+          'title' => t('Search ' . ($node_type->name === 'Study' ? 'Studies' : $node_type->name . 's')),
+          'href' => 'studies-search',
+          'localized_options' => array(
+            'attributes' => array(
+              'class' => 'highlight',
+            ),
           ),
-          'localized_options' => array('html' => TRUE),
         ),
       );
       break;
@@ -273,7 +272,7 @@ function _mica_studies_contact_view($node, $view_mode, $langcode) {
   else {
     $institution = $wrapper->field_institution_name->value();
     if (!empty($institution)) {
-      $node->content['field_address']['#title'] = t('Address');//$wrapper->field_contact_name->value() . ' (' . $wrapper->field_institution_name->value() . ')';
+      $node->content['field_address']['#title'] = t('Address'); //$wrapper->field_contact_name->value() . ' (' . $wrapper->field_institution_name->value() . ')';
     }
   }
   $node->content['field_address'][0]['#markup'] = $full_address;
@@ -552,7 +551,7 @@ function _mica_bind_other_specify(&$node, $bindings) {
       if (isset($key)) {
         // get the array index of the key
         foreach ($node->content[$field]['#items'] as $i => $items) {
-          if ($i === $key || (isset($items['value']) &&  $items['value'] === $key)) {
+          if ($i === $key || (isset($items['value']) && $items['value'] === $key)) {
             $index = $i;
             break;
           }
@@ -839,7 +838,7 @@ function mica_studies_noderefcreate_alter(&$newnode, $element, $form_state) {
 /*
  * Hook hook_translation_exclude_fields()
  */
-function mica_studies_translation_exclude_fields(){
+function mica_studies_translation_exclude_fields() {
 
   return array(
     'study' => array('mica_opal'),

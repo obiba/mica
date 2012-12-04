@@ -1,0 +1,20 @@
+screenshot  = screenshot.png
+name        = Mica Bootstrap
+description = Mica Bootstrap subtheme
+core        = 7.x
+base theme  = bootstrap
+
+;scripts[] = js/script.js
+
+regions[header]         = 'Top Bar'
+regions[highlighted]    = 'Highlighted'
+regions[help]           = 'Help'
+regions[content]        = 'Content'
+regions[sidebar_first]  = 'Primary'
+regions[sidebar_second] = 'Secondary'
+regions[footer]         = 'Footer'
+
+settings[toggle_name] = 0
+settings[toggle_search] = 1
+
+exclude[css][] = 'themes/bootstrap/bootstrap/bootstrap.css'

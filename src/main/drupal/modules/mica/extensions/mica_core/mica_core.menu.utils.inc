@@ -8,22 +8,22 @@
 define('MAIN_MENU', 'main-menu');
 
 
-function mica_core_create_menu($menu_title, $menu_path, $router_path, $hidden = FALSE, $expanded = FALSE, $weight = 0, $parent_path = '') {
+function mica_core_create_menu($menu_title, $menu_path, $router_path, $hidden = FALSE, $expanded = FALSE, $weight = 0, $parent_path = '', $parent_mlid = '') {
   $menu = array();
-  _mica_core_create_menu($menu, $menu_title, $menu_path, $router_path, $hidden, $expanded, $weight, $parent_path);
+  _mica_core_create_menu($menu, $menu_title, $menu_path, $router_path, $hidden, $expanded, $weight, $parent_path, $parent_mlid);
   return $menu;
 }
 
-function mica_core_create_node_menu($node, $hidden = FALSE, $expanded = FALSE, $weight = 0, $parent_path = '') {
+function mica_core_create_node_menu($node, $hidden = FALSE, $expanded = FALSE, $weight = 0, $parent_path = '', $parent_mlid = '') {
   $menu = isset($node->menu) ? $node->menu : array();
 
   $wrapper = entity_metadata_wrapper('node', $node);
-  _mica_core_create_menu($menu, $wrapper->title->value(), 'node/' . $node->nid, 'node/%', $hidden, $expanded, $weight, $parent_path);
+  _mica_core_create_menu($menu, $wrapper->title->value(), 'node/' . $node->nid, 'node/%', $hidden, $expanded, $weight, $parent_path, $parent_mlid);
   return $menu;
 }
 
 function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $hidden = FALSE, $expanded = FALSE,
-  $weight = 0, $parent_path = '') {
+  $weight = 0, $parent_path = '', $parent_mlid = '') {
 
   $menu['enabled'] = 1;
   $menu['expanded'] = $expanded ? 1 : 0;
@@ -44,7 +44,10 @@ function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $
     unset($menu['options']['unaltered_hidden']);
   }
 
-  if (!empty($parent_path)) {
+  if (!empty($parent_mlid)) {
+    $menu['plid'] = $parent_mlid;
+  }
+  else if (!empty($parent_path)) {
     $parent_menu = db_query(
       "SELECT * FROM {menu_links} WHERE link_path = :link_path",
       array(':link_path' => $parent_path)
@@ -68,7 +71,7 @@ function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $
  * @param $default_menu_name used if no menu was configured for this node type
  * @param $default_parent_path used if no menu was configured for this node type
  */
-function mica_core_create_node_default_menu($node, $hidden = FALSE, $expanded = FALSE, $weight = 0, $default_parent_path = '') {
+function mica_core_create_node_default_menu($node, $hidden = FALSE, $expanded = FALSE, $weight = 0, $default_parent_path = '', $parent_mlid = '') {
 
   if (empty($node)) {
     return NULL;
@@ -84,7 +87,7 @@ function mica_core_create_node_default_menu($node, $hidden = FALSE, $expanded = 
 
     if (empty($menu_options)) {
       if (!empty($default_menu_name)) {
-        _mica_core_create_menu($menu, $wrapper->title->value(), 'node/' . $node->nid, '', $hidden, $expanded, $weight, $default_parent_path);
+        _mica_core_create_menu($menu, $wrapper->title->value(), 'node/' . $node->nid, '', $hidden, $expanded, $weight, $default_parent_path, $parent_mlid);
       }
     }
     else {
@@ -105,7 +108,7 @@ function mica_core_create_node_default_menu($node, $hidden = FALSE, $expanded = 
         }
       }
 
-      _mica_core_create_menu($menu, $wrapper->title->value(), 'node/' . $node->nid, '', $hidden, $expanded, $weight, NULL);
+      _mica_core_create_menu($menu, $wrapper->title->value(), 'node/' . $node->nid, '', $hidden, $expanded, $weight, NULL, NULL);
     }
 
   }

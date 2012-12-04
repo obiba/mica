@@ -42,7 +42,6 @@ projects[collapsiblock][download][revision] = 36f4280
 projects[collapsiblock][download][branch] = 7.x-1.x
 projects[collapsiblock][patch][1475244] = http://drupal.org/files/api-function-and-constants-patch1301454-patch1429956.patch
 
-projects[corolla] = 3.0-rc1
 
 projects[cnr][download][type] = git
 projects[cnr][download][revision] = 89f859e
@@ -53,6 +52,7 @@ projects[content_access] = 1.2-beta1
 projects[content_taxonomy] = 1.0-beta1
 
 projects[ctools] = 1.2
+projects[ctools][patch][1494860] = http://drupal.org/files/ctools-dependent-js-broken-with-jquery-1.7-1494860-30.patch
 
 projects[date] = 2.6
 
@@ -117,11 +117,18 @@ projects[itweak_login] = 1.0
 
 projects[job_scheduler] = 2.0-alpha3
 
+projects[jquery_update][type] = module
+projects[jquery_update][download][type] = git
+projects[jquery_update][download][revision] = baff5d1
+projects[jquery_update][download][branch] = 7.x-2.x
+
 projects[l10n_update] = 1.0-beta3
 
 projects[lang_dropdown] = 1.5
 
 projects[languageicons] = 1.0
+
+projects[less] = 2.6
 
 projects[libraries] = 2.0
 
@@ -194,8 +201,7 @@ projects[search_api_ranges][patch][1460410] = http://drupal.org/files/max-inclus
 projects[search_api_solr][version] = 1.0-rc2
 projects[search_api_solr][patch][1276970] = http://drupal.org/files/solr_queries_post-1276970-10.patch
 
-projects[services] = 3.2
-projects[services][patch][1834618] = http://drupal.org/files/spyc-url.patch
+projects[services] = 3.3
 
 projects[smtp] = 1.0-beta2
 
@@ -231,10 +237,27 @@ projects[workbench_moderation][version] = 1.2
 projects[workbench_moderation][patch][1245590] = http://drupal.org/files/retaintitle-1245590-12.patch
 
 
+; Themes
+; ---------
+
+projects[bootstrap][type] = theme
+projects[bootstrap][download][type] = git
+projects[bootstrap][download][revision] = 0999214
+projects[bootstrap][download][branch] = 7.x-2.x
+
+projects[corolla] = 3.0-rc1
+
+
 ; Libraries
 ; ---------
 
 ; jsonpath is not downloaded here because of http://code.google.com/p/jsonpath/issues/detail?id=8
+
+libraries[bootstrap][type] = libraries
+libraries[bootstrap][download][type]= get
+libraries[bootstrap][download][url] = http://twitter.github.com/bootstrap/assets/bootstrap.zip
+libraries[bootstrap][destination] = themes/bootstrap
+libraries[bootstrap][directory_name] = bootstrap
 
 libraries[ckeditor][download][type]= get
 libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.5/ckeditor_3.6.5.tar.gz
@@ -243,6 +266,10 @@ libraries[ckeditor][directory_name] = ckeditor
 libraries[jquery_tooltip][download][type]= get
 libraries[jquery_tooltip][download][url] = http://jquery.bassistance.de/tooltip/jquery.tooltip.zip
 libraries[jquery_tooltip][directory_name] = jquery_tooltip
+
+libraries[lessphp][download][type]= get
+libraries[lessphp][download][url] = http://leafo.net/lessphp/src/lessphp-0.3.8.tar.gz
+libraries[lessphp][directory_name] = lessphp
 
 libraries[prettify_css][download][type] = get
 libraries[prettify_css][download][url] = http://google-code-prettify.googlecode.com/svn/branches/release-1-Jun-2011/src/prettify.css

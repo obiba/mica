@@ -121,14 +121,14 @@ drush-make-prod:
 drush-make-dev:
 	$(call drush-make-dev,$(micadir))
 
-mica-install:
+mica-install: compile-less
 	rm -rf target/$(micadir)/profiles/mica_distribution/modules/mica && \
 	cp -R src/main/drupal/modules target/$(micadir)/profiles/mica_distribution && \
 	cp -R src/main/drupal/themes target/$(micadir)/profiles/mica_distribution && \
 	cp -R src/main/drupal/profiles/mica_distribution target/$(micadir)/profiles && \
 	make inject-version-info
 
-prepare-mica-distribution:
+prepare-mica-distribution: compile-less
 	cp src/main/drupal/themes/mica_samara/mica.png target/$(micadir)/themes/seven/logo.png && \
 	cp src/main/drupal/themes/mica_samara/favicon.ico target/$(micadir)/misc/favicon.ico && \
 	cp -r target/$(micadir)/profiles/mica_distribution/libraries/ckeditor/* target/$(micadir)/profiles/mica_distribution/modules/ckeditor/ckeditor && \
@@ -161,7 +161,7 @@ inject-version-info:
 	$(call inject-version-info,mica_distribution/themes,mica_samara)
 	$(call inject-version-info,mica_distribution/themes,mica_corolla)
 
-clear-version-info:
+clear-version-info: compile-less
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_community)
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_core)
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_data_access)
@@ -189,6 +189,8 @@ set-distribution-version:
 	sed -i 's/^projects\[mica\].*$$/projects[mica] = $(version)/' drupal-org.make && \
 	sed -i 's/^projects\[mica_distribution\]\[version\].*$$/projects[mica_distribution][version] = $(dist_version)/' build-mica_distribution.make
 
+compile-less:
+	recess --compile src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap.less > src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap.css
 
 #
 # Build from continuous integration
@@ -370,6 +372,22 @@ git-push-mica-dist: clear-version-info set-distribution-version
 	cp -r ../../../src/main/drupal/themes . && \
 	$(call git-finish)
 
+#
+# Bootstrap related stuff
+#
+install-nodejs:
+	mkdir target/nodejs && \
+	cd target/nodejs && \
+	wget http://nodejs.org/dist/v0.8.15/node-v0.8.15.tar.gz && \
+	tar -xzvf node-v0.8.15.tar.gz && \
+	cd node-v0.8.15 && \
+	./configure && \
+	make && \
+	make install
+
+install-bootstrap-dependencies:
+	npm install recess connect uglify-js@1 jshint -g
+	
 
 #
 # Functions

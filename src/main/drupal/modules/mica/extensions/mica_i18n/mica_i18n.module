@@ -191,7 +191,7 @@ function _mica_i18n_get_menu_translations($langcode, $title) {
 function mica_i18n_configure_block() {
 
   // add the language switcher dropdown block to the header
-  $theme_default = variable_get('theme_default', 'mica_corolla');
+  $theme_default = variable_get('theme_default', 'mica_bootstrap');
   db_update('block')->fields(
     array(
       'status' => 1,

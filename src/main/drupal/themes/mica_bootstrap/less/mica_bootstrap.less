@@ -1,0 +1,76 @@
+@import "bootstrap/bootstrap.less";
+
+@iconSpritePath: "../../bootstrap/bootstrap/img/glyphicons-halflings.png";
+@iconWhiteSpritePath: "../../bootstrap/bootstrap/img/glyphicons-halflings-white.png";
+
+// ~32px
+h1 { font-size: @baseFontSize * 2.25; }
+
+// ~24px
+h2 { font-size: @baseFontSize * 1.75; }
+
+// ~18px
+h3 { font-size: @baseFontSize * 1.25; }
+
+// ~14px
+h4 { font-size: @baseFontSize; }
+
+// ~12px
+h5 { font-size: @baseFontSize * 0.85; }
+
+// 10px
+h6 { font-size: @baseFontSize * 0.70; }
+
+// ~18px
+h1 small { font-size: @baseFontSize * 1.25; }
+
+// ~14px
+h2, h3, h4 {
+  small { font-size: @baseFontSize; }
+}
+
+header#navbar {
+  a.logo img {
+    width: 30px;
+    height: 30px;
+  }
+
+  form.search-form {
+    margin-bottom: 0;
+    .form-item, .form-actions {
+      margin-top: 0;
+    }
+  }
+}
+
+ul.action-links {
+  li {
+    a.highlight {
+      .btn;
+      .btn-primary;
+      float: right;
+      margin: -4px 5px 10px 5px;
+
+      i {
+        display: none;
+      }
+    }
+  }
+}
+
+.view-header {
+  margin-bottom: 10px;
+}
+
+/* Powered By Mica block */
+section#block-mica-powered-by-mica {
+  float: right;
+  font-size: 85%;
+  .block-content a {
+    background: url("../logo-small.png") no-repeat scroll 0 0 transparent;
+    padding-left: 25px;
+    margin-left: 5px;
+    height: 25px;
+    display: inline-block;
+  }
+}

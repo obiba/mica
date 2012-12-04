@@ -20,13 +20,7 @@ function mica_data_access_features_rebuild_completed() {
 
 function _mica_data_access_create_default_content() {
 
-  $data_access_page = mica_core_add_page(
-    st('Data Access'),
-    st('This section aims to inform researchers about the consortium data access policy and its committee. It provides a simple data request  web form as an example of what can be achieved for managing researcher\'s requests. As usual, the content and the form of this section can be easily customized.'),
-    'data-access');
-  mica_core_create_node_menu($data_access_page, FALSE, TRUE, 20);
-
-  $data_access_path = 'node/' . $data_access_page->nid;
+  $data_access_menu = mica_core_create_menu(st('Data Access'), '<firstchild>', '<firstchild>', FALSE, TRUE, 20);
 
   $policy_page = mica_core_add_page(
     st('Consortium Policies and Guidelines'),
@@ -44,14 +38,14 @@ In this first document prepared by the Consortium, the authors strived to differ
 
 Over time, the Consortium will generate best practices documents that will describe the current state-of-the-art, and propose modifications of the guidelines.'),
     'data-access/policy');
-  mica_core_create_node_menu($policy_page, FALSE, FALSE, 0, $data_access_path);
-  mica_core_create_menu(st('Data Access Administration'), 'data-access/admin', 'data-access/admin', FALSE, FALSE, 1, $data_access_path);
-  mica_core_create_menu(st('Data Access Committee'), 'data-access/committee', 'data-access/committee', FALSE, FALSE, 2, $data_access_path);
-  mica_core_create_menu(st('Data Access Request'), 'data-access/request', 'data-access/request', FALSE, FALSE, 3, $data_access_path);
-  mica_core_create_menu(st('My Data Access Requests'), 'data-access/requests', 'data-access/requests', FALSE, FALSE, 4, $data_access_path);
+  mica_core_create_node_menu($policy_page, FALSE, FALSE, 5, NULL, $data_access_menu['mlid']);
+  mica_core_create_menu(st('Data Access Administration'), 'data-access/admin', 'data-access/admin', FALSE, FALSE, 10, NULL, $data_access_menu['mlid']);
+  mica_core_create_menu(st('Data Access Committee'), 'data-access/committee', 'data-access/committee', FALSE, FALSE, 15, NULL, $data_access_menu['mlid']);
+  mica_core_create_menu(st('Data Access Request'), 'data-access/request', 'data-access/request', FALSE, FALSE, 20, NULL, $data_access_menu['mlid']);
+  mica_core_create_menu(st('My Data Access Requests'), 'data-access/requests', 'data-access/requests', FALSE, FALSE, 25, NULL, $data_access_menu['mlid']);
 
   $research_menu = mica_core_find_menu_for_alias('research');
-  mica_core_create_menu(st('DACO Approved Projects'), 'data-access/approved', 'data-access/approved', FALSE, FALSE, 1, $research_menu->link_path);
+  mica_core_create_menu(st('DACO Approved Projects'), 'data-access/approved', 'data-access/approved', FALSE, FALSE, 1, NULL, $research_menu->mlid);
 }
 
 /**
@@ -117,8 +111,8 @@ function mica_data_access_menu_local_tasks_alter(&$data, $router_item, $root_pat
       $links['add-data-access-request'] = array(
         '#theme' => 'menu_local_action',
         '#link' => array(
-          'title' => t('<a href="@url">Request for Data Access</a>', array('@url' => $href)),
-          'localized_options' => array('html' => TRUE),
+          'title' => t('Request for Data Access'),
+          'href' => $href,
         ),
       );
     }
@@ -149,8 +143,8 @@ function mica_data_access_menu_local_tasks_alter(&$data, $router_item, $root_pat
       $links['print'] = array(
         '#theme' => 'menu_local_action',
         '#link' => array(
-          'title' => t('<a href="@url">Print</a>', array('@url' => $href)),
-          'localized_options' => array('html' => TRUE),
+          'title' => t('Print'),
+          'href' => $href,
         ),
       );
     }

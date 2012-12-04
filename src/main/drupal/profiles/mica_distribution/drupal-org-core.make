@@ -12,7 +12,7 @@ projects[drupal][patch][995156] = http://drupal.org/files/issues/995156-5_portab
 
 ; Install profile is disabled for lots of different reasons and core doesn't allow for that
 ; http://drupal.org/node/1170362
-projects[drupal][patch][1170362] = http://drupal.org/files/mimimal-install-profile-1170362-168.patch
+projects[drupal][patch][1170362] = http://drupal.org/files/minimal-install-profile-1170362-181-do-not-test.patch
 
 ; Add backtrace to all errors
 ; http://drupal.org/node/1158322

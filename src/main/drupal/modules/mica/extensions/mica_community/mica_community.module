@@ -19,15 +19,16 @@ function mica_community_features_rebuild_completed() {
 }
 
 function _mica_community_create_default_content() {
-  mica_core_create_menu(st('Community'), 'community', 'community', FALSE, TRUE, 45, NULL);
-  mica_core_create_menu(st('News'), 'news', 'news', FALSE, FALSE, 1, 'community');
-  $event_menu = mica_core_create_menu(st('Events'), 'events', 'events', FALSE, TRUE, 2, 'community');
+  $community_menu = mica_core_create_menu(st('Community'), '<firstchild>', '<firstchild>', FALSE, TRUE, 45, NULL);
+  mica_core_create_menu(st('Overview'), 'community', 'community', FALSE, TRUE, 5, NULL, $community_menu['mlid']);
+  mica_core_create_menu(st('News'), 'news', 'news', FALSE, FALSE, 10, NULL, $community_menu['mlid']);
+  $event_menu = mica_core_create_menu(st('Events'), 'events', 'events', FALSE, TRUE, 15, NULL, $community_menu['mlid']);
   mica_core_create_menu(st('Calendar'), 'calendar-field-event-date/year', 'calendar-field-event-date/year', FALSE, FALSE, 0, 'events');
-  $forum_menu = mica_core_create_menu(st('Forums'), 'forum', 'forum', FALSE, FALSE, 3, 'community');
-  $blog_menu = mica_core_create_menu(st('Blogs'), 'blog', 'blog', FALSE, FALSE, 4, 'community');
+  $forum_menu = mica_core_create_menu(st('Forums'), 'forum', 'forum', FALSE, FALSE, 20, NULL, $community_menu['mlid']);
+  $blog_menu = mica_core_create_menu(st('Blogs'), 'blog', 'blog', FALSE, FALSE, 25, NULL, $community_menu['mlid']);
 
   $research_menu = mica_core_find_menu_for_alias('research');
-  $publication_menu = mica_core_create_menu(st('Publications'), 'publications', 'publications', FALSE, FALSE, 10, $research_menu->link_path);
+  $publication_menu = mica_core_create_menu(st('Publications'), 'publications', 'publications', FALSE, FALSE, 10, NULL, $research_menu->mlid);
 
   mica_core_set_menu_option('event', $event_menu['mlid']);
   mica_core_set_menu_option('publication', $publication_menu['mlid']);
