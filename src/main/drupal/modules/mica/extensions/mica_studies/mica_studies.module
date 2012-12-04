@@ -106,6 +106,7 @@ function mica_studies_node_insert($node) {
 function mica_studies_node_view($node, $view_mode, $langcode) {
   switch ($node->type) {
     case 'study':
+      ctools_add_css('mica_studies', 'mica_studies');
       _mica_studies_study_view($node, $view_mode, $langcode);
       break;
     case 'contact':

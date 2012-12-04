@@ -6089,6 +6089,27 @@ ul.action-links li a.highlight i {
   margin-bottom: 10px;
 }
 
+.node .field-label-above .field-items,
+.panel-pane .field-label-above .field-items,
+.panel-pane.pane-custom .pane-content {
+  margin-left: 20px;
+}
+
+fieldset {
+  margin-bottom: 10px;
+  background-color: #F9F9F9;
+}
+
+fieldset legend {
+  margin-bottom: 10px;
+  font-size: 18px;
+  background-color: #F9F9F9;
+}
+
+fieldset .fieldset-wrapper {
+  padding: 0 10px 10px 10px;
+}
+
 /* Powered By Mica block */
 
 section#block-mica-powered-by-mica {
@@ -6102,4 +6123,8 @@ section#block-mica-powered-by-mica .block-content a {
   padding-left: 25px;
   margin-left: 5px;
   background: url("../logo-small.png") no-repeat scroll 0 0 transparent;
+}
+
+.workbench-info-block form#workbench-moderation-moderate-form select {
+  margin-bottom: 0;
 }

@@ -190,7 +190,8 @@ set-distribution-version:
 	sed -i 's/^projects\[mica_distribution\]\[version\].*$$/projects[mica_distribution][version] = $(dist_version)/' build-mica_distribution.make
 
 compile-less:
-	recess --compile src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap.less > src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap.css
+	recess --compile src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap.less > src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap.css && \
+	recess --compile src/main/drupal/modules/mica/extensions/mica_studies/less/mica_studies.less > src/main/drupal/modules/mica/extensions/mica_studies/css/mica_studies.css
 
 #
 # Build from continuous integration

@@ -1,9 +1,9 @@
 div.region.region-header {
-  padding: 5px 25px 5px 0px;
+  padding: 5px 25px 5px 0;
 }
 
 div#branding.branding-elements.clearfix {
-  padding: 25px 0px 5px 10px;
+  padding: 25px 0 5px 10px;
   vertical-align: top;
 }
 
@@ -17,21 +17,21 @@ div#branding.branding-elements.clearfix {
 }
 
 div#block-search-form.block.block-search {
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
   clear: right !important;
-  width:174px;
+  width: 174px;
 }
 
 section#block-lang-dropdown-language.block.block-lang-dropdown {
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
   clear: none;
 }
 
 section#block-user-login.block.block-user {
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
   clear: right !important;
 }
 
@@ -219,7 +219,6 @@ ul.ajax-register-links.inline li.even.first:after {
 
 .region-footer .block {
   font-size: 1em;
-  margin: 0 10px;
   padding: 0;
   background-color: transparent;
   border: none;
@@ -265,7 +264,7 @@ ul.ajax-register-links.inline li.even.first:after {
 }
 
 .views-row.views-row-last {
-  border-bottom: 0px;
+  border-bottom: 0;
 }
 
 .views-exposed-widget div {
@@ -549,12 +548,12 @@ body.node-type-network .field-name-field-logo {
 }
 
 input.form-text, input.form-password {
-  padding: 0px !important;
+  padding: 0 !important;
 }
 
 .region-header #block-user-login input.form-submit {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 label.option {
@@ -591,7 +590,7 @@ a.use-ajax.ajax-processed {
 }
 
 .header_center {
-  margin: 0px auto;
+  margin: 0 auto;
 }
 
 div.tooltip_content table, tbody, tr {
@@ -607,7 +606,7 @@ div.tooltip_content table, tbody, tr {
 .variable_category-missing {
   min-width: 16px;
   min-height: 16px;
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 table.query-table th, table.query-table td {
