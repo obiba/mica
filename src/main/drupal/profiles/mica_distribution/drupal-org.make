@@ -128,7 +128,7 @@ projects[lang_dropdown] = 1.5
 
 projects[languageicons] = 1.0
 
-projects[less] = 2.6
+projects[less] = 3.0-beta1
 
 projects[libraries] = 2.0
 
@@ -280,6 +280,16 @@ libraries[prettify_js][download][type] = get
 libraries[prettify_js][download][url] = http://google-code-prettify.googlecode.com/svn/branches/release-1-Jun-2011/src/prettify.js
 libraries[prettify_js][directory_name] = prettify
 libraries[prettify_js][overwrite] = TRUE
+
+libraries[prettify_bootstrap_css][download][type] = get
+libraries[prettify_bootstrap_css][download][url] = http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css
+libraries[prettify_bootstrap_css][directory_name] = prettify_bootstrap
+libraries[prettify_bootstrap_css][overwrite] = TRUE
+
+libraries[prettify_bootstrap_js][download][type] = get
+libraries[prettify_bootstrap_js][download][url] = http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.js
+libraries[prettify_bootstrap_js][directory_name] = prettify_bootstrap
+libraries[prettify_bootstrap_js][overwrite] = TRUE
 
 libraries[solr_php_client][download][type] = get
 libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.com/files/SolrPhpClient.r60.2011-05-04.tgz

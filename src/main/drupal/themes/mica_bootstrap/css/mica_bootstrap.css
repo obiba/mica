@@ -8726,6 +8726,10 @@ h4 small {
   font-size: 13px;
 }
 
+a {
+  color: #4183c4;
+}
+
 form {
   margin: 0;
 }
@@ -9025,6 +9029,15 @@ ul.inline li {
   margin-left: 20px;
 }
 
+.node .field-label-above .field-items pre.prettyprint,
+.panel-pane .field-label-above .field-items pre.prettyprint,
+.panel-pane.pane-custom .pane-content pre.prettyprint,
+.node .field-label-above .field-items code.prettyprint,
+.panel-pane .field-label-above .field-items code.prettyprint,
+.panel-pane.pane-custom .pane-content code.prettyprint {
+  margin-right: 20px;
+}
+
 fieldset {
   margin-bottom: 10px;
   background-color: #f9f9f9;
@@ -9056,6 +9069,10 @@ fieldset.collapsed legend .fieldset-legend {
   background-position: 5px 55%;
 }
 
+pre {
+  line-height: 12px;
+}
+
 .table-striped tr.even,
 .table-striped tr.odd {
   background-color: transparent;
@@ -9065,13 +9082,13 @@ fieldset.collapsed legend .fieldset-legend {
 .table-striped tr.drag,
 .table-striped tr.drag th,
 .table-striped tr.drag td {
-  background-color: #fe7 !important;
+  background-color: #ffee77 !important;
 }
 
 .table-striped tr.drag-previous,
 .table-striped tr.drag-previous th,
 .table-striped tr.drag-previous td {
-  background-color: #ffb !important;
+  background-color: #ffffbb !important;
 }
 
 .table-striped th {
@@ -9079,11 +9096,11 @@ fieldset.collapsed legend .fieldset-legend {
 }
 
 tr.drag {
-  background-color: #fe7;
+  background-color: #ffee77;
 }
 
 tr.drag-previous {
-  background-color: #ffb;
+  background-color: #ffffbb;
 }
 
 .views-exposed-form .views-submit-button button {

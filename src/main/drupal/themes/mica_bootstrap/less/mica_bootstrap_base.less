@@ -16,6 +16,10 @@ h2, h3, h4 {
   small { font-size: @h4_font_size; }
 }
 
+a {
+  color: @a_font_color;
+}
+
 form {
   margin: 0;
 }
@@ -117,6 +121,11 @@ ul.inline {
 .panel-pane .field-label-above .field-items,
 .panel-pane.pane-custom .pane-content {
   margin-left: @items_margin_left;
+
+  pre.prettyprint,
+  code.prettyprint {
+    margin-right: @items_margin_left;
+  }
 }
 
 fieldset {
@@ -151,6 +160,10 @@ fieldset {
     .collapsible-fieldset-icon("../img/collapsed.png");
   }
 
+}
+
+pre {
+  line-height: @baseFontSize - 1;
 }
 
 @drag-bkg-color: #fe7;

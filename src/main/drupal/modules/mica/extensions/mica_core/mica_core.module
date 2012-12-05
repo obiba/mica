@@ -7,6 +7,7 @@
 
 require_once('mica_core.features.inc');
 require_once('mica_core.menu.utils.inc');
+require_once('mica_core.theme.utils.inc');
 require_once(drupal_get_path('module', 'taxonomy_csv') . '/import/taxonomy_csv.import.api.inc');
 
 /**
@@ -467,18 +468,6 @@ function mica_core_configure_role_permissions($role_name, $permissions) {
   if ($role) {
     user_role_change_permissions($role->rid, $permissions);
   }
-}
-
-function mica_core_get_current_theme() {
-  global $custom_theme, $theme, $user;
-
-  if (!empty($user->theme)) {
-    return $user->theme;
-  }
-  if (!empty($custom_theme)) {
-    return $custom_theme;
-  }
-  return $theme ? $theme : variable_get('theme_default', 'mica_bootstrap');
 }
 
 function mica_core_nodes_access($op, array $nodes, $account = NULL) {

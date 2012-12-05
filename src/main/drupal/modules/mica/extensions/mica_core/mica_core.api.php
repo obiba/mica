@@ -14,3 +14,9 @@ function hook_taxonomies_operations_import() {
   return $operations;
 }
 
+/**
+ *
+ */
+function hook_bootstrap_based_theme() {
+  return array('theme_name' => TRUE);
+}

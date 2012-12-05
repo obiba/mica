@@ -4,10 +4,7 @@ description = Mica Bootstrap subtheme
 core        = 7.x
 base theme  = bootstrap
 
-stylesheets[all][] = css/mica_bootstrap.css
-
-exclude[css][] = profiles/mica_distribution/themes/bootstrap/bootstrap/css/bootstrap.css
-exclude[css][] = profiles/mica_distribution/themes/bootstrap/bootstrap/css/bootstrap-responsive.css
+; stylesheets are configured from template.php >> mica_bootstrap_css_alter()
 
 regions[header]         = 'Top Bar'
 regions[highlighted]    = 'Highlighted'

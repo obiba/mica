@@ -13,7 +13,6 @@
 
 table.sva-tooltip th {
   font-weight: bold;
-  color: black;
   background-color: inherit;
   border: none;
 }
@@ -21,10 +20,6 @@ table.sva-tooltip th {
 table.sva-tooltip th,
 table.sva-tooltip td {
   vertical-align: text-top;
-}
-
-table#harmonization_overview a {
-  border: none;
 }
 
 table#harmonization_overview th .study-title,
