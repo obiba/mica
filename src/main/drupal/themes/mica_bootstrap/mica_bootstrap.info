@@ -4,7 +4,10 @@ description = Mica Bootstrap subtheme
 core        = 7.x
 base theme  = bootstrap
 
-;scripts[] = js/script.js
+stylesheets[all][] = css/mica_bootstrap.css
+
+exclude[css][] = profiles/mica_distribution/themes/bootstrap/bootstrap/css/bootstrap.css
+exclude[css][] = profiles/mica_distribution/themes/bootstrap/bootstrap/css/bootstrap-responsive.css
 
 regions[header]         = 'Top Bar'
 regions[highlighted]    = 'Highlighted'

@@ -469,6 +469,18 @@ function mica_core_configure_role_permissions($role_name, $permissions) {
   }
 }
 
+function mica_core_get_current_theme() {
+  global $custom_theme, $theme, $user;
+
+  if (!empty($user->theme)) {
+    return $user->theme;
+  }
+  if (!empty($custom_theme)) {
+    return $custom_theme;
+  }
+  return $theme ? $theme : variable_get('theme_default', 'mica_bootstrap');
+}
+
 function mica_core_nodes_access($op, array $nodes, $account = NULL) {
   foreach ($nodes as $node) {
     if (!node_access($op, $node, $account)) {

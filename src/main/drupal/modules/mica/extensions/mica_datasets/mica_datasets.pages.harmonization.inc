@@ -20,7 +20,9 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
   drupal_add_library('system', 'drupal.ajax');
   drupal_add_library('system', 'jquery.form');
 
-  mica_core_include_bootstrap_css();
+  if (mica_core_get_current_theme() !== 'mica_bootstrap') {
+    mica_core_include_bootstrap_css();
+  }
 
   //prettify
   mica_datasets_prepare_prettify();
@@ -53,7 +55,8 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
       // See http://www.jide.fr/english/using-ajax-in-drupal-7-outside-of-form-api
       // show link only for studies that have an opal connection
       if (node_access('update', $dataset_node)
-        && mica_connector_query($wrapper->nid->value(), $study_wrapper->nid->value())) {
+        && mica_connector_query($wrapper->nid->value(), $study_wrapper->nid->value())
+      ) {
         $refresh_link = l(
           '<i class="icon-refresh icon-white"></i>',
           'mica_datasets_harmonization/ajax/' . $wrapper->nid->value() . '/' . $study_wrapper->nid->value(),

@@ -129,6 +129,10 @@ fieldset {
     margin-bottom: 10px;
   }
 
+  legend .fieldset-legend {
+    padding-left: 5px;
+  }
+
   .fieldset-wrapper {
     padding: 0 10px 10px 10px;
   }
@@ -149,16 +153,42 @@ fieldset {
 
 }
 
+@drag-bkg-color: #fe7;
+@drag-previous-bkg-color: #ffb;
+
 .table-striped {
-  tr.even,
-  tr.odd {
-    background-color: transparent;
-    border-bottom: none;
+
+  tr {
+    &.even,
+    &.odd {
+      background-color: transparent;
+      border-bottom: none;
+    }
+
+    &.drag,
+    &.drag th,
+    &.drag td {
+      background-color: @drag-bkg-color !important;
+    }
+
+    &.drag-previous,
+    &.drag-previous th,
+    &.drag-previous td {
+      background-color: @drag-previous-bkg-color !important;
+    }
   }
 
   th {
     border-bottom: none;
   }
+}
+
+tr.drag {
+  background-color: @drag-bkg-color;
+}
+
+tr.drag-previous {
+  background-color: @drag-previous-bkg-color;
 }
 
 .views-exposed-form .views-submit-button button {

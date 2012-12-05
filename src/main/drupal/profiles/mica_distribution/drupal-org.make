@@ -111,7 +111,7 @@ projects[i18n][patch][1662884] = http://drupal.org/files/support_multiple_transl
 
 projects[image_url_formatter] = 1.0
 
-projects[imce] = 1.5
+projects[imce] = 1.6
 
 projects[itweak_login] = 1.0
 
@@ -224,7 +224,7 @@ projects[view_unpublished] = 1.1
 
 projects[views] = 3.5
 
-projects[views_bulk_operations] = 3.0
+projects[views_bulk_operations] = 3.1
 
 projects[views_data_export][version] = 3.0-beta6
 projects[views_data_export][patch][1224894] = http://drupal.org/files/html_in_csv-1224894-10.patch
@@ -242,10 +242,8 @@ projects[workbench_moderation][patch][1245590] = http://drupal.org/files/retaint
 
 projects[bootstrap][type] = theme
 projects[bootstrap][download][type] = git
-projects[bootstrap][download][revision] = 0999214
+projects[bootstrap][download][revision] = 1a15c89
 projects[bootstrap][download][branch] = 7.x-2.x
-projects[bootstrap][patch][1706180] = http://drupal.org/files/dropdown_menu_v2.patch
-
 
 projects[corolla] = 3.0-rc1
 

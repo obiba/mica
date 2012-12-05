@@ -9036,6 +9036,10 @@ fieldset legend {
   background-color: #f9f9f9;
 }
 
+fieldset legend .fieldset-legend {
+  padding-left: 5px;
+}
+
 fieldset .fieldset-wrapper {
   padding: 0 10px 10px 10px;
 }
@@ -9058,8 +9062,28 @@ fieldset.collapsed legend .fieldset-legend {
   border-bottom: none;
 }
 
+.table-striped tr.drag,
+.table-striped tr.drag th,
+.table-striped tr.drag td {
+  background-color: #fe7 !important;
+}
+
+.table-striped tr.drag-previous,
+.table-striped tr.drag-previous th,
+.table-striped tr.drag-previous td {
+  background-color: #ffb !important;
+}
+
 .table-striped th {
   border-bottom: none;
+}
+
+tr.drag {
+  background-color: #fe7;
+}
+
+tr.drag-previous {
+  background-color: #ffb;
 }
 
 .views-exposed-form .views-submit-button button {
