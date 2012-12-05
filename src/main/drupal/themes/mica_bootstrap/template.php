@@ -1,6 +1,8 @@
 <?php
 
-
+/**
+ * Implements hook_bootstrap_based_theme().
+ */
 function mica_bootstrap_bootstrap_based_theme() {
   return array('mica_bootstrap' => TRUE);
 }

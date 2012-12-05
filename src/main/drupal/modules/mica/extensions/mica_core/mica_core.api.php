@@ -15,7 +15,7 @@ function hook_taxonomies_operations_import() {
 }
 
 /**
- *
+ * Theme based on Twitter Bootstrap should implements this hook and return TRUE.
  */
 function hook_bootstrap_based_theme() {
   return array('theme_name' => TRUE);

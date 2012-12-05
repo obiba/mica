@@ -22,18 +22,13 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
 
   mica_core_is_bootstrap_based_theme();
 
-  $is_bootstrap = mica_core_get_current_theme() === 'mica_bootstrap';
-  if ($is_bootstrap) {
-    //TODO include bootstrap JS
-  }
-  else {
+  $is_bootstrap = mica_core_is_bootstrap_based_theme();
+  if (!$is_bootstrap) {
     mica_core_include_bootstrap_css();
     mica_core_prepare_tooltip();
   }
 
   $icon_bkg = $is_bootstrap ? '' : 'icon-white';
-
-  mica_datasets_prepare_prettify();
 
   ctools_add_css('mica_datasets', 'mica_datasets');
 
@@ -184,9 +179,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
                     ));
                   }
 
-//                  $sva_link = "<a href='$sva_url' id='$sva_link_id' class='$sva_css_class' "
-//                    . "data-original-title='$sva_tooltip_title' data-content='$sva_tooltip_content'><img src='$sva_img' /></a>";
-                  $sva_link = "<a id='$sva_link_id' class='$sva_css_class' "
+                  $sva_link = "<a href='$sva_url' id='$sva_link_id' class='$sva_css_class' "
                     . "data-original-title='$sva_tooltip_title' data-content='$sva_tooltip_content'><img src='$sva_img' /></a>";
 
                   if ($is_bootstrap) {
@@ -203,7 +196,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
                       '#type' => 'markup',
                       '#markup' => $sva_link,
                     ),
-                    'class' => array('center')
+                    'class' => array('center sva-status')
                   );
 
                   break;
@@ -230,16 +223,14 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
     )
   );
 
+  mica_datasets_prepare_prettify();
+
   return '<div id=\'harmonization_overview_wrapper\'>' . $output . '</div>';
 }
 
 function _mica_datasets_harmonization_popover($link_id) {
-//  drupal_add_js(
-//    "jQuery(function () { jQuery('#$link_id').popover({ html: true, placement: 'top', trigger: 'hover' }) });",
-//    'inline'
-//  );
   drupal_add_js(
-    "jQuery(function () { jQuery('#$link_id').popover({ html: true, placement: 'top' }) });",
+    "jQuery(function () { jQuery('#$link_id').popover({ html: true, placement: 'top', trigger: 'hover' }) });",
     'inline'
   );
 }

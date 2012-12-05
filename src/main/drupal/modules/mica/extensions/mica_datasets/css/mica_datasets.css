@@ -27,3 +27,7 @@ table#harmonization_overview th .study-actions,
 table#harmonization_overview td.center {
   text-align: center;
 }
+
+table#harmonization_overview td.sva-status .popover {
+  text-align: left;
+}
