@@ -13,6 +13,7 @@
 
 table.sva-tooltip th {
   font-weight: bold;
+  color: black;
   background-color: inherit;
   border: none;
 }

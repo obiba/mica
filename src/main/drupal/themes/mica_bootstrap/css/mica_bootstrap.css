@@ -9038,13 +9038,18 @@ ul.inline li {
   margin-right: 20px;
 }
 
+.field {
+  margin-top: 8px;
+}
+
 fieldset {
+  margin-top: 8px;
   margin-bottom: 10px;
   background-color: #f9f9f9;
 }
 
 fieldset legend {
-  margin-bottom: 10px;
+  margin-bottom: 0;
   font-size: 16.25px;
   background-color: #f9f9f9;
 }
@@ -9140,6 +9145,14 @@ tr.drag-previous {
 
 form#feeds-import-form input#edit-feeds-feedscsvparser-no-headers {
   margin-left: 0;
+}
+
+#comments {
+  margin-top: 20px;
+}
+
+#comments #comment-form-wrapper {
+  padding-top: 0;
 }
 
 #block-mica-mica-search-filters h2 {
