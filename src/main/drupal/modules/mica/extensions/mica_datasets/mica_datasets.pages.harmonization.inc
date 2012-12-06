@@ -36,6 +36,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
     'name' => t('Variable'),
   );
 
+  $popovers = array();
   $rows = array();
 
   $wrapper = entity_metadata_wrapper('node', $dataset_node);
@@ -112,7 +113,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
           )
         );
         if ($is_bootstrap) {
-          _mica_datasets_harmonization_popover($link_id);
+          $popovers[] = $link_id;
         }
         else {
           $variable_link .= '<div id="variable_' . $variable->nid . '_tooltip" class="tooltip-content">'
@@ -183,7 +184,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
                     . "data-original-title='$sva_tooltip_title' data-content='$sva_tooltip_content'><img src='$sva_img' /></a>";
 
                   if ($is_bootstrap) {
-                    _mica_datasets_harmonization_popover($sva_link_id);
+                    $popovers[] = $sva_link_id;
                   }
                   else {
                     $sva_link .= '<div id="sva_' . $sva_nid . '_tooltip" class="tooltip-content">'
@@ -225,14 +226,13 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
 
   mica_datasets_prepare_prettify();
 
-  return '<div id=\'harmonization_overview_wrapper\'>' . $output . '</div>';
-}
+  $jquery_popover = '';
+  foreach ($popovers as $popover) {
+    $jquery_popover .= "jQuery('#$popover').popover({ html: true, placement: 'top', trigger: 'hover' }); ";
+  }
+  drupal_add_js("jQuery(function () { $jquery_popover });", 'inline');
 
-function _mica_datasets_harmonization_popover($link_id) {
-  drupal_add_js(
-    "jQuery(function () { jQuery('#$link_id').popover({ html: true, placement: 'top', trigger: 'hover' }) });",
-    'inline'
-  );
+  return '<div id=\'harmonization_overview_wrapper\'>' . $output . '</div>';
 }
 
 function mica_datasets_harmonization_legend_form($form, $form_state) {

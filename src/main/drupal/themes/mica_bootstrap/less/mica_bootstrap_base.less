@@ -16,10 +16,6 @@ h2, h3, h4 {
   small { font-size: @h4_font_size; }
 }
 
-a {
-  color: @a_font_color;
-}
-
 form {
   margin: 0;
 }
@@ -209,7 +205,12 @@ tr.drag-previous {
   background-color: @drag-previous-bkg-color;
 }
 
-.views-exposed-form .views-submit-button button {
-  margin-top: 25px !important;
+.views-exposed-form {
+  .views-submit-button button {
+    margin-top: 25px !important;
+  }
+  .views-operator {
+    margin-bottom: 10px;
+  }
 }
 

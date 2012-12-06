@@ -29,7 +29,7 @@ function mica_block_info() {
   $blocks['mica-search-filters'] = array(
     'info' => t('Search filters selection'),
     'status' => TRUE,
-    'region' => 'sidebar_first',
+    'region' => BLOCK_REGION_NONE,
     'visibility' => BLOCK_VISIBILITY_LISTED,
     'pages' => 'studies-search',
     'weight' => '1000',
