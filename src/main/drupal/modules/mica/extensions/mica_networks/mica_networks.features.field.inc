@@ -1531,6 +1531,7 @@ function mica_networks_field_default_fields() {
   t('Acronym of the network if applicable.');
   t('Authorising date');
   t('Authorization Maelstrom');
+  t('Authorization from contributors to the Maelstrom Catalogues');
   t('Body');
   t('Complete name');
   t('Contacts');

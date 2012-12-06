@@ -502,6 +502,10 @@ function mica_projects_field_default_fields() {
           'view' => 0,
           'view own' => 0,
         ),
+        'referenceable_tags' => array(
+          'allow' => '',
+          'deny' => '',
+        ),
         'referenceable_views' => array(
           'archive:block' => 0,
           'archive:page' => 0,
@@ -552,6 +556,8 @@ function mica_projects_field_default_fields() {
           'teleconferences:page' => 'teleconferences:page',
           'tracker:page' => 0,
         ),
+        'skip_default' => 1,
+        'skip_empty' => 0,
       ),
       'translatable' => '1',
       'type' => 'viewreference',

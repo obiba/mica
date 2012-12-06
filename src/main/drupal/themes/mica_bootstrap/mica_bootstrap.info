@@ -6,6 +6,7 @@ base theme  = bootstrap
 
 ; stylesheets are configured from template.php >> mica_bootstrap_css_alter()
 
+regions[navigation]     = 'Navigation'
 regions[header]         = 'Top Bar'
 regions[highlighted]    = 'Highlighted'
 regions[help]           = 'Help'
