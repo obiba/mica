@@ -242,7 +242,7 @@ projects[workbench_moderation][patch][1245590] = http://drupal.org/files/retaint
 
 projects[bootstrap][type] = theme
 projects[bootstrap][download][type] = git
-projects[bootstrap][download][revision] = 1a15c89
+projects[bootstrap][download][revision] = d0b917d
 projects[bootstrap][download][branch] = 7.x-2.x
 
 projects[corolla] = 3.0-rc1
