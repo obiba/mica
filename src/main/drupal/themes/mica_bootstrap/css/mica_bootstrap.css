@@ -9119,7 +9119,7 @@ tr.drag-previous {
 }
 
 #block-system-navigation ul.nav {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 #block-mica-powered-by-mica {
@@ -9171,16 +9171,12 @@ tr.drag-previous {
 }
 
 .facet-bar .block-current-search h3 {
+  display: inline;
   padding-left: 5px;
   margin: 0;
   font-size: 13px;
   font-weight: normal;
   line-height: 15px;
-}
-
-.facet-bar .block-current-search a.current-search-clear-all {
-  padding-left: 5px;
-  font-size: 13px;
 }
 
 .facet-bar .block-current-search h4.current-search-group-title {
@@ -9202,7 +9198,8 @@ tr.drag-previous {
 .facet-bar .block-facetapi h2 {
   padding: 2px 5px;
   margin: 0;
-  font-size: 13px;
+  font-size: 11px;
+  text-transform: uppercase;
   background-color: #F2F2F2;
 }
 
@@ -9221,6 +9218,10 @@ tr.drag-previous {
 
 .facet-bar .block-facetapi .block-content {
   padding: 3px 0;
+}
+
+.facet-bar .block-facetapi a.facetapi-limit-link {
+  margin-left: 10px;
 }
 
 .facet-bar .block-facetapi ul.facetapi-facetapi-checkbox-links {
@@ -9473,17 +9474,12 @@ body.page-variables-search .region-sidebar-first .block-current-search .block-co
 
 body.page-studies-search .region-sidebar-first .block-current-search h3,
 body.page-variables-search .region-sidebar-first .block-current-search h3 {
+  display: inline;
   padding-left: 5px;
   margin: 0;
   font-size: 13px;
   font-weight: normal;
   line-height: 15px;
-}
-
-body.page-studies-search .region-sidebar-first .block-current-search a.current-search-clear-all,
-body.page-variables-search .region-sidebar-first .block-current-search a.current-search-clear-all {
-  padding-left: 5px;
-  font-size: 13px;
 }
 
 body.page-studies-search .region-sidebar-first .block-current-search h4.current-search-group-title,
@@ -9509,7 +9505,8 @@ body.page-studies-search .region-sidebar-first .block-facetapi h2,
 body.page-variables-search .region-sidebar-first .block-facetapi h2 {
   padding: 2px 5px;
   margin: 0;
-  font-size: 13px;
+  font-size: 11px;
+  text-transform: uppercase;
   background-color: #F2F2F2;
 }
 
@@ -9532,6 +9529,11 @@ body.page-variables-search .region-sidebar-first .block-facetapi h2.collapsibloc
 body.page-studies-search .region-sidebar-first .block-facetapi .block-content,
 body.page-variables-search .region-sidebar-first .block-facetapi .block-content {
   padding: 3px 0;
+}
+
+body.page-studies-search .region-sidebar-first .block-facetapi a.facetapi-limit-link,
+body.page-variables-search .region-sidebar-first .block-facetapi a.facetapi-limit-link {
+  margin-left: 10px;
 }
 
 body.page-studies-search .region-sidebar-first .block-facetapi ul.facetapi-facetapi-checkbox-links,
@@ -9860,6 +9862,10 @@ body.page-variables-search .region-sidebar-first .search-api-ranges-widget butto
 
 #block-mica-mica-search-filters .advanced {
   font-size: 11.049999999999999px;
+}
+
+.view-studies-search table {
+  margin-top: 5px;
 }
 
 .pane-dataset-studies h2 {

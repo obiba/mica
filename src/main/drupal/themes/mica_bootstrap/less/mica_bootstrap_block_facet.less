@@ -25,11 +25,7 @@
       line-height: @facet_line_height;
       font-weight: normal;
       padding-left: @current-search-padding-left;
-    }
-
-    a.current-search-clear-all {
-      padding-left: @current-search-padding-left;
-      font-size: @baseFontSize;
+      display: inline;
     }
 
     h4.current-search-group-title {
@@ -53,7 +49,8 @@
   .block-facetapi {
 
     h2 {
-      font-size: @baseFontSize;
+      font-size: @facet_font_size;
+      text-transform: uppercase;
       margin: 0;
       padding: 2px 5px;
       background-color: #F2F2F2;
@@ -73,6 +70,10 @@
 
     .block-content {
       padding: 3px 0;
+    }
+
+    a.facetapi-limit-link {
+      margin-left: 10px;
     }
 
     ul.facetapi-facetapi-checkbox-links {

@@ -60,7 +60,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_access_description|node|study|default'] = $field_group;
@@ -94,7 +94,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_access_description|node|study|footer_area'] = $field_group;
@@ -123,7 +123,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_access_description|node|study|left_area'] = $field_group;
@@ -157,7 +157,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_access_description|node|study|right_area'] = $field_group;
@@ -187,7 +187,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => 'Access to external researchers or third parties provided or foreseen for',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_access|node|study|center_area'] = $field_group;
@@ -349,7 +349,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -374,7 +374,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -399,7 +399,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -424,7 +424,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -455,7 +455,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorising_person_m|node|study|center_area'] = $field_group;
@@ -481,7 +481,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorising_person_m|node|study|default'] = $field_group;
@@ -507,7 +507,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorising_person_m|node|study|footer_area'] = $field_group;
@@ -533,7 +533,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorising_person_m|node|study|form'] = $field_group;
@@ -559,7 +559,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorising_person_m|node|study|left_area'] = $field_group;
@@ -585,7 +585,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorising_person_m|node|study|right_area'] = $field_group;
@@ -680,7 +680,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorising_person|node|study|form'] = $field_group;
@@ -757,7 +757,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorization_maelstrom|node|study|center_area'] = $field_group;
@@ -790,7 +790,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorization_maelstrom|node|study|default'] = $field_group;
@@ -821,7 +821,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorization_maelstrom|node|study|footer_area'] = $field_group;
@@ -852,7 +852,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => 'I agree and understand that the information collected in this form will be displayed on the Maelstrom Research website upon reception in agreement with “Authorization from contributors to the Maelstrom Research Catalogues” (Document available on Maelstrom Research Web page or at: …).',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorization_maelstrom|node|study|form'] = $field_group;
@@ -907,7 +907,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorization_maelstrom|node|study|right_area'] = $field_group;
@@ -940,7 +940,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorization_specific|node|study|center_area'] = $field_group;
@@ -973,7 +973,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorization_specific|node|study|default'] = $field_group;
@@ -1004,7 +1004,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorization_specific|node|study|footer_area'] = $field_group;
@@ -1035,7 +1035,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => 'I agree and understand that the information collected in this form will be displayed on the [SPECIFIC NETWORK] website upon reception.',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorization_specific|node|study|form'] = $field_group;
@@ -1090,7 +1090,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_authorization_specific|node|study|right_area'] = $field_group;
@@ -1117,7 +1117,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -1148,7 +1148,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -1270,7 +1270,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -1323,7 +1323,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -1354,7 +1354,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -1385,7 +1385,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -1422,7 +1422,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_baseline_phase|node|study|form'] = $field_group;
@@ -1442,7 +1442,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -1473,7 +1473,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -1501,7 +1501,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -1526,7 +1526,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -1551,7 +1551,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -1579,7 +1579,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -1604,7 +1604,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -1629,7 +1629,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -1657,7 +1657,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -1685,7 +1685,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -1717,7 +1717,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -1742,7 +1742,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -1770,7 +1770,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -1798,7 +1798,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -1826,7 +1826,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -1858,7 +1858,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -1883,7 +1883,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -1920,7 +1920,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_current_status|node|study|center_area'] = $field_group;
@@ -1949,7 +1949,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_current_status|node|study|default'] = $field_group;
@@ -1978,7 +1978,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_current_status|node|study|footer_area'] = $field_group;
@@ -2010,7 +2010,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => 'What are the stages and timelines of the study?',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_current_status|node|study|form'] = $field_group;
@@ -2039,7 +2039,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_current_status|node|study|left_area'] = $field_group;
@@ -2068,7 +2068,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_current_status|node|study|right_area'] = $field_group;
@@ -2100,7 +2100,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_data_collection|node|study|center_area'] = $field_group;
@@ -2132,7 +2132,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_data_collection|node|study|default'] = $field_group;
@@ -2164,7 +2164,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_data_collection|node|study|footer_area'] = $field_group;
@@ -2193,7 +2193,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_data_collection|node|study|form'] = $field_group;
@@ -2216,7 +2216,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -2252,7 +2252,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_data_collection|node|study|right_area'] = $field_group;
@@ -2274,7 +2274,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -2427,7 +2427,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -2457,7 +2457,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -2487,7 +2487,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -2523,7 +2523,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_ended_phase|node|study|form'] = $field_group;
@@ -2543,7 +2543,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -2573,7 +2573,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -2601,7 +2601,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -2626,7 +2626,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -2651,7 +2651,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -2676,7 +2676,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -2725,7 +2725,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -2756,7 +2756,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -2793,7 +2793,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_followup_phase|node|study|form'] = $field_group;
@@ -2813,7 +2813,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -2844,7 +2844,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -2893,7 +2893,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_general_design|node|study|center_area'] = $field_group;
@@ -2934,7 +2934,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_general_design|node|study|default'] = $field_group;
@@ -2986,7 +2986,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_general_design|node|study|footer_area'] = $field_group;
@@ -3012,7 +3012,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -3049,7 +3049,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -3105,7 +3105,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_general_design|node|study|right_area'] = $field_group;
@@ -3132,7 +3132,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -3184,7 +3184,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'classes' => '',
         'required_fields' => 1,
@@ -3215,7 +3215,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'classes' => '',
         'required_fields' => 1,
@@ -3300,7 +3300,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'classes' => '',
         'required_fields' => 1,
@@ -3324,7 +3324,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -3349,7 +3349,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -3374,7 +3374,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -3399,7 +3399,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -3431,7 +3431,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -3464,7 +3464,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -3492,7 +3492,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -3553,7 +3553,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -3613,7 +3613,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -3669,7 +3669,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -4147,7 +4147,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_participants_selection|node|study|center_area'] = $field_group;
@@ -4191,7 +4191,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_participants_selection|node|study|default'] = $field_group;
@@ -4240,7 +4240,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_participants_selection|node|study|footer_area'] = $field_group;
@@ -4269,7 +4269,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_participants_selection|node|study|form'] = $field_group;
@@ -4318,7 +4318,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_participants_selection|node|study|right_area'] = $field_group;
@@ -4348,7 +4348,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -4372,7 +4372,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -4403,7 +4403,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -4434,7 +4434,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -4471,7 +4471,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_preparation_phase|node|study|form'] = $field_group;
@@ -4491,7 +4491,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -4522,7 +4522,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -4559,7 +4559,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_recruitment_procedures|node|study|center_area'] = $field_group;
@@ -4588,7 +4588,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_recruitment_procedures|node|study|default'] = $field_group;
@@ -4617,7 +4617,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_recruitment_procedures|node|study|footer_area'] = $field_group;
@@ -4641,7 +4641,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -4708,7 +4708,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_recruitment_procedures|node|study|right_area'] = $field_group;
@@ -4741,7 +4741,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_sample_management|node|study|center_area'] = $field_group;
@@ -4774,7 +4774,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_sample_management|node|study|default'] = $field_group;
@@ -4807,7 +4807,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_sample_management|node|study|footer_area'] = $field_group;
@@ -4837,7 +4837,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_sample_management|node|study|form'] = $field_group;
@@ -4861,7 +4861,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -4898,7 +4898,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_sample_management|node|study|right_area'] = $field_group;
@@ -4918,7 +4918,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -4946,7 +4946,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -4974,7 +4974,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -5012,7 +5012,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -5057,7 +5057,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_selection_criteria|node|study|left_area'] = $field_group;
@@ -5077,7 +5077,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -5105,7 +5105,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -5133,7 +5133,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -5161,7 +5161,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -5189,7 +5189,7 @@ function mica_studies_field_group_info() {
     'children' => array(),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -5232,7 +5232,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -5441,7 +5441,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_study_design|node|study|center_area'] = $field_group;
@@ -5470,7 +5470,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_study_design|node|study|default'] = $field_group;
@@ -5499,7 +5499,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_study_design|node|study|footer_area'] = $field_group;
@@ -5525,7 +5525,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -5559,7 +5559,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_study_design|node|study|right_area'] = $field_group;
@@ -5588,7 +5588,7 @@ function mica_studies_field_group_info() {
         'classes' => '',
         'description' => 'What is the complete name of the study?',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_study_name|node|study|form'] = $field_group;
@@ -5610,7 +5610,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -5663,7 +5663,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'hidden',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'show_label' => 1,
@@ -5912,7 +5912,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_target_nb_participants|node|study|center_area'] = $field_group;
@@ -5941,7 +5941,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_target_nb_participants|node|study|default'] = $field_group;
@@ -5970,7 +5970,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_target_nb_participants|node|study|footer_area'] = $field_group;
@@ -5994,7 +5994,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -6028,7 +6028,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_target_nb_participants|node|study|right_area'] = $field_group;
@@ -6057,7 +6057,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_target_nb_samples|node|study|center_area'] = $field_group;
@@ -6086,7 +6086,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_target_nb_samples|node|study|default'] = $field_group;
@@ -6115,7 +6115,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_target_nb_samples|node|study|footer_area'] = $field_group;
@@ -6139,7 +6139,7 @@ function mica_studies_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
@@ -6173,7 +6173,7 @@ function mica_studies_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_target_nb_samples|node|study|right_area'] = $field_group;
