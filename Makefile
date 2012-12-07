@@ -8,6 +8,8 @@ dist_version=7.0-dev
 drupal_version=7.x
 branch=$(drupal_version)-6.x
 
+bootstrap_version=2.2.1
+
 #
 # Mica versions
 #
@@ -188,11 +190,6 @@ set-distribution-version:
 	cd src/main/drupal/profiles/mica_distribution && \
 	sed -i 's/^projects\[mica\].*$$/projects[mica] = $(version)/' drupal-org.make && \
 	sed -i 's/^projects\[mica_distribution\]\[version\].*$$/projects[mica_distribution][version] = $(dist_version)/' build-mica_distribution.make
-
-compile-less:
-	recess --compile src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap.less > src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap.css && \
-	recess --compile src/main/drupal/modules/mica/extensions/mica_studies/less/mica_studies.less > src/main/drupal/modules/mica/extensions/mica_studies/css/mica_studies.css && \
-	recess --compile src/main/drupal/modules/mica/extensions/mica_datasets/less/mica_datasets.less > src/main/drupal/modules/mica/extensions/mica_datasets/css/mica_datasets.css
 
 #
 # Build from continuous integration
@@ -377,6 +374,21 @@ git-push-mica-dist: clear-version-info set-distribution-version
 #
 # Bootstrap related stuff
 #
+compile-less: download-bootstrap-less
+	recess --compile src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap.less > src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap.css && \
+	recess --compile src/main/drupal/modules/mica/extensions/mica_studies/less/mica_studies.less > src/main/drupal/modules/mica/extensions/mica_studies/css/mica_studies.css && \
+	recess --compile src/main/drupal/modules/mica/extensions/mica_datasets/less/mica_datasets.less > src/main/drupal/modules/mica/extensions/mica_datasets/css/mica_datasets.css
+
+download-bootstrap-less:
+	mkdir -p target/bootstrap && \
+	cd target/bootstrap && \
+	wget -nc http://github.com/twitter/bootstrap/archive/v$(bootstrap_version).tar.gz && \
+	if [ ! -e bootstrap-$(bootstrap_version) ]; then \
+		tar -zxf v$(bootstrap_version).tar.gz && \
+		mkdir -p ../../src/main/drupal/themes/mica_bootstrap/less/bootstrap && \
+		cp -r bootstrap-$(bootstrap_version)/less/* ../../src/main/drupal/themes/mica_bootstrap/less/bootstrap ; \
+	fi
+
 install-nodejs:
 	apt-get install g++ curl libssl-dev apache2-utils && \
 	mkdir target/nodejs && \
@@ -390,8 +402,8 @@ install-nodejs:
 
 install-bootstrap-dependencies:
 	npm install recess connect uglify-js@1 jshint -g
-	
 
+	
 #
 # Functions
 #
@@ -440,3 +452,4 @@ git-finish = rm `find . -type f -name LICENSE.txt` && \
 	git commit -m "$$git_commit_msg" && \
 	git push origin && \
 	cd ../../..
+
