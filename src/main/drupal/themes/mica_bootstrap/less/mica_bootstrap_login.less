@@ -1,0 +1,36 @@
+#navbar {
+
+  .embedded-form {
+    padding: 15px;
+
+    form {
+      font-size: @baseFontSize;
+      .help-block {
+        font-size: 85%; // copied from bootstrap small
+      }
+
+      button.form-submit {
+        .btn;
+        .btn-primary;
+      }
+    }
+  }
+
+  .alert {
+    font-size: @baseFontSize;
+    ul {
+      margin-left: 10px;
+      a {
+        padding: 0;
+        color: @linkColor;
+
+        &:hover {
+          background: inherit;
+          color: @linkColorHover;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+}

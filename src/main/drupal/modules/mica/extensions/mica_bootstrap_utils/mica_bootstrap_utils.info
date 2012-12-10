@@ -1,0 +1,7 @@
+name = Mica Bootstrap Utils
+description = Mica Bootstrap Theme Utilities
+core = 7.x
+package = Mica
+php = 5.2.4
+
+dependencies[] = logintoboggan

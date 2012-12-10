@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function mica_bootstrap_utils_block_info() {
+  $blocks = array();
+  $blocks['bootstrap-login'] = array(
+    'info' => t('Bootstrap Login/Register Menu'),
+    'status' => TRUE,
+    'region' => 'navigation',
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'pages' => '',
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ *
+ */
+function mica_bootstrap_utils_block_view($delta = '') {
+  switch ($delta) {
+    case 'bootstrap-login':
+      return _mica_bootstrap_utils_login_block_view();
+  }
+  return NULL;
+}
+
+function _mica_bootstrap_utils_login_block_view() {
+
+  $content = '<ul class="nav pull-right">';
+  $content .= '<li class="dropdown">';
+  $content .= '<a class="dropdown-toggle" href="#" data-toggle="dropdown">' . t('Sign in') . ' <strong class="caret"></strong></a>';
+  $content .= '<div class="dropdown-menu embedded-form">' . drupal_render(drupal_get_form('user_login')) . '</div>';
+  $content .= '</li>';
+
+  if (variable_get('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)) {
+    $content .= '<li class="divider-vertical"></li>';
+    $content .= '<li class="dropdown">';
+    $content .= '<a class="dropdown-toggle" href="#" data-toggle="dropdown">' . t('Register') . ' <strong class="caret"></strong></a>';
+    $content .= '<div class="dropdown-menu embedded-form">' . drupal_render(drupal_get_form('user_register_form')) . '</div>';
+    $content .= '</li>';
+  }
+  $content .= '</ul>';
+
+  return array(
+    'subject' => NULL,
+    'content' => $content,
+  );
+}
