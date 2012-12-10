@@ -403,7 +403,6 @@ install-nodejs:
 install-bootstrap-dependencies:
 	npm install recess connect uglify-js@1 jshint -g
 
-	
 #
 # Functions
 #

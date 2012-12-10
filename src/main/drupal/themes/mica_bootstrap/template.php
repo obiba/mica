@@ -27,3 +27,17 @@ function mica_bootstrap_css_alter(&$css) {
   unset($css[$bootstrap_theme . '/bootstrap/css/bootstrap-responsive.css']);
 }
 
+function mica_bootstrap_menu_tree__user_menu($variables) {
+  return '<div id="user-menu" class="pull-right btn-group">'
+    . '<a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">' . t('User menu') . ' <span class="caret"></span></a>'
+    . '<ul class="dropdown-menu">' . $variables['tree'] . '</ul></div>';
+}
+
+function mica_bootstrap_menu_tree__login($variables) {
+
+  dvm($variables);
+
+  return '<div id="user-menu" class="pull-right btn-group">'
+    . '<a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">' . t('User menu') . ' <span class="caret"></span></a>'
+    . '<ul class="dropdown-menu">' . $variables['tree'] . '</ul></div>';
+}
