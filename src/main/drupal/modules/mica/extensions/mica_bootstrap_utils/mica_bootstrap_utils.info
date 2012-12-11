@@ -5,3 +5,8 @@ package = Mica
 php = 5.2.4
 
 dependencies[] = logintoboggan
+dependencies[] = ctools
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:1
+features[variable][] = theme_mica_bootstrap_settings

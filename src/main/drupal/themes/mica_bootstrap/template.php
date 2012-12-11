@@ -1,5 +1,6 @@
 <?php
 
+
 /**
  * Implements hook_bootstrap_based_theme().
  */

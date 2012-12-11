@@ -326,6 +326,7 @@ function _mica_distribution_default_block($mica_theme = 'mica_bootstrap', $admin
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
       'cache' => -1,
+      'title' => '<none>',
     ),
     array(
       'module' => 'system',
@@ -337,7 +338,19 @@ function _mica_distribution_default_block($mica_theme = 'mica_bootstrap', $admin
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
       'cache' => -1,
+      'title' => '<none>',
     ),
+//    array(
+//      'module' => 'mica_bootstrap_utils',
+//      'delta' => 'bootstrap-login',
+//      'theme' => $mica_theme,
+//      'status' => 1,
+//      'weight' => 5,
+//      'region' => 'navigation',
+//      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+//      'pages' => '',
+//      'cache' => -1,
+//    ),
   );
   $query = db_insert('block')->fields(array(
     'module',
