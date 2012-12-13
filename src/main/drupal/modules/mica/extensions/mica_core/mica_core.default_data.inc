@@ -5,7 +5,6 @@
  * Mica default data
  */
 
-
 /**
  * Copied from profile standard_install.install
  */
@@ -50,11 +49,6 @@ function _mica_core_default_text_formats() {
         'weight' => 0,
         'status' => 1,
       ),
-      // Line break filter.
-      'filter_autop' => array(
-        'weight' => 1,
-        'status' => 1,
-      ),
       // HTML corrector filter.
       'filter_htmlcorrector' => array(
         'weight' => 10,
@@ -70,7 +64,6 @@ function _mica_core_default_text_formats() {
     'full_html' => $full_html_format,
   );
 }
-
 
 /**
  * Insert default pre-defined node types into the database. For a complete
@@ -186,7 +179,6 @@ function _mica_core_default_content_types() {
   );
   field_create_instance($instance);
 
-
   // Create an image field named "Image", enabled for the 'article' content type.
   // Many of the following values will be defaulted, they're included here as an illustrative examples.
   // See http://api.drupal.org/api/function/field_create_field/7
@@ -208,7 +200,6 @@ function _mica_core_default_content_types() {
   );
   field_create_field($field);
 
-
   // Many of the following values will be defaulted, they're included here as an illustrative examples.
   // See http://api.drupal.org/api/function/field_create_instance/7
   $instance = array(
@@ -218,7 +209,6 @@ function _mica_core_default_content_types() {
     'bundle' => 'article',
     'description' => st('Upload an image to go with this article.'),
     'required' => FALSE,
-
     'settings' => array(
       'file_directory' => 'field/image',
       'file_extensions' => 'png gif jpg jpeg',
@@ -228,7 +218,6 @@ function _mica_core_default_content_types() {
       'alt_field' => TRUE,
       'title_field' => '',
     ),
-
     'widget' => array(
       'type' => 'image_image',
       'settings' => array(
@@ -237,7 +226,6 @@ function _mica_core_default_content_types() {
       ),
       'weight' => -1,
     ),
-
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -255,7 +243,6 @@ function _mica_core_default_content_types() {
   );
   field_create_instance($instance);
 }
-
 
 function _mica_core_default_variables() { // Default "Basic page" to not be promoted and have comments disabled.
   variable_set('node_options_page', array('status'));
@@ -314,15 +301,7 @@ function _mica_core_default_admin_theme() { // Enable the admin theme.
 
 function _mica_core_default_pages() {
 
-  $ABOUT_AND_HOME_TEXT = st('Welcome to Mica, a powerful software application used to create web portals for epidemiological study consortia.
-
-Using Mica, consortia can build personalized web sites for publishing their research activities and their membership. Mica includes many domain-specific features such as study catalogues, data dictionary browsers, on-line data access request forms, community tools (forums, events, news) and others. Moreover, Mica includes a powerful data search engine that allows authenticated researchers to perform distributed queries on the content of each individual study data collection hosted by the OBiBa Opal database software (www.obiba.org).
-
-Mica is based on the content management software Drupal (www.drupal.org) used by millions of websites worldwide. As such, a webmaster benefits from all the power and flexibility of Drupal, as well as the support of an extended developer community.
-
-Installing a site with Mica demo profile will help to illustrate its functionalities. This may serve as a good starting point for customizing your web portal.');
-
-  mica_core_add_page(st('Home'), $ABOUT_AND_HOME_TEXT, 'home');
+  mica_core_add_page(st('Mica'), st(file_get_contents('data/home.html')), 'home');
   mica_core_create_menu(st('Home'), '<front>', '', FALSE, FALSE, 0);
   variable_set('site_frontpage', 'home');
 

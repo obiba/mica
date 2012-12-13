@@ -1,0 +1,82 @@
+#home-page {
+
+  .home-images {
+
+    margin-top: 40px;
+
+    .thumbnail {
+      border: 0 none;
+      border-radius: 0 0 0 0;
+      box-shadow: none;
+      color: #3A3A3A;
+      padding: 0;
+      position: relative;
+
+      .image {
+        background-color: #ECECEC;
+        height: 160px;
+
+        &:before {
+          content: "";
+          display: block;
+          height: 112px;
+          margin: 0 auto;
+          position: relative;
+          top: 25px;
+          width: 112px;
+        }
+      }
+
+      h3 {
+        text-align: center;
+      }
+
+      .details {
+        border-top: 5px solid @linkColor;
+        position: relative;
+      }
+
+      .how-it-works:before,
+      .resources:before,
+      .events:before,
+      .blog:before {
+        background: url("../img/home.png") no-repeat scroll 0 0 transparent;
+      }
+
+      .how-it-works:before {
+        background-position: 0 0;
+      }
+      .resources:before {
+        background-position: 0 -336px;
+      }
+      .events:before {
+        background-position: 0 -112px;
+      }
+      .blog:before {
+        background-position: 0 -224px;
+      }
+
+      .how-it-works:before {
+        background-position: 0 0;
+      }
+
+    }
+
+    a.thumbnail:hover {
+      border: 0 none;
+      border-radius: 0 0 0 0;
+      box-shadow: none;
+      color: @linkColor;
+      text-decoration: none;
+
+      & .hidden-phone {
+        background-color: #E4E4E4;
+      }
+    }
+  }
+
+  .home-text {
+    margin-top: 30px;
+  }
+
+}
