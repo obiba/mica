@@ -113,8 +113,6 @@ projects[image_url_formatter] = 1.0
 
 projects[imce] = 1.6
 
-projects[itweak_login] = 1.0
-
 projects[job_scheduler] = 2.0-alpha3
 
 projects[jquery_update][type] = module
