@@ -9897,6 +9897,26 @@ body.page-variables-search .region-sidebar-first .search-api-ranges-widget butto
   margin-left: 20px;
 }
 
+.block-mica-dimensions-coverage h2 {
+  padding: 2px 0;
+  margin: 0;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.block-mica-dimensions-coverage h2 a {
+  padding-left: 12px;
+  color: #495961;
+}
+
+.block-mica-dimensions-coverage h2.collapsiblock a {
+  background: url('../img/expanded.png') no-repeat scroll left center transparent;
+}
+
+.block-mica-dimensions-coverage h2.collapsiblockCollapsed a {
+  background: url('../img/collapsed.png') no-repeat scroll left center transparent;
+}
+
 #forum table {
   width: 100%;
 }
