@@ -24,8 +24,12 @@ function mica_bootstrap_css_alter(&$css) {
   unset($css[$key]);
   $css[$file['data']] = $file;
 
-  // remove responsive css as it is compiled to mica_bootstrap.css
-  unset($css[$bootstrap_theme . '/bootstrap/css/bootstrap-responsive.css']);
+  $key = $bootstrap_theme . '/bootstrap/css/bootstrap-responsive.css';
+  $file = $css[$key];
+  $file['data'] = drupal_get_path('theme', 'mica_bootstrap') . '/less/mica_bootstrap_responsive.less';
+  $file['weight'] = 1001; // set it after mica_bootstrap.css
+  unset($css[$key]);
+  $css[$file['data']] = $file;
 }
 
 function mica_bootstrap_menu_tree__user_menu($variables) {

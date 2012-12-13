@@ -32,7 +32,7 @@ projects[cck_select_other] = 1.0
 
 projects[chain_menu_access] = 1.0
 
-projects[ckeditor] = 1.9
+projects[ckeditor] = 1.11
 
 projects[collapsiblock][download][type] = git
 projects[collapsiblock][download][revision] = 36f4280
@@ -203,7 +203,7 @@ projects[smtp] = 1.0-beta2
 projects[strongarm][version] = 2.0
 projects[strongarm][patch][1525768] = http://drupal.org/files/print_stdclass_variables.patch
 
-projects[superfish] = 1.9-beta4
+projects[superfish] = 1.9-beta5
 
 projects[taxonomy_csv] = 5.10
 
