@@ -51,3 +51,46 @@ function _mica_bootstrap_utils_login_block_view() {
     'content' => $content,
   );
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function mica_bootstrap_utils_form_alter(&$form, &$form_state, $form_id) {
+
+  switch ($form_id) {
+    case 'user_login':
+    case 'user_register_form':
+
+      // Add ajax wrapper to form.
+      $html_id = str_replace('_', '-', $form_id);
+      $form['#prefix'] = '<div id="ajax-' . $html_id . '-wrapper">';
+      $form['#suffix'] = '</div>';
+
+      // Add ajax functionality to form submit button.
+      $form['actions']['submit']['#ajax'] = array(
+        'callback' => '_mica_bootstrap_utils_ajax_callback',
+        'wrapper' => 'ajax-' . $html_id . '-wrapper',
+        'event' => 'click',
+      );
+  }
+}
+
+function _mica_bootstrap_utils_ajax_callback($form, $form_state) {
+  ctools_include('ajax');
+  ctools_add_js('ajax-responder');
+
+  if (form_get_errors()) {
+    return $form; // Reload form if it didn't pass validation.
+  }
+
+  if ($form['#id'] === 'user-login') {
+    drupal_set_message(check_plain('Successful login'));
+  }
+
+  $commands = array();
+  $commands[] = ctools_ajax_command_redirect('<front>');
+  return array(
+    '#type' => 'ajax',
+    '#commands' => $commands
+  );
+}

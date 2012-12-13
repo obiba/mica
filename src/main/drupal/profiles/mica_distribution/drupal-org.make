@@ -11,9 +11,6 @@ projects[acl] = 1.0
 
 projects[adaptivetheme] = 3.1
 
-projects[ajax_register][version] = 4.0-rc10
-projects[ajax_register][patch][1646106] = http://drupal.org/files/submit_on_enter_key-1646106-6.patch
-
 projects[auto_entitylabel][download][type] = git
 projects[auto_entitylabel][download][revision] = 218ba66
 projects[auto_entitylabel][download][branch] = 7.x-1.x
