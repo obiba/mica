@@ -1189,7 +1189,7 @@ function mica_datasets_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Manage Variable Dimensions';
+  $handler->display->display_options['title'] = 'Manage Variable Domains';
   $handler->display->display_options['css_class'] = 'table-striped';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
@@ -1262,7 +1262,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['label'] = 'Assign dimensions';
+  $handler->display->display_options['fields']['views_bulk_operations']['label'] = 'Assign domains';
   $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '1';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
@@ -1315,7 +1315,7 @@ function mica_datasets_views_default_views() {
       'selected' => 1,
       'skip_confirmation' => 1,
       'override_label' => 1,
-      'label' => 'Add dimensions',
+      'label' => 'Add domains',
       'settings' => array(
         'show_all_tokens' => 0,
         'display_values' => array(
@@ -1625,7 +1625,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = 'Dimensions';
+  $handler->display->display_options['fields']['nothing']['label'] = 'Domains';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_anthropometric_structures][field_body_functions][field_body_structures][field_medical_health_interv][field_medication][field_data_source][field_disease_history][field_individual_participant_mea][field_laboratory_measures][field_life_habits_behaviours][field_early_life][field_perception_of_health][field_period][field_physical_environment][field_reproductive_history][field_social_environment][field_sociodemographic_charact][field_measure][field_essence][field_target]';
   $handler->display->display_options['fields']['nothing']['alter']['max_length'] = '400';
   $handler->display->display_options['fields']['nothing']['alter']['more_link_text'] = 'more';
@@ -1689,7 +1689,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['path'] = 'variables-dimensions';
 
   /* Display: Variable Dimensions XLS */
-  $handler = $view->new_display('views_data_export', 'Variable Dimensions XLS', 'views_data_export_2');
+  $handler = $view->new_display('views_data_export', 'Variable Domains XLS', 'views_data_export_2');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -1703,7 +1703,7 @@ function mica_datasets_views_default_views() {
   );
 
   /* Display: Variables Dimensions CSV */
-  $handler = $view->new_display('views_data_export', 'Variables Dimensions CSV', 'views_data_export_1');
+  $handler = $view->new_display('views_data_export', 'Variables Domains CSV', 'views_data_export_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -1918,7 +1918,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = 'Dimensions';
+  $handler->display->display_options['fields']['nothing']['label'] = 'Domains';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_anthropometric_structures][field_body_functions][field_body_structures][field_medical_health_interv][field_medication][field_data_source][field_disease_history][field_individual_participant_mea][field_laboratory_measures][field_life_habits_behaviours][field_early_life][field_perception_of_health][field_period][field_physical_environment][field_reproductive_history][field_social_environment][field_sociodemographic_charact][field_measure][field_essence][field_target]';
   $handler->display->display_options['fields']['nothing']['alter']['max_length'] = '400';
   $handler->display->display_options['fields']['nothing']['alter']['more_link_text'] = 'more';

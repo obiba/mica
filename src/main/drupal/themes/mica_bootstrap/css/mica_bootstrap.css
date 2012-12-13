@@ -9112,6 +9112,26 @@ tr.drag-previous {
   margin-bottom: 10px;
 }
 
+/* Export icons */
+
+.views-data-export-csv-attach,
+.views-data-export-xls-attach {
+  display: inline-block;
+  width: 34px;
+  height: 24px;
+  text-indent: -1000px;
+  background-repeat: no-repeat;
+  outline: none;
+}
+
+.views-data-export-csv-attach {
+  background-image: url("../img/csv.png");
+}
+
+.views-data-export-xls-attach {
+  background-image: url("../img/xls.png");
+}
+
 #block-system-navigation h2 {
   margin-bottom: 0;
   font-size: 16.25px;

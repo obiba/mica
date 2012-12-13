@@ -243,7 +243,7 @@ function mica_datasets_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = 'group_tabs';
   $field_group->data = array(
-    'label' => 'Dimensions',
+    'label' => 'Domains',
     'weight' => '2',
     'children' => array(
       0 => 'field_anthropometric_structures',
@@ -269,7 +269,7 @@ function mica_datasets_field_group_info() {
     ),
     'format_type' => 'htab',
     'format_settings' => array(
-      'label' => 'Dimensions',
+      'label' => 'Domains',
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
@@ -290,7 +290,7 @@ function mica_datasets_field_group_info() {
   $field_group->mode = 'right_area';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Dimensions',
+    'label' => 'Domains',
     'weight' => '0',
     'children' => array(
       0 => 'field_anthropometric_structures',

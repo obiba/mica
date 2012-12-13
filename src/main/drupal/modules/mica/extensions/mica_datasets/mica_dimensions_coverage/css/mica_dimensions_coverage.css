@@ -14,3 +14,13 @@ table.dataset_crosstab{
 div.block-mica-datasets-crosstab{
   margin: 0px;
 }
+
+
+body.page-studies-search .region-sidebar-first .block-facetapi h2.collapsiblock a, body.page-variables-search .region-sidebar-first .block-facetapi h2.collapsiblock a {
+  background: url(/profiles/mica_distribution/themes/maelstrom_bootstrap/img/expanded.png) no-repeat scroll left center transparent;
+}
+studies-searchmedia="all"
+body.page-studies-search .region-sidebar-first .block-facetapi h2 a, body.page-variables-search .region-sidebar-first .block-facetapi h2 a {
+  padding-left: 12px;
+  color: #495961;
+}

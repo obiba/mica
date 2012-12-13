@@ -8,3 +8,24 @@
     margin-left: @items_margin_left;
   }
 }
+
+.block-mica-dimensions-coverage{
+  h2 {
+    font-size: @baseFontSize;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 2px 0px;
+
+    a {
+      padding-left: 12px;
+      color: @textColor;
+    }
+
+    &.collapsiblock a {
+      background: url('../img/expanded.png') no-repeat scroll left center transparent;
+    }
+    &.collapsiblockCollapsed a {
+      background: url('../img/collapsed.png') no-repeat scroll left center transparent;
+    }
+  }
+}

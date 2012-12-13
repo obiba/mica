@@ -41,7 +41,7 @@ function mica_field_description_install() {
  */
 function mica_field_description_update_7120() {
 
-  watchdog('mica', 'Import dataschema dimensions', array(), WATCHDOG_INFO);
+  watchdog('mica', 'Import dataschema domains', array(), WATCHDOG_INFO);
 
   db_update('field_data_field_value_type')
     ->fields(array('field_value_type_value' => 'text'))

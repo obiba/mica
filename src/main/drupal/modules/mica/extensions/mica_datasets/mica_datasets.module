@@ -255,7 +255,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
             '#theme' => 'menu_local_action',
             '#weight' => 45,
             '#link' => array(
-              'title' => t('Add dimensions'),
+              'title' => t('Add domains'),
               'href' => 'variables-dimensions/' . $node->nid,
               'localized_options' => array(
                 'query' => array(
