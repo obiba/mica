@@ -124,8 +124,9 @@ function mica_dimensions_coverage_datasets() {
 
       $keys = array_keys($entities['node']);
       foreach ($keys as $dataset_id) {
+        // Check if the dataset has variable with dimensions
         // Filter permissions
-        if (_mica_datasets_node_access($dataset_id, 'dataset', 'view')){
+        if (_mica_datasets_node_access($dataset_id, 'dataset', 'view') && count(mica_dataset_dataset_variables($dataset_id)) > 0){
           $node = node_load($dataset_id);
           $data['header'][$dataset_id] = array(
             'data' => array(
