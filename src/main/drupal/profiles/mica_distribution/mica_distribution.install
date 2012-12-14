@@ -212,7 +212,7 @@ function _mica_distribution_default_block($mica_theme = 'mica_bootstrap', $admin
       'theme' => $mica_theme,
       'status' => 1,
       'weight' => 10,
-      'region' => 'sidebar_first',
+      'region' => 'content',
       'visibility' => BLOCK_VISIBILITY_LISTED,
       'pages' => '<front>',
       'cache' => -1,
@@ -328,7 +328,7 @@ function _mica_distribution_default_block($mica_theme = 'mica_bootstrap', $admin
       'cache' => -1,
     ),
     array(
-      'module' => 'mica_bootstrap_utils',
+      'module' => 'mica_bootstrap_config',
       'delta' => 'bootstrap-login',
       'theme' => $mica_theme,
       'status' => 1,
