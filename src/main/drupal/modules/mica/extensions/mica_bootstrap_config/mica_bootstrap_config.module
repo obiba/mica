@@ -31,6 +31,8 @@ function mica_bootstrap_config_block_view($delta = '') {
 
 function _mica_bootstrap_config_login_block_view() {
 
+  ctools_add_js('mica_bootstrap_config.login', 'mica_bootstrap_config');
+
   $content = '<ul class="nav pull-right">';
   $content .= '<li class="dropdown">';
   $content .= '<a class="dropdown-toggle" href="#" data-toggle="dropdown">' . t('Sign in') . ' <strong class="caret"></strong></a>';
