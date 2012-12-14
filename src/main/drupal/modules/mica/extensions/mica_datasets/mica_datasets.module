@@ -35,19 +35,8 @@ function mica_datasets_features_rebuild_completed() {
 function _mica_datasets_create_default_content() {
   $resource_menu = mica_core_find_menu_for_alias('resources');
   $datasets_menu = mica_core_create_menu(st('Datasets'), '<firstchild>', '<firstchild>', FALSE, TRUE, 0, NULL, $resource_menu->mlid);
-
-  $page = mica_core_add_page(
-    st("Introduction"),
-    st(
-      "The consortium makes study-specific datasets and harmonized datasets available to the research community. Each dataset is described by a comprehensive data dictionary which gives details on each available variable.<br/>Moreover, Mica includes for  studies using the OBiBa Opal software as main database solution, a distributed query engine that enables researchers to obtain real-time aggregated reports on the exact number of participant with specific characteristics or phenotypes. Mica makes even possible to run remotely some regression analyses on the real study data using the DataSHIELD method (Wolfson M et al. <i>Int J Epidemiol</i>. 2010) which is implemented both in Mica and Opal. More information on the OBiBa suite of software is available at <a href=\"http://www.obiba.org\">www.obiba.org.</a><br/><br/>"
-    ),
-    "datasets"
-  );
-  mica_core_create_node_menu($page, FALSE, TRUE, 5, NULL, $datasets_menu['mlid']);
-
-  mica_core_create_menu(st('Study Datasets'), 'study-datasets', 'study-datasets', FALSE, FALSE, 10, NULL, $datasets_menu['mlid']);
-  mica_core_create_menu(st('Harmonization Datasets'), 'harmonization-datasets', 'harmonization-datasets', FALSE, FALSE, 15, NULL, $datasets_menu['mlid']);
-  mica_core_create_menu(st('Variables Search'), 'variable-search', 'variable-search', FALSE, FALSE, 20, NULL, $datasets_menu['mlid']);
+  mica_core_create_menu(st('Datasets'), 'datasets', 'datasets', FALSE, FALSE, 5, NULL, $datasets_menu['mlid']);
+  mica_core_create_menu(st('Variables Search'), 'variable-search', 'variable-search', FALSE, FALSE, 10, NULL, $datasets_menu['mlid']);
 
   // Set menu parent option for dataset
   mica_core_set_menu_option('dataset', $datasets_menu['mlid']);
@@ -206,6 +195,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
   $links = array();
   switch ($root_path) {
 
+    case 'datasets':
     case 'study-datasets':
     case 'harmonization-datasets':
       if (node_access('create', 'dataset')) {

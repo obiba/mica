@@ -28,6 +28,7 @@ function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $
 
   switch ($root_path) {
 
+    case 'datasets':
     case 'study-datasets':
     case 'harmonization-datasets':
       $links['view-dataset-crosstab'] = array(

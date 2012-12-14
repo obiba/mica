@@ -5,14 +5,17 @@
  */
 
 function _mica_datasets_create_dataset_menu($node) {
+
+  $split = variable_get('mica_datasets_split_dataset', FALSE);
+
   $parent_path = NULL;
   $wrapper = entity_metadata_wrapper('node', $node);
   switch ($wrapper->field_dataset_type->value()) {
     case 'study':
-      $parent_path = 'study-datasets';
+      $parent_path = $split ? 'study-datasets' : 'datasets';
       break;
     case 'harmonization':
-      $parent_path = 'harmonization-datasets';
+      $parent_path = $split ? 'harmonization-datasets' : 'datasets';
       break;
   }
   mica_core_create_node_menu($node, TRUE, FALSE, 0, $parent_path);

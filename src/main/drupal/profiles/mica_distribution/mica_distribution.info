@@ -55,6 +55,7 @@ dependencies[] = search_api_solr
 dependencies[] = superfish
 dependencies[] = features
 dependencies[] = strongarm
+dependencies[] = variable_admin
 dependencies[] = mica
 dependencies[] = mica_studies
 dependencies[] = mica_community
