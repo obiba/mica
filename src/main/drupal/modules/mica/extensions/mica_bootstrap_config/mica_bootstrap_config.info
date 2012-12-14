@@ -1,10 +1,9 @@
-name = Mica Bootstrap Utils
-description = Mica Bootstrap Theme Utilities
+name = Mica Bootstrap Config
+description = Mica Bootstrap Theme Configuration
 core = 7.x
 package = Mica
 php = 5.2.4
 
-dependencies[] = logintoboggan
 dependencies[] = ctools
 dependencies[] = strongarm
 features[ctools][] = strongarm:strongarm:1

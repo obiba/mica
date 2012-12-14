@@ -1,11 +1,11 @@
 <?php
 
-include_once 'mica_bootstrap_utils.features.inc';
+include_once 'mica_bootstrap_config.features.inc';
 
 /**
  * Implements hook_block_info().
  */
-function mica_bootstrap_utils_block_info() {
+function mica_bootstrap_config_block_info() {
   $blocks = array();
   $blocks['bootstrap-login'] = array(
     'info' => t('Bootstrap Login/Register Menu'),
@@ -21,15 +21,15 @@ function mica_bootstrap_utils_block_info() {
  * Implements hook_block_view().
  *
  */
-function mica_bootstrap_utils_block_view($delta = '') {
+function mica_bootstrap_config_block_view($delta = '') {
   switch ($delta) {
     case 'bootstrap-login':
-      return user_is_logged_in() ? NULL : _mica_bootstrap_utils_login_block_view();
+      return user_is_logged_in() ? NULL : _mica_bootstrap_config_login_block_view();
   }
   return NULL;
 }
 
-function _mica_bootstrap_utils_login_block_view() {
+function _mica_bootstrap_config_login_block_view() {
 
   $content = '<ul class="nav pull-right">';
   $content .= '<li class="dropdown">';
@@ -55,7 +55,7 @@ function _mica_bootstrap_utils_login_block_view() {
 /**
  * Implements hook_form_alter().
  */
-function mica_bootstrap_utils_form_alter(&$form, &$form_state, $form_id) {
+function mica_bootstrap_config_form_alter(&$form, &$form_state, $form_id) {
 
   switch ($form_id) {
     case 'user_login':
@@ -68,14 +68,14 @@ function mica_bootstrap_utils_form_alter(&$form, &$form_state, $form_id) {
 
       // Add ajax functionality to form submit button.
       $form['actions']['submit']['#ajax'] = array(
-        'callback' => '_mica_bootstrap_utils_ajax_callback',
+        'callback' => '_mica_bootstrap_config_ajax_callback',
         'wrapper' => 'ajax-' . $html_id . '-wrapper',
         'event' => 'click',
       );
   }
 }
 
-function _mica_bootstrap_utils_ajax_callback($form, $form_state) {
+function _mica_bootstrap_config_ajax_callback($form, $form_state) {
   ctools_include('ajax');
   ctools_add_js('ajax-responder');
 
