@@ -35,7 +35,7 @@ function mica_bootstrap_css_alter(&$css) {
  */
 function mica_bootstrap_menu_tree__user_menu($variables) {
   return '<div id="user-menu" class="pull-right btn-group">'
-    . '<a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">' . t('User menu') . ' <span class="caret"></span></a>'
+    . '<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i> ' . t('User menu') . ' <span class="caret"></span></a>'
     . '<ul class="dropdown-menu">' . $variables['tree'] . '</ul></div>';
 }
 
