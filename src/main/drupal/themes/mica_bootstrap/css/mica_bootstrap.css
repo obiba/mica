@@ -6843,7 +6843,7 @@ tr.drag-previous {
 }
 
 body.page-studies-search .region-sidebar-first,
-body.page-variables-search .region-sidebar-first {
+body.page-variable-search .region-sidebar-first {
   padding: 0;
   font-size: 11px;
   line-height: 15px;
@@ -6851,22 +6851,22 @@ body.page-variables-search .region-sidebar-first {
 }
 
 body.page-studies-search .region-sidebar-first .block-current-search,
-body.page-variables-search .region-sidebar-first .block-current-search {
+body.page-variable-search .region-sidebar-first .block-current-search {
   padding-bottom: 10px;
 }
 
 body.page-studies-search .region-sidebar-first .block-current-search h2,
-body.page-variables-search .region-sidebar-first .block-current-search h2 {
+body.page-variable-search .region-sidebar-first .block-current-search h2 {
   margin: 5px;
 }
 
 body.page-studies-search .region-sidebar-first .block-current-search .block-content,
-body.page-variables-search .region-sidebar-first .block-current-search .block-content {
+body.page-variable-search .region-sidebar-first .block-current-search .block-content {
   padding-left: 7px;
 }
 
 body.page-studies-search .region-sidebar-first .block-current-search h3,
-body.page-variables-search .region-sidebar-first .block-current-search h3 {
+body.page-variable-search .region-sidebar-first .block-current-search h3 {
   display: inline;
   padding-left: 5px;
   margin: 0;
@@ -6876,7 +6876,7 @@ body.page-variables-search .region-sidebar-first .block-current-search h3 {
 }
 
 body.page-studies-search .region-sidebar-first .block-current-search h4.current-search-group-title,
-body.page-variables-search .region-sidebar-first .block-current-search h4.current-search-group-title {
+body.page-variable-search .region-sidebar-first .block-current-search h4.current-search-group-title {
   padding-left: 5px;
   margin: 0;
   font-weight: normal;
@@ -6884,18 +6884,18 @@ body.page-variables-search .region-sidebar-first .block-current-search h4.curren
 }
 
 body.page-studies-search .region-sidebar-first .block-current-search .current-search-group ul,
-body.page-variables-search .region-sidebar-first .block-current-search .current-search-group ul {
+body.page-variable-search .region-sidebar-first .block-current-search .current-search-group ul {
   margin-bottom: 0;
   margin-left: 0;
 }
 
 body.page-studies-search .region-sidebar-first .block-current-search .current-search-group ul li,
-body.page-variables-search .region-sidebar-first .block-current-search .current-search-group ul li {
+body.page-variable-search .region-sidebar-first .block-current-search .current-search-group ul li {
   line-height: 15px;
 }
 
 body.page-studies-search .region-sidebar-first .block-facetapi h2,
-body.page-variables-search .region-sidebar-first .block-facetapi h2 {
+body.page-variable-search .region-sidebar-first .block-facetapi h2 {
   padding: 2px 5px;
   margin: 0;
   font-size: 11px;
@@ -6904,97 +6904,97 @@ body.page-variables-search .region-sidebar-first .block-facetapi h2 {
 }
 
 body.page-studies-search .region-sidebar-first .block-facetapi h2 a,
-body.page-variables-search .region-sidebar-first .block-facetapi h2 a {
+body.page-variable-search .region-sidebar-first .block-facetapi h2 a {
   padding-left: 12px;
   color: #495961;
 }
 
 body.page-studies-search .region-sidebar-first .block-facetapi h2.collapsiblock a,
-body.page-variables-search .region-sidebar-first .block-facetapi h2.collapsiblock a {
+body.page-variable-search .region-sidebar-first .block-facetapi h2.collapsiblock a {
   background: url('../img/expanded.png') no-repeat scroll left center transparent;
 }
 
 body.page-studies-search .region-sidebar-first .block-facetapi h2.collapsiblockCollapsed a,
-body.page-variables-search .region-sidebar-first .block-facetapi h2.collapsiblockCollapsed a {
+body.page-variable-search .region-sidebar-first .block-facetapi h2.collapsiblockCollapsed a {
   background: url('../img/collapsed.png') no-repeat scroll left center transparent;
 }
 
 body.page-studies-search .region-sidebar-first .block-facetapi .block-content,
-body.page-variables-search .region-sidebar-first .block-facetapi .block-content {
+body.page-variable-search .region-sidebar-first .block-facetapi .block-content {
   padding: 3px 0;
 }
 
 body.page-studies-search .region-sidebar-first .block-facetapi a.facetapi-limit-link,
-body.page-variables-search .region-sidebar-first .block-facetapi a.facetapi-limit-link {
+body.page-variable-search .region-sidebar-first .block-facetapi a.facetapi-limit-link {
   margin-left: 10px;
 }
 
 body.page-studies-search .region-sidebar-first .block-facetapi ul.facetapi-facetapi-checkbox-links,
-body.page-variables-search .region-sidebar-first .block-facetapi ul.facetapi-facetapi-checkbox-links {
+body.page-variable-search .region-sidebar-first .block-facetapi ul.facetapi-facetapi-checkbox-links {
   margin-bottom: 0;
   margin-left: 10px;
 }
 
 body.page-studies-search .region-sidebar-first .block-facetapi ul.facetapi-facetapi-checkbox-links li,
-body.page-variables-search .region-sidebar-first .block-facetapi ul.facetapi-facetapi-checkbox-links li {
+body.page-variable-search .region-sidebar-first .block-facetapi ul.facetapi-facetapi-checkbox-links li {
   list-style: none;
 }
 
 body.page-studies-search .region-sidebar-first .block-facetapi ul.facetapi-facetapi-checkbox-links li input,
-body.page-variables-search .region-sidebar-first .block-facetapi ul.facetapi-facetapi-checkbox-links li input {
+body.page-variable-search .region-sidebar-first .block-facetapi ul.facetapi-facetapi-checkbox-links li input {
   margin-top: -2px;
   margin-right: 5px;
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget form,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget form {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget form {
   margin-bottom: 5px;
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget p.text-range,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget p.text-range,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget p.text-range,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget .range-slider-box,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget .range-slider-box {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget .range-slider-box {
   display: none;
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget input.form-submit,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget input.form-submit,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget input.form-submit,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget .yui3-g,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget .yui3-g,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget .yui3-g,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget .range-box,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget .range-box {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget .range-box {
   display: inline-block;
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget .form-item-range-from,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget .form-item-range-from,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget .form-item-range-from,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget .form-item-range-to,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget .form-item-range-to {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget .form-item-range-to {
   margin: 0;
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget .yui3-g,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget .yui3-g {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget .yui3-g {
   padding-left: 10px;
   margin-bottom: 0;
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget input[type="text"],
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget input[type="text"] {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget input[type="text"] {
   width: 80px;
   padding: 2px 3px;
   font-size: 11px;
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget label,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget label {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget label {
   margin-bottom: 0;
   font-size: 11px;
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button {
   display: inline-block;
   *display: inline;
   padding: 4px 12px;
@@ -7048,34 +7048,34 @@ body.page-variables-search .region-sidebar-first .search-api-ranges-widget butto
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button:hover,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button:hover,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button:hover,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button:active,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button:active,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button:active,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button.active,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button.active,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button.active,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button.disabled,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button.disabled,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button.disabled,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button[disabled],
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button[disabled] {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button[disabled] {
   color: #333333;
   background-color: #e6e6e6;
   *background-color: #d9d9d9;
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button:active,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button:active,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button:active,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button.active,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button.active {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button.active {
   background-color: #cccccc \9;
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button:first-child,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button:first-child {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button:first-child {
   *margin-left: 0;
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button:hover,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button:hover {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button:hover {
   color: #333333;
   text-decoration: none;
   background-color: #e6e6e6;
@@ -7090,16 +7090,16 @@ body.page-variables-search .region-sidebar-first .search-api-ranges-widget butto
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button:focus,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button:focus {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button.active,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button.active,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button.active,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button:active,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button:active {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button:active {
   background-color: #e6e6e6;
   background-color: #d9d9d9 \9;
   background-image: none;
@@ -7110,9 +7110,9 @@ body.page-variables-search .region-sidebar-first .search-api-ranges-widget butto
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button.disabled,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button.disabled,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button.disabled,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button[disabled],
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button[disabled] {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button[disabled] {
   cursor: default;
   background-color: #e6e6e6;
   background-image: none;
@@ -7124,37 +7124,37 @@ body.page-variables-search .region-sidebar-first .search-api-ranges-widget butto
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button .label,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button .label,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button .label,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button .badge,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button .badge {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button .badge {
   position: relative;
   top: -1px;
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button:hover,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button:hover,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button:hover,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button:active,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button:active,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button:active,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button.active,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button.active,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button.active,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button.disabled,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button.disabled,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button.disabled,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button[disabled],
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button[disabled] {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button[disabled] {
   color: #ffffff;
   background-color: #4157c4;
   *background-color: #384db4;
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button:active,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button:active,
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button:active,
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button.active,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button.active {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button.active {
   background-color: #3245a0 \9;
 }
 
 body.page-studies-search .region-sidebar-first .search-api-ranges-widget button .caret,
-body.page-variables-search .region-sidebar-first .search-api-ranges-widget button .caret {
+body.page-variable-search .region-sidebar-first .search-api-ranges-widget button .caret {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
 }

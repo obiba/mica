@@ -46,3 +46,10 @@ function mica_bootstrap_menu_tree__login($variables) {
     . '<a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">' . t('User menu') . ' <span class="caret"></span></a>'
     . '<ul class="dropdown-menu">' . $variables['tree'] . '</ul></div>';
 }
+
+function mica_bootstrap_preprocess_views_view(&$vars) {
+  $view = $vars['view'];
+  if($view->name === 'studies_search' || $view->name === 'variable_search') {
+    drupal_add_js(drupal_get_path('theme', 'mica_bootstrap') . '/js/mica_bootstrap.fulltext-search.js');
+  }
+}
