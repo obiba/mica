@@ -3,6 +3,9 @@
 
   Drupal.behaviors.mica_bootstrap_config_search = {
     attach: function (context, settings) {
+
+      if ($('form#search-form .input-prepend').length > 0) return;
+
       var label = $('form#search-form .form-item-keys label');
       var input = $('#edit-keys');
 
@@ -13,6 +16,7 @@
       label.hide();
 
       $('button#edit-submit').hide();
+
     }
   };
 

@@ -3,6 +3,9 @@
 
   Drupal.behaviors.mica_bootstrap_fulltext_search = {
     attach: function (context, settings) {
+
+      if ($('form .input-prepend').length > 0) return;
+
       var label = $('#edit-search-api-views-fulltext-wrapper label');
       var input = $('#edit-search-api-views-fulltext');
 

@@ -40,7 +40,7 @@ function _mica_bootstrap_config_login_block_view() {
   $content .= '</li>';
 
   if (variable_get('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)) {
-    $content .= '<li class="divider-vertical"></li>';
+//    $content .= '<li class="divider-vertical"></li>';
     $content .= '<li class="dropdown">';
     $content .= '<a class="dropdown-toggle" href="#" data-toggle="dropdown">' . t('Register') . ' <strong class="caret"></strong></a>';
     $content .= '<div class="dropdown-menu embedded-form">' . drupal_render(drupal_get_form('user_register_form')) . '</div>';
