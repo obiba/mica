@@ -7208,6 +7208,13 @@ body.page-variable-search .region-sidebar-first .search-api-ranges-widget button
   font-size: 11.049999999999999px;
 }
 
+section#block-views-news-recent-news article h2 {
+  margin-bottom: -5px;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 15px;
+}
+
 .view-studies-search table {
   margin-top: 5px;
 }

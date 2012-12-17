@@ -845,6 +845,10 @@ function mica_studies_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'news';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'recent_news');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $export['news'] = $view;
 
   $view = new view();
