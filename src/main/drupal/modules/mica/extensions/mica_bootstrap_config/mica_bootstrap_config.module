@@ -92,6 +92,13 @@ function mica_bootstrap_config_form_search_block_form_alter(&$form, $form_state)
   $form['actions']['submit']['#attributes']['class'][] = 'hide';
 }
 
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function mica_bootstrap_config_form_search_form_alter(&$form, $form_state) {
+  ctools_add_js('mica_bootstrap_config.search', 'mica_bootstrap_config');
+}
+
 function _mica_bootstrap_config_ajax_callback($form, $form_state) {
   ctools_include('ajax');
   ctools_add_js('ajax-responder');
