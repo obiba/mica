@@ -321,7 +321,7 @@ function mica_i18n_fix_views_display() {
           foreach (array_keys($view->display[$display]->display_options['fields']) as $key) {
             // If the field is a list type
             $info = field_info_field($key);
-            if (isset($info['type']) && $info['type'] === 'list_text') {
+            if (isset($info['type']) && $info['type'] === 'list_text' && $view->display[$display]->display_options['fields'][$key]['type'] !== 'list_key') {
               $view->display[$display]->display_options['fields'][$key]['type'] = 'i18n_list_default';
               $save = TRUE;
             }
