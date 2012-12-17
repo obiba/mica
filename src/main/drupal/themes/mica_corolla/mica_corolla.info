@@ -1,7 +1,7 @@
 ;----------// Theme info
 
-  name        = Mica Corolla
-  description = Mica Corolla is a subtheme of Corolla.
+  name        = Mica Corolla (Deprecated)
+  description = Corolla subtheme. Theme is deprecated and will be removed in the next version.
   core        = 7.x
   release     = 7.3.x
   base theme  = corolla
