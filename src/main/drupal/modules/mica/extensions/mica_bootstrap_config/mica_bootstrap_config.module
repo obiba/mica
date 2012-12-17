@@ -74,7 +74,22 @@ function mica_bootstrap_config_form_alter(&$form, &$form_state, $form_id) {
         'wrapper' => 'ajax-' . $html_id . '-wrapper',
         'event' => 'click',
       );
+      break;
+
   }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function mica_bootstrap_config_form_search_block_form_alter(&$form, $form_state) {
+  $form['#attributes']['class'][] = 'navbar-search';
+  $form['#attributes']['class'][] = 'pull-left';
+  $form['search_block_form']['#title'] = '';
+  $form['search_block_form']['#attributes']['class'][] = 'search-query';
+  $form['search_block_form']['#attributes']['class'][] = 'span2';
+  $form['search_block_form']['#attributes']['placeholder'] = t('Search');
+  $form['actions']['submit']['#attributes']['class'][] = 'hide';
 }
 
 function _mica_bootstrap_config_ajax_callback($form, $form_state) {

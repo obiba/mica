@@ -10,9 +10,7 @@ function mica_bootstrap_bootstrap_based_theme() {
 
 /**
  * Implements hook_css_alter().
- *
- * Replace bootstrap.css by mica_bootstrap.css and remove responsive css as it is compiled to mica_bootstrap.css
- * @param $css
+ * Replace bootstrap.css by mica_bootstrap.css
  */
 function mica_bootstrap_css_alter(&$css) {
 
@@ -32,24 +30,21 @@ function mica_bootstrap_css_alter(&$css) {
   $css[$file['data']] = $file;
 }
 
+/**
+ * Add drop down for user menu
+ */
 function mica_bootstrap_menu_tree__user_menu($variables) {
   return '<div id="user-menu" class="pull-right btn-group">'
     . '<a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">' . t('User menu') . ' <span class="caret"></span></a>'
     . '<ul class="dropdown-menu">' . $variables['tree'] . '</ul></div>';
 }
 
-function mica_bootstrap_menu_tree__login($variables) {
-
-  dvm($variables);
-
-  return '<div id="user-menu" class="pull-right btn-group">'
-    . '<a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">' . t('User menu') . ' <span class="caret"></span></a>'
-    . '<ul class="dropdown-menu">' . $variables['tree'] . '</ul></div>';
-}
-
+/**
+ * Attach javascript to views
+ */
 function mica_bootstrap_preprocess_views_view(&$vars) {
   $view = $vars['view'];
-  if($view->name === 'studies_search' || $view->name === 'variable_search') {
+  if ($view->name === 'studies_search' || $view->name === 'variable_search') {
     drupal_add_js(drupal_get_path('theme', 'mica_bootstrap') . '/js/mica_bootstrap.fulltext-search.js');
   }
 }

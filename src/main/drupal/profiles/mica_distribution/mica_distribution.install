@@ -196,17 +196,6 @@ function _mica_distribution_default_block($mica_theme = 'mica_bootstrap', $admin
       'cache' => -1,
     ),
     array(
-      'module' => 'search',
-      'delta' => 'form',
-      'theme' => $mica_theme,
-      'status' => 1,
-      'weight' => 30,
-      'region' => BLOCK_REGION_NONE,
-      'visibility' => BLOCK_VISIBILITY_LISTED,
-      'pages' => '*',
-      'cache' => -1,
-    ),
-    array(
       'module' => 'system',
       'delta' => 'navigation',
       'theme' => $mica_theme,
@@ -317,6 +306,17 @@ function _mica_distribution_default_block($mica_theme = 'mica_bootstrap', $admin
       'cache' => -1,
     ),
     array(
+      'module' => 'search',
+      'delta' => 'form',
+      'theme' => $mica_theme,
+      'status' => 1,
+      'weight' => 3,
+      'region' => 'navigation',
+      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
       'module' => 'system',
       'delta' => 'user-menu',
       'theme' => $mica_theme,
@@ -356,18 +356,10 @@ function _mica_distribution_default_block($mica_theme = 'mica_bootstrap', $admin
   $query->execute();
 
   // not title for menus
-  db_update('block')
-    ->fields(array('title' => '<none>'))
-    ->condition('module', 'system')
-    ->condition('delta', array('main-menu', 'user-menu'))
-    ->condition('theme', $mica_theme)
-    ->execute();
-  db_update('block')
-    ->fields(array('title' => '<none>'))
-    ->condition('module', 'user')
-    ->condition('delta', 'login')
-    ->condition('theme', $mica_theme)
-    ->execute();
+  _mica_distribution_set_block_title('<none>', 'system', 'main-menu');
+  _mica_distribution_set_block_title('<none>', 'system', 'user-menu');
+  _mica_distribution_set_block_title('<none>', 'user', 'login');
+  _mica_distribution_set_block_title('<none>', 'search', 'form');
 
   // only authenticated user can see navigation block
   $query = db_insert('block_role')->fields(array('module', 'delta', 'rid'));
@@ -396,4 +388,13 @@ function mica_distribution_update_7144(&$sandbox) {
   cache_clear_all('module_implements', 'cache_bootstrap');
 
   registry_rebuild(); // At lower level
+}
+
+function _mica_distribution_set_block_title($title, $module, $delta, $mica_theme = 'mica_bootstrap') {
+  db_update('block')
+    ->fields(array('title' => $title))
+    ->condition('module', $module)
+    ->condition('delta', $delta)
+    ->condition('theme', $mica_theme)
+    ->execute();
 }
