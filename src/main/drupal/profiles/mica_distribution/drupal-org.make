@@ -184,6 +184,7 @@ projects[search_api][patch][1471310] = http://drupal.org/files/1471310--unset-fi
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 
 projects[search_api_combined] = 1.0
+projects[search_api_combined][patch][1845638] = http://drupal.org/files/undefined-index-1845638-6.patch
 
 projects[search_api_page] = 1.0-beta2
 
@@ -238,7 +239,7 @@ projects[workbench_moderation][patch][1245590] = http://drupal.org/files/retaint
 
 projects[bootstrap][type] = theme
 projects[bootstrap][download][type] = git
-projects[bootstrap][download][revision] = 3dff014
+projects[bootstrap][download][revision] = dc32478
 projects[bootstrap][download][branch] = 7.x-2.x
 
 projects[corolla] = 3.0-rc1
