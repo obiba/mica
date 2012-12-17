@@ -224,7 +224,7 @@ projects[views_bulk_operations] = 3.1
 
 projects[views_data_export][version] = 3.0-beta6
 projects[views_data_export][patch][1224894] = http://drupal.org/files/html_in_csv-1224894-10.patch
-projects[views_data_export][patch][1379672] = http://drupal.org/files/styleable_export_links-1379672-5.patch
+;projects[views_data_export][patch][1379672] = http://drupal.org/files/styleable_export_links-1379672-5.patch
 
 projects[viewreference] = 3.4
 
