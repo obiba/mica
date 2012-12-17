@@ -7241,6 +7241,14 @@ body.page-variable-search .region-sidebar-first .search-api-ranges-widget button
   background: url('../img/collapsed.png') no-repeat scroll left center transparent;
 }
 
+.table-striped th a {
+  color: #495961;
+}
+
+.table-striped th a:hover {
+  color: #495961;
+}
+
 #forum table {
   width: 100%;
 }
@@ -7270,4 +7278,12 @@ body.page-variable-search .region-sidebar-first .search-api-ranges-widget button
 
 #forum table th {
   border-bottom: none;
+}
+
+#forum table th a {
+  color: #495961;
+}
+
+#forum table th a:hover {
+  color: #495961;
 }
