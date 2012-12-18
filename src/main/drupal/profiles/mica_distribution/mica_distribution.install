@@ -312,7 +312,7 @@ function _mica_distribution_default_block($mica_theme = 'mica_bootstrap', $admin
       'status' => 1,
       'weight' => 3,
       'region' => 'navigation',
-      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
       'cache' => -1,
     ),
