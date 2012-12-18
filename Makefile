@@ -6,7 +6,7 @@
 version=7.0-dev
 dist_version=7.0-dev
 drupal_version=7.x
-branch=$(drupal_version)-6.x
+branch=$(drupal_version)-7.x
 
 bootstrap_version=2.2.1
 
