@@ -59,7 +59,9 @@ projects[] = devel
 
 projects[email] = 1.2
 
-projects[entity][version] = 1.0-rc3
+projects[entity][download][type] = git
+projects[entity][download][revision] = 5731f74
+projects[entity][download][branch] = 7.x-1.x
 projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info-on-validation-exception.patch
 
 projects[entity_translation] = 1.0-alpha2
