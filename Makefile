@@ -142,6 +142,7 @@ htaccess:
 	mv target/$(micadir)/.htaccess_new target/$(micadir)/.htaccess
 
 inject-version-info:
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_bootstrap_config)
 	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_community)
 	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_core)
 	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_data_access)
@@ -160,10 +161,12 @@ inject-version-info:
 	$(call inject-version-info,mica_distribution/modules/mica/extensions,node_reference_block)
 	$(call inject-version-info,mica_distribution/modules,mica)
 	$(call inject-version-info,,mica_distribution)
+	$(call inject-version-info,mica_distribution/themes,mica_bootstrap)
 	$(call inject-version-info,mica_distribution/themes,mica_samara)
 	$(call inject-version-info,mica_distribution/themes,mica_corolla)
 
 clear-version-info: compile-less
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_bootstrap_config)
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_community)
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_core)
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_data_access)
@@ -182,7 +185,7 @@ clear-version-info: compile-less
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,node_reference_block)
 	$(call clear-version-info,src/main/drupal/modules,mica)
 	$(call clear-version-info,src/main/drupal/profiles,mica_distribution)
-	$(call clear-version-info,src/main/drupal/profiles,mica_demo)
+	$(call clear-version-info,src/main/drupal/themes,mica_bootstrap)
 	$(call clear-version-info,src/main/drupal/themes,mica_samara)
 	$(call clear-version-info,src/main/drupal/themes,mica_corolla)
 
@@ -369,6 +372,7 @@ git-push-mica-dist: clear-version-info set-distribution-version
 	$(call git-prepare,$(drupal_org_mica_dist),mica_distribution) . && \
 	cp -r ../../../src/main/drupal/profiles/mica_distribution/* . && \
 	cp -r ../../../src/main/drupal/themes . && \
+	rm -rf themes/mica_bootstrap/less/bootstrap && \
 	$(call git-finish)
 
 #
