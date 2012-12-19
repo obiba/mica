@@ -8,4 +8,19 @@
       }
     }
   }
+
+  tbody {
+
+    tr:nth-child(odd) td, tr:nth-child(odd) th {
+      background-color: @bodyBackground;
+    }
+
+    tr:nth-child(even) td, tr:nth-child(even) th {
+      background-color: @table_even;
+    }
+  }
+}
+
+thead {
+  background-color: @table_header;
 }

@@ -7249,6 +7249,20 @@ body.page-variable-search .region-sidebar-first .search-api-ranges-widget button
   color: #495961;
 }
 
+.table-striped tbody tr:nth-child(odd) td,
+.table-striped tbody tr:nth-child(odd) th {
+  background-color: #ffffff;
+}
+
+.table-striped tbody tr:nth-child(even) td,
+.table-striped tbody tr:nth-child(even) th {
+  background-color: #f8f8f8;
+}
+
+thead {
+  background-color: #f2f2f2;
+}
+
 #forum table {
   width: 100%;
 }
@@ -7286,4 +7300,14 @@ body.page-variable-search .region-sidebar-first .search-api-ranges-widget button
 
 #forum table th a:hover {
   color: #495961;
+}
+
+#forum table tbody tr:nth-child(odd) td,
+#forum table tbody tr:nth-child(odd) th {
+  background-color: #ffffff;
+}
+
+#forum table tbody tr:nth-child(even) td,
+#forum table tbody tr:nth-child(even) th {
+  background-color: #f8f8f8;
 }
