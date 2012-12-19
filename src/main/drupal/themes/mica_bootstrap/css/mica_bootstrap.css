@@ -6627,7 +6627,7 @@ tr.drag-previous {
   margin: 0;
   font-size: 11px;
   text-transform: uppercase;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
 
 .facet-bar .block-facetapi h2 a {
@@ -6900,7 +6900,7 @@ body.page-variable-search .region-sidebar-first .block-facetapi h2 {
   margin: 0;
   font-size: 11px;
   text-transform: uppercase;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
 
 body.page-studies-search .region-sidebar-first .block-facetapi h2 a,
