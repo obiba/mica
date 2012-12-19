@@ -5894,6 +5894,10 @@ a.badge:hover {
 
 /* overwrite bootstrap variables */
 
+body {
+  background-color: #ffffff;
+}
+
 h1 {
   font-size: 29.25px;
 }
