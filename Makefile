@@ -378,21 +378,11 @@ git-push-mica-dist: clear-version-info set-distribution-version
 #
 # Bootstrap related stuff
 #
-compile-less: download-bootstrap-less
+compile-less: 
 	recess --compile src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap.less > src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap.css && \
 	recess --compile src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap_responsive.less > src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap_responsive.css && \
 	recess --compile src/main/drupal/modules/mica/extensions/mica_studies/less/mica_studies.less > src/main/drupal/modules/mica/extensions/mica_studies/css/mica_studies.css && \
 	recess --compile src/main/drupal/modules/mica/extensions/mica_datasets/less/mica_datasets.less > src/main/drupal/modules/mica/extensions/mica_datasets/css/mica_datasets.css
-
-download-bootstrap-less:
-	mkdir -p target/bootstrap && \
-	cd target/bootstrap && \
-	wget -nc http://github.com/twitter/bootstrap/archive/v$(bootstrap_version).tar.gz && \
-	if [ ! -e bootstrap-$(bootstrap_version) ]; then \
-		tar -zxf v$(bootstrap_version).tar.gz && \
-		mkdir -p ../../src/main/drupal/themes/mica_bootstrap/less/bootstrap && \
-		cp -r bootstrap-$(bootstrap_version)/less/* ../../src/main/drupal/themes/mica_bootstrap/less/bootstrap ; \
-	fi
 
 install-nodejs:
 	apt-get install g++ curl libssl-dev apache2-utils && \
