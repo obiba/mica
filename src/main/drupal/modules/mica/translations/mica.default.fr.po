@@ -46626,3 +46626,6 @@ msgstr "Ajouter des dimensions"
 
 msgid "Manage Variable Dimensions"
 msgstr "Gestion des dimensions de variable"
+
+msgid "Domains Coverage"
+msgstr "Couverture des domaines"
