@@ -11,3 +11,10 @@ function mica_networks_update_7500(&$sandbox) {
   module_load_install('mica_core');
   mica_core_replace_titles(array('network'));
 }
+
+/**
+ * Update Mica Networks views
+ */
+function mica_networks_update_7700(&$update) {
+  features_rebuild(array('mica_networks' => array('views_view')));
+}

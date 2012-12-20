@@ -16,6 +16,7 @@
           </value>
         </option>
         <option name="LINE_SEPARATOR" value="&#10;" />
+        <option name="HTML_ALIGN_ATTRIBUTES" value="false" />
         <CssCodeStyleSettings>
           <option name="KEEP_SINGLE_LINE_BLOCKS" value="true" />
         </CssCodeStyleSettings>

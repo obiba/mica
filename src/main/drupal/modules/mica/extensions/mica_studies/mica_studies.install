@@ -256,6 +256,14 @@ function mica_studies_update_7500(&$sandbox) {
 
   features_revert(array('mica_studies' => array('variable', 'search_api_index', 'views_view')));
 }
+
+/**
+ * Update Mica Studies views
+ */
+function mica_studies_update_7700(&$update) {
+  features_rebuild(array('mica_studies' => array('views_view')));
+}
+
 /**
  * Implements hook_update_dependencies().
  */

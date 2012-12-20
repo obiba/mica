@@ -21,6 +21,13 @@ function mica_projects_update_7120() {
 }
 
 /**
+ * Update Mica Projects views
+ */
+function mica_projects_update_7700(&$update) {
+  features_rebuild(array('mica_projects' => array('views_view')));
+}
+
+/**
  * Update to 7120 depends on the update of mica_core
  */
 function mica_projects_update_dependencies() {

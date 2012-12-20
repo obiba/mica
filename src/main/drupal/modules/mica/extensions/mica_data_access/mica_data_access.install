@@ -21,6 +21,13 @@ function mica_data_access_update_7500(&$sandbox) {
 }
 
 /**
+ * Update Mica Data Access views
+ */
+function mica_data_access_update_7700(&$update) {
+  features_rebuild(array('mica_data_access' => array('views_view')));
+}
+
+/**
  * Implements hook_update_dependencies().
  */
 function mica_data_access_update_dependencies() {

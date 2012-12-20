@@ -225,6 +225,13 @@ function mica_datasets_update_7600(&$update) {
 }
 
 /**
+ * Update Mica Datasets views
+ */
+function mica_datasets_update_7700(&$update) {
+  features_rebuild(array('mica_datasets' => array('views_view')));
+}
+
+/**
  * Implements hook_update_dependencies().
  */
 function mica_datasets_update_dependencies() {

@@ -77,6 +77,13 @@ function mica_core_update_7600(&$update) {
   _mica_core_rebuild_registry();
 }
 
+/**
+ * Add new variable for Bootstrap theme
+ */
+function mica_core_update_7700(&$update) {
+  features_rebuild(array('mica_core' => array('variable')));
+}
+
 function _mica_core_export_queries() {
   $result = db_query('SELECT * FROM mica_dataset_query')->fetchAll();
   if (!empty($result)) {
@@ -90,7 +97,6 @@ function _mica_core_export_queries() {
   }
   db_drop_table('mica_dataset_query_term');
 }
-
 
 function _mica_core_export_connectors() {
   $result = db_query('SELECT * FROM mica_dataset_connector')->fetchAll();
