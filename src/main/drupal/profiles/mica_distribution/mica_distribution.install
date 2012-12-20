@@ -18,9 +18,6 @@ function mica_distribution_install() {
   // Enable some standard blocks.
   _mica_distribution_default_block($mica_theme, $admin_theme);
 
-  // Login destination setup
-  _mica_distribution_login_destination();
-
   // rebuild permissions
   node_access_rebuild();
 
@@ -46,20 +43,6 @@ function _mica_distribution_include_theme_file($theme_file) {
   else if (file_exists(DRUPAL_ROOT . '/sites/all/themes/' . $theme_file)) {
     require_once DRUPAL_ROOT . '/sites/all/themes/' . $theme_file;
   }
-}
-
-function _mica_distribution_login_destination() {
-  $rule = array(
-    'triggers' => serialize(array('login' => 'login', 'logout' => 'logout')),
-    'roles' => serialize(array()),
-    'pages_type' => LOGIN_DESTINATION_REDIRECT_LISTED,
-    'pages' => 'user/*',
-    'destination_type' => LOGIN_DESTINATION_STATIC,
-    'destination' => '<front>',
-    'id' => NULL,
-    'weight' => 0,
-  );
-  drupal_write_record('login_destination', $rule);
 }
 
 /**

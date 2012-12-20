@@ -131,8 +131,6 @@ projects[libraries] = 2.0
 
 projects[link] = 1.0
 
-projects[login_destination] = 1.1
-
 projects[logintoboggan] = 1.3
 
 projects[mail_edit] = 1.0
