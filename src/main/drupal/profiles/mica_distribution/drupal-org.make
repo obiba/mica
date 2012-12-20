@@ -252,12 +252,6 @@ projects[corolla] = 3.0-rc1
 
 ; jsonpath is not downloaded here because of http://code.google.com/p/jsonpath/issues/detail?id=8
 
-libraries[bootstrap][type] = libraries
-libraries[bootstrap][download][type]= get
-libraries[bootstrap][download][url] = http://twitter.github.com/bootstrap/assets/bootstrap.zip
-libraries[bootstrap][destination] = themes/bootstrap
-libraries[bootstrap][directory_name] = bootstrap
-
 libraries[ckeditor][download][type]= get
 libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.5/ckeditor_3.6.5.tar.gz
 libraries[ckeditor][directory_name] = ckeditor

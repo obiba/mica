@@ -726,7 +726,6 @@ function mica_field_description_field_default_fields() {
           'decimal' => 'Decimal',
           'integer' => 'Integer',
           'text' => 'Text',
-          'term' => 'Taxonomy term',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(

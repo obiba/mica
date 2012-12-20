@@ -2151,7 +2151,7 @@ table th[class*="span"],
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("../../bootstrap/bootstrap/img/glyphicons-halflings.png");
+  background-image: url("../bootstrap/img/glyphicons-halflings.png");
   background-position: 14px 14px;
   background-repeat: no-repeat;
 }
@@ -2171,7 +2171,7 @@ table th[class*="span"],
 .dropdown-menu > .active > a > [class*=" icon-"],
 .dropdown-submenu:hover > a > [class^="icon-"],
 .dropdown-submenu:hover > a > [class*=" icon-"] {
-  background-image: url("../../bootstrap/bootstrap/img/glyphicons-halflings-white.png");
+  background-image: url("../bootstrap/img/glyphicons-halflings-white.png");
 }
 
 .icon-glass {
@@ -6273,24 +6273,12 @@ tr.drag-previous {
   margin-bottom: 10px;
 }
 
-/* Export icons */
-
-.views-data-export-csv-attach,
-.views-data-export-xls-attach {
-  display: inline-block;
-  width: 34px;
-  height: 24px;
-  text-indent: -1000px;
-  background-repeat: no-repeat;
-  outline: none;
+a.download-link {
+  color: #495961;
 }
 
-.views-data-export-csv-attach {
-  background-image: url("../img/csv.png");
-}
-
-.views-data-export-xls-attach {
-  background-image: url("../img/xls.png");
+a.download-link:hover {
+  color: #495961;
 }
 
 #navbar .embedded-form {
@@ -7210,6 +7198,13 @@ body.page-variable-search .region-sidebar-first .search-api-ranges-widget button
 
 #block-mica-mica-search-filters .advanced {
   font-size: 11.049999999999999px;
+}
+
+section#block-views-news-recent-news article h2 {
+  margin-bottom: -5px;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 15px;
 }
 
 .view-studies-search table {
