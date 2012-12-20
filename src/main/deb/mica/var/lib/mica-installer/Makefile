@@ -216,3 +216,17 @@ clean:
 	rm -rf /var/cache/mica-installer/target
 	rm -rf /var/cache/mica-installer/*.gz
 
+#
+# Functions
+#
+
+delete-module = rm -rf /usr/share/mica/sites/all/modules/$(1) && \
+	/etc/mica/profiles/mica_distribution/modules/$(1)
+
+delete-theme = rm -rf /usr/share/mica/sites/all/themes/$(1) && \
+	/etc/mica/profiles/mica_distribution/themes/$(1)
+
+delete-library = rm -rf /usr/share/mica/sites/all/libraries/$(1) && \
+	/etc/mica/profiles/mica_distribution/libraries/$(1)
+
+delete-profile = rm -rf /usr/share/mica/profiles/$(1)
