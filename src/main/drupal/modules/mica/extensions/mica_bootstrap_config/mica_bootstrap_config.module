@@ -112,7 +112,7 @@ function _mica_bootstrap_config_ajax_callback($form, $form_state) {
   }
 
   $commands = array();
-  $commands[] = ctools_ajax_command_redirect('<front>');
+  $commands[] = ctools_ajax_command_reload();
   return array(
     '#type' => 'ajax',
     '#commands' => $commands
