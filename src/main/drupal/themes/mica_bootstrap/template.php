@@ -35,7 +35,7 @@ function mica_bootstrap_css_alter(&$css) {
  */
 function mica_bootstrap_js_alter(&$js) {
   $bootstrap_theme = drupal_get_path('theme', 'bootstrap');
-  $js[$bootstrap_theme . '/bootstrap/js/bootstrap.js']['data'] = drupal_get_path('theme', 'mica_bootstrap') . '/bootstrap/js/bootstrap.js';
+  $js[$bootstrap_theme . '/bootstrap/js/bootstrap.js']['data'] = drupal_get_path('theme', 'mica_bootstrap') . '/bootstrap/js/bootstrap.min.js';
 }
 
 /**
