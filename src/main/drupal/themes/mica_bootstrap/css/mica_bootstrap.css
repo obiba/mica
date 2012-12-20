@@ -6269,24 +6269,12 @@ tr.drag-previous {
   margin-bottom: 10px;
 }
 
-/* Export icons */
-
-.views-data-export-csv-attach,
-.views-data-export-xls-attach {
-  display: inline-block;
-  width: 34px;
-  height: 24px;
-  text-indent: -1000px;
-  background-repeat: no-repeat;
-  outline: none;
+a.download-link {
+  color: #495961;
 }
 
-.views-data-export-csv-attach {
-  background-image: url("../img/csv.png");
-}
-
-.views-data-export-xls-attach {
-  background-image: url("../img/xls.png");
+a.download-link:hover {
+  color: #495961;
 }
 
 #navbar .embedded-form {
