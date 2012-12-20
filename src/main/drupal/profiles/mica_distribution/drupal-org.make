@@ -210,7 +210,7 @@ projects[taxonomy_csv] = 5.10
 
 projects[taxonomy_manager] = 1.0-rc1
 
-projects[title] = 1.0-alpha4
+projects[title] = 1.0-alpha5
 
 projects[token] = 1.4
 
