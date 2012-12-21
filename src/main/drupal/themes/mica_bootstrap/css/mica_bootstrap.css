@@ -6281,6 +6281,29 @@ a.download-link:hover {
   color: #495961;
 }
 
+.field-group-more > h3 {
+  margin: 8px 0 0 20px;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 20px;
+}
+
+.field-group-more.collapsible > h3 i.icon-chevron-right {
+  background-position: -313px -119px;
+}
+
+.field-group-more.collapsed > h3 i.icon-chevron-right {
+  background-position: -456px -72px;
+}
+
+.field-group-more .field-group-format-wrapper .field {
+  margin-top: 0;
+}
+
+.field-group-more .field-group-format-wrapper .field-item {
+  margin-left: 20px;
+}
+
 #navbar .embedded-form {
   padding: 15px;
 }

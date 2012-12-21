@@ -1,4 +1,4 @@
-body{
+body {
   background-color: @bodyBackground;
 }
 
@@ -222,6 +222,31 @@ a.download-link {
   color: @textColor;
   &:hover {
     color: @textColor;
+  }
+}
+
+.field-group-more {
+  & > h3 {
+    font-size: @baseFontSize;
+    line-height: @baseLineHeight;
+    margin: 8px 0 0 20px;
+    font-weight: normal;
+  }
+
+  &.collapsible > h3 i.icon-chevron-right {
+    .icon-chevron-down;
+  }
+  &.collapsed > h3 i.icon-chevron-right {
+    .icon-chevron-right;
+  }
+
+  .field-group-format-wrapper {
+    .field {
+      margin-top: 0;
+    }
+    .field-item {
+      margin-left: 20px;
+    }
   }
 }
 

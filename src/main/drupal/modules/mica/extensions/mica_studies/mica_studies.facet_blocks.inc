@@ -110,7 +110,7 @@ function mica_studies_configure_facet_blocks() {
     ),
     'field_ended_end_year' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
-      'name' => t('Study end year '),
+      'name' => t('Study end year'),
     ),
   );
   mica_core_configure_facet_blocks('studies_index', 'study', $config, 'studies-search', 'study_current_search');

@@ -118,3 +118,10 @@ function _mica_bootstrap_config_ajax_callback($form, $form_state) {
     '#commands' => $commands
   );
 }
+
+/**
+ * Implements hook_field_group_pre_render()
+ */
+function mica_bootstrap_config_field_group_pre_render_alter(&$element, $group, &$form) {
+  ctools_add_js('mica_bootstrap_config.field-group', 'mica_bootstrap_config');
+}
