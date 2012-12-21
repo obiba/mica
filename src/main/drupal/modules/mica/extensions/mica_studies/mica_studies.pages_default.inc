@@ -361,7 +361,7 @@ function mica_studies_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-1';
     $pane->panel = 'middle';
     $pane->type = 'node';
     $pane->subtype = 'node';
@@ -386,10 +386,10 @@ function mica_studies_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = '';
-    $display->content['new-6'] = $pane;
-    $display->panels['middle'][0] = 'new-6';
+    $display->content['new-1'] = $pane;
+    $display->panels['middle'][0] = 'new-1';
     $pane = new stdClass();
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-2';
     $pane->panel = 'middle';
     $pane->type = 'views';
     $pane->subtype = 'news';
@@ -419,8 +419,8 @@ function mica_studies_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = '';
-    $display->content['new-7'] = $pane;
-    $display->panels['middle'][1] = 'new-7';
+    $display->content['new-2'] = $pane;
+    $display->panels['middle'][1] = 'new-2';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
