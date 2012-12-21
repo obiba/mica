@@ -27,7 +27,6 @@
       <excludeFolder url="file://$MODULE_DIR$/target/mica-5.0" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-5.x-dev-local" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-dev-local" />
-      <excludeFolder url="file://$MODULE_DIR$/target/mica-dev/profiles/mica_distribution/modules/mica" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-dev/profiles/mica_distribution/themes/mica_bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-dev/profiles/mica_distribution/themes/mica_corolla" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-dev/profiles/mica_distribution/themes/mica_samara" />

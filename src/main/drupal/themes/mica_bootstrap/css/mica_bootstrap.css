@@ -6208,6 +6208,7 @@ fieldset {
 fieldset legend {
   margin-bottom: 0;
   font-size: 16.25px;
+  color: #495961;
   background-color: #f9f9f9;
 }
 
@@ -6279,6 +6280,10 @@ a.download-link {
 
 a.download-link:hover {
   color: #495961;
+}
+
+table thead tr th.views-field {
+  vertical-align: middle;
 }
 
 .field-group-more > h3 {
