@@ -123,5 +123,7 @@ function _mica_bootstrap_config_ajax_callback($form, $form_state) {
  * Implements hook_field_group_pre_render()
  */
 function mica_bootstrap_config_field_group_pre_render_alter(&$element, $group, &$form) {
-  ctools_add_js('mica_bootstrap_config.field-group', 'mica_bootstrap_config');
+  if ($group->format_type === 'div') {
+    $element['#prefix'] = str_replace('<h3>', '<h3> <i class="icon-chevron-right"></i> ', $element['#prefix']);
+  }
 }
