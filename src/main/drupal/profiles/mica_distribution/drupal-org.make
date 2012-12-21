@@ -32,7 +32,9 @@ projects[cck_select_other] = 1.0
 
 projects[chain_menu_access] = 1.0
 
-projects[ckeditor] = 1.11
+projects[ckeditor][download][type] = git
+projects[ckeditor][download][revision] = b4d71f8
+projects[ckeditor][download][branch] = 7.x-1.x
 
 projects[collapsiblock][download][type] = git
 projects[collapsiblock][download][revision] = 36f4280
