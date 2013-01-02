@@ -11,9 +11,7 @@ projects[acl] = 1.0
 
 projects[adaptivetheme] = 3.1
 
-projects[auto_entitylabel][download][type] = git
-projects[auto_entitylabel][download][revision] = 218ba66
-projects[auto_entitylabel][download][branch] = 7.x-1.x
+projects[auto_entitylabel] = 1.1
 
 projects[autocomplete_deluxe][download][type] = git
 projects[autocomplete_deluxe][download][revision] = 90d95d3
@@ -48,20 +46,18 @@ projects[content_access] = 1.2-beta1
 
 projects[content_taxonomy] = 1.0-beta1
 
-projects[ctools] = 1.2
+projects[ctools][version] = 1.2
 projects[ctools][patch][1494860] = http://drupal.org/files/ctools-dependent-js-broken-with-jquery-1.7-1494860-30.patch
 
 projects[date] = 2.6
 
-projects[diff] = 2.0
+projects[diff] = 3.2
 
 projects[] = devel
 
 projects[email] = 1.2
 
-projects[entity][download][type] = git
-projects[entity][download][revision] = 5731f74
-projects[entity][download][branch] = 7.x-1.x
+projects[entity][version] = 1.0
 projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info-on-validation-exception.patch
 
 projects[entity_translation] = 1.0-alpha2
@@ -97,7 +93,7 @@ projects[field_permissions] = 1.0-beta2
 
 projects[forum_access] = 1.2
 
-projects[google_analytics] = 1.2
+projects[google_analytics] = 1.3
 
 projects[google_fonts] = 2.3
 
@@ -152,7 +148,7 @@ projects[module_filter] = 1.7
 projects[multiselect][version] = 1.9
 projects[multiselect][patch][1670224] = http://drupal.org/files/options_translations-1670224-2.patch
 
-projects[name] = 1.5
+projects[name][version] = 1.7
 projects[name][patch][1788156] = http://drupal.org/files/name_title_translation-1788156-1.patch
 
 projects[noderefcreate][download][type] = git
@@ -163,7 +159,7 @@ projects[noderefcreate][patch][1538328] = http://drupal.org/files/maxlength-1538
 
 projects[panels] = 3.3
 
-projects[password_policy] = 1.2
+projects[password_policy] = 1.3
 
 projects[pathauto] = 1.2
 
@@ -183,8 +179,7 @@ projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_trans
 projects[search_api][patch][1471310] = http://drupal.org/files/1471310--unset-field-8_0.patch
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 
-projects[search_api_combined] = 1.0
-projects[search_api_combined][patch][1845638] = http://drupal.org/files/undefined-index-1845638-6.patch
+projects[search_api_combined][version] = 1.1
 
 projects[search_api_page] = 1.0-beta2
 
