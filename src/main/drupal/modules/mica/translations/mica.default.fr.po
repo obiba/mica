@@ -46629,3 +46629,9 @@ msgstr "Gestion des dimensions de variable"
 
 msgid "Domains Coverage"
 msgstr "Couverture des domaines"
+
+msgid "@name authorised the contribution to @site"
+msgstr "@name a autorisé la contribution à '@site'"
+
+msgid "@name authorised the contribution to Maelstrom Research"
+msgstr "@name a autorisé la contribution à 'Maelstrom Research'"
