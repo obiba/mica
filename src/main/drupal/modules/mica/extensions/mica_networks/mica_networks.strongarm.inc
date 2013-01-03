@@ -97,7 +97,7 @@ function mica_networks_strongarm() {
         'custom_settings' => TRUE,
       ),
       'center_area' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'footer_area' => array(
         'custom_settings' => FALSE,
@@ -146,6 +146,13 @@ function mica_networks_strongarm() {
     0 => 'main-menu',
   );
   $export['menu_options_network'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_network';
+  $strongarm->value = 'main-menu:691';
+  $export['menu_parent_network'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

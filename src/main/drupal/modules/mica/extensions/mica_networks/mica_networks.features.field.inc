@@ -73,6 +73,12 @@ function mica_networks_field_default_fields() {
           'type' => 'text_default',
           'weight' => '1',
         ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -91,7 +97,7 @@ function mica_networks_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '5',
         ),
         'right_area' => array(
           'label' => 'hidden',
@@ -182,6 +188,12 @@ function mica_networks_field_default_fields() {
           'type' => 'hidden',
           'weight' => '2',
         ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '7',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
@@ -200,7 +212,7 @@ function mica_networks_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'right_area' => array(
           'label' => 'above',
@@ -286,6 +298,12 @@ function mica_networks_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '11',
+        ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '8',
         ),
         'default' => array(
           'label' => 'above',
@@ -397,6 +415,12 @@ function mica_networks_field_default_fields() {
           'type' => 'hidden',
           'weight' => '10',
         ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '9',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -499,6 +523,12 @@ function mica_networks_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '9',
+        ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '10',
         ),
         'default' => array(
           'label' => 'above',
@@ -619,6 +649,12 @@ function mica_networks_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '4',
+        ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '6',
         ),
         'default' => array(
           'label' => 'above',
@@ -745,6 +781,12 @@ function mica_networks_field_default_fields() {
           'type' => 'hidden',
           'weight' => '3',
         ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'node_reference',
@@ -855,6 +897,12 @@ function mica_networks_field_default_fields() {
           'type' => 'image',
           'weight' => '0',
         ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
         'default' => array(
           'label' => 'hidden',
           'module' => 'image',
@@ -879,7 +927,7 @@ function mica_networks_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'right_area' => array(
           'label' => 'hidden',
@@ -998,6 +1046,13 @@ function mica_networks_field_default_fields() {
           'type' => 'hidden',
           'weight' => '6',
         ),
+        'center_area' => array(
+          'label' => 'above',
+          'module' => 'mica_core',
+          'settings' => array(),
+          'type' => 'node_reference_url_or_plain',
+          'weight' => '0',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'mica_core',
@@ -1014,9 +1069,8 @@ function mica_networks_field_default_fields() {
         ),
         'left_area' => array(
           'label' => 'above',
-          'module' => 'mica_core',
           'settings' => array(),
-          'type' => 'node_reference_url_or_plain',
+          'type' => 'hidden',
           'weight' => '2',
         ),
         'right_area' => array(
@@ -1103,6 +1157,12 @@ function mica_networks_field_default_fields() {
           'type' => 'hidden',
           'weight' => '7',
         ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'text',
@@ -1121,7 +1181,7 @@ function mica_networks_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'right_area' => array(
           'label' => 'above',
@@ -1209,6 +1269,12 @@ function mica_networks_field_default_fields() {
           'type' => 'hidden',
           'weight' => '5',
         ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
+        ),
         'default' => array(
           'label' => 'above',
           'module' => 'link',
@@ -1227,7 +1293,7 @@ function mica_networks_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'right_area' => array(
           'label' => 'above',
@@ -1327,6 +1393,12 @@ function mica_networks_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '4',
+        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1337,7 +1409,7 @@ function mica_networks_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '3',
         ),
         'right_area' => array(
           'label' => 'above',
