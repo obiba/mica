@@ -32,15 +32,12 @@ projects[cck_select_other] = 1.0
 
 projects[chain_menu_access] = 1.0
 
-projects[ckeditor][download][type] = git
-projects[ckeditor][download][revision] = b4d71f8
-projects[ckeditor][download][branch] = 7.x-1.x
+projects[ckeditor] = 1.12
 
 projects[collapsiblock][download][type] = git
 projects[collapsiblock][download][revision] = 36f4280
 projects[collapsiblock][download][branch] = 7.x-1.x
 projects[collapsiblock][patch][1475244] = http://drupal.org/files/api-function-and-constants-patch1301454-patch1429956.patch
-
 
 projects[cnr][download][type] = git
 projects[cnr][download][revision] = 89f859e
@@ -50,7 +47,7 @@ projects[content_access] = 1.2-beta1
 
 projects[content_taxonomy] = 1.0-beta1
 
-projects[ctools] = 1.2
+projects[ctools][version] = 1.2
 projects[ctools][patch][1494860] = http://drupal.org/files/ctools-dependent-js-broken-with-jquery-1.7-1494860-30.patch
 
 projects[date] = 2.6
@@ -154,7 +151,7 @@ projects[module_filter] = 1.7
 projects[multiselect][version] = 1.9
 projects[multiselect][patch][1670224] = http://drupal.org/files/options_translations-1670224-2.patch
 
-projects[name] = 1.5
+projects[name][version] = 1.7
 projects[name][patch][1788156] = http://drupal.org/files/name_title_translation-1788156-1.patch
 
 projects[noderefcreate][download][type] = git
@@ -185,8 +182,7 @@ projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_trans
 projects[search_api][patch][1471310] = http://drupal.org/files/1471310--unset-field-8_0.patch
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 
-projects[search_api_combined] = 1.0
-projects[search_api_combined][patch][1845638] = http://drupal.org/files/undefined-index-1845638-6.patch
+projects[search_api_combined] = 1.1
 
 projects[search_api_page] = 1.0-beta2
 

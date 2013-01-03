@@ -9,3 +9,4 @@ dependencies[] = strongarm
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:1
 features[variable][] = theme_mica_bootstrap_settings
+features[variable][] = theme_mica_subtheme_settings

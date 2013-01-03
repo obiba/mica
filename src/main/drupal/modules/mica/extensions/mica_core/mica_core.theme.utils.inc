@@ -10,7 +10,7 @@ function mica_core_get_current_theme() {
   if (!empty($custom_theme)) {
     return $custom_theme;
   }
-  return $theme ? $theme : variable_get('theme_default', 'mica_bootstrap');
+  return $theme ? $theme : variable_get('theme_default', 'mica_subtheme');
 }
 
 /**

@@ -48,7 +48,7 @@ function mica_core_find_indexes_by_bundle() {
 function mica_core_configure_facet_blocks($search_index, $content_type, array $config, $page,
   $current_search_delta = NULL, $region = 'sidebar_first') {
 
-  $theme_default = variable_get('theme_default', 'mica_bootstrap');
+  $theme_default = variable_get('theme_default', 'mica_subtheme');
   $search_index = 'search_api@' . $search_index;
 
   // configure current search
@@ -188,7 +188,7 @@ function mica_core_configure_facet_blocks($search_index, $content_type, array $c
  */
 function mica_core_enable_facet_block($facet_delta, $block_title, $page, $region = 'sidebar_first') {
 
-  $theme_default = variable_get('theme_default', 'mica_bootstrap');
+  $theme_default = variable_get('theme_default', 'mica_subtheme');
 
   $max_weight = db_query(
     "SELECT MAX(weight) as max_weight FROM {block} WHERE module = :module AND theme = :theme and region = :region",

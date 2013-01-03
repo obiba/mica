@@ -8,7 +8,7 @@
 function mica_distribution_install() {
 
   // Enable some standard blocks.
-  $mica_theme = 'mica_bootstrap';
+  $mica_theme = 'mica_subtheme';
   $admin_theme = 'seven';
 
   _mica_distribution_set_default_themes($mica_theme, $admin_theme);
@@ -30,7 +30,7 @@ function mica_distribution_install() {
  */
 function _mica_distribution_set_default_themes($mica_theme, $admin_theme) {
 
-  $mica_theme = 'mica_bootstrap';
+  $mica_theme = 'mica_subtheme';
   theme_enable(array($mica_theme));
   variable_set('theme_default', $mica_theme);
   cache_clear_all();
@@ -143,7 +143,7 @@ function _mica_distribution_no_region($module, $delta, $theme = 'seven') {
     ->execute();
 }
 
-function _mica_distribution_default_block($mica_theme = 'mica_bootstrap', $admin_theme = 'seven') {
+function _mica_distribution_default_block($mica_theme = 'mica_subtheme', $admin_theme = 'seven') {
   $values = array(
     array(
       'module' => 'user',
@@ -384,7 +384,7 @@ function mica_distribution_update_7144(&$sandbox) {
   registry_rebuild(); // At lower level
 }
 
-function _mica_distribution_set_block_title($title, $module, $delta, $mica_theme = 'mica_bootstrap') {
+function _mica_distribution_set_block_title($title, $module, $delta, $mica_theme = 'mica_subtheme') {
   db_update('block')
     ->fields(array('title' => $title))
     ->condition('module', $module)

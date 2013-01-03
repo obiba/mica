@@ -6282,10 +6282,6 @@ a.download-link:hover {
   color: #495961;
 }
 
-table thead tr th.views-field {
-  vertical-align: middle;
-}
-
 .field-group-more > h3 {
   margin: 5px 0 0 20px;
   font-size: 13px;
@@ -6307,6 +6303,10 @@ table thead tr th.views-field {
 
 .field-group-more .field-group-format-wrapper .field-item {
   margin-left: 20px;
+}
+
+table thead tr th.views-field {
+  vertical-align: middle;
 }
 
 #navbar .embedded-form {

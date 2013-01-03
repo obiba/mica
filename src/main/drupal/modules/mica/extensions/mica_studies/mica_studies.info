@@ -7,7 +7,6 @@ dependencies[] = advanced_help
 dependencies[] = auto_entitylabel
 dependencies[] = autocomplete_deluxe
 dependencies[] = block
-dependencies[] = ckeditor
 dependencies[] = collapsiblock
 dependencies[] = comment
 dependencies[] = content_access

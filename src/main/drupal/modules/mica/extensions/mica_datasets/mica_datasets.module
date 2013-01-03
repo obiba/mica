@@ -462,7 +462,7 @@ function mica_datasets_prepare_prettify() {
 
   static $paths = array();
 
-  $prettify_dir = mica_core_get_current_theme() === 'mica_bootstrap' ? 'prettify_bootstrap' : 'prettify';
+  $prettify_dir = mica_core_get_current_theme() === 'mica_subtheme' ? 'prettify_bootstrap' : 'prettify';
 
   if (empty($paths) || !isset($paths['css']) || !isset($paths['js'])) {
 

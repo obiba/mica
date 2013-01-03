@@ -19,8 +19,7 @@ function mica_community_features_rebuild_completed() {
 }
 
 function _mica_community_create_default_content() {
-  $community_menu = mica_core_create_menu(st('Community'), '<firstchild>', '<firstchild>', FALSE, TRUE, 45, NULL);
-  mica_core_create_menu(st('Overview'), 'community', 'community', FALSE, TRUE, 5, NULL, $community_menu['mlid']);
+  $community_menu = mica_core_create_menu(st('Community'), 'community', 'community', FALSE, TRUE, 45, NULL);
   mica_core_create_menu(st('News'), 'news', 'news', FALSE, FALSE, 10, NULL, $community_menu['mlid']);
   $event_menu = mica_core_create_menu(st('Events'), 'events', 'events', FALSE, TRUE, 15, NULL, $community_menu['mlid']);
   mica_core_create_menu(st('Calendar'), 'calendar-field-event-date/year', 'calendar-field-event-date/year', FALSE, FALSE, 0, 'events');
