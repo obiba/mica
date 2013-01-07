@@ -300,7 +300,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
 
             if (isset($link['#link']['path']) && $link['#link']['path'] == 'node/%/dataset-harmonization') {
 
-              //Hide Harmonization button when its a study dataset
+              //Hide Harmonization button when its a study dataset or has no harmonization
               $dataset_wrapper = entity_metadata_wrapper('node', $node);
 
               if ($dataset_wrapper->field_dataset_type->value() === 'study') {

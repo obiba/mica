@@ -227,6 +227,7 @@ projects[workbench] = 1.1
 projects[workbench_moderation][version] = 1.2
 projects[workbench_moderation][patch][1245590] = http://drupal.org/files/retaintitle-1245590-12.patch
 
+projects[xmlsitemap] = 2.0-rc2
 
 ; Themes
 ; ---------
