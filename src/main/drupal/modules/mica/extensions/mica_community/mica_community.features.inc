@@ -30,7 +30,7 @@ function mica_community_ctools_plugin_api() {
  * Implements hook_views_api().
  */
 function mica_community_views_api() {
-  return array("version" => "3.0");
+  return array("api" => "3.0");
 }
 
 /**

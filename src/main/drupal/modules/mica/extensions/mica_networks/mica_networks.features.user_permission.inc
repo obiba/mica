@@ -14,10 +14,10 @@ function mica_networks_user_default_permissions() {
   $permissions['create network content'] = array(
     'name' => 'create network content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'network administrator',
-      3 => 'network reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'network administrator' => 'network administrator',
+      'network reviewer' => 'network reviewer',
     ),
     'module' => 'node',
   );
@@ -26,9 +26,9 @@ function mica_networks_user_default_permissions() {
   $permissions['delete any network content'] = array(
     'name' => 'delete any network content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'network reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'network reviewer' => 'network reviewer',
     ),
     'module' => 'node',
   );
@@ -37,10 +37,10 @@ function mica_networks_user_default_permissions() {
   $permissions['delete own network content'] = array(
     'name' => 'delete own network content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'network administrator',
-      3 => 'network reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'network administrator' => 'network administrator',
+      'network reviewer' => 'network reviewer',
     ),
     'module' => 'node',
   );
@@ -49,9 +49,9 @@ function mica_networks_user_default_permissions() {
   $permissions['edit any network content'] = array(
     'name' => 'edit any network content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'network reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'network reviewer' => 'network reviewer',
     ),
     'module' => 'node',
   );
@@ -60,10 +60,10 @@ function mica_networks_user_default_permissions() {
   $permissions['edit own network content'] = array(
     'name' => 'edit own network content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'network administrator',
-      3 => 'network reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'network administrator' => 'network administrator',
+      'network reviewer' => 'network reviewer',
     ),
     'module' => 'node',
   );
@@ -72,9 +72,9 @@ function mica_networks_user_default_permissions() {
   $permissions['view any unpublished network content'] = array(
     'name' => 'view any unpublished network content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'network reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'network reviewer' => 'network reviewer',
     ),
     'module' => 'view_unpublished',
   );

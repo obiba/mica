@@ -67,12 +67,24 @@ projects[facetapi_i18n] = 1.0-beta2
 
 ;projects[] = examples
 
-projects[features][version] = 1.0
-projects[features][patch][981248] = http://drupal.org/files/hook_features_post_install-981248-58.patch
+; feature-1.x
+;projects[features][version] = 1.0
+;projects[features][patch][981248] = http://drupal.org/files/hook_features_post_install-981248-58.patch
+;projects[features][patch][656312] = http://drupal.org/files/keep_negative_permissions-656312-17.patch
+;projects[features][patch][1689598] = http://drupal.org/files/field_display_label_support.patch
+
+; feature-2.x
+projects[features][download][type] = git
+projects[features][download][revision] = 63db687
+projects[features][download][branch] = 7.x-2.x
+projects[features][patch][1844566] = http://drupal.org/files/features_1844566_1_invoke-hooks-for-all-components.patch
 projects[features][patch][656312] = http://drupal.org/files/keep_negative_permissions-656312-17.patch
 projects[features][patch][1689598] = http://drupal.org/files/field_display_label_support.patch
 
-projects[features_override] = 2.0-beta1
+projects[features_override][download][type] = git
+projects[features_override][download][revision] = 602e87b
+projects[features_override][download][branch] = 7.x-2.x
+projects[features_override][patch][1648078] = http://drupal.org/files/invalid_argument_supplied-1648078-10.patch
 
 projects[feeds][version] = 2.0-alpha7
 projects[feeds][patch][1107522-59] = http://drupal.org/files/feeds-empty-behavior-1107522-59.patch
@@ -188,8 +200,7 @@ projects[search_api_ranges][download][branch] = 7.x-1.x
 projects[search_api_ranges][patch][1450772] = http://drupal.org/files/force-numeric-and-config-for-no-slider-no-commit-on-change-1450772-1_1.patch
 projects[search_api_ranges][patch][1460410] = http://drupal.org/files/max-inclusive.patch
 
-projects[search_api_solr][version] = 1.0-rc2
-projects[search_api_solr][patch][1276970] = http://drupal.org/files/solr_queries_post-1276970-10.patch
+projects[search_api_solr] = 1.0-rc3
 
 projects[services] = 3.3
 

@@ -14,7 +14,7 @@ function mica_community_user_default_permissions() {
   $permissions['clear csv_event_import feeds'] = array(
     'name' => 'clear csv_event_import feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -23,7 +23,7 @@ function mica_community_user_default_permissions() {
   $permissions['clear csv_publication_import feeds'] = array(
     'name' => 'clear csv_publication_import feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -32,8 +32,8 @@ function mica_community_user_default_permissions() {
   $permissions['create blog content'] = array(
     'name' => 'create blog content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -42,9 +42,9 @@ function mica_community_user_default_permissions() {
   $permissions['create event content'] = array(
     'name' => 'create event content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -53,9 +53,9 @@ function mica_community_user_default_permissions() {
   $permissions['create forum content'] = array(
     'name' => 'create forum content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'authenticated user',
-      2 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -64,9 +64,9 @@ function mica_community_user_default_permissions() {
   $permissions['create publication content'] = array(
     'name' => 'create publication content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -75,8 +75,8 @@ function mica_community_user_default_permissions() {
   $permissions['delete any blog content'] = array(
     'name' => 'delete any blog content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -85,8 +85,8 @@ function mica_community_user_default_permissions() {
   $permissions['delete any event content'] = array(
     'name' => 'delete any event content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -95,8 +95,8 @@ function mica_community_user_default_permissions() {
   $permissions['delete any forum content'] = array(
     'name' => 'delete any forum content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -105,8 +105,8 @@ function mica_community_user_default_permissions() {
   $permissions['delete any publication content'] = array(
     'name' => 'delete any publication content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -115,8 +115,8 @@ function mica_community_user_default_permissions() {
   $permissions['delete own blog content'] = array(
     'name' => 'delete own blog content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -125,9 +125,9 @@ function mica_community_user_default_permissions() {
   $permissions['delete own event content'] = array(
     'name' => 'delete own event content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -136,8 +136,8 @@ function mica_community_user_default_permissions() {
   $permissions['delete own forum content'] = array(
     'name' => 'delete own forum content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'authenticated user',
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -146,8 +146,8 @@ function mica_community_user_default_permissions() {
   $permissions['delete own publication content'] = array(
     'name' => 'delete own publication content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'authenticated user',
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -156,8 +156,8 @@ function mica_community_user_default_permissions() {
   $permissions['edit any blog content'] = array(
     'name' => 'edit any blog content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -166,8 +166,8 @@ function mica_community_user_default_permissions() {
   $permissions['edit any event content'] = array(
     'name' => 'edit any event content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -176,8 +176,8 @@ function mica_community_user_default_permissions() {
   $permissions['edit any forum content'] = array(
     'name' => 'edit any forum content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -186,8 +186,8 @@ function mica_community_user_default_permissions() {
   $permissions['edit any publication content'] = array(
     'name' => 'edit any publication content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -196,8 +196,8 @@ function mica_community_user_default_permissions() {
   $permissions['edit own blog content'] = array(
     'name' => 'edit own blog content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -206,9 +206,9 @@ function mica_community_user_default_permissions() {
   $permissions['edit own event content'] = array(
     'name' => 'edit own event content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -217,8 +217,8 @@ function mica_community_user_default_permissions() {
   $permissions['edit own forum content'] = array(
     'name' => 'edit own forum content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'authenticated user',
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -227,8 +227,8 @@ function mica_community_user_default_permissions() {
   $permissions['edit own publication content'] = array(
     'name' => 'edit own publication content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'authenticated user',
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -237,7 +237,7 @@ function mica_community_user_default_permissions() {
   $permissions['import csv_publication_import feeds'] = array(
     'name' => 'import csv_publication_import feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -246,7 +246,7 @@ function mica_community_user_default_permissions() {
   $permissions['tamper csv_event_import'] = array(
     'name' => 'tamper csv_event_import',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds_tamper',
   );
@@ -255,7 +255,7 @@ function mica_community_user_default_permissions() {
   $permissions['tamper csv_publication_import'] = array(
     'name' => 'tamper csv_publication_import',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds_tamper',
   );
@@ -264,7 +264,7 @@ function mica_community_user_default_permissions() {
   $permissions['view any unpublished blog content'] = array(
     'name' => 'view any unpublished blog content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'view_unpublished',
   );
@@ -273,7 +273,7 @@ function mica_community_user_default_permissions() {
   $permissions['view any unpublished event content'] = array(
     'name' => 'view any unpublished event content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'view_unpublished',
   );
@@ -282,7 +282,7 @@ function mica_community_user_default_permissions() {
   $permissions['view any unpublished publication content'] = array(
     'name' => 'view any unpublished publication content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'view_unpublished',
   );

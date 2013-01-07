@@ -14,9 +14,9 @@ function mica_studies_user_default_permissions() {
   $permissions['access comments'] = array(
     'name' => 'access comments',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'anonymous user',
-      2 => 'authenticated user',
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'comment',
   );
@@ -25,9 +25,9 @@ function mica_studies_user_default_permissions() {
   $permissions['access content'] = array(
     'name' => 'access content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'anonymous user',
-      2 => 'authenticated user',
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -36,7 +36,7 @@ function mica_studies_user_default_permissions() {
   $permissions['access private fields'] = array(
     'name' => 'access private fields',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'field_permissions',
   );
@@ -45,9 +45,9 @@ function mica_studies_user_default_permissions() {
   $permissions['access search_api_page'] = array(
     'name' => 'access search_api_page',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'anonymous user',
-      2 => 'authenticated user',
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'search_api_page',
   );
@@ -56,12 +56,12 @@ function mica_studies_user_default_permissions() {
   $permissions['access toolbar'] = array(
     'name' => 'access toolbar',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
-      3 => 'dataset reviewer',
-      4 => 'study administrator',
-      5 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
+      'dataset reviewer' => 'dataset reviewer',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'toolbar',
   );
@@ -70,12 +70,12 @@ function mica_studies_user_default_permissions() {
   $permissions['access workbench'] = array(
     'name' => 'access workbench',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
-      3 => 'dataset reviewer',
-      4 => 'study administrator',
-      5 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
+      'dataset reviewer' => 'dataset reviewer',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'workbench',
   );
@@ -84,7 +84,7 @@ function mica_studies_user_default_permissions() {
   $permissions['administer content types'] = array(
     'name' => 'administer content types',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -93,7 +93,7 @@ function mica_studies_user_default_permissions() {
   $permissions['administer feeds'] = array(
     'name' => 'administer feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -102,7 +102,7 @@ function mica_studies_user_default_permissions() {
   $permissions['administer feeds_tamper'] = array(
     'name' => 'administer feeds_tamper',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds_tamper',
   );
@@ -111,7 +111,7 @@ function mica_studies_user_default_permissions() {
   $permissions['administer field permissions'] = array(
     'name' => 'administer field permissions',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'field_permissions',
   );
@@ -120,7 +120,7 @@ function mica_studies_user_default_permissions() {
   $permissions['administer module filter'] = array(
     'name' => 'administer module filter',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'module_filter',
   );
@@ -129,8 +129,8 @@ function mica_studies_user_default_permissions() {
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -139,7 +139,7 @@ function mica_studies_user_default_permissions() {
   $permissions['administer page manager'] = array(
     'name' => 'administer page manager',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'page_manager',
   );
@@ -148,7 +148,7 @@ function mica_studies_user_default_permissions() {
   $permissions['administer search'] = array(
     'name' => 'administer search',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'search',
   );
@@ -157,7 +157,7 @@ function mica_studies_user_default_permissions() {
   $permissions['administer search_api'] = array(
     'name' => 'administer search_api',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'search_api',
   );
@@ -166,7 +166,7 @@ function mica_studies_user_default_permissions() {
   $permissions['administer workbench'] = array(
     'name' => 'administer workbench',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'workbench',
   );
@@ -175,7 +175,7 @@ function mica_studies_user_default_permissions() {
   $permissions['administer workbench moderation'] = array(
     'name' => 'administer workbench moderation',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'workbench_moderation',
   );
@@ -184,7 +184,7 @@ function mica_studies_user_default_permissions() {
   $permissions['bypass node access'] = array(
     'name' => 'bypass node access',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -193,7 +193,7 @@ function mica_studies_user_default_permissions() {
   $permissions['bypass workbench moderation'] = array(
     'name' => 'bypass workbench moderation',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'workbench_moderation',
   );
@@ -202,7 +202,7 @@ function mica_studies_user_default_permissions() {
   $permissions['clear csv_contact_import feeds'] = array(
     'name' => 'clear csv_contact_import feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -211,7 +211,7 @@ function mica_studies_user_default_permissions() {
   $permissions['clear csv_documents_import feeds'] = array(
     'name' => 'clear csv_documents_import feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -220,7 +220,7 @@ function mica_studies_user_default_permissions() {
   $permissions['clear csv_study_import feeds'] = array(
     'name' => 'clear csv_study_import feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -229,8 +229,8 @@ function mica_studies_user_default_permissions() {
   $permissions['create article content'] = array(
     'name' => 'create article content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -239,10 +239,10 @@ function mica_studies_user_default_permissions() {
   $permissions['create contact content'] = array(
     'name' => 'create contact content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -251,8 +251,8 @@ function mica_studies_user_default_permissions() {
   $permissions['create documents content'] = array(
     'name' => 'create documents content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -261,10 +261,10 @@ function mica_studies_user_default_permissions() {
   $permissions['create field_authorising_date'] = array(
     'name' => 'create field_authorising_date',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -273,10 +273,10 @@ function mica_studies_user_default_permissions() {
   $permissions['create field_authorising_date_m'] = array(
     'name' => 'create field_authorising_date_m',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -285,10 +285,10 @@ function mica_studies_user_default_permissions() {
   $permissions['create field_authorising_person_name'] = array(
     'name' => 'create field_authorising_person_name',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -297,10 +297,10 @@ function mica_studies_user_default_permissions() {
   $permissions['create field_authorising_person_name_m'] = array(
     'name' => 'create field_authorising_person_name_m',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -309,10 +309,10 @@ function mica_studies_user_default_permissions() {
   $permissions['create field_authorization_maelstrom'] = array(
     'name' => 'create field_authorization_maelstrom',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -321,10 +321,10 @@ function mica_studies_user_default_permissions() {
   $permissions['create field_authorization_specific'] = array(
     'name' => 'create field_authorization_specific',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -333,7 +333,7 @@ function mica_studies_user_default_permissions() {
   $permissions['create field_questionnaires'] = array(
     'name' => 'create field_questionnaires',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'field_permissions',
   );
@@ -342,8 +342,8 @@ function mica_studies_user_default_permissions() {
   $permissions['create page content'] = array(
     'name' => 'create page content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -352,7 +352,7 @@ function mica_studies_user_default_permissions() {
   $permissions['create panel content'] = array(
     'name' => 'create panel content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -361,10 +361,10 @@ function mica_studies_user_default_permissions() {
   $permissions['create study content'] = array(
     'name' => 'create study content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -373,8 +373,8 @@ function mica_studies_user_default_permissions() {
   $permissions['delete any article content'] = array(
     'name' => 'delete any article content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -383,9 +383,9 @@ function mica_studies_user_default_permissions() {
   $permissions['delete any contact content'] = array(
     'name' => 'delete any contact content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -394,8 +394,8 @@ function mica_studies_user_default_permissions() {
   $permissions['delete any documents content'] = array(
     'name' => 'delete any documents content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -404,8 +404,8 @@ function mica_studies_user_default_permissions() {
   $permissions['delete any page content'] = array(
     'name' => 'delete any page content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -414,7 +414,7 @@ function mica_studies_user_default_permissions() {
   $permissions['delete any panel content'] = array(
     'name' => 'delete any panel content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -423,8 +423,8 @@ function mica_studies_user_default_permissions() {
   $permissions['delete any study content'] = array(
     'name' => 'delete any study content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -433,8 +433,8 @@ function mica_studies_user_default_permissions() {
   $permissions['delete own article content'] = array(
     'name' => 'delete own article content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -443,10 +443,10 @@ function mica_studies_user_default_permissions() {
   $permissions['delete own contact content'] = array(
     'name' => 'delete own contact content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -455,8 +455,8 @@ function mica_studies_user_default_permissions() {
   $permissions['delete own documents content'] = array(
     'name' => 'delete own documents content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -465,8 +465,8 @@ function mica_studies_user_default_permissions() {
   $permissions['delete own page content'] = array(
     'name' => 'delete own page content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -475,7 +475,7 @@ function mica_studies_user_default_permissions() {
   $permissions['delete own panel content'] = array(
     'name' => 'delete own panel content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -484,8 +484,8 @@ function mica_studies_user_default_permissions() {
   $permissions['delete own study content'] = array(
     'name' => 'delete own study content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -494,8 +494,8 @@ function mica_studies_user_default_permissions() {
   $permissions['delete revisions'] = array(
     'name' => 'delete revisions',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -504,8 +504,8 @@ function mica_studies_user_default_permissions() {
   $permissions['edit any article content'] = array(
     'name' => 'edit any article content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -514,9 +514,9 @@ function mica_studies_user_default_permissions() {
   $permissions['edit any contact content'] = array(
     'name' => 'edit any contact content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -525,8 +525,8 @@ function mica_studies_user_default_permissions() {
   $permissions['edit any documents content'] = array(
     'name' => 'edit any documents content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -535,8 +535,8 @@ function mica_studies_user_default_permissions() {
   $permissions['edit any page content'] = array(
     'name' => 'edit any page content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -545,7 +545,7 @@ function mica_studies_user_default_permissions() {
   $permissions['edit any panel content'] = array(
     'name' => 'edit any panel content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -554,9 +554,9 @@ function mica_studies_user_default_permissions() {
   $permissions['edit any study content'] = array(
     'name' => 'edit any study content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -565,9 +565,9 @@ function mica_studies_user_default_permissions() {
   $permissions['edit field_authorising_date'] = array(
     'name' => 'edit field_authorising_date',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -576,9 +576,9 @@ function mica_studies_user_default_permissions() {
   $permissions['edit field_authorising_date_m'] = array(
     'name' => 'edit field_authorising_date_m',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -587,9 +587,9 @@ function mica_studies_user_default_permissions() {
   $permissions['edit field_authorising_person_name'] = array(
     'name' => 'edit field_authorising_person_name',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -598,9 +598,9 @@ function mica_studies_user_default_permissions() {
   $permissions['edit field_authorising_person_name_m'] = array(
     'name' => 'edit field_authorising_person_name_m',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -609,9 +609,9 @@ function mica_studies_user_default_permissions() {
   $permissions['edit field_authorization_maelstrom'] = array(
     'name' => 'edit field_authorization_maelstrom',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -620,9 +620,9 @@ function mica_studies_user_default_permissions() {
   $permissions['edit field_authorization_specific'] = array(
     'name' => 'edit field_authorization_specific',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -631,7 +631,7 @@ function mica_studies_user_default_permissions() {
   $permissions['edit field_questionnaires'] = array(
     'name' => 'edit field_questionnaires',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'field_permissions',
   );
@@ -640,8 +640,8 @@ function mica_studies_user_default_permissions() {
   $permissions['edit own article content'] = array(
     'name' => 'edit own article content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -650,10 +650,10 @@ function mica_studies_user_default_permissions() {
   $permissions['edit own contact content'] = array(
     'name' => 'edit own contact content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -662,8 +662,8 @@ function mica_studies_user_default_permissions() {
   $permissions['edit own documents content'] = array(
     'name' => 'edit own documents content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -672,10 +672,10 @@ function mica_studies_user_default_permissions() {
   $permissions['edit own field_authorising_date'] = array(
     'name' => 'edit own field_authorising_date',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -684,10 +684,10 @@ function mica_studies_user_default_permissions() {
   $permissions['edit own field_authorising_date_m'] = array(
     'name' => 'edit own field_authorising_date_m',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -696,10 +696,10 @@ function mica_studies_user_default_permissions() {
   $permissions['edit own field_authorising_person_name'] = array(
     'name' => 'edit own field_authorising_person_name',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -708,10 +708,10 @@ function mica_studies_user_default_permissions() {
   $permissions['edit own field_authorising_person_name_m'] = array(
     'name' => 'edit own field_authorising_person_name_m',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -720,10 +720,10 @@ function mica_studies_user_default_permissions() {
   $permissions['edit own field_authorization_maelstrom'] = array(
     'name' => 'edit own field_authorization_maelstrom',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -732,10 +732,10 @@ function mica_studies_user_default_permissions() {
   $permissions['edit own field_authorization_specific'] = array(
     'name' => 'edit own field_authorization_specific',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -744,7 +744,7 @@ function mica_studies_user_default_permissions() {
   $permissions['edit own field_questionnaires'] = array(
     'name' => 'edit own field_questionnaires',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'field_permissions',
   );
@@ -753,8 +753,8 @@ function mica_studies_user_default_permissions() {
   $permissions['edit own page content'] = array(
     'name' => 'edit own page content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -763,7 +763,7 @@ function mica_studies_user_default_permissions() {
   $permissions['edit own panel content'] = array(
     'name' => 'edit own panel content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -772,10 +772,10 @@ function mica_studies_user_default_permissions() {
   $permissions['edit own study content'] = array(
     'name' => 'edit own study content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -784,7 +784,7 @@ function mica_studies_user_default_permissions() {
   $permissions['export data'] = array(
     'name' => 'export data',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'mica_studies',
   );
@@ -793,7 +793,7 @@ function mica_studies_user_default_permissions() {
   $permissions['import csv_contact_import feeds'] = array(
     'name' => 'import csv_contact_import feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -802,7 +802,7 @@ function mica_studies_user_default_permissions() {
   $permissions['import csv_documents_import feeds'] = array(
     'name' => 'import csv_documents_import feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -811,7 +811,7 @@ function mica_studies_user_default_permissions() {
   $permissions['import csv_study_import feeds'] = array(
     'name' => 'import csv_study_import feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -820,12 +820,12 @@ function mica_studies_user_default_permissions() {
   $permissions['moderate content from draft to needs_review'] = array(
     'name' => 'moderate content from draft to needs_review',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
-      3 => 'dataset reviewer',
-      4 => 'study administrator',
-      5 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
+      'dataset reviewer' => 'dataset reviewer',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -834,10 +834,10 @@ function mica_studies_user_default_permissions() {
   $permissions['moderate content from needs_review to draft'] = array(
     'name' => 'moderate content from needs_review to draft',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset reviewer',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset reviewer' => 'dataset reviewer',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -846,10 +846,10 @@ function mica_studies_user_default_permissions() {
   $permissions['moderate content from needs_review to published'] = array(
     'name' => 'moderate content from needs_review to published',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset reviewer',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset reviewer' => 'dataset reviewer',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -858,8 +858,8 @@ function mica_studies_user_default_permissions() {
   $permissions['post comments'] = array(
     'name' => 'post comments',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'authenticated user',
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'comment',
   );
@@ -868,10 +868,10 @@ function mica_studies_user_default_permissions() {
   $permissions['revert revisions'] = array(
     'name' => 'revert revisions',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset reviewer',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset reviewer' => 'dataset reviewer',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -880,9 +880,9 @@ function mica_studies_user_default_permissions() {
   $permissions['search content'] = array(
     'name' => 'search content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'anonymous user',
-      2 => 'authenticated user',
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'search',
   );
@@ -891,8 +891,8 @@ function mica_studies_user_default_permissions() {
   $permissions['skip comment approval'] = array(
     'name' => 'skip comment approval',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'authenticated user',
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'comment',
   );
@@ -901,7 +901,7 @@ function mica_studies_user_default_permissions() {
   $permissions['tamper csv_contact_import'] = array(
     'name' => 'tamper csv_contact_import',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds_tamper',
   );
@@ -910,7 +910,7 @@ function mica_studies_user_default_permissions() {
   $permissions['tamper csv_documents_import'] = array(
     'name' => 'tamper csv_documents_import',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds_tamper',
   );
@@ -919,7 +919,7 @@ function mica_studies_user_default_permissions() {
   $permissions['tamper csv_study_import'] = array(
     'name' => 'tamper csv_study_import',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds_tamper',
   );
@@ -928,9 +928,9 @@ function mica_studies_user_default_permissions() {
   $permissions['use advanced search'] = array(
     'name' => 'use advanced search',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'anonymous user',
-      2 => 'authenticated user',
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'search',
   );
@@ -939,7 +939,7 @@ function mica_studies_user_default_permissions() {
   $permissions['use page manager'] = array(
     'name' => 'use page manager',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'page_manager',
   );
@@ -948,12 +948,12 @@ function mica_studies_user_default_permissions() {
   $permissions['use workbench_moderation my drafts tab'] = array(
     'name' => 'use workbench_moderation my drafts tab',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
-      3 => 'dataset reviewer',
-      4 => 'study administrator',
-      5 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
+      'dataset reviewer' => 'dataset reviewer',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -962,12 +962,12 @@ function mica_studies_user_default_permissions() {
   $permissions['use workbench_moderation needs review tab'] = array(
     'name' => 'use workbench_moderation needs review tab',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
-      3 => 'dataset reviewer',
-      4 => 'study administrator',
-      5 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
+      'dataset reviewer' => 'dataset reviewer',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -976,10 +976,10 @@ function mica_studies_user_default_permissions() {
   $permissions['view all unpublished content'] = array(
     'name' => 'view all unpublished content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset reviewer',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset reviewer' => 'dataset reviewer',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -988,9 +988,9 @@ function mica_studies_user_default_permissions() {
   $permissions['view any unpublished contact content'] = array(
     'name' => 'view any unpublished contact content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'study administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'view_unpublished',
   );
@@ -999,8 +999,8 @@ function mica_studies_user_default_permissions() {
   $permissions['view any unpublished content'] = array(
     'name' => 'view any unpublished content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'view_unpublished',
   );
@@ -1009,7 +1009,7 @@ function mica_studies_user_default_permissions() {
   $permissions['view any unpublished documents content'] = array(
     'name' => 'view any unpublished documents content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'view_unpublished',
   );
@@ -1018,8 +1018,8 @@ function mica_studies_user_default_permissions() {
   $permissions['view any unpublished study content'] = array(
     'name' => 'view any unpublished study content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'study reviewer',
+      'administrator' => 'administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'view_unpublished',
   );
@@ -1028,9 +1028,9 @@ function mica_studies_user_default_permissions() {
   $permissions['view field_authorising_date'] = array(
     'name' => 'view field_authorising_date',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -1039,9 +1039,9 @@ function mica_studies_user_default_permissions() {
   $permissions['view field_authorising_date_m'] = array(
     'name' => 'view field_authorising_date_m',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -1050,9 +1050,9 @@ function mica_studies_user_default_permissions() {
   $permissions['view field_authorising_person_name'] = array(
     'name' => 'view field_authorising_person_name',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -1061,9 +1061,9 @@ function mica_studies_user_default_permissions() {
   $permissions['view field_authorising_person_name_m'] = array(
     'name' => 'view field_authorising_person_name_m',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -1072,9 +1072,9 @@ function mica_studies_user_default_permissions() {
   $permissions['view field_authorization_maelstrom'] = array(
     'name' => 'view field_authorization_maelstrom',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -1083,9 +1083,9 @@ function mica_studies_user_default_permissions() {
   $permissions['view field_authorization_specific'] = array(
     'name' => 'view field_authorization_specific',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -1094,7 +1094,7 @@ function mica_studies_user_default_permissions() {
   $permissions['view field_questionnaires'] = array(
     'name' => 'view field_questionnaires',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'field_permissions',
   );
@@ -1103,12 +1103,12 @@ function mica_studies_user_default_permissions() {
   $permissions['view moderation history'] = array(
     'name' => 'view moderation history',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
-      3 => 'dataset reviewer',
-      4 => 'study administrator',
-      5 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
+      'dataset reviewer' => 'dataset reviewer',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -1117,12 +1117,12 @@ function mica_studies_user_default_permissions() {
   $permissions['view moderation messages'] = array(
     'name' => 'view moderation messages',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
-      3 => 'dataset reviewer',
-      4 => 'study administrator',
-      5 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
+      'dataset reviewer' => 'dataset reviewer',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
   );
@@ -1131,10 +1131,10 @@ function mica_studies_user_default_permissions() {
   $permissions['view own field_authorising_date'] = array(
     'name' => 'view own field_authorising_date',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -1143,10 +1143,10 @@ function mica_studies_user_default_permissions() {
   $permissions['view own field_authorising_date_m'] = array(
     'name' => 'view own field_authorising_date_m',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -1155,10 +1155,10 @@ function mica_studies_user_default_permissions() {
   $permissions['view own field_authorising_person_name'] = array(
     'name' => 'view own field_authorising_person_name',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -1167,10 +1167,10 @@ function mica_studies_user_default_permissions() {
   $permissions['view own field_authorising_person_name_m'] = array(
     'name' => 'view own field_authorising_person_name_m',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -1179,10 +1179,10 @@ function mica_studies_user_default_permissions() {
   $permissions['view own field_authorization_maelstrom'] = array(
     'name' => 'view own field_authorization_maelstrom',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -1191,10 +1191,10 @@ function mica_studies_user_default_permissions() {
   $permissions['view own field_authorization_specific'] = array(
     'name' => 'view own field_authorization_specific',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
-      3 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'field_permissions',
   );
@@ -1203,7 +1203,7 @@ function mica_studies_user_default_permissions() {
   $permissions['view own field_questionnaires'] = array(
     'name' => 'view own field_questionnaires',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'field_permissions',
   );
@@ -1212,8 +1212,8 @@ function mica_studies_user_default_permissions() {
   $permissions['view own unpublished content'] = array(
     'name' => 'view own unpublished content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'authenticated user',
+      'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
   );
@@ -1222,12 +1222,12 @@ function mica_studies_user_default_permissions() {
   $permissions['view revisions'] = array(
     'name' => 'view revisions',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
-      3 => 'dataset reviewer',
-      4 => 'study administrator',
-      5 => 'study reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
+      'dataset reviewer' => 'dataset reviewer',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
   );

@@ -14,8 +14,8 @@ function mica_core_user_default_permissions() {
   $permissions['menu view unpublished'] = array(
     'name' => 'menu view unpublished',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'menu_view_unpublished',
   );

@@ -14,7 +14,7 @@ function mica_field_description_user_default_permissions() {
   $permissions['clear csv_field_description_import feeds'] = array(
     'name' => 'clear csv_field_description_import feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -23,7 +23,7 @@ function mica_field_description_user_default_permissions() {
   $permissions['create field_description content'] = array(
     'name' => 'create field_description content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -32,7 +32,7 @@ function mica_field_description_user_default_permissions() {
   $permissions['delete any field_description content'] = array(
     'name' => 'delete any field_description content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -41,7 +41,7 @@ function mica_field_description_user_default_permissions() {
   $permissions['delete own field_description content'] = array(
     'name' => 'delete own field_description content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -50,7 +50,7 @@ function mica_field_description_user_default_permissions() {
   $permissions['edit any field_description content'] = array(
     'name' => 'edit any field_description content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -59,7 +59,7 @@ function mica_field_description_user_default_permissions() {
   $permissions['edit own field_description content'] = array(
     'name' => 'edit own field_description content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -68,7 +68,7 @@ function mica_field_description_user_default_permissions() {
   $permissions['import csv_field_description_import feeds'] = array(
     'name' => 'import csv_field_description_import feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -77,7 +77,7 @@ function mica_field_description_user_default_permissions() {
   $permissions['tamper csv_field_description_import'] = array(
     'name' => 'tamper csv_field_description_import',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds_tamper',
   );

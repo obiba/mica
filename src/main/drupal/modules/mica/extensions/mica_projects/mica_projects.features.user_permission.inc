@@ -14,7 +14,7 @@ function mica_projects_user_default_permissions() {
   $permissions['access content overview'] = array(
     'name' => 'access content overview',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'node',
   );
@@ -23,7 +23,7 @@ function mica_projects_user_default_permissions() {
   $permissions['clear csv_project_import feeds'] = array(
     'name' => 'clear csv_project_import feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -32,7 +32,7 @@ function mica_projects_user_default_permissions() {
   $permissions['clear csv_teleconference_import feeds'] = array(
     'name' => 'clear csv_teleconference_import feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -41,9 +41,9 @@ function mica_projects_user_default_permissions() {
   $permissions['create project content'] = array(
     'name' => 'create project content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -52,9 +52,9 @@ function mica_projects_user_default_permissions() {
   $permissions['create teleconference content'] = array(
     'name' => 'create teleconference content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -63,8 +63,8 @@ function mica_projects_user_default_permissions() {
   $permissions['delete any project content'] = array(
     'name' => 'delete any project content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -73,8 +73,8 @@ function mica_projects_user_default_permissions() {
   $permissions['delete any teleconference content'] = array(
     'name' => 'delete any teleconference content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -83,9 +83,9 @@ function mica_projects_user_default_permissions() {
   $permissions['delete own project content'] = array(
     'name' => 'delete own project content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -94,9 +94,9 @@ function mica_projects_user_default_permissions() {
   $permissions['delete own teleconference content'] = array(
     'name' => 'delete own teleconference content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -105,8 +105,8 @@ function mica_projects_user_default_permissions() {
   $permissions['edit any project content'] = array(
     'name' => 'edit any project content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -115,8 +115,8 @@ function mica_projects_user_default_permissions() {
   $permissions['edit any teleconference content'] = array(
     'name' => 'edit any teleconference content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
     ),
     'module' => 'node',
   );
@@ -125,9 +125,9 @@ function mica_projects_user_default_permissions() {
   $permissions['edit own project content'] = array(
     'name' => 'edit own project content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -136,9 +136,9 @@ function mica_projects_user_default_permissions() {
   $permissions['edit own teleconference content'] = array(
     'name' => 'edit own teleconference content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'study administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
     ),
     'module' => 'node',
   );
@@ -147,7 +147,7 @@ function mica_projects_user_default_permissions() {
   $permissions['import csv_project_import feeds'] = array(
     'name' => 'import csv_project_import feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -156,7 +156,7 @@ function mica_projects_user_default_permissions() {
   $permissions['import csv_teleconference_import feeds'] = array(
     'name' => 'import csv_teleconference_import feeds',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds',
   );
@@ -165,7 +165,7 @@ function mica_projects_user_default_permissions() {
   $permissions['tamper csv_project_import'] = array(
     'name' => 'tamper csv_project_import',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds_tamper',
   );
@@ -174,7 +174,7 @@ function mica_projects_user_default_permissions() {
   $permissions['tamper csv_teleconference_import'] = array(
     'name' => 'tamper csv_teleconference_import',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'feeds_tamper',
   );
@@ -183,7 +183,7 @@ function mica_projects_user_default_permissions() {
   $permissions['view any unpublished project content'] = array(
     'name' => 'view any unpublished project content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'view_unpublished',
   );
@@ -192,7 +192,7 @@ function mica_projects_user_default_permissions() {
   $permissions['view any unpublished teleconference content'] = array(
     'name' => 'view any unpublished teleconference content',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'view_unpublished',
   );

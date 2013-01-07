@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * mica_datasets.features.user_permission.inc
+ * mica_query.features.user_permission.inc
  */
 
 /**
@@ -14,11 +14,11 @@ function mica_query_user_default_permissions() {
   $permissions['create edit delete own dataset query'] = array(
     'name' => 'create edit delete own dataset query',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
-      3 => 'dataset reviewer',
-      4 => 'researcher',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
+      'dataset reviewer' => 'dataset reviewer',
+      'researcher' => 'researcher',
     ),
     'module' => 'mica_query',
   );
@@ -27,9 +27,9 @@ function mica_query_user_default_permissions() {
   $permissions['edit delete any dataset query'] = array(
     'name' => 'edit delete any dataset query',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
     ),
     'module' => 'mica_query',
   );
@@ -38,10 +38,10 @@ function mica_query_user_default_permissions() {
   $permissions['publish dataset query'] = array(
     'name' => 'publish dataset query',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
-      3 => 'dataset reviewer',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
+      'dataset reviewer' => 'dataset reviewer',
     ),
     'module' => 'mica_query',
   );
@@ -50,11 +50,11 @@ function mica_query_user_default_permissions() {
   $permissions['view any dataset query'] = array(
     'name' => 'view any dataset query',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'consortium administrator',
-      2 => 'dataset administrator',
-      3 => 'dataset reviewer',
-      4 => 'researcher',
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
+      'dataset reviewer' => 'dataset reviewer',
+      'researcher' => 'researcher',
     ),
     'module' => 'mica_query',
   );

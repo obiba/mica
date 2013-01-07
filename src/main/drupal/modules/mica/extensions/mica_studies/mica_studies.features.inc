@@ -42,7 +42,7 @@ function mica_studies_ctools_plugin_api() {
  * Implements hook_views_api().
  */
 function mica_studies_views_api() {
-  return array("version" => "3.0");
+  return array("api" => "3.0");
 }
 
 /**
@@ -209,7 +209,9 @@ function mica_studies_default_search_api_index() {
         "field_investigators:field_postal_code" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_state" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_telephone" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_investigators:field_daco" : { "type" : "list\\u003Cboolean\\u003E" }
+        "field_investigators:field_daco" : { "type" : "list\\u003Cboolean\\u003E" },
+        "field_current_part_nb_date:value" : { "type" : "date" },
+        "field_current_samples_date:value" : { "type" : "date" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {

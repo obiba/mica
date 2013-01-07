@@ -54,6 +54,7 @@ dependencies[] = search_api_views
 dependencies[] = search_api_solr
 dependencies[] = superfish
 dependencies[] = features
+dependencies[] = features_override
 dependencies[] = strongarm
 dependencies[] = variable_admin
 dependencies[] = mica
