@@ -224,11 +224,8 @@ function mica_datasets_update_7600(&$update) {
   cache_clear_all();
 }
 
-/**
- * Update Mica Datasets views
- */
-function mica_datasets_update_7700(&$update) {
-  features_rebuild(array('mica_datasets' => array('views_view')));
+function mica_datasets_update_7700(&$sandbox) {
+  features_revert(array('mica_datasets' => array('views_view')));
 }
 
 /**

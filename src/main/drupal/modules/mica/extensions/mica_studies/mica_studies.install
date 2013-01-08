@@ -261,7 +261,7 @@ function mica_studies_update_7500(&$sandbox) {
  * Update Mica Studies views
  */
 function mica_studies_update_7700(&$update) {
-  features_rebuild(array('mica_studies' => array('views_view')));
+  features_revert(array('mica_studies' => array('views_view')));
 }
 
 /**

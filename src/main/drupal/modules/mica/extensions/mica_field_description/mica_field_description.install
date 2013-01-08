@@ -83,7 +83,7 @@ function mica_field_description_update_7120() {
  * Update Mica Field Description views
  */
 function mica_field_description_update_7700(&$update) {
-  features_rebuild(array('mica_field_description' => array('views_view')));
+  features_revert(array('mica_field_description' => array('views_view')));
 }
 
 /**

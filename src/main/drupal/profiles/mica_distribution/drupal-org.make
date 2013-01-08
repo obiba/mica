@@ -67,13 +67,6 @@ projects[facetapi_i18n] = 1.0-beta2
 
 ;projects[] = examples
 
-; feature-1.x
-;projects[features][version] = 1.0
-;projects[features][patch][981248] = http://drupal.org/files/hook_features_post_install-981248-58.patch
-;projects[features][patch][656312] = http://drupal.org/files/keep_negative_permissions-656312-17.patch
-;projects[features][patch][1689598] = http://drupal.org/files/field_display_label_support.patch
-
-; feature-2.x
 projects[features][download][type] = git
 projects[features][download][revision] = 63db687
 projects[features][download][branch] = 7.x-2.x
@@ -152,7 +145,7 @@ projects[menu_view_unpublished][download][type] = git
 projects[menu_view_unpublished][download][revision] = 5f1f951
 projects[menu_view_unpublished][download][branch] = 7.x-1.x
 
-projects[mica] = 7.0-dev
+projects[mica] = 7.0-beta1
 
 projects[module_filter] = 1.7
 

@@ -21,13 +21,6 @@ function mica_projects_update_7120() {
 }
 
 /**
- * Update Mica Projects views
- */
-function mica_projects_update_7700(&$update) {
-  features_rebuild(array('mica_projects' => array('views_view')));
-}
-
-/**
  * Update to 7120 depends on the update of mica_core
  */
 function mica_projects_update_dependencies() {
@@ -60,4 +53,8 @@ function _mica_projects_configure_field_bundle_settings() {
 function mica_projects_update_7500(&$sandbox) {
   module_load_install('mica_core');
   mica_core_replace_titles(array('project', 'teleconference'));
+}
+
+function mica_projects_update_7700(&$sandbox) {
+  features_revert(array('mica_projects' => array('views_view')));
 }

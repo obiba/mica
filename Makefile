@@ -3,45 +3,22 @@
 # Requires drush 5+ to be installed: http://drush.ws
 #
 
-version=7.0-dev
-dist_version=7.0-dev
+version=7.0-beta1
+dist_version=7.0-beta1
 drupal_version=7.x
 branch=$(drupal_version)-7.x
-
-bootstrap_version=2.2.1
 
 #
 # Mica versions
 #
 # Modules
 mica_version=$(drupal_version)-$(version)
-mica_category_field_version=$(mica_version)
-mica_community_version=$(mica_version)
-mica_core_version=$(mica_version)
-mica_data_access_version=$(mica_version)
-mica_datasets_version=$(mica_version)
-mica_datashield_version=$(mica_version)
-mica_devel_version=$(mica_version)
-mica_field_description_version=$(mica_version)
-mica_networks_version=$(mica_version)
-mica_node_reference_field_version=$(mica_version)
-mica_opal_version=$(mica_version)
-mica_opal_view_version=$(mica_version)
-mica_projects_version=$(mica_version)
-mica_relation_version=$(mica_version)
-mica_studies_version=$(mica_version)
-node_reference_block_version=$(mica_version)
-
-# Themes
-mica_samara_version=$(mica_version)
-mica_corolla_version=$(mica_version)
-
-# Profiles
 mica_distribution_version=$(drupal_version)-$(dist_version)
 
 #
 # Mysql db access
 #
+db_name=mica_dev
 db_user=root
 db_pass=1234
 
@@ -142,28 +119,33 @@ htaccess:
 	mv target/$(micadir)/.htaccess_new target/$(micadir)/.htaccess
 
 inject-version-info:
-	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_bootstrap_config)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_community)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_core)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_data_access)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_datasets)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions/mica_datasets,mica_category_field)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_datashield)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_devel)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_field_description)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_networks)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_node_reference_field)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_opal)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions/mica_opal,mica_opal_view)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_projects)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_relation)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_studies)
-	$(call inject-version-info,mica_distribution/modules/mica/extensions,node_reference_block)
-	$(call inject-version-info,mica_distribution/modules,mica)
-	$(call inject-version-info,,mica_distribution)
-	$(call inject-version-info,mica_distribution/themes,mica_bootstrap)
-	$(call inject-version-info,mica_distribution/themes,mica_samara)
-	$(call inject-version-info,mica_distribution/themes,mica_corolla)
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_bootstrap_config,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_community,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_core,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_data_access,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_datasets,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions/mica_datasets,mica_category_field,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions/mica_datasets,mica_connector,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions/mica_datasets,mica_dimensions_coverage,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions/mica_datasets,mica_query,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_datashield,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_devel,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_field_description,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_i18n,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_networks,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_node_reference_field,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_opal,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions/mica_opal,mica_opal_view,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_projects,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_relation,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,mica_studies,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules/mica/extensions,node_reference_block,$(mica_version))
+	$(call inject-version-info,mica_distribution/modules,mica,$(mica_version))
+	$(call inject-version-info,,mica_distribution,$(mica_distribution_version))
+	$(call inject-version-info,mica_distribution/themes,mica_bootstrap,$(mica_version))
+	$(call inject-version-info,mica_distribution/themes,mica_subtheme,$(mica_version))
+	$(call inject-version-info,mica_distribution/themes,mica_samara,$(mica_version))
+	$(call inject-version-info,mica_distribution/themes,mica_corolla,$(mica_version))
 
 clear-version-info: compile-less
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_bootstrap_config)
@@ -172,9 +154,13 @@ clear-version-info: compile-less
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_data_access)
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_datasets)
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions/mica_datasets,mica_category_field)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions/mica_datasets,mica_connector)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions/mica_datasets,mica_dimensions_coverage)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions/mica_datasets,mica_query)
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_datashield)
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_devel)
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_field_description)
+	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_i18n)
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_networks)
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_node_reference_field)
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_opal)
@@ -186,6 +172,7 @@ clear-version-info: compile-less
 	$(call clear-version-info,src/main/drupal/modules,mica)
 	$(call clear-version-info,src/main/drupal/profiles,mica_distribution)
 	$(call clear-version-info,src/main/drupal/themes,mica_bootstrap)
+	$(call clear-version-info,src/main/drupal/themes,mica_subtheme)
 	$(call clear-version-info,src/main/drupal/themes,mica_samara)
 	$(call clear-version-info,src/main/drupal/themes,mica_corolla)
 
@@ -332,7 +319,7 @@ coder:
 	drush en coder* --yes
 
 dump:
-	mysqldump -u $(db_user) --password=$(db_pass) --hex-blob mica --result-file="target/mica.sql"
+	mysqldump -u $(db_user) --password=$(db_pass) --hex-blob $(db_name) --result-file="target/mica.sql"
 	@echo ">>> Database dumped to target/mica.sql"
 
 
@@ -410,7 +397,7 @@ inject-version-info = cd target/$(micadir)/profiles/$(1) && \
 	sed -i "/^datestamp/d" $2/$2.info && \
 	sed -i "/Information added by obiba.org packaging script/d" $2/$2.info && \
 	echo "; Information added by obiba.org packaging script on $(deb_date)" >> $2/$2.info && \
-	echo "version = $($(2)_version)" >> $2/$2.info && \
+	echo "version = $(3)" >> $2/$2.info && \
 	echo "project = $2" >> $2/$2.info && \
 	echo "datestamp = $(datestamp)" >> $2/$2.info
 

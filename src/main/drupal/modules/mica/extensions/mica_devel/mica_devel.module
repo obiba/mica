@@ -113,5 +113,7 @@ function _mica_devel_is_mica_module($module) {
 }
 
 function _mica_devel_dummy_run() {
-  drupal_set_message(t("Run dummy method..."));
+//  drupal_set_message(t("Run dummy method..."));
+  module_load_include('inc', 'mica_core', 'mica_core.update_features');
+  mica_core_rebuild_features('mica_studies');
 }

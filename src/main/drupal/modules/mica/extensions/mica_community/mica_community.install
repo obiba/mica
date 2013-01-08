@@ -32,7 +32,7 @@ function mica_community_update_7500(&$sandbox) {
  * Update Mica Community views
  */
 function mica_community_update_7700(&$sandbox) {
-  features_rebuild(array('mica_community' => array('views_view')));
+  features_revert(array('mica_community' => array('views_view')));
 }
 
 /**
