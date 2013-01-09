@@ -58,9 +58,9 @@ function mica_networks_menu_local_tasks_alter(&$data, $router_item, $root_path) 
 
 /**
  * Creates default content after Features successfully installed
- * Implements hook_features_rebuild_completed()
+ * Implements hook_post_features_rebuild()
  */
-function mica_networks_features_rebuild_completed() {
+function mica_networks_post_features_rebuild() {
   if (!variable_get('mica_networks_features_rebuild_completed', FALSE)) {
 
     $menu = mica_core_create_menu(st('Networks'), 'networks', 'networks', FALSE, FALSE, 6);

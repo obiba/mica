@@ -23,7 +23,7 @@ include_once(drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.i
 
 /**
  * Configure facet blocks for field description search page
- * Cannot configure this from hook_features_rebuild_completed because of exceptions like
+ * Cannot configure this from hook_post_features_rebuild because of exceptions like
  * Notice: Undefined index: name in FacetapiAdapter->getFacet() (line 823 of sites/all/modules/facetapi/plugins/facetapi/adapter.inc).
  */
 function mica_field_description_configure_facet_blocks() {

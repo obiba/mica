@@ -791,9 +791,9 @@ function mica_studies_node_validate($node, $form, &$form_state) {
 
 /**
  * Creates default content after Features successfully installed
- * Implements hook_features_rebuild_completed()
+ * Implements hook_post_features_rebuild()
  */
-function mica_studies_features_rebuild_completed() {
+function mica_studies_post_features_rebuild() {
   if (!variable_get('mica_studies_features_rebuild_completed', FALSE)) {
     _mica_studies_create_default_content();
     _mica_studies_configure_permissions();

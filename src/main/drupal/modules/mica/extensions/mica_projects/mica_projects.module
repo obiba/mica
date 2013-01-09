@@ -10,9 +10,9 @@ include_once('mica_projects.features.inc');
 
 /**
  * Creates default content after Features successfully installed
- * Implements hook_features_rebuild_completed()
+ * Implements hook_post_features_rebuild()
  */
-function mica_projects_features_rebuild_completed() {
+function mica_projects_post_features_rebuild() {
   if (!variable_get('mica_projects_features_rebuild_completed', FALSE)) {
     _mica_projects_create_default_content();
     variable_set('mica_projects_features_rebuild_completed', TRUE);

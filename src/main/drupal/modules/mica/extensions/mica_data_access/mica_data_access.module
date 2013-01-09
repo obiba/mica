@@ -9,9 +9,9 @@ include_once('mica_data_access.features.inc');
 
 /**
  * Creates default content after Features successfully installed
- * Implements hook_features_rebuild_completed()
+ * Implements hook_post_features_rebuild()
  */
-function mica_data_access_features_rebuild_completed() {
+function mica_data_access_post_features_rebuild() {
   if (!variable_get('mica_data_access_features_rebuild_completed', FALSE)) {
     _mica_data_access_create_default_content();
     variable_set('mica_data_access_features_rebuild_completed', TRUE);

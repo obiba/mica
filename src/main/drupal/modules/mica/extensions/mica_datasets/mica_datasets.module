@@ -22,9 +22,9 @@ define('MICA_HARMONIZATION_MISING_TICK', base_path() . drupal_get_path('module',
 
 /**
  * Creates default content after Features successfully installed
- * Implements hook_features_rebuild_completed()
+ * Implements hook_post_features_rebuild()
  */
-function mica_datasets_features_rebuild_completed() {
+function mica_datasets_post_features_rebuild() {
   if (!variable_get('mica_datasets_features_rebuild_completed', FALSE)) {
     _mica_datasets_create_default_content();
     _mica_datasets_configure_permissions();
