@@ -3,8 +3,8 @@
 # Requires drush 5+ to be installed: http://drush.ws
 #
 
-version=7.0-beta1
-dist_version=7.0-beta1
+version=7.0-rc1
+dist_version=7.0-rc1
 drupal_version=7.x
 branch=$(drupal_version)-7.x
 
@@ -45,6 +45,12 @@ ifeq ($(findstring dev,$(dist_version)),dev)
 	deb_version=$(subst -dev,,$(dist_version))-b$(shell git describe --match build_number | cut -d - -f2)
 else
 	deb_version=$(dist_version)
+endif
+
+ifeq ($(stability),unstable)
+	lessc_options=--verbose
+else
+	lessc_options=--yui-compress
 endif
 
 #
@@ -366,11 +372,11 @@ git-push-mica-dist: clear-version-info set-distribution-version
 # Bootstrap related stuff
 #
 compile-less: 
-	recess --compile src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap.less > src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap.css && \
-	recess --compile src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap_responsive.less > src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap_responsive.css && \
-	recess --compile src/main/drupal/modules/mica/extensions/mica_studies/less/mica_studies.less > src/main/drupal/modules/mica/extensions/mica_studies/css/mica_studies.css && \
-	recess --compile src/main/drupal/modules/mica/extensions/mica_networks/less/mica_networks.less > src/main/drupal/modules/mica/extensions/mica_networks/css/mica_networks.css && \
-	recess --compile src/main/drupal/modules/mica/extensions/mica_datasets/less/mica_datasets.less > src/main/drupal/modules/mica/extensions/mica_datasets/css/mica_datasets.css
+	lessc $(lessc_options) src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap.less src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap.css && \
+	lessc $(lessc_options) src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap_responsive.less src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap_responsive.css && \
+	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_studies/less/mica_studies.less src/main/drupal/modules/mica/extensions/mica_studies/css/mica_studies.css && \
+	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_networks/less/mica_networks.less src/main/drupal/modules/mica/extensions/mica_networks/css/mica_networks.css && \
+	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_datasets/less/mica_datasets.less src/main/drupal/modules/mica/extensions/mica_datasets/css/mica_datasets.css
 
 install-nodejs:
 	apt-get install g++ curl libssl-dev apache2-utils && \
@@ -384,7 +390,7 @@ install-nodejs:
 	make install
 
 install-bootstrap-dependencies:
-	npm install recess connect uglify-js@1 jshint -g
+	npm install less connect uglify-js@1 jshint -g
 
 #
 # Functions
