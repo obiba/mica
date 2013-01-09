@@ -20,8 +20,6 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
   drupal_add_library('system', 'drupal.ajax');
   drupal_add_library('system', 'jquery.form');
 
-  mica_core_is_bootstrap_based_theme();
-
   $is_bootstrap = mica_core_is_bootstrap_based_theme();
   if (!$is_bootstrap) {
     mica_core_include_bootstrap_css();

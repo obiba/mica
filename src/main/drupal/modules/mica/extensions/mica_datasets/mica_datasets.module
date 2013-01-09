@@ -371,7 +371,6 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
 
-
 /**
  * Check node type (if provided) and node access.
  *
@@ -441,7 +440,7 @@ function mica_dataset_dataset_variables($dataset, $sorted = FALSE) {
   $entities = $query->execute();
   $variables = (empty($entities) ? array() : node_load_multiple(array_keys($entities['node'])));
 
-  if ($sorted){
+  if ($sorted) {
     uasort($variables, 'mica_datasets_sort_by_title');
   }
 
@@ -462,32 +461,38 @@ function mica_datasets_prepare_prettify() {
 
   static $paths = array();
 
-  $prettify_dir = mica_core_get_current_theme() === 'mica_subtheme' ? 'prettify_bootstrap' : 'prettify';
+  if (mica_core_is_bootstrap_based_theme()) {
+    $dir = drupal_get_path('theme', 'mica_bootstrap');
+    $paths['css'] = $dir . '/css/prettify.css';
+    $paths['js'] = $dir . '/js/prettify.js';
+  }
+  else {
+    $prettify_dir = 'prettify';
+    if (empty($paths) || !isset($paths['css']) || !isset($paths['js'])) {
 
-  if (empty($paths) || !isset($paths['css']) || !isset($paths['js'])) {
-
-    // If Libraries API is installed, we first use that to try and find the library.
-    // Otherwise we manually check a few locations.
-    $search_dirs = array();
-    if (function_exists('libraries_get_path')) {
-      $dir = libraries_get_path($prettify_dir);
-      // Confusingly, Libraries API 1.x will return sites/all/libraries/NAME on failure,
-      // while Libraries API 2.x returns FALSE in that case.
-      if ($dir) {
-        $search_dirs[] = $dir;
+      // If Libraries API is installed, we first use that to try and find the library.
+      // Otherwise we manually check a few locations.
+      $search_dirs = array();
+      if (function_exists('libraries_get_path')) {
+        $dir = libraries_get_path($prettify_dir);
+        // Confusingly, Libraries API 1.x will return sites/all/libraries/NAME on failure,
+        // while Libraries API 2.x returns FALSE in that case.
+        if ($dir) {
+          $search_dirs[] = $dir;
+        }
       }
-    }
-    else {
-      // Include libraries + current profile folders in searched directories.
-      $search_dirs[] = 'sites/all/libraries/' . $prettify_dir;
-      $search_dirs[] = 'profiles/' . drupal_get_profile() . '/libraries/' . $prettify_dir;
-    }
-    $search_dirs[] = drupal_get_path('module', 'mica_datasets') . '/includes';
-    foreach ($search_dirs as $dir) {
-      if (file_exists($dir . '/prettify.css') && file_exists($dir . '/prettify.js')) {
-        $paths['css'] = $dir . '/prettify.css';
-        $paths['js'] = $dir . '/prettify.js';
-        break;
+      else {
+        // Include libraries + current profile folders in searched directories.
+        $search_dirs[] = 'sites/all/libraries/' . $prettify_dir;
+        $search_dirs[] = 'profiles/' . drupal_get_profile() . '/libraries/' . $prettify_dir;
+      }
+      $search_dirs[] = drupal_get_path('module', 'mica_datasets') . '/includes';
+      foreach ($search_dirs as $dir) {
+        if (file_exists($dir . '/prettify.css') && file_exists($dir . '/prettify.js')) {
+          $paths['css'] = $dir . '/prettify.css';
+          $paths['js'] = $dir . '/prettify.js';
+          break;
+        }
       }
     }
   }
@@ -496,14 +501,16 @@ function mica_datasets_prepare_prettify() {
     drupal_add_css($paths['css']);
   }
   else {
-    throw new Exception('prettify.css library not found! Please follow the instructions in mica_datasets/README.txt');
+    throw new Exception('prettify.css library not found! Please follow the instructions in mica_datasets/README.txt. Searched into '
+      . $paths);
   }
 
   if (isset($paths['js'])) {
     drupal_add_js($paths['js']);
   }
   else {
-    throw new Exception('prettify.js library not found! Please follow the instructions in mica_datasets/README.txt');
+    throw new Exception('prettify.js library not found! Please follow the instructions in mica_datasets/README.txt. Searched into '
+      . $paths);
   }
 
   ctools_add_js('mica_datasets_prettify', 'mica_datasets');
@@ -963,7 +970,6 @@ function _mica_datasets_variables_dimensions_set_default(&$form) {
   }
 }
 
-
 function _mica_datasets_form_alter_variable(&$form, $form_state, $form_id) {
   if (isset($_REQUEST['dataset'])) {
     $lang = $form['field_dataset']['#language'];
@@ -1173,7 +1179,7 @@ function mica_datasets_node_view($node, $view_mode) {
   }
 }
 
-function _mica_datasets_html_truncated($text, $label, $size = 200, $is_code = FALSE, $pre_class= '') {
+function _mica_datasets_html_truncated($text, $label, $size = 200, $is_code = FALSE, $pre_class = '') {
   $htmlTruncate = '';
   if (!empty($text)) {
 
@@ -1450,11 +1456,11 @@ function _mica_datasets_node_crosstab_access($node, $op = 'update') {
   $n = node_load($node->nid);
   if (_mica_datasets_node_access($node, $n->type, 'view')) {
     $dataset_id = NULL;
-    if ($n->type === 'variable'){
+    if ($n->type === 'variable') {
       $variable_wrapper = entity_metadata_wrapper('node', $node);
       $dataset_id = $variable_wrapper->field_dataset->nid->value();
     }
-    else if ($n->type === 'dataset'){
+    else if ($n->type === 'dataset') {
       $dataset_id = $node->nid;
     }
     if (isset($dataset_id) && mica_dataset_dataset_variables($dataset_id) && mica_connector_dataset_has_connectors($dataset_id)) {

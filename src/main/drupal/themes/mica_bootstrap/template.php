@@ -16,14 +16,16 @@ function mica_bootstrap_css_alter(&$css) {
   $bootstrap_theme = drupal_get_path('theme', 'bootstrap');
   $key = $bootstrap_theme . '/bootstrap/css/bootstrap.css';
   $file = $css[$key];
-  $file['data'] = drupal_get_path('theme', 'mica_bootstrap') . '/less/mica_bootstrap.less';
+//  $file['data'] = drupal_get_path('theme', 'mica_bootstrap') . '/less/mica_bootstrap.less';
+  $file['data'] = drupal_get_path('theme', 'mica_bootstrap') . '/css/mica_bootstrap.css';
   $file['weight'] = 1000; // set it as last imported css
   unset($css[$key]);
   $css[$file['data']] = $file;
 
   $key = $bootstrap_theme . '/bootstrap/css/bootstrap-responsive.css';
   $file = $css[$key];
-  $file['data'] = drupal_get_path('theme', 'mica_bootstrap') . '/less/mica_bootstrap_responsive.less';
+//  $file['data'] = drupal_get_path('theme', 'mica_bootstrap') . '/less/mica_bootstrap_responsive.less';
+  $file['data'] = drupal_get_path('theme', 'mica_bootstrap') . '/css/mica_bootstrap_responsive.css';
   $file['weight'] = 1001; // set it after mica_bootstrap.css
   unset($css[$key]);
   $css[$file['data']] = $file;
