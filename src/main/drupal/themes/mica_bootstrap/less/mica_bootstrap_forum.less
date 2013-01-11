@@ -1,7 +1,32 @@
 #forum {
-
   table {
     .table-striped;
     width: 100%;
+
+    th {
+      text-align: left;
+    }
+
+    td {
+      padding: 10px;
+
+      &.icon {
+        padding: 0;
+      }
+
+      &.title {
+        width: 55%;
+      }
+
+      &.last-reply {
+        width: 30%;
+      }
+    }
+  }
+}
+
+article.node-forum {
+  #comment-form-wrapper {
+    margin-top: 45px;
   }
 }
