@@ -7,4 +7,6 @@ php = "5.2.4"
 files[] = mica_connector.api.php
 files[] = mica_connector.entity.inc
 files[] = mica_connector.connection.inc
+files[] = mica_connector.query_default.inc
+files[] = mica_connector.query_api.inc
 files[] = mica_connector.connection.form.inc

@@ -22,6 +22,24 @@ interface MicaDatasetConnectionInterface {
    */
   public function __construct(MicaDatasetConnector $connector);
 
+
+  /**
+   * Sends the elastic search query to the server. This is used by the new API implementation.
+   * @param $query
+   * @param $resourceUrl
+   * @param $method
+   * @param $contentType
+   * @return mixed
+   */
+  public function sendQueryEx($query, $resourceUrl, $method, $contentType);
+
+  /**
+   * Sends the Elastic Search query to study server. This is the default version using JSON format only.
+   * @param string $query
+   * @return the Elastic Search query response
+   */
+  public function sendQuery($query);
+
   /**
    * Form callback. Might be called on an uninitialized object - in this case,
    * the form is for configuring a newly created connector.
@@ -89,6 +107,18 @@ interface MicaDatasetConnectionInterface {
    */
   public function getImporterId();
 
+  public function getFieldNameMapping($fieldname);
+
+  /**
+   * Given a query term, get with which field it is indexed in ES.
+   * @param QueryTermInterface $term
+   * @return the field name string
+   */
+  public function getFieldName(QueryTermInterface $term);
+}
+
+interface MicaDatasetQueryInterface {
+
   /**
    * @param array of MicaDatasetQueryTerm $terms
    */
@@ -99,6 +129,13 @@ interface MicaDatasetConnectionInterface {
    * @param array of strings $fields
    */
   public function queryBy(array $terms, array $fields);
+
+  /**
+   * @param array $terms
+   * @param array $fields
+   * @return mixed
+   */
+  public function crossQueryBy(array $terms, array $fields);
 
   /**
    * Returns a facet for a specific term.
@@ -114,13 +151,61 @@ interface MicaDatasetConnectionInterface {
    * )
    */
   public function facetTerm(QueryTermInterface $term);
+}
 
+abstract class MicaDatasetAbstractQuery implements MicaDatasetQueryInterface {
+  protected $connection;
+
+  public function __construct(MicaDatasetConnectionInterface $connection) {
+    $this->connection = $connection;
+  }
+
+  abstract protected function asFacet(QueryTermInterface $term);
+  abstract protected function asFacetBy(QueryTermInterface $term, $field);
+  abstract protected function asFilter(QueryTermInterface $term);
+
+  /**
+   * @param $terms
+   * @return array
+   */
+  protected function getQueryFacetsFilters($terms) {
+    $facets = array();
+    $filters = array();
+    if ($terms !== FALSE) {
+      foreach ($terms as $term) {
+        $impl = $term->termImpl();
+        $facets[] = $this->asFacet($impl);
+        $filters[] = $this->asFilter($impl);
+      }
+      return array($facets, $filters);
+    }
+    return array($facets, $filters);
+  }
+
+  /**
+   * @param $terms
+   * @param $by_field
+   * @return array
+   */
+  protected function getQueryByFacetsFilters($terms, $by_field) {
+    $facets = array();
+    $filters = array();
+    if ($terms !== FALSE) {
+      foreach ($terms as $term) {
+        $impl = $term->termImpl();
+        $facets[] = $this->asFacetBy($impl, $by_field);
+        $filters[] = $this->asFilter($impl);
+      }
+      return array($facets, $filters);
+    }
+    return array($facets, $filters);
+  }
 }
 
 /**
  * Abstract class with generic implementation of most connection methods.
  */
-abstract class MicaDatasetAbstractConnection implements MicaDatasetConnectionInterface {
+abstract class MicaDatasetAbstractConnection implements MicaDatasetConnectionInterface, MicaDatasetQueryInterface {
 
   /**
    * @var MicaDatasetConnector
@@ -240,26 +325,12 @@ abstract class MicaDatasetAbstractConnection implements MicaDatasetConnectionInt
     return $output ? "<dl>\n$output</dl>" : '';
   }
 
-}
-
-/**
- * An abstract implementation of a dataset connection that builds and sends an Elastic Search query from the query terms.
- */
-abstract class MicaDatasetElasticSearchConnection extends MicaDatasetAbstractConnection {
-
-  /**
-   * Sends the Elastic Search query to study server.
-   * @param string $query
-   * @return the Elastic Search query response
-   */
-  protected abstract function sendQuery($query);
-
   /**
    * Given a query term, get with which field it is indexed in ES.
    * @param QueryTermInterface $term
    * @return the field name string
    */
-  protected function getFieldName(QueryTermInterface $term) {
+  public function getFieldName(QueryTermInterface $term) {
     return $this->getFieldNameMapping($term->getFieldName());
   }
 
@@ -268,413 +339,9 @@ abstract class MicaDatasetElasticSearchConnection extends MicaDatasetAbstractCon
    * @param $fieldname
    * @return the field name string
    */
-  protected function getFieldNameMapping($fieldname) {
+  public function getFieldNameMapping($fieldname) {
     return $fieldname;
   }
 
-  public function query(array $terms) {
-    $facets = array();
-    $filters = array();
-    if ($terms !== FALSE) {
-      foreach ($terms as $term) {
-        $impl = $term->termImpl();
-        $facets[] = $this->asFacet($impl);
-        $filters[] = $this->asFilter($impl);
-      }
-    }
-
-    $facets[] = '"_matched" :{ "filter":{ "and":[ {' . implode('},{', $filters) . '}]}}';
-
-    $q = '{"query": {"match_all":{}},"size":0,"facets":{';
-    $q .= implode(',', $facets);
-    $q .= '}}';
-
-//        debug($q);
-
-    $data = $this->sendQuery($q);
-
-    $total = $data['hits']['total'];
-
-    $result = array('total' => array('_all' => $total));
-    $result["_matched"] = $this->count($data['facets']['_matched']);
-    foreach ($terms as $term) {
-      $impl = $term->termImpl();
-      $result[$impl->getName()] = $this->count($data['facets'][$impl->getName()]);
-    }
-
-//        debug($result);
-    return $result;
-  }
-
-  public function queryBy(array $terms, array $fields) {
-    $by_field = $fields[0];
-
-    // one facet for population matching each term
-    $facets = array();
-    $filters = array();
-    if ($terms !== FALSE) {
-      foreach ($terms as $term) {
-        $impl = $term->termImpl();
-        $facets[] = $this->asFacetBy($impl, $by_field);
-        $filters[] = $this->asFilter($impl);
-      }
-    }
-
-    // one facet for the population matching all terms
-    $and_filters = implode('},{', $filters);
-    $facets[] = <<< END
-"_matched" : {
-      "terms" : {
-        "field":"{$this->getFieldNameMapping($by_field)}","all_terms":true
-      }
-      , "facet_filter":  {
-        "and":[{{$and_filters}}]
-      }
 }
-END;
 
-    // one facet for all the population
-    $facets[] = <<< END
-"_all" : {
-      "terms" : {
-        "field":"{$this->getFieldNameMapping($by_field)}","all_terms":true
-      }
-}
-END;
-
-    $q = '{"query": {"match_all":{}},"size":0,"facets":{';
-    $q .= implode(',', $facets);
-    $q .= '}}';
-
-    $data = $this->sendQuery($q);
-
-    $total = $data['hits']['total'];
-
-    $result = array('total' => array('_all' => $total));
-    $result["_all"] = $this->count($data['facets']['_all']);
-    $result["_matched"] = $this->count($data['facets']['_matched']);
-    foreach ($terms as $term) {
-      $impl = $term->termImpl();
-      $result[$impl->getName()] = $this->count($data['facets'][$impl->getName()]);
-    }
-
-    //debug($result);
-    return $result;
-  }
-
-  public function crossQueryBy(array $terms, array $fields) {
-    $by_field = $fields[0];
-    $is_continuous = (isset($fields[1]) ? $fields[1] : FALSE);
-
-    // one facet for population matching each term
-    $facets = array();
-    if ($terms !== FALSE) {
-      // Always only one term for this type of query
-      $term = $terms[0];
-      $impl = $term->termImpl();
-      $categories_filter = array();
-      foreach($impl->categories() as $i => $category){
-
-        if (!$is_continuous){
-          $facets[] = $this->asCrossFacetBy($impl, $by_field, $category);
-        }
-        else {
-          $facets[] = $this->asCrossStatFacetBy($impl, $by_field, $category);
-          $categories_filter[] = "\"$category\"";
-        }
-      }
-    }
-
-    // if stats facet, have a facet for total mean and std deviation
-    if ($is_continuous){
-      $filter = implode(',', $categories_filter);
-      $facets[] = <<< END
-"total_mean" : {
-      "statistical" : {
-        "field":"{$this->getFieldNameMapping($by_field)}","size":0
-      }
-      , "facet_filter":  {
-          "terms" : { "{$this->getFieldName($impl)}" : [{$filter}] }
-      }
-}
-END;
-    }
-    // one facet for the population matching all terms
-
-    $facets[] = <<< END
-"_matched" : {
-      "terms" : {
-        "field":"{$this->getFieldName($impl)}","all_terms":true
-      }
-      , "facet_filter":  {
-        "exists":{
-            "field":"{$this->getFieldNameMapping($by_field)}"}
-        }
-      }
-}
-END;
-
-    $q = '{"query": {"match_all":{}},"size":0,"facets":{';
-    $q .= implode(',', $facets);
-    $q .= '}}';
-
-    $data = $this->sendQuery($q);
-
-    $total = $data['hits']['total'];
-
-    $result = array('total' => array('_all' => $total));
-    //$result["_all"] = $this->count($data['facets']['_all']);
-    $result["_matched"] = $this->count($data['facets']['_matched']);
-    $term = $terms[0];
-    $impl = $term->termImpl();
-
-    foreach($impl->categories() as $i => $category){
-      if (!$is_continuous){
-        $result[$category] = $this->count($data['facets'][$category]);
-      }
-      else{
-        $result[$category] = $data['facets'][$category];
-      }
-    }
-
-    if ($is_continuous){
-      $result['total_mean'] = $data['facets']['total_mean'];
-    }
-
-    return $result;
-  }
-
-  public function facetTerm(QueryTermInterface $term) {
-    $fieldname = $this->getFieldName($term);
-    switch ($term->getType()) {
-      case 'CategoryTerm' :
-        $facets = <<< END
-      "{$term->getName()}" : {
-        "terms" : {
-          "field" : "{$fieldname}",
-          "size": 1000,
-          "all_fields" : true
-        }
-      }
-END;
-        break;
-      case 'RangeTerm' :
-        $facets = <<< END
-      "{$term->getName()}" : {
-        "statistical" : {
-          "field" : "{$fieldname}"
-        }
-      }
-END;
-        break;
-      default:
-        $facets = <<< END
-      "{$term->getName()}" : {
-        "filter": {
-          "exists" : {
-            "field" : "{$fieldname}"
-          }
-        }
-      }
-END;
-        break;
-    }
-
-    $q = '{"query": {"match_all":{}},"size":0,"facets":{';
-    $q .= $facets;
-    $q .= '}}';
-
-    $data = $this->sendQuery($q);
-
-    $facetResult = $data['facets'][$term->getName()];
-
-    // TODO: handle statistical result
-    if ($term->getType() == 'CategoryTerm' || $term->getType() == 'TodoTerm') {
-      $result = $this->count($facetResult);
-    }
-    else {
-      $result = $facetResult;
-    }
-    //debug($result);
-    return $result;
-  }
-
-  protected function asFacet(QueryTermInterface $term) {
-    $facet = <<< END
-"{$term->getName()}" : {
-  "filter" : {
-  {$this->asFilter($term)}
-  }, "global":true
-}
-END;
-    return $facet;
-  }
-
-  protected function asFacetBy(QueryTermInterface $term, $field) {
-    $facet = <<< END
-"{$term->getName()}" : {
-      "terms" : {
-        "field":"{$this->getFieldNameMapping($field)}","all_terms":true
-      }
-      , "facet_filter":  {
-        {$this->asFilter($term)}
-      }
-}
-END;
-    return $facet;
-  }
-
-  protected function asCrossFacetBy(QueryTermInterface $term, $field, $category) {
-    $facet = <<< END
-"{$category}" : {
-      "terms" : {
-        "field":"{$this->getFieldNameMapping($field)}","all_terms":true
-      }
-      , "facet_filter":  {
-        {$this->asCrossFilter($term, $category)}
-      }
-}
-END;
-    return $facet;
-  }
-
-  protected function asCrossStatFacetBy(QueryTermInterface $term, $field, $category) {
-    $facet = <<< END
-"{$category}" : {
-      "statistical" : {
-        "field":"{$this->getFieldNameMapping($field)}","size":0
-      }
-      , "facet_filter":  {
-        {$this->asCrossFilter($term, $category)}
-      }
-}
-END;
-    return $facet;
-  }
-
-
-  private function asFilter(QueryTermInterface $term) {
-    $fieldname = $this->getFieldName($term);
-    // The default filter
-    $filter = <<< END
-  "exists" : {
-    "field" : "{$fieldname}"
-  }
-END;
-    switch ($term->getType()) {
-      case 'CategoryTerm':
-        if (count($term->categories()) > 0) {
-          $terms = '"' . implode('","', $term->categories()) . '"';
-          $filter = <<< END
-  "terms" : {
-    "{$fieldname}":[$terms]
-  }
-END;
-        }
-        break;
-      case 'RangeTerm':
-        if (count($term->ranges()) > 0) {
-          $ranges = $term->ranges();
-          $range = $ranges[0];
-          if (isset($range['value'])) {
-            $filter = <<< END
-  "term" : {
-    "{$fieldname}": {$range['value']}
-  }
-END;
-          }
-          else {
-            $bounds = array();
-            if (isset($range['from'])) {
-              $bounds[] = '"from" : ' . $range['from'];
-              $bounds[] = '"include_lower" : true';
-            }
-            if (isset($range['to'])) {
-              $bounds[] = '"to" : ' . $range['to'];
-              $bounds[] = '"include_upper" : false';
-            }
-            $boundStr = implode(',', $bounds);
-            $filter = <<< END
-  "numeric_range" : {
-    "{$fieldname}": {
-    {$boundStr}
-    }
-  }
-END;
-          }
-        }
-        break;
-      case 'TodoTerm':
-        if (count($term->match()) > 0) {
-          $matchStr = implode('","', $term->match());
-          $filter = <<< END
-  "terms" : {
-    "{$fieldname}":["{$matchStr}"]
-  }
-END;
-        }
-        break;
-      default:
-        break;
-    }
-
-    if ($term->isInverted()) {
-      $invert = $filter;
-      $filter = <<< END
-  "not" : {
-    "filter" : {
-    $invert
-    }
-  }
-END;
-    }
-    return $filter;
-  }
-
-  private function asCrossFilter(QueryTermInterface $term, $category) {
-    $fieldname = $this->getFieldName($term);
-    // The default filter
-
-    switch ($term->getType()) {
-      case 'CategoryTerm':
-        if (count($term->categories()) > 0) {
-          //$terms = '"' . $category . '"';
-          $filter = <<< END
-  "term" : {
-    "{$fieldname}":"{$category}"
-  }
-END;
-        }
-        break;
-      default:
-        break;
-    }
-    return $filter;
-  }
-
-  private function count($facet) {
-    $rval = array('_all' => 0);
-    switch ($facet['_type']) {
-      case 'filter':
-        $rval['_all'] = $facet['count'];
-        break;
-      case 'terms':
-        $rval['_all'] = $facet['total'];
-        $rval['_missing'] = $facet['missing'];
-        $rval['_other'] = $facet['other'];
-        foreach ($facet['terms'] as $term) {
-          $rval[$term['term']] = $term['count'];
-        }
-        break;
-      case 'histogram':
-        $sum = 0;
-        foreach ($facet['entries'] as $term) {
-          $sum += $term['count'];
-        }
-        $rval['_all'] = $sum;
-        break;
-    }
-    return $rval;
-  }
-
-}
