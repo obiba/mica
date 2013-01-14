@@ -212,7 +212,7 @@ projects[title] = 1.0-alpha5
 
 projects[token] = 1.4
 
-projects[variable] = 2.1
+projects[variable] = 2.2
 
 projects[view_unpublished] = 1.1
 
