@@ -4,12 +4,16 @@
  * MicaDatasetOpalConnection class
  */
 
-class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection {
+class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection implements MicaDatasetQueryInterface {
 
   protected $fieldname_map;
+  private $esQueryDefault;
+  private $esQueryApi;
 
   public function __construct(MicaDatasetConnector $connector) {
     parent::__construct($connector);
+    $this->esQueryDefault = new MicaDatasetElasticSearchQuery($this);
+    $this->esQueryApi = new MicaDatasetElasticSearchQueryApi($this);
   }
 
   public function configurationForm($study_node) {
@@ -98,7 +102,7 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
     return $url;
   }
 
-  protected function getFieldNameMapping($fieldname) {
+  public function getFieldNameMapping($fieldname) {
     if (!is_array($this->fieldname_map)) {
       $this->requestFieldNameMapping();
     }
@@ -147,13 +151,12 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
     //debug($this->fieldname_map);
   }
 
-  protected function sendQuery($query) {
-
-    $url = $this->getTableResourceURI('index/_search');
+  public function sendQueryEx($query, $resourceUrl, $method, $contentType) {
+    $url = $this->getTableResourceURI($resourceUrl);
 
     $post = new HttpClientRequest($url, array(
-      'method' => 'POST',
-      'headers' => array('Accept' => array('application/json')),
+      'method' => $method,
+      'headers' => array('Accept' => array($contentType), 'Content-Type' => array($contentType)),
       'data' => $query,
       'parameters' => array(),
     ));
@@ -175,7 +178,17 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
       $body = $e->getResponse()->body;
     }
 
-    return json_decode($body, TRUE);
+    return $body;
+  }
+
+  /**
+   * @param string $query
+   * @return mixed|the
+   * @throws HttpClientException
+   * @throws Exception
+   */
+  public function sendQuery($query) {
+    return (json_decode($this->sendQueryEx($query, "index/_search", 'POST', 'application/json'), TRUE));
   }
 
   /**
@@ -207,5 +220,53 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetElasticSearchConnection 
     );
 
     return $client;
+  }
+
+  public function query(array $terms) {
+    $result = array();
+
+    try {
+      $result = $this->esQueryApi->query($terms);
+    } catch (Exception $e) {
+      $result = $this->esQueryDefault->query($terms);
+    }
+
+    return $result;
+  }
+
+  public function queryBy(array $terms, array $fields) {
+    $result = array();
+
+    try {
+      $result = $this->esQueryApi->queryBy($terms, $fields);
+    } catch (Exception $e) {
+      $result = $this->esQueryDefault->queryBy($terms, $fields);
+    }
+
+    return $result;
+  }
+
+  public function crossQueryBy(array $terms, array $fields) {
+    $result = array();
+
+    try {
+      $result = $this->esQueryApi->crossQueryBy($terms, $fields);
+    } catch (Exception $e) {
+      $result = $this->esQueryDefault->crossQueryBy($terms, $fields);
+    }
+
+    return $result;
+  }
+
+  public function facetTerm(QueryTermInterface $term) {
+    $result = array();
+
+    try {
+      $result = $this->esQueryApi->facetTerm($term);
+    } catch (Exception $e) {
+      $result = $this->esQueryDefault->facetTerm($term);
+    }
+
+    return $result;
   }
 }
