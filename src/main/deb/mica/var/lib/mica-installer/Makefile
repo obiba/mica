@@ -24,7 +24,7 @@ db_pass=
 # Drush install
 #
 
-drush_version=5.7
+drush_version=5.8
 
 all: 
 
@@ -67,6 +67,7 @@ mica-dist-install-prepare:
 	rm -rf mica/profiles/minimal && \
 	rm -rf mica/profiles/standard && \
 	rm -rf mica/profiles/testing && \
+	chown -R root:www-data mica && \
 	mv mica /usr/share
 
 drupal-profiles:
