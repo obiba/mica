@@ -947,8 +947,21 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['label'] = 'Fulltext search';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['operator'] = 'search_api_views_fulltext_op';
   $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['identifier'] = 'search_api_views_fulltext';
+  $handler->display->display_options['filters']['search_api_views_fulltext']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    6 => 0,
+    5 => 0,
+    7 => 0,
+    8 => 0,
+    10 => 0,
+    9 => 0,
+  );
   $handler->display->display_options['filters']['search_api_views_fulltext']['fields'] = array(
     'search_api_aggregation_1' => 'search_api_aggregation_1',
+    'search_api_aggregation_2' => 'search_api_aggregation_2',
   );
 
   /* Display: Page */
