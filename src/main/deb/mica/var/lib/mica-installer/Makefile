@@ -111,7 +111,13 @@ include mica-5.x-update.mk
 include mica-6.x-update.mk
 include mica-7.x-update.mk
 
-mica-prepare-update: drush mica-maintenance-mode-on mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install move-module-to-sites-all mica-restore-user-data mica-clear-tmp-update mica-echo-update
+mica-prepare-update: drush mica-fix-owner mica-maintenance-mode-on mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install move-module-to-sites-all mica-restore-user-data mica-clear-tmp-update mica-echo-update
+
+mica-fix-owner:
+	chown -R root:www-data /usr/share/mica && \
+	chown -R root:www-data /etc/mica/profiles && \
+	chown -R root:www-data /etc/mica/sites && \
+	chown -R root:www-data /var/lib/mica
 
 mica-maintenance-mode-on:
 	@echo "**** Set site in maintenance mode"
