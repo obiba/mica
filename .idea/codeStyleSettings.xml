@@ -20,13 +20,6 @@
         <CssCodeStyleSettings>
           <option name="KEEP_SINGLE_LINE_BLOCKS" value="true" />
         </CssCodeStyleSettings>
-        <JSCodeStyleSettings>
-          <option name="SPACE_AFTER_PROPERTY_COLON" value="true" />
-        </JSCodeStyleSettings>
-        <PHPCodeStyleSettings>
-          <option name="UPPER_CASE_BOOLEAN_CONST" value="true" />
-          <option name="UPPER_CASE_NULL_CONST" value="true" />
-        </PHPCodeStyleSettings>
         <XML>
           <option name="XML_LEGACY_SETTINGS_IMPORTED" value="true" />
         </XML>

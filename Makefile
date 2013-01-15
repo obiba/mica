@@ -86,6 +86,8 @@ help:
 	@echo "  deploy             : Used by continuous integration server to copy packaged distribution to stable (for prod) or unstable (for dev)."
 	@echo "                       http://ci.obiba.org/view/Mica/job/Mica"
 	@echo
+	@echo "  install-bootstrap-dependencies: Install required programs for bootstrap library"
+	@echo
 	@echo "Requires drush 5+ to be installed [http://drush.ws]"
 	@echo "  " `drush version`
 	@echo
