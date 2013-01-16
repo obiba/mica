@@ -27,7 +27,7 @@ endif
 # Mica Solr install
 #
 
-mica-solr-install: mica-solr-backup mica-solr-install-prepare solr-install 
+mica-solr-install: mica-solr-install-prepare solr-install 
 
 mica-solr-update: mica-solr-backup solr-copy-config-files
 
