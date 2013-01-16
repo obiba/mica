@@ -4,9 +4,10 @@
 
 oldversion=
 solr_version=3.6.2
+backupdir=/var/lib/mica-installer/backups/mica-solr-$(oldversion)
 
 
-all: mica-solr-install-prepare
+all: install
 
 #
 # Install
@@ -18,6 +19,7 @@ ifndef oldversion
 	make mica-solr-install
 else
 	@echo "**** Mica Solr update"
+
 	make mica-solr-update
 endif
 
@@ -25,9 +27,9 @@ endif
 # Mica Solr install
 #
 
-mica-solr-install: solr-install 
+mica-solr-install: mica-solr-backup mica-solr-install-prepare solr-install 
 
-mica-solr-update: solr-copy-config-files
+mica-solr-update: mica-solr-backup solr-copy-config-files
 
 mica-solr-install-prepare:
 	@echo "**** Downloading Apache Solr version $(solr_version)"
@@ -36,6 +38,12 @@ mica-solr-install-prepare:
 	wget -q http://archive.apache.org/dist/lucene/solr/$(solr_version)/apache-solr-$(solr_version).tgz && \
 	tar xzf apache-solr-$(solr_version).tgz
 
+mica-solr-backup:
+	@echo "**** Backup mica-solr $(oldversion)"
+	mkdir -p $(backupdir) && \
+	cp -rL /usr/share/mica-solr $(backupdir) && \
+	tar czf mica-solr-$(oldversion).tar.gz $(backupdir)/mica-solr
+
 solr-install: solr-install-setup solr-copy-config-files solr-install-finish
 	
 solr-install-setup:
@@ -43,17 +51,11 @@ solr-install-setup:
 
 solr-copy-config-files:
 	cd /usr/share && \
-	if [ -e mica/sites/all/modules/search_api_solr/solrconfig.xml ]; then \
-		cp mica/sites/all/modules/search_api_solr/solrconfig.xml mica-solr/solr/conf/ ; \
+	if [ -e mica/sites/all/modules/search_api_solr/solr-conf/3.x/solrconfig.xml ]; then \
+		cp mica/sites/all/modules/search_api_solr/solr-conf/3.x/* mica-solr/solr/conf/ ; \
 	fi && \
-	if [ -e /etc/mica/profiles/mica_distribution/modules/search_api_solr/solrconfig.xml ]; then \
-		cp /etc/mica/profiles/mica_distribution/modules/search_api_solr/solrconfig.xml mica-solr/solr/conf/ ; \
-	fi && \
-	if [ -e mica/sites/all/modules/search_api_solr/schema.xml ]; then \
-		cp mica/sites/all/modules/search_api_solr/schema.xml mica-solr/solr/conf/ ; \
-	fi && \
-	if [ -e /etc/mica/profiles/mica_distribution/modules/search_api_solr/schema.xml ]; then \
-		cp /etc/mica/profiles/mica_distribution/modules/search_api_solr/schema.xml mica-solr/solr/conf/ ; \
+	if [ -e /etc/mica/profiles/mica_distribution/modules/search_api_solr/solr-conf/3.x/solrconfig.xml ]; then \
+		cp /etc/mica/profiles/mica_distribution/modules/search_api_solr/solr-conf/3.x/* mica-solr/solr/conf/ ; \
 	fi
 
 solr-install-finish:
@@ -70,4 +72,4 @@ solr-install-finish:
 #
 
 clean:
-	rm -rf /var/cache/mica-solr-installer/target
+	rm -rf /var/lib/mica-solr-installer/target

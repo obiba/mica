@@ -61,7 +61,7 @@ mica-dist-install-prepare:
 	mkdir -p /var/cache/mica-installer/target && \
 	cd /var/cache/mica-installer/target && \
 	wget -q http://ftp.drupal.org/files/projects/mica_distribution-$(drupal_version)-$(dist_version)-core.tar.gz && \
-	#cp ~/workspace/mica/target/mica_distribution-$(drupal_version)-$(dist_version).tar.gz mica_distribution-$(drupal_version)-$(dist_version)-core.tar.gz && \
+	#cp ${HOME}/projects/mica/target/mica_distribution-$(drupal_version)-$(dist_version).tar.gz mica_distribution-$(drupal_version)-$(dist_version)-core.tar.gz && \
 	tar xzf mica_distribution-$(drupal_version)-$(dist_version)-core.tar.gz && \
 	mv mica_distribution-$(drupal_version)-$(dist_version) mica && \
 	rm -rf mica/profiles/minimal && \
@@ -111,13 +111,7 @@ include mica-5.x-update.mk
 include mica-6.x-update.mk
 include mica-7.x-update.mk
 
-mica-prepare-update: drush mica-fix-owner mica-maintenance-mode-on mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install move-module-to-sites-all mica-restore-user-data mica-clear-tmp-update mica-echo-update
-
-mica-fix-owner:
-	chown -R root:www-data /usr/share/mica && \
-	chown -R root:www-data /etc/mica/profiles && \
-	chown -R root:www-data /etc/mica/sites && \
-	chown -R root:www-data /var/lib/mica
+mica-prepare-update: drush mica-maintenance-mode-on mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install move-module-to-sites-all mica-restore-user-data mica-clear-tmp-update mica-echo-update
 
 mica-maintenance-mode-on:
 	@echo "**** Set site in maintenance mode"
@@ -172,17 +166,17 @@ mica-restore-user-config:
 	cp /var/cache/mica-installer/update/.htaccess /usr/share/mica
 
 mica-restore-user-profiles:	
-	if [ !$(find /var/cache/mica-installer/update/profiles -type d -empty) ] ; then \
+	if [ $(find /var/cache/mica-installer/update/profiles -type d -not -empty) ] ; then \
 		cp -rf /var/cache/mica-installer/update/profiles/* /etc/mica/profiles ; \
 	fi 
 
 mica-restore-user-sites:
-	if [ !$(find /var/cache/mica-installer/update/sites -type d -empty) ] ; then \
+	if [ $(find /var/cache/mica-installer/update/sites -type d -not -empty) ] ; then \
 		cp -rf /var/cache/mica-installer/update/sites/* /etc/mica/sites ; \
 	fi
 
 mica-restore-user-files:
-	if [ !$(find /var/cache/mica-installer/update/files -type d -empty) ] ; then \
+	if [ $(find /var/cache/mica-installer/update/files -type d -not -empty) ] ; then \
 		cp -rf /var/cache/mica-installer/update/files/* /var/lib/mica/default/files ; \
 	fi
 
@@ -229,12 +223,12 @@ clean:
 #
 
 delete-module = rm -rf /usr/share/mica/sites/all/modules/$(1) && \
-	/etc/mica/profiles/mica_distribution/modules/$(1)
+	rm -rf /etc/mica/profiles/mica_distribution/modules/$(1)
 
 delete-theme = rm -rf /usr/share/mica/sites/all/themes/$(1) && \
-	/etc/mica/profiles/mica_distribution/themes/$(1)
+	rm -rf /etc/mica/profiles/mica_distribution/themes/$(1)
 
 delete-library = rm -rf /usr/share/mica/sites/all/libraries/$(1) && \
-	/etc/mica/profiles/mica_distribution/libraries/$(1)
+	rm -rf /etc/mica/profiles/mica_distribution/libraries/$(1)
 
 delete-profile = rm -rf /usr/share/mica/profiles/$(1)
