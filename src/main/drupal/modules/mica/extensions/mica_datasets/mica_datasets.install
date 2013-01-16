@@ -225,6 +225,11 @@ function mica_datasets_update_7600(&$update) {
 }
 
 function mica_datasets_update_7700(&$sandbox) {
+  db_update('taxonomy_term_data')
+    ->fields(array('name' => 'Functions of the cardiovascular, haematological, immunological and respiratory systems'))
+    ->condition('name', 'functions of the cardiovascular, haematological, immunological and respiratory systems')
+    ->execute();
+
   features_revert(array('mica_datasets' => array('views_view')));
 }
 
