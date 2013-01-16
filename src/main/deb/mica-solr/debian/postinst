@@ -25,7 +25,7 @@ OLDVERSION="$2"
 case "$1" in
     configure)
 
-		cd /var/lib/mica-solr-installer && make clean all install oldversion=$2
+		cd /var/lib/mica-solr-installer && make clean all oldversion=$2
 
 		# Permissions
 		dpkg-statoverride --list $filesdir || dpkg-statoverride --add --force --update www-data www-data 0750 $filesdir
