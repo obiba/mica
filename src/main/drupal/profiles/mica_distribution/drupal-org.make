@@ -261,9 +261,9 @@ libraries[jquery_tooltip][directory_name] = jquery_tooltip
 ;libraries[lessphp][download][url] = http://leafo.net/lessphp/src/lessphp-0.3.8.tar.gz
 ;libraries[lessphp][directory_name] = lessphp
 
-libraries[opal_php][download][type]= get
-libraries[opal_php][download][url] = http://download.obiba.org/opal/unstable/opal-php_1.11-SNAPSHOT.zip
-libraries[opal_php][directory_name] = opal_php
+;libraries[opal_php][download][type]= get
+;libraries[opal_php][download][url] = http://download.obiba.org/opal/unstable/opal-php_1.11-SNAPSHOT.zip
+;libraries[opal_php][directory_name] = opal_php
 
 libraries[prettify_css][download][type] = get
 libraries[prettify_css][download][url] = http://google-code-prettify.googlecode.com/svn/branches/release-1-Jun-2011/src/prettify.css
