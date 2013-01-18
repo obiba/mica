@@ -182,7 +182,6 @@ projects[references][download][revision] = 311bd49
 projects[references][download][branch] = 7.x-2.x
 
 projects[search_api][version] = 1.4
-projects[search_api][patch][1617794] = http://drupal.org/files/search_api-view_unpublished-support-1617794-6.patch
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch
 projects[search_api][patch][1471310] = http://drupal.org/files/1471310--unset-field-8_0.patch
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
