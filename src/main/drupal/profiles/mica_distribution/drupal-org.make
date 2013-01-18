@@ -14,7 +14,7 @@ projects[adaptivetheme] = 3.1
 projects[auto_entitylabel] = 1.1
 
 projects[autocomplete_deluxe][download][type] = git
-projects[autocomplete_deluxe][download][revision] = 90d95d3
+projects[autocomplete_deluxe][download][revision] = c562451
 projects[autocomplete_deluxe][download][branch] = 7.x-2.x
 
 ; needed because of migration to auto_entitylabel
@@ -119,6 +119,8 @@ projects[jquery_update][download][type] = git
 projects[jquery_update][download][revision] = baff5d1
 projects[jquery_update][download][branch] = 7.x-2.x
 
+projects[jquery_ui_multiselect_widget] = 1.5
+
 projects[l10n_update] = 1.0-beta3
 
 projects[lang_dropdown] = 1.5
@@ -181,7 +183,7 @@ projects[search_api][version] = 1.4
 projects[search_api][patch][1617794] = http://drupal.org/files/search_api-view_unpublished-support-1617794-6.patch
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch
 projects[search_api][patch][1471310] = http://drupal.org/files/1471310--unset-field-8_0.patch
-projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
+;projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 
 projects[search_api_combined] = 1.1
 
@@ -218,7 +220,11 @@ projects[view_unpublished] = 1.1
 
 projects[views] = 3.5
 
-projects[views_bulk_operations] = 3.1
+projects[views_bulk_operations][version] = 3.1
+;projects[views_bulk_operations][download][revision] = 0706019
+;projects[views_bulk_operations][download][branch] = 7.x-3.x
+projects[views_bulk_operations][patch][1809282] = http://drupal.org/files/views_bulk_operations-invalid_arg_foreach_modify-1809282.patch
+;projects[views_bulk_operations][patch] = http://drupal.org/files/vbo-views_entity_tables-1334374-11.patch
 
 projects[views_data_export][version] = 3.0-beta6
 projects[views_data_export][patch][1224894] = http://drupal.org/files/html_in_csv-1224894-10.patch

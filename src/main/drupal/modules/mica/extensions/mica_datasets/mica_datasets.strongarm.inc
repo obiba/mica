@@ -258,6 +258,76 @@ function mica_datasets_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_ui_multiselect_widget_autoOpen';
+  $strongarm->value = 0;
+  $export['jquery_ui_multiselect_widget_autoOpen'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_ui_multiselect_widget_classes';
+  $strongarm->value = '';
+  $export['jquery_ui_multiselect_widget_classes'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_ui_multiselect_widget_filter';
+  $strongarm->value = 1;
+  $export['jquery_ui_multiselect_widget_filter'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_ui_multiselect_widget_filter_auto_reset';
+  $strongarm->value = 0;
+  $export['jquery_ui_multiselect_widget_filter_auto_reset'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_ui_multiselect_widget_filter_width';
+  $strongarm->value = '100';
+  $export['jquery_ui_multiselect_widget_filter_width'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_ui_multiselect_widget_header';
+  $strongarm->value = 1;
+  $export['jquery_ui_multiselect_widget_header'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_ui_multiselect_widget_height';
+  $strongarm->value = '175';
+  $export['jquery_ui_multiselect_widget_height'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_ui_multiselect_widget_multiple';
+  $strongarm->value = 1;
+  $export['jquery_ui_multiselect_widget_multiple'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_ui_multiselect_widget_selectedlist';
+  $strongarm->value = 4;
+  $export['jquery_ui_multiselect_widget_selectedlist'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'jquery_ui_multiselect_widget_subselector';
+  $strongarm->value = '';
+  $export['jquery_ui_multiselect_widget_subselector'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_dataset';
   $strongarm->value = '0';
   $export['language_content_type_dataset'] = $strongarm;

@@ -28,6 +28,7 @@ class mica_datasets_handler_field_operations extends views_bulk_operations_handl
      */
   public function get_value($values, $field = NULL) {
     // I'm not sure this is the best source for this but the name seemed consistent.
+    debug($values);
   return $values->_entity_properties['search_api_item_id'];
   }
 }

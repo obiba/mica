@@ -1552,3 +1552,53 @@ function _mica_datasets_query_term_access($dataset_node, $query, $query_term, $o
 
   return _mica_datasets_query_access($dataset_node, $query, $op);
 }
+
+/**
+ * Override the autocomplete widget on the Assign dimensions page to fix issue: http://drupal.org/node/1891406
+ */
+//function mica_datasets_field_widget_form_alter(&$element, &$form_state, $context) {
+//  if ($context['instance']['widget']['module'] == 'options') {
+//    debug($element);
+//  }
+//  if ($form_state['build_info']['form_id'] == 'views_form_variables_dimensions2_page') {
+//
+//    // Change autocomplete deluxe widget for regular widget
+//    //debug($context['field']['field_name']. ' - '.$context['instance']['widget']['module'] . '- ' . $context['instance']['widget']['type']);
+//    if ($context['instance']['widget']['module'] == 'autocomplete_deluxe') {
+//      $element['#type'] = 'select';
+//
+//      $vocabularies = taxonomy_get_vocabularies();
+//
+//      $options = array();
+//      $options['_none'] = '- None -';
+//      foreach ($vocabularies as $v) {
+//        if ($v->machine_name == $context['field']['settings']['allowed_values'][0]['vocabulary']) {
+//          $terms = taxonomy_get_tree($v->vid);
+//          foreach ($terms as $term) {
+//            $options[] = $term->name;
+//          }
+//        }
+//      }
+//      $element['#options'] = $options;
+//      $element['#attributes']['class'][] = 'select-width-large';
+//      unset($element['#element_validate']);
+//      unset($element['#size']);
+//      unset($element['#limit']);
+//      unset($element['#min_length']);
+////      unset($element['#multiple']);
+//      unset($element['#autocomplete_deluxe_path']);
+//
+//      $element['#value_key'] = 'tid';
+//      $element['#element_validate'] = array(0 => 'options_field_widget_validate');
+//      $element['#properties'] = array(
+//        'strip_tags' => true,
+//        'optgroups' => true,
+//        'empty_option' => 'option_none',
+//        'filter_xss' => false,
+//      );
+//
+//      debug($element);
+//    }
+//  }
+//}
+
