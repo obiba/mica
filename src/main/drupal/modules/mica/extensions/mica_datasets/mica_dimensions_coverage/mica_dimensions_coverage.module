@@ -10,7 +10,7 @@
 function mica_dimensions_coverage_menu() {
 
   $items['content/content/datasets-domains-coverage'] = array(
-    'title' => 'Domains Coverage',
+    'title' => t('Domain Coverage'),
     'description' => '',
     'page arguments' => array(1),
     'access callback' => TRUE,
@@ -34,7 +34,7 @@ function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $
       $links['view-dataset-crosstab'] = array(
         '#theme' => 'menu_local_action',
         '#link' => array(
-          'title' => t('Domains Coverage'),
+          'title' => t('Domain Coverage'),
           'href' => 'content/datasets-domains-coverage', // Arguments could be taxonomies and dataset
           'localized_options' => array(
             'attributes' => array('class' => 'highlight'),
