@@ -52,7 +52,6 @@ dependencies[] = facetapi
 dependencies[] = search_api_page
 dependencies[] = search_api_views
 dependencies[] = search_api_solr
-dependencies[] = superfish
 dependencies[] = features
 dependencies[] = features_override
 dependencies[] = strongarm

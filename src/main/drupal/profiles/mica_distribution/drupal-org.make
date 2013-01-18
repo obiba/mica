@@ -30,7 +30,9 @@ projects[cck_select_other] = 1.0
 
 projects[chain_menu_access] = 1.0
 
-projects[ckeditor] = 1.12
+projects[ckeditor][download][type] = git
+projects[ckeditor][download][revision] = 57c7a9c
+projects[ckeditor][download][branch] = 7.x-1.x
 
 projects[collapsiblock][download][type] = git
 projects[collapsiblock][download][revision] = 36f4280
@@ -221,21 +223,16 @@ projects[view_unpublished] = 1.1
 projects[views] = 3.5
 
 projects[views_bulk_operations][version] = 3.1
-;projects[views_bulk_operations][download][revision] = 0706019
-;projects[views_bulk_operations][download][branch] = 7.x-3.x
 projects[views_bulk_operations][patch][1809282] = http://drupal.org/files/views_bulk_operations-invalid_arg_foreach_modify-1809282.patch
-;projects[views_bulk_operations][patch] = http://drupal.org/files/vbo-views_entity_tables-1334374-11.patch
 
 projects[views_data_export][version] = 3.0-beta6
 projects[views_data_export][patch][1224894] = http://drupal.org/files/html_in_csv-1224894-10.patch
-;projects[views_data_export][patch][1379672] = http://drupal.org/files/styleable_export_links-1379672-5.patch
 
 projects[viewreference] = 3.4
 
-projects[workbench] = 1.1
+projects[workbench] = 1.2
 
-projects[workbench_moderation][version] = 1.2
-projects[workbench_moderation][patch][1245590] = http://drupal.org/files/retaintitle-1245590-12.patch
+projects[workbench_moderation] = 1.3
 
 projects[xmlsitemap] = 2.0-rc2
 
