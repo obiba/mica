@@ -230,43 +230,6 @@ function mica_datasets_update_7700(&$sandbox) {
     ->condition('name', 'functions of the cardiovascular, haematological, immunological and respiratory systems')
     ->execute();
 
-  module_enable(array('jquery_ui_multiselect_widget'));
-
-  $fields = array(
-    'field_data_source',
-    'field_individual_participant_mea',
-    'field_disease_histor',
-    'field_medical_health_interv',
-    'field_medication',
-    'field_reproductive_history',
-    'field_early_life',
-    'field_life_habits_behaviours',
-    'field_sociodemographic_charact',
-    'field_physical_environment',
-    'field_social_environment',
-    'field_perception_of_health',
-    'field_anthropometric_structures',
-    'field_body_structures',
-    'field_body_functions',
-    'field_laboratory_measures',
-    'field_essence',
-    'field_target',
-    'field_period',
-    'field_measure'
-  );
-  foreach ($fields as $field) {
-    $conf = field_info_instance('node', $field, 'variable');
-    $conf['widget']['module'] = 'options';
-    $conf['widget']['type'] = 'options_select';
-
-    db_update('field_config_instance')
-      ->fields(
-      array('data' => serialize($conf))
-    )
-      ->condition('field_name', $field)
-      ->execute();
-  }
-
   features_revert(array('mica_datasets' => array('views_view')));
 }
 
