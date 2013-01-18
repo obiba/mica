@@ -263,7 +263,7 @@ function mica_datasets_update_7700(&$sandbox) {
       ->fields(
       array('data' => serialize($conf))
     )
-      ->condition('field_name', 'field_disease_history')
+      ->condition('field_name', $field)
       ->execute();
   }
 
