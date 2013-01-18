@@ -307,10 +307,18 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
                 $data['actions']['output'][$key]['#access'] = FALSE;
               }
               else {
-                $data['actions']['output'][$key]['#link']['localized_options'] = array(
-                  'attributes' => array('class' => 'highlight')
-                );
-                $data['actions']['output'][$key]['#weight'] = 42;
+                // If has hamonization
+                $nb_sva = _mica_datasets_get_sva_count($node->nid);
+
+                if ($nb_sva > 0){
+                  $data['actions']['output'][$key]['#link']['localized_options'] = array(
+                    'attributes' => array('class' => 'highlight')
+                  );
+                  $data['actions']['output'][$key]['#weight'] = 42;
+                }
+                else{
+                  $data['actions']['output'][$key]['#access'] = FALSE;
+                }
               }
             }
           }
@@ -553,7 +561,10 @@ function mica_datasets_node_view_alter(&$build) {
       $dataset = entity_load_single('node', $dataset->nid);
       $dataset_wrapper = entity_metadata_wrapper('node', entity_load_single('node', $dataset->nid));
 
-      if ($dataset_wrapper->field_dataset_type->value() !== 'study') {
+      // If has hamonization
+      $nb_sva = _mica_datasets_get_sva_count($dataset_wrapper->nid->value());
+
+      if ($dataset_wrapper->field_dataset_type->value() !== 'study' && $nb_sva > 0) {
 
         require_once('mica_datasets.pages.harmonization.inc');
 
@@ -649,6 +660,13 @@ function mica_datasets_node_view_alter(&$build) {
       }
     }
   }
+}
+
+function _mica_datasets_get_sva_count($dataset_nid) {
+  $nb_sva = db_query('SELECT * FROM {field_data_field_sva_variable} WHERE field_sva_variable_nid IN
+                 (SELECT field_dataset_variables_nid FROM {field_data_field_dataset_variables} WHERE entity_id = :nid)',
+    array(':nid' => $dataset_nid))->rowCount();
+  return $nb_sva;
 }
 
 /**
