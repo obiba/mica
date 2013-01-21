@@ -55,6 +55,9 @@ function mica_projects_update_7500(&$sandbox) {
   mica_core_replace_titles(array('project', 'teleconference'));
 }
 
+/**
+ * Update Mica Projects views
+ */
 function mica_projects_update_7700(&$sandbox) {
   features_revert(array('mica_projects' => array('views_view')));
 }

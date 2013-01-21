@@ -224,6 +224,11 @@ function mica_datasets_update_7600(&$update) {
   cache_clear_all();
 }
 
+/**
+ * Update Mica Datasets views<br />
+ * Changing taxonomy term 'functions of the cardiovascular, haematological, immunological and respiratory systems' to
+ * 'Functions of the cardiovascular, haematological, immunological and respiratory systems' (capital 'F')
+ */
 function mica_datasets_update_7700(&$sandbox) {
   db_update('taxonomy_term_data')
     ->fields(array('name' => 'Functions of the cardiovascular, haematological, immunological and respiratory systems'))

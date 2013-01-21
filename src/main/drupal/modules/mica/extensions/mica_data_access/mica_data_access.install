@@ -20,6 +20,9 @@ function mica_data_access_update_7500(&$sandbox) {
   mica_core_replace_titles(array('data_access_request', 'data_access_review'));
 }
 
+/**
+ * Update Mica Data Access views
+ */
 function mica_data_access_update_7700(&$sandbox) {
   features_revert(array('mica_data_access' => array('views_view')));
 }
