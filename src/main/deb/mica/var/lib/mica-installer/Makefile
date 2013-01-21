@@ -49,6 +49,7 @@ else
 	@echo "**** Mica core/modules/themes/profiles upgrade from $(oldversion)"
 	make mica-prepare-update
 endif
+	service mica-solr start
 
 #
 # Mica dist install
@@ -90,8 +91,7 @@ drupal-sites:
 	ln -s /var/lib/mica/default/files /etc/mica/sites/default/files && \
 	chmod a+w /var/lib/mica/default/files && \
 	if [ ! -e /etc/mica/sites/default/settings.php ]; then \
-		cd /etc/mica/sites/default && \
-		cp default.settings.php settings.php ; \
+		cp /etc/mica/sites/default/default.settings.php /etc/mica/sites/default/settings.php ; \
 	fi
 	chmod a+w /etc/mica/sites/default/settings.php
 
@@ -111,7 +111,7 @@ include mica-5.x-update.mk
 include mica-6.x-update.mk
 include mica-7.x-update.mk
 
-mica-prepare-update: drush mica-maintenance-mode-on mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install move-module-to-sites-all mica-restore-user-data mica-clear-tmp-update mica-echo-update
+mica-prepare-update: drush mica-maintenance-mode-on mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install mica-restore-user-data mica-clear-tmp-update mica-echo-update
 
 mica-maintenance-mode-on:
 	@echo "**** Set site in maintenance mode"
@@ -140,7 +140,8 @@ mica-copy-user-files:
 	cp -rL /usr/share/mica/profiles /var/cache/mica-installer/update && \
 	cp -rL /usr/share/mica/sites /var/cache/mica-installer/update && \
 	rm -rf /var/cache/mica-installer/update/sites/default/files && \
-	cp -rL /var/lib/mica/default/files /var/cache/mica-installer/update
+	cp -rL /var/lib/mica/default/files /var/cache/mica-installer/update && \
+	cp -L /etc/mica/sites/default/settings.php /var/cache/mica-installer/update
 
 delete-core:
 	@echo "**** Delete Drupal core" 
@@ -148,22 +149,12 @@ delete-core:
 	rm -rf /etc/mica/profiles/* && \
 	rm -rf /etc/mica/sites/*
 
-move-module-to-sites-all:
-ifeq ($(module_in_sites_all),true)
-	@echo "**** Move files from profiles to sites/all"
-	mkdir -p /usr/share/mica/sites/all/modules && \
-	mkdir -p /usr/share/mica/sites/all/libraries && \
-	mkdir -p /usr/share/mica/sites/all/themes && \
-	mv /etc/mica/profiles/mica_distribution/modules/* /usr/share/mica/sites/all/modules && \
-	mv /etc/mica/profiles/mica_distribution/libraries/* /usr/share/mica/sites/all/libraries && \
-	mv /etc/mica/profiles/mica_distribution/themes/* /usr/share/mica/sites/all/themes
-endif
-
 mica-restore-user-data:	mica-restore-user-config mica-restore-user-profiles mica-restore-user-sites mica-restore-user-files
 
 mica-restore-user-config:	
 	@echo "**** Restore user files" 
-	cp /var/cache/mica-installer/update/.htaccess /usr/share/mica
+	cp /var/cache/mica-installer/update/.htaccess /usr/share/mica && \
+	cp /var/cache/mica-installer/update/settings.php /etc/mica/sites/default/settings.php
 
 mica-restore-user-profiles:	
 	if [ $(find /var/cache/mica-installer/update/profiles -type d -not -empty) ] ; then \

@@ -183,6 +183,7 @@ mica-delete-7.0-rc1: mica-delete-7.0
 mica-delete-7.0-rc2: mica-delete-7.0
 mica-delete-7.0-rc3: mica-delete-7.0
 mica-delete-7.0-rc4: mica-delete-7.0
+mica-delete-7.0-rc5: mica-delete-7.0
 
 
 
