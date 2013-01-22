@@ -185,6 +185,7 @@ projects[search_api][version] = 1.4
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch
 projects[search_api][patch][1471310] = http://drupal.org/files/1471310--unset-field-8_0.patch
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
+projects[search_api][patch][1594762] = http://drupal.org/files/1594762-18-deleted-terms-cause-indexing-crash.patch
 
 projects[search_api_combined] = 1.1
 
@@ -198,7 +199,8 @@ projects[search_api_ranges][patch][1460410] = http://drupal.org/files/max-inclus
 
 projects[search_api_solr] = 1.0-rc3
 
-projects[services] = 3.3
+; DO NOT CHANGE VERSION UNTIL http://jira.obiba.org/jira/browse/MICA-888 IS FIXED
+projects[services][version] = 3.1
 
 projects[smtp] = 1.0-beta2
 
@@ -280,13 +282,6 @@ libraries[prettify_js][overwrite] = TRUE
 libraries[solr_php_client][download][type] = get
 libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.com/files/SolrPhpClient.r60.2011-05-04.tgz
 libraries[solr_php_client][directory_name] = SolrPhpClient
-
-libraries[spyc][download][type]= get
-libraries[spyc][download][url] = https://raw.github.com/mustangostang/spyc/master/Spyc.php
-libraries[spyc][download][filename] = spyc.php
-libraries[spyc][destination] = modules
-libraries[spyc][directory_name] = services/servers/rest_server/lib
-libraries[spyc][overwrite] = TRUE
 
 libraries[superfish][download][type]= get
 libraries[superfish][download][url] = https://github.com/mehrpadin/Superfish-for-Drupal/zipball/master
