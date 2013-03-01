@@ -1,4 +1,4 @@
-# [Mica](http://www.obiba.org/node/174) [![Build Status](http://ci.obiba.org/view/Mica/job/Mica/badge/icon)](http://ci.obiba.org/view/Mica/job/Mica/)
+# [Mica 7.x](http://www.obiba.org/node/174) [![Build Status](http://ci.obiba.org/view/Mica/job/Mica%207.x/badge/icon)](http://ci.obiba.org/view/Mica/job/Mica%207.x/)
 
 [Mica](http://www.obiba.org/node/174) is a powerful software application used to create web portals for epidemiological
 study consortia.
