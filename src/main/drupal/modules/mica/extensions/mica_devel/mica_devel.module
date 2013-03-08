@@ -115,5 +115,3 @@ function _mica_devel_is_mica_module($module) {
 function _mica_devel_dummy_run() {
   drupal_set_message(t("Run dummy method..."));
 }
-
-

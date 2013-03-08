@@ -20,7 +20,7 @@ function mica_studies_current_search_default_items() {
       'results' => array(
         'id' => 'text',
         'label' => 'Results',
-        'text' => 'Search found [facetapi_results:result-count] study',
+        'text' => t('Search found [facetapi_results:result-count] study'),
         'plural' => 1,
         'text_plural' => 'Search found [facetapi_results:result-count] studies',
         'plural_condition' => 'facetapi_results:result-count',
