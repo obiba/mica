@@ -34,6 +34,13 @@ function mica_studies_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'additional_settings__active_tab_population';
+  $strongarm->value = 'edit-submission';
+  $export['additional_settings__active_tab_population'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_study';
   $strongarm->value = 'edit-auto-nodetitle';
   $export['additional_settings__active_tab_study'] = $strongarm;
@@ -81,6 +88,20 @@ return $title;
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'cascaded_population';
+  $strongarm->value = 1;
+  $export['cascaded_population'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'child_indexes_population';
+  $strongarm->value = array();
+  $export['child_indexes_population'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_address';
   $strongarm->value = '0';
   $export['comment_address'] = $strongarm;
@@ -105,6 +126,13 @@ return $title;
   $strongarm->name = 'comment_anonymous_documents';
   $strongarm->value = 0;
   $export['comment_anonymous_documents'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_anonymous_population';
+  $strongarm->value = 0;
+  $export['comment_anonymous_population'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -144,6 +172,13 @@ return $title;
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_population';
+  $strongarm->value = 1;
+  $export['comment_default_mode_population'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_study';
   $strongarm->value = 1;
   $export['comment_default_mode_study'] = $strongarm;
@@ -168,6 +203,13 @@ return $title;
   $strongarm->name = 'comment_default_per_page_documents';
   $strongarm->value = '50';
   $export['comment_default_per_page_documents'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_per_page_population';
+  $strongarm->value = '50';
+  $export['comment_default_per_page_population'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -207,6 +249,13 @@ return $title;
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_population';
+  $strongarm->value = 1;
+  $export['comment_form_location_population'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_study';
   $strongarm->value = 1;
   $export['comment_form_location_study'] = $strongarm;
@@ -228,6 +277,13 @@ return $title;
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_population';
+  $strongarm->value = '2';
+  $export['comment_population'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_address';
   $strongarm->value = '1';
   $export['comment_preview_address'] = $strongarm;
@@ -245,6 +301,13 @@ return $title;
   $strongarm->name = 'comment_preview_documents';
   $strongarm->value = '1';
   $export['comment_preview_documents'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_preview_population';
+  $strongarm->value = '1';
+  $export['comment_preview_population'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -280,6 +343,13 @@ return $title;
   $strongarm->name = 'comment_subject_field_documents';
   $strongarm->value = 1;
   $export['comment_subject_field_documents'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_subject_field_population';
+  $strongarm->value = 1;
+  $export['comment_subject_field_population'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -362,6 +432,26 @@ return $title;
     ),
   );
   $export['field_bundle_settings_node__documents'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__population';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'title' => array(
+          'weight' => '0',
+        ),
+        'path' => array(
+          'weight' => '4',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__population'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -2813,6 +2903,13 @@ return $title;
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'indexed_population';
+  $strongarm->value = 1;
+  $export['indexed_population'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'indexed_study';
   $strongarm->value = 1;
   $export['indexed_study'] = $strongarm;
@@ -2845,11 +2942,27 @@ return $title;
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_population';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_population'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_study';
   $strongarm->value = array(
     0 => 'main-menu',
   );
   $export['menu_options_study'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_study';
+  $strongarm->value = 'main-menu:534';
+  $export['menu_parent_study'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -2891,6 +3004,16 @@ return $title;
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_population';
+  $strongarm->value = array(
+    0 => 'status',
+    1 => 'promote',
+  );
+  $export['node_options_population'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_options_study';
   $strongarm->value = array(
     0 => 'moderation',
@@ -2918,6 +3041,13 @@ return $title;
   $strongarm->name = 'node_preview_documents';
   $strongarm->value = '1';
   $export['node_preview_documents'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_population';
+  $strongarm->value = '1';
+  $export['node_preview_population'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -2957,6 +3087,13 @@ return $title;
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_population';
+  $strongarm->value = 1;
+  $export['node_submitted_population'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_study';
   $strongarm->value = 0;
   $export['node_submitted_study'] = $strongarm;
@@ -2981,6 +3118,13 @@ return $title;
   $strongarm->name = 'parent_bundle_documents';
   $strongarm->value = '';
   $export['parent_bundle_documents'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'parent_bundle_population';
+  $strongarm->value = '';
+  $export['parent_bundle_population'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -3020,6 +3164,13 @@ return $title;
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'save_continue_population';
+  $strongarm->value = 'Save and add fields';
+  $export['save_continue_population'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'save_continue_study';
   $strongarm->value = 'Save and add fields';
   $export['save_continue_study'] = $strongarm;
@@ -3037,6 +3188,13 @@ return $title;
   $strongarm->name = 'workbench_moderation_default_state_contact';
   $strongarm->value = 'draft';
   $export['workbench_moderation_default_state_contact'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_moderation_default_state_population';
+  $strongarm->value = 'draft';
+  $export['workbench_moderation_default_state_population'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

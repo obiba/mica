@@ -357,6 +357,13 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create population content.
+  $permissions['create population content'] = array(
+    'name' => 'create population content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: create study content.
   $permissions['create study content'] = array(
     'name' => 'create study content',
@@ -419,6 +426,13 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete any population content.
+  $permissions['delete any population content'] = array(
+    'name' => 'delete any population content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: delete any study content.
   $permissions['delete any study content'] = array(
     'name' => 'delete any study content',
@@ -477,6 +491,13 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own population content.
+  $permissions['delete own population content'] = array(
+    'name' => 'delete own population content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -547,6 +568,13 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any population content.
+  $permissions['edit any population content'] = array(
+    'name' => 'edit any population content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -765,6 +793,13 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own population content.
+  $permissions['edit own population content'] = array(
+    'name' => 'edit own population content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -1011,6 +1046,13 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
     ),
+    'module' => 'view_unpublished',
+  );
+
+  // Exported permission: view any unpublished population content.
+  $permissions['view any unpublished population content'] = array(
+    'name' => 'view any unpublished population content',
+    'roles' => array(),
     'module' => 'view_unpublished',
   );
 

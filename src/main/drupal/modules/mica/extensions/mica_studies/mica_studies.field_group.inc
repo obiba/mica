@@ -4258,8 +4258,7 @@ function mica_studies_field_group_info() {
     'label' => 'Participants Selection',
     'weight' => '67',
     'children' => array(
-      0 => 'group_recruitment_procedures',
-      1 => 'group_selection_criteria',
+      0 => 'group_selection_criteria',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -4356,6 +4355,244 @@ function mica_studies_field_group_info() {
     ),
   );
   $export['group_participants_selection|node|study|summary_right_area'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_pop_countries|node|population|form';
+  $field_group->group_name = 'group_pop_countries';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'population';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_pop_selection_criteria';
+  $field_group->data = array(
+    'label' => 'Please specify countries of residence',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_pop_country',
+      1 => 'field_pop_territory',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Please specify countries of residence',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_pop_countries|node|population|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_pop_participants_number|node|population|form';
+  $field_group->group_name = 'group_pop_participants_number';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'population';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_pop_participants_selection';
+  $field_group->data = array(
+    'label' => 'Participants Number',
+    'weight' => '28',
+    'children' => array(
+      0 => 'group_pop_participants',
+      1 => 'group_pop_participants_samples',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_pop_participants_number|node|population|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_pop_participants_samples|node|population|form';
+  $field_group->group_name = 'group_pop_participants_samples';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'population';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_pop_participants_number';
+  $field_group->data = array(
+    'label' => 'Number of participants with biological samples for this population',
+    'weight' => '27',
+    'children' => array(
+      0 => 'field_pop_participants_nb_s',
+      1 => 'field_pop_no_lim_participants_s',
+      2 => 'field_pop_participants_nb_s_info',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_pop_participants_samples|node|population|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_pop_participants_selection|node|population|form';
+  $field_group->group_name = 'group_pop_participants_selection';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'population';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Participants Selection',
+    'weight' => '2',
+    'children' => array(
+      0 => 'group_pop_selection_criteria',
+      1 => 'group_pop_recruitment_procedures',
+      2 => 'group_pop_participants_number',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Participants Selection',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_pop_participants_selection|node|population|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_pop_participants|node|population|form';
+  $field_group->group_name = 'group_pop_participants';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'population';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_pop_participants_number';
+  $field_group->data = array(
+    'label' => 'Number of participants for this population',
+    'weight' => '26',
+    'children' => array(
+      0 => 'field_pop_participants_nb',
+      1 => 'field_pop_no_limits_participants',
+      2 => 'field_pop_participants_nb_supp_i',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_pop_participants|node|population|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_pop_recruitment_procedures|node|population|form';
+  $field_group->group_name = 'group_pop_recruitment_procedures';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'population';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_pop_participants_selection';
+  $field_group->data = array(
+    'label' => 'Recruitment procedures',
+    'weight' => '27',
+    'children' => array(
+      0 => 'field_pop_recruitment_sources',
+      1 => 'field_pop_recruitment_other',
+      2 => 'field_pop_recruitement_supp_info',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Recruitment procedures',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_pop_recruitment_procedures|node|population|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_pop_selection_criteria|node|population|form';
+  $field_group->group_name = 'group_pop_selection_criteria';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'population';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_pop_participants_selection';
+  $field_group->data = array(
+    'label' => 'Selection Criteria / Characteristics of the population',
+    'weight' => '26',
+    'children' => array(
+      0 => 'field_pop_select_criteria',
+      1 => 'field_pop_gender',
+      2 => 'field_pop_age_min',
+      3 => 'field_pop_age_max',
+      4 => 'field_pop_ethnic_origin',
+      5 => 'field_pop_health_status',
+      6 => 'field_pop_partcipant_sel_supp_in',
+      7 => 'field_pop_selection_others_sp',
+      8 => 'group_pop_countries',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Selection Criteria / Characteristics of the population',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_pop_selection_criteria|node|population|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_pop_supp_info|node|population|form';
+  $field_group->group_name = 'group_pop_supp_info';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'population';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Supplementary Information',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_pop_supp_infos',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_pop_supp_info|node|population|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -4630,10 +4867,10 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'study';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_participants_selection';
+  $field_group->parent_name = 'group_selection_criteria';
   $field_group->data = array(
     'label' => 'Recruitment procedures',
-    'weight' => '67',
+    'weight' => '77',
     'children' => array(
       0 => 'field_recruitement_supp_info',
       1 => 'field_recruitment_other',
@@ -5009,6 +5246,7 @@ function mica_studies_field_group_info() {
       6 => 'field_select_criteria',
       7 => 'field_selection_others_sp',
       8 => 'group_countries',
+      9 => 'group_recruitment_procedures',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
