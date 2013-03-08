@@ -98,6 +98,14 @@ function mica_studies_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
+    'population' => array(
+      'name' => t('Population'),
+      'base' => 'node_content',
+      'description' => t('Content type population'),
+      'has_title' => '1',
+      'title_label' => t('Population'),
+      'help' => '',
+    ),
     'study' => array(
       'name' => t('Study'),
       'base' => 'node_content',

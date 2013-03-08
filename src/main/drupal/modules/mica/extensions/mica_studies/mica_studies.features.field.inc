@@ -134,6 +134,68 @@ function mica_studies_field_default_fields() {
     ),
   );
 
+  // Exported field: 'comment-comment_node_population-comment_body'.
+  $fields['comment-comment_node_population-comment_body'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(
+        0 => 'comment',
+      ),
+      'field_name' => 'comment_body',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'comment_node_population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'comment',
+      'field_name' => 'comment_body',
+      'label' => 'Comment',
+      'required' => TRUE,
+      'settings' => array(
+        'text_processing' => 1,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'rows' => 5,
+        ),
+        'type' => 'text_textarea',
+        'weight' => 0,
+      ),
+    ),
+  );
+
   // Exported field: 'comment-comment_node_study-comment_body'.
   $fields['comment-comment_node_study-comment_body'] = array(
     'field_config' => array(
@@ -1722,6 +1784,1877 @@ function mica_studies_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '-5',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-body'.
+  $fields['node-population-body'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(
+        0 => 'node',
+      ),
+      'field_name' => 'body',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_value_type' => 'text',
+        ),
+        'field_permissions' => array(
+          'create' => 0,
+          'edit' => 0,
+          'edit own' => 0,
+          'view' => 0,
+          'view own' => 0,
+        ),
+        'variable_infos' => array(
+          'variable' => 1,
+          'variable_body' => '',
+          'variable_value_type' => 'text',
+        ),
+      ),
+      'translatable' => '1',
+      'type' => 'text_with_summary',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(
+            'trim_length' => 600,
+          ),
+          'type' => 'text_summary_or_trimmed',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'body',
+      'label' => 'Body',
+      'required' => FALSE,
+      'settings' => array(
+        'display_summary' => TRUE,
+        'text_processing' => 1,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'text',
+        'settings' => array(
+          'rows' => 20,
+          'summary_rows' => 5,
+        ),
+        'type' => 'text_textarea_with_summary',
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_age_max'.
+  $fields['node-population-field_pop_age_max'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_age_max',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'Maximum age',
+          'field_description_value_type' => 'integer',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 4,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_age_max',
+      'label' => 'Maximum age',
+      'required' => 0,
+      'settings' => array(
+        'max' => '110',
+        'min' => '0',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_age_min'.
+  $fields['node-population-field_pop_age_min'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_age_min',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'Minimum age',
+          'field_description_value_type' => 'integer',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 3,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_age_min',
+      'label' => 'Minimum age',
+      'required' => 0,
+      'settings' => array(
+        'max' => '110',
+        'min' => '0',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '6',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_country'.
+  $fields['node-population-field_pop_country'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_country',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'AF' => 'Afghanistan',
+          'AX' => 'Aland Islands',
+          'AL' => 'Albania',
+          'DZ' => 'Algeria',
+          'AS' => 'American Samoa',
+          'AD' => 'Andorra',
+          'AO' => 'Angola',
+          'AI' => 'Anguilla',
+          'AQ' => 'Antarctica',
+          'AG' => 'Antigua and Barbuda',
+          'AR' => 'Argentina',
+          'AM' => 'Armenia',
+          'AW' => 'Aruba',
+          'AU' => 'Australia',
+          'AT' => 'Austria',
+          'AZ' => 'Azerbaijan',
+          'BS' => 'Bahamas',
+          'BH' => 'Bahrain',
+          'BD' => 'Bangladesh',
+          'BB' => 'Barbados',
+          'BY' => 'Belarus',
+          'BE' => 'Belgium',
+          'BZ' => 'Belize',
+          'BJ' => 'Benin',
+          'BM' => 'Bermuda',
+          'BT' => 'Bhutan',
+          'BO' => 'Bolivia',
+          'BQ' => 'Bonaire, Sint Eustatius and Saba',
+          'BA' => 'Bosnia and Herzegovina',
+          'BW' => 'Botswana',
+          'BV' => 'Bouvet Island',
+          'BR' => 'Brazil',
+          'IO' => 'British Indian Ocean Territory',
+          'VG' => 'British Virgin Islands',
+          'BN' => 'Brunei',
+          'BG' => 'Bulgaria',
+          'BF' => 'Burkina Faso',
+          'BI' => 'Burundi',
+          'KH' => 'Cambodia',
+          'CM' => 'Cameroon',
+          'CA' => 'Canada',
+          'CV' => 'Cape Verde',
+          'KY' => 'Cayman Islands',
+          'CF' => 'Central African Republic',
+          'TD' => 'Chad',
+          'CL' => 'Chile',
+          'CN' => 'China',
+          'CX' => 'Christmas Island',
+          'CC' => 'Cocos (Keeling) Islands',
+          'CO' => 'Colombia',
+          'KM' => 'Comoros',
+          'CG' => 'Congo (Brazzaville)',
+          'CD' => 'Congo (Kinshasa)',
+          'CK' => 'Cook Islands',
+          'CR' => 'Costa Rica',
+          'HR' => 'Croatia',
+          'CU' => 'Cuba',
+          'CW' => 'Curaçao',
+          'CY' => 'Cyprus',
+          'CZ' => 'Czech Republic',
+          'DK' => 'Denmark',
+          'DJ' => 'Djibouti',
+          'DM' => 'Dominica',
+          'DO' => 'Dominican Republic',
+          'EC' => 'Ecuador',
+          'EG' => 'Egypt',
+          'SV' => 'El Salvador',
+          'GQ' => 'Equatorial Guinea',
+          'ER' => 'Eritrea',
+          'EE' => 'Estonia',
+          'ET' => 'Ethiopia',
+          'FK' => 'Falkland Islands',
+          'FO' => 'Faroe Islands',
+          'FJ' => 'Fiji',
+          'FI' => 'Finland',
+          'FR' => 'France',
+          'GF' => 'French Guiana',
+          'PF' => 'French Polynesia',
+          'TF' => 'French Southern Territories',
+          'GA' => 'Gabon',
+          'GM' => 'Gambia',
+          'GE' => 'Georgia',
+          'DE' => 'Germany',
+          'GH' => 'Ghana',
+          'GI' => 'Gibraltar',
+          'GR' => 'Greece',
+          'GL' => 'Greenland',
+          'GD' => 'Grenada',
+          'GP' => 'Guadeloupe',
+          'GU' => 'Guam',
+          'GT' => 'Guatemala',
+          'GG' => 'Guernsey',
+          'GN' => 'Guinea',
+          'GW' => 'Guinea-Bissau',
+          'GY' => 'Guyana',
+          'HT' => 'Haiti',
+          'HM' => 'Heard Island and McDonald Islands',
+          'HN' => 'Honduras',
+          'HK' => 'Hong Kong S.A.R., China',
+          'HU' => 'Hungary',
+          'IS' => 'Iceland',
+          'IN' => 'India',
+          'ID' => 'Indonesia',
+          'IR' => 'Iran',
+          'IQ' => 'Iraq',
+          'IE' => 'Ireland',
+          'IM' => 'Isle of Man',
+          'IL' => 'Israel',
+          'IT' => 'Italy',
+          'CI' => 'Ivory Coast',
+          'JM' => 'Jamaica',
+          'JP' => 'Japan',
+          'JE' => 'Jersey',
+          'JO' => 'Jordan',
+          'KZ' => 'Kazakhstan',
+          'KE' => 'Kenya',
+          'KI' => 'Kiribati',
+          'KW' => 'Kuwait',
+          'KG' => 'Kyrgyzstan',
+          'LA' => 'Laos',
+          'LV' => 'Latvia',
+          'LB' => 'Lebanon',
+          'LS' => 'Lesotho',
+          'LR' => 'Liberia',
+          'LY' => 'Libya',
+          'LI' => 'Liechtenstein',
+          'LT' => 'Lithuania',
+          'LU' => 'Luxembourg',
+          'MO' => 'Macao S.A.R., China',
+          'MK' => 'Macedonia',
+          'MG' => 'Madagascar',
+          'MW' => 'Malawi',
+          'MY' => 'Malaysia',
+          'MV' => 'Maldives',
+          'ML' => 'Mali',
+          'MT' => 'Malta',
+          'MH' => 'Marshall Islands',
+          'MQ' => 'Martinique',
+          'MR' => 'Mauritania',
+          'MU' => 'Mauritius',
+          'YT' => 'Mayotte',
+          'MX' => 'Mexico',
+          'FM' => 'Micronesia',
+          'MD' => 'Moldova',
+          'MC' => 'Monaco',
+          'MN' => 'Mongolia',
+          'ME' => 'Montenegro',
+          'MS' => 'Montserrat',
+          'MA' => 'Morocco',
+          'MZ' => 'Mozambique',
+          'MM' => 'Myanmar',
+          'NA' => 'Namibia',
+          'NR' => 'Nauru',
+          'NP' => 'Nepal',
+          'NL' => 'Netherlands',
+          'AN' => 'Netherlands Antilles',
+          'NC' => 'New Caledonia',
+          'NZ' => 'New Zealand',
+          'NI' => 'Nicaragua',
+          'NE' => 'Niger',
+          'NG' => 'Nigeria',
+          'NU' => 'Niue',
+          'NF' => 'Norfolk Island',
+          'MP' => 'Northern Mariana Islands',
+          'KP' => 'North Korea',
+          'NO' => 'Norway',
+          'OM' => 'Oman',
+          'PK' => 'Pakistan',
+          'PW' => 'Palau',
+          'PS' => 'Palestinian Territory',
+          'PA' => 'Panama',
+          'PG' => 'Papua New Guinea',
+          'PY' => 'Paraguay',
+          'PE' => 'Peru',
+          'PH' => 'Philippines',
+          'PN' => 'Pitcairn',
+          'PL' => 'Poland',
+          'PT' => 'Portugal',
+          'PR' => 'Puerto Rico',
+          'QA' => 'Qatar',
+          'RE' => 'Reunion',
+          'RO' => 'Romania',
+          'RU' => 'Russia',
+          'RW' => 'Rwanda',
+          'BL' => 'Saint Barthélemy',
+          'SH' => 'Saint Helena',
+          'KN' => 'Saint Kitts and Nevis',
+          'LC' => 'Saint Lucia',
+          'MF' => 'Saint Martin (French part)',
+          'PM' => 'Saint Pierre and Miquelon',
+          'VC' => 'Saint Vincent and the Grenadines',
+          'WS' => 'Samoa',
+          'SM' => 'San Marino',
+          'ST' => 'Sao Tome and Principe',
+          'SA' => 'Saudi Arabia',
+          'SN' => 'Senegal',
+          'RS' => 'Serbia',
+          'SC' => 'Seychelles',
+          'SL' => 'Sierra Leone',
+          'SG' => 'Singapore',
+          'SX' => 'Sint Maarten (Dutch part)',
+          'SK' => 'Slovakia',
+          'SI' => 'Slovenia',
+          'SB' => 'Solomon Islands',
+          'SO' => 'Somalia',
+          'ZA' => 'South Africa',
+          'GS' => 'South Georgia and the South Sandwich Islands',
+          'KR' => 'South Korea',
+          'SS' => 'South Sudan',
+          'ES' => 'Spain',
+          'LK' => 'Sri Lanka',
+          'SD' => 'Sudan',
+          'SR' => 'Suriname',
+          'SJ' => 'Svalbard and Jan Mayen',
+          'SZ' => 'Swaziland',
+          'SE' => 'Sweden',
+          'CH' => 'Switzerland',
+          'SY' => 'Syria',
+          'TW' => 'Taiwan',
+          'TJ' => 'Tajikistan',
+          'TZ' => 'Tanzania',
+          'TH' => 'Thailand',
+          'TL' => 'Timor-Leste',
+          'TG' => 'Togo',
+          'TK' => 'Tokelau',
+          'TO' => 'Tonga',
+          'TT' => 'Trinidad and Tobago',
+          'TN' => 'Tunisia',
+          'TR' => 'Turkey',
+          'TM' => 'Turkmenistan',
+          'TC' => 'Turks and Caicos Islands',
+          'TV' => 'Tuvalu',
+          'VI' => 'U.S. Virgin Islands',
+          'UG' => 'Uganda',
+          'UA' => 'Ukraine',
+          'AE' => 'United Arab Emirates',
+          'GB' => 'United Kingdom',
+          'US' => 'United States',
+          'UM' => 'United States Minor Outlying Islands',
+          'UY' => 'Uruguay',
+          'UZ' => 'Uzbekistan',
+          'VU' => 'Vanuatu',
+          'VA' => 'Vatican',
+          'VE' => 'Venezuela',
+          'VN' => 'Vietnam',
+          'WF' => 'Wallis and Futuna',
+          'EH' => 'Western Sahara',
+          'YE' => 'Yemen',
+          'ZM' => 'Zambia',
+          'ZW' => 'Zimbabwe',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 5,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_country',
+      'label' => 'Country of residence',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'multiselect',
+        'settings' => array(),
+        'type' => 'multiselect',
+        'weight' => '8',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_ethnic_origin'.
+  $fields['node-population-field_pop_ethnic_origin'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_ethnic_origin',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'Ethnic Origin',
+          'field_description_value_type' => 'text',
+        ),
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 7,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_ethnic_origin',
+      'label' => 'Ethnic Origin',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '9',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_gender'.
+  $fields['node-population-field_pop_gender'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_gender',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'women' => 'Women only',
+          'men' => 'Men only',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'Gender',
+          'field_description_value_type' => 'text',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 2,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_gender',
+      'label' => 'Gender',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '5',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_health_status'.
+  $fields['node-population-field_pop_health_status'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_health_status',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'Health Status',
+          'field_description_value_type' => 'text',
+        ),
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 8,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_health_status',
+      'label' => 'Health Status',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '10',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_no_lim_participants_s'.
+  $fields['node-population-field_pop_no_lim_participants_s'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_no_lim_participants_s',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'No limits in the number of participants ',
+          'field_description_value_type' => 'boolean',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 18,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_no_lim_participants_s',
+      'label' => 'No limits in the number of participants ',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '28',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_no_limits_participants'.
+  $fields['node-population-field_pop_no_limits_participants'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_no_limits_participants',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => '',
+          1 => '',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'No limits in the number of participants',
+          'field_description_value_type' => 'boolean',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 15,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_no_limits_participants',
+      'label' => 'No limits in the number of participants',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '27',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_partcipant_sel_supp_in'.
+  $fields['node-population-field_pop_partcipant_sel_supp_in'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_partcipant_sel_supp_in',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'If needed, supplementary information about selection criteria of the population',
+          'field_description_value_type' => 'text',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 9,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_partcipant_sel_supp_in',
+      'label' => 'If needed, supplementary information about selection criteria of the population',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '2',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '11',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_participants_nb'.
+  $fields['node-population-field_pop_participants_nb'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_participants_nb',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'Number of participants',
+          'field_description_value_type' => 'integer',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 14,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_participants_nb',
+      'label' => 'Number of participants',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '0',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '26',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_participants_nb_s'.
+  $fields['node-population-field_pop_participants_nb_s'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_participants_nb_s',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'Number of participants',
+          'field_description_value_type' => 'integer',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 17,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_participants_nb_s',
+      'label' => 'Number of participants',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '0',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '27',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_participants_nb_s_info'.
+  $fields['node-population-field_pop_participants_nb_s_info'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_participants_nb_s_info',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'Supplementary information',
+          'field_description_value_type' => 'text',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 19,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => 'Supplementary information',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_participants_nb_s_info',
+      'label' => 'If needed, supplementary information about number of participants with biological samples',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '2',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '29',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_participants_nb_supp_i'.
+  $fields['node-population-field_pop_participants_nb_supp_i'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_participants_nb_supp_i',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'Supplementary information',
+          'field_description_value_type' => 'text',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 16,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => 'Supplementary information',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_participants_nb_supp_i',
+      'label' => ' If needed, supplementary information about number of participants',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '2',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '28',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_recruitement_supp_info'.
+  $fields['node-population-field_pop_recruitement_supp_info'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_recruitement_supp_info',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'Supplementary information',
+          'field_description_value_type' => 'text',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 13,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => 'Supplementary information',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_recruitement_supp_info',
+      'label' => 'If needed, supplementary information about recruitment procedures',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '2',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '16',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_recruitment_other'.
+  $fields['node-population-field_pop_recruitment_other'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_recruitment_other',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'Please specify what other source of recruitment',
+          'field_description_value_type' => 'text',
+        ),
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 12,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_recruitment_other',
+      'label' => 'Please specify what other source of recruitment',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '15',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_recruitment_sources'.
+  $fields['node-population-field_pop_recruitment_sources'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_recruitment_sources',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'sources_of_recruitment',
+            'parent' => '0',
+            'depth' => '',
+          ),
+        ),
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'Sources of recruitment',
+          'field_description_value_type' => 'text',
+        ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 11,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => 'Sources of recruitment',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_recruitment_sources',
+      'label' => 'Sources of recruitment',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '14',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_select_criteria'.
+  $fields['node-population-field_pop_select_criteria'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_select_criteria',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'gravidity' => 'Gravidity (pregnant women)',
+          'newborn' => 'Newborn',
+          'twin' => 'Twin',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => 'when appropriate, specify the criteria.',
+          'field_description_label' => 'Selection criteria',
+          'field_description_value_type' => 'text',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'when appropriate, specify the criteria.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 1,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => 'Selection criteria',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_select_criteria',
+      'label' => 'What is the selection criteria for participants?',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_selection_others_sp'.
+  $fields['node-population-field_pop_selection_others_sp'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_selection_others_sp',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'Please specify what other selection criteria',
+          'field_description_value_type' => 'text',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 10,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_selection_others_sp',
+      'label' => 'Please specify what other selection criteria',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '2',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '12',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_supp_infos'.
+  $fields['node-population-field_pop_supp_infos'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_supp_infos',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => 'text',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 20,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => 'Supplementary information',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_supp_infos',
+      'label' => 'Supplementary information about this population',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '2',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '5',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-population-field_pop_territory'.
+  $fields['node-population-field_pop_territory'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_pop_territory',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'Territory or city of residence',
+          'field_description_value_type' => 'text',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'population',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 6,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_pop_territory',
+      'label' => 'Territory or city of residence',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '1',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '9',
       ),
     ),
   );
@@ -6184,7 +8117,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '74',
+        'weight' => '73',
       ),
     ),
   );
@@ -6690,7 +8623,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '75',
+        'weight' => '74',
       ),
     ),
   );
@@ -7494,7 +9427,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '77',
+        'weight' => '75',
       ),
     ),
   );
@@ -9273,7 +11206,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '79',
+        'weight' => '76',
       ),
     ),
   );
@@ -9401,6 +11334,153 @@ function mica_studies_field_default_fields() {
         ),
         'type' => 'text_textarea',
         'weight' => '61',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-study-field_study_populations'.
+  $fields['node-study-field_study_populations'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_study_populations',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'article' => 0,
+          'blog' => 0,
+          'contact' => 0,
+          'data_access_request' => 0,
+          'data_access_review' => 0,
+          'dataset' => 0,
+          'documents' => 0,
+          'event' => 0,
+          'field_description' => 0,
+          'forum' => 0,
+          'page' => 0,
+          'panel' => 0,
+          'population' => 'population',
+          'project' => 0,
+          'publication' => 0,
+          'study' => 0,
+          'study_variable_attributes' => 0,
+          'teleconference' => 0,
+          'variable' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'study',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'center_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 98,
+        ),
+        'footer_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'right_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'summary_banner_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'summary_left_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'summary_right_area' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_study_populations',
+      'label' => 'Populations',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '123',
       ),
     ),
   );
@@ -10515,6 +12595,7 @@ function mica_studies_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t(' If needed, supplementary information about number of participants');
   t('Acronym');
   t('Acronym of the study if applicable.');
   t('Address');
@@ -10556,6 +12637,7 @@ function mica_studies_field_default_fields() {
   t('If needed, supplementary information about current number of collected biological samples');
   t('If needed, supplementary information about current number of participants recruited at baseline');
   t('If needed, supplementary information about current study status');
+  t('If needed, supplementary information about number of participants with biological samples');
   t('If needed, supplementary information about recruitment procedures');
   t('If needed, supplementary information about selection criteria of the population');
   t('If needed, supplementary information about study design');
@@ -10571,8 +12653,10 @@ function mica_studies_field_default_fields() {
   t('Name of the person authorising the contribution to Maelstrom Research');
   t('Name of the person authorising the contribution to [SPECIFIC NETWORK]');
   t('No limits in the number of participants');
+  t('No limits in the number of participants ');
   t('No limits in the number of samples');
   t('No spaces allowed');
+  t('Number of participants');
   t('Objectives');
   t('On');
   t('Other');
@@ -10584,6 +12668,7 @@ function mica_studies_field_default_fields() {
   t('Please specify what other selection criteria');
   t('Please specify what other source of recruitment');
   t('Please specify what study feature');
+  t('Populations');
   t('Postal Code');
   t('Preparation phase / Pilot');
   t('Pubmed Id');
@@ -10596,6 +12681,7 @@ function mica_studies_field_default_fields() {
   t('Study design');
   t('Study end');
   t('Supplementary information');
+  t('Supplementary information about this population');
   t('Target number of participants');
   t('Target number of participants with samples');
   t('Telephone');
