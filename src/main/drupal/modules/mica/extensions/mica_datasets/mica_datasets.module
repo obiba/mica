@@ -455,6 +455,24 @@ function mica_dataset_dataset_variables($dataset, $sorted = FALSE) {
   return $variables;
 }
 
+function mica_dataset_dataset_studies($dataset, $sorted = FALSE) {
+  // Get field information
+  $field = field_info_field('mica_dataset');
+  $query = new EntityFieldQuery;
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'study')
+    ->fieldCondition($field, 'nid', $dataset);
+
+  $entities = $query->execute();
+  $studies = (empty($entities) ? array() : node_load_multiple(array_keys($entities['node'])));
+
+  if ($sorted) {
+    uasort($variables, 'mica_datasets_sort_by_title');
+  }
+
+  return $studies;
+}
+
 function mica_dataset_private_file_absolute_path($reference) {
   if (file_valid_uri($reference)) {
     $wrapper = file_stream_wrapper_get_instance_by_uri($reference);

@@ -45,7 +45,7 @@ projects[cnr][download][branch] = 7.x-4.x
 
 projects[content_access] = 1.2-beta1
 
-projects[content_taxonomy] = 1.0-beta1
+projects[content_taxonomy] = 1.0-beta2
 
 projects[ctools][version] = 1.2
 projects[ctools][patch][1494860] = http://drupal.org/files/ctools-dependent-js-broken-with-jquery-1.7-1494860-30.patch
@@ -131,9 +131,9 @@ projects[languageicons] = 1.0
 
 ;projects[less] = 3.0-beta1
 
-projects[libraries] = 2.0
+projects[libraries] = 2.1
 
-projects[link] = 1.0
+projects[link] = 1.1
 
 projects[logintoboggan] = 1.3
 
@@ -149,7 +149,7 @@ projects[menu_view_unpublished][download][type] = git
 projects[menu_view_unpublished][download][revision] = 5f1f951
 projects[menu_view_unpublished][download][branch] = 7.x-1.x
 
-projects[mica] = 7.0
+projects[mica] = 7.2-dev
 
 projects[module_filter] = 1.7
 
@@ -187,7 +187,7 @@ projects[search_api][patch][1471310] = http://drupal.org/files/1471310--unset-fi
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 projects[search_api][patch][1594762] = http://drupal.org/files/1594762-18-deleted-terms-cause-indexing-crash.patch
 
-projects[search_api_combined] = 1.1
+projects[search_api_combined] = 1.2
 
 projects[search_api_page] = 1.0-beta2
 
@@ -200,7 +200,7 @@ projects[search_api_ranges][patch][1460410] = http://drupal.org/files/max-inclus
 projects[search_api_solr] = 1.0-rc3
 
 ; DO NOT CHANGE VERSION UNTIL http://jira.obiba.org/jira/browse/MICA-888 IS FIXED
-projects[services][version] = 3.1
+projects[services][version] = 3.3
 
 projects[smtp] = 1.0-beta2
 
@@ -211,11 +211,11 @@ projects[superfish] = 1.9-beta4
 
 projects[taxonomy_csv] = 5.10
 
-projects[taxonomy_manager] = 1.0-rc1
+projects[taxonomy_manager] = 1.0-rc2
 
 projects[title] = 1.0-alpha5
 
-projects[token] = 1.4
+projects[token] = 1.5
 
 projects[variable] = 2.2
 
