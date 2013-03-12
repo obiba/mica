@@ -99,7 +99,7 @@ class OpalXmlFormatView extends RESTServerView {
 
     $date = $opal->appendChild($this->doc->createElement('created'));
     $date->setAttribute('valueType', 'dateTime');
-    $date->appendChild($this->doc->createTextNode(date('Y-m-j\TH:i:s.000Z')));
+    $date->appendChild($this->doc->createTextNode(date('Y-m-j H:i')));
 
     $element = $variables->appendChild($this->doc->createElement('variables'));
     $element->setAttribute('class', 'linked-hash-set');
