@@ -247,6 +247,13 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create data_collection_event content.
+  $permissions['create data_collection_event content'] = array(
+    'name' => 'create data_collection_event content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: create documents content.
   $permissions['create documents content'] = array(
     'name' => 'create documents content',
@@ -397,6 +404,13 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete any data_collection_event content.
+  $permissions['delete any data_collection_event content'] = array(
+    'name' => 'delete any data_collection_event content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: delete any documents content.
   $permissions['delete any documents content'] = array(
     'name' => 'delete any documents content',
@@ -462,6 +476,13 @@ function mica_studies_user_default_permissions() {
       'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own data_collection_event content.
+  $permissions['delete own data_collection_event content'] = array(
+    'name' => 'delete own data_collection_event content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -539,6 +560,13 @@ function mica_studies_user_default_permissions() {
       'consortium administrator' => 'consortium administrator',
       'study reviewer' => 'study reviewer',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any data_collection_event content.
+  $permissions['edit any data_collection_event content'] = array(
+    'name' => 'edit any data_collection_event content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -683,6 +711,13 @@ function mica_studies_user_default_permissions() {
       'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own data_collection_event content.
+  $permissions['edit own data_collection_event content'] = array(
+    'name' => 'edit own data_collection_event content',
+    'roles' => array(),
     'module' => 'node',
   );
 

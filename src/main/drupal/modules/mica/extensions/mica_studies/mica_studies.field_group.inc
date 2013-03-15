@@ -2260,6 +2260,92 @@ function mica_studies_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_dce_data_collection|node|data_collection_event|form';
+  $field_group->group_name = 'group_dce_data_collection';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'data_collection_event';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Data Collection',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_dce_data_sources',
+      1 => 'field_dce_data_sources_sp',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_dce_data_collection|node|data_collection_event|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_dce_documents|node|data_collection_event|form';
+  $field_group->group_name = 'group_dce_documents';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'data_collection_event';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Documents',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_dce_sops',
+      1 => 'field_dce_questionnaires',
+      2 => 'field_dce_data_dictionnaries',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_dce_documents|node|data_collection_event|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_dce_sample_management|node|data_collection_event|form';
+  $field_group->group_name = 'group_dce_sample_management';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'data_collection_event';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Sample Collection',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_dce_bio_samples_management',
+      1 => 'field_dce_tissues_sp',
+      2 => 'field_dce_samples_man_other_sp',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_dce_sample_management|node|data_collection_event|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_documents|node|study|center_area';
   $field_group->group_name = 'group_documents';
   $field_group->entity_type = 'node';
@@ -3577,7 +3663,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = 'group_tabs';
   $field_group->data = array(
     'label' => 'Marker Paper',
-    'weight' => '11',
+    'weight' => '12',
     'children' => array(
       0 => 'field_marker_paper',
       1 => 'field_pubmedid',
@@ -4517,6 +4603,11 @@ function mica_studies_field_group_info() {
       0 => 'field_pop_recruitment_sources',
       1 => 'field_pop_recruitment_other',
       2 => 'field_pop_recruitement_supp_info',
+      3 => 'field_pop_src_recruit',
+      4 => 'field_pop_general_pop_recruit',
+      5 => 'field_pop_exist_study_part',
+      6 => 'field_pop_specific_pop',
+      7 => 'field_pop_specific_pop_info',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -5760,6 +5851,7 @@ function mica_studies_field_group_info() {
       2 => 'field_recruitment',
       3 => 'field_recruitment_other_sp',
       4 => 'field_recruitment_supp_info',
+      5 => 'field_info_design_follow_up',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

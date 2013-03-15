@@ -34,14 +34,18 @@ function _mica_studies_longitudinal_migration() {
   $nodes = node_load_multiple(array_keys($entities['node']));
   foreach ($nodes as $study) {
 
+    dpm($study, 'study');
+
     $study_wrapper = entity_metadata_wrapper('node', $study);
+    $study_name = $study_wrapper->title->value();
+
+    //dvm($study_name, '$study_name');
 
     // create population
     $population_values = array(
       'type' => 'population',
-      'title' => $study_wrapper->title->value() . ' population',
+      'title' => $study_name . ' -- population',
       'language' => $study_wrapper->language->value(),
-      'uid' => $study->uid,
       'field_pop_select_criteria' => $study_wrapper->field_select_criteria->value(),
       'field_pop_gender' => $study_wrapper->field_gender->value(),
       'field_pop_age_min' => $study_wrapper->field_age_min->value(),
@@ -62,12 +66,14 @@ function _mica_studies_longitudinal_migration() {
       'field_pop_no_lim_participants_s' => $study_wrapper->field_no_limits_samples->value() ? 1 : 0,
       'field_pop_participants_nb_s_info' => $study_wrapper->field_samples_supp_info->value(),
       'field_pop_supp_infos' => '',
+      'uid' => $study->uid,
     );
 
+    dvm($population_values);
     $population_wrapper = entity_property_values_create_entity('node', $population_values);
     $population_wrapper->save();
 
-    // add population to the study
+    $study->field_study_populations[LANGUAGE_NONE][0]['nid'][$population_wrapper->nid->value()];
     $study->field_study_populations = array(
       LANGUAGE_NONE => array(
         0 => array(
@@ -77,7 +83,12 @@ function _mica_studies_longitudinal_migration() {
         )
       )
     );
+
+//    $study_wrapper->field_study_populations[0]->set(array('nid' => $population_wrapper->nid->value()));
     $study_wrapper->save();
+
+    //dpm($population_wrapper->value(), 'population');
+
   }
 }
 
