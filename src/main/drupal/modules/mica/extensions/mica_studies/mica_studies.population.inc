@@ -1,7 +1,7 @@
 <?php
 
 function _mica_studies_population_link($population) {
-
+  // create a reference in study when a population is create for this study
   $population_wrapper = entity_metadata_wrapper('node', $population);
   $study = $population_wrapper->field_pop_study->value();
   $study_wrapper = entity_metadata_wrapper('node', $study);
@@ -27,7 +27,6 @@ function _mica_studies_population_delete($population) {
     $nodes = node_load_multiple(array_keys($entities['node']));
     foreach ($nodes as $node) {
       $study_populations = $node->field_study_populations;
-      dpm($node->field_study_populations);
       if (isset ($study_populations[LANGUAGE_NONE])) {
         $nb_populations = count($study_populations[LANGUAGE_NONE]);
         $value = array();

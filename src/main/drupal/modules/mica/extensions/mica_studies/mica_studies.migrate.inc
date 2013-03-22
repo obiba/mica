@@ -34,8 +34,6 @@ function _mica_studies_longitudinal_migration() {
   $nodes = node_load_multiple(array_keys($entities['node']));
   foreach ($nodes as $study) {
 
-    //dpm($study, 'study');
-
     $study_wrapper = entity_metadata_wrapper('node', $study);
 
     // create population
@@ -83,18 +81,6 @@ function _mica_studies_longitudinal_migration() {
 
     $population_wrapper->save();
 
-//    $study->field_study_populations = array(
-//      LANGUAGE_NONE => array(
-//        0 => array(
-//          'nid' => array(
-//            $population_wrapper->nid->value() => $population_wrapper->nid->value()
-//          )
-//        )
-//      )
-//    );
-//    debug($study->field_study_populations);
-//    $study_wrapper->save();
-
     //Data collection Event
     $study_wrapper = entity_metadata_wrapper('node', $study);
     //  Preparation phase
@@ -108,7 +94,6 @@ function _mica_studies_longitudinal_migration() {
         'language' => $study_wrapper->language->value(),
         'field_dce_start_date' => strtotime($start_year . "-01-01 00:00:00"),
         'field_dce_end_date' => strtotime($end_year . "-01-01 00:00:00"),
-        //'body' => 'Data Collection Event, Preparation phase for ' . $study_wrapper->title->value(),
         'field_dce_data_sources' => $study_wrapper->field_data_sources->value(),
         'field_dce_data_sources_sp' => $study_wrapper->field_data_sources_sp->value(),
         'field_dce_bio_samples_management' => $study_wrapper->field_bio_samples_management->value(),
@@ -142,7 +127,6 @@ function _mica_studies_longitudinal_migration() {
         'language' => $study_wrapper->language->value(),
         'field_dce_start_date' => strtotime($start_year . "-01-01 00:00:00"),
         'field_dce_end_date' => strtotime($end_year . "-01-01 00:00:00"),
-        //'body' => 'Data Collection Event, Baseline phase for '.$study_wrapper->title->value(),
         'field_dce_data_sources' => $study_wrapper->field_data_sources->value(),
         'field_dce_data_sources_sp' => $study_wrapper->field_data_sources_sp->value(),
         'field_dce_bio_samples_management' => $study_wrapper->field_bio_samples_management->value(),
@@ -176,7 +160,6 @@ function _mica_studies_longitudinal_migration() {
         'language' => $study_wrapper->language->value(),
         'field_dce_start_date' => strtotime($start_year . "-01-01 00:00:00"),
         'field_dce_end_date' => strtotime($end_year . "-01-01 00:00:00"),
-        //'body' => 'Data Collection Event, Follow-up phase for '.$study_wrapper->title->value(),
         'field_dce_data_sources' => $study_wrapper->field_data_sources->value(),
         'field_dce_data_sources_sp' => $study_wrapper->field_data_sources_sp->value(),
         'field_dce_bio_samples_management' => $study_wrapper->field_bio_samples_management->value(),
@@ -215,17 +198,5 @@ function _mica_studies_longitudinal_migration_clear() {
       node_delete($pop_wrapper->nid->value());
     }
   }
-
-//  $query = new EntityFieldQuery;
-//  $entities = $query->entityCondition('entity_type', 'node')
-//    ->entityCondition('bundle', 'data_collection_event')
-//    ->execute();
-//  if (!empty($entities)) {
-//    $nodes = node_load_multiple(array_keys($entities['node']));
-//    foreach ($nodes as $node) {
-//      $pop_wrapper = entity_metadata_wrapper('node', $node);
-//      node_delete($pop_wrapper->nid->value());
-//    }
-//  }
 
 }

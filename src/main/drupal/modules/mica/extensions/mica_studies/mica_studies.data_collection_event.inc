@@ -1,7 +1,7 @@
 <?php
 
 function _mica_studies_dce_link($dce) {
-
+  // create a reference in population when a dce is create
   $dce_wrapper = entity_metadata_wrapper('node', $dce);
   $population = $dce_wrapper->field_dce_population->value();
 
