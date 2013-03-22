@@ -38,8 +38,6 @@ function _mica_studies_longitudinal_migration() {
 
     $study_wrapper = entity_metadata_wrapper('node', $study);
 
-    //dvm($study_name, '$study_name');
-
     // create population
     $population_values = array(
       'type' => 'population',
@@ -72,19 +70,30 @@ function _mica_studies_longitudinal_migration() {
     );
 
     $population_wrapper = entity_property_values_create_entity('node', $population_values);
-    $population_wrapper->save();
 
-    $study->field_study_populations = array(
+    $population_wrapper->value()->field_pop_study = array(
       LANGUAGE_NONE => array(
         0 => array(
           'nid' => array(
-            $population_wrapper->nid->value() => $population_wrapper->nid->value()
+            $study_wrapper->nid->value() => $study_wrapper->nid->value()
           )
         )
       )
     );
 
-    $study_wrapper->save();
+    $population_wrapper->save();
+
+//    $study->field_study_populations = array(
+//      LANGUAGE_NONE => array(
+//        0 => array(
+//          'nid' => array(
+//            $population_wrapper->nid->value() => $population_wrapper->nid->value()
+//          )
+//        )
+//      )
+//    );
+//    debug($study->field_study_populations);
+//    $study_wrapper->save();
 
     //Data collection Event
     $study_wrapper = entity_metadata_wrapper('node', $study);
@@ -108,12 +117,21 @@ function _mica_studies_longitudinal_migration() {
         'field_dce_questionnaires' => $study_wrapper->field_questionnaires->value(),
         'uid' => $study->uid,
       );
-      debug($dce_values);
       $dce_wrapper = entity_property_values_create_entity('node', $dce_values);
+
+      $dce_wrapper->value()->field_dce_population = array(
+        LANGUAGE_NONE => array(
+          0 => array(
+            'nid' => array(
+              $population_wrapper->nid->value() => $population_wrapper->nid->value()
+            )
+          )
+        )
+      );
       $dce_wrapper->save();
 
     }
-
+    //  Baseline phase
     $start_year = $study_wrapper->field_baseline_start_year->value();
     $end_year = $study_wrapper->field_baseline_end_year->value();
     if (!empty($start_year)) {
@@ -135,9 +153,19 @@ function _mica_studies_longitudinal_migration() {
       );
 
       $dce_wrapper = entity_property_values_create_entity('node', $dce_values);
+      $dce_wrapper->value()->field_dce_population = array(
+        LANGUAGE_NONE => array(
+          0 => array(
+            'nid' => array(
+              $population_wrapper->nid->value() => $population_wrapper->nid->value()
+            )
+          )
+        )
+      );
       $dce_wrapper->save();
     }
 
+    //  Follow-Up phase
     $start_year = $study_wrapper->field_followup_start_year->value();
     $end_year = $study_wrapper->field_followup_end_year->value();
     if (!empty($start_year)) {
@@ -159,6 +187,15 @@ function _mica_studies_longitudinal_migration() {
       );
 
       $dce_wrapper = entity_property_values_create_entity('node', $dce_values);
+      $dce_wrapper->value()->field_dce_population = array(
+        LANGUAGE_NONE => array(
+          0 => array(
+            'nid' => array(
+              $population_wrapper->nid->value() => $population_wrapper->nid->value()
+            )
+          )
+        )
+      );
       $dce_wrapper->save();
     }
   }
@@ -179,16 +216,16 @@ function _mica_studies_longitudinal_migration_clear() {
     }
   }
 
-  $query = new EntityFieldQuery;
-  $entities = $query->entityCondition('entity_type', 'node')
-    ->entityCondition('bundle', 'data_collection_event')
-    ->execute();
-  if (!empty($entities)) {
-    $nodes = node_load_multiple(array_keys($entities['node']));
-    foreach ($nodes as $node) {
-      $pop_wrapper = entity_metadata_wrapper('node', $node);
-      node_delete($pop_wrapper->nid->value());
-    }
-  }
+//  $query = new EntityFieldQuery;
+//  $entities = $query->entityCondition('entity_type', 'node')
+//    ->entityCondition('bundle', 'data_collection_event')
+//    ->execute();
+//  if (!empty($entities)) {
+//    $nodes = node_load_multiple(array_keys($entities['node']));
+//    foreach ($nodes as $node) {
+//      $pop_wrapper = entity_metadata_wrapper('node', $node);
+//      node_delete($pop_wrapper->nid->value());
+//    }
+//  }
 
 }

@@ -6,6 +6,9 @@
  */
 
 require_once('mica_studies.features.inc');
+require_once('mica_studies.population.inc');
+require_once('mica_studies.data_collection_event.inc');
+require_once('mica_studies.study.inc');
 include_once('mica_studies.import_taxonomies.inc');
 
 /**
@@ -104,8 +107,16 @@ function mica_studies_export_page_access() {
  * Implements hook_node_insert()
  */
 function mica_studies_node_insert($node) {
-  if ($node->type === 'study') {
-    mica_core_create_node_default_menu($node, TRUE, FALSE, 0, 'studies');
+  switch ($node->type) {
+    case 'study':
+      mica_core_create_node_default_menu($node, TRUE, FALSE, 0, 'studies');
+      break;
+    case 'population':
+      _mica_studies_population_link($node);
+      break;
+    case 'data_collection_event':
+      _mica_studies_dce_link($node);
+      break;
   }
 }
 
@@ -391,7 +402,6 @@ function _mica_studies_study_view_selection_criteria_item(&$node, $wrapper, $fie
   }
 }
 
-
 function _mica_studies_study_view_authorization(&$node, $view_mode, $langcode, $wrapper) {
   if (isset($node->content['field_authorization_specific'])) {
     $authorization_specific = $wrapper->field_authorization_specific->value();
@@ -546,7 +556,6 @@ function _mica_studies_display_status_dates(&$node, $status_dates) {
     $node->content[$end_date]['#access'] = FALSE;
   }
 }
-
 
 function _mica_bind_other_specify(&$node, $bindings) {
 
@@ -855,3 +864,22 @@ function mica_studies_translation_exclude_fields() {
     'study' => array('mica_opal'),
   );
 }
+
+/*
+ * Hook hook_node_delete
+ */
+
+function  mica_studies_node_delete($node) {
+  switch ($node->type) {
+    case 'study':
+      _mica_studies_study_delete($node);
+      break;
+    case 'population':
+      _mica_studies_population_delete($node);
+      break;
+    case 'data_collection_event':
+      _mica_studies_dce_delete($node);
+      break;
+  }
+}
+
