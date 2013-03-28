@@ -51,8 +51,7 @@ function _mica_studies_longitudinal_migration() {
       'field_pop_health_status' => $study_wrapper->field_health_status->value(),
       'field_pop_partcipant_sel_supp_in' => $study_wrapper->field_partcipant_sel_supp_info->value(),
       'field_pop_selection_others_sp' => $study_wrapper->field_selection_others_sp->value(),
-      'field_pop_recruitment_sources' => $study_wrapper->field_recruitment_sources->value(),
-      'field_pop_src_recruit' => null,
+      'field_pop_src_recruit' => $study_wrapper->field_recruitment_sources->value(),
       'field_pop_exist_study_part' => null,
       'field_pop_general_pop_recruit' => null,
       'field_pop_specific_pop' => null,
@@ -64,6 +63,7 @@ function _mica_studies_longitudinal_migration() {
       'field_pop_participants_nb_supp_i' => $study_wrapper->field_target_nb_supp_info->value(),
       'field_pop_participants_nb_s' => $study_wrapper->field_target_number_biosamples->value(),
       'field_pop_no_lim_participants_s' => $study_wrapper->field_no_limits_samples->value() ? 1 : 0,
+      'field_pop_participants_nb_s_info' => $study_wrapper->field_samples_supp_info->value(),
       'uid' => $study->uid,
     );
 
@@ -100,6 +100,7 @@ function _mica_studies_longitudinal_migration() {
         'field_dce_tissues_sp' => $study_wrapper->field_tissues_sp->value(),
         'field_dce_samples_man_other_sp' => $study_wrapper->field_samples_man_other_sp->value(),
         'field_dce_questionnaires' => $study_wrapper->field_questionnaires->value(),
+        'field_dce_others' => $study_wrapper->field_documents->value(),
         'uid' => $study->uid,
       );
       $dce_wrapper = entity_property_values_create_entity('node', $dce_values);
@@ -133,6 +134,7 @@ function _mica_studies_longitudinal_migration() {
         'field_dce_tissues_sp' => $study_wrapper->field_tissues_sp->value(),
         'field_dce_samples_man_other_sp' => $study_wrapper->field_samples_man_other_sp->value(),
         'field_dce_questionnaires' => $study_wrapper->field_questionnaires->value(),
+        'field_dce_others' => $study_wrapper->field_documents->value(),
         'uid' => $study->uid,
       );
 
@@ -166,6 +168,7 @@ function _mica_studies_longitudinal_migration() {
         'field_dce_tissues_sp' => $study_wrapper->field_tissues_sp->value(),
         'field_dce_samples_man_other_sp' => $study_wrapper->field_samples_man_other_sp->value(),
         'field_dce_questionnaires' => $study_wrapper->field_questionnaires->value(),
+        'field_dce_others' => $study_wrapper->field_documents->value(),
         'uid' => $study->uid,
       );
 
@@ -181,7 +184,52 @@ function _mica_studies_longitudinal_migration() {
       );
       $dce_wrapper->save();
     }
+
+    // modifying study state
+    $start_year = $study_wrapper->field_preparation_start_year->value();
+    $end_year = $study_wrapper->field_followup_end_year->value();
+    $study_wrapper = entity_metadata_wrapper('node', $study);
+    $study_wrapper->value()->field_study_start_date = strtotime($start_year . "-01-01 00:00:00");
+    $study_wrapper->value()->field_study_end_date = strtotime($end_year . "-01-01 00:00:00");
+    $study_wrapper->save();
+
   }
+
+  field_delete_field('field_current_participants_nb');
+  field_delete_field('field_current_part_nb_date');
+  field_delete_field('field_current_participants_nb');
+  field_delete_field('field_current_supp_info');
+  field_delete_field('field_current_samples_nb');
+  field_delete_field('field_current_samples_date');
+  field_delete_field('field_current_sam_supp_info');
+  field_delete_field('field_select_criteria');
+  field_delete_field('field_gender');
+  field_delete_field('field_age_min');
+  field_delete_field('field_age_max');
+  field_delete_field('field_country');
+  field_delete_field('field_territory');
+  field_delete_field('field_ethnic_origin');
+  field_delete_field('field_health_status');
+  field_delete_field('field_partcipant_sel_supp_info');
+  field_delete_field('field_selection_others_sp');
+  field_delete_field('field_recruitment_sources');
+  field_delete_field('field_recruitment_other');
+  field_delete_field('field_recruitement_supp_info');
+  field_delete_field('field_data_sources');
+  field_delete_field('field_data_sources_sp');
+  field_delete_field('field_bio_samples_management');
+  field_delete_field('field_tissues_sp');
+  field_delete_field('field_samples_man_other_sp');
+  field_delete_field('field_preparation_start_year');
+  field_delete_field('field_preparation_end_year');
+  field_delete_field('field_baseline_start_year');
+  field_delete_field('field_baseline_end_year');
+  field_delete_field('field_followup_start_year');
+  field_delete_field('field_followup_end_year');
+  field_delete_field('field_ended_end_year');
+  field_delete_field('field_status_supp_info');
+  field_delete_field('field_questionnaires');
+
 }
 
 function _mica_studies_longitudinal_migration_clear() {
