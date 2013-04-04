@@ -195,6 +195,7 @@ function _mica_studies_longitudinal_migration() {
 
   }
 
+  // deleting deprecated fields
   field_delete_field('field_current_participants_nb');
   field_delete_field('field_current_part_nb_date');
   field_delete_field('field_current_participants_nb');
@@ -230,6 +231,33 @@ function _mica_studies_longitudinal_migration() {
   field_delete_field('field_status_supp_info');
   field_delete_field('field_questionnaires');
 
+  // deleting deprecated groups
+  _delete_groups('group_authorising_person');
+  _delete_groups('group_authorising_person_m');
+  _delete_groups('group_current_number');
+  _delete_groups('group_current_number_samples');
+  _delete_groups('group_participants_selection');
+  _delete_groups('group_selection_criteria');
+  _delete_groups('group_countries');
+  _delete_groups('group_recruitment_procedures');
+  _delete_groups('group_data_collection');
+  _delete_groups('group_sample_management');
+  _delete_groups('group_status');
+  _delete_groups('group_current_status');
+  _delete_groups('group_preparation_phase');
+  _delete_groups('group_baseline_phase');
+  _delete_groups('group_followup_phase');
+  _delete_groups('group_ended_phase');
+
+}
+
+function _delete_groups($groups) {
+  ctools_include('export');
+  $objects = ctools_export_load_object('field_group', 'conditions', array(
+    'group_name' => $groups,
+  ));
+  $object = array_shift($objects);
+  field_group_group_export_delete($object, FALSE);
 }
 
 function _mica_studies_longitudinal_migration_clear() {
