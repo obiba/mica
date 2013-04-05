@@ -1726,7 +1726,7 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'description_field' => 0,
         'file_directory' => '',
-        'file_extensions' => 'txt',
+        'file_extensions' => 'doc docx odm odt gdoc pdf txt xml xls xlsx ppt',
         'max_filesize' => '',
         'user_register_form' => FALSE,
       ),
@@ -2120,7 +2120,7 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'description_field' => 0,
         'file_directory' => '',
-        'file_extensions' => 'txt',
+        'file_extensions' => 'doc docx odm odt gdoc pdf txt xml xls xlsx ppt',
         'max_filesize' => '',
         'user_register_form' => FALSE,
       ),
@@ -2297,7 +2297,7 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'description_field' => 0,
         'file_directory' => '',
-        'file_extensions' => 'txt',
+        'file_extensions' => 'doc docx odm odt gdoc pdf txt xml xls xlsx ppt',
         'max_filesize' => '',
         'user_register_form' => FALSE,
       ),
@@ -2452,7 +2452,7 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'description_field' => 0,
         'file_directory' => '',
-        'file_extensions' => 'txt',
+        'file_extensions' => 'doc docx odm odt gdoc pdf txt xml xls xlsx ppt',
         'max_filesize' => '',
         'user_register_form' => FALSE,
       ),
@@ -3839,13 +3839,13 @@ function mica_studies_field_default_fields() {
         'allowed_values' => array(
           'volunteer' => 'Volunteer enrolment',
           'selected_samples' => 'Selected sample',
-          'random' => 'random_digit_dialing',
+          'random' => 'Random digit dialing',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => 'General Population',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
       ),
