@@ -2272,6 +2272,7 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'field_dce_data_sources',
       1 => 'field_dce_data_sources_sp',
+      2 => 'field_dce_data_sources_admin_db',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -4657,10 +4658,10 @@ function mica_studies_field_group_info() {
     'label' => 'Recruitment procedures',
     'weight' => '27',
     'children' => array(
-      0 => 'field_pop_recruitement_supp_info',
-      1 => 'field_pop_recruitment_other',
-      2 => 'field_pop_exist_study_part',
-      3 => 'field_pop_general_pop_recruit',
+      0 => 'field_pop_exist_study_part',
+      1 => 'field_pop_general_pop_recruit',
+      2 => 'field_pop_recruitement_supp_info',
+      3 => 'field_pop_recruitment_other',
       4 => 'field_pop_specific_pop',
       5 => 'field_pop_specific_pop_info',
       6 => 'field_pop_src_recruit',
@@ -4697,8 +4698,8 @@ function mica_studies_field_group_info() {
       3 => 'field_pop_partcipant_sel_supp_in',
       4 => 'field_pop_select_criteria',
       5 => 'field_pop_selection_others_sp',
-      6 => 'group_pop_countries',
-      7 => 'group_pop_age',
+      6 => 'group_pop_age',
+      7 => 'group_pop_countries',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

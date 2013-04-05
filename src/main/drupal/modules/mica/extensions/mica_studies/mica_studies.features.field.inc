@@ -1612,6 +1612,8 @@ function mica_studies_field_default_fields() {
           'tissues' => 'Tissues',
           'saliva' => 'Saliva',
           'urine' => 'Urine',
+          'hair' => 'Hair',
+          'nail' => 'Nail',
           'others' => 'Others',
         ),
         'allowed_values_function' => '',
@@ -1764,9 +1766,7 @@ function mica_studies_field_default_fields() {
           'questionnaires' => 'Questionnaires',
           'physical_measures' => 'Physical measures',
           'biological_samples' => 'Biological samples',
-          'medical_paper' => 'Direct access to participants medical paper files',
-          'health_databases' => 'Electronic health databases (death or hospitalization registries, etc.)',
-          'genealogical_records' => 'Genealogical records',
+          'administratives_databases' => 'Administritative Databases',
           'others' => 'Others',
         ),
         'allowed_values_function' => '',
@@ -1814,6 +1814,81 @@ function mica_studies_field_default_fields() {
         'settings' => array(),
         'type' => 'options_buttons',
         'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-data_collection_event-field_dce_data_sources_admin_db'.
+  $fields['node-data_collection_event-field_dce_data_sources_admin_db'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dce_data_sources_admin_db',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'health_databases' => 'Health databases',
+          'vital_statisctics_databases' => 'Vital Statistics Databases',
+          'socioeconomic_databases' => 'Socioeconomic databases',
+          'environmental_databases' => 'Environmental Databases',
+        ),
+        'allowed_values_function' => '',
+        'field_description_infos' => array(
+          'field_description' => 1,
+          'field_description_body' => '',
+          'field_description_label' => 'Administration Databases',
+          'field_description_value_type' => 'text',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'data_collection_event',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 14,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_dce_data_sources_admin_db',
+      'label' => 'Administration Databases',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '4',
       ),
     ),
   );
@@ -1892,7 +1967,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -3663,7 +3738,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '16',
+        'weight' => '41',
       ),
     ),
   );
@@ -3810,7 +3885,7 @@ function mica_studies_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '17',
+        'weight' => '40',
       ),
     ),
   );
@@ -4505,7 +4580,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '21',
+        'weight' => '45',
       ),
     ),
   );
@@ -4584,7 +4659,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '19',
+        'weight' => '44',
       ),
     ),
   );
@@ -4810,7 +4885,7 @@ function mica_studies_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '18',
+        'weight' => '42',
       ),
     ),
   );
@@ -4888,7 +4963,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '20',
+        'weight' => '43',
       ),
     ),
   );
@@ -4897,46 +4972,38 @@ function mica_studies_field_default_fields() {
   $fields['node-population-field_pop_src_recruit'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_pop_src_recruit',
       'field_permissions' => array(
         'type' => '0',
       ),
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
+      'foreign keys' => array(),
       'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
+        'value' => array(
+          0 => 'value',
         ),
       ),
       'locked' => '0',
-      'module' => 'taxonomy',
+      'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'sources_of_recruitment',
-            'parent' => '0',
-            'depth' => '',
-          ),
+          'general' => 'General population',
+          'exist_studies' => 'Participants from existing studies',
+          'specific_population' => 'Specific population',
+          'other' => 'Other Source',
         ),
+        'allowed_values_function' => '',
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
           'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
-        'options_list_callback' => 'content_taxonomy_allowed_values',
       ),
       'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
+      'type' => 'list_text',
     ),
     'field_instance' => array(
       'bundle' => 'population',
@@ -4946,9 +5013,9 @@ function mica_studies_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
+          'module' => 'list',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
+          'type' => 'list_default',
           'weight' => 29,
         ),
         'teaser' => array(
@@ -4971,7 +5038,7 @@ function mica_studies_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '32',
+        'weight' => '39',
       ),
     ),
   );
@@ -10078,6 +10145,7 @@ function mica_studies_field_default_fields() {
   t('Acronym');
   t('Acronym of the study if applicable.');
   t('Address');
+  t('Administration Databases');
   t('Authorising date');
   t('Authorization Maelstrom');
   t('Authorization Specific');
