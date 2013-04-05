@@ -1846,9 +1846,9 @@ function mica_studies_field_default_fields() {
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => 'Administration Databases',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -1878,7 +1878,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_dce_data_sources_admin_db',
-      'label' => 'Administration Databases',
+      'label' => 'Administrative Databases',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -10145,7 +10145,7 @@ function mica_studies_field_default_fields() {
   t('Acronym');
   t('Acronym of the study if applicable.');
   t('Address');
-  t('Administration Databases');
+  t('Administrative Databases');
   t('Authorising date');
   t('Authorization Maelstrom');
   t('Authorization Specific');
