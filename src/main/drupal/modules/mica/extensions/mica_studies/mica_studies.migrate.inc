@@ -16,6 +16,26 @@ function _mica_studies_devel_form() {
     '#value' => t('Run clear method'),
     '#submit' => array('_mica_studies_longitudinal_migration_clear'),
   );
+  $form['stepbystep'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('study migration upgrade step by step'),
+    '#description' => NULL,
+  );
+  $form['stepbystep']['revert'] = array(
+    '#type' => 'submit',
+    '#value' => t('Run revert method'),
+    '#submit' => array('_mica_studies_revert'),
+  );
+  $form['stepbystep']['upgrade'] = array(
+    '#type' => 'submit',
+    '#value' => t('Run upgrade method'),
+    '#submit' => array('_migrate_content_types'),
+  );
+  $form['stepbystep']['delete'] = array(
+    '#type' => 'submit',
+    '#value' => t('Run delete method'),
+    '#submit' => array('_delete_deprecated_fields_groups'),
+  );
 
   return $form;
 }
@@ -23,6 +43,27 @@ function _mica_studies_devel_form() {
 function _mica_studies_longitudinal_migration() {
   drupal_set_message(t("Run migration method..."));
 
+  _migrate_content_types();
+  _delete_deprecated_fields_groups();
+
+}
+
+function _mica_studies_revert() {
+  drupal_set_message(t("Run revert method..."));
+  features_revert(array(
+    'mica_studies' => array(
+      'field',
+      'field_group',
+      'variable',
+      'views_view',
+      'user_permission',
+      'search_api_index',
+      'node'
+    )
+  ));
+}
+
+function _migrate_content_types() {
   $query = new EntityFieldQuery;
   $entities = $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'study')
@@ -51,7 +92,7 @@ function _mica_studies_longitudinal_migration() {
       'field_pop_health_status' => $study_wrapper->field_health_status->value(),
       'field_pop_partcipant_sel_supp_in' => $study_wrapper->field_partcipant_sel_supp_info->value(),
       'field_pop_selection_others_sp' => $study_wrapper->field_selection_others_sp->value(),
-      'field_pop_src_recruit' => $study_wrapper->field_recruitment_sources->value(),
+      //'field_pop_src_recruit' => $study_wrapper->field_recruitment_sources->value(),
       'field_pop_exist_study_part' => null,
       'field_pop_general_pop_recruit' => null,
       'field_pop_specific_pop' => null,
@@ -194,7 +235,9 @@ function _mica_studies_longitudinal_migration() {
     $study_wrapper->save();
 
   }
+}
 
+function _delete_deprecated_fields_groups() {
   // deleting deprecated fields
   field_delete_field('field_current_participants_nb');
   field_delete_field('field_current_part_nb_date');
@@ -213,7 +256,7 @@ function _mica_studies_longitudinal_migration() {
   field_delete_field('field_health_status');
   field_delete_field('field_partcipant_sel_supp_info');
   field_delete_field('field_selection_others_sp');
-  field_delete_field('field_recruitment_sources');
+  //field_delete_field('field_recruitment_sources');
   field_delete_field('field_recruitment_other');
   field_delete_field('field_recruitement_supp_info');
   field_delete_field('field_data_sources');
