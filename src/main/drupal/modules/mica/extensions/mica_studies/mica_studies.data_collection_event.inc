@@ -4,14 +4,13 @@ function _mica_studies_dce_link($dce) {
   // create a reference in population when a dce is create
   $dce_wrapper = entity_metadata_wrapper('node', $dce);
   $population = $dce_wrapper->field_dce_population->value();
-
-  $population_wrapper = entity_metadata_wrapper('node', $population);
-  $population_dce = $population_wrapper->field_pop_dce->value();
-  $nb_dce = count($population_dce);
-
-  $population->field_pop_dce[LANGUAGE_NONE][$nb_dce]['nid'][$dce->nid] = $dce->nid;
-
-  node_save($population);
+  if ($population != null) {
+    $population_wrapper = entity_metadata_wrapper('node', $population);
+    $population_dce = $population_wrapper->field_pop_dce->value();
+    $nb_dce = count($population_dce);
+    $population->field_pop_dce[LANGUAGE_NONE][$nb_dce]['nid'][$dce->nid] = $dce->nid;
+    node_save($population);
+  }
 }
 
 function _mica_studies_dce_delete($dce) {

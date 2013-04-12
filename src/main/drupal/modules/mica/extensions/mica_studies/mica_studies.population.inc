@@ -4,13 +4,17 @@ function _mica_studies_population_link($population) {
   // create a reference in study when a population is create for this study
   $population_wrapper = entity_metadata_wrapper('node', $population);
   $study = $population_wrapper->field_pop_study->value();
-  $study_wrapper = entity_metadata_wrapper('node', $study);
-  $study_populations = $study_wrapper->field_study_populations->value();
-  $nb_populations = count($study_populations);
+  $study = node_load($study->nid);
+  if ($study != null) {
+    $study_wrapper = entity_metadata_wrapper('node', $study);
+    $study_populations = $study_wrapper->field_study_populations->value();
+    $nb_populations = count($study_populations);
+    $study_wrapper->value()->field_study_populations[LANGUAGE_NONE][$nb_populations]['nid'][$population->nid] = $population->nid;
+    $study_wrapper->save();
+//    $study->field_study_populations[LANGUAGE_NONE][$nb_populations]['nid'][$population->nid] = $population->nid;
+//    node_save($study);
 
-  $study->field_study_populations[LANGUAGE_NONE][$nb_populations]['nid'][$population->nid] = $population->nid;
-  node_save($study);
-
+  }
 }
 
 function _mica_studies_population_delete($population) {

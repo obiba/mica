@@ -74,7 +74,6 @@ function _migrate_content_types() {
 
   $nodes = node_load_multiple(array_keys($entities['node']));
   foreach ($nodes as $study) {
-
     $study_wrapper = entity_metadata_wrapper('node', $study);
 
     // create population
@@ -119,11 +118,8 @@ function _migrate_content_types() {
         )
       )
     );
-
     $population_wrapper->save();
-
     //Data collection Event
-    $study_wrapper = entity_metadata_wrapper('node', $study);
     //  Preparation phase
     $start_year = $study_wrapper->field_preparation_start_year->value();
     $end_year = $study_wrapper->field_preparation_end_year->value();
@@ -156,7 +152,6 @@ function _migrate_content_types() {
         )
       );
       $dce_wrapper->save();
-
     }
     //  Baseline phase
     $start_year = $study_wrapper->field_baseline_start_year->value();
@@ -227,13 +222,13 @@ function _migrate_content_types() {
     }
 
     // modifying study state
+    node_load($study->nid);
+    $study_wrapper = entity_metadata_wrapper('node', $study);
     $start_year = $study_wrapper->field_preparation_start_year->value();
     $end_year = $study_wrapper->field_followup_end_year->value();
-    $study_wrapper = entity_metadata_wrapper('node', $study);
     $study_wrapper->value()->field_study_start_date = strtotime($start_year . "-01-01 00:00:00");
     $study_wrapper->value()->field_study_end_date = strtotime($end_year . "-01-01 00:00:00");
     $study_wrapper->save();
-
   }
 }
 
