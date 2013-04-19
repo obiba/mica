@@ -4820,7 +4820,7 @@ function mica_studies_field_default_fields() {
   $fields['node-population-field_pop_specific_pop'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_pop_specific_pop',
@@ -4972,7 +4972,7 @@ function mica_studies_field_default_fields() {
   $fields['node-population-field_pop_src_recruit'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_pop_src_recruit',

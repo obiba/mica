@@ -36,6 +36,11 @@ function _mica_studies_devel_form() {
     '#value' => t('Run delete method'),
     '#submit' => array('_delete_deprecated_fields_groups'),
   );
+  $form['stepbystep']['delete'] = array(
+    '#type' => 'submit',
+    '#value' => t('Run delete method'),
+    '#submit' => array('_delete_deprecated_fields_groups'),
+  );
 
   return $form;
 }
@@ -75,6 +80,55 @@ function _migrate_content_types() {
   $nodes = node_load_multiple(array_keys($entities['node']));
   foreach ($nodes as $study) {
     $study_wrapper = entity_metadata_wrapper('node', $study);
+    dpm($study_wrapper->field_recruitment_sources->value());
+    dpm($study_wrapper->field_data_sources->value());
+
+    $pop_src_recruit = array();
+    $pop_general_src_recruit = array();
+    $pop_specific_src_recruit = array();
+    $general = false;
+    $specific = false;
+    //recruitment sources upgrade
+    foreach ($study_wrapper->field_recruitment_sources->value() as $source) {
+      if ($source->name == "General population") {
+        $pop_src_recruit[] = "general";
+        $general = true;
+      }
+      else if ($source->name == "Participants from existing studies") {
+        $pop_src_recruit[] = "exist_studies";
+      }
+      else if ($source->name == "Specific population") {
+        $pop_src_recruit[] = "specific_population";
+        $specific = true;
+      }
+      else if ($source->name == "Volunteer enrolment") {
+        if ($general) {
+          $pop_general_src_recruit[] = "volunteer";
+        }
+      }
+      else if ($source->tid == "4") {
+        if ($general) {
+          $pop_general_src_recruit[] = "selected_samples";
+        }
+      }
+      else if ($source->name == "Clinic patients") {
+        if ($specific) {
+          $pop_specific_src_recruit[] = "clinic_patients";
+        }
+      }
+      else if ($source->tid == "8") {
+        if ($specific) {
+          $pop_specific_src_recruit[] = "specific_association";
+        }
+      }
+      else if ($source->name == "Other source") {
+        if ($specific) {
+          $pop_specific_src_recruit[] = "other";
+        }
+      }
+    }
+
+    dpm($pop_src_recruit);
 
     // create population
     $population_values = array(
@@ -91,10 +145,10 @@ function _migrate_content_types() {
       'field_pop_health_status' => $study_wrapper->field_health_status->value(),
       'field_pop_partcipant_sel_supp_in' => $study_wrapper->field_partcipant_sel_supp_info->value(),
       'field_pop_selection_others_sp' => $study_wrapper->field_selection_others_sp->value(),
-      //'field_pop_src_recruit' => $study_wrapper->field_recruitment_sources->value(),
+      'field_pop_src_recruit' => $pop_src_recruit,
       'field_pop_exist_study_part' => null,
-      'field_pop_general_pop_recruit' => null,
-      'field_pop_specific_pop' => null,
+      'field_pop_general_pop_recruit' => $pop_general_src_recruit,
+      'field_pop_specific_pop' => $pop_specific_src_recruit,
       'field_pop_specific_pop_info' => null,
       'field_pop_recruitment_other' => $study_wrapper->field_recruitment_other->value(),
       'field_pop_recruitement_supp_info' => $study_wrapper->field_recruitement_supp_info->value(),
@@ -251,7 +305,7 @@ function _delete_deprecated_fields_groups() {
   field_delete_field('field_health_status');
   field_delete_field('field_partcipant_sel_supp_info');
   field_delete_field('field_selection_others_sp');
-  //field_delete_field('field_recruitment_sources');
+  field_delete_field('field_recruitment_sources');
   field_delete_field('field_recruitment_other');
   field_delete_field('field_recruitement_supp_info');
   field_delete_field('field_data_sources');
