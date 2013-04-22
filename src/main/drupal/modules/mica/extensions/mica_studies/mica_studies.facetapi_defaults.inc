@@ -738,7 +738,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_age_max';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'search_api_ranges_ui_slider',
@@ -785,7 +785,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_age_min';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'search_api_ranges_ui_slider',
@@ -832,7 +832,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_baseline_end_year';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'search_api_ranges_ui_slider',
@@ -879,7 +879,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_baseline_start_year';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'search_api_ranges_ui_slider',
@@ -926,7 +926,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_bio_samples_management';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',
@@ -973,7 +973,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_country';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',
@@ -1244,7 +1244,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_data_sources';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',
@@ -1406,7 +1406,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_ended_end_year';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'search_api_ranges_ui_slider',
@@ -1487,7 +1487,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_followup_end_year';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'search_api_ranges_ui_slider',
@@ -1534,7 +1534,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_followup_start_year';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'search_api_ranges_ui_slider',
@@ -1581,7 +1581,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_gender';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',
@@ -1798,7 +1798,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_preparation_end_year';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'search_api_ranges_ui_slider',
@@ -1845,7 +1845,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_preparation_start_year';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'search_api_ranges_ui_slider',
@@ -2075,7 +2075,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_recruitment_sources';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',
@@ -2224,7 +2224,7 @@ function mica_studies_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@studies_index';
   $facet->realm = 'block';
   $facet->facet = 'field_select_criteria';
-  $facet->enabled = TRUE;
+  $facet->enabled = FALSE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',

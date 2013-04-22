@@ -6,6 +6,9 @@
  */
 
 require_once('mica_studies.features.inc');
+require_once('mica_studies.population.inc');
+require_once('mica_studies.data_collection_event.inc');
+require_once('mica_studies.study.inc');
 include_once('mica_studies.import_taxonomies.inc');
 
 /**
@@ -104,8 +107,16 @@ function mica_studies_export_page_access() {
  * Implements hook_node_insert()
  */
 function mica_studies_node_insert($node) {
-  if ($node->type === 'study') {
-    mica_core_create_node_default_menu($node, TRUE, FALSE, 0, 'studies');
+  switch ($node->type) {
+    case 'study':
+      mica_core_create_node_default_menu($node, TRUE, FALSE, 0, 'studies');
+      break;
+    case 'population':
+      _mica_studies_population_link($node);
+      break;
+    case 'data_collection_event':
+      _mica_studies_dce_link($node);
+      break;
   }
 }
 
@@ -186,13 +197,6 @@ function _mica_studies_study_view($node, $view_mode, $langcode) {
   );
 
   _mica_bind_other_specify($node, $bindings);
-
-  $status_dates = array(
-    'field_preparation_start_year' => 'field_preparation_end_year',
-    'field_baseline_start_year' => 'field_baseline_end_year',
-    'field_followup_start_year' => 'field_followup_end_year',
-  );
-  _mica_studies_display_status_dates($node, $status_dates);
 
   $fields = array(
     'field_target_number_participants',
@@ -391,7 +395,6 @@ function _mica_studies_study_view_selection_criteria_item(&$node, $wrapper, $fie
   }
 }
 
-
 function _mica_studies_study_view_authorization(&$node, $view_mode, $langcode, $wrapper) {
   if (isset($node->content['field_authorization_specific'])) {
     $authorization_specific = $wrapper->field_authorization_specific->value();
@@ -445,6 +448,12 @@ function mica_studies_form_alter(&$form, &$form_state, $form_id) {
     case 'study_node_form':
       _mica_studies_study_form_alter($form, $form_state, $form_id);
       break;
+    case 'population_node_form':
+      _mica_studies_population_form_alter($form, $form_state, $form_id);
+      break;
+    case 'data_collection_event_node_form':
+      _mica_studies_data_collection_event_form_alter($form, $form_state, $form_id);
+      break;
   }
 }
 
@@ -453,16 +462,28 @@ function _mica_studies_study_form_alter(&$form, &$form_state, $form_id) {
   _mica_add_dependent_field_checked($form, 'field_design', 'field_design_other_sp', 'other');
   _mica_add_dependent_field_checked($form, 'field_recruitment', 'field_recruitment_other_sp', 'other');
   _mica_add_dependent_field_checked($form, 'field_access_other', 'field_access_other_sp', '1');
-  _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
-  _mica_add_dependent_field_checked($form, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
-  _mica_add_dependent_field_checked($form, 'field_data_sources', 'field_data_sources_sp', 'others');
+}
 
-  // Add dependent field "Please specify other source of recruitment" to taxonomy checkbox identified by its tid
-  $terms = taxonomy_get_term_by_name('Other source', 'sources_of_recruitment');
-  if (!empty($terms)) {
-    $k = array_keys($terms);
-    _mica_add_dependent_field_checked($form, 'field_recruitment_sources', 'field_recruitment_other', $k[0]);
-  }
+function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
+  $form['#validate'][] = '_mica_populations_form_validate';
+
+  //population
+  _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_general_pop_recruit', 'general');
+  _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_exist_study_part', 'exist_studies');
+  _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_specific_pop', 'specific_population');
+  _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_specific_pop_info', 'specific_population');
+  _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_recruitment_other', 'other');
+
+}
+
+function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $form_id) {
+  $form['#validate'][] = '_mica_data_collection_event_form_validate';
+
+  //dce
+  _mica_add_dependent_field_checked($form, 'field_dce_data_sources', 'field_dce_data_sources_admin_db', 'administratives_databases');
+  _mica_add_dependent_field_checked($form, 'field_dce_data_sources', 'field_dce_data_sources_sp', 'others');
+  _mica_add_dependent_field_checked($form, 'field_dce_bio_samples_management', 'field_dce_tissues_sp', 'tissues');
+  _mica_add_dependent_field_checked($form, 'field_dce_bio_samples_management', 'field_dce_samples_man_other_sp', 'others');
 }
 
 /**
@@ -546,7 +567,6 @@ function _mica_studies_display_status_dates(&$node, $status_dates) {
     $node->content[$end_date]['#access'] = FALSE;
   }
 }
-
 
 function _mica_bind_other_specify(&$node, $bindings) {
 
@@ -715,12 +735,30 @@ function _mica_studies_form_validate($form, &$form_state) {
   _mica_studies_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
   _mica_studies_form_validate_field($form, $form_state, 'field_data_sources', 'field_data_sources_sp', 'others');
 
-  // Add dependent field "Please specify other source of recruitment" to taxonomy checkbox identified by its tid
-  $terms = taxonomy_get_term_by_name('Other source', 'sources_of_recruitment');
-  if (!empty($terms)) {
-    $k = array_keys($terms);
-    _mica_add_dependent_field_checked($form, 'field_recruitment_sources', 'field_recruitment_other', $k[0]);
-  }
+//  // Add dependent field "Please specify other source of recruitment" to taxonomy checkbox identified by its tid
+//  $terms = taxonomy_get_term_by_name('Other source', 'sources_of_recruitment');
+//  if (!empty($terms)) {
+//    $k = array_keys($terms);
+//    _mica_add_dependent_field_checked($form, 'field_recruitment_sources', 'field_recruitment_other', $k[0]);
+//  }
+}
+
+function _mica_populations_form_validate($form, &$form_state) {
+
+  //population
+  _mica_studies_form_validate_field($form, $form_state, 'field_pop_src_recruit', 'field_pop_general_pop_recruit', 'general');
+  _mica_studies_form_validate_field($form, $form_state, 'field_pop_src_recruit', 'field_pop_exist_study_part', 'exist_studies');
+  _mica_studies_form_validate_field($form, $form_state, 'field_pop_src_recruit', 'field_pop_specific_pop', 'specific_population');
+  _mica_studies_form_validate_field($form, $form_state, 'field_pop_src_recruit', 'field_pop_specific_pop_info', 'specific_population');
+  _mica_studies_form_validate_field($form, $form_state, 'field_pop_src_recruit', 'field_pop_recruitment_other', 'other');
+}
+
+function _mica_data_collection_event_form_validate($form, &$form_state) {
+  //dce
+  _mica_studies_form_validate_field($form, $form_state, 'field_dce_data_sources', 'field_dce_data_sources_admin_db', 'administratives_databases');
+  _mica_studies_form_validate_field($form, $form_state, 'field_dce_data_sources', 'field_dce_data_sources_sp', 'others');
+  _mica_studies_form_validate_field($form, $form_state, 'field_dce_bio_samples_management', 'field_dce_tissues_sp', 'tissues');
+  _mica_studies_form_validate_field($form, $form_state, 'field_dce_bio_samples_management', 'field_dce_samples_man_other_sp', 'others');
 }
 
 /**
@@ -855,3 +893,22 @@ function mica_studies_translation_exclude_fields() {
     'study' => array('mica_opal'),
   );
 }
+
+/*
+ * Hook hook_node_delete
+ */
+
+function  mica_studies_node_delete($node) {
+  switch ($node->type) {
+    case 'study':
+      _mica_studies_study_delete($node);
+      break;
+    case 'population':
+      _mica_studies_population_delete($node);
+      break;
+    case 'data_collection_event':
+      _mica_studies_dce_delete($node);
+      break;
+  }
+}
+

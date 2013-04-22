@@ -90,6 +90,14 @@ function mica_studies_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
+    'data_collection_event' => array(
+      'name' => t('Data Collection Event'),
+      'base' => 'node_content',
+      'description' => t('content type for new data collection event'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'documents' => array(
       'name' => t('Documents'),
       'base' => 'node_content',
@@ -219,7 +227,8 @@ function mica_studies_default_search_api_index() {
         "field_investigators:field_telephone" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_daco" : { "type" : "list\\u003Cboolean\\u003E" },
         "field_current_part_nb_date:value" : { "type" : "date" },
-        "field_current_samples_date:value" : { "type" : "date" }
+        "field_current_samples_date:value" : { "type" : "date" },
+        "field_info_design_follow_up" : { "type" : "list\\u003Ctext\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {

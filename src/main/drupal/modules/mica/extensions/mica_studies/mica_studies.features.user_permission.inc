@@ -247,6 +247,13 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: create data_collection_event content.
+  $permissions['create data_collection_event content'] = array(
+    'name' => 'create data_collection_event content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: create documents content.
   $permissions['create documents content'] = array(
     'name' => 'create documents content',
@@ -329,15 +336,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: create field_questionnaires.
-  $permissions['create field_questionnaires'] = array(
-    'name' => 'create field_questionnaires',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: create page content.
   $permissions['create page content'] = array(
     'name' => 'create page content',
@@ -394,6 +392,13 @@ function mica_studies_user_default_permissions() {
       'consortium administrator' => 'consortium administrator',
       'study reviewer' => 'study reviewer',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete any data_collection_event content.
+  $permissions['delete any data_collection_event content'] = array(
+    'name' => 'delete any data_collection_event content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -462,6 +467,13 @@ function mica_studies_user_default_permissions() {
       'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own data_collection_event content.
+  $permissions['delete own data_collection_event content'] = array(
+    'name' => 'delete own data_collection_event content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -539,6 +551,13 @@ function mica_studies_user_default_permissions() {
       'consortium administrator' => 'consortium administrator',
       'study reviewer' => 'study reviewer',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any data_collection_event content.
+  $permissions['edit any data_collection_event content'] = array(
+    'name' => 'edit any data_collection_event content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -655,15 +674,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: edit field_questionnaires.
-  $permissions['edit field_questionnaires'] = array(
-    'name' => 'edit field_questionnaires',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: edit own article content.
   $permissions['edit own article content'] = array(
     'name' => 'edit own article content',
@@ -683,6 +693,13 @@ function mica_studies_user_default_permissions() {
       'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit own data_collection_event content.
+  $permissions['edit own data_collection_event content'] = array(
+    'name' => 'edit own data_collection_event content',
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -764,15 +781,6 @@ function mica_studies_user_default_permissions() {
       'consortium administrator' => 'consortium administrator',
       'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: edit own field_questionnaires.
-  $permissions['edit own field_questionnaires'] = array(
-    'name' => 'edit own field_questionnaires',
-    'roles' => array(
-      'administrator' => 'administrator',
     ),
     'module' => 'field_permissions',
   );
@@ -1132,15 +1140,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: view field_questionnaires.
-  $permissions['view field_questionnaires'] = array(
-    'name' => 'view field_questionnaires',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: view moderation history.
   $permissions['view moderation history'] = array(
     'name' => 'view moderation history',
@@ -1237,15 +1236,6 @@ function mica_studies_user_default_permissions() {
       'consortium administrator' => 'consortium administrator',
       'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: view own field_questionnaires.
-  $permissions['view own field_questionnaires'] = array(
-    'name' => 'view own field_questionnaires',
-    'roles' => array(
-      'administrator' => 'administrator',
     ),
     'module' => 'field_permissions',
   );

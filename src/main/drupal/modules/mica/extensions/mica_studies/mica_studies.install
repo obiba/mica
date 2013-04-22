@@ -5,6 +5,8 @@
  * Install, update and uninstall functions for the Mica Studies module.
  */
 
+require_once('mica_studies.migrate.inc');
+
 /**
  * Implements hook_install().
  */
@@ -262,6 +264,25 @@ function mica_studies_update_7500(&$sandbox) {
  */
 function mica_studies_update_7700(&$update) {
   features_revert(array('mica_studies' => array('views_view')));
+}
+
+/**
+ * Update Mica content types
+ */
+function mica_studies_update_7800(&$update) {
+  features_revert(array(
+    'mica_studies' => array(
+      'field',
+      'field_group',
+      'variable',
+      'views_view',
+      'user_permission',
+      'search_api_index',
+      'node'
+    )
+  ));
+  _migrate_content_types();
+  _delete_deprecated_fields_groups();
 }
 
 /**
