@@ -9,7 +9,6 @@ require_once('mica_studies.features.inc');
 require_once('mica_studies.population.inc');
 require_once('mica_studies.data_collection_event.inc');
 require_once('mica_studies.study.inc');
-include_once('mica_studies.import_taxonomies.inc');
 
 /**
  * Implements hook_menu().

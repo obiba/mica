@@ -422,7 +422,6 @@ features[node][] = study
 features[page_manager_handlers][] = node_view_panel_context
 features[page_manager_pages][] = homepage
 features[search_api_index][] = studies_index
-features[taxonomy][] = sources_of_recruitment
 features[user_permission][] = access comments
 features[user_permission][] = access content
 features[user_permission][] = access private fields
