@@ -43,12 +43,11 @@ projects[cnr][download][type] = git
 projects[cnr][download][revision] = 89f859e
 projects[cnr][download][branch] = 7.x-4.x
 
-projects[content_access] = 1.2-beta1
+projects[content_access] = 1.2-beta2
 
-projects[content_taxonomy] = 1.0-beta1
+projects[content_taxonomy] = 1.0-beta2
 
-projects[ctools][version] = 1.2
-projects[ctools][patch][1494860] = http://drupal.org/files/ctools-dependent-js-broken-with-jquery-1.7-1494860-30.patch
+projects[ctools][version] = 1.3
 
 projects[date] = 2.6
 
@@ -63,7 +62,7 @@ projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info
 
 projects[entity_translation] = 1.0-alpha2
 
-projects[facetapi] = 1.2
+projects[facetapi] = 1.3
 
 projects[facetapi_i18n] = 1.0-beta2
 
@@ -112,7 +111,7 @@ projects[i18n][patch][1662884] = http://drupal.org/files/support_multiple_transl
 
 projects[image_url_formatter] = 1.0
 
-projects[imce] = 1.6
+projects[imce] = 1.7
 
 projects[job_scheduler] = 2.0-alpha3
 
@@ -131,9 +130,9 @@ projects[languageicons] = 1.0
 
 ;projects[less] = 3.0-beta1
 
-projects[libraries] = 2.0
+projects[libraries] = 2.1
 
-projects[link] = 1.0
+projects[link] = 1.1
 
 projects[logintoboggan] = 1.3
 
@@ -187,7 +186,7 @@ projects[search_api][patch][1471310] = http://drupal.org/files/1471310--unset-fi
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 projects[search_api][patch][1594762] = http://drupal.org/files/1594762-18-deleted-terms-cause-indexing-crash.patch
 
-projects[search_api_combined] = 1.1
+projects[search_api_combined] = 1.2
 
 projects[search_api_page] = 1.0-beta2
 
@@ -197,7 +196,7 @@ projects[search_api_ranges][download][branch] = 7.x-1.x
 projects[search_api_ranges][patch][1450772] = http://drupal.org/files/force-numeric-and-config-for-no-slider-no-commit-on-change-1450772-1_1.patch
 projects[search_api_ranges][patch][1460410] = http://drupal.org/files/max-inclusive.patch
 
-projects[search_api_solr] = 1.0-rc3
+projects[search_api_solr] = 1.0-rc4
 
 ; DO NOT CHANGE VERSION UNTIL http://jira.obiba.org/jira/browse/MICA-888 IS FIXED
 projects[services][version] = 3.1
@@ -211,17 +210,17 @@ projects[superfish] = 1.9-beta4
 
 projects[taxonomy_csv] = 5.10
 
-projects[taxonomy_manager] = 1.0-rc1
+projects[taxonomy_manager] = 1.0-rc2
 
-projects[title] = 1.0-alpha5
+projects[title] = 1.0-alpha7
 
-projects[token] = 1.4
+projects[token] = 1.5
 
 projects[variable] = 2.2
 
 projects[view_unpublished] = 1.1
 
-projects[views] = 3.5
+projects[views] = 3.7
 
 projects[views_bulk_operations][version] = 3.1
 projects[views_bulk_operations][patch][1809282] = http://drupal.org/files/views_bulk_operations-invalid_arg_foreach_modify-1809282.patch
