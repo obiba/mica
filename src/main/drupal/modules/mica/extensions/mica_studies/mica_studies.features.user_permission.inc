@@ -1048,6 +1048,13 @@ function mica_studies_user_default_permissions() {
     'module' => 'view_unpublished',
   );
 
+  // Exported permission: view any unpublished data_collection_event content.
+  $permissions['view any unpublished data_collection_event content'] = array(
+    'name' => 'view any unpublished data_collection_event content',
+    'roles' => array(),
+    'module' => 'view_unpublished',
+  );
+
   // Exported permission: view any unpublished documents content.
   $permissions['view any unpublished documents content'] = array(
     'name' => 'view any unpublished documents content',

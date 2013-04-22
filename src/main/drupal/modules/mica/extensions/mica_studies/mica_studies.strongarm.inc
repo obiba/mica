@@ -513,6 +513,30 @@ return $title;
       'summary_right_area' => array(
         'custom_settings' => TRUE,
       ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'summary_area' => array(
+        'custom_settings' => FALSE,
+      ),
+      'summary_center_area' => array(
+        'custom_settings' => FALSE,
+      ),
+      'summary_footer_area' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
