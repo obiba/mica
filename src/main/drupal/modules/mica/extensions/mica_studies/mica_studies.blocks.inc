@@ -54,6 +54,18 @@ function _mica_studies_block_study_access($study) {
   if (is_numeric($study)) {
     $study = node_load($study);
   }
+
+  $wrapper = entity_metadata_wrapper('node', $study);
+  $data = $wrapper->field_access_data->value();
+  $biosamples = $wrapper->field_access_biosamples->value();
+  $other = $wrapper->field_access_other->value();
+  $other_sp = $wrapper->field_access_other_sp->value();
+
+//  dvm($data, '$data');
+//  dvm($biosamples, '$biosamples');
+//  dvm($other, '$other');
+//  dvm($other_sp, '$other_sp');
+
   $content = array(
     field_view_field('node', $study, 'field_access_data', array('label' => 'inline', 'weight' => 10)),
     field_view_field('node', $study, 'field_access_biosamples', array('label' => 'inline', 'weight' => 20)),
@@ -71,11 +83,22 @@ function _mica_studies_block_study_marker_paper($study) {
   if (is_numeric($study)) {
     $study = node_load($study);
   }
-  //TODO hide block if no info
-  $content = array(
-    field_view_field('node', $study, 'field_marker_paper', array('label' => 'inline', 'weight' => 10)),
-    field_view_field('node', $study, 'field_pubmedid', array('label' => 'inline', 'weight' => 20)),
-  );
+
+  $wrapper = entity_metadata_wrapper('node', $study);
+  $marker_paper = $wrapper->field_marker_paper->value();
+  $pubmedid = $wrapper->field_pubmedid->value();
+
+  $content = empty($marker_paper) && empty($pubmedid)
+    ? NULL
+    : array(
+      field_view_field('node', $study, 'field_marker_paper', array('label' => 'inline', 'weight' => 10)),
+      field_view_field('node', $study, 'field_pubmedid', array(
+          'label' => 'inline',
+          'type' => 'mica_pubmed_url',
+          'weight' => 20
+        )
+      ),
+    );
   return array(
     'subject' => t('Marker Paper'),
     'content' => $content,
@@ -87,10 +110,12 @@ function _mica_studies_block_study_documents($study) {
   if (is_numeric($study)) {
     $study = node_load($study);
   }
-  //TODO hide block if no documents
-  $content = array(
-    field_view_field('node', $study, 'field_documents', array('label' => 'hidden', 'weight' => 10)),
-  );
+
+  $wrapper = entity_metadata_wrapper('node', $study);
+  $docs = $wrapper->field_supp_infos->value();
+  $content = empty($docs)
+    ? NULL
+    : array(field_view_field('node', $study, 'field_documents', array('label' => 'hidden', 'weight' => 10)));
   return array(
     'subject' => t('Documents'),
     'content' => $content,
@@ -102,10 +127,12 @@ function _mica_studies_block_study_supp_infos($study) {
   if (is_numeric($study)) {
     $study = node_load($study);
   }
-  //TODO hide block if no info
-  $content = array(
-    field_view_field('node', $study, 'field_supp_infos', array('label' => 'hidden', 'weight' => 10)),
-  );
+
+  $wrapper = entity_metadata_wrapper('node', $study);
+  $supp_infos = $wrapper->field_supp_infos->value();
+  $content = empty($supp_infos)
+    ? NULL
+    : array(field_view_field('node', $study, 'field_supp_infos', array('label' => 'hidden', 'weight' => 10)));
   return array(
     'subject' => t('Supplementary Information'),
     'content' => $content,
