@@ -911,3 +911,91 @@ function  mica_studies_node_delete($node) {
   }
 }
 
+/**
+ * Implements hook_block_info().
+ */
+function mica_studies_block_info() {
+  return array(
+    'study-general-info' => array(
+      'info' => t('Study General Information'),
+      'weight' => '10',
+      'status' => TRUE,
+      'region' => 'content',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+    ),
+    'study-general-design' => array(
+      'info' => t('Study General Design'),
+      'weight' => '20',
+      'status' => TRUE,
+      'region' => 'content',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+    ),
+    'study-access' => array(
+      'info' => t('Study Access'),
+      'weight' => '30',
+      'status' => TRUE,
+      'region' => 'content',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+    ),
+    'study-marker-paper' => array(
+      'info' => t('Study Marker Paper'),
+      'weight' => '40',
+      'status' => TRUE,
+      'region' => 'content',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+    ),
+    'study-documents' => array(
+      'info' => t('Study Documents'),
+      'weight' => '50',
+      'status' => TRUE,
+      'region' => 'content',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+    ),
+    'study-supp-infos' => array(
+      'info' => t('Study Supplementary Information'),
+      'weight' => '60',
+      'status' => TRUE,
+      'region' => 'content',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+    ),
+    'study-authorization' => array(
+      'info' => t('Study Authorization'),
+      'weight' => '1000',
+      'status' => TRUE,
+      'region' => 'content',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function mica_studies_block_view($delta = '') {
+  module_load_include('inc', 'mica_studies', 'mica_studies.blocks');
+  switch ($delta) {
+    case 'study-general-info':
+      return _mica_studies_block_study_general_info(menu_get_object());
+    case 'study-general-design':
+      return _mica_studies_block_study_general_design(menu_get_object());
+    case 'study-access':
+      return _mica_studies_block_study_access(menu_get_object());
+    case 'study-marker-paper':
+      return _mica_studies_block_study_marker_paper(menu_get_object());
+    case 'study-documents':
+      return _mica_studies_block_study_documents(menu_get_object());
+    case 'study-supp-infos':
+      return _mica_studies_block_study_supp_infos(menu_get_object());
+    case 'study-authorization':
+      return _mica_studies_block_study_authorization(menu_get_object());
+    default:
+      return NULL;
+  }
+}

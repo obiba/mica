@@ -6,6 +6,7 @@
  */
 
 require_once('mica_studies.migrate.inc');
+include_once(drupal_get_path('module', 'mica_core') . '/mica_core.block.utils.inc');
 
 /**
  * Implements hook_install().
@@ -15,6 +16,7 @@ function mica_studies_install() {
   _mica_node_reference_block();
   _mica_studies_create_date_format();
   mica_core_configure_feeds_tamper('mica_studies');
+  _mica_studies_config_blocks();
 }
 
 /**
@@ -283,6 +285,7 @@ function mica_studies_update_7800(&$update) {
   ));
   _migrate_content_types();
   _delete_deprecated_fields_groups();
+  _mica_studies_config_blocks();
 }
 
 /**
@@ -292,4 +295,15 @@ function mica_studies_update_dependencies() {
   $dependencies = array();
   $dependencies['mica_studies'][7500] = array('mica_core' => 7500);
   return $dependencies;
+}
+
+function _mica_studies_config_blocks() {
+  //TODO hide these blocks on study edition
+  mica_core_set_block_node_type('study', 'mica_studies', 'study-general-info');
+  mica_core_set_block_node_type('study', 'mica_studies', 'study-general-design');
+  mica_core_set_block_node_type('study', 'mica_studies', 'study-access');
+  mica_core_set_block_node_type('study', 'mica_studies', 'study-marker-paper');
+  mica_core_set_block_node_type('study', 'mica_studies', 'study-documents');
+  mica_core_set_block_node_type('study', 'mica_studies', 'study-supp-infos');
+  mica_core_set_block_node_type('study', 'mica_studies', 'study-authorization');
 }
