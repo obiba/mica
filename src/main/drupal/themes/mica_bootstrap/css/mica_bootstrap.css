@@ -6332,6 +6332,23 @@ section#block-views-news-recent-news article h2 {
 .view-studies-search table {
   margin-top: 5px;
 }
+.node-type-study section.block-mica-studies {
+  background-color: #f9f9f9;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+.node-type-study section.block-mica-studies h2.block-title {
+  font-size: 16.25px;
+  font-weight: normal;
+  background-color: #f9f9f9;
+  color: #495961;
+  margin: 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.node-type-study section.block-mica-studies .block-content {
+  padding-left: 10px;
+}
 .pane-dataset-studies h2 {
   font-size: 13px;
 }
