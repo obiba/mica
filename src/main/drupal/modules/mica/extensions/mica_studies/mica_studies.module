@@ -984,6 +984,7 @@ function mica_studies_block_view($delta = '') {
     case 'study-general-info':
       return _mica_studies_block_study_general_info(menu_get_object());
     case 'study-general-design':
+      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.general_design');
       return _mica_studies_block_study_general_design(menu_get_object());
     case 'study-access':
       return _mica_studies_block_study_access(menu_get_object());

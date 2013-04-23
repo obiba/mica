@@ -19,48 +19,6 @@ function _mica_studies_block_study_general_info($study) {
   );
 }
 
-function _mica_studies_block_study_general_design($study) {
-  // $study can be the study nid
-  if (is_numeric($study)) {
-    $study = node_load($study);
-  }
-
-  $wrapper = entity_metadata_wrapper('node', $study);
-  $content = array(
-    _mica_studies_block_study_general_design_field_design($wrapper),
-    field_view_field('node', $study, 'field_info_design_follow_up', array('label' => 'inline', 'weight' => 30)),
-    field_view_field('node', $study, 'field_recruitment', array('label' => 'inline', 'weight' => 40)),
-    field_view_field('node', $study, 'field_recruitment_other_sp', array('label' => 'inline', 'weight' => 50)),
-    field_view_field('node', $study, 'field_recruitment_supp_info', array('label' => 'inline', 'weight' => 60)),
-    field_view_field('node', $study, 'field_target_number_participants', array('label' => 'inline', 'weight' => 70)),
-    //TODO hide if no
-    field_view_field('node', $study, 'field_no_limits_participants', array('label' => 'inline', 'weight' => 80)),
-    field_view_field('node', $study, 'field_target_nb_supp_info', array('label' => 'inline', 'weight' => 90)),
-    field_view_field('node', $study, 'field_target_number_biosamples', array('label' => 'inline', 'weight' => 100)),
-    //TODO hide if no
-    field_view_field('node', $study, 'field_no_limits_samples', array('label' => 'inline', 'weight' => 110)),
-    field_view_field('node', $study, 'field_samples_supp_info', array('label' => 'inline', 'weight' => 120)),
-  );
-  return array(
-    'subject' => t('General Design'),
-    'content' => $content,
-  );
-}
-
-function _mica_studies_block_study_general_design_field_design($study_wrapper) {
-  $design_view = field_view_field('node', $study_wrapper->value(), 'field_design', array(
-    'label' => 'inline',
-    'weight' => 10
-  ));
-  $design = $study_wrapper->field_design->value();
-  $other_sp = $study_wrapper->field_design_other_sp->value();
-  if (in_array('other', $design) && !empty($other_sp)) {
-    $design_other_sp_view = field_view_field('node', $study_wrapper->value(), 'field_design_other_sp');
-    $design_view[count($design) - 1]['#markup'] .= ' - ' . $design_other_sp_view[0]['#markup'];
-  }
-  return $design_view;
-}
-
 function _mica_studies_block_study_access($study) {
   // $study can be the study nid
   if (is_numeric($study)) {
@@ -168,11 +126,11 @@ function _mica_studies_simulate_other_specify_field($node, $field_other, $field_
     return NULL;
   }
 
-  $field_other_view = field_view_field('node', $node, $field_other, array('label' => 'inline', 'weight' => $weight));
+  $field = field_view_field('node', $node, $field_other, array('label' => 'inline', 'weight' => $weight));
   $other_sp = $wrapper->{$field_specify}->value();
   if (!empty($other_sp)) {
     $field_specify_view = field_view_field('node', $node, $field_specify);
-    $field_other_view[0]['#markup'] .= ' - ' . $field_specify_view[0]['#markup'];
+    $field[0]['#markup'] .= ' - ' . $field_specify_view[0]['#markup'];
   }
-  return $field_other_view;
+  return $field;
 }
