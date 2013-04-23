@@ -25,11 +25,9 @@ function _mica_studies_block_study_general_design($study) {
     $study = node_load($study);
   }
 
-//  $wrapper = entity_metadata_wrapper('node', $study);
-
+  $wrapper = entity_metadata_wrapper('node', $study);
   $content = array(
-    field_view_field('node', $study, 'field_design', array('label' => 'inline', 'weight' => 10)),
-    field_view_field('node', $study, 'field_design_other_sp', array('label' => 'inline', 'weight' => 20)),
+    _mica_studies_block_study_general_design_field_design($wrapper),
     field_view_field('node', $study, 'field_info_design_follow_up', array('label' => 'inline', 'weight' => 30)),
     field_view_field('node', $study, 'field_recruitment', array('label' => 'inline', 'weight' => 40)),
     field_view_field('node', $study, 'field_recruitment_other_sp', array('label' => 'inline', 'weight' => 50)),
@@ -47,6 +45,20 @@ function _mica_studies_block_study_general_design($study) {
     'subject' => t('General Design'),
     'content' => $content,
   );
+}
+
+function _mica_studies_block_study_general_design_field_design($study_wrapper) {
+  $design_view = field_view_field('node', $study_wrapper->value(), 'field_design', array(
+    'label' => 'inline',
+    'weight' => 10
+  ));
+  $design = $study_wrapper->field_design->value();
+  $other_sp = $study_wrapper->field_design_other_sp->value();
+  if (in_array('other', $design) && !empty($other_sp)) {
+    $design_other_sp_view = field_view_field('node', $study_wrapper->value(), 'field_design_other_sp');
+    $design_view[count($design) - 1]['#markup'] .= ' - ' . $design_other_sp_view[0]['#markup'];
+  }
+  return $design_view;
 }
 
 function _mica_studies_block_study_access($study) {
@@ -152,33 +164,15 @@ function _mica_studies_block_study_authorization($study) {
 function _mica_studies_simulate_other_specify_field($node, $field_other, $field_specify, $weight) {
   $wrapper = entity_metadata_wrapper('node', $node);
   $other = $wrapper->{$field_other}->value();
-  if ($other) {
-    $field_other_view = field_view_field('node', $node, $field_other, array('label' => 'inline', 'weight' => $weight));
-    $other_sp = $wrapper->{$field_specify}->value();
-    if (empty($other_sp)) {
-      return $field_other_view;
-    }
-
-    $field_specify_view = field_view_field('node', $node, $field_specify);
-//    dpm($field_other_view, '$field_other_view');
-//    dpm($field_specify_view, '$field_specify_view');
-    return array(
-      '#theme' => 'field',
-      '#weight' => $weight,
-      '#title' => $field_other_view['#title'],
-      '#label_display' => 'inline',
-      '#field_type' => 'text',
-      '#formatter' => 'text_default',
-      '#field_name' => $field_other_view['#field_name'],
-      '#bundle' => $field_other_view['#bundle'],
-      '#entity_type' => $field_other_view['#entity_type'],
-      '#items' => array(
-        $field_other_view['#items'][0],
-        $field_specify_view['#items'][0],
-      ),
-      $field_other_view[0],
-      $field_specify_view[0]
-    );
+  if (empty($other)) {
+    return NULL;
   }
-  return NULL;
+
+  $field_other_view = field_view_field('node', $node, $field_other, array('label' => 'inline', 'weight' => $weight));
+  $other_sp = $wrapper->{$field_specify}->value();
+  if (!empty($other_sp)) {
+    $field_specify_view = field_view_field('node', $node, $field_specify);
+    $field_other_view[0]['#markup'] .= ' - ' . $field_specify_view[0]['#markup'];
+  }
+  return $field_other_view;
 }
