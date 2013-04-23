@@ -5,15 +5,12 @@ function _mica_studies_population_link($population) {
   $population_wrapper = entity_metadata_wrapper('node', $population);
   $study = $population_wrapper->field_pop_study->value();
   $study = node_load($study->nid);
-  if ($study != null) {
+  if (!empty($study)) {
     $study_wrapper = entity_metadata_wrapper('node', $study);
     $study_populations = $study_wrapper->field_study_populations->value();
     $nb_populations = count($study_populations);
     $study_wrapper->value()->field_study_populations[LANGUAGE_NONE][$nb_populations]['nid'][$population->nid] = $population->nid;
     $study_wrapper->save();
-//    $study->field_study_populations[LANGUAGE_NONE][$nb_populations]['nid'][$population->nid] = $population->nid;
-//    node_save($study);
-
   }
 }
 
@@ -22,7 +19,7 @@ function _mica_studies_population_delete($population) {
   $population_wrapper = entity_metadata_wrapper('node', $population);
   $population_id = $population_wrapper->nid->value();
 
-  // supress link in studies
+  // suppress link in studies
   $query = new EntityFieldQuery;
   $entities = $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'study')
@@ -66,5 +63,9 @@ function _mica_studies_population_delete($population) {
       }
     }
   }
+
+}
+
+function _mica_studies_population_view($node, $view_mode, $langcode) {
 
 }

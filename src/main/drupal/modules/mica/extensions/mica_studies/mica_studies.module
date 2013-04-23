@@ -128,6 +128,10 @@ function mica_studies_node_view($node, $view_mode, $langcode) {
       ctools_add_css('mica_studies', 'mica_studies');
       _mica_studies_study_view($node, $view_mode, $langcode);
       break;
+    case 'population':
+      ctools_add_css('mica_studies', 'mica_studies');
+      _mica_studies_population_view($node, $view_mode, $langcode);
+      break;
     case 'contact':
       _mica_studies_contact_view($node, $view_mode, $langcode);
       break;

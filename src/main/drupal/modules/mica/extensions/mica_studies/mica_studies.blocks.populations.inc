@@ -7,11 +7,14 @@ function _mica_studies_block_study_populations($study) {
   }
 
   $wrapper = entity_metadata_wrapper('node', $study);
+  $populations = $wrapper->field_study_populations->value();
+  dpm($populations, '$populations');
 
-  $content = array();
-
+  if (empty($populations)) {
+    return NULL;
+  }
   return array(
     'subject' => t('Populations'),
-    'content' => $content,
+    'content' => node_view_multiple($populations, 'full'),
   );
 }
