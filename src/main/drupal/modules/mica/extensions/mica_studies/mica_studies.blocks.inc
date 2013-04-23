@@ -55,22 +55,22 @@ function _mica_studies_block_study_access($study) {
     $study = node_load($study);
   }
 
-  $wrapper = entity_metadata_wrapper('node', $study);
-  $data = $wrapper->field_access_data->value();
-  $biosamples = $wrapper->field_access_biosamples->value();
-  $other = $wrapper->field_access_other->value();
-  $other_sp = $wrapper->field_access_other_sp->value();
+  $field_other = field_view_field('node', $study, 'field_access_other', array('label' => 'inline', 'weight' => 30));
+  $field_other_sp = field_view_field('node', $study, 'field_access_other_sp', array(
+    'label' => 'inline',
+    'weight' => 40
+  ));
 
-//  dvm($data, '$data');
-//  dvm($biosamples, '$biosamples');
-//  dvm($other, '$other');
-//  dvm($other_sp, '$other_sp');
+  $wrapper = entity_metadata_wrapper('node', $study);
+  $other = $wrapper->field_access_other->value();
+  if ($other) {
+    $field_other[0]['#markup'] .= '<br/>' . $field_other_sp[0]['#markup'];
+  }
 
   $content = array(
     field_view_field('node', $study, 'field_access_data', array('label' => 'inline', 'weight' => 10)),
     field_view_field('node', $study, 'field_access_biosamples', array('label' => 'inline', 'weight' => 20)),
-    field_view_field('node', $study, 'field_access_other', array('label' => 'inline', 'weight' => 30)),
-    field_view_field('node', $study, 'field_access_other_sp', array('label' => 'inline', 'weight' => 40)),
+    $field_other,
   );
   return array(
     'subject' => t('Access'),
