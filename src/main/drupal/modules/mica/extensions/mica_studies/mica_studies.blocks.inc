@@ -101,35 +101,6 @@ function _mica_studies_block_study_supp_infos($study) {
   );
 }
 
-function _mica_studies_block_study_authorization($study) {
-  // $study can be the study nid
-  if (is_numeric($study)) {
-    $study = node_load($study);
-  }
-  $weight = 0;
-  $content = array(
-    field_view_field('node', $study, 'field_authorization_specific', array('label' => 'inline', 'weight' => ++$weight)),
-    field_view_field('node', $study, 'field_authorising_person_name', array(
-      'label' => 'inline',
-      'weight' => ++$weight
-    )),
-    field_view_field('node', $study, 'field_authorising_date', array('label' => 'inline', 'weight' => ++$weight)),
-    field_view_field('node', $study, 'field_authorization_maelstrom', array(
-      'label' => 'inline',
-      'weight' => ++$weight
-    )),
-    field_view_field('node', $study, 'field_authorising_person_name_m', array(
-      'label' => 'inline',
-      'weight' => ++$weight
-    )),
-    field_view_field('node', $study, 'field_authorising_date_m', array('label' => 'inline', 'weight' => ++$weight)),
-  );
-  return array(
-    'subject' => t('Authorization'),
-    'content' => $content,
-  );
-}
-
 function _mica_studies_simulate_other_specify_field($node, $field_other, $field_specify, $weight) {
   $wrapper = entity_metadata_wrapper('node', $node);
   $other = $wrapper->{$field_other}->value();
