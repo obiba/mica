@@ -305,5 +305,6 @@ function _mica_studies_config_blocks() {
   mica_core_set_block_node_type('study', 'mica_studies', 'study-marker-paper');
   mica_core_set_block_node_type('study', 'mica_studies', 'study-documents');
   mica_core_set_block_node_type('study', 'mica_studies', 'study-supp-infos');
+  mica_core_set_block_node_type('study', 'mica_studies', 'study-populations');
   mica_core_set_block_node_type('study', 'mica_studies', 'study-authorization');
 }

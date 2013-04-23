@@ -916,6 +916,14 @@ function mica_studies_block_info() {
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
     ),
+    'study-populations' => array(
+      'info' => t('Study Populations'),
+      'weight' => '70',
+      'status' => TRUE,
+      'region' => 'content',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+    ),
     'study-authorization' => array(
       'info' => t('Study Authorization'),
       'weight' => '1000',
@@ -946,6 +954,9 @@ function mica_studies_block_view($delta = '') {
       return _mica_studies_block_study_documents(menu_get_object());
     case 'study-supp-infos':
       return _mica_studies_block_study_supp_infos(menu_get_object());
+    case 'study-populations':
+      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.populations');
+      return _mica_studies_block_study_populations(menu_get_object());
     case 'study-authorization':
       module_load_include('inc', 'mica_studies', 'mica_studies.blocks.authorization');
       return _mica_studies_block_study_authorization(menu_get_object());
