@@ -30,6 +30,16 @@ function mica_studies_menu() {
     'access arguments' => array('administer site configuration'),
     'file' => 'mica_studies.migrate.inc',
   );
+
+  $items['study_add_wizard'] = array(
+    'title' => 'Study Add Wizard',
+    'page callback' => 'mica_studies_add_wizard',
+    'page arguments' => array(1),
+    'file' => 'mica_studies.wizard.inc',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
