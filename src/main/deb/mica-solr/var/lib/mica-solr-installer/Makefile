@@ -26,15 +26,15 @@ endif
 # Mica Solr install
 #
 
-mica-solr-install: mica-solr-install-prepare solr-install 
+mica-solr-install: mica-solr-install-prepare solr-install solr-start
 
-mica-solr-update: mica-solr-backup solr-copy-config-files
+mica-solr-update: solr-stop mica-solr-backup solr-copy-config-files solr-start
 
 mica-solr-install-prepare:
 	@echo "**** Downloading Apache Solr version $(solr_version)"
 	mkdir -p target	
 	cd target && \
-	wget -q http://archive.apache.org/dist/lucene/solr/$(solr_version)/apache-solr-$(solr_version).tgz && \
+	wget http://archive.apache.org/dist/lucene/solr/$(solr_version)/apache-solr-$(solr_version).tgz && \
 	tar xzf apache-solr-$(solr_version).tgz
 
 mica-solr-backup:
@@ -65,6 +65,11 @@ solr-install-finish:
 	ln -s /etc/mica-solr/conf /usr/share/mica-solr/solr/conf && \
 	ln -s /var/lib/mica-solr/data /usr/share/mica-solr/solr/data
 
+solr-start:
+	service mica-solr start
+
+solr-stop:
+	service mica-solr stop
 
 #
 # Clean

@@ -32,7 +32,7 @@ drush:
 	@echo "**** Drush install"
 	if [ ! -e $(drushexec) ]; then \
 	  cd /var/cache/mica-installer && \
-	  wget -q http://ftp.drupal.org/files/projects/drush-$(drupal_version)-$(drush_version).tar.gz && \
+	  wget http://ftp.drupal.org/files/projects/drush-$(drupal_version)-$(drush_version).tar.gz && \
 	  tar xzf drush-$(drupal_version)-$(drush_version).tar.gz ; \
 	fi
 	$(drushexec) version
@@ -49,7 +49,6 @@ else
 	@echo "**** Mica core/modules/themes/profiles upgrade from $(oldversion)"
 	make mica-prepare-update
 endif
-	service mica-solr start
 
 #
 # Mica dist install
