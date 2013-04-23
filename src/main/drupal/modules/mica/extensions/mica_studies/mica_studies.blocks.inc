@@ -55,41 +55,13 @@ function _mica_studies_block_study_access($study) {
     $study = node_load($study);
   }
 
-  $other_content = NULL;
-  $wrapper = entity_metadata_wrapper('node', $study);
-  $other = $wrapper->field_access_other->value();
-  if ($other) {
-    $field_other = field_view_field('node', $study, 'field_access_other');
-    $other_sp = $wrapper->field_access_other_sp->value();
-    if (empty($other_sp)) {
-      $other_content = $field_other;
-    }
-    else {
-      $field_other_sp = field_view_field('node', $study, 'field_access_other_sp');
-      // simulate field with other & other specify
-      $other_content = array(
-        '#theme' => 'field',
-        '#weight' => 30,
-        '#title' => $field_other['#title'],
-        '#label_display' => 'inline',
-        '#field_type' => 'text',
-        '#formatter' => 'text_default',
-        '#items' => array(
-          $field_other['#items'][0],
-          $field_other_sp['#items'][0],
-        ),
-        $field_other[0],
-        $field_other_sp[0]
-      );
-    }
-  }
-
   $content = array(
     field_view_field('node', $study, 'field_access_data', array('label' => 'inline', 'weight' => 10)),
     field_view_field('node', $study, 'field_access_biosamples', array('label' => 'inline', 'weight' => 20)),
   );
-  if (!empty($other_content)) {
-    $content[] = $other_content;
+  $other = _mica_studies_simulate_other_specify_field($study, 'field_access_other', 'field_access_other_sp', 30);
+  if (!empty($other)) {
+    $content[] = $other;
   }
   return array(
     'subject' => t('Access'),
@@ -175,4 +147,38 @@ function _mica_studies_block_study_authorization($study) {
     'subject' => t('Authorization'),
     'content' => $content,
   );
+}
+
+function _mica_studies_simulate_other_specify_field($node, $field_other, $field_specify, $weight) {
+  $wrapper = entity_metadata_wrapper('node', $node);
+  $other = $wrapper->{$field_other}->value();
+  if ($other) {
+    $field_other_view = field_view_field('node', $node, $field_other, array('label' => 'inline', 'weight' => $weight));
+    $other_sp = $wrapper->{$field_specify}->value();
+    if (empty($other_sp)) {
+      return $field_other_view;
+    }
+
+    $field_specify_view = field_view_field('node', $node, $field_specify);
+//    dpm($field_other_view, '$field_other_view');
+//    dpm($field_specify_view, '$field_specify_view');
+    return array(
+      '#theme' => 'field',
+      '#weight' => $weight,
+      '#title' => $field_other_view['#title'],
+      '#label_display' => 'inline',
+      '#field_type' => 'text',
+      '#formatter' => 'text_default',
+      '#field_name' => $field_other_view['#field_name'],
+      '#bundle' => $field_other_view['#bundle'],
+      '#entity_type' => $field_other_view['#entity_type'],
+      '#items' => array(
+        $field_other_view['#items'][0],
+        $field_specify_view['#items'][0],
+      ),
+      $field_other_view[0],
+      $field_specify_view[0]
+    );
+  }
+  return NULL;
 }
