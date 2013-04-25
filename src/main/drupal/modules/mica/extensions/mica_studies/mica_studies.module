@@ -474,7 +474,7 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_general_pop_recruit', 'general');
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_exist_study_part', 'exist_studies');
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_specific_pop', 'specific_population');
-  _mica_add_dependent_field_checked($form, 'field_pop_specific_pop', 'field_pop_specific_pop_other_sp', 'other');
+  _mica_add_double_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_specific_pop', 'field_pop_specific_pop_other_sp', 'specific_population', 'other');
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_recruitment_other', 'other');
 
 }
@@ -586,6 +586,46 @@ function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_s
   }
   else {
     debug('dependee "' . $dependee . '" or dependent "' . $dependent . '"not found');
+  }
+}
+
+function _mica_add_double_dependent_field_checked(&$form, $dependee1, $dependee2, $dependent, $key_selected1, $key_selected2) {
+  if (array_key_exists($dependee1, $form) && array_key_exists($dependent, $form) && array_key_exists($dependee2, $form)) {
+    $lang = $form[$dependee1]['#language'];
+    $type = $form[$dependee1][$lang]['#type'];
+    $input1 = ':input[name="' . $dependee1 . '[' . $lang . ']';
+    $rule1 = array();
+    if ($type != 'radios') {
+      $input1 = $input1 . '[' . $key_selected1 . ']';
+      $rule1['checked'] = TRUE;
+    }
+    else {
+      $rule1['value'] = $key_selected1;
+    }
+
+    $lang = $form[$dependee2]['#language'];
+    $type = $form[$dependee2][$lang]['#type'];
+    $input2 = ':input[name="' . $dependee2 . '[' . $lang . ']';
+    $rule2 = array();
+    if ($type != 'radios') {
+      $input2 = $input2 . '[' . $key_selected2 . ']';
+      $rule2['checked'] = TRUE;
+    }
+    else {
+      $rule2['value'] = $key_selected2;
+    }
+
+    $input1 = $input1 . '"]';
+    $input2 = $input2 . '"]';
+    $form[$dependent]['#states'] = array(
+      'visible' => array(
+        $input1 => $rule1,
+        $input2 => $rule2,
+      ),
+    );
+  }
+  else {
+    debug('dependee "' . $dependee1 . '" or dependent "' . $dependent . '"not found');
   }
 }
 
