@@ -4582,7 +4582,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '45',
+        'weight' => '46',
       ),
     ),
   );
@@ -4660,7 +4660,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '44',
+        'weight' => '45',
       ),
     ),
   );
@@ -4891,14 +4891,14 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-population-field_pop_specific_pop_info'.
-  $fields['node-population-field_pop_specific_pop_info'] = array(
+  // Exported field: 'node-population-field_pop_specific_pop_other_sp'.
+  $fields['node-population-field_pop_specific_pop_other_sp'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_pop_specific_pop_info',
+      'field_name' => 'field_pop_specific_pop_other_sp',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -4939,7 +4939,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 26,
+          'weight' => 31,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4950,8 +4950,8 @@ function mica_studies_field_default_fields() {
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_pop_specific_pop_info',
-      'label' => 'Specific Population : Supplementary information',
+      'field_name' => 'field_pop_specific_pop_other_sp',
+      'label' => 'Please specify what other specific population',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -4964,7 +4964,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '43',
+        'weight' => '44',
       ),
     ),
   );
@@ -10140,6 +10140,7 @@ function mica_studies_field_default_fields() {
   t('Please specify what other recruitment target');
   t('Please specify what other selection criteria');
   t('Please specify what other source of recruitment');
+  t('Please specify what other specific population');
   t('Please specify what study feature');
   t('Population');
   t('Populations');
@@ -10151,7 +10152,6 @@ function mica_studies_field_default_fields() {
   t('Selection criteria');
   t('Sources of recruitment');
   t('Specific Population');
-  t('Specific Population : Supplementary information');
   t('Start Date');
   t('State/Province');
   t('Study');
