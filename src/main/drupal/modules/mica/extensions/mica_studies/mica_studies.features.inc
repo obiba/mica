@@ -228,7 +228,7 @@ function mica_studies_default_search_api_index() {
         "field_investigators:field_daco" : { "type" : "list\\u003Cboolean\\u003E" },
         "field_current_part_nb_date:value" : { "type" : "date" },
         "field_current_samples_date:value" : { "type" : "date" },
-        "field_info_design_follow_up" : { "type" : "list\\u003Ctext\\u003E" }
+        "field_info_design_follow_up" : { "type" : "list\\u003Ctext\\u003E", "indexed" : false }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {

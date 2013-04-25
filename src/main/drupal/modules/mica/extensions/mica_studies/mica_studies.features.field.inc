@@ -10166,6 +10166,7 @@ function mica_studies_field_default_fields() {
   t('Telephone');
   t('Territory or city of residence');
   t('The study targets the recruitment of');
+  t('This field only apply to longitudinal study. Please provide general information on follow-up (profile and frequency).');
   t('Title');
   t('Website');
   t('What are the principal objectives of the study?');
