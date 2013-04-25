@@ -4620,10 +4620,9 @@ function mica_studies_field_default_fields() {
           'field_description_label' => 'Please specify what other source of recruitment',
           'field_description_value_type' => 'text',
         ),
-        'max_length' => '255',
       ),
       'translatable' => '0',
-      'type' => 'text',
+      'type' => 'text_long',
     ),
     'field_instance' => array(
       'bundle' => 'population',
@@ -4636,7 +4635,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 12,
+          'weight' => 30,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4658,9 +4657,9 @@ function mica_studies_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'size' => '60',
+          'rows' => '2',
         ),
-        'type' => 'text_textfield',
+        'type' => 'text_textarea',
         'weight' => '44',
       ),
     ),
@@ -7448,7 +7447,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'This field only apply to longitudinal study. Please provide general information on follow-up (profile and frequency).',
       'display' => array(
         'banner_area' => array(
           'label' => 'above',

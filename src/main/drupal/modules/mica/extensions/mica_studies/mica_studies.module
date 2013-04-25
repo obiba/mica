@@ -487,7 +487,6 @@ function _mica_studies_prepopulate_study_after_build(&$form_element) {
   return $form_element;
 }
 
-
 function _mica_studies_save_add_dce_submit($form, &$form_state) {
   if (isset($form['actions']['_mica_studies_save_add_dce_submit'])) {
     $form_state['redirect'] = array(
