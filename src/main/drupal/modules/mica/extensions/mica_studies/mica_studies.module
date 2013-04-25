@@ -31,15 +31,6 @@ function mica_studies_menu() {
     'file' => 'mica_studies.migrate.inc',
   );
 
-  $items['study_add_wizard'] = array(
-    'title' => 'Study Add Wizard',
-    'page callback' => 'mica_studies_add_wizard',
-    'page arguments' => array(1),
-    'file' => 'mica_studies.wizard.inc',
-    'access callback' => TRUE,
-    'type' => MENU_CALLBACK,
-  );
-
   return $items;
 }
 
@@ -424,13 +415,60 @@ function mica_studies_form_alter(&$form, &$form_state, $form_id) {
 
 function _mica_studies_study_form_alter(&$form, &$form_state, $form_id) {
   $form['#validate'][] = '_mica_studies_form_validate';
+
+  // hide list of population
+  $form['field_study_populations']['#type'] = 'hidden';
+
+  // hide list of datasets
+  $form['mica_dataset']['#type'] = 'hidden';
+
   _mica_add_dependent_field_checked($form, 'field_design', 'field_design_other_sp', 'other');
   _mica_add_dependent_field_checked($form, 'field_recruitment', 'field_recruitment_other_sp', 'other');
   _mica_add_dependent_field_checked($form, 'field_access_other', 'field_access_other_sp', '1');
+
+  $form['actions']['_mica_studies_save_add_population_submit'] = array(
+    '#access' => TRUE,
+    '#value' => t('Save & Add Population'),
+    '#weight' => 6,
+    '#type' => 'submit',
+    '#submit' => array('node_form_submit', '_mica_studies_save_add_population_submit'),
+  );
+}
+
+function _mica_studies_save_add_population_submit($form, &$form_state) {
+  if (isset($form['actions']['_mica_studies_save_add_population_submit'])) {
+    $form_state['redirect'] = array(
+      'node/add/population',
+      array(
+        'query' => array(
+          'study' => $form_state['nid'],
+        ),
+      ),
+    );
+    $form_state['nid'] = NULL;
+  }
 }
 
 function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
   $form['#validate'][] = '_mica_populations_form_validate';
+
+  // Prepopulate study node reference in population edit form and hide it
+  if (isset($_REQUEST['study'])) {
+    $lang = $form['field_pop_study']['#language'];
+    $form['field_pop_study'][$lang]['#after_build'][] = '_mica_studies_prepopulate_study_after_build';
+    $form['field_pop_study']['#type'] = 'hidden';
+  }
+
+  // hide list of data collection events
+  $form['field_pop_dce']['#type'] = 'hidden';
+
+  $form['actions']['_mica_studies_save_add_dce_submit'] = array(
+    '#access' => TRUE,
+    '#value' => t('Save & Add Collection Event'),
+    '#weight' => 6,
+    '#type' => 'submit',
+    '#submit' => array('node_form_submit', '_mica_studies_save_add_dce_submit'),
+  );
 
   //population
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_general_pop_recruit', 'general');
@@ -441,14 +479,55 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
 
 }
 
+function _mica_studies_prepopulate_study_after_build(&$form_element) {
+  if (isset($_REQUEST['study'])) {
+    $form_element[0]['nid']['#default_value'] = $_REQUEST['study'];
+    $form_element[0]['nid']['#value'] = node_reference_autocomplete_value($form_element[0]['nid'], FALSE, NULL);
+  }
+  return $form_element;
+}
+
+
+function _mica_studies_save_add_dce_submit($form, &$form_state) {
+  if (isset($form['actions']['_mica_studies_save_add_dce_submit'])) {
+    $form_state['redirect'] = array(
+      'node/add/data-collection-event',
+      array(
+        'query' => array(
+          'population' => $form_state['nid'],
+        ),
+      ),
+    );
+    $form_state['nid'] = NULL;
+  }
+}
+
 function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $form_id) {
   $form['#validate'][] = '_mica_data_collection_event_form_validate';
+
+  // Prepopulate study node reference in population edit form and hide it
+  if (isset($_REQUEST['population'])) {
+    $lang = $form['field_dce_population']['#language'];
+    $form['field_dce_population'][$lang]['#after_build'][] = '_mica_studies_prepopulate_dce_after_build';
+    $form['field_dce_population']['#type'] = 'hidden';
+  }
+
+  // hide list of population
+  $form['field_dce_population']['#type'] = 'hidden';
 
   //dce
   _mica_add_dependent_field_checked($form, 'field_dce_data_sources', 'field_dce_data_sources_admin_db', 'administratives_databases');
   _mica_add_dependent_field_checked($form, 'field_dce_data_sources', 'field_dce_data_sources_sp', 'others');
   _mica_add_dependent_field_checked($form, 'field_dce_bio_samples_management', 'field_dce_tissues_sp', 'tissues');
   _mica_add_dependent_field_checked($form, 'field_dce_bio_samples_management', 'field_dce_samples_man_other_sp', 'others');
+}
+
+function _mica_studies_prepopulate_dce_after_build(&$form_element) {
+  if (isset($_REQUEST['population'])) {
+    $form_element[0]['nid']['#default_value'] = $_REQUEST['population'];
+    $form_element[0]['nid']['#value'] = node_reference_autocomplete_value($form_element[0]['nid'], FALSE, NULL);
+  }
+  return $form_element;
 }
 
 /**
