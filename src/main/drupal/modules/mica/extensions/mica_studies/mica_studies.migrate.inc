@@ -144,7 +144,7 @@ function _migrate_content_types() {
       'field_pop_exist_study_part' => null,
       'field_pop_general_pop_recruit' => $pop_general_src_recruit,
       'field_pop_specific_pop' => $pop_specific_src_recruit,
-      'field_pop_specific_pop_info' => null,
+      'field_pop_specific_pop_other_sp' => null,
       'field_pop_recruitment_other' => $study_wrapper->field_recruitment_other->value(),
       'field_pop_recruitement_supp_info' => $study_wrapper->field_recruitement_supp_info->value(),
       'field_pop_participants_nb' => $study_wrapper->field_target_number_participants->value(),

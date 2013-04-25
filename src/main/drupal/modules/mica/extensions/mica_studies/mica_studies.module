@@ -474,7 +474,7 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_general_pop_recruit', 'general');
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_exist_study_part', 'exist_studies');
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_specific_pop', 'specific_population');
-  _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_specific_pop_info', 'specific_population');
+  _mica_add_dependent_field_checked($form, 'field_pop_specific_pop', 'field_pop_specific_pop_other_sp', 'other');
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_recruitment_other', 'other');
 
 }
@@ -792,7 +792,7 @@ function _mica_populations_form_validate($form, &$form_state) {
   _mica_studies_form_validate_field($form, $form_state, 'field_pop_src_recruit', 'field_pop_general_pop_recruit', 'general');
   _mica_studies_form_validate_field($form, $form_state, 'field_pop_src_recruit', 'field_pop_exist_study_part', 'exist_studies');
   _mica_studies_form_validate_field($form, $form_state, 'field_pop_src_recruit', 'field_pop_specific_pop', 'specific_population');
-  _mica_studies_form_validate_field($form, $form_state, 'field_pop_src_recruit', 'field_pop_specific_pop_info', 'specific_population');
+  _mica_studies_form_validate_field($form, $form_state, 'field_pop_specific_pop', 'field_pop_specific_pop_other_sp', 'other');
   _mica_studies_form_validate_field($form, $form_state, 'field_pop_src_recruit', 'field_pop_recruitment_other', 'other');
 }
 
