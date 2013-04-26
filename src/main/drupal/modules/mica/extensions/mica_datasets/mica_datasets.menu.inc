@@ -60,7 +60,7 @@ function _mica_datasets_regenerate_menus() {
     array('%datasets' => $nb_dataset_menus, '%variables' => $nb_variable_menus)));
 }
 
-function _mica_variables_reset_menus() {
+function _mica_datasets_variables_reset_menus() {
 
   $nb_variable_menus = 0;
   $query = new EntityFieldQuery;
