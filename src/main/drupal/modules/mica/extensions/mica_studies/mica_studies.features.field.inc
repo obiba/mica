@@ -2220,7 +2220,7 @@ function mica_studies_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_dce_population',
       'label' => 'Population',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -5126,7 +5126,7 @@ function mica_studies_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_pop_study',
       'label' => 'Study',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),

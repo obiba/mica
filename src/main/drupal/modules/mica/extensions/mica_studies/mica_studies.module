@@ -133,6 +133,10 @@ function mica_studies_node_view($node, $view_mode, $langcode) {
       ctools_add_css('mica_studies', 'mica_studies');
       _mica_studies_population_view($node, $view_mode, $langcode);
       break;
+    case 'data_collection_event':
+      ctools_add_css('mica_studies', 'mica_studies');
+      _mica_studies_dce_view($node, $view_mode, $langcode);
+      break;
     case 'contact':
       _mica_studies_contact_view($node, $view_mode, $langcode);
       break;
@@ -429,7 +433,7 @@ function _mica_studies_study_form_alter(&$form, &$form_state, $form_id) {
   $form['actions']['_mica_studies_save_add_population_submit'] = array(
     '#access' => TRUE,
     '#value' => t('Save & Add Population'),
-    '#weight' => -10,
+    '#weight' => 6,
     '#type' => 'submit',
     '#submit' => array('node_form_submit', '_mica_studies_save_add_population_submit'),
   );
@@ -456,26 +460,16 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
   if (isset($_REQUEST['study'])) {
     $lang = $form['field_pop_study']['#language'];
     $form['field_pop_study'][$lang]['#after_build'][] = '_mica_studies_prepopulate_study_after_build';
+    $form['field_pop_study']['#type'] = 'hidden';
   }
-
-  // hide study field
-  $form['field_pop_study']['#type'] = 'hidden';
 
   // hide list of data collection events
   $form['field_pop_dce']['#type'] = 'hidden';
 
-  $form['actions']['_mica_studies_save_edit_study_submit'] = array(
-    '#access' => TRUE,
-    '#value' => t('Save & Edit Study'),
-    '#weight' => -20,
-    '#type' => 'submit',
-    '#submit' => array('node_form_submit', '_mica_studies_save_edit_study_submit'),
-  );
-
   $form['actions']['_mica_studies_save_add_dce_submit'] = array(
     '#access' => TRUE,
     '#value' => t('Save & Add Collection Event'),
-    '#weight' => -10,
+    '#weight' => 6,
     '#type' => 'submit',
     '#submit' => array('node_form_submit', '_mica_studies_save_add_dce_submit'),
   );
@@ -484,29 +478,9 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_general_pop_recruit', 'general');
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_exist_study_part', 'exist_studies');
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_specific_pop', 'specific_population');
-  _mica_add_double_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_specific_pop', 'field_pop_specific_pop_other_sp', 'specific_population', 'other');
+  _mica_add_dependent_field_checked($form, 'field_pop_specific_pop', 'field_pop_specific_pop_other_sp', 'other');
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_recruitment_other', 'other');
 
-}
-
-/**
- * Redirects to the study edit page when clicking on a button from the Population edit form or DCE edit form.
-*/
-function _mica_studies_save_edit_study_submit($form, &$form_state) {
-  if (isset($form['actions']['_mica_studies_save_edit_study_submit']) && isset($form['field_pop_study'])) {
-    //node_reference_autocomplete_value($form_element[0]['nid'], FALSE, NULL);
-    $lang = $form['field_pop_study']['#language'];
-    $form_state['redirect'] = 'node/'.$form['#node']->field_pop_study[$lang][0]['nid'].'/edit';
-    $form_state['nid'] = NULL;
-  }
-  else if (isset($form['actions']['_mica_studies_save_edit_study_submit']) && isset($form['field_dce_population'])){
-    // get the study id from the popuation id
-    $lang = $form['field_dce_population']['#language'];
-    $pop = node_load($form['#node']->field_dce_population[$lang][0]['nid']);
-    $wrapper = entity_metadata_wrapper('node', $pop);
-    $form_state['redirect'] = 'node/'.$wrapper->field_pop_study->value()->nid.'/edit';
-    $form_state['nid'] = NULL;
-  }
 }
 
 function _mica_studies_prepopulate_study_after_build(&$form_element) {
@@ -538,43 +512,14 @@ function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $f
   if (isset($_REQUEST['population'])) {
     $lang = $form['field_dce_population']['#language'];
     $form['field_dce_population'][$lang]['#after_build'][] = '_mica_studies_prepopulate_dce_after_build';
+    $form['field_dce_population']['#type'] = 'hidden';
   }
-  $form['field_dce_population']['#type'] = 'hidden';
-  // hide list of population
-  $form['field_dce_population']['#type'] = 'hidden';
-
-  $form['actions']['_mica_studies_save_edit_study_submit'] = array(
-    '#access' => TRUE,
-    '#value' => t('Save & Edit Study'),
-    '#weight' => -20,
-    '#type' => 'submit',
-    '#submit' => array('node_form_submit', '_mica_studies_save_edit_study_submit'),
-  );
-
-  $form['actions']['_mica_studies_save_edit_population_submit'] = array(
-    '#access' => TRUE,
-    '#value' => t('Save & Edit Population'),
-    '#weight' => -10,
-    '#type' => 'submit',
-    '#submit' => array('node_form_submit', '_mica_studies_save_edit_population_submit'),
-  );
 
   //dce
   _mica_add_dependent_field_checked($form, 'field_dce_data_sources', 'field_dce_data_sources_admin_db', 'administratives_databases');
   _mica_add_dependent_field_checked($form, 'field_dce_data_sources', 'field_dce_data_sources_sp', 'others');
   _mica_add_dependent_field_checked($form, 'field_dce_bio_samples_management', 'field_dce_tissues_sp', 'tissues');
   _mica_add_dependent_field_checked($form, 'field_dce_bio_samples_management', 'field_dce_samples_man_other_sp', 'others');
-}
-
-/**
- * Redirects to the population edit page when clicking on a button from the DCE edit form.
- */
-function _mica_studies_save_edit_population_submit($form, &$form_state) {
-  if (isset($form['actions']['_mica_studies_save_edit_population_submit'])) {
-    $lang = $form['field_dce_population']['#language'];
-    $form_state['redirect'] = 'node/'.$form['#node']->field_dce_population[$lang][0]['nid'].'/edit';
-    $form_state['nid'] = NULL;
-  }
 }
 
 function _mica_studies_prepopulate_dce_after_build(&$form_element) {
@@ -642,46 +587,6 @@ function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_s
   }
   else {
     debug('dependee "' . $dependee . '" or dependent "' . $dependent . '"not found');
-  }
-}
-
-function _mica_add_double_dependent_field_checked(&$form, $dependee1, $dependee2, $dependent, $key_selected1, $key_selected2) {
-  if (array_key_exists($dependee1, $form) && array_key_exists($dependent, $form) && array_key_exists($dependee2, $form)) {
-    $lang = $form[$dependee1]['#language'];
-    $type = $form[$dependee1][$lang]['#type'];
-    $input1 = ':input[name="' . $dependee1 . '[' . $lang . ']';
-    $rule1 = array();
-    if ($type != 'radios') {
-      $input1 = $input1 . '[' . $key_selected1 . ']';
-      $rule1['checked'] = TRUE;
-    }
-    else {
-      $rule1['value'] = $key_selected1;
-    }
-
-    $lang = $form[$dependee2]['#language'];
-    $type = $form[$dependee2][$lang]['#type'];
-    $input2 = ':input[name="' . $dependee2 . '[' . $lang . ']';
-    $rule2 = array();
-    if ($type != 'radios') {
-      $input2 = $input2 . '[' . $key_selected2 . ']';
-      $rule2['checked'] = TRUE;
-    }
-    else {
-      $rule2['value'] = $key_selected2;
-    }
-
-    $input1 = $input1 . '"]';
-    $input2 = $input2 . '"]';
-    $form[$dependent]['#states'] = array(
-      'visible' => array(
-        $input1 => $rule1,
-        $input2 => $rule2,
-      ),
-    );
-  }
-  else {
-    debug('dependee "' . $dependee1 . '" or dependent "' . $dependent . '"not found');
   }
 }
 
@@ -870,7 +775,16 @@ function _mica_studies_form_validate($form, &$form_state) {
   _mica_studies_form_validate_field($form, $form_state, 'field_design', 'field_design_other_sp', 'other');
   _mica_studies_form_validate_field($form, $form_state, 'field_recruitment', 'field_recruitment_other_sp', 'other');
   _mica_studies_form_validate_field($form, $form_state, 'field_access_other', 'field_access_other_sp', '1');
+  _mica_studies_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
+  _mica_studies_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
+  _mica_studies_form_validate_field($form, $form_state, 'field_data_sources', 'field_data_sources_sp', 'others');
 
+//  // Add dependent field "Please specify other source of recruitment" to taxonomy checkbox identified by its tid
+//  $terms = taxonomy_get_term_by_name('Other source', 'sources_of_recruitment');
+//  if (!empty($terms)) {
+//    $k = array_keys($terms);
+//    _mica_add_dependent_field_checked($form, 'field_recruitment_sources', 'field_recruitment_other', $k[0]);
+//  }
 }
 
 function _mica_populations_form_validate($form, &$form_state) {
