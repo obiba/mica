@@ -68,6 +68,8 @@ function _mica_studies_population_delete($population) {
 
 function _mica_studies_population_view($node, $view_mode, $langcode) {
 
+  dpm($node, '$node');
+
   // Breadcrumbs part
   // recuperation of the study of the population
   $wrapper = entity_metadata_wrapper('node', $node);
@@ -83,6 +85,108 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
   $breadcrumbs[] = l($wrapper->title->value(), 'node/' . $wrapper->nid->value());
   drupal_set_breadcrumb($breadcrumbs);
 
+
+  _mica_studies_population_view_selection_criteria($node);
+
+}
+
+function _mica_studies_population_view_selection_criteria($node) {
+
+  $wrapper = entity_metadata_wrapper('node', $node);
+
+  if (!isset($node->content['field_pop_select_criteria'])) {
+    // create empty field_pop_select_criteria if it has no values
+    // Load instance of the field for the node.
+    $instances = _field_invoke_get_instances('node', $node->type, array(
+      'field_name' => 'field_pop_select_criteria',
+      'default' => TRUE,
+      'deleted' => FALSE
+    ));
+    $select_criteria_instance = $instances[0];
+    $display = field_get_display($select_criteria_instance, 'default', $node);
+    $select_criteria_info = field_info_field('field_pop_select_criteria');
+    $node->content['field_pop_select_criteria'] = array(
+      '#theme' => 'field',
+      '#title' => $select_criteria_instance['label'],
+      '#label_display' => 'above',
+      '#field_type' => $select_criteria_info['type'],
+      '#field_name' => $select_criteria_instance['field_name'],
+      '#bundle' => $node->type,
+      '#object' => $node,
+      '#items' => array(),
+      '#entity_type' => 'node',
+      '#weight' => $display['weight'],
+      0 => array('#markup' => ''),
+    );
+  }
+
+  _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_gender', t('Gender'));
+
+  if (isset($node->content['field_pop_age_min']) || isset($node->content['field_pop_age_max'])) {
+    $index = count($node->content['field_pop_select_criteria']['#items']);
+    $age_min = $wrapper->field_pop_age_min->value();
+    $age_max = $wrapper->field_pop_age_max->value();
+    if (!empty($age_min) || !empty($age_max)) {
+      $age_items = array();
+      $age_markup = '';
+      if (!empty($age_min)) {
+        $age_items['age_min'] = $node->content['field_pop_age_min']['#items'][0];
+        $age_markup .= t('minimum') . ' ' . $node->content['field_pop_age_min'][0]['#markup'];
+      }
+      if (!empty($age_max)) {
+        if (!empty($age_min)) {
+          $age_markup .= ', ';
+        }
+        $age_items['age_max'] = $node->content['field_pop_age_max']['#items'][0];
+        $age_markup .= t('maximum') . ' ' . $node->content['field_pop_age_max'][0]['#markup'];
+      }
+      $node->content['field_pop_age_max']['#access'] = FALSE;
+      $node->content['field_pop_age_min']['#access'] = FALSE;
+      $node->content['field_pop_select_criteria']['#items'][$index] = $age_items;
+
+      $label_value = t('Age');
+      $markup = ucfirst($age_markup);
+      $node->content['field_pop_select_criteria'][$index]['#markup'] = "<div class='inner-label'>$label_value:</div>"
+        . "<div class='inner-value'>$markup</div>";
+    }
+  }
+
+  _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_country', t('Country'), t('Countries'));
+  _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_territory', t('Territory'), t('Territories'));
+  _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_ethnic_origin', t('Ethnic origin'), t('Ethnic origins'));
+  _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_health_status', t('Health status'));
+  _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_selection_others_sp', t('Other'));
+
+  dpm($node);
+
+  if (strlen($node->content['field_pop_select_criteria'][0]['#markup']) === 0) {
+    $node->content['field_pop_select_criteria']['#access'] = FALSE;
+  }
+}
+
+function _mica_studies_population_view_selection_criteria_item(&$node, $wrapper, $field, $label, $label_plural = '') {
+  if (!isset($node->content[$field])) {
+    return;
+  }
+  $value = $wrapper->$field->value();
+  if (!empty($value)) {
+    $nb_items = count($value);
+    $index = count($node->content['field_pop_select_criteria']['#items']);
+    $node->content['field_pop_select_criteria']['#items'][$index] = $node->content[$field]['#items'];
+    $markup = '<div class="inner-value">';
+    for ($i = 0; $i < $nb_items; $i++) {
+      $markup .= $node->content[$field][$i]['#markup'];
+      if ($i < $nb_items - 1) {
+        $markup .= ', ';
+      }
+    }
+    $markup .= '</div>';
+
+    $node->content['field_pop_select_criteria'][$index]['#markup'] = '<div class="inner-label">'
+      . t('@label', array('@label' => $nb_items > 1 && strlen($label_plural) > 0 ? $label_plural : $label)) . ':</div>'
+      . $markup;
+    $node->content[$field]['#access'] = FALSE;
+  }
 }
 
 function _mica_studies_menu_generate_breadcrumbs_pop($path) {

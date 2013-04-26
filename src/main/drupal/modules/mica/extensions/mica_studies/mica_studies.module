@@ -275,9 +275,6 @@ function _mica_studies_study_view($node, $view_mode, $langcode) {
       $node->content['field_no_limits_samples']['#access'] = FALSE;
     }
   }
-
-  // selection criteria
-  _mica_studies_study_view_selection_criteria($node, $view_mode, $langcode, $wrapper);
 }
 
 function _mica_studies_contact_view($node, $view_mode, $langcode) {
@@ -334,107 +331,6 @@ function _mica_studies_contact_view($node, $view_mode, $langcode) {
   $node->content['field_address'][0]['#markup'] = $full_address;
 
   $node->content['field_daco']['#access'] = $wrapper->field_daco->value();
-}
-
-function _mica_studies_study_view_selection_criteria(&$node, $view_mode, $langcode, $wrapper) {
-  if (isset($node->content['#groups']['group_participants_selection'])
-    && $node->content['#groups']['group_participants_selection']->format_type !== 'hidden'
-  ) {
-
-    if (!isset($node->content['field_select_criteria'])) {
-      // create empty field_select_criteria if it has no values
-      // Load instance of the field for the node.
-      $instances = _field_invoke_get_instances('node', $node->type, array(
-        'field_name' => 'field_select_criteria',
-        'default' => TRUE,
-        'deleted' => FALSE
-      ));
-      $select_criteria_instance = $instances[0];
-      $display_mode = $node->content['#groups']['group_participants_selection']->mode;
-      $display = field_get_display($select_criteria_instance, $display_mode, $node);
-      $select_criteria_info = field_info_field('field_select_criteria');
-      $node->content['field_select_criteria'] = array(
-        '#theme' => 'field',
-        '#title' => $select_criteria_instance['label'],
-        '#label_display' => 'above',
-        '#field_type' => $select_criteria_info['type'],
-        '#field_name' => $select_criteria_instance['field_name'],
-        '#bundle' => $node->type,
-        '#object' => $node,
-        '#items' => array(),
-        '#entity_type' => 'node',
-        '#weight' => $display['weight'],
-        0 => array('#markup' => ''),
-      );
-    }
-
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_gender', t('Gender'));
-
-    if (isset($node->content['field_age_min']) || isset($node->content['field_age_max'])) {
-      $index = count($node->content['field_select_criteria']['#items']);
-      $age_min = $wrapper->field_age_min->value();
-      $age_max = $wrapper->field_age_max->value();
-      if (!empty($age_min) || !empty($age_max)) {
-        $age_items = array();
-        $age_markup = '';
-        if (!empty($age_min)) {
-          $age_items['age_min'] = $node->content['field_age_min']['#items'][0];
-          $age_markup .= t('minimum') . ' ' . $node->content['field_age_min'][0]['#markup'];
-        }
-        if (!empty($age_max)) {
-          if (!empty($age_min)) {
-            $age_markup .= ', ';
-          }
-          $age_items['age_max'] = $node->content['field_age_max']['#items'][0];
-          $age_markup .= t('maximum') . ' ' . $node->content['field_age_max'][0]['#markup'];
-        }
-        $node->content['field_age_max']['#access'] = FALSE;
-        $node->content['field_age_min']['#access'] = FALSE;
-        $node->content['field_select_criteria']['#items'][$index] = $age_items;
-        $node->content['field_select_criteria'][$index++]['#markup'] = t('Age') . ':<br />&nbsp;&nbsp;&nbsp;&nbsp;'
-          . ucfirst($age_markup);
-      }
-    }
-
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_country', t('Country'), t('Countries'));
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_territory', t('Territory'), t('Territories'));
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_ethnic_origin', t('Ethnic origin'), t('Ethnic origins'));
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_health_status', t('Health status'));
-    _mica_studies_study_view_selection_criteria_item($node, $wrapper, 'field_selection_others_sp', t('Other'));
-
-    if (strlen($node->content['field_select_criteria'][0]['#markup']) === 0) {
-      $node->content['field_select_criteria']['#access'] = FALSE;
-    }
-
-  }
-
-}
-
-function _mica_studies_study_view_selection_criteria_item(&$node, $wrapper, $field, $label, $label_plural = '') {
-  if (!isset($node->content[$field])) {
-    return;
-  }
-  $value = $wrapper->$field->value();
-  if (!empty($value)) {
-    $nb_items = count($value);
-    $index = count($node->content['field_select_criteria']['#items']);
-    $node->content['field_select_criteria']['#items'][$index] = $node->content[$field]['#items'];
-    $markup = '';
-    for ($i = 0; $i < $nb_items; $i++) {
-      $markup .= $node->content[$field][$i]['#markup'];
-      if ($i < $nb_items - 1) {
-        $markup .= ', ';
-      }
-    }
-    $markup_label = $label;
-    if ($nb_items > 1 && strlen($label_plural) > 0) {
-      $markup_label = $label_plural;
-    }
-    $node->content['field_select_criteria'][$index + 1]['#markup'] = '<div class="inner-label">'
-      . t('@label', array('@label' => $markup_label)) . ':</div>'
-      . '<div class="inner-value">' . $markup . '</div>';
-    $node->content[$field]['#access'] = FALSE;
-  }
 }
 
 /**
