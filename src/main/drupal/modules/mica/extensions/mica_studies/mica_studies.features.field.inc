@@ -1824,7 +1824,7 @@ function mica_studies_field_default_fields() {
   $fields['node-data_collection_event-field_dce_data_sources_admin_db'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dce_data_sources_admin_db',
@@ -7465,7 +7465,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '33',
+          'weight' => '19',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8881,7 +8881,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '35',
+          'weight' => '21',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -9035,7 +9035,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '32',
+          'weight' => '18',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -9156,7 +9156,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '34',
+          'weight' => '20',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -9999,7 +9999,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '37',
+          'weight' => '22',
         ),
         'footer_area' => array(
           'label' => 'above',

@@ -41,6 +41,44 @@ function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   $links = array();
 
   switch ($root_path) {
+
+    case 'node/%':
+      $node = $router_item['map']['1'];
+      switch ($node->type) {
+        case 'study':
+          $links['add-population'] = array(
+            '#theme' => 'menu_local_action',
+            '#weight' => -30,
+            '#link' => array(
+              'title' => t('Add a Population'),
+              'href' => 'node/add/population',
+              'localized_options' => array(
+                'query' => array(
+                  'study' => $node->nid,
+                  'destination' => 'node/' . $node->nid,
+                )
+              ),
+            ),
+          );
+          break;
+        case 'population':
+          $links['add-data-collection-event'] = array(
+            '#theme' => 'menu_local_action',
+            '#link' => array(
+              'title' => t('Add a Data Collection Event'),
+              'href' => 'node/add/data-collection-event',
+              'localized_options' => array(
+                'query' => array(
+                  'population' => $node->nid,
+                  'destination' => 'node/' . entity_metadata_wrapper('node', $node)->field_pop_study->nid->value(),
+                )
+              ),
+            ),
+          );
+          break;
+      }
+      break;
+
     case 'studies':
       $node_type = node_type_load('study');
       if (node_access('create', 'study')) {
@@ -483,6 +521,26 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
 
 }
 
+/**
+ * Redirects to the study edit page when clicking on a button from the Population edit form or DCE edit form.
+ */
+function _mica_studies_save_edit_study_submit($form, &$form_state) {
+  if (isset($form['actions']['_mica_studies_save_edit_study_submit']) && isset($form['field_pop_study'])) {
+    //node_reference_autocomplete_value($form_element[0]['nid'], FALSE, NULL);
+    $lang = $form['field_pop_study']['#language'];
+    $form_state['redirect'] = 'node/' . $form['#node']->field_pop_study[$lang][0]['nid'] . '/edit';
+    $form_state['nid'] = NULL;
+  }
+  else if (isset($form['actions']['_mica_studies_save_edit_study_submit']) && isset($form['field_dce_population'])) {
+    // get the study id from the popuation id
+    $lang = $form['field_dce_population']['#language'];
+    $pop = node_load($form['#node']->field_dce_population[$lang][0]['nid']);
+    $wrapper = entity_metadata_wrapper('node', $pop);
+    $form_state['redirect'] = 'node/' . $wrapper->field_pop_study->value()->nid . '/edit';
+    $form_state['nid'] = NULL;
+  }
+}
+
 function _mica_studies_prepopulate_study_after_build(&$form_element) {
   if (isset($_REQUEST['study'])) {
     $form_element[0]['nid']['#default_value'] = $_REQUEST['study'];
@@ -514,12 +572,42 @@ function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $f
     $form['field_dce_population'][$lang]['#after_build'][] = '_mica_studies_prepopulate_dce_after_build';
     $form['field_dce_population']['#type'] = 'hidden';
   }
+  $form['field_dce_population']['#type'] = 'hidden';
+  // hide list of population
+  $form['field_dce_population']['#type'] = 'hidden';
+
+  $form['actions']['_mica_studies_save_edit_study_submit'] = array(
+    '#access' => TRUE,
+    '#value' => t('Save & Edit Study'),
+    '#weight' => -20,
+    '#type' => 'submit',
+    '#submit' => array('node_form_submit', '_mica_studies_save_edit_study_submit'),
+  );
+
+  $form['actions']['_mica_studies_save_edit_population_submit'] = array(
+    '#access' => TRUE,
+    '#value' => t('Save & Edit Population'),
+    '#weight' => -10,
+    '#type' => 'submit',
+    '#submit' => array('node_form_submit', '_mica_studies_save_edit_population_submit'),
+  );
 
   //dce
   _mica_add_dependent_field_checked($form, 'field_dce_data_sources', 'field_dce_data_sources_admin_db', 'administratives_databases');
   _mica_add_dependent_field_checked($form, 'field_dce_data_sources', 'field_dce_data_sources_sp', 'others');
   _mica_add_dependent_field_checked($form, 'field_dce_bio_samples_management', 'field_dce_tissues_sp', 'tissues');
   _mica_add_dependent_field_checked($form, 'field_dce_bio_samples_management', 'field_dce_samples_man_other_sp', 'others');
+}
+
+/**
+ * Redirects to the population edit page when clicking on a button from the DCE edit form.
+ */
+function _mica_studies_save_edit_population_submit($form, &$form_state) {
+  if (isset($form['actions']['_mica_studies_save_edit_population_submit'])) {
+    $lang = $form['field_dce_population']['#language'];
+    $form_state['redirect'] = 'node/' . $form['#node']->field_dce_population[$lang][0]['nid'] . '/edit';
+    $form_state['nid'] = NULL;
+  }
 }
 
 function _mica_studies_prepopulate_dce_after_build(&$form_element) {
@@ -587,6 +675,46 @@ function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_s
   }
   else {
     debug('dependee "' . $dependee . '" or dependent "' . $dependent . '"not found');
+  }
+}
+
+function _mica_add_double_dependent_field_checked(&$form, $dependee1, $dependee2, $dependent, $key_selected1, $key_selected2) {
+  if (array_key_exists($dependee1, $form) && array_key_exists($dependent, $form) && array_key_exists($dependee2, $form)) {
+    $lang = $form[$dependee1]['#language'];
+    $type = $form[$dependee1][$lang]['#type'];
+    $input1 = ':input[name="' . $dependee1 . '[' . $lang . ']';
+    $rule1 = array();
+    if ($type != 'radios') {
+      $input1 = $input1 . '[' . $key_selected1 . ']';
+      $rule1['checked'] = TRUE;
+    }
+    else {
+      $rule1['value'] = $key_selected1;
+    }
+
+    $lang = $form[$dependee2]['#language'];
+    $type = $form[$dependee2][$lang]['#type'];
+    $input2 = ':input[name="' . $dependee2 . '[' . $lang . ']';
+    $rule2 = array();
+    if ($type != 'radios') {
+      $input2 = $input2 . '[' . $key_selected2 . ']';
+      $rule2['checked'] = TRUE;
+    }
+    else {
+      $rule2['value'] = $key_selected2;
+    }
+
+    $input1 = $input1 . '"]';
+    $input2 = $input2 . '"]';
+    $form[$dependent]['#states'] = array(
+      'visible' => array(
+        $input1 => $rule1,
+        $input2 => $rule2,
+      ),
+    );
+  }
+  else {
+    debug('dependee "' . $dependee1 . '" or dependent "' . $dependent . '"not found');
   }
 }
 
