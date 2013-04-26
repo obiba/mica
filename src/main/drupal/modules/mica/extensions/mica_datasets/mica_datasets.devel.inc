@@ -34,6 +34,16 @@ function _mica_datasets_devel_form() {
     '#value' => t('Delete'),
     '#submit' => array('_mica_datasets_delete_taxonomies'),
   );
+  $form['reset_variables'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Erase Variables Menus'),
+  );
+  $form['reset_variables']['delete'] = array(
+    '#type' => 'submit',
+    '#value' => t('Erase'),
+    '#submit' => array('_mica_variables_reset_menus'),
+  );
+
   return $form;
 }
 
