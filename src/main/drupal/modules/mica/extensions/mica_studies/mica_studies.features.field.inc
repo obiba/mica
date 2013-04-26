@@ -4693,7 +4693,7 @@ function mica_studies_field_default_fields() {
         'allowed_values_function' => '',
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => 'when appropriate, specify the criteria.',
+          'field_description_body' => '',
           'field_description_label' => 'Selection criteria',
           'field_description_value_type' => 'text',
         ),
@@ -4705,7 +4705,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'population',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'when appropriate, specify the criteria.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -10171,7 +10171,6 @@ function mica_studies_field_default_fields() {
   t('What are the principal objectives of the study?');
   t('What is the selection criteria for participants?');
   t('What is the study design?');
-  t('when appropriate, specify the criteria.');
 
   return $fields;
 }
