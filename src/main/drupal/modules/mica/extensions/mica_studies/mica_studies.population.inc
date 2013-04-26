@@ -4,7 +4,7 @@ function _mica_studies_population_link($population) {
   // create a reference in study when a population is create for this study
   $population_wrapper = entity_metadata_wrapper('node', $population);
   $study = $population_wrapper->field_pop_study->value();
-  $study = node_load($study->nid);
+  //$study = node_load($study->nid);
   if (!empty($study)) {
     $study_wrapper = entity_metadata_wrapper('node', $study);
     $study_populations = $study_wrapper->field_study_populations->value();
