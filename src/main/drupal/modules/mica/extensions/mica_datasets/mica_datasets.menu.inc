@@ -59,3 +59,21 @@ function _mica_datasets_regenerate_menus() {
   drupal_set_message(t('Menus regenerated for %datasets datasets and %variables variables.',
     array('%datasets' => $nb_dataset_menus, '%variables' => $nb_variable_menus)));
 }
+
+function _mica_datasets_variables_reset_menus() {
+
+  $nb_variable_menus = 0;
+  $query = new EntityFieldQuery;
+  $entities = $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'variable')
+    ->execute();
+  if (!empty($entities)) {
+    $nodes = node_load_multiple(array_keys($entities['node']));
+    foreach ($nodes as $node) {
+      menu_link_delete(NULL, 'node/' . $node->nid);
+      $nb_variable_menus++;
+    }
+  }
+
+  drupal_set_message(t('Menus variables has been successfully deleted.'));
+}

@@ -310,13 +310,13 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
                 // If has hamonization
                 $has_harmonization = _mica_datasets_has_harmonization($node->nid);
 
-                if ($has_harmonization){
+                if ($has_harmonization) {
                   $data['actions']['output'][$key]['#link']['localized_options'] = array(
                     'attributes' => array('class' => 'highlight')
                   );
                   $data['actions']['output'][$key]['#weight'] = 42;
                 }
-                else{
+                else {
                   $data['actions']['output'][$key]['#access'] = FALSE;
                 }
               }
@@ -662,7 +662,6 @@ function mica_datasets_node_view_alter(&$build) {
   }
 }
 
-
 function _mica_datasets_has_harmonization($dataset_nid) {
 //    'SELECT * FROM {field_data_field_sva_variable} sva_var,
 //  {field_data_field_dataset_variables} dataset_var WHERE dataset_var.entity_id = :nid
@@ -675,7 +674,6 @@ function _mica_datasets_has_harmonization($dataset_nid) {
 
   return $nb_sva == 1;
 }
-
 
 /**
  * Implements hook_node_presave()
@@ -712,7 +710,7 @@ function mica_datasets_node_insert($node) {
 
     case 'variable':
       _mica_datasets_add_study_variable_attributes_to($node);
-      _mica_datasets_create_variable_menu($node);
+      //_mica_datasets_create_variable_menu($node);
       break;
   }
 }
@@ -1182,6 +1180,25 @@ function mica_datasets_node_view($node, $view_mode) {
       );
       mica_datasets_prepare_prettify();
     }
+    //recuperation of the variable
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $variable_id = $wrapper->field_sva_variable->nid->value();
+    $n = node_load($variable_id);
+    // recuperation of the datasets of the variable of the study variable
+    $wrapper = entity_metadata_wrapper('node', $n);
+    $dataset_id = $wrapper->field_dataset->nid->value();
+
+    // generate specific breadcrumbs for study variable pages
+    $breadcrumb = _mica_datasets_menu_generate_breadcrumbs_variables('node/' . $dataset_id);
+    $breadcrumbs = array();
+    $breadcrumbs[] = l('Home', '');
+    for ($i = 0; $i < count($breadcrumb); $i++) {
+      $breadcrumbs[] = l($breadcrumb[$i]['link_title'], $breadcrumb[$i]['link_path']);
+    }
+    //add links of the parent variable
+    $breadcrumbs[] = l($n->title, 'content/' . $n->title);
+    drupal_set_breadcrumb($breadcrumbs);
+
   }
   else {
     if ($node->type === 'variable') {
@@ -1189,6 +1206,18 @@ function mica_datasets_node_view($node, $view_mode) {
       if (node_is_page($node) && $view_mode === 'banner_area' && empty($node->in_preview)) {
         workbench_moderation_messages('view', $node);
       }
+
+      // recuperation of the datasets of the variable
+      $wrapper = entity_metadata_wrapper('node', $node);
+      $dataset_id = $wrapper->field_dataset->nid->value();
+      $breadcrumb = _mica_datasets_menu_generate_breadcrumbs_variables('node/' . $dataset_id);
+      // generate specific breadcrumbs for variable pages
+      $breadcrumbs = array();
+      $breadcrumbs[] = l('Home', '');
+      for ($i = 0; $i < count($breadcrumb); $i++) {
+        $breadcrumbs[] = l($breadcrumb[$i]['link_title'], $breadcrumb[$i]['link_path']);
+      }
+      drupal_set_breadcrumb($breadcrumbs);
 
       // Replace "Missing" by an icon
       if (!(empty($node->content['field_variable_categories']))
@@ -1203,6 +1232,59 @@ function mica_datasets_node_view($node, $view_mode) {
       }
     }
   }
+}
+
+function _mica_datasets_menu_generate_breadcrumbs_variables($path) {
+  $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
+  $list = array();
+  foreach ($result as $link) {
+    $list[] = $link;
+  }
+  $list = $list[0];
+
+  if (is_object($list)) {
+    $list = get_object_vars($list);
+  }
+
+  // Check all parent link possible
+  if ($list['p9'] != 0) {
+    $i = 9;
+  }
+  else if ($list['p8'] != 0) {
+    $i = 8;
+  }
+  else if ($list['p7'] != 0) {
+    $i = 7;
+  }
+  else if ($list['p6'] != 0) {
+    $i = 6;
+  }
+  else if ($list['p5'] != 0) {
+    $i = 5;
+  }
+  else if ($list['p4'] != 0) {
+    $i = 4;
+  }
+  else if ($list['p3'] != 0) {
+    $i = 3;
+  }
+  else if ($list['p2'] != 0) {
+    $i = 2;
+  }
+  else if ($list['p1'] != 0) {
+    $i = 1;
+  }
+
+  $breadcrumbs = array();
+  for ($i; $i > 0; $i--) {
+    $temp = menu_link_load($list['p' . $i]);
+    // add breadcrumbs if link_path is correct
+    if (!preg_match('/<firstchild>/', $temp['link_path'])) {
+      $breadcrumbs[] = menu_link_load($list['p' . $i]);
+    }
+  }
+  $breadcrumbs = array_reverse($breadcrumbs);
+  return $breadcrumbs;
 }
 
 function _mica_datasets_html_truncated($text, $label, $size = 200, $is_code = FALSE, $pre_class = '') {
