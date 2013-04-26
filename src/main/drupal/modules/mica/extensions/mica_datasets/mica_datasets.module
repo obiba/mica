@@ -710,7 +710,7 @@ function mica_datasets_node_insert($node) {
 
     case 'variable':
       _mica_datasets_add_study_variable_attributes_to($node);
-      _mica_datasets_create_variable_menu($node);
+      //_mica_datasets_create_variable_menu($node);
       break;
   }
 }
