@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="IdProvider" IDEtalkID="81952472C4934E4715AB685466D9F073" />
+  <component name="ProjectResources">
+    <default-html-doctype>$APPLICATION_HOME_DIR$/lib/webide.jar!/resources/html5-schema/html5.rnc</default-html-doctype>
+  </component>
   <component name="ProjectRootManager" version="2" />
   <component name="SvnBranchConfigurationManager">
     <option name="myConfigurationMap">
