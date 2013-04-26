@@ -70,6 +70,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
   dpm($node, '$node');
   _mica_studies_population_view_selection_criteria($node);
   _mica_studies_population_view_recruitment_sources($node);
+  _mica_studies_population_view_nb_participants($node);
 
   // Breadcrumbs part
   // recuperation of the study of the population
@@ -281,6 +282,39 @@ function _mica_studies_population_create_empty_field(&$node, $field_name) {
     '#weight' => $display['weight'],
     0 => array('#markup' => ''),
   );
+}
+
+function _mica_studies_population_view_nb_participants(&$node) {
+  _mica_studies_population_view_nb($node, 'field_pop_participants_nb', 'field_pop_no_limits_participants', 'field_pop_participants_nb_supp_i');
+  _mica_studies_population_view_nb($node, 'field_pop_participants_nb_s', 'field_pop_no_lim_participants_s', 'field_pop_participants_nb_s_info');
+}
+
+function _mica_studies_population_view_nb(&$node, $field_nb, $field_no_limit, $field_info) {
+  $wrapper = entity_metadata_wrapper('node', $node);
+  if (!isset($node->content[$field_nb])) {
+    _mica_studies_population_create_empty_field($node, $field_nb);
+  }
+
+  $index = count($node->content[$field_nb]['#items']);
+
+  $no_limit = $wrapper->{$field_no_limit}->value();
+  if ($no_limit) {
+    $node->content[$field_nb]['#items'][$index] = t('No limit');
+    $node->content[$field_nb][$index]['#markup'] = t('No limit');
+    $index++;
+  }
+  $node->content[$field_no_limit]['#access'] = FALSE;
+
+  $info = $wrapper->{$field_info}->value();
+  if (!empty($info)) {
+    $node->content[$field_nb]['#items'][$index] = $node->content[$field_info]['#items'][0];
+    $node->content[$field_nb][$index]['#markup'] = $node->content[$field_info][0]['#markup'];
+  }
+  $node->content[$field_info]['#access'] = FALSE;
+
+  if (strlen($node->content[$field_nb][0]['#markup']) == 0) {
+    $node->content[$field_nb]['#access'] = FALSE;
+  }
 }
 
 function _mica_studies_menu_generate_breadcrumbs_pop($path) {
