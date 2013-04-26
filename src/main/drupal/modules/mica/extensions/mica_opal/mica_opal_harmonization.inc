@@ -98,6 +98,11 @@ function _mica_opal_parse_localized($item, $expression) {
       $result[empty($locale) ? LANGUAGE_NONE : $locale] = $localized_item['value'];
     }
   }
+
+  // Set default language to english if it exists
+  if (isset($result['en']) && !isset($result[LANGUAGE_NONE])){
+    $result[LANGUAGE_NONE] = $result['en'];
+  }
   return $result;
 }
 
