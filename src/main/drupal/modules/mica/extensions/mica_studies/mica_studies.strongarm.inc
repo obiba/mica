@@ -27,6 +27,13 @@ function mica_studies_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'additional_settings__active_tab_data_collection_event';
+  $strongarm->value = 'edit-comment';
+  $export['additional_settings__active_tab_data_collection_event'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_documents';
   $strongarm->value = 'edit-menu';
   $export['additional_settings__active_tab_documents'] = $strongarm;
@@ -35,7 +42,7 @@ function mica_studies_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_population';
-  $strongarm->value = 'edit-display';
+  $strongarm->value = 'edit-menu';
   $export['additional_settings__active_tab_population'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -3012,8 +3019,8 @@ return $title;
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_data_collection_event';
   $strongarm->value = array(
-    0 => 'status',
-    1 => 'promote',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_data_collection_event'] = $strongarm;
 
@@ -3040,8 +3047,8 @@ return $title;
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_population';
   $strongarm->value = array(
-    0 => 'status',
-    1 => 'promote',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_population'] = $strongarm;
 
@@ -3115,7 +3122,7 @@ return $title;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_data_collection_event';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['node_submitted_data_collection_event'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -3136,7 +3143,7 @@ return $title;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_population';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['node_submitted_population'] = $strongarm;
 
   $strongarm = new stdClass();
