@@ -13,11 +13,6 @@ function _mica_studies_block_study_populations($study) {
   if (empty($populations)) {
     return NULL;
   }
-
-  foreach ( as $) {
-    
-  }
-
   return array(
     'subject' => t('Populations'),
     'content' => node_view_multiple($populations, 'full'),

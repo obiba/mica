@@ -72,8 +72,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
   _mica_studies_population_view_recruitment_sources($node);
   _mica_studies_population_view_nb_participants($node);
 
-  // Breadcrumbs part
-  // recuperation of the study of the population
+  // Breadcrumbs
   $wrapper = entity_metadata_wrapper('node', $node);
   $study_id = $wrapper->field_pop_study->nid->value();
   $breadcrumb = _mica_studies_menu_generate_breadcrumbs_pop('node/' . $study_id);
