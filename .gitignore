@@ -1,4 +1,5 @@
 target
+solr
 .idea/workspace.xml
 *.sql
 src/main/drupal/themes/mica_bootstrap/less/bootstrap

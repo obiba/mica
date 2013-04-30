@@ -53,6 +53,8 @@ else
 	lessc_options=--yui-compress
 endif
 
+include solr.mk
+
 #
 # Targets
 #
@@ -393,6 +395,9 @@ install-nodejs:
 
 install-bootstrap-dependencies:
 	npm install less connect uglify-js@1 jshint -g
+
+log:
+	tail /var/log/apache2/error.log
 
 #
 # Functions
