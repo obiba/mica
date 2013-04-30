@@ -25,7 +25,7 @@ function _mica_studies_block_study_general_design($study) {
 
   return array(
     'subject' => t('General Design'),
-    'content' => $content,
+    'content' => array_filter($content),
   );
 }
 
@@ -89,7 +89,7 @@ function _mica_studies_block_study_general_design_field_nb_participants($study_w
     $field['#items'][] = $supp_info_view['#items'][0];
     $field[]['#markup'] = $supp_info_view[0]['#markup'];
   }
-  return $field;
+  return empty($field['#items']) ? NULL : $field;
 }
 
 function _mica_studies_block_study_general_design_field_nb_samples($study_wrapper, $weight) {
@@ -124,6 +124,6 @@ function _mica_studies_block_study_general_design_field_nb_samples($study_wrappe
     $field['#items'][] = $supp_info_view['#items'][0];
     $field[]['#markup'] = $supp_info_view[0]['#markup'];
   }
-  return $field;
+  return empty($field['#items']) ? NULL : $field;
 }
 

@@ -2,7 +2,8 @@ solr_version=3.6.2
 
 start-solr:
 	cd solr/apache-solr-$(solr_version)/example && \
-  java -jar start.jar
+  java -jar start.jar && \
+  @echo ">>> SolR is now running at http://localhost:8983/solr/admin"
 
 install-solr:
 	mkdir -p solr && \

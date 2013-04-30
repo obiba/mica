@@ -36,7 +36,7 @@ function _mica_studies_block_study_access($study) {
   }
   return array(
     'subject' => t('Access'),
-    'content' => $content,
+    'content' => array_filter($content),
   );
 }
 
