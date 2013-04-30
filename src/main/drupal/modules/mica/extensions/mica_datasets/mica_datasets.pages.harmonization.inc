@@ -30,10 +30,6 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
 
   ctools_add_css('mica_datasets', 'mica_datasets');
 
-  $header = array(
-    'name' => t('Variable'),
-  );
-
   $popovers = array();
   $rows = array();
 
@@ -43,6 +39,11 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
 
   $status_values = field_info_field('field_sva_status');
   $studies_by_id = array();
+
+  $header = array(
+    'name' => t('Variables (%nb)', array('%nb' => count($variables))),
+  );
+
   foreach ($studies as $study) {
     if (node_access('view', $study)) {
       $study_wrapper = entity_metadata_wrapper('node', $study);
