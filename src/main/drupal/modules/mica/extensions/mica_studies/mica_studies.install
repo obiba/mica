@@ -130,59 +130,6 @@ function _mica_node_reference_block() {
   $query->execute();
 }
 
-/**
- * Manually configure field_bundle_settings variable because it is exported via strongarms
- * so it cannot be configured in several modules
- */
-function _mica_studies_configure_field_bundle_settings() {
-  $study_settings = array(
-    'view_modes' => array(
-      'teaser' => array('custom_settings' => TRUE),
-      'banner_area' => array('custom_settings' => TRUE),
-      'left_area' => array('custom_settings' => TRUE),
-      'right_area' => array('custom_settings' => TRUE),
-      'center_area' => array('custom_settings' => TRUE),
-      'footer_area' => array('custom_settings' => TRUE),
-      'summary_banner_area' => array('custom_settings' => TRUE),
-      'summary_left_area' => array('custom_settings' => TRUE),
-      'summary_right_area' => array('custom_settings' => TRUE),
-    ),
-    'extra_fields' => array(
-      'form' => array(
-        'title' => array('weight' => '12'),
-        'path' => array('weight' => '1'),
-      ),
-      'display' => array(),
-    ),
-  );
-  field_bundle_settings('node', 'study', $study_settings);
-
-  $contact_settings = array(
-    'view_modes' => array(
-      'teaser' => array('custom_settings' => TRUE),
-    ),
-    'extra_fields' => array(
-      'form' => array(
-        'title' => array('weight' => '0'),
-        'path' => array('weight' => '1'),
-      ),
-      'display' => array(),
-    ),
-  );
-  field_bundle_settings('node', 'contact', $contact_settings);
-
-  $documents_settings = array(
-    'view_modes' => array(),
-    'extra_fields' => array(
-      'form' => array(
-        'title' => array('weight' => '-5'),
-      ),
-      'display' => array(),
-    ),
-  );
-  field_bundle_settings('node', 'documents', $documents_settings);
-}
-
 function _mica_studies_create_source_of_recruitment_taxonomy() {
   $vocabulary = _mica_core_taxonomy_create('sources_of_recruitment.csv', 'Source of Recruitment');
   $vid = $vocabulary->vid;

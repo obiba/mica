@@ -2994,7 +2994,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -3069,7 +3069,7 @@ function mica_studies_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 4,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3142,7 +3142,7 @@ function mica_studies_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 3,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3460,7 +3460,7 @@ function mica_studies_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 5,
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3556,7 +3556,7 @@ function mica_studies_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 28,
+          'weight' => '25',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3636,7 +3636,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 7,
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3715,7 +3715,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 24,
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3791,7 +3791,7 @@ function mica_studies_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 2,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3865,7 +3865,7 @@ function mica_studies_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 23,
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -3941,7 +3941,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 8,
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4021,7 +4021,7 @@ function mica_studies_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 18,
+          'weight' => '22',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4100,7 +4100,7 @@ function mica_studies_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 15,
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4173,11 +4173,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 9,
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4249,7 +4249,7 @@ function mica_studies_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 14,
+          'weight' => '18',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4297,9 +4297,9 @@ function mica_studies_field_default_fields() {
       'module' => 'number',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => 'Number of participants',
+          'field_description_label' => '',
           'field_description_value_type' => 'integer',
         ),
       ),
@@ -4322,7 +4322,7 @@ function mica_studies_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 17,
+          'weight' => '21',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4334,7 +4334,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_pop_participants_nb_s',
-      'label' => 'Number of participants',
+      'label' => 'Number of participants with biological samples',
       'required' => 0,
       'settings' => array(
         'max' => '',
@@ -4397,11 +4397,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 19,
+          'weight' => '23',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4475,11 +4475,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 16,
+          'weight' => '20',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4553,11 +4553,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 13,
+          'weight' => '17',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4635,7 +4635,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 30,
+          'weight' => '16',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4712,7 +4712,7 @@ function mica_studies_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 1,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4787,7 +4787,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 10,
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4864,7 +4864,7 @@ function mica_studies_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 25,
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -4939,7 +4939,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 31,
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5017,7 +5017,7 @@ function mica_studies_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 29,
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5110,10 +5110,9 @@ function mica_studies_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => 27,
+          'type' => 'hidden',
+          'weight' => '26',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5192,7 +5191,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 20,
+          'weight' => '24',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -5270,7 +5269,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 6,
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -10130,6 +10129,7 @@ function mica_studies_field_default_fields() {
   t('No limits in the number of participants ');
   t('No limits in the number of samples');
   t('Number of participants');
+  t('Number of participants with biological samples');
   t('Objectives');
   t('Other');
   t('Others');
