@@ -2055,7 +2055,7 @@ function mica_studies_field_default_fields() {
           'text_parts' => array(),
           'year_range' => '-3:+3',
         ),
-        'type' => 'date_text',
+        'type' => 'date_popup',
         'weight' => '2',
       ),
     ),
@@ -2551,7 +2551,7 @@ function mica_studies_field_default_fields() {
           'text_parts' => array(),
           'year_range' => '-3:+3',
         ),
-        'type' => 'date_text',
+        'type' => 'date_popup',
         'weight' => '1',
       ),
     ),
@@ -3553,9 +3553,8 @@ function mica_studies_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'node_reference_default',
+          'type' => 'hidden',
           'weight' => '25',
         ),
         'teaser' => array(

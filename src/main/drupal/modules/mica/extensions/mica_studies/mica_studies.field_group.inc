@@ -146,8 +146,8 @@ function mica_studies_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_dce_data_sources',
-      1 => 'field_dce_data_sources_sp',
-      2 => 'field_dce_data_sources_admin_db',
+      1 => 'field_dce_data_sources_admin_db',
+      2 => 'field_dce_data_sources_sp',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
