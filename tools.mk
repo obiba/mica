@@ -15,3 +15,24 @@ install-solr:
 
 clean-solr:
 	rm -rf solr
+
+install-drush:
+	apt-get install php-pear 
+	pear channel-discover pear.drush.org
+	pear install drush/drush
+
+install-less: install-nodejs install-bootstrap-dependencies
+
+install-nodejs:
+	apt-get install g++ curl libssl-dev apache2-utils && \
+	mkdir target/nodejs && \
+	cd target/nodejs && \
+	wget http://nodejs.org/dist/v0.8.15/node-v0.8.15.tar.gz && \
+	tar -xzvf node-v0.8.15.tar.gz && \
+	cd node-v0.8.15 && \
+	./configure && \
+	make && \
+	make install
+
+install-bootstrap-dependencies:
+	npm install less connect uglify-js@1 jshint -g
