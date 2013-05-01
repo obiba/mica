@@ -190,7 +190,7 @@ function _mica_studies_population_view_recruitment_sources(&$node) {
 
   if (!isset($node->content['field_pop_src_recruit'])) {
     // create empty field_pop_src_recruit if it has no values
-    _mica_studies_population_create_empty_field($node, 'field_pop_src_recruit');
+    mica_core_create_empty_field($node, 'field_pop_src_recruit');
   }
 
   $src_recruit = $wrapper->field_pop_src_recruit->value();
