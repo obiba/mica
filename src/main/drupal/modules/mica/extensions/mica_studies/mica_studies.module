@@ -546,16 +546,6 @@ function _mica_studies_form_validate($form, &$form_state) {
   _mica_studies_form_validate_field($form, $form_state, 'field_design', 'field_design_other_sp', 'other');
   _mica_studies_form_validate_field($form, $form_state, 'field_recruitment', 'field_recruitment_other_sp', 'other');
   _mica_studies_form_validate_field($form, $form_state, 'field_access_other', 'field_access_other_sp', '1');
-  _mica_studies_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
-  _mica_studies_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
-  _mica_studies_form_validate_field($form, $form_state, 'field_data_sources', 'field_data_sources_sp', 'others');
-
-//  // Add dependent field "Please specify other source of recruitment" to taxonomy checkbox identified by its tid
-//  $terms = taxonomy_get_term_by_name('Other source', 'sources_of_recruitment');
-//  if (!empty($terms)) {
-//    $k = array_keys($terms);
-//    _mica_add_dependent_field_checked($form, 'field_recruitment_sources', 'field_recruitment_other', $k[0]);
-//  }
 }
 
 function _mica_populations_form_validate($form, &$form_state) {
