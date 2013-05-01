@@ -15,7 +15,7 @@ function _mica_studies_block_study_populations($study) {
       $start = $dce_wrapper->field_dce_start_date->value();
       $end = $dce_wrapper->field_dce_end_date->value();
       $dce_rows[] = array(
-        $dce_wrapper->title->value(),
+        l($dce_wrapper->title->value(), 'node/' . $dce_wrapper->nid->value()),
         empty($start) ? '' : date("Y M", $start),
         empty($end) ? '' : date("Y M", $end),
       );
@@ -25,8 +25,9 @@ function _mica_studies_block_study_populations($study) {
       $pop['data-collection-event'] = array(
         '#weight' => '100',
         '#theme' => 'table',
-        '#caption' => t('Data Collection Events'),
-        '#header' => array('Name', 'Start', 'End'),
+        '#caption' => t('Data Collection Events') . ': ',
+        '#attributes' => array('class' => array('pop-dce')),
+        '#header' => array(t('Name'), t('Start'), t('End')),
         '#rows' => $dce_rows,
       );
     }

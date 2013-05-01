@@ -788,9 +788,25 @@ function mica_studies_block_info() {
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
     ),
+    'study-timeline' => array(
+      'info' => t('Study Timeline'),
+      'weight' => '80',
+      'status' => TRUE,
+      'region' => 'content',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+    ),
+    'study-datasets' => array(
+      'info' => t('Study Datasets'),
+      'weight' => '90',
+      'status' => TRUE,
+      'region' => 'content',
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+      'pages' => '',
+    ),
     'study-authorization' => array(
       'info' => t('Study Authorization'),
-      'weight' => '1000',
+      'weight' => '100',
       'status' => TRUE,
       'region' => 'content',
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
@@ -825,6 +841,11 @@ function mica_studies_block_view($delta = '') {
     case 'study-populations':
       module_load_include('inc', 'mica_studies', 'mica_studies.blocks.populations');
       return _mica_studies_block_study_populations($study);
+    case 'study-timeline':
+      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.timeline');
+      return _mica_studies_block_study_timeline($study);
+    case 'study-datasets':
+      return _mica_studies_block_study_datasets($study);
     case 'study-authorization':
       module_load_include('inc', 'mica_studies', 'mica_studies.blocks.authorization');
       return _mica_studies_block_study_authorization($study);

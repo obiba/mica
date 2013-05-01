@@ -116,3 +116,36 @@ function _mica_studies_simulate_other_specify_field($node, $field_other, $field_
   }
   return $field;
 }
+
+function _mica_studies_block_study_datasets($study) {
+  // $study can be the study nid
+  if (is_numeric($study)) {
+    $study = node_load($study);
+  }
+
+  $wrapper = entity_metadata_wrapper('node', $study);
+
+  $rows = array();
+  foreach ($wrapper->mica_dataset->getIterator() as $dataset_wrapper) {
+    $summary = $wrapper->body->summary->value();
+    $rows[] = array(
+      l($dataset_wrapper->title->value(), 'node/' . $dataset_wrapper->nid->value()),
+      empty($summary) ? truncate_utf8($dataset_wrapper->body->value->value(), 200, TRUE, TRUE) : $summary
+    );
+  }
+
+  if (empty($rows)) {
+    return NULL;
+  }
+
+  return array(
+    'subject' => t('Datasets'),
+    'content' => array(
+      '#theme' => 'table',
+      '#attributes' => array('class' => array('study-datasets')),
+      '#header' => array(t('Name'), t('Description')),
+      '#rows' => $rows,
+    )
+  );
+
+}
