@@ -21,7 +21,7 @@ install-drush:
 	pear channel-discover pear.drush.org
 	pear install drush/drush
 
-install-less: install-nodejs install-bootstrap-dependencies
+install-lessc: install-nodejs install-bootstrap-dependencies
 
 install-nodejs:
 	apt-get install g++ curl libssl-dev apache2-utils && \

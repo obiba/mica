@@ -2,6 +2,7 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/solr" />
       <excludeFolder url="file://$MODULE_DIR$/target (copy)" />
       <excludeFolder url="file://$MODULE_DIR$/target/drupal.org" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1 (copy).4-dev" />
