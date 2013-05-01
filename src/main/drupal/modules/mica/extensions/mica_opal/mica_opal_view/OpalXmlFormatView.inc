@@ -99,7 +99,7 @@ class OpalXmlFormatView extends RESTServerView {
 
     $date = $opal->appendChild($this->doc->createElement('created'));
     $date->setAttribute('valueType', 'dateTime');
-    $date->appendChild($this->doc->createTextNode(date('Y-m-j\TH:i:s.000Z')));
+    $date->appendChild($this->doc->createTextNode(date('Y-m-j H:i')));
 
     $element = $variables->appendChild($this->doc->createElement('variables'));
     $element->setAttribute('class', 'linked-hash-set');
@@ -108,14 +108,7 @@ class OpalXmlFormatView extends RESTServerView {
 
   private function render_variable($variable, &$element, $sva = NULL) {
     $wrapper = entity_metadata_wrapper('node', $variable);
-
-//    watchdog('mica', 'variable: %nid - %name, sva: %sva_nid',
-//      array(
-//        '%nid' => $variable->nid,
-//        '%name' => $wrapper->title->value(),
-//        '%sva_nid' => empty($sva) ? NULL : $sva->nid,
-//      ),
-//      WATCHDOG_DEBUG);
+    debug($variable);
 
     $variable_element = $element->appendChild($this->doc->createElement('variable'));
     $variable_element->setAttribute('name', $wrapper->title->value());
