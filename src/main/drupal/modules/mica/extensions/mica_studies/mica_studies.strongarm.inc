@@ -35,7 +35,7 @@ function mica_studies_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_population';
-  $strongarm->value = 'edit-menu';
+  $strongarm->value = 'edit-display';
   $export['additional_settings__active_tab_population'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -3115,7 +3115,7 @@ return $title;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_data_collection_event';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_data_collection_event'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -3136,7 +3136,7 @@ return $title;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_submitted_population';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['node_submitted_population'] = $strongarm;
 
   $strongarm = new stdClass();
