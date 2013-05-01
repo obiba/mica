@@ -110,7 +110,15 @@ function mica_datasets_default_search_api_index() {
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "body:value" : { "type" : "text" },
         "body:summary" : { "type" : "text" },
-        "field_dataset_studies:title" : { "type" : "list\\u003Ctext\\u003E" }
+        "field_dataset_studies:title" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_dataset_studies:field_study_populations" : {
+          "type" : "list\\u003Clist\\u003Cinteger\\u003E\\u003E",
+          "entity_type" : "node"
+        },
+        "field_dataset_studies:field_study_populations:field_pop_dce" : {
+          "type" : "list\\u003Clist\\u003Clist\\u003Cinteger\\u003E\\u003E\\u003E",
+          "entity_type" : "node"
+        }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
@@ -245,10 +253,19 @@ function mica_datasets_default_search_api_index() {
         "field_dataset:title" : { "type" : "text" },
         "field_dataset:field_dataset_studies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_dataset:field_dataset_type" : { "type" : "string" },
+        "field_dataset:field_studies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_variable_categories:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_variable_categories:label" : { "type" : "list\\u003Ctext\\u003E" },
         "field_variable_categories:missing" : { "type" : "list\\u003Cboolean\\u003E" },
-        "field_variable_study_var_att:field_sva_status" : { "type" : "list\\u003Cstring\\u003E" }
+        "field_variable_study_var_att:field_sva_status" : { "type" : "list\\u003Cstring\\u003E" },
+        "field_dataset:field_dataset_studies:field_study_populations" : {
+          "type" : "list\\u003Clist\\u003Cinteger\\u003E\\u003E",
+          "entity_type" : "node"
+        },
+        "field_dataset:field_dataset_studies:field_study_populations:field_pop_dce" : {
+          "type" : "list\\u003Clist\\u003Clist\\u003Cinteger\\u003E\\u003E\\u003E",
+          "entity_type" : "node"
+        }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {

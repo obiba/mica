@@ -78,9 +78,14 @@ function _mica_opal_parse_categories($item) {
       if (isset($json_cat['attributes'])) {
         foreach ($json_cat['attributes'] as $json_cat_att) {
           if (isset($json_cat_att['name']) && $json_cat_att['name'] === 'label') {
-            $locale = $json_cat_att['locale'];
-            $category['label'][empty($locale) ? LANGUAGE_NONE : $locale] = $json_cat_att['value'];
+            $locale = isset($json_cat_att['locale']) ? $json_cat_att['locale'] : LANGUAGE_NONE ;
+            $category['label'][$locale] = $json_cat_att['value'];
           }
+        }
+
+        // Set default language to 'en'
+        if (isset($category['label']['en']) && !isset($category['label'][LANGUAGE_NONE])){
+          $category['label'][LANGUAGE_NONE] = $category['label']['en'];
         }
       }
       $categories[] = $category;
