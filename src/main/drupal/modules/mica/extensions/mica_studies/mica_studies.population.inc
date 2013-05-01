@@ -67,7 +67,6 @@ function _mica_studies_population_delete($population) {
 }
 
 function _mica_studies_population_view($node, $view_mode, $langcode) {
-  dpm($node, '$node');
   _mica_studies_population_view_selection_criteria($node);
   _mica_studies_population_view_recruitment_sources($node);
   _mica_studies_population_view_nb_participants($node);
@@ -79,7 +78,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
 
   // generate specific breadcrumbs for population pages pages
   $breadcrumbs = array();
-  $breadcrumbs[] = l('Home', '');
+  $breadcrumbs[] = l(t('Home'), '');
   for ($i = 0; $i < count($breadcrumb); $i++) {
     $breadcrumbs[] = l($breadcrumb[$i]['link_title'], $breadcrumb[$i]['link_path']);
   }

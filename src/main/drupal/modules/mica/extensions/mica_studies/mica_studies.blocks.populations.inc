@@ -7,14 +7,33 @@ function _mica_studies_block_study_populations($study) {
   }
 
   $wrapper = entity_metadata_wrapper('node', $study);
-  $populations = $wrapper->field_study_populations->value();
-//  dpm($populations, '$populations');
 
-  if (empty($populations)) {
-    return NULL;
+  $content = array();
+  foreach ($wrapper->field_study_populations->getIterator() as $population_wrapper) {
+    $dce_rows = array();
+    foreach ($population_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
+      $start = $dce_wrapper->field_dce_start_date->value();
+      $end = $dce_wrapper->field_dce_end_date->value();
+      $dce_rows[] = array(
+        $dce_wrapper->title->value(),
+        empty($start) ? '' : date("Y M", $start),
+        empty($end) ? '' : date("Y M", $end),
+      );
+    }
+    $pop = node_view($population_wrapper->value(), 'full');
+    if (!empty($dce_rows)) {
+      $pop['data-collection-event'] = array(
+        '#weight' => '100',
+        '#theme' => 'table',
+        '#caption' => t('Data Collection Events'),
+        '#header' => array('Name', 'Start', 'End'),
+        '#rows' => $dce_rows,
+      );
+    }
+    $content[] = $pop;
   }
   return array(
     'subject' => t('Populations'),
-    'content' => node_view_multiple($populations, 'full'),
+    'content' => $content,
   );
 }
