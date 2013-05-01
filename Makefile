@@ -88,9 +88,14 @@ help:
 	@echo "  deploy             : Used by continuous integration server to copy packaged distribution to stable (for prod) or unstable (for dev)."
 	@echo "                       http://ci.obiba.org/view/Mica/job/Mica"
 	@echo
-	@echo "  install-bootstrap-dependencies: Install required programs for bootstrap library"
+	@echo "  install-solr       : Install & configure SolR"	
+	@echo "  start-solr         : Start SolR"	
 	@echo
-	@echo "Requires drush 5+ to be installed [http://drush.ws]"
+	@echo "  install-drush      : Install Drush"	
+	@echo
+	@echo "  install-lessc      : Install Less compiler required by bootstrap"
+	@echo
+	@echo "Requires drush 5+ to be installed [http://drush.ws]. Use install-drush target."
 	@echo "  " `drush version`
 	@echo
 
