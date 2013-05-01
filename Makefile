@@ -53,7 +53,7 @@ else
 	lessc_options=--yui-compress
 endif
 
-include solr.mk
+include tools.mk
 
 #
 # Targets
@@ -381,20 +381,6 @@ compile-less:
 	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_studies/less/mica_studies.less src/main/drupal/modules/mica/extensions/mica_studies/css/mica_studies.css && \
 	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_networks/less/mica_networks.less src/main/drupal/modules/mica/extensions/mica_networks/css/mica_networks.css && \
 	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_datasets/less/mica_datasets.less src/main/drupal/modules/mica/extensions/mica_datasets/css/mica_datasets.css
-
-install-nodejs:
-	apt-get install g++ curl libssl-dev apache2-utils && \
-	mkdir target/nodejs && \
-	cd target/nodejs && \
-	wget http://nodejs.org/dist/v0.8.15/node-v0.8.15.tar.gz && \
-	tar -xzvf node-v0.8.15.tar.gz && \
-	cd node-v0.8.15 && \
-	./configure && \
-	make && \
-	make install
-
-install-bootstrap-dependencies:
-	npm install less connect uglify-js@1 jshint -g
 
 log:
 	tail /var/log/apache2/error.log
