@@ -149,3 +149,19 @@ function _mica_studies_block_study_datasets($study) {
   );
 
 }
+
+function _mica_studies_block_study_populations($study) {
+  // $study can be the study nid
+  if (is_numeric($study)) {
+    $study = node_load($study);
+  }
+  $content = array();
+  $wrapper = entity_metadata_wrapper('node', $study);
+  foreach ($wrapper->field_study_populations->getIterator() as $population_wrapper) {
+    $content[] = node_view($population_wrapper->value(), 'full');
+  }
+  return array(
+    'subject' => t('Populations'),
+    'content' => $content,
+  );
+}

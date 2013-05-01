@@ -71,8 +71,30 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
   _mica_studies_population_view_recruitment_sources($node);
   _mica_studies_population_view_nb_participants($node);
 
-  // Breadcrumbs
   $wrapper = entity_metadata_wrapper('node', $node);
+
+  $dce_rows = array();
+  foreach ($wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
+    $start = $dce_wrapper->field_dce_start_date->value();
+    $end = $dce_wrapper->field_dce_end_date->value();
+    $dce_rows[] = array(
+      l($dce_wrapper->title->value(), 'node/' . $dce_wrapper->nid->value()),
+      empty($start) ? '' : date("Y M", $start),
+      empty($end) ? '' : date("Y M", $end),
+    );
+  }
+  if (!empty($dce_rows)) {
+    $node->content['data-collection-event'] = array(
+      '#weight' => '100',
+      '#theme' => 'table',
+      '#caption' => t('Data Collection Events') . ': ',
+      '#attributes' => array('class' => array('pop-dce')),
+      '#header' => array(t('Name'), t('Start'), t('End')),
+      '#rows' => $dce_rows,
+    );
+  }
+
+  // Breadcrumbs
   $study_id = $wrapper->field_pop_study->nid->value();
   $breadcrumb = _mica_studies_menu_generate_breadcrumbs_pop('node/' . $study_id);
 
@@ -92,7 +114,7 @@ function _mica_studies_population_view_selection_criteria($node) {
 
   if (!isset($node->content['field_pop_select_criteria'])) {
     // create empty field_pop_select_criteria if it has no values
-    _mica_studies_population_create_empty_field($node, 'field_pop_select_criteria');
+    mica_core_create_empty_field($node, 'field_pop_select_criteria');
   }
 
   _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_gender', t('Gender'));
@@ -261,31 +283,6 @@ function _mica_studies_population_view_recruitment_sources(&$node) {
 
 }
 
-function _mica_studies_population_create_empty_field(&$node, $field_name) {
-  $instances = _field_invoke_get_instances('node', $node->type, array(
-      'field_name' => $field_name,
-      'default' => TRUE,
-      'deleted' => FALSE
-    )
-  );
-  $instance = $instances[0];
-  $display = field_get_display($instance, 'default', $node);
-  $field_info = field_info_field($field_name);
-  $node->content[$field_name] = array(
-    '#theme' => 'field',
-    '#title' => $instance['label'],
-    '#label_display' => 'above',
-    '#field_type' => $field_info['type'],
-    '#field_name' => $instance['field_name'],
-    '#bundle' => $node->type,
-    '#object' => $node,
-    '#items' => array(),
-    '#entity_type' => 'node',
-    '#weight' => $display['weight'],
-    0 => array('#markup' => ''),
-  );
-}
-
 function _mica_studies_population_view_nb_participants(&$node) {
   _mica_studies_population_view_nb($node, 'field_pop_participants_nb', 'field_pop_no_limits_participants', 'field_pop_participants_nb_supp_i');
   _mica_studies_population_view_nb($node, 'field_pop_participants_nb_s', 'field_pop_no_lim_participants_s', 'field_pop_participants_nb_s_info');
@@ -294,7 +291,7 @@ function _mica_studies_population_view_nb_participants(&$node) {
 function _mica_studies_population_view_nb(&$node, $field_nb, $field_no_limit, $field_info) {
   $wrapper = entity_metadata_wrapper('node', $node);
   if (!isset($node->content[$field_nb])) {
-    _mica_studies_population_create_empty_field($node, $field_nb);
+    mica_core_create_empty_field($node, $field_nb);
   }
 
   $index = count($node->content[$field_nb]['#items']);

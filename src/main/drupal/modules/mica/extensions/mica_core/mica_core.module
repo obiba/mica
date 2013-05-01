@@ -311,7 +311,6 @@ function mica_core_configure_feeds_tamper($module_name) {
   variable_set('default_feeds_tamper', $disabled);
 }
 
-
 function _mica_core_taxonomy_create($filename, $vocabulary_name) {
   // use filename (without extension) for vocabulary machine name
   $machine_name = substr($filename, 0, drupal_strlen($filename) - 4);
@@ -477,4 +476,29 @@ function mica_core_nodes_access($op, array $nodes, $account = NULL) {
     }
   }
   return TRUE;
+}
+
+function mica_core_create_empty_field(&$node, $field_name, $label_display = 'inline') {
+  $instances = _field_invoke_get_instances('node', $node->type, array(
+      'field_name' => $field_name,
+      'default' => TRUE,
+      'deleted' => FALSE
+    )
+  );
+  $instance = $instances[0];
+  $display = field_get_display($instance, 'default', $node);
+  $field_info = field_info_field($field_name);
+  $node->content[$field_name] = array(
+    '#theme' => 'field',
+    '#title' => $instance['label'],
+    '#label_display' => $label_display,
+    '#field_type' => $field_info['type'],
+    '#field_name' => $instance['field_name'],
+    '#bundle' => $node->type,
+    '#object' => $node,
+    '#items' => array(),
+    '#entity_type' => 'node',
+    '#weight' => $display['weight'],
+    0 => array('#markup' => ''),
+  );
 }

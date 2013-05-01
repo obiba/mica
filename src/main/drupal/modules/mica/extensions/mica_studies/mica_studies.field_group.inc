@@ -164,6 +164,36 @@ function mica_studies_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_dce_documents|node|data_collection_event|default';
+  $field_group->group_name = 'group_dce_documents';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'data_collection_event';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Documents',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_dce_data_dictionnaries',
+      1 => 'field_dce_others',
+      2 => 'field_dce_questionnaires',
+      3 => 'field_dce_sops',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Documents',
+      'instance_settings' => array(
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_dce_documents|node|data_collection_event|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_dce_documents|node|data_collection_event|form';
   $field_group->group_name = 'group_dce_documents';
   $field_group->entity_type = 'node';

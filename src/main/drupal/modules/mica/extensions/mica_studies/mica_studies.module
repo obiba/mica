@@ -839,7 +839,6 @@ function mica_studies_block_view($delta = '') {
     case 'study-supp-infos':
       return _mica_studies_block_study_supp_infos($study);
     case 'study-populations':
-      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.populations');
       return _mica_studies_block_study_populations($study);
     case 'study-timeline':
       module_load_include('inc', 'mica_studies', 'mica_studies.blocks.timeline');
