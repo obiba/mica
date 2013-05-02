@@ -6,6 +6,8 @@ function _mica_studies_block_study_menu($study) {
     $study = node_load($study);
   }
 
+  // see http://jqueryfordesigners.com/fixed-floating-elements/
+
   return array(
     'subject' => t('Navigation'),
     'content' => NULL,
