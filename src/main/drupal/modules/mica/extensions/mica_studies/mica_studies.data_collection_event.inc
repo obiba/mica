@@ -60,7 +60,7 @@ function _mica_studies_dce_view(&$node, $view_mode, $langcode) {
   // generate specific breadcrumbs for dce pages
   $breadcrumbs = array();
   $breadcrumbs[] = l('Home', '');
-  $breadcrumb = _mica_studies_menu_generate_breadcrumbs_dce('node/' . $study_id);
+  $breadcrumb = _mica_studies_menu_generate_breadcrumbs('node/' . $study_id);
   for ($i = 0; $i < count($breadcrumb); $i++) {
     $breadcrumbs[] = l($breadcrumb[$i]['link_title'], $breadcrumb[$i]['link_path']);
   }
@@ -68,60 +68,6 @@ function _mica_studies_dce_view(&$node, $view_mode, $langcode) {
 
   drupal_set_breadcrumb($breadcrumbs);
 
-}
-
-function _mica_studies_menu_generate_breadcrumbs_dce($path) {
-  $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
-
-  $list = array();
-  foreach ($result as $link) {
-    $list[] = $link;
-  }
-
-  $list = $list[0];
-
-  if (is_object($list)) {
-    $list = get_object_vars($list);
-  }
-  // Check all parent link possible
-  if ($list['p9'] != 0) {
-    $i = 9;
-  }
-  else if ($list['p8'] != 0) {
-    $i = 8;
-  }
-  else if ($list['p7'] != 0) {
-    $i = 7;
-  }
-  else if ($list['p6'] != 0) {
-    $i = 6;
-  }
-  else if ($list['p5'] != 0) {
-    $i = 5;
-  }
-  else if ($list['p4'] != 0) {
-    $i = 4;
-  }
-  else if ($list['p3'] != 0) {
-    $i = 3;
-  }
-  else if ($list['p2'] != 0) {
-    $i = 2;
-  }
-  else if ($list['p1'] != 0) {
-    $i = 1;
-  }
-
-  $breadcrumbs = array();
-  for ($i; $i > 0; $i--) {
-    $temp = menu_link_load($list['p' . $i]);
-    // add breadcrumbs if link_path is correct
-    if (!preg_match('/<firstchild>/', $temp['link_path'])) {
-      $breadcrumbs[] = menu_link_load($list['p' . $i]);
-    }
-  }
-  $breadcrumbs = array_reverse($breadcrumbs);
-  return $breadcrumbs;
 }
 
 function _mica_studies_dce_view_data_sources(&$node) {
@@ -179,7 +125,8 @@ function _mica_studies_dce_view_samples(&$node) {
   if ($tissues_index !== FALSE) {
     $field_dce_tissues_sp = $wrapper->field_dce_tissues_sp->value();
     if (!empty($field_dce_tissues_sp)) {
-      $node->content['field_dce_data_sources'][$tissues_index]['#markup'] .= ': ' . $node->content['field_dce_tissues_sp'][0]['#markup'];;
+      $node->content['field_dce_data_sources'][$tissues_index]['#markup'] .= ': ' . $node->content['field_dce_tissues_sp'][0]['#markup'];
+      ;
       $node->content['field_dce_tissues_sp']['#access'] = FALSE;
     }
   }

@@ -96,7 +96,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
 
   // Breadcrumbs
   $study_id = $wrapper->field_pop_study->nid->value();
-  $breadcrumb = _mica_studies_menu_generate_breadcrumbs_pop('node/' . $study_id);
+  $breadcrumb = _mica_studies_menu_generate_breadcrumbs('node/' . $study_id);
 
   // generate specific breadcrumbs for population pages pages
   $breadcrumbs = array();
@@ -314,56 +314,4 @@ function _mica_studies_population_view_nb(&$node, $field_nb, $field_no_limit, $f
   if (strlen($node->content[$field_nb][0]['#markup']) == 0) {
     $node->content[$field_nb]['#access'] = FALSE;
   }
-}
-
-function _mica_studies_menu_generate_breadcrumbs_pop($path) {
-  $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
-  $list = array();
-  foreach ($result as $link) {
-    $list[] = $link;
-  }
-  $list = $list[0];
-
-  if (is_object($list)) {
-    $list = get_object_vars($list);
-  }
-  // Check all parent link possible
-  if ($list['p9'] != 0) {
-    $i = 9;
-  }
-  else if ($list['p8'] != 0) {
-    $i = 8;
-  }
-  else if ($list['p7'] != 0) {
-    $i = 7;
-  }
-  else if ($list['p6'] != 0) {
-    $i = 6;
-  }
-  else if ($list['p5'] != 0) {
-    $i = 5;
-  }
-  else if ($list['p4'] != 0) {
-    $i = 4;
-  }
-  else if ($list['p3'] != 0) {
-    $i = 3;
-  }
-  else if ($list['p2'] != 0) {
-    $i = 2;
-  }
-  else if ($list['p1'] != 0) {
-    $i = 1;
-  }
-
-  $breadcrumbs = array();
-  for ($i; $i > 0; $i--) {
-    $temp = menu_link_load($list['p' . $i]);
-    // add breadcrumbs if link_path is correct
-    if (!preg_match('/<firstchild>/', $temp['link_path'])) {
-      $breadcrumbs[] = menu_link_load($list['p' . $i]);
-    }
-  }
-  $breadcrumbs = array_reverse($breadcrumbs);
-  return $breadcrumbs;
 }
