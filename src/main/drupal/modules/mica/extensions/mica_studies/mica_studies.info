@@ -211,6 +211,7 @@ features[field][] = node-data_collection_event-field_dce_data_dictionnaries
 features[field][] = node-data_collection_event-field_dce_data_sources
 features[field][] = node-data_collection_event-field_dce_data_sources_admin_db
 features[field][] = node-data_collection_event-field_dce_data_sources_sp
+features[field][] = node-data_collection_event-field_dce_dataset
 features[field][] = node-data_collection_event-field_dce_end_date
 features[field][] = node-data_collection_event-field_dce_others
 features[field][] = node-data_collection_event-field_dce_population
