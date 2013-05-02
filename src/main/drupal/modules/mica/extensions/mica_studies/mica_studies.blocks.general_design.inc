@@ -24,7 +24,7 @@ function _mica_studies_block_study_general_design($study) {
   ));
 
   return array(
-    'subject' => t('General Design'),
+    'subject' => t('General Design') . '<a name="general-design" />',
     'content' => array_filter($content),
   );
 }

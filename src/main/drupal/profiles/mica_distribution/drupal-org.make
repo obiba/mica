@@ -57,7 +57,7 @@ projects[] = devel
 
 projects[email] = 1.2
 
-projects[entity][version] = 1.0
+projects[entity][version] = 1.1
 projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info-on-validation-exception.patch
 
 projects[entity_translation] = 1.0-alpha2

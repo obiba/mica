@@ -15,7 +15,7 @@ function _mica_studies_block_study_general_info($study) {
     field_view_field('node', $study, 'field_study_end_date', array('label' => 'inline', 'weight' => ++$weight)),
   );
   return array(
-    'subject' => t('General Information'),
+    'subject' => t('General Information') . '<a name="general-info" />',
     'content' => $content,
   );
 }
@@ -35,7 +35,7 @@ function _mica_studies_block_study_access($study) {
     $content[] = $other;
   }
   return array(
-    'subject' => t('Access'),
+    'subject' => t('Access') . '<a name="access" />',
     'content' => array_filter($content),
   );
 }
@@ -62,7 +62,7 @@ function _mica_studies_block_study_marker_paper($study) {
       ),
     );
   return array(
-    'subject' => t('Marker Paper'),
+    'subject' => t('Marker Paper') . '<a name="marker-paper" />',
     'content' => $content,
   );
 }
@@ -79,7 +79,7 @@ function _mica_studies_block_study_documents($study) {
     ? NULL
     : array(field_view_field('node', $study, 'field_documents', array('label' => 'hidden')));
   return array(
-    'subject' => t('Documents'),
+    'subject' => t('Documents') . '<a name="documents" />',
     'content' => $content,
   );
 }
@@ -96,7 +96,7 @@ function _mica_studies_block_study_supp_infos($study) {
     ? NULL
     : array(field_view_field('node', $study, 'field_supp_infos', array('label' => 'hidden')));
   return array(
-    'subject' => t('Supplementary Information'),
+    'subject' => t('Supplementary Information') . '<a name="supplementary-info" />',
     'content' => $content,
   );
 }
@@ -139,7 +139,7 @@ function _mica_studies_block_study_datasets($study) {
   }
 
   return array(
-    'subject' => t('Datasets'),
+    'subject' => t('Datasets') . '<a name="datasets" />',
     'content' => array(
       '#theme' => 'table',
       '#attributes' => array('class' => array('study-datasets')),
@@ -161,7 +161,7 @@ function _mica_studies_block_study_populations($study) {
     $content[] = node_view($population_wrapper->value(), 'full');
   }
   return array(
-    'subject' => t('Populations'),
+    'subject' => t('Populations') . '<a name="populations" />',
     'content' => $content,
   );
 }
