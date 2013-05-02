@@ -4,6 +4,13 @@
  * Mica Datasets Crosstab module file
  */
 
+//function getTime() {
+//  $mtime = microtime();
+//  $mtime = explode(" ", $mtime);
+//  $mtime = $mtime[1] + $mtime[0];
+//  return $mtime;
+//}
+
 /**
  * Implements hook_menu()
  */
@@ -89,9 +96,6 @@ function mica_dimensions_coverage_block_view($delta) {
 
   $vocabulary = taxonomy_vocabulary_load($delta);
 
-//  "<div class='accordion' id='accordion" + $delta + "'><div class='accordion-group'><div class='accordion-heading'><a class='accordion-toggle' data-toggle='collapse' data-parent='#accordion" + $delta + "' href='#collapseOne'>" +
-//    $vocabulary->name + "</a></div>";
-
   $block = array(
     'subject' => $vocabulary->name,
     'content' => array('#markup' => $content),
@@ -133,28 +137,31 @@ function mica_dimensions_coverage_datasets() {
       foreach ($keys as $dataset_id) {
         // Check if the dataset has variable with dimensions
         // Filter permissions
-        if (_mica_datasets_node_access($dataset_id, 'dataset', 'view') && count(mica_dataset_dataset_variables($dataset_id)) > 0) {
+        if (_mica_datasets_node_access($dataset_id, 'dataset', 'view')) {
           $node = node_load($dataset_id);
-          $data['header'][$dataset_id] = array(
-            'data' => array(
-              '#markup' => $node->title,
-            ),
-            'class' => array('dataset-title')
-          );
+          // Add only if the datasets has variables
+          if (!empty($node->field_dataset_variables)) {
+            $data['header'][$dataset_id] = array(
+              'data' => array(
+                '#markup' => $node->title,
+              ),
+              'class' => array('dataset-title')
+            );
 
-          $data[$dataset_id]['title'] = $node->title;
-          // Execute search query once and build the facet count map
-          $result = $index->query()->condition('field_dataset', $dataset_id)->execute();
-          if (!empty($result['search_api_facets'])) {
+            $data[$dataset_id]['title'] = $node->title;
+            // Execute search query once and build the facet count map
+            $result = $index->query()->condition('field_dataset', $dataset_id)->execute();
+            if (!empty($result['search_api_facets'])) {
 
-            foreach ($result['search_api_facets'] as $facet => $facet_results) {
+              foreach ($result['search_api_facets'] as $facet => $facet_results) {
 
-              // Exclude dataset fields that are not taxonomy
-              if (in_array($facet, $taxonomy_fields)) {
-                foreach ($facet_results as $facet_result) {
-                  $term_id = trim($facet_result['filter'], '\"');
-                  $data[$dataset_id][$term_id]['count'] = $facet_result['count'];
-                  $data[$dataset_id][$term_id]['facet'] = $facet;
+                // Exclude dataset fields that are not taxonomy
+                if (in_array($facet, $taxonomy_fields)) {
+                  foreach ($facet_results as $facet_result) {
+                    $term_id = trim($facet_result['filter'], '\"');
+                    $data[$dataset_id][$term_id]['count'] = $facet_result['count'];
+                    $data[$dataset_id][$term_id]['facet'] = $facet;
+                  }
                 }
               }
             }
@@ -165,7 +172,6 @@ function mica_dimensions_coverage_datasets() {
   }
   return $data;
 }
-
 
 function _mica_dimensions_coverage_dimension_table($vid, $data) {
   $rows = array();
@@ -199,51 +205,64 @@ function _mica_dimensions_coverage_dimension_table($vid, $data) {
       );
 
       // Fill facet count in the same order as the header
-      foreach ($data['header'] as $dataset_id => $title) {
+      if (isset($data['header'])) {
+        foreach ($data['header'] as $dataset_id => $title) {
 
-        if ($dataset_id > 0) {
-          if (isset($data[$dataset_id]) && isset($data[$dataset_id][$term->tid])) {
-            $url = l($data[$dataset_id][$term->tid]['count'], 'variable-search',
-              array(
-                'query' => array(
-                  'f[0]' => 'field_dataset:' . $dataset_id,
-                  'f[1]' => $data[$dataset_id][$term->tid]['facet'] . ':' . $term->tid,
+          if ($dataset_id > 0) {
+            if (isset($data[$dataset_id]) && isset($data[$dataset_id][$term->tid])) {
+              $url = l($data[$dataset_id][$term->tid]['count'], 'variable-search',
+                array(
+                  'query' => array(
+                    'f[0]' => 'field_dataset:' . $dataset_id,
+                    'f[1]' => $data[$dataset_id][$term->tid]['facet'] . ':' . $term->tid,
+                  ),
+                )
+              );
+              $row[$dataset_id] = array(
+                'data' => array(
+                  '#markup' => $url,
                 ),
-              )
-            );
-            $row[$dataset_id] = array(
-              'data' => array(
-                '#markup' => $url,
-              ),
-              'class' => array('center')
-            );
-          }
-          else {
-            $row[$dataset_id] = array(
-              'data' => array(
-                '#markup' => '-',
-              ),
-              'class' => array('center')
-            );
+                'class' => array('center')
+              );
+            }
+            else {
+              $row[$dataset_id] = array(
+                'data' => array(
+                  '#markup' => '-',
+                ),
+                'class' => array('center')
+              );
+            }
           }
         }
+        $rows[] = $row;
       }
-      $rows[] = $row;
     }
   }
 
   // Insert vocabulary name in the first column
-  array_splice($data['header'], 0, 0, t("@title", array('@title' => ''))); //$vocabulary->name
-  $output = theme(
+  if (isset($data['header'])) {
+    array_splice($data['header'], 0, 0, t("@title", array('@title' => '')));
+    return theme(
+      'table',
+      array(
+        'header' => $data['header'],
+        'rows' => $rows,
+        'empty' => t('No information found'),
+        'sticky' => FALSE,
+        'attributes' => array('class' => 'dataset_crosstab'),
+      )
+    );
+  }
+
+  return theme(
     'table',
     array(
-      'header' => $data['header'],
+      'header' => array(),
       'rows' => $rows,
       'empty' => t('No information found'),
       'sticky' => FALSE,
       'attributes' => array('class' => 'dataset_crosstab'),
     )
   );
-
-  return $output;
 }
