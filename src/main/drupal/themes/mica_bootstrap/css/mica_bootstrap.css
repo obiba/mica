@@ -6349,14 +6349,15 @@ section#block-views-news-recent-news article h2 {
 .node-type-study section.block-mica-studies .block-content {
   padding-left: 10px;
 }
-.node-type-study section.block-mica-studies table.pop-dce,
-.node-type-study section.block-mica-studies table.study-datasets {
+table.pop-dce,
+table.study-datasets {
   margin-top: 8px;
 }
-.node-type-study section.block-mica-studies table.pop-dce caption,
-.node-type-study section.block-mica-studies table.study-datasets caption {
+table.pop-dce caption,
+table.study-datasets caption {
   font-weight: bold;
   text-align: left;
+  margin-bottom: 5px;
 }
 .pane-dataset-studies h2 {
   font-size: 13px;
@@ -6451,6 +6452,7 @@ thead {
 }
 #forum table td.last-reply {
   width: 30%;
-}article.node-forum #comment-form-wrapper {
+}
+article.node-forum #comment-form-wrapper {
   margin-top: 45px;
 }

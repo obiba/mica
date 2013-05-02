@@ -306,6 +306,16 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
 
   // hide list of data collection events
   $form['field_pop_dce']['#type'] = 'hidden';
+  $form['actions']['submit']['#type'] = 'hidden';
+
+  // Override save button
+  $form['actions']['_mica_studies_save_population_submit'] = array(
+    '#access' => TRUE,
+    '#value' => t('Save'),
+    '#weight' => -10,
+    '#type' => 'submit',
+    '#submit' => array('node_form_submit', '_mica_studies_save_population_submit'),
+  );
 
   $form['actions']['_mica_studies_save_add_dce_submit'] = array(
     '#access' => TRUE,
@@ -322,6 +332,11 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
   _mica_add_dependent_field_checked($form, 'field_pop_specific_pop', 'field_pop_specific_pop_other_sp', 'other');
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_recruitment_other', 'other');
 
+}
+
+function _mica_studies_save_population_submit($form ,&$form_state){
+  $lang = $form['field_pop_study']['#language'];
+  $form_state['redirect'] = 'node/' . $form['#node']->field_pop_study[$lang][0]['nid'];
 }
 
 /**
@@ -373,26 +388,18 @@ function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $f
   if (isset($_REQUEST['population'])) {
     $lang = $form['field_dce_population']['#language'];
     $form['field_dce_population'][$lang]['#after_build'][] = '_mica_studies_prepopulate_dce_after_build';
-    $form['field_dce_population']['#type'] = 'hidden';
   }
-  $form['field_dce_population']['#type'] = 'hidden';
   // hide list of population
   $form['field_dce_population']['#type'] = 'hidden';
+  $form['actions']['submit']['#type'] = 'hidden';
 
-  $form['actions']['_mica_studies_save_edit_study_submit'] = array(
+  // Override save button
+  $form['actions']['_mica_studies_save_population_submit'] = array(
     '#access' => TRUE,
-    '#value' => t('Save & Edit Study'),
-    '#weight' => -20,
-    '#type' => 'submit',
-    '#submit' => array('node_form_submit', '_mica_studies_save_edit_study_submit'),
-  );
-
-  $form['actions']['_mica_studies_save_edit_population_submit'] = array(
-    '#access' => TRUE,
-    '#value' => t('Save & Edit Population'),
+    '#value' => t('Save'),
     '#weight' => -10,
     '#type' => 'submit',
-    '#submit' => array('node_form_submit', '_mica_studies_save_edit_population_submit'),
+    '#submit' => array('node_form_submit', '_mica_studies_save_dce_submit'),
   );
 
   //dce
@@ -400,6 +407,14 @@ function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $f
   _mica_add_dependent_field_checked($form, 'field_dce_data_sources', 'field_dce_data_sources_sp', 'others');
   _mica_add_dependent_field_checked($form, 'field_dce_bio_samples_management', 'field_dce_tissues_sp', 'tissues');
   _mica_add_dependent_field_checked($form, 'field_dce_bio_samples_management', 'field_dce_samples_man_other_sp', 'others');
+}
+
+function _mica_studies_save_dce_submit($form ,&$form_state){
+  $lang = $form['field_dce_population']['#language'];
+  $pop = node_load($form['#node']->field_dce_population[$lang][0]['nid']);
+  $wrapper = entity_metadata_wrapper('node', $pop);
+  debug("Study id is ".$wrapper->field_pop_study->value()->nid);
+  $form_state['redirect'] = 'node/' . $wrapper->field_pop_study->value()->nid;
 }
 
 /**
@@ -842,17 +857,17 @@ function mica_studies_block_view($delta = '') {
       return _mica_studies_block_study_supp_infos($study);
     case 'study-populations':
       return _mica_studies_block_study_populations($study);
-    case 'study-timeline':
-      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.timeline');
-      return _mica_studies_block_study_timeline($study);
-    case 'study-datasets':
-      return _mica_studies_block_study_datasets($study);
-    case 'study-authorization':
-      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.authorization');
-      return _mica_studies_block_study_authorization($study);
-    case 'study-menu':
-      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.menu');
-      return _mica_studies_block_study_menu($study);
+//    case 'study-timeline':
+//      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.timeline');
+//      return _mica_studies_block_study_timeline($study);
+//    case 'study-datasets':
+//      return _mica_studies_block_study_datasets($study);
+//    case 'study-authorization':
+//      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.authorization');
+//      return _mica_studies_block_study_authorization($study);
+//    case 'study-menu':
+//      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.menu');
+//      return _mica_studies_block_study_menu($study);
     default:
       return NULL;
   }
