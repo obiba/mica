@@ -546,16 +546,6 @@ function _mica_studies_form_validate($form, &$form_state) {
   _mica_studies_form_validate_field($form, $form_state, 'field_design', 'field_design_other_sp', 'other');
   _mica_studies_form_validate_field($form, $form_state, 'field_recruitment', 'field_recruitment_other_sp', 'other');
   _mica_studies_form_validate_field($form, $form_state, 'field_access_other', 'field_access_other_sp', '1');
-  _mica_studies_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_samples_man_other_sp', 'others');
-  _mica_studies_form_validate_field($form, $form_state, 'field_bio_samples_management', 'field_tissues_sp', 'tissues');
-  _mica_studies_form_validate_field($form, $form_state, 'field_data_sources', 'field_data_sources_sp', 'others');
-
-//  // Add dependent field "Please specify other source of recruitment" to taxonomy checkbox identified by its tid
-//  $terms = taxonomy_get_term_by_name('Other source', 'sources_of_recruitment');
-//  if (!empty($terms)) {
-//    $k = array_keys($terms);
-//    _mica_add_dependent_field_checked($form, 'field_recruitment_sources', 'field_recruitment_other', $k[0]);
-//  }
 }
 
 function _mica_populations_form_validate($form, &$form_state) {
@@ -851,4 +841,59 @@ function mica_studies_block_view($delta = '') {
     default:
       return NULL;
   }
+}
+
+/**
+ * generate breadcrumbs for pop & dce page
+ */
+function _mica_studies_menu_generate_breadcrumbs($path) {
+  $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
+  $list = array();
+  foreach ($result as $link) {
+    $list[] = $link;
+  }
+  $list = $list[0];
+
+  if (is_object($list)) {
+    $list = get_object_vars($list);
+  }
+  // Check all parent link possible
+  if ($list['p9'] != 0) {
+    $i = 9;
+  }
+  else if ($list['p8'] != 0) {
+    $i = 8;
+  }
+  else if ($list['p7'] != 0) {
+    $i = 7;
+  }
+  else if ($list['p6'] != 0) {
+    $i = 6;
+  }
+  else if ($list['p5'] != 0) {
+    $i = 5;
+  }
+  else if ($list['p4'] != 0) {
+    $i = 4;
+  }
+  else if ($list['p3'] != 0) {
+    $i = 3;
+  }
+  else if ($list['p2'] != 0) {
+    $i = 2;
+  }
+  else if ($list['p1'] != 0) {
+    $i = 1;
+  }
+
+  $breadcrumbs = array();
+  for ($i; $i > 0; $i--) {
+    $temp = menu_link_load($list['p' . $i]);
+    // add breadcrumbs if link_path is correct
+    if (!preg_match('/<firstchild>/', $temp['link_path'])) {
+      $breadcrumbs[] = menu_link_load($list['p' . $i]);
+    }
+  }
+  $breadcrumbs = array_reverse($breadcrumbs);
+  return $breadcrumbs;
 }
