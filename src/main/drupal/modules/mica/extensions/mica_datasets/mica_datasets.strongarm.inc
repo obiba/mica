@@ -280,7 +280,7 @@ function mica_datasets_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'jquery_ui_multiselect_widget_filter_auto_reset';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['jquery_ui_multiselect_widget_filter_auto_reset'] = $strongarm;
 
   $strongarm = new stdClass();
