@@ -49,6 +49,17 @@ function _mica_devel_form() {
     '#submit' => array('_mica_devel_rebuild_registry'),
   );
 
+  $form['large_data'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Test Mica with 100K+ variables'),
+    '#description' => t('Test Mica with 100K+ variables'),
+  );
+  $form['large_data']['generate'] = array(
+    '#type' => 'submit',
+    '#value' => t('Generate content'),
+    '#submit' => array('_mica_devel_large_data'),
+  );
+
   $form['dummy'] = array(
     '#type' => 'fieldset',
     '#title' => t('Example'),
@@ -112,6 +123,75 @@ function _mica_devel_is_mica_module($module) {
   return substr($module, 0, strlen("mica")) === "mica";
 }
 
+function _mica_devel_large_data() {
+
+
+  $pop_ids = array();
+  for ($i = 0; $i < 1; $i++) {
+    $study = _mica_devel_generate_node('study', $i);
+    $study->field_study_populations['und'] = array();
+
+
+    for ($j = 0; $j < 2; $j++) {
+      $population = _mica_devel_generate_node('population', "$i$j");
+      $population->field_pop_study['und'] = array();
+      $population->field_pop_study['und'][] = array('nid' => $study->nid);
+      node_save($population);
+
+      $pop_ids[] = $population->nid;
+      $study->field_study_populations['und'][] = array('nid' => $population->nid);
+    }
+    node_save($study);
+  }
+
+  // Generate DCE
+  foreach($pop_ids as $pop_id){
+    for($i = 0; $i < 2; $i++){
+      $dce = _mica_devel_generate_node('data_collection_event', $i);
+      $dce->field_dce_population['und'] = array();
+      $dce->field_dce_population['und'][] = array('nid' => $pop_id);
+      node_save($dce);
+    }
+  }
+}
+
 function _mica_devel_dummy_run() {
   drupal_set_message(t("Run dummy method..."));
+}
+
+function _mica_devel_generate_node($node_type, $id) {
+  // Copied code from: devel_generate.module:devel_generate_content_add_node(&$results)
+  $node = new stdClass();
+  $node->nid = NULL;
+
+  // Insert new data:
+  $node->type = $node_type;
+  node_object_prepare($node);
+//  $users = $results['users'];
+  module_load_include('inc', 'devel_generate', 'devel_generate');
+
+  $node->uid = 1;
+  $type = node_type_get_type($node);
+  $node->title = $type->has_title ? $node_type . ':' .$id : ''; // ':' . devel_create_greeking(mt_rand(2, 6), TRUE)
+  $node->revision = mt_rand(0, 1);
+  $node->promote = mt_rand(0, 1);
+  // Avoid NOTICE.
+  if (!isset($results['time_range'])) {
+    $results['time_range'] = 0;
+  }
+
+  $node->language = LANGUAGE_NONE;
+  $node->created = REQUEST_TIME - mt_rand(0, $results['time_range']);
+
+  // A flag to let hook_nodeapi() implementations know that this is a generated node.
+  $node->devel_generate = $results;
+
+  // Populate all core fields on behalf of field.module
+  module_load_include('inc', 'devel_generate', 'devel_generate.fields');
+  devel_generate_fields($node, 'node', $node->type);
+
+  // See devel_generate_nodeapi() for actions that happen before and after this save.
+  node_save($node);
+
+  return $node;
 }
