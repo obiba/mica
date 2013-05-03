@@ -9,18 +9,17 @@ include_once(drupal_get_path('module', 'current_search') . '/current_search.bloc
 include_once(drupal_get_path('module', 'mica_field_description') . '/mica_field_description.module');
 include_once(drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.inc');
 
-
 function mica_studies_configure_facet_blocks() {
 
   // disable some facets because Features/FacetAPI always export them as enabled: http://drupal.org/node/1439950
   $disabled_facets = array(
     'field_access_other',
-    'field_current_part_nb_date',
-    'field_current_samples_date',
+//    'field_current_part_nb_date',
+//    'field_current_samples_date',
     'field_no_limits_participants',
     'field_no_limits_samples',
-    'field_current_participants_nb',
-    'field_current_samples_nb',
+//    'field_current_participants_nb',
+//    'field_current_samples_nb',
   );
   $searcher = 'search_api@studies_index';
   foreach ($disabled_facets as $disabled_facet) {
@@ -41,16 +40,16 @@ function mica_studies_configure_facet_blocks() {
     'field_design' => array(
       'name' => t('Study design'),
     ),
-    'field_country' => array(
+    'field_study_populations:field_pop_country' => array(
       'name' => t('Country of residence'),
     ),
-    'field_age_min' => array(
+    'field_study_populations:field_pop_age_min' => array(
       'name' => t('Minimum age'),
     ),
-    'field_age_max' => array(
+    'field_study_populations:field_pop_age_max' => array(
       'name' => t('Maximum age'),
     ),
-    'field_gender' => array(
+    'field_study_populations:field_pop_gender' => array(
       'name' => t('Gender'),
     ),
     'field_target_number_participants' => array(
@@ -59,20 +58,20 @@ function mica_studies_configure_facet_blocks() {
     'field_target_number_biosamples' => array(
       'name' => t('Target number of participants with samples'),
     ),
-    'field_bio_samples_management' => array(
+    'field_study_populations:field_pop_dce:field_dce_bio_samples_management' => array(
       'name' => t('Biological samples'),
     ),
-    'field_select_criteria' => array(
+    'field_study_populations:field_pop_select_criteria' => array(
       'name' => t('Selection criteria'),
     ),
-    'field_data_sources' => array(
+    'field_study_populations:field_pop_dce:field_dce_data_sources' => array(
       'name' => t('Data sources')
     ),
     'field_recruitment' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'name' => t('Recruitment target'),
     ),
-    'field_recruitment_sources' => array(
+    'field_study_populations:field_pop_src_recruit' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'name' => t('Recruitment sources'),
     ),
@@ -84,31 +83,35 @@ function mica_studies_configure_facet_blocks() {
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'name' => t('Biological samples access'),
     ),
-    'field_preparation_start_year' => array(
+    'field_study_populations:field_pop_dce:field_dce_start_date' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
-      'name' => t('Preparation phase / Pilot start year'),
+      'name' => t('Data Collection Event Start Date'),
     ),
-    'field_preparation_end_year' => array(
+    'field_study_populations:field_pop_dce:field_dce_end_date' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
-      'name' => t('Preparation phase / Pilot end year'),
+      'name' => t('Data Collection Event End Date'),
     ),
-    'field_baseline_start_year' => array(
+//    'field_baseline_start_year' => array(
+//      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+//      'name' => t('Baseline recruitment / initial data collection start year'),
+//    ),
+//    'field_baseline_end_year' => array(
+//      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+//      'name' => t('Baseline recruitment / initial data collection end year'),
+//    ),
+//    'field_followup_start_year' => array(
+//      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+//      'name' => t('Follow-up of participants start year'),
+//    ),
+//    'field_followup_end_year' => array(
+//      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
+//      'name' => t('Follow-up of participants end year'),
+//    ),
+    'field_study_start_date' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
-      'name' => t('Baseline recruitment / initial data collection start year'),
+      'name' => t('Study start year'),
     ),
-    'field_baseline_end_year' => array(
-      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
-      'name' => t('Baseline recruitment / initial data collection end year'),
-    ),
-    'field_followup_start_year' => array(
-      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
-      'name' => t('Follow-up of participants start year'),
-    ),
-    'field_followup_end_year' => array(
-      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
-      'name' => t('Follow-up of participants end year'),
-    ),
-    'field_ended_end_year' => array(
+    'field_study_end_date' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'name' => t('Study end year'),
     ),

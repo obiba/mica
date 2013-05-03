@@ -106,7 +106,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
   for ($i = 0; $i < count($breadcrumb); $i++) {
     $breadcrumbs[] = l($breadcrumb[$i]['link_title'], $breadcrumb[$i]['link_path']);
   }
-  $breadcrumbs[] = l($wrapper->title->value(), 'node/' . $wrapper->nid->value());
+//  $breadcrumbs[] = l($wrapper->title->value(), 'node/' . $wrapper->nid->value());
   drupal_set_breadcrumb($breadcrumbs);
 }
 

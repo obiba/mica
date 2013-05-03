@@ -1974,6 +1974,106 @@ function mica_studies_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-data_collection_event-field_dce_dataset'.
+  $fields['node-data_collection_event-field_dce_dataset'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dce_dataset',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'article' => 0,
+          'blog' => 0,
+          'contact' => 0,
+          'data_access_request' => 0,
+          'data_access_review' => 0,
+          'data_collection_event' => 0,
+          'dataset' => 'dataset',
+          'documents' => 0,
+          'event' => 0,
+          'field_description' => 0,
+          'forum' => 0,
+          'page' => 0,
+          'panel' => 0,
+          'population' => 0,
+          'project' => 0,
+          'publication' => 0,
+          'study' => 0,
+          'study_variable_attributes' => 0,
+          'teleconference' => 0,
+          'variable' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'data_collection_event',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 15,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_dce_dataset',
+      'label' => 'Datasets',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '32',
+      ),
+    ),
+  );
+
   // Exported field: 'node-data_collection_event-field_dce_end_date'.
   $fields['node-data_collection_event-field_dce_end_date'] = array(
     'field_config' => array(
@@ -10095,6 +10195,7 @@ function mica_studies_field_default_fields() {
   t('Data Dictionnaries');
   t('Data collection event');
   t('Data sources');
+  t('Datasets');
   t('Department/Unit');
   t('Documents');
   t('Email');
