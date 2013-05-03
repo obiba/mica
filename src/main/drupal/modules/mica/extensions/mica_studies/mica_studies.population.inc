@@ -77,8 +77,10 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
   foreach ($wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
     $start = $dce_wrapper->field_dce_start_date->value();
     $end = $dce_wrapper->field_dce_end_date->value();
+    $summary = $dce_wrapper->body->summary->value();
     $dce_rows[] = array(
       l($dce_wrapper->title->value(), 'node/' . $dce_wrapper->nid->value()),
+      empty($summary) ? truncate_utf8($dce_wrapper->body->value->value(), 50, TRUE, TRUE) : $summary,
       empty($start) ? '' : date("Y M", $start),
       empty($end) ? '' : date("Y M", $end),
     );
@@ -89,7 +91,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
       '#theme' => 'table',
       '#caption' => t('Data Collection Events') . ': ',
       '#attributes' => array('class' => array('pop-dce')),
-      '#header' => array(t('Name'), t('Start'), t('End')),
+      '#header' => array(t('Name'), t('Description'), t('Start'), t('End')),
       '#rows' => $dce_rows,
     );
   }
