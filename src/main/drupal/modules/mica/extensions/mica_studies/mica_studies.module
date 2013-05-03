@@ -334,7 +334,7 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
 
 }
 
-function _mica_studies_save_population_submit($form ,&$form_state){
+function _mica_studies_save_population_submit($form, &$form_state) {
   $lang = $form['field_pop_study']['#language'];
   $form_state['redirect'] = 'node/' . $form['#node']->field_pop_study[$lang][0]['nid'];
 }
@@ -409,12 +409,14 @@ function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $f
   _mica_add_dependent_field_checked($form, 'field_dce_bio_samples_management', 'field_dce_samples_man_other_sp', 'others');
 }
 
-function _mica_studies_save_dce_submit($form ,&$form_state){
-  $lang = $form['field_dce_population']['#language'];
-  $pop = node_load($form['#node']->field_dce_population[$lang][0]['nid']);
-  $wrapper = entity_metadata_wrapper('node', $pop);
-  debug("Study id is ".$wrapper->field_pop_study->value()->nid);
-  $form_state['redirect'] = 'node/' . $wrapper->field_pop_study->value()->nid;
+/**
+ * Redirects the user from the DCE edit form to the Study view page
+ * @param $form
+ * @param $form_state
+ */
+function _mica_studies_save_dce_submit($form, &$form_state) {
+  $wrapper = entity_metadata_wrapper('node', $form_state['nid']);
+  $form_state['redirect'] = 'node/' .  $wrapper->field_dce_population->field_pop_study->value()->nid;
 }
 
 /**
