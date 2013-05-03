@@ -20,9 +20,9 @@ function mica_studies_current_search_default_items() {
       'results' => array(
         'id' => 'text',
         'label' => 'Results',
-        'text' => t('Search found [facetapi_results:result-count] study'),
+        'text' => 'Search found [facetapi_results:result-count] study',
         'plural' => 1,
-        'text_plural' => t('Search found [facetapi_results:result-count] studies'),
+        'text_plural' => 'Search found [facetapi_results:result-count] studies',
         'plural_condition' => 'facetapi_results:result-count',
         'wrapper' => 1,
         'element' => 'h3',
@@ -33,7 +33,7 @@ function mica_studies_current_search_default_items() {
       'field_group' => array(
         'id' => 'group',
         'label' => 'Field group',
-        'field_pattern' => t('[facetapi_facet:facet-label]:'),
+        'field_pattern' => '[facetapi_facet:facet-label]:',
         'nofollow' => 1,
         'weight' => '0',
       ),

@@ -1554,7 +1554,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -3452,6 +3452,7 @@ function mica_studies_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'population',
+      'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -3479,9 +3480,11 @@ function mica_studies_field_default_fields() {
       ),
       'widget' => array(
         'active' => 0,
-        'module' => 'multiselect',
-        'settings' => array(),
-        'type' => 'multiselect',
+        'module' => 'options',
+        'settings' => array(
+          'content_taxonomy_opt_groups' => FALSE,
+        ),
+        'type' => 'options_select',
         'weight' => '8',
       ),
     ),
