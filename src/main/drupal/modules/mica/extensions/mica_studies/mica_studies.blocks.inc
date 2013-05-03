@@ -15,7 +15,7 @@ function _mica_studies_block_study_general_info($study) {
     field_view_field('node', $study, 'field_study_end_date', array('label' => 'inline', 'weight' => ++$weight)),
   );
   return array(
-    'subject' => t('General Information') . '<a name="general-info" />',
+    'subject' => t('General Information') . '<a name="general-info"> </a>',
     'content' => $content,
   );
 }
@@ -35,7 +35,7 @@ function _mica_studies_block_study_access($study) {
     $content[] = $other;
   }
   return array(
-    'subject' => t('Access') . '<a name="access" />',
+    'subject' => t('Access') . '<a name="access"> </a>',
     'content' => array_filter($content),
   );
 }
@@ -62,7 +62,7 @@ function _mica_studies_block_study_marker_paper($study) {
       ),
     );
   return array(
-    'subject' => t('Marker Paper') . '<a name="marker-paper" />',
+    'subject' => t('Marker Paper') . '<a name="marker-paper"> </a>',
     'content' => $content,
   );
 }
@@ -79,7 +79,7 @@ function _mica_studies_block_study_documents($study) {
     ? NULL
     : array(field_view_field('node', $study, 'field_documents', array('label' => 'hidden')));
   return array(
-    'subject' => t('Documents') . '<a name="documents" />',
+    'subject' => t('Documents') . '<a name="documents"> </a>',
     'content' => $content,
   );
 }
@@ -96,7 +96,7 @@ function _mica_studies_block_study_supp_infos($study) {
     ? NULL
     : array(field_view_field('node', $study, 'field_supp_infos', array('label' => 'hidden')));
   return array(
-    'subject' => t('Supplementary Information') . '<a name="supplementary-info" />',
+    'subject' => t('Supplementary Information') . '<a name="supplementary-info"> </a>',
     'content' => $content,
   );
 }
@@ -139,7 +139,7 @@ function _mica_studies_block_study_datasets($study) {
   }
 
   return array(
-    'subject' => t('Datasets') . '<a name="datasets" />',
+    'subject' => t('Datasets') . '<a name="datasets"> </a>',
     'content' => array(
       '#theme' => 'table',
       '#attributes' => array('class' => array('study-datasets')),
@@ -161,7 +161,7 @@ function _mica_studies_block_study_populations($study) {
     $content[] = node_view($population_wrapper->value(), 'full');
   }
   return array(
-    'subject' => t('Populations') . '<a name="populations" />',
+    'subject' => t('Populations') . '<a name="populations"> </a>',
     'content' => $content,
   );
 }

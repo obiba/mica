@@ -416,7 +416,7 @@ function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $f
  */
 function _mica_studies_save_dce_submit($form, &$form_state) {
   $wrapper = entity_metadata_wrapper('node', $form_state['nid']);
-  $form_state['redirect'] = 'node/' .  $wrapper->field_dce_population->field_pop_study->value()->nid;
+  $form_state['redirect'] = 'node/' . $wrapper->field_dce_population->field_pop_study->value()->nid;
 }
 
 /**
@@ -859,17 +859,17 @@ function mica_studies_block_view($delta = '') {
       return _mica_studies_block_study_supp_infos($study);
     case 'study-populations':
       return _mica_studies_block_study_populations($study);
-//    case 'study-timeline':
-//      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.timeline');
-//      return _mica_studies_block_study_timeline($study);
-//    case 'study-datasets':
-//      return _mica_studies_block_study_datasets($study);
-//    case 'study-authorization':
-//      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.authorization');
-//      return _mica_studies_block_study_authorization($study);
-//    case 'study-menu':
-//      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.menu');
-//      return _mica_studies_block_study_menu($study);
+    case 'study-timeline':
+      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.timeline');
+      return _mica_studies_block_study_timeline($study);
+    case 'study-datasets':
+      return _mica_studies_block_study_datasets($study);
+    case 'study-authorization':
+      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.authorization');
+      return _mica_studies_block_study_authorization($study);
+    case 'study-menu':
+      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.menu');
+      return _mica_studies_block_study_menu($study);
     default:
       return NULL;
   }

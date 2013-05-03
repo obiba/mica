@@ -69,7 +69,7 @@ function _mica_studies_block_study_authorization($study) {
     );
   }
   return array(
-    'subject' => t('Authorization') . '<a name="authorization" />',
+    'subject' => t('Authorization') . '<a name="authorization"> </a>',
     'content' => $content,
   );
 }
