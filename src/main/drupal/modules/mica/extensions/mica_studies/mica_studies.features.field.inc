@@ -1636,11 +1636,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '7',
+          'weight' => 3,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1707,11 +1707,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
-          'weight' => '10',
+          'weight' => 11,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1789,11 +1789,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '4',
+          'weight' => 1,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1864,11 +1864,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '6',
+          'weight' => 14,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1940,11 +1940,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '5',
+          'weight' => 2,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2113,7 +2113,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -2123,7 +2123,7 @@ function mica_studies_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '2',
+          'weight' => 7,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2135,7 +2135,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_dce_end_date',
-      'label' => 'End Date',
+      'label' => 'Data Collection Event End Date',
       'required' => 0,
       'settings' => array(
         'default_value' => 'now',
@@ -2148,7 +2148,7 @@ function mica_studies_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
-          'increment' => '15',
+          'increment' => 15,
           'input_format' => 'm/d/Y - H:i:s',
           'input_format_custom' => '',
           'label_position' => 'above',
@@ -2201,11 +2201,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
-          'weight' => '11',
+          'weight' => 12,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2303,11 +2303,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
-          'module' => 'mica_core',
+          'label' => 'above',
+          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'node_reference_url_or_plain',
-          'weight' => '3',
+          'type' => 'node_reference_default',
+          'weight' => 13,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2378,11 +2378,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
-          'weight' => '9',
+          'weight' => 10,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2459,11 +2459,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '9',
+          'weight' => 5,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2533,11 +2533,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'file',
           'settings' => array(),
           'type' => 'file_default',
-          'weight' => '8',
+          'weight' => 9,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2609,7 +2609,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -2619,7 +2619,7 @@ function mica_studies_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '1',
+          'weight' => 6,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2631,7 +2631,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_dce_start_date',
-      'label' => 'Start Date',
+      'label' => 'Data Collection Event Start Date',
       'required' => 0,
       'settings' => array(
         'default_value' => 'now',
@@ -2644,7 +2644,7 @@ function mica_studies_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
-          'increment' => '15',
+          'increment' => 15,
           'input_format' => 'm/d/Y - H:i:s',
           'input_format_custom' => '',
           'label_position' => 'above',
@@ -2702,11 +2702,11 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '8',
+          'weight' => 4,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2732,6 +2732,106 @@ function mica_studies_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '6',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-dataset-field_dataset_dce'.
+  $fields['node-dataset-field_dataset_dce'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dataset_dce',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'article' => 0,
+          'blog' => 0,
+          'contact' => 0,
+          'data_access_request' => 0,
+          'data_access_review' => 0,
+          'data_collection_event' => 'data_collection_event',
+          'dataset' => 0,
+          'documents' => 0,
+          'event' => 0,
+          'field_description' => 0,
+          'forum' => 0,
+          'page' => 0,
+          'panel' => 0,
+          'population' => 0,
+          'project' => 0,
+          'publication' => 0,
+          'study' => 0,
+          'study_variable_attributes' => 0,
+          'teleconference' => 0,
+          'variable' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'dataset',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 5,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_dataset_dce',
+      'label' => 'Data Collection Event',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '31',
       ),
     ),
   );
@@ -3160,7 +3260,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'number',
           'settings' => array(
             'decimal_separator' => '.',
@@ -3233,7 +3333,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'number',
           'settings' => array(
             'decimal_separator' => '.',
@@ -3557,7 +3657,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -3580,11 +3680,9 @@ function mica_studies_field_default_fields() {
       ),
       'widget' => array(
         'active' => 0,
-        'module' => 'options',
-        'settings' => array(
-          'content_taxonomy_opt_groups' => FALSE,
-        ),
-        'type' => 'options_select',
+        'module' => 'multiselect',
+        'settings' => array(),
+        'type' => 'multiselect',
         'weight' => '8',
       ),
     ),
@@ -3734,7 +3832,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -3813,7 +3911,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -3889,7 +3987,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -3963,7 +4061,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -4039,7 +4137,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -4119,7 +4217,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -4198,7 +4296,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -4342,7 +4440,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'number',
           'settings' => array(
             'decimal_separator' => '.',
@@ -4415,7 +4513,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'number',
           'settings' => array(
             'decimal_separator' => '.',
@@ -4733,7 +4831,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -4810,7 +4908,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -4885,7 +4983,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -4962,7 +5060,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -5037,7 +5135,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -5115,7 +5213,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
@@ -5367,7 +5465,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -5489,7 +5587,7 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
         'default' => array(
-          'label' => 'hidden',
+          'label' => 'above',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
@@ -5625,7 +5723,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '29',
+          'weight' => '22',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -5745,7 +5843,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '27',
+          'weight' => '21',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -5865,7 +5963,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '30',
+          'weight' => '23',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -5988,7 +6086,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '31',
+          'weight' => '24',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -6114,7 +6212,7 @@ function mica_studies_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '33',
+          'weight' => '26',
         ),
         'footer_area' => array(
           'label' => 'inline',
@@ -6238,7 +6336,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '3',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -6379,7 +6477,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
+          'weight' => '6',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -6519,7 +6617,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '2',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -6646,7 +6744,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '7',
+          'weight' => '5',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -6774,7 +6872,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '4',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -6901,7 +6999,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '37',
+          'weight' => '38',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -7046,7 +7144,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '35',
+          'weight' => '29',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -7183,7 +7281,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '9',
+          'weight' => '7',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -7307,7 +7405,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => '8',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -7436,7 +7534,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '24',
+          'weight' => '20',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -7566,7 +7664,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '22',
+          'weight' => '19',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -7711,7 +7809,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '34',
+          'weight' => '28',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -7980,7 +8078,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '21',
+          'weight' => '18',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8108,7 +8206,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => '13',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8236,7 +8334,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '18',
+          'weight' => '16',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8362,7 +8460,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '23',
+          'weight' => '19',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8487,7 +8585,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '11',
+          'weight' => '9',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8610,7 +8708,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
+          'weight' => '10',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8735,7 +8833,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => '11',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8861,7 +8959,7 @@ function mica_studies_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '19',
+          'weight' => '17',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -8982,7 +9080,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '26',
+          'weight' => '21',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -9136,7 +9234,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '20',
+          'weight' => '18',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -9257,7 +9355,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '25',
+          'weight' => '20',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -9391,7 +9489,7 @@ function mica_studies_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '32',
+          'weight' => '25',
         ),
         'footer_area' => array(
           'label' => 'hidden',
@@ -9516,7 +9614,7 @@ function mica_studies_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '17',
+          'weight' => '15',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -9656,7 +9754,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => '14',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -9814,7 +9912,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => '12',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -9960,7 +10058,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '36',
+          'weight' => '30',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -10100,7 +10198,7 @@ function mica_studies_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '28',
+          'weight' => '22',
         ),
         'footer_area' => array(
           'label' => 'above',
@@ -10192,6 +10290,9 @@ function mica_studies_field_default_fields() {
   t('Country');
   t('Country of residence');
   t('Data (questionnaire-derived, measured…)');
+  t('Data Collection Event');
+  t('Data Collection Event End Date');
+  t('Data Collection Event Start Date');
   t('Data Dictionnaries');
   t('Data collection event');
   t('Data sources');

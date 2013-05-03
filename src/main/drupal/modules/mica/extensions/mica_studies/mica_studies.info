@@ -220,6 +220,7 @@ features[field][] = node-data_collection_event-field_dce_samples_man_other_sp
 features[field][] = node-data_collection_event-field_dce_sops
 features[field][] = node-data_collection_event-field_dce_start_date
 features[field][] = node-data_collection_event-field_dce_tissues_sp
+features[field][] = node-dataset-field_dataset_dce
 features[field][] = node-documents-body
 features[field][] = node-documents-field_files
 features[field][] = node-documents-title_field
