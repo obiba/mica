@@ -7456,6 +7456,18 @@ section#block-views-news-recent-news article h2 {
   padding-left: 10px;
 }
 
+.node-type-study section#block-mica-studies-study-menu ul {
+  margin-left: 5px;
+}
+
+.node-type-study section#block-mica-studies-study-menu ul li {
+  list-style: none;
+}
+
+.node-type-study section#block-mica-studies-study-menu ul li a.inner {
+  padding-left: 15px;
+}
+
 table.pop-dce,
 table.study-datasets {
   margin-top: 8px;
