@@ -18,7 +18,7 @@ function mica_core_ckeditor_profile_defaults() {
         'uicolor' => 'default',
         'uicolor_user' => 'default',
         'toolbar' => '[
-    [\'Format\',\'Bold\',\'Italic\',\'-\',\'NumberedList\',\'BulletedList\',\'-\',\'Link\',\'Unlink\',\'Image\']
+    [\'Format\',\'Source\',\'Bold\',\'Italic\',\'-\',\'NumberedList\',\'BulletedList\',\'-\',\'Link\',\'Unlink\',\'Table\',\'Image\']
 ]',
         'expand' => 't',
         'width' => '100%',
@@ -88,7 +88,7 @@ function mica_core_ckeditor_profile_defaults() {
         'uicolor' => 'default',
         'uicolor_user' => 'default',
         'toolbar' => '[
-    [\'Format\',\'Bold\',\'Italic\',\'-\',\'NumberedList\',\'BulletedList\',\'-\',\'Link\',\'Unlink\',\'Image\']
+    [\'Source\',\'Format\',\'Bold\',\'Italic\',\'-\',\'NumberedList\',\'BulletedList\',\'-\',\'Link\',\'Unlink\',\'Table\',\'Image\']
 ]',
         'expand' => 't',
         'width' => '100%',
