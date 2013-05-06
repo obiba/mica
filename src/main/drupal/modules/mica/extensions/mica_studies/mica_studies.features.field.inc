@@ -3680,9 +3680,11 @@ function mica_studies_field_default_fields() {
       ),
       'widget' => array(
         'active' => 0,
-        'module' => 'multiselect',
-        'settings' => array(),
-        'type' => 'multiselect',
+        'module' => 'options',
+        'settings' => array(
+          'content_taxonomy_opt_groups' => FALSE,
+        ),
+        'type' => 'options_select',
         'weight' => '8',
       ),
     ),
