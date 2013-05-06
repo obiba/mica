@@ -171,6 +171,11 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'empty_dataset_studies';
   $handler->display->display_options['empty']['area']['content'] = 'No studies found.';
+  /* Relationship: Content: Populations (field_study_populations) */
+  $handler->display->display_options['relationships']['field_study_populations_nid']['id'] = 'field_study_populations_nid';
+  $handler->display->display_options['relationships']['field_study_populations_nid']['table'] = 'field_data_field_study_populations';
+  $handler->display->display_options['relationships']['field_study_populations_nid']['field'] = 'field_study_populations_nid';
+  $handler->display->display_options['relationships']['field_study_populations_nid']['delta'] = '-1';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -209,10 +214,11 @@ function mica_datasets_views_default_views() {
     'prefix_suffix' => 1,
   );
   /* Field: Content: Country of residence */
-  $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
-  $handler->display->display_options['fields']['field_country']['table'] = 'field_data_field_country';
-  $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
-  $handler->display->display_options['fields']['field_country']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_pop_country']['id'] = 'field_pop_country';
+  $handler->display->display_options['fields']['field_pop_country']['table'] = 'field_data_field_pop_country';
+  $handler->display->display_options['fields']['field_pop_country']['field'] = 'field_pop_country';
+  $handler->display->display_options['fields']['field_pop_country']['relationship'] = 'field_study_populations_nid';
+  $handler->display->display_options['fields']['field_pop_country']['delta_offset'] = '0';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
@@ -1645,7 +1651,6 @@ function mica_datasets_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'variables-dimensions';
-  $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Variable Domains';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'main-menu';
