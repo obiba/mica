@@ -13,6 +13,7 @@ dependencies[] = features
 dependencies[] = features_override
 dependencies[] = feeds
 dependencies[] = jquery_update
+dependencies[] = jquery_ui_multiselect_widget
 dependencies[] = libraries
 dependencies[] = logintoboggan
 dependencies[] = menu
