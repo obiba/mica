@@ -30,9 +30,7 @@ projects[cck_select_other] = 1.0
 
 projects[chain_menu_access] = 1.0
 
-projects[ckeditor][download][type] = git
-projects[ckeditor][download][revision] = 57c7a9c
-projects[ckeditor][download][branch] = 7.x-1.x
+projects[ckeditor] = 1.13
 
 projects[collapsiblock][download][type] = git
 projects[collapsiblock][download][revision] = 36f4280
@@ -253,7 +251,7 @@ projects[corolla] = 3.0-rc1
 ; jsonpath is not downloaded here because of http://code.google.com/p/jsonpath/issues/detail?id=8
 
 libraries[ckeditor][download][type]= get
-libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.5/ckeditor_3.6.5.tar.gz
+libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.1.1/ckeditor_4.1.1_standard.zip
 libraries[ckeditor][directory_name] = ckeditor
 
 libraries[jquery_tooltip][download][type]= get
