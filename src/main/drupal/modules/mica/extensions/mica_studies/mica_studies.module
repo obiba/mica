@@ -295,8 +295,8 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
   if (isset($_REQUEST['study'])) {
     $lang = $form['field_pop_study']['#language'];
     $form['field_pop_study'][$lang]['#after_build'][] = '_mica_studies_prepopulate_study_after_build';
+    $form['field_pop_study']['#type'] = 'hidden';
   }
-  $form['field_pop_study']['#type'] = 'hidden';
 
   $form['actions']['submit']['#type'] = 'hidden';
 

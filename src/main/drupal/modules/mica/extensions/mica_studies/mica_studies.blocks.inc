@@ -16,7 +16,7 @@ function _mica_studies_block_study_general_info($study) {
   );
   return array(
     'subject' => t('General Information') . '<a name="general-info"> </a>',
-    'content' => $content,
+    'content' => array_filter($content),
   );
 }
 
@@ -46,24 +46,19 @@ function _mica_studies_block_study_marker_paper($study) {
     $study = node_load($study);
   }
 
-  $wrapper = entity_metadata_wrapper('node', $study);
-  $marker_paper = $wrapper->field_marker_paper->value();
-  $pubmedid = $wrapper->field_pubmedid->value();
   $weight = 0;
-  $content = empty($marker_paper) && empty($pubmedid)
-    ? NULL
-    : array(
-      field_view_field('node', $study, 'field_marker_paper', array('label' => 'inline', 'weight' => ++$weight)),
-      field_view_field('node', $study, 'field_pubmedid', array(
-          'label' => 'inline',
-          'type' => 'mica_pubmed_url',
-          'weight' => ++$weight
-        )
-      ),
-    );
+  $content = array(
+    field_view_field('node', $study, 'field_marker_paper', array('label' => 'inline', 'weight' => ++$weight)),
+    field_view_field('node', $study, 'field_pubmedid', array(
+        'label' => 'inline',
+        'type' => 'mica_pubmed_url',
+        'weight' => ++$weight
+      )
+    ),
+  );
   return array(
     'subject' => t('Marker Paper') . '<a name="marker-paper"> </a>',
-    'content' => $content,
+    'content' => array_filter($content),
   );
 }
 
@@ -73,14 +68,10 @@ function _mica_studies_block_study_documents($study) {
     $study = node_load($study);
   }
 
-  $wrapper = entity_metadata_wrapper('node', $study);
-  $docs = $wrapper->field_supp_infos->value();
-  $content = empty($docs)
-    ? NULL
-    : array(field_view_field('node', $study, 'field_documents', array('label' => 'hidden')));
+  $content = array(field_view_field('node', $study, 'field_documents', array('label' => 'hidden')));
   return array(
     'subject' => t('Documents') . '<a name="documents"> </a>',
-    'content' => $content,
+    'content' => array_filter($content),
   );
 }
 
@@ -89,15 +80,10 @@ function _mica_studies_block_study_supp_infos($study) {
   if (is_numeric($study)) {
     $study = node_load($study);
   }
-
-  $wrapper = entity_metadata_wrapper('node', $study);
-  $supp_infos = $wrapper->field_supp_infos->value();
-  $content = empty($supp_infos)
-    ? NULL
-    : array(field_view_field('node', $study, 'field_supp_infos', array('label' => 'hidden')));
+  $content = array(field_view_field('node', $study, 'field_supp_infos', array('label' => 'hidden')));
   return array(
     'subject' => t('Supplementary Information') . '<a name="supplementary-info"> </a>',
-    'content' => $content,
+    'content' => array_filter($content),
   );
 }
 
@@ -162,6 +148,6 @@ function _mica_studies_block_study_populations($study) {
   }
   return array(
     'subject' => t('Populations') . '<a name="populations"> </a>',
-    'content' => $content,
+    'content' => array_filter($content),
   );
 }

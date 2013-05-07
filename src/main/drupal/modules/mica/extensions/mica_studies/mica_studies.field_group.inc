@@ -57,7 +57,6 @@ function mica_studies_field_group_info() {
       0 => 'field_authorising_date_m',
       1 => 'field_authorising_person_name_m',
       2 => 'field_authorization_maelstrom',
-      3 => 'group_authorising_person_m',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -88,7 +87,6 @@ function mica_studies_field_group_info() {
       0 => 'field_authorising_date',
       1 => 'field_authorising_person_name',
       2 => 'field_authorization_specific',
-      3 => 'group_authorising_person',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -261,7 +259,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Data collection events',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_pop_dce',
     ),
@@ -293,7 +291,6 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'field_documents',
       1 => 'field_logo',
-      2 => 'field_questionnaires',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -321,10 +318,8 @@ function mica_studies_field_group_info() {
     'weight' => '66',
     'children' => array(
       0 => 'group_nb_participants',
-      1 => 'group_current_number_samples',
-      2 => 'group_current_number',
-      3 => 'group_study_design',
-      4 => 'group_study_timeline',
+      1 => 'group_study_design',
+      2 => 'group_study_timeline',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -477,10 +472,7 @@ function mica_studies_field_group_info() {
     'label' => 'Methods',
     'weight' => '8',
     'children' => array(
-      0 => 'group_data_collection',
-      1 => 'group_general_design',
-      2 => 'group_participants_selection',
-      3 => 'group_sample_management',
+      0 => 'group_general_design',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -647,7 +639,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Participants Selection',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'group_pop_participants_number',
       1 => 'group_pop_recruitment_procedures',
@@ -928,8 +920,7 @@ function mica_studies_field_group_info() {
       4 => 'group_general_info',
       5 => 'group_marker_paper',
       6 => 'group_methods',
-      7 => 'group_status',
-      8 => 'group_supp_info',
+      7 => 'group_supp_info',
     ),
     'format_type' => 'htabs',
     'format_settings' => array(

@@ -3648,6 +3648,7 @@ function mica_studies_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'population',
+      'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -3675,9 +3676,11 @@ function mica_studies_field_default_fields() {
       ),
       'widget' => array(
         'active' => 0,
-        'module' => 'multiselect',
-        'settings' => array(),
-        'type' => 'multiselect',
+        'module' => 'options',
+        'settings' => array(
+          'content_taxonomy_opt_groups' => FALSE,
+        ),
+        'type' => 'options_select',
         'weight' => '8',
       ),
     ),
@@ -5329,7 +5332,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '7',
+        'weight' => '2',
       ),
     ),
   );
@@ -9036,7 +9039,7 @@ function mica_studies_field_default_fields() {
         'cache_count' => '4',
         'cache_enabled' => 0,
         'granularity' => array(
-          'day' => 'day',
+          'day' => 0,
           'hour' => 0,
           'minute' => 0,
           'month' => 'month',
@@ -9122,7 +9125,7 @@ function mica_studies_field_default_fields() {
       'label' => 'Study End Date',
       'required' => 0,
       'settings' => array(
-        'default_value' => 'now',
+        'default_value' => 'blank',
         'default_value2' => 'same',
         'default_value_code' => '',
         'default_value_code2' => '',
@@ -9132,12 +9135,12 @@ function mica_studies_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
-          'increment' => 15,
+          'increment' => '15',
           'input_format' => 'm/d/Y - H:i:s',
           'input_format_custom' => '',
           'label_position' => 'above',
           'text_parts' => array(),
-          'year_range' => '-3:+3',
+          'year_range' => '-100:+50',
         ),
         'type' => 'date_popup',
         'weight' => '124',
@@ -9311,7 +9314,7 @@ function mica_studies_field_default_fields() {
         'cache_count' => '4',
         'cache_enabled' => 0,
         'granularity' => array(
-          'day' => 'day',
+          'day' => 0,
           'hour' => 0,
           'minute' => 0,
           'month' => 'month',
@@ -9397,7 +9400,7 @@ function mica_studies_field_default_fields() {
       'label' => 'Study Start Date',
       'required' => 0,
       'settings' => array(
-        'default_value' => 'now',
+        'default_value' => 'blank',
         'default_value2' => 'same',
         'default_value_code' => '',
         'default_value_code2' => '',
@@ -9412,7 +9415,7 @@ function mica_studies_field_default_fields() {
           'input_format_custom' => '',
           'label_position' => 'above',
           'text_parts' => array(),
-          'year_range' => '-3:+3',
+          'year_range' => '-100:+50',
         ),
         'type' => 'date_popup',
         'weight' => '123',
