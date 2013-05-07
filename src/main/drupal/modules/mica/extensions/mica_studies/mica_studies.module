@@ -715,7 +715,6 @@ function mica_studies_translation_exclude_fields() {
 /*
  * Hook hook_node_delete
  */
-
 function  mica_studies_node_delete($node) {
   switch ($node->type) {
     case 'study':

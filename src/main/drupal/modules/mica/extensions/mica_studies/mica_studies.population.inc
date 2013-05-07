@@ -1,7 +1,9 @@
 <?php
 
+/**
+ * Create a reference in study when a population is create for this study
+ */
 function _mica_studies_population_link($population) {
-  // create a reference in study when a population is create for this study
   $population_wrapper = entity_metadata_wrapper('node', $population);
   $study = $population_wrapper->field_pop_study->value();
   if (!empty($study)) {
@@ -13,6 +15,9 @@ function _mica_studies_population_link($population) {
   }
 }
 
+/**
+ * Delete node reference in study when a population is deleted
+ */
 function _mica_studies_population_delete($population) {
 
   $deleted_pop_wrapper = entity_metadata_wrapper('node', $population);
@@ -299,7 +304,7 @@ function _mica_studies_population_view_nb(&$node, $field_nb, $field_no_limit, $f
   }
   $node->content[$field_info]['#access'] = FALSE;
 
-  if (strlen($node->content[$field_nb][0]['#markup']) == 0) {
+  if (strlen($node->content[$field_nb][0]['#markup']) === 0) {
     $node->content[$field_nb]['#access'] = FALSE;
   }
 }
