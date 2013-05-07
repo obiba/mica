@@ -149,9 +149,6 @@ function mica_studies_node_insert($node) {
     case 'study':
       mica_core_create_node_default_menu($node, TRUE, FALSE, 0, 'studies');
       break;
-    case 'population':
-      _mica_studies_population_link($node);
-      break;
   }
 }
 
@@ -719,9 +716,6 @@ function  mica_studies_node_delete($node) {
   switch ($node->type) {
     case 'study':
       _mica_studies_study_delete($node);
-      break;
-    case 'population':
-      _mica_studies_population_delete($node);
       break;
   }
 }

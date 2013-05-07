@@ -1,56 +1,5 @@
 <?php
 
-/**
- * Create a reference in study when a population is create for this study
- */
-function _mica_studies_population_link($population) {
-  $population_wrapper = entity_metadata_wrapper('node', $population);
-  $study = $population_wrapper->field_pop_study->value();
-  if (!empty($study)) {
-    $study_wrapper = entity_metadata_wrapper('node', $study);
-    $study_populations = $study_wrapper->field_study_populations->value();
-    $nb_populations = count($study_populations);
-    $study_wrapper->value()->field_study_populations[LANGUAGE_NONE][$nb_populations]['nid'][$population->nid] = $population->nid;
-    $study_wrapper->save();
-  }
-}
-
-/**
- * Delete node reference in study when a population is deleted
- */
-function _mica_studies_population_delete($population) {
-
-  $deleted_pop_wrapper = entity_metadata_wrapper('node', $population);
-  $study = $deleted_pop_wrapper->field_pop_study->value();
-  if (!empty($study)) {
-    $study_wrapper = entity_metadata_wrapper('node', $study);
-    for ($i = 0; $i < $study_wrapper->field_study_populations->count(); $i++) {
-      if ($study_wrapper->field_study_populations[$i]->nid->value() == $deleted_pop_wrapper->nid->value()) {
-        $study_wrapper->field_study_populations[$i]->set();
-      }
-    }
-    $study_wrapper->save();
-  }
-
-//  //suppress all data collection event associate to the population
-//  $query = new EntityFieldQuery;
-//  $entities = $query->entityCondition('entity_type', 'node')
-//    ->entityCondition('bundle', 'data_collection_event')
-//    ->execute();
-//  if (!empty($entities)) {
-//    $nodes = node_load_multiple(array_keys($entities['node']));
-//    foreach ($nodes as $node) {
-//      $dce_wrapper = entity_metadata_wrapper('node', $node);
-//      $dce_pop = $dce_wrapper->field_dce_population->value();
-//      $dce_pop_id = $dce_pop->nid;
-//      if ($population_id == $dce_pop_id) {
-//        node_delete($dce_wrapper->nid->value());
-//      }
-//    }
-//  }
-
-}
-
 function _mica_studies_population_view($node, $view_mode, $langcode) {
   _mica_studies_population_view_selection_criteria($node);
   _mica_studies_population_view_recruitment_sources($node);

@@ -17,9 +17,6 @@ function _mica_studies_block_study_menu($study) {
     l(t('Access'), '#access'),
     l(t('Marker Paper'), '#marker-paper'),
     l(t('Populations'), '#populations'),
-    // TODO iterate on populations...
-    l(t('Population 1'), '#populations-0', array('attributes' => array('class' => 'inner'))),
-    l(t('Population 2'), '#populations-1', array('attributes' => array('class' => 'inner'))),
     l(t('Timeline'), '#timeline'),
     l(t('Authorization'), '#authorization'),
   );
