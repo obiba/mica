@@ -898,6 +898,11 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'empty_studies';
   $handler->display->display_options['empty']['area']['content'] = 'No study found.';
+  /* Relationship: Content: Populations (field_study_populations) */
+  $handler->display->display_options['relationships']['field_study_populations_nid']['id'] = 'field_study_populations_nid';
+  $handler->display->display_options['relationships']['field_study_populations_nid']['table'] = 'field_data_field_study_populations';
+  $handler->display->display_options['relationships']['field_study_populations_nid']['field'] = 'field_study_populations_nid';
+  $handler->display->display_options['relationships']['field_study_populations_nid']['delta'] = '-1';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1238,10 +1243,12 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     'thousand_separator' => ' ',
     'prefix_suffix' => 0,
   );
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
-  $handler->display->display_options['fields']['field_country']['table'] = 'field_data_field_country';
-  $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
+  /* Field: Content: Country of residence */
+  $handler->display->display_options['fields']['field_pop_country']['id'] = 'field_pop_country';
+  $handler->display->display_options['fields']['field_pop_country']['table'] = 'field_data_field_pop_country';
+  $handler->display->display_options['fields']['field_pop_country']['field'] = 'field_pop_country';
+  $handler->display->display_options['fields']['field_pop_country']['relationship'] = 'field_study_populations_nid';
+  $handler->display->display_options['fields']['field_pop_country']['delta_offset'] = '0';
   $handler->display->display_options['path'] = 'studies';
 
   /* Display: Export CSV */

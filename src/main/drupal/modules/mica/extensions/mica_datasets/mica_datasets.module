@@ -848,68 +848,73 @@ function mica_datasets_node_delete($node) {
  * For all variable in $dataset,link them to $study with Study Variables entity
  */
 function _mica_datasets_create_svas(&$study, &$dataset) {
-  $wrapper_study = entity_metadata_wrapper('node', $study);
-  $study_value = $wrapper_study->value();
-  $wrapper_dataset = entity_metadata_wrapper('node', $dataset);
+  if ($study) { // problem when creating content with devel_generate
+    $wrapper_study = entity_metadata_wrapper('node', $study);
+    $study_value = $wrapper_study->value();
+    $wrapper_dataset = entity_metadata_wrapper('node', $dataset);
 
-  if ($wrapper_dataset->field_dataset_type->value() === 'harmonization') {
-    $query = new EntityFieldQuery();
-    $results = $query->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', 'study_variable_attributes')
-      ->fieldCondition('field_sva_study', 'nid', $wrapper_study->nid->value())
-      ->execute();
+    if ($wrapper_dataset->field_dataset_type->value() === 'harmonization') {
+      $query = new EntityFieldQuery();
+      $results = $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'study_variable_attributes')
+        ->fieldCondition('field_sva_study', 'nid', $wrapper_study->nid->value())
+        ->execute();
 
-    $study_variable_attributes = array();
-    if (empty($results['node']) == FALSE) {
-      $study_variable_attributes = entity_load('node', array_keys($results['node']));
-    }
+      $study_variable_attributes = array();
+      if (empty($results['node']) == FALSE) {
+        $study_variable_attributes = entity_load('node', array_keys($results['node']));
+      }
 
-    $variables = array();
-    foreach ($wrapper_dataset->field_dataset_variables as $wrapper_variable) {
-      $exist = FALSE;
-      $variable_value = $wrapper_variable->value();
-      foreach ($study_variable_attributes as $sv) {
-        $wrapper_sv = entity_metadata_wrapper('node', $sv);
-        $field_sva_variable_value = $wrapper_sv->field_sva_variable->value();
-        $field_sva_study_value = $wrapper_sv->field_sva_study->value();
-        // this method is called also when deleting a variable and $field_sva_variable_value is null in that case
-        if (!is_null($field_sva_variable_value) && $field_sva_variable_value->nid === $variable_value->nid
-          && $field_sva_study_value->nid === $study_value->nid
-        ) {
-          $exist = TRUE;
+      $variables = array();
+      foreach ($wrapper_dataset->field_dataset_variables as $wrapper_variable) {
+        $exist = FALSE;
+        $variable_value = $wrapper_variable->value();
+        foreach ($study_variable_attributes as $sv) {
+          $wrapper_sv = entity_metadata_wrapper('node', $sv);
+          $field_sva_variable_value = $wrapper_sv->field_sva_variable->value();
+          $field_sva_study_value = $wrapper_sv->field_sva_study->value();
+          // this method is called also when deleting a variable and $field_sva_variable_value is null in that case
+          if (!is_null($field_sva_variable_value) && $field_sva_variable_value->nid === $variable_value->nid
+            && $field_sva_study_value->nid === $study_value->nid
+          ) {
+            $exist = TRUE;
+          }
+        }
+        if (!$exist) {
+          if ($variable_value !== NULL) {
+            array_push($variables, $wrapper_variable);
+          }
         }
       }
-      if (!$exist) {
-        if ($variable_value !== NULL) {
-          array_push($variables, $wrapper_variable);
-        }
-      }
-    }
 
-    if (isset($variables)) {
-      _mica_datasets_create_study_variable_attributes_for_study($wrapper_study, $variables);
+      if (isset($variables)) {
+        _mica_datasets_create_study_variable_attributes_for_study($wrapper_study, $variables);
+      }
     }
   }
 }
 
 function _mica_datasets_delete_svas(&$dataset, &$study) {
-  $dataset_wrapper = entity_metadata_wrapper('node', $dataset->nid);
-  $study_wrapper = entity_metadata_wrapper('node', $study->nid);
-  $variables = $dataset_wrapper->field_dataset_variables;
-  foreach ($variables as $variable) {
+  // When generating datasets with devel_generate, nid is null
+  if (isset($dataset->nid)) {
+    $dataset_wrapper = entity_metadata_wrapper('node', $dataset->nid);
+    $study_wrapper = entity_metadata_wrapper('node', $study->nid);
+    $variables = $dataset_wrapper->field_dataset_variables;
+    foreach ($variables as $variable) {
 
-    $sva_query = new EntityFieldQuery();
-    $sva_results = $sva_query->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', 'study_variable_attributes')
-      ->fieldCondition('field_sva_variable', 'nid', $variable->nid)
-      ->execute();
+      $sva_query = new EntityFieldQuery();
+      $sva_results = $sva_query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'study_variable_attributes')
+        ->fieldCondition('field_sva_variable', 'nid', $variable->nid)
+        ->execute();
 
-    if (!empty($sva_results['node'])) {
-      foreach (node_load_multiple(array_keys($sva_results['node'])) as $sva) {
-        $sva_wrapper = entity_metadata_wrapper('node', $sva);
-        if ($sva_wrapper->field_sva_study->nid->value() === $study_wrapper->nid->value()) {
-          $sva_wrapper->delete();
-          _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable, $sva_wrapper, 'field_variable_study_var_att');
+      if (!empty($sva_results['node'])) {
+        foreach (node_load_multiple(array_keys($sva_results['node'])) as $sva) {
+          $sva_wrapper = entity_metadata_wrapper('node', $sva);
+          if ($sva_wrapper->field_sva_study->nid->value() === $study_wrapper->nid->value()) {
+            $sva_wrapper->delete();
+            _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable, $sva_wrapper, 'field_variable_study_var_att');
+          }
         }
       }
     }
@@ -1649,7 +1654,7 @@ function mica_datasets_field_widget_form_alter(&$element, &$form_state, $context
   if ($form_state['build_info']['form_id'] == 'views_form_variables_dimensions_page') {
     // Force autocomplete deluxe widget to allow only a single value
     if ($context['instance']['widget']['module'] == 'autocomplete_deluxe') {
-      $element['#multiple'] = false;
+      $element['#multiple'] = FALSE;
     }
   }
 }

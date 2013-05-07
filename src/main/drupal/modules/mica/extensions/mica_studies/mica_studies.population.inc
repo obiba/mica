@@ -57,9 +57,11 @@ function _mica_studies_population_delete($population) {
     foreach ($nodes as $node) {
       $dce_wrapper = entity_metadata_wrapper('node', $node);
       $dce_pop = $dce_wrapper->field_dce_population->value();
-      $dce_pop_id = $dce_pop->nid;
-      if ($population_id == $dce_pop_id) {
-        node_delete($dce_wrapper->nid->value());
+      if (isset($dce_pop)){
+        $dce_pop_id = $dce_pop->nid;
+        if ($population_id == $dce_pop_id) {
+          node_delete($dce_wrapper->nid->value());
+        }
       }
     }
   }
