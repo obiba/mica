@@ -727,16 +727,20 @@ function mica_datasets_node_delete($node) {
       // remove queries and their terms
       $queries = MicaDatasetQueryManager::getPersistedQueries($dataset_id);
       if (!empty($queries)) {
+        $query_ids = array();
         foreach ($queries as $query) {
           $query_id = $query->id;
+          $query_ids[] = $query_id;
           $terms = mica_query_term_query($query_id);
           if (!empty($terms)) {
+            $term_ids = array();
             foreach ($terms as $term) {
-              entity_delete('mica_dataset_query_term', $term->id);
+              $term_ids[] = $term->id;
             }
+            entity_delete_multiple('mica_dataset_query_term', $term_ids);
           }
-          entity_delete('mica_dataset_query', $query_id);
         }
+        entity_delete_multiple('mica_dataset_query', $query_ids);
       }
 
       // flush cached queries
@@ -746,11 +750,14 @@ function mica_datasets_node_delete($node) {
       $dataset = entity_metadata_wrapper('node', $dataset_id);
       $variables = $dataset->field_dataset_variables;
       $variables_value = $variables->value();
+      $nids = array();
       if (!empty($variables_value)) {
         foreach ($variables as $variable) {
-          $variable->delete();
+//          $variable->delete();
+          $nids[] = $variable->nid;
         }
       }
+      entity_delete_multiple('variable', $nids);
 
       // remove reference from studies
       $query = new EntityFieldQuery();
@@ -789,14 +796,17 @@ function mica_datasets_node_delete($node) {
         ->fieldCondition('field_sva_study', 'nid', $node->nid)
         ->execute();
       if (!empty($sva_results['node'])) {
+        $sva_ids = array();
         foreach (node_load_multiple(array_keys($sva_results['node'])) as $sva) {
           $sva_wrapper = entity_metadata_wrapper('node', $sva);
           if ($sva_wrapper->field_sva_variable->value() !== NULL) {
             $variable_wrapper = entity_metadata_wrapper('node', $sva_wrapper->field_sva_variable->value());
             _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable_wrapper, $sva_wrapper, 'field_variable_study_var_att');
-            $sva_wrapper->delete();
+//            $sva_wrapper->delete();
+            $sva_ids[] = $sva_wrapper->nid;
           }
         }
+        entity_delete_multiple('study_variable_attributes', $sva_ids);
       }
 
       $study_wrapper = entity_metadata_wrapper('node', $node);
@@ -909,13 +919,16 @@ function _mica_datasets_delete_svas(&$dataset, &$study) {
         ->execute();
 
       if (!empty($sva_results['node'])) {
+        $sva_ids = array();
         foreach (node_load_multiple(array_keys($sva_results['node'])) as $sva) {
           $sva_wrapper = entity_metadata_wrapper('node', $sva);
           if ($sva_wrapper->field_sva_study->nid->value() === $study_wrapper->nid->value()) {
-            $sva_wrapper->delete();
+//            $sva_wrapper->delete();
+            $sva_ids[] = $sva_wrapper->nid;
             _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable, $sva_wrapper, 'field_variable_study_var_att');
           }
         }
+        entity_delete_multiple('study_variable_attributes', $sva_ids);
       }
     }
   }
@@ -1654,7 +1667,7 @@ function mica_datasets_field_widget_form_alter(&$element, &$form_state, $context
   if ($form_state['build_info']['form_id'] == 'views_form_variables_dimensions_page') {
     // Force autocomplete deluxe widget to allow only a single value
     if ($context['instance']['widget']['module'] == 'autocomplete_deluxe') {
-      $element['#multiple'] = FALSE;
+      $element['#multiple'] = false;
     }
   }
 }
