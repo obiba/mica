@@ -115,7 +115,7 @@ projects[job_scheduler] = 2.0-alpha3
 
 projects[jquery_update][type] = module
 projects[jquery_update][download][type] = git
-projects[jquery_update][download][revision] = 7b66e73
+projects[jquery_update][download][revision] = dd3d76e
 projects[jquery_update][download][branch] = 7.x-2.x
 
 projects[jquery_ui_multiselect_widget] = 1.5
@@ -177,11 +177,13 @@ projects[recaptcha] = 1.7
 projects[references][download][type] = git
 projects[references][download][revision] = 311bd49
 projects[references][download][branch] = 7.x-2.x
-projects[references][patch][1988436] = http://drupal.org/files/references-hook_node_reference_FIELD_potential_references_1988436_3.patch
+projects[references][patch][1988436] = http://drupal.org/files/references-hook_node_reference_FIELD_potential_references_0.patch
 
-projects[search_api][version] = 1.5
+projects[search_api][version] = 1.4
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch
+projects[search_api][patch][1471310] = http://drupal.org/files/1471310--unset-field-8_0.patch
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
+projects[search_api][patch][1594762] = http://drupal.org/files/1594762-18-deleted-terms-cause-indexing-crash.patch
 
 projects[search_api_combined] = 1.2
 
