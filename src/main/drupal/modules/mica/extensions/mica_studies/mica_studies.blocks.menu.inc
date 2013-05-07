@@ -6,7 +6,7 @@ function _mica_studies_block_study_menu($study) {
     $study = node_load($study);
   }
 
-  // see http://jqueryfordesigners.com/fixed-floating-elements/
+  // see http://snpeff.sourceforge.net/features.html
 
   //TODO add missing sections
   //TODO hide items for empty sections

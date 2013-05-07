@@ -177,6 +177,7 @@ projects[recaptcha] = 1.7
 projects[references][download][type] = git
 projects[references][download][revision] = 311bd49
 projects[references][download][branch] = 7.x-2.x
+projects[references][patch][1988436] = http://drupal.org/files/references-hook_node_reference_FIELD_potential_references_0.patch
 
 projects[search_api][version] = 1.4
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch

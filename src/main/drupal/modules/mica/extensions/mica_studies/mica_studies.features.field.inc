@@ -1554,7 +1554,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -1815,7 +1815,7 @@ function mica_studies_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '3',
+        'weight' => '32',
       ),
     ),
   );
@@ -1890,7 +1890,7 @@ function mica_studies_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '4',
+        'weight' => '33',
       ),
     ),
   );
@@ -1969,7 +1969,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '5',
+        'weight' => '34',
       ),
     ),
   );
@@ -2156,7 +2156,7 @@ function mica_studies_field_default_fields() {
           'year_range' => '1950:+50',
         ),
         'type' => 'date_popup',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -2242,7 +2242,7 @@ function mica_studies_field_default_fields() {
   $fields['node-data_collection_event-field_dce_population'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_dce_population',
@@ -2326,14 +2326,10 @@ function mica_studies_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'node_reference',
-        'settings' => array(
-          'autocomplete_match' => 'contains',
-          'autocomplete_path' => 'node_reference/autocomplete',
-          'size' => '60',
-        ),
-        'type' => 'node_reference_autocomplete',
-        'weight' => '31',
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '1',
       ),
     ),
   );
@@ -2652,7 +2648,7 @@ function mica_studies_field_default_fields() {
           'year_range' => '1950:+50',
         ),
         'type' => 'date_popup',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -3652,7 +3648,6 @@ function mica_studies_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'population',
-      'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -3680,11 +3675,9 @@ function mica_studies_field_default_fields() {
       ),
       'widget' => array(
         'active' => 0,
-        'module' => 'options',
-        'settings' => array(
-          'content_taxonomy_opt_groups' => FALSE,
-        ),
-        'type' => 'options_select',
+        'module' => 'multiselect',
+        'settings' => array(),
+        'type' => 'multiselect',
         'weight' => '8',
       ),
     ),
@@ -3770,21 +3763,17 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_pop_dce',
-      'label' => 'Data collection event',
+      'label' => 'Data collection events',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'node_reference',
-        'settings' => array(
-          'autocomplete_match' => 'contains',
-          'autocomplete_path' => 'node_reference/autocomplete',
-          'size' => '60',
-        ),
-        'type' => 'node_reference_autocomplete',
-        'weight' => '31',
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '4',
       ),
     ),
   );
@@ -5340,7 +5329,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '30',
+        'weight' => '7',
       ),
     ),
   );
@@ -10296,7 +10285,7 @@ function mica_studies_field_default_fields() {
   t('Data Collection Event End Date');
   t('Data Collection Event Start Date');
   t('Data Dictionnaries');
-  t('Data collection event');
+  t('Data collection events');
   t('Data sources');
   t('Datasets');
   t('Department/Unit');

@@ -152,9 +152,6 @@ function mica_studies_node_insert($node) {
     case 'population':
       _mica_studies_population_link($node);
       break;
-    case 'data_collection_event':
-      _mica_studies_dce_link($node);
-      break;
   }
 }
 
@@ -301,11 +298,9 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
   if (isset($_REQUEST['study'])) {
     $lang = $form['field_pop_study']['#language'];
     $form['field_pop_study'][$lang]['#after_build'][] = '_mica_studies_prepopulate_study_after_build';
-    $form['field_pop_study']['#type'] = 'hidden';
   }
+  $form['field_pop_study']['#type'] = 'hidden';
 
-  // hide list of data collection events
-  $form['field_pop_dce']['#type'] = 'hidden';
   $form['actions']['submit']['#type'] = 'hidden';
 
   // Override save button
@@ -334,9 +329,12 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
 
 }
 
+/**
+ * Redirect to Study view after population edition
+ */
 function _mica_studies_save_population_submit($form, &$form_state) {
-  $lang = $form['field_pop_study']['#language'];
-  $form_state['redirect'] = 'node/' . $form['#node']->field_pop_study[$lang][0]['nid'];
+  $wrapper = entity_metadata_wrapper('node', $form_state['nid']);
+  $form_state['redirect'] = 'node/' . $wrapper->field_pop_study->nid->value();
 }
 
 /**
@@ -389,8 +387,6 @@ function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $f
     $lang = $form['field_dce_population']['#language'];
     $form['field_dce_population'][$lang]['#after_build'][] = '_mica_studies_prepopulate_dce_after_build';
   }
-  // hide list of population
-  $form['field_dce_population']['#type'] = 'hidden';
   $form['actions']['submit']['#type'] = 'hidden';
 
   // Override save button
@@ -410,13 +406,10 @@ function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $f
 }
 
 /**
- * Redirects the user from the DCE edit form to the Study view page
- * @param $form
- * @param $form_state
+ * Redirect to Study view after DEC edition
  */
 function _mica_studies_save_dce_submit($form, &$form_state) {
-  $wrapper = entity_metadata_wrapper('node', $form_state['nid']);
-  $form_state['redirect'] = 'node/' . $wrapper->field_dce_population->field_pop_study->value()->nid;
+  $form_state['redirect'] = 'node/' . _mica_studies_get_dce_study_nid($form_state['nid']);
 }
 
 /**
@@ -714,7 +707,6 @@ function mica_studies_noderefcreate_alter(&$newnode, $element, $form_state) {
  * Hook hook_translation_exclude_fields()
  */
 function mica_studies_translation_exclude_fields() {
-
   return array(
     'study' => array('mica_opal'),
   );
@@ -731,9 +723,6 @@ function  mica_studies_node_delete($node) {
       break;
     case 'population':
       _mica_studies_population_delete($node);
-      break;
-    case 'data_collection_event':
-      _mica_studies_dce_delete($node);
       break;
   }
 }
@@ -928,4 +917,71 @@ function _mica_studies_menu_generate_breadcrumbs($path) {
   }
   $breadcrumbs = array_reverse($breadcrumbs);
   return $breadcrumbs;
+}
+
+/**
+ * Implements hook_node_reference_FIELD_potential_references
+ */
+function mica_studies_node_reference_field_pop_dce_potential_references($field, $options) {
+  $references = array();
+
+  $current_node = menu_get_object();
+  $study_nid = NULL;
+  if (empty($current_node)) {
+    // new population
+    if (isset($_REQUEST['study'])) {
+      $study_nid = $_REQUEST['study'];
+    }
+  }
+  else {
+    $current_pop_wrapper = entity_metadata_wrapper('node', $current_node);
+    $study_nid = $current_pop_wrapper->field_pop_study->nid->value();
+  }
+
+  if (!empty($study_nid)) {
+    $study_wrapper = entity_metadata_wrapper('node', $study_nid);
+    foreach ($study_wrapper->field_study_populations->getIterator() as $pop_wrapper) {
+      foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
+        $references[$dce_wrapper->nid->value()] = array(
+          'title' => $dce_wrapper->title->value(),
+          'rendered' => check_plain($dce_wrapper->title->value()),
+        );
+      }
+    }
+  }
+
+  return array($references);
+}
+
+/**
+ * Implements hook_node_reference_FIELD_potential_references
+ */
+function mica_studies_node_reference_field_dce_population_potential_references($field, $options) {
+  $current_node = menu_get_object();
+  $population_nid = NULL;
+  if (empty($current_node)) {
+    // new dce
+    if (isset($_REQUEST['population'])) {
+      $population_nid = $_REQUEST['population'];
+    }
+  }
+  else {
+    $current_dce_wrapper = entity_metadata_wrapper('node', $current_node);
+    foreach ($current_dce_wrapper->field_dce_population->getIterator() as $pop_wrapper) {
+      $population_nid = $pop_wrapper->nid->value();
+      break;
+    }
+  }
+
+  $references = array();
+  if (!empty($population_nid)) {
+    $pop_wrapper = entity_metadata_wrapper('node', $population_nid);
+    foreach ($pop_wrapper->field_pop_study->field_study_populations->getIterator() as $pop_wrapper) {
+      $references[$pop_wrapper->nid->value()] = array(
+        'title' => $pop_wrapper->title->value(),
+        'rendered' => check_plain($pop_wrapper->title->value()),
+      );
+    }
+  }
+  return array($references);
 }

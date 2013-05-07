@@ -202,7 +202,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '10',
+    'weight' => '7',
     'children' => array(
       0 => 'field_dce_data_dictionnaries',
       1 => 'field_dce_others',
@@ -249,6 +249,34 @@ function mica_studies_field_group_info() {
     ),
   );
   $export['group_dce_sample_management|node|data_collection_event|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_dce|node|population|form';
+  $field_group->group_name = 'group_dce';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'population';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Data collection events',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_pop_dce',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Data collection events',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsible',
+    ),
+  );
+  $export['group_dce|node|population|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -747,7 +775,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Supplementary Information',
-    'weight' => '3',
+    'weight' => '5',
     'children' => array(
       0 => 'field_pop_supp_infos',
     ),
