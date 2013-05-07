@@ -165,7 +165,7 @@ function mica_datasets_field_group_info() {
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'Datasets available to the research community.',
+        'description' => '',
       ),
       'formatter' => 'collapsible',
     ),
