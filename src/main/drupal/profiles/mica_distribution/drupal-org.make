@@ -153,7 +153,7 @@ projects[module_filter] = 1.7
 projects[multiselect][version] = 1.9
 projects[multiselect][patch][1670224] = http://drupal.org/files/options_translations-1670224-2.patch
 
-projects[name][version] = 1.8
+projects[name][version] = 1.7
 projects[name][patch][1788156] = http://drupal.org/files/name_title_translation-1788156-1.patch
 
 projects[noderefcreate][download][type] = git
