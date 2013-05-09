@@ -153,6 +153,19 @@ function mica_studies_node_insert($node) {
 }
 
 /**
+ * Implements hook_node_update()
+ */
+function mica_studies_node_update($node) {
+  switch ($node->type) {
+    case 'study':
+    case 'population':
+    case 'data_collection_event':
+      cache_clear_all(); // clear blocks cache
+      break;
+  }
+}
+
+/**
  * Implements hook_node_view()
  */
 function mica_studies_node_view($node, $view_mode, $langcode) {
@@ -732,6 +745,7 @@ function mica_studies_block_info() {
       'region' => 'content',
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
+      'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-general-design' => array(
       'info' => t('Study General Design'),
@@ -740,6 +754,7 @@ function mica_studies_block_info() {
       'region' => 'content',
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
+      'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-access' => array(
       'info' => t('Study Access'),
@@ -748,6 +763,7 @@ function mica_studies_block_info() {
       'region' => 'content',
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
+      'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-marker-paper' => array(
       'info' => t('Study Marker Paper'),
@@ -756,6 +772,7 @@ function mica_studies_block_info() {
       'region' => 'content',
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
+      'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-documents' => array(
       'info' => t('Study Documents'),
@@ -764,6 +781,7 @@ function mica_studies_block_info() {
       'region' => 'content',
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
+      'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-supp-infos' => array(
       'info' => t('Study Supplementary Information'),
@@ -772,6 +790,7 @@ function mica_studies_block_info() {
       'region' => 'content',
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
+      'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-populations' => array(
       'info' => t('Study Populations'),
@@ -780,6 +799,7 @@ function mica_studies_block_info() {
       'region' => 'content',
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
+      'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-timeline' => array(
       'info' => t('Study Timeline'),
@@ -788,6 +808,7 @@ function mica_studies_block_info() {
       'region' => 'content',
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
+      'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-datasets' => array(
       'info' => t('Study Datasets'),
@@ -796,6 +817,7 @@ function mica_studies_block_info() {
       'region' => 'content',
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
+      'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-authorization' => array(
       'info' => t('Study Authorization'),
@@ -804,6 +826,7 @@ function mica_studies_block_info() {
       'region' => 'content',
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
+      'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-menu' => array(
       'info' => t('Study Menu'),
@@ -812,6 +835,7 @@ function mica_studies_block_info() {
       'region' => 'sidebar_second',
       'visibility' => BLOCK_VISIBILITY_NOTLISTED,
       'pages' => '',
+      'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
   );
 }
