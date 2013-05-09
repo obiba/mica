@@ -84,6 +84,13 @@ function mica_core_update_7700(&$update) {
   features_rebuild(array('mica_core' => array('variable')));
 }
 
+/**
+ * Enable module JQuery Ui Multiselect to enhance select widgets
+ */
+function mica_core_update_7800(&$update) {
+  module_enable(array('jquery_ui_multiselect_widget'));
+}
+
 function _mica_core_export_queries() {
   $result = db_query('SELECT * FROM mica_dataset_query')->fetchAll();
   if (!empty($result)) {

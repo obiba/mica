@@ -241,6 +241,7 @@ function mica_studies_update_7800(&$update) {
 function mica_studies_update_dependencies() {
   $dependencies = array();
   $dependencies['mica_studies'][7500] = array('mica_core' => 7500);
+  $dependencies['mica_studies'][7800] = array('search_api_solr' => 7102);
   return $dependencies;
 }
 
