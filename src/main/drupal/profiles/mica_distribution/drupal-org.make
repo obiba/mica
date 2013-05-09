@@ -115,7 +115,7 @@ projects[job_scheduler] = 2.0-alpha3
 
 projects[jquery_update][type] = module
 projects[jquery_update][download][type] = git
-projects[jquery_update][download][revision] = baff5d1
+projects[jquery_update][download][revision] = 7b66e73
 projects[jquery_update][download][branch] = 7.x-2.x
 
 projects[jquery_ui_multiselect_widget] = 1.5
@@ -236,10 +236,7 @@ projects[xmlsitemap] = 2.0-rc2
 ; Themes
 ; ---------
 
-projects[bootstrap][type] = theme
-projects[bootstrap][download][type] = git
-projects[bootstrap][download][revision] = dc32478
-projects[bootstrap][download][branch] = 7.x-2.x
+projects[bootstrap] = 2.0-beta3
 
 projects[corolla] = 3.0-rc1
 
