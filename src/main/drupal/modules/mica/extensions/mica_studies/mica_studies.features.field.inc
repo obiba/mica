@@ -7631,10 +7631,9 @@ function mica_studies_field_default_fields() {
           'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
-        'max_length' => '255',
       ),
       'translatable' => '0',
-      'type' => 'text',
+      'type' => 'text_long',
     ),
     'field_instance' => array(
       'bundle' => 'study',
@@ -7642,59 +7641,11 @@ function mica_studies_field_default_fields() {
       'deleted' => '0',
       'description' => 'This field only apply to longitudinal study.',
       'display' => array(
-        'banner_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'center_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'default' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '23',
-        ),
-        'footer_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'left_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'right_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'summary_banner_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'summary_left_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'summary_right_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -7716,9 +7667,9 @@ function mica_studies_field_default_fields() {
         'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'size' => '60',
+          'rows' => '2',
         ),
-        'type' => 'text_textfield',
+        'type' => 'text_textarea',
         'weight' => '9',
       ),
     ),
