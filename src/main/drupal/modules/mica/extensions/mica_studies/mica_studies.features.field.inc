@@ -1726,7 +1726,7 @@ function mica_studies_field_default_fields() {
       'label' => 'Data Dictionnaries',
       'required' => 0,
       'settings' => array(
-        'description_field' => 0,
+        'description_field' => 1,
         'file_directory' => '',
         'file_extensions' => 'doc docx odm odt gdoc pdf txt xml xls xlsx ppt',
         'max_filesize' => '',
@@ -2220,7 +2220,7 @@ function mica_studies_field_default_fields() {
       'label' => 'Others',
       'required' => 0,
       'settings' => array(
-        'description_field' => 0,
+        'description_field' => 1,
         'file_directory' => '',
         'file_extensions' => 'doc docx odm odt gdoc pdf txt xml xls xlsx ppt',
         'max_filesize' => '',
@@ -2393,7 +2393,7 @@ function mica_studies_field_default_fields() {
       'label' => 'Questionnaires',
       'required' => 0,
       'settings' => array(
-        'description_field' => 0,
+        'description_field' => 1,
         'file_directory' => '',
         'file_extensions' => 'doc docx odm odt gdoc pdf txt xml xls xlsx ppt',
         'max_filesize' => '',
@@ -2548,7 +2548,7 @@ function mica_studies_field_default_fields() {
       'label' => 'SOPs',
       'required' => 0,
       'settings' => array(
-        'description_field' => 0,
+        'description_field' => 1,
         'file_directory' => '',
         'file_extensions' => 'doc docx odm odt gdoc pdf txt xml xls xlsx ppt',
         'max_filesize' => '',
@@ -7602,7 +7602,7 @@ function mica_studies_field_default_fields() {
   $fields['node-study-field_info_design_follow_up'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_info_design_follow_up',
@@ -7626,9 +7626,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => 'Follow Up',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
         'max_length' => '255',
@@ -7640,7 +7640,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'This field only apply to longitudinal study. Please provide general information on follow-up (profile and frequency).',
+      'description' => 'This field only apply to longitudinal study.',
       'display' => array(
         'banner_area' => array(
           'label' => 'above',
@@ -7706,7 +7706,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_info_design_follow_up',
-      'label' => 'Follow Up',
+      'label' => 'General Information on Follow Up (profile and frequency)',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -10300,8 +10300,8 @@ function mica_studies_field_default_fields() {
   t('Ethnic Origin');
   t('Existing Studies Participants');
   t('Files');
-  t('Follow Up');
   t('Gender');
+  t('General Information on Follow Up (profile and frequency)');
   t('General Population');
   t('Health Status');
   t('How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?');
@@ -10361,7 +10361,7 @@ function mica_studies_field_default_fields() {
   t('Telephone');
   t('Territory or city of residence');
   t('The study targets the recruitment of');
-  t('This field only apply to longitudinal study. Please provide general information on follow-up (profile and frequency).');
+  t('This field only apply to longitudinal study.');
   t('Title');
   t('Website');
   t('What are the principal objectives of the study?');
