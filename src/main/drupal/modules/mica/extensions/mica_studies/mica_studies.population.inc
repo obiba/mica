@@ -18,7 +18,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
         $desc = truncate_utf8($dce_wrapper->body->value->value(), 50, TRUE, TRUE);
       }
     }
-    $dce_rows[] = array(
+    $dce_rows[$start] = array(
       l($dce_wrapper->title->value(), 'node/' . $dce_wrapper->nid->value()),
       $desc,
       empty($start) ? '' : date("Y M", $start),
@@ -26,6 +26,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
     );
   }
   if (!empty($dce_rows)) {
+    ksort($dce_rows);
     $node->content['data-collection-event'] = array(
       '#weight' => '100',
       '#theme' => 'table',

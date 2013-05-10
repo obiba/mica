@@ -104,19 +104,19 @@ function _mica_studies_simulate_other_specify_field($node, $field_other, $field_
 }
 
 function _mica_studies_block_study_datasets($study) {
-  // $study can be the study nid
-  if (is_numeric($study)) {
-    $study = node_load($study);
-  }
-
   $wrapper = entity_metadata_wrapper('node', $study);
-
   $rows = array();
   foreach ($wrapper->mica_dataset->getIterator() as $dataset_wrapper) {
-    $summary = $wrapper->body->summary->value();
+    $desc = NULL;
+    if (!empty($wrapper->value()->body)) {
+      $desc = $wrapper->body->summary->value();
+      if (empty($desc)) {
+        $desc = truncate_utf8($wrapper->body->value->value(), 50, TRUE, TRUE);
+      }
+    }
     $rows[] = array(
       l($dataset_wrapper->title->value(), 'node/' . $dataset_wrapper->nid->value()),
-      empty($summary) ? truncate_utf8($dataset_wrapper->body->value->value(), 200, TRUE, TRUE) : $summary
+      $desc
     );
   }
 
@@ -137,10 +137,6 @@ function _mica_studies_block_study_datasets($study) {
 }
 
 function _mica_studies_block_study_populations($study) {
-  // $study can be the study nid
-  if (is_numeric($study)) {
-    $study = node_load($study);
-  }
   $content = array();
   $wrapper = entity_metadata_wrapper('node', $study);
   foreach ($wrapper->field_study_populations->getIterator() as $population_wrapper) {
