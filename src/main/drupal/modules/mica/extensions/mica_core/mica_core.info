@@ -19,6 +19,7 @@ dependencies[] = logintoboggan
 dependencies[] = menu
 dependencies[] = menu_view_unpublished
 dependencies[] = page_manager
+dependencies[] = php
 dependencies[] = rdf
 dependencies[] = search_api
 dependencies[] = search_api_solr
