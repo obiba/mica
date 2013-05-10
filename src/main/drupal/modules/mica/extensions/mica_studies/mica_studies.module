@@ -332,7 +332,7 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
 
   //Population edition - hide DCE if empty
   $lang = $form['field_pop_dce']['#language'];
-  $field_dce = $form['field_pop_dce'][$lang]['#entity']->field_pop_dce;
+  $field_dce = $form['field_pop_dce'][$lang]['#options'];
   if (empty($field_dce)) {
     $form['field_pop_dce']['#type'] = 'hidden';
     $form['#groups']['group_dce']->format_type = 'hidden';
