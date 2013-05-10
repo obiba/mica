@@ -800,8 +800,8 @@ function mica_studies_block_info() {
       'pages' => '',
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
-    'study-populations' => array(
-      'info' => t('Study Populations'),
+    'study-timeline' => array(
+      'info' => t('Study Timeline'),
       'weight' => '70',
       'status' => TRUE,
       'region' => 'content',
@@ -809,8 +809,8 @@ function mica_studies_block_info() {
       'pages' => '',
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
-    'study-timeline' => array(
-      'info' => t('Study Timeline'),
+    'study-populations' => array(
+      'info' => t('Study Populations'),
       'weight' => '80',
       'status' => TRUE,
       'region' => 'content',
