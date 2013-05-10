@@ -330,6 +330,14 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
     '#submit' => array('node_form_submit', '_mica_studies_save_add_dce_submit'),
   );
 
+  //Population edition - hide DCE if empty
+  $lang = $form['field_pop_dce']['#language'];
+  $field_dce = $form['field_pop_dce'][$lang]['#options'];
+  if (empty($field_dce)) {
+    $form['field_pop_dce']['#type'] = 'hidden';
+    $form['#groups']['group_dce']->format_type = 'hidden';
+  }
+
   //population
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_general_pop_recruit', 'general');
   _mica_add_dependent_field_checked($form, 'field_pop_src_recruit', 'field_pop_exist_study_part', 'exist_studies');
