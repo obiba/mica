@@ -187,6 +187,20 @@ function mica_core_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'views_data_export_gc_chunk';
+  $strongarm->value = -1;
+  $export['views_data_export_gc_chunk'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'views_data_export_gc_expires';
+  $strongarm->value = 86400;
+  $export['views_data_export_gc_expires'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'views_exposed_filter_any_label';
   $strongarm->value = 'new_any';
   $export['views_exposed_filter_any_label'] = $strongarm;
