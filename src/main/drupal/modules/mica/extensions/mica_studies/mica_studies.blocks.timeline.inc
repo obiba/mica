@@ -33,7 +33,7 @@ function _mica_studies_block_study_timeline($study) {
     );
   }
 
-  dvm($data);
+  // dvm($data);
   if (empty($data)) {
     return NULL;
   }
@@ -50,30 +50,32 @@ function _mica_studies_block_study_timeline_set_line_nb(&$events) {
 
   $lines = array();
   foreach ($events as &$event) {
-    dvm($event, 'Processing');
+    // dvm($event, 'Processing');
     if (empty($lines)) {
       $event['line'] = 0;
       $lines[0][] = $event;
     }
     else {
       foreach ($lines as $index => $line_events) {
+        // dvm($index, '$index');
         $last_event = end($line_events);
-        dvm($last_event, '$last_event for line ' . $index);
-        dvm($event['start'] > $last_event['end'], $event['start'] . ' > ' . $last_event['end']);
+        // dvm($last_event, '$last_event for line ' . $index);
+        // dvm($event['start'] > $last_event['end'], $event['start'] . ' > ' . $last_event['end']);
         if ($event['start'] > $last_event['end']) {
           $event['line'] = $index;
           $lines[$index][] = $event;
-          dvm($lines, "Add it to line $index");
+          // dvm($lines, "Add it to line $index");
           break;
         }
       }
       if (!isset($event['line'])) {
         $new_line = count($lines);
-        dvm($event, "Create new line $new_line");
+        // dvm($event, "Create new line $new_line");
         $event['line'] = $new_line;
         $lines[$new_line][] = $event;
       }
     }
-    dpm($lines, '$lines');
+    // dpm($lines, '$lines');
   }
+  // dpm($events, '$events');
 }
