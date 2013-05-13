@@ -26,36 +26,34 @@ function mica_opal_view_rest_server_response_formatters_alter(&$formatters) {
  */
 function mica_opal_view_default_services_endpoint() {
 
-  $opal_export_endpoint = new stdClass;
-  $opal_export_endpoint->disabled = FALSE; /* Edit this to true to make a default endpoint disabled initially */
-  $opal_export_endpoint->api_version = 3;
-  $opal_export_endpoint->name = 'dataset_variables';
-  $opal_export_endpoint->server = 'rest_server';
-  $opal_export_endpoint->path = 'opal-export';
-  $opal_export_endpoint->authentication = array(
+  $endpoint = new stdClass();
+  $endpoint->disabled = FALSE; /* Edit this to true to make a default endpoint disabled initially */
+  $endpoint->api_version = 3;
+  $endpoint->name = 'dataset_variables';
+  $endpoint->server = 'rest_server';
+  $endpoint->path = 'opal-export';
+  $endpoint->authentication = array(
     'services' => 'services',
   );
-  $opal_export_endpoint->server_settings = array(
-    'rest_server' => array(
-      'formatters' => array(
-        'xml' => TRUE,
-        'bencode' => FALSE,
-        'json' => FALSE,
-        'jsonp' => FALSE,
-        'php' => FALSE,
-        'rss' => FALSE,
-        'yaml' => FALSE,
-      ),
-      'parsers' => array(
-        'application/json' => TRUE,
-        'application/vnd.php.serialized' => FALSE,
-        'application/x-www-form-urlencoded' => FALSE,
-        'application/x-yaml' => FALSE,
-        'multipart/form-data' => FALSE,
-      ),
+  $endpoint->server_settings = array(
+    'formatters' => array(
+      'xml' => TRUE,
+      'bencode' => FALSE,
+      'json' => FALSE,
+      'jsonp' => FALSE,
+      'php' => FALSE,
+      'rss' => FALSE,
+    ),
+    'parsers' => array(
+      'application/json' => TRUE,
+      'application/xml' => TRUE,
+      'application/vnd.php.serialized' => FALSE,
+      'application/x-www-form-urlencoded' => FALSE,
+      'multipart/form-data' => FALSE,
+      'text/xml' => FALSE,
     ),
   );
-  $opal_export_endpoint->resources = array(
+  $endpoint->resources = array(
     'node' => array(
       'operations' => array(
         'retrieve' => array(
@@ -64,7 +62,7 @@ function mica_opal_view_default_services_endpoint() {
       ),
     ),
   );
-  $opal_export_endpoint->debug = 0;
+  $endpoint->debug = 0;
 
-  return array($opal_export_endpoint);
+  return $endpoint;
 }
