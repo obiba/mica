@@ -257,17 +257,4 @@ function _mica_studies_config_blocks() {
   mica_core_set_block_node_type('study', 'mica_studies', 'study-datasets');
   mica_core_set_block_node_type('study', 'mica_studies', 'study-authorization');
   mica_core_set_block_node_type('study', 'mica_studies', 'study-menu');
-
-  //disable block display on not view page
-  mica_core_disable_block_display('mica_studies', 'study-general-info');
-  mica_core_disable_block_display('mica_studies', 'study-general-design');
-  mica_core_disable_block_display('mica_studies', 'study-access');
-  mica_core_disable_block_display('mica_studies', 'study-marker-paper');
-  mica_core_disable_block_display('mica_studies', 'study-documents');
-  mica_core_disable_block_display('mica_studies', 'study-supp-infos');
-  mica_core_disable_block_display('mica_studies', 'study-populations');
-  mica_core_disable_block_display('mica_studies', 'study-timeline');
-  mica_core_disable_block_display('mica_studies', 'study-datasets');
-  mica_core_disable_block_display('mica_studies', 'study-authorization');
-  mica_core_disable_block_display('mica_studies', 'study-menu');
 }

@@ -764,14 +764,15 @@ function  mica_studies_node_delete($node) {
  * Implements hook_block_info().
  */
 function mica_studies_block_info() {
+  $pages = "<?php if(arg(0) == 'node' && is_numeric(arg(1)) && ((arg(2) == ''|| arg(2) == 'view'))) return TRUE; ?>";
   return array(
     'study-general-info' => array(
       'info' => t('Study General Information'),
       'weight' => '10',
       'status' => TRUE,
       'region' => 'content',
-      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-      'pages' => '',
+      'visibility' => BLOCK_VISIBILITY_PHP,
+      'pages' => $pages,
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-general-design' => array(
@@ -779,8 +780,8 @@ function mica_studies_block_info() {
       'weight' => '20',
       'status' => TRUE,
       'region' => 'content',
-      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-      'pages' => '',
+      'visibility' => BLOCK_VISIBILITY_PHP,
+      'pages' => $pages,
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-access' => array(
@@ -788,8 +789,8 @@ function mica_studies_block_info() {
       'weight' => '30',
       'status' => TRUE,
       'region' => 'content',
-      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-      'pages' => '',
+      'visibility' => BLOCK_VISIBILITY_PHP,
+      'pages' => $pages,
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-marker-paper' => array(
@@ -797,8 +798,8 @@ function mica_studies_block_info() {
       'weight' => '40',
       'status' => TRUE,
       'region' => 'content',
-      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-      'pages' => '',
+      'visibility' => BLOCK_VISIBILITY_PHP,
+      'pages' => $pages,
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-documents' => array(
@@ -806,8 +807,8 @@ function mica_studies_block_info() {
       'weight' => '50',
       'status' => TRUE,
       'region' => 'content',
-      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-      'pages' => '',
+      'visibility' => BLOCK_VISIBILITY_PHP,
+      'pages' => $pages,
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-supp-infos' => array(
@@ -815,8 +816,8 @@ function mica_studies_block_info() {
       'weight' => '60',
       'status' => TRUE,
       'region' => 'content',
-      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-      'pages' => '',
+      'visibility' => BLOCK_VISIBILITY_PHP,
+      'pages' => $pages,
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-timeline' => array(
@@ -824,8 +825,8 @@ function mica_studies_block_info() {
       'weight' => '70',
       'status' => TRUE,
       'region' => 'content',
-      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-      'pages' => '',
+      'visibility' => BLOCK_VISIBILITY_PHP,
+      'pages' => $pages,
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-populations' => array(
@@ -833,8 +834,8 @@ function mica_studies_block_info() {
       'weight' => '80',
       'status' => TRUE,
       'region' => 'content',
-      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-      'pages' => '',
+      'visibility' => BLOCK_VISIBILITY_PHP,
+      'pages' => $pages,
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-datasets' => array(
@@ -842,8 +843,8 @@ function mica_studies_block_info() {
       'weight' => '90',
       'status' => TRUE,
       'region' => 'content',
-      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-      'pages' => '',
+      'visibility' => BLOCK_VISIBILITY_PHP,
+      'pages' => $pages,
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-authorization' => array(
@@ -851,8 +852,8 @@ function mica_studies_block_info() {
       'weight' => '100',
       'status' => TRUE,
       'region' => 'content',
-      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-      'pages' => '',
+      'visibility' => BLOCK_VISIBILITY_PHP,
+      'pages' => $pages,
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
     'study-menu' => array(
@@ -860,8 +861,8 @@ function mica_studies_block_info() {
       'weight' => '10',
       'status' => TRUE,
       'region' => 'sidebar_second',
-      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-      'pages' => '',
+      'visibility' => BLOCK_VISIBILITY_PHP,
+      'pages' => $pages,
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
   );
