@@ -250,7 +250,12 @@ function mica_studies_user_default_permissions() {
   // Exported permission: create data_collection_event content.
   $permissions['create data_collection_event content'] = array(
     'name' => 'create data_collection_event content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
+    ),
     'module' => 'node',
   );
 
@@ -260,6 +265,7 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -358,7 +364,12 @@ function mica_studies_user_default_permissions() {
   // Exported permission: create population content.
   $permissions['create population content'] = array(
     'name' => 'create population content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
+    ),
     'module' => 'node',
   );
 
@@ -398,7 +409,11 @@ function mica_studies_user_default_permissions() {
   // Exported permission: delete any data_collection_event content.
   $permissions['delete any data_collection_event content'] = array(
     'name' => 'delete any data_collection_event content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
+    ),
     'module' => 'node',
   );
 
@@ -434,7 +449,11 @@ function mica_studies_user_default_permissions() {
   // Exported permission: delete any population content.
   $permissions['delete any population content'] = array(
     'name' => 'delete any population content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
+    ),
     'module' => 'node',
   );
 
@@ -444,6 +463,7 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -473,7 +493,12 @@ function mica_studies_user_default_permissions() {
   // Exported permission: delete own data_collection_event content.
   $permissions['delete own data_collection_event content'] = array(
     'name' => 'delete own data_collection_event content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
+    ),
     'module' => 'node',
   );
 
@@ -509,7 +534,12 @@ function mica_studies_user_default_permissions() {
   // Exported permission: delete own population content.
   $permissions['delete own population content'] = array(
     'name' => 'delete own population content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
+    ),
     'module' => 'node',
   );
 
@@ -519,6 +549,7 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
   );
@@ -557,7 +588,11 @@ function mica_studies_user_default_permissions() {
   // Exported permission: edit any data_collection_event content.
   $permissions['edit any data_collection_event content'] = array(
     'name' => 'edit any data_collection_event content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
+    ),
     'module' => 'node',
   );
 
@@ -593,7 +628,11 @@ function mica_studies_user_default_permissions() {
   // Exported permission: edit any population content.
   $permissions['edit any population content'] = array(
     'name' => 'edit any population content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
+    ),
     'module' => 'node',
   );
 
@@ -699,7 +738,12 @@ function mica_studies_user_default_permissions() {
   // Exported permission: edit own data_collection_event content.
   $permissions['edit own data_collection_event content'] = array(
     'name' => 'edit own data_collection_event content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
+    ),
     'module' => 'node',
   );
 
@@ -807,7 +851,12 @@ function mica_studies_user_default_permissions() {
   // Exported permission: edit own population content.
   $permissions['edit own population content'] = array(
     'name' => 'edit own population content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
+    ),
     'module' => 'node',
   );
 
