@@ -197,7 +197,6 @@ projects[search_api_ranges][patch][1460410] = http://drupal.org/files/max-inclus
 
 projects[search_api_solr] = 1.0-rc4
 
-; DO NOT CHANGE VERSION UNTIL http://jira.obiba.org/jira/browse/MICA-888 IS FIXED
 projects[services][version] = 3.3
 
 projects[smtp] = 1.0-beta2
