@@ -38,7 +38,8 @@ function _mica_studies_block_study_timeline($study) {
     return NULL;
   }
 
-  drupal_add_js($data, array('type' => 'setting'));
+  ctools_add_js('mica_studies.timeline', 'mica_studies');
+  drupal_add_js(array('timeline_data' => $data), array('type' => 'setting'));
   return array(
     'subject' => t('Study Timeline') . '<a name="timeline"> </a>',
     'content' => '<div id="timeline" />',
