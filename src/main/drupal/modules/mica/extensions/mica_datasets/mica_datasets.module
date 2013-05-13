@@ -687,7 +687,7 @@ function mica_datasets_node_presave($node) {
       $dataset = entity_metadata_wrapper('node', $node);
       if ($dataset->field_dataset_type->value() === 'harmonization') {
         foreach ($dataset->field_dataset_studies as $study) {
-          _mica_datasets_create_svas($study->value(), $dataset->value());
+          _mica_datasets_create_study_variable_attributes_for_study($study, $dataset->field_dataset_variables);
         }
       }
       else {
@@ -1106,7 +1106,7 @@ function _mica_datasets_add_study_variable_attributes_to(&$variable) {
     $studies = array();
     foreach ($wrapper_dataset->field_dataset_studies as $wrapper_study) {
       if ($wrapper_study->value() !== NULL) {
-        array_push($studies, $wrapper_study);
+        $studies[] = $wrapper_study;
       }
     }
     _mica_datasets_create_study_variable_attributes_for_variable($wrapper_variable, $studies);
@@ -1152,17 +1152,19 @@ function _mica_datasets_create_study_variable_attribute(&$wrapper_variable, &$wr
 }
 
 function _mica_datasets_add_element_in_entity_list_wrapper(&$entity, &$entity_to_add, $field_name) {
-  $nids = array();
-  if (isset($entity->$field_name)) {
-    foreach ($entity->$field_name->value() as $item) {
-      if (isset($item)) {
-        array_push($nids, $item->nid);
+  if (!in_array($entity_to_add->nid->value(), $entity->$field_name->value())) {
+    $nids = array();
+    if (isset($entity->$field_name)) {
+      foreach ($entity->$field_name->value() as $item) {
+        if (isset($item)) {
+          $nids[] = $item->nid;
+        }
       }
     }
+
+    $nids[] = $entity_to_add->nid->value();
+    $entity->$field_name->set($nids);
   }
-  array_push($nids, $entity_to_add->nid->value());
-  $nids = array_unique($nids);
-  $entity->$field_name->set($nids);
 }
 
 function _mica_datasets_remove_and_save_element_from_entity_list_wrapper(&$entity_wrapper, &$entity_to_remove_wrapper, $field_name) {
