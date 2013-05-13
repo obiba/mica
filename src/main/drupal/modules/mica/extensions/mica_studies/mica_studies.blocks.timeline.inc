@@ -47,7 +47,7 @@ function _mica_studies_block_study_timeline($study) {
 }
 
 function _mica_studies_block_study_timeline_set_line_nb(&$events) {
-  ksort($events); // sort by start date
+  uasort($dce_rows, '_mica_studies_sort_dce'); // sort by start date
 
   $lines = array();
   foreach ($events as &$event) {
