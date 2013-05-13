@@ -34,9 +34,14 @@ function _mica_studies_block_study_timeline($study) {
   }
 
   dvm($data);
+  if (empty($data)) {
+    return NULL;
+  }
+
+  drupal_add_js($data, array('type' => 'setting'));
   return array(
     'subject' => t('Study Timeline') . '<a name="timeline"> </a>',
-    'content' => 'TODO',
+    'content' => '<div id="timeline" />',
   );
 }
 
@@ -53,23 +58,22 @@ function _mica_studies_block_study_timeline_set_line_nb(&$events) {
     else {
       foreach ($lines as $index => $line_events) {
         $last_event = end($line_events);
-        dvm($last_event, '$last_event');
+        dvm($last_event, '$last_event for line ' . $index);
+        dvm($event['start'] > $last_event['end'], $event['start'] . ' > ' . $last_event['end']);
         if ($event['start'] > $last_event['end']) {
           $event['line'] = $index;
           $lines[$index][] = $event;
-          dvm("Add it to line $index");
+          dvm($lines, "Add it to line $index");
           break;
         }
       }
-      if (empty($event['line'])) {
+      if (!isset($event['line'])) {
         $new_line = count($lines);
+        dvm($event, "Create new line $new_line");
         $event['line'] = $new_line;
         $lines[$new_line][] = $event;
       }
     }
+    dpm($lines, '$lines');
   }
-
-  dvm($lines, '$lines');
-  dvm($events, '$event');
-
 }
