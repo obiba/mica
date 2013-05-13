@@ -124,23 +124,22 @@ function _mica_devel_is_mica_module($module) {
 }
 
 function _mica_devel_large_data() {
-
-  define('NB_STUDIES', 20);
-  define('NB_POP', 1);
-  define('NB_DCE_DATASETS', 1);
-  define('NB_VARIABLES', 1000);
+  define('NB_STUDIES', 100);
+  define('NB_POP', 2);
+  define('NB_DCE_DATASETS', 2);
+  define('NB_VARIABLES', 5000);
 
   $pop_ids = array();
   $studies = array();
   $operations = array();
   for ($i = 0; $i < NB_STUDIES; $i++) {
     $study = _mica_devel_generate_node('study', $i);
-    $study->field_study_populations['und'] = array();
+//    $study->field_study_populations['und'] = array();
     $study->field_acroym['und'][0]['value'] = devel_create_greeking(mt_rand(1, 2), TRUE);
     $study->field_authorising_person_name['und'][0]['value'] = devel_create_greeking(mt_rand(2, 3), TRUE);
     $study->field_authorising_person_name_m['und'][0]['value'] = devel_create_greeking(mt_rand(2, 3), TRUE);
-    $study->field_info_design_follow_up['und'][0]['value'] = devel_create_greeking(mt_rand(4, 7), TRUE);
-    $study->field_recruitment_other_sp['und'][0]['value'] = devel_create_greeking(mt_rand(1, 12), TRUE);
+//    $study->field_info_design_follow_up['und'][0]['value'] = devel_create_greeking(mt_rand(4, 7), TRUE);
+//    $study->field_recruitment_other_sp['und'][0]['value'] = devel_create_greeking(mt_rand(1, 12), TRUE);
     $study->field_marker_paper['und'][0]['value'] = devel_create_greeking(mt_rand(1, 4), TRUE);
     $study->field_pubmedid['und'][0]['value'] = devel_create_greeking(mt_rand(1, 1), TRUE);
 
@@ -149,15 +148,15 @@ function _mica_devel_large_data() {
       $population->field_pop_study['und'] = array();
       $population->field_pop_study['und'][] = array('nid' => $study->nid);
 
-      foreach (array_keys($population->field_pop_ethnic_origin['und']) as $id) {
-        $population->field_pop_ethnic_origin['und'][$id]['value'] = devel_create_greeking(mt_rand(1, 4), TRUE);
-      }
-      foreach (array_keys($population->field_pop_health_status['und']) as $id) {
-        $population->field_pop_health_status['und'][$id]['value'] = devel_create_greeking(mt_rand(1, 4), TRUE);
-      }
-      foreach (array_keys($population->field_pop_exist_study_part['und']) as $id) {
-        $population->field_pop_exist_study_part['und'][$id]['value'] = devel_create_greeking(mt_rand(1, 12), TRUE);
-      }
+//      foreach (array_keys($population->field_pop_ethnic_origin['und']) as $id) {
+//        $population->field_pop_ethnic_origin['und'][$id]['value'] = devel_create_greeking(mt_rand(1, 4), TRUE);
+//      }
+//      foreach (array_keys($population->field_pop_health_status['und']) as $id) {
+//        $population->field_pop_health_status['und'][$id]['value'] = devel_create_greeking(mt_rand(1, 4), TRUE);
+//      }
+//      foreach (array_keys($population->field_pop_exist_study_part['und']) as $id) {
+//        $population->field_pop_exist_study_part['und'][$id]['value'] = devel_create_greeking(mt_rand(1, 12), TRUE);
+//      }
 
       $population->field_pop_dce['und'] = array();
       node_save($population);
@@ -185,26 +184,29 @@ function _mica_devel_large_data() {
     'file' => drupal_get_path('module', 'mica_devel') . '/mica_devel.module',
   );
   batch_set($batch);
-  batch_process('');
+  batch_process('node/1');
 }
 
-function _mica_devel_large_data_finished($success, $results, $operations){
+function _mica_devel_large_data_finished($success, $results, $operations) {
   if ($success) {
     // Here we do something meaningful with the results.
-    $message = count($results) .' processed.';
-    $message .= theme('item_list', $results);  // D6 syntax
+    $message = count($results) . ' processed.';
+    $message .= theme('item_list', $results); // D6 syntax
     drupal_set_message($message);
   }
   else {
     // An error occurred.
     // $operations contains the operations that remained unprocessed.
     $error_operation = reset($operations);
-    $message = t('An error occurred while processing %error_operation with arguments: @arguments', array('%error_operation' => $error_operation[0], '@arguments' => print_r($error_operation[1], TRUE)));
+    $message = t('An error occurred while processing %error_operation with arguments: @arguments', array(
+      '%error_operation' => $error_operation[0],
+      '@arguments' => print_r($error_operation[1], TRUE)
+    ));
     drupal_set_message($message, 'error');
   }
 }
 
-function _mica_devel_large_data_dataset_operation($id, $pop_id, $nb_variables, &$context){
+function _mica_devel_large_data_dataset_operation($id, $pop_id, $nb_variables, $dataset_type, $study_id, &$context) {
   set_time_limit(0);
   // Generate DCE and Datasets
   /*
@@ -218,7 +220,7 @@ function _mica_devel_large_data_dataset_operation($id, $pop_id, $nb_variables, &
    *
    */
   $mtime = microtime();
-  $mtime = explode(" ",$mtime);
+  $mtime = explode(" ", $mtime);
   $mtime = $mtime[1] + $mtime[0];
   $start = $mtime;
 
@@ -229,7 +231,19 @@ function _mica_devel_large_data_dataset_operation($id, $pop_id, $nb_variables, &
   }
 
   $dataset = _mica_devel_generate_node('dataset', $id);
-    // Store some result for post-processing in the finished callback.
+  $dataset->field_dataset_type['und'][0]['value'] = $dataset_type;
+  // Add studies
+  $dataset->field_dataset_studies['und'][] = array('nid' => $study_id);
+
+  //node_save($dataset);
+
+  //Limit the number of studies
+//  if (count($dataset->field_dataset_studies['und']) > 2){
+//    $dataset->field_dataset_studies['und'] = array_splice($dataset->field_dataset_studies['und'], 0, 2);
+//  }
+  node_save($dataset);
+
+  // Store some result for post-processing in the finished callback.
   $context['results'][] = check_plain($dataset->title);
 
   // Update our progress information.
@@ -240,25 +254,25 @@ function _mica_devel_large_data_dataset_operation($id, $pop_id, $nb_variables, &
 //  foreach ($pop_ids as $k => $pop_id) {
 //    for ($i = 0; $i < NB_DCE_DATASETS; $i++) {
 
-    for ($j = 0; $j < $nb_variables; $j++) {
-      $variable = _mica_devel_generate_variable("$id-$j");
+  for ($j = 0; $j < $nb_variables; $j++) {
+    $variable = _mica_devel_generate_variable("$id-$j");
 
-      $variable->field_position['und'][0]['value'] = $j;
-      $variable->field_dataset = array();
-      $variable->field_dataset['und'][] = array('nid' => $dataset->nid);
-      node_save($variable);
-    }
+    $variable->field_position['und'][0]['value'] = $j;
+    $variable->field_dataset = array();
+    $variable->field_dataset['und'][] = array('nid' => $dataset->nid);
+    node_save($variable);
+  }
 
     $dce = _mica_devel_generate_node('data_collection_event', $id);
-    $dce->field_dce_data_sources_sp['und'][0]['value'] = devel_create_greeking(mt_rand(1, 8), TRUE);
-    $dce->field_dce_tissues_sp['und'][0]['value'] = devel_create_greeking(mt_rand(1, 2), TRUE);
-    $dce->field_dce_population['und'] = array();
-    $dce->field_dce_population['und'][] = array('nid' => $pop_id);
+//  $dce->field_dce_data_sources_sp['und'][0]['value'] = devel_create_greeking(mt_rand(1, 8), TRUE);
+//  $dce->field_dce_tissues_sp['und'][0]['value'] = devel_create_greeking(mt_rand(1, 2), TRUE);
+//  $dce->field_dce_population['und'] = array();
+  $dce->field_dce_population['und'][] = array('nid' => $pop_id);
 
-    $dce->field_dce_dataset['und'] = array();
-    $dce->field_dce_dataset['und'][] = array('nid' => $dataset->nid);
+  $dce->field_dce_dataset['und'] = array();
+  $dce->field_dce_dataset['und'][] = array('nid' => $dataset->nid);
 
-    node_save($dce);
+  node_save($dce);
 //    }
 //  }
   // Inform the batch engine that we are not finished,
@@ -268,7 +282,7 @@ function _mica_devel_large_data_dataset_operation($id, $pop_id, $nb_variables, &
   }
 
   $mtime = microtime();
-  $mtime = explode(" ",$mtime);
+  $mtime = explode(" ", $mtime);
   $mtime = $mtime[1] + $mtime[0];
   $endtime = $mtime;
   $totaltime = ($endtime - $start);
@@ -306,11 +320,12 @@ function _mica_devel_generate_node($node_type, $id) {
 
   // A flag to let hook_nodeapi() implementations know that this is a generated node.
   $node->devel_generate = $results;
+  $node->body['und'][0]['value'] = devel_create_greeking(mt_rand(10, 32), TRUE);
 
   // Populate all core fields on behalf of field.module
-  module_load_include('inc', 'devel_generate', 'devel_generate.fields');
+//  module_load_include('inc', 'devel_generate', 'devel_generate.fields');
 
-  devel_generate_fields($node, 'node', $node->type);
+//  devel_generate_fields($node, 'node', $node->type);
   //devel_generate_add_terms($node);
 
   // See devel_generate_nodeapi() for actions that happen before and after this save.
@@ -356,16 +371,6 @@ function _mica_devel_generate_variable($id) {
   $node->field_medical_health_interv['und'][0]['tid'] = mt_rand(154, 216);
   $node->field_medication['und'][0]['tid'] = mt_rand(217, 232);
   $node->field_perception_of_health['und'][0]['tid'] = mt_rand(233, 234);
-
-//  // A flag to let hook_nodeapi() implementations know that this is a generated node.
-//  $node->devel_generate = $results;
-
-  // Populate all core fields on behalf of field.module
-//  module_load_include('inc', 'devel_generate', 'devel_generate.fields');
-//  devel_generate_add_terms($node);
-
-  // See devel_generate_nodeapi() for actions that happen before and after this save.
-//  node_save($node);
 
   return $node;
 }
