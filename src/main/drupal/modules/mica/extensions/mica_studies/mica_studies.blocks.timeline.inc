@@ -33,13 +33,31 @@ function _mica_studies_block_study_timeline($study) {
     );
   }
 
-  // dvm($data);
+//  dvm($data);
   if (empty($data)) {
     return NULL;
   }
 
+  $lines = array();
+  foreach ($data as $pop_nid => $pop_events) {
+    foreach ($pop_events['events'] as $event) {
+      $line_index = $event['line'];
+      $line = isset($lines[$line_index]) ? $lines[$line_index] : array();
+      $line['pop_nid'] = $pop_nid;
+      $line['pop_title'] = $pop_events['title'];
+      $line['events'][] = array(
+        'nid' => $event['nid'],
+        'title' => $event['title'],
+        'start' => $event['start'],
+        'end' => $event['end'],
+      );
+      $lines[$line_index] = $line;
+    }
+  }
+//  dpm($lines, '$lines');
+
   ctools_add_js('mica_studies.timeline', 'mica_studies');
-  drupal_add_js(array('timeline_data' => $data), array('type' => 'setting'));
+  drupal_add_js(array('timeline_data' => $lines), array('type' => 'setting'));
   return array(
     'subject' => t('Study Timeline') . '<a name="timeline"> </a>',
     'content' => '<div id="timeline" />',

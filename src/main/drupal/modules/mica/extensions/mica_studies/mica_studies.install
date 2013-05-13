@@ -256,5 +256,5 @@ function _mica_studies_config_blocks() {
   mica_core_set_block_node_type('study', 'mica_studies', 'study-timeline');
   mica_core_set_block_node_type('study', 'mica_studies', 'study-datasets');
   mica_core_set_block_node_type('study', 'mica_studies', 'study-authorization');
-  mica_core_set_block_node_type('study', 'mica_studies', 'study-menu');
+//  mica_core_set_block_node_type('study', 'mica_studies', 'study-menu');
 }
