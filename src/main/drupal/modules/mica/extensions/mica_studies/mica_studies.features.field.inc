@@ -1582,7 +1582,7 @@ function mica_studies_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '4',
+        'weight' => '6',
       ),
     ),
   );
@@ -2069,94 +2069,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '32',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-data_collection_event-field_dce_end_date'.
-  $fields['node-data_collection_event-field_dce_end_date'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_dce_end_date',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'date',
-      'settings' => array(
-        'cache_count' => '4',
-        'cache_enabled' => 0,
-        'granularity' => array(
-          'day' => 0,
-          'hour' => 0,
-          'minute' => 0,
-          'month' => 'month',
-          'second' => 0,
-          'year' => 'year',
-        ),
-        'timezone_db' => '',
-        'todate' => '',
-        'tz_handling' => 'none',
-      ),
-      'translatable' => '0',
-      'type' => 'datetime',
-    ),
-    'field_instance' => array(
-      'bundle' => 'data_collection_event',
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'module' => 'date',
-          'settings' => array(
-            'format_type' => 'long',
-            'fromto' => 'both',
-            'multiple_from' => '',
-            'multiple_number' => '',
-            'multiple_to' => '',
-          ),
-          'type' => 'date_default',
-          'weight' => '7',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'display_label' => '',
-      'entity_type' => 'node',
-      'field_name' => 'field_dce_end_date',
-      'label' => 'Data Collection Event End Date',
-      'required' => 0,
-      'settings' => array(
-        'default_value' => 'blank',
-        'default_value2' => 'same',
-        'default_value_code' => '',
-        'default_value_code2' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'date',
-        'settings' => array(
-          'increment' => '15',
-          'input_format' => 'm/d/Y - H:i:s',
-          'input_format_custom' => '',
-          'label_position' => 'above',
-          'text_parts' => array(),
-          'year_range' => '1900:+100',
-        ),
-        'type' => 'date_popup',
-        'weight' => '3',
+        'weight' => '11',
       ),
     ),
   );
@@ -2566,56 +2479,49 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-data_collection_event-field_dce_start_date'.
-  $fields['node-data_collection_event-field_dce_start_date'] = array(
+  // Exported field: 'node-data_collection_event-field_dce_start_year'.
+  $fields['node-data_collection_event-field_dce_start_year'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_dce_start_date',
+      'field_name' => 'field_dce_start_year',
       'field_permissions' => array(
         'type' => '0',
       ),
       'foreign keys' => array(),
       'indexes' => array(),
       'locked' => '0',
-      'module' => 'date',
+      'module' => 'number',
       'settings' => array(
-        'cache_count' => '4',
-        'cache_enabled' => 0,
-        'granularity' => array(
-          'day' => 0,
-          'hour' => 0,
-          'minute' => 0,
-          'month' => 'month',
-          'second' => 0,
-          'year' => 'year',
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => 'integer',
         ),
-        'timezone_db' => '',
-        'todate' => '',
-        'tz_handling' => 'none',
       ),
       'translatable' => '0',
-      'type' => 'datetime',
+      'type' => 'number_integer',
     ),
     'field_instance' => array(
       'bundle' => 'data_collection_event',
+      'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
-          'module' => 'date',
+          'label' => 'above',
+          'module' => 'number',
           'settings' => array(
-            'format_type' => 'long',
-            'fromto' => 'both',
-            'multiple_from' => '',
-            'multiple_number' => '',
-            'multiple_to' => '',
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
           ),
-          'type' => 'date_default',
-          'weight' => '6',
+          'type' => 'number_integer',
+          'weight' => 16,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2626,29 +2532,22 @@ function mica_studies_field_default_fields() {
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_dce_start_date',
-      'label' => 'Data Collection Event Start Date',
+      'field_name' => 'field_dce_start_year',
+      'label' => 'Start Year',
       'required' => 0,
       'settings' => array(
-        'default_value' => 'blank',
-        'default_value2' => 'same',
-        'default_value_code' => '',
-        'default_value_code2' => '',
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'date',
-        'settings' => array(
-          'increment' => '15',
-          'input_format' => 'm/d/Y - H:i:s',
-          'input_format_custom' => '',
-          'label_position' => 'above',
-          'text_parts' => array(),
-          'year_range' => '1900:+100',
-        ),
-        'type' => 'date_popup',
-        'weight' => '2',
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '3',
       ),
     ),
   );
@@ -2728,6 +2627,79 @@ function mica_studies_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '6',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-data_collection_event-field_dce_end_year'.
+  $fields['node-data_collection_event-field_dce_end_year'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_dce_end_year',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(
+        'field_description_infos' => array(
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
+          'field_description_value_type' => 'integer',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'data_collection_event',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 17,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'display_label' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_dce_end_year',
+      'label' => 'End Year',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '4',
       ),
     ),
   );
@@ -10236,8 +10208,6 @@ function mica_studies_field_default_fields() {
   t('Country of residence');
   t('Data (questionnaire-derived, measured…)');
   t('Data Collection Event');
-  t('Data Collection Event End Date');
-  t('Data Collection Event Start Date');
   t('Data Dictionnaries');
   t('Data collection events');
   t('Data sources');
@@ -10246,6 +10216,7 @@ function mica_studies_field_default_fields() {
   t('Documents');
   t('Email');
   t('End Date');
+  t('End Year');
   t('Enter the Contact full name. You will be able to edit these Contacts once the Study has been saved.');
   t('Enter the Investigator full name. You will be able to edit these Investigators once the Study will be saved.');
   t('Ethnic Origin');
@@ -10300,6 +10271,7 @@ function mica_studies_field_default_fields() {
   t('Sources of recruitment');
   t('Specific Population');
   t('Start Date');
+  t('Start Year');
   t('State/Province');
   t('Study');
   t('Study End Date');

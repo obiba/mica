@@ -12,16 +12,14 @@ function _mica_studies_block_study_timeline($study) {
     $events = array();
     foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
       $dce_nid = $dce_wrapper->nid->value();
-      $start = $dce_wrapper->field_dce_start_date->value();
-      $end = $dce_wrapper->field_dce_end_date->value();
+      $start = $dce_wrapper->field_dce_start_year->value();
+      $end = $dce_wrapper->field_dce_end_year->value();
       if (!empty($start) && !empty($end)) {
         $events[$start] = array(
           'nid' => $dce_nid,
           'title' => $dce_wrapper->title->value(),
           'start' => $start,
           'end' => $end,
-          'start-label' => empty($start) ? '' : date("Y M", $start),
-          'end-label' => empty($end) ? '' : date("Y M", $end),
         );
       }
     }
@@ -35,41 +33,7 @@ function _mica_studies_block_study_timeline($study) {
     );
   }
 
-//  dvm($data);
-//
-//  array(
-//    58 => array(
-//      'nid' => '58',
-//      'title' => 'Population 1',
-//      'events' => array(
-//        59 => array(
-//          'nid' => '59',
-//          'title' => 'Event 1',
-//          'start' => '1367380800',
-//          'end' => '1462075200',
-//          'start-label' => '2013 May',
-//          'end-label' => '2016 May',
-//        ),
-//        60 => array(
-//          'nid' => '60',
-//          'title' => 'Event 2',
-//          'start' => NULL,
-//          'end' => NULL,
-//          'start-label' => '',
-//          'end-label' => '',
-//        ),
-//        61 => array(
-//          'nid' => '61',
-//          'title' => 'Event 3',
-//          'start' => '799300800',
-//          'end' => NULL,
-//          'start-label' => '1995 May',
-//          'end-label' => '',
-//        ),
-//      ),
-//    ),
-//  )
-
+  dvm($data);
   return array(
     'subject' => t('Study Timeline') . '<a name="timeline"> </a>',
     'content' => 'TODO',
@@ -80,7 +44,8 @@ function _mica_studies_block_study_timeline_set_line_nb(&$events) {
   ksort($events); // sort by start date
 
   $lines = array();
-  foreach ($events as $event) {
+  foreach ($events as &$event) {
+    dvm($event, 'Processing');
     if (empty($lines)) {
       $event['line'] = 0;
       $lines[0][] = $event;
@@ -88,9 +53,11 @@ function _mica_studies_block_study_timeline_set_line_nb(&$events) {
     else {
       foreach ($lines as $index => $line_events) {
         $last_event = end($line_events);
+        dvm($last_event, '$last_event');
         if ($event['start'] > $last_event['end']) {
           $event['line'] = $index;
           $lines[$index][] = $event;
+          dvm("Add it to line $index");
           break;
         }
       }
@@ -101,4 +68,8 @@ function _mica_studies_block_study_timeline_set_line_nb(&$events) {
       }
     }
   }
+
+  dvm($lines, '$lines');
+  dvm($events, '$event');
+
 }

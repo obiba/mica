@@ -83,30 +83,14 @@ function mica_studies_configure_facet_blocks() {
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'name' => t('Biological samples access'),
     ),
-    'field_study_populations:field_pop_dce:field_dce_start_date' => array(
+    'field_study_populations:field_pop_dce:field_dce_start_year' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
-      'name' => t('Data Collection Event Start Date'),
+      'name' => t('Data Collection Event Start Year'),
     ),
-    'field_study_populations:field_pop_dce:field_dce_end_date' => array(
+    'field_study_populations:field_pop_dce:field_dce_end_year' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
-      'name' => t('Data Collection Event End Date'),
+      'name' => t('Data Collection Event End Year'),
     ),
-//    'field_baseline_start_year' => array(
-//      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
-//      'name' => t('Baseline recruitment / initial data collection start year'),
-//    ),
-//    'field_baseline_end_year' => array(
-//      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
-//      'name' => t('Baseline recruitment / initial data collection end year'),
-//    ),
-//    'field_followup_start_year' => array(
-//      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
-//      'name' => t('Follow-up of participants start year'),
-//    ),
-//    'field_followup_end_year' => array(
-//      'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
-//      'name' => t('Follow-up of participants end year'),
-//    ),
     'field_study_start_date' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'name' => t('Study start year'),

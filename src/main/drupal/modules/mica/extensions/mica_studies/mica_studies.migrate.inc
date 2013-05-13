@@ -83,20 +83,20 @@ function _migrate_content_types() {
     $pop_src_recruit = array();
     $pop_general_src_recruit = array();
     $pop_specific_src_recruit = array();
-    $general = false;
-    $specific = false;
+    $general = FALSE;
+    $specific = FALSE;
     //recruitment sources upgrade
     foreach ($study_wrapper->field_recruitment_sources->value() as $source) {
       if ($source->name == "General population") {
         $pop_src_recruit[] = "general";
-        $general = true;
+        $general = TRUE;
       }
       else if ($source->name == "Participants from existing studies") {
         $pop_src_recruit[] = "exist_studies";
       }
       else if ($source->name == "Specific population") {
         $pop_src_recruit[] = "specific_population";
-        $specific = true;
+        $specific = TRUE;
       }
       else if ($source->name == "Volunteer enrolment") {
         if ($general) {
@@ -141,10 +141,10 @@ function _migrate_content_types() {
       'field_pop_partcipant_sel_supp_in' => $study_wrapper->field_partcipant_sel_supp_info->value(),
       'field_pop_selection_others_sp' => $study_wrapper->field_selection_others_sp->value(),
       'field_pop_src_recruit' => $pop_src_recruit,
-      'field_pop_exist_study_part' => null,
+      'field_pop_exist_study_part' => NULL,
       'field_pop_general_pop_recruit' => $pop_general_src_recruit,
       'field_pop_specific_pop' => $pop_specific_src_recruit,
-      'field_pop_specific_pop_other_sp' => null,
+      'field_pop_specific_pop_other_sp' => NULL,
       'field_pop_recruitment_other' => $study_wrapper->field_recruitment_other->value(),
       'field_pop_recruitement_supp_info' => $study_wrapper->field_recruitement_supp_info->value(),
       'field_pop_participants_nb' => $study_wrapper->field_target_number_participants->value(),
@@ -178,8 +178,8 @@ function _migrate_content_types() {
         'type' => 'data_collection_event',
         'title' => $study_wrapper->title->value() . ' -- Data Collection Event Preparation',
         'language' => $study_wrapper->language->value(),
-        'field_dce_start_date' => strtotime($start_year . "-01-01 00:00:00"),
-        'field_dce_end_date' => strtotime($end_year . "-01-01 00:00:00"),
+        'field_dce_start_year' => $start_year,
+        'field_dce_end_year' => $end_year,
         'field_dce_data_sources' => $study_wrapper->field_data_sources->value(),
         'field_dce_data_sources_sp' => $study_wrapper->field_data_sources_sp->value(),
         'field_dce_bio_samples_management' => $study_wrapper->field_bio_samples_management->value(),
@@ -211,8 +211,8 @@ function _migrate_content_types() {
         'type' => 'data_collection_event',
         'title' => $study_wrapper->title->value() . ' -- Data Collection Event Baseline',
         'language' => $study_wrapper->language->value(),
-        'field_dce_start_date' => strtotime($start_year . "-01-01 00:00:00"),
-        'field_dce_end_date' => strtotime($end_year . "-01-01 00:00:00"),
+        'field_dce_start_year' => $start_year,
+        'field_dce_end_year' => $end_year,
         'field_dce_data_sources' => $study_wrapper->field_data_sources->value(),
         'field_dce_data_sources_sp' => $study_wrapper->field_data_sources_sp->value(),
         'field_dce_bio_samples_management' => $study_wrapper->field_bio_samples_management->value(),
@@ -245,8 +245,8 @@ function _migrate_content_types() {
         'type' => 'data_collection_event',
         'title' => $study_wrapper->title->value() . ' -- Data Collection Event Follow-up',
         'language' => $study_wrapper->language->value(),
-        'field_dce_start_date' => strtotime($start_year . "-01-01 00:00:00"),
-        'field_dce_end_date' => strtotime($end_year . "-01-01 00:00:00"),
+        'field_dce_start_year' => $start_year,
+        'field_dce_end_year' => $end_year,
         'field_dce_data_sources' => $study_wrapper->field_data_sources->value(),
         'field_dce_data_sources_sp' => $study_wrapper->field_data_sources_sp->value(),
         'field_dce_bio_samples_management' => $study_wrapper->field_bio_samples_management->value(),

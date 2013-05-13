@@ -141,7 +141,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Data Collection',
-    'weight' => '5',
+    'weight' => '7',
     'children' => array(
       0 => 'field_dce_data_sources',
       1 => 'field_dce_data_sources_admin_db',
@@ -200,7 +200,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '7',
+    'weight' => '9',
     'children' => array(
       0 => 'field_dce_data_dictionnaries',
       1 => 'field_dce_others',
@@ -230,7 +230,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Sample Collection',
-    'weight' => '6',
+    'weight' => '8',
     'children' => array(
       0 => 'field_dce_bio_samples_management',
       1 => 'field_dce_samples_man_other_sp',

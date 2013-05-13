@@ -9,8 +9,8 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
 
   $dce_rows = array();
   foreach ($wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
-    $start = $dce_wrapper->field_dce_start_date->value();
-    $end = $dce_wrapper->field_dce_end_date->value();
+    $start = $dce_wrapper->field_dce_start_year->value();
+    $end = $dce_wrapper->field_dce_end_year->value();
     $desc = NULL;
     if (!empty($dce_wrapper->value()->body)) {
       $desc = $dce_wrapper->body->summary->value();
@@ -21,8 +21,8 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
     $dce_rows[$start] = array(
       l($dce_wrapper->title->value(), 'node/' . $dce_wrapper->nid->value()),
       $desc,
-      empty($start) ? '' : date("Y M", $start),
-      empty($end) ? '' : date("Y M", $end),
+      empty($start) ? '' : $start,
+      empty($end) ? '' : $end,
     );
   }
   if (!empty($dce_rows)) {
