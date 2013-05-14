@@ -91,15 +91,15 @@ abstract class AbstractTerm implements QueryTermInterface {
 
     $this->type = $type;
     $this->qt = $qt;
-    $this->options = &$qt->options;
+    $this->options = & $qt->options;
   }
 
   static function typeFor($variable) {
     $wrapper = entity_metadata_wrapper('node', $variable);
 
     $is_categorical = FALSE;
-    foreach ($wrapper->field_variable_categories->value() as $category){
-      if ($category['missing'] == FALSE){
+    foreach ($wrapper->field_variable_categories->value() as $category) {
+      if ($category['missing'] == FALSE) {
         $is_categorical = TRUE;
         break;
       }
@@ -252,14 +252,34 @@ class CategoryTerm extends AbstractTerm {
 
     $rows = array();
     $wrapper = entity_metadata_wrapper('node', $variable);
+    // Get total of non-missing categories
+    $totals = array();
+    foreach ($wrapper->field_variable_categories->value() as $category) {
+      if (!$category["missing"]) {
+        $category_name = $category["name"];
+        foreach ($stats as $study_id => $stat) {
+          $s = isset($stat[$category_name]) ? $stat[$category_name] : 0;
+          $totals[$study_id] = isset($totals[$study_id]) ? $totals[$study_id] + $s : $s;
+        }
+      }
+    }
+
     foreach ($wrapper->field_variable_categories->value() as $category) {
       $category_name = $category["name"];
+      $missing = $category['missing'];
       $row = array($category_name);
       foreach ($stats as $study_id => $stat) {
-        $row[] = isset($stat[$category_name]) ? $stat[$category_name] : 0;
+        if (!$missing && isset($stat[$category_name]) && $totals[$study_id] > 0) {
+          $percent = round(($stat[$category_name] / $totals[$study_id]) * 100, 1);
+          $row[] = isset($stat[$category_name]) ? $stat[$category_name] . '<br>(' . $percent . '%)' : 0;
+        }
+        else {
+          $row[] = isset($stat[$category_name]) ? $stat[$category_name] : 0;
+        }
       }
       $rows[] = $row;
     }
+
     $row = array(
       array(
         'data' => t('All'),
