@@ -461,7 +461,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_samples_man_other_sp']['table'] = 'field_data_field_samples_man_other_sp';
   $handler->display->display_options['fields']['field_samples_man_other_sp']['field'] = 'field_samples_man_other_sp';
   $handler->display->display_options['fields']['field_samples_man_other_sp']['label'] = 'other_sample_management';
-  /* Field: Content: Data (questionnaire-derived, measured…) */
+  /* Field: Content: Data (questionnaire-derived, measured...) */
   $handler->display->display_options['fields']['field_access_data']['id'] = 'field_access_data';
   $handler->display->display_options['fields']['field_access_data']['table'] = 'field_data_field_access_data';
   $handler->display->display_options['fields']['field_access_data']['field'] = 'field_access_data';
@@ -965,7 +965,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_country_1']['id'] = 'field_country_1';
   $handler->display->display_options['fields']['field_country_1']['table'] = 'field_data_field_country';
   $handler->display->display_options['fields']['field_country_1']['field'] = 'field_country';
-  /* Field: Content: Data (questionnaire-derived, measured…) */
+  /* Field: Content: Data (questionnaire-derived, measured...) */
   $handler->display->display_options['fields']['field_access_data']['id'] = 'field_access_data';
   $handler->display->display_options['fields']['field_access_data']['table'] = 'field_data_field_access_data';
   $handler->display->display_options['fields']['field_access_data']['field'] = 'field_access_data';
@@ -1466,7 +1466,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_samples_man_other_sp']['id'] = 'field_samples_man_other_sp';
   $handler->display->display_options['fields']['field_samples_man_other_sp']['table'] = 'field_data_field_samples_man_other_sp';
   $handler->display->display_options['fields']['field_samples_man_other_sp']['field'] = 'field_samples_man_other_sp';
-  /* Field: Content: Data (questionnaire-derived, measured…) */
+  /* Field: Content: Data (questionnaire-derived, measured...) */
   $handler->display->display_options['fields']['field_access_data']['id'] = 'field_access_data';
   $handler->display->display_options['fields']['field_access_data']['table'] = 'field_data_field_access_data';
   $handler->display->display_options['fields']['field_access_data']['field'] = 'field_access_data';

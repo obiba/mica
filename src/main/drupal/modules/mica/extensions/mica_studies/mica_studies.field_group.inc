@@ -172,7 +172,7 @@ function mica_studies_field_group_info() {
     'label' => 'Documents',
     'weight' => '10',
     'children' => array(
-      0 => 'field_dce_data_dictionnaries',
+      0 => 'field_dce_data_Dictionaries',
       1 => 'field_dce_others',
       2 => 'field_dce_questionnaires',
       3 => 'field_dce_sops',
@@ -202,7 +202,7 @@ function mica_studies_field_group_info() {
     'label' => 'Documents',
     'weight' => '9',
     'children' => array(
-      0 => 'field_dce_data_dictionnaries',
+      0 => 'field_dce_data_Dictionaries',
       1 => 'field_dce_others',
       2 => 'field_dce_questionnaires',
       3 => 'field_dce_sops',

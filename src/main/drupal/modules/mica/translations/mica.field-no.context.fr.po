@@ -151,7 +151,7 @@ msgid "Yes"
 msgstr "Oui"
 
 
-msgid "Data (questionnaire-derived, measured…)"
+msgid "Data (questionnaire-derived, measured...)"
 msgstr "Données (issues d'un questionnaire, mesurées...)"
 
 
