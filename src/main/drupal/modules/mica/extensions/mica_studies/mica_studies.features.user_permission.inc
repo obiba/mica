@@ -241,6 +241,8 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'network administrator' => 'network administrator',
+      'network reviewer' => 'network reviewer',
       'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
@@ -401,6 +403,7 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'network reviewer' => 'network reviewer',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
@@ -484,6 +487,8 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'network administrator' => 'network administrator',
+      'network reviewer' => 'network reviewer',
       'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
@@ -580,6 +585,8 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'network administrator' => 'network administrator',
+      'network reviewer' => 'network reviewer',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
@@ -729,6 +736,8 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'network administrator' => 'network administrator',
+      'network reviewer' => 'network reviewer',
       'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),

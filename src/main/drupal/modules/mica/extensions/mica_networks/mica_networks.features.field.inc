@@ -1512,61 +1512,11 @@ function mica_networks_field_default_fields() {
       'deleted' => '0',
       'description' => '',
       'display' => array(
-        'banner_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'center_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => 97,
-        ),
-        'footer_area' => array(
-          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'left_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'right_area' => array(
-          'label' => 'above',
-          'module' => 'node_reference',
-          'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '4',
-        ),
-        'summary_banner_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'summary_left_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'summary_right_area' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',

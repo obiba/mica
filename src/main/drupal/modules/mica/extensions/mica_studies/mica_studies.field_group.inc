@@ -350,7 +350,8 @@ function mica_studies_field_group_info() {
       1 => 'field_contacts_ref',
       2 => 'field_investigators',
       3 => 'field_website',
-      4 => 'group_study_name',
+      4 => 'field_networks',
+      5 => 'group_study_name',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -857,8 +858,8 @@ function mica_studies_field_group_info() {
     'label' => 'Study Timeline',
     'weight' => '8',
     'children' => array(
-      0 => 'field_study_start_date',
-      1 => 'field_study_end_date',
+      0 => 'field_study_end_date',
+      1 => 'field_study_start_date',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
