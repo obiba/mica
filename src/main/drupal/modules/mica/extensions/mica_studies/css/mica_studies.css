@@ -3,13 +3,15 @@
   float: left;
   margin: 10px;
 }
+
 .node-study .field-item .inner-label,
-.node-population .field-item .inner-label,
+.node-population .field-item .inner-label {
+  display: inline;
+  font-weight: bold;
+}
+
 .node-study .field-item .inner-value,
 .node-population .field-item .inner-value {
   display: inline;
-}
-.node-study .field-item .inner-value,
-.node-population .field-item .inner-value {
   padding-left: 3px;
 }
