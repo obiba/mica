@@ -2,17 +2,36 @@
 
 function _mica_studies_block_study_timeline($study) {
 
-  // see
-  // https://github.com/jiahuang/d3-timeline
+  // http://color-harmony.edelweis-art.com/
+  $color_index = 0;
+  $colors = array(
+    '#5199dc',
+    '#a9ccee',
+    '#294c6e',
+    '#d4e5f6',
+    '#3c72a5',
+    '#7e99b2',
+    '#1e3952',
+    '#9fabb8',
+    '#b2967e',
+    '#eec9a9',
+    '#dc9351',
+    '#bfbfbf'
+  );
 
+  $legend_items = array();
   $study_wrapper = entity_metadata_wrapper('node', $study);
   $events = array();
   foreach ($study_wrapper->field_study_populations->getIterator() as $pop_wrapper) {
+    $color = $colors[$color_index++];
+    $pop_title = $pop_wrapper->title->value();
+    $legend_items[] = "<svg width='30px' height='30px'><rect width='20' height='20' x='2' y='2' rx='5' ry='5' style='fill:$color;stroke:black' /></svg> $pop_title";
     foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
       $start = $dce_wrapper->field_dce_start_year->value();
       $end = $dce_wrapper->field_dce_end_year->value();
       if (!empty($start) && !empty($end)) {
         $events[] = array(
+          'color' => $color,
           'pop_nid' => $pop_wrapper->nid->value(),
           'pop_title' => $pop_wrapper->title->value(),
           'dce_nid' => $dce_wrapper->nid->value(),
@@ -28,23 +47,28 @@ function _mica_studies_block_study_timeline($study) {
   }
 
   uasort($events, '_mica_studies_sort_dce'); // sort by start date
-  // // dpm($events, '$events');
+  // dpm($events, '$events');
   $lines = _mica_studies_block_study_timeline_prepare_lines($events);
   dpm($lines, '$lines');
 
+  $legend = '<ul class="timeline-legend">';
+  foreach ($legend_items as $item) {
+    $legend .= "<li>$item</li>";
+  }
+  $legend .= '</ul>';
+
   ctools_add_js('mica_studies.timeline', 'mica_studies');
   drupal_add_js(array('timeline_data' => $lines), array('type' => 'setting'));
+
   return array(
     'subject' => t('Study Timeline') . '<a name="timeline"> </a>',
-    'content' => '<div id="timeline" />',
+    'content' => '<div id="timeline"> </div>' . $legend,
   );
 }
 
 function _mica_studies_block_study_timeline_prepare_lines($events) {
 
   $lines_by_pop = array();
-  $color_index = 0;
-  $color_by_pop = array();
   foreach ($events as &$event) {
     // dvm($event, 'Processing');
     if (isset($lines_by_pop[$event['pop_nid']])) {
@@ -66,7 +90,7 @@ function _mica_studies_block_study_timeline_prepare_lines($events) {
         $lines_by_pop[$event['pop_nid']][$new_line] = array(
           'pop_nid' => $event['pop_nid'],
           'pop_title' => $event['pop_title'],
-          'color' => _mica_studies_block_study_timeline_get_color($event['pop_nid'], $color_by_pop, $color_index),
+          'color' => $event['color'],
           'events' => array($event),
         );
         // dvm("Create new line $new_line");
@@ -76,7 +100,7 @@ function _mica_studies_block_study_timeline_prepare_lines($events) {
       $lines_by_pop[$event['pop_nid']][] = array(
         'pop_nid' => $event['pop_nid'],
         'pop_title' => $event['pop_title'],
-        'color' => _mica_studies_block_study_timeline_get_color($event['pop_nid'], $color_by_pop, $color_index),
+        'color' => $event['color'],
         'events' => array($event),
       );
     }
@@ -92,25 +116,3 @@ function _mica_studies_block_study_timeline_prepare_lines($events) {
   return $lines;
 }
 
-function _mica_studies_block_study_timeline_get_color($pop_nid, &$color_by_pop, &$color_index) {
-  // http://color-harmony.edelweis-art.com/
-  $colors = array(
-    '#5199dc',
-    '#a9ccee',
-    '#294c6e',
-    '#d4e5f6',
-    '#3c72a5',
-    '#7e99b2',
-    '#1e3952',
-    '#9fabb8',
-    '#b2967e',
-    '#eec9a9',
-    '#dc9351',
-    '#bfbfbf'
-  );
-  if (isset($color_by_pop[$pop_nid])) {
-    return $color_by_pop[$pop_nid];
-  }
-  $color_by_pop[$pop_nid] = $colors[$color_index++];
-  return $color_by_pop[$pop_nid];
-}
