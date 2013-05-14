@@ -219,20 +219,7 @@ function mica_studies_update_7700(&$update) {
  * Update Mica content types
  */
 function mica_studies_update_7800(&$update) {
-  features_revert(array(
-    'mica_studies' => array(
-      'field',
-      'field_group',
-      'variable',
-      'views_view',
-      'user_permission',
-      'search_api_index',
-      'node'
-    )
-  ));
-  _migrate_content_types();
-  _delete_deprecated_fields_groups();
-  _mica_studies_config_blocks();
+  drupal_set_message(t('To complete the update process, ') . l('click here', 'admin/config/development/mica_studies') . ' and click on Run', 'warning');
 }
 
 /**
