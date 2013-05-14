@@ -11204,7 +11204,7 @@ msgstr "En tirets"
 msgid "Data"
 msgstr "Données"
 
-msgid "Data (questionnaire-derived, measured…)"
+msgid "Data (questionnaire-derived, measured...)"
 msgstr "Données (issues d'un questionnaire, mesurées...)"
 
 msgid "Data Access Administration"
@@ -15486,7 +15486,7 @@ msgstr "Exclure de l'affichage"
 
 msgid ""
 "Exclude items from indexing based on their bundle (content type, "
-"vocabulary, …)."
+"vocabulary, ...)."
 msgstr ""
 "Exclut l'indexation des items basée sur leur composition (type de "
 "contenu, vocabulaire, ...)."
@@ -48597,7 +48597,7 @@ msgid "Yes"
 msgstr "Oui"
 
 msgctxt "field_access_data:study:label"
-msgid "Data (questionnaire-derived, measured…)"
+msgid "Data (questionnaire-derived, measured...)"
 msgstr "Données (issues d'un questionnaire, mesurées...)"
 
 msgctxt "field_access_other:#allowed_values:0"
@@ -53731,7 +53731,7 @@ msgstr "Structures anatomiques"
 
 #: blocks:facetapi:Y2jUzmF8fK49hirSqsFb2077JN52TV83:title
 msgctxt "facetapi:Y2jUzmF8fK49hirSqsFb2077JN52TV83:title"
-msgid "Data (questionnaire-derived, measured…)"
+msgid "Data (questionnaire-derived, measured...)"
 msgstr "Données (dérivées de questionnaire, mesurées...)"
 
 #: blocks:facetapi:YOJk0YKGBO6i59Sg1LGDC361WTluMigF:title

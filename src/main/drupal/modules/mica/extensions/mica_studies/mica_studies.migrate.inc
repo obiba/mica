@@ -1,22 +1,4 @@
 <?php
-function _mica_studies_devel_form() {
-  $form['migrate'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Study migration:'),
-    '#description' => NULL,
-  );
-  $form['migrate']['desc'] = array(
-    '#markup' => 'Enable longitudinal studies content types (study, population and data collection event)<br><br>',
-  );
-
-  $form['migrate']['run'] = array(
-    '#type' => 'submit',
-    '#value' => t('Run'),
-    '#submit' => array('_mica_studies_longitudinal_migration'),
-  );
-
-  return $form;
-}
 
 function _mica_studies_longitudinal_migration() {
 

@@ -1657,7 +1657,7 @@ msgstr "Échantillons biologiques"
 
 #: field:field_access_data:study:label
 msgctxt "field_access_data:study:label"
-msgid "Data (questionnaire-derived, measured…)"
+msgid "Data (questionnaire-derived, measured...)"
 msgstr "Données (issues d'un questionnaire, mesurées...)"
 
 #: field:field_access_other:study:label

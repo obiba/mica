@@ -1667,14 +1667,14 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-data_collection_event-field_dce_data_dictionnaries'.
-  $fields['node-data_collection_event-field_dce_data_dictionnaries'] = array(
+  // Exported field: 'node-data_collection_event-field_dce_data_dictionaries'.
+  $fields['node-data_collection_event-field_dce_data_dictionaries'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_dce_data_dictionnaries',
+      'field_name' => 'field_dce_data_dictionaries',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -1722,8 +1722,8 @@ function mica_studies_field_default_fields() {
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_dce_data_dictionnaries',
-      'label' => 'Data Dictionnaries',
+      'field_name' => 'field_dce_data_dictionaries',
+      'label' => 'Data Dictionaries',
       'required' => 0,
       'settings' => array(
         'description_field' => 1,
@@ -5859,7 +5859,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_access_data',
-      'label' => 'Data (questionnaire-derived, measured…)',
+      'label' => 'Data (questionnaire-derived, measured...)',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -10208,9 +10208,9 @@ function mica_studies_field_default_fields() {
   t('Contacts');
   t('Country');
   t('Country of residence');
-  t('Data (questionnaire-derived, measured…)');
+  t('Data (questionnaire-derived, measured...)');
   t('Data Collection Event');
-  t('Data Dictionnaries');
+  t('Data Dictionaries');
   t('Data collection events');
   t('Data sources');
   t('Datasets');

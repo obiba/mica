@@ -9,6 +9,7 @@ require_once('mica_studies.features.inc');
 require_once('mica_studies.population.inc');
 require_once('mica_studies.data_collection_event.inc');
 require_once('mica_studies.study.inc');
+require_once('mica_studies.migrate.inc');
 
 /**
  * Implements hook_menu().
@@ -21,16 +22,14 @@ function mica_studies_menu() {
     'access callback' => 'mica_studies_export_page_access',
     'file' => 'mica_studies.pages.inc',
   );
-  // for test only
   $items['admin/config/development/mica_studies'] = array(
     'title' => 'Mica Studies',
-    'description' => 'tools to test content type migration',
+    'description' => 'Devel tools for Mica Studies',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('_mica_studies_devel_form'),
     'access arguments' => array('administer site configuration'),
-    'file' => 'mica_studies.migrate.inc',
+    'file' => 'mica_studies.devel.inc',
   );
-
   return $items;
 }
 
