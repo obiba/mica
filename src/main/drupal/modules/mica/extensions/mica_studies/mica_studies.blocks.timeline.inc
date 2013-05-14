@@ -57,6 +57,8 @@ function _mica_studies_block_study_timeline($study) {
   }
   $legend .= '</ul>';
 
+  ctools_add_js('d3.v3.min', 'mica_studies');
+  ctools_add_js('d3-timeline', 'mica_studies');
   ctools_add_js('mica_studies.timeline', 'mica_studies');
   drupal_add_js(array('timeline_data' => $lines), array('type' => 'setting'));
 
