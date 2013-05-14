@@ -245,7 +245,8 @@ function mica_studies_default_search_api_index() {
         "field_baseline_start_year" : { "type" : "integer" },
         "field_baseline_end_year" : { "type" : "integer" },
         "field_age_min" : { "type" : "integer" },
-        "field_age_max" : { "type" : "integer" }
+        "field_age_max" : { "type" : "integer" },
+        "field_networks" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {

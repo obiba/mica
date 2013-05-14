@@ -13,6 +13,7 @@ function _mica_studies_block_study_general_info($study) {
     field_view_field('node', $study, 'field_contacts_ref', array('label' => 'inline', 'weight' => ++$weight)),
     field_view_field('node', $study, 'field_study_start_date', array('label' => 'inline', 'weight' => ++$weight)),
     field_view_field('node', $study, 'field_study_end_date', array('label' => 'inline', 'weight' => ++$weight)),
+    field_view_field('node', $study, 'field_networks', array('label' => 'inline', 'weight' => ++$weight)),
   );
   return array(
     'subject' => t('General Information') . '<a name="general-info"> </a>',

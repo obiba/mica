@@ -123,8 +123,8 @@ mica-install: compile-less
 	make inject-version-info
 
 prepare-mica-distribution: compile-less
-	cp src/main/drupal/themes/mica_samara/mica.png target/$(micadir)/themes/seven/logo.png && \
-	cp src/main/drupal/themes/mica_samara/favicon.ico target/$(micadir)/misc/favicon.ico && \
+	cp src/main/drupal/themes/mica_bootstrap/logo.png target/$(micadir)/themes/seven && \
+	cp src/main/drupal/themes/mica_bootstrap/favicon.ico target/$(micadir)/misc && \
 	cp -r target/$(micadir)/profiles/mica_distribution/libraries/ckeditor/* target/$(micadir)/profiles/mica_distribution/modules/ckeditor/ckeditor && \
 	rm -rf target/$(micadir)/profiles/minimal target/$(micadir)/profiles/standard target/$(micadir)/profiles/testing
 
@@ -159,8 +159,6 @@ inject-version-info:
 	$(call inject-version-info,,mica_distribution,$(mica_distribution_version))
 	$(call inject-version-info,mica_distribution/themes,mica_bootstrap,$(mica_version))
 	$(call inject-version-info,mica_distribution/themes,mica_subtheme,$(mica_version))
-	$(call inject-version-info,mica_distribution/themes,mica_samara,$(mica_version))
-	$(call inject-version-info,mica_distribution/themes,mica_corolla,$(mica_version))
 
 clear-version-info: compile-less
 	$(call clear-version-info,src/main/drupal/modules/mica/extensions,mica_bootstrap_config)
@@ -188,8 +186,6 @@ clear-version-info: compile-less
 	$(call clear-version-info,src/main/drupal/profiles,mica_distribution)
 	$(call clear-version-info,src/main/drupal/themes,mica_bootstrap)
 	$(call clear-version-info,src/main/drupal/themes,mica_subtheme)
-	$(call clear-version-info,src/main/drupal/themes,mica_samara)
-	$(call clear-version-info,src/main/drupal/themes,mica_corolla)
 
 set-distribution-version:
 	cd src/main/drupal/profiles/mica_distribution && \

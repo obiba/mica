@@ -856,15 +856,15 @@ function mica_studies_block_info() {
       'pages' => $pages,
       'cache' => DRUPAL_CACHE_PER_PAGE,
     ),
-    'study-menu' => array(
-      'info' => t('Study Menu'),
-      'weight' => '10',
-      'status' => TRUE,
-      'region' => 'sidebar_second',
-      'visibility' => BLOCK_VISIBILITY_PHP,
-      'pages' => $pages,
-      'cache' => DRUPAL_CACHE_PER_PAGE,
-    ),
+//    'study-menu' => array(
+//      'info' => t('Study Menu'),
+//      'weight' => '10',
+//      'status' => TRUE,
+//      'region' => 'sidebar_second',
+//      'visibility' => BLOCK_VISIBILITY_PHP,
+//      'pages' => $pages,
+//      'cache' => DRUPAL_CACHE_PER_PAGE,
+//    ),
   );
 }
 
@@ -901,9 +901,9 @@ function mica_studies_block_view($delta = '') {
     case 'study-authorization':
       module_load_include('inc', 'mica_studies', 'mica_studies.blocks.authorization');
       return _mica_studies_block_study_authorization($study);
-    case 'study-menu':
-      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.menu');
-      return _mica_studies_block_study_menu($study);
+//    case 'study-menu':
+//      module_load_include('inc', 'mica_studies', 'mica_studies.blocks.menu');
+//      return _mica_studies_block_study_menu($study);
     default:
       return NULL;
   }
@@ -1031,4 +1031,18 @@ function mica_studies_node_reference_field_dce_population_potential_references($
     }
   }
   return array($references);
+}
+
+function _mica_studies_sort_dce($x, $y) {
+  $x_start = $x['start'];
+  $y_start = $y['start'];
+  if ($x_start === $y_start) {
+    $x_end = $x['end'];
+    $y_end = $y['end'];
+    if ($x_end === $y_end) {
+      return 0;
+    }
+    return $x_end < $y_end ? -1 : 1;
+  }
+  return $x_start < $y_start ? -1 : 1;
 }

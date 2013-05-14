@@ -18,15 +18,16 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
         $desc = truncate_utf8($dce_wrapper->body->value->value(), 50, TRUE, TRUE);
       }
     }
-    $dce_rows[$start] = array(
-      l($dce_wrapper->title->value(), 'node/' . $dce_wrapper->nid->value()),
-      $desc,
-      empty($start) ? '' : $start,
-      empty($end) ? '' : $end,
+    $dce_nid = $dce_wrapper->nid->value();
+    $dce_rows[$dce_nid] = array(
+      'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
+      'desc' => $desc,
+      'start' => empty($start) ? '' : $start,
+      'end' => empty($end) ? '' : $end,
     );
   }
   if (!empty($dce_rows)) {
-    ksort($dce_rows);
+    uasort($dce_rows, '_mica_studies_sort_dce');
     $node->content['data-collection-event'] = array(
       '#weight' => '100',
       '#theme' => 'table',
