@@ -5,44 +5,13 @@ function _mica_studies_devel_form() {
   $form = array();
   $form['migrate'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Migration'),
-    '#description' => t('Migrate to longitudinal studies'),
+    '#title' => t('Study migration:'),
+    '#description' => t('Enable longitudinal studies content types (study, population and data collection event)'),
   );
-  $form['migrate']['migration'] = array(
+  $form['migrate']['run'] = array(
     '#type' => 'submit',
-    '#value' => t('Run migration method'),
+    '#value' => t('Run'),
     '#submit' => array('_mica_studies_longitudinal_migration'),
-  );
-  $form['migrate']['clear'] = array(
-    '#type' => 'submit',
-    '#value' => t('Run clear method'),
-    '#submit' => array('_mica_studies_longitudinal_migration_clear'),
-  );
-
-  $form['stepbystep'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('study migration upgrade step by step'),
-    '#description' => NULL,
-  );
-  $form['stepbystep']['revert'] = array(
-    '#type' => 'submit',
-    '#value' => t('Run revert method'),
-    '#submit' => array('_mica_studies_revert'),
-  );
-  $form['stepbystep']['upgrade'] = array(
-    '#type' => 'submit',
-    '#value' => t('Run upgrade method'),
-    '#submit' => array('_migrate_content_types'),
-  );
-  $form['stepbystep']['delete'] = array(
-    '#type' => 'submit',
-    '#value' => t('Run delete method'),
-    '#submit' => array('_delete_deprecated_fields_groups'),
-  );
-  $form['stepbystep']['delete'] = array(
-    '#type' => 'submit',
-    '#value' => t('Run delete method'),
-    '#submit' => array('_delete_deprecated_fields_groups'),
   );
 
   $form['field_descriptions'] = array(
