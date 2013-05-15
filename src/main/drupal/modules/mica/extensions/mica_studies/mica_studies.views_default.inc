@@ -1458,7 +1458,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_access_biosamples']['id'] = 'field_access_biosamples';
   $handler->display->display_options['fields']['field_access_biosamples']['table'] = 'field_data_field_access_biosamples';
   $handler->display->display_options['fields']['field_access_biosamples']['field'] = 'field_access_biosamples';
-  /* Field: Content: Data (questionnaire-derived, measured…) */
+  /* Field: Content: Data (questionnaire-derived, measured...) */
   $handler->display->display_options['fields']['field_access_data']['id'] = 'field_access_data';
   $handler->display->display_options['fields']['field_access_data']['table'] = 'field_data_field_access_data';
   $handler->display->display_options['fields']['field_access_data']['field'] = 'field_access_data';

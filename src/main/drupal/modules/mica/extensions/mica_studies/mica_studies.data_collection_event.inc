@@ -47,7 +47,7 @@ function _mica_studies_dce_view_data_sources(&$node) {
       for ($i = 0; $i < $nb_items; $i++) {
         $content[] = $node->content['field_dce_data_sources_admin_db'][$i]['#markup'];
       }
-      $node->content['field_dce_data_sources'][$db_index]['#markup'] .= ': ' . implode(', ', $content);
+      $node->content['field_dce_data_sources'][$db_index]['#markup'] .= ' (' . implode(', ', $content) . ')';
       $node->content['field_dce_data_sources_admin_db']['#access'] = FALSE;
     }
   }
@@ -82,7 +82,7 @@ function _mica_studies_dce_view_samples(&$node) {
   if ($tissues_index !== FALSE) {
     $field_dce_tissues_sp = $wrapper->field_dce_tissues_sp->value();
     if (!empty($field_dce_tissues_sp)) {
-      $node->content['field_dce_bio_samples_management'][$tissues_index]['#markup'] .= ': ' . $node->content['field_dce_tissues_sp'][0]['#markup'];;
+      $node->content['field_dce_bio_samples_management'][$tissues_index]['#markup'] .= ' (' . $node->content['field_dce_tissues_sp'][0]['#markup'] . ')';
       $node->content['field_dce_tissues_sp']['#access'] = FALSE;
     }
   }

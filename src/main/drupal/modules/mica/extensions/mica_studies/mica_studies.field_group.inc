@@ -170,7 +170,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '8',
+    'weight' => '10',
     'children' => array(
       0 => 'field_dce_data_dictionaries',
       1 => 'field_dce_others',

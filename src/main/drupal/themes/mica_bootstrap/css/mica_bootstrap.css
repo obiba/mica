@@ -7482,6 +7482,11 @@ section#block-views-news-recent-news article h2 {
   list-style: none;
 }
 
+.node-type-study section#block-mica-studies-study-timeline .modal article header,
+.node-type-study section#block-mica-studies-study-timeline .popover-content article header {
+  display: none;
+}
+
 .node-type-study section#block-mica-studies-study-menu ul {
   margin-left: 5px;
 }

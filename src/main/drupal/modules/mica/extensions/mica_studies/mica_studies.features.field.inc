@@ -1870,7 +1870,7 @@ function mica_studies_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '9',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2045,7 +2045,7 @@ function mica_studies_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => '11',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2295,7 +2295,7 @@ function mica_studies_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => '10',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',

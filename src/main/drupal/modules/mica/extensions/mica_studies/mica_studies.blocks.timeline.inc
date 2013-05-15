@@ -19,29 +19,36 @@ function _mica_studies_block_study_timeline($study) {
     '#bfbfbf'
   );
 
+  $event_view = array();
   $pop_svg = array();
   $legend_items = array();
   $study_wrapper = entity_metadata_wrapper('node', $study);
   $events = array();
   foreach ($study_wrapper->field_study_populations->getIterator() as $pop_wrapper) {
     $pop_nid = $pop_wrapper->nid->value();
+    $pop_title = $pop_wrapper->title->value();
+
     $color = $colors[$color_index++];
     $svg = "<svg width='25' height='25'><rect width='20' height='20' x='2' y='2' rx='5' ry='5' style='fill:$color;'/></svg>";
-    $legend_items[] = $svg . ' ' . $pop_wrapper->title->value();
+
+    $legend_items[] = $svg . ' ' . $pop_title;
     $pop_svg[] = array('pop_nid' => $pop_nid, 'svg' => $svg);
     foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
       $start = $dce_wrapper->field_dce_start_year->value();
       $end = $dce_wrapper->field_dce_end_year->value();
+      $dce_nid = $dce_wrapper->nid->value();
       if (!empty($start) && !empty($end)) {
         $events[] = array(
           'color' => $color,
           'pop_nid' => $pop_wrapper->nid->value(),
           'pop_title' => $pop_wrapper->title->value(),
-          'dce_nid' => $dce_wrapper->nid->value(),
+          'dce_nid' => $dce_nid,
           'dce_title' => $dce_wrapper->title->value(),
           'start' => $start,
           'end' => $end,
+//          'popover' => drupal_render(node_view(node_load($dce_nid)))
         );
+        $event_view[] = _mica_studies_block_study_timeline_prepare_modal($dce_nid);
       }
     }
   }
@@ -52,13 +59,15 @@ function _mica_studies_block_study_timeline($study) {
   uasort($events, '_mica_studies_sort_dce'); // sort by start date
   // dpm($events, '$events');
   $lines = _mica_studies_block_study_timeline_prepare_lines($events);
-  dpm($lines, '$lines');
+//  dpm($lines, '$lines');
 
   $legend = '<ul class="timeline-legend">';
   foreach ($legend_items as $item) {
     $legend .= "<li>$item</li>";
   }
   $legend .= '</ul>';
+
+  $events_details = '<div>' . implode(' ', $event_view) . '</div>';
 
   ctools_add_css('mica_studies.timeline', 'mica_studies');
   ctools_add_js('d3.v3.min', 'mica_studies');
@@ -71,7 +80,7 @@ function _mica_studies_block_study_timeline($study) {
 
   return array(
     'subject' => t('Study Timeline') . '<a name="timeline"> </a>',
-    'content' => '<div id="timeline"> </div>' . $legend,
+    'content' => '<div id="timeline"> </div>' . $legend . $events_details,
   );
 }
 
@@ -125,3 +134,11 @@ function _mica_studies_block_study_timeline_prepare_lines($events) {
   return $lines;
 }
 
+function _mica_studies_block_study_timeline_prepare_modal($dce_nid) {
+  $dce = node_load($dce_nid);
+  return '<div id="event-' . $dce_nid . '" class="modal hide fade">'
+  . '<div class="modal-header"><h3>' . $dce->title . '</h3></div>'
+  . '<div class="modal-body">' . drupal_render(node_view($dce)) . '</div>'
+  . '<div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">' . t('Close') . '</button></div>'
+  . '</div>';
+}
