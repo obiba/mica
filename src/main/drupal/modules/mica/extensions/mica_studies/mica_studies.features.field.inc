@@ -8947,14 +8947,14 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study-field_study_end_date'.
-  $fields['node-study-field_study_end_date'] = array(
+  // Exported field: 'node-study-field_study_end_year'.
+  $fields['node-study-field_study_end_year'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_study_end_date',
+      'field_name' => 'field_study_end_year',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -8994,7 +8994,7 @@ function mica_studies_field_default_fields() {
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_study_end_date',
+      'field_name' => 'field_study_end_year',
       'label' => 'Study End Year',
       'required' => 0,
       'settings' => array(
@@ -9161,14 +9161,14 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study-field_study_start_date'.
-  $fields['node-study-field_study_start_date'] = array(
+  // Exported field: 'node-study-field_study_start_year'.
+  $fields['node-study-field_study_start_year'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_study_start_date',
+      'field_name' => 'field_study_start_year',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -9208,7 +9208,7 @@ function mica_studies_field_default_fields() {
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_study_start_date',
+      'field_name' => 'field_study_start_year',
       'label' => 'Study Start Year',
       'required' => 0,
       'settings' => array(
