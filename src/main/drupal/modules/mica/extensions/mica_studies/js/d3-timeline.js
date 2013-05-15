@@ -3,12 +3,9 @@
   d3.timeline = function () {
     var DISPLAY_TYPES = ["circle", "rect"];
 
-    var hover = function () {
-      },
-      click = function () {
-      },
-      scroll = function () {
-      },
+    var hover = function () {},
+      click = function () {},
+      scroll = function () {},
       orient = "bottom",
       width = null,
       height = null,
@@ -102,16 +99,15 @@
               return rightRoundedRect(rectX, rectY, rectWidth, itemHeight, 5);
             })
             .style("fill", datum.color)
-            .append("title").text(function (d) {
-              return d.title;
-            })
             .on("mouseover", function (d, i) {
               hover(d, index, datum);
             })
             .on("click", function (d, i) {
               click(d, index, datum);
             })
-          ;
+            .append("title").text(function (d) {
+              return d.title;
+            });
 
           // add the label
           if (hasLabel) {
@@ -131,12 +127,9 @@
           }
 
           function getStackPosition(d, i) {
-//            console.log("i:", i);
-//            console.log("index:", index);
-            if (stacked) {
-              return margin.top + (itemHeight + itemMargin) * yAxisMapping[index];
-            }
-            return margin.top;
+            return stacked
+              ? margin.top + (itemHeight + itemMargin) * yAxisMapping[index]
+              : margin.top;
           }
         });
       });
