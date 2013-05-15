@@ -252,10 +252,8 @@ function _mica_studies_migrate_content_types($study, $nb_studies, &$context) {
 
   $study2 = node_load($study->nid);
   $study_wrapper = entity_metadata_wrapper('node', $study2);
-  $start_year = $study_wrapper->field_preparation_start_year->value();
-  $end_year = $study_wrapper->field_followup_end_year->value();
-  $study_wrapper->field_study_start_date->set(strtotime($start_year . "-01-01 00:00:00"));
-  $study_wrapper->field_study_end_date->set(strtotime($end_year . "-01-01 00:00:00"));
+  $study_wrapper->field_study_start_year->set($study_wrapper->field_preparation_start_year->value());
+  $study_wrapper->field_study_end_year->set($study_wrapper->field_followup_end_year->value());
   $study_wrapper->save();
 
   $context['sandbox']['progress']++;

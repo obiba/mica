@@ -91,11 +91,11 @@ function mica_studies_configure_facet_blocks() {
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'name' => t('Data Collection Event End Year'),
     ),
-    'field_study_start_date' => array(
+    'field_study_start_year' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'name' => t('Study start year'),
     ),
-    'field_study_end_date' => array(
+    'field_study_end_year' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'name' => t('Study end year'),
     ),

@@ -58,7 +58,7 @@ function _mica_studies_devel_generate_field_description() {
       $field['field_name'],
       'Study',
       'study',
-      mica_field_description_get_field_value_type($field['widget']['type']),
+      mica_field_description_get_field_value_type($field_info['type']),
       implode('|', $categories),
       $field_info['cardinality'] == 1 ? 0 : 1,
     );

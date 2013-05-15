@@ -858,8 +858,8 @@ function mica_studies_field_group_info() {
     'label' => 'Study Timeline',
     'weight' => '8',
     'children' => array(
-      0 => 'field_study_end_date',
-      1 => 'field_study_start_date',
+      0 => 'field_study_start_year',
+      1 => 'field_study_end_year',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
