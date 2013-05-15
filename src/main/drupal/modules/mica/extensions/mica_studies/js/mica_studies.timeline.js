@@ -20,8 +20,8 @@
           id: events[e].dce_nid,
           title: events[e].dce_title,
           starting_time: events[e].start,
-          ending_time: events[e].end,
-          popover: events[e].popover
+          ending_time: events[e].end
+//          popover: events[e].popover
         });
       }
       timelineData.push({population: populations[p].pop_title, color: populations[p].color, times: eventData});
@@ -30,10 +30,8 @@
     return timelineData;
   }
 
-
   function createTimeline(timelineData) {
     var width = $("#timeline").width();
-    console.log("Document width: ", width);
     var chart = d3.timeline()
       .width(width)
       .stack()
@@ -43,24 +41,11 @@
         tickNumber: 1,
         tickSize: 10
       })
-      .margin({left: 15, right: 15, top: 0, bottom: 20});
-
-    // timeline chart click event handler
-    chart.click(function (d, i, datum) {
-      console.log("Click event: D: ", d, " i:", i, "datum:", datum);
-      $('#event-' + d.id).modal();
-//      $('#timeline').popover({
-//        title: d.title,
-//        content: d.popover,
-//        html: 'true',
-//        placement: 'bottom'
-//      });
-    });
-
-    // timeline chart hover event handler
-    chart.hover(function (d, i, datum) {
-//      console.log("Hover event: D: ", d, " i:", i, "datum:", datum);
-    });
+      .margin({left: 15, right: 15, top: 0, bottom: 20})
+      .click(function (d, i, datum) {
+//        console.log("Click event: D: ", d, " i:", i, "datum:", datum);
+        $('#event-' + d.id).modal();
+      });
 
     d3.select("#timeline").append("svg").attr("width", width).datum(timelineData).call(chart);
 

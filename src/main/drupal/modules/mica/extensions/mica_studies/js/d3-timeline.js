@@ -1,30 +1,33 @@
-(function() {
-  
-  d3.timeline = function() {
+(function () {
+
+  d3.timeline = function () {
     var DISPLAY_TYPES = ["circle", "rect"];
 
-    var hover = function () {}, 
-        click = function () {},
-        scroll = function () {},
-        orient = "bottom",
-        width = null,
-        height = null,
-        tickFormat = { format: d3.time.format("%I %p"), 
-          tickTime: d3.time.hours, 
-          tickNumber: 1, 
-          tickSize: 6 },
-        colorCycle = d3.scale.category20(),
-        display = "rect",
-        beginning = 0,
-        ending = 0,
-        margin = {left: 30, right:30, top: 30, bottom:30},
-        stacked = false,
-        rotateTicks = false,
-        itemHeight = 10,
-        itemMargin = 5
+    var hover = function () {
+      },
+      click = function () {
+      },
+      scroll = function () {
+      },
+      orient = "bottom",
+      width = null,
+      height = null,
+      tickFormat = { format: d3.time.format("%I %p"),
+        tickTime: d3.time.hours,
+        tickNumber: 1,
+        tickSize: 6 },
+      colorCycle = d3.scale.category20(),
+      display = "rect",
+      beginning = 0,
+      ending = 0,
+      margin = {left: 30, right: 30, top: 30, bottom: 30},
+      stacked = false,
+      rotateTicks = false,
+      itemHeight = 10,
+      itemMargin = 5
       ;
 
-    function timeline (gParent) {
+    function timeline(gParent) {
       var g = gParent.append("g");
       var gParentSize = gParent[0][0].getBoundingClientRect();
       var gParentItem = d3.select(gParent[0][0]);
@@ -33,7 +36,7 @@
         maxStack = 1,
         minTime = 0,
         maxTime = 0;
-      
+
       setWidth();
 
       // check how many stacks we're gonna need
@@ -49,7 +52,7 @@
             }
 
             // figure out beginning and ending times if they are unspecified
-            if (ending == 0 && beginning == 0){
+            if (ending == 0 && beginning == 0) {
               datum.times.forEach(function (time, i) {
                 if (time.starting_time < minTime || minTime == 0)
                   minTime = time.starting_time;
@@ -66,7 +69,7 @@
         }
       }
 
-      var scaleFactor = (1/(ending - beginning)) * (width - margin.left - margin.right);
+      var scaleFactor = (1 / (ending - beginning)) * (width - margin.left - margin.right);
 
       // draw the axis
       var xScale = d3.time.scale()
@@ -83,12 +86,12 @@
       // draw axis
       g.append("g")
         .attr("class", "axis")
-        .attr("transform", "translate(" + 0 +","+(margin.top + (itemHeight + itemMargin) * maxStack)+")")
+        .attr("transform", "translate(" + 0 + "," + (margin.top + (itemHeight + itemMargin) * maxStack) + ")")
         .call(xAxis);
 
       // draw the chart
-      g.each(function(d, i) {
-        d.forEach( function(datum, index){
+      g.each(function (d, i) {
+        d.forEach(function (datum, index) {
           var data = datum.times;
           var hasLabel = (typeof(datum.label) != "undefined");
           g.selectAll("svg").data(data).enter()
@@ -97,11 +100,12 @@
               var rectX = getXPos(d, i);
               var rectY = getStackPosition(d, i);
               var rectWidth = getWidth(d, i);
-
-              return rightRoundedRect(rectX,rectY,rectWidth, itemHeight, 5);
+              return rightRoundedRect(rectX, rectY, rectWidth, itemHeight, 5);
             })
-
             .style("fill", datum.color)
+            .append("title").text(function (d) {
+              return d.title;
+            })
             .on("mouseover", function (d, i) {
               hover(d, index, datum);
             })
@@ -114,22 +118,22 @@
           if (hasLabel) {
             gParent.append('text')
               .attr("class", "timeline-label")
-              .attr("transform", "translate("+ 0 +","+ (itemHeight/2 + margin.top + (itemHeight + itemMargin) * yAxisMapping[index])+")")
+              .attr("transform", "translate(" + 0 + "," + (itemHeight / 2 + margin.top + (itemHeight + itemMargin) * yAxisMapping[index]) + ")")
               .text(hasLabel ? datum.label : datum.id);
           }
-          
+
           if (typeof(datum.icon) != "undefined") {
             gParent.append('image')
               .attr("class", "timeline-label")
-              .attr("transform", "translate("+ 0 +","+ (margin.top + (itemHeight + itemMargin) * yAxisMapping[index])+")")
+              .attr("transform", "translate(" + 0 + "," + (margin.top + (itemHeight + itemMargin) * yAxisMapping[index]) + ")")
               .attr("xlink:href", datum.icon)
               .attr("width", margin.left)
               .attr("height", itemHeight);
           }
 
           function getStackPosition(d, i) {
-            console.log("i:", i);
-            console.log("index:", index);
+//            console.log("i:", i);
+//            console.log("index:", index);
             if (stacked) {
               return margin.top + (itemHeight + itemMargin) * yAxisMapping[index];
             }
@@ -137,27 +141,28 @@
           }
         });
       });
-      
+
       if (width > gParentSize.width) {
         var zoom = d3.behavior.zoom().x(xScale).on("zoom", move);
-      
+
         function move() {
           var x = Math.min(0, Math.max(gParentSize.width - width, d3.event.translate[0]));
           zoom.translate([x, 0]);
           g.attr("transform", "translate(" + x + ",0)");
-          scroll(x*scaleFactor, xScale);
+          scroll(x * scaleFactor, xScale);
         }
+
         gParent
           .attr("class", "scrollable")
           .call(zoom);
       }
-      
+
       if (rotateTicks) {
         g.selectAll("text")
-          .attr("transform", function(d) {
+          .attr("transform", function (d) {
             return "rotate(" + rotateTicks + ")translate("
-              + (this.getBBox().width/2+10) + "," // TODO: change this 10
-              + this.getBBox().height/2 + ")";
+              + (this.getBBox().width / 2 + 10) + "," // TODO: change this 10
+              + this.getBBox().height / 2 + ")";
           });
       }
 
@@ -170,7 +175,7 @@
       }
 
       function getWidth(d, i) {
-          return (d.ending_time - d.starting_time) * scaleFactor;
+        return (d.ending_time - d.starting_time) * scaleFactor;
       }
 
       function setHeight() {
@@ -210,7 +215,7 @@
         var rectY = getStackPosition(d, i);
         var rectWidth = getWidth(d, i);
 
-        return rightRoundedRect(rectX,rectY,rectWidth, itemHeight, 5);
+        return rightRoundedRect(rectX, rectY, rectWidth, itemHeight, 5);
       }
 
       function rightRoundedRect(x, y, width, height, radius) {
@@ -236,7 +241,7 @@
       orient = orientation;
       return timeline;
     };
-    
+
     timeline.itemHeight = function (h) {
       if (!arguments.length) return itemHeight;
       itemHeight = h;
@@ -284,7 +289,7 @@
       click = clickFunc;
       return timeline;
     };
-    
+
     timeline.scroll = function (scrollFunc) {
       if (!arguments.length) return scroll;
       scroll = scrollFunc;
@@ -318,7 +323,7 @@
       stacked = !stacked;
       return timeline;
     };
-    
+
     return timeline;
   };
 })();
