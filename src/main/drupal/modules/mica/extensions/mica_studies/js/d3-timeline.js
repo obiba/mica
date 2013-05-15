@@ -24,8 +24,7 @@
       stacked = false,
       rotateTicks = false,
       itemHeight = 10,
-      itemMargin = 5
-      ;
+      itemMargin = 5;
 
     function timeline(gParent) {
       var g = gParent.append("g");
