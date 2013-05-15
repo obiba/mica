@@ -117,6 +117,7 @@ projects[jquery_update][type] = module
 projects[jquery_update][download][type] = git
 projects[jquery_update][download][revision] = dd3d76e
 projects[jquery_update][download][branch] = 7.x-2.x
+projects[jquery_update][patch][1995790] = http://drupal.org/files/update_jquery_form_3_32-1995790-1.patch
 
 projects[jquery_ui_multiselect_widget][type] = module
 projects[jquery_ui_multiselect_widget][download][type] = git
