@@ -1556,7 +1556,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -1642,7 +1642,7 @@ function mica_studies_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '3',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1795,7 +1795,7 @@ function mica_studies_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '1',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1870,7 +1870,7 @@ function mica_studies_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '14',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1946,7 +1946,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2045,7 +2045,7 @@ function mica_studies_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => '15',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2109,7 +2109,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'number',
           'settings' => array(
             'decimal_separator' => '.',
@@ -2118,7 +2118,7 @@ function mica_studies_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 17,
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2295,7 +2295,7 @@ function mica_studies_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => '13',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2447,7 +2447,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '5',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2587,7 +2587,7 @@ function mica_studies_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'number',
           'settings' => array(
             'decimal_separator' => '.',
@@ -2596,7 +2596,7 @@ function mica_studies_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => 16,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -2676,7 +2676,7 @@ function mica_studies_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '4',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -8947,14 +8947,14 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study-field_study_end_year'.
-  $fields['node-study-field_study_end_year'] = array(
+  // Exported field: 'node-study-field_study_end_date'.
+  $fields['node-study-field_study_end_date'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_study_end_year',
+      'field_name' => 'field_study_end_date',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -8994,7 +8994,7 @@ function mica_studies_field_default_fields() {
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_study_end_year',
+      'field_name' => 'field_study_end_date',
       'label' => 'Study End Year',
       'required' => 0,
       'settings' => array(
@@ -9161,14 +9161,14 @@ function mica_studies_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-study-field_study_start_year'.
-  $fields['node-study-field_study_start_year'] = array(
+  // Exported field: 'node-study-field_study_start_date'.
+  $fields['node-study-field_study_start_date'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_study_start_year',
+      'field_name' => 'field_study_start_date',
       'field_permissions' => array(
         'type' => '0',
       ),
@@ -9208,7 +9208,7 @@ function mica_studies_field_default_fields() {
       ),
       'display_label' => '',
       'entity_type' => 'node',
-      'field_name' => 'field_study_start_year',
+      'field_name' => 'field_study_start_date',
       'label' => 'Study Start Year',
       'required' => 0,
       'settings' => array(
