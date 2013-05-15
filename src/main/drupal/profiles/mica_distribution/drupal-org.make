@@ -199,7 +199,10 @@ projects[search_api_ranges][download][branch] = 7.x-1.x
 projects[search_api_ranges][patch][1450772] = http://drupal.org/files/force-numeric-and-config-for-no-slider-no-commit-on-change-1450772-1_1.patch
 projects[search_api_ranges][patch][1460410] = http://drupal.org/files/max-inclusive.patch
 
-projects[search_api_solr] = 1.0-rc4
+; Fixes http://jira.obiba.org/jira/browse/MICA-988
+projects[search_api_solr][download][type] = git
+projects[search_api_solr][download][revision] = 61155ad
+projects[search_api_solr][download][branch] = 7.x-1.x
 
 projects[services][version] = 3.3
 
