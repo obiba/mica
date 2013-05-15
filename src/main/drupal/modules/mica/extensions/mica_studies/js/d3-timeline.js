@@ -20,7 +20,7 @@
         margin = {left: 30, right:30, top: 30, bottom:30},
         stacked = false,
         rotateTicks = false,
-        itemHeight = 20,
+        itemHeight = 10,
         itemMargin = 5
       ;
 
@@ -91,24 +91,23 @@
         d.forEach( function(datum, index){
           var data = datum.times;
           var hasLabel = (typeof(datum.label) != "undefined");
-
           g.selectAll("svg").data(data).enter()
-            .append(display)
-            .attr('x', getXPos)
-            .attr("y", getStackPosition)
-            .attr("width", function (d, i) {
-              return (d.ending_time - d.starting_time) * scaleFactor;
+            .append("path")
+            .attr("d", function drawRect(d, i) {
+              var rectX = getXPos(d, i);
+              var rectY = getStackPosition(d, i);
+              var rectWidth = getWidth(d, i);
+
+              return rightRoundedRect(rectX,rectY,rectWidth, itemHeight, 5);
             })
-            .attr("cy", getStackPosition)
-            .attr("cx", getXPos )
-            .attr("r", itemHeight/2)
-            .attr("height", itemHeight)
+
             .style("fill", datum.color)
             .on("mouseover", function (d, i) {
               console.log("Hover event: D: ", d, " i:", i);
               hover(d, index, datum);
             })
             .on("click", function (d, i) {
+              console.log("Click event: D: ", d, " i:", i);
               click(d, index, datum);
             })
           ;
@@ -131,9 +130,11 @@
           }
 
           function getStackPosition(d, i) {
+            console.log("i:", i);
+            console.log("index:", index);
             if (stacked) {
               return margin.top + (itemHeight + itemMargin) * yAxisMapping[index];
-            } 
+            }
             return margin.top;
           }
         });
@@ -165,8 +166,13 @@
       var gSize = g[0][0].getBoundingClientRect();
       setHeight();
 
-      function getXPos(d, i) {
+      function getXPos(d, i, index) {
+//        console.log("getXPos", d, i, index);
         return margin.left + (d.starting_time - beginning) * scaleFactor;
+      }
+
+      function getWidth(d, i) {
+          return (d.ending_time - d.starting_time) * scaleFactor;
       }
 
       function setHeight() {
@@ -201,7 +207,14 @@
         // if both are set, do nothing
       }
 
-      // TODO try to plug this when drawing "draw the chart" above
+      function drawRect(d, i) {
+        var rectX = getXPos(d, i);
+        var rectY = getStackPosition(d, i);
+        var rectWidth = getWidth(d, i);
+
+        return rightRoundedRect(rectX,rectY,rectWidth, itemHeight, 5);
+      }
+
       function rightRoundedRect(x, y, width, height, radius) {
         return "M" + x + "," + y
           + "h" + (width - radius)
