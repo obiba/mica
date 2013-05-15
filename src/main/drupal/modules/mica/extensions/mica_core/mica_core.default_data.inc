@@ -296,7 +296,6 @@ function _mica_core_default_admin_theme() { // Enable the admin theme.
     ->condition('name', 'seven')
     ->execute();
   variable_set('admin_theme', 'seven');
-  variable_set('node_admin_theme', '1');
 }
 
 function _mica_core_default_pages() {

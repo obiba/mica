@@ -46,7 +46,6 @@ dependencies[] = mica_core
 dependencies[] = mica_field_description
 dependencies[] = mica_node_reference_field
 dependencies[] = module_filter
-dependencies[] = multiselect
 dependencies[] = name
 dependencies[] = node
 dependencies[] = node_reference

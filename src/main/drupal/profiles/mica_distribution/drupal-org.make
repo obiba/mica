@@ -118,7 +118,11 @@ projects[jquery_update][download][type] = git
 projects[jquery_update][download][revision] = dd3d76e
 projects[jquery_update][download][branch] = 7.x-2.x
 
-projects[jquery_ui_multiselect_widget] = 1.5
+projects[jquery_ui_multiselect_widget][type] = module
+projects[jquery_ui_multiselect_widget][download][type] = git
+projects[jquery_ui_multiselect_widget][download][revision] = 2cd2852
+projects[jquery_ui_multiselect_widget][download][branch] = 7.x-1.x
+projects[jquery_ui_multiselect_widget][patch][1995594] = http://drupal.org/files/update_library-1995594-1.patch
 
 projects[l10n_update] = 1.0-beta3
 
@@ -281,4 +285,3 @@ libraries[superfish][download][type]= get
 libraries[superfish][download][url] = https://github.com/mehrpadin/Superfish-for-Drupal/zipball/master
 libraries[superfish][directory_name] = superfish
 libraries[superfish][overwrite] = TRUE
-
