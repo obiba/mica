@@ -1,5 +1,5 @@
-"Health services utilization",
-"Physical/Physiological therapeutic interventions",
+"Health services utilization"
+"Physical/Physiological therapeutic interventions"
 ,"Therapeutic interventions on the nervous system"
 ,"Therapeutic interventions on the eyes and ocular adnexa"
 ,"Therapeutic interventions on the ears and mastoid (process)"
@@ -12,7 +12,7 @@
 ,"Therapeutic interventions on the musculoskeletal system"
 ,"Therapeutic interventions on the skin, subcutaneous tissue, and breast"
 ,"Therapeutic interventions on body system NEC"
-"Diagnostic interventions",
+"Diagnostic interventions"
 ,"Diagnostic interventions on the nervous system"
 ,"Diagnostic interventions on the eyes and ocular adnexa"
 ,"Diagnostic interventions on the ears and mastoid (process)"
@@ -25,7 +25,7 @@
 ,"Diagnostic interventions on the musculoskeletal system"
 ,"Diagnostic interventions on the skin, subcutaneous tissue, and breast"
 ,"Diagnostic interventions on body system NEC"
-"Diagnostic imaging interventions",
+"Diagnostic imaging interventions"
 ,"Diagnostic imaging interventions on the nervous system"
 ,"Diagnostic imaging interventions on the eyes and ocular adnexa"
 ,"Diagnostic imaging interventions on the ears and mastoid (process)"
@@ -38,15 +38,15 @@
 ,"Diagnostic imaging interventions on the musculoskeletal system"
 ,"Diagnostic imaging interventions on the skin, subcutaneous tissue, and breast"
 ,"Diagnostic imaging interventions on body system NEC"
-"Clinical laboratory interventions",
-"Obstetrical and fetal interventions",
+"Clinical laboratory interventions"
+"Obstetrical and fetal interventions"
 ,"Antepartum obstetrical interventions"
 ,"Termination of pregnancy"
 ,"interventions on the fetus"
 ,"interventions during labour (latent and active)"
 ,"Delivery (birthing) interventions"
 ,"Postpartum obstetrical interventions"
-"Cognitive, psychosocial and sensory therapeutic interventions",
+"Cognitive, psychosocial and sensory therapeutic interventions"
 ,"Therapeutic interventions on the psyche (mental health)"
 ,"Therapeutic interventions for interpersonal relationships"
 ,"Therapeutic interventions for cognition and learning"
@@ -55,9 +55,9 @@
 ,"Therapeutic interventions for voice"
 ,"Therapeutic interventions for sight and other senses NEC"
 ,"Therapeutic interventions for motor functions"
-"Other healthcare interventions",
+"Other healthcare interventions"
 ,"Other healthcare interventions, personnal care"
 ,"Other healthcare interventions, service"
 ,"Other healthcare interventions, support activity"
 ,"Other healthcare interventions, promoting health and preventing disease"
-"Therapeutic interventions strengthening the immune system and/or genetic composition",
+"Therapeutic interventions strengthening the immune system and/or genetic composition"
