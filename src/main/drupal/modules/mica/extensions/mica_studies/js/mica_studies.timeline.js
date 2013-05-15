@@ -48,6 +48,16 @@
       )
       .margin({left:15, right:15, top:0, bottom:20});
 
+    // timeline chart click event handler
+    chart.click(function(d, i, datum) {
+      console.log("Click event: D: ", d, " i:", i, "datum:", datum);
+    });
+
+    // timeline chart hover event handler
+    chart.hover(function(d, i, datum) {
+      console.log("Hover event: D: ", d, " i:", i, "datum:", datum);
+    });
+
     var svg = d3.select("#timeline").append("svg").attr("width", width).datum(timelineData).call(chart);
   }
 
