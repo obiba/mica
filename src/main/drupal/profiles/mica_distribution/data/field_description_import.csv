@@ -1,7 +1,7 @@
 title;body;field_original_field_label;field_original_field_name;field_bundle_label;field_bundle;field_value_type;field_categories;field_repeatable
 "Study » Biological samples access";;"Biological samples access";field_access_biosamples;Study;study;text;0=No|1=Yes;0
 "Study » Data access";;"Data access (questionnaire-derived, measured...)";field_access_data;Study;study;text;0=No|1=Yes;0
-"Study » Other access";;Other access;field_access_other;Study;study;text;0=No|1=Yes;0
+"Study » Other access";;"Other access";field_access_other;Study;study;text;0=No|1=Yes;0
 "Study » Acronym";;Acronym;field_acroym;Study;study;text;;0
 "Study » Study design";;"Study design";field_design;Study;study;text;"case_control=Case-control study|case_only=Case only study|clinical_trial=Clinical trial / intervention trial|cohort_study=Cohort study|cross_sectional=Cross-sectional prevalence study|registry=Registry|other=Other";1
 "Study » Other study design";;"Other study design";field_design_other_sp;Study;study;text;;0

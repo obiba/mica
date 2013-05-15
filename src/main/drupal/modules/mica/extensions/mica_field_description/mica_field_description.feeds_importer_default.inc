@@ -22,6 +22,10 @@ function mica_field_description_feeds_importer_default() {
       'config' => array(
         'allowed_extensions' => 'txt csv',
         'direct' => 0,
+        'directory' => 'public://feeds',
+        'allowed_schemes' => array(
+          0 => 'public',
+        ),
       ),
     ),
     'parser' => array(
@@ -34,7 +38,6 @@ function mica_field_description_feeds_importer_default() {
     'processor' => array(
       'plugin_key' => 'FeedsNodeProcessor',
       'config' => array(
-        'content_type' => 'field_description',
         'expire' => '-1',
         'author' => 0,
         'mappings' => array(
@@ -86,6 +89,9 @@ function mica_field_description_feeds_importer_default() {
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',
+        'authorize' => 1,
+        'skip_hash_check' => 0,
+        'bundle' => 'field_description',
       ),
     ),
     'content_type' => '',
