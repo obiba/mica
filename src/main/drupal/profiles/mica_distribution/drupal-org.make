@@ -78,9 +78,9 @@ projects[features_override][download][revision] = 602e87b
 projects[features_override][download][branch] = 7.x-2.x
 projects[features_override][patch][1648078] = http://drupal.org/files/invalid_argument_supplied-1648078-10.patch
 
-projects[feeds][version] = 2.0-alpha7
+projects[feeds][version] = 2.0-alpha8
 projects[feeds][patch][1107522-59] = http://drupal.org/files/feeds-empty-behavior-1107522-59.patch
-projects[feeds][patch][1107522-13] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-13.patch
+projects[feeds][patch][1107522-63] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-63.patch
 projects[feeds][patch][1107522-15] = http://drupal.org/files/ignore-empty-link-fields-1107522-60.patch
 
 projects[feeds_tamper][version] = 1.0-beta4
