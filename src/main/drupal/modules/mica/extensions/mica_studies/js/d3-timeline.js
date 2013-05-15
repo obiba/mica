@@ -103,11 +103,9 @@
 
             .style("fill", datum.color)
             .on("mouseover", function (d, i) {
-              console.log("Hover event: D: ", d, " i:", i);
               hover(d, index, datum);
             })
             .on("click", function (d, i) {
-              console.log("Click event: D: ", d, " i:", i);
               click(d, index, datum);
             })
           ;
