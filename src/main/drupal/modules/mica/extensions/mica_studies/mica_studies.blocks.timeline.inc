@@ -25,7 +25,7 @@ function _mica_studies_block_study_timeline($study) {
   foreach ($study_wrapper->field_study_populations->getIterator() as $pop_wrapper) {
     $color = $colors[$color_index++];
     $pop_title = $pop_wrapper->title->value();
-    $legend_items[] = "<svg width='30px' height='30px'><rect width='20' height='20' x='2' y='2' rx='5' ry='5' style='fill:$color;stroke:black' /></svg> $pop_title";
+    $legend_items[] = "<svg width='30px' height='30px'><rect width='20' height='20' x='2' y='2' rx='5' ry='5' style='fill:$color;'/></svg> $pop_title";
     foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
       $start = $dce_wrapper->field_dce_start_year->value();
       $end = $dce_wrapper->field_dce_end_year->value();
@@ -80,7 +80,7 @@ function _mica_studies_block_study_timeline_prepare_lines($events) {
         $last_event = end($line_events['events']);
         // dvm($last_event, '$last_event for line ' . $index);
         // dvm($event['start'] > $last_event['end'], 'event_start[' . $event['start'] . '] > last_event_end[' . $last_event['end'] . ']');
-        if ($event['start'] > $last_event['end']) {
+        if ($event['start'] >= $last_event['end']) {
           $line_events['events'][] = $event;
           $done = TRUE;
           // dvm("Add it to line $index");
