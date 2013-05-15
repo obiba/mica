@@ -58,7 +58,10 @@
       console.log("Hover event: D: ", d, " i:", i, "datum:", datum);
     });
 
-    var svg = d3.select("#timeline").append("svg").attr("width", width).datum(timelineData).call(chart);
+    d3.select("#timeline").append("svg").attr("width", width).datum(timelineData).call(chart);
+
+    // set a handcursor for charts
+    $('svg > g > path').css('cursor', 'pointer');
   }
 
 }(jQuery));
