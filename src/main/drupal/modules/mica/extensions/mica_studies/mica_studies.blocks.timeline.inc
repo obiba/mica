@@ -86,7 +86,7 @@ function _mica_studies_block_study_timeline_prepare_lines($events) {
         $last_event = end($line_events['events']);
         // dvm($last_event, '$last_event for line ' . $index);
         // dvm($event['start'] > $last_event['end'], 'event_start[' . $event['start'] . '] > last_event_end[' . $last_event['end'] . ']');
-        if ($event['start'] >= $last_event['end']) {
+        if ($event['start'] >= $last_event['end'] && $event['start'] > $last_event['start']) {
           $line_events['events'][] = $event;
           $done = TRUE;
           // dvm("Add it to line $index");
