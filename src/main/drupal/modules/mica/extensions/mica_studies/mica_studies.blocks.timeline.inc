@@ -19,13 +19,16 @@ function _mica_studies_block_study_timeline($study) {
     '#bfbfbf'
   );
 
+  $pop_svg = array();
   $legend_items = array();
   $study_wrapper = entity_metadata_wrapper('node', $study);
   $events = array();
   foreach ($study_wrapper->field_study_populations->getIterator() as $pop_wrapper) {
+    $pop_nid = $pop_wrapper->nid->value();
     $color = $colors[$color_index++];
-    $pop_title = $pop_wrapper->title->value();
-    $legend_items[] = "<svg width='30px' height='30px'><rect width='20' height='20' x='2' y='2' rx='5' ry='5' style='fill:$color;'/></svg> $pop_title";
+    $svg = "<svg width='25' height='25'><rect width='20' height='20' x='2' y='2' rx='5' ry='5' style='fill:$color;'/></svg>";
+    $legend_items[] = $svg . ' ' . $pop_wrapper->title->value();
+    $pop_svg[] = array('pop_nid' => $pop_nid, 'svg' => $svg);
     foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
       $start = $dce_wrapper->field_dce_start_year->value();
       $end = $dce_wrapper->field_dce_end_year->value();
@@ -61,6 +64,9 @@ function _mica_studies_block_study_timeline($study) {
   ctools_add_js('d3-timeline', 'mica_studies');
   ctools_add_js('mica_studies.timeline', 'mica_studies');
   drupal_add_js(array('timeline_data' => $lines), array('type' => 'setting'));
+
+  ctools_add_js('mica_studies.timeline.legend', 'mica_studies');
+  drupal_add_js(array('timeline_legend_data' => $pop_svg), array('type' => 'setting'));
 
   return array(
     'subject' => t('Study Timeline') . '<a name="timeline"> </a>',
