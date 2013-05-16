@@ -1844,9 +1844,9 @@ function mica_studies_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'health_databases' => 'Health databases',
+          'health_databases' => 'Health Databases',
           'vital_statisctics_databases' => 'Vital Statistics Databases',
-          'socioeconomic_databases' => 'Socioeconomic databases',
+          'socioeconomic_databases' => 'Socioeconomic Databases',
           'environmental_databases' => 'Environmental Databases',
         ),
         'allowed_values_function' => '',
