@@ -43,13 +43,15 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
   $breadcrumb = _mica_studies_menu_generate_breadcrumbs('node/' . $study_id);
 
   // generate specific breadcrumbs for population pages pages
-  $breadcrumbs = array();
-  $breadcrumbs[] = l(t('Home'), '');
-  for ($i = 0; $i < count($breadcrumb); $i++) {
-    $breadcrumbs[] = l($breadcrumb[$i]['link_title'], $breadcrumb[$i]['link_path']);
+  $current_breadcrumbs = menu_get_active_breadcrumb();
+  if (!isset($current_breadcrumbs[1])) {
+    $breadcrumbs = array();
+    $breadcrumbs[] = l(t('Home'), '');
+    for ($i = 0; $i < count($breadcrumb); $i++) {
+      $breadcrumbs[] = l($breadcrumb[$i]['link_title'], $breadcrumb[$i]['link_path']);
+    }
+    drupal_set_breadcrumb($breadcrumbs);
   }
-  $breadcrumbs[] = l($wrapper->title->value(), 'node/' . $wrapper->nid->value());
-  drupal_set_breadcrumb($breadcrumbs);
 }
 
 function _mica_studies_population_view_selection_criteria($node) {
