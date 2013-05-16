@@ -1249,7 +1249,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_pop_country']['field'] = 'field_pop_country';
   $handler->display->display_options['fields']['field_pop_country']['relationship'] = 'field_study_populations_nid';
   $handler->display->display_options['fields']['field_pop_country']['delta_offset'] = '0';
-  $handler->display->display_options['path'] = 'studies';
+  $handler->display->display_options['path'] = 'studies-old';
 
   /* Display: Export CSV */
   $handler = $view->new_display('views_data_export', 'Export CSV', 'views_data_export_2');
@@ -1353,10 +1353,6 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_current_supp_info']['id'] = 'field_current_supp_info';
-  $handler->display->display_options['fields']['field_current_supp_info']['table'] = 'field_data_field_current_supp_info';
-  $handler->display->display_options['fields']['field_current_supp_info']['field'] = 'field_current_supp_info';
   /* Field: Content: No limits in the number of participants */
   $handler->display->display_options['fields']['field_no_limits_participants']['id'] = 'field_no_limits_participants';
   $handler->display->display_options['fields']['field_no_limits_participants']['table'] = 'field_data_field_no_limits_participants';
@@ -1374,18 +1370,6 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_target_nb_supp_info']['id'] = 'field_target_nb_supp_info';
   $handler->display->display_options['fields']['field_target_nb_supp_info']['table'] = 'field_data_field_target_nb_supp_info';
   $handler->display->display_options['fields']['field_target_nb_supp_info']['field'] = 'field_target_nb_supp_info';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_current_participants_nb']['id'] = 'field_current_participants_nb';
-  $handler->display->display_options['fields']['field_current_participants_nb']['table'] = 'field_data_field_current_participants_nb';
-  $handler->display->display_options['fields']['field_current_participants_nb']['field'] = 'field_current_participants_nb';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_current_samples_nb']['id'] = 'field_current_samples_nb';
-  $handler->display->display_options['fields']['field_current_samples_nb']['table'] = 'field_data_field_current_samples_nb';
-  $handler->display->display_options['fields']['field_current_samples_nb']['field'] = 'field_current_samples_nb';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_current_sam_supp_info']['id'] = 'field_current_sam_supp_info';
-  $handler->display->display_options['fields']['field_current_sam_supp_info']['table'] = 'field_data_field_current_sam_supp_info';
-  $handler->display->display_options['fields']['field_current_sam_supp_info']['field'] = 'field_current_sam_supp_info';
   /* Field: Content: How many people have provided or should provide biological samples, from which DNA could be extracted? */
   $handler->display->display_options['fields']['field_target_number_biosamples']['id'] = 'field_target_number_biosamples';
   $handler->display->display_options['fields']['field_target_number_biosamples']['table'] = 'field_data_field_target_number_biosamples';
@@ -1398,62 +1382,6 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_samples_supp_info']['id'] = 'field_samples_supp_info';
   $handler->display->display_options['fields']['field_samples_supp_info']['table'] = 'field_data_field_samples_supp_info';
   $handler->display->display_options['fields']['field_samples_supp_info']['field'] = 'field_samples_supp_info';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_select_criteria']['id'] = 'field_select_criteria';
-  $handler->display->display_options['fields']['field_select_criteria']['table'] = 'field_data_field_select_criteria';
-  $handler->display->display_options['fields']['field_select_criteria']['field'] = 'field_select_criteria';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_gender']['id'] = 'field_gender';
-  $handler->display->display_options['fields']['field_gender']['table'] = 'field_data_field_gender';
-  $handler->display->display_options['fields']['field_gender']['field'] = 'field_gender';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_age_min']['id'] = 'field_age_min';
-  $handler->display->display_options['fields']['field_age_min']['table'] = 'field_data_field_age_min';
-  $handler->display->display_options['fields']['field_age_min']['field'] = 'field_age_min';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_age_max']['id'] = 'field_age_max';
-  $handler->display->display_options['fields']['field_age_max']['table'] = 'field_data_field_age_max';
-  $handler->display->display_options['fields']['field_age_max']['field'] = 'field_age_max';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_country_1']['id'] = 'field_country_1';
-  $handler->display->display_options['fields']['field_country_1']['table'] = 'field_data_field_country';
-  $handler->display->display_options['fields']['field_country_1']['field'] = 'field_country';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_territory']['id'] = 'field_territory';
-  $handler->display->display_options['fields']['field_territory']['table'] = 'field_data_field_territory';
-  $handler->display->display_options['fields']['field_territory']['field'] = 'field_territory';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_ethnic_origin']['id'] = 'field_ethnic_origin';
-  $handler->display->display_options['fields']['field_ethnic_origin']['table'] = 'field_data_field_ethnic_origin';
-  $handler->display->display_options['fields']['field_ethnic_origin']['field'] = 'field_ethnic_origin';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_health_status']['id'] = 'field_health_status';
-  $handler->display->display_options['fields']['field_health_status']['table'] = 'field_data_field_health_status';
-  $handler->display->display_options['fields']['field_health_status']['field'] = 'field_health_status';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_selection_others_sp']['id'] = 'field_selection_others_sp';
-  $handler->display->display_options['fields']['field_selection_others_sp']['table'] = 'field_data_field_selection_others_sp';
-  $handler->display->display_options['fields']['field_selection_others_sp']['field'] = 'field_selection_others_sp';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['id'] = 'field_partcipant_sel_supp_info';
-  $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['table'] = 'field_data_field_partcipant_sel_supp_info';
-  $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['field'] = 'field_partcipant_sel_supp_info';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_recruitment_other']['id'] = 'field_recruitment_other';
-  $handler->display->display_options['fields']['field_recruitment_other']['table'] = 'field_data_field_recruitment_other';
-  $handler->display->display_options['fields']['field_recruitment_other']['field'] = 'field_recruitment_other';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_recruitement_supp_info']['id'] = 'field_recruitement_supp_info';
-  $handler->display->display_options['fields']['field_recruitement_supp_info']['table'] = 'field_data_field_recruitement_supp_info';
-  $handler->display->display_options['fields']['field_recruitement_supp_info']['field'] = 'field_recruitement_supp_info';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_data_sources']['id'] = 'field_data_sources';
-  $handler->display->display_options['fields']['field_data_sources']['table'] = 'field_data_field_data_sources';
-  $handler->display->display_options['fields']['field_data_sources']['field'] = 'field_data_sources';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_data_sources_sp']['id'] = 'field_data_sources_sp';
-  $handler->display->display_options['fields']['field_data_sources_sp']['table'] = 'field_data_field_data_sources_sp';
-  $handler->display->display_options['fields']['field_data_sources_sp']['field'] = 'field_data_sources_sp';
   /* Field: Content: Biological samples */
   $handler->display->display_options['fields']['field_access_biosamples']['id'] = 'field_access_biosamples';
   $handler->display->display_options['fields']['field_access_biosamples']['table'] = 'field_data_field_access_biosamples';
@@ -1476,63 +1404,14 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['mica_dataset']['field'] = 'mica_dataset';
   $handler->display->display_options['fields']['mica_dataset']['type'] = 'node_reference_plain';
   $handler->display->display_options['fields']['mica_dataset']['delta_offset'] = '0';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_preparation_start_year']['id'] = 'field_preparation_start_year';
-  $handler->display->display_options['fields']['field_preparation_start_year']['table'] = 'field_data_field_preparation_start_year';
-  $handler->display->display_options['fields']['field_preparation_start_year']['field'] = 'field_preparation_start_year';
-  $handler->display->display_options['fields']['field_preparation_start_year']['label'] = 'Preparation phase / Pilot start year';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_preparation_end_year']['id'] = 'field_preparation_end_year';
-  $handler->display->display_options['fields']['field_preparation_end_year']['table'] = 'field_data_field_preparation_end_year';
-  $handler->display->display_options['fields']['field_preparation_end_year']['field'] = 'field_preparation_end_year';
-  $handler->display->display_options['fields']['field_preparation_end_year']['label'] = 'Preparation phase / Pilot end year';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_baseline_start_year']['id'] = 'field_baseline_start_year';
-  $handler->display->display_options['fields']['field_baseline_start_year']['table'] = 'field_data_field_baseline_start_year';
-  $handler->display->display_options['fields']['field_baseline_start_year']['field'] = 'field_baseline_start_year';
-  $handler->display->display_options['fields']['field_baseline_start_year']['label'] = 'Baseline recruitment / initial data collection start year';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_baseline_end_year']['id'] = 'field_baseline_end_year';
-  $handler->display->display_options['fields']['field_baseline_end_year']['table'] = 'field_data_field_baseline_end_year';
-  $handler->display->display_options['fields']['field_baseline_end_year']['field'] = 'field_baseline_end_year';
-  $handler->display->display_options['fields']['field_baseline_end_year']['label'] = 'Baseline recruitment / initial data collection end year';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_followup_start_year']['id'] = 'field_followup_start_year';
-  $handler->display->display_options['fields']['field_followup_start_year']['table'] = 'field_data_field_followup_start_year';
-  $handler->display->display_options['fields']['field_followup_start_year']['field'] = 'field_followup_start_year';
-  $handler->display->display_options['fields']['field_followup_start_year']['label'] = 'Follow-up of participants start year';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_followup_end_year']['id'] = 'field_followup_end_year';
-  $handler->display->display_options['fields']['field_followup_end_year']['table'] = 'field_data_field_followup_end_year';
-  $handler->display->display_options['fields']['field_followup_end_year']['field'] = 'field_followup_end_year';
-  $handler->display->display_options['fields']['field_followup_end_year']['label'] = 'Follow-up participants end year';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_ended_end_year']['id'] = 'field_ended_end_year';
-  $handler->display->display_options['fields']['field_ended_end_year']['table'] = 'field_data_field_ended_end_year';
-  $handler->display->display_options['fields']['field_ended_end_year']['field'] = 'field_ended_end_year';
-  $handler->display->display_options['fields']['field_ended_end_year']['label'] = 'Study end year';
   /* Field: Content: No limits in the number of samples */
   $handler->display->display_options['fields']['field_no_limits_samples']['id'] = 'field_no_limits_samples';
   $handler->display->display_options['fields']['field_no_limits_samples']['table'] = 'field_data_field_no_limits_samples';
   $handler->display->display_options['fields']['field_no_limits_samples']['field'] = 'field_no_limits_samples';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_status_supp_info']['id'] = 'field_status_supp_info';
-  $handler->display->display_options['fields']['field_status_supp_info']['table'] = 'field_data_field_status_supp_info';
-  $handler->display->display_options['fields']['field_status_supp_info']['field'] = 'field_status_supp_info';
   /* Field: Content: Marker paper describing your study */
   $handler->display->display_options['fields']['field_marker_paper']['id'] = 'field_marker_paper';
   $handler->display->display_options['fields']['field_marker_paper']['table'] = 'field_data_field_marker_paper';
   $handler->display->display_options['fields']['field_marker_paper']['field'] = 'field_marker_paper';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_current_samples_date']['id'] = 'field_current_samples_date';
-  $handler->display->display_options['fields']['field_current_samples_date']['table'] = 'field_data_field_current_samples_date';
-  $handler->display->display_options['fields']['field_current_samples_date']['field'] = 'field_current_samples_date';
-  $handler->display->display_options['fields']['field_current_samples_date']['label'] = 'For how many people have biological samples been collected as of?';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_current_part_nb_date']['id'] = 'field_current_part_nb_date';
-  $handler->display->display_options['fields']['field_current_part_nb_date']['table'] = 'field_data_field_current_part_nb_date';
-  $handler->display->display_options['fields']['field_current_part_nb_date']['field'] = 'field_current_part_nb_date';
-  $handler->display->display_options['fields']['field_current_part_nb_date']['label'] = 'How many people have joined the study as of?';
   /* Field: Content: Pubmed Id */
   $handler->display->display_options['fields']['field_pubmedid']['id'] = 'field_pubmedid';
   $handler->display->display_options['fields']['field_pubmedid']['table'] = 'field_data_field_pubmedid';
@@ -1541,11 +1420,6 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_supp_infos']['id'] = 'field_supp_infos';
   $handler->display->display_options['fields']['field_supp_infos']['table'] = 'field_data_field_supp_infos';
   $handler->display->display_options['fields']['field_supp_infos']['field'] = 'field_supp_infos';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_recruitment_sources']['id'] = 'field_recruitment_sources';
-  $handler->display->display_options['fields']['field_recruitment_sources']['table'] = 'field_data_field_recruitment_sources';
-  $handler->display->display_options['fields']['field_recruitment_sources']['field'] = 'field_recruitment_sources';
-  $handler->display->display_options['fields']['field_recruitment_sources']['label'] = 'recruitment_sources';
   $handler->display->display_options['path'] = 'studies-csv';
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
@@ -1569,6 +1443,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Studies Search';
   $handler->display->display_options['css_class'] = 'table-striped';
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -1618,6 +1493,18 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
       'empty_column' => 0,
     ),
   );
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = 'This page displays the list of the consortium\'s studies. Each study is described in a same standard way that can be easily customized to reflect consortium specificities. However, Mica suggests by default a list of important study characteristics that should be considered if there is an aim for the consortium to participate in data harmonization projects with other consortia or studies.
+
+This Mica study catalogue comes with an advanced query tool using user-friendly facets <br/><br/>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -1663,10 +1550,12 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     'thousand_separator' => ' ',
     'prefix_suffix' => 0,
   );
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
-  $handler->display->display_options['fields']['field_country']['table'] = 'search_api_index_studies_index';
-  $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
+  /* Field: Populations: Country of residence (indexed) */
+  $handler->display->display_options['fields']['field_study_populations_field_pop_country']['id'] = 'field_study_populations_field_pop_country';
+  $handler->display->display_options['fields']['field_study_populations_field_pop_country']['table'] = 'search_api_index_studies_index';
+  $handler->display->display_options['fields']['field_study_populations_field_pop_country']['field'] = 'field_study_populations_field_pop_country';
+  $handler->display->display_options['fields']['field_study_populations_field_pop_country']['label'] = 'Country of residence';
+  $handler->display->display_options['fields']['field_study_populations_field_pop_country']['delta_offset'] = '0';
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_studies_index';
