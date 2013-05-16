@@ -142,8 +142,8 @@ function mica_studies_default_search_api_index() {
     "server" : "solr",
     "item_type" : "node",
     "options" : {
-      "index_directly" : 0,
-      "cron_limit" : "500",
+      "index_directly" : 1,
+      "cron_limit" : "100",
       "fields" : {
         "type" : { "type" : "string" },
         "title" : { "type" : "string" },
