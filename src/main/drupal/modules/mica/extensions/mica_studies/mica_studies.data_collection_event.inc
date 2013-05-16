@@ -16,15 +16,18 @@ function _mica_studies_dce_view(&$node, $view_mode, $langcode) {
   }
 
   // generate specific breadcrumbs for dce pages
-  $breadcrumbs = array();
-  $breadcrumbs[] = l(t('Home'), '');
-  $breadcrumb = _mica_studies_menu_generate_breadcrumbs('node/' . $study_id);
-  for ($i = 0; $i < count($breadcrumb); $i++) {
-    $breadcrumbs[] = l($breadcrumb[$i]['link_title'], $breadcrumb[$i]['link_path']);
-  }
-  $breadcrumbs[] = $pop_link;
+  $current_breadcrumbs = menu_get_active_breadcrumb();
+  if (!isset($current_breadcrumbs[1])) {
+    $breadcrumbs = array();
+    $breadcrumbs[] = l(t('Home'), '');
+    $breadcrumb = _mica_studies_menu_generate_breadcrumbs('node/' . $study_id);
+    for ($i = 0; $i < count($breadcrumb); $i++) {
+      $breadcrumbs[] = l($breadcrumb[$i]['link_title'], $breadcrumb[$i]['link_path']);
+    }
+    $breadcrumbs[] = $pop_link;
 
-  drupal_set_breadcrumb($breadcrumbs);
+    drupal_set_breadcrumb($breadcrumbs);
+  }
 }
 
 function _mica_studies_dce_view_data_sources(&$node) {
