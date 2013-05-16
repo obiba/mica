@@ -88,10 +88,10 @@ help:
 	@echo "  deploy             : Used by continuous integration server to copy packaged distribution to stable (for prod) or unstable (for dev)."
 	@echo "                       http://ci.obiba.org/view/Mica/job/Mica"
 	@echo
-	@echo "  install-solr       : Install & configure SolR"	
-	@echo "  start-solr         : Start SolR"	
+	@echo "  install-solr       : Install & configure SolR"
+	@echo "  start-solr         : Start SolR"
 	@echo
-	@echo "  install-drush      : Install Drush"	
+	@echo "  install-drush      : Install Drush"
 	@echo
 	@echo "  install-lessc      : Install Less compiler required by bootstrap"
 	@echo
@@ -257,7 +257,7 @@ package: debian
 # for testing (deb is not signed)
 debuild_opts=-us -uc
 
-debian: deb-prepare deb	
+debian: deb-prepare deb
 	cd target/deb/mica && debuild $(debuild_opts) -b
 	cd target/deb/mica-solr && debuild $(debuild_opts) -b
 
@@ -320,8 +320,7 @@ endif
 
 mica-install-clear: mica-install
 	cd target/$(micadir) && \
-	drush cc all && \
-	cd ../..
+	drush cc all
 
 coder:
 	cd target/$(micadir) && \
@@ -333,6 +332,12 @@ dump:
 	mysqldump -u $(db_user) --password=$(db_pass) --hex-blob $(db_name) --result-file="target/mica.sql"
 	@echo ">>> Database dumped to target/mica.sql"
 
+drush-devel:
+	cd target/$(micadir) && \
+	drush en -y devel
+
+chmod:
+	chmod -R a+w target
 
 #
 # Local make: avoid downloading everything from drupal.org for faster builds
@@ -376,7 +381,7 @@ git-push-mica-dist: clear-version-info set-distribution-version
 #
 # Bootstrap related stuff
 #
-compile-less: 
+compile-less:
 	lessc $(lessc_options) src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap.less src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap.css && \
 	lessc $(lessc_options) src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap_responsive.less src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap_responsive.css && \
 	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_studies/less/mica_studies.less src/main/drupal/modules/mica/extensions/mica_studies/css/mica_studies.css && \

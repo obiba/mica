@@ -14,12 +14,8 @@ function mica_studies_configure_facet_blocks() {
   // disable some facets because Features/FacetAPI always export them as enabled: http://drupal.org/node/1439950
   $disabled_facets = array(
     'field_access_other',
-//    'field_current_part_nb_date',
-//    'field_current_samples_date',
     'field_no_limits_participants',
     'field_no_limits_samples',
-//    'field_current_participants_nb',
-//    'field_current_samples_nb',
   );
   $searcher = 'search_api@studies_index';
   foreach ($disabled_facets as $disabled_facet) {
@@ -58,13 +54,13 @@ function mica_studies_configure_facet_blocks() {
     'field_target_number_biosamples' => array(
       'name' => t('Target number of participants with samples'),
     ),
-    'field_study_populations:field_pop_dce:field_dce_bio_samples_management' => array(
+    'field_pop_dce:field_dce_bio_samples_management' => array(
       'name' => t('Biological samples'),
     ),
     'field_study_populations:field_pop_select_criteria' => array(
       'name' => t('Selection criteria'),
     ),
-    'field_study_populations:field_pop_dce:field_dce_data_sources' => array(
+    'field_pop_dce:field_dce_data_sources' => array(
       'name' => t('Data sources')
     ),
     'field_recruitment' => array(
@@ -83,11 +79,11 @@ function mica_studies_configure_facet_blocks() {
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'name' => t('Biological samples access'),
     ),
-    'field_study_populations:field_pop_dce:field_dce_start_year' => array(
+    'field_pop_dce:field_dce_start_year' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'name' => t('Data Collection Event Start Year'),
     ),
-    'field_study_populations:field_pop_dce:field_dce_end_year' => array(
+    'field_pop_dce:field_dce_end_year' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'name' => t('Data Collection Event End Year'),
     ),

@@ -8,7 +8,6 @@
 include_once 'mica_networks.features.inc';
 include_once drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.inc';
 
-
 /**
  * Implements hook_node_view()
  */
@@ -127,10 +126,6 @@ function _mica_networks_configure_message() {
   $msg .= '<li>';
   $msg .= l(t('Blocks configuration'), 'admin/structure/block', array('attributes' => array('target' => '_block')));
   $msg .= ' ' . t('and configure Study Networks facet block');
-  $msg .= '</li>';
-  $msg .= '<li>';
-  $msg .= l(t('Study fields configuration'), 'admin/structure/types/manage/study/fields', array('attributes' => array('target' => '_fields')));
-  $msg .= ' ' . t('and move Networks field to the field group you want');
   $msg .= '</li>';
   $msg .= '</ul>';
   drupal_set_message($msg, 'status', FALSE);
