@@ -1200,57 +1200,6 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     'study' => 'study',
   );
 
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
-  $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
-  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
-  $handler->display->display_options['fields']['title_field']['label'] = 'Name';
-  $handler->display->display_options['fields']['title_field']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['title_field']['alter']['path'] = 'node/[nid]';
-  /* Field: Content: Please specify what other design */
-  $handler->display->display_options['fields']['field_design_other_sp']['id'] = 'field_design_other_sp';
-  $handler->display->display_options['fields']['field_design_other_sp']['table'] = 'field_data_field_design_other_sp';
-  $handler->display->display_options['fields']['field_design_other_sp']['field'] = 'field_design_other_sp';
-  $handler->display->display_options['fields']['field_design_other_sp']['label'] = '';
-  $handler->display->display_options['fields']['field_design_other_sp']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_design_other_sp']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_design_other_sp']['alter']['text'] = '([field_design_other_sp])';
-  $handler->display->display_options['fields']['field_design_other_sp']['alter']['max_length'] = '60';
-  $handler->display->display_options['fields']['field_design_other_sp']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_design_other_sp']['element_label_colon'] = FALSE;
-  /* Field: Content: What is the study design? */
-  $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
-  $handler->display->display_options['fields']['field_design']['table'] = 'field_data_field_design';
-  $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
-  $handler->display->display_options['fields']['field_design']['label'] = 'Study design';
-  $handler->display->display_options['fields']['field_design']['alter']['text'] = '[field_design] [field_design_other_sp]';
-  $handler->display->display_options['fields']['field_design']['delta_offset'] = '0';
-  /* Field: Content: How many people are planned to be recruited? Or if the study is completed, what is the final number of participants? */
-  $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
-  $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'field_data_field_target_number_participants';
-  $handler->display->display_options['fields']['field_target_number_participants']['field'] = 'field_target_number_participants';
-  $handler->display->display_options['fields']['field_target_number_participants']['label'] = 'Target number of participants';
-  $handler->display->display_options['fields']['field_target_number_participants']['settings'] = array(
-    'thousand_separator' => ' ',
-    'prefix_suffix' => 0,
-  );
-  /* Field: Content: Country of residence */
-  $handler->display->display_options['fields']['field_pop_country']['id'] = 'field_pop_country';
-  $handler->display->display_options['fields']['field_pop_country']['table'] = 'field_data_field_pop_country';
-  $handler->display->display_options['fields']['field_pop_country']['field'] = 'field_pop_country';
-  $handler->display->display_options['fields']['field_pop_country']['relationship'] = 'field_study_populations_nid';
-  $handler->display->display_options['fields']['field_pop_country']['delta_offset'] = '0';
-  $handler->display->display_options['path'] = 'studies-old';
-
   /* Display: Export CSV */
   $handler = $view->new_display('views_data_export', 'Export CSV', 'views_data_export_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
