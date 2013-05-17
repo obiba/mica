@@ -574,7 +574,7 @@ return $title;
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '5',
         ),
       ),
       'display' => array(),

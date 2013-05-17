@@ -1447,9 +1447,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => 'Official study name',
-          'field_description_label' => 'Study name',
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
         'max_length' => '255',
@@ -1527,7 +1527,6 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
         'field_permissions' => array(
@@ -1667,7 +1666,7 @@ function mica_studies_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '5',
+        'weight' => '35',
       ),
     ),
   );
@@ -2475,7 +2474,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '7',
+        'weight' => '37',
       ),
     ),
   );
@@ -2574,10 +2573,10 @@ function mica_studies_field_default_fields() {
       'module' => 'number',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_label' => '',
-          'field_description_value_type' => 'integer',
+          'field_description' => 1,
+          'field_description_body' => 'For example, an event from 2012 to 2012 will span 1 year; an event from 2012 to 2013 will span 2 years.',
+          'field_description_label' => 'Start Year',
+          'field_description_value_type' => 'text',
         ),
       ),
       'translatable' => '0',
@@ -2587,7 +2586,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'data_collection_event',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'For example, an event from 2012 to 2012 will span 1 year; an event from 2012 to 2013 will span 2 years.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -2704,7 +2703,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '6',
+        'weight' => '36',
       ),
     ),
   );
@@ -2841,7 +2840,6 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
         'field_permissions' => array(
@@ -3053,9 +3051,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => 'Official study name',
-          'field_description_label' => 'Study name',
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
         'max_length' => '255',
@@ -3139,7 +3137,6 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
         'field_permissions' => array(
@@ -5428,7 +5425,6 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
         'field_permissions' => array(
@@ -8154,9 +8150,9 @@ If the study is completed, enter the final number of participants that have prov
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => 'Official study name',
-          'field_description_label' => 'Study name',
+          'field_description' => 0,
+          'field_description_body' => '',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
         'max_length' => '255',
@@ -8245,6 +8241,7 @@ If the study is completed, enter the final number of participants that have prov
   t('Enter the number of participants that should provide biological samples from which DNA could be extracted. If the study is completed, enter the final number of participants that have provided biological samples from which DNA could be extracted. ');
   t('Ethnic Origin');
   t('Files');
+  t('For example, an event from 2012 to 2012 will span 1 year; an event from 2012 to 2013 will span 2 years.');
   t('Gender');
   t('General Information on Follow Up (profile and frequency)');
   t('General Population');

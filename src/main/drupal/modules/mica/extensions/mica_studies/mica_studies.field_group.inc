@@ -170,9 +170,12 @@ function mica_studies_field_group_info() {
     'label' => 'Data Collection',
     'weight' => '1',
     'children' => array(
-      0 => 'field_dce_data_sources',
-      1 => 'field_dce_data_sources_admin_db',
-      2 => 'field_dce_data_sources_sp',
+      0 => 'field_dce_bio_samples_management',
+      1 => 'field_dce_data_sources',
+      2 => 'field_dce_data_sources_admin_db',
+      3 => 'field_dce_data_sources_sp',
+      4 => 'field_dce_samples_man_other_sp',
+      5 => 'field_dce_tissues_sp',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -245,64 +248,6 @@ function mica_studies_field_group_info() {
     ),
   );
   $export['group_dce_documents|node|data_collection_event|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_dce_sample_management|node|data_collection_event|form';
-  $field_group->group_name = 'group_dce_sample_management';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'data_collection_event';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Biological samples',
-    'weight' => '2',
-    'children' => array(
-      0 => 'field_dce_bio_samples_management',
-      1 => 'field_dce_samples_man_other_sp',
-      2 => 'field_dce_tissues_sp',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'label' => 'Biological samples',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'collapsible',
-    ),
-  );
-  $export['group_dce_sample_management|node|data_collection_event|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_dce|node|population|form';
-  $field_group->group_name = 'group_dce';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'population';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Data collection events',
-    'weight' => '4',
-    'children' => array(
-      0 => 'field_pop_dce',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'label' => 'Data collection events',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'collapsible',
-    ),
-  );
-  $export['group_dce|node|population|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -615,7 +560,7 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'population';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_pop_participants_selection';
+  $field_group->parent_name = 'group_pop_selection_criteria';
   $field_group->data = array(
     'label' => 'Age',
     'weight' => '6',
@@ -644,7 +589,7 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'population';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_pop_participants_selection';
+  $field_group->parent_name = 'group_pop_selection_criteria';
   $field_group->data = array(
     'label' => 'Residence',
     'weight' => '7',
@@ -673,13 +618,12 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'population';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_pop_participants_selection';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Participants Number',
-    'weight' => '28',
+    'weight' => '3',
     'children' => array(
-      0 => 'group_pop_participants_samples',
-      1 => 'group_pop_participants',
+      0 => 'group_pop_participants',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -696,76 +640,12 @@ function mica_studies_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_pop_participants_samples|node|population|form';
-  $field_group->group_name = 'group_pop_participants_samples';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'population';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_pop_participants_number';
-  $field_group->data = array(
-    'label' => 'Number of participants with biological samples for this population',
-    'weight' => '27',
-    'children' => array(
-      0 => 'field_pop_no_lim_participants_s',
-      1 => 'field_pop_participants_nb_s',
-      2 => 'field_pop_participants_nb_s_info',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'formatter' => 'collapsible',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_pop_participants_samples|node|population|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_pop_participants_selection|node|population|form';
-  $field_group->group_name = 'group_pop_participants_selection';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'population';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Participants Selection',
-    'weight' => '1',
-    'children' => array(
-      0 => 'field_pop_ethnic_origin',
-      1 => 'field_pop_gender',
-      2 => 'field_pop_health_status',
-      3 => 'field_pop_partcipant_sel_supp_in',
-      4 => 'field_pop_select_criteria',
-      5 => 'field_pop_selection_others_sp',
-      6 => 'group_pop_age',
-      7 => 'group_pop_countries',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'label' => 'Participants Selection',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'collapsible',
-    ),
-  );
-  $export['group_pop_participants_selection|node|population|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_pop_participants|node|population|form';
   $field_group->group_name = 'group_pop_participants';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'population';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_pop_participants_number';
   $field_group->data = array(
     'label' => 'Number of participants',
     'weight' => '3',
@@ -800,7 +680,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Recruitment procedures',
-    'weight' => '2',
+    'weight' => '1',
     'children' => array(
       0 => 'field_pop_exist_study_part',
       1 => 'field_pop_general_pop_recruit',
@@ -831,10 +711,10 @@ function mica_studies_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'population';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_pop_participants_selection';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Selection Criteria / Characteristics of the population',
-    'weight' => '26',
+    'weight' => '2',
     'children' => array(
       0 => 'field_pop_ethnic_origin',
       1 => 'field_pop_gender',
@@ -869,7 +749,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Supplementary Information',
-    'weight' => '6',
+    'weight' => '4',
     'children' => array(
       0 => 'field_pop_supp_infos',
     ),

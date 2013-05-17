@@ -353,7 +353,6 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
   $field_dce = $form['field_pop_dce'][$lang]['#options'];
   if (empty($field_dce)) {
     $form['field_pop_dce']['#type'] = 'hidden';
-    $form['#groups']['group_dce']->format_type = 'hidden';
   }
 
   //population
@@ -660,15 +659,15 @@ function mica_studies_block_view_alter(&$data, $block) {
 function _mica_studies_study_current_search(&$data, $block) {
   if (isset($data['content']['field_group'])) {
     $data['content']['results']['#markup'] .= ' - ' . l(
-      t('Clear all criteria') . ' [X]',
-      'studies-search',
-      array(
-        'attributes' => array(
-          'rel' => 'nofollow',
-          'class' => array('current-search-clear-all'),
+        t('Clear all criteria') . ' [X]',
+        'studies-search',
+        array(
+          'attributes' => array(
+            'rel' => 'nofollow',
+            'class' => array('current-search-clear-all'),
+          )
         )
-      )
-    );
+      );
     foreach ($data['content']['field_group'] as $field => $field_group) {
       $field_info = field_info_instance('node', $field, 'study');
       if (isset($field_info['display_label']) && strlen(trim($field_info['display_label'])) > 0) {
