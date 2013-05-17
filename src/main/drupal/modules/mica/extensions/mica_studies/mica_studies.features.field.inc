@@ -1772,7 +1772,7 @@ function mica_studies_field_default_fields() {
           'questionnaires' => 'Questionnaires',
           'physical_measures' => 'Physical measures',
           'biological_samples' => 'Biological samples',
-          'administratives_databases' => 'Administritative Databases (external database linked with participant data)',
+          'administratives_databases' => 'Administrative Databases (external database linked with participant data)',
           'others' => 'Others (Participant medical files, genealogical records, etc.)',
         ),
         'allowed_values_function' => '',
