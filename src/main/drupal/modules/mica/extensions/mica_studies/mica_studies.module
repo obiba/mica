@@ -434,10 +434,12 @@ function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $f
   );
 
   //dce
+  _mica_add_dependent_field_checked($form, 'field_dce_data_sources', 'field_dce_bio_samples_management', 'biological_samples');
   _mica_add_dependent_field_checked($form, 'field_dce_data_sources', 'field_dce_data_sources_admin_db', 'administratives_databases');
   _mica_add_dependent_field_checked($form, 'field_dce_data_sources', 'field_dce_data_sources_sp', 'others');
-  _mica_add_dependent_field_checked($form, 'field_dce_bio_samples_management', 'field_dce_tissues_sp', 'tissues');
-  _mica_add_dependent_field_checked($form, 'field_dce_bio_samples_management', 'field_dce_samples_man_other_sp', 'others');
+
+  _mica_add_double_dependent_field_checked($form, 'field_dce_data_sources', 'field_dce_bio_samples_management', 'field_dce_tissues_sp', 'biological_samples', 'tissues');
+  _mica_add_double_dependent_field_checked($form, 'field_dce_data_sources', 'field_dce_bio_samples_management', 'field_dce_samples_man_other_sp', 'biological_samples', 'others');
 }
 
 /**
@@ -609,6 +611,7 @@ function _mica_populations_form_validate($form, &$form_state) {
 
 function _mica_data_collection_event_form_validate($form, &$form_state) {
   //dce
+  _mica_studies_form_validate_field($form, $form_state, 'field_dce_data_sources', 'field_dce_bio_samples_management', 'biological_samples');
   _mica_studies_form_validate_field($form, $form_state, 'field_dce_data_sources', 'field_dce_data_sources_admin_db', 'administratives_databases');
   _mica_studies_form_validate_field($form, $form_state, 'field_dce_data_sources', 'field_dce_data_sources_sp', 'others');
   _mica_studies_form_validate_field($form, $form_state, 'field_dce_bio_samples_management', 'field_dce_tissues_sp', 'tissues');
@@ -659,15 +662,15 @@ function mica_studies_block_view_alter(&$data, $block) {
 function _mica_studies_study_current_search(&$data, $block) {
   if (isset($data['content']['field_group'])) {
     $data['content']['results']['#markup'] .= ' - ' . l(
-        t('Clear all criteria') . ' [X]',
-        'studies-search',
-        array(
-          'attributes' => array(
-            'rel' => 'nofollow',
-            'class' => array('current-search-clear-all'),
-          )
+      t('Clear all criteria') . ' [X]',
+      'studies-search',
+      array(
+        'attributes' => array(
+          'rel' => 'nofollow',
+          'class' => array('current-search-clear-all'),
         )
-      );
+      )
+    );
     foreach ($data['content']['field_group'] as $field => $field_group) {
       $field_info = field_info_instance('node', $field, 'study');
       if (isset($field_info['display_label']) && strlen(trim($field_info['display_label'])) > 0) {
