@@ -97,7 +97,7 @@ function mica_studies_node_info() {
     'data_collection_event' => array(
       'name' => t('Data Collection Event'),
       'base' => 'node_content',
-      'description' => t('content type for new data collection event'),
+      'description' => t('A data collection event is a specific period of time during which a defined set of data/sample is collected.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',
@@ -113,7 +113,7 @@ function mica_studies_node_info() {
     'population' => array(
       'name' => t('Population'),
       'base' => 'node_content',
-      'description' => t('Content type population'),
+      'description' => t('A population is a set of individuals sharing the same selection criteria. In some cases, a study can have two or more populations (i.e. 2 sets of individuals with distinct selection criteria).'),
       'has_title' => '1',
       'title_label' => t('Population'),
       'help' => '',
@@ -170,6 +170,7 @@ function mica_studies_default_search_api_index() {
         "field_recruitment" : { "type" : "list\\u003Cstring\\u003E" },
         "field_recruitment_other_sp" : { "type" : "text" },
         "field_recruitment_supp_info" : { "type" : "text" },
+        "field_samples_supp_info" : { "type" : "text" },
         "field_study_end_year" : { "type" : "integer" },
         "field_study_populations" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_study_start_year" : { "type" : "integer" },
@@ -291,6 +292,7 @@ function mica_studies_default_search_api_index() {
               "field_recruitment_sources" : true,
               "field_recruitment_supp_info" : true,
               "field_samples_man_other_sp" : true,
+              "field_samples_supp_info" : true,
               "field_selection_others_sp" : true,
               "field_status_supp_info" : true,
               "field_supp_infos" : true,

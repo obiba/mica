@@ -1527,6 +1527,7 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
         'field_permissions' => array(
@@ -1568,23 +1569,25 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'body',
-      'label' => 'Body',
-      'required' => FALSE,
+      'label' => 'Description',
+      'required' => 0,
       'settings' => array(
-        'display_summary' => TRUE,
-        'text_processing' => 1,
+        'display_summary' => 1,
+        'text_processing' => '1',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'text',
         'settings' => array(
-          'rows' => 20,
+          'rows' => '20',
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '6',
+        'weight' => '4',
       ),
     ),
   );
@@ -1623,7 +1626,7 @@ function mica_studies_field_default_fields() {
         'allowed_values_function' => '',
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => '',
+          'field_description_body' => 'Select the type of biological samples collected.',
           'field_description_label' => 'Biological samples',
           'field_description_value_type' => 'text',
         ),
@@ -1635,7 +1638,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'data_collection_event',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Select the type of biological samples collected.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1725,7 +1728,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_dce_data_dictionaries',
-      'label' => 'Data Dictionaries',
+      'label' => 'Data dictionaries (codebooks)',
       'required' => 0,
       'settings' => array(
         'description_field' => 1,
@@ -1770,13 +1773,13 @@ function mica_studies_field_default_fields() {
           'questionnaires' => 'Questionnaires',
           'physical_measures' => 'Physical measures',
           'biological_samples' => 'Biological samples',
-          'administratives_databases' => 'Administritative Databases',
-          'others' => 'Others',
+          'administratives_databases' => 'Administritative Databases (external database linked with participant data)',
+          'others' => 'Others (Participant medical files, genealogical records, etc.)',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => '',
+          'field_description_body' => 'Select the data source(s) from which the information is obtained.',
           'field_description_label' => 'Data sources',
           'field_description_value_type' => 'text',
         ),
@@ -1788,7 +1791,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'data_collection_event',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Select the data source(s) from which the information is obtained.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1843,16 +1846,16 @@ function mica_studies_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'health_databases' => 'Health Databases',
-          'vital_statisctics_databases' => 'Vital Statistics Databases',
-          'socioeconomic_databases' => 'Socioeconomic Databases',
-          'environmental_databases' => 'Environmental Databases',
+          'health_databases' => 'Health databases (e.g.: Hospitalization, Physican Billing, Drug Utilization)',
+          'vital_statisctics_databases' => 'Vital Statistics databases (e.g.: Death Registries)',
+          'socioeconomic_databases' => 'Socioeconomic databases (e.g.: Census)',
+          'environmental_databases' => 'Environmental databases (e.g.: Air pollutant geocoded data)',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
-          'field_description_label' => '',
+          'field_description_label' => 'Administrative Databases',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -1926,8 +1929,8 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_label' => 'Please specify what other data sources',
+          'field_description_body' => 'Please specify',
+          'field_description_label' => 'Other data sources',
           'field_description_value_type' => 'text',
         ),
         'max_length' => '255',
@@ -1939,7 +1942,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'data_collection_event',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please specify',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1958,7 +1961,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_dce_data_sources_sp',
-      'label' => 'Please specify what other data sources',
+      'label' => 'Other data sources',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -2071,7 +2074,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '11',
+        'weight' => '5',
       ),
     ),
   );
@@ -2144,7 +2147,7 @@ function mica_studies_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '4',
+        'weight' => '3',
       ),
     ),
   );
@@ -2186,7 +2189,7 @@ function mica_studies_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'data_collection_event',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please attach any other relevant documentation. ',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -2317,7 +2320,7 @@ function mica_studies_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '1',
+        'weight' => '5',
       ),
     ),
   );
@@ -2428,8 +2431,8 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_label' => 'Please specify what other biological samples',
+          'field_description_body' => 'Please specify',
+          'field_description_label' => 'Other biological samples',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -2440,7 +2443,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'data_collection_event',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please specify',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -2459,7 +2462,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_dce_samples_man_other_sp',
-      'label' => 'Please specify what other biological samples',
+      'label' => 'Other biological samples',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -2533,7 +2536,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_dce_sops',
-      'label' => 'SOPs',
+      'label' => 'Standard Operating Procedures (SOP)',
       'required' => 0,
       'settings' => array(
         'description_field' => 1,
@@ -2622,7 +2625,7 @@ function mica_studies_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '3',
+        'weight' => '2',
       ),
     ),
   );
@@ -2656,8 +2659,8 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_label' => 'Please specify type of tissues',
+          'field_description_body' => 'Please specify',
+          'field_description_label' => 'Type of tissues',
           'field_description_value_type' => 'text',
         ),
         'max_length' => '255',
@@ -2669,7 +2672,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'data_collection_event',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please specify',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -2688,7 +2691,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_dce_tissues_sp',
-      'label' => 'Please specify type of tissues',
+      'label' => 'Tissues type',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -2838,6 +2841,7 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
         'field_permissions' => array(
@@ -3135,6 +3139,7 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
         'field_permissions' => array(
@@ -3157,7 +3162,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'population',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Enter a brief population description.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -3179,7 +3184,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'body',
-      'label' => 'Body',
+      'label' => 'Description',
       'required' => 0,
       'settings' => array(
         'display_summary' => 1,
@@ -3194,7 +3199,7 @@ function mica_studies_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '1',
+        'weight' => '2',
       ),
     ),
   );
@@ -3864,9 +3869,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_label' => '',
+          'field_description' => 1,
+          'field_description_body' => 'Please specify',
+          'field_description_label' => 'Existing Studies Participants',
           'field_description_value_type' => 'text',
         ),
         'max_length' => '255',
@@ -3878,7 +3883,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'population',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please specify',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -3897,7 +3902,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_pop_exist_study_part',
-      'label' => 'Existing Studies Participants',
+      'label' => 'Participants from existing studies',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -4010,14 +4015,14 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           'volunteer' => 'Volunteer enrolment',
-          'selected_samples' => 'Selected sample',
+          'selected_samples' => 'Selected sample (e.g.: from governmental databases)',
           'random' => 'Random digit dialing',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 0,
+          'field_description' => 1,
           'field_description_body' => '',
-          'field_description_label' => '',
+          'field_description_label' => 'General Population',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -4167,9 +4172,9 @@ function mica_studies_field_default_fields() {
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => 'No limits in the number of participants ',
+          'field_description_label' => '',
           'field_description_value_type' => 'boolean',
         ),
       ),
@@ -4203,7 +4208,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_pop_no_lim_participants_s',
-      'label' => 'No limits in the number of participants ',
+      'label' => 'No limits in the number of participants with biological samples',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -4215,7 +4220,7 @@ function mica_studies_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '28',
+        'weight' => '29',
       ),
     ),
   );
@@ -4327,9 +4332,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => 'If needed, supplementary information about selection criteria of the population',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -4340,7 +4345,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'population',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'If needed, please provide additional information about selection criteria of the population',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -4359,7 +4364,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_pop_partcipant_sel_supp_in',
-      'label' => 'If needed, supplementary information about selection criteria of the population',
+      'label' => 'Supplementary information about selection criteria',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -4395,9 +4400,9 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => '',
+          'field_description_body' => 'Number of participants planned to be recruited for the population. If the study is completed, enter the final number of participants. ',
           'field_description_label' => 'Number of participants',
-          'field_description_value_type' => 'integer',
+          'field_description_value_type' => 'text',
         ),
       ),
       'translatable' => '0',
@@ -4407,7 +4412,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'population',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Number of participants planned to be recruited for the population. If the study is completed, enter the final number of participants. ',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -4437,7 +4442,7 @@ function mica_studies_field_default_fields() {
         'max' => '',
         'min' => '0',
         'prefix' => '',
-        'suffix' => '',
+        'suffix' => ' participants',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -4467,10 +4472,10 @@ function mica_studies_field_default_fields() {
       'module' => 'number',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_label' => '',
-          'field_description_value_type' => 'integer',
+          'field_description' => 1,
+          'field_description_body' => 'Enter the number of participants that should provide biological samples from which DNA could be extracted. If the study is completed, enter the final number of participants that have provided biological samples from which DNA could be extracted. ',
+          'field_description_label' => 'Number of participants with biological samples',
+          'field_description_value_type' => 'text',
         ),
       ),
       'translatable' => '0',
@@ -4480,7 +4485,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'population',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Enter the number of participants that should provide biological samples from which DNA could be extracted. If the study is completed, enter the final number of participants that have provided biological samples from which DNA could be extracted. ',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -4510,7 +4515,7 @@ function mica_studies_field_default_fields() {
         'max' => '',
         'min' => '0',
         'prefix' => '',
-        'suffix' => '',
+        'suffix' => ' participants',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -4518,85 +4523,7 @@ function mica_studies_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '27',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-population-field_pop_participants_nb_s_info'.
-  $fields['node-population-field_pop_participants_nb_s_info'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_pop_participants_nb_s_info',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_label' => 'Supplementary information',
-          'field_description_value_type' => 'text',
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'population',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '23',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'display_label' => 'Supplementary information',
-      'entity_type' => 'node',
-      'field_name' => 'field_pop_participants_nb_s_info',
-      'label' => 'If needed, supplementary information about number of participants with biological samples',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '2',
-        ),
-        'type' => 'text_textarea',
-        'weight' => '29',
+        'weight' => '28',
       ),
     ),
   );
@@ -4629,9 +4556,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => 'Supplementary information',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -4642,7 +4569,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'population',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'If needed, please provide additional information about number of participants.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -4658,10 +4585,10 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Supplementary information',
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_pop_participants_nb_supp_i',
-      'label' => ' If needed, supplementary information about number of participants',
+      'label' => 'Supplementary information about number of participants',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -4674,7 +4601,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '28',
+        'weight' => '30',
       ),
     ),
   );
@@ -4707,9 +4634,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => 'Supplementary information',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -4720,7 +4647,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'population',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'If needed, please provide additional information about recruitment procedures',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -4736,10 +4663,10 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Supplementary information',
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_pop_recruitement_supp_info',
-      'label' => 'If needed, supplementary information about recruitment procedures',
+      'label' => 'Supplementary information about recruitment procedures',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -4752,7 +4679,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '46',
+        'weight' => '45',
       ),
     ),
   );
@@ -4786,8 +4713,8 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_label' => 'Please specify what other source of recruitment',
+          'field_description_body' => 'Please specify',
+          'field_description_label' => 'Other source of recruitment',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -4798,7 +4725,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'population',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please specify',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -4817,7 +4744,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_pop_recruitment_other',
-      'label' => 'Please specify what other source of recruitment',
+      'label' => 'Other source of recruitment',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -4830,7 +4757,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '45',
+        'weight' => '44',
       ),
     ),
   );
@@ -4891,10 +4818,10 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Selection criteria',
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_pop_select_criteria',
-      'label' => 'What is the selection criteria for participants?',
+      'label' => 'Selection criteria',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -4904,7 +4831,7 @@ function mica_studies_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '4',
+        'weight' => '8',
       ),
     ),
   );
@@ -4938,8 +4865,8 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_label' => 'Please specify what other selection criteria',
+          'field_description_body' => 'Please specify',
+          'field_description_label' => 'Other selection criteria',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -4950,7 +4877,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'population',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please specify',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -4969,7 +4896,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_pop_selection_others_sp',
-      'label' => 'Please specify what other selection criteria',
+      'label' => 'Other selection criteria',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -5009,8 +4936,8 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           'clinic_patients' => 'Clinic patients',
-          'specific_association' => 'Members of specific association',
-          'other' => 'Other Specific Population',
+          'specific_association' => 'Members of specific association (professional association, patients network, etc)',
+          'other' => 'Other specific population',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
@@ -5089,9 +5016,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_label' => '',
+          'field_description' => 1,
+          'field_description_body' => 'Please specify',
+          'field_description_label' => 'Other specific population',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -5102,7 +5029,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'population',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please specify',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -5121,7 +5048,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_pop_specific_pop_other_sp',
-      'label' => 'Please specify what other specific population',
+      'label' => 'Specific population',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -5134,7 +5061,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '44',
+        'weight' => '43',
       ),
     ),
   );
@@ -5308,7 +5235,7 @@ function mica_studies_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '2',
+        'weight' => '3',
       ),
     ),
   );
@@ -5370,10 +5297,10 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Supplementary information',
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_pop_supp_infos',
-      'label' => 'Supplementary information about this population',
+      'label' => 'Supplementary information',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -5501,6 +5428,7 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
         'field_permissions' => array(
@@ -5523,7 +5451,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Enter principal objectives of the study. ',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -5592,9 +5520,10 @@ function mica_studies_field_default_fields() {
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description' => 1,
+          'field_description_body' => 'Specify if access to study biological samples by external researchers or third parties is provided or foreseen.',
+          'field_description_label' => 'Biological samples access',
+          'field_description_value_type' => 'boolean',
         ),
       ),
       'translatable' => '0',
@@ -5604,7 +5533,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Specify if access to study biological samples by external researchers or third parties is provided or foreseen.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -5663,9 +5592,10 @@ function mica_studies_field_default_fields() {
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description' => 1,
+          'field_description_body' => 'Specify if access to study data by external researchers or third parties is provided or foreseen.',
+          'field_description_label' => 'Data access',
+          'field_description_value_type' => 'boolean',
         ),
       ),
       'translatable' => '0',
@@ -5675,7 +5605,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Specify if access to study data by external researchers or third parties is provided or foreseen.',
       'display' => array(
         'banner_area' => array(
           'label' => 'above',
@@ -5740,9 +5670,10 @@ function mica_studies_field_default_fields() {
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_value_type' => '',
+          'field_description' => 1,
+          'field_description_body' => 'Specify if access to other study material by external researchers or third parties is provided or foreseen.',
+          'field_description_label' => 'Other',
+          'field_description_value_type' => 'boolean',
         ),
       ),
       'translatable' => '0',
@@ -5752,7 +5683,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Specify if access to other study material by external researchers or third parties is provided or foreseen.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -5813,9 +5744,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => 'Access supplementary information',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -5826,7 +5757,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please specify',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -5844,7 +5775,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_access_other_sp',
-      'label' => 'Please specify what study feature',
+      'label' => 'Other access',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -6544,13 +6475,12 @@ function mica_studies_field_default_fields() {
           'clinical_trial' => 'Clinical trial / intervention trial',
           'cohort_study' => 'Cohort study',
           'cross_sectional' => 'Cross-sectional prevalence study',
-          'registry' => 'Registry',
           'other' => 'Other',
         ),
         'allowed_values_function' => '',
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => 'Specify the design of the study.',
+          'field_description_body' => 'Select general study design',
           'field_description_label' => 'Study design',
           'field_description_value_type' => 'text',
         ),
@@ -6569,7 +6499,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Specify the design of the study.',
+      'description' => 'Select general study design',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -6584,10 +6514,10 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Study design',
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_design',
-      'label' => 'What is the study design?',
+      'label' => 'Study design',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -6630,9 +6560,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_label' => '',
+          'field_description' => 1,
+          'field_description_body' => 'Please specify',
+          'field_description_label' => 'Other study design',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -6643,7 +6573,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please specify',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -6661,7 +6591,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_design_other_sp',
-      'label' => 'Please specify what other design',
+      'label' => 'Other design',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -6722,7 +6652,7 @@ function mica_studies_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'study',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'If applicable, please provide relevant documentation about the study (e.g.: Study Protocol).',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -6789,9 +6719,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_label' => '',
+          'field_description' => 1,
+          'field_description_body' => 'If your study design is longitudinal, please provide general information on participants’ follow-up (profile and frequency).',
+          'field_description_label' => 'General Information on Follow Up (profile and frequency)',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -6802,7 +6732,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'This field only apply to longitudinal study.',
+      'description' => 'If your study design is longitudinal, please provide general information on participants’ follow-up (profile and frequency).',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -6978,7 +6908,7 @@ function mica_studies_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'study',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please provide the official study logo that can be displayed on the website.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -7068,7 +6998,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'If applicable, enter a bibliographic citation (i.e. published sources such as journal article, web site, or report) which should be used to refer to your study.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -7084,10 +7014,10 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Marker paper',
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_marker_paper',
-      'label' => 'Marker paper describing your study',
+      'label' => 'Marker paper',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -7303,7 +7233,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Enter the Pubmed ID if applicable.',
+      'description' => 'If applicable, enter marker paper’s Pubmed ID.  ',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -7321,7 +7251,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_pubmedid',
-      'label' => 'Pubmed Id',
+      'label' => 'Pubmed ID',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -7367,8 +7297,8 @@ function mica_studies_field_default_fields() {
         'allowed_values_function' => '',
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_label' => 'Study recruitment targets',
+          'field_description_body' => 'Select type of participant units targeted by the study.',
+          'field_description_label' => 'Recruitment target',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -7379,7 +7309,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Select type of participant units targeted by the study.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -7394,10 +7324,10 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Recruitment target',
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_recruitment',
-      'label' => 'The study targets the recruitment of',
+      'label' => 'Recruitment target',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -7440,8 +7370,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
+          'field_description' => 1,
+          'field_description_body' => 'Please specify',
+          'field_description_label' => 'Other recruitment target',
           'field_description_value_type' => 'text',
         ),
         'max_length' => '255',
@@ -7453,7 +7384,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Please specify',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -7468,9 +7399,10 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_recruitment_other_sp',
-      'label' => 'Please specify what other recruitment target',
+      'label' => 'Other recruitment target',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -7516,9 +7448,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => 'Study/Registry design supplementary information',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -7529,7 +7461,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'If needed, please provide additional information about study design.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -7547,7 +7479,7 @@ function mica_studies_field_default_fields() {
       'display_label' => 'Supplementary information',
       'entity_type' => 'node',
       'field_name' => 'field_recruitment_supp_info',
-      'label' => 'If needed, supplementary information about study design',
+      'label' => 'Supplementary information about study design',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -7561,83 +7493,6 @@ function mica_studies_field_default_fields() {
         ),
         'type' => 'text_textarea',
         'weight' => '12',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-study-field_samples_supp_info'.
-  $fields['node-study-field_samples_supp_info'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_samples_supp_info',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'field_description_infos' => array(
-          'field_description' => 1,
-          'field_description_body' => '',
-          'field_description_label' => 'Target number of biological samples supplementary information',
-          'field_description_value_type' => 'text',
-        ),
-      ),
-      'translatable' => '1',
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'study',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '21',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'display_label' => 'Supplementary information',
-      'entity_type' => 'node',
-      'field_name' => 'field_samples_supp_info',
-      'label' => 'If needed, supplementary information about target number of biological samples',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '2',
-        ),
-        'type' => 'text_textarea',
-        'weight' => '68',
       ),
     ),
   );
@@ -7660,7 +7515,7 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => 'Enter the study End Year only if the study is completed.',
+          'field_description_body' => 'If the study is completed, enter the study end date.',
           'field_description_label' => 'Study End Date',
           'field_description_value_type' => 'integer',
         ),
@@ -7672,7 +7527,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Enter the study End Year only if the study is completed.',
+      'description' => 'If the study is completed, enter the study end date.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -7825,9 +7680,9 @@ function mica_studies_field_default_fields() {
       'module' => 'number',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_label' => '',
+          'field_description' => 1,
+          'field_description_body' => 'Date when first participants were recruited or planned to be recruited.',
+          'field_description_label' => 'Study Start Date',
           'field_description_value_type' => 'integer',
         ),
       ),
@@ -7838,7 +7693,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Date when first participants were recruited or planned to be recruited.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -7916,7 +7771,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'If needed, please provide additional information about your study.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -7980,9 +7835,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 1,
+          'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => 'Target number of participants supplementary information',
+          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
       ),
@@ -7993,7 +7848,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'If needed, please provide additional information about target number of participants.',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -8011,7 +7866,7 @@ function mica_studies_field_default_fields() {
       'display_label' => 'Supplementary information',
       'entity_type' => 'node',
       'field_name' => 'field_target_nb_supp_info',
-      'label' => 'If needed, supplementary information about target number of participants',
+      'label' => 'Supplementary information about target number of participants',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -8024,7 +7879,7 @@ function mica_studies_field_default_fields() {
           'rows' => '2',
         ),
         'type' => 'text_textarea',
-        'weight' => '38',
+        'weight' => '10',
       ),
     ),
   );
@@ -8047,7 +7902,8 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => '',
+          'field_description_body' => 'Number of participants that should provide biological samples, from which DNA could be extracted. 
+If the study is completed, enter the final number of participants that have provided biological samples from which DNA could be extracted.',
           'field_description_label' => 'Target number of participants with samples',
           'field_description_value_type' => 'integer',
         ),
@@ -8066,7 +7922,8 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Number of participants that should provide biological samples, from which DNA could be extracted. 
+If the study is completed, enter the final number of participants that have provided biological samples from which DNA could be extracted.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -8081,10 +7938,10 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Target number of participants with samples',
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_target_number_biosamples',
-      'label' => 'How many people have provided or should provide biological samples, from which DNA could be extracted?',
+      'label' => 'Target number of participants with biological samples',
       'required' => 0,
       'settings' => array(
         'max' => '',
@@ -8121,7 +7978,7 @@ function mica_studies_field_default_fields() {
       'settings' => array(
         'field_description_infos' => array(
           'field_description' => 1,
-          'field_description_body' => '',
+          'field_description_body' => 'Number of participants planned to be recruited. If the study is completed, enter the final number of participants.',
           'field_description_label' => 'Target number of participants',
           'field_description_value_type' => 'integer',
         ),
@@ -8140,7 +7997,7 @@ function mica_studies_field_default_fields() {
       'bundle' => 'study',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Number of participants planned to be recruited. If the study is completed, enter the final number of participants.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -8155,10 +8012,10 @@ function mica_studies_field_default_fields() {
           'weight' => 0,
         ),
       ),
-      'display_label' => 'Target number of participants',
+      'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'field_target_number_participants',
-      'label' => 'How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?',
+      'label' => 'Target number of participants',
       'required' => 0,
       'settings' => array(
         'max' => '',
@@ -8299,7 +8156,7 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 1,
           'field_description_body' => 'Official study name',
-          'field_description_label' => 'Study Name',
+          'field_description_label' => 'Study name',
           'field_description_value_type' => 'text',
         ),
         'max_length' => '255',
@@ -8353,7 +8210,6 @@ function mica_studies_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t(' If needed, supplementary information about number of participants');
   t('Acronym');
   t('Acronym of the study if applicable.');
   t('Address');
@@ -8373,75 +8229,88 @@ function mica_studies_field_default_fields() {
   t('Country of residence');
   t('Data (questionnaire-derived, measured...)');
   t('Data Collection Event');
-  t('Data Dictionaries');
   t('Data collection events');
+  t('Data dictionaries (codebooks)');
   t('Data sources');
   t('Datasets');
+  t('Date when first participants were recruited or planned to be recruited.');
   t('Department/Unit');
+  t('Description');
   t('Documents');
   t('Email');
   t('End Year');
   t('Enter a brief data collection event description.');
-  t('Enter a brief population description.');
-  t('Enter principal objectives of the study. ');
   t('Enter the Contact full name. You will be able to edit these Contacts once the Study has been saved.');
   t('Enter the Investigator full name. You will be able to edit these Investigators once the Study will be saved.');
-  t('Enter the Pubmed ID if applicable.');
-  t('Enter the study End Year only if the study is completed.');
+  t('Enter the number of participants that should provide biological samples from which DNA could be extracted. If the study is completed, enter the final number of participants that have provided biological samples from which DNA could be extracted. ');
   t('Ethnic Origin');
-  t('Existing Studies Participants');
   t('Files');
   t('Gender');
   t('General Information on Follow Up (profile and frequency)');
   t('General Population');
   t('Health Status');
-  t('How many people are planned to be recruited? Or if the study is completed, what is the final number of participants?');
-  t('How many people have provided or should provide biological samples, from which DNA could be extracted?');
-  t('If needed, supplementary information about number of participants with biological samples');
-  t('If needed, supplementary information about recruitment procedures');
-  t('If needed, supplementary information about selection criteria of the population');
-  t('If needed, supplementary information about study design');
-  t('If needed, supplementary information about target number of biological samples');
-  t('If needed, supplementary information about target number of participants');
+  t('If applicable, enter a bibliographic citation (i.e. published sources such as journal article, web site, or report) which should be used to refer to your study.');
+  t('If applicable, enter marker paper’s Pubmed ID.  ');
+  t('If applicable, please provide relevant documentation about the study (e.g.: Study Protocol).');
+  t('If needed, please provide additional information about number of participants.');
+  t('If needed, please provide additional information about recruitment procedures');
+  t('If needed, please provide additional information about selection criteria of the population');
+  t('If needed, please provide additional information about study design.');
+  t('If needed, please provide additional information about target number of participants.');
+  t('If needed, please provide additional information about your study.');
+  t('If the study is completed, enter the study end date.');
+  t('If your study design is longitudinal, please provide general information on participants’ follow-up (profile and frequency).');
   t('Institution name');
   t('Investigators');
   t('Logo');
   t('Marker paper');
-  t('Marker paper describing your study');
   t('Maximum age');
   t('Minimum age');
   t('Name');
   t('Name of the person authorising the contribution to Maelstrom Research');
   t('Name of the person authorising the contribution to [SPECIFIC NETWORK]');
   t('No limits in the number of participants');
-  t('No limits in the number of participants ');
+  t('No limits in the number of participants with biological samples');
   t('No limits in the number of samples');
   t('Number of participants');
+  t('Number of participants planned to be recruited for the population. If the study is completed, enter the final number of participants. ');
+  t('Number of participants planned to be recruited. If the study is completed, enter the final number of participants.');
+  t('Number of participants that should provide biological samples, from which DNA could be extracted. 
+If the study is completed, enter the final number of participants that have provided biological samples from which DNA could be extracted.');
   t('Number of participants with biological samples');
   t('Objectives');
   t('Official study name');
   t('Other');
+  t('Other access');
+  t('Other biological samples');
+  t('Other data sources');
+  t('Other design');
+  t('Other recruitment target');
+  t('Other selection criteria');
+  t('Other source of recruitment');
   t('Others');
-  t('Please specify type of tissues');
-  t('Please specify what other biological samples');
-  t('Please specify what other data sources');
-  t('Please specify what other design');
-  t('Please specify what other recruitment target');
-  t('Please specify what other selection criteria');
-  t('Please specify what other source of recruitment');
-  t('Please specify what other specific population');
-  t('Please specify what study feature');
+  t('Participants from existing studies');
+  t('Please attach any other relevant documentation. ');
+  t('Please provide the official study logo that can be displayed on the website.');
+  t('Please specify');
   t('Population');
   t('Populations');
   t('Postal Code');
-  t('Pubmed Id');
+  t('Pubmed ID');
   t('Questionnaires');
   t('Recruitment target');
-  t('SOPs');
+  t('Select general study design');
+  t('Select the data source(s) from which the information is obtained.');
+  t('Select the type of biological samples collected.');
+  t('Select type of participant units targeted by the study.');
   t('Selection criteria');
   t('Sources of recruitment');
   t('Specific Population');
-  t('Specify the design of the study.');
+  t('Specific population');
+  t('Specify if access to other study material by external researchers or third parties is provided or foreseen.');
+  t('Specify if access to study biological samples by external researchers or third parties is provided or foreseen.');
+  t('Specify if access to study data by external researchers or third parties is provided or foreseen.');
+  t('Standard Operating Procedures (SOP)');
   t('Start Year');
   t('State/Province');
   t('Study');
@@ -8449,18 +8318,19 @@ function mica_studies_field_default_fields() {
   t('Study Start Year');
   t('Study design');
   t('Supplementary information');
-  t('Supplementary information about this population');
+  t('Supplementary information about number of participants');
+  t('Supplementary information about recruitment procedures');
+  t('Supplementary information about selection criteria');
+  t('Supplementary information about study design');
+  t('Supplementary information about target number of participants');
   t('Target number of participants');
-  t('Target number of participants with samples');
+  t('Target number of participants with biological samples');
   t('Telephone');
   t('Territory or city of residence');
-  t('The study targets the recruitment of');
-  t('This field only apply to longitudinal study.');
+  t('Tissues type');
   t('Title');
   t('Website');
   t('What are the principal objectives of the study?');
-  t('What is the selection criteria for participants?');
-  t('What is the study design?');
 
   return $fields;
 }
