@@ -307,11 +307,6 @@ function mica_studies_feeds_importer_default() {
             'target' => 'field_no_limits_samples',
             'unique' => FALSE,
           ),
-          19 => array(
-            'source' => 'target_number_of_biological_samples_supplementary_information',
-            'target' => 'field_samples_supp_info',
-            'unique' => FALSE,
-          ),
           20 => array(
             'source' => 'current_number_of_participants_recruited',
             'target' => 'field_current_participants_nb',

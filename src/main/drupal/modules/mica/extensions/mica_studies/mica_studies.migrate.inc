@@ -130,7 +130,6 @@ function _mica_studies_migrate_content_types($study, $nb_studies, &$context) {
     'field_pop_participants_nb_supp_i' => $study_wrapper->field_target_nb_supp_info->value(),
     'field_pop_participants_nb_s' => $study_wrapper->field_target_number_biosamples->value(),
     'field_pop_no_lim_participants_s' => $study_wrapper->field_no_limits_samples->value() ? 1 : 0,
-    'field_pop_participants_nb_s_info' => $study_wrapper->field_samples_supp_info->value(),
     'uid' => $study->uid,
   );
 

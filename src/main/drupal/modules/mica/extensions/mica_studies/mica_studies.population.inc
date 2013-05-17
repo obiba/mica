@@ -231,7 +231,6 @@ function _mica_studies_population_view_recruitment_sources(&$node) {
 
 function _mica_studies_population_view_nb_participants(&$node) {
   _mica_studies_population_view_nb($node, 'field_pop_participants_nb', 'field_pop_no_limits_participants', 'field_pop_participants_nb_supp_i');
-  _mica_studies_population_view_nb($node, 'field_pop_participants_nb_s', 'field_pop_no_lim_participants_s', 'field_pop_participants_nb_s_info');
 }
 
 function _mica_studies_population_view_nb(&$node, $field_nb, $field_no_limit, $field_info) {

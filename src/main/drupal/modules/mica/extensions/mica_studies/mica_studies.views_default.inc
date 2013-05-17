@@ -346,11 +346,6 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_no_limits_samples']['field'] = 'field_no_limits_samples';
   $handler->display->display_options['fields']['field_no_limits_samples']['label'] = 'no_limits_in_the_number_of_samples';
   $handler->display->display_options['fields']['field_no_limits_samples']['type'] = 'list_key';
-  /* Field: Content: If needed, supplementary information about target number of biological samples */
-  $handler->display->display_options['fields']['field_samples_supp_info']['id'] = 'field_samples_supp_info';
-  $handler->display->display_options['fields']['field_samples_supp_info']['table'] = 'field_data_field_samples_supp_info';
-  $handler->display->display_options['fields']['field_samples_supp_info']['field'] = 'field_samples_supp_info';
-  $handler->display->display_options['fields']['field_samples_supp_info']['label'] = 'target_number_of_biological_samples_supplementary_information';
   /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_current_participants_nb']['id'] = 'field_current_participants_nb';
   $handler->display->display_options['fields']['field_current_participants_nb']['table'] = 'field_data_field_current_participants_nb';
@@ -1045,10 +1040,6 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_recruitment_supp_info']['id'] = 'field_recruitment_supp_info';
   $handler->display->display_options['fields']['field_recruitment_supp_info']['table'] = 'field_data_field_recruitment_supp_info';
   $handler->display->display_options['fields']['field_recruitment_supp_info']['field'] = 'field_recruitment_supp_info';
-  /* Field: Content: If needed, supplementary information about target number of biological samples */
-  $handler->display->display_options['fields']['field_samples_supp_info']['id'] = 'field_samples_supp_info';
-  $handler->display->display_options['fields']['field_samples_supp_info']['table'] = 'field_data_field_samples_supp_info';
-  $handler->display->display_options['fields']['field_samples_supp_info']['field'] = 'field_samples_supp_info';
   /* Field: Content: If needed, supplementary information about target number of participants */
   $handler->display->display_options['fields']['field_target_nb_supp_info']['id'] = 'field_target_nb_supp_info';
   $handler->display->display_options['fields']['field_target_nb_supp_info']['table'] = 'field_data_field_target_nb_supp_info';
@@ -1327,10 +1318,6 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Field: Content: If needed, supplementary information about target number of biological samples */
-  $handler->display->display_options['fields']['field_samples_supp_info']['id'] = 'field_samples_supp_info';
-  $handler->display->display_options['fields']['field_samples_supp_info']['table'] = 'field_data_field_samples_supp_info';
-  $handler->display->display_options['fields']['field_samples_supp_info']['field'] = 'field_samples_supp_info';
   /* Field: Content: Biological samples */
   $handler->display->display_options['fields']['field_access_biosamples']['id'] = 'field_access_biosamples';
   $handler->display->display_options['fields']['field_access_biosamples']['table'] = 'field_data_field_access_biosamples';

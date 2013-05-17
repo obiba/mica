@@ -7519,7 +7519,11 @@ table.study-datasets caption {
   margin-bottom: 5px;
 }
 
-input#edit-field-marker-paper-und-0-value {
+body.page-node-add-study .field-name-body {
+  margin-top: 20px;
+}
+
+body.page-node-add-study input#edit-field-marker-paper-und-0-value {
   width: 530px;
 }
 

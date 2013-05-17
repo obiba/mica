@@ -118,12 +118,6 @@ function _mica_studies_block_study_general_design_field_nb_samples($study_wrappe
     $field[]['#markup'] = t('No limit');
   }
 
-  $supp_info = $study_wrapper->field_samples_supp_info->value();
-  if (!empty($supp_info)) {
-    $supp_info_view = field_view_field('node', $study_wrapper->value(), 'field_samples_supp_info');
-    $field['#items'][] = $supp_info_view['#items'][0];
-    $field[]['#markup'] = $supp_info_view[0]['#markup'];
-  }
   return empty($field['#items']) ? NULL : $field;
 }
 
