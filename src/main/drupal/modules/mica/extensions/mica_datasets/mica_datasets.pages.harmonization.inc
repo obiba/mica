@@ -40,10 +40,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
   $status_values = field_info_field('field_sva_status');
   $studies_by_id = array();
 
-  $header = array(
-    'name' => t('Variables (%nb)', array('%nb' => count($variables))),
-  );
-
+  $count_variables = 0;
   foreach ($studies as $study) {
     if (node_access('view', $study)) {
       $study_wrapper = entity_metadata_wrapper('node', $study);
@@ -100,6 +97,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
     foreach ($variables as $variable) {
       if (node_access('view', $variable)) {
 
+        $count_variables++;
         $link_id = 'variable_' . $variable->nid;
         $variable_wrapper = entity_metadata_wrapper('node', $variable);
         $variable_link = l($variable->title, 'node/' . $variable->nid, array(
@@ -210,6 +208,10 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
     }
   }
 
+  $header = array(
+    'name' => t('Variables (%nb)', array('%nb' => $count_variables)),
+  );
+
   $output = drupal_render(drupal_get_form('mica_datasets_harmonization_legend_form'));
   $output .= '<br/>';
   $output .= theme(
@@ -241,23 +243,23 @@ function mica_datasets_harmonization_legend_form($form, $form_state) {
   $form['legend']['undetermined'] = array(
     '#type' => 'markup',
     '#markup' => "<img src=\"" . MICA_HARMONIZATION_UNDETERMINED . "\" style=\"vertical-align: middle\">&nbsp;<b>"
-      . t("Undetermined") . "</b> - <i>"
-      . t("the harmonization potential of this variable has not yet been evaluated.")
-      . "</i><br />",
+    . t("Undetermined") . "</b> - <i>"
+    . t("the harmonization potential of this variable has not yet been evaluated.")
+    . "</i><br />",
   );
   $form['legend']['complete'] = array(
     '#type' => 'markup',
     '#markup' => "<img src=\"" . MICA_HARMONIZATION_COMPLETE . "\" style=\"vertical-align: middle\">&nbsp;<b>"
-      . t("Complete") . "</b> - <i>"
-      . t("the study assessment item(s) (e.g. survey question, physical measure, biochemical measure) allow construction of the variable as defined in the dataset.")
-      . "</i><br />",
+    . t("Complete") . "</b> - <i>"
+    . t("the study assessment item(s) (e.g. survey question, physical measure, biochemical measure) allow construction of the variable as defined in the dataset.")
+    . "</i><br />",
   );
   $form['legend']['impossible'] = array(
     '#type' => 'markup',
     '#markup' => "<img src=\"" . MICA_HARMONIZATION_IMPOSSIBLE . "\" style=\"vertical-align: middle\">&nbsp;<b>"
-      . t("Impossible") . "</b> - <i>"
-      . t("there is no information or insufficient information collected by this study to allow the construction of the variable as defined in the dataset.")
-      . "</i>",
+    . t("Impossible") . "</b> - <i>"
+    . t("there is no information or insufficient information collected by this study to allow the construction of the variable as defined in the dataset.")
+    . "</i>",
   );
 
   return $form;
