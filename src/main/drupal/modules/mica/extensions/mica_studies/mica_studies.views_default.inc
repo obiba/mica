@@ -76,7 +76,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_telephone']['field'] = 'field_telephone';
   $handler->display->display_options['fields']['field_telephone']['label'] = 'telephone';
   $handler->display->display_options['fields']['field_telephone']['alter']['trim_whitespace'] = TRUE;
-  /* Field: Content: Institution name */
+  /* Field: Content: Institution Name */
   $handler->display->display_options['fields']['field_institution_name']['id'] = 'field_institution_name';
   $handler->display->display_options['fields']['field_institution_name']['table'] = 'field_data_field_institution_name';
   $handler->display->display_options['fields']['field_institution_name']['field'] = 'field_institution_name';
@@ -474,7 +474,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_access_other']['field'] = 'field_access_other';
   $handler->display->display_options['fields']['field_access_other']['label'] = 'other_access';
   $handler->display->display_options['fields']['field_access_other']['type'] = 'list_key';
-  /* Field: Content: Please specify what study feature */
+  /* Field: Content: Other access */
   $handler->display->display_options['fields']['field_access_other_sp']['id'] = 'field_access_other_sp';
   $handler->display->display_options['fields']['field_access_other_sp']['table'] = 'field_data_field_access_other_sp';
   $handler->display->display_options['fields']['field_access_other_sp']['field'] = 'field_access_other_sp';
@@ -524,12 +524,12 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_supp_infos']['table'] = 'field_data_field_supp_infos';
   $handler->display->display_options['fields']['field_supp_infos']['field'] = 'field_supp_infos';
   $handler->display->display_options['fields']['field_supp_infos']['label'] = 'supplementary_information';
-  /* Field: Content: Marker paper describing your study */
+  /* Field: Content: Marker paper */
   $handler->display->display_options['fields']['field_marker_paper']['id'] = 'field_marker_paper';
   $handler->display->display_options['fields']['field_marker_paper']['table'] = 'field_data_field_marker_paper';
   $handler->display->display_options['fields']['field_marker_paper']['field'] = 'field_marker_paper';
   $handler->display->display_options['fields']['field_marker_paper']['label'] = 'marker_paper';
-  /* Field: Content: Pubmed Id */
+  /* Field: Content: Pubmed ID */
   $handler->display->display_options['fields']['field_pubmedid']['id'] = 'field_pubmedid';
   $handler->display->display_options['fields']['field_pubmedid']['table'] = 'field_data_field_pubmedid';
   $handler->display->display_options['fields']['field_pubmedid']['field'] = 'field_pubmedid';
@@ -905,7 +905,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['title']['label'] = 'Name';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Please specify what other design */
+  /* Field: Content: Other design */
   $handler->display->display_options['fields']['field_design_other_sp']['id'] = 'field_design_other_sp';
   $handler->display->display_options['fields']['field_design_other_sp']['table'] = 'field_data_field_design_other_sp';
   $handler->display->display_options['fields']['field_design_other_sp']['field'] = 'field_design_other_sp';
@@ -916,18 +916,16 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_design_other_sp']['alter']['max_length'] = '60';
   $handler->display->display_options['fields']['field_design_other_sp']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_design_other_sp']['element_label_colon'] = FALSE;
-  /* Field: Content: What is the study design? */
+  /* Field: Content: Study design */
   $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['table'] = 'field_data_field_design';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
-  $handler->display->display_options['fields']['field_design']['label'] = 'Study design';
   $handler->display->display_options['fields']['field_design']['alter']['text'] = '[field_design] [field_design_other_sp]';
   $handler->display->display_options['fields']['field_design']['delta_offset'] = '0';
-  /* Field: Content: How many people are planned to be recruited? Or if the study is completed, what is the final number of participants? */
+  /* Field: Content: Target number of participants */
   $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'field_data_field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['field'] = 'field_target_number_participants';
-  $handler->display->display_options['fields']['field_target_number_participants']['label'] = 'Target number of participants';
   $handler->display->display_options['fields']['field_target_number_participants']['settings'] = array(
     'thousand_separator' => ' ',
     'prefix_suffix' => 0,
@@ -1004,7 +1002,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_health_status']['id'] = 'field_health_status';
   $handler->display->display_options['fields']['field_health_status']['table'] = 'field_data_field_health_status';
   $handler->display->display_options['fields']['field_health_status']['field'] = 'field_health_status';
-  /* Field: Content: How many people are planned to be recruited? Or if the study is completed, what is the final number of participants? */
+  /* Field: Content: Target number of participants */
   $handler->display->display_options['fields']['field_target_number_participants_1']['id'] = 'field_target_number_participants_1';
   $handler->display->display_options['fields']['field_target_number_participants_1']['table'] = 'field_data_field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants_1']['field'] = 'field_target_number_participants';
@@ -1012,7 +1010,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_current_participants_nb']['id'] = 'field_current_participants_nb';
   $handler->display->display_options['fields']['field_current_participants_nb']['table'] = 'field_data_field_current_participants_nb';
   $handler->display->display_options['fields']['field_current_participants_nb']['field'] = 'field_current_participants_nb';
-  /* Field: Content: How many people have provided or should provide biological samples, from which DNA could be extracted? */
+  /* Field: Content: Target number of participants with biological samples */
   $handler->display->display_options['fields']['field_target_number_biosamples']['id'] = 'field_target_number_biosamples';
   $handler->display->display_options['fields']['field_target_number_biosamples']['table'] = 'field_data_field_target_number_biosamples';
   $handler->display->display_options['fields']['field_target_number_biosamples']['field'] = 'field_target_number_biosamples';
@@ -1036,11 +1034,11 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['id'] = 'field_partcipant_sel_supp_info';
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['table'] = 'field_data_field_partcipant_sel_supp_info';
   $handler->display->display_options['fields']['field_partcipant_sel_supp_info']['field'] = 'field_partcipant_sel_supp_info';
-  /* Field: Content: If needed, supplementary information about study design */
+  /* Field: Content: Supplementary information about study design */
   $handler->display->display_options['fields']['field_recruitment_supp_info']['id'] = 'field_recruitment_supp_info';
   $handler->display->display_options['fields']['field_recruitment_supp_info']['table'] = 'field_data_field_recruitment_supp_info';
   $handler->display->display_options['fields']['field_recruitment_supp_info']['field'] = 'field_recruitment_supp_info';
-  /* Field: Content: If needed, supplementary information about target number of participants */
+  /* Field: Content: Supplementary information about target number of participants */
   $handler->display->display_options['fields']['field_target_nb_supp_info']['id'] = 'field_target_nb_supp_info';
   $handler->display->display_options['fields']['field_target_nb_supp_info']['table'] = 'field_data_field_target_nb_supp_info';
   $handler->display->display_options['fields']['field_target_nb_supp_info']['field'] = 'field_target_nb_supp_info';
@@ -1052,7 +1050,7 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_logo']['id'] = 'field_logo';
   $handler->display->display_options['fields']['field_logo']['table'] = 'field_data_field_logo';
   $handler->display->display_options['fields']['field_logo']['field'] = 'field_logo';
-  /* Field: Content: Marker paper describing your study */
+  /* Field: Content: Marker paper */
   $handler->display->display_options['fields']['field_marker_paper']['id'] = 'field_marker_paper';
   $handler->display->display_options['fields']['field_marker_paper']['table'] = 'field_data_field_marker_paper';
   $handler->display->display_options['fields']['field_marker_paper']['field'] = 'field_marker_paper';
@@ -1104,11 +1102,11 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_data_sources_sp']['id'] = 'field_data_sources_sp';
   $handler->display->display_options['fields']['field_data_sources_sp']['table'] = 'field_data_field_data_sources_sp';
   $handler->display->display_options['fields']['field_data_sources_sp']['field'] = 'field_data_sources_sp';
-  /* Field: Content: Please specify what other design */
+  /* Field: Content: Other design */
   $handler->display->display_options['fields']['field_design_other_sp_1']['id'] = 'field_design_other_sp_1';
   $handler->display->display_options['fields']['field_design_other_sp_1']['table'] = 'field_data_field_design_other_sp';
   $handler->display->display_options['fields']['field_design_other_sp_1']['field'] = 'field_design_other_sp';
-  /* Field: Content: Please specify what other recruitment target */
+  /* Field: Content: Other recruitment target */
   $handler->display->display_options['fields']['field_recruitment_other_sp']['id'] = 'field_recruitment_other_sp';
   $handler->display->display_options['fields']['field_recruitment_other_sp']['table'] = 'field_data_field_recruitment_other_sp';
   $handler->display->display_options['fields']['field_recruitment_other_sp']['field'] = 'field_recruitment_other_sp';
@@ -1120,11 +1118,11 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_recruitment_other']['id'] = 'field_recruitment_other';
   $handler->display->display_options['fields']['field_recruitment_other']['table'] = 'field_data_field_recruitment_other';
   $handler->display->display_options['fields']['field_recruitment_other']['field'] = 'field_recruitment_other';
-  /* Field: Content: Please specify what study feature */
+  /* Field: Content: Other access */
   $handler->display->display_options['fields']['field_access_other_sp']['id'] = 'field_access_other_sp';
   $handler->display->display_options['fields']['field_access_other_sp']['table'] = 'field_data_field_access_other_sp';
   $handler->display->display_options['fields']['field_access_other_sp']['field'] = 'field_access_other_sp';
-  /* Field: Content: Pubmed Id */
+  /* Field: Content: Pubmed ID */
   $handler->display->display_options['fields']['field_pubmedid']['id'] = 'field_pubmedid';
   $handler->display->display_options['fields']['field_pubmedid']['table'] = 'field_data_field_pubmedid';
   $handler->display->display_options['fields']['field_pubmedid']['field'] = 'field_pubmedid';
