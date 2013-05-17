@@ -140,16 +140,17 @@ class MicaDatasetConnector extends Entity {
           array("%study" => $study->title)), 'error');
         break;
       case 403:
-        drupal_set_message(t("Study %study: Not authorized to search dataset (403).",
+        drupal_set_message(t("Study %study: Not authorized to search dataset (403). Please edit %study configuration and make sure its dataset and table names are correct.",
           array("%study" => $study->title)), 'error');
         break;
       case 404:
-        drupal_set_message(t("Study %study: Cannot find dataset (404). Make sure the study's configuration is valid.",
+        drupal_set_message(t("Study %study: Cannot find dataset (404). Please edit %study configuration and make sure its dataset and table names are correct.",
           array("%study" => $study->title)), 'error');
         break;
       default:
-        drupal_set_message(t("Study %study: Failed executing search. Message was: %msg. Code: %code",
-          array("%study" => $study->title, "%msg" => $e->getMessage(), '%code' => $e->getCode())), 'error');
+        $hint = t("(Possible causes: Opal server is down, host name is invalid, port number is invalid.)");
+        drupal_set_message(t("Study %study: Failed executing search. Message was: %msg. Code: %code. Please make sure all configuration settings are correct.<br/>%hint",
+          array("%study" => $study->title, "%msg" => $e->getMessage(), '%code' => $e->getCode(), '%hint' => $hint)), 'error');
         break;
     }
   }

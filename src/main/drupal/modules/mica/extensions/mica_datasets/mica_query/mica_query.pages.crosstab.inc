@@ -390,7 +390,7 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
         }
       }
     } catch (Exception $e) {
-      $connector->displayError($e);
+      _createDummyStudyCrossTabResult($category_label_by_name, $rows, $row);
     }
   }
 
@@ -502,6 +502,59 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
   );
 
   return $output;
+}
+
+/**
+ * @param $row
+ * @param $category_label_by_name
+ * @param $rows
+ * @return array
+ */
+function _createDummyStudyCrossTabResult($category_label_by_name, &$rows, &$row) {
+  $row[] = array(
+    'data' => t('Mean (std. deviation)'),
+  );
+
+  foreach ($category_label_by_name as $name => $label) {
+    $row[] = array(
+      'data' => '--',
+      'title' => '--'
+    );
+
+  }
+
+  // total
+  $row[] = array(
+    'data' => '--',
+    'title' => '--',
+  );
+
+  $rows[] = array('data' => $row);
+  $row = array();
+
+  // Rows for N
+  $row[] = array(
+    'data' => t('N'),
+    'class' => array('border-bottom'),
+  );
+
+  foreach ($category_label_by_name as $name => $label) {
+    $row[] = array(
+      'data' => '--',
+      'title' => '--',
+      'class' => array('border-bottom'),
+    );
+  }
+
+  $row[] = array(
+    'data' => '--',
+    'title' => '--',
+    'class' => array('border-bottom'),
+  );
+
+  $rows[] = array('data' => $row);
+  $row = array();
+  return array($row, $name, $rows);
 }
 
 function _mica_query_crosstab_process_header($category_label_by_name, $terms, $is_continuous) {

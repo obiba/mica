@@ -31,14 +31,16 @@ class MicaDatasetElasticSearchQueryApi extends MicaDatasetAbstractQuery {
     $dtoMatched = new Search\QueryTermDto();
     $dtoMatched->setFacet('_matched');
 
-    $dtoLogicalTerm = new Search\LogicalTermDto();
+    if (!empty($filters)){
+      $dtoLogicalTerm = new Search\LogicalTermDto();
 
-    foreach ($filters as $filter) {
-      $dtoLogicalTerm->addExtension("Search.FilterDto.filters", $filter);
+      foreach ($filters as $filter) {
+        $dtoLogicalTerm->addExtension("Search.FilterDto.filters", $filter);
+      }
+
+      $dtoMatched->setExtension("Search.LogicalTermDto.filter", $dtoLogicalTerm);
+      $facets[] = $dtoMatched;
     }
-
-    $dtoMatched->setExtension("Search.LogicalTermDto.filter", $dtoLogicalTerm);
-    $facets[] = $dtoMatched;
 
     $dtoQueries = new Search\QueryTermsDto();
 
