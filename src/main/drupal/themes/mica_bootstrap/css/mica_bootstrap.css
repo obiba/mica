@@ -6465,6 +6465,10 @@ body.page-variables-dimensions div[class*="form-item-bundle-variable-show-value"
   right: 83px;
 }
 
+form.node-form input.form-text {
+  width: 270px;
+}
+
 #navbar .embedded-form {
   padding: 15px;
 }
@@ -7516,7 +7520,7 @@ table.study-datasets caption {
 }
 
 input#edit-field-marker-paper-und-0-value {
-  width: 606px;
+  width: 530px;
 }
 
 .pane-dataset-studies h2 {
