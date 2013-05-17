@@ -67,6 +67,7 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
       'dataset reviewer' => 'dataset reviewer',
     ),
     'module' => 'node',
@@ -87,6 +88,7 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
       'dataset reviewer' => 'dataset reviewer',
     ),
     'module' => 'node',
@@ -320,6 +322,7 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
       'dataset reviewer' => 'dataset reviewer',
     ),
     'module' => 'node',
@@ -340,6 +343,7 @@ function mica_datasets_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
       'dataset reviewer' => 'dataset reviewer',
     ),
     'module' => 'node',
@@ -608,6 +612,7 @@ function mica_datasets_user_default_permissions() {
     'name' => 'view any unpublished dataset content',
     'roles' => array(
       'administrator' => 'administrator',
+      'dataset administrator' => 'dataset administrator',
       'dataset reviewer' => 'dataset reviewer',
     ),
     'module' => 'view_unpublished',
@@ -618,6 +623,7 @@ function mica_datasets_user_default_permissions() {
     'name' => 'view any unpublished study_variable_attributes content',
     'roles' => array(
       'administrator' => 'administrator',
+      'dataset administrator' => 'dataset administrator',
       'dataset reviewer' => 'dataset reviewer',
     ),
     'module' => 'view_unpublished',
@@ -628,6 +634,7 @@ function mica_datasets_user_default_permissions() {
     'name' => 'view any unpublished variable content',
     'roles' => array(
       'administrator' => 'administrator',
+      'dataset administrator' => 'dataset administrator',
       'dataset reviewer' => 'dataset reviewer',
     ),
     'module' => 'view_unpublished',

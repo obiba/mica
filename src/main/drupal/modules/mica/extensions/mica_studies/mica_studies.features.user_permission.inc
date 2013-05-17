@@ -241,8 +241,6 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
-      'network administrator' => 'network administrator',
-      'network reviewer' => 'network reviewer',
       'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
@@ -267,6 +265,7 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
@@ -403,7 +402,7 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
-      'network reviewer' => 'network reviewer',
+      'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
@@ -415,6 +414,7 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
@@ -455,6 +455,7 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
@@ -466,6 +467,7 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
@@ -487,8 +489,6 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
-      'network administrator' => 'network administrator',
-      'network reviewer' => 'network reviewer',
       'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
@@ -554,6 +554,7 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
@@ -585,8 +586,7 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
-      'network administrator' => 'network administrator',
-      'network reviewer' => 'network reviewer',
+      'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
@@ -598,6 +598,7 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
@@ -638,6 +639,7 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
@@ -649,6 +651,7 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'node',
@@ -736,8 +739,6 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
-      'network administrator' => 'network administrator',
-      'network reviewer' => 'network reviewer',
       'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
@@ -937,7 +938,9 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
       'dataset reviewer' => 'dataset reviewer',
+      'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
@@ -949,7 +952,9 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
       'dataset reviewer' => 'dataset reviewer',
+      'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
@@ -1079,7 +1084,9 @@ function mica_studies_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'consortium administrator' => 'consortium administrator',
+      'dataset administrator' => 'dataset administrator',
       'dataset reviewer' => 'dataset reviewer',
+      'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'workbench_moderation',
@@ -1134,6 +1141,7 @@ function mica_studies_user_default_permissions() {
     'name' => 'view any unpublished study content',
     'roles' => array(
       'administrator' => 'administrator',
+      'study administrator' => 'study administrator',
       'study reviewer' => 'study reviewer',
     ),
     'module' => 'view_unpublished',
