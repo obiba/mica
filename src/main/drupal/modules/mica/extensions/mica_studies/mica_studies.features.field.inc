@@ -1527,7 +1527,6 @@ function mica_studies_field_default_fields() {
         'field_description_infos' => array(
           'field_description' => 0,
           'field_description_body' => '',
-          'field_description_label' => '',
           'field_description_value_type' => 'text',
         ),
         'field_permissions' => array(
@@ -8298,9 +8297,9 @@ function mica_studies_field_default_fields() {
       'module' => 'text',
       'settings' => array(
         'field_description_infos' => array(
-          'field_description' => 0,
-          'field_description_body' => '',
-          'field_description_label' => '',
+          'field_description' => 1,
+          'field_description_body' => 'Official study name',
+          'field_description_label' => 'Study Name',
           'field_description_value_type' => 'text',
         ),
         'max_length' => '255',
@@ -8330,7 +8329,7 @@ function mica_studies_field_default_fields() {
       'display_label' => '',
       'entity_type' => 'node',
       'field_name' => 'title_field',
-      'label' => 'Complete name',
+      'label' => 'Name',
       'required' => 1,
       'settings' => array(
         'hide_label' => array(
@@ -8368,7 +8367,6 @@ function mica_studies_field_default_fields() {
   t('Body');
   t('City');
   t('Comment');
-  t('Complete name');
   t('Contact Name');
   t('Contacts');
   t('Country');
@@ -8412,6 +8410,7 @@ function mica_studies_field_default_fields() {
   t('Marker paper describing your study');
   t('Maximum age');
   t('Minimum age');
+  t('Name');
   t('Name of the person authorising the contribution to Maelstrom Research');
   t('Name of the person authorising the contribution to [SPECIFIC NETWORK]');
   t('No limits in the number of participants');

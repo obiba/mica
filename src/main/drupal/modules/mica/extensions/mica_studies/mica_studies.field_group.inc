@@ -838,7 +838,7 @@ function mica_studies_field_group_info() {
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'What is the complete name of the study?',
+        'description' => '',
       ),
       'formatter' => 'open',
     ),
