@@ -146,6 +146,10 @@ function _mica_connector_add_table_form(&$form, $header, $empty, array &$options
       '#type' => 'submit',
       '#value' => t('Delete selected items'),
     );
+    $form['test'] = array(
+      '#type' => 'submit',
+      '#value' => t('Test connections'),
+    );
   }
 }
 
@@ -164,6 +168,10 @@ function _mica_connector_connectors_form_submit($form, &$form_state) {
           _mica_connector_dataset_connection_delete($node, $row['connector'][MICA_DATASET_ID]);
         }
       }
+      break;
+
+    case t('Test connections'):
+      _testConnections( $form_state['build_info']['args'][0]->nid);
       break;
 
     case t('Add Dataset'):
@@ -429,4 +437,17 @@ function _mica_connector_connection_config_values(&$form, &$form_state) {
     }
   }
   return $values;
+}
+
+function _testConnections($nid) {
+  $mica_connectors = mica_connector_query_multiple($nid);
+
+  foreach ($mica_connectors as $connector) {
+
+    try {
+      $connector->query(array());
+    } catch (Exception $e) {
+      $connector->displayError($e);
+    }
+  }
 }
