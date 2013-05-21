@@ -47,6 +47,11 @@
   }
 
   section#block-mica-studies-study-timeline {
+
+    #timeline svg > g > path {
+      cursor: pointer;
+    }
+
     ul.timeline-legend {
       margin: 10px 0 0 0;
       li {
@@ -97,6 +102,14 @@ body.page-node-add-study {
 
 }
 
-div#timeline svg > g > path {
-  cursor: pointer;
+#population-node-form {
+  .field-name-field-pop-age-min,
+  .field-name-field-pop-age-max,
+  .field-name-field-pop-participants-nb,
+  .field-name-field-pop-participants-nb-s {
+    input {
+      .input-medium;
+    }
+  }
 }
+

@@ -2791,6 +2791,11 @@ function mica_studies_facetapi_default_facet_settings() {
     'soft_limit' => 20,
     'nofollow' => 1,
     'show_expanded' => 0,
+    'name' => '',
+    'prefix' => '',
+    'suffix' => '',
+    'use_slider' => TRUE,
+    'submit_on_change' => TRUE,
   );
   $export['search_api@studies_index:block:field_study_end_year'] = $facet;
 
@@ -3107,6 +3112,11 @@ function mica_studies_facetapi_default_facet_settings() {
     'soft_limit' => 20,
     'nofollow' => 1,
     'show_expanded' => 0,
+    'name' => '',
+    'prefix' => '',
+    'suffix' => '',
+    'use_slider' => TRUE,
+    'submit_on_change' => TRUE,
   );
   $export['search_api@studies_index:block:field_study_start_year'] = $facet;
 

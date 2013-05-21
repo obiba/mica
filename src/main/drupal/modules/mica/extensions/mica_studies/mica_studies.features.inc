@@ -69,11 +69,11 @@ function mica_studies_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '120',
-          'height' => '120',
+          'width' => 120,
+          'height' => 120,
           'upscale' => 0,
         ),
-        'weight' => '1',
+        'weight' => 1,
       ),
     ),
   );

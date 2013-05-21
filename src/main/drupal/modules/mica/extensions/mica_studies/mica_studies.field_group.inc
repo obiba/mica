@@ -623,7 +623,11 @@ function mica_studies_field_group_info() {
     'label' => 'Participants Number',
     'weight' => '3',
     'children' => array(
-      0 => 'group_pop_participants',
+      0 => 'field_pop_no_lim_participants_s',
+      1 => 'field_pop_no_limits_participants',
+      2 => 'field_pop_participants_nb',
+      3 => 'field_pop_participants_nb_s',
+      4 => 'field_pop_participants_nb_supp_i',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -636,38 +640,6 @@ function mica_studies_field_group_info() {
     ),
   );
   $export['group_pop_participants_number|node|population|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_pop_participants|node|population|form';
-  $field_group->group_name = 'group_pop_participants';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'population';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_pop_participants_number';
-  $field_group->data = array(
-    'label' => 'Number of participants',
-    'weight' => '3',
-    'children' => array(
-      0 => 'field_pop_no_lim_participants_s',
-      1 => 'field_pop_no_limits_participants',
-      2 => 'field_pop_participants_nb',
-      3 => 'field_pop_participants_nb_s',
-      4 => 'field_pop_participants_nb_supp_i',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'label' => 'Number of participants',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'collapsible',
-    ),
-  );
-  $export['group_pop_participants|node|population|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -749,7 +721,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Supplementary Information',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_pop_supp_infos',
     ),

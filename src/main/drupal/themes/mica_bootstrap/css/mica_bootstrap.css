@@ -6531,6 +6531,9 @@ section#block-views-news-recent-news article h2 {
 .node-type-study section.block-mica-studies article.node-population h2 a {
   color: #495961;
 }
+.node-type-study section#block-mica-studies-study-timeline #timeline svg > g > path {
+  cursor: pointer;
+}
 .node-type-study section#block-mica-studies-study-timeline ul.timeline-legend {
   margin: 10px 0 0 0;
 }
@@ -6566,8 +6569,11 @@ body.page-node-add-study .field-name-body {
 body.page-node-add-study input#edit-field-marker-paper-und-0-value {
   width: 530px;
 }
-div#timeline svg > g > path {
-  cursor: pointer;
+#population-node-form .field-name-field-pop-age-min input,
+#population-node-form .field-name-field-pop-age-max input,
+#population-node-form .field-name-field-pop-participants-nb input,
+#population-node-form .field-name-field-pop-participants-nb-s input {
+  width: 150px;
 }
 .pane-dataset-studies h2 {
   font-size: 13px;
