@@ -1,23 +1,23 @@
-solr_version=3.6.2
+solr_version=4.2.1
 
 start-solr:
-	cd solr/apache-solr-$(solr_version)/example && \
+	cd solr/solr-$(solr_version)/example && \
   java -jar start.jar && \
   @echo ">>> SolR is now running at http://localhost:8983/solr/admin"
 
 install-solr:
 	mkdir -p solr && \
 	cd solr && \
-	wget http://apache.marz.ca/lucene/solr/$(solr_version)/apache-solr-$(solr_version).tgz && \
-	tar -zxf apache-solr-$(solr_version).tgz && \
-	cp ../target/mica-dev/profiles/mica_distribution/modules/search_api_solr/solr-conf/3.x/* apache-solr-$(solr_version)/example/solr/conf && \
-	rm apache-solr-$(solr_version).tgz
+	wget http://mirror.csclub.uwaterloo.ca/apache/lucene/solr/$(solr_version)/solr-$(solr_version).tgz && \
+	tar -zxf solr-$(solr_version).tgz && \
+	cp ../target/mica-dev/profiles/mica_distribution/modules/search_api_solr/solr-conf/4.x/* solr-$(solr_version)/example/solr/collection1/conf && \
+	rm solr-$(solr_version).tgz
 
 clean-solr:
 	rm -rf solr
 
 install-drush:
-	apt-get install php-pear 
+	apt-get install php-pear
 	pear channel-discover pear.drush.org
 	pear install drush/drush
 

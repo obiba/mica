@@ -66,9 +66,7 @@ projects[facetapi_i18n] = 1.0-beta2
 
 ;projects[] = examples
 
-projects[features][download][type] = git
-projects[features][download][revision] = 63db687
-projects[features][download][branch] = 7.x-2.x
+projects[features][version] = 2.0-rc1
 projects[features][patch][1844566] = http://drupal.org/files/features_1844566_1_invoke-hooks-for-all-components.patch
 projects[features][patch][656312] = http://drupal.org/files/keep_negative_permissions-656312-17.patch
 projects[features][patch][1689598] = http://drupal.org/files/field_display_label_support.patch
@@ -200,10 +198,7 @@ projects[search_api_ranges][download][branch] = 7.x-1.x
 projects[search_api_ranges][patch][1450772] = http://drupal.org/files/force-numeric-and-config-for-no-slider-no-commit-on-change-1450772-1_1.patch
 projects[search_api_ranges][patch][1460410] = http://drupal.org/files/max-inclusive.patch
 
-; Fixes http://jira.obiba.org/jira/browse/MICA-988
-projects[search_api_solr][download][type] = git
-projects[search_api_solr][download][revision] = 61155ad
-projects[search_api_solr][download][branch] = 7.x-1.x
+projects[search_api_solr] = 1.0-rc5
 
 projects[services][version] = 3.3
 
@@ -216,7 +211,7 @@ projects[superfish] = 1.9-beta4
 
 projects[taxonomy_csv] = 5.10
 
-projects[taxonomy_manager] = 1.0-rc2
+projects[taxonomy_manager] = 1.0
 
 projects[title] = 1.0-alpha7
 
@@ -245,9 +240,7 @@ projects[xmlsitemap] = 2.0-rc2
 ; Themes
 ; ---------
 
-projects[bootstrap] = 2.0-beta3
-
-projects[corolla] = 3.0-rc1
+projects[bootstrap] = 2.0
 
 
 ; Libraries
@@ -284,8 +277,3 @@ libraries[prettify_js][overwrite] = TRUE
 libraries[solr_php_client][download][type] = get
 libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.com/files/SolrPhpClient.r60.2011-05-04.tgz
 libraries[solr_php_client][directory_name] = SolrPhpClient
-
-libraries[superfish][download][type]= get
-libraries[superfish][download][url] = https://github.com/mehrpadin/Superfish-for-Drupal/zipball/master
-libraries[superfish][directory_name] = superfish
-libraries[superfish][overwrite] = TRUE
