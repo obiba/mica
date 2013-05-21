@@ -9,8 +9,6 @@ api = "2"
 
 projects[acl] = 1.0
 
-projects[adaptivetheme] = 3.1
-
 projects[auto_entitylabel] = 1.1
 
 projects[autocomplete_deluxe][download][type] = git

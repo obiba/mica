@@ -4,7 +4,10 @@ description = Mica Bootstrap subtheme
 core        = 7.x
 base theme  = bootstrap
 
-; stylesheets are configured from template.php >> mica_bootstrap_css_alter()
+stylesheets[all][] = 'css/mica_bootstrap.css'
+stylesheets[all][] = 'css/mica_bootstrap_responsive.css'
+
+scripts[] = 'bootstrap/js/bootstrap.min.js'
 
 regions[navigation]     = 'Navigation'
 regions[header]         = 'Top Bar'

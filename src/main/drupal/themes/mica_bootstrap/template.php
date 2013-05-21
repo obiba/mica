@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Implements hook_bootstrap_based_theme().
  */
@@ -10,34 +9,20 @@ function mica_bootstrap_bootstrap_based_theme() {
 
 /**
  * Implements hook_css_alter().
- * Replace bootstrap.css by mica_bootstrap.css
  */
 function mica_bootstrap_css_alter(&$css) {
-  $bootstrap_theme = drupal_get_path('theme', 'bootstrap');
-  $key = $bootstrap_theme . '/bootstrap/css/bootstrap.css';
-  $file = $css[$key];
-//  $file['data'] = drupal_get_path('theme', 'mica_bootstrap') . '/less/mica_bootstrap.less';
-  $file['data'] = drupal_get_path('theme', 'mica_bootstrap') . '/css/mica_bootstrap.css';
-  $file['weight'] = 1000; // set it as last imported css
-  unset($css[$key]);
-  $css[$file['data']] = $file;
-
-  $key = $bootstrap_theme . '/bootstrap/css/bootstrap-responsive.css';
-  $file = $css[$key];
-//  $file['data'] = drupal_get_path('theme', 'mica_bootstrap') . '/less/mica_bootstrap_responsive.less';
-  $file['data'] = drupal_get_path('theme', 'mica_bootstrap') . '/css/mica_bootstrap_responsive.css';
-  $file['weight'] = 1001; // set it after mica_bootstrap.css
-  unset($css[$key]);
-  $css[$file['data']] = $file;
-}
-
-/**
- * Implements hook_js_alter().
- * Replace bootstrap lib path
- */
-function mica_bootstrap_js_alter(&$js) {
-  $bootstrap_theme = drupal_get_path('theme', 'bootstrap');
-  $js[$bootstrap_theme . '/bootstrap/js/bootstrap.js']['data'] = drupal_get_path('theme', 'mica_bootstrap') . '/bootstrap/js/bootstrap.min.js';
+  // Add overrides.
+  $override = drupal_get_path('theme', 'bootstrap') . '/css/overrides.css';
+  $css[$override] = array(
+    'data' => $override,
+    'type' => 'file',
+    'every_page' => TRUE,
+    'media' => 'all',
+    'preprocess' => TRUE,
+    'group' => CSS_THEME,
+    'browsers' => array('IE' => TRUE, '!IE' => TRUE),
+    'weight' => -1,
+  );
 }
 
 /**
@@ -45,8 +30,8 @@ function mica_bootstrap_js_alter(&$js) {
  */
 function mica_bootstrap_menu_tree__user_menu($variables) {
   return '<div id="user-menu" class="pull-right btn-group">'
-    . '<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i> ' . t('User menu') . ' <span class="caret"></span></a>'
-    . '<ul class="dropdown-menu">' . $variables['tree'] . '</ul></div>';
+  . '<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i> ' . t('User menu') . ' <span class="caret"></span></a>'
+  . '<ul class="dropdown-menu">' . $variables['tree'] . '</ul></div>';
 }
 
 /**
