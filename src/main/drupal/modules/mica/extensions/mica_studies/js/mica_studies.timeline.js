@@ -1,5 +1,6 @@
 // Using the closure to map jQuery to $.
 (function ($) {
+
   Drupal.behaviors.mica_studies_timeline = {
     attach: function (context, settings) {
       var timelineData = createTimelineData(settings.timeline_data);
@@ -43,14 +44,10 @@
       })
       .margin({left: 15, right: 15, top: 0, bottom: 20})
       .click(function (d, i, datum) {
-//        console.log("Click event: D: ", d, " i:", i, "datum:", datum);
         $('#event-' + d.id).modal();
       });
 
     d3.select("#timeline").append("svg").attr("width", width).datum(timelineData).call(chart);
-
-    // set a handcursor for charts
-    $('svg > g > path').css('cursor', 'pointer');
   }
 
 }(jQuery));
