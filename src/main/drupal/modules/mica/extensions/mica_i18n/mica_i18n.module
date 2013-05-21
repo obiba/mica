@@ -254,7 +254,7 @@ function mica_i18n_fix_entity_display() {
   $translatables_widget_types = mica_i18n_get_translatables_widget_types();
   $excludes = module_invoke_all('translation_exclude_fields');
   foreach ($types as $type) {
-    if (!in_array($type->type, $memento)){
+    if (!in_array($type->type, $memento)) {
       $memento[] = $type->type;
 
       // Enable multilingual support (field translation) and locked options
@@ -311,7 +311,7 @@ function mica_i18n_fix_views_display() {
   $views = views_get_all_views();
 
   foreach ($views as $view) {
-    if (!array_key_exists($view->name, $memento)){
+    if (!array_key_exists($view->name, $memento)) {
       $memento[] = $view->name;
       $save = FALSE;
 
@@ -321,9 +321,18 @@ function mica_i18n_fix_views_display() {
           foreach (array_keys($view->display[$display]->display_options['fields']) as $key) {
             // If the field is a list type
             $info = field_info_field($key);
+            if ($info == NULL && strpos($key, '_field_') > 0) {
+              // if field is through a relation
+              $info = field_info_field(substr($key, strpos($key, '_field') + 1));
+            }
+
             if (isset($info['type']) && $info['type'] === 'list_text') {
-              if (isset($view->display[$display]->display_options['fields'][$key]['type']) && $view->display[$display]->display_options['fields'][$key]['type'] !== 'list_key'){
+              if (isset($view->display[$display]->display_options['fields'][$key]['type']) && $view->display[$display]->display_options['fields'][$key]['type'] !== 'list_key') {
                 $view->display[$display]->display_options['fields'][$key]['type'] = 'i18n_list_default';
+                $save = TRUE;
+              }
+              else if (!isset($view->display[$display]->display_options['fields'][$key]['type'])) {
+                $view->display[$display]->display_options['fields'][$key] = array('type' => 'i18n_list_default');
                 $save = TRUE;
               }
             }
@@ -339,13 +348,11 @@ function mica_i18n_fix_views_display() {
   }
 }
 
-
-
 function mica_i18n_taxonomy_localizable() {
   $memento = variable_get(MEMENTO_TAXONOMIES, array());
   $taxonomies = taxonomy_get_vocabularies();
   foreach ($taxonomies as $taxonomy) {
-    if (!array_key_exists($taxonomy->machine_name, $memento)){
+    if (!array_key_exists($taxonomy->machine_name, $memento)) {
       $memento[] = $taxonomy->machine_name;
 
       $taxonomy->i18n_mode = I18N_MODE_LOCALIZE;
@@ -361,7 +368,7 @@ function mica_i18n_search_index_update() {
   $indexes = search_api_index_load_multiple(FALSE);
   foreach ($indexes as $index) {
 
-    if (!array_key_exists($index->machine_name, $memento)){
+    if (!array_key_exists($index->machine_name, $memento)) {
       $memento[] = $index->machine_name;
 
       $index->options['fields']['language'] = array('type' => 'string');
