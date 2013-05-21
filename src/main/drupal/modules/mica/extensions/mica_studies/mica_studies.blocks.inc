@@ -35,9 +35,13 @@ function _mica_studies_block_study_access($study) {
   if (!empty($other)) {
     $content[] = $other;
   }
+  $content = array_filter($content);
+  if (empty($content)) {
+    return NULL;
+  }
   return array(
     'subject' => t('Access') . '<a name="access"> </a>',
-    'content' => array_filter($content),
+    'content' => t('Access to external researchers or third parties provided or foreseen for') . drupal_render($content),
   );
 }
 

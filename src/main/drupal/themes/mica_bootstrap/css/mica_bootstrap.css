@@ -6534,6 +6534,9 @@ section#block-views-news-recent-news article h2 {
 .node-type-study section#block-mica-studies-study-timeline #timeline svg > g > path {
   cursor: pointer;
 }
+.node-type-study section#block-mica-studies-study-timeline .timeline-help {
+  margin-bottom: 10px;
+}
 .node-type-study section#block-mica-studies-study-timeline ul.timeline-legend {
   margin: 10px 0 0 0;
 }
@@ -6569,12 +6572,12 @@ body.page-node-add-study .field-name-body {
 body.page-node-add-study input#edit-field-marker-paper-und-0-value {
   width: 530px;
 }
-.node-form .field-name-field-pop-age-min input,
-.node-form .field-name-field-pop-age-max input,
-.node-form .field-name-field-pop-participants-nb input,
-.node-form .field-name-field-pop-participants-nb-s input,
-.node-form .field-name-field-dce-start-year input,
-.node-form .field-name-field-dce-end-year input {
+form.node-form .field-name-field-pop-age-min input.form-text,
+form.node-form .field-name-field-pop-age-max input.form-text,
+form.node-form .field-name-field-pop-participants-nb input.form-text,
+form.node-form .field-name-field-pop-participants-nb-s input.form-text,
+form.node-form .field-name-field-dce-start-year input.form-text,
+form.node-form .field-name-field-dce-end-year input.form-text {
   width: 150px;
 }
 .pane-dataset-studies h2 {

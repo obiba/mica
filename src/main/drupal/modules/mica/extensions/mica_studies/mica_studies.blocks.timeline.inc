@@ -78,9 +78,13 @@ function _mica_studies_block_study_timeline($study) {
   ctools_add_js('mica_studies.timeline.legend', 'mica_studies');
   drupal_add_js(array('timeline_legend_data' => $pop_svg), array('type' => 'setting'));
 
+  $label = t('Each colour in the timeline graph below represents a separate Study Population, '
+    . 'while each segment in the graph represents a separate Data Collection Event. '
+    . 'Clicking on a segment gives more detailed information on a Data Collection Event.');
+
   return array(
     'subject' => t('Study Timeline') . '<a name="timeline"> </a>',
-    'content' => '<div id="timeline"> </div>' . $legend . $events_details,
+    'content' => '<div class="timeline-help">' . $label . '</div><div id="timeline"> </div>' . $legend . $events_details,
   );
 }
 
