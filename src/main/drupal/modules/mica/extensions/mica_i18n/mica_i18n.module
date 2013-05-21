@@ -323,16 +323,12 @@ function mica_i18n_fix_views_display() {
             $info = field_info_field($key);
             if ($info == NULL && strpos($key, '_field_') > 0) {
               // if field is through a relation
-              $info = field_info_field(substr($key, strpos($key, '_field') + 1));
+              $info = field_info_field(substr($key, strpos($key, '_field_') + 1));
             }
 
             if (isset($info['type']) && $info['type'] === 'list_text') {
-              if (isset($view->display[$display]->display_options['fields'][$key]['type']) && $view->display[$display]->display_options['fields'][$key]['type'] !== 'list_key') {
+              if (isset($view->display[$display]->display_options['fields'][$key]['type']) && $view->display[$display]->display_options['fields'][$key]['type'] !== 'list_key' || !isset($view->display[$display]->display_options['fields'][$key]['type'])) {
                 $view->display[$display]->display_options['fields'][$key]['type'] = 'i18n_list_default';
-                $save = TRUE;
-              }
-              else if (!isset($view->display[$display]->display_options['fields'][$key]['type'])) {
-                $view->display[$display]->display_options['fields'][$key] = array('type' => 'i18n_list_default');
                 $save = TRUE;
               }
             }
