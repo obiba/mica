@@ -6569,10 +6569,12 @@ body.page-node-add-study .field-name-body {
 body.page-node-add-study input#edit-field-marker-paper-und-0-value {
   width: 530px;
 }
-#population-node-form .field-name-field-pop-age-min input,
-#population-node-form .field-name-field-pop-age-max input,
-#population-node-form .field-name-field-pop-participants-nb input,
-#population-node-form .field-name-field-pop-participants-nb-s input {
+.node-form .field-name-field-pop-age-min input,
+.node-form .field-name-field-pop-age-max input,
+.node-form .field-name-field-pop-participants-nb input,
+.node-form .field-name-field-pop-participants-nb-s input,
+.node-form .field-name-field-dce-start-year input,
+.node-form .field-name-field-dce-end-year input {
   width: 150px;
 }
 .pane-dataset-studies h2 {

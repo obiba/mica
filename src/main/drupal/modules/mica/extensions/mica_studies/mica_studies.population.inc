@@ -99,6 +99,7 @@ function _mica_studies_population_view_selection_criteria($node) {
   _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_ethnic_origin', t('Ethnic origin'), t('Ethnic origins'));
   _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_health_status', t('Health status'));
   _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_selection_others_sp', t('Other'));
+  _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_partcipant_sel_supp_in', '');
 
   if (strlen($node->content['field_pop_select_criteria'][0]['#markup']) === 0) {
     $node->content['field_pop_select_criteria']['#access'] = FALSE;
@@ -223,6 +224,14 @@ function _mica_studies_population_view_recruitment_sources(&$node) {
     }
   }
 
+  $field_pop_recruitement_supp_info = $wrapper->field_pop_recruitement_supp_info->value();
+  if (!empty($field_pop_recruitement_supp_info)) {
+    $index = count($node->content['field_pop_src_recruit']['#items']);
+    $node->content['field_pop_src_recruit']['#items'][$index] = $node->content['field_pop_recruitement_supp_info']['#items'];
+    $node->content['field_pop_src_recruit'][$index]['#markup'] = '<div class="inner-value">' . $node->content['field_pop_recruitement_supp_info'][0]['#markup'] . '</div>';
+    $node->content['field_pop_recruitement_supp_info']['#access'] = FALSE;
+  }
+
   if (strlen($node->content['field_pop_src_recruit'][0]['#markup']) === 0) {
     $node->content['field_pop_src_recruit']['#access'] = FALSE;
   }
@@ -231,9 +240,10 @@ function _mica_studies_population_view_recruitment_sources(&$node) {
 
 function _mica_studies_population_view_nb_participants(&$node) {
   _mica_studies_population_view_nb($node, 'field_pop_participants_nb', 'field_pop_no_limits_participants', 'field_pop_participants_nb_supp_i');
+  _mica_studies_population_view_nb($node, 'field_pop_participants_nb_s', 'field_pop_no_lim_participants_s');
 }
 
-function _mica_studies_population_view_nb(&$node, $field_nb, $field_no_limit, $field_info) {
+function _mica_studies_population_view_nb(&$node, $field_nb, $field_no_limit, $field_info = NULL) {
   $wrapper = entity_metadata_wrapper('node', $node);
   if (!isset($node->content[$field_nb])) {
     mica_core_create_empty_field($node, $field_nb);
@@ -249,12 +259,15 @@ function _mica_studies_population_view_nb(&$node, $field_nb, $field_no_limit, $f
   }
   $node->content[$field_no_limit]['#access'] = FALSE;
 
-  $info = $wrapper->{$field_info}->value();
-  if (!empty($info)) {
-    $node->content[$field_nb]['#items'][$index] = $node->content[$field_info]['#items'][0];
-    $node->content[$field_nb][$index]['#markup'] = $node->content[$field_info][0]['#markup'];
+  if (!empty($field_info)) {
+
+    $info = $wrapper->{$field_info}->value();
+    if (!empty($info)) {
+      $node->content[$field_nb]['#items'][$index] = $node->content[$field_info]['#items'][0];
+      $node->content[$field_nb][$index]['#markup'] = $node->content[$field_info][0]['#markup'];
+    }
+    $node->content[$field_info]['#access'] = FALSE;
   }
-  $node->content[$field_info]['#access'] = FALSE;
 
   if (strlen($node->content[$field_nb][0]['#markup']) === 0) {
     $node->content[$field_nb]['#access'] = FALSE;
