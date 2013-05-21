@@ -2004,8 +2004,8 @@ function mica_studies_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-population-field_pop_recruitement_supp_info'
-  $field_instances['node-population-field_pop_recruitement_supp_info'] = array(
+  // Exported field_instance: 'node-population-field_pop_recruit_supp_info'
+  $field_instances['node-population-field_pop_recruit_supp_info'] = array(
     'bundle' => 'population',
     'default_value' => NULL,
     'deleted' => 0,
@@ -2027,7 +2027,7 @@ function mica_studies_field_default_field_instances() {
     ),
     'display_label' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_pop_recruitement_supp_info',
+    'field_name' => 'field_pop_recruit_supp_info',
     'label' => 'Supplementary information about recruitment procedures',
     'required' => 0,
     'settings' => array(

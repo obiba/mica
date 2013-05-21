@@ -2864,13 +2864,13 @@ function mica_studies_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_pop_recruitement_supp_info'
-  $field_bases['field_pop_recruitement_supp_info'] = array(
+  // Exported field_base: 'field_pop_recruit_supp_info'
+  $field_bases['field_pop_recruit_supp_info'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_pop_recruitement_supp_info',
+    'field_name' => 'field_pop_recruit_supp_info',
     'field_permissions' => array(
       'type' => 0,
     ),

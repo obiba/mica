@@ -656,7 +656,7 @@ function mica_studies_field_group_info() {
     'children' => array(
       0 => 'field_pop_exist_study_part',
       1 => 'field_pop_general_pop_recruit',
-      2 => 'field_pop_recruitement_supp_info',
+      2 => 'field_pop_recruit_supp_info',
       3 => 'field_pop_recruitment_other',
       4 => 'field_pop_specific_pop',
       5 => 'field_pop_specific_pop_other_sp',

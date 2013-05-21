@@ -224,12 +224,12 @@ function _mica_studies_population_view_recruitment_sources(&$node) {
     }
   }
 
-  $field_pop_recruitement_supp_info = $wrapper->field_pop_recruitement_supp_info->value();
-  if (!empty($field_pop_recruitement_supp_info)) {
+  $field_pop_recruit_supp_info = $wrapper->field_pop_recruit_supp_info->value();
+  if (!empty($field_pop_recruit_supp_info)) {
     $index = count($node->content['field_pop_src_recruit']['#items']);
-    $node->content['field_pop_src_recruit']['#items'][$index] = $node->content['field_pop_recruitement_supp_info']['#items'];
-    $node->content['field_pop_src_recruit'][$index]['#markup'] = '<div class="inner-value">' . $node->content['field_pop_recruitement_supp_info'][0]['#markup'] . '</div>';
-    $node->content['field_pop_recruitement_supp_info']['#access'] = FALSE;
+    $node->content['field_pop_src_recruit']['#items'][$index] = $node->content['field_pop_recruit_supp_info']['#items'];
+    $node->content['field_pop_src_recruit'][$index]['#markup'] = '<div class="inner-value">' . $node->content['field_pop_recruit_supp_info'][0]['#markup'] . '</div>';
+    $node->content['field_pop_recruit_supp_info']['#access'] = FALSE;
   }
 
   if (strlen($node->content['field_pop_src_recruit'][0]['#markup']) === 0) {
