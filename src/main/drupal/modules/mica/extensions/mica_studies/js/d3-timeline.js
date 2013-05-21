@@ -134,21 +134,6 @@
         });
       });
 
-      if (width > gParentSize.width) {
-        var zoom = d3.behavior.zoom().x(xScale).on("zoom", move);
-
-        function move() {
-          var x = Math.min(0, Math.max(gParentSize.width - width, d3.event.translate[0]));
-          zoom.translate([x, 0]);
-          g.attr("transform", "translate(" + x + ",0)");
-          scroll(x * scaleFactor, xScale);
-        }
-
-        gParent
-          .attr("class", "scrollable")
-          .call(zoom);
-      }
-
       if (rotateTicks) {
         g.selectAll("text")
           .attr("transform", function (d) {
@@ -162,7 +147,6 @@
       setHeight();
 
       function getXPos(d, i, index) {
-//        console.log("getXPos", d, i, index);
         return margin.left + (d.starting_time - beginning) * scaleFactor;
       }
 
@@ -281,12 +265,6 @@
       click = clickFunc;
       return timeline;
     };
-
-    timeline.scroll = function (scrollFunc) {
-      if (!arguments.length) return scroll;
-      scroll = scrollFunc;
-      return timeline;
-    }
 
     timeline.colors = function (colorFormat) {
       if (!arguments.length) return colorCycle;
