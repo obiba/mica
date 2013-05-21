@@ -5295,28 +5295,6 @@ h3 small,
 h4 small {
   font-size: 13px;
 }
-form {
-  margin: 0;
-}
-select,
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
-.uneditable-input {
-  margin-bottom: 0;
-}
 .h2-section {
   font-size: 16.25px;
   line-height: 20px;
@@ -5629,8 +5607,25 @@ body.page-variables-dimensions div[class*="form-item-bundle-variable-show-value"
 form.node-form input.form-text {
   width: 270px;
 }
+form.node-form .field-type-datetime fieldset {
+  margin: 0;
+  padding: 0;
+}
+form.node-form .field-type-datetime fieldset legend .fieldset-legend {
+  font-size: 13px;
+  padding-left: 0;
+}
+form.node-form .field-type-datetime fieldset .fieldset-wrapper {
+  padding: 0;
+}
+form.node-form .field-type-datetime fieldset input {
+  width: 150px;
+}
 .progress .filled {
   display: none !important;
+}
+html.js input.form-autocomplete {
+  background-position: 100% 2px !important;
 }
 #navbar .embedded-form {
   padding: 15px;
@@ -6570,6 +6565,9 @@ body.page-node-add-study .field-name-body {
 }
 body.page-node-add-study input#edit-field-marker-paper-und-0-value {
   width: 530px;
+}
+div#timeline svg > g > path {
+  cursor: pointer;
 }
 .pane-dataset-studies h2 {
   font-size: 13px;

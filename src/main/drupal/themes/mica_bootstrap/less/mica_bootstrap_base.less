@@ -20,30 +20,6 @@ h2, h3, h4 {
   small { font-size: @h4_font_size; }
 }
 
-form {
-  margin: 0;
-}
-
-select,
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
-.uneditable-input {
-  margin-bottom: 0;
-}
-
 .h2-section {
   font-size: @h3_font_size;
   line-height: 20px;
@@ -276,11 +252,37 @@ body.page-variables-dimensions {
   right: 83px;
 }
 
-form.node-form input.form-text {
-  .input-xlarge;
+form.node-form {
+
+  input.form-text {
+    .input-xlarge;
+  }
+
+  .field-type-datetime {
+
+    fieldset {
+      margin: 0;
+      padding: 0;
+      legend .fieldset-legend {
+        font-size: @baseFontSize;
+        padding-left: 0;
+      }
+      .fieldset-wrapper {
+        padding: 0;
+      }
+      input {
+        .input-medium;
+      }
+    }
+  }
+
 }
 
 //Mica 927 ; conflict with progress bar drupal and bootsrap
 .progress .filled {
   display: none !important;
+}
+
+html.js input.form-autocomplete {
+  background-position: 100% 2px !important;
 }
