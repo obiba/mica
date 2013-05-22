@@ -16,107 +16,107 @@ msgstr ""
 #: field:body:data_collection_event:label
 msgctxt "body:data_collection_event:label"
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: field:body:population:label
 msgctxt "body:population:label"
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: field:comment_body:comment_node_data_collection_event:label
 msgctxt "comment_body:comment_node_data_collection_event:label"
 msgid "Comment"
-msgstr ""
+msgstr "Commentaire"
 
 #: field:comment_body:comment_node_population:label
 msgctxt "comment_body:comment_node_population:label"
 msgid "Comment"
-msgstr ""
+msgstr "Commentaire"
 
 #: field:title_field:study:label
 msgctxt "title_field:study:label"
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: field:title_field:study:description
 msgctxt "title_field:study:description"
 msgid "Official study name"
-msgstr ""
+msgstr "Nom officiel de l'étude"
 
 #: field:field_dce_bio_samples_management:#allowed_values:blood
 msgctxt "field_dce_bio_samples_management:#allowed_values:blood"
 msgid "Blood"
-msgstr ""
+msgstr "Sang"
 
 #: field:field_dce_bio_samples_management:#allowed_values:cord_blood
 msgctxt "field_dce_bio_samples_management:#allowed_values:cord_blood"
 msgid "Cord blood"
-msgstr ""
+msgstr "Sang de cordon"
 
 #: field:field_dce_bio_samples_management:#allowed_values:buccal_cells
 msgctxt "field_dce_bio_samples_management:#allowed_values:buccal_cells"
 msgid "Buccal cells"
-msgstr ""
+msgstr "Cellules buccales"
 
 #: field:field_dce_bio_samples_management:#allowed_values:tissues
 msgctxt "field_dce_bio_samples_management:#allowed_values:tissues"
 msgid "Tissues"
-msgstr ""
+msgstr "Tissus"
 
 #: field:field_dce_bio_samples_management:#allowed_values:saliva
 msgctxt "field_dce_bio_samples_management:#allowed_values:saliva"
 msgid "Saliva"
-msgstr ""
+msgstr "Salive"
 
 #: field:field_dce_bio_samples_management:#allowed_values:urine
 msgctxt "field_dce_bio_samples_management:#allowed_values:urine"
 msgid "Urine"
-msgstr ""
+msgstr "Urine"
 
 #: field:field_dce_bio_samples_management:#allowed_values:hair
 msgctxt "field_dce_bio_samples_management:#allowed_values:hair"
 msgid "Hair"
-msgstr ""
+msgstr "Cheveux"
 
 #: field:field_dce_bio_samples_management:#allowed_values:nail
 msgctxt "field_dce_bio_samples_management:#allowed_values:nail"
 msgid "Nail"
-msgstr ""
+msgstr "Ongles"
 
 #: field:field_dce_bio_samples_management:#allowed_values:others
 msgctxt "field_dce_bio_samples_management:#allowed_values:others"
 msgid "Others"
-msgstr ""
+msgstr "Autres"
 
 #: field:field_dce_bio_samples_management:data_collection_event:label
 msgctxt "field_dce_bio_samples_management:data_collection_event:label"
 msgid "Biological samples"
-msgstr ""
+msgstr "Échantillons biologiques"
 
 #: field:field_dce_bio_samples_management:data_collection_event:description
 msgctxt "field_dce_bio_samples_management:data_collection_event:description"
 msgid "Select the type of biological samples collected."
-msgstr ""
+msgstr "Sélectionnez le type d'échantillons biologiques collectés."
 
 #: field:field_dce_data_dictionaries:data_collection_event:label
 msgctxt "field_dce_data_dictionaries:data_collection_event:label"
 msgid "Data dictionaries (codebooks)"
-msgstr ""
+msgstr "Dictionnaire de données (codebooks)"
 
 #: field:field_dce_data_sources:#allowed_values:questionnaires
 msgctxt "field_dce_data_sources:#allowed_values:questionnaires"
 msgid "Questionnaires"
-msgstr ""
+msgstr "Questionnaires"
 
 #: field:field_dce_data_sources:#allowed_values:physical_measures
 msgctxt "field_dce_data_sources:#allowed_values:physical_measures"
 msgid "Physical measures"
-msgstr ""
+msgstr "Mesures physiques"
 
 #: field:field_dce_data_sources:#allowed_values:biological_samples
 msgctxt "field_dce_data_sources:#allowed_values:biological_samples"
 msgid "Biological samples"
-msgstr ""
+msgstr "Échantillons biologiques"
 
 #: field:field_dce_data_sources:#allowed_values:administratives_databases
 msgctxt "field_dce_data_sources:#allowed_values:administratives_databases"
@@ -124,21 +124,23 @@ msgid ""
 "Administritative Databases (external database linked with participant "
 "data)"
 msgstr ""
+"Bases de données administratives (Bases de données externes "
+"liées aux données du participant)"
 
 #: field:field_dce_data_sources:#allowed_values:others
 msgctxt "field_dce_data_sources:#allowed_values:others"
 msgid "Others (Participant medical files, genealogical records, etc.)"
-msgstr ""
+msgstr "Autres (Dossiers médicaux du participant, Registres généalogiquess, etc.)"
 
 #: field:field_dce_data_sources:data_collection_event:label
 msgctxt "field_dce_data_sources:data_collection_event:label"
 msgid "Data sources"
-msgstr ""
+msgstr "Source de données"
 
 #: field:field_dce_data_sources:data_collection_event:description
 msgctxt "field_dce_data_sources:data_collection_event:description"
 msgid "Select the data source(s) from which the information is obtained."
-msgstr ""
+msgstr "Sélectionner la(les) source(s) de données de laquelle(desquelles) l'information est obtenue."
 
 #: field:field_dce_data_sources_admin_db:#allowed_values:health_databases
 msgctxt "field_dce_data_sources_admin_db:#allowed_values:health_databases"
@@ -146,203 +148,205 @@ msgid ""
 "Health databases (e.g.: Hospitalization, Physican Billing, Drug "
 "Utilization)"
 msgstr ""
+"Base de données de santé (ex.: Hospitalization, Facturation des "
+"médecins, utilisation des médicaments)"
 
 #: field:field_dce_data_sources_admin_db:#allowed_values:vital_statisctics_databases
 msgctxt "field_dce_data_sources_admin_db:#allowed_values:vital_statisctics_databases"
 msgid "Vital Statistics databases (e.g.: Death Registries)"
-msgstr ""
+msgstr "Bases de données de statistiques démographiques (ex.: Registre des décès)"
 
 #: field:field_dce_data_sources_admin_db:#allowed_values:socioeconomic_databases
 msgctxt "field_dce_data_sources_admin_db:#allowed_values:socioeconomic_databases"
 msgid "Socioeconomic databases (e.g.: Census)"
-msgstr ""
+msgstr "Bases de données socioéconomiques (ex.: Recensement)"
 
 #: field:field_dce_data_sources_admin_db:#allowed_values:environmental_databases
 msgctxt "field_dce_data_sources_admin_db:#allowed_values:environmental_databases"
 msgid "Environmental databases (e.g.: Air pollutant geocoded data)"
-msgstr ""
+msgstr "Bases de données environementales (ex.: Données géocodés sur la pollution de l'air)"
 
 #: field:field_dce_data_sources_admin_db:data_collection_event:label
 msgctxt "field_dce_data_sources_admin_db:data_collection_event:label"
 msgid "Administrative Databases"
-msgstr ""
+msgstr "Bases de données administratives"
 
 #: field:field_dce_data_sources_sp:data_collection_event:label
 msgctxt "field_dce_data_sources_sp:data_collection_event:label"
 msgid "Other data sources"
-msgstr ""
+msgstr "Autres sources de données"
 
 #: field:field_dce_data_sources_sp:data_collection_event:description
 msgctxt "field_dce_data_sources_sp:data_collection_event:description"
 msgid "Please specify"
-msgstr ""
+msgstr "Veuillez spécifier"
 
 #: field:field_dce_dataset:data_collection_event:label
 msgctxt "field_dce_dataset:data_collection_event:label"
 msgid "Datasets"
-msgstr ""
+msgstr "Jeu de données"
 
 #: field:field_dce_end_year:data_collection_event:label
 msgctxt "field_dce_end_year:data_collection_event:label"
 msgid "End Year"
-msgstr ""
+msgstr "Année de fin"
 
 #: field:field_dce_others:data_collection_event:label
 msgctxt "field_dce_others:data_collection_event:label"
 msgid "Others"
-msgstr ""
+msgstr "Autres"
 
 #: field:field_dce_others:data_collection_event:description
 msgctxt "field_dce_others:data_collection_event:description"
 msgid "Please attach any other relevant documentation. "
-msgstr ""
+msgstr "Veuillez joindre tout autre documents pertinent."
 
 #: field:field_dce_population:data_collection_event:label
 msgctxt "field_dce_population:data_collection_event:label"
 msgid "Population"
-msgstr ""
+msgstr "Population"
 
 #: field:field_dce_population:data_collection_event:description
 msgctxt "field_dce_population:data_collection_event:description"
 msgid "Enter a brief data collection event description."
-msgstr ""
+msgstr "Entrez une brève description de l'événement de collecte"
 
 #: field:field_dce_questionnaires:data_collection_event:label
 msgctxt "field_dce_questionnaires:data_collection_event:label"
 msgid "Questionnaires"
-msgstr ""
+msgstr "Questionnaires"
 
 #: field:field_dce_samples_man_other_sp:data_collection_event:label
 msgctxt "field_dce_samples_man_other_sp:data_collection_event:label"
 msgid "Other biological samples"
-msgstr ""
+msgstr "Autres échantillons biologiques"
 
 #: field:field_dce_samples_man_other_sp:data_collection_event:description
 msgctxt "field_dce_samples_man_other_sp:data_collection_event:description"
 msgid "Please specify"
-msgstr ""
+msgstr "Veuillez spécifier"
 
 #: field:field_dce_sops:data_collection_event:label
 msgctxt "field_dce_sops:data_collection_event:label"
 msgid "Standard Operating Procedures (SOP)"
-msgstr ""
+msgstr "Procédures standard d'opération (PSO)"
 
 #: field:field_dce_start_year:data_collection_event:label
 msgctxt "field_dce_start_year:data_collection_event:label"
 msgid "Start Year"
-msgstr ""
+msgstr "Année de début"
 
 #: field:field_dce_start_year:data_collection_event:description
 msgctxt "field_dce_start_year:data_collection_event:description"
 msgid ""
 "For example, an event from 2012 to 2012 will span 1 year; an event "
 "from 2012 to 2013 will span 2 years."
-msgstr ""
+msgstr "Par exemple, un événement de 2012 à 2012"
 
 #: field:field_dce_tissues_sp:data_collection_event:label
 msgctxt "field_dce_tissues_sp:data_collection_event:label"
 msgid "Tissues type"
-msgstr ""
+msgstr "Type de tissus"
 
 #: field:field_dce_tissues_sp:data_collection_event:description
 msgctxt "field_dce_tissues_sp:data_collection_event:description"
 msgid "Please specify"
-msgstr ""
+msgstr "Veuillez spécifier"
 
 #: field:field_dataset_dce:dataset:label
 msgctxt "field_dataset_dce:dataset:label"
 msgid "Data Collection Event"
-msgstr ""
+msgstr "Événement de collecte"
 
 #: field:field_pop_age_max:population:label
 msgctxt "field_pop_age_max:population:label"
 msgid "Maximum age"
-msgstr ""
+msgstr "Âge maximum"
 
 #: field:field_pop_age_min:population:label
 msgctxt "field_pop_age_min:population:label"
 msgid "Minimum age"
-msgstr ""
+msgstr "Âge minimum"
 
 #: field:field_pop_country:population:label
 msgctxt "field_pop_country:population:label"
 msgid "Country of residence"
-msgstr ""
+msgstr "Pays de résidence"
 
 #: field:field_pop_dce:population:label
 msgctxt "field_pop_dce:population:label"
 msgid "Data collection events"
-msgstr ""
+msgstr "Événement de collecte"
 
 #: field:field_pop_ethnic_origin:population:label
 msgctxt "field_pop_ethnic_origin:population:label"
 msgid "Ethnic Origin"
-msgstr ""
+msgstr "Origine ethnique"
 
 #: field:field_pop_exist_study_part:population:label
 msgctxt "field_pop_exist_study_part:population:label"
 msgid "Participants from existing studies"
-msgstr ""
+msgstr "Participants d'études existantes"
 
 #: field:field_pop_exist_study_part:population:description
 msgctxt "field_pop_exist_study_part:population:description"
 msgid "Please specify"
-msgstr ""
+msgstr "Veuillez spécifier"
 
 #: field:field_pop_gender:#allowed_values:women
 msgctxt "field_pop_gender:#allowed_values:women"
 msgid "Women only"
-msgstr ""
+msgstr "Femmes seulement"
 
 #: field:field_pop_gender:#allowed_values:men
 msgctxt "field_pop_gender:#allowed_values:men"
 msgid "Men only"
-msgstr ""
+msgstr "Hommes seulement"
 
 #: field:field_pop_gender:population:label
 msgctxt "field_pop_gender:population:label"
 msgid "Gender"
-msgstr ""
+msgstr "Sexe"
 
 #: field:field_pop_general_pop_recruit:#allowed_values:volunteer
 msgctxt "field_pop_general_pop_recruit:#allowed_values:volunteer"
 msgid "Volunteer enrolment"
-msgstr ""
+msgstr "Enrollement volontaire"
 
 #: field:field_pop_general_pop_recruit:#allowed_values:selected_samples
 msgctxt "field_pop_general_pop_recruit:#allowed_values:selected_samples"
 msgid "Selected sample (e.g.: from governmental databases)"
-msgstr ""
+msgstr "Sous-échantillon (ex. bases de données gouvernementales)"
 
 #: field:field_pop_general_pop_recruit:#allowed_values:random
 msgctxt "field_pop_general_pop_recruit:#allowed_values:random"
 msgid "Random digit dialing"
-msgstr ""
+msgstr "Génération aléatoire de numéros"
 
 #: field:field_pop_general_pop_recruit:population:label
 msgctxt "field_pop_general_pop_recruit:population:label"
 msgid "General Population"
-msgstr ""
+msgstr "Population générale"
 
 #: field:field_pop_health_status:population:label
 msgctxt "field_pop_health_status:population:label"
 msgid "Health Status"
-msgstr ""
+msgstr "État de santé"
 
 #: field:field_pop_no_lim_participants_s:population:label
 msgctxt "field_pop_no_lim_participants_s:population:label"
 msgid "No limits in the number of participants with biological samples"
-msgstr ""
+msgstr "Nombre de participants avec échantillons non déterminé (Illimité)"
 
 #: field:field_pop_no_limits_participants:population:label
 msgctxt "field_pop_no_limits_participants:population:label"
 msgid "No limits in the number of participants"
-msgstr ""
+msgstr "Nombre de participants non déterminé (Illimité)"
 
 #: field:field_pop_partcipant_sel_supp_in:population:label
 msgctxt "field_pop_partcipant_sel_supp_in:population:label"
 msgid "Supplementary information about selection criteria"
-msgstr ""
+msgstr "Information supplémentaire sur les critères de sélection"
 
 #: field:field_pop_partcipant_sel_supp_in:population:description
 msgctxt "field_pop_partcipant_sel_supp_in:population:description"
@@ -350,11 +354,13 @@ msgid ""
 "If needed, please provide additional information about selection "
 "criteria of the population"
 msgstr ""
+"Information supplémentaire sur les critères de sélection de la "
+"population, si nécessaire"
 
 #: field:field_pop_participants_nb:population:label
 msgctxt "field_pop_participants_nb:population:label"
 msgid "Number of participants"
-msgstr ""
+msgstr "Nombre de participants"
 
 #: field:field_pop_participants_nb:population:description
 msgctxt "field_pop_participants_nb:population:description"
@@ -362,11 +368,13 @@ msgid ""
 "Number of participants planned to be recruited for the population. If "
 "the study is completed, enter the final number of participants. "
 msgstr ""
+"Nombre de participants qui seront recrutés. Si le recrutement est "
+"terminé, entrez le nombre final de participants."
 
 #: field:field_pop_participants_nb_s:population:label
 msgctxt "field_pop_participants_nb_s:population:label"
 msgid "Number of participants with biological samples"
-msgstr ""
+msgstr "Nombre de participants avec échantillons biologiques"
 
 #: field:field_pop_participants_nb_s:population:description
 msgctxt "field_pop_participants_nb_s:population:description"
@@ -376,23 +384,27 @@ msgid ""
 "enter the final number of participants that have provided biological "
 "samples from which DNA could be extracted. "
 msgstr ""
+"Entrez le nombre de participants qui fourniront des échantillons "
+"biologiques desquels il sera possible d’extraire de l’ADN. "
+"Si l'étude est terminé, entrez le nombre final de participants ayant fourni "
+"des échantillons biologiques dequels il sera possible d'extraire de l'ADN."
 
 #: field:field_pop_participants_nb_supp_i:population:label
 msgctxt "field_pop_participants_nb_supp_i:population:label"
 msgid "Supplementary information about number of participants"
-msgstr ""
+msgstr "Information supplémentaire sur le nombre de participants"
 
 #: field:field_pop_participants_nb_supp_i:population:description
 msgctxt "field_pop_participants_nb_supp_i:population:description"
 msgid ""
 "If needed, please provide additional information about number of "
 "participants."
-msgstr ""
+msgstr "Information additionnel sur le nombre de participants, si nécessaire."
 
 #: field:field_pop_recruitement_supp_info:population:label
 msgctxt "field_pop_recruitement_supp_info:population:label"
 msgid "Supplementary information about recruitment procedures"
-msgstr ""
+msgstr "Information supplémentaire sur les procédures de recrutement"
 
 #: field:field_pop_recruitement_supp_info:population:description
 msgctxt "field_pop_recruitement_supp_info:population:description"
@@ -400,51 +412,53 @@ msgid ""
 "If needed, please provide additional information about recruitment "
 "procedures"
 msgstr ""
+"Information supplémentaire sur les procédures de recrutement, si "
+"nécessaire"
 
 #: field:field_pop_recruitment_other:population:label
 msgctxt "field_pop_recruitment_other:population:label"
 msgid "Other source of recruitment"
-msgstr ""
+msgstr "Autre source de recrutement"
 
 #: field:field_pop_recruitment_other:population:description
 msgctxt "field_pop_recruitment_other:population:description"
 msgid "Please specify"
-msgstr ""
+msgstr "Veuillez spécifier"
 
 #: field:field_pop_select_criteria:#allowed_values:gravidity
 msgctxt "field_pop_select_criteria:#allowed_values:gravidity"
 msgid "Gravidity (pregnant women)"
-msgstr ""
+msgstr "Femmes enceintes"
 
 #: field:field_pop_select_criteria:#allowed_values:newborn
 msgctxt "field_pop_select_criteria:#allowed_values:newborn"
 msgid "Newborn"
-msgstr ""
+msgstr "Nouveau-nés"
 
 #: field:field_pop_select_criteria:#allowed_values:twin
 msgctxt "field_pop_select_criteria:#allowed_values:twin"
 msgid "Twin"
-msgstr ""
+msgstr "Jumeaux"
 
 #: field:field_pop_select_criteria:population:label
 msgctxt "field_pop_select_criteria:population:label"
 msgid "Selection criteria"
-msgstr ""
+msgstr "Critères de sélection"
 
 #: field:field_pop_selection_others_sp:population:label
 msgctxt "field_pop_selection_others_sp:population:label"
 msgid "Other selection criteria"
-msgstr ""
+msgstr "Autres critères de sélection"
 
 #: field:field_pop_selection_others_sp:population:description
 msgctxt "field_pop_selection_others_sp:population:description"
 msgid "Please specify"
-msgstr ""
+msgstr "Veuillez spécifier"
 
 #: field:field_pop_specific_pop:#allowed_values:clinic_patients
 msgctxt "field_pop_specific_pop:#allowed_values:clinic_patients"
 msgid "Clinic patients"
-msgstr ""
+msgstr "Patients d'une clinique"
 
 #: field:field_pop_specific_pop:#allowed_values:specific_association
 msgctxt "field_pop_specific_pop:#allowed_values:specific_association"
@@ -452,66 +466,69 @@ msgid ""
 "Members of specific association (professional association, patients "
 "network, etc)"
 msgstr ""
+"Membres d'une associations spécifique (association professionnelle, "
+"réseau de patients, etc)"
 
 #: field:field_pop_specific_pop:#allowed_values:other
 msgctxt "field_pop_specific_pop:#allowed_values:other"
 msgid "Other specific population"
-msgstr ""
+msgstr "Autre population spécifique"
 
 #: field:field_pop_specific_pop:population:label
 msgctxt "field_pop_specific_pop:population:label"
 msgid "Specific Population"
-msgstr ""
+msgstr "Population spécifique"
 
 #: field:field_pop_specific_pop_other_sp:population:label
 msgctxt "field_pop_specific_pop_other_sp:population:label"
 msgid "Specific population"
-msgstr ""
+msgstr "Population spécifique"
 
 #: field:field_pop_specific_pop_other_sp:population:description
 msgctxt "field_pop_specific_pop_other_sp:population:description"
 msgid "Please specify"
-msgstr ""
+msgstr "Veuillez spécifier"
 
 #: field:field_pop_src_recruit:#allowed_values:general
 msgctxt "field_pop_src_recruit:#allowed_values:general"
 msgid "General population"
-msgstr ""
+msgstr "Population générale"
 
 #: field:field_pop_src_recruit:#allowed_values:exist_studies
 msgctxt "field_pop_src_recruit:#allowed_values:exist_studies"
 msgid "Participants from existing studies"
-msgstr ""
+msgstr "Participants d'études existantes"
 
 #: field:field_pop_src_recruit:#allowed_values:specific_population
 msgctxt "field_pop_src_recruit:#allowed_values:specific_population"
 msgid "Specific population"
-msgstr ""
+msgstr "Population spécifique"
 
 #: field:field_pop_src_recruit:#allowed_values:other
 msgctxt "field_pop_src_recruit:#allowed_values:other"
 msgid "Other Source"
-msgstr ""
+msgstr "Autre source"
 
 #: field:field_pop_src_recruit:population:label
 msgctxt "field_pop_src_recruit:population:label"
 msgid "Sources of recruitment"
-msgstr ""
+msgstr "Source de recrutement"
 
 #: field:field_pop_study:population:label
 msgctxt "field_pop_study:population:label"
 msgid "Study"
-msgstr ""
+msgstr "Étude"
 
 #: field:field_pop_supp_infos:population:label
 msgctxt "field_pop_supp_infos:population:label"
 msgid "Supplementary information"
-msgstr ""
+msgstr "Information supplémentaire"
 
 #: field:field_pop_territory:population:label
 msgctxt "field_pop_territory:population:label"
 msgid "Territory or city of residence"
-msgstr ""
+msgstr "Territoire ou ville de résidence"
+
 
 #: field:field_access_biosamples:study:description
 msgctxt "field_access_biosamples:study:description"
@@ -519,6 +536,8 @@ msgid ""
 "Specify if access to study biological samples by external researchers "
 "or third parties is provided or foreseen."
 msgstr ""
+"Spécifiez si l'accès aux échantillons biologiques de l'étude à des chercheurs "
+"externes ou à un tiers partie est fourni ou prévu."
 
 #: field:field_access_data:study:description
 msgctxt "field_access_data:study:description"
@@ -526,6 +545,8 @@ msgid ""
 "Specify if access to study data by external researchers or third "
 "parties is provided or foreseen."
 msgstr ""
+"Spécifiez si l'accès aux données de l'étude à des chercheurs "
+"externes ou à un tiers partie est fourni ou prévu."
 
 #: field:field_access_other:study:description
 msgctxt "field_access_other:study:description"
@@ -533,36 +554,38 @@ msgid ""
 "Specify if access to other study material by external researchers or "
 "third parties is provided or foreseen."
 msgstr ""
+"Spécifiez si l'accès à d'autres matériel de l'étude à des "
+"chercheurs externes ou à un tiers partie est fourni ou prévu."
 
 #: field:field_access_other_sp:study:label
 msgctxt "field_access_other_sp:study:label"
 msgid "Other access"
-msgstr ""
+msgstr "Autres accès"
 
 #: field:field_access_other_sp:study:description
 msgctxt "field_access_other_sp:study:description"
 msgid "Please specify"
-msgstr ""
+msgstr "Veuillez spécifier"
 
 #: field:field_design:study:label
 msgctxt "field_design:study:label"
 msgid "Study design"
-msgstr ""
+msgstr "Devis d'étude"
 
 #: field:field_design:study:description
 msgctxt "field_design:study:description"
 msgid "Select general study design"
-msgstr ""
+msgstr "Sélectionnez le devis générale de l'étude"
 
 #: field:field_design_other_sp:study:label
 msgctxt "field_design_other_sp:study:label"
 msgid "Other design"
-msgstr ""
+msgstr "Autre devis"
 
 #: field:field_design_other_sp:study:description
 msgctxt "field_design_other_sp:study:description"
 msgid "Please specify"
-msgstr ""
+msgstr "Veuilez spécifier"
 
 #: field:field_documents:study:description
 msgctxt "field_documents:study:description"
@@ -570,11 +593,13 @@ msgid ""
 "If applicable, please provide relevant documentation about the study "
 "(e.g.: Study Protocol)."
 msgstr ""
+"Si applicable, veuillez fournir la documentation pertinente sur l'étude"
+"(ex.: Protocole de l'étude)."
 
 #: field:field_info_design_follow_up:study:label
 msgctxt "field_info_design_follow_up:study:label"
 msgid "General Information on Follow Up (profile and frequency)"
-msgstr ""
+msgstr "Information générale sur le suivi (Profil et fréquence)"
 
 #: field:field_info_design_follow_up:study:description
 msgctxt "field_info_design_follow_up:study:description"
@@ -582,18 +607,20 @@ msgid ""
 "If your study design is longitudinal, please provide general "
 "information on participants’ follow-up (profile and frequency)."
 msgstr ""
+"Si votre étude est longitudinale, veuillez fournir l'information générale"
+"sur le suivi (profil et fréquence)"
 
 #: field:field_logo:study:description
 msgctxt "field_logo:study:description"
 msgid ""
 "Please provide the official study logo that can be displayed on the "
 "website."
-msgstr ""
+msgstr "Veuillez fournir le logo officiel de l'étude qui sera affiché sur le site web."
 
 #: field:field_marker_paper:study:label
 msgctxt "field_marker_paper:study:label"
 msgid "Marker paper"
-msgstr ""
+msgstr "Article de référence"
 
 #: field:field_marker_paper:study:description
 msgctxt "field_marker_paper:study:description"
@@ -602,66 +629,69 @@ msgid ""
 "such as journal article, web site, or report) which should be used to "
 "refer to your study."
 msgstr ""
+"Si applicable, veuillez fournir une liste de références "
+"bibliographiques (i.e. article de journal, site web ou rapport) à "
+"utiliser pour votre étude."
 
 #: field:field_pubmedid:study:label
 msgctxt "field_pubmedid:study:label"
 msgid "Pubmed ID"
-msgstr ""
+msgstr "Identifiant Pubmed"
 
 #: field:field_pubmedid:study:description
 msgctxt "field_pubmedid:study:description"
 msgid "If applicable, enter marker paper’s Pubmed ID.  "
-msgstr ""
+msgstr "Entrez l'identifiant Pubmed de l'article de référence, si applicable."
 
 #: field:field_recruitment:study:label
 msgctxt "field_recruitment:study:label"
 msgid "Recruitment target"
-msgstr ""
+msgstr "Type de recrues"
 
 #: field:field_recruitment:study:description
 msgctxt "field_recruitment:study:description"
 msgid "Select type of participant units targeted by the study."
-msgstr ""
+msgstr "Sélectionnez le type de participant visés par l'étude."
 
 #: field:field_recruitment_other_sp:study:label
 msgctxt "field_recruitment_other_sp:study:label"
 msgid "Other recruitment target"
-msgstr ""
+msgstr "Autre type de recrues"
 
 #: field:field_recruitment_other_sp:study:description
 msgctxt "field_recruitment_other_sp:study:description"
 msgid "Please specify"
-msgstr ""
+msgstr "Veuillez spécifier"
 
 #: field:field_recruitment_supp_info:study:label
 msgctxt "field_recruitment_supp_info:study:label"
 msgid "Supplementary information about study design"
-msgstr ""
+msgstr "Information supplémentaire sur le devis de l'étude"
 
 #: field:field_recruitment_supp_info:study:description
 msgctxt "field_recruitment_supp_info:study:description"
 msgid "If needed, please provide additional information about study design."
-msgstr ""
+msgstr "Information supplémentaire sur le devis de l'étude, si nécessaire."
 
 #: field:field_study_end_year:study:label
 msgctxt "field_study_end_year:study:label"
 msgid "Study End Year"
-msgstr ""
+msgstr "Année de fin de l'étude"
 
 #: field:field_study_end_year:study:description
 msgctxt "field_study_end_year:study:description"
 msgid "If the study is completed, enter the study end date."
-msgstr ""
+msgstr "Si l'étude est terminé, entrez la date de fin."
 
 #: field:field_study_populations:study:label
 msgctxt "field_study_populations:study:label"
 msgid "Populations"
-msgstr ""
+msgstr "Populations"
 
 #: field:field_study_start_year:study:label
 msgctxt "field_study_start_year:study:label"
 msgid "Study Start Year"
-msgstr ""
+msgstr "Année de début de l'étude"
 
 #: field:field_study_start_year:study:description
 msgctxt "field_study_start_year:study:description"
@@ -669,16 +699,17 @@ msgid ""
 "Date when first participants were recruited or planned to be "
 "recruited."
 msgstr ""
+"Date à laquelle les premiers participants ont été ou seront recrutés"
 
 #: field:field_supp_infos:study:description
 msgctxt "field_supp_infos:study:description"
 msgid "If needed, please provide additional information about your study."
-msgstr ""
+msgstr "Information supplémentaire sur l'étude, si nécessaire."
 
 #: field:field_target_nb_supp_info:study:label
 msgctxt "field_target_nb_supp_info:study:label"
 msgid "Supplementary information about target number of participants"
-msgstr ""
+msgstr"Information supplémentaire sur le nombre de participants visés"
 
 #: field:field_target_nb_supp_info:study:description
 msgctxt "field_target_nb_supp_info:study:description"
@@ -686,11 +717,13 @@ msgid ""
 "If needed, please provide additional information about target number "
 "of participants."
 msgstr ""
+"Information supplémentaire sur le nombre de participants visés, si "
+"nécessaire"
 
 #: field:field_target_number_biosamples:study:label
 msgctxt "field_target_number_biosamples:study:label"
 msgid "Target number of participants with biological samples"
-msgstr ""
+msgstr "Nombre ciblé de participants avec échantillons"
 
 #: field:field_target_number_biosamples:study:description
 msgctxt "field_target_number_biosamples:study:description"
@@ -700,11 +733,15 @@ msgid ""
 "If the study is completed, enter the final number of participants that "
 "have provided biological samples from which DNA could be extracted."
 msgstr ""
+"Nombre de participants ayant fourni ou fournira des échantillons "
+"biologiques desquels il sera possible d’extraire de l’ADN. \r\n"
+"Si l'étude est terminé, entrez le nombre final de participants ayant fourni "
+"des échantillons biologiques dequels il sera possible d'extraire de l'ADN."
 
 #: field:field_target_number_participants:study:label
 msgctxt "field_target_number_participants:study:label"
 msgid "Target number of participants"
-msgstr ""
+msgstr "Nombre de participants visé"
 
 #: field:field_target_number_participants:study:description
 msgctxt "field_target_number_participants:study:description"
@@ -712,6 +749,8 @@ msgid ""
 "Number of participants planned to be recruited. If the study is "
 "completed, enter the final number of participants."
 msgstr ""
+"Nombre de participants visés pour le recrutement. Si le recrutement est "
+"terminé, entrez le nombre final de participants."
 
 #: field:body:blog:label
 msgctxt "body:blog:label"

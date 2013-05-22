@@ -16,22 +16,24 @@ msgstr ""
 #: node:type:blog:name
 msgctxt "type:blog:name"
 msgid "Blog entry"
-msgstr ""
+msgstr "Billet de blog"
 
 #: node:type:blog:description
 msgctxt "type:blog:description"
 msgid "Use for multi-user blogs. Every user gets a personal blog."
 msgstr ""
+"A utiliser pour les blogs multi-utilisateurs. Chaque utilisateur "
+"obtient un blog personnel."
 
 #: node:type:data_collection_event:name
 msgctxt "type:data_collection_event:name"
 msgid "Data Collection Event"
-msgstr ""
+msgstr "Évenement de collecte"
 
 #: node:type:data_collection_event:title_label
 msgctxt "type:data_collection_event:title_label"
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: node:type:data_collection_event:description
 msgctxt "type:data_collection_event:description"
@@ -39,16 +41,18 @@ msgid ""
 "A data collection event is a specific period of time during which a "
 "defined set of data/sample is collected."
 msgstr ""
+"Un événement de collecte est une période spécifique durant laquelle "
+"un jeu de données bien défini est collecté"
 
 #: node:type:population:name
 msgctxt "type:population:name"
 msgid "Population"
-msgstr ""
+msgstr "Population"
 
 #: node:type:population:title_label
 msgctxt "type:population:title_label"
 msgid "Population"
-msgstr ""
+msgstr "Population"
 
 #: node:type:population:description
 msgctxt "type:population:description"
@@ -57,6 +61,10 @@ msgid ""
 "criteria. In some cases, a study can have two or more populations "
 "(i.e. 2 sets of individuals with distinct selection criteria)."
 msgstr ""
+"Une population est un ensemble d'individus partageant les même critères "
+"de sélection. Dans certains cas, une étude peut avoir deux ou plusieurs "
+"populations (C'est-à-dire deux ensembles d'individus ayant des critères "
+"de sélection distinctes)."
 
 #: node:type:blog:title_label
 msgctxt "type:blog:title_label"

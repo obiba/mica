@@ -19,21 +19,23 @@ msgid ""
 "Functions of the cardiovascular, haematological, immunological and "
 "respiratory systems"
 msgstr ""
+"Fonctions des systèmes cardiovasculaire, hématopoïétique, "
+"immunitaire et respiratoire"
 
 #: taxonomy:term:165:name
 msgctxt "term:165:name"
 msgid "Therapeutic interventions on the musculoskeletal system"
-msgstr ""
+msgstr "Interventions thérapeutiques sur le système musculo-squelettique"
 
 #: taxonomy:term:178:name
 msgctxt "term:178:name"
 msgid "Diagnostic interventions on the musculoskeletal system"
-msgstr ""
+msgstr "Interventions diagnostiques sur le système musculo-squelettique"
 
 #: taxonomy:term:191:name
 msgctxt "term:191:name"
 msgid "Diagnostic imaging interventions on the musculoskeletal system"
-msgstr ""
+msgstr "Interventions d'imagerie diagnostique sur le système musculo-squelettique"
 
 msgctxt "vocabulary:1:name"
 msgid "Forums"
