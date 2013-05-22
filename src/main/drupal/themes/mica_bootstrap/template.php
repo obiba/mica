@@ -8,24 +8,6 @@ function mica_bootstrap_bootstrap_based_theme() {
 }
 
 /**
- * Implements hook_css_alter().
- */
-function mica_bootstrap_css_alter(&$css) {
-  // Add overrides.
-  $override = drupal_get_path('theme', 'bootstrap') . '/css/overrides.css';
-  $css[$override] = array(
-    'data' => $override,
-    'type' => 'file',
-    'every_page' => TRUE,
-    'media' => 'all',
-    'preprocess' => TRUE,
-    'group' => CSS_THEME,
-    'browsers' => array('IE' => TRUE, '!IE' => TRUE),
-    'weight' => -1,
-  );
-}
-
-/**
  * Add drop down for user menu
  */
 function mica_bootstrap_menu_tree__user_menu($variables) {
