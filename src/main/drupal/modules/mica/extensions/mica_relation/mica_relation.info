@@ -6,8 +6,6 @@ php = "5.2.4"
 
 dependencies[] = entity
 dependencies[] = search_api
-dependencies[] = feeds
 dependencies[] = mica_core
 
-files[] = includes/FeedsMicaRelationRelationProcessor.inc
 files[] = includes/mica_relation.entity.inc

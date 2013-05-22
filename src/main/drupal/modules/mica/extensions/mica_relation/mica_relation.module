@@ -196,7 +196,6 @@ function mica_relation_form_node_type_form_alter(&$form, $form_state) {
       ? $form_state['values']['parent_bundle']
       : (empty($relation) ? '' : $relation->parent_bundle);
 
-
     $indexes = mica_core_find_indexes_by_bundle();
 
     $form['mica_relation'] = array(
@@ -251,7 +250,6 @@ function mica_relation_form_node_type_form_alter(&$form, $form_state) {
         ? array()
         : $relation->options['child_indexes'];
     }
-
 
     $form['mica_relation']['child_indexes'] = array(
       '#type' => 'checkboxes',
@@ -486,23 +484,4 @@ function mica_relation_find_relation_by_child($child_bundle) {
     return $relations[$keys[0]];
   }
   return NULL;
-}
-
-/**
- * Implements hook_feeds_plugins().
- */
-function mica_relation_feeds_plugins() {
-  $info = array();
-  $info['FeedsMicaRelationProcessor'] = array(
-    'name' => 'Mica Relation Node processor',
-    'description' => 'Update nodes that are linked to a Parent through a mica_relation.',
-    'help' => 'Update nodes from parsed content.',
-    'handler' => array(
-      'parent' => 'FeedsNodeProcessor',
-      'class' => 'FeedsMicaRelationProcessor',
-      'file' => 'includes/FeedsMicaRelationProcessor.inc',
-      'path' => drupal_get_path('module', 'mica_relation'),
-    ),
-  );
-  return $info;
 }
