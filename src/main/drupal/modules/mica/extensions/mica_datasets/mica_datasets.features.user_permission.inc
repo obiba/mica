@@ -10,24 +10,6 @@
 function mica_datasets_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: clear csv_variables feeds.
-  $permissions['clear csv_variables feeds'] = array(
-    'name' => 'clear csv_variables feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: clear dataset feeds.
-  $permissions['clear dataset feeds'] = array(
-    'name' => 'clear dataset feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
   // Exported permission: create dataset content.
   $permissions['create dataset content'] = array(
     'name' => 'create dataset content',
@@ -569,42 +551,6 @@ function mica_datasets_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'taxonomy',
-  );
-
-  // Exported permission: import csv_variables feeds.
-  $permissions['import csv_variables feeds'] = array(
-    'name' => 'import csv_variables feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: import dataset feeds.
-  $permissions['import dataset feeds'] = array(
-    'name' => 'import dataset feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: tamper csv_variables.
-  $permissions['tamper csv_variables'] = array(
-    'name' => 'tamper csv_variables',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds_tamper',
-  );
-
-  // Exported permission: tamper dataset.
-  $permissions['tamper dataset'] = array(
-    'name' => 'tamper dataset',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds_tamper',
   );
 
   // Exported permission: view any unpublished dataset content.
