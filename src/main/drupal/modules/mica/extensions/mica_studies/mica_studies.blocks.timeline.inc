@@ -22,9 +22,10 @@ function _mica_studies_block_study_timeline($study) {
   $event_view = array();
   $pop_svg = array();
   $legend_items = array();
-  $study_wrapper = entity_metadata_wrapper('node', $study);
   $events = array();
-  foreach ($study_wrapper->field_study_populations->getIterator() as $pop_wrapper) {
+
+  foreach (_mica_studies_sort_populations($study) as $population_nid) {
+    $pop_wrapper = entity_metadata_wrapper('node', $population_nid);
     $pop_nid = $pop_wrapper->nid->value();
     $pop_title = $pop_wrapper->title->value();
 
@@ -46,7 +47,6 @@ function _mica_studies_block_study_timeline($study) {
           'dce_title' => $dce_wrapper->title->value(),
           'start' => $start,
           'end' => $end,
-//          'popover' => drupal_render(node_view(node_load($dce_nid)))
         );
         $event_view[] = _mica_studies_block_study_timeline_prepare_modal($dce_nid);
       }
@@ -57,9 +57,7 @@ function _mica_studies_block_study_timeline($study) {
   }
 
   uasort($events, '_mica_studies_sort_dce'); // sort by start date
-  // dpm($events, '$events');
   $lines = _mica_studies_block_study_timeline_prepare_lines($events);
-//  dpm($lines, '$lines');
 
   $legend = '<ul class="timeline-legend">';
   foreach ($legend_items as $item) {

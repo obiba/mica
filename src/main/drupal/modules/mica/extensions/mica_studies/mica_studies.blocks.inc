@@ -143,9 +143,8 @@ function _mica_studies_block_study_datasets($study) {
 
 function _mica_studies_block_study_populations($study) {
   $content = array();
-  $wrapper = entity_metadata_wrapper('node', $study);
-  foreach ($wrapper->field_study_populations->getIterator() as $population_wrapper) {
-    $content[] = node_view($population_wrapper->value(), 'full');
+  foreach (_mica_studies_sort_populations($study) as $population_nid) {
+    $content[] = node_view(node_load($population_nid), 'full');
   }
   return array(
     'subject' => t('Populations') . '<a name="populations"> </a>',

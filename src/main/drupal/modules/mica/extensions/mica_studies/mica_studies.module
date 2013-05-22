@@ -1034,12 +1034,30 @@ function mica_studies_node_reference_field_dce_population_potential_references($
   return array($references);
 }
 
+function _mica_studies_sort_populations($study) {
+  $pop = array();
+  $wrapper = entity_metadata_wrapper('node', $study);
+  foreach ($wrapper->field_study_populations->getIterator() as $pop_wrapper) {
+    $events = array();
+    foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
+      $events[$dce_wrapper->nid->value()] = array(
+        'start' => $dce_wrapper->field_dce_start_year->value(),
+        'end' => $dce_wrapper->field_dce_end_year->value(),
+      );
+    }
+    uasort($events, '_mica_studies_sort_dce');
+    $pop[$pop_wrapper->nid->value()] = empty($events) ? array() : array_shift(array_values($events));
+  }
+  uasort($pop, '_mica_studies_sort_dce');
+  return array_keys($pop);
+}
+
 function _mica_studies_sort_dce($x, $y) {
-  $x_start = $x['start'];
-  $y_start = $y['start'];
+  $x_start = isset($x['start']) ? $x['start'] : NULL;
+  $y_start = isset($y['start']) ? $y['start'] : NULL;
   if ($x_start === $y_start) {
-    $x_end = $x['end'];
-    $y_end = $y['end'];
+    $x_end = isset($x['end']) ? $x['end'] : NULL;
+    $y_end = isset($y['end']) ? $y['end'] : NULL;
     if ($x_end === $y_end) {
       return 0;
     }

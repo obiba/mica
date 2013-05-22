@@ -235,7 +235,6 @@ function _mica_studies_population_view_recruitment_sources(&$node) {
   if (strlen($node->content['field_pop_src_recruit'][0]['#markup']) === 0) {
     $node->content['field_pop_src_recruit']['#access'] = FALSE;
   }
-
 }
 
 function _mica_studies_population_view_nb_participants(&$node) {
