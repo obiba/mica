@@ -171,7 +171,7 @@ function _mica_connector_connectors_form_submit($form, &$form_state) {
       break;
 
     case t('Test connections'):
-      _testConnections( $form_state['build_info']['args'][0]->nid);
+      _testConnections($form_state['build_info']['args'][0]->nid);
       break;
 
     case t('Add Dataset'):
@@ -205,7 +205,6 @@ function _mica_connector_add_study_to_dataset($study, $dataset) {
   // No need to update the dataset since we have the corresponding node reference module
 }
 
-
 function _mica_connector_dataset_connection_delete(&$study_node, $dataset_node_id) {
   _mica_connector_remove_study_to_dataset($study_node, node_load($dataset_node_id));
 
@@ -223,7 +222,6 @@ function _mica_connector_remove_study_to_dataset(&$study, &$dataset) {
   _mica_datasets_remove_and_save_element_from_entity_list_wrapper($study_wrapper, $dataset_wrapper, 'mica_dataset');
   _mica_datasets_delete_svas($dataset, $study);
 }
-
 
 //
 // utilities
@@ -412,7 +410,7 @@ function _mica_connector_get_dataset_ids($study_node_id) {
 /**
  * Get the values for a node field.
  *
- * @param node   $node
+ * @param node $node
  * @param string $field_name
  */
 function _mica_connector_node_field_values($node, $field_name) {
@@ -442,12 +440,18 @@ function _mica_connector_connection_config_values(&$form, &$form_state) {
 function _testConnections($nid) {
   $mica_connectors = mica_connector_query_multiple($nid);
 
+  $errors = 0;
   foreach ($mica_connectors as $connector) {
 
     try {
       $connector->query(array());
     } catch (Exception $e) {
       $connector->displayError($e);
+      $errors++;
     }
+  }
+
+  if ($errors < 1) {
+    drupal_set_message(t('All connections are successful.'));
   }
 }

@@ -19,24 +19,6 @@ function mica_projects_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: clear csv_project_import feeds.
-  $permissions['clear csv_project_import feeds'] = array(
-    'name' => 'clear csv_project_import feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: clear csv_teleconference_import feeds.
-  $permissions['clear csv_teleconference_import feeds'] = array(
-    'name' => 'clear csv_teleconference_import feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
   // Exported permission: create project content.
   $permissions['create project content'] = array(
     'name' => 'create project content',
@@ -141,42 +123,6 @@ function mica_projects_user_default_permissions() {
       'study administrator' => 'study administrator',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: import csv_project_import feeds.
-  $permissions['import csv_project_import feeds'] = array(
-    'name' => 'import csv_project_import feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: import csv_teleconference_import feeds.
-  $permissions['import csv_teleconference_import feeds'] = array(
-    'name' => 'import csv_teleconference_import feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: tamper csv_project_import.
-  $permissions['tamper csv_project_import'] = array(
-    'name' => 'tamper csv_project_import',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds_tamper',
-  );
-
-  // Exported permission: tamper csv_teleconference_import.
-  $permissions['tamper csv_teleconference_import'] = array(
-    'name' => 'tamper csv_teleconference_import',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds_tamper',
   );
 
   // Exported permission: view any unpublished project content.

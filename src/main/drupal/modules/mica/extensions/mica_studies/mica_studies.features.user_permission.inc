@@ -89,24 +89,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: administer feeds.
-  $permissions['administer feeds'] = array(
-    'name' => 'administer feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: administer feeds_tamper.
-  $permissions['administer feeds_tamper'] = array(
-    'name' => 'administer feeds_tamper',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds_tamper',
-  );
-
   // Exported permission: administer field permissions.
   $permissions['administer field permissions'] = array(
     'name' => 'administer field permissions',
@@ -196,33 +178,6 @@ function mica_studies_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'workbench_moderation',
-  );
-
-  // Exported permission: clear csv_contact_import feeds.
-  $permissions['clear csv_contact_import feeds'] = array(
-    'name' => 'clear csv_contact_import feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: clear csv_documents_import feeds.
-  $permissions['clear csv_documents_import feeds'] = array(
-    'name' => 'clear csv_documents_import feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: clear csv_study_import feeds.
-  $permissions['clear csv_study_import feeds'] = array(
-    'name' => 'clear csv_study_import feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
   );
 
   // Exported permission: create article content.
@@ -896,33 +851,6 @@ function mica_studies_user_default_permissions() {
     'module' => 'mica_studies',
   );
 
-  // Exported permission: import csv_contact_import feeds.
-  $permissions['import csv_contact_import feeds'] = array(
-    'name' => 'import csv_contact_import feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: import csv_documents_import feeds.
-  $permissions['import csv_documents_import feeds'] = array(
-    'name' => 'import csv_documents_import feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: import csv_study_import feeds.
-  $permissions['import csv_study_import feeds'] = array(
-    'name' => 'import csv_study_import feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
   // Exported permission: moderate content from draft to needs_review.
   $permissions['moderate content from draft to needs_review'] = array(
     'name' => 'moderate content from draft to needs_review',
@@ -1006,33 +934,6 @@ function mica_studies_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'comment',
-  );
-
-  // Exported permission: tamper csv_contact_import.
-  $permissions['tamper csv_contact_import'] = array(
-    'name' => 'tamper csv_contact_import',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds_tamper',
-  );
-
-  // Exported permission: tamper csv_documents_import.
-  $permissions['tamper csv_documents_import'] = array(
-    'name' => 'tamper csv_documents_import',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds_tamper',
-  );
-
-  // Exported permission: tamper csv_study_import.
-  $permissions['tamper csv_study_import'] = array(
-    'name' => 'tamper csv_study_import',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds_tamper',
   );
 
   // Exported permission: use advanced search.

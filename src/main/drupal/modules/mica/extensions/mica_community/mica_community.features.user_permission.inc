@@ -10,24 +10,6 @@
 function mica_community_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: clear csv_event_import feeds.
-  $permissions['clear csv_event_import feeds'] = array(
-    'name' => 'clear csv_event_import feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: clear csv_publication_import feeds.
-  $permissions['clear csv_publication_import feeds'] = array(
-    'name' => 'clear csv_publication_import feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
   // Exported permission: create blog content.
   $permissions['create blog content'] = array(
     'name' => 'create blog content',
@@ -231,33 +213,6 @@ function mica_community_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'node',
-  );
-
-  // Exported permission: import csv_publication_import feeds.
-  $permissions['import csv_publication_import feeds'] = array(
-    'name' => 'import csv_publication_import feeds',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds',
-  );
-
-  // Exported permission: tamper csv_event_import.
-  $permissions['tamper csv_event_import'] = array(
-    'name' => 'tamper csv_event_import',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds_tamper',
-  );
-
-  // Exported permission: tamper csv_publication_import.
-  $permissions['tamper csv_publication_import'] = array(
-    'name' => 'tamper csv_publication_import',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'feeds_tamper',
   );
 
   // Exported permission: view any unpublished blog content.
