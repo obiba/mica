@@ -20,7 +20,7 @@ function _mica_i18n_devel_form() {
   return $form;
 }
 
-function _mica_i18n_update(){
+function _mica_i18n_update() {
   mica_i18n_fix_entity_display();
 
   // Explicitly set 'Default translated' display format for all fields of type list_text
