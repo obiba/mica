@@ -141,7 +141,7 @@ function mica_connector_query_multiple($dataset_id, $enabled = NULL) {
   $connectors = array();
 
   // check rights to make query
-  if (_mica_datasets_node_queries_access(node_load($dataset_id), 'view')) {
+  if (_mica_datasets_node_access(node_load($dataset_id), 'dataset', 'view')) {
     $q = db_select('mica_connector', 'c');
     $q->addField('c', 'id');
     $q->condition('c.dataset_id', $dataset_id);
