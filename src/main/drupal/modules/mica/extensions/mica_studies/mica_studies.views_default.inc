@@ -76,7 +76,7 @@ function mica_studies_views_default_views() {
   $handler->display->display_options['fields']['field_telephone']['field'] = 'field_telephone';
   $handler->display->display_options['fields']['field_telephone']['label'] = 'telephone';
   $handler->display->display_options['fields']['field_telephone']['alter']['trim_whitespace'] = TRUE;
-  /* Field: Content: Institution Name */
+  /* Field: Content: Institution name */
   $handler->display->display_options['fields']['field_institution_name']['id'] = 'field_institution_name';
   $handler->display->display_options['fields']['field_institution_name']['table'] = 'field_data_field_institution_name';
   $handler->display->display_options['fields']['field_institution_name']['field'] = 'field_institution_name';
