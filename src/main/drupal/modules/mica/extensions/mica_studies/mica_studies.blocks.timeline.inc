@@ -67,6 +67,15 @@ function _mica_studies_block_study_timeline($study) {
 
   $events_details = '<div>' . implode(' ', $event_view) . '</div>';
 
+  if (preg_match('/(?i)msie [1-8]/',$_SERVER['HTTP_USER_AGENT'])) {
+    $errorMsg = t('In order to view the timeline you must have Internet Explorer 9 or higher.');
+
+    return array(
+      'subject' => t('Study Timeline') . '<a name="timeline"> </a>',
+      'content' => '<div class="timeline-error">' . $errorMsg . '</div>'
+    );
+  }
+
   ctools_add_css('mica_studies.timeline', 'mica_studies');
   ctools_add_js('d3.v3.min', 'mica_studies');
   ctools_add_js('d3-timeline', 'mica_studies');
