@@ -1,5 +1,5 @@
 <?php
-
+require_once('mica_studies.install');
 function _mica_studies_longitudinal_migration() {
 
   $operations[] = array('_mica_studies_features_revert', array());
