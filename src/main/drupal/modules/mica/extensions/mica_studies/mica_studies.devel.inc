@@ -14,12 +14,6 @@ function _mica_studies_devel_form() {
     '#submit' => array('_mica_studies_longitudinal_migration'),
   );
 
-  $form['migrate']['blocks'] = array(
-    '#type' => 'submit',
-    '#value' => t('blocks'),
-    '#submit' => array('_mica_studies_config_blocks'),
-  );
-
   $form['field_descriptions'] = array(
     '#type' => 'fieldset',
     '#title' => t('Field Descriptions'),
