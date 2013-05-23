@@ -43,6 +43,7 @@
         tickSize: 10
       })
       .margin({left: 15, right: 15, top: 0, bottom: 20})
+      .rotateTicks(45)
       .click(function (d, i, datum) {
         $('#event-' + d.id).modal();
       });
