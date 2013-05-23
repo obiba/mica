@@ -134,9 +134,9 @@ function _mica_distribution_drupal_default_blocks($default_theme, $admin_theme) 
 function _mica_distribution_no_region($module, $delta, $theme = 'seven') {
   db_update('block')
     ->fields(array(
-    'region' => BLOCK_REGION_NONE,
-    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-  ))
+      'region' => BLOCK_REGION_NONE,
+      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    ))
     ->condition('module', $module)
     ->condition('delta', $delta)
     ->condition('theme', $theme)
@@ -259,17 +259,6 @@ function _mica_distribution_default_block($mica_theme = 'mica_subtheme', $admin_
       'module' => 'forum',
       'delta' => 'new',
       'theme' => $admin_theme,
-      'status' => 1,
-      'weight' => 0,
-      'region' => BLOCK_REGION_NONE,
-      'visibility' => BLOCK_VISIBILITY_NOTLISTED,
-      'pages' => '',
-      'cache' => -1,
-    ),
-    array(
-      'module' => 'superfish',
-      'delta' => '1',
-      'theme' => $mica_theme,
       'status' => 1,
       'weight' => 0,
       'region' => BLOCK_REGION_NONE,
