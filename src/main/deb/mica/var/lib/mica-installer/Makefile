@@ -110,6 +110,7 @@ include mica-1.4-update.mk
 include mica-5.x-update.mk
 include mica-6.x-update.mk
 include mica-7.x-update.mk
+include mica-8.x-update.mk
 
 mica-prepare-update: drush mica-maintenance-mode-on mica-backup mica-delete mica-copy-user-files delete-core mica-dist-install mica-restore-user-data mica-clear-tmp-update mica-echo-update
 
