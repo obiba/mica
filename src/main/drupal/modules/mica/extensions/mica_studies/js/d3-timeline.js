@@ -76,8 +76,7 @@
         .scale(xScale)
         .orient(orient)
         .tickFormat(tickFormat.format)
-//        .ticks(Math.max(1, Math.min(20, ending-beginning)))
-        .ticks(Math.max(1, ending-beginning))
+        .tickValues(tickFormat.tickValues)
         .tickSize(tickFormat.tickSize);
 
       // draw axis
