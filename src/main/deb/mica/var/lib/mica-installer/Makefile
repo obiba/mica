@@ -24,7 +24,7 @@ db_pass=
 # Drush install
 #
 
-drush_version=5.8
+drush_version=5.9
 
 all: 
 
@@ -32,7 +32,7 @@ drush:
 	@echo "**** Drush install"
 	if [ ! -e $(drushexec) ]; then \
 	  cd /var/cache/mica-installer && \
-	  wget -q http://ftp.drupal.org/files/projects/drush-$(drupal_version)-$(drush_version).tar.gz && \
+	  wget http://ftp.drupal.org/files/projects/drush-$(drupal_version)-$(drush_version).tar.gz && \
 	  tar xzf drush-$(drupal_version)-$(drush_version).tar.gz ; \
 	fi
 	$(drushexec) version
@@ -61,7 +61,7 @@ mica-dist-install-prepare:
 	@echo "**** Download Mica archive"
 	mkdir -p /var/cache/mica-installer/target && \
 	cd /var/cache/mica-installer/target && \
-	wget -q http://ftp.drupal.org/files/projects/mica_distribution-$(drupal_version)-$(dist_version)-core.tar.gz && \
+	wget http://ftp.drupal.org/files/projects/mica_distribution-$(drupal_version)-$(dist_version)-core.tar.gz && \
 	#cp ${HOME}/projects/mica/target/mica_distribution-$(drupal_version)-$(dist_version).tar.gz mica_distribution-$(drupal_version)-$(dist_version)-core.tar.gz && \
 	tar xzf mica_distribution-$(drupal_version)-$(dist_version)-core.tar.gz && \
 	mv mica_distribution-$(drupal_version)-$(dist_version) mica && \

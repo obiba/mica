@@ -5369,7 +5369,7 @@ form#search-block-form {
   margin: 0;
 }
 .navbar #block-search-form {
-  float: right;
+  float: left;
   margin: 5px 0 5px 5px;
 }
 @media (max-width: 767px), (min-width: 768px) and (max-width: 979px) {
@@ -6861,6 +6861,11 @@ section#block-views-news-recent-news article h2 {
 }
 .node-type-study section#block-mica-studies-study-timeline .timeline-help {
   margin-bottom: 10px;
+}
+.node-type-study section#block-mica-studies-study-timeline .timeline-error {
+  font-size: medium;
+  padding: 10px;
+  color: #b94a48;
 }
 .node-type-study section#block-mica-studies-study-timeline ul.timeline-legend {
   margin: 10px 0 0 0;

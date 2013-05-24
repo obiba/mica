@@ -72,7 +72,7 @@ do_start()
     #   2 if daemon could not be started
     $DAEMON $DAEMON_ARGS --running && return 1
 
-    $DAEMON $DAEMON_ARGS -- $JAVA $JAVA_ARGS -jar start.jar || return 2
+    $DAEMON $DAEMON_ARGS -- $JAVA $JAVA_ARGS -Djava.util.logging.config.file=etc/logging.properties -jar start.jar || return 2
 }
 
 #

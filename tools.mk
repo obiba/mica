@@ -36,3 +36,8 @@ install-nodejs:
 
 install-bootstrap-dependencies:
 	npm install less connect uglify-js@1 jshint -g
+
+install-packaging-dependencies:
+	apt-get install devscripts debhelper
+
+install-tools: install-packaging-dependencies install-drush install-lessc install-solr

@@ -1181,7 +1181,7 @@ form#search-block-form {
   margin: 0;
 }
 .navbar #block-search-form {
-  float: right;
+  float: left;
   margin: 5px 0 5px 5px;
 }
 @media (max-width: 767px), (min-width: 768px) and (max-width: 979px) {
