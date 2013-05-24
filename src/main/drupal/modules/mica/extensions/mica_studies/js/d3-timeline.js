@@ -72,11 +72,11 @@
         .domain([beginning, ending])
         .range([margin.left, width - margin.right]);
 
-
       var xAxis = d3.svg.axis()
         .scale(xScale)
         .orient(orient)
         .tickFormat(tickFormat.format)
+        .tickValues(tickFormat.tickValues)
         .tickSize(tickFormat.tickSize);
 
       // draw axis
@@ -84,6 +84,7 @@
         .attr("class", "axis")
         .attr("transform", "translate(" + 0 + "," + (margin.top + (itemHeight + itemMargin) * maxStack) + ")")
         .call(xAxis);
+
 
       // draw the chart
       g.each(function (d, i) {
@@ -146,7 +147,7 @@
       var gSize = g[0][0].getBoundingClientRect();
       setHeight();
 
-      function getXPos(d, i, index) {
+      function getXPos(d, i) {
         return margin.left + (d.starting_time - beginning) * scaleFactor;
       }
 
