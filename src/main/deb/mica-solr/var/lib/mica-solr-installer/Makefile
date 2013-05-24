@@ -34,7 +34,7 @@ mica-solr-install-prepare:
 	@echo "**** Downloading Apache Solr version $(solr_version)"
 	mkdir -p target && \
 	cd target && \
-	wget -q http://archive.apache.org/dist/lucene/solr/$(solr_version)/solr-$(solr_version).tgz && \
+	wget http://archive.apache.org/dist/lucene/solr/$(solr_version)/solr-$(solr_version).tgz && \
 	tar xzf solr-$(solr_version).tgz
 
 mica-solr-backup:
