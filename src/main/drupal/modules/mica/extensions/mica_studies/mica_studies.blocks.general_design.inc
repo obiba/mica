@@ -32,7 +32,8 @@ function _mica_studies_block_study_general_design($study) {
 function _mica_studies_block_study_general_design_field_design($study_wrapper, $weight) {
   $field_view = field_view_field('node', $study_wrapper->value(), 'field_design', array(
     'label' => 'inline',
-    'weight' => $weight
+    'weight' => $weight,
+    'type' => module_exists('i18n') ? 'i18n_list_default' : 'list_default',
   ));
   $design = $study_wrapper->field_design->value();
   $other_sp = $study_wrapper->field_design_other_sp->value();
@@ -46,7 +47,8 @@ function _mica_studies_block_study_general_design_field_design($study_wrapper, $
 function _mica_studies_block_study_general_design_field_recruitment($study_wrapper, $weight) {
   $field_view = field_view_field('node', $study_wrapper->value(), 'field_recruitment', array(
     'label' => 'inline',
-    'weight' => $weight
+    'weight' => $weight,
+    'type' => module_exists('i18n') ? 'i18n_list_default' : 'list_default',
   ));
   $recruitment = $study_wrapper->field_recruitment->value();
   $other_sp = $study_wrapper->field_recruitment_other_sp->value();

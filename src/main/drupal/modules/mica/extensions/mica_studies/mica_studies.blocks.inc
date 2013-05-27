@@ -1,5 +1,7 @@
 <?php
 
+
+
 function _mica_studies_block_study_general_info($study) {
   // $study can be the study nid
   if (is_numeric($study)) {
@@ -28,8 +30,16 @@ function _mica_studies_block_study_access($study) {
   }
   $weight = 0;
   $content = array(
-    field_view_field('node', $study, 'field_access_data', array('label' => 'inline', 'weight' => ++$weight)),
-    field_view_field('node', $study, 'field_access_biosamples', array('label' => 'inline', 'weight' => ++$weight)),
+    field_view_field('node', $study, 'field_access_data', array(
+      'label' => 'inline',
+      'weight' => ++$weight,
+      'type' => module_exists('i18n') ? 'i18n_list_default' : 'list_default',
+    )),
+    field_view_field('node', $study, 'field_access_biosamples', array(
+      'label' => 'inline',
+      'weight' => ++$weight,
+      'type' => module_exists('i18n') ? 'i18n_list_default' : 'list_default',
+    )),
   );
   $other = _mica_studies_simulate_other_specify_field($study, 'field_access_other', 'field_access_other_sp', ++$weight);
   if (!empty($other)) {
@@ -99,7 +109,11 @@ function _mica_studies_simulate_other_specify_field($node, $field_other, $field_
     return NULL;
   }
 
-  $field = field_view_field('node', $node, $field_other, array('label' => 'inline', 'weight' => $weight));
+  $field = field_view_field('node', $node, $field_other, array(
+    'label' => 'inline',
+    'weight' => $weight,
+    'type' => module_exists('i18n') ? 'i18n_list_default' : 'list_default',
+  ));
   $other_sp = $wrapper->{$field_specify}->value();
   if (!empty($other_sp)) {
     $field_specify_view = field_view_field('node', $node, $field_specify);

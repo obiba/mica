@@ -487,7 +487,7 @@ function mica_studies_field_group_info() {
       'instance_settings' => array(
         'required_fields' => 1,
         'classes' => '',
-        'description' => 'If relevant, please provide the bibliographic citations (i.e. published sources such as journal article, web site, or report) which should be used to refer to your study.',
+        'description' => '',
       ),
       'formatter' => 'closed',
     ),
