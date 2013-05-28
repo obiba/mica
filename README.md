@@ -40,6 +40,24 @@ Once Mica is installed it probably needs to be configured for your environment. 
 in our wiki [here](http://wiki.obiba.org/display/MICADOC).
 
 
+## Build
+    
+Prepare third party tools:
+
+    make install-tools 
+    make start-solr
+    
+Prepare Drupal/Mica instance
+
+    make dev
+
+Configure Apache
+
+    sudo ln -s mica/target/mica-dev /var/www/mica-dev
+
+Then go to [http://localhost/mica-dev](http://localhost/mica-dev)
+    
+
 ## Bug tracker
 
 Have a bug? Please create an issue on [OBiBa JIRA](http://jira.obiba.org/jira/browse/MICA).
