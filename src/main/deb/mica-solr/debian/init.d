@@ -43,20 +43,20 @@ get_daemon_status()
     $DAEMON $DAEMON_ARGS --running || return 1
 }
 
-get_running() 
+get_running()
 {
     return `ps -U $MICA_SOLR_USER --no-headers -f | egrep -e '(java|daemon)' | grep -c . `
 }
 
-get_running_daemon() 
+get_running_daemon()
 {
     return `ps -U $MICA_SOLR_USER --no-headers -f | egrep -e '(daemon)' | grep -c . `
 }
 
-force_stop() 
+force_stop()
 {
     get_running
-    if [ $? -ne 0 ]; then 
+    if [ $? -ne 0 ]; then
         killall -u $MICA_SOLR_USER java || return 3
     fi
 }
@@ -71,8 +71,7 @@ do_start()
     #   1 if daemon was already running
     #   2 if daemon could not be started
     $DAEMON $DAEMON_ARGS --running && return 1
-
-    $DAEMON $DAEMON_ARGS -- $JAVA $JAVA_ARGS -Djava.util.logging.config.file=etc/logging.properties -jar start.jar || return 2
+    $DAEMON $DAEMON_ARGS -- $JAVA $JAVA_ARGS -jar start.jar || return 2
 }
 
 #
@@ -85,9 +84,9 @@ do_stop()
     #   1 if daemon was already stopped
     #   2 if daemon could not be stopped
     #   other if a failure occurred
-    get_daemon_status 
+    get_daemon_status
     case "$?" in
-        0) 
+        0)
             $DAEMON $DAEMON_ARGS --stop || return 2
         # wait for the process to really terminate
         echo -n "   "
@@ -127,7 +126,7 @@ do_reload() {
 #
 # Make sure mica-solr tmp dir exists, otherwise daemon calls will fail
 #
-if [ ! -d $TMPDIR ]; then 
+if [ ! -d $TMPDIR ]; then
   mkdir $TMPDIR
   chown -R $MICA_SOLR_USER:$MICA_SOLR_USER $TMPDIR
   chmod -R 750 $TMPDIR
@@ -174,22 +173,22 @@ case "$1" in
     ;;
   status)
       get_daemon_status
-      case "$?" in 
+      case "$?" in
          0) echo "$DESC is running with the pid `cat $PIDFILE`";;
-         *) 
+         *)
               get_running_daemon
               procs=$?
-              if [ $procs -eq 0 ]; then 
+              if [ $procs -eq 0 ]; then
                   echo -n "$DESC is not running"
-                  if [ -f $PIDFILE ]; then 
+                  if [ -f $PIDFILE ]; then
                       echo ", but the pidfile ($PIDFILE) still exists"
-                  else 
+                  else
                       echo
                   fi
-              elif [ $procs -eq 1 ]; then 
+              elif [ $procs -eq 1 ]; then
                   echo "An instance of mica-solr is running at the moment"
                   echo "but the pidfile $PIDFILE is missing"
-              else 
+              else
                   echo "$procs instances of mica-solr are running at the moment"
                   echo "but the pidfile $PIDFILE is missing"
               fi

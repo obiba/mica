@@ -34,7 +34,8 @@ mica-solr-install-prepare:
 	@echo "**** Downloading Apache Solr version $(solr_version)"
 	mkdir -p target && \
 	cd target && \
-	wget -q http://archive.apache.org/dist/lucene/solr/$(solr_version)/solr-$(solr_version).tgz && \
+	wget http://archive.apache.org/dist/lucene/solr/$(solr_version)/solr-$(solr_version).tgz && \
+	#cp /home/cthiebault/Downloads/solr-$(solr_version).tgz . && \
 	tar xzf solr-$(solr_version).tgz
 
 mica-solr-backup:
@@ -58,13 +59,12 @@ solr-copy-config-files:
 	fi
 
 solr-install-finish:
+	chown -R www-data:www-data /usr/share/mica-solr && \
 	rmdir /usr/share/mica-solr/logs && \
 	ln -s /var/log/mica-solr /usr/share/mica-solr/logs && \
-	cd /etc && \
-	mv /usr/share/mica-solr/solr/collection1/conf mica-solr && \
+	mv /usr/share/mica-solr/solr/collection1/conf /etc/mica-solr && \
 	ln -s /etc/mica-solr/conf /usr/share/mica-solr/solr/collection1/conf && \
 	ln -s /var/lib/mica-solr/data /usr/share/mica-solr/solr/collection1/data
-
 
 #
 # Clean
