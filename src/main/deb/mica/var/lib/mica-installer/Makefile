@@ -49,7 +49,7 @@ else
 	@echo "**** Mica core/modules/themes/profiles upgrade from $(oldversion)"
 	make mica-prepare-update
 endif
-	service mica-solr start
+	#service mica-solr start
 
 #
 # Mica dist install
