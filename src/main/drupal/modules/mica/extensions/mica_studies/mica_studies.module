@@ -662,15 +662,15 @@ function mica_studies_block_view_alter(&$data, $block) {
 function _mica_studies_study_current_search(&$data, $block) {
   if (isset($data['content']['field_group'])) {
     $data['content']['results']['#markup'] .= ' - ' . l(
-      t('Clear all criteria') . ' [X]',
-      'studies-search',
-      array(
-        'attributes' => array(
-          'rel' => 'nofollow',
-          'class' => array('current-search-clear-all'),
+        t('Clear all criteria') . ' [X]',
+        'studies-search',
+        array(
+          'attributes' => array(
+            'rel' => 'nofollow',
+            'class' => array('current-search-clear-all'),
+          )
         )
-      )
-    );
+      );
     foreach ($data['content']['field_group'] as $field => $field_group) {
       $field_info = field_info_instance('node', $field, 'study');
       if (isset($field_info['display_label']) && strlen(trim($field_info['display_label'])) > 0) {
@@ -765,7 +765,7 @@ function  mica_studies_node_delete($node) {
  * Implements hook_block_info().
  */
 function mica_studies_block_info() {
-  $pages = "<?php if(arg(0) == 'node' && is_numeric(arg(1)) && ((arg(2) == ''|| arg(2) == 'view'))) return TRUE; ?>";
+  $pages = "<?php if(arg(0) == 'node' && is_numeric(arg(1)) && ((arg(2) == ''|| arg(2) == 'view' || arg(2) == 'draft'))) return TRUE; ?>";
   return array(
     'study-general-info' => array(
       'info' => t('Study General Information'),
@@ -875,6 +875,13 @@ function mica_studies_block_info() {
 function mica_studies_block_view($delta = '') {
   module_load_include('inc', 'mica_studies', 'mica_studies.blocks');
   $study = menu_get_object();
+
+  $draft = (strpos(current_path(), '/draft') > 0);
+  if ($draft) {
+    $study = workbench_moderation_node_current_load($study);
+    drupal_set_message(t('Timeline and Populations blocks are not visible in draft mode.'), 'warning', FALSE);
+  }
+
   if (empty($study)) {
     return NULL;
   }
@@ -893,10 +900,10 @@ function mica_studies_block_view($delta = '') {
     case 'study-supp-infos':
       return _mica_studies_block_study_supp_infos($study);
     case 'study-populations':
-      return _mica_studies_block_study_populations($study);
+      return $draft ? NULL : _mica_studies_block_study_populations($study);
     case 'study-timeline':
       module_load_include('inc', 'mica_studies', 'mica_studies.blocks.timeline');
-      return _mica_studies_block_study_timeline($study);
+      return $draft ? NULL : _mica_studies_block_study_timeline($study);
     case 'study-datasets':
       return _mica_studies_block_study_datasets($study);
     case 'study-authorization':

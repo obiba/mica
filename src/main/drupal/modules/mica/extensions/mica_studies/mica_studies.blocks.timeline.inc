@@ -67,7 +67,7 @@ function _mica_studies_block_study_timeline($study) {
 
   $events_details = '<div>' . implode(' ', $event_view) . '</div>';
 
-  if (preg_match('/(?i)msie [1-8]/',$_SERVER['HTTP_USER_AGENT'])) {
+  if (preg_match('/(?i)msie [1-8]/', $_SERVER['HTTP_USER_AGENT'])) {
     $errorMsg = t('In order to view the timeline you must have Internet Explorer 9 or higher.');
 
     return array(
@@ -86,8 +86,8 @@ function _mica_studies_block_study_timeline($study) {
   drupal_add_js(array('timeline_legend_data' => $pop_svg), array('type' => 'setting'));
 
   $label = t('Each colour in the timeline graph below represents a separate Study Population, '
-    . 'while each segment in the graph represents a separate Data Collection Event. '
-    . 'Clicking on a segment gives more detailed information on a Data Collection Event.');
+  . 'while each segment in the graph represents a separate Data Collection Event. '
+  . 'Clicking on a segment gives more detailed information on a Data Collection Event.');
 
   return array(
     'subject' => t('Study Timeline') . '<a name="timeline"> </a>',
