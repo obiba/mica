@@ -159,7 +159,6 @@ mica-delete-module-8.0:
 	$(call delete-module,ckeditor) && \
 	$(call delete-module,collapsiblock) && \
 	$(call delete-module,jquery_update) && \
-	$(call delete-module,superfish) && \
 	$(call delete-module,variable) && \
 	$(call delete-module,variable_admin) && \
 	$(call delete-module,variable_advanced) && \

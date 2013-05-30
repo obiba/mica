@@ -68,13 +68,14 @@ mica-dist-install-prepare:
 	rm -rf mica/profiles/minimal && \
 	rm -rf mica/profiles/standard && \
 	rm -rf mica/profiles/testing && \
-	chown -R root:www-data mica && \
+	chown -R www-data:www-data mica && \
 	mv mica /usr/share
 
 drupal-profiles:
 	@echo "**** Prepare Mica profile"
 	mv /usr/share/mica/profiles/* /etc/mica/profiles && \
 	rmdir /usr/share/mica/profiles && \
+	chown -R www-data:www-data /etc/mica/profiles && \
 	ln -s /etc/mica/profiles /usr/share/mica/profiles
 
 drupal-sites:
@@ -84,11 +85,14 @@ drupal-sites:
 	rmdir /usr/share/mica/sites/default && \
 	mv /usr/share/mica/sites/* /etc/mica/sites/ && \
 	rmdir /usr/share/mica/sites && \
+	chown -R www-data:www-data /etc/mica/sites && \
+	chmod -R u+w /etc/mica/sites/default && \
 	ln -s /etc/mica/sites /usr/share/mica/sites && \
 	mkdir -p /etc/mica/sites/default/files && \
 	cp -r /etc/mica/sites/default/files /var/lib/mica/default && \
 	rm -rf /etc/mica/sites/default/files && \
 	ln -s /var/lib/mica/default/files /etc/mica/sites/default/files && \
+	chown -R www-data:www-data /var/lib/mica/default/files && \
 	chmod a+w /var/lib/mica/default/files && \
 	if [ ! -e /etc/mica/sites/default/settings.php ]; then \
 		cp /etc/mica/sites/default/default.settings.php /etc/mica/sites/default/settings.php ; \
