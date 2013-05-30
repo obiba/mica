@@ -12,15 +12,20 @@
       <w>devel</w>
       <w>dropdown</w>
       <w>drush</w>
+      <w>endif</w>
       <w>facetapi</w>
       <w>filepath</w>
+      <w>findstring</w>
       <w>godiagram</w>
       <w>harmonizations</w>
+      <w>ifeq</w>
       <w>imagecache</w>
       <w>infos</w>
       <w>jsonpath</w>
       <w>langcode</w>
+      <w>lessc</w>
       <w>logintoboggan</w>
+      <w>micadir</w>
       <w>mkdir</w>
       <w>noderefcreate</w>
       <w>plid</w>
