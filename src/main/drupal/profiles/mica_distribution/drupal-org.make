@@ -9,7 +9,7 @@ api = "2"
 
 projects[acl] = 1.0
 
-projects[auto_entitylabel] = 1.1
+projects[auto_entitylabel] = 1.2
 
 projects[autocomplete_deluxe][download][type] = git
 projects[autocomplete_deluxe][download][revision] = c562451
@@ -147,7 +147,7 @@ projects[menu_view_unpublished][download][type] = git
 projects[menu_view_unpublished][download][revision] = 5f1f951
 projects[menu_view_unpublished][download][branch] = 7.x-1.x
 
-projects[mica] = 8.0-rc2
+projects[mica] = 8.0-rc3
 
 projects[module_filter] = 1.7
 
@@ -180,11 +180,9 @@ projects[references][download][revision] = 311bd49
 projects[references][download][branch] = 7.x-2.x
 projects[references][patch][1988436] = http://drupal.org/files/references-hook_node_reference_FIELD_potential_references_1988436_3.patch
 
-projects[search_api][version] = 1.5
+projects[search_api][version] = 1.6
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
-;projects[search_api][patch][1471310] = http://drupal.org/files/1471310--unset-field-8_0.patch
-;projects[search_api][patch][1594762] = http://drupal.org/files/1594762-18-deleted-terms-cause-indexing-crash.patch
 
 projects[search_api_combined] = 1.2
 
