@@ -26,14 +26,14 @@ db_pass=
 
 drush_version=5.9
 
-all: 
+all:
 
 drush:
 	@echo "**** Drush install"
 	if [ ! -e $(drushexec) ]; then \
-	  cd /var/cache/mica-installer && \
-	  wget http://ftp.drupal.org/files/projects/drush-$(drupal_version)-$(drush_version).tar.gz && \
-	  tar xzf drush-$(drupal_version)-$(drush_version).tar.gz ; \
+		cd /var/cache/mica-installer && \
+		wget http://ftp.drupal.org/files/projects/drush-$(drupal_version)-$(drush_version).tar.gz && \
+		tar xzf drush-$(drupal_version)-$(drush_version).tar.gz ; \
 	fi
 	$(drushexec) version
 
@@ -43,7 +43,7 @@ drush:
 
 install:
 ifndef oldversion
-	@echo "**** Mica distribution install" 
+	@echo "**** Mica distribution install"
 	make mica-dist-install
 else
 	@echo "**** Mica core/modules/themes/profiles upgrade from $(oldversion)"
@@ -101,7 +101,7 @@ drupal-sites:
 
 drupal-doc:
 	mv /usr/share/mica/*.txt /usr/share/doc/mica
-	mv /usr/share/doc/mica/robots.txt /usr/share/mica	
+	mv /usr/share/doc/mica/robots.txt /usr/share/mica
 
 
 #
@@ -149,22 +149,22 @@ mica-copy-user-files:
 	cp -L /etc/mica/sites/default/settings.php /var/cache/mica-installer/update
 
 delete-core:
-	@echo "**** Delete Drupal core" 
+	@echo "**** Delete Drupal core"
 	rm -rf /usr/share/mica && \
 	rm -rf /etc/mica/profiles/* && \
 	rm -rf /etc/mica/sites/*
 
 mica-restore-user-data:	mica-restore-user-config mica-restore-user-profiles mica-restore-user-sites mica-restore-user-files
 
-mica-restore-user-config:	
-	@echo "**** Restore user files" 
+mica-restore-user-config:
+	@echo "**** Restore user files"
 	cp /var/cache/mica-installer/update/.htaccess /usr/share/mica && \
 	cp /var/cache/mica-installer/update/settings.php /etc/mica/sites/default/settings.php
 
-mica-restore-user-profiles:	
+mica-restore-user-profiles:
 	if [ $(find /var/cache/mica-installer/update/profiles -type d -not -empty) ] ; then \
 		cp -rf /var/cache/mica-installer/update/profiles/* /etc/mica/profiles ; \
-	fi 
+	fi
 
 mica-restore-user-sites:
 	if [ $(find /var/cache/mica-installer/update/sites -type d -not -empty) ] ; then \
@@ -177,34 +177,34 @@ mica-restore-user-files:
 	fi
 
 mica-clear-tmp-update:
-	@echo "**** Clear temp files" 
+	@echo "**** Clear temp files"
 	rm -rf /var/cache/mica-installer/update
 
 mica-echo-update:
-	@echo 
+	@echo
 	@echo "****"
-	@echo 
+	@echo
 	@echo "Mica updates are ready to be applied:"
-	@echo 
+	@echo
 	@echo "  1. Run update.php by visiting http://www.example.com/update.php (replace www.example.com with your domain name)."
 	@echo "     This will update the database tables."
-	@echo 
+	@echo
 	@echo "     If you are unable to access update.php do the following:"
 	@echo "       - Open /usr/share/mica/sites/default/settings.php with a text editor."
 	@echo "       - Find the line that says: $update_free_access = FALSE;"
 	@echo "       - Change it into: $update_free_access = TRUE;"
-	@echo "     Once the upgrade is done, $update_free_access must be reverted to FALSE."	
+	@echo "     Once the upgrade is done, $update_free_access must be reverted to FALSE."
 	@echo
 	@echo "  2. Go to Administration > Configuration > Development and clear all caches."
 	@echo
-	@echo "  3. Go to Administration > Configuration > Development > Maintenance mode." 
+	@echo "  3. Go to Administration > Configuration > Development > Maintenance mode."
 	@echo "     Disable the 'Put site into maintenance mode' checkbox and save the configuration."
-	@echo  
+	@echo
 	@echo "Mica files and database were backuped before update to:"
 	@echo "  $(backupdir)"
-	@echo 
+	@echo
 	@echo "****"
-	@echo 
+	@echo
 
 #
 # Clean
