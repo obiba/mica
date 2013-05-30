@@ -127,10 +127,10 @@ function _mica_studies_block_study_datasets($study) {
   $rows = array();
   foreach ($wrapper->mica_dataset->getIterator() as $dataset_wrapper) {
     $desc = NULL;
-    if (!empty($wrapper->value()->body)) {
-      $desc = $wrapper->body->summary->value();
+    if (!empty($dataset_wrapper->value()->body)) {
+      $desc = $dataset_wrapper->body->summary->value();
       if (empty($desc)) {
-        $desc = truncate_utf8($wrapper->body->value->value(), 50, TRUE, TRUE);
+        $desc = truncate_utf8($dataset_wrapper->body->value->value(), 50, TRUE, TRUE);
       }
     }
     $rows[] = array(
