@@ -147,7 +147,7 @@ projects[menu_view_unpublished][download][type] = git
 projects[menu_view_unpublished][download][revision] = 5f1f951
 projects[menu_view_unpublished][download][branch] = 7.x-1.x
 
-projects[mica] = 8.0-rc4
+projects[mica] = 8.0-rc5
 
 projects[module_filter] = 1.7
 
@@ -202,8 +202,6 @@ projects[smtp] = 1.0-beta2
 
 projects[strongarm][version] = 2.0
 projects[strongarm][patch][1525768] = http://drupal.org/files/print_stdclass_variables.patch
-
-projects[superfish] = 1.9-beta4
 
 projects[taxonomy_csv] = 5.10
 
