@@ -89,7 +89,6 @@ mica-delete-module-8.0:
 	$(call delete-module,services) && \
 	$(call delete-module,smtp) && \
 	$(call delete-module,strongarm) && \
-	$(call delete-module,superfish) && \
 	$(call delete-module,taxonomy_csv) && \
 	$(call delete-module,taxonomy_manager) && \
 	$(call delete-module,title) && \
