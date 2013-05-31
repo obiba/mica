@@ -28,7 +28,8 @@ endif
 
 mica-solr-install: mica-solr-install-prepare solr-install
 
-mica-solr-update: mica-solr-backup mica-solr-delete mica-solr-install
+mica-solr-update: mica-solr-install-prepare mica-solr-backup mica-solr-delete solr-install
+	/etc/init.d/mica-solr start
 
 mica-solr-install-prepare:
 	@echo "**** Downloading Apache Solr version $(solr_version)"
@@ -46,7 +47,10 @@ mica-solr-backup:
 
 mica-solr-delete:
 	@echo "**** Delete previous mica-solr $(oldversion)"
-	rm -rf /usr/share/mica-solr
+	rm -rf /usr/share/mica-solr/* && \
+	rm -rf /var/log/mica-solr && \
+	rm -rf /etc/mica-solr/conf && \
+	rm -rf /var/lib/mica-solr/data
 
 solr-install: solr-install-setup solr-copy-config-files solr-install-finish
 
@@ -63,12 +67,16 @@ solr-copy-config-files:
 	fi
 
 solr-install-finish:
+	rm -rf /usr/share/mica-solr/logs && \
 	chown -R www-data:www-data /usr/share/mica-solr && \
-	rmdir /usr/share/mica-solr/logs && \
+	mkdir -p /var/log/mica-solr && \
 	ln -s /var/log/mica-solr /usr/share/mica-solr/logs && \
+	chown -R www-data:www-data /var/log/mica-solr && \
 	mv /usr/share/mica-solr/solr/collection1/conf /etc/mica-solr && \
 	ln -s /etc/mica-solr/conf /usr/share/mica-solr/solr/collection1/conf && \
-	ln -s /var/lib/mica-solr/data /usr/share/mica-solr/solr/collection1/data
+	chown -R www-data:www-data /etc/mica-solr && \
+	ln -s /usr/share/mica-solr/solr/collection1/data /var/lib/mica-solr/data && \
+	chown -R www-data:www-data /var/lib/mica-solr
 
 #
 # Clean
