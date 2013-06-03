@@ -13,7 +13,7 @@ function mica_core_user_default_roles() {
   // Exported role: consortium administrator.
   $roles['consortium administrator'] = array(
     'name' => 'consortium administrator',
-    'weight' => '3',
+    'weight' => 3,
   );
 
   return $roles;

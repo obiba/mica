@@ -9,22 +9,24 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
 
   $dce_rows = array();
   foreach ($wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
-    $start = $dce_wrapper->field_dce_start_year->value();
-    $end = $dce_wrapper->field_dce_end_year->value();
-    $desc = NULL;
-    if (!empty($dce_wrapper->value()->body)) {
-      $desc = $dce_wrapper->body->summary->value();
-      if (empty($desc)) {
-        $desc = truncate_utf8($dce_wrapper->body->value->value(), 50, TRUE, TRUE);
+    if (node_access('view', $dce_wrapper->value())) {
+      $start = $dce_wrapper->field_dce_start_year->value();
+      $end = $dce_wrapper->field_dce_end_year->value();
+      $desc = NULL;
+      if (!empty($dce_wrapper->value()->body)) {
+        $desc = $dce_wrapper->body->summary->value();
+        if (empty($desc)) {
+          $desc = truncate_utf8($dce_wrapper->body->value->value(), 50, TRUE, TRUE);
+        }
       }
+      $dce_nid = $dce_wrapper->nid->value();
+      $dce_rows[$dce_nid] = array(
+        'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
+        'desc' => $desc,
+        'start' => empty($start) ? '' : $start,
+        'end' => empty($end) ? '' : $end,
+      );
     }
-    $dce_nid = $dce_wrapper->nid->value();
-    $dce_rows[$dce_nid] = array(
-      'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
-      'desc' => $desc,
-      'start' => empty($start) ? '' : $start,
-      'end' => empty($end) ? '' : $end,
-    );
   }
   if (!empty($dce_rows)) {
     uasort($dce_rows, '_mica_studies_sort_dce');

@@ -26,29 +26,34 @@ function _mica_studies_block_study_timeline($study) {
 
   foreach (_mica_studies_sort_populations($study) as $population_nid) {
     $pop_wrapper = entity_metadata_wrapper('node', $population_nid);
-    $pop_nid = $pop_wrapper->nid->value();
-    $pop_title = $pop_wrapper->title->value();
+    if (node_access('view', $pop_wrapper->value())) {
 
-    $color = $colors[$color_index++];
-    $svg = "<svg width='25' height='25'><rect width='20' height='20' x='2' y='2' rx='5' ry='5' style='fill:$color;'/></svg>";
+      $pop_nid = $pop_wrapper->nid->value();
+      $pop_title = $pop_wrapper->title->value();
 
-    $legend_items[] = $svg . ' ' . $pop_title;
-    $pop_svg[] = array('pop_nid' => $pop_nid, 'svg' => $svg);
-    foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
-      $start = $dce_wrapper->field_dce_start_year->value();
-      $end = $dce_wrapper->field_dce_end_year->value();
-      $dce_nid = $dce_wrapper->nid->value();
-      if (!empty($start) && !empty($end)) {
-        $events[] = array(
-          'color' => $color,
-          'pop_nid' => $pop_wrapper->nid->value(),
-          'pop_title' => $pop_wrapper->title->value(),
-          'dce_nid' => $dce_nid,
-          'dce_title' => $dce_wrapper->title->value(),
-          'start' => $start,
-          'end' => $end,
-        );
-        $event_view[] = _mica_studies_block_study_timeline_prepare_modal($dce_nid);
+      $color = $colors[$color_index++];
+      $svg = "<svg width='25' height='25'><rect width='20' height='20' x='2' y='2' rx='5' ry='5' style='fill:$color;'/></svg>";
+
+      $legend_items[] = $svg . ' ' . $pop_title;
+      $pop_svg[] = array('pop_nid' => $pop_nid, 'svg' => $svg);
+      foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
+        if (node_access('view', $dce_wrapper->value())) {
+          $start = $dce_wrapper->field_dce_start_year->value();
+          $end = $dce_wrapper->field_dce_end_year->value();
+          $dce_nid = $dce_wrapper->nid->value();
+          if (!empty($start) && !empty($end)) {
+            $events[] = array(
+              'color' => $color,
+              'pop_nid' => $pop_wrapper->nid->value(),
+              'pop_title' => $pop_wrapper->title->value(),
+              'dce_nid' => $dce_nid,
+              'dce_title' => $dce_wrapper->title->value(),
+              'start' => $start,
+              'end' => $end,
+            );
+            $event_view[] = _mica_studies_block_study_timeline_prepare_modal($dce_nid);
+          }
+        }
       }
     }
   }

@@ -12,7 +12,7 @@ function mica_core_ckeditor_profile_defaults() {
     'Advanced' => array(
       'name' => 'Advanced',
       'settings' => array(
-        'ss' => '2',
+        'ss' => 2,
         'default' => 't',
         'show_toggle' => 't',
         'uicolor' => 'default',
@@ -52,7 +52,8 @@ function mica_core_ckeditor_profile_defaults() {
         'html_entities' => 'f',
         'scayt_autoStartup' => 'f',
         'theme_config_js' => 'f',
-        'js_conf' => '',
+        'js_conf' => 'config.allowedContent = true;
+config.ignoreEmptyParagraph = false;',
         'loadPlugins' => array(
           'drupalbreaks' => array(
             'name' => 'drupalbreaks',
@@ -82,7 +83,7 @@ function mica_core_ckeditor_profile_defaults() {
     'Full' => array(
       'name' => 'Full',
       'settings' => array(
-        'ss' => '2',
+        'ss' => 2,
         'default' => 't',
         'show_toggle' => 't',
         'uicolor' => 'default',
@@ -122,7 +123,8 @@ function mica_core_ckeditor_profile_defaults() {
         'html_entities' => 'f',
         'scayt_autoStartup' => 'f',
         'theme_config_js' => 'f',
-        'js_conf' => '',
+        'js_conf' => 'config.allowedContent = true;
+config.ignoreEmptyParagraph = false;',
         'loadPlugins' => array(
           'drupalbreaks' => array(
             'name' => 'drupalbreaks',

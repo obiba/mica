@@ -126,7 +126,9 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
+    3 => '3',
     4 => '4',
+    7 => '7',
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -162,6 +164,10 @@ function mica_data_access_views_default_views() {
   $handler->display->display_options['fields']['field_project_summary']['id'] = 'field_project_summary';
   $handler->display->display_options['fields']['field_project_summary']['table'] = 'field_data_field_project_summary';
   $handler->display->display_options['fields']['field_project_summary']['field'] = 'field_project_summary';
+  $handler->display->display_options['fields']['field_project_summary']['type'] = 'text_summary_or_trimmed';
+  $handler->display->display_options['fields']['field_project_summary']['settings'] = array(
+    'trim_length' => '400',
+  );
   /* Field: Content: Representative Name */
   $handler->display->display_options['fields']['field_representative']['id'] = 'field_representative';
   $handler->display->display_options['fields']['field_representative']['table'] = 'field_data_field_representative';

@@ -13,13 +13,13 @@ function mica_data_access_user_default_roles() {
   // Exported role: data access committee officer.
   $roles['data access committee officer'] = array(
     'name' => 'data access committee officer',
-    'weight' => '6',
+    'weight' => 6,
   );
 
   // Exported role: researcher.
   $roles['researcher'] = array(
     'name' => 'researcher',
-    'weight' => '7',
+    'weight' => 7,
   );
 
   return $roles;

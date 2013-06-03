@@ -51,15 +51,6 @@ function mica_community_menu_local_tasks_alter(&$data, $router_item, $root_path)
         ),
       );
     }
-    if (node_access('create', 'institution')) {
-      $links['add-institution'] = array(
-        '#theme' => 'menu_local_action',
-        '#link' => array(
-          'title' => t('Add an Institution'),
-          'href' => 'node/add/institution',
-        ),
-      );
-    }
   }
   elseif ($root_path === 'events') {
     if (node_access('create', 'event')) {
