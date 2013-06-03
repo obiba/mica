@@ -41,7 +41,9 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
   $studies_by_id = array();
 
   $count_variables = 0;
+  $header[] = '';
   foreach ($studies as $study) {
+
     if (node_access('view', $study)) {
       $study_wrapper = entity_metadata_wrapper('node', $study);
       $acronym = $study_wrapper->field_acroym->value();
@@ -208,9 +210,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
     }
   }
 
-  $header = array(
-    'name' => t('Variables (%nb)', array('%nb' => $count_variables)),
-  );
+  $header[0] = t('Variables (%nb)', array('%nb' => $count_variables));
 
   $output = drupal_render(drupal_get_form('mica_datasets_harmonization_legend_form'));
   $output .= '<br/>';
