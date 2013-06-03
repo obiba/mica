@@ -21,14 +21,6 @@ function mica_studies_ctools_plugin_api() {
     return array("version" => "1");
   }
   list($module, $api) = func_get_args();
-  if ($module == "feeds" && $api == "feeds_importer_default") {
-    return array("version" => "1");
-  }
-  list($module, $api) = func_get_args();
-  if ($module == "feeds_tamper" && $api == "feeds_tamper_default") {
-    return array("version" => "2");
-  }
-  list($module, $api) = func_get_args();
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -162,6 +154,7 @@ function mica_studies_default_search_api_index() {
         "field_contacts_ref" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_design" : { "type" : "list\\u003Cstring\\u003E" },
         "field_design_other_sp" : { "type" : "text" },
+        "field_info_design_follow_up" : { "type" : "text" },
         "field_investigators" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_marker_paper" : { "type" : "text" },
         "field_no_limits_participants" : { "type" : "boolean" },
@@ -177,7 +170,6 @@ function mica_studies_default_search_api_index() {
         "field_target_nb_supp_info" : { "type" : "text" },
         "field_target_number_biosamples" : { "type" : "integer" },
         "field_target_number_participants" : { "type" : "integer" },
-        "field_dataset_dce" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
@@ -192,21 +184,21 @@ function mica_studies_default_search_api_index() {
         "field_contacts_ref:field_city" : { "type" : "list\\u003Ctext\\u003E" },
         "field_contacts_ref:field_contact_country" : { "type" : "list\\u003Cstring\\u003E" },
         "field_contacts_ref:field_contact_email" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_contacts_ref:field_daco" : { "type" : "list\\u003Cboolean\\u003E" },
         "field_contacts_ref:field_institution_name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_contacts_ref:field_postal_code" : { "type" : "list\\u003Ctext\\u003E" },
         "field_contacts_ref:field_state" : { "type" : "list\\u003Ctext\\u003E" },
         "field_contacts_ref:field_telephone" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_contacts_ref:field_daco" : { "type" : "list\\u003Cboolean\\u003E" },
         "field_investigators:title" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_address" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_city" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_contact_country" : { "type" : "list\\u003Cstring\\u003E" },
         "field_investigators:field_contact_email" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_investigators:field_daco" : { "type" : "list\\u003Cboolean\\u003E" },
         "field_investigators:field_institution_name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_postal_code" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_state" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_telephone" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_investigators:field_daco" : { "type" : "list\\u003Cboolean\\u003E" },
         "field_study_populations:field_pop_age_max" : { "type" : "list\\u003Cinteger\\u003E" },
         "field_study_populations:field_pop_age_min" : { "type" : "list\\u003Cinteger\\u003E" },
         "field_study_populations:field_pop_country" : { "type" : "list\\u003Clist\\u003Cstring\\u003E\\u003E" },
@@ -214,8 +206,7 @@ function mica_studies_default_search_api_index() {
         "field_study_populations:field_pop_select_criteria" : { "type" : "list\\u003Clist\\u003Cstring\\u003E\\u003E" },
         "field_study_populations:field_pop_src_recruit" : { "type" : "list\\u003Clist\\u003Cstring\\u003E\\u003E" },
         "field_recruitment_other" : { "type" : "text" },
-        "field_networks" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
-        "field_info_design_follow_up" : { "type" : "text" }
+        "field_networks" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
