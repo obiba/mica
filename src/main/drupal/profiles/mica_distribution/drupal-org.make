@@ -188,11 +188,7 @@ projects[search_api_combined] = 1.2
 
 projects[search_api_page] = 1.0-beta2
 
-projects[search_api_ranges][download][type] = git
-projects[search_api_ranges][download][revision] = fe3b59f
-projects[search_api_ranges][download][branch] = 7.x-1.x
-projects[search_api_ranges][patch][1450772] = http://drupal.org/files/force-numeric-and-config-for-no-slider-no-commit-on-change-1450772-1_1.patch
-projects[search_api_ranges][patch][1460410] = http://drupal.org/files/max-inclusive.patch
+projects[search_api_ranges] = 1.4
 
 projects[search_api_solr] = 1.0-rc5
 

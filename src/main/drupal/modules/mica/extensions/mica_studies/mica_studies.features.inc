@@ -205,19 +205,37 @@ function mica_studies_default_search_api_index() {
         "field_study_populations:field_pop_gender" : { "type" : "list\\u003Cstring\\u003E" },
         "field_study_populations:field_pop_select_criteria" : { "type" : "list\\u003Clist\\u003Cstring\\u003E\\u003E" },
         "field_study_populations:field_pop_src_recruit" : { "type" : "list\\u003Clist\\u003Cstring\\u003E\\u003E" },
-        "field_recruitment_other" : { "type" : "text" },
+        "field_study_populations_field_pop_age_max_asc" : { "type" : "integer" },
+        "field_study_populations_field_pop_age_max_desc" : { "type" : "integer" },
+        "field_study_populations_field_pop_age_min_asc" : { "type" : "integer" },
+        "field_study_populations_field_pop_age_min_desc" : { "type" : "integer" },
+        "field_contacts_ref_asc" : { "type" : "integer" },
+        "field_contacts_ref_desc" : { "type" : "integer" },
+        "field_investigators_asc" : { "type" : "integer" },
+        "field_investigators_desc" : { "type" : "integer" },
+        "field_study_populations_asc" : { "type" : "integer" },
+        "field_study_populations_desc" : { "type" : "integer" },
         "field_networks" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" }
       },
       "data_alter_callbacks" : {
+        "search_api_ranges_alter" : {
+          "status" : 1,
+          "weight" : "-50",
+          "settings" : { "fields" : {
+              "field_study_populations:field_pop_age_max" : "field_study_populations:field_pop_age_max",
+              "field_study_populations:field_pop_age_min" : "field_study_populations:field_pop_age_min"
+            }
+          }
+        },
         "search_api_alter_bundle_filter" : {
           "status" : 1,
           "weight" : "-10",
           "settings" : { "default" : "0", "bundles" : { "study" : "study" } }
         },
-        "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
+        "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_combined" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_aggregation" : {
           "status" : 1,
@@ -230,7 +248,8 @@ function mica_studies_default_search_api_index() {
               }
             }
           }
-        }
+        },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
       },
       "processors" : {
         "search_api_case_ignore" : {
@@ -242,14 +261,10 @@ function mica_studies_default_search_api_index() {
               "field_authorising_person_name" : true,
               "field_authorising_person_name_m" : true,
               "field_design_other_sp" : true,
-              "field_partcipant_sel_supp_info" : true,
-              "field_recruitment_other" : true,
               "field_recruitment_other_sp" : true,
-              "field_recruitment_sources" : true,
               "field_recruitment_supp_info" : true,
               "field_supp_infos" : true,
               "field_target_nb_supp_info" : true,
-              "field_tissues_sp" : true,
               "body:value" : true,
               "body:summary" : true,
               "field_contacts_ref:title" : true,

@@ -3714,7 +3714,7 @@ function mica_studies_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 39,
       ),
       'footer_area' => array(
         'label' => 'above',
@@ -4005,7 +4005,7 @@ If the study is completed, enter the final number of participants that have prov
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -4045,7 +4045,7 @@ If the study is completed, enter the final number of participants that have prov
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
