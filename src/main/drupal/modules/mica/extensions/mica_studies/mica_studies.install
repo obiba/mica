@@ -219,7 +219,8 @@ function mica_studies_update_7700(&$update) {
  * Update Mica content types
  */
 function mica_studies_update_7800(&$update) {
-  drupal_set_message(t('To complete the update process, ') . l('click here', 'admin/config/development/mica_studies') . ' and click on Run', 'warning');
+  drupal_set_message(t('To complete the update process, ')
+  . l('click here', 'admin/config/development/mica_studies') . ' ' . t('and click on Run'), 'warning');
 }
 
 /**

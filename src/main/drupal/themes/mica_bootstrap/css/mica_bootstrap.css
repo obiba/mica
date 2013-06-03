@@ -5952,6 +5952,11 @@ form.node-form .field-type-datetime fieldset input {
 .progress .filled {
   display: none !important;
 }
+.form-search .input-append .search-query {
+  padding-top: 6.5px;
+  padding-bottom: 6.5px;
+  padding-bottom: -moz-calc(5px);
+}
 #navbar .embedded-form {
   padding: 15px;
 }

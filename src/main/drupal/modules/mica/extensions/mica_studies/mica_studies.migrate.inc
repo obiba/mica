@@ -21,7 +21,7 @@ function _mica_studies_longitudinal_migration() {
   // Delete deprecated field groups
   $operations[] = array('_mica_studies_delete_deprecated_fields_groups', array());
 
-  //configure blocks node types
+  // configure blocks node types
   $operations[] = array('_mica_studies_config_blocks', array());
 
   $batch = array(
