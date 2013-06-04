@@ -21,14 +21,6 @@ function mica_datasets_ctools_plugin_api() {
     return array("version" => "1");
   }
   list($module, $api) = func_get_args();
-  if ($module == "feeds" && $api == "feeds_importer_default") {
-    return array("version" => "1");
-  }
-  list($module, $api) = func_get_args();
-  if ($module == "feeds_tamper" && $api == "feeds_tamper_default") {
-    return array("version" => "2");
-  }
-  list($module, $api) = func_get_args();
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -216,8 +208,6 @@ function mica_datasets_default_search_api_index() {
         "author" : { "type" : "integer", "entity_type" : "user" },
         "field_repeatable" : { "type" : "boolean" },
         "field_value_type" : { "type" : "string" },
-        "field_data_sources" : { "type" : "list\\u003Cstring\\u003E" },
-        "field_data_sources_sp" : { "type" : "text" },
         "field_anthropometric_structures" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_body_functions" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_body_structures" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },

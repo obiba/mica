@@ -13,13 +13,13 @@ function mica_datasets_user_default_roles() {
   // Exported role: dataset administrator.
   $roles['dataset administrator'] = array(
     'name' => 'dataset administrator',
-    'weight' => '9',
+    'weight' => 9,
   );
 
   // Exported role: dataset reviewer.
   $roles['dataset reviewer'] = array(
     'name' => 'dataset reviewer',
-    'weight' => '8',
+    'weight' => 8,
   );
 
   return $roles;
