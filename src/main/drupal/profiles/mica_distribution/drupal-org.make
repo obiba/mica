@@ -169,6 +169,8 @@ projects[password_policy] = 1.3
 
 projects[pathauto] = 1.2
 
+projects[profile2] = 1.3
+
 projects[potx] = 1.0
 
 projects[progress] = 1.3

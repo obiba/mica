@@ -15,6 +15,23 @@ function mica_core_ctools_plugin_api() {
 }
 
 /**
+ * Implements hook_default_profile2_type().
+ */
+function mica_core_default_profile2_type() {
+  $items = array();
+  $items['main'] = entity_import('profile2_type', '{
+    "userCategory" : false,
+    "userView" : false,
+    "type" : "main",
+    "label" : "Main profile",
+    "weight" : "0",
+    "data" : { "registration" : true, "use_page" : true },
+    "rdf_mapping" : []
+  }');
+  return $items;
+}
+
+/**
  * Implements hook_default_search_api_server().
  */
 function mica_core_default_search_api_server() {
