@@ -19,6 +19,6 @@ timestamp();
 cat(paste('Model: ', params$model, '\n'));
 cat(paste('Family: ', params$glm$family, '\n'));
 
-cmd<-paste('datashield.glm(opals,',params$model,',as.name("',params$glm$family,'"))',sep="");
+cmd<-paste('datashield.glm(opals,',params$model,',as.name("',params$glm$family,'"), 20)',sep="");
 cat(paste('Command: ',cmd,'\n'));
 print(eval(parse(text=cmd)));
