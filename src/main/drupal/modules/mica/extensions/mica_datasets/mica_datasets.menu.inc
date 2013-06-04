@@ -75,5 +75,5 @@ function _mica_datasets_variables_reset_menus() {
     }
   }
 
-  drupal_set_message(t('Menus variables has been successfully deleted.'));
+  drupal_set_message(t('%nb variable menus have been successfully deleted.', array('%nb' => $nb_variable_menus)));
 }

@@ -41,7 +41,7 @@ function _mica_datasets_devel_form() {
   $form['reset_variables']['delete'] = array(
     '#type' => 'submit',
     '#value' => t('Erase'),
-    '#submit' => array('_mica_variables_reset_menus'),
+    '#submit' => array('_mica_datasets_variables_reset_menus'),
   );
 
   return $form;
