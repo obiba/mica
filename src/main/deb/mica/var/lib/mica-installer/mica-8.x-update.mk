@@ -77,6 +77,7 @@ mica-delete-module-8.0:
 	$(call delete-module,panels) && \
 	$(call delete-module,password_policy) && \
 	$(call delete-module,pathauto) && \
+	$(call delete-module,profile2) && \
 	$(call delete-module,potx) && \
 	$(call delete-module,progress) && \
 	$(call delete-module,recaptcha) && \
@@ -111,3 +112,5 @@ mica-delete-8.0-rc4: mica-delete-8.0
 mica-delete-8.0-rc5: mica-delete-8.0
 mica-delete-8.0-rc6: mica-delete-8.0
 mica-delete-8.0-rc7: mica-delete-8.0
+mica-delete-8.0-rc8: mica-delete-8.0
+mica-delete-8.0-rc9: mica-delete-8.0
