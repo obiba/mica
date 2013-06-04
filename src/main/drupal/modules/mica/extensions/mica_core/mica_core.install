@@ -88,7 +88,8 @@ function mica_core_update_7700(&$update) {
  * Enable module JQuery Ui Multiselect to enhance select widgets
  */
 function mica_core_update_7800(&$update) {
-  module_enable(array('jquery_ui_multiselect_widget'));
+  module_enable(array('jquery_ui_multiselect_widget', 'profile2'));
+  features_revert(array('mica_core' => array('field')));
 }
 
 function _mica_core_export_queries() {
