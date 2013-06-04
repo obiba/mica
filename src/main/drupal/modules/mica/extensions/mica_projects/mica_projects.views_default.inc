@@ -86,7 +86,7 @@ function mica_projects_views_default_views() {
   $handler->display->display_options['fields']['title']['relationship'] = 'field_studies_nid';
   $handler->display->display_options['fields']['title']['label'] = 'Name';
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Please specify what other design */
+  /* Field: Content: Other design */
   $handler->display->display_options['fields']['field_design_other_sp']['id'] = 'field_design_other_sp';
   $handler->display->display_options['fields']['field_design_other_sp']['table'] = 'field_data_field_design_other_sp';
   $handler->display->display_options['fields']['field_design_other_sp']['field'] = 'field_design_other_sp';
@@ -96,31 +96,28 @@ function mica_projects_views_default_views() {
   $handler->display->display_options['fields']['field_design_other_sp']['alter']['text'] = '([field_design_other_sp])';
   $handler->display->display_options['fields']['field_design_other_sp']['alter']['max_length'] = '60';
   $handler->display->display_options['fields']['field_design_other_sp']['alter']['trim'] = TRUE;
-  /* Field: Content: What is the study design? */
+  /* Field: Content: Study design */
   $handler->display->display_options['fields']['field_design']['id'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['table'] = 'field_data_field_design';
   $handler->display->display_options['fields']['field_design']['field'] = 'field_design';
   $handler->display->display_options['fields']['field_design']['relationship'] = 'field_studies_nid';
-  $handler->display->display_options['fields']['field_design']['label'] = 'Study design';
   $handler->display->display_options['fields']['field_design']['alter']['text'] = '[field_design] [field_design_other_sp]';
   $handler->display->display_options['fields']['field_design']['delta_offset'] = '0';
-  /* Field: Content: How many people are planned to be recruited? Or if the study is completed, what is the final number of participants? */
+  /* Field: Content: Target number of participants */
   $handler->display->display_options['fields']['field_target_number_participants']['id'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['table'] = 'field_data_field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['field'] = 'field_target_number_participants';
   $handler->display->display_options['fields']['field_target_number_participants']['relationship'] = 'field_studies_nid';
-  $handler->display->display_options['fields']['field_target_number_participants']['label'] = 'Target number of participants';
   $handler->display->display_options['fields']['field_target_number_participants']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['field_target_number_participants']['settings'] = array(
     'thousand_separator' => ' ',
     'prefix_suffix' => 0,
   );
-  /* Field: Content: Country of residence */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
   $handler->display->display_options['fields']['field_country']['table'] = 'field_data_field_country';
   $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
   $handler->display->display_options['fields']['field_country']['relationship'] = 'field_studies_nid';
-  $handler->display->display_options['fields']['field_country']['delta_offset'] = '0';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
