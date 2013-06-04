@@ -13,8 +13,18 @@ function _mica_studies_block_study_general_info($study) {
     field_view_field('node', $study, 'field_website', array('label' => 'inline', 'weight' => ++$weight)),
     field_view_field('node', $study, 'field_investigators', array('label' => 'inline', 'weight' => ++$weight)),
     field_view_field('node', $study, 'field_contacts_ref', array('label' => 'inline', 'weight' => ++$weight)),
-    field_view_field('node', $study, 'field_study_start_year', array('label' => 'inline', 'weight' => ++$weight)),
-    field_view_field('node', $study, 'field_study_end_year', array('label' => 'inline', 'weight' => ++$weight)),
+    field_view_field('node', $study, 'field_study_start_year', array(
+        'label' => 'inline',
+        'weight' => ++$weight,
+        'settings' => array('thousand_separator' => '')
+      )
+    ),
+    field_view_field('node', $study, 'field_study_end_year', array(
+        'label' => 'inline',
+        'weight' => ++$weight,
+        'settings' => array('thousand_separator' => '')
+      )
+    ),
     field_view_field('node', $study, 'field_networks', array('label' => 'inline', 'weight' => ++$weight)),
   );
   return array(

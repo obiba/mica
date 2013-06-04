@@ -75,8 +75,8 @@ function _mica_studies_block_study_general_design_field_nb_participants($study_w
 
   $target_number = $study_wrapper->field_target_number_participants->value();
   if (!empty($target_number)) {
-    $field['#items'][] = $target_number;
-    $field[]['#markup'] = $target_number;
+    $field['#items'][] = number_format($target_number, 0, '.', ' ');
+    $field[]['#markup'] = number_format($target_number, 0, '.', ' ');
   }
 
   $no_limits = $study_wrapper->field_no_limits_participants->value();
@@ -110,8 +110,8 @@ function _mica_studies_block_study_general_design_field_nb_samples($study_wrappe
 
   $target_number = $study_wrapper->field_target_number_biosamples->value();
   if (!empty($target_number)) {
-    $field['#items'][] = $target_number;
-    $field[]['#markup'] = $target_number;
+    $field['#items'][] = number_format($target_number, 0, '.', ' ');
+    $field[]['#markup'] = number_format($target_number, 0, '.', ' ');
   }
 
   $no_limits = $study_wrapper->field_no_limits_samples->value();
