@@ -86,3 +86,29 @@ function mica_community_node_insert($node) {
     mica_core_create_node_default_menu($node, TRUE);
   }
 }
+
+function mica_community_node_view($node, $view_mode, $langcode) {
+  switch ($node->type) {
+    case 'forum':
+
+      $vid = variable_get('forum_nav_vocabulary', 0);
+      $vocabulary = taxonomy_vocabulary_load($vid);
+      if (_forum_node_check_node_type($node)) {
+        if ($view_mode == 'full' && node_is_page($node)) {
+          // Breadcrumb navigation
+          $breadcrumb[] = l(t('Home'), NULL);
+          $breadcrumb[] = l(t('Community'), 'community');
+          $breadcrumb[] = l($vocabulary->name, 'forum');
+          if ($parents = taxonomy_get_parents_all($node->forum_tid)) {
+            $parents = array_reverse($parents);
+            foreach ($parents as $parent) {
+              $breadcrumb[] = l($parent->name, 'forum/' . $parent->tid);
+            }
+          }
+          drupal_set_breadcrumb($breadcrumb);
+        }
+      }
+      break;
+  }
+}
+
