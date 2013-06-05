@@ -301,7 +301,7 @@ function _mica_core_default_admin_theme() { // Enable the admin theme.
 function _mica_core_default_pages() {
 
   $home_content = file_get_contents(drupal_get_path('module', 'mica_core') . '/default_data/home.html');
-  $home_page = mica_core_add_page(st('Mica'), st($home_content), 'home');
+  $home_page = mica_core_add_page(st('Mica'), st($home_content), 'home', 'bootstrap');
   mica_core_create_menu(st('Home'), '<front>', '', FALSE, FALSE, 0);
   variable_set('site_frontpage', 'node/' . $home_page->nid);
 

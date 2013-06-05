@@ -381,7 +381,7 @@ function mica_core_taxonomy_term_save($vocabulary_id, $name, $parent_id = NULL, 
   return $term;
 }
 
-function mica_core_add_page($title, $body_html, $alias = NULL) {
+function mica_core_add_page($title, $body_html, $alias = NULL, $format = 'full_html') {
 
   $page_wrapper = entity_property_values_create_entity(
     'node',
@@ -391,7 +391,7 @@ function mica_core_add_page($title, $body_html, $alias = NULL) {
       'title_field' => $title,
       'body' => array(
         'value' => $body_html,
-        'format' => 'full_html',
+        'format' => $format,
       ),
       'language' => LANGUAGE_NONE,
       'comment' => COMMENT_NODE_CLOSED,

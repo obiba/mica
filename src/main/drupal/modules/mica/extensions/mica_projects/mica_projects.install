@@ -6,13 +6,6 @@
  */
 
 /**
- * Implements hook_install().
- */
-function mica_projects_install() {
-  mica_core_configure_feeds_tamper('mica_projects');
-}
-
-/**
  * Updates the mica_projects feature fields
  */
 function mica_projects_update_7120() {
