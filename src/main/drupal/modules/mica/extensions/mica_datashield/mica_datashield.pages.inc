@@ -7,7 +7,7 @@
 require_once('includes/datashield.inc');
 
 function mica_datashield_form($form, &$form_state) {
-  drupal_set_title(t("DataSHIELD!"));
+  drupal_set_title(t("DataSHIELD"));
   $dataset_node = $form_state['build_info']['args'][0];
 
   $model = _mica_datashield_model_load($dataset_node);
@@ -21,11 +21,10 @@ function mica_datashield_form($form, &$form_state) {
   asort($variable_options);
 
   $form = array();
-
-  $intro = '<p>DataSHIELD is a new parallelized approach that enables data to be analysed as if one had full access to the individual-level records, '
+  $intro = '<div class="row-fluid"><p> <span class="lead">DataSHIELD is a new parallelized approach that enables data to be analysed as if one had full access to the individual-level records, '
     . 'but in fact the data never leave the computer on which they are stored at their study of origin. Using this form, statisticians '
-    . 'can fit data models on this distributed and harmonized dataset. For more details, see '
-    . 'this <a href="http://www.p3gobservatory.org/datashield/summary.htm" target="_blank">link</a>.</p>';
+    . 'can fit data models on this distributed and harmonized dataset.</span> '
+    . '<a href="http://datashield.org" target="_blank"><i class="icon-share-alt"></i>Read more on DataSHIELD...</a></p></div>';
 
   $form['intro'] = array(
     '#markup' => $intro,
@@ -88,7 +87,7 @@ function mica_datashield_form($form, &$form_state) {
 
   $form['fit'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Step 3: DataSHIELD!'),
+    '#title' => t('Step 3: DataSHIELD'),
     '#collapsible' => FALSE
   );
   $form['fit']['submit'] = array(
