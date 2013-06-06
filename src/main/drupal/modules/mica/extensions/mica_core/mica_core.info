@@ -38,7 +38,6 @@ features[field_base][] = field_profile_first_name
 features[field_base][] = field_profile_last_name
 features[field_instance][] = profile2-main-field_profile_first_name
 features[field_instance][] = profile2-main-field_profile_last_name
-features[filter][] = bootstrap
 features[menu_custom][] = main-menu
 features[profile2_type][] = main
 features[search_api_server][] = solr

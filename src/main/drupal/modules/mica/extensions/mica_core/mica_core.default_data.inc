@@ -59,9 +59,22 @@ function _mica_core_default_text_formats() {
   $full_html_format = (object) $full_html_format;
   filter_format_save($full_html_format);
 
+  // Exported format: Bootstrap.
+  $bootstrap_format = array(
+    'format' => 'bootstrap',
+    'name' => 'Bootstrap',
+    'cache' => 1,
+    'status' => 1,
+    'weight' => 30,
+    'filters' => array(),
+  );
+  $bootstrap_format = (object) $bootstrap_format;
+  filter_format_save($bootstrap_format);
+
   return array(
     'filtered_html' => $filtered_html_format,
     'full_html' => $full_html_format,
+    'bootstrap' => $bootstrap_format,
   );
 }
 
