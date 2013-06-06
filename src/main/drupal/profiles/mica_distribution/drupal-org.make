@@ -173,6 +173,8 @@ projects[profile2] = 1.3
 
 projects[potx] = 1.0
 
+projects[print] = 1.2
+
 projects[progress] = 1.3
 
 projects[recaptcha] = 1.7

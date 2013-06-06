@@ -19,6 +19,7 @@ dependencies[] = text
 dependencies[] = user_reference
 dependencies[] = view_unpublished
 dependencies[] = views
+dependencies[] = print
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
