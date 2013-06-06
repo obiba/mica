@@ -7,7 +7,6 @@
 
 define('MAIN_MENU', 'main-menu');
 
-
 function mica_core_create_menu($menu_title, $menu_path, $router_path, $hidden = FALSE, $expanded = FALSE, $weight = 0, $parent_path = '', $parent_mlid = '') {
   $menu = array();
   _mica_core_create_menu($menu, $menu_title, $menu_path, $router_path, $hidden, $expanded, $weight, $parent_path, $parent_mlid);
@@ -154,8 +153,13 @@ function mica_core_disable_menu($menu_path) {
     )
   )->fetchObject();
   if (!empty($menu)) {
-    $menu->hidden = 1;
-    menu_link_save($menu);
+    db_update('menu_links') // Table name no longer needs {}
+      ->fields(array(
+      'hidden' => 1,
+    ))
+      ->condition('link_path', $menu_path, '=')
+      ->condition('menu_name', MAIN_MENU, '=')
+      ->execute();
     menu_cache_clear(MAIN_MENU);
   }
 }
