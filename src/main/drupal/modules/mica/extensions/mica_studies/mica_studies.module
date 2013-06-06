@@ -662,15 +662,15 @@ function mica_studies_block_view_alter(&$data, $block) {
 function _mica_studies_study_current_search(&$data, $block) {
   if (isset($data['content']['field_group'])) {
     $data['content']['results']['#markup'] .= ' - ' . l(
-        t('Clear all criteria') . ' [X]',
-        'studies-search',
-        array(
-          'attributes' => array(
-            'rel' => 'nofollow',
-            'class' => array('current-search-clear-all'),
-          )
+      t('Clear all criteria') . ' [X]',
+      'studies-search',
+      array(
+        'attributes' => array(
+          'rel' => 'nofollow',
+          'class' => array('current-search-clear-all'),
         )
-      );
+      )
+    );
     foreach ($data['content']['field_group'] as $field => $field_group) {
       $field_info = field_info_instance('node', $field, 'study');
       if (isset($field_info['display_label']) && strlen(trim($field_info['display_label'])) > 0) {
@@ -706,8 +706,11 @@ function mica_studies_post_features_rebuild() {
 }
 
 function _mica_studies_create_default_content() {
-  $study_menu = mica_core_create_menu(st('Studies'), 'studies', 'studies', FALSE, FALSE, 5);
+  $study_menu = mica_core_create_menu(st('Studies'), 'studies', 'studies', FALSE, FALSE, 5, NULL);
+  mica_core_create_menu(st('Search Studies'), 'studies-search', 'studies-search', FALSE, FALSE, 10, 'studies', $study_menu['mlid']);
   mica_core_set_menu_option('study', $study_menu['mlid']);
+  mica_core_disable_menu('studies-search');
+
 }
 
 function _mica_studies_configure_permissions() {
