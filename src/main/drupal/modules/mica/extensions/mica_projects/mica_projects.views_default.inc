@@ -79,6 +79,12 @@ function mica_projects_views_default_views() {
   $handler->display->display_options['relationships']['field_studies_nid']['table'] = 'field_data_field_studies';
   $handler->display->display_options['relationships']['field_studies_nid']['field'] = 'field_studies_nid';
   $handler->display->display_options['relationships']['field_studies_nid']['delta'] = '-1';
+  /* Relationship: Content: Populations (field_study_populations) */
+  $handler->display->display_options['relationships']['field_study_populations_nid']['id'] = 'field_study_populations_nid';
+  $handler->display->display_options['relationships']['field_study_populations_nid']['table'] = 'field_data_field_study_populations';
+  $handler->display->display_options['relationships']['field_study_populations_nid']['field'] = 'field_study_populations_nid';
+  $handler->display->display_options['relationships']['field_study_populations_nid']['relationship'] = 'field_studies_nid';
+  $handler->display->display_options['relationships']['field_study_populations_nid']['delta'] = '0';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -113,11 +119,12 @@ function mica_projects_views_default_views() {
     'thousand_separator' => ' ',
     'prefix_suffix' => 0,
   );
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
-  $handler->display->display_options['fields']['field_country']['table'] = 'field_data_field_country';
-  $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
-  $handler->display->display_options['fields']['field_country']['relationship'] = 'field_studies_nid';
+  /* Field: Content: Country of residence */
+  $handler->display->display_options['fields']['field_pop_country']['id'] = 'field_pop_country';
+  $handler->display->display_options['fields']['field_pop_country']['table'] = 'field_data_field_pop_country';
+  $handler->display->display_options['fields']['field_pop_country']['field'] = 'field_pop_country';
+  $handler->display->display_options['fields']['field_pop_country']['relationship'] = 'field_study_populations_nid';
+  $handler->display->display_options['fields']['field_pop_country']['delta_offset'] = '0';
   /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
