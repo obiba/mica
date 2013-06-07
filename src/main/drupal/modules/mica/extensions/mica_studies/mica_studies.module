@@ -1032,9 +1032,19 @@ function mica_studies_node_reference_field_dce_population_potential_references($
   }
 
   $references = array();
+
+  $query = new EntityFieldQuery;
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'population');
+
   if (!empty($study_nid)) {
-    $study_wrapper = entity_metadata_wrapper('node', $study_nid);
-    foreach ($study_wrapper->field_study_populations->getIterator() as $pop_wrapper) {
+    $query->fieldCondition('field_pop_study', 'nid', $study_nid);
+  }
+  $entities = $query->execute();
+
+  if (!empty($entities)) {
+    foreach ($entities['node'] as $pop) {
+      $pop_wrapper = entity_metadata_wrapper('node', $pop->nid);
       $references[$pop_wrapper->nid->value()] = array(
         'title' => $pop_wrapper->title->value(),
         'rendered' => check_plain($pop_wrapper->title->value()),
