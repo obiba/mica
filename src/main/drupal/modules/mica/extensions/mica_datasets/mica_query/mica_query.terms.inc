@@ -244,10 +244,8 @@ class CategoryTerm extends AbstractTerm {
   function checkStats() {
     $stats = $this->stats();
     foreach ($stats as $study_id => $stat) {
-      if (isset($stat['_all'])) {
-        if ($stat['_all'] != 0) {
-          return TRUE;
-        }
+      if (isset($stat['_all']) && $stat['_all'] != 0) {
+        return TRUE;
       }
     }
     return FALSE;
