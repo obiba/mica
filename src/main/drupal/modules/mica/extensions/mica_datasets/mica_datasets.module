@@ -538,7 +538,7 @@ function mica_datasets_node_view_alter(&$build) {
       $values['dataset_id'] = $variable_wrapper->field_dataset->nid->value();
       $term = new MicaDatasetQueryTerm($values);
       $impl = $term->termImpl();
-      if ($impl->hasConnectors()) {
+      if ($impl->hasConnectors() && $impl->checkStats) {
         $build['statistics'] = array(
           '#type' => 'fieldset',
           '#title' => t('Statistics'),
@@ -1669,7 +1669,7 @@ function mica_datasets_field_widget_form_alter(&$element, &$form_state, $context
   if ($form_state['build_info']['form_id'] == 'views_form_variables_dimensions_page') {
     // Force autocomplete deluxe widget to allow only a single value
     if ($context['instance']['widget']['module'] == 'autocomplete_deluxe') {
-      $element['#multiple'] = false;
+      $element['#multiple'] = FALSE;
     }
   }
 }
