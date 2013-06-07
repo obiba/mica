@@ -241,6 +241,28 @@ class CategoryTerm extends AbstractTerm {
     return isset($this->options['operator']) ? $this->options['operator'] : 'OR';
   }
 
+  function checkStats() {
+    $stats = $this->stats();
+    foreach ($stats as $study_id => $stat) {
+      $row[] = array(
+        'data' => isset($stat['_all']) ? $stat['_all'] : 0,
+        'class' => array('active')
+      );
+    }
+    $count = 0;
+    foreach ($row as $stat) {
+      if ($stat['data'] != 0) {
+        $count++;
+      }
+    }
+    if ($count > 0) {
+      return TRUE;
+    }
+    else {
+      return FALSE;
+    }
+  }
+
   function view() {
     $variable = $this->getVariable();
 
