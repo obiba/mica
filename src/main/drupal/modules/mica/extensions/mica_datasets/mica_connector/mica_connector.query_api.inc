@@ -77,7 +77,7 @@ class MicaDatasetElasticSearchQueryApi extends MicaDatasetAbstractQuery {
     }
 
     $dtoMatched->setExtension("Search.VariableTermDto.field", $dtoField);
-    $dtoMatched->setExtension("Search.LogicalTermDto.facet_filter", $dtoFacetFilter);
+    $dtoMatched->setExtension("Search.LogicalTermDto.facetFilter", $dtoFacetFilter);
     $facets[] = $dtoMatched;
 
     // one facet for all the population
@@ -223,7 +223,7 @@ class MicaDatasetElasticSearchQueryApi extends MicaDatasetAbstractQuery {
     $dtoFacetFilter->setExtension("Search.FilterDto.filters", $this->asFilter($term));
 
     $dtoQuery->setExtension("Search.VariableTermDto.field", $dtoField);
-    $dtoQuery->setExtension("Search.LogicalTermDto.facet_filter", $dtoFacetFilter);
+    $dtoQuery->setExtension("Search.LogicalTermDto.facetFilter", $dtoFacetFilter);
 
     return $dtoQuery;
   }
@@ -291,7 +291,7 @@ class MicaDatasetElasticSearchQueryApi extends MicaDatasetAbstractQuery {
     $dtoFacetFilter = $this->asCrossFilter($term, $filterField, $categories);
 
     if (isset($dtoFacetFilter)) {
-      $dtoQuery->setExtension("Search.LogicalTermDto.facet_filter", $dtoFacetFilter);
+      $dtoQuery->setExtension("Search.LogicalTermDto.facetFilter", $dtoFacetFilter);
     }
 
     return $dtoQuery;
