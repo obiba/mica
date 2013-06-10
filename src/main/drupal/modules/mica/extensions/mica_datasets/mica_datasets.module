@@ -382,7 +382,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
 /**
  * Check node type (if provided) and node access.
  *
- * @param node   $node
+ * @param node $node
  * @param string $bundle
  * @param string $op
  */
@@ -510,7 +510,7 @@ function mica_datasets_prepare_prettify() {
   }
   else {
     throw new Exception('prettify.css library not found! Please follow the instructions in mica_datasets/README.txt. Searched into '
-      . $paths);
+    . $paths);
   }
 
   if (isset($paths['js'])) {
@@ -518,7 +518,7 @@ function mica_datasets_prepare_prettify() {
   }
   else {
     throw new Exception('prettify.js library not found! Please follow the instructions in mica_datasets/README.txt. Searched into '
-      . $paths);
+    . $paths);
   }
 
   ctools_add_js('mica_datasets_prettify', 'mica_datasets');
@@ -538,7 +538,7 @@ function mica_datasets_node_view_alter(&$build) {
       $values['dataset_id'] = $variable_wrapper->field_dataset->nid->value();
       $term = new MicaDatasetQueryTerm($values);
       $impl = $term->termImpl();
-      if ($impl->hasConnectors() && $impl->checkStats) {
+      if ($impl->hasConnectors() && $impl->checkStats()) {
         $build['statistics'] = array(
           '#type' => 'fieldset',
           '#title' => t('Statistics'),
@@ -958,15 +958,15 @@ function mica_datasets_block_view_alter(&$data, $block) {
 function _mica_datasets_variable_current_search(&$data, $block) {
   if (isset($data['content']['field_group'])) {
     $data['content']['results']['#markup'] .= ' - ' . l(
-      t('Clear all criteria') . ' [X]',
-      'variable-search',
-      array(
-        'attributes' => array(
-          'rel' => 'nofollow',
-          'class' => array('current-search-clear-all'),
+        t('Clear all criteria') . ' [X]',
+        'variable-search',
+        array(
+          'attributes' => array(
+            'rel' => 'nofollow',
+            'class' => array('current-search-clear-all'),
+          )
         )
-      )
-    );
+      );
 
     // Translate titles
     foreach ($data['content']['field_group'] as $field => $field_group) {
@@ -1534,7 +1534,7 @@ function mica_datasets_translation_exclude_fields() {
  * Check whether queries/crosstab tab is accessible: requires to have access to dataset node and having participant variables
  * defined for this dataset.
  *
- * @param node   $dataset_node
+ * @param node $dataset_node
  * @param string $op
  */
 function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
@@ -1556,7 +1556,7 @@ function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
  * Check whether crosstab tab is accessible in variable: requires to have access to dataset node and having participant variables
  * defined for this dataset.
  *
- * @param node   $dataset_node
+ * @param node $dataset_node
  * @param string $op
  */
 function _mica_datasets_node_crosstab_access($node, $op = 'update') {
@@ -1587,9 +1587,9 @@ function _mica_datasets_node_crosstab_access($node, $op = 'update') {
  * Check for query accessibility: associated dataset is accessible, and query terms are all visible,
  * and user is the query author or query is published for viewing.
  *
- * @param node             $dataset_node
+ * @param node $dataset_node
  * @param MicaDatasetQuery $query
- * @param string           $op
+ * @param string $op
  */
 function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
   global $user;
@@ -1640,10 +1640,10 @@ function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
 /**
  * Check for query term access: associated query must be accessible.
  *
- * @param node                    $dataset_node
- * @param mica_dataset_query      $query
+ * @param node $dataset_node
+ * @param mica_dataset_query $query
  * @param mica_dataset_query_term $query_term
- * @param string                  $op
+ * @param string $op
  */
 function _mica_datasets_query_term_access($dataset_node, $query, $query_term, $op = 'update') {
   if (!is_object($query_term)) {
