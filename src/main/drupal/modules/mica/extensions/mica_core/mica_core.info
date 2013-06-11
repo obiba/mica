@@ -5,6 +5,7 @@ package = Mica
 php = 5.2.4
 version = 7.x-8.0-rc5
 project = mica_core
+dependencies[] = admin_views
 dependencies[] = collapsiblock
 dependencies[] = ctools
 dependencies[] = entity

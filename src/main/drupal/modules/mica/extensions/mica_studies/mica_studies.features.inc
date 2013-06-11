@@ -207,7 +207,6 @@ function mica_studies_default_search_api_index() {
         "field_study_populations:field_pop_src_recruit" : { "type" : "list\\u003Clist\\u003Cstring\\u003E\\u003E" },
         "field_study_populations:field_pop_dce:field_dce_bio_samples_management" : { "type" : "list\\u003Clist\\u003Clist\\u003Cstring\\u003E\\u003E\\u003E" },
         "field_study_populations:field_pop_dce:field_dce_data_sources" : { "type" : "list\\u003Clist\\u003Clist\\u003Cstring\\u003E\\u003E\\u003E" },
-        "field_study_populations:field_pop_dce:field_recruitment" : { "type" : "list\\u003Clist\\u003Clist\\u003Cstring\\u003E\\u003E\\u003E" }
         "field_study_populations_field_pop_age_max_asc" : { "type" : "integer" },
         "field_study_populations_field_pop_age_max_desc" : { "type" : "integer" },
         "field_study_populations_field_pop_age_min_asc" : { "type" : "integer" },
