@@ -205,17 +205,9 @@ function mica_studies_default_search_api_index() {
         "field_study_populations:field_pop_gender" : { "type" : "list\\u003Cstring\\u003E" },
         "field_study_populations:field_pop_select_criteria" : { "type" : "list\\u003Clist\\u003Cstring\\u003E\\u003E" },
         "field_study_populations:field_pop_src_recruit" : { "type" : "list\\u003Clist\\u003Cstring\\u003E\\u003E" },
-        "field_study_populations_field_pop_age_max_asc" : { "type" : "integer" },
-        "field_study_populations_field_pop_age_max_desc" : { "type" : "integer" },
-        "field_study_populations_field_pop_age_min_asc" : { "type" : "integer" },
-        "field_study_populations_field_pop_age_min_desc" : { "type" : "integer" },
-        "field_contacts_ref_asc" : { "type" : "integer" },
-        "field_contacts_ref_desc" : { "type" : "integer" },
-        "field_investigators_asc" : { "type" : "integer" },
-        "field_investigators_desc" : { "type" : "integer" },
-        "field_study_populations_asc" : { "type" : "integer" },
-        "field_study_populations_desc" : { "type" : "integer" },
-        "field_networks" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" }
+        "field_study_populations:field_pop_dce:field_dce_bio_samples_management" : { "type" : "list\\u003Clist\\u003Clist\\u003Cstring\\u003E\\u003E\\u003E" },
+        "field_study_populations:field_pop_dce:field_dce_data_sources" : { "type" : "list\\u003Clist\\u003Clist\\u003Cstring\\u003E\\u003E\\u003E" },
+        "field_study_populations:field_pop_dce:field_recruitment" : { "type" : "list\\u003Clist\\u003Clist\\u003Cstring\\u003E\\u003E\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_ranges_alter" : {
