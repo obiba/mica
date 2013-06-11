@@ -54,13 +54,13 @@ function mica_studies_configure_facet_blocks() {
     'field_target_number_biosamples' => array(
       'name' => t('Target number of participants with samples'),
     ),
-    'field_pop_dce:field_dce_bio_samples_management' => array(
+    'field_study_populations:field_pop_dce:field_dce_bio_samples_management' => array(
       'name' => t('Biological samples'),
     ),
     'field_study_populations:field_pop_select_criteria' => array(
       'name' => t('Selection criteria'),
     ),
-    'field_pop_dce:field_dce_data_sources' => array(
+    'field_study_populations:field_pop_dce:field_dce_data_sources' => array(
       'name' => t('Data sources')
     ),
     'field_recruitment' => array(
