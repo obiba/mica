@@ -145,7 +145,7 @@ abstract class AbstractTerm implements QueryTermInterface {
   function isRepeatable() {
     $variable = $this->getVariable();
     return isset($variable->field_repeatable[LANGUAGE_NONE][0]['value'])
-      && $variable->field_repeatable[LANGUAGE_NONE][0]['value'] === '1';
+    && $variable->field_repeatable[LANGUAGE_NONE][0]['value'] === '1';
   }
 
   function getOptions() {
@@ -647,6 +647,10 @@ class RangeTerm extends AbstractTerm {
     }
     return $str . ($this->isInverted() ? ' not' : '') . $str_range;
   }
+
+  function checkStats() {
+    return TRUE;
+  }
 }
 
 class TodoTerm extends AbstractTerm {
@@ -740,5 +744,9 @@ class TodoTerm extends AbstractTerm {
       $str .= '(' . implode(', ', $this->match()) . ')';
     }
     return $str;
+  }
+
+  function checkStats() {
+    return TRUE;
   }
 }

@@ -9,6 +9,8 @@ api = "2"
 
 projects[acl] = 1.0
 
+projects[admin_views] = 1.2
+
 projects[auto_entitylabel] = 1.2
 
 projects[autocomplete_deluxe][download][type] = git

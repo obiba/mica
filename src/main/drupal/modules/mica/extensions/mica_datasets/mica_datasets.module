@@ -923,7 +923,7 @@ function _mica_datasets_delete_svas(&$dataset, &$study) {
         foreach (node_load_multiple(array_keys($sva_results['node'])) as $sva) {
           $sva_wrapper = entity_metadata_wrapper('node', $sva);
           if ($sva_wrapper->field_sva_study->nid->value() === $study_wrapper->nid->value()) {
-//            $sva_wrapper->delete();
+            //$sva_wrapper->delete();
             $sva_ids[] = $sva_wrapper->nid;
             _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable, $sva_wrapper, 'field_variable_study_var_att');
           }
@@ -1096,7 +1096,7 @@ function _mica_datasets_set_variable_position(&$variable) {
     $last_variable_wrapper = entity_metadata_wrapper('node', $last_variable);
     $wrapper->field_position->set($last_variable_wrapper->field_position->value() + 1);
   }
-  return $variable;
+  field_attach_update('variable', $variable);
 }
 
 function _mica_datasets_add_study_variable_attributes_to(&$variable) {
@@ -1126,11 +1126,26 @@ function _mica_datasets_create_study_variable_attributes_for_variable(&$variable
 
 function _mica_datasets_create_study_variable_attributes_for_study(&$study, $variables) {
   if (!empty($variables)) {
+    $modified = FALSE;
     foreach ($variables as $variable) {
-      _mica_datasets_create_study_variable_attribute($variable, $study);
-      $variable->save();
+      // Check if variable already exists
+      $query = new EntityFieldQuery();
+      $results = $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'study_variable_attributes')
+        ->fieldCondition('field_sva_variable', 'nid', $variable->nid->value())
+        ->fieldCondition('field_sva_study', 'nid', $study->nid->value())
+        ->execute();
+
+      if (empty($results)) {
+        _mica_datasets_create_study_variable_attribute($variable, $study);
+        $variable->save();
+        $modified = TRUE;
+      }
     }
-    $study->save();
+
+    if ($modified) {
+      $study->save();
+    }
   }
 }
 
