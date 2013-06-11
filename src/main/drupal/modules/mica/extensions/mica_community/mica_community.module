@@ -19,12 +19,18 @@ function mica_community_post_features_rebuild() {
 }
 
 function _mica_community_create_default_content() {
-  $community_menu = mica_core_create_menu(st('Community'), 'community', 'community', FALSE, TRUE, 45, NULL);
+  // Create static page Community
+  $community_content = file_get_contents(drupal_get_path('module', 'mica_community') . '/default_data/community.html');
+  $page = mica_core_add_page(st('Community'), st($community_content), 'community', 'bootstrap');
+  $community_menu = mica_core_create_menu(st('Community'), "node/$page->nid", '', FALSE, TRUE, 45);
   mica_core_create_menu(st('News'), 'news', 'news', FALSE, FALSE, 10, NULL, $community_menu['mlid']);
-  $event_menu = mica_core_create_menu(st('Events'), 'events', 'events', FALSE, TRUE, 15, NULL, $community_menu['mlid']);
-  mica_core_create_menu(st('Calendar'), 'calendar-field-event-date/year', 'calendar-field-event-date/year', FALSE, FALSE, 0, 'events');
-  $forum_menu = mica_core_create_menu(st('Forums'), 'forum', 'forum', FALSE, FALSE, 20, NULL, $community_menu['mlid']);
-  $blog_menu = mica_core_create_menu(st('Blogs'), 'blog', 'blog', FALSE, FALSE, 25, NULL, $community_menu['mlid']);
+
+  $event_menu = mica_core_create_menu(st('Events'), 'events', 'events', FALSE, TRUE, 0, 'community', $community_menu['mlid']);
+  mica_core_create_menu(st('All Events'), 'events', 'events', FALSE, FALSE, 0, '', $event_menu['mlid']);
+  mica_core_create_menu(st('Calendar'), 'calendar-field-event-date/year', 'calendar-field-event-date/year', FALSE, FALSE, 5, '', $event_menu['mlid']);
+
+  $forum_menu = mica_core_create_menu(st('Forums'), 'forum', 'forum', FALSE, FALSE, 20, 'community', $community_menu['mlid']);
+  $blog_menu = mica_core_create_menu(st('Blogs'), 'blog', 'blog', FALSE, FALSE, 25, 'community', $community_menu['mlid']);
 
   $research_menu = mica_core_find_menu_for_alias('research');
   $publication_menu = mica_core_create_menu(st('Publications'), 'publications', 'publications', FALSE, FALSE, 10, NULL, $research_menu->mlid);
@@ -106,9 +112,18 @@ function mica_community_node_view($node, $view_mode, $langcode) {
             }
           }
           drupal_set_breadcrumb($breadcrumb);
+
         }
+      }
+      break;
+    case 'blog':
+      if ($view_mode == 'full' && node_is_page($node)) {
+        $breadcrumb[] = l(t('Home'), NULL);
+        $breadcrumb[] = l(t('Community'), 'community');
+        $breadcrumb[] = l(t('Blogs'), 'blog');
+
+        drupal_set_breadcrumb($breadcrumb);
       }
       break;
   }
 }
-

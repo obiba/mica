@@ -3,6 +3,7 @@ description = Mica base features
 core = 7.x
 package = Mica
 php = 5.2.4
+dependencies[] = admin_views
 dependencies[] = collapsiblock
 dependencies[] = ctools
 dependencies[] = entity

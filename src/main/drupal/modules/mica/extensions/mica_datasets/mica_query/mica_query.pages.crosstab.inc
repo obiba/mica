@@ -18,7 +18,7 @@ function mica_query_crosstab_run_page($dataset, $variable = NULL) {
 /*
  * Returns the form to execute a crosstab query
  */
-function mica_query_crosstab_form($form, &$form_state){
+function mica_query_crosstab_form($form, &$form_state) {
   $cross_variables = (isset($_REQUEST['cross']) ? $_REQUEST['cross'] : array());
 
   $dataset = $form_state['mica']['dataset_node'];
@@ -32,7 +32,7 @@ function mica_query_crosstab_form($form, &$form_state){
       $options[$v->nid] = $variable_wrapper->title->value();
 
       $label = $variable_wrapper->field_label->value();
-      if (!empty($label)){
+      if (!empty($label)) {
         $options[$v->nid] .= ' (' . truncate_utf8($label, 80, TRUE, TRUE) . ')';
       }
     }
@@ -42,7 +42,7 @@ function mica_query_crosstab_form($form, &$form_state){
     '#type' => 'select',
     '#title' => t('Select a variable'),
     '#options' => $options,
-    '#default_value' => isset($variable) ?  $variable->nid : NULL,
+    '#default_value' => isset($variable) ? $variable->nid : NULL,
     '#empty_options' => -1,
     '#empty_value' => ' - ' . t('None') . ' - ',
   );
@@ -54,7 +54,7 @@ function mica_query_crosstab_form($form, &$form_state){
       $cross_options[$v->nid] = $variable_wrapper->title->value();
 
       $label = $variable_wrapper->field_label->value();
-      if (!empty($label)){
+      if (!empty($label)) {
         $cross_options[$v->nid] .= ' (' . truncate_utf8($label, 80, TRUE, TRUE) . ')';
       }
     }
@@ -87,6 +87,7 @@ function mica_query_crosstab_form($form, &$form_state){
   );
   return $form;
 }
+
 /**
  * Selects just the result table to be returned for re-rendering.
  */
@@ -102,9 +103,9 @@ function mica_query_crosstab_run_page_submit_callback($form, $form_state) {
     $query = _mica_query_crosstab_get_query($dataset_node->nid, $variable_wrapper);
 
     // Variable description
-    $variable_link = l($variable_wrapper->title->value(), 'node/'.$variable_node->nid);
-    $result_table = "<div class='dependent-variable-description'><span class='variable-title'>". $variable_link ."</span>";
-    if (!empty($variable_label)){
+    $variable_link = l($variable_wrapper->title->value(), 'node/' . $variable_node->nid);
+    $result_table = "<div class='dependent-variable-description'><span class='variable-title'>" . $variable_link . "</span>";
+    if (!empty($variable_label)) {
       $result_table .= " ($variable_label)";
     }
     $result_table .= '</div>';
@@ -115,7 +116,7 @@ function mica_query_crosstab_run_page_submit_callback($form, $form_state) {
       }
     }
     // Display a download all results link
-    if (count($form_state['values']['cross_variable']) > 1){
+    if (count($form_state['values']['cross_variable']) > 1) {
       $result_table .= _mica_query_get_xlsx_link($query, $form_state['values']['cross_variable'], 'Download all results as');
     }
 
@@ -129,9 +130,9 @@ function mica_query_crosstab_run_page_submit_callback($form, $form_state) {
       $cross_variable = node_load($cross_variable_id);
       $cross_variable_wrapper = entity_metadata_wrapper('node', $cross_variable);
       $cross_title = $cross_variable_wrapper->title->value();
-      $cross_link = l($cross_variable_wrapper->title->value(), 'node/'.$cross_variable->nid);
+      $cross_link = l($cross_variable_wrapper->title->value(), 'node/' . $cross_variable->nid);
 
-      if ($cross_variable_wrapper->field_value_type->value() === 'text'){
+      if ($cross_variable_wrapper->field_value_type->value() === 'text') {
         // Cannot cross with a text variable
         $result_table .= "<div class='crosstab-result'>";
         $result_table .= "Cannot compute cross tabulation of <span class='variable-title'> $variable_link * $cross_link</span>: variable $cross_title is of value type 'TEXT'</div>";
@@ -142,8 +143,8 @@ function mica_query_crosstab_run_page_submit_callback($form, $form_state) {
 
         // Cross variable label
         $cross_label = $cross_variable_wrapper->field_label->value();
-        if (!empty($cross_title)){
-          $result_table .= ' ('. $cross_label .')';
+        if (!empty($cross_title)) {
+          $result_table .= ' (' . $cross_label . ')';
         }
         $result_table .= '</div>';
 
@@ -152,7 +153,7 @@ function mica_query_crosstab_run_page_submit_callback($form, $form_state) {
       }
     }
   }
-  else{
+  else {
     $result_table = '<div class="no-results">No \'cross with\' variable(s) have been selected.</div>';
   }
 
@@ -173,8 +174,8 @@ function _mica_query_get_xlsx_link($query, $cross_variable_ids, $title = 'Downlo
   $xls_img_path = $GLOBALS['base_url'] . '/' . ctools_image_path('excel.png', 'mica_query');
   $xls_img_alt = t('Download as Excel');
   $xls_img = "<img typeof='foaf:Image' class='image-style-none' src='$xls_img_path' alt='$xls_img_alt' title='$xls_img_alt' />";
-  $xls_link = " <a href='$xls_url'>". t('!title', array('!title' => $title)) ." $xls_img</a>";
-  return  $xls_link;
+  $xls_link = " <a href='$xls_url'>" . t('!title', array('!title' => $title)) . " $xls_img</a>";
+  return $xls_link;
 }
 
 function _mica_query_crosstab_get_query($dataset_id, $variable) {
@@ -217,7 +218,7 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
   }
   $is_continuous = empty($cross_category_label_by_name);
 
-  $mica_connectors = mica_connector_query_multiple($dataset_node->nid);
+  $mica_connectors = mica_connector_query_multiple($dataset_node->nid, TRUE);
   $terms = mica_query_term_query($query);
 
   $rows = array();
@@ -259,21 +260,21 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
               $value = isset($result[$name][$cross_name]) ? $result[$name][$cross_name] : 0;
 
               // Total per line
-              $totals[$study_name]['variable'][$name] = (isset($totals[$study_name]['variable'][$name]) ? $totals[$study_name]['variable'][$name] + $value: $value);
+              $totals[$study_name]['variable'][$name] = (isset($totals[$study_name]['variable'][$name]) ? $totals[$study_name]['variable'][$name] + $value : $value);
               // Total per row
-              $totals[$study_name]['cross'][$cross_name] = (isset($totals[$study_name]['cross'][$cross_name]) ? $totals[$study_name]['cross'][$cross_name] + $value: $value);
+              $totals[$study_name]['cross'][$cross_name] = (isset($totals[$study_name]['cross'][$cross_name]) ? $totals[$study_name]['cross'][$cross_name] + $value : $value);
               // Total per study
-              $totals[$study_name]['N'] = (isset($totals[$study_name]['N']) ? $totals[$study_name]['N'] + $value: $value);
+              $totals[$study_name]['N'] = (isset($totals[$study_name]['N']) ? $totals[$study_name]['N'] + $value : $value);
 
               // All studies value for an intersection
-              $totals['cross'][$cross_name][$name] = (isset($totals['cross'][$cross_name][$name]) ? $totals['cross'][$cross_name][$name] + $value: $value);
+              $totals['cross'][$cross_name][$name] = (isset($totals['cross'][$cross_name][$name]) ? $totals['cross'][$cross_name][$name] + $value : $value);
               // Total count per cross variable
-              $totals['cross'][$cross_name]['N'] = (isset($totals['cross'][$cross_name]['N']) ? $totals['cross'][$cross_name]['N'] + $value: $value);
+              $totals['cross'][$cross_name]['N'] = (isset($totals['cross'][$cross_name]['N']) ? $totals['cross'][$cross_name]['N'] + $value : $value);
               // All studies value for N of a variable
-              $totals['variable'][$name]['N'] = (isset($totals['variable'][$name]['N']) ? $totals['variable'][$name]['N'] + $value: $value);
+              $totals['variable'][$name]['N'] = (isset($totals['variable'][$name]['N']) ? $totals['variable'][$name]['N'] + $value : $value);
 
               // Totals for all studies
-              $totals['N'] = (isset($totals['N']) ? $totals['N'] + $value: $value);
+              $totals['N'] = (isset($totals['N']) ? $totals['N'] + $value : $value);
             }
           }
 
@@ -331,15 +332,16 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
           foreach ($category_label_by_name as $name => $label) {
             $value = isset($result[$name]['mean']) ? $result[$name]['mean'] : 0;
             $std_dev = isset($result[$name]['std_deviation']) ? $result[$name]['std_deviation'] : 0;
+            $rnd = is_nan(round($std_dev, 2)) ? '0%' : round($std_dev, 2);
             $row[] = array(
-              'data' => round($value, 2) . ' (' . round($std_dev, 2) . ')',
+              'data' => round($value, 2) . ' (' . $rnd . ')',
               'title' => $value . ' (' . $std_dev . ')',
             );
 
             // Info for weighted mean
             $count = isset($result[$name]['count']) ? $result[$name]['count'] : 0;
             $w_mean = $value * $count;
-            $totals[$name]['w_mean'] = (isset($totals[$name]['w_mean']) ? $totals[$name]['w_mean'] + $w_mean: $w_mean);
+            $totals[$name]['w_mean'] = (isset($totals[$name]['w_mean']) ? $totals[$name]['w_mean'] + $w_mean : $w_mean);
 
             $study_w_mean += $w_mean;
             $count_total += $count;
@@ -373,10 +375,10 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
               'title' => $value,
               'class' => array('border-bottom'),
             );
-            $totals['variable'][$name]['N'] = (isset($totals['variable'][$name]['N']) ? $totals['variable'][$name]['N'] + $count: $count);
+            $totals['variable'][$name]['N'] = (isset($totals['variable'][$name]['N']) ? $totals['variable'][$name]['N'] + $count : $count);
             //$N_total += $count;
           }
-          $totals['N'] = (isset($totals['N']) ? $totals['N'] + $N_total: $N_total);
+          $totals['N'] = (isset($totals['N']) ? $totals['N'] + $N_total : $N_total);
 
 //          $value = _mica_query_crosstab_get_percentage($N_total, $totals['N']);
           $row[] = array(
@@ -409,7 +411,7 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
       );
 
       foreach ($category_label_by_name as $name => $label) {
-        $value = _mica_query_crosstab_get_percentage($totals['cross'][$cross_name][$name],  $totals['cross'][$cross_name]['N']);
+        $value = _mica_query_crosstab_get_percentage($totals['cross'][$cross_name][$name], $totals['cross'][$cross_name]['N']);
         $row[] = array(
           'data' => $value,
           'title' => $value,
@@ -443,7 +445,7 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
 
     $rows[] = array('data' => $row);
   }
-  else if (count($mica_connectors) > 1 && $is_continuous){
+  else if (count($mica_connectors) > 1 && $is_continuous) {
     $rows[] = array('data' => $row);
     $row = array();
     // Weighted mean
@@ -463,10 +465,10 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
         'title' => $value,
       );
 
-      $total_w_mean += $totals[$name]['w_mean'];// * $totals[$name]['N'];
+      $total_w_mean += $totals[$name]['w_mean']; // * $totals[$name]['N'];
 
     }
-    $w_mean = $totals['N'] > 0 ? $total_w_mean / $totals['N']: 0;
+    $w_mean = $totals['N'] > 0 ? $total_w_mean / $totals['N'] : 0;
     $row[] = array(
       'data' => round($w_mean, 2),
       'title' => $w_mean,
@@ -616,7 +618,7 @@ function _mica_query_crosstab_process_subheader($cross_variable_wrapper, $catego
 
 function _mica_query_crosstab_get_percentage($value, $total) {
   if ($value > 0 && $total > 0) {
-    $pct =  round(($value / $total) * 100, 2);
+    $pct = round(($value / $total) * 100, 2);
     return "$value ($pct%)";
   }
   return "$value (0%)";
@@ -633,9 +635,9 @@ function mica_query_crosstab_run_xlsx($variable) {
   $prefix = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head><body>';
   $suffix = '</body></html>';
 
-  if (!empty($cross_variables)){
+  if (!empty($cross_variables)) {
     $html = '';
-    foreach($cross_variables as $cross_variable_id){
+    foreach ($cross_variables as $cross_variable_id) {
       $variable2 = node_load($cross_variable_id);
       $filename .= ' - ' . $variable2->title;
 

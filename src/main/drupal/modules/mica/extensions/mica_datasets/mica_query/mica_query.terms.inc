@@ -145,7 +145,7 @@ abstract class AbstractTerm implements QueryTermInterface {
   function isRepeatable() {
     $variable = $this->getVariable();
     return isset($variable->field_repeatable[LANGUAGE_NONE][0]['value'])
-      && $variable->field_repeatable[LANGUAGE_NONE][0]['value'] === '1';
+    && $variable->field_repeatable[LANGUAGE_NONE][0]['value'] === '1';
   }
 
   function getOptions() {
@@ -239,6 +239,16 @@ class CategoryTerm extends AbstractTerm {
 
   function operator() {
     return isset($this->options['operator']) ? $this->options['operator'] : 'OR';
+  }
+
+  function checkStats() {
+    $stats = $this->stats();
+    foreach ($stats as $study_id => $stat) {
+      if (isset($stat['_all']) && $stat['_all'] != 0) {
+        return TRUE;
+      }
+    }
+    return FALSE;
   }
 
   function view() {
@@ -637,6 +647,10 @@ class RangeTerm extends AbstractTerm {
     }
     return $str . ($this->isInverted() ? ' not' : '') . $str_range;
   }
+
+  function checkStats() {
+    return TRUE;
+  }
 }
 
 class TodoTerm extends AbstractTerm {
@@ -730,5 +744,9 @@ class TodoTerm extends AbstractTerm {
       $str .= '(' . implode(', ', $this->match()) . ')';
     }
     return $str;
+  }
+
+  function checkStats() {
+    return TRUE;
   }
 }

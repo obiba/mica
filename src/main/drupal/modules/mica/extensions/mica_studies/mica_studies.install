@@ -15,7 +15,6 @@ function mica_studies_install() {
   _mica_import_custom_name_format();
   _mica_node_reference_block();
   _mica_studies_create_date_format();
-  mica_core_configure_feeds_tamper('mica_studies');
   _mica_studies_config_blocks();
 }
 

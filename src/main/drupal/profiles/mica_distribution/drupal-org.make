@@ -9,6 +9,8 @@ api = "2"
 
 projects[acl] = 1.0
 
+projects[admin_views] = 1.2
+
 projects[auto_entitylabel] = 1.2
 
 projects[autocomplete_deluxe][download][type] = git
@@ -147,7 +149,7 @@ projects[menu_view_unpublished][download][type] = git
 projects[menu_view_unpublished][download][revision] = 5f1f951
 projects[menu_view_unpublished][download][branch] = 7.x-1.x
 
-projects[mica] = 8.0-rc5
+projects[mica] = 8.0-rc7
 
 projects[module_filter] = 1.7
 
@@ -172,6 +174,8 @@ projects[pathauto] = 1.2
 projects[profile2] = 1.3
 
 projects[potx] = 1.0
+
+projects[print] = 1.2
 
 projects[progress] = 1.3
 

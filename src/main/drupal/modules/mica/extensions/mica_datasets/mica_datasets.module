@@ -273,7 +273,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
           // If at least one study as a connection to Opal
           $dataset_wrapper = entity_metadata_wrapper('node', $node);
           foreach ($dataset_wrapper->field_dataset_studies->value() as $study) {
-            if (mica_connector_query($dataset_wrapper->nid->value(), $study->nid, 1)) {
+            if (mica_connector_query($dataset_wrapper->nid->value(), $study->nid, TRUE)) {
               // import variables
               $links['import-variables'] = array(
                 '#theme' => 'menu_local_action',
@@ -382,7 +382,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
 /**
  * Check node type (if provided) and node access.
  *
- * @param node   $node
+ * @param node $node
  * @param string $bundle
  * @param string $op
  */
@@ -510,7 +510,7 @@ function mica_datasets_prepare_prettify() {
   }
   else {
     throw new Exception('prettify.css library not found! Please follow the instructions in mica_datasets/README.txt. Searched into '
-      . $paths);
+    . $paths);
   }
 
   if (isset($paths['js'])) {
@@ -518,7 +518,7 @@ function mica_datasets_prepare_prettify() {
   }
   else {
     throw new Exception('prettify.js library not found! Please follow the instructions in mica_datasets/README.txt. Searched into '
-      . $paths);
+    . $paths);
   }
 
   ctools_add_js('mica_datasets_prettify', 'mica_datasets');
@@ -538,7 +538,7 @@ function mica_datasets_node_view_alter(&$build) {
       $values['dataset_id'] = $variable_wrapper->field_dataset->nid->value();
       $term = new MicaDatasetQueryTerm($values);
       $impl = $term->termImpl();
-      if ($impl->hasConnectors()) {
+      if ($impl->hasConnectors() && $impl->checkStats()) {
         $build['statistics'] = array(
           '#type' => 'fieldset',
           '#title' => t('Statistics'),
@@ -923,7 +923,7 @@ function _mica_datasets_delete_svas(&$dataset, &$study) {
         foreach (node_load_multiple(array_keys($sva_results['node'])) as $sva) {
           $sva_wrapper = entity_metadata_wrapper('node', $sva);
           if ($sva_wrapper->field_sva_study->nid->value() === $study_wrapper->nid->value()) {
-//            $sva_wrapper->delete();
+            //$sva_wrapper->delete();
             $sva_ids[] = $sva_wrapper->nid;
             _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable, $sva_wrapper, 'field_variable_study_var_att');
           }
@@ -958,15 +958,15 @@ function mica_datasets_block_view_alter(&$data, $block) {
 function _mica_datasets_variable_current_search(&$data, $block) {
   if (isset($data['content']['field_group'])) {
     $data['content']['results']['#markup'] .= ' - ' . l(
-      t('Clear all criteria') . ' [X]',
-      'variable-search',
-      array(
-        'attributes' => array(
-          'rel' => 'nofollow',
-          'class' => array('current-search-clear-all'),
+        t('Clear all criteria') . ' [X]',
+        'variable-search',
+        array(
+          'attributes' => array(
+            'rel' => 'nofollow',
+            'class' => array('current-search-clear-all'),
+          )
         )
-      )
-    );
+      );
 
     // Translate titles
     foreach ($data['content']['field_group'] as $field => $field_group) {
@@ -1096,7 +1096,7 @@ function _mica_datasets_set_variable_position(&$variable) {
     $last_variable_wrapper = entity_metadata_wrapper('node', $last_variable);
     $wrapper->field_position->set($last_variable_wrapper->field_position->value() + 1);
   }
-  return $variable;
+  field_attach_update('variable', $variable);
 }
 
 function _mica_datasets_add_study_variable_attributes_to(&$variable) {
@@ -1126,11 +1126,26 @@ function _mica_datasets_create_study_variable_attributes_for_variable(&$variable
 
 function _mica_datasets_create_study_variable_attributes_for_study(&$study, $variables) {
   if (!empty($variables)) {
+    $modified = FALSE;
     foreach ($variables as $variable) {
-      _mica_datasets_create_study_variable_attribute($variable, $study);
-      $variable->save();
+      // Check if variable already exists
+      $query = new EntityFieldQuery();
+      $results = $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'study_variable_attributes')
+        ->fieldCondition('field_sva_variable', 'nid', $variable->nid->value())
+        ->fieldCondition('field_sva_study', 'nid', $study->nid->value())
+        ->execute();
+
+      if (empty($results)) {
+        _mica_datasets_create_study_variable_attribute($variable, $study);
+        $variable->save();
+        $modified = TRUE;
+      }
     }
-    $study->save();
+
+    if ($modified) {
+      $study->save();
+    }
   }
 }
 
@@ -1534,7 +1549,7 @@ function mica_datasets_translation_exclude_fields() {
  * Check whether queries/crosstab tab is accessible: requires to have access to dataset node and having participant variables
  * defined for this dataset.
  *
- * @param node   $dataset_node
+ * @param node $dataset_node
  * @param string $op
  */
 function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
@@ -1556,7 +1571,7 @@ function _mica_datasets_node_queries_access($dataset_node, $op = 'update') {
  * Check whether crosstab tab is accessible in variable: requires to have access to dataset node and having participant variables
  * defined for this dataset.
  *
- * @param node   $dataset_node
+ * @param node $dataset_node
  * @param string $op
  */
 function _mica_datasets_node_crosstab_access($node, $op = 'update') {
@@ -1587,9 +1602,9 @@ function _mica_datasets_node_crosstab_access($node, $op = 'update') {
  * Check for query accessibility: associated dataset is accessible, and query terms are all visible,
  * and user is the query author or query is published for viewing.
  *
- * @param node             $dataset_node
+ * @param node $dataset_node
  * @param MicaDatasetQuery $query
- * @param string           $op
+ * @param string $op
  */
 function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
   global $user;
@@ -1640,10 +1655,10 @@ function _mica_datasets_query_access($dataset_node, $query, $op = 'update') {
 /**
  * Check for query term access: associated query must be accessible.
  *
- * @param node                    $dataset_node
- * @param mica_dataset_query      $query
+ * @param node $dataset_node
+ * @param mica_dataset_query $query
  * @param mica_dataset_query_term $query_term
- * @param string                  $op
+ * @param string $op
  */
 function _mica_datasets_query_term_access($dataset_node, $query, $query_term, $op = 'update') {
   if (!is_object($query_term)) {
@@ -1669,7 +1684,7 @@ function mica_datasets_field_widget_form_alter(&$element, &$form_state, $context
   if ($form_state['build_info']['form_id'] == 'views_form_variables_dimensions_page') {
     // Force autocomplete deluxe widget to allow only a single value
     if ($context['instance']['widget']['module'] == 'autocomplete_deluxe') {
-      $element['#multiple'] = false;
+      $element['#multiple'] = FALSE;
     }
   }
 }

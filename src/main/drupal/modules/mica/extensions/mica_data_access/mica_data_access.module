@@ -100,14 +100,10 @@ function mica_data_access_menu_local_tasks_alter(&$data, $router_item, $root_pat
   $links = array();
 
   if ($root_path === 'data-access/approved' || $root_path === 'node/%/queries/%' || $root_path === 'data-access/requests') {
+
     if (node_access('create', 'data_access_request')) {
 
-      $href = url('data-access/request');
-      if ($root_path === 'node/%/queries/%') {
-        $dataset_node = $router_item['page_arguments'][1];
-        $href = url('data-access/request', array('query' => array('field_dataset_access' => $dataset_node->nid)));
-      }
-
+      $href = 'data-access/request';
       $links['add-data-access-request'] = array(
         '#theme' => 'menu_local_action',
         '#link' => array(
@@ -115,6 +111,14 @@ function mica_data_access_menu_local_tasks_alter(&$data, $router_item, $root_pat
           'href' => $href,
         ),
       );
+      if ($root_path === 'node/%/queries/%') {
+        $dataset_node = $router_item['page_arguments'][1];
+        //$quer = url('data-access/request', );
+
+        $links['add-data-access-request']['#link']['localized_options'] = array(
+            'query' => array('field_dataset_access' => $dataset_node->nid)
+        );
+      }
     }
   }
 
@@ -139,12 +143,13 @@ function mica_data_access_menu_local_tasks_alter(&$data, $router_item, $root_pat
     $node = node_load($explode[1]);
 
     if ($node && $node->type === 'data_access_request') {
-      $href = 'javascript:window.print();';
+      $href = "print/$node->nid";
       $links['print'] = array(
         '#theme' => 'menu_local_action',
         '#link' => array(
           'title' => t('Print'),
           'href' => $href,
+          'localized_options' => array('attributes' => array('target' => '_blank')),
         ),
       );
     }
@@ -158,10 +163,10 @@ function mica_data_access_can_edit_request($node) {
   if (isset($node_loaded->field_data_access_review[LANGUAGE_NONE][0]['nid'])) {
     $review_id = $node_loaded->field_data_access_review[LANGUAGE_NONE][0]['nid'];
     $result = db_query("SELECT * from {field_data_field_review_status} WHERE " .
-      "entity_type = 'node' AND " .
-      "bundle = 'data_access_review' AND " .
-      "entity_id = " . $review_id . " AND " .
-      "field_review_status_value IN ('accepted', 'rejected', 'submitted') ");
+    "entity_type = 'node' AND " .
+    "bundle = 'data_access_review' AND " .
+    "entity_id = " . $review_id . " AND " .
+    "field_review_status_value IN ('accepted', 'rejected', 'submitted') ");
     return $result->rowCount() == 0;
   }
   return TRUE;
@@ -185,7 +190,6 @@ function mica_data_access_field_attach_form($entity_type, $entity, &$form, &$for
     $form['title'] = array('#language' => NULL);
   }
 }
-
 
 function mica_data_access_request_add() {
   if (node_access('create', 'data_access_request')) {
@@ -215,7 +219,6 @@ function mica_data_access_request_review_access($node, $op = NULL) {
 
   return node_access('create', 'data_access_review');
 }
-
 
 function mica_data_access_request_review($node) {
   global $user;

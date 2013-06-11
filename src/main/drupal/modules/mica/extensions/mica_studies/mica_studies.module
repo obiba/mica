@@ -662,15 +662,15 @@ function mica_studies_block_view_alter(&$data, $block) {
 function _mica_studies_study_current_search(&$data, $block) {
   if (isset($data['content']['field_group'])) {
     $data['content']['results']['#markup'] .= ' - ' . l(
-        t('Clear all criteria') . ' [X]',
-        'studies-search',
-        array(
-          'attributes' => array(
-            'rel' => 'nofollow',
-            'class' => array('current-search-clear-all'),
-          )
+      t('Clear all criteria') . ' [X]',
+      'studies-search',
+      array(
+        'attributes' => array(
+          'rel' => 'nofollow',
+          'class' => array('current-search-clear-all'),
         )
-      );
+      )
+    );
     foreach ($data['content']['field_group'] as $field => $field_group) {
       $field_info = field_info_instance('node', $field, 'study');
       if (isset($field_info['display_label']) && strlen(trim($field_info['display_label'])) > 0) {
@@ -706,8 +706,11 @@ function mica_studies_post_features_rebuild() {
 }
 
 function _mica_studies_create_default_content() {
-  $study_menu = mica_core_create_menu(st('Studies'), 'studies', 'studies', FALSE, FALSE, 5);
+  $study_menu = mica_core_create_menu(st('Studies'), 'studies', 'studies', FALSE, FALSE, 5, NULL);
+  mica_core_create_menu(st('Search Studies'), 'studies-search', 'studies-search', FALSE, FALSE, 10, 'studies', $study_menu['mlid']);
   mica_core_set_menu_option('study', $study_menu['mlid']);
+  mica_core_disable_menu('studies-search');
+
 }
 
 function _mica_studies_configure_permissions() {
@@ -1029,9 +1032,19 @@ function mica_studies_node_reference_field_dce_population_potential_references($
   }
 
   $references = array();
+
+  $query = new EntityFieldQuery;
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'population');
+
   if (!empty($study_nid)) {
-    $study_wrapper = entity_metadata_wrapper('node', $study_nid);
-    foreach ($study_wrapper->field_study_populations->getIterator() as $pop_wrapper) {
+    $query->fieldCondition('field_pop_study', 'nid', $study_nid);
+  }
+  $entities = $query->execute();
+
+  if (!empty($entities)) {
+    foreach ($entities['node'] as $pop) {
+      $pop_wrapper = entity_metadata_wrapper('node', $pop->nid);
       $references[$pop_wrapper->nid->value()] = array(
         'title' => $pop_wrapper->title->value(),
         'rendered' => check_plain($pop_wrapper->title->value()),
