@@ -438,7 +438,7 @@ function _mica_connector_connection_config_values(&$form, &$form_state) {
 }
 
 function _testConnections($nid) {
-  $mica_connectors = mica_connector_query_multiple($nid);
+  $mica_connectors = mica_connector_query_multiple($nid, TRUE);
 
   $errors = 0;
   foreach ($mica_connectors as $connector) {

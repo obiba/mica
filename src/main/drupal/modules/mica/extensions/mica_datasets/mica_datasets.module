@@ -273,7 +273,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
           // If at least one study as a connection to Opal
           $dataset_wrapper = entity_metadata_wrapper('node', $node);
           foreach ($dataset_wrapper->field_dataset_studies->value() as $study) {
-            if (mica_connector_query($dataset_wrapper->nid->value(), $study->nid, 1)) {
+            if (mica_connector_query($dataset_wrapper->nid->value(), $study->nid, TRUE)) {
               // import variables
               $links['import-variables'] = array(
                 '#theme' => 'menu_local_action',
@@ -538,7 +538,7 @@ function mica_datasets_node_view_alter(&$build) {
       $values['dataset_id'] = $variable_wrapper->field_dataset->nid->value();
       $term = new MicaDatasetQueryTerm($values);
       $impl = $term->termImpl();
-      if ($impl->hasConnectors() && $impl->checkStats) {
+      if ($impl->hasConnectors() && $impl->checkStats()) {
         $build['statistics'] = array(
           '#type' => 'fieldset',
           '#title' => t('Statistics'),

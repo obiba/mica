@@ -54,7 +54,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
       // See http://www.jide.fr/english/using-ajax-in-drupal-7-outside-of-form-api
       // show link only for studies that have an opal connection
       if (node_access('update', $dataset_node)
-        && mica_connector_query($wrapper->nid->value(), $study_wrapper->nid->value())
+        && mica_connector_query($wrapper->nid->value(), $study_wrapper->nid->value(), TRUE)
       ) {
         $refresh_link = l(
           "<i class='icon-refresh $icon_bkg'></i>",

@@ -821,7 +821,7 @@ function _mica_query_result_table($dataset_node, $query, $cross_variable, $add_l
     }
   }
 
-  $mica_connectors = mica_connector_query_multiple($dataset_node->nid);
+  $mica_connectors = mica_connector_query_multiple($dataset_node->nid, TRUE);
   $terms = mica_query_term_query($query);
 
   $headers = array();
