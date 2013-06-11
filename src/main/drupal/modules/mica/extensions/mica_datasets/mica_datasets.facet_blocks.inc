@@ -60,4 +60,3 @@ function mica_datasets_configure_facet_blocks() {
 variables-dimensions
 variables-dimensions/*', 'variable_current_search');
 }
-

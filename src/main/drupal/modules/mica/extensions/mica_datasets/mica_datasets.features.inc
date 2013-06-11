@@ -255,10 +255,7 @@ function mica_datasets_default_search_api_index() {
         "field_dataset:field_dataset_studies:field_study_populations:field_pop_dce" : {
           "type" : "list\\u003Clist\\u003Clist\\u003Cinteger\\u003E\\u003E\\u003E",
           "entity_type" : "node"
-        },
-        "field_dataset:field_dataset_studies:field_study_populations:field_pop_select_criteria" : { "type" : "list\\u003Clist\\u003Clist\\u003Cstring\\u003E\\u003E\\u003E" },
-        "field_dataset:field_dataset_studies:field_study_populations:field_pop_src_recruit" : { "type" : "list\\u003Clist\\u003Clist\\u003Cstring\\u003E\\u003E\\u003E" },
-        "field_dataset:field_dataset_studies:field_study_populations:field_pop_dce:field_dce_data_sources" : { "type" : "list\\u003Clist\\u003Clist\\u003Clist\\u003Cstring\\u003E\\u003E\\u003E\\u003E" },
+        }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
