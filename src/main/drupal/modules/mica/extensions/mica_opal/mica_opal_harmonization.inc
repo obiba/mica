@@ -2,7 +2,7 @@
 
 function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
 
-  $connector = mica_connector_query($dataset_nid, $study_nid);
+  $connector = mica_connector_query($dataset_nid, $study_nid, TRUE);
 
   if ($connector) {
     $opal = new MicaDatasetOpalConnectionClass($connector);
