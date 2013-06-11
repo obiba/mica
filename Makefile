@@ -3,7 +3,7 @@
 # Requires drush 5+ to be installed: http://drush.ws
 #
 
-version=8.0-rc8
+version=8.0-rc7
 dist_version=8.0-rc8
 drupal_version=7.x
 branch=$(drupal_version)-8.x
