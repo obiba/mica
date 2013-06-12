@@ -28,6 +28,13 @@ function mica_data_access_update_7700(&$sandbox) {
 }
 
 /**
+ * Set defualt values for module Print-Friendly-Pages
+ */
+function mica_data_access_update_7800(&$sandbox) {
+  features_revert(array('mica_data_access' => array('strongarm')));
+}
+
+/**
  * Implements hook_update_dependencies().
  */
 function mica_data_access_update_dependencies() {

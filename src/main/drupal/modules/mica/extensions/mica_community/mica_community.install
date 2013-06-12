@@ -29,6 +29,13 @@ function mica_community_update_7700(&$sandbox) {
 }
 
 /**
+ * Add a link to 'All events' under the Events menu
+ */
+function mica_community_update_7800(&$sandbox) {
+  mica_core_create_menu(st('All Events'), 'events', 'events', FALSE, FALSE, 0, 'events');
+}
+
+/**
  * Implements hook_update_dependencies().
  */
 function mica_community_update_dependencies() {
