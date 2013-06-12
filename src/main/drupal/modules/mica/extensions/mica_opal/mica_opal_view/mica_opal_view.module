@@ -15,7 +15,7 @@ function mica_opal_view_ctools_plugin_api($owner, $api) {
  * Implements hook_rest_server_response_formatters_alter().
  */
 function mica_opal_view_rest_server_response_formatters_alter(&$formatters) {
-  $formatters['opal'] = array(
+  $formatters['xml'] = array(
     'mime types' => array('application/octet-stream'),
     'formatter class' => 'ServicesOpalFormatter',
   );
@@ -37,12 +37,11 @@ function mica_opal_view_default_services_endpoint() {
   );
   $endpoint->server_settings = array(
     'formatters' => array(
-      'opal' => TRUE,
       'bencode' => FALSE,
       'json' => FALSE,
       'jsonp' => FALSE,
       'php' => FALSE,
-      'xml' => FALSE,
+      'xml' => TRUE,
     ),
     'parsers' => array(
       'application/json' => TRUE,
