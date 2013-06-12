@@ -4,21 +4,19 @@
  * Mica Opal XML View generator
  */
 
-
-class OpalXmlFormatView extends RESTServerView {
+class ServicesOpalFormatter implements ServicesFormatterInterface {
 
   const MAELSTROM_NS = 'maelstrom';
 
-  private $doc;
-  private $languages;
+  protected $doc;
+  protected $languages;
 
-  function render() {
+  function render($data) {
     try {
 
       $this->languages = array_keys(language_list());
 
-      $dataset = $this->model;
-      $dataset_wrapper = entity_metadata_wrapper('node', $dataset);
+      $dataset_wrapper = entity_metadata_wrapper('node', $data);
       $dataset_name = $dataset_wrapper->title_field->value();
 
       $filename = check_plain($dataset_name);
@@ -218,7 +216,7 @@ class OpalXmlFormatView extends RESTServerView {
       if (function_exists('i18n_taxonomy_term_name')) {
         $this->addAttribute($attributes, $name, 'text', $language, i18n_taxonomy_term_name($term, $language), self::MAELSTROM_NS);
       }
-      else{
+      else {
         $this->addAttribute($attributes, $name, 'text', $language, $term->name, self::MAELSTROM_NS);
       }
     }

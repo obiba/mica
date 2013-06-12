@@ -29,6 +29,16 @@ function mica_community_update_7700(&$sandbox) {
 }
 
 /**
+ * Add a link to 'All events' under the Events menu and creating a new page 'Community-Overview'
+ */
+function mica_community_update_7800(&$sandbox) {
+  $community_content = file_get_contents(drupal_get_path('module', 'mica_community') . '/default_data/community.html');
+  mica_core_add_page(st('Community'), st($community_content), 'community-overview', 'bootstrap');
+
+  mica_core_create_menu(st('All Events'), 'events', 'events', FALSE, FALSE, 0, 'events');
+}
+
+/**
  * Implements hook_update_dependencies().
  */
 function mica_community_update_dependencies() {

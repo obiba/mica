@@ -198,7 +198,7 @@ projects[search_api_ranges] = 1.4
 
 projects[search_api_solr] = 1.0-rc5
 
-projects[services][version] = 3.3
+projects[services][version] = 3.4
 
 projects[smtp] = 1.0-beta2
 

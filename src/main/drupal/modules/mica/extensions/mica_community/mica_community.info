@@ -96,3 +96,4 @@ features[variable][] = node_submitted_publication
 features[views_view][] = calendar
 features[views_view][] = events
 features[views_view][] = publications
+features[views_view][] = community

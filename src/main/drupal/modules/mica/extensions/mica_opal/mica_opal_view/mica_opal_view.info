@@ -6,4 +6,4 @@ package = Mica
 dependencies[] = rest_server
 dependencies[] = mica_datasets
 
-files[] = OpalXmlFormatView.inc
+files[] = ServicesOpalFormatter.inc
