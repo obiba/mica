@@ -28,10 +28,16 @@ function mica_data_access_update_7700(&$sandbox) {
 }
 
 /**
- * Set defualt values for module Print-Friendly-Pages
+ * Set default values for module Print-Friendly-Pages
  */
 function mica_data_access_update_7800(&$sandbox) {
-  features_revert(array('mica_data_access' => array('strongarm')));
+
+  variable_set_value('print_html_link_pos', array(
+    'link' => 0,
+    'corner' => 0,
+    'block' => 0,
+    'help' => 0,
+  ));
 }
 
 /**
