@@ -90,6 +90,18 @@ function mica_core_update_7700(&$update) {
 function mica_core_update_7800(&$update) {
   module_enable(array('jquery_ui_multiselect_widget', 'profile2'));
   features_revert(array('mica_core' => array('field')));
+
+  // Exported format: Bootstrap.
+  $bootstrap_format = array(
+    'format' => 'bootstrap',
+    'name' => 'Bootstrap',
+    'cache' => 1,
+    'status' => 1,
+    'weight' => 30,
+    'filters' => array(),
+  );
+  $bootstrap_format = (object) $bootstrap_format;
+  filter_format_save($bootstrap_format);
 }
 
 function _mica_core_export_queries() {
