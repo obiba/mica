@@ -44,5 +44,6 @@ function mica_community_update_7800(&$sandbox) {
 function mica_community_update_dependencies() {
   $dependencies = array();
   $dependencies['mica_community'][7500] = array('mica_core' => 7500);
+  $dependencies['mica_community'][7800] = array('mica_core' => 7800);
   return $dependencies;
 }
