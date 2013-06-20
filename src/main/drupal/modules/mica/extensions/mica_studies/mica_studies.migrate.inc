@@ -253,11 +253,15 @@ function _mica_studies_migrate_content_types($study, $nb_studies, &$context) {
   }
 
   // modifying study state
+  $sp_target_nb = $study_wrapper->field_target_nb_supp_info->value();
+  $sp_samples_nb = $study_wrapper->field_samples_supp_info->value();
 
   $study2 = node_load($study->nid);
   $study_wrapper = entity_metadata_wrapper('node', $study2);
   $study_wrapper->field_study_start_year->set($study_wrapper->field_preparation_start_year->value());
   $study_wrapper->field_study_end_year->set($study_wrapper->field_followup_end_year->value());
+  $study_wrapper->field_target_nb_supp_info->set($sp_target_nb . ' ' . $sp_samples_nb);
+
   $study_wrapper->save();
 
   $context['sandbox']['progress']++;
@@ -305,6 +309,7 @@ function _mica_studies_delete_deprecated_fields_groups(&$context) {
   field_delete_field('field_ended_end_year');
   field_delete_field('field_status_supp_info');
   field_delete_field('field_questionnaires');
+  field_delete_field('field_samples_supp_info');
 
   // deleting deprecated groups
   _delete_groups('group_authorising_person');
@@ -323,6 +328,7 @@ function _mica_studies_delete_deprecated_fields_groups(&$context) {
   _delete_groups('group_baseline_phase');
   _delete_groups('group_followup_phase');
   _delete_groups('group_ended_phase');
+  _delete_groups('group_general_design');
 }
 
 function _mica_studies_migrate_finished($success, $results, $operations) {
