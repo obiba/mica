@@ -721,26 +721,21 @@ function mica_datasets_node_insert($node) {
 function mica_datasets_node_delete($node) {
   switch ($node->type) {
     case 'dataset':
-
       $dataset_id = $node->nid;
 
       // remove queries and their terms
       $queries = MicaDatasetQueryManager::getPersistedQueries($dataset_id);
       if (!empty($queries)) {
-        $query_ids = array();
         foreach ($queries as $query) {
           $query_id = $query->id;
-          $query_ids[] = $query_id;
           $terms = mica_query_term_query($query_id);
           if (!empty($terms)) {
-            $term_ids = array();
             foreach ($terms as $term) {
-              $term_ids[] = $term->id;
+              entity_delete('mica_dataset_query_term', $term->id);
             }
-            entity_delete_multiple('mica_dataset_query_term', $term_ids);
           }
+          entity_delete('mica_dataset_query', $query_id);
         }
-        entity_delete_multiple('mica_dataset_query', $query_ids);
       }
 
       // flush cached queries
@@ -750,14 +745,14 @@ function mica_datasets_node_delete($node) {
       $dataset = entity_metadata_wrapper('node', $dataset_id);
       $variables = $dataset->field_dataset_variables;
       $variables_value = $variables->value();
-      $nids = array();
+
       if (!empty($variables_value)) {
         foreach ($variables as $variable) {
-//          $variable->delete();
-          $nids[] = $variable->nid;
+          // ->fieldCondition('field_sva_variable', 'nid', $variable->nid)
+          node_delete('node', $variable);
+          //field_attach_delete('node', $variable->nid);
         }
       }
-      entity_delete_multiple('variable', $nids);
 
       // remove reference from studies
       $query = new EntityFieldQuery();
@@ -767,11 +762,9 @@ function mica_datasets_node_delete($node) {
         ->execute();
 
       if (!empty($entities)) {
-
         $studies = node_load_multiple(array_keys($entities['node']));
 
         foreach ($studies as $study_node) {
-
           foreach ($study_node->mica_dataset[$study_node->language] as $key => $value) {
             if ($value['nid'] == $dataset_id) {
               unset($study_node->mica_dataset[$study_node->language][$key]);
@@ -786,6 +779,7 @@ function mica_datasets_node_delete($node) {
           node_save($study_node);
         }
       }
+      field_attach_delete('node', $node);
       break;
 
     case 'study':
