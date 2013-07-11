@@ -17,14 +17,14 @@ clean-solr:
 	rm -rf solr
 
 install-drush:
-	apt-get install php-pear
+	apt-get install -y php-pear
 	pear channel-discover pear.drush.org
 	pear install drush/drush
 
 install-lessc: install-nodejs install-bootstrap-dependencies
 
 install-nodejs:
-	apt-get install g++ curl libssl-dev apache2-utils && \
+	apt-get install -y g++ curl libssl-dev apache2-utils && \
 	mkdir target/nodejs && \
 	cd target/nodejs && \
 	wget http://nodejs.org/dist/v0.8.15/node-v0.8.15.tar.gz && \
