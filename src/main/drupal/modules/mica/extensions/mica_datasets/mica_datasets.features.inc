@@ -21,6 +21,14 @@ function mica_datasets_ctools_plugin_api() {
     return array("version" => "1");
   }
   list($module, $api) = func_get_args();
+  if ($module == "feeds" && $api == "feeds_importer_default") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
+  if ($module == "feeds_tamper" && $api == "feeds_tamper_default") {
+    return array("version" => "2");
+  }
+  list($module, $api) = func_get_args();
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -232,6 +240,7 @@ function mica_datasets_default_search_api_index() {
         "field_sociodemographic_charact" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_target" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_unit" : { "type" : "text" },
+        "field_administrative_information" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
         "search_api_aggregation_2" : { "type" : "text" },

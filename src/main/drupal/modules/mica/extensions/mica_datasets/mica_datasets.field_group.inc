@@ -185,6 +185,7 @@ function mica_datasets_field_group_info() {
       17 => 'field_social_environment',
       18 => 'field_sociodemographic_charact',
       19 => 'field_target',
+      20 => 'field_administrative_information',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
@@ -232,6 +233,7 @@ function mica_datasets_field_group_info() {
       17 => 'field_social_environment',
       18 => 'field_sociodemographic_charact',
       19 => 'field_target',
+      20 => 'field_administrative_information',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

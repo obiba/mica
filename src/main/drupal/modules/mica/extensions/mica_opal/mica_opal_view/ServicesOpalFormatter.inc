@@ -106,17 +106,24 @@ class ServicesOpalFormatter implements ServicesFormatterInterface {
 
   private function render_variable($variable, &$element, $sva = NULL) {
     $wrapper = entity_metadata_wrapper('node', $variable);
-    debug($variable);
+    //debug($variable);
 
     $variable_element = $element->appendChild($this->doc->createElement('variable'));
     $variable_element->setAttribute('name', $wrapper->title->value());
     $variable_element->setAttribute('valueType', drupal_strtolower($wrapper->field_value_type->value()));
     $variable_element->setAttribute('entityType', 'Participant');
 
+    if (isset($wrapper->unit)) {
+      $variable_element->setAttribute('unit', $wrapper->unit->value());
+    }
+
     // repeatable
     if ($wrapper->field_repeatable->value() == '1') {
       $variable_element->setAttribute('repeatable', 'true');
       $variable_element->setAttribute('occurenceGroup', $wrapper->title->value());
+    }
+    else {
+      $variable_element->setAttribute('repeatable', 'false');
     }
     $attributes = $variable_element->appendChild($this->doc->createElement('attributes'));
 

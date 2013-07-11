@@ -24,6 +24,26 @@ function mica_core_install() {
 
   // need to create default content here because other modules are based on this
   _mica_core_default_pages();
+
+  _mica_core_disable_view(array('admin_views_node'));
+}
+
+function _mica_core_disable_view($names) {
+  // grab list of views that are already disabled
+  $views_status = variable_get('views_defaults', array());
+
+  // add our views to be disabled to the list
+  foreach ($names as $key => $viewname) {
+    $views_status[$viewname] = TRUE;
+  }
+
+  // reset the variable with the new list
+  variable_set('views_defaults', $views_status);
+
+  // empty cache now
+  if (function_exists('views_invalidate_cache')) {
+    views_invalidate_cache();
+  }
 }
 
 /**

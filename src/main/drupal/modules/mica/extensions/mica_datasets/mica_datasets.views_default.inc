@@ -863,7 +863,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['style_plugin'] = 'table';
@@ -1165,19 +1165,46 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options'] = '100, 250, 500, 1000, 2500';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
+    'views_bulk_operations' => 'views_bulk_operations',
     'title_field' => 'title_field',
     'field_label' => 'field_label',
     'field_anthropometric_structures' => 'field_anthropometric_structures',
     'field_body_functions' => 'field_body_functions',
     'field_body_structures' => 'field_body_structures',
+    'field_data_source' => 'field_data_source',
+    'field_disease_history' => 'field_disease_history',
+    'field_essence' => 'field_essence',
+    'field_individual_participant_mea' => 'field_individual_participant_mea',
+    'field_laboratory_measures' => 'field_laboratory_measures',
+    'field_life_habits_behaviours' => 'field_life_habits_behaviours',
+    'field_measure' => 'field_measure',
     'field_medical_health_interv' => 'field_medical_health_interv',
     'field_medication' => 'field_medication',
-    'views_bulk_operations' => 'views_bulk_operations',
+    'field_early_life' => 'field_early_life',
+    'field_perception_of_health' => 'field_perception_of_health',
+    'field_period' => 'field_period',
+    'field_physical_environment' => 'field_physical_environment',
+    'field_reproductive_history' => 'field_reproductive_history',
+    'field_social_environment' => 'field_social_environment',
+    'field_sociodemographic_charact' => 'field_sociodemographic_charact',
+    'field_target' => 'field_target',
+    'body' => 'body',
+    'nothing' => 'nothing',
+    'edit_node' => 'edit_node',
+    'created' => 'created',
+    'field_position' => 'field_position',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
+    'views_bulk_operations' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 1,
+    ),
     'title_field' => array(
       'align' => '',
       'separator' => '',
@@ -1205,6 +1232,43 @@ function mica_datasets_views_default_views() {
       'separator' => '',
       'empty_column' => 1,
     ),
+    'field_data_source' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_disease_history' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_essence' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_individual_participant_mea' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_laboratory_measures' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_life_habits_behaviours' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_measure' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'field_medical_health_interv' => array(
       'align' => '',
       'separator' => '',
@@ -1215,12 +1279,78 @@ function mica_datasets_views_default_views() {
       'separator' => '',
       'empty_column' => 1,
     ),
-    'views_bulk_operations' => array(
+    'field_early_life' => array(
       'align' => '',
       'separator' => '',
-      'empty_column' => 1,
+      'empty_column' => 0,
+    ),
+    'field_perception_of_health' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_period' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_physical_environment' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_reproductive_history' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_social_environment' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_sociodemographic_charact' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_target' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'body' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'created' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_position' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
     ),
   );
+  /* Header: Global: Result summary */
+  $handler->display->display_options['header']['result']['id'] = 'result';
+  $handler->display->display_options['header']['result']['table'] = 'views';
+  $handler->display->display_options['header']['result']['field'] = 'result';
   /* Field: Indexed Node: Bulk operations */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'search_api_index_variable_index';
@@ -1228,9 +1358,9 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['views_bulk_operations']['label'] = 'Assign domains';
   $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '1';
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 0;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '50';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
     'action::node_assign_owner_action' => array(
       'selected' => 0,
@@ -1240,42 +1370,36 @@ function mica_datasets_views_default_views() {
       'postpone_processing' => 0,
     ),
     'action::views_bulk_operations_delete_item' => array(
-      'selected' => 0,
+      'selected' => 1,
+      'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
-      'postpone_processing' => 0,
-    ),
-    'action::system_message_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'postpone_processing' => 0,
     ),
     'action::views_bulk_operations_script_action' => array(
       'selected' => 0,
+      'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
-      'postpone_processing' => 0,
     ),
     'action::node_make_sticky_action' => array(
       'selected' => 0,
+      'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
-      'postpone_processing' => 0,
     ),
     'action::node_make_unsticky_action' => array(
       'selected' => 0,
+      'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
-      'postpone_processing' => 0,
     ),
     'action::views_bulk_operations_modify_action' => array(
       'selected' => 1,
+      'postpone_processing' => 0,
       'skip_confirmation' => 1,
       'override_label' => 1,
       'label' => 'Add domains',
@@ -1302,6 +1426,7 @@ function mica_datasets_views_default_views() {
           'variable::field_social_environment' => 'variable::field_social_environment',
           'variable::field_sociodemographic_charact' => 'variable::field_sociodemographic_charact',
           'variable::field_target' => 'variable::field_target',
+          'variable::field_administrative_information' => 'variable::field_administrative_information',
         ),
       ),
       'postpone_processing' => 0,
@@ -1317,79 +1442,73 @@ function mica_datasets_views_default_views() {
     ),
     'action::node_promote_action' => array(
       'selected' => 0,
+      'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
-      'postpone_processing' => 0,
     ),
     'action::node_publish_action' => array(
-      'selected' => 0,
+      'selected' => 1,
+      'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
-      'postpone_processing' => 0,
-    ),
-    'action::system_goto_action' => array(
-      'selected' => 0,
-      'skip_confirmation' => 0,
-      'override_label' => 0,
-      'label' => '',
-      'postpone_processing' => 0,
     ),
     'action::node_unpromote_action' => array(
       'selected' => 0,
+      'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
-      'postpone_processing' => 0,
     ),
     'action::node_save_action' => array(
       'selected' => 0,
+      'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
-      'postpone_processing' => 0,
     ),
     'action::system_send_email_action' => array(
       'selected' => 0,
+      'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
-      'postpone_processing' => 0,
     ),
     'action::workbench_moderation_set_state_action' => array(
       'selected' => 0,
+      'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
-      'postpone_processing' => 0,
     ),
     'action::node_unpublish_action' => array(
       'selected' => 0,
+      'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
-      'postpone_processing' => 0,
     ),
     'action::node_unpublish_by_keyword_action' => array(
       'selected' => 0,
+      'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
-      'postpone_processing' => 0,
     ),
     'action::pathauto_node_update_action' => array(
       'selected' => 0,
+      'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
-      'postpone_processing' => 0,
     ),
   );
   /* Field: Indexed Node: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = 'Name';
   /* Field: Indexed Node: Label */
   $handler->display->display_options['fields']['field_label']['id'] = 'field_label';
   $handler->display->display_options['fields']['field_label']['table'] = 'search_api_index_variable_index';
@@ -1400,8 +1519,9 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_anthropometric_structures']['field'] = 'field_anthropometric_structures';
   $handler->display->display_options['fields']['field_anthropometric_structures']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_anthropometric_structures']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_anthropometric_structures']['alter']['text'] = '[field_anthropometric_structures],';
+  $handler->display->display_options['fields']['field_anthropometric_structures']['alter']['text'] = '[field_anthropometric_structures];';
   $handler->display->display_options['fields']['field_anthropometric_structures']['alter']['max_length'] = '100';
+  $handler->display->display_options['fields']['field_anthropometric_structures']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_anthropometric_structures']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_anthropometric_structures']['view_mode'] = 'full';
   /* Field: Indexed Node: Body Functions */
@@ -1410,7 +1530,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_body_functions']['field'] = 'field_body_functions';
   $handler->display->display_options['fields']['field_body_functions']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_body_functions']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_body_functions']['alter']['text'] = '[field_body_functions],';
+  $handler->display->display_options['fields']['field_body_functions']['alter']['text'] = '[field_body_functions]; ';
+  $handler->display->display_options['fields']['field_body_functions']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_body_functions']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_body_functions']['view_mode'] = 'full';
   /* Field: Indexed Node: Body Structures */
@@ -1419,7 +1540,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_body_structures']['field'] = 'field_body_structures';
   $handler->display->display_options['fields']['field_body_structures']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_body_structures']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_body_structures']['alter']['text'] = '[field_body_structures],';
+  $handler->display->display_options['fields']['field_body_structures']['alter']['text'] = '[field_body_structures]; ';
+  $handler->display->display_options['fields']['field_body_structures']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_body_structures']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_body_structures']['view_mode'] = 'full';
   /* Field: Indexed Node: Data Source */
@@ -1428,7 +1550,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_data_source']['field'] = 'field_data_source';
   $handler->display->display_options['fields']['field_data_source']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_data_source']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_data_source']['alter']['text'] = '[field_data_source],';
+  $handler->display->display_options['fields']['field_data_source']['alter']['text'] = '[field_data_source]; ';
+  $handler->display->display_options['fields']['field_data_source']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_data_source']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_data_source']['view_mode'] = 'full';
   /* Field: Indexed Node: Diseases History and Related Health Problems */
@@ -1437,7 +1560,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_disease_history']['field'] = 'field_disease_history';
   $handler->display->display_options['fields']['field_disease_history']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_disease_history']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_disease_history']['alter']['text'] = '[field_disease_history],';
+  $handler->display->display_options['fields']['field_disease_history']['alter']['text'] = '[field_disease_history]; ';
+  $handler->display->display_options['fields']['field_disease_history']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_disease_history']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_disease_history']['view_mode'] = 'full';
   /* Field: Indexed Node: Essence */
@@ -1446,7 +1570,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_essence']['field'] = 'field_essence';
   $handler->display->display_options['fields']['field_essence']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_essence']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_essence']['alter']['text'] = '[field_essence],';
+  $handler->display->display_options['fields']['field_essence']['alter']['text'] = '[field_essence]; ';
+  $handler->display->display_options['fields']['field_essence']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_essence']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_essence']['view_mode'] = 'full';
   /* Field: Indexed Node: Individual Participant Measures */
@@ -1455,7 +1580,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_individual_participant_mea']['field'] = 'field_individual_participant_mea';
   $handler->display->display_options['fields']['field_individual_participant_mea']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_individual_participant_mea']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_individual_participant_mea']['alter']['text'] = '[field_individual_participant_mea],';
+  $handler->display->display_options['fields']['field_individual_participant_mea']['alter']['text'] = '[field_individual_participant_mea]; ';
   $handler->display->display_options['fields']['field_individual_participant_mea']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_individual_participant_mea']['view_mode'] = 'full';
   /* Field: Indexed Node: Laboratory Measures */
@@ -1464,7 +1589,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_laboratory_measures']['field'] = 'field_laboratory_measures';
   $handler->display->display_options['fields']['field_laboratory_measures']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_laboratory_measures']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_laboratory_measures']['alter']['text'] = '[field_laboratory_measures],';
+  $handler->display->display_options['fields']['field_laboratory_measures']['alter']['text'] = '[field_laboratory_measures]; ';
+  $handler->display->display_options['fields']['field_laboratory_measures']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_laboratory_measures']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_laboratory_measures']['view_mode'] = 'full';
   /* Field: Indexed Node: Life Habits/Behaviours */
@@ -1473,7 +1599,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_life_habits_behaviours']['field'] = 'field_life_habits_behaviours';
   $handler->display->display_options['fields']['field_life_habits_behaviours']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_life_habits_behaviours']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_life_habits_behaviours']['alter']['text'] = '[field_life_habits_behaviours],';
+  $handler->display->display_options['fields']['field_life_habits_behaviours']['alter']['text'] = '[field_life_habits_behaviours]; ';
+  $handler->display->display_options['fields']['field_life_habits_behaviours']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_life_habits_behaviours']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_life_habits_behaviours']['view_mode'] = 'full';
   /* Field: Indexed Node: Measure */
@@ -1482,7 +1609,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_measure']['field'] = 'field_measure';
   $handler->display->display_options['fields']['field_measure']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_measure']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_measure']['alter']['text'] = '[field_measure],';
+  $handler->display->display_options['fields']['field_measure']['alter']['text'] = '[field_measure]; ';
+  $handler->display->display_options['fields']['field_measure']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_measure']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_measure']['view_mode'] = 'full';
   /* Field: Indexed Node: Medical Health Interventions/Health Services Utilization */
@@ -1491,7 +1619,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_medical_health_interv']['field'] = 'field_medical_health_interv';
   $handler->display->display_options['fields']['field_medical_health_interv']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_medical_health_interv']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_medical_health_interv']['alter']['text'] = '[field_medical_health_interv],';
+  $handler->display->display_options['fields']['field_medical_health_interv']['alter']['text'] = '[field_medical_health_interv]; ';
+  $handler->display->display_options['fields']['field_medical_health_interv']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_medical_health_interv']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_medical_health_interv']['view_mode'] = 'full';
   /* Field: Indexed Node: Medication */
@@ -1500,7 +1629,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_medication']['field'] = 'field_medication';
   $handler->display->display_options['fields']['field_medication']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_medication']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_medication']['alter']['text'] = '[field_medication],';
+  $handler->display->display_options['fields']['field_medication']['alter']['text'] = '[field_medication]; ';
+  $handler->display->display_options['fields']['field_medication']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_medication']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_medication']['view_mode'] = 'full';
   /* Field: Indexed Node: Participant's Early Life/Childhood */
@@ -1518,7 +1648,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_perception_of_health']['field'] = 'field_perception_of_health';
   $handler->display->display_options['fields']['field_perception_of_health']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_perception_of_health']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_perception_of_health']['alter']['text'] = '[field_perception_of_health],';
+  $handler->display->display_options['fields']['field_perception_of_health']['alter']['text'] = '[field_perception_of_health]; ';
+  $handler->display->display_options['fields']['field_perception_of_health']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_perception_of_health']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_perception_of_health']['view_mode'] = 'full';
   /* Field: Indexed Node: Period */
@@ -1527,7 +1658,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_period']['field'] = 'field_period';
   $handler->display->display_options['fields']['field_period']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_period']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_period']['alter']['text'] = '[field_period],';
+  $handler->display->display_options['fields']['field_period']['alter']['text'] = '[field_period]; ';
+  $handler->display->display_options['fields']['field_period']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_period']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_period']['view_mode'] = 'full';
   /* Field: Indexed Node: Physical Environment */
@@ -1536,7 +1668,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_physical_environment']['field'] = 'field_physical_environment';
   $handler->display->display_options['fields']['field_physical_environment']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_physical_environment']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_physical_environment']['alter']['text'] = '[field_physical_environment],';
+  $handler->display->display_options['fields']['field_physical_environment']['alter']['text'] = '[field_physical_environment]; ';
+  $handler->display->display_options['fields']['field_physical_environment']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_physical_environment']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_physical_environment']['view_mode'] = 'full';
   /* Field: Indexed Node: Reproductive Health and History */
@@ -1545,7 +1678,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_reproductive_history']['field'] = 'field_reproductive_history';
   $handler->display->display_options['fields']['field_reproductive_history']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_reproductive_history']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_reproductive_history']['alter']['text'] = '[field_reproductive_history],';
+  $handler->display->display_options['fields']['field_reproductive_history']['alter']['text'] = '[field_reproductive_history]; ';
+  $handler->display->display_options['fields']['field_reproductive_history']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_reproductive_history']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_reproductive_history']['view_mode'] = 'full';
   /* Field: Indexed Node: Social Environment */
@@ -1554,7 +1688,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_social_environment']['field'] = 'field_social_environment';
   $handler->display->display_options['fields']['field_social_environment']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_social_environment']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_social_environment']['alter']['text'] = '[field_social_environment],';
+  $handler->display->display_options['fields']['field_social_environment']['alter']['text'] = '[field_social_environment]; ';
+  $handler->display->display_options['fields']['field_social_environment']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_social_environment']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_social_environment']['view_mode'] = 'full';
   /* Field: Indexed Node: Sociodemographic/Socioeconomic Characteristics */
@@ -1563,16 +1698,27 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_sociodemographic_charact']['field'] = 'field_sociodemographic_charact';
   $handler->display->display_options['fields']['field_sociodemographic_charact']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_sociodemographic_charact']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_sociodemographic_charact']['alter']['text'] = '[field_sociodemographic_charact],';
+  $handler->display->display_options['fields']['field_sociodemographic_charact']['alter']['text'] = '[field_sociodemographic_charact]; ';
+  $handler->display->display_options['fields']['field_sociodemographic_charact']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_sociodemographic_charact']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_sociodemographic_charact']['view_mode'] = 'full';
+  /* Field: Indexed Node: Administrative Information */
+  $handler->display->display_options['fields']['field_administrative_information']['id'] = 'field_administrative_information';
+  $handler->display->display_options['fields']['field_administrative_information']['table'] = 'search_api_index_variable_index';
+  $handler->display->display_options['fields']['field_administrative_information']['field'] = 'field_administrative_information';
+  $handler->display->display_options['fields']['field_administrative_information']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_administrative_information']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_administrative_information']['alter']['text'] = '[field_administrative_information]; ';
+  $handler->display->display_options['fields']['field_administrative_information']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_administrative_information']['view_mode'] = 'full';
   /* Field: Indexed Node: Target */
   $handler->display->display_options['fields']['field_target']['id'] = 'field_target';
   $handler->display->display_options['fields']['field_target']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_target']['field'] = 'field_target';
   $handler->display->display_options['fields']['field_target']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_target']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_target']['alter']['text'] = '[field_target],';
+  $handler->display->display_options['fields']['field_target']['alter']['text'] = '[field_target]; ';
+  $handler->display->display_options['fields']['field_target']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_target']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_target']['view_mode'] = 'full';
   /* Field: Indexed Node: The main body text */
@@ -1589,7 +1735,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Domains';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_anthropometric_structures][field_body_functions][field_body_structures][field_medical_health_interv][field_medication][field_data_source][field_disease_history][field_individual_participant_mea][field_laboratory_measures][field_life_habits_behaviours][field_early_life][field_perception_of_health][field_period][field_physical_environment][field_reproductive_history][field_social_environment][field_sociodemographic_charact][field_measure][field_essence][field_target]';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_anthropometric_structures][field_body_functions][field_body_structures][field_medical_health_interv][field_medication][field_data_source][field_disease_history][field_individual_participant_mea][field_laboratory_measures][field_life_habits_behaviours][field_early_life][field_perception_of_health][field_period][field_physical_environment][field_reproductive_history][field_social_environment][field_sociodemographic_charact][field_measure][field_essence][field_target][field_administrative_information]';
   $handler->display->display_options['fields']['nothing']['alter']['max_length'] = '400';
   $handler->display->display_options['fields']['nothing']['alter']['more_link_text'] = 'more';
   $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'tooltip';
@@ -1670,6 +1816,16 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 0;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  $handler->display->display_options['displays'] = array(
+    'default' => 0,
+    'page' => 0,
+  );
+  /* Field: Indexed Node: Node ID */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_variable_index';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['separator'] = '';
+  $handler->display->display_options['fields']['nid']['link_to_entity'] = 0;
   /* Field: Indexed Node: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_variable_index';
@@ -1682,65 +1838,64 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_anthropometric_structures']['id'] = 'field_anthropometric_structures';
   $handler->display->display_options['fields']['field_anthropometric_structures']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_anthropometric_structures']['field'] = 'field_anthropometric_structures';
-  $handler->display->display_options['fields']['field_anthropometric_structures']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_anthropometric_structures']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_anthropometric_structures']['alter']['text'] = '[field_anthropometric_structures],';
+  $handler->display->display_options['fields']['field_anthropometric_structures']['label'] = 'anthropometric_structures';
+  $handler->display->display_options['fields']['field_anthropometric_structures']['alter']['text'] = '[field_anthropometric_structures]';
   $handler->display->display_options['fields']['field_anthropometric_structures']['alter']['max_length'] = '100';
-  $handler->display->display_options['fields']['field_anthropometric_structures']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_anthropometric_structures']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_anthropometric_structures']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_anthropometric_structures']['view_mode'] = 'full';
   /* Field: Indexed Node: Body Functions */
   $handler->display->display_options['fields']['field_body_functions']['id'] = 'field_body_functions';
   $handler->display->display_options['fields']['field_body_functions']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_body_functions']['field'] = 'field_body_functions';
-  $handler->display->display_options['fields']['field_body_functions']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_body_functions']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_body_functions']['alter']['text'] = '[field_body_functions],';
+  $handler->display->display_options['fields']['field_body_functions']['label'] = 'body_functions';
+  $handler->display->display_options['fields']['field_body_functions']['alter']['text'] = '[field_body_functions]';
+  $handler->display->display_options['fields']['field_body_functions']['list']['separator'] = '|';
   $handler->display->display_options['fields']['field_body_functions']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_body_functions']['view_mode'] = 'full';
   /* Field: Indexed Node: Body Structures */
   $handler->display->display_options['fields']['field_body_structures']['id'] = 'field_body_structures';
   $handler->display->display_options['fields']['field_body_structures']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_body_structures']['field'] = 'field_body_structures';
-  $handler->display->display_options['fields']['field_body_structures']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_body_structures']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_body_structures']['label'] = 'body_structures';
   $handler->display->display_options['fields']['field_body_structures']['alter']['text'] = '[field_body_structures],';
-  $handler->display->display_options['fields']['field_body_structures']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_body_structures']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_body_structures']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_body_structures']['view_mode'] = 'full';
   /* Field: Indexed Node: Data Source */
   $handler->display->display_options['fields']['field_data_source']['id'] = 'field_data_source';
   $handler->display->display_options['fields']['field_data_source']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_data_source']['field'] = 'field_data_source';
-  $handler->display->display_options['fields']['field_data_source']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_data_source']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_data_source']['label'] = 'data_source';
   $handler->display->display_options['fields']['field_data_source']['alter']['text'] = '[field_data_source],';
-  $handler->display->display_options['fields']['field_data_source']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_data_source']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_data_source']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_data_source']['view_mode'] = 'full';
   /* Field: Indexed Node: Diseases History and Related Health Problems */
   $handler->display->display_options['fields']['field_disease_history']['id'] = 'field_disease_history';
   $handler->display->display_options['fields']['field_disease_history']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_disease_history']['field'] = 'field_disease_history';
-  $handler->display->display_options['fields']['field_disease_history']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_disease_history']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_disease_history']['label'] = 'disease_history';
   $handler->display->display_options['fields']['field_disease_history']['alter']['text'] = '[field_disease_history],';
-  $handler->display->display_options['fields']['field_disease_history']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_disease_history']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_disease_history']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_disease_history']['view_mode'] = 'full';
   /* Field: Indexed Node: Essence */
   $handler->display->display_options['fields']['field_essence']['id'] = 'field_essence';
   $handler->display->display_options['fields']['field_essence']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_essence']['field'] = 'field_essence';
-  $handler->display->display_options['fields']['field_essence']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_essence']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_essence']['label'] = 'essence';
   $handler->display->display_options['fields']['field_essence']['alter']['text'] = '[field_essence],';
-  $handler->display->display_options['fields']['field_essence']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_essence']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_essence']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_essence']['view_mode'] = 'full';
   /* Field: Indexed Node: Individual Participant Measures */
   $handler->display->display_options['fields']['field_individual_participant_mea']['id'] = 'field_individual_participant_mea';
   $handler->display->display_options['fields']['field_individual_participant_mea']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_individual_participant_mea']['field'] = 'field_individual_participant_mea';
-  $handler->display->display_options['fields']['field_individual_participant_mea']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_individual_participant_mea']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_individual_participant_mea']['label'] = 'individual_participant_measures';
   $handler->display->display_options['fields']['field_individual_participant_mea']['alter']['text'] = '[field_individual_participant_mea],';
-  $handler->display->display_options['fields']['field_individual_participant_mea']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_individual_participant_mea']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_individual_participant_mea']['view_mode'] = 'full';
   /* Field: Indexed Node: Laboratory Measures */
   $handler->display->display_options['fields']['field_laboratory_measures']['id'] = 'field_laboratory_measures';
@@ -1755,132 +1910,115 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_life_habits_behaviours']['id'] = 'field_life_habits_behaviours';
   $handler->display->display_options['fields']['field_life_habits_behaviours']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_life_habits_behaviours']['field'] = 'field_life_habits_behaviours';
-  $handler->display->display_options['fields']['field_life_habits_behaviours']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_life_habits_behaviours']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_life_habits_behaviours']['label'] = 'life_habits_behaviours';
   $handler->display->display_options['fields']['field_life_habits_behaviours']['alter']['text'] = '[field_life_habits_behaviours],';
-  $handler->display->display_options['fields']['field_life_habits_behaviours']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_life_habits_behaviours']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_life_habits_behaviours']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_life_habits_behaviours']['view_mode'] = 'full';
   /* Field: Indexed Node: Measure */
   $handler->display->display_options['fields']['field_measure']['id'] = 'field_measure';
   $handler->display->display_options['fields']['field_measure']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_measure']['field'] = 'field_measure';
-  $handler->display->display_options['fields']['field_measure']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_measure']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_measure']['label'] = 'measure';
   $handler->display->display_options['fields']['field_measure']['alter']['text'] = '[field_measure],';
-  $handler->display->display_options['fields']['field_measure']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_measure']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_measure']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_measure']['view_mode'] = 'full';
   /* Field: Indexed Node: Medical Health Interventions/Health Services Utilization */
   $handler->display->display_options['fields']['field_medical_health_interv']['id'] = 'field_medical_health_interv';
   $handler->display->display_options['fields']['field_medical_health_interv']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_medical_health_interv']['field'] = 'field_medical_health_interv';
-  $handler->display->display_options['fields']['field_medical_health_interv']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_medical_health_interv']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_medical_health_interv']['label'] = 'medical_health_interv';
   $handler->display->display_options['fields']['field_medical_health_interv']['alter']['text'] = '[field_medical_health_interv],';
-  $handler->display->display_options['fields']['field_medical_health_interv']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_medical_health_interv']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_medical_health_interv']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_medical_health_interv']['view_mode'] = 'full';
   /* Field: Indexed Node: Medication */
   $handler->display->display_options['fields']['field_medication']['id'] = 'field_medication';
   $handler->display->display_options['fields']['field_medication']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_medication']['field'] = 'field_medication';
-  $handler->display->display_options['fields']['field_medication']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_medication']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_medication']['label'] = 'medication';
   $handler->display->display_options['fields']['field_medication']['alter']['text'] = '[field_medication],';
-  $handler->display->display_options['fields']['field_medication']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_medication']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_medication']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_medication']['view_mode'] = 'full';
   /* Field: Indexed Node: Participant's Early Life/Childhood */
   $handler->display->display_options['fields']['field_early_life']['id'] = 'field_early_life';
   $handler->display->display_options['fields']['field_early_life']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_early_life']['field'] = 'field_early_life';
-  $handler->display->display_options['fields']['field_early_life']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_early_life']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_early_life']['label'] = 'early_life';
   $handler->display->display_options['fields']['field_early_life']['alter']['text'] = '[field_early_life],';
-  $handler->display->display_options['fields']['field_early_life']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_early_life']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_early_life']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_early_life']['view_mode'] = 'full';
   /* Field: Indexed Node: Perception of Health/Quality of life */
   $handler->display->display_options['fields']['field_perception_of_health']['id'] = 'field_perception_of_health';
   $handler->display->display_options['fields']['field_perception_of_health']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_perception_of_health']['field'] = 'field_perception_of_health';
-  $handler->display->display_options['fields']['field_perception_of_health']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_perception_of_health']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_perception_of_health']['label'] = 'perception_of_health';
   $handler->display->display_options['fields']['field_perception_of_health']['alter']['text'] = '[field_perception_of_health],';
-  $handler->display->display_options['fields']['field_perception_of_health']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_perception_of_health']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_perception_of_health']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_perception_of_health']['view_mode'] = 'full';
   /* Field: Indexed Node: Period */
   $handler->display->display_options['fields']['field_period']['id'] = 'field_period';
   $handler->display->display_options['fields']['field_period']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_period']['field'] = 'field_period';
-  $handler->display->display_options['fields']['field_period']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_period']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_period']['label'] = 'period';
   $handler->display->display_options['fields']['field_period']['alter']['text'] = '[field_period],';
-  $handler->display->display_options['fields']['field_period']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_period']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_period']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_period']['view_mode'] = 'full';
   /* Field: Indexed Node: Physical Environment */
   $handler->display->display_options['fields']['field_physical_environment']['id'] = 'field_physical_environment';
   $handler->display->display_options['fields']['field_physical_environment']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_physical_environment']['field'] = 'field_physical_environment';
-  $handler->display->display_options['fields']['field_physical_environment']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_physical_environment']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_physical_environment']['label'] = 'physical_environment';
   $handler->display->display_options['fields']['field_physical_environment']['alter']['text'] = '[field_physical_environment],';
-  $handler->display->display_options['fields']['field_physical_environment']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_physical_environment']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_physical_environment']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_physical_environment']['view_mode'] = 'full';
   /* Field: Indexed Node: Reproductive Health and History */
   $handler->display->display_options['fields']['field_reproductive_history']['id'] = 'field_reproductive_history';
   $handler->display->display_options['fields']['field_reproductive_history']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_reproductive_history']['field'] = 'field_reproductive_history';
+  $handler->display->display_options['fields']['field_reproductive_history']['label'] = 'reproductive_history';
   $handler->display->display_options['fields']['field_reproductive_history']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_reproductive_history']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_reproductive_history']['alter']['text'] = '[field_reproductive_history],';
-  $handler->display->display_options['fields']['field_reproductive_history']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_reproductive_history']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_reproductive_history']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_reproductive_history']['view_mode'] = 'full';
   /* Field: Indexed Node: Social Environment */
   $handler->display->display_options['fields']['field_social_environment']['id'] = 'field_social_environment';
   $handler->display->display_options['fields']['field_social_environment']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_social_environment']['field'] = 'field_social_environment';
-  $handler->display->display_options['fields']['field_social_environment']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_social_environment']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_social_environment']['label'] = 'social_environment';
   $handler->display->display_options['fields']['field_social_environment']['alter']['text'] = '[field_social_environment],';
-  $handler->display->display_options['fields']['field_social_environment']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_social_environment']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_social_environment']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_social_environment']['view_mode'] = 'full';
   /* Field: Indexed Node: Sociodemographic/Socioeconomic Characteristics */
   $handler->display->display_options['fields']['field_sociodemographic_charact']['id'] = 'field_sociodemographic_charact';
   $handler->display->display_options['fields']['field_sociodemographic_charact']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_sociodemographic_charact']['field'] = 'field_sociodemographic_charact';
-  $handler->display->display_options['fields']['field_sociodemographic_charact']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_sociodemographic_charact']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_sociodemographic_charact']['label'] = 'sociodemographic_charact';
   $handler->display->display_options['fields']['field_sociodemographic_charact']['alter']['text'] = '[field_sociodemographic_charact],';
-  $handler->display->display_options['fields']['field_sociodemographic_charact']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_sociodemographic_charact']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_sociodemographic_charact']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_sociodemographic_charact']['view_mode'] = 'full';
   /* Field: Indexed Node: Target */
   $handler->display->display_options['fields']['field_target']['id'] = 'field_target';
   $handler->display->display_options['fields']['field_target']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_target']['field'] = 'field_target';
-  $handler->display->display_options['fields']['field_target']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_target']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_target']['label'] = 'target';
   $handler->display->display_options['fields']['field_target']['alter']['text'] = '[field_target],';
-  $handler->display->display_options['fields']['field_target']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_target']['list']['separator'] = '|';
+  $handler->display->display_options['fields']['field_target']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_target']['view_mode'] = 'full';
-  /* Field: Indexed Node: The main body text */
-  $handler->display->display_options['fields']['body']['id'] = 'body';
-  $handler->display->display_options['fields']['body']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['fields']['body']['field'] = 'body';
-  $handler->display->display_options['fields']['body']['label'] = 'Description';
-  $handler->display->display_options['fields']['body']['type'] = 'text_trimmed';
-  $handler->display->display_options['fields']['body']['settings'] = array(
-    'trim_length' => '200',
-  );
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = 'Domains';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_anthropometric_structures][field_body_functions][field_body_structures][field_medical_health_interv][field_medication][field_data_source][field_disease_history][field_individual_participant_mea][field_laboratory_measures][field_life_habits_behaviours][field_early_life][field_perception_of_health][field_period][field_physical_environment][field_reproductive_history][field_social_environment][field_sociodemographic_charact][field_measure][field_essence][field_target]';
-  $handler->display->display_options['fields']['nothing']['alter']['max_length'] = '400';
-  $handler->display->display_options['fields']['nothing']['alter']['more_link_text'] = 'more';
-  $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'tooltip';
   $handler->display->display_options['path'] = 'variables-dimensions-csv';
   $handler->display->display_options['displays'] = array(
-    'page' => 'page',
     'default' => 0,
+    'page' => 0,
   );
   $export['variables_dimensions'] = $view;
 
