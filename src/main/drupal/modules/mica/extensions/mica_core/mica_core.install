@@ -25,6 +25,7 @@ function mica_core_install() {
   // need to create default content here because other modules are based on this
   _mica_core_default_pages();
 
+  module_enable(array('admin_views'));
   _mica_core_disable_view(array('admin_views_node'));
 }
 
