@@ -194,7 +194,7 @@ function mica_datasets_feeds_importer_default() {
             'unique' => FALSE,
           ),
           31 => array(
-            'source' => 'admin_info',
+            'source' => 'administrative_information',
             'target' => 'field_administrative_information',
             'unique' => FALSE,
           ),
