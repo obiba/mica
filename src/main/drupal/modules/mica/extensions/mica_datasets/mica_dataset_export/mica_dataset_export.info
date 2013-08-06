@@ -1,0 +1,9 @@
+name = Mica Dataset Export
+description = Provides a Dataset Export XML formatter for the REST server.
+core = 7.x
+package = Mica
+
+dependencies[] = rest_server
+dependencies[] = mica_datasets
+
+files[] = ServicesDatasetFormatter.inc

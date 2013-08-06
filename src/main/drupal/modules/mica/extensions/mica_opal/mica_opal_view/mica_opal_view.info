@@ -7,3 +7,4 @@ dependencies[] = rest_server
 dependencies[] = mica_datasets
 
 files[] = ServicesOpalFormatter.inc
+files[] = ServicesDatasetFormatter.inc
