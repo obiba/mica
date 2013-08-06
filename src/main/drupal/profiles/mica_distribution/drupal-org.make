@@ -141,7 +141,7 @@ projects[mail_edit] = 1.0
 
 projects[masquerade] = 1.0-rc5
 
-projects[menu_breadcrumb] = 1.3
+projects[menu_breadcrumb] = 1.4
 
 projects[menu_firstchild] = 1.1
 
@@ -186,19 +186,19 @@ projects[references][download][revision] = 311bd49
 projects[references][download][branch] = 7.x-2.x
 projects[references][patch][1988436] = http://drupal.org/files/references-hook_node_reference_FIELD_potential_references_1988436_3.patch
 
-projects[search_api][version] = 1.6
+projects[search_api][version] = 1.7
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 
 projects[search_api_combined] = 1.2
 
-projects[search_api_page] = 1.0-beta2
+projects[search_api_page] = 1.0-rc1
 
 projects[search_api_ranges] = 1.4
 
-projects[search_api_solr] = 1.0-rc5
+projects[search_api_solr] = 1.1
 
-projects[services][version] = 3.4
+projects[services][version] = 3.5
 
 projects[smtp] = 1.0-beta2
 
@@ -212,6 +212,8 @@ projects[taxonomy_manager] = 1.0
 projects[title] = 1.0-alpha7
 
 projects[token] = 1.5
+
+projects[uuid] = 1.0-alpha5
 
 projects[variable] = 2.2
 
@@ -236,7 +238,7 @@ projects[xmlsitemap] = 2.0-rc2
 ; Themes
 ; ---------
 
-projects[bootstrap] = 2.0
+projects[bootstrap] = 2.1
 
 
 ; Libraries

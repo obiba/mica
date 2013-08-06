@@ -1,5 +1,1 @@
-.node-study .field-name-field-logo, .node-population .field-name-field-logo { float: left; margin: 10px }
-
-.node-study .field-item .inner-label, .node-population .field-item .inner-label { display: inline; font-weight: bold }
-
-.node-study .field-item .inner-value, .node-population .field-item .inner-value { display: inline; padding-left: 3px }
+.node-study .field-name-field-logo,.node-population .field-name-field-logo{float:left;margin:10px}.node-study .field-item .inner-label,.node-population .field-item .inner-label{display:inline;font-weight:bold}.node-study .field-item .inner-value,.node-population .field-item .inner-value{display:inline;padding-left:3px}
