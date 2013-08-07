@@ -84,7 +84,6 @@ class ServicesDatasetFormatter implements ServicesFormatterInterface {
     $remote_url = $dataset->field_remote_url->value();
     $desc = $dataset->body->value->value();
 
-//    debug($desc);
     $comment = 'XML Dataset View for dataset \'' . $dataset_name . '\'';
     if (!empty($study_name)) {
       $comment .= ' and study \'' . check_plain($study_name) . '\'';
@@ -110,16 +109,16 @@ class ServicesDatasetFormatter implements ServicesFormatterInterface {
 
   private function render_variable($variable, &$element, $sva = NULL) {
     $wrapper = entity_metadata_wrapper('node', $variable);
-    //debug($variable);
 
     $variable_element = $element->appendChild($this->doc->createElement('variable'));
     $variable_element->setAttribute('name', $wrapper->title->value());
     $variable_element->setAttribute('valueType', drupal_strtolower($wrapper->field_value_type->value()));
-    $variable_element->setAttribute('entityType', 'Participant');
 
-    if (isset($wrapper->unit)) {
-      $variable_element->setAttribute('unit', $wrapper->unit->value());
+    if ($wrapper->field_unit->value() != NULL) {
+      $variable_element->setAttribute('unit', $wrapper->field_unit->value());
     }
+    $remote_url = $wrapper->field_remote_url->value();
+    $variable_element->setAttribute('remote_url', $remote_url['url']);
 
     // repeatable
     if ($wrapper->field_repeatable->value() == '1') {
@@ -132,14 +131,15 @@ class ServicesDatasetFormatter implements ServicesFormatterInterface {
     $attributes = $variable_element->appendChild($this->doc->createElement('attributes'));
 
     foreach ($this->languages as $language) {
-      $this->addAttribute($attributes, 'label', 'text', $language, $wrapper->language($language)->field_label->value());
+      $this->addAttribute($attributes, 'label', $language, $wrapper->language($language)->field_label->value());
     }
 
     foreach ($this->languages as $language) {
       $body = $wrapper->language($language)->body->value();
       if (!empty($body)) {
-        $this->addAttribute($attributes, 'description', 'text', $language,
-          $wrapper->language($language)->body->value->value(array('decode' => TRUE)), self::MAELSTROM_NS);
+        $b = $variable_element->appendChild($this->doc->createElement('body'));
+        $b->setAttribute('language', $language);
+        $b->appendChild($this->doc->createCDATASection($wrapper->language($language)->body->value->value()));
       }
     }
 
@@ -153,11 +153,11 @@ class ServicesDatasetFormatter implements ServicesFormatterInterface {
   private function addStudyVariableAttributes($attributes, $sva) {
     if (!empty($sva)) {
       $sva_wrapper = entity_metadata_wrapper('node', $sva);
-      $this->addAttribute($attributes, 'script', 'text', NULL, $sva_wrapper->field_sva_script->value(), NULL, TRUE);
-      $this->addAttribute($attributes, 'status', 'text', NULL, $sva_wrapper->field_sva_status->value(), self::MAELSTROM_NS);
+      $this->addAttribute($attributes, 'script', NULL, $sva_wrapper->field_sva_script->value(), NULL, TRUE);
+      $this->addAttribute($attributes, 'status', NULL, $sva_wrapper->field_sva_status->value());
       foreach ($this->languages as $language) {
-        $this->addAttribute($attributes, 'comment', 'text', $language,
-          $sva_wrapper->language($language)->field_sva_comment->value(), self::MAELSTROM_NS);
+        $this->addAttribute($attributes, 'comment', $language,
+          $sva_wrapper->language($language)->field_sva_comment->value());
       }
     }
   }
@@ -190,19 +190,9 @@ class ServicesDatasetFormatter implements ServicesFormatterInterface {
       for ($i = 0; $i < $nbCategories; $i++) {
         $cat_element = $categories->appendChild($this->doc->createElement('category'));
         $cat_element->setAttribute('name', $wrapper->field_variable_categories[$i]->name->value());
+        $cat_element->setAttribute('label', $wrapper->field_variable_categories[$i]->label->value());
         if ($wrapper->field_variable_categories[$i]->missing->value() == '1') {
           $cat_element->setAttribute('missing', 'true');
-        }
-        $category_element_att = $cat_element->appendChild($this->doc->createElement('attributes'));
-        foreach ($this->languages as $language) {
-          $label = $wrapper->language($language)->field_variable_categories[$i]->label->value();
-          if (!empty($label)) {
-            $attribute = $category_element_att->appendChild($this->doc->createElement('attribute'));
-            $attribute->setAttribute('name', 'label');
-            $attribute->setAttribute('valueType', 'text');
-            $attribute->setAttribute('locale', $language);
-            $attribute->appendChild($this->doc->createTextNode($label));
-          }
         }
       }
     }
@@ -225,27 +215,24 @@ class ServicesDatasetFormatter implements ServicesFormatterInterface {
   private function addTermAttribute($attributes, $name, $term) {
     foreach ($this->languages as $language) {
       if (function_exists('i18n_taxonomy_term_name')) {
-        $this->addAttribute($attributes, $name, 'text', $language, i18n_taxonomy_term_name($term, $language), self::MAELSTROM_NS);
+        $this->addAttribute($attributes, $name, $language, i18n_taxonomy_term_name($term, $language));
       }
       else {
-        $this->addAttribute($attributes, $name, 'text', $language, $term->name, self::MAELSTROM_NS);
+        $this->addAttribute($attributes, $name, $language, $term->name);
       }
     }
   }
 
-  private function addAttribute($attributes, $name, $valueType, $lang, $value, $namespace = NULL, $use_cdata = FALSE) {
+  private function addAttribute($attributes, $name, $lang, $value, $namespace = NULL, $use_cdata = FALSE) {
     if (empty($value)) {
       return;
     }
     $attribute = $attributes->appendChild($this->doc->createElement('attribute'));
     $attribute->setAttribute('name', $name);
-    $attribute->setAttribute('valueType', $valueType);
     if (!empty($lang)) {
       $attribute->setAttribute('locale', $lang);
     }
-    if (!empty($namespace)) {
-      $attribute->setAttribute('namespace', $namespace);
-    }
+
     $attribute->appendChild($use_cdata ? $this->doc->createCDATASection($value) : $this->doc->createTextNode($value));
   }
 
