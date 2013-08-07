@@ -49,7 +49,7 @@ function _mica_studies_block_study_timeline($study) {
               'dce_nid' => $dce_nid,
               'dce_title' => $dce_wrapper->title->value(),
               'start' => $start,
-              'end' => $end,
+              'end' => $end + 1, // increment to better delimit the 31st of the last month in the timeline
             );
             $event_view[] = _mica_studies_block_study_timeline_prepare_modal($dce_nid);
           }
