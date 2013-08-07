@@ -392,7 +392,13 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
         }
       }
     } catch (Exception $e) {
-      _createDummyStudyCrossTabResult($category_label_by_name, $rows, $row);
+      if ($is_continuous) {
+        _createContinuousDummyStudyCrossTabResult($category_label_by_name, $rows, $row);
+      }
+      else {
+        _createCategoricalDummyStudyCrossTabResult($study_name, $cross_category_label_by_name, $category_label_by_name,
+          $rows, $row);
+      }
     }
   }
 
@@ -512,7 +518,7 @@ function _mica_query_crosstab_result_table($dataset_node, $query, $cross_variabl
  * @param $rows
  * @return array
  */
-function _createDummyStudyCrossTabResult($category_label_by_name, &$rows, &$row) {
+function _createContinuousDummyStudyCrossTabResult($category_label_by_name, &$rows, &$row) {
   $row[] = array(
     'data' => t('Mean (std. deviation)'),
   );
@@ -554,6 +560,62 @@ function _createDummyStudyCrossTabResult($category_label_by_name, &$rows, &$row)
     'class' => array('border-bottom'),
   );
 
+  $rows[] = array('data' => $row);
+  $row = array();
+  return array($row, $name, $rows);
+}
+
+/**
+ * @param $study_name
+ * @param $cross_category_label_by_name
+ * @param $category_label_by_name
+ * @param $rows
+ * @param $row
+ * @return array
+ */
+function _createCategoricalDummyStudyCrossTabResult($study_name, $cross_category_label_by_name, $category_label_by_name,
+  &$rows, &$row) {
+
+  $totals = array();
+  foreach ($cross_category_label_by_name as $cross_name => $cross_label) {
+    $row[] = array(
+      'data' => $cross_label . ' (' . $cross_name . ')',
+    );
+
+    foreach ($category_label_by_name as $name => $label) {
+      $row[] = array(
+        'data' => "--",
+        'title' => "--",
+      );
+    }
+    $value = _mica_query_crosstab_get_percentage($totals[$study_name]['cross'][$cross_name], $totals[$study_name]['N']);
+    $row[] = array(
+      'data' => "--",
+      'title' => "--",
+    );
+
+    $rows[] = array('data' => $row);
+    $row = array();
+  }
+
+  // N
+  $row[] = array(
+    'data' => t('N'),
+    'class' => array('border-bottom'),
+  );
+  foreach ($category_label_by_name as $name => $label) {
+    $value = _mica_query_crosstab_get_percentage($totals[$study_name]['variable'][$name], $totals[$study_name]['N']);
+    $row[] = array(
+      'data' => "--",
+      'title' => "--",
+      'class' => array('border-bottom'),
+    );
+  }
+  $row[] = array(
+    'data' => "--",
+    'title' => "--",
+    'class' => array('border-bottom'),
+  );
   $rows[] = array('data' => $row);
   $row = array();
   return array($row, $name, $rows);
