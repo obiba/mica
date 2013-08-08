@@ -62,7 +62,7 @@ function _mica_studies_population_view_selection_criteria($node) {
 
   if (!isset($node->content['field_pop_select_criteria'])) {
     // create empty field_pop_select_criteria if it has no values
-    mica_core_create_empty_field($node, 'field_pop_select_criteria');
+    mica_core_create_empty_field($node, 'field_pop_select_criteria', 'above');
   }
 
   _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_gender', t('Gender'));
@@ -101,7 +101,14 @@ function _mica_studies_population_view_selection_criteria($node) {
   _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_ethnic_origin', t('Ethnic origin'), t('Ethnic origins'));
   _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_health_status', t('Health status'));
   _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_selection_others_sp', t('Other'));
-  _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_partcipant_sel_supp_in', '');
+
+  $field_pop_partcipant_sel_supp_in = $wrapper->field_pop_partcipant_sel_supp_in->value();
+  if (!empty($field_pop_partcipant_sel_supp_in)) {
+    $index = count($node->content['field_pop_select_criteria']['#items']);
+    $node->content['field_pop_select_criteria']['#items'][$index] = $node->content['field_pop_partcipant_sel_supp_in']['#items'];
+    $node->content['field_pop_select_criteria'][$index]['#markup'] = '<div class="inner-value">' . $node->content['field_pop_partcipant_sel_supp_in'][0]['#markup'] . '</div>';
+    $node->content['field_pop_partcipant_sel_supp_in']['#access'] = FALSE;
+  }
 
   if (strlen($node->content['field_pop_select_criteria'][0]['#markup']) === 0) {
     $node->content['field_pop_select_criteria']['#access'] = FALSE;
