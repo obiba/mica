@@ -10,6 +10,47 @@
 function mica_projects_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'node-data_access_request-field_project_description'
+  $field_instances['node-data_access_request-field_project_description'] = array(
+    'bundle' => 'data_access_request',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_project_description',
+    'label' => 'Project Description',
+    'required' => FALSE,
+    'settings' => array(
+      'display_summary' => 0,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 20,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-project-body'
   $field_instances['node-project-body'] = array(
     'bundle' => 'project',
@@ -649,6 +690,7 @@ function mica_projects_field_default_field_instances() {
   t('Instructions');
   t('Minutes');
   t('Project');
+  t('Project Description');
   t('Studies');
   t('Teleconferences');
   t('Title');
