@@ -2,7 +2,6 @@ name = Mica Data Access
 description = Study Data Access requests and reviews
 core = 7.x
 package = Mica
-php = 5.2.4
 dependencies[] = ctools
 dependencies[] = email
 dependencies[] = features

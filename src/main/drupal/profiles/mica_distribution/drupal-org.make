@@ -66,7 +66,7 @@ projects[facetapi_i18n] = 1.0-beta2
 
 ;projects[] = examples
 
-projects[features][version] = 2.0-rc1
+projects[features][version] = 2.0-rc2
 projects[features][patch][1844566] = http://drupal.org/files/features_1844566_1_invoke-hooks-for-all-components.patch
 projects[features][patch][656312] = http://drupal.org/files/keep_negative_permissions-656312-17.patch
 projects[features][patch][1689598] = http://drupal.org/files/field_display_label_support.patch
@@ -186,7 +186,7 @@ projects[references][download][revision] = 311bd49
 projects[references][download][branch] = 7.x-2.x
 projects[references][patch][1988436] = http://drupal.org/files/references-hook_node_reference_FIELD_potential_references_1988436_3.patch
 
-projects[search_api][version] = 1.7
+projects[search_api][version] = 1.6
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 

@@ -986,48 +986,6 @@ function mica_datasets_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_repeatable'
-  $field_bases['field_repeatable'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_repeatable',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => 'No',
-        1 => 'Yes',
-      ),
-      'allowed_values_function' => '',
-      'field_description_infos' => array(
-        'field_description' => 0,
-        'field_description_body' => '',
-        'field_description_label' => '',
-        'field_description_value_type' => 'text',
-      ),
-      'field_permissions' => array(
-        'create' => 0,
-        'edit' => 0,
-        'edit own' => 0,
-        'view' => 0,
-        'view own' => 0,
-      ),
-    ),
-    'translatable' => 1,
-    'type' => 'list_boolean',
-  );
-
   // Exported field_base: 'field_reproductive_history'
   $field_bases['field_reproductive_history'] = array(
     'active' => 1,
@@ -1462,52 +1420,6 @@ function mica_datasets_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
-  );
-
-  // Exported field_base: 'field_value_type'
-  $field_bases['field_value_type'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_value_type',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'boolean' => 'Boolean',
-        'date' => 'Date',
-        'date_time' => 'Date time',
-        'decimal' => 'Decimal',
-        'integer' => 'Integer',
-        'text' => 'Text',
-      ),
-      'allowed_values_function' => '',
-      'field_description_infos' => array(
-        'field_description' => 0,
-        'field_description_body' => '',
-        'field_description_label' => '',
-        'field_description_value_type' => 'text',
-      ),
-      'field_permissions' => array(
-        'create' => 0,
-        'edit' => 0,
-        'edit own' => 0,
-        'view' => 0,
-        'view own' => 0,
-      ),
-    ),
-    'translatable' => 1,
-    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_variable_categories'

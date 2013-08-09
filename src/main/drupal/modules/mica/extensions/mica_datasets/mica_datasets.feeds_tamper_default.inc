@@ -13,6 +13,35 @@ function mica_datasets_feeds_tamper_default() {
   $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'csv_variables-administrative_information-only_existing_terms';
+  $feeds_tamper->importer = 'csv_variables';
+  $feeds_tamper->source = 'administrative_information';
+  $feeds_tamper->plugin_id = 'existing_terms';
+  $feeds_tamper->settings = array(
+    'vocabulary' => 'administrative_information',
+  );
+  $feeds_tamper->weight = 2;
+  $feeds_tamper->description = 'Only existing terms';
+  $export['csv_variables-administrative_information-only_existing_terms'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'csv_variables-administrative_information-trim';
+  $feeds_tamper->importer = 'csv_variables';
+  $feeds_tamper->source = 'administrative_information';
+  $feeds_tamper->plugin_id = 'trim';
+  $feeds_tamper->settings = array(
+    'mask' => '',
+    'side' => 'trim',
+  );
+  $feeds_tamper->weight = 1;
+  $feeds_tamper->description = 'Trim';
+  $export['csv_variables-administrative_information-trim'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'csv_variables-anthropometric_structures-explode';
   $feeds_tamper->importer = 'csv_variables';
   $feeds_tamper->source = 'anthropometric_structures';
@@ -1205,35 +1234,6 @@ function mica_datasets_feeds_tamper_default() {
   $feeds_tamper->weight = 1;
   $feeds_tamper->description = 'Trim';
   $export['csv_variables-value_type-trim'] = $feeds_tamper;
-
-  $feeds_tamper = new stdClass();
-  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
-  $feeds_tamper->api_version = 2;
-  $feeds_tamper->id = 'csv_variables-administrative_information-only_existing_terms';
-  $feeds_tamper->importer = 'csv_variables';
-  $feeds_tamper->source = 'administrative_information';
-  $feeds_tamper->plugin_id = 'existing_terms';
-  $feeds_tamper->settings = array(
-    'vocabulary' => 'administrative_information',
-  );
-  $feeds_tamper->weight = 2;
-  $feeds_tamper->description = 'Only existing terms';
-  $export['csv_variables-administrative_information-only_existing_terms'] = $feeds_tamper;
-
-  $feeds_tamper = new stdClass();
-  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
-  $feeds_tamper->api_version = 2;
-  $feeds_tamper->id = 'csv_variables-administrative_information-trim';
-  $feeds_tamper->importer = 'csv_variables';
-  $feeds_tamper->source = 'administrative_information';
-  $feeds_tamper->plugin_id = 'trim';
-  $feeds_tamper->settings = array(
-    'mask' => '',
-    'side' => 'trim',
-  );
-  $feeds_tamper->weight = 1;
-  $feeds_tamper->description = 'Trim';
-  $export['csv_variables-administrative_information-trim'] = $feeds_tamper;
 
   return $export;
 }

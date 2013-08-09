@@ -2,7 +2,6 @@ name = Mica Projects
 description = Adds Projects and Teleconferences content types to Mica
 core = 7.x
 package = Mica
-php = 5.2.4
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = features

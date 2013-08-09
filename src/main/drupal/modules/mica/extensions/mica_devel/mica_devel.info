@@ -1,8 +1,7 @@
-name = "Mica devel"
-description = "Mica development tools"
-core = "7.x"
+name = Mica devel
+description = Mica development tools
+core = 7.x
 package = Mica
-php = "5.2.4"
 dependencies[] = "devel"
 dependencies[] = "devel_generate"
 dependencies[] = "devel_node_access"

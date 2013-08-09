@@ -2,7 +2,6 @@ name = Mica Studies
 description = Mica Studies
 core = 7.x
 package = Mica
-php = 5.2.4
 dependencies[] = advanced_help
 dependencies[] = auto_entitylabel
 dependencies[] = autocomplete_deluxe

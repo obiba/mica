@@ -10,7 +10,7 @@
 function mica_core_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: menu view unpublished.
+  // Exported permission: 'menu view unpublished'.
   $permissions['menu view unpublished'] = array(
     'name' => 'menu view unpublished',
     'roles' => array(

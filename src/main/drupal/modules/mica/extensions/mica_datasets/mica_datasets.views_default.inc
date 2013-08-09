@@ -1429,7 +1429,6 @@ function mica_datasets_views_default_views() {
           'variable::field_administrative_information' => 'variable::field_administrative_information',
         ),
       ),
-      'postpone_processing' => 0,
     ),
     'action::views_bulk_operations_argument_selector_action' => array(
       'selected' => 0,
@@ -1702,15 +1701,13 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_sociodemographic_charact']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_sociodemographic_charact']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_sociodemographic_charact']['view_mode'] = 'full';
-  /* Field: Indexed Node: Administrative Information */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_administrative_information']['id'] = 'field_administrative_information';
   $handler->display->display_options['fields']['field_administrative_information']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_administrative_information']['field'] = 'field_administrative_information';
   $handler->display->display_options['fields']['field_administrative_information']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_administrative_information']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_administrative_information']['alter']['text'] = '[field_administrative_information]; ';
-  $handler->display->display_options['fields']['field_administrative_information']['link_to_entity'] = 1;
-  $handler->display->display_options['fields']['field_administrative_information']['view_mode'] = 'full';
   /* Field: Indexed Node: Target */
   $handler->display->display_options['fields']['field_target']['id'] = 'field_target';
   $handler->display->display_options['fields']['field_target']['table'] = 'search_api_index_variable_index';
@@ -1816,10 +1813,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 0;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  $handler->display->display_options['displays'] = array(
-    'default' => 0,
-    'page' => 0,
-  );
   /* Field: Indexed Node: Node ID */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_variable_index';

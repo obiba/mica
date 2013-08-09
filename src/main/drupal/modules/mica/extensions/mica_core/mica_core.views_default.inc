@@ -438,12 +438,11 @@ function mica_core_views_default_views() {
   $handler->display->display_options['fields']['field_label']['field'] = 'field_label';
   $handler->display->display_options['fields']['field_label']['label'] = 'label';
   $handler->display->display_options['fields']['field_label']['type'] = 'text_plain';
-  /* Field: Content: Administrative Information */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_administrative_information']['id'] = 'field_administrative_information';
   $handler->display->display_options['fields']['field_administrative_information']['table'] = 'field_data_field_administrative_information';
   $handler->display->display_options['fields']['field_administrative_information']['field'] = 'field_administrative_information';
   $handler->display->display_options['fields']['field_administrative_information']['label'] = 'administrative_information';
-  $handler->display->display_options['fields']['field_administrative_information']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Anthropometric Structures */
   $handler->display->display_options['fields']['field_anthropometric_structures']['id'] = 'field_anthropometric_structures';
   $handler->display->display_options['fields']['field_anthropometric_structures']['table'] = 'field_data_field_anthropometric_structures';
@@ -704,12 +703,11 @@ function mica_core_views_default_views() {
   $handler->display->display_options['fields']['field_dataset']['field'] = 'field_dataset';
   $handler->display->display_options['fields']['field_dataset']['label'] = 'dataset';
   $handler->display->display_options['fields']['field_dataset']['type'] = 'node_reference_plain';
-  /* Field: Content: Administrative Information */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_administrative_information']['id'] = 'field_administrative_information';
   $handler->display->display_options['fields']['field_administrative_information']['table'] = 'field_data_field_administrative_information';
   $handler->display->display_options['fields']['field_administrative_information']['field'] = 'field_administrative_information';
   $handler->display->display_options['fields']['field_administrative_information']['label'] = 'administrative_information';
-  $handler->display->display_options['fields']['field_administrative_information']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Anthropometric Structures */
   $handler->display->display_options['fields']['field_anthropometric_structures']['id'] = 'field_anthropometric_structures';
   $handler->display->display_options['fields']['field_anthropometric_structures']['table'] = 'field_data_field_anthropometric_structures';

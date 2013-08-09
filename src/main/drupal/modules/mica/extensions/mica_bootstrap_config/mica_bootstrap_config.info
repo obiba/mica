@@ -2,11 +2,9 @@ name = Mica Bootstrap Config
 description = Mica Bootstrap Theme Configuration
 core = 7.x
 package = Mica
-php = 5.2.4
-
 dependencies[] = ctools
 dependencies[] = strongarm
 features[ctools][] = strongarm:strongarm:1
-features[features_api][] = api:1
+features[features_api][] = api:2
 features[variable][] = theme_mica_bootstrap_settings
 features[variable][] = theme_mica_subtheme_settings

@@ -10,7 +10,7 @@
 function mica_query_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: create edit delete own dataset query.
+  // Exported permission: 'create edit delete own dataset query'.
   $permissions['create edit delete own dataset query'] = array(
     'name' => 'create edit delete own dataset query',
     'roles' => array(
@@ -23,7 +23,7 @@ function mica_query_user_default_permissions() {
     'module' => 'mica_query',
   );
 
-  // Exported permission: edit delete any dataset query.
+  // Exported permission: 'edit delete any dataset query'.
   $permissions['edit delete any dataset query'] = array(
     'name' => 'edit delete any dataset query',
     'roles' => array(
@@ -34,7 +34,7 @@ function mica_query_user_default_permissions() {
     'module' => 'mica_query',
   );
 
-  // Exported permission: publish dataset query.
+  // Exported permission: 'publish dataset query'.
   $permissions['publish dataset query'] = array(
     'name' => 'publish dataset query',
     'roles' => array(
@@ -46,7 +46,7 @@ function mica_query_user_default_permissions() {
     'module' => 'mica_query',
   );
 
-  // Exported permission: view any dataset query.
+  // Exported permission: 'view any dataset query'.
   $permissions['view any dataset query'] = array(
     'name' => 'view any dataset query',
     'roles' => array(
