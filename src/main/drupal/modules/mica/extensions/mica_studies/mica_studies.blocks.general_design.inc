@@ -18,6 +18,12 @@ function _mica_studies_block_study_general_design($study) {
   $content[] = _mica_studies_block_study_general_design_field_recruitment($wrapper, ++$weight);
   $content[] = _mica_studies_block_study_general_design_field_nb_participants($wrapper, ++$weight);
   $content[] = _mica_studies_block_study_general_design_field_nb_samples($wrapper, ++$weight);
+
+  $content[] = field_view_field('node', $study, 'field_target_nb_supp_info', array(
+    'label' => 'inline',
+    'weight' => ++$weight
+  ));
+
   $content[] = field_view_field('node', $study, 'field_recruitment_supp_info', array(
     'label' => 'inline',
     'weight' => ++$weight
@@ -85,12 +91,6 @@ function _mica_studies_block_study_general_design_field_nb_participants($study_w
     $field[]['#markup'] = t('No limit');
   }
 
-  $supp_info = $study_wrapper->field_target_nb_supp_info->value();
-  if (!empty($supp_info)) {
-    $supp_info_view = field_view_field('node', $study_wrapper->value(), 'field_target_nb_supp_info');
-    $field['#items'][] = $supp_info_view['#items'][0];
-    $field[]['#markup'] = $supp_info_view[0]['#markup'];
-  }
   return empty($field['#items']) ? NULL : $field;
 }
 
