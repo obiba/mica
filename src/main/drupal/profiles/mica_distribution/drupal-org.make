@@ -151,7 +151,7 @@ projects[menu_view_unpublished][download][branch] = 7.x-1.x
 
 projects[mica] = 8.1
 
-projects[module_filter] = 1.7
+projects[module_filter] = 1.8
 
 projects[multiselect][version] = 1.9
 projects[multiselect][patch][1670224] = http://drupal.org/files/options_translations-1670224-2.patch
@@ -215,7 +215,7 @@ projects[token] = 1.5
 
 projects[uuid] = 1.0-alpha5
 
-projects[variable] = 2.2
+projects[variable] = 2.3
 
 projects[view_unpublished] = 1.1
 
