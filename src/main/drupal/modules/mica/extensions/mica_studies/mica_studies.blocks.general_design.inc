@@ -98,7 +98,7 @@ function _mica_studies_block_study_general_design_field_nb_samples($study_wrappe
   $field = array(
     '#theme' => 'field',
     '#weight' => $weight,
-    '#title' => t('Target number of participants with samples'),
+    '#title' => t('Target number of participants with biological samples'),
     '#label_display' => 'inline',
     '#field_type' => 'text',
     '#formatter' => 'text_default',
