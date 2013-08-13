@@ -4,7 +4,7 @@
  * Mica Opal XML View generator
  */
 
-class ServicesDatasetFormatter implements ServicesFormatterInterface {
+class ServicesDatasetsFormatter implements ServicesFormatterInterface {
 
   const MAELSTROM_NS = 'maelstrom';
 
@@ -120,7 +120,7 @@ class ServicesDatasetFormatter implements ServicesFormatterInterface {
     $remote_url = $wrapper->field_remote_url->value();
     $variable_element->setAttribute('remote_url', $remote_url['url']);
 
-    // repeatable
+// repeatable
     if ($wrapper->field_repeatable->value() == '1') {
       $variable_element->setAttribute('repeatable', 'true');
       $variable_element->setAttribute('occurenceGroup', $wrapper->title->value());

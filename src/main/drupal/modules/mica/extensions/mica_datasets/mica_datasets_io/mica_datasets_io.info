@@ -1,4 +1,4 @@
-name = Mica Opal View formats
+name = Mica Datasets Import Export
 description = Provides Opal view XML formatter for the REST server.
 core = 7.x
 package = Mica
@@ -6,4 +6,4 @@ package = Mica
 dependencies[] = rest_server
 dependencies[] = mica_datasets
 
-files[] = ServicesOpalFormatter.inc
+files[] = ServicesDatasetsFormatter.inc

@@ -40,7 +40,8 @@ class ServicesOpalFormatter implements ServicesFormatterInterface {
       uasort($variables, 'mica_datasets_sort_by_position');
 
       if (empty($study) || !node_access('view', $study)) {
-        foreach ($variables as $variable) {
+//        foreach ($variables as $variable) {
+        foreach ($dataset_wrapper->field_dataset_variables->getIterator() as $variable) {
           $this->render_variable($variable, $element, NULL);
         }
       }
