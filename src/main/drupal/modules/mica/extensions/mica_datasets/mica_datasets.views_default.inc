@@ -610,12 +610,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_dataset']['field'] = 'field_dataset';
   $handler->display->display_options['fields']['field_dataset']['label'] = 'dataset';
   $handler->display->display_options['fields']['field_dataset']['type'] = 'node_reference_plain';
-  /* Field: Content: Node UUID */
-  $handler->display->display_options['fields']['uuid_1']['id'] = 'uuid_1';
-  $handler->display->display_options['fields']['uuid_1']['table'] = 'node';
-  $handler->display->display_options['fields']['uuid_1']['field'] = 'uuid';
-  $handler->display->display_options['fields']['uuid_1']['relationship'] = 'field_dataset_nid';
-  $handler->display->display_options['fields']['uuid_1']['label'] = 'dataset_uuid';
   /* Field: Content: Value Type */
   $handler->display->display_options['fields']['field_value_type']['id'] = 'field_value_type';
   $handler->display->display_options['fields']['field_value_type']['table'] = 'field_data_field_value_type';
