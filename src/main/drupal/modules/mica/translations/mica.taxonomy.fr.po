@@ -324,7 +324,7 @@ msgid "Muscle functions"
 msgstr "Fonctions des muscles"
 
 msgctxt "term:47:name"
-msgid "Grip strenght"
+msgid "Grip strength"
 msgstr "Force de la préhension des mains"
 
 msgctxt "term:48:name"
