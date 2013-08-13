@@ -340,6 +340,16 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
               ),
             ),
           );
+
+          $links['export-variable-csv'] = array(
+            '#theme' => 'menu_local_action',
+            '#weight' => 55,
+            '#link' => array(
+              'title' => t('Download variables as CSV'),
+              'href' => 'variable-csv/' . $node->nid,
+            ),
+          );
+
         }
       }
       break;
@@ -561,7 +571,7 @@ function mica_datasets_node_view_alter(&$build) {
       $dataset = entity_load_single('node', $dataset->nid);
       $dataset_wrapper = entity_metadata_wrapper('node', entity_load_single('node', $dataset->nid));
 
-      // If has hamonization
+      // If has harmonization
       $has_harmonization = _mica_datasets_has_harmonization($dataset_wrapper->nid->value());
 
       if ($dataset_wrapper->field_dataset_type->value() !== 'study' && $has_harmonization) {

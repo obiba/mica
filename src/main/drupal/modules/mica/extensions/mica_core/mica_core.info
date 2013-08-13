@@ -83,7 +83,6 @@ features[variable][] = views_ui_show_performance_statistics
 features[variable][] = views_ui_show_preview_information
 features[variable][] = views_ui_show_sql_query
 features[variable][] = views_ui_show_sql_query_where
-features[views_view][] = clone_of_administration_nodes
 features_exclude[dependencies][ckeditor] = ckeditor
 features_exclude[field][profile2-main-field_profile_first_name] = profile2-main-field_profile_first_name
 features_exclude[field][profile2-main-field_profile_last_name] = profile2-main-field_profile_last_name

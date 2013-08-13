@@ -22,6 +22,10 @@ function mica_datasets_feeds_importer_default() {
       'config' => array(
         'allowed_extensions' => 'csv',
         'direct' => 0,
+        'directory' => 'public://feeds',
+        'allowed_schemes' => array(
+          0 => 'public',
+        ),
       ),
     ),
     'parser' => array(
@@ -34,14 +38,13 @@ function mica_datasets_feeds_importer_default() {
     'processor' => array(
       'plugin_key' => 'FeedsNodeProcessor',
       'config' => array(
-        'content_type' => 'variable',
         'expire' => '-1',
         'author' => 0,
         'mappings' => array(
           0 => array(
-            'source' => 'nid',
-            'target' => 'nid',
-            'unique' => 1,
+            'source' => 'title',
+            'target' => 'title',
+            'unique' => 0,
           ),
           1 => array(
             'source' => 'label',
@@ -94,28 +97,28 @@ function mica_datasets_feeds_importer_default() {
             'unique' => FALSE,
           ),
           11 => array(
-            'source' => 'disease_history',
-            'target' => 'field_disease_history',
+            'source' => 'anthropometric_structures',
+            'target' => 'field_anthropometric_structures',
             'unique' => FALSE,
           ),
           12 => array(
-            'source' => 'medical_health_interv',
-            'target' => 'field_medical_health_interv',
+            'source' => 'body_functions',
+            'target' => 'field_body_functions',
             'unique' => FALSE,
           ),
           13 => array(
-            'source' => 'medication',
-            'target' => 'field_medication',
+            'source' => 'body_structures',
+            'target' => 'field_body_structures',
             'unique' => FALSE,
           ),
           14 => array(
-            'source' => 'reproductive_history',
-            'target' => 'field_reproductive_history',
+            'source' => 'data_source',
+            'target' => 'field_data_source',
             'unique' => FALSE,
           ),
           15 => array(
-            'source' => 'early_life',
-            'target' => 'field_early_life',
+            'source' => 'disease_history',
+            'target' => 'field_disease_history',
             'unique' => FALSE,
           ),
           16 => array(
@@ -124,18 +127,18 @@ function mica_datasets_feeds_importer_default() {
             'unique' => FALSE,
           ),
           17 => array(
-            'source' => 'sociodemographic_charact',
-            'target' => 'field_sociodemographic_charact',
+            'source' => 'medical_health_interv',
+            'target' => 'field_medical_health_interv',
             'unique' => FALSE,
           ),
           18 => array(
-            'source' => 'physical_environment',
-            'target' => 'field_physical_environment',
+            'source' => 'medication',
+            'target' => 'field_medication',
             'unique' => FALSE,
           ),
           19 => array(
-            'source' => 'social_environment',
-            'target' => 'field_social_environment',
+            'source' => 'early_life',
+            'target' => 'field_early_life',
             'unique' => FALSE,
           ),
           20 => array(
@@ -144,23 +147,23 @@ function mica_datasets_feeds_importer_default() {
             'unique' => FALSE,
           ),
           21 => array(
-            'source' => 'anthropometric_structures',
-            'target' => 'field_anthropometric_structures',
+            'source' => 'period',
+            'target' => 'field_period',
             'unique' => FALSE,
           ),
           22 => array(
-            'source' => 'body_structures',
-            'target' => 'field_body_structures',
+            'source' => 'physical_environment',
+            'target' => 'field_physical_environment',
             'unique' => FALSE,
           ),
           23 => array(
-            'source' => 'body_functions',
-            'target' => 'field_body_functions',
+            'source' => 'reproductive_history',
+            'target' => 'field_reproductive_history',
             'unique' => FALSE,
           ),
           24 => array(
-            'source' => 'data_source',
-            'target' => 'field_data_source',
+            'source' => 'sociodemographic_charact',
+            'target' => 'field_sociodemographic_charact',
             'unique' => FALSE,
           ),
           25 => array(
@@ -169,60 +172,41 @@ function mica_datasets_feeds_importer_default() {
             'unique' => FALSE,
           ),
           26 => array(
-            'source' => 'period',
-            'target' => 'field_period',
-            'unique' => FALSE,
-          ),
-          27 => array(
-            'source' => 'essence',
-            'target' => 'field_essence',
-            'unique' => FALSE,
-          ),
-          28 => array(
-            'source' => 'measure',
-            'target' => 'field_measure',
-            'unique' => FALSE,
-          ),
-          29 => array(
             'source' => 'individual_participant_measures',
             'target' => 'field_individual_participant_mea',
             'unique' => FALSE,
           ),
-          30 => array(
+          27 => array(
             'source' => 'laboratory_measures',
             'target' => 'field_laboratory_measures',
             'unique' => FALSE,
           ),
+          28 => array(
+            'source' => 'social_environment',
+            'target' => 'field_social_environment',
+            'unique' => FALSE,
+          ),
+          29 => array(
+            'source' => 'essence',
+            'target' => 'field_essence',
+            'unique' => FALSE,
+          ),
+          30 => array(
+            'source' => 'measure',
+            'target' => 'field_measure',
+            'unique' => FALSE,
+          ),
           31 => array(
-            'source' => 'administrative_information',
-            'target' => 'field_administrative_information',
-            'unique' => FALSE,
-          ),
-          32 => array(
-            'source' => 'title',
-            'target' => 'title_field',
-            'unique' => FALSE,
-          ),
-          33 => array(
-            'source' => 'title',
-            'target' => 'title',
-            'unique' => 0,
-          ),
-          34 => array(
-            'source' => 'remote_url',
-            'target' => 'field_remote_url:url',
-            'unique' => FALSE,
-          ),
-          35 => array(
-            'source' => 'nid',
-            'target' => 'guid',
+            'source' => 'laboratory_measures',
+            'target' => 'field_laboratory_measures',
             'unique' => FALSE,
           ),
         ),
         'update_existing' => '2',
         'input_format' => 'plain_text',
-        'authorize' => TRUE,
-        'skip_hash_check' => FALSE,
+        'authorize' => 1,
+        'skip_hash_check' => 0,
+        'bundle' => 'variable',
       ),
     ),
     'content_type' => '',

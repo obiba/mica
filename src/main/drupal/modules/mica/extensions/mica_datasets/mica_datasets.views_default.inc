@@ -576,6 +576,17 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Content: Dataset (field_dataset) */
+  $handler->display->display_options['relationships']['field_dataset_nid']['id'] = 'field_dataset_nid';
+  $handler->display->display_options['relationships']['field_dataset_nid']['table'] = 'field_data_field_dataset';
+  $handler->display->display_options['relationships']['field_dataset_nid']['field'] = 'field_dataset_nid';
+  $handler->display->display_options['relationships']['field_dataset_nid']['required'] = TRUE;
+  $handler->display->display_options['relationships']['field_dataset_nid']['delta'] = '-1';
+  /* Field: Content: Node UUID */
+  $handler->display->display_options['fields']['uuid']['id'] = 'uuid';
+  $handler->display->display_options['fields']['uuid']['table'] = 'node';
+  $handler->display->display_options['fields']['uuid']['field'] = 'uuid';
+  $handler->display->display_options['fields']['uuid']['label'] = 'UUID';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -599,6 +610,12 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_dataset']['field'] = 'field_dataset';
   $handler->display->display_options['fields']['field_dataset']['label'] = 'dataset';
   $handler->display->display_options['fields']['field_dataset']['type'] = 'node_reference_plain';
+  /* Field: Content: Node UUID */
+  $handler->display->display_options['fields']['uuid_1']['id'] = 'uuid_1';
+  $handler->display->display_options['fields']['uuid_1']['table'] = 'node';
+  $handler->display->display_options['fields']['uuid_1']['field'] = 'uuid';
+  $handler->display->display_options['fields']['uuid_1']['relationship'] = 'field_dataset_nid';
+  $handler->display->display_options['fields']['uuid_1']['label'] = 'dataset_uuid';
   /* Field: Content: Value Type */
   $handler->display->display_options['fields']['field_value_type']['id'] = 'field_value_type';
   $handler->display->display_options['fields']['field_value_type']['table'] = 'field_data_field_value_type';
@@ -798,11 +815,46 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_laboratory_measures']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_laboratory_measures']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_laboratory_measures']['separator'] = '|';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Field: Content: Social Environment */
+  $handler->display->display_options['fields']['field_social_environment_1']['id'] = 'field_social_environment_1';
+  $handler->display->display_options['fields']['field_social_environment_1']['table'] = 'field_data_field_social_environment';
+  $handler->display->display_options['fields']['field_social_environment_1']['field'] = 'field_social_environment';
+  $handler->display->display_options['fields']['field_social_environment_1']['label'] = 'social_environment';
+  $handler->display->display_options['fields']['field_social_environment_1']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_social_environment_1']['delta_offset'] = '0';
+  /* Field: Content: Essence */
+  $handler->display->display_options['fields']['field_essence']['id'] = 'field_essence';
+  $handler->display->display_options['fields']['field_essence']['table'] = 'field_data_field_essence';
+  $handler->display->display_options['fields']['field_essence']['field'] = 'field_essence';
+  $handler->display->display_options['fields']['field_essence']['label'] = 'essence';
+  $handler->display->display_options['fields']['field_essence']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Measure */
+  $handler->display->display_options['fields']['field_measure']['id'] = 'field_measure';
+  $handler->display->display_options['fields']['field_measure']['table'] = 'field_data_field_measure';
+  $handler->display->display_options['fields']['field_measure']['field'] = 'field_measure';
+  $handler->display->display_options['fields']['field_measure']['label'] = 'measure';
+  $handler->display->display_options['fields']['field_measure']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_measure']['delta_offset'] = '0';
+  /* Field: Content: Laboratory Measures */
+  $handler->display->display_options['fields']['field_laboratory_measures_1']['id'] = 'field_laboratory_measures_1';
+  $handler->display->display_options['fields']['field_laboratory_measures_1']['table'] = 'field_data_field_laboratory_measures';
+  $handler->display->display_options['fields']['field_laboratory_measures_1']['field'] = 'field_laboratory_measures';
+  $handler->display->display_options['fields']['field_laboratory_measures_1']['label'] = 'laboratory_measures';
+  $handler->display->display_options['fields']['field_laboratory_measures_1']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_laboratory_measures_1']['delta_offset'] = '0';
+  /* Sort criterion: Content: Position index (field_position) */
+  $handler->display->display_options['sorts']['field_position_value']['id'] = 'field_position_value';
+  $handler->display->display_options['sorts']['field_position_value']['table'] = 'field_data_field_position';
+  $handler->display->display_options['sorts']['field_position_value']['field'] = 'field_position_value';
+  /* Contextual filter: Content: Dataset (field_dataset) */
+  $handler->display->display_options['arguments']['field_dataset_nid']['id'] = 'field_dataset_nid';
+  $handler->display->display_options['arguments']['field_dataset_nid']['table'] = 'field_data_field_dataset';
+  $handler->display->display_options['arguments']['field_dataset_nid']['field'] = 'field_dataset_nid';
+  $handler->display->display_options['arguments']['field_dataset_nid']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['field_dataset_nid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_dataset_nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_dataset_nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_dataset_nid']['summary_options']['items_per_page'] = '25';
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -825,22 +877,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['style_options']['replace_newlines'] = 0;
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['path'] = 'variable-csv';
-
-  /* Display: Data export */
-  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_2');
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
-  $handler->display->display_options['style_options']['provide_file'] = 1;
-  $handler->display->display_options['style_options']['filename'] = '%view_%timestamp-yyyy-%timestamp-mm-%timestamp-dd.csv';
-  $handler->display->display_options['style_options']['parent_sort'] = 0;
-  $handler->display->display_options['style_options']['quote'] = 1;
-  $handler->display->display_options['style_options']['trim'] = 0;
-  $handler->display->display_options['style_options']['replace_newlines'] = 0;
-  $handler->display->display_options['style_options']['header'] = 1;
-  $handler->display->display_options['style_options']['keep_html'] = 1;
-  $handler->display->display_options['path'] = 'variable-csv-html';
+  $handler->display->display_options['use_batch'] = 'batch';
   $export['variable_csv_export'] = $view;
 
   $view = new view();

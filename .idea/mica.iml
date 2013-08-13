@@ -3,8 +3,6 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/solr" />
-      <excludeFolder url="file://$MODULE_DIR$/target" />
-      <excludeFolder url="file://$MODULE_DIR$/target (copy)" />
       <excludeFolder url="file://$MODULE_DIR$/target/drupal.org" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1 (copy).4-dev" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-1.2-dev-local" />
@@ -30,6 +28,7 @@
       <excludeFolder url="file://$MODULE_DIR$/target/mica-5.0" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-5.x-dev-local" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-dev-local" />
+      <excludeFolder url="file://$MODULE_DIR$/target/mica-dev/profiles/mica_distribution/modules/mica" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-dev/profiles/mica_distribution/themes/mica_bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-dev/profiles/mica_distribution/themes/mica_corolla" />
       <excludeFolder url="file://$MODULE_DIR$/target/mica-dev/profiles/mica_distribution/themes/mica_samara" />

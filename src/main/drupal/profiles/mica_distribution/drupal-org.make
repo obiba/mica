@@ -80,6 +80,7 @@ projects[feeds][version] = 2.0-alpha8
 projects[feeds][patch][1107522-59] = http://drupal.org/files/feeds-empty-behavior-1107522-59.patch
 projects[feeds][patch][1107522-63] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-63.patch
 projects[feeds][patch][1107522-15] = http://drupal.org/files/ignore-empty-link-fields-1107522-60.patch
+projects[feeds][patch][1286912] = https://drupal.org/files/feeds-existing-entity-id-hook-1286912-6.patch
 
 projects[feeds_tamper][version] = 1.0-beta4
 projects[feeds_tamper][patch][1416700] = http://drupal.org/files/1416700-4-feeds_tamper-existing-terms-plugin.patch
@@ -213,7 +214,10 @@ projects[title] = 1.0-alpha7
 
 projects[token] = 1.5
 
-projects[uuid] = 1.0-alpha5
+projects[uuid][version] = 1.0-alpha5
+projects[uuid][patch][1800730] = https://drupal.org/files/uuid-feeds-mapper-1800730-9.patch
+
+projects[uuid_link] = 1.0-beta3
 
 projects[variable] = 2.3
 
