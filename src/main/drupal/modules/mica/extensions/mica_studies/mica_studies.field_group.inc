@@ -324,7 +324,7 @@ function mica_studies_field_group_info() {
       2 => 'field_dce_population',
       3 => 'field_dce_start_year',
       4 => 'field_dce_start_month',
-      5 => 'field_dec_end_month',
+      5 => 'field_dce_end_month',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

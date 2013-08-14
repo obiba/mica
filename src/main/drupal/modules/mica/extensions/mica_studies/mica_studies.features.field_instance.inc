@@ -1126,7 +1126,7 @@ function mica_studies_field_default_field_instances() {
     'bundle' => 'data_collection_event',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'For example, an event from 2012 to 2012 will span 1 year; an event from 2012 to 2013 will span 2 years.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -1209,8 +1209,8 @@ function mica_studies_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-data_collection_event-field_dec_end_month'
-  $field_instances['node-data_collection_event-field_dec_end_month'] = array(
+  // Exported field_instance: 'node-data_collection_event-field_dce_end_month'
+  $field_instances['node-data_collection_event-field_dce_end_month'] = array(
     'bundle' => 'data_collection_event',
     'default_value' => array(
       0 => array(
@@ -1241,7 +1241,7 @@ function mica_studies_field_default_field_instances() {
     ),
     'display_label' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_dec_end_month',
+    'field_name' => 'field_dce_end_month',
     'label' => 'End Month',
     'required' => 0,
     'settings' => array(
@@ -4265,7 +4265,6 @@ If the study is completed, enter the final number of participants that have prov
   t('Enter the number of participants that should provide biological samples from which DNA could be extracted. If the study is completed, enter the final number of participants that have provided biological samples from which DNA could be extracted. ');
   t('Ethnic Origin');
   t('Files');
-  t('For example, an event from 2012 to 2012 will span 1 year; an event from 2012 to 2013 will span 2 years.');
   t('Gender');
   t('General Information on Follow Up (profile and frequency)');
   t('General Population');

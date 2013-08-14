@@ -443,7 +443,7 @@ function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $f
 }
 
 /**
- * Redirect to Study view after DEC edition
+ * Redirect to Study view after DCE edition
  */
 function _mica_studies_save_dce_submit($form, &$form_state) {
   $form_state['redirect'] = 'node/' . _mica_studies_get_dce_study_nid($form_state['nid']);

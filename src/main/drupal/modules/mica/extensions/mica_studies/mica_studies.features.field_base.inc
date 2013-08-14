@@ -1587,7 +1587,7 @@ function mica_studies_field_default_field_bases() {
     'settings' => array(
       'field_description_infos' => array(
         'field_description' => 1,
-        'field_description_body' => 'For example, an event from 2012 to 2012 will span 1 year; an event from 2012 to 2013 will span 2 years.',
+        'field_description_body' => '',
         'field_description_label' => 'Start Year',
         'field_description_value_type' => 'text',
       ),
@@ -1634,13 +1634,13 @@ function mica_studies_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_dec_end_month'
-  $field_bases['field_dec_end_month'] = array(
+  // Exported field_base: 'field_dce_end_month'
+  $field_bases['field_dce_end_month'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_dec_end_month',
+    'field_name' => 'field_dce_end_month',
     'field_permissions' => array(
       'type' => 0,
     ),
