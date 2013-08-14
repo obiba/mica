@@ -215,7 +215,7 @@ projects[title] = 1.0-alpha7
 projects[token] = 1.5
 
 projects[uuid][version] = 1.0-alpha5
-projects[uuid][patch][1800730] = https://drupal.org/files/uuid-feeds-mapper-1800730-9.patch
+projects[uuid][patch][1800730] = https://drupal.org/files/uuid-feeds-mapper-1800730-10_1.patch
 
 projects[uuid_link] = 1.0-beta3
 
