@@ -38,18 +38,22 @@ function _mica_studies_block_study_timeline($study) {
       $pop_svg[] = array('pop_nid' => $pop_nid, 'svg' => $svg);
       foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
         if (node_access('view', $dce_wrapper->value())) {
-          $start = $dce_wrapper->field_dce_start_year->value();
-          $end = $dce_wrapper->field_dce_end_year->value();
+          $start_year = $dce_wrapper->field_dce_start_year->value();
+          $end_year = $dce_wrapper->field_dce_end_year->value();
           $dce_nid = $dce_wrapper->nid->value();
-          if (!empty($start) && !empty($end)) {
+          if (!empty($start_year) && !empty($end_year)) {
+            $start_month = $dce_wrapper->field_dce_start_month->value();
+            $end_month = $dce_wrapper->field_dce_end_month->value();
             $events[] = array(
               'color' => $color,
               'pop_nid' => $pop_wrapper->nid->value(),
               'pop_title' => $pop_wrapper->title->value(),
               'dce_nid' => $dce_nid,
               'dce_title' => $dce_wrapper->title->value(),
-              'start' => $start,
-              'end' => $end + 1, // increment to better delimit the 31st of the last month in the timeline
+              'start_year' => $start_year,
+              'end_year' => $end_year,
+              'start_month' => empty($start_month) ? 1 : $start_month,
+              'end_month' => empty($end_month) ? 12 : $end_month,
             );
             $event_view[] = _mica_studies_block_study_timeline_prepare_modal($dce_nid);
           }

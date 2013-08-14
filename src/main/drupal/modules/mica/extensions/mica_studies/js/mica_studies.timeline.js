@@ -20,18 +20,18 @@
       var events = populations[p].events;
       var eventData = [];
       for (var e = 0; e < events.length; e++) {
-        if (events[e].start == events[e].end) {
-          events[e].end++;
+        if (events[e].start_year == events[e].end_year) {
+          events[e].end_year++;
         }
 
-        minYear = Math.min(minYear, events[e].start);
-        maxYear = Math.max(maxYear, events[e].end);
+        minYear = Math.min(minYear, events[e].start_year);
+        maxYear = Math.max(maxYear, events[e].end_year);
 
         eventData.push({
           id: events[e].dce_nid,
           title: events[e].dce_title,
-          starting_time: events[e].start,
-          ending_time: events[e].end
+          starting_time: events[e].start_year,
+          ending_time: events[e].end_year
 //          popover: events[e].popover
         });
       }

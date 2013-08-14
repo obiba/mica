@@ -200,7 +200,7 @@ function mica_studies_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Documents',
-    'weight' => '10',
+    'weight' => '12',
     'children' => array(
       0 => 'field_dce_data_dictionaries',
       1 => 'field_dce_others',
@@ -323,7 +323,8 @@ function mica_studies_field_group_info() {
       1 => 'field_dce_end_year',
       2 => 'field_dce_population',
       3 => 'field_dce_start_year',
-      4 => 'title',
+      4 => 'field_dce_start_month',
+      5 => 'field_dec_end_month',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

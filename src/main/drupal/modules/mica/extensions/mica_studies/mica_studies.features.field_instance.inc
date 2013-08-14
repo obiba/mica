@@ -571,7 +571,7 @@ function mica_studies_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 4,
+      'weight' => 6,
     ),
   );
 
@@ -587,7 +587,7 @@ function mica_studies_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 5,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -609,7 +609,7 @@ function mica_studies_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 35,
+      'weight' => 36,
     ),
   );
 
@@ -668,7 +668,7 @@ function mica_studies_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -706,7 +706,7 @@ function mica_studies_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 11,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -728,7 +728,7 @@ function mica_studies_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 33,
+      'weight' => 34,
     ),
   );
 
@@ -744,7 +744,7 @@ function mica_studies_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -769,7 +769,7 @@ function mica_studies_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 34,
+      'weight' => 35,
     ),
   );
 
@@ -785,7 +785,7 @@ function mica_studies_field_default_field_instances() {
         'module' => 'node_reference',
         'settings' => array(),
         'type' => 'node_reference_default',
-        'weight' => 9,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -832,7 +832,7 @@ function mica_studies_field_default_field_instances() {
           'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -858,7 +858,7 @@ function mica_studies_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -917,7 +917,7 @@ function mica_studies_field_default_field_instances() {
         'module' => 'node_reference',
         'settings' => array(),
         'type' => 'node_reference_default',
-        'weight' => 8,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -939,7 +939,7 @@ function mica_studies_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 5,
+      'weight' => 7,
     ),
   );
 
@@ -998,7 +998,7 @@ function mica_studies_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1023,7 +1023,7 @@ function mica_studies_field_default_field_instances() {
         'rows' => 2,
       ),
       'type' => 'text_textarea',
-      'weight' => 37,
+      'weight' => 38,
     ),
   );
 
@@ -1067,6 +1067,57 @@ function mica_studies_field_default_field_instances() {
       ),
       'type' => 'file_generic',
       'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-data_collection_event-field_dce_start_month'
+  $field_instances['node-data_collection_event-field_dce_start_month'] = array(
+    'bundle' => 'data_collection_event',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_dce_start_month',
+    'label' => 'Start Month',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 3,
     ),
   );
 
@@ -1129,7 +1180,7 @@ function mica_studies_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1154,7 +1205,58 @@ function mica_studies_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 36,
+      'weight' => 37,
+    ),
+  );
+
+  // Exported field_instance: 'node-data_collection_event-field_dec_end_month'
+  $field_instances['node-data_collection_event-field_dec_end_month'] = array(
+    'bundle' => 'data_collection_event',
+    'default_value' => array(
+      0 => array(
+        'value' => 12,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_dec_end_month',
+    'label' => 'End Month',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 5,
     ),
   );
 
@@ -1169,7 +1271,7 @@ function mica_studies_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3548,7 +3650,7 @@ function mica_studies_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
-    'display_label' => '',
+    'display_label' => 'Supplementary information',
     'entity_type' => 'node',
     'field_name' => 'field_recruitment_supp_info',
     'label' => 'Supplementary information about study design',
@@ -3838,7 +3940,7 @@ function mica_studies_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
-    'display_label' => '',
+    'display_label' => 'Supplementary information',
     'entity_type' => 'node',
     'field_name' => 'field_target_nb_supp_info',
     'label' => 'Supplementary information about target number of participants',
@@ -4155,6 +4257,7 @@ If the study is completed, enter the final number of participants that have prov
   t('Description');
   t('Documents');
   t('Email');
+  t('End Month');
   t('End Year');
   t('Enter a brief data collection event description.');
   t('Enter the Contact full name. You will be able to edit these Contacts once the Study has been saved.');
@@ -4229,6 +4332,7 @@ If the study is completed, enter the final number of participants that have prov
   t('Specify if access to study biological samples by external researchers or third parties is provided or foreseen.');
   t('Specify if access to study data by external researchers or third parties is provided or foreseen.');
   t('Standard Operating Procedures (SOP)');
+  t('Start Month');
   t('Start Year');
   t('State/Province');
   t('Study');

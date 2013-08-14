@@ -62,6 +62,7 @@ function mica_studies_image_default_styles() {
         'weight' => 1,
       ),
     ),
+    'label' => 'study_logo',
   );
 
   return $styles;
