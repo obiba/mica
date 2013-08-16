@@ -27,6 +27,10 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
       $harmonization['dataset_nid'] = $dataset_nid;
       $harmonization['study_nid'] = $study_nid;
 
+      // Primary key to lookup if the variable already exists in Mica.
+      //TODO When UUID will be exported to Opal, use UUID instead (if the attribute is defined)
+      $harmonization['primary_key'] = 'title';
+
       $all_items = mica_opal_jsonPath($array, '$.*');
       unset($array);
 
@@ -78,13 +82,13 @@ function _mica_opal_parse_categories($item) {
       if (isset($json_cat['attributes'])) {
         foreach ($json_cat['attributes'] as $json_cat_att) {
           if (isset($json_cat_att['name']) && $json_cat_att['name'] === 'label') {
-            $locale = isset($json_cat_att['locale']) ? $json_cat_att['locale'] : LANGUAGE_NONE ;
+            $locale = isset($json_cat_att['locale']) ? $json_cat_att['locale'] : LANGUAGE_NONE;
             $category['label'][$locale] = $json_cat_att['value'];
           }
         }
 
         // Set default language to 'en'
-        if (isset($category['label']['en']) && !isset($category['label'][LANGUAGE_NONE])){
+        if (isset($category['label']['en']) && !isset($category['label'][LANGUAGE_NONE])) {
           $category['label'][LANGUAGE_NONE] = $category['label']['en'];
         }
       }
@@ -105,7 +109,7 @@ function _mica_opal_parse_localized($item, $expression) {
   }
 
   // Set default language to english if it exists
-  if (isset($result['en']) && !isset($result[LANGUAGE_NONE])){
+  if (isset($result['en']) && !isset($result[LANGUAGE_NONE])) {
     $result[LANGUAGE_NONE] = $result['en'];
   }
   return $result;
