@@ -45,7 +45,7 @@ function mica_datasets_import_variables_callback($type, $dataset_nid, $study_nid
     }
 
     if ($harmonizations) {
-      if (TRUE) {
+      if (FALSE) {
         $nb = mica_datasets_create_variables($harmonizations, $dataset_wrapper->field_dataset_type->value());
       }
       else {
