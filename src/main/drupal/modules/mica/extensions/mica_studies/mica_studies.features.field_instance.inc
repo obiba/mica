@@ -1106,8 +1106,8 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Start Month',
     'required' => 0,
     'settings' => array(
-      'max' => '',
-      'min' => '',
+      'max' => '12',
+      'min' => '1',
       'prefix' => '',
       'suffix' => '',
       'user_register_form' => FALSE,
@@ -1245,8 +1245,8 @@ function mica_studies_field_default_field_instances() {
     'label' => 'End Month',
     'required' => 0,
     'settings' => array(
-      'max' => '',
-      'min' => '',
+      'max' => '12',
+      'min' => '1',
       'prefix' => '',
       'suffix' => '',
       'user_register_form' => FALSE,
