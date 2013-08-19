@@ -756,15 +756,9 @@ function mica_datasets_node_delete($node) {
 
       // remove variables
       $dataset = entity_metadata_wrapper('node', $dataset_id);
-      $variables = $dataset->field_dataset_variables;
-      $variables_value = $variables->value();
 
-      if (!empty($variables_value)) {
-        foreach ($variables as $variable) {
-          // ->fieldCondition('field_sva_variable', 'nid', $variable->nid)
-          node_delete('node', $variable);
-          //field_attach_delete('node', $variable->nid);
-        }
+      foreach ($dataset->field_dataset_variables->getIterator() as $variable) {
+        $variable->delete();
       }
 
       // remove reference from studies
