@@ -108,18 +108,20 @@ function _mica_studies_block_study_timeline_prepare_lines($events) {
 
   $lines_by_pop = array();
   foreach ($events as &$event) {
-    // dvm($event, 'Processing');
+//     dvm($event, 'Processing');
     if (isset($lines_by_pop[$event['pop_nid']])) {
       $done = FALSE;
       foreach ($lines_by_pop[$event['pop_nid']] as $index => &$line_events) {
-        // dvm($line_events, "index: $index");
+//         dvm($line_events, "index: $index");
         $last_event = end($line_events['events']);
         // dvm($last_event, '$last_event for line ' . $index);
         // dvm($event['start'] > $last_event['end'], 'event_start[' . $event['start'] . '] > last_event_end[' . $last_event['end'] . ']');
-        if ($event['start'] >= $last_event['end'] && $event['start'] > $last_event['start']) {
+        if ($event['start_year'] >= $last_event['end_year'] &&
+            _mica_studies_convert_to_months($event['start_year'], $event['start_month']) >=
+              _mica_studies_convert_to_months($last_event['end_year'], $last_event['end_month'])) {
           $line_events['events'][] = $event;
           $done = TRUE;
-          // dvm("Add it to line $index");
+//           dvm("Add it to line $index");
           break;
         }
       }
@@ -152,6 +154,10 @@ function _mica_studies_block_study_timeline_prepare_lines($events) {
     }
   }
   return $lines;
+}
+
+function _mica_studies_convert_to_months($year, $month) {
+  return 12 * $year + $month;
 }
 
 function _mica_studies_block_study_timeline_prepare_modal($dce_nid) {
