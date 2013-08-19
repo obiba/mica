@@ -58,11 +58,10 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
       ) {
         $refresh_link = l(
           "<i class='icon-refresh $icon_bkg'></i>",
-          'mica_datasets_harmonization/ajax/' . $wrapper->nid->value() . '/' . $study_wrapper->nid->value(),
+          'node/' . $wrapper->nid->value() . '/import-variables/' . $study_wrapper->nid->value(),
           array(
             'html' => TRUE,
             'attributes' => array(
-              'class' => array('use-ajax'),
               'title' => t('Refresh harmonization of %study', array('%study' => $name))
             )
           )

@@ -1,6 +1,13 @@
 <?php
 
-function _mica_datasets_import_variables_callback($type, $dataset_nid, $study_nid = NULL) {
+function _mica_datasets_import_variables_callback($dataset_nid, $study_nid = NULL) {
+
+  if (!is_numeric($dataset_nid)) {
+    $dataset_nid = $dataset_nid->nid;
+  }
+  if (!empty($study_nid) && !is_numeric($study_nid)) {
+    $study_nid = $study_nid->nid;
+  }
 
   $study_harmonizations = array();
   if (isset($study_nid)) {
@@ -11,7 +18,10 @@ function _mica_datasets_import_variables_callback($type, $dataset_nid, $study_ni
     $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
     foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study) {
       $nid = $study->nid->value();
-      $study_harmonizations[$nid] = _mica_datasets_fetch_study_harmonization_view($dataset_nid, $nid);
+      $harmonization_view = _mica_datasets_fetch_study_harmonization_view($dataset_nid, $nid);
+      if (!empty($harmonization_view)) {
+        $study_harmonizations[$nid] = $harmonization_view;
+      }
     }
   }
 
@@ -21,20 +31,11 @@ function _mica_datasets_import_variables_callback($type, $dataset_nid, $study_ni
     'finished' => '_mica_datasets_batch_variable_import_finished',
   ));
 
-  //TODO support ajax reload
-  batch_process('node/' . $dataset_nid);
-
-//  if ($type === 'ajax') {
-//    ctools_include('ajax');
-//    ctools_add_js('ajax-responder');
-//
-//    $commands[] = ctools_ajax_command_reload();
-//    return array(
-//      '#type' => 'ajax',
-//      '#commands' => $commands
-//    );
-//  }
-//  drupal_goto('node/' . $dataset_nid);
+  $redirect = 'node/' . $dataset_nid;
+  if (!empty($study_nid)) {
+    $redirect .= '/dataset-harmonization';
+  }
+  batch_process($redirect);
 }
 
 function _mica_datasets_prepare_batch_variable_import($dataset_nid, $study_harmonizations) {
@@ -52,8 +53,8 @@ function _mica_datasets_prepare_batch_variable_import($dataset_nid, $study_harmo
 
 function _mica_datasets_batch_variable_import_finished($success, $results, $operations) {
   if ($success) {
-    drupal_set_message(t('@count variables imported', array(
-      '@count' => count($results),
+    drupal_set_message(t('@count variables successfully imported', array(
+      '@count' => count($operations),
     )));
   }
   else {
@@ -65,7 +66,6 @@ function _mica_datasets_batch_variable_import_finished($success, $results, $oper
       '@args' => print_r($error_operation[0], TRUE)
     )));
   }
-  //TODO ajax reload
 }
 
 function _mica_datasets_fetch_study_harmonization_view($dataset_nid, $study_nid) {
@@ -95,10 +95,9 @@ function _mica_datasets_fetch_study_harmonization_view($dataset_nid, $study_nid)
 function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $primary_key, $harmonization_variable, &$context) {
 
   // keep current dataset variables between batch steps
-  if (empty($context['results']) || $context['results']['dataset_nid'] != $dataset_nid) {
+  if (empty($context['results'])) {
     watchdog('mica', 'Cache batch dataset info %nid', array('%nid' => $dataset_nid), WATCHDOG_DEBUG);
     $context['results'] = array(
-      'dataset_nid' => $dataset_nid,
       'last_position' => 1,
       'variables' => db_query(
         "SELECT n.nid, n.title, n.uuid FROM {node} as n, {field_data_field_dataset_variables} as dv WHERE n.type = :type AND n.nid = dv.field_dataset_variables_nid AND dv.entity_id = :dataset_nid;",
