@@ -16,7 +16,7 @@ class ServicesOpalFormatter implements ServicesFormatterInterface {
 
       $this->languages = array_keys(language_list());
 
-      $dataset_wrapper = entity_metadata_wrapper('node', $data);
+      $dataset_wrapper = entity_metadata_wrapper('node', $data->nid);
       $dataset_name = $dataset_wrapper->title_field->value();
 
       $filename = check_plain($dataset_name);
@@ -34,14 +34,17 @@ class ServicesOpalFormatter implements ServicesFormatterInterface {
 
       $element = $this->addHeaders($dataset_name, $study_name);
 
-      $variables = $dataset_wrapper->field_dataset_variables->value();
-
+      // Sort variables
       module_load_include('inc', 'mica_datasets', 'mica_datasets.utils');
+      $variables = array();
+      foreach ($dataset_wrapper->field_dataset_variables->getIterator() as $v) {
+        $variables[] = $v->nid->value();
+      }
       uasort($variables, 'mica_datasets_sort_by_position');
 
       if (empty($study) || !node_access('view', $study)) {
-        foreach ($variables as $variable) {
-          $this->render_variable($variable, $element, NULL);
+        foreach ($variables as $vid) {
+          $this->render_variable($vid, $element, NULL);
         }
       }
       else {
@@ -50,7 +53,7 @@ class ServicesOpalFormatter implements ServicesFormatterInterface {
           $sva_query = new EntityFieldQuery();
           $sva_results = $sva_query->entityCondition('entity_type', 'node')
             ->entityCondition('bundle', 'study_variable_attributes')
-            ->fieldCondition('field_sva_variable', 'nid', $variable->nid)
+            ->fieldCondition('field_sva_variable', 'nid', $variable)
             ->execute();
           $svas = empty($sva_results['node']) ? array() : node_load_multiple(array_keys($sva_results['node']));
           $found = FALSE;
@@ -126,6 +129,7 @@ class ServicesOpalFormatter implements ServicesFormatterInterface {
       $variable_element->setAttribute('repeatable', 'false');
     }
     $attributes = $variable_element->appendChild($this->doc->createElement('attributes'));
+    $this->addAttribute($attributes, 'uuid', 'text', '', $wrapper->uuid->value(), self::MAELSTROM_NS);
 
     foreach ($this->languages as $language) {
       $this->addAttribute($attributes, 'label', 'text', $language, $wrapper->language($language)->field_label->value());
@@ -140,9 +144,7 @@ class ServicesOpalFormatter implements ServicesFormatterInterface {
     }
 
     $this->addDimensions($attributes, $wrapper);
-
     $this->addStudyVariableAttributes($attributes, $sva);
-
     $this->addCategories($variable_element, $wrapper);
   }
 

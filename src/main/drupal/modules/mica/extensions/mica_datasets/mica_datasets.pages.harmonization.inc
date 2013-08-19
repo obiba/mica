@@ -74,7 +74,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
 
       $opal_xml = l(
         "<i class='icon-download-alt $icon_bkg'></i>",
-        'opal-export/node/' . $wrapper->nid->value(),
+        'opal-export/node/' . $wrapper->uuid->value(),
         array(
           'html' => TRUE,
           'attributes' => array(
