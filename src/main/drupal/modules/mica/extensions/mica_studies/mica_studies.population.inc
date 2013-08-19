@@ -20,6 +20,13 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
         }
       }
       $dce_nid = $dce_wrapper->nid->value();
+
+      if ($dce_wrapper->field_dce_start_month->value() !== "1") {
+        $start .= ' (' . _mica_studies_get_month_name($dce_wrapper->field_dce_start_month->value()) . ')';
+      }
+      if ($dce_wrapper->field_dce_end_month->value() !== "12") {
+        $end .= ' (' . _mica_studies_get_month_name($dce_wrapper->field_dce_end_month->value()) . ')';
+      }
       $dce_rows[$dce_nid] = array(
         'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
         'desc' => $desc,
@@ -280,4 +287,8 @@ function _mica_studies_population_view_nb(&$node, $field_nb, $field_no_limit, $f
   if (strlen($node->content[$field_nb][0]['#markup']) === 0) {
     $node->content[$field_nb]['#access'] = FALSE;
   }
+}
+
+function _mica_studies_get_month_name($month) {
+  return date("F", mktime(0, 0, 0, $month, 1, 2013));
 }
