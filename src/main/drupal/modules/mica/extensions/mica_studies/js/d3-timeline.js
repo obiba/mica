@@ -15,6 +15,7 @@
         tickSize: 10 },
       colorCycle = d3.scale.category20(),
       display = "rect",
+      startYear = 0,
       beginning = 0,
       ending = 0,
       margin = {left: 30, right: 30, top: 30, bottom: 30},
@@ -67,6 +68,11 @@
 
       var scaleFactor = (1 / (ending - beginning)) * (width - margin.left - margin.right);
 
+      var formatTime = tickFormat.format;
+      var formatByYear = function(d) {
+        return startYear + (parseInt(formatTime(d)) / 12); // print in years
+      };
+
       // draw the axis
       var xScale = d3.time.scale()
         .domain([beginning, ending])
@@ -75,9 +81,10 @@
       var xAxis = d3.svg.axis()
         .scale(xScale)
         .orient(orient)
-        .tickFormat(tickFormat.format)
-        .tickValues(tickFormat.tickValues)
-        .tickSize(tickFormat.tickSize);
+        .tickFormat(formatByYear)
+        .tickSubdivide(1)
+        .tickValues(d3.range(beginning, ending+1, 12))
+        .tickSize(tickFormat.tickSize, tickFormat.tickSize/2, 0 );
 
       // draw axis
       g.append("g")
@@ -187,14 +194,6 @@
         // if both are set, do nothing
       }
 
-      function drawRect(d, i) {
-        var rectX = getXPos(d, i);
-        var rectY = getStackPosition(d, i);
-        var rectWidth = getWidth(d, i);
-
-        return rightRoundedRect(rectX, rectY, rectWidth, itemHeight, 5);
-      }
-
       function rightRoundedRect(x, y, width, height, radius) {
         return "M" + x + "," + y
           + "h" + (width - radius)
@@ -211,7 +210,7 @@
       if (!arguments.length) return margin;
       margin = p;
       return timeline;
-    }
+    };
 
     timeline.orient = function (orientation) {
       if (!arguments.length) return orient;
@@ -223,13 +222,13 @@
       if (!arguments.length) return itemHeight;
       itemHeight = h;
       return timeline;
-    }
+    };
 
     timeline.itemMargin = function (h) {
       if (!arguments.length) return itemMargin;
       itemMargin = h;
       return timeline;
-    }
+    };
 
     timeline.height = function (h) {
       if (!arguments.length) return height;
@@ -273,6 +272,12 @@
       return timeline;
     };
 
+    timeline.startYear = function (b) {
+      if (!arguments.length) return startYear;
+      startYear = b;
+      return timeline;
+    };
+
     timeline.beginning = function (b) {
       if (!arguments.length) return beginning;
       beginning = b;
@@ -288,7 +293,7 @@
     timeline.rotateTicks = function (degrees) {
       rotateTicks = degrees;
       return timeline;
-    }
+    };
 
     timeline.stack = function () {
       stacked = !stacked;

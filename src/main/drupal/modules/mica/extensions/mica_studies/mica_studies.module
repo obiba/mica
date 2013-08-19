@@ -1073,11 +1073,11 @@ function _mica_studies_sort_populations($study) {
 }
 
 function _mica_studies_sort_dce($x, $y) {
-  $x_start = isset($x['start']) ? $x['start'] : NULL;
-  $y_start = isset($y['start']) ? $y['start'] : NULL;
+  $x_start = isset($x['start_year']) ? $x['start_year'] : NULL;
+  $y_start = isset($y['start_year']) ? $y['start_year'] : NULL;
   if ($x_start === $y_start) {
-    $x_end = isset($x['end']) ? $x['end'] : NULL;
-    $y_end = isset($y['end']) ? $y['end'] : NULL;
+    $x_end = isset($x['end_year']) ? $x['end_year'] : NULL;
+    $y_end = isset($y['end_year']) ? $y['end_year'] : NULL;
     if ($x_end === $y_end) {
       return 0;
     }
