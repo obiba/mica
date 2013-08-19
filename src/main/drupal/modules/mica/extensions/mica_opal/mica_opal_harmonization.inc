@@ -43,7 +43,7 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
         $variable_info['unit'] = _mica_opal_json_get_string($item, 'unit');
 
         $repeatable = _mica_opal_json_get_string($item, 'isRepeatable');
-        // Explicitely set to 0 to avoid the error when saving an empty field into the database
+        // Explicitly set to 0 to avoid the error when saving an empty field into the database
         $variable_info['repeatable'] = empty($repeatable) ? '0' : $repeatable;
 
         $script = _mica_opal_json_get_string($item, 'attributes[?(@[@name == \'script\' and @namespace == \'opal\'].value');
