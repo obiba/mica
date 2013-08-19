@@ -27,16 +27,15 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
       $harmonization['dataset_nid'] = $dataset_nid;
       $harmonization['study_nid'] = $study_nid;
 
-      // Primary key to lookup if the variable already exists in Mica.
-      //TODO When UUID will be exported to Opal, use UUID instead (if the attribute is defined)
-      $harmonization['primary_key'] = 'title';
-
       $all_items = mica_opal_jsonPath($array, '$.*');
       unset($array);
 
       foreach ($all_items as $item) {
 
         $variable_info = array();
+
+        // Check if uuid is present
+        $variable_info['uuid'] = _mica_opal_json_get_string($item, 'attributes[?(@[\'name\']==\'uuid\'), ?(@[\'namespace\']==\'maelstrom\')].value');
         $variable_info['title'] = _mica_opal_json_get_string($item, 'name');
         $variable_info['label'] = _mica_opal_parse_localized($item, 'attributes[?(@[\'name\']==\'label\')]');
         $variable_info['value_type'] = _mica_opal_json_get_string($item, 'valueType');
@@ -46,7 +45,7 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
         // Explicitly set to 0 to avoid the error when saving an empty field into the database
         $variable_info['repeatable'] = empty($repeatable) ? '0' : $repeatable;
 
-        $script = _mica_opal_json_get_string($item, 'attributes[?(@[@name == \'script\' and @namespace == \'opal\'].value');
+        $script = _mica_opal_json_get_string($item, 'attributes[?(@[\'name\'==\'script\' and @namespace == \'opal\'].value');
         $variable_info['script'] = strlen($script) === 0
           ? _mica_opal_json_get_string($item, 'attributes[?(@[\'name\']==\'script\')].value')
           : $script;
