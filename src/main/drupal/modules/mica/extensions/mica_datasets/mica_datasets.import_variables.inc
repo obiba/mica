@@ -1,50 +1,74 @@
 <?php
 
-function mica_datasets_import_variables_callback($type, $dataset_nid, $study_nid = NULL) {
+function _mica_datasets_import_variables_callback($type, $dataset_nid, $study_nid = NULL) {
 
-  $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
-
+  $study_harmonizations = array();
   if (isset($study_nid)) {
-    _mica_datasets_import_variables_for_study($dataset_wrapper, $study_nid);
+    $study_harmonizations[$study_nid] = _mica_datasets_fetch_study_harmonization_view($dataset_nid, $study_nid);
   }
   else {
-    // fetch all study_nids of the dataset
+    // fetch all studies of the dataset
+    $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
     foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study) {
-      _mica_datasets_import_variables_for_study($dataset_wrapper, $study->nid->value());
+      $nid = $study->nid->value();
+      $study_harmonizations[$nid] = _mica_datasets_fetch_study_harmonization_view($dataset_nid, $nid);
     }
   }
 
-  if ($type === 'ajax') {
-    ctools_include('ajax');
-    ctools_add_js('ajax-responder');
+  $operations = _mica_datasets_prepare_batch_variable_import($dataset_nid, $study_harmonizations);
+  batch_set(array(
+    'operations' => $operations,
+    'finished' => '_mica_datasets_batch_variable_import_finished',
+  ));
 
-    $commands[] = ctools_ajax_command_reload();
-    return array(
-      '#type' => 'ajax',
-      '#commands' => $commands
-    );
-  }
-  drupal_goto('node/' . $dataset_nid);
+  //TODO support ajax reload
+  batch_process('node/' . $dataset_nid);
+
+//  if ($type === 'ajax') {
+//    ctools_include('ajax');
+//    ctools_add_js('ajax-responder');
+//
+//    $commands[] = ctools_ajax_command_reload();
+//    return array(
+//      '#type' => 'ajax',
+//      '#commands' => $commands
+//    );
+//  }
+//  drupal_goto('node/' . $dataset_nid);
 }
 
-function _mica_datasets_import_variables_for_study($dataset_wrapper, $study_nid) {
-  $study_wrapper = entity_metadata_wrapper('node', $study_nid);
-  $study_title = $study_wrapper->title->value();
+function _mica_datasets_prepare_batch_variable_import($dataset_nid, $study_harmonizations) {
+  $operations = array();
+  foreach ($study_harmonizations as $study_nid => $harmonizations) {
+    $operations[] = array('_mica_datasets_import_variables', array($dataset_nid, $harmonizations));
+  }
+  return $operations;
+}
 
+function _mica_datasets_batch_variable_import_finished($success, $results, $operations) {
+  if ($success) {
+    drupal_set_message(t('@count variables imported', array(
+      '@count' => count($results),
+    )));
+  }
+  else {
+    // An error occurred.
+    // $operations contains the operations that remained unprocessed.
+    $error_operation = reset($operations);
+    drupal_set_message(t('An error occurred while processing @operation with arguments : @args', array(
+      '@operation' => $error_operation[0],
+      '@args' => print_r($error_operation[0], TRUE)
+    )));
+  }
+  //TODO ajax reload
+}
+
+function _mica_datasets_fetch_study_harmonization_view($dataset_nid, $study_nid) {
   try {
-    $harmonizations = mica_opal_fetch_harmonization_view($dataset_wrapper->nid->value(), $study_nid);
-    $nb = _mica_datasets_import_variables($harmonizations, $dataset_wrapper->field_dataset_type->value());
-    drupal_set_message(
-      t(
-        '@count variables have been imported for study @study into the dataset @dataset',
-        array(
-          '@count' => $nb,
-          '@study' => $study_title,
-          '@dataset' => $dataset_wrapper->title->value(),
-        )
-      )
-    );
+    return mica_opal_fetch_harmonization_view($dataset_nid, $study_nid);
   } catch (Exception $e) {
+    $study_wrapper = entity_metadata_wrapper('node', $study_nid);
+    $study_title = $study_wrapper->title->value();
     switch ($e->getCode()) {
       case 404:
         drupal_set_message(
@@ -63,32 +87,37 @@ function _mica_datasets_import_variables_for_study($dataset_wrapper, $study_nid)
   }
 }
 
-function _mica_datasets_import_variables($harmonizations, $dataset_type) {
+function _mica_datasets_import_variables($dataset_nid, $harmonizations) {
   $e = 0 - microtime(TRUE);
-  global $user;
+
+  $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
+
   $position = 1;
   $nb_created = 0;
 
-  $dataset = node_load($harmonizations['dataset_nid']);
-
   $primary_key = $harmonizations['primary_key'];
+  // array indexed by $primary_key
   $variables = db_query(
     "SELECT n.title, n.uuid FROM {node} as n, {field_data_field_dataset_variables} as dv " .
     "WHERE n.type ='variable' AND n.nid = dv.field_dataset_variables_nid AND dv.entity_id = :dataset_nid;",
     array(':dataset_nid' => $harmonizations['dataset_nid']))->fetchAllAssoc($primary_key);
+
+  //TODO load SVA if harmonization
 
   foreach ($harmonizations['variables'] as $harmonization_variable) {
 
     $variable_nid = NULL;
     if (isset($variables[$harmonization_variable[$primary_key]])) {
       $variable = $harmonization_variable[$primary_key];
-      $variable_nid = _mica_datasets_update_variable($variable, $dataset, $harmonization_variable);
+      $variable_nid = _mica_datasets_update_variable($variable, $dataset_wrapper->value()->language, $harmonization_variable);
     }
     else {
-      $variable_nid = _mica_datasets_create_variable($dataset, $harmonization_variable, $position++);
+      $variable_nid = _mica_datasets_create_variable($dataset_wrapper->value(), $harmonization_variable, $position++);
     }
 
-    if ($dataset_type === "harmonization") {
+    if ($dataset_wrapper->field_dataset_type->value() === 'harmonization') {
+      // update SVA if exists, SVA creation is done by hook_insert
+
       // TODO native SQL: load all SVA for this dataset and this study (loading variable_nid)
       $query = new EntityFieldQuery();
       $results = $query->entityCondition('entity_type', 'node')
@@ -165,13 +194,13 @@ function _mica_datasets_create_variable($dataset, $harmonization_variable, $posi
   return $wrapper->nid->value();
 }
 
-function _mica_datasets_update_variable($variable, $dataset, $harmonization_variable) {
+function _mica_datasets_update_variable($variable, $dataset_language, $harmonization_variable) {
   $wrapper = entity_metadata_wrapper('node', $variable->nid);
 
   $i = 0;
   foreach ($harmonization_variable['categories'] as $category) {
-    $wrapper->language($dataset->language)->field_variable_categories[$i]->name->set($category['name']);
-    $wrapper->language($dataset->language)->field_variable_categories[$i]->missing->set($category['missing']);
+    $wrapper->language($dataset_language)->field_variable_categories[$i]->name->set($category['name']);
+    $wrapper->language($dataset_language)->field_variable_categories[$i]->missing->set($category['missing']);
     if (isset($category['label'])) {
       foreach ($category['label'] as $language => $value) {
         $wrapper->language($language)->field_variable_categories[$i]->label->set($value);
@@ -183,9 +212,9 @@ function _mica_datasets_update_variable($variable, $dataset, $harmonization_vari
     }
     $i++;
   }
-  if ($i < count($wrapper->language($dataset->language)->field_variable_categories)) {
-    while (isset($wrapper->language($dataset->language)->field_variable_categories[$i])) {
-      $wrapper->language($dataset->language)->field_variable_categories[$i] = NULL;
+  if ($i < count($wrapper->language($dataset_language)->field_variable_categories)) {
+    while (isset($wrapper->language($dataset_language)->field_variable_categories[$i])) {
+      $wrapper->language($dataset_language)->field_variable_categories[$i] = NULL;
       $i++;
     }
   }

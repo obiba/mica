@@ -163,7 +163,7 @@ function mica_datasets_menu() {
 
   $items['mica_datasets_harmonization/nojs/%'] = array(
     'file' => 'mica_datasets.import_variables.inc',
-    'page callback' => 'mica_datasets_import_variables_callback',
+    'page callback' => '_mica_datasets_import_variables_callback',
     'page arguments' => array(1, 2),
     'access callback' => '_mica_datasets_node_access',
     'access arguments' => array(2, 'dataset', 'update'),
@@ -172,7 +172,7 @@ function mica_datasets_menu() {
 
   $items['mica_datasets_harmonization/ajax/%/%'] = array(
     'file' => 'mica_datasets.import_variables.inc',
-    'page callback' => 'mica_datasets_import_variables_callback',
+    'page callback' => '_mica_datasets_import_variables_callback',
     'page arguments' => array(1, 2, 3),
     'access callback' => '_mica_datasets_node_access',
     'access arguments' => array(2, 'dataset', 'update'),
