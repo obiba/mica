@@ -53,8 +53,9 @@ function _mica_datasets_prepare_batch_variable_import($dataset_nid, $study_harmo
 
 function _mica_datasets_batch_variable_import_finished($success, $results, $operations) {
   if ($success) {
-    drupal_set_message(t('@count variables successfully imported', array(
-      '@count' => count($operations),
+    drupal_set_message(t('Import finished: @nb_created variables created and @nb_updated updated.', array(
+      '@nb_created' => $results['nb_created'],
+      '@nb_updated' => $results['nb_updated'],
     )));
   }
   else {
@@ -103,6 +104,8 @@ function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $primar
         "SELECT n.nid, n.title, n.uuid FROM {node} as n, {field_data_field_dataset_variables} as dv WHERE n.type = :type AND n.nid = dv.field_dataset_variables_nid AND dv.entity_id = :dataset_nid;",
         array(':dataset_nid' => $dataset_nid, ':type' => 'variable'))
         ->fetchAllAssoc($primary_key),
+      'nb_created' => 0,
+      'nb_updated' => 0,
     );
     //TODO load SVA if harmonization
   }
@@ -114,10 +117,12 @@ function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $primar
   if (isset($variables[$harmonization_variable[$primary_key]])) {
     $variable = $variables[$harmonization_variable[$primary_key]];
     $variable_nid = _mica_datasets_update_variable($variable->nid, $dataset_wrapper->value()->language, $harmonization_variable);
+    $context['results']['nb_updated']++;
   }
   else {
     $variable_nid = _mica_datasets_create_variable($dataset_wrapper->value(), $harmonization_variable, $context['results']['last_position']);
     $context['results']['last_position']++;
+    $context['results']['nb_created']++;
   }
 
   if ($dataset_wrapper->field_dataset_type->value() === 'harmonization') {
