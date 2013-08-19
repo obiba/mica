@@ -40,7 +40,12 @@ function _mica_datasets_import_variables_callback($type, $dataset_nid, $study_ni
 function _mica_datasets_prepare_batch_variable_import($dataset_nid, $study_harmonizations) {
   $operations = array();
   foreach ($study_harmonizations as $study_nid => $harmonizations) {
-    $operations[] = array('_mica_datasets_import_variables', array($dataset_nid, $harmonizations));
+    foreach ($harmonizations['variables'] as $harmonization_variable) {
+      $operations[] = array(
+        '_mica_datasets_batch_import_variables',
+        array($dataset_nid, $study_nid, $harmonizations['primary_key'], $harmonization_variable)
+      );
+    }
   }
   return $operations;
 }
@@ -87,67 +92,65 @@ function _mica_datasets_fetch_study_harmonization_view($dataset_nid, $study_nid)
   }
 }
 
-function _mica_datasets_import_variables($dataset_nid, $harmonizations) {
-  $e = 0 - microtime(TRUE);
+function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $primary_key, $harmonization_variable, &$context) {
+
+  // keep current dataset variables between batch steps
+  if (empty($context['results']) || $context['results']['dataset_nid'] != $dataset_nid) {
+    watchdog('mica', 'Cache batch dataset info %nid', array('%nid' => $dataset_nid), WATCHDOG_DEBUG);
+    $context['results'] = array(
+      'dataset_nid' => $dataset_nid,
+      'last_position' => 1,
+      'variables' => db_query(
+        "SELECT n.nid, n.title, n.uuid FROM {node} as n, {field_data_field_dataset_variables} as dv WHERE n.type = :type AND n.nid = dv.field_dataset_variables_nid AND dv.entity_id = :dataset_nid;",
+        array(':dataset_nid' => $dataset_nid, ':type' => 'variable'))
+        ->fetchAllAssoc($primary_key),
+    );
+    //TODO load SVA if harmonization
+  }
 
   $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
+  $variables = $context['results']['variables'];
+  $variable_nid = NULL;
 
-  $position = 1;
-  $nb_created = 0;
+  if (isset($variables[$harmonization_variable[$primary_key]])) {
+    $variable = $variables[$harmonization_variable[$primary_key]];
+    $variable_nid = _mica_datasets_update_variable($variable->nid, $dataset_wrapper->value()->language, $harmonization_variable);
+  }
+  else {
+    $variable_nid = _mica_datasets_create_variable($dataset_wrapper->value(), $harmonization_variable, $context['results']['last_position']);
+    $context['results']['last_position']++;
+  }
 
-  $primary_key = $harmonizations['primary_key'];
-  // array indexed by $primary_key
-  $variables = db_query(
-    "SELECT n.title, n.uuid FROM {node} as n, {field_data_field_dataset_variables} as dv " .
-    "WHERE n.type ='variable' AND n.nid = dv.field_dataset_variables_nid AND dv.entity_id = :dataset_nid;",
-    array(':dataset_nid' => $harmonizations['dataset_nid']))->fetchAllAssoc($primary_key);
+  if ($dataset_wrapper->field_dataset_type->value() === 'harmonization') {
+    // update SVA if exists, SVA creation is done by hook_insert
 
-  //TODO load SVA if harmonization
-
-  foreach ($harmonizations['variables'] as $harmonization_variable) {
-
-    $variable_nid = NULL;
-    if (isset($variables[$harmonization_variable[$primary_key]])) {
-      $variable = $harmonization_variable[$primary_key];
-      $variable_nid = _mica_datasets_update_variable($variable, $dataset_wrapper->value()->language, $harmonization_variable);
-    }
-    else {
-      $variable_nid = _mica_datasets_create_variable($dataset_wrapper->value(), $harmonization_variable, $position++);
-    }
-
-    if ($dataset_wrapper->field_dataset_type->value() === 'harmonization') {
-      // update SVA if exists, SVA creation is done by hook_insert
-
-      // TODO native SQL: load all SVA for this dataset and this study (loading variable_nid)
-      $query = new EntityFieldQuery();
-      $results = $query->entityCondition('entity_type', 'node')
-        ->entityCondition('bundle', 'study_variable_attributes')
-        ->fieldCondition('field_sva_variable', 'nid', $variable_nid)
-        ->fieldCondition('field_sva_study', 'nid', $harmonizations['study_nid'])
-        ->execute();
-      if (!empty($results)) {
-        foreach ($results['node'] as $result) {
-          $sva = entity_metadata_wrapper('node', node_load($result->nid));
-          if ($sva->field_sva_study->nid->value() == $harmonizations['study_nid']) {
-            $sva->field_sva_script->set($harmonization_variable['script']);
-            $sva->field_sva_status->set($harmonization_variable['status']);
-            foreach ($harmonization_variable['comment'] as $language => $value) {
-              $sva->language($language)->field_sva_comment->set($value);
-            }
-            $sva->save();
+    // TODO native SQL: load all SVA for this dataset and this study (loading variable_nid)
+    $query = new EntityFieldQuery();
+    $results = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'study_variable_attributes')
+      ->fieldCondition('field_sva_variable', 'nid', $variable_nid)
+      ->fieldCondition('field_sva_study', 'nid', $study_nid)
+      ->execute();
+    if (!empty($results)) {
+      foreach ($results['node'] as $result) {
+        $sva = entity_metadata_wrapper('node', node_load($result->nid));
+        if ($sva->field_sva_study->nid->value() == $study_nid) {
+          $sva->field_sva_script->set($harmonization_variable['script']);
+          $sva->field_sva_status->set($harmonization_variable['status']);
+          foreach ($harmonization_variable['comment'] as $language => $value) {
+            $sva->language($language)->field_sva_comment->set($value);
           }
+          $sva->save();
         }
       }
     }
-    $nb_created++;
   }
-
-  $e += microtime(TRUE);
-  watchdog('mica', 'mica_datasets_create_variables took %time s.', array('%time' => $e), WATCHDOG_INFO);
-  return $nb_created;
 }
 
 function _mica_datasets_create_variable($dataset, $harmonization_variable, $position) {
+
+  watchdog('mica', 'Create new variable %title', array('%title' => $harmonization_variable['title']), WATCHDOG_DEBUG);
+
   global $user;
 
   $infos = array(
@@ -194,8 +197,11 @@ function _mica_datasets_create_variable($dataset, $harmonization_variable, $posi
   return $wrapper->nid->value();
 }
 
-function _mica_datasets_update_variable($variable, $dataset_language, $harmonization_variable) {
-  $wrapper = entity_metadata_wrapper('node', $variable->nid);
+function _mica_datasets_update_variable($variable_nid, $dataset_language, $harmonization_variable) {
+
+  watchdog('mica', 'Update variable %nid', array('%nid' => $variable_nid), WATCHDOG_DEBUG);
+
+  $wrapper = entity_metadata_wrapper('node', $variable_nid);
 
   $i = 0;
   foreach ($harmonization_variable['categories'] as $category) {
