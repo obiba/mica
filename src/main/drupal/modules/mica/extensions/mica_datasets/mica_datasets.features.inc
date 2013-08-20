@@ -228,7 +228,6 @@ function mica_datasets_default_search_api_index() {
         "field_sociodemographic_charact" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_target" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_unit" : { "type" : "text" },
-        "field_administrative_information" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
         "search_api_aggregation_2" : { "type" : "text" },
@@ -238,6 +237,7 @@ function mica_datasets_default_search_api_index() {
         "body:summary" : { "type" : "text" },
         "field_dataset:nid" : { "type" : "integer" },
         "field_dataset:title" : { "type" : "text" },
+        "field_dataset:field_pop_dce" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_dataset:field_dataset_studies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_dataset:field_dataset_type" : { "type" : "string" },
         "field_dataset:field_studies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
@@ -245,12 +245,8 @@ function mica_datasets_default_search_api_index() {
         "field_variable_categories:label" : { "type" : "list\\u003Ctext\\u003E" },
         "field_variable_categories:missing" : { "type" : "list\\u003Cboolean\\u003E" },
         "field_variable_study_var_att:field_sva_status" : { "type" : "list\\u003Cstring\\u003E" },
-        "field_dataset:field_dataset_studies:field_study_populations" : {
+        "field_dataset:field_pop_dce:field_study_populations" : {
           "type" : "list\\u003Clist\\u003Cinteger\\u003E\\u003E",
-          "entity_type" : "node"
-        },
-        "field_dataset:field_dataset_studies:field_study_populations:field_pop_dce" : {
-          "type" : "list\\u003Clist\\u003Clist\\u003Cinteger\\u003E\\u003E\\u003E",
           "entity_type" : "node"
         }
       },

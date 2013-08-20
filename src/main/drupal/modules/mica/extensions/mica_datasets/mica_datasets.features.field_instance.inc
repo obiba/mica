@@ -73,6 +73,47 @@ function mica_datasets_field_default_field_instances() {
     'widget_type' => 'text_textarea_with_summary',
   );
 
+  // Exported field_instance: 'node-dataset-field_dataset_dces'
+  $field_instances['node-dataset-field_dataset_dces'] = array(
+    'bundle' => 'dataset',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_dataset_dces',
+    'label' => 'Data Collection Events',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'node_reference',
+      'settings' => array(
+        'autocomplete_match' => 'contains',
+        'autocomplete_path' => 'node_reference/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'node_reference_autocomplete',
+      'weight' => 4,
+    ),
+  );
+
   // Exported field_instance: 'node-dataset-field_dataset_studies'
   $field_instances['node-dataset-field_dataset_studies'] = array(
     'bundle' => 'dataset',
@@ -84,7 +125,7 @@ function mica_datasets_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -130,7 +171,7 @@ function mica_datasets_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 3,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -167,7 +208,7 @@ function mica_datasets_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -193,7 +234,7 @@ function mica_datasets_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -208,7 +249,7 @@ function mica_datasets_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -237,7 +278,7 @@ function mica_datasets_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => -5,
+      'weight' => 0,
     ),
   );
 
@@ -2333,23 +2374,20 @@ Set to 0 to set variable at last position.  ',
   t('Can this variable have multiple values?');
   t('Categories');
   t('Comment');
+  t('Data Collection Events');
   t('Data Source');
   t('Dataset');
   t('Dataset Type');
   t('Description');
   t('Diseases History and Related Health Problems');
-  t('Essence');
-  t('Individual Participant Measures');
   t('Label');
   t('Laboratory Measures');
   t('Life Habits/Behaviours');
-  t('Measure');
   t('Medical Health Interventions/Health Services Utilization');
   t('Medication');
   t('Name');
   t('Participant\'s Early Life/Childhood');
   t('Perception of Health/Quality of life');
-  t('Period');
   t('Physical Environment');
   t('Position index');
   t('Position of the Variable within its Dataset. 

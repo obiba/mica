@@ -186,55 +186,6 @@ function mica_datasets_facetapi_default_facet_settings() {
   $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
-  $facet->name = 'search_api@variable_index::field_dataset:field_dataset_studies:field_study_populations';
-  $facet->searcher = 'search_api@variable_index';
-  $facet->realm = '';
-  $facet->facet = 'field_dataset:field_dataset_studies:field_study_populations';
-  $facet->enabled = FALSE;
-  $facet->settings = array(
-    'operator' => 'and',
-    'hard_limit' => '50',
-    'dependencies' => array(
-      'bundle' => 'none',
-      'bundle_selected' => array(),
-      'roles' => array(),
-    ),
-    'facet_mincount' => '1',
-    'facet_missing' => '0',
-    'flatten' => 0,
-    'query_type' => 'term',
-    'default_true' => TRUE,
-    'facet_search_ids' => array(),
-  );
-  $export['search_api@variable_index::field_dataset:field_dataset_studies:field_study_populations'] = $facet;
-
-  $facet = new stdClass();
-  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
-  $facet->api_version = 1;
-  $facet->name = 'search_api@variable_index::field_dataset:field_dataset_studies:field_study_populations:field_pop_dce';
-  $facet->searcher = 'search_api@variable_index';
-  $facet->realm = '';
-  $facet->facet = 'field_dataset:field_dataset_studies:field_study_populations:field_pop_dce';
-  $facet->enabled = FALSE;
-  $facet->settings = array(
-    'operator' => 'and',
-    'hard_limit' => '50',
-    'dependencies' => array(
-      'bundle' => 'none',
-      'bundle_selected' => array(),
-    ),
-    'facet_mincount' => '1',
-    'facet_missing' => '0',
-    'flatten' => 0,
-    'query_type' => 'term',
-    'default_true' => TRUE,
-    'facet_search_ids' => array(),
-  );
-  $export['search_api@variable_index::field_dataset:field_dataset_studies:field_study_populations:field_pop_dce'] = $facet;
-
-  $facet = new stdClass();
-  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
-  $facet->api_version = 1;
   $facet->name = 'search_api@variable_index::field_dataset:field_dataset_type';
   $facet->searcher = 'search_api@variable_index';
   $facet->realm = '';
@@ -256,6 +207,54 @@ function mica_datasets_facetapi_default_facet_settings() {
     'facet_search_ids' => array(),
   );
   $export['search_api@variable_index::field_dataset:field_dataset_type'] = $facet;
+
+  $facet = new stdClass();
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@variable_index::field_dataset:field_pop_dce';
+  $facet->searcher = 'search_api@variable_index';
+  $facet->realm = '';
+  $facet->facet = 'field_dataset:field_pop_dce';
+  $facet->enabled = FALSE;
+  $facet->settings = array(
+    'operator' => 'and',
+    'hard_limit' => '50',
+    'dependencies' => array(
+      'bundle' => 'none',
+      'bundle_selected' => array(),
+    ),
+    'facet_mincount' => '1',
+    'facet_missing' => '0',
+    'flatten' => 0,
+    'query_type' => 'term',
+    'default_true' => TRUE,
+    'facet_search_ids' => array(),
+  );
+  $export['search_api@variable_index::field_dataset:field_pop_dce'] = $facet;
+
+  $facet = new stdClass();
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@variable_index::field_dataset:field_pop_dce:field_study_populations';
+  $facet->searcher = 'search_api@variable_index';
+  $facet->realm = '';
+  $facet->facet = 'field_dataset:field_pop_dce:field_study_populations';
+  $facet->enabled = FALSE;
+  $facet->settings = array(
+    'operator' => 'and',
+    'hard_limit' => '50',
+    'dependencies' => array(
+      'bundle' => 'none',
+      'bundle_selected' => array(),
+    ),
+    'facet_mincount' => '1',
+    'facet_missing' => '0',
+    'flatten' => 0,
+    'query_type' => 'term',
+    'default_true' => TRUE,
+    'facet_search_ids' => array(),
+  );
+  $export['search_api@variable_index::field_dataset:field_pop_dce:field_study_populations'] = $facet;
 
   $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
@@ -1164,100 +1163,6 @@ function mica_datasets_facetapi_default_facet_settings() {
   $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
   $facet->api_version = 1;
-  $facet->name = 'search_api@variable_index:block:field_dataset:field_dataset_studies:field_study_populations';
-  $facet->searcher = 'search_api@variable_index';
-  $facet->realm = 'block';
-  $facet->facet = 'field_dataset:field_dataset_studies:field_study_populations';
-  $facet->enabled = TRUE;
-  $facet->settings = array(
-    'weight' => 0,
-    'widget' => 'facetapi_checkbox_links',
-    'filters' => array(),
-    'active_sorts' => array(
-      'active' => 'active',
-      'count' => 'count',
-      'display' => 'display',
-      'indexed' => 0,
-    ),
-    'sort_weight' => array(
-      'active' => '-50',
-      'count' => '-49',
-      'display' => '-48',
-      'indexed' => '0',
-    ),
-    'sort_order' => array(
-      'active' => '3',
-      'count' => '3',
-      'display' => '4',
-      'indexed' => '4',
-    ),
-    'empty_behavior' => 'none',
-    'soft_limit' => '5',
-    'nofollow' => 1,
-    'show_expanded' => 0,
-    'name' => '',
-    'prefix' => '',
-    'suffix' => '',
-    'use_slider' => 1,
-    'submit_on_change' => 1,
-    'empty_text' => array(
-      'value' => '',
-      'format' => 'filtered_html',
-    ),
-    'submit_realm' => 'Save and go back to realm settings',
-  );
-  $export['search_api@variable_index:block:field_dataset:field_dataset_studies:field_study_populations'] = $facet;
-
-  $facet = new stdClass();
-  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
-  $facet->api_version = 1;
-  $facet->name = 'search_api@variable_index:block:field_dataset:field_dataset_studies:field_study_populations:field_pop_dce';
-  $facet->searcher = 'search_api@variable_index';
-  $facet->realm = 'block';
-  $facet->facet = 'field_dataset:field_dataset_studies:field_study_populations:field_pop_dce';
-  $facet->enabled = TRUE;
-  $facet->settings = array(
-    'weight' => 0,
-    'widget' => 'facetapi_checkbox_links',
-    'filters' => array(),
-    'active_sorts' => array(
-      'active' => 'active',
-      'count' => 'count',
-      'display' => 'display',
-      'indexed' => 0,
-    ),
-    'sort_weight' => array(
-      'active' => '-50',
-      'count' => '-49',
-      'display' => '-48',
-      'indexed' => '0',
-    ),
-    'sort_order' => array(
-      'active' => '3',
-      'count' => '3',
-      'display' => '4',
-      'indexed' => '4',
-    ),
-    'empty_behavior' => 'none',
-    'soft_limit' => '5',
-    'nofollow' => 1,
-    'show_expanded' => 0,
-    'name' => '',
-    'prefix' => '',
-    'suffix' => '',
-    'use_slider' => 1,
-    'submit_on_change' => 1,
-    'empty_text' => array(
-      'value' => '',
-      'format' => 'filtered_html',
-    ),
-    'submit_realm' => 'Save and go back to realm settings',
-  );
-  $export['search_api@variable_index:block:field_dataset:field_dataset_studies:field_study_populations:field_pop_dce'] = $facet;
-
-  $facet = new stdClass();
-  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
-  $facet->api_version = 1;
   $facet->name = 'search_api@variable_index:block:field_dataset:field_dataset_type';
   $facet->searcher = 'search_api@variable_index';
   $facet->realm = 'block';
@@ -1301,6 +1206,102 @@ function mica_datasets_facetapi_default_facet_settings() {
     'submit_realm' => 'Save and go back to realm settings',
   );
   $export['search_api@variable_index:block:field_dataset:field_dataset_type'] = $facet;
+
+  $facet = new stdClass();
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@variable_index:block:field_dataset:field_pop_dce';
+  $facet->searcher = 'search_api@variable_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_dataset:field_pop_dce';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'facetapi_checkbox_links',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+      'indexed' => 0,
+    ),
+    'sort_weight' => array(
+      'active' => '-50',
+      'count' => '-49',
+      'display' => '-48',
+      'indexed' => '0',
+    ),
+    'sort_order' => array(
+      'active' => '3',
+      'count' => '3',
+      'display' => '4',
+      'indexed' => '4',
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => '5',
+    'nofollow' => 1,
+    'show_expanded' => 0,
+    'name' => '',
+    'prefix' => '',
+    'suffix' => '',
+    'auto-submit-delay' => '1500',
+    'range_simple' => '10',
+    'range_advanced' => '',
+    'empty_text' => array(
+      'value' => '',
+      'format' => 'filtered_html',
+    ),
+    'submit_realm' => 'Save and go back to realm settings',
+  );
+  $export['search_api@variable_index:block:field_dataset:field_pop_dce'] = $facet;
+
+  $facet = new stdClass();
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@variable_index:block:field_dataset:field_pop_dce:field_study_populations';
+  $facet->searcher = 'search_api@variable_index';
+  $facet->realm = 'block';
+  $facet->facet = 'field_dataset:field_pop_dce:field_study_populations';
+  $facet->enabled = TRUE;
+  $facet->settings = array(
+    'weight' => 0,
+    'widget' => 'facetapi_checkbox_links',
+    'filters' => array(),
+    'active_sorts' => array(
+      'active' => 'active',
+      'count' => 'count',
+      'display' => 'display',
+      'indexed' => 0,
+    ),
+    'sort_weight' => array(
+      'active' => '-50',
+      'count' => '-49',
+      'display' => '-48',
+      'indexed' => '0',
+    ),
+    'sort_order' => array(
+      'active' => '3',
+      'count' => '3',
+      'display' => '4',
+      'indexed' => '4',
+    ),
+    'empty_behavior' => 'none',
+    'soft_limit' => '5',
+    'nofollow' => 1,
+    'show_expanded' => 0,
+    'name' => '',
+    'prefix' => '',
+    'suffix' => '',
+    'auto-submit-delay' => '1500',
+    'range_simple' => '10',
+    'range_advanced' => '',
+    'empty_text' => array(
+      'value' => '',
+      'format' => 'filtered_html',
+    ),
+    'submit_realm' => 'Save and go back to realm settings',
+  );
+  $export['search_api@variable_index:block:field_dataset:field_pop_dce:field_study_populations'] = $facet;
 
   $facet = new stdClass();
   $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */

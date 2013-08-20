@@ -214,9 +214,16 @@ function mica_datasets_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
-      'form' => array(),
+      'form' => array(
+        'path' => array(
+          'weight' => '6',
+        ),
+      ),
       'display' => array(),
     ),
   );
