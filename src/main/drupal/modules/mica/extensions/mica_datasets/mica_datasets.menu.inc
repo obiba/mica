@@ -22,7 +22,7 @@ function _mica_datasets_create_dataset_menu($node) {
 }
 
 function _mica_datasets_create_variable_menu($node) {
-  $wrapper = entity_metadata_wrapper('node', $node);
+  $wrapper = entity_metadata_wrapper('node', $node->nid);
   mica_core_create_node_menu($node, TRUE, FALSE, 0, 'node/' . $wrapper->field_dataset->nid->value());
 }
 

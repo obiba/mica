@@ -220,7 +220,7 @@ function _mica_connector_remove_study_to_dataset(&$study, &$dataset) {
   $dataset_wrapper = entity_metadata_wrapper('node', $dataset);
 
   _mica_datasets_remove_and_save_element_from_entity_list_wrapper($study_wrapper, $dataset_wrapper, 'mica_dataset');
-  _mica_datasets_delete_svas($dataset, $study);
+  _mica_datasets_delete_svas($dataset_wrapper, $study->nid);
 }
 
 //

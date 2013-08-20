@@ -16,8 +16,8 @@ function _mica_datasets_import_variables_callback($dataset_nid, $study_nid = NUL
   else {
     // fetch all studies of the dataset
     $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
-    foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study) {
-      $nid = $study->nid->value();
+    foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study_wrapper) {
+      $nid = $study_wrapper->nid->value();
       $harmonization_view = _mica_datasets_fetch_study_harmonization_view($dataset_nid, $nid);
       if (!empty($harmonization_view)) {
         $study_harmonizations[$nid] = $harmonization_view;
@@ -25,9 +25,8 @@ function _mica_datasets_import_variables_callback($dataset_nid, $study_nid = NUL
     }
   }
 
-  $operations = _mica_datasets_prepare_batch_variable_import($dataset_nid, $study_harmonizations);
   batch_set(array(
-    'operations' => $operations,
+    'operations' => _mica_datasets_prepare_batch_variable_import($dataset_nid, $study_harmonizations),
     'finished' => '_mica_datasets_batch_variable_import_finished',
   ));
 
