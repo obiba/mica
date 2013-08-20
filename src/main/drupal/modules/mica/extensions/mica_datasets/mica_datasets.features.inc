@@ -94,6 +94,7 @@ function mica_datasets_default_search_api_index() {
         "title" : { "type" : "string" },
         "status" : { "type" : "boolean" },
         "author" : { "type" : "integer", "entity_type" : "user" },
+        "field_pop_dce" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_dataset_studies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_dataset_type" : { "type" : "string" },
         "search_api_language" : { "type" : "string" },
@@ -103,12 +104,8 @@ function mica_datasets_default_search_api_index() {
         "body:value" : { "type" : "text" },
         "body:summary" : { "type" : "text" },
         "field_dataset_studies:title" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_dataset_studies:field_study_populations" : {
+        "field_dataset_dces:field_dce_population" : {
           "type" : "list\\u003Clist\\u003Cinteger\\u003E\\u003E",
-          "entity_type" : "node"
-        },
-        "field_dataset_studies:field_study_populations:field_pop_dce" : {
-          "type" : "list\\u003Clist\\u003Clist\\u003Cinteger\\u003E\\u003E\\u003E",
           "entity_type" : "node"
         }
       },
@@ -245,10 +242,13 @@ function mica_datasets_default_search_api_index() {
         "field_variable_categories:label" : { "type" : "list\\u003Ctext\\u003E" },
         "field_variable_categories:missing" : { "type" : "list\\u003Cboolean\\u003E" },
         "field_variable_study_var_att:field_sva_status" : { "type" : "list\\u003Cstring\\u003E" },
+        "field_dataset:field_pop_dce:field_dce_data_sources" : { "type" : "list\\u003Clist\\u003Cstring\\u003E\\u003E" },
         "field_dataset:field_pop_dce:field_study_populations" : {
           "type" : "list\\u003Clist\\u003Cinteger\\u003E\\u003E",
           "entity_type" : "node"
-        }
+        },
+        "field_dataset:field_pop_dce:field_study_populations:field_pop_select_criteria" : { "type" : "list\\u003Clist\\u003Clist\\u003Cstring\\u003E\\u003E\\u003E" },
+        "field_dataset:field_pop_dce:field_study_populations:field_pop_src_recruit" : { "type" : "list\\u003Clist\\u003Clist\\u003Cstring\\u003E\\u003E\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
