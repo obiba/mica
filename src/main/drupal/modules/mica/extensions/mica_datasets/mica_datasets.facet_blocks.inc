@@ -35,7 +35,6 @@ function mica_datasets_configure_facet_blocks() {
       'name' => t('Study')
     ),
     'field_data_source' => array(),
-    'field_individual_participant_mea' => array(),
     'field_disease_history' => array(),
     'field_medical_health_interv' => array(),
     'field_medication' => array(),
@@ -50,10 +49,7 @@ function mica_datasets_configure_facet_blocks() {
     'field_body_structures' => array(),
     'field_body_functions' => array(),
     'field_laboratory_measures' => array(),
-    'field_essence' => array(),
     'field_target' => array(),
-    'field_period' => array(),
-    'field_measure' => array(),
     'field_value_type' => array(),
   );
   mica_core_configure_facet_blocks('variable_index', 'variable', $config, 'variable-search

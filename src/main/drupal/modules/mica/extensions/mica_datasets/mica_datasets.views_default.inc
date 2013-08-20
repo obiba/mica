@@ -749,12 +749,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_perception_of_health']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_perception_of_health']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_perception_of_health']['separator'] = '|';
-  /* Field: Content: Period */
-  $handler->display->display_options['fields']['field_period']['id'] = 'field_period';
-  $handler->display->display_options['fields']['field_period']['table'] = 'field_data_field_period';
-  $handler->display->display_options['fields']['field_period']['field'] = 'field_period';
-  $handler->display->display_options['fields']['field_period']['label'] = 'period';
-  $handler->display->display_options['fields']['field_period']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Physical Environment */
   $handler->display->display_options['fields']['field_physical_environment']['id'] = 'field_physical_environment';
   $handler->display->display_options['fields']['field_physical_environment']['table'] = 'field_data_field_physical_environment';
@@ -795,12 +789,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_target']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_target']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_target']['separator'] = '|';
-  /* Field: Content: Individual Participant Measures */
-  $handler->display->display_options['fields']['field_individual_participant_mea']['id'] = 'field_individual_participant_mea';
-  $handler->display->display_options['fields']['field_individual_participant_mea']['table'] = 'field_data_field_individual_participant_mea';
-  $handler->display->display_options['fields']['field_individual_participant_mea']['field'] = 'field_individual_participant_mea';
-  $handler->display->display_options['fields']['field_individual_participant_mea']['label'] = 'individual_participant_measures';
-  $handler->display->display_options['fields']['field_individual_participant_mea']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Laboratory Measures */
   $handler->display->display_options['fields']['field_laboratory_measures']['id'] = 'field_laboratory_measures';
   $handler->display->display_options['fields']['field_laboratory_measures']['table'] = 'field_data_field_laboratory_measures';
@@ -816,19 +804,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_social_environment_1']['label'] = 'social_environment';
   $handler->display->display_options['fields']['field_social_environment_1']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_social_environment_1']['delta_offset'] = '0';
-  /* Field: Content: Essence */
-  $handler->display->display_options['fields']['field_essence']['id'] = 'field_essence';
-  $handler->display->display_options['fields']['field_essence']['table'] = 'field_data_field_essence';
-  $handler->display->display_options['fields']['field_essence']['field'] = 'field_essence';
-  $handler->display->display_options['fields']['field_essence']['label'] = 'essence';
-  $handler->display->display_options['fields']['field_essence']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Measure */
-  $handler->display->display_options['fields']['field_measure']['id'] = 'field_measure';
-  $handler->display->display_options['fields']['field_measure']['table'] = 'field_data_field_measure';
-  $handler->display->display_options['fields']['field_measure']['field'] = 'field_measure';
-  $handler->display->display_options['fields']['field_measure']['label'] = 'measure';
-  $handler->display->display_options['fields']['field_measure']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_measure']['delta_offset'] = '0';
   /* Field: Content: Laboratory Measures */
   $handler->display->display_options['fields']['field_laboratory_measures_1']['id'] = 'field_laboratory_measures_1';
   $handler->display->display_options['fields']['field_laboratory_measures_1']['table'] = 'field_data_field_laboratory_measures';
@@ -1128,30 +1103,12 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_body_functions']['field'] = 'field_body_functions';
   $handler->display->display_options['fields']['field_body_functions']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_body_functions']['view_mode'] = 'full';
-  /* Field: Indexed Node: Essence */
-  $handler->display->display_options['fields']['field_essence']['id'] = 'field_essence';
-  $handler->display->display_options['fields']['field_essence']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['fields']['field_essence']['field'] = 'field_essence';
-  $handler->display->display_options['fields']['field_essence']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['field_essence']['view_mode'] = 'full';
   /* Field: Indexed Node: Target */
   $handler->display->display_options['fields']['field_target']['id'] = 'field_target';
   $handler->display->display_options['fields']['field_target']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_target']['field'] = 'field_target';
   $handler->display->display_options['fields']['field_target']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_target']['view_mode'] = 'full';
-  /* Field: Indexed Node: Period */
-  $handler->display->display_options['fields']['field_period']['id'] = 'field_period';
-  $handler->display->display_options['fields']['field_period']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['fields']['field_period']['field'] = 'field_period';
-  $handler->display->display_options['fields']['field_period']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['field_period']['view_mode'] = 'full';
-  /* Field: Indexed Node: Measure */
-  $handler->display->display_options['fields']['field_measure']['id'] = 'field_measure';
-  $handler->display->display_options['fields']['field_measure']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['fields']['field_measure']['field'] = 'field_measure';
-  $handler->display->display_options['fields']['field_measure']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['field_measure']['view_mode'] = 'full';
   /* Field: Indexed Node: Value Type */
   $handler->display->display_options['fields']['field_value_type']['id'] = 'field_value_type';
   $handler->display->display_options['fields']['field_value_type']['table'] = 'search_api_index_variable_index';
@@ -1208,16 +1165,12 @@ function mica_datasets_views_default_views() {
     'field_body_structures' => 'field_body_structures',
     'field_data_source' => 'field_data_source',
     'field_disease_history' => 'field_disease_history',
-    'field_essence' => 'field_essence',
-    'field_individual_participant_mea' => 'field_individual_participant_mea',
     'field_laboratory_measures' => 'field_laboratory_measures',
     'field_life_habits_behaviours' => 'field_life_habits_behaviours',
-    'field_measure' => 'field_measure',
     'field_medical_health_interv' => 'field_medical_health_interv',
     'field_medication' => 'field_medication',
     'field_early_life' => 'field_early_life',
     'field_perception_of_health' => 'field_perception_of_health',
-    'field_period' => 'field_period',
     'field_physical_environment' => 'field_physical_environment',
     'field_reproductive_history' => 'field_reproductive_history',
     'field_social_environment' => 'field_social_environment',
@@ -1273,29 +1226,12 @@ function mica_datasets_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_essence' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_individual_participant_mea' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
     'field_laboratory_measures' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
     'field_life_habits_behaviours' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_measure' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -1316,11 +1252,6 @@ function mica_datasets_views_default_views() {
       'empty_column' => 0,
     ),
     'field_perception_of_health' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_period' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -1443,15 +1374,11 @@ function mica_datasets_views_default_views() {
           'variable::field_data_source' => 'variable::field_data_source',
           'variable::field_disease_history' => 'variable::field_disease_history',
           'variable::field_early_life' => 'variable::field_early_life',
-          'variable::field_essence' => 'variable::field_essence',
-          'variable::field_individual_participant_mea' => 'variable::field_individual_participant_mea',
           'variable::field_laboratory_measures' => 'variable::field_laboratory_measures',
           'variable::field_life_habits_behaviours' => 'variable::field_life_habits_behaviours',
-          'variable::field_measure' => 'variable::field_measure',
           'variable::field_medical_health_interv' => 'variable::field_medical_health_interv',
           'variable::field_medication' => 'variable::field_medication',
           'variable::field_perception_of_health' => 'variable::field_perception_of_health',
-          'variable::field_period' => 'variable::field_period',
           'variable::field_physical_environment' => 'variable::field_physical_environment',
           'variable::field_reproductive_history' => 'variable::field_reproductive_history',
           'variable::field_social_environment' => 'variable::field_social_environment',
@@ -1594,25 +1521,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_disease_history']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_disease_history']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_disease_history']['view_mode'] = 'full';
-  /* Field: Indexed Node: Essence */
-  $handler->display->display_options['fields']['field_essence']['id'] = 'field_essence';
-  $handler->display->display_options['fields']['field_essence']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['fields']['field_essence']['field'] = 'field_essence';
-  $handler->display->display_options['fields']['field_essence']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_essence']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_essence']['alter']['text'] = '[field_essence]; ';
-  $handler->display->display_options['fields']['field_essence']['list']['separator'] = '; ';
-  $handler->display->display_options['fields']['field_essence']['link_to_entity'] = 1;
-  $handler->display->display_options['fields']['field_essence']['view_mode'] = 'full';
-  /* Field: Indexed Node: Individual Participant Measures */
-  $handler->display->display_options['fields']['field_individual_participant_mea']['id'] = 'field_individual_participant_mea';
-  $handler->display->display_options['fields']['field_individual_participant_mea']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['fields']['field_individual_participant_mea']['field'] = 'field_individual_participant_mea';
-  $handler->display->display_options['fields']['field_individual_participant_mea']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_individual_participant_mea']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_individual_participant_mea']['alter']['text'] = '[field_individual_participant_mea]; ';
-  $handler->display->display_options['fields']['field_individual_participant_mea']['link_to_entity'] = 1;
-  $handler->display->display_options['fields']['field_individual_participant_mea']['view_mode'] = 'full';
   /* Field: Indexed Node: Laboratory Measures */
   $handler->display->display_options['fields']['field_laboratory_measures']['id'] = 'field_laboratory_measures';
   $handler->display->display_options['fields']['field_laboratory_measures']['table'] = 'search_api_index_variable_index';
@@ -1633,16 +1541,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_life_habits_behaviours']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_life_habits_behaviours']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_life_habits_behaviours']['view_mode'] = 'full';
-  /* Field: Indexed Node: Measure */
-  $handler->display->display_options['fields']['field_measure']['id'] = 'field_measure';
-  $handler->display->display_options['fields']['field_measure']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['fields']['field_measure']['field'] = 'field_measure';
-  $handler->display->display_options['fields']['field_measure']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_measure']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_measure']['alter']['text'] = '[field_measure]; ';
-  $handler->display->display_options['fields']['field_measure']['list']['separator'] = '; ';
-  $handler->display->display_options['fields']['field_measure']['link_to_entity'] = 1;
-  $handler->display->display_options['fields']['field_measure']['view_mode'] = 'full';
   /* Field: Indexed Node: Medical Health Interventions/Health Services Utilization */
   $handler->display->display_options['fields']['field_medical_health_interv']['id'] = 'field_medical_health_interv';
   $handler->display->display_options['fields']['field_medical_health_interv']['table'] = 'search_api_index_variable_index';
@@ -1682,16 +1580,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_perception_of_health']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_perception_of_health']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_perception_of_health']['view_mode'] = 'full';
-  /* Field: Indexed Node: Period */
-  $handler->display->display_options['fields']['field_period']['id'] = 'field_period';
-  $handler->display->display_options['fields']['field_period']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['fields']['field_period']['field'] = 'field_period';
-  $handler->display->display_options['fields']['field_period']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_period']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_period']['alter']['text'] = '[field_period]; ';
-  $handler->display->display_options['fields']['field_period']['list']['separator'] = '; ';
-  $handler->display->display_options['fields']['field_period']['link_to_entity'] = 1;
-  $handler->display->display_options['fields']['field_period']['view_mode'] = 'full';
   /* Field: Indexed Node: Physical Environment */
   $handler->display->display_options['fields']['field_physical_environment']['id'] = 'field_physical_environment';
   $handler->display->display_options['fields']['field_physical_environment']['table'] = 'search_api_index_variable_index';
@@ -1763,7 +1651,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = 'Domains';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_anthropometric_structures][field_body_functions][field_body_structures][field_medical_health_interv][field_medication][field_data_source][field_disease_history][field_individual_participant_mea][field_laboratory_measures][field_life_habits_behaviours][field_early_life][field_perception_of_health][field_period][field_physical_environment][field_reproductive_history][field_social_environment][field_sociodemographic_charact][field_measure][field_essence][field_target][field_administrative_information]';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_anthropometric_structures][field_body_functions][field_body_structures][field_medical_health_interv][field_medication][field_data_source][field_disease_history][field_laboratory_measures][field_life_habits_behaviours][field_early_life][field_perception_of_health][field_physical_environment][field_reproductive_history][field_social_environment][field_sociodemographic_charact][field_target][field_administrative_information]';
   $handler->display->display_options['fields']['nothing']['alter']['max_length'] = '400';
   $handler->display->display_options['fields']['nothing']['alter']['more_link_text'] = 'more';
   $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'tooltip';
@@ -1904,23 +1792,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_disease_history']['list']['separator'] = '|';
   $handler->display->display_options['fields']['field_disease_history']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_disease_history']['view_mode'] = 'full';
-  /* Field: Indexed Node: Essence */
-  $handler->display->display_options['fields']['field_essence']['id'] = 'field_essence';
-  $handler->display->display_options['fields']['field_essence']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['fields']['field_essence']['field'] = 'field_essence';
-  $handler->display->display_options['fields']['field_essence']['label'] = 'essence';
-  $handler->display->display_options['fields']['field_essence']['alter']['text'] = '[field_essence],';
-  $handler->display->display_options['fields']['field_essence']['list']['separator'] = '|';
-  $handler->display->display_options['fields']['field_essence']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['field_essence']['view_mode'] = 'full';
-  /* Field: Indexed Node: Individual Participant Measures */
-  $handler->display->display_options['fields']['field_individual_participant_mea']['id'] = 'field_individual_participant_mea';
-  $handler->display->display_options['fields']['field_individual_participant_mea']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['fields']['field_individual_participant_mea']['field'] = 'field_individual_participant_mea';
-  $handler->display->display_options['fields']['field_individual_participant_mea']['label'] = 'individual_participant_measures';
-  $handler->display->display_options['fields']['field_individual_participant_mea']['alter']['text'] = '[field_individual_participant_mea],';
-  $handler->display->display_options['fields']['field_individual_participant_mea']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['field_individual_participant_mea']['view_mode'] = 'full';
   /* Field: Indexed Node: Laboratory Measures */
   $handler->display->display_options['fields']['field_laboratory_measures']['id'] = 'field_laboratory_measures';
   $handler->display->display_options['fields']['field_laboratory_measures']['table'] = 'search_api_index_variable_index';
@@ -1939,15 +1810,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_life_habits_behaviours']['list']['separator'] = '|';
   $handler->display->display_options['fields']['field_life_habits_behaviours']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_life_habits_behaviours']['view_mode'] = 'full';
-  /* Field: Indexed Node: Measure */
-  $handler->display->display_options['fields']['field_measure']['id'] = 'field_measure';
-  $handler->display->display_options['fields']['field_measure']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['fields']['field_measure']['field'] = 'field_measure';
-  $handler->display->display_options['fields']['field_measure']['label'] = 'measure';
-  $handler->display->display_options['fields']['field_measure']['alter']['text'] = '[field_measure],';
-  $handler->display->display_options['fields']['field_measure']['list']['separator'] = '|';
-  $handler->display->display_options['fields']['field_measure']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['field_measure']['view_mode'] = 'full';
   /* Field: Indexed Node: Medical Health Interventions/Health Services Utilization */
   $handler->display->display_options['fields']['field_medical_health_interv']['id'] = 'field_medical_health_interv';
   $handler->display->display_options['fields']['field_medical_health_interv']['table'] = 'search_api_index_variable_index';
@@ -1984,15 +1846,6 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_perception_of_health']['list']['separator'] = '|';
   $handler->display->display_options['fields']['field_perception_of_health']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['field_perception_of_health']['view_mode'] = 'full';
-  /* Field: Indexed Node: Period */
-  $handler->display->display_options['fields']['field_period']['id'] = 'field_period';
-  $handler->display->display_options['fields']['field_period']['table'] = 'search_api_index_variable_index';
-  $handler->display->display_options['fields']['field_period']['field'] = 'field_period';
-  $handler->display->display_options['fields']['field_period']['label'] = 'period';
-  $handler->display->display_options['fields']['field_period']['alter']['text'] = '[field_period],';
-  $handler->display->display_options['fields']['field_period']['list']['separator'] = '|';
-  $handler->display->display_options['fields']['field_period']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['field_period']['view_mode'] = 'full';
   /* Field: Indexed Node: Physical Environment */
   $handler->display->display_options['fields']['field_physical_environment']['id'] = 'field_physical_environment';
   $handler->display->display_options['fields']['field_physical_environment']['table'] = 'search_api_index_variable_index';

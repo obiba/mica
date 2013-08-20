@@ -53144,10 +53144,6 @@ msgctxt "field_early_life:variable:label"
 msgid "Participant's Early Life/Childhood"
 msgstr "Naissance du participant/Enfance"
 
-msgctxt "field_essence:variable:label"
-msgid "Essence"
-msgstr "Essence"
-
 msgctxt "field_event_date:event:label"
 msgid "Event Date"
 msgstr "Date de l'événement"
@@ -53180,10 +53176,6 @@ msgctxt "field_image:article:label"
 msgid "Image"
 msgstr "Image"
 
-msgctxt "field_individual_participant_mea:variable:label"
-msgid "Individual Participant Measures"
-msgstr "Mesures individuelles des participants"
-
 msgctxt "field_institution_name:contact:label"
 msgid "Institution name"
 msgstr "Nom de l'institution"
@@ -53203,10 +53195,6 @@ msgstr "Mesures de laboratoire"
 msgctxt "field_life_habits_behaviours:variable:label"
 msgid "Life Habits/Behaviours"
 msgstr "Habitudes de vie/Comportements"
-
-msgctxt "field_measure:variable:label"
-msgid "Measure"
-msgstr "Mesure"
 
 msgctxt "field_medical_health_interv:variable:label"
 msgid "Medical Health Interventions/Health Services Utilization"
@@ -53231,10 +53219,6 @@ msgstr "Nom du champ"
 msgctxt "field_perception_of_health:variable:label"
 msgid "Perception of Health/Quality of life"
 msgstr "Perception de la santé/Qualité de vie"
-
-msgctxt "field_period:variable:label"
-msgid "Period"
-msgstr "Période"
 
 msgctxt "field_physical_environment:variable:label"
 msgid "Physical Environment"

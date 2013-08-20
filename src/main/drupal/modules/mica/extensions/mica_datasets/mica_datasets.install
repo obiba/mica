@@ -118,7 +118,6 @@ function mica_datasets_update_7130(&$sandbox) {
 
   // import new taxonomies
   $base_path = drupal_get_path('module', 'mica_datasets') . '/taxonomies/';
-  mica_core_taxonomy_import('individual_participant_measures.csv', $base_path, 'Individual Participant Measures');
   mica_core_taxonomy_import('laboratory_measures.csv', $base_path, 'Laboratory Measures');
 
   // enable footer area for variable
@@ -175,7 +174,6 @@ function mica_datasets_update_7510(&$update) {
       'name' => t('Study')
     ),
     'field_data_source' => array(),
-    'field_individual_participant_mea' => array(),
     'field_disease_history' => array(),
     'field_medical_health_interv' => array(),
     'field_medication' => array(),
@@ -190,10 +188,7 @@ function mica_datasets_update_7510(&$update) {
     'field_body_structures' => array(),
     'field_body_functions' => array(),
     'field_laboratory_measures' => array(),
-    'field_essence' => array(),
     'field_target' => array(),
-    'field_period' => array(),
-    'field_measure' => array(),
     'field_value_type' => array(),
   );
   mica_core_configure_facet_blocks('variable_index', 'variable', $config, 'variable-search

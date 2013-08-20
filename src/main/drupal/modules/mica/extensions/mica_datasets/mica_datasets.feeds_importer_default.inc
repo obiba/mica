@@ -152,56 +152,36 @@ function mica_datasets_feeds_importer_default() {
             'unique' => FALSE,
           ),
           22 => array(
-            'source' => 'period',
-            'target' => 'field_period',
-            'unique' => FALSE,
-          ),
-          23 => array(
             'source' => 'physical_environment',
             'target' => 'field_physical_environment',
             'unique' => FALSE,
           ),
-          24 => array(
+          23 => array(
             'source' => 'reproductive_history',
             'target' => 'field_reproductive_history',
             'unique' => FALSE,
           ),
-          25 => array(
+          24 => array(
             'source' => 'sociodemographic_charact',
             'target' => 'field_sociodemographic_charact',
             'unique' => FALSE,
           ),
-          26 => array(
+          25 => array(
             'source' => 'target',
             'target' => 'field_target',
             'unique' => FALSE,
           ),
-          27 => array(
-            'source' => 'individual_participant_measures',
-            'target' => 'field_individual_participant_mea',
-            'unique' => FALSE,
-          ),
-          28 => array(
+          26 => array(
             'source' => 'laboratory_measures',
             'target' => 'field_laboratory_measures',
             'unique' => FALSE,
           ),
-          29 => array(
+          27 => array(
             'source' => 'social_environment',
             'target' => 'field_social_environment',
             'unique' => FALSE,
           ),
-          30 => array(
-            'source' => 'essence',
-            'target' => 'field_essence',
-            'unique' => FALSE,
-          ),
-          31 => array(
-            'source' => 'measure',
-            'target' => 'field_measure',
-            'unique' => FALSE,
-          ),
-          32 => array(
+          28 => array(
             'source' => 'laboratory_measures',
             'target' => 'field_laboratory_measures',
             'unique' => FALSE,
