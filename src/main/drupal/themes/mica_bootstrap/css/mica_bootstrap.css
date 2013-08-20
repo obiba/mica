@@ -5698,6 +5698,8 @@ ul.action-links li a.highlight {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
   *background-color: #e6e6e6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
   border: 1px solid #cccccc;
   *border: 0;
   border-bottom-color: #b3b3b3;
@@ -5996,6 +5998,8 @@ form.node-form .field-type-datetime fieldset input {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
   *background-color: #e6e6e6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
   border: 1px solid #cccccc;
   *border: 0;
   border-bottom-color: #b3b3b3;
@@ -6337,6 +6341,8 @@ form.node-form .field-type-datetime fieldset input {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
   *background-color: #e6e6e6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
   border: 1px solid #cccccc;
   *border: 0;
   border-bottom-color: #b3b3b3;
@@ -6628,6 +6634,8 @@ body.page-variables-dimensions .region-sidebar-first .search-api-ranges-widget b
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
   border-color: #e6e6e6 #e6e6e6 #bfbfbf;
   *background-color: #e6e6e6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
   border: 1px solid #cccccc;
   *border: 0;
   border-bottom-color: #b3b3b3;

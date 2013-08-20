@@ -1,4 +1,5 @@
 solr_version=4.2.1
+nodejs_version=0.10.16
 
 start-solr:
 	cd solr/solr-$(solr_version)/example && \
@@ -27,15 +28,15 @@ install-nodejs:
 	apt-get install -y g++ curl libssl-dev apache2-utils && \
 	mkdir target/nodejs && \
 	cd target/nodejs && \
-	wget -q http://nodejs.org/dist/v0.8.15/node-v0.8.15.tar.gz && \
-	tar -xzvf node-v0.8.15.tar.gz && \
-	cd node-v0.8.15 && \
+	wget -q http://nodejs.org/dist/v$(nodejs_version)/node-v$(nodejs_version).tar.gz && \
+	tar -xzvf node-v$(nodejs_version).tar.gz && \
+	cd node-v$(nodejs_version) && \
 	./configure && \
 	make && \
 	make install
 
 install-bootstrap-dependencies:
-	npm install less connect uglify-js@1 jshint -g
+	npm install less connect uglify-js jshint -g
 
 install-packaging-dependencies:
 	apt-get install devscripts debhelper
