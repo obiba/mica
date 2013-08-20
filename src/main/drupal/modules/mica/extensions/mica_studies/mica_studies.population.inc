@@ -5,7 +5,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
   _mica_studies_population_view_recruitment_sources($node);
   _mica_studies_population_view_nb_participants($node);
 
-  $wrapper = entity_metadata_wrapper('node', $node);
+  $wrapper = entity_metadata_wrapper('node', $node->nid);
 
   $dce_rows = array();
   foreach ($wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
@@ -65,7 +65,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
 
 function _mica_studies_population_view_selection_criteria($node) {
 
-  $wrapper = entity_metadata_wrapper('node', $node);
+  $wrapper = entity_metadata_wrapper('node', $node->nid);
 
   if (!isset($node->content['field_pop_select_criteria'])) {
     // create empty field_pop_select_criteria if it has no values
@@ -149,7 +149,7 @@ function _mica_studies_population_view_selection_criteria_item(&$node, $wrapper,
 
 function _mica_studies_population_view_recruitment_sources(&$node) {
 
-  $wrapper = entity_metadata_wrapper('node', $node);
+  $wrapper = entity_metadata_wrapper('node', $node->nid);
 
   if (!isset($node->content['field_pop_src_recruit'])) {
     // create empty field_pop_src_recruit if it has no values
@@ -259,7 +259,7 @@ function _mica_studies_population_view_nb_participants(&$node) {
 }
 
 function _mica_studies_population_view_nb(&$node, $field_nb, $field_no_limit, $field_info = NULL) {
-  $wrapper = entity_metadata_wrapper('node', $node);
+  $wrapper = entity_metadata_wrapper('node', $node->nid);
   if (!isset($node->content[$field_nb])) {
     mica_core_create_empty_field($node, $field_nb);
   }

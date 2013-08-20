@@ -82,7 +82,7 @@ function mica_core_create_node_default_menu($node, $hidden = FALSE, $expanded = 
   if (empty($menu['enabled']) || !$menu['enabled']) {
 
     $menu_options = variable_get('menu_options_' . $node->type);
-    $wrapper = entity_metadata_wrapper('node', $node);
+    $wrapper = entity_metadata_wrapper('node', $node->nid);
 
     if (empty($menu_options)) {
       if (!empty($default_menu_name)) {
@@ -155,8 +155,8 @@ function mica_core_disable_menu($menu_path) {
   if (!empty($menu)) {
     db_update('menu_links') // Table name no longer needs {}
       ->fields(array(
-      'hidden' => 1,
-    ))
+        'hidden' => 1,
+      ))
       ->condition('link_path', $menu_path, '=')
       ->condition('menu_name', MAIN_MENU, '=')
       ->execute();

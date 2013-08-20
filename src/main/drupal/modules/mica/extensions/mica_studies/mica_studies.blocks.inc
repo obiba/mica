@@ -113,7 +113,7 @@ function _mica_studies_block_study_supp_infos($study) {
 }
 
 function _mica_studies_simulate_other_specify_field($node, $field_other, $field_specify, $weight) {
-  $wrapper = entity_metadata_wrapper('node', $node);
+  $wrapper = entity_metadata_wrapper('node', $node->nid);
   $other = $wrapper->{$field_other}->value();
   if (empty($other)) {
     return NULL;

@@ -74,7 +74,7 @@ function mica_field_description_node_presave($node) {
  */
 function mica_field_description_node_delete($node) {
   if ($node->type === 'field_description') {
-    $wrapper = entity_metadata_wrapper('node', $node);
+    $wrapper = entity_metadata_wrapper('node', $node->nid);
     $bundle = $wrapper->field_bundle->value();
     $original_field_name = $wrapper->field_original_field_name->value();
     _mica_field_description_drop_search_index_field($bundle, $original_field_name);

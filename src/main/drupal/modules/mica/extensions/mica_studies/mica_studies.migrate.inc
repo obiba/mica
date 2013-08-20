@@ -372,11 +372,8 @@ function _mica_studies_longitudinal_migration_clear() {
     ->entityCondition('bundle', 'population')
     ->execute();
   if (!empty($entities)) {
-    $nodes = node_load_multiple(array_keys($entities['node']));
-    foreach ($nodes as $node) {
-      $pop_wrapper = entity_metadata_wrapper('node', $node);
-      node_delete($pop_wrapper->nid->value());
+    foreach (array_keys($entities['node']) as $nid) {
+      entity_metadata_wrapper('node', $nid) . delete();
     }
   }
-
 }

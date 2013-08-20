@@ -87,7 +87,7 @@ function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
                 'localized_options' => array(
                   'query' => array(
                     'population' => $node->nid,
-                    'destination' => 'node/' . entity_metadata_wrapper('node', $node)->field_pop_study->nid->value(),
+                    'destination' => 'node/' . entity_metadata_wrapper('node', $node->nid)->field_pop_study->nid->value(),
                   )
                 ),
               ),
@@ -210,7 +210,7 @@ function mica_studies_node_view($node, $view_mode, $langcode) {
 }
 
 function _mica_studies_contact_view($node, $view_mode, $langcode) {
-  $wrapper = entity_metadata_wrapper('node', $node);
+  $wrapper = entity_metadata_wrapper('node', $node->nid);
 
   // Fix until http://drupal.org/node/1376126 is resolved
   $wrapper->language->set($langcode);
@@ -573,7 +573,7 @@ function _mica_add_double_dependent_field_checked(&$form, $dependee1, $dependee2
  * And hide end date.
  */
 function _mica_studies_display_status_dates(&$node, $status_dates) {
-  $wrapper = entity_metadata_wrapper('node', $node);
+  $wrapper = entity_metadata_wrapper('node', $node->nid);
   foreach ($status_dates as $start_date => $end_date) {
     $start = $wrapper->$start_date->value();
     $end = $wrapper->$end_date->value();
@@ -662,15 +662,15 @@ function mica_studies_block_view_alter(&$data, $block) {
 function _mica_studies_study_current_search(&$data, $block) {
   if (isset($data['content']['field_group'])) {
     $data['content']['results']['#markup'] .= ' - ' . l(
-      t('Clear all criteria') . ' [X]',
-      'studies-search',
-      array(
-        'attributes' => array(
-          'rel' => 'nofollow',
-          'class' => array('current-search-clear-all'),
+        t('Clear all criteria') . ' [X]',
+        'studies-search',
+        array(
+          'attributes' => array(
+            'rel' => 'nofollow',
+            'class' => array('current-search-clear-all'),
+          )
         )
-      )
-    );
+      );
     foreach ($data['content']['field_group'] as $field => $field_group) {
       $field_info = field_info_instance('node', $field, 'study');
       if (isset($field_info['display_label']) && strlen(trim($field_info['display_label'])) > 0) {

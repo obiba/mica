@@ -9,7 +9,7 @@ function _mica_studies_dce_view(&$node, $view_mode, $langcode) {
   // retrieve first population of the dce
   $pop_link = NULL;
   $study_id = NULL;
-  $wrapper = entity_metadata_wrapper('node', $node);
+  $wrapper = entity_metadata_wrapper('node', $node->nid);
   foreach ($wrapper->field_dce_population->getIterator() as $pop_wrapper) {
     $pop_link = l($pop_wrapper->title->value(), 'node/' . $pop_wrapper->nid->value());
     $study_id = $pop_wrapper->field_pop_study->nid->value();
@@ -33,7 +33,7 @@ function _mica_studies_dce_view(&$node, $view_mode, $langcode) {
 
 function _mica_studies_dce_view_start_end_year(&$node) {
 
-  $wrapper = entity_metadata_wrapper('node', $node);
+  $wrapper = entity_metadata_wrapper('node', $node->nid);
 
   $start_month = $wrapper->field_dce_start_month->value();
   $end_month = $wrapper->field_dce_end_month->value();
@@ -51,7 +51,7 @@ function _mica_studies_dce_view_start_end_year(&$node) {
 
 function _mica_studies_dce_view_data_sources(&$node) {
 
-  $wrapper = entity_metadata_wrapper('node', $node);
+  $wrapper = entity_metadata_wrapper('node', $node->nid);
 
   if (!isset($node->content['field_dce_data_sources'])) {
     // create empty field_dce_data_sources if it has no values
@@ -91,7 +91,7 @@ function _mica_studies_dce_view_data_sources(&$node) {
 
 function _mica_studies_dce_view_samples(&$node) {
 
-  $wrapper = entity_metadata_wrapper('node', $node);
+  $wrapper = entity_metadata_wrapper('node', $node->nid);
 
   if (!isset($node->content['field_dce_bio_samples_management'])) {
     // create empty field_dce_data_sources if it has no values

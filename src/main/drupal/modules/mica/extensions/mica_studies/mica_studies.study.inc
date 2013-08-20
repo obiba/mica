@@ -9,14 +9,12 @@ function _mica_studies_study_delete($study) {
     ->entityCondition('bundle', 'population')
     ->execute();
   if (!empty($entities)) {
-    $nodes = node_load_multiple(array_keys($entities['node']));
-    foreach ($nodes as $node) {
-      $pop_wrapper = entity_metadata_wrapper('node', $node);
+    foreach (array_keys($entities['node']) as $nid) {
+      $pop_wrapper = entity_metadata_wrapper('node', $nid);
       $pop_study = $pop_wrapper->field_pop_study->value();
-      if (isset($pop_study)){
-        $pop_study_id = $pop_study->nid;
-        if ($study_id == $pop_study_id) {
-          node_delete($pop_wrapper->nid->value());
+      if (isset($pop_study)) {
+        if ($study_id == $pop_study->nid) {
+          $pop_wrapper . delete();
         }
       }
     }
