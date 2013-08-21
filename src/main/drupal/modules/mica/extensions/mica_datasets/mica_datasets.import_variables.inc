@@ -9,24 +9,35 @@ function _mica_datasets_import_variables_callback($dataset_nid, $study_nid = NUL
     $study_nid = $study_nid->nid;
   }
 
+  $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
   $study_harmonizations = array();
   if (isset($study_nid)) {
     $study_harmonizations[$study_nid] = _mica_datasets_fetch_study_harmonization_view($dataset_nid, $study_nid);
   }
   else {
-    // fetch all studies of the dataset
-    $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
-    foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study_wrapper) {
-      $nid = $study_wrapper->nid->value();
+    $is_harmonization = $dataset_wrapper->field_dataset_type->value() === 'harmonization';
+    foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study) {
+      $nid = $study->nid->value();
       $harmonization_view = _mica_datasets_fetch_study_harmonization_view($dataset_nid, $nid);
       if (!empty($harmonization_view)) {
         $study_harmonizations[$nid] = $harmonization_view;
+
+        if (!$is_harmonization) {
+          break;
+        }
+      }
+    }
+
+    if (!empty($study_harmonizations)) {
+      $operations = _mica_datasets_prepare_batch_variable_import($dataset_nid, array_slice($study_harmonizations, 0, 1, TRUE));
+      if ($is_harmonization) {
+        _mica_datasets_prepare_batch_sva_import($dataset_nid, $study_harmonizations, $operations);
       }
     }
   }
 
   batch_set(array(
-    'operations' => _mica_datasets_prepare_batch_variable_import($dataset_nid, $study_harmonizations),
+    'operations' => $operations,
     'finished' => '_mica_datasets_batch_variable_import_finished',
   ));
 
@@ -43,11 +54,22 @@ function _mica_datasets_prepare_batch_variable_import($dataset_nid, $study_harmo
     foreach ($harmonizations['variables'] as $harmonization_variable) {
       $operations[] = array(
         '_mica_datasets_batch_import_variables',
-        array($dataset_nid, $study_nid, $harmonizations['primary_key'], $harmonization_variable)
+        array($dataset_nid, $study_nid, $harmonization_variable)
       );
     }
   }
   return $operations;
+}
+
+function _mica_datasets_prepare_batch_sva_import($dataset_nid, $study_harmonizations, &$operations) {
+  foreach ($study_harmonizations as $study_nid => $harmonizations) {
+    foreach ($harmonizations['variables'] as $harmonization_variable) {
+      $operations[] = array(
+        '_mica_datasets_batch_import_svas',
+        array($dataset_nid, $study_nid, $harmonization_variable)
+      );
+    }
+  }
 }
 
 function _mica_datasets_batch_variable_import_finished($success, $results, $operations) {
@@ -92,11 +114,22 @@ function _mica_datasets_fetch_study_harmonization_view($dataset_nid, $study_nid)
   }
 }
 
-function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $primary_key, $harmonization_variable, &$context) {
+/**
+ * Benchmark:
+ *   Study dataset:
+ *     Create: 0.4 sec
+ *     Update: 0.28 sec.
+ *   Harmonization dataset:
+ *     Create: 2 sec
+ *     Update: 0.32 sec
+ */
+function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmonization_variable, &$context) {
 
+  $primary_key = isset($harmonization_variable[0]['uuid']) ? 'uuid' : 'title';
   // keep current dataset variables between batch steps
-  if (empty($context['results'])) {
+  if (empty($context['results']) || (isset($context['results']['study']) && $context['results']['study']->nid->value() != $study_nid)) {
     watchdog('mica', 'Cache batch dataset info %nid', array('%nid' => $dataset_nid), WATCHDOG_DEBUG);
+    $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
     $context['results'] = array(
       'last_position' => 1,
       'variables' => db_query(
@@ -105,48 +138,71 @@ function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $primar
         ->fetchAllAssoc($primary_key),
       'nb_created' => 0,
       'nb_updated' => 0,
+      'dataset' => $dataset_wrapper,
+      'study' => entity_metadata_wrapper('node', $study_nid),
     );
-    //TODO load SVA if harmonization
   }
 
-  $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
+  $dataset_wrapper = $context['results']['dataset'];
   $variables = $context['results']['variables'];
   $variable_nid = NULL;
 
   if (isset($variables[$harmonization_variable[$primary_key]])) {
+    $context['message'] = t('Updating <b>@var</b> from study: <b>@study</b>.', array(
+      '@var' => $harmonization_variable['title'],
+      '@study' => $context['results']['study']->title->value()
+    ));
     $variable = $variables[$harmonization_variable[$primary_key]];
     $variable_nid = _mica_datasets_update_variable($variable->nid, $dataset_wrapper->value()->language, $harmonization_variable);
     $context['results']['nb_updated']++;
   }
   else {
+    $context['message'] = t('Creating <b>@var</b> from study: <b>@study</b>.', array(
+      '@var' => $harmonization_variable['title'],
+      '@study' => $context['results']['study']->title->value()
+    ));
     $variable_nid = _mica_datasets_create_variable($dataset_wrapper->value(), $harmonization_variable, $context['results']['last_position']);
     $context['results']['last_position']++;
     $context['results']['nb_created']++;
   }
 
-  if ($dataset_wrapper->field_dataset_type->value() === 'harmonization') {
-    // update SVA if exists, SVA creation is done by hook_insert
+  $context['results']['variables_nids'][$harmonization_variable[$primary_key]] = $variable_nid;
+}
 
-    // TODO native SQL: load all SVA for this dataset and this study (loading variable_nid)
-    $query = new EntityFieldQuery();
-    $results = $query->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', 'study_variable_attributes')
-      ->fieldCondition('field_sva_variable', 'nid', $variable_nid)
-      ->fieldCondition('field_sva_study', 'nid', $study_nid)
-      ->execute();
-    if (!empty($results)) {
-      foreach ($results['node'] as $result) {
-        $sva = entity_metadata_wrapper('node', node_load($result->nid));
-        if ($sva->field_sva_study->nid->value() == $study_nid) {
-          $sva->field_sva_script->set($harmonization_variable['script']);
-          $sva->field_sva_status->set($harmonization_variable['status']);
-          foreach ($harmonization_variable['comment'] as $language => $value) {
-            $sva->language($language)->field_sva_comment->set($value);
-          }
-          $sva->save();
-        }
-      }
+/**
+ * Benchmark:
+ *   Harmonization dataset:
+ *     Update: 0.14 sec
+ */
+function _mica_datasets_batch_import_svas($dataset_nid, $study_nid, $harmonization_variable, &$context) {
+
+  $primary_key = isset($harmonization_variable[0]['uuid']) ? 'uuid' : 'title';
+  // keep current dataset variables between batch steps
+  if (empty($context['results']['svas'])) {
+    // Get all sva for this dataset
+    $all_svas = db_query(
+      'SELECT sva.entity_id, s.field_sva_study_nid, dv.field_dataset_variables_nid FROM {field_data_field_sva_variable} as sva LEFT OUTER JOIN {field_data_field_dataset_variables} as dv ON sva.field_sva_variable_nid = dv.field_dataset_variables_nid, {field_data_field_sva_study} as s WHERE dv.entity_id=:dataset_nid AND sva.entity_id = s.entity_id', array(':dataset_nid' => $dataset_nid))
+      ->fetchAll();
+
+    $svas = array();
+    foreach ($all_svas as $sva) {
+      $svas[$sva->field_sva_study_nid][$sva->field_dataset_variables_nid] = $sva;
     }
+    $context['results']['svas'] = $svas;
+  }
+  // reload study if changed
+  if (isset($context['results']['study']) && $context['results']['study']->nid->value() != $study_nid) {
+    $context['results']['study'] = entity_metadata_wrapper('node', $study_nid);
+  }
+
+  $context['message'] = t('Updating study variable attribute for <b>@var</b> and study <b>@study</b>.', array(
+    '@var' => $harmonization_variable['title'],
+    '@study' => $context['results']['study']->title->value()
+  ));
+  $svas = $context['results']['svas'];
+  $variable_nid = $context['results']['variables_nids'][$harmonization_variable[$primary_key]];
+  if (isset($svas[$study_nid][$variable_nid])) {
+    _mica_datasets_update_sva($svas[$study_nid][$variable_nid]->entity_id, $harmonization_variable);
   }
 }
 
@@ -229,4 +285,20 @@ function _mica_datasets_update_variable($variable_nid, $dataset_language, $harmo
   }
   $wrapper->save();
   return $wrapper->nid->value();
+}
+
+/**
+ * @param $variable_nid
+ * @param $harmonization_variable
+ * @param $context
+ */
+function _mica_datasets_update_sva($sva_nid, $harmonization_variable) {
+  // update SVA if exists, SVA creation is done by hook_insert
+  $sva = entity_metadata_wrapper('node', $sva_nid);
+  $sva->field_sva_script->set($harmonization_variable['script']);
+  $sva->field_sva_status->set($harmonization_variable['status']);
+  foreach ($harmonization_variable['comment'] as $language => $value) {
+    $sva->language($language)->field_sva_comment->set($value);
+  }
+  $sva->save();
 }
