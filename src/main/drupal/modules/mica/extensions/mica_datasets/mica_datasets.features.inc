@@ -94,7 +94,7 @@ function mica_datasets_default_search_api_index() {
         "title" : { "type" : "string" },
         "status" : { "type" : "boolean" },
         "author" : { "type" : "integer", "entity_type" : "user" },
-        "field_pop_dce" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
+        "field_dataset_dces" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_dataset_studies" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_dataset_type" : { "type" : "string" },
         "search_api_language" : { "type" : "string" },
@@ -269,6 +269,12 @@ function mica_datasets_default_search_api_index() {
                 ],
                 "description" : "A @type combined of the following fields: Dataset \\u00bb Studies, Study Variables Attributes \\u00bb Study."
               },
+              "search_api_combined_2" : {
+                "name" : "ad",
+                "imitate" : "vid",
+                "fields" : [ "field_preparation_start_year" ],
+                "description" : "A @type combined of the following fields: Start year."
+              }
             }
           }
         },
