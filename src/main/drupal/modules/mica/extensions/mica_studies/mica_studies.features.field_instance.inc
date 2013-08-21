@@ -815,6 +815,57 @@ function mica_studies_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-data_collection_event-field_dce_end_month'
+  $field_instances['node-data_collection_event-field_dce_end_month'] = array(
+    'bundle' => 'data_collection_event',
+    'default_value' => array(
+      0 => array(
+        'value' => 12,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_dce_end_month',
+    'label' => 'End Month',
+    'required' => 0,
+    'settings' => array(
+      'max' => 12,
+      'min' => 1,
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'node-data_collection_event-field_dce_end_year'
   $field_instances['node-data_collection_event-field_dce_end_year'] = array(
     'bundle' => 'data_collection_event',
@@ -1106,8 +1157,8 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Start Month',
     'required' => 0,
     'settings' => array(
-      'max' => '12',
-      'min' => '1',
+      'max' => 12,
+      'min' => 1,
       'prefix' => '',
       'suffix' => '',
       'user_register_form' => FALSE,
@@ -1206,57 +1257,6 @@ function mica_studies_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 37,
-    ),
-  );
-
-  // Exported field_instance: 'node-data_collection_event-field_dce_end_month'
-  $field_instances['node-data_collection_event-field_dce_end_month'] = array(
-    'bundle' => 'data_collection_event',
-    'default_value' => array(
-      0 => array(
-        'value' => 12,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'inline',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 4,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'display_label' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_dce_end_month',
-    'label' => 'End Month',
-    'required' => 0,
-    'settings' => array(
-      'max' => '12',
-      'min' => '1',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 5,
     ),
   );
 

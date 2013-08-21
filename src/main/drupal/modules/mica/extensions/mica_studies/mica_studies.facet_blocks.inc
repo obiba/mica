@@ -79,11 +79,11 @@ function mica_studies_configure_facet_blocks() {
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'name' => t('Biological samples access'),
     ),
-    'field_pop_dce:field_dce_start_year' => array(
+    'field_study_populations:field_pop_dce:field_dce_start_year' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'name' => t('Data Collection Event Start Year'),
     ),
-    'field_pop_dce:field_dce_end_year' => array(
+    'field_study_populations:field_pop_dce:field_dce_end_year' => array(
       'collapsible' => COLLAPSIBLOCK_TYPE_COLLAPSED_BY_DEFAULT,
       'name' => t('Data Collection Event End Year'),
     ),

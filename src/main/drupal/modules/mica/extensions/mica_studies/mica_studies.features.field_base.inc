@@ -1320,6 +1320,33 @@ function mica_studies_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
+  // Exported field_base: 'field_dce_end_month'
+  $field_bases['field_dce_end_month'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_dce_end_month',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'number',
+    'settings' => array(
+      'field_description_infos' => array(
+        'field_description' => 0,
+        'field_description_body' => '',
+        'field_description_label' => '',
+        'field_description_value_type' => 'integer',
+      ),
+      'profile2_private' => FALSE,
+    ),
+    'translatable' => 0,
+    'type' => 'number_integer',
+  );
+
   // Exported field_base: 'field_dce_end_year'
   $field_bases['field_dce_end_year'] = array(
     'active' => 1,
@@ -1632,33 +1659,6 @@ function mica_studies_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
-  );
-
-  // Exported field_base: 'field_dce_end_month'
-  $field_bases['field_dce_end_month'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_dce_end_month',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(
-      'field_description_infos' => array(
-        'field_description' => 0,
-        'field_description_body' => '',
-        'field_description_label' => '',
-        'field_description_value_type' => 'integer',
-      ),
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'number_integer',
   );
 
   // Exported field_base: 'field_department_unit'
