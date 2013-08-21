@@ -31,7 +31,6 @@ function _mica_datasets_import_variables_callback($dataset_nid, $study_nid = NUL
   }
 
   if (!empty($study_harmonizations)) {
-    reset($study_harmonizations);
     $first_key = key($study_harmonizations);
     $operations = _mica_datasets_prepare_batch_variable_import($dataset_nid, $first_key, $study_harmonizations[$first_key]);
     if ($is_harmonization) {
