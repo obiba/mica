@@ -13,9 +13,7 @@ projects[admin_views] = 1.2
 
 projects[auto_entitylabel] = 1.2
 
-projects[autocomplete_deluxe][download][type] = git
-projects[autocomplete_deluxe][download][revision] = c562451
-projects[autocomplete_deluxe][download][branch] = 7.x-2.x
+projects[autocomplete_deluxe] = 2.0-beta3
 
 ; needed because of migration to auto_entitylabel
 projects[auto_nodetitle] = 1.0
@@ -71,10 +69,7 @@ projects[features][patch][1844566] = http://drupal.org/files/features_1844566_1_
 projects[features][patch][656312] = http://drupal.org/files/keep_negative_permissions-656312-17.patch
 projects[features][patch][1689598] = http://drupal.org/files/field_display_label_support.patch
 
-projects[features_override][download][type] = git
-projects[features_override][download][revision] = 602e87b
-projects[features_override][download][branch] = 7.x-2.x
-projects[features_override][patch][1648078] = http://drupal.org/files/invalid_argument_supplied-1648078-10.patch
+projects[features_override] = 2.0-beta3
 
 projects[feeds][version] = 2.0-alpha8
 projects[feeds][patch][1107522-59] = http://drupal.org/files/feeds-empty-behavior-1107522-59.patch
@@ -118,10 +113,7 @@ projects[jquery_update][download][revision] = dd3d76e
 projects[jquery_update][download][branch] = 7.x-2.x
 projects[jquery_update][patch][1995790] = http://drupal.org/files/update_jquery_form_3_32-1995790-1.patch
 
-projects[jquery_ui_multiselect_widget][type] = module
-projects[jquery_ui_multiselect_widget][download][type] = git
-projects[jquery_ui_multiselect_widget][download][revision] = 2cd2852
-projects[jquery_ui_multiselect_widget][download][branch] = 7.x-1.x
+projects[jquery_ui_multiselect_widget][version] = 1.6
 projects[jquery_ui_multiselect_widget][patch][1995594] = http://drupal.org/files/update_library-1995594-1.patch
 
 projects[l10n_update] = 1.0-beta3
@@ -146,9 +138,7 @@ projects[menu_breadcrumb] = 1.4
 
 projects[menu_firstchild] = 1.1
 
-projects[menu_view_unpublished][download][type] = git
-projects[menu_view_unpublished][download][revision] = 5f1f951
-projects[menu_view_unpublished][download][branch] = 7.x-1.x
+projects[menu_view_unpublished] = 1.0-beta3
 
 projects[mica] = 8.2-dev
 
@@ -182,9 +172,7 @@ projects[progress] = 1.3
 
 projects[recaptcha] = 1.7
 
-projects[references][download][type] = git
-projects[references][download][revision] = 311bd49
-projects[references][download][branch] = 7.x-2.x
+projects[references][version] = 2.1
 projects[references][patch][1988436] = http://drupal.org/files/references-hook_node_reference_FIELD_potential_references_1988436_3.patch
 
 projects[search_api][version] = 1.6
