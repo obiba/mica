@@ -103,11 +103,11 @@ function mica_datasets_default_search_api_index() {
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "body:value" : { "type" : "text" },
         "body:summary" : { "type" : "text" },
-        "field_dataset_studies:title" : { "type" : "list\\u003Ctext\\u003E" },
         "field_dataset_dces:field_dce_population" : {
           "type" : "list\\u003Clist\\u003Cinteger\\u003E\\u003E",
           "entity_type" : "node"
-        }
+        },
+        "field_dataset_studies:title" : { "type" : "list\\u003Ctext\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
@@ -250,6 +250,7 @@ function mica_datasets_default_search_api_index() {
         "field_dataset:field_dataset_dces:field_dce_population:field_pop_src_recruit" : { "type" : "list\\u003Clist\\u003Clist\\u003Cstring\\u003E\\u003E\\u003E" }
       },
       "data_alter_callbacks" : {
+        "search_api_ranges_alter" : { "status" : 0, "weight" : "-50", "settings" : { "fields" : [] } },
         "search_api_alter_bundle_filter" : {
           "status" : 1,
           "weight" : "-10",
@@ -259,8 +260,7 @@ function mica_datasets_default_search_api_index() {
         "search_api_alter_add_combined" : {
           "status" : 1,
           "weight" : "0",
-          "settings" : { "fields" : {
-              "search_api_combined_1" : {
+          "settings" : { "fields" : { "search_api_combined_1" : {
                 "name" : "Study",
                 "imitate" : "field_dataset:field_dataset_studies",
                 "fields" : [
@@ -268,38 +268,11 @@ function mica_datasets_default_search_api_index() {
                   "field_variable_study_var_att:field_sva_study"
                 ],
                 "description" : "A @type combined of the following fields: Dataset \\u00bb Studies, Study Variables Attributes \\u00bb Study."
-              },
-              "search_api_combined_2" : {
-                "name" : "ad",
-                "imitate" : "vid",
-                "fields" : [ "field_preparation_start_year" ],
-                "description" : "A @type combined of the following fields: Start year."
               }
             }
           }
         },
         "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_aggregation" : {
-          "status" : 1,
-          "weight" : "0",
-          "settings" : { "fields" : {
-              "search_api_aggregation_1" : {
-                "name" : "Title and Label",
-                "type" : "fulltext",
-                "fields" : [ "title", "field_original_field_label", "field_label" ],
-                "description" : "A Fulltext aggregation of the following fields: Title, Label, Label."
-              },
-              "search_api_aggregation_2" : {
-                "name" : "Title Label and Body",
-                "type" : "fulltext",
-                "fields" : [ "title", "field_original_field_label" ],
-                "description" : "A Fulltext aggregation of the following fields: Title, Label."
-              }
-            }
-          }
-        },
         "search_api_alter_add_hierarchy" : {
           "status" : 1,
           "weight" : "0",
@@ -336,7 +309,28 @@ function mica_datasets_default_search_api_index() {
               "field_target:parents_all" : "field_target:parents_all"
             }
           }
-        }
+        },
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_aggregation" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : { "fields" : {
+              "search_api_aggregation_1" : {
+                "name" : "Title and Label",
+                "type" : "fulltext",
+                "fields" : [ "title", "field_original_field_label", "field_label" ],
+                "description" : "A Fulltext aggregation of the following fields: Title, Label, Label."
+              },
+              "search_api_aggregation_2" : {
+                "name" : "Title Label and Body",
+                "type" : "fulltext",
+                "fields" : [ "title", "field_original_field_label" ],
+                "description" : "A Fulltext aggregation of the following fields: Title, Label."
+              }
+            }
+          }
+        },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
       },
       "processors" : {
         "search_api_case_ignore" : {
