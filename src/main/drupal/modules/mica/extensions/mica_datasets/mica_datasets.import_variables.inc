@@ -118,7 +118,7 @@ function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmon
 
   $primary_key = isset($harmonization_variable[0]['uuid']) ? 'uuid' : 'title';
   // keep current dataset variables between batch steps
-  if (empty($context['results']) || (isset($context['results']) && $context['results']['study']->nid->value() != $study_nid)) {
+  if (empty($context['results']) || $context['results']['study']->nid->value() != $study_nid) {
     watchdog('mica', 'Cache batch dataset info %nid', array('%nid' => $dataset_nid), WATCHDOG_DEBUG);
     $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
     $context['results'] = array(
