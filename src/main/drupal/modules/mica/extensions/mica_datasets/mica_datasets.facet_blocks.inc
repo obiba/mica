@@ -8,7 +8,7 @@ include_once(drupal_get_path('module', 'mica_core') . '/mica_core.search.utils.i
 
 function mica_datasets_configure_facet_blocks() {
 
-  $config = array(
+  $variable_facet_config = array(
     'field_dataset:field_dataset_type' => array(
       'name' => t('Dataset Type'),
     ),
@@ -16,11 +16,11 @@ function mica_datasets_configure_facet_blocks() {
     'field_variable_study_var_att:field_sva_status' => array(
       'name' => t('Harmonization Status')
     ),
-    'field_dataset:field_dces' => array(
+    'field_dataset:field_dataset_dces' => array(
       'name' => t('Data Collection Event')
     ),
-    'field_dataset:field_dces:field_dce_population' => array(
-      'name' => t('Populations')
+    'field_dataset:field_dataset_dces:field_dce_population' => array(
+      'name' => t('Population')
     ),
     'field_dataset:field_dataset_dces:field_dce_population:field_pop_select_criteria' => array(
       'name' => t('Selection Criteria')
@@ -52,7 +52,7 @@ function mica_datasets_configure_facet_blocks() {
     'field_target' => array(),
     'field_value_type' => array(),
   );
-  mica_core_configure_facet_blocks('variable_index', 'variable', $config, 'variable-search
+  mica_core_configure_facet_blocks('variable_index', 'variable', $variable_facet_config, 'variable-search
 variables-dimensions
 variables-dimensions/*', 'variable_current_search');
 }
