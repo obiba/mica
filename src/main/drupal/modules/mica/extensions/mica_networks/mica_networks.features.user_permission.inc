@@ -10,7 +10,7 @@
 function mica_networks_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: create network content.
+  // Exported permission: 'create network content'.
   $permissions['create network content'] = array(
     'name' => 'create network content',
     'roles' => array(
@@ -22,7 +22,7 @@ function mica_networks_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete any network content.
+  // Exported permission: 'delete any network content'.
   $permissions['delete any network content'] = array(
     'name' => 'delete any network content',
     'roles' => array(
@@ -33,7 +33,7 @@ function mica_networks_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: delete own network content.
+  // Exported permission: 'delete own network content'.
   $permissions['delete own network content'] = array(
     'name' => 'delete own network content',
     'roles' => array(
@@ -45,7 +45,7 @@ function mica_networks_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit any network content.
+  // Exported permission: 'edit any network content'.
   $permissions['edit any network content'] = array(
     'name' => 'edit any network content',
     'roles' => array(
@@ -56,7 +56,7 @@ function mica_networks_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: edit own network content.
+  // Exported permission: 'edit own network content'.
   $permissions['edit own network content'] = array(
     'name' => 'edit own network content',
     'roles' => array(
@@ -68,7 +68,7 @@ function mica_networks_user_default_permissions() {
     'module' => 'node',
   );
 
-  // Exported permission: view any unpublished network content.
+  // Exported permission: 'view any unpublished network content'.
   $permissions['view any unpublished network content'] = array(
     'name' => 'view any unpublished network content',
     'roles' => array(

@@ -13,13 +13,13 @@ function mica_networks_user_default_roles() {
   // Exported role: network administrator.
   $roles['network administrator'] = array(
     'name' => 'network administrator',
-    'weight' => '11',
+    'weight' => 11,
   );
 
   // Exported role: network reviewer.
   $roles['network reviewer'] = array(
     'name' => 'network reviewer',
-    'weight' => '10',
+    'weight' => 10,
   );
 
   return $roles;
