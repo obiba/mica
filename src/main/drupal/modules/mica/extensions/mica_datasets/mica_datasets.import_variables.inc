@@ -9,13 +9,14 @@ function _mica_datasets_import_variables_callback($dataset_nid, $study_nid = NUL
     $study_nid = $study_nid->nid;
   }
 
+  $operations = array();
   $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
+  $is_harmonization = $dataset_wrapper->field_dataset_type->value() === 'harmonization';
   $study_harmonizations = array();
   if (isset($study_nid)) {
     $study_harmonizations[$study_nid] = _mica_datasets_fetch_study_harmonization_view($dataset_nid, $study_nid);
   }
   else {
-    $is_harmonization = $dataset_wrapper->field_dataset_type->value() === 'harmonization';
     foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study) {
       $nid = $study->nid->value();
       $harmonization_view = _mica_datasets_fetch_study_harmonization_view($dataset_nid, $nid);
@@ -27,12 +28,13 @@ function _mica_datasets_import_variables_callback($dataset_nid, $study_nid = NUL
         }
       }
     }
+  }
 
-    if (!empty($study_harmonizations)) {
-      $operations = _mica_datasets_prepare_batch_variable_import($dataset_nid, array_slice($study_harmonizations, 0, 1, TRUE));
-      if ($is_harmonization) {
-        _mica_datasets_prepare_batch_sva_import($dataset_nid, $study_harmonizations, $operations);
-      }
+  if (!empty($study_harmonizations)) {
+    $first_key = key($study_harmonizations);
+    $operations = _mica_datasets_prepare_batch_variable_import($dataset_nid, $first_key, $study_harmonizations[$first_key]);
+    if ($is_harmonization) {
+      _mica_datasets_prepare_batch_sva_import($dataset_nid, $study_harmonizations, $operations);
     }
   }
 
@@ -48,15 +50,13 @@ function _mica_datasets_import_variables_callback($dataset_nid, $study_nid = NUL
   batch_process($redirect);
 }
 
-function _mica_datasets_prepare_batch_variable_import($dataset_nid, $study_harmonizations) {
+function _mica_datasets_prepare_batch_variable_import($dataset_nid, $study_nid, $harmonizations) {
   $operations = array();
-  foreach ($study_harmonizations as $study_nid => $harmonizations) {
-    foreach ($harmonizations['variables'] as $harmonization_variable) {
-      $operations[] = array(
-        '_mica_datasets_batch_import_variables',
-        array($dataset_nid, $study_nid, $harmonization_variable)
-      );
-    }
+  foreach ($harmonizations['variables'] as $harmonization_variable) {
+    $operations[] = array(
+      '_mica_datasets_batch_import_variables',
+      array($dataset_nid, $study_nid, $harmonization_variable)
+    );
   }
   return $operations;
 }
@@ -114,26 +114,17 @@ function _mica_datasets_fetch_study_harmonization_view($dataset_nid, $study_nid)
   }
 }
 
-/**
- * Benchmark:
- *   Study dataset:
- *     Create: 0.4 sec
- *     Update: 0.28 sec.
- *   Harmonization dataset:
- *     Create: 2 sec
- *     Update: 0.32 sec
- */
 function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmonization_variable, &$context) {
 
   $primary_key = isset($harmonization_variable[0]['uuid']) ? 'uuid' : 'title';
   // keep current dataset variables between batch steps
-  if (empty($context['results']) || (isset($context['results']['study']) && $context['results']['study']->nid->value() != $study_nid)) {
+  if (empty($context['results']) || $context['results']['study']->nid->value() != $study_nid) {
     watchdog('mica', 'Cache batch dataset info %nid', array('%nid' => $dataset_nid), WATCHDOG_DEBUG);
     $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
     $context['results'] = array(
       'last_position' => 1,
       'variables' => db_query(
-        "SELECT n.nid, n.title, n.uuid FROM {node} as n, {field_data_field_dataset_variables} as dv WHERE n.type = :type AND n.nid = dv.field_dataset_variables_nid AND dv.entity_id = :dataset_nid;",
+        'SELECT n.nid, n.title, n.uuid FROM {node} as n, {field_data_field_dataset_variables} as dv WHERE n.type = :type AND n.nid = dv.field_dataset_variables_nid AND dv.entity_id = :dataset_nid;',
         array(':dataset_nid' => $dataset_nid, ':type' => 'variable'))
         ->fetchAllAssoc($primary_key),
       'nb_created' => 0,
@@ -148,18 +139,18 @@ function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmon
   $variable_nid = NULL;
 
   if (isset($variables[$harmonization_variable[$primary_key]])) {
-    $context['message'] = t('Updating <b>@var</b> from study: <b>@study</b>.', array(
-      '@var' => $harmonization_variable['title'],
-      '@study' => $context['results']['study']->title->value()
+    $context['message'] = t('Updating %var from study: %study.', array(
+      '%var' => $harmonization_variable['title'],
+      '%study' => $context['results']['study']->title->value()
     ));
     $variable = $variables[$harmonization_variable[$primary_key]];
     $variable_nid = _mica_datasets_update_variable($variable->nid, $dataset_wrapper->value()->language, $harmonization_variable);
     $context['results']['nb_updated']++;
   }
   else {
-    $context['message'] = t('Creating <b>@var</b> from study: <b>@study</b>.', array(
-      '@var' => $harmonization_variable['title'],
-      '@study' => $context['results']['study']->title->value()
+    $context['message'] = t('Creating %var from study: %study.', array(
+      '%var' => $harmonization_variable['title'],
+      '%study' => $context['results']['study']->title->value()
     ));
     $variable_nid = _mica_datasets_create_variable($dataset_wrapper->value(), $harmonization_variable, $context['results']['last_position']);
     $context['results']['last_position']++;
@@ -169,11 +160,6 @@ function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmon
   $context['results']['variables_nids'][$harmonization_variable[$primary_key]] = $variable_nid;
 }
 
-/**
- * Benchmark:
- *   Harmonization dataset:
- *     Update: 0.14 sec
- */
 function _mica_datasets_batch_import_svas($dataset_nid, $study_nid, $harmonization_variable, &$context) {
 
   $primary_key = isset($harmonization_variable[0]['uuid']) ? 'uuid' : 'title';
@@ -195,9 +181,9 @@ function _mica_datasets_batch_import_svas($dataset_nid, $study_nid, $harmonizati
     $context['results']['study'] = entity_metadata_wrapper('node', $study_nid);
   }
 
-  $context['message'] = t('Updating study variable attribute for <b>@var</b> and study <b>@study</b>.', array(
-    '@var' => $harmonization_variable['title'],
-    '@study' => $context['results']['study']->title->value()
+  $context['message'] = t('Updating study variable attribute for %var and study %study.', array(
+    '%var' => $harmonization_variable['title'],
+    '%study' => $context['results']['study']->title->value()
   ));
   $svas = $context['results']['svas'];
   $variable_nid = $context['results']['variables_nids'][$harmonization_variable[$primary_key]];

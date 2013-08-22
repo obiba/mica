@@ -109,7 +109,7 @@ function mica_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'logintoboggan_immediate_login_on_register';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['logintoboggan_immediate_login_on_register'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -172,7 +172,7 @@ function mica_core_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'logintoboggan_unified_login';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['logintoboggan_unified_login'] = $strongarm;
 
   $strongarm = new stdClass();

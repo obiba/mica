@@ -1085,3 +1085,15 @@ function _mica_studies_sort_dce($x, $y) {
   }
   return $x_start < $y_start ? -1 : 1;
 }
+
+function _mica_studies_get_month_name($month) {
+  return date("F", mktime(0, 0, 0, $month, 1, 2013));
+}
+
+function _mica_sudies_format_dce_year($year, $month) {
+  if (empty($year)) {
+    return '';
+  }
+
+  return empty($month) ? "$year" : "$year (" . _mica_studies_get_month_name($month) . ")";
+}
