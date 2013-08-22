@@ -1094,6 +1094,5 @@ function _mica_sudies_format_dce_year($year, $month) {
   if (empty($year)) {
     return '';
   }
-
   return empty($month) ? "$year" : "$year (" . _mica_studies_get_month_name($month) . ")";
 }
