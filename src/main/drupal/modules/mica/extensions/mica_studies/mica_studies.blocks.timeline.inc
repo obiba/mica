@@ -5,18 +5,18 @@ function _mica_studies_block_study_timeline($study) {
   // http://color-harmony.edelweis-art.com/
   $color_index = 0;
   $colors = array(
-    '#5199dc',
-    '#a9ccee',
-    '#294c6e',
-    '#d4e5f6',
-    '#3c72a5',
-    '#7e99b2',
-    '#1e3952',
-    '#9fabb8',
-    '#b2967e',
-    '#eec9a9',
+    '#0078ad',
+    '#bca68e',
+    '#99c1c3',
+    '#8db173',
+    '#707175',
+    '#88697b',
     '#dc9351',
-    '#bfbfbf'
+    '#654641',
+    '#9a3034',
+    '#fed559',
+    '#eec9a9',
+    '#ff7901'
   );
 
   $event_view = array();
@@ -117,8 +117,9 @@ function _mica_studies_block_study_timeline_prepare_lines($events) {
         // dvm($last_event, '$last_event for line ' . $index);
         // dvm($event['start'] > $last_event['end'], 'event_start[' . $event['start'] . '] > last_event_end[' . $last_event['end'] . ']');
         if ($event['start_year'] >= $last_event['end_year'] &&
-            _mica_studies_convert_to_months($event['start_year'], $event['start_month']) >=
-              _mica_studies_convert_to_months($last_event['end_year'], $last_event['end_month'])) {
+          _mica_studies_convert_to_months($event['start_year'], $event['start_month']) >=
+          _mica_studies_convert_to_months($last_event['end_year'], $last_event['end_month'])
+        ) {
           $line_events['events'][] = $event;
           $done = TRUE;
 //           dvm("Add it to line $index");

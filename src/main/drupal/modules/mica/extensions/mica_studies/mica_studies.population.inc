@@ -10,8 +10,6 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
   $dce_rows = array();
   foreach ($wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
     if (node_access('view', $dce_wrapper->value())) {
-      $start = $dce_wrapper->field_dce_start_year->value();
-      $end = $dce_wrapper->field_dce_end_year->value();
       $desc = NULL;
       if (!empty($dce_wrapper->value()->body)) {
         $desc = $dce_wrapper->body->summary->value();
@@ -21,14 +19,11 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
       }
       $dce_nid = $dce_wrapper->nid->value();
 
-      $start .= ' (' . _mica_studies_get_month_name($dce_wrapper->field_dce_start_month->value()) . ')';
-      $end .= ' (' . _mica_studies_get_month_name($dce_wrapper->field_dce_end_month->value()) . ')';
-
       $dce_rows[$dce_nid] = array(
         'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
         'desc' => $desc,
-        'start' => empty($start) ? '' : $start,
-        'end' => empty($end) ? '' : $end,
+        'start' => _mica_sudies_format_dce_year($dce_wrapper->field_dce_start_year->value(), $dce_wrapper->field_dce_start_month->value()),
+        'end' => _mica_sudies_format_dce_year($dce_wrapper->field_dce_end_year->value(), $dce_wrapper->field_dce_end_month->value()),
       );
     }
   }
@@ -284,8 +279,4 @@ function _mica_studies_population_view_nb(&$node, $field_nb, $field_no_limit, $f
   if (strlen($node->content[$field_nb][0]['#markup']) === 0) {
     $node->content[$field_nb]['#access'] = FALSE;
   }
-}
-
-function _mica_studies_get_month_name($month) {
-  return date("F", mktime(0, 0, 0, $month, 1, 2013));
 }
