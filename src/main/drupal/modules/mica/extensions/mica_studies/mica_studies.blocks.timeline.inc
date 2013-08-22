@@ -31,7 +31,10 @@ function _mica_studies_block_study_timeline($study) {
       $pop_nid = $pop_wrapper->nid->value();
       $pop_title = $pop_wrapper->title->value();
 
-      $color = $colors[$color_index++];
+      // See https://drupal.org/project/color_field for more color choices...
+      $color = _mica_studies_color_darken($colors[$color_index % 12], intval($color_index / 12) * 50);
+      $color_index++;
+
       $svg = "<svg width='25' height='25'><rect width='20' height='20' x='2' y='2' rx='5' ry='5' style='fill:$color;'/></svg>";
 
       $legend_items[] = $svg . ' ' . $pop_title;
@@ -168,4 +171,21 @@ function _mica_studies_block_study_timeline_prepare_modal($dce_nid) {
   . '<div class="modal-body">' . drupal_render(node_view($dce)) . '</div>'
   . '<div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">' . t('Close') . '</button></div>'
   . '</div>';
+}
+
+function _mica_studies_color_darken($color, $dif = 20) {
+
+  $color = str_replace('#', '', $color);
+  if (strlen($color) != 6) {
+    return '000000';
+  }
+  $rgb = '';
+
+  for ($x = 0; $x < 3; $x++) {
+    $c = hexdec(substr($color, (2 * $x), 2)) - $dif;
+    $c = ($c < 0) ? 0 : dechex($c);
+    $rgb .= (strlen($c) < 2) ? '0' . $c : $c;
+  }
+
+  return '#' . $rgb;
 }
