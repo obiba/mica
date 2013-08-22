@@ -37,12 +37,8 @@ function _mica_studies_dce_view_start_end_year(&$node) {
 
   $start_month = $wrapper->field_dce_start_month->value();
   $end_month = $wrapper->field_dce_end_month->value();
-  if ($start_month !== "1") {
-    $node->content['field_dce_start_year'][0]['#markup'] .= ' (' . date("F", mktime(0, 0, 0, $start_month, 1, 2013)) . ')';
-  }
-  if ($end_month !== "12") {
-    $node->content['field_dce_end_year'][0]['#markup'] .= ' (' . date("F", mktime(0, 0, 0, $end_month, 1, 2013)) . ')';
-  }
+  $node->content['field_dce_start_year'][0]['#markup'] .= ' (' . date("F", mktime(0, 0, 0, $start_month, 1, 2013)) . ')';
+  $node->content['field_dce_end_year'][0]['#markup'] .= ' (' . date("F", mktime(0, 0, 0, $end_month, 1, 2013)) . ')';
 
   // Hide months
   $node->content['field_dce_start_month']['#access'] = FALSE;
