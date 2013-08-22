@@ -19,6 +19,7 @@ function _mica_datasets_node_delete_confirm($form, &$form_state, $node) {
       t('Cancel')
     );
   }
+  module_load_include('inc', 'node', 'node.pages');
   return node_delete_confirm($form, $form_state, $node);
 }
 
@@ -28,16 +29,22 @@ function _mica_datasets_node_delete_confirm($form, &$form_state, $node) {
  * @see _mica_datasets_node_delete_confirm()
  */
 function _mica_datasets_node_delete_confirm_submit($form, &$form_state) {
-  if ($form_state['values']['confirm']) {
-    $batch = array(
-      'operations' => _mica_datasets_prepare_delete_dataset_batch_operations($form_state['values']['nid']),
-      'finished' => '_mica_datasets_delete_dataset_batch_finished',
-      'file' => drupal_get_path('module', 'mica_datasets') . '/mica_datasets.delete_dataset_batch.inc',
-    );
-    batch_set($batch);
+  if ($form['#node']->type === 'dataset') {
+    if ($form_state['values']['confirm']) {
+      $batch = array(
+        'operations' => _mica_datasets_prepare_delete_dataset_batch_operations($form_state['values']['nid']),
+        'finished' => '_mica_datasets_delete_dataset_batch_finished',
+        'file' => drupal_get_path('module', 'mica_datasets') . '/mica_datasets.delete_dataset_batch.inc',
+      );
+      batch_set($batch);
+    }
+    else {
+      $form_state['redirect'] = 'node/' . $form_state['values']['nid'];
+    }
   }
   else {
-    $form_state['redirect'] = 'node/' . $form_state['values']['nid'];
+    module_load_include('inc', 'node', 'node.pages');
+    node_delete_confirm_submit($form, $form_state);
   }
 }
 
@@ -46,7 +53,6 @@ function _mica_datasets_prepare_delete_dataset_batch_operations($dataset_nid) {
   $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
 
   $operations = array();
-
   foreach ($dataset_wrapper->field_dataset_variables->getIterator() as $variable_wrapper) {
     $operations[] = array('_mica_datasets_batch_delete_dataset_delete_variable', array($variable_wrapper));
   }
