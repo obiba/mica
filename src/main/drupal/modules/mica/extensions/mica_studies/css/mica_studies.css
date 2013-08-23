@@ -13,3 +13,37 @@
   display: inline;
   padding-left: 3px;
 }
+#block-mica-studies-study-timeline .axis path,
+#block-mica-studies-study-timeline .axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+#block-mica-studies-study-timeline .axis text {
+  font-family: sans-serif;
+  font-size: 12px;
+}
+#block-mica-studies-study-timeline .timeline-label {
+  font-family: sans-serif;
+  font-size: 12px;
+}
+#block-mica-studies-study-timeline #timeline2 .axis {
+  transform: translate(0, 30px);
+  -ms-transform: translate(0, 30px);
+  /* IE 9 */
+
+  -webkit-transform: translate(0, 30px);
+  /* Safari and Chrome */
+
+  -o-transform: translate(0, 30px);
+  /* Opera */
+
+  -moz-transform: translate(0, 30px);
+  /* Firefox */
+
+}
+#block-mica-studies-study-timeline .coloredDiv {
+  height: 20px;
+  width: 20px;
+  float: left;
+}
