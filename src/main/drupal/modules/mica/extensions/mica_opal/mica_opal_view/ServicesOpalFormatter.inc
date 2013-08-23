@@ -167,18 +167,17 @@ class ServicesOpalFormatter implements ServicesFormatterInterface {
     $this->addTaxonomyAttribute($attributes, 'data_source', $wrapper);
     $this->addTaxonomyAttribute($attributes, 'disease_history', $wrapper);
     $this->addTaxonomyAttribute($attributes, 'early_life', $wrapper);
-    $this->addTaxonomyAttribute($attributes, 'essence', $wrapper);
     $this->addTaxonomyAttribute($attributes, 'life_habits_behaviours', $wrapper);
-    $this->addTaxonomyAttribute($attributes, 'measure', $wrapper);
     $this->addTaxonomyAttribute($attributes, 'medical_health_intervention', $wrapper, 'field_medical_health_interv');
     $this->addTaxonomyAttribute($attributes, 'medication', $wrapper);
     $this->addTaxonomyAttribute($attributes, 'perception_of_health', $wrapper);
-    $this->addTaxonomyAttribute($attributes, 'period', $wrapper);
     $this->addTaxonomyAttribute($attributes, 'physical_environment', $wrapper);
     $this->addTaxonomyAttribute($attributes, 'reproductive_history', $wrapper);
     $this->addTaxonomyAttribute($attributes, 'social_environment', $wrapper);
     $this->addTaxonomyAttribute($attributes, 'sociodemographic_characteristics', $wrapper, 'field_sociodemographic_charact');
     $this->addTaxonomyAttribute($attributes, 'target', $wrapper);
+    //TODO uncomment when field has been created
+//    $this->addTaxonomyAttribute($attributes, 'administrative_information', $wrapper);
   }
 
   private function addCategories($variable_element, $wrapper) {
