@@ -226,6 +226,25 @@ function mica_datasets_update_7700(&$sandbox) {
   features_revert(array('mica_datasets' => array('views_view')));
 }
 
+function mica_datasets_update_7802(&$update) {
+  features_revert(array(
+    'mica_datasets' => array(
+      'dependencies',
+      'node',
+      'variable',
+      'search_api_index',
+      'views_view',
+      'facetapi',
+      'corresponding_node_references',
+      'field_base',
+      'field_group',
+      'field_instance',
+      'user_permission',
+      'feeds_tamper',
+    )
+  ));
+}
+
 /**
  * Implements hook_update_dependencies().
  */

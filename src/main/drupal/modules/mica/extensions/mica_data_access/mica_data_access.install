@@ -31,12 +31,23 @@ function mica_data_access_update_7700(&$sandbox) {
  * Set default values for module Print-Friendly-Pages
  */
 function mica_data_access_update_7800(&$sandbox) {
-
   variable_set_value('print_html_link_pos', array(
     'link' => 0,
     'corner' => 0,
     'block' => 0,
     'help' => 0,
+  ));
+}
+
+function mica_data_access_update_7802(&$update) {
+  features_revert(array(
+    'mica_data_access' => array(
+      'dependencies',
+      'variable',
+      'field_base',
+      'field_instance',
+      'user_permission',
+    )
   ));
 }
 

@@ -217,7 +217,21 @@ function mica_studies_update_7700(&$update) {
 /**
  * Update Mica content types
  */
-function mica_studies_update_7800(&$update) {
+function mica_studies_update_7802(&$update) {
+  features_revert(array(
+    'mica_studies' => array(
+      'node',
+      'variable',
+      'search_api_index',
+      'views_view',
+      'facetapi',
+      'corresponding_node_references',
+      'field_base',
+      'field_group',
+      'field_instance',
+      'user_permission',
+    )
+  ));
   drupal_set_message(t('To complete the update process, ')
   . l('click here', 'admin/config/development/mica_studies') . ' ' . t('and click on Run'), 'warning');
 }

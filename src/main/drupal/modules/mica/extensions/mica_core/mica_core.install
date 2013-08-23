@@ -113,6 +113,19 @@ function mica_core_update_7800(&$update) {
   features_revert(array('mica_core' => array('field')));
 }
 
+function mica_core_update_7802(&$update) {
+  features_revert(array(
+    'mica_core' => array(
+      'dependencies',
+      'variable',
+      'field_base',
+      'field_instance',
+      'profile2_type',
+      'ckeditor_profile',
+    )
+  ));
+}
+
 function _mica_core_export_queries() {
   $result = db_query('SELECT * FROM mica_dataset_query')->fetchAll();
   if (!empty($result)) {

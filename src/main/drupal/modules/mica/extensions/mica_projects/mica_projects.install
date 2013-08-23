@@ -54,3 +54,14 @@ function mica_projects_update_7500(&$sandbox) {
 function mica_projects_update_7700(&$sandbox) {
   features_revert(array('mica_projects' => array('views_view')));
 }
+
+function mica_projects_access_update_7802(&$update) {
+  features_revert(array(
+    'mica_projects' => array(
+      'field_base',
+      'field_instance',
+      'dependencies',
+      'user_permission',
+    )
+  ));
+}
