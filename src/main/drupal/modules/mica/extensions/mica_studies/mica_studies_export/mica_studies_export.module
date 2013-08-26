@@ -1,0 +1,76 @@
+<?php
+/**
+ * @file
+ * Mica Datasets Crosstab module file
+ */
+
+//function getTime() {
+//  $mtime = microtime();
+//  $mtime = explode(" ", $mtime);
+//  $mtime = $mtime[1] + $mtime[0];
+//  return $mtime;
+//}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function mica_studies_export_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+
+  $links = array();
+
+  switch ($root_path) {
+
+    case 'node/%':
+      $node = $router_item['map']['1'];
+      switch ($node->type) {
+        case 'study':
+          //todo verify access to this action, button should be visible only if user has 'can export studies' permission.
+          if (node_access('create', 'population')) {
+            $links['export-population'] = array(
+              '#theme' => 'menu_local_action',
+              '#weight' => -30,
+              '#link' => array(
+                'title' => t('Export'),
+                'href' => 'node/' . $node->nid . '/export',
+              ),
+            );
+          }
+      }
+      break;
+
+  }
+
+  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
+
+}
+
+/**
+ * Implements hook_menu().
+ */
+function mica_studies_export_menu() {
+
+  $items = array();
+
+  $items['node/%node/export'] = array(
+    'title' => 'Export nodes',
+    //todo verify access to this action, button should be visible only if user has 'can export studies' permission.
+    'access callback' => 'node_access',
+    'access arguments' => array('update', 1),
+    'page callback' => 'mica_studies_export_batch_export',
+    'page arguments' => array(1),
+    'weight' => 5,
+    'type' => MENU_LOCAL_ACTION,
+  );
+  return $items;
+}
+
+function mica_studies_export_batch_export($study) {
+
+  if (is_numeric($study)) {
+    $study = node_load($study);
+  }
+  print_r($study);die;
+  $nids = array();
+  $study_wrapper = entity_metadata_wrapper('node', $study->nid);
+
+}

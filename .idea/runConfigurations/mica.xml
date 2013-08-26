@@ -1,9 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="mica" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="FIREFOX" server_name="localhost" start_url="/mica-dev">
-    <RunnerSettings RunnerId="PhpRunner" />
-    <RunnerSettings RunnerId="PhpWebAppDebugRunner" />
-    <ConfigurationWrapper RunnerId="PhpRunner" />
-    <ConfigurationWrapper RunnerId="PhpWebAppDebugRunner" />
-    <method />
-  </configuration>
-</component>
