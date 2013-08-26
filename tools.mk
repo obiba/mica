@@ -3,8 +3,8 @@ nodejs_version=0.10.16
 
 start-solr:
 	cd solr/solr-$(solr_version)/example && \
-  java -jar start.jar && \
-  @echo ">>> SolR is now running at http://localhost:8983/solr/admin"
+        java -jar start.jar && \
+        @echo ">>> SolR is now running at http://localhost:8983/solr/admin"
 
 install-solr:
 	mkdir -p solr && \
