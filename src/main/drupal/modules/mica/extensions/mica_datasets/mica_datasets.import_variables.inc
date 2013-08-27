@@ -116,7 +116,7 @@ function _mica_datasets_fetch_study_harmonization_view($dataset_nid, $study_nid)
 
 function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmonization_variable, &$context) {
 
-  $primary_key = isset($harmonization_variable[0]['uuid']) ? 'uuid' : 'title';
+  $primary_key = isset($harmonization_variable['uuid']) ? 'uuid' : 'title';
   // keep current dataset variables between batch steps
   if (empty($context['results']) || $context['results']['study']->nid->value() != $study_nid) {
     watchdog('mica', 'Cache batch dataset info %nid', array('%nid' => $dataset_nid), WATCHDOG_DEBUG);
@@ -162,7 +162,7 @@ function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmon
 
 function _mica_datasets_batch_import_svas($dataset_nid, $study_nid, $harmonization_variable, &$context) {
 
-  $primary_key = isset($harmonization_variable[0]['uuid']) ? 'uuid' : 'title';
+  $primary_key = isset($harmonization_variable['uuid']) ? 'uuid' : 'title';
   // keep current dataset variables between batch steps
   if (empty($context['results']['svas'])) {
     // Get all sva for this dataset
@@ -212,34 +212,15 @@ function _mica_datasets_create_variable($dataset, $harmonization_variable, $posi
     'field_unit' => $harmonization_variable['unit'],
     'field_position' => $position,
   );
+  // Copy uuid
+  if (isset($harmonization_variable['uuid'])) {
+    $infos['uuid'] = $harmonization_variable['uuid'];
+  }
+
   // Creates a wrapper object without inserting it to the DB
   $wrapper = entity_property_values_create_entity('node', $infos);
 
-  foreach ($harmonization_variable['label'] as $language => $value) {
-    $wrapper->language($language)->field_label->set($value);
-  }
-  foreach ($harmonization_variable['description'] as $language => $value) {
-    $wrapper->language($language)->body->value->set($value);
-  }
-
-  // Update categories
-  $i = 0;
-  foreach ($harmonization_variable['categories'] as $category) {
-    $wrapper->language($dataset->language)->field_variable_categories[$i]->name->set($category['name']);
-    $wrapper->language($dataset->language)->field_variable_categories[$i]->missing->set($category['missing']);
-    if (isset($category['label'])) {
-      foreach ($category['label'] as $language => $value) {
-        $wrapper->language($language)->field_variable_categories[$i]->label->set($value);
-
-        // needed to share values between languages
-        $wrapper->language($language)->field_variable_categories[$i]->name->set($category['name']);
-        $wrapper->language($language)->field_variable_categories[$i]->missing->set($category['missing']);
-      }
-    }
-    $i++;
-  }
-  $wrapper->save();
-  return $wrapper->nid->value();
+  return _mica_datasets_update_variable_wrapper($harmonization_variable, $dataset->language, $wrapper);
 }
 
 function _mica_datasets_update_variable($variable_nid, $dataset_language, $harmonization_variable) {
@@ -247,6 +228,21 @@ function _mica_datasets_update_variable($variable_nid, $dataset_language, $harmo
   watchdog('mica', 'Update variable %nid', array('%nid' => $variable_nid), WATCHDOG_DEBUG);
 
   $wrapper = entity_metadata_wrapper('node', $variable_nid);
+
+  // Allow to update title
+  $wrapper->title->set($harmonization_variable['title']);
+  $wrapper->title_field->set($harmonization_variable['title']);
+
+  return _mica_datasets_update_variable_wrapper($harmonization_variable, $dataset_language, $wrapper);
+}
+
+function _mica_datasets_update_variable_wrapper($harmonization_variable, $dataset_language, $wrapper) {
+  foreach ($harmonization_variable['label'] as $language => $value) {
+    $wrapper->language($language)->field_label->set($value);
+  }
+  foreach ($harmonization_variable['description'] as $language => $value) {
+    $wrapper->language($language)->body->value->set($value);
+  }
 
   $i = 0;
   foreach ($harmonization_variable['categories'] as $category) {
