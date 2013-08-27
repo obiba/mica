@@ -176,8 +176,7 @@ class ServicesOpalFormatter implements ServicesFormatterInterface {
     $this->addTaxonomyAttribute($attributes, 'social_environment', $wrapper);
     $this->addTaxonomyAttribute($attributes, 'sociodemographic_characteristics', $wrapper, 'field_sociodemographic_charact');
     $this->addTaxonomyAttribute($attributes, 'target', $wrapper);
-    //TODO uncomment when field has been created
-//    $this->addTaxonomyAttribute($attributes, 'administrative_information', $wrapper);
+    $this->addTaxonomyAttribute($attributes, 'administrative_information', $wrapper);
   }
 
   private function addCategories($variable_element, $wrapper) {

@@ -182,8 +182,8 @@ function mica_datasets_feeds_importer_default() {
             'unique' => FALSE,
           ),
           28 => array(
-            'source' => 'laboratory_measures',
-            'target' => 'field_laboratory_measures',
+            'source' => 'administrative_information',
+            'target' => 'field_administrative_information',
             'unique' => FALSE,
           ),
         ),

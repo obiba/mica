@@ -77,7 +77,9 @@ projects[feeds][patch][1107522-63] = http://drupal.org/files/ignore-empty-taxono
 projects[feeds][patch][1107522-15] = http://drupal.org/files/ignore-empty-link-fields-1107522-60.patch
 projects[feeds][patch][1286912] = https://drupal.org/files/feeds-existing-entity-id-hook-1286912-6.patch
 
-projects[feeds_tamper][version] = 1.0-beta4
+projects[feeds_tamper][download][type] = git
+projects[feeds_tamper][download][revision] = 23f9a3c
+projects[feeds_tamper][download][branch] = 7.x-1.x
 projects[feeds_tamper][patch][1416700] = http://drupal.org/files/1416700-4-feeds_tamper-existing-terms-plugin.patch
 
 projects[field_display_label][version] = 1.2

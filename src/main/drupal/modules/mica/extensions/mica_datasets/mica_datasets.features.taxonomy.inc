@@ -170,29 +170,6 @@ function mica_datasets_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-    'essence' => array(
-      'name' => 'Essence',
-      'machine_name' => 'essence',
-      'description' => NULL,
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
     'individual_participant_measures' => array(
       'name' => 'Individual Participant Measures',
       'machine_name' => 'individual_participant_measures',
@@ -262,29 +239,6 @@ function mica_datasets_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-    'measure' => array(
-      'name' => 'Measure',
-      'machine_name' => 'measure',
-      'description' => NULL,
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
     'medical_health_intervention' => array(
       'name' => 'Medical health interventions/Health services utilization',
       'machine_name' => 'medical_health_intervention',
@@ -334,29 +288,6 @@ function mica_datasets_taxonomy_default_vocabularies() {
     'perception_of_health' => array(
       'name' => 'Perception of health/Quality of life',
       'machine_name' => 'perception_of_health',
-      'description' => NULL,
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
-    'period' => array(
-      'name' => 'Period',
-      'machine_name' => 'period',
       'description' => NULL,
       'hierarchy' => 0,
       'module' => 'taxonomy',
