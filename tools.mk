@@ -9,7 +9,7 @@ start-solr:
 install-solr:
 	mkdir -p solr && \
 	cd solr && \
-	wget http://mirror.csclub.uwaterloo.ca/apache/lucene/solr/$(solr_version)/solr-$(solr_version).tgz && \
+	wget -q http://mirror.csclub.uwaterloo.ca/apache/lucene/solr/$(solr_version)/solr-$(solr_version).tgz && \
 	tar -zxf solr-$(solr_version).tgz && \
 	cp ../target/mica-dev/profiles/mica_distribution/modules/search_api_solr/solr-conf/4.x/* solr-$(solr_version)/example/solr/collection1/conf && \
 	rm solr-$(solr_version).tgz
