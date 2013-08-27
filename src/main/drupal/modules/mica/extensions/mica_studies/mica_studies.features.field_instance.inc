@@ -4230,12 +4230,77 @@ If the study is completed, enter the final number of participants that have prov
     ),
   );
 
+  // Exported field_instance: 'node-variable-field_administrative_information'
+  $field_instances['node-variable-field_administrative_information'] = array(
+    'bundle' => 'variable',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'banner_area' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 26,
+      ),
+      'footer_area' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'left_area' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'right_area' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_administrative_information',
+    'label' => 'Administrative Information',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => 0,
+      ),
+      'type' => 'options_select',
+      'weight' => 59,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Acronym');
   t('Acronym of the study if applicable.');
   t('Address');
   t('Administrative Databases');
+  t('Administrative Information');
   t('Authorising date');
   t('Authorization Maelstrom');
   t('Authorization Specific');

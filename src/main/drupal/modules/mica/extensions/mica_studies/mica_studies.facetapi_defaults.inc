@@ -1226,5 +1226,29 @@ function mica_studies_facetapi_default_facet_settings() {
   );
   $export['search_api@studies_index:block:field_target_number_participants'] = $facet;
 
+  $facet = new stdClass();
+  $facet->disabled = FALSE; /* Edit this to true to make a default facet disabled initially */
+  $facet->api_version = 1;
+  $facet->name = 'search_api@variable_index::field_administrative_information';
+  $facet->searcher = 'search_api@variable_index';
+  $facet->realm = '';
+  $facet->facet = 'field_administrative_information';
+  $facet->enabled = FALSE;
+  $facet->settings = array(
+    'operator' => 'or',
+    'hard_limit' => '50',
+    'dependencies' => array(
+      'bundle' => 'none',
+      'bundle_selected' => array(),
+    ),
+    'facet_mincount' => '1',
+    'facet_missing' => '0',
+    'flatten' => '0',
+    'query_type' => 'term',
+    'default_true' => TRUE,
+    'facet_search_ids' => array(),
+  );
+  $export['search_api@variable_index::field_administrative_information'] = $facet;
+
   return $export;
 }
