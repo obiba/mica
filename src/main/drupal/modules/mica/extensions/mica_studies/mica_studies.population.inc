@@ -246,11 +246,11 @@ function _mica_studies_population_view_recruitment_sources(&$node) {
 }
 
 function _mica_studies_population_view_nb_participants(&$node) {
-  _mica_studies_population_view_nb($node, 'field_pop_participants_nb', 'field_pop_no_limits_participants', 'field_pop_participants_nb_supp_i');
+  _mica_studies_population_view_nb($node, 'field_pop_participants_nb', 'field_pop_no_limits_participants');
   _mica_studies_population_view_nb($node, 'field_pop_participants_nb_s', 'field_pop_no_lim_participants_s');
 }
 
-function _mica_studies_population_view_nb(&$node, $field_nb, $field_no_limit, $field_info = NULL) {
+function _mica_studies_population_view_nb(&$node, $field_nb, $field_no_limit) {
   $wrapper = entity_metadata_wrapper('node', $node->nid);
   if (!isset($node->content[$field_nb])) {
     mica_core_create_empty_field($node, $field_nb);
@@ -262,19 +262,8 @@ function _mica_studies_population_view_nb(&$node, $field_nb, $field_no_limit, $f
   if ($no_limit) {
     $node->content[$field_nb]['#items'][$index] = t('No limit');
     $node->content[$field_nb][$index]['#markup'] = t('No limit');
-    $index++;
   }
   $node->content[$field_no_limit]['#access'] = FALSE;
-
-  if (!empty($field_info)) {
-
-    $info = $wrapper->{$field_info}->value();
-    if (!empty($info)) {
-      $node->content[$field_nb]['#items'][$index] = $node->content[$field_info]['#items'][0];
-      $node->content[$field_nb][$index]['#markup'] = $node->content[$field_info][0]['#markup'];
-    }
-    $node->content[$field_info]['#access'] = FALSE;
-  }
 
   if (strlen($node->content[$field_nb][0]['#markup']) === 0) {
     $node->content[$field_nb]['#access'] = FALSE;
