@@ -509,7 +509,6 @@ features[variable][] = content_access_contact
 features[variable][] = content_access_data_collection_event
 features[variable][] = content_access_population
 features[variable][] = content_access_study
-features[variable][] = content_access_variable
 features[variable][] = date_format_month_year
 features[variable][] = field_bundle_settings_node__data_collection_event
 features[variable][] = field_bundle_settings_node__population
