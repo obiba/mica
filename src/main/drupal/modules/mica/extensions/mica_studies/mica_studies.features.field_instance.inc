@@ -2115,7 +2115,7 @@ function mica_studies_field_default_field_instances() {
     'description' => 'If needed, please provide additional information about number of participants.',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -3940,7 +3940,7 @@ function mica_studies_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
-    'display_label' => 'Supplementary information',
+    'display_label' => '',
     'entity_type' => 'node',
     'field_name' => 'field_target_nb_supp_info',
     'label' => 'Supplementary information about target number of participants',
