@@ -37,7 +37,6 @@ dependencies[] = menu
 dependencies[] = menu_breadcrumb
 dependencies[] = menu_view_unpublished
 dependencies[] = mica_core
-dependencies[] = mica_datasets
 dependencies[] = mica_field_description
 dependencies[] = mica_node_reference_field
 dependencies[] = module_filter

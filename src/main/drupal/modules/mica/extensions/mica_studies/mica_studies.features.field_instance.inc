@@ -1659,7 +1659,7 @@ function mica_studies_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1900,7 +1900,7 @@ function mica_studies_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 21,
+        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2077,7 +2077,7 @@ function mica_studies_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 20,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2115,11 +2115,11 @@ function mica_studies_field_default_field_instances() {
     'description' => 'If needed, please provide additional information about number of participants.',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 22,
+        'weight' => 20,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2437,7 +2437,7 @@ function mica_studies_field_default_field_instances() {
         'label' => 'inline',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 26,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2479,7 +2479,7 @@ function mica_studies_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 23,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2560,7 +2560,7 @@ function mica_studies_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 27,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -3940,7 +3940,7 @@ function mica_studies_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
-    'display_label' => '',
+    'display_label' => 'Supplementary information',
     'entity_type' => 'node',
     'field_name' => 'field_target_nb_supp_info',
     'label' => 'Supplementary information about target number of participants',
