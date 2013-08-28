@@ -54938,8 +54938,8 @@ msgid "Study Authorization"
 msgstr "Autorisation de l'étude"
 
 #: /mica-dev/?q=fr/node/add/variable
-msgid "Manage Variable Domains"
-msgstr "Gérer les domaines de variable"
+msgid "Manage Dataset Variables"
+msgstr "Gérer les variables"
 
 #: /mica-dev/?q=fr/node/add/variable
 msgid "Export datasets to CSV file"
@@ -56014,8 +56014,8 @@ msgstr "!title -- Harmonisation"
 msgid "Add dimensions"
 msgstr "Ajouter des dimensions"
 
-msgid "Manage Variable Dimensions"
-msgstr "Gestion des dimensions de variable"
+msgid "Manage Dataset Variables"
+msgstr "Gestion des variables"
 
 msgid "Domains Coverage"
 msgstr "Couverture des domaines"
