@@ -112,6 +112,7 @@ function _mica_datasets_fetch_study_harmonization_view($dataset_nid, $study_nid)
         );
     }
   }
+  return NULL;
 }
 
 function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmonization_variable, &$context) {
@@ -200,16 +201,11 @@ function _mica_datasets_create_variable($dataset, $harmonization_variable, $posi
 
   $infos = array(
     'type' => 'variable',
-    'title' => $harmonization_variable['title'],
-    'title_field' => $harmonization_variable['title'],
     'language' => $dataset->language,
     'uid' => $user->uid,
     'status' => NODE_NOT_PUBLISHED,
     'menu' => '',
     'field_dataset' => $dataset->nid,
-    'field_value_type' => $harmonization_variable['value_type'],
-    'field_repeatable' => $harmonization_variable['repeatable'],
-    'field_unit' => $harmonization_variable['unit'],
     'field_position' => $position,
   );
   // Copy uuid
@@ -230,13 +226,18 @@ function _mica_datasets_update_variable($variable_nid, $dataset_language, $harmo
   $wrapper = entity_metadata_wrapper('node', $variable_nid);
 
   // Allow to update title
-  $wrapper->title->set($harmonization_variable['title']);
-  $wrapper->title_field->set($harmonization_variable['title']);
 
   return _mica_datasets_update_variable_wrapper($harmonization_variable, $dataset_language, $wrapper);
 }
 
 function _mica_datasets_update_variable_wrapper($harmonization_variable, $dataset_language, $wrapper) {
+
+  $wrapper->title->set($harmonization_variable['title']);
+  $wrapper->title_field->set($harmonization_variable['title']);
+  $wrapper->field_value_type->set($harmonization_variable['value_type']);
+  $wrapper->field_repeatable->set($harmonization_variable['repeatable']);
+  $wrapper->field_unit->set($harmonization_variable['unit']);
+
   foreach ($harmonization_variable['label'] as $language => $value) {
     $wrapper->language($language)->field_label->set($value);
   }
@@ -244,25 +245,25 @@ function _mica_datasets_update_variable_wrapper($harmonization_variable, $datase
     $wrapper->language($language)->body->value->set($value);
   }
 
-  $i = 0;
+  $category_index = 0;
   foreach ($harmonization_variable['categories'] as $category) {
-    $wrapper->language($dataset_language)->field_variable_categories[$i]->name->set($category['name']);
-    $wrapper->language($dataset_language)->field_variable_categories[$i]->missing->set($category['missing']);
+    $wrapper->language($dataset_language)->field_variable_categories[$category_index]->name->set($category['name']);
+    $wrapper->language($dataset_language)->field_variable_categories[$category_index]->missing->set($category['missing']);
     if (isset($category['label'])) {
       foreach ($category['label'] as $language => $value) {
-        $wrapper->language($language)->field_variable_categories[$i]->label->set($value);
+        $wrapper->language($language)->field_variable_categories[$category_index]->label->set($value);
 
         // needed to share values between languages
-        $wrapper->language($language)->field_variable_categories[$i]->name->set($category['name']);
-        $wrapper->language($language)->field_variable_categories[$i]->missing->set($category['missing']);
+        $wrapper->language($language)->field_variable_categories[$category_index]->name->set($category['name']);
+        $wrapper->language($language)->field_variable_categories[$category_index]->missing->set($category['missing']);
       }
     }
-    $i++;
+    $category_index++;
   }
-  if ($i < count($wrapper->language($dataset_language)->field_variable_categories)) {
-    while (isset($wrapper->language($dataset_language)->field_variable_categories[$i])) {
-      $wrapper->language($dataset_language)->field_variable_categories[$i] = NULL;
-      $i++;
+  if ($category_index < count($wrapper->language($dataset_language)->field_variable_categories)) {
+    while (isset($wrapper->language($dataset_language)->field_variable_categories[$category_index])) {
+      $wrapper->language($dataset_language)->field_variable_categories[$category_index] = NULL;
+      $category_index++;
     }
   }
   $wrapper->save();

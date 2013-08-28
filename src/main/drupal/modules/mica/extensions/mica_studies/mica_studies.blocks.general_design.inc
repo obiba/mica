@@ -16,9 +16,9 @@ function _mica_studies_block_study_general_design($study) {
     'weight' => ++$weight
   ));
   $content[] = _mica_studies_block_study_general_design_field_recruitment($wrapper, ++$weight);
+
   $content[] = _mica_studies_block_study_general_design_field_nb_participants($wrapper, ++$weight);
   $content[] = _mica_studies_block_study_general_design_field_nb_samples($wrapper, ++$weight);
-
   $content[] = field_view_field('node', $study, 'field_target_nb_supp_info', array(
     'label' => 'inline',
     'weight' => ++$weight
