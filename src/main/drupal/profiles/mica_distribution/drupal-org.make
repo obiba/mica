@@ -75,7 +75,7 @@ projects[feeds][version] = 2.0-alpha8
 projects[feeds][patch][1107522-59] = http://drupal.org/files/feeds-empty-behavior-1107522-59.patch
 projects[feeds][patch][1107522-63] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-63.patch
 projects[feeds][patch][1107522-15] = http://drupal.org/files/ignore-empty-link-fields-1107522-60.patch
-projects[feeds][patch][1286912] = https://drupal.org/files/feeds-existing-entity-id-hook-1286912-6.patch
+projects[feeds][patch][1286912] = http://drupal.org/files/feeds-existing-entity-id-hook-1286912-6.patch
 
 projects[feeds_tamper][download][type] = git
 projects[feeds_tamper][download][revision] = 23f9a3c
@@ -182,7 +182,7 @@ projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_trans
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 
 projects[search_api_combined][version] = 1.2
-projects[search_api_combined][patch][1976924] = https://drupal.org/files/delete-combined-fields-1976924-3.patch
+projects[search_api_combined][patch][1976924] = http://drupal.org/files/delete-combined-fields-1976924-3.patch
 
 projects[search_api_page] = 1.0-rc1
 
@@ -206,7 +206,7 @@ projects[title] = 1.0-alpha7
 projects[token] = 1.5
 
 projects[uuid][version] = 1.0-alpha5
-projects[uuid][patch][1800730] = https://drupal.org/files/uuid-feeds-mapper-1800730-10_1.patch
+projects[uuid][patch][1800730] = http://drupal.org/files/uuid-feeds-mapper-1800730-10_1.patch
 
 projects[uuid_link] = 1.0-beta3
 
