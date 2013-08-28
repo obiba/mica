@@ -5965,6 +5965,9 @@ form.node-form .field-type-datetime fieldset input {
 .views-row article {
   margin-bottom: 20px;
 }
+form .field-add-more-submit {
+  margin: .5em 0;
+}
 #navbar .embedded-form {
   padding: 15px;
 }
