@@ -64,7 +64,7 @@ projects[facetapi_i18n] = 1.0-beta2
 
 ;projects[] = examples
 
-projects[features][version] = 2.0-rc2
+projects[features][version] = 2.0-rc3
 projects[features][patch][1844566] = http://drupal.org/files/features_1844566_1_invoke-hooks-for-all-components.patch
 projects[features][patch][656312] = http://drupal.org/files/keep_negative_permissions-656312-17.patch
 projects[features][patch][1689598] = http://drupal.org/files/field_display_label_support.patch
@@ -142,7 +142,7 @@ projects[menu_firstchild] = 1.1
 
 projects[menu_view_unpublished] = 1.0-beta3
 
-projects[mica] = 8.2-dev
+projects[mica] = 8.2-rc1
 
 projects[module_filter] = 1.8
 
