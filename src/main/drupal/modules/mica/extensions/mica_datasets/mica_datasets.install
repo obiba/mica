@@ -156,7 +156,7 @@ function mica_datasets_update_7500(&$sandbox) {
 }
 
 /**
- * Configure facet block for the new page "Manage Variable Dimensions"
+ * Configure facet block for the new page "Manage Dataset Variables"
  */
 function mica_datasets_update_7510(&$update) {
 
