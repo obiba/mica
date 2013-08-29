@@ -117,10 +117,10 @@ function _mica_datasets_fetch_study_harmonization_view($dataset_nid, $study_nid)
 
 function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmonization_variable, &$context) {
 
-  $primary_key = isset($harmonization_variable['uuid']) ? 'uuid' : 'title';
   // keep current dataset variables between batch steps
   if (empty($context['results']) || $context['results']['study']->nid->value() != $study_nid) {
     watchdog('mica', 'Cache batch dataset info %nid', array('%nid' => $dataset_nid), WATCHDOG_DEBUG);
+    $primary_key = isset($harmonization_variable['uuid']) ? 'uuid' : 'title';
     $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
     $context['results'] = array(
       'last_position' => 1,
@@ -132,19 +132,21 @@ function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmon
       'nb_updated' => 0,
       'dataset' => $dataset_wrapper,
       'study' => entity_metadata_wrapper('node', $study_nid),
+      'key' => $primary_key,
     );
   }
 
   $dataset_wrapper = $context['results']['dataset'];
   $variables = $context['results']['variables'];
+  $key = $context['results']['key'];
   $variable_nid = NULL;
 
-  if (isset($variables[$harmonization_variable[$primary_key]])) {
+  if (isset($variables[$harmonization_variable[$key]])) {
     $context['message'] = t('Updating %var from study: %study.', array(
       '%var' => $harmonization_variable['title'],
       '%study' => $context['results']['study']->title->value()
     ));
-    $variable = $variables[$harmonization_variable[$primary_key]];
+    $variable = $variables[$harmonization_variable[$key]];
     $variable_nid = _mica_datasets_update_variable($variable->nid, $dataset_wrapper->value()->language, $harmonization_variable);
     $context['results']['nb_updated']++;
   }
@@ -158,12 +160,12 @@ function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmon
     $context['results']['nb_created']++;
   }
 
-  $context['results']['variables_nids'][$harmonization_variable[$primary_key]] = $variable_nid;
+  $context['results']['variables_nids'][$harmonization_variable[$key]] = $variable_nid;
 }
 
 function _mica_datasets_batch_import_svas($dataset_nid, $study_nid, $harmonization_variable, &$context) {
 
-  $primary_key = isset($harmonization_variable['uuid']) ? 'uuid' : 'title';
+//  $primary_key = isset($harmonization_variable['uuid']) ? 'uuid' : 'title';
   // keep current dataset variables between batch steps
   if (empty($context['results']['svas'])) {
     // Get all sva for this dataset
@@ -187,7 +189,8 @@ function _mica_datasets_batch_import_svas($dataset_nid, $study_nid, $harmonizati
     '%study' => $context['results']['study']->title->value()
   ));
   $svas = $context['results']['svas'];
-  $variable_nid = $context['results']['variables_nids'][$harmonization_variable[$primary_key]];
+  $key = $context['results']['key'];
+  $variable_nid = $context['results']['variables_nids'][$harmonization_variable[$key]];
   if (isset($svas[$study_nid][$variable_nid])) {
     _mica_datasets_update_sva($svas[$study_nid][$variable_nid]->entity_id, $harmonization_variable);
   }
