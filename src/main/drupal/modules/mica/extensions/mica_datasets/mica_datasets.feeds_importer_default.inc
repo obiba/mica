@@ -162,23 +162,23 @@ function mica_datasets_feeds_importer_default() {
             'unique' => FALSE,
           ),
           24 => array(
+            'source' => 'social_environment',
+            'target' => 'field_social_environment',
+            'unique' => FALSE,
+          ),
+          25 => array(
             'source' => 'sociodemographic_charact',
             'target' => 'field_sociodemographic_charact',
             'unique' => FALSE,
           ),
-          25 => array(
+          26 => array(
             'source' => 'target',
             'target' => 'field_target',
             'unique' => FALSE,
           ),
-          26 => array(
+          27 => array(
             'source' => 'laboratory_measures',
             'target' => 'field_laboratory_measures',
-            'unique' => FALSE,
-          ),
-          27 => array(
-            'source' => 'social_environment',
-            'target' => 'field_social_environment',
             'unique' => FALSE,
           ),
           28 => array(

@@ -797,20 +797,12 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_laboratory_measures']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_laboratory_measures']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_laboratory_measures']['separator'] = '|';
-  /* Field: Content: Social Environment */
-  $handler->display->display_options['fields']['field_social_environment_1']['id'] = 'field_social_environment_1';
-  $handler->display->display_options['fields']['field_social_environment_1']['table'] = 'field_data_field_social_environment';
-  $handler->display->display_options['fields']['field_social_environment_1']['field'] = 'field_social_environment';
-  $handler->display->display_options['fields']['field_social_environment_1']['label'] = 'social_environment';
-  $handler->display->display_options['fields']['field_social_environment_1']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_social_environment_1']['delta_offset'] = '0';
-  /* Field: Content: Laboratory Measures */
-  $handler->display->display_options['fields']['field_laboratory_measures_1']['id'] = 'field_laboratory_measures_1';
-  $handler->display->display_options['fields']['field_laboratory_measures_1']['table'] = 'field_data_field_laboratory_measures';
-  $handler->display->display_options['fields']['field_laboratory_measures_1']['field'] = 'field_laboratory_measures';
-  $handler->display->display_options['fields']['field_laboratory_measures_1']['label'] = 'laboratory_measures';
-  $handler->display->display_options['fields']['field_laboratory_measures_1']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_laboratory_measures_1']['delta_offset'] = '0';
+  /* Field: Content: Administrative Information */
+  $handler->display->display_options['fields']['field_administrative_information']['id'] = 'field_administrative_information';
+  $handler->display->display_options['fields']['field_administrative_information']['table'] = 'field_data_field_administrative_information';
+  $handler->display->display_options['fields']['field_administrative_information']['field'] = 'field_administrative_information';
+  $handler->display->display_options['fields']['field_administrative_information']['label'] = 'administrative_information';
+  $handler->display->display_options['fields']['field_administrative_information']['type'] = 'taxonomy_term_reference_plain';
   /* Sort criterion: Content: Position index (field_position) */
   $handler->display->display_options['sorts']['field_position_value']['id'] = 'field_position_value';
   $handler->display->display_options['sorts']['field_position_value']['table'] = 'field_data_field_position';
@@ -1620,7 +1612,7 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['field_sociodemographic_charact']['list']['separator'] = '; ';
   $handler->display->display_options['fields']['field_sociodemographic_charact']['link_to_entity'] = 1;
   $handler->display->display_options['fields']['field_sociodemographic_charact']['view_mode'] = 'full';
-  /* Field: Broken/missing handler */
+  /* Field: Indexed Node: Administrative Information */
   $handler->display->display_options['fields']['field_administrative_information']['id'] = 'field_administrative_information';
   $handler->display->display_options['fields']['field_administrative_information']['table'] = 'search_api_index_variable_index';
   $handler->display->display_options['fields']['field_administrative_information']['field'] = 'field_administrative_information';

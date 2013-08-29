@@ -612,6 +612,71 @@ function mica_datasets_field_default_field_instances() {
     'widget_type' => 'text_textarea_with_summary',
   );
 
+  // Exported field_instance: 'node-variable-field_administrative_information'
+  $field_instances['node-variable-field_administrative_information'] = array(
+    'bundle' => 'variable',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'banner_area' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 26,
+      ),
+      'footer_area' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'left_area' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'right_area' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_plain',
+        'weight' => 20,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'display_label' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_administrative_information',
+    'label' => 'Administrative Information',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => 0,
+      ),
+      'type' => 'options_select',
+      'weight' => 59,
+    ),
+  );
+
   // Exported field_instance: 'node-variable-field_anthropometric_structures'
   $field_instances['node-variable-field_anthropometric_structures'] = array(
     'bundle' => 'variable',
@@ -649,7 +714,7 @@ function mica_datasets_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 17,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -717,7 +782,7 @@ function mica_datasets_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 19,
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -785,7 +850,7 @@ function mica_datasets_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 18,
+        'weight' => 17,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1006,7 +1071,7 @@ function mica_datasets_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 7,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1074,7 +1139,7 @@ function mica_datasets_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 11,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1225,7 +1290,7 @@ function mica_datasets_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 20,
+        'weight' => 19,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1292,7 +1357,7 @@ function mica_datasets_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 12,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1360,7 +1425,7 @@ function mica_datasets_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 8,
+        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1428,7 +1493,7 @@ function mica_datasets_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 9,
+        'weight' => 8,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1496,7 +1561,7 @@ function mica_datasets_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 16,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1564,7 +1629,7 @@ function mica_datasets_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 14,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1787,7 +1852,7 @@ Set to 0 to set variable at last position.  ',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 10,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1855,7 +1920,7 @@ Set to 0 to set variable at last position.  ',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 15,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1923,7 +1988,7 @@ Set to 0 to set variable at last position.  ',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 13,
+        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1991,7 +2056,7 @@ Set to 0 to set variable at last position.  ',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_plain',
-        'weight' => 22,
+        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2365,74 +2430,10 @@ Set to 0 to set variable at last position.  ',
     ),
   );
 
-  // Exported field_instance: 'node-variable-field_administrative_information'
-  $field_instances['node-variable-field_administrative_information'] = array(
-    'bundle' => 'variable',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'banner_area' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 26,
-      ),
-      'footer_area' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'left_area' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'right_area' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'display_label' => '',
-    'entity_type' => 'node',
-    'field_name' => 'field_administrative_information',
-    'label' => 'Administrative Information',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'content_taxonomy_opt_groups' => 0,
-      ),
-      'type' => 'options_select',
-      'weight' => 59,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
-  t('Anthropometric Structures');
   t('Administrative Information');
+  t('Anthropometric Structures');
   t('Body');
   t('Body Functions');
   t('Body Structures');
