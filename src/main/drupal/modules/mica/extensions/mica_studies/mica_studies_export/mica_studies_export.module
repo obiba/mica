@@ -117,7 +117,7 @@ function _mica_studies_export_get_tmp_folder_full_path($tmp_file_name) {
 function _mica_studies_export_gen_xml($nid, &$context) {
   $wrapper = entity_metadata_wrapper('node', $nid);
   // dpm($wrapper->type->value());
-  $context['message'] = t('Processing Node "@title"', array('@title' => $wrapper->title->value()));
+  $context['message'] = t('Processing Node "%title"', array('%title' => $wrapper->title->value()));
   // Xml files creation
   $doc = new DOMDocument('1.0', 'utf-8');
   $type = $doc->createElement($wrapper->type->value());
@@ -152,22 +152,21 @@ function _mica_studies_export_create_zip_file(&$context) {
   $scanned_directory = array_diff(scandir($tmp_folder_full_path), array('..', '.'));
 
   //create directories in public folder if not exist
-  if (!is_dir('public:///' . $user->name )) {
-    drupal_mkdir('public:///' . $user->name);
-  }
-
   if (!is_dir('public:///' . $user->name . '/export')) {
-    drupal_mkdir('public:///' . $user->name . '/export');
+    drupal_mkdir('public:///' . $user->name . '/export', NULL, TRUE, NULL);
   }
 
   $filename = drupal_realpath('public://').'/' . $user->name . '/export/' . $tmp_folder_name . '.zip';
 
   //Archive the files
   fopen($filename, 'w');
-  $zip = new Archiverzip($filename);
+
+  $zip = new ArchiverZip($filename);
+
   foreach ($scanned_directory as $file) {
     $zip->add($tmp_folder_full_path . '/' . $file);
   }
+
   fclose($filename);
   $context['results']['tmp_folder_name'] = $tmp_folder_name;
 
