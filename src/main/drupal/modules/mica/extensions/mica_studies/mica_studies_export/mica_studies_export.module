@@ -1,0 +1,214 @@
+<?php
+/**
+ * @file
+ * Mica Studies Export  file
+ */
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function mica_studies_export_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+
+  $links = array();
+
+  switch ($root_path) {
+
+    case 'node/%':
+      $node = $router_item['map']['1'];
+      switch ($node->type) {
+        case 'study':
+          //todo verify access to this action, button should be visible only if user has 'can export studies' permission.
+          if (node_access('create', 'population')) {
+            $links['export-population'] = array(
+              '#theme' => 'menu_local_action',
+              '#weight' => -30,
+              '#link' => array(
+                'title' => t('Export'),
+                'href' => 'node/' . $node->nid . '/export',
+              ),
+            );
+          }
+      }
+      break;
+
+  }
+
+  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
+
+}
+
+/**
+ * Implements hook_menu().
+ */
+function mica_studies_export_menu() {
+
+  $items = array();
+
+  $items['node/%node/export'] = array(
+    'title' => 'Export nodes',
+    //todo verify access to this action, button should be visible only if user has 'can export studies' permission.
+    'access callback' => 'node_access',
+    'access arguments' => array('update', 1),
+    'page callback' => 'mica_studies_export_batch_export',
+    'page arguments' => array(1),
+    'weight' => 5,
+    'type' => MENU_LOCAL_ACTION,
+  );
+  return $items;
+}
+
+function mica_studies_export_batch_export($study) {
+
+  if (is_numeric($study)) {
+    $study = node_load($study);
+  }
+  $wrapper = entity_metadata_wrapper('node', $study);
+  $operations = array();
+  //Create /Tmp folder and pass the path
+  $operations[] = array('_mica_studies_export_create_tmp_folder', array());
+  // extract nid to export
+  $nids = _mica_studies_export_find_nodes($study->nid);
+  foreach ($nids as $nid) {
+    $operations[] = array('_mica_studies_export_gen_xml', array($nid));
+  }
+  // Archive the files
+  $operations[] = array('_mica_studies_export_create_zip_file', array());
+  //  Delete tmp folder
+  $operations[] = array('_mica_studies_export_deletetmp', array());
+
+  // prepare batch steps
+  batch_set(array(
+    'operations' => $operations,
+    'finished' => 'mica_studies_export_bach_finished',
+  ));
+  $redirect = 'node/' . $nids[0];
+  batch_process($redirect);
+
+}
+
+/*
+ * Finish action
+ * */
+function mica_studies_export_bach_finished($success, $results, $operations) {
+
+}
+
+/*
+ *Create tmp folder
+ * */
+function _mica_studies_export_create_tmp_folder(&$context) {
+
+  if (empty($context['results']['tmpfolder'])) {
+    $context['message'] = t('Preparing process.....');
+    $tmp_folder_name = 'export-' . time();
+    drupal_mkdir(_mica_studies_export_get_tmp_folder_full_path($tmp_folder_name));
+
+    $context['results']['tmp_folder_name'] = $tmp_folder_name;
+  }
+}
+
+function _mica_studies_export_get_tmp_folder_full_path($tmp_file_name) {
+  return file_directory_temp() . '/' . $tmp_file_name;
+}
+
+/*
+ * Xml generation
+ * */
+function _mica_studies_export_gen_xml($nid, &$context) {
+  $wrapper = entity_metadata_wrapper('node', $nid);
+  // dpm($wrapper->type->value());
+  $context['message'] = t('Processing Node "%title"', array('%title' => $wrapper->title->value()));
+  // Xml files creation
+  $doc = new DOMDocument('1.0', 'utf-8');
+  $type = $doc->createElement($wrapper->type->value());
+  $doc->appendChild($type);
+  $title = $doc->createElement('title', $wrapper->title->value());
+  $type->appendChild($title);
+  $uuid = $doc->createElement('uuid', $wrapper->uuid->value());
+  $type->appendChild($uuid);
+  $myxml = $doc->saveXML();
+
+  $tmp_folder_name = $context['results']['tmp_folder_name'];
+  file_save_data($myxml, 'temporary://' . $tmp_folder_name . '/' . $wrapper->type->value() . '-' . $wrapper->uuid->value() . '.xml', FILE_EXISTS_REPLACE);
+
+  //sand some parameteres to next bach
+  $context['results']['tmp_folder_name'] = $tmp_folder_name;
+
+}
+
+/*
+ * Creation zip file and move it to public
+ * */
+function _mica_studies_export_create_zip_file(&$context) {
+
+  $context['message'] = t('Compressing XML files');
+  global $user;
+
+  $tmp_folder_name = $context['results']['tmp_folder_name'];
+  $tmp_folder_full_path = _mica_studies_export_get_tmp_folder_full_path($tmp_folder_name);
+
+  // Archive Xml's files
+  //retrieve files in directory to archive
+  $scanned_directory = array_diff(scandir($tmp_folder_full_path), array('..', '.'));
+
+  //create directories in public folder if not exist
+  if (!is_dir('public:///' . $user->name . '/export')) {
+    drupal_mkdir('public:///' . $user->name . '/export', NULL, TRUE, NULL);
+  }
+
+  $filename = drupal_realpath('public://').'/' . $user->name . '/export/' . $tmp_folder_name . '.zip';
+
+  //Archive the files
+  fopen($filename, 'w');
+
+  $zip = new ArchiverZip($filename);
+
+  foreach ($scanned_directory as $file) {
+    $zip->add($tmp_folder_full_path . '/' . $file);
+  }
+
+  fclose($filename);
+  $context['results']['tmp_folder_name'] = $tmp_folder_name;
+
+}
+
+/*
+ * Delete tmp Folder
+ */
+function _mica_studies_export_deletetmp(&$context) {
+  global $user;
+
+  $tmp_folder_name = $context['results']['tmp_folder_name'];
+  $tmp_folder_full_path = _mica_studies_export_get_tmp_folder_full_path($tmp_folder_name);
+
+  file_unmanaged_delete_recursive($tmp_folder_full_path);
+
+  drupal_set_message(
+    t("Your Exported Study file download : <a href='@file_url'>here</a> <br /> You can find this file in your <a href='@file_manager_url'>File manager</a>",
+      array(
+        '@file_url' => file_create_url('public:///' . $user->name . '/export/' . $tmp_folder_name . '.zip'),
+        '@file_manager_url' => url('user/' . $user->uid . '/imce')
+      )),
+    'status');
+}
+
+function _mica_studies_export_find_nodes($study_nid) {
+  $nids = array();
+  $nids[] = $study_nid;
+
+  $study_wrapper = entity_metadata_wrapper('node', $study_nid);
+  foreach ($study_wrapper->field_study_populations->getIterator() as $pop_wrapper) {
+    $nids[] = $pop_wrapper->nid->value();
+    foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
+      $nids[] = $dce_wrapper->nid->value();
+    }
+  }
+  foreach ($study_wrapper->field_investigators->getIterator() as $investigator_wrapper) {
+    $nids[] = $investigator_wrapper->nid->value();
+  }
+  foreach ($study_wrapper->field_contacts_ref->getIterator() as $contact_wrapper) {
+    $nids[] = $contact_wrapper->nid->value();
+  }
+
+  return $nids;
+}
