@@ -171,7 +171,6 @@ function _mica_studies_export_create_zip_file(&$context){
       $zip->add($tmppath.'/'.$file);
     }
 fclose($filename);
-
   }
 //sand some parameteres to next bach
   $context['results']['tmpfolder']=$tmppath;
