@@ -21,7 +21,7 @@ clean-solr:
 install-drush:
 	apt-get install -y php-pear
 	pear channel-discover pear.drush.org
-	pear install drush/drush
+	pear install drush/drush-5.9.0
 
 install-lessc: install-nodejs install-bootstrap-dependencies
 
