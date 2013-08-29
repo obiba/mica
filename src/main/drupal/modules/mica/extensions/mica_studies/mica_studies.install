@@ -218,6 +218,7 @@ function mica_studies_update_7700(&$update) {
  * Update Mica content types
  */
 function mica_studies_update_7802(&$update) {
+  _mica_studies_migrate_field_design();
   features_revert(array(
     'mica_studies' => array(
       'node',
@@ -258,4 +259,59 @@ function _mica_studies_config_blocks() {
   mica_core_set_block_node_type('study', 'mica_studies', 'study-datasets');
   mica_core_set_block_node_type('study', 'mica_studies', 'study-authorization');
 //  mica_core_set_block_node_type('study', 'mica_studies', 'study-menu');
+}
+
+function _mica_studies_migrate_field_design() {
+  // get all registry design
+  $result = db_select('field_data_field_design', 'f')
+    ->fields('f', array('entity_id'))
+    ->fields('f', array('revision_id'))
+    ->fields('f', array('language'))
+    ->condition('field_design_value', 'registry')
+    ->execute();
+
+  foreach ($result as $row) {
+    $exist = db_select('field_data_field_design_other_sp', 'f')
+      ->fields('f', array('entity_id'))
+      ->fields('f', array('field_design_other_sp_value'))
+      ->condition('entity_id', $row->entity_id)
+      ->condition('deleted', 0)
+      ->execute();
+
+    //verify if 'other' field already exist
+    if ($exist->rowCount() > 0) {
+      foreach ($exist as $res) {
+        //concatenation of the past value and new
+        db_update('field_data_field_design_other_sp')
+          ->fields(array('field_design_other_sp_value' => $res->field_design_other_sp_value . ', Registry Study Design'))
+          ->condition('entity_id', $res->entity_id)
+          ->condition('deleted', 0)
+          ->execute();
+      }
+    }
+    else {
+      // if not exist, insert a new one
+      db_insert('field_data_field_design_other_sp')
+        ->fields(array(
+        'entity_type' => 'node',
+        'bundle' => 'study',
+        'deleted' => 0,
+        'entity_id' => $row->entity_id,
+        'revision_id' => $row->revision_id,
+        'language' => $row->language,
+        'delta' => 0,
+        'field_design_other_sp_value' => 'Registry Study Design',
+      ))->execute();
+      //update his registry design
+      db_update('field_data_field_design')
+        ->fields(array('field_design_value' => 'other'))
+        ->condition('field_design_value', 'registry')
+        ->condition('entity_id', $row->entity_id)
+        ->execute();
+    }
+  }
+  //delete all registry design left
+  db_delete('field_data_field_design')
+    ->condition('field_design_value', 'registry')
+    ->execute();
 }
