@@ -34,7 +34,6 @@ dependencies[] = viewreference
 dependencies[] = views
 dependencies[] = views_bulk_operations
 dependencies[] = views_data_export
-datestamp = 1377613580
 features[corresponding_node_references][] = data_collection_event*field_dce_dataset*dataset*field_dataset_dces
 features[corresponding_node_references][] = dataset*field_dataset_studies*study*mica_dataset
 features[corresponding_node_references][] = dataset*field_dataset_variables*variable*field_dataset
