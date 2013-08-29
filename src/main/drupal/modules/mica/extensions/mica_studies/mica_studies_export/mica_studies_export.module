@@ -65,16 +65,16 @@ function mica_studies_export_batch_export($study) {
   $wrapper = entity_metadata_wrapper('node', $study);
   $operations = array();
   //Create /Tmp folder and pass the path
-  $operations[] = array('_mica_studies_export_create_tmp_folder',array());
+  $operations[] = array('_mica_studies_export_create_tmp_folder', array());
   // extract nid to export
   $nids = _mica_studies_export_find_nodes($study->nid);
   foreach ($nids as $nid) {
     $operations[] = array('_mica_studies_export_gen_xml', array($nid));
   }
   // Archive the files
-  $operations[] = array('_mica_studies_export_create_zip_file',array());
+  $operations[] = array('_mica_studies_export_create_zip_file', array());
   //  Delete tmp folder
-  $operations[] = array('_mica_studies_export_deletetmp',array());
+  $operations[] = array('_mica_studies_export_deletetmp', array());
 
   // prepare batch steps
   batch_set(array(
@@ -86,7 +86,6 @@ function mica_studies_export_batch_export($study) {
 
 }
 
-
 /*
  * Finish action
  * */
@@ -97,17 +96,19 @@ function mica_studies_export_bach_finished($success, $results, $operations) {
 /*
  *Create tmp folder
  * */
-function _mica_studies_export_create_tmp_folder(&$context){
+function _mica_studies_export_create_tmp_folder(&$context) {
 
-if(empty($context['results']['tmpfolder'])){
-  $context['message'] = t('Preparing process.....');
-  $tmp =  file_directory_temp();
-  $tmppath = $tmp.'/export-'.time();
-  drupal_mkdir($tmppath);
-  $tmp ='export-'.time();
-  $context['results']['tmpfolder'] = $tmppath;
-  $context['results']['tmp'] = $tmp;
+  if (empty($context['results']['tmpfolder'])) {
+    $context['message'] = t('Preparing process.....');
+    $tmp_folder_name = 'export-' . time();
+    drupal_mkdir(_mica_studies_export_get_tmp_folder_full_path($tmp_folder_name));
+
+    $context['results']['tmp_folder_name'] = $tmp_folder_name;
+  }
 }
+
+function _mica_studies_export_get_tmp_folder_full_path($tmp_file_name) {
+  return file_directory_temp() . '/' . $tmp_file_name;
 }
 
 /*
@@ -115,81 +116,81 @@ if(empty($context['results']['tmpfolder'])){
  * */
 function _mica_studies_export_gen_xml($nid, &$context) {
   $wrapper = entity_metadata_wrapper('node', $nid);
- // dpm($wrapper->type->value());
+  // dpm($wrapper->type->value());
   $context['message'] = t('Processing Node "@title"', array('@title' => $wrapper->title->value()));
   // Xml files creation
   $doc = new DOMDocument('1.0', 'utf-8');
   $type = $doc->createElement($wrapper->type->value());
   $doc->appendChild($type);
-  $title = $doc->createElement('title',$wrapper->title->value());
-    $type->appendChild($title);
-  $uuid = $doc->createElement('uuid',$wrapper->uuid->value());
+  $title = $doc->createElement('title', $wrapper->title->value());
+  $type->appendChild($title);
+  $uuid = $doc->createElement('uuid', $wrapper->uuid->value());
   $type->appendChild($uuid);
   $myxml = $doc->saveXML();
 
-  $tmp = $context['results']['tmp'];
-  $tmppath = '/tmp/'.$tmp;
+  $tmp_folder_name = $context['results']['tmp_folder_name'];
+  file_save_data($myxml, 'temporary://' . $tmp_folder_name . '/' . $wrapper->type->value() . '-' . $wrapper->uuid->value() . '.xml', FILE_EXISTS_REPLACE);
 
-  if(is_dir($tmppath)){
-    $myfile = file_save_data($myxml,'temporary://'.$tmp.'/export-'.$wrapper->type->value().'-'.$wrapper->nid->value().'.xml', FILE_EXISTS_REPLACE);
-
-  }
-  else {
-    dpm('error');
-  }
   //sand some parameteres to next bach
-  $context['results']['tmpfolder']= $tmppath;
-  $context['results']['tmp']=$tmp ;
+  $context['results']['tmp_folder_name'] = $tmp_folder_name;
+
 }
 
 /*
  * Creation zip file and move it to public
  * */
-function _mica_studies_export_create_zip_file(&$context){
+function _mica_studies_export_create_zip_file(&$context) {
 
   $context['message'] = t('Compressing XML files');
   global $user;
-  $tmppath =   $context['results']['tmpfolder'];
-  $tmp = $context['results']['tmp'];
+
+  $tmp_folder_name = $context['results']['tmp_folder_name'];
+  $tmp_folder_full_path = _mica_studies_export_get_tmp_folder_full_path($tmp_folder_name);
+
   // Archive Xml's files
-  //if directory exist
-  if(is_dir($tmppath)){
-    //retrieve files in directory to archive
-   $scanned_directory = array_diff(scandir($tmppath), array('..', '.'));
+  //retrieve files in directory to archive
+  $scanned_directory = array_diff(scandir($tmp_folder_full_path), array('..', '.'));
 
-   $filename = '/tmp/'.$tmp.'/'.$tmp.'.zip';
-    //create directories in public folder if not exist
-    if(!is_dir('public://'.'/export'))  drupal_mkdir('public://'.'/export');
-    if(!is_dir('public://'.'/export/'.$user->name)) drupal_mkdir('public://'.'/export/'.$user->name);
+  //create directories in public folder if not exist
+  if (!is_dir('public:///' . $user->name )) {
+    drupal_mkdir('public:///' . $user->name);
+  }
 
-    $filename = drupal_realpath('public://').'/export/'.$user->name.'/'.$tmp.'.zip';
-    //Archive the files
+  if (!is_dir('public:///' . $user->name . '/export')) {
+    drupal_mkdir('public:///' . $user->name . '/export');
+  }
+
+  $filename = drupal_realpath('public://').'/' . $user->name . '/export/' . $tmp_folder_name . '.zip';
+
+  //Archive the files
   fopen($filename, 'w');
   $zip = new Archiverzip($filename);
-  foreach( $scanned_directory as $file)
-    {
-      $zip->add($tmppath.'/'.$file);
-    }
-fclose($filename);
+  foreach ($scanned_directory as $file) {
+    $zip->add($tmp_folder_full_path . '/' . $file);
   }
-//sand some parameteres to next bach
-  $context['results']['tmpfolder']=$tmppath;
-  $context['results']['tmp']=$tmp;
-  $context['results']['username']=$user->name;
+  fclose($filename);
+  $context['results']['tmp_folder_name'] = $tmp_folder_name;
 
 }
 
 /*
  * Delete tmp Folder
  */
-function _mica_studies_export_deletetmp(&$context){
-  $tmppath =   $context['results']['tmpfolder'];
-  $tmp = $context['results']['tmp'];
-  $usename =$context['results']['username'];
-  file_unmanaged_delete_recursive($tmppath);
-  $filename = 'public://export/'.$usename.'/'.$tmp.'.zip';
-  $urlf = file_create_url($filename);
-  drupal_set_message(t("Your Exported Study file download : <a href='$urlf'>here</a> <br /> You can find this file in your <a href='?q=user/1/imce'>File manager</a> "), 'status');
+function _mica_studies_export_deletetmp(&$context) {
+  global $user;
+
+  $tmp_folder_name = $context['results']['tmp_folder_name'];
+  $tmp_folder_full_path = _mica_studies_export_get_tmp_folder_full_path($tmp_folder_name);
+
+  file_unmanaged_delete_recursive($tmp_folder_full_path);
+
+  drupal_set_message(
+    t("Your Exported Study file download : <a href='@file_url'>here</a> <br /> You can find this file in your <a href='@file_manager_url'>File manager</a>",
+      array(
+        '@file_url' => file_create_url('public:///' . $user->name . '/export/' . $tmp_folder_name . '.zip'),
+        '@file_manager_url' => url('user/' . $user->uid . '/imce')
+      )),
+    'status');
 }
 
 function _mica_studies_export_find_nodes($study_nid) {
