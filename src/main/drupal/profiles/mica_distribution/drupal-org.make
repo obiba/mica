@@ -73,6 +73,7 @@ projects[features_override] = 2.0-beta3
 
 projects[feeds][download][type] = git
 projects[feeds][download][revision] = ddee3f9
+projects[feeds][download][branch] = 7.x-2.x
 projects[feeds][patch][1107522-59] = http://drupal.org/files/feeds-empty-behavior-1107522-59.patch
 projects[feeds][patch][1107522-63] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-63.patch
 projects[feeds][patch][1107522-15] = http://drupal.org/files/ignore-empty-link-fields-1107522-60.patch
@@ -143,7 +144,7 @@ projects[menu_firstchild] = 1.1
 
 projects[menu_view_unpublished] = 1.0-beta3
 
-projects[mica] = 8.2-dev
+projects[mica] = 8.2-rc1
 
 projects[module_filter] = 1.8
 
