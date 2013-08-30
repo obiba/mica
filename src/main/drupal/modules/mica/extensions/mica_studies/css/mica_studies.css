@@ -18,6 +18,10 @@
 #block-mica-studies-study-general-design .field-name-field-design .field-item p:first-of-type {
   display: inline;
 }
+#block-mica-studies-study-populations .field-name-field-pop-select-criteria .field-item .inner-value p:first-of-type,
+#block-mica-studies-study-populations .field-name-field-pop-src-recruit .field-item .inner-value p:first-of-type {
+  display: inline;
+}
 #block-mica-studies-study-timeline .axis path,
 #block-mica-studies-study-timeline .axis line {
   fill: none;
