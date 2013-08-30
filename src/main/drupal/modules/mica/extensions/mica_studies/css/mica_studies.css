@@ -12,6 +12,9 @@
   float: left;
   margin: 10px;
 }
+#block-mica-studies-study-general-design .field-name-field-design .field-item .other-sub-title {
+  font-weight: bold;
+}
 #block-mica-studies-study-general-design .field-name-field-design .field-item p:first-of-type {
   display: inline;
 }
