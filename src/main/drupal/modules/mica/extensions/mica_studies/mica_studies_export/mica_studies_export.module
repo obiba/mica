@@ -190,9 +190,10 @@ function _mica_studies_export_create_zip_file(&$context) {
 
   //Archive the files
   fopen($filename, 'w');
-  $zip = new ArchiverZip($filename);
+  $zip = new ZipArchive;
+  $zip->open($filename);
   foreach ($scanned_directory as $file) {
-    $zip->add($tmp_folder_full_path . '/' . $file);
+    $zip->addFile($tmp_folder_full_path . '/' . $file,$file);
   }
 
   fclose($filename);
