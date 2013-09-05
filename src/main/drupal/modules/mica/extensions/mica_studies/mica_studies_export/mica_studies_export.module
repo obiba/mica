@@ -5,6 +5,7 @@
  */
 
 include_once('mica_studies_export_contact.inc');
+include_once('mica_studies_export_study.inc');
 
 /**
  * Implements hook_menu_local_tasks_alter().
@@ -70,32 +71,32 @@ function mica_studies_export_batch_export($study) {
   // extract nid to export
   $nids = _mica_studies_export_find_nodes($study->nid);
   foreach ($nids as $nid) {
-    _mica_studies_export_gen_xml($nid);
+  //  _mica_studies_export_gen_xml($nid);
     /*
      * Desactivation of Bach operation
      * */
-    // $operations[] = array('_mica_studies_export_gen_xml', array($nid));
+     $operations[] = array('_mica_studies_export_gen_xml', array($nid));
   }
   /*
      * Desactivation of Bach operation
      * */
   // Archive the files
-  // $operations[] = array('_mica_studies_export_create_zip_file', array());
+   $operations[] = array('_mica_studies_export_create_zip_file', array());
   //  Delete tmp folder
-  // $operations[] = array('_mica_studies_export_deletetmp', array());
+   $operations[] = array('_mica_studies_export_deletetmp', array());
 
   // prepare batch steps
 
   /*
     * Desactivation of Bach operation
     * */
-  /*
+
  batch_set(array(
    'operations' => $operations,
    'finished' => 'mica_studies_export_bach_finished',
- ));*/
+ ));
   $redirect = 'node/' . $nids[0];
-  // batch_process($redirect);
+   batch_process($redirect);
 
 }
 
@@ -117,6 +118,7 @@ function _mica_studies_export_create_tmp_folder(&$context) {
     drupal_mkdir(_mica_studies_export_get_tmp_folder_full_path($tmp_folder_name));
 
     $context['results']['tmp_folder_name'] = $tmp_folder_name;
+
   }
 }
 
@@ -128,32 +130,38 @@ function _mica_studies_export_get_tmp_folder_full_path($tmp_file_name) {
  * Xml generation
  * */
 //function _mica_studies_export_gen_xml($nid, &$context)
-function _mica_studies_export_gen_xml($nid) {
+function _mica_studies_export_gen_xml($nid,&$context) {
+  $tmp_folder_name = $context['results']['tmp_folder_name'];
   $wrapper = entity_metadata_wrapper('node', $nid);
 
   $type = $wrapper->type->value();
   switch ($type) {
     case 'study';
-      $data_set_to_export = mica_studies_export_study_fields_map($nid);
+      $xml = mica_studies_export_study_fields_map($nid);
       break;
     case 'population';
-
+      //  case 'population';
       break;
+    case 'data_collection_event';
       //  case 'data_collection_event';
 
       break;
     case 'contact';
-      $data_set_to_export = mica_studies_export_contact_fields_map($nid);
+      $xml = mica_studies_export_contact_fields_map($nid);
       break;
 
   }
   $context['message'] = t('Processing Node "%title"', array('%title' => $wrapper->title->value()));
 
-  if (isset($data_set_to_export)) {
-    $doc = _mica_studies_export_getxml($data_set_to_export);
-    // out put XML in this step the xmls are not generated and copied in zip files only Contact xml is generated
-    print_r($doc);
+  if (isset($xml)) {
+    file_save_data($xml, 'temporary://' . $tmp_folder_name . '/' . $type . '-' . $wrapper->uuid->value() . '.xml', FILE_EXISTS_REPLACE);
+
+    //sand some parameteres to next bach
+    $context['results']['tmp_folder_name'] = $tmp_folder_name;
+
+  /*  print_r($xml);
     die;
+  */
   }
 
 }
@@ -182,9 +190,7 @@ function _mica_studies_export_create_zip_file(&$context) {
 
   //Archive the files
   fopen($filename, 'w');
-
   $zip = new ArchiverZip($filename);
-
   foreach ($scanned_directory as $file) {
     $zip->add($tmp_folder_full_path . '/' . $file);
   }
@@ -214,44 +220,6 @@ function _mica_studies_export_deletetmp(&$context) {
     'status');
 }
 
-/*
-* Recursive Function to create XML
- */
-*
-function _mica_studies_export_getxml($data, $obj = FALSE, $dom = NULL) {
-
-  $is_first_level = FALSE;
-  if ($obj === FALSE) {
-    $dom = new DomDocument('1.0', 'utf-8');
-    $obj = $dom;
-    $is_first_level = TRUE;
-  }
-//Parent Attribute
-  if (is_array($data)) {
-
-    foreach ($data as $key => $item) {
-      $parent_data = $dom->createElement($key);
-      $parent_obj = $obj->appendChild($parent_data);
-      if ($key == 'contact') {
-        // Set uuid attribute in parent Content type
-        $parent_obj->setAttribute('uuid', $data['contact']['uuid']);
-      }
-      _mica_studies_export_getxml($item, $parent_obj, $dom);
-
-    }
-  }
-  // Child attribute
-  else {
-    $obj->appendChild($dom->createTextNode($data));
-  }
-
-  if ($is_first_level) {
-    $obj->formatOutput = TRUE;
-    return $obj->saveXML();
-  }
-  return $obj;
-
-}
 
 function _mica_studies_export_find_nodes($study_nid) {
   $nids = array();

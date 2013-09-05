@@ -7,75 +7,38 @@
 function mica_studies_export_contact_fields_map($nid) {
   $wrapper = entity_metadata_wrapper('node', $nid);
 
-//Mapping contact array Drupal_fields => Attribute
-  $fields_convertion =
-    array(
-      'field_address' => 'address',
-      'field_city' => 'city',
-      'field_contact_country' => 'country',
-      'field_contact_email' => 'email',
-      'field_contact_name' => 'contact-name',
-      'field_daco' => 'data-access-committee-member',
-      'field_department_unit' => 'department-unit',
-      'field_institution_name' => 'institution-name',
-      'field_postal_code' => 'postal-code',
-      'field_state' => 'state-province',
-      'field_telephone' => 'telephone',
-      'title_field' => 'title',
-      'nid' => 'node-id',
-      'type' => 'content-type',
-      'title' => 'title',
-      'language' => 'language',
-      'created' => 'date-created',
-      'changed' => 'date-changed',
-      'uuid' => 'uuid'
-    );
-//Rearrange hierarchical  data and retrieve  values
-  $fieldes = array();
-  foreach ($fields_convertion as $k => $v) {
-    $fieldes['contact'][$v] = $wrapper->{$k}->value();
-    if ($k == 'field_institution_name') {
-      $fieldes['contact']['institution']['institution-name'] = $wrapper->{$k}->value();
-      unset($fieldes['contact']['institution-name']);
-    }
-    if ($k == 'field_department_unit') {
-      $fieldes['contact']['Institution']['department-unit'] = $wrapper->{$k}->value();
-      unset($fieldes['contact']['department-unit']);
-    }
-    if ($k == 'field_contact_country') {
-      $fieldes['contact']['institution']['country'] = $wrapper->{$k}->value();
-      unset($fieldes['contact']['country']);
-    }
-    if ($k == 'field_city') {
-      $fieldes['contact']['institution']['city'] = $wrapper->{$k}->value();
-      unset($fieldes['contact']['city']);
-    }
-    if ($k == 'field_state') {
-      $fieldes['contact']['institution']['state-province'] = $wrapper->{$k}->value();
-      unset($fieldes['contact']['state-province']);
-    }
-    if ($k == 'field_address') {
-      $fieldes['contact']['institution']['address'] = $wrapper->{$k}->value();
-      unset($fieldes['contact']['address']);
-    }
-    if ($k == 'field_postal_code') {
-      $fieldes['contact']['institution']['postal-code'] = $wrapper->{$k}->value();
-      unset($fieldes['contact']['postal-code']);
-    }
+  $dom = new DomDocument('1.0', 'utf-8');
+  $root = $dom->createElement('contact');
+  $root->setAttribute('uuid', $wrapper->uuid->value());
+  $dom->appendChild($root);
+  $name_element = $root->appendChild($dom->createElement('name'));
+  $name_element->appendChild($dom->createElement('title'))->appendChild($dom->createTextNode($wrapper->field_contact_name->title->value()));
+  $name_element->appendChild($dom->createElement('given'))->appendChild($dom->createTextNode($wrapper->field_contact_name->given->value()));
+  $name_element->appendChild($dom->createElement('family'))->appendChild($dom->createTextNode($wrapper->field_contact_name->family->value()));
 
-    if ($k = 'created') {
-      $fieldes['contact']['timestamp']['date-created'] = $wrapper->{$k}->value();
-      unset($fieldes['contact']['date-created']);
-    }
-    if ($k = 'created') {
-      $fieldes['contact']['timestamp']['date-changed'] = $wrapper->{$k}->value();
-      unset($fieldes['contact']['date-changed']);
-    }
+  $root->appendChild($dom->createElement('data-access-committee-member'))->appendChild($dom->createTextNode($wrapper->field_daco->value()));
+  $root->appendChild($dom->createElement('title'))->appendChild($dom->createTextNode($wrapper->title_field->value()));
+  $root->appendChild($dom->createElement('email'))->appendChild($dom->createTextNode($wrapper->field_contact_email->value()));
+  $root->appendChild($dom->createElement('phone'))->appendChild($dom->createTextNode($wrapper->field_telephone->value()));
 
-    unset($fieldes['contact']['contact-name']['safe']);
+  $institution_element = $root->appendChild($dom->createElement('institution'));
+  $institution_element->appendChild($dom->createElement('name'))  ->appendChild( $dom->createTextNode($wrapper->field_institution_name->value()));
+  $institution_element->appendChild($dom->createElement('department-unit'))->appendChild($dom->createTextNode($wrapper->field_department_unit->value()));
+  $institution_element->appendChild($dom->createElement('address'))->appendChild($dom->createTextNode($wrapper->field_address->value()));
+  $institution_element->appendChild($dom->createElement('city'))->appendChild($dom->createTextNode($wrapper->field_city->value()));
+  $institution_element->appendChild($dom->createElement('state-province'))->appendChild($dom->createTextNode($wrapper->field_state->value()));
+  $institution_element->appendChild($dom->createElement('postal-code'))->appendChild($dom->createTextNode($wrapper->field_postal_code->value()));
 
-  }
+  $to_attrib = $institution_element->appendChild($dom->createElement('country'));
+  $to_attrib->setAttribute('code', $wrapper->field_contact_country->value());
+  $to_attrib->appendChild($dom->createTextNode($wrapper->field_contact_country->label())) ;
 
-  return $fieldes;
+  $timestamp_element = $root->appendChild($dom->createElement('time-stamp'));
+  $timestamp_element->appendChild($dom->createElement('date-created'))->appendChild($dom->createTextNode($wrapper->created->value()));
+  $timestamp_element->appendChild($dom->createElement('date-changed'))->appendChild($dom->createTextNode($wrapper->changed->value()));
+
+  $myxml = $dom->saveXML();
+
+  return $myxml;
 
 }
