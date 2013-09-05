@@ -193,7 +193,7 @@ function _mica_studies_export_create_zip_file(&$context) {
   $zip = new ZipArchive;
   $zip->open($filename);
   foreach ($scanned_directory as $file) {
-    $zip->addFile($tmp_folder_full_path . '/' . $file,$file);
+    $zip->addFile($tmp_folder_full_path . '/' . $file,$tmp_folder_name.'/'.$file);
   }
 
   fclose($filename);
