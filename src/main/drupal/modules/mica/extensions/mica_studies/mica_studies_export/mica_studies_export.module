@@ -6,6 +6,8 @@
 
 include_once('mica_studies_export_contact.inc');
 include_once('mica_studies_export_study.inc');
+include_once('mica_studies_export_population.inc');
+include_once('mica_studies_export_dce.inc');
 
 /**
  * Implements hook_menu_local_tasks_alter().
@@ -81,9 +83,9 @@ function mica_studies_export_batch_export($study) {
      * Desactivation of Bach operation
      * */
   // Archive the files
-   $operations[] = array('_mica_studies_export_create_zip_file', array());
+  $operations[] = array('_mica_studies_export_create_zip_file', array());
   //  Delete tmp folder
-   $operations[] = array('_mica_studies_export_deletetmp', array());
+  $operations[] = array('_mica_studies_export_deletetmp', array());
 
   // prepare batch steps
 
@@ -137,13 +139,13 @@ function _mica_studies_export_gen_xml($nid,&$context) {
   $type = $wrapper->type->value();
   switch ($type) {
     case 'study';
-      $xml = mica_studies_export_study_fields_map($nid);
+     $xml = mica_studies_export_study_fields_map($nid);
       break;
     case 'population';
-      //  case 'population';
+      $xml = mica_studies_export_population_fields_map($nid);
       break;
     case 'data_collection_event';
-      //  case 'data_collection_event';
+        $xml = mica_studies_export_dce_fields_map($nid);
 
       break;
     case 'contact';
@@ -159,9 +161,6 @@ function _mica_studies_export_gen_xml($nid,&$context) {
     //sand some parameteres to next bach
     $context['results']['tmp_folder_name'] = $tmp_folder_name;
 
-  /*  print_r($xml);
-    die;
-  */
   }
 
 }
