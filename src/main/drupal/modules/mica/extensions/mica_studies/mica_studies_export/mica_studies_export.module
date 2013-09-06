@@ -4,6 +4,11 @@
  * Mica Studies Export  file
  */
 
+include_once('mica_studies_export_contact.inc');
+include_once('mica_studies_export_study.inc');
+include_once('mica_studies_export_population.inc');
+include_once('mica_studies_export_dce.inc');
+
 /**
  * Implements hook_menu_local_tasks_alter().
  */
@@ -12,7 +17,6 @@ function mica_studies_export_menu_local_tasks_alter(&$data, $router_item, $root_
   $links = array();
 
   switch ($root_path) {
-
     case 'node/%':
       $node = $router_item['map']['1'];
       switch ($node->type) {
@@ -43,7 +47,7 @@ function mica_studies_export_menu_local_tasks_alter(&$data, $router_item, $root_
 function mica_studies_export_menu() {
 
   $items = array();
-
+//TODO My be add this link in tab to extend UI and have more parametres to perform this action
   $items['node/%node/export'] = array(
     'title' => 'Export nodes',
     //todo verify access to this action, button should be visible only if user has 'can export studies' permission.
@@ -69,20 +73,32 @@ function mica_studies_export_batch_export($study) {
   // extract nid to export
   $nids = _mica_studies_export_find_nodes($study->nid);
   foreach ($nids as $nid) {
-    $operations[] = array('_mica_studies_export_gen_xml', array($nid));
+  //  _mica_studies_export_gen_xml($nid);
+    /*
+     * Desactivation of Bach operation
+     * */
+     $operations[] = array('_mica_studies_export_gen_xml', array($nid));
   }
+  /*
+     * Desactivation of Bach operation
+     * */
   // Archive the files
   $operations[] = array('_mica_studies_export_create_zip_file', array());
   //  Delete tmp folder
   $operations[] = array('_mica_studies_export_deletetmp', array());
 
   // prepare batch steps
-  batch_set(array(
-    'operations' => $operations,
-    'finished' => 'mica_studies_export_bach_finished',
-  ));
+
+  /*
+    * Desactivation of Bach operation
+    * */
+
+ batch_set(array(
+   'operations' => $operations,
+   'finished' => 'mica_studies_export_bach_finished',
+ ));
   $redirect = 'node/' . $nids[0];
-  batch_process($redirect);
+   batch_process($redirect);
 
 }
 
@@ -104,6 +120,7 @@ function _mica_studies_export_create_tmp_folder(&$context) {
     drupal_mkdir(_mica_studies_export_get_tmp_folder_full_path($tmp_folder_name));
 
     $context['results']['tmp_folder_name'] = $tmp_folder_name;
+
   }
 }
 
@@ -114,25 +131,37 @@ function _mica_studies_export_get_tmp_folder_full_path($tmp_file_name) {
 /*
  * Xml generation
  * */
-function _mica_studies_export_gen_xml($nid, &$context) {
-  $wrapper = entity_metadata_wrapper('node', $nid);
-  // dpm($wrapper->type->value());
-  $context['message'] = t('Processing Node "%title"', array('%title' => $wrapper->title->value()));
-  // Xml files creation
-  $doc = new DOMDocument('1.0', 'utf-8');
-  $type = $doc->createElement($wrapper->type->value());
-  $doc->appendChild($type);
-  $title = $doc->createElement('title', $wrapper->title->value());
-  $type->appendChild($title);
-  $uuid = $doc->createElement('uuid', $wrapper->uuid->value());
-  $type->appendChild($uuid);
-  $myxml = $doc->saveXML();
-
+//function _mica_studies_export_gen_xml($nid, &$context)
+function _mica_studies_export_gen_xml($nid,&$context) {
   $tmp_folder_name = $context['results']['tmp_folder_name'];
-  file_save_data($myxml, 'temporary://' . $tmp_folder_name . '/' . $wrapper->type->value() . '-' . $wrapper->uuid->value() . '.xml', FILE_EXISTS_REPLACE);
+  $wrapper = entity_metadata_wrapper('node', $nid);
 
-  //sand some parameteres to next bach
-  $context['results']['tmp_folder_name'] = $tmp_folder_name;
+  $type = $wrapper->type->value();
+  switch ($type) {
+    case 'study';
+     $xml = mica_studies_export_study_fields_map($nid);
+      break;
+    case 'population';
+      $xml = mica_studies_export_population_fields_map($nid);
+      break;
+    case 'data_collection_event';
+        $xml = mica_studies_export_dce_fields_map($nid);
+
+      break;
+    case 'contact';
+      $xml = mica_studies_export_contact_fields_map($nid);
+      break;
+
+  }
+  $context['message'] = t('Processing Node "%title"', array('%title' => $wrapper->title->value()));
+
+  if (isset($xml)) {
+    file_save_data($xml, 'temporary://' . $tmp_folder_name . '/' . $type . '-' . $wrapper->uuid->value() . '.xml', FILE_EXISTS_REPLACE);
+
+    //sand some parameteres to next bach
+    $context['results']['tmp_folder_name'] = $tmp_folder_name;
+
+  }
 
 }
 
@@ -156,15 +185,14 @@ function _mica_studies_export_create_zip_file(&$context) {
     drupal_mkdir('public:///' . $user->name . '/export', NULL, TRUE, NULL);
   }
 
-  $filename = drupal_realpath('public://').'/' . $user->name . '/export/' . $tmp_folder_name . '.zip';
+  $filename = drupal_realpath('public://') . '/' . $user->name . '/export/' . $tmp_folder_name . '.zip';
 
   //Archive the files
   fopen($filename, 'w');
-
-  $zip = new ArchiverZip($filename);
-
+  $zip = new ZipArchive;
+  $zip->open($filename);
   foreach ($scanned_directory as $file) {
-    $zip->add($tmp_folder_full_path . '/' . $file);
+    $zip->addFile($tmp_folder_full_path . '/' . $file,$tmp_folder_name.'/'.$file);
   }
 
   fclose($filename);
@@ -191,6 +219,7 @@ function _mica_studies_export_deletetmp(&$context) {
       )),
     'status');
 }
+
 
 function _mica_studies_export_find_nodes($study_nid) {
   $nids = array();
