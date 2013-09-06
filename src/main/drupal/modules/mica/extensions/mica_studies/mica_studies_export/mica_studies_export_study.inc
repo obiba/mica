@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * mica_studies_export_contact.inc
+ * mica_studies_export_study.inc
  */
 
 function mica_studies_export_study_fields_map($nid){
