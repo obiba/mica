@@ -160,8 +160,8 @@ function _mica_studies_block_study_datasets($study) {
 
   // Sort by last column and remove this column
   uasort($rows, '_mica_studies_sort_dce_by_title');
-  foreach ($rows as $row) {
-    unset($row[2]);
+  foreach ($rows as $i => $row) {
+    unset($rows[$i][2]);
   }
 
   return array(
