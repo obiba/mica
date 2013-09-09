@@ -4,9 +4,14 @@
  * mica_studies_export_dce.inc
  */
 
-function mica_studies_export_dce_fields_map($nid) {
+function _mica_studies_export_dce_xml($nid, $type, $tmp_folder_name) {
 
   $wrapper = entity_metadata_wrapper('node', $nid);
+
+  $documents = $wrapper->field_dce_questionnaires->value();
+  if (isset($documents)) {
+    _mica_studies_export_copy_attachment_file($documents, $type, $tmp_folder_name);
+  }
 
   $dom = new DomDocument('1.0', 'utf-8');
   $root = $dom->createElement('data-collection-event');
