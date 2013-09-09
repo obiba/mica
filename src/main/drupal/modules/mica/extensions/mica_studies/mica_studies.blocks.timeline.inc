@@ -5,17 +5,16 @@ function _mica_studies_block_study_timeline($study) {
   // http://color-harmony.edelweis-art.com/
   $color_index = 0;
   $colors = array(
-    '#9a3034',
-    '#654641',
-    '#dc9351',
-    '#0078ad',
-    '#8db173',
-    '#88697b',
-    '#bca68e',
-    '#707175',
-    '#ff7901',
-    '#88697b',
-    '#99c1c3',
+    '#9a3034', // Dark red
+    '#654641', // Brown
+    '#dc9351', // Tan
+    '#0078ad', // Dark blue
+    '#8db173', // Light green
+    '#bca68e', // Light grey
+    '#707175', // Dark grey
+    '#ff7901', // Orange
+    '#88697b', // Violet
+    '#99c1c3', // Light blue
   );
 
   $nb_colors = count($colors);
