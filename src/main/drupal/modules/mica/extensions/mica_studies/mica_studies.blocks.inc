@@ -155,6 +155,9 @@ function _mica_studies_block_study_datasets($study) {
     return NULL;
   }
 
+  // sort rows ascending by name
+  uasort($rows, 'mica_studies_sort_by_name');
+
   return array(
     'subject' => t('Datasets') . '<a name="datasets"> </a>',
     'content' => array(
@@ -178,4 +181,13 @@ function _mica_studies_block_study_populations($study) {
     'subject' => t('Populations') . '<a name="populations"> </a>',
     'content' => array_filter($content),
   );
+}
+
+function mica_studies_sort_by_name($x, $y) {
+  $x_name = array();
+  preg_match('/.*>(.*)<\/a>/', $x[0], $x_name);
+  $y_name = array();
+  preg_match('/.*>(.*)<\/a>/', $y[0], $y_name);
+
+  return strcasecmp($x_name[1], $y_name[1]);
 }

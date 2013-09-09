@@ -4,6 +4,7 @@ function _mica_studies_dce_view(&$node, $view_mode, $langcode) {
   _mica_studies_dce_view_start_end_year($node);
   _mica_studies_dce_view_data_sources($node);
   _mica_studies_dce_view_samples($node);
+  _mica_studies_dce_view_datasets($node);
 
   // Breadcrumbs
   // retrieve first population of the dce
@@ -120,6 +121,32 @@ function _mica_studies_dce_view_samples(&$node) {
     $node->content['field_dce_bio_samples_management']['#access'] = FALSE;
   }
 
+}
+
+function _mica_studies_dce_view_datasets(&$node) {
+  if (!empty($node->content['field_dce_dataset'])) {
+    $datasets = array();
+    $keys = array_keys($node->content['field_dce_dataset']);
+    for ($i = 0; $i < count($keys); $i++) {
+      if (array_key_exists($i, $node->content['field_dce_dataset'])) {
+        $datasets[] = $node->content['field_dce_dataset'][$i];
+        unset($node->content['field_dce_dataset'][$i]);
+      }
+      else {
+        break;
+      }
+    }
+
+    uasort($datasets, '_mica_studies_dce_view_sort_dataset_names');
+    $i = 0;
+    foreach ($datasets as $d) {
+      $node->content['field_dce_dataset'][$i++] = $d;
+    }
+  }
+}
+
+function _mica_studies_dce_view_sort_dataset_names($x, $y) {
+  return strcasecmp($x['#title'], $y['#title']);
 }
 
 function _mica_studies_get_dce_study_nid($dce) {
