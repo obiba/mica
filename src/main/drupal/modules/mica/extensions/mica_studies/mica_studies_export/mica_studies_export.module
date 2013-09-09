@@ -9,9 +9,24 @@ include_once('mica_studies_export_study.inc');
 include_once('mica_studies_export_population.inc');
 include_once('mica_studies_export_dce.inc');
 
+function mica_studies_export_permission() {
+  return array(
+    'export studies' => array(
+      'title' => t('Export Studies'),
+      'description' => t('Allow users exporting studies')
+    )
+
+  );
+}
+
+function mica_studies_export_can_export($node) {
+  return node_access('view', $node) && user_access('export studies');
+}
+
 /**
  * Implements hook_menu_local_tasks_alter().
  */
+
 function mica_studies_export_menu_local_tasks_alter(&$data, $router_item, $root_path) {
 
   $links = array();
@@ -21,16 +36,16 @@ function mica_studies_export_menu_local_tasks_alter(&$data, $router_item, $root_
       $node = $router_item['map']['1'];
       switch ($node->type) {
         case 'study':
-          //todo verify access to this action, button should be visible only if user has 'can export studies' permission.
-          if (node_access('create', 'population')) {
-            $links['export-population'] = array(
+          if (mica_studies_export_can_export($node)) {
+            $links['export-study'] = array(
               '#theme' => 'menu_local_action',
               '#weight' => -30,
               '#link' => array(
-                'title' => t('Export'),
+                'title' => t('Export Node'),
                 'href' => 'node/' . $node->nid . '/export',
               ),
             );
+
           }
       }
       break;
@@ -44,15 +59,15 @@ function mica_studies_export_menu_local_tasks_alter(&$data, $router_item, $root_
 /**
  * Implements hook_menu().
  */
-function mica_studies_export_menu() {
 
+function mica_studies_export_menu() {
   $items = array();
 //TODO My be add this link in tab to extend UI and have more parametres to perform this action
   $items['node/%node/export'] = array(
     'title' => 'Export nodes',
     //todo verify access to this action, button should be visible only if user has 'can export studies' permission.
-    'access callback' => 'node_access',
-    'access arguments' => array('update', 1),
+    'access callback' => 'mica_studies_export_can_export',
+    'access arguments' => array(1),
     'page callback' => 'mica_studies_export_batch_export',
     'page arguments' => array(1),
     'weight' => 5,
@@ -108,7 +123,7 @@ function _mica_studies_export_create_tmp_folder(&$context) {
 
   if (empty($context['results']['tmpfolder'])) {
     $context['message'] = t('Preparing process.....');
-    $tmp_folder_name = 'export-' . date('Y-m-d_H_m_s',time());
+    $tmp_folder_name = 'export-' . date('Y-m-d_H_m_s', time());
     drupal_mkdir(_mica_studies_export_get_tmp_folder_full_path($tmp_folder_name));
 
     $context['results']['tmp_folder_name'] = $tmp_folder_name;
