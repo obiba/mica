@@ -4,10 +4,16 @@
  * mica_studies_export_study.inc
  */
 
-function mica_studies_export_study_fields_map($nid) {
+function _mica_studies_export_study_xml($nid, $type, $tmp_folder_name) {
 
   $wrapper = entity_metadata_wrapper('node', $nid);
 
+//Retrieve attachments files
+  $documents = $wrapper->field_documents->value();
+  if (isset($documents)) {
+    _mica_studies_export_copy_attachment_file($documents, $type, $tmp_folder_name);
+  }
+  //Xml mapper
   $dom = new DomDocument('1.0', 'utf-8');
   $root = $dom->createElement('study');
   $root->setAttribute('uuid', $wrapper->uuid->value());

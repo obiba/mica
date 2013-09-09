@@ -4,7 +4,7 @@
  * mica_studies_export_contact.inc
  */
 
-function mica_studies_export_contact_fields_map($nid) {
+function _mica_studies_export_contact_xml($nid) {
   $wrapper = entity_metadata_wrapper('node', $nid);
 
   $dom = new DomDocument('1.0', 'utf-8');
