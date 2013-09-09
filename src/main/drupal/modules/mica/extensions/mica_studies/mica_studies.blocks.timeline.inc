@@ -5,20 +5,20 @@ function _mica_studies_block_study_timeline($study) {
   // http://color-harmony.edelweis-art.com/
   $color_index = 0;
   $colors = array(
-    '#0078ad',
-    '#bca68e',
-    '#99c1c3',
-    '#8db173',
-    '#707175',
-    '#88697b',
-    '#dc9351',
-    '#654641',
     '#9a3034',
-    '#fed559',
-    '#eec9a9',
-    '#ff7901'
+    '#654641',
+    '#dc9351',
+    '#0078ad',
+    '#8db173',
+    '#88697b',
+    '#bca68e',
+    '#707175',
+    '#ff7901',
+    '#88697b',
+    '#99c1c3',
   );
 
+  $nb_colors = count($colors);
   $event_view = array();
   $pop_svg = array();
   $legend_items = array();
@@ -32,7 +32,7 @@ function _mica_studies_block_study_timeline($study) {
       $pop_title = $pop_wrapper->title->value();
 
       // See https://drupal.org/project/color_field for more color choices...
-      $color = _mica_studies_color_darken($colors[$color_index % 12], intval($color_index / 12) * 50);
+      $color = _mica_studies_color_darken($colors[$color_index % $nb_colors], intval($color_index / $nb_colors) * 50);
       $color_index++;
 
       $svg = "<svg width='25' height='25'><rect width='20' height='20' x='2' y='2' rx='5' ry='5' style='fill:$color;'/></svg>";
