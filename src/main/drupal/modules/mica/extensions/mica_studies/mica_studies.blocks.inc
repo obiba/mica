@@ -144,9 +144,12 @@ function _mica_studies_block_study_datasets($study) {
           $desc = truncate_utf8($dataset_wrapper->body->value->value(), 50, TRUE, TRUE);
         }
       }
+
+      // Adding an extra column that will be used to sort and then be removed
       $rows[] = array(
-        l($dataset_wrapper->title->value(), 'node/' . $dataset_wrapper->nid->value()),
-        $desc
+        l($dataset_wrapper->title->value(), 'node/' . $dataset_wrapper->nid->value()), //
+        $desc, //
+        $dataset_wrapper->title->value()
       );
     }
   }
@@ -155,8 +158,11 @@ function _mica_studies_block_study_datasets($study) {
     return NULL;
   }
 
-  // sort rows ascending by name
-  uasort($rows, 'mica_studies_sort_by_name');
+  // Sort by last column and remove this column
+  uasort($rows, '_mica_studies_sort_dce_by_title');
+  foreach ($rows as $row) {
+    unset($row[2]);
+  }
 
   return array(
     'subject' => t('Datasets') . '<a name="datasets"> </a>',
@@ -183,11 +189,6 @@ function _mica_studies_block_study_populations($study) {
   );
 }
 
-function mica_studies_sort_by_name($x, $y) {
-  $x_name = array();
-  preg_match('/.*>(.*)<\/a>/', $x[0], $x_name);
-  $y_name = array();
-  preg_match('/.*>(.*)<\/a>/', $y[0], $y_name);
-
-  return strcasecmp($x_name[1], $y_name[1]);
+function _mica_studies_sort_dce_by_title($x, $y) {
+  return strcasecmp($x[2], $y[2]);
 }
