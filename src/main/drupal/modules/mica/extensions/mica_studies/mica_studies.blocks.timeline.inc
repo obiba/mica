@@ -43,9 +43,12 @@ function _mica_studies_block_study_timeline($study) {
           $start_year = $dce_wrapper->field_dce_start_year->value();
           $end_year = $dce_wrapper->field_dce_end_year->value();
           $dce_nid = $dce_wrapper->nid->value();
+
           if (!empty($start_year) && !empty($end_year)) {
             $start_month = $dce_wrapper->field_dce_start_month->value();
             $end_month = $dce_wrapper->field_dce_end_month->value();
+            $created = $dce_wrapper->created->value();
+
             $events[] = array(
               'color' => $color,
               'pop_nid' => $pop_wrapper->nid->value(),
@@ -54,8 +57,9 @@ function _mica_studies_block_study_timeline($study) {
               'dce_title' => $dce_wrapper->title->value(),
               'start_year' => $start_year,
               'end_year' => $end_year,
-              'start_month' => empty($start_month) ? 1 : $start_month,
+              'start_month' => empty($start_month) ? 0 : $start_month -1,
               'end_month' => empty($end_month) ? 12 : $end_month,
+              'created' => empty($created) ? 0 : intval($created)
             );
             $event_view[] = _mica_studies_block_study_timeline_prepare_modal($dce_nid);
           }

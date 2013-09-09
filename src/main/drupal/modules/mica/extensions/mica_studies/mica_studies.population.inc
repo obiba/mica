@@ -18,17 +18,22 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
         }
       }
       $dce_nid = $dce_wrapper->nid->value();
+      $created = $dce_wrapper->created->value();
 
       $dce_rows[$dce_nid] = array(
         'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
         'desc' => $desc,
-        'start' => _mica_sudies_format_dce_year($dce_wrapper->field_dce_start_year->value(), $dce_wrapper->field_dce_start_month->value()),
-        'end' => _mica_sudies_format_dce_year($dce_wrapper->field_dce_end_year->value(), $dce_wrapper->field_dce_end_month->value()),
+        'start_year' => $dce_wrapper->field_dce_start_year->value(),
+        'start_month' => $dce_wrapper->field_dce_start_month->value(),
+        'end_year' => $dce_wrapper->field_dce_end_year->value(),
+        'end_month' => $dce_wrapper->field_dce_end_month->value(),
+        'created' => empty($created) ? 0 : intval($created)
       );
     }
   }
   if (!empty($dce_rows)) {
     uasort($dce_rows, '_mica_studies_sort_dce');
+    _mica_studies_population_normalize_rows($dce_rows);
     $node->content['data-collection-event'] = array(
       '#weight' => '100',
       '#theme' => 'table',
@@ -52,6 +57,18 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
       $breadcrumbs[] = l($breadcrumb[$i]['link_title'], $breadcrumb[$i]['link_path']);
     }
     drupal_set_breadcrumb($breadcrumbs);
+  }
+}
+
+function _mica_studies_population_normalize_rows(&$dce_rows) {
+  foreach ($dce_rows as &$dce_row) {
+    $dce_row['start'] = _mica_sudies_format_dce_year($dce_row['start_year'], $dce_row['start_month']);
+    $dce_row['end'] = _mica_sudies_format_dce_year($dce_row['end_year'], $dce_row['end_month']);
+    unset($dce_row['start_year']);
+    unset($dce_row['start_month']);
+    unset($dce_row['end_year']);
+    unset($dce_row['end_month']);
+    unset($dce_row['created']);
   }
 }
 

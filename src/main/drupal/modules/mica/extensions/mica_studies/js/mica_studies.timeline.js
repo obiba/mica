@@ -23,8 +23,8 @@
         eventData.push({
           id: events[e].dce_nid,
           title: events[e].dce_title,
-          starting_time: _convertToMonths(events[e].start_year - bounds.start, _normalizeMonth(events[e].start_month)),
-          ending_time: _convertToMonths(events[e].end_year - bounds.start, _normalizeMonth(events[e].end_month))
+          starting_time: _convertToMonths(events[e].start_year - bounds.start, events[e].start_month),
+          ending_time: _convertToMonths(events[e].end_year - bounds.start, events[e].end_month)
         });
       }
 
@@ -52,7 +52,7 @@
       var events = populations[p].events;
       for (var e = 0; e < events.length; e++) {
         startYear = Math.min(startYear, events[e].start_year);
-        maxYear = Math.max(maxYear, _convertToMonths(events[e].end_year-startYear, _normalizeMonth(events[e].end_month)));
+        maxYear = Math.max(maxYear, _convertToMonths(events[e].end_year-startYear, events[e].end_month));
       }
     }
 
@@ -80,10 +80,6 @@
       });
 
     d3.select("#timeline").append("svg").attr("width", width).datum(timelineData.data).call(chart);
-  }
-
-  function _normalizeMonth(month) {
-    return month == 1 ? 0 : month;
   }
 
   function _convertToMonths(year, month) {
