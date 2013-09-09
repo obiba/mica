@@ -1172,8 +1172,8 @@ function mica_studies_field_default_field_bases() {
         'questionnaires' => 'Questionnaires',
         'physical_measures' => 'Physical measures',
         'biological_samples' => 'Biological samples',
-        'administratives_databases' => 'Administrative Databases (external database linked with participant data)',
-        'others' => 'Others (Participant medical files, genealogical records, etc.)',
+        'administratives_databases' => 'Administrative Databases',
+        'others' => 'Others',
       ),
       'allowed_values_function' => '',
       'field_description_infos' => array(
@@ -1207,10 +1207,10 @@ function mica_studies_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'health_databases' => 'Health databases (e.g.: Hospitalization, Physican Billing, Drug Utilization)',
-        'vital_statisctics_databases' => 'Vital Statistics databases (e.g.: Death Registries)',
-        'socioeconomic_databases' => 'Socioeconomic databases (e.g.: Census)',
-        'environmental_databases' => 'Environmental databases (e.g.: Air pollutant geocoded data)',
+        'health_databases' => 'Health databases',
+        'vital_statisctics_databases' => 'Vital Statistics databases',
+        'socioeconomic_databases' => 'Socioeconomic databases',
+        'environmental_databases' => 'Environmental databases',
       ),
       'allowed_values_function' => '',
       'field_description_infos' => array(
