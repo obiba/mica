@@ -18,8 +18,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
         }
       }
       $dce_nid = $dce_wrapper->nid->value();
-      $dce_node = entity_metadata_wrapper('node', $dce_nid);
-      $created = $dce_node->created->value();
+      $created = $dce_wrapper->created->value();
 
       $dce_rows[$dce_nid] = array(
         'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
