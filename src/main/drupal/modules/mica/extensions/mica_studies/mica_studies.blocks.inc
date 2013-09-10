@@ -144,15 +144,24 @@ function _mica_studies_block_study_datasets($study) {
           $desc = truncate_utf8($dataset_wrapper->body->value->value(), 50, TRUE, TRUE);
         }
       }
+
+      // Adding an extra column that will be used to sort and then be removed
       $rows[] = array(
-        l($dataset_wrapper->title->value(), 'node/' . $dataset_wrapper->nid->value()),
-        $desc
+        l($dataset_wrapper->title->value(), 'node/' . $dataset_wrapper->nid->value()), //
+        $desc, //
+        $dataset_wrapper->title->value()
       );
     }
   }
 
   if (empty($rows)) {
     return NULL;
+  }
+
+  // Sort by last column and remove this column
+  uasort($rows, '_mica_studies_sort_dce_by_title');
+  foreach ($rows as $i => $row) {
+    unset($rows[$i][2]);
   }
 
   return array(
@@ -178,4 +187,8 @@ function _mica_studies_block_study_populations($study) {
     'subject' => t('Populations') . '<a name="populations"> </a>',
     'content' => array_filter($content),
   );
+}
+
+function _mica_studies_sort_dce_by_title($x, $y) {
+  return strcasecmp($x[2], $y[2]);
 }
