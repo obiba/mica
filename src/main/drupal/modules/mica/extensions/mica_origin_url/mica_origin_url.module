@@ -1,0 +1,48 @@
+<?php
+/**
+ * @file
+ * Mica Origin Url  file
+ */
+function mica_origin_url_menu() {
+  $items = array();
+  $items['admin/config/system/origin_url'] = array(
+    'title' => 'Mica Origin Url Filed',
+    'description' => 'Configure Origin Url',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mica_origin_url_admin_form'),
+    'access arguments' => array('administer origin_url'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'mica_origin_url.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements of hook_entity_presave().
+ */
+function mica_origin_url_entity_presave($entity, $entity_type) {
+  global $base_url;
+  if (isset($entity->nid)) {
+    $nid = $entity->nid;
+
+    $result = db_select('node', 't')
+      ->fields('t', array('nid', 'mica_origin_url'))
+      ->condition('nid', $nid)
+      ->execute()
+      ->fetchAssoc();
+
+    // verify and set mica_origin_url to current base_url
+    if ($entity_type === 'node' && (empty($result['mica_origin_url']) || $result['mica_origin_url'] == '')) {
+      // Update empty records.
+      db_update('node')
+        ->fields(array('mica_origin_url' => $base_url))
+        ->condition('nid', $nid)
+        ->execute();
+    }
+  }
+}
+
+function mica_origin_url_enable() {
+  _install_mica_origin_url_fields();
+}
