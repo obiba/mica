@@ -144,7 +144,7 @@ projects[menu_firstchild] = 1.1
 
 projects[menu_view_unpublished] = 1.0-beta3
 
-projects[mica] = 8.2-rc1
+projects[mica] = 8.2-dev
 
 projects[module_filter] = 1.8
 
@@ -182,6 +182,7 @@ projects[references][patch][1988436] = http://drupal.org/files/references-hook_n
 projects[search_api][version] = 1.6
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
+projects[search_api][patch][2085717] = https://drupal.org/files/non_array_token.patch
 
 projects[search_api_combined][version] = 1.2
 projects[search_api_combined][patch][1976924] = http://drupal.org/files/delete-combined-fields-1976924-3.patch
