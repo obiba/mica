@@ -30,26 +30,16 @@ function mica_origin_url_admin_form() {
  */
 
 function mica_origin_url_admin_sync_submit() {
-  _mica_origin_url_sync_table('node', 'mica_origin_url');
+  _mica_origin_url_sync_table();
   drupal_set_message(t('Generated missing Origin Url(s).'));
 }
 
-function _mica_origin_url_sync_table($table, $origin_url_field) {
-  // Fetch  nodes to update -> origin_url_field are empty .
+function _mica_origin_url_sync_table() {
+  // Fetch  nodes to update ->$origin_url_field are empty .
   global $base_url;
-  $result = db_select($table, 't')
-    ->fields('t', array('nid'))
-    ->condition(db_or()->condition($origin_url_field, '')->isNull($origin_url_field))
-    ->execute();
-
-  // Update empty records.
-  foreach ($result as $record) {
-    db_update($table)
-      ->fields(array($origin_url_field => $base_url))
-      ->condition('nid', $record->nid)
-      ->execute();
+  $nodes = entity_load('node', FALSE, array('mica_origin_url' => ''));
+  foreach ($nodes as $node) {
+    $node->mica_origin_url = $base_url;
+    node_save($node);
   }
-
 }
-
-
