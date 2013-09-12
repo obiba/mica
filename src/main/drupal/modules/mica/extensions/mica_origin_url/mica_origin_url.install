@@ -30,7 +30,7 @@ function mica_origin_url_schema_alter(&$schema = array()) {
     'length' => 255,
     'not null' => TRUE,
     'default' => '',
-    'description' => 'Original mica URL.',
+    'description' => 'Mica Origin URL',
   );
 }
 
@@ -52,6 +52,3 @@ function mica_origin_url_modules_installed($modules) {
   // supported core entity types is set correct.
   mica_origin_url_install();
 }
-
-
-

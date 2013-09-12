@@ -17,6 +17,7 @@ function _mica_studies_export_study_xml($nid, $type, $tmp_folder_name) {
   $dom = new DomDocument('1.0', 'utf-8');
   $root = $dom->createElement('study');
   $root->setAttribute('uuid', $wrapper->uuid->value());
+  $root->setAttribute('mica_origin_url', $wrapper->mica_origin_url->value());
   $dom->appendChild($root);
 
   $root->appendChild($dom->createElement('title'))->appendChild($dom->createTextNode($wrapper->title_field->value()));
@@ -43,10 +44,10 @@ function _mica_studies_export_study_xml($nid, $type, $tmp_folder_name) {
   $content_element->appendChild($dom->createElement('format'))
     ->appendChild($dom->createTextNode($wrapper->body->format->value()));
 
+
   $website_element = $dom->createElement('web-site');
   $root->appendChild($website_element);
-  $website_element->appendChild($dom->createTextNode($wrapper->field_website->url->value()));
-
+  $website_element->appendChild($dom->createTextNode($wrapper->field_website->value()?$wrapper->field_website->url->value():''));
   $study_design_element = $dom->createElement('study-designs');
   $root->appendChild($study_design_element);
 
