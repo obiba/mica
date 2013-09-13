@@ -22,11 +22,3 @@ function mica_origin_url_menu() {
 
   return $items;
 }
-
-function mica_origin_url_enable() {
-  mica_origin_url_install();
-}
-
-function mica_origin_url_disable() {
-  mica_origin_url_uninstall();
-}
