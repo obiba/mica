@@ -15,45 +15,11 @@ function mica_studies_export_permission() {
       'title' => t('Export Studies'),
       'description' => t('Allow users exporting studies')
     )
-
   );
 }
 
 function mica_studies_export_can_export($node) {
-  return node_access('view', $node) && user_access('export studies');
-}
-
-/**
- * Implements hook_menu_local_tasks_alter().
- */
-
-function mica_studies_export_menu_local_tasks_alter(&$data, $router_item, $root_path) {
-
-  $links = array();
-
-  switch ($root_path) {
-    case 'node/%':
-      $node = $router_item['map']['1'];
-      switch ($node->type) {
-        case 'study':
-          if (mica_studies_export_can_export($node)) {
-            $links['export-study'] = array(
-              '#theme' => 'menu_local_action',
-              '#weight' => -30,
-              '#link' => array(
-                'title' => t('Export Node'),
-                'href' => 'node/' . $node->nid . '/export',
-              ),
-            );
-
-          }
-      }
-      break;
-
-  }
-
-  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
-
+  return $node->type == 'study' && node_access('view', $node) && user_access('export studies');
 }
 
 /**
@@ -62,7 +28,6 @@ function mica_studies_export_menu_local_tasks_alter(&$data, $router_item, $root_
 
 function mica_studies_export_menu() {
   $items = array();
-//TODO My be add this link in tab to extend UI and have more parametres to perform this action
   $items['node/%node/export'] = array(
     'title' => 'Export nodes',
     //todo verify access to this action, button should be visible only if user has 'can export studies' permission.
@@ -99,14 +64,12 @@ function mica_studies_export_batch_export($study) {
   $operations[] = array('_mica_studies_export_deletetmp', array());
 
   // prepare batch steps
-
   batch_set(array(
     'operations' => $operations,
     'finished' => 'mica_studies_export_batch_finished',
   ));
   $redirect = 'node/' . $nids[0];
   batch_process($redirect);
-
 }
 
 /*
@@ -127,7 +90,6 @@ function _mica_studies_export_create_tmp_folder(&$context) {
     drupal_mkdir(_mica_studies_export_get_tmp_folder_full_path($tmp_folder_name));
 
     $context['results']['tmp_folder_name'] = $tmp_folder_name;
-
   }
 }
 
@@ -172,7 +134,6 @@ function _mica_studies_export_gen_xml($nid, &$context) {
     $context['results']['tmp_folder_name'] = $tmp_folder_name;
 
   }
-
 }
 
 /*
@@ -188,9 +149,7 @@ function _mica_studies_export_copy_attachment_file($documents, $type, $tmp_folde
       file_unmanaged_copy($document['uri'], $tmp_folder_name_docu, FILE_EXISTS_REPLACE);
 
     }
-
   }
-
 }
 
 /*
@@ -234,7 +193,6 @@ function _mica_studies_export_create_zip_file(&$context) {
     }
     fclose($filename);
     $context['results']['tmp_folder_name'] = $tmp_folder_name;
-
   }
 }
 
