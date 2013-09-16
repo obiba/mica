@@ -1,10 +1,10 @@
 <?php
 /**
  * @file
- * mica_export_population.inc
+ * mica_import_population.inc
  */
 
-function _mica_export_population_xml($nid) {
+function _mica_import_population_xml($nid) {
 
   $wrapper = entity_metadata_wrapper('node', $nid);
 
