@@ -1,0 +1,196 @@
+<?php
+/**
+ * @file
+ * Mica Studies Export  file
+ */
+
+function mica_export_permission() {
+  return module_invoke_all('mica_export_permission_parameters');
+
+}
+
+function mica_export_can_export($node) {
+  return module_invoke_all('mica_export_can_export_node', $node);
+}
+
+/**
+ * Implements hook_menu().
+ */
+
+function mica_export_menu() {
+
+  $param = module_invoke_all('mica_export_menu_parameters');
+
+  $items = array();
+  $items['node/%node/export'] = array(
+    'title' => 'Export to XML',
+    //todo verify access to this action, button should be visible only if user has 'can export studies' permission.
+    'access callback' => $param['access callback'] ? $param['access callback'] : 'mica_export_can_export',
+    'access arguments' => array(1),
+    'page callback' => $param['page callback'] ? $param['page callback'] : 'mica_export_batch_export',
+    'page arguments' => array(1),
+    'weight' => $param['weight'],
+    'type' => $param['type'] ? $param['type'] : MENU_LOCAL_ACTION,
+  );
+  return $items;
+}
+
+function mica_export_batch_export($node) {
+  if (is_numeric($node)) {
+    $node = node_load($node);
+  }
+
+  // extract nids to export
+  $nids = module_invoke_all('mica_export_find_related_nids', $node);
+  if (empty($nids)) {
+    return;
+  }
+
+  $operations = array();
+  //Create /Tmp folder and pass the path
+  $operations[] = array('_mica_export_create_tmp_folder', array($node->type));
+
+  foreach ($nids as $nid) {
+    $operations[] = array('_mica_export_gen_xml', array($nid));
+  }
+
+  // Archive the files
+  $operations[] = array('_mica_export_create_zip_file', array());
+  //  Delete tmp folder
+  $operations[] = array('_mica_export_deletetmp', array());
+
+  // prepare batch steps
+  batch_set(array(
+    'operations' => $operations,
+    'finished' => 'mica_export_batch_finished',
+  ));
+  $redirect = 'node/' . $nids[0];
+  batch_process($redirect);
+}
+
+/*
+ * Finish action
+ * */
+function mica_export_batch_finished($success, $results, $operations) {
+
+}
+
+/*
+ *Create tmp folder
+ * */
+function _mica_export_create_tmp_folder($type, &$context) {
+
+  if (empty($context['results']['tmpfolder'])) {
+    $context['message'] = t('Preparing process.....');
+    $tmp_folder_name = 'export-' . $type . '-' . date('Y-m-d_H_m_s', time());
+    drupal_mkdir(_mica_export_get_tmp_folder_full_path($tmp_folder_name));
+
+    $context['results']['tmp_folder_name'] = $tmp_folder_name;
+  }
+}
+
+function _mica_export_get_tmp_folder_full_path($tmp_file_name) {
+  return file_directory_temp() . '/' . $tmp_file_name;
+}
+
+/*
+ * Xml generation
+ * */
+//function _mica_export_gen_xml($nid, &$context)
+function _mica_export_gen_xml($nid, &$context) {
+  $tmp_folder_name = $context['results']['tmp_folder_name'];
+
+  $wrapper = entity_metadata_wrapper('node', $nid);
+
+  $xml = module_invoke_all('mica_export_to_xml', $wrapper->value(), $tmp_folder_name);
+
+  $context['message'] = t('Processing Node "%title"', array('%title' => $wrapper->title->value()));
+
+  if (!empty($xml)) {
+    $destination = 'temporary://' . $tmp_folder_name . '/' . $wrapper->type->value() . '-' . $wrapper->uuid->value() . '.xml';
+    file_unmanaged_save_data($xml, $destination, FILE_EXISTS_REPLACE);
+
+    //sand some parameters to next bach
+    $context['results']['tmp_folder_name'] = $tmp_folder_name;
+
+  }
+}
+
+/*
+ * Copy attachment files of each node
+ * */
+function mica_export_copy_attachment_file($documents, $type, $tmp_folder_name) {
+
+  if (!is_dir('temporary://' . $tmp_folder_name . '/' . $type . '-documents')) {
+    $tmp_folder_name_docu = 'temporary://' . $tmp_folder_name . '/' . $type . '-documents';
+    drupal_mkdir($tmp_folder_name_docu);
+
+    foreach ($documents as $document) {
+      file_unmanaged_copy($document['uri'], $tmp_folder_name_docu, FILE_EXISTS_REPLACE);
+
+    }
+  }
+}
+
+/*
+ * Creation zip file and move it to public
+ * */
+function _mica_export_create_zip_file(&$context) {
+
+  $context['message'] = t('Compressing XML files');
+  global $user;
+
+  $tmp_folder_name = $context['results']['tmp_folder_name'];
+  $tmp_folder_full_path = _mica_export_get_tmp_folder_full_path($tmp_folder_name);
+
+  // Archive Xml's files
+  //retrieve files in directory to archive
+  $scanned_directory = array_diff(scandir($tmp_folder_full_path), array('..', '.'));
+
+  //create directories in public folder if not exist
+  if (!is_dir('public:///' . $user->name . '/export')) {
+    drupal_mkdir('public:///' . $user->name . '/export', NULL, TRUE, NULL);
+  }
+
+  $filename = drupal_realpath('public://') . '/' . $user->name . '/export/' . $tmp_folder_name . '.zip';
+
+  //Archive the files
+  fopen($filename, 'w');
+  $zip = new ZipArchive;
+  $zip->open($filename);
+  foreach ($scanned_directory as $file) {
+
+    if (!is_dir($tmp_folder_full_path . '/' . $file)) {
+      $zip->addFile($tmp_folder_full_path . '/' . $file, $tmp_folder_name . '/' . $file);
+    }
+
+    elseif (is_dir($tmp_folder_full_path . '/' . $file)) {
+      $scanned_subdirectory = array_diff(scandir($tmp_folder_full_path . '/' . $file), array('..', '.'));
+      $zip->addEmptyDir($tmp_folder_full_path . '/' . $file . '/' . $file, $tmp_folder_name . '/' . $file);
+      foreach ($scanned_subdirectory as $subfile) {
+        $zip->addFile($tmp_folder_full_path . '/' . $file . '/' . $subfile, $tmp_folder_name . '/' . $file . '/' . $subfile);
+      }
+    }
+    fclose($filename);
+    $context['results']['tmp_folder_name'] = $tmp_folder_name;
+  }
+}
+
+/*
+ * Delete tmp Folder
+ */
+function _mica_export_deletetmp(&$context) {
+  global $user;
+  $tmp_folder_name = $context['results']['tmp_folder_name'];
+  $tmp_folder_full_path = _mica_export_get_tmp_folder_full_path($tmp_folder_name);
+
+  file_unmanaged_delete_recursive($tmp_folder_full_path);
+
+  drupal_set_message(
+    t("Your Exported Study file download : <a href='@file_url'>here</a> <br /> You can find this file in your <a href='@file_manager_url'>File manager</a>",
+      array(
+        '@file_url' => file_create_url('public:///' . $user->name . '/export/' . $tmp_folder_name . '.zip'),
+        '@file_manager_url' => url('user/' . $user->uid . '/imce')
+      )),
+    'status');
+}

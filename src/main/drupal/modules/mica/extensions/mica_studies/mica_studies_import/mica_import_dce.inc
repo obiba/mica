@@ -1,16 +1,16 @@
 <?php
 /**
  * @file
- * mica_export_dce.inc
+ * mica_import_dce.inc
  */
 
-function _mica_export_dce_xml($nid, $tmp_folder_name) {
+function _mica_import_dce_xml($nid, $type, $tmp_folder_name) {
 
   $wrapper = entity_metadata_wrapper('node', $nid);
 
   $documents = $wrapper->field_dce_questionnaires->value();
   if (isset($documents)) {
-    mica_export_copy_attachment_file($documents, 'dce', $tmp_folder_name);
+    mica_export_copy_attachment_file($documents, $type, $tmp_folder_name);
   }
 
   $dom = new DomDocument('1.0', 'utf-8');
