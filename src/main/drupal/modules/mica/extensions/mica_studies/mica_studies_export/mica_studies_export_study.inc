@@ -11,8 +11,13 @@ function _mica_export_study_xml($nid, $tmp_folder_name) {
 //Retrieve attachments files
   $documents = $wrapper->field_documents->value();
   if (isset($documents)) {
-    mica_export_copy_attachment_file($documents, 'study', $tmp_folder_name);
+    mica_export_copy_attachment_file($documents, 'study-documents', $tmp_folder_name);
   }
+  $logo = $wrapper->field_logo->value();
+  if (isset($logo)) {
+    mica_export_copy_attachment_file($logo, 'study-logo', $tmp_folder_name);
+  }
+
   //Xml mapper
   $dom = new DomDocument('1.0', 'utf-8');
   $root = $dom->createElement('study');
@@ -44,10 +49,9 @@ function _mica_export_study_xml($nid, $tmp_folder_name) {
   $content_element->appendChild($dom->createElement('format'))
     ->appendChild($dom->createTextNode($wrapper->body->format->value()));
 
-
   $website_element = $dom->createElement('web-site');
   $root->appendChild($website_element);
-  $website_element->appendChild($dom->createTextNode($wrapper->field_website->value()?$wrapper->field_website->url->value():''));
+  $website_element->appendChild($dom->createTextNode($wrapper->field_website->value() ? $wrapper->field_website->url->value() : ''));
   $study_design_element = $dom->createElement('study-designs');
   $root->appendChild($study_design_element);
 
@@ -127,12 +131,16 @@ function _mica_export_study_xml($nid, $tmp_folder_name) {
     $to_attrib->setAttribute('ref-uuid', $vc->uuid);
   }
 
-  $document_element = $dom->createElement('files');
-  $root->appendChild($document_element);
+  $files_element = $dom->createElement('files');
+  $root->appendChild($files_element);
+
+  $documents_element = $dom->createElement('documents');
+  $files_element->appendChild($documents_element);
+
   foreach ($wrapper->field_documents->value() as $document) {
 
-    $document_detail_element = $dom->createElement('file');
-    $document_element->appendChild($document_detail_element);
+    $document_detail_element = $dom->createElement('document');
+    $documents_element->appendChild($document_detail_element);
     $document_detail_element->appendChild($dom->createElement('filename'))
       ->appendChild($dom->createTextNode($document['filename']));
     $document_detail_element->appendChild($dom->createElement('url'))
@@ -151,6 +159,25 @@ function _mica_export_study_xml($nid, $tmp_folder_name) {
     $document_detail_element->setAttribute('ref-uuid', $document['uuid']);
 
   }
+
+  $logo_detail_element = $dom->createElement('logo');
+  $files_element->appendChild($logo_detail_element);
+  $logo_detail_element->appendChild($dom->createElement('filename'))
+    ->appendChild($dom->createTextNode($logo['filename']));
+  $logo_detail_element->appendChild($dom->createElement('url'))
+    ->appendChild($dom->createTextNode($logo['uri']));
+  $logo_detail_element->appendChild($dom->createElement('description'))
+    ->appendChild($dom->createTextNode($logo['description']));
+  $logo_detail_element->appendChild($dom->createElement('display'))
+    ->appendChild($dom->createTextNode($logo['display']));
+
+  $logo_detail_element->appendChild($dom->createElement('filemime'))
+    ->appendChild($dom->createTextNode($logo['filemime']));
+  $logo_detail_element->appendChild($dom->createElement('filesize'))
+    ->appendChild($dom->createTextNode($logo['filesize']));
+  $logo_detail_element->appendChild($dom->createElement('status'))
+    ->appendChild($dom->createTextNode($logo['status']));
+  $logo_detail_element->setAttribute('ref-uuid', $logo['uuid']);
 
   $myxml = $dom->saveXML();
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Mica Studies Export  file
+ * Mica Export  file
  */
 
 function mica_export_permission() {
@@ -10,7 +10,7 @@ function mica_export_permission() {
 }
 
 function mica_export_can_export($node) {
-  return module_invoke_all('mica_export_can_export_node', $node);
+  return current(module_invoke_all('mica_export_can_export_node', $node));
 }
 
 /**
@@ -23,11 +23,11 @@ function mica_export_menu() {
 
   $items = array();
   $items['node/%node/export'] = array(
-    'title' => 'Export to XML',
+    'title' => $param['title'],
     //todo verify access to this action, button should be visible only if user has 'can export studies' permission.
-    'access callback' => $param['access callback'] ? $param['access callback'] : 'mica_export_can_export',
+    'access callback' => 'mica_export_can_export',
     'access arguments' => array(1),
-    'page callback' => $param['page callback'] ? $param['page callback'] : 'mica_export_batch_export',
+    'page callback' =>'mica_export_batch_export',
     'page arguments' => array(1),
     'weight' => $param['weight'],
     'type' => $param['type'] ? $param['type'] : MENU_LOCAL_ACTION,
@@ -124,11 +124,15 @@ function mica_export_copy_attachment_file($documents, $type, $tmp_folder_name) {
   if (!is_dir('temporary://' . $tmp_folder_name . '/' . $type . '-documents')) {
     $tmp_folder_name_docu = 'temporary://' . $tmp_folder_name . '/' . $type . '-documents';
     drupal_mkdir($tmp_folder_name_docu);
-
-    foreach ($documents as $document) {
-      file_unmanaged_copy($document['uri'], $tmp_folder_name_docu, FILE_EXISTS_REPLACE);
-
+    if ($type != 'study-logo') {
+      foreach ($documents as $document) {
+        file_unmanaged_copy($document['uri'], $tmp_folder_name_docu, FILE_EXISTS_REPLACE);
+      }
     }
+    else {
+      file_unmanaged_copy($documents['uri'], $tmp_folder_name_docu, FILE_EXISTS_REPLACE);
+    }
+
   }
 }
 

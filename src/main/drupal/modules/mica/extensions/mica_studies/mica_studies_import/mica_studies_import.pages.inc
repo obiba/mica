@@ -1,6 +1,6 @@
 <?php
 
-function mica_import_form_upload() {
+function mica_studies_import_form_upload() {
   $rows = array();
 
   // data exporters are views with a display of type 'views_data_export'

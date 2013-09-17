@@ -26,7 +26,7 @@ function mica_studies_export_mica_export_permission_parameters() {
 }
 
 function mica_studies_export_mica_export_can_export_node($node) {
-  return $node->type == 'study' && node_access('view', $node) && user_access('export studies');
+  return (($node->type == 'study') && (node_access('view', $node) && user_access('export studies')));
 }
 
 /**
@@ -35,6 +35,7 @@ function mica_studies_export_mica_export_can_export_node($node) {
 
 function mica_studies_export_mica_export_menu_parameters() {
   $param = array(
+    'title' => 'Export Studies to XML Zipped Files',
     'weight' => 1
   );
   return $param;
@@ -69,8 +70,8 @@ function mica_studies_export_mica_export_to_xml($node, $temp_folder_path) {
     case 'contact':
       return _mica_export_contact_xml($node->nid);
     case 'population':
-      return _mica_export_population_xml($node->nid, $temp_folder_path);
-    case 'dce':
+      return _mica_export_population_xml($node->nid);
+    case 'data_collection_event':
       return _mica_export_dce_xml($node->nid, $temp_folder_path);
     default :
       return NULL;
