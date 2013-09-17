@@ -1,5 +1,10 @@
 <?php
 /**
+ * Include the Entity API implementation of the UUID API.
+ */
+module_load_include('inc', 'mica_origin_url', 'mica_origin_url.entity');
+
+/**
  * @file
  * Mica Origin Url  file
  */
@@ -16,33 +21,4 @@ function mica_origin_url_menu() {
   );
 
   return $items;
-}
-
-/**
- * Implements of hook_entity_presave().
- */
-function mica_origin_url_entity_presave($entity, $entity_type) {
-  global $base_url;
-  if (isset($entity->nid)) {
-    $nid = $entity->nid;
-
-    $result = db_select('node', 't')
-      ->fields('t', array('nid', 'mica_origin_url'))
-      ->condition('nid', $nid)
-      ->execute()
-      ->fetchAssoc();
-
-    // verify and set mica_origin_url to current base_url
-    if ($entity_type === 'node' && (empty($result['mica_origin_url']) || $result['mica_origin_url'] == '')) {
-      // Update empty records.
-      db_update('node')
-        ->fields(array('mica_origin_url' => $base_url))
-        ->condition('nid', $nid)
-        ->execute();
-    }
-  }
-}
-
-function mica_origin_url_enable() {
-  _install_mica_origin_url_fields();
 }

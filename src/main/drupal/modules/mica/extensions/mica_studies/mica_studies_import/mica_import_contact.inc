@@ -1,10 +1,10 @@
 <?php
 /**
  * @file
- * mica_export_contact.inc
+ * mica_import_contact.inc
  */
 
-function _mica_export_contact_xml($nid) {
+function _mica_import_contact_xml($nid) {
   $wrapper = entity_metadata_wrapper('node', $nid);
 
   $dom = new DomDocument('1.0', 'utf-8');

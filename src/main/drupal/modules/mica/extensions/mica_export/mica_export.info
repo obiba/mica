@@ -1,0 +1,7 @@
+name = Mica Export
+description = Mica Exportation
+core = 7.x
+package = Mica
+php = 5.2.4
+dependencies[] = mica_origin_url
+
