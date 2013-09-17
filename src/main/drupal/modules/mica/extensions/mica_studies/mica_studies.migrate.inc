@@ -118,21 +118,35 @@ function _mica_studies_migrate_content_types($study, $nb_studies, &$context) {
     'field_pop_age_min' => $study_wrapper->field_age_min->value(),
     'field_pop_age_max' => $study_wrapper->field_age_max->value(),
     'field_pop_country' => $study_wrapper->field_country->value(),
-    'field_pop_territory' => $study_wrapper->field_territory->value(),
+
+    'field_pop_territory_value' => $study_wrapper->field_territory->value(),
+    'field_pop_territory_format' => 'filtered_html',
+
     'field_pop_ethnic_origin' => $study_wrapper->field_ethnic_origin->value(),
     'field_pop_health_status' => $study_wrapper->field_health_status->value(),
-    'field_pop_partcipant_sel_supp_in' => $study_wrapper->field_partcipant_sel_supp_info->value(),
-    'field_pop_selection_others_sp' => $study_wrapper->field_selection_others_sp->value(),
+
+    'field_pop_partcipant_sel_supp_in_value' => $study_wrapper->field_partcipant_sel_supp_info->value(),
+    'field_pop_partcipant_sel_supp_in_format' => 'filtered_html',
+
+    'field_pop_selection_others_sp_value' => $study_wrapper->field_selection_others_sp->value(),
+    'field_pop_selection_others_sp_format' => 'filtered_html',
+
     'field_pop_src_recruit' => $pop_src_recruit,
     'field_pop_exist_study_part' => NULL,
     'field_pop_general_pop_recruit' => $pop_general_src_recruit,
     'field_pop_specific_pop' => $pop_specific_src_recruit,
     'field_pop_specific_pop_other_sp' => NULL,
     'field_pop_recruitment_other' => $study_wrapper->field_recruitment_other->value(),
-    'field_pop_recruit_supp_info' => $study_wrapper->field_recruitement_supp_info->value(),
+
+    'field_pop_recruit_supp_info_value' => $study_wrapper->field_recruitement_supp_info->value(),
+    'field_pop_recruit_supp_info_format' => 'filtered_html',
+
     'field_pop_participants_nb' => $study_wrapper->field_target_number_participants->value(),
     'field_pop_no_limits_participants' => $study_wrapper->field_no_limits_participants->value() ? 1 : 0,
-    'field_pop_participants_nb_supp_i' => $study_wrapper->field_target_nb_supp_info->value(),
+
+    'field_pop_participants_nb_supp_i_value' => $study_wrapper->field_target_nb_supp_info->value(),
+    'field_pop_participants_nb_supp_i_format' => 'filtered_html',
+
     'field_pop_participants_nb_s' => $study_wrapper->field_target_number_biosamples->value(),
     'field_pop_no_lim_participants_s' => $study_wrapper->field_no_limits_samples->value() ? 1 : 0,
     'uid' => $study->uid,
@@ -168,7 +182,10 @@ function _mica_studies_migrate_content_types($study, $nb_studies, &$context) {
       'field_dce_data_sources_sp' => $study_wrapper->field_data_sources_sp->value(),
       'field_dce_bio_samples_management' => $study_wrapper->field_bio_samples_management->value(),
       'field_dce_tissues_sp' => $study_wrapper->field_tissues_sp->value(),
-      'field_dce_samples_man_other_sp' => $study_wrapper->field_samples_man_other_sp->value(),
+
+      'field_dce_samples_man_other_sp_value' => $study_wrapper->field_samples_man_other_sp->value(),
+      'field_dce_samples_man_other_sp_format' => 'filtered_html',
+
       'field_dce_questionnaires' => $study_wrapper->field_questionnaires->value(),
       'field_dce_others' => $study_wrapper->field_documents->value(),
       'uid' => $study->uid,
@@ -203,7 +220,10 @@ function _mica_studies_migrate_content_types($study, $nb_studies, &$context) {
       'field_dce_data_sources_sp' => $study_wrapper->field_data_sources_sp->value(),
       'field_dce_bio_samples_management' => $study_wrapper->field_bio_samples_management->value(),
       'field_dce_tissues_sp' => $study_wrapper->field_tissues_sp->value(),
-      'field_dce_samples_man_other_sp' => $study_wrapper->field_samples_man_other_sp->value(),
+
+      'field_dce_samples_man_other_sp_value' => $study_wrapper->field_samples_man_other_sp->value(),
+      'field_dce_samples_man_other_sp_format' => 'filtered_html',
+
       'field_dce_questionnaires' => $study_wrapper->field_questionnaires->value(),
       'field_dce_others' => $study_wrapper->field_documents->value(),
       'uid' => $study->uid,
@@ -239,7 +259,10 @@ function _mica_studies_migrate_content_types($study, $nb_studies, &$context) {
       'field_dce_data_sources_sp' => $study_wrapper->field_data_sources_sp->value(),
       'field_dce_bio_samples_management' => $study_wrapper->field_bio_samples_management->value(),
       'field_dce_tissues_sp' => $study_wrapper->field_tissues_sp->value(),
-      'field_dce_samples_man_other_sp' => $study_wrapper->field_samples_man_other_sp->value(),
+
+      'field_dce_samples_man_other_sp_value' => $study_wrapper->field_samples_man_other_sp->value(),
+      'field_dce_samples_man_other_sp_format' => 'filtered_html',
+
       'field_dce_questionnaires' => $study_wrapper->field_questionnaires->value(),
       'field_dce_others' => $study_wrapper->field_documents->value(),
       'uid' => $study->uid,
@@ -266,7 +289,10 @@ function _mica_studies_migrate_content_types($study, $nb_studies, &$context) {
   $study_wrapper = entity_metadata_wrapper('node', $study2);
   $study_wrapper->field_study_start_year->set($study_wrapper->field_preparation_start_year->value());
   $study_wrapper->field_study_end_year->set($study_wrapper->field_followup_end_year->value());
-  $study_wrapper->field_target_nb_supp_info->set($sp_target_nb . ' ' . $sp_samples_nb);
+  $study_wrapper->field_target_nb_supp_info->set(array(
+    'value' => "$sp_target_nb $sp_samples_nb",
+    'format' => 'filtered_html'
+  ));
 
   $study_wrapper->save();
 
