@@ -4,55 +4,24 @@
  * mica_import_contact.inc
  */
 
-function _mica_import_contact_xml($nid) {
-  $wrapper = entity_metadata_wrapper('node', $nid);
+function _mica_study_import_get_contact_structure($dom, $node) {
 
-  $dom = new DomDocument('1.0', 'utf-8');
-  $root = $dom->createElement('contact');
-  $root->setAttribute('uuid', $wrapper->uuid->value());
-  $dom->appendChild($root);
-  $name_element = $root->appendChild($dom->createElement('name'));
-  $name_element->appendChild($dom->createElement('title'))
-    ->appendChild($dom->createTextNode($wrapper->field_contact_name->title->value()));
-  $name_element->appendChild($dom->createElement('given'))
-    ->appendChild($dom->createTextNode($wrapper->field_contact_name->given->value()));
-  $name_element->appendChild($dom->createElement('family'))
-    ->appendChild($dom->createTextNode($wrapper->field_contact_name->family->value()));
-
-  $root->appendChild($dom->createElement('data-access-committee-member'))
-    ->appendChild($dom->createTextNode($wrapper->field_daco->value()));
-  $root->appendChild($dom->createElement('title'))->appendChild($dom->createTextNode($wrapper->title_field->value()));
-  $root->appendChild($dom->createElement('email'))
-    ->appendChild($dom->createTextNode($wrapper->field_contact_email->value()));
-  $root->appendChild($dom->createElement('phone'))
-    ->appendChild($dom->createTextNode($wrapper->field_telephone->value()));
-
-  $institution_element = $root->appendChild($dom->createElement('institution'));
-  $institution_element->appendChild($dom->createElement('name'))
-    ->appendChild($dom->createTextNode($wrapper->field_institution_name->value()));
-  $institution_element->appendChild($dom->createElement('department-unit'))
-    ->appendChild($dom->createTextNode($wrapper->field_department_unit->value()));
-  $institution_element->appendChild($dom->createElement('address'))
-    ->appendChild($dom->createTextNode($wrapper->field_address->value()));
-  $institution_element->appendChild($dom->createElement('city'))
-    ->appendChild($dom->createTextNode($wrapper->field_city->value()));
-  $institution_element->appendChild($dom->createElement('state-province'))
-    ->appendChild($dom->createTextNode($wrapper->field_state->value()));
-  $institution_element->appendChild($dom->createElement('postal-code'))
-    ->appendChild($dom->createTextNode($wrapper->field_postal_code->value()));
-
-  $to_attrib = $institution_element->appendChild($dom->createElement('country'));
-  $to_attrib->setAttribute('code', $wrapper->field_contact_country->value());
-  $to_attrib->appendChild($dom->createTextNode($wrapper->field_contact_country->label()));
-
-  $timestamp_element = $root->appendChild($dom->createElement('time-stamp'));
-  $timestamp_element->appendChild($dom->createElement('date-created'))
-    ->appendChild($dom->createTextNode($wrapper->created->value()));
-  $timestamp_element->appendChild($dom->createElement('date-changed'))
-    ->appendChild($dom->createTextNode($wrapper->changed->value()));
-
-  $myxml = $dom->saveXML();
-
-  return $myxml;
+  $wrapper = entity_metadata_wrapper('node', $node);
+  // xpath with contact/name/title
+  $xpath = new DOMXPath($dom);
+  $wrapper->field_contact_name->title->set($xpath->query('/contact/name/title')->item(0)->nodeValue);
+  $wrapper->field_contact_name->given->set($xpath->query('/contact/name/given')->item(0)->nodeValue);
+  $wrapper->field_contact_name->family->set($xpath->query('/contact/name/family')->item(0)->nodeValue);
+  $wrapper->field_daco->set($xpath->query('/contact/data-access-committee-member')->item(0)->nodeValue);
+  $wrapper->title->set($xpath->query('/contact/title')->item(0)->nodeValue);
+  $wrapper->field_contact_email->set($xpath->query('/contact/email')->item(0)->nodeValue);
+  $wrapper->field_telephone->set($xpath->query('/contact/phone')->item(0)->nodeValue);
+  $wrapper->field_institution_name->set($xpath->query('/contact/institution/name')->item(0)->nodeValue);
+  $wrapper->field_department_unit->set($xpath->query('/contact/institution/department-unit')->item(0)->nodeValue);
+  $wrapper->field_address->set($xpath->query('/contact/institution/address')->item(0)->nodeValue);
+  $wrapper->field_city->set($xpath->query('/contact/institution/city')->item(0)->nodeValue);
+  $wrapper->field_postal_code->set($xpath->query('/contact/institution/state-province')->item(0)->nodeValue);
+  $wrapper->field_state->set($xpath->query('/contact/institution/postal-code')->item(0)->nodeValue);
+  $wrapper->field_contact_country->set($xpath->query('/contact/institution/country')->item(0)->getAttribute("code"));
 
 }

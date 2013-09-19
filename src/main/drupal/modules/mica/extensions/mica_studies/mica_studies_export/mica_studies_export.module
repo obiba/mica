@@ -35,7 +35,7 @@ function mica_studies_export_mica_export_can_export_node($node) {
 
 function mica_studies_export_mica_export_menu_parameters() {
   $param = array(
-    'title' => 'Export Studies to XML Zipped Files',
+    'title' => 'Export Studies from Zip Files',
     'weight' => 1
   );
   return $param;

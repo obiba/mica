@@ -3,7 +3,6 @@
  * @file
  * Mica Import  file
  */
-
 function mica_import_permission() {
   return module_invoke_all('mica_import_permission_parameters');
 
@@ -61,7 +60,8 @@ function mica_import_upload_form_submit($form, &$form_state) {
   // Save file status.
   file_save($file);
   // Set a response to the user.
-  drupal_set_message(t('The file has been uploaded and the ZIP XML\'s has been imported, filename: @filename.', array('@filename' => $file->filename)));
+  drupal_set_message(t('The file ZIP has been uploaded, filename: @filename.', array('@filename' => $file->filename)));
+
 }
 
 function mica_import_upload_form_validate($form, &$form_state) {
@@ -72,16 +72,23 @@ function mica_import_upload_form_validate($form, &$form_state) {
 
   // If the file passed validation:
   if ($file) {
-    $directory = 'public://'. $user->name . '/export';
+    $directory = 'public://' . $user->name . '/export';
     if (!is_dir($directory)) {
       drupal_mkdir($directory, NULL, TRUE, NULL);
     }
 
     // Move the file, into the Drupal file system
-    if ($file = file_move($file, $directory,FILE_EXISTS_RENAME)) {
+    if ($file = file_move($file, $directory, FILE_EXISTS_RENAME)) {
       // Save the file for use in the submit handler.
       $form_state['storage']['file'] = $file;
-    _mica_import_unzip_file($file);
+      if ($path_file = _mica_import_unzip_file($file)) {
+        if (is_dir($path_file)) {
+
+          _mica_import_batch_import($path_file);
+
+          // module_invoke_all('mica_import_parse_xml', $path_file);
+        }
+      }
 
     }
     else {
@@ -98,17 +105,124 @@ function mica_import_upload_form_validate($form, &$form_state) {
  * @param $file Object send by form upload
  *
  * */
-function _mica_import_unzip_file($file){
+function _mica_import_unzip_file($file) {
   if ($wrapper = file_stream_wrapper_get_instance_by_uri($file->uri)) {
     $file_path = $wrapper->realpath();
     $zip = new ZipArchive();
     $res = $zip->open($file_path);
-    if ($res == ZipArchive::ER_OPEN) {
-      $zip->extractTo('temporary://'.$file->filename);
-    } else {
-      form_set_error('file', t('Failed to Unzip file'));
+    if ($res === TRUE) {
+      $to_path_file = file_stream_wrapper_get_instance_by_uri('temporary://')->realpath();
+      $zip->extractTo($to_path_file);
+    }
+    else {
+      switch ($res) {
+        case $res == ZipArchive::ER_EXISTS:
+          $error_zip = 'File already exists';
+          break;
+        case $res == ZipArchive::ER_INCONS:
+          $error_zip = 'Zip archive inconsistent';
+          break;
+        case $res == ZipArchive::ER_INVAL:
+          $error_zip = 'Invalid argument';
+          break;
+        case $res == ZipArchive::ER_MEMORY:
+          $error_zip = 'Malloc failure';
+          break;
+        case $res == ZipArchive::ER_NOENT:
+          $error_zip = 'No such file';
+          break;
+        case $res == ZipArchive::ER_NOZIP:
+          $error_zip = 'Not a zip archive';
+          break;
+        case $res == ZipArchive::ER_OPEN:
+          $error_zip = 'Can\'t open file, error file path';
+          break;
+        case $res == ZipArchive::ER_READ:
+          $error_zip = 'Read error';
+          break;
+        case $res == ZipArchive::ER_SEEK:
+          $error_zip = 'Seek error';
+          break;
+        default:
+          $error_zip = 'Unknown error';
+
+      }
+
+      form_set_error('file', t("Failed to Unzip file, system  error : $error_zip"));
+      return FALSE;
     }
     $zip->close();
+    return $to_path_file . DIRECTORY_SEPARATOR . substr($file->filename, 0, -4);
+  }
+  return FALSE;
+}
+
+function _mica_import_batch_import($path) {
+  $operations = array();
+  $scanned_directory = array_diff(scandir($path), array('..', '.'));
+  foreach ($scanned_directory as $key => $file) {
+    $file_xml = $path . DIRECTORY_SEPARATOR . $file;
+    if (is_file($file_xml)) {
+      $operations[] = array('_mica_import_create_node', array($file_xml));
+
+    }
+
+  }
+
+  // prepare batch steps
+  batch_set(array(
+    'operations' => $operations,
+    'finished' => 'mica_import_batch_finished',
+  ));
+  $redirect = 'studies';
+  batch_process($redirect);
+
+}
+
+function _mica_import_create_node($file_xml, &$context) {
+  global $user;
+  $context['message'] = t('Extract information from %file_xml', array('file_xml' => $file_xml));
+  $dom = new DOMDocument();
+  $dom->load($file_xml);
+  $current_document = $dom->documentElement;
+  $type_node = $current_document->nodeName;
+  if ($current_document->hasAttribute("uuid")) {
+    $uuid = $current_document->getAttribute("uuid");
+    $parm = array(
+      'uuid' => $uuid
+    );
+
+    $node = NULL;
+    if (entity_load('node', FALSE, $parm)) {
+      dpm('node exist to update');
+    }
+    else {
+
+      $infos = array(
+        'type' => $type_node,
+        'uid' => $user->uid,
+        'status' => NODE_NOT_PUBLISHED,
+        'menu' => '',
+        'uuid' => $uuid,
+        'mica_origin_url' => 'http://originaire'
+        //TODO origin url
+      );
+
+      // Creates a wrapper object without inserting it to the DB
+      $wrapper = entity_property_values_create_entity('node', $infos);
+      $node = $wrapper->value();
+
+    }
+    //Update new_node with correct fields
+    module_invoke_all('mica_import_set_node', $dom, $node);
+    if (isset($wrapper)) {
+      $wrapper->save();
+    }
   }
 
 }
+
+function mica_import_batch_finished() {
+
+}
+
