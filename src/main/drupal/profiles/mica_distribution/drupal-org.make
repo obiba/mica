@@ -72,12 +72,12 @@ projects[features][patch][1689598] = http://drupal.org/files/field_display_label
 projects[features_override] = 2.0-beta3
 
 projects[feeds][download][type] = git
-projects[feeds][download][revision] = ddee3f9
+projects[feeds][download][revision] = 1383713
 projects[feeds][download][branch] = 7.x-2.x
 projects[feeds][patch][1107522-59] = http://drupal.org/files/feeds-empty-behavior-1107522-59.patch
 projects[feeds][patch][1107522-63] = http://drupal.org/files/ignore-empty-taxonomy-terms-1107522-63.patch
 projects[feeds][patch][1107522-15] = http://drupal.org/files/ignore-empty-link-fields-1107522-60.patch
-projects[feeds][patch][1286912] = http://drupal.org/files/feeds-existing-entity-id-hook-1286912-6.patch
+projects[feeds][patch][1286912] = https://drupal.org/files/feeds-existing-entity-id-hook-1286912-8.patch
 
 projects[feeds_tamper][download][type] = git
 projects[feeds_tamper][download][revision] = 23f9a3c
@@ -87,7 +87,7 @@ projects[feeds_tamper][patch][1416700] = http://drupal.org/files/1416700-4-feeds
 projects[field_display_label][version] = 1.2
 projects[field_display_label][patch][1689574] = http://drupal.org/files/field_display_label_i18n_field-1689574-6.patch
 
-projects[field_group][version] = 1.1
+projects[field_group][version] = 1.2
 projects[field_group][patch][1175102] = http://drupal.org/files/description_translation-1175102-16.patch
 
 projects[field_permissions] = 1.0-beta2
@@ -105,7 +105,7 @@ projects[http_client] = 2.4
 projects[i18n][version] = 1.7
 projects[i18n][patch][1662884] = http://drupal.org/files/support_multiple_translation_modes-1662884-1.patch
 
-projects[image_url_formatter] = 1.0
+projects[image_url_formatter] = 1.4
 
 projects[imce] = 1.7
 
@@ -236,7 +236,7 @@ projects[xmlsitemap] = 2.0-rc2
 ; Themes
 ; ---------
 
-projects[bootstrap] = 2.1
+projects[bootstrap] = 2.2
 
 
 ; Libraries
