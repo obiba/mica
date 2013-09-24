@@ -105,6 +105,9 @@ prod: set-distribution-version drush-make-prod prepare-mica-distribution htacces
 
 dev: drush-make-dev mica-install prepare-mica-distribution inject-version-info set-distribution-version htaccess
 
+comment-taxonomy-import:
+	sed -i 's/\$$operations = array_merge/\/\/\$$operations = array_merge/'  target/mica-dev/profiles/mica_distribution/mica_distribution.profile
+
 drush-make-prod:
 	drush make --prepare-install src/main/drupal/profiles/mica_distribution/build-mica_distribution.make target/$(micadir) && \
 	chmod -R a+w target/$(micadir)/sites/default
