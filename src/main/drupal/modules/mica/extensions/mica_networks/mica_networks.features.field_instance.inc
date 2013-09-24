@@ -654,8 +654,9 @@ function mica_networks_field_default_field_instances() {
       ),
       'left_area' => array(
         'label' => 'above',
+        'module' => 'mica_core',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'node_reference_url_or_plain',
         'weight' => 2,
       ),
       'right_area' => array(
