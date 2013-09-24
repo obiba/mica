@@ -649,7 +649,13 @@ class RangeTerm extends AbstractTerm {
   }
 
   function checkStats() {
-    return TRUE;
+    $stats = $this->stats();
+    foreach ($stats as $study_id => $stat) {
+      if (isset($stat['count']) && $stat['count'] != 0) {
+        return TRUE;
+      }
+    }
+    return FALSE;
   }
 }
 

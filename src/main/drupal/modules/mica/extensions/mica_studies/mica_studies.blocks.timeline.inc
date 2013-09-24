@@ -6,7 +6,7 @@ function _mica_studies_block_study_timeline($study) {
   $color_index = 0;
   $colors = array(
     '#9a3034', // Dark red
-    '#654641', // Brown
+    '#886e6a', // Brownish-violet
     '#dc9351', // Tan
     '#0078ad', // Dark blue
     '#8db173', // Light green
@@ -57,7 +57,7 @@ function _mica_studies_block_study_timeline($study) {
               'dce_title' => $dce_wrapper->title->value(),
               'start_year' => $start_year,
               'end_year' => $end_year,
-              'start_month' => empty($start_month) ? 0 : $start_month -1,
+              'start_month' => empty($start_month) ? 0 : $start_month - 1,
               'end_month' => empty($end_month) ? 12 : $end_month,
               'created' => empty($created) ? 0 : intval($created)
             );

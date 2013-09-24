@@ -3100,7 +3100,7 @@ function mica_studies_field_default_field_instances() {
     'bundle' => 'study',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Enter the Contact full name. You will be able to edit these Contacts once the Study has been saved.',
+    'description' => 'Enter the Contact full name. You will be able to edit these Contacts once the Study will be saved.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -4260,7 +4260,7 @@ If the study is completed, enter the final number of participants that have prov
   t('End Month');
   t('End Year');
   t('Enter a brief data collection event description.');
-  t('Enter the Contact full name. You will be able to edit these Contacts once the Study has been saved.');
+  t('Enter the Contact full name. You will be able to edit these Contacts once the Study will be saved.');
   t('Enter the Investigator full name. You will be able to edit these Investigators once the Study will be saved.');
   t('Enter the number of participants that should provide biological samples from which DNA could be extracted. If the study is completed, enter the final number of participants that have provided biological samples from which DNA could be extracted. ');
   t('Ethnic Origin');
