@@ -323,9 +323,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
               }
               else {
                 // If has hamonization
-                $has_harmonization = _mica_datasets_has_harmonization($node->nid);
-
-                if ($has_harmonization) {
+                if (_mica_datasets_has_harmonization($node->nid)) {
                   $data['actions']['output'][$key]['#link']['localized_options'] = array(
                     'attributes' => array('class' => 'highlight')
                   );
@@ -338,33 +336,35 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
             }
           }
 
-          // variables
-          $links['view-variable'] = array(
-            '#weight' => 30,
-            '#theme' => 'menu_local_action',
-            '#link' => array(
-              'title' => t('Variables'),
-              'href' => 'variable-search',
-              'localized_options' => array(
-                'query' => array(
-                  'f[0]' => 'field_dataset:' . $node->nid
-                ),
-                'attributes' => array(
-                  'class' => 'highlight',
+          // If dataset has has variables
+          if (_mica_datasets_has_variables($node->nid)) {
+            // variables
+            $links['view-variable'] = array(
+              '#weight' => 30,
+              '#theme' => 'menu_local_action',
+              '#link' => array(
+                'title' => t('Variables'),
+                'href' => 'variable-search',
+                'localized_options' => array(
+                  'query' => array(
+                    'f[0]' => 'field_dataset:' . $node->nid
+                  ),
+                  'attributes' => array(
+                    'class' => 'highlight',
+                  ),
                 ),
               ),
-            ),
-          );
+            );
 
-          $links['export-variable-csv'] = array(
-            '#theme' => 'menu_local_action',
-            '#weight' => 55,
-            '#link' => array(
-              'title' => t('Download CSV'),
-              'href' => 'variable-csv/' . $node->nid,
-            ),
-          );
-
+            $links['export-variable-csv'] = array(
+              '#theme' => 'menu_local_action',
+              '#weight' => 55,
+              '#link' => array(
+                'title' => t('Download CSV'),
+                'href' => 'variable-csv/' . $node->nid,
+              ),
+            );
+          }
         }
       }
       break;
@@ -696,6 +696,14 @@ function _mica_datasets_has_harmonization($dataset_nid) {
     array(':dataset_nid' => $dataset_nid))->rowCount();
 
   return $nb_sva == 1;
+}
+
+function _mica_datasets_has_variables($dataset_nid) {
+  $nb_variables = db_query('SELECT field_dataset_variables_nid FROM {field_data_field_dataset_variables}
+    WHERE entity_id = :dataset_nid LIMIT 1',
+    array(':dataset_nid' => $dataset_nid))->rowCount();
+
+  return $nb_variables == 1;
 }
 
 /**
