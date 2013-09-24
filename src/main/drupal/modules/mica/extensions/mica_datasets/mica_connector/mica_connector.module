@@ -240,7 +240,7 @@ function mica_connector_insert(array $values) {
  *      or NULL.
  */
 function mica_connector_get_connection_info($id = NULL) {
-  $connections = & drupal_static(__FUNCTION__);
+  $connections = &drupal_static(__FUNCTION__);
 
   if (!isset($connections)) {
     $connections = module_invoke_all('mica_connector_connection_info');
