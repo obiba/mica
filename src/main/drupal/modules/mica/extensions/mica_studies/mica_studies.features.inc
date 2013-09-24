@@ -140,29 +140,14 @@ function mica_studies_default_search_api_index() {
         "field_access_biosamples" : { "type" : "boolean" },
         "field_access_data" : { "type" : "boolean" },
         "field_access_other" : { "type" : "boolean" },
-        "field_access_other_sp" : { "type" : "text" },
         "field_acroym" : { "type" : "text" },
-        "field_authorising_person_name" : { "type" : "text" },
-        "field_authorising_person_name_m" : { "type" : "text" },
-        "field_authorization_maelstrom" : { "type" : "boolean" },
-        "field_authorization_specific" : { "type" : "boolean" },
-        "field_contacts_ref" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_design" : { "type" : "list\\u003Cstring\\u003E" },
-        "field_design_other_sp" : { "type" : "text" },
-        "field_info_design_follow_up" : { "type" : "text" },
-        "field_investigators" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
-        "field_marker_paper" : { "type" : "text" },
         "field_no_limits_participants" : { "type" : "boolean" },
         "field_no_limits_samples" : { "type" : "boolean" },
-        "field_pubmedid" : { "type" : "text" },
         "field_recruitment" : { "type" : "list\\u003Cstring\\u003E" },
         "field_recruitment_other_sp" : { "type" : "text" },
-        "field_recruitment_supp_info" : { "type" : "text" },
         "field_study_end_year" : { "type" : "integer" },
-        "field_study_populations" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_study_start_year" : { "type" : "integer" },
-        "field_supp_infos" : { "type" : "text" },
-        "field_target_nb_supp_info" : { "type" : "text" },
         "field_target_number_biosamples" : { "type" : "integer" },
         "field_target_number_participants" : { "type" : "integer" },
         "search_api_language" : { "type" : "string" },
@@ -172,8 +157,13 @@ function mica_studies_default_search_api_index() {
         "field_study_populations_field_pop_age_max_desc" : { "type" : "integer" },
         "field_study_populations_field_pop_age_min_asc" : { "type" : "integer" },
         "field_study_populations_field_pop_age_min_desc" : { "type" : "integer" },
+        "field_study_populations_field_pop_dce_field_dce_end_year_asc" : { "type" : "integer" },
+        "field_study_populations_field_pop_dce_field_dce_end_year_desc" : { "type" : "integer" },
+        "field_study_populations_field_pop_dce_field_dce_start_year_asc" : { "type" : "integer" },
+        "field_study_populations_field_pop_dce_field_dce_start_year_desc" : { "type" : "integer" },
         "body:value" : { "type" : "text" },
         "body:summary" : { "type" : "text" },
+        "field_access_other_sp:value" : { "type" : "text" },
         "field_contacts_ref:title" : { "type" : "list\\u003Ctext\\u003E" },
         "field_contacts_ref:field_address" : { "type" : "list\\u003Ctext\\u003E" },
         "field_contacts_ref:field_city" : { "type" : "list\\u003Ctext\\u003E" },
@@ -184,6 +174,8 @@ function mica_studies_default_search_api_index() {
         "field_contacts_ref:field_postal_code" : { "type" : "list\\u003Ctext\\u003E" },
         "field_contacts_ref:field_state" : { "type" : "list\\u003Ctext\\u003E" },
         "field_contacts_ref:field_telephone" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_design_other_sp:value" : { "type" : "text" },
+        "field_info_design_follow_up:value" : { "type" : "text" },
         "field_investigators:title" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_address" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_city" : { "type" : "list\\u003Ctext\\u003E" },
@@ -194,17 +186,33 @@ function mica_studies_default_search_api_index() {
         "field_investigators:field_postal_code" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_state" : { "type" : "list\\u003Ctext\\u003E" },
         "field_investigators:field_telephone" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_recruitment_supp_info:value" : { "type" : "text" },
         "field_study_populations:field_pop_age_max" : { "type" : "list\\u003Cinteger\\u003E" },
         "field_study_populations:field_pop_age_min" : { "type" : "list\\u003Cinteger\\u003E" },
         "field_study_populations:field_pop_country" : { "type" : "list\\u003Clist\\u003Cstring\\u003E\\u003E" },
+        "field_study_populations:field_pop_exist_study_part" : { "type" : "list\\u003Clist\\u003Ctext\\u003E\\u003E" },
         "field_study_populations:field_pop_gender" : { "type" : "list\\u003Cstring\\u003E" },
         "field_study_populations:field_pop_select_criteria" : { "type" : "list\\u003Clist\\u003Cstring\\u003E\\u003E" },
         "field_study_populations:field_pop_src_recruit" : { "type" : "list\\u003Clist\\u003Cstring\\u003E\\u003E" },
+        "field_supp_infos:value" : { "type" : "text" },
+        "field_target_nb_supp_info:value" : { "type" : "text" },
+        "field_study_populations:body:value" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_study_populations:body:summary" : { "type" : "list\\u003Ctext\\u003E" },
         "field_study_populations:field_pop_dce:field_dce_bio_samples_management" : { "type" : "list\\u003Clist\\u003Clist\\u003Cstring\\u003E\\u003E\\u003E" },
         "field_study_populations:field_pop_dce:field_dce_data_sources" : { "type" : "list\\u003Clist\\u003Clist\\u003Cstring\\u003E\\u003E\\u003E" },
         "field_study_populations:field_pop_dce:field_dce_end_year" : { "type" : "list\\u003Clist\\u003Cinteger\\u003E\\u003E" },
         "field_study_populations:field_pop_dce:field_dce_start_year" : { "type" : "list\\u003Clist\\u003Cinteger\\u003E\\u003E" },
-        "field_networks" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" }
+        "field_study_populations:field_pop_partcipant_sel_supp_in:value" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_study_populations:field_pop_participants_nb_supp_i:value" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_study_populations:field_pop_recruit_supp_info:value" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_study_populations:field_pop_recruitment_other:value" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_study_populations:field_pop_selection_others_sp:value" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_study_populations:field_pop_specific_pop_other_sp:value" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_study_populations:field_pop_supp_infos:value" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_study_populations:field_pop_territory:value" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_study_populations:field_pop_dce:body:value" : { "type" : "list\\u003Clist\\u003Ctext\\u003E\\u003E" },
+        "field_study_populations:field_pop_dce:body:summary" : { "type" : "list\\u003Clist\\u003Ctext\\u003E\\u003E" },
+        "field_study_populations:field_pop_dce:field_dce_samples_man_other_sp:value" : { "type" : "list\\u003Clist\\u003Ctext\\u003E\\u003E" }
       },
       "data_alter_callbacks" : {
         "search_api_ranges_alter" : {
@@ -212,14 +220,24 @@ function mica_studies_default_search_api_index() {
           "weight" : "-50",
           "settings" : { "fields" : {
               "field_study_populations:field_pop_age_max" : "field_study_populations:field_pop_age_max",
-              "field_study_populations:field_pop_age_min" : "field_study_populations:field_pop_age_min"
+              "field_study_populations:field_pop_age_min" : "field_study_populations:field_pop_age_min",
+              "field_study_populations:field_pop_dce:field_dce_end_year" : "field_study_populations:field_pop_dce:field_dce_end_year",
+              "field_study_populations:field_pop_dce:field_dce_start_year" : "field_study_populations:field_pop_dce:field_dce_start_year"
             }
           }
         },
         "search_api_alter_bundle_filter" : {
           "status" : 1,
           "weight" : "-10",
-          "settings" : { "default" : "0", "bundles" : { "study" : "study" } }
+          "settings" : {
+            "default" : "0",
+            "bundles" : {
+              "contact" : "contact",
+              "data_collection_event" : "data_collection_event",
+              "population" : "population",
+              "study" : "study"
+            }
+          }
         },
         "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_combined" : { "status" : 0, "weight" : "0", "settings" : [] },
@@ -247,23 +265,21 @@ function mica_studies_default_search_api_index() {
           "settings" : { "fields" : {
               "title" : true,
               "field_acroym" : true,
-              "field_authorising_person_name" : true,
-              "field_authorising_person_name_m" : true,
-              "field_design_other_sp" : true,
               "field_recruitment_other_sp" : true,
-              "field_recruitment_supp_info" : true,
-              "field_supp_infos" : true,
-              "field_target_nb_supp_info" : true,
               "body:value" : true,
               "body:summary" : true,
+              "field_access_other_sp:value" : true,
               "field_contacts_ref:title" : true,
               "field_contacts_ref:field_address" : true,
               "field_contacts_ref:field_city" : true,
+              "field_contacts_ref:field_contact_country" : true,
               "field_contacts_ref:field_contact_email" : true,
               "field_contacts_ref:field_institution_name" : true,
               "field_contacts_ref:field_postal_code" : true,
               "field_contacts_ref:field_state" : true,
               "field_contacts_ref:field_telephone" : true,
+              "field_design_other_sp:value" : true,
+              "field_info_design_follow_up:value" : true,
               "field_investigators:title" : true,
               "field_investigators:field_address" : true,
               "field_investigators:field_city" : true,
@@ -272,7 +288,24 @@ function mica_studies_default_search_api_index() {
               "field_investigators:field_institution_name" : true,
               "field_investigators:field_postal_code" : true,
               "field_investigators:field_state" : true,
-              "field_investigators:field_telephone" : true
+              "field_investigators:field_telephone" : true,
+              "field_recruitment_supp_info:value" : true,
+              "field_study_populations:field_pop_exist_study_part" : true,
+              "field_supp_infos:value" : true,
+              "field_target_nb_supp_info:value" : true,
+              "field_study_populations:body:value" : true,
+              "field_study_populations:body:summary" : true,
+              "field_study_populations:field_pop_partcipant_sel_supp_in:value" : true,
+              "field_study_populations:field_pop_participants_nb_supp_i:value" : true,
+              "field_study_populations:field_pop_recruit_supp_info:value" : true,
+              "field_study_populations:field_pop_recruitment_other:value" : true,
+              "field_study_populations:field_pop_selection_others_sp:value" : true,
+              "field_study_populations:field_pop_specific_pop_other_sp:value" : true,
+              "field_study_populations:field_pop_supp_infos:value" : true,
+              "field_study_populations:field_pop_territory:value" : true,
+              "field_study_populations:field_pop_dce:body:value" : true,
+              "field_study_populations:field_pop_dce:body:summary" : true,
+              "field_study_populations:field_pop_dce:field_dce_samples_man_other_sp:value" : true
             }
           }
         },
@@ -280,7 +313,31 @@ function mica_studies_default_search_api_index() {
           "status" : 1,
           "weight" : "10",
           "settings" : {
-            "fields" : { "title" : true, "body:value" : true, "body:summary" : true },
+            "fields" : {
+              "title" : true,
+              "field_recruitment_other_sp" : true,
+              "body:value" : true,
+              "body:summary" : true,
+              "field_access_other_sp:value" : true,
+              "field_design_other_sp:value" : true,
+              "field_info_design_follow_up:value" : true,
+              "field_recruitment_supp_info:value" : true,
+              "field_supp_infos:value" : true,
+              "field_target_nb_supp_info:value" : true,
+              "field_study_populations:body:value" : true,
+              "field_study_populations:body:summary" : true,
+              "field_study_populations:field_pop_partcipant_sel_supp_in:value" : true,
+              "field_study_populations:field_pop_participants_nb_supp_i:value" : true,
+              "field_study_populations:field_pop_recruit_supp_info:value" : true,
+              "field_study_populations:field_pop_recruitment_other:value" : true,
+              "field_study_populations:field_pop_selection_others_sp:value" : true,
+              "field_study_populations:field_pop_specific_pop_other_sp:value" : true,
+              "field_study_populations:field_pop_supp_infos:value" : true,
+              "field_study_populations:field_pop_territory:value" : true,
+              "field_study_populations:field_pop_dce:body:value" : true,
+              "field_study_populations:field_pop_dce:body:summary" : true,
+              "field_study_populations:field_pop_dce:field_dce_samples_man_other_sp:value" : true
+            },
             "title" : 1,
             "alt" : 1,
             "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
@@ -290,7 +347,7 @@ function mica_studies_default_search_api_index() {
           "status" : 0,
           "weight" : "20",
           "settings" : {
-            "fields" : { "title" : true },
+            "fields" : [],
             "spaces" : "[^\\\\p{L}\\\\p{N}^\\u0027]",
             "ignorable" : "[-]"
           }
@@ -302,6 +359,17 @@ function mica_studies_default_search_api_index() {
             "fields" : { "title" : true },
             "file" : "",
             "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
+          }
+        },
+        "search_api_highlighting" : {
+          "status" : 0,
+          "weight" : "35",
+          "settings" : {
+            "prefix" : "\\u003Cstrong\\u003E",
+            "suffix" : "\\u003C\\/strong\\u003E",
+            "excerpt" : 1,
+            "excerpt_length" : "256",
+            "highlight" : "always"
           }
         }
       }

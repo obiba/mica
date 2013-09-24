@@ -48,6 +48,7 @@ function mica_studies_facetapi_default_facet_settings() {
     'dependencies' => array(
       'bundle' => 'none',
       'bundle_selected' => array(),
+      'roles' => array(),
     ),
     'facet_mincount' => '1',
     'facet_missing' => '0',
@@ -631,8 +632,7 @@ function mica_studies_facetapi_default_facet_settings() {
     'use_slider' => 0,
     'submit_on_change' => 0,
     'empty_text' => array(
-      'value' => '<p>&nbsp;</p>
-',
+      'value' => '',
       'format' => 'filtered_html',
     ),
     'submit_realm' => 'Save and go back to realm settings',
