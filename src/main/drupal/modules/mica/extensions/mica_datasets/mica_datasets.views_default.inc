@@ -971,6 +971,8 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'variable-search';
 
+  $export['variable_search'] = $view;
+
   $view = new view();
   $view->name = 'variables_dimensions';
   $view->description = '';
