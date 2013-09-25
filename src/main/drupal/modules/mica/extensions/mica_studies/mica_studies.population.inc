@@ -6,7 +6,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
   _mica_studies_population_view_nb_participants($node);
 
   $wrapper = entity_metadata_wrapper('node', $node->nid);
-
+  $show_draft = (strpos(current_path(), '/draft') > 0);
   $dce_rows = array();
   foreach ($wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
     if (node_access('view', $dce_wrapper->value())) {
@@ -20,15 +20,37 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
       $dce_nid = $dce_wrapper->nid->value();
       $created = $dce_wrapper->created->value();
 
-      $dce_rows[$dce_nid] = array(
-        'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
-        'desc' => $desc,
-        'start_year' => $dce_wrapper->field_dce_start_year->value(),
-        'start_month' => $dce_wrapper->field_dce_start_month->value(),
-        'end_year' => $dce_wrapper->field_dce_end_year->value(),
-        'end_month' => $dce_wrapper->field_dce_end_month->value(),
-        'created' => empty($created) ? 0 : intval($created)
-      );
+      // Hide DCE that are not published on study published page
+      if ($wrapper->status->value() == NODE_PUBLISHED && $dce_wrapper->status->value() == NODE_PUBLISHED) {
+        $dce_rows[$dce_nid] = array(
+          'data' => array(
+            'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
+            'desc' => $desc,
+            'start_year' => $dce_wrapper->field_dce_start_year->value(),
+            'start_month' => $dce_wrapper->field_dce_start_month->value(),
+            'end_year' => $dce_wrapper->field_dce_end_year->value(),
+            'end_month' => $dce_wrapper->field_dce_end_month->value(),
+            'created' => empty($created) ? 0 : intval($created),
+          )
+        );
+      }
+      else if ($show_draft || $wrapper->status->value() == NODE_NOT_PUBLISHED) {
+        $dce_rows[$dce_nid] = array(
+          'data' => array(
+            'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
+            'desc' => $desc,
+            'start_year' => $dce_wrapper->field_dce_start_year->value(),
+            'start_month' => $dce_wrapper->field_dce_start_month->value(),
+            'end_year' => $dce_wrapper->field_dce_end_year->value(),
+            'end_month' => $dce_wrapper->field_dce_end_month->value(),
+            'created' => empty($created) ? 0 : intval($created),
+          ),
+        );
+
+        if ($dce_wrapper->status->value() == NODE_NOT_PUBLISHED) {
+          $dce_rows[$dce_nid]['class'] = array('node-unpublished');
+        }
+      }
     }
   }
   if (!empty($dce_rows)) {
@@ -62,13 +84,13 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
 
 function _mica_studies_population_normalize_rows(&$dce_rows) {
   foreach ($dce_rows as &$dce_row) {
-    $dce_row['start'] = _mica_sudies_format_dce_year($dce_row['start_year'], $dce_row['start_month']);
-    $dce_row['end'] = _mica_sudies_format_dce_year($dce_row['end_year'], $dce_row['end_month']);
-    unset($dce_row['start_year']);
-    unset($dce_row['start_month']);
-    unset($dce_row['end_year']);
-    unset($dce_row['end_month']);
-    unset($dce_row['created']);
+    $dce_row['data']['start'] = _mica_sudies_format_dce_year($dce_row['data']['start_year'], $dce_row['data']['start_month']);
+    $dce_row['data']['end'] = _mica_sudies_format_dce_year($dce_row['data']['end_year'], $dce_row['data']['end_month']);
+    unset($dce_row['data']['start_year']);
+    unset($dce_row['data']['start_month']);
+    unset($dce_row['data']['end_year']);
+    unset($dce_row['data']['end_month']);
+    unset($dce_row['data']['created']);
   }
 }
 
@@ -205,7 +227,7 @@ function _mica_studies_population_view_recruitment_sources(&$node) {
       if ($other_index !== FALSE) {
         $field_pop_specific_pop_other_sp = $wrapper->field_pop_specific_pop_other_sp->value();
         if (!empty($field_pop_specific_pop_other_sp)) {
-          $node->content['field_pop_specific_pop'][$other_index]['#markup'] .= ': ' .  $node->content['field_pop_specific_pop_other_sp'][0]['#markup'];
+          $node->content['field_pop_specific_pop'][$other_index]['#markup'] .= ': ' . $node->content['field_pop_specific_pop_other_sp'][0]['#markup'];
           $node->content['field_pop_specific_pop_other_sp']['#access'] = FALSE;
         }
       }
