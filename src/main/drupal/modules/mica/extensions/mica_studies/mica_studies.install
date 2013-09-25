@@ -35,7 +35,6 @@ function mica_studies_install() {
 function mica_studies_update_7120(&$sandbox) {
   try {
 
-    _mica_studies_configure_field_bundle_settings();
     mica_core_configure_feeds_tamper('mica_studies');
 
     if (db_table_exists('field_data_field_data_sources')) {
@@ -293,15 +292,15 @@ function _mica_studies_migrate_field_design() {
       // if not exist, insert a new one
       db_insert('field_data_field_design_other_sp')
         ->fields(array(
-        'entity_type' => 'node',
-        'bundle' => 'study',
-        'deleted' => 0,
-        'entity_id' => $row->entity_id,
-        'revision_id' => $row->revision_id,
-        'language' => $row->language,
-        'delta' => 0,
-        'field_design_other_sp_value' => 'Registry Study Design',
-      ))->execute();
+          'entity_type' => 'node',
+          'bundle' => 'study',
+          'deleted' => 0,
+          'entity_id' => $row->entity_id,
+          'revision_id' => $row->revision_id,
+          'language' => $row->language,
+          'delta' => 0,
+          'field_design_other_sp_value' => 'Registry Study Design',
+        ))->execute();
       //update his registry design
       db_update('field_data_field_design')
         ->fields(array('field_design_value' => 'other'))

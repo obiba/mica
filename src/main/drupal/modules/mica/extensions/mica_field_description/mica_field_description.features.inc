@@ -62,18 +62,19 @@ function mica_field_description_default_search_api_index() {
       "cron_limit" : "100",
       "fields" : {
         "title" : { "type" : "text" },
+        "field_repeatable" : { "type" : "boolean" },
+        "field_value_type" : { "type" : "string" },
         "field_bundle" : { "type" : "string" },
         "field_bundle_label" : { "type" : "text" },
         "field_categories" : { "type" : "list\\u003Cstring\\u003E" },
         "field_original_field_label" : { "type" : "text" },
         "field_original_field_name" : { "type" : "string" },
-        "field_repeatable" : { "type" : "boolean" },
-        "field_value_type" : { "type" : "string" },
         "search_api_language" : { "type" : "string" },
         "body:value" : { "type" : "text" },
         "body:summary" : { "type" : "text" }
       },
       "data_alter_callbacks" : {
+        "search_api_ranges_alter" : { "status" : 0, "weight" : "-50", "settings" : [] },
         "search_api_alter_bundle_filter" : {
           "status" : 1,
           "weight" : "-10",
@@ -82,15 +83,17 @@ function mica_field_description_default_search_api_index() {
             "bundles" : { "field_description" : "field_description" }
           }
         },
+        "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_combined" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
       },
       "processors" : {
         "search_api_case_ignore" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "0",
           "settings" : { "fields" : {
               "title" : true,
@@ -102,7 +105,7 @@ function mica_field_description_default_search_api_index() {
           }
         },
         "search_api_html_filter" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "10",
           "settings" : {
             "fields" : {
@@ -118,7 +121,7 @@ function mica_field_description_default_search_api_index() {
           }
         },
         "search_api_tokenizer" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "20",
           "settings" : {
             "fields" : {
@@ -145,6 +148,17 @@ function mica_field_description_default_search_api_index() {
             },
             "file" : "",
             "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
+          }
+        },
+        "search_api_highlighting" : {
+          "status" : 0,
+          "weight" : "35",
+          "settings" : {
+            "prefix" : "\\u003Cstrong\\u003E",
+            "suffix" : "\\u003C\\/strong\\u003E",
+            "excerpt" : 1,
+            "excerpt_length" : "256",
+            "highlight" : "always"
           }
         }
       }

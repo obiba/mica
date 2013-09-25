@@ -5,7 +5,6 @@
  * Code for the Mica Connector module
  */
 
-
 /**
  * Implements hook_entity_info().
  */
@@ -252,58 +251,6 @@ function mica_connector_get_connection_info($id = NULL) {
   }
   return $connections;
 }
-
-//
-// Feeds
-//
-
-/**
- * Implements hook_feeds_after_parse().
- *
- * used to extract the dataset_id from the importer and set it on the mapper
- * so that nodes created have a link to their dataset. This method also creates
- * a guid for each variable (dataset_id:title
- */
-function mica_connector_feeds_after_parse(FeedsSource $source, FeedsParserResult $result) {
-  if (get_class($source->importer->processor) === 'FeedsNodeProcessor') {
-    $config = $source->importer->processor->getConfig();
-    if ($config['content_type'] === 'variable') {
-      $src_config = $source->getConfigFor($source->importer->fetcher);
-      $dataset_id = NULL;
-      if (isset($src_config['mica_connector'])) {
-        $nid = $src_config['mica_connector'];
-        $connector_node = mica_connector_load($nid);
-        $dataset_id = $connector_node->dataset_id;
-        $titleSource = _mica_connector_find_source_for_target($source->importer->processor, 'title');
-        foreach ($result->items as &$item) {
-          $item['dataset_id'] = $dataset_id;
-          $item['uid'] = $dataset_id . ":" . $item[$titleSource];
-        }
-        unset($item);
-      }
-    }
-  }
-}
-
-/**
- * Returns the name of the source for a specified target.
- *
- * @param FeedsProcessor $processor
- * @param String         $target the name of the target field (e.g.: 'title')
- *
- * @throws Exception
- * @return the name of source item mapped to the target (e.g.: 'jsonpath:0')
- */
-function _mica_connector_find_source_for_target(FeedsProcessor $processor, $target) {
-  $config = $processor->getConfig();
-  foreach ($config['mappings'] as $map) {
-    if ($map['target'] == $target) {
-      return $map['source'];
-    }
-  }
-  throw new Exception("could not find source for $target", 500);
-}
-
 
 function mica_connector_dataset_has_connectors($dataset_nid) {
   return count(MicaDatasetConnector::findConnectorsByDataset($dataset_nid)) > 0;

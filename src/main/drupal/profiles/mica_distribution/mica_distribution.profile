@@ -70,8 +70,15 @@ function _mica_distribution_configuration_batch() {
   $operations[] = array('_mica_distribution_field_description_block_configuration', array());
   $operations[] = array('_mica_distribution_studies_block_configuration', array());
 
+  // hack to to revert again search_api_index config as fields are getting lost :-(
+  $operations[] = array('features_revert', array(array('mica_field_description' => array('search_api_index'))));
+  $operations[] = array('features_revert', array(array('mica_studies' => array('search_api_index'))));
+
   if (module_exists('mica_datasets')) {
     $operations[] = array('_mica_distribution_datasets_block_configuration', array());
+
+    // hack to to revert again search_api_index config as fields are getting lost :-(
+    $operations[] = array('features_revert', array(array('mica_datasets' => array('search_api_index'))));
   }
 
   $batch = array(
