@@ -45,7 +45,8 @@ function _mica_studies_block_study_general_design_field_design($study_wrapper, $
   $other_sp = $study_wrapper->field_design_other_sp->value();
   if (in_array('other', $design) && !empty($other_sp)) {
     $design_other_sp_view = field_view_field('node', $study_wrapper->value(), 'field_design_other_sp');
-    $field_view[count($design) - 1]['#markup'] .= ' - ' . $design_other_sp_view[0]['#markup'];
+    $label = '<span class="other-sub-title">' . $field_view[count($design) - 1]['#markup'] . ': </span>';
+    $field_view[count($design) - 1]['#markup'] = $label .'<span class="other-sub-value">'. $design_other_sp_view[0]['#markup'] .'</span>';
   }
   return $field_view;
 }

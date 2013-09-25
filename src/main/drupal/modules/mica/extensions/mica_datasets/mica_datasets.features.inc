@@ -86,7 +86,7 @@ function mica_datasets_default_search_api_index() {
     "server" : "solr",
     "item_type" : "node",
     "options" : {
-      "index_directly" : 1,
+      "index_directly" : 0,
       "cron_limit" : "100",
       "fields" : {
         "nid" : { "type" : "integer" },
@@ -106,19 +106,19 @@ function mica_datasets_default_search_api_index() {
         "field_dataset_dces:field_dce_population" : {
           "type" : "list\\u003Clist\\u003Cinteger\\u003E\\u003E",
           "entity_type" : "node"
-        },
-        "field_dataset_studies:title" : { "type" : "list\\u003Ctext\\u003E" }
+        }
       },
       "data_alter_callbacks" : {
+        "search_api_ranges_alter" : { "status" : 0, "weight" : "-50", "settings" : { "fields" : [] } },
         "search_api_alter_bundle_filter" : {
           "status" : 1,
           "weight" : "-10",
           "settings" : { "default" : "0", "bundles" : { "dataset" : "dataset" } }
         },
-        "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
+        "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_combined" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_aggregation" : {
           "status" : 1,
@@ -138,7 +138,8 @@ function mica_datasets_default_search_api_index() {
               }
             }
           }
-        }
+        },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
       },
       "processors" : {
         "search_api_case_ignore" : {
@@ -149,8 +150,7 @@ function mica_datasets_default_search_api_index() {
               "field_dataset_type" : true,
               "search_api_aggregation_1" : true,
               "body:value" : true,
-              "body:summary" : true,
-              "field_dataset_studies:title" : true
+              "body:summary" : true
             }
           }
         },
@@ -181,6 +181,17 @@ function mica_datasets_default_search_api_index() {
             "file" : "",
             "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
           }
+        },
+        "search_api_highlighting" : {
+          "status" : 0,
+          "weight" : "35",
+          "settings" : {
+            "prefix" : "\\u003Cstrong\\u003E",
+            "suffix" : "\\u003C\\/strong\\u003E",
+            "excerpt" : 1,
+            "excerpt_length" : "256",
+            "highlight" : "always"
+          }
         }
       }
     },
@@ -195,7 +206,7 @@ function mica_datasets_default_search_api_index() {
     "server" : "solr",
     "item_type" : "node",
     "options" : {
-      "index_directly" : 1,
+      "index_directly" : 0,
       "cron_limit" : "100",
       "fields" : {
         "nid" : { "type" : "integer" },
@@ -205,6 +216,7 @@ function mica_datasets_default_search_api_index() {
         "author" : { "type" : "integer", "entity_type" : "user" },
         "field_repeatable" : { "type" : "boolean" },
         "field_value_type" : { "type" : "string" },
+        "field_administrative_information" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_anthropometric_structures" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_body_functions" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_body_structures" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
@@ -212,7 +224,7 @@ function mica_datasets_default_search_api_index() {
         "field_dataset" : { "type" : "integer", "entity_type" : "node" },
         "field_disease_history" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_early_life" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_label" : { "type" : "string" },
+        "field_label" : { "type" : "text" },
         "field_laboratory_measures" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_life_habits_behaviours" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_medical_health_interv" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
@@ -373,6 +385,17 @@ function mica_datasets_default_search_api_index() {
             "fields" : { "title" : true },
             "file" : "",
             "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
+          }
+        },
+        "search_api_highlighting" : {
+          "status" : 0,
+          "weight" : "35",
+          "settings" : {
+            "prefix" : "\\u003Cstrong\\u003E",
+            "suffix" : "\\u003C\\/strong\\u003E",
+            "excerpt" : 1,
+            "excerpt_length" : "256",
+            "highlight" : "always"
           }
         }
       }

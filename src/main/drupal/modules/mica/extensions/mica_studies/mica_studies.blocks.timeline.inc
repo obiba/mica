@@ -5,20 +5,19 @@ function _mica_studies_block_study_timeline($study) {
   // http://color-harmony.edelweis-art.com/
   $color_index = 0;
   $colors = array(
-    '#0078ad',
-    '#bca68e',
-    '#99c1c3',
-    '#8db173',
-    '#707175',
-    '#88697b',
-    '#dc9351',
-    '#654641',
-    '#9a3034',
-    '#fed559',
-    '#eec9a9',
-    '#ff7901'
+    '#9a3034', // Dark red
+    '#886e6a', // Brownish-violet
+    '#dc9351', // Tan
+    '#0078ad', // Dark blue
+    '#8db173', // Light green
+    '#bca68e', // Light grey
+    '#707175', // Dark grey
+    '#ff7901', // Orange
+    '#88697b', // Violet
+    '#99c1c3', // Light blue
   );
 
+  $nb_colors = count($colors);
   $event_view = array();
   $pop_svg = array();
   $legend_items = array();
@@ -32,7 +31,7 @@ function _mica_studies_block_study_timeline($study) {
       $pop_title = $pop_wrapper->title->value();
 
       // See https://drupal.org/project/color_field for more color choices...
-      $color = _mica_studies_color_darken($colors[$color_index % 12], intval($color_index / 12) * 50);
+      $color = _mica_studies_color_darken($colors[$color_index % $nb_colors], intval($color_index / $nb_colors) * 50);
       $color_index++;
 
       $svg = "<svg width='25' height='25'><rect width='20' height='20' x='2' y='2' rx='5' ry='5' style='fill:$color;'/></svg>";
@@ -44,9 +43,12 @@ function _mica_studies_block_study_timeline($study) {
           $start_year = $dce_wrapper->field_dce_start_year->value();
           $end_year = $dce_wrapper->field_dce_end_year->value();
           $dce_nid = $dce_wrapper->nid->value();
+
           if (!empty($start_year) && !empty($end_year)) {
             $start_month = $dce_wrapper->field_dce_start_month->value();
             $end_month = $dce_wrapper->field_dce_end_month->value();
+            $created = $dce_wrapper->created->value();
+
             $events[] = array(
               'color' => $color,
               'pop_nid' => $pop_wrapper->nid->value(),
@@ -55,8 +57,9 @@ function _mica_studies_block_study_timeline($study) {
               'dce_title' => $dce_wrapper->title->value(),
               'start_year' => $start_year,
               'end_year' => $end_year,
-              'start_month' => empty($start_month) ? 1 : $start_month,
+              'start_month' => empty($start_month) ? 0 : $start_month - 1,
               'end_month' => empty($end_month) ? 12 : $end_month,
+              'created' => empty($created) ? 0 : intval($created)
             );
             $event_view[] = _mica_studies_block_study_timeline_prepare_modal($dce_nid);
           }

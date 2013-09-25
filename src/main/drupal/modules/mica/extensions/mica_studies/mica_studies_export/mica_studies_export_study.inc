@@ -4,7 +4,7 @@
  * mica_export_study.inc
  */
 
-function _mica_export_study_xml($nid, $tmp_folder_name) {
+function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
 
   $wrapper = entity_metadata_wrapper('node', $nid);
 
@@ -25,7 +25,7 @@ function _mica_export_study_xml($nid, $tmp_folder_name) {
   $root->setAttribute('mica_origin_url', $wrapper->mica_origin_url->value());
   $dom->appendChild($root);
 
-  $root->appendChild($dom->createElement('title'))->appendChild($dom->createTextNode($wrapper->title->value()));
+  $root->appendChild($dom->createElement('title'))->appendChild($dom->createTextNode($wrapper->title_field->value()));
   $root->appendChild($dom->createElement('acronym'))
     ->appendChild($dom->createTextNode($wrapper->field_acroym->value()));
 
@@ -178,9 +178,6 @@ function _mica_export_study_xml($nid, $tmp_folder_name) {
   $logo_detail_element->appendChild($dom->createElement('status'))
     ->appendChild($dom->createTextNode($logo['status']));
   $logo_detail_element->setAttribute('ref-uuid', $logo['uuid']);
-
-  $myxml = $dom->saveXML();
-
-  return $myxml;
-
+  
+  return $dom->saveXML();
 }

@@ -4,7 +4,7 @@
  * mica_export_contact.inc
  */
 
-function _mica_export_contact_xml($nid) {
+function _mica_studies_export_contact_xml($nid) {
   $wrapper = entity_metadata_wrapper('node', $nid);
 
   $dom = new DomDocument('1.0', 'utf-8');
@@ -52,8 +52,5 @@ function _mica_export_contact_xml($nid) {
   $timestamp_element->appendChild($dom->createElement('date-changed'))
     ->appendChild($dom->createTextNode($wrapper->changed->value()));
 
-  $myxml = $dom->saveXML();
-
-  return $myxml;
-
+  return $dom->saveXML();
 }

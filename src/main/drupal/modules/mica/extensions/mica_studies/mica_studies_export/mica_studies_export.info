@@ -1,5 +1,5 @@
 name = Mica Studies Export
-description = Mica Studies Exportation
+description = Export Mica Studies nodes to XML
 core = 7.x
 package = Mica
 php = 5.2.4

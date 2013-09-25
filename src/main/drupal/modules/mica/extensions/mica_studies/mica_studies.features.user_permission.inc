@@ -1022,7 +1022,10 @@ function mica_studies_user_default_permissions() {
   // Exported permission: 'view any unpublished data_collection_event content'.
   $permissions['view any unpublished data_collection_event content'] = array(
     'name' => 'view any unpublished data_collection_event content',
-    'roles' => array(),
+    'roles' => array(
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
+    ),
     'module' => 'view_unpublished',
   );
 
@@ -1038,7 +1041,10 @@ function mica_studies_user_default_permissions() {
   // Exported permission: 'view any unpublished population content'.
   $permissions['view any unpublished population content'] = array(
     'name' => 'view any unpublished population content',
-    'roles' => array(),
+    'roles' => array(
+      'study administrator' => 'study administrator',
+      'study reviewer' => 'study reviewer',
+    ),
     'module' => 'view_unpublished',
   );
 

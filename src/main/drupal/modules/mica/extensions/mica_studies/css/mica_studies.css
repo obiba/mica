@@ -1,8 +1,3 @@
-.node-study .field-name-field-logo,
-.node-population .field-name-field-logo {
-  float: left;
-  margin: 10px;
-}
 .node-study .field-item .inner-label,
 .node-population .field-item .inner-label {
   display: inline;
@@ -12,6 +7,20 @@
 .node-population .field-item .inner-value {
   display: inline;
   padding-left: 3px;
+}
+.node-study .field-name-field-logo {
+  float: left;
+  margin: 10px;
+}
+#block-mica-studies-study-general-design .field-name-field-design .field-item .other-sub-title {
+  font-weight: bold;
+}
+#block-mica-studies-study-general-design .field-name-field-design .field-item p:first-of-type {
+  display: inline;
+}
+#block-mica-studies-study-populations .field-name-field-pop-select-criteria .field-item .inner-value p:first-of-type,
+#block-mica-studies-study-populations .field-name-field-pop-src-recruit .field-item .inner-value p:first-of-type {
+  display: inline;
 }
 #block-mica-studies-study-timeline .axis path,
 #block-mica-studies-study-timeline .axis line {

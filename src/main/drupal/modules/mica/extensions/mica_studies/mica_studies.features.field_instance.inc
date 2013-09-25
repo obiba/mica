@@ -1064,7 +1064,7 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Other biological samples',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1999,7 +1999,7 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Supplementary information about selection criteria',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2134,7 +2134,7 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Supplementary information about number of participants',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2175,7 +2175,7 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Supplementary information about recruitment procedures',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2216,7 +2216,7 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Other source of recruitment',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2295,7 +2295,7 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Other selection criteria',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2374,7 +2374,7 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Specific population',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2494,7 +2494,7 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Supplementary information',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2535,14 +2535,14 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Territory or city of residence',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'rows' => 1,
+        'rows' => 2,
       ),
       'type' => 'text_textarea',
       'weight' => 9,
@@ -2781,7 +2781,7 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Other access',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3100,7 +3100,7 @@ function mica_studies_field_default_field_instances() {
     'bundle' => 'study',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Enter the Contact full name. You will be able to edit these Contacts once the Study has been saved.',
+    'description' => 'Enter the Contact full name. You will be able to edit these Contacts once the Study will be saved.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -3199,7 +3199,7 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Other design',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3281,7 +3281,7 @@ function mica_studies_field_default_field_instances() {
     'label' => 'General Information on Follow Up (profile and frequency)',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3656,7 +3656,7 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Supplementary information about study design',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3906,7 +3906,7 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Supplementary information',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -3946,7 +3946,7 @@ function mica_studies_field_default_field_instances() {
     'label' => 'Supplementary information about target number of participants',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -4260,7 +4260,7 @@ If the study is completed, enter the final number of participants that have prov
   t('End Month');
   t('End Year');
   t('Enter a brief data collection event description.');
-  t('Enter the Contact full name. You will be able to edit these Contacts once the Study has been saved.');
+  t('Enter the Contact full name. You will be able to edit these Contacts once the Study will be saved.');
   t('Enter the Investigator full name. You will be able to edit these Investigators once the Study will be saved.');
   t('Enter the number of participants that should provide biological samples from which DNA could be extracted. If the study is completed, enter the final number of participants that have provided biological samples from which DNA could be extracted. ');
   t('Ethnic Origin');

@@ -142,7 +142,7 @@ function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmon
   $variable_nid = NULL;
 
   if (isset($variables[$harmonization_variable[$key]])) {
-    $context['message'] = t('Updating %var from study: %study.', array(
+    $context['message'] = t('Updating %var for study: %study.', array(
       '%var' => $harmonization_variable['title'],
       '%study' => $context['results']['study']->title->value()
     ));
@@ -151,7 +151,7 @@ function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmon
     $context['results']['nb_updated']++;
   }
   else {
-    $context['message'] = t('Creating %var from study: %study.', array(
+    $context['message'] = t('Creating %var for study: %study.', array(
       '%var' => $harmonization_variable['title'],
       '%study' => $context['results']['study']->title->value()
     ));
@@ -239,7 +239,9 @@ function _mica_datasets_update_variable_wrapper($harmonization_variable, $datase
   $wrapper->title_field->set($harmonization_variable['title']);
   $wrapper->field_value_type->set($harmonization_variable['value_type']);
   $wrapper->field_repeatable->set($harmonization_variable['repeatable']);
-  $wrapper->field_unit->set($harmonization_variable['unit']);
+  if (!empty($harmonization_variable['unit'])) {
+    $wrapper->field_unit->set($harmonization_variable['unit']);
+  }
 
   foreach ($harmonization_variable['label'] as $language => $value) {
     $wrapper->language($language)->field_label->set($value);

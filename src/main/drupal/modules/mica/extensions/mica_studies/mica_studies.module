@@ -1062,9 +1062,14 @@ function _mica_studies_sort_populations($study) {
   foreach ($wrapper->field_study_populations->getIterator() as $pop_wrapper) {
     $events = array();
     foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
+      $created = $dce_wrapper->created->value();
+
       $events[$dce_wrapper->nid->value()] = array(
-        'start' => $dce_wrapper->field_dce_start_year->value(),
-        'end' => $dce_wrapper->field_dce_end_year->value(),
+        'start_year' => $dce_wrapper->field_dce_start_year->value(),
+        'start_month' => $dce_wrapper->field_dce_start_month->value(),
+        'end_year' => $dce_wrapper->field_dce_end_year->value(),
+        'end_month' => $dce_wrapper->field_dce_end_month->value(),
+        'created' => empty($created) ? 0 : intval($created)
       );
     }
     uasort($events, '_mica_studies_sort_dce');
@@ -1075,17 +1080,45 @@ function _mica_studies_sort_populations($study) {
 }
 
 function _mica_studies_sort_dce($x, $y) {
-  $x_start = isset($x['start_year']) ? $x['start_year'] : NULL;
-  $y_start = isset($y['start_year']) ? $y['start_year'] : NULL;
+  $x_start = _mica_studies_convert_to_month(
+    _mica_studies_get_dce_property($x, 'start_year', 0),
+    _mica_studies_get_dce_property($x, 'start_month', 0));
+
+  $y_start = _mica_studies_convert_to_month(
+    _mica_studies_get_dce_property($y, 'start_year', 0),
+    _mica_studies_get_dce_property($y, 'start_month', 0));
+
   if ($x_start === $y_start) {
-    $x_end = isset($x['end_year']) ? $x['end_year'] : NULL;
-    $y_end = isset($y['end_year']) ? $y['end_year'] : NULL;
+    $x_end = _mica_studies_convert_to_month(
+      _mica_studies_get_dce_property($x, 'end_year', 0),
+      _mica_studies_get_dce_property($x, 'end_month', 0));
+
+    $y_end = _mica_studies_convert_to_month(
+      _mica_studies_get_dce_property($y, 'end_year', 0),
+      _mica_studies_get_dce_property($y, 'end_month', 0));
+
     if ($x_end === $y_end) {
-      return 0;
+      $x_created = _mica_studies_get_dce_property($x, 'created', 0);
+      $y_created = _mica_studies_get_dce_property($y, 'created', 0);
+      if ($x_created === $y_created) {
+        return 0;
+      }
+      return $x_created < $y_created ? -1 : 1;
     }
     return $x_end < $y_end ? -1 : 1;
   }
   return $x_start < $y_start ? -1 : 1;
+}
+
+function _mica_studies_get_dce_property($dce, $property, $default) {
+  if (isset($dce[$property])) {
+    return $dce[$property];
+  }
+  return $default;
+}
+
+function _mica_studies_convert_to_month($year, $month) {
+  return $year * 12 + $month;
 }
 
 function _mica_studies_get_month_name($month) {
