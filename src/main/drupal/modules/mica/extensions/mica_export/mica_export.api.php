@@ -6,6 +6,7 @@
  */
 
 /**
+ * Find related node to export
  * @param $node
  * @return array of nid to export with specified node
  */
@@ -20,9 +21,10 @@ function hook_mica_export_find_related_nids($node) {
 }
 
 /**
+ * Export node to XML
  * @param $node node to serialize
  * @param $temp_folder_path folder where to copy attachments
- * @return XML
+ * @return XML as a string
  */
 function hook_mica_export_to_xml($node, $temp_folder_path) {
   $wrapper = entity_metadata_wrapper('node', $node);
