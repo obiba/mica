@@ -1237,7 +1237,7 @@ function mica_datasets_node_view($node, $view_mode) {
         foreach ($node->content['field_variable_categories'][0]['#rows'] as &$row) {
           if (!empty($row['missing'])) {
             // replace with div icon
-            $row['missing'] = "<div class='variable_category-missing' title='Missing'><img src='" . MICA_HARMONIZATION_MISSING_TICK . "'></div>";
+            $row['missing'] = "<div class='variable_category-missing' title='" . t('Missing') . "'><img src='" . MICA_HARMONIZATION_MISSING_TICK . "'></div>";
           }
         }
       }
