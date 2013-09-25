@@ -86,7 +86,6 @@ function mica_import_upload_form_validate($form, &$form_state) {
 
           _mica_import_batch_import($path_file);
 
-          // module_invoke_all('mica_import_parse_xml', $path_file);
         }
       }
 
@@ -180,49 +179,57 @@ function _mica_import_batch_import($path) {
 }
 
 function _mica_import_create_node($file_xml, &$context) {
-  global $user;
+
+  // global $user;
   $context['message'] = t('Extract information from %file_xml', array('file_xml' => $file_xml));
   $dom = new DOMDocument();
   $dom->load($file_xml);
   $current_document = $dom->documentElement;
   $type_node = $current_document->nodeName;
-  if ($current_document->hasAttribute("uuid")) {
-    $uuid = $current_document->getAttribute("uuid");
-    $parm = array(
-      'uuid' => $uuid
-    );
+  $uuid = $current_document->getAttribute("uuid");
+  $origin_url = $current_document->getAttribute("mica_origin_url");
+  $type_node = str_replace('-', '_', $type_node);
+  // Node exist?  Update or create node
+  $wrapper = _mica_import_find_update_or_create_node($uuid, $type_node, $origin_url);
 
-    $node = NULL;
-    if (entity_load('node', FALSE, $parm)) {
-      dpm('node exist to update');
-    }
-    else {
+  //Set Nodes from XML,s files
+  module_invoke_all('mica_import_set_node', $dom, $wrapper);
 
-      $infos = array(
-        'type' => $type_node,
-        'uid' => $user->uid,
-        'status' => NODE_NOT_PUBLISHED,
-        'menu' => '',
-        'uuid' => $uuid,
-        'mica_origin_url' => 'http://originaire'
-        //TODO origin url
-      );
-
-      // Creates a wrapper object without inserting it to the DB
-      $wrapper = entity_property_values_create_entity('node', $infos);
-      $node = $wrapper->value();
-
-    }
-    //Update new_node with correct fields
-    module_invoke_all('mica_import_set_node', $dom, $node);
-    if (isset($wrapper)) {
-      $wrapper->save();
-    }
-  }
+  //Save created node
+  $wrapper->save();
 
 }
 
 function mica_import_batch_finished() {
 
+}
+
+function _mica_import_find_update_or_create_node($uuid, $type, $origin_url) {
+  global $user;
+
+  if ($nodes = entity_uuid_load('node', array($uuid), array())) {
+
+    $node = current($nodes);
+    $wrapper = entity_metadata_wrapper('node', $node->nid);
+    return $wrapper;
+  }
+
+  watchdog('mica', 'Create new node with UUID %uuid Call by %type ', array(
+    '%uuid' => $uuid,
+    '%type' => $type
+  ), WATCHDOG_DEBUG);
+
+  $infos = array(
+    'type' => $type,
+    'uid' => $user->uid,
+    'status' => NODE_NOT_PUBLISHED,
+    'menu' => '',
+    'uuid' => $uuid,
+    'mica_origin_url' => $origin_url
+  );
+  // Creates a wrapper object without inserting it to the DB
+  $wrapper = entity_property_values_create_entity('node', $infos);
+
+  return $wrapper;
 }
 

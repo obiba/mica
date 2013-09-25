@@ -10,6 +10,7 @@ function _mica_export_contact_xml($nid) {
   $dom = new DomDocument('1.0', 'utf-8');
   $root = $dom->createElement('contact');
   $root->setAttribute('uuid', $wrapper->uuid->value());
+  $root->setAttribute('mica_origin_url', $wrapper->mica_origin_url->value());
   $dom->appendChild($root);
   $name_element = $root->appendChild($dom->createElement('name'));
   $name_element->appendChild($dom->createElement('title'))

@@ -31,6 +31,7 @@ function _mica_export_dce_xml($nid, $tmp_folder_name) {
   $dom = new DomDocument('1.0', 'utf-8');
   $root = $dom->createElement('data-collection-event');
   $root->setAttribute('uuid', $wrapper->uuid->value());
+  $root->setAttribute('mica_origin_url', $wrapper->mica_origin_url->value());
   $dom->appendChild($root);
 
   $root->appendChild($dom->createElement('title'))->appendChild($dom->createTextNode($wrapper->title_field->value()));

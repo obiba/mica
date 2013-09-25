@@ -25,7 +25,7 @@ function _mica_export_study_xml($nid, $tmp_folder_name) {
   $root->setAttribute('mica_origin_url', $wrapper->mica_origin_url->value());
   $dom->appendChild($root);
 
-  $root->appendChild($dom->createElement('title'))->appendChild($dom->createTextNode($wrapper->title_field->value()));
+  $root->appendChild($dom->createElement('title'))->appendChild($dom->createTextNode($wrapper->title->value()));
   $root->appendChild($dom->createElement('acronym'))
     ->appendChild($dom->createTextNode($wrapper->field_acroym->value()));
 

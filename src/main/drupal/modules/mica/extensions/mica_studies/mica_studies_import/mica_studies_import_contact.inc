@@ -1,14 +1,16 @@
 <?php
 /**
  * @file
- * mica_import_contact.inc
+ * mica_studies_import_contact.inc
  */
 
-function _mica_study_import_get_contact_structure($dom, $node) {
+function _mica_study_import_get_contact_structure($dom, $wrapper) {
 
-  $wrapper = entity_metadata_wrapper('node', $node);
   // xpath with contact/name/title
   $xpath = new DOMXPath($dom);
+  $wrapper->title->set($xpath->query('/contact/name/title')->item(0)->nodeValue . ' ' . $xpath
+    ->query('/contact/name/given')->item(0)->nodeValue . ' ' . $xpath->query('/contact/name/family')
+    ->item(0)->nodeValue);
   $wrapper->field_contact_name->title->set($xpath->query('/contact/name/title')->item(0)->nodeValue);
   $wrapper->field_contact_name->given->set($xpath->query('/contact/name/given')->item(0)->nodeValue);
   $wrapper->field_contact_name->family->set($xpath->query('/contact/name/family')->item(0)->nodeValue);
@@ -23,5 +25,4 @@ function _mica_study_import_get_contact_structure($dom, $node) {
   $wrapper->field_postal_code->set($xpath->query('/contact/institution/state-province')->item(0)->nodeValue);
   $wrapper->field_state->set($xpath->query('/contact/institution/postal-code')->item(0)->nodeValue);
   $wrapper->field_contact_country->set($xpath->query('/contact/institution/country')->item(0)->getAttribute("code"));
-
 }

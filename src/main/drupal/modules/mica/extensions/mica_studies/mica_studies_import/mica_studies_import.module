@@ -4,10 +4,10 @@
  * Mica Import  file
  */
 
-include_once('mica_import_contact.inc');
-include_once('mica_import_dce.inc');
-include_once('mica_import_population.inc');
-include_once('mica_import_study.inc');
+include_once('mica_studies_import_contact.inc');
+include_once('mica_studies_import_dce.inc');
+include_once('mica_studies_import_population.inc');
+include_once('mica_studies_import_study.inc');
 
 function mica_studies_import_mica_import_permission_parameters() {
   return array(
@@ -30,8 +30,8 @@ function mica_studies_import_mica_import_can_import_node() {
 function mica_studies_import_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   if ($root_path === 'studies') {
     // TODO test if has permission to import
+    $links = array();
     if (node_access('create', 'study')) {
-      $links = array();
       $links['import-xml'] = array(
         '#theme' => 'menu_local_action',
         '#link' => array(
@@ -44,23 +44,23 @@ function mica_studies_import_menu_local_tasks_alter(&$data, $router_item, $root_
   }
 }
 
-function mica_studies_import_mica_import_set_node($dom, $node) {
+function mica_studies_import_mica_import_set_node($dom, $wrapper) {
 
-  switch ($node->type) {
+  switch ($wrapper->type->value()) {
     case 'contact':
-      _mica_study_import_get_contact_structure($dom, $node);
+      _mica_study_import_get_contact_structure($dom, $wrapper);
 
       break;
-    case 'data-collection-event':
-      _mica_study_import_get_dce_structure($dom, $node);
+    case 'data_collection_event':
+      _mica_study_import_get_dce_structure($dom, $wrapper);
 
       break;
     case 'population':
-      _mica_study_import_get_population_structure($dom, $node);
+      _mica_study_import_get_population_structure($dom, $wrapper);
 
       break;
     case 'study':
-      _mica_study_import_get_study_structure($dom, $node);
+      _mica_study_import_get_study_structure($dom, $wrapper);
 
       break;
 

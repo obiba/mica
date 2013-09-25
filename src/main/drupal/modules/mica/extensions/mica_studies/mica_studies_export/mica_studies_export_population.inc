@@ -11,6 +11,7 @@ function _mica_export_population_xml($nid) {
   $dom = new DomDocument('1.0', 'utf-8');
   $root = $dom->createElement('population');
   $root->setAttribute('uuid', $wrapper->uuid->value());
+  $root->setAttribute('mica_origin_url', $wrapper->mica_origin_url->value());
   $dom->appendChild($root);
 
   $root->appendChild($dom->createElement('title'))->appendChild($dom->createTextNode($wrapper->title_field->value()));
@@ -26,15 +27,15 @@ function _mica_export_population_xml($nid) {
   $gen_info_element->appendChild($dom->createElement('format'))
     ->appendChild($dom->createTextNode($wrapper->body->format->value()));
 
-  $gen_info_dce = $root->appendChild($dom->createElement('data-collection-event'));
-  foreach ($wrapper->field_pop_dce->value() as $kc => $vc) {
+  $gen_info_dce = $root->appendChild($dom->createElement('data-collection-events'));
+  foreach ($wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
     $to_attrib = $gen_info_dce->appendChild($dom->createElement('data-collection-event'));
-    $to_attrib->setAttribute('ref-uuid', $vc->uuid);
+    $to_attrib->setAttribute('ref-uuid', $dce_wrapper->uuid->value());
   }
 
   $recru_proc_element = $root->appendChild($dom->createElement('recruitment-procedure'));
 
-  $source_recru_element = $dom->createElement('source-of-recruit');
+  $source_recru_element = $dom->createElement('sources-of-recruit');
   $recru_proc_element->appendChild($source_recru_element);
   foreach ($wrapper->field_pop_src_recruit->getIterator() as $recruit) {
     $to_attrib = $source_recru_element->appendChild($dom->createElement('source'));
@@ -42,7 +43,7 @@ function _mica_export_population_xml($nid) {
     $to_attrib->setAttribute('code', $recruit->value());
   }
 
-  $gener_popula_element = $dom->createElement('general-population');
+  $gener_popula_element = $dom->createElement('general-populations');
   $recru_proc_element->appendChild($gener_popula_element);
   foreach ($wrapper->field_pop_general_pop_recruit->getIterator() as $popul) {
     $to_attrib = $gener_popula_element->appendChild($dom->createElement('population'));
@@ -57,7 +58,7 @@ function _mica_export_population_xml($nid) {
     $to_attrib->appendChild($dom->createTextNode($study->value()));
   }
 
-  $specific_population_element = $dom->createElement('specific-population');
+  $specific_population_element = $dom->createElement('specific-populations');
   $recru_proc_element->appendChild($specific_population_element);
   foreach ($wrapper->field_pop_specific_pop->getIterator() as $specpopu) {
     $to_attrib = $specific_population_element->appendChild($dom->createElement('population'));
@@ -94,7 +95,7 @@ function _mica_export_population_xml($nid) {
   $charac_population_element->appendChild($dom->createElement('territory-city-of-residence'))
     ->appendChild($dom->createTextNode($wrapper->field_pop_territory->value()));
 
-  $sect_criteria_element = $dom->createElement('selection-criteria');
+  $sect_criteria_element = $dom->createElement('selections-criteria');
   $charac_population_element->appendChild($sect_criteria_element);
   foreach ($wrapper->field_pop_select_criteria->getIterator() as $criteria) {
     $to_attrib = $sect_criteria_element->appendChild($dom->createElement('criteria'));
@@ -104,17 +105,17 @@ function _mica_export_population_xml($nid) {
 
   $ethnic_origin_element = $dom->createElement('ethnic-origins');
   $charac_population_element->appendChild($ethnic_origin_element);
-  foreach ($wrapper->field_pop_ethnic_origin->value() as $ethnic) {
+  foreach ($wrapper->field_pop_ethnic_origin->getIterator() as $ethnic) {
     $to_attrib = $ethnic_origin_element->appendChild($dom->createElement('ethnic-origin'));
-    $to_attrib->appendChild($dom->createTextNode($ethnic));
+    $to_attrib->appendChild($dom->createTextNode($ethnic->value()));
 
   }
 
-  $health_status_element = $dom->createElement('health-status');
+  $health_status_element = $dom->createElement('healths-status');
   $charac_population_element->appendChild($health_status_element);
-  foreach ($wrapper->field_pop_health_status->value() as $health) {
+  foreach ($wrapper->field_pop_health_status->getIterator() as $health) {
     $to_attrib = $health_status_element->appendChild($dom->createElement('status'));
-    $to_attrib->appendChild($dom->createTextNode($health));
+    $to_attrib->appendChild($dom->createTextNode($health->value()));
 
   }
 
