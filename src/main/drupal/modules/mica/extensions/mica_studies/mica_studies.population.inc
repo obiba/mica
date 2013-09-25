@@ -21,7 +21,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
       $created = $dce_wrapper->created->value();
 
       // Hide DCE that are not published on study published page
-      if ($wrapper->status->value() == 1 && $dce_wrapper->status->value() == 1) {
+      if ($wrapper->status->value() == NODE_PUBLISHED && $dce_wrapper->status->value() == NODE_PUBLISHED) {
         $dce_rows[$dce_nid] = array(
           'data' => array(
             'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
