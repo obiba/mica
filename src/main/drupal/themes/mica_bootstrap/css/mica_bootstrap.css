@@ -7027,15 +7027,15 @@ form .field-add-more-submit {
   margin: .5em 0;
 }
 
-.node-unpublished {
+.block-mica-studies {
   background-color: #eed5d2;
 }
 
-.node-unpublished > td {
+.pop-dce .node-unpublished > td {
   background-color: #eed5d2 !important;
 }
 
-.node-unpublished header:before {
+.block-mica-studies .node-unpublished header:before {
   content: "Draft version";
   background-color: #eed5d2;
   font-weight: bold;
