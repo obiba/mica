@@ -4,7 +4,7 @@
  * mica_export_population.inc
  */
 
-function _mica_export_population_xml($nid) {
+function _mica_studies_export_population_xml($nid) {
 
   $wrapper = entity_metadata_wrapper('node', $nid);
 
@@ -145,8 +145,5 @@ function _mica_export_population_xml($nid) {
   $root->appendChild($dom->createElement('supplementary-information'))
     ->appendChild($dom->createTextNode($wrapper->field_pop_supp_infos->value()));
 
-  $myxml = $dom->saveXML();
-
-  return $myxml;
-
+  return $dom->saveXML();
 }

@@ -4,7 +4,7 @@
  * mica_export_study.inc
  */
 
-function _mica_export_study_xml($nid, $tmp_folder_name) {
+function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
 
   $wrapper = entity_metadata_wrapper('node', $nid);
 
@@ -44,10 +44,9 @@ function _mica_export_study_xml($nid, $tmp_folder_name) {
   $content_element->appendChild($dom->createElement('format'))
     ->appendChild($dom->createTextNode($wrapper->body->format->value()));
 
-
   $website_element = $dom->createElement('web-site');
   $root->appendChild($website_element);
-  $website_element->appendChild($dom->createTextNode($wrapper->field_website->value()?$wrapper->field_website->url->value():''));
+  $website_element->appendChild($dom->createTextNode($wrapper->field_website->value() ? $wrapper->field_website->url->value() : ''));
   $study_design_element = $dom->createElement('study-designs');
   $root->appendChild($study_design_element);
 
@@ -152,8 +151,5 @@ function _mica_export_study_xml($nid, $tmp_folder_name) {
 
   }
 
-  $myxml = $dom->saveXML();
-
-  return $myxml;
-
+  return $dom->saveXML();
 }

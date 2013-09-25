@@ -1,5 +1,5 @@
-name = Mica Export
-description = Mica Exportation
+name = Mica XML Export
+description = Parent module to export Mica nodes to XML
 core = 7.x
 package = Mica
 php = 5.2.4

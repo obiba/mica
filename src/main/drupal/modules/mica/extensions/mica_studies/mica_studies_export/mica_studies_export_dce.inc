@@ -4,7 +4,7 @@
  * mica_export_dce.inc
  */
 
-function _mica_export_dce_xml($nid, $tmp_folder_name) {
+function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
 
   $wrapper = entity_metadata_wrapper('node', $nid);
 
@@ -98,8 +98,5 @@ function _mica_export_dce_xml($nid, $tmp_folder_name) {
   $root->appendChild($dom->createElement('tissues-type'))
     ->appendChild($dom->createTextNode($wrapper->field_dce_tissues_sp->value()));
 
-  $myxml = $dom->saveXML();
-
-  return $myxml;
-
+  return $dom->saveXML();
 }
