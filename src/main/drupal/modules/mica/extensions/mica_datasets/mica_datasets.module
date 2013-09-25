@@ -19,7 +19,7 @@ define('MICA_HARMONIZATION_IMPOSSIBLE', base_path() . drupal_get_path('module', 
 define('MICA_HARMONIZATION_COMPLETE', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/bullet_green.png');
 define('MICA_HARMONIZATION_FORBIDDEN', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/bullet_white.png');
 define('MICA_HARMONIZATION_UNDETERMINED', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/bullet_black.png');
-define('MICA_HARMONIZATION_MISING_TICK', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/tick.png');
+define('MICA_HARMONIZATION_MISSING_TICK', base_path() . drupal_get_path('module', 'mica_datasets') . '/images/tick.png');
 
 /**
  * Creates default content after Features successfully installed
@@ -356,14 +356,16 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
               ),
             );
 
-            $links['export-variable-csv'] = array(
-              '#theme' => 'menu_local_action',
-              '#weight' => 55,
-              '#link' => array(
-                'title' => t('Download CSV'),
-                'href' => 'variable-csv/' . $node->nid,
-              ),
-            );
+            if (user_is_logged_in()) {
+              $links['export-variable-csv'] = array(
+                '#theme' => 'menu_local_action',
+                '#weight' => 55,
+                '#link' => array(
+                  'title' => t('Download CSV'),
+                  'href' => 'variable-csv/' . $node->nid,
+                ),
+              );
+            }
           }
         }
       }
@@ -1235,7 +1237,7 @@ function mica_datasets_node_view($node, $view_mode) {
         foreach ($node->content['field_variable_categories'][0]['#rows'] as &$row) {
           if (!empty($row['missing'])) {
             // replace with div icon
-            $row['missing'] = "<div class='variable_category-missing' title='Missing'><img src='" . MICA_HARMONIZATION_MISING_TICK . "'></div>";
+            $row['missing'] = "<div class='variable_category-missing' title='Missing'><img src='" . MICA_HARMONIZATION_MISSING_TICK . "'></div>";
           }
         }
       }
