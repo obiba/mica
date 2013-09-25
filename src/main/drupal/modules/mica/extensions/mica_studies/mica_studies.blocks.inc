@@ -178,11 +178,6 @@ function _mica_studies_block_study_datasets($study) {
 function _mica_studies_block_study_populations($study, $show_draft) {
   $content = array();
 
-  // Load the populations that are attached to PUBLISHED version of study
-  if ($show_draft) {
-    $study = node_load($study->nid);
-  }
-
   foreach (_mica_studies_sort_populations($study) as $population_nid) {
     $pop = node_load($population_nid);
 

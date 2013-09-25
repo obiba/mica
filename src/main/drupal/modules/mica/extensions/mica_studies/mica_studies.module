@@ -1055,10 +1055,9 @@ function mica_studies_node_reference_field_dce_population_potential_references($
 
 function _mica_studies_sort_populations($study) {
   $pop = array();
-  //debug($study);
-  $wrapper = entity_metadata_wrapper('node', $study);
+
+  $wrapper = entity_metadata_wrapper('node', $study->nid);
   foreach ($wrapper->field_study_populations->getIterator() as $pop_wrapper) {
-    //debug("....");
     $events = array();
     foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
       $created = $dce_wrapper->created->value();

@@ -34,7 +34,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
           )
         );
       }
-      else if ($show_draft || $wrapper->status->value() == 0) {
+      else if ($show_draft || $wrapper->status->value() == NODE_NOT_PUBLISHED) {
         $dce_rows[$dce_nid] = array(
           'data' => array(
             'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
@@ -47,7 +47,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
           ),
         );
 
-        if ($dce_wrapper->status->value() == 0) {
+        if ($dce_wrapper->status->value() == NODE_NOT_PUBLISHED) {
           $dce_rows[$dce_nid]['class'] = array('node-unpublished');
         }
       }
