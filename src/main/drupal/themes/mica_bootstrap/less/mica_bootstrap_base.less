@@ -304,3 +304,18 @@ form.node-form {
 form .field-add-more-submit {
   margin: .5em 0;
 }
+
+.node-unpublished {
+  background-color: #eed5d2;
+
+  &>td {
+    background-color: #eed5d2 !important;
+  }
+}
+
+.node-unpublished header:before {
+  content: "Draft version";
+  background-color: #eed5d2;
+  font-weight: bold;
+  font-style: italic;
+}

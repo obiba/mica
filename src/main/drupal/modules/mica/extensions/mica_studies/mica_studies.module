@@ -879,10 +879,9 @@ function mica_studies_block_view($delta = '') {
   module_load_include('inc', 'mica_studies', 'mica_studies.blocks');
   $study = menu_get_object();
 
-  $draft = (strpos(current_path(), '/draft') > 0);
-  if ($draft) {
+  $show_draft = (strpos(current_path(), '/draft') > 0);
+  if ($show_draft) {
     $study = workbench_moderation_node_current_load($study);
-    drupal_set_message(t('Timeline and Populations blocks are not visible in draft mode.'), 'warning', FALSE);
   }
 
   if (empty($study)) {
@@ -903,10 +902,10 @@ function mica_studies_block_view($delta = '') {
     case 'study-supp-infos':
       return _mica_studies_block_study_supp_infos($study);
     case 'study-populations':
-      return $draft ? NULL : _mica_studies_block_study_populations($study);
+      return _mica_studies_block_study_populations($study, $show_draft);
     case 'study-timeline':
       module_load_include('inc', 'mica_studies', 'mica_studies.blocks.timeline');
-      return $draft ? NULL : _mica_studies_block_study_timeline($study);
+      return _mica_studies_block_study_timeline($study, $show_draft);
     case 'study-datasets':
       return _mica_studies_block_study_datasets($study);
     case 'study-authorization':
@@ -1056,8 +1055,10 @@ function mica_studies_node_reference_field_dce_population_potential_references($
 
 function _mica_studies_sort_populations($study) {
   $pop = array();
+  //debug($study);
   $wrapper = entity_metadata_wrapper('node', $study);
   foreach ($wrapper->field_study_populations->getIterator() as $pop_wrapper) {
+    //debug("....");
     $events = array();
     foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
       $created = $dce_wrapper->created->value();

@@ -1,6 +1,6 @@
 <?php
 
-function _mica_studies_block_study_timeline($study) {
+function _mica_studies_block_study_timeline($study, $show_draft) {
 
   // http://color-harmony.edelweis-art.com/
   $color_index = 0;
@@ -25,7 +25,7 @@ function _mica_studies_block_study_timeline($study) {
 
   foreach (_mica_studies_sort_populations($study) as $population_nid) {
     $pop_wrapper = entity_metadata_wrapper('node', $population_nid);
-    if (node_access('view', $pop_wrapper->value())) {
+    if (($show_draft && $pop_wrapper->status->value() == 0) || $pop_wrapper->status->value() == 1 && node_access('view', $pop_wrapper->value())) {
 
       $pop_nid = $pop_wrapper->nid->value();
       $pop_title = $pop_wrapper->title->value();
@@ -39,7 +39,7 @@ function _mica_studies_block_study_timeline($study) {
       $legend_items[] = $svg . ' ' . $pop_title;
       $pop_svg[] = array('pop_nid' => $pop_nid, 'svg' => $svg);
       foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
-        if (node_access('view', $dce_wrapper->value())) {
+        if (($show_draft && $dce_wrapper->status->value() == 0) || $dce_wrapper->status->value() == 1 && node_access('view', $dce_wrapper->value())) {
           $start_year = $dce_wrapper->field_dce_start_year->value();
           $end_year = $dce_wrapper->field_dce_end_year->value();
           $dce_nid = $dce_wrapper->nid->value();
