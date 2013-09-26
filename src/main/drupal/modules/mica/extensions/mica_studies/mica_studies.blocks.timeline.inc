@@ -1,6 +1,6 @@
 <?php
 
-function _mica_studies_block_study_timeline($study, $show_draft) {
+function _mica_studies_block_study_timeline($study, $show_draft = TRUE) {
 
   // http://color-harmony.edelweis-art.com/
   $color_index = 0;

@@ -175,7 +175,7 @@ function _mica_studies_block_study_datasets($study) {
   );
 }
 
-function _mica_studies_block_study_populations($study, $show_draft) {
+function _mica_studies_block_study_populations($study, $show_draft = TRUE) {
   $content = array();
 
   foreach (_mica_studies_sort_populations($study) as $population_nid) {
@@ -193,11 +193,11 @@ function _mica_studies_block_study_populations($study, $show_draft) {
           $content[]['body']['#markup'] = "</div>";
         }
         else {
-          $content[] = node_view($pop, 'full');;
+          $content[] = node_view($pop, 'full');
         }
       }
       else if ($show_draft || (isset($pop->workbench_moderation['published']) && $pop->vid == $pop->workbench_moderation['published']->vid)) {
-        $content[] = node_view($pop, 'full');;
+        $content[] = node_view($pop, 'full');
       }
     }
   }

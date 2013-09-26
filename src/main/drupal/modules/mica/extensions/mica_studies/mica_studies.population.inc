@@ -6,7 +6,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
   _mica_studies_population_view_nb_participants($node);
 
   $wrapper = entity_metadata_wrapper('node', $node->nid);
-  $show_draft = (strpos(current_path(), '/draft') > 0);
+  $show_draft = TRUE; //(strpos(current_path(), '/draft') > 0);
   $dce_rows = array();
   foreach ($wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
     if (node_access('view', $dce_wrapper->value())) {
