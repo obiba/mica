@@ -9,42 +9,31 @@ include_once('mica_studies_import_dce.inc');
 include_once('mica_studies_import_population.inc');
 include_once('mica_studies_import_study.inc');
 
-function mica_studies_import_mica_import_permission_parameters() {
-  return array(
-    'import studies' => array(
-      'title' => t('Import Studies'),
-      'description' => t('Allow users importing studies')
-    )
-  );
-}
-
-function mica_studies_import_mica_import_can_import_node() {
-  return user_access('import studies');
-
-}
-
 /**
  * Implements hook_menu().
  */
 
 function mica_studies_import_menu_local_tasks_alter(&$data, $router_item, $root_path) {
-  if ($root_path === 'studies') {
-    // TODO test if has permission to import
-    $links = array();
-    if (node_access('create', 'study')) {
-      $links['import-xml'] = array(
-        '#theme' => 'menu_local_action',
-        '#link' => array(
-          'title' => t('Import XML Studies'),
-          'href' => 'import-xml',
-        ),
-      );
-    }
-    $data['actions']['output'] = array_merge($data['actions']['output'], $links);
+
+  $links = array();
+  if ($root_path === 'studies' && user_access('import study content')) {
+    $links['import-xml'] = array(
+      '#theme' => 'menu_local_action',
+      '#weight' => 50,
+      '#link' => array(
+        'title' => t('Import XML Studies'),
+        'href' => 'import-xml'
+      ),
+    );
   }
+  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
 
-function mica_studies_import_mica_import_set_node($dom, $wrapper) {
+function mica_studies_mica_import_get_redirect_page() {
+  return 'studies';
+}
+
+function mica_studies_mica_import_set_node_properties($dom, $wrapper) {
 
   switch ($wrapper->type->value()) {
     case 'contact':

@@ -25,7 +25,7 @@ function  _mica_study_import_get_dce_structure($dom, $wrapper) {
   $populations = $xpath->query('/data-collection-event/populations/population');
   foreach ($populations as $key => $population_value) {
     $population_uuid = $population_value->getAttribute("ref-uuid");
-    $population_wrapper = _mica_import_find_update_or_create_node($population_uuid, 'population', $origin_url);
+    $population_wrapper = _mica_import_find_or_create_node($population_uuid, 'population', $origin_url);
     $nid = $population_wrapper->nid->value();
     if (empty($nid)) {
       $population_wrapper->save();
@@ -51,8 +51,12 @@ function  _mica_study_import_get_dce_structure($dom, $wrapper) {
   foreach ($bio_sample_data as $key_data => $sample_value) {
     $wrapper->field_dce_bio_samples_management[$key_data]->set($sample_value->getAttribute("code"));
   }
-  $wrapper->field_dce_samples_man_other_sp->set($xpath
-    ->query('/data-collection-event/biological-samples/other-biological-samples')->item(0)->nodeValue);
+  $wrapper->field_dce_samples_man_other_sp->set(array(
+    'value' => $xpath
+      ->query('/data-collection-event/biological-samples/other-biological-samples')
+      ->item(0)
+      ->nodeValue
+  ));
   $wrapper->field_dce_tissues_sp->set($xpath->query('/data-collection-event/biological-samples/tissues-type')
     ->item(0)->nodeValue);
 }

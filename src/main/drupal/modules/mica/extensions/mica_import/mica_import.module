@@ -3,13 +3,21 @@
  * @file
  * Mica Import  file
  */
+
+/**
+ * Implements hook_permission().
+ */
 function mica_import_permission() {
-  return module_invoke_all('mica_import_permission_parameters');
-
-}
-
-function mica_import_can_import() {
-  return current(module_invoke_all('mica_import_can_import_node'));
+  $perms = array();
+  foreach (node_permissions_get_configured_types() as $type) {
+    $info = node_type_get_type($type);
+    $perms += array(
+      "import $type content" => array(
+        'title' => t('%type_name: Import content', array('%type_name' => $info->name)),
+      )
+    );
+  }
+  return $perms;
 }
 
 /**
@@ -21,18 +29,18 @@ function mica_import_menu() {
   $items = array();
   $items['import-xml'] = array(
     'title' => 'Import nodes from XML',
-    //todo verify access to this action, button should be visible only if user has 'can import studies' permission.
-    'access callback' => 'user_access',
-    'access arguments' => array('import studies'),
-    'page callback' => 'mica_import_form',
-    'page arguments' => array(1),
+    //@TODO check if user have permission to import at least one node type
+    'access callback' => 'mica_export_can_import_node',
+    //  'access arguments' => array(0),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mica_import_upload_form'),
   );
   return $items;
 }
 
-function mica_import_form() {
-
-  return drupal_get_form('mica_import_upload_form');
+function mica_export_can_import_node() {
+  //@TODO check if user have permission to import at least one node type
+  return TRUE;
 }
 
 function mica_import_upload_form() {
@@ -46,8 +54,6 @@ function mica_import_upload_form() {
     '#type' => 'submit',
     '#value' => t('Submit'),
   );
-  $form['#submit'][] = 'mica_import_upload_form_submit';
-  $form['#validat'][] = 'mica_import_upload_form_validate';
   return $form;
 }
 
@@ -157,13 +163,13 @@ function _mica_import_unzip_file($file) {
 }
 
 function _mica_import_batch_import($path) {
+
   $operations = array();
   $scanned_directory = array_diff(scandir($path), array('..', '.'));
-  foreach ($scanned_directory as $key => $file) {
+  foreach ($scanned_directory as $file) {
     $file_xml = $path . DIRECTORY_SEPARATOR . $file;
     if (is_file($file_xml)) {
-      $operations[] = array('_mica_import_create_node', array($file_xml));
-
+      $operations[] = array('_mica_import_import_node', array($file_xml));
     }
 
   }
@@ -173,12 +179,12 @@ function _mica_import_batch_import($path) {
     'operations' => $operations,
     'finished' => 'mica_import_batch_finished',
   ));
-  $redirect = 'studies';
-  batch_process($redirect);
+
+  batch_process(module_invoke_all('mica_import_get_redirect_page'));
 
 }
 
-function _mica_import_create_node($file_xml, &$context) {
+function _mica_import_import_node($file_xml, &$context) {
 
   // global $user;
   $context['message'] = t('Extract information from %file_xml', array('file_xml' => $file_xml));
@@ -190,10 +196,10 @@ function _mica_import_create_node($file_xml, &$context) {
   $origin_url = $current_document->getAttribute("mica_origin_url");
   $type_node = str_replace('-', '_', $type_node);
   // Node exist?  Update or create node
-  $wrapper = _mica_import_find_update_or_create_node($uuid, $type_node, $origin_url);
+  $wrapper = _mica_import_find_or_create_node($uuid, $type_node, $origin_url);
 
   //Set Nodes from XML,s files
-  module_invoke_all('mica_import_set_node', $dom, $wrapper);
+  module_invoke_all('mica_import_set_node_properties', $dom, $wrapper);
 
   //Save created node
   $wrapper->save();
@@ -204,7 +210,7 @@ function mica_import_batch_finished() {
 
 }
 
-function _mica_import_find_update_or_create_node($uuid, $type, $origin_url) {
+function _mica_import_find_or_create_node($uuid, $type, $origin_url) {
   global $user;
 
   if ($nodes = entity_uuid_load('node', array($uuid), array())) {
@@ -223,7 +229,6 @@ function _mica_import_find_update_or_create_node($uuid, $type, $origin_url) {
     'type' => $type,
     'uid' => $user->uid,
     'status' => NODE_NOT_PUBLISHED,
-    'menu' => '',
     'uuid' => $uuid,
     'mica_origin_url' => $origin_url
   );

@@ -8,14 +8,17 @@
  * Implements hook_permission().
  */
 function mica_export_permission() {
-  return module_invoke_all('mica_export_permission_parameters');
-
+  $perms = array();
+  foreach (node_permissions_get_configured_types() as $type) {
+    $info = node_type_get_type($type);
+    $perms += array(
+      "export $type content" => array(
+        'title' => t('%type_name: Export content', array('%type_name' => $info->name)),
+      )
+    );
+  }
+  return $perms;
 }
-
-
-/**
- * Implements hook_menu().
- */
 
 /**
  * Implements hook_menu().
@@ -108,7 +111,6 @@ function _mica_export_generate_xml($nid, &$context) {
     file_unmanaged_save_data($xml, "temporary://$tmp_folder_name/$type-$uuid.xml", FILE_EXISTS_REPLACE);
     //sand some parameters to next bach
     $context['results']['tmp_folder_name'] = $tmp_folder_name;
-
   }
 }
 

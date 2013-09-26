@@ -5,35 +5,20 @@
  * Documentation of Mica_import hooks.
  */
 
-/**
- * @return array permission parameter to access this features
- */
-function hook_mica_import_permission_parameters() {
-  return array(
-    'import studies' => array(
-      'title' => t('Import Studies'),
-      'description' => t('Allow users importing studies')
-    )
-  );
-}
+/*
+ * Set of fields by crawling .inc xml to field mapping
+ * @parameter  $dom : XML DOM of from files
+ * @parameter  $wrapper  : Wrapper entities of node to create /update
+ *
+ * */
+function hook_mica_import_set_node_properties($dom, $wrapper) {
 
-/**
- * @return true, false to verify if user have permission to this features
- */
-function hook_mica_import_can_import_node() {
-  return user_access('import studies');
 }
-
 
 /*
- * Get correct mapped array to create node
- * @param $value_xml : array generated XML
- * @return $fields_array
+ * Get redirect alias after batch import nodes
  * */
-
-
-function hook_mica_import_get_fields($value_xml){
-
-
+function hook_mica_import_get_redirect_page() {
+  return 'studies';
 }
 

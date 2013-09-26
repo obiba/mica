@@ -85,7 +85,7 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
     $to_attrib->setAttribute('code', $biosample->value());
   }
   $bio_samples_element->appendChild($dom->createElement('other-biological-samples'))
-    ->appendChild($dom->createTextNode($wrapper->field_dce_samples_man_other_sp->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_dce_samples_man_other_sp->value->value()));
 
   $bio_samples_element->appendChild($dom->createElement('tissues-type'))
     ->appendChild($dom->createTextNode($wrapper->field_dce_tissues_sp->value()));

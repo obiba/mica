@@ -63,10 +63,10 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
     $to_attrib->setAttribute('code', $design->value());
   }
   $design_element->appendChild($dom->createElement('other'))
-    ->appendChild($dom->createTextNode($wrapper->field_design_other_sp->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_design_other_sp->value->value()));
 
   $study_design_element->appendChild($dom->createElement('general-information-follow-up'))
-    ->appendChild($dom->createTextNode($wrapper->field_info_design_follow_up->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_info_design_follow_up->value->value()));
 
   $recruitment_target_element = $dom->createElement('recruitment-target');
   $study_design_element->appendChild($recruitment_target_element);
@@ -79,7 +79,7 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
     ->appendChild($dom->createTextNode($wrapper->field_recruitment_other_sp->value()));
 
   $study_design_element->appendChild($dom->createElement('supplementary-information'))
-    ->appendChild($dom->createTextNode($wrapper->field_recruitment_supp_info->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_recruitment_supp_info->value->value()));
 
   $nbr_participants_element = $dom->createElement('number-participant');
   $study_design_element->appendChild($nbr_participants_element);
@@ -123,7 +123,7 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $root->appendChild($dom->createElement('pubmed-id'))
     ->appendChild($dom->createTextNode($wrapper->field_pubmedid->value()));
   $root->appendChild($dom->createElement('supplementary-information'))
-    ->appendChild($dom->createTextNode($wrapper->field_supp_infos->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_supp_infos->value->value()));
 
   $poplutions_element = $root->appendChild($dom->createElement('populations'));
   foreach ($wrapper->field_study_populations->value() as $kc => $vc) {

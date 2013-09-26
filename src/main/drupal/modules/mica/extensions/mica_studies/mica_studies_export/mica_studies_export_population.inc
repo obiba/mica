@@ -66,12 +66,12 @@ function _mica_studies_export_population_xml($nid) {
     $to_attrib->setAttribute('code', $specpopu->value());
   }
   $specific_population_element->appendChild($dom->createElement('other'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_specific_pop_other_sp->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_pop_specific_pop_other_sp->value->value()));
 
   $recru_proc_element->appendChild($dom->createElement('other-recruitment-source'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_recruitment_other->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_pop_recruitment_other->value->value()));
   $recru_proc_element->appendChild($dom->createElement('supplementary-information'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_recruit_supp_info->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_pop_recruit_supp_info->value->value()));
 
   $charac_population_element = $root->appendChild($dom->createElement('characteristics-of-the-population'));
   $charac_population_element->appendChild($dom->createElement('gender'))
@@ -93,7 +93,7 @@ function _mica_studies_export_population_xml($nid) {
   }
 
   $charac_population_element->appendChild($dom->createElement('territory-city-of-residence'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_territory->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_pop_territory->value->value()));
 
   $sect_criteria_element = $dom->createElement('selections-criteria');
   $charac_population_element->appendChild($sect_criteria_element);
@@ -120,9 +120,9 @@ function _mica_studies_export_population_xml($nid) {
   }
 
   $charac_population_element->appendChild($dom->createElement('other-selection-criteria'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_selection_others_sp->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_pop_selection_others_sp->value->value()));
   $charac_population_element->appendChild($dom->createElement('supplementary-information'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_partcipant_sel_supp_in->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_pop_partcipant_sel_supp_in->value->value()));
 
   $partic_numb__element = $root->appendChild($dom->createElement('number-participant'));
 
@@ -141,10 +141,10 @@ function _mica_studies_export_population_xml($nid) {
     ->appendChild($dom->createTextNode($wrapper->field_pop_no_lim_participants_s->value() ? 'true' : 'false'));
 
   $partic_numb__element->appendChild($dom->createElement('supplementary-information'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_participants_nb_supp_i->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_pop_participants_nb_supp_i->value->value()));
 
   $root->appendChild($dom->createElement('supplementary-information'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_supp_infos->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_pop_supp_infos->value->value()));
 
   return $dom->saveXML();
 }

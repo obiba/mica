@@ -14,7 +14,7 @@ include_once('mica_studies_export_dce.inc');
  */
 function mica_studies_export_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   $links = array();
-  $node = $router_item['map']['1'];
+  $node = @$router_item['map']['1'];
   if ($root_path === 'node/%' && $node->type === 'study' && mica_export_can_export_node($node)) {
     $links['export-study-xml'] = array(
       '#theme' => 'menu_local_action',
