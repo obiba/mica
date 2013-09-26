@@ -65,24 +65,29 @@ function mica_networks_default_search_api_index() {
         "title" : { "type" : "string" },
         "status" : { "type" : "boolean" },
         "author" : { "type" : "integer", "entity_type" : "user" },
-        "field_acroym" : { "type" : "text" },
         "title_field" : { "type" : "text" },
+        "field_acroym" : { "type" : "text" },
         "field_contacts_ref" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_investigators" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
-        "field_supp_infos" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "text" },
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" },
         "body:value" : { "type" : "text" },
-        "body:summary" : { "type" : "text" }
+        "body:summary" : { "type" : "text" },
+        "field_supp_infos:value" : { "type" : "text" }
       },
       "data_alter_callbacks" : {
+        "search_api_ranges_alter" : { "status" : 0, "weight" : "-50", "settings" : { "fields" : [] } },
         "search_api_alter_bundle_filter" : {
           "status" : 1,
           "weight" : "-10",
           "settings" : { "default" : "0", "bundles" : { "network" : "network" } }
         },
+        "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_combined" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_aggregation" : {
           "status" : 1,
           "weight" : "0",
@@ -90,23 +95,38 @@ function mica_networks_default_search_api_index() {
                 "name" : "Title_Full_text",
                 "type" : "fulltext",
                 "fields" : [ "title_field" ],
-                "description" : "A Fulltext aggregation of the following fields: Complete name."
+                "description" : "A Fulltext aggregation of the following fields: Title."
               }
             }
           }
         },
-        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_combined" : { "status" : 0, "weight" : "0", "settings" : [] }
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
       },
       "processors" : {
-        "search_api_case_ignore" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
+        "search_api_case_ignore" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : { "fields" : {
+              "title" : true,
+              "author" : true,
+              "title_field" : true,
+              "field_acroym" : true,
+              "search_api_aggregation_1" : true,
+              "body:value" : true,
+              "body:summary" : true,
+              "field_supp_infos:value" : true
+            }
+          }
+        },
         "search_api_html_filter" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "10",
           "settings" : {
-            "fields" : [],
+            "fields" : {
+              "body:value" : true,
+              "body:summary" : true,
+              "field_supp_infos:value" : true
+            },
             "title" : 0,
             "alt" : 1,
             "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
@@ -128,6 +148,17 @@ function mica_networks_default_search_api_index() {
             "fields" : [],
             "file" : "",
             "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
+          }
+        },
+        "search_api_highlighting" : {
+          "status" : 0,
+          "weight" : "35",
+          "settings" : {
+            "prefix" : "\\u003Cstrong\\u003E",
+            "suffix" : "\\u003C\\/strong\\u003E",
+            "excerpt" : 1,
+            "excerpt_length" : "256",
+            "highlight" : "always"
           }
         }
       }
