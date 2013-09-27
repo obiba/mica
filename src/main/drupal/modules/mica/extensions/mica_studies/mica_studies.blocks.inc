@@ -181,24 +181,21 @@ function _mica_studies_block_study_populations($study, $show_draft = TRUE) {
   foreach (_mica_studies_sort_populations($study) as $population_nid) {
     $pop = node_load($population_nid);
 
-    if (node_access('view', $pop)) {
+    if ($show_draft) {
+      $latest = key(node_revision_list($pop));
+      $pop = node_load($population_nid, $latest);
 
-      if ($show_draft) {
-        $latest = key(node_revision_list($pop));
-        $pop = node_load($population_nid, $latest);
-
-        if (!isset($pop->workbench_moderation['published']) || $pop->vid !== $pop->workbench_moderation['published']->vid) {
-          $content[]['body']['#markup'] = "<div class='node-unpublished'>";
-          $content[] = node_view($pop, 'full');;
-          $content[]['body']['#markup'] = "</div>";
-        }
-        else {
-          $content[] = node_view($pop, 'full');
-        }
+      if (node_access('view', $pop) && !isset($pop->workbench_moderation['published']) || $pop->vid !== $pop->workbench_moderation['published']->vid) {
+        $content[]['body']['#markup'] = "<div class='node-unpublished'>";
+        $content[] = node_view($pop, 'full');;
+        $content[]['body']['#markup'] = "</div>";
       }
-      else if ($show_draft || (isset($pop->workbench_moderation['published']) && $pop->vid == $pop->workbench_moderation['published']->vid)) {
+      else if (node_access('view', $pop)) {
         $content[] = node_view($pop, 'full');
       }
+    }
+    else if (node_access('view', $pop) && isset($pop->workbench_moderation['published']) && $pop->vid == $pop->workbench_moderation['published']->vid) {
+      $content[] = node_view($pop, 'full');
     }
   }
   return array(

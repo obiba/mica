@@ -25,43 +25,47 @@ function _mica_studies_block_study_timeline($study, $show_draft = TRUE) {
 
   foreach (_mica_studies_sort_populations($study) as $population_nid) {
     $pop_wrapper = entity_metadata_wrapper('node', $population_nid);
-    if (($show_draft && $pop_wrapper->status->value() == NODE_NOT_PUBLISHED) || $pop_wrapper->status->value() == NODE_PUBLISHED && node_access('view', $pop_wrapper->value())) {
 
-      $pop_nid = $pop_wrapper->nid->value();
-      $pop_title = $pop_wrapper->title->value();
+    $pop_node = node_load($pop_wrapper->nid);
+    if (!node_access('view', $pop_node)) {
+      if (($show_draft && $pop_wrapper->status->value() == NODE_NOT_PUBLISHED) || $pop_wrapper->status->value() == NODE_PUBLISHED && node_access('view', $pop_wrapper->value())) {
 
-      // See https://drupal.org/project/color_field for more color choices...
-      $color = _mica_studies_color_darken($colors[$color_index % $nb_colors], intval($color_index / $nb_colors) * 50);
-      $color_index++;
+        $pop_nid = $pop_wrapper->nid->value();
+        $pop_title = $pop_wrapper->title->value();
 
-      $svg = "<svg width='25' height='25'><rect width='20' height='20' x='2' y='2' rx='5' ry='5' style='fill:$color;'/></svg>";
+        // See https://drupal.org/project/color_field for more color choices...
+        $color = _mica_studies_color_darken($colors[$color_index % $nb_colors], intval($color_index / $nb_colors) * 50);
+        $color_index++;
 
-      $legend_items[] = $svg . ' ' . $pop_title;
-      $pop_svg[] = array('pop_nid' => $pop_nid, 'svg' => $svg);
-      foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
-        if (($show_draft && $dce_wrapper->status->value() == NODE_NOT_PUBLISHED) || $dce_wrapper->status->value() == NODE_PUBLISHED && node_access('view', $dce_wrapper->value())) {
-          $start_year = $dce_wrapper->field_dce_start_year->value();
-          $end_year = $dce_wrapper->field_dce_end_year->value();
-          $dce_nid = $dce_wrapper->nid->value();
+        $svg = "<svg width='25' height='25'><rect width='20' height='20' x='2' y='2' rx='5' ry='5' style='fill:$color;'/></svg>";
 
-          if (!empty($start_year) && !empty($end_year)) {
-            $start_month = $dce_wrapper->field_dce_start_month->value();
-            $end_month = $dce_wrapper->field_dce_end_month->value();
-            $created = $dce_wrapper->created->value();
+        $legend_items[] = $svg . ' ' . $pop_title;
+        $pop_svg[] = array('pop_nid' => $pop_nid, 'svg' => $svg);
+        foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
+          if (($show_draft && $dce_wrapper->status->value() == NODE_NOT_PUBLISHED) || $dce_wrapper->status->value() == NODE_PUBLISHED && node_access('view', $dce_wrapper->value())) {
+            $start_year = $dce_wrapper->field_dce_start_year->value();
+            $end_year = $dce_wrapper->field_dce_end_year->value();
+            $dce_nid = $dce_wrapper->nid->value();
 
-            $events[] = array(
-              'color' => $color,
-              'pop_nid' => $pop_wrapper->nid->value(),
-              'pop_title' => $pop_wrapper->title->value(),
-              'dce_nid' => $dce_nid,
-              'dce_title' => $dce_wrapper->title->value(),
-              'start_year' => $start_year,
-              'end_year' => $end_year,
-              'start_month' => empty($start_month) ? 0 : $start_month - 1,
-              'end_month' => empty($end_month) ? 12 : $end_month,
-              'created' => empty($created) ? 0 : intval($created)
-            );
-            $event_view[] = _mica_studies_block_study_timeline_prepare_modal($dce_nid);
+            if (!empty($start_year) && !empty($end_year)) {
+              $start_month = $dce_wrapper->field_dce_start_month->value();
+              $end_month = $dce_wrapper->field_dce_end_month->value();
+              $created = $dce_wrapper->created->value();
+
+              $events[] = array(
+                'color' => $color,
+                'pop_nid' => $pop_wrapper->nid->value(),
+                'pop_title' => $pop_wrapper->title->value(),
+                'dce_nid' => $dce_nid,
+                'dce_title' => $dce_wrapper->title->value(),
+                'start_year' => $start_year,
+                'end_year' => $end_year,
+                'start_month' => empty($start_month) ? 0 : $start_month - 1,
+                'end_month' => empty($end_month) ? 12 : $end_month,
+                'created' => empty($created) ? 0 : intval($created)
+              );
+              $event_view[] = _mica_studies_block_study_timeline_prepare_modal($dce_nid);
+            }
           }
         }
       }
