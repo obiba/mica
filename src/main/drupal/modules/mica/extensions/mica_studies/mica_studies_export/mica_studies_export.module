@@ -14,8 +14,9 @@ include_once('mica_studies_export_dce.inc');
  */
 function mica_studies_export_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   $links = array();
+  if ($root_path === 'node/%'){
   $node = $router_item['map']['1'];
-  if ($root_path === 'node/%' && $node->type === 'study' && mica_export_can_export_node($node)) {
+  if ($node->type === 'study' && mica_export_can_export_node($node)) {
     $links['export-study-xml'] = array(
       '#theme' => 'menu_local_action',
       '#weight' => 50,
@@ -25,6 +26,7 @@ function mica_studies_export_menu_local_tasks_alter(&$data, $router_item, $root_
       ),
     );
   }
+}
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
 

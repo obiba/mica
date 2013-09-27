@@ -11,8 +11,13 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
 //Retrieve attachments files
   $documents = $wrapper->field_documents->value();
   if (isset($documents)) {
-    mica_export_copy_attachment_file($documents, 'study', $tmp_folder_name);
+    mica_export_copy_attachment_file($documents, 'study-documents', $tmp_folder_name);
   }
+  $logo = $wrapper->field_logo->value();
+  if (isset($logo)) {
+    mica_export_copy_attachment_file($logo, 'study-logo', $tmp_folder_name);
+  }
+
   //Xml mapper
   $dom = new DomDocument('1.0', 'utf-8');
   $root = $dom->createElement('study');
@@ -58,10 +63,10 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
     $to_attrib->setAttribute('code', $design->value());
   }
   $design_element->appendChild($dom->createElement('other'))
-    ->appendChild($dom->createTextNode($wrapper->field_design_other_sp->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_design_other_sp->value->value()));
 
   $study_design_element->appendChild($dom->createElement('general-information-follow-up'))
-    ->appendChild($dom->createTextNode($wrapper->field_info_design_follow_up->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_info_design_follow_up->value->value()));
 
   $recruitment_target_element = $dom->createElement('recruitment-target');
   $study_design_element->appendChild($recruitment_target_element);
@@ -74,7 +79,7 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
     ->appendChild($dom->createTextNode($wrapper->field_recruitment_other_sp->value()));
 
   $study_design_element->appendChild($dom->createElement('supplementary-information'))
-    ->appendChild($dom->createTextNode($wrapper->field_recruitment_supp_info->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_recruitment_supp_info->value->value()));
 
   $nbr_participants_element = $dom->createElement('number-participant');
   $study_design_element->appendChild($nbr_participants_element);
@@ -111,14 +116,14 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $acess_element->appendChild($dom->createElement('other'))
     ->appendChild($dom->createTextNode($wrapper->field_access_other->value() ? 'true' : 'false'));
   $acess_element->appendChild($dom->createElement('other-info'))
-    ->appendChild($dom->createTextNode($wrapper->field_access_other_sp->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_access_other_sp->value->value()));
 
   $root->appendChild($dom->createElement('maker-paper'))
     ->appendChild($dom->createTextNode($wrapper->field_marker_paper->value()));
   $root->appendChild($dom->createElement('pubmed-id'))
     ->appendChild($dom->createTextNode($wrapper->field_pubmedid->value()));
   $root->appendChild($dom->createElement('supplementary-information'))
-    ->appendChild($dom->createTextNode($wrapper->field_supp_infos->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_supp_infos->value->value()));
 
   $poplutions_element = $root->appendChild($dom->createElement('populations'));
   foreach ($wrapper->field_study_populations->value() as $kc => $vc) {
@@ -126,12 +131,16 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
     $to_attrib->setAttribute('ref-uuid', $vc->uuid);
   }
 
-  $document_element = $dom->createElement('files');
-  $root->appendChild($document_element);
+  $files_element = $dom->createElement('files');
+  $root->appendChild($files_element);
+
+  $documents_element = $dom->createElement('documents');
+  $files_element->appendChild($documents_element);
+
   foreach ($wrapper->field_documents->value() as $document) {
 
-    $document_detail_element = $dom->createElement('file');
-    $document_element->appendChild($document_detail_element);
+    $document_detail_element = $dom->createElement('document');
+    $documents_element->appendChild($document_detail_element);
     $document_detail_element->appendChild($dom->createElement('filename'))
       ->appendChild($dom->createTextNode($document['filename']));
     $document_detail_element->appendChild($dom->createElement('url'))
@@ -151,5 +160,24 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
 
   }
 
+  $logo_detail_element = $dom->createElement('logo');
+  $files_element->appendChild($logo_detail_element);
+  $logo_detail_element->appendChild($dom->createElement('filename'))
+    ->appendChild($dom->createTextNode($logo['filename']));
+  $logo_detail_element->appendChild($dom->createElement('url'))
+    ->appendChild($dom->createTextNode($logo['uri']));
+  $logo_detail_element->appendChild($dom->createElement('description'))
+    ->appendChild($dom->createTextNode($logo['description']));
+  $logo_detail_element->appendChild($dom->createElement('display'))
+    ->appendChild($dom->createTextNode($logo['display']));
+
+  $logo_detail_element->appendChild($dom->createElement('filemime'))
+    ->appendChild($dom->createTextNode($logo['filemime']));
+  $logo_detail_element->appendChild($dom->createElement('filesize'))
+    ->appendChild($dom->createTextNode($logo['filesize']));
+  $logo_detail_element->appendChild($dom->createElement('status'))
+    ->appendChild($dom->createTextNode($logo['status']));
+  $logo_detail_element->setAttribute('ref-uuid', $logo['uuid']);
+  
   return $dom->saveXML();
 }
