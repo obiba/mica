@@ -391,6 +391,7 @@ features[views_view][] = dataset_studies
 features[views_view][] = datasets
 features[views_view][] = harmonization_datasets
 features[views_view][] = study_datasets
+features[views_view][] = variable_csv_export
 features[views_view][] = variable_search
 features[views_view][] = variables_dimensions
 features_exclude[variable][menu_parent_dataset] = menu_parent_dataset
