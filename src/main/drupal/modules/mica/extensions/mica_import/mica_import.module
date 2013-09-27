@@ -30,7 +30,7 @@ function mica_import_menu() {
   $items['import-xml'] = array(
     'title' => 'Import nodes from XML',
     //@TODO check if user have permission to import at least one node type
-    'access callback' => 'mica_export_can_import_node',
+    'access callback' => 'mica_import_can_import_node',
     //  'access arguments' => array(0),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('mica_import_upload_form'),
@@ -38,7 +38,7 @@ function mica_import_menu() {
   return $items;
 }
 
-function mica_export_can_import_node() {
+function mica_import_can_import_node() {
   //@TODO check if user have permission to import at least one node type
   return TRUE;
 }
@@ -180,44 +180,55 @@ function _mica_import_batch_import($path) {
     'finished' => 'mica_import_batch_finished',
   ));
 
-  batch_process(module_invoke_all('mica_import_get_redirect_page'));
+  batch_process('/');
 
 }
 
 function _mica_import_import_node($file_xml, &$context) {
-
-  // global $user;
+  $errors_message =array();
   $context['message'] = t('Extract information from %file_xml', array('file_xml' => $file_xml));
   $dom = new DOMDocument();
   $dom->load($file_xml);
   $current_document = $dom->documentElement;
   $type_node = $current_document->nodeName;
   $uuid = $current_document->getAttribute("uuid");
-  $origin_url = $current_document->getAttribute("mica_origin_url");
   $type_node = str_replace('-', '_', $type_node);
   // Node exist?  Update or create node
-  $wrapper = _mica_import_find_or_create_node($uuid, $type_node, $origin_url);
+  $wrapper = _mica_import_find_or_create_node($uuid, $type_node);
+if($wrapper === false){
+  $context['message'] = t('Action for this node : %node aborted', array('%node'=>$type_node));
 
+}
+  else{
   //Set Nodes from XML,s files
   module_invoke_all('mica_import_set_node_properties', $dom, $wrapper);
 
   //Save created node
   $wrapper->save();
-
+  }
+  $context['message'] = $errors_message;
 }
 
-function mica_import_batch_finished() {
-
+function mica_import_batch_finished(&$context) {
+  drupal_set_message( $context['message']);
 }
 
-function _mica_import_find_or_create_node($uuid, $type, $origin_url) {
+function _mica_import_find_or_create_node($uuid, $type) {
   global $user;
 
   if ($nodes = entity_uuid_load('node', array($uuid), array())) {
 
     $node = current($nodes);
     $wrapper = entity_metadata_wrapper('node', $node->nid);
-    return $wrapper;
+    if(
+    user_access('import '.$type.' content')  &&
+    (user_access('edit own '.$type.' content')  ||
+    user_access('edit any '.$type.' content'))
+    )
+    {return $wrapper;}
+    else {dpm(t('No permission to update or edit : '.$node->type.' content'));
+    return false;
+    }
   }
 
   watchdog('mica', 'Create new node with UUID %uuid Call by %type ', array(
@@ -229,12 +240,53 @@ function _mica_import_find_or_create_node($uuid, $type, $origin_url) {
     'type' => $type,
     'uid' => $user->uid,
     'status' => NODE_NOT_PUBLISHED,
-    'uuid' => $uuid,
-    'mica_origin_url' => $origin_url
+    'uuid' => $uuid
   );
+  if(
+    user_access('import '.$type.' content')  &&
+    user_access('create '.$type.' content')
+  )
+  {
   // Creates a wrapper object without inserting it to the DB
   $wrapper = entity_property_values_create_entity('node', $infos);
-
   return $wrapper;
+  }
+  else{
+    dpm(t('No permission to create or edit : '.$type.' content'));
+    return false;
+  }
 }
+
+/**
+ * Copy attachment files of each node
+ */
+function mica_import_copy_attachment_file($documents, $type, $tmp_folder_name) {
+  $path = "temporary://$tmp_folder_name/$type-documents";
+  if (!is_dir($path)) {
+    drupal_mkdir($path);
+    foreach ($documents as $document) {
+      file_unmanaged_copy($document['uri'], $path, FILE_EXISTS_REPLACE);
+    }
+  }
+}
+
+function _mica_import_find_or_create_file($file_uuid,$type,$value_document ){
+  dvm($type);
+  dvm($value_document);
+
+  if ($file_id = entity_get_id_by_uuid('file', array($file_uuid))) {
+    foreach ($file_id as $id) {
+      if ($file = file_load($id)) {
+      //  file_usage_delete($file, 'node',$type );
+        //file_delete($file,true);
+        dpm($file);
+      }
+
+
+    }
+  }
+
+return $id;
+}
+
 

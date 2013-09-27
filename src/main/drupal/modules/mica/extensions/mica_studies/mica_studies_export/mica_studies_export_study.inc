@@ -116,7 +116,7 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $acess_element->appendChild($dom->createElement('other'))
     ->appendChild($dom->createTextNode($wrapper->field_access_other->value() ? 'true' : 'false'));
   $acess_element->appendChild($dom->createElement('other-info'))
-    ->appendChild($dom->createTextNode($wrapper->field_access_other_sp->value()));
+    ->appendChild($dom->createTextNode($wrapper->field_access_other_sp->value->value()));
 
   $root->appendChild($dom->createElement('maker-paper'))
     ->appendChild($dom->createTextNode($wrapper->field_marker_paper->value()));

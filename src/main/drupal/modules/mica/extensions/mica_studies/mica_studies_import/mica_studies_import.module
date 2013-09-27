@@ -29,30 +29,26 @@ function mica_studies_import_menu_local_tasks_alter(&$data, $router_item, $root_
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
 
-function mica_studies_mica_import_get_redirect_page() {
-  return 'studies';
-}
-
 function mica_studies_mica_import_set_node_properties($dom, $wrapper) {
-
+  $errors_message=array();
   switch ($wrapper->type->value()) {
     case 'contact':
-      _mica_study_import_get_contact_structure($dom, $wrapper);
+      _mica_studies_mica_import_set_contact_properties($dom, $wrapper);
 
       break;
     case 'data_collection_event':
-      _mica_study_import_get_dce_structure($dom, $wrapper);
+      $errors_message .=  _mica_studies_mica_import_set_dce_properties($dom, $wrapper);
 
       break;
     case 'population':
-      _mica_study_import_get_population_structure($dom, $wrapper);
+      $errors_message .=  _mica_studies_mica_import_set_population_properties($dom, $wrapper);
 
       break;
     case 'study':
-      _mica_study_import_get_study_structure($dom, $wrapper);
+      $errors_message .= _mica_study_import_set_study_properties($dom, $wrapper);
 
       break;
 
   }
-
+return $errors_message;
 }

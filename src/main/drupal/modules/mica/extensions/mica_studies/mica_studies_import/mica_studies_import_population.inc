@@ -4,16 +4,15 @@
  * mica_studies_import_population.inc
  */
 
-function   _mica_study_import_get_population_structure($dom, $wrapper) {
-
+function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
+$errors_message=array();
   // xpath with contact/name/title
   $xpath = new DOMXPath($dom);
   $current_document = $dom->documentElement;
-  $origin_url = $current_document->getAttribute("mica_origin_url");
   $study_uuid = $xpath->query('/population/study')->item(0)->getAttribute("ref-uuid");
-  $study_wrapper = _mica_import_find_or_create_node($study_uuid, 'study', $origin_url);
+  $study_wrapper = _mica_import_find_or_create_node($study_uuid, 'study');
   $nid = $study_wrapper->nid->value();
-
+  if($study_wrapper!==false){
   if (empty($nid)) {
     $study_wrapper->save();
   }
@@ -21,9 +20,14 @@ function   _mica_study_import_get_population_structure($dom, $wrapper) {
     $wrapper->field_pop_study->set($study_wrapper->nid->value());
     $study_wrapper->save();
   } catch (Exception $e) {
-    dpm($e->getMessage(), 'can\'t set  study nid ');
+    $errors_message.='can\'t set  study nid => '.$e->getMessage().'</ br>';
   }
-
+  }
+  else{
+    $errors_message.='can\'t set  study nid => you don\'t have permission to edit/create study</ br>';
+  }
+  $origin_url = $current_document->getAttribute("mica_origin_url");
+  $wrapper->mica_origin_url->set($origin_url);
   $wrapper->title->set($xpath->query('/population/title')->item(0)->nodeValue);
   $wrapper->title_field->set($xpath->query('/population/title')->item(0)->nodeValue);
 
@@ -34,8 +38,8 @@ function   _mica_study_import_get_population_structure($dom, $wrapper) {
   $dce_elements = $xpath->query('/population/data-collection-events/data-collection-event');
   foreach ($dce_elements as $index => $dce_element) {
     $dce_uuid = $dce_element->getAttribute("ref-uuid");
-    $dce_wrapper = _mica_import_find_or_create_node($dce_uuid, 'data_collection_event', $origin_url);
-
+    $dce_wrapper = _mica_import_find_or_create_node($dce_uuid, 'data_collection_event');
+if($dce_wrapper!==false){
     $nid = $dce_wrapper->nid->value();
 
     if (empty($nid)) {
@@ -46,8 +50,13 @@ function   _mica_study_import_get_population_structure($dom, $wrapper) {
       $dce_wrapper->save();
 
     } catch (Exception $e) {
-      dpm($e->getMessage(), 'can\'t set  dce nid ');
+      $errors_message.='can\'t set  dce nid => ' .$e->getMessage().'</ br>';
 
+
+    }
+  }
+    else{
+      $errors_message.='can\'t set  dce nid => you don\'t have permission to edit/create data_collection_event</ br>';
     }
   }
 
@@ -149,5 +158,5 @@ function   _mica_study_import_get_population_structure($dom, $wrapper) {
     'value' => $xpath->query('/population/supplementary-information')
       ->item(0)->nodeValue
   ));
-
+return $errors_message;
 }

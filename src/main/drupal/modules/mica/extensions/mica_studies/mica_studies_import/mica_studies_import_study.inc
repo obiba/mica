@@ -4,12 +4,11 @@
  * mica_studies_import_study.inc
  */
 
-function _mica_study_import_get_study_structure($dom, $wrapper) {
+function _mica_study_import_set_study_properties($dom, $wrapper) {
+  $errors_message=array();
   // xpath with contact/name/title
   $xpath = new DOMXPath($dom);
   $current_document = $dom->documentElement;
-  $origin_url = $current_document->getAttribute("mica_origin_url");
-
   $wrapper->title->set($xpath->query('/study/title')->item(0)->nodeValue);
   $wrapper->title_field->set($xpath->query('/study/title')->item(0)->nodeValue);
   $wrapper->field_acroym->set($xpath->query('/study/acronym')->item(0)->nodeValue);
@@ -19,21 +18,28 @@ function _mica_study_import_get_study_structure($dom, $wrapper) {
   foreach ($investigator as $key_investi => $investi_value) {
     $investigar_uuid = $investi_value->getAttribute("ref-uuid");
 
-    $investigator_wrapper = _mica_import_find_or_create_node($investigar_uuid, 'contact', $origin_url);
+    $investigator_wrapper = _mica_import_find_or_create_node($investigar_uuid, 'contact');
+    if($investigator_wrapper!==false){
     $nid = $investigator_wrapper->nid->value();
     if (empty($nid)) {
       $investigator_wrapper->save();
     }
+      else{
     $wrapper->field_investigators[$key_investi]->set($investigator_wrapper->nid->value());
     $investigator_wrapper->save();
-
+      }
+    }
+    else{
+        $errors_message.='can\'t set  Investigator contact nid => you don\'t have permission to edit/create contact</ br>';
+      }
   }
 
   $contacs = $xpath->query('/study/contacts/contact');
 
   foreach ($contacs as $key_contact => $contact_value) {
     $contact_uuid = $contact_value->getAttribute("ref-uuid");
-    $contact_wrapper = _mica_import_find_or_create_node($contact_uuid, 'contact', $origin_url);
+    $contact_wrapper = _mica_import_find_or_create_node($contact_uuid, 'contact');
+    if($contact_wrapper!==false){
     $nid = $contact_wrapper->nid->value();
     if (empty($nid)) {
       $contact_wrapper->save();
@@ -42,8 +48,15 @@ function _mica_study_import_get_study_structure($dom, $wrapper) {
       $wrapper->field_contacts_ref[$key_contact]->set($contact_wrapper->nid->value());
       $contact_wrapper->save();
     }
+    }
+    else{
+      $errors_message.='can\'t set contact nid => you don\'t have permission to edit/create contact</ br>';
+    }
+
   }
 
+  $origin_url = $current_document->getAttribute("mica_origin_url");
+  $wrapper->mica_origin_url->set($origin_url);
   $wrapper->body->value->set($xpath->query('/study/objectives/body')->item(0)->nodeValue);
   $wrapper->body->summary->set($xpath->query('/study/objectives/summary')->item(0)->nodeValue);
   //  wrapper->body->format->set($xpath->query('/study/objectives/format')->item(0)->nodeValue);
@@ -106,7 +119,8 @@ function _mica_study_import_get_study_structure($dom, $wrapper) {
 
   foreach ($populations as $key_population => $value_population) {
     $population_uuid = $value_population->getAttribute("ref-uuid");
-    $population_wrapper = _mica_import_find_or_create_node($population_uuid, 'population', $origin_url);
+    $population_wrapper = _mica_import_find_or_create_node($population_uuid, 'population');
+    if($population_wrapper!==false){
     $nid = $population_wrapper->nid->value();
     if (empty($nid)) {
       $population_wrapper->save();
@@ -116,5 +130,9 @@ function _mica_study_import_get_study_structure($dom, $wrapper) {
       $population_wrapper->save();
     }
   }
-
+    else{
+      $errors_message.='can\'t set population nid => you don\'t have permission to edit/create population</ br>';
+    }
+  }
+  return $errors_message;
 }

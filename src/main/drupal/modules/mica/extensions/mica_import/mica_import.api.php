@@ -15,10 +15,4 @@ function hook_mica_import_set_node_properties($dom, $wrapper) {
 
 }
 
-/*
- * Get redirect alias after batch import nodes
- * */
-function hook_mica_import_get_redirect_page() {
-  return 'studies';
-}
 

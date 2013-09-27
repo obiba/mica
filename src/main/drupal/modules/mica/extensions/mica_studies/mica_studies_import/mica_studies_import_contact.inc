@@ -4,10 +4,13 @@
  * mica_studies_import_contact.inc
  */
 
-function _mica_study_import_get_contact_structure($dom, $wrapper) {
+function _mica_studies_mica_import_set_contact_properties($dom, $wrapper) {
 
   // xpath with contact/name/title
   $xpath = new DOMXPath($dom);
+  $current_document = $dom->documentElement;
+  $origin_url = $current_document->getAttribute("mica_origin_url");
+  $wrapper->mica_origin_url->set($origin_url);
   $wrapper->title->set($xpath->query('/contact/name/title')->item(0)->nodeValue . ' ' . $xpath
     ->query('/contact/name/given')->item(0)->nodeValue . ' ' . $xpath->query('/contact/name/family')
     ->item(0)->nodeValue);

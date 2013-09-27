@@ -4,13 +4,11 @@
  * mica_studies_import_dce.inc
  */
 
-function  _mica_study_import_get_dce_structure($dom, $wrapper) {
-
+function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper) {
+  $errors_message=array();
   // xpath with contact/name/title
   $xpath = new DOMXPath($dom);
   $current_document = $dom->documentElement;
-  $origin_url = $current_document->getAttribute("mica_origin_url");
-
   $wrapper->title->set($xpath->query('/data-collection-event/title')->item(0)->nodeValue);
   $wrapper->field_dce_start_year->set($xpath->query('/data-collection-event/start-year')->item(0)->nodeValue);
   $wrapper->field_dce_start_month->set($xpath->query('/data-collection-event/start-month')->item(0)->nodeValue);
@@ -25,16 +23,24 @@ function  _mica_study_import_get_dce_structure($dom, $wrapper) {
   $populations = $xpath->query('/data-collection-event/populations/population');
   foreach ($populations as $key => $population_value) {
     $population_uuid = $population_value->getAttribute("ref-uuid");
-    $population_wrapper = _mica_import_find_or_create_node($population_uuid, 'population', $origin_url);
+    $population_wrapper = _mica_import_find_or_create_node($population_uuid, 'population');
+    if($population_wrapper!==false){
     $nid = $population_wrapper->nid->value();
     if (empty($nid)) {
       $population_wrapper->save();
     }
-
+    else{
     $wrapper->field_dce_population[$key]->set($population_wrapper->nid->value());
     $population_wrapper->save();
   }
+    }
+    else{
+      $errors_message.='can\'t set population nid => you don\'t have permission to edit/create population</ br>';
+    }
+  }
 
+  $origin_url = $current_document->getAttribute("mica_origin_url");
+  $wrapper->mica_origin_url->set($origin_url);
   $sources_data = $xpath->query('/data-collection-event/sources-of-data/source');
   foreach ($sources_data as $key_data => $source_data_value) {
     $wrapper->field_dce_data_sources[$key_data]->set($source_data_value->getAttribute("code"));
@@ -59,4 +65,36 @@ function  _mica_study_import_get_dce_structure($dom, $wrapper) {
   ));
   $wrapper->field_dce_tissues_sp->set($xpath->query('/data-collection-event/biological-samples/tissues-type')
     ->item(0)->nodeValue);
+
+  $documents = $xpath->query('/data-collection-event/files/documents/document');
+  foreach ($documents as $key_file => $value_document) {
+    $file_uuid = $value_document->getAttribute("ref-uuid");
+    $file_node = _mica_import_find_or_create_file($file_uuid, 'data_collection_event',$value_document);
+
+   // $nid = $file_node->nid->value();
+    if (empty($nid)) {
+     /// $file_node->save();
+    }
+    else {
+     // $wrapper->field_study_populations[$key_file]->set($file_node->nid->value());
+    //  $file_node->save();
+    }
+
+
+  }
+/*
+  foreach ($populations as $key_population => $value_population) {
+    $population_uuid = $value_population->getAttribute("ref-uuid");
+    $population_wrapper = _mica_import_find_or_create_file($population_uuid, 'population');
+    $nid = $population_wrapper->nid->value();
+    if (empty($nid)) {
+      $population_wrapper->save();
+    }
+    else {
+      $wrapper->field_study_populations[$key_population]->set($population_wrapper->nid->value());
+      $population_wrapper->save();
+    }
+  }
+*/
+return $errors_message;
 }
