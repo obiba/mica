@@ -6,7 +6,6 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
   _mica_studies_population_view_nb_participants($node);
 
   $wrapper = entity_metadata_wrapper('node', $node->nid);
-  $show_draft = (strpos(current_path(), '/draft') > 0);
   $dce_rows = array();
   foreach ($wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
     if (node_access('view', $dce_wrapper->value())) {
@@ -34,7 +33,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
           )
         );
       }
-      else if ($show_draft || $wrapper->status->value() == NODE_NOT_PUBLISHED) {
+      else if ($wrapper->status->value() == NODE_NOT_PUBLISHED) {
         $dce_rows[$dce_nid] = array(
           'data' => array(
             'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
