@@ -26,8 +26,7 @@ function _mica_studies_block_study_timeline($study, $show_draft = TRUE) {
   foreach (_mica_studies_sort_populations($study) as $population_nid) {
     $pop_wrapper = entity_metadata_wrapper('node', $population_nid);
 
-    $pop_node = node_load($pop_wrapper->nid);
-    if (!node_access('view', $pop_node)) {
+    if (node_access('view', $pop_wrapper->value())) {
       if (($show_draft && $pop_wrapper->status->value() == NODE_NOT_PUBLISHED) || $pop_wrapper->status->value() == NODE_PUBLISHED && node_access('view', $pop_wrapper->value())) {
 
         $pop_nid = $pop_wrapper->nid->value();
