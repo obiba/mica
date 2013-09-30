@@ -175,27 +175,35 @@ function _mica_studies_block_study_datasets($study) {
   );
 }
 
-function _mica_studies_block_study_populations($study, $show_draft = TRUE) {
+function _mica_studies_block_study_populations($study, $show_draft) {
   $content = array();
+
+  // Load the populations that are attached to PUBLISHED version of study
+  if ($show_draft) {
+    $study = node_load($study->nid);
+  }
 
   foreach (_mica_studies_sort_populations($study) as $population_nid) {
     $pop = node_load($population_nid);
 
-    if ($show_draft) {
-      $latest = key(node_revision_list($pop));
-      $pop = node_load($population_nid, $latest);
+    if (node_access('view', $pop)) {
 
-      if (node_access('view', $pop) && !isset($pop->workbench_moderation['published']) || $pop->vid !== $pop->workbench_moderation['published']->vid) {
-        $content[]['body']['#markup'] = "<div class='node-unpublished'>";
+      if ($show_draft) {
+        $latest = key(node_revision_list($pop));
+        $pop = node_load($population_nid, $latest);
+
+        if (!isset($pop->workbench_moderation['published']) || $pop->vid !== $pop->workbench_moderation['published']->vid) {
+          $content[]['body']['#markup'] = "<div class='node-unpublished'>";
+          $content[] = node_view($pop, 'full');;
+          $content[]['body']['#markup'] = "</div>";
+        }
+        else {
+          $content[] = node_view($pop, 'full');;
+        }
+      }
+      else if ($show_draft || (isset($pop->workbench_moderation['published']) && $pop->vid == $pop->workbench_moderation['published']->vid)) {
         $content[] = node_view($pop, 'full');;
-        $content[]['body']['#markup'] = "</div>";
       }
-      else if (node_access('view', $pop)) {
-        $content[] = node_view($pop, 'full');
-      }
-    }
-    else if (node_access('view', $pop) && isset($pop->workbench_moderation['published']) && $pop->vid == $pop->workbench_moderation['published']->vid) {
-      $content[] = node_view($pop, 'full');
     }
   }
   return array(
@@ -205,5 +213,10 @@ function _mica_studies_block_study_populations($study, $show_draft = TRUE) {
 }
 
 function _mica_studies_sort_dce_by_title($x, $y) {
-  return strcasecmp($x['data'][2], $y['data'][2]);
+  if (isset($x['data'])) {
+    return strcasecmp($x['data'][2], $y['data'][2]);
+  }
+  else {
+    return strcasecmp($x[2], $y[2]);
+  }
 }

@@ -6,6 +6,8 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
   _mica_studies_population_view_nb_participants($node);
 
   $wrapper = entity_metadata_wrapper('node', $node->nid);
+  $show_draft = (strpos(current_path(), '/draft') > 0 || $node->status == NODE_NOT_PUBLISHED);
+
   $dce_rows = array();
   foreach ($wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
     if (node_access('view', $dce_wrapper->value())) {
@@ -20,7 +22,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
       $created = $dce_wrapper->created->value();
 
       // Hide DCE that are not published on study published page
-      if ($wrapper->status->value() == NODE_PUBLISHED && $dce_wrapper->status->value() == NODE_PUBLISHED) {
+      if ($wrapper->status->value() == $dce_wrapper->status->value() || $show_draft) {
         $dce_rows[$dce_nid] = array(
           'data' => array(
             'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
@@ -31,19 +33,6 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
             'end_month' => $dce_wrapper->field_dce_end_month->value(),
             'created' => empty($created) ? 0 : intval($created),
           )
-        );
-      }
-      else if ($wrapper->status->value() == NODE_NOT_PUBLISHED) {
-        $dce_rows[$dce_nid] = array(
-          'data' => array(
-            'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
-            'desc' => $desc,
-            'start_year' => $dce_wrapper->field_dce_start_year->value(),
-            'start_month' => $dce_wrapper->field_dce_start_month->value(),
-            'end_year' => $dce_wrapper->field_dce_end_year->value(),
-            'end_month' => $dce_wrapper->field_dce_end_month->value(),
-            'created' => empty($created) ? 0 : intval($created),
-          ),
         );
 
         if ($dce_wrapper->status->value() == NODE_NOT_PUBLISHED) {

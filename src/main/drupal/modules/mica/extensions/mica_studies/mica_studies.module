@@ -879,7 +879,7 @@ function mica_studies_block_view($delta = '') {
   module_load_include('inc', 'mica_studies', 'mica_studies.blocks');
   $study = menu_get_object();
 
-  $show_draft = (strpos(current_path(), '/draft') > 0);
+  $show_draft = (strpos(current_path(), '/draft') > 0 || $study->status == NODE_NOT_PUBLISHED);
   if ($show_draft) {
     $study = workbench_moderation_node_current_load($study);
   }
@@ -902,10 +902,10 @@ function mica_studies_block_view($delta = '') {
     case 'study-supp-infos':
       return _mica_studies_block_study_supp_infos($study);
     case 'study-populations':
-      return _mica_studies_block_study_populations($study);
+      return _mica_studies_block_study_populations($study, $show_draft);
     case 'study-timeline':
       module_load_include('inc', 'mica_studies', 'mica_studies.blocks.timeline');
-      return _mica_studies_block_study_timeline($study);
+      return _mica_studies_block_study_timeline($study, $show_draft);
     case 'study-datasets':
       return _mica_studies_block_study_datasets($study);
     case 'study-authorization':
@@ -1109,7 +1109,10 @@ function _mica_studies_sort_dce($x, $y) {
 }
 
 function _mica_studies_get_dce_property($dce, $property, $default) {
-  if (isset($dce[$property])) {
+  if (isset($dce['data']) && isset($dce['data'][$property])) {
+    return $dce['data'][$property];
+  }
+  else if (isset($dce[$property])) {
     return $dce[$property];
   }
   return $default;
