@@ -10,7 +10,10 @@ function _mica_studies_mica_import_set_contact_properties($dom, $wrapper) {
   $xpath = new DOMXPath($dom);
   $current_document = $dom->documentElement;
   $origin_url = $current_document->getAttribute("mica_origin_url");
-  $wrapper->mica_origin_url->set($origin_url);
+  if (empty($wrapper->mica_origin_url)) {
+    $wrapper->mica_origin_url->set($origin_url);
+  }
+
   $wrapper->title->set($xpath->query('/contact/name/title')->item(0)->nodeValue . ' ' . $xpath
     ->query('/contact/name/given')->item(0)->nodeValue . ' ' . $xpath->query('/contact/name/family')
     ->item(0)->nodeValue);

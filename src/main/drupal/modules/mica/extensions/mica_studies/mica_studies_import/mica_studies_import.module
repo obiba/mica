@@ -29,26 +29,26 @@ function mica_studies_import_menu_local_tasks_alter(&$data, $router_item, $root_
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
 
-function mica_studies_mica_import_set_node_properties($dom, $wrapper) {
-  $errors_message=array();
+function mica_studies_mica_import_set_node_properties($dom, $wrapper, $path) {
+  $errors_message = array();
   switch ($wrapper->type->value()) {
     case 'contact':
       _mica_studies_mica_import_set_contact_properties($dom, $wrapper);
 
       break;
     case 'data_collection_event':
-      $errors_message .=  _mica_studies_mica_import_set_dce_properties($dom, $wrapper);
+      $errors_message .= _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path);
 
       break;
     case 'population':
-      $errors_message .=  _mica_studies_mica_import_set_population_properties($dom, $wrapper);
+      $errors_message .= _mica_studies_mica_import_set_population_properties($dom, $wrapper);
 
       break;
     case 'study':
-      $errors_message .= _mica_study_import_set_study_properties($dom, $wrapper);
+      $errors_message .= _mica_study_import_set_study_properties($dom, $wrapper, $path);
 
       break;
 
   }
-return $errors_message;
+  return $errors_message;
 }

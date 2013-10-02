@@ -4,8 +4,8 @@
  * mica_studies_import_dce.inc
  */
 
-function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper) {
-  $errors_message=array();
+function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
+  $errors_message = array();
   // xpath with contact/name/title
   $xpath = new DOMXPath($dom);
   $current_document = $dom->documentElement;
@@ -24,23 +24,25 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper) {
   foreach ($populations as $key => $population_value) {
     $population_uuid = $population_value->getAttribute("ref-uuid");
     $population_wrapper = _mica_import_find_or_create_node($population_uuid, 'population');
-    if($population_wrapper!==false){
-    $nid = $population_wrapper->nid->value();
-    if (empty($nid)) {
-      $population_wrapper->save();
+    if ($population_wrapper !== FALSE) {
+      $nid = $population_wrapper->nid->value();
+      if (empty($nid)) {
+        $population_wrapper->save();
+      }
+      else {
+        $wrapper->field_dce_population[$key]->set($population_wrapper->nid->value());
+        $population_wrapper->save();
+      }
     }
-    else{
-    $wrapper->field_dce_population[$key]->set($population_wrapper->nid->value());
-    $population_wrapper->save();
-  }
-    }
-    else{
-      $errors_message.='can\'t set population nid => you don\'t have permission to edit/create population</ br>';
+    else {
+      $errors_message .= t('can\'t set population nid => you don\'t have permission to edit/create population</ br>');
     }
   }
 
   $origin_url = $current_document->getAttribute("mica_origin_url");
-  $wrapper->mica_origin_url->set($origin_url);
+  if (empty($wrapper->mica_origin_url)) {
+    $wrapper->mica_origin_url->set($origin_url);
+  }
   $sources_data = $xpath->query('/data-collection-event/sources-of-data/source');
   foreach ($sources_data as $key_data => $source_data_value) {
     $wrapper->field_dce_data_sources[$key_data]->set($source_data_value->getAttribute("code"));
@@ -65,36 +67,18 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper) {
   ));
   $wrapper->field_dce_tissues_sp->set($xpath->query('/data-collection-event/biological-samples/tissues-type')
     ->item(0)->nodeValue);
+//Deal with attachment files
+  $questionnaires = $xpath->query('/data-collection-event/files/documents/document');
+  $errors_message .= _mica_import_attache_file($questionnaires, 'field_dce_questionnaires', $path, $wrapper);
 
-  $documents = $xpath->query('/data-collection-event/files/documents/document');
-  foreach ($documents as $key_file => $value_document) {
-    $file_uuid = $value_document->getAttribute("ref-uuid");
-    $file_node = _mica_import_find_or_create_file($file_uuid, 'data_collection_event',$value_document);
+  $sops = $xpath->query('/data-collection-event/files/standard-operating-procedures/sop');
+  $errors_message .= _mica_import_attache_file($sops, 'field_dce_sops', $path, $wrapper);
 
-   // $nid = $file_node->nid->value();
-    if (empty($nid)) {
-     /// $file_node->save();
-    }
-    else {
-     // $wrapper->field_study_populations[$key_file]->set($file_node->nid->value());
-    //  $file_node->save();
-    }
+  $dictionaries = $xpath->query('/data-collection-event/files/data-dictionaries/dictionarie');
+  $errors_message .= _mica_import_attache_file($dictionaries, 'field_dce_data_dictionaries', $path, $wrapper);
 
+  $other_documents = $xpath->query('/data-collection-event/files/other_docs/other_doc');
+  $errors_message .= _mica_import_attache_file($other_documents, 'field_dce_others', $path, $wrapper);
 
-  }
-/*
-  foreach ($populations as $key_population => $value_population) {
-    $population_uuid = $value_population->getAttribute("ref-uuid");
-    $population_wrapper = _mica_import_find_or_create_file($population_uuid, 'population');
-    $nid = $population_wrapper->nid->value();
-    if (empty($nid)) {
-      $population_wrapper->save();
-    }
-    else {
-      $wrapper->field_study_populations[$key_population]->set($population_wrapper->nid->value());
-      $population_wrapper->save();
-    }
-  }
-*/
-return $errors_message;
+  return $errors_message;
 }

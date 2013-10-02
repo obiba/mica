@@ -117,13 +117,15 @@ function _mica_export_generate_xml($nid, &$context) {
 /**
  * Copy attachment files of each node
  */
-function mica_export_copy_attachment_file($documents, $type, $tmp_folder_name) {
-  $path = "temporary://$tmp_folder_name/$type-documents";
-  if (!is_dir($path)) {
-    drupal_mkdir($path);
-    foreach ($documents as $document) {
-      file_unmanaged_copy($document['uri'], $path, FILE_EXISTS_REPLACE);
+function mica_export_copy_attachment_file($documents, $tmp_folder_name) {
+
+  foreach ($documents as $document) {
+    $path = "temporary://$tmp_folder_name/attachment";
+    if (!is_dir($path)) {
+      drupal_mkdir($path);
     }
+    $destination = $path . "/" . $document['uuid'];
+    file_unmanaged_copy($document['uri'], $destination, FILE_EXISTS_REPLACE);
   }
 }
 

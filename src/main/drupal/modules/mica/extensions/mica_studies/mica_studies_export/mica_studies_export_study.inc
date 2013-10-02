@@ -9,18 +9,21 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $wrapper = entity_metadata_wrapper('node', $nid);
 
 //Retrieve attachments files
+
   $documents = $wrapper->field_documents->value();
   if (isset($documents)) {
-    mica_export_copy_attachment_file($documents, 'study-documents', $tmp_folder_name);
+    mica_export_copy_attachment_file($documents, $tmp_folder_name);
   }
   $logo = $wrapper->field_logo->value();
   if (isset($logo)) {
-    mica_export_copy_attachment_file($logo, 'study-logo', $tmp_folder_name);
+    $logo_adapt[0] = $logo;
+    mica_export_copy_attachment_file($logo_adapt, $tmp_folder_name);
   }
 
   //Xml mapper
   $dom = new DomDocument('1.0', 'utf-8');
   $root = $dom->createElement('study');
+
   $root->setAttribute('uuid', $wrapper->uuid->value());
   $root->setAttribute('mica_origin_url', $wrapper->mica_origin_url->value());
   $dom->appendChild($root);
@@ -30,13 +33,13 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
     ->appendChild($dom->createTextNode($wrapper->field_acroym->value()));
 
   $investigators_element = $root->appendChild($dom->createElement('investigators'));
-  foreach ($wrapper->field_investigators->value() as $kc => $vc) {
+  foreach ($wrapper->field_investigators->value() as $vc) {
     $to_attrib = $investigators_element->appendChild($dom->createElement('investigator'));
     $to_attrib->setAttribute('ref-uuid', $vc->uuid);
   }
 
   $contacts_element = $root->appendChild($dom->createElement('contacts'));
-  foreach ($wrapper->field_contacts_ref->value() as $kc => $vc) {
+  foreach ($wrapper->field_contacts_ref->value() as $vc) {
     $to_attrib = $contacts_element->appendChild($dom->createElement('contact'));
     $to_attrib->setAttribute('ref-uuid', $vc->uuid);
   }
@@ -62,11 +65,17 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
     $to_attrib->appendChild($dom->createTextNode($design->label()));
     $to_attrib->setAttribute('code', $design->value());
   }
-  $design_element->appendChild($dom->createElement('other'))
-    ->appendChild($dom->createTextNode($wrapper->field_design_other_sp->value->value()));
 
-  $study_design_element->appendChild($dom->createElement('general-information-follow-up'))
-    ->appendChild($dom->createTextNode($wrapper->field_info_design_follow_up->value->value()));
+  $design_oth_inf = $wrapper->field_design_other_sp->value();
+  $design_other_info = $design_element->appendChild($dom->createElement('other'));
+  $design_other_info->appendChild($dom->createTextNode(isset($design_oth_inf) ? $wrapper->field_design_other_sp->value->value() : ''));
+  $design_other_info->setAttribute('format', isset($gen) ? $wrapper->field_design_other_sp->format->value() : '');
+
+  $general_info_follow_up = $study_design_element->appendChild($dom->createElement('general-information-follow-up'));
+
+  $gen = $wrapper->field_info_design_follow_up->value();
+  $general_info_follow_up->appendChild($dom->createTextNode(isset($gen) ? $wrapper->field_info_design_follow_up->value->value() : ''));
+  $general_info_follow_up->setAttribute('format', isset($gen) ? $wrapper->field_info_design_follow_up->format->value() : '');
 
   $recruitment_target_element = $dom->createElement('recruitment-target');
   $study_design_element->appendChild($recruitment_target_element);
@@ -78,8 +87,10 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $recruitment_target_element->appendChild($dom->createElement('other'))
     ->appendChild($dom->createTextNode($wrapper->field_recruitment_other_sp->value()));
 
-  $study_design_element->appendChild($dom->createElement('supplementary-information'))
-    ->appendChild($dom->createTextNode($wrapper->field_recruitment_supp_info->value->value()));
+  $recrut_sup_info = $wrapper->field_recruitment_supp_info->value();
+  $recrut_supplementary_information = $study_design_element->appendChild($dom->createElement('supplementary-information'));
+  $recrut_supplementary_information->appendChild($dom->createTextNode(isset($recrut_sup_info) ? $wrapper->field_recruitment_supp_info->value->value() : ''));
+  $recrut_supplementary_information->setAttribute('format', isset($sup_info) ? $wrapper->field_recruitment_supp_info->format->value() : '');
 
   $nbr_participants_element = $dom->createElement('number-participant');
   $study_design_element->appendChild($nbr_participants_element);
@@ -115,18 +126,24 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
     ->appendChild($dom->createTextNode($wrapper->field_access_biosamples->value() ? 'true' : 'false'));
   $acess_element->appendChild($dom->createElement('other'))
     ->appendChild($dom->createTextNode($wrapper->field_access_other->value() ? 'true' : 'false'));
-  $acess_element->appendChild($dom->createElement('other-info'))
-    ->appendChild($dom->createTextNode($wrapper->field_access_other_sp->value->value()));
+
+  $other_info = $acess_element->appendChild($dom->createElement('other-info'));
+  $oth_inf = $wrapper->field_access_other_sp->value();
+  $other_info->appendChild($dom->createTextNode(isset($oth_inf) ? $wrapper->field_access_other_sp->value->value() : ''));
+  $other_info->setAttribute('format', isset($oth_inf) ? $wrapper->field_access_other_sp->format->value() : '');
 
   $root->appendChild($dom->createElement('maker-paper'))
     ->appendChild($dom->createTextNode($wrapper->field_marker_paper->value()));
   $root->appendChild($dom->createElement('pubmed-id'))
     ->appendChild($dom->createTextNode($wrapper->field_pubmedid->value()));
-  $root->appendChild($dom->createElement('supplementary-information'))
-    ->appendChild($dom->createTextNode($wrapper->field_supp_infos->value->value()));
+
+  $parti_sup_info = $wrapper->field_supp_infos->value();
+  $partic_supplementary_information = $root->appendChild($dom->createElement('supplementary-information'));
+  $partic_supplementary_information->appendChild($dom->createTextNode(isset($parti_sup_info) ? $wrapper->field_supp_infos->value->value() : ''));
+  $partic_supplementary_information->setAttribute('format', isset($parti_sup_info) ? $wrapper->field_supp_infos->format->value() : '');
 
   $poplutions_element = $root->appendChild($dom->createElement('populations'));
-  foreach ($wrapper->field_study_populations->value() as $kc => $vc) {
+  foreach ($wrapper->field_study_populations->value() as $vc) {
     $to_attrib = $poplutions_element->appendChild($dom->createElement('population'));
     $to_attrib->setAttribute('ref-uuid', $vc->uuid);
   }
@@ -143,19 +160,13 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
     $documents_element->appendChild($document_detail_element);
     $document_detail_element->appendChild($dom->createElement('filename'))
       ->appendChild($dom->createTextNode($document['filename']));
-    $document_detail_element->appendChild($dom->createElement('url'))
-      ->appendChild($dom->createTextNode($document['uri']));
     $document_detail_element->appendChild($dom->createElement('description'))
       ->appendChild($dom->createTextNode($document['description']));
-    $document_detail_element->appendChild($dom->createElement('display'))
-      ->appendChild($dom->createTextNode($document['display']));
 
     $document_detail_element->appendChild($dom->createElement('filemime'))
       ->appendChild($dom->createTextNode($document['filemime']));
     $document_detail_element->appendChild($dom->createElement('filesize'))
       ->appendChild($dom->createTextNode($document['filesize']));
-    $document_detail_element->appendChild($dom->createElement('status'))
-      ->appendChild($dom->createTextNode($document['status']));
     $document_detail_element->setAttribute('ref-uuid', $document['uuid']);
 
   }
@@ -164,20 +175,14 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $files_element->appendChild($logo_detail_element);
   $logo_detail_element->appendChild($dom->createElement('filename'))
     ->appendChild($dom->createTextNode($logo['filename']));
-  $logo_detail_element->appendChild($dom->createElement('url'))
-    ->appendChild($dom->createTextNode($logo['uri']));
   $logo_detail_element->appendChild($dom->createElement('description'))
     ->appendChild($dom->createTextNode($logo['description']));
-  $logo_detail_element->appendChild($dom->createElement('display'))
-    ->appendChild($dom->createTextNode($logo['display']));
 
   $logo_detail_element->appendChild($dom->createElement('filemime'))
     ->appendChild($dom->createTextNode($logo['filemime']));
   $logo_detail_element->appendChild($dom->createElement('filesize'))
     ->appendChild($dom->createTextNode($logo['filesize']));
-  $logo_detail_element->appendChild($dom->createElement('status'))
-    ->appendChild($dom->createTextNode($logo['status']));
   $logo_detail_element->setAttribute('ref-uuid', $logo['uuid']);
-  
+
   return $dom->saveXML();
 }
