@@ -30,7 +30,7 @@ function hook_mica_export_to_xml($node, $temp_folder_path) {
   $wrapper = entity_metadata_wrapper('node', $node);
   if ($node->type === 'study') {
     $files = $wrapper->field_files->value();
-    if (isset($files)) {
+    if (!empty($files)) {
       mica_export_copy_attachment_file($files, $temp_folder_path);
     }
     $dom = new DomDocument('1.0', 'utf-8');

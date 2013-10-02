@@ -183,6 +183,41 @@ function _mica_import_batch_import($path) {
 
 }
 
+function _mica_import_find_or_create_node($uuid, $type) {
+  global $user;
+  if ($nodes = entity_uuid_load('node', array($uuid), array())) {
+    $node = current($nodes);
+    $wrapper = entity_metadata_wrapper('node', $node->nid);
+    if (user_access('import ' . $type . ' content') && user_access('edit any ' . $type . ' content')) {
+      return $wrapper;
+    }
+    watchdog('mica', 'No permission to import, update or edit node type : %type ', array(
+      '%type' => $node->type
+    ), WATCHDOG_WARNING);
+    return FALSE;
+  }
+  $infos = array(
+    'type' => $type,
+    'uid' => $user->uid,
+    'status' => NODE_NOT_PUBLISHED,
+    'uuid' => $uuid
+  );
+
+  if (user_access('import ' . $type . ' content') && user_access('create ' . $type . ' content')) {
+    // Creates a wrapper object without inserting it to the DB
+    $wrapper = entity_property_values_create_entity('node', $infos);
+    watchdog('mica', 'Create new node with UUID %uuid Call by %type ', array(
+      '%uuid' => $uuid,
+      '%type' => $type
+    ), WATCHDOG_NOTICE);
+    return $wrapper;
+  }
+  watchdog('mica', 'No permission to import or create node type : %type ', array(
+    '%type' => $type
+  ), WATCHDOG_WARNING);
+  return FALSE;
+}
+
 function _mica_import_import_node($file_xml, $path, &$context) {
   $errors_message = array();
   $context['message'] = t('Extract information from %file_xml', array('file_xml' => $file_xml));
@@ -208,55 +243,14 @@ function _mica_import_import_node($file_xml, $path, &$context) {
   $context['results'][] = $errors_message;
 }
 
-function mica_import_finished_batch($success, $results, $operations) {
-  if ($success) {
-    $message = t('Import operation success ');
-  }
-  else {
-    $message = $results;
-  }
-  drupal_set_message($message);
+function mica_import_finished_batch($success, $results) {
+  drupal_set_message($success ? t('Import success') : $results);
 }
 
-function _mica_import_find_or_create_node($uuid, $type) {
-  global $user;
-  if ($nodes = entity_uuid_load('node', array($uuid), array())) {
-    $node = current($nodes);
-    $wrapper = entity_metadata_wrapper('node', $node->nid);
-    if (user_access('import ' . $type . ' content') && (user_access('edit own ' . $type . ' content') || user_access('edit any ' . $type . ' content'))) {
-      return $wrapper;
-    }
-    watchdog('mica', 'No permission to import, update or edit node type : %type ', array(
-      '%type' => $node->type
-    ), WATCHDOG_DEBUG);
-    return FALSE;
-  }
-
-  $infos = array(
-    'type' => $type,
-    'uid' => $user->uid,
-    'status' => NODE_NOT_PUBLISHED,
-    'uuid' => $uuid
-  );
-  if (user_access('import ' . $type . ' content') && user_access('create ' . $type . ' content')) {
-    // Creates a wrapper object without inserting it to the DB
-    $wrapper = entity_property_values_create_entity('node', $infos);
-    watchdog('mica', 'Create new node with UUID %uuid Call by %type ', array(
-      '%uuid' => $uuid,
-      '%type' => $type
-    ), WATCHDOG_DEBUG);
-    return $wrapper;
-  }
-  watchdog('mica', 'No permission to import or create node type : %type ', array(
-    '%type' => $type
-  ), WATCHDOG_DEBUG);
-  return FALSE;
-}
-
-function _mica_import_attache_file($documents, $field_key, $path, $wrapper) {
+function _mica_import_attach_file($documents, $field_key, $path, $wrapper) {
   $errors_message = array();
   foreach ($documents as $key_file => $value_document) {
-    $file_node = _mica_import_find_or_create_file($value_document, $path, $field_key);
+    $file_node = _mica_import_copy_file($value_document, $path, $field_key);
 
     if ($file_node !== FALSE) {
       try {
@@ -272,7 +266,8 @@ function _mica_import_attache_file($documents, $field_key, $path, $wrapper) {
           '%value_document' => $value_document->getAttribute("ref-uuid"),
           '%node' => $wrapper->type->value(),
 
-        ), WATCHDOG_DEBUG);
+        ), WATCHDOG_ERROR);
+        throw $e;
       }
       $errors_message .= t('File : ' . $value_document->getElementsByTagName('filename')
         ->item(0)->nodeValue . 'attached to node</ br>');
@@ -289,73 +284,26 @@ function _mica_import_attache_file($documents, $field_key, $path, $wrapper) {
 /**
  * Copy attachment files of each node
  */
-function _mica_import_copy_file($value_document, $path, $field_key) {
+function _mica_import_copy_file($document_element, $path, $field_name) {
   global $user;
-  $field_setting = field_info_field($field_key);
-  $file_uuid = $value_document->getAttribute("ref-uuid");
-  $filepath = $path . '/attachment/' . $file_uuid;
-  $destination = ($field_setting['settings']['uri_scheme'] == 'private' ? 'private://' : 'public://') . $value_document
-      ->getElementsByTagName('filename')->item(0)->nodeValue;;
+  $field_setting = field_info_field($field_name);
+  $file_uuid = $document_element->getAttribute("ref-uuid");
+  $src_filepath = $path . '/attachment/' . $file_uuid;
   $file = new stdClass();
-  $file->filename = $value_document->getElementsByTagName('filename')->item(0)->nodeValue;
-  $file->uuid = $file_uuid;
-  $file->filepath = $filepath;
-  $file->filemime = $value_document->getElementsByTagName('filemime')->item(0)->nodeValue;
-  $file->filesize = $value_document->getElementsByTagName('filesize')->item(0)->nodeValue;
+  $file->filename = $document_element->getElementsByTagName('filename')->item(0)->nodeValue;
+  $file->filepath = $src_filepath;
+  $file->filemime = $document_element->getElementsByTagName('filemime')->item(0)->nodeValue;
+  $file->filesize = $document_element->getElementsByTagName('filesize')->item(0)->nodeValue;
   $file->uid = $user->nid;
-  $file->uri = $filepath;
+  $file->uri = $src_filepath;
   $file->display = $field_setting['settings']['display_default'];
-  $file->description = $value_document->getElementsByTagName('description')->item(0)->nodeValue;
-  if (is_file($filepath)) {
-    $file = file_copy($file, $destination, FILE_EXISTS_RENAME);
-    return $file;
-  }
-  watchdog('mica', 'can not find file : %file ', array(
-    '%file' => $filepath
-  ), WATCHDOG_DEBUG);
-  return FALSE;
-}
+  $file->description = $document_element->getElementsByTagName('description')->item(0)->nodeValue;
 
-function _mica_import_find_or_create_file($value_document, $path, $field_key) {
-  GLOBAL $user;
-  if ($field_key == 'field_documents') {
-  }
-  $file_uuid = $value_document->getAttribute("ref-uuid");
-  if ($file_id = entity_get_id_by_uuid('file', array($file_uuid))) {
-    watchdog('mica', 'The file already exist and attached  id : %id , Field : %field, uuid : %uuid', array(
-      '%id' => current($file_id),
-      '%field' => $field_key,
-      '%uuid' => $file_uuid
-    ), WATCHDOG_DEBUG);
+  $destination ='public://' . $document_element
+      ->getElementsByTagName('filename')->item(0)->nodeValue;;
 
-    $field_setting = field_info_field($field_key);
-    $file_uuid = $value_document->getAttribute("ref-uuid");
-    $filepath = $path . '/attachment/' . $file_uuid;
-    $file = new stdClass();
-    $file->filename = $value_document->getElementsByTagName('filename')->item(0)->nodeValue;
-    $file->uuid = $file_uuid;
-    $file->filepath = $filepath;
-    $file->filemime = $value_document->getElementsByTagName('filemime')->item(0)->nodeValue;
-    $file->filesize = $value_document->getElementsByTagName('filesize')->item(0)->nodeValue;
-    $file->uid = $user->nid;
-    $file->uri = $filepath;
-    $file->display = isset($field_setting['settings']['display_default']) ? $field_setting['settings']['display_default'] : '1';
-    $file->description = $value_document->getElementsByTagName('description')->item(0)->nodeValue;
-
-    return $file;
-  }
-  if (user_access('import documents content') && user_access('create documents content')) {
-    $file_std = _mica_import_copy_file($value_document, $path, $field_key);
-    watchdog('mica', 'File copied  id : %id,   %path', array(
-      '%id' => 'file',
-      '%path' => 'attachment'
-    ), WATCHDOG_DEBUG);
-    return $file_std;
-  }
-  watchdog('mica', 'No permission to import or create file node type : %type ', array(
-    '%type' => 'documents'
-  ), WATCHDOG_DEBUG);
-  return FALSE;
+  $file = file_copy($file, $destination, FILE_EXISTS_RENAME);
+  return $file;
 }
 
 

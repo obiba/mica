@@ -140,10 +140,10 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
   }
 
   $documents = $xpath->query('/study/files/documents/document');
-  $errors_message .= _mica_import_attache_file($documents, 'field_documents', $path, $wrapper);
+  $errors_message .= _mica_import_attach_file($documents, 'field_documents', $path, $wrapper);
 
   $attached_logo = $xpath->query('/study/files/logo')->item(0);
-  $file_node = _mica_import_find_or_create_file($attached_logo, $path, 'field_logo');
+  $file_node = _mica_import_copy_file($attached_logo, $path, 'field_logo');
   if ($file_node !== FALSE) {
     try {
       $wrapper->field_logo->set(array(
@@ -156,10 +156,9 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
         '%error' => $e,
         '%field_key' => 'field_log',
         '%node' => 'Study',
-      ), WATCHDOG_DEBUG);
-      $errors_message .= t('File : ' . $attached_logo->getElementsByTagName('filename')
-        ->item(0)->nodeValue . 'Cannot be attached problem with setting field_logo</ br>');
+      ), WATCHDOG_ERROR);
 
+       throw $e;
     }
     $errors_message .= t('File : ' . $attached_logo->getElementsByTagName('filename')
       ->item(0)->nodeValue . 'attached to node</ br>');

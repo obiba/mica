@@ -69,16 +69,16 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
     ->item(0)->nodeValue);
 //Deal with attachment files
   $questionnaires = $xpath->query('/data-collection-event/files/documents/document');
-  $errors_message .= _mica_import_attache_file($questionnaires, 'field_dce_questionnaires', $path, $wrapper);
+  $errors_message .= _mica_import_attach_file($questionnaires, 'field_dce_questionnaires', $path, $wrapper);
 
   $sops = $xpath->query('/data-collection-event/files/standard-operating-procedures/sop');
-  $errors_message .= _mica_import_attache_file($sops, 'field_dce_sops', $path, $wrapper);
+  $errors_message .= _mica_import_attach_file($sops, 'field_dce_sops', $path, $wrapper);
 
   $dictionaries = $xpath->query('/data-collection-event/files/data-dictionaries/dictionarie');
-  $errors_message .= _mica_import_attache_file($dictionaries, 'field_dce_data_dictionaries', $path, $wrapper);
+  $errors_message .= _mica_import_attach_file($dictionaries, 'field_dce_data_dictionaries', $path, $wrapper);
 
   $other_documents = $xpath->query('/data-collection-event/files/other_docs/other_doc');
-  $errors_message .= _mica_import_attache_file($other_documents, 'field_dce_others', $path, $wrapper);
+  $errors_message .= _mica_import_attach_file($other_documents, 'field_dce_others', $path, $wrapper);
 
   return $errors_message;
 }
