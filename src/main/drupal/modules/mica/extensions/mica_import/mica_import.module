@@ -282,9 +282,9 @@ function _mica_import_copy_file($document_element, $path, $field_name) {
   $file->filepath = $src_filepath;
   $file->filemime = $document_element->getElementsByTagName('filemime')->item(0)->nodeValue;
   $file->filesize = $document_element->getElementsByTagName('filesize')->item(0)->nodeValue;
-  $file->uid = $user->nid;
+  $file->uid = $user->uid;
   $file->uri = $src_filepath;
-  $file->display = $field_setting['settings']['display_default'];
+  $file->display = isset($field_setting['settings']['display_default'])?$field_setting['settings']['display_default']:'';
   $file->description = $document_element->getElementsByTagName('description')->item(0)->nodeValue;
 
   $destination = 'public://' . $document_element
