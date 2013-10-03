@@ -5,7 +5,6 @@
  */
 
 function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
-  $errors_message = array();
   // xpath with contact/name/title
   $xpath = new DOMXPath($dom);
   $current_document = $dom->documentElement;
@@ -18,26 +17,6 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
   $wrapper->body->value->set($xpath->query('/data-collection-event/description/body')->item(0)->nodeValue);
   $wrapper->body->summary->set($xpath->query('/data-collection-event/description/summary')->item(0)->nodeValue);
   // $wrapper->body->format->set($xpath->query('/data-collection-event/description/format')->item(0)->nodeValue);
-
-//Create populations node
-  $populations = $xpath->query('/data-collection-event/populations/population');
-  foreach ($populations as $key => $population_value) {
-    $population_uuid = $population_value->getAttribute("ref-uuid");
-    $population_wrapper = _mica_import_find_or_create_node($population_uuid, 'population');
-    if ($population_wrapper !== FALSE) {
-      $nid = $population_wrapper->nid->value();
-      if (empty($nid)) {
-        $population_wrapper->save();
-      }
-      else {
-        $wrapper->field_dce_population[$key]->set($population_wrapper->nid->value());
-        $population_wrapper->save();
-      }
-    }
-    else {
-      $errors_message .= t('can\'t set population nid => you don\'t have permission to edit/create population</ br>');
-    }
-  }
 
   $origin_url = $current_document->getAttribute("mica_origin_url");
   if (empty($wrapper->mica_origin_url)) {
@@ -69,16 +48,15 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
     ->item(0)->nodeValue);
 //Deal with attachment files
   $questionnaires = $xpath->query('/data-collection-event/files/documents/document');
-  $errors_message .= _mica_import_attach_file($questionnaires, 'field_dce_questionnaires', $path, $wrapper);
+  _mica_import_attach_file($questionnaires, 'field_dce_questionnaires', $path, $wrapper);
 
   $sops = $xpath->query('/data-collection-event/files/standard-operating-procedures/sop');
-  $errors_message .= _mica_import_attach_file($sops, 'field_dce_sops', $path, $wrapper);
+  _mica_import_attach_file($sops, 'field_dce_sops', $path, $wrapper);
 
   $dictionaries = $xpath->query('/data-collection-event/files/data-dictionaries/dictionarie');
-  $errors_message .= _mica_import_attach_file($dictionaries, 'field_dce_data_dictionaries', $path, $wrapper);
+  _mica_import_attach_file($dictionaries, 'field_dce_data_dictionaries', $path, $wrapper);
 
   $other_documents = $xpath->query('/data-collection-event/files/other_docs/other_doc');
-  $errors_message .= _mica_import_attach_file($other_documents, 'field_dce_others', $path, $wrapper);
+  _mica_import_attach_file($other_documents, 'field_dce_others', $path, $wrapper);
 
-  return $errors_message;
 }

@@ -5,7 +5,6 @@
  */
 
 function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
-  $errors_message = array();
   // xpath with contact/name/title
   $xpath = new DOMXPath($dom);
   $current_document = $dom->documentElement;
@@ -30,7 +29,7 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
       }
     }
     else {
-      $errors_message .= t('can\'t set  Investigator contact nid => you don\'t have permission to edit/create contact</ br>');
+      watchdog('mica studio import', t('can\'t set  Investigator contact nid => you don\'t have permission to edit/create contact</ br>'), array(), WATCHDOG_WARNING);
     }
   }
 
@@ -50,7 +49,7 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
       }
     }
     else {
-      $errors_message .= t('can\'t set contact nid => you don\'t have permission to edit/create contact</ br>');
+      watchdog('mica studio import', t('can\'t set contact nid => you don\'t have permission to edit/create contact</ br>'), array(), WATCHDOG_WARNING);
     }
   }
 
@@ -135,12 +134,12 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
       }
     }
     else {
-      $errors_message .= t('can\'t set population nid => you don\'t have permission to edit/create population</ br>');
+      watchdog('mica study import', t('can\'t set population nid => you don\'t have permission to edit/create population</ br>'), array(), WATCHDOG_WARNING);
     }
   }
 
   $documents = $xpath->query('/study/files/documents/document');
-  $errors_message .= _mica_import_attach_file($documents, 'field_documents', $path, $wrapper);
+  _mica_import_attach_file($documents, 'field_documents', $path, $wrapper);
 
   $attached_logo = $xpath->query('/study/files/logo')->item(0);
   $file_node = _mica_import_copy_file($attached_logo, $path, 'field_logo');
@@ -152,21 +151,13 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
         'display' => $file_node->display
       ));
     } catch (Exception $e) {
-      watchdog('mica', 'Error  : %error <br /> Field => %field_key <br />  File uuid=> %value_document <br /> node type=> %node <br />', array(
+      watchdog('mica study import', 'Error  : %error <br /> Field => %field_key <br />  File uuid=> %value_document <br /> node type=> %node <br />', array(
         '%error' => $e,
         '%field_key' => 'field_log',
         '%node' => 'Study',
       ), WATCHDOG_ERROR);
 
-       throw $e;
+      throw $e;
     }
-    $errors_message .= t('File : ' . $attached_logo->getElementsByTagName('filename')
-      ->item(0)->nodeValue . 'attached to node</ br>');
   }
-  else {
-    $errors_message .= t('File : ' . $attached_logo->getElementsByTagName('filename')
-      ->item(0)->nodeValue . ' already exist and attached </ br>');
-  }
-
-  return $errors_message;
 }

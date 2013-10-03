@@ -5,27 +5,9 @@
  */
 
 function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
-  $errors_message = array();
   // xpath with contact/name/title
   $xpath = new DOMXPath($dom);
   $current_document = $dom->documentElement;
-  $study_uuid = $xpath->query('/population/study')->item(0)->getAttribute("ref-uuid");
-  $study_wrapper = _mica_import_find_or_create_node($study_uuid, 'study');
-  $nid = $study_wrapper->nid->value();
-  if ($study_wrapper !== FALSE) {
-    if (empty($nid)) {
-      $study_wrapper->save();
-    }
-    try {
-      $wrapper->field_pop_study->set($study_wrapper->nid->value());
-      $study_wrapper->save();
-    } catch (Exception $e) {
-      $errors_message .= 'can\'t set  study nid => ' . $e->getMessage() . '</ br>';
-    }
-  }
-  else {
-    $errors_message .= 'can\'t set  study nid => you don\'t have permission to edit/create study</ br>';
-  }
   $origin_url = $current_document->getAttribute("mica_origin_url");
   if (empty($wrapper->mica_origin_url)) {
     $wrapper->mica_origin_url->set($origin_url);
@@ -43,21 +25,18 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
     $dce_wrapper = _mica_import_find_or_create_node($dce_uuid, 'data_collection_event');
     if ($dce_wrapper !== FALSE) {
       $nid = $dce_wrapper->nid->value();
-
       if (empty($nid)) {
         $dce_wrapper->save();
       }
-      try {
+      else {
         $wrapper->field_pop_dce[$index]->set($dce_wrapper->nid->value());
         $dce_wrapper->save();
-
-      } catch (Exception $e) {
-        $errors_message .= 'can\'t set  dce nid => ' . $e->getMessage() . '</ br>';
-
       }
     }
     else {
-      $errors_message .= 'can\'t set  dce nid => you don\'t have permission to edit/create data_collection_event</ br>';
+      watchdog('mica studio import', t('can\'t set  dce nid => you don\'t have permission to edit/create data_collection_event</ br>'), array(), WATCHDOG_WARNING);
+      return $wrapper;
+
     }
   }
 
@@ -159,5 +138,4 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
     'value' => $xpath->query('/population/supplementary-information')
       ->item(0)->nodeValue
   ));
-  return $errors_message;
 }

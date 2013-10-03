@@ -191,7 +191,7 @@ function _mica_import_find_or_create_node($uuid, $type) {
     if (user_access('import ' . $type . ' content') && user_access('edit any ' . $type . ' content')) {
       return $wrapper;
     }
-    watchdog('mica', 'No permission to import, update or edit node type : %type ', array(
+    watchdog('mica import', 'No permission to import, update or edit node type : %type ', array(
       '%type' => $node->type
     ), WATCHDOG_WARNING);
     return FALSE;
@@ -206,20 +206,19 @@ function _mica_import_find_or_create_node($uuid, $type) {
   if (user_access('import ' . $type . ' content') && user_access('create ' . $type . ' content')) {
     // Creates a wrapper object without inserting it to the DB
     $wrapper = entity_property_values_create_entity('node', $infos);
-    watchdog('mica', 'Create new node with UUID %uuid Call by %type ', array(
+    watchdog('mica import', 'Create new node with UUID %uuid Call by %type ', array(
       '%uuid' => $uuid,
       '%type' => $type
-    ), WATCHDOG_NOTICE);
+    ), WATCHDOG_WARNING);
     return $wrapper;
   }
-  watchdog('mica', 'No permission to import or create node type : %type ', array(
+  watchdog('mica import', 'No permission to import or create node type : %type ', array(
     '%type' => $type
   ), WATCHDOG_WARNING);
   return FALSE;
 }
 
 function _mica_import_import_node($file_xml, $path, &$context) {
-  $errors_message = array();
   $context['message'] = t('Extract information from %file_xml', array('file_xml' => $file_xml));
   $dom = new DOMDocument();
   $dom->load($file_xml);
@@ -230,25 +229,22 @@ function _mica_import_import_node($file_xml, $path, &$context) {
   // Node exist?  Update or create node
   $wrapper = _mica_import_find_or_create_node($uuid, $type_node);
   if ($wrapper === FALSE) {
-    $context['message'] = t('Action for this node : %node aborted', array('%node' => $type_node));
-
+    $context['results'][] = t('Action for this node : %node aborted contact the admin ', array('%node' => $type_node));
   }
   else {
     //Set Nodes from XML,s files
-    $errors_message .= module_invoke_all('mica_import_set_node_properties', $dom, $wrapper, $path);
+    module_invoke_all('mica_import_set_node_properties', $dom, $wrapper, $path);
 
     //Save created node
     $wrapper->save();
   }
-  $context['results'][] = $errors_message;
 }
 
 function mica_import_finished_batch($success, $results) {
-  drupal_set_message($success ? t('Import success') : $results);
+  drupal_set_message($success ? t('Import success') . '<br />' : t('Import Failed'));
 }
 
 function _mica_import_attach_file($documents, $field_key, $path, $wrapper) {
-  $errors_message = array();
   foreach ($documents as $key_file => $value_document) {
     $file_node = _mica_import_copy_file($value_document, $path, $field_key);
 
@@ -260,7 +256,7 @@ function _mica_import_attach_file($documents, $field_key, $path, $wrapper) {
           'display' => $file_node->display
         ));
       } catch (Exception $e) {
-        watchdog('mica', 'Error  : %error <br /> Field => %field_key <br />  File uuid=> %value_document <br /> node type=> %node <br />', array(
+        watchdog('mica import', 'Error  : %error <br /> Field => %field_key <br />  File uuid=> %value_document <br /> node type=> %node <br />', array(
           '%error' => $e,
           '%field_key' => $field_key,
           '%value_document' => $value_document->getAttribute("ref-uuid"),
@@ -269,16 +265,8 @@ function _mica_import_attach_file($documents, $field_key, $path, $wrapper) {
         ), WATCHDOG_ERROR);
         throw $e;
       }
-      $errors_message .= t('File : ' . $value_document->getElementsByTagName('filename')
-        ->item(0)->nodeValue . 'attached to node</ br>');
-    }
-    else {
-      $errors_message .= t('File : ' . $value_document->getElementsByTagName('filename')
-        ->item(0)->nodeValue . ' already exist and attached </ br>');
     }
   }
-  return $errors_message;
-
 }
 
 /**
@@ -299,9 +287,8 @@ function _mica_import_copy_file($document_element, $path, $field_name) {
   $file->display = $field_setting['settings']['display_default'];
   $file->description = $document_element->getElementsByTagName('description')->item(0)->nodeValue;
 
-  $destination ='public://' . $document_element
-      ->getElementsByTagName('filename')->item(0)->nodeValue;;
-
+  $destination = 'public://' . $document_element
+      ->getElementsByTagName('filename')->item(0)->nodeValue;
   $file = file_copy($file, $destination, FILE_EXISTS_RENAME);
   return $file;
 }
