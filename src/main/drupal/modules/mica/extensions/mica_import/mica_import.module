@@ -269,6 +269,7 @@ function _mica_import_attach_file($documents, $field_key, $path, $wrapper) {
   }
 }
 
+
 /**
  * Copy attachment files of each node
  */
