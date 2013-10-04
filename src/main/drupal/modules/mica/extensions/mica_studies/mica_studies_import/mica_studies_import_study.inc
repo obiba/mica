@@ -28,9 +28,6 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
         $investigator_wrapper->save();
       }
     }
-    else {
-      watchdog('mica studio import', t('can\'t set  Investigator contact nid => you don\'t have permission to edit/create contact</ br>'), array(), WATCHDOG_WARNING);
-    }
   }
 
   $contacts = $xpath->query('/study/contacts/contact');
@@ -47,9 +44,6 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
         $wrapper->field_contacts_ref[$key_contact]->set($contact_wrapper->nid->value());
         $contact_wrapper->save();
       }
-    }
-    else {
-      watchdog('mica studio import', t('can\'t set contact nid => you don\'t have permission to edit/create contact</ br>'), array(), WATCHDOG_WARNING);
     }
   }
 
@@ -133,9 +127,6 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
         $population_wrapper->save();
       }
     }
-    else {
-      watchdog('mica study import', t('can\'t set population nid => you don\'t have permission to edit/create population</ br>'), array(), WATCHDOG_WARNING);
-    }
   }
 
   $documents = $xpath->query('/study/files/documents/document');
@@ -156,7 +147,10 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
         '%field_key' => 'field_log',
         '%node' => 'Study',
       ), WATCHDOG_ERROR);
-
+      drupal_set_message(t('Fatal error attaching File : @file  to node : @type',array(
+        '@file'=>$attached_logo->getElementsByTagName('filename')->item(0)->nodeValue,
+        '@type'=>'Study'
+      )),'warning');
       throw $e;
     }
   }

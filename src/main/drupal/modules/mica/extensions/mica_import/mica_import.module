@@ -194,6 +194,10 @@ function _mica_import_find_or_create_node($uuid, $type) {
     watchdog('mica import', 'No permission to import, update or edit node type : %type ', array(
       '%type' => $node->type
     ), WATCHDOG_WARNING);
+    drupal_set_message(t('No permission to import, update or edit node type : @type - uuid: @uuid',array(
+      '@type'=> $type,
+      '@uuid'=> $uuid,
+    )),'warning');
     return FALSE;
   }
   $infos = array(
@@ -215,11 +219,16 @@ function _mica_import_find_or_create_node($uuid, $type) {
   watchdog('mica import', 'No permission to import or create node type : %type ', array(
     '%type' => $type
   ), WATCHDOG_WARNING);
+  drupal_set_message(t('No permission to import or create node type : @type - uuid :@uuid',array(
+    '@type' => $type,
+    '@uuid' => $uuid
+  )),'warning');
   return FALSE;
 }
 
 function _mica_import_import_node($file_xml, $path, &$context) {
   $context['message'] = t('Extract information from %file_xml', array('file_xml' => $file_xml));
+  $context['results']['path'] = $path;
   $dom = new DOMDocument();
   $dom->load($file_xml);
   $current_document = $dom->documentElement;
@@ -228,20 +237,18 @@ function _mica_import_import_node($file_xml, $path, &$context) {
   $type_node = str_replace('-', '_', $type_node);
   // Node exist?  Update or create node
   $wrapper = _mica_import_find_or_create_node($uuid, $type_node);
-  if ($wrapper === FALSE) {
-    $context['results'][] = t('Action for this node : %node aborted contact the admin ', array('%node' => $type_node));
-  }
-  else {
+  if ($wrapper !== FALSE) {
     //Set Nodes from XML,s files
     module_invoke_all('mica_import_set_node_properties', $dom, $wrapper, $path);
-
     //Save created node
     $wrapper->save();
   }
+
 }
 
 function mica_import_finished_batch($success, $results) {
   drupal_set_message($success ? t('Import success') . '<br />' : t('Import Failed'));
+  _mica_import_delete_tmp_folder($results['path']);
 }
 
 function _mica_import_attach_file($documents, $field_key, $path, $wrapper) {
@@ -263,6 +270,11 @@ function _mica_import_attach_file($documents, $field_key, $path, $wrapper) {
           '%node' => $wrapper->type->value(),
 
         ), WATCHDOG_ERROR);
+
+        drupal_set_message(t('Fatal error attaching File : @file  to node : @type',array(
+          '@file'=>$value_document->getElementsByTagName('filename')->item(0)->nodeValue,
+          '@type'=>$wrapper->type->value()
+        )),'warning');
         throw $e;
       }
     }
@@ -293,6 +305,21 @@ function _mica_import_copy_file($document_element, $path, $field_name) {
   $file = file_copy($file, $destination, FILE_EXISTS_RENAME);
   return $file;
 }
+
+
+/**
+ * Delete tmp Folder
+ */
+function _mica_import_delete_tmp_folder($path) {
+  try{file_unmanaged_delete_recursive($path);}
+  catch(Exception $e){
+    drupal_set_message(t('error deleting file @path',array(
+      '@path'=> $path
+    )),'warning');
+  }
+
+}
+
 
 
 

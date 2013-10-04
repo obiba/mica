@@ -33,11 +33,6 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
         $dce_wrapper->save();
       }
     }
-    else {
-      watchdog('mica studio import', t('can\'t set  dce nid => you don\'t have permission to edit/create data_collection_event</ br>'), array(), WATCHDOG_WARNING);
-      return $wrapper;
-
-    }
   }
 
   $resources_recruitment = $xpath->query('/population/recruitment-procedure/sources-of-recruit/source');
