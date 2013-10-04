@@ -152,7 +152,7 @@ function _mica_import_unzip_file($file) {
 
       }
 
-      form_set_error('file', t("Failed to Unzip file, system  error : $error_zip"));
+      form_set_error('file', t("Failed to Unzip file, system  error : @error", array('@error' => $error_zip)));
       return FALSE;
     }
     $zip->close();
@@ -193,12 +193,12 @@ function _mica_import_find_or_create_node($uuid, $type) {
     }
     watchdog('mica import', 'No permission to import, update or edit node type : %type ', array(
       '%type' => $node->type
-    ), WATCHDOG_WARNING);
-    drupal_set_message(t('No permission to import, update or edit node type : @type - uuid: @uuid',array(
-      '@type'=> $type,
-      '@uuid'=> $uuid,
-    )),'warning');
-    return FALSE;
+    ), WATCHDOG_ERROR);
+    drupal_set_message(t('No permission to import, update or edit node type : @type - uuid: @uuid', array(
+      '@type' => $type,
+      '@uuid' => $uuid,
+    )), 'error');
+    return NULL;
   }
   $infos = array(
     'type' => $type,
@@ -218,12 +218,12 @@ function _mica_import_find_or_create_node($uuid, $type) {
   }
   watchdog('mica import', 'No permission to import or create node type : %type ', array(
     '%type' => $type
-  ), WATCHDOG_WARNING);
-  drupal_set_message(t('No permission to import or create node type : @type - uuid :@uuid',array(
+  ), WATCHDOG_ERROR);
+  drupal_set_message(t('No permission to import or create node type : @type - uuid :@uuid', array(
     '@type' => $type,
     '@uuid' => $uuid
-  )),'warning');
-  return FALSE;
+  )), 'error');
+  return NULL;
 }
 
 function _mica_import_import_node($file_xml, $path, &$context) {
@@ -237,12 +237,10 @@ function _mica_import_import_node($file_xml, $path, &$context) {
   $type_node = str_replace('-', '_', $type_node);
   // Node exist?  Update or create node
   $wrapper = _mica_import_find_or_create_node($uuid, $type_node);
-  if ($wrapper !== FALSE) {
-    //Set Nodes from XML,s files
-    module_invoke_all('mica_import_set_node_properties', $dom, $wrapper, $path);
-    //Save created node
-    $wrapper->save();
-  }
+  //Set Nodes from XML,s files
+  module_invoke_all('mica_import_set_node_properties', $dom, $wrapper, $path);
+  //Save created node
+  $wrapper->save();
 
 }
 
@@ -254,33 +252,29 @@ function mica_import_finished_batch($success, $results) {
 function _mica_import_attach_file($documents, $field_key, $path, $wrapper) {
   foreach ($documents as $key_file => $value_document) {
     $file_node = _mica_import_copy_file($value_document, $path, $field_key);
+    try {
+      $wrapper->{$field_key}[$key_file]->set(array(
+        'fid' => $file_node->fid,
+        'description' => $file_node->description,
+        'display' => $file_node->display
+      ));
+    } catch (Exception $e) {
+      watchdog('mica import', 'Error  : %error <br /> Field => %field_key <br />  File uuid=> %value_document <br /> node type=> %node <br />', array(
+        '%error' => $e,
+        '%field_key' => $field_key,
+        '%value_document' => $value_document->getAttribute("ref-uuid"),
+        '%node' => $wrapper->type->value(),
 
-    if ($file_node !== FALSE) {
-      try {
-        $wrapper->{$field_key}[$key_file]->set(array(
-          'fid' => $file_node->fid,
-          'description' => $file_node->description,
-          'display' => $file_node->display
-        ));
-      } catch (Exception $e) {
-        watchdog('mica import', 'Error  : %error <br /> Field => %field_key <br />  File uuid=> %value_document <br /> node type=> %node <br />', array(
-          '%error' => $e,
-          '%field_key' => $field_key,
-          '%value_document' => $value_document->getAttribute("ref-uuid"),
-          '%node' => $wrapper->type->value(),
+      ), WATCHDOG_ERROR);
 
-        ), WATCHDOG_ERROR);
-
-        drupal_set_message(t('Fatal error attaching File : @file  to node : @type',array(
-          '@file'=>$value_document->getElementsByTagName('filename')->item(0)->nodeValue,
-          '@type'=>$wrapper->type->value()
-        )),'warning');
-        throw $e;
-      }
+      drupal_set_message(t('Fatal error attaching File : @file  to node : @type', array(
+        '@file' => $value_document->getElementsByTagName('filename')->item(0)->nodeValue,
+        '@type' => $wrapper->type->value()
+      )), 'error');
+      throw $e;
     }
   }
 }
-
 
 /**
  * Copy attachment files of each node
@@ -297,7 +291,7 @@ function _mica_import_copy_file($document_element, $path, $field_name) {
   $file->filesize = $document_element->getElementsByTagName('filesize')->item(0)->nodeValue;
   $file->uid = $user->uid;
   $file->uri = $src_filepath;
-  $file->display = isset($field_setting['settings']['display_default'])?$field_setting['settings']['display_default']:'';
+  $file->display = isset($field_setting['settings']['display_default']) ? $field_setting['settings']['display_default'] : '';
   $file->description = $document_element->getElementsByTagName('description')->item(0)->nodeValue;
 
   $destination = 'public://' . $document_element
@@ -306,16 +300,16 @@ function _mica_import_copy_file($document_element, $path, $field_name) {
   return $file;
 }
 
-
 /**
  * Delete tmp Folder
  */
 function _mica_import_delete_tmp_folder($path) {
-  try{file_unmanaged_delete_recursive($path);}
-  catch(Exception $e){
-    drupal_set_message(t('error deleting file @path',array(
-      '@path'=> $path
-    )),'warning');
+  try {
+    file_unmanaged_delete_recursive($path);
+  } catch (Exception $e) {
+    drupal_set_message(t('error deleting file @path', array(
+      '@path' => $path
+    )), 'error');
   }
 
 }
