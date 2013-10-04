@@ -54,9 +54,9 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
     ->appendChild($dom->createTextNode($wrapper->body->format->value()));
 
   $to_attrib_gen_info = $root->appendChild($dom->createElement('populations'));
-  foreach ($wrapper->field_dce_population->value() as $popula) {
+  foreach ($wrapper->field_dce_population->getIterator() as $popula) {
     $to_attrib = $to_attrib_gen_info->appendChild($dom->createElement('population'));
-    $to_attrib->setAttribute('ref-uuid', $popula->uuid);
+    $to_attrib->setAttribute('ref-uuid', $popula->uuid->value());
   }
 
   $source_data_element = $dom->createElement('sources-of-data');

@@ -33,15 +33,15 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
     ->appendChild($dom->createTextNode($wrapper->field_acroym->value()));
 
   $investigators_element = $root->appendChild($dom->createElement('investigators'));
-  foreach ($wrapper->field_investigators->value() as $investigator_wrapper) {
+  foreach ($wrapper->field_investigators->getIterator() as $investigator_wrapper) {
     $to_attrib = $investigators_element->appendChild($dom->createElement('investigator'));
-    $to_attrib->setAttribute('ref-uuid', $investigator_wrapper->uuid);
+    $to_attrib->setAttribute('ref-uuid', $investigator_wrapper->uuid->value());
   }
 
   $contacts_element = $root->appendChild($dom->createElement('contacts'));
-  foreach ($wrapper->field_contacts_ref->value() as $contact_wrapper) {
+  foreach ($wrapper->field_contacts_ref->getIterator() as $contact_wrapper) {
     $to_attrib = $contacts_element->appendChild($dom->createElement('contact'));
-    $to_attrib->setAttribute('ref-uuid', $contact_wrapper->uuid);
+    $to_attrib->setAttribute('ref-uuid', $contact_wrapper->uuid->value());
   }
 
   $content_element = $root->appendChild($dom->createElement('objectives'));
@@ -143,9 +143,9 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $partic_supplementary_information->setAttribute('format', isset($parti_sup_info) ? $wrapper->field_supp_infos->format->value() : '');
 
   $poplutions_element = $root->appendChild($dom->createElement('populations'));
-  foreach ($wrapper->field_study_populations->value() as $population_wrapper) {
+  foreach ($wrapper->field_study_populations->getIterator() as $population_wrapper) {
     $to_attrib = $poplutions_element->appendChild($dom->createElement('population'));
-    $to_attrib->setAttribute('ref-uuid', $population_wrapper->uuid);
+    $to_attrib->setAttribute('ref-uuid', $population_wrapper->uuid->value());
   }
 
   $files_element = $dom->createElement('files');

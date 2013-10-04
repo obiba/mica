@@ -18,13 +18,10 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
     $investigar_uuid = $investi_value->getAttribute("ref-uuid");
     $investigator_wrapper = _mica_import_find_or_create_node($investigar_uuid, 'contact');
     $nid = $investigator_wrapper->nid->value();
-    if (empty($nid)) {
-      $investigator_wrapper->save();
-    }
-    else {
+    if (!empty($nid)) {
       $wrapper->field_investigators[$key_investi]->set($investigator_wrapper->nid->value());
-      $investigator_wrapper->save();
     }
+      $investigator_wrapper->save();
   }
 
   $contacts = $xpath->query('/study/contacts/contact');
@@ -33,13 +30,10 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
     $contact_uuid = $contact_value->getAttribute("ref-uuid");
     $contact_wrapper = _mica_import_find_or_create_node($contact_uuid, 'contact');
     $nid = $contact_wrapper->nid->value();
-    if (empty($nid)) {
-      $contact_wrapper->save();
-    }
-    else {
+    if (!empty($nid)) {
       $wrapper->field_contacts_ref[$key_contact]->set($contact_wrapper->nid->value());
-      $contact_wrapper->save();
     }
+      $contact_wrapper->save();
   }
 
   $origin_url = $current_document->getAttribute("mica_origin_url");
@@ -113,13 +107,10 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
     $population_uuid = $value_population->getAttribute("ref-uuid");
     $population_wrapper = _mica_import_find_or_create_node($population_uuid, 'population');
     $nid = $population_wrapper->nid->value();
-    if (empty($nid)) {
-      $population_wrapper->save();
-    }
-    else {
+    if (!empty($nid)) {
       $wrapper->field_study_populations[$key_population]->set($population_wrapper->nid->value());
-      $population_wrapper->save();
     }
+      $population_wrapper->save();
   }
 
   $documents = $xpath->query('/study/files/documents/document');

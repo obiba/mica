@@ -24,13 +24,10 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
     $dce_uuid = $dce_element->getAttribute("ref-uuid");
     $dce_wrapper = _mica_import_find_or_create_node($dce_uuid, 'data_collection_event');
     $nid = $dce_wrapper->nid->value();
-    if (empty($nid)) {
-      $dce_wrapper->save();
-    }
-    else {
+    if (!empty($nid)) {
       $wrapper->field_pop_dce[$index]->set($dce_wrapper->nid->value());
-      $dce_wrapper->save();
     }
+      $dce_wrapper->save();
   }
 
   $resources_recruitment = $xpath->query('/population/recruitment-procedure/sources-of-recruit/source');
