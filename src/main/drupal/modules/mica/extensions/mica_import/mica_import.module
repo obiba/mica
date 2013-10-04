@@ -194,11 +194,10 @@ function _mica_import_find_or_create_node($uuid, $type) {
     watchdog('mica import', 'No permission to import, update or edit node type : %type ', array(
       '%type' => $node->type
     ), WATCHDOG_ERROR);
-    drupal_set_message(t('No permission to import, update or edit node type : @type - uuid: @uuid', array(
+    throw new Exception(t('No permission to import, update or edit node type : @type - uuid: @uuid , please contact your admin  ', array(
       '@type' => $type,
       '@uuid' => $uuid,
-    )), 'error');
-    return NULL;
+    )));
   }
   $infos = array(
     'type' => $type,
@@ -219,11 +218,10 @@ function _mica_import_find_or_create_node($uuid, $type) {
   watchdog('mica import', 'No permission to import or create node type : %type ', array(
     '%type' => $type
   ), WATCHDOG_ERROR);
-  drupal_set_message(t('No permission to import or create node type : @type - uuid :@uuid', array(
+  throw new Exception(t('No permission to import or create node type : @type - uuid :@uuid, please contact your admin ', array(
     '@type' => $type,
     '@uuid' => $uuid
-  )), 'error');
-  return NULL;
+  )));
 }
 
 function _mica_import_import_node($file_xml, $path, &$context) {
@@ -267,11 +265,10 @@ function _mica_import_attach_file($documents, $field_key, $path, $wrapper) {
 
       ), WATCHDOG_ERROR);
 
-      drupal_set_message(t('Fatal error attaching File : @file  to node : @type', array(
+      throw new Exception(t('Fatal error attaching File : @file  to node : @type', array(
         '@file' => $value_document->getElementsByTagName('filename')->item(0)->nodeValue,
         '@type' => $wrapper->type->value()
-      )), 'error');
-      throw $e;
+      )));
     }
   }
 }
@@ -293,7 +290,6 @@ function _mica_import_copy_file($document_element, $path, $field_name) {
   $file->uri = $src_filepath;
   $file->display = isset($field_setting['settings']['display_default']) ? $field_setting['settings']['display_default'] : '';
   $file->description = $document_element->getElementsByTagName('description')->item(0)->nodeValue;
-
   $destination = 'public://' . $document_element
       ->getElementsByTagName('filename')->item(0)->nodeValue;
   $file = file_copy($file, $destination, FILE_EXISTS_RENAME);

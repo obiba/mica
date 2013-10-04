@@ -20,14 +20,15 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
   // $wrapper->body->format->set($xpath->query('/population/general-information/format')->item(0)->nodeValue);
 
   $dce_elements = $xpath->query('/population/data-collection-events/data-collection-event');
-  foreach ($dce_elements as $index => $dce_element) {
+  foreach ($dce_elements as $dce_index => $dce_element) {
     $dce_uuid = $dce_element->getAttribute("ref-uuid");
     $dce_wrapper = _mica_import_find_or_create_node($dce_uuid, 'data_collection_event');
     $nid = $dce_wrapper->nid->value();
-    if (!empty($nid)) {
-      $wrapper->field_pop_dce[$index]->set($dce_wrapper->nid->value());
-    }
+    if (empty($nid)) {
       $dce_wrapper->save();
+
+    }
+    $wrapper->field_pop_dce[$dce_index]->set($dce_wrapper->nid->value());
   }
 
   $resources_recruitment = $xpath->query('/population/recruitment-procedure/sources-of-recruit/source');

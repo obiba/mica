@@ -32,15 +32,15 @@ function mica_studies_import_menu_local_tasks_alter(&$data, $router_item, $root_
 function mica_studies_mica_import_set_node_properties($dom, $wrapper, $path) {
   switch ($wrapper->type->value()) {
     case 'contact':
-      _mica_studies_mica_import_set_contact_properties($dom, $wrapper);
+     _mica_studies_mica_import_set_contact_properties($dom, $wrapper);
 
       break;
     case 'data_collection_event':
-      _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path);
+     _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path);
 
       break;
     case 'population':
-      _mica_studies_mica_import_set_population_properties($dom, $wrapper);
+     _mica_studies_mica_import_set_population_properties($dom, $wrapper);
 
       break;
     case 'study':
@@ -49,4 +49,5 @@ function mica_studies_mica_import_set_node_properties($dom, $wrapper, $path) {
       break;
 
   }
+
 }
