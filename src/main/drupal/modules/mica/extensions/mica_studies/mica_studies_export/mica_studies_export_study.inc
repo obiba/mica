@@ -9,16 +9,11 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $wrapper = entity_metadata_wrapper('node', $nid);
 
 //Retrieve attachments files
+    mica_export_copy_attachment_file($wrapper->field_documents->value(), $tmp_folder_name);
 
-  $documents = $wrapper->field_documents->value();
-  if (isset($documents)) {
-    mica_export_copy_attachment_file($documents, $tmp_folder_name);
-  }
   $logo = $wrapper->field_logo->value();
-  if (isset($logo)) {
     $logo_adapt[0] = $logo;
     mica_export_copy_attachment_file($logo_adapt, $tmp_folder_name);
-  }
 
   //Xml mapper
   $dom = new DomDocument('1.0', 'utf-8');
@@ -69,7 +64,7 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $design_oth_inf = $wrapper->field_design_other_sp->value();
   $design_other_info = $design_element->appendChild($dom->createElement('other'));
   $design_other_info->appendChild($dom->createTextNode(isset($design_oth_inf) ? $wrapper->field_design_other_sp->value->value() : ''));
-  $design_other_info->setAttribute('format', isset($gen) ? $wrapper->field_design_other_sp->format->value() : '');
+  $design_other_info->setAttribute('format', isset($design_oth_inf) ? $wrapper->field_design_other_sp->format->value() : '');
 
   $general_info_follow_up = $study_design_element->appendChild($dom->createElement('general-information-follow-up'));
 

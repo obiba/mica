@@ -247,29 +247,14 @@ function mica_import_finished_batch($success, $results) {
   _mica_import_delete_tmp_folder($results['path']);
 }
 
-function _mica_import_attach_file($documents, $field_key, $path, $wrapper) {
+function _mica_import_attach_file($documents, $field_name, $path, $wrapper) {
   foreach ($documents as $key_file => $value_document) {
-    $file_node = _mica_import_copy_file($value_document, $path, $field_key);
-    try {
-      $wrapper->{$field_key}[$key_file]->set(array(
-        'fid' => $file_node->fid,
-        'description' => $file_node->description,
-        'display' => $file_node->display
-      ));
-    } catch (Exception $e) {
-      watchdog('mica import', 'Error  : %error <br /> Field => %field_key <br />  File uuid=> %value_document <br /> node type=> %node <br />', array(
-        '%error' => $e,
-        '%field_key' => $field_key,
-        '%value_document' => $value_document->getAttribute("ref-uuid"),
-        '%node' => $wrapper->type->value(),
-
-      ), WATCHDOG_ERROR);
-
-      throw new Exception(t('Fatal error attaching File : @file  to node : @type', array(
-        '@file' => $value_document->getElementsByTagName('filename')->item(0)->nodeValue,
-        '@type' => $wrapper->type->value()
-      )));
-    }
+    $file_node = _mica_import_copy_file($value_document, $path, $field_name);
+    $wrapper->{$field_name}[$key_file]->set(array(
+      'fid' => $file_node->fid,
+      'description' => $file_node->description,
+      'display' => $file_node->display
+    ));
   }
 }
 
@@ -300,14 +285,7 @@ function _mica_import_copy_file($document_element, $path, $field_name) {
  * Delete tmp Folder
  */
 function _mica_import_delete_tmp_folder($path) {
-  try {
-    file_unmanaged_delete_recursive($path);
-  } catch (Exception $e) {
-    drupal_set_message(t('error deleting file @path', array(
-      '@path' => $path
-    )), 'error');
-  }
-
+  file_unmanaged_delete_recursive($path);
 }
 
 

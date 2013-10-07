@@ -29,10 +29,7 @@ function hook_mica_export_find_related_nids($node) {
 function hook_mica_export_to_xml($node, $temp_folder_path) {
   $wrapper = entity_metadata_wrapper('node', $node);
   if ($node->type === 'study') {
-    $files = $wrapper->field_files->value();
-    if (!empty($files)) {
-      mica_export_copy_attachment_file($files, $temp_folder_path);
-    }
+    mica_export_copy_attachment_file($wrapper->field_files->value(), $temp_folder_path);
     $dom = new DomDocument('1.0', 'utf-8');
     $root = $dom->createElement($node->type);
     $root->setAttribute('uuid', $wrapper->uuid->value());

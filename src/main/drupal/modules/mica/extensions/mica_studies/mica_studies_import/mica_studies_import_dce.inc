@@ -19,9 +19,16 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
   // $wrapper->body->format->set($xpath->query('/data-collection-event/description/format')->item(0)->nodeValue);
 
   $origin_url = $current_document->getAttribute("mica_origin_url");
-  if (empty($wrapper->mica_origin_url)) {
-    $wrapper->mica_origin_url->set($origin_url);
+  $uuid = $current_document->getAttribute("uuid");
+  //Can't set mica_origin_url using  wrapper  Error : .. 'Entity property mica_origin_url doesn't support writing
+  if (!empty($origin_url)) {
+    $nodes = entity_load('node', FALSE, array('uuid' => $uuid));
+    foreach ($nodes as $node) {
+      $node->mica_origin_url = $origin_url;
+      node_save($node);
+    }
   }
+
   $sources_data = $xpath->query('/data-collection-event/sources-of-data/source');
   foreach ($sources_data as $key_data => $source_data_value) {
     $wrapper->field_dce_data_sources[$key_data]->set($source_data_value->getAttribute("code"));

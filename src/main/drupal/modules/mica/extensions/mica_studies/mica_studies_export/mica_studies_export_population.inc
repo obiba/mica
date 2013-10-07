@@ -65,13 +65,21 @@ function _mica_studies_export_population_xml($nid) {
     $to_attrib->appendChild($dom->createTextNode($specpopu->label()));
     $to_attrib->setAttribute('code', $specpopu->value());
   }
-  $specific_population_element->appendChild($dom->createElement('other'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_specific_pop_other_sp->value->value()));
 
-  $recru_proc_element->appendChild($dom->createElement('other-recruitment-source'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_recruitment_other->value->value()));
-  $recru_proc_element->appendChild($dom->createElement('supplementary-information'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_recruit_supp_info->value->value()));
+  $pop_specific_pop_other = $wrapper->field_pop_specific_pop_other_sp->value();
+      $parent_specific_population_element = $specific_population_element->appendChild($dom->createElement('other'));
+  $parent_specific_population_element->appendChild($dom->createTextNode(isset($pop_specific_pop_other)?$wrapper->field_pop_specific_pop_other_sp->value->value():''));
+  $parent_specific_population_element->setAttribute('format', isset($pop_specific_pop_other) ? $wrapper->field_pop_specific_pop_other_sp->format->value() : '');
+
+$pop_recruitmenet_other = $wrapper->field_pop_recruitment_other->value();
+  $parent_recru_proc_element = $recru_proc_element->appendChild($dom->createElement('other-recruitment-source'));
+    $parent_recru_proc_element->appendChild($dom->createTextNode(isset($pop_recruitmenet_other)?$wrapper->field_pop_recruitment_other->value->value():''));
+  $parent_recru_proc_element->setAttribute('format', isset($pop_recruitmenet_other) ? $wrapper->field_pop_recruitment_other->format->value() : '');
+
+  $pop_recruit_supp_info = $wrapper->field_pop_recruit_supp_info->value();
+  $parent_recru_proc_element_sup = $recru_proc_element->appendChild($dom->createElement('supplementary-information'));
+  $parent_recru_proc_element_sup->appendChild($dom->createTextNode(isset($pop_recruit_supp_info)?$wrapper->field_pop_recruit_supp_info->value->value():''));
+  $parent_recru_proc_element_sup->setAttribute('format', isset($pop_recruit_supp_info) ? $wrapper->field_pop_recruit_supp_info->format->value() : '');
 
   $charac_population_element = $root->appendChild($dom->createElement('characteristics-of-the-population'));
   $charac_population_element->appendChild($dom->createElement('gender'))
@@ -92,8 +100,10 @@ function _mica_studies_export_population_xml($nid) {
     $to_attrib->setAttribute('code', $country->value());
   }
 
-  $charac_population_element->appendChild($dom->createElement('territory-city-of-residence'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_territory->value->value()));
+  $pop_territory = $wrapper->field_pop_territory->value();
+  $parent_charac_population_element = $charac_population_element->appendChild($dom->createElement('territory-city-of-residence'));
+   $parent_charac_population_element->appendChild($dom->createTextNode(isset($pop_territory)?$wrapper->field_pop_territory->value->value():''));
+  $parent_charac_population_element->setAttribute('format', isset($pop_territory) ? $wrapper->field_pop_territory->format->value() : '');
 
   $sect_criteria_element = $dom->createElement('selections-criteria');
   $charac_population_element->appendChild($sect_criteria_element);
@@ -119,32 +129,41 @@ function _mica_studies_export_population_xml($nid) {
 
   }
 
-  $charac_population_element->appendChild($dom->createElement('other-selection-criteria'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_selection_others_sp->value->value()));
-  $charac_population_element->appendChild($dom->createElement('supplementary-information'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_partcipant_sel_supp_in->value->value()));
+  $pop_selection_others = $wrapper->field_pop_selection_others_sp->value();
+  $parent_charac_population_element = $charac_population_element->appendChild($dom->createElement('other-selection-criteria'));
+  $parent_charac_population_element->appendChild($dom->createTextNode(isset($pop_selection_others)?$wrapper->field_pop_selection_others_sp->value->value():''));
+  $parent_charac_population_element->setAttribute('format', isset($pop_selection_others) ? $wrapper->field_pop_selection_others_sp->format->value() : '');
 
-  $partic_numb__element = $root->appendChild($dom->createElement('number-participant'));
+  $pop_partcipant_sel_supp_in = $wrapper->field_pop_partcipant_sel_supp_in->value();
+  $parent2_charac_population_element= $charac_population_element->appendChild($dom->createElement('supplementary-information'));
+  $parent2_charac_population_element ->appendChild($dom->createTextNode(isset($pop_partcipant_sel_supp_in)?$wrapper->field_pop_partcipant_sel_supp_in->value->value():''));
+  $parent2_charac_population_element->setAttribute('format', isset($pop_partcipant_sel_supp_in) ? $wrapper->field_pop_partcipant_sel_supp_in->format->value() : '');
+
+
+  $partic_numb_element = $root->appendChild($dom->createElement('number-participant'));
 
   $target_number_element = $dom->createElement('target-number-of-participants');
-  $partic_numb__element->appendChild($target_number_element);
+  $partic_numb_element->appendChild($target_number_element);
   $target_number_element->appendChild($dom->createElement('number'))
     ->appendChild($dom->createTextNode($wrapper->field_pop_participants_nb->value()));
   $target_number_element->appendChild($dom->createElement('no-limit'))
     ->appendChild($dom->createTextNode($wrapper->field_pop_no_limits_participants->value() ? 'true' : 'false'));
 
   $target_number_biosample_element = $dom->createElement('target-number-of-participants-with-biosamples');
-  $partic_numb__element->appendChild($target_number_biosample_element);
+  $partic_numb_element->appendChild($target_number_biosample_element);
   $target_number_biosample_element->appendChild($dom->createElement('number'))
     ->appendChild($dom->createTextNode($wrapper->field_pop_participants_nb_s->value()));
   $target_number_biosample_element->appendChild($dom->createElement('no-limit'))
     ->appendChild($dom->createTextNode($wrapper->field_pop_no_lim_participants_s->value() ? 'true' : 'false'));
 
-  $partic_numb__element->appendChild($dom->createElement('supplementary-information'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_participants_nb_supp_i->value->value()));
+    $pop_participants_nb_supp_i = $wrapper->field_pop_participants_nb_supp_i->value();
+  $parent_partic_numb_element = $partic_numb_element->appendChild($dom->createElement('supplementary-information'));
+  $parent_partic_numb_element->appendChild($dom->createTextNode(isset($pop_participants_nb_supp_i)?$wrapper->field_pop_participants_nb_supp_i->value->value():''));
+  $parent_partic_numb_element->setAttribute('format', isset($pop_participants_nb_supp_i) ? $wrapper->field_pop_participants_nb_supp_i->format->value() : '');
 
-  $root->appendChild($dom->createElement('supplementary-information'))
-    ->appendChild($dom->createTextNode($wrapper->field_pop_supp_infos->value->value()));
-
+  $pop_supp_infos = $wrapper->field_pop_supp_infos->value();
+  $parent_pop_supp_infos = $root->appendChild($dom->createElement('supplementary-information'));
+  $parent_pop_supp_infos->appendChild($dom->createTextNode(isset($pop_supp_infos)?$wrapper->field_pop_supp_infos->value->value():''));
+  $parent_pop_supp_infos->setAttribute('format', isset($pop_supp_infos) ? $wrapper->field_pop_supp_infos->format->value() : '');
   return $dom->saveXML();
 }
