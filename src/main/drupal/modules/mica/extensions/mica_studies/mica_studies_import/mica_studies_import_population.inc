@@ -16,6 +16,7 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
     $nodes = entity_load('node', FALSE, array('uuid' => $uuid));
     foreach ($nodes as $node) {
       $node->mica_origin_url = $origin_url;
+      // $node->body['und'][0]['format'] = $xpath->query('/population/general-information/format')->item(0)->nodeValue;
       node_save($node);
     }
   }
@@ -23,9 +24,11 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
   $wrapper->title->set($xpath->query('/population/title')->item(0)->nodeValue);
   $wrapper->title_field->set($xpath->query('/population/title')->item(0)->nodeValue);
 
-  $wrapper->body->value->set($xpath->query('/population/general-information/body')->item(0)->nodeValue);
-  $wrapper->body->summary->set($xpath->query('/population/general-information/summary')->item(0)->nodeValue);
-  // $wrapper->body->format->set($xpath->query('/population/general-information/format')->item(0)->nodeValue);
+  $wrapper->body->set(array(
+    'value' => $xpath->query('/population/general-information/body')->item(0)->nodeValue,
+    'summary' => $xpath->query('/population/general-information/summary')->item(0)->nodeValue,
+    'format' => $xpath->query('/population/general-information/format')->item(0)->nodeValue
+  ));
 
   $dce_elements = $xpath->query('/population/data-collection-events/data-collection-event');
   if (!empty($dce_elements)) {

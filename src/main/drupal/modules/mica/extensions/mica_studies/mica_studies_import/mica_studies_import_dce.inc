@@ -14,9 +14,11 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
   $wrapper->field_dce_end_year->set($xpath->query('/data-collection-event/end-year')->item(0)->nodeValue);
   $wrapper->field_dce_end_month->set($xpath->query('/data-collection-event/end-month')->item(0)->nodeValue);
 
-  $wrapper->body->value->set($xpath->query('/data-collection-event/description/body')->item(0)->nodeValue);
-  $wrapper->body->summary->set($xpath->query('/data-collection-event/description/summary')->item(0)->nodeValue);
-  // $wrapper->body->format->set($xpath->query('/data-collection-event/description/format')->item(0)->nodeValue);
+  $wrapper->body->set(array(
+    'value' => $xpath->query('/data-collection-event/description/body')->item(0)->nodeValue,
+    'summary' => $xpath->query('/data-collection-event/description/summary')->item(0)->nodeValue,
+    'format' => $xpath->query('/data-collection-event/description/format')->item(0)->nodeValue
+  ));
 
   $origin_url = $current_document->getAttribute("mica_origin_url");
   $uuid = $current_document->getAttribute("uuid");

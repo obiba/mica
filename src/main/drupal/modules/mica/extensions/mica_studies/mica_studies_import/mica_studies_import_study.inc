@@ -49,6 +49,7 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
       $wrapper->field_contacts_ref[$key_contact]->set($contact_wrapper->nid->value());
     }
   }
+
   $wrapper->body->set(array(
     'value' => $xpath->query('/study/objectives/body')->item(0)->nodeValue,
     'summary' => $xpath->query('/study/objectives/summary')->item(0)->nodeValue,
