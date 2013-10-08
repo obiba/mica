@@ -9,8 +9,18 @@ function _mica_studies_mica_import_set_contact_properties($dom, $wrapper) {
   // xpath with contact/name/title
   $xpath = new DOMXPath($dom);
   $current_document = $dom->documentElement;
+
   $origin_url = $current_document->getAttribute("mica_origin_url");
-  $wrapper->mica_origin_url->set($origin_url);
+  $uuid = $current_document->getAttribute("uuid");
+  //Can't set mica_origin_url using  wrapper  Error : .. 'Entity property mica_origin_url doesn't support writing
+  if (!empty($origin_url)) {
+    $nodes = entity_load('node', FALSE, array('uuid' => $uuid));
+    foreach ($nodes as $node) {
+      $node->mica_origin_url = $origin_url;
+      node_save($node);
+    }
+  }
+
   $wrapper->title->set($xpath->query('/contact/name/title')->item(0)->nodeValue . ' ' . $xpath
     ->query('/contact/name/given')->item(0)->nodeValue . ' ' . $xpath->query('/contact/name/family')
     ->item(0)->nodeValue);

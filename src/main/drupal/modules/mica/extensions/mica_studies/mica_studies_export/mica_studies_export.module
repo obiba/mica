@@ -14,19 +14,19 @@ include_once('mica_studies_export_dce.inc');
  */
 function mica_studies_export_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   $links = array();
-  if ($root_path === 'node/%'){
-  $node = $router_item['map']['1'];
-  if ($node->type === 'study' && mica_export_can_export_node($node)) {
-    $links['export-study-xml'] = array(
-      '#theme' => 'menu_local_action',
-      '#weight' => 50,
-      '#link' => array(
-        'title' => t('Export'),
-        'href' => 'node/' . $node->nid . '/export-xml'
-      ),
-    );
+  if ($root_path === 'node/%') {
+    $node = $router_item['map']['1'];
+    if ($node->type === 'study' && mica_export_can_export_node($node)) {
+      $links['export-study-xml'] = array(
+        '#theme' => 'menu_local_action',
+        '#weight' => 50,
+        '#link' => array(
+          'title' => t('Export'),
+          'href' => 'node/' . $node->nid . '/export-xml'
+        ),
+      );
+    }
   }
-}
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
 
@@ -63,12 +63,16 @@ function mica_studies_export_mica_export_to_xml($node, $temp_folder_path) {
   switch ($node->type) {
     case 'study':
       return _mica_studies_export_study_xml($node->nid, $temp_folder_path);
+      break;
     case 'contact':
       return _mica_studies_export_contact_xml($node->nid);
+      break;
     case 'population':
       return _mica_studies_export_population_xml($node->nid, $temp_folder_path);
+      break;
     case 'data_collection_event':
       return _mica_studies_export_dce_xml($node->nid, $temp_folder_path);
+      break;
     default :
       return NULL;
   }

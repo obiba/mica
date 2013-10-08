@@ -8,25 +8,14 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
 
   $wrapper = entity_metadata_wrapper('node', $nid);
 
-  $documents = $wrapper->field_dce_questionnaires->value();
-  if (isset($documents)) {
-    mica_export_copy_attachment_file($documents, 'dce-documents', $tmp_folder_name);
-  }
+    mica_export_copy_attachment_file($wrapper->field_dce_questionnaires->value(), $tmp_folder_name);
 
-  $sops = $wrapper->field_dce_sops->value();
-  if (isset($sops)) {
-    mica_export_copy_attachment_file($sops, 'dce-sops', $tmp_folder_name);
-  }
+    mica_export_copy_attachment_file($wrapper->field_dce_sops->value(), $tmp_folder_name);
 
-  $dictionaries = $wrapper->field_dce_data_dictionaries->value();
-  if (isset($dictionaries)) {
-    mica_export_copy_attachment_file($dictionaries, 'dce-dictionaries', $tmp_folder_name);
-  }
+    mica_export_copy_attachment_file( $wrapper->field_dce_data_dictionaries->value(), $tmp_folder_name);
 
-  $doc_others = $wrapper->field_dce_others->value();
-  if (isset($doc_others)) {
-    mica_export_copy_attachment_file($doc_others, 'dce-doc_other', $tmp_folder_name);
-  }
+    mica_export_copy_attachment_file($wrapper->field_dce_others->value(), $tmp_folder_name);
+
 
   $dom = new DomDocument('1.0', 'utf-8');
   $root = $dom->createElement('data-collection-event');
@@ -54,9 +43,9 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
     ->appendChild($dom->createTextNode($wrapper->body->format->value()));
 
   $to_attrib_gen_info = $root->appendChild($dom->createElement('populations'));
-  foreach ($wrapper->field_dce_population->value() as $popula) {
+  foreach ($wrapper->field_dce_population->getIterator() as $popula) {
     $to_attrib = $to_attrib_gen_info->appendChild($dom->createElement('population'));
-    $to_attrib->setAttribute('ref-uuid', $popula->uuid);
+    $to_attrib->setAttribute('ref-uuid', $popula->uuid->value());
   }
 
   $source_data_element = $dom->createElement('sources-of-data');
@@ -84,16 +73,13 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
     $to_attrib->appendChild($dom->createTextNode($biosample->label()));
     $to_attrib->setAttribute('code', $biosample->value());
   }
-  $bio_samples_element->appendChild($dom->createElement('other-biological-samples'))
-    ->appendChild($dom->createTextNode($wrapper->field_dce_samples_man_other_sp->value->value()));
 
+  $dce_samples_man_other_sp = $wrapper->field_dce_samples_man_other_sp->value();
+  $parent_bio_samples_element = $bio_samples_element->appendChild($dom->createElement('other-biological-samples'));
+  $parent_bio_samples_element->appendChild($dom->createTextNode(isset($dce_samples_man_other_sp)?$wrapper->field_dce_samples_man_other_sp->value->value():''));
+  $parent_bio_samples_element->setAttribute('format', isset($dce_samples_man_other_sp) ? $wrapper->field_dce_samples_man_other_sp->format->value() : '');
   $bio_samples_element->appendChild($dom->createElement('tissues-type'))
     ->appendChild($dom->createTextNode($wrapper->field_dce_tissues_sp->value()));
-  /*
-
-  $root->appendChild($dom->createElement('tissues-type'))
-    ->appendChild($dom->createTextNode($wrapper->field_dce_tissues_sp->value()));
-  */
 
   $files_element = $dom->createElement('files');
   $root->appendChild($files_element);
@@ -104,19 +90,13 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
     $document_element->appendChild($document_detail_element);
     $document_detail_element->appendChild($dom->createElement('filename'))
       ->appendChild($dom->createTextNode($document['filename']));
-    $document_detail_element->appendChild($dom->createElement('url'))
-      ->appendChild($dom->createTextNode($document['uri']));
     $document_detail_element->appendChild($dom->createElement('description'))
       ->appendChild($dom->createTextNode($document['description']));
-    $document_detail_element->appendChild($dom->createElement('display'))
-      ->appendChild($dom->createTextNode($document['display']));
 
     $document_detail_element->appendChild($dom->createElement('filemime'))
       ->appendChild($dom->createTextNode($document['filemime']));
     $document_detail_element->appendChild($dom->createElement('filesize'))
       ->appendChild($dom->createTextNode($document['filesize']));
-    $document_detail_element->appendChild($dom->createElement('status'))
-      ->appendChild($dom->createTextNode($document['status']));
     $document_detail_element->setAttribute('ref-uuid', $document['uuid']);
   }
 
@@ -127,19 +107,13 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
     $sop_element->appendChild($sop_detail_element);
     $sop_detail_element->appendChild($dom->createElement('filename'))
       ->appendChild($dom->createTextNode($document['filename']));
-    $sop_detail_element->appendChild($dom->createElement('url'))
-      ->appendChild($dom->createTextNode($document['uri']));
     $sop_detail_element->appendChild($dom->createElement('description'))
       ->appendChild($dom->createTextNode($document['description']));
-    $sop_detail_element->appendChild($dom->createElement('display'))
-      ->appendChild($dom->createTextNode($document['display']));
 
     $sop_detail_element->appendChild($dom->createElement('filemime'))
       ->appendChild($dom->createTextNode($document['filemime']));
     $sop_detail_element->appendChild($dom->createElement('filesize'))
       ->appendChild($dom->createTextNode($document['filesize']));
-    $sop_detail_element->appendChild($dom->createElement('status'))
-      ->appendChild($dom->createTextNode($document['status']));
     $sop_detail_element->setAttribute('ref-uuid', $document['uuid']);
   }
 
@@ -150,19 +124,13 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
     $dictionaries_element->appendChild($dictionaries_detail_element);
     $dictionaries_detail_element->appendChild($dom->createElement('filename'))
       ->appendChild($dom->createTextNode($document['filename']));
-    $dictionaries_detail_element->appendChild($dom->createElement('url'))
-      ->appendChild($dom->createTextNode($document['uri']));
     $dictionaries_detail_element->appendChild($dom->createElement('description'))
       ->appendChild($dom->createTextNode($document['description']));
-    $dictionaries_detail_element->appendChild($dom->createElement('display'))
-      ->appendChild($dom->createTextNode($document['display']));
 
     $dictionaries_detail_element->appendChild($dom->createElement('filemime'))
       ->appendChild($dom->createTextNode($document['filemime']));
     $dictionaries_detail_element->appendChild($dom->createElement('filesize'))
       ->appendChild($dom->createTextNode($document['filesize']));
-    $dictionaries_detail_element->appendChild($dom->createElement('status'))
-      ->appendChild($dom->createTextNode($document['status']));
     $dictionaries_detail_element->setAttribute('ref-uuid', $document['uuid']);
   }
 
@@ -173,19 +141,13 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
     $doc_others_element->appendChild($doc_others_detail_element);
     $doc_others_detail_element->appendChild($dom->createElement('filename'))
       ->appendChild($dom->createTextNode($document['filename']));
-    $doc_others_detail_element->appendChild($dom->createElement('url'))
-      ->appendChild($dom->createTextNode($document['uri']));
     $doc_others_detail_element->appendChild($dom->createElement('description'))
       ->appendChild($dom->createTextNode($document['description']));
-    $doc_others_detail_element->appendChild($dom->createElement('display'))
-      ->appendChild($dom->createTextNode($document['display']));
 
     $doc_others_detail_element->appendChild($dom->createElement('filemime'))
       ->appendChild($dom->createTextNode($document['filemime']));
     $doc_others_detail_element->appendChild($dom->createElement('filesize'))
       ->appendChild($dom->createTextNode($document['filesize']));
-    $doc_others_detail_element->appendChild($dom->createElement('status'))
-      ->appendChild($dom->createTextNode($document['status']));
     $doc_others_detail_element->setAttribute('ref-uuid', $document['uuid']);
   }
 

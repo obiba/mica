@@ -56,6 +56,6 @@ function mica_origin_url_entity_property_info_alter(&$info) {
 function mica_origin_url_entity_presave($entity, $entity_type) {
   global $base_url;
   if ($entity_type === 'node' && empty($entity->mica_origin_url)) {
-    $entity->mica_origin_url = $base_url;
+    //  $entity->mica_origin_url = $base_url;
   }
 }

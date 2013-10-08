@@ -117,13 +117,16 @@ function _mica_export_generate_xml($nid, &$context) {
 /**
  * Copy attachment files of each node
  */
-function mica_export_copy_attachment_file($documents, $type, $tmp_folder_name) {
-  $path = "temporary://$tmp_folder_name/$type-documents";
-  if (!is_dir($path)) {
-    drupal_mkdir($path);
-    foreach ($documents as $document) {
-      file_unmanaged_copy($document['uri'], $path, FILE_EXISTS_REPLACE);
+function mica_export_copy_attachment_file($documents, $tmp_folder_name) {
+  if(empty($documents))  return;
+  foreach ($documents as $document) {
+    $path = "temporary://$tmp_folder_name/attachment";
+    if (!is_dir($path)) {
+      drupal_mkdir($path);
     }
+    $destination = $path . "/" . $document['uuid'];
+    file_unmanaged_copy($document['uri'], $destination, FILE_EXISTS_REPLACE);
+
   }
 }
 
@@ -178,7 +181,6 @@ function _mica_export_delete_tmp_folder(&$context) {
   $tmp_folder_full_path = _mica_export_get_tmp_folder_full_path($tmp_folder_name);
 
   file_unmanaged_delete_recursive($tmp_folder_full_path);
-
   drupal_set_message(
     t("Your Exported Study file download : <a href='@file_url'>here</a> <br /> You can find this file in your <a href='@file_manager_url'>File manager</a>",
       array(
