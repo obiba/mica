@@ -111,13 +111,6 @@ function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
           ),
         );
 
-        $links['import-xml'] = array(
-          '#theme' => 'menu_local_action',
-          '#link' => array(
-            'title' => t('Import XML Studies'),
-            'href' => 'import-xml',
-          ),
-        );
       }
       $links['search-studies'] = array(
         '#weight' => 30,

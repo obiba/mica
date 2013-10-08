@@ -4,13 +4,45 @@
  * Mica Import  file
  */
 
-function mica_import_form() {
-
-  return drupal_get_form('mica_import_upload_form');
+/**
+ * Implements hook_permission().
+ */
+function mica_import_permission() {
+  $perms = array();
+  foreach (node_permissions_get_configured_types() as $type) {
+    $info = node_type_get_type($type);
+    $perms += array(
+      "import $type content" => array(
+        'title' => t('%type_name: Import content', array('%type_name' => $info->name)),
+      )
+    );
+  }
+  return $perms;
 }
 
-function mica_import_upload_form(){
-  $form['#attributes']['enctype'] = 'multipart/form-data';
+/**
+ * Implements hook_menu().
+ */
+
+function mica_import_menu() {
+
+  $items = array();
+  $items['import-xml'] = array(
+    'title' => 'Import nodes from XML',
+    'access callback' => 'mica_import_can_import_node',
+    //  'access arguments' => array(0),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mica_import_upload_form'),
+  );
+  return $items;
+}
+
+function mica_import_can_import_node() {
+  //@TODO check if user have permission to import at least one node type
+  return TRUE;
+}
+
+function mica_import_upload_form() {
   $form['file'] = array(
     '#type' => 'file',
     '#title' => t('XML to Upload'),
@@ -21,12 +53,10 @@ function mica_import_upload_form(){
     '#type' => 'submit',
     '#value' => t('Submit'),
   );
-  $form['#submit'][] = 'mica_import_upload_form_submit';
   return $form;
 }
 
 function mica_import_upload_form_submit($form, &$form_state) {
-  var_dump($form);
   $file = $form_state['storage']['file'];
   // We are done with the file, remove it from storage.
   unset($form_state['storage']['file']);
@@ -35,20 +65,35 @@ function mica_import_upload_form_submit($form, &$form_state) {
   // Save file status.
   file_save($file);
   // Set a response to the user.
-  drupal_set_message(t('The file has been uploaded and the ZIP XML\'s has been imported, filename: @filename.', array('@filename' => $file->filename)));
+  drupal_set_message(t('The file ZIP has been uploaded, filename: @filename.', array('@filename' => $file->filename)));
+
 }
 
 function mica_import_upload_form_validate($form, &$form_state) {
+  global $user;
   $file = file_save_upload('file', array(
-    'file_validate_is_image' => array(), // Validates file is really an image.
     'file_validate_extensions' => array('zip'), // Validate extensions.
   ));
+
   // If the file passed validation:
   if ($file) {
+    $directory = 'public://' . $user->name . '/export';
+    if (!is_dir($directory)) {
+      drupal_mkdir($directory, NULL, TRUE, NULL);
+    }
+
     // Move the file, into the Drupal file system
-    if ($file = file_move($file, 'temporary://')) {
+    if ($file = file_move($file, $directory, FILE_EXISTS_RENAME)) {
       // Save the file for use in the submit handler.
       $form_state['storage']['file'] = $file;
+      if ($path_file = _mica_import_unzip_file($file)) {
+        if (is_dir($path_file)) {
+
+          _mica_import_batch_import($path_file);
+
+        }
+      }
+
     }
     else {
       form_set_error('file', t('Failed to write the uploaded file to the site\'s file folder.'));
@@ -59,197 +104,191 @@ function mica_import_upload_form_validate($form, &$form_state) {
   }
 }
 
-function mica_import_batch_import($study) {
+/*
+ * Unzip file Method
+ * @param $file Object send by form upload
+ *
+ * */
+function _mica_import_unzip_file($file) {
+  if ($wrapper = file_stream_wrapper_get_instance_by_uri($file->uri)) {
+    $file_path = $wrapper->realpath();
+    $zip = new ZipArchive();
+    $res = $zip->open($file_path);
+    if ($res === TRUE) {
+      $to_path_file = file_stream_wrapper_get_instance_by_uri('temporary://')->realpath();
+      $zip->extractTo($to_path_file);
+    }
+    else {
+      switch ($res) {
+        case $res == ZipArchive::ER_EXISTS:
+          $error_zip = 'File already exists';
+          break;
+        case $res == ZipArchive::ER_INCONS:
+          $error_zip = 'Zip archive inconsistent';
+          break;
+        case $res == ZipArchive::ER_INVAL:
+          $error_zip = 'Invalid argument';
+          break;
+        case $res == ZipArchive::ER_MEMORY:
+          $error_zip = 'Malloc failure';
+          break;
+        case $res == ZipArchive::ER_NOENT:
+          $error_zip = 'No such file';
+          break;
+        case $res == ZipArchive::ER_NOZIP:
+          $error_zip = 'Not a zip archive';
+          break;
+        case $res == ZipArchive::ER_OPEN:
+          $error_zip = 'Can\'t open file, error file path';
+          break;
+        case $res == ZipArchive::ER_READ:
+          $error_zip = 'Read error';
+          break;
+        case $res == ZipArchive::ER_SEEK:
+          $error_zip = 'Seek error';
+          break;
+        default:
+          $error_zip = 'Unknown error';
 
-  if (is_numeric($study)) {
-    $study = node_load($study);
+      }
+
+      form_set_error('file', t("Failed to Unzip file, system  error : @error", array('@error' => $error_zip)));
+      return FALSE;
+    }
+    $zip->close();
+    return $to_path_file . DIRECTORY_SEPARATOR . substr($file->filename, 0, -4);
   }
-  $wrapper = entity_metadata_wrapper('node', $study);
+  return FALSE;
+}
+
+function _mica_import_batch_import($path) {
+
   $operations = array();
-  //Create /Tmp folder and pass the path
-  $operations[] = array('_mica_import_create_tmp_folder', array());
-  // extract nid to import
-  $nids = _mica_import_find_nodes($study->nid);
-  foreach ($nids as $nid) {
-    //  _mica_import_gen_xml($nid);
+  $scanned_directory = array_diff(scandir($path), array('..', '.'));
+  foreach ($scanned_directory as $file) {
+    $file_xml = $path . DIRECTORY_SEPARATOR . $file;
+    if (is_file($file_xml)) {
+      $operations[] = array('_mica_import_import_node', array($file_xml, $path));
+    }
 
-    $operations[] = array('_mica_import_gen_xml', array($nid));
   }
-
-  // Archive the files
-  $operations[] = array('_mica_import_create_zip_file', array());
-  //  Delete tmp folder
-  $operations[] = array('_mica_import_deletetmp', array());
 
   // prepare batch steps
   batch_set(array(
     'operations' => $operations,
-    'finished' => 'mica_import_batch_finished',
+    'finished' => 'mica_import_finished_batch',
   ));
-  $redirect = 'node/' . $nids[0];
-  batch_process($redirect);
-}
 
-/*
- * Finish action
- * */
-function mica_import_batch_finished($success, $results, $operations) {
+  batch_process('/');
 
 }
 
-/*
- *Create tmp folder
- * */
-function _mica_import_create_tmp_folder(&$context) {
-
-  if (empty($context['results']['tmpfolder'])) {
-    $context['message'] = t('Preparing process.....');
-    $tmp_folder_name = 'import-' . date('Y-m-d_H_m_s', time());
-    drupal_mkdir(_mica_import_get_tmp_folder_full_path($tmp_folder_name));
-
-    $context['results']['tmp_folder_name'] = $tmp_folder_name;
-  }
-}
-
-function _mica_import_get_tmp_folder_full_path($tmp_file_name) {
-  return file_directory_temp() . '/' . $tmp_file_name;
-}
-
-/*
- * Xml generation
- * */
-//function _mica_import_gen_xml($nid, &$context)
-function _mica_import_gen_xml($nid, &$context) {
-  $tmp_folder_name = $context['results']['tmp_folder_name'];
-  $wrapper = entity_metadata_wrapper('node', $nid);
-
-  $type = $wrapper->type->value();
-  switch ($type) {
-    case 'study';
-      $xml = _mica_import_study_xml($nid, $type, $tmp_folder_name);
-
-      break;
-    case 'population';
-      $xml = _mica_import_population_xml($nid);
-
-      break;
-    case 'data_collection_event';
-      $xml = _mica_import_dce_xml($nid, $type, $tmp_folder_name);
-
-      break;
-    case 'contact';
-      $xml = _mica_import_contact_xml($nid);
-
-      break;
-
-  }
-  $context['message'] = t('Processing Node "%title"', array('%title' => $wrapper->title->value()));
-
-  if (isset($xml)) {
-    file_unmanaged_save_data($xml, 'temporary://' . $tmp_folder_name . '/' . $type . '-' . $wrapper->uuid->value() . '.xml', FILE_EXISTS_REPLACE);
-
-    //sand some parameters to next bach
-    $context['results']['tmp_folder_name'] = $tmp_folder_name;
-
-  }
-}
-
-/*
- * Copy attachement files of each node
- * */
-function _mica_import_copy_attachment_file($documents, $type, $tmp_folder_name) {
-
-  if (!is_dir('temporary://' . $tmp_folder_name . '/' . $type . '-documents')) {
-    $tmp_folder_name_docu = 'temporary://' . $tmp_folder_name . '/' . $type . '-documents';
-    drupal_mkdir($tmp_folder_name_docu);
-
-    foreach ($documents as $document) {
-      file_unmanaged_copy($document['uri'], $tmp_folder_name_docu, FILE_EXISTS_REPLACE);
-
-    }
-  }
-}
-
-/*
- * Creation zip file and move it to public
- * */
-function _mica_import_create_zip_file(&$context) {
-
-  $context['message'] = t('Compressing XML files');
+function _mica_import_find_or_create_node($uuid, $type) {
   global $user;
-
-  $tmp_folder_name = $context['results']['tmp_folder_name'];
-  $tmp_folder_full_path = _mica_import_get_tmp_folder_full_path($tmp_folder_name);
-
-  // Archive Xml's files
-  //retrieve files in directory to archive
-  $scanned_directory = array_diff(scandir($tmp_folder_full_path), array('..', '.'));
-
-  //create directories in public folder if not exist
-  if (!is_dir('public:///' . $user->name . '/import')) {
-    drupal_mkdir('public:///' . $user->name . '/import', NULL, TRUE, NULL);
+  if ($nodes = entity_uuid_load('node', array($uuid), array())) {
+    $node = current($nodes);
+    $wrapper = entity_metadata_wrapper('node', $node->nid);
+    if (user_access('import ' . $type . ' content') && user_access('edit any ' . $type . ' content')) {
+      return $wrapper;
+    }
+    watchdog('mica import', 'No permission to import, update or edit node type : %type ', array(
+      '%type' => $node->type
+    ), WATCHDOG_ERROR);
+    throw new Exception(t('No permission to import, update or edit node type : @type - uuid: @uuid , please contact your admin  ', array(
+      '@type' => $type,
+      '@uuid' => $uuid,
+    )));
   }
+  $infos = array(
+    'type' => $type,
+    'uid' => $user->uid,
+    'status' => NODE_NOT_PUBLISHED,
+    'uuid' => $uuid
+  );
 
-  $filename = drupal_realpath('public://') . '/' . $user->name . '/import/' . $tmp_folder_name . '.zip';
+  if (user_access('import ' . $type . ' content') && user_access('create ' . $type . ' content')) {
+    // Creates a wrapper object without inserting it to the DB
+    $wrapper = entity_property_values_create_entity('node', $infos);
+    watchdog('mica import', 'Create new node with UUID %uuid Call by %type ', array(
+      '%uuid' => $uuid,
+      '%type' => $type
+    ), WATCHDOG_WARNING);
+    return $wrapper;
+  }
+  watchdog('mica import', 'No permission to import or create node type : %type ', array(
+    '%type' => $type
+  ), WATCHDOG_ERROR);
+  throw new Exception(t('No permission to import or create node type : @type - uuid :@uuid, please contact your admin ', array(
+    '@type' => $type,
+    '@uuid' => $uuid
+  )));
+}
 
-  //Archive the files
-  fopen($filename, 'w');
-  $zip = new ZipArchive;
-  $zip->open($filename);
-  foreach ($scanned_directory as $file) {
+function _mica_import_import_node($file_xml, $path, &$context) {
+  $context['message'] = t('Extract information from %file_xml', array('file_xml' => $file_xml));
+  $context['results']['path'] = $path;
+  $dom = new DOMDocument();
+  $dom->load($file_xml);
+  $current_document = $dom->documentElement;
+  $type_node = $current_document->nodeName;
+  $uuid = $current_document->getAttribute("uuid");
+  $type_node = str_replace('-', '_', $type_node);
+  // Node exist?  Update or create node
+  $wrapper = _mica_import_find_or_create_node($uuid, $type_node);
+  //Set Nodes from XML,s files
+  module_invoke_all('mica_import_set_node_properties', $dom, $wrapper, $path);
+  //Save created node
+  $wrapper->save();
 
-    if (!is_dir($tmp_folder_full_path . '/' . $file)) {
-      $zip->addFile($tmp_folder_full_path . '/' . $file, $tmp_folder_name . '/' . $file);
-    }
+}
 
-    elseif (is_dir($tmp_folder_full_path . '/' . $file)) {
-      $scanned_subdirectory = array_diff(scandir($tmp_folder_full_path . '/' . $file), array('..', '.'));
-      $zip->addEmptyDir($tmp_folder_full_path . '/' . $file . '/' . $file, $tmp_folder_name . '/' . $file);
-      foreach ($scanned_subdirectory as $subfile) {
-        $zip->addFile($tmp_folder_full_path . '/' . $file . '/' . $subfile, $tmp_folder_name . '/' . $file . '/' . $subfile);
-      }
-    }
-    fclose($filename);
-    $context['results']['tmp_folder_name'] = $tmp_folder_name;
+function mica_import_finished_batch($success, $results) {
+  drupal_set_message($success ? t('Import success') . '<br />' : t('Import Failed'));
+  _mica_import_delete_tmp_folder($results['path']);
+}
+
+function _mica_import_attach_file($documents, $field_name, $path, $wrapper) {
+  foreach ($documents as $key_file => $value_document) {
+    $file_node = _mica_import_copy_file($value_document, $path, $field_name);
+    $wrapper->{$field_name}[$key_file]->set(array(
+      'fid' => $file_node->fid,
+      'description' => $file_node->description,
+      'display' => $file_node->display
+    ));
   }
 }
 
-/*
+/**
+ * Copy attachment files of each node
+ */
+function _mica_import_copy_file($document_element, $path, $field_name) {
+  global $user;
+  $field_setting = field_info_field($field_name);
+  $file_uuid = $document_element->getAttribute("ref-uuid");
+  $src_filepath = $path . '/attachment/' . $file_uuid;
+  $file = new stdClass();
+  $file->filename = $document_element->getElementsByTagName('filename')->item(0)->nodeValue;
+  $file->filepath = $src_filepath;
+  $file->filemime = $document_element->getElementsByTagName('filemime')->item(0)->nodeValue;
+  $file->filesize = $document_element->getElementsByTagName('filesize')->item(0)->nodeValue;
+  $file->uid = $user->uid;
+  $file->uri = $src_filepath;
+  $file->display = isset($field_setting['settings']['display_default']) ? $field_setting['settings']['display_default'] : '';
+  $file->description = $document_element->getElementsByTagName('description')->item(0)->nodeValue;
+  $destination = 'public://' . $document_element
+      ->getElementsByTagName('filename')->item(0)->nodeValue;
+  $file = file_copy($file, $destination, FILE_EXISTS_RENAME);
+  return $file;
+}
+
+/**
  * Delete tmp Folder
  */
-function _mica_import_deletetmp(&$context) {
-  global $user;
-  $tmp_folder_name = $context['results']['tmp_folder_name'];
-  $tmp_folder_full_path = _mica_import_get_tmp_folder_full_path($tmp_folder_name);
-
-  file_unmanaged_delete_recursive($tmp_folder_full_path);
-
-  drupal_set_message(
-    t("Your Imported Study file download : <a href='@file_url'>here</a> <br /> You can find this file in your <a href='@file_manager_url'>File manager</a>",
-      array(
-        '@file_url' => file_create_url('public:///' . $user->name . '/import/' . $tmp_folder_name . '.zip'),
-        '@file_manager_url' => url('user/' . $user->uid . '/imce')
-      )),
-    'status');
+function _mica_import_delete_tmp_folder($path) {
+  file_unmanaged_delete_recursive($path);
 }
 
-function _mica_import_find_nodes($study_nid) {
-  $nids = array();
-  $nids[] = $study_nid;
 
-  $study_wrapper = entity_metadata_wrapper('node', $study_nid);
-  foreach ($study_wrapper->field_study_populations->getIterator() as $pop_wrapper) {
-    $nids[] = $pop_wrapper->nid->value();
-    foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
-      $nids[] = $dce_wrapper->nid->value();
-    }
-  }
-  foreach ($study_wrapper->field_investigators->getIterator() as $investigator_wrapper) {
-    $nids[] = $investigator_wrapper->nid->value();
-  }
-  foreach ($study_wrapper->field_contacts_ref->getIterator() as $contact_wrapper) {
-    $nids[] = $contact_wrapper->nid->value();
-  }
 
-  return $nids;
-}
+
+
