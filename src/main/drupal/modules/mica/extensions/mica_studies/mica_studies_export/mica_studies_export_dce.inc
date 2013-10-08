@@ -8,14 +8,13 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
 
   $wrapper = entity_metadata_wrapper('node', $nid);
 
-    mica_export_copy_attachment_file($wrapper->field_dce_questionnaires->value(), $tmp_folder_name);
+  mica_export_copy_attachment_file($wrapper->field_dce_questionnaires->value(), $tmp_folder_name);
 
-    mica_export_copy_attachment_file($wrapper->field_dce_sops->value(), $tmp_folder_name);
+  mica_export_copy_attachment_file($wrapper->field_dce_sops->value(), $tmp_folder_name);
 
-    mica_export_copy_attachment_file( $wrapper->field_dce_data_dictionaries->value(), $tmp_folder_name);
+  mica_export_copy_attachment_file($wrapper->field_dce_data_dictionaries->value(), $tmp_folder_name);
 
-    mica_export_copy_attachment_file($wrapper->field_dce_others->value(), $tmp_folder_name);
-
+  mica_export_copy_attachment_file($wrapper->field_dce_others->value(), $tmp_folder_name);
 
   $dom = new DomDocument('1.0', 'utf-8');
   $root = $dom->createElement('data-collection-event');
@@ -42,18 +41,18 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
   $gen_info_body_element->appendChild($dom->createElement('format'))
     ->appendChild($dom->createTextNode($wrapper->body->format->value()));
 
-  $to_attrib_gen_info = $root->appendChild($dom->createElement('populations'));
-  foreach ($wrapper->field_dce_population->getIterator() as $popula) {
-    $to_attrib = $to_attrib_gen_info->appendChild($dom->createElement('population'));
-    $to_attrib->setAttribute('ref-uuid', $popula->uuid->value());
+  $populations_element = $root->appendChild($dom->createElement('populations'));
+  foreach ($wrapper->field_dce_population->getIterator() as $pop_wrapper) {
+    $populations_element->appendChild($dom->createElement('population'))
+      ->setAttribute('ref-uuid', $pop_wrapper->uuid->value());
   }
 
   $source_data_element = $dom->createElement('sources-of-data');
   $root->appendChild($source_data_element);
   foreach ($wrapper->field_dce_data_sources->getIterator() as $sources) {
-    $to_attrib = $source_data_element->appendChild($dom->createElement('source'));
-    $to_attrib->appendChild($dom->createTextNode($sources->label()));
-    $to_attrib->setAttribute('code', $sources->value());
+    $source_data_element->appendChild($dom->createElement('source'))
+      ->appendChild($dom->createTextNode($sources->label()))
+      ->setAttribute('code', $sources->value());
   }
   $source_data_element->appendChild($dom->createElement('other-data-source'))
     ->appendChild($dom->createTextNode($wrapper->field_dce_data_sources_sp->value()));
@@ -61,23 +60,23 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
   $admin_data_element = $dom->createElement('administrative-database');
   $root->appendChild($admin_data_element);
   foreach ($wrapper->field_dce_data_sources_admin_db->getIterator() as $admindata) {
-    $to_attrib = $admin_data_element->appendChild($dom->createElement('source'));
-    $to_attrib->appendChild($dom->createTextNode($admindata->label()));
-    $to_attrib->setAttribute('code', $admindata->value());
+    $admin_data_element->appendChild($dom->createElement('source'))
+      ->appendChild($dom->createTextNode($admindata->label()))
+      ->setAttribute('code', $admindata->value());
   }
 
   $bio_samples_element = $dom->createElement('biological-samples');
   $root->appendChild($bio_samples_element);
   foreach ($wrapper->field_dce_bio_samples_management->getIterator() as $biosample) {
-    $to_attrib = $bio_samples_element->appendChild($dom->createElement('sample'));
-    $to_attrib->appendChild($dom->createTextNode($biosample->label()));
-    $to_attrib->setAttribute('code', $biosample->value());
+    $bio_samples_element->appendChild($dom->createElement('sample'))
+      ->appendChild($dom->createTextNode($biosample->label()))
+      ->setAttribute('code', $biosample->value());
   }
 
   $dce_samples_man_other_sp = $wrapper->field_dce_samples_man_other_sp->value();
   $parent_bio_samples_element = $bio_samples_element->appendChild($dom->createElement('other-biological-samples'));
-  $parent_bio_samples_element->appendChild($dom->createTextNode(isset($dce_samples_man_other_sp)?$wrapper->field_dce_samples_man_other_sp->value->value():''));
-  $parent_bio_samples_element->setAttribute('format', isset($dce_samples_man_other_sp) ? $wrapper->field_dce_samples_man_other_sp->format->value() : '');
+  $parent_bio_samples_element->appendChild($dom->createTextNode(empty($dce_samples_man_other_sp) ? $wrapper->field_dce_samples_man_other_sp->value->value() : ''));
+  $parent_bio_samples_element->setAttribute('format', empty($dce_samples_man_other_sp) ? $wrapper->field_dce_samples_man_other_sp->format->value() : '');
   $bio_samples_element->appendChild($dom->createElement('tissues-type'))
     ->appendChild($dom->createTextNode($wrapper->field_dce_tissues_sp->value()));
 
@@ -120,7 +119,7 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
   $dictionaries_element = $dom->createElement('data-dictionaries');
   $files_element->appendChild($dictionaries_element);
   foreach ($wrapper->field_dce_data_dictionaries->value() as $document) {
-    $dictionaries_detail_element = $dom->createElement('dictionarie');
+    $dictionaries_detail_element = $dom->createElement('dictionary');
     $dictionaries_element->appendChild($dictionaries_detail_element);
     $dictionaries_detail_element->appendChild($dom->createElement('filename'))
       ->appendChild($dom->createTextNode($document['filename']));

@@ -20,6 +20,7 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
     'format' => $xpath->query('/data-collection-event/description/format')->item(0)->nodeValue
   ));
 
+  //TODO remove this as it already done
   $origin_url = $current_document->getAttribute("mica_origin_url");
   $uuid = $current_document->getAttribute("uuid");
   //Can't set mica_origin_url using  wrapper  Error : .. 'Entity property mica_origin_url doesn't support writing
@@ -31,41 +32,32 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
     }
   }
 
-  $sources_data = $xpath->query('/data-collection-event/sources-of-data/source');
-  foreach ($sources_data as $key_data => $source_data_value) {
-    $wrapper->field_dce_data_sources[$key_data]->set($source_data_value->getAttribute("code"));
+  $data_source_elements = $xpath->query('/data-collection-event/sources-of-data/source');
+  foreach ($data_source_elements as $index => $data_source_element) {
+    $wrapper->field_dce_data_sources[$index]->set($data_source_element->getAttribute("code"));
   }
   $wrapper->field_dce_data_sources_sp->set($xpath->query('/data-collection-event/sources-of-data/other-data-source')
     ->item(0)->nodeValue);
 
-  $sources_admin_data = $xpath->query('/data-collection-event/administrative-database/source');
-  foreach ($sources_admin_data as $key_data => $source_admin_data_value) {
-    $wrapper->field_dce_data_sources_admin_db[$key_data]->set($source_admin_data_value->getAttribute("code"));
+  $db_source_elements = $xpath->query('/data-collection-event/administrative-database/source');
+  foreach ($db_source_elements as $index => $db_source_element) {
+    $wrapper->field_dce_data_sources_admin_db[$index]->set($db_source_element->getAttribute("code"));
   }
 
-  $bio_sample_data = $xpath->query('/data-collection-event/biological-samples/sample');
-  foreach ($bio_sample_data as $key_data => $sample_value) {
-    $wrapper->field_dce_bio_samples_management[$key_data]->set($sample_value->getAttribute("code"));
+  $sample_elements = $xpath->query('/data-collection-event/biological-samples/sample');
+  foreach ($sample_elements as $index => $sample_element) {
+    $wrapper->field_dce_bio_samples_management[$index]->set($sample_element->getAttribute("code"));
   }
   $wrapper->field_dce_samples_man_other_sp->set(array(
-    'value' => $xpath
-      ->query('/data-collection-event/biological-samples/other-biological-samples')
-      ->item(0)
-      ->nodeValue
+    'value' => $xpath->query('/data-collection-event/biological-samples/other-biological-samples')->item(0)->nodeValue
   ));
   $wrapper->field_dce_tissues_sp->set($xpath->query('/data-collection-event/biological-samples/tissues-type')
     ->item(0)->nodeValue);
-//Deal with attachment files
-  $questionnaires = $xpath->query('/data-collection-event/files/documents/document');
-  _mica_import_attach_file($questionnaires, 'field_dce_questionnaires', $path, $wrapper);
 
-  $sops = $xpath->query('/data-collection-event/files/standard-operating-procedures/sop');
-  _mica_import_attach_file($sops, 'field_dce_sops', $path, $wrapper);
-
-  $dictionaries = $xpath->query('/data-collection-event/files/data-dictionaries/dictionarie');
-  _mica_import_attach_file($dictionaries, 'field_dce_data_dictionaries', $path, $wrapper);
-
-  $other_documents = $xpath->query('/data-collection-event/files/other_docs/other_doc');
-  _mica_import_attach_file($other_documents, 'field_dce_others', $path, $wrapper);
+  //Deal with attachment files
+  _mica_import_attach_file($xpath->query('/data-collection-event/files/documents/document'), 'field_dce_questionnaires', $path, $wrapper);
+  _mica_import_attach_file($xpath->query('/data-collection-event/files/standard-operating-procedures/sop'), 'field_dce_sops', $path, $wrapper);
+  _mica_import_attach_file($xpath->query('/data-collection-event/files/data-dictionaries/dictionary'), 'field_dce_data_dictionaries', $path, $wrapper);
+  _mica_import_attach_file($xpath->query('/data-collection-event/files/other_docs/other_doc'), 'field_dce_others', $path, $wrapper);
 
 }

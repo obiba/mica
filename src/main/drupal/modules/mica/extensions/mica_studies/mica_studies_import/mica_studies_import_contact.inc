@@ -10,20 +10,20 @@ function _mica_studies_mica_import_set_contact_properties($dom, $wrapper) {
   $xpath = new DOMXPath($dom);
   $current_document = $dom->documentElement;
 
+  //TODO remove this as it already done
   $origin_url = $current_document->getAttribute("mica_origin_url");
   $uuid = $current_document->getAttribute("uuid");
   //Can't set mica_origin_url using  wrapper  Error : .. 'Entity property mica_origin_url doesn't support writing
   if (!empty($origin_url)) {
+    //TODO use load by UUID function
     $nodes = entity_load('node', FALSE, array('uuid' => $uuid));
     foreach ($nodes as $node) {
       $node->mica_origin_url = $origin_url;
+
+      //TODO I think we don't want to save here as we will save this node after
       node_save($node);
     }
   }
-
-  $wrapper->title->set($xpath->query('/contact/name/title')->item(0)->nodeValue . ' ' . $xpath
-    ->query('/contact/name/given')->item(0)->nodeValue . ' ' . $xpath->query('/contact/name/family')
-    ->item(0)->nodeValue);
   $wrapper->field_contact_name->title->set($xpath->query('/contact/name/title')->item(0)->nodeValue);
   $wrapper->field_contact_name->given->set($xpath->query('/contact/name/given')->item(0)->nodeValue);
   $wrapper->field_contact_name->family->set($xpath->query('/contact/name/family')->item(0)->nodeValue);
