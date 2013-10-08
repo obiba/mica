@@ -41,9 +41,9 @@ function _mica_studies_export_contact_xml($nid) {
   $institution_element->appendChild($dom->createElement('postal-code'))
     ->appendChild($dom->createTextNode($wrapper->field_postal_code->value()));
 
-  $to_attrib = $institution_element->appendChild($dom->createElement('country'));
-  $to_attrib->setAttribute('code', $wrapper->field_contact_country->value());
-  $to_attrib->appendChild($dom->createTextNode($wrapper->field_contact_country->label()));
+  $country_element = $institution_element->appendChild($dom->createElement('country'));
+  $country_element->setAttribute('code', $wrapper->field_contact_country->value());
+  $country_element->appendChild($dom->createTextNode($wrapper->field_contact_country->label()));
 
   $timestamp_element = $root->appendChild($dom->createElement('time-stamp'));
   $timestamp_element->appendChild($dom->createElement('date-created'))
