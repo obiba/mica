@@ -970,7 +970,6 @@ function mica_datasets_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'variable-search';
-
   $export['variable_search'] = $view;
 
   $view = new view();

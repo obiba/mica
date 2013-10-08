@@ -45,36 +45,38 @@ function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
       $node = $router_item['map']['1'];
       switch ($node->type) {
         case 'study':
-          if (node_access('create', 'population')) {
-            $links['add-population'] = array(
-              '#theme' => 'menu_local_action',
-              '#weight' => -30,
-              '#link' => array(
-                'title' => t('Add new Population'),
-                'href' => 'node/add/population',
-                'localized_options' => array(
-                  'query' => array(
-                    'study' => $node->nid,
-                    'destination' => 'node/' . $node->nid,
-                  )
+          if (node_access('update', $node)) {
+            if (node_access('create', 'population')) {
+              $links['add-population'] = array(
+                '#theme' => 'menu_local_action',
+                '#weight' => -30,
+                '#link' => array(
+                  'title' => t('Add new Population'),
+                  'href' => 'node/add/population',
+                  'localized_options' => array(
+                    'query' => array(
+                      'study' => $node->nid,
+                      'destination' => 'node/' . $node->nid,
+                    )
+                  ),
                 ),
-              ),
-            );
-          }
-          if (node_access('create', 'data_collection_event')) {
-            $links['add-data-collection-event'] = array(
-              '#theme' => 'menu_local_action',
-              '#link' => array(
-                'title' => t('Add new Data Collection Event'),
-                'href' => 'node/add/data-collection-event',
-                'localized_options' => array(
-                  'query' => array(
-                    'study' => $node->nid,
-                    'destination' => 'node/' . $node->nid,
-                  )
+              );
+            }
+            if (node_access('create', 'data_collection_event')) {
+              $links['add-data-collection-event'] = array(
+                '#theme' => 'menu_local_action',
+                '#link' => array(
+                  'title' => t('Add new Data Collection Event'),
+                  'href' => 'node/add/data-collection-event',
+                  'localized_options' => array(
+                    'query' => array(
+                      'study' => $node->nid,
+                      'destination' => 'node/' . $node->nid,
+                    )
+                  ),
                 ),
-              ),
-            );
+              );
+            }
           }
           break;
         case 'population':
@@ -888,10 +890,9 @@ function mica_studies_block_view($delta = '') {
   module_load_include('inc', 'mica_studies', 'mica_studies.blocks');
   $study = menu_get_object();
 
-  $draft = (strpos(current_path(), '/draft') > 0);
-  if ($draft) {
+  $show_draft = (strpos(current_path(), '/draft') > 0 || $study->status == NODE_NOT_PUBLISHED);
+  if ($show_draft) {
     $study = workbench_moderation_node_current_load($study);
-    drupal_set_message(t('Timeline and Populations blocks are not visible in draft mode.'), 'warning', FALSE);
   }
 
   if (empty($study)) {
@@ -912,10 +913,10 @@ function mica_studies_block_view($delta = '') {
     case 'study-supp-infos':
       return _mica_studies_block_study_supp_infos($study);
     case 'study-populations':
-      return $draft ? NULL : _mica_studies_block_study_populations($study);
+      return _mica_studies_block_study_populations($study, $show_draft);
     case 'study-timeline':
       module_load_include('inc', 'mica_studies', 'mica_studies.blocks.timeline');
-      return $draft ? NULL : _mica_studies_block_study_timeline($study);
+      return _mica_studies_block_study_timeline($study, $show_draft);
     case 'study-datasets':
       return _mica_studies_block_study_datasets($study);
     case 'study-authorization':
@@ -1065,7 +1066,8 @@ function mica_studies_node_reference_field_dce_population_potential_references($
 
 function _mica_studies_sort_populations($study) {
   $pop = array();
-  $wrapper = entity_metadata_wrapper('node', $study);
+
+  $wrapper = entity_metadata_wrapper('node', $study->nid);
   foreach ($wrapper->field_study_populations->getIterator() as $pop_wrapper) {
     $events = array();
     foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
@@ -1118,7 +1120,10 @@ function _mica_studies_sort_dce($x, $y) {
 }
 
 function _mica_studies_get_dce_property($dce, $property, $default) {
-  if (isset($dce[$property])) {
+  if (isset($dce['data']) && isset($dce['data'][$property])) {
+    return $dce['data'][$property];
+  }
+  else if (isset($dce[$property])) {
     return $dce[$property];
   }
   return $default;
