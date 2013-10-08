@@ -29,14 +29,14 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
 
   $investigators_element = $root->appendChild($dom->createElement('investigators'));
   foreach ($wrapper->field_investigators->getIterator() as $investigator_wrapper) {
-    $investigators_element->appendChild($dom->createElement('investigator'))
-      ->setAttribute('ref-uuid', $investigator_wrapper->uuid->value());
+    $element = $investigators_element->appendChild($dom->createElement('investigator'));
+    $element->setAttribute('ref-uuid', $investigator_wrapper->uuid->value());
   }
 
   $contacts_element = $root->appendChild($dom->createElement('contacts'));
   foreach ($wrapper->field_contacts_ref->getIterator() as $contact_wrapper) {
-    $contacts_element->appendChild($dom->createElement('contact'))
-      ->setAttribute('ref-uuid', $contact_wrapper->uuid->value());
+    $element = $contacts_element->appendChild($dom->createElement('contact'));
+    $element->setAttribute('ref-uuid', $contact_wrapper->uuid->value());
   }
 
   $content_element = $root->appendChild($dom->createElement('objectives'));
@@ -56,9 +56,9 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $design_element = $dom->createElement('designs');
   $study_design_element->appendChild($design_element);
   foreach ($wrapper->field_design->getIterator() as $design) {
-    $design_element->appendChild($dom->createElement('design'))
-      ->appendChild($dom->createTextNode($design->label()))
-      ->setAttribute('code', $design->value());
+    $element = $design_element->appendChild($dom->createElement('design'));
+    $element->appendChild($dom->createTextNode($design->label()));
+    $element->setAttribute('code', $design->value());
   }
 
   $design_oth_inf = $wrapper->field_design_other_sp->value();
@@ -75,9 +75,9 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $recruitment_target_element = $dom->createElement('recruitment-target');
   $study_design_element->appendChild($recruitment_target_element);
   foreach ($wrapper->field_recruitment->getIterator() as $target) {
-    $recruitment_target_element->appendChild($dom->createElement('target'))
-      ->appendChild($dom->createTextNode($target->label()))
-      ->setAttribute('code', $target->value());
+    $element = $recruitment_target_element->appendChild($dom->createElement('target'));
+    $element->appendChild($dom->createTextNode($target->label()));
+    $element->setAttribute('code', $target->value());
   }
   $recruitment_target_element->appendChild($dom->createElement('other'))
     ->appendChild($dom->createTextNode($wrapper->field_recruitment_other_sp->value()));
@@ -139,8 +139,8 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
 
   $poplutions_element = $root->appendChild($dom->createElement('populations'));
   foreach ($wrapper->field_study_populations->getIterator() as $population_wrapper) {
-    $poplutions_element->appendChild($dom->createElement('population'))
-      ->setAttribute('ref-uuid', $population_wrapper->uuid->value());
+    $element = $poplutions_element->appendChild($dom->createElement('population'));
+    $element->setAttribute('ref-uuid', $population_wrapper->uuid->value());
   }
 
   $files_element = $dom->createElement('files');

@@ -43,16 +43,16 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
 
   $populations_element = $root->appendChild($dom->createElement('populations'));
   foreach ($wrapper->field_dce_population->getIterator() as $pop_wrapper) {
-    $populations_element->appendChild($dom->createElement('population'))
-      ->setAttribute('ref-uuid', $pop_wrapper->uuid->value());
+    $element = $populations_element->appendChild($dom->createElement('population'));
+    $element->setAttribute('ref-uuid', $pop_wrapper->uuid->value());
   }
 
   $source_data_element = $dom->createElement('sources-of-data');
   $root->appendChild($source_data_element);
   foreach ($wrapper->field_dce_data_sources->getIterator() as $sources) {
-    $source_data_element->appendChild($dom->createElement('source'))
-      ->appendChild($dom->createTextNode($sources->label()))
-      ->setAttribute('code', $sources->value());
+    $element = $source_data_element->appendChild($dom->createElement('source'));
+    $element->appendChild($dom->createTextNode($sources->label()));
+    $element->setAttribute('code', $sources->value());
   }
   $source_data_element->appendChild($dom->createElement('other-data-source'))
     ->appendChild($dom->createTextNode($wrapper->field_dce_data_sources_sp->value()));
@@ -60,17 +60,17 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
   $admin_data_element = $dom->createElement('administrative-database');
   $root->appendChild($admin_data_element);
   foreach ($wrapper->field_dce_data_sources_admin_db->getIterator() as $admindata) {
-    $admin_data_element->appendChild($dom->createElement('source'))
-      ->appendChild($dom->createTextNode($admindata->label()))
-      ->setAttribute('code', $admindata->value());
+    $element = $admin_data_element->appendChild($dom->createElement('source'));
+    $element->appendChild($dom->createTextNode($admindata->label()));
+    $element->setAttribute('code', $admindata->value());
   }
 
   $bio_samples_element = $dom->createElement('biological-samples');
   $root->appendChild($bio_samples_element);
   foreach ($wrapper->field_dce_bio_samples_management->getIterator() as $biosample) {
-    $bio_samples_element->appendChild($dom->createElement('sample'))
-      ->appendChild($dom->createTextNode($biosample->label()))
-      ->setAttribute('code', $biosample->value());
+    $element = $bio_samples_element->appendChild($dom->createElement('sample'));
+    $element->appendChild($dom->createTextNode($biosample->label()));
+    $element->setAttribute('code', $biosample->value());
   }
 
   $dce_samples_man_other_sp = $wrapper->field_dce_samples_man_other_sp->value();
