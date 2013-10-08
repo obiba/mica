@@ -39,7 +39,10 @@ function mica_origin_url_entity_info_alter(&$info) {
  */
 function mica_origin_url_entity_property_info_alter(&$info) {
   foreach (entity_get_info() as $entity_type => $entity_info) {
-    if (isset($entity_info['mica_origin_url']) && $entity_info['mica_origin_url'] == TRUE && !empty($entity_info['entity keys']['mica_origin_url'])) {
+    if (isset($entity_info['mica_origin_url'])
+      && $entity_info['mica_origin_url'] == TRUE
+      && !empty($entity_info['entity keys']['mica_origin_url'])) {
+
       $info[$entity_type]['properties'][$entity_info['entity keys']['mica_origin_url']] = array(
         'label' => t('Mica Origin Url'),
         'type' => 'text',
@@ -50,12 +53,12 @@ function mica_origin_url_entity_property_info_alter(&$info) {
   }
 }
 
-/**
- * Implements of hook_entity_presave().
- */
-function mica_origin_url_entity_presave($entity, $entity_type) {
-  global $base_url;
-  if ($entity_type === 'node' && empty($entity->mica_origin_url)) {
-    //  $entity->mica_origin_url = $base_url;
-  }
-}
+///**
+// * Implements of hook_entity_presave().
+// */
+//function mica_origin_url_entity_presave($entity, $entity_type) {
+//  global $base_url;
+//  if ($entity_type === 'node' && empty($entity->mica_origin_url)) {
+//    //  $entity->mica_origin_url = $base_url;
+//  }
+//}

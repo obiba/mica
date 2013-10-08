@@ -8,20 +8,16 @@
 /**
  * Menu callback: options for mica_origin_url.
  */
-function mica_origin_url_admin_form() {
-  $form = array();
-
+function mica_origin_url_admin_form($form) {
   $form['sync'] = array(
     '#type' => 'fieldset',
     '#title' => t('Synchronization'),
   );
-
   $form['sync']['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Create missing Origin Urls'),
     '#submit' => array('mica_origin_url_admin_sync_submit'),
   );
-
   return system_settings_form($form);
 }
 
@@ -31,7 +27,7 @@ function mica_origin_url_admin_form() {
 
 function mica_origin_url_admin_sync_submit() {
   _mica_origin_url_sync_table();
-  drupal_set_message(t('Generated missing Origin Url(s).'));
+  drupal_set_message(t('Generated missing Mica Origin Url(s).'));
 }
 
 function _mica_origin_url_sync_table() {

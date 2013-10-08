@@ -15,10 +15,10 @@ function mica_origin_url_menu() {
     'description' => 'Configure Origin Url',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('mica_origin_url_admin_form'),
-    'access arguments' => array('administer origin_url'),
+    'access callback' => 'user_access',
+    'access arguments' => array(0),
     'type' => MENU_NORMAL_ITEM,
     'file' => 'mica_origin_url.admin.inc',
   );
-
   return $items;
 }
