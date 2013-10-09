@@ -63,14 +63,14 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
 
   $design_oth_inf = $wrapper->field_design_other_sp->value();
   $design_other_info = $design_element->appendChild($dom->createElement('other'));
-  $design_other_info->appendChild($dom->createTextNode(empty($design_oth_inf) ? $wrapper->field_design_other_sp->value->value() : ''));
-  $design_other_info->setAttribute('format', empty($design_oth_inf) ? $wrapper->field_design_other_sp->format->value() : '');
+  $design_other_info->appendChild($dom->createTextNode(isset($design_oth_inf) ? $wrapper->field_design_other_sp->value->value() : ''));
+  $design_other_info->setAttribute('format', isset($design_oth_inf) ? $wrapper->field_design_other_sp->format->value() : '');
 
   $general_info_follow_up = $study_design_element->appendChild($dom->createElement('general-information-follow-up'));
 
   $gen = $wrapper->field_info_design_follow_up->value();
-  $general_info_follow_up->appendChild($dom->createTextNode(empty($gen) ? $wrapper->field_info_design_follow_up->value->value() : ''));
-  $general_info_follow_up->setAttribute('format', empty($gen) ? $wrapper->field_info_design_follow_up->format->value() : '');
+  $general_info_follow_up->appendChild($dom->createTextNode(isset($gen) ? $wrapper->field_info_design_follow_up->value->value() : ''));
+  $general_info_follow_up->setAttribute('format', isset($gen) ? $wrapper->field_info_design_follow_up->format->value() : '');
 
   $recruitment_target_element = $dom->createElement('recruitment-target');
   $study_design_element->appendChild($recruitment_target_element);
@@ -84,8 +84,8 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
 
   $recrut_sup_info = $wrapper->field_recruitment_supp_info->value();
   $recrut_supplementary_information = $study_design_element->appendChild($dom->createElement('supplementary-information'));
-  $recrut_supplementary_information->appendChild($dom->createTextNode(empty($recrut_sup_info) ? $wrapper->field_recruitment_supp_info->value->value() : ''));
-  $recrut_supplementary_information->setAttribute('format', empty($sup_info) ? $wrapper->field_recruitment_supp_info->format->value() : '');
+  $recrut_supplementary_information->appendChild($dom->createTextNode(isset($recrut_sup_info) ? $wrapper->field_recruitment_supp_info->value->value() : ''));
+  $recrut_supplementary_information->setAttribute('format', isset($recrut_sup_info) ? $wrapper->field_recruitment_supp_info->format->value() : '');
 
   $nbr_participants_element = $dom->createElement('number-participant');
   $study_design_element->appendChild($nbr_participants_element);
@@ -104,8 +104,11 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $target_samples_element->appendChild($dom->createElement('no-limits'))
     ->appendChild($dom->createTextNode($wrapper->field_no_limits_samples->value() ? 'true' : 'false'));
 
-  $nbr_participants_element->appendChild($dom->createElement('supplementary-information'))
-    ->appendChild($dom->createTextNode($wrapper->field_target_nb_supp_info->value()));
+  $target_nb_supp_info = $wrapper->field_target_nb_supp_info->value();
+  $recrut_target_nb_supp_info = $nbr_participants_element->appendChild($dom->createElement('supplementary-information'));
+  $recrut_target_nb_supp_info->appendChild($dom->createTextNode(isset($target_nb_supp_info) ? $wrapper->field_target_nb_supp_info->value->value() : ''));
+  $recrut_target_nb_supp_info->setAttribute('format', isset($target_nb_supp_info) ? $wrapper->field_target_nb_supp_info->format->value() : '');
+
 
   $timeline_element = $dom->createElement('timeline');
   $study_design_element->appendChild($timeline_element);
@@ -122,10 +125,10 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $acess_element->appendChild($dom->createElement('other'))
     ->appendChild($dom->createTextNode($wrapper->field_access_other->value() ? 'true' : 'false'));
 
-  $other_info = $acess_element->appendChild($dom->createElement('other-info'));
   $oth_inf = $wrapper->field_access_other_sp->value();
-  $other_info->appendChild($dom->createTextNode(empty($oth_inf) ? $wrapper->field_access_other_sp->value->value() : ''));
-  $other_info->setAttribute('format', empty($oth_inf) ? $wrapper->field_access_other_sp->format->value() : '');
+  $other_info = $acess_element->appendChild($dom->createElement('other-info'));
+  $other_info->appendChild($dom->createTextNode(isset($oth_inf) ? $wrapper->field_access_other_sp->value->value() : ''));
+  $other_info->setAttribute('format', isset($oth_inf) ? $wrapper->field_access_other_sp->format->value() : '');
 
   $root->appendChild($dom->createElement('maker-paper'))
     ->appendChild($dom->createTextNode($wrapper->field_marker_paper->value()));
@@ -134,8 +137,8 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
 
   $parti_sup_info = $wrapper->field_supp_infos->value();
   $partic_supplementary_information = $root->appendChild($dom->createElement('supplementary-information'));
-  $partic_supplementary_information->appendChild($dom->createTextNode(empty($parti_sup_info) ? $wrapper->field_supp_infos->value->value() : ''));
-  $partic_supplementary_information->setAttribute('format', empty($parti_sup_info) ? $wrapper->field_supp_infos->format->value() : '');
+  $partic_supplementary_information->appendChild($dom->createTextNode(isset($parti_sup_info) ? $wrapper->field_supp_infos->value->value() : ''));
+  $partic_supplementary_information->setAttribute('format', isset($parti_sup_info) ? $wrapper->field_supp_infos->format->value() : '');
 
   $poplutions_element = $root->appendChild($dom->createElement('populations'));
   foreach ($wrapper->field_study_populations->getIterator() as $population_wrapper) {
