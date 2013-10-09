@@ -75,8 +75,8 @@ function _mica_studies_export_dce_xml($nid, $tmp_folder_name) {
 
   $dce_samples_man_other_sp = $wrapper->field_dce_samples_man_other_sp->value();
   $parent_bio_samples_element = $bio_samples_element->appendChild($dom->createElement('other-biological-samples'));
-  $parent_bio_samples_element->appendChild($dom->createTextNode(empty($dce_samples_man_other_sp) ? $wrapper->field_dce_samples_man_other_sp->value->value() : ''));
-  $parent_bio_samples_element->setAttribute('format', empty($dce_samples_man_other_sp) ? $wrapper->field_dce_samples_man_other_sp->format->value() : '');
+  $parent_bio_samples_element->appendChild($dom->createTextNode(isset($dce_samples_man_other_sp) ? $wrapper->field_dce_samples_man_other_sp->value->value() : ''));
+  $parent_bio_samples_element->setAttribute('format', isset($dce_samples_man_other_sp) ? $wrapper->field_dce_samples_man_other_sp->format->value() : '');
   $bio_samples_element->appendChild($dom->createElement('tissues-type'))
     ->appendChild($dom->createTextNode($wrapper->field_dce_tissues_sp->value()));
 
