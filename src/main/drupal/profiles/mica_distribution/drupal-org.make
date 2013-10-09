@@ -144,7 +144,7 @@ projects[menu_firstchild] = 1.1
 
 projects[menu_view_unpublished] = 1.0-beta3
 
-projects[mica] = 8.2-rc2
+projects[mica] = 8.2-rc3
 
 projects[module_filter] = 1.8
 
