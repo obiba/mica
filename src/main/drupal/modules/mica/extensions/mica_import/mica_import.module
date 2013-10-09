@@ -228,7 +228,6 @@ function _mica_import_import_node($xml_file, $path, &$context) {
   $origin_url = $current_document->getAttribute("mica_origin_url");
   $type_node = str_replace('-', '_', $type_node);
   // Node exist?  Update or create node
-  //TODO set uuid & mica_orgin_url here
   $wrapper = _mica_import_find_or_create_node($uuid, $type_node, $origin_url);
 
   //Set Nodes from XML,s files

@@ -20,27 +20,27 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
   ));
 
   $data_source_elements = $xpath->query('/data-collection-event/sources-of-data/source');
-  if(!empty($data_source_elements)){
-  foreach ($data_source_elements as $key_source_element => $data_source_element) {
-    $wrapper->field_dce_data_sources[$key_source_element]->set($data_source_element->getAttribute("code"));
-  }
+  if (!empty($data_source_elements)) {
+    foreach ($data_source_elements as $index => $data_source_element) {
+      $wrapper->field_dce_data_sources[$index]->set($data_source_element->getAttribute("code"));
+    }
   }
   $dce_data_sources_sp = $xpath->query('/data-collection-event/sources-of-data/other-data-source')->item(0)->nodeValue;
-  if(!empty($dce_data_sources_sp)){
-  $wrapper->field_dce_data_sources_sp->set($dce_data_sources_sp);
-}
+  if (!empty($dce_data_sources_sp)) {
+    $wrapper->field_dce_data_sources_sp->set($dce_data_sources_sp);
+  }
 
   $db_source_elements = $xpath->query('/data-collection-event/administrative-database/source');
-  if(!empty($db_source_elements)){
-  foreach ($db_source_elements as $index => $db_source_element) {
-    $wrapper->field_dce_data_sources_admin_db[$index]->set($db_source_element->getAttribute("code"));
-  }
+  if (!empty($db_source_elements)) {
+    foreach ($db_source_elements as $index => $db_source_element) {
+      $wrapper->field_dce_data_sources_admin_db[$index]->set($db_source_element->getAttribute("code"));
+    }
   }
   $sample_elements = $xpath->query('/data-collection-event/biological-samples/sample');
-  if(!empty($sample_elements)){
-  foreach ($sample_elements as $index => $sample_element) {
-    $wrapper->field_dce_bio_samples_management[$index]->set($sample_element->getAttribute("code"));
-  }
+  if (!empty($sample_elements)) {
+    foreach ($sample_elements as $index => $sample_element) {
+      $wrapper->field_dce_bio_samples_management[$index]->set($sample_element->getAttribute("code"));
+    }
   }
   $dom_dce_samples_man_other_sp = $xpath->query('/data-collection-event/biological-samples/other-biological-samples');
   $dce_samples_man_other_sp = $dom_dce_samples_man_other_sp->item(0)->nodeValue;
@@ -50,9 +50,9 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
       'format' => $dom_dce_samples_man_other_sp->item(0)->getAttribute('format')
     ));
   }
-$dce_tissues_sp =$xpath->query('/data-collection-event/biological-samples/tissues-type') ->item(0)->nodeValue;
-  if(!empty($dce_tissues_sp)){
-  $wrapper->field_dce_tissues_sp->set($dce_tissues_sp);
+  $dce_tissues_sp = $xpath->query('/data-collection-event/biological-samples/tissues-type')->item(0)->nodeValue;
+  if (!empty($dce_tissues_sp)) {
+    $wrapper->field_dce_tissues_sp->set($dce_tissues_sp);
   }
   //Deal with attachment files
   _mica_import_attach_file($xpath->query('/data-collection-event/files/documents/document'), 'field_dce_questionnaires', $path, $wrapper);

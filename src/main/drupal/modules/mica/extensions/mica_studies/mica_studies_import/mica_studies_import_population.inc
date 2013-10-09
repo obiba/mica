@@ -80,7 +80,6 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
     ));
   }
 
-
   $gender = $xpath->query('/population/characteristics-of-the-population/gender')->item(0)->nodeValue;
   if (!empty($gender)) {
     $wrapper->field_pop_gender->set($gender);
@@ -136,8 +135,8 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
   $selection_others_sp = $dom_selection_others_sp->item(0)->nodeValue;
   if (!empty($selection_others_sp)) {
     $wrapper->field_pop_selection_others_sp->set(array(
-        'value' => $selection_others_sp,
-       'format' => $dom_selection_others_sp->item(0)->getAttribute('format')
+      'value' => $selection_others_sp,
+      'format' => $dom_selection_others_sp->item(0)->getAttribute('format')
     ));
   }
 
@@ -149,7 +148,6 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
       'format' => $dom_pop_partcipant_sel_supp_in->item(0)->getAttribute('format')
     ));
   }
-
 
   $nb_participants = $xpath->query('/population/number-participant/target-number-of-participants/number')
     ->item(0)->nodeValue;

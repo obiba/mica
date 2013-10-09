@@ -109,7 +109,6 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $recrut_target_nb_supp_info->appendChild($dom->createTextNode(isset($target_nb_supp_info) ? $wrapper->field_target_nb_supp_info->value->value() : ''));
   $recrut_target_nb_supp_info->setAttribute('format', isset($target_nb_supp_info) ? $wrapper->field_target_nb_supp_info->format->value() : '');
 
-
   $timeline_element = $dom->createElement('timeline');
   $study_design_element->appendChild($timeline_element);
   $timeline_element->appendChild($dom->createElement('start-year'))

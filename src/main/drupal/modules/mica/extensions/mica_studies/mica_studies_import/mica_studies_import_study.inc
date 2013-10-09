@@ -14,7 +14,7 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
   $investigator_elements = $xpath->query('/study/investigators/investigator');
   if (!empty($investigator_elements)) {
     foreach ($investigator_elements as $index => $investigator_element) {
-      $investigator_wrapper = _mica_import_find_or_create_node($investigator_element->getAttribute("ref-uuid"), 'contact',$investigator_element->getAttribute("mica_origin_url"));
+      $investigator_wrapper = _mica_import_find_or_create_node($investigator_element->getAttribute("ref-uuid"), 'contact', $investigator_element->getAttribute("mica_origin_url"));
       $nid = $investigator_wrapper->nid->value();
       if (empty($nid)) {
         $investigator_wrapper->save();
@@ -26,7 +26,7 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
   $contact_elements = $xpath->query('/study/contacts/contact');
   if (!empty($contact_elements)) {
     foreach ($contact_elements as $index => $contact_element) {
-      $contact_wrapper = _mica_import_find_or_create_node($contact_element->getAttribute("ref-uuid"), 'contact',$contact_element->getAttribute("mica_origin_url"));
+      $contact_wrapper = _mica_import_find_or_create_node($contact_element->getAttribute("ref-uuid"), 'contact', $contact_element->getAttribute("mica_origin_url"));
       $nid = $contact_wrapper->nid->value();
       if (empty($nid)) {
         $contact_wrapper->save();
@@ -76,7 +76,8 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
   }
 
   if (!empty($target_other)) {
-    $wrapper->field_recruitment_other_sp->set($xpath->query('/study/study-designs/recruitment-target/other')->item(0)->nodeValue);
+    $wrapper->field_recruitment_other_sp->set($xpath->query('/study/study-designs/recruitment-target/other')
+      ->item(0)->nodeValue);
   }
 
   $dom_recruitment_supp_info = $xpath->query('/study/study-designs/supplementary-information');
@@ -164,7 +165,7 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
   $population_elements = $xpath->query('/study/populations/population');
   if (!empty($population_elements)) {
     foreach ($population_elements as $index => $population_element) {
-      $population_wrapper = _mica_import_find_or_create_node($population_element->getAttribute("ref-uuid"), 'population',$population_element->getAttribute("mica_origin_url"));
+      $population_wrapper = _mica_import_find_or_create_node($population_element->getAttribute("ref-uuid"), 'population', $population_element->getAttribute("mica_origin_url"));
       $nid = $population_wrapper->nid->value();
       if (empty($nid)) {
         $population_wrapper->save();
