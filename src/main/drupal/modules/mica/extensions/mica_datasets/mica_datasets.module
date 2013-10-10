@@ -228,6 +228,19 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
           ),
         );
       }
+
+      if (node_access('create', 'variable')) {
+        // import variables from CSV
+        $links['import-variable-xls'] = array(
+          '#theme' => 'menu_local_action',
+          '#weight' => 10,
+          '#link' => array(
+            'title' => t('Import variables from CSV'),
+            'href' => 'import/csv_variables',
+          ),
+        );
+      }
+
       break;
 
     case 'node/%/reordervariables':
@@ -285,6 +298,18 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
               )
             ),
           );
+
+          // import variables from CSV
+          if (node_access('create', 'variable')) {
+            $links['import-variable-xls'] = array(
+              '#theme' => 'menu_local_action',
+              '#weight' => 55,
+              '#link' => array(
+                'title' => t('Import variables from CSV'),
+                'href' => 'import/csv_variables',
+              ),
+            );
+          }
 
           // If at least one study as a connection to Opal
           $dataset_wrapper = entity_metadata_wrapper('node', $node->nid);

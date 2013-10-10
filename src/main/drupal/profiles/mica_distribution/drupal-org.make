@@ -43,7 +43,7 @@ projects[content_access] = 1.2-beta2
 
 projects[content_taxonomy] = 1.0-beta2
 
-projects[ctools][version] = 1.3
+projects[ctools] = 1.3
 
 projects[date] = 2.6
 
@@ -126,8 +126,6 @@ projects[lang_dropdown] = 1.5
 
 projects[languageicons] = 1.0
 
-;projects[less] = 3.0-beta1
-
 projects[libraries] = 2.1
 
 projects[link] = 1.1
@@ -144,7 +142,7 @@ projects[menu_firstchild] = 1.1
 
 projects[menu_view_unpublished] = 1.0-beta3
 
-projects[mica] = 8.2-rc3
+projects[mica] = 8.2-rc4
 
 projects[module_filter] = 1.8
 
@@ -195,7 +193,7 @@ projects[search_api_ranges][download][branch] = 7.x-1.x
 
 projects[search_api_solr] = 1.2
 
-projects[services][version] = 3.5
+projects[services] = 3.5
 
 projects[smtp] = 1.0-beta2
 
