@@ -176,11 +176,13 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
 
   _mica_import_attach_file($xpath->query('/study/files/documents/document'), 'field_documents', $path, $wrapper);
 
-  $logo_file_node = _mica_import_copy_file($xpath->query('/study/files/logo')->item(0), $path, 'field_logo');
-  $wrapper->field_logo->set(array(
-    'fid' => $logo_file_node->fid,
-    'description' => $logo_file_node->description,
-    'display' => $logo_file_node->display
-  ));
-
+  $logo_uuid = $xpath->query('/study/files/logo')->item(0)->getAttribute("ref-uuid");
+  if (!empty($logo_uuid)) {
+    $logo_file_node = _mica_import_copy_file($xpath->query('/study/files/logo')->item(0), $path, 'field_logo');
+    $wrapper->field_logo->set(array(
+      'fid' => $logo_file_node->fid,
+      'description' => $logo_file_node->description,
+      'display' => $logo_file_node->display
+    ));
+  }
 }

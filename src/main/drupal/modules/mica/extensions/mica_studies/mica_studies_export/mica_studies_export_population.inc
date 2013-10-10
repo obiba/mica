@@ -17,14 +17,14 @@ function _mica_studies_export_population_xml($nid) {
   $root->appendChild($dom->createElement('title'))->appendChild($dom->createTextNode($wrapper->title_field->value()));
 
   $root->appendChild($dom->createElement('study'))->setAttribute('ref-uuid', $wrapper->field_pop_study->uuid->value());
-
+  $population_body = $wrapper->body->value();
   $gen_info_element = $root->appendChild($dom->createElement('general-information'));
   $gen_info_element->appendChild($dom->createElement('body'))
-    ->appendChild($dom->createTextNode($wrapper->body->value->value()));
+    ->appendChild($dom->createTextNode(isset($population_body) ? $wrapper->body->value->value() : ''));
   $gen_info_element->appendChild($dom->createElement('summary'))
-    ->appendChild($dom->createTextNode($wrapper->body->summary->value()));
+    ->appendChild($dom->createTextNode(isset($population_body) ? $wrapper->body->summary->value() : ''));
   $gen_info_element->appendChild($dom->createElement('format'))
-    ->appendChild($dom->createTextNode($wrapper->body->format->value()));
+    ->appendChild($dom->createTextNode(isset($population_body) ? $wrapper->body->format->value() : ''));
 
   $gen_info_dce = $root->appendChild($dom->createElement('data-collection-events'));
   foreach ($wrapper->field_pop_dce->getIterator() as $dce_wrapper) {

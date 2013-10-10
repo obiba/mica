@@ -7,12 +7,26 @@
 function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
   // xpath with contact/name/title
   $xpath = new DOMXPath($dom);
+  $wrapper->title_field->set($xpath->query('/data-collection-event/title')->item(0)->nodeValue);
   $wrapper->title->set($xpath->query('/data-collection-event/title')->item(0)->nodeValue);
-  $wrapper->field_dce_start_year->set($xpath->query('/data-collection-event/start-year')->item(0)->nodeValue);
-  $wrapper->field_dce_start_month->set($xpath->query('/data-collection-event/start-month')->item(0)->nodeValue);
-  $wrapper->field_dce_end_year->set($xpath->query('/data-collection-event/end-year')->item(0)->nodeValue);
-  $wrapper->field_dce_end_month->set($xpath->query('/data-collection-event/end-month')->item(0)->nodeValue);
 
+  $start_year = $xpath->query('/data-collection-event/start-year')->item(0)->nodeValue;
+  if (!empty($start_year)) {
+    $wrapper->field_dce_start_year->set($start_year);
+  }
+  $start_month = $xpath->query('/data-collection-event/start-month')->item(0)->nodeValue;
+  if (!empty($start_month)) {
+    $wrapper->field_dce_start_month->set($start_month);
+  }
+
+  $end_year = $xpath->query('/data-collection-event/end-year')->item(0)->nodeValue;
+  if (!empty($end_year)) {
+    $wrapper->field_dce_end_year->set($end_year);
+  }
+  $end_month = $xpath->query('/data-collection-event/end-month')->item(0)->nodeValue;
+  if (!empty($end_month)) {
+    $wrapper->field_dce_end_month->set($end_month);
+  }
   $wrapper->body->set(array(
     'value' => $xpath->query('/data-collection-event/description/body')->item(0)->nodeValue,
     'summary' => $xpath->query('/data-collection-event/description/summary')->item(0)->nodeValue,
