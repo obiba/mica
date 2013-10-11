@@ -241,6 +241,7 @@ function mica_import_finished_batch() {
 }
 
 function _mica_import_attach_file($document_elements, $field_name, $path, $wrapper) {
+  $wrapper->{$field_name}->set();
   foreach ($document_elements as $index => $document_element) {
     $file_node = _mica_import_copy_file($document_element, $path, $field_name);
     $wrapper->{$field_name}[$index]->set(array(
