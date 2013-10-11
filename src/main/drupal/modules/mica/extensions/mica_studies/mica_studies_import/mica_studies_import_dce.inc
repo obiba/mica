@@ -14,8 +14,12 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
     $wrapper->title->set($xpath->query('/data-collection-event/title')->item(0)->nodeValue);
   }
   else {
-    $wrapper->title->set();
-    $wrapper->title_field->set();
+    try {
+      $wrapper->title->set();
+      $wrapper->title_field->set();
+    } catch (Exception $e) {
+      throw new Exception(t('DCE : Field title required'));
+    }
   }
 
   $start_year = $xpath->query('/data-collection-event/start-year')->item(0)->nodeValue;
@@ -23,6 +27,7 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
   if (!empty($start_year)) {
     $wrapper->field_dce_start_year->set($start_year);
   }
+
   $start_month = $xpath->query('/data-collection-event/start-month')->item(0)->nodeValue;
   $wrapper->field_dce_start_month->set();
   if (!empty($start_month)) {
@@ -34,11 +39,13 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
   if (!empty($end_year)) {
     $wrapper->field_dce_end_year->set($end_year);
   }
+
   $end_month = $xpath->query('/data-collection-event/end-month')->item(0)->nodeValue;
   $wrapper->field_dce_end_month->set();
   if (!empty($end_month)) {
     $wrapper->field_dce_end_month->set($end_month);
   }
+
   if (!empty($xpath->query('/data-collection-event/description/body')->item(0)->nodeValue)) {
     $wrapper->body->set(array(
       'value' => $xpath->query('/data-collection-event/description/body')->item(0)->nodeValue,
@@ -47,7 +54,13 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
     ));
   }
   else {
-    $wrapper->body->set();
+    try {
+      $wrapper->body->set();
+    } catch (Exception $e) {
+      throw new Exception(t('DCE : Field Body description required'));
+
+    }
+
   }
 
   $data_source_elements = $xpath->query('/data-collection-event/sources-of-data/source');
@@ -57,6 +70,7 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
       $wrapper->field_dce_data_sources[$index]->set($data_source_element->getAttribute("code"));
     }
   }
+
   $dce_data_sources_sp = $xpath->query('/data-collection-event/sources-of-data/other-data-source')->item(0)->nodeValue;
   $wrapper->field_dce_data_sources_sp->set();
   if (!empty($dce_data_sources_sp)) {
@@ -70,6 +84,7 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
       $wrapper->field_dce_data_sources_admin_db[$index]->set($db_source_element->getAttribute("code"));
     }
   }
+
   $sample_elements = $xpath->query('/data-collection-event/biological-samples/sample');
   $wrapper->field_dce_bio_samples_management->set();
   if (!empty($sample_elements)) {
@@ -77,6 +92,7 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
       $wrapper->field_dce_bio_samples_management[$index]->set($sample_element->getAttribute("code"));
     }
   }
+
   $dom_dce_samples_man_other_sp = $xpath->query('/data-collection-event/biological-samples/other-biological-samples');
   $dce_samples_man_other_sp = $dom_dce_samples_man_other_sp->item(0)->nodeValue;
   $wrapper->field_dce_samples_man_other_sp->set();
@@ -86,6 +102,7 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
       'format' => $dom_dce_samples_man_other_sp->item(0)->getAttribute('format')
     ));
   }
+
   $dce_tissues_sp = $xpath->query('/data-collection-event/biological-samples/tissues-type')->item(0)->nodeValue;
   $wrapper->field_dce_tissues_sp->set();
   if (!empty($dce_tissues_sp)) {

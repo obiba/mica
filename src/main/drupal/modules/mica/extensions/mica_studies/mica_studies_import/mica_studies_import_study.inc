@@ -13,8 +13,12 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
     $wrapper->title_field->set($xpath->query('/study/title')->item(0)->nodeValue);
   }
   else {
-    $wrapper->title->set();
-    $wrapper->title_field->set();
+    try {
+      $wrapper->title->set();
+      $wrapper->title_field->set();
+    } catch (Exception $e) {
+      throw new Exception(t('Study : Field title required'));
+    }
   }
 
   $wrapper->field_acroym->set();
@@ -55,7 +59,11 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
     ));
   }
   else {
-    $wrapper->body->set();
+    try {
+      $wrapper->body->set();
+    } catch (Exception $e) {
+      throw new Exception(t('Study  : Field Body description required'));
+    }
   }
 
   $wrapper->field_website->set();

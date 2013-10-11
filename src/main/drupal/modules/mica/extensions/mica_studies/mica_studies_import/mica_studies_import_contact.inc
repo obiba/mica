@@ -25,7 +25,11 @@ function _mica_studies_mica_import_set_contact_properties($dom, $wrapper) {
     $wrapper->title->set($xpath->query('/contact/title')->item(0)->nodeValue);
   }
   else {
-    $wrapper->title->set();
+    try {
+      $wrapper->title->set();
+    } catch (Exception $e) {
+      throw new Exception(t('Contact : Field title required'));
+    }
   }
 
   $wrapper->field_contact_email->set();

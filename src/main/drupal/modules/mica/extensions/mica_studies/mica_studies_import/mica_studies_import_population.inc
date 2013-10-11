@@ -14,8 +14,13 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
     $wrapper->title_field->set($xpath->query('/population/title')->item(0)->nodeValue);
   }
   else {
-    $wrapper->title->set();
-    $wrapper->title_field->set();
+    try {
+      $wrapper->title->set();
+      $wrapper->title_field->set();
+    } catch (Exception $e) {
+      throw new Exception(t('Population : Field title required'));
+    }
+
   }
 
   if (!empty($xpath->query('/population/general-information/body')->item(0)->nodeValue)) {
@@ -26,7 +31,11 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
     ));
   }
   else {
-    $wrapper->body->set();
+    try {
+      $wrapper->body->set();
+    } catch (Exception $e) {
+      throw new Exception(t('Population : Field Body description required'));
+    }
   }
 
   $dce_elements = $xpath->query('/population/data-collection-events/data-collection-event');
