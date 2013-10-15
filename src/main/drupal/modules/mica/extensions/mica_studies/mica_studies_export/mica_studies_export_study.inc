@@ -26,7 +26,7 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $root->appendChild($dom->createElement('title'))->appendChild($dom->createTextNode($wrapper->title_field->value()));
   $study_acronym = $wrapper->field_acroym->value();
   $root->appendChild($dom->createElement('acronym'))
-    ->appendChild($dom->createTextNode(isset($study_acronym) ? $wrapper->field_acroym->value() : NULL));
+    ->appendChild($dom->createTextNode(isset($study_acronym) ? $wrapper->field_acroym->value() : ''));
 
   $investigators_element = $root->appendChild($dom->createElement('investigators'));
   foreach ($wrapper->field_investigators->getIterator() as $investigator_wrapper) {
@@ -47,15 +47,15 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
   $content_element = $root->appendChild($dom->createElement('objectives'));
   $study_body = $wrapper->body->value();
   $content_element->appendChild($dom->createElement('body'))
-    ->appendChild($dom->createTextNode(isset($study_body) ? $wrapper->body->value->value() : NULL));
+    ->appendChild($dom->createTextNode(isset($study_body) ? $wrapper->body->value->value() : ''));
   $content_element->appendChild($dom->createElement('summary'))
-    ->appendChild($dom->createTextNode(isset($study_body) ? $wrapper->body->summary->value() : NULL));
+    ->appendChild($dom->createTextNode(isset($study_body) ? $wrapper->body->summary->value() : ''));
   $content_element->appendChild($dom->createElement('format'))
     ->appendChild($dom->createTextNode(isset($study_body) ? $wrapper->body->format->value() : 'filtered_html'));
 
   $website_element = $dom->createElement('web-site');
   $root->appendChild($website_element);
-  $website_element->appendChild($dom->createTextNode($wrapper->field_website->value() ? $wrapper->field_website->url->value() : NULL));
+  $website_element->appendChild($dom->createTextNode($wrapper->field_website->value() ? $wrapper->field_website->url->value() : ''));
   $study_design_element = $dom->createElement('study-designs');
   $root->appendChild($study_design_element);
 

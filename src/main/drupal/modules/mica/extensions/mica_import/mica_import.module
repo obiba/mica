@@ -161,14 +161,11 @@ function _mica_import_unzip_file($file) {
 
 function _mica_import_batch_import($path) {
   $operations = array();
-  $scanned_directory = array_diff(scandir($path), array('..', '.', '.dtd'));
+  $scanned_directory = array_diff(scandir($path), array('..', '.'));
   foreach ($scanned_directory as $file) {
     $file_xml = $path . DIRECTORY_SEPARATOR . $file;
     if (is_file($file_xml)) {
-      $file_info = pathinfo($file_xml);
-      if ($file_info['extension'] != 'dtd') {
         $operations[] = array('_mica_import_import_node', array($file_xml, $path));
-      }
     }
   }
   $operations[] = array('_mica_import_delete_tmp_folder');
