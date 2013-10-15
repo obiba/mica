@@ -75,7 +75,8 @@ function mica_studies_export_mica_export_to_xml($node, $temp_folder_path) {
   }
 }
 
-function mica_studies_export_mica_export_generate_dtd_xml() {
-  return _mica_studies_export_dtd_validator();
+function mica_studies_export_mica_export_generate_dtd_xml($tmp_folder) {
+  $dtd = _mica_studies_export_dtd_validator();
+  file_unmanaged_save_data($dtd, "temporary://$tmp_folder/dtd_study_validator.dtd", FILE_EXISTS_REPLACE);
 }
 

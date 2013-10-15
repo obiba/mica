@@ -31,20 +31,20 @@ function _mica_studies_export_dtd_validator() {
                 code (case_control|case_only|clinical_trial|cohort_study|cross_sectional|other) #IMPLIED>
         <!ELEMENT other_design (#PCDATA)>
         <!ATTLIST other_design
-                format (full_html|bootstrap|plain_text|php_code|filtered_html) "full_html">
+                format (full_html|bootstrap|plain_text|php_code|filtered_html) #IMPLIED>
         <!ELEMENT general-information-follow-up (#PCDATA)>
         <!ATTLIST general-information-follow-up
-                format (full_html|bootstrap|plain_text|php_code|filtered_html) "full_html">
+                format (full_html|bootstrap|plain_text|php_code|filtered_html) #IMPLIED>
         <!ELEMENT recruitment-target (target*|other_target)*>
         <!ELEMENT target (#PCDATA)>
         <!ATTLIST target
                 code (individuals|families|other) #REQUIRED>
         <!ELEMENT other_target (#PCDATA)>
         <!ATTLIST other_target
-                format (full_html|bootstrap|plain_text|php_code|filtered_html) "full_html">
+                format (full_html|bootstrap|plain_text|php_code|filtered_html) #IMPLIED>
         <!ELEMENT supplementary-information (#PCDATA)>
         <!ATTLIST supplementary-information
-                format (full_html|bootstrap|plain_text|php_code|filtered_html) "full_html">
+                format (full_html|bootstrap|plain_text|php_code|filtered_html) #IMPLIED>
         <!ELEMENT number-participant (target-number-of-participants,target-number-of-participants-with-biosamples,supplementary-information)>
         <!ELEMENT target-number-of-participants (number,no-limits)>
         <!ELEMENT number (#PCDATA)>
@@ -59,7 +59,7 @@ function _mica_studies_export_dtd_validator() {
         <!ELEMENT other_access (#PCDATA)>
         <!ELEMENT other-info (#PCDATA)>
         <!ATTLIST other-info
-                format (full_html|bootstrap|plain_text|php_code|filtered_html) "full_html">
+                format (full_html|bootstrap|plain_text|php_code|filtered_html) #IMPLIED>
         <!ELEMENT maker-paper (#PCDATA)>
         <!ELEMENT pubmed-id (#PCDATA)>
         <!ELEMENT populations (population*)>
