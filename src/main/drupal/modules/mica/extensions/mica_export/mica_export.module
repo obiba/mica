@@ -58,6 +58,9 @@ function mica_export_batch_export($node) {
     $operations[] = array('_mica_export_generate_xml', array($nid));
   }
 
+  //Generate dtd file to validate xml
+  $operations[] = array('_mica_export_generate_dtd', array());
+
   // Archive the files
   $operations[] = array('_mica_export_create_zip_file', array());
   //  Delete tmp folder
@@ -111,7 +114,20 @@ function _mica_export_generate_xml($nid, &$context) {
     file_unmanaged_save_data($xml, "temporary://$tmp_folder_name/$type-$uuid.xml", FILE_EXISTS_REPLACE);
     //sand some parameters to next bach
     $context['results']['tmp_folder_name'] = $tmp_folder_name;
+    $context['results']['type'] = $type;
   }
+}
+
+/*
+ *Generate dtd file to validate xml
+ */
+function _mica_export_generate_dtd(&$context) {
+  $tmp_folder_name = $context['results']['tmp_folder_name'];
+  // $type = $context['results']['type'];
+  $dtd = module_invoke_all("mica_export_generate_dtd_xml");
+  file_unmanaged_save_data($dtd, "temporary://$tmp_folder_name/dtd_studies_validator.dtd", FILE_EXISTS_REPLACE);
+  //sand some parameters to next bach
+  $context['results']['tmp_folder_name'] = $tmp_folder_name;
 }
 
 /**

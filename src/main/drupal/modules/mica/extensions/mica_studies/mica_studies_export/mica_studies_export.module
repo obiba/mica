@@ -8,6 +8,7 @@ include_once('mica_studies_export_contact.inc');
 include_once('mica_studies_export_study.inc');
 include_once('mica_studies_export_population.inc');
 include_once('mica_studies_export_dce.inc');
+include_once('mica_studies_export_dtd_validator.inc');
 
 /**
  * Implements hook_menu_local_tasks_alter().
@@ -72,5 +73,9 @@ function mica_studies_export_mica_export_to_xml($node, $temp_folder_path) {
     default :
       return NULL;
   }
+}
+
+function mica_studies_export_mica_export_generate_dtd_xml() {
+  return _mica_studies_export_dtd_validator();
 }
 
