@@ -109,7 +109,6 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
     $wrapper->field_dce_tissues_sp->set($dce_tissues_sp);
   }
   //Deal with attachment files
-
   _mica_import_attach_file($xpath->query('/data-collection-event/files/documents/document'), 'field_dce_questionnaires', $path, $wrapper);
   _mica_import_attach_file($xpath->query('/data-collection-event/files/standard-operating-procedures/sop'), 'field_dce_sops', $path, $wrapper);
   _mica_import_attach_file($xpath->query('/data-collection-event/files/data-dictionaries/dictionary'), 'field_dce_data_dictionaries', $path, $wrapper);
