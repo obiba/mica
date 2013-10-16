@@ -30,18 +30,18 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
 
   $investigators_element = $root->appendChild($dom->createElement('investigators'));
   foreach ($wrapper->field_investigators->getIterator() as $investigator_wrapper) {
-       if(isset($investigator_wrapper)){
-    $element = $investigators_element->appendChild($dom->createElement('investigator'));
-    $element->setAttribute('ref-uuid', $investigator_wrapper->uuid->value());
-      }
+    if (isset($investigator_wrapper)) {
+      $element = $investigators_element->appendChild($dom->createElement('investigator'));
+      $element->setAttribute('ref-uuid', $investigator_wrapper->uuid->value());
+    }
   }
 
   $contacts_element = $root->appendChild($dom->createElement('contacts'));
   foreach ($wrapper->field_contacts_ref->getIterator() as $contact_wrapper) {
-      if(isset($contact_wrapper)){
-    $element = $contacts_element->appendChild($dom->createElement('contact'));
-    $element->setAttribute('ref-uuid', $contact_wrapper->uuid->value());
-       }
+    if (isset($contact_wrapper)) {
+      $element = $contacts_element->appendChild($dom->createElement('contact'));
+      $element->setAttribute('ref-uuid', $contact_wrapper->uuid->value());
+    }
   }
 
   $content_element = $root->appendChild($dom->createElement('objectives'));

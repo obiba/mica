@@ -165,7 +165,7 @@ function _mica_import_batch_import($path) {
   foreach ($scanned_directory as $file) {
     $file_xml = $path . DIRECTORY_SEPARATOR . $file;
     if (is_file($file_xml)) {
-        $operations[] = array('_mica_import_import_node', array($file_xml, $path));
+      $operations[] = array('_mica_import_import_node', array($file_xml, $path));
     }
   }
   $operations[] = array('_mica_import_delete_tmp_folder');
