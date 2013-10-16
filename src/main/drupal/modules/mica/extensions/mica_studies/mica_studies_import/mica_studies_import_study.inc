@@ -21,8 +21,11 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
     }
   }
 
+  $acronym = $xpath->query('/study/acronym')->item(0)->nodeValue;
   $wrapper->field_acroym->set();
-  $wrapper->field_acroym->set($xpath->query('/study/acronym')->item(0)->nodeValue);
+  if (!empty($acronym)) {
+    $wrapper->field_acroym->set($acronym);
+  }
 
   $investigator_elements = $xpath->query('/study/investigators/investigator');
   //Destroy all existing fields entries
@@ -66,8 +69,11 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
     }
   }
 
-  $wrapper->field_website->set();
-  $wrapper->field_website->set(array('url' => $xpath->query('/study/web-site')->item(0)->nodeValue));
+  $web_site = $xpath->query('/study/web-site')->item(0)->nodeValue;
+  if (!empty($web_site)) {
+    $wrapper->field_website->set();
+    $wrapper->field_website->set(array('url' => $web_site));
+  }
 
   $design_elements = $xpath->query('/study/study-designs/designs/design');
   $wrapper->field_design->set();
@@ -77,7 +83,7 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
     }
   }
 
-  $dom_design_other_sp = $xpath->query('/study/study-designs/designs/other');
+  $dom_design_other_sp = $xpath->query('/study/study-designs/designs/other_design');
   $design_other_sp = $dom_design_other_sp->item(0)->nodeValue;
   $wrapper->field_design_other_sp->set();
   if (!empty($design_other_sp)) {
@@ -105,10 +111,10 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
     }
   }
 
+  $target_other = $xpath->query('/study/study-designs/recruitment-target/other_target')->item(0)->nodeValue;
   $wrapper->field_recruitment_other_sp->set();
   if (!empty($target_other)) {
-    $wrapper->field_recruitment_other_sp->set($xpath->query('/study/study-designs/recruitment-target/other')
-      ->item(0)->nodeValue);
+    $wrapper->field_recruitment_other_sp->set($target_other);
   }
 
   $dom_recruitment_supp_info = $xpath->query('/study/study-designs/supplementary-information');
@@ -121,8 +127,8 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
     ));
   }
 
-  $number_participants = $xpath
-    ->query('/study/study-designs/number-participant/target-number-of-participants/number')->item(0)->nodeValue;
+  $number_participants = $xpath->query('/study/study-designs/number-participant/target-number-of-participants/number')
+    ->item(0)->nodeValue;
   $wrapper->field_target_number_participants->set();
   if (!empty($number_participants)) {
     $wrapper->field_target_number_participants->set($number_participants);
@@ -168,7 +174,7 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
   if (!empty($access_biosamples)) {
     $wrapper->field_access_biosamples->set($access_biosamples);
   }
-  $access_other = $xpath->query('/study/access/other')->item(0)->nodeValue;
+  $access_other = $xpath->query('/study/access/other_access')->item(0)->nodeValue;
   $wrapper->field_access_other->set();
   if (!empty($access_other)) {
     $wrapper->field_access_other->set($access_other);
@@ -185,10 +191,14 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
   }
 
   $marker_paper = $xpath->query('/study/maker-paper')->item(0)->nodeValue;
-  $wrapper->field_marker_paper->set($marker_paper);
+  if (!empty($marker_paper)) {
+    $wrapper->field_marker_paper->set($marker_paper);
+  }
 
   $pubmedid = $xpath->query('/study/pubmed-id')->item(0)->nodeValue;
-  $wrapper->field_pubmedid->set($pubmedid);
+  if (!empty($pubmedid)) {
+    $wrapper->field_pubmedid->set($pubmedid);
+  }
 
   $dom_supp_infos = $xpath->query('/study/supplementary-information');
   $supp_infos = $dom_supp_infos->item(0)->nodeValue;
