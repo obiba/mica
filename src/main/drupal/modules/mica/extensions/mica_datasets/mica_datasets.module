@@ -1250,8 +1250,8 @@ function mica_datasets_node_view($node, $view_mode) {
       // generate specific breadcrumbs for variable pages
       $breadcrumbs = array();
       $breadcrumbs[] = l('Home', '');
-      foreach ($breadcrumb as $bread_val) {
-        $breadcrumbs[] = l($bread_val['link_title'], $bread_val['link_path']);
+      foreach($breadcrumb as $bread_val){
+       $breadcrumbs[] = l($bread_val['link_title'], $bread_val['link_path']);
       }
       drupal_set_breadcrumb($breadcrumbs);
 
