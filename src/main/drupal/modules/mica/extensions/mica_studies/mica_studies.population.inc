@@ -293,11 +293,10 @@ function _mica_studies_population_delete($population) {
   $population_wrapper = entity_metadata_wrapper('node', $population->nid);
   watchdog('mica', 'Delete cascade for %population', array('%population' => $population_wrapper->title->value()), WATCHDOG_DEBUG);
   foreach ($population_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
-    $dce_nid = $dce_wrapper->nid->value();
-    $populations_wrapper = entity_metadata_wrapper('node', $dce_nid);
-    $population_attached = count($populations_wrapper->field_dce_population->value());
-    if ($population_attached < 1) {
-      watchdog('mica', 'Delete Population %pop', array('%pop' => $dce_wrapper->title->value()), WATCHDOG_DEBUG);
+    $nb_dce_pops = count($dce_wrapper->field_dce_population->value());
+    // population is already deleted
+    if ($nb_dce_pops === 0) {
+      watchdog('mica', 'Delete cascade DCE %dce', array('%dce' => $dce_wrapper->title->value()), WATCHDOG_DEBUG);
       $dce_wrapper->delete();
     }
   }
