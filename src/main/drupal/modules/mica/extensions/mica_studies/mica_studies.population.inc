@@ -285,3 +285,21 @@ function _mica_studies_population_view_nb(&$node, $field_nb, $field_no_limit) {
     $node->content[$field_nb]['#access'] = FALSE;
   }
 }
+
+/**
+ * Delete all populations and DCE associated with the study
+ */
+function _mica_studies_population_delete($population) {
+  $population_wrapper = entity_metadata_wrapper('node', $population->nid);
+  watchdog('mica', 'Delete cascade for %population', array('%population' => $population_wrapper->title->value()), WATCHDOG_DEBUG);
+  foreach ($population_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
+    $dce_nid = $dce_wrapper->nid->value();
+    $populations_wrapper = entity_metadata_wrapper('node', $dce_nid);
+    $population_attached = count($populations_wrapper->field_dce_population->value());
+    if ($population_attached < 1) {
+      watchdog('mica', 'Delete Population %pop', array('%pop' => $dce_wrapper->title->value()), WATCHDOG_DEBUG);
+      $dce_wrapper->delete();
+    }
+
+  }
+}
