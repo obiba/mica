@@ -300,6 +300,5 @@ function _mica_studies_population_delete($population) {
       watchdog('mica', 'Delete Population %pop', array('%pop' => $dce_wrapper->title->value()), WATCHDOG_DEBUG);
       $dce_wrapper->delete();
     }
-
   }
 }
