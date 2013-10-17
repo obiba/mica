@@ -118,7 +118,9 @@ function _mica_export_generate_xml($nid, &$context) {
  * Copy attachment files of each node
  */
 function mica_export_copy_attachment_file($documents, $tmp_folder_name) {
-  if(empty($documents))  return;
+  if (empty($documents)) {
+    return;
+  }
   foreach ($documents as $document) {
     $path = "temporary://$tmp_folder_name/attachment";
     if (!is_dir($path)) {

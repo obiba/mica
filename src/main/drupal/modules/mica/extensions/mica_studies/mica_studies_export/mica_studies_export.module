@@ -73,4 +73,3 @@ function mica_studies_export_mica_export_to_xml($node, $temp_folder_path) {
       return NULL;
   }
 }
-

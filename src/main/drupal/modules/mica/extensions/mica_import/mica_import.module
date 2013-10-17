@@ -179,7 +179,7 @@ function _mica_import_batch_import($path) {
   batch_process('/');
 }
 
-function _mica_import_find_or_create_node($uuid, $type) {
+function _mica_import_find_or_create_node($uuid, $type, $origin_url) {
 
   if (!user_access("import $type content")) {
     watchdog('mica', 'No permission to import %type content', array('%type' => $type), WATCHDOG_ERROR);
@@ -206,7 +206,8 @@ function _mica_import_find_or_create_node($uuid, $type) {
     'type' => $type,
     'uid' => $user->uid,
     'status' => NODE_NOT_PUBLISHED,
-    'uuid' => $uuid
+    'uuid' => $uuid,
+    'mica_origin_url' => $origin_url
   ));
   watchdog('mica', 'Create new %type node with UUID %uuid', array(
     '%uuid' => $uuid,
@@ -224,10 +225,10 @@ function _mica_import_import_node($xml_file, $path, &$context) {
   $current_document = $dom->documentElement;
   $type_node = $current_document->nodeName;
   $uuid = $current_document->getAttribute("uuid");
+  $origin_url = $current_document->getAttribute("mica_origin_url");
   $type_node = str_replace('-', '_', $type_node);
   // Node exist?  Update or create node
-  //TODO set uuid & mica_orgin_url here
-  $wrapper = _mica_import_find_or_create_node($uuid, $type_node);
+  $wrapper = _mica_import_find_or_create_node($uuid, $type_node, $origin_url);
 
   //Set Nodes from XML,s files
   module_invoke_all('mica_import_set_node_properties', $dom, $wrapper, $path);
@@ -240,6 +241,7 @@ function mica_import_finished_batch() {
 }
 
 function _mica_import_attach_file($document_elements, $field_name, $path, $wrapper) {
+  $wrapper->{$field_name}->set();
   foreach ($document_elements as $index => $document_element) {
     $file_node = _mica_import_copy_file($document_element, $path, $field_name);
     $wrapper->{$field_name}[$index]->set(array(
