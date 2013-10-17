@@ -123,3 +123,12 @@ mica-delete-8.2-rc5: mica-delete-8.0
 mica-delete-8.2-rc6: mica-delete-8.0
 mica-delete-8.2-rc7: mica-delete-8.0
 mica-delete-8.2: mica-delete-8.0
+
+mica-delete-8.3-rc1: mica-delete-8.0
+mica-delete-8.3-rc2: mica-delete-8.0
+mica-delete-8.3-rc3: mica-delete-8.0
+mica-delete-8.3-rc4: mica-delete-8.0
+mica-delete-8.3-rc5: mica-delete-8.0
+mica-delete-8.3-rc6: mica-delete-8.0
+mica-delete-8.3-rc7: mica-delete-8.0
+mica-delete-8.3: mica-delete-8.0
