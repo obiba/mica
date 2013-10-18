@@ -127,7 +127,9 @@ function mica_export_copy_attachment_file($documents, $tmp_folder_name) {
       drupal_mkdir($path);
     }
     $destination = $path . "/" . $document['uuid'];
+    if(!empty($document)){
     file_unmanaged_copy($document['uri'], $destination, FILE_EXISTS_REPLACE);
+    }
 
   }
 }
