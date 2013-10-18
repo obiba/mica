@@ -1242,10 +1242,14 @@ function mica_datasets_node_view($node, $view_mode) {
       if (node_is_page($node) && $view_mode === 'banner_area' && empty($node->in_preview)) {
         workbench_moderation_messages('view', $node);
       }
-
       // recuperation of the datasets of the variable
-      $wrapper = entity_metadata_wrapper('node', $node->nid);
-      $dataset_id = $wrapper->field_dataset->nid->value();
+      $wrapper2 = entity_metadata_wrapper('node', $node->nid);
+      try{
+        $dataset_id = $wrapper2->field_dataset->nid->value();
+      }
+      catch(Exception $e){
+        throw new Exception('Error encountered, please contact your administrator, more information in system report\'s log');
+      }
       $breadcrumb = _mica_datasets_menu_generate_breadcrumbs_variables('node/' . $dataset_id);
       // generate specific breadcrumbs for variable pages
       $breadcrumbs = array();
@@ -1276,6 +1280,11 @@ function _mica_datasets_menu_generate_breadcrumbs_variables($path) {
   foreach ($result as $link) {
     $list[] = $link;
   }
+  if(empty($list)){
+    watchdog('mica', 'Can\'t generate  Breadcrumbs for this node, try to edit this node or one of his child/parent an check if Menu settings > Provide a menu link  is checked and set his link title ',array( ), WATCHDOG_ERROR);
+    return NULL;
+  }
+  else{
   $list = $list[0];
 
   if (is_object($list)) {
@@ -1321,6 +1330,7 @@ function _mica_datasets_menu_generate_breadcrumbs_variables($path) {
   }
   $breadcrumbs = array_reverse($breadcrumbs);
   return $breadcrumbs;
+  }
 }
 
 function _mica_datasets_html_truncated($text, $label, $size = 200, $is_code = FALSE, $pre_class = '') {
