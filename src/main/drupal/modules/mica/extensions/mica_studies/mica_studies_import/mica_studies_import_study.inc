@@ -154,6 +154,16 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
     ? '1'
     : '0');
 
+  $dom_target_nb_supp_info = $xpath->query('/study/study-designs/number-participant/supplementary-information');
+  $target_nb_supp_info = $dom_target_nb_supp_info->item(0)->nodeValue;
+  $wrapper->field_target_nb_supp_info->set();
+  if (!empty($target_nb_supp_info)) {
+    $wrapper->field_target_nb_supp_info->set(array(
+      'value' => $target_nb_supp_info,
+      'format' => $dom_target_nb_supp_info->item(0)->getAttribute('format')
+    ));
+  }
+
   $start_year = $xpath->query('/study/study-designs/timeline/start-year')->item(0)->nodeValue;
   $wrapper->field_study_start_year->set();
   if (!empty($start_year)) {
@@ -177,7 +187,7 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
   $access_other = $xpath->query('/study/access/other_access')->item(0)->nodeValue;
   $wrapper->field_access_other->set();
   if (!empty($access_other)) {
-    $wrapper->field_access_other->set($access_other);
+    $wrapper->field_access_other->set($access_other=='true'?'1':'0');
   }
 
   $dom_access_other_sp = $xpath->query('/study/access/other-info');
