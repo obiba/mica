@@ -1245,13 +1245,13 @@ function mica_datasets_node_view($node, $view_mode) {
 
       // recuperation of the datasets of the variable
       $wrapper = entity_metadata_wrapper('node', $node->nid);
-        $dataset_id = $wrapper->field_dataset->nid->value();
+      $dataset_id = $wrapper->field_dataset->nid->value();
       $breadcrumb = _mica_datasets_menu_generate_breadcrumbs_variables('node/' . $dataset_id);
       // generate specific breadcrumbs for variable pages
       $breadcrumbs = array();
       $breadcrumbs[] = l('Home', '');
-      foreach($breadcrumb as $bread_val){
-       $breadcrumbs[] = l($bread_val['link_title'], $bread_val['link_path']);
+      foreach ($breadcrumb as $bread_val) {
+        $breadcrumbs[] = l($bread_val['link_title'], $bread_val['link_path']);
       }
       drupal_set_breadcrumb($breadcrumbs);
 
@@ -1276,12 +1276,12 @@ function _mica_datasets_menu_generate_breadcrumbs_variables($path) {
   foreach ($result as $link) {
     $list[] = $link;
   }
-if(empty($list)){
-  watchdog('mica', 'Can\'t generate  Breadcrumbs for this node, try to edit this node or one of his child/parent an check if Menu settings > Provide a menu link  is checked and set his link title ',array( ), WATCHDOG_ERROR);
-  throw new ErrorException('Error encountered, please contact your administrator, more information logged in Recent log messages ', 0, 0, 0, 0);
-}
+  if (empty($list)) {
+    watchdog('mica', 'Can\'t generate  Breadcrumbs for this node, try to edit this node or one of his child/parent an check if Menu settings > Provide a menu link  is checked and set his link title ', array(), WATCHDOG_ERROR);
+    throw new ErrorException('Error encountered, please contact your administrator, more information logged in Recent log messages ', 0, 0, 0, 0);
+  }
 
- $list = $list[0];
+  $list = $list[0];
 
   if (is_object($list)) {
     $list = get_object_vars($list);
