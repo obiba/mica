@@ -1326,7 +1326,6 @@ function _mica_datasets_menu_generate_breadcrumbs_variables($path) {
   }
   $breadcrumbs = array_reverse($breadcrumbs);
   return $breadcrumbs;
-
 }
 
 function _mica_datasets_html_truncated($text, $label, $size = 200, $is_code = FALSE, $pre_class = '') {
