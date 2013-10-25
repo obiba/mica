@@ -1165,16 +1165,16 @@ function mica_datasets_views_default_views() {
   $handler->display->display_options['fields']['views_bulk_operations']['label'] = 'Assign domains';
   $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '1';
-  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 0;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '50';
   $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
     'action::node_assign_owner_action' => array(
       'selected' => 0,
+      'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
       'label' => '',
-      'postpone_processing' => 0,
     ),
     'action::views_bulk_operations_delete_item' => array(
       'selected' => 1,
@@ -1213,6 +1213,7 @@ function mica_datasets_views_default_views() {
       'settings' => array(
         'show_all_tokens' => 0,
         'display_values' => array(
+          'variable::field_administrative_information' => 'variable::field_administrative_information',
           'variable::field_anthropometric_structures' => 'variable::field_anthropometric_structures',
           'variable::field_body_functions' => 'variable::field_body_functions',
           'variable::field_body_structures' => 'variable::field_body_structures',
@@ -1229,7 +1230,6 @@ function mica_datasets_views_default_views() {
           'variable::field_social_environment' => 'variable::field_social_environment',
           'variable::field_sociodemographic_charact' => 'variable::field_sociodemographic_charact',
           'variable::field_target' => 'variable::field_target',
-          'variable::field_administrative_information' => 'variable::field_administrative_information',
         ),
       ),
     ),
@@ -1250,7 +1250,7 @@ function mica_datasets_views_default_views() {
       'label' => '',
     ),
     'action::node_publish_action' => array(
-      'selected' => 1,
+      'selected' => 0,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
       'override_label' => 0,
@@ -1278,9 +1278,9 @@ function mica_datasets_views_default_views() {
       'label' => '',
     ),
     'action::workbench_moderation_set_state_action' => array(
-      'selected' => 0,
-      'postpone_processing' => 0,
-      'skip_confirmation' => 0,
+      'selected' => 1,
+      'postpone_processing' => 1,
+      'skip_confirmation' => 1,
       'override_label' => 0,
       'label' => '',
     ),
@@ -1292,6 +1292,13 @@ function mica_datasets_views_default_views() {
       'label' => '',
     ),
     'action::node_unpublish_by_keyword_action' => array(
+      'selected' => 0,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::auto_entitylabel_entity_update_action' => array(
       'selected' => 0,
       'postpone_processing' => 0,
       'skip_confirmation' => 0,
