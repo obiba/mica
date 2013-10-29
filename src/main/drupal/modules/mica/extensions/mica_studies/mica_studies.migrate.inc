@@ -136,8 +136,8 @@ function _mica_studies_migrate_content_types($study, $nb_studies, &$context) {
     'field_pop_general_pop_recruit' => $pop_general_src_recruit,
     'field_pop_specific_pop' => $pop_specific_src_recruit,
     'field_pop_specific_pop_other_sp' => NULL,
-    'field_pop_recruitment_other' => $study_wrapper->field_recruitment_other->value(),
-
+    'field_pop_recruitment_other_value' => $study_wrapper->field_recruitment_other->value(),
+    'field_pop_recruitment_other_format' => 'filtered_html',
     'field_pop_recruit_supp_info_value' => $study_wrapper->field_recruitement_supp_info->value(),
     'field_pop_recruit_supp_info_format' => 'filtered_html',
 
