@@ -1,0 +1,75 @@
+<?php
+/**
+ * @file
+ * Mica Studies Export module
+ */
+
+include_once('mica_studies_export_contact.inc');
+include_once('mica_studies_export_study.inc');
+include_once('mica_studies_export_population.inc');
+include_once('mica_studies_export_dce.inc');
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function mica_studies_export_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  $links = array();
+  if ($root_path === 'node/%') {
+    $node = $router_item['map']['1'];
+    if ($node->type === 'study' && mica_export_can_export_node($node)) {
+      $links['export-study-xml'] = array(
+        '#theme' => 'menu_local_action',
+        '#weight' => 50,
+        '#link' => array(
+          'title' => t('Export'),
+          'href' => 'node/' . $node->nid . '/export-xml'
+        ),
+      );
+    }
+  }
+  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
+}
+
+/**
+ * Implements hook_mica_export_find_related_nids().
+ */
+function mica_studies_export_mica_export_find_related_nids($node) {
+  if ($node->type !== 'study') {
+    return NULL;
+  }
+  $node_wrapper = entity_metadata_wrapper('node', $node->nid);
+
+  $nids = array();
+  $nids[] = $node->nid;
+  foreach ($node_wrapper->field_investigators->getIterator() as $investigator_wrapper) {
+    $nids[] = $investigator_wrapper->nid->value();
+  }
+  foreach ($node_wrapper->field_contacts_ref->getIterator() as $contact_wrapper) {
+    $nids[] = $contact_wrapper->nid->value();
+  }
+  foreach ($node_wrapper->field_study_populations->getIterator() as $pop_wrapper) {
+    $nids[] = $pop_wrapper->nid->value();
+    foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
+      $nids[] = $dce_wrapper->nid->value();
+    }
+  }
+  return $nids;
+}
+
+/**
+ * Implements hook_mica_export_to_xml().
+ */
+function mica_studies_export_mica_export_to_xml($node, $temp_folder_path) {
+  switch ($node->type) {
+    case 'study':
+      return _mica_studies_export_study_xml($node->nid, $temp_folder_path);
+    case 'contact':
+      return _mica_studies_export_contact_xml($node->nid);
+    case 'population':
+      return _mica_studies_export_population_xml($node->nid, $temp_folder_path);
+    case 'data_collection_event':
+      return _mica_studies_export_dce_xml($node->nid, $temp_folder_path);
+    default :
+      return NULL;
+  }
+}

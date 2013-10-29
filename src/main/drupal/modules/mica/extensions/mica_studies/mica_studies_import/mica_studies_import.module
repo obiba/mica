@@ -1,0 +1,48 @@
+<?php
+/**
+ * @file
+ * Mica Import  file
+ */
+
+include_once('mica_studies_import_contact.inc');
+include_once('mica_studies_import_dce.inc');
+include_once('mica_studies_import_population.inc');
+include_once('mica_studies_import_study.inc');
+
+/**
+ * Implements hook_menu().
+ */
+function mica_studies_import_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  $links = array();
+  if ($root_path === 'studies' && user_access('import study content')) {
+    $links['import-xml'] = array(
+      '#theme' => 'menu_local_action',
+      '#weight' => 50,
+      '#link' => array(
+        'title' => t('Import XML Studies'),
+        'href' => 'import-xml'
+      ),
+    );
+  }
+  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
+}
+
+/**
+ * Implements hook_mica_import_set_node_properties().
+ */
+function mica_studies_mica_import_set_node_properties($dom, $wrapper, $path) {
+  switch ($wrapper->type->value()) {
+    case 'contact':
+      _mica_studies_mica_import_set_contact_properties($dom, $wrapper);
+      break;
+    case 'data_collection_event':
+      _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path);
+      break;
+    case 'population':
+      _mica_studies_mica_import_set_population_properties($dom, $wrapper);
+      break;
+    case 'study':
+      _mica_study_import_set_study_properties($dom, $wrapper, $path);
+      break;
+  }
+}

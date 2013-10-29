@@ -1,0 +1,9 @@
+name = Mica Studies Import
+description = Mica Studies Import
+core = 7.x
+package = Mica
+php = 5.2.4
+dependencies[] = mica_origin_url
+dependencies[] = mica_import
+dependencies[] = mica_studies
+

@@ -1,0 +1,24 @@
+<?php
+/**
+ * Include the Entity API implementation of the UUID API.
+ */
+module_load_include('inc', 'mica_origin_url', 'mica_origin_url.entity');
+
+/**
+ * @file
+ * Mica Origin Url  file
+ */
+function mica_origin_url_menu() {
+  $items = array();
+  $items['admin/config/system/origin_url'] = array(
+    'title' => 'Mica Origin Url Filed',
+    'description' => 'Configure Origin Url',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mica_origin_url_admin_form'),
+    'access callback' => 'user_access',
+    'access arguments' => array(0),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'mica_origin_url.admin.inc',
+  );
+  return $items;
+}

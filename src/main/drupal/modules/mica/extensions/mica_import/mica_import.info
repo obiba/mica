@@ -1,0 +1,7 @@
+name = Mica Import
+description = Mica Import
+core = 7.x
+package = Mica
+php = 5.2.4
+dependencies[] = mica_origin_url
+

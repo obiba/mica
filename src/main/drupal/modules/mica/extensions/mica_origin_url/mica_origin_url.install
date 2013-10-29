@@ -1,0 +1,54 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the mica_origin_url module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function mica_origin_url_install() {
+  if (!db_field_exists('node', 'mica_origin_url')) {
+    $field = array(
+      'type' => 'char',
+      'length' => 255,
+      'not null' => TRUE,
+      'default' => '',
+      'description' => 'Original mica URL.',
+    );
+    db_add_field('node', 'mica_origin_url', $field);
+    db_add_index('node', 'mica_origin_url', array('mica_origin_url'));
+  }
+}
+
+/**
+ * Implements of hook_schema_alter().
+ */
+function mica_origin_url_schema_alter(&$schema = array()) {
+  $schema['node']['fields']['mica_origin_url'] = array(
+    'type' => 'char',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+    'description' => 'Mica Origin URL',
+  );
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function mica_origin_url_uninstall() {
+  if (db_field_exists('node', 'mica_origin_url')) {
+    db_drop_field('node', 'mica_origin_url');
+    db_drop_index('node', 'mica_origin_url');
+  }
+}
+
+/**
+ * Implements hook_modules_installed().
+ */
+function mica_origin_url_modules_installed($modules) {
+  // Run the installation hook. This makes sure that the schema for all
+  // supported core entity types is set correct.
+  mica_origin_url_install();
+}

@@ -100,6 +100,7 @@ function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
       break;
 
     case 'studies':
+
       $node_type = node_type_load('study');
       if (node_access('create', 'study')) {
         $links['add-study'] = array(
@@ -109,6 +110,7 @@ function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
             'href' => 'node/add/study',
           ),
         );
+
       }
       $links['search-studies'] = array(
         '#weight' => 30,
