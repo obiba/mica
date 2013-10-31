@@ -1250,11 +1250,12 @@ function mica_datasets_node_view($node, $view_mode) {
       // generate specific breadcrumbs for variable pages
       $breadcrumbs = array();
       $breadcrumbs[] = l('Home', '');
-      foreach ($breadcrumb as $bread_val) {
-        $breadcrumbs[] = l($bread_val['link_title'], $bread_val['link_path']);
+      if (!empty($breadcrumb)) {
+        foreach ($breadcrumb as $bread_val) {
+          $breadcrumbs[] = l($bread_val['link_title'], $bread_val['link_path']);
+        }
+        drupal_set_breadcrumb($breadcrumbs);
       }
-      drupal_set_breadcrumb($breadcrumbs);
-
       // Replace "Missing" by an icon
       if (!(empty($node->content['field_variable_categories']))
         && !empty($node->content['field_variable_categories']['#object']->field_variable_categories)
@@ -1278,7 +1279,8 @@ function _mica_datasets_menu_generate_breadcrumbs_variables($path) {
   }
   if (empty($list)) {
     watchdog('mica', 'Can\'t generate  Breadcrumbs for this node, try to edit this node or one of his child/parent an check if Menu settings > Provide a menu link  is checked and set his link title ', array(), WATCHDOG_ERROR);
-    throw new ErrorException('Error encountered, please contact your administrator, more information logged in Recent log messages ', 0, 0, 0, 0);
+    // throw new ErrorException('Error encountered, please contact your administrator, more information logged in Recent log messages ', 0, 0, 0, 0);
+    return NULL;
   }
 
   $list = $list[0];
