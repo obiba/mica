@@ -51,7 +51,7 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
           : $script;
 
         $status = _mica_opal_json_get_string($item, 'attributes[?(@[\'name\']==\'status\'), ?(@[\'namespace\']==\'maelstrom\')].value');
-        $variable_info['status'] = empty($status) || !strpos("complete,impossible", $status) ? 'undetermined' : strtolower($status);
+        $variable_info['status'] = empty($status) || !strpos(",complete,impossible", $status) ? 'undetermined' : strtolower($status);
 
         $variable_info['description'] = _mica_opal_parse_localized($item, 'attributes[?(@[\'name\']==\'description\'), ?(@[\'namespace\']==\'maelstrom\')]');
         $variable_info['comment'] = _mica_opal_parse_localized($item, 'attributes[?(@[\'name\']==\'comment\'), ?(@[\'namespace\']==\'maelstrom\')]');
