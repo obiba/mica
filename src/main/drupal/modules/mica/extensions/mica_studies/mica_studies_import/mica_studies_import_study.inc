@@ -177,17 +177,17 @@ function _mica_study_import_set_study_properties($dom, $wrapper, $path) {
   $access_data = $xpath->query('/study/access/data')->item(0)->nodeValue;
   $wrapper->field_access_data->set();
   if (!empty($access_data)) {
-    $wrapper->field_access_data->set($access_data);
+    $wrapper->field_access_data->set($access_data == 'true' ? '1' : ($access_data == 'false' ? '0' : ''));
   }
   $access_biosamples = $xpath->query('/study/access/biosamples')->item(0)->nodeValue;
   $wrapper->field_access_biosamples->set();
   if (!empty($access_biosamples)) {
-    $wrapper->field_access_biosamples->set($access_biosamples);
+    $wrapper->field_access_biosamples->set($access_biosamples == 'true' ? '1' : ($access_biosamples == 'false' ? '0' : ''));
   }
   $access_other = $xpath->query('/study/access/other_access')->item(0)->nodeValue;
   $wrapper->field_access_other->set();
   if (!empty($access_other)) {
-    $wrapper->field_access_other->set($access_other=='true'?'1':'0');
+    $wrapper->field_access_other->set($access_other == 'true' ? '1' : ($access_other == 'false' ? '0' : ''));
   }
 
   $dom_access_other_sp = $xpath->query('/study/access/other-info');
