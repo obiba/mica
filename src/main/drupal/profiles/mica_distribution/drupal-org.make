@@ -190,6 +190,7 @@ projects[search_api_page] = 1.0
 projects[search_api_ranges][download][type] = git
 projects[search_api_ranges][download][revision] = 05a372d
 projects[search_api_ranges][download][branch] = 7.x-1.x
+projects[search_api_ranges][patch][2125141] = http://drupal.org/files/issues/remove_slider-2125141-1_0.patch
 
 projects[search_api_solr] = 1.2
 
