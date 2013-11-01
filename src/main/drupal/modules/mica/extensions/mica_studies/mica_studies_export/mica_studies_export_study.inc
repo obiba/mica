@@ -123,11 +123,11 @@ function _mica_studies_export_study_xml($nid, $tmp_folder_name) {
     ->appendChild($dom->createTextNode($wrapper->field_study_end_year->value()));
   $acess_element = $root->appendChild($dom->createElement('access'));
   $acess_element->appendChild($dom->createElement('data'))
-    ->appendChild($dom->createTextNode($wrapper->field_access_data->value() == '1' ? 'true' : $wrapper->field_access_data->value() == '0' ? 'false' : ''));
+    ->appendChild($dom->createTextNode($wrapper->field_access_data->value() == '1' ? 'true' : ($wrapper->field_access_data->value() == '0' ? 'false' : '')));
   $acess_element->appendChild($dom->createElement('biosamples'))
-    ->appendChild($dom->createTextNode($wrapper->field_access_biosamples->value() == '1' ? 'true' : $wrapper->field_access_biosamples->value() == '0' ? 'false' : ''));
+    ->appendChild($dom->createTextNode($wrapper->field_access_biosamples->value() == '1' ? 'true' : ($wrapper->field_access_biosamples->value() == '0' ? 'false' : '')));
   $acess_element->appendChild($dom->createElement('other_access'))
-    ->appendChild($dom->createTextNode(($wrapper->field_access_other->value() == 1) ? 'true' : ($wrapper->field_access_other->value() == 0 ? 'false' : '')));
+    ->appendChild($dom->createTextNode(($wrapper->field_access_other->value() == 1) ? 'true' : (($wrapper->field_access_other->value() == 0 ? 'false' : ''))));
 
   $oth_inf = $wrapper->field_access_other_sp->value();
   $other_info = $acess_element->appendChild($dom->createElement('other-info'));
