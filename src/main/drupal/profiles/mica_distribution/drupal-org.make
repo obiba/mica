@@ -130,6 +130,8 @@ projects[libraries] = 2.1
 
 projects[link] = 1.1
 
+projects[locale] = 23
+
 projects[logintoboggan] = 1.3
 
 projects[mail_edit] = 1.0
@@ -231,6 +233,7 @@ projects[workbench] = 1.2
 
 projects[workbench_moderation][version] = 1.3
 projects[workbench_moderation][patch][1919706] = http://drupal.org/files/workbench_moderation-entitymalformedexception-action-1919706-2.patch
+projects[workbench_moderation][patch][1436260] = https://drupal.org/files/1436260-workbench_moderation-states-vbo-36.patch
 
 projects[xmlsitemap] = 2.0-rc2
 
