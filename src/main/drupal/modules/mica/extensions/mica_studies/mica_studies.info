@@ -56,7 +56,6 @@ dependencies[] = search
 dependencies[] = search_api
 dependencies[] = search_api_page
 dependencies[] = search_api_ranges
-dependencies[] = locale
 dependencies[] = search_api_solr
 dependencies[] = search_api_views
 dependencies[] = strongarm
