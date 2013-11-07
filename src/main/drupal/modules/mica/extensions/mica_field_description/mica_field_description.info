@@ -13,7 +13,6 @@ dependencies[] = mica_relation
 dependencies[] = node
 dependencies[] = options
 dependencies[] = search_api
-dependencies[] = locale
 dependencies[] = search_api_ranges
 dependencies[] = strongarm
 dependencies[] = text
