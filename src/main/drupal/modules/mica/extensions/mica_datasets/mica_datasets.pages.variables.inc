@@ -4,7 +4,6 @@
  * Mica Datasets variable pages.
  */
 
-
 /**
  * Form builder to reorder variables within a Dataset
  *
@@ -81,7 +80,7 @@ function theme_mica_datasets_reorder_variables($variables) {
 
   foreach (element_children($form) as $key) {
     if (isset($form[$key]['name'])) {
-      $variable = &$form[$key];
+      $variable = & $form[$key];
 
       $row = array();
       $row[] = drupal_render($variable['name']);
@@ -130,16 +129,39 @@ function theme_mica_datasets_reorder_variables($variables) {
 function mica_datasets_reorder_variables_submit($form, &$form_state) {
   foreach ($form_state['values'] as $nid => $variable) {
     if (is_numeric($nid)) {
-      $wrapper = entity_metadata_wrapper('node', $form[$nid]['#variable']);
-      $position = $wrapper->field_position->value();
+      $node = node_load($nid);
+      $position = $node->field_position[LANGUAGE_NONE][0]['value'];
       $new_position = $form_state['values'][$nid]['weight'];
       if ($new_position >= 0) {
         $new_position++;
       }
       if ($position != $new_position) {
-        $wrapper = entity_metadata_wrapper('node', $form[$nid]['#variable']);
-        $wrapper->field_position->set($new_position);
-        node_save($form[$nid]['#variable']);
+
+        // update field_data_field_position
+        db_update('field_data_field_position')
+          ->fields(array(
+            'field_position_value' => $form_state['values'][$nid]['weight'],
+          ))
+          ->condition('entity_id', $nid)
+          ->execute();
+
+        // search for last revision of current node variable
+        $result = db_select('field_revision_field_position', 'r')
+          ->condition('entity_id', $nid)
+          ->fields('r', array('revision_id'))
+          ->orderBy('revision_id', 'DESC')
+          ->range(0, 1)
+          ->execute()
+          ->fetchAssoc();
+
+        //update last revision of current variable
+        db_update('field_revision_field_position')
+          ->condition('entity_id', $nid)
+          ->condition('revision_id', $result['revision_id'])
+          ->fields(array(
+            'field_position_value' => $form_state['values'][$nid]['weight'],
+          ))
+          ->execute();
       }
     }
   }
