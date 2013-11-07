@@ -130,8 +130,8 @@ function theme_mica_datasets_reorder_variables($variables) {
 function mica_datasets_reorder_variables_submit($form, &$form_state) {
   foreach ($form_state['values'] as $nid => $variable) {
     if (is_numeric($nid)) {
-      $node = node_load($nid);
-      $position = $node->field_position[LANGUAGE_NONE][0]['value'];
+     $node = node_load($nid);
+     $position = $node->field_position[LANGUAGE_NONE][0]['value'];
       $new_position = $form_state['values'][$nid]['weight'];
       if ($new_position >= 0) {
         $new_position++;
