@@ -181,6 +181,7 @@ projects[search_api][version] = 1.8
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 projects[search_api][patch][2085717] = http://drupal.org/files/non_array_token.patch
+projects[search_api][patch][2130349] = http://drupal.org/files/issues/search_api_ranges-error-locale-module-disabled-2057997-2.txt
 
 projects[search_api_combined][version] = 1.2
 projects[search_api_combined][patch][1976924] = http://drupal.org/files/delete-combined-fields-1976924-3.patch
