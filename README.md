@@ -45,6 +45,11 @@ in our wiki [here](http://wiki.obiba.org/display/MICADOC).
 Prepare third party tools:
 
     make install-tools 
+    
+probaly we nee do install solr : 
+    
+    make install-solr
+
     make start-solr
     
 Prepare Drupal/Mica instance
