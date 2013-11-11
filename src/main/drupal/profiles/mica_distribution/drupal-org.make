@@ -64,12 +64,12 @@ projects[facetapi_i18n] = 1.0-beta2
 
 ;projects[] = examples
 
-projects[features][version] = 2.0-rc3
+projects[features][version] = 2.0
 projects[features][patch][1844566] = http://drupal.org/files/features_1844566_1_invoke-hooks-for-all-components.patch
 projects[features][patch][656312] = http://drupal.org/files/keep_negative_permissions-656312-17.patch
 projects[features][patch][1689598] = http://drupal.org/files/field_display_label_support.patch
 
-projects[features_override] = 2.0-beta3
+projects[features_override] = 2.0-rc1
 
 projects[feeds][download][type] = git
 projects[feeds][download][revision] = 1383713
@@ -87,7 +87,7 @@ projects[feeds_tamper][patch][1416700] = http://drupal.org/files/1416700-4-feeds
 projects[field_display_label][version] = 1.2
 projects[field_display_label][patch][1689574] = http://drupal.org/files/field_display_label_i18n_field-1689574-6.patch
 
-projects[field_group][version] = 1.2
+projects[field_group][version] = 1.3
 projects[field_group][patch][1175102] = http://drupal.org/files/description_translation-1175102-16.patch
 
 projects[field_permissions] = 1.0-beta2
@@ -117,8 +117,7 @@ projects[jquery_update][download][revision] = dd3d76e
 projects[jquery_update][download][branch] = 7.x-2.x
 projects[jquery_update][patch][1995790] = http://drupal.org/files/update_jquery_form_3_32-1995790-1.patch
 
-projects[jquery_ui_multiselect_widget][version] = 1.6
-projects[jquery_ui_multiselect_widget][patch][1995594] = http://drupal.org/files/update_library-1995594-1.patch
+projects[jquery_ui_multiselect_widget][version] = 1.7
 
 projects[l10n_update] = 1.0-beta3
 
@@ -136,7 +135,7 @@ projects[mail_edit] = 1.0
 
 projects[masquerade] = 1.0-rc5
 
-projects[menu_breadcrumb] = 1.4
+projects[menu_breadcrumb] = 1.5
 
 projects[menu_firstchild] = 1.1
 
@@ -177,11 +176,10 @@ projects[recaptcha] = 1.7
 projects[references][version] = 2.1
 projects[references][patch][1988436] = http://drupal.org/files/references-hook_node_reference_FIELD_potential_references_1988436_3.patch
 
-projects[search_api][version] = 1.8
+projects[search_api][version] = 1.9
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 projects[search_api][patch][2085717] = http://drupal.org/files/non_array_token.patch
-projects[search_api][patch][2130349] = http://drupal.org/files/issues/search_api_ranges-error-locale-module-disabled-2057997-2.txt
 
 projects[search_api_combined][version] = 1.2
 projects[search_api_combined][patch][1976924] = http://drupal.org/files/delete-combined-fields-1976924-3.patch
@@ -192,8 +190,9 @@ projects[search_api_ranges][download][type] = git
 projects[search_api_ranges][download][revision] = 05a372d
 projects[search_api_ranges][download][branch] = 7.x-1.x
 projects[search_api_ranges][patch][2125141] = http://drupal.org/files/issues/remove_slider-2125141-1_0.patch
+projects[search_api_ranges][patch][2130349] = http://drupal.org/files/issues/search_api_ranges-error-locale-module-disabled-2130349-2.patch
 
-projects[search_api_solr] = 1.2
+projects[search_api_solr] = 1.3
 
 projects[services] = 3.5
 
@@ -262,6 +261,12 @@ libraries[prettify_css][download][url] = http://google-code-prettify.googlecode.
 libraries[prettify_css][directory_name] = prettify
 libraries[prettify_css][overwrite] = TRUE
 
+
+libraries[jquery_ui_multiselect_widget][download][type] = get
+libraries[jquery_ui_multiselect_widget][download][url] = http://github.com/ehynds/jquery-ui-multiselect-widget/archive/master.zip
+libraries[jquery_ui_multiselect_widget][directory_name] = jquery-ui-multiselect-widget
+libraries[jquery_ui_multiselect_widget][overwrite] = TRUE
+
 libraries[prettify_js][download][type] = get
 libraries[prettify_js][download][url] = http://google-code-prettify.googlecode.com/svn/branches/release-1-Jun-2011/src/prettify.js
 libraries[prettify_js][directory_name] = prettify
@@ -270,3 +275,5 @@ libraries[prettify_js][overwrite] = TRUE
 libraries[solr_php_client][download][type] = get
 libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.com/files/SolrPhpClient.r60.2011-05-04.tgz
 libraries[solr_php_client][directory_name] = SolrPhpClient
+
+
