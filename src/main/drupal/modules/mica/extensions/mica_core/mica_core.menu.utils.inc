@@ -15,14 +15,23 @@ function mica_core_create_menu($menu_title, $menu_path, $router_path, $hidden = 
 
 function mica_core_create_node_menu($node, $hidden = FALSE, $expanded = FALSE, $weight = 0, $parent_path = '', $parent_mlid = '') {
   $menu = isset($node->menu) ? $node->menu : array();
-
+  $toparent_mlid = $parent_mlid;
   $wrapper = entity_metadata_wrapper('node', $node);
-  _mica_core_create_menu($menu, $wrapper->title->value(), 'node/' . $node->nid, 'node/%', $hidden, $expanded, $weight, $parent_path, $parent_mlid);
+  _mica_core_create_menu($menu, $wrapper->title->value(), 'node/' . $node->nid, 'node/%', $hidden, $expanded, $weight, $parent_path, $toparent_mlid);
   return $menu;
 }
 
 function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $hidden = FALSE, $expanded = FALSE,
   $weight = 0, $parent_path = '', $parent_mlid = '') {
+
+  $menu_exist = db_query(
+    "SELECT * FROM {menu_links} WHERE link_path= :link_path AND  link_title = :link_title",
+    array(':link_path' => $menu_path, ':link_title' => $menu_title)
+  )->fetchObject();
+
+  if (isset($menu_exist) && $menu_exist !== FALSE) {
+    return $menu_exist;
+  }
 
   $menu['enabled'] = 1;
   $menu['expanded'] = $expanded ? 1 : 0;
@@ -55,9 +64,22 @@ function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $
       $menu['plid'] = $parent_menu->mlid;
     }
   }
-
   menu_link_save($menu);
   menu_cache_clear($menu['menu_name']);
+}
+
+/**
+ * Get node object from url alias
+ * @param $alias
+ * @return node if find
+ */
+function _mica_core_get_node_by_url_alias($alias) {
+  $path = drupal_lookup_path("source", $alias);
+  $node = menu_get_object("node", 1, $path);
+  if (!$node) {
+    return FALSE;
+  }
+  return $node;
 }
 
 /**

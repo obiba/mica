@@ -35,12 +35,24 @@ function mica_datasets_post_features_rebuild() {
 
 function _mica_datasets_create_default_content() {
   $resource_menu = mica_core_find_menu_for_alias('resources');
-  $datasets_menu = mica_core_create_menu(st('Datasets'), '<firstchild>', '<firstchild>', FALSE, TRUE, 0, NULL, $resource_menu->mlid);
-  mica_core_create_menu(st('Datasets'), 'datasets', 'datasets', FALSE, FALSE, 5, NULL, $datasets_menu['mlid']);
-  mica_core_create_menu(st('Variables Search'), 'variable-search', 'variable-search', FALSE, FALSE, 10, NULL, $datasets_menu['mlid']);
+  if (!empty($resource_menu)) {
+    $datasets_menu = mica_core_create_menu(st('Datasets'), '<firstchild>', '<firstchild>', FALSE, TRUE, 0, NULL, $resource_menu->mlid);
+    if (isset($datasets_menu) && !empty($datasets_menu)) {
+      mica_core_create_menu(st('Datasets'), 'datasets', 'datasets', FALSE, FALSE, 5, NULL, $datasets_menu['mlid']);
+      mica_core_create_menu(st('Variables Search'), 'variable-search', 'variable-search', FALSE, FALSE, 10, NULL, $datasets_menu['mlid']);
+      // Set menu parent option for dataset
+      mica_core_set_menu_option('dataset', $datasets_menu['mlid']);
+    }
 
-  // Set menu parent option for dataset
-  mica_core_set_menu_option('dataset', $datasets_menu['mlid']);
+  }
+}
+
+/**
+ * Creates default content in mica core installation
+ * Implements hook_mica_create_default_menu()
+ */
+function mica_datasets_create_default_menu() {
+  _mica_datasets_create_default_content();
 }
 
 function _mica_datasets_configure_permissions() {

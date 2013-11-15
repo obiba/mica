@@ -17,6 +17,8 @@ function mica_distribution_install_tasks($install_state) {
   if (!isset($_GET['locale'])) {
     $_POST['locale'] = 'en';
   }
+  //rebuild menus
+  module_invoke_all('create_default_menu');
 
   $tasks = array(
     'mica_configure' => array(
