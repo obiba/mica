@@ -124,4 +124,5 @@ function _mica_distribution_datasets_block_configuration(&$context) {
 
 function _mica_distribution_mica_configuration_finished($success, $results, $operations) {
   drupal_set_message(st("Mica configuration finished"));
+
 }
