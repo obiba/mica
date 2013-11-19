@@ -30,42 +30,46 @@ function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $
   )->fetchObject();
 
   if (isset($menu_exist) && $menu_exist !== FALSE) {
-    return $menu_exist;
-  }
-
-  $menu['enabled'] = 1;
-  $menu['expanded'] = $expanded ? 1 : 0;
-  $menu['hidden'] = $hidden ? 1 : 0;
-  $menu['menu_name'] = MAIN_MENU;
-  $menu['link_title'] = $menu_title;
-  $menu['link_path'] = $menu_path;
-  $menu['weight'] = $weight;
-  if (!empty($router_path)) {
-    $menu['router_path'] = $router_path;
-  }
-
-  if ($menu['link_path'] === '<firstchild>') {
-    $menu['options']['alter'] = TRUE;
-    $menu['options']['unaltered_hidden'] = $menu['hidden'];
+    $menu['mlid'] = $menu_exist->mlid;
+    $menu['exist'] = 1;
+    return $menu;
   }
   else {
-    unset($menu['options']['unaltered_hidden']);
-  }
+    $menu['enabled'] = 1;
+    $menu['expanded'] = $expanded ? 1 : 0;
+    $menu['hidden'] = $hidden ? 1 : 0;
+    $menu['menu_name'] = MAIN_MENU;
+    $menu['link_title'] = $menu_title;
+    $menu['link_path'] = $menu_path;
+    $menu['weight'] = $weight;
 
-  if (!empty($parent_mlid)) {
-    $menu['plid'] = $parent_mlid;
-  }
-  else if (!empty($parent_path)) {
-    $parent_menu = db_query(
-      "SELECT * FROM {menu_links} WHERE link_path = :link_path",
-      array(':link_path' => $parent_path)
-    )->fetchObject();
-    if (!empty($parent_menu)) {
-      $menu['plid'] = $parent_menu->mlid;
+    if (!empty($router_path)) {
+      $menu['router_path'] = $router_path;
     }
+
+    if ($menu['link_path'] === '<firstchild>') {
+      $menu['options']['alter'] = TRUE;
+      $menu['options']['unaltered_hidden'] = $menu['hidden'];
+    }
+    else {
+      unset($menu['options']['unaltered_hidden']);
+    }
+
+    if (!empty($parent_mlid)) {
+      $menu['plid'] = $parent_mlid;
+    }
+    else if (!empty($parent_path)) {
+      $parent_menu = db_query(
+        "SELECT * FROM {menu_links} WHERE link_path = :link_path",
+        array(':link_path' => $parent_path)
+      )->fetchObject();
+      if (!empty($parent_menu)) {
+        $menu['plid'] = $parent_menu->mlid;
+      }
+    }
+    menu_link_save($menu);
+    menu_cache_clear($menu['menu_name']);
   }
-  menu_link_save($menu);
-  menu_cache_clear($menu['menu_name']);
 }
 
 /**

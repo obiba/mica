@@ -17,8 +17,6 @@ function mica_distribution_install_tasks($install_state) {
   if (!isset($_GET['locale'])) {
     $_POST['locale'] = 'en';
   }
-  //rebuild menus
-  module_invoke_all('create_default_menu');
 
   $tasks = array(
     'mica_configure' => array(
@@ -65,6 +63,9 @@ function _mica_distribution_configuration_batch() {
     if (substr($module, 0, $mica_length) === 'mica_') {
       if (module_exists($module)) {
         $operations[] = array('_mica_distribution_rebuild_user_permission', array($module));
+
+        //rebuild menus
+        $operations = array_merge($operations, module_invoke_all('create_default_menu_module'));
       }
     }
   }

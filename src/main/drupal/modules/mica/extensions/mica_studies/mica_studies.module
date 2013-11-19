@@ -711,15 +711,15 @@ function mica_studies_post_features_rebuild() {
 
 /**
  * Creates default content in mica core installation
- * Implements hook_mica_create_default_menu()
+ * Implements hook_mica_create_default_menu_module()
  */
-function mica_studies_create_default_menu() {
+function mica_studies_create_default_menu_module() {
   _mica_studies_create_default_content();
 }
 
 function _mica_studies_create_default_content() {
   $study_menu = mica_core_create_menu(st('Studies'), 'studies', 'studies', FALSE, FALSE, 5, NULL);
-  if (isset($study_menu) && !empty($study_menu)) {
+  if (isset($study_menu) && empty($study_menu['exist'])) {
     mica_core_create_menu(st('Search Studies'), 'studies-search', 'studies-search', FALSE, FALSE, 10, 'studies', $study_menu['mlid']);
     mica_core_set_menu_option('study', $study_menu['mlid']);
     mica_core_disable_menu('studies-search');

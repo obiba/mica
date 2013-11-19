@@ -21,9 +21,9 @@ function hook_bootstrap_based_theme() {
 }
 
 /*
- * hook_create_default_menu()
+ * hook_create_default_menu_module()
  */
 
-function hook_create_default_menu() {
+function hook_create_default_menu_module() {
   // add default menu
 }

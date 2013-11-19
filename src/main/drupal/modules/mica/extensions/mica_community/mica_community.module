@@ -29,40 +29,43 @@ function _mica_community_create_default_content() {
 
 function _mica_community_build_menu_from_node($page) {
   $community_menu = mica_core_create_menu(st('Community'), "node/$page->nid", '', FALSE, TRUE, 45);
-  if (isset($community_menu) && !empty($community_menu)) {
-    mica_core_create_menu(st('News'), 'news', 'news', FALSE, FALSE, 10, NULL, $community_menu['mlid']);
-    $event_menu = mica_core_create_menu(st('Events'), 'events', 'events', FALSE, TRUE, 15, NULL, $community_menu['mlid']);
 
-    mica_core_create_menu(st('All Events'), 'events', 'events', FALSE, FALSE, 0, 'events');
-    mica_core_create_menu(st('Calendar'), 'calendar-field-event-date/year', 'calendar-field-event-date/year', FALSE, FALSE, 0, 'events');
-    $forum_menu = mica_core_create_menu(st('Forums'), 'forum', 'forum', FALSE, FALSE, 20, NULL, $community_menu['mlid']);
-    $blog_menu = mica_core_create_menu(st('Blogs'), 'blog', 'blog', FALSE, FALSE, 25, NULL, $community_menu['mlid']);
+  if (!empty($community_menu)) {
+    mica_core_create_menu(st('News'), 'news', 'news', FALSE, FALSE, 10, NULL, $community_menu['mlid']);
+
+    mica_core_create_menu(st('Forums'), 'forum', 'forum', FALSE, FALSE, 11, NULL, $community_menu['mlid']);
+    if (!empty($forum_menu) && empty($forum_menu['exist'])) {
+      mica_core_set_menu_option('forum', $forum_menu['mlid']);
+    }
+
+    mica_core_create_menu(st('Blogs'), 'blog', 'blog', FALSE, FALSE, 12, NULL, $community_menu['mlid']);
+    if (!empty($blog_menu) && empty($blog_menu['exist'])) {
+      mica_core_set_menu_option('blog', $blog_menu['mlid']);
+    }
+
+    $event_menu = mica_core_create_menu(st('Events'), 'events', 'events', FALSE, TRUE, 13, NULL, $community_menu['mlid']);
+    if (!empty($event_menu)) {
+      mica_core_create_menu(st('All Events'), 'events', 'events', FALSE, FALSE, 1, NULL, $event_menu['mlid']);
+      mica_core_create_menu(st('Calendar'), 'calendar-field-event-date/year', 'calendar-field-event-date/year', FALSE, FALSE, 0, NULL, $event_menu['mlid']);
+      mica_core_set_menu_option('event', $event_menu['mlid']);
+    }
   }
+
   $research_menu = mica_core_find_menu_for_alias('research');
   if (isset($research_menu)) {
     $publication_menu = mica_core_create_menu(st('Publications'), 'publications', 'publications', FALSE, FALSE, 10, NULL, $research_menu->mlid);
   }
-  if (isset($event_menu) && !empty($event_menu)) {
-    mica_core_set_menu_option('event', $event_menu['mlid']);
-  }
-  if (isset($publication_menu) && !empty($publication_menu)) {
+  if (!empty($publication_menu) && empty($publication_menu['exist'])) {
     mica_core_set_menu_option('publication', $publication_menu['mlid']);
-  }
-
-  if (isset($forum_menu) && !empty($forum_menu)) {
-    mica_core_set_menu_option('forum', $forum_menu['mlid']);
-  }
-  if (isset($blog_menu) && !empty($blog_menu)) {
-    mica_core_set_menu_option('blog', $blog_menu['mlid']);
   }
 
 }
 
 /**
  * Creates default content in mica core installation
- * Implements hook_mica_create_default_menu()
+ * Implements hook_mica_create_default_menu_module()
  */
-function mica_community_create_default_menu() {
+function mica_community_create_default_menu_module() {
   $page = _mica_core_get_node_by_url_alias('community-overview');
   if ($page) {
     _mica_community_build_menu_from_node($page);

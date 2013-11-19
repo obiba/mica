@@ -34,7 +34,7 @@ Over time, the Consortium will generate best practices documents that will descr
 
 function  _mica_data_access_build_menu_from_node($page) {
   $data_access_menu = mica_core_create_menu(st('Data Access'), '<firstchild>', '<firstchild>', FALSE, TRUE, 20);
-  if (isset($data_access_menu) && !empty($data_access_menu)) {
+  if (!empty($data_access_menu) && empty($data_access_menu['exist'])) {
     mica_core_create_node_menu($page, TRUE, FALSE, 5, NULL, $data_access_menu['mlid']);
     mica_core_create_menu(st('Data Access Administration'), 'data-access/admin', 'data-access/admin', FALSE, FALSE, 10, NULL, $data_access_menu['mlid']);
     mica_core_create_menu(st('Data Access Committee'), 'data-access/committee', 'data-access/committee', FALSE, FALSE, 15, NULL, $data_access_menu['mlid']);
@@ -50,9 +50,9 @@ function  _mica_data_access_build_menu_from_node($page) {
 
 /**
  * Creates default content in mica core installation
- * Implements hook_mica_create_default_menu()
+ * Implements hook_mica_create_default_menu_module()
  */
-function mica_data_access_create_default_menu() {
+function mica_data_access_create_default_menu_module() {
   $page = _mica_core_get_node_by_url_alias('data-access/policy');
   if ($page) {
     _mica_data_access_build_menu_from_node($page);
@@ -124,8 +124,6 @@ function mica_data_access_menu_local_tasks_alter(&$data, $router_item, $root_pat
       );
       if ($root_path === 'node/%/queries/%') {
         $dataset_node = $router_item['page_arguments'][1];
-        //$quer = url('data-access/request', );
-
         $links['add-data-access-request']['#link']['localized_options'] = array(
           'query' => array('field_dataset_access' => $dataset_node->nid)
         );
