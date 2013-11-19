@@ -15,6 +15,7 @@ function mica_core_create_menu($menu_title, $menu_path, $router_path, $hidden = 
 
 function mica_core_create_node_menu($node, $hidden = FALSE, $expanded = FALSE, $weight = 0, $parent_path = '', $parent_mlid = '') {
   $menu = isset($node->menu) ? $node->menu : array();
+
   $wrapper = entity_metadata_wrapper('node', $node);
   _mica_core_create_menu($menu, $wrapper->title->value(), 'node/' . $node->nid, 'node/%', $hidden, $expanded, $weight, $parent_path, $parent_mlid);
   return $menu;
