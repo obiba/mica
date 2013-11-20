@@ -54,9 +54,9 @@ function _mica_community_build_menu_from_node($page) {
   $research_menu = mica_core_find_menu_for_alias('research');
   if (isset($research_menu)) {
     $publication_menu = mica_core_create_menu(st('Publications'), 'publications', 'publications', FALSE, FALSE, 10, NULL, $research_menu->mlid);
-  }
-  if (!empty($publication_menu) && empty($publication_menu['exist'])) {
-    mica_core_set_menu_option('publication', $publication_menu['mlid']);
+    if (!empty($publication_menu) && empty($publication_menu['exist'])) {
+      mica_core_set_menu_option('publication', $publication_menu['mlid']);
+    }
   }
 
 }
