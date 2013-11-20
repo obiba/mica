@@ -3,15 +3,15 @@
 # Requires drush 5+ to be installed: http://drush.ws
 #
 
-version=9.0-dev
-dist_version=9.0-dev
+version=8.3-dev
+dist_version=8.3-dev
 drupal_version=7.x
 branch=$(drupal_version)-9.x
 
 #
 # Mica versions
 #
-# Modules
+# ModulesDACO Approved Projects
 mica_version=$(drupal_version)-$(version)
 mica_distribution_version=$(drupal_version)-$(dist_version)
 

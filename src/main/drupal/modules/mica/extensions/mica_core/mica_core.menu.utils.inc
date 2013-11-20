@@ -24,40 +24,66 @@ function mica_core_create_node_menu($node, $hidden = FALSE, $expanded = FALSE, $
 function _mica_core_create_menu(&$menu, $menu_title, $menu_path, $router_path, $hidden = FALSE, $expanded = FALSE,
   $weight = 0, $parent_path = '', $parent_mlid = '') {
 
-  $menu['enabled'] = 1;
-  $menu['expanded'] = $expanded ? 1 : 0;
-  $menu['hidden'] = $hidden ? 1 : 0;
-  $menu['menu_name'] = MAIN_MENU;
-  $menu['link_title'] = $menu_title;
-  $menu['link_path'] = $menu_path;
-  $menu['weight'] = $weight;
-  if (!empty($router_path)) {
-    $menu['router_path'] = $router_path;
-  }
+  $menu_exist = db_query(
+    "SELECT * FROM {menu_links} WHERE link_path= :link_path AND  link_title = :link_title",
+    array(':link_path' => $menu_path, ':link_title' => $menu_title)
+  )->fetchObject();
 
-  if ($menu['link_path'] === '<firstchild>') {
-    $menu['options']['alter'] = TRUE;
-    $menu['options']['unaltered_hidden'] = $menu['hidden'];
+  if (isset($menu_exist) && $menu_exist !== FALSE) {
+    $menu['mlid'] = $menu_exist->mlid;
+    $menu['exist'] = 1;
+    return $menu;
   }
   else {
-    unset($menu['options']['unaltered_hidden']);
-  }
+    $menu['enabled'] = 1;
+    $menu['expanded'] = $expanded ? 1 : 0;
+    $menu['hidden'] = $hidden ? 1 : 0;
+    $menu['menu_name'] = MAIN_MENU;
+    $menu['link_title'] = $menu_title;
+    $menu['link_path'] = $menu_path;
+    $menu['weight'] = $weight;
 
-  if (!empty($parent_mlid)) {
-    $menu['plid'] = $parent_mlid;
-  }
-  else if (!empty($parent_path)) {
-    $parent_menu = db_query(
-      "SELECT * FROM {menu_links} WHERE link_path = :link_path",
-      array(':link_path' => $parent_path)
-    )->fetchObject();
-    if (!empty($parent_menu)) {
-      $menu['plid'] = $parent_menu->mlid;
+    if (!empty($router_path)) {
+      $menu['router_path'] = $router_path;
     }
-  }
 
-  menu_link_save($menu);
-  menu_cache_clear($menu['menu_name']);
+    if ($menu['link_path'] === '<firstchild>') {
+      $menu['options']['alter'] = TRUE;
+      $menu['options']['unaltered_hidden'] = $menu['hidden'];
+    }
+    else {
+      unset($menu['options']['unaltered_hidden']);
+    }
+
+    if (!empty($parent_mlid)) {
+      $menu['plid'] = $parent_mlid;
+    }
+    else if (!empty($parent_path)) {
+      $parent_menu = db_query(
+        "SELECT * FROM {menu_links} WHERE link_path = :link_path",
+        array(':link_path' => $parent_path)
+      )->fetchObject();
+      if (!empty($parent_menu)) {
+        $menu['plid'] = $parent_menu->mlid;
+      }
+    }
+    menu_link_save($menu);
+    menu_cache_clear($menu['menu_name']);
+  }
+}
+
+/**
+ * Get node object from url alias
+ * @param $alias
+ * @return node if find
+ */
+function _mica_core_get_node_by_url_alias($alias) {
+  $path = drupal_lookup_path("source", $alias);
+  $node = menu_get_object("node", 1, $path);
+  if (!$node) {
+    return FALSE;
+  }
+  return $node;
 }
 
 /**

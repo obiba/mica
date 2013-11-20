@@ -5,7 +5,6 @@
  * Hooks provided by the Mica Datasets module.
  */
 
-
 /**
  * Defines one or more operations to import taxonomies.
  */
@@ -19,4 +18,12 @@ function hook_taxonomies_operations_import() {
  */
 function hook_bootstrap_based_theme() {
   return array('theme_name' => TRUE);
+}
+
+/*
+ * hook_create_default_menu_module()
+ */
+
+function hook_create_default_menu_module() {
+  // add default menu
 }
