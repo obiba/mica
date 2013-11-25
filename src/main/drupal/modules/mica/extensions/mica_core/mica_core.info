@@ -69,6 +69,7 @@ features[variable][] = logintoboggan_redirect_on_confirm
 features[variable][] = logintoboggan_redirect_on_register
 features[variable][] = logintoboggan_unified_login
 features[variable][] = logintoboggan_site_403
+features[variable][] = site_403
 features[variable][] = views_block_hashes
 features[variable][] = views_data_export_gc_chunk
 features[variable][] = views_data_export_gc_expires
