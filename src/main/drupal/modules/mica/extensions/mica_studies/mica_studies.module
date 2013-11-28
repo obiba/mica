@@ -14,7 +14,8 @@ require_once('mica_studies.migrate.inc');
 /**
  * Implements hook_menu().
  */
-function mica_studies_menu() {
+function mica_studies_menu()
+{
   $items = array();
   $items['export'] = array(
     'title' => 'Export',
@@ -36,7 +37,8 @@ function mica_studies_menu() {
 /**
  * Implements hook_menu_local_tasks_alter().
  */
-function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path)
+{
   $links = array();
 
   switch ($root_path) {
@@ -146,7 +148,8 @@ function mica_studies_menu_local_tasks_alter(&$data, $router_item, $root_path) {
 /**
  * Implements feeds_permission().
  */
-function mica_studies_permission() {
+function mica_studies_permission()
+{
   $perms = array(
     'export data' => array(
       'title' => t('Export Data'),
@@ -159,14 +162,16 @@ function mica_studies_permission() {
 /**
  * Menu access callback.
  */
-function mica_studies_export_page_access() {
+function mica_studies_export_page_access()
+{
   return user_access('export data');
 }
 
 /**
  * Implements hook_node_insert()
  */
-function mica_studies_node_insert($node) {
+function mica_studies_node_insert($node)
+{
   switch ($node->type) {
     case 'study':
       mica_core_create_node_default_menu($node, TRUE, FALSE, 0, 'studies');
@@ -177,7 +182,8 @@ function mica_studies_node_insert($node) {
 /**
  * Implements hook_node_update()
  */
-function mica_studies_node_update($node) {
+function mica_studies_node_update($node)
+{
   switch ($node->type) {
     case 'study':
     case 'population':
@@ -190,7 +196,8 @@ function mica_studies_node_update($node) {
 /**
  * Implements hook_node_view()
  */
-function mica_studies_node_view($node, $view_mode, $langcode) {
+function mica_studies_node_view($node, $view_mode, $langcode)
+{
   switch ($node->type) {
     case 'study':
       ctools_add_css('mica_studies', 'mica_studies');
@@ -213,7 +220,8 @@ function mica_studies_node_view($node, $view_mode, $langcode) {
   }
 }
 
-function _mica_studies_contact_view($node, $view_mode, $langcode) {
+function _mica_studies_contact_view($node, $view_mode, $langcode)
+{
   $wrapper = entity_metadata_wrapper('node', $node->nid);
 
   // Fix until http://drupal.org/node/1376126 is resolved
@@ -257,8 +265,7 @@ function _mica_studies_contact_view($node, $view_mode, $langcode) {
         'format' => NULL,
       )
     );
-  }
-  else {
+  } else {
     $institution = $wrapper->field_institution_name->value();
     if (!empty($institution)) {
       $node->content['field_address']['#title'] = t('Address'); //$wrapper->field_contact_name->value() . ' (' . $wrapper->field_institution_name->value() . ')';
@@ -273,7 +280,8 @@ function _mica_studies_contact_view($node, $view_mode, $langcode) {
  * Implements hook_form_alter
  * To add dependent fields when filling out the form
  */
-function mica_studies_form_alter(&$form, &$form_state, $form_id) {
+function mica_studies_form_alter(&$form, &$form_state, $form_id)
+{
   switch ($form_id) {
     case 'study_node_form':
       _mica_studies_study_form_alter($form, $form_state, $form_id);
@@ -287,7 +295,8 @@ function mica_studies_form_alter(&$form, &$form_state, $form_id) {
   }
 }
 
-function _mica_studies_study_form_alter(&$form, &$form_state, $form_id) {
+function _mica_studies_study_form_alter(&$form, &$form_state, $form_id)
+{
   $form['#validate'][] = '_mica_studies_form_validate';
 
   // hide list of population
@@ -309,7 +318,8 @@ function _mica_studies_study_form_alter(&$form, &$form_state, $form_id) {
   );
 }
 
-function _mica_studies_save_add_population_submit($form, &$form_state) {
+function _mica_studies_save_add_population_submit($form, &$form_state)
+{
   if (isset($form['actions']['_mica_studies_save_add_population_submit'])) {
     $form_state['redirect'] = array(
       'node/add/population',
@@ -323,7 +333,8 @@ function _mica_studies_save_add_population_submit($form, &$form_state) {
   }
 }
 
-function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
+function _mica_studies_population_form_alter(&$form, &$form_state, $form_id)
+{
   $form['#validate'][] = '_mica_populations_form_validate';
 
   // Prepopulate study node reference in population edit form and hide it
@@ -371,7 +382,8 @@ function _mica_studies_population_form_alter(&$form, &$form_state, $form_id) {
 /**
  * Redirect to Study view after population edition
  */
-function _mica_studies_save_population_submit($form, &$form_state) {
+function _mica_studies_save_population_submit($form, &$form_state)
+{
   $wrapper = entity_metadata_wrapper('node', $form_state['nid']);
   $form_state['redirect'] = 'node/' . $wrapper->field_pop_study->nid->value();
 }
@@ -379,14 +391,14 @@ function _mica_studies_save_population_submit($form, &$form_state) {
 /**
  * Redirects to the study edit page when clicking on a button from the Population edit form or DCE edit form.
  */
-function _mica_studies_save_edit_study_submit($form, &$form_state) {
+function _mica_studies_save_edit_study_submit($form, &$form_state)
+{
   if (isset($form['actions']['_mica_studies_save_edit_study_submit']) && isset($form['field_pop_study'])) {
     //node_reference_autocomplete_value($form_element[0]['nid'], FALSE, NULL);
     $lang = $form['field_pop_study']['#language'];
     $form_state['redirect'] = 'node/' . $form['#node']->field_pop_study[$lang][0]['nid'] . '/edit';
     $form_state['nid'] = NULL;
-  }
-  else if (isset($form['actions']['_mica_studies_save_edit_study_submit']) && isset($form['field_dce_population'])) {
+  } else if (isset($form['actions']['_mica_studies_save_edit_study_submit']) && isset($form['field_dce_population'])) {
     // get the study id from the popuation id
     $lang = $form['field_dce_population']['#language'];
     $pop = node_load($form['#node']->field_dce_population[$lang][0]['nid']);
@@ -396,7 +408,8 @@ function _mica_studies_save_edit_study_submit($form, &$form_state) {
   }
 }
 
-function _mica_studies_prepopulate_study_after_build(&$form_element) {
+function _mica_studies_prepopulate_study_after_build(&$form_element)
+{
   if (isset($_REQUEST['study'])) {
     $form_element[0]['nid']['#default_value'] = $_REQUEST['study'];
     $form_element[0]['nid']['#value'] = node_reference_autocomplete_value($form_element[0]['nid'], FALSE, NULL);
@@ -404,7 +417,8 @@ function _mica_studies_prepopulate_study_after_build(&$form_element) {
   return $form_element;
 }
 
-function _mica_studies_save_add_dce_submit($form, &$form_state) {
+function _mica_studies_save_add_dce_submit($form, &$form_state)
+{
   if (isset($form['actions']['_mica_studies_save_add_dce_submit'])) {
     $form_state['redirect'] = array(
       'node/add/data-collection-event',
@@ -418,7 +432,8 @@ function _mica_studies_save_add_dce_submit($form, &$form_state) {
   }
 }
 
-function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $form_id) {
+function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $form_id)
+{
   $form['#validate'][] = '_mica_data_collection_event_form_validate';
 
   // Prepopulate study node reference in population edit form and hide it
@@ -449,14 +464,16 @@ function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $f
 /**
  * Redirect to Study view after DCE edition
  */
-function _mica_studies_save_dce_submit($form, &$form_state) {
+function _mica_studies_save_dce_submit($form, &$form_state)
+{
   $form_state['redirect'] = 'node/' . _mica_studies_get_dce_study_nid($form_state['nid']);
 }
 
 /**
  * Redirects to the population edit page when clicking on a button from the DCE edit form.
  */
-function _mica_studies_save_edit_population_submit($form, &$form_state) {
+function _mica_studies_save_edit_population_submit($form, &$form_state)
+{
   if (isset($form['actions']['_mica_studies_save_edit_population_submit'])) {
     $lang = $form['field_dce_population']['#language'];
     $form_state['redirect'] = 'node/' . $form['#node']->field_dce_population[$lang][0]['nid'] . '/edit';
@@ -464,7 +481,8 @@ function _mica_studies_save_edit_population_submit($form, &$form_state) {
   }
 }
 
-function _mica_studies_prepopulate_dce_after_build(&$form_element) {
+function _mica_studies_prepopulate_dce_after_build(&$form_element)
+{
   if (isset($_REQUEST['population'])) {
     $form_element[0]['nid']['#default_value'] = $_REQUEST['population'];
     $form_element[0]['nid']['#value'] = node_reference_autocomplete_value($form_element[0]['nid'], FALSE, NULL);
@@ -476,7 +494,8 @@ function _mica_studies_prepopulate_dce_after_build(&$form_element) {
  * Implement hook_field_group_pre_render
  * Used to show/hide a fieldset based on another field selection
  */
-function mica_field_group_pre_render(&$element, $group, &$form) {
+function mica_field_group_pre_render(&$element, $group, &$form)
+{
 
   if (isset($form['#form_id']) && $form['#form_id'] === 'study_node_form') {
 
@@ -507,7 +526,8 @@ function mica_field_group_pre_render(&$element, $group, &$form) {
   }
 }
 
-function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_selected) {
+function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_selected)
+{
   if (array_key_exists($dependee, $form) && array_key_exists($dependent, $form)) {
     $lang = $form[$dependee]['#language'];
     $type = $form[$dependee][$lang]['#type'];
@@ -516,8 +536,7 @@ function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_s
     if ($type != 'radios') {
       $input = $input . '[' . $key_selected . ']';
       $rule['checked'] = TRUE;
-    }
-    else {
+    } else {
       $rule['value'] = $key_selected;
     }
     $input = $input . '"]';
@@ -526,13 +545,13 @@ function _mica_add_dependent_field_checked(&$form, $dependee, $dependent, $key_s
         $input => $rule,
       ),
     );
-  }
-  else {
+  } else {
     debug('dependee "' . $dependee . '" or dependent "' . $dependent . '"not found');
   }
 }
 
-function _mica_add_double_dependent_field_checked(&$form, $dependee1, $dependee2, $dependent, $key_selected1, $key_selected2) {
+function _mica_add_double_dependent_field_checked(&$form, $dependee1, $dependee2, $dependent, $key_selected1, $key_selected2)
+{
   if (array_key_exists($dependee1, $form) && array_key_exists($dependent, $form) && array_key_exists($dependee2, $form)) {
     $lang = $form[$dependee1]['#language'];
     $type = $form[$dependee1][$lang]['#type'];
@@ -541,8 +560,7 @@ function _mica_add_double_dependent_field_checked(&$form, $dependee1, $dependee2
     if ($type != 'radios') {
       $input1 = $input1 . '[' . $key_selected1 . ']';
       $rule1['checked'] = TRUE;
-    }
-    else {
+    } else {
       $rule1['value'] = $key_selected1;
     }
 
@@ -553,8 +571,7 @@ function _mica_add_double_dependent_field_checked(&$form, $dependee1, $dependee2
     if ($type != 'radios') {
       $input2 = $input2 . '[' . $key_selected2 . ']';
       $rule2['checked'] = TRUE;
-    }
-    else {
+    } else {
       $rule2['value'] = $key_selected2;
     }
 
@@ -576,7 +593,8 @@ function _mica_add_double_dependent_field_checked(&$form, $dependee1, $dependee2
  * Displays dates as: 'start date' to 'end date' as the start date value.
  * And hide end date.
  */
-function _mica_studies_display_status_dates(&$node, $status_dates) {
+function _mica_studies_display_status_dates(&$node, $status_dates)
+{
   $wrapper = entity_metadata_wrapper('node', $node->nid);
   foreach ($status_dates as $start_date => $end_date) {
     $start = $wrapper->$start_date->value();
@@ -597,13 +615,15 @@ function _mica_studies_display_status_dates(&$node, $status_dates) {
 /**
  * Clear dependent field if dependee field selection is not checked.
  */
-function _mica_studies_form_validate($form, &$form_state) {
+function _mica_studies_form_validate($form, &$form_state)
+{
   _mica_studies_form_validate_field($form, $form_state, 'field_design', 'field_design_other_sp', 'other');
   _mica_studies_form_validate_field($form, $form_state, 'field_recruitment', 'field_recruitment_other_sp', 'other');
   _mica_studies_form_validate_field($form, $form_state, 'field_access_other', 'field_access_other_sp', '1');
 }
 
-function _mica_populations_form_validate($form, &$form_state) {
+function _mica_populations_form_validate($form, &$form_state)
+{
 
   //population
   _mica_studies_form_validate_field($form, $form_state, 'field_pop_src_recruit', 'field_pop_general_pop_recruit', 'general');
@@ -613,7 +633,8 @@ function _mica_populations_form_validate($form, &$form_state) {
   _mica_studies_form_validate_field($form, $form_state, 'field_pop_src_recruit', 'field_pop_recruitment_other', 'other');
 }
 
-function _mica_data_collection_event_form_validate($form, &$form_state) {
+function _mica_data_collection_event_form_validate($form, &$form_state)
+{
   //dce
   _mica_studies_form_validate_field($form, $form_state, 'field_dce_data_sources', 'field_dce_bio_samples_management', 'biological_samples');
   _mica_studies_form_validate_field($form, $form_state, 'field_dce_data_sources', 'field_dce_data_sources_admin_db', 'administratives_databases');
@@ -625,7 +646,8 @@ function _mica_data_collection_event_form_validate($form, &$form_state) {
 /**
  * Clear dependent field if dependee field selection is not checked in any language.
  */
-function _mica_studies_form_validate_field($form, &$form_state, $dependee, $dependent, $selection) {
+function _mica_studies_form_validate_field($form, &$form_state, $dependee, $dependent, $selection)
+{
   if (array_key_exists($dependee, $form_state['values']) && array_key_exists($dependent, $form_state['values'])) {
     $flangs = array_keys($form_state['values'][$dependee]);
     $flang = $flangs[0];
@@ -633,8 +655,7 @@ function _mica_studies_form_validate_field($form, &$form_state, $dependee, $depe
     foreach ($form_state['values'][$dependee][$flang] as $value) {
       if (array_key_exists('value', $value)) {
         $values[] = $value['value'];
-      }
-      else if (array_key_exists('tid', $value)) {
+      } else if (array_key_exists('tid', $value)) {
         $values[] = $value['tid'];
       }
 
@@ -648,8 +669,7 @@ function _mica_studies_form_validate_field($form, &$form_state, $dependee, $depe
       }
       form_set_value($form[$dependent], $empty_value, $form_state);
     }
-  }
-  else {
+  } else {
     debug('dependee "' . $dependee . '" or dependent "' . $dependent . '"not found');
   }
 }
@@ -657,13 +677,15 @@ function _mica_studies_form_validate_field($form, &$form_state, $dependee, $depe
 /**
  * Implements hook_block_view_alter()
  */
-function mica_studies_block_view_alter(&$data, $block) {
+function mica_studies_block_view_alter(&$data, $block)
+{
   if (!empty($block) && $block->delta === 'study_current_search' && $block->module === 'current_search') {
     _mica_studies_study_current_search($data, $block);
   }
 }
 
-function _mica_studies_study_current_search(&$data, $block) {
+function _mica_studies_study_current_search(&$data, $block)
+{
   if (isset($data['content']['field_group'])) {
     $data['content']['results']['#markup'] .= ' - ' . l(
         t('Clear all criteria') . ' [X]',
@@ -688,7 +710,8 @@ function _mica_studies_study_current_search(&$data, $block) {
 /**
  * Implements hook_node_validate()
  */
-function mica_studies_node_validate($node, $form, &$form_state) {
+function mica_studies_node_validate($node, $form, &$form_state)
+{
   // check study node title is unique
   if (!isset($node->nid) && $node->type === 'study') {
     if (mica_core_node_title_exists($node->type, $node->title)) {
@@ -701,7 +724,8 @@ function mica_studies_node_validate($node, $form, &$form_state) {
  * Creates default content after Features successfully installed
  * Implements hook_post_features_rebuild()
  */
-function mica_studies_post_features_rebuild() {
+function mica_studies_post_features_rebuild()
+{
   if (!variable_get('mica_studies_features_rebuild_completed', FALSE)) {
     _mica_studies_create_default_content();
     _mica_studies_configure_permissions();
@@ -713,11 +737,13 @@ function mica_studies_post_features_rebuild() {
  * Creates default content in mica core installation
  * Implements hook_mica_create_default_menu_module()
  */
-function mica_studies_create_default_menu_module() {
+function mica_studies_create_default_menu_module()
+{
   _mica_studies_create_default_content();
 }
 
-function _mica_studies_create_default_content() {
+function _mica_studies_create_default_content()
+{
   $study_menu = mica_core_create_menu(st('Studies'), 'studies', 'studies', FALSE, FALSE, 5, NULL);
   if (isset($study_menu) && empty($study_menu['exist'])) {
     mica_core_create_menu(st('Search Studies'), 'studies-search', 'studies-search', FALSE, FALSE, 10, 'studies', $study_menu['mlid']);
@@ -726,7 +752,8 @@ function _mica_studies_create_default_content() {
   }
 }
 
-function _mica_studies_configure_permissions() {
+function _mica_studies_configure_permissions()
+{
   watchdog('mica', 'Configure Studies custom permissions', array(), WATCHDOG_DEBUG);
   mica_core_configure_role_permissions('study reviewer',
     array(
@@ -744,7 +771,8 @@ function _mica_studies_configure_permissions() {
  * When creating studies via noderefcreate, set the complete name form the title because of auto_node_title
  * Implements hook_noderefcreate_alter()
  */
-function mica_studies_noderefcreate_alter(&$newnode, $element, $form_state) {
+function mica_studies_noderefcreate_alter(&$newnode, $element, $form_state)
+{
   switch ($newnode->type) {
     case 'study':
       $wrapper = entity_metadata_wrapper('node', $newnode);
@@ -760,7 +788,8 @@ function mica_studies_noderefcreate_alter(&$newnode, $element, $form_state) {
 /*
  * Hook hook_translation_exclude_fields()
  */
-function mica_studies_translation_exclude_fields() {
+function mica_studies_translation_exclude_fields()
+{
   return array(
     'study' => array('mica_opal'),
   );
@@ -769,7 +798,8 @@ function mica_studies_translation_exclude_fields() {
 /*
  * Hook hook_node_delete
  */
-function  mica_studies_node_delete($node) {
+function  mica_studies_node_delete($node)
+{
   switch ($node->type) {
     case 'study':
       _mica_studies_study_delete($node);
@@ -783,7 +813,8 @@ function  mica_studies_node_delete($node) {
 /**
  * Implements hook_block_info().
  */
-function mica_studies_block_info() {
+function mica_studies_block_info()
+{
   $pages = "<?php if(arg(0) == 'node' && is_numeric(arg(1)) && ((arg(2) == ''|| arg(2) == 'view' || arg(2) == 'draft'))) return TRUE; ?>";
   return array(
     'study-general-info' => array(
@@ -891,7 +922,8 @@ function mica_studies_block_info() {
 /**
  * Implements hook_block_view().
  */
-function mica_studies_block_view($delta = '') {
+function mica_studies_block_view($delta = '')
+{
   module_load_include('inc', 'mica_studies', 'mica_studies.blocks');
   $study = menu_get_object();
 
@@ -938,12 +970,25 @@ function mica_studies_block_view($delta = '') {
 /**
  * generate breadcrumbs for pop & dce page
  */
-function _mica_studies_menu_generate_breadcrumbs($path) {
-  $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
+function _mica_studies_menu_generate_breadcrumbs($path)
+{
+  global $language;
+  $lang = $language->language;
+  if ($lang == 'fr' || $lang == 'en') {
+    $result = db_query('SELECT * FROM {menu_links} WHERE link_path = :link_path AND language = :lang', array(':link_path' => $path, ':lang' => $lang));
+  } else {
+    $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
+  }
   $list = array();
   foreach ($result as $link) {
     $list[] = $link;
   }
+  if (empty($list)) {
+    watchdog('mica', 'Can\'t generate  Breadcrumbs for this node, try to edit this node or one of his child/parent an check if Menu settings > Provide a menu link  is checked and set his link title ', array(), WATCHDOG_ERROR);
+    // throw new ErrorException('Error encountered, please contact your administrator, more information logged in Recent log messages ', 0, 0, 0, 0);
+    return NULL;
+  }
+
   $list = $list[0];
 
   if (is_object($list)) {
@@ -952,29 +997,21 @@ function _mica_studies_menu_generate_breadcrumbs($path) {
   // Check all parent link possible
   if ($list['p9'] != 0) {
     $i = 9;
-  }
-  else if ($list['p8'] != 0) {
+  } else if ($list['p8'] != 0) {
     $i = 8;
-  }
-  else if ($list['p7'] != 0) {
+  } else if ($list['p7'] != 0) {
     $i = 7;
-  }
-  else if ($list['p6'] != 0) {
+  } else if ($list['p6'] != 0) {
     $i = 6;
-  }
-  else if ($list['p5'] != 0) {
+  } else if ($list['p5'] != 0) {
     $i = 5;
-  }
-  else if ($list['p4'] != 0) {
+  } else if ($list['p4'] != 0) {
     $i = 4;
-  }
-  else if ($list['p3'] != 0) {
+  } else if ($list['p3'] != 0) {
     $i = 3;
-  }
-  else if ($list['p2'] != 0) {
+  } else if ($list['p2'] != 0) {
     $i = 2;
-  }
-  else if ($list['p1'] != 0) {
+  } else if ($list['p1'] != 0) {
     $i = 1;
   }
 
@@ -983,7 +1020,7 @@ function _mica_studies_menu_generate_breadcrumbs($path) {
     $temp = menu_link_load($list['p' . $i]);
     // add breadcrumbs if link_path is correct
     if (!preg_match('/<firstchild>/', $temp['link_path'])) {
-      $breadcrumbs[] = menu_link_load($list['p' . $i]);
+      $breadcrumbs[] =menu_link_load($list['p' . $i]);
     }
   }
   $breadcrumbs = array_reverse($breadcrumbs);
@@ -993,7 +1030,8 @@ function _mica_studies_menu_generate_breadcrumbs($path) {
 /**
  * Implements hook_node_reference_FIELD_potential_references
  */
-function mica_studies_node_reference_field_pop_dce_potential_references($field, $options) {
+function mica_studies_node_reference_field_pop_dce_potential_references($field, $options)
+{
   $references = array();
 
   $current_node = menu_get_object();
@@ -1003,8 +1041,7 @@ function mica_studies_node_reference_field_pop_dce_potential_references($field, 
     if (isset($_REQUEST['study'])) {
       $study_nid = $_REQUEST['study'];
     }
-  }
-  else {
+  } else {
     $current_pop_wrapper = entity_metadata_wrapper('node', $current_node);
     $study_nid = $current_pop_wrapper->field_pop_study->nid->value();
   }
@@ -1012,11 +1049,13 @@ function mica_studies_node_reference_field_pop_dce_potential_references($field, 
   if (!empty($study_nid)) {
     $study_wrapper = entity_metadata_wrapper('node', $study_nid);
     foreach ($study_wrapper->field_study_populations->getIterator() as $pop_wrapper) {
-      foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
-        $references[$dce_wrapper->nid->value()] = array(
-          'title' => $dce_wrapper->title->value(),
-          'rendered' => check_plain($dce_wrapper->title->value()),
-        );
+      if(isset($pop_wrapper->field_pop_dce)){
+        foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
+          $references[$dce_wrapper->nid->value()] = array(
+            'title' => $dce_wrapper->title->value(),
+            'rendered' => check_plain($dce_wrapper->title->value()),
+          );
+        }
       }
     }
   }
@@ -1027,18 +1066,18 @@ function mica_studies_node_reference_field_pop_dce_potential_references($field, 
 /**
  * Implements hook_node_reference_FIELD_potential_references
  */
-function mica_studies_node_reference_field_dce_population_potential_references($field, $options) {
+function mica_studies_node_reference_field_dce_population_potential_references($field, $options)
+{
+
   $current_node = menu_get_object();
   $study_nid = NULL;
   if (empty($current_node)) { // new dce
     if (isset($_REQUEST['population'])) {
       $study_nid = entity_metadata_wrapper('node', $_REQUEST['population'])->field_pop_study->nid->value();
-    }
-    else if (isset($_REQUEST['study'])) {
+    } else if (isset($_REQUEST['study'])) {
       $study_nid = $_REQUEST['study'];
     }
-  }
-  else {
+  } else {
     $current_dce_wrapper = entity_metadata_wrapper('node', $current_node);
     foreach ($current_dce_wrapper->field_dce_population->getIterator() as $pop_wrapper) {
       $study_nid = $pop_wrapper->field_pop_study->nid->value();
@@ -1069,31 +1108,35 @@ function mica_studies_node_reference_field_dce_population_potential_references($
   return array($references);
 }
 
-function _mica_studies_sort_populations($study) {
+function _mica_studies_sort_populations($study)
+{
   $pop = array();
 
   $wrapper = entity_metadata_wrapper('node', $study->nid);
   foreach ($wrapper->field_study_populations->getIterator() as $pop_wrapper) {
     $events = array();
-    foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
-      $created = $dce_wrapper->created->value();
+    if(isset($pop_wrapper->field_pop_dce)){
+      foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
+        $created = $dce_wrapper->created->value();
 
-      $events[$dce_wrapper->nid->value()] = array(
-        'start_year' => $dce_wrapper->field_dce_start_year->value(),
-        'start_month' => $dce_wrapper->field_dce_start_month->value(),
-        'end_year' => $dce_wrapper->field_dce_end_year->value(),
-        'end_month' => $dce_wrapper->field_dce_end_month->value(),
-        'created' => empty($created) ? 0 : intval($created)
-      );
+        $events[$dce_wrapper->nid->value()] = array(
+          'start_year' => $dce_wrapper->field_dce_start_year->value(),
+          'start_month' => $dce_wrapper->field_dce_start_month->value(),
+          'end_year' => $dce_wrapper->field_dce_end_year->value(),
+          'end_month' => $dce_wrapper->field_dce_end_month->value(),
+          'created' => empty($created) ? 0 : intval($created)
+        );
+      }
+      uasort($events, '_mica_studies_sort_dce');
+      $pop[$pop_wrapper->nid->value()] = empty($events) ? array() : array_shift(array_values($events));
     }
-    uasort($events, '_mica_studies_sort_dce');
-    $pop[$pop_wrapper->nid->value()] = empty($events) ? array() : array_shift(array_values($events));
   }
   uasort($pop, '_mica_studies_sort_dce');
   return array_keys($pop);
 }
 
-function _mica_studies_sort_dce($x, $y) {
+function _mica_studies_sort_dce($x, $y)
+{
   $x_start = _mica_studies_convert_to_month(
     _mica_studies_get_dce_property($x, 'start_year', 0),
     _mica_studies_get_dce_property($x, 'start_month', 0));
@@ -1124,25 +1167,28 @@ function _mica_studies_sort_dce($x, $y) {
   return $x_start < $y_start ? -1 : 1;
 }
 
-function _mica_studies_get_dce_property($dce, $property, $default) {
+function _mica_studies_get_dce_property($dce, $property, $default)
+{
   if (isset($dce['data']) && isset($dce['data'][$property])) {
     return $dce['data'][$property];
-  }
-  else if (isset($dce[$property])) {
+  } else if (isset($dce[$property])) {
     return $dce[$property];
   }
   return $default;
 }
 
-function _mica_studies_convert_to_month($year, $month) {
+function _mica_studies_convert_to_month($year, $month)
+{
   return $year * 12 + $month;
 }
 
-function _mica_studies_get_month_name($month) {
+function _mica_studies_get_month_name($month)
+{
   return date("F", mktime(0, 0, 0, $month, 1, 2013));
 }
 
-function _mica_sudies_format_dce_year($year, $month) {
+function _mica_sudies_format_dce_year($year, $month)
+{
   if (empty($year)) {
     return '';
   }

@@ -64,7 +64,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
     $breadcrumbs = array();
     $breadcrumbs[] = l(t('Home'), '');
     for ($i = 0; $i < count($breadcrumb); $i++) {
-      $breadcrumbs[] = l($breadcrumb[$i]['link_title'], $breadcrumb[$i]['link_path']);
+      $breadcrumbs[] =l(truncate_utf8($breadcrumb[$i]['link_title'],45,true,true), $breadcrumb[$i]['link_path']);
     }
     drupal_set_breadcrumb($breadcrumbs);
   }

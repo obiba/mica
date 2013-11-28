@@ -1,0 +1,276 @@
+<?php
+/**
+ * @file
+ * Mica Datasets Crosstab module file
+ */
+
+//function getTime() {
+//  $mtime = microtime();
+//  $mtime = explode(" ", $mtime);
+//  $mtime = $mtime[1] + $mtime[0];
+//  return $mtime;
+//}
+
+/**
+ * Implements hook_menu()
+ */
+function mica_dimensions_coverage_tab_menu() {
+
+  $items['content/content/datasets-domains-coverage-table'] = array(
+    'title' => t('Domain Coverage table'),
+    'description' => '',
+    'page arguments' => array(1),
+    'access callback' => TRUE,
+    'type' => MENU_LOCAL_ACTION,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function mica_dimensions_coverage_tab_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+
+  $links = array();
+
+  switch ($root_path) {
+
+    case 'datasets':
+    case 'study-datasets':
+    case 'harmonization-datasets':
+      $links['view-dataset-crosstab-tab'] = array(
+        '#theme' => 'menu_local_action',
+        '#link' => array(
+          'title' => t('Domain Coverage table'),
+          'href' => 'content/datasets-domains-coverage-table', // Arguments could be taxonomies and dataset
+          'localized_options' => array(
+            'attributes' => array('class' => 'highlight'),
+            'query' => array(
+              'type' => ($root_path === 'study-datasets') ? 'study' : 'harmonization',
+            )
+          )
+        ),
+      );
+      break;
+  }
+
+  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function mica_dimensions_coverage_tab_block_info() {
+  $blocks = array();
+
+  $taxonomies = _mica_datasets_taxonomies();
+  foreach ($taxonomies as $taxonomy) {
+    $machine_name = substr($taxonomy[0], 0, drupal_strlen($taxonomy[0]) - 4);
+    $vocabulary = taxonomy_vocabulary_machine_name_load($machine_name);
+    if (!empty($vocabulary)) {
+      $blocks['tab'.$vocabulary->vid] = array(
+        'info' => 'Mica Domain Coverage table: ' . $vocabulary->name,
+        'title' => NULL,
+        'status' => TRUE,
+        'region' => 'content',
+        'visibility' => BLOCK_VISIBILITY_LISTED,
+        'pages' => 'content/datasets-domains-coverage-table',
+        'weight' => 50,
+        'collapse_type' => 3,
+        'custom' => 1,
+      );
+    }
+  }
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function mica_dimensions_coverage_tab_block_view($delta) {
+  ctools_add_css('mica_dimensions_coverage_tab', 'mica_dimensions_coverage_tab');
+
+  $datasets = mica_dimensions_coverage_tab_datasets();
+  $delta = substr($delta,3);
+  if(!empty($delta)){
+  $content = _mica_dimensions_coverage_tab_dimension_table($delta, $datasets);
+
+  $vocabulary = taxonomy_vocabulary_load($delta);
+  //$delta=[]
+  $block = array(
+    'subject' => $vocabulary->name,
+    'content' => array('#markup' => $content),
+  );
+  /*
+  foreach($delta as $val) {
+
+  }
+  */
+
+  return $block;
+  }
+}
+
+function mica_dimensions_coverage_tab_datasets() {
+  $data = & drupal_static(__FUNCTION__);
+
+  if (!isset($data)) {
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'dataset');
+
+    // Filter by dataset type
+    if (isset($_REQUEST['type']) && ($_REQUEST['type'] === 'harmonization' || $_REQUEST['type'] === 'study')) {
+      $query->fieldCondition('field_dataset_type', 'value', $_REQUEST['type']);
+    }
+
+    $entities = $query->execute();
+    if (!empty($entities['node'])) {
+      $index = search_api_index_load('variable_index');
+
+      // Get a list of taxonomy_term that are indexed for this index
+      $taxonomy_fields = $index->getFields();
+      foreach ($taxonomy_fields as $field => $config) {
+        if (!isset($config['entity_type']) || $config['entity_type'] !== 'taxonomy_term') {
+          unset($taxonomy_fields[$field]);
+        }
+      }
+
+      foreach ($taxonomy_fields as $taxonomy_field => $info) {
+        $data['field_by_title'][strtolower($info['name'])] = $taxonomy_field;
+      }
+      $taxonomy_fields = array_keys($taxonomy_fields);
+
+      $keys = array_keys($entities['node']);
+      foreach ($keys as $dataset_id) {
+        // Check if the dataset has variable with dimensions
+        // Filter permissions
+        if (_mica_datasets_node_access($dataset_id, 'dataset', 'view')) {
+          $node = node_load($dataset_id);
+          // Add only if the datasets has variables
+          if (!empty($node->field_dataset_variables)) {
+            $data['header'][$dataset_id] = array(
+              'data' => array(
+                '#markup' => $node->title,
+              ),
+              'class' => array('dataset-title')
+            );
+
+            $data[$dataset_id]['title'] = $node->title;
+            // Execute search query once and build the facet count map
+            $result = $index->query()->condition('field_dataset', $dataset_id)->execute();
+            if (!empty($result['search_api_facets'])) {
+
+              foreach ($result['search_api_facets'] as $facet => $facet_results) {
+
+                // Exclude dataset fields that are not taxonomy
+                if (in_array($facet, $taxonomy_fields)) {
+                  foreach ($facet_results as $facet_result) {
+                    $term_id = trim($facet_result['filter'], '\"');
+                    $data[$dataset_id][$term_id]['count'] = $facet_result['count'];
+                    $data[$dataset_id][$term_id]['facet'] = $facet;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  return $data;
+}
+
+function _mica_dimensions_coverage_tab_dimension_table($vid, $data) {
+  $rows = array();
+
+  // Fetch all terms
+  $vocabulary = taxonomy_vocabulary_load($vid);
+  $tree = taxonomy_get_tree($vocabulary->vid);
+  if (!empty($tree)) {
+    $options = array();
+    foreach ($tree as $term) {
+      // Initializes variables passed to theme hook.
+      $variables = array(
+        'text' => $term->name,
+        'path' => 'variable-search',
+        //'count' => 0,
+        'options' => array(
+          'attributes' => array('class' => 'facetapi-inactive'),
+          'html' => FALSE,
+          'query' => array(
+            'f[0]' => $data['field_by_title'][strtolower($vocabulary->name)] . ':' . $term->tid,
+          ),
+        ),
+      );
+
+      // Themes the link, adds row to facets.
+      $row[0] = array(
+        'class' => array('leaf'),
+        'data' => (isset($term->depth) && $term->depth > 0 ? theme('indentation', array('size' => $term->depth)) : '') .
+          theme('facetapi_link_inactive', $variables),
+      );
+
+      // Fill facet count in the same order as the header
+      if (isset($data['header'])) {
+        foreach ($data['header'] as $dataset_id => $title) {
+
+          if ($dataset_id > 0) {
+            if (isset($data[$dataset_id]) && isset($data[$dataset_id][$term->tid])) {
+              $url = l($data[$dataset_id][$term->tid]['count'], 'variable-search',
+                array(
+                  'query' => array(
+                    'f[0]' => 'field_dataset:' . $dataset_id,
+                    'f[1]' => $data[$dataset_id][$term->tid]['facet'] . ':' . $term->tid,
+                  ),
+                )
+              );
+              $row[$dataset_id] = array(
+                'data' => array(
+                  '#markup' => $url,
+                ),
+                'class' => array('center')
+              );
+            }
+            else {
+              $row[$dataset_id] = array(
+                'data' => array(
+                  '#markup' => '-',
+                ),
+                'class' => array('center')
+              );
+            }
+          }
+        }
+        $rows[] = $row;
+      }
+    }
+  }
+
+  // Insert vocabulary name in the first column
+  if (isset($data['header'])) {
+    array_splice($data['header'], 0, 0, t("@title", array('@title' => '')));
+    return theme(
+      'table',
+      array(
+        'header' => $data['header'],
+        'rows' => $rows,
+        'empty' => t('No information found'),
+        'sticky' => FALSE,
+        'attributes' => array('class' => 'dataset_crosstab'),
+      )
+    );
+  }
+
+  return theme(
+    'table',
+    array(
+      'header' => array(),
+      'rows' => $rows,
+      'empty' => t('No information found'),
+      'sticky' => FALSE,
+      'attributes' => array('class' => 'dataset_crosstab'),
+    )
+  );
+}
