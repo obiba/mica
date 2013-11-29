@@ -975,9 +975,9 @@ function _mica_studies_menu_generate_breadcrumbs($path)
   global $language;
   $lang = $language->language;
   if ($lang == 'fr' || $lang == 'en') {
-    try{$result = db_query('SELECT * FROM {menu_links} WHERE link_path = :link_path AND language = :lang', array(':link_path' => $path, ':lang' => $lang));}
-    catch(Exception $e)
-    {
+    try {
+      $result = db_query('SELECT * FROM {menu_links} WHERE link_path = :link_path AND language = :lang', array(':link_path' => $path, ':lang' => $lang));
+    } catch (Exception $e) {
       watchdog('mica', 'Modules Language, translation my be not enabled ', array(), WATCHDOG_NOTICE);
       $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
     }
@@ -1027,7 +1027,7 @@ function _mica_studies_menu_generate_breadcrumbs($path)
     $temp = menu_link_load($list['p' . $i]);
     // add breadcrumbs if link_path is correct
     if (!preg_match('/<firstchild>/', $temp['link_path'])) {
-      $breadcrumbs[] =menu_link_load($list['p' . $i]);
+      $breadcrumbs[] = menu_link_load($list['p' . $i]);
     }
   }
   $breadcrumbs = array_reverse($breadcrumbs);
@@ -1040,7 +1040,6 @@ function _mica_studies_menu_generate_breadcrumbs($path)
 function mica_studies_node_reference_field_pop_dce_potential_references($field, $options)
 {
   $references = array();
-
   $current_node = menu_get_object();
   $study_nid = NULL;
   if (empty($current_node)) {
@@ -1056,7 +1055,7 @@ function mica_studies_node_reference_field_pop_dce_potential_references($field, 
   if (!empty($study_nid)) {
     $study_wrapper = entity_metadata_wrapper('node', $study_nid);
     foreach ($study_wrapper->field_study_populations->getIterator() as $pop_wrapper) {
-      if(isset($pop_wrapper->field_pop_dce)){
+      if (isset($pop_wrapper->field_pop_dce)) {
         foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
           $references[$dce_wrapper->nid->value()] = array(
             'title' => $dce_wrapper->title->value(),
@@ -1122,7 +1121,7 @@ function _mica_studies_sort_populations($study)
   $wrapper = entity_metadata_wrapper('node', $study->nid);
   foreach ($wrapper->field_study_populations->getIterator() as $pop_wrapper) {
     $events = array();
-    if(isset($pop_wrapper->field_pop_dce)){
+    if (isset($pop_wrapper->field_pop_dce)) {
       foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
         $created = $dce_wrapper->created->value();
 
@@ -1134,6 +1133,7 @@ function _mica_studies_sort_populations($study)
           'created' => empty($created) ? 0 : intval($created)
         );
       }
+
       uasort($events, '_mica_studies_sort_dce');
       $pop[$pop_wrapper->nid->value()] = empty($events) ? array() : array_shift(array_values($events));
     }
@@ -1191,7 +1191,8 @@ function _mica_studies_convert_to_month($year, $month)
 
 function _mica_studies_get_month_name($month)
 {
-  return date("F", mktime(0, 0, 0, $month, 1, 2013));
+  global $language;
+  return format_date(mktime(0, 0, 0, $month, 1, 2013), 'custom', 'F', NULL, $language->language);
 }
 
 function _mica_sudies_format_dce_year($year, $month)
