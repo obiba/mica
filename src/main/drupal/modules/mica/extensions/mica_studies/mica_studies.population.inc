@@ -13,25 +13,25 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
     if (node_access('view', $dce_wrapper->value())) {
       $desc = NULL;
       if (!empty($dce_wrapper->value()->body)) {
-        $desc = $dce_wrapper->body->summary->value();
+        $desc = isset($dce_wrapper->value()->body{$langcode}[0]['summary'])?$dce_wrapper->value()->body{$langcode}[0]['summary']:$dce_wrapper->body->summary->value();
         if (empty($desc)) {
-          $desc = truncate_utf8($dce_wrapper->body->value->value(), 50, TRUE, TRUE);
+          $desc = $dce_wrapper->body->value->value();
         }
       }
       $dce_nid = $dce_wrapper->nid->value();
-      $created = $dce_wrapper->created->value();
+      //  $created = $dce_wrapper->created->value();
 
       // Hide DCE that are not published on study published page
       if ($wrapper->status->value() == $dce_wrapper->status->value() || $show_draft) {
         $dce_rows[$dce_nid] = array(
           'data' => array(
             'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
-            'desc' => $desc,
+            'desc' => truncate_utf8($desc,50, TRUE, TRUE),
             'start_year' => $dce_wrapper->field_dce_start_year->value(),
             'start_month' => $dce_wrapper->field_dce_start_month->value(),
             'end_year' => $dce_wrapper->field_dce_end_year->value(),
             'end_month' => $dce_wrapper->field_dce_end_month->value(),
-            'created' => empty($created) ? 0 : intval($created),
+            //  'created' => empty($created) ? 0 : intval($created),
           )
         );
 

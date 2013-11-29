@@ -1319,7 +1319,14 @@ function _mica_datasets_menu_generate_breadcrumbs_variables($path)
   global $language;
   $lang = $language->language;
   if ($lang == 'fr' || $lang == 'en') {
-    $result = db_query('SELECT * FROM {menu_links} WHERE link_path = :link_path AND language = :lang', array(':link_path' => $path, ':lang' => $lang));
+    try{$result = db_query('SELECT * FROM {menu_links} WHERE link_path = :link_path AND language = :lang', array(':link_path' => $path, ':lang' => $lang));}
+    catch(Exception $e)
+    {
+      watchdog('mica', 'Modules Language, translation my be not enabled ', array(), WATCHDOG_NOTICE);
+      $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
+    }
+
+
   } else {
     $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
   }
