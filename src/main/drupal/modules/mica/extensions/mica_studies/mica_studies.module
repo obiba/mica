@@ -1140,6 +1140,7 @@ function _mica_studies_sort_populations($study)
   }
   uasort($pop, '_mica_studies_sort_dce');
   return array_keys($pop);
+
 }
 
 function _mica_studies_sort_dce($x, $y)
