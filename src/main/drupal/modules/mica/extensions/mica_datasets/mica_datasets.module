@@ -1286,14 +1286,18 @@ function mica_datasets_node_view($node, $view_mode) {
 function _mica_datasets_menu_generate_breadcrumbs_variables($path) {
   global $language;
   $lang = $language->language;
-  
+
   if (module_exists('locale') && isset($lang)) {
-    $result = db_query('SELECT * FROM {menu_links} WHERE link_path = :link_path AND language = :lang', array(':link_path' => $path, ':lang' => $lang));
-    if(!isset($result->rowCount)){
+    $result = db_query('SELECT * FROM {menu_links} WHERE link_path = :link_path AND language = :lang', array(
+      ':link_path' => $path,
+      ':lang' => $lang
+    ));
+    if (!isset($result->rowCount)) {
       watchdog('mica', 'Modules Language, translation my be not correctly enabled and configured', array(), WATCHDOG_NOTICE);
       $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
     }
-  } else {
+  }
+  else {
     $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
   }
 
