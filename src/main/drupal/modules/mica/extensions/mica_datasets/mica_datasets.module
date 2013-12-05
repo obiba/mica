@@ -1288,23 +1288,32 @@ function _mica_datasets_menu_generate_breadcrumbs_variables($path) {
   $lang = $language->language;
 
   if (module_exists('locale') && isset($lang)) {
-    $result = db_query('SELECT * FROM {menu_links} WHERE link_path = :link_path AND language = :lang', array(
+    $result_lang = db_query('SELECT * FROM {menu_links} WHERE link_path = :link_path AND language = :lang', array(
       ':link_path' => $path,
       ':lang' => $lang
     ));
-    if (!isset($result->rowCount)) {
+    $list_lang = array();
+    foreach ($result_lang as $link) {
+      $list_lang[] = $link;
+    }
+    if (empty($list_lang)) {
       watchdog('mica', 'Modules Language, translation my be not correctly enabled and configured', array(), WATCHDOG_NOTICE);
       $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
+      foreach ($result as $link) {
+        $list[] = $link;
+      }
+    }
+    else {
+      $list = $list_lang;
     }
   }
   else {
     $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
+    foreach ($result as $link) {
+      $list[] = $link;
+    }
   }
 
-  $list = array();
-  foreach ($result as $link) {
-    $list[] = $link;
-  }
   if (empty($list)) {
     watchdog('mica', 'Can\'t generate  Breadcrumbs for this node, try to edit this node or one of his child/parent an check if Menu settings > Provide a menu link  is checked and set his link title ', array(), WATCHDOG_ERROR);
     // throw new ErrorException('Error encountered, please contact your administrator, more information logged in Recent log messages ', 0, 0, 0, 0);

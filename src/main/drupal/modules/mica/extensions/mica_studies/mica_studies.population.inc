@@ -55,7 +55,10 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
   $breadcrumb = _mica_studies_menu_generate_breadcrumbs('node/' . $study_id);
 
   // generate specific breadcrumbs for population pages pages
-  $current_breadcrumbs = menu_get_active_breadcrumb();
+  if (empty($breadcrumb)) {
+    $current_breadcrumbs = menu_get_active_breadcrumb();
+  }
+
   if (!isset($current_breadcrumbs[1])) {
     $breadcrumbs = array();
     $breadcrumbs[] = l(t('Home'), '');
