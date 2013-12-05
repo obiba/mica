@@ -90,11 +90,12 @@ function _mica_studies_population_view_selection_criteria($node) {
     'weight' => 0,
     'type' => module_exists('i18n') ? 'i18n_list_default' : 'list_default',
   ));
-  $nbr_criteria = count($_field_pop_select_criteria['#items']);
-  for ($i = 0; $i < $nbr_criteria; $i++) {
-    $node->content['field_pop_select_criteria'][$i]['#markup'] = $_field_pop_select_criteria[$i]['#markup'];
+  if (isset($_field_pop_select_criteria['#items'])) {
+    $nbr_criteria = count($_field_pop_select_criteria['#items']);
+    for ($i = 0; $i < $nbr_criteria; $i++) {
+      $node->content['field_pop_select_criteria'][$i]['#markup'] = $_field_pop_select_criteria[$i]['#markup'];
+    }
   }
-
   _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_gender', t('Gender'));
 
   if (isset($node->content['field_pop_age_min']) || isset($node->content['field_pop_age_max'])) {
