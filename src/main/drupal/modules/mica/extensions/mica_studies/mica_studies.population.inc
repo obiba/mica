@@ -79,7 +79,6 @@ function _mica_studies_population_normalize_rows(&$dce_rows) {
 }
 
 function _mica_studies_population_view_selection_criteria($node) {
-
   $wrapper = entity_metadata_wrapper('node', $node->nid);
 
   if (!isset($node->content['field_pop_select_criteria'])) {
@@ -127,14 +126,12 @@ function _mica_studies_population_view_selection_criteria($node) {
     }
   }
 
-  ini_set('error_reporting', E_ALL ^ E_NOTICE);
   _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_country', t('Country'), t('Countries'));
   _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_territory', t('Territory'), t('Territories'));
   _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_ethnic_origin', t('Ethnic origin'), t('Ethnic origins'));
   _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_health_status', t('Health status'));
   _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_selection_others_sp', t('Other'));
   _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_partcipant_sel_supp_in', t('Supplementary information'));
-  ini_set('error_reporting', E_ALL);
   if (strlen($node->content['field_pop_select_criteria'][0]['#markup']) === 0) {
     $node->content['field_pop_select_criteria']['#access'] = FALSE;
   }
@@ -144,21 +141,14 @@ function _mica_studies_population_view_selection_criteria_item(&$node, $wrapper,
   if (!isset($node->content[$field])) {
     return;
   }
-  $_value_field = $wrapper->$field->value();
-  $field_value = field_view_field('node', $node, $field, array(
-    'label' => 'inline',
-    'weight' => 1,
-    'type' => (module_exists('i18n')) ? 'i18n_list_default' : 'list_default'
-  ));
-
-  if (!empty($_value_field)) {
-    $nb_items = isset($_value_field['value']) ? 1 : count($field_value['#items']);
+  $value = $wrapper->$field->value();
+  if (!empty($value)) {
+    $nb_items = isset($value['value']) ? 1 : count($value);
     $index = count($node->content['field_pop_select_criteria']['#items']);
     $node->content['field_pop_select_criteria']['#items'][$index] = $node->content[$field]['#items'];
-
     $markup = '<div class="inner-value">';
     for ($i = 0; $i < $nb_items; $i++) {
-      $markup .= $field_value[$i]['#markup'];
+      $markup .= isset($node->content[$field][$i]['#markup']) ? $node->content[$field][$i]['#markup'] : '';
       if ($i < $nb_items - 1) {
         $markup .= ', ';
       }
@@ -170,7 +160,6 @@ function _mica_studies_population_view_selection_criteria_item(&$node, $wrapper,
       . $markup;
     $node->content[$field]['#access'] = FALSE;
   }
-
 }
 
 function _mica_studies_population_view_recruitment_sources(&$node) {
