@@ -573,7 +573,7 @@ function mica_datasets_prepare_prettify() {
   }
   else {
     throw new Exception('prettify.css library not found! Please follow the instructions in mica_datasets/README.txt. Searched into '
-    . $paths);
+      . $paths);
   }
 
   if (isset($paths['js'])) {
@@ -581,7 +581,7 @@ function mica_datasets_prepare_prettify() {
   }
   else {
     throw new Exception('prettify.js library not found! Please follow the instructions in mica_datasets/README.txt. Searched into '
-    . $paths);
+      . $paths);
   }
 
   ctools_add_js('mica_datasets_prettify', 'mica_datasets');
@@ -715,8 +715,8 @@ function mica_datasets_node_view_alter(&$build) {
           ),
           'overview' => array(
             '#markup' => "<p><a href='" . url("node/" . $dataset_wrapper->nid->value() . "/dataset-harmonization") . "'><b>" . t(
-              "View @title Harmonization", array('@title' => $dataset_wrapper->title->value())
-            ) . "</a></b></p>",
+                "View @title Harmonization", array('@title' => $dataset_wrapper->title->value())
+              ) . "</a></b></p>",
           ),
         );
       }
