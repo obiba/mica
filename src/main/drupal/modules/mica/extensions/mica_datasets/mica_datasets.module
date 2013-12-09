@@ -601,7 +601,7 @@ function mica_datasets_node_view_alter(&$build) {
       $values['dataset_id'] = $variable_wrapper->field_dataset->nid->value();
       $term = new MicaDatasetQueryTerm($values);
       $impl = $term->termImpl();
-      if ($impl->hasConnectors() && $impl->checkStats()) {
+      if ($impl->hasConnectors() && $impl->checkStats() && user_is_logged_in()) {
         $build['statistics'] = array(
           '#type' => 'fieldset',
           '#title' => t('Statistics'),
