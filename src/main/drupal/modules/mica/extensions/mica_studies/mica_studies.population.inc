@@ -91,15 +91,31 @@ function _mica_studies_population_view_selection_criteria($node) {
   $_field_pop_select_criteria = field_view_field('node', $wrapper->value(), 'field_pop_select_criteria', array(
     'label' => 'inline',
     'weight' => 0,
-    'type' => module_exists('i18n') ? 'i18n_list_default' : 'list_default',
+    'type' => module_exists('i18n') ? 'i18n_list_default' : 'list_default'
   ));
+
   if (isset($_field_pop_select_criteria['#items'])) {
     $nbr_criteria = count($_field_pop_select_criteria['#items']);
     for ($i = 0; $i < $nbr_criteria; $i++) {
       $node->content['field_pop_select_criteria'][$i]['#markup'] = $_field_pop_select_criteria[$i]['#markup'];
     }
   }
-  _mica_studies_population_view_selection_criteria_item($node, $wrapper, 'field_pop_gender', t('Gender'));
+
+  $index = count($node->content['field_pop_select_criteria']['#items']);
+  if (isset($node->content['field_pop_gender'])) {
+    $_field_pop_gendre = field_view_field('node', $wrapper->value(), 'field_pop_gender', array(
+      'label' => 'inline',
+      'weight' => 0,
+      'type' => module_exists('i18n') ? 'i18n_list_default' : 'list_default'
+    ));
+    $node->content['field_pop_gender']['#access'] = FALSE;
+    $node->content['field_pop_select_criteria']['#items'][$index] = $_field_pop_gendre['#items'][0];
+    $label_value = t('Gender');
+    $markup = $_field_pop_gendre[0]['#markup'];
+    $node->content['field_pop_select_criteria'][$index]['#markup'] = "<div class='inner-label'>$label_value:</div>"
+      . "<div class='inner-value'>$markup</div>";
+
+  }
 
   if (isset($node->content['field_pop_age_min']) || isset($node->content['field_pop_age_max'])) {
     $index = count($node->content['field_pop_select_criteria']['#items']);
