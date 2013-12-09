@@ -105,7 +105,12 @@ function _mica_studies_block_study_supp_infos($study) {
   if (is_numeric($study)) {
     $study = node_load($study);
   }
-  $content = array(field_view_field('node', $study, 'field_supp_infos', array('label' => 'hidden')));
+  $content = array(
+    field_view_field('node', $study, 'field_supp_infos', array(
+      'label' => 'hidden',
+      'type' => module_exists('i18n') ? 'i18n_text' : 'text'
+    ))
+  );
   return array(
     'subject' => t('Supplementary Information') . '<a name="supplementary-info"> </a>',
     'content' => array_filter($content),
@@ -177,15 +182,16 @@ function _mica_studies_block_study_datasets($study) {
 
 function _mica_studies_block_study_populations($study, $show_draft) {
   $content = array();
+  global $language;
 
   // Load the populations that are attached to PUBLISHED version of study
   if ($show_draft) {
     $study = node_load($study->nid);
   }
 
-  foreach (_mica_studies_sort_populations($study) as $population_nid) {
-    $pop = node_load($population_nid);
+  foreach (_mica_studies_sort_populations($study) as $index_pop => $population_nid) {
 
+    $pop = node_load($population_nid);
     if (node_access('view', $pop)) {
 
       if ($show_draft) {
@@ -193,16 +199,16 @@ function _mica_studies_block_study_populations($study, $show_draft) {
         $pop = node_load($population_nid, $latest);
 
         if (!isset($pop->workbench_moderation['published']) || $pop->vid !== $pop->workbench_moderation['published']->vid) {
-          $content[]['body']['#markup'] = "<div class='node-unpublished'>";
-          $content[] = node_view($pop, 'full');;
-          $content[]['body']['#markup'] = "</div>";
+          $content[$index_pop]['body']['#markup'] = "<div class='node-unpublished'>";
+          $content[$index_pop] = node_view($pop, 'full', $language->language);
+          $content[$index_pop]['body']['#markup'] = "</div>";
         }
         else {
-          $content[] = node_view($pop, 'full');;
+          $content[$index_pop] = node_view($pop, 'full');
         }
       }
       else if ($show_draft || (isset($pop->workbench_moderation['published']) && $pop->vid == $pop->workbench_moderation['published']->vid)) {
-        $content[] = node_view($pop, 'full');;
+        $content[$index_pop] = node_view($pop, 'full');
       }
     }
   }

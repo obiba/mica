@@ -24,7 +24,7 @@ function _mica_studies_dce_view(&$node, $view_mode, $langcode) {
     $breadcrumbs[] = l(t('Home'), '');
     $breadcrumb = _mica_studies_menu_generate_breadcrumbs('node/' . $study_id);
     for ($i = 0; $i < count($breadcrumb); $i++) {
-      $breadcrumbs[] = l($breadcrumb[$i]['link_title'], $breadcrumb[$i]['link_path']);
+      $breadcrumbs[] = l(truncate_utf8($breadcrumb[$i]['link_title'], 45, TRUE, TRUE), $breadcrumb[$i]['link_path']);
     }
     $breadcrumbs[] = $pop_link;
 
