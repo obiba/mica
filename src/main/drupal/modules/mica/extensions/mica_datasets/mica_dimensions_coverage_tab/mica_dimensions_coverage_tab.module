@@ -81,7 +81,6 @@ function mica_dimensions_coverage_tab_block_info() {
       );
     }
   }
-
   return $blocks;
 }
 
@@ -90,7 +89,6 @@ function mica_dimensions_coverage_tab_block_info() {
  */
 function mica_dimensions_coverage_tab_block_view($delta) {
   ctools_add_css('mica_dimensions_coverage_tab', 'mica_dimensions_coverage_tab');
-
   $datasets = mica_dimensions_coverage_tab_datasets();
   $delta = substr($delta,3);
   if(!empty($delta)){
@@ -100,14 +98,13 @@ function mica_dimensions_coverage_tab_block_view($delta) {
   //$delta=[]
   $block = array(
     'subject' => $vocabulary->name,
-    'content' => array('#markup' => $content),
+    'content' => array('#markup' => $content)
   );
   /*
   foreach($delta as $val) {
 
   }
   */
-
   return $block;
   }
 }
@@ -156,7 +153,7 @@ function mica_dimensions_coverage_tab_datasets() {
               ),
               'class' => array('dataset-title')
             );
-
+            dpm($node);
             $data[$dataset_id]['title'] = $node->title;
             // Execute search query once and build the facet count map
             $result = $index->query()->condition('field_dataset', $dataset_id)->execute();
