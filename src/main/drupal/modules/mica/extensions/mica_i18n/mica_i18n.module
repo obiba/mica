@@ -12,6 +12,29 @@ define('MEMENTO_TAXONOMIES', 'mica_i18n_memento_taxonomies');
 define('MEMENTO_INDEXES', 'mica_i18n_memento_indexes');
 
 /**
+ * Implements hook_menu_alter().
+ *
+ * Take over the node translation page.
+ */
+function mica_i18n_menu_alter(&$items) {
+  // Take over node/add pages for Correctly deal with special characters ' " ...
+  $items['node/add']['page callback'] = 'mica_i18n_node_add_page';
+
+}
+
+/**
+ * Replacement for node_add_page.
+ */
+function mica_i18n_node_add_page() {
+  $item = menu_get_item();
+  $content = system_admin_menu_block($item);
+  foreach ($content as &$item) {
+    $item['title'] = html_entity_decode($item['title'], ENT_QUOTES, "ISO-8859-1");
+  }
+  return theme('node_add_list', array('content' => $content));
+}
+
+/**
  * Implements hook_menu().
  */
 function mica_i18n_menu() {
