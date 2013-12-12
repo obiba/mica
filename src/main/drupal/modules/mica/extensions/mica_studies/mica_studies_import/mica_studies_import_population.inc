@@ -121,7 +121,7 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
   if (!empty($age_max)) {
     $wrapper->field_pop_age_max->set($age_max);
   }
-  $age_min = $xpath->query('/population/characteristics-of-the-population/age/max-age')->item(0)->nodeValue;
+  $age_min = $xpath->query('/population/characteristics-of-the-population/age/min-age')->item(0)->nodeValue;
   $wrapper->field_pop_age_min->set();
   if (!empty($age_min)) {
     $wrapper->field_pop_age_min->set($age_min);
