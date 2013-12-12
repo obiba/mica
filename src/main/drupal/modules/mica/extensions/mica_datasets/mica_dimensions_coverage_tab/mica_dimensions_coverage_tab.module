@@ -62,7 +62,6 @@ function mica_dimensions_coverage_tab_menu_local_tasks_alter(&$data, $router_ite
  */
 function mica_dimensions_coverage_tab_block_info() {
   $blocks = array();
-
   $taxonomies = _mica_datasets_taxonomies();
   foreach ($taxonomies as $taxonomy) {
     $machine_name = substr($taxonomy[0], 0, drupal_strlen($taxonomy[0]) - 4);
@@ -90,7 +89,7 @@ function mica_dimensions_coverage_tab_block_info() {
  */
 function mica_dimensions_coverage_tab_block_view($delta) {
   ctools_add_css('mica_dimensions_coverage_tab', 'mica_dimensions_coverage_tab');
-
+  _mica_dimensions_coverage_tab_get_array();
   $datasets = mica_dimensions_coverage_tab_datasets();
   $delta = substr($delta, 3);
   if (!empty($delta)) {
@@ -283,4 +282,17 @@ function _mica_dimensions_coverage_tab_dimension_table($vid, $data) {
       'attributes' => array('class' => 'dataset_crosstab'),
     )
   );
+}
+
+Function _mica_dimensions_coverage_tab_get_array() {
+  $taxonomies = _mica_datasets_taxonomies();
+  foreach ($taxonomies as $taxonomy) {
+    $machine_name = substr($taxonomy[0], 0, drupal_strlen($taxonomy[0]) - 4);
+    $vocabulary = taxonomy_vocabulary_machine_name_load($machine_name);
+
+  }
+  $datasets = mica_dimensions_coverage_tab_datasets();
+
+  dpm($datasets);
+
 }
