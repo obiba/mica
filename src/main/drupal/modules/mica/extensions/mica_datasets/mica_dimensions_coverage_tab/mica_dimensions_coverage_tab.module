@@ -147,13 +147,22 @@ function mica_dimensions_coverage_tab_datasets() {
           $node = node_load($dataset_id);
           // Add only if the datasets has variables
           if (!empty($node->field_dataset_variables)) {
+
+            if (isset($node->field_dataset_studies['und'])) {
+              $study = node_load($node->field_dataset_studies['und'][0]['nid']);
+              $study_title = truncate_utf8($study->title, 45, TRUE, TRUE);
+            }
+            else {
+              $study_title = '';
+            }
+            $title_dataset = $node->title . '-' . $study_title;
             $data['header'][$dataset_id] = array(
               'data' => array(
-                '#markup' => $node->title,
+                '#markup' => $title_dataset,
               ),
               'class' => array('dataset-title')
             );
-            dpm($node);
+
             $data[$dataset_id]['title'] = $node->title;
             // Execute search query once and build the facet count map
             $result = $index->query()->condition('field_dataset', $dataset_id)->execute();
@@ -248,8 +257,8 @@ function _mica_dimensions_coverage_tab_dimension_table($vid, $data) {
   // Insert vocabulary name in the first column
   if (isset($data['header'])) {
     array_splice($data['header'], 0, 0, t("@title", array('@title' => '')));
-    return theme(
-      'table',
+    $tab = theme(
+    'table',
       array(
         'header' => $data['header'],
         'rows' => $rows,
@@ -258,6 +267,7 @@ function _mica_dimensions_coverage_tab_dimension_table($vid, $data) {
         'attributes' => array('class' => 'dataset_crosstab'),
       )
     );
+    return $tab;
   }
 
   return theme(
