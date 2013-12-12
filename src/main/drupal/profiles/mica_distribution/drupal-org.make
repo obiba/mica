@@ -127,7 +127,7 @@ projects[languageicons] = 1.0
 
 projects[libraries] = 2.1
 
-projects[link] = 1.1
+projects[link] = 1.2
 
 projects[logintoboggan] = 1.3
 

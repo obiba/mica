@@ -81,6 +81,7 @@ function mica_dimensions_coverage_tab_block_info() {
       );
     }
   }
+
   return $blocks;
 }
 
@@ -89,6 +90,7 @@ function mica_dimensions_coverage_tab_block_info() {
  */
 function mica_dimensions_coverage_tab_block_view($delta) {
   ctools_add_css('mica_dimensions_coverage_tab', 'mica_dimensions_coverage_tab');
+
   $datasets = mica_dimensions_coverage_tab_datasets();
   $delta = substr($delta,3);
   if(!empty($delta)){
@@ -98,13 +100,14 @@ function mica_dimensions_coverage_tab_block_view($delta) {
   //$delta=[]
   $block = array(
     'subject' => $vocabulary->name,
-    'content' => array('#markup' => $content)
+    'content' => array('#markup' => $content),
   );
   /*
   foreach($delta as $val) {
 
   }
   */
+
   return $block;
   }
 }
@@ -147,18 +150,9 @@ function mica_dimensions_coverage_tab_datasets() {
           $node = node_load($dataset_id);
           // Add only if the datasets has variables
           if (!empty($node->field_dataset_variables)) {
-
-            if (isset($node->field_dataset_studies['und'])) {
-              $study = node_load($node->field_dataset_studies['und'][0]['nid']);
-              $study_title = truncate_utf8($study->title, 45, TRUE, TRUE);
-            }
-            else {
-              $study_title = '';
-            }
-            $title_dataset = $node->title . '-' . $study_title;
             $data['header'][$dataset_id] = array(
               'data' => array(
-                '#markup' => $title_dataset,
+                '#markup' => $node->title,
               ),
               'class' => array('dataset-title')
             );
@@ -257,8 +251,8 @@ function _mica_dimensions_coverage_tab_dimension_table($vid, $data) {
   // Insert vocabulary name in the first column
   if (isset($data['header'])) {
     array_splice($data['header'], 0, 0, t("@title", array('@title' => '')));
-    $tab = theme(
-    'table',
+    return theme(
+      'table',
       array(
         'header' => $data['header'],
         'rows' => $rows,
@@ -267,7 +261,6 @@ function _mica_dimensions_coverage_tab_dimension_table($vid, $data) {
         'attributes' => array('class' => 'dataset_crosstab'),
       )
     );
-    return $tab;
   }
 
   return theme(

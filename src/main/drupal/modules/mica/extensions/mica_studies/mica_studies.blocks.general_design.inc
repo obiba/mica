@@ -21,14 +21,16 @@ function _mica_studies_block_study_general_design($study) {
   $content[] = _mica_studies_block_study_general_design_field_nb_samples($wrapper, ++$weight);
   $content[] = field_view_field('node', $study, 'field_target_nb_supp_info', array(
     'label' => 'inline',
-    'weight' => ++$weight
+    'weight' => ++$weight,
+    'type' => module_exists('i18n') ? 'i18n_text' : 'text'
   ));
 
   $content[] = field_view_field('node', $study, 'field_recruitment_supp_info', array(
     'label' => 'inline',
-    'weight' => ++$weight
-  ));
+    'weight' => ++$weight,
+    'type' => module_exists('i18n') ? 'i18n_text_log' : 'text_long',
 
+  ));
   return array(
     'subject' => t('General Design') . '<a name="general-design"> </a>',
     'content' => array_filter($content),
@@ -46,7 +48,7 @@ function _mica_studies_block_study_general_design_field_design($study_wrapper, $
   if (in_array('other', $design) && !empty($other_sp)) {
     $design_other_sp_view = field_view_field('node', $study_wrapper->value(), 'field_design_other_sp');
     $label = '<span class="other-sub-title">' . $field_view[count($design) - 1]['#markup'] . ': </span>';
-    $field_view[count($design) - 1]['#markup'] = $label .'<span class="other-sub-value">'. $design_other_sp_view[0]['#markup'] .'</span>';
+    $field_view[count($design) - 1]['#markup'] = $label . '<span class="other-sub-value">' . $design_other_sp_view[0]['#markup'] . '</span>';
   }
   return $field_view;
 }

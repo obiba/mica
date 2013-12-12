@@ -573,7 +573,7 @@ function mica_datasets_prepare_prettify() {
   }
   else {
     throw new Exception('prettify.css library not found! Please follow the instructions in mica_datasets/README.txt. Searched into '
-    . $paths);
+      . $paths);
   }
 
   if (isset($paths['js'])) {
@@ -581,7 +581,7 @@ function mica_datasets_prepare_prettify() {
   }
   else {
     throw new Exception('prettify.js library not found! Please follow the instructions in mica_datasets/README.txt. Searched into '
-    . $paths);
+      . $paths);
   }
 
   ctools_add_js('mica_datasets_prettify', 'mica_datasets');
@@ -601,7 +601,7 @@ function mica_datasets_node_view_alter(&$build) {
       $values['dataset_id'] = $variable_wrapper->field_dataset->nid->value();
       $term = new MicaDatasetQueryTerm($values);
       $impl = $term->termImpl();
-      if ($impl->hasConnectors() && $impl->checkStats()) {
+      if ($impl->hasConnectors() && $impl->checkStats() && user_is_logged_in()) {
         $build['statistics'] = array(
           '#type' => 'fieldset',
           '#title' => t('Statistics'),
@@ -715,8 +715,8 @@ function mica_datasets_node_view_alter(&$build) {
           ),
           'overview' => array(
             '#markup' => "<p><a href='" . url("node/" . $dataset_wrapper->nid->value() . "/dataset-harmonization") . "'><b>" . t(
-              "View @title Harmonization", array('@title' => $dataset_wrapper->title->value())
-            ) . "</a></b></p>",
+                "View @title Harmonization", array('@title' => $dataset_wrapper->title->value())
+              ) . "</a></b></p>",
           ),
         );
       }
@@ -1286,25 +1286,34 @@ function mica_datasets_node_view($node, $view_mode) {
 function _mica_datasets_menu_generate_breadcrumbs_variables($path) {
   global $language;
   $lang = $language->language;
-  if ($lang == 'fr' || $lang == 'en') {
-    try {
-      $result = db_query('SELECT * FROM {menu_links} WHERE link_path = :link_path AND language = :lang', array(
-        ':link_path' => $path,
-        ':lang' => $lang
-      ));
-    } catch (Exception $e) {
-      watchdog('mica', 'Modules Language, translation my be not enabled ', array(), WATCHDOG_NOTICE);
-      $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
-    }
 
+  if (module_exists('locale') && isset($lang)) {
+    $result_lang = db_query('SELECT * FROM {menu_links} WHERE link_path = :link_path AND language = :lang', array(
+      ':link_path' => $path,
+      ':lang' => $lang
+    ));
+    $list_lang = array();
+    foreach ($result_lang as $link) {
+      $list_lang[] = $link;
+    }
+    if (empty($list_lang)) {
+      watchdog('mica', 'Modules Language, translation my be not correctly enabled and configured', array(), WATCHDOG_NOTICE);
+      $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
+      foreach ($result as $link) {
+        $list[] = $link;
+      }
+    }
+    else {
+      $list = $list_lang;
+    }
   }
   else {
     $result = db_query("SELECT * FROM {menu_links} WHERE link_path = :link_path", array(':link_path' => $path));
+    foreach ($result as $link) {
+      $list[] = $link;
+    }
   }
-  $list = array();
-  foreach ($result as $link) {
-    $list[] = $link;
-  }
+
   if (empty($list)) {
     watchdog('mica', 'Can\'t generate  Breadcrumbs for this node, try to edit this node or one of his child/parent an check if Menu settings > Provide a menu link  is checked and set his link title ', array(), WATCHDOG_ERROR);
     // throw new ErrorException('Error encountered, please contact your administrator, more information logged in Recent log messages ', 0, 0, 0, 0);
