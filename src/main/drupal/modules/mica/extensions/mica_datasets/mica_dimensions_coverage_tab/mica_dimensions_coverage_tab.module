@@ -68,7 +68,7 @@ function mica_dimensions_coverage_tab_block_info() {
     $machine_name = substr($taxonomy[0], 0, drupal_strlen($taxonomy[0]) - 4);
     $vocabulary = taxonomy_vocabulary_machine_name_load($machine_name);
     if (!empty($vocabulary)) {
-      $blocks['tab'.$vocabulary->vid] = array(
+      $blocks['tab' . $vocabulary->vid] = array(
         'info' => 'Mica Domain Coverage table: ' . $vocabulary->name,
         'title' => NULL,
         'status' => TRUE,
@@ -92,23 +92,23 @@ function mica_dimensions_coverage_tab_block_view($delta) {
   ctools_add_css('mica_dimensions_coverage_tab', 'mica_dimensions_coverage_tab');
 
   $datasets = mica_dimensions_coverage_tab_datasets();
-  $delta = substr($delta,3);
-  if(!empty($delta)){
-  $content = _mica_dimensions_coverage_tab_dimension_table($delta, $datasets);
+  $delta = substr($delta, 3);
+  if (!empty($delta)) {
+    $content = _mica_dimensions_coverage_tab_dimension_table($delta, $datasets);
 
-  $vocabulary = taxonomy_vocabulary_load($delta);
-  //$delta=[]
-  $block = array(
-    'subject' => $vocabulary->name,
-    'content' => array('#markup' => $content),
-  );
-  /*
-  foreach($delta as $val) {
+    $vocabulary = taxonomy_vocabulary_load($delta);
+    //$delta=[]
+    $block = array(
+      'subject' => $vocabulary->name,
+      'content' => array('#markup' => $content),
+    );
+    /*
+    foreach($delta as $val) {
 
-  }
-  */
+    }
+    */
 
-  return $block;
+    return $block;
   }
 }
 
