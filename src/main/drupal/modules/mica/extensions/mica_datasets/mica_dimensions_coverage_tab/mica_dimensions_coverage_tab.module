@@ -11,13 +11,16 @@
 //  return $mtime;
 //}
 
+include_once('mica_dimensions_coverage_tab_datatables_init.inc');
+
 /**
  * Implements hook_menu()
  */
 function mica_dimensions_coverage_tab_menu() {
 
-  $items['content/content/datasets-domains-coverage-table'] = array(
+  $items['content/datasets-domains-coverage-table'] = array(
     'title' => t('Domain Coverage table'),
+    'page callback' => 'mica_dimensions_coverage_tab_page',
     'description' => '',
     'page arguments' => array(1),
     'access callback' => TRUE,
@@ -42,6 +45,7 @@ function mica_dimensions_coverage_tab_menu_local_tasks_alter(&$data, $router_ite
         '#theme' => 'menu_local_action',
         '#link' => array(
           'title' => t('Domain Coverage table'),
+          'page callback' => 'mica_dimensions_coverage_tab_page',
           'href' => 'content/datasets-domains-coverage-table', // Arguments could be taxonomies and dataset
           'localized_options' => array(
             'attributes' => array('class' => 'highlight'),
@@ -60,6 +64,7 @@ function mica_dimensions_coverage_tab_menu_local_tasks_alter(&$data, $router_ite
 /**
  * Implements hook_block_info().
  */
+/*
 function mica_dimensions_coverage_tab_block_info() {
   $blocks = array();
   $taxonomies = _mica_datasets_taxonomies();
@@ -70,6 +75,7 @@ function mica_dimensions_coverage_tab_block_info() {
       $blocks['tab' . $vocabulary->vid] = array(
         'info' => 'Mica Domain Coverage table: ' . $vocabulary->name,
         'title' => NULL,
+        'page callback' =>'mica_dimensions_coverage_tab_page',
         'status' => TRUE,
         'region' => 'content',
         'visibility' => BLOCK_VISIBILITY_LISTED,
@@ -80,16 +86,16 @@ function mica_dimensions_coverage_tab_block_info() {
       );
     }
   }
-
   return $blocks;
 }
-
+*/
 /**
  * Implements hook_block_view().
  */
+/*
 function mica_dimensions_coverage_tab_block_view($delta) {
   ctools_add_css('mica_dimensions_coverage_tab', 'mica_dimensions_coverage_tab');
-  _mica_dimensions_coverage_tab_get_array();
+
   $datasets = mica_dimensions_coverage_tab_datasets();
   $delta = substr($delta, 3);
   if (!empty($delta)) {
@@ -106,9 +112,51 @@ function mica_dimensions_coverage_tab_block_view($delta) {
 
     }
     */
-
+/*
     return $block;
   }
+}
+*/
+/**
+ * Implements hook_block_info().
+ */
+
+function mica_dimensions_coverage_tab_block_info() {
+
+  return array(
+    'tab-dimention-coverage' => array(
+      'info' => t('Mica Domain Coverage table: '),
+      'weight' => '50',
+      'status' => TRUE,
+      'region' => 'content',
+      'visibility' => BLOCK_VISIBILITY_LISTED,
+      'pages' => 'content/datasets-domains-coverage-table',
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_view().
+ */
+
+function mica_dimensions_coverage_tab_block_view($delta) {
+  switch ($delta) {
+    case 'tab-dimention-coverage':
+      _mica_dimensions_coverage_tab_tabledata_display();
+      ctools_add_css('mica_dimensions_coverage_tab', 'mica_dimensions_coverage_tab');
+      $content = '<div id="dynamic"></div>';
+      //$delta=[]
+      $block = array(
+        'subject' => t('Mica Domain Coverage table: '),
+        'content' => array('#markup' => $content),
+      );
+
+      return $block;
+  }
+}
+
+function mica_dimensions_coverage_tab_page() {
+  dpm('helloooooooooo');
 }
 
 function mica_dimensions_coverage_tab_datasets() {
@@ -194,8 +242,8 @@ function _mica_dimensions_coverage_tab_dimension_table($vid, $data) {
   $rows = array();
 
   // Fetch all terms
-  $vocabulary = taxonomy_vocabulary_load($vid);
-  $tree = taxonomy_get_tree($vocabulary->vid);
+  $vocabulary = taxonomy_vocabulary_load($vid); //dpm($vid);dpm($vocabulary);
+  $tree = taxonomy_get_tree($vocabulary->vid); //dpm($tree);
   if (!empty($tree)) {
     $options = array();
     foreach ($tree as $term) {
@@ -260,7 +308,7 @@ function _mica_dimensions_coverage_tab_dimension_table($vid, $data) {
   if (isset($data['header'])) {
     array_splice($data['header'], 0, 0, t("@title", array('@title' => '')));
     $tab = theme(
-    'table',
+      'table',
       array(
         'header' => $data['header'],
         'rows' => $rows,
@@ -285,14 +333,92 @@ function _mica_dimensions_coverage_tab_dimension_table($vid, $data) {
 }
 
 Function _mica_dimensions_coverage_tab_get_array() {
+  /*
+  $vocabulary = taxonomy_vocabulary_load($vid);
+  $tree = taxonomy_get_tree($vocabulary->vid);
+  */
   $taxonomies = _mica_datasets_taxonomies();
+  $vocabularies = array();
+  // $termes =array();
   foreach ($taxonomies as $taxonomy) {
     $machine_name = substr($taxonomy[0], 0, drupal_strlen($taxonomy[0]) - 4);
-    $vocabulary = taxonomy_vocabulary_machine_name_load($machine_name);
+    $vocabularies[] = taxonomy_vocabulary_machine_name_load($machine_name);
+    /*
+        foreach($vocabularies as $term){
+          $termes[]= taxonomy_vocabulary_load($vocabularies->vid);
+        }
+    */
+  }
+  $data_display = array();
+  $datasets = mica_dimensions_coverage_tab_datasets2();
+  foreach ($datasets as $dataset) {
+    $data_display[] = $dataset;
+  }
+
+  return $datasets;
+}
+
+/**
+ * Implements hook_library().
+ */
+function mica_dimensions_coverage_tab_library() {
+  $libraries = array();
+  $lib_path = libraries_get_path('datatables');
+  // Make sure we have a valid library path before returning library load info.
+  if (!empty($lib_path)) {
+    $libraries['datatables'] = array(
+      'title' => 'DataTables',
+      'website' => 'http://http://datatables.net/',
+      'version' => '1.9',
+      'js' => array(
+        $lib_path . '/media/js/jquery.dataTables.js' => array()
+        //  drupal_get_path('module', 'mica_dimensions_coverage_tab') . '/js/mica_dimensions_coverage_tab.tab.js' => array(),
+      ),
+      'css' => array(
+        $lib_path . '/media/css/demo_table.css' => array(),
+      ),
+    );
+  }
+  return $libraries;
+}
+
+Function _mica_dimensions_coverage_tab_tabledata_display() {
+  $module_path = drupal_get_path('module', 'mica_dimensions_coverage_tab');
+  $dataset = _mica_dimensions_coverage_tab_get_array();
+//$test_array = _mica_dimensions_coverage_dimension_get_test_array();
+  $data = $dataset;
+  $headers = $dataset['header'];
+  $json_header = '[';
+  $json_header .= '{ "sTitle": " - " },';
+  foreach ($headers as $header) {
+    $json_header .= '{ "sTitle": "' . $header . '" },';
+  }
+  $json_header = substr($json_header, 0, -1);
+  $json_header .= ']';
+//  $json_test_data = json_decode($test_array['data']);
+  $json_test_header = json_decode($json_header);
+  $output = array(
+    "aoColumns" => $headers,
+    "aaData" => array()
+  );
+  $json_test_header = json_encode($output);
+
+  $taxonomies = _mica_datasets_taxonomies();
+  $vocabularies = array();
+  foreach ($taxonomies as $taxonomy) {
+    $machine_name = substr($taxonomy[0], 0, drupal_strlen($taxonomy[0]) - 4);
+    $vocabularies[] = taxonomy_vocabulary_machine_name_load($machine_name);
 
   }
-  $datasets = mica_dimensions_coverage_tab_datasets();
 
-  dpm($datasets);
+  // Add Settings
+  //dpm($json_test_data);
+  dpm($vocabularies);
+  drupal_add_library('mica_dimensions_coverage_tab', 'datatables');
+  ctools_add_js('mica_dimensions_coverage_tab.tab', 'mica_dimensions_coverage_tab');
+  drupal_add_js(array('test_array_data' => '', 'test_array_header' => $json_test_header), array('type' => 'setting'));
 
 }
+
+
+
