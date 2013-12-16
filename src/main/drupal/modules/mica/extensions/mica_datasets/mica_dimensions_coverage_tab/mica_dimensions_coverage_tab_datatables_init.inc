@@ -70,7 +70,6 @@ function mica_dimensions_coverage_tab_datasets2() {
       }
     }
   }
-  dpm($result);
   return $data;
 }
 
