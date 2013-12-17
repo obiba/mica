@@ -387,6 +387,7 @@ compile-less:
 	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_studies/less/mica_studies.less src/main/drupal/modules/mica/extensions/mica_studies/css/mica_studies.css && \
 	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_networks/less/mica_networks.less src/main/drupal/modules/mica/extensions/mica_networks/css/mica_networks.css && \
 	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_datasets/less/mica_datasets.less src/main/drupal/modules/mica/extensions/mica_datasets/css/mica_datasets.css
+	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_datasets/mica_dimensions_coverage_tab/less/mica_dimensions_coverage_tab.less src/main/drupal/modules/mica/extensions/mica_datasets/mica_dimensions_coverage_tab/css/mica_dimensions_coverage_tab.css
 
 log:
 	tail /var/log/apache2/error.log
