@@ -155,5 +155,24 @@ function mica_i18n_strongarm() {
   );
   $export['variable_realm_list_language'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'lang_dropdown';
+  $strongarm->value = array(
+    'showall' => 0,
+    'js_widget' => 0,
+    'js_widget_settings' => array(
+      'visible_rows' => '5',
+      'row_height' => '23',
+      'width' => '140',
+      'animation' => 'slideDown',
+    ),
+    'languageicons' => array(
+      'flag_position' => 1,
+    ),
+  );
+  $export['lang_dropdown'] = $strongarm;
+
   return $export;
 }
