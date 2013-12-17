@@ -8,17 +8,20 @@
       // var settings = Drupal.settings.mica_dimensions_coverage_tab[selector];
       //$('#dynamic').html('<table cellpadding="0" cellspacing="0" border="0" class="display" id="example" width="300%"></table>');
       var oTable = $('#example').dataTable({
+        //    "bJQueryUI": true,
+        "bAutoWidth": false,
         "aaSorting": [],
         "sScrollY": "450px",
-        "sScrollX": "110%",
-        "sScrollXInner": "1200px",
+        "sScrollX": "100%",
+        //    "sScrollXInner": "110%",
         "bScrollCollapse": true,
+        "bLengthChange": false,
         "bPaginate": false,
         "aaSortingFixed": [
           [1, 'asc']
         ],
         "aoColumnDefs": [
-          { "bVisible": false, "aTargets": [1] }
+          {"sWidth": "20%", "bVisible": false, "aTargets": [1] }
         ],
         "sDom": 'TC<"clear">lfrtip',
         "oTableTools": {
