@@ -125,23 +125,21 @@ Function _mica_dimensions_coverage_tab_tabledata_display() {
 
   /*Header to pass */
   $grouped_head = array();
-  $header_row = array();
-
-  foreach ($dataset['header'] as $dce_stud => $dce) {
-    foreach ($dce as $key => $value) {
-      $grouped_head[$key][$dce_stud] = $value;
-      $header_row[] = $value;
+  $study_head_group = array();
+  foreach ($dataset['header'] as $dataset_stud => $datasets) {
+    foreach ($datasets as $id_dataset => $name_dataset) {
+      $grouped_head[$id_dataset][$dataset_stud] = $name_dataset;
     }
   }
-  foreach ($grouped_head as $key_stud => $rouped) {
-    $erras [] = array('data' => $key_stud, 'colspan' => count($grouped_head[$key_stud]));
+  foreach ($grouped_head as $key_stud => $grouped) {
+    $study_head_group [] = array('data' => $key_stud, 'colspan' => count($grouped_head[$key_stud]));
 
   }
   /***************************/
   // Add Settings
-  $header_to_add = $erras;
+
   ctools_add_js('mica_dimensions_coverage_tab.header_add', 'mica_dimensions_coverage_tab');
-  drupal_add_js(array('header_to_add' => $header_to_add), array('type' => 'setting'));
+  drupal_add_js(array('header_to_add' => $study_head_group), array('type' => 'setting'));
   ctools_add_css('mica_dimensions_coverage_tab', 'mica_dimensions_coverage_tab');
   drupal_add_library('mica_dimensions_coverage_tab', 'datatables');
   ctools_add_js('mica_dimensions_coverage_tab.tab', 'mica_dimensions_coverage_tab');
@@ -229,16 +227,12 @@ function _mica_dimensions_coverage_tab_dimension_them_tab($head, $rows) {
   $grouped_head = array();
   $header_row = array();
 
-  foreach ($head as $dce_stud => $dce) {
-    foreach ($dce as $key => $value) {
-      $grouped_head[$key][$dce_stud] = $value;
-      $header_row[] = $value;
+  foreach ($head as $dataset_stud => $datasets) {
+    foreach ($datasets as $id_dataset => $name_dataset) {
+      $grouped_head[$id_dataset][$dataset_stud] = $name_dataset;
+      $header_row[] = $name_dataset;
     }
   }
-  foreach ($grouped_head as $key_stud => $rouped) {
-    $erras [] = array('data' => $key_stud, 'colspan' => count($grouped_head[$key_stud]));
-  }
-
   // Insert vocabulary name in the first column
   if (isset($header_row)) {
     array_unshift($header_row, '');
