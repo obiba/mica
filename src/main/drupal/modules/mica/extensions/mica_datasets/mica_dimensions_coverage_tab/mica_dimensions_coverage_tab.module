@@ -63,7 +63,6 @@ function mica_dimensions_coverage_tab_block_view($delta) {
     case 'tab-dimention-coverage':
       $content = _mica_dimensions_coverage_tab_tabledata_display();
       $block = array(
-        'subject' => t('Mica Domain Coverage table: '),
         'content' => array('#markup' => $content),
       );
 

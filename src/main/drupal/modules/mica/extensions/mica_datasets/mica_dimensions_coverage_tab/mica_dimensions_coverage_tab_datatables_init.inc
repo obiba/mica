@@ -42,7 +42,7 @@ function mica_dimensions_coverage_tab_datasets() {
 
             if (isset($node->field_dataset_studies['und'])) {
               $study = node_load($node->field_dataset_studies['und'][0]['nid']);
-              $study_title = truncate_utf8($study->title, 45, TRUE, TRUE);
+              $study_title = truncate_utf8($study->title, 35, TRUE, TRUE);
             }
             else {
               $study_title = '';
