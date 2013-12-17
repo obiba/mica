@@ -2,7 +2,6 @@ name = Mica i18n
 description = Sets of modules and configuration for internationalization of Mica
 core = 7.x
 package = Mica
-version = 7.x-8.3-dev
 project = mica_i18n
 dependencies[] = entity_translation
 dependencies[] = facetapi_i18n
