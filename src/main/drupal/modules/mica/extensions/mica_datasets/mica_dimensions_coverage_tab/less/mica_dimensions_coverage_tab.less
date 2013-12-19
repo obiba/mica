@@ -16,6 +16,12 @@ table.dataset_crosstab th.study-group-header-title {
   min-width: 200px;
 }
 
+table.dataset_crosstab th.group_color {
+  border-right: solid 1px #A19B9E;
+  border-left: solid 1px #A19B9E;
+  /* border-bottom:solid 1px #A19B9E; */
+}
+
 table.dataset_crosstab th {
   min-width: 150px;
   text-align: center;
@@ -23,6 +29,8 @@ table.dataset_crosstab th {
 }
 
 table.dataset_crosstab {
+  text-align: left;
+  font-style: italic;
   margin-bottom: 0px;
   width: 100%;
 }
@@ -47,9 +55,15 @@ div.dataTables_scrollBody {
 }
 
 .ColVis {
-  float: right;
-  margin-bottom: 1em;
-  margin-top: 50px;
+  float: left;
+}
+
+/*
+.dataTables_filter {
+  float: left;
+  margin-top: 5px;
   position: absolute;
+  width: 250px;
   z-index: 500;
 }
+*/

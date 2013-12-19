@@ -63,22 +63,12 @@ function mica_dimensions_coverage_tab_block_view($delta) {
     case 'tab-dimention-coverage':
       $content = _mica_dimensions_coverage_tab_tabledata_display();
       $block = array(
+        //  'subject' => t('Mica Domain Coverage table: '),
         'content' => array('#markup' => $content),
       );
 
       return $block;
   }
-}
-
-Function _mica_dimensions_coverage_tab_get_array() {
-  $taxonomies = _mica_datasets_taxonomies();
-  $vocabularies = array();
-  foreach ($taxonomies as $taxonomy) {
-    $machine_name = substr($taxonomy[0], 0, drupal_strlen($taxonomy[0]) - 4);
-    $vocabularies[] = taxonomy_vocabulary_machine_name_load($machine_name);
-  }
-  $datasets = mica_dimensions_coverage_tab_datasets();
-  return $datasets;
 }
 
 /**
@@ -112,7 +102,33 @@ function mica_dimensions_coverage_tab_library() {
 }
 
 Function _mica_dimensions_coverage_tab_tabledata_display() {
-  $dataset = _mica_dimensions_coverage_tab_get_array();
+  $dataset = mica_dimensions_coverage_tab_datasets();
+
+  /*Header to pass */
+  $grouped_head = array();
+  $study_head_group = array();
+  $iter_study = 0;
+  $clean_header = array();
+  $header_row = array();
+  foreach ($dataset['header'] as $datasets) {
+    $clean_header += $datasets;
+  }
+  $dataset['header'] = $clean_header;
+  foreach ($clean_header as $dataset_stud => $datasets) {
+    foreach ($datasets as $id_dataset => $name_dataset) {
+      $header_row[] = $name_dataset;
+      $grouped_head[$id_dataset][$dataset_stud] = $name_dataset;
+      if (!empty($id_dataset)) {
+        $study_head_present = 'ok';
+      }
+    }
+    $iter_study++;
+  }
+  foreach ($grouped_head as $key_stud => $grouped) {
+    $study_head_group [] = array('data' => $key_stud, 'colspan' => count($grouped_head[$key_stud]));
+  }
+
+  /****clean data ******/
   $taxonomies = _mica_datasets_taxonomies();
   $rows = array();
   foreach ($taxonomies as $taxonomy) {
@@ -120,25 +136,14 @@ Function _mica_dimensions_coverage_tab_tabledata_display() {
     $vocabularies = taxonomy_vocabulary_machine_name_load($machine_name);
     $rows += _mica_dimensions_coverage_tab_dimension_table($vocabularies->vid, $dataset, $taxonomy[1]);
   }
-  $contenttab = _mica_dimensions_coverage_tab_dimension_them_tab($dataset['header'], $rows);
+  $contenttab = _mica_dimensions_coverage_tab_dimension_them_tab($header_row, $rows);
 
-  /*Header to pass */
-  $grouped_head = array();
-  $study_head_group = array();
-  foreach ($dataset['header'] as $dataset_stud => $datasets) {
-    foreach ($datasets as $id_dataset => $name_dataset) {
-      $grouped_head[$id_dataset][$dataset_stud] = $name_dataset;
-    }
-  }
-  foreach ($grouped_head as $key_stud => $grouped) {
-    $study_head_group [] = array('data' => $key_stud, 'colspan' => count($grouped_head[$key_stud]));
-
-  }
   /***************************/
   // Add Settings
-
-  ctools_add_js('mica_dimensions_coverage_tab.header_add', 'mica_dimensions_coverage_tab');
-  drupal_add_js(array('header_to_add' => $study_head_group), array('type' => 'setting'));
+  if (isset($study_head_present) && $study_head_present == 'ok') {
+    ctools_add_js('mica_dimensions_coverage_tab.header_add', 'mica_dimensions_coverage_tab');
+    drupal_add_js(array('header_to_add' => $study_head_group, 'study_title' => t('Study')), array('type' => 'setting'));
+  }
   ctools_add_css('mica_dimensions_coverage_tab', 'mica_dimensions_coverage_tab');
   drupal_add_library('mica_dimensions_coverage_tab', 'datatables');
   ctools_add_js('mica_dimensions_coverage_tab.tab', 'mica_dimensions_coverage_tab');
@@ -184,20 +189,22 @@ function _mica_dimensions_coverage_tab_dimension_table($vid, $data, $taxonomy) {
         ),
       );
       // Fill facet count in the same order as the header
+
       if (isset($data['header'])) {
+        $i = 0;
         foreach ($data['header'] as $dataset_id => $title) {
 
           if ($dataset_id > 0) {
-            if (isset($data[$dataset_id]) && isset($data[$dataset_id][$term->tid])) {
-              $url = l($data[$dataset_id][$term->tid]['count'], 'variable-search',
+            if (isset($dataset_id) && isset($data[$i][$dataset_id][$term->tid])) {
+              $url = l($data[$i][$dataset_id][$term->tid]['count'], 'variable-search',
                 array(
                   'query' => array(
                     'f[0]' => 'field_dataset:' . $dataset_id,
-                    'f[1]' => $data[$dataset_id][$term->tid]['facet'] . ':' . $term->tid,
+                    'f[1]' => $data[$i][$dataset_id][$term->tid]['facet'] . ':' . $term->tid,
                   ),
                 )
               );
-              $row[$dataset_id] = array(
+              $row[$i + 2] = array(
                 'data' => array(
                   '#markup' => $url,
                 ),
@@ -205,7 +212,7 @@ function _mica_dimensions_coverage_tab_dimension_table($vid, $data, $taxonomy) {
               );
             }
             else {
-              $row[$dataset_id] = array(
+              $row[$i + 2] = array(
                 'data' => array(
                   '#markup' => '-',
                 ),
@@ -213,33 +220,24 @@ function _mica_dimensions_coverage_tab_dimension_table($vid, $data, $taxonomy) {
               );
             }
           }
+          $i++;
         }
         $rows[] = $row;
       }
     }
   }
-
   return $rows;
 }
 
 function _mica_dimensions_coverage_tab_dimension_them_tab($head, $rows) {
-  $grouped_head = array();
-  $header_row = array();
-
-  foreach ($head as $dataset_stud => $datasets) {
-    foreach ($datasets as $id_dataset => $name_dataset) {
-      $grouped_head[$id_dataset][$dataset_stud] = $name_dataset;
-      $header_row[] = $name_dataset;
-    }
-  }
   // Insert vocabulary name in the first column
-  if (isset($header_row)) {
-    array_unshift($header_row, '');
-    array_splice($header_row, 0, 0, t("@title", array('@title' => '')));
+  if (isset($head)) {
+    array_unshift($head, '');
+    array_splice($head, 0, 0, t("@title", array('@title' => 'Datasets')));
     $tab = theme(
       'table',
       array(
-        'header' => $header_row,
+        'header' => $head,
         'rows' => $rows,
         'empty' => t('No information found'),
         'sticky' => FALSE,
@@ -259,5 +257,11 @@ function _mica_dimensions_coverage_tab_dimension_them_tab($head, $rows) {
       'attributes' => array('class' => 'dataset_crosstab', 'id' => 'example'),
     )
   );
+}
+
+function mica_dimensions_coverage_tab_table_alter(&$table, $table_id) {
+  if ($table_id == 'example') {
+    dpm($table);
+  }
 }
 

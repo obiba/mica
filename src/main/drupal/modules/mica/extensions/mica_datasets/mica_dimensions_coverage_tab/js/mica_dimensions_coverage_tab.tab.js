@@ -14,13 +14,14 @@
         "bScrollCollapse": true,
         "bLengthChange": false,
         "bPaginate": false,
+        "bSort": false,
         "aaSortingFixed": [
           [1, 'asc']
         ],
         "aoColumnDefs": [
           {"sWidth": "20%", "bVisible": false, "aTargets": [1] }
         ],
-        "sDom": 'TC<"clear">lfrtip',
+        "sDom": 'T<"clear">lrf<"left"C>tip',
         "oTableTools": {
           "sSwfPath": "../profiles/mica_distribution/libraries/datatables/swf/copy_csv_xls_pdf.swf",
           "aButtons": ["xls", "csv", "pdf" ]

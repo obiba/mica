@@ -31,7 +31,7 @@ function mica_dimensions_coverage_tab_datasets() {
       $taxonomy_fields = array_keys($taxonomy_fields);
 
       $keys = array_keys($entities['node']);
-
+      $idenx_dataset = 0;
       foreach ($keys as $dataset_id) {
         // Check if the dataset has variable with dimensions
         // Filter permissions
@@ -47,8 +47,8 @@ function mica_dimensions_coverage_tab_datasets() {
             else {
               $study_title = '';
             }
-            $title_dataset = $node->title . '-' . $study_title;
-            $data['header'][$dataset_id][$study_title] = $node->title;
+
+            $data['header'][$study_title][$idenx_dataset][$dataset_id][$study_title] = $node->title;
             // Execute search query once and build the facet count map
             $result = $index->query()->condition('field_dataset', $dataset_id)->execute();
             if (!empty($result['search_api_facets'])) {
@@ -59,16 +59,45 @@ function mica_dimensions_coverage_tab_datasets() {
                 if (in_array($facet, $taxonomy_fields)) {
                   foreach ($facet_results as $facet_result) {
                     $term_id = trim($facet_result['filter'], '\"');
-                    $data[$dataset_id][$term_id]['count'] = $facet_result['count'];
-                    $data[$dataset_id][$term_id]['facet'] = $facet;
+                    $data[$study_title][$idenx_dataset][$dataset_id][$term_id]['count'] = $facet_result['count'];
+                    $data[$study_title][$idenx_dataset][$dataset_id][$term_id]['facet'] = $facet;
                   }
                 }
               }
             }
+            $idenx_dataset++;
           }
         }
       }
     }
   }
+  ksort($data['header']);
+  ksort($data);
+  $data_header = array();
+  $data_data = array();
+  $data_title = array();
+  $index_dataset = 0;
+  foreach ($data as $key => $value) {
+    if (isset($key) && $key == 'header') {
+      foreach ($value as $value_study) {
+        foreach ($value_study as $value_datest) {
+          $data_header['header'][] = $value_datest;
+        }
+      }
+    }
+    elseif ($key != 'header') {
+      if ($key != 'field_by_title') {
+        foreach ($value as $value_dataset) {
+
+          $data_data[$index_dataset] = $value_dataset;
+
+          $index_dataset++;
+        }
+      }
+    }
+  }
+  $data_title['field_by_title'] = $data['field_by_title'];
+  unset($data);
+  $data = $data_title + $data_header + $data_data;
   return $data;
 }
