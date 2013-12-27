@@ -1,0 +1,5 @@
+name = Mica Datasets Opal Variables
+description = Retrieve variables from Opal server by web services queries
+core = 7.x
+package = Mica
+php = 5.2.4

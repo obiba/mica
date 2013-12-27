@@ -1,0 +1,213 @@
+<?php
+/**
+ * @file
+ * Mica Datasets Opal Variables
+ */
+
+function mica_datasets_variables_menu() {
+  $items = array();
+  $items['variable-opal-search'] = array(
+    'title' => t('Datasets Opal variables'),
+    'access callback' => TRUE,
+    'page callback' => 'mica_datasets_variables_page',
+    'page arguments' => array(1),
+    'weight' => 5,
+    'type' => MENU_LOCAL_ACTION,
+    //   'file' => 'mica_datasets.pages.inc',
+  );
+  return $items;
+}
+
+function mica_datasets_variables_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+
+  $links = array();
+  switch ($root_path) {
+    case 'datasets':
+    case 'node/%':
+      $node = $router_item['page_arguments'][0];
+      if ($node != NULL && isset($node->type) && $node->type === 'dataset') {
+        if (node_access('update', $node)) {
+          // variables
+          $links['view-opal-variable'] = array(
+            '#weight' => 30,
+            '#theme' => 'menu_local_action',
+            '#link' => array(
+              'title' => t('Datasets Opal variables'),
+              'href' => 'variable-opal-search' . '/' . $node->nid,
+              'localized_options' => array(
+                'attributes' => array(
+                  'class' => 'highlight'
+                )
+              )
+            ),
+
+          );
+        }
+      }
+      break;
+  }
+  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
+}
+
+/**
+ * Check node type (if provided) and node access.
+ *
+ * @param node $node
+ * @param string $bundle
+ * @param string $op
+ */
+function _mica_datasets_variables_node_access($node, $bundle = NULL, $op = 'update') {
+  if (!is_object($node)) {
+    $node = node_load($node);
+  }
+  // Make sure the user can view the original node content.
+  if ($bundle != NULL) {
+    return TRUE;
+  }
+  return node_access($op, $node);
+}
+
+function mica_datasets_variables_page($dataset_nid) {
+  global $languages;
+  if (isset($languages)) {
+    $lang = $languages;
+  }
+  else {
+    $lang = 'und';
+  }
+  ctools_add_js('mica_datasets_variables', 'mica_datasets_variables');
+  $dataset_detail = node_load($dataset_nid);
+  $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
+  $is_harmonization = $dataset_wrapper->field_dataset_type->value() === 'harmonization';
+  $study_harmonizations = array();
+  $rows[] = array();
+  $popup_variab_detail = array();
+  foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study) {
+    $nid = $study->nid->value();
+    $harmonization_view = _mica_datasets_fetch_study_harmonization_view($dataset_nid, $nid);
+    if (!empty($harmonization_view)) {
+      $study_harmonizations[$nid] = $harmonization_view;
+      foreach ($study_harmonizations[$nid]['variables'] as $variable) {
+
+        $rows[] = array(
+          l($variable['title'], 'javascript:void(0);', array(
+            'attributes' => array(
+              'id' => $variable['title'],
+              'class' => array('modals', $variable['title'])
+            ),
+            'external' => TRUE
+          )),
+          !empty($variable['label'][$lang]) ? $variable['label'][$lang] : '',
+          $dataset_detail->title
+        );
+        $popup_variab_detail[] = _mica_datasets_variables_prepare_modal($variable);
+
+      }
+      if (!$is_harmonization) {
+        break;
+      }
+    }
+  }
+  dpm($study_harmonizations);
+  $output = '';
+  // Table construct
+  $header = array('Name', 'Label', 'Dataset');
+  $per_page = 20;
+  $current_page = pager_default_initialize(count($rows), $per_page);
+  $chunks = array_chunk($rows, $per_page, TRUE);
+  $output .= '<br/>';
+
+  $output .= theme(
+      'table',
+      array(
+        'header' => $header,
+        'rows' => $chunks[$current_page],
+        'empty' => t('No data found'),
+        'sticky' => FALSE,
+        'attributes' => array('id' => 'variables_overview')
+      )
+    ) . theme('pager', array('quantity', count($rows)));
+
+  //generate title of page :
+  drupal_set_title('Datasets Opal variables' . $dataset_detail->title);
+// generate specific breadcrumbs for study variable pages
+  $breadcrumb = _mica_datasets_menu_generate_breadcrumbs_variables('node/' . $dataset_nid);
+  $breadcrumbs = array();
+  $breadcrumbs[] = l('Home', '');
+  for ($i = 0; $i < count($breadcrumb); $i++) {
+    $breadcrumbs[] = l(truncate_utf8($breadcrumb[$i]['link_title'], 45, TRUE, TRUE), $breadcrumb[$i]['link_path']);
+  }
+  drupal_set_breadcrumb($breadcrumbs);
+  $events_details = '<div class=""modals>' . implode(' ', $popup_variab_detail) . '</div>';
+  // The $delta parameter tells us which block is being requested.
+  return '<div id=\'Variables_opal\'>' . $output . '</div>' . $events_details;
+}
+
+function mica_datasets_variables_block_info() {
+  $blocks['opal_variables'] = array(
+    // info: The name of the block.
+    'info' => t('Current search'),
+    'status' => TRUE,
+    'region' => 'sidebar_first',
+  );
+  return $blocks;
+}
+
+function mica_datasets_variables_block_view($delta) {
+
+  switch ($delta) {
+    case 'opal_variables':
+      // Create your block content here
+      $block['subject'] = t('Current search');
+      $block['content'] = 'Your block content, or the result of a function that returns the content';
+      break;
+  }
+
+  return $block;
+}
+
+function _mica_datasets_variables_prepare_modal($variable) {
+  global $languages;
+  $lang = isset($languages) ? $languages : 'und';
+  $tab = t('No categories for this Variables');
+
+  if (!empty($variable['categories'])) {
+    $rows_cat = array();
+    $header_categ = array('Name', 'Label', 'Missing');
+    foreach ($variable['categories'] as $val_categ) {
+      $rows_cat[] = array($val_categ['name'], $val_categ['label'][$lang], $val_categ['missing']);
+    }
+
+    $tab = theme(
+      'table',
+      array(
+        'header' => $header_categ,
+        'rows' => $rows_cat,
+        'empty' => t('No data found'),
+        'sticky' => FALSE,
+        'attributes' => array('id' => 'variables_overview')
+      )
+    );
+  }
+
+  $body2 = '<strong>Description</strong></br>';
+  $body2 .= t('Label') . ' :' . $variable['label'][$lang] . '</br>';
+  $body2 .= t('Value Type') . ' :' . $variable['value_type'] . '</br>';
+  $body2 .= t('Repeatable') . ' :' . _mica_datasets_variables_repeatable($variable['repeatable']) . '</br>';
+  $body2 .= t('categories') . ' :' . $tab . '</br>';
+
+  return '<div id="event-' . $variable['title'] . '" class="modal hide fade">'
+  . '<div class="modal-header"><h3>' . $variable['title'] . '</h3></div>'
+  . '<div class="modal-body">' . $body2 . '</div>'
+  . '<div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">' . t('Close') . '</button></div>'
+  . '</div>';
+}
+
+function _mica_datasets_variables_repeatable($variable) {
+  if (isset($variable) && $variable == 1) {
+    return t('Yes');
+  }
+  else {
+    return t('No');
+  }
+}
