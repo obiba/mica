@@ -5,7 +5,6 @@
       $.each(settings.header_to_add, function (index, value) {
         if (value.data) {
           var group_color = "group_color";
-          console.log(value.data);
         }
         content_head += "<th class='study-group-header-title " + group_color + "' colspan='" + value.colspan + "'>" + value.data + "</th>";
       });

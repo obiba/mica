@@ -19,6 +19,16 @@ function mica_dimensions_coverage_tab_menu() {
     'access callback' => TRUE,
     'type' => MENU_LOCAL_ACTION,
   );
+
+  $items['datasets-domains-coverage-table-ajx-query'] = array(
+    'title' => t('custom ajax'),
+    'type' => MENU_CALLBACK,
+    //our custom ajax callback
+    'page callback' => 'datasets_domains_coverage_table_ajax_studies',
+    //access to user can access content in a site, you can define your own permission using hook_perm()
+    'access arguments' => array('access content'),
+
+  );
   return $items;
 }
 
@@ -55,6 +65,36 @@ function mica_dimensions_coverage_tab_menu_local_tasks_alter(&$data, $router_ite
 }
 
 /**
+ * Implements hook_block_info().
+ */
+function mica_dimensions_coverage_block_info() {
+
+  $blocks['tab-dimention-coverage'] = array(
+    'info' => '',
+    'title' => NULL,
+    'status' => TRUE,
+    'region' => 'content',
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'content/datasets-domains-coverage-table',
+    'weight' => 50,
+    'custom' => 1,
+  );
+
+  $blocks['filter-dimention-coverage'] = array(
+    'info' => '',
+    'title' => NULL,
+    'status' => TRUE,
+    'region' => 'content',
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'content/datasets-domains-coverage-table',
+    'weight' => 49,
+    'custom' => 1,
+  );
+
+  return $blocks;
+}
+
+/**
  * Implements hook_block_view().
  */
 
@@ -65,6 +105,15 @@ function mica_dimensions_coverage_tab_block_view($delta) {
       $block = array(
         //  'subject' => t('Mica Domain Coverage table: '),
         'content' => array('#markup' => $content),
+      );
+
+      return $block;
+
+    case 'filter-dimention-coverage':
+      $content = drupal_get_form('mica_dimensions_coverage_tab_filter_form');
+      $block = array(
+        'subject' => t('Mica Domain Coverage table: '),
+        'content' => $content
       );
 
       return $block;
@@ -259,9 +308,104 @@ function _mica_dimensions_coverage_tab_dimension_them_tab($head, $rows) {
   );
 }
 
-function mica_dimensions_coverage_tab_table_alter(&$table, $table_id) {
-  if ($table_id == 'example') {
-    dpm($table);
-  }
+function mica_dimensions_coverage_tab_filter_form() {
+
+  $options = datasets_domains_coverage_table_ajax_studies();
+  dpm($options);
+  $form = array(
+    '#attributes' => array('class' => 'form-inline', 'role' => 'form')
+  );
+  $form['studies'] = array(
+    '#prefix' => '<div class="col-xs-4 inline-input">',
+    '#suffix' => '</div>',
+    '#type' => 'select',
+    '#title' => t('Studies'),
+    '#options' => $options['studies'],
+    '#multiple' => TRUE,
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $form['dce'] = array(
+    '#prefix' => '<div class="col-xs-4 inline-input">',
+    '#suffix' => '</div>',
+    '#type' => 'select',
+    '#title' => t('Data collection event'),
+    '#options' => $options['dce'],
+    '#multiple' => TRUE,
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $form['dataset'] = array(
+    '#prefix' => '<div class="col-xs-4 inline-input">',
+    '#suffix' => '</div>',
+    '#type' => 'select',
+    '#title' => t('Datasets'),
+    '#multiple' => TRUE,
+    '#options' => $options['dataset'],
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['submit'] = array(
+    '#prefix' => '<div class="col-xs-4 block-input">',
+    '#suffix' => '</div>',
+    '#type' => 'submit',
+    '#value' => t('Proceed search'),
+  );
+  return $form;
 }
+
+function datasets_domains_coverage_table_ajax_studies() {
+  $query = new EntityFieldQuery();
+  if (isset($_POST['studies'])) {
+    $studies = explode(',', $_POST['studies']);
+    // Or for Drupal 7, just in case you want to know
+
+    $result = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'study')
+      ->propertyCondition('nid', $studies)
+      ->execute();
+    $options = datasets_domains_coverage_table_return_studies($result);
+    drupal_json_output($options['dce']);
+    drupal_exit();
+  }
+  else {
+    $result = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'study')
+      ->execute();
+    $options = datasets_domains_coverage_table_return_studies($result);
+    return $options;
+  }
+
+}
+
+function datasets_domains_coverage_table_return_studies($result) {
+
+  $nid_studies = array_keys($result['node']);
+  $options = array();
+  foreach ($nid_studies as $nid_study) {
+    $study_wrapper = entity_metadata_wrapper('node', $nid_study);
+    $options['studies'][$nid_study] = truncate_utf8($study_wrapper->title->value(), 45, TRUE, TRUE);
+    foreach ($study_wrapper->field_study_populations->getIterator() as $populations) {
+      foreach ($populations->field_pop_dce->getIterator() as $key_dce => $dce) {
+        if ($key_dce == 0) {
+          $options['dce'][] = '*' . truncate_utf8($study_wrapper->title->value(), 25, TRUE, TRUE);
+          $options['dce'][$dce->nid->value()] = '--' . $dce->title->value();
+        }
+        else {
+          $options['dce'][$dce->nid->value()] = '--' . $dce->title->value();
+        }
+        foreach ($dce->field_dce_dataset->getIterator() as $key_dataset => $dataset) {
+          if ($key_dataset == 0) {
+            $options['dataset'][] = '*' . truncate_utf8($study_wrapper->title->value(), 25, TRUE, TRUE) . '-' . truncate_utf8($dce->title->value(), 25, TRUE, TRUE);
+            $options['dataset'][$dataset->nid->value()] = '---' . $dataset->title->value();
+          }
+          $options['dataset'][$dataset->nid->value()] = '---' . $dataset->title->value();
+        }
+      }
+    }
+  }
+  return $options;
+}
+
 

@@ -69,6 +69,83 @@
         iLeftWidth: 350
       });
 
+      /*Multiselect event */
+
+      $("#edit-studies").multiselect({
+        click: function (event, ui) {
+          var studies = [];
+          studies.push($("input[name=multiselect_edit-studies]:checked").map(function () {return this.value;}).get().join(","));
+          console.log(studies);
+          /****************/
+          var post = "&studies=" + studies;
+          $.ajax({
+            'url': 'datasets-domains-coverage-table-ajx-query',
+            'type': 'POST',
+            'dataType': 'json',
+            'data': post,
+            'success': function (data) {
+              /*Todo reconstruire les multi select dce et dataset*/
+              console.log(data);
+
+
+              //  selected = $('#selected');
+              var delselect = $('select#edit-studies');
+              var new_emptuselect = $('<select multiple="multiple" name="studies[]" id="edit-studies" class="form-select"><option><option /></select>');
+              delselect.replaceWith(new_emptuselect);
+              var el = $("#edit-dce").multiselect();
+              el.multiselect('refresh');
+              /*
+               $.each(data, function(i, item) {
+               console.log(i);
+               console.log(item);
+
+               var   opt = $('<option />', {
+               value:i,
+               text: item
+               });
+
+               opt.attr('selected','selected');
+
+               opt.appendTo( el );
+
+               el.multiselect('refresh');
+
+               });
+               */
+
+            },
+            beforeSend: function () {
+              /*
+               $(document).ready(function () {
+               $(#status).attr("innerHTML","Loading....");
+               });
+               */
+            },
+            'error': function (data) {
+            }
+          });
+
+
+          /****************/
+        }
+      });
+
+      $("#edit-dce").multiselect({
+        click: function (event, ui) {
+          var dce = [];
+          dce.push($("input[name=multiselect_edit-dce]:checked").map(function () {return this.value;}).get().join(","));
+          console.log(dce);
+        }
+      });
+
+      $("#edit-dataset").multiselect({
+        click: function (event, ui) {
+          var datasets = [];
+          datasets.push($("input[name=multiselect_edit-dataset]:checked").map(function () {return this.value;}).get().join(","));
+          console.log(datasets);
+        }
+      });
+
     }
   }
 
