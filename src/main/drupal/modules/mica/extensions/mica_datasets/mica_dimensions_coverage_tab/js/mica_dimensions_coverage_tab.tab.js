@@ -118,7 +118,6 @@
           'dataType': 'json',
           'data': post,
           'success': function (data) {
-            /*Todo reconstruire les multi select dce et dataset*/
             $('select#edit-dataset').children().remove();
             var el = $("#edit-dataset").multiselect();
             el.multiselect('refresh');
@@ -165,7 +164,6 @@
           'dataType': 'json',
           'data': post,
           'success': function (data) {
-            /*Todo reconstruire les multi select dce et dataset*/
             $('select#edit-dce').children().remove();
             var el = $("#edit-dce").multiselect();
             el.multiselect('refresh');

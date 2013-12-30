@@ -388,8 +388,13 @@ function datasets_domains_coverage_table_ajax_studies() {
         }
       }
       $options2 = datasets_domains_coverage_table_return_dce_dataset($options, $nid_dces);
-      drupal_json_output($options2['dataset']);
+      if (isset($options2['dataset'])) {
+        drupal_json_output($options2['dataset']);
       drupal_exit();
+      }
+      else {
+        drupal_exit();
+      }
     }
   }
 
