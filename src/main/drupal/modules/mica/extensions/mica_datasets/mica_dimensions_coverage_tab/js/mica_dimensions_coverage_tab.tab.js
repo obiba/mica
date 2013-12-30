@@ -73,68 +73,28 @@
 
       $("#edit-studies").multiselect({
         click: function (event, ui) {
-          var studies = [];
-          studies.push($("input[name=multiselect_edit-studies]:checked").map(function () {return this.value;}).get().join(","));
-          console.log(studies);
-          /****************/
-          var post = "&studies=" + studies;
-          $.ajax({
-            'url': 'datasets-domains-coverage-table-ajx-query',
-            'type': 'POST',
-            'dataType': 'json',
-            'data': post,
-            'success': function (data) {
-              /*Todo reconstruire les multi select dce et dataset*/
-              console.log(data);
-
-
-              //  selected = $('#selected');
-              var delselect = $('select#edit-studies');
-              var new_emptuselect = $('<select multiple="multiple" name="studies[]" id="edit-studies" class="form-select"><option><option /></select>');
-              delselect.replaceWith(new_emptuselect);
-              var el = $("#edit-dce").multiselect();
-              el.multiselect('refresh');
-              /*
-               $.each(data, function(i, item) {
-               console.log(i);
-               console.log(item);
-
-               var   opt = $('<option />', {
-               value:i,
-               text: item
-               });
-
-               opt.attr('selected','selected');
-
-               opt.appendTo( el );
-
-               el.multiselect('refresh');
-
-               });
-               */
-
-            },
-            beforeSend: function () {
-              /*
-               $(document).ready(function () {
-               $(#status).attr("innerHTML","Loading....");
-               });
-               */
-            },
-            'error': function (data) {
-            }
-          });
-
-
-          /****************/
+          retrievestudiescheckbox(event, ui);
+        },
+        checkAll: function () {
+          retrievestudiescheckbox();
+        },
+        uncheckAll: function () {
+          retrievestudiescheckbox();
         }
       });
 
       $("#edit-dce").multiselect({
         click: function (event, ui) {
-          var dce = [];
-          dce.push($("input[name=multiselect_edit-dce]:checked").map(function () {return this.value;}).get().join(","));
-          console.log(dce);
+          retrivecheckeddcebox(event, ui);
+        },
+        optgrouptoggle: function (event, ui) {
+          retrivecheckeddcebox(event, ui);
+        },
+        checkAll: function () {
+          retrivecheckeddcebox();
+        },
+        uncheckAll: function () {
+          retrivecheckeddcebox();
         }
       });
 
@@ -142,10 +102,104 @@
         click: function (event, ui) {
           var datasets = [];
           datasets.push($("input[name=multiselect_edit-dataset]:checked").map(function () {return this.value;}).get().join(","));
-          console.log(datasets);
+          //console.log(datasets);
         }
       });
 
+
+      function retrivecheckeddcebox(event, ui) {
+        var dce = [];
+        dce.push($("input[name=multiselect_edit-dce]:checked").map(function () {return this.value;}).get().join(","));
+        /****************/
+        var post = "&dce=" + dce;
+        $.ajax({
+          'url': 'content/datasets-domains-coverage-table-ajx-query',
+          'type': 'POST',
+          'dataType': 'json',
+          'data': post,
+          'success': function (data) {
+            /*Todo reconstruire les multi select dce et dataset*/
+            $('select#edit-dataset').children().remove();
+            var el = $("#edit-dataset").multiselect();
+            el.multiselect('refresh');
+            if (data) {
+              $.each(data, function (o, item) {
+                var optgroup = $('<optgroup>');
+                optgroup.attr('label', o);
+                $.each(item, function (i, datcet) {
+                  var opt = $('<option />', {
+                    value: i,
+                    text: datcet
+                  });
+                  opt.attr('selected', 'selected');
+                  opt.appendTo(el);
+                  optgroup.append(opt);
+                });
+                el.append(optgroup);
+              });
+              el.multiselect('refresh');
+            }
+          },
+          beforeSend: function () {
+            /*
+             $(document).ready(function () {
+             $(#status).attr("innerHTML","Loading....");
+             });
+             */
+          },
+          'error': function (data) {
+          }
+        });
+        /****************/
+      }
+
+      function retrievestudiescheckbox() {
+        var studies = [];
+        studies.push($("input[name=multiselect_edit-studies]:checked").map(function () {return this.value;}).get().join(","));
+
+        /****************/
+        var post = "&studies=" + studies;
+        $.ajax({
+          'url': 'content/datasets-domains-coverage-table-ajx-query',
+          'type': 'POST',
+          'dataType': 'json',
+          'data': post,
+          'success': function (data) {
+            /*Todo reconstruire les multi select dce et dataset*/
+            $('select#edit-dce').children().remove();
+            var el = $("#edit-dce").multiselect();
+            el.multiselect('refresh');
+            if (data) {
+              $.each(data, function (o, item) {
+                var optgroup = $('<optgroup>');
+                optgroup.attr('label', o);
+
+                $.each(item, function (i, dce) {
+                  var opt = $('<option />', {
+                    value: i,
+                    text: dce
+                  });
+                  opt.attr('selected', 'selected');
+                  opt.appendTo(el);
+                  optgroup.append(opt);
+                });
+                el.append(optgroup);
+              });
+              el.multiselect('refresh');
+            }
+          },
+          beforeSend: function () {
+            /*
+             $(document).ready(function () {
+             $(#status).attr("innerHTML","Loading....");
+             });
+             */
+          },
+          'error': function (data) {
+          }
+        });
+        /****************/
+      }
     }
   }
 
