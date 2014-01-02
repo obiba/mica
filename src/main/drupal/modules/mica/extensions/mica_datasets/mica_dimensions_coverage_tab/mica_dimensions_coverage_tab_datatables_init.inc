@@ -11,7 +11,6 @@ function mica_dimensions_coverage_tab_datasets($datasets = NULL) {
     if (isset($_REQUEST['type']) && ($_REQUEST['type'] === 'harmonization' || $_REQUEST['type'] === 'study')) {
       $query->fieldCondition('field_dataset_type', 'value', $_REQUEST['type']);
     }
-    dpm($_REQUEST);
     $entities = $query->execute();
     if (!empty($entities['node'])) {
       $index = search_api_index_load('variable_index');
@@ -32,11 +31,7 @@ function mica_dimensions_coverage_tab_datasets($datasets = NULL) {
       $keys = array_keys($entities['node']);
 
       if (!empty($datasets)) {
-        // $query->fieldCondition('nid', 'value', $_REQUEST['type']);
-        $keys = explode(',', $datasets);
-        //   dpm($datasets);
-        // $keys = $datasets;
-
+        $keys = $datasets;
       }
 
       //  dpm($keys);

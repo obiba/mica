@@ -85,17 +85,6 @@ function mica_dimensions_coverage_block_info() {
     'region' => 'content',
     'visibility' => BLOCK_VISIBILITY_LISTED,
     'pages' => 'content/datasets-domains-coverage-table',
-    'weight' => 50,
-    'custom' => 1,
-  );
-
-  $blocks['filter-dimention-coverage'] = array(
-    'info' => '',
-    'title' => NULL,
-    'status' => TRUE,
-    'region' => 'content',
-    'visibility' => BLOCK_VISIBILITY_LISTED,
-    'pages' => 'content/datasets-domains-coverage-table',
     'weight' => 49,
     'custom' => 1,
   );
@@ -108,22 +97,17 @@ function mica_dimensions_coverage_block_info() {
  */
 
 function mica_dimensions_coverage_tab_block_view($delta) {
+
   switch ($delta) {
-
-    case 'filter-dimention-coverage':
-      $content = drupal_get_form('mica_dimensions_coverage_tab_filter_form');
-      $block = array(
-        'subject' => t('Mica Domain Coverage table: '),
-        'content' => $content
-      );
-      return $block;
-
     case 'tab-dimention-coverage':
 
-      $content = _mica_dimensions_coverage_tab_tabledata_display();
+      $content = drupal_render(drupal_get_form('mica_dimensions_coverage_tab_filter_form'));
+
+      $content .= _mica_dimensions_coverage_tab_tabledata_display(isset($_GET['dataset']) ? $_GET['dataset'] : NULL);
       $block = array(
-        //  'subject' => t('Mica Domain Coverage table: '),
+        'subject' => t('Mica Domain Coverage table: '),
         'content' => array('#markup' => $content),
+        'weight' => 49,
       );
       return $block;
   }
@@ -231,7 +215,7 @@ Function _mica_dimensions_coverage_tab_tabledata_display($ids_dataset = NULL) {
   drupal_add_library('mica_dimensions_coverage_tab', 'datatables');
   ctools_add_js('mica_dimensions_coverage_tab.tab', 'mica_dimensions_coverage_tab');
   ctools_add_js('mica_dimensions_coverage_tab.dynamic-multiselect', 'mica_dimensions_coverage_tab');
-  ctools_add_js('mica_dimensions_coverage_tab.dynamic-refesh-block', 'mica_dimensions_coverage_tab');
+//  ctools_add_js('mica_dimensions_coverage_tab.dynamic-refesh-block', 'mica_dimensions_coverage_tab');
 
   $output = "<div id='table-refresh'>" . $contenttab . "</div>";
 
@@ -348,11 +332,13 @@ function _mica_dimensions_coverage_tab_dimension_them_tab($head, $rows) {
 function mica_dimensions_coverage_tab_filter_form($form, &$form_state) {
 
   $options = datasets_domains_coverage_table_ajax_studies();
-
   $form = array(
     '#attributes' => array('class' => 'form-inline', 'role' => 'form'),
+    '#action' => '/content/datasets-domains-coverage-table',
+    '#method' => 'GET',
     // '#submit' => array('mica_dimensions_coverage_tab_filter_submit'),
-    '#method' => 'POST'
+    //
+//  '#redirect' => FALSE
   );
   $form['studies'] = array(
     '#prefix' => '<div class="col-xs-4 inline-input">',
@@ -396,9 +382,19 @@ function mica_dimensions_coverage_tab_filter_form($form, &$form_state) {
     '#type' => 'submit',
     '#value' => t('Proceed search'),
   );
+
   return $form;
 }
 
+function mica_dimensions_coverage_tab_form_alter(&$form, &$form_state) {
+
+  $form_state['redirect'] = FALSE;
+
+}
+
+//function mica_dimensions_coverage_tab_filter_submit(){
+//  dpm('mica_dimensions_coverage_tab_filter_submit');
+//}
 function datasets_domains_coverage_table_ajax_studies() {
   $query = new EntityFieldQuery();
   if (!empty($_POST['studies'])) {
@@ -485,9 +481,9 @@ function datasets_domains_coverage_table_return_studies($result, $dces = NULL) {
 
 function datasets_domains_coverage_table_ajax_refrech_table_block() {
   if (!empty($_POST)) {
-    dpm($_POST);
-    $constent = _mica_dimensions_coverage_tab_tabledata_display($_POST['dataset']);
-    drupal_json_output($constent);
+    //   $constent = _mica_dimensions_coverage_tab_tabledata_display($_POST['dataset']);
+
+    //   drupal_json_output($constent);
     drupal_exit();
 
   }

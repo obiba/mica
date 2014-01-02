@@ -1,7 +1,7 @@
 (function ($) {
   Drupal.behaviors.datatables_add_head = {
     attach: function (context, settings) {
-
+      console.log('im a header');
       var content_headstudy = "<th colspan='2'>" + settings.study_title + "</th>";
       $.each(settings.header_study_to_add, function (index, value) {
         if (value.data) {
