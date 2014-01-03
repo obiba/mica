@@ -30,17 +30,6 @@
         }
       });
 
-      //Todo my be to use to dynamically populate Datatabale with ajax request
-      /*
-       $("#edit-dataset").multiselect({
-       click: function (event, ui) {
-       var datasets = [];
-       datasets.push($("input[name=multiselect_edit-dataset]:checked").map(function () {return this.value;}).get().join(","));
-       //console.log(datasets);
-       }
-       });
-       */
-
       /**********Ajax function to populate Multiselect Dataset options *****/
       function retrivecheckeddcebox(event, ui) {
         var dce = [];
@@ -74,11 +63,7 @@
             }
           },
           beforeSend: function () {
-            /*
-             $(document).ready(function () {
-             $(#status).attr("innerHTML","Loading....");
-             });
-             */
+
           },
           'error': function (data) {
           }
@@ -121,11 +106,7 @@
             }
           },
           beforeSend: function () {
-            /*
-             $(document).ready(function () {
-             $(#status).attr("innerHTML","Loading....");
-             });
-             */
+
           },
           'error': function (data) {
           }
@@ -133,7 +114,6 @@
       }
 
       /************************************/
-
     }
   }
 })(jQuery);

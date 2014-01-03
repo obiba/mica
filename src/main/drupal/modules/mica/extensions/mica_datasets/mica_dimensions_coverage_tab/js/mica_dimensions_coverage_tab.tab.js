@@ -2,17 +2,13 @@
   var oTable = null;
   Drupal.behaviors.datatables_gen = {
     attach: function (context, settings) {
-
-      createTable();
-    },
-    refreshTable: function (context, setting) {
-      oTable.fnDestroy();
       createTable();
     }
   };
-
+  /*
+   * Initialation of Datatables
+   * */
   function createTable() {
-
     oTable = $('#example').dataTable({
       "bAutoWidth": false,
       "aaSorting": [],
