@@ -87,7 +87,7 @@ function mica_datasets_variables_page($dataset_nid) {
     $opal_variabls = _mica_datasets_variables_get_opal_variables($dataset_nid, $nid);
     if (!empty($opal_variabls)) {
       $study_variabls[$nid] = $opal_variabls;
-      foreach ($studies[$nid]['variables'] as $variable) {
+      foreach ($study_variabls[$nid]['variables'] as $variable) {
 
         $rows[] = array(
           l($variable['title'], 'javascript:void(0);', array(
