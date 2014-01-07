@@ -497,7 +497,7 @@ function datasets_domains_coverage_table_return_studies($result, $dces = NULL) {
         (!empty($_variables_dataset))
       ))
     ) {
-      $options['dataset']['no studies'][$dataset_wrapper->nid->value()] = '---' . $dataset_wrapper->title->value();
+      // $options['dataset']['no studies'][$dataset_wrapper->nid->value()] = '---' . $dataset_wrapper->title->value();
     }
   }
   //Dataset by $result parameters ..iterating studies to retrieve datasets

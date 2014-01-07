@@ -2,20 +2,32 @@
   Drupal.behaviors.datatables_multislect = {
     attach: function (context, settings) {
       /*Multiselect event populate DCE Multiselect Field */
+      $("#edit-studies").multiselectfilter("destroy");
       $("#edit-studies").multiselect({
+        selectedText: function (numChecked, numTotal) {
+          return Drupal.t('@numChecked of @numTotal checked', {'@numChecked': numChecked, '@numTotal': numTotal});
+        },
         click: function (event, ui) {
           retrievestudiescheckbox(event, ui);
+
         },
         checkAll: function () {
           retrievestudiescheckbox();
+
         },
         uncheckAll: function () {
+
           retrievestudiescheckbox();
+
         }
       });
 
       /*Multiselect event populate Dataset Multiselect Field */
+      $("#edit-dce").multiselectfilter("destroy");
       $("#edit-dce").multiselect({
+        selectedText: function (numChecked, numTotal) {
+          return Drupal.t('@numChecked of @numTotal checked', {'@numChecked': numChecked, '@numTotal': numTotal});
+        },
         click: function (event, ui) {
           retrivecheckeddcebox(event, ui);
         },
@@ -30,6 +42,13 @@
         }
       });
 
+
+      $("#edit-dataset").multiselectfilter("destroy");
+      $("#edit-dataset").multiselect({
+        selectedText: function (numChecked, numTotal) {
+          return Drupal.t('@numChecked of @numTotal checked', {'@numChecked': numChecked, '@numTotal': numTotal});
+        }
+      });
       /**********Ajax function to populate Multiselect Dataset options *****/
       function retrivecheckeddcebox(event, ui) {
         var dce = [];
@@ -45,6 +64,7 @@
             var el = $("#edit-dataset").multiselect();
             el.multiselect('refresh');
             if (data) {
+
               $.each(data, function (o, item) {
                 var optgroup = $('<optgroup>');
                 optgroup.attr('label', o);
@@ -61,11 +81,15 @@
               });
               el.multiselect('refresh');
             }
+
           },
           beforeSend: function () {
 
           },
           'error': function (data) {
+            $('select#edit-dataset').children().remove();
+            var el = $("#edit-dataset").multiselect();
+            el.multiselect('refresh');
           }
         });
       }
@@ -104,11 +128,15 @@
               });
               el.multiselect('refresh');
             }
+
           },
           beforeSend: function () {
 
           },
           'error': function (data) {
+            $('select#edit-dce').children().remove();
+            var el = $("#edit-dce").multiselect();
+            el.multiselect('refresh');
           }
         });
       }

@@ -10,6 +10,9 @@
    * */
   function createTable() {
     oTable = $('#example').dataTable({
+      "oLanguage": {
+        "sSearch": Drupal.t('Search by domains - terms :')
+      },
       "bAutoWidth": false,
       "aaSorting": [],
       "sScrollY": "450px",
@@ -25,10 +28,12 @@
       "aoColumnDefs": [
         {"sWidth": "20%", "bVisible": false, "aTargets": [1] }
       ],
-      "sDom": 'T<"clear">lrf<"left"C>tip',
+      //  "sDom": 'T<"clear">lrf<"left"C>tip',
+      "sDom": 'Tf<"clear">lrt',
       "oTableTools": {
         "sSwfPath": "../profiles/mica_distribution/libraries/datatables/swf/copy_csv_xls_pdf.swf",
-        "aButtons": ["xls", "csv", "pdf" ]
+        "aButtons": [ "csv" ]
+        // "aButtons": ["xls", "csv", "pdf" ]
       }
     });
     new FixedColumns(oTable, {
