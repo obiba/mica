@@ -14,7 +14,7 @@
           <div class="field field-name-body field-type-text-with-summary field-label-hidden">
             <div class="field-items">
               <div property="content:encoded" class="field-item even">
-                <p><?php print $variable_detail['description']; ?></p>
+                <p><?php print (!empty($variable_detail['description'])) ? $variable_detail['description'] : NULL; ?></p>
               </div>
             </div>
           </div>
@@ -117,8 +117,13 @@
 
               <div class="fieldset-wrapper">
                 <?php if (!empty($variable_detail['attributes'])) : ?>
-                  <?php foreach ($variable_detail['attributes'] as $variable_domaine) : ?>
-                    <div class="field field-name-field-dataset field-type-node-reference field-label-above">
+                  <?php foreach (getatribut() as $variable_name) : ?>
+
+                    <?php foreach ($variable_detail['attributes'] as $variable_domaine) : ?>
+
+                      <?php if ($variable_domaine['name'] == $variable_name) : ?>
+                        <?php //dpm($variable_name); ?>
+                        <div class="field field-name-field-dataset field-type-node-reference field-label-above">
                       <div class="field-label"><?php print t($variable_domaine['name']); ?> :</div>
                       <div class="field-items">
                         <div class="field-item even">
@@ -126,6 +131,9 @@
                         </div>
                       </div>
                     </div>
+                        <?php break; ?>
+                      <?php endif; ?>
+                    <?php endforeach; ?>
                   <?php endforeach; ?>
                 <?php else: ?>
                   <div class="field field-name-field-dataset field-type-node-reference field-label-above">
@@ -218,6 +226,66 @@
   </div>
 </div>
 <?php /**********Categories Block *******************/ ?>
+<?php /************Footer harmonization***********************/ ?>
+<?php if (!empty($variable_detail['harmonization'])) : ?>
+  <div class="panel-col-bottom panel-panel">
+    <div class="inside">
+      <div class="contextual-links-region panel-pane pane-node-content">
+        <div class="pane-content">
+          <article typeof="sioc:Item foaf:Document" class="node node-variable clearfix">
+            <header>
+            </header>
 
+            <fieldset class="form-wrapper">
+              <legend>
+                <span class="fieldset-legend">Harmonization</span>
+              </legend>
+              <div class="fieldset-wrapper">
+                <?php print $variable_detail['legend-harmonization']; ?>
+                <?php print $variable_detail['harmonization']; ?>
+
+
+
+
+                <!--    <p><a href="/node/5991/dataset-harmonization"><b>View Healthy Obese Project DataSchema Harmonization</b></a></p></div></fieldset> -->
+
+                <footer>
+                </footer>
+
+
+          </article>
+          <!-- /.node -->
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+<?php endif; ?>
+<?php /*************End footer harmonization*******************************/ ?>
+<?php //dpm($variable_detail);
+function getatribut() {
+  return array(
+    'Data source',
+    'Diseases history and related health problems',
+    'Medical health interventions/health services utilization',
+    'Medication',
+    'Reproductive health and history',
+    'Participant\'s early life/childhood',
+    'Life habits/behaviours',
+    'Sociodemographic/socioeconomic characteristics',
+    'Physical environment',
+    'Social environment',
+    'Perception of health/quality of life',
+    'Anthropometric structures',
+    'Body structures',
+    'Body functions',
+    'Laboratory measures',
+    'Administrative information',
+    'Target',
+  );
+}
+
+?>
 </div>
 </div>

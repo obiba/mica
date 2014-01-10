@@ -18,14 +18,16 @@
           'data': '',
           'success': function (data) {
             message_div.empty();
-            param.append(data);
+
+            param.css({'padding-top': '0'});
+            $(data).appendTo(param);
           },
           beforeSend: function () {
             blinkeffect('#txtblnk');
           },
           'error': function (data) {
-            message_div.empty();
-            message_div.append(Drupal.t('Error!'));
+            param.empty();
+            $(Drupal.t('Error!')).appendTo(param);
           }
         });
 
