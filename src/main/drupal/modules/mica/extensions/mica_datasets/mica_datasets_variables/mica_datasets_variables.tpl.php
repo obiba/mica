@@ -117,24 +117,18 @@
 
               <div class="fieldset-wrapper">
                 <?php if (!empty($variable_detail['attributes'])) : ?>
-                  <?php foreach (getatribut() as $variable_name) : ?>
-
-                    <?php foreach ($variable_detail['attributes'] as $variable_domaine) : ?>
-
-                      <?php if ($variable_domaine['name'] == $variable_name) : ?>
-                        <?php //dpm($variable_name); ?>
-                        <div class="field field-name-field-dataset field-type-node-reference field-label-above">
-                      <div class="field-label"><?php print t($variable_domaine['name']); ?> :</div>
+                  <?php foreach ($variable_detail['attributes'] as $variable_domaine) : ?>
+                    <?php //dpm($variable_name); ?>
+                    <div class="field field-name-field-dataset field-type-node-reference field-label-above">
+                    <div class="field-label"><?php print t($variable_domaine['name']); ?> :</div>
                       <div class="field-items">
                         <div class="field-item even">
                           <?php print t($variable_domaine['value']); ?>
                         </div>
                       </div>
                     </div>
-                        <?php break; ?>
-                      <?php endif; ?>
-                    <?php endforeach; ?>
                   <?php endforeach; ?>
+
                 <?php else: ?>
                   <div class="field field-name-field-dataset field-type-node-reference field-label-above">
                     <div class="field-label"></div>
@@ -262,30 +256,8 @@
     </div>
   </div>
 <?php endif; ?>
-<?php /*************End footer harmonization*******************************/ ?>
-<?php //dpm($variable_detail);
-function getatribut() {
-  return array(
-    'Data source',
-    'Diseases history and related health problems',
-    'Medical health interventions/health services utilization',
-    'Medication',
-    'Reproductive health and history',
-    'Participant\'s early life/childhood',
-    'Life habits/behaviours',
-    'Sociodemographic/socioeconomic characteristics',
-    'Physical environment',
-    'Social environment',
-    'Perception of health/quality of life',
-    'Anthropometric structures',
-    'Body structures',
-    'Body functions',
-    'Laboratory measures',
-    'Administrative information',
-    'Target',
-  );
-}
-
+<?php /*************End footer harmonization*******************************/
+//dpm($variable_detail);
 ?>
 </div>
 </div>

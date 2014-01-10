@@ -200,7 +200,10 @@ function mica_datasets_variables_get_harmonization_table($variable, $dataset_nid
       if (!empty($detail_var)) {
         //get scripts
         $script_to_pass = _mica_opal_json_get_string($detail_var, 'attributes[?(@[\'name\'==\'script\' and @namespace == \'opal\'].value');
-        $script = strlen($script_to_pass) === 0 ? _mica_opal_json_get_string($detail_var, 'attributes[?(@[\'name\']==\'script\')].value') : $script_to_pass;
+        $script = strlen($script_to_pass) === 0 ?
+          _mica_opal_json_get_string($detail_var, 'attributes[?(@[\'name\']==\'script\')].value') :
+          $script_to_pass;
+
         $script = _mica_datasets_html_truncated($script, t('script'), 200, TRUE);
 
         //get comment
@@ -210,7 +213,10 @@ function mica_datasets_variables_get_harmonization_table($variable, $dataset_nid
         //get status
         $status_to_pass = _mica_opal_json_get_string($detail_var, 'attributes[?(@[\'name\']==\'status\'), ?(@[\'namespace\']==\'maelstrom\')].value');
 
-        $status = !empty($status_to_pass) && !strpos(",complete,impossible", $status_to_pass) ? 'undetermined' : strtolower($status_to_pass);
+        $status = !empty($status_to_pass) && !strpos(",complete,impossible", $status_to_pass) ?
+          'undetermined' :
+          strtolower($status_to_pass);
+
         $status = "<img src=\"" . _mica_datasets_get_status_icon($status) . "\" title=\"$status\"></div>";
         $name = $studies->field_acroym->value() ? $studies->field_acroym->value() : $studies->title->value();
         $option = array(
@@ -269,7 +275,8 @@ function mica_datasets_variables_get_categories_table($variable) {
 
 function _mica_datasets_variables_missing($variable) {
   if (isset($variable) && $variable == 1) {
-    return '<div title="Missing" class="variable_category-missing"><img src="/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/tick.png"></div>';
+    return '<div title="Missing" class="variable_category-missing">
+    <img src="/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/tick.png"></div>';
   }
   else {
     return '';
@@ -370,7 +377,8 @@ function mica_datasets_variables_get_detail_variable($dataset_nid, $study_nid, $
 function mica_datasets_variable_get_ajax_statistics($variable = NULL, $dataset_nid = NULL, $study_nid = NULL) {
   $resource = array('variable/' . $variable);
   $variable_detail = mica_datasets_variables_get_resource($dataset_nid, $study_nid, $resource);
-  print _mica_datasets_variable_render_statics($dataset_nid, _mica_opal_parse_categories($variable_detail), _mica_opal_json_get_string($variable_detail, 'valueType'));
+  print _mica_datasets_variable_render_statics($dataset_nid, _mica_opal_parse_categories($variable_detail),
+    _mica_opal_json_get_string($variable_detail, 'valueType'));
 
 }
 
@@ -390,21 +398,60 @@ function _mica_datasets_variables_iterate_detail_variable($dataset_nid, $item) {
   $variable_info['repeatable'] = _mica_datasets_variables_repeatable($repeatable);
 
   $status = _mica_opal_json_get_string($item, 'attributes[?(@[\'name\']==\'status\'), ?(@[\'namespace\']==\'maelstrom\')].value');
-  $variable_info['status'] = empty($status) || !strpos(",complete,impossible", $status) ? 'undetermined' : strtolower($status);
+  $variable_info['status'] = empty($status) || !strpos(",complete,impossible", $status) ?
+    'undetermined' :
+    strtolower($status);
 
   $variable_info_description = _mica_opal_parse_localized($item, 'attributes[?(@[\'name\']==\'description\'), ?(@[\'namespace\']==\'maelstrom\')]');
 
   if (!empty($variable_info_description)) {
-    $variable_info['description'] = $lan ? (isset($variable_info_description[$lan]) ? $variable_info_description[$lan] : $variable_info_description['und']) : $variable_info_description['und'];
+    $variable_info['description'] = $lan ?
+      (isset($variable_info_description[$lan]) ?
+        $variable_info_description[$lan] :
+        $variable_info_description['und']) :
+      $variable_info_description['und'];
   }
 
   $variable_info['comment'] = _mica_opal_parse_localized($item, 'attributes[?(@[\'name\']==\'comment\'), ?(@[\'namespace\']==\'maelstrom\')]');
   $variable_info['categories'] = mica_datasets_variables_get_categories_table(_mica_opal_parse_categories($item));
-  $variable_info['attributes'] = _mica_opal_parse_attributes($item);
+  $variable_info_attribute = _mica_opal_parse_attributes($item);
+  $variable_info['attributes'] = mica_datasets_variables_sort_attribute($variable_info_attribute);
   // $variable_info['stats']  = _mica_datasets_variable_render_statics($dataset_nid,_mica_opal_parse_categories($item), $variable_info['value_type']);
   $variable_info['legend-harmonization'] = drupal_render(drupal_get_form('mica_datasets_variables_harmonization_legend_form'));
   $variable_info['harmonization'] = mica_datasets_variables_get_harmonization_table($item, $dataset_nid);
   return $variable_info;
+}
+
+function mica_datasets_variables_sort_attribute($unsorted_domain) {
+  $sorted_domain = array();
+  $sorted_attribute = array(
+    'Data source',
+    'Diseases history and related health problems',
+    'Medical health interventions/health services utilization',
+    'Medication',
+    'Reproductive health and history',
+    'Participant\'s early life/childhood',
+    'Life habits/behaviours',
+    'Sociodemographic/socioeconomic characteristics',
+    'Physical environment',
+    'Social environment',
+    'Perception of health/quality of life',
+    'Anthropometric structures',
+    'Body structures',
+    'Body functions',
+    'Laboratory measures',
+    'Administrative information',
+    'Target',
+  );
+  foreach ($sorted_attribute as $attribute) {
+    foreach ($unsorted_domain as $attribute_value) {
+      if ($attribute == $attribute_value['name']) {
+        $sorted_domain[] = $attribute_value;
+        break;
+      }
+    }
+  }
+  return $sorted_domain;
 }
 
 function mica_datasets_variables_harmonization_legend_form($form, $form_state) {
@@ -422,14 +469,16 @@ function mica_datasets_variables_harmonization_legend_form($form, $form_state) {
     '#type' => 'markup',
     '#markup' => "<img src=\"" . MICA_HARMONIZATION_COMPLETE . "\" style=\"vertical-align: middle\">&nbsp;<b>"
       . t("Complete") . "</b> - <i>"
-      . t("the study assessment item(s) (e.g. survey question, physical measure, biochemical measure) allow construction of the variable as defined in the dataset.")
+      . t("the study assessment item(s) (e.g. survey question, physical measure, biochemical measure) allow
+      construction of the variable as defined in the dataset.")
       . "</i><br />",
   );
   $form['legend']['impossible'] = array(
     '#type' => 'markup',
     '#markup' => "<img src=\"" . MICA_HARMONIZATION_IMPOSSIBLE . "\" style=\"vertical-align: middle\">&nbsp;<b>"
       . t("Impossible") . "</b> - <i>"
-      . t("there is no information or insufficient information collected by this study to allow the construction of the variable as defined in the dataset.")
+      . t("there is no information or insufficient information collected by this study to allow the construction of
+      the variable as defined in the dataset.")
       . "</i>",
   );
 
