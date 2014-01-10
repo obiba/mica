@@ -284,7 +284,7 @@ class CategoryTerm extends AbstractTerm {
           $totals[$study_id] = isset($totals[$study_id]) ? $totals[$study_id] + $s : $s;
         }
       }
-      }
+    }
 
     foreach ($cat as $category) {
       $category_name = $category["name"];
