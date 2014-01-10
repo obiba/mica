@@ -1,0 +1,526 @@
+<?php
+/**
+ * @file
+ * Mica Datasets Crosstab module file
+ */
+
+include_once('mica_dimensions_coverage_tab_datatables_init.inc');
+
+/**
+ * Implements hook_menu()
+ */
+function mica_dimensions_coverage_tab_menu() {
+
+  $items['content/datasets-domains-coverage-table'] = array(
+    'title' => t('Domain Coverage table'),
+    'page callback' => 'mica_dimensions_coverage_tab_page',
+    'type' => MENU_LOCAL_ACTION,
+  );
+
+  $items['content/datasets-domains-coverage-table-ajx-query'] = array(
+    'type' => MENU_CALLBACK,
+    //our custom ajax callback
+    'page callback' => 'datasets_domains_coverage_table_ajax_studies',
+    //access to user can access content in a site, you can define your own permission using hook_perm()
+    'access arguments' => array('access content'),
+
+  );
+
+  $items['content/datasets-domains-coverage-table-refrech-table-block'] = array(
+    //'title' => t('custom ajax'),
+    'type' => MENU_CALLBACK,
+    //our custom ajax callback
+    'page callback' => 'datasets_domains_coverage_table_ajax_refrech_table_block',
+    //access to user can access content in a site, you can define your own permission using hook_perm()
+    'access arguments' => array('access content'),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function mica_dimensions_coverage_tab_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  $links = array();
+  switch ($root_path) {
+    case 'datasets':
+    case 'study-datasets':
+    case 'harmonization-datasets':
+      $links['view-dataset-crosstab-tab'] = array(
+        '#theme' => 'menu_local_action',
+        '#link' => array(
+          'title' => t('Domain Coverage table'),
+          'page callback' => 'mica_dimensions_coverage_tab_page',
+          'href' => 'content/datasets-domains-coverage-table', // Arguments could be taxonomies and dataset
+          'localized_options' => array(
+            'attributes' => array('class' => 'highlight'),
+            'query' => array(
+              'type' => ($root_path === 'study-datasets') ? 'study' : 'harmonization',
+            )
+          )
+        ),
+      );
+      break;
+  }
+  $data['actions']['output'] = array_merge($data['actions']['output'], $links);
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function mica_dimensions_coverage_block_info() {
+
+  $blocks['tab-dimention-coverage'] = array(
+    'info' => '',
+    'title' => NULL,
+    'status' => 1,
+    'region' => 'content',
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'content/datasets-domains-coverage-table',
+    'weight' => 50,
+    'custom' => 1,
+  );
+
+  $blocks['filter-dimention-coverage'] = array(
+    'info' => '',
+    'title' => NULL,
+    'status' => 1,
+    'region' => 'content',
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'content/datasets-domains-coverage-table',
+    'weight' => 49,
+    'custom' => 1,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+
+function mica_dimensions_coverage_tab_block_view($delta) {
+
+  switch ($delta) {
+    case 'filter-dimention-coverage':
+      $_SESSION['storage']['studies'] = isset($_GET['studies']) ? $_GET['studies'] : NULL;
+      $_SESSION['storage']['dce'] = isset($_GET['dce']) ? $_GET['dce'] : NULL;
+      $_SESSION['storage']['dataset'] = isset($_GET['dataset']) ? $_GET['dataset'] : NULL;
+      $_SESSION['storage']['type'] = isset($_GET['type']) ? $_GET['type'] : NULL;
+      $content = drupal_get_form('mica_dimensions_coverage_tab_filter_form');
+      $block = array(
+        '#theme' => 'mica_subtheme',
+        'subject' => t('Mica Domain Coverage table: '),
+        'content' => $content,
+      );
+      return $block;
+
+    case 'tab-dimention-coverage':
+      $content = _mica_dimensions_coverage_tab_tabledata_display(isset($_GET['dataset']) ? $_GET['dataset'] : NULL);
+      $block = array(
+        '#theme' => 'mica_subtheme',
+        //  'subject' => t('Mica Domain Coverage table: '),
+        'content' => array('#markup' => $content),
+        'weight' => 49,
+      );
+      return $block;
+
+  }
+}
+
+/**
+ * Implements hook_library().
+ */
+function mica_dimensions_coverage_tab_library() {
+  $libraries = array();
+  $lib_path = libraries_get_path('datatables');
+  // Make sure we have a valid library path before returning library load info.
+  if (!empty($lib_path)) {
+    $libraries['datatables'] = array(
+      'title' => 'DataTables',
+      'website' => 'http://datatables.net/',
+      'version' => '1.9',
+      'js' => array(
+        $lib_path . '/media/js/jquery.dataTables.js' => array(),
+        $lib_path . '/extras/ColVis/media/js/ColVis.js' => array(),
+        $lib_path . '/extras/FixedColumns/media/js/FixedColumns.js' => array(),
+        $lib_path . '/extras/TableTools/media/js/ZeroClipboard.js' => array(),
+        $lib_path . '/extras/TableTools/media/js/TableTools.js' => array()
+      ),
+      'css' => array(
+        $lib_path . '/media/css/demo_table.css' => array(),
+        $lib_path . '/extras/ColVis/media/css/ColVis.css' => array(),
+        $lib_path . '/extras/FixedColumns/media/css/ColVisAlt.css' => array(),
+        $lib_path . '/extras/TableTools/media/css/TableTools.css' => array()
+      ),
+    );
+  }
+  return $libraries;
+}
+
+Function _mica_dimensions_coverage_tab_tabledata_display($ids_dataset = NULL) {
+  if (!empty($ids_dataset)) {
+    $dataset = mica_dimensions_coverage_tab_datasets($ids_dataset);
+  }
+  else {
+    $dataset = mica_dimensions_coverage_tab_datasets();
+  }
+
+  /*Header to pass */
+  $grouped_head = array();
+  $grouped_dce_head = array();
+  $study_head_group = array();
+  $dce_head_group = array();
+  $clean_header = array();
+  $header_row = array();
+  foreach ($dataset['header'] as $dce) {
+    foreach ($dce as $dataset_dce) {
+      $clean_header += $dataset_dce;
+    }
+  }
+  $dataset['header'] = $clean_header;
+  foreach ($clean_header as $dce_stud => $dce_dataset) {
+    foreach ($dce_dataset as $id_dce => $dce) {
+
+      $header_dce_row[] = $dce;
+      $grouped_dce_head[$id_dce][$dce_stud] = $dce;
+
+      foreach ($dce as $id_dataset => $name_dataset) {
+        $header_row[] = $name_dataset;
+        $grouped_head[$id_dataset][$dce_stud] = $name_dataset;
+        if (!empty($id_dataset)) {
+          $study_head_present = 'ok';
+        }
+      }
+    }
+  }
+
+  foreach ($grouped_head as $key_stud => $grouped) {
+    $dce_head_group [] = array('data' => $key_stud, 'colspan' => count($grouped_head[$key_stud]));
+  }
+
+  foreach ($grouped_dce_head as $key_dce => $grouped_dce) {
+    $study_head_group [] = array('data' => $key_dce, 'colspan' => count($grouped_dce_head[$key_dce]));
+  }
+
+  /****clean data ******/
+  $taxonomies = _mica_datasets_taxonomies();
+  $rows = array();
+  foreach ($taxonomies as $taxonomy) {
+    $machine_name = substr($taxonomy[0], 0, drupal_strlen($taxonomy[0]) - 4);
+    $vocabularies = taxonomy_vocabulary_machine_name_load($machine_name);
+    $rows += _mica_dimensions_coverage_tab_dimension_table($vocabularies->vid, $dataset, $taxonomy[1]);
+  }
+
+  $contenttab = _mica_dimensions_coverage_tab_dimension_them_tab($header_row, $rows);
+
+  /***************************/
+  // Add Settings
+// Reconstruct Table Dom header with js script by append the correct header
+  if (isset($study_head_present) && $study_head_present == 'ok') {
+    ctools_add_js('mica_dimensions_coverage_tab.header_add', 'mica_dimensions_coverage_tab');
+    drupal_add_js(array(
+      'header_study_to_add' => $study_head_group,
+      'header_dce_to_add' => $dce_head_group,
+      'dce_title' => t('Data collection event'),
+      'study_title' => t('Study')
+    ), array('type' => 'setting'));
+  }
+
+  ctools_add_css('mica_dimensions_coverage_tab', 'mica_dimensions_coverage_tab');
+  drupal_add_library('mica_dimensions_coverage_tab', 'datatables');
+  ctools_add_js('mica_dimensions_coverage_tab.tab', 'mica_dimensions_coverage_tab');
+  //Script to perform ajax action to deal with multi select fields
+  ctools_add_js('mica_dimensions_coverage_tab.dynamic-multiselect', 'mica_dimensions_coverage_tab');
+
+  $output = "<div id='table-refresh'>" . $contenttab . "</div>";
+
+  return $output;
+}
+
+/*
+ * Construction Rows and of the table  the table with correct data
+ * */
+function _mica_dimensions_coverage_tab_dimension_table($vid, $data, $taxonomy) {
+  $rows = array();
+  // Fetch all terms
+  $vocabulary = taxonomy_vocabulary_load($vid);
+  $tree = taxonomy_get_tree($vocabulary->vid);
+  if (!empty($tree)) {
+    foreach ($tree as $term) {
+      // Initializes variables passed to theme hook.
+      $variables = array(
+        'text' => $term->name,
+        'path' => 'variable-search',
+        //'count' => 0,
+        'options' => array(
+          'attributes' => array('class' => 'facetapi-inactive'),
+          'html' => FALSE,
+          'query' => array(
+            'f[0]' => $data['field_by_title'][strtolower($vocabulary->name)] . ':' . $term->tid,
+          ),
+        ),
+      );
+
+      // Themes the link, adds row to facets.
+      $row[0] = array(
+        'class' => array('leaf'),
+        'data' => (isset($term->depth) && $term->depth > 0 ? theme('indentation', array('size' => $term->depth)) : '') .
+          theme('facetapi_link_inactive', $variables),
+      );
+
+      // Themes the link, adds row to facets.
+      $row[1] = array(
+        'width' => '25%',
+        'class' => array('taxo'),
+        'data' => array(
+          '#markup' => $taxonomy
+        ),
+      );
+      // Fill facet count in the same order as the header
+
+      if (isset($data['header'])) {
+        $i = 0;
+        foreach ($data['header'] as $dataset_id => $title) {
+          if ($dataset_id > 0) {
+            if (isset($dataset_id) && isset($data[$i][$i][$term->tid])) {
+              $url = l($data[$i][$i][$term->tid]['count'], 'variable-search',
+                array(
+                  'query' => array(
+                    'f[0]' => 'field_dataset:' . $dataset_id,
+                    'f[1]' => $data[$i][$i][$term->tid]['facet'] . ':' . $term->tid,
+                  ),
+                )
+              );
+              $row[$i + 2] = array(
+                'data' => array(
+                  '#markup' => $url,
+                ),
+                'class' => array('center')
+              );
+            }
+            else {
+              $row[$i + 2] = array(
+                'data' => array(
+                  '#markup' => '-',
+                ),
+                'class' => array('center')
+              );
+            }
+          }
+          $i++;
+        }
+        $rows[] = $row;
+      }
+    }
+  }
+  return $rows;
+}
+
+/*
+ * Construction of drupal table
+ * */
+function _mica_dimensions_coverage_tab_dimension_them_tab($head, $rows) {
+
+  // Insert vocabulary name in the first column
+  if (isset($head)) {
+    array_unshift($head, '');
+    array_splice($head, 0, 0, t("@title", array('@title' => 'Datasets')));
+    $tab = theme(
+      'table',
+      array(
+        'header' => $head,
+        'rows' => $rows,
+        'empty' => t('No information found'),
+        'sticky' => FALSE,
+        'attributes' => array('class' => 'dataset_crosstab', 'id' => 'example'),
+      )
+    );
+    return $tab;
+  }
+
+  return theme(
+    'table',
+    array(
+      'header' => array(),
+      'rows' => $rows,
+      'empty' => t('No information found'),
+      'sticky' => FALSE,
+      'attributes' => array('class' => 'dataset_crosstab', 'id' => 'example'),
+    )
+  );
+}
+
+/*
+ * Form search
+ * */
+function mica_dimensions_coverage_tab_filter_form($form, &$form_state) {
+  $options = datasets_domains_coverage_table_ajax_studies();
+  $form = array(
+    '#attributes' => array('class' => 'form-inline', 'role' => 'form'),
+    '#action' => '/content/datasets-domains-coverage-table',
+    '#method' => 'get'
+  );
+
+  $form['studies'] = array(
+    '#prefix' => '<div class="col-xs-4 inline-input">',
+    '#suffix' => '</div>',
+    '#type' => 'select',
+    '#title' => t('Studies'),
+    '#default_value' => !empty($_SESSION['storage']['studies']) ? $_SESSION['storage']['studies'] : NULL,
+    '#options' => $options['studies'],
+    '#multiple' => TRUE,
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['dce'] = array(
+    '#prefix' => '<div class="col-xs-4 inline-input">',
+    '#suffix' => '</div>',
+    '#type' => 'select',
+    '#title' => t('Data collection event'),
+    '#default_value' => !empty($_SESSION['storage']['dce']) ? $_SESSION['storage']['dce'] : NULL,
+    '#options' => $options['dce'],
+    '#multiple' => TRUE,
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['dataset'] = array(
+    '#prefix' => '<div class="col-xs-4 inline-input">',
+    '#suffix' => '</div>',
+    '#type' => 'select',
+    '#title' => t('Datasets'),
+    '#default_value' => !empty($_SESSION['storage']['dataset']) ? $_SESSION['storage']['dataset'] : NULL,
+    '#multiple' => TRUE,
+    '#options' => $options['dataset'],
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['type'] = array(
+    '#type' => 'hidden',
+    '#value' => !empty($_SESSION['storage']['type']) ? $_SESSION['storage']['type'] : (!empty($_GET['type']) ? $_GET['type'] : NULL),
+  );
+
+  $form['submit'] = array(
+    '#prefix' => '<div class="col-xs-4 block-input">',
+    '#suffix' => '</div>',
+    '#type' => 'submit',
+    '#value' => t('Proceed search'),
+  );
+  unset($_SESSION['storage']);
+  return $form;
+}
+
+/*
+ * Method to populate multislect fields by ajax call
+ * */
+function datasets_domains_coverage_table_ajax_studies() {
+  $query = new EntityFieldQuery();
+  $options = array();
+  if (!empty($_POST['studies'])) {
+    $studies = explode(',', $_POST['studies']);
+    // Or for Drupal 7, just in case you want to know
+
+    $result = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'study')
+      ->propertyCondition('nid', $studies)
+      ->execute();
+
+    $options = datasets_domains_coverage_table_return_studies($result);
+    if (isset($options['dce'])) {
+      drupal_json_output($options['dce']);
+      drupal_exit();
+    }
+    else {
+      drupal_exit();
+    }
+  }
+  if (!empty($_POST['dce'])) {
+    $dce = explode(',', $_POST['dce']);
+
+    $result = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'data_collection_event')
+      ->propertyCondition('nid', $dce)
+      ->execute();
+    if (isset($result['node'])) {
+      $nid_dces = array_keys($result['node']);
+      $options = array();
+      foreach ($nid_dces as $nid_dce) {
+        $dce_wrapper = entity_metadata_wrapper('node', $nid_dce);
+        foreach ($dce_wrapper->field_dce_population->getIterator() as $populations) {
+          $options['node'][$populations->field_pop_study->nid->value()]->nid = $populations->field_pop_study->nid->value();
+        }
+      }
+      $options2 = datasets_domains_coverage_table_return_studies($options, $nid_dces);
+      if (isset($options2['dataset'])) {
+        drupal_json_output($options2['dataset']);
+        drupal_exit();
+      }
+      else {
+        drupal_exit();
+      }
+    }
+  }
+
+  else {
+    $result = $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'study')
+      ->execute();
+    $options = datasets_domains_coverage_table_return_studies($result);
+
+  }
+  return $options;
+}
+
+/*
+ * Return array of dataset by studies if linked
+ * */
+function datasets_domains_coverage_table_return_studies($result, $dces = NULL) {
+  $options = array();
+  //get harmonized dataset unlinked to studies to populate multiselect dataset field
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'dataset');
+  // Filter by dataset type
+  $query->fieldCondition('field_dataset_type', 'value', 'harmonization');
+  $entities = $query->execute();
+  $keys = array_keys($entities['node']);
+  foreach ($keys as $dataset_id) {
+    $dataset_wrapper = entity_metadata_wrapper('node', $dataset_id);
+    $_studi_datset = $dataset_wrapper->field_dataset_studies->value();
+    $_variables_dataset = $dataset_wrapper->field_dataset_variables->value();
+
+    if (_mica_datasets_node_access($dataset_id, 'dataset', 'view') &&
+      (((empty($_studi_datset) || !isset($_studi_datset)) &&
+        (!empty($_variables_dataset))
+      ))
+    ) {
+      // $options['dataset']['no studies'][$dataset_wrapper->nid->value()] = '---' . $dataset_wrapper->title->value();
+    }
+  }
+  //Dataset by $result parameters ..iterating studies to retrieve datasets
+  if (isset($result['node'])) {
+    $nid_studies = array_keys($result['node']);
+    foreach ($nid_studies as $nid_study) {
+      $study_wrapper = entity_metadata_wrapper('node', $nid_study);
+      $options['studies'][$nid_study] = truncate_utf8($study_wrapper->title->value(), 45, TRUE, TRUE);
+      foreach ($study_wrapper->field_study_populations->getIterator() as $populations) {
+        foreach ($populations->field_pop_dce->getIterator() as $dce) {
+          $options['dce'][truncate_utf8($study_wrapper->title->value(), 25, TRUE, TRUE)][$dce->nid->value()] = '--' . $dce->title->value();
+          foreach ($dce->field_dce_dataset->getIterator() as $dataset) {
+            $groupDatset_title = truncate_utf8($study_wrapper->title->value(), 25, TRUE, TRUE) . '-' . truncate_utf8($dce->title->value(), 25, TRUE, TRUE);
+            if (isset($dces) && in_array($dce->nid->value(), $dces)) {
+              $options['dataset'][$groupDatset_title][$dataset->nid->value()] = '---' . $dataset->title->value();
+            }
+            elseif ($dces === NULL) {
+              $options['dataset'][$groupDatset_title][$dataset->nid->value()] = '---' . $dataset->title->value();
+            }
+          }
+        }
+      }
+    }
+  }
+  return $options;
+}
