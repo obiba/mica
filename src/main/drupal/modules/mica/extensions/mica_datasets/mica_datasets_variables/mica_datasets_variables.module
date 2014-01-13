@@ -186,6 +186,7 @@ function mica_datasets_variables_get_harmonization_table($variable, $dataset_nid
   $tab = NULL;
   if (!empty($variable)) {
     $resource = array('variable/' . $variable['name']);
+
     $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
     $tab = NULL;
     $options = array();
@@ -195,42 +196,46 @@ function mica_datasets_variables_get_harmonization_table($variable, $dataset_nid
       'comment' => t('Comment'),
       'script' => t('Script'),
     );
+
     foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $studies) {
-      $detail_var = mica_datasets_variables_get_resource($dataset_nid, $studies->nid->value(), $resource);
-      if (!empty($detail_var)) {
+      try {
+        $detail_var = mica_datasets_variables_get_resource($dataset_nid, $studies->nid->value(), $resource);
         //get scripts
-        $script_to_pass = _mica_opal_json_get_string($detail_var, 'attributes[?(@[\'name\'==\'script\' and @namespace == \'opal\'].value');
-        $script = strlen($script_to_pass) === 0 ?
-          _mica_opal_json_get_string($detail_var, 'attributes[?(@[\'name\']==\'script\')].value') :
-          $script_to_pass;
+        if (!empty($detail_var) && $detail_var['name'] == $variable['name']) {
+          $script_to_pass = _mica_opal_json_get_string($detail_var, 'attributes[?(@[\'name\'==\'script\' and @namespace == \'opal\'].value');
+          $script = strlen($script_to_pass) === 0 ?
+            _mica_opal_json_get_string($detail_var, 'attributes[?(@[\'name\']==\'script\')].value') :
+            $script_to_pass;
+          $script = _mica_datasets_html_truncated($script, t('script'), 200, TRUE);
 
-        $script = _mica_datasets_html_truncated($script, t('script'), 200, TRUE);
+          //get comment
+          $comment = _mica_opal_parse_localized($detail_var, 'attributes[?(@[\'name\']==\'comment\'), ?(@[\'namespace\']==\'maelstrom\')]');
+          $comment = _mica_datasets_html_truncated(!empty($comment[$lang]) ? $comment[$lang] : '', t('comment'), 200, FALSE);
 
-        //get comment
-        $comment = _mica_opal_parse_localized($detail_var, 'attributes[?(@[\'name\']==\'comment\'), ?(@[\'namespace\']==\'maelstrom\')]');
-        $comment = _mica_datasets_html_truncated($comment, t('comment'), 200, FALSE);
+          //get status
+          $status_to_pass = _mica_opal_json_get_string($detail_var, 'attributes[?(@[\'name\']==\'status\'), ?(@[\'namespace\']==\'maelstrom\')].value');
+          $status = !empty($status_to_pass) && !strpos(",complete,impossible", $status_to_pass) ?
+            'undetermined' :
+            strtolower($status_to_pass);
+          $status = "<img src=\"" . _mica_datasets_get_status_icon($status) . "\" title=\"$status\"></div>";
 
-        //get status
-        $status_to_pass = _mica_opal_json_get_string($detail_var, 'attributes[?(@[\'name\']==\'status\'), ?(@[\'namespace\']==\'maelstrom\')].value');
+          $name = $studies->field_acroym->value() ? $studies->field_acroym->value() : $studies->title->value();
 
-        $status = !empty($status_to_pass) && !strpos(",complete,impossible", $status_to_pass) ?
-          'undetermined' :
-          strtolower($status_to_pass);
-
-        $status = "<img src=\"" . _mica_datasets_get_status_icon($status) . "\" title=\"$status\"></div>";
-        $name = $studies->field_acroym->value() ? $studies->field_acroym->value() : $studies->title->value();
-        $option = array(
-          'study' => $name,
-          'status' => $status,
-          'comment' => truncate_utf8($comment, 100, FALSE, TRUE),
-          'script' => $script,
-        );
-        if (!empty($script)) {
-          $options[] = $option;
+          $option = array(
+            'study' => $name,
+            'status' => $status,
+            'comment' => truncate_utf8($comment, 100, FALSE, TRUE),
+            'script' => $script,
+          );
         }
-        else {
-          unset($options);
-        }
+      } catch (Exception $e) {
+        unset($option);
+      }
+      if (!empty($script)) {
+        $options[] = !empty($option) ? $option : NULL;
+      }
+      else {
+        unset($options);
       }
     }
     if (!empty($options)) {
@@ -377,9 +382,13 @@ function mica_datasets_variables_get_detail_variable($dataset_nid, $study_nid, $
 function mica_datasets_variable_get_ajax_statistics($variable = NULL, $dataset_nid = NULL, $study_nid = NULL) {
   $resource = array('variable/' . $variable);
   $variable_detail = mica_datasets_variables_get_resource($dataset_nid, $study_nid, $resource);
-  print _mica_datasets_variable_render_statics($dataset_nid, _mica_opal_parse_categories($variable_detail),
-    _mica_opal_json_get_string($variable_detail, 'valueType'));
+  if (!empty($variable_detail)) {
+    $categories = _mica_opal_parse_categories($variable_detail);
 
+    if (!empty($categories)) {
+      print _mica_datasets_variable_render_statics($dataset_nid, $categories, _mica_opal_json_get_string($variable_detail, 'valueType'));
+    }
+  }
 }
 
 function _mica_datasets_variables_iterate_detail_variable($dataset_nid, $item) {
@@ -416,8 +425,9 @@ function _mica_datasets_variables_iterate_detail_variable($dataset_nid, $item) {
   $variable_info['categories'] = mica_datasets_variables_get_categories_table(_mica_opal_parse_categories($item));
   $variable_info_attribute = _mica_opal_parse_attributes($item);
   $variable_info['attributes'] = mica_datasets_variables_sort_attribute($variable_info_attribute);
-  // $variable_info['stats']  = _mica_datasets_variable_render_statics($dataset_nid,_mica_opal_parse_categories($item), $variable_info['value_type']);
+
   $variable_info['legend-harmonization'] = drupal_render(drupal_get_form('mica_datasets_variables_harmonization_legend_form'));
+
   $variable_info['harmonization'] = mica_datasets_variables_get_harmonization_table($item, $dataset_nid);
   return $variable_info;
 }
@@ -504,6 +514,7 @@ function _mica_datasets_variable_render_statics($dataset_id, $categories, $type)
       $is_categorical = TRUE;
       break;
     }
+
   }
 
   $values['dataset_id'] = $dataset_id;
@@ -577,10 +588,13 @@ function _mica_datasets_variables_iterate_variables($all_items) {
  * @param $resource : array of resource to be query exp : $resource - array
  * */
 function mica_datasets_variables_get_resource($dataset_nid, $study_nid, $resource) {
+
   $connector = mica_connector_query($dataset_nid, $study_nid, TRUE);
   $array = array();
   if ($connector) {
+
     $opal = new MicaDatasetOpalConnectionClass($connector);
+
     $post = new HttpClientRequest($connector->__call("getTableResourceURI", $resource), array(
       'method' => 'GET',
       'headers' => array('Accept' => array('application/json')),
