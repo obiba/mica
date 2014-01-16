@@ -26,13 +26,21 @@
         [1, 'asc']
       ],
       "aoColumnDefs": [
-        {"sWidth": "20%", "bVisible": false, "aTargets": [1] }
+        {"sWidth": "10", "bVisible": false, "aTargets": [1] }
       ],
       //  "sDom": 'T<"clear">lrf<"left"C>tip',
       "sDom": 'Tf<"clear">lrt',
       "oTableTools": {
         "sSwfPath": "../profiles/mica_distribution/libraries/datatables/swf/copy_csv_xls_pdf.swf",
-        "aButtons": [ "csv" ]
+        "aButtons": [
+
+          {
+            "sExtends": "csv",
+            "sButtonText": "Export to CSV",
+            "bHeader": false
+            //  "sDiv":        "copy"
+          }
+        ]
         // "aButtons": ["xls", "csv", "pdf" ]
       }
     });

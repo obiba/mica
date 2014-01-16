@@ -24,5 +24,5 @@
     }
 
   }
-
+// array('class'=> $is_bootstrap ? '' : 'tooltip',  'data-original-title' =>'this is tooltip', 'data-content' =>'content tooltip')
 })(jQuery);

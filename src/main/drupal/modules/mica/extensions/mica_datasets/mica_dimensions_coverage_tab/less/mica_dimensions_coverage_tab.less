@@ -13,7 +13,7 @@ table.dataset_crosstab tr.study-group-header {
 }
 
 table.dataset_crosstab th.study-group-header-title {
-  min-width: 200px;
+  min-width: 50px;
 }
 
 table.dataset_crosstab th.group_color {
@@ -23,7 +23,7 @@ table.dataset_crosstab th.group_color {
 }
 
 table.dataset_crosstab th {
-  min-width: 150px;
+  max-width: 50px;
   text-align: center;
   vertical-align: middle !important;
   border-left: 1px solid gray;
@@ -99,5 +99,9 @@ form .form-select {
 .dataTables_wrapper {
   border-bottom: solid 1px gray;
   /*  border-right: solid 1px gray; */
+}
+
+.dataset_crosstab tr.odd:first-of-type {
+  display: none;
 }
 

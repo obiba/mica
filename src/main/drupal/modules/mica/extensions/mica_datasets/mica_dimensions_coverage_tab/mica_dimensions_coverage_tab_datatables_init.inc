@@ -43,13 +43,13 @@ function mica_dimensions_coverage_tab_datasets($datasets = NULL) {
           if (!empty($node->field_dataset_variables)) {
             if (isset($node->field_dataset_studies['und'])) {
               $wrapper_study = entity_metadata_wrapper('node', $node->field_dataset_studies['und'][0]['nid']);
-              $study_title = truncate_utf8($wrapper_study->title->value(), 35, TRUE, TRUE);
+              $study_title = $wrapper_study->title->value();
               $study_nid_ignore[] = $wrapper_study->nid->value();
               foreach ($wrapper_study->field_study_populations->getIterator() as $population) {
                 foreach ($population->field_pop_dce->getIterator() as $dce) {
                   foreach ($dce->field_dce_dataset->getIterator() as $dce_dataset_filed) {
                     if ($dce_dataset_filed->nid->value() == $dataset_id && in_array($dce_dataset_filed->nid->value(), $keys)) {
-                      $dce_title = truncate_utf8($dce->title->value(), 35, TRUE, TRUE);
+                      $dce_title = $dce->title->value();
                       $data['header'][$study_title][$dce_title][$idenx_dataset][$dce_dataset_filed->nid->value()][$study_title][$dce_title] = $node->title;
                     }
 
