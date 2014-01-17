@@ -230,31 +230,15 @@ Function _mica_dimensions_coverage_tab_tabledata_display($ids_dataset = NULL) {
   /****clean data ******/
   $taxonomies = _mica_datasets_taxonomies();
   $rows = array();
-  foreach ($taxonomies as $taxonomy) {
-    $machine_name = substr($taxonomy[0], 0, drupal_strlen($taxonomy[0]) - 4);
-    $vocabularies = taxonomy_vocabulary_machine_name_load($machine_name);
-    $rows += _mica_dimensions_coverage_tab_dimension_table($vocabularies->vid, $dataset, $taxonomy[1]);
-  }
   array_unshift($dce_head_group_hidden, '');
   array_unshift($dce_head_group_hidden, '');
   array_unshift($rows, $dce_head_group_hidden);
-
+  $rows = _mica_dimensions_coverage_tab_dimension_table($dataset, $taxonomies);
   $contenttab = _mica_dimensions_coverage_tab_dimension_them_tab($header_row, $rows);
 
   /***************************/
   // Add Settings
 
-  //Setting tooltip
-
-  if (!$is_bootstrap) {
-    mica_core_include_bootstrap_css();
-    mica_core_prepare_tooltip();
-  }
-  $jquery_popover = '';
-  foreach ($popovers as $popover) {
-    $jquery_popover .= "jQuery('#$popover').popover({ html: true, placement: 'top', trigger: 'hover',container:'body' }); ";
-  }
-  drupal_add_js("jQuery(function () { $jquery_popover });", 'inline');
 // Reconstruct Table Dom header with js script by append the correct header
   if (isset($study_head_present) && $study_head_present == 'ok') {
     ctools_add_js('mica_dimensions_coverage_tab.header_add', 'mica_dimensions_coverage_tab');
@@ -274,7 +258,13 @@ Function _mica_dimensions_coverage_tab_tabledata_display($ids_dataset = NULL) {
   ctools_add_js('mica_dimensions_coverage_tab.dynamic-multiselect', 'mica_dimensions_coverage_tab');
 
   mica_datasets_prepare_prettify();
+  //Setting tooltip
 
+  $jquery_popover = '';
+  foreach ($popovers as $popover) {
+    $jquery_popover .= "jQuery('#$popover').popover({ html: true, placement: 'top', trigger: 'hover',container:'body' }); ";
+  }
+  drupal_add_js("jQuery(function () { $jquery_popover });", 'inline');
   $output = "<div id='table-refresh'>" . $contenttab . "</div>";
 
   return $output;
@@ -283,78 +273,81 @@ Function _mica_dimensions_coverage_tab_tabledata_display($ids_dataset = NULL) {
 /*
  * Construction Rows and of the table  the table with correct data
  * */
-function _mica_dimensions_coverage_tab_dimension_table($vid, $data, $taxonomy) {
+function _mica_dimensions_coverage_tab_dimension_table($data, $taxonomies) {
   $rows = array();
-  //dpm($data);
-  // Fetch all terms
-  $vocabulary = taxonomy_vocabulary_load($vid);
-  $tree = taxonomy_get_tree($vocabulary->vid);
-  if (!empty($tree)) {
-    foreach ($tree as $term) {
-      // Initializes variables passed to theme hook.
-      $variables = array(
-        'text' => $term->name,
-        'path' => 'variable-search',
-        //'count' => 0,
-        'options' => array(
-          'attributes' => array('class' => 'facetapi-inactive'),
-          'html' => FALSE,
-          'query' => array(
-            'f[0]' => $data['field_by_title'][strtolower($vocabulary->name)] . ':' . $term->tid,
+
+  foreach ($taxonomies as $taxonomy) {
+    $machine_name = substr($taxonomy[0], 0, drupal_strlen($taxonomy[0]) - 4);
+    $vocabularies = taxonomy_vocabulary_machine_name_load($machine_name);
+    // Fetch all terms
+    $vocabulary = taxonomy_vocabulary_load($vocabularies->vid); //dpm($taxonomy);
+    $tree = taxonomy_get_tree($vocabulary->vid); //dpm('********terms :');dpm($tree);dpm('*********end term');
+    if (!empty($tree)) {
+      foreach ($tree as $term) {
+        // Initializes variables passed to theme hook.
+
+        $variables = array(
+          'text' => $term->name,
+          'path' => 'variable-search',
+          //'count' => 0,
+          'options' => array(
+            'attributes' => array('class' => 'facetapi-inactive'),
+            'html' => FALSE,
+            'query' => array(
+              'f[0]' => $data['field_by_title'][strtolower($vocabulary->name)] . ':' . $term->tid,
+            ),
           ),
-        ),
-      );
+        );
 
-      // Themes the link, adds row to facets.
+        // Themes the link, adds row to facets.
+        $row[0] = array(
+          'class' => array('leaf'),
+          'data' => (isset($term->depth) && $term->depth > 0 ? theme('indentation', array('size' => $term->depth)) : '') .
+            theme('facetapi_link_inactive', $variables),
+        );
 
-      $row[0] = array(
-        'class' => array('leaf'),
-        'data' => (isset($term->depth) && $term->depth > 0 ? theme('indentation', array('size' => $term->depth)) : '') .
-          theme('facetapi_link_inactive', $variables),
-      );
-
-      // Themes the link, adds row to facets.
-      $row[1] = array(
-        'width' => '25%',
-        'class' => array('taxo'),
-        'data' => array(
-          '#markup' => $taxonomy
-        ),
-      );
-      // Fill facet count in the same order as the header
-
-      if (isset($data['header'])) {
-        $i = 0;
-        foreach ($data['header'] as $dataset_id => $title) {
-          if ($dataset_id > 0) {
-            if (isset($dataset_id) && isset($data[$i][$i][$term->tid])) {
-              $url = l($data[$i][$i][$term->tid]['count'], 'variable-search',
-                array(
-                  'query' => array(
-                    'f[0]' => 'field_dataset:' . $dataset_id,
-                    'f[1]' => $data[$i][$i][$term->tid]['facet'] . ':' . $term->tid,
+        // Themes the link, adds row to facets.
+        $row[1] = array(
+          'width' => '10',
+          'class' => array('taxo'),
+          'data' => array(
+            '#markup' => $taxonomy[1]
+          ),
+        );
+        // Fill facet count in the same order as the header
+        if (isset($data['header'])) {
+          $i = 0;
+          foreach ($data['header'] as $dataset_id => $title) {
+            if ($dataset_id > 0) {
+              if (isset($dataset_id) && isset($data[$i][$i][$term->tid])) {
+                $url = l($data[$i][$i][$term->tid]['count'], 'variable-search',
+                  array(
+                    'query' => array(
+                      'f[0]' => 'field_dataset:' . $dataset_id,
+                      'f[1]' => $data[$i][$i][$term->tid]['facet'] . ':' . $term->tid,
+                    ),
+                  )
+                );
+                $row[$i + 2] = array(
+                  'data' => array(
+                    '#markup' => $url,
                   ),
-                )
-              );
-              $row[$i + 2] = array(
-                'data' => array(
-                  '#markup' => $url,
-                ),
-                'class' => array('center')
-              );
+                  'class' => array('center')
+                );
+              }
+              else {
+                $row[$i + 2] = array(
+                  'data' => array(
+                    '#markup' => '-',
+                  ),
+                  'class' => array('center')
+                );
+              }
             }
-            else {
-              $row[$i + 2] = array(
-                'data' => array(
-                  '#markup' => '-',
-                ),
-                'class' => array('center')
-              );
-            }
+            $i++;
           }
-          $i++;
+          $rows [] = $row;
         }
-        $rows[] = $row;
       }
     }
   }
@@ -365,7 +358,6 @@ function _mica_dimensions_coverage_tab_dimension_table($vid, $data, $taxonomy) {
  * Construction of drupal table
  * */
 function _mica_dimensions_coverage_tab_dimension_them_tab($head, $rows) {
-
   // Insert vocabulary name in the first column
   if (isset($head)) {
     array_unshift($head, '');
