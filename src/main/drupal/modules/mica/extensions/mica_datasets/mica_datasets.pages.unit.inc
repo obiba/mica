@@ -126,7 +126,6 @@ function mica_datasets_unit_form_submit($form, &$form_state) {
   drupal_goto('admin/config/system/mica');
 }
 
-
 function mica_datasets_unit_form_validate($form, &$form_state) {
   $tlcc = $form_state['values']['two_letter_country_code'];
   if (strlen($tlcc) != 2 || !ctype_alpha($tlcc)) {
@@ -139,6 +138,7 @@ function _mica_datasets_is_private_path_defined() {
 }
 
 function _mica_datasets_set_missing_private_warning_message() {
-  drupal_set_message(t('Please define \'<b>Private file system path</b>\' in <a href="?q=admin/config/media/file-system" >Configuration > File system</a>'),
+  drupal_set_message(t('Please define \'<b>Private file system path</b>\' in '
+      . l(t('Configuration > File system'), 'admin/config/media/file-system')),
     'warning');
 }

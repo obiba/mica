@@ -8,21 +8,17 @@ include_once 'mica_bootstrap_config.features.inc';
  */
 function mica_bootstrap_config_block_view($delta = '') {
   switch ($delta) {
-   case 'bootstrap-login':
-     return user_is_logged_in() ? NULL : _mica_bootstrap_config_login_block_view();
+    case 'bootstrap-login':
+      return user_is_logged_in() ? NULL : _mica_bootstrap_config_login_block_view();
   }
   return NULL;
 }
-//
+
 function _mica_bootstrap_config_login_block_view() {
- $content = '<ul class="nav pull-right">';
-  $content .= '<li class="last leaf">';
-  $content .= '<a href="/user/login">' . t('Sign in') . '</a>';
- $content .= '</li></ul>';
   return array(
     'subject' => NULL,
-   'content' => $content,
- );
+    'content' => '<ul class="nav pull-right"><li class="last leaf">' . l(t('Sign in'), '/user/login') . '</li></ul>',
+  );
 }
 
 /**
@@ -37,7 +33,6 @@ function mica_bootstrap_config_form_search_block_form_alter(&$form, $form_state)
   $form['search_block_form']['#attributes']['placeholder'] = t('Search');
   $form['actions']['submit']['#attributes']['class'][] = 'hide';
 }
-
 
 /**
  * Implements hook_field_group_pre_render()
