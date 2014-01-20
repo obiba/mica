@@ -53,7 +53,8 @@
       function retrivecheckeddcebox(event, ui) {
         var dce = [];
         dce.push($("input[name=multiselect_edit-dce]:checked").map(function () {return this.value;}).get().join(","));
-        var post = "&dce=" + dce;
+        var type = $("input[name=type]").val();
+        var post = "&type=" + type + "&dce=" + dce;
         $.ajax({
           'url': '/content/datasets-domains-coverage-table-ajx-query',
           'type': 'POST',

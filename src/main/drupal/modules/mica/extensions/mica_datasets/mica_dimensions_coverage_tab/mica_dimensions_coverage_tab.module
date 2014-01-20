@@ -240,7 +240,7 @@ Function _mica_dimensions_coverage_tab_tabledata_display($ids_dataset = NULL) {
   // Add Settings
 
 // Reconstruct Table Dom header with js script by append the correct header
-  if (isset($study_head_present) && $study_head_present == 'ok') {
+  if (isset($study_head_present) && $study_head_present == 'ok' && (empty($_GET['type']) || $_GET['type'] != 'harmonization')) {
     ctools_add_js('mica_dimensions_coverage_tab.header_add', 'mica_dimensions_coverage_tab');
     drupal_add_js(array(
       'header_study_to_add' => $study_head_group,
@@ -280,8 +280,8 @@ function _mica_dimensions_coverage_tab_dimension_table($data, $taxonomies) {
     $machine_name = substr($taxonomy[0], 0, drupal_strlen($taxonomy[0]) - 4);
     $vocabularies = taxonomy_vocabulary_machine_name_load($machine_name);
     // Fetch all terms
-    $vocabulary = taxonomy_vocabulary_load($vocabularies->vid); //dpm($taxonomy);
-    $tree = taxonomy_get_tree($vocabulary->vid); //dpm('********terms :');dpm($tree);dpm('*********end term');
+    $vocabulary = taxonomy_vocabulary_load($vocabularies->vid);
+    $tree = taxonomy_get_tree($vocabulary->vid);
     if (!empty($tree)) {
       foreach ($tree as $term) {
         // Initializes variables passed to theme hook.
@@ -397,31 +397,31 @@ function mica_dimensions_coverage_tab_filter_form($form, &$form_state) {
     '#action' => '/content/datasets-domains-coverage-table',
     '#method' => 'get'
   );
+  if (empty($_GET['type']) || ($_GET['type']) && $_GET['type'] != 'harmonization') {
+    $form['studies'] = array(
+      '#prefix' => '<div class="col-xs-4 inline-input">',
+      '#suffix' => '</div>',
+      '#type' => 'select',
+      '#title' => t('Studies'),
+      '#default_value' => !empty($_SESSION['storage']['studies']) ? $_SESSION['storage']['studies'] : NULL,
+      '#options' => isset($options['studies']) ? $options['studies'] : '',
+      '#multiple' => TRUE,
+      '#collapsible' => TRUE,
+      '#collapsed' => FALSE,
+    );
 
-  $form['studies'] = array(
-    '#prefix' => '<div class="col-xs-4 inline-input">',
-    '#suffix' => '</div>',
-    '#type' => 'select',
-    '#title' => t('Studies'),
-    '#default_value' => !empty($_SESSION['storage']['studies']) ? $_SESSION['storage']['studies'] : NULL,
-    '#options' => $options['studies'],
-    '#multiple' => TRUE,
-    '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
-  );
-
-  $form['dce'] = array(
-    '#prefix' => '<div class="col-xs-4 inline-input">',
-    '#suffix' => '</div>',
-    '#type' => 'select',
-    '#title' => t('Data collection event'),
-    '#default_value' => !empty($_SESSION['storage']['dce']) ? $_SESSION['storage']['dce'] : NULL,
-    '#options' => $options['dce'],
-    '#multiple' => TRUE,
-    '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
-  );
-
+    $form['dce'] = array(
+      '#prefix' => '<div class="col-xs-4 inline-input">',
+      '#suffix' => '</div>',
+      '#type' => 'select',
+      '#title' => t('Data collection event'),
+      '#default_value' => !empty($_SESSION['storage']['dce']) ? $_SESSION['storage']['dce'] : NULL,
+      '#options' => isset($options['dce']) ? $options['dce'] : '',
+      '#multiple' => TRUE,
+      '#collapsible' => TRUE,
+      '#collapsed' => FALSE,
+    );
+  }
   $form['dataset'] = array(
     '#prefix' => '<div class="col-xs-4 inline-input">',
     '#suffix' => '</div>',
@@ -455,6 +455,7 @@ function mica_dimensions_coverage_tab_filter_form($form, &$form_state) {
 function datasets_domains_coverage_table_ajax_studies() {
   $query = new EntityFieldQuery();
   $options = array();
+  $type = !empty($_POST['type']) ? $_POST['type'] : NULL;
   if (!empty($_POST['studies'])) {
     $studies = explode(',', $_POST['studies']);
     // Or for Drupal 7, just in case you want to know
@@ -464,7 +465,7 @@ function datasets_domains_coverage_table_ajax_studies() {
       ->propertyCondition('nid', $studies)
       ->execute();
 
-    $options = datasets_domains_coverage_table_return_studies($result);
+    $options = datasets_domains_coverage_table_return_studies($result, NULL, $type);
     if (isset($options['dce'])) {
       drupal_json_output($options['dce']);
       drupal_exit();
@@ -489,7 +490,7 @@ function datasets_domains_coverage_table_ajax_studies() {
           $options['node'][$populations->field_pop_study->nid->value()]->nid = $populations->field_pop_study->nid->value();
         }
       }
-      $options2 = datasets_domains_coverage_table_return_studies($options, $nid_dces);
+      $options2 = datasets_domains_coverage_table_return_studies($options, $nid_dces, $type);
       if (isset($options2['dataset'])) {
         drupal_json_output($options2['dataset']);
         drupal_exit();
@@ -504,7 +505,7 @@ function datasets_domains_coverage_table_ajax_studies() {
     $result = $query->entityCondition('entity_type', 'node')
       ->entityCondition('bundle', 'study')
       ->execute();
-    $options = datasets_domains_coverage_table_return_studies($result);
+    $options = datasets_domains_coverage_table_return_studies($result, NULL, $type);
 
   }
   return $options;
@@ -513,29 +514,45 @@ function datasets_domains_coverage_table_ajax_studies() {
 /*
  * Return array of dataset by studies if linked
  * */
-function datasets_domains_coverage_table_return_studies($result, $dces = NULL) {
+function datasets_domains_coverage_table_return_studies($result, $dces = NULL, $type = NULL) {
   $options = array();
+  $is_study = FALSE;
+
+  $_GET['type'] = !empty($_GET['type']) ? $_GET['type'] : (!empty($type) ? $type : NULL);
+
+  if (empty($_GET['type']) || ($_GET['type'] != 'harmonization')) {
+    $is_study = TRUE;
+  }
   //get harmonized dataset unlinked to studies to populate multiselect dataset field
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'dataset');
   // Filter by dataset type
-  $query->fieldCondition('field_dataset_type', 'value', 'harmonization');
+  if (!empty($_GET['type']) && $_GET['type'] == 'harmonization') {
+    $query->fieldCondition('field_dataset_type', 'value', 'harmonization');
+  }
+  elseif (!empty($_GET['type']) && $_GET['type'] == 'study') {
+    $query->fieldCondition('field_dataset_type', 'value', 'study');
+  }
   $entities = $query->execute();
   $keys = array_keys($entities['node']);
-  foreach ($keys as $dataset_id) {
-    $dataset_wrapper = entity_metadata_wrapper('node', $dataset_id);
-    $_studi_datset = $dataset_wrapper->field_dataset_studies->value();
-    $_variables_dataset = $dataset_wrapper->field_dataset_variables->value();
 
-    if (_mica_datasets_node_access($dataset_id, 'dataset', 'view') &&
-      (((empty($_studi_datset) || !isset($_studi_datset)) &&
-        (!empty($_variables_dataset))
-      ))
-    ) {
-      // $options['dataset']['no studies'][$dataset_wrapper->nid->value()] = '---' . $dataset_wrapper->title->value();
+  if (empty($_GET['type']) || $_GET['type'] == 'harmonization') {
+    foreach ($keys as $dataset_id) {
+      $dataset_wrapper = entity_metadata_wrapper('node', $dataset_id);
+      $_studi_datset = $dataset_wrapper->field_dataset_studies->value();
+      $_variables_dataset = $dataset_wrapper->field_dataset_variables->value();
+
+      if (_mica_datasets_node_access($dataset_id, 'dataset', 'view') &&
+        (((empty($_studi_datset) || !isset($_studi_datset)) &&
+          (!empty($_variables_dataset)) && (empty($_GET['type']) || $_GET['type'] != 'study')
+        ))
+      ) {
+        $options['dataset']['no-Stody'][$dataset_wrapper->nid->value()] = '---' . $dataset_wrapper->title->value();
+      }
     }
   }
+
   //Dataset by $result parameters ..iterating studies to retrieve datasets
   if (isset($result['node'])) {
     $nid_studies = array_keys($result['node']);
@@ -544,17 +561,27 @@ function datasets_domains_coverage_table_return_studies($result, $dces = NULL) {
       foreach ($study_wrapper->mica_dataset->getIterator() as $datasets) {
         $nid_data = $datasets->nid->value();
         if (in_array($nid_data, $keys)) {
-          $options['studies'][$nid_study] = truncate_utf8($study_wrapper->title->value(), 45, TRUE, TRUE);
+          if (isset($is_study)) {
+            $options['studies'][$nid_study] = truncate_utf8($study_wrapper->title->value(), 45, TRUE, TRUE);
+          }
           foreach ($study_wrapper->field_study_populations->getIterator() as $populations) {
             foreach ($populations->field_pop_dce->getIterator() as $dce) {
-              $options['dce'][truncate_utf8($study_wrapper->title->value(), 25, TRUE, TRUE)][$dce->nid->value()] = '--' . $dce->title->value();
+              if (isset($is_study)) {
+                $options['dce'][truncate_utf8($study_wrapper->title->value(), 25, TRUE, TRUE)][$dce->nid->value()] = '--' . $dce->title->value();
+              }
               foreach ($dce->field_dce_dataset->getIterator() as $dataset) {
-                $groupDatset_title = truncate_utf8($study_wrapper->title->value(), 25, TRUE, TRUE) . '-' . truncate_utf8($dce->title->value(), 25, TRUE, TRUE);
-                if (isset($dces) && in_array($dce->nid->value(), $dces)) {
-                  $options['dataset'][$groupDatset_title][$dataset->nid->value()] = '---' . $dataset->title->value();
+                if (isset($is_study)) {
+                  $groupDatset_title = truncate_utf8($study_wrapper->title->value(), 25, TRUE, TRUE) . '-' . truncate_utf8($dce->title->value(), 25, TRUE, TRUE);
+
+                  if (isset($dces) && in_array($dce->nid->value(), $dces)) {
+                    $options['dataset'][$groupDatset_title][$dataset->nid->value()] = '---' . $dataset->title->value();
+                  }
+                  elseif ($dces === NULL) {
+                    $options['dataset'][$groupDatset_title][$dataset->nid->value()] = '---' . $dataset->title->value();
+                  }
                 }
-                elseif ($dces === NULL) {
-                  $options['dataset'][$groupDatset_title][$dataset->nid->value()] = '---' . $dataset->title->value();
+                else {
+                  $options['dataset']['no-Stody'][$dataset_wrapper->nid->value()] = '---' . $dataset_wrapper->title->value();
                 }
               }
             }
@@ -563,5 +590,6 @@ function datasets_domains_coverage_table_return_studies($result, $dces = NULL) {
       }
     }
   }
+
   return $options;
 }
