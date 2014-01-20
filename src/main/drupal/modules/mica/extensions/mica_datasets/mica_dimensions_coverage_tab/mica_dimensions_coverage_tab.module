@@ -541,17 +541,22 @@ function datasets_domains_coverage_table_return_studies($result, $dces = NULL) {
     $nid_studies = array_keys($result['node']);
     foreach ($nid_studies as $nid_study) {
       $study_wrapper = entity_metadata_wrapper('node', $nid_study);
-      $options['studies'][$nid_study] = truncate_utf8($study_wrapper->title->value(), 45, TRUE, TRUE);
-      foreach ($study_wrapper->field_study_populations->getIterator() as $populations) {
-        foreach ($populations->field_pop_dce->getIterator() as $dce) {
-          $options['dce'][truncate_utf8($study_wrapper->title->value(), 25, TRUE, TRUE)][$dce->nid->value()] = '--' . $dce->title->value();
-          foreach ($dce->field_dce_dataset->getIterator() as $dataset) {
-            $groupDatset_title = truncate_utf8($study_wrapper->title->value(), 25, TRUE, TRUE) . '-' . truncate_utf8($dce->title->value(), 25, TRUE, TRUE);
-            if (isset($dces) && in_array($dce->nid->value(), $dces)) {
-              $options['dataset'][$groupDatset_title][$dataset->nid->value()] = '---' . $dataset->title->value();
-            }
-            elseif ($dces === NULL) {
-              $options['dataset'][$groupDatset_title][$dataset->nid->value()] = '---' . $dataset->title->value();
+      foreach ($study_wrapper->mica_dataset->getIterator() as $datasets) {
+        $nid_data = $datasets->nid->value();
+        if (in_array($nid_data, $keys)) {
+          $options['studies'][$nid_study] = truncate_utf8($study_wrapper->title->value(), 45, TRUE, TRUE);
+          foreach ($study_wrapper->field_study_populations->getIterator() as $populations) {
+            foreach ($populations->field_pop_dce->getIterator() as $dce) {
+              $options['dce'][truncate_utf8($study_wrapper->title->value(), 25, TRUE, TRUE)][$dce->nid->value()] = '--' . $dce->title->value();
+              foreach ($dce->field_dce_dataset->getIterator() as $dataset) {
+                $groupDatset_title = truncate_utf8($study_wrapper->title->value(), 25, TRUE, TRUE) . '-' . truncate_utf8($dce->title->value(), 25, TRUE, TRUE);
+                if (isset($dces) && in_array($dce->nid->value(), $dces)) {
+                  $options['dataset'][$groupDatset_title][$dataset->nid->value()] = '---' . $dataset->title->value();
+                }
+                elseif ($dces === NULL) {
+                  $options['dataset'][$groupDatset_title][$dataset->nid->value()] = '---' . $dataset->title->value();
+                }
+              }
             }
           }
         }
