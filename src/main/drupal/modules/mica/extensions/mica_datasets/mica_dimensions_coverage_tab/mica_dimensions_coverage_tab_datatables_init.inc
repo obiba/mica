@@ -1,5 +1,5 @@
 <?php
-function mica_dimensions_coverage_tab_datasets($datasets = NULL) {
+function mica_dimensions_coverage_tab_datasets_harmonization($datasets = NULL) {
   $data = & drupal_static(__FUNCTION__);
   if (!isset($data)) {
     $query = new EntityFieldQuery();
@@ -48,8 +48,9 @@ function mica_dimensions_coverage_tab_datasets($datasets = NULL) {
               foreach ($wrapper_study->field_study_populations->getIterator() as $population) {
                 foreach ($population->field_pop_dce->getIterator() as $dce) {
                   foreach ($dce->field_dce_dataset->getIterator() as $dce_dataset_filed) {
-                    if ($dce_dataset_filed->nid->value() == $dataset_id && in_array($dce_dataset_filed->nid->value(), $keys)) {
-                      $dce_title = $dce->title->value();
+                    $dce_title = $dce->title->value();
+                    if ($dce_dataset_filed->nid->value() == $dataset_id) {
+
                       $data['header'][$study_title][$dce_title][$idenx_dataset][$dce_dataset_filed->nid->value()][$study_title][$dce_title] = $node->title;
                     }
 
@@ -119,4 +120,92 @@ function mica_dimensions_coverage_tab_datasets($datasets = NULL) {
   unset($data);
   $data = $data_title + $data_header + $data_data;
   return $data;
+}
+
+/*
+ * Construction Rows and of the table  the table with correct data
+ * */
+function _mica_dimensions_coverage_tab_dimension_table_harmonization($data, $taxonomies) {
+  $rows = array();
+
+  foreach ($taxonomies as $taxonomy) {
+    $machine_name = substr($taxonomy[0], 0, drupal_strlen($taxonomy[0]) - 4);
+    $vocabularies = taxonomy_vocabulary_machine_name_load($machine_name);
+    // Fetch all terms
+    $vocabulary = taxonomy_vocabulary_load($vocabularies->vid);
+    $tree = taxonomy_get_tree($vocabulary->vid);
+    if (!empty($tree)) {
+      foreach ($tree as $term) {
+        // Initializes variables passed to theme hook.
+
+        $variables = array(
+          'text' => $term->name,
+          'path' => 'variable-search',
+          //'count' => 0,
+          'options' => array(
+            'attributes' => array('class' => 'facetapi-inactive'),
+            'html' => FALSE,
+            'query' => array(
+              'f[0]' => $data['field_by_title'][strtolower($vocabulary->name)] . ':' . $term->tid,
+            ),
+          ),
+        );
+
+        // Themes the link, adds row to facets.
+        $row[0] = array(
+          'class' => array('leaf'),
+          'data' => (isset($term->depth) && $term->depth > 0 ? theme('indentation', array('size' => $term->depth)) : '') .
+            theme('facetapi_link_inactive', $variables),
+        );
+
+        // Themes the link, adds row to facets.
+        $row[1] = array(
+          'width' => '10',
+          'class' => array('taxo'),
+          'data' => array(
+            '#markup' => $taxonomy[1]
+          ),
+        );
+        // Fill facet count in the same order as the header
+        if (isset($data['header'])) {
+          $i = 0;
+
+          foreach ($data['header'] as $dataset_id => $title) {
+
+            if ($dataset_id > 0) {
+              if (isset($dataset_id) && isset($data[$i][$i][$term->tid]['count'])) {
+                $url = l($data[$i][$i][$term->tid]['count'], 'variable-search',
+                  array(
+                    'query' => array(
+                      'f[0]' => 'field_dataset:' . $dataset_id,
+                      'f[1]' => $data[$i][$i][$term->tid]['facet'] . ':' . $term->tid,
+
+                    ),
+                  )
+                );
+                $row[$i + 2] = array(
+                  'data' => array(
+                    '#markup' => $url,
+                  ),
+                  'class' => array('center')
+                );
+              }
+              else {
+                $row[$i + 2] = array(
+                  'data' => array(
+                    '#markup' => '-',
+                  ),
+                  'class' => array('center')
+                );
+              }
+            }
+            $i++;
+
+          }
+          $rows [] = $row;
+        }
+      }
+    }
+  }
+  return $rows;
 }

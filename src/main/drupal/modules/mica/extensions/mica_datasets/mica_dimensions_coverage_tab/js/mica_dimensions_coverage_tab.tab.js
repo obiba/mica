@@ -32,16 +32,8 @@
       "sDom": 'Tf<"clear">lrt',
       "oTableTools": {
         "sSwfPath": "../profiles/mica_distribution/libraries/datatables/swf/copy_csv_xls_pdf.swf",
-        "aButtons": [
-
-          {
-            "sExtends": "csv",
-            "sButtonText": "Export to CSV",
-            "bHeader": false
-            //  "sDiv":        "copy"
-          }
-        ]
-        // "aButtons": ["xls", "csv", "pdf" ]
+        "aButtons": ["csv" ]
+        //  "aButtons": ["xls", "csv", "pdf" ]
       }
     });
     new FixedColumns(oTable, {
