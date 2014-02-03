@@ -13,14 +13,14 @@
 
       /*
        var content_headdce = "<th colspan='2'>" + settings.dce_title + "</th>";
-      $.each(settings.header_dce_to_add, function (index, value) {
-        if (value.data) {
-          var group_color = "group_color";
-        }
-        content_headdce += "<th class='study-group-header-title " + group_color + "' colspan='" + value.colspan + "'>" + value.data + "</th>";
-      });
+       $.each(settings.header_dce_to_add, function (index, value) {
+       if (value.data) {
+       var group_color = "group_color";
+       }
+       content_headdce += "<th class='study-group-header-title " + group_color + "' colspan='" + value.colspan + "'>" + value.data + "</th>";
+       });
 
-      $("<tr class='study-group-header'  role='row'>" + content_headdce + "</tr>").insertAfter("#example > thead > tr.study-group-header:first");
+       $("<tr class='study-group-header'  role='row'>" + content_headdce + "</tr>").insertAfter("#example > thead > tr.study-group-header:first");
        */
 
     }
