@@ -527,7 +527,7 @@ function mica_dimensions_coverage_tab_filter_form($form, &$form_state) {
       '#prefix' => '<div class="col-xs-4 inline-input hidden-dce">',
       '#suffix' => '</div>',
       '#type' => 'select',
-      '#title' => t('Data collection event'),
+      '#title' => t('Show Data collection eventes'),
       '#default_value' => !empty($_SESSION['storage']['dce']) ? $_SESSION['storage']['dce'] : NULL,
       '#options' => isset($options['dce']) ? $options['dce'] : '',
       '#multiple' => TRUE,
@@ -564,7 +564,7 @@ function mica_dimensions_coverage_tab_filter_form($form, &$form_state) {
   );
 
   $form['submit'] = array(
-    '#prefix' => '<div class="col-xs-4 block-input leftbotton">',
+    '#prefix' => '<div class="col-xs-4 block-input leftbotton idden-dce">',
     '#suffix' => '</div>',
     '#type' => 'submit',
     '#value' => t('Proceed search'),

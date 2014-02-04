@@ -19,7 +19,13 @@
 
           retrievestudiescheckbox();
 
-        }
+        },
+
+        close: function(){
+      perform_search();
+   },
+
+
       });
 
       /*Multiselect event populate Dataset Multiselect Field */
@@ -143,6 +149,23 @@
       }
 
       /************************************/
+
+/*********************perform search action *************/
+
+/**********Ajax function to populate Multiselect DCE options *****/
+      function perform_search() {
+
+        document.forms["mica-dimensions-coverage-tab-filter-form"].submit();
+
+        console.log('hello word');
+      }
+
+/*****************************************************/
+/********************action in select deselect checkbox*************/
+ $('#edit-show-dce').on('change',function(){
+            $('#mica-dimensions-coverage-tab-filter-form').submit();
+            });
+/********************************************************************/
     }
   }
 })(jQuery);
