@@ -344,7 +344,8 @@ function _mica_dimensions_coverage_tab_dimension_table_study($data, $taxonomies)
 
             if ($key_header >= 0) {
               if (isset($data[$key_header][$term->tid]['have-var'])) {
-                $url = l($data[$key_header][$term->tid]['have-var'], 'variable-search',
+                //  $url = l($data[$key_header][$term->tid]['have-var'], 'variable-search',
+                $url = l('<img src="/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_green.png" title="'.$data[$key_header][$term->tid]['have-var'].'" style="vertical-align: middle">', 'variable-search',
                   array(
                     'query' => array(
 
@@ -353,6 +354,7 @@ function _mica_dimensions_coverage_tab_dimension_table_study($data, $taxonomies)
                       'f[2]' => 'field_dataset%3Afield_dataset_type' . ':' . 'study'
 
                     ),
+                    'html'=>TRUE
                   )
                 );
                 $row[$key_header + 2] = array(
@@ -365,7 +367,7 @@ function _mica_dimensions_coverage_tab_dimension_table_study($data, $taxonomies)
               else {
                 $row[$key_header + 2] = array(
                   'data' => array(
-                    '#markup' => '-',
+                    '#markup' => '<img src="/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_red.png" title="'.t('No Variables').'" style="vertical-align: middle">',
                   ),
                   'class' => array('center')
                 );

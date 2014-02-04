@@ -193,12 +193,12 @@ Function _mica_dimensions_coverage_tab_tabledata_display_study($study_id = NULL)
   if (!empty($dataset)) {
     foreach ($dataset['header'] as $key_header => $study) {
 
-      $dce_tootltip_id = 'dce_' . $key_header;
+      $dce_tootltip_id = 'study_' . $key_header;
       if ($is_bootstrap) {
         $popovers[] = $dce_tootltip_id;
       }
 
-      $header_row[$key_header] = '<span data-content="' . $study[key($study)] . '" id="' . $key_header . '">' . truncate_utf8($study[key($study)], 25, FALSE, TRUE) . '</span>';
+      $header_row[$key_header] = '<span data-content="' . $study[key($study)] . '" id="study_' . $key_header . '">' . truncate_utf8($study[key($study)], 25, FALSE, TRUE) . '</span>';
 
     }
 
@@ -272,7 +272,7 @@ Function _mica_dimensions_coverage_tab_tabledata_display_dce($ids_dce = NULL) {
           $popovers[] = $dce_tootltip_id;
         }
 
-        $header_row[] = '<span data-content="' . $dce[key($dce)] . '" id="' . $key_header . '">' . truncate_utf8($dce[key($dce)], 8, FALSE, TRUE) . '</span>';
+        $header_row[] = '<span data-content="' . $dce[key($dce)] . '" id="dce_' . $key_header . '">' . truncate_utf8($dce[key($dce)], 8, FALSE, TRUE) . '</span>';
         $to_insert = key($dce) . '|' . (!empty($dce[key($dce)]) ? $dce[key($dce)] : '');
 
         $dce_head_group_hidden [] = array('data' => $to_insert, 'class' => 'tohide');
@@ -539,7 +539,7 @@ function mica_dimensions_coverage_tab_filter_form($form, &$form_state) {
       '#prefix' => '<div class="col-xs-4 inline-input">',
       '#suffix' => '</div>',
       '#type' => 'checkbox',
-      '#title' => t('Show DCE'),
+      '#title' => t('Show Data collection eventes'),
       '#default_value' => !empty($_SESSION['storage']['show-dce']) ? $_SESSION['storage']['show-dce'] : NULL
     );
 
