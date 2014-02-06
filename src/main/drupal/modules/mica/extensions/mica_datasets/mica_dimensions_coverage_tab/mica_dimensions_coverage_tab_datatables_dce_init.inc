@@ -138,7 +138,6 @@ function mica_dimensions_coverage_tab_datasets_studies($id_studies = NULL) {
   $data = & drupal_static(__FUNCTION__);
   if (!isset($data)) {
     $index = search_api_index_load('variable_index');
-
     // Get a list of taxonomy_term that are indexed for this index
     $taxonomy_fields = $index->getFields();
     foreach ($taxonomy_fields as $field => $config) {
@@ -174,7 +173,6 @@ function mica_dimensions_coverage_tab_datasets_studies($id_studies = NULL) {
       $conditions->condition('field_dataset:field_dataset_type', 'study');
       $conditions->condition('search_api_combined_1', $keys_study_id);
       $result = $conditions->execute();
-
       if (!empty($result['results'])) {
         $data['header'][$keys_study_id][$study_title] = $study_title;
       }
@@ -345,7 +343,7 @@ function _mica_dimensions_coverage_tab_dimension_table_study($data, $taxonomies)
             if ($key_header >= 0) {
               if (isset($data[$key_header][$term->tid]['have-var'])) {
                 //  $url = l($data[$key_header][$term->tid]['have-var'], 'variable-search',
-                $url = l('<img src="/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_green.png" title="'.$data[$key_header][$term->tid]['have-var'].'" style="vertical-align: middle">', 'variable-search',
+                $url = l('<img src="/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_green.png" title="' . $data[$key_header][$term->tid]['have-var'] . '" style="vertical-align: middle">', 'variable-search',
                   array(
                     'query' => array(
 
@@ -354,7 +352,7 @@ function _mica_dimensions_coverage_tab_dimension_table_study($data, $taxonomies)
                       'f[2]' => 'field_dataset%3Afield_dataset_type' . ':' . 'study'
 
                     ),
-                    'html'=>TRUE
+                    'html' => TRUE
                   )
                 );
                 $row[$key_header + 2] = array(
@@ -367,7 +365,7 @@ function _mica_dimensions_coverage_tab_dimension_table_study($data, $taxonomies)
               else {
                 $row[$key_header + 2] = array(
                   'data' => array(
-                    '#markup' => '<img src="/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_red.png" title="'.t('No Variables').'" style="vertical-align: middle">',
+                    '#markup' => '<img src="/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_red.png" title="' . t('No Variables') . '" style="vertical-align: middle">',
                   ),
                   'class' => array('center')
                 );

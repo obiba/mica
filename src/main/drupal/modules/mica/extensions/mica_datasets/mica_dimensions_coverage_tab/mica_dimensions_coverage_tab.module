@@ -101,7 +101,10 @@ function mica_dimensions_coverage_block_info() {
  */
 
 function mica_dimensions_coverage_tab_block_view($delta) {
-
+  $content = '';
+  ctools_add_css('mica_dimensions_coverage_tab', 'mica_dimensions_coverage_tab');
+  //  Script to perform ajax action to deal with multi select fields
+  ctools_add_js('mica_dimensions_coverage_tab.dynamic-multiselect', 'mica_dimensions_coverage_tab');
   switch ($delta) {
     case 'filter-dimention-coverage':
       $_SESSION['storage']['studies'] = isset($_GET['studies']) ? $_GET['studies'] : NULL;
@@ -119,13 +122,17 @@ function mica_dimensions_coverage_tab_block_view($delta) {
 
     case 'tab-dimention-coverage':
       if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'harmonization') {
-        $content = _mica_dimensions_coverage_tab_tabledata_display(isset($_GET['dataset']) ? $_GET['dataset'] : NULL);
+        if (!empty($_GET['dataset'])) {
+          $content = _mica_dimensions_coverage_tab_tabledata_display(isset($_GET['dataset']) ? $_GET['dataset'] : NULL);
+        }
       }
       else {
         if (isset($_GET['show-dce']) && $_GET['show-dce'] == 1) {
-          $content = _mica_dimensions_coverage_tab_tabledata_display_dce(isset($_GET['dce']) ? $_GET['dce'] : NULL);
+          if (!empty($_GET['dce'])) {
+            $content = _mica_dimensions_coverage_tab_tabledata_display_dce(isset($_GET['dce']) ? $_GET['dce'] : NULL);
+          }
         }
-        else {
+        elseif (!empty($_GET['studies'])) {
           $content = _mica_dimensions_coverage_tab_tabledata_display_study(isset($_GET['studies']) ? $_GET['studies'] : NULL);
         }
       }
@@ -190,7 +197,7 @@ Function _mica_dimensions_coverage_tab_tabledata_display_study($study_id = NULL)
   $popovers = array();
 
   $is_bootstrap = mica_core_is_bootstrap_based_theme();
-  if (!empty($dataset)) {
+  if (!empty($dataset['header'])) {
     foreach ($dataset['header'] as $key_header => $study) {
 
       $dce_tootltip_id = 'study_' . $key_header;
@@ -220,13 +227,10 @@ Function _mica_dimensions_coverage_tab_tabledata_display_study($study_id = NULL)
 
     /***************************/
     // Add Js Settings
-  }
-  ctools_add_css('mica_dimensions_coverage_tab', 'mica_dimensions_coverage_tab');
 
-  ctools_add_js('mica_dimensions_coverage_tab.tab', 'mica_dimensions_coverage_tab');
-  drupal_add_library('mica_dimensions_coverage_tab', 'datatables');
-//  Script to perform ajax action to deal with multi select fields
-  ctools_add_js('mica_dimensions_coverage_tab.dynamic-multiselect', 'mica_dimensions_coverage_tab');
+    ctools_add_js('mica_dimensions_coverage_tab.tab', 'mica_dimensions_coverage_tab');
+    drupal_add_library('mica_dimensions_coverage_tab', 'datatables');
+  }
 
   mica_datasets_prepare_prettify();
   //Setting tooltip
@@ -237,7 +241,9 @@ Function _mica_dimensions_coverage_tab_tabledata_display_study($study_id = NULL)
   }
 
   drupal_add_js("jQuery(function () { $jquery_popover });", 'inline');
-  $output = "<div id='table-refresh'>" . $contenttab . "</div>";
+
+  $output = '<div class="loader"></div>';
+  $output .= "<div id='table-refresh'>" . $contenttab . "</div>";
 
   return $output;
 }
@@ -313,16 +319,13 @@ Function _mica_dimensions_coverage_tab_tabledata_display_dce($ids_dce = NULL) {
         'header_study_to_add' => $study_head_group,
         //   'header_dce_to_add' => $dce_head_group,
         'dce_title' => t('Data collection event'),
-        'study_title' => t('Study')
+        //   'study_title' => t('Study')
       ), array('type' => 'setting'));
     }
   }
-  ctools_add_css('mica_dimensions_coverage_tab', 'mica_dimensions_coverage_tab');
 
   ctools_add_js('mica_dimensions_coverage_tab.tab', 'mica_dimensions_coverage_tab');
   drupal_add_library('mica_dimensions_coverage_tab', 'datatables');
-//  Script to perform ajax action to deal with multi select fields
-  ctools_add_js('mica_dimensions_coverage_tab.dynamic-multiselect', 'mica_dimensions_coverage_tab');
 
   mica_datasets_prepare_prettify();
   //Setting tooltip
@@ -333,7 +336,8 @@ Function _mica_dimensions_coverage_tab_tabledata_display_dce($ids_dce = NULL) {
   }
 
   drupal_add_js("jQuery(function () { $jquery_popover });", 'inline');
-  $output = "<div id='table-refresh'>" . $contenttab . "</div>";
+  $output = '<div class="loader"></div>';
+  $output .= "<div id='table-refresh'>" . $contenttab . "</div>";
 
   return $output;
 }
@@ -435,16 +439,12 @@ Function _mica_dimensions_coverage_tab_tabledata_display($ids_dataset = NULL) {
       'header_study_to_add' => $study_head_group,
       'header_dce_to_add' => $dce_head_group,
       'dce_title' => t('Data collection event'),
-      'study_title' => t('Study')
+      //  'study_title' => t('Study')
     ), array('type' => 'setting'));
   }
 
-  ctools_add_css('mica_dimensions_coverage_tab', 'mica_dimensions_coverage_tab');
-
   ctools_add_js('mica_dimensions_coverage_tab.tab', 'mica_dimensions_coverage_tab');
   drupal_add_library('mica_dimensions_coverage_tab', 'datatables');
-  //Script to perform ajax action to deal with multi select fields
-  ctools_add_js('mica_dimensions_coverage_tab.dynamic-multiselect', 'mica_dimensions_coverage_tab');
 
   mica_datasets_prepare_prettify();
   //Setting tooltip
@@ -454,7 +454,8 @@ Function _mica_dimensions_coverage_tab_tabledata_display($ids_dataset = NULL) {
     $jquery_popover .= "jQuery('#$popover').popover({ html: true, placement: 'top', trigger: 'hover',container:'body' }); ";
   }
   drupal_add_js("jQuery(function () { $jquery_popover });", 'inline');
-  $output = "<div id='table-refresh'>" . $contenttab . "</div>";
+  $output = '<div class="loader"></div>';
+  $output .= "<div id='table-refresh'>" . $contenttab . "</div>";
 
   return $output;
 }
@@ -467,13 +468,17 @@ function _mica_dimensions_coverage_tab_dimension_them_tab($head, $rows, $type = 
   if (isset($head)) {
     array_unshift($head, '');
     if ($type == 'harmonization') {
-      array_splice($head, 0, 0, t("@title", array('@title' => 'Datasets')));
+      array_splice($head, 0, 0, '');
+      //  array_splice($head, 0, 0, t("@title", array('@title' => 'Datasets')));
     }
     elseif ($type == 'study') {
-      array_splice($head, 0, 0, t("@title", array('@title' => 'Data Collection Events')));
+      array_splice($head, 0, 0, '');
+      //      array_splice($head, 0, 0, t("@title", array('@title' => 'Data Collection Events')));
     }
     else {
-      array_splice($head, 0, 0, t("@title", array('@title' => 'Study')));
+      array_splice($head, 0, 0, '');
+      //  array_splice($head, 0, 0, t("@title", array('@title' => 'Study')));
+
     }
     $tab = theme(
       'table',
@@ -527,7 +532,7 @@ function mica_dimensions_coverage_tab_filter_form($form, &$form_state) {
       '#prefix' => '<div class="col-xs-4 inline-input hidden-dce">',
       '#suffix' => '</div>',
       '#type' => 'select',
-      '#title' => t('Show Data collection eventes'),
+      '#title' => t('Data collection event'),
       '#default_value' => !empty($_SESSION['storage']['dce']) ? $_SESSION['storage']['dce'] : NULL,
       '#options' => isset($options['dce']) ? $options['dce'] : '',
       '#multiple' => TRUE,
@@ -539,7 +544,7 @@ function mica_dimensions_coverage_tab_filter_form($form, &$form_state) {
       '#prefix' => '<div class="col-xs-4 inline-input">',
       '#suffix' => '</div>',
       '#type' => 'checkbox',
-      '#title' => t('Show Data collection eventes'),
+      '#title' => t('Show Data collection events'),
       '#default_value' => !empty($_SESSION['storage']['show-dce']) ? $_SESSION['storage']['show-dce'] : NULL
     );
 
@@ -564,7 +569,7 @@ function mica_dimensions_coverage_tab_filter_form($form, &$form_state) {
   );
 
   $form['submit'] = array(
-    '#prefix' => '<div class="col-xs-4 block-input leftbotton idden-dce">',
+    '#prefix' => '<div class="col-xs-4 block-input leftbotton hidden-dce">',
     '#suffix' => '</div>',
     '#type' => 'submit',
     '#value' => t('Proceed search'),
