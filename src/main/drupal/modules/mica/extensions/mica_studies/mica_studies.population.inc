@@ -1,6 +1,8 @@
 <?php
 
 function _mica_studies_population_view($node, $view_mode, $langcode) {
+
+  $node->title = isset($node->title_field[$langcode][0]['value']) ? $node->title_field[$langcode][0]['value'] : $node->title;
   _mica_studies_population_view_selection_criteria($node);
   _mica_studies_population_view_recruitment_sources($node);
   _mica_studies_population_view_nb_participants($node);
@@ -13,17 +15,20 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
       $desc = NULL;
       if (!empty($dce_wrapper->value()->body)) {
         $desc = isset($dce_wrapper->value()->body{$langcode}[0]['summary']) ? $dce_wrapper->value()->body{$langcode}[0]['summary'] : $dce_wrapper->body->summary->value();
-        if (empty($desc)) {
-          $desc = $dce_wrapper->body->value->value();
+        if (empty($desc) || $desc == '') {
+          $desc = isset($dce_wrapper->value()->body[$langcode][0]['value']) ? $dce_wrapper->value()->body[$langcode][0]['value'] : $dce_wrapper->body->value->value();
+          $desc = truncate_utf8($desc, 50, TRUE, TRUE);
         }
       }
-      $dce_nid = $dce_wrapper->nid->value();
+      $dce_nid = $dce_wrapper->getIdentifier();
+      $url = url('node/' . $dce_nid, array('absolute' => TRUE));
       // Hide DCE that are not published on study published page
       if ($wrapper->status->value() == $dce_wrapper->status->value() || $show_draft) {
         $dce_rows[$dce_nid] = array(
           'data' => array(
-            'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid),
-            'desc' => truncate_utf8($desc, 50, TRUE, TRUE),
+            //'label' => l($dce_wrapper->title->value(), 'node/' . $dce_nid,array(FALSE,FALSE,$langcode)),
+            'label' => '<a href="' . $url . '" >' . $dce_wrapper->title->value() . '</a>',
+            'desc' => $desc,
             'start_year' => $dce_wrapper->field_dce_start_year->value(),
             'start_month' => $dce_wrapper->field_dce_start_month->value(),
             'end_year' => $dce_wrapper->field_dce_end_year->value(),
