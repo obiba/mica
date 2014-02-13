@@ -1,6 +1,5 @@
-name = Mica Domains Coverage
+name = Mica Domains Coverage Table
 description = Mica Datasets Domains coverage comparison table
 core = 7.x
 package = Mica
 php = 5.2.4
-

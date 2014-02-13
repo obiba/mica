@@ -276,4 +276,9 @@ libraries[solr_php_client][download][type] = get
 libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.com/files/SolrPhpClient.r60.2011-05-04.tgz
 libraries[solr_php_client][directory_name] = SolrPhpClient
 
+libraries[mica_domains_coverage][download][type] = get
+libraries[mica_domains_coverage][download][url] = http://datatables.net/releases/DataTables-1.9.4.zip
+libraries[mica_domains_coverage][directory_name] = datatables
+libraries[mica_domains_coverage][overwrite] = TRUE
+
 
