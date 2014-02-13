@@ -41,16 +41,16 @@
           return Drupal.t('@numChecked of @numTotal checked', {'@numChecked': numChecked, '@numTotal': numTotal});
         },
         click: function (event, ui) {
-          retrivecheckeddcebox(event, ui);
+          //   retrivecheckeddcebox(event, ui);
         },
         optgrouptoggle: function (event, ui) {
-          retrivecheckeddcebox(event, ui);
+          //     retrivecheckeddcebox(event, ui);
         },
         checkAll: function () {
-          retrivecheckeddcebox();
+          //     retrivecheckeddcebox();
         },
         uncheckAll: function () {
-          retrivecheckeddcebox();
+          //     retrivecheckeddcebox();
         }
       });
 
@@ -122,6 +122,7 @@
         dce.push($("input[name=multiselect_edit-dce]:checked").map(function () {return this.value;}).get().join(","));
         var studies = [];
         studies.push($("input[name=multiselect_edit-studies]:checked").map(function () {return this.value;}).get().join(","));
+        var dataset = studies.push($("input[name=multiselect_edit-dataset]:checked").map(function () {return this.value;}).get().join(","));
         if (studies == "") {
           $('select#edit-dce').children().remove();
           var el = $("#edit-dce").multiselect();
@@ -129,6 +130,9 @@
           document.forms["mica-dimensions-coverage-tab-filter-form"].submit();
         }
         if (dce != "") {
+          document.forms["mica-dimensions-coverage-tab-filter-form"].submit();
+        }
+        if (dataset != "") {
           document.forms["mica-dimensions-coverage-tab-filter-form"].submit();
         }
       }
