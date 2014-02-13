@@ -1,6 +1,6 @@
 <?php
 
-function mica_dimensions_coverage_tab_datasets_harmonization($dataset_id = NULL) {
+function mica_dimensions_coverage_datasets_harmonization($dataset_id = NULL) {
   $data = & drupal_static(__FUNCTION__);
   if (!isset($data)) {
     $index = search_api_index_load('variable_index');
@@ -25,7 +25,7 @@ function mica_dimensions_coverage_tab_datasets_harmonization($dataset_id = NULL)
   return $data;
 }
 
-function mica_dimensions_coverage_tab_dce($dce_id = NULL) {
+function mica_dimensions_coverage_dce($dce_id = NULL) {
   $data = & drupal_static(__FUNCTION__);
   if (!isset($data)) {
     $index = search_api_index_load('variable_index');
@@ -48,7 +48,7 @@ function mica_dimensions_coverage_tab_dce($dce_id = NULL) {
   return $data;
 }
 
-function mica_dimensions_coverage_tab_studies($id_studies = NULL) {
+function mica_dimensions_coverage_studies($id_studies = NULL) {
   $data = & drupal_static(__FUNCTION__);
   if (!isset($data)) {
     $index = search_api_index_load('variable_index');
@@ -120,7 +120,7 @@ function _mica_dimensions_coverage_get_data(&$data, $index, $condition, $taxonom
 /*
  * Construction Rows and of the table  the table with correct data
  * */
-function _mica_dimensions_coverage_tab_dimension_table($data, $taxonomies, $type) {
+function _mica_dimensions_coverage_dimension_table($data, $taxonomies, $type) {
 //  $rows = array();
   foreach ($taxonomies as $taxonomy) {
     $machine_name = substr($taxonomy[0], 0, drupal_strlen($taxonomy[0]) - 4);
@@ -130,7 +130,7 @@ function _mica_dimensions_coverage_tab_dimension_table($data, $taxonomies, $type
     $tree = taxonomy_get_tree($vocabulary->vid);
     if (!empty($tree)) {
       foreach ($tree as $term) {
-        $row = _mica_dimensions_coverage_tab_construct_domains_column($term, $vocabulary, $taxonomy, $data['field_by_title']);
+        $row = _mica_dimensions_coverage_construct_domains_column($term, $vocabulary, $taxonomy, $data['field_by_title']);
 
         // Fill facet count in the same order as the header
         if (isset($data['header'])) {
@@ -211,7 +211,7 @@ function _mica_dimensions_coverage_tab_dimension_table($data, $taxonomies, $type
   return $rows;
 }
 
-function _mica_dimensions_coverage_tab_construct_domains_column($term, $vocabulary, $taxonomy, $field_by_title) {
+function _mica_dimensions_coverage_construct_domains_column($term, $vocabulary, $taxonomy, $field_by_title) {
 // Initializes variables passed to theme hook.
   $variables = array(
     'text' => $term->name,

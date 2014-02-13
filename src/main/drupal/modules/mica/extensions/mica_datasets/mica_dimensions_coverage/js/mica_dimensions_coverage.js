@@ -5,6 +5,7 @@
       createTable();
     }
   };
+  console.log('datatable Ok');
   /*
    * Initialation of Datatables
    * */
