@@ -53,7 +53,7 @@ projects[] = devel
 
 projects[email] = 1.2
 
-projects[entity][version] = 1.2
+projects[entity][version] = 1.3
 projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info-on-validation-exception.patch
 
 projects[entity_translation] = 1.0-alpha2
@@ -88,7 +88,7 @@ projects[field_display_label][version] = 1.2
 projects[field_display_label][patch][1689574] = http://drupal.org/files/field_display_label_i18n_field-1689574-6.patch
 
 projects[field_group][version] = 1.3
-projects[field_group][patch][1175102] = http://drupal.org/files/description_translation-1175102-16.patch
+projects[field_group][patch][1175102] = https://drupal.org/files/issues/description_translation-1175102-25.patch
 
 projects[field_permissions] = 1.0-beta2
 
@@ -194,7 +194,7 @@ projects[search_api_ranges][patch][2130349] = http://drupal.org/files/issues/sea
 
 projects[search_api_solr] = 1.3
 
-projects[services] = 3.5
+projects[services] = 3.7
 
 projects[smtp] = 1.0-beta2
 
