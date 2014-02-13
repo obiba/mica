@@ -125,7 +125,12 @@ abstract class AbstractTerm implements QueryTermInterface {
   }
 
   function getFieldName() {
-    return $this->getVariable()->title;
+    if (isset($this->getVariable()->title)) {
+      return $this->getVariable()->title;
+    }
+    else {
+      return $this->qt->variable_id;
+    }
   }
 
   function getFieldLabel() {
@@ -196,7 +201,6 @@ abstract class AbstractTerm implements QueryTermInterface {
     if (isset($dataset_id)) {
       $connectors = mica_connector_query_multiple($dataset_id, TRUE);
     }
-
     return $connectors;
   }
 
@@ -251,8 +255,7 @@ class CategoryTerm extends AbstractTerm {
     return FALSE;
   }
 
-  function view() {
-    $variable = $this->getVariable();
+  function view($categories = NULL) {
 
     $headers = array('Value');
     $stats = $this->stats();
@@ -261,10 +264,19 @@ class CategoryTerm extends AbstractTerm {
     }
 
     $rows = array();
-    $wrapper = entity_metadata_wrapper('node', $variable);
+
+    if ($categories === NULL) {
+      $variable = $this->getVariable();
+      $wrapper = entity_metadata_wrapper('node', $variable);
+      $cat = $wrapper->field_variable_categories->value();
+    }
+    else {
+      $cat = $categories;
+    }
+
     // Get total of non-missing categories
     $totals = array();
-    foreach ($wrapper->field_variable_categories->value() as $category) {
+    foreach ($cat as $category) {
       if (!$category["missing"]) {
         $category_name = $category["name"];
         foreach ($stats as $study_id => $stat) {
@@ -274,7 +286,7 @@ class CategoryTerm extends AbstractTerm {
       }
     }
 
-    foreach ($wrapper->field_variable_categories->value() as $category) {
+    foreach ($cat as $category) {
       $category_name = $category["name"];
       $missing = $category['missing'];
       $row = array($category_name);
