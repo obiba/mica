@@ -113,8 +113,8 @@
       }
 
       /************************************/
-      /*********************perform search action *************/
 
+      /*********************perform search action *************/
       /**********Ajax function to populate Multiselect DCE options *****/
       function perform_search() {
         $(".loader").fadeIn("slow");
@@ -127,13 +127,13 @@
           $('select#edit-dce').children().remove();
           var el = $("#edit-dce").multiselect();
           el.multiselect('refresh');
-          document.forms["mica-dimensions-coverage-tab-filter-form"].submit();
+          document.forms["mica-dimensions-coverage-filter-form"].submit();
         }
         if (dce != "") {
-          document.forms["mica-dimensions-coverage-tab-filter-form"].submit();
+          document.forms["mica-dimensions-coverage-filter-form"].submit();
         }
         if (dataset != "") {
-          document.forms["mica-dimensions-coverage-tab-filter-form"].submit();
+          document.forms["mica-dimensions-coverage-filter-form"].submit();
         }
       }
 
