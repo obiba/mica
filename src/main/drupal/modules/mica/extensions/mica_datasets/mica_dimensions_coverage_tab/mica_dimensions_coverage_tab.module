@@ -406,7 +406,6 @@ function _mica_dimensions_coverage_tab_dimension_them_tab($head, $rows, $type = 
   if (isset($head)) {
     array_unshift($head, '');
     if ($type == 'harmonization') {
-      dpm($head);
       array_splice($head, 0, 0, '');
       //  array_splice($head, 0, 0, t("@title", array('@title' => 'Datasets')));
     }
