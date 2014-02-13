@@ -1,21 +1,27 @@
 <?php
 
+function mica_dimensions_coverage_get_list_taxonomy_term(&$data, $index) {
+  // Get a list of taxonomy_term that are indexed for this index
+  $taxonomy_fields = $index->getFields();
+  foreach ($taxonomy_fields as $field => $config) {
+    if (!isset($config['entity_type']) || $config['entity_type'] !== 'taxonomy_term') {
+      unset($taxonomy_fields[$field]);
+    }
+  }
+
+  foreach ($taxonomy_fields as $taxonomy_field => $info) {
+    $data['field_by_title'][strtolower($info['name'])] = $taxonomy_field;
+  }
+  $taxonomy_fields = array_keys($taxonomy_fields);
+  return $taxonomy_fields;
+}
+
 function mica_dimensions_coverage_tab_datasets_harmonization($dataset_id = NULL) {
   $data = & drupal_static(__FUNCTION__);
   if (!isset($data)) {
     $index = search_api_index_load('variable_index');
-    // Get a list of taxonomy_term that are indexed for this index
-    $taxonomy_fields = $index->getFields();
-    foreach ($taxonomy_fields as $field => $config) {
-      if (!isset($config['entity_type']) || $config['entity_type'] !== 'taxonomy_term') {
-        unset($taxonomy_fields[$field]);
-      }
-    }
 
-    foreach ($taxonomy_fields as $taxonomy_field => $info) {
-      $data['field_by_title'][strtolower($info['name'])] = $taxonomy_field;
-    }
-    $taxonomy_fields = array_keys($taxonomy_fields);
+    $taxonomy_fields = mica_dimensions_coverage_get_list_taxonomy_term($data, $index);
 
     $query_dataset = new SearchApiQuery($index);
     $query_dataset->condition('field_dataset:field_dataset_type', 'harmonization', '=');
@@ -39,18 +45,7 @@ function mica_dimensions_coverage_tab_dce($dce_id = NULL) {
   $data = & drupal_static(__FUNCTION__);
   if (!isset($data)) {
     $index = search_api_index_load('variable_index');
-    // Get a list of taxonomy_term that are indexed for this index
-    $taxonomy_fields = $index->getFields();
-    foreach ($taxonomy_fields as $field => $config) {
-      if (!isset($config['entity_type']) || $config['entity_type'] !== 'taxonomy_term') {
-        unset($taxonomy_fields[$field]);
-      }
-    }
-
-    foreach ($taxonomy_fields as $taxonomy_field => $info) {
-      $data['field_by_title'][strtolower($info['name'])] = $taxonomy_field;
-    }
-    $taxonomy_fields = array_keys($taxonomy_fields);
+    $taxonomy_fields = mica_dimensions_coverage_get_list_taxonomy_term($data, $index);
 
     $query_dce = new SearchApiQuery($index);
     $query_dce->condition('field_dataset:field_dataset_type', 'study', '=');
@@ -73,18 +68,8 @@ function mica_dimensions_coverage_tab_studies($id_studies = NULL) {
   $data = & drupal_static(__FUNCTION__);
   if (!isset($data)) {
     $index = search_api_index_load('variable_index');
-    // Get a list of taxonomy_term that are indexed for this index
-    $taxonomy_fields = $index->getFields();
-    foreach ($taxonomy_fields as $field => $config) {
-      if (!isset($config['entity_type']) || $config['entity_type'] !== 'taxonomy_term') {
-        unset($taxonomy_fields[$field]);
-      }
-    }
 
-    foreach ($taxonomy_fields as $taxonomy_field => $info) {
-      $data['field_by_title'][strtolower($info['name'])] = $taxonomy_field;
-    }
-    $taxonomy_fields = array_keys($taxonomy_fields);
+    $taxonomy_fields = mica_dimensions_coverage_get_list_taxonomy_term($data, $index);
 
     $query_study = new SearchApiQuery($index);
     $query_study->condition('field_dataset:field_dataset_type', 'study', '=');
