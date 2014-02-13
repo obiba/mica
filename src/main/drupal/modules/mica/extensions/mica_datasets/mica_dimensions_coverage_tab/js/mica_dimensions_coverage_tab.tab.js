@@ -17,23 +17,19 @@
       "aaSorting": [],
       "sScrollY": "450px",
       "sScrollX": "100%",
-      "sScrollXInner": "110%",
+      "sScrollXInner": "100%",
       "bScrollCollapse": true,
       "bLengthChange": false,
       "bPaginate": false,
-      "bSort": false,
-      "aaSortingFixed": [
-        [1, 'asc']
-      ],
+      "bSort": true,
       "aoColumnDefs": [
-        {"sWidth": "20%", "bVisible": false, "aTargets": [1] }
+        {"sWidth": "1%", "bVisible": false, "aTargets": [1] },
       ],
-      //  "sDom": 'T<"clear">lrf<"left"C>tip',
       "sDom": 'Tf<"clear">lrt',
       "oTableTools": {
         "sSwfPath": "../profiles/mica_distribution/libraries/datatables/swf/copy_csv_xls_pdf.swf",
-        "aButtons": [ "csv" ]
-        // "aButtons": ["xls", "csv", "pdf" ]
+        "aButtons": ["csv" ]
+        //  "aButtons": ["xls", "csv", "pdf" ]
       }
     });
     new FixedColumns(oTable, {

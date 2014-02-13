@@ -8,12 +8,12 @@ table.dataset_crosstab td.center {
 }
 
 table.dataset_crosstab tr.study-group-header {
-  min-height: 45px;
+  height: 38px;
   font-size: 0.8em;
 }
 
 table.dataset_crosstab th.study-group-header-title {
-  min-width: 200px;
+  width: 75px;
 }
 
 table.dataset_crosstab th.group_color {
@@ -23,7 +23,7 @@ table.dataset_crosstab th.group_color {
 }
 
 table.dataset_crosstab th {
-  min-width: 150px;
+  width: 75px;
   text-align: center;
   vertical-align: middle !important;
   border-left: 1px solid gray;
@@ -52,7 +52,7 @@ div.block-mica-datasets-crosstab {
 }
 
 table tbody td {
-  min-width: 100px;
+  width: 75px;
 }
 
 /*Hack Firefox */
@@ -82,7 +82,6 @@ div.dataTables_scrollBody {
 
 .block-input {
   display: block;
-  float: right;
   margin-bottom: 25px;
 }
 
@@ -101,3 +100,84 @@ form .form-select {
   /*  border-right: solid 1px gray; */
 }
 
+.dataset_crosstab tr.odd:first-of-type {
+  display: none;
+}
+
+div .hidden-dce {
+  display: none;
+}
+
+.loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url('../images/page-loader.gif') 50% 50% no-repeat;
+}
+
+#square {
+  position: absolute;
+  top: 45px;
+  left: 0px;
+  border: 1px solid #495961;
+  color: #495961;
+  height: 74px;
+  width: 349px;
+  font-style: italic;
+  font-size: 14px;
+  background-color: #e3e4e4;
+  z-index: 500;
+}
+
+#study {
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 280px;
+}
+
+#dce {
+  display: block;
+  position: absolute;
+  top: 40px;
+  left: 300px;
+}
+
+#domain {
+  display: block;
+  position: absolute;
+  top: 45px;
+  left: 25px;
+}
+
+#line {
+  position: absolute;
+  top: 77px;
+  left: -55px;
+  height: 500px;
+  width: 356.78px;
+  border-top: 1px solid #495961;
+  -webkit-transform: rotate(11.9deg);
+  -moz-transform: rotate(11.9deg);
+  -ms-transform: rotate(11.9deg);
+  -o-transform: rotate(11.9deg);
+  transform: rotate(11.9deg);
+  z-index: 500;
+}
+
+#line2 {
+  position: absolute;
+  top: 82px;
+  left: 172px;
+  height: 500px;
+  width: 178px;
+  border-top: 1px solid #495961;
+  z-index: 500;
+}
+
+.noborderhead {
+  border: none;
+}
