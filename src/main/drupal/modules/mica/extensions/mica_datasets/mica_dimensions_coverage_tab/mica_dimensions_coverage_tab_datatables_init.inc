@@ -252,11 +252,9 @@ function mica_dimensions_coverage_get_list_taxonomy_term(&$data, $index) {
     if (!isset($config['entity_type']) || $config['entity_type'] !== 'taxonomy_term') {
       unset($taxonomy_fields[$field]);
     }
+    $data['field_by_title'][strtolower($config['name'])] = $field;
   }
 
-  foreach ($taxonomy_fields as $taxonomy_field => $info) {
-    $data['field_by_title'][strtolower($info['name'])] = $taxonomy_field;
-  }
   $taxonomy_fields = array_keys($taxonomy_fields);
   return $taxonomy_fields;
 }
