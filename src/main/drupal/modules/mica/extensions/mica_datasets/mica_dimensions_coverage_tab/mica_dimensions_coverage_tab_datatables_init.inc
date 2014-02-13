@@ -1,21 +1,5 @@
 <?php
 
-function mica_dimensions_coverage_get_list_taxonomy_term(&$data, $index) {
-  // Get a list of taxonomy_term that are indexed for this index
-  $taxonomy_fields = $index->getFields();
-  foreach ($taxonomy_fields as $field => $config) {
-    if (!isset($config['entity_type']) || $config['entity_type'] !== 'taxonomy_term') {
-      unset($taxonomy_fields[$field]);
-    }
-  }
-
-  foreach ($taxonomy_fields as $taxonomy_field => $info) {
-    $data['field_by_title'][strtolower($info['name'])] = $taxonomy_field;
-  }
-  $taxonomy_fields = array_keys($taxonomy_fields);
-  return $taxonomy_fields;
-}
-
 function mica_dimensions_coverage_tab_datasets_harmonization($dataset_id = NULL) {
   $data = & drupal_static(__FUNCTION__);
   if (!isset($data)) {
@@ -259,4 +243,20 @@ function _mica_dimensions_coverage_tab_construct_domains_column($term, $vocabula
     ),
   );
   return $row;
+}
+
+function mica_dimensions_coverage_get_list_taxonomy_term(&$data, $index) {
+  // Get a list of taxonomy_term that are indexed for this index
+  $taxonomy_fields = $index->getFields();
+  foreach ($taxonomy_fields as $field => $config) {
+    if (!isset($config['entity_type']) || $config['entity_type'] !== 'taxonomy_term') {
+      unset($taxonomy_fields[$field]);
+    }
+  }
+
+  foreach ($taxonomy_fields as $taxonomy_field => $info) {
+    $data['field_by_title'][strtolower($info['name'])] = $taxonomy_field;
+  }
+  $taxonomy_fields = array_keys($taxonomy_fields);
+  return $taxonomy_fields;
 }
