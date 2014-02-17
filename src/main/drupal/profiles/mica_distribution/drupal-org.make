@@ -88,7 +88,7 @@ projects[field_display_label][version] = 1.2
 projects[field_display_label][patch][1689574] = http://drupal.org/files/field_display_label_i18n_field-1689574-6.patch
 
 projects[field_group][version] = 1.3
-projects[field_group][patch][1175102] = https://drupal.org/files/issues/description_translation-1175102-25.patch
+projects[field_group][patch][1175102] = http://drupal.org/files/issues/description_translation-1175102-25.patch
 
 projects[field_permissions] = 1.0-beta2
 
