@@ -73,7 +73,7 @@
         studies.push($("input[name=multiselect_edit-studies]:checked").map(function () {return this.value;}).get().join(","));
         var post = "&studies=" + studies;
         $.ajax({
-          'url': '/content/datasets-domains-coverage-table-ajx-query',
+          'url': '?q=content/datasets-domains-coverage-table-ajx-query',
           'type': 'POST',
           'dataType': 'json',
           'data': post,

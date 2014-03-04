@@ -135,7 +135,6 @@ function _mica_dimensions_coverage_dimension_table($data, $taxonomies, $type) {
         // Fill facet count in the same order as the header
         if (isset($data['header'])) {
           $i = 0;
-          $no_data = '-';
           foreach ($data['header'] as $key_header => $title) {
             if ($key_header >= 0) {
               if (isset($data[$key_header][$term->tid]['count'])) {
@@ -181,7 +180,6 @@ function _mica_dimensions_coverage_dimension_table($data, $taxonomies, $type) {
                     );
                     $no_data = '-';
                     break;
-
                 }
 
                 $row[$key_header + 2] = array(
