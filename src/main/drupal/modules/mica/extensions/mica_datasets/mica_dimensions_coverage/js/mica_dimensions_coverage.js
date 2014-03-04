@@ -28,7 +28,7 @@
       ],
       "sDom": 'Tf<"clear">lrt',
       "oTableTools": {
-        "sSwfPath": "../profiles/mica_distribution/libraries/datatables/swf/copy_csv_xls_pdf.swf",
+        "sSwfPath": "/profiles/mica_distribution/modules/mica/extensions/mica_datasets/mica_dimensions_coverage/swf/copy_csv_xls_pdf.swf",
         "aButtons": ["csv" ]
         //  "aButtons": ["xls", "csv", "pdf" ]
       }
