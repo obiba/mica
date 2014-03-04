@@ -135,17 +135,15 @@ function _mica_dimensions_coverage_dimension_table($data, $taxonomies, $type) {
         // Fill facet count in the same order as the header
         if (isset($data['header'])) {
           $i = 0;
-          $no_data = '-';
           foreach ($data['header'] as $key_header => $title) {
             if ($key_header >= 0) {
               if (isset($data[$key_header][$term->tid]['count'])) {
                 //  $url = l($data[$key_header][$term->tid]['have-var'], 'variable-search',
                 switch ($type) {
                   case 'study':
-                    $url = l('<img src="/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_green.png" title="' . $data[$key_header][$term->tid]['count'] . '" style="vertical-align: middle">', 'variable-search',
+                    $url = l('<img src="' . $GLOBALS['base_url'] . '/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_green.png" title="' . $data[$key_header][$term->tid]['count'] . '" style="vertical-align: middle">', 'variable-search',
                       array(
                         'query' => array(
-
                           'f[0]' => $data[$key_header][$term->tid]['facet'] . ':' . $term->tid,
                           'f[1]' => 'search_api_combined_1' . ':' . $key_header,
                           'f[2]' => 'field_dataset%3Afield_dataset_type' . ':' . 'study'
@@ -154,7 +152,6 @@ function _mica_dimensions_coverage_dimension_table($data, $taxonomies, $type) {
                         'html' => TRUE
                       )
                     );
-                    $no_data = '<img src="/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_red.png" title="' . t('No Variables') . '" style="vertical-align: middle">';
                     break;
                   case 'dce':
                     $url = l($data[$key_header][$term->tid]['count'], 'variable-search',
@@ -166,7 +163,6 @@ function _mica_dimensions_coverage_dimension_table($data, $taxonomies, $type) {
                         ),
                       )
                     );
-                    $no_data = '-';
                     break;
 
                   case 'dataset':
@@ -179,7 +175,6 @@ function _mica_dimensions_coverage_dimension_table($data, $taxonomies, $type) {
                         ),
                       )
                     );
-                    $no_data = '-';
                     break;
                 }
 
@@ -191,6 +186,14 @@ function _mica_dimensions_coverage_dimension_table($data, $taxonomies, $type) {
                 );
               }
               else {
+                switch ($type) {
+                  case 'study':
+                    $no_data = '<img src="' . $GLOBALS['base_url'] . '/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_red.png" title="' . t('No Variables') . '" style="vertical-align: middle">';
+                    break;
+                  default :
+                    $no_data = '-';
+                }
+
                 $row[$key_header + 2] = array(
                   'data' => array(
                     '#markup' => $no_data,

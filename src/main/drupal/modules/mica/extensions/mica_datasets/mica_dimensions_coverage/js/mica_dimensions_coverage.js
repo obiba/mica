@@ -2,13 +2,14 @@
   var oTable = null;
   Drupal.behaviors.datatables_gen = {
     attach: function (context, settings) {
-      createTable();
+      var baseUrl = Drupal.settings.BaseLocal;
+      createTable(baseUrl);
     }
   };
   /*
    * Initialation of Datatables
    * */
-  function createTable() {
+  function createTable(baseUrl) {
     oTable = $('#example').dataTable({
       "oLanguage": {
         "sSearch": Drupal.t('Search by domains - terms :')
@@ -27,7 +28,7 @@
       ],
       "sDom": 'Tf<"clear">lrt',
       "oTableTools": {
-        "sSwfPath": "/profiles/mica_distribution/modules/mica/extensions/mica_datasets/mica_dimensions_coverage/swf/copy_csv_xls_pdf.swf",
+        "sSwfPath": baseUrl + "/profiles/mica_distribution/modules/mica/extensions/mica_datasets/mica_dimensions_coverage/swf/copy_csv_xls_pdf.swf",
         "aButtons": ["csv" ]
         //  "aButtons": ["xls", "csv", "pdf" ]
       }
