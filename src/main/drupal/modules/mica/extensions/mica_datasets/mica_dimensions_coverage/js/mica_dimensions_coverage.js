@@ -30,7 +30,6 @@
       "oTableTools": {
         "sSwfPath": baseUrl + "/profiles/mica_distribution/modules/mica/extensions/mica_datasets/mica_dimensions_coverage/swf/copy_csv_xls_pdf.swf",
         "aButtons": ["csv" ]
-        //  "aButtons": ["xls", "csv", "pdf" ]
       }
     });
     new FixedColumns(oTable, {
