@@ -5,22 +5,6 @@
  */
 
 /**
- * Implements hook_permission().
- */
-function mica_import_permission() {
-  $perms = array();
-  foreach (node_permissions_get_configured_types() as $type) {
-    $info = node_type_get_type($type);
-    $perms += array(
-      "import $type content" => array(
-        'title' => t('%type_name: Import content', array('%type_name' => $info->name)),
-      )
-    );
-  }
-  return $perms;
-}
-
-/**
  * Implements hook_menu().
  */
 

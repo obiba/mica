@@ -10,6 +10,22 @@ include_once('mica_studies_import_population.inc');
 include_once('mica_studies_import_study.inc');
 
 /**
+ * Implements hook_permission().
+ */
+function mica_studies_import_permission() {
+  $perms = array();
+  foreach (array('study', 'contact', 'population', 'data_collection_event') as $type) {
+    $info = node_type_get_type($type);
+    $perms += array(
+      "import $type content" => array(
+        'title' => t('%type_name: Import content', array('%type_name' => $info->name)),
+      )
+    );
+  }
+  return $perms;
+}
+
+/**
  * Implements hook_menu().
  */
 function mica_studies_import_menu_local_tasks_alter(&$data, $router_item, $root_path) {

@@ -4,21 +4,6 @@
  * Mica Export module
  */
 
-/**
- * Implements hook_permission().
- */
-function mica_export_permission() {
-  $perms = array();
-  foreach (node_permissions_get_configured_types() as $type) {
-    $info = node_type_get_type($type);
-    $perms += array(
-      "export $type content" => array(
-        'title' => t('%type_name: Export content', array('%type_name' => $info->name)),
-      )
-    );
-  }
-  return $perms;
-}
 
 /**
  * Implements hook_menu().
