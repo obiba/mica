@@ -77,10 +77,11 @@ function mica_import_upload_form_validate($form, &$form_state) {
     if ($file = file_move($file, $directory, FILE_EXISTS_RENAME)) {
       // Save the file for use in the submit handler.
       $form_state['storage']['file'] = $file;
-      if ($path_file = _mica_import_unzip_file($file)) {
-        if (is_dir($path_file)) {
-          _mica_import_batch_import($path_file);
-        }
+      if (($path_file = _mica_import_unzip_file($file)) && is_dir($path_file)) {
+        _mica_import_batch_import($path_file);
+      }
+      else {
+        form_set_error('file', t('Failed to process the import action.'));
       }
 
     }
@@ -116,6 +117,7 @@ function _mica_import_unzip_file($file) {
     $res = $zip->open($file_path);
     if ($res === TRUE) {
       $to_path_file = file_stream_wrapper_get_instance_by_uri('temporary://')->realpath();
+      $folder_xml_name = _mica_import_get_zip_content_folder($zip);
       $zip->extractTo($to_path_file);
     }
     else {
@@ -154,9 +156,17 @@ function _mica_import_unzip_file($file) {
       return FALSE;
     }
     $zip->close();
-    return $to_path_file . DIRECTORY_SEPARATOR . substr($file->filename, 0, -4);
+    return $to_path_file . DIRECTORY_SEPARATOR . $folder_xml_name;
   }
   return FALSE;
+}
+
+/*
+ * Get Folder contented in Zip file to deal with
+ * */
+function _mica_import_get_zip_content_folder($zip) {
+  $path_extracted = $zip->statIndex(0);
+  return strstr($path_extracted['name'], '/', TRUE);
 }
 
 function _mica_import_batch_import($path) {

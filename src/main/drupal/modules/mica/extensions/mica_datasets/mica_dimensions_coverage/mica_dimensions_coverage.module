@@ -600,9 +600,7 @@ function datasets_domains_coverage_table_return_studies($result, $dces = NULL, $
         $_variables_dataset = $dataset_wrapper->field_dataset_variables->value();
 
         if (_mica_datasets_node_access($dataset_id, 'dataset', 'view') &&
-          ( //(empty($_studi_datset) || !isset($_studi_datset)) &&
-          ((!empty($_variables_dataset)) && (empty($_GET['type']) || $_GET['type'] != 'study'))
-          )
+          (((!empty($_variables_dataset)) && (empty($_GET['type']) || $_GET['type'] != 'study')))
         ) {
           $options['dataset'][$dataset_wrapper->getIdentifier()] = '---' . $dataset_wrapper->title->value();
         }

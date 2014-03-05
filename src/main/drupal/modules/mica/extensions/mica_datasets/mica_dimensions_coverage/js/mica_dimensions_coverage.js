@@ -4,7 +4,6 @@
     attach: function (context, settings) {
       var libPath = Drupal.settings.libPath;
       createTable(libPath);
-      console.log(libPath)
     }
   };
   /*
