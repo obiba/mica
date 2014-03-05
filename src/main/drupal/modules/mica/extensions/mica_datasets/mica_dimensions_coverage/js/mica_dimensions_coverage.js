@@ -2,14 +2,14 @@
   var oTable = null;
   Drupal.behaviors.datatables_gen = {
     attach: function (context, settings) {
-      createTable();
+      var libPath = Drupal.settings.libPath;
+      createTable(libPath);
     }
   };
-  console.log('datatable Ok');
   /*
    * Initialation of Datatables
    * */
-  function createTable() {
+  function createTable(libPath) {
     oTable = $('#example').dataTable({
       "oLanguage": {
         "sSearch": Drupal.t('Search by domains - terms :')
@@ -28,9 +28,8 @@
       ],
       "sDom": 'Tf<"clear">lrt',
       "oTableTools": {
-        "sSwfPath": "../profiles/mica_distribution/libraries/datatables/swf/copy_csv_xls_pdf.swf",
+        "sSwfPath": libPath + "/extras/TableTools/media/swf/copy_csv_xls_pdf.swf",
         "aButtons": ["csv" ]
-        //  "aButtons": ["xls", "csv", "pdf" ]
       }
     });
     new FixedColumns(oTable, {
