@@ -173,7 +173,7 @@ function mica_dimensions_coverage_library() {
         $lib_path . '/extras/ColVis/media/css/ColVis.css' => array(),
         $lib_path . '/extras/FixedColumns/media/css/ColVisAlt.css' => array(),
         $lib_path . '/extras/TableTools/media/css/TableTools.css' => array()
-      ),
+      )
     );
   }
   return $libraries;
@@ -226,11 +226,10 @@ Function _mica_dimensions_coverage_tabledata_display_study($study_id = NULL) {
     // Add Js Settings
     ctools_add_js('mica_dimensions_coverage', 'mica_dimensions_coverage');
     drupal_add_js(array(
-      'BaseLocal' => $GLOBALS['base_url']
+      'libPath' => $GLOBALS['base_url'] . '/' . libraries_get_path('datatables')
     ), array('type' => 'setting'));
     drupal_add_library('mica_dimensions_coverage', 'datatables');
   }
-
   mica_datasets_prepare_prettify();
   //Setting tooltip
   $jquery_popover = '';
