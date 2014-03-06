@@ -4,38 +4,29 @@
  * mica_studies_import_population.inc
  */
 
-function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
+function   _mica_studies_import_set_population_properties($dom, $wrapper) {
   // xpath with contact/name/title
   $xpath = new DOMXPath($dom);
 
   //Required field
-  if (!empty($xpath->query('/population/title')->item(0)->nodeValue)) {
-    $wrapper->title->set($xpath->query('/population/title')->item(0)->nodeValue);
-    $wrapper->title_field->set($xpath->query('/population/title')->item(0)->nodeValue);
+  if (empty($xpath->query('/population/title')->item(0)->nodeValue)) {
+    throw new Exception(t('Population : Field title required'));
   }
   else {
-    try {
-      $wrapper->title->set();
-      $wrapper->title_field->set();
-    } catch (Exception $e) {
-      throw new Exception(t('Population : Field title required'));
-    }
-
+    $title_polulation = $xpath->query('/population/title')->item(0)->nodeValue;
+    $wrapper->title->set($title_polulation);
+    $wrapper->title_field->set($title_polulation);
   }
 
-  if (!empty($xpath->query('/population/general-information/body')->item(0)->nodeValue)) {
+  if (empty($xpath->query('/population/general-information/body')->item(0)->nodeValue)) {
+    throw new Exception(t('Population : Field Body description required'));
+  }
+  else {
     $wrapper->body->set(array(
       'value' => $xpath->query('/population/general-information/body')->item(0)->nodeValue,
       'summary' => $xpath->query('/population/general-information/summary')->item(0)->nodeValue,
       'format' => $xpath->query('/population/general-information/format')->item(0)->nodeValue
     ));
-  }
-  else {
-    try {
-      $wrapper->body->set();
-    } catch (Exception $e) {
-      throw new Exception(t('Population : Field Body description required'));
-    }
   }
 
   $dce_elements = $xpath->query('/population/data-collection-events/data-collection-event');
@@ -66,6 +57,7 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
       $wrapper->field_pop_general_pop_recruit[$index_general_pop_elements]->set($pop_element->getAttribute('code'));
     }
   }
+
   $study_elements = $xpath->query('/population/recruitment-procedure/participants-from-existing-studies/study');
   $wrapper->field_pop_exist_study_part->set();
   if (!empty($study_elements)) {
@@ -93,9 +85,11 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
 
   $dom_pop_recruitment_other = $xpath->query('/population/recruitment-procedure/other-recruitment-source');
   $pop_recruitment_other = $dom_pop_recruitment_other->item(0)->nodeValue;
-  $wrapper->field_pop_recruitment_other->set();
-  if (!empty($pop_recruitment_other)) {
-    $wrapper->field_pop_recruitment_other->set(array(
+  if (empty($pop_recruitment_other)) {
+    $wrapper->field_pop_recruit_supp_info->set();
+  }
+  else {
+    $wrapper->field_pop_recruit_supp_info->set(array(
       'value' => $pop_recruitment_other,
       'format' => $dom_pop_recruitment_other->item(0)->getAttribute('format')
     ));
@@ -103,29 +97,21 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
 
   $dom_pop_recruit_supp_info = $xpath->query('/population/recruitment-procedure/supplementary-information');
   $pop_recruit_supp_info = $dom_pop_recruit_supp_info->item(0)->nodeValue;
-  $wrapper->field_pop_recruitment_other->set();
-  if (!empty($pop_recruit_supp_info)) {
+  if (empty($pop_recruit_supp_info)) {
+    $wrapper->field_pop_recruitment_other->set();
+  }
+  else {
     $wrapper->field_pop_recruitment_other->set(array(
       'value' => $pop_recruit_supp_info,
       'format' => $dom_pop_recruit_supp_info->item(0)->getAttribute('format')
     ));
   }
 
-  $gender = $xpath->query('/population/characteristics-of-the-population/gender')->item(0)->nodeValue;
-  $wrapper->field_pop_gender->set();
-  if (!empty($gender)) {
-    $wrapper->field_pop_gender->set($gender);
-  }
-  $age_max = $xpath->query('/population/characteristics-of-the-population/age/max-age')->item(0)->nodeValue;
-  $wrapper->field_pop_age_max->set();
-  if (!empty($age_max)) {
-    $wrapper->field_pop_age_max->set($age_max);
-  }
-  $age_min = $xpath->query('/population/characteristics-of-the-population/age/min-age')->item(0)->nodeValue;
-  $wrapper->field_pop_age_min->set();
-  if (!empty($age_min)) {
-    $wrapper->field_pop_age_min->set($age_min);
-  }
+  $wrapper->field_pop_gender->set(mica_studies_import_get_node_value($xpath, '/population/characteristics-of-the-population/gender'));
+
+  $wrapper->field_pop_age_max->set(mica_studies_import_get_node_value($xpath, '/population/characteristics-of-the-population/age/max-age'));
+
+  $wrapper->field_pop_age_min->set(mica_studies_import_get_node_value($xpath, '/population/characteristics-of-the-population/age/min-age'));
 
   $country_elements = $xpath->query('/population/characteristics-of-the-population/countries-of-residence/country');
   $wrapper->field_pop_country->set();
@@ -137,8 +123,10 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
 
   $dom_pop_territory = $xpath->query('/population/characteristics-of-the-population/territory-city-of-residence');
   $pop_territory = $dom_pop_territory->item(0)->nodeValue;
-  $wrapper->field_pop_territory->set();
-  if (!empty($pop_territory)) {
+  if (empty($pop_territory)) {
+    $wrapper->field_pop_territory->set();
+  }
+  else {
     $wrapper->field_pop_territory->set(array(
       'value' => $pop_territory,
       'format' => $dom_pop_territory->item(0)->getAttribute('format')
@@ -171,8 +159,10 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
 
   $dom_selection_others_sp = $xpath->query('/population/characteristics-of-the-population/other-selection-criteria');
   $selection_others_sp = $dom_selection_others_sp->item(0)->nodeValue;
-  $wrapper->field_pop_selection_others_sp->set();
-  if (!empty($selection_others_sp)) {
+  if (empty($selection_others_sp)) {
+    $wrapper->field_pop_selection_others_sp->set();
+  }
+  else {
     $wrapper->field_pop_selection_others_sp->set(array(
       'value' => $selection_others_sp,
       'format' => $dom_selection_others_sp->item(0)->getAttribute('format')
@@ -181,43 +171,40 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
 
   $dom_pop_partcipant_sel_supp_in = $xpath->query('/population/characteristics-of-the-population/supplementary-information');
   $pop_partcipant_sel_supp_in = $dom_pop_partcipant_sel_supp_in->item(0)->nodeValue;
-  $wrapper->field_pop_partcipant_sel_supp_in->set();
-  if (!empty($pop_partcipant_sel_supp_in)) {
+  if (empty($pop_partcipant_sel_supp_in)) {
+    $wrapper->field_pop_partcipant_sel_supp_in->set();
+  }
+  else {
     $wrapper->field_pop_partcipant_sel_supp_in->set(array(
       'value' => $pop_partcipant_sel_supp_in,
       'format' => $dom_pop_partcipant_sel_supp_in->item(0)->getAttribute('format')
     ));
   }
 
-  $nb_participants = $xpath->query('/population/number-participant/target-number-of-participants/number')
-    ->item(0)->nodeValue;
-  $wrapper->field_pop_participants_nb->set();
-  if (!empty($nb_participants)) {
-    $wrapper->field_pop_participants_nb->set($nb_participants);
-  }
+  $wrapper->field_pop_participants_nb->set(
+    mica_studies_import_get_node_value($xpath, '/population/number-participant/target-number-of-participants/number')
+  );
 
-  $wrapper->field_pop_no_limits_participants->set($xpath
-    ->query('/population/number-participant/target-number-of-participants/no-limit')->item(0)->nodeValue == 'true'
-    ? '1'
-    : '0');
+  $wrapper->field_pop_no_limits_participants->set(
+    mica_studies_import_get_node_value($xpath, '/population/number-participant/target-number-of-participants/no-limit') == 'true'
+      ? '1'
+      : '0');
 
-  $number_samples = $xpath
-    ->query('/population/number-participant/target-number-of-participants-with-biosamples/number')->item(0)->nodeValue;
-  $wrapper->field_pop_participants_nb_s->set();
-  if (!empty($number_samples)) {
-    $wrapper->field_pop_participants_nb_s->set($number_samples);
-  }
+  $wrapper->field_pop_participants_nb_s->set(
+    mica_studies_import_get_node_value($xpath, '/population/number-participant/target-number-of-participants-with-biosamples/number')
+  );
 
-  $wrapper->field_pop_no_lim_participants_s->set($xpath
-    ->query('/population/number-participant/target-number-of-participants-with-biosamples/no-limit')
-    ->item(0)->nodeValue == 'true'
-    ? '1'
-    : '0');
+  $wrapper->field_pop_no_lim_participants_s->set(
+    mica_studies_import_get_node_value($xpath, '/population/number-participant/target-number-of-participants-with-biosamples/no-limit') == 'true'
+      ? '1'
+      : '0');
 
   $dom_pop_participants_nb_supp_i = $xpath->query('/population/number-participant/supplementary-information');
   $pop_participants_nb_supp_i = $dom_pop_participants_nb_supp_i->item(0)->nodeValue;
-  $wrapper->field_pop_participants_nb_supp_i->set();
-  if (!empty($pop_participants_nb_supp_i)) {
+  if (empty($pop_participants_nb_supp_i)) {
+    $wrapper->field_pop_participants_nb_supp_i->set();
+  }
+  else {
     $wrapper->field_pop_participants_nb_supp_i->set(array(
       'value' => $pop_participants_nb_supp_i,
       'format' => $dom_pop_participants_nb_supp_i->item(0)->getAttribute('format')
@@ -226,8 +213,10 @@ function   _mica_studies_mica_import_set_population_properties($dom, $wrapper) {
 
   $dom_pop_supp_infos = $xpath->query('/population/supplementary-information');
   $pop_supp_infos = $dom_pop_supp_infos->item(0)->nodeValue;
-  $wrapper->field_pop_supp_infos->set();
-  if (!empty($pop_supp_infos)) {
+  if (empty($pop_supp_infos)) {
+    $wrapper->field_pop_supp_infos->set();
+  }
+  else {
     $wrapper->field_pop_supp_infos->set(array(
       'value' => $pop_supp_infos,
       'format' => $dom_pop_supp_infos->item(0)->getAttribute('format')
