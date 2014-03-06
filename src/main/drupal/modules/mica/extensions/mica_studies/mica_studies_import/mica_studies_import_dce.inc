@@ -4,78 +4,49 @@
  * mica_studies_import_dce.inc
  */
 
-function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
+function  _mica_studies_import_set_dce_properties($dom, $wrapper, $path) {
   // xpath with contact/name/title
   $xpath = new DOMXPath($dom);
 
   //Required field
-  if (!empty($xpath->query('/data-collection-event/title')->item(0)->nodeValue)) {
-    $wrapper->title_field->set($xpath->query('/data-collection-event/title')->item(0)->nodeValue);
-    $wrapper->title->set($xpath->query('/data-collection-event/title')->item(0)->nodeValue);
+  $title_dce = $xpath->query('/data-collection-event/title')->item(0)->nodeValue;
+  if (empty($title_dce)) {
+    throw new Exception(t('DCE : Field title required'));
   }
   else {
-    try {
-      $wrapper->title->set();
-      $wrapper->title_field->set();
-    } catch (Exception $e) {
-      throw new Exception(t('DCE : Field title required'));
-    }
+    $wrapper->title_field->set($title_dce);
+    $wrapper->title->set($title_dce);
   }
 
-  $start_year = $xpath->query('/data-collection-event/start-year')->item(0)->nodeValue;
-  $wrapper->field_dce_start_year->set();
-  if (!empty($start_year)) {
-    $wrapper->field_dce_start_year->set($start_year);
-  }
+  $wrapper->field_dce_start_year->set(mica_studies_import_get_node_value($xpath, '/data-collection-event/start-year'));
 
-  $start_month = $xpath->query('/data-collection-event/start-month')->item(0)->nodeValue;
-  $wrapper->field_dce_start_month->set();
-  if (!empty($start_month)) {
-    $wrapper->field_dce_start_month->set($start_month);
-  }
+  $wrapper->field_dce_start_month->set(mica_studies_import_get_node_value($xpath, '/data-collection-event/start-month'));
 
-  $end_year = $xpath->query('/data-collection-event/end-year')->item(0)->nodeValue;
-  $wrapper->field_dce_end_year->set();
-  if (!empty($end_year)) {
-    $wrapper->field_dce_end_year->set($end_year);
-  }
+  $wrapper->field_dce_end_year->set(mica_studies_import_get_node_value($xpath, '/data-collection-event/end-year'));
 
-  $end_month = $xpath->query('/data-collection-event/end-month')->item(0)->nodeValue;
-  $wrapper->field_dce_end_month->set();
-  if (!empty($end_month)) {
-    $wrapper->field_dce_end_month->set($end_month);
-  }
+  $wrapper->field_dce_end_month->set(mica_studies_import_get_node_value($xpath, '/data-collection-event/end-month'));
 
-  if (!empty($xpath->query('/data-collection-event/description/body')->item(0)->nodeValue)) {
+  //required field
+  if (empty($xpath->query('/data-collection-event/description/body')->item(0)->nodeValue)) {
+    throw new Exception(t('DCE : Field Body description required'));
+  }
+  else {
     $wrapper->body->set(array(
-      'value' => $xpath->query('/data-collection-event/description/body')->item(0)->nodeValue,
-      'summary' => $xpath->query('/data-collection-event/description/summary')->item(0)->nodeValue,
-      'format' => $xpath->query('/data-collection-event/description/format')->item(0)->nodeValue
+      'value' => mica_studies_import_get_node_value($xpath, '/data-collection-event/description/body'),
+      'summary' => mica_studies_import_get_node_value($xpath, '/data-collection-event/description/summary'),
+      'format' => mica_studies_import_get_node_value($xpath, '/data-collection-event/description/format')
     ));
   }
-  else {
-    try {
-      $wrapper->body->set();
-    } catch (Exception $e) {
-      throw new Exception(t('DCE : Field Body description required'));
 
-    }
-
-  }
-
-  $data_source_elements = $xpath->query('/data-collection-event/sources-of-data/source');
+  $dom_data_source_elements = $xpath->query('/data-collection-event/sources-of-data/source');
+  $data_source_elements = mica_studies_import_get_node_value($xpath, '/data-collection-event/sources-of-data/source');
   $wrapper->field_dce_data_sources->set();
   if (!empty($data_source_elements)) {
-    foreach ($data_source_elements as $index => $data_source_element) {
+    foreach ($dom_data_source_elements as $index => $data_source_element) {
       $wrapper->field_dce_data_sources[$index]->set($data_source_element->getAttribute("code"));
     }
   }
-
-  $dce_data_sources_sp = $xpath->query('/data-collection-event/sources-of-data/other-data-source')->item(0)->nodeValue;
-  $wrapper->field_dce_data_sources_sp->set();
-  if (!empty($dce_data_sources_sp)) {
-    $wrapper->field_dce_data_sources_sp->set($dce_data_sources_sp);
-  }
+  $wrapper->field_dce_data_sources_sp->set(mica_studies_import_get_node_value($xpath, '/data-collection-event/sources-of-data/other-data-source'));
 
   $db_source_elements = $xpath->query('/data-collection-event/administrative-database/source');
   $wrapper->field_dce_data_sources_admin_db->set();
@@ -94,20 +65,20 @@ function  _mica_studies_mica_import_set_dce_properties($dom, $wrapper, $path) {
   }
 
   $dom_dce_samples_man_other_sp = $xpath->query('/data-collection-event/biological-samples/other-biological-samples');
-  $dce_samples_man_other_sp = $dom_dce_samples_man_other_sp->item(0)->nodeValue;
-  $wrapper->field_dce_samples_man_other_sp->set();
-  if (!empty($dce_samples_man_other_sp)) {
+  $dce_samples_man_other_sp = mica_studies_import_get_node_value($xpath, '/data-collection-event/biological-samples/other-biological-samples');
+  if (empty($dce_samples_man_other_sp)) {
+    $wrapper->field_dce_samples_man_other_sp->set();
+
+  }
+  else {
     $wrapper->field_dce_samples_man_other_sp->set(array(
       'value' => $dce_samples_man_other_sp,
       'format' => $dom_dce_samples_man_other_sp->item(0)->getAttribute('format')
     ));
   }
 
-  $dce_tissues_sp = $xpath->query('/data-collection-event/biological-samples/tissues-type')->item(0)->nodeValue;
-  $wrapper->field_dce_tissues_sp->set();
-  if (!empty($dce_tissues_sp)) {
-    $wrapper->field_dce_tissues_sp->set($dce_tissues_sp);
-  }
+  $wrapper->field_dce_tissues_sp->set(mica_studies_import_get_node_value($xpath, '/data-collection-event/biological-samples/tissues-type'));
+
   //Deal with attachment files
   _mica_import_attach_file($xpath->query('/data-collection-event/files/documents/document'), 'field_dce_questionnaires', $path, $wrapper);
   _mica_import_attach_file($xpath->query('/data-collection-event/files/standard-operating-procedures/sop'), 'field_dce_sops', $path, $wrapper);
