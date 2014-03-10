@@ -171,7 +171,7 @@ function _mica_connector_connectors_form_submit($form, &$form_state) {
       break;
 
     case t('Test connections'):
-      _testConnections($form_state['build_info']['args'][0]->nid);
+      _testConnections($form_state['build_info']['args'][0]->nid, $form_state['build_info']['args'][0]->type);
       break;
 
     case t('Add Dataset'):
@@ -437,8 +437,8 @@ function _mica_connector_connection_config_values(&$form, &$form_state) {
   return $values;
 }
 
-function _testConnections($nid) {
-  $mica_connectors = mica_connector_query_multiple($nid, TRUE);
+function _testConnections($nid, $type) {
+  $mica_connectors = mica_connector_query_multiple($nid, TRUE, $type);
 
   $errors = 0;
   foreach ($mica_connectors as $connector) {
