@@ -136,14 +136,17 @@ function mica_connector_query($dataset_id, $study_id, $enabled = NULL) {
  * @return array MicaDatasetConnector
  *   An array of connectors (may be empty).
  */
-function mica_connector_query_multiple($dataset_id, $enabled = NULL) {
+function mica_connector_query_multiple($id, $enabled = NULL, $type) {
   $connectors = array();
-
+  $type_id = 'dataset_id';
+  if ($type == 'study') {
+    $type_id = 'study_id';
+  }
   // check rights to make query
-  if (_mica_datasets_node_access(node_load($dataset_id), 'dataset', 'view')) {
+  if (_mica_datasets_node_access(node_load($id), $type, 'view')) {
     $q = db_select('mica_connector', 'c');
     $q->addField('c', 'id');
-    $q->condition('c.dataset_id', $dataset_id);
+    $q->condition('c.' . $type_id, $id);
     if (isset($enabled)) {
       $q->condition('c.enabled', $enabled);
     }

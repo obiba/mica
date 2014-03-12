@@ -194,7 +194,7 @@ abstract class AbstractTerm implements QueryTermInterface {
     }
 
     if (isset($dataset_id)) {
-      $connectors = mica_connector_query_multiple($dataset_id, TRUE);
+      $connectors = mica_connector_query_multiple($dataset_id, TRUE, 'dataset');
     }
 
     return $connectors;

@@ -1209,6 +1209,18 @@ function _mica_datasets_remove_and_save_element_from_entity_list_wrapper(&$entit
   }
 }
 
+/*
+ *  Hook_page_alter function
+ *  Force variable page title to title field (Override default : 'name')
+ * */
+
+function  mica_datasets_page_alter() {
+  $node = menu_get_object();
+  if (!empty($node) && $node->type == 'variable') {
+    drupal_set_title($node->title);
+  }
+}
+
 function mica_datasets_node_view($node, $view_mode) {
   if ($node->type === 'study_variable_attributes') {
     // add icon to script status
