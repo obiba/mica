@@ -127,12 +127,7 @@ function theme_mica_datasets_reorder_variables($variables) {
  * @see mica_datasets_reorder_variables()
  */
 function mica_datasets_reorder_variables_submit($form, &$form_state) {
-  mica_dataset_dataset_variables_save_order($form_state['values']);
-
-}
-
-function mica_dataset_dataset_variables_save_order($variables) {
-  mica_dataset_dataset_variables_batch($variables);
+  mica_dataset_dataset_variables_batch($form_state['values']);
 }
 
 function mica_dataset_dataset_variables_batch($variables) {
@@ -140,7 +135,7 @@ function mica_dataset_dataset_variables_batch($variables) {
   // build the list of operation functions and function arguments
   foreach ($variables as $nid => $variable) {
     if (is_numeric($nid)) {
-      $operations[] = array('mica_dataset_dataset_variables_save_correct_order', array($nid, $variable['weight']));
+      $operations[] = array('mica_dataset_dataset_update_varaible_weight', array($nid, $variable['weight']));
     }
   }
   //  build the batch instructions
@@ -153,9 +148,10 @@ function mica_dataset_dataset_variables_batch($variables) {
 
 }
 
-function mica_dataset_dataset_variables_save_correct_order($nid, $weight, &$context) {
+function mica_dataset_dataset_update_varaible_weight($nid, $weight, &$context) {
   $node = node_load($nid);
-  $position = $node->field_position[LANGUAGE_NONE][0]['value'];
+  $wrapper = entity_metadata_wrapper('node', $nid);
+  $position = $wrapper->field_position->value();
   $context['message'] = t('Processing variable "@title"', array('@title' => $node->title));
   $new_position = $weight;
   if ($new_position >= 0) {
