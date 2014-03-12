@@ -4,7 +4,6 @@
  * Mica Datasets variable pages.
  */
 
-
 /**
  * Form builder to reorder variables within a Dataset
  *
@@ -81,7 +80,7 @@ function theme_mica_datasets_reorder_variables($variables) {
 
   foreach (element_children($form) as $key) {
     if (isset($form[$key]['name'])) {
-      $variable = &$form[$key];
+      $variable = & $form[$key];
 
       $row = array();
       $row[] = drupal_render($variable['name']);
@@ -128,43 +127,81 @@ function theme_mica_datasets_reorder_variables($variables) {
  * @see mica_datasets_reorder_variables()
  */
 function mica_datasets_reorder_variables_submit($form, &$form_state) {
-  foreach ($form_state['values'] as $nid => $variable) {
+  mica_dataset_dataset_variables_save_order($form_state['values']);
+
+}
+
+function mica_dataset_dataset_variables_save_order($variables) {
+  mica_dataset_dataset_variables_batch($variables);
+}
+
+function mica_dataset_dataset_variables_batch($variables) {
+  $operations = array();
+  // build the list of operation functions and function arguments
+  foreach ($variables as $nid => $variable) {
     if (is_numeric($nid)) {
-      $node = node_load($nid);
-      $position = $node->field_position[LANGUAGE_NONE][0]['value'];
-      $new_position = $form_state['values'][$nid]['weight'];
-      if ($new_position >= 0) {
-        $new_position++;
-      }
-      if ($position != $new_position) {
-
-        // update field_data_field_position
-        db_update('field_data_field_position')
-          ->fields(array(
-            'field_position_value' => $form_state['values'][$nid]['weight'],
-          ))
-          ->condition('entity_id', $nid)
-          ->execute();
-
-        // search for last revision of current node variable
-        $result = db_select('field_revision_field_position', 'r')
-          ->condition('entity_id', $nid)
-          ->fields('r', array('revision_id'))
-          ->orderBy('revision_id', 'DESC')
-          ->range(0, 1)
-          ->execute()
-          ->fetchAssoc();
-
-        //update last revision of current variable
-        db_update('field_revision_field_position')
-          ->condition('entity_id', $nid)
-          ->condition('revision_id', $result['revision_id'])
-          ->fields(array(
-            'field_position_value' => $form_state['values'][$nid]['weight'],
-          ))
-          ->execute();
-      }
+      $operations[] = array('mica_dataset_dataset_variables_save_correct_order', array($nid, $variable['weight']));
     }
   }
-  drupal_set_message(t('The variable order has been saved.'));
+  //  build the batch instructions
+  $batch = array(
+    'operations' => $operations,
+    'file' => drupal_get_path('module', 'mica_datasets') . '/mica_datasets.pages.variables.inc',
+    'finished' => 'mica_dataset_dataset_variables_finish_batch',
+  );
+  batch_set($batch);
+
+}
+
+function mica_dataset_dataset_variables_save_correct_order($nid, $weight, &$context) {
+  $node = node_load($nid);
+  $position = $node->field_position[LANGUAGE_NONE][0]['value'];
+  $context['message'] = t('Processing variable "@title"', array('@title' => $node->title));
+  $new_position = $weight;
+  if ($new_position >= 0) {
+    $new_position++;
+  }
+  if ($position != $new_position) {
+
+    // update field_data_field_position
+    db_update('field_data_field_position')
+      ->fields(array(
+        'field_position_value' => $weight,
+      ))
+      ->condition('entity_id', $nid)
+      ->execute();
+
+    // search for last revision of current node variable
+    $result = db_select('field_revision_field_position', 'r')
+      ->condition('entity_id', $nid)
+      ->fields('r', array('revision_id'))
+      ->orderBy('revision_id', 'DESC')
+      ->range(0, 1)
+      ->execute()
+      ->fetchAssoc();
+
+    //update last revision of current variable
+    db_update('field_revision_field_position')
+      ->condition('entity_id', $nid)
+      ->condition('revision_id', $result['revision_id'])
+      ->fields(array(
+        'field_position_value' => $weight,
+      ))
+      ->execute();
+  }
+}
+
+function mica_dataset_dataset_variables_finish_batch($success, $results, $operations) {
+  if ($success) {
+    drupal_set_message(t('The variable order has been saved.'));
+  }
+  else {
+    // An error occurred.
+    // $operations contains the operations that remained unprocessed.
+    $error_operation = reset($operations);
+    drupal_set_message(t('An error occurred while processing @operation with arguments : @args', array(
+      '@operation' => $error_operation[0],
+      '@args' => print_r($error_operation[0], TRUE)
+    )));
+  }
 }

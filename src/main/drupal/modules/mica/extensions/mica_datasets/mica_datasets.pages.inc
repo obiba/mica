@@ -7,7 +7,6 @@
 
 include_once(drupal_get_path('module', 'mica_connector') . '/mica_connector.connection.form.inc');
 
-
 /**
  * Display form for linking datsets to a given study.
  */
@@ -67,7 +66,7 @@ function mica_datasets_dataset_variables_form_submit($form, &$form_state) {
  */
 //TODO maybe I can call directly form feeds in feeds.pages.inc but failed...
 function mica_datasets_dataset_variables_form($form, &$form_state, $node) {
-  $mica_connectors = mica_connector_query_multiple($node->nid, TRUE);
+  $mica_connectors = mica_connector_query_multiple($node->nid, TRUE, 'dataset');
 
   if (!empty($mica_connectors)) {
     $connector_id = $mica_connectors[0]->id;
@@ -205,7 +204,6 @@ function mica_datasets_dataset_studies_form($form, &$form_state) {
 function mica_datasets_dataset_studies_form_submit($form, &$form_state) {
   _mica_connector_connectors_form_submit($form, $form_state);
 }
-
 
 /**
  * Build the study datasets form.

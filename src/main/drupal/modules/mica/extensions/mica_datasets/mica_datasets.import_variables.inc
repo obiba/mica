@@ -125,9 +125,9 @@ function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmon
     $context['results'] = array(
       'last_position' => 1,
       'variables' => db_query(
-        'SELECT n.nid, n.title, n.uuid FROM {node} as n, {field_data_field_dataset_variables} as dv WHERE n.type = :type AND n.nid = dv.field_dataset_variables_nid AND dv.entity_id = :dataset_nid;',
-        array(':dataset_nid' => $dataset_nid, ':type' => 'variable'))
-        ->fetchAllAssoc($primary_key),
+          'SELECT n.nid, n.title, n.uuid FROM {node} as n, {field_data_field_dataset_variables} as dv WHERE n.type = :type AND n.nid = dv.field_dataset_variables_nid AND dv.entity_id = :dataset_nid;',
+          array(':dataset_nid' => $dataset_nid, ':type' => 'variable'))
+          ->fetchAllAssoc($primary_key),
       'nb_created' => 0,
       'nb_updated' => 0,
       'dataset' => $dataset_wrapper,
@@ -148,6 +148,7 @@ function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmon
     ));
     $variable = $variables[$harmonization_variable[$key]];
     $variable_nid = _mica_datasets_update_variable($variable->nid, $dataset_wrapper->value()->language, $harmonization_variable);
+    $context['results']['last_position']++;
     $context['results']['nb_updated']++;
   }
   else {
