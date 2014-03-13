@@ -5,3 +5,4 @@ solr
 src/main/drupal/themes/mica_bootstrap/less/bootstrap
 *.sublime-*
 mica.xml
+.project
