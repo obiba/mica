@@ -20,13 +20,15 @@ function mica_datasets_reorder_variables($form, $form_state, $dataset_node) {
     ->entityCondition('bundle', 'variable')
     ->fieldCondition('field_dataset', 'nid', $dataset_node->nid)
     ->fieldOrderBy("field_position", 'value', "asc")
+    ->fieldOrderBy("title_field", 'value', "asc")
     ->execute();
-  if (!empty($results['node'])) {
-    $variables = entity_load('node', array_keys($results['node']));
-    $delta = (int) (count($variables) / 2 + 1);
+  $variables = $results['node'];
+  if (!empty($variables)) {
+//    $variables = entity_load('node', array_keys($results['node']));
+    $delta = (int) (count($variables) / 2);
     foreach ($variables as $variable) {
       $nid = $variable->nid;
-      $wrapper = entity_metadata_wrapper('node', $variable);
+      $wrapper = entity_metadata_wrapper('node', $nid);
       $form[$nid]['#variable'] = $variable;
       $form[$nid]['name'] = array('#markup' => check_plain($wrapper->title->value()));
       $form[$nid]['label'] = array('#markup' => check_plain($wrapper->field_label->value()));
@@ -153,13 +155,10 @@ function mica_dataset_dataset_update_varaible_weight($nid, $weight, &$context) {
   $wrapper = entity_metadata_wrapper('node', $nid);
   $position = $wrapper->field_position->value();
   $context['message'] = t('Processing variable "@title"', array('@title' => $node->title));
-  $new_position = $weight;
-  if ($new_position >= 0) {
-    $new_position++;
-  }
-  if ($position != $new_position) {
 
-    // update field_data_field_position
+  if ($position != ($weight++)) {
+
+    //   update field_data_field_position
     db_update('field_data_field_position')
       ->fields(array(
         'field_position_value' => $weight,
