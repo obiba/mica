@@ -156,7 +156,7 @@ function mica_dataset_dataset_update_varaible_weight($nid, $weight, &$context) {
   $position = $wrapper->field_position->value();
   $context['message'] = t('Processing variable "@title"', array('@title' => $node->title));
 
-  if ($position != ($weight++)) {
+  if ($position != $weight) {
 
     //   update field_data_field_position
     db_update('field_data_field_position')
