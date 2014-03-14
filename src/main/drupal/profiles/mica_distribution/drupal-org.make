@@ -43,7 +43,7 @@ projects[content_access] = 1.2-beta2
 
 projects[content_taxonomy] = 1.0-beta2
 
-projects[ctools] = 1.3
+projects[ctools] = 1.4
 
 projects[date] = 2.6
 
@@ -133,7 +133,7 @@ projects[logintoboggan] = 1.3
 
 projects[mail_edit] = 1.0
 
-projects[masquerade] = 1.0-rc5
+projects[masquerade] = 1.0-rc7
 
 projects[menu_breadcrumb] = 1.5
 

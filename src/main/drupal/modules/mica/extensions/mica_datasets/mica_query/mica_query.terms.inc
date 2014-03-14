@@ -266,7 +266,7 @@ class CategoryTerm extends AbstractTerm {
     $totals = array();
     foreach ($wrapper->field_variable_categories->value() as $category) {
       if (!$category["missing"]) {
-        $category_name = $category["name"];
+        $category_name = $category["label"];
         foreach ($stats as $study_id => $stat) {
           $s = isset($stat[$category_name]) ? $stat[$category_name] : 0;
           $totals[$study_id] = isset($totals[$study_id]) ? $totals[$study_id] + $s : $s;
@@ -275,7 +275,7 @@ class CategoryTerm extends AbstractTerm {
     }
 
     foreach ($wrapper->field_variable_categories->value() as $category) {
-      $category_name = $category["name"];
+      $category_name = $category["label"];
       $missing = $category['missing'];
       $row = array($category_name);
       foreach ($stats as $study_id => $stat) {

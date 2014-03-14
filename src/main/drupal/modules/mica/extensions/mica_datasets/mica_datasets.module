@@ -595,6 +595,8 @@ function mica_datasets_node_view_alter(&$build) {
     $variable_node = $build['#node'];
     $variable_wrapper = entity_metadata_wrapper('node', $variable_node);
     $dataset = $variable_wrapper->field_dataset->value();
+    //Set an empty Statistics table to omit warning errors message in variable details page
+    $table_stat_parameters = array('table' => array());
     if (!empty($dataset)) {
       $values = array();
       $values['variable_id'] = $variable_node->nid;
@@ -602,7 +604,7 @@ function mica_datasets_node_view_alter(&$build) {
       $term = new MicaDatasetQueryTerm($values);
       $impl = $term->termImpl();
       if ($impl->hasConnectors() && $impl->checkStats() && user_is_logged_in()) {
-        $build['statistics'] = array(
+        $table_stat_parameters = array(
           '#type' => 'fieldset',
           '#title' => t('Statistics'),
           '#weight' => 50,
@@ -614,6 +616,7 @@ function mica_datasets_node_view_alter(&$build) {
         );
       }
     }
+    $build['statistics'] = $table_stat_parameters;
   }
   if ($build['#view_mode'] === 'footer_area' && $build['#bundle'] === 'variable') {
     $variable_node = $build['#node'];

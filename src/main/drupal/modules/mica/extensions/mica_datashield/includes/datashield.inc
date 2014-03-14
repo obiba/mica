@@ -19,7 +19,7 @@ class DataShieldModel {
   }
 
   public function launch($model, $glm) {
-    $connectors = mica_connector_query_multiple($this->dataset->nid, TRUE);
+    $connectors = mica_connector_query_multiple($this->dataset->nid, TRUE, 'dataset');
 
     $params = array();
     $params['curlopts'] = array(
@@ -74,7 +74,7 @@ class DataShieldModel {
   }
 
   public function removeVariables($vids) {
-    $notInVids = function($node) use ($vids) {
+    $notInVids = function ($node) use ($vids) {
       return in_array($node->nid, $vids) == FALSE;
     };
     $this->variables = array_filter($this->variables, $notInVids);
