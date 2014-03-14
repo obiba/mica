@@ -82,7 +82,7 @@ function theme_mica_datasets_reorder_variables($variables) {
 
   foreach (element_children($form) as $key) {
     if (isset($form[$key]['name'])) {
-      $variable = & $form[$key];
+      $variable = &$form[$key];
 
       $row = array();
       $row[] = drupal_render($variable['name']);
