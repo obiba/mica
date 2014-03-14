@@ -706,7 +706,6 @@ function mica_query_run_page($form, &$form_state, $dataset_node, $query, $cross_
 
   $result_table = _mica_query_result_table($dataset_node, $query, $cross_variable);
 
-
   $categorical_variables = mica_datasets_find_categorical_variables($dataset_node->nid);
   $options = array();
   foreach ($categorical_variables as $variable) {
@@ -750,7 +749,7 @@ function _mica_query_xls_link($dataset_node, $query, $cross_variable) {
   $xls_title = t('Download as Excel');
   $xls_img = "<img typeof='foaf:Image' class='image-style-none' src='$xls_img_path' alt='$xls_title' title='$xls_title' />";
 
-  $xls_link = " <a href='$xls_url'>". t('!title', array('!title' => $xls_title )) ." $xls_img</a>";
+  $xls_link = " <a href='$xls_url'>" . t('!title', array('!title' => $xls_title)) . " $xls_img</a>";
 
   return $xls_link;
 }
@@ -1098,7 +1097,6 @@ function _mica_query_run_page_header($dataset_node, $query, $term, $cross_variab
   }
   return $header;
 }
-
 
 function _mica_query_run_page_summary(&$rows, $header_total_nb_sub_header) {
   $totals = array(
