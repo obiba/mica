@@ -5,18 +5,17 @@
  * Utilities methods for Mica Datasets module.
  */
 
-
 /**
  * @param $dataset_nid
  * @return array of variables
  */
 function mica_datasets_find_categorical_variables($dataset_nid) {
   $variables = array();
-  $dataset = node_load($dataset_nid);
-  $dataset_wrapper = entity_metadata_wrapper('node', $dataset);
-  foreach ($dataset_wrapper->field_dataset_variables->value() as $variable) {
-    if (mica_datasets_is_variable_categorical($variable->nid)) {
-      $variables[] = $variable;
+  $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
+  foreach ($dataset_wrapper->field_dataset_variables->getIterator() as $variable) {
+    if (mica_datasets_is_variable_categorical($variable->getIdentifier())) {
+      $variable_node = node_load($variable->getIdentifier());
+      $variables[] = $variable_node;
     }
   }
   uasort($variables, 'mica_datasets_sort_by_title');
@@ -28,14 +27,18 @@ function mica_datasets_find_categorical_variables($dataset_nid) {
  * @return TRUE if variable has at least one non missing category
  */
 function mica_datasets_is_variable_categorical($variable_nid) {
-  $variable = node_load($variable_nid);
-  $variable_wrapper = entity_metadata_wrapper('node', $variable);
-  foreach ($variable_wrapper->field_variable_categories->value() as $category) {
-    if ($category['missing'] == 0) {
-      return TRUE;
+  $variable_wrapper = entity_metadata_wrapper('node', $variable_nid);
+  if (!empty($variable_wrapper->field_variable_categories)) {
+    foreach ($variable_wrapper->field_variable_categories->getIterator() as $category) {
+      if ($category->missing->value() == 0) {
+        return TRUE;
+      }
+      return FALSE;
     }
   }
-  return FALSE;
+  else {
+    return FALSE;
+  }
 }
 
 function mica_datasets_sort_by_title($x, $y) {
@@ -48,8 +51,11 @@ function mica_datasets_sort_by_title($x, $y) {
 }
 
 function mica_datasets_sort_by_position($x, $y) {
-  $x_pos = entity_metadata_wrapper('node', $x)->field_position->value();
-  $y_pos = entity_metadata_wrapper('node', $y)->field_position->value();
+  $var_x__to_sort_wrapper = entity_metadata_wrapper('node', $x);
+
+  $x_pos = !empty($var_x__to_sort_wrapper->field_position) ? $var_x__to_sort_wrapper->field_position->value() : NULL;
+  $var_y__to_sort_wrapper = entity_metadata_wrapper('node', $y);
+  $y_pos = !empty($var_y__to_sort_wrapper->field_position) ? $var_y__to_sort_wrapper->field_position->value() : NULL;
   if ($x_pos === $y_pos) {
     return 0;
   }

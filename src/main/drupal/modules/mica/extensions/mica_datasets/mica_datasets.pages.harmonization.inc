@@ -34,7 +34,6 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
   $rows = array();
 
   $wrapper = entity_metadata_wrapper('node', $dataset_node);
-  $variables = $wrapper->field_dataset_variables->value();
   $studies = $wrapper->field_dataset_studies->value();
 
   $status_values = field_info_field('field_sva_status');
@@ -89,23 +88,32 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
     }
   }
 
-  if (!empty($variables) && !empty($studies)) {
+  if (!empty($wrapper->field_dataset_variables) && !empty($studies)) {
 
     // sort variables based on their field_position
-    uasort($variables, 'mica_datasets_sort_by_position');
+    $variables_to_sort = array();
+    foreach ($wrapper->field_dataset_variables->getIterator() as $v) {
+      $vr_nid = $v->getIdentifier();
+      if (!empty($vr_nid)) {
+        $variables_to_sort[] = $v->getIdentifier();
+      }
+    }
+
+    uasort($variables_to_sort, 'mica_datasets_sort_by_position');
 
     // Add rows to the harmonization table
-    foreach ($variables as $variable) {
-      if (node_access('view', $variable)) {
+    foreach ($variables_to_sort as $variable) {
+      $var_node = node_load($variable);
+      if (node_access('view', $var_node)) {
 
         $count_variables++;
-        $link_id = 'variable_' . $variable->nid;
-        $variable_wrapper = entity_metadata_wrapper('node', $variable);
-        $variable_link = l($variable->title, 'node/' . $variable->nid, array(
+        $link_id = 'variable_' . $var_node->nid;
+        $variable_wrapper = entity_metadata_wrapper('node', $var_node);
+        $variable_link = l($var_node->title, 'node/' . $var_node->nid, array(
             'attributes' => array(
               'id' => $link_id,
               'class' => $is_bootstrap ? '' : 'tooltip',
-              'data-original-title' => $variable_wrapper->field_label->value(),
+              'data-original-title' => $variable_wrapper->field_label->value() ? $variable_wrapper->field_label->value() : '',
               'data-content' => $variable_wrapper->body->value() ? $variable_wrapper->body->value->value() : '',
             )
           )
@@ -114,7 +122,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
           $popovers[] = $link_id;
         }
         else {
-          $variable_link .= '<div id="variable_' . $variable->nid . '_tooltip" class="tooltip-content">'
+          $variable_link .= '<div id="variable_' . $var_node->nid . '_tooltip" class="tooltip-content">'
             . _mica_datasets_harmonization_variable_tooltip($variable_wrapper)
             . '</div>';
         }
@@ -124,7 +132,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
         $sva_query = new EntityFieldQuery();
         $sva_results = $sva_query->entityCondition('entity_type', 'node')
           ->entityCondition('bundle', 'study_variable_attributes')
-          ->fieldCondition('field_sva_variable', 'nid', $variable->nid)
+          ->fieldCondition('field_sva_variable', 'nid', $var_node->nid)
           ->execute();
         $svas = empty($sva_results['node']) ? array() : node_load_multiple(array_keys($sva_results['node']));
 
@@ -242,23 +250,23 @@ function mica_datasets_harmonization_legend_form($form, $form_state) {
   $form['legend']['undetermined'] = array(
     '#type' => 'markup',
     '#markup' => "<img src=\"" . MICA_HARMONIZATION_UNDETERMINED . "\" style=\"vertical-align: middle\">&nbsp;<b>"
-    . t("Undetermined") . "</b> - <i>"
-    . t("the harmonization potential of this variable has not yet been evaluated.")
-    . "</i><br />",
+      . t("Undetermined") . "</b> - <i>"
+      . t("the harmonization potential of this variable has not yet been evaluated.")
+      . "</i><br />",
   );
   $form['legend']['complete'] = array(
     '#type' => 'markup',
     '#markup' => "<img src=\"" . MICA_HARMONIZATION_COMPLETE . "\" style=\"vertical-align: middle\">&nbsp;<b>"
-    . t("Complete") . "</b> - <i>"
-    . t("the study assessment item(s) (e.g. survey question, physical measure, biochemical measure) allow construction of the variable as defined in the dataset.")
-    . "</i><br />",
+      . t("Complete") . "</b> - <i>"
+      . t("the study assessment item(s) (e.g. survey question, physical measure, biochemical measure) allow construction of the variable as defined in the dataset.")
+      . "</i><br />",
   );
   $form['legend']['impossible'] = array(
     '#type' => 'markup',
     '#markup' => "<img src=\"" . MICA_HARMONIZATION_IMPOSSIBLE . "\" style=\"vertical-align: middle\">&nbsp;<b>"
-    . t("Impossible") . "</b> - <i>"
-    . t("there is no information or insufficient information collected by this study to allow the construction of the variable as defined in the dataset.")
-    . "</i>",
+      . t("Impossible") . "</b> - <i>"
+      . t("there is no information or insufficient information collected by this study to allow the construction of the variable as defined in the dataset.")
+      . "</i>",
   );
 
   return $form;
