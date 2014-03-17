@@ -30,15 +30,10 @@ function mica_datasets_is_variable_categorical($variable_nid) {
   $variable_wrapper = entity_metadata_wrapper('node', $variable_nid);
   if (!empty($variable_wrapper->field_variable_categories)) {
     foreach ($variable_wrapper->field_variable_categories->getIterator() as $category) {
-      if ($category->missing->value() == 0) {
-        return TRUE;
-      }
-      return FALSE;
+      return $category->missing->value() == 0;
     }
   }
-  else {
-    return FALSE;
-  }
+  return FALSE;
 }
 
 function mica_datasets_sort_by_title($x, $y) {
