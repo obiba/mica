@@ -123,6 +123,33 @@ function mica_field_description_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_comment'
+  $field_bases['field_comment'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_comment',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 1,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_original_field_label'
   $field_bases['field_original_field_label'] = array(
     'active' => 1,
