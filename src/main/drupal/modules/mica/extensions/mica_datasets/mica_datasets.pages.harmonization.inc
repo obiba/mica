@@ -92,10 +92,10 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
 
     // sort variables based on their field_position
     $variables_to_sort = array();
-    foreach ($wrapper->field_dataset_variables->getIterator() as $v) {
-      $vr_nid = $v->getIdentifier();
+    foreach ($wrapper->field_dataset_variables->getIterator() as $unsort_variable) {
+      $vr_nid = $unsort_variable->getIdentifier();
       if (!empty($vr_nid)) {
-        $variables_to_sort[] = $v->getIdentifier();
+        $variables_to_sort[] = $unsort_variable->getIdentifier();
       }
     }
 

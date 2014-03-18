@@ -235,7 +235,11 @@ function _mica_datasets_update_variable($variable_nid, $dataset_language, $harmo
 }
 
 function _mica_datasets_update_variable_wrapper($harmonization_variable, $dataset_language, $wrapper) {
-
+  if (!empty($harmonization_variable['comment'])) {
+    foreach ($harmonization_variable['comment'] as $language => $value) {
+      $wrapper->language($language)->field_comment->set($value);
+    }
+  }
   $wrapper->title->set($harmonization_variable['title']);
   $wrapper->title_field->set($harmonization_variable['title']);
   $wrapper->field_value_type->set($harmonization_variable['value_type']);

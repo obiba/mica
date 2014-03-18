@@ -147,6 +147,16 @@ class MicaDatasetConnector extends Entity {
         drupal_set_message(t("Study %study: Cannot find dataset (404). Please edit %study configuration and make sure its dataset and table names are correct.",
           array("%study" => $study->title)), 'error');
         break;
+      case 400:
+        $hint = t("(Possible causes: Variable not found in Opal table " . $this->options['table'] . ".)");
+        drupal_set_message(t("Study %study: Failed executing search. Message was: %msg. Code: %code. Please make sure all configuration settings are correct.<br/>%hint",
+          array(
+            "%study" => $study->title,
+            "%msg" => $e->getMessage(),
+            '%code' => $e->getCode(),
+            '%hint' => $hint
+          )), 'error');
+        break;
       default:
         $hint = t("(Possible causes: Opal server is down, host name is invalid, port number is invalid.)");
         drupal_set_message(t("Study %study: Failed executing search. Message was: %msg. Code: %code. Please make sure all configuration settings are correct.<br/>%hint",
