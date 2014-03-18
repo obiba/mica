@@ -233,7 +233,12 @@ Function _mica_dimensions_coverage_tabledata_display_study($study_id = NULL) {
     }
     else {
       $contenttab = t('Can\'t display Domain coverage table ');
-      drupal_set_message($contenttab . t("Make sure taxonomies are imported Go to <a href='@url'>Import Taxonomies</a>", array('@url' => _mica_dimensions_coverage_deal_with_multilangue_url() . $base_path . 'admin/config/development/mica_datasets')), 'warning');
+      drupal_set_message($contenttab . t("Make sure taxonomies are imported Go to <a href='@url'>Import Taxonomies</a>",
+          array(
+            '@url' => _mica_dimensions_coverage_deal_with_multilangue_url() .
+              $base_path . 'admin/config/development/mica_datasets'
+          )),
+        'warning');
     }
   }
   mica_datasets_prepare_prettify();
