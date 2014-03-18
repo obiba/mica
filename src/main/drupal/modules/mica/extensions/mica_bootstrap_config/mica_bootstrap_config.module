@@ -17,7 +17,7 @@ function mica_bootstrap_config_block_view($delta = '') {
 function _mica_bootstrap_config_login_block_view() {
   return array(
     'subject' => NULL,
-    'content' => '<ul class="nav pull-right"><li class="last leaf">' . l(t('Sign in'), '/user/login') . '</li></ul>',
+    'content' => '<ul class="nav pull-right"><li class="last leaf">' . l(t('Sign in'), 'user/login') . '</li></ul>',
   );
 }
 

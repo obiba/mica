@@ -34,7 +34,6 @@ function mica_dimensions_coverage_dce($dce_id = NULL) {
     $query_dce = new SearchApiQuery($index);
     $query_dce->condition('field_dataset:field_dataset_type', 'study', '=');
     $result_dce = $query_dce->execute();
-
     foreach ($result_dce['search_api_facets']['field_dataset:field_dataset_dces'] as $dce_facet) {
       $key_dce_id = trim($dce_facet['filter'], '\"');
       if (in_array($key_dce_id, $dce_id)) {
@@ -121,11 +120,12 @@ function _mica_dimensions_coverage_get_data(&$data, $index, $condition, $taxonom
  * Construction Rows and of the table  the table with correct data
  * */
 function _mica_dimensions_coverage_dimension_table($data, $taxonomies, $type) {
-//  $rows = array();
+  $rows = array();
   foreach ($taxonomies as $taxonomy) {
     $machine_name = substr($taxonomy[0], 0, drupal_strlen($taxonomy[0]) - 4);
     $vocabularies = taxonomy_vocabulary_machine_name_load($machine_name);
-    // Fetch all terms
+    if (!empty($vocabularies->vid)) {
+      // Fetch all terms
     $vocabulary = taxonomy_vocabulary_load($vocabularies->vid);
     $tree = taxonomy_get_tree($vocabulary->vid);
     if (!empty($tree)) {
@@ -210,6 +210,7 @@ function _mica_dimensions_coverage_dimension_table($data, $taxonomies, $type) {
       }
     }
   }
+  }
   return $rows;
 }
 
@@ -223,7 +224,7 @@ function _mica_dimensions_coverage_construct_domains_column($term, $vocabulary, 
       'attributes' => array('class' => 'facetapi-inactive'),
       'html' => FALSE,
       'query' => array(
-        'f[0]' => $field_by_title[strtolower($vocabulary->name)] . ':' . $term->tid,
+        'f[0]' => !empty($field_by_title[strtolower($vocabulary->name)]) ? $field_by_title[strtolower($vocabulary->name)] : NULL . ':' . $term->tid,
 
       ),
     ),
