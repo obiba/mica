@@ -224,13 +224,13 @@ Function _mica_dimensions_coverage_tabledata_display_study($study_id = NULL) {
     $contenttab = _mica_dimensions_coverage_dimension_them_tab($header_row, $rows);
     if (!empty($taxonomies) && !empty($rows)) {
       /***************************/
-    // Add Js Settings
-    ctools_add_js('mica_dimensions_coverage', 'mica_dimensions_coverage');
-    drupal_add_js(array(
-      'libPath' => url(_mica_dimensions_coverage_deal_with_multilangue_url() . '/' . libraries_get_path('datatables'))
-    ), array('type' => 'setting'));
-    drupal_add_library('mica_dimensions_coverage', 'datatables');
-  }
+      // Add Js Settings
+      ctools_add_js('mica_dimensions_coverage', 'mica_dimensions_coverage');
+      drupal_add_js(array(
+        'libPath' => url(_mica_dimensions_coverage_deal_with_multilangue_url() . '/' . libraries_get_path('datatables'))
+      ), array('type' => 'setting'));
+      drupal_add_library('mica_dimensions_coverage', 'datatables');
+    }
     else {
       $contenttab = t('Can\'t display Domain coverage table ');
       drupal_set_message($contenttab . t("Make sure taxonomies are imported Go to <a href='@url'>Import Taxonomies</a>", array('@url' => _mica_dimensions_coverage_deal_with_multilangue_url() . $base_path . 'admin/config/development/mica_datasets')), 'warning');
@@ -316,22 +316,26 @@ Function _mica_dimensions_coverage_tabledata_display_dce($ids_dce = NULL) {
     // Add Settings
     if (!empty($taxonomies) && !empty($content_tab_row)) {
 // Reconstruct Table Dom header with js script by append the correct header
-    if ((empty($_GET['type']) || $_GET['type'] != 'harmonization')) {
+      if ((empty($_GET['type']) || $_GET['type'] != 'harmonization')) {
 
-      ctools_add_js('mica_dimensions_coverage.header_add', 'mica_dimensions_coverage');
-      drupal_add_js(array(
-        'header_study_to_add' => $study_head_group,
-        //   'header_dce_to_add' => $dce_head_group,
-        'dce_title' => t('Data collection event'),
-        //   'study_title' => t('Study')
-      ), array('type' => 'setting'));
-    }
+        ctools_add_js('mica_dimensions_coverage.header_add', 'mica_dimensions_coverage');
+        drupal_add_js(array(
+          'header_study_to_add' => $study_head_group,
+          //   'header_dce_to_add' => $dce_head_group,
+          'dce_title' => t('Data collection event'),
+          //   'study_title' => t('Study')
+        ), array('type' => 'setting'));
+      }
       ctools_add_js('mica_dimensions_coverage', 'mica_dimensions_coverage');
       drupal_add_library('mica_dimensions_coverage', 'datatables');
     }
     else {
-      $contenttab = t('Can\'t display Domain coverage table ');
-      drupal_set_message($contenttab . t("Make sure taxonomies are imported Go to <a href='@url'>Import Taxonomies</a>", array('@url' => _mica_dimensions_coverage_deal_with_multilangue_url() . $base_path . 'admin/config/development/mica_datasets')), 'warning');
+      $contenttab = t('Can\'t display domain coverage table ');
+      drupal_set_message($contenttab . t("Make sure taxonomies are imported Go to <a href='@url'>Import Taxonomies</a>",
+          array(
+            '@url' => _mica_dimensions_coverage_deal_with_multilangue_url() . $base_path .
+              'admin/config/development/mica_datasets'
+          )), 'warning');
     }
 
   }
@@ -399,9 +403,9 @@ Function _mica_dimensions_coverage_tabledata_display($ids_dataset = NULL) {
     $contenttab = _mica_dimensions_coverage_dimension_them_tab($header_row, $rows, '');
     if (!empty($taxonomies) && !empty($rows)) {
       /***************************/
-    // Add Js Settings
-    ctools_add_js('mica_dimensions_coverage', 'mica_dimensions_coverage');
-    drupal_add_library('mica_dimensions_coverage', 'datatables');
+      // Add Js Settings
+      ctools_add_js('mica_dimensions_coverage', 'mica_dimensions_coverage');
+      drupal_add_library('mica_dimensions_coverage', 'datatables');
     }
     else {
       $contenttab = t('Can\'t display Domain coverage table ');
