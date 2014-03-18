@@ -121,7 +121,7 @@ projects[jquery_ui_multiselect_widget][version] = 1.7
 
 projects[l10n_update] = 1.0-beta3
 
-projects[lang_dropdown] = 1.5
+projects[lang_dropdown] = 2.5
 
 projects[languageicons] = 1.0
 
