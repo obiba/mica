@@ -148,7 +148,7 @@ class MicaDatasetConnector extends Entity {
           array("%study" => $study->title)), 'error');
         break;
       case 400:
-        $hint = t("(Possible causes: Variable not founded in Opal table " . $this->options['table'] . ".)");
+        $hint = t("(Possible causes: Variable not founde in Opal table " . $this->options['table'] . ".)");
         drupal_set_message(t("Study %study: Failed executing search. Message was: %msg. Code: %code. Please make sure all configuration settings are correct.<br/>%hint",
           array(
             "%study" => $study->title,
