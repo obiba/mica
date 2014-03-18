@@ -417,6 +417,7 @@ Function _mica_dimensions_coverage_tabledata_display($ids_dataset = NULL) {
   }
 
   drupal_add_js("jQuery(function () { $jquery_popover });", 'inline');
+
   /***************************/
   // Add Settings
   $output = '<div class="loader"></div>';

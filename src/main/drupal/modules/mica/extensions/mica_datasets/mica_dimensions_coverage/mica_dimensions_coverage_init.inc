@@ -34,6 +34,7 @@ function mica_dimensions_coverage_dce($dce_id = NULL) {
     $query_dce = new SearchApiQuery($index);
     $query_dce->condition('field_dataset:field_dataset_type', 'study', '=');
     $result_dce = $query_dce->execute();
+
     foreach ($result_dce['search_api_facets']['field_dataset:field_dataset_dces'] as $dce_facet) {
       $key_dce_id = trim($dce_facet['filter'], '\"');
       if (in_array($key_dce_id, $dce_id)) {
