@@ -47,7 +47,7 @@ function _mica_studies_import_set_study_properties($dom, $wrapper, $path) {
   }
 
   if (empty($xpath->query('/study/objectives/body')->item(0)->nodeValue)) {
-    throw new Exception(t('Study  : Field Body description required'));
+    throw new Exception(t('Study: Field Body description required'));
   }
   else {
     $wrapper->body->set(array(
@@ -57,7 +57,8 @@ function _mica_studies_import_set_study_properties($dom, $wrapper, $path) {
     ));
   }
 
-  $wrapper->field_website->set(array('url' => mica_studies_import_get_node_value($xpath, '/study/web-site')));
+  $website = mica_studies_import_get_node_value($xpath, '/study/web-site');
+  $wrapper->field_website->set(empty($website) ? NULL : array('url' => $website));
 
   $design_elements = $xpath->query('/study/study-designs/designs/design');
   $wrapper->field_design->set();
