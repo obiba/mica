@@ -203,9 +203,11 @@ function _mica_datasets_create_variable($dataset, $harmonization_variable, $posi
 
   global $user;
 
+  //define default lang for new created variables
+  $var_lang = language_default();
   $infos = array(
     'type' => 'variable',
-    'language' => $dataset->language,
+    'language' => $var_lang->language,
     'uid' => $user->uid,
     'status' => NODE_NOT_PUBLISHED,
     'menu' => '',
