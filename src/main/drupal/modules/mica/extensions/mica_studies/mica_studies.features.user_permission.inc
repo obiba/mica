@@ -842,13 +842,103 @@ function mica_studies_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'export contact content'.
+  $permissions['export contact content'] = array(
+    'name' => 'export contact content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
+    ),
+    'module' => 'mica_studies_export',
+  );
+
   // Exported permission: 'export data'.
   $permissions['export data'] = array(
     'name' => 'export data',
     'roles' => array(
       'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
     ),
     'module' => 'mica_studies',
+  );
+
+  // Exported permission: 'export data_collection_event content'.
+  $permissions['export data_collection_event content'] = array(
+    'name' => 'export data_collection_event content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
+    ),
+    'module' => 'mica_studies_export',
+  );
+
+  // Exported permission: 'export population content'.
+  $permissions['export population content'] = array(
+    'name' => 'export population content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
+    ),
+    'module' => 'mica_studies_export',
+  );
+
+  // Exported permission: 'export study content'.
+  $permissions['export study content'] = array(
+    'name' => 'export study content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
+    ),
+    'module' => 'mica_studies_export',
+  );
+
+  // Exported permission: 'import contact content'.
+  $permissions['import contact content'] = array(
+    'name' => 'import contact content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
+    ),
+    'module' => 'mica_studies_import',
+  );
+
+  // Exported permission: 'import data_collection_event content'.
+  $permissions['import data_collection_event content'] = array(
+    'name' => 'import data_collection_event content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
+    ),
+    'module' => 'mica_studies_import',
+  );
+
+  // Exported permission: 'import population content'.
+  $permissions['import population content'] = array(
+    'name' => 'import population content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
+    ),
+    'module' => 'mica_studies_import',
+  );
+
+  // Exported permission: 'import study content'.
+  $permissions['import study content'] = array(
+    'name' => 'import study content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'consortium administrator' => 'consortium administrator',
+      'study reviewer' => 'study reviewer',
+    ),
+    'module' => 'mica_studies_import',
   );
 
   // Exported permission: 'moderate content from draft to needs_review'.
