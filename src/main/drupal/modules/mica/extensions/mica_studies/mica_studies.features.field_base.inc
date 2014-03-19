@@ -198,7 +198,7 @@ function mica_studies_field_default_field_bases() {
         'field_description_value_type' => 'text',
       ),
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'text_long',
   );
 
@@ -1896,7 +1896,7 @@ function mica_studies_field_default_field_bases() {
         'field_description_value_type' => 'text',
       ),
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'text_long',
   );
 
@@ -2569,7 +2569,7 @@ function mica_studies_field_default_field_bases() {
       ),
       'max_length' => 255,
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'text',
   );
 
@@ -2607,7 +2607,7 @@ function mica_studies_field_default_field_bases() {
       ),
       'max_length' => 255,
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'text',
   );
 
@@ -2716,7 +2716,7 @@ function mica_studies_field_default_field_bases() {
       ),
       'max_length' => 255,
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'text',
   );
 
@@ -2823,7 +2823,7 @@ function mica_studies_field_default_field_bases() {
         'field_description_value_type' => 'text',
       ),
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'text_long',
   );
 
@@ -2912,7 +2912,7 @@ function mica_studies_field_default_field_bases() {
         'field_description_value_type' => 'text',
       ),
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'text_long',
   );
 
@@ -2949,7 +2949,7 @@ function mica_studies_field_default_field_bases() {
         'field_description_value_type' => 'text',
       ),
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'text_long',
   );
 
@@ -2986,7 +2986,7 @@ function mica_studies_field_default_field_bases() {
         'field_description_value_type' => 'text',
       ),
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'text_long',
   );
 
@@ -3059,7 +3059,7 @@ function mica_studies_field_default_field_bases() {
         'field_description_value_type' => 'text',
       ),
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'text_long',
   );
 
@@ -3132,7 +3132,7 @@ function mica_studies_field_default_field_bases() {
         'field_description_value_type' => 'text',
       ),
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'text_long',
   );
 
@@ -3301,7 +3301,7 @@ function mica_studies_field_default_field_bases() {
         'field_description_value_type' => 'text',
       ),
     ),
-    'translatable' => 1,
+    'translatable' => 0,
     'type' => 'text_long',
   );
 
