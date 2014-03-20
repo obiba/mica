@@ -758,22 +758,19 @@ function mica_datasets_node_presave($node) {
       _mica_datasets_set_variable_position($node);
       break;
     case 'dataset':
-      $dataset_wrapper = entity_metadata_wrapper('node', $node);
       if (!empty($node->original)) {
-        $dataset_wrapper_original = entity_metadata_wrapper('node', $node->original);
-      }
-
-      if (!empty($dataset_wrapper_original->field_dataset_type) &&
-        ($dataset_wrapper_original->field_dataset_type->value() != $dataset_wrapper->field_dataset_type->value())
-      ) {
-        if ($dataset_wrapper->field_dataset_type->value() === 'harmonization') {
-          foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study_wrapper) {
-            _mica_datasets_create_study_variable_attributes_for_study($study_wrapper, $dataset_wrapper->field_dataset_variables);
+        $dataset_wrapper = entity_metadata_wrapper('node', $node);
+        $original_wrapper = entity_metadata_wrapper('node', $node->original);
+        if ($original_wrapper->field_dataset_type->value() != $dataset_wrapper->field_dataset_type->value()) {
+          if ($dataset_wrapper->field_dataset_type->value() === 'harmonization') {
+            foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study_wrapper) {
+              _mica_datasets_create_study_variable_attributes_for_study($study_wrapper, $dataset_wrapper->field_dataset_variables);
+            }
           }
-        }
-        else {
-          foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study_wrapper) {
-            _mica_datasets_delete_svas($dataset_wrapper, $study_wrapper->nid->value());
+          else {
+            foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study_wrapper) {
+              _mica_datasets_delete_svas($dataset_wrapper, $study_wrapper->nid->value());
+            }
           }
         }
       }
