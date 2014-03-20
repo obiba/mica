@@ -73,8 +73,9 @@ function _mica_datasets_prepare_delete_dataset_batch_operations($dataset_nid) {
 
 function _mica_datasets_delete_dataset_batch_finished($success, $results, $operations) {
   if ($success) {
+    $deleted_var = !empty($results['variable_deleted']) ? $results['variable_deleted'] : 0;
     drupal_set_message(t('Dataset successfully deleted (%nb variables deleted).',
-      array('%nb' => $results['variable_deleted'])));
+      array('%nb' => $deleted_var)));
     drupal_goto('/datasets');
   }
   else {
