@@ -478,7 +478,8 @@ function mica_datasets_field_attach_form($entity_type, $entity, &$form, &$form_s
       case 'dataset';
         $form['field_dataset_studies']['#attributes']['style'] = array('display:none;');
         $form['field_dataset_dces']['#attributes']['style'] = array('display:none;');
-        $form['field_dataset_variables']['#attributes']['style'] = array('display:none;');
+        //umset field variable to optimise edition of datasetes , not affect relations
+        unset($form['field_dataset_variables']);
         break;
       case 'study':
         $form['field_study_study_variable_att']['#attributes']['style'] = array('display:none;');
@@ -758,14 +759,22 @@ function mica_datasets_node_presave($node) {
       break;
     case 'dataset':
       $dataset_wrapper = entity_metadata_wrapper('node', $node);
-      if ($dataset_wrapper->field_dataset_type->value() === 'harmonization') {
-        foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study_wrapper) {
-          _mica_datasets_create_study_variable_attributes_for_study($study_wrapper, $dataset_wrapper->field_dataset_variables);
-        }
+      if (!empty($node->original)) {
+        $dataset_wrapper_original = entity_metadata_wrapper('node', $node->original);
       }
-      else {
-        foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study_wrapper) {
-          _mica_datasets_delete_svas($dataset_wrapper, $study_wrapper->nid->value());
+
+      if (!empty($dataset_wrapper_original->field_dataset_type) &&
+        ($dataset_wrapper_original->field_dataset_type->value() != $dataset_wrapper->field_dataset_type->value())
+      ) {
+        if ($dataset_wrapper->field_dataset_type->value() === 'harmonization') {
+          foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study_wrapper) {
+            _mica_datasets_create_study_variable_attributes_for_study($study_wrapper, $dataset_wrapper->field_dataset_variables);
+          }
+        }
+        else {
+          foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study_wrapper) {
+            _mica_datasets_delete_svas($dataset_wrapper, $study_wrapper->nid->value());
+          }
         }
       }
       break;
