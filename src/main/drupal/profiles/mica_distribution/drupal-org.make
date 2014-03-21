@@ -118,6 +118,7 @@ projects[jquery_update][download][branch] = 7.x-2.x
 projects[jquery_update][patch][1995790] = http://drupal.org/files/update_jquery_form_3_32-1995790-1.patch
 
 projects[jquery_ui_multiselect_widget][version] = 1.7
+projects[jquery_ui_multiselect_widget][patch][2105083] = https://drupal.org/files/issues/jquery_ui_multiselect_widget-version-test-fix-2105083.patch
 
 projects[l10n_update] = 1.0-beta3
 
