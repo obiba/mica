@@ -261,12 +261,6 @@ libraries[prettify_css][download][url] = http://google-code-prettify.googlecode.
 libraries[prettify_css][directory_name] = prettify
 libraries[prettify_css][overwrite] = TRUE
 
-
-libraries[jquery_ui_multiselect_widget][download][type] = get
-libraries[jquery_ui_multiselect_widget][download][url] = http://github.com/ehynds/jquery-ui-multiselect-widget/archive/master.zip
-libraries[jquery_ui_multiselect_widget][directory_name] = jquery-ui-multiselect-widget
-libraries[jquery_ui_multiselect_widget][overwrite] = TRUE
-
 libraries[prettify_js][download][type] = get
 libraries[prettify_js][download][url] = http://google-code-prettify.googlecode.com/svn/branches/release-1-Jun-2011/src/prettify.js
 libraries[prettify_js][directory_name] = prettify
@@ -275,6 +269,11 @@ libraries[prettify_js][overwrite] = TRUE
 libraries[solr_php_client][download][type] = get
 libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.com/files/SolrPhpClient.r60.2011-05-04.tgz
 libraries[solr_php_client][directory_name] = SolrPhpClient
+
+libraries[jquery_ui_multiselect_widget][download][type] = get
+libraries[jquery_ui_multiselect_widget][download][url] = http://github.com/ehynds/jquery-ui-multiselect-widget/archive/master.zip
+libraries[jquery_ui_multiselect_widget][directory_name] = jquery-ui-multiselect-widget
+libraries[jquery_ui_multiselect_widget][overwrite] = TRUE
 
 libraries[mica_domains_coverage][download][type] = get
 libraries[mica_domains_coverage][download][url] = http://datatables.net/releases/DataTables-1.9.4.zip
