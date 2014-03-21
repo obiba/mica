@@ -750,16 +750,14 @@ function _mica_datasets_has_variables($dataset_nid) {
 }
 
 function _mica_datasets_has_categories($var_worapper) {
-  $has_cat = FALSE;
   foreach ($var_worapper->field_variable_categories->getIterator() as $categorie) {
     $cat_name = $categorie->label->value();
     $cat_lab = $categorie->name->value();
     if (!empty($cat_name) && !empty($cat_lab)) {
-      $has_cat = TRUE;
-      break;
+      return TRUE;
     }
   }
-  return $has_cat;
+  return FALSE;
 }
 
 /**
