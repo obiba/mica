@@ -749,6 +749,19 @@ function _mica_datasets_has_variables($dataset_nid) {
   return $nb_variables == 1;
 }
 
+function _mica_datasets_has_categories($var_worapper) {
+  $has_cat = FALSE;
+  foreach ($var_worapper->field_variable_categories->getIterator() as $categorie) {
+    $cat_name = $categorie->label->value();
+    $cat_lab = $categorie->name->value();
+    if (!empty($cat_name) && !empty($cat_lab)) {
+      $has_cat = TRUE;
+      break;
+    }
+  }
+  return $has_cat;
+}
+
 /**
  * Implements hook_node_presave()
  */
@@ -756,6 +769,10 @@ function mica_datasets_node_presave($node) {
   switch ($node->type) {
     case 'variable':
       _mica_datasets_set_variable_position($node);
+      $variable_wrapper = entity_metadata_wrapper('node', $node);
+      if (_mica_datasets_has_categories($variable_wrapper) === FALSE) {
+        unset($node->field_variable_categories);
+      }
       break;
     case 'dataset':
       if (!empty($node->original)) {
