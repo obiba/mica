@@ -26,17 +26,12 @@ function  _mica_studies_import_set_dce_properties($dom, $wrapper, $path) {
 
   $wrapper->field_dce_end_month->set(mica_studies_import_get_node_value($xpath, '/data-collection-event/end-month'));
 
-  //required field
-  if (empty($xpath->query('/data-collection-event/description/body')->item(0)->nodeValue)) {
-    throw new Exception(t('DCE : Field Body description required'));
-  }
-  else {
-    $wrapper->body->set(array(
+  //Not required field
+  $wrapper->body->set(array(
       'value' => mica_studies_import_get_node_value($xpath, '/data-collection-event/description/body'),
       'summary' => mica_studies_import_get_node_value($xpath, '/data-collection-event/description/summary'),
       'format' => mica_studies_import_get_node_value($xpath, '/data-collection-event/description/format')
     ));
-  }
 
   $dom_data_source_elements = $xpath->query('/data-collection-event/sources-of-data/source');
   $data_source_elements = mica_studies_import_get_node_value($xpath, '/data-collection-event/sources-of-data/source');
