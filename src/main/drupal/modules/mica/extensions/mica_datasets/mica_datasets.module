@@ -749,27 +749,23 @@ function _mica_datasets_has_variables($dataset_nid) {
   return $nb_variables == 1;
 }
 
-function _mica_datasets_has_categories($var_worapper) {
-  foreach ($var_worapper->field_variable_categories->getIterator() as $categorie) {
-    $cat_name = $categorie->label->value();
-    $cat_lab = $categorie->name->value();
-    if (!empty($cat_name) && !empty($cat_lab)) {
-      return TRUE;
-    }
-  }
-  return FALSE;
-}
-
 /**
  * Implements hook_node_presave()
  */
 function mica_datasets_node_presave($node) {
   switch ($node->type) {
     case 'variable':
+      $languages = language_list('language');
+      $languages = array_merge($languages, array('und' => 'und'));
       _mica_datasets_set_variable_position($node);
       $variable_wrapper = entity_metadata_wrapper('node', $node);
-      if (_mica_datasets_has_categories($variable_wrapper) === FALSE) {
-        unset($node->field_variable_categories);
+      foreach ($variable_wrapper->field_variable_categories->getIterator() as $index_cat => $categorie) {
+        $cat_name = $categorie->name->value();
+        if (empty($cat_name)) {
+          foreach ($languages as $index_lan => $lang) {
+            unset($node->field_variable_categories[$index_lan][$index_cat]);
+          }
+        }
       }
       break;
     case 'dataset':
