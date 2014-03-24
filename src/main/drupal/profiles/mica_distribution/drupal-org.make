@@ -142,7 +142,7 @@ projects[menu_firstchild] = 1.1
 
 projects[menu_view_unpublished] = 1.0-beta3
 
-projects[mica] = 9.0-rc1
+projects[mica] = 9.0-rc2
 
 projects[module_filter] = 1.8
 
@@ -272,12 +272,12 @@ libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.co
 libraries[solr_php_client][directory_name] = SolrPhpClient
 
 libraries[jquery_ui_multiselect_widget][download][type] = get
-libraries[jquery_ui_multiselect_widget][download][url] = http://github.com/ehynds/jquery-ui-multiselect-widget/archive/master.zip
+libraries[jquery_ui_multiselect_widget][download][url] = https://github.com/ehynds/jquery-ui-multiselect-widget/archive/master.zip
 libraries[jquery_ui_multiselect_widget][directory_name] = jquery-ui-multiselect-widget
 libraries[jquery_ui_multiselect_widget][overwrite] = TRUE
 
 libraries[mica_domains_coverage][download][type] = get
-libraries[mica_domains_coverage][download][url] = http://datatables.net/releases/DataTables-1.9.4.zip
+libraries[mica_domains_coverage][download][url] = http://www.datatables.net/releases/DataTables-1.9.4.zip
 libraries[mica_domains_coverage][directory_name] = datatables
 libraries[mica_domains_coverage][overwrite] = TRUE
 
