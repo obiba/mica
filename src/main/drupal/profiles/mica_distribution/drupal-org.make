@@ -253,10 +253,6 @@ libraries[ckeditor][download][type]= get
 libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.1.1/ckeditor_4.1.1_standard.zip
 libraries[ckeditor][directory_name] = ckeditor
 
-libraries[jquery_tooltip][download][type]= get
-libraries[jquery_tooltip][download][url] = http://jquery.bassistance.de/tooltip/jquery.tooltip.zip
-libraries[jquery_tooltip][directory_name] = jquery_tooltip
-
 libraries[prettify_css][download][type] = get
 libraries[prettify_css][download][url] = http://google-code-prettify.googlecode.com/svn/branches/release-1-Jun-2011/src/prettify.css
 libraries[prettify_css][directory_name] = prettify
