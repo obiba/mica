@@ -1,8 +1,0 @@
-core = "7.x"
-dependencies[] = "mica_datasets"
-dependencies[] = "mica_opal"
-description = "Mica DataSHIELD"
-files[] = "includes/datashield.inc"
-name = "Mica DataSHIELD"
-package = Mica
-
