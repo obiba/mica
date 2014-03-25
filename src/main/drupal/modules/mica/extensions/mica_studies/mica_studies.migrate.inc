@@ -158,7 +158,7 @@ function _mica_studies_migrate_content_types($study, $nb_studies, &$context) {
     LANGUAGE_NONE => array(
       0 => array(
         'nid' => array(
-          $study_wrapper->nid->value() => $study_wrapper->nid->value()
+          $study_wrapper->getIdentifier() => $study_wrapper->getIdentifier()
         )
       )
     )
@@ -196,7 +196,7 @@ function _mica_studies_migrate_content_types($study, $nb_studies, &$context) {
       LANGUAGE_NONE => array(
         0 => array(
           'nid' => array(
-            $population_wrapper->nid->value() => $population_wrapper->nid->value()
+            $population_wrapper->getIdentifier() => $population_wrapper->getIdentifier()
           )
         )
       )
@@ -234,7 +234,7 @@ function _mica_studies_migrate_content_types($study, $nb_studies, &$context) {
       LANGUAGE_NONE => array(
         0 => array(
           'nid' => array(
-            $population_wrapper->nid->value() => $population_wrapper->nid->value()
+            $population_wrapper->getIdentifier() => $population_wrapper->getIdentifier()
           )
         )
       )
@@ -273,7 +273,7 @@ function _mica_studies_migrate_content_types($study, $nb_studies, &$context) {
       LANGUAGE_NONE => array(
         0 => array(
           'nid' => array(
-            $population_wrapper->nid->value() => $population_wrapper->nid->value()
+            $population_wrapper->getIdentifier() => $population_wrapper->getIdentifier()
           )
         )
       )

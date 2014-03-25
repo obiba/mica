@@ -48,16 +48,16 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
       $acronym = $study_wrapper->field_acroym->value();
       $name = empty($acronym) ? $study_wrapper->title->value() : $study_wrapper->field_acroym->value();
 
-      $studies_by_id[$study_wrapper->nid->value()] = $name;
+      $studies_by_id[$study_wrapper->getIdentifier()] = $name;
 
       // See http://www.jide.fr/english/using-ajax-in-drupal-7-outside-of-form-api
       // show link only for studies that have an opal connection
       if (node_access('update', $dataset_node)
-        && mica_connector_query($wrapper->nid->value(), $study_wrapper->nid->value(), TRUE)
+        && mica_connector_query($wrapper->getIdentifier(), $study_wrapper->getIdentifier(), TRUE)
       ) {
         $refresh_link = l(
           "<i class='icon-refresh $icon_bkg'></i>",
-          'node/' . $wrapper->nid->value() . '/import-variables/' . $study_wrapper->nid->value(),
+          'node/' . $wrapper->getIdentifier() . '/import-variables/' . $study_wrapper->getIdentifier(),
           array(
             'html' => TRUE,
             'attributes' => array(
@@ -79,7 +79,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
             'title' => t('Export an Opal View for %study', array('%study' => $name))
           ),
           'query' => array(
-            'study' => $study_wrapper->nid->value(),
+            'study' => $study_wrapper->getIdentifier(),
           ),
         )
       );
@@ -146,7 +146,7 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
 
               $sva_study = $sva_wrapper->field_sva_study->value();
               if (!empty($sva_study)) {
-                $sva_study_id = $sva_wrapper->field_sva_study->nid->value();
+                $sva_study_id = $sva_wrapper->field_sva_study->getIdentifier();
                 // get the sva that match the study id
                 if ($sva_study_id == $study_id) {
 

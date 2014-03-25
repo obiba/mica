@@ -86,7 +86,7 @@ function _mica_export_generate_xml($nid, &$context) {
 
   watchdog('mica', 'Export node %title (%nid) to XML', array(
     '%title' => $wrapper->title->value(),
-    '%nid' => $wrapper->nid->value()
+    '%nid' => $wrapper->getIdentifier()
   ), WATCHDOG_DEBUG);
 
   $xml = module_invoke_all('mica_export_to_xml', $wrapper->value(), $tmp_folder_name);

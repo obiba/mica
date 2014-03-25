@@ -400,7 +400,7 @@ function mica_core_add_page($title, $body_html, $alias = NULL, $format = 'full_h
 
   if (isset($alias)) {
     $path = array('alias' => $alias);
-    $path['source'] = 'node/' . $page_wrapper->nid->value();
+    $path['source'] = 'node/' . $page_wrapper->getIdentifier();
     $path['language'] = LANGUAGE_NONE;
     path_save($path);
   }

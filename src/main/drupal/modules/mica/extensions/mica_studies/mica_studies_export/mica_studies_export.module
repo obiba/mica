@@ -58,15 +58,15 @@ function mica_studies_export_mica_export_find_related_nids($node) {
   $nids = array();
   $nids[] = $node->nid;
   foreach ($node_wrapper->field_investigators->getIterator() as $investigator_wrapper) {
-    $nids[] = $investigator_wrapper->nid->value();
+    $nids[] = $investigator_wrapper->getIdentifier();
   }
   foreach ($node_wrapper->field_contacts_ref->getIterator() as $contact_wrapper) {
-    $nids[] = $contact_wrapper->nid->value();
+    $nids[] = $contact_wrapper->getIdentifier();
   }
   foreach ($node_wrapper->field_study_populations->getIterator() as $pop_wrapper) {
-    $nids[] = $pop_wrapper->nid->value();
+    $nids[] = $pop_wrapper->getIdentifier();
     foreach ($pop_wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
-      $nids[] = $dce_wrapper->nid->value();
+      $nids[] = $dce_wrapper->getIdentifier();
     }
   }
   return $nids;
