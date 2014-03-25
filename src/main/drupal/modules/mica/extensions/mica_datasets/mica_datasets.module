@@ -761,7 +761,9 @@ function mica_datasets_node_presave($node) {
       $variable_wrapper = entity_metadata_wrapper('node', $node);
       foreach ($variable_wrapper->field_variable_categories->getIterator() as $index_cat => $categorie) {
         $cat_name = $categorie->name->value();
-        if (empty($cat_name)) {
+        $cat_label = $categorie->label->value();
+        //empty categori field
+        if (empty($cat_name) && empty($cat_label)) {
           foreach ($languages as $index_lan => $lang) {
             unset($node->field_variable_categories[$index_lan][$index_cat]);
           }
