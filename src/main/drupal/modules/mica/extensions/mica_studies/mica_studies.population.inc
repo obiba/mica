@@ -56,17 +56,10 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
   }
 
   // Breadcrumbs
+  //get Study node
   $study_id = $wrapper->field_pop_study->value();
-
   if (!empty($study_id->nid)) {
     $breadcrumb = _mica_studies_menu_generate_breadcrumbs('node/' . $study_id->nid);
-  }
-  // generate specific breadcrumbs for population pages pages
-  if (empty($breadcrumb)) {
-    $current_breadcrumbs = menu_get_active_breadcrumb();
-  }
-
-  if (!empty($current_breadcrumbs[1])) {
     $breadcrumbs = array();
     $breadcrumbs[] = l(t('Home'), '');
     for ($i = 0; $i < count($breadcrumb); $i++) {
