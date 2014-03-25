@@ -66,7 +66,7 @@ function _mica_studies_population_view($node, $view_mode, $langcode) {
     $current_breadcrumbs = menu_get_active_breadcrumb();
   }
 
-  if (!isset($current_breadcrumbs[1])) {
+  if (!empty($current_breadcrumbs[1])) {
     $breadcrumbs = array();
     $breadcrumbs[] = l(t('Home'), '');
     for ($i = 0; $i < count($breadcrumb); $i++) {

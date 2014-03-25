@@ -60,7 +60,7 @@ function _mica_datasets_prepare_delete_dataset_batch_operations($dataset_nid) {
   foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study_wrapper) {
     $operations[] = array(
       '_mica_datasets_batch_delete_dataset_delete_study_connector',
-      array($dataset_nid, $study_wrapper->nid->value())
+      array($dataset_nid, $study_wrapper->getIdentifier())
     );
   }
 

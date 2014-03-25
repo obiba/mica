@@ -305,7 +305,7 @@ function mica_query_menu_local_tasks_alter(&$data, $router_item, $root_path) {
             $data['actions']['output'][$key]['#link']['localized_options'] = array(
               'attributes' => array('class' => 'highlight')
             );
-            $data['actions']['output'][$key]['#link']['href'] = 'node/' . $wrapper->field_dataset->nid->value() . '/variable-crosstab/' . $node->nid;
+            $data['actions']['output'][$key]['#link']['href'] = 'node/' . $wrapper->field_dataset->getIdentifier() . '/variable-crosstab/' . $node->nid;
             $data['actions']['output'][$key]['#weight'] = 30;
             break;
           }

@@ -183,7 +183,7 @@ function _mica_query_crosstab_get_query($dataset_id, $variable) {
   $values['name'] = check_plain('Cross tabulation of ' . $variable->title);
   $values['dataset_id'] = $dataset_id;
   $values['cross_variable_id'] = NULL;
-  $values['variable_id'] = $variable->nid->value();
+  $values['variable_id'] = $variable->getIdentifier();
   $values['module'] = 'mica_datasets';
   foreach ($variable->field_variable_categories->value() as $category) {
     if ($category['missing'] === '0') {
@@ -689,7 +689,7 @@ function _mica_query_crosstab_get_percentage($value, $total) {
 function mica_query_crosstab_run_xlsx($variable) {
 
   $variable1_wrapper = entity_metadata_wrapper('node', $variable);
-  $dataset_node = node_load($variable1_wrapper->field_dataset->nid->value());
+  $dataset_node = node_load($variable1_wrapper->field_dataset->getIdentifier());
 
   $cross_variables = (isset($_REQUEST['cross']) ? $_REQUEST['cross'] : array());
   $filename = $variable1_wrapper->title->value() . ' -- Cross tabulation';

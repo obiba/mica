@@ -34,11 +34,11 @@ function   _mica_studies_import_set_population_properties($dom, $wrapper) {
   if (!empty($dce_elements)) {
     foreach ($dce_elements as $index_dce_elements => $dce_element) {
       $dce_wrapper = _mica_import_find_or_create_node($dce_element->getAttribute("ref-uuid"), 'data_collection_event', $dce_element->getAttribute("mica_origin_url"));
-      $nid = $dce_wrapper->nid->value();
+      $nid = $dce_wrapper->getIdentifier();
       if (empty($nid)) {
         $dce_wrapper->save();
       }
-      $wrapper->field_pop_dce[$index_dce_elements]->set($dce_wrapper->nid->value());
+      $wrapper->field_pop_dce[$index_dce_elements]->set($dce_wrapper->getIdentifier());
     }
   }
 

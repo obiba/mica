@@ -38,7 +38,7 @@ class ServicesOpalFormatter implements ServicesFormatterInterface {
       module_load_include('inc', 'mica_datasets', 'mica_datasets.utils');
       $variables = array();
       foreach ($dataset_wrapper->field_dataset_variables->getIterator() as $v) {
-        $variables[] = $v->nid->value();
+        $variables[] = $v->getIdentifier();
       }
       uasort($variables, 'mica_datasets_sort_by_position');
 
@@ -60,7 +60,7 @@ class ServicesOpalFormatter implements ServicesFormatterInterface {
           foreach ($svas as $sva) {
 
             $sva_wrapper = entity_metadata_wrapper('node', $sva);
-            if ($study->nid == $sva_wrapper->field_sva_study->nid->value()) {
+            if ($study->nid == $sva_wrapper->field_sva_study->getIdentifier()) {
               $this->render_variable($variable, $element, $sva);
               $found = TRUE;
               break;

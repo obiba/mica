@@ -326,7 +326,7 @@ function mica_datasets_menu_local_tasks_alter(&$data, $router_item, $root_path) 
           // If at least one study as a connection to Opal
           $dataset_wrapper = entity_metadata_wrapper('node', $node->nid);
           foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study_wrapper) {
-            if (mica_connector_query($dataset_wrapper->nid->value(), $study_wrapper->nid->value(), TRUE)) {
+            if (mica_connector_query($dataset_wrapper->getIdentifier(), $study_wrapper->getIdentifier(), TRUE)) {
               // import variables
               $links['import-variables'] = array(
                 '#theme' => 'menu_local_action',
@@ -601,7 +601,7 @@ function mica_datasets_node_view_alter(&$build) {
     if (!empty($dataset)) {
       $values = array();
       $values['variable_id'] = $variable_node->nid;
-      $values['dataset_id'] = $variable_wrapper->field_dataset->nid->value();
+      $values['dataset_id'] = $variable_wrapper->field_dataset->getIdentifier();
       $term = new MicaDatasetQueryTerm($values);
       $impl = $term->termImpl();
       if ($impl->hasConnectors() && $impl->checkStats() && user_is_logged_in()) {
@@ -628,7 +628,7 @@ function mica_datasets_node_view_alter(&$build) {
       $dataset_wrapper = entity_metadata_wrapper('node', $dataset->nid);
 
       // If has harmonization
-      $has_harmonization = _mica_datasets_has_harmonization($dataset_wrapper->nid->value());
+      $has_harmonization = _mica_datasets_has_harmonization($dataset_wrapper->getIdentifier());
 
       if ($dataset_wrapper->field_dataset_type->value() !== 'study' && $has_harmonization) {
 
@@ -696,7 +696,7 @@ function mica_datasets_node_view_alter(&$build) {
 
             if ($sva_wrapper->access('view')) {
               $header['view'] = '';
-              $option['view'] = "<a href='" . url('node/' . $sva_wrapper->nid->value()) . "'>" . t('View') . "</a>";
+              $option['view'] = "<a href='" . url('node/' . $sva_wrapper->getIdentifier()) . "'>" . t('View') . "</a>";
             }
 
             $options[] = $option;
@@ -718,7 +718,7 @@ function mica_datasets_node_view_alter(&$build) {
             ),
           ),
           'overview' => array(
-            '#markup' => "<p><a href='" . url("node/" . $dataset_wrapper->nid->value() . "/dataset-harmonization") . "'><b>" . t(
+            '#markup' => "<p><a href='" . url("node/" . $dataset_wrapper->getIdentifier() . "/dataset-harmonization") . "'><b>" . t(
                 "View @title Harmonization", array('@title' => $dataset_wrapper->title->value())
               ) . "</a></b></p>",
           ),
@@ -780,7 +780,7 @@ function mica_datasets_node_presave($node) {
           }
           else {
             foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study_wrapper) {
-              _mica_datasets_delete_svas($dataset_wrapper, $study_wrapper->nid->value());
+              _mica_datasets_delete_svas($dataset_wrapper, $study_wrapper->getIdentifier());
             }
           }
         }
@@ -906,7 +906,7 @@ function _mica_datasets_create_svas(&$study, &$dataset) {
       $query = new EntityFieldQuery();
       $results = $query->entityCondition('entity_type', 'node')
         ->entityCondition('bundle', 'study_variable_attributes')
-        ->fieldCondition('field_sva_study', 'nid', $wrapper_study->nid->value())
+        ->fieldCondition('field_sva_study', 'nid', $wrapper_study->getIdentifier())
         ->execute();
 
       $study_variable_attributes = array();
@@ -949,14 +949,14 @@ function _mica_datasets_delete_svas($dataset_wrapper, $study_nid) {
     $sva_query = new EntityFieldQuery();
     $sva_results = $sva_query->entityCondition('entity_type', 'node')
       ->entityCondition('bundle', 'study_variable_attributes')
-      ->fieldCondition('field_sva_variable', 'nid', $variable_wrapper->nid->value())
+      ->fieldCondition('field_sva_variable', 'nid', $variable_wrapper->getIdentifier())
       ->execute();
 
     if (!empty($sva_results['node'])) {
       $sva_ids = array();
       foreach (node_load_multiple(array_keys($sva_results['node'])) as $sva) {
         $sva_wrapper = entity_metadata_wrapper('node', $sva);
-        if ($sva_wrapper->field_sva_study->nid->value() == $study_nid) {
+        if ($sva_wrapper->field_sva_study->getIdentifier() == $study_nid) {
           //$sva_wrapper->delete();
           $sva_ids[] = $sva_wrapper->nid;
           _mica_datasets_remove_and_save_element_from_entity_list_wrapper($variable_wrapper, $sva_wrapper, 'field_variable_study_var_att');
@@ -1088,7 +1088,7 @@ function _mica_datasets_save_edit_next_submit($form, &$form_state) {
 function _mica_datasets_find_next_variable($variable_nid) {
   $variable = node_load($variable_nid);
   $wrapper = entity_metadata_wrapper('node', $variable);
-  $dataset_id = $wrapper->field_dataset->nid->value();
+  $dataset_id = $wrapper->field_dataset->getIdentifier();
 
   $query = new EntityFieldQuery();
   $results = $query->entityCondition('entity_type', 'node')
@@ -1112,7 +1112,7 @@ function _mica_datasets_set_variable_position(&$variable) {
     return NULL;
   }
 
-  $dataset_id = $wrapper->field_dataset->nid->value();
+  $dataset_id = $wrapper->field_dataset->getIdentifier();
 
   $query = new EntityFieldQuery();
   $results = $query->entityCondition('entity_type', 'node')
@@ -1134,7 +1134,7 @@ function _mica_datasets_set_variable_position(&$variable) {
 
 function _mica_datasets_add_study_variable_attributes_to(&$variable) {
   $wrapper_variable = entity_metadata_wrapper('node', $variable);
-  $wrapper_dataset = entity_metadata_wrapper('node', $wrapper_variable->field_dataset->nid->value());
+  $wrapper_dataset = entity_metadata_wrapper('node', $wrapper_variable->field_dataset->getIdentifier());
   if ($wrapper_dataset->field_dataset_studies->count() !== 0 && $wrapper_dataset->field_dataset_type->value() === 'harmonization') {
     $studies = array();
     foreach ($wrapper_dataset->field_dataset_studies as $wrapper_study) {
@@ -1165,8 +1165,8 @@ function _mica_datasets_create_study_variable_attributes_for_study(&$study, $var
       $query = new EntityFieldQuery();
       $results = $query->entityCondition('entity_type', 'node')
         ->entityCondition('bundle', 'study_variable_attributes')
-        ->fieldCondition('field_sva_variable', 'nid', $variable->nid->value())
-        ->fieldCondition('field_sva_study', 'nid', $study->nid->value())
+        ->fieldCondition('field_sva_variable', 'nid', $variable->getIdentifier())
+        ->fieldCondition('field_sva_study', 'nid', $study->getIdentifier())
         ->execute();
 
       if (empty($results)) {
@@ -1188,8 +1188,8 @@ function _mica_datasets_create_study_variable_attribute(&$wrapper_variable, &$wr
     'type' => 'study_variable_attributes',
     'title' => $wrapper_variable->title->value() . ' -- ' . $wrapper_study->title->value(),
     'language' => $wrapper_variable->language->value(),
-    'field_sva_study' => $wrapper_study->nid->value(),
-    'field_sva_variable' => $wrapper_variable->nid->value(),
+    'field_sva_study' => $wrapper_study->getIdentifier(),
+    'field_sva_variable' => $wrapper_variable->getIdentifier(),
     'uid' => $user->uid,
   );
   $new_study_variable_attributes = entity_property_values_create_entity('node', $infos);
@@ -1200,7 +1200,7 @@ function _mica_datasets_create_study_variable_attribute(&$wrapper_variable, &$wr
 }
 
 function _mica_datasets_add_element_in_entity_list_wrapper(&$entity, &$entity_to_add, $field_name) {
-  if (!in_array($entity_to_add->nid->value(), $entity->$field_name->value())) {
+  if (!in_array($entity_to_add->getIdentifier(), $entity->$field_name->value())) {
     $nids = array();
     if (isset($entity->$field_name)) {
       foreach ($entity->$field_name->value() as $item) {
@@ -1210,7 +1210,7 @@ function _mica_datasets_add_element_in_entity_list_wrapper(&$entity, &$entity_to
       }
     }
 
-    $nids[] = $entity_to_add->nid->value();
+    $nids[] = $entity_to_add->getIdentifier();
     $entity->$field_name->set($nids);
   }
 }
@@ -1219,7 +1219,7 @@ function _mica_datasets_remove_and_save_element_from_entity_list_wrapper(&$entit
   if ($entity_wrapper->value() !== NULL) {
     foreach ($entity_wrapper->$field_name->value() as $key => $value) {
       if (isset($value)) {
-        if ($value->nid === $entity_to_remove_wrapper->nid->value()) {
+        if ($value->nid === $entity_to_remove_wrapper->getIdentifier()) {
           $entity_wrapper->$field_name->offsetUnset($key);
           break;
         }
@@ -1262,11 +1262,11 @@ function mica_datasets_node_view($node, $view_mode) {
     }
     //recuperation of the variable
     $wrapper = entity_metadata_wrapper('node', $node->nid);
-    $variable_id = $wrapper->field_sva_variable->nid->value();
+    $variable_id = $wrapper->field_sva_variable->getIdentifier();
     $n = node_load($variable_id);
     // recuperation of the datasets of the variable of the study variable
     $wrapper = entity_metadata_wrapper('node', $n);
-    $dataset_id = $wrapper->field_dataset->nid->value();
+    $dataset_id = $wrapper->field_dataset->getIdentifier();
 
     // generate specific breadcrumbs for study variable pages
     $breadcrumb = _mica_datasets_menu_generate_breadcrumbs_variables('node/' . $dataset_id);
@@ -1289,7 +1289,7 @@ function mica_datasets_node_view($node, $view_mode) {
 
       // recuperation of the datasets of the variable
       $wrapper = entity_metadata_wrapper('node', $node->nid);
-      $dataset_id = $wrapper->field_dataset->nid->value();
+      $dataset_id = $wrapper->field_dataset->getIdentifier();
       $breadcrumb = _mica_datasets_menu_generate_breadcrumbs_variables('node/' . $dataset_id);
       // generate specific breadcrumbs for variable pages
       $breadcrumbs = array();
@@ -1497,7 +1497,7 @@ function _mica_datasets_node_crosstab_access($node, $op = 'update') {
     $dataset_id = NULL;
     if ($n->type === 'variable') {
       $variable_wrapper = entity_metadata_wrapper('node', $node->nid);
-      $dataset_id = $variable_wrapper->field_dataset->nid->value();
+      $dataset_id = $variable_wrapper->field_dataset->getIdentifier();
     }
     else if ($n->type === 'dataset') {
       $dataset_id = $node->nid;
