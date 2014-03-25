@@ -266,7 +266,7 @@ class CategoryTerm extends AbstractTerm {
     $totals = array();
     foreach ($wrapper->field_variable_categories->value() as $category) {
       if (!$category["missing"]) {
-        $category_name = $category["label"];
+        $category_name = $category["name"];
         foreach ($stats as $study_id => $stat) {
           $s = isset($stat[$category_name]) ? $stat[$category_name] : 0;
           $totals[$study_id] = isset($totals[$study_id]) ? $totals[$study_id] + $s : $s;
@@ -275,9 +275,10 @@ class CategoryTerm extends AbstractTerm {
     }
 
     foreach ($wrapper->field_variable_categories->value() as $category) {
-      $category_name = $category["label"];
+      $category_name = $category["name"];
+      $category_label = $category["label"];
       $missing = $category['missing'];
-      $row = array($category_name);
+      $row = array($category_label);
       foreach ($stats as $study_id => $stat) {
         if (!$missing && isset($stat[$category_name]) && $totals[$study_id] > 0) {
           $percent = round(($stat[$category_name] / $totals[$study_id]) * 100, 1);
