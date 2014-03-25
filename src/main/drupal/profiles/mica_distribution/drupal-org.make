@@ -196,6 +196,7 @@ projects[search_api_ranges][patch][2130349] = http://drupal.org/files/issues/sea
 projects[search_api_solr] = 1.3
 
 projects[services] = 3.7
+projects[services][patch][2200269] = https://drupal.org/files/issues/services-2200269.patch
 
 projects[smtp] = 1.0-beta2
 
