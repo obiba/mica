@@ -268,8 +268,8 @@ libraries[solr_php_client][download][type] = get
 libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.com/files/SolrPhpClient.r60.2011-05-04.tgz
 libraries[solr_php_client][directory_name] = SolrPhpClient
 
-libraries[jquery_ui_multiselect_widget][download][type] = git
-libraries[jquery_ui_multiselect_widget][download][url] = git://github.com/ehynds/jquery-ui-multiselect-widget
+libraries[jquery_ui_multiselect_widget][download][type] = get
+libraries[jquery_ui_multiselect_widget][download][url] = http://github.com/ehynds/jquery-ui-multiselect-widget/archive/master.zip
 libraries[jquery_ui_multiselect_widget][directory_name] = jquery-ui-multiselect-widget
 libraries[jquery_ui_multiselect_widget][overwrite] = TRUE
 
