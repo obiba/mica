@@ -592,6 +592,15 @@ function mica_datasets_prepare_prettify() {
  * Implements hook_node_view_alter().
  */
 function mica_datasets_node_view_alter(&$build) {
+  if ($build['#view_mode'] === 'left_area' && $build['#bundle'] === 'variable') {
+    if (!empty($build['field_variable_study_var_att'])) {
+      foreach ($build['field_variable_study_var_att'] as $key_attrib => $studyname) {
+        if (is_int($key_attrib)) {
+          $build['field_variable_study_var_att'][$key_attrib]['#markup'] = '- ' . preg_replace('/^[^,]* -- \s*/', '', $studyname['#markup']);
+        }
+      }
+    }
+  }
   if ($build['#view_mode'] === 'right_area' && $build['#bundle'] === 'variable') {
     $variable_node = $build['#node'];
     $variable_wrapper = entity_metadata_wrapper('node', $variable_node);
@@ -657,8 +666,9 @@ function mica_datasets_node_view_alter(&$build) {
           if (function_exists('i18n_language')) {
             $sva_wrapper->language->set(i18n_language()->language);
           }
-          $study_wrapper = entity_metadata_wrapper('node', $sva_wrapper->field_sva_study->value()->nid);
-          if ($study_wrapper->access('view')) {
+          $study_wrapper = entity_metadata_wrapper('node', $sva_wrapper->field_sva_study->getIdentifier());
+       //chek if a study is atteched the varibale
+          if (_mica_datasets_has_study($study_wrapper) && $study_wrapper->access('view')) {
 
             $script = $sva_wrapper->field_sva_script->value() ? $sva_wrapper->field_sva_script->value() : '';
             $script = _mica_datasets_html_truncated(
@@ -728,6 +738,16 @@ function mica_datasets_node_view_alter(&$build) {
   }
 }
 
+
+function _mica_datasets_has_study($study_wrapper){
+  try{
+    $study_wrapper->uuid->value();
+    return TRUE;
+  }catch (Exception $e){
+    return FALSE;
+  }
+
+}
 function _mica_datasets_has_harmonization($dataset_nid) {
 //    'SELECT * FROM {field_data_field_sva_variable} sva_var,
 //  {field_data_field_dataset_variables} dataset_var WHERE dataset_var.entity_id = :nid
