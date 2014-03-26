@@ -1,7 +1,6 @@
 target
 solr
 .idea/workspace.xml
-.idea/dictionaries/root.xml
 *.sql
 src/main/drupal/themes/mica_bootstrap/less/bootstrap
 *.sublime-*
