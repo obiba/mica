@@ -118,7 +118,7 @@ projects[jquery_update][download][branch] = 7.x-2.x
 projects[jquery_update][patch][1995790] = http://drupal.org/files/update_jquery_form_3_32-1995790-1.patch
 
 projects[jquery_ui_multiselect_widget][version] = 1.7
-projects[jquery_ui_multiselect_widget][patch][2105083] = https://drupal.org/files/issues/jquery_ui_multiselect_widget-version-test-fix-2105083.patch
+projects[jquery_ui_multiselect_widget][patch][2105083] = http://drupal.org/files/issues/jquery_ui_multiselect_widget-version-test-fix-2105083.patch
 
 projects[l10n_update] = 1.0-beta3
 
@@ -196,6 +196,7 @@ projects[search_api_ranges][patch][2130349] = http://drupal.org/files/issues/sea
 projects[search_api_solr] = 1.3
 
 projects[services] = 3.7
+projects[services][patch][2200269] = http://drupal.org/files/issues/services-2200269.patch
 
 projects[smtp] = 1.0-beta2
 
@@ -252,10 +253,6 @@ projects[bootstrap] = 2.2
 libraries[ckeditor][download][type]= get
 libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.1.1/ckeditor_4.1.1_standard.zip
 libraries[ckeditor][directory_name] = ckeditor
-
-libraries[jquery_tooltip][download][type]= get
-libraries[jquery_tooltip][download][url] = http://jquery.bassistance.de/tooltip/jquery.tooltip.zip
-libraries[jquery_tooltip][directory_name] = jquery_tooltip
 
 libraries[prettify_css][download][type] = get
 libraries[prettify_css][download][url] = http://google-code-prettify.googlecode.com/svn/branches/release-1-Jun-2011/src/prettify.css

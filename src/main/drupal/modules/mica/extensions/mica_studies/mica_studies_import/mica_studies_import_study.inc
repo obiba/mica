@@ -25,11 +25,11 @@ function _mica_studies_import_set_study_properties($dom, $wrapper, $path) {
   if (!empty($investigator_elements)) {
     foreach ($investigator_elements as $index => $investigator_element) {
       $investigator_wrapper = _mica_import_find_or_create_node($investigator_element->getAttribute("ref-uuid"), 'contact', $investigator_element->getAttribute("mica_origin_url"));
-      $nid = $investigator_wrapper->nid->value();
+      $nid = $investigator_wrapper->getIdentifier();
       if (empty($nid)) {
         $investigator_wrapper->save();
       }
-      $wrapper->field_investigators[$index]->set($investigator_wrapper->nid->value());
+      $wrapper->field_investigators[$index]->set($investigator_wrapper->getIdentifier());
     }
   }
 
@@ -38,11 +38,11 @@ function _mica_studies_import_set_study_properties($dom, $wrapper, $path) {
   if (!empty($contact_elements)) {
     foreach ($contact_elements as $index => $contact_element) {
       $contact_wrapper = _mica_import_find_or_create_node($contact_element->getAttribute("ref-uuid"), 'contact', $contact_element->getAttribute("mica_origin_url"));
-      $nid = $contact_wrapper->nid->value();
+      $nid = $contact_wrapper->getIdentifier();
       if (empty($nid)) {
         $contact_wrapper->save();
       }
-      $wrapper->field_contacts_ref[$index]->set($contact_wrapper->nid->value());
+      $wrapper->field_contacts_ref[$index]->set($contact_wrapper->getIdentifier());
     }
   }
 
@@ -190,11 +190,11 @@ function _mica_studies_import_set_study_properties($dom, $wrapper, $path) {
   if (!empty($population_elements)) {
     foreach ($population_elements as $index => $population_element) {
       $population_wrapper = _mica_import_find_or_create_node($population_element->getAttribute("ref-uuid"), 'population', $population_element->getAttribute("mica_origin_url"));
-      $nid = $population_wrapper->nid->value();
+      $nid = $population_wrapper->getIdentifier();
       if (empty($nid)) {
         $population_wrapper->save();
       }
-      $wrapper->field_study_populations[$index]->set($population_wrapper->nid->value());
+      $wrapper->field_study_populations[$index]->set($population_wrapper->getIdentifier());
     }
   }
 

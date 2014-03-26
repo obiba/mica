@@ -15,7 +15,7 @@ function hook_mica_export_find_related_nids($node) {
   $nids[] = $node->nid;
   $node_wrapper = entity_metadata_wrapper('node', $node->nid);
   foreach ($node_wrapper->field_contacts_ref->getIterator() as $contact_wrapper) {
-    $nids[] = $contact_wrapper->nid->value();
+    $nids[] = $contact_wrapper->getIdentifier();
   }
   return $nids;
 }

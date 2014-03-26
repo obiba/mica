@@ -152,7 +152,7 @@ function _mica_studies_block_study_datasets($study) {
 
       // Adding an extra column that will be used to sort and then be removed
       $rows[] = array(
-        l($dataset_wrapper->title->value(), 'node/' . $dataset_wrapper->nid->value()), //
+        l($dataset_wrapper->title->value(), 'node/' . $dataset_wrapper->getIdentifier()), //
         $desc, //
         $dataset_wrapper->title->value()
       );

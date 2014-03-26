@@ -18,7 +18,7 @@ function _mica_datasets_import_variables_callback($dataset_nid, $study_nid = NUL
   }
   else {
     foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study) {
-      $nid = $study->nid->value();
+      $nid = $study->getIdentifier();
       $harmonization_view = _mica_datasets_fetch_study_harmonization_view($dataset_nid, $nid);
       if (!empty($harmonization_view)) {
         $study_harmonizations[$nid] = $harmonization_view;
@@ -118,7 +118,7 @@ function _mica_datasets_fetch_study_harmonization_view($dataset_nid, $study_nid)
 function _mica_datasets_batch_import_variables($dataset_nid, $study_nid, $harmonization_variable, &$context) {
 
   // keep current dataset variables between batch steps
-  if (empty($context['results']) || $context['results']['study']->nid->value() != $study_nid) {
+  if (empty($context['results']) || $context['results']['study']->getIdentifier() != $study_nid) {
     watchdog('mica', 'Cache batch dataset info %nid', array('%nid' => $dataset_nid), WATCHDOG_DEBUG);
     $primary_key = isset($harmonization_variable['uuid']) ? 'uuid' : 'title';
     $dataset_wrapper = entity_metadata_wrapper('node', $dataset_nid);
@@ -181,7 +181,7 @@ function _mica_datasets_batch_import_svas($dataset_nid, $study_nid, $harmonizati
     $context['results']['svas'] = $svas;
   }
   // reload study if changed
-  if (isset($context['results']['study']) && $context['results']['study']->nid->value() != $study_nid) {
+  if (isset($context['results']['study']) && $context['results']['study']->getIdentifier() != $study_nid) {
     $context['results']['study'] = entity_metadata_wrapper('node', $study_nid);
   }
 
@@ -279,7 +279,7 @@ function _mica_datasets_update_variable_wrapper($harmonization_variable, $datase
     }
   }
   $wrapper->save();
-  return $wrapper->nid->value();
+  return $wrapper->getIdentifier();
 }
 
 /**

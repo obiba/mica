@@ -1414,6 +1414,9 @@ function mica_datasets_field_default_field_bases() {
     'locked' => 0,
     'module' => 'node_reference',
     'settings' => array(
+//      'field_description_infos' => array(
+//        'field_description' => 1,
+//      ),
       'referenceable_types' => array(
         'article' => 0,
         'blog' => 0,
@@ -1423,7 +1426,7 @@ function mica_datasets_field_default_field_bases() {
         'dataset' => 0,
         'documents' => 0,
         'event' => 0,
-        'field_description' => 0,
+        'field_description' => 1,
         'forum' => 0,
         'page' => 0,
         'panel' => 0,

@@ -27,7 +27,7 @@ function _mica_studies_block_study_timeline($study, $show_draft = TRUE) {
     $pop_wrapper = entity_metadata_wrapper('node', $population_nid);
     if (($show_draft && $pop_wrapper->status->value() == NODE_NOT_PUBLISHED) || $pop_wrapper->status->value() == NODE_PUBLISHED && node_access('view', $pop_wrapper->value())) {
 
-      $pop_nid = $pop_wrapper->nid->value();
+      $pop_nid = $pop_wrapper->getIdentifier();
       $pop_title = $pop_wrapper->title->value();
 
       // See https://drupal.org/project/color_field for more color choices...
@@ -42,7 +42,7 @@ function _mica_studies_block_study_timeline($study, $show_draft = TRUE) {
         if (($show_draft && $dce_wrapper->status->value() == 0) || $dce_wrapper->status->value() == 1 && node_access('view', $dce_wrapper->value())) {
           $start_year = $dce_wrapper->field_dce_start_year->value();
           $end_year = $dce_wrapper->field_dce_end_year->value();
-          $dce_nid = $dce_wrapper->nid->value();
+          $dce_nid = $dce_wrapper->getIdentifier();
 
           if (!empty($start_year) && !empty($end_year)) {
             $start_month = $dce_wrapper->field_dce_start_month->value();
@@ -51,7 +51,7 @@ function _mica_studies_block_study_timeline($study, $show_draft = TRUE) {
 
             $events[] = array(
               'color' => $color,
-              'pop_nid' => $pop_wrapper->nid->value(),
+              'pop_nid' => $pop_wrapper->getIdentifier(),
               'pop_title' => $pop_wrapper->title->value(),
               'dce_nid' => $dce_nid,
               'dce_title' => $dce_wrapper->title->value(),
