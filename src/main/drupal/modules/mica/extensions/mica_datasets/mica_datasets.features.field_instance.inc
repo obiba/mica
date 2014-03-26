@@ -1669,7 +1669,7 @@ function mica_datasets_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Position of the Variable within its Dataset. 
+    'description' => 'Position of the Variable within its Dataset.
 Set to 0 to set variable at last position.  ',
     'display' => array(
       'banner_area' => array(
@@ -2118,7 +2118,7 @@ Set to 0 to set variable at last position.  ',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'right_area' => array(
         'label' => 'above',
@@ -2202,7 +2202,7 @@ Set to 0 to set variable at last position.  ',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'right_area' => array(
         'label' => 'inline',
@@ -2325,10 +2325,10 @@ Set to 0 to set variable at last position.  ',
         'weight' => 22,
       ),
       'left_area' => array(
-        'label' => 'inline',
+        'label' => 'above',
         'module' => 'node_reference',
         'settings' => array(),
-        'type' => 'node_reference_default',
+        'type' => 'node_reference_plain',
         'weight' => 3,
       ),
       'right_area' => array(
@@ -2344,7 +2344,7 @@ Set to 0 to set variable at last position.  ',
         'weight' => 0,
       ),
     ),
-    'display_label' => '',
+    'display_label' => 'Studies',
     'entity_type' => 'node',
     'field_name' => 'field_variable_study_var_att',
     'label' => 'Study Variables Attributes',
@@ -2457,7 +2457,7 @@ Set to 0 to set variable at last position.  ',
   t('Perception of Health/Quality of life');
   t('Physical Environment');
   t('Position index');
-  t('Position of the Variable within its Dataset. 
+  t('Position of the Variable within its Dataset.
 Set to 0 to set variable at last position.  ');
   t('Repeatable');
   t('Reproductive Health and History');
