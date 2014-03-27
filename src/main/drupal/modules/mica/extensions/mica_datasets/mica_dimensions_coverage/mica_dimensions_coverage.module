@@ -331,7 +331,11 @@ Function _mica_dimensions_coverage_tabledata_display_dce($ids_dce = NULL) {
           //   'study_title' => t('Study')
         ), array('type' => 'setting'));
       }
+      // Add Js Settings
       ctools_add_js('mica_dimensions_coverage', 'mica_dimensions_coverage');
+      drupal_add_js(array(
+        'libPath' => url(_mica_dimensions_coverage_deal_with_multilangue_url() . '/' . libraries_get_path('datatables'))
+      ), array('type' => 'setting'));
       drupal_add_library('mica_dimensions_coverage', 'datatables');
     }
     else {
@@ -384,7 +388,7 @@ Function _mica_dimensions_coverage_tabledata_display($ids_dataset = NULL) {
   if (!empty($dataset['header'])) {
     foreach ($dataset['header'] as $key_header => $dataset_detail) {
 
-      $dce_tootltip_id = 'study_' . $key_header;
+      $dce_tootltip_id = 'dataset_' . $key_header;
       if ($is_bootstrap) {
         $popovers[] = $dce_tootltip_id;
       }
@@ -409,7 +413,11 @@ Function _mica_dimensions_coverage_tabledata_display($ids_dataset = NULL) {
     if (!empty($taxonomies) && !empty($rows)) {
       /***************************/
       // Add Js Settings
+      // Add Js Settings
       ctools_add_js('mica_dimensions_coverage', 'mica_dimensions_coverage');
+      drupal_add_js(array(
+        'libPath' => url(_mica_dimensions_coverage_deal_with_multilangue_url() . '/' . libraries_get_path('datatables'))
+      ), array('type' => 'setting'));
       drupal_add_library('mica_dimensions_coverage', 'datatables');
     }
     else {
