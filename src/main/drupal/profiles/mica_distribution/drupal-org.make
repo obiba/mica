@@ -177,10 +177,12 @@ projects[recaptcha] = 1.7
 projects[references][version] = 2.1
 projects[references][patch][1988436] = http://drupal.org/files/references-hook_node_reference_FIELD_potential_references_1988436_3.patch
 
-projects[search_api][version] = 1.9
+projects[search_api][version] = 1.11
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 projects[search_api][patch][2085717] = http://drupal.org/files/non_array_token.patch
+projects[search_api][patch][1194362] = http://drupal.org/files/issues/1194362-invalid-views-field-adding-bulk-operation.patch
+
 
 projects[search_api_combined][version] = 1.2
 projects[search_api_combined][patch][1976924] = http://drupal.org/files/delete-combined-fields-1976924-3.patch
@@ -193,7 +195,7 @@ projects[search_api_ranges][download][branch] = 7.x-1.x
 projects[search_api_ranges][patch][2125141] = http://drupal.org/files/issues/remove_slider-2125141-1_0.patch
 projects[search_api_ranges][patch][2130349] = http://drupal.org/files/issues/search_api_ranges-error-locale-module-disabled-2130349-2.patch
 
-projects[search_api_solr] = 1.3
+projects[search_api_solr] = 1.4
 
 projects[services] = 3.7
 projects[services][patch][2200269] = http://drupal.org/files/issues/services-2200269.patch
@@ -222,8 +224,7 @@ projects[view_unpublished] = 1.1
 
 projects[views] = 3.7
 
-projects[views_bulk_operations][version] = 3.1
-projects[views_bulk_operations][patch][1809282] = http://drupal.org/files/views_bulk_operations-invalid_arg_foreach_modify-1809282.patch
+projects[views_bulk_operations][version] = 3.2
 
 projects[views_data_export][version] = 3.0-beta6
 projects[views_data_export][patch][1224894] = http://drupal.org/files/html_in_csv-1224894-10.patch
