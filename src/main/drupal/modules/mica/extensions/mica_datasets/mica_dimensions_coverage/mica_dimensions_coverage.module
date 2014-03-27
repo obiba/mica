@@ -61,6 +61,22 @@ function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $
         ),
       );
       break;
+    case 'studies':
+      $links['view-dataset-crosstab-tab'] = array(
+        '#theme' => 'menu_local_action',
+        '#link' => array(
+          'title' => t('Domain Coverage studies table'),
+          'page callback' => 'mica_dimensions_coverage_page',
+          'href' => 'content/datasets-domains-coverage-table', // Arguments could be taxonomies and dataset
+          'localized_options' => array(
+            'attributes' => array('class' => 'highlight'),
+            'query' => array(
+              'type' => ($root_path === 'studies') ? 'study' : 'harmonization',
+            )
+          )
+        ),
+      );
+      break;
   }
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
 }
