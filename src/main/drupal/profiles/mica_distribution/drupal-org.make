@@ -142,7 +142,7 @@ projects[menu_firstchild] = 1.1
 
 projects[menu_view_unpublished] = 1.0-beta3
 
-projects[mica] = 9.0-rc2
+projects[mica] = 9.0-rc4
 
 projects[module_filter] = 1.8
 
@@ -182,7 +182,6 @@ projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_trans
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 projects[search_api][patch][2085717] = http://drupal.org/files/non_array_token.patch
 projects[search_api][patch][1194362] = http://drupal.org/files/issues/1194362-invalid-views-field-adding-bulk-operation.patch
-
 
 projects[search_api_combined][version] = 1.2
 projects[search_api_combined][patch][1976924] = http://drupal.org/files/delete-combined-fields-1976924-3.patch
@@ -270,7 +269,7 @@ libraries[solr_php_client][download][url] = http://solr-php-client.googlecode.co
 libraries[solr_php_client][directory_name] = SolrPhpClient
 
 libraries[jquery_ui_multiselect_widget][download][type] = get
-libraries[jquery_ui_multiselect_widget][download][url] = http://github.com/ehynds/jquery-ui-multiselect-widget/archive/master.zip
+libraries[jquery_ui_multiselect_widget][download][url] = https://github.com/ehynds/jquery-ui-multiselect-widget/archive/master.zip
 libraries[jquery_ui_multiselect_widget][directory_name] = jquery-ui-multiselect-widget
 libraries[jquery_ui_multiselect_widget][overwrite] = TRUE
 
