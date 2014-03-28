@@ -158,7 +158,7 @@ projects[noderefcreate][download][branch] = 7.x-1.x
 projects[noderefcreate][patch][1181544] = http://drupal.org/files/noderefcreate-alter-and-worlflow-options-1181544-5.patch
 projects[noderefcreate][patch][1538328] = http://drupal.org/files/maxlength-1538328-1.patch
 
-projects[panels] = 3.4
+projects[panels] = 3.3
 
 projects[password_policy] = 1.3
 
