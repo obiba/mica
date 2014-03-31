@@ -6,4 +6,4 @@ includes[] = drupal-org-core.make
 
 ; Download the mica_distribution Install profile and recursively build all its dependencies:
 projects[mica_distribution][type] = profile
-projects[mica_distribution][version] = 9.0-rc5
+projects[mica_distribution][version] = 9.0
