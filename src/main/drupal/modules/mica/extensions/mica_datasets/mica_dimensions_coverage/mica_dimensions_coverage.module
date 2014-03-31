@@ -201,7 +201,6 @@ function mica_dimensions_coverage_library() {
  * Return $output : content formatted table
  * */
 Function _mica_dimensions_coverage_tabledata_display_study($study_id = NULL) {
-  global $base_path;
   if (!empty($study_id)) {
     $dataset = mica_dimensions_coverage_studies($study_id);
   }
@@ -252,7 +251,7 @@ Function _mica_dimensions_coverage_tabledata_display_study($study_id = NULL) {
       drupal_set_message($contenttab . t("Make sure taxonomies are imported Go to <a href='@url'>Import Taxonomies</a>",
           array(
             '@url' => _mica_dimensions_coverage_deal_with_multilangue_url() .
-              $base_path . 'admin/config/development/mica_datasets'
+              '/admin/config/development/mica_datasets'
           )),
         'warning');
     }
@@ -279,7 +278,6 @@ Function _mica_dimensions_coverage_tabledata_display_study($study_id = NULL) {
  * */
 
 Function _mica_dimensions_coverage_tabledata_display_dce($ids_dce = NULL) {
-  global $base_path;
   if (!empty($ids_dce)) {
     $dataset = mica_dimensions_coverage_dce($ids_dce);
   }
@@ -358,8 +356,8 @@ Function _mica_dimensions_coverage_tabledata_display_dce($ids_dce = NULL) {
       $contenttab = t('Can\'t display domain coverage table ');
       drupal_set_message($contenttab . t("Make sure taxonomies are imported Go to <a href='@url'>Import Taxonomies</a>",
           array(
-            '@url' => _mica_dimensions_coverage_deal_with_multilangue_url() . $base_path .
-              'admin/config/development/mica_datasets'
+            '@url' => _mica_dimensions_coverage_deal_with_multilangue_url() .
+              '/admin/config/development/mica_datasets'
           )), 'warning');
     }
 
@@ -387,7 +385,6 @@ Function _mica_dimensions_coverage_tabledata_display_dce($ids_dce = NULL) {
  * */
 
 Function _mica_dimensions_coverage_tabledata_display($ids_dataset = NULL) {
-  global $base_path;
   if (!empty($ids_dataset)) {
     $dataset = mica_dimensions_coverage_datasets_harmonization($ids_dataset);
   }
@@ -440,8 +437,8 @@ Function _mica_dimensions_coverage_tabledata_display($ids_dataset = NULL) {
       $contenttab = t('Can\'t display Domain coverage table ');
       drupal_set_message($contenttab . t("Make sure taxonomies are imported Go to <a href='@url'>Import Taxonomies</a>",
           array(
-            '@url' => _mica_dimensions_coverage_deal_with_multilangue_url() .
-              $base_path . 'admin/config/development/mica_datasets'
+            '@url' => _mica_dimensions_coverage_deal_with_multilangue_url()
+              . '/admin/config/development/mica_datasets'
           )), 'warning');
     }
   }
