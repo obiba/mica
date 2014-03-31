@@ -158,7 +158,7 @@ projects[noderefcreate][download][branch] = 7.x-1.x
 projects[noderefcreate][patch][1181544] = http://drupal.org/files/noderefcreate-alter-and-worlflow-options-1181544-5.patch
 projects[noderefcreate][patch][1538328] = http://drupal.org/files/maxlength-1538328-1.patch
 
-projects[panels] = 3.3
+projects[panels] = 3.4
 
 projects[password_policy] = 1.3
 
@@ -181,7 +181,6 @@ projects[search_api][version] = 1.11
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 projects[search_api][patch][2085717] = http://drupal.org/files/non_array_token.patch
-projects[search_api][patch][1194362] = http://drupal.org/files/issues/1194362-invalid-views-field-adding-bulk-operation.patch
 
 projects[search_api_combined][version] = 1.2
 projects[search_api_combined][patch][1976924] = http://drupal.org/files/delete-combined-fields-1976924-3.patch
