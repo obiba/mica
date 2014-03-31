@@ -136,10 +136,11 @@ function mica_datasets_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_dataset',
-      1 => 'field_label',
-      2 => 'field_repeatable',
-      3 => 'field_value_type',
-      4 => 'field_unit',
+      1 => 'field_variable_study_var_att',
+      2 => 'field_label',
+      3 => 'field_repeatable',
+      4 => 'field_value_type',
+      5 => 'field_unit',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

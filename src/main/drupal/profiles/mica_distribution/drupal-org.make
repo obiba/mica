@@ -45,7 +45,7 @@ projects[content_taxonomy] = 1.0-beta2
 
 projects[ctools] = 1.4
 
-projects[date] = 2.6
+projects[date] = 2.7
 
 projects[diff] = 3.2
 
@@ -53,7 +53,7 @@ projects[] = devel
 
 projects[email] = 1.2
 
-projects[entity][version] = 1.3
+projects[entity][version] = 1.4
 projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info-on-validation-exception.patch
 
 projects[entity_translation] = 1.0-alpha2
@@ -107,7 +107,7 @@ projects[i18n][patch][1662884] = http://drupal.org/files/support_multiple_transl
 
 projects[image_url_formatter] = 1.4
 
-projects[imce] = 1.7
+projects[imce] = 1.8
 
 projects[job_scheduler] = 2.0-alpha3
 
@@ -117,7 +117,7 @@ projects[jquery_update][download][revision] = dd3d76e
 projects[jquery_update][download][branch] = 7.x-2.x
 projects[jquery_update][patch][1995790] = http://drupal.org/files/update_jquery_form_3_32-1995790-1.patch
 
-projects[jquery_ui_multiselect_widget][version] = 1.7
+projects[jquery_ui_multiselect_widget][version] = 1.8
 projects[jquery_ui_multiselect_widget][patch][2105083] = http://drupal.org/files/issues/jquery_ui_multiselect_widget-version-test-fix-2105083.patch
 
 projects[l10n_update] = 1.0-beta3
@@ -126,7 +126,7 @@ projects[lang_dropdown] = 2.5
 
 projects[languageicons] = 1.0
 
-projects[libraries] = 2.1
+projects[libraries] = 2.2
 
 projects[link] = 1.2
 
@@ -158,7 +158,7 @@ projects[noderefcreate][download][branch] = 7.x-1.x
 projects[noderefcreate][patch][1181544] = http://drupal.org/files/noderefcreate-alter-and-worlflow-options-1181544-5.patch
 projects[noderefcreate][patch][1538328] = http://drupal.org/files/maxlength-1538328-1.patch
 
-projects[panels] = 3.3
+projects[panels] = 3.4
 
 projects[password_policy] = 1.3
 
@@ -177,10 +177,11 @@ projects[recaptcha] = 1.7
 projects[references][version] = 2.1
 projects[references][patch][1988436] = http://drupal.org/files/references-hook_node_reference_FIELD_potential_references_1988436_3.patch
 
-projects[search_api][version] = 1.9
+projects[search_api][version] = 1.11
 projects[search_api][patch][1672536] = http://drupal.org/files/facet_items_translation-1672536-3.patch
 projects[search_api][patch][1123454] = http://drupal.org/files/search_api-vbo-1123454-36.patch
 projects[search_api][patch][2085717] = http://drupal.org/files/non_array_token.patch
+projects[search_api][patch][1194362] = http://drupal.org/files/issues/1194362-invalid-views-field-adding-bulk-operation.patch
 
 projects[search_api_combined][version] = 1.2
 projects[search_api_combined][patch][1976924] = http://drupal.org/files/delete-combined-fields-1976924-3.patch
@@ -193,7 +194,7 @@ projects[search_api_ranges][download][branch] = 7.x-1.x
 projects[search_api_ranges][patch][2125141] = http://drupal.org/files/issues/remove_slider-2125141-1_0.patch
 projects[search_api_ranges][patch][2130349] = http://drupal.org/files/issues/search_api_ranges-error-locale-module-disabled-2130349-2.patch
 
-projects[search_api_solr] = 1.3
+projects[search_api_solr] = 1.4
 
 projects[services] = 3.7
 projects[services][patch][2200269] = http://drupal.org/files/issues/services-2200269.patch
@@ -216,17 +217,15 @@ projects[uuid][patch][1800730] = http://drupal.org/files/uuid-feeds-mapper-18007
 
 projects[uuid_link] = 1.0-beta3
 
-projects[variable] = 2.3
+projects[variable] = 2.4
 
 projects[view_unpublished] = 1.1
 
 projects[views] = 3.7
 
-projects[views_bulk_operations][version] = 3.1
-projects[views_bulk_operations][patch][1809282] = http://drupal.org/files/views_bulk_operations-invalid_arg_foreach_modify-1809282.patch
+projects[views_bulk_operations][version] = 3.2
 
-projects[views_data_export][version] = 3.0-beta6
-projects[views_data_export][patch][1224894] = http://drupal.org/files/html_in_csv-1224894-10.patch
+projects[views_data_export][version] = 3.0-beta7
 
 projects[viewreference] = 3.4
 
