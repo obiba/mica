@@ -192,22 +192,21 @@ function _mica_datasets_batch_import_svas($dataset_nid, $study_nid, $harmonizati
   $svas = $context['results']['svas'];
   $key = $context['results']['key'];
   $variable_nid = $context['results']['variables_nids'][$harmonization_variable[$key]];
-  $var_wrapper =  entity_metadata_wrapper('node', $variable_nid);
+  $var_wrapper = entity_metadata_wrapper('node', $variable_nid);
   $current_var_stud_attrib = $var_wrapper->field_variable_study_var_att->value();
-  foreach($var_wrapper->field_variable_study_var_att->getIterator() as $study){
-    $study_nids[]=$study->getIdentifier();
+  foreach ($var_wrapper->field_variable_study_var_att->getIterator() as $study) {
+    $study_nids[] = $study->getIdentifier();
   }
-  if(!in_array($study_nid,$study_nids)){
-     $current_var_stud_attrib[]= node_load($study_nid);
-   // dpm($current_var_stud_attrib);
-     $var_wrapper->field_variable_study_var_att->set($current_var_stud_attrib);
-     $var_wrapper->save();
+  if (!in_array($study_nid, $study_nids)) {
+    $current_var_stud_attrib[] = node_load($study_nid);
+    // dpm($current_var_stud_attrib);
+    $var_wrapper->field_variable_study_var_att->set($current_var_stud_attrib);
+    $var_wrapper->save();
   }
-    if (isset($svas[$study_nid][$variable_nid])) {
-      _mica_datasets_update_sva($svas[$study_nid][$variable_nid]->entity_id, $harmonization_variable);
-    }
+  if (isset($svas[$study_nid][$variable_nid])) {
+    _mica_datasets_update_sva($svas[$study_nid][$variable_nid]->entity_id, $harmonization_variable);
+  }
 }
-
 
 function _mica_datasets_create_variable($dataset, $harmonization_variable, $position) {
 
