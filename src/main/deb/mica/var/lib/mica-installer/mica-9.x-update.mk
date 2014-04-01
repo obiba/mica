@@ -126,7 +126,6 @@ mica-delete-9.1-rc6: mica-delete-9.0
 mica-delete-9.1-rc7: mica-delete-9.0
 mica-delete-9.1: mica-delete-9.0
 
-
 mica-delete-9.2-rc1: mica-delete-9.0
 mica-delete-9.2-rc2: mica-delete-9.0
 mica-delete-9.2-rc3: mica-delete-9.0
