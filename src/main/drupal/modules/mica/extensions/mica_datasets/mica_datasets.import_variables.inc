@@ -199,7 +199,6 @@ function _mica_datasets_batch_import_svas($dataset_nid, $study_nid, $harmonizati
   }
   if (!in_array($study_nid, $study_nids)) {
     $current_var_stud_attrib[] = node_load($study_nid);
-    // dpm($current_var_stud_attrib);
     $var_wrapper->field_variable_study_var_att->set($current_var_stud_attrib);
     $var_wrapper->save();
   }
