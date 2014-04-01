@@ -116,6 +116,17 @@ mica-delete-9.0-rc7: mica-delete-9.0
 mica-delete-9.0-rc8: mica-delete-9.0
 mica-delete-9.0-rc9: mica-delete-9.0
 
+mica-delete-9.1-dev: mica-delete-9.0
+mica-delete-9.1-rc1: mica-delete-9.0
+mica-delete-9.1-rc2: mica-delete-9.0
+mica-delete-9.1-rc3: mica-delete-9.0
+mica-delete-9.1-rc4: mica-delete-9.0
+mica-delete-9.1-rc5: mica-delete-9.0
+mica-delete-9.1-rc6: mica-delete-9.0
+mica-delete-9.1-rc7: mica-delete-9.0
+mica-delete-9.1: mica-delete-9.0
+
+
 mica-delete-9.2-rc1: mica-delete-9.0
 mica-delete-9.2-rc2: mica-delete-9.0
 mica-delete-9.2-rc3: mica-delete-9.0
