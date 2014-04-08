@@ -18,13 +18,13 @@
       "aaSorting": [],
       "sScrollY": "450px",
       "sScrollX": "100%",
-      "sScrollXInner": "100%",
+      "sScrollXInner": "200%",
       "bScrollCollapse": true,
       "bLengthChange": false,
       "bPaginate": false,
       "bSort": true,
       "aoColumnDefs": [
-        {"sWidth": "1%", "bVisible": false, "aTargets": [1] },
+        {"sWidth": "55px","bVisible": false, "aTargets": [1] },
       ],
       "sDom": 'Tf<"clear">lrt',
       "oTableTools": {

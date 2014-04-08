@@ -25,16 +25,23 @@ function mica_dimensions_coverage_datasets_harmonization($dataset_id = NULL) {
   return $data;
 }
 
-function mica_dimensions_coverage_dce($dce_id = NULL) {
+function mica_dimensions_coverage_dce($studies_id = NULL) {
   $data = & drupal_static(__FUNCTION__);
+  $dce_id =array();
   if (!isset($data)) {
     $index = search_api_index_load('variable_index');
     $taxonomy_fields = mica_dimensions_coverage_get_list_taxonomy_term($data, $index);
-
     $query_dce = new SearchApiQuery($index);
     $query_dce->condition('field_dataset:field_dataset_type', 'study', '=');
     $result_dce = $query_dce->execute();
-
+    foreach($studies_id as $study_id){
+      $study_wrapper = entity_metadata_wrapper('node',$study_id);
+      foreach($study_wrapper ->field_study_populations->getIterator() as $population_wrapper){
+        foreach($population_wrapper->field_pop_dce->getIterator() as $dce_wrapper){
+          $dce_id [] = $dce_wrapper->getIdentifier();
+        }
+      }
+    }
     foreach ($result_dce['search_api_facets']['field_dataset:field_dataset_dces'] as $dce_facet) {
       $key_dce_id = trim($dce_facet['filter'], '\"');
       if (in_array($key_dce_id, $dce_id)) {
@@ -57,7 +64,6 @@ function mica_dimensions_coverage_studies($id_studies = NULL) {
 
     $query_study = new SearchApiQuery($index);
     $query_study->condition('field_dataset:field_dataset_type', 'study', '=');
-
     $query_study = $query_study->execute();
     foreach ($query_study['search_api_facets']['search_api_combined_1'] as $study_facet) {
       $key_study_id = trim($study_facet['filter'], '\"');
@@ -127,90 +133,90 @@ function _mica_dimensions_coverage_dimension_table($data, $taxonomies, $type) {
     $vocabularies = taxonomy_vocabulary_machine_name_load($machine_name);
     if (!empty($vocabularies->vid)) {
       // Fetch all terms
-    $vocabulary = taxonomy_vocabulary_load($vocabularies->vid);
-    $tree = taxonomy_get_tree($vocabulary->vid);
-    if (!empty($tree)) {
-      foreach ($tree as $term) {
-        $row = _mica_dimensions_coverage_construct_domains_column($term, $vocabulary, $taxonomy, $data['field_by_title']);
+      $vocabulary = taxonomy_vocabulary_load($vocabularies->vid);
+      $tree = taxonomy_get_tree($vocabulary->vid);
+      if (!empty($tree)) {
+        foreach ($tree as $term) {
+          $row = _mica_dimensions_coverage_construct_domains_column($term, $vocabulary, $taxonomy, $data['field_by_title']);
 
-        // Fill facet count in the same order as the header
-        if (isset($data['header'])) {
-          $i = 0;
-          foreach ($data['header'] as $key_header => $title) {
-            if ($key_header >= 0) {
-              if (isset($data[$key_header][$term->tid]['count'])) {
-                //  $url = l($data[$key_header][$term->tid]['have-var'], 'variable-search',
-                switch ($type) {
-                  case 'study':
-                    $url = l('<img src="' . $GLOBALS['base_url'] . '/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_green.png" title="' . $data[$key_header][$term->tid]['count'] . '" style="vertical-align: middle">', 'variable-search',
-                      array(
-                        'query' => array(
-                          'f[0]' => $data[$key_header][$term->tid]['facet'] . ':' . $term->tid,
-                          'f[1]' => 'search_api_combined_1' . ':' . $key_header,
-                          'f[2]' => 'field_dataset%3Afield_dataset_type' . ':' . 'study'
+          // Fill facet count in the same order as the header
+          if (isset($data['header'])) {
+            $i = 0;
+            foreach ($data['header'] as $key_header => $title) {
+              if ($key_header >= 0) {
+                if (isset($data[$key_header][$term->tid]['count'])) {
+                  //  $url = l($data[$key_header][$term->tid]['have-var'], 'variable-search',
+                  switch ($type) {
+                    case 'study':
+                      $url = l('<img src="' . $GLOBALS['base_url'] . '/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_green.png" title="' . $data[$key_header][$term->tid]['count'] . '" style="vertical-align: middle">', 'variable-search',
+                        array(
+                          'query' => array(
+                            'f[0]' => $data[$key_header][$term->tid]['facet'] . ':' . $term->tid,
+                            'f[1]' => 'search_api_combined_1' . ':' . $key_header,
+                            'f[2]' => 'field_dataset%3Afield_dataset_type' . ':' . 'study'
 
-                        ),
-                        'html' => TRUE
-                      )
-                    );
-                    break;
-                  case 'dce':
-                    $url = l($data[$key_header][$term->tid]['count'], 'variable-search',
-                      array(
-                        'query' => array(
-                          'f[0]' => $data[$key_header][$term->tid]['facet'] . ':' . $term->tid,
-                          'f[1]' => 'field_dataset%3Afield_dataset_dces' . ':' . $key_header,
-                          'f[2]' => 'field_dataset%3Afield_dataset_type' . ':' . 'study'
-                        ),
-                      )
-                    );
-                    break;
+                          ),
+                          'html' => TRUE
+                        )
+                      );
+                      break;
+                    case 'dce':
+                      $url = l($data[$key_header][$term->tid]['count'], 'variable-search',
+                        array(
+                          'query' => array(
+                            'f[0]' => $data[$key_header][$term->tid]['facet'] . ':' . $term->tid,
+                            'f[1]' => 'field_dataset%3Afield_dataset_dces' . ':' . $key_header,
+                            'f[2]' => 'field_dataset%3Afield_dataset_type' . ':' . 'study'
+                          ),
+                        )
+                      );
+                      break;
 
-                  case 'dataset':
-                    $url = l($data[$key_header][$term->tid]['count'], 'variable-search',
-                      array(
-                        'query' => array(
-                          'f[0]' => 'field_dataset:' . $key_header,
-                          'f[1]' => $data[$key_header][$term->tid]['facet'] . ':' . $term->tid,
+                    case 'dataset':
+                      $url = l($data[$key_header][$term->tid]['count'], 'variable-search',
+                        array(
+                          'query' => array(
+                            'f[0]' => 'field_dataset:' . $key_header,
+                            'f[1]' => $data[$key_header][$term->tid]['facet'] . ':' . $term->tid,
 
-                        ),
-                      )
-                    );
-                    break;
+                          ),
+                        )
+                      );
+                      break;
+                  }
+
+                  $row[$key_header + 2] = array(
+                    'data' => array(
+                      '#markup' => $url,
+                    ),
+                    'class' => array('center')
+                  );
                 }
+                else {
+                  switch ($type) {
+                    case 'study':
+                      $no_data = '<img src="' . $GLOBALS['base_url'] . '/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_red.png" title="' . t('No Variables') . '" style="vertical-align: middle">';
+                      break;
+                    default :
+                      $no_data = '-';
+                  }
 
-                $row[$key_header + 2] = array(
-                  'data' => array(
-                    '#markup' => $url,
-                  ),
-                  'class' => array('center')
-                );
-              }
-              else {
-                switch ($type) {
-                  case 'study':
-                    $no_data = '<img src="' . $GLOBALS['base_url'] . '/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_red.png" title="' . t('No Variables') . '" style="vertical-align: middle">';
-                    break;
-                  default :
-                    $no_data = '-';
+                  $row[$key_header + 2] = array(
+                    'data' => array(
+                      '#markup' => $no_data,
+                    ),
+                    'class' => array('center')
+                  );
                 }
-
-                $row[$key_header + 2] = array(
-                  'data' => array(
-                    '#markup' => $no_data,
-                  ),
-                  'class' => array('center')
-                );
               }
+              $i++;
+
             }
-            $i++;
-
+            $rows [] = $row;
           }
-          $rows [] = $row;
         }
       }
     }
-  }
   }
   return $rows;
 }
