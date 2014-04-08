@@ -85,7 +85,6 @@ function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $
  * Implements hook_block_info().
  */
 function mica_dimensions_coverage_block_info() {
-
   $blocks['tab-dimention-coverage'] = array(
     'info' => 'Dimension coverage table',
     'title' => NULL,
@@ -114,8 +113,7 @@ function mica_dimensions_coverage_block_info() {
 /**
  * Implements hook_block_view().
  */
-
-function mica_dimensions_coverage_block_view($delta) {
+function mica_dimensions_coverage_block_view($delta = '') { //dpm('her i m');dpm($delta);
   $content = '';
   ctools_add_css('mica_dimensions_coverage', 'mica_dimensions_coverage');
   //  Script to perform ajax action to deal with multi select fields
@@ -146,8 +144,8 @@ function mica_dimensions_coverage_block_view($delta) {
       }
       else {
         if (isset($_GET['show-dce']) && $_GET['show-dce'] == 1) {
-          if (!empty($_GET['dce'])) {
-            $content = _mica_dimensions_coverage_tabledata_display_dce(isset($_GET['dce']) ? $_GET['dce'] : NULL);
+          if (!empty($_GET['studies'])) {
+            $content = _mica_dimensions_coverage_tabledata_display_dce(isset($_GET['studies']) ? $_GET['studies'] : NULL);
           }
         }
         elseif (!empty($_GET['studies'])) {
@@ -273,13 +271,13 @@ Function _mica_dimensions_coverage_tabledata_display_study($study_id = NULL) {
 
 /*
  * Perform queries by Dce nid,
- * Param $ids_dce : passed by Get request () auto selected by selecting Studies (Hidden DCE Form)
+ * Param $ids_studies : passed by Get request () auto selected by selecting Studies (Hidden DCE Form)
  * Return $output : content formatted table
  * */
 
-Function _mica_dimensions_coverage_tabledata_display_dce($ids_dce = NULL) {
-  if (!empty($ids_dce)) {
-    $dataset = mica_dimensions_coverage_dce($ids_dce);
+Function _mica_dimensions_coverage_tabledata_display_dce($ids_studies = NULL) {
+  if (!empty($ids_studies)) {
+    $dataset = mica_dimensions_coverage_dce($ids_studies);
   }
   else {
     $dataset = mica_dimensions_coverage_dce();
@@ -527,18 +525,6 @@ function mica_dimensions_coverage_filter_form($form, &$form_state) {
       '#collapsed' => FALSE,
     );
 
-    $form['dce'] = array(
-      '#prefix' => '<div class="col-xs-4 inline-input hidden-dce">',
-      '#suffix' => '</div>',
-      '#type' => 'select',
-      '#title' => t('Data collection event'),
-      '#default_value' => !empty($_SESSION['storage']['dce']) ? $_SESSION['storage']['dce'] : NULL,
-      '#options' => isset($options['dce']) ? $options['dce'] : array('noItem' => t('No DCE')),
-      '#multiple' => TRUE,
-      '#collapsible' => TRUE,
-      '#collapsed' => FALSE,
-    );
-
     $form['show-dce'] = array(
       '#prefix' => '<div class="col-xs-4 inline-input">',
       '#suffix' => '</div>',
@@ -642,6 +628,7 @@ function datasets_domains_coverage_table_return_studies($result, $dces = NULL, $
   }
   elseif (!empty($_GET['type']) && $_GET['type'] == 'study') {
     $query->fieldCondition('field_dataset_type', 'value', 'study');
+    $query->fieldCondition('field_dataset_studies', 'nid', 'NULL', '!=');
   }
   $entities = $query->execute();
   if (!empty($entities)) {
@@ -661,9 +648,7 @@ function datasets_domains_coverage_table_return_studies($result, $dces = NULL, $
         }
       }
     }
-  }
-
-  //Dataset by $result parameters ..iterating studies to retrieve datasets
+  } //Dataset by $result parameters ..iterating studies to retrieve datasets
 
   else {
 
@@ -687,8 +672,6 @@ function datasets_domains_coverage_table_return_studies($result, $dces = NULL, $
                   ($dataset->field_dataset_type->value() != 'harmonization')
                 ) {
                   $options['studies'][$nid_study] = truncate_utf8($study_wrapper->title->value(), 45, TRUE, TRUE);
-
-                  $options['dce'][truncate_utf8($study_wrapper->title->value(), 25, TRUE, TRUE)][$dce->getIdentifier()] = '--' . $dce->title->value();
                 }
               }
             }
@@ -698,7 +681,6 @@ function datasets_domains_coverage_table_return_studies($result, $dces = NULL, $
       }
     }
   }
-
   return $options;
 }
 
