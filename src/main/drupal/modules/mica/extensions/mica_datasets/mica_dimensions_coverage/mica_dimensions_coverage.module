@@ -43,8 +43,53 @@ function mica_dimensions_coverage_menu() {
 function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   $links = array();
   switch ($root_path) {
-    case 'datasets':
-    case 'study-datasets':
+    case 'node/%':
+      $node = $router_item['page_arguments'][0];
+      $wrapper = entity_metadata_wrapper('node', $node->nid);
+      $node_type = $wrapper->type->value();
+      if ($node_type === 'study') {
+        foreach ($wrapper->mica_dataset->getIterator() as $datasets) {
+          if ($datasets->type->value() == 'dataset') {
+            $study_dataset = 'dataset';
+            break;
+          }
+        }
+
+        $query = array(
+          'attributes' => array('class' => 'highlight'),
+          'query' => array(
+            'type' => 'study',
+            'studies[]' => $node->nid
+          )
+        );
+      }
+      if ($node_type === 'dataset') {
+        $query = array(
+          'attributes' => array('class' => 'highlight'),
+          'query' => array(
+            'type' => 'harmonization',
+            'dataset[]' => $node->nid
+          )
+        );
+      }
+      if ($node != NULL && ($node_type === 'dataset' &&
+          $wrapper->field_dataset_type->value() === 'harmonization') ||
+        ($node_type === 'study' &&
+          $study_dataset === 'dataset')
+      ) {
+        $links['view-dataset-crosstab-tab'] = array(
+          '#theme' => 'menu_local_action',
+          '#link' => array(
+            'title' => t('Domain Coverage'),
+            'page callback' => 'mica_dimensions_coverage_page',
+            'href' => 'content/datasets-domains-coverage-table', // Arguments could be taxonomies and dataset
+            'localized_options' => $query
+          ),
+        );
+      }
+      break;
+//    case 'datasets':
+//    case 'study-datasets':
     case 'harmonization-datasets':
       $links['view-dataset-crosstab-tab'] = array(
         '#theme' => 'menu_local_action',

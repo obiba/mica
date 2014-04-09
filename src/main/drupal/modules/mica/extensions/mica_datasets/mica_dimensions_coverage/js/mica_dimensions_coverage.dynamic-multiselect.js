@@ -13,7 +13,7 @@
           return Drupal.t('@numChecked of @numTotal checked', {'@numChecked': numChecked, '@numTotal': numTotal});
         },
         close: function () {
-          perform_search();
+          perform_search('select');
         }
 
 
@@ -26,28 +26,32 @@
       });
 
 
-
       $("#edit-dataset").multiselectfilter("destroy");
       $("#edit-dataset").multiselect({
         selectedText: function (numChecked, numTotal) {
           return Drupal.t('@numChecked of @numTotal checked', {'@numChecked': numChecked, '@numTotal': numTotal});
         },
         close: function () {
-          perform_search();
+          perform_search('select');
         }
       });
 
       /*********************perform search action *************/
       /**********Ajax function to populate Multiselect DCE options *****/
-      function perform_search() {
+      function perform_search(select) {
         $(".loader").fadeIn("slow");
         var studies = [];
+        var dataset = [];
         studies.push($("input[name=multiselect_edit-studies]:checked").map(function () {return this.value;}).get().join(","));
-        var dataset = studies.push($("input[name=multiselect_edit-dataset]:checked").map(function () {return this.value;}).get().join(","));
-        if (studies != "") {
+        dataset.push($("input[name=multiselect_edit-dataset]:checked").map(function () {return this.value;}).get().join(","));
+
+        if (select == 'select') {
           document.forms["mica-dimensions-coverage-filter-form"].submit();
         }
-        if (dataset != "") {
+        if (select == 'check' && studies == "") {
+          $(".loader").fadeOut("slow");
+        }
+        if (select == 'check' && studies != "") {
           document.forms["mica-dimensions-coverage-filter-form"].submit();
         }
       }
@@ -55,7 +59,7 @@
       /*****************************************************/
       /********************action in select deselect checkbox*************/
       $('#edit-show-dce').on('change', function () {
-        perform_search()
+        perform_search('check');
       });
       /********************************************************************/
     }
