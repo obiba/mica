@@ -50,8 +50,11 @@
         if (select == 'select') {
           document.forms["mica-dimensions-coverage-filter-form"].submit();
         }
-        if (select == 'check' && (studies == "" || dataset == "")) {
+        if (select == 'check' && studies == "") {
           $(".loader").fadeOut("slow");
+        }
+        if (select == 'check' && studies != "") {
+          document.forms["mica-dimensions-coverage-filter-form"].submit();
         }
       }
 
