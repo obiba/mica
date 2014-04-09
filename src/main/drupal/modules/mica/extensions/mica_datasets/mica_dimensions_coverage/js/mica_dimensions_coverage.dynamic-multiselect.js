@@ -13,7 +13,7 @@
           return Drupal.t('@numChecked of @numTotal checked', {'@numChecked': numChecked, '@numTotal': numTotal});
         },
         close: function () {
-          var select ='select';
+          var select = 'select';
           perform_search(select);
         }
 
@@ -27,14 +27,13 @@
       });
 
 
-
       $("#edit-dataset").multiselectfilter("destroy");
       $("#edit-dataset").multiselect({
         selectedText: function (numChecked, numTotal) {
           return Drupal.t('@numChecked of @numTotal checked', {'@numChecked': numChecked, '@numTotal': numTotal});
         },
         close: function () {
-          var select ='select';
+          var select = 'select';
           perform_search(select);
         }
       });
@@ -48,10 +47,10 @@
         studies.push($("input[name=multiselect_edit-studies]:checked").map(function () {return this.value;}).get().join(","));
         dataset.push($("input[name=multiselect_edit-dataset]:checked").map(function () {return this.value;}).get().join(","));
 
-        if (select =='select') {
+        if (select == 'select') {
           document.forms["mica-dimensions-coverage-filter-form"].submit();
         }
-        if(select=='check' && (studies == "" || dataset == "")){
+        if (select == 'check' && (studies == "" || dataset == "")) {
           $(".loader").fadeOut("slow");
         }
       }
@@ -59,7 +58,7 @@
       /*****************************************************/
       /********************action in select deselect checkbox*************/
       $('#edit-show-dce').on('change', function () {
-        var select ='check';
+        var select = 'check';
         perform_search(select);
       });
       /********************************************************************/
