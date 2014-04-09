@@ -13,8 +13,7 @@
           return Drupal.t('@numChecked of @numTotal checked', {'@numChecked': numChecked, '@numTotal': numTotal});
         },
         close: function () {
-          var select = 'select';
-          perform_search(select);
+          perform_search('select');
         }
 
 
@@ -33,8 +32,7 @@
           return Drupal.t('@numChecked of @numTotal checked', {'@numChecked': numChecked, '@numTotal': numTotal});
         },
         close: function () {
-          var select = 'select';
-          perform_search(select);
+          perform_search('select');
         }
       });
 
@@ -61,8 +59,7 @@
       /*****************************************************/
       /********************action in select deselect checkbox*************/
       $('#edit-show-dce').on('change', function () {
-        var select = 'check';
-        perform_search(select);
+        perform_search('check');
       });
       /********************************************************************/
     }
