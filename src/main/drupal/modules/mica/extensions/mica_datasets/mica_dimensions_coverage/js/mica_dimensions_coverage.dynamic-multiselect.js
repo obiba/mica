@@ -13,7 +13,8 @@
           return Drupal.t('@numChecked of @numTotal checked', {'@numChecked': numChecked, '@numTotal': numTotal});
         },
         close: function () {
-          perform_search();
+          var select ='select';
+          perform_search(select);
         }
 
 
@@ -33,29 +34,33 @@
           return Drupal.t('@numChecked of @numTotal checked', {'@numChecked': numChecked, '@numTotal': numTotal});
         },
         close: function () {
-          perform_search();
+          var select ='select';
+          perform_search(select);
         }
       });
 
       /*********************perform search action *************/
       /**********Ajax function to populate Multiselect DCE options *****/
-      function perform_search() {
+      function perform_search(select) {
         $(".loader").fadeIn("slow");
         var studies = [];
+        var dataset = [];
         studies.push($("input[name=multiselect_edit-studies]:checked").map(function () {return this.value;}).get().join(","));
-        var dataset = studies.push($("input[name=multiselect_edit-dataset]:checked").map(function () {return this.value;}).get().join(","));
-        if (studies != "") {
+        dataset.push($("input[name=multiselect_edit-dataset]:checked").map(function () {return this.value;}).get().join(","));
+
+        if (select =='select') {
           document.forms["mica-dimensions-coverage-filter-form"].submit();
         }
-        if (dataset != "") {
-          document.forms["mica-dimensions-coverage-filter-form"].submit();
+        if(select=='check' && (studies == "" || dataset == "")){
+          $(".loader").fadeOut("slow");
         }
       }
 
       /*****************************************************/
       /********************action in select deselect checkbox*************/
       $('#edit-show-dce').on('change', function () {
-        perform_search()
+        var select ='check';
+        perform_search(select);
       });
       /********************************************************************/
     }
