@@ -1343,7 +1343,7 @@ function _mica_datasets_menu_generate_breadcrumbs_variables($path) {
   global $language;
   $lang = $language->language;
 
-  if (module_exists('locale') && isset($lang)) {
+  if ((module_exists('mica_i18n') && module_exists('local')) && isset($lang)) {
     $result_lang = db_query('SELECT * FROM {menu_links} WHERE link_path = :link_path AND language = :lang', array(
       ':link_path' => $path,
       ':lang' => $lang

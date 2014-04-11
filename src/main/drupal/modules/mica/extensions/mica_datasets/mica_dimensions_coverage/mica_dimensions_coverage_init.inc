@@ -148,7 +148,9 @@ function _mica_dimensions_coverage_dimension_table($data, $taxonomies, $type) {
                   //  $url = l($data[$key_header][$term->tid]['have-var'], 'variable-search',
                   switch ($type) {
                     case 'study':
-                      $url = l('<img src="' . $GLOBALS['base_url'] . '/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_green.png" title="' . $data[$key_header][$term->tid]['count'] . '" style="vertical-align: middle">', 'variable-search',
+                      $url = l('<img src="' . $GLOBALS['base_url'] . '/'. drupal_get_path('module','mica_datasets').
+                        '/images/bullet_green.png" title="' . $data[$key_header][$term->tid]['count'] .
+                        '" style="vertical-align: middle">', 'variable-search',
                         array(
                           'query' => array(
                             'f[0]' => $data[$key_header][$term->tid]['facet'] . ':' . $term->tid,
@@ -195,7 +197,9 @@ function _mica_dimensions_coverage_dimension_table($data, $taxonomies, $type) {
                 else {
                   switch ($type) {
                     case 'study':
-                      $no_data = '<img src="' . $GLOBALS['base_url'] . '/profiles/mica_distribution/modules/mica/extensions/mica_datasets/images/bullet_red.png" title="' . t('No Variables') . '" style="vertical-align: middle">';
+                      $no_data = '<img src="' . $GLOBALS['base_url'] . '/'.
+                        drupal_get_path('module','mica_datasets').'/images/bullet_red.png" title="' . t('No Variables') .
+                        '" style="vertical-align: middle">';
                       break;
                     default :
                       $no_data = '-';
