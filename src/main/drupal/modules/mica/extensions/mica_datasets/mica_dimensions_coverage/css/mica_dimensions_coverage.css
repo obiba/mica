@@ -16,7 +16,6 @@ table.dataset_crosstab th.group_color {
   border-right: solid 1px #A19B9E;
   border-left: solid 1px #A19B9E;
   /* border-bottom:solid 1px #A19B9E; */
-
 }
 table.dataset_crosstab th {
   mi-width: 55px;
@@ -80,7 +79,6 @@ form .form-select {
 .dataTables_wrapper {
   border-bottom: solid 1px gray;
   /*  border-right: solid 1px gray; */
-
 }
 .dataset_crosstab tr.odd:first-of-type {
   display: none;

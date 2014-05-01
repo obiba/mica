@@ -168,9 +168,10 @@ function _mica_studies_convert_to_months($year, $month) {
 
 function _mica_studies_block_study_timeline_prepare_modal($dce_nid) {
   $dce = node_load($dce_nid);
+  $dce_view =node_view($dce);
   return '<div id="event-' . $dce_nid . '" class="modal hide fade">'
   . '<div class="modal-header"><h3>' . $dce->title . '</h3></div>'
-  . '<div class="modal-body">' . drupal_render(node_view($dce)) . '</div>'
+  . '<div class="modal-body">' . drupal_render($dce_view) . '</div>'
   . '<div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">' . t('Close') . '</button></div>'
   . '</div>';
 }
