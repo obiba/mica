@@ -1,10 +1,6 @@
 (function ($) {
   Drupal.behaviors.datatables_multislect = {
     attach: function (context, settings) {
-      $(window).load(function () {
-        $(".loader").fadeOut("slow");
-      });
-
       /*Multiselect event populate DCE Multiselect Field */
       $("#edit-studies").multiselectfilter("destroy");
       $("#edit-studies").multiselect({
@@ -13,10 +9,9 @@
           return Drupal.t('@numChecked of @numTotal checked', {'@numChecked': numChecked, '@numTotal': numTotal});
         },
         close: function () {
-          perform_search('select');
+          var select = 'select';
+          perform_search(select);
         }
-
-
       });
       $("#edit-studies").multiselect().multiselectfilter({
         label: Drupal.t('Search:'),
@@ -32,25 +27,33 @@
           return Drupal.t('@numChecked of @numTotal checked', {'@numChecked': numChecked, '@numTotal': numTotal});
         },
         close: function () {
-          perform_search('select');
+          var select = 'select';
+          perform_search(select);
         }
       });
 
       /*********************perform search action *************/
       /**********Ajax function to populate Multiselect DCE options *****/
       function perform_search(select) {
-        $(".loader").fadeIn("slow");
         var studies = [];
         var dataset = [];
-        studies.push($("input[name=multiselect_edit-studies]:checked").map(function () {return this.value;}).get().join(","));
-        dataset.push($("input[name=multiselect_edit-dataset]:checked").map(function () {return this.value;}).get().join(","));
+        studies.push($("input[name=multiselect_edit-studies]:checked").map(function () {
+          return this.value;
+        }).get().join(","));
+        dataset.push($("input[name=multiselect_edit-dataset]:checked").map(function () {
+          return this.value;
+        }).get().join(","));
 
-        if (select == 'select') {
+        if (select == 'select' && studies != "") {
+          document.forms["mica-dimensions-coverage-filter-form"].submit();
+        }
+        if (select == 'select' && dataset != "") {
+
           document.forms["mica-dimensions-coverage-filter-form"].submit();
         }
         if (select == 'check' && studies == "") {
-          $(".loader").fadeOut("slow");
         }
+
         if (select == 'check' && studies != "") {
           document.forms["mica-dimensions-coverage-filter-form"].submit();
         }
@@ -59,7 +62,8 @@
       /*****************************************************/
       /********************action in select deselect checkbox*************/
       $('#edit-show-dce').on('change', function () {
-        perform_search('check');
+        var select = 'check';
+        perform_search(select);
       });
       /********************************************************************/
     }
