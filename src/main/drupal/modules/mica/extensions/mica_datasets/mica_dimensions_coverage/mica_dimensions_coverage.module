@@ -73,7 +73,7 @@ function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $
 
       if ($node_type === 'study' && variable_get('study')) {
         foreach ($wrapper->mica_dataset->getIterator() as $datasets) {
-          if ($datasets->type->value() == 'dataset') {
+          if ($datasets->field_dataset_type->value() == 'study') {
             $study_dataset = 'dataset';
             break;
           }
@@ -86,7 +86,7 @@ function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $
             'studies[]' => $node->nid
           )
         );
-
+      if(!empty($study_dataset)){
         $links['view-dataset-crosstab-tab'] = array(
           '#theme' => 'menu_local_action',
           '#link' => array(
@@ -96,7 +96,7 @@ function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $
             'localized_options' => $query
           ),
         );
-
+      }
       }
       if ($node_type === 'dataset' && variable_get('dataschema')) {
         $query = array(
@@ -117,7 +117,6 @@ function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $
           ),
         );
       }
-
       break;
     case 'datasets':
     case 'harmonization-datasets':
@@ -235,7 +234,8 @@ function mica_dimensions_coverage_block_view($delta = '') {
 
     case 'tab-dimention-coverage':
       if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'harmonization') {
-        $content = _mica_dimensions_coverage_tabledata_display(isset($_POST['dataset']) ? $_POST['dataset'] : NULL);
+        $content = _mica_dimensions_coverage_tabledata_display(isset($_POST['dataset']) ? $_POST['dataset'] :
+          isset($_GET['dataset']) ? $_GET['dataset'] : NULL );
       }
       elseif ($_REQUEST['type'] == 'study') {
         if (isset($_POST['show-dce']) && $_POST['show-dce'] == 1) {
