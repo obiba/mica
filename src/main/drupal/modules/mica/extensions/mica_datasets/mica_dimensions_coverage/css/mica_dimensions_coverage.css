@@ -81,7 +81,7 @@ form .form-select {
   /*  border-right: solid 1px gray; */
 }
 .dataset_crosstab tr.odd:first-of-type {
-  display: none;
+  /*  display: none; */
 }
 div .hidden-dce {
   display: none;
@@ -151,4 +151,32 @@ div .hidden-dce {
 }
 .noborderhead {
   border: none;
+}
+.leaf {
+  height: 23px;
+}
+.fixHeigt {
+  height: 23px;
+}
+table.dataset_crosstab th {
+  padding: 5px 2px 0px 8px;
+}
+table.dataset_crosstab td {
+  font-size: 12px;
+  padding: 0px 2px 0px 8px;
+}
+table.dataset_crosstab td.leaf {
+  font-size: 12px;
+  padding: 0px 2px 0px 25px;
+}
+table.dataset_crosstab td.vocabulaire {
+  color: #ffffff;
+  font-size: 12px;
+  font-style: oblique;
+  background: #5C5C5C !important;
+  padding: 0px 8px 2px 8px;
+  font-weight: bold;
+}
+.tohide {
+  display: none !important;
 }

@@ -3,3 +3,7 @@ description = Mica Datasets Domains coverage comparison table
 core = 7.x
 package = Mica
 php = 5.2.4
+version = 7.x-9.1
+project = mica_dimensions_coverage
+datestamp = 1396538007
+configure = admin/config/system/domain-coverage/

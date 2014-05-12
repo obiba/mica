@@ -6,7 +6,7 @@
 
 function mica_dimensions_coverage_install() {
   mica_core_add_page(
-    st('Datasets domains coverage table'),
+    st('Datasets domains coverage'),
     'Making use of a classification model covering all domains of information collected by studies, the current table permit to explore the potential to harmonize variables across studies or harmonization initiatives.',
-    'content/datasets-domains-coverage-table');
+    'content/domain-coverage');
 }

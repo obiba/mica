@@ -172,6 +172,13 @@ function _mica_studies_has_variables($study_nid) {
     WHERE entity_id = :study_nid LIMIT 1',
     array(':study_nid' => $study_nid))->rowCount();
 
+$study_wrapper = entity_metadata_wrapper('node', $study_nid);
+foreach($study_wrapper->mica_dataset->getIterator() as $datasets){
+  if(!empty($datasets->field_dataset_variables)){
+    return TRUE;
+  }
+}
+
   return $nb_variables == 1;
 }
 

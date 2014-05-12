@@ -18,16 +18,11 @@ function   _mica_studies_import_set_population_properties($dom, $wrapper) {
     $wrapper->title_field->set($title_polulation);
   }
 
-  if (empty($xpath->query('/population/general-information/body')->item(0)->nodeValue)) {
-    throw new Exception(t('Population : Field Body description required'));
-  }
-  else {
-    $wrapper->body->set(array(
-      'value' => $xpath->query('/population/general-information/body')->item(0)->nodeValue,
-      'summary' => $xpath->query('/population/general-information/summary')->item(0)->nodeValue,
-      'format' => $xpath->query('/population/general-information/format')->item(0)->nodeValue
-    ));
-  }
+  $wrapper->body->set(array(
+    'value' => $xpath->query('/population/general-information/body')->item(0)->nodeValue,
+    'summary' => $xpath->query('/population/general-information/summary')->item(0)->nodeValue,
+    'format' => $xpath->query('/population/general-information/format')->item(0)->nodeValue
+  ));
 
   $dce_elements = $xpath->query('/population/data-collection-events/data-collection-event');
   $wrapper->field_pop_dce->set();
