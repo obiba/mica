@@ -74,6 +74,25 @@ function mica_networks_views_default_views() {
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '600',
   );
+  /* Field: Indexed Node: Node ID */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_network_index';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['separator'] = '';
+  $handler->display->display_options['fields']['nid']['link_to_entity'] = 0;
+  /* Field: Indexed Node: Studies */
+  $handler->display->display_options['fields']['field_studies']['id'] = 'field_studies';
+  $handler->display->display_options['fields']['field_studies']['table'] = 'search_api_index_network_index';
+  $handler->display->display_options['fields']['field_studies']['field'] = 'field_studies';
+  $handler->display->display_options['fields']['field_studies']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_studies']['alter']['text'] = 'YES';
+  $handler->display->display_options['fields']['field_studies']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_studies']['alter']['path'] = 'studies?f[0]=field_networks%3A[nid]';
+  $handler->display->display_options['fields']['field_studies']['list']['mode'] = 'first';
+  $handler->display->display_options['fields']['field_studies']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_studies']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_studies']['bypass_access'] = 0;
   /* Sort criterion: Indexed Node: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'search_api_index_network_index';

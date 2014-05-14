@@ -532,9 +532,8 @@ function mica_datasets_field_default_field_instances() {
     'display' => array(
       'banner_area' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'custom_dimensions' => array(
@@ -569,10 +568,11 @@ function mica_datasets_field_default_field_instances() {
         'weight' => 3,
       ),
       'left_area' => array(
-        'label' => 'inline',
+        'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
+        'type' => 'text_plain',
+        'weight' => 2,
       ),
       'right_area' => array(
         'label' => 'inline',
@@ -998,7 +998,7 @@ function mica_datasets_field_default_field_instances() {
         'module' => 'node_reference',
         'settings' => array(),
         'type' => 'node_reference_default',
-        'weight' => 2,
+        'weight' => 4,
       ),
       'right_area' => array(
         'label' => 'inline',
@@ -1779,11 +1779,11 @@ Set to 0 to set variable at last position.  ',
         'weight' => 6,
       ),
       'left_area' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 5,
+        'weight' => 11,
       ),
       'right_area' => array(
         'label' => 'inline',
@@ -2118,7 +2118,7 @@ Set to 0 to set variable at last position.  ',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 12,
       ),
       'right_area' => array(
         'label' => 'above',
@@ -2202,7 +2202,7 @@ Set to 0 to set variable at last position.  ',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'right_area' => array(
         'label' => 'inline',

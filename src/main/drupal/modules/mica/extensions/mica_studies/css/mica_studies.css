@@ -1,1 +1,54 @@
-.node-study .field-item .inner-label,.node-population .field-item .inner-label{display:inline;font-weight:bold}.node-study .field-item .inner-value,.node-population .field-item .inner-value{display:inline;padding-left:3px}.node-study .field-name-field-logo{float:left;margin:10px}#block-mica-studies-study-general-design .field-name-field-design .field-item .other-sub-title{font-weight:bold}#block-mica-studies-study-general-design .field-name-field-design .field-item p:first-of-type{display:inline}#block-mica-studies-study-populations .field-name-field-pop-select-criteria .field-item .inner-value p:first-of-type,#block-mica-studies-study-populations .field-name-field-pop-src-recruit .field-item .inner-value p:first-of-type{display:inline}#block-mica-studies-study-timeline .axis path,#block-mica-studies-study-timeline .axis line{fill:none;stroke:black;shape-rendering:crispEdges}#block-mica-studies-study-timeline .axis text{font-family:sans-serif;font-size:12px}#block-mica-studies-study-timeline .timeline-label{font-family:sans-serif;font-size:12px}#block-mica-studies-study-timeline #timeline2 .axis{transform:translate(0,30px);-ms-transform:translate(0,30px);-webkit-transform:translate(0,30px);-o-transform:translate(0,30px);-moz-transform:translate(0,30px)}#block-mica-studies-study-timeline .coloredDiv{height:20px;width:20px;float:left}
+.node-study .field-item .inner-label,
+.node-population .field-item .inner-label {
+  display: inline;
+  font-weight: bold;
+}
+.node-study .field-item .inner-value,
+.node-population .field-item .inner-value {
+  display: inline;
+  padding-left: 3px;
+}
+.node-study .field-name-field-logo {
+  float: left;
+  margin: 10px;
+}
+#block-mica-studies-study-general-design .field-name-field-design .field-item .other-sub-title {
+  font-weight: bold;
+}
+#block-mica-studies-study-general-design .field-name-field-design .field-item p:first-of-type {
+  display: inline;
+}
+#block-mica-studies-study-populations .field-name-field-pop-select-criteria .field-item .inner-value p:first-of-type,
+#block-mica-studies-study-populations .field-name-field-pop-src-recruit .field-item .inner-value p:first-of-type {
+  display: inline;
+}
+#block-mica-studies-study-timeline .axis path,
+#block-mica-studies-study-timeline .axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+#block-mica-studies-study-timeline .axis text {
+  font-family: sans-serif;
+  font-size: 12px;
+}
+#block-mica-studies-study-timeline .timeline-label {
+  font-family: sans-serif;
+  font-size: 12px;
+}
+#block-mica-studies-study-timeline #timeline2 .axis {
+  transform: translate(0, 30px);
+  -ms-transform: translate(0, 30px);
+  /* IE 9 */
+  -webkit-transform: translate(0, 30px);
+  /* Safari and Chrome */
+  -o-transform: translate(0, 30px);
+  /* Opera */
+  -moz-transform: translate(0, 30px);
+  /* Firefox */
+}
+#block-mica-studies-study-timeline .coloredDiv {
+  height: 20px;
+  width: 20px;
+  float: left;
+}

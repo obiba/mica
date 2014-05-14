@@ -603,7 +603,7 @@ function mica_datasets_node_view_alter(&$build) {
             $stidy_nid = $study->getIdentifier();
             $study = node_load($stidy_nid);
             if (empty($build['field_variable_study_var_att']['#title'])) {
-              $build['field_variable_study_var_att'] = $Study1 = field_view_field('node', $study, 'title_field', array('weight' => 2));
+              $build['field_variable_study_var_att'] = $Study1 = field_view_field('node', $study, 'title_field', array('weight' => 3));
               $build['field_variable_study_var_att']['#title'] = t('Studies');
             }
             else {

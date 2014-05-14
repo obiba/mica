@@ -1444,6 +1444,11 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['empty']['area']['label'] = 'empty_studies';
   $handler->display->display_options['empty']['area']['content'] = 'No study found.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Field: Indexed Node: Acronym */
+  $handler->display->display_options['fields']['field_acroym']['id'] = 'field_acroym';
+  $handler->display->display_options['fields']['field_acroym']['table'] = 'search_api_index_studies_index';
+  $handler->display->display_options['fields']['field_acroym']['field'] = 'field_acroym';
+  $handler->display->display_options['fields']['field_acroym']['label'] = 'Short Name';
   /* Field: Indexed Node: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'search_api_index_studies_index';
@@ -1486,6 +1491,15 @@ This Mica study catalogue comes with an advanced query tool using user-friendly 
   $handler->display->display_options['fields']['field_study_populations_field_pop_country']['field'] = 'field_study_populations_field_pop_country';
   $handler->display->display_options['fields']['field_study_populations_field_pop_country']['label'] = 'Country of residence';
   $handler->display->display_options['fields']['field_study_populations_field_pop_country']['delta_offset'] = '0';
+  /* Field: Indexed Node: Networks */
+  $handler->display->display_options['fields']['field_networks']['id'] = 'field_networks';
+  $handler->display->display_options['fields']['field_networks']['table'] = 'search_api_index_studies_index';
+  $handler->display->display_options['fields']['field_networks']['field'] = 'field_networks';
+  $handler->display->display_options['fields']['field_networks']['label'] = 'Partner Networks';
+  $handler->display->display_options['fields']['field_networks']['list']['mode'] = 'list';
+  $handler->display->display_options['fields']['field_networks']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_networks']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_networks']['bypass_access'] = 0;
   /* Filter criterion: Search: Fulltext search */
   $handler->display->display_options['filters']['search_api_views_fulltext']['id'] = 'search_api_views_fulltext';
   $handler->display->display_options['filters']['search_api_views_fulltext']['table'] = 'search_api_index_studies_index';
