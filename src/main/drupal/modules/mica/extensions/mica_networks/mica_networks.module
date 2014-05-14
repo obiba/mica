@@ -41,18 +41,56 @@ function mica_networks_node_insert($node) {
  */
 function mica_networks_menu_local_tasks_alter(&$data, $router_item, $root_path) {
   $links = array();
-  if ($root_path === 'networks') {
-    if (node_access('create', 'network')) {
-      $links['add-network'] = array(
-        '#theme' => 'menu_local_action',
-        '#link' => array(
-          'title' => t('Add a Network'),
-          'href' => 'node/add/network',
-        ),
-      );
-    }
+  switch ($root_path) {
+    case 'networks' :
+      if (node_access('create', 'network')) {
+        $links['add-network'] = array(
+          '#theme' => 'menu_local_action',
+          '#link' => array(
+            'title' => t('Add a Network'),
+            'href' => 'node/add/network',
+          ),
+        );
+      }
+      break;
+    case 'node/%':
+      $node = $router_item['map']['1'];
+      switch ($node->type) {
+        case 'network':
+          // If study has has variables
+          if (_mica_networks_has_studies($node->nid)) {
+            // variables
+            $links['studies-search'] = array(
+              '#weight' => 30,
+              '#theme' => 'menu_local_action',
+              '#link' => array(
+                'title' => t('Study Catalogue'),
+                'href' => 'studies-search',
+                'localized_options' => array(
+                  'query' => array(
+                    'f[0]' => 'field_networks:' . $node->nid
+                  ),
+                  'attributes' => array(
+                    'class' => 'highlight',
+                  ),
+                ),
+              ),
+            );
+          }
+          break;
+      }
+      break;
   }
   $data['actions']['output'] = array_merge($data['actions']['output'], $links);
+}
+
+function _mica_networks_has_studies($nid = NULL) {
+  $network_wrapper = entity_metadata_wrapper('node', $nid);
+  $studies = $network_wrapper->field_studies->value();
+  if (!empty($studies)) {
+    return TRUE;
+  }
+  return FALSE;
 }
 
 /**
