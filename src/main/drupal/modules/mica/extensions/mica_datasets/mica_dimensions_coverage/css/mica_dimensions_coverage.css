@@ -180,3 +180,37 @@ table.dataset_crosstab td.vocabulaire {
 .tohide {
   display: none !important;
 }
+div.DTTT_container {
+  position: relative;
+  float: right;
+  margin-bottom: 1em;
+}
+utton.DTTT_button,
+div.DTTT_button,
+a.DTTT_button {
+  position: relative;
+  float: left;
+  margin-right: 3px;
+  padding: 5px 8px;
+  border: 1px solid #999;
+  cursor: pointer;
+  font-size: 0.88em;
+  color: black !important;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: 1px 1px 3px #ccc;
+  -moz-box-shadow: 1px 1px 3px #ccc;
+  -ms-box-shadow: 1px 1px 3px #ccc;
+  -o-box-shadow: 1px 1px 3px #ccc;
+  box-shadow: 1px 1px 3px #ccc;
+  background: #ffffff;
+  background: -webkit-linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+  background: -moz-linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+  background: -ms-linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+  background: -o-linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+  background: linear-gradient(top, #ffffff 0%, #f3f3f3 89%, #f9f9f9 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f9f9f9', GradientType=0);
+}

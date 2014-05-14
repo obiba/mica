@@ -54,6 +54,14 @@ function mica_dimensions_coverage_menu() {
     'type' => MENU_LOCAL_ACTION,
   );
 
+  $items['content/domains-coverage-ajx-query'] = array(
+    'type' => MENU_CALLBACK,
+    //our custom ajax callback
+    'page callback' => 'datasets_domains_coverage_table_ajax_studies',
+    //access to user can access content in a site, you can define your own permission using hook_perm()
+    'access arguments' => array('access content'),
+
+  );
   return $items;
 }
 
@@ -86,7 +94,45 @@ function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $
             'studies[]' => $node->nid
           )
         );
-        if (!empty($study_dataset)) {
+        if (!empty($study_dataset) && $study_dataset == 'dataset') {
+          $links['view-dataset-crosstab-tab'] = array(
+            '#theme' => 'menu_local_action',
+            '#link' => array(
+              'title' => t('Domain Coverage'),
+              'page callback' => 'mica_dimensions_coverage_page',
+              'href' => 'content/domain-coverage', // Arguments could be taxonomies and dataset
+              'localized_options' => $query
+            ),
+          );
+        }
+
+      }
+
+      //Add bomane coverage botton in Network
+      $query = array(
+        'attributes' => array('class' => 'highlight'),
+        'query' => array(
+          'type' => 'study'
+        )
+      );
+
+      if ($node_type === 'network' && variable_get('study')) {
+        $i = 0;
+        foreach ($wrapper->field_studies->getIterator() as $study) {
+          foreach ($study->field_study_populations->getIterator() as $populations) {
+            foreach ($populations->field_pop_dce->getIterator() as $dce) {
+              foreach ($dce->field_dce_dataset->getIterator() as $dataset) {
+                if ($dataset->field_dataset_type->value() == 'study') {
+                  $study_dataset = 'dataset';
+                  $query['query']['studies[' . $i . ']'] = $study->getIdentifier();
+                }
+              }
+            }
+          }
+
+        }
+
+        if (!empty($study_dataset) && $study_dataset == 'dataset') {
           $links['view-dataset-crosstab-tab'] = array(
             '#theme' => 'menu_local_action',
             '#link' => array(
@@ -118,7 +164,6 @@ function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $
         );
       }
       break;
-    case 'datasets':
     case 'harmonization-datasets':
       if (variable_get('dataschema')) {
         $links['view-dataset-crosstab-tab'] = array(
@@ -192,8 +237,7 @@ function mica_dimensions_coverage_block_info() {
  * Implements hook_block_view().
  */
 function mica_dimensions_coverage_block_view($delta = '') {
-  $studies_id_param = isset($_POST['studies']) ? $_POST['studies'] :
-    (isset($_GET['studies']) ? $_GET['studies'] : NULL);
+  $studies_id_param = isset($_GET['studies']) ? $_GET['studies'] : NULL;
   $content = '';
   ctools_add_css('mica_dimensions_coverage', 'mica_dimensions_coverage');
   //  Script to perform ajax action to deal with multi select fields
@@ -203,18 +247,11 @@ function mica_dimensions_coverage_block_view($delta = '') {
   ), array('type' => 'setting'));
   switch ($delta) {
     case 'filter-dimention-coverage':
-      $_SESSION['storage']['studies'] = isset($_POST['studies']) ? $_POST['studies'] :
-        (isset($_GET['studies']) ? $_GET['studies'] : NULL);
-
-      $_SESSION['storage']['dce'] = isset($_POST['dce']) ? $_POST['dce'] : NULL;
-
-      $_SESSION['storage']['dataset'] = isset($_POST['dataset']) ? $_POST['dataset'] :
-        (isset($_GET['dataset']) ? $_GET['dataset'] : NULL);
-
+      $_SESSION['storage']['studies'] = isset($_GET['studies']) ? $_GET['studies'] : NULL;
+      $_SESSION['storage']['dce'] = isset($_GET['dce']) ? $_GET['dce'] : NULL;
+      $_SESSION['storage']['dataset'] = isset($_GET['dataset']) ? $_GET['dataset'] : NULL;
       $_SESSION['storage']['type'] = isset($_GET['type']) ? $_GET['type'] : NULL;
-
-      $_SESSION['storage']['show-dce'] = isset($_POST['show-dce']) ? $_POST['show-dce'] : NULL;
-
+      $_SESSION['storage']['show-dce'] = isset($_GET['show-dce']) ? $_GET['show-dce'] : NULL;
       $content = drupal_get_form('mica_dimensions_coverage_filter_form');
       if ($_GET['type'] == 'harmonization') {
         $block = array(
@@ -234,16 +271,12 @@ function mica_dimensions_coverage_block_view($delta = '') {
 
     case 'tab-dimention-coverage':
       if (isset($_REQUEST['type']) && $_REQUEST['type'] == 'harmonization') {
-        $content = _mica_dimensions_coverage_tabledata_display(
-          isset($_POST['dataset']) ? $_POST['dataset'] :
-            (isset($_GET['dataset']) ? $_GET['dataset'] : NULL));
+        $content = _mica_dimensions_coverage_tabledata_display(isset($_GET['dataset']) ? $_GET['dataset'] : NULL);
       }
       elseif ($_REQUEST['type'] == 'study') {
-        if (isset($_POST['show-dce']) && $_POST['show-dce'] == 1) {
-          if (!empty($_POST['studies']) || !empty($_GET['studies'])) {
-            $content = _mica_dimensions_coverage_tabledata_display_dce(
-              isset($_POST['studies']) ? $_POST['studies'] :
-                (isset($_GET['studies']) ? $_GET['studies'] : NULL));
+        if (isset($_GET['show-dce']) && $_GET['show-dce'] == 1) {
+          if (!empty($_GET['studies'])) {
+            $content = _mica_dimensions_coverage_tabledata_display_dce(isset($_GET['studies']) ? $_GET['studies'] : NULL);
           }
         }
         else {
@@ -277,8 +310,7 @@ function mica_dimensions_coverage_library() {
         $lib_path . '/extras/TableTools/media/js/ZeroClipboard.js' => array(),
         $lib_path . '/extras/TableTools/media/js/TableTools.js' => array()
       ),
-      'css' => array(
-        $lib_path . '/extras/TableTools/media/css/TableTools.css' => array()
+      'css' => array( //   $lib_path . '/extras/TableTools/media/css/TableTools.css' => array()
       )
     );
   }
@@ -305,9 +337,9 @@ function _mica_dimensions_coverage_deal_cache($ids = NULL, $cache_key, $method) 
  * Return $output : content formatted table
  * */
 Function _mica_dimensions_coverage_tabledata_display_study($study_id = NULL) {
-  if (empty($study_id) && empty($_POST['form_id'])) {
+  if (empty($study_id) && empty($_GET['form_id'])) {
     // $key_ids_studie= 'all';
-    $options = datasets_domains_coverage_table_return_studies();
+    $options = datasets_domains_coverage_table_ajax_studies();
     $study_id = array_keys($options['studies']);
   }
 
@@ -405,7 +437,7 @@ Function _mica_dimensions_coverage_tabledata_display_study($study_id = NULL) {
 
 Function _mica_dimensions_coverage_tabledata_display_dce($ids_studies = NULL) {
   if (empty($ids_studies)) {
-    $options = datasets_domains_coverage_table_return_studies();
+    $options = datasets_domains_coverage_table_ajax_studies();
     $ids_studies_all = array_keys($options['studies']);
     sort($ids_studies_all);
     $ids_studies = implode("-", $ids_studies_all);
@@ -530,7 +562,7 @@ Function _mica_dimensions_coverage_tabledata_display_dce($ids_studies = NULL) {
 
 Function _mica_dimensions_coverage_tabledata_display($ids_dataset = NULL) {
   if (empty($ids_dataset)) {
-    $options = datasets_domains_coverage_table_return_studies();
+    $options = datasets_domains_coverage_table_ajax_studies();
     $ids_dataset_all = array_keys($options['dataset']);
     sort($ids_dataset_all);
     $ids_dataset = implode("-", $ids_dataset_all);
@@ -656,19 +688,20 @@ function _mica_dimensions_coverage_dimension_them_tab($head, $rows, $type = NULL
  * Form search
  * */
 function mica_dimensions_coverage_filter_form($form, &$form_state) {
-  $options = datasets_domains_coverage_table_return_studies();
+  $options = datasets_domains_coverage_table_ajax_studies();
   $form = array(
     '#attributes' => array('class' => 'form-inline form-vertical', 'role' => 'form'),
-    '#method' => 'POST'
+    '#action' => _mica_dimensions_coverage_deal_with_multilangue_url() . '/content/domain-coverage',
+    '#method' => 'get'
   );
-
   if (empty($_GET['type']) || ($_GET['type']) && $_GET['type'] != 'harmonization') {
     $form['studies'] = array(
       '#prefix' => '<div class="col-xs-4 inline-input">',
       '#suffix' => '</div>',
       '#type' => 'select',
       '#title' => t('Studies'),
-      '#default_value' => !empty($_SESSION['storage']['studies']) ? $_SESSION['storage']['studies'] : NULL,
+      '#default_value' => !empty($_SESSION['storage']['studies']) ? $_SESSION['storage']['studies'] :
+          (!empty($options['studies']) ? array_keys($options['studies']) : NULL),
       '#options' => isset($options['studies']) ? $options['studies'] : array('noItem' => t('No Studies')),
       '#multiple' => TRUE,
       '#collapsible' => TRUE,
@@ -690,7 +723,8 @@ function mica_dimensions_coverage_filter_form($form, &$form_state) {
       '#suffix' => '</div>',
       '#type' => 'select',
       '#title' => t('Datasets'),
-      '#default_value' => !empty($_SESSION['storage']['dataset']) ? $_SESSION['storage']['dataset'] : NULL,
+      '#default_value' => !empty($_SESSION['storage']['dataset']) ? $_SESSION['storage']['dataset'] :
+          (!empty($options['dataset']) ? array_keys($options['dataset']) : NULL),
       '#multiple' => TRUE,
       '#options' => !empty($options['dataset']) ? $options['dataset'] : array('noItem' => t('No Dataset')),
       '#collapsible' => TRUE,
@@ -707,14 +741,22 @@ function mica_dimensions_coverage_filter_form($form, &$form_state) {
 }
 
 /*
- * Return array of dataset by studies if linked
+ * Method to populate multi-select fields by ajax call
  * */
-function datasets_domains_coverage_table_return_studies() {
+function datasets_domains_coverage_table_ajax_studies() {
   $query = new EntityFieldQuery();
+  $type = !empty($_POST['type']) ? $_POST['type'] : NULL;
   $result = $query->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'study')
     ->execute();
+  $options = datasets_domains_coverage_table_return_studies($result, $type);
+  return $options;
+}
 
+/*
+ * Return array of dataset by studies if linked
+ * */
+function datasets_domains_coverage_table_return_studies($result, $type = NULL) {
   $options = array();
   $is_study = FALSE;
 
@@ -791,14 +833,14 @@ function datasets_domains_coverage_table_return_studies() {
 
 /*
  * Deal with Multi-lang sites Url
- * @return Base url depending on current lungage if set
+ * @return Base url depending on current langage if set
  *
  * */
 function _mica_dimensions_coverage_deal_with_multilangue_url() {
   global $language;
   $url_lang = $GLOBALS['base_url'];
   if (!empty($language) && !empty($language->prefix)) {
-    $url_lang = $url_lang . '/' . $language->prefix;
+    $url_lang = $GLOBALS['base_url'] . '/' . $language->prefix;
   }
   return $url_lang;
 }

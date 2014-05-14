@@ -9,6 +9,7 @@ function _mica_studies_block_study_general_info($study) {
   }
   $weight = 0;
   $content = array(
+    field_view_field('node', $study, 'title_field', array('label' => 'inline', 'weight' => ++$weight)),
     field_view_field('node', $study, 'field_acroym', array('label' => 'inline', 'weight' => ++$weight)),
     field_view_field('node', $study, 'field_website', array('label' => 'inline', 'weight' => ++$weight)),
     field_view_field('node', $study, 'field_investigators', array('label' => 'inline', 'weight' => ++$weight)),

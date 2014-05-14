@@ -74,6 +74,10 @@
       };
 
       // draw the axis
+      var rang = 12;
+      if ((ending - beginning) >= 650) {
+        rang = 24;
+      }
       var xScale = d3.time.scale()
         .domain([beginning, ending])
         .range([margin.left, width - margin.right]);
@@ -83,7 +87,7 @@
         .orient(orient)
         .tickFormat(formatByYear)
         .tickSubdivide(1)
-        .tickValues(d3.range(beginning, ending+1, 12))
+        .tickValues(d3.range(beginning, ending + 1, rang))
         .tickSize(tickFormat.tickSize, tickFormat.tickSize/2, 0 );
 
       // draw axis
