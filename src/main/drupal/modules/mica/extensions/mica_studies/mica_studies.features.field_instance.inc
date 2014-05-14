@@ -2815,7 +2815,7 @@ function mica_studies_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
-    'display_label' => 'Acronym',
+    'display_label' => 'Short Name',
     'entity_type' => 'node',
     'field_name' => 'field_acroym',
     'label' => 'Acronym',

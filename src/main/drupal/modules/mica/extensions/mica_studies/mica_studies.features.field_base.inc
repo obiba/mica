@@ -229,12 +229,13 @@ function mica_studies_field_default_field_bases() {
     'module' => 'text',
     'settings' => array(
       'field_description_infos' => array(
-        'field_description' => 0,
-        'field_description_body' => '',
-        'field_description_label' => '',
+        'field_description' => 1,
+        'field_description_body' => 'Acronym of the study if applicable.',
+        'field_description_label' => 'Acronym',
         'field_description_value_type' => 'text',
       ),
       'max_length' => 255,
+      'profile2_private' => FALSE,
     ),
     'translatable' => 1,
     'type' => 'text',

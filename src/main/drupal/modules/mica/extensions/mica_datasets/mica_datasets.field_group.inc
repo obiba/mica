@@ -132,23 +132,24 @@ function mica_datasets_field_group_info() {
   $field_group->mode = 'left_area';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Description',
+    'label' => 'General Information',
     'weight' => '0',
     'children' => array(
-      0 => 'field_dataset',
-      1 => 'field_variable_study_var_att',
+      0 => 'body',
+      1 => 'field_dataset',
       2 => 'field_label',
-      3 => 'field_repeatable',
+      3 => 'field_unit',
       4 => 'field_value_type',
-      5 => 'field_unit',
+      5 => 'field_variable_study_var_att',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'open',
+      'label' => 'General Information',
       'instance_settings' => array(
-        'description' => '',
         'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_description|node|variable|left_area'] = $field_group;
