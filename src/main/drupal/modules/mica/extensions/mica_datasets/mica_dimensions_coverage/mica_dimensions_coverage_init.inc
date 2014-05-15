@@ -249,7 +249,7 @@ function _mica_dimensions_coverage_construct_domains_column($term, $vocabulary, 
       'attributes' => array('class' => 'facetapi-inactive'),
       'html' => FALSE,
       'query' => array(
-        'f[0]' => !empty($field_by_title[strtolower($vocabulary->name)]) ? $field_by_title[strtolower($vocabulary->name)] : NULL . ':' . $term->tid,
+        'f[0]' => !empty($field_by_title[strtolower($vocabulary->name)]) ? $field_by_title[strtolower($vocabulary->name)] . ':' . $term->tid : NULL,
 
       ),
     ),
