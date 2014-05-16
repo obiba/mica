@@ -250,6 +250,7 @@ function _mica_dimensions_coverage_construct_domains_column($term, $vocabulary, 
       'html' => FALSE,
       'query' => array(
         'f[0]' => !empty($field_by_title[strtolower($vocabulary->name)]) ? $field_by_title[strtolower($vocabulary->name)] . ':' . $term->tid : NULL,
+        'f[1]' => !empty($field_by_title[strtolower($vocabulary->name)]) ? 'field_dataset%3Afield_dataset_type' . ':' . 'study': NULL
 
       ),
     ),
