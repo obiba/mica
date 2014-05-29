@@ -129,7 +129,7 @@ function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $
               }
             }
           }
-
+        $i++;
         }
 
         if (!empty($study_dataset) && $study_dataset == 'dataset') {
@@ -306,9 +306,8 @@ function mica_dimensions_coverage_library() {
       'version' => '1.9',
       'js' => array(
         $lib_path . '/media/js/jquery.dataTables.js' => array(),
-        $lib_path . '/extras/FixedColumns/media/js/FixedColumns.js' => array(),
-        $lib_path . '/extras/TableTools/media/js/ZeroClipboard.js' => array(),
-        $lib_path . '/extras/TableTools/media/js/TableTools.js' => array()
+        $lib_path . '/extensions/FixedColumns/js/dataTables.fixedColumns.js' => array(),
+        $lib_path . '/extensions/TableTools/js/dataTables.tableTools.js' => array()
       ),
       'css' => array( //   $lib_path . '/extras/TableTools/media/css/TableTools.css' => array()
       )

@@ -465,7 +465,8 @@ function _mica_studies_data_collection_event_form_alter(&$form, &$form_state, $f
   // Prepopulate study node reference in population edit form and hide it
   if (isset($_REQUEST['population'])) {
     $lang = $form['field_dce_population']['#language'];
-    $form['field_dce_population'][$lang]['#after_build'][] = '_mica_studies_prepopulate_dce_after_build';
+   // $form['field_dce_population'][$lang]['#after_build'][] = '_mica_studies_prepopulate_dce_after_build';
+    $form['field_dce_population'][$lang]['#default_value'][0] = $_REQUEST['population'];
   }
   $form['actions']['submit']['#type'] = 'hidden';
 
