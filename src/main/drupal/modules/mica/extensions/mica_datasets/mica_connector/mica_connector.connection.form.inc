@@ -414,9 +414,12 @@ function _mica_connector_get_dataset_ids($study_node_id) {
  * @param string $field_name
  */
 function _mica_connector_node_field_values($node, $field_name) {
-  $field = $node->$field_name;
-  if ($field) {
+  $field = $node->$field_name;dpm($node->$field_name);
+  if ($field && isset($field[$node->language])) {
     return $field[$node->language];
+  }
+  elseif(!isset($field[$node->language])){
+    return $field['und'];
   }
   return array();
 }
