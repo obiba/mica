@@ -593,30 +593,44 @@ function mica_datasets_prepare_prettify() {
  */
 function mica_datasets_node_view_alter(&$build) {
   if ($build['#view_mode'] === 'left_area' && $build['#bundle'] === 'variable') {
+    unset($build['field_variable_study_var_att']['#title']);
     if (!empty($build['field_dataset'])) {
+      $i = 0;
+      $total_study = 0;
+      $count_notpermeted = 0;
       foreach ($build['field_dataset'] as $key_dataset => $value_dataset) {
         if (is_int($key_dataset)) {
           $datset_nid = $value_dataset['#options']['entity']->nid;
           $dataset_wrapper = entity_metadata_wrapper('node', $datset_nid);
-          $i = 0;
           foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study) {
             $stidy_nid = $study->getIdentifier();
             $study = node_load($stidy_nid);
-            if (empty($build['field_variable_study_var_att']['#title'])) {
-              $build['field_variable_study_var_att'] = $Study1 = field_view_field('node', $study, 'title_field', array('weight' => 3));
-              $build['field_variable_study_var_att']['#title'] = t('Studies');
+            if (node_access('view', $study)) {
+              if (empty($build['field_variable_study_var_att']['#title'])) {
+                $build['field_variable_study_var_att'] = $Study1 = field_view_field('node', $study, 'title_field', array('weight' => 2));
+                $build['field_variable_study_var_att']['#title'] = t('Studies');
+              }
+              else {
+                $Study1 = field_view_field('node', $study, 'title_field', array('weight' => 2));
+              }
+              $build['field_variable_study_var_att'][$i]['#markup'] = '<a href="' . url('node/' . $stidy_nid) . '"> ' . $Study1['#items'][0]['value'] . '</a>';
+              $build['field_variable_study_var_att']['#items'][$i]['value'] = $Study1['#items'][0]['value'];
+              $build['field_variable_study_var_att']['#items'][$i]['format'] = $Study1['#items'][0]['format'];
+              $build['field_variable_study_var_att']['#items'][$i]['safe_value'] = $Study1['#items'][0]['safe_value'];
+              $i++;
             }
             else {
-              $Study1 = field_view_field('node', $study, 'title_field', array('weight' => 2));
+              $count_notpermeted++;
             }
-            $build['field_variable_study_var_att'][$i]['#markup'] = '<a href="' . url('node/' . $stidy_nid) . '"> ' . $Study1['#items'][0]['value'] . '</a>';
-            $build['field_variable_study_var_att']['#items'][$i]['value'] = $Study1['#items'][0]['value'];
-            $build['field_variable_study_var_att']['#items'][$i]['format'] = $Study1['#items'][0]['format'];
-            $build['field_variable_study_var_att']['#items'][$i]['safe_value'] = $Study1['#items'][0]['safe_value'];
-
+            $total_study++;
           }
         }
+
       }
+      if ($count_notpermeted == $total_study) {
+        unset($build['field_variable_study_var_att']);
+      }
+
     }
   }
   if ($build['#view_mode'] === 'right_area' && $build['#bundle'] === 'variable') {
@@ -685,7 +699,7 @@ function mica_datasets_node_view_alter(&$build) {
             $sva_wrapper->language->set(i18n_language()->language);
           }
           $study_wrapper = entity_metadata_wrapper('node', $sva_wrapper->field_sva_study->getIdentifier());
-       //chek if a study is atteched the varibale
+          //chek if a study is atteched the varibale
           if (_mica_datasets_has_study($study_wrapper) && $study_wrapper->access('view')) {
 
             $script = $sva_wrapper->field_sva_script->value() ? $sva_wrapper->field_sva_script->value() : '';
@@ -756,16 +770,16 @@ function mica_datasets_node_view_alter(&$build) {
   }
 }
 
-
-function _mica_datasets_has_study($study_wrapper){
-  try{
+function _mica_datasets_has_study($study_wrapper) {
+  try {
     $study_wrapper->uuid->value();
     return TRUE;
-  }catch (Exception $e){
+  } catch (Exception $e) {
     return FALSE;
   }
 
 }
+
 function _mica_datasets_has_harmonization($dataset_nid) {
 //    'SELECT * FROM {field_data_field_sva_variable} sva_var,
 //  {field_data_field_dataset_variables} dataset_var WHERE dataset_var.entity_id = :nid
@@ -1004,7 +1018,7 @@ function _mica_datasets_delete_svas($dataset_wrapper, $study_nid) {
       }
     }
   }
-  if(!empty($sva_ids)){
+  if (!empty($sva_ids)) {
     node_delete_multiple($sva_ids);
   }
 }

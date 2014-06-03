@@ -272,7 +272,7 @@ libraries[jquery_ui_multiselect_widget][directory_name] = jquery-ui-multiselect-
 libraries[jquery_ui_multiselect_widget][overwrite] = TRUE
 
 libraries[mica_domains_coverage][download][type] = get
-libraries[mica_domains_coverage][download][url] = http://www.datatables.net/releases/DataTables-1.9.4.zip
+libraries[mica_domains_coverage][download][url] = http://www.datatables.net/releases/DataTables-1.10.0.zip
 libraries[mica_domains_coverage][directory_name] = datatables
 libraries[mica_domains_coverage][overwrite] = TRUE
 

@@ -1,5 +1,4 @@
 (function ($) {
-  var oTable = null;
   Drupal.behaviors.datatables_gen = {
     attach: function (context, settings) {
       var libPath = Drupal.settings.libPath;
@@ -11,32 +10,31 @@
    * Initialation of Datatables
    * */
   function createTable(libPath) {
-    oTable = $('#example').dataTable({
-      "stateSave": true,
-      "oLanguage": {
-        "sSearch": Drupal.t('Search by domains - terms :')
+    var    oTable = $('#example').DataTable({
+      stateSave: true,
+      oLanguage: {
+        sSearch: Drupal.t('Search by domains - terms :')
       },
-      "bAutoWidth": false,
-      "aaSorting": [],
-      "sScrollY": "700px",
-      "sScrollX": "100%",
-      "sScrollXInner": "200%",
-      "bScrollCollapse": true,
-      "bLengthChange": false,
-      "bPaginate": false,
-      "bSort": false,
+      columnDefs: [
+        { "width": '30%', aTargets: [ 0 ]}
+      ],
+      aaSorting: [],
+      scrollY: 700,
+      scrollX:        true,
+      scrollCollapse: true,
+      sScrollXInner: "150%",
+      bScrollCollapse: true,
+      bLengthChange: false,
+      bPaginate: false,
+      bSort: false,
 
-      "sDom": 'Tf<"clear">lrt',
-      "oTableTools": {
-        "sSwfPath": libPath + "/extras/TableTools/media/swf/copy_csv_xls_pdf.swf",
-        "aButtons": ["csv" ]
+      sDom: 'Tf<"clear">lrt',
+      oTableTools: {
+        sSwfPath: libPath + "/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
+        aButtons: ["csv" ]
       }
     });
-    new FixedColumns(oTable, {
-      "sLeftWidth": "relative",
-      "iLeftWidth": 30,// percentage,
-      "sHeightMatch": "none"
-    });
+    new $.fn.dataTable.FixedColumns(oTable);
 
   }
 })(jQuery);
