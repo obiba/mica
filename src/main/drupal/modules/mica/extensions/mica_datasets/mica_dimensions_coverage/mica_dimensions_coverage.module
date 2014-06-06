@@ -129,10 +129,32 @@ function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $
               }
             }
           }
-        $i++;
+          $i++;
         }
 
         if (!empty($study_dataset) && $study_dataset == 'dataset') {
+            $links['view-dataset-crosstab-tab'] = array(
+              '#theme' => 'menu_local_action',
+              '#link' => array(
+                'title' => t('Domain Coverage'),
+                'page callback' => 'mica_dimensions_coverage_page',
+                'href' => 'content/domain-coverage', // Arguments could be taxonomies and dataset
+                'localized_options' => $query
+              ),
+            );
+          }
+        }
+        if ($node_type === 'dataset' && variable_get('dataschema')) {
+          $dataset_type = $wrapper->field_dataset_type->value();
+          if (!empty($dataset_type) && $dataset_type == 'harmonization') {
+          $query = array(
+            'attributes' => array('class' => 'highlight'),
+            'query' => array(
+              'type' => 'harmonization',
+              'dataset[]' => $node->nid
+            )
+          );
+
           $links['view-dataset-crosstab-tab'] = array(
             '#theme' => 'menu_local_action',
             '#link' => array(
@@ -143,25 +165,6 @@ function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $
             ),
           );
         }
-      }
-      if ($node_type === 'dataset' && variable_get('dataschema')) {
-        $query = array(
-          'attributes' => array('class' => 'highlight'),
-          'query' => array(
-            'type' => 'harmonization',
-            'dataset[]' => $node->nid
-          )
-        );
-
-        $links['view-dataset-crosstab-tab'] = array(
-          '#theme' => 'menu_local_action',
-          '#link' => array(
-            'title' => t('Domain Coverage'),
-            'page callback' => 'mica_dimensions_coverage_page',
-            'href' => 'content/domain-coverage', // Arguments could be taxonomies and dataset
-            'localized_options' => $query
-          ),
-        );
       }
       break;
     case 'harmonization-datasets':

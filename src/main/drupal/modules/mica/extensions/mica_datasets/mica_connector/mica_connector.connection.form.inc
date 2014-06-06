@@ -206,7 +206,8 @@ function _mica_connector_add_study_to_dataset($study, $dataset) {
 }
 
 function _mica_connector_dataset_connection_delete(&$study_node, $dataset_node_id) {
-  _mica_connector_remove_study_to_dataset($study_node, node_load($dataset_node_id));
+  $dataset_node =node_load($dataset_node_id);
+  _mica_connector_remove_study_to_dataset($study_node, $dataset_node);
 
   // todo delete connector entity too
   $connector = mica_connector_query($dataset_node_id, $study_node->nid);
@@ -415,8 +416,11 @@ function _mica_connector_get_dataset_ids($study_node_id) {
  */
 function _mica_connector_node_field_values($node, $field_name) {
   $field = $node->$field_name;
-  if ($field) {
+  if ($field && isset($field[$node->language])) {
     return $field[$node->language];
+  }
+  elseif(!isset($field[$node->language])){
+    return $field['und'];
   }
   return array();
 }
