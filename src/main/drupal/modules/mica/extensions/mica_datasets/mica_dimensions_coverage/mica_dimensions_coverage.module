@@ -129,7 +129,7 @@ function mica_dimensions_coverage_menu_local_tasks_alter(&$data, $router_item, $
               }
             }
           }
-          $i++;
+        $i++;
         }
 
         if (!empty($study_dataset) && $study_dataset == 'dataset') {
