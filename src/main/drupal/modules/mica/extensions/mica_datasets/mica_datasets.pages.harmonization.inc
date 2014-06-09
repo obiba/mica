@@ -218,8 +218,8 @@ function mica_datasets_dataset_harmonization_page($dataset_node) {
   }
 
   $header[0] = t('Variables (%nb)', array('%nb' => $count_variables));
-
-  $output = drupal_render(drupal_get_form('mica_datasets_harmonization_legend_form'));
+  $dataset_harmonization_legend_form = drupal_get_form('mica_datasets_harmonization_legend_form');
+  $output = drupal_render($dataset_harmonization_legend_form);
   $output .= '<br/>';
   $output .= theme(
     'table',
