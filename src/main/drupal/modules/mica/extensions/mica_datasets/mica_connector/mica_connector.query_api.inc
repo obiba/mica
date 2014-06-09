@@ -2,10 +2,12 @@
 
 require_once('mica_connector.response_parser.inc');
 
+//
 module_load_include('inc', 'mica_distribution', 'modules/mica/extensions/mica_protobuf/mica_export_query_dto');
 //include_once('opal_php/protobuf/Protobuf.php');
 //
 use \DrSlump\Protobuf;
+
 //Protobuf::autoload();
 //
 module_load_include('php', 'mica_distribution', 'modules/mica/extensions/mica_protobuf/protobuf/protos/Search');

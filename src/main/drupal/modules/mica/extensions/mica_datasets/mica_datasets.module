@@ -744,9 +744,7 @@ function mica_datasets_node_view_alter(&$build) {
             $options[] = $option;
           }
         }
-
         $Form_dataset_harmonization_legend = drupal_get_form('mica_datasets_harmonization_legend_form');
-
         $build['harmonization'] = array(
           '#type' => 'fieldset',
           '#title' => t('Harmonization'),
