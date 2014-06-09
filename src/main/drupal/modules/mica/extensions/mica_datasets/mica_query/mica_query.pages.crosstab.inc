@@ -9,8 +9,8 @@ function mica_query_crosstab_run_page($dataset, $variable = NULL) {
 
   $form_state['mica']['dataset_node'] = $dataset;
   $form_state['mica']['variable_node'] = $variable;
-
-  $output = drupal_render(drupal_build_form('mica_query_crosstab_form', $form_state));
+$mica_query_crosstab_form = drupal_build_form('mica_query_crosstab_form', $form_state);
+  $output = drupal_render($mica_query_crosstab_form);
 
   return $output;
 }

@@ -2,14 +2,15 @@
 
 require_once('mica_connector.response_parser.inc');
 
-//module_load_include('php', 'mica_distribution', 'libraries/opal_php/protobuf/Protobuf');
-include_once('opal_php/protobuf/Protobuf.php');
-
+//
+module_load_include('inc', 'mica_distribution', 'modules/mica/extensions/mica_protobuf/mica_export_query_dto');
+//include_once('opal_php/protobuf/Protobuf.php');
+//
 use \DrSlump\Protobuf;
-Protobuf::autoload();
-
-//module_load_include('php', 'mica_distribution', 'libraries/opal_php/protos/Search');
-include_once('opal_php/protos/Search.php');
+//Protobuf::autoload();
+//
+module_load_include('php', 'mica_distribution', 'modules/mica/extensions/mica_protobuf/protobuf/protos/Search');
+//include_once('opal_php/protos/Search.php');
 
 /**
  * An abstract implementation of a dataset connection that builds and sends an Elastic Search query from the query terms.
