@@ -745,6 +745,8 @@ function mica_datasets_node_view_alter(&$build) {
           }
         }
 
+        $Form_dataset_hamonization_lefend = drupal_get_form('mica_datasets_harmonization_legend_form');
+
         $build['harmonization'] = array(
           '#type' => 'fieldset',
           '#title' => t('Harmonization'),
@@ -752,7 +754,7 @@ function mica_datasets_node_view_alter(&$build) {
           '#collapsible' => TRUE,
           '#collapsed' => FALSE,
           'legend' => array(
-            '#markup' => drupal_render(drupal_get_form('mica_datasets_harmonization_legend_form')),
+            '#markup' => drupal_render($Form_dataset_hamonization_lefend),
           ),
           'table' => array(
             '#markup' => theme(
