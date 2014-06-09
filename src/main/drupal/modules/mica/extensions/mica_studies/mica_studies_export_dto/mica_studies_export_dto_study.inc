@@ -3,8 +3,7 @@
  * @file
  * mica_export_study.inc
  */
-include_once(drupal_get_path('module', 'mica_protobuf') . '/mica_export_query_dto.inc');
-
+require_once('mica_studies_export_dto_api.inc');
 function _mica_studies_export_dto_study_dto($nid) {
 
   $study = array();
@@ -15,7 +14,9 @@ function _mica_studies_export_dto_study_dto($nid) {
   $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addName', $wrapper, 'title_field');
 
   $study_acronym = $wrapper->field_acroym->value();
-  !empty($study_acronym) ? $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addAcronym', $wrapper, 'field_acroym') : NULL;
+  if (!empty($study_acronym)) {
+    $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addAcronym', $wrapper, 'field_acroym');
+  }
 
   foreach ($wrapper->field_investigators->getIterator() as $investigator_wrapper) {
     if (!empty($investigator_wrapper)) {
@@ -28,7 +29,9 @@ function _mica_studies_export_dto_study_dto($nid) {
   $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addObjectives', $wrapper, 'body', 'value');
 
   $url_website = $wrapper->field_website->value();
-  !empty($url_website) ? $study_dto->setWebsite($url_website['url']) : NULL;
+  if (!empty($url_website)) {
+    $study_dto->setWebsite($url_website['url']);
+  };
 
   foreach ($wrapper->field_contacts_ref->getIterator() as $contact_wrapper) {
     if (!empty($contact_wrapper)) {
@@ -57,35 +60,35 @@ function _mica_studies_export_dto_study_dto($nid) {
     if ($design->value() == 'other') {
       $design_other_sp = $wrapper->field_design_other_sp->value();
       // dpm( $wrapper->language('en')->field_design_other_sp->value());
-      !empty($design_other_sp) ?
+      if (!empty($design_other_sp)) {
         $dto_util->_mica_studies_export_dto_add_translated_Field($study_methods_dto, 'addOtherDesign', $wrapper,
-          'field_design_other_sp', 'value')
-        : NULL;
+          'field_design_other_sp', 'value');
+      }
     }
   }
   $info_design_follow_up = $wrapper->field_info_design_follow_up->value();
 
-  !empty($info_design_follow_up) ?
+  if(!empty($info_design_follow_up)){
     $dto_util->_mica_studies_export_dto_add_translated_Field($study_methods_dto, 'addFollowUpInfo', $wrapper,
-      'field_info_design_follow_up', 'value')
-    : NULL;
+      'field_info_design_follow_up', 'value');
+  }
 
   foreach ($wrapper->field_recruitment->getIterator() as $target) {
     $study_methods_dto->addRecruitments($target->value());
     if ($target->value() == 'other') {
       $recruitment_other_sp = $wrapper->field_recruitment_other_sp->value();
-      !empty($recruitment_other_sp) ?
+      if(!empty($recruitment_other_sp)){
         $dto_util->_mica_studies_export_dto_add_translated_Field($study_methods_dto, 'addOtherRecruitment', $wrapper,
-          'field_recruitment_other_sp')
-        : NULL;
+          'field_recruitment_other_sp');
+      }
     }
   }
 
   $recruitment_supp_info = $wrapper->field_recruitment_supp_info->value();
-  !empty($recruitment_supp_info) ?
+  if(!empty($recruitment_supp_info)){
     $dto_util->_mica_studies_export_dto_add_translated_Field($study_methods_dto, 'addInfo', $wrapper,
-      'field_recruitment_supp_info', 'value')
-    : NULL;
+      'field_recruitment_supp_info', 'value');
+  }
 
   $study_dto->setMethods($study_methods_dto);
 
@@ -110,7 +113,8 @@ function _mica_studies_export_dto_study_dto($nid) {
     $study_dto->addAccess('other');
     $access_other_info = $wrapper->field_access_other_sp->value();
     if (!empty($access_other_info)) {
-      $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addOtherAccess', $wrapper, 'field_access_other_sp', 'value');
+      $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addOtherAccess', $wrapper,
+        'field_access_other_sp', 'value');
     }
   }
 
@@ -122,9 +126,10 @@ function _mica_studies_export_dto_study_dto($nid) {
 
   $supl_info = $wrapper->field_supp_infos->value();
 
-  !empty($supl_info) ?
-    $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addInfo', $wrapper, 'field_supp_infos', 'value')
-    : NULL;
+  if(!empty($supl_info)){
+    $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addInfo', $wrapper,
+      'field_supp_infos', 'value');
+  }
 
   foreach ($wrapper->field_study_populations->getIterator() as $population_wrapper) {
     if (!empty($population_wrapper)) {
