@@ -150,7 +150,7 @@ function _mica_studies_export_dto_study_dto($nid) {
   $data = $study_dto->serialize($codec);
   dpm($study_dto);
   //dpm($data);
-  $url = 'http://localhost:8080/ws/draft/studies';
+  $url = 'http://localhost:8082/ws/draft/studies';
 
   $post = new HttpClientRequest($url, array(
     'method' => POST,
