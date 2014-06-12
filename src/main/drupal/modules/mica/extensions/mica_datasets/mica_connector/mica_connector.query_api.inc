@@ -2,7 +2,6 @@
 
 require_once('mica_connector.response_parser.inc');
 
-
 $path_module_protobuf = drupal_get_path('module', 'obiba_protobuf');
 $path_module_protos = drupal_get_path('module', 'mica_export_client_model');
 
@@ -35,7 +34,7 @@ class MicaDatasetElasticSearchQueryApi extends MicaDatasetAbstractQuery {
     $dtoMatched = new Search\QueryTermDto();
     $dtoMatched->setFacet('_matched');
 
-    if (!empty($filters)){
+    if (!empty($filters)) {
       $dtoLogicalTerm = new Search\LogicalTermDto();
 
       foreach ($filters as $filter) {
@@ -117,18 +116,18 @@ class MicaDatasetElasticSearchQueryApi extends MicaDatasetAbstractQuery {
       $term = $terms[0];
       $impl = $term->termImpl();
       $categories_filter = array();
-      foreach($impl->categories() as $i => $category){
+      foreach ($impl->categories() as $i => $category) {
 
         $dtoQueries->addQueries($this->asCrossFacetBy($category, $impl, $by_field, $impl->getFieldName(), array($category)));
 
-        if ($is_continuous){
+        if ($is_continuous) {
           $categories_filter[] = "$category";
         }
       }
     }
 
     // if stats facet, have a facet for total mean and std deviation
-    if ($is_continuous){
+    if ($is_continuous) {
       $dtoQueries->addQueries($this->asCrossFacetBy("total_mean", $impl, $by_field, $impl->getFieldName(), $categories_filter));
     }
     // one facet for the population matching all terms
@@ -201,7 +200,7 @@ class MicaDatasetElasticSearchQueryApi extends MicaDatasetAbstractQuery {
     return $dtoFacetFilter;
   }
 
-  protected  function asFacet(QueryTermInterface $term) {
+  protected function asFacet(QueryTermInterface $term) {
     $dtoQuery = new Search\QueryTermDto();
     $dtoQuery->setFacet($term->getName());
     $dtoQuery->setGlobal(TRUE);
@@ -214,7 +213,7 @@ class MicaDatasetElasticSearchQueryApi extends MicaDatasetAbstractQuery {
     return $dtoQuery;
   }
 
-  protected  function asFacetBy(QueryTermInterface $term, $field) {
+  protected function asFacetBy(QueryTermInterface $term, $field) {
     $dtoQuery = new Search\QueryTermDto();
     $dtoQuery->setFacet($term->getName());
 
@@ -230,7 +229,7 @@ class MicaDatasetElasticSearchQueryApi extends MicaDatasetAbstractQuery {
     return $dtoQuery;
   }
 
-  protected  function asFilter(QueryTermInterface $term) {
+  protected function asFilter(QueryTermInterface $term) {
     $dtoFilter = new Search\FilterDto();
     $dtoFilter->setVariable($term->getFieldName());
 
