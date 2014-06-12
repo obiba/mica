@@ -593,44 +593,42 @@ function mica_datasets_prepare_prettify() {
  */
 function mica_datasets_node_view_alter(&$build) {
   if ($build['#view_mode'] === 'left_area' && $build['#bundle'] === 'variable') {
-    unset($build['field_variable_study_var_att']['#title']);
-    if (!empty($build['field_dataset'])) {
+    $var_wrapper = entity_metadata_wrapper('node', $build['#node']->nid);
+    $datasets = $var_wrapper->field_dataset->value();
+    if (!empty($datasets)) {
+      unset($build['field_variable_study_var_att']['#title']);
       $i = 0;
       $total_study = 0;
       $count_notpermeted = 0;
-      foreach ($build['field_dataset'] as $key_dataset => $value_dataset) {
-        if (is_int($key_dataset)) {
-          $datset_nid = $value_dataset['#options']['entity']->nid;
-          $dataset_wrapper = entity_metadata_wrapper('node', $datset_nid);
-          foreach ($dataset_wrapper->field_dataset_studies->getIterator() as $study) {
-            $stidy_nid = $study->getIdentifier();
-            $study = node_load($stidy_nid);
-            if (node_access('view', $study)) {
-              if (empty($build['field_variable_study_var_att']['#title'])) {
-                $build['field_variable_study_var_att'] = $Study1 = field_view_field('node', $study, 'title_field', array('weight' => 2));
-                $build['field_variable_study_var_att']['#title'] = t('Studies');
-              }
-              else {
-                $Study1 = field_view_field('node', $study, 'title_field', array('weight' => 2));
-              }
-              $build['field_variable_study_var_att'][$i]['#markup'] = '<a href="' . url('node/' . $stidy_nid) . '"> ' . $Study1['#items'][0]['value'] . '</a>';
-              $build['field_variable_study_var_att']['#items'][$i]['value'] = $Study1['#items'][0]['value'];
-              $build['field_variable_study_var_att']['#items'][$i]['format'] = $Study1['#items'][0]['format'];
-              $build['field_variable_study_var_att']['#items'][$i]['safe_value'] = $Study1['#items'][0]['safe_value'];
-              $i++;
-            }
-            else {
-              $count_notpermeted++;
-            }
-            $total_study++;
+      $value_dataset = entity_metadata_wrapper('node', $datasets);
+      $datset_nid = $value_dataset->getIdentifier();
+
+      foreach ($value_dataset->field_dataset_studies->getIterator() as $study) {
+        $stidy_nid = $study->getIdentifier();
+        $study = node_load($stidy_nid);
+        if (node_access('view', $study)) {
+          if (empty($build['field_variable_study_var_att']['#title'])) {
+            $build['field_variable_study_var_att'] = $Study1 = field_view_field('node', $study, 'title_field', array('weight' => 4));
+            $build['field_variable_study_var_att']['#title'] = t('Studies');
           }
+          else {
+            $Study1 = field_view_field('node', $study, 'title_field', array('weight' => 4));
+          }
+          $build['field_variable_study_var_att'][$i]['#markup'] = '<a href="' . url('node/' . $stidy_nid) . '"> ' . $Study1['#items'][0]['value'] . '</a>';
+          $build['field_variable_study_var_att']['#items'][$i]['value'] = $Study1['#items'][0]['value'];
+          $build['field_variable_study_var_att']['#items'][$i]['format'] = $Study1['#items'][0]['format'];
+          $build['field_variable_study_var_att']['#items'][$i]['safe_value'] = $Study1['#items'][0]['safe_value'];
+          $i++;
         }
-
+        else {
+          $count_notpermeted++;
+        }
+        $total_study++;
       }
-      if ($count_notpermeted == $total_study) {
-        unset($build['field_variable_study_var_att']);
-      }
 
+    }
+    if ($count_notpermeted == $total_study) {
+      unset($build['field_variable_study_var_att']);
     }
   }
   if ($build['#view_mode'] === 'right_area' && $build['#bundle'] === 'variable') {
