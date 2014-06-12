@@ -68,7 +68,7 @@ function _mica_studies_export_dto_study_dto($nid) {
   }
   $info_design_follow_up = $wrapper->field_info_design_follow_up->value();
 
-  if(!empty($info_design_follow_up)){
+  if (!empty($info_design_follow_up)) {
     $dto_util->_mica_studies_export_dto_add_translated_Field($study_methods_dto, 'addFollowUpInfo', $wrapper,
       'field_info_design_follow_up', 'value');
   }
@@ -77,7 +77,7 @@ function _mica_studies_export_dto_study_dto($nid) {
     $study_methods_dto->addRecruitments($target->value());
     if ($target->value() == 'other') {
       $recruitment_other_sp = $wrapper->field_recruitment_other_sp->value();
-      if(!empty($recruitment_other_sp)){
+      if (!empty($recruitment_other_sp)) {
         $dto_util->_mica_studies_export_dto_add_translated_Field($study_methods_dto, 'addOtherRecruitment', $wrapper,
           'field_recruitment_other_sp');
       }
@@ -85,7 +85,7 @@ function _mica_studies_export_dto_study_dto($nid) {
   }
 
   $recruitment_supp_info = $wrapper->field_recruitment_supp_info->value();
-  if(!empty($recruitment_supp_info)){
+  if (!empty($recruitment_supp_info)) {
     $dto_util->_mica_studies_export_dto_add_translated_Field($study_methods_dto, 'addInfo', $wrapper,
       'field_recruitment_supp_info', 'value');
   }
@@ -126,7 +126,7 @@ function _mica_studies_export_dto_study_dto($nid) {
 
   $supl_info = $wrapper->field_supp_infos->value();
 
-  if(!empty($supl_info)){
+  if (!empty($supl_info)) {
     $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addInfo', $wrapper,
       'field_supp_infos', 'value');
   }
@@ -150,7 +150,7 @@ function _mica_studies_export_dto_study_dto($nid) {
   $data = $study_dto->serialize($codec);
   dpm($study_dto);
   //dpm($data);
-  $url = 'http://localhost:8080/ws/draft/studies';
+  $url = 'http://localhost:8082/ws/draft/studies';
 
   $post = new HttpClientRequest($url, array(
     'method' => POST,

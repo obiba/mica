@@ -1,0 +1,6 @@
+name = "Mica export client model"
+description = "mica export client model"
+package = Mica
+core = 7.x
+
+dependencies[] = obiba_protobuf
