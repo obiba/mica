@@ -1,5 +1,13 @@
 <?php
-module_load_include('inc', 'mica_distribution', 'modules/mica/extensions/mica_protobuf/mica_export_query_dto');
+$path_module_protobuf = drupal_get_path('module', 'obiba_protobuf');
+$path_module_protos = drupal_get_path('module', 'mica_export_client_model');
+
+include_once($path_module_protobuf . '/protobuf/Protobuf.php');
+use \DrSlump\Protobuf;
+
+Protobuf::autoload();
+
+include_once($path_module_protos . '/protos/Mica.php');
 
 class QuerySendDto {
 
