@@ -1,7 +1,0 @@
-name = "Mica Protobuf"
-description = "Mica Protobuf"
-package = Mica
-core = 7.x
-
-;dependencies[] = restclient
-;dependencies[] = chr
