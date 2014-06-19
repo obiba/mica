@@ -11,7 +11,6 @@ function mica_publications_preprocess_page(&$variables) {
   $publication_module_path = drupal_get_path('module', 'mica_publications');
   $current_path = current_path();
   if ($current_path == 'publication-search') {
-    dpm($publication_module_path);
     drupal_add_css($publication_module_path . '/css/mica_publications.css', array('type' => 'file'));
   }
 }
