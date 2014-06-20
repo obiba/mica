@@ -135,30 +135,17 @@ function _mica_studies_export_dto_study_dto($nid) {
     }
   }
   $logo = $wrapper->field_logo->value();
-  $logo_tmp_file = mica_studies_send_attachement($logo);
-  // dpm($logo_tmp_file);
-  if (!empty($logo_tmp_file)) {
-    $attachement_dto = new \obiba\mica\AttachmentDto;
-    $attachement_dto->setId($logo_tmp_file);
-    $attachement_dto->setFileName($logo['filename']);
-    $attachement_dto->setType('document');
-    $attachement_dto->setLang('en');
-    $attachement_dto->setJustUploaded(TRUE);
-
-    $study_dto->setLogo($attachement_dto);
+  $logo_tmp_file_id = mica_studies_send_attachement($logo);
+  if (!empty($logo_tmp_file_id)) {
+    $attachement_logo_dto = $dto_util->_mica_studies_export_dto_attachement_construct($logo, $logo_tmp_file_id);
+    dpm($attachement_logo_dto);
+    $study_dto->setLogo($attachement_logo_dto);
   }
-  unset($attachement_dto);
+
   foreach ($wrapper->field_documents->value() as $attachement) {
     $id_file_server_response = mica_studies_send_attachement($attachement);
-    //  dpm($id_file_server_response);
-    //  *******************************attachment
     if (!empty($id_file_server_response)) {
-      $attachement_dto = new \obiba\mica\AttachmentDto;
-      $attachement_dto->setId($id_file_server_response);
-      $attachement_dto->setFileName($attachement['filename']);
-      $attachement_dto->setType('document');
-      $attachement_dto->setLang('en');
-      $attachement_dto->setJustUploaded(TRUE);
+      $attachement_dto = $dto_util->_mica_studies_export_dto_attachement_construct($attachement, $id_file_server_response);
 
       $study_dto->addAttachments($attachement_dto);
     }
@@ -174,7 +161,7 @@ function _mica_studies_export_dto_study_dto($nid) {
 
   $codec = new \DrSlump\Protobuf\Codec\Json();
   $data = $study_dto->serialize($codec);
-  dpm($data);
+  dpm($study_dto);
   //dpm($data);
   //$url = 'http://198.168.138.210:8082/ws/draft/studies'; //ramin
   $url = 'http://localhost:8082/ws/draft/studies';
