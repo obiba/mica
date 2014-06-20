@@ -1,0 +1,16 @@
+<?php
+/**
+ * @file
+ * Code for the Mica publications feature.
+ */
+
+include_once 'mica_publications.features.inc';
+// In preprocess page function
+// add a custom style sheet for the page.
+function mica_publications_preprocess_page(&$variables) {
+  $publication_module_path = drupal_get_path('module', 'mica_publications');
+  $current_path = current_path();
+  if ($current_path == 'publication-search') {
+    drupal_add_css($publication_module_path . '/css/mica_publications.css', array('type' => 'file'));
+  }
+}
