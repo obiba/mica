@@ -121,9 +121,6 @@ function _mica_studies_export_dto_study_dto($nid) {
   $study_dto->setMarkerPaper($wrapper->field_marker_paper->value());
   $study_dto->setPubmedId($wrapper->field_pubmedid->value());
 
-  //@TODO deal with attachement files
-/////////////////////////////////////
-
   $supl_info = $wrapper->field_supp_infos->value();
 
   if (!empty($supl_info)) {
@@ -138,6 +135,23 @@ function _mica_studies_export_dto_study_dto($nid) {
     }
   }
 
+  //foreach ($wrapper->field_documents->value() as $attachement) {
+  //  $id_file_server_response =
+  //   $id_file_server_response = mica_studies_send_attachement($attachement);
+  //  dpm($id_file_server_response);
+  //   dpm($id_file_server_response);
+  // *******************************attachment
+//    if (!empty($id_file_server_response)) {
+//      $attachement_dto = new \obiba\mica\AttachmentDto;
+//      $attachement_dto->setId('53a05722c4aab7546472d78a');
+//      $attachement_dto->setFileName('file_csv_cool_file');
+//      $attachement_dto->setType('Document');
+//      $attachement_dto->setLang('en');
+//      $attachement_dto->setJustUploaded(TRUE);
+//
+//      $study_dto->addAttachments($attachement_dto);
+//    }
+  //**********************************
 //  //TODO Attach networks to study
 //  if (module_exists('mica_networks')) {
 //    foreach ($wrapper->field_networks->getIterator() as $network_wrapper) {
@@ -145,7 +159,7 @@ function _mica_studies_export_dto_study_dto($nid) {
 //    }
 // //   $study_dto->addNetworks($network);
 //  }
-
+  //}
   $codec = new \DrSlump\Protobuf\Codec\Json();
   $data = $study_dto->serialize($codec);
   dpm($study_dto);
@@ -165,11 +179,16 @@ function _mica_studies_export_dto_study_dto($nid) {
   } catch (HttpClientException $e) {
     if ($e->getCode() == 0) {
       // curl error
+
       throw new Exception($e->getMessage());
     }
     elseif (!in_array($e->getCode(), array(200, 201, 202, 203, 204, 205, 206))) {
-      throw $e;
+      dpm($e->getResponse());
+      drupal_set_message(t('Export error'), $type = 'error');
+      drupal_set_message($e->getResponse()->body, $type = 'error');
+      //  throw $e;
     }
+
     $body = $e->getResponse()->body;
   }
 
