@@ -55,6 +55,60 @@ function mica_studies_export_dto_menu_local_tasks_alter(&$data, $router_item, $r
 }
 
 /**
+ * Copy attachment files of each node
+ */
+function mica_studies_copy_attachment_file($documents) {
+  $destination = NULL;
+  if (empty($documents)) {
+    return;
+  }
+
+  $path = "/tmp/attachment";
+  if (!is_dir($path)) {
+    drupal_mkdir($path);
+  }
+  $destination = $path . "/" . $documents['filename'];
+  if (!empty($documents)) {
+    file_unmanaged_copy($documents['uri'], $destination, FILE_EXISTS_REPLACE);
+  }
+
+  return $destination;
+}
+
+function mica_studies_send_attachement($attachement) {
+  //@TODO deal with attachement files
+
+  $file_tmp_uri = mica_studies_copy_attachment_file($attachement);
+  $file_info = new finfo(FILEINFO_MIME);
+  $mime_file = $file_info->file($file_tmp_uri);
+//////////////////
+  $url = 'http://localhost:8082/ws/files/temp';
+  $cfile = new CurlFile($file_tmp_uri, $mime_file, 'test_file_to_upload');
+  $data_file = array('file' => $cfile);
+  $resource = curl_init();
+  curl_setopt($resource, CURLOPT_URL, $url);
+  curl_setopt($resource, CURLOPT_HEADER, TRUE);
+  curl_setopt($resource, CURLOPT_RETURNTRANSFER, TRUE);
+  curl_setopt($resource, CURLOPT_RETURNTRANSFER, TRUE);
+  curl_setopt($resource, CURLINFO_HEADER_OUT, TRUE);
+  curl_setopt($resource, CURLOPT_POST, 1);
+  curl_setopt($resource, CURLOPT_POSTFIELDS, $data_file);
+
+  $result = curl_exec($resource);
+
+  $http_code = curl_getinfo($resource, CURLINFO_HTTP_CODE);
+  $http_header_out = curl_getinfo($resource);
+
+  if (preg_match('/(?<=files\/temp\/).*/', $result, $group)) {
+    $match = $group[0];
+  }
+  curl_close($resource);
+//
+  return $match;
+/////////////////////////////////////
+}
+
+/**
  *
  */
 function mica_studies_export_dto($node) {
@@ -62,7 +116,8 @@ function mica_studies_export_dto($node) {
   if ($node->type == 'study') {
 
     //get DTO
-    $Study_Dto = $node->nid;
+    $Study_Dto = $node;
+
     $operations[] = array('_mica_studies_export_dto_study_dto', array($node));
 
     //Send Dto via REST
