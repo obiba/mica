@@ -82,6 +82,7 @@ function mica_studies_send_attachement($attachement) {
   $file_info = new finfo(FILEINFO_MIME);
   $mime_file = $file_info->file($file_tmp_uri);
 //////////////////
+  //$url = 'http://198.168.138.210:8082/ws/files/temp'; //ramin
   $url = 'http://localhost:8082/ws/files/temp';
   $cfile = new CurlFile($file_tmp_uri, $mime_file, 'test_file_to_upload');
   $data_file = array('file' => $cfile);
@@ -99,6 +100,8 @@ function mica_studies_send_attachement($attachement) {
   $http_code = curl_getinfo($resource, CURLINFO_HTTP_CODE);
   $http_header_out = curl_getinfo($resource);
 
+  dpm($http_code);
+  // dpm($http_header_out);
   if (preg_match('/(?<=files\/temp\/).*/', $result, $group)) {
     $match = $group[0];
   }

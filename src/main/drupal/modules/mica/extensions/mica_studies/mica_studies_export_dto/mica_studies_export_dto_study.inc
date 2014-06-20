@@ -134,23 +134,35 @@ function _mica_studies_export_dto_study_dto($nid) {
       $study_dto->addPopulations($population);
     }
   }
+  $logo = $wrapper->field_logo->value();
+  $logo_tmp_file = mica_studies_send_attachement($logo);
+  // dpm($logo_tmp_file);
+  if (!empty($logo_tmp_file)) {
+    $attachement_dto = new \obiba\mica\AttachmentDto;
+    $attachement_dto->setId($logo_tmp_file);
+    $attachement_dto->setFileName($logo['filename']);
+    $attachement_dto->setType('document');
+    $attachement_dto->setLang('en');
+    $attachement_dto->setJustUploaded(TRUE);
 
-  //foreach ($wrapper->field_documents->value() as $attachement) {
-  //  $id_file_server_response =
-  //   $id_file_server_response = mica_studies_send_attachement($attachement);
-  //  dpm($id_file_server_response);
-  //   dpm($id_file_server_response);
-  // *******************************attachment
-//    if (!empty($id_file_server_response)) {
-//      $attachement_dto = new \obiba\mica\AttachmentDto;
-//      $attachement_dto->setId('53a05722c4aab7546472d78a');
-//      $attachement_dto->setFileName('file_csv_cool_file');
-//      $attachement_dto->setType('Document');
-//      $attachement_dto->setLang('en');
-//      $attachement_dto->setJustUploaded(TRUE);
-//
-//      $study_dto->addAttachments($attachement_dto);
-//    }
+    $study_dto->setLogo($attachement_dto);
+  }
+  unset($attachement_dto);
+  foreach ($wrapper->field_documents->value() as $attachement) {
+    $id_file_server_response = mica_studies_send_attachement($attachement);
+    //  dpm($id_file_server_response);
+    //  *******************************attachment
+    if (!empty($id_file_server_response)) {
+      $attachement_dto = new \obiba\mica\AttachmentDto;
+      $attachement_dto->setId($id_file_server_response);
+      $attachement_dto->setFileName($attachement['filename']);
+      $attachement_dto->setType('document');
+      $attachement_dto->setLang('en');
+      $attachement_dto->setJustUploaded(TRUE);
+
+      $study_dto->addAttachments($attachement_dto);
+    }
+  }
   //**********************************
 //  //TODO Attach networks to study
 //  if (module_exists('mica_networks')) {
@@ -159,11 +171,12 @@ function _mica_studies_export_dto_study_dto($nid) {
 //    }
 // //   $study_dto->addNetworks($network);
 //  }
-  //}
+
   $codec = new \DrSlump\Protobuf\Codec\Json();
   $data = $study_dto->serialize($codec);
-  dpm($study_dto);
+  dpm($data);
   //dpm($data);
+  //$url = 'http://198.168.138.210:8082/ws/draft/studies'; //ramin
   $url = 'http://localhost:8082/ws/draft/studies';
 
   $post = new HttpClientRequest($url, array(
