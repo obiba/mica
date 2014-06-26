@@ -140,7 +140,7 @@ function mica_studies_send_attachement($attachement) {
 //    }
 //  }
   ///////////////////////
-  dpm($match);
+  //dpm($match);
   return trim($match);
 }
 
