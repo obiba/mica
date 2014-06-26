@@ -10,14 +10,48 @@ Protobuf::autoload();
 include_once($path_module_protos . '/protos/Mica.php');
 
 class QuerySendDto {
+  protected $micaUrl;
 
+  public function __construct($mica_url = NULL) {
+    $this->micaUrl = (isset($mica_url) ? $mica_url : variable_get_value('mica_url')) . '/ws';
+  }
+
+  public function export_study($data, $resource, $method) {
+    $url = $this->micaUrl . '/' . $resource;
+    // authenticate by credentials
+    $credentials = variable_get_value('mica_anonymous_name') . ':' . variable_get_value('mica_anonymous_password');
+    $headers = array('Content-Type' => array('application/json'));
+    $headers['Authorization'] = array('Basic ' . base64_encode($credentials));
+    $request = new HttpClientRequest($url, array(
+      'method' => HttpClientRequest::METHOD_POST,
+      'headers' => $headers,
+      'data' => $data,
+    ));
+
+    $client = new HttpClient($formatter = FALSE);
+    if (!isset($client->options['curlopts'])) {
+      $client->options['curlopts'] = array();
+    }
+
+    $client->options['curlopts'] += array(
+      CURLOPT_SSLVERSION => 3,
+      CURLOPT_SSL_VERIFYHOST => FALSE,
+      CURLOPT_SSL_VERIFYPEER => FALSE
+    );
+    try {
+      $data = $client->execute($request);
+      return $data;
+    } catch (HttpClientException $e) {
+      drupal_set_message(t('Can\'t procceed your request server return : ') . $e->getMessage(), 'error');
+    }
+  }
 
   //Deal with multi lang content
   function _mica_studies_export_dto_add_translated_Field($dto_obj, $dto_method, $wrapper, $field, $array_field = NULL, $other_getter = NULL, $index_field = NULL) {
     $default_lang = language_default();
     if (!empty($field)) {
       if (module_exists('mica_i18n')) {
-        foreach (language_list() as $lang => $std_lang) { // if($field =='field_pop_exist_study_part'){dpm($wrapper->language($lang)->{$field}->value());}
+        foreach (language_list() as $lang => $std_lang) {
           $field_value = $wrapper->language($lang)->{$field}->value();
 
           if (empty($array_field) && empty($other_getter) && empty($index_field)) {
@@ -26,7 +60,7 @@ class QuerySendDto {
           if (!empty($other_getter)) {
             $dto_obj->{$dto_method}($this->_set_LocalizedStringDto($wrapper->language($lang)->{$field}->label(), $lang));
           }
-          if (!empty($array_field)) {
+          if (!empty($array_field)) { //if($dto_method =='addDescription'){dpm($wrapper);}
             $dto_obj->{$dto_method}($this->_set_LocalizedStringDto($field_value[$array_field], $lang));
           }
           if (!empty($index_field)) {
@@ -83,11 +117,12 @@ class QuerySendDto {
 
   }
 
-  function _mica_studies_export_dto_attachement_construct($attachment, $server_id_attachemnt) {
+  function _mica_studies_export_dto_attachement_construct($attachment, $server_id_attachemnt, $wrapper, $study_dto) {
     $attachement_dto = new \obiba\mica\AttachmentDto;
     $attachement_dto->setId($server_id_attachemnt);
     $attachement_dto->setJustUploaded(TRUE);
     $attachement_dto->setType('document');
+    $attachement_dto->addDescription($this->_set_LocalizedStringDto($attachment['description'], 'en'));
     $attachement_dto->setFileName($attachment['filename']);
     $attachement_dto->setLang('en');
     return $attachement_dto;

@@ -138,15 +138,13 @@ function _mica_studies_export_dto_study_dto($nid) {
   $logo_tmp_file_id = mica_studies_send_attachement($logo);
   if (!empty($logo_tmp_file_id)) {
     $attachement_logo_dto = $dto_util->_mica_studies_export_dto_attachement_construct($logo, $logo_tmp_file_id);
-    dpm($attachement_logo_dto);
     $study_dto->setLogo($attachement_logo_dto);
   }
 
   foreach ($wrapper->field_documents->value() as $attachement) {
     $id_file_server_response = mica_studies_send_attachement($attachement);
     if (!empty($id_file_server_response)) {
-      $attachement_dto = $dto_util->_mica_studies_export_dto_attachement_construct($attachement, $id_file_server_response);
-
+      $attachement_dto = $dto_util->_mica_studies_export_dto_attachement_construct($attachement, $id_file_server_response, $attachement, $study_dto);
       $study_dto->addAttachments($attachement_dto);
     }
   }
@@ -161,36 +159,11 @@ function _mica_studies_export_dto_study_dto($nid) {
 
   $codec = new \DrSlump\Protobuf\Codec\Json();
   $data = $study_dto->serialize($codec);
-  dpm($study_dto);
+  dpm($data);
   //dpm($data);
   //$url = 'http://198.168.138.210:8082/ws/draft/studies'; //ramin
-  $url = 'http://localhost:8082/ws/draft/studies';
-
-  $post = new HttpClientRequest($url, array(
-    'method' => POST,
-    'headers' => array('Content-Type' => array('application/json')),
-    'data' => $data,
-    'parameters' => array(),
-  ));
-
-  try {
-    $client = new HttpClient($formatter = FALSE);
-    $body = $client->execute($post);
-  } catch (HttpClientException $e) {
-    if ($e->getCode() == 0) {
-      // curl error
-
-      throw new Exception($e->getMessage());
-    }
-    elseif (!in_array($e->getCode(), array(200, 201, 202, 203, 204, 205, 206))) {
-      dpm($e->getResponse());
-      drupal_set_message(t('Export error'), $type = 'error');
-      drupal_set_message($e->getResponse()->body, $type = 'error');
-      //  throw $e;
-    }
-
-    $body = $e->getResponse()->body;
-  }
+  $url = 'https://localhost:8445/ws/draft/studies';
+  $dto_util->export_study($data, 'draft/studies', METHOD_POST);
 
   return TRUE;
 }

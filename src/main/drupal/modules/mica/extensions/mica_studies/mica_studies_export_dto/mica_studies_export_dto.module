@@ -81,8 +81,8 @@ function mica_studies_send_attachement($attachement) {
   $file_info = new finfo(FILEINFO_MIME);
   $mime_file = $file_info->file($file_tmp_uri);
 
-  //$url = 'http://198.168.138.210:8082/ws/files/temp'; //ramin
-  $url = 'http://localhost:8082/ws/files/temp';
+  //$url = 'http://198.168.138.210:8445/ws/files/temp'; //ramin
+  $url = 'https://localhost:8445/ws/files/temp';
   $cfile = new CurlFile($file_tmp_uri, $mime_file, $attachement['filename']);
   $data_file = array('file' => $cfile);
   $resource = curl_init();
@@ -92,18 +92,55 @@ function mica_studies_send_attachement($attachement) {
   curl_setopt($resource, CURLOPT_RETURNTRANSFER, TRUE);
   curl_setopt($resource, CURLINFO_HEADER_OUT, TRUE);
   curl_setopt($resource, CURLOPT_POST, 1);
+  curl_setopt($resource, CURLOPT_SSLVERSION, 3);
+  curl_setopt($resource, CURLOPT_SSL_VERIFYHOST, FALSE);
+  curl_setopt($resource, CURLOPT_SSL_VERIFYPEER, FALSE);
   curl_setopt($resource, CURLOPT_POSTFIELDS, $data_file);
 
   $result = curl_exec($resource);
 
-  $http_code = curl_getinfo($resource, CURLINFO_HTTP_CODE);
-  $http_header_out = curl_getinfo($resource);
-//  dpm($http_code);
-//  dpm($result);
+//  $http_code = curl_getinfo($resource, CURLINFO_HTTP_CODE);
+  // $http_header_out = curl_getinfo($resource);
+  // dpm($http_code);
+  // dpm($result);
   if (preg_match('/(?<=files\/temp\/).*/', $result, $group)) {
     $match = $group[0];
   }
   curl_close($resource);
+
+  ///////////////////HttpClient cersion to be debuged
+//  $url = 'http://localhost:8082/ws/files/temp';
+//  $handle = fopen($file_tmp_uri, "r");
+//  $openedfile = fread($handle, filesize($file_tmp_uri));
+//  fclose($handle);
+//  dvm($openedfile);
+//  $post = new HttpClientRequest($url, array(
+//    'method' => POST,
+//    'headers' => array('Content-Type' => array('multipart/form-data'), 'Content-Length'=>array(filesize($file_tmp_uri))),
+//    'data' => array('file'=> $openedfile),
+//    'parameters' => array(),
+//  ));
+//  $match =null;
+//  try {
+//    $client = new HttpClient($formatter = FALSE);
+//    $body = $client->execute($post);
+//    if (preg_match('/(?<=files\/temp\/).*/', $body, $group)) {
+//      $match = $group[0];
+//    }
+//  } catch (HttpClientException $e) {
+//    if ($e->getCode() == 0) {
+//      // curl error
+//
+//      throw new Exception($e->getMessage());
+//    }
+//    elseif (!in_array($e->getCode(), array(200, 201, 202, 203, 204, 205, 206))) {
+//      dpm($e->getResponse());
+//      drupal_set_message(t('Export error'), $type = 'error');
+//      drupal_set_message($e->getResponse()->body, $type = 'error');
+//    }
+//  }
+  ///////////////////////
+  dpm($match);
   return trim($match);
 }
 
