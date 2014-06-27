@@ -48,16 +48,10 @@ function mica_publications_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Field: Indexed Node: Abstract */
-  $handler->display->display_options['fields']['field_abstract']['id'] = 'field_abstract';
-  $handler->display->display_options['fields']['field_abstract']['table'] = 'search_api_index_publications';
-  $handler->display->display_options['fields']['field_abstract']['field'] = 'field_abstract';
-  $handler->display->display_options['fields']['field_abstract']['label'] = '';
-  $handler->display->display_options['fields']['field_abstract']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_abstract']['type'] = 'text_summary_or_trimmed';
-  $handler->display->display_options['fields']['field_abstract']['settings'] = array(
-    'trim_length' => '350',
-  );
+  /* Field: Indexed Node: Reference */
+  $handler->display->display_options['fields']['field_publication_reference']['id'] = 'field_publication_reference';
+  $handler->display->display_options['fields']['field_publication_reference']['table'] = 'search_api_index_publications';
+  $handler->display->display_options['fields']['field_publication_reference']['field'] = 'field_publication_reference';
   /* Field: Indexed Node: PMID */
   $handler->display->display_options['fields']['field_publication_pmid']['id'] = 'field_publication_pmid';
   $handler->display->display_options['fields']['field_publication_pmid']['table'] = 'search_api_index_publications';
@@ -71,6 +65,16 @@ function mica_publications_views_default_views() {
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
+  /* Field: Indexed Node: Categories */
+  $handler->display->display_options['fields']['field_category']['id'] = 'field_category';
+  $handler->display->display_options['fields']['field_category']['table'] = 'search_api_index_publications';
+  $handler->display->display_options['fields']['field_category']['field'] = 'field_category';
+  $handler->display->display_options['fields']['field_category']['label'] = 'Tags :';
+  $handler->display->display_options['fields']['field_category']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_category']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_category']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['field_category']['view_mode'] = 'full';
+  $handler->display->display_options['fields']['field_category']['bypass_access'] = 0;
   /* Field: Indexed Node: Authors */
   $handler->display->display_options['fields']['field_authors']['id'] = 'field_authors';
   $handler->display->display_options['fields']['field_authors']['table'] = 'search_api_index_publications';
@@ -133,6 +137,8 @@ function mica_publications_views_default_views() {
     t('Node ID'),
     t('.'),
     t(','),
+    t('Reference'),
+    t('Tags :'),
     t('Page'),
   );
   $export['publication_search'] = $view;

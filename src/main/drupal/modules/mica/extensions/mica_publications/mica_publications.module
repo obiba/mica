@@ -14,3 +14,52 @@ function mica_publications_preprocess_page(&$variables) {
     drupal_add_css($publication_module_path . '/css/mica_publications.css', array('type' => 'file'));
   }
 }
+
+function mica_publications_safe_add_terms($term_names, $vocabulary_name, $vocabulary_machine_name) {
+  //  Make sure the vocabulary exists.  This won't apply all desired options
+  //  (description, etc.) but that's okay.  Features will do that later.
+  //  For now, we just need somewhere to stuff the terms.
+  $vocab = taxonomy_vocabulary_machine_name_load($vocabulary_machine_name);
+  if ($vocab === FALSE) {
+    $vocab = (object) array(
+      'name' => $vocabulary_name,
+      'machine_name' => $vocabulary_machine_name
+    );
+    $vocab = taxonomy_vocabulary_machine_name_load($vocabulary_machine_name);
+  }
+  if (is_object($vocab) && property_exists($vocab, 'vid') && $vocab->vid > 0) {
+    //  Load each term.
+    foreach ($term_names as $term_name) {
+      $term = taxonomy_get_term_by_name($term_name, $vocabulary_machine_name);
+      if (count($term) == 0) {
+        $term = (object) array(
+          'name' => $term_name,
+          'vid' => $vocab->vid
+        );
+        taxonomy_term_save($term);
+      }
+    }
+  }
+}
+
+/**
+ * Insert your relevant comment here.
+ */
+function mica_publications_modules_enabled() {
+  $term_names = array(
+    'Data description and presentation',
+    'Data harmonization',
+    'Data standardization',
+    'Data sharing',
+    'Ethical, legal, and social issues',
+    'Data analysis',
+    'Contributor recognition',
+    'Healthy Obese Project',
+    'Environmental Core Project',
+    'Metabolomics Core Project',
+    'Biobanking',
+    'othe',
+  );
+  mica_publications_safe_add_terms($term_names, 'Publications categories', 'publications_categories');
+  //  Do the same thing with additional vocabs.
+}

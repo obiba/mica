@@ -13,6 +13,13 @@ function mica_publications_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'entity_translation_node_metadata_publication';
+  $strongarm->value = FALSE;
+  $export['entity_translation_node_metadata_publication'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'facetapi:block_cache:search_api@publications';
   $strongarm->value = -1;
   $export['facetapi:block_cache:search_api@publications'] = $strongarm;

@@ -27,6 +27,67 @@ function mica_publications_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_field_default_field_bases_alter().
+ */
+function mica_publications_field_default_field_bases_alter(&$data) {
+  if (isset($data['field_publication_pmid'])) {
+    $data['field_publication_pmid']['translatable'] = 0; /* WAS: 1 */
+  }
+}
+
+/**
+ * Implements hook_default_search_api_index_alter().
+ */
+function mica_publications_default_search_api_index_alter(&$data) {
+  if (isset($data['publications'])) {
+    $data['publications']->options['fields']['field_category'] = array(
+      'type' => 'list<integer>',
+      'entity_type' => 'taxonomy_term',
+    ); /* WAS: '' */
+  }
+}
+
+/**
+ * Implements hook_strongarm_alter().
+ */
+function mica_publications_strongarm_alter(&$data) {
+  if (isset($data['field_bundle_settings_node__publication'])) {
+    $data['field_bundle_settings_node__publication']->value['extra_fields']['display']['language'] = array(
+      'teaser' => array(
+        'weight' => 0,
+        'visible' => FALSE,
+      ),
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__publication']->value['extra_fields']['form']['language'] = array(
+      'weight' => -50,
+    ); /* WAS: '' */
+    $data['field_bundle_settings_node__publication']->value['extra_fields']['form']['path'] = array(
+      'weight' => 30,
+    ); /* WAS: '' */
+  }
+}
+
+/**
+ * Implements hook_views_default_views_alter().
+ */
+function mica_publications_views_default_views_alter(&$data) {
+  if (isset($data['publication_search'])) {
+    $data['publication_search']->display['default']->display_options['fields']['field_category'] = array(
+      'id' => 'field_category',
+      'table' => 'search_api_index_publications',
+      'field' => 'field_category',
+      'label' => 'Tags :',
+      'element_label_colon' => FALSE,
+      'hide_empty' => TRUE,
+      'link_to_entity' => 0,
+      'view_mode' => 'full',
+      'bypass_access' => 0,
+    ); /* WAS: '' */
+    unset($data['publication_search']->display['default']->display_options['fields']['field_abstract']);
+  }
+}
+
+/**
  * Implements hook_default_search_api_index().
  */
 function mica_publications_default_search_api_index() {
@@ -48,10 +109,11 @@ function mica_publications_default_search_api_index() {
         "status" : { "type" : "boolean" },
         "created" : { "type" : "date" },
         "author" : { "type" : "integer", "entity_type" : "user" },
-        "field_contacts_ref" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
-        "field_pubmedid" : { "type" : "text" },
+        "field_category" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_authors" : { "type" : "list\\u003Cstring\\u003E" },
         "field_publication_reference" : { "type" : "text" },
+        "field_contacts_ref" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
+        "field_pubmedid" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
         "search_api_aggregation_1" : { "type" : "integer" },
         "search_api_access_node" : { "type" : "list\\u003Cstring\\u003E" }
