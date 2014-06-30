@@ -159,10 +159,8 @@ function _mica_studies_export_dto_study_dto($nid) {
 
   $codec = new \DrSlump\Protobuf\Codec\Json();
   $data = $study_dto->serialize($codec);
-  dpm($data);
+  dpm($study_dto);
   //dpm($data);
-  //$url = 'http://198.168.138.210:8082/ws/draft/studies'; //ramin
-  $url = 'https://localhost:8445/ws/draft/studies';
   $dto_util->export_study($data, 'draft/studies', METHOD_POST);
 
   return TRUE;

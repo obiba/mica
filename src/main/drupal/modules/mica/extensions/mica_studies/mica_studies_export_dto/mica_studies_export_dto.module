@@ -80,9 +80,8 @@ function mica_studies_send_attachement($attachement) {
   $file_tmp_uri = mica_studies_copy_attachment_file($attachement);
   $file_info = new finfo(FILEINFO_MIME);
   $mime_file = $file_info->file($file_tmp_uri);
-
-  //$url = 'http://198.168.138.210:8445/ws/files/temp'; //ramin
-  $url = 'https://localhost:8445/ws/files/temp';
+  $mica_url = variable_get_value('mica_url');
+  $url = $mica_url . '/ws/files/temp';
   $cfile = new CurlFile($file_tmp_uri, $mime_file, $attachement['filename']);
   $data_file = array('file' => $cfile);
   $resource = curl_init();

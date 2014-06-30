@@ -5,26 +5,19 @@
  */
 
 /**
- * Implements hook_variable_info().
+ * Implements hook_menu().
  */
-function mica_export_client_model_variable_info($options) {
-  $variable['mica_url'] = array(
-    'title' => t('Mica address'),
-    'description' => t('URL of the Mica server. Example: https://mica.example.org:8445'),
-    'type' => 'string',
-    'default' => 'https://localhost:8445',
+function mica_export_client_model_menu() {
+  $items = array();
+
+  $items['admin/config/system/obiba'] = array(
+    'title' => 'OBiBa Mica settings',
+    'description' => 'Configure Mica services',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mica_export_client_model_admin_settings'),
+    'access arguments' => array('administer obiba'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'mica_export_client_model.admin.inc',
   );
-  $variable['mica_anonymous_name'] = array(
-    'title' => t('Anonymous user name'),
-    'description' => t('The name under which an anonymous user is known by Mica.'),
-    'type' => 'string',
-    'default' => 'anonymous',
-  );
-  $variable['mica_anonymous_password'] = array(
-    'title' => t('Anonymous user password'),
-    'description' => t('The password used by the Drupal server when issuing requests to Mica.'),
-    'type' => 'string',
-    'default' => 'password',
-  );
-  return $variable;
+  return $items;
 }

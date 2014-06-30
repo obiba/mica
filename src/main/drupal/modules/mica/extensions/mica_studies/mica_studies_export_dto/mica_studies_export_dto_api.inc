@@ -19,7 +19,7 @@ class QuerySendDto {
   public function export_study($data, $resource, $method) {
     $url = $this->micaUrl . '/' . $resource;
     // authenticate by credentials
-    $credentials = variable_get_value('mica_anonymous_name') . ':' . variable_get_value('mica_anonymous_password');
+    $credentials = variable_get_value('mica_admin_name') . ':' . variable_get_value('mica_admin_password');
     $headers = array('Content-Type' => array('application/json'));
     $headers['Authorization'] = array('Basic ' . base64_encode($credentials));
     $request = new HttpClientRequest($url, array(
