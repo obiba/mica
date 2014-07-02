@@ -1,0 +1,23 @@
+<?php
+/**
+ * @file
+ * Mica client Protos file
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function mica_export_client_model_menu() {
+  $items = array();
+
+  $items['admin/config/system/obiba'] = array(
+    'title' => 'OBiBa Mica settings',
+    'description' => 'Configure Mica services',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mica_export_client_model_admin_settings'),
+    'access arguments' => array('administer obiba'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'mica_export_client_model.admin.inc',
+  );
+  return $items;
+}

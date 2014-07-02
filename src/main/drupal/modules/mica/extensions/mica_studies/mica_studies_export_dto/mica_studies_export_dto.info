@@ -1,0 +1,8 @@
+name = Mica Studies Export to mica server
+description = Export Mica Studies nodes to Mica server
+core = 7.x
+package = Mica
+php = 5.2.4
+dependencies[] = mica_origin_url
+dependencies[] = mica_export
+dependencies[] = mica_studies

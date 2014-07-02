@@ -120,6 +120,7 @@ mica-install: compile-less
 	cp -R src/main/drupal/modules target/$(micadir)/profiles/mica_distribution && \
 	cp -R src/main/drupal/themes target/$(micadir)/profiles/mica_distribution && \
 	cp -R src/main/drupal/profiles/mica_distribution target/$(micadir)/profiles && \
+	git clone https://github.com/obiba/drupal7-protobuf.git  target/$(micadir)/profiles/mica_distribution/modules/mica/extensions/obiba_protobuf
 	make inject-version-info
 
 prepare-mica-distribution: compile-less
