@@ -384,7 +384,6 @@ compile-less:
 	lessc $(lessc_options) src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap.less src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap.css && \
 	lessc $(lessc_options) src/main/drupal/themes/mica_bootstrap/less/mica_bootstrap_responsive.less src/main/drupal/themes/mica_bootstrap/css/mica_bootstrap_responsive.css && \
 	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_studies/less/mica_studies.less src/main/drupal/modules/mica/extensions/mica_studies/css/mica_studies.css && \
-	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_publications/less/mica_publications.less src/main/drupal/modules/mica/extensions/mica_publications/css/mica_publications.css && \
 	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_networks/less/mica_networks.less src/main/drupal/modules/mica/extensions/mica_networks/css/mica_networks.css && \
 	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_datasets/less/mica_datasets.less src/main/drupal/modules/mica/extensions/mica_datasets/css/mica_datasets.css
 	lessc $(lessc_options) src/main/drupal/modules/mica/extensions/mica_datasets/mica_dimensions_coverage/less/mica_dimensions_coverage.less src/main/drupal/modules/mica/extensions/mica_datasets/mica_dimensions_coverage/css/mica_dimensions_coverage.css
