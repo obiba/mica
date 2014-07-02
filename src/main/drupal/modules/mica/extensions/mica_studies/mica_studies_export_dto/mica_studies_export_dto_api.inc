@@ -46,6 +46,70 @@ class QuerySendDto {
     }
   }
 
+  public function export_file($attachement) {
+//  //@TODO deal with attachement files
+
+    // authenticate by credentials
+    $credentials = variable_get_value('mica_admin_name') . ':' . variable_get_value('mica_admin_password');
+    $headers['Authorization'] = array();
+
+    $file_tmp_uri = $this->_copy_attachment_file($attachement);
+    $file_info = new finfo(FILEINFO_MIME);
+    $mime_file = $file_info->file($file_tmp_uri);
+    $mica_url = variable_get_value('mica_url');
+    $url = $mica_url . '/ws/files/temp';
+    $cfile = new CurlFile($file_tmp_uri, $mime_file, $attachement['filename']);
+    $data_file = array('file' => $cfile);
+    $resource = curl_init();
+    curl_setopt($resource, CURLOPT_URL, $url);
+    curl_setopt($resource, CURLOPT_HEADER, TRUE);
+    curl_setopt($resource, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($resource, CURLINFO_HEADER_OUT, TRUE);
+    curl_setopt($resource, CURLOPT_POST, 1);
+    curl_setopt($resource, CURLOPT_SSLVERSION, 3);
+    curl_setopt($resource, CURLOPT_SSL_VERIFYHOST, FALSE);
+    curl_setopt($resource, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($resource, CURLOPT_POSTFIELDS, $data_file);
+    curl_setopt($resource, CURLOPT_HTTPHEADER, array(
+      'Authorization: ' . 'Basic ' . base64_encode($credentials)
+    ));
+    $result = curl_exec($resource);
+
+//  $http_code = curl_getinfo($resource, CURLINFO_HTTP_CODE);
+//   $http_header_out = curl_getinfo($resource);
+//   dpm($http_code);
+//   dpm($result);
+    if (preg_match('/(?<=files\/temp\/).*/', $result, $group)) {
+      $match = $group[0];
+    }
+    curl_close($resource);
+
+    //dpm($match);
+    return trim($match);
+  }
+
+  /**
+   * Copy attachment files of each node
+   */
+  private function _copy_attachment_file($documents) {
+    $destination = NULL;
+    if (empty($documents)) {
+      return;
+    }
+
+    $path = "/tmp/attachment";
+    if (!is_dir($path)) {
+      drupal_mkdir($path);
+    }
+    $destination = $path . "/" . $documents['filename'];
+    if (!empty($documents)) {
+      file_unmanaged_copy($documents['uri'], $destination, FILE_EXISTS_REPLACE);
+    }
+
+    return $destination;
+  }
+
+
   //Deal with multi lang content
   function _mica_studies_export_dto_add_translated_Field($dto_obj, $dto_method, $wrapper, $field, $array_field = NULL, $other_getter = NULL, $index_field = NULL) {
     $default_lang = language_default();
