@@ -66,7 +66,7 @@ function _mica_studies_export_dto_dce_dto($dto_util, $wrapper) {
   }
 
   foreach ($wrapper->field_dce_data_dictionaries->value() as $attachement) {
-    $id_file_server_response = mica_studies_send_attachement($attachement);
+    $id_file_server_response = $dto_util->export_file($attachement);
     if (!empty($id_file_server_response)) {
       $attachement_dto = $dto_util->_mica_studies_export_dto_attachement_construct($attachement, $id_file_server_response, $attachement, $dce_dto);
 

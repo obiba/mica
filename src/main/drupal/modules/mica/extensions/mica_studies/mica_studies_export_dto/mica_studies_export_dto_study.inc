@@ -135,14 +135,14 @@ function _mica_studies_export_dto_study_dto($nid) {
     }
   }
   $logo = $wrapper->field_logo->value();
-  $logo_tmp_file_id = mica_studies_send_attachement($logo);
+  $logo_tmp_file_id = $dto_util->export_file($logo);
   if (!empty($logo_tmp_file_id)) {
     $attachement_logo_dto = $dto_util->_mica_studies_export_dto_attachement_construct($logo, $logo_tmp_file_id);
     $study_dto->setLogo($attachement_logo_dto);
   }
 
   foreach ($wrapper->field_documents->value() as $attachement) {
-    $id_file_server_response = mica_studies_send_attachement($attachement);
+    $id_file_server_response = $dto_util->export_file($attachement);
     if (!empty($id_file_server_response)) {
       $attachement_dto = $dto_util->_mica_studies_export_dto_attachement_construct($attachement, $id_file_server_response, $attachement, $study_dto);
       $study_dto->addAttachments($attachement_dto);
