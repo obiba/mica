@@ -16,7 +16,7 @@ class QuerySendDto {
     $this->micaUrl = (isset($mica_url) ? $mica_url : variable_get_value('mica_url')) . '/ws';
   }
 
-  public function export_study($data, $resource, $method) {
+  public function export_study($data, $resource) {
     $url = $this->micaUrl . '/' . $resource;
     // authenticate by credentials
     $credentials = variable_get_value('mica_admin_name') . ':' . variable_get_value('mica_admin_password');
@@ -39,12 +39,49 @@ class QuerySendDto {
       CURLOPT_SSL_VERIFYPEER => FALSE
     );
     try {
-      $data = $client->execute($request);
-      return $data;
+      $client->execute($request);
+      if (preg_match('/(?<=ws\/study\/).*/', $client->lastResponse->headers, $group)) {
+        $match = $group[0];
+      }
+
+      return trim($match);
     } catch (HttpClientException $e) {
       drupal_set_message(t('Can\'t procceed your request server return : ') . $e->getMessage(), 'error');
     }
   }
+
+  public function export_dataset($data, $resource) {
+    $url = $this->micaUrl . '/' . $resource;
+    // authenticate by credentials
+    $credentials = variable_get_value('mica_admin_name') . ':' . variable_get_value('mica_admin_password');
+    $headers = array('Content-Type' => array('application/json'));
+    $headers['Authorization'] = array('Basic ' . base64_encode($credentials));
+    $request = new HttpClientRequest($url, array(
+      'method' => HttpClientRequest::METHOD_POST,
+      'headers' => $headers,
+      'data' => $data,
+    ));
+    $client = new HttpClient($formatter = FALSE);
+    if (!isset($client->options['curlopts'])) {
+      $client->options['curlopts'] = array();
+    }
+
+    $client->options['curlopts'] += array(
+      CURLOPT_SSLVERSION => 3,
+      CURLOPT_SSL_VERIFYHOST => FALSE,
+      CURLOPT_SSL_VERIFYPEER => FALSE
+    );
+    try {
+      $client->execute($request);
+
+      drupal_set_message(t('Export success with server response  : ') . $client->lastResponse->responseMessage, 'status');
+      return TRUE;
+    } catch (HttpClientException $e) {
+      drupal_set_message(t('Can\'t procceed your request server return : ') . $e->getMessage(), 'error');
+      drupal_set_message(t('Error Detail : ') . $client->lastResponse->body, 'error');
+    }
+  }
+
 
   public function export_file($attachement) {
 //  //@TODO deal with attachement files
@@ -181,7 +218,7 @@ class QuerySendDto {
 
   }
 
-  function _mica_studies_export_dto_attachement_construct($attachment, $server_id_attachemnt, $wrapper, $study_dto) {
+  function _mica_studies_export_dto_attachement_construct($attachment, $server_id_attachemnt) {
     $attachement_dto = new \obiba\mica\AttachmentDto;
     $attachement_dto->setId($server_id_attachemnt);
     $attachement_dto->setJustUploaded(TRUE);

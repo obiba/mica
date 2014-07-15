@@ -4,8 +4,7 @@
  * mica_export_study.inc
  */
 require_once('mica_studies_export_dto_api.inc');
-function _mica_studies_export_dto_study_dto($nid) {
-
+function _mica_studies_export_dto_study_dto($nid, &$context) {
   $study = array();
   $wrapper = entity_metadata_wrapper('node', $nid);
   $dto_util = new QuerySendDto();
@@ -31,6 +30,11 @@ function _mica_studies_export_dto_study_dto($nid) {
   $url_website = $wrapper->field_website->value();
   if (!empty($url_website)) {
     $study_dto->setWebsite($url_website['url']);
+  };
+
+  $opal_study = $wrapper->mica_opal->value();
+  if (!empty($opal_study)) {
+    $study_dto->setOpal($opal_study['url']);
   };
 
   foreach ($wrapper->field_contacts_ref->getIterator() as $contact_wrapper) {
@@ -159,11 +163,10 @@ function _mica_studies_export_dto_study_dto($nid) {
 
   $codec = new \DrSlump\Protobuf\Codec\Json();
   $data = $study_dto->serialize($codec);
-  dpm($study_dto);
+  //dpm($study_dto);
   //dpm($data);
-  $dto_util->export_study($data, 'draft/studies', METHOD_POST);
-
-  return TRUE;
+  $raw_response = $dto_util->export_study($data, 'draft/studies');
+  $context['results']['created_study'] = $raw_response;
 }
 
 function mica_studies_export_dto_set_number_of_participants($participant = NULL, $sample = NULL, $wrapper, $field) {
