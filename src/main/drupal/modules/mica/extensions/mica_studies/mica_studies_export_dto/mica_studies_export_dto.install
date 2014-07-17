@@ -1,0 +1,241 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the mica_studies_export_dto module.
+ */
+
+/**
+ * Helper function that returns a schema field definition for mica_server_id fields.
+ *
+ * @see mica_studies_export_dto()
+ * @see mica_studies_export_dto_install()
+ */
+function mica_studies_export_dto_field_definition() {
+  return array(
+    'type' => 'char',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+    'description' => 'Id in mica server after export',
+  );
+}
+
+/**
+ * Implements of hook_schema_alter().
+ */
+function mica_studies_export_dto_schema_alter(&$schema = array()) {
+  $field = mica_studies_export_dto_field_definition();
+  foreach (mica_studies_export_dto_get_core_entity_info() as $entity_type => $info) {
+    $schema[$info['base table']]['fields'][$info['entity keys']['mica_server_id']] = $field;
+    if (!empty($info['revision table']) && !empty($info['entity keys']['revision mica_server_id'])) {
+      $schema[$info['revision table']]['fields'][$info['entity keys']['revision mica_server_id']] = $field;
+    }
+  }
+}
+
+function mica_studies_export_dto_get_core_entity_info() {
+  $info = array();
+  $info['node'] = array(
+    'base table' => 'node',
+    'revision table' => 'node_revision',
+    'entity keys' => array(
+      'mica_server_id' => 'mica_server_id',
+    ),
+  );
+  return $info;
+}
+
+/**
+ * Implements of hook_entity_info_alter().
+ *
+ */
+function mica_studies_export_dto_entity_info_alter(&$info) {
+  foreach (mica_studies_export_dto_get_core_entity_info() as $entity_type => $core_info) {
+    $info[$entity_type]['mica_server_id'] = TRUE;
+    $info[$entity_type]['entity keys']['mica_server_id'] = $core_info['entity keys']['mica_server_id'];
+    if (!empty($core_info['entity keys']['revision mica_server_id'])) {
+      $info[$entity_type]['entity keys']['revision mica_server_id'] = $core_info['entity keys']['revision mica_server_id'];
+    }
+  }
+}
+
+/**
+ * Implements of hook_entity_property_info_alter().
+ *
+ */
+function mica_studies_export_dto_entity_property_info_alter(&$info) {
+  foreach (entity_get_info() as $entity_type => $entity_info) {
+    if (isset($entity_info['mica_server_id']) && $entity_info['mica_server_id'] == TRUE && !empty($entity_info['entity keys']['mica_server_id'])) {
+      $info[$entity_type]['properties'][$entity_info['entity keys']['mica_server_id']] = array(
+        'label' => t('Id from mica server after export'),
+        'type' => 'text',
+        'description' => t('Id from mica server after export.'),
+        'schema field' => $entity_info['entity keys']['mica_server_id'],
+      );
+      if (!empty($entity_info['entity keys']['revision mica_server_id'])) {
+        $info[$entity_type]['properties'][$entity_info['entity keys']['revision mica_server_id']] = array(
+          'label' => t('Revision Id from mica server after export'),
+          'type' => 'text',
+          'description' => t("The revisions of Id from mica server after export"),
+          'schema field' => $entity_info['entity keys']['revision mica_server_id'],
+        );
+      }
+    }
+  }
+}
+
+///**
+// * Implements hook_install().
+// */
+//function mica_studies_export_dto_install() {
+//  _mica_studies_export_dto_install_mica_studies_export_dto_fields();
+//
+//}
+
+/**
+ * Install the 'mica_server_id' fields into Drupal core entity tables where needed.
+ */
+function _mica_studies_export_dto_install_mica_studies_export_dto_fields() {
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function mica_studies_export_dto_uninstall() {
+  foreach (mica_studies_export_dto_get_core_entity_info() as $entity_type => $info) {
+    if (db_field_exists($info['base table'], $info['entity keys']['mica_server_id'])) {
+      db_drop_field($info['base table'], $info['entity keys']['mica_server_id']);
+      db_drop_index($info['base table'], $info['entity keys']['mica_server_id']);
+    }
+    if (!empty($info['revision table']) && !empty($info['entity keys']['revision mica_server_id'])) {
+      if (db_field_exists($info['revision table'], $info['entity keys']['revision mica_server_id'])) {
+        db_drop_field($info['revision table'], $info['entity keys']['revision mica_server_id']);
+        db_drop_index($info['revision table'], $info['entity keys']['revision mica_server_id']);
+      }
+    }
+  }
+}
+
+function mica_studies_export_dto_update_7925(&$sandbox) {
+  $field = mica_studies_export_dto_field_definition();
+  foreach (mica_studies_export_dto_get_core_entity_info() as $entity_type => $info) {
+    if (!db_field_exists($info['base table'], $info['entity keys']['mica_server_id'])) {
+      db_add_field($info['base table'], $info['entity keys']['mica_server_id'], $field);
+      db_add_index($info['base table'], $info['entity keys']['mica_server_id'], array($info['entity keys']['mica_server_id']));
+    }
+    if (!empty($info['revision table']) && !empty($info['entity keys']['revision mica_server_id'])) {
+      if (!db_field_exists($info['revision table'], $info['entity keys']['revision mica_server_id'])) {
+        db_add_field($info['revision table'], $info['entity keys']['revision mica_server_id'], $field);
+        db_add_index($info['revision table'], $info['entity keys']['revision mica_server_id'], array($info['entity keys']['revision mica_server_id']));
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_modules_installed().
+ */
+//function mica_studies_export_dto_modules_installed($modules) {
+//  // Run the installation hook. This makes sure that the schema for all
+//  // supported core entity types is set correct.
+//  mica_studies_export_dto_install();
+//}
+//
+///**
+// * Add fields mica_server_id for mica_studies_export_dto to the field_revision
+// */
+//function mica_studies_export_dto_update_7910(&$sandbox) {
+//  add_custom_fields();
+////  $field_name = 'mica_server_id';
+////  // Make sure the field doesn't already exist.
+////  if (!field_info_field($field_name)) {
+////    // Create the field.
+////    $field = array(
+////      'field_name' => $field_name,
+////      'type' => 'text',
+////      'settings' => array('max_length' => 255),
+////    );
+////    field_create_field($field);
+////    // Create the instance.
+////    $instance = array(
+////      'field_name' => $field_name,
+////      'entity_type' => 'node',
+////      'bundle' => 'study',
+////      'type' => 'text',
+////      'label' => 'mica_server_id',
+////      'description' => 'Id in mica server after export.',
+////      'widget' => array(
+////        'type' => 'text_textfield'
+////      ),
+////      'display' => array(
+////        'mica_studies_export_dto' => array(
+////          'label' => 'mica_server_id',
+////          'type' => 'text'
+////        )
+////      )
+////    );
+////    field_create_instance($instance);
+////    watchdog('my_module', t('!field_name was added successfully.', array('!field_name' => $field_name)));
+////  }
+////  else {
+////    watchdog('my_module', t('!field_name already exists.', array('!field_name' => $field_name)));
+////  }
+//
+//}
+//
+//function add_custom_fields() {
+//  $field = _mica_studies_export_dto_installed_fields();
+//  field_create_field($field);
+//
+//  $fieldinstance = _mica_studies_export_dto_installed_instances();
+//  $fieldinstance['entity_type'] = 'node';
+//  $fieldinstance['bundle'] = 'product';
+//
+//  field_create_instance($fieldinstance);
+//
+//}
+//
+//function delete_custom_fields() {
+//  $field = _mica_studies_export_dto_installed_fields();
+//    field_delete_field($field);
+//
+//  $instances = field_info_instances('node', 'study');
+//
+//  foreach ($instances as $instance_name => $fieldinstance) {
+//    //field_delete_instance($fieldinstance);
+//  }
+//}
+//
+//
+//function _mica_studies_export_dto_installed_fields() {
+//
+//  $field_name = 'mica_server_id';
+//  return array(
+//    'field_name' => $field_name,
+//    'type' => 'text',
+//    'settings' => array('max_length' => 255),
+//  );
+//
+//}
+//
+//function _mica_studies_export_dto_installed_instances() {
+//  $field_name = 'mica_server_id';
+//  return array(
+//    'field_name' => $field_name,
+//    'entity_type' => 'node',
+//    'bundle' => 'study',
+//    'type' => 'text',
+//    'label' => 'mica_server_id',
+//    'description' => 'Id in mica server after export.',
+//    'widget' => array(
+//      'type' => 'text_textfield'
+//    ),
+//    'display' => array(
+//      'mica_studies_export_dto' => array(
+//        'label' => 'mica_server_id',
+//        'type' => 'text'
+//      )
+//    )
+//  );
+//}
