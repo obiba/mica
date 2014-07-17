@@ -4,11 +4,7 @@
  * mica_export_study.inc
  */
 require_once('mica_studies_export_dto_api.inc');
-function _mica_studies_export_dto_study_dto($nid) {
-
-  $study = array();
-  $wrapper = entity_metadata_wrapper('node', $nid);
-  $dto_util = new QuerySendDto();
+function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper) {
 
   $study_dto = new obiba\mica\StudyDto;
   $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addName', $wrapper, 'title_field');
@@ -31,6 +27,11 @@ function _mica_studies_export_dto_study_dto($nid) {
   $url_website = $wrapper->field_website->value();
   if (!empty($url_website)) {
     $study_dto->setWebsite($url_website['url']);
+  };
+
+  $opal_study = $wrapper->mica_opal->value();
+  if (!empty($opal_study)) {
+    $study_dto->setOpal($opal_study['url']);
   };
 
   foreach ($wrapper->field_contacts_ref->getIterator() as $contact_wrapper) {
@@ -157,13 +158,38 @@ function _mica_studies_export_dto_study_dto($nid) {
 // //   $study_dto->addNetworks($network);
 //  }
 
-  $codec = new \DrSlump\Protobuf\Codec\Json();
-  $data = $study_dto->serialize($codec);
-  dpm($study_dto);
-  //dpm($data);
-  $dto_util->export_study($data, 'draft/studies', METHOD_POST);
+  return $study_dto;
+}
 
-  return TRUE;
+function _mica_studies_export_dto_study_dto($node, &$context) {
+  $dto_util = new QuerySendDto();
+  $wrapper = entity_metadata_wrapper('node', $node);
+  $study_dto = _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper);
+  $mica_serv_id = $node->mica_server_id;
+  $codec = new \DrSlump\Protobuf\Codec\Json();
+  if (!empty($mica_serv_id)) {
+    $study_finded_mica_server_json = $dto_util->get_from_mica_server('/study/' . $mica_serv_id);
+    $dtoObj = new \obiba\mica\DatasetDto;
+    $codec = new \DrSlump\Protobuf\Codec\Json();
+    $study_finded_mica_server = $codec->decode($dtoObj, $study_finded_mica_server_json);
+  }
+//Update study
+  if (!empty($study_finded_mica_server->id) && $study_finded_mica_server->id == $mica_serv_id) {
+    $study_dto->setId($study_finded_mica_server->id);
+    $data = $study_dto->serialize($codec);
+    $dto_util->save_operation($data, 'draft/study/' . $study_finded_mica_server->id, 'METHOD_PUT', 'study');
+    $raw_response = $study_finded_mica_server->id;
+  }
+  //create study
+  else {
+    $data = $study_dto->serialize($codec);
+    $raw_response = $dto_util->save_operation($data, 'draft/studies', 'METHOD_POST', 'study');
+    $node->mica_server_id = $raw_response;
+    node_save($node);
+  }
+
+  $context['results']['created_study'] = $raw_response;
+
 }
 
 function mica_studies_export_dto_set_number_of_participants($participant = NULL, $sample = NULL, $wrapper, $field) {
