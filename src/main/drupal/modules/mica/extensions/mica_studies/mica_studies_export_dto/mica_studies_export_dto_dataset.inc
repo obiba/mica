@@ -39,8 +39,8 @@ function _mica_studies_export_dto_dataset_dto($node, &$context) {
         $connector->options, $hamonizaed_dataset_dto);
 
       $dataset_type_parse = "obiba.mica.HarmonizedDatasetDto.type";
-      $resource_serv = 'harmonized-datasets';
-      $node_type = 'harmonized-dataset';
+      $resource_serv = 'harmonization-datasets';
+      $node_type = 'harmonization-dataset';
     }
 
     elseif ($dataset->field_dataset_type->value() == 'study') {
