@@ -2,7 +2,7 @@ name = Mica Studies Export to mica server
 description = Export Mica Studies nodes to Mica server
 core = 7.x
 package = Mica
-php = 5.2.4
-
-files[] = mica_studies_export_dto.install
 dependencies[] = mica_studies
+dependencies[] = mica_datasets
+dependencies[] = obiba_protobuf
+dependencies[] = mica_export_client_model
