@@ -111,9 +111,10 @@ function _mica_mica_studies_export_dto_dataset_harmonized($server_study_id, $con
   $datset_harmo_st_dto->setStudyId($server_study_id);
   $datset_harmo_st_dto->setProject($project);
   $datset_harmo_st_dto->setTable($table);
-
-  $datset_harmo_dto->setProject('mica');
-  $datset_harmo_dto->setTable('HOP');
+  if (!$datset_harmo_dto->hasProject() || !$datset_harmo_dto->hasTable()) {
+    $datset_harmo_dto->setProject($project);
+    $datset_harmo_dto->setTable($table);
+  }
   if (!$study_exist) {
     $datset_harmo_dto->addStudyTables($datset_harmo_st_dto);
   }
