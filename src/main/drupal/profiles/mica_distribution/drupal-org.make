@@ -45,7 +45,7 @@ projects[content_taxonomy] = 1.0-beta2
 
 projects[ctools] = 1.4
 
-projects[date] = 2.7
+projects[date] = 2.8
 
 projects[diff] = 3.2
 
@@ -130,7 +130,7 @@ projects[libraries] = 2.2
 
 projects[link] = 1.2
 
-projects[logintoboggan] = 1.3
+projects[logintoboggan] = 1.4
 
 projects[mail_edit] = 1.0
 
@@ -142,7 +142,7 @@ projects[menu_firstchild] = 1.1
 
 projects[menu_view_unpublished] = 1.0-beta3
 
-projects[mica] = 9.1 
+projects[mica] = 9.1
 
 projects[module_filter] = 1.8
 
@@ -168,7 +168,7 @@ projects[profile2] = 1.3
 
 projects[potx] = 1.0
 
-projects[print] = 1.2
+projects[print] = 1.3
 
 projects[progress] = 1.3
 
@@ -220,7 +220,7 @@ projects[variable] = 2.4
 
 projects[view_unpublished] = 1.1
 
-projects[views] = 3.7
+projects[views] = 3.8
 
 projects[views_bulk_operations][version] = 3.2
 

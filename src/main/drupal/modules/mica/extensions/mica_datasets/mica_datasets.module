@@ -589,6 +589,20 @@ function mica_datasets_prepare_prettify() {
 }
 
 /**
+ * Implements hook_permission().
+ * to difine acces to Stats
+ */
+
+function mica_datasets_permission() {
+  return array(
+    'view_var_stats' => array(
+      'title' => t('View variable stats'),
+      'Description' => t('Allows users to view Statistics variable block')
+    )
+  );
+}
+
+/**
  * Implements hook_node_view_alter().
  */
 function mica_datasets_node_view_alter(&$build) {
@@ -643,7 +657,7 @@ function mica_datasets_node_view_alter(&$build) {
       $values['dataset_id'] = $variable_wrapper->field_dataset->getIdentifier();
       $term = new MicaDatasetQueryTerm($values);
       $impl = $term->termImpl();
-      if ($impl->hasConnectors() && $impl->checkStats() && user_is_logged_in()) {
+      if ($impl->hasConnectors() && $impl->checkStats() && user_access('view_var_stats')) {
         $table_stat_parameters = array(
           '#type' => 'fieldset',
           '#title' => t('Statistics'),
