@@ -1,0 +1,8 @@
+name = Mica Studies Export to json mica server
+description = Export Mica Studies nodes to Mica server
+core = 7.x
+package = Mica
+dependencies[] = mica_studies
+dependencies[] = mica_datasets
+dependencies[] = obiba_protobuf
+dependencies[] = mica_export_client_model
