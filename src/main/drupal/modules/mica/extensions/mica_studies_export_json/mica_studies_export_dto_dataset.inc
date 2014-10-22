@@ -14,17 +14,13 @@ function _mica_studies_export_dto_dataset_dto($node, &$context) {
   $dataset_type_parse = NULL;
   $resource_serv = NULL;
   $node_type = NULL;
-  $hamonizaed_dataset_dto = NULL;
   $wrapper_study = entity_metadata_wrapper('node', $node);
 
   $dto_util = new QuerySendDto();
-//  $context['results'] = $context['results'];
   $datasets_to_file_save = array();
+
   foreach ($wrapper_study->mica_dataset->getIterator() as $dataset) {
-    $mica_server_id = NULL;
-    $dataset_finded_mica_server = NULL;
     $dataset_node = node_load($dataset->getIdentifier());
-    $mica_server_id = trim($dataset_node->mica_server_id);
     $dce_population_find_param = array(
       'study' => $wrapper_study,
       'datasetId' => $dataset->getIdentifier()
@@ -32,28 +28,9 @@ function _mica_studies_export_dto_dataset_dto($node, &$context) {
     $connector = mica_connector_query($dataset->getIdentifier(), $node->nid);
 
     if ($dataset->field_dataset_type->value() == 'harmonization') {
-      if (!empty($mica_server_id)) {
-        $harmo_dataset_finded_mica_server_json = $dto_util->get_from_mica_server('/draft/harmonization-dataset/' . $mica_server_id);
-
-        $dtoObj = new \obiba\mica\DatasetDto;
-        $codec = new \DrSlump\Protobuf\Codec\Json();
-        $harmo_dataset_finded_mica_server = $codec->decode($dtoObj, $harmo_dataset_finded_mica_server_json);
-
-        if (empty($harmo_dataset_finded_mica_server_json)) {
-          $harmo_dataset_finded_mica_server_json = $dto_util->get_from_mica_server('/harmonization-dataset/' . $mica_server_id);
-
-          $dtoObj = new \obiba\mica\DatasetDto;
-          $codec = new \DrSlump\Protobuf\Codec\Json();
-          $harmo_dataset_finded_mica_server = $codec->decode($dtoObj, $harmo_dataset_finded_mica_server_json);
-        }
-      }
-      if (!empty($harmo_dataset_finded_mica_server)) {
-        $hamonizaed_dataset_dto = $harmo_dataset_finded_mica_server->getExtensionList('obiba.mica.HarmonizationDatasetDto.type');
-
-      }
 
       $dataset_gen_dto = _mica_mica_studies_export_dto_dataset_harmonized($context['results']['study']['created_study'],
-        $connector->options, $hamonizaed_dataset_dto, $dce_population_find_param);
+        $connector->options, $dce_population_find_param);
 
       $dataset_type_parse = "obiba.mica.HarmonizationDatasetDto.type";
       $resource_serv = 'harmonization-datasets';
@@ -61,14 +38,6 @@ function _mica_studies_export_dto_dataset_dto($node, &$context) {
     }
 
     elseif ($dataset->field_dataset_type->value() == 'study') {
-      if (!empty($mica_server_id)) {
-        $study_dataset_finded_mica_server_json = $dto_util->get_from_mica_server('/draft/study-dataset/' . $mica_server_id);
-
-        $dtoObj = new \obiba\mica\DatasetDto;
-        $codec = new \DrSlump\Protobuf\Codec\Json();
-        $study_dataset_finded_mica_server = $codec->decode($dtoObj, $study_dataset_finded_mica_server_json);
-
-      }
       $dataset_gen_dto = _mica_mica_studies_export_dto_dataset_study($context['results']['study']['created_study'],
         $connector->options, $dce_population_find_param);
       $dataset_type_parse = "obiba.mica.StudyDatasetDto.type";
@@ -84,26 +53,11 @@ function _mica_studies_export_dto_dataset_dto($node, &$context) {
     $dataset_dto->setEntityType('participant');
     $dataset_dto[$dataset_type_parse] = $dataset_gen_dto;
 
-    //update dataset
-    if (!empty($study_dataset_finded_mica_server)) {
-      $dataset_dto->setId($study_dataset_finded_mica_server->id);
-      $codec = new \DrSlump\Protobuf\Codec\Json();
-      $dataset_dto_json = $dataset_dto->serialize($codec);
-      $dto_util->save_operation($dataset_dto_json, 'draft/' . $node_type . '/' . $study_dataset_finded_mica_server->id, 'METHOD_PUT', $node_type);
-    }
     //Create  dataset
-    else {
-      $codec = new \DrSlump\Protobuf\Codec\Json();
-      $dataset_dto_json = $dataset_dto->serialize($codec);
-      $raw_response = $dto_util->save_operation($dataset_dto_json, 'draft/' . $resource_serv, 'METHOD_POST', $node_type);
-      if (!empty($raw_response)) {
-        $dataset_node->mica_server_id = $raw_response;
-        node_save($dataset_node);
-      }
-      else {
-        $raw_response = $dataset->getIdentifier();
-      }
-    }
+    $codec = new \DrSlump\Protobuf\Codec\Json();
+    $dataset_dto_json = $dataset_dto->serialize($codec);
+    $raw_response = $dataset->getIdentifier();
+
     $datasets_to_file_save[] = array(
       'created_dataset' => $raw_response,
       'title_dataset' => $dataset->title->value(),
@@ -134,20 +88,16 @@ function _mica_studies_export_dto_get_dce_populations_id($study_wrapper, $datase
   return FALSE;
 }
 
-function _mica_mica_studies_export_dto_dataset_harmonized($server_study_id, $conector_options, $hamonizaed_dataset_dto = NULL, $dce_population_find_param = NULL) {
+function _mica_mica_studies_export_dto_dataset_harmonized($study_id, $conector_options, $dce_population_find_param = NULL) {
   $project = !empty($conector_options) ? $conector_options['datasource'] : 'mica';
   $table = !empty($conector_options) ? $conector_options['table'] : 'und';
   $study_exist = FALSE;
   $datset_harmo_st_dto = new \obiba\mica\DatasetDto\StudyTableDto;
-  if (!empty($hamonizaed_dataset_dto)) {
-    $datset_harmo_dto = $hamonizaed_dataset_dto;
-  }
-  else {
-    $datset_harmo_dto = new \obiba\mica\HarmonizationDatasetDto;
 
-  }
+  $datset_harmo_dto = new \obiba\mica\HarmonizationDatasetDto;
+
   foreach ($datset_harmo_dto->studyTables as $study_table) {
-    if ($study_table->studyId == $server_study_id) {
+    if ($study_table->studyId == $study_id) {
       $study_exist = TRUE;
     }
   }
@@ -161,7 +111,7 @@ function _mica_mica_studies_export_dto_dataset_harmonized($server_study_id, $con
       $datset_harmo_st_dto->setDataCollectionEventId($ids['dceId']);
     }
   }
-  $datset_harmo_st_dto->setStudyId($server_study_id);
+  $datset_harmo_st_dto->setStudyId($study_id);
   $datset_harmo_st_dto->setProject($project);
   $datset_harmo_st_dto->setTable($table);
   if (!$datset_harmo_dto->hasProject() || !$datset_harmo_dto->hasTable()) {
@@ -174,7 +124,7 @@ function _mica_mica_studies_export_dto_dataset_harmonized($server_study_id, $con
   return $datset_harmo_dto;
 }
 
-function _mica_mica_studies_export_dto_dataset_study($server_study_id, $conector_options, $dce_population_find_param = NULL) {
+function _mica_mica_studies_export_dto_dataset_study($study_id, $conector_options, $dce_population_find_param = NULL) {
   $project = !empty($conector_options) ? $conector_options['datasource'] : 'mica';
   $table = !empty($conector_options) ? $conector_options['table'] : 'und';
   $datset_study_st_dto = new \obiba\mica\DatasetDto\StudyTableDto;
@@ -187,7 +137,7 @@ function _mica_mica_studies_export_dto_dataset_study($server_study_id, $conector
       $datset_study_st_dto->setDataCollectionEventId($ids['dceId']);
     }
   }
-  $datset_study_st_dto->setStudyId($server_study_id);
+  $datset_study_st_dto->setStudyId($study_id);
   $datset_study_st_dto->setProject($project);
   $datset_study_st_dto->setTable($table);
 
