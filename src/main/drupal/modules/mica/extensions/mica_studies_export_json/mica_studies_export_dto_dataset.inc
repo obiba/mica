@@ -89,7 +89,6 @@ function _mica_mica_studies_export_dto_dataset_harmonized($study_wrapper, $conec
   $table = !empty($conector_options) ? $conector_options['table'] : 'und';
   $datset_harmo_st_dto = new \obiba\mica\DatasetDto\StudyTableDto;
   $datset_harmo_dto = new \obiba\mica\HarmonizationDatasetDto;
-  $study_uuid = $study_wrapper->uuid->value();
 
   $datset_harmo_st_dto->setPopulationId('novalue');
   $datset_harmo_st_dto->setDataCollectionEventId('novalue');
@@ -100,7 +99,7 @@ function _mica_mica_studies_export_dto_dataset_harmonized($study_wrapper, $conec
       $datset_harmo_st_dto->setDataCollectionEventId($ids['dceId']);
     }
   }
-  $datset_harmo_st_dto->setStudyId($study_uuid);
+  $datset_harmo_st_dto->setStudyId($study_wrapper->uuid->value());
   $datset_harmo_st_dto->setProject($project);
   $datset_harmo_st_dto->setTable($table);
 
