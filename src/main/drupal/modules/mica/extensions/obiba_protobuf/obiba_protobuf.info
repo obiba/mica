@@ -1,0 +1,4 @@
+name = "Obiba protobuf"
+description = "Obiba protobuf tools"
+package = Obiba
+core = 7.x
