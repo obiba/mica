@@ -8,19 +8,18 @@ require_once('mica_studies_export_dto_api.inc');
 function _mica_studies_export_dto_study_dto($node, &$context) {
   $dto_util = new QuerySendDto();
   $wrapper = entity_metadata_wrapper('node', $node);
-  $wrapper_id = $wrapper->getIdentifier();
-  $study_dto = _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper);
+  $wrapper_id = $wrapper->uuid->value();
+  $study_dto = _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper, $context);
   $codec = new \DrSlump\Protobuf\Codec\Json();
   //create study-dto
   $study_dto->setId($wrapper_id);
   $data = $study_dto->serialize($codec);
 
-  $context['results']['study']['created_study'] = $wrapper->getIdentifier();
   $context['results']['study']['title_study'] = $wrapper->title->value();
   $context['results']['study']['study_json'] = $data;
 }
 
-function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper) {
+function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper, &$context) {
 
   $study_dto = new obiba\mica\StudyDto;
   $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addName', $wrapper, 'title_field');
@@ -147,27 +146,39 @@ function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper) {
 
   foreach ($wrapper->field_study_populations->getIterator() as $population_wrapper) {
     if (!empty($population_wrapper)) {
-      $population = _mica_studies_export_dto_population_dto($dto_util, $population_wrapper);
+      $population = _mica_studies_export_dto_population_dto($dto_util, $population_wrapper, $context);
       $study_dto->addPopulations($population);
     }
   }
+
+  $attachments_files = array();
+
   $logo = $wrapper->field_logo->value();
-  //$logo_tmp_file_id = $dto_util->export_file($logo);
-  $logo_tmp_file_id = 25;
-  if (!empty($logo_tmp_file_id)) {
-    $attachement_logo_dto = $dto_util->_mica_studies_export_dto_attachement_construct($logo, $logo_tmp_file_id);
-    $study_dto->setLogo($attachement_logo_dto);
+  if (!empty($logo['filename'])) {
+    $attachment_logo_dto = $dto_util->_mica_studies_export_dto_attachement_construct($logo, 'logo');
+    $attachments_files[] = array(
+      'uuid' => $logo['uuid'],
+      'filename' => $logo['filename'],
+      'uri' => $logo['uri']
+    );
+    $study_dto->setLogo($attachment_logo_dto);
   }
 
-  foreach ($wrapper->field_documents->value() as $attachement) {
-    //$id_file_server_response = $dto_util->export_file($attachement);
-    $id_file_server_response = 25;
-    if (!empty($id_file_server_response)) {
-      $attachement_dto = $dto_util->_mica_studies_export_dto_attachement_construct($attachement, $id_file_server_response);
-      $study_dto->addAttachments($attachement_dto);
+  foreach ($wrapper->field_documents->value() as $attachment) {
+    if (!empty($attachment['filename'])) {
+      $attachment_dto = $dto_util->_mica_studies_export_dto_attachement_construct($attachment, 'document');
+      $attachments_files[] = array(
+        'uuid' => $attachment['uuid'],
+        'filename' => $attachment['filename'],
+        'uri' => $attachment['uri']
+      );
+      $study_dto->addAttachments($attachment_dto);
     }
   }
 
+  if (!empty($attachments_files)) {
+    $context['results']['study']['attachments'] = $attachments_files;
+  }
   return $study_dto;
 }
 

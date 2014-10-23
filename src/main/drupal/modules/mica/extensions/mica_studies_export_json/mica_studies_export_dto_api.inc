@@ -220,11 +220,11 @@ class QuerySendDto {
 
   }
 
-  function _mica_studies_export_dto_attachement_construct($attachment, $server_id_attachemnt) {
+  function _mica_studies_export_dto_attachement_construct($attachment, $type = 'document') {
     $attachement_dto = new \obiba\mica\AttachmentDto;
-    $attachement_dto->setId($server_id_attachemnt);
+    $attachement_dto->setId($attachment['uuid']);
     $attachement_dto->setJustUploaded(TRUE);
-    $attachement_dto->setType('document');
+    $attachement_dto->setType($type);
     $attachement_dto->addDescription($this->_set_LocalizedStringDto($attachment['description'], 'en'));
     $attachement_dto->setFileName($attachment['filename']);
     $attachement_dto->setLang('en');

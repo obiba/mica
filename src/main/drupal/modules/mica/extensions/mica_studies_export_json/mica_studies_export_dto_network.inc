@@ -7,13 +7,13 @@ $path_module_protobuf = drupal_get_path('module', 'obiba_protobuf');
 include_once($path_module_protobuf . '/protobuf/Protobuf.php');
 use \DrSlump\Protobuf;
 
-function _mica_studies_export_dto_network_dto($node, $wrapper) {
+function _mica_studies_export_dto_network_dto($node, &$context) {
 
   $dataset_gen_dto = NULL;
   $dataset_type_parse = NULL;
   $resource_serv = NULL;
   $node_type = NULL;
-
+  $attachments_files = array();
   $wrapper_study = entity_metadata_wrapper('node', $node);
   $dto_util = new QuerySendDto();
 
@@ -60,34 +60,40 @@ function _mica_studies_export_dto_network_dto($node, $wrapper) {
     }
 
     $supl_info = $network_wrapper->field_supp_infos->value();
-    dpm($supl_info);
     if (!empty($supl_info)) {
       $dto_util->_mica_studies_export_dto_add_translated_Field($network_dto, 'addInfo', $network_wrapper,
         'field_supp_infos');
     }
 
+    //attached Documents
+    $logo = $network_wrapper->field_logo->value();
+    if (!empty($logo['filename'])) {
+      $attachment_logo_dto = $dto_util->_mica_studies_export_dto_attachement_construct($logo, 'logo');
+      $attachments_files[] = array(
+        'uuid' => $logo['uuid'],
+        'filename' => $logo['filename'],
+        'uri' => $logo['uri']
+      );
+      $network_dto->addAttachments($attachment_logo_dto);
+    }
+
+    $raw_response = $network_wrapper->uuid->value();
+    $network_dto->setPublished(FALSE);
+    $network_dto->setId($raw_response);
+
+    //Create  dataset
+    $codec = new \DrSlump\Protobuf\Codec\Json();
+    $network_dto_json = $network_dto->serialize($codec);
+    $network_to_file_save[] = array(
+      'title_network' => $network_wrapper->title->value(),
+      'network_json' => $network_dto_json
+    );
   }
 
-  //@TODO populate network field
-/////////////////////////////////////
+  $context['results']['networks'] = $network_to_file_save;
+  if (!empty($attachments_files)) {
+    $context['results']['networks']['attachments'] = $attachments_files;
+  }
 
-  //Add Logo attachment to Dto Network in server Side
-//  $logo = $wrapper->field_logo->value();
-//  $logo_tmp_file_id = $dto_util->export_file($logo);
-//  if (!empty($logo_tmp_file_id)) {
-//    $attachement_logo_dto = $dto_util->_mica_studies_export_dto_attachement_construct($logo, $logo_tmp_file_id);
-//    $network_dto->setLogo($attachement_logo_dto);
-//  }
-
-//Add file attachment to Dto Network in server Side need that ?????
-//  foreach ($wrapper->field_documents->value() as $attachement) {
-//    $id_file_server_response = $dto_util->export_file($attachement);
-//    if (!empty($id_file_server_response)) {
-//      $attachement_dto = $dto_util->_mica_studies_export_dto_attachement_construct($attachement, $id_file_server_response, $attachement, $network_dto);
-//      $network_dto->addAttachments($attachement_dto);
-//    }
-//  }
-
-  dpm($network_dto);
   return $network_dto;
 }

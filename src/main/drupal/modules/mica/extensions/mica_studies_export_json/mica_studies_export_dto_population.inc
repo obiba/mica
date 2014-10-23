@@ -4,14 +4,14 @@
  * mica_export_population.inc
  */
 
-function _mica_studies_export_dto_population_dto($dto_util, $wrapper) {
+function _mica_studies_export_dto_population_dto($dto_util, $wrapper, &$context) {
 
   $population_dto = new obiba\mica\StudyDto\PopulationDto();
 
   $dto_util->_mica_studies_export_dto_add_translated_Field($population_dto, 'addName', $wrapper, 'title_field');
 
   $dto_util->_mica_studies_export_dto_add_translated_Field($population_dto, 'addDescription', $wrapper, 'body', 'value');
-
+  $population_dto->setId($wrapper->uuid->value());
   $recruitment = new \obiba\mica\StudyDto\PopulationDto\RecruitmentDto();
 
   foreach ($wrapper->field_pop_src_recruit->getIterator() as $recruit) {
@@ -113,7 +113,7 @@ function _mica_studies_export_dto_population_dto($dto_util, $wrapper) {
 //
   foreach ($wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
     if (!empty($dce_wrapper)) {
-      $dce = _mica_studies_export_dto_dce_dto($dto_util, $dce_wrapper);
+      $dce = _mica_studies_export_dto_dce_dto($dto_util, $dce_wrapper, $context);
       $population_dto->addDataCollectionEvents($dce);
     }
   }

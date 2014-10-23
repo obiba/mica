@@ -9,7 +9,8 @@ function _mica_studies_export_dto_contact_dto($dto_util, $wrapper) {
 
   $contact->setTitle($wrapper->field_contact_name->title->value());
   $contact->setFirstName($wrapper->field_contact_name->given->value());
-  $contact->setLastName($wrapper->field_contact_name->family->value());
+  $last_name = $wrapper->field_contact_name->family->value();
+  $contact->setLastName(!empty($last_name) ? $last_name : $wrapper->field_contact_name->given->value());
   $contact->setEmail($wrapper->field_contact_email->value());
   $contact->setPhone($wrapper->field_telephone->value());
   $contact->setDataAccessCommitteeMember($wrapper->field_daco->value());

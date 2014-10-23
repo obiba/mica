@@ -69,7 +69,8 @@ function mica_studies_export_dto($node) {
 
     $operations[] = array('_mica_studies_export_dto_dataset_dto', array($node));
 
-    //  $operations[] = array('_mica_studies_export_dto_network_dto', array($node));
+    $operations[] = array('_mica_studies_export_dto_network_dto', array($node));
+
     $operations[] = array('_mica_studies_export_dto_save_json_file', array());
     //Send Dto via REST
 
@@ -95,6 +96,14 @@ function _mica_studies_export_dto_create_tmp_folder($folder_name) {
   return $tmp_folder_name;
 }
 
+function _mica_studies_export_dto_temp_attachement_folder($tmp_folder_root) {
+  $attachment_temp_folder = $tmp_folder_root . '/attachments/';
+  if (!is_dir($attachment_temp_folder)) {
+    drupal_mkdir($tmp_folder_root . '/attachments/');
+  }
+  return $attachment_temp_folder;
+}
+
 function _mica_studies_export_dto_save_json_file(&$context) {
   global $user;
 
@@ -104,9 +113,37 @@ function _mica_studies_export_dto_save_json_file(&$context) {
   $tmp_file_study_name = str_replace(' ', '_', $context['results']['study']['title_study'] . '-' . date('Y-m-d_H_m_s', time()));
   file_unmanaged_save_data($context['results']['study']['study_json'], $tmp_folder_root . '/' . $tmp_file_study_name . '.json', FILE_EXISTS_RENAME);
 
+  if (!empty($context['results']['study']['attachments'])) {
+    foreach ($context['results']['study']['attachments'] as $attachment) {
+      $attachment_temp_folder = _mica_studies_export_dto_temp_attachement_folder($tmp_folder_root);
+      file_unmanaged_copy($attachment['uri'], $attachment_temp_folder . $attachment['uuid']);
+    }
+  }
+
+  if (!empty($context['results']['dce']['attachments'])) {
+    foreach ($context['results']['dce']['attachments'] as $dce) {
+      foreach ($dce as $attachment) {
+        $attachment_temp_folder = _mica_studies_export_dto_temp_attachement_folder($tmp_folder_root);
+        file_unmanaged_copy($attachment['uri'], $attachment_temp_folder . $attachment['uuid']);
+      }
+    }
+  }
+
   foreach ($context['results']['datasets'] as $dataset) {
     $tmp_file_root_dataset_name = $tmp_folder_root . '/' . str_replace(' ', '_', $dataset['title_dataset'] . '-' . date('Y-m-d_H_m_s', time()));
     file_unmanaged_save_data($dataset['dataset_json'], $tmp_file_root_dataset_name . '.json', FILE_EXISTS_RENAME);
+  }
+
+  foreach ($context['results']['networks'] as $network) {
+    $tmp_file_root_network_name = $tmp_folder_root . '/' . str_replace(' ', '_', $network['title_network'] . '-' . date('Y-m-d_H_m_s', time()));
+    file_unmanaged_save_data($network['network_json'], $tmp_file_root_network_name . '.json', FILE_EXISTS_RENAME);
+  }
+
+  if (!empty($context['results']['networks']['attachments'])) {
+    foreach ($context['results']['networks']['attachments'] as $attachment) {
+      $attachment_temp_folder = _mica_studies_export_dto_temp_attachement_folder($tmp_folder_root);
+      file_unmanaged_copy($attachment['uri'], $attachment_temp_folder . $attachment['uuid']);
+    }
   }
 
   $zip_file_to_download = mica_studies_export_dto_create_zip_file($tmp_folder_root, $tmp_file_study_name);
@@ -132,7 +169,16 @@ function mica_studies_export_dto_create_zip_file($folder_to_zip, $name_zipe_file
   $zip = new ZipArchive;
   $zip->open($zip_file_path);
   foreach ($scanned_directory as $file) {
-    $zip->addFile($folder_to_zip . '/' . $file, $folder_to_zip . '/' . $file);
+    if (is_dir($folder_to_zip . '/' . $file)) {
+      $scanned_subdirectory = array_diff(scandir($folder_to_zip . '/' . $file), array('..', '.'));
+      $zip->addEmptyDir($folder_to_zip . '/' . $file);
+      foreach ($scanned_subdirectory as $subfile) {
+        $zip->addFile($folder_to_zip . '/' . $file . '/' . $subfile, $folder_to_zip . '/' . $file . '/' . $subfile);
+      }
+    }
+    else {
+      $zip->addFile($folder_to_zip . '/' . $file, $folder_to_zip . '/' . $file);
+    }
   }
   fclose($zip_file_path);
   return 'public:///' . $user->name . '/export-mica-server/' . $name_zipe_file . '.zip';
