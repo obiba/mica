@@ -15,6 +15,7 @@ function _mica_studies_export_dto_study_dto($node, &$context) {
   $study_dto->setId($wrapper_id);
   $data = $study_dto->serialize($codec);
 
+  $context['results']['study']['uuid'] = $wrapper_id;
   $context['results']['study']['title_study'] = $wrapper->title->value();
   $context['results']['study']['study_json'] = $data;
 }

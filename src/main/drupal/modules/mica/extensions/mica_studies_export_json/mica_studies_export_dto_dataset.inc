@@ -55,6 +55,7 @@ function _mica_studies_export_dto_dataset_dto($node, &$context) {
     $dataset_dto_json = $dataset_dto->serialize($codec);
 
     $datasets_to_file_save[] = array(
+      'uuid' => $raw_response,
       'title_dataset' => $dataset->title->value(),
       'dataset_json' => $dataset_dto_json
     );
