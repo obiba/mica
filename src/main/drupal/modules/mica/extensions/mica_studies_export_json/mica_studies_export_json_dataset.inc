@@ -86,7 +86,9 @@ function _mica_studies_export_json_get_dce_populations_id($study_wrapper, $datas
 }
 
 function _mica_mica_studies_export_json_dataset_harmonized($study_wrapper, $conector_options, $dce_population_find_param = NULL, $dataset_name) {
-  $project = !empty($conector_options) ? $conector_options['datasource'] : $study_wrapper->field_acroym->value();
+  $acronym_study = $study_wrapper->field_acroym->value();
+  $project = !empty($conector_options) ? $conector_options['datasource'] :
+    !empty($acronym_study) ? $acronym_study : $study_wrapper->field_title->value();
   $table = !empty($conector_options) ? $conector_options['table'] : $dataset_name;
   $datset_harmo_st_dto = new \obiba\mica\DatasetDto\StudyTableDto;
   $datset_harmo_dto = new \obiba\mica\HarmonizationDatasetDto;
@@ -112,7 +114,9 @@ function _mica_mica_studies_export_json_dataset_harmonized($study_wrapper, $cone
 }
 
 function _mica_mica_studies_export_json_dataset_study($study_wrapper, $conector_options, $dce_population_find_param = NULL, $dataset_name) {
-  $project = !empty($conector_options) ? $conector_options['datasource'] : $study_wrapper->field_acroym->value();;
+  $acronym_study = $study_wrapper->field_acroym->value();
+  $project = !empty($conector_options) ? $conector_options['datasource'] :
+    !empty($acronym_study) ? $acronym_study : $study_wrapper->field_title->value();
   $table = !empty($conector_options) ? $conector_options['table'] : $dataset_name;
   $datset_study_st_dto = new \obiba\mica\DatasetDto\StudyTableDto;
   $datset_study_st_dto->setPopulationId('novalue');
