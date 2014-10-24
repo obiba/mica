@@ -19,6 +19,7 @@ function _mica_studies_export_dto_network_dto($node, &$context) {
 
   foreach ($wrapper_study->field_networks->getIterator() as $network_wrapper) {
     $network_dto = new obiba\mica\NetworkDto();
+    $network_dto->addStudyIds($wrapper_study->uuid->value());
     $network_title = $network_wrapper->title_field->value();
     if (!empty($network_title)) {
       $dto_util->_mica_studies_export_dto_add_translated_Field($network_dto, 'addName',
