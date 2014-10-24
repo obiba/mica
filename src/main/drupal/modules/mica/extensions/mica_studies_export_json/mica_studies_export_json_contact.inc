@@ -4,7 +4,7 @@
  * mica_export_contact.inc
  */
 
-function _mica_studies_export_dto_contact_dto($dto_util, $wrapper) {
+function _mica_studies_export_json_contact_dto($dto_util, $wrapper) {
   $contact = new obiba\mica\ContactDto();
 
   $contact->setTitle($wrapper->field_contact_name->title->value());
@@ -19,24 +19,24 @@ function _mica_studies_export_dto_contact_dto($dto_util, $wrapper) {
 
   $institution_name = $wrapper->field_institution_name->value();
   if (!empty($institution_name)) {
-    $dto_util->_mica_studies_export_dto_add_translated_Field($institution, 'addName', $wrapper, 'field_institution_name');
+    $dto_util->_mica_studies_export_json_add_translated_Field($institution, 'addName', $wrapper, 'field_institution_name');
   }
 
   $departement_name = $wrapper->field_department_unit->value();
   if (!empty($departement_name)) {
-    $dto_util->_mica_studies_export_dto_add_translated_Field($institution, 'addDepartment', $wrapper, 'field_department_unit');
+    $dto_util->_mica_studies_export_json_add_translated_Field($institution, 'addDepartment', $wrapper, 'field_department_unit');
   }
 
   $address = new obiba\mica\AddressDto();
   $address_street = $wrapper->field_address->value();
   if (!empty($address_street)) {
-    $dto_util->_mica_studies_export_dto_add_translated_Field($address, 'addStreet', $wrapper, 'field_address');
+    $dto_util->_mica_studies_export_json_add_translated_Field($address, 'addStreet', $wrapper, 'field_address');
   }
 
   $address_city = $wrapper->field_city->value();
 
   if (!empty($address_city)) {
-    $dto_util->_mica_studies_export_dto_add_translated_Field($address, 'addCity', $wrapper, 'field_city');
+    $dto_util->_mica_studies_export_json_add_translated_Field($address, 'addCity', $wrapper, 'field_city');
   }
 
   $address->setZip($wrapper->field_postal_code->value());
@@ -50,7 +50,7 @@ function _mica_studies_export_dto_contact_dto($dto_util, $wrapper) {
     $country_name = $wrapper->field_contact_country->label();
 
     if (!empty($country_name)) {
-      $dto_util->_mica_studies_export_dto_add_translated_Field($coutryIso, 'addName', $wrapper, 'field_contact_country', NULL, 'label');
+      $dto_util->_mica_studies_export_json_add_translated_Field($coutryIso, 'addName', $wrapper, 'field_contact_country', NULL, 'label');
     }
 
     $address->setCountry($coutryIso);

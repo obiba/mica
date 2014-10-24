@@ -150,7 +150,7 @@ class QuerySendDto {
 
 
   //Deal with multi lang content
-  function _mica_studies_export_dto_add_translated_Field($dto_obj, $dto_method, $wrapper, $field, $array_field = NULL, $other_getter = NULL, $index_field = NULL) {
+  function _mica_studies_export_json_add_translated_Field($dto_obj, $dto_method, $wrapper, $field, $array_field = NULL, $other_getter = NULL, $index_field = NULL) {
     $default_lang = language_default();
     if (!empty($field)) {
       if (module_exists('mica_i18n')) {
@@ -220,7 +220,7 @@ class QuerySendDto {
 
   }
 
-  function _mica_studies_export_dto_attachement_construct($attachment, $type = 'document') {
+  function _mica_studies_export_json_attachement_construct($attachment, $type = 'document') {
     $attachement_dto = new \obiba\mica\AttachmentDto;
     $attachement_dto->setId($attachment['uuid']);
     $attachement_dto->setJustUploaded(TRUE);

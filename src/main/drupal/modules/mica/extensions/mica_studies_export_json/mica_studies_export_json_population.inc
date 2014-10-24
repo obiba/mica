@@ -4,13 +4,13 @@
  * mica_export_population.inc
  */
 
-function _mica_studies_export_dto_population_dto($dto_util, $wrapper, &$context) {
+function _mica_studies_export_json_population_dto($dto_util, $wrapper, &$context) {
 
   $population_dto = new obiba\mica\StudyDto\PopulationDto();
 
-  $dto_util->_mica_studies_export_dto_add_translated_Field($population_dto, 'addName', $wrapper, 'title_field');
+  $dto_util->_mica_studies_export_json_add_translated_Field($population_dto, 'addName', $wrapper, 'title_field');
 
-  $dto_util->_mica_studies_export_dto_add_translated_Field($population_dto, 'addDescription', $wrapper, 'body', 'value');
+  $dto_util->_mica_studies_export_json_add_translated_Field($population_dto, 'addDescription', $wrapper, 'body', 'value');
   $population_dto->setId($wrapper->uuid->value());
   $recruitment = new \obiba\mica\StudyDto\PopulationDto\RecruitmentDto();
 
@@ -33,7 +33,7 @@ function _mica_studies_export_dto_population_dto($dto_util, $wrapper, &$context)
           if ($specific_population->value() == 'other') {
             $pop_specific_pop_other_sp = $wrapper->field_pop_specific_pop_other_sp->value();
             if (!empty($pop_specific_pop_other_sp)) {
-              $dto_util->_mica_studies_export_dto_add_translated_Field($recruitment, 'addOtherSpecificPopulationSource',
+              $dto_util->_mica_studies_export_json_add_translated_Field($recruitment, 'addOtherSpecificPopulationSource',
                 $wrapper, 'field_pop_specific_pop_other_sp', 'value');
             }
           }
@@ -44,7 +44,7 @@ function _mica_studies_export_dto_population_dto($dto_util, $wrapper, &$context)
 
   $sup_info_recrutment = $wrapper->field_pop_recruit_supp_info->value();
   if (!empty($sup_info_recrutment)) {
-    $dto_util->_mica_studies_export_dto_add_translated_Field($recruitment, 'addInfo',
+    $dto_util->_mica_studies_export_json_add_translated_Field($recruitment, 'addInfo',
       $wrapper, 'field_pop_recruit_supp_info', 'value');
   }
 
@@ -60,7 +60,7 @@ function _mica_studies_export_dto_population_dto($dto_util, $wrapper, &$context)
 
   $sel_crit_territory = $pop_territory = $wrapper->field_pop_territory->value();
   if (!empty($sel_crit_territory)) {
-    $dto_util->_mica_studies_export_dto_add_translated_Field($selection_criteria,
+    $dto_util->_mica_studies_export_json_add_translated_Field($selection_criteria,
       'addTerritory', $wrapper, 'field_pop_territory', 'value');
   }
 
@@ -84,13 +84,13 @@ function _mica_studies_export_dto_population_dto($dto_util, $wrapper, &$context)
 
   $other_criteria_other_info = $wrapper->field_pop_selection_others_sp->value();
   if (!empty($other_criteria_other_info)) {
-    $dto_util->_mica_studies_export_dto_add_translated_Field($selection_criteria, 'addOtherCriteria', $wrapper,
+    $dto_util->_mica_studies_export_json_add_translated_Field($selection_criteria, 'addOtherCriteria', $wrapper,
       'field_pop_selection_others_sp', 'value');
   }
 
   $other_criteria_sup_info = $wrapper->field_pop_partcipant_sel_supp_in->value();
   if (!empty($other_criteria_sup_info)) {
-    $dto_util->_mica_studies_export_dto_add_translated_Field($selection_criteria,
+    $dto_util->_mica_studies_export_json_add_translated_Field($selection_criteria,
       'addInfo', $wrapper, 'field_pop_partcipant_sel_supp_in', 'value');
   }
 
@@ -99,21 +99,21 @@ function _mica_studies_export_dto_population_dto($dto_util, $wrapper, &$context)
   $biosample['number'] = $wrapper->field_pop_participants_nb_s->value();
   $biosample['noLimit'] = $wrapper->field_pop_no_lim_participants_s->value();
   $population_dto->setNumberOfParticipants(
-    mica_studies_export_dto_set_number_of_participants($participant_sample,
+    mica_studies_export_json_set_number_of_participants($participant_sample,
       $biosample, $wrapper, 'field_pop_participants_nb_supp_i'));
 
   $population_dto->setSelectionCriteria($selection_criteria);
 
   $pop_supp_infos = $wrapper->field_pop_supp_infos->value();
   if (!empty($pop_supp_infos)) {
-    $dto_util->_mica_studies_export_dto_add_translated_Field($population_dto,
+    $dto_util->_mica_studies_export_json_add_translated_Field($population_dto,
       'addInfo', $wrapper, 'field_pop_supp_infos', 'value');
   }
 
 //
   foreach ($wrapper->field_pop_dce->getIterator() as $dce_wrapper) {
     if (!empty($dce_wrapper)) {
-      $dce = _mica_studies_export_dto_dce_dto($dto_util, $dce_wrapper, $context);
+      $dce = _mica_studies_export_json_dce_dto($dto_util, $dce_wrapper, $context);
       $population_dto->addDataCollectionEvents($dce);
     }
   }
