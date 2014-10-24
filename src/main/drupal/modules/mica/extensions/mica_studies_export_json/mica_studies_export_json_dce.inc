@@ -4,19 +4,19 @@
  * mica_export_dce.inc
  */
 
-function _mica_studies_export_dto_dce_dto($dto_util, $wrapper, &$context) {
+function _mica_studies_export_json_dce_dto($dto_util, $wrapper, &$context) {
   $dce_dto = new obiba\mica\StudyDto\PopulationDto\DataCollectionEventDto();
   $attachments_files = array();
   $dce_title = $wrapper->title_field->value();
   $dce_dto->setId($wrapper->uuid->value());
   if (!empty($dce_title)) {
-    $dto_util->_mica_studies_export_dto_add_translated_Field($dce_dto, 'addName',
+    $dto_util->_mica_studies_export_json_add_translated_Field($dce_dto, 'addName',
       $wrapper, 'title_field');
   }
 
   $dce_description = $wrapper->body->value();
   if (!empty($dce_description)) {
-    $dto_util->_mica_studies_export_dto_add_translated_Field($dce_dto, 'addDescription',
+    $dto_util->_mica_studies_export_json_add_translated_Field($dce_dto, 'addDescription',
       $wrapper, 'body', 'value');
   }
 
@@ -31,7 +31,7 @@ function _mica_studies_export_dto_dce_dto($dto_util, $wrapper, &$context) {
       if ($sources->value() == 'others') {
         $dce_datasource_sp = $wrapper->field_dce_data_sources_sp->value();
         if (!empty($dce_datasource_sp)) {
-          $dto_util->_mica_studies_export_dto_add_translated_Field($dce_dto, 'addOtherDataSources',
+          $dto_util->_mica_studies_export_json_add_translated_Field($dce_dto, 'addOtherDataSources',
             $wrapper, 'field_dce_data_sources_sp');
         }
       }
@@ -43,14 +43,14 @@ function _mica_studies_export_dto_dce_dto($dto_util, $wrapper, &$context) {
           if ($biosample->value() == 'others') {
             $other_tissue = $wrapper->field_dce_samples_man_other_sp->value();
             if (!empty($other_tissue)) {
-              $dto_util->_mica_studies_export_dto_add_translated_Field($dce_dto, 'addOtherBioSamples',
+              $dto_util->_mica_studies_export_json_add_translated_Field($dce_dto, 'addOtherBioSamples',
                 $wrapper, 'field_dce_samples_man_other_sp', 'value');
             }
           }
           if ($biosample->value() == 'tissues') {
             $dce_tissue_sp = $wrapper->field_dce_tissues_sp->value();
             if (!empty($dce_tissue_sp)) {
-              $dto_util->_mica_studies_export_dto_add_translated_Field($dce_dto, 'addTissueTypes',
+              $dto_util->_mica_studies_export_json_add_translated_Field($dce_dto, 'addTissueTypes',
                 $wrapper, 'field_dce_tissues_sp');
             }
           }
@@ -69,7 +69,7 @@ function _mica_studies_export_dto_dce_dto($dto_util, $wrapper, &$context) {
   foreach ($wrapper->field_dce_data_dictionaries->value() as $attachment) {
     //   $id_file_server_response = $dto_util->export_file($attachment);
     if (!empty($attachment['filename'])) {
-      $attachment_dto = $dto_util->_mica_studies_export_dto_attachement_construct($attachment, 'dictionaries');
+      $attachment_dto = $dto_util->_mica_studies_export_json_attachement_construct($attachment, 'dictionaries');
       $attachments_files[] = array(
         'uuid' => $attachment['uuid'],
         'filename' => $attachment['filename'],
@@ -82,7 +82,7 @@ function _mica_studies_export_dto_dce_dto($dto_util, $wrapper, &$context) {
   foreach ($wrapper->field_dce_sops->value() as $attachment) {
     //   $id_file_server_response = $dto_util->export_file($attachment);
     if (!empty($attachment['filename'])) {
-      $attachment_dto = $dto_util->_mica_studies_export_dto_attachement_construct($attachment, 'sop');
+      $attachment_dto = $dto_util->_mica_studies_export_json_attachement_construct($attachment, 'sop');
       $attachments_files[] = array(
         'uuid' => $attachment['uuid'],
         'filename' => $attachment['filename'],
@@ -95,7 +95,7 @@ function _mica_studies_export_dto_dce_dto($dto_util, $wrapper, &$context) {
   foreach ($wrapper->field_dce_questionnaires->value() as $attachment) {
     //   $id_file_server_response = $dto_util->export_file($attachment);
     if (!empty($attachment['filename'])) {
-      $attachment_dto = $dto_util->_mica_studies_export_dto_attachement_construct($attachment, 'questionnaire');
+      $attachment_dto = $dto_util->_mica_studies_export_json_attachement_construct($attachment, 'questionnaire');
       $attachments_files[] = array(
         'uuid' => $attachment['uuid'],
         'filename' => $attachment['filename'],
@@ -108,7 +108,7 @@ function _mica_studies_export_dto_dce_dto($dto_util, $wrapper, &$context) {
   foreach ($wrapper->field_dce_others->value() as $attachment) {
     //   $id_file_server_response = $dto_util->export_file($attachment);
     if (!empty($attachment['filename'])) {
-      $attachment_dto = $dto_util->_mica_studies_export_dto_attachement_construct($attachment, 'others_document');
+      $attachment_dto = $dto_util->_mica_studies_export_json_attachement_construct($attachment, 'others_document');
       $attachments_files[] = array(
         'uuid' => $attachment['uuid'],
         'filename' => $attachment['filename'],

@@ -3,13 +3,13 @@
  * @file
  * mica_export_study.inc
  */
-require_once('mica_studies_export_dto_api.inc');
+require_once('mica_studies_export_json_api.inc');
 
-function _mica_studies_export_dto_study_dto($node, &$context) {
+function _mica_studies_export_json_study_dto($node, &$context) {
   $dto_util = new QuerySendDto();
   $wrapper = entity_metadata_wrapper('node', $node);
   $wrapper_id = $wrapper->uuid->value();
-  $study_dto = _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper, $context);
+  $study_dto = _mica_studies_export_json_construct_study_dto($dto_util, $wrapper, $context);
   $codec = new \DrSlump\Protobuf\Codec\Json();
   //create study-dto
   $study_dto->setId($wrapper_id);
@@ -20,25 +20,25 @@ function _mica_studies_export_dto_study_dto($node, &$context) {
   $context['results']['study']['study_json'] = $data;
 }
 
-function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper, &$context) {
+function _mica_studies_export_json_construct_study_dto($dto_util, $wrapper, &$context) {
 
   $study_dto = new obiba\mica\StudyDto;
-  $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addName', $wrapper, 'title_field');
+  $dto_util->_mica_studies_export_json_add_translated_Field($study_dto, 'addName', $wrapper, 'title_field');
 
   $study_acronym = $wrapper->field_acroym->value();
   if (!empty($study_acronym)) {
-    $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addAcronym', $wrapper, 'field_acroym');
+    $dto_util->_mica_studies_export_json_add_translated_Field($study_dto, 'addAcronym', $wrapper, 'field_acroym');
   }
 
   foreach ($wrapper->field_investigators->getIterator() as $investigator_wrapper) {
     if (!empty($investigator_wrapper)) {
-      $investigator = _mica_studies_export_dto_contact_dto($dto_util, $investigator_wrapper);
+      $investigator = _mica_studies_export_json_contact_dto($dto_util, $investigator_wrapper);
       $study_dto->addInvestigators($investigator);
     }
   }
 
   //$study_dto->addObjectives($dto_util->_set_LocalizedStringDto($wrapper->body->value->value()));
-  $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addObjectives', $wrapper, 'body', 'value');
+  $dto_util->_mica_studies_export_json_add_translated_Field($study_dto, 'addObjectives', $wrapper, 'body', 'value');
 
   $url_website = $wrapper->field_website->value();
   if (!empty($url_website)) {
@@ -52,7 +52,7 @@ function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper, &$con
 
   foreach ($wrapper->field_contacts_ref->getIterator() as $contact_wrapper) {
     if (!empty($contact_wrapper)) {
-      $contact = _mica_studies_export_dto_contact_dto($dto_util, $contact_wrapper);
+      $contact = _mica_studies_export_json_contact_dto($dto_util, $contact_wrapper);
       $study_dto->addContacts($contact);
     }
   }
@@ -78,7 +78,7 @@ function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper, &$con
       $design_other_sp = $wrapper->field_design_other_sp->value();
       // dpm( $wrapper->language('en')->field_design_other_sp->value());
       if (!empty($design_other_sp)) {
-        $dto_util->_mica_studies_export_dto_add_translated_Field($study_methods_dto, 'addOtherDesign', $wrapper,
+        $dto_util->_mica_studies_export_json_add_translated_Field($study_methods_dto, 'addOtherDesign', $wrapper,
           'field_design_other_sp', 'value');
       }
     }
@@ -86,7 +86,7 @@ function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper, &$con
   $info_design_follow_up = $wrapper->field_info_design_follow_up->value();
 
   if (!empty($info_design_follow_up)) {
-    $dto_util->_mica_studies_export_dto_add_translated_Field($study_methods_dto, 'addFollowUpInfo', $wrapper,
+    $dto_util->_mica_studies_export_json_add_translated_Field($study_methods_dto, 'addFollowUpInfo', $wrapper,
       'field_info_design_follow_up', 'value');
   }
 
@@ -95,7 +95,7 @@ function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper, &$con
     if ($target->value() == 'other') {
       $recruitment_other_sp = $wrapper->field_recruitment_other_sp->value();
       if (!empty($recruitment_other_sp)) {
-        $dto_util->_mica_studies_export_dto_add_translated_Field($study_methods_dto, 'addOtherRecruitment', $wrapper,
+        $dto_util->_mica_studies_export_json_add_translated_Field($study_methods_dto, 'addOtherRecruitment', $wrapper,
           'field_recruitment_other_sp');
       }
     }
@@ -103,7 +103,7 @@ function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper, &$con
 
   $recruitment_supp_info = $wrapper->field_recruitment_supp_info->value();
   if (!empty($recruitment_supp_info)) {
-    $dto_util->_mica_studies_export_dto_add_translated_Field($study_methods_dto, 'addInfo', $wrapper,
+    $dto_util->_mica_studies_export_json_add_translated_Field($study_methods_dto, 'addInfo', $wrapper,
       'field_recruitment_supp_info', 'value');
   }
 
@@ -114,7 +114,7 @@ function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper, &$con
   $biosample['number'] = $wrapper->field_target_number_biosamples->value();
   $biosample['noLimit'] = $wrapper->field_no_limits_samples->value();
   $study_dto->setNumberOfParticipants(
-    mica_studies_export_dto_set_number_of_participants($participant_sample,
+    mica_studies_export_json_set_number_of_participants($participant_sample,
       $biosample, $wrapper, 'field_target_nb_supp_info'));
 
   $study_dto->setStartYear($wrapper->field_study_start_year->value());
@@ -130,7 +130,7 @@ function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper, &$con
     $study_dto->addAccess('other');
     $access_other_info = $wrapper->field_access_other_sp->value();
     if (!empty($access_other_info)) {
-      $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addOtherAccess', $wrapper,
+      $dto_util->_mica_studies_export_json_add_translated_Field($study_dto, 'addOtherAccess', $wrapper,
         'field_access_other_sp', 'value');
     }
   }
@@ -141,13 +141,13 @@ function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper, &$con
   $supl_info = $wrapper->field_supp_infos->value();
 
   if (!empty($supl_info)) {
-    $dto_util->_mica_studies_export_dto_add_translated_Field($study_dto, 'addInfo', $wrapper,
+    $dto_util->_mica_studies_export_json_add_translated_Field($study_dto, 'addInfo', $wrapper,
       'field_supp_infos', 'value');
   }
 
   foreach ($wrapper->field_study_populations->getIterator() as $population_wrapper) {
     if (!empty($population_wrapper)) {
-      $population = _mica_studies_export_dto_population_dto($dto_util, $population_wrapper, $context);
+      $population = _mica_studies_export_json_population_dto($dto_util, $population_wrapper, $context);
       $study_dto->addPopulations($population);
     }
   }
@@ -156,7 +156,7 @@ function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper, &$con
 
   $logo = $wrapper->field_logo->value();
   if (!empty($logo['filename'])) {
-    $attachment_logo_dto = $dto_util->_mica_studies_export_dto_attachement_construct($logo, 'logo');
+    $attachment_logo_dto = $dto_util->_mica_studies_export_json_attachement_construct($logo, 'logo');
     $attachments_files[] = array(
       'uuid' => $logo['uuid'],
       'filename' => $logo['filename'],
@@ -167,7 +167,7 @@ function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper, &$con
 
   foreach ($wrapper->field_documents->value() as $attachment) {
     if (!empty($attachment['filename'])) {
-      $attachment_dto = $dto_util->_mica_studies_export_dto_attachement_construct($attachment, 'document');
+      $attachment_dto = $dto_util->_mica_studies_export_json_attachement_construct($attachment, 'document');
       $attachments_files[] = array(
         'uuid' => $attachment['uuid'],
         'filename' => $attachment['filename'],
@@ -183,17 +183,17 @@ function _mica_studies_export_dto_construct_study_dto($dto_util, $wrapper, &$con
   return $study_dto;
 }
 
-function mica_studies_export_dto_set_number_of_participants($participant = NULL, $sample = NULL, $wrapper, $field) {
+function mica_studies_export_json_set_number_of_participants($participant = NULL, $sample = NULL, $wrapper, $field) {
   $participant_dto = new \obiba\mica\StudyDto\NumberOfParticipantsDto();
   $dto_util = new QuerySendDto();
-  $participant_dto->setParticipant(mica_studies_export_dto_set_target_number_dto($participant));
-  $participant_dto->setSample(mica_studies_export_dto_set_target_number_dto($sample));
+  $participant_dto->setParticipant(mica_studies_export_json_set_target_number_dto($participant));
+  $participant_dto->setSample(mica_studies_export_json_set_target_number_dto($sample));
   $value_field = $wrapper->{$field}->value();
-  !empty($value_field) ? $dto_util->_mica_studies_export_dto_add_translated_Field($participant_dto, 'addInfo', $wrapper, $field, 'value') : NULL;
+  !empty($value_field) ? $dto_util->_mica_studies_export_json_add_translated_Field($participant_dto, 'addInfo', $wrapper, $field, 'value') : NULL;
   return $participant_dto;
 }
 
-function mica_studies_export_dto_set_target_number_dto($target) {
+function mica_studies_export_json_set_target_number_dto($target) {
   $target_number = new \obiba\mica\TargetNumberDto();
   $target_number->setNumber($target['number']);
   $target_number->setNoLimit($target['noLimit']);

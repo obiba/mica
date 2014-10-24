@@ -7,7 +7,7 @@ $path_module_protobuf = drupal_get_path('module', 'obiba_protobuf');
 include_once($path_module_protobuf . '/protobuf/Protobuf.php');
 use \DrSlump\Protobuf;
 
-function _mica_studies_export_dto_network_dto($node, &$context) {
+function _mica_studies_export_json_network_dto($node, &$context) {
 
   $dataset_gen_dto = NULL;
   $dataset_type_parse = NULL;
@@ -22,16 +22,16 @@ function _mica_studies_export_dto_network_dto($node, &$context) {
     $network_dto->addStudyIds($wrapper_study->uuid->value());
     $network_title = $network_wrapper->title_field->value();
     if (!empty($network_title)) {
-      $dto_util->_mica_studies_export_dto_add_translated_Field($network_dto, 'addName',
+      $dto_util->_mica_studies_export_json_add_translated_Field($network_dto, 'addName',
         $network_wrapper, 'title_field');
     }
 
     $network_acronym = $network_wrapper->field_acroym->value();
     if (!empty($network_acronym)) {
-      $dto_util->_mica_studies_export_dto_add_translated_Field($network_dto, 'addAcronym', $network_wrapper, 'field_acroym');
+      $dto_util->_mica_studies_export_json_add_translated_Field($network_dto, 'addAcronym', $network_wrapper, 'field_acroym');
     }
 
-    $dto_util->_mica_studies_export_dto_add_translated_Field($network_dto, 'addDescription', $network_wrapper, 'body', 'value');
+    $dto_util->_mica_studies_export_json_add_translated_Field($network_dto, 'addDescription', $network_wrapper, 'body', 'value');
 
     $url_website = $network_wrapper->field_website->value();
     if (!empty($url_website)) {
@@ -48,28 +48,28 @@ function _mica_studies_export_dto_network_dto($node, &$context) {
 
     foreach ($network_wrapper->field_investigators->getIterator() as $investigator_wrapper) {
       if (!empty($investigator_wrapper)) {
-        $investigator = _mica_studies_export_dto_contact_dto($dto_util, $investigator_wrapper);
+        $investigator = _mica_studies_export_json_contact_dto($dto_util, $investigator_wrapper);
         $network_dto->addInvestigators($investigator);
       }
     }
 
     foreach ($network_wrapper->field_contacts_ref->getIterator() as $contact_wrapper) {
       if (!empty($contact_wrapper)) {
-        $contact = _mica_studies_export_dto_contact_dto($dto_util, $contact_wrapper);
+        $contact = _mica_studies_export_json_contact_dto($dto_util, $contact_wrapper);
         $network_dto->addContacts($contact);
       }
     }
 
     $supl_info = $network_wrapper->field_supp_infos->value();
     if (!empty($supl_info)) {
-      $dto_util->_mica_studies_export_dto_add_translated_Field($network_dto, 'addInfo', $network_wrapper,
+      $dto_util->_mica_studies_export_json_add_translated_Field($network_dto, 'addInfo', $network_wrapper,
         'field_supp_infos');
     }
 
     //attached Documents
     $logo = $network_wrapper->field_logo->value();
     if (!empty($logo['filename'])) {
-      $attachment_logo_dto = $dto_util->_mica_studies_export_dto_attachement_construct($logo, 'logo');
+      $attachment_logo_dto = $dto_util->_mica_studies_export_json_attachement_construct($logo, 'logo');
       $attachments_files[] = array(
         'uuid' => $logo['uuid'],
         'filename' => $logo['filename'],
