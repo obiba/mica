@@ -60,15 +60,15 @@ function _mica_studies_export_json_construct_study_dto($dto_util, $wrapper, &$co
   $authorization_spec_dto = new \obiba\mica\AuthorizationDto();
   $authorization_spec_dto->setAuthorized($wrapper->field_authorization_specific->value());
   $authorization_spec_dto->setAuthorizer($wrapper->field_authorising_person_name->value());
-  //@TODO Bug when exporting :Text '1350964800' could not be parsed at index 0 <Jira : MICASERVER-46>
-  // $authorization_spec_dto->setDate($wrapper->field_authorising_date->value());
+
+  $authorization_spec_dto->setDate(date("c", $wrapper->field_authorising_date->value()));
   $study_dto->setSpecificAuthorization($authorization_spec_dto);
 
   $authorization_maelstrom_dto = new \obiba\mica\AuthorizationDto();
   $authorization_maelstrom_dto->setAuthorized($wrapper->field_authorization_maelstrom->value());
   $authorization_maelstrom_dto->setAuthorizer($wrapper->field_authorising_person_name_m->value());
-  //@TODO Bug when exporting :Text '1350964800' could not be parsed at index 0 <Jira : MICASERVER-46>
-  //$authorization_maelstrom_dto->setDate($wrapper->field_authorising_date_m->value());
+
+  $authorization_maelstrom_dto->setDate(date("c", $wrapper->field_authorising_date_m->value()));
   $study_dto->setMaelstromAuthorization($authorization_maelstrom_dto);
 
   $study_methods_dto = new \obiba\mica\StudyDto\StudyMethodsDto();
