@@ -41,10 +41,8 @@ function _mica_studies_export_json_network_dto($node, &$context) {
     $authorization_maelstrom_dto = new \obiba\mica\AuthorizationDto();
     $authorization_maelstrom_dto->setAuthorized($network_wrapper->field_authorization_maelstrom->value());
     $authorization_maelstrom_dto->setAuthorizer($network_wrapper->field_authorising_person_name_m->value());
-    $authorization_maelstrom_dto->setDate($network_wrapper->field_authorising_date_m->value());
+    $authorization_maelstrom_dto->setDate(date("c", $network_wrapper->field_authorising_date_m->value()));
     $network_dto->setMaelstromAuthorization($authorization_maelstrom_dto);
-    //@TODO Bug when exporting :Text '1350964800' could not be parsed at index 0 <Jira : MICASERVER-46>
-    //$authorization_maelstrom_dto->setDate($wrapper->field_authorising_date_m->value());
 
     foreach ($network_wrapper->field_investigators->getIterator() as $investigator_wrapper) {
       if (!empty($investigator_wrapper)) {
