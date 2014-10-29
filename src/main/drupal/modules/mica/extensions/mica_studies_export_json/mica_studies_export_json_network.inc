@@ -85,7 +85,7 @@ function _mica_studies_export_json_network_dto($node, &$context) {
     $network_dto_json = $network_dto->serialize($codec);
     $network_to_file_save[] = array(
       'uuid' => $raw_response,
-      'title_network' => $network_wrapper->title->value(),
+      'title_network' => $network_wrapper->title_field->value(),
       'network_json' => $network_dto_json
     );
   }

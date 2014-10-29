@@ -108,7 +108,6 @@ function _mica_studies_export_json_save_json_file(&$context) {
   global $user;
 
   $tmp_folder_root = _mica_studies_export_json_create_tmp_folder(str_replace(' ', '_', $context['results']['study']['title_study']));
-
   //save study json
   $tmp_file_study_name = $tmp_folder_root . '/' . 'study-' . $context['results']['study']['uuid'];
   file_unmanaged_save_data($context['results']['study']['study_json'], $tmp_file_study_name . '.json', FILE_EXISTS_RENAME);
@@ -148,7 +147,9 @@ function _mica_studies_export_json_save_json_file(&$context) {
 
   $zip_file_to_download = mica_studies_export_json_create_zip_file($tmp_folder_root, $context['results']['study']['title_study']);
   //delete temp files
-  file_unmanaged_delete_recursive($tmp_folder_root);
+  if (!empty($tmp_folder_root)) {
+    recurseRmdir($tmp_folder_root);
+  }
 
   drupal_set_message(
     t("<a href='@file_url'>Download exported study zip file.</a> This file is also available in your <a href='@file_manager_url'>File manager</a>",
@@ -157,6 +158,14 @@ function _mica_studies_export_json_save_json_file(&$context) {
         '@file_manager_url' => url('user/' . $user->uid . '/imce')
       )),
     'status');
+}
+
+function recurseRmdir($dir) {
+  $files = array_diff(scandir($dir), array('.', '..'));
+  foreach ($files as $file) {
+    (is_dir("$dir/$file")) ? recurseRmdir("$dir/$file") : unlink("$dir/$file");
+  }
+  return rmdir($dir);
 }
 
 function mica_studies_export_json_create_zip_file($folder_to_zip, $name_zip_file) {

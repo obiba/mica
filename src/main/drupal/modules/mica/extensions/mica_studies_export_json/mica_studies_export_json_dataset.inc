@@ -46,7 +46,7 @@ function _mica_studies_export_json_dataset_dto($node, &$context) {
 
     $dto_util->_mica_studies_export_json_add_translated_Field($dataset_dto, 'addName', $dataset, 'title');
     $dto_util->_mica_studies_export_json_add_translated_Field($dataset_dto, 'setDescription', $dataset, 'body', 'value');
-    $dataset_dto->setEntityType('participant');
+    $dataset_dto->setEntityType('Participant');
     $dataset_dto[$dataset_type_parse] = $dataset_gen_dto;
 
     $raw_response = $dataset->uuid->value();
