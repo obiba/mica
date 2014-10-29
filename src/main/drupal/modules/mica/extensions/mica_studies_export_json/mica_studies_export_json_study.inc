@@ -16,7 +16,7 @@ function _mica_studies_export_json_study_dto($node, &$context) {
   $data = $study_dto->serialize($codec);
 
   $context['results']['study']['uuid'] = $wrapper_id;
-  $context['results']['study']['title_study'] = $wrapper->title->value();
+  $context['results']['study']['title_study'] = str_replace('/', '_', $wrapper->title->value());
   $context['results']['study']['study_json'] = $data;
 }
 
@@ -49,9 +49,9 @@ function _mica_studies_export_json_construct_study_dto($dto_util, $wrapper, &$co
   if (!empty($opal_study)) {
     $study_dto->setOpal($opal_study['url']);
   };
-
   foreach ($wrapper->field_contacts_ref->getIterator() as $contact_wrapper) {
-    if (!empty($contact_wrapper)) {
+    $title_contact = $contact_wrapper->title->value();
+    if (!empty($title_contact)) {
       $contact = _mica_studies_export_json_contact_dto($dto_util, $contact_wrapper);
       $study_dto->addContacts($contact);
     }
