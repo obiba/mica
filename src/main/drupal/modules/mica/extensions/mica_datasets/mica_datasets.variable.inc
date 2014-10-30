@@ -12,5 +12,19 @@ function mica_datasets_variable_info($options) {
       'type' => 'boolean',
       'group' => 'mica_configuration',
     ),
+    'mica_datasets_connection_errors' => array(
+      'title' => t('Display Opal connection errors', array(), $options),
+      'description' => t('Display Opal connection errors to users', array(), $options),
+      'default' => TRUE,
+      'type' => 'boolean',
+      'group' => 'mica_configuration',
+    ),
+    'mica_datasets_connection_errors_message' => array(
+      'title' => t('Alternative Opal connection errors', array(), $options),
+      'description' => t('An alternative message to be displayed to default errors Opal connection message', array(), $options),
+      'default' => '',
+      'type' => 'text',
+      'group' => 'mica_configuration',
+    ),
   );
 }
