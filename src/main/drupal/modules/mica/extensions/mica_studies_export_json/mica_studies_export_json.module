@@ -133,9 +133,11 @@ function _mica_studies_export_json_save_json_file(&$context) {
     file_unmanaged_save_data($dataset['dataset_json'], $tmp_file_root_dataset_name . '.json', FILE_EXISTS_RENAME);
   }
 
-  foreach ($context['results']['networks'] as $network) {
-    $tmp_file_root_network_name = $tmp_folder_root . '/' . 'network-' . $network['uuid'];
-    file_unmanaged_save_data($network['network_json'], $tmp_file_root_network_name . '.json', FILE_EXISTS_RENAME);
+  foreach ($context['results']['networks'] as $key_network => $network) {
+    if (is_int($key_network)) {
+      $tmp_file_root_network_name = $tmp_folder_root . '/' . 'network-' . $network['uuid'];
+      file_unmanaged_save_data($network['network_json'], $tmp_file_root_network_name . '.json', FILE_EXISTS_RENAME);
+    }
   }
 
   if (!empty($context['results']['networks']['attachments'])) {
