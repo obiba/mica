@@ -21,7 +21,7 @@ function mica_datasets_variable_info($options) {
     ),
     'mica_datasets_connection_errors_message' => array(
       'title' => t('Alternative Opal connection errors', array(), $options),
-      'description' => t('An alternative message to be displayed to default errors Opal connection message', array(), $options),
+      'description' => t('The message to be displayed on Opal connection error', array(), $options),
       'default' => '',
       'type' => 'text',
       'group' => 'mica_configuration',
