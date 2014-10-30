@@ -133,35 +133,49 @@ class MicaDatasetConnector extends Entity {
   }
 
   public function displayError(Exception $e) {
-    $study = node_load($this->study_id);
-    switch ($e->getCode()) {
-      case 401:
-        drupal_set_message(t("Study %study: Authentication failed (401).",
-          array("%study" => $study->title)), 'error');
-        break;
-      case 403:
-        drupal_set_message(t("Study %study: Not authorized to search dataset (403). Please edit %study configuration and make sure its dataset and table names are correct.",
-          array("%study" => $study->title)), 'error');
-        break;
-      case 404:
-        drupal_set_message(t("Study %study: Cannot find dataset (404). Please edit %study configuration and make sure its dataset and table names are correct.",
-          array("%study" => $study->title)), 'error');
-        break;
-      case 400:
-        $hint = t("(Possible causes: Variable not found in Opal table " . $this->options['table'] . ".)");
-        drupal_set_message(t("Study %study: Failed executing search. Message was: %msg. Code: %code. Please make sure all configuration settings are correct.<br/>%hint",
-          array(
-            "%study" => $study->title,
-            "%msg" => $e->getMessage(),
-            '%code' => $e->getCode(),
-            '%hint' => $hint
-          )), 'error');
-        break;
-      default:
-        $hint = t("(Possible causes: Opal server is down, host name is invalid, port number is invalid.)");
-        drupal_set_message(t("Study %study: Failed executing search. Message was: %msg. Code: %code. Please make sure all configuration settings are correct.<br/>%hint",
-          array("%study" => $study->title, "%msg" => $e->getMessage(), '%code' => $e->getCode(), '%hint' => $hint)), 'error');
-        break;
+    $errors_display = variable_get('mica_datasets_connection_errors', TRUE);
+    if ($errors_display) {
+      $study = node_load($this->study_id);
+      switch ($e->getCode()) {
+        case 401:
+          drupal_set_message(t("Study %study: Authentication failed (401).",
+            array("%study" => $study->title)), 'error');
+          break;
+        case 403:
+          drupal_set_message(t("Study %study: Not authorized to search dataset (403). Please edit %study configuration and make sure its dataset and table names are correct.",
+            array("%study" => $study->title)), 'error');
+          break;
+        case 404:
+          drupal_set_message(t("Study %study: Cannot find dataset (404). Please edit %study configuration and make sure its dataset and table names are correct.",
+            array("%study" => $study->title)), 'error');
+          break;
+        case 400:
+          $hint = t("(Possible causes: Variable not found in Opal table " . $this->options['table'] . ".)");
+          drupal_set_message(t("Study %study: Failed executing search. Message was: %msg. Code: %code. Please make sure all configuration settings are correct.<br/>%hint",
+            array(
+              "%study" => $study->title,
+              "%msg" => $e->getMessage(),
+              '%code' => $e->getCode(),
+              '%hint' => $hint
+            )), 'error');
+          break;
+        default:
+          $hint = t("(Possible causes: Opal server is down, host name is invalid, port number is invalid.)");
+          drupal_set_message(t("Study %study: Failed executing search. Message was: %msg. Code: %code. Please make sure all configuration settings are correct.<br/>%hint",
+            array(
+              "%study" => $study->title,
+              "%msg" => $e->getMessage(),
+              '%code' => $e->getCode(),
+              '%hint' => $hint
+            )), 'error');
+          break;
+      }
+    }
+    else {
+      $errors_alternative_message = variable_get('mica_datasets_connection_errors_message', '');
+      if (!empty($errors_alternative_message)) {
+        drupal_set_message($errors_alternative_message, 'status');
+      }
     }
   }
 
