@@ -212,7 +212,6 @@ class MicaDatasetOpalConnectionClass extends MicaDatasetAbstractConnection imple
     }
 
     $client->options['curlopts'] += array(
-      CURLOPT_SSLVERSION => 3,
       CURLOPT_SSL_VERIFYHOST => FALSE,
       CURLOPT_SSL_VERIFYPEER => FALSE,
       CURLOPT_SSLCERT => $this->realpath(PUBLIC_KEY_FILE),
