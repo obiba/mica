@@ -28,7 +28,7 @@ projects[cck_select_other] = 1.0
 
 projects[chain_menu_access] = 1.0
 
-projects[ckeditor] = 1.13
+projects[ckeditor] = 1.16
 
 projects[collapsiblock][download][type] = git
 projects[collapsiblock][download][revision] = 36f4280
