@@ -72,7 +72,8 @@ function mica_opal_fetch_harmonization_view($dataset_nid, $study_nid) {
 
 function _mica_opal_parse_categories($item) {
   $categories = array();
-  $json_categories = array_shift(mica_opal_jsonPath($item, 'categories'));
+  $mica_json_opal = mica_opal_jsonPath($item, 'categories');
+  $json_categories = array_shift($mica_json_opal);
   if (is_array($json_categories)) {
     foreach ($json_categories as $json_cat) {
       $category = array(
@@ -174,5 +175,6 @@ function mica_opal_jsonPath($array, $expression) {
 }
 
 function _mica_opal_json_get_string($array, $expression) {
-  return array_shift(mica_opal_jsonPath($array, $expression));
+  $mica_json = mica_opal_jsonPath($array, $expression);
+  return array_shift($mica_json);
 }

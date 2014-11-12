@@ -54,7 +54,7 @@ projects[] = devel
 projects[email] = 1.2
 
 projects[entity][version] = 1.4
-projects[entity][patch][1621226] = http://drupal.org/files/entity-add-field-info-on-validation-exception.patch
+projects[entity][patch][1621226] = https://www.drupal.org/files/issues/1621226-4.entity.make_invalid_data_exception_more_verbose.patch
 
 projects[entity_translation] = 1.0-alpha2
 
@@ -117,8 +117,7 @@ projects[jquery_update][download][revision] = dd3d76e
 projects[jquery_update][download][branch] = 7.x-2.x
 projects[jquery_update][patch][1995790] = http://drupal.org/files/update_jquery_form_3_32-1995790-1.patch
 
-projects[jquery_ui_multiselect_widget][version] = 1.8
-projects[jquery_ui_multiselect_widget][patch][2105083] = http://drupal.org/files/issues/jquery_ui_multiselect_widget-version-test-fix-2105083.patch
+projects[jquery_ui_multiselect_widget][version] = 1.11
 
 projects[l10n_update] = 1.0-beta3
 
@@ -195,7 +194,7 @@ projects[search_api_ranges][patch][2130349] = http://drupal.org/files/issues/sea
 
 projects[search_api_solr] = 1.4
 
-projects[services] = 3.7
+projects[services] = 3.10
 projects[services][patch][2200269] = http://drupal.org/files/issues/services-2200269.patch
 
 projects[smtp] = 1.0-beta2
