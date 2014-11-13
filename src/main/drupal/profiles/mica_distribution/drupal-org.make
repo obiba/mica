@@ -102,8 +102,7 @@ projects[] = graphapi
 
 projects[http_client] = 2.4
 
-projects[i18n][version] = 1.7
-projects[i18n][patch][1662884] = http://drupal.org/files/support_multiple_translation_modes-1662884-1.patch
+projects[i18n][version] = 1.11
 
 projects[image_url_formatter] = 1.4
 
@@ -141,7 +140,7 @@ projects[menu_firstchild] = 1.1
 
 projects[menu_view_unpublished] = 1.0-beta3
 
-projects[mica] = 9.1
+projects[mica] = 9.1-dev
 
 projects[module_filter] = 1.8
 
