@@ -15,19 +15,21 @@ function _mica_studies_export_json_population_dto($dto_util, $wrapper, &$context
   $recruitment = new \obiba\mica\StudyDto\PopulationDto\RecruitmentDto();
 
   foreach ($wrapper->field_pop_src_recruit->getIterator() as $recruit) {
-    $recruitment->addDataSources($recruit->value());
     switch ($recruit->value()) {
       case 'general':
+        $recruitment->addDataSources('general_population');
         foreach ($wrapper->field_pop_general_pop_recruit->getIterator() as $pop_gen_recrui) {
           $recruitment->addGeneralPopulationSources($pop_gen_recrui->value());
         }
         break;
       case 'exist_studies':
+        $recruitment->addDataSources('existing_studies');
         foreach ($wrapper->field_pop_exist_study_part->getIterator() as $index_study => $study) {
           $recruitment->addStudies($dto_util->_set_LocalizedStringDtos($wrapper, 'field_pop_exist_study_part', $index_study));
         }
         break;
       case 'specific_population':
+        $recruitment->addDataSources('specific_population');
         foreach ($wrapper->field_pop_specific_pop->getIterator() as $specific_population) {
           $recruitment->addSpecificPopulationSources($specific_population->value());
           if ($specific_population->value() == 'other') {
@@ -38,6 +40,9 @@ function _mica_studies_export_json_population_dto($dto_util, $wrapper, &$context
             }
           }
         }
+        break;
+      default :
+        $recruitment->addDataSources($recruit->value());
         break;
     }
   }
