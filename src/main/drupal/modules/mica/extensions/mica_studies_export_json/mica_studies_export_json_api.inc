@@ -225,7 +225,9 @@ class QuerySendDto {
     $attachement_dto->setId($attachment['uuid']);
     $attachement_dto->setJustUploaded(TRUE);
     $attachement_dto->setType($type);
-    $attachement_dto->addDescription($this->_set_LocalizedStringDto($attachment['description'], 'en'));
+    if (!empty($attachment['description'])) {
+      $attachement_dto->addDescription($this->_set_LocalizedStringDto($attachment['description'], 'en'));
+    }
     $attachement_dto->setFileName($attachment['filename']);
     $attachement_dto->setLang('en');
     return $attachement_dto;
