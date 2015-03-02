@@ -124,7 +124,7 @@ function _mica_studies_export_json_construct_study_dto($dto_util, $wrapper, &$co
     $study_dto->addAccess('data');
   }
   if ($wrapper->field_access_biosamples->value() == 1) {
-    $study_dto->addAccess('biosamples');
+    $study_dto->addAccess('bio_samples');
   }
   if ($wrapper->field_access_other->value() == 1) {
     $study_dto->addAccess('other');
