@@ -8,7 +8,7 @@ include_once($path_module_protobuf . '/protobuf/Protobuf.php');
 use \DrSlump\Protobuf;
 
 function _mica_studies_export_json_network_dto($node, &$context) {
-
+  $network_to_file_save = NULL;
   $dataset_gen_dto = NULL;
   $dataset_type_parse = NULL;
   $resource_serv = NULL;
@@ -90,10 +90,15 @@ function _mica_studies_export_json_network_dto($node, &$context) {
     );
   }
 
-  $context['results']['networks'] = $network_to_file_save;
+  if (!empty($network_to_file_save)) {
+    $context['results']['networks'] = $network_to_file_save;
+  }
   if (!empty($attachments_files)) {
     $context['results']['networks']['attachments'] = $attachments_files;
   }
 
-  return $network_dto;
+  if (!empty($network_dto)) {
+    return $network_dto;
+  }
+  return FALSE;
 }
