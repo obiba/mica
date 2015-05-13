@@ -3,6 +3,7 @@ description = "Mica module"
 package = Mica
 core = 7.x
 
+
 dependencies[] = entity
 dependencies[] = search_api
 dependencies[] = search_api_solr

@@ -3,5 +3,4 @@ description = Mica Datasets Domains coverage comparison table
 core = 7.x
 package = Mica
 php = 5.2.4
-version = 7.x-9.2
 configure = admin/config/system/domain-coverage/
